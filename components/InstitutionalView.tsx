@@ -5,10 +5,10 @@ export default function InstitutionalView() {
         <p className="text-xs font-medium uppercase tracking-[0.15em] text-white/40 mb-4">
           The Institutional View
         </p>
-        <h2 className="text-4xl md:text-5xl font-bold leading-[1.15] text-white mb-6">
+        <h2 className="text-[36px] md:text-[48px] font-bold leading-[1.12] tracking-[-0.02em] text-white mb-6">
           Community colleges are central to the workforce development ecosystem.
         </h2>
-        <p className="text-lg font-normal leading-relaxed text-white/70 max-w-[600px] mx-auto mb-14">
+        <p className="text-lg font-normal leading-[1.6] tracking-normal text-white/70 max-w-[600px] mx-auto mb-14">
           2 million students. Fragmented partnerships. Kallipolis brings colleges, government, and industry closer together.
         </p>
 

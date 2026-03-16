@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @theme {
+  --font-sans: var(--font-geist);
   --color-pacific-navy: #002366;
   --color-sierra-gold: #FFCC33;
   --color-granite-grey: #6B7280;

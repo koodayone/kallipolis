@@ -5,7 +5,7 @@ export default function Promise() {
         <p className="text-xs font-medium uppercase tracking-[0.15em] text-pacific-navy mb-4">
           The Promise
         </p>
-        <h2 className="text-4xl md:text-5xl font-bold leading-[1.15] text-pure-text mb-14">
+        <h2 className="text-[36px] md:text-[48px] font-bold leading-[1.12] tracking-[-0.02em] text-pure-text mb-14">
           Activating human potential, with California leading the way.
         </h2>
 

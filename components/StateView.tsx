@@ -5,10 +5,10 @@ export default function StateView() {
         <p className="text-xs font-medium uppercase tracking-[0.15em] text-white/40 mb-4">
           The State View
         </p>
-        <h2 className="text-4xl md:text-5xl font-bold leading-[1.15] text-white mb-6">
+        <h2 className="text-[36px] md:text-[48px] font-bold leading-[1.12] tracking-[-0.02em] text-white mb-6">
           116 schools. 73 districts. One intelligent network.
         </h2>
-        <p className="text-lg font-normal leading-relaxed text-white/60 max-w-[600px] mx-auto mb-14">
+        <p className="text-lg font-normal leading-[1.6] tracking-normal text-white/60 max-w-[600px] mx-auto mb-14">
           California Community Colleges serve every region of the state. Kallipolis connects data and intelligence to respond to the workforce needs of a changing economy.
         </p>
 

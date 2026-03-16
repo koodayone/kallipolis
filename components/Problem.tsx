@@ -5,7 +5,7 @@ export default function Problem() {
         <p className="text-xs font-medium uppercase tracking-[0.15em] text-pacific-navy mb-4">
           The Moment
         </p>
-        <p className="text-4xl md:text-5xl font-bold leading-[1.15] text-pure-text max-w-[700px] mx-auto">
+        <p className="text-[36px] md:text-[48px] font-bold leading-[1.12] tracking-[-0.02em] text-pure-text max-w-[700px] mx-auto">
           AI is disrupting the workforce. Institutions need to respond.
         </p>
       </div>
