@@ -17,7 +17,7 @@ export default function Vision() {
       <div aria-hidden="true" style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,18,64,0.65) 0%, rgba(0,35,102,0.5) 30%, rgba(10,74,143,0.25) 60%, rgba(26,111,173,0.08) 85%, transparent 100%)", zIndex: 2 }} />
 
       {/* 4. Content */}
-      <div style={{ position: "relative", zIndex: 3 }}>
+      <div className="pt-12" style={{ position: "relative", zIndex: 3 }}>
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-xs font-medium uppercase tracking-[0.15em] text-white/40 mb-4">
             Institutional Intelligence
