@@ -1,11 +1,11 @@
 export default function Promise() {
   return (
-    <section className="bg-white py-24 px-6">
+    <section className="bg-promise-granite py-24 px-6">
       <div className="max-w-3xl mx-auto text-center">
-        <p className="text-sm font-semibold uppercase tracking-widest mb-4" style={{ color: "#002366" }}>
+        <p className="text-xs font-medium uppercase tracking-[0.15em] text-pacific-navy mb-4">
           The Promise
         </p>
-        <h2 className="text-4xl font-bold text-gray-900 leading-tight mb-14">
+        <h2 className="text-4xl md:text-5xl font-bold leading-[1.15] text-pure-text mb-14">
           Activating human potential, with California leading the way.
         </h2>
 
@@ -16,8 +16,7 @@ export default function Promise() {
 
         <a
           href="#"
-          className="inline-block text-white text-sm px-6 py-3 rounded-md hover:opacity-90 transition-opacity"
-          style={{ backgroundColor: "#002366" }}
+          className="inline-block bg-sierra-gold text-pacific-navy font-semibold text-sm px-6 py-3 rounded-md hover:opacity-90 transition-opacity"
         >
           Get in Touch
         </a>

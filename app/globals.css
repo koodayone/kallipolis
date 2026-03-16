@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+@theme {
+  --color-pacific-navy: #002366;
+  --color-sierra-gold: #FFCC33;
+  --color-granite-grey: #6B7280;
+  --color-coastal-fog: #F8F7F4;
+  --color-pure-text: #111827;
+  --color-footer-dark: #0A1628;
+  --color-deep-charcoal: #1A1A2E;
+  --color-redwood-green: #2D5016;
+  --color-promise-granite: #D1D5DB;
+}
