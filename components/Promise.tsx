@@ -11,7 +11,7 @@ export default function Promise() {
 
         {/* Illustration placeholder */}
         <div className="border-2 border-dashed border-gray-300 rounded-xl h-64 flex items-center justify-center mb-12">
-          <span className="text-sm text-gray-400">Transformation illustration — coming soon</span>
+          <span className="text-sm text-gray-400">Promise illustration — coming soon</span>
         </div>
 
         <a
