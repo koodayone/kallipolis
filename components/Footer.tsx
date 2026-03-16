@@ -20,9 +20,22 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
           <div>
-            <span className="text-white font-bold text-lg">Kallipolis</span>
+            <div className="flex items-center gap-2">
+              <img
+                src="/kallipolis-logo.png"
+                alt="Kallipolis logo"
+                height={32}
+                style={{ height: "32px", width: "auto" }}
+              />
+              <span
+                className="text-white text-lg leading-none"
+                style={{ fontFamily: "var(--font-days-one)" }}
+              >
+                Kallipolis
+              </span>
+            </div>
             <p className="mt-3 text-sm leading-relaxed">
-              Placeholder. A one-sentence description of what Kallipolis is and who it's for.
+              Institutional intelligence for California&apos;s workforce development ecosystem.
             </p>
           </div>
 
