@@ -6,7 +6,7 @@ export default function Problem() {
           The Moment
         </p>
         <p className="text-3xl font-bold text-white leading-snug">
-          AI is disrupting the workforce. California&apos;s institutions need to respond.
+          AI is disrupting the workforce. Institutions need to respond.
         </p>
       </div>
     </section>
