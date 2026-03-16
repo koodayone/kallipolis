@@ -1,3 +1,7 @@
+"use client";
+
+import { useRef, useState, useCallback, useEffect } from "react";
+
 type Card = { accent: string; source: string; headline: string; url: string };
 
 const cards: Card[] = [
@@ -43,10 +47,49 @@ function highlightNumbers(text: string, accent: string) {
 }
 
 export default function Problem() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [numDots, setNumDots] = useState(1);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const update = () => {
+      const maxScroll = el.scrollWidth - el.clientWidth;
+      const children = Array.from(el.children) as HTMLElement[];
+      const count = children.filter(c => c.offsetLeft <= maxScroll + 10).length;
+      setNumDots(Math.max(1, count));
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  const handleScroll = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const children = Array.from(el.children) as HTMLElement[];
+    let closest = 0;
+    let minDist = Infinity;
+    children.forEach((child, i) => {
+      const dist = Math.abs(child.offsetLeft - el.scrollLeft);
+      if (dist < minDist) { minDist = dist; closest = i; }
+    });
+    setActiveIndex(closest);
+  }, []);
+
+  const scrollToCard = (index: number) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const card = el.children[index] as HTMLElement;
+    if (!card) return;
+    el.scrollTo({ left: card.offsetLeft, behavior: "smooth" });
+  };
+
   return (
     <section className="bg-coastal-fog py-24 px-6">
       <style>{`
-        .evidence-scroll::-webkit-scrollbar { height: 4px; }
+        .evidence-scroll::-webkit-scrollbar { height: 0; }
         .evidence-scroll::-webkit-scrollbar-track { background: transparent; }
         .evidence-scroll::-webkit-scrollbar-thumb { background: #6B7280; border-radius: 2px; }
         .evidence-card:hover { border-color: var(--card-accent) !important; transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
@@ -73,12 +116,15 @@ export default function Problem() {
           The evidence
         </p>
         <div
+          ref={scrollRef}
+          onScroll={handleScroll}
           className="evidence-scroll"
           style={{
             display: "flex",
             gap: 24,
             overflowX: "auto",
             scrollSnapType: "x mandatory",
+            scrollbarWidth: "none",
             paddingTop: 6,
             paddingBottom: 16,
           }}
@@ -123,6 +169,27 @@ export default function Problem() {
                 {highlightNumbers(card.headline, card.accent)}
               </p>
             </a>
+          ))}
+        </div>
+
+        {/* Dot indicators */}
+        <div style={{ display: "flex", justifyContent: "center", gap: 8, marginTop: 20 }}>
+          {Array.from({ length: numDots }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => scrollToCard(i)}
+              aria-label={`Go to card ${i + 1}`}
+              style={{
+                width: 8,
+                height: 8,
+                borderRadius: "50%",
+                border: "none",
+                cursor: "pointer",
+                padding: 0,
+                background: i === activeIndex ? "#374151" : "#D1D5DB",
+                transition: "background 0.2s",
+              }}
+            />
           ))}
         </div>
       </div>
