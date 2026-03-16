@@ -30,7 +30,7 @@ const cards: Card[] = [
     url: "https://www.brookings.edu/articles/measuring-us-workers-capacity-to-adapt-to-ai-driven-job-displacement/",
   },
   {
-    accent: "#4A7C59",
+    accent: "#002366",
     source: "McKinsey Global Institute",
     headline: "Workers in the lowest wage jobs are up to 14 times more likely to need to change occupations by 2030 — and they are disproportionately women and people of color",
     url: "https://www.mckinsey.com/mgi/our-research/generative-ai-and-the-future-of-work-in-america",
