@@ -9,7 +9,7 @@ export default function Vision() {
           California&apos;s intelligence layer for workforce development
         </h1>
         <p className="text-lg text-gray-500">
-          Empowering the workforce to meet the AI moment.
+          Empowering our workforce to meet the AI moment.
         </p>
       </div>
     </section>
