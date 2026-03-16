@@ -1,13 +1,17 @@
 export default function Vision() {
   return (
     <section
-      className="py-24 px-6"
-      style={{ background: "linear-gradient(to bottom, #002366, #3B82C4)" }}
+      className="relative overflow-hidden py-24 px-6"
+      style={{ background: "linear-gradient(to bottom, #001240 0%, #002366 25%, #0A4A8F 55%, #1A6FAD 75%, #2E86C4 88%, #3D9BB5 100%)" }}
     >
       <div className="max-w-3xl mx-auto text-center">
         <p className="text-xs font-medium uppercase tracking-[0.15em] text-white/40 mb-4">
           Our Vision
         </p>
+
+        {/* Gold divider rule */}
+        <div style={{ width: 48, height: 2, background: "#FFCC33", borderRadius: 1, opacity: 0.9, margin: "0 auto 24px" }} />
+
         <h1 className="text-[40px] md:text-[56px] font-bold leading-[1.08] tracking-[-0.03em] text-white mb-6">
           California&apos;s intelligence layer for workforce development
         </h1>
@@ -15,6 +19,26 @@ export default function Vision() {
           Empowering our workforce to meet the AI moment.
         </p>
       </div>
+
+      {/* Radial gold glow */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute", bottom: 0, left: "50%", transform: "translateX(-50%)",
+          width: 600, height: 260, pointerEvents: "none",
+          background: "radial-gradient(ellipse at 50% 100%, rgba(255,204,51,0.13) 0%, rgba(255,204,51,0.04) 45%, transparent 70%)",
+        }}
+      />
+
+      {/* Big Sur green accent line */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute", bottom: 0, left: 0, width: "100%", height: 3,
+          background: "linear-gradient(to right, transparent 0%, #4A7C59 20%, #5B8A6F 50%, #4A7C59 80%, transparent 100%)",
+          opacity: 0.65,
+        }}
+      />
     </section>
   );
 }
