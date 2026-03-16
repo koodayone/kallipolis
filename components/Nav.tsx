@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function Nav() {
   return (
     <nav className="sticky top-0 z-50 w-full" style={{ backgroundColor: "#002366" }}>
@@ -7,12 +5,11 @@ export default function Nav() {
 
         {/* Logo + wordmark */}
         <div className="flex items-center gap-3">
-          <Image
+          <img
             src="/kallipolis-logo.png"
             alt="Kallipolis logo"
             height={40}
-            width={40}
-            className="object-contain"
+            style={{ height: "40px", width: "auto" }}
           />
           <span
             className="text-white text-xl leading-none"
