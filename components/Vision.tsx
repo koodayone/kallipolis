@@ -24,12 +24,12 @@ export default function Vision() {
           </p>
 
           {/* Gold divider rule */}
-          <div style={{ width: 48, height: 2, background: "#FFCC33", borderRadius: 1, opacity: 0.9, margin: "0 auto 24px" }} />
+          <div style={{ width: 64, height: 2, background: "#FFCC33", borderRadius: 1, opacity: 0.9, margin: "0 auto 24px" }} />
 
           <h1 className="text-[40px] md:text-[56px] font-bold leading-[1.08] tracking-[-0.03em] text-white mb-6">
             California&apos;s intelligence layer for workforce development
           </h1>
-          <p className="text-lg font-normal leading-[1.6] tracking-normal text-white/70 max-w-[600px] mx-auto">
+          <p className="text-lg font-normal leading-[1.6] tracking-normal text-white/85 max-w-[600px] mx-auto">
             Empowering the workforce to meet the AI moment.
           </p>
         </div>
