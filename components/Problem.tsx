@@ -21,7 +21,7 @@ const cards: Card[] = [
     accent: "#B85C2A",
     source: "Anthropic",
     headline: "AI could eliminate 50% of entry-level white-collar jobs within five years — the CEO of Anthropic is sounding the alarm",
-    url: "https://www.axios.com/2025/05/28/ai-jobs-white-collar-unemployment-anthropic",
+    url: "https://www.anthropic.com/economic-index#us-usage",
   },
   {
     accent: "#6B7280",
