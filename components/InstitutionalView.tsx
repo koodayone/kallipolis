@@ -1,3 +1,5 @@
+import InstitutionalDiagram from "./InstitutionalDiagram";
+
 const points = [
   { label: "Scale", text: "2 million students. Largest higher education system in America." },
   { label: "Centrality", text: "Connects industry, government, and the local workforce." },
@@ -45,9 +47,9 @@ export default function InstitutionalView() {
           ))}
         </div>
 
-        {/* Right column — diagram placeholder */}
-        <div style={{ flex: 1, minHeight: 300, border: "1.5px dashed rgba(255,255,255,0.2)", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <span style={{ fontSize: 12, color: "rgba(255,255,255,0.3)" }}>Institutional diagram — coming soon</span>
+        {/* Right column — Three.js diagram */}
+        <div style={{ flex: 1, minHeight: 300, borderRadius: 10, overflow: "hidden" }}>
+          <InstitutionalDiagram />
         </div>
       </div>
     </section>
