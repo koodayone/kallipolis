@@ -12,7 +12,7 @@ type LegendItem = {
 const legend: LegendItem[] = [
   { shape: "pentagon", color: "#b0c8de", label: "Government" },
   { shape: "square",   color: "#5aaa72", label: "College" },
-  { shape: "triangle", color: "#f04f20", label: "Business" },
+  { shape: "triangle", color: "#f04f20", label: "Industry" },
 ];
 
 function LegendIcon({ shape, color }: { shape: LegendItem["shape"]; color: string }) {
