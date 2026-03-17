@@ -66,6 +66,7 @@ export function buildInstitutionalScene(canvas: HTMLCanvasElement): () => void {
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(width, height, false);
   renderer.setClearColor(0x1a1a24);
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
 
   // Scene
   const scene = new THREE.Scene();
@@ -96,17 +97,18 @@ export function buildInstitutionalScene(canvas: HTMLCanvasElement): () => void {
   }
 
   // Build edges + joint dots
-  const lineMat = new THREE.LineBasicMaterial({ color: GOLD });
+  // TubeGeometry is used instead of Line because WebGL ignores LineBasicMaterial.linewidth
+  const tubeMat = new THREE.MeshBasicMaterial({ color: GOLD });
   const dotMat = new THREE.MeshBasicMaterial({ color: GOLD });
-  const dotGeo = new THREE.SphereGeometry(0.06, 8, 8);
+  const dotGeo = new THREE.SphereGeometry(0.08, 8, 8);
 
   for (const edge of edges) {
     const fromPos = nodes.find(n => n.id === edge.from)!.position;
     const toPos = nodes.find(n => n.id === edge.to)!.position;
 
-    const points = [fromPos.clone(), toPos.clone()];
-    const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
-    scene.add(new THREE.Line(lineGeo, lineMat));
+    const curve = new THREE.LineCurve3(fromPos.clone(), toPos.clone());
+    const tubeGeo = new THREE.TubeGeometry(curve, 1, 0.025, 6, false);
+    scene.add(new THREE.Mesh(tubeGeo, tubeMat));
 
     const dotA = new THREE.Mesh(dotGeo, dotMat);
     dotA.position.copy(fromPos);
