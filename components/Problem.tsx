@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useCallback, useEffect } from "react";
+import { useRef, useState, useCallback } from "react";
 
 type Card = { accent: string; source: string; headline: string; url: string };
 
@@ -49,41 +49,21 @@ function highlightNumbers(text: string, accent: string) {
 export default function Problem() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [numDots, setNumDots] = useState(1);
-
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const update = () => {
-      const maxScroll = el.scrollWidth - el.clientWidth;
-      const children = Array.from(el.children) as HTMLElement[];
-      const count = children.filter(c => c.offsetLeft <= maxScroll + 10).length;
-      setNumDots(Math.max(1, count));
-    };
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
+  const NUM_DOTS = 3; // pages = cards.length - visibleCards + 1 = 5 - 3 + 1
 
   const handleScroll = useCallback(() => {
     const el = scrollRef.current;
     if (!el) return;
-    const children = Array.from(el.children) as HTMLElement[];
-    let closest = 0;
-    let minDist = Infinity;
-    children.forEach((child, i) => {
-      const dist = Math.abs(child.offsetLeft - el.scrollLeft);
-      if (dist < minDist) { minDist = dist; closest = i; }
-    });
-    setActiveIndex(closest);
+    const maxScroll = el.scrollWidth - el.clientWidth;
+    if (maxScroll === 0) return;
+    setActiveIndex(Math.round((el.scrollLeft / maxScroll) * (NUM_DOTS - 1)));
   }, []);
 
   const scrollToCard = (index: number) => {
     const el = scrollRef.current;
     if (!el) return;
-    const card = el.children[index] as HTMLElement;
-    if (!card) return;
-    el.scrollTo({ left: card.offsetLeft, behavior: "smooth" });
+    const maxScroll = el.scrollWidth - el.clientWidth;
+    el.scrollTo({ left: (maxScroll * index) / (NUM_DOTS - 1), behavior: "smooth" });
   };
 
   return (
@@ -174,7 +154,7 @@ export default function Problem() {
 
         {/* Dot indicators */}
         <div style={{ display: "flex", justifyContent: "center", gap: 8, marginTop: 20 }}>
-          {Array.from({ length: numDots }).map((_, i) => (
+          {Array.from({ length: NUM_DOTS }).map((_, i) => (
             <button
               key={i}
               onClick={() => scrollToCard(i)}
