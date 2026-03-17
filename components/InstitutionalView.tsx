@@ -1,9 +1,9 @@
 import InstitutionalDiagram from "./InstitutionalDiagram";
 
 const points = [
-  { label: "Scale", text: "2 million Californians. Largest higher education system in America." },
+  { label: "Scale", text: "Largest system of higher education in the United States." },
   { label: "Centrality", text: "Connects industry, government, and the local workforce." },
-  { label: "Position", text: "Kallipolis spreads intelligence across the ecosystem." },
+  { label: "Positioning", text: "Kallipolis spreads intelligence across the ecosystem." },
 ];
 
 export default function InstitutionalView() {
@@ -25,7 +25,7 @@ export default function InstitutionalView() {
       <div style={{ display: "flex", gap: 48, alignItems: "stretch", paddingBottom: 64 }}>
 
         {/* Left column — points */}
-        <div style={{ flex: "0 0 42%", display: "flex", flexDirection: "column", gap: 24, justifyContent: "center" }}>
+        <div style={{ flex: "0 0 35%", display: "flex", flexDirection: "column", gap: 30, justifyContent: "center", alignSelf: "center" }}>
           {points.map((point) => (
             <div
               key={point.label}
@@ -37,10 +37,10 @@ export default function InstitutionalView() {
                 gap: 5,
               }}
             >
-              <p style={{ fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.12em", color: "#FFCC33", opacity: 0.85, margin: 0 }}>
+              <p style={{ fontSize: 12, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "#FFCC33", opacity: 0.85, margin: 0 }}>
                 {point.label}
               </p>
-              <p style={{ fontSize: 14, fontWeight: 500, lineHeight: 1.5, color: "rgba(255,255,255,0.85)", margin: 0 }}>
+              <p style={{ fontSize: 16, fontWeight: 500, lineHeight: 1.6, color: "rgba(255,255,255,0.85)", margin: 0 }}>
                 {point.text}
               </p>
             </div>

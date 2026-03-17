@@ -19,14 +19,14 @@ const nodes: SceneNode[] = [
     geometry: (() => { const g = new THREE.DodecahedronGeometry(0.85, 0); g.rotateX(0.46); return g; })(),
     color: 0xb0c8de,
     position: new THREE.Vector3(0, 3.2, 0),
-    rotationSpeed: 0.004,
+    rotationSpeed: 0.003,
   },
   {
     id: "college",
     geometry: new THREE.BoxGeometry(1.4, 1.4, 1.4),
     color: 0x5aaa72,
     position: new THREE.Vector3(0, 0.8, 0),
-    rotationSpeed: 0.004,
+    rotationSpeed: 0.003,
     initialRotation: new THREE.Euler(0.35, 0.6, 0),
   },
   {
@@ -35,7 +35,7 @@ const nodes: SceneNode[] = [
     color: 0xf04f20,
     position: new THREE.Vector3(-2.2, -1.8, 0),
     initialRotation: new THREE.Euler(-0.75, 0, 0),
-    rotationSpeed: 0.007,
+    rotationSpeed: 0.005,
   },
   {
     id: "biz-center",
@@ -43,7 +43,7 @@ const nodes: SceneNode[] = [
     color: 0xf04f20,
     position: new THREE.Vector3(0, -2.0, 0),
     initialRotation: new THREE.Euler(-0.75, 0, 0),
-    rotationSpeed: 0.007,
+    rotationSpeed: 0.005,
   },
   {
     id: "biz-right",
@@ -51,7 +51,7 @@ const nodes: SceneNode[] = [
     color: 0xf04f20,
     position: new THREE.Vector3(2.2, -1.8, 0),
     initialRotation: new THREE.Euler(-0.75, 0, 0),
-    rotationSpeed: 0.007,
+    rotationSpeed: 0.005,
   },
 ];
 
@@ -137,7 +137,7 @@ export function buildInstitutionalScene(canvas: HTMLCanvasElement): () => void {
     for (const offset of [0, 0.5]) {
       const mesh = new THREE.Mesh(particleGeo, particleMat);
       scene.add(mesh);
-      particles.push({ curve: particleCurve, mesh, t: offset, speed: 0.009 });
+      particles.push({ curve: particleCurve, mesh, t: offset, speed: 0.004 });
     }
   }
 
