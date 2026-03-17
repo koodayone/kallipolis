@@ -16,6 +16,7 @@ const geist = Geist({
 export const metadata: Metadata = {
   title: "Kallipolis",
   description: "A new foundation for how institutions think and act",
+  icons: { icon: "/icon.png" },
 };
 
 export default function RootLayout({
