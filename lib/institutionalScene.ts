@@ -6,52 +6,57 @@ type SceneNode = {
   color: number;
   position: THREE.Vector3;
   rotationSpeed: number;
+  initialRotation?: THREE.Euler;
 };
 
-type Edge = { from: string; to: string };
+type Edge = { from: string; to: string; reverseParticle?: boolean };
 
 const GOLD = 0xffcc33;
 
 const nodes: SceneNode[] = [
   {
     id: "gov",
-    geometry: new THREE.DodecahedronGeometry(0.85, 0),
-    color: 0x8a9bb0,
+    geometry: (() => { const g = new THREE.DodecahedronGeometry(0.85, 0); g.rotateX(0.46); return g; })(),
+    color: 0xb0c8de,
     position: new THREE.Vector3(0, 3.2, 0),
     rotationSpeed: 0.003,
   },
   {
     id: "college",
     geometry: new THREE.BoxGeometry(1.4, 1.4, 1.4),
-    color: 0x4a7c59,
+    color: 0x5aaa72,
     position: new THREE.Vector3(0, 0.8, 0),
     rotationSpeed: 0.002,
+    initialRotation: new THREE.Euler(0.35, 0.6, 0),
   },
   {
     id: "biz-left",
-    geometry: (() => { const g = new THREE.TetrahedronGeometry(0.9, 0); g.rotateX(Math.PI); return g; })(),
-    color: 0xc0450a,
+    geometry: new THREE.ConeGeometry(0.8, 0.8 * Math.sqrt(2), 3),
+    color: 0xf04f20,
     position: new THREE.Vector3(-2.2, -1.8, 0),
+    initialRotation: new THREE.Euler(0.3, 0, 0),
     rotationSpeed: 0.004,
   },
   {
     id: "biz-center",
-    geometry: (() => { const g = new THREE.TetrahedronGeometry(0.9, 0); g.rotateX(Math.PI); return g; })(),
-    color: 0xc0450a,
+    geometry: new THREE.ConeGeometry(0.8, 0.8 * Math.sqrt(2), 3),
+    color: 0xf04f20,
     position: new THREE.Vector3(0, -2.0, 0),
+    initialRotation: new THREE.Euler(0.3, 0, 0),
     rotationSpeed: 0.004,
   },
   {
     id: "biz-right",
-    geometry: (() => { const g = new THREE.TetrahedronGeometry(0.9, 0); g.rotateX(Math.PI); return g; })(),
-    color: 0xc0450a,
+    geometry: new THREE.ConeGeometry(0.8, 0.8 * Math.sqrt(2), 3),
+    color: 0xf04f20,
     position: new THREE.Vector3(2.2, -1.8, 0),
+    initialRotation: new THREE.Euler(0.3, 0, 0),
     rotationSpeed: 0.004,
   },
 ];
 
 const edges: Edge[] = [
-  { from: "gov", to: "college" },
+  { from: "gov", to: "college", reverseParticle: true },
   { from: "college", to: "biz-left" },
   { from: "college", to: "biz-center" },
   { from: "college", to: "biz-right" },
@@ -92,6 +97,7 @@ export function buildInstitutionalScene(canvas: HTMLCanvasElement): () => void {
     const mat = new THREE.MeshPhongMaterial({ color: node.color, flatShading: true, shininess: 30 });
     const mesh = new THREE.Mesh(geo, mat);
     mesh.position.copy(node.position);
+    if (node.initialRotation) mesh.rotation.copy(node.initialRotation);
     scene.add(mesh);
     meshByID.set(node.id, mesh);
   }
@@ -101,6 +107,12 @@ export function buildInstitutionalScene(canvas: HTMLCanvasElement): () => void {
   const tubeMat = new THREE.MeshBasicMaterial({ color: GOLD });
   const dotMat = new THREE.MeshBasicMaterial({ color: GOLD });
   const dotGeo = new THREE.SphereGeometry(0.08, 8, 8);
+
+  // Flowing particles per edge
+  type Particle = { curve: THREE.LineCurve3; mesh: THREE.Mesh; t: number; speed: number };
+  const particles: Particle[] = [];
+  const particleMat = new THREE.MeshBasicMaterial({ color: 0xffe580 });
+  const particleGeo = new THREE.SphereGeometry(0.07, 6, 6);
 
   for (const edge of edges) {
     const fromPos = nodes.find(n => n.id === edge.from)!.position;
@@ -117,6 +129,16 @@ export function buildInstitutionalScene(canvas: HTMLCanvasElement): () => void {
     const dotB = new THREE.Mesh(dotGeo, dotMat);
     dotB.position.copy(toPos);
     scene.add(dotB);
+
+    // Two particles per edge, staggered by 0.5
+    const particleStart = edge.reverseParticle ? toPos.clone() : fromPos.clone();
+    const particleEnd = edge.reverseParticle ? fromPos.clone() : toPos.clone();
+    const particleCurve = new THREE.LineCurve3(particleStart, particleEnd);
+    for (const offset of [0, 0.5]) {
+      const mesh = new THREE.Mesh(particleGeo, particleMat);
+      scene.add(mesh);
+      particles.push({ curve: particleCurve, mesh, t: offset, speed: 0.004 });
+    }
   }
 
   // Resize handler
@@ -137,6 +159,10 @@ export function buildInstitutionalScene(canvas: HTMLCanvasElement): () => void {
     rafId = requestAnimationFrame(animate);
     for (const { mesh, speed } of nodeEntries) {
       mesh.rotation.y += speed;
+    }
+    for (const p of particles) {
+      p.t = (p.t + p.speed) % 1;
+      p.mesh.position.copy(p.curve.getPoint(p.t));
     }
     renderer.render(scene, camera);
   }
