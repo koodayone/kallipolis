@@ -1,9 +1,9 @@
 import InstitutionalDiagram from "./InstitutionalDiagram";
 
 const points = [
-  { label: "Scale", text: "2 million students. Largest higher education system in America." },
+  { label: "Scale", text: "2 million Californians. Largest higher education system in America." },
   { label: "Centrality", text: "Connects industry, government, and the local workforce." },
-  { label: "Position", text: "Kallipolis makes those connections intelligent." },
+  { label: "Position", text: "Kallipolis spreads intelligence across the ecosystem." },
 ];
 
 export default function InstitutionalView() {
