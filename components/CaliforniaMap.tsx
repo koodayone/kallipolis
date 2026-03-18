@@ -88,15 +88,32 @@ export default function CaliforniaMap() {
           strokeLinecap="round"
         />
       )}
-      {DIPPER_EDGES.map(([a, b], i) => (
-        <line
-          key={i}
-          x1={DIPPER_STARS[a][0]} y1={DIPPER_STARS[a][1]}
-          x2={DIPPER_STARS[b][0]} y2={DIPPER_STARS[b][1]}
-          stroke="#FFCC33"
-          strokeWidth="1.5"
-          strokeOpacity="0.7"
-        />
+      {DIPPER_EDGES.map(([a, b], i) => {
+        const [x1, y1] = DIPPER_STARS[a];
+        const [x2, y2] = DIPPER_STARS[b];
+        return (
+          <path
+            key={`edge-${i}`}
+            id={`dipper-edge-${i}`}
+            d={`M${x1},${y1} L${x2},${y2}`}
+            fill="none"
+            stroke="#FFCC33"
+            strokeWidth="1.5"
+            strokeOpacity="0.7"
+          />
+        );
+      })}
+      {DIPPER_EDGES.map((_, i) => (
+        <circle key={`p-${i}`} r="3" fill="#ffe580">
+          <animateMotion
+            dur="3s"
+            begin="0s"
+            repeatCount="indefinite"
+            calcMode="linear"
+          >
+            <mpath href={`#dipper-edge-${i}`} />
+          </animateMotion>
+        </circle>
       ))}
       {DIPPER_STARS.map(([cx, cy], i) => (
         <polygon
