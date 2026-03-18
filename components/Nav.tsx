@@ -1,4 +1,10 @@
+"use client";
+
+import { useState } from "react";
+
 export default function Nav() {
+  const [open, setOpen] = useState(false);
+
   return (
     <nav className="sticky top-0 z-50 w-full" style={{ backgroundColor: "#002366" }}>
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -19,32 +25,41 @@ export default function Nav() {
           </span>
         </div>
 
-        {/* Navigation links */}
-        <div className="hidden md:flex items-center gap-8">
-          {["About", "Vision", "Problem", "Solution"].map((link) => (
-            <a
-              key={link}
-              href="#"
-              className="text-sm text-white/80 hover:text-white transition-colors"
-            >
-              {link}
-            </a>
-          ))}
-        </div>
+        {/* Hamburger */}
+        <button
+          onClick={() => setOpen((o) => !o)}
+          aria-label={open ? "Close menu" : "Open menu"}
+          className="flex flex-col justify-center items-center gap-[5px] w-8 h-8 focus:outline-none"
+        >
+          <span
+            className="block h-[2px] w-5 bg-white transition-all duration-300 origin-center"
+            style={{ transform: open ? "translateY(7px) rotate(45deg)" : "none" }}
+          />
+          <span
+            className="block h-[2px] w-5 bg-white transition-all duration-300"
+            style={{ opacity: open ? 0 : 1 }}
+          />
+          <span
+            className="block h-[2px] w-5 bg-white transition-all duration-300 origin-center"
+            style={{ transform: open ? "translateY(-7px) rotate(-45deg)" : "none" }}
+          />
+        </button>
 
-        {/* CTA buttons */}
-        <div className="flex items-center gap-3">
-          <button className="text-sm text-white border border-white px-4 py-2 rounded-md hover:bg-white/10 transition-colors">
-            Sign In
-          </button>
-          <button
-            className="text-sm font-medium px-4 py-2 rounded-md hover:bg-gray-100 transition-colors"
-            style={{ backgroundColor: "#ffffff", color: "#002366" }}
-          >
-            Get Started
-          </button>
-        </div>
+      </div>
 
+      {/* Slide-down curtain */}
+      <div
+        style={{
+          maxHeight: open ? 120 : 0,
+          overflow: "hidden",
+          transition: "max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
+          backgroundColor: "#002366",
+          borderTop: open ? "1px solid rgba(255,255,255,0.1)" : "none",
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-6 py-8 flex items-center justify-center">
+          <p className="text-xs uppercase tracking-widest text-white/40">Coming Soon</p>
+        </div>
       </div>
     </nav>
   );
