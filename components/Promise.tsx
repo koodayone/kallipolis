@@ -6,7 +6,7 @@ export default function Promise() {
         backgroundImage: "url('/desert_modernism.png')",
         backgroundSize: "cover",
         backgroundPosition: "top",
-        minHeight: 600,
+        minHeight: 620,
       }}
     >
       <div className="max-w-3xl mx-auto text-center">
