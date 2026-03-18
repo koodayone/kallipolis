@@ -25,8 +25,18 @@ export default function Nav() {
           </span>
         </div>
 
-        {/* Hamburger */}
-        <button
+        {/* Right controls */}
+        <div className="flex items-center gap-4">
+          {/* Search icon */}
+          <button onClick={() => setOpen((o) => !o)} aria-label="Search" className="text-white hover:text-white transition-colors">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </button>
+
+          {/* Hamburger */}
+          <button
           onClick={() => setOpen((o) => !o)}
           aria-label={open ? "Close menu" : "Open menu"}
           className="flex flex-col justify-center items-center gap-[5px] w-8 h-8 focus:outline-none"
@@ -44,6 +54,7 @@ export default function Nav() {
             style={{ transform: open ? "translateY(-7px) rotate(-45deg)" : "none" }}
           />
         </button>
+        </div>
 
       </div>
 
