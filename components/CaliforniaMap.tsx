@@ -83,7 +83,7 @@ export default function CaliforniaMap() {
           d={pathD}
           fill="none"
           stroke="rgba(255,255,255,0.6)"
-          strokeWidth="2"
+          strokeWidth="5"
           strokeLinejoin="round"
           strokeLinecap="round"
         />
@@ -118,7 +118,7 @@ export default function CaliforniaMap() {
       {DIPPER_STARS.map(([cx, cy], i) => (
         <polygon
           key={i}
-          points={diamond(cx, cy, 6)}
+          points={diamond(cx, cy, 8)}
           fill="#5aaa72"
         />
       ))}
