@@ -19,8 +19,33 @@ function project([lon, lat]: number[]): string {
   return `${x.toFixed(1)},${y.toFixed(1)}`;
 }
 
+function projectXY([lon, lat]: number[]): [number, number] {
+  return [
+    (lon - LON_MIN) * COS_LAT * SCALE,
+    (LAT_MAX - lat) * SCALE,
+  ];
+}
+
 function ringToPath(ring: number[][]): string {
   return ring.map((pt, i) => `${i === 0 ? "M" : "L"}${project(pt)}`).join(" ") + " Z";
+}
+
+// Big Dipper stars: [lat, lon]
+// Bowl (4 stars, SW→NE diagonal in southern CA) + Handle (3 stars arcing NW to Northern CA)
+const DIPPER_STARS: [number, number][] = (
+  [
+    [34.8, -118.5],  // S1 — SW bottom of bowl (Greater LA inland)
+    [33.7, -116.2],  // S2 — SE bottom of bowl (Palm Springs / Coachella Valley)
+    [35.1, -115.8],  // S3 — NE top of bowl (Barstow / Mojave)
+    [36.5, -119.0],  // S4 — NW top of bowl (Sequoia / Kings Canyon area)
+    [37.5, -121.4],  // S5 — handle start (Modesto / Sierra foothills)
+    [39.2, -121.1],  // S6 — handle mid (Chico / Sacramento Valley)
+    [40.8, -122.5],  // S7 — handle tip (Redding / Shasta County)
+  ] as [number, number][]
+).map(([lat, lon]) => projectXY([lon, lat]));
+
+function diamond(cx: number, cy: number, s: number): string {
+  return `${cx},${cy - s} ${cx + s},${cy} ${cx},${cy + s} ${cx - s},${cy}`;
 }
 
 export default function CaliforniaMap() {
@@ -57,6 +82,13 @@ export default function CaliforniaMap() {
           strokeLinecap="round"
         />
       )}
+      {DIPPER_STARS.map(([cx, cy], i) => (
+        <polygon
+          key={i}
+          points={diamond(cx, cy, 6)}
+          fill="#5aaa72"
+        />
+      ))}
     </svg>
   );
 }
