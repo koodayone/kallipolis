@@ -137,7 +137,7 @@ export function buildInstitutionalScene(canvas: HTMLCanvasElement): () => void {
     for (const offset of [0, 0.5]) {
       const mesh = new THREE.Mesh(particleGeo, particleMat);
       scene.add(mesh);
-      particles.push({ curve: particleCurve, mesh, t: offset, speed: 0.006 });
+      particles.push({ curve: particleCurve, mesh, t: offset, speed: 0.004 });
     }
   }
 

@@ -16,7 +16,7 @@ export default function StateView() {
         </div>
 
         {/* Right column — text */}
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", gap: 48 }}>
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "flex-start", gap: 48 }}>
 
           {/* Header block — top */}
           <div style={{ textAlign: "center" }}>
