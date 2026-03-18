@@ -17,7 +17,7 @@ const legend: LegendItem[] = [
 
 function LegendIcon({ shape, color }: { shape: LegendItem["shape"]; color: string }) {
   return (
-    <svg width="12" height="12" viewBox="0 0 12 12" style={{ flexShrink: 0 }}>
+    <svg width="14" height="14" viewBox="0 0 12 12" style={{ flexShrink: 0 }}>
       {shape === "pentagon" && (
         <polygon points="6,1 11,4.6 9.1,10.5 2.9,10.5 1,4.6" fill={color} />
       )}
@@ -50,7 +50,7 @@ export default function InstitutionalDiagram() {
         {legend.map(({ shape, color, label }) => (
           <div key={label} style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <LegendIcon shape={shape} color={color} />
-            <span style={{ fontSize: 12, color: "white", opacity: 0.8 }}>{label}</span>
+            <span style={{ fontSize: 14, color: "white", opacity: 0.8 }}>{label}</span>
           </div>
         ))}
       </div>
