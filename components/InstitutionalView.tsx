@@ -37,10 +37,10 @@ export default function InstitutionalView() {
                 gap: 5,
               }}
             >
-              <p style={{ fontSize: 12, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "#FFCC33", opacity: 0.85, margin: 0 }}>
+              <p style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "#FFCC33", opacity: 0.85, margin: 0 }}>
                 {point.label}
               </p>
-              <p style={{ fontSize: 16, fontWeight: 500, lineHeight: 1.6, color: "rgba(255,255,255,0.85)", margin: 0 }}>
+              <p style={{ fontSize: 18, fontWeight: 500, lineHeight: 1.6, color: "rgba(255,255,255,0.85)", margin: 0 }}>
                 {point.text}
               </p>
             </div>
