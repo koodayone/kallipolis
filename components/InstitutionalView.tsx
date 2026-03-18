@@ -25,7 +25,7 @@ export default function InstitutionalView() {
       <div style={{ display: "flex", gap: 48, alignItems: "stretch", paddingBottom: 64 }}>
 
         {/* Left column — points */}
-        <div style={{ flex: "0 0 35%", display: "flex", flexDirection: "column", gap: 30, justifyContent: "center", alignSelf: "center" }}>
+        <div style={{ flex: "0 0 45%", display: "flex", flexDirection: "column", gap: 30, justifyContent: "center", alignSelf: "center" }}>
           {points.map((point) => (
             <div
               key={point.label}

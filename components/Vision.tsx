@@ -7,7 +7,7 @@ export default function Vision() {
         src="/hero-illustration.jpg"
         alt=""
         aria-hidden="true"
-        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 55%", zIndex: 0 }}
+        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 75%", zIndex: 0 }}
       />
 
       {/* 2. Dark overlay */}
