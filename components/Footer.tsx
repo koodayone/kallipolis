@@ -10,8 +10,8 @@ export default function Footer() {
             <img
               src="/kallipolis-logo.png"
               alt="Kallipolis logo"
-              height={32}
-              style={{ height: "32px", width: "auto" }}
+              height={40}
+              style={{ height: "40px", width: "auto" }}
             />
             <span
               className="text-white text-lg leading-none"

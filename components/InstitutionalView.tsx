@@ -3,7 +3,7 @@ import InstitutionalDiagram from "./InstitutionalDiagram";
 const points = [
   { label: "Unmatched Scale", text: "California Community Colleges is the largest system of higher education in the United States." },
   { label: "Central Networks", text: "Colleges connect industry, government, and the local workforce." },
-  { label: "Universal Access", text: "Individuals from all walks of life can enroll with low barriers to entry." },
+  { label: "Universal Access", text: "Individuals from all walks of life can enroll with low barriers to entry. Open admissions, low tuition, flexible commitments." },
 ];
 
 export default function InstitutionalView() {
