@@ -20,7 +20,7 @@ export default function StateView() {
 
           {/* Header block — top */}
           <div style={{ textAlign: "center" }}>
-            <p className="text-xs font-medium uppercase tracking-[0.15em] text-white/40" style={{ marginBottom: 16 }}>
+            <p className="text-sm font-medium uppercase tracking-[0.15em] text-white/40" style={{ marginBottom: 16 }}>
               The State View
             </p>
             <div style={{ width: 64, height: 2, background: "#FFCC33", borderRadius: 1, opacity: 0.9, margin: "0 auto 24px" }} />

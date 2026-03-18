@@ -10,7 +10,7 @@ export default function Promise() {
       }}
     >
       <div className="max-w-3xl mx-auto text-center">
-        <p className="text-xs font-medium uppercase tracking-[0.15em] text-pacific-navy mb-4">
+        <p className="text-sm font-medium uppercase tracking-[0.15em] text-pacific-navy mb-4">
           The Promise
         </p>
         <div style={{ width: 64, height: 2, background: "#FFCC33", borderRadius: 1, opacity: 0.9, margin: "0 auto 24px" }} />

@@ -79,7 +79,7 @@ export default function Problem() {
 
       {/* Statement block */}
       <div className="max-w-3xl mx-auto text-center">
-        <p className="text-xs font-medium uppercase tracking-[0.15em] text-pacific-navy mb-4">
+        <p className="text-sm font-medium uppercase tracking-[0.15em] text-pacific-navy mb-4">
           The Moment
         </p>
         {/* Green divider rule */}

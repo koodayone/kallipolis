@@ -19,7 +19,7 @@ export default function Vision() {
       {/* 4. Content */}
       <div className="pt-16" style={{ position: "relative", zIndex: 3 }}>
         <div className="max-w-3xl mx-auto text-center">
-          <p className="text-xs font-medium uppercase tracking-[0.15em] text-white/40 mb-4">
+          <p className="text-sm font-medium uppercase tracking-[0.15em] text-white/40 mb-4">
             Institutional Intelligence
           </p>
 
@@ -29,7 +29,7 @@ export default function Vision() {
           <h1 className="text-[40px] md:text-[56px] font-bold leading-[1.08] tracking-[-0.03em] text-white mb-6">
             California&apos;s intelligence layer for workforce development
           </h1>
-          <p className="text-lg font-normal leading-[1.6] tracking-normal text-white/85 max-w-[600px] mx-auto">
+          <p className="text-xl font-normal leading-[1.6] tracking-normal text-white/85 max-w-[600px] mx-auto">
             Empowering the workforce to meet the AI moment.
           </p>
         </div>
