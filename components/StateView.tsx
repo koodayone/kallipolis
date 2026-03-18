@@ -1,8 +1,8 @@
 import CaliforniaMap from "./CaliforniaMap";
 
 const points = [
-  { label: "Reach", text: "Kallipolis empowers California Community Colleges to serve 2 million students in every region of the state." },
-  { label: "Mission", text: "We connect data and intelligence to respond to the workforce needs of a changing economy." },
+  { label: "Statewide Vision", text: "Kallipolis empowers California Community Colleges to serve 2 million students in every region of the state." },
+  { label: "Our Software", text: "We unify data & spread intelligence across the ecosystem by deploying AI for empowering workforce development initiatives." },
 ];
 
 export default function StateView() {

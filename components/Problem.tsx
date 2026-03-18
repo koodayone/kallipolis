@@ -92,7 +92,7 @@ export default function Problem() {
 
       {/* Evidence cards */}
       <div className="mt-16 max-w-7xl mx-auto" style={{ paddingLeft: 48, paddingRight: 48 }}>
-        <p style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "0.15em", color: "#6B7280", marginBottom: 16 }}>
+        <p style={{ fontSize: 12, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.15em", color: "#6B7280", marginBottom: 16 }}>
           The evidence
         </p>
         <div
@@ -123,10 +123,10 @@ export default function Problem() {
                 background: "white",
                 borderRadius: 10,
                 border: "1px solid rgba(0,0,0,0.06)",
-                padding: 28,
+                padding: 36,
                 display: "flex",
                 flexDirection: "column",
-                gap: 16,
+                gap: 20,
                 textDecoration: "none",
                 cursor: "pointer",
                 transition: "border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease",
@@ -140,12 +140,12 @@ export default function Problem() {
               </div>
 
               {/* Source */}
-              <p style={{ fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.12em", color: "#6B7280", margin: 0 }}>
+              <p style={{ fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.12em", color: "#6B7280", margin: 0 }}>
                 {card.source}
               </p>
 
               {/* Headline with highlighted numbers */}
-              <p style={{ fontSize: 13, fontWeight: 500, lineHeight: 1.55, color: "#111827", margin: 0 }}>
+              <p style={{ fontSize: 14, fontWeight: 500, lineHeight: 1.6, color: "#111827", margin: 0 }}>
                 {highlightNumbers(card.headline, card.accent)}
               </p>
             </a>
