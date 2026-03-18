@@ -44,6 +44,12 @@ const DIPPER_STARS: [number, number][] = (
   ] as [number, number][]
 ).map(([lat, lon]) => projectXY([lon, lat]));
 
+// Connections: bowl rectangle (0-1-2-3-0) + handle (3-4-5-6)
+const DIPPER_EDGES: [number, number][] = [
+  [0, 1], [1, 2], [2, 3], [3, 0], // bowl
+  [3, 4], [4, 5], [5, 6],          // handle
+];
+
 function diamond(cx: number, cy: number, s: number): string {
   return `${cx},${cy - s} ${cx + s},${cy} ${cx},${cy + s} ${cx - s},${cy}`;
 }
@@ -82,6 +88,16 @@ export default function CaliforniaMap() {
           strokeLinecap="round"
         />
       )}
+      {DIPPER_EDGES.map(([a, b], i) => (
+        <line
+          key={i}
+          x1={DIPPER_STARS[a][0]} y1={DIPPER_STARS[a][1]}
+          x2={DIPPER_STARS[b][0]} y2={DIPPER_STARS[b][1]}
+          stroke="#FFCC33"
+          strokeWidth="1.5"
+          strokeOpacity="0.7"
+        />
+      ))}
       {DIPPER_STARS.map(([cx, cy], i) => (
         <polygon
           key={i}
