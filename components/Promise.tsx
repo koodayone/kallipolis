@@ -1,7 +1,7 @@
 export default function Promise() {
   return (
     <section
-      className="pt-12 pb-24 px-6"
+      className="pt-16 pb-24 px-6"
       style={{
         backgroundImage: "url('/desert_modernism.png')",
         backgroundSize: "cover",
