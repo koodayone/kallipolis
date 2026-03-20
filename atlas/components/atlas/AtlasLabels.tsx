@@ -26,36 +26,27 @@ export default function AtlasLabels({ hoveredDomain }: Props) {
       <div
         style={{
           position: "absolute",
-          top: "28px",
+          top: "24px",
           left: "36px",
           display: "flex",
-          flexDirection: "column",
-          gap: "2px",
+          alignItems: "center",
+          gap: "10px",
         }}
       >
+        <img
+          src="/kallipolis-logo.png"
+          alt="Kallipolis logo"
+          style={{ height: "36px", width: "auto" }}
+        />
         <span
           style={{
-            fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-            fontSize: "13px",
-            fontWeight: 600,
-            letterSpacing: "0.18em",
-            textTransform: "uppercase",
-            color: "#c9a84c",
+            fontFamily: "var(--font-days-one), sans-serif",
+            fontSize: "20px",
+            color: "#ffffff",
+            lineHeight: 1,
           }}
         >
           Kallipolis
-        </span>
-        <span
-          style={{
-            fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-            fontSize: "11px",
-            fontWeight: 400,
-            letterSpacing: "0.12em",
-            textTransform: "uppercase",
-            color: "rgba(255,255,255,0.3)",
-          }}
-        >
-          Atlas
         </span>
       </div>
 
@@ -73,7 +64,7 @@ export default function AtlasLabels({ hoveredDomain }: Props) {
           fontWeight: 600,
           letterSpacing: "0.14em",
           textTransform: "uppercase",
-          color: "#c9a84c",
+          color: "#ffffff",
           whiteSpace: "nowrap",
         }}
       >
