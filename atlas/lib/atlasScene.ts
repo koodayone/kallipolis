@@ -193,7 +193,7 @@ export function buildAtlasScene(
     geo.setPositions([a.x, a.y, a.z, b.x, b.y, b.z]);
     const mat = new LineMaterial({
       color: GOLD,
-      linewidth: 2,
+      linewidth: 3,
       transparent: true,
       opacity: 0,
       resolution: new THREE.Vector2(initW, initH),
@@ -405,10 +405,13 @@ export function buildAtlasScene(
       (s.mesh.material as THREE.MeshPhongMaterial).opacity = s.currentFillOpacity;
     });
 
-    // ── Connector opacity lerp ──
-    connectors.forEach((c) => {
+    // ── Connector opacity lerp + holographic shimmer ──
+    connectors.forEach((c, i) => {
       c.currentOpacity = lerp(c.currentOpacity, c.targetOpacity, LERP_SPEED);
-      (c.line.material as LineMaterial).opacity = c.currentOpacity;
+      const shimmer = c.currentOpacity > 0.01
+        ? 0.7 + 0.3 * Math.sin((now / 1000) * (2 * Math.PI / 3) + i * 0.9)
+        : 1;
+      (c.line.material as LineMaterial).opacity = c.currentOpacity * shimmer;
     });
 
     renderer.render(scene, camera);

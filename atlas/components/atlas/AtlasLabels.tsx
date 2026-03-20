@@ -34,15 +34,15 @@ function RisingSun() {
 
   return (
     <svg
-      width="78"
-      height="62"
-      viewBox="0 0 56 44"
+      width="94"
+      height="60"
+      viewBox="0 0 56 36"
       fill="none"
-      style={{ animation: "sun-glow 3s ease-in-out infinite", overflow: "hidden" }}
+      style={{ animation: "sun-glow 3s ease-in-out infinite", overflow: "hidden", display: "block", margin: "0 auto" }}
     >
       <defs>
         <clipPath id="sun-clip">
-          <rect x="0" y="0" width="56" height="36" />
+          <rect x="0" y="0" width="56" height="37" />
         </clipPath>
       </defs>
       {/* Rays + disc clipped to flat bottom */}
@@ -102,12 +102,12 @@ export default function AtlasLabels({ hoveredDomain }: Props) {
         <img
           src="/kallipolis-logo.png"
           alt="Kallipolis logo"
-          style={{ height: "36px", width: "auto" }}
+          style={{ height: "40px", width: "auto" }}
         />
         <span
           style={{
             fontFamily: "var(--font-days-one), sans-serif",
-            fontSize: "20px",
+            fontSize: "22px",
             color: "#ffffff",
             lineHeight: 1,
           }}
@@ -120,7 +120,7 @@ export default function AtlasLabels({ hoveredDomain }: Props) {
       <div
         style={{
           position: "absolute",
-          top: "calc(24% - 64px)",
+          top: "calc(24% - 74px)",
           left: "50%",
           transform: "translateX(-50%)",
           opacity: hoveredDomain ? 1 : 0,
@@ -128,7 +128,7 @@ export default function AtlasLabels({ hoveredDomain }: Props) {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          gap: "2px",
+          gap: "8px",
         }}
       >
         <RisingSun />
@@ -159,7 +159,7 @@ export default function AtlasLabels({ hoveredDomain }: Props) {
           fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
           fontSize: "15px",
           letterSpacing: "0.1em",
-          color: "rgba(255,255,255,0.2)",
+          color: "rgba(255,255,255,0.85)",
           textTransform: "uppercase",
           whiteSpace: "nowrap",
         }}
