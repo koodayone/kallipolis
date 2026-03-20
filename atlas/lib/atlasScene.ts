@@ -38,7 +38,7 @@ type ConnectorEntry = {
 };
 
 const GOLD = 0xc9a84c;
-const BG_COLOR = 0x0d1526;
+const BG_COLOR = 0x041e54;
 const LERP_SPEED = 0.08;
 
 const DOMAIN_COLOR: Record<string, number> = {
@@ -167,19 +167,19 @@ export function buildAtlasScene(
     // Industry — Tetrahedra × 3 (fan to the right of cube)
     makeSolid(
       new THREE.TetrahedronGeometry(0.85, 0),
-      new THREE.Vector3(2.8, 1.3, -0.4),
+      new THREE.Vector3(3.6, 1.3, -0.4),
       new THREE.Vector3(0.003, 0.002, 0.0025),
       "industry"
     ),
     makeSolid(
       new THREE.TetrahedronGeometry(0.95, 0),
-      new THREE.Vector3(3.6, 0, 0.2),
+      new THREE.Vector3(4.4, 0, 0.2),
       new THREE.Vector3(0.002, 0.003, 0.002),
       "industry"
     ),
     makeSolid(
       new THREE.TetrahedronGeometry(0.85, 0),
-      new THREE.Vector3(2.8, -1.3, -0.4),
+      new THREE.Vector3(3.6, -1.3, -0.4),
       new THREE.Vector3(0.0025, 0.002, 0.003),
       "industry"
     ),
@@ -293,7 +293,13 @@ export function buildAtlasScene(
     const w = entry.contentRect.width;
     const h = entry.contentRect.height;
     if (w === 0 || h === 0) return;
-    camera.aspect = w / h;
+    const aspect = w / h;
+    camera.aspect = aspect;
+    // Pull camera back on narrow viewports so the full scene stays visible.
+    // sceneHalfWidth = ~5.5 units (rightmost solid edge); FOV = 50°.
+    const sceneHalfWidth = 5.5;
+    const requiredZ = sceneHalfWidth / (Math.tan((50 / 2) * Math.PI / 180) * aspect);
+    camera.position.z = Math.max(9, Math.min(22, requiredZ));
     camera.updateProjectionMatrix();
     renderer.setSize(w, h);
     connectors.forEach((c) => {
