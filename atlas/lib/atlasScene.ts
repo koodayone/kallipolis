@@ -38,7 +38,7 @@ type ConnectorEntry = {
 };
 
 const GOLD = 0xc9a84c;
-const BG_COLOR = 0x0a0a0f;
+const BG_COLOR = 0x0d1526;
 const LERP_SPEED = 0.08;
 
 const DOMAIN_COLOR: Record<string, number> = {
