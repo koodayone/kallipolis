@@ -165,7 +165,7 @@ export default function AtlasLabels({ hoveredDomain }: Props) {
         <img
           src="/foothill-logo-2.png"
           alt="Foothill College"
-          style={{ height: "64px", width: "auto", objectFit: "contain" }}
+          style={{ height: "72px", width: "auto", objectFit: "contain" }}
         />
         <span
           style={{
