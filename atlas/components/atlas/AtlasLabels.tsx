@@ -2,44 +2,17 @@
 
 import { DomainKey } from "@/lib/atlasScene";
 
-type LabelConfig = {
-  domain: DomainKey;
-  title: string;
-  subtitle: string;
-  // Approximate screen positions (percent from top/left)
-  top: string;
-  left: string;
-  align: "left" | "right" | "center";
+const DOMAIN_NAMES: Record<DomainKey, string> = {
+  government: "Government",
+  college: "College",
+  industry: "Industry",
 };
 
-const LABELS: LabelConfig[] = [
-  {
-    domain: "government",
-    title: "Government",
-    subtitle: "Workforce & Compliance",
-    top: "8%",
-    left: "55%",
-    align: "left",
-  },
-  {
-    domain: "college",
-    title: "College",
-    subtitle: "Institutional Inventory",
-    top: "44%",
-    left: "57%",
-    align: "left",
-  },
-  {
-    domain: "industry",
-    title: "Industry",
-    subtitle: "Partnership Intelligence",
-    top: "70%",
-    left: "55%",
-    align: "left",
-  },
-];
+type Props = {
+  hoveredDomain: DomainKey | null;
+};
 
-export default function AtlasLabels() {
+export default function AtlasLabels({ hoveredDomain }: Props) {
   return (
     <div
       style={{
@@ -86,45 +59,26 @@ export default function AtlasLabels() {
         </span>
       </div>
 
-      {/* Domain labels */}
-      {LABELS.map((label) => (
-        <div
-          key={label.domain}
-          style={{
-            position: "absolute",
-            top: label.top,
-            left: label.left,
-            display: "flex",
-            flexDirection: "column",
-            gap: "3px",
-            transform: "translateY(-50%)",
-          }}
-        >
-          <span
-            style={{
-              fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-              fontSize: "12px",
-              fontWeight: 600,
-              letterSpacing: "0.14em",
-              textTransform: "uppercase",
-              color: "#c9a84c",
-            }}
-          >
-            {label.title}
-          </span>
-          <span
-            style={{
-              fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-              fontSize: "11px",
-              fontWeight: 400,
-              letterSpacing: "0.04em",
-              color: "rgba(255,255,255,0.35)",
-            }}
-          >
-            {label.subtitle}
-          </span>
-        </div>
-      ))}
+      {/* Hover label — fades in when a domain is hovered */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: "60px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          opacity: hoveredDomain ? 1 : 0,
+          transition: "opacity 0.2s ease",
+          fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+          fontSize: "13px",
+          fontWeight: 600,
+          letterSpacing: "0.14em",
+          textTransform: "uppercase",
+          color: "#c9a84c",
+          whiteSpace: "nowrap",
+        }}
+      >
+        {hoveredDomain ? DOMAIN_NAMES[hoveredDomain] : ""}
+      </div>
 
       {/* Bottom instruction */}
       <div

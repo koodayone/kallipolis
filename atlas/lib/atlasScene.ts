@@ -31,6 +31,12 @@ const GOLD = 0xc9a84c;
 const BG_COLOR = 0x0a0a0f;
 const LERP_SPEED = 0.08;
 
+const DOMAIN_COLOR: Record<string, number> = {
+  government: 0xb0c8de, // steel blue-grey
+  college:    0x5aaa72, // green
+  industry:   0xf04f20, // red-orange
+};
+
 export function buildAtlasScene(
   canvas: HTMLCanvasElement,
   callbacks: SceneCallbacks
@@ -45,7 +51,11 @@ export function buildAtlasScene(
     alpha: false,
   });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+  // Use getBoundingClientRect to get true layout dimensions after CSS is applied
+  const initRect = canvas.getBoundingClientRect();
+  const initW = initRect.width || window.innerWidth;
+  const initH = initRect.height || window.innerHeight;
+  renderer.setSize(initW, initH);
   renderer.setClearColor(BG_COLOR, 1);
 
   // ── Scene & Camera ────────────────────────────────────────────────────────
@@ -54,7 +64,7 @@ export function buildAtlasScene(
 
   const camera = new THREE.PerspectiveCamera(
     50,
-    canvas.clientWidth / canvas.clientHeight,
+    initW / initH,
     0.1,
     100
   );
@@ -96,10 +106,10 @@ export function buildAtlasScene(
     mesh.position.copy(position);
     scene.add(mesh);
 
-    // Gold edge wireframe
+    // Domain-colored edge wireframe
     const edgesGeo = new THREE.EdgesGeometry(geometry, 12);
     const edgeMat = new THREE.LineBasicMaterial({
-      color: GOLD,
+      color: DOMAIN_COLOR[domain],
       transparent: true,
       opacity: 0.7,
     });
@@ -107,8 +117,8 @@ export function buildAtlasScene(
     edges.position.copy(position);
     scene.add(edges);
 
-    // Per-solid hover point light
-    const hoverLight = new THREE.PointLight(0xffd580, 0, 4);
+    // Per-solid hover point light (domain color)
+    const hoverLight = new THREE.PointLight(DOMAIN_COLOR[domain], 0, 4);
     hoverLight.position.copy(position);
     scene.add(hoverLight);
 
@@ -130,10 +140,10 @@ export function buildAtlasScene(
 
   // ── Solids ────────────────────────────────────────────────────────────────
   const solids: SolidEntry[] = [
-    // Government — Dodecahedron (top)
+    // Government — Dodecahedron (left)
     makeSolid(
       new THREE.DodecahedronGeometry(1.05, 0),
-      new THREE.Vector3(0, 2.8, 0),
+      new THREE.Vector3(-3.6, 0, 0),
       new THREE.Vector3(0.0018, 0.0025, 0.001),
       "government"
     ),
@@ -144,22 +154,22 @@ export function buildAtlasScene(
       new THREE.Vector3(0.001, 0.004, 0.002),
       "college"
     ),
-    // Industry — Tetrahedra × 3 (fan below cube)
+    // Industry — Tetrahedra × 3 (fan to the right of cube)
     makeSolid(
       new THREE.TetrahedronGeometry(0.85, 0),
-      new THREE.Vector3(-2.3, -2.1, -0.4),
+      new THREE.Vector3(2.8, 1.3, -0.4),
       new THREE.Vector3(0.003, 0.002, 0.0025),
       "industry"
     ),
     makeSolid(
       new THREE.TetrahedronGeometry(0.95, 0),
-      new THREE.Vector3(0, -2.7, 0.2),
+      new THREE.Vector3(3.6, 0, 0.2),
       new THREE.Vector3(0.002, 0.003, 0.002),
       "industry"
     ),
     makeSolid(
       new THREE.TetrahedronGeometry(0.85, 0),
-      new THREE.Vector3(2.3, -2.1, -0.4),
+      new THREE.Vector3(2.8, -1.3, -0.4),
       new THREE.Vector3(0.0025, 0.002, 0.003),
       "industry"
     ),
@@ -170,10 +180,20 @@ export function buildAtlasScene(
   const connectorMat = new THREE.LineBasicMaterial({
     color: GOLD,
     transparent: true,
-    opacity: 0.18,
+    opacity: 0.25,
   });
 
   const connectorLines: THREE.Line[] = [];
+
+  // Government → College
+  const govToCollege = new THREE.Line(
+    new THREE.BufferGeometry().setFromPoints([solids[0].basePos, cubePos]),
+    connectorMat.clone()
+  );
+  scene.add(govToCollege);
+  connectorLines.push(govToCollege);
+
+  // College → each Industry tetrahedron
   [solids[2], solids[3], solids[4]].forEach((s) => {
     const pts = [cubePos, s.basePos];
     const geo = new THREE.BufferGeometry().setFromPoints(pts);
@@ -240,17 +260,21 @@ export function buildAtlasScene(
     }
   }
 
-  function onResize() {
-    const w = canvas.clientWidth;
-    const h = canvas.clientHeight;
+  // ResizeObserver fires immediately after first paint with correct dimensions
+  // and on every subsequent resize — more reliable than window.resize
+  const resizeObserver = new ResizeObserver((entries) => {
+    const entry = entries[0];
+    const w = entry.contentRect.width;
+    const h = entry.contentRect.height;
+    if (w === 0 || h === 0) return;
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
     renderer.setSize(w, h);
-  }
+  });
+  resizeObserver.observe(canvas);
 
   canvas.addEventListener("mousemove", onMouseMove);
   canvas.addEventListener("click", onMouseClick);
-  window.addEventListener("resize", onResize);
 
   // ── Animation Loop ────────────────────────────────────────────────────────
   let rafId = 0;
@@ -374,7 +398,7 @@ export function buildAtlasScene(
     });
 
     connectorLines.forEach((l) => {
-      (l.material as THREE.LineBasicMaterial).opacity = 0.18;
+      (l.material as THREE.LineBasicMaterial).opacity = 0.25;
     });
   }
 
@@ -383,7 +407,7 @@ export function buildAtlasScene(
     cancelAnimationFrame(rafId);
     canvas.removeEventListener("mousemove", onMouseMove);
     canvas.removeEventListener("click", onMouseClick);
-    window.removeEventListener("resize", onResize);
+    resizeObserver.disconnect();
     renderer.dispose();
   }
 

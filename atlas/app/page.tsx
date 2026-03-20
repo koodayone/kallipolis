@@ -16,6 +16,7 @@ type AppState = "home" | "transitioning-in" | "domain" | "transitioning-out";
 export default function AtlasPage() {
   const [appState, setAppState] = useState<AppState>("home");
   const [activeDomain, setActiveDomain] = useState<DomainKey | null>(null);
+  const [hoveredDomain, setHoveredDomain] = useState<DomainKey | null>(null);
   const sceneRef = useRef<ReturnType<typeof buildAtlasScene> | null>(null);
 
   const handleDomainClick = useCallback((domain: DomainKey) => {
@@ -60,6 +61,7 @@ export default function AtlasPage() {
       >
         <AtlasCanvas
           onDomainClick={handleDomainClick}
+          onHoverChange={setHoveredDomain}
           canvasOpacity={canvasOpacity}
           sceneRef={sceneRef}
         />
@@ -76,7 +78,7 @@ export default function AtlasPage() {
             transition={{ duration: 0.35 }}
             style={{ position: "fixed", inset: 0, zIndex: 5, pointerEvents: "none" }}
           >
-            <AtlasLabels />
+            <AtlasLabels hoveredDomain={hoveredDomain} />
           </motion.div>
         )}
       </AnimatePresence>
