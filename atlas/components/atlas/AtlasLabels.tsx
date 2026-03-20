@@ -124,7 +124,7 @@ export default function AtlasLabels({ hoveredDomain }: Props) {
           left: "50%",
           transform: "translateX(-50%)",
           opacity: hoveredDomain ? 1 : 0,
-          transition: "opacity 0.35s ease",
+          transition: "opacity 0.5s ease-in-out",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -147,24 +147,38 @@ export default function AtlasLabels({ hoveredDomain }: Props) {
         </span>
       </div>
 
-      {/* Instruction — fades out when a domain is hovered */}
+      {/* Institution logo + instruction — fades out when a domain is hovered */}
       <div
         style={{
           position: "absolute",
-          top: "24%",
+          top: "calc(24% - 74px)",
           left: "50%",
           transform: "translateX(-50%)",
           opacity: hoveredDomain ? 0 : 1,
-          transition: "opacity 0.2s ease",
-          fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-          fontSize: "15px",
-          letterSpacing: "0.1em",
-          color: "rgba(255,255,255,0.85)",
-          textTransform: "uppercase",
-          whiteSpace: "nowrap",
+          transition: "opacity 0.5s ease-in-out",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "10px",
         }}
       >
-        Select a domain
+        <img
+          src="/foothill-logo-2.png"
+          alt="Foothill College"
+          style={{ height: "64px", width: "auto", objectFit: "contain" }}
+        />
+        <span
+          style={{
+            fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+            fontSize: "15px",
+            letterSpacing: "0.1em",
+            color: "rgba(255,255,255,0.85)",
+            textTransform: "uppercase",
+            whiteSpace: "nowrap",
+          }}
+        >
+          Select a domain
+        </span>
       </div>
     </div>
   );
