@@ -1,34 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kallipolis
 
-## Getting Started
+Institutional intelligence platform for California Community College program coordinators.
 
-First, run the development server:
+## Repository Structure
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+kallipolis/
+├── app/          # Landing page (Next.js, port 3000)
+├── atlas/        # Atlas application (Next.js, port 3001)
+├── backend/      # API server (FastAPI + Neo4j)
+└── docker-compose.yml
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 1. Environment Variables
 
-## Learn More
+```bash
+cp .env.example .env
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open `.env` and add your Anthropic API key:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+ANTHROPIC_API_KEY=sk-ant-...
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 2. Start Backend Services
 
-## Deploy on Vercel
+Requires Docker and Docker Compose.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+docker-compose up -d
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This starts:
+- **Neo4j** on `localhost:7474` (browser) and `localhost:7687` (bolt)
+- **FastAPI backend** on `localhost:8000`
+
+The backend automatically seeds the Neo4j database with Sierra Vista Community College data on first startup. Allow ~30 seconds for Neo4j to become healthy before the backend connects.
+
+Verify the backend is running:
+
+```bash
+curl http://localhost:8000/ontology/institution
+```
+
+### 3. Start the Atlas Frontend
+
+```bash
+cd atlas
+npm install
+npm run dev
+```
+
+The Atlas runs at **http://localhost:3001**
+
+## API Documentation
+
+Interactive API docs: http://localhost:8000/docs
+
+## Neo4j Browser
+
+http://localhost:7474 — Username: `neo4j` / Password: `kallipolis_dev`
+
+## Development (backend without Docker)
+
+```bash
+cd backend
+pip install -r requirements.txt
+# Ensure .env has NEO4J_URI pointing to your running Neo4j instance
+uvicorn main:app --reload --port 8000
+```

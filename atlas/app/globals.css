@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: "Inter", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Domain views allow scroll */
+.domain-scroll {
+  overflow-y: auto;
+  height: 100vh;
+}
+
+/* Gold shimmer animation for loading dots */
+@keyframes pulse-gold {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.gold-dot {
+  animation: pulse-gold 1.4s ease-in-out infinite;
+}
