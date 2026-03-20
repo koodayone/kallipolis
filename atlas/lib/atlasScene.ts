@@ -27,6 +27,13 @@ type ClickState =
   | { phase: "pulse"; elapsed: number; domain: DomainKey }
   | { phase: "dissolve"; elapsed: number; domain: DomainKey };
 
+type ConnectorEntry = {
+  line: THREE.Line;
+  triggerDomain: DomainKey;
+  targetOpacity: number;
+  currentOpacity: number;
+};
+
 const GOLD = 0xc9a84c;
 const BG_COLOR = 0x0a0a0f;
 const LERP_SPEED = 0.08;
@@ -175,31 +182,32 @@ export function buildAtlasScene(
     ),
   ];
 
-  // Connector lines from cube to each tetrahedron
+  // Connector lines — hidden by default, revealed on hover
   const cubePos = new THREE.Vector3(0, 0, 0);
   const connectorMat = new THREE.LineBasicMaterial({
     color: GOLD,
     transparent: true,
-    opacity: 0.25,
+    opacity: 0,
   });
 
-  const connectorLines: THREE.Line[] = [];
+  const connectors: ConnectorEntry[] = [];
 
-  // Government → College
+  // Government → College (revealed on government hover)
   const govToCollege = new THREE.Line(
     new THREE.BufferGeometry().setFromPoints([solids[0].basePos, cubePos]),
     connectorMat.clone()
   );
   scene.add(govToCollege);
-  connectorLines.push(govToCollege);
+  connectors.push({ line: govToCollege, triggerDomain: "government", targetOpacity: 0, currentOpacity: 0 });
 
-  // College → each Industry tetrahedron
+  // College → each Industry tetrahedron (revealed on industry hover)
   [solids[2], solids[3], solids[4]].forEach((s) => {
-    const pts = [cubePos, s.basePos];
-    const geo = new THREE.BufferGeometry().setFromPoints(pts);
-    const line = new THREE.Line(geo, connectorMat.clone());
+    const line = new THREE.Line(
+      new THREE.BufferGeometry().setFromPoints([cubePos, s.basePos]),
+      connectorMat.clone()
+    );
     scene.add(line);
-    connectorLines.push(line);
+    connectors.push({ line, triggerDomain: "industry", targetOpacity: 0, currentOpacity: 0 });
   });
 
   // ── Interaction State ─────────────────────────────────────────────────────
@@ -228,6 +236,10 @@ export function buildAtlasScene(
       s.targetEdgeOpacity = isHovered ? 1.0 : domain !== null ? 0.45 : 0.7;
       s.hoverLight.intensity = isHovered ? 0.6 : 0;
       s.targetScale = isHovered ? 1.06 : 1.0;
+    });
+
+    connectors.forEach((c) => {
+      c.targetOpacity = domain !== null && c.triggerDomain === domain ? 0.25 : 0;
     });
   }
 
@@ -330,8 +342,8 @@ export function buildAtlasScene(
             s.targetScale = 0.7;
           }
         });
-        connectorLines.forEach((l) => {
-          (l.material as THREE.LineBasicMaterial).opacity = 0;
+        connectors.forEach((c) => {
+          c.targetOpacity = 0;
         });
       }
     } else if (clickState.phase === "dissolve") {
@@ -374,6 +386,12 @@ export function buildAtlasScene(
       (s.mesh.material as THREE.MeshPhongMaterial).opacity = s.currentFillOpacity;
     });
 
+    // ── Connector opacity lerp ──
+    connectors.forEach((c) => {
+      c.currentOpacity = lerp(c.currentOpacity, c.targetOpacity, LERP_SPEED);
+      (c.line.material as THREE.LineBasicMaterial).opacity = c.currentOpacity;
+    });
+
     renderer.render(scene, camera);
   }
 
@@ -397,8 +415,10 @@ export function buildAtlasScene(
       s.hoverLight.intensity = 0;
     });
 
-    connectorLines.forEach((l) => {
-      (l.material as THREE.LineBasicMaterial).opacity = 0.25;
+    connectors.forEach((c) => {
+      c.targetOpacity = 0;
+      c.currentOpacity = 0;
+      (c.line.material as THREE.LineBasicMaterial).opacity = 0;
     });
   }
 
