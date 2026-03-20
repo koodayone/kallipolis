@@ -1,6 +1,7 @@
 "use client";
 
 import { DomainKey } from "@/lib/atlasScene";
+import { SchoolConfig } from "@/lib/schoolConfig";
 
 const DOMAIN_LABELS: Record<DomainKey, { title: string; subtitle: string }> = {
   government: {
@@ -20,9 +21,10 @@ const DOMAIN_LABELS: Record<DomainKey, { title: string; subtitle: string }> = {
 type Props = {
   domain: DomainKey;
   onBack: () => void;
+  school: SchoolConfig;
 };
 
-export default function DomainHeader({ domain, onBack }: Props) {
+export default function DomainHeader({ domain, onBack, school }: Props) {
   const { title, subtitle } = DOMAIN_LABELS[domain];
 
   return (
@@ -84,7 +86,7 @@ export default function DomainHeader({ domain, onBack }: Props) {
             fontWeight: 600,
             letterSpacing: "0.14em",
             textTransform: "uppercase",
-            color: "#c9a84c",
+            color: school.brandColor,
           }}
         >
           {title}
@@ -103,19 +105,23 @@ export default function DomainHeader({ domain, onBack }: Props) {
         </span>
       </div>
 
-      {/* Kallipolis wordmark */}
-      <span
+      {/* School logo */}
+      <div
         style={{
-          fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-          fontSize: "11px",
-          fontWeight: 600,
-          letterSpacing: "0.14em",
-          textTransform: "uppercase",
-          color: "#d1d5db",
+          background: "#ffffff",
+          border: "1px solid #e4e2dc",
+          borderRadius: "6px",
+          padding: "4px 10px",
+          display: "flex",
+          alignItems: "center",
         }}
       >
-        Kallipolis
-      </span>
+        <img
+          src={school.logoPath}
+          alt={school.name}
+          style={{ height: "28px", width: "auto", objectFit: "contain" }}
+        />
+      </div>
     </header>
   );
 }

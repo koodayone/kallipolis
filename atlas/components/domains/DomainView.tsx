@@ -1,4 +1,5 @@
 import { DomainKey } from "@/lib/atlasScene";
+import { schoolConfig } from "@/lib/schoolConfig";
 import DomainHeader from "./DomainHeader";
 import GovernmentView from "./GovernmentView";
 import CollegeView from "./CollegeView";
@@ -12,9 +13,9 @@ type Props = {
 export default function DomainView({ domain, onBack }: Props) {
   return (
     <div style={{ minHeight: "100vh" }}>
-      <DomainHeader domain={domain} onBack={onBack} />
+      <DomainHeader domain={domain} onBack={onBack} school={schoolConfig} />
       <main>
-        {domain === "government" && <GovernmentView />}
+        {domain === "government" && <GovernmentView school={schoolConfig} />}
         {domain === "college" && <CollegeView />}
         {domain === "industry" && <IndustryView />}
       </main>

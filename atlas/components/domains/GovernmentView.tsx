@@ -3,6 +3,7 @@
 import Card from "@/components/ui/Card";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
+import { SchoolConfig } from "@/lib/schoolConfig";
 
 type ReportSection = {
   id: string;
@@ -43,13 +44,13 @@ const REPORTS: ReportSection[] = [
   },
 ];
 
-function CheckIcon({ dim }: { dim?: boolean }) {
+function CheckIcon({ dim, color }: { dim?: boolean; color: string }) {
   return (
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ flexShrink: 0, marginTop: "1px" }}>
-      <circle cx="7" cy="7" r="6.5" stroke={dim ? "#d1d5db" : "#c9a84c"} />
+      <circle cx="7" cy="7" r="6.5" stroke={dim ? "#d1d5db" : color} />
       <path
         d="M4.5 7l1.75 1.75L9.5 5.5"
-        stroke={dim ? "#d1d5db" : "#c9a84c"}
+        stroke={dim ? "#d1d5db" : color}
         strokeWidth="1.25"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -58,7 +59,11 @@ function CheckIcon({ dim }: { dim?: boolean }) {
   );
 }
 
-export default function GovernmentView() {
+type Props = {
+  school: SchoolConfig;
+};
+
+export default function GovernmentView({ school }: Props) {
   return (
     <div
       style={{
@@ -70,6 +75,46 @@ export default function GovernmentView() {
         gap: "32px",
       }}
     >
+      {/* Institution identity strip */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "12px",
+          marginBottom: "0",
+          paddingBottom: "24px",
+          borderBottom: "1px solid #e4e2dc",
+        }}
+      >
+        <div
+          style={{
+            background: "#ffffff",
+            border: "1px solid #e4e2dc",
+            borderRadius: "6px",
+            padding: "6px 12px",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <img
+            src={school.logoPath}
+            alt={school.name}
+            style={{ height: "36px", width: "auto", objectFit: "contain" }}
+          />
+        </div>
+        <span
+          style={{
+            fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+            fontSize: "13px",
+            fontWeight: 500,
+            color: "#6b7280",
+            letterSpacing: "0.04em",
+          }}
+        >
+          {school.name}
+        </span>
+      </div>
+
       {/* Page heading */}
       <div style={{ marginBottom: "8px" }}>
         <h1
@@ -111,7 +156,7 @@ export default function GovernmentView() {
             >
               {report.title}
             </h2>
-            <Badge variant="gold">Ready to Generate</Badge>
+            <Badge style={{ color: school.brandColor, background: school.brandColorDim, border: "1px solid rgba(123,45,62,0.2)" }}>Ready to Generate</Badge>
           </div>
 
           <p
@@ -152,7 +197,7 @@ export default function GovernmentView() {
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
               {report.requirements.map((req) => (
                 <div key={req} style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
-                  <CheckIcon dim />
+                  <CheckIcon dim color={school.brandColor} />
                   <span
                     style={{
                       fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
@@ -173,7 +218,7 @@ export default function GovernmentView() {
               title="Connect your institutional data submission to enable report generation"
               style={{ display: "inline-block" }}
             >
-              <Button variant="solid-gold" disabled>
+              <Button variant="solid-gold" disabled style={{ background: school.brandColor, borderColor: school.brandColor, color: "#ffffff" }}>
                 Generate Report
               </Button>
             </div>
