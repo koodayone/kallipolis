@@ -24,6 +24,24 @@ body {
   height: 100vh;
 }
 
+/* Rising sun holographic glow */
+@keyframes sun-glow {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(201, 168, 76, 0.3)); }
+  50%       { filter: drop-shadow(0 0 14px rgba(201, 168, 76, 0.75)); }
+}
+
+@keyframes ray-shimmer {
+  0%, 100% { opacity: 0.45; }
+  50%       { opacity: 1.0; }
+}
+
+.sun-ray {
+  stroke: #c9a84c;
+  stroke-width: 2;
+  stroke-linecap: round;
+  animation: ray-shimmer 2.2s ease-in-out infinite;
+}
+
 /* Gold shimmer animation for loading dots */
 @keyframes pulse-gold {
   0%, 100% {
