@@ -1,4 +1,7 @@
 import * as THREE from "three";
+import { Line2 } from "three/examples/jsm/lines/Line2.js";
+import { LineGeometry } from "three/examples/jsm/lines/LineGeometry.js";
+import { LineMaterial } from "three/examples/jsm/lines/LineMaterial.js";
 
 export type DomainKey = "government" | "college" | "industry";
 
@@ -28,7 +31,7 @@ type ClickState =
   | { phase: "dissolve"; elapsed: number; domain: DomainKey };
 
 type ConnectorEntry = {
-  line: THREE.Line;
+  line: Line2;
   triggerDomain: DomainKey;
   targetOpacity: number;
   currentOpacity: number;
@@ -100,12 +103,12 @@ export function buildAtlasScene(
     rotSpeed: THREE.Vector3,
     domain: DomainKey
   ): SolidEntry {
-    // Dark inner fill mesh
+    // Domain-colored opaque fill mesh
     const fillMat = new THREE.MeshPhongMaterial({
-      color: 0x0d0d14,
-      emissive: 0x0a0a0f,
-      transparent: true,
-      opacity: 0.85,
+      color: DOMAIN_COLOR[domain],
+      emissive: DOMAIN_COLOR[domain],
+      emissiveIntensity: 0.15,
+      transparent: false,
       side: THREE.FrontSide,
       depthWrite: true,
     });
@@ -140,8 +143,8 @@ export function buildAtlasScene(
       currentScale: 1,
       targetEdgeOpacity: 0.7,
       currentEdgeOpacity: 0.7,
-      targetFillOpacity: 0.85,
-      currentFillOpacity: 0.85,
+      targetFillOpacity: 1.0,
+      currentFillOpacity: 1.0,
     };
   }
 
@@ -184,30 +187,41 @@ export function buildAtlasScene(
 
   // Connector lines — hidden by default, revealed on hover
   const cubePos = new THREE.Vector3(0, 0, 0);
-  const connectorMat = new THREE.LineBasicMaterial({
-    color: GOLD,
-    transparent: true,
-    opacity: 0,
-  });
+
+  function makeConnector(a: THREE.Vector3, b: THREE.Vector3): Line2 {
+    const geo = new LineGeometry();
+    geo.setPositions([a.x, a.y, a.z, b.x, b.y, b.z]);
+    const mat = new LineMaterial({
+      color: GOLD,
+      linewidth: 2,
+      transparent: true,
+      opacity: 0,
+      resolution: new THREE.Vector2(initW, initH),
+    });
+    const line = new Line2(geo, mat);
+    line.computeLineDistances();
+    scene.add(line);
+    return line;
+  }
 
   const connectors: ConnectorEntry[] = [];
 
   // Government → College (revealed on government hover)
-  const govToCollege = new THREE.Line(
-    new THREE.BufferGeometry().setFromPoints([solids[0].basePos, cubePos]),
-    connectorMat.clone()
-  );
-  scene.add(govToCollege);
-  connectors.push({ line: govToCollege, triggerDomain: "government", targetOpacity: 0, currentOpacity: 0 });
+  connectors.push({
+    line: makeConnector(solids[0].basePos, cubePos),
+    triggerDomain: "government",
+    targetOpacity: 0,
+    currentOpacity: 0,
+  });
 
   // College → each Industry tetrahedron (revealed on industry hover)
   [solids[2], solids[3], solids[4]].forEach((s) => {
-    const line = new THREE.Line(
-      new THREE.BufferGeometry().setFromPoints([cubePos, s.basePos]),
-      connectorMat.clone()
-    );
-    scene.add(line);
-    connectors.push({ line, triggerDomain: "industry", targetOpacity: 0, currentOpacity: 0 });
+    connectors.push({
+      line: makeConnector(cubePos, s.basePos),
+      triggerDomain: "industry",
+      targetOpacity: 0,
+      currentOpacity: 0,
+    });
   });
 
   // ── Interaction State ─────────────────────────────────────────────────────
@@ -239,7 +253,7 @@ export function buildAtlasScene(
     });
 
     connectors.forEach((c) => {
-      c.targetOpacity = domain !== null && c.triggerDomain === domain ? 0.25 : 0;
+      c.targetOpacity = domain !== null && c.triggerDomain === domain ? 0.75 : 0;
     });
   }
 
@@ -282,6 +296,9 @@ export function buildAtlasScene(
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
     renderer.setSize(w, h);
+    connectors.forEach((c) => {
+      (c.line.material as LineMaterial).resolution.set(w, h);
+    });
   });
   resizeObserver.observe(canvas);
 
@@ -332,9 +349,11 @@ export function buildAtlasScene(
         clickState = { phase: "dissolve", elapsed: 0, domain: clickState.domain };
         // Set targets: fade others, scale selected
         solids.forEach((s) => {
+          // Enable transparency on fill so opacity lerp takes effect during dissolve
+          (s.mesh.material as THREE.MeshPhongMaterial).transparent = true;
           if (s.domain === selectedDomain) {
             s.targetEdgeOpacity = 1.0;
-            s.targetFillOpacity = 0.95;
+            s.targetFillOpacity = 1.0;
             s.targetScale = 1.9;
           } else {
             s.targetEdgeOpacity = 0;
@@ -389,7 +408,7 @@ export function buildAtlasScene(
     // ── Connector opacity lerp ──
     connectors.forEach((c) => {
       c.currentOpacity = lerp(c.currentOpacity, c.targetOpacity, LERP_SPEED);
-      (c.line.material as THREE.LineBasicMaterial).opacity = c.currentOpacity;
+      (c.line.material as LineMaterial).opacity = c.currentOpacity;
     });
 
     renderer.render(scene, camera);
@@ -408,7 +427,11 @@ export function buildAtlasScene(
     solids.forEach((s) => {
       s.targetScale = 1;
       s.targetEdgeOpacity = 0.7;
-      s.targetFillOpacity = 0.85;
+      s.targetFillOpacity = 1.0;
+      s.currentFillOpacity = 1.0;
+      const mat = s.mesh.material as THREE.MeshPhongMaterial;
+      mat.opacity = 1.0;
+      mat.transparent = false;
       // Reset z position to base
       s.mesh.position.z = s.basePos.z;
       s.edges.position.z = s.basePos.z;
@@ -418,7 +441,7 @@ export function buildAtlasScene(
     connectors.forEach((c) => {
       c.targetOpacity = 0;
       c.currentOpacity = 0;
-      (c.line.material as THREE.LineBasicMaterial).opacity = 0;
+      (c.line.material as LineMaterial).opacity = 0;
     });
   }
 

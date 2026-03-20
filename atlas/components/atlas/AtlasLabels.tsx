@@ -63,7 +63,7 @@ export default function AtlasLabels({ hoveredDomain }: Props) {
       <div
         style={{
           position: "absolute",
-          bottom: "60px",
+          top: "20%",
           left: "50%",
           transform: "translateX(-50%)",
           opacity: hoveredDomain ? 1 : 0,
@@ -80,13 +80,15 @@ export default function AtlasLabels({ hoveredDomain }: Props) {
         {hoveredDomain ? DOMAIN_NAMES[hoveredDomain] : ""}
       </div>
 
-      {/* Bottom instruction */}
+      {/* Instruction — fades out when a domain is hovered */}
       <div
         style={{
           position: "absolute",
-          bottom: "32px",
+          top: "20%",
           left: "50%",
           transform: "translateX(-50%)",
+          opacity: hoveredDomain ? 0 : 1,
+          transition: "opacity 0.2s ease",
           fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
           fontSize: "11px",
           letterSpacing: "0.1em",
