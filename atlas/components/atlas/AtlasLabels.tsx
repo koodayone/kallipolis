@@ -12,15 +12,17 @@ const DOMAIN_NAMES: Record<DomainKey, string> = {
 // Angles in degrees: 0° = up, positive = clockwise
 const RAYS = [
   { angle: -90, long: true  },
-  { angle: -72, long: false },
-  { angle: -54, long: true  },
-  { angle: -36, long: false },
-  { angle: -18, long: true  },
-  { angle:   0, long: false },
-  { angle:  18, long: true  },
-  { angle:  36, long: false },
-  { angle:  54, long: true  },
-  { angle:  72, long: false },
+  { angle: -75, long: false },
+  { angle: -60, long: true  },
+  { angle: -45, long: false },
+  { angle: -30, long: true  },
+  { angle: -15, long: false },
+  { angle:   0, long: true  },
+  { angle:  15, long: false },
+  { angle:  30, long: true  },
+  { angle:  45, long: false },
+  { angle:  60, long: true  },
+  { angle:  75, long: false },
   { angle:  90, long: true  },
 ];
 
@@ -32,16 +34,22 @@ function RisingSun() {
 
   return (
     <svg
-      width="56"
-      height="44"
+      width="78"
+      height="62"
       viewBox="0 0 56 44"
       fill="none"
-      style={{ animation: "sun-glow 3s ease-in-out infinite", overflow: "visible" }}
+      style={{ animation: "sun-glow 3s ease-in-out infinite", overflow: "hidden" }}
     >
-      {/* Rays */}
+      <defs>
+        <clipPath id="sun-clip">
+          <rect x="0" y="0" width="56" height="36" />
+        </clipPath>
+      </defs>
+      {/* Rays + disc clipped to flat bottom */}
+      <g clipPath="url(#sun-clip)">
       {RAYS.map((r, i) => {
         const rad = toRad(r.angle - 90); // -90 to rotate so 0° points up
-        const len = r.long ? 11 : 7;
+        const len = r.long ? 9 : 6;
         const x1 = cx + Math.cos(rad) * (innerR + 3);
         const y1 = cy + Math.sin(rad) * (innerR + 3);
         const x2 = cx + Math.cos(rad) * (innerR + 3 + len);
@@ -61,6 +69,7 @@ function RisingSun() {
         d={`M ${cx - innerR} ${cy} A ${innerR} ${innerR} 0 0 1 ${cx + innerR} ${cy} Z`}
         fill="#c9a84c"
       />
+      </g>
     </svg>
   );
 }
@@ -111,7 +120,7 @@ export default function AtlasLabels({ hoveredDomain }: Props) {
       <div
         style={{
           position: "absolute",
-          top: "calc(20% - 72px)",
+          top: "calc(24% - 64px)",
           left: "50%",
           transform: "translateX(-50%)",
           opacity: hoveredDomain ? 1 : 0,
@@ -119,14 +128,14 @@ export default function AtlasLabels({ hoveredDomain }: Props) {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          gap: "14px",
+          gap: "2px",
         }}
       >
         <RisingSun />
         <span
           style={{
             fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-            fontSize: "13px",
+            fontSize: "18px",
             fontWeight: 600,
             letterSpacing: "0.14em",
             textTransform: "uppercase",
@@ -142,13 +151,13 @@ export default function AtlasLabels({ hoveredDomain }: Props) {
       <div
         style={{
           position: "absolute",
-          top: "20%",
+          top: "24%",
           left: "50%",
           transform: "translateX(-50%)",
           opacity: hoveredDomain ? 0 : 1,
           transition: "opacity 0.2s ease",
           fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-          fontSize: "11px",
+          fontSize: "15px",
           letterSpacing: "0.1em",
           color: "rgba(255,255,255,0.2)",
           textTransform: "uppercase",
