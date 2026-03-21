@@ -70,18 +70,15 @@ export default function DomainHeader({ domain, onBack, school }: Props) {
           alt={school.name}
           style={{ height: "28px", width: "auto", objectFit: "contain" }}
         />
-        <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path
-              d="M10 12L6 8l4-4"
-              stroke="#ffffff"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          Atlas
-        </div>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path
+            d="M10 12L6 8l4-4"
+            stroke="#ffffff"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
       </button>
 
       {/* Domain title */}
@@ -97,18 +94,6 @@ export default function DomainHeader({ domain, onBack, school }: Props) {
           }}
         >
           {title}
-        </span>
-        <span
-          style={{
-            fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-            fontSize: "11px",
-            fontWeight: 400,
-            letterSpacing: "0.06em",
-            color: "rgba(255,255,255,0.4)",
-            textTransform: "uppercase",
-          }}
-        >
-          {subtitle}
         </span>
       </div>
 

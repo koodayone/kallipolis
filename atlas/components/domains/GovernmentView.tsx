@@ -69,7 +69,7 @@ export default function GovernmentView({ school }: Props) {
       style={{
         maxWidth: "800px",
         margin: "0 auto",
-        padding: "56px 40px 80px",
+        padding: "36px 40px 80px",
         display: "flex",
         flexDirection: "column",
         gap: "32px",
@@ -80,38 +80,17 @@ export default function GovernmentView({ school }: Props) {
         style={{
           display: "flex",
           alignItems: "center",
+          justifyContent: "center",
           gap: "12px",
-          paddingBottom: "24px",
+          paddingBottom: "36px",
           borderBottom: "1px solid rgba(255,255,255,0.1)",
         }}
       >
-        <div
-          style={{
-            background: "rgba(255,255,255,0.06)",
-            border: "1px solid rgba(255,255,255,0.12)",
-            borderRadius: "6px",
-            padding: "6px 12px",
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <img
-            src={school.logoPath}
-            alt={school.name}
-            style={{ height: "36px", width: "auto", objectFit: "contain" }}
-          />
-        </div>
-        <span
-          style={{
-            fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-            fontSize: "13px",
-            fontWeight: 500,
-            color: "rgba(255,255,255,0.5)",
-            letterSpacing: "0.04em",
-          }}
-        >
-          {school.name}
-        </span>
+        <img
+          src={school.logoPathWide ?? school.logoPath}
+          alt={school.name}
+          style={{ height: "60px", width: "auto", objectFit: "contain" }}
+        />
       </div>
 
       {/* Page heading */}

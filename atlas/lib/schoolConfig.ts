@@ -1,6 +1,7 @@
 export type SchoolConfig = {
   name: string;
-  logoPath: string;
+  logoPath: string;      // compact logo for nav/header use
+  logoPathWide?: string; // horizontal/long logo for content areas
   brandColor: string;
   brandColorLight: string; // readable accent on dark backgrounds
   brandColorDim: string;   // subtle tint for badge backgrounds on light surfaces
@@ -78,13 +79,15 @@ export function deriveSchoolPalette(brandColor: string): Pick<SchoolConfig, "bra
 export function makeSchoolConfig(
   name: string,
   logoPath: string,
-  brandColorHex: string
+  brandColorHex: string,
+  logoPathWide?: string
 ): SchoolConfig {
-  return { name, logoPath, ...deriveSchoolPalette(brandColorHex) };
+  return { name, logoPath, logoPathWide, ...deriveSchoolPalette(brandColorHex) };
 }
 
 export const schoolConfig: SchoolConfig = makeSchoolConfig(
   "Foothill College",
   "/foothill-logo-2.png",
-  "#7B2D3E"
+  "#7B2D3E",
+  "/foothill-logo-long.png"
 );
