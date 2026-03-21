@@ -129,7 +129,7 @@ export function buildCollegeScene(
     // Students — Tetrahedron (left)
     makeSolid(
       new THREE.TetrahedronGeometry(1.0, 0),
-      new THREE.Vector3(-2.2, 0, 0),
+      new THREE.Vector3(-3.0, 0, 0),
       new THREE.Vector3(0.002, 0.0028, 0.0012),
       "students"
     ),
@@ -143,7 +143,7 @@ export function buildCollegeScene(
     // Programs — Dodecahedron (right)
     makeSolid(
       new THREE.DodecahedronGeometry(0.9, 0),
-      new THREE.Vector3(2.2, 0, 0),
+      new THREE.Vector3(3.0, 0, 0),
       new THREE.Vector3(0.0018, 0.0022, 0.0008),
       "programs"
     ),

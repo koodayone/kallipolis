@@ -25,9 +25,9 @@ const CANVAS_HEIGHT = 360;
 const CAMERA_Z = 5.5;
 const TAN_HALF_FOV = Math.tan((50 / 2) * (Math.PI / 180));
 const NODE_WORLD_X: Record<CollegeNodeKey, number> = {
-  students: -2.2,
+  students: -3.0,
   curricula: 0,
-  programs: 2.2,
+  programs: 3.0,
 };
 
 function projectWorldX(worldX: number, containerWidth: number): number {
