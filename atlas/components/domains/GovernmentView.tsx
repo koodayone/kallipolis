@@ -27,7 +27,6 @@ type Props = {
 export default function GovernmentView({ school }: Props) {
   const [govState, setGovState] = useState<GovState>("hub");
   const [activeReport, setActiveReport] = useState<GovReportKey | null>(null);
-  const [hoveredReport, setHoveredReport] = useState<GovReportKey | null>(null);
   const sceneRef = useRef<ReturnType<typeof buildGovernmentScene> | null>(null);
 
   const handleReportClick = useCallback((report: GovReportKey) => {
@@ -82,55 +81,38 @@ export default function GovernmentView({ school }: Props) {
             <div style={{ position: "relative", height: "360px", width: "100%" }}>
               <GovernmentCanvas
                 onReportClick={handleReportClick}
-                onHoverChange={setHoveredReport}
                 canvasOpacity={canvasOpacity}
                 sceneRef={sceneRef}
               />
 
-              {/* Hover label overlay */}
+              {/* Per-shape labels */}
               <div
                 style={{
                   position: "absolute",
                   inset: 0,
                   pointerEvents: "none",
                   display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "flex-end",
-                  paddingBottom: "32px",
+                  alignItems: "flex-end",
+                  justifyContent: "space-around",
+                  paddingBottom: "28px",
                 }}
               >
-                <span
-                  style={{
-                    fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-                    fontSize: "13px",
-                    fontWeight: 600,
-                    letterSpacing: "0.14em",
-                    textTransform: "uppercase",
-                    color: "#ffffff",
-                    opacity: hoveredReport ? 1 : 0,
-                    transition: "opacity 0.25s ease",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  {hoveredReport ? REPORT_NAMES[hoveredReport] : ""}
-                </span>
-                <span
-                  style={{
-                    fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-                    fontSize: "12px",
-                    letterSpacing: "0.1em",
-                    textTransform: "uppercase",
-                    color: "rgba(255,255,255,0.4)",
-                    opacity: hoveredReport ? 0 : 1,
-                    transition: "opacity 0.2s ease",
-                    position: "absolute",
-                    bottom: "32px",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  Select a report
-                </span>
+                {(["strong_workforce", "perkins_v"] as GovReportKey[]).map((key) => (
+                  <span
+                    key={key}
+                    style={{
+                      fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+                      fontSize: "11px",
+                      fontWeight: 600,
+                      letterSpacing: "0.13em",
+                      textTransform: "uppercase",
+                      color: "rgba(255,255,255,0.55)",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {REPORT_NAMES[key]}
+                  </span>
+                ))}
               </div>
             </div>
           </motion.div>
