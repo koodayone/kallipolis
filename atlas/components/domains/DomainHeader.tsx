@@ -3,29 +3,13 @@
 import { DomainKey } from "@/lib/atlasScene";
 import { SchoolConfig } from "@/lib/schoolConfig";
 
-const DOMAIN_LABELS: Record<DomainKey, { title: string; subtitle: string }> = {
-  government: {
-    title: "Government",
-    subtitle: "Workforce & Compliance Reporting",
-  },
-  college: {
-    title: "College",
-    subtitle: "Institutional Inventory",
-  },
-  industry: {
-    title: "Industry",
-    subtitle: "Partnership Intelligence",
-  },
-};
-
 type Props = {
   domain: DomainKey;
   onBack: () => void;
   school: SchoolConfig;
 };
 
-export default function DomainHeader({ domain, onBack, school }: Props) {
-  const { title, subtitle } = DOMAIN_LABELS[domain];
+export default function DomainHeader({ onBack, school }: Props) {
 
   return (
     <header
@@ -80,22 +64,6 @@ export default function DomainHeader({ domain, onBack, school }: Props) {
           />
         </svg>
       </button>
-
-      {/* Domain title */}
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "2px" }}>
-        <span
-          style={{
-            fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-            fontSize: "13px",
-            fontWeight: 600,
-            letterSpacing: "0.14em",
-            textTransform: "uppercase",
-            color: school.brandColorLight,
-          }}
-        >
-          {title}
-        </span>
-      </div>
 
       {/* Kallipolis wordmark */}
       <div
