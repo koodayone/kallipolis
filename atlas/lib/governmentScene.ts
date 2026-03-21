@@ -129,14 +129,14 @@ export function buildGovernmentScene(
   const solids: SolidEntry[] = [
     // Strong Workforce — Icosahedron (left)
     makeSolid(
-      new THREE.IcosahedronGeometry(0.85, 0),
+      new THREE.IcosahedronGeometry(1.05, 0),
       new THREE.Vector3(-1.8, 0, 0),
       new THREE.Vector3(0.0018, 0.0025, 0.001),
       "strong_workforce"
     ),
     // Perkins V — Octahedron (right)
     makeSolid(
-      new THREE.OctahedronGeometry(0.9, 0),
+      new THREE.OctahedronGeometry(1.1, 0),
       new THREE.Vector3(1.8, 0, 0),
       new THREE.Vector3(0.001, 0.003, 0.002),
       "perkins_v"
