@@ -33,7 +33,7 @@ export const CALIFORNIA_REGIONS: Region[] = [
     labelCenter: [-121.0, 39.2],
     zoomCenter: [-121.0, 39.2],
     scale: 8000,
-    counties: ["Butte", "Glenn", "Colusa", "Plumas", "Sierra", "Nevada", "Placer", "El Dorado", "Yolo", "Sacramento", "Alpine"],
+    counties: ["Butte", "Glenn", "Colusa", "Plumas", "Sierra", "Nevada", "Placer", "El Dorado", "Yolo", "Sacramento", "Alpine", "Sutter", "Yuba"],
     collegeCount: 14,
   },
   {
@@ -51,7 +51,7 @@ export const CALIFORNIA_REGIONS: Region[] = [
     labelCenter: [-119.4, 37.3],
     zoomCenter: [-119.4, 37.3],
     scale: 7000,
-    counties: ["San Joaquin", "Calaveras", "Tuolumne", "Amador", "Mono", "Stanislaus", "Merced", "Mariposa", "Fresno", "Madera", "Kings", "Tulare"],
+    counties: ["San Joaquin", "Calaveras", "Tuolumne", "Amador", "Mono", "Stanislaus", "Merced", "Mariposa", "Fresno", "Madera", "Kings", "Tulare", "Kern", "Inyo"],
     collegeCount: 18,
   },
   {
@@ -60,7 +60,7 @@ export const CALIFORNIA_REGIONS: Region[] = [
     labelCenter: [-120.8, 35.6],
     zoomCenter: [-120.8, 35.6],
     scale: 9000,
-    counties: ["Monterey", "San Benito", "San Luis Obispo", "Santa Barbara"],
+    counties: ["Monterey", "San Benito", "San Luis Obispo", "Santa Barbara", "Ventura"],
     collegeCount: 7,
   },
   {
