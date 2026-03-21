@@ -43,9 +43,8 @@ function countyFill(
     if (region.id === hoveredRegionId) return "rgba(201,168,76,0.14)";
     return "rgba(255,255,255,0.04)";
   }
-  // region view
-  if (region.id === activeRegionId) return "rgba(201,168,76,0.07)";
-  return "rgba(255,255,255,0.02)";
+  // region view — uniform fill across all counties
+  return "rgba(255,255,255,0.04)";
 }
 
 export default function CaliforniaMap({
