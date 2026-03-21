@@ -190,7 +190,7 @@ export default function StateView() {
                   transition={{ duration: 0.3 }}
                   style={{
                     position: "absolute",
-                    right: "18%",
+                    right: "20%",
                     top: "17%",
                     display: "flex",
                     flexDirection: "column",
