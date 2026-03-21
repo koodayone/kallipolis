@@ -58,6 +58,14 @@ export default function CollegeView({ school }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const segment = window.location.hash.replace("#", "").split("/")[1] as CollegeNodeKey;
+    if (["students", "curricula", "programs"].includes(segment)) {
+      setActiveNode(segment);
+      setCollegeState("report");
+    }
+  }, []);
+
+  useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
     const compute = () => {
@@ -78,6 +86,7 @@ export default function CollegeView({ school }: Props) {
   const handleNodeClick = useCallback((node: CollegeNodeKey) => {
     setActiveNode(node);
     setCollegeState("transitioning-in");
+    window.location.hash = `college/${node}`;
     setTimeout(() => setCollegeState("report"), 700);
   }, []);
 
@@ -87,6 +96,7 @@ export default function CollegeView({ school }: Props) {
       setCollegeState("hub");
       setActiveNode(null);
       setHoveredNode(null);
+      window.location.hash = "college";
       sceneRef.current?.resetScene();
     }, 450);
   }, []);

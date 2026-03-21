@@ -54,6 +54,15 @@ export default function GovernmentView({ school }: Props) {
   const sceneRef = useRef<ReturnType<typeof buildGovernmentScene> | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Restore report from URL hash on mount (e.g. /#government/strong_workforce)
+  useEffect(() => {
+    const segment = window.location.hash.replace("#", "").split("/")[1] as GovReportKey;
+    if (["strong_workforce", "perkins_v"].includes(segment)) {
+      setActiveReport(segment);
+      setGovState("report");
+    }
+  }, []);
+
   // Recompute label positions whenever the canvas container resizes.
   useEffect(() => {
     const el = containerRef.current;
@@ -75,6 +84,7 @@ export default function GovernmentView({ school }: Props) {
   const handleReportClick = useCallback((report: GovReportKey) => {
     setActiveReport(report);
     setGovState("transitioning-in");
+    window.location.hash = `government/${report}`;
     setTimeout(() => setGovState("report"), 700);
   }, []);
 
@@ -84,6 +94,7 @@ export default function GovernmentView({ school }: Props) {
       setGovState("hub");
       setActiveReport(null);
       setHoveredReport(null);
+      window.location.hash = "government";
       sceneRef.current?.resetScene();
     }, 450);
   }, []);

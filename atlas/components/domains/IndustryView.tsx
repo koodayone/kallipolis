@@ -53,6 +53,14 @@ export default function IndustryView({ school }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const segment = window.location.hash.replace("#", "").split("/")[1] as IndustryNodeKey;
+    if (["partnerships", "research"].includes(segment)) {
+      setActiveNode(segment);
+      setIndustryState("report");
+    }
+  }, []);
+
+  useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
     const compute = () => {
@@ -72,6 +80,7 @@ export default function IndustryView({ school }: Props) {
   const handleNodeClick = useCallback((node: IndustryNodeKey) => {
     setActiveNode(node);
     setIndustryState("transitioning-in");
+    window.location.hash = `industry/${node}`;
     setTimeout(() => setIndustryState("report"), 700);
   }, []);
 
@@ -81,6 +90,7 @@ export default function IndustryView({ school }: Props) {
       setIndustryState("hub");
       setActiveNode(null);
       setHoveredNode(null);
+      window.location.hash = "industry";
       sceneRef.current?.resetScene();
     }, 450);
   }, []);

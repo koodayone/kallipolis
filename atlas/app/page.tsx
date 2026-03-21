@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { AnimatePresence, motion } from "framer-motion";
 import { buildAtlasScene, DomainKey } from "@/lib/atlasScene";
@@ -20,10 +20,19 @@ export default function AtlasPage() {
   const [hoveredDomain, setHoveredDomain] = useState<DomainKey | null>(null);
   const sceneRef = useRef<ReturnType<typeof buildAtlasScene> | null>(null);
 
+  // Restore domain from URL hash on mount (e.g. /#government after a refresh)
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "").split("/")[0] as DomainKey;
+    if (["government", "college", "industry"].includes(hash)) {
+      setActiveDomain(hash);
+      setAppState("domain");
+    }
+  }, []);
+
   const handleDomainClick = useCallback((domain: DomainKey) => {
     setActiveDomain(domain);
     setAppState("transitioning-in");
-    // Give the Three.js dissolve animation time, then show domain view
+    window.location.hash = domain;
     setTimeout(() => setAppState("domain"), 850);
   }, []);
 
@@ -32,6 +41,7 @@ export default function AtlasPage() {
     setTimeout(() => {
       setAppState("home");
       setActiveDomain(null);
+      history.pushState(null, "", window.location.pathname);
       sceneRef.current?.resetScene();
     }, 550);
   }, []);
