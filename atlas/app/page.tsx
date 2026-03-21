@@ -4,6 +4,7 @@ import { useState, useRef, useCallback } from "react";
 import dynamic from "next/dynamic";
 import { AnimatePresence, motion } from "framer-motion";
 import { buildAtlasScene, DomainKey } from "@/lib/atlasScene";
+import { schoolConfig } from "@/lib/schoolConfig";
 import AtlasLabels from "@/components/atlas/AtlasLabels";
 import DomainView from "@/components/domains/DomainView";
 
@@ -63,6 +64,7 @@ export default function AtlasPage() {
           onDomainClick={handleDomainClick}
           onHoverChange={setHoveredDomain}
           canvasOpacity={canvasOpacity}
+          brandColor={parseInt(schoolConfig.brandColor.replace("#", ""), 16)}
           sceneRef={sceneRef}
         />
       </div>

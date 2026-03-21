@@ -7,6 +7,7 @@ type Props = {
   onDomainClick: (domain: DomainKey) => void;
   onHoverChange?: (domain: DomainKey | null) => void;
   canvasOpacity: number;
+  brandColor: number;
   sceneRef: React.MutableRefObject<ReturnType<typeof buildAtlasScene> | null>;
 };
 
@@ -14,6 +15,7 @@ export default function AtlasCanvas({
   onDomainClick,
   onHoverChange,
   canvasOpacity,
+  brandColor,
   sceneRef,
 }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -26,6 +28,7 @@ export default function AtlasCanvas({
     const callbacks: SceneCallbacks = {
       onDomainClick: stableOnClick,
       onHoverChange: stableOnHover,
+      solidColor: brandColor,
     };
     sceneRef.current = buildAtlasScene(canvasRef.current, callbacks);
     return () => {

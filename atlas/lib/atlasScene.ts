@@ -8,6 +8,7 @@ export type DomainKey = "government" | "college" | "industry";
 export type SceneCallbacks = {
   onDomainClick: (domain: DomainKey) => void;
   onHoverChange: (domain: DomainKey | null) => void;
+  solidColor: number;
 };
 
 type SolidEntry = {
@@ -40,12 +41,6 @@ type ConnectorEntry = {
 const GOLD = 0xc9a84c;
 const BG_COLOR = 0x041e54;
 const LERP_SPEED = 0.08;
-
-const DOMAIN_COLOR: Record<string, number> = {
-  government: 0xb0c8de, // steel blue-grey
-  college:    0x5aaa72, // green
-  industry:   0xf04f20, // red-orange
-};
 
 export function buildAtlasScene(
   canvas: HTMLCanvasElement,
@@ -96,6 +91,8 @@ export function buildAtlasScene(
   fillLight.position.set(0, 5, 8);
   scene.add(fillLight);
 
+  const solidColor = callbacks.solidColor;
+
   // ── Helpers ───────────────────────────────────────────────────────────────
   function makeSolid(
     geometry: THREE.BufferGeometry,
@@ -103,11 +100,10 @@ export function buildAtlasScene(
     rotSpeed: THREE.Vector3,
     domain: DomainKey
   ): SolidEntry {
-    // Domain-colored opaque fill mesh
     const fillMat = new THREE.MeshPhongMaterial({
-      color: DOMAIN_COLOR[domain],
-      emissive: DOMAIN_COLOR[domain],
-      emissiveIntensity: 0.15,
+      color: solidColor,
+      emissive: solidColor,
+      emissiveIntensity: 0.45,
       transparent: false,
       side: THREE.FrontSide,
       depthWrite: true,
@@ -116,10 +112,9 @@ export function buildAtlasScene(
     mesh.position.copy(position);
     scene.add(mesh);
 
-    // Domain-colored edge wireframe
     const edgesGeo = new THREE.EdgesGeometry(geometry, 12);
     const edgeMat = new THREE.LineBasicMaterial({
-      color: DOMAIN_COLOR[domain],
+      color: 0xffffff,
       transparent: true,
       opacity: 0.7,
     });
@@ -127,8 +122,7 @@ export function buildAtlasScene(
     edges.position.copy(position);
     scene.add(edges);
 
-    // Per-solid hover point light (domain color)
-    const hoverLight = new THREE.PointLight(DOMAIN_COLOR[domain], 0, 4);
+    const hoverLight = new THREE.PointLight(solidColor, 0, 4);
     hoverLight.position.copy(position);
     scene.add(hoverLight);
 

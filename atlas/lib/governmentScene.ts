@@ -97,7 +97,7 @@ export function buildGovernmentScene(
 
     const edgesGeo = new THREE.EdgesGeometry(geometry, 12);
     const edgeMat = new THREE.LineBasicMaterial({
-      color,
+      color: 0xffffff,
       transparent: true,
       opacity: 0.7,
     });
