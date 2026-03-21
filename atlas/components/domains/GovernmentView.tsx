@@ -142,7 +142,7 @@ export default function GovernmentView({ school }: Props) {
       </div>
 
       {REPORTS.map((report) => (
-        <Card key={report.id} style={{ padding: "32px", background: "#1d1618", border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0 2px 12px rgba(0,0,0,0.4)" }}>
+        <Card key={report.id} style={{ padding: "32px", background: school.brandColorDark, border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0 2px 12px rgba(0,0,0,0.4)" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "16px" }}>
             <h2
               style={{

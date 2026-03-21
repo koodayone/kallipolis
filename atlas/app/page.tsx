@@ -96,7 +96,7 @@ export default function AtlasPage() {
               position: "fixed",
               inset: 0,
               zIndex: 10,
-              background: "#0f0c0e",
+              background: "#06101e",
               overflowY: "auto",
             }}
           >
