@@ -41,17 +41,17 @@ export default function PerkinsView({ school, onBack }: Props) {
           border: "none",
           cursor: "pointer",
           padding: 0,
-          color: "rgba(255,255,255,0.4)",
+          color: school.brandColorLight,
           fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
           fontSize: "12px",
           fontWeight: 500,
           letterSpacing: "0.08em",
           textTransform: "uppercase",
-          transition: "color 0.15s",
+          transition: "opacity 0.15s",
           alignSelf: "flex-start",
         }}
-        onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.85)")}
-        onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.4)")}
+        onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = "0.7")}
+        onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = "1")}
       >
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
           <path d="M10 12L6 8l4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
