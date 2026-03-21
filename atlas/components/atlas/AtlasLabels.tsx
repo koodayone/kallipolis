@@ -115,6 +115,7 @@ export default function AtlasLabels({ hoveredDomain }: Props) {
           Select a domain
         </span>
       </div>
+
     </div>
   );
 }
