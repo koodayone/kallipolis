@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { AnimatePresence, motion } from "framer-motion";
 import { SchoolConfig } from "@/lib/schoolConfig";
@@ -18,6 +18,22 @@ const REPORT_NAMES: Record<GovReportKey, string> = {
   perkins_v: "Perkins V",
 };
 
+// Mirror the scene's camera constants to project world-x → screen %.
+// Camera: PerspectiveCamera(fov=50, ...) at z=5.5, shapes at z=0.
+const CANVAS_HEIGHT = 360;
+const CAMERA_Z = 5.5;
+const TAN_HALF_FOV = Math.tan((50 / 2) * (Math.PI / 180));
+const SOLID_WORLD_X: Record<GovReportKey, number> = {
+  strong_workforce: -1.8,
+  perkins_v: 1.8,
+};
+
+function projectWorldX(worldX: number, containerWidth: number): number {
+  const aspect = containerWidth / CANVAS_HEIGHT;
+  const ndcX = worldX / (CAMERA_Z * TAN_HALF_FOV * aspect);
+  return ((ndcX + 1) / 2) * 100;
+}
+
 type GovState = "hub" | "transitioning-in" | "report" | "transitioning-out";
 
 type Props = {
@@ -27,7 +43,30 @@ type Props = {
 export default function GovernmentView({ school }: Props) {
   const [govState, setGovState] = useState<GovState>("hub");
   const [activeReport, setActiveReport] = useState<GovReportKey | null>(null);
+  const [labelPositions, setLabelPositions] = useState<Record<GovReportKey, number>>({
+    strong_workforce: 27,
+    perkins_v: 73,
+  });
   const sceneRef = useRef<ReturnType<typeof buildGovernmentScene> | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Recompute label positions whenever the canvas container resizes.
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const compute = () => {
+      const w = el.clientWidth;
+      if (w === 0) return;
+      setLabelPositions({
+        strong_workforce: projectWorldX(SOLID_WORLD_X.strong_workforce, w),
+        perkins_v: projectWorldX(SOLID_WORLD_X.perkins_v, w),
+      });
+    };
+    compute();
+    const ro = new ResizeObserver(compute);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   const handleReportClick = useCallback((report: GovReportKey) => {
     setActiveReport(report);
@@ -78,42 +117,35 @@ export default function GovernmentView({ school }: Props) {
             </div>
 
             {/* Mini 3D scene */}
-            <div style={{ position: "relative", height: "360px", width: "100%" }}>
+            <div ref={containerRef} style={{ position: "relative", height: "360px", width: "100%" }}>
               <GovernmentCanvas
                 onReportClick={handleReportClick}
                 canvasOpacity={canvasOpacity}
                 sceneRef={sceneRef}
               />
 
-              {/* Per-shape labels */}
-              <div
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  pointerEvents: "none",
-                  display: "flex",
-                  alignItems: "flex-end",
-                  justifyContent: "space-around",
-                  paddingBottom: "28px",
-                }}
-              >
-                {(["strong_workforce", "perkins_v"] as GovReportKey[]).map((key) => (
-                  <span
-                    key={key}
-                    style={{
-                      fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-                      fontSize: "11px",
-                      fontWeight: 600,
-                      letterSpacing: "0.13em",
-                      textTransform: "uppercase",
-                      color: "rgba(255,255,255,0.55)",
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    {REPORT_NAMES[key]}
-                  </span>
-                ))}
-              </div>
+              {/* Per-shape labels — projected to match 3D solid positions */}
+              {(["strong_workforce", "perkins_v"] as GovReportKey[]).map((key) => (
+                <span
+                  key={key}
+                  style={{
+                    position: "absolute",
+                    bottom: "28px",
+                    left: `${labelPositions[key]}%`,
+                    transform: "translateX(-50%)",
+                    pointerEvents: "none",
+                    fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+                    fontSize: "11px",
+                    fontWeight: 600,
+                    letterSpacing: "0.13em",
+                    textTransform: "uppercase",
+                    color: "rgba(255,255,255,0.55)",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {REPORT_NAMES[key]}
+                </span>
+              ))}
             </div>
           </motion.div>
         )}
