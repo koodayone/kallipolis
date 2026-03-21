@@ -5,6 +5,7 @@ import { buildCollegeScene, CollegeNodeKey, CollegeSceneCallbacks } from "@/lib/
 
 type Props = {
   onNodeClick: (node: CollegeNodeKey) => void;
+  onHoverChange?: (node: CollegeNodeKey | null) => void;
   brandColor: number;
   canvasOpacity: number;
   sceneRef: React.MutableRefObject<ReturnType<typeof buildCollegeScene> | null>;
@@ -12,6 +13,7 @@ type Props = {
 
 export default function CollegeCanvas({
   onNodeClick,
+  onHoverChange,
   brandColor,
   canvasOpacity,
   sceneRef,
@@ -19,12 +21,13 @@ export default function CollegeCanvas({
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const stableOnClick = useCallback(onNodeClick, []);
+  const stableOnHover = useCallback(onHoverChange ?? (() => {}), []);
 
   useEffect(() => {
     if (!canvasRef.current) return;
     const callbacks: CollegeSceneCallbacks = {
       onNodeClick: stableOnClick,
-      onHoverChange: () => {},
+      onHoverChange: stableOnHover,
       solidColor: brandColor,
     };
     sceneRef.current = buildCollegeScene(canvasRef.current, callbacks);

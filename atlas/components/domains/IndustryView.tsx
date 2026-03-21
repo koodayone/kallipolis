@@ -7,6 +7,7 @@ import { SchoolConfig } from "@/lib/schoolConfig";
 import { buildIndustryScene, IndustryNodeKey } from "@/lib/industryScene";
 import PartnershipsView from "@/components/industry/PartnershipsView";
 import ResearchView from "@/components/industry/ResearchView";
+import RisingSun from "@/components/ui/RisingSun";
 
 const IndustryCanvas = dynamic(
   () => import("@/components/industry/IndustryCanvas"),
@@ -41,6 +42,9 @@ type Props = {
 export default function IndustryView({ school }: Props) {
   const [industryState, setIndustryState] = useState<IndustryState>("hub");
   const [activeNode, setActiveNode] = useState<IndustryNodeKey | null>(null);
+  const [hoveredNode, setHoveredNode] = useState<IndustryNodeKey | null>(null);
+  const lastHoveredNode = useRef<IndustryNodeKey | null>(null);
+  if (hoveredNode !== null) lastHoveredNode.current = hoveredNode;
   const [labelPositions, setLabelPositions] = useState<Record<IndustryNodeKey, number>>({
     partnerships: 30,
     research: 70,
@@ -76,6 +80,7 @@ export default function IndustryView({ school }: Props) {
     setTimeout(() => {
       setIndustryState("hub");
       setActiveNode(null);
+      setHoveredNode(null);
       sceneRef.current?.resetScene();
     }, 450);
   }, []);
@@ -117,10 +122,21 @@ export default function IndustryView({ school }: Props) {
             <div ref={containerRef} style={{ position: "relative", height: "360px", width: "100%" }}>
               <IndustryCanvas
                 onNodeClick={handleNodeClick}
+                onHoverChange={setHoveredNode}
                 brandColor={parseInt(school.brandColor.replace("#", ""), 16)}
                 canvasOpacity={canvasOpacity}
                 sceneRef={sceneRef}
               />
+
+              <RisingSun style={{
+                position: "absolute",
+                top: "13%",
+                left: lastHoveredNode.current ? `${labelPositions[lastHoveredNode.current]}%` : "50%",
+                transform: "translate(-50%, -50%)",
+                opacity: hoveredNode !== null && industryState === "hub" ? 1 : 0,
+                transition: "opacity 0.5s ease-in-out",
+                pointerEvents: "none",
+              }} />
 
               {/* Per-shape labels */}
               {(["partnerships", "research"] as IndustryNodeKey[]).map((key) => (

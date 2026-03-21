@@ -8,6 +8,7 @@ import { buildCollegeScene, CollegeNodeKey } from "@/lib/collegeScene";
 import StudentsView from "@/components/college/StudentsView";
 import CurriculaView from "@/components/college/CurriculaView";
 import ProgramsView from "@/components/college/ProgramsView";
+import RisingSun from "@/components/ui/RisingSun";
 
 const CollegeCanvas = dynamic(
   () => import("@/components/college/CollegeCanvas"),
@@ -45,6 +46,9 @@ type Props = {
 export default function CollegeView({ school }: Props) {
   const [collegeState, setCollegeState] = useState<CollegeState>("hub");
   const [activeNode, setActiveNode] = useState<CollegeNodeKey | null>(null);
+  const [hoveredNode, setHoveredNode] = useState<CollegeNodeKey | null>(null);
+  const lastHoveredNode = useRef<CollegeNodeKey | null>(null);
+  if (hoveredNode !== null) lastHoveredNode.current = hoveredNode;
   const [labelPositions, setLabelPositions] = useState<Record<CollegeNodeKey, number>>({
     students: 20,
     curricula: 50,
@@ -82,6 +86,7 @@ export default function CollegeView({ school }: Props) {
     setTimeout(() => {
       setCollegeState("hub");
       setActiveNode(null);
+      setHoveredNode(null);
       sceneRef.current?.resetScene();
     }, 450);
   }, []);
@@ -123,10 +128,21 @@ export default function CollegeView({ school }: Props) {
             <div ref={containerRef} style={{ position: "relative", height: "360px", width: "100%" }}>
               <CollegeCanvas
                 onNodeClick={handleNodeClick}
+                onHoverChange={setHoveredNode}
                 brandColor={parseInt(school.brandColor.replace("#", ""), 16)}
                 canvasOpacity={canvasOpacity}
                 sceneRef={sceneRef}
               />
+
+              <RisingSun style={{
+                position: "absolute",
+                top: "13%",
+                left: lastHoveredNode.current ? `${labelPositions[lastHoveredNode.current]}%` : "50%",
+                transform: "translate(-50%, -50%)",
+                opacity: hoveredNode !== null && collegeState === "hub" ? 1 : 0,
+                transition: "opacity 0.5s ease-in-out",
+                pointerEvents: "none",
+              }} />
 
               {/* Per-shape labels — projected to match 3D solid positions */}
               {(["students", "curricula", "programs"] as CollegeNodeKey[]).map((key) => (

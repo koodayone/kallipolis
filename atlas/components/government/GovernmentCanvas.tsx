@@ -5,6 +5,7 @@ import { buildGovernmentScene, GovReportKey, GovSceneCallbacks } from "@/lib/gov
 
 type Props = {
   onReportClick: (report: GovReportKey) => void;
+  onHoverChange?: (node: GovReportKey | null) => void;
   brandColor: number;
   canvasOpacity: number;
   sceneRef: React.MutableRefObject<ReturnType<typeof buildGovernmentScene> | null>;
@@ -12,6 +13,7 @@ type Props = {
 
 export default function GovernmentCanvas({
   onReportClick,
+  onHoverChange,
   brandColor,
   canvasOpacity,
   sceneRef,
@@ -19,12 +21,13 @@ export default function GovernmentCanvas({
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const stableOnClick = useCallback(onReportClick, []);
+  const stableOnHover = useCallback(onHoverChange ?? (() => {}), []);
 
   useEffect(() => {
     if (!canvasRef.current) return;
     const callbacks: GovSceneCallbacks = {
       onReportClick: stableOnClick,
-      onHoverChange: () => {},
+      onHoverChange: stableOnHover,
       solidColor: brandColor,
     };
     sceneRef.current = buildGovernmentScene(canvasRef.current, callbacks);

@@ -7,6 +7,7 @@ import { SchoolConfig } from "@/lib/schoolConfig";
 import { buildGovernmentScene, GovReportKey } from "@/lib/governmentScene";
 import StrongWorkforceView from "@/components/government/StrongWorkforceView";
 import PerkinsView from "@/components/government/PerkinsView";
+import RisingSun from "@/components/ui/RisingSun";
 
 const GovernmentCanvas = dynamic(
   () => import("@/components/government/GovernmentCanvas"),
@@ -43,6 +44,9 @@ type Props = {
 export default function GovernmentView({ school }: Props) {
   const [govState, setGovState] = useState<GovState>("hub");
   const [activeReport, setActiveReport] = useState<GovReportKey | null>(null);
+  const [hoveredReport, setHoveredReport] = useState<GovReportKey | null>(null);
+  const lastHoveredReport = useRef<GovReportKey | null>(null);
+  if (hoveredReport !== null) lastHoveredReport.current = hoveredReport;
   const [labelPositions, setLabelPositions] = useState<Record<GovReportKey, number>>({
     strong_workforce: 27,
     perkins_v: 73,
@@ -79,6 +83,7 @@ export default function GovernmentView({ school }: Props) {
     setTimeout(() => {
       setGovState("hub");
       setActiveReport(null);
+      setHoveredReport(null);
       sceneRef.current?.resetScene();
     }, 450);
   }, []);
@@ -120,10 +125,21 @@ export default function GovernmentView({ school }: Props) {
             <div ref={containerRef} style={{ position: "relative", height: "360px", width: "100%" }}>
               <GovernmentCanvas
                 onReportClick={handleReportClick}
+                onHoverChange={setHoveredReport}
                 brandColor={parseInt(school.brandColor.replace("#", ""), 16)}
                 canvasOpacity={canvasOpacity}
                 sceneRef={sceneRef}
               />
+
+              <RisingSun style={{
+                position: "absolute",
+                top: "13%",
+                left: lastHoveredReport.current ? `${labelPositions[lastHoveredReport.current]}%` : "50%",
+                transform: "translate(-50%, -50%)",
+                opacity: hoveredReport !== null && govState === "hub" ? 1 : 0,
+                transition: "opacity 0.5s ease-in-out",
+                pointerEvents: "none",
+              }} />
 
               {/* Per-shape labels — projected to match 3D solid positions */}
               {(["strong_workforce", "perkins_v"] as GovReportKey[]).map((key) => (

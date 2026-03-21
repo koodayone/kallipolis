@@ -5,6 +5,7 @@ import { buildIndustryScene, IndustryNodeKey, IndustrySceneCallbacks } from "@/l
 
 type Props = {
   onNodeClick: (node: IndustryNodeKey) => void;
+  onHoverChange?: (node: IndustryNodeKey | null) => void;
   brandColor: number;
   canvasOpacity: number;
   sceneRef: React.MutableRefObject<ReturnType<typeof buildIndustryScene> | null>;
@@ -12,6 +13,7 @@ type Props = {
 
 export default function IndustryCanvas({
   onNodeClick,
+  onHoverChange,
   brandColor,
   canvasOpacity,
   sceneRef,
@@ -19,12 +21,13 @@ export default function IndustryCanvas({
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const stableOnClick = useCallback(onNodeClick, []);
+  const stableOnHover = useCallback(onHoverChange ?? (() => {}), []);
 
   useEffect(() => {
     if (!canvasRef.current) return;
     const callbacks: IndustrySceneCallbacks = {
       onNodeClick: stableOnClick,
-      onHoverChange: () => {},
+      onHoverChange: stableOnHover,
       solidColor: brandColor,
     };
     sceneRef.current = buildIndustryScene(canvasRef.current, callbacks);
