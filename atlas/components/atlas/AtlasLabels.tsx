@@ -1,6 +1,7 @@
 "use client";
 
 import { DomainKey } from "@/lib/atlasScene";
+import { SchoolConfig } from "@/lib/schoolConfig";
 import RisingSun from "@/components/ui/RisingSun";
 
 const DOMAIN_NAMES: Record<DomainKey, string> = {
@@ -11,9 +12,10 @@ const DOMAIN_NAMES: Record<DomainKey, string> = {
 
 type Props = {
   hoveredDomain: DomainKey | null;
+  school: SchoolConfig;
 };
 
-export default function AtlasLabels({ hoveredDomain }: Props) {
+export default function AtlasLabels({ hoveredDomain, school }: Props) {
   return (
     <div
       style={{
@@ -98,8 +100,8 @@ export default function AtlasLabels({ hoveredDomain }: Props) {
         }}
       >
         <img
-          src="/foothill-logo-2.png"
-          alt="Foothill College"
+          src={school.logoPath}
+          alt={school.name}
           style={{ height: "72px", width: "auto", objectFit: "contain" }}
         />
         <span

@@ -1,11 +1,12 @@
 "use client";
 
 import { useState, useRef, useCallback, useEffect } from "react";
+import { useParams, useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { buildAtlasScene, DomainKey } from "@/lib/atlasScene";
-import { schoolConfig } from "@/lib/schoolConfig";
+import { getCollegeAtlasConfig } from "@/lib/collegeAtlasConfigs";
 import AtlasLabels from "@/components/atlas/AtlasLabels";
 import DomainView from "@/components/domains/DomainView";
 
@@ -15,13 +16,22 @@ const AtlasCanvas = dynamic(() => import("@/components/atlas/AtlasCanvas"), {
 
 type AppState = "home" | "transitioning-in" | "domain" | "transitioning-out";
 
-export default function AtlasPage() {
+export default function CollegeAtlasPage() {
+  const { collegeId } = useParams<{ collegeId: string }>();
+  const router = useRouter();
+  const config = getCollegeAtlasConfig(collegeId);
+
   const [appState, setAppState] = useState<AppState>("home");
   const [activeDomain, setActiveDomain] = useState<DomainKey | null>(null);
   const [hoveredDomain, setHoveredDomain] = useState<DomainKey | null>(null);
   const sceneRef = useRef<ReturnType<typeof buildAtlasScene> | null>(null);
 
-  // Restore domain from URL hash on mount (e.g. /#government after a refresh)
+  // Redirect if college not found
+  useEffect(() => {
+    if (!config) router.replace("/");
+  }, [config, router]);
+
+  // Restore domain from URL hash on mount
   useEffect(() => {
     const hash = window.location.hash.replace("#", "").split("/")[0] as DomainKey;
     if (["government", "college", "industry"].includes(hash)) {
@@ -47,6 +57,8 @@ export default function AtlasPage() {
     }, 550);
   }, []);
 
+  if (!config) return null;
+
   const canvasOpacity =
     appState === "home" ? 1 : appState === "transitioning-out" ? 1 : 0;
 
@@ -63,24 +75,18 @@ export default function AtlasPage() {
         overflow: "hidden",
       }}
     >
-      {/* Persistent Three.js canvas — never unmounted */}
-      <div
-        style={{
-          position: "fixed",
-          inset: 0,
-          zIndex: 0,
-        }}
-      >
+      {/* Persistent Three.js canvas */}
+      <div style={{ position: "fixed", inset: 0, zIndex: 0 }}>
         <AtlasCanvas
           onDomainClick={handleDomainClick}
           onHoverChange={setHoveredDomain}
           canvasOpacity={canvasOpacity}
-          brandColor={parseInt(schoolConfig.brandColor.replace("#", ""), 16)}
+          brandColor={parseInt(config.brandColor.replace("#", ""), 16)}
           sceneRef={sceneRef}
         />
       </div>
 
-      {/* State View nav link — top-right, visible on home screen only */}
+      {/* State View nav link */}
       <AnimatePresence>
         {showLabels && (
           <motion.div
@@ -124,7 +130,7 @@ export default function AtlasPage() {
         )}
       </AnimatePresence>
 
-      {/* Atlas domain labels — fade out during transition */}
+      {/* Atlas domain labels */}
       <AnimatePresence>
         {showLabels && (
           <motion.div
@@ -135,7 +141,7 @@ export default function AtlasPage() {
             transition={{ duration: 0.35 }}
             style={{ position: "fixed", inset: 0, zIndex: 5, pointerEvents: "none" }}
           >
-            <AtlasLabels hoveredDomain={hoveredDomain} school={schoolConfig} />
+            <AtlasLabels hoveredDomain={hoveredDomain} school={config} />
           </motion.div>
         )}
       </AnimatePresence>
@@ -157,7 +163,7 @@ export default function AtlasPage() {
               overflowY: "auto",
             }}
           >
-            <DomainView domain={activeDomain} onBack={handleBack} school={schoolConfig} />
+            <DomainView domain={activeDomain} onBack={handleBack} school={config} />
           </motion.div>
         )}
       </AnimatePresence>

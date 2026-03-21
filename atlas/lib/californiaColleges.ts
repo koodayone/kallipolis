@@ -5,6 +5,8 @@ export type College = {
   regionId: string;
   lat: number;
   lng: number;
+  logoStacked?: string;   // e.g. "/foothill-logo.png"
+  logoLongform?: string;  // e.g. "/foothill-logo-long.png"
 };
 
 export type Region = {
@@ -130,23 +132,23 @@ export const CALIFORNIA_COLLEGES: College[] = [
   { id: "yuba",           name: "Yuba College",                    district: "Yuba CCD",                      regionId: "greater-sacramento", lat: 39.14, lng: -121.62 },
 
   // Bay Area
-  { id: "ccsf",           name: "City College of San Francisco",   district: "San Francisco CCD",             regionId: "bay-area",           lat: 37.72, lng: -122.45 },
-  { id: "foothill",       name: "Foothill College",                district: "Foothill-De Anza CCD",          regionId: "bay-area",           lat: 37.36, lng: -122.05 },
-  { id: "deanza",         name: "De Anza College",                 district: "Foothill-De Anza CCD",          regionId: "bay-area",           lat: 37.31, lng: -122.04 },
-  { id: "skyline",        name: "Skyline College",                 district: "San Mateo CCD",                 regionId: "bay-area",           lat: 37.62, lng: -122.46 },
-  { id: "canada",         name: "Cañada College",                  district: "San Mateo CCD",                 regionId: "bay-area",           lat: 37.49, lng: -122.23 },
-  { id: "cmc",            name: "College of San Mateo",            district: "San Mateo CCD",                 regionId: "bay-area",           lat: 37.54, lng: -122.32 },
-  { id: "laney",          name: "Laney College",                   district: "Peralta CCD",                   regionId: "bay-area",           lat: 37.80, lng: -122.27 },
-  { id: "merritt",        name: "Merritt College",                 district: "Peralta CCD",                   regionId: "bay-area",           lat: 37.83, lng: -122.22 },
-  { id: "berkeleycc",     name: "Berkeley City College",           district: "Peralta CCD",                   regionId: "bay-area",           lat: 37.87, lng: -122.27 },
-  { id: "alameda",        name: "College of Alameda",              district: "Peralta CCD",                   regionId: "bay-area",           lat: 37.77, lng: -122.23 },
-  { id: "diablo",         name: "Diablo Valley College",           district: "Contra Costa CCD",              regionId: "bay-area",           lat: 37.96, lng: -122.07 },
-  { id: "contracosta",    name: "Contra Costa College",            district: "Contra Costa CCD",              regionId: "bay-area",           lat: 37.97, lng: -122.34 },
-  { id: "losmedanos",     name: "Los Medanos College",             district: "Contra Costa CCD",              regionId: "bay-area",           lat: 37.97, lng: -121.78 },
-  { id: "cabrillo",       name: "Cabrillo College",                district: "Cabrillo CCD",                  regionId: "bay-area",           lat: 36.98, lng: -121.96 },
-  { id: "gavilan",        name: "Gavilan College",                 district: "Gavilan JCCD",                  regionId: "bay-area",           lat: 36.97, lng: -121.54 },
-  { id: "evergreen",      name: "Evergreen Valley College",        district: "San Jose-Evergreen CCD",        regionId: "bay-area",           lat: 37.34, lng: -121.80 },
-  { id: "sanjosecity",    name: "San Jose City College",           district: "San Jose-Evergreen CCD",        regionId: "bay-area",           lat: 37.31, lng: -121.90 },
+  { id: "ccsf",        name: "City College of San Francisco", district: "San Francisco CCD",          regionId: "bay-area", lat: 37.72, lng: -122.45, logoStacked: "/ccsf-logo.png",        logoLongform: "/ccsf-logo-long.png" },
+  { id: "foothill",    name: "Foothill College",              district: "Foothill-De Anza CCD",       regionId: "bay-area", lat: 37.36, lng: -122.05, logoStacked: "/foothill-logo.png",     logoLongform: "/foothill-logo-long.png" },
+  { id: "deanza",      name: "De Anza College",               district: "Foothill-De Anza CCD",       regionId: "bay-area", lat: 37.31, lng: -122.04, logoStacked: "/deanza-logo.svg",       logoLongform: "/deanza-logo.svg" },
+  { id: "skyline",     name: "Skyline College",               district: "San Mateo CCD",              regionId: "bay-area", lat: 37.62, lng: -122.46, logoStacked: "/skyline-logo.png",      logoLongform: "/skyline-logo-long.png" },
+  { id: "canada",      name: "Cañada College",                district: "San Mateo CCD",              regionId: "bay-area", lat: 37.49, lng: -122.23, logoStacked: "/canada-logo.png",       logoLongform: "/canada-logo.png" },
+  { id: "cmc",         name: "College of San Mateo",          district: "San Mateo CCD",              regionId: "bay-area", lat: 37.54, lng: -122.32, logoStacked: "/cmc-logo.jpg",          logoLongform: "/cmc-logo-long.jpg" },
+  { id: "laney",       name: "Laney College",                 district: "Peralta CCD",                regionId: "bay-area", lat: 37.80, lng: -122.27, logoStacked: "/laney-logo.svg",        logoLongform: "/laney-logo-long.svg" },
+  { id: "merritt",     name: "Merritt College",               district: "Peralta CCD",                regionId: "bay-area", lat: 37.83, lng: -122.22, logoStacked: "/merritt-logo.png",      logoLongform: "/merritt-logo.png" },
+  { id: "berkeleycc",  name: "Berkeley City College",         district: "Peralta CCD",                regionId: "bay-area", lat: 37.87, lng: -122.27, logoStacked: "/berkeleycc-logo.png",   logoLongform: "/berkeleycc-logo.png" },
+  { id: "alameda",     name: "College of Alameda",            district: "Peralta CCD",                regionId: "bay-area", lat: 37.77, lng: -122.23, logoStacked: "/alameda-logo.png",      logoLongform: "/alameda-logo.png" },
+  { id: "diablo",      name: "Diablo Valley College",         district: "Contra Costa CCD",           regionId: "bay-area", lat: 37.96, lng: -122.07, logoStacked: "/diablo-logo.svg",       logoLongform: "/diablo-logo.svg" },
+  { id: "contracosta", name: "Contra Costa College",          district: "Contra Costa CCD",           regionId: "bay-area", lat: 37.97, lng: -122.34, logoStacked: "/contracosta-logo.png",  logoLongform: "/contracosta-logo.png" },
+  { id: "losmedanos",  name: "Los Medanos College",           district: "Contra Costa CCD",           regionId: "bay-area", lat: 37.97, lng: -121.78, logoStacked: "/losmedanos-logo.svg",   logoLongform: "/losmedanos-logo.svg" },
+  { id: "cabrillo",    name: "Cabrillo College",              district: "Cabrillo CCD",               regionId: "bay-area", lat: 36.98, lng: -121.96, logoStacked: "/cabrillo-logo.png",     logoLongform: "/cabrillo-logo.png" },
+  { id: "gavilan",     name: "Gavilan College",               district: "Gavilan JCCD",               regionId: "bay-area", lat: 36.97, lng: -121.54, logoStacked: "/gavilan-logo.png",      logoLongform: "/gavilan-logo.png" },
+  { id: "evergreen",   name: "Evergreen Valley College",      district: "San Jose-Evergreen CCD",     regionId: "bay-area", lat: 37.34, lng: -121.80, logoStacked: "/evergreen-logo.png",    logoLongform: "/evergreen-logo-long.png" },
+  { id: "sanjosecity", name: "San Jose City College",         district: "San Jose-Evergreen CCD",     regionId: "bay-area", lat: 37.31, lng: -121.90, logoStacked: "/sanjosecity-logo.svg",  logoLongform: "/sanjosecity-logo.svg" },
 
   // Central Valley
   { id: "fresno",         name: "Fresno City College",             district: "State Center CCD",              regionId: "central-valley",     lat: 36.73, lng: -119.79 },

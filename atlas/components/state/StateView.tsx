@@ -321,6 +321,19 @@ function SchoolPanel({ college }: { college: College }) {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
+      {(college.logoLongform ?? college.logoStacked) && (
+        <img
+          src={college.logoLongform ?? college.logoStacked}
+          alt={college.name}
+          style={{
+            height: "44px",
+            width: "auto",
+            maxWidth: "100%",
+            objectFit: "contain",
+            objectPosition: "left center",
+          }}
+        />
+      )}
       <span style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "11px", fontWeight: 500, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)" }}>
         {region?.name ?? college.regionId}
       </span>
@@ -338,7 +351,7 @@ function SchoolPanel({ college }: { college: College }) {
 
       <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
         <Link
-          href="/"
+          href={`/${college.id}`}
           style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "12px 24px", border: "1px solid #c9a84c", borderRadius: "2px", color: "#c9a84c", fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "12px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", width: "fit-content", transition: "background 0.15s, color 0.15s" }}
           onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "#c9a84c"; (e.currentTarget as HTMLElement).style.color = "#0a0a0f"; }}
           onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "transparent"; (e.currentTarget as HTMLElement).style.color = "#c9a84c"; }}
@@ -348,9 +361,6 @@ function SchoolPanel({ college }: { college: College }) {
             <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </Link>
-        <span style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "11px", color: "rgba(255,255,255,0.25)" }}>
-          Opens Foothill College atlas (placeholder)
-        </span>
       </div>
     </div>
   );
