@@ -1,0 +1,146 @@
+"use client";
+
+import Card from "@/components/ui/Card";
+import Badge from "@/components/ui/Badge";
+import Button from "@/components/ui/Button";
+import { SchoolConfig } from "@/lib/schoolConfig";
+
+const REQUIREMENTS = [
+  "Employer contact and industry sector records",
+  "Curriculum-to-job-role alignment mapping",
+  "Inland Empire labor market data",
+  "Existing MOU and partnership agreements",
+  "CTE program advisory committee rosters",
+];
+
+type Props = {
+  school: SchoolConfig;
+  onBack: () => void;
+};
+
+export default function PartnershipsView({ school, onBack }: Props) {
+  return (
+    <div
+      style={{
+        maxWidth: "800px",
+        margin: "0 auto",
+        padding: "56px 40px 80px",
+        display: "flex",
+        flexDirection: "column",
+        gap: "32px",
+      }}
+    >
+      <button
+        onClick={onBack}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "6px",
+          background: "none",
+          border: "none",
+          cursor: "pointer",
+          padding: 0,
+          color: "rgba(255,255,255,0.4)",
+          fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+          fontSize: "12px",
+          fontWeight: 500,
+          letterSpacing: "0.08em",
+          textTransform: "uppercase",
+          transition: "color 0.15s",
+          alignSelf: "flex-start",
+        }}
+        onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.85)")}
+        onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.4)")}
+      >
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+          <path d="M10 12L6 8l4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+        Back
+      </button>
+
+      <div>
+        <h1
+          style={{
+            fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+            fontSize: "24px",
+            fontWeight: 600,
+            color: "#f0eef4",
+            letterSpacing: "-0.02em",
+            marginBottom: "8px",
+          }}
+        >
+          Partnerships
+        </h1>
+        <p
+          style={{
+            fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+            fontSize: "14px",
+            color: "rgba(255,255,255,0.5)",
+            lineHeight: 1.6,
+          }}
+        >
+          Identifies and surfaces employer partnership opportunities grounded in curriculum-to-job-role
+          alignment. Drives advisory committee development and MOU pipeline for CTE programs.
+        </p>
+      </div>
+
+      <Card style={{ padding: "32px", background: school.brandColorDark, border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0 2px 12px rgba(0,0,0,0.4)" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "24px" }}>
+          <span
+            style={{
+              fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+              fontSize: "13px",
+              fontWeight: 600,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              color: "rgba(255,255,255,0.3)",
+            }}
+          >
+            Required Data Inputs
+          </span>
+          <Badge style={{ color: school.brandColorLight, background: "rgba(123,45,62,0.25)", border: "1px solid rgba(123,45,62,0.35)" }}>
+            Ready to Generate
+          </Badge>
+        </div>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "32px" }}>
+          {REQUIREMENTS.map((req) => (
+            <div key={req} style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ flexShrink: 0, marginTop: "1px" }}>
+                <circle cx="7" cy="7" r="6.5" stroke="rgba(255,255,255,0.2)" />
+                <path d="M4.5 7l1.75 1.75L9.5 5.5" stroke="rgba(255,255,255,0.2)" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <span
+                style={{
+                  fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+                  fontSize: "13px",
+                  color: "rgba(255,255,255,0.38)",
+                  lineHeight: 1.5,
+                }}
+              >
+                {req}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+          <div title="Connect your institutional data to enable report generation" style={{ display: "inline-block" }}>
+            <Button variant="solid-gold" disabled style={{ background: school.brandColor, borderColor: school.brandColor, color: "#ffffff" }}>
+              Generate Report
+            </Button>
+          </div>
+          <span
+            style={{
+              fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+              fontSize: "12px",
+              color: "rgba(255,255,255,0.35)",
+            }}
+          >
+            Requires data connection to activate
+          </span>
+        </div>
+      </Card>
+    </div>
+  );
+}

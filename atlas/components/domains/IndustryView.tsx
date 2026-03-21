@@ -1,231 +1,174 @@
 "use client";
 
-import { useState, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { generatePartnerships, PartnershipProposal } from "@/lib/api";
-import ProposalCard from "./ProposalCard";
-import LoadingDots from "@/components/ui/LoadingDots";
-import Button from "@/components/ui/Button";
+import { useState, useRef, useCallback, useEffect } from "react";
+import dynamic from "next/dynamic";
+import { AnimatePresence, motion } from "framer-motion";
+import { SchoolConfig } from "@/lib/schoolConfig";
+import { buildIndustryScene, IndustryNodeKey } from "@/lib/industryScene";
+import PartnershipsView from "@/components/industry/PartnershipsView";
+import ResearchView from "@/components/industry/ResearchView";
 
-type ViewState = "idle" | "loading" | "loaded" | "error";
+const IndustryCanvas = dynamic(
+  () => import("@/components/industry/IndustryCanvas"),
+  { ssr: false }
+);
 
-export default function IndustryView() {
-  const [viewState, setViewState] = useState<ViewState>("idle");
-  const [proposals, setProposals] = useState<PartnershipProposal[]>([]);
-  const [errorMsg, setErrorMsg] = useState<string>("");
-  const [dismissedIds, setDismissedIds] = useState<Set<number>>(new Set());
+const NODE_NAMES: Record<IndustryNodeKey, string> = {
+  partnerships: "Partnerships",
+  research: "Research",
+};
 
-  const handleGenerate = useCallback(async () => {
-    setViewState("loading");
-    setProposals([]);
-    setDismissedIds(new Set());
-    try {
-      const result = await generatePartnerships();
-      setProposals(result.proposals);
-      setViewState("loaded");
-    } catch (e) {
-      setErrorMsg(e instanceof Error ? e.message : "An unexpected error occurred.");
-      setViewState("error");
-    }
+const CANVAS_HEIGHT = 360;
+const CAMERA_Z = 5.5;
+const TAN_HALF_FOV = Math.tan((50 / 2) * (Math.PI / 180));
+const NODE_WORLD_X: Record<IndustryNodeKey, number> = {
+  partnerships: -1.8,
+  research: 1.8,
+};
+
+function projectWorldX(worldX: number, containerWidth: number): number {
+  const aspect = containerWidth / CANVAS_HEIGHT;
+  const ndcX = worldX / (CAMERA_Z * TAN_HALF_FOV * aspect);
+  return ((ndcX + 1) / 2) * 100;
+}
+
+type IndustryState = "hub" | "transitioning-in" | "report" | "transitioning-out";
+
+type Props = {
+  school: SchoolConfig;
+};
+
+export default function IndustryView({ school }: Props) {
+  const [industryState, setIndustryState] = useState<IndustryState>("hub");
+  const [activeNode, setActiveNode] = useState<IndustryNodeKey | null>(null);
+  const [labelPositions, setLabelPositions] = useState<Record<IndustryNodeKey, number>>({
+    partnerships: 30,
+    research: 70,
+  });
+  const sceneRef = useRef<ReturnType<typeof buildIndustryScene> | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const compute = () => {
+      const w = el.clientWidth;
+      if (w === 0) return;
+      setLabelPositions({
+        partnerships: projectWorldX(NODE_WORLD_X.partnerships, w),
+        research: projectWorldX(NODE_WORLD_X.research, w),
+      });
+    };
+    compute();
+    const ro = new ResizeObserver(compute);
+    ro.observe(el);
+    return () => ro.disconnect();
   }, []);
 
-  const handleDismiss = useCallback((index: number) => {
-    setDismissedIds((prev) => new Set([...prev, index]));
+  const handleNodeClick = useCallback((node: IndustryNodeKey) => {
+    setActiveNode(node);
+    setIndustryState("transitioning-in");
+    setTimeout(() => setIndustryState("report"), 700);
   }, []);
 
-  const visibleCount = proposals.length - dismissedIds.size;
+  const handleBack = useCallback(() => {
+    setIndustryState("transitioning-out");
+    setTimeout(() => {
+      setIndustryState("hub");
+      setActiveNode(null);
+      sceneRef.current?.resetScene();
+    }, 450);
+  }, []);
+
+  const showHub = industryState === "hub" || industryState === "transitioning-in";
+  const showReport = industryState === "report" || industryState === "transitioning-out";
+  const canvasOpacity = industryState === "hub" ? 1 : industryState === "transitioning-out" ? 1 : 0;
 
   return (
-    <div
-      style={{
-        maxWidth: "780px",
-        margin: "0 auto",
-        padding: "56px 40px 100px",
-      }}
-    >
-      {/* Page header */}
-      <div style={{ marginBottom: "40px" }}>
-        <h1
-          style={{
-            fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-            fontSize: "24px",
-            fontWeight: 600,
-            color: "#111827",
-            letterSpacing: "-0.02em",
-            marginBottom: "8px",
-          }}
-        >
-          Partnership Proposals
-        </h1>
-        <p
-          style={{
-            fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-            fontSize: "14px",
-            color: "#6b7280",
-            lineHeight: 1.6,
-            marginBottom: "28px",
-            maxWidth: "520px",
-          }}
-        >
-          Analyze curriculum-to-job-role alignment between your programs and employers
-          in the Inland Empire labor market. Each proposal is grounded in live ontology data.
-        </p>
-
-        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-          <Button
-            variant="solid-gold"
-            onClick={handleGenerate}
-            disabled={viewState === "loading"}
-            style={{ fontSize: "14px", padding: "11px 28px" }}
-          >
-            {viewState === "loading" ? "Generating…" : viewState === "loaded" ? "Regenerate" : "Generate Partnerships"}
-          </Button>
-
-          {viewState === "loaded" && visibleCount > 0 && (
-            <span
-              style={{
-                fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-                fontSize: "13px",
-                color: "#9ca3af",
-              }}
-            >
-              {visibleCount} proposal{visibleCount !== 1 ? "s" : ""}
-            </span>
-          )}
-        </div>
-      </div>
-
-      {/* Loading state */}
+    <div style={{ minHeight: "calc(100vh - 64px)", position: "relative" }}>
       <AnimatePresence>
-        {viewState === "loading" && (
+        {showHub && (
           <motion.div
-            key="loading"
+            key="hub"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.35 }}
           >
-            <LoadingDots />
+            {/* Institution identity strip */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                paddingTop: "36px",
+                paddingBottom: "36px",
+                borderBottom: "1px solid rgba(255,255,255,0.1)",
+              }}
+            >
+              <img
+                src={school.logoPathWide ?? school.logoPath}
+                alt={school.name}
+                style={{ height: "60px", width: "auto", objectFit: "contain" }}
+              />
+            </div>
+
+            {/* Mini 3D scene */}
+            <div ref={containerRef} style={{ position: "relative", height: "360px", width: "100%" }}>
+              <IndustryCanvas
+                onNodeClick={handleNodeClick}
+                brandColor={parseInt(school.brandColor.replace("#", ""), 16)}
+                canvasOpacity={canvasOpacity}
+                sceneRef={sceneRef}
+              />
+
+              {/* Per-shape labels */}
+              {(["partnerships", "research"] as IndustryNodeKey[]).map((key) => (
+                <span
+                  key={key}
+                  style={{
+                    position: "absolute",
+                    bottom: "48px",
+                    left: `${labelPositions[key]}%`,
+                    transform: "translateX(-50%)",
+                    pointerEvents: "none",
+                    fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+                    fontSize: "13px",
+                    fontWeight: 600,
+                    letterSpacing: "0.13em",
+                    textTransform: "uppercase",
+                    color: "#ffffff",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {NODE_NAMES[key]}
+                </span>
+              ))}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Error state */}
+      {/* Sub-view */}
       <AnimatePresence>
-        {viewState === "error" && (
+        {showReport && activeNode && (
           <motion.div
-            key="error"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
+            key="report"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: industryState === "transitioning-out" ? 0 : 1 }}
             exit={{ opacity: 0 }}
-            style={{
-              padding: "24px",
-              background: "#fff7f7",
-              border: "1px solid #fecaca",
-              borderRadius: "10px",
-            }}
+            transition={{ duration: 0.35 }}
+            style={{ position: "absolute", top: 0, left: 0, right: 0 }}
           >
-            <p
-              style={{
-                fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-                fontSize: "14px",
-                color: "#b91c1c",
-              }}
-            >
-              {errorMsg}
-            </p>
-            <p
-              style={{
-                fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-                fontSize: "12px",
-                color: "#9ca3af",
-                marginTop: "8px",
-              }}
-            >
-              Ensure the backend is running and your ANTHROPIC_API_KEY is set.
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Proposals */}
-      <AnimatePresence>
-        {viewState === "loaded" && (
-          <motion.div
-            key="proposals"
-            layout
-            style={{ display: "flex", flexDirection: "column", gap: "20px" }}
-          >
-            {proposals.map((proposal, index) => (
-              !dismissedIds.has(index) && (
-                <ProposalCard
-                  key={index}
-                  proposal={proposal}
-                  onDismiss={() => handleDismiss(index)}
-                />
-              )
-            ))}
-
-            {visibleCount === 0 && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                style={{
-                  textAlign: "center",
-                  padding: "60px 0",
-                  color: "#9ca3af",
-                  fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-                  fontSize: "14px",
-                }}
-              >
-                All proposals dismissed. Generate a new set to continue.
-              </motion.div>
+            {activeNode === "partnerships" && (
+              <PartnershipsView school={school} onBack={handleBack} />
+            )}
+            {activeNode === "research" && (
+              <ResearchView school={school} onBack={handleBack} />
             )}
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Idle state — hint */}
-      {viewState === "idle" && (
-        <div
-          style={{
-            borderTop: "1px solid #f0ede6",
-            paddingTop: "40px",
-            display: "flex",
-            gap: "32px",
-          }}
-        >
-          {[
-            ["6", "Proposals generated per run"],
-            ["10", "Employers analyzed"],
-            ["25+", "Curricula mapped to job roles"],
-          ].map(([value, label]) => (
-            <div key={label} style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-              <span
-                style={{
-                  fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-                  fontSize: "24px",
-                  fontWeight: 600,
-                  color: "#c9a84c",
-                  letterSpacing: "-0.03em",
-                }}
-              >
-                {value}
-              </span>
-              <span
-                style={{
-                  fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-                  fontSize: "12px",
-                  color: "#9ca3af",
-                  lineHeight: 1.4,
-                  maxWidth: "120px",
-                }}
-              >
-                {label}
-              </span>
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
 }
