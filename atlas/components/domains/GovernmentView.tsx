@@ -47,10 +47,10 @@ const REPORTS: ReportSection[] = [
 function CheckIcon({ dim, color }: { dim?: boolean; color: string }) {
   return (
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ flexShrink: 0, marginTop: "1px" }}>
-      <circle cx="7" cy="7" r="6.5" stroke={dim ? "#d1d5db" : color} />
+      <circle cx="7" cy="7" r="6.5" stroke={dim ? "rgba(255,255,255,0.2)" : color} />
       <path
         d="M4.5 7l1.75 1.75L9.5 5.5"
-        stroke={dim ? "#d1d5db" : color}
+        stroke={dim ? "rgba(255,255,255,0.2)" : color}
         strokeWidth="1.25"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -81,15 +81,14 @@ export default function GovernmentView({ school }: Props) {
           display: "flex",
           alignItems: "center",
           gap: "12px",
-          marginBottom: "0",
           paddingBottom: "24px",
-          borderBottom: "1px solid #e4e2dc",
+          borderBottom: "1px solid rgba(255,255,255,0.1)",
         }}
       >
         <div
           style={{
-            background: "#ffffff",
-            border: "1px solid #e4e2dc",
+            background: "rgba(255,255,255,0.06)",
+            border: "1px solid rgba(255,255,255,0.12)",
             borderRadius: "6px",
             padding: "6px 12px",
             display: "flex",
@@ -107,7 +106,7 @@ export default function GovernmentView({ school }: Props) {
             fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
             fontSize: "13px",
             fontWeight: 500,
-            color: "#6b7280",
+            color: "rgba(255,255,255,0.5)",
             letterSpacing: "0.04em",
           }}
         >
@@ -122,7 +121,7 @@ export default function GovernmentView({ school }: Props) {
             fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
             fontSize: "24px",
             fontWeight: 600,
-            color: "#111827",
+            color: "#f0eef4",
             letterSpacing: "-0.02em",
             marginBottom: "8px",
           }}
@@ -133,7 +132,7 @@ export default function GovernmentView({ school }: Props) {
           style={{
             fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
             fontSize: "14px",
-            color: "#6b7280",
+            color: "rgba(255,255,255,0.5)",
             lineHeight: 1.6,
           }}
         >
@@ -143,20 +142,20 @@ export default function GovernmentView({ school }: Props) {
       </div>
 
       {REPORTS.map((report) => (
-        <Card key={report.id} style={{ padding: "32px" }}>
+        <Card key={report.id} style={{ padding: "32px", background: "#1d1618", border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0 2px 12px rgba(0,0,0,0.4)" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "16px" }}>
             <h2
               style={{
                 fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
                 fontSize: "17px",
                 fontWeight: 600,
-                color: "#111827",
+                color: "#f0eef4",
                 letterSpacing: "-0.01em",
               }}
             >
               {report.title}
             </h2>
-            <Badge style={{ color: school.brandColor, background: school.brandColorDim, border: "1px solid rgba(123,45,62,0.2)" }}>Ready to Generate</Badge>
+            <Badge style={{ color: school.brandColorLight, background: "rgba(123,45,62,0.25)", border: "1px solid rgba(123,45,62,0.35)" }}>Ready to Generate</Badge>
           </div>
 
           <p
@@ -164,7 +163,7 @@ export default function GovernmentView({ school }: Props) {
               fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
               fontSize: "14px",
               lineHeight: 1.65,
-              color: "#374151",
+              color: "rgba(255,255,255,0.65)",
               marginBottom: "24px",
             }}
           >
@@ -174,8 +173,8 @@ export default function GovernmentView({ school }: Props) {
           {/* Data requirement checklist */}
           <div
             style={{
-              background: "#fafaf9",
-              border: "1px solid #f0ede6",
+              background: "rgba(255,255,255,0.04)",
+              border: "1px solid rgba(255,255,255,0.07)",
               borderRadius: "8px",
               padding: "16px 20px",
               marginBottom: "24px",
@@ -188,7 +187,7 @@ export default function GovernmentView({ school }: Props) {
                 fontWeight: 600,
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
-                color: "#9ca3af",
+                color: "rgba(255,255,255,0.3)",
                 marginBottom: "12px",
               }}
             >
@@ -197,12 +196,12 @@ export default function GovernmentView({ school }: Props) {
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
               {report.requirements.map((req) => (
                 <div key={req} style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
-                  <CheckIcon dim color={school.brandColor} />
+                  <CheckIcon dim color={school.brandColorLight} />
                   <span
                     style={{
                       fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
                       fontSize: "13px",
-                      color: "#9ca3af",
+                      color: "rgba(255,255,255,0.38)",
                       lineHeight: 1.5,
                     }}
                   >
@@ -226,7 +225,7 @@ export default function GovernmentView({ school }: Props) {
               style={{
                 fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
                 fontSize: "12px",
-                color: "#9ca3af",
+                color: "rgba(255,255,255,0.35)",
               }}
             >
               Requires data connection to activate

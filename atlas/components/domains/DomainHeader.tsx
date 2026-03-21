@@ -33,9 +33,9 @@ export default function DomainHeader({ domain, onBack, school }: Props) {
         position: "sticky",
         top: 0,
         zIndex: 20,
-        background: "rgba(248, 247, 244, 0.95)",
+        background: "rgba(12, 9, 11, 0.92)",
         backdropFilter: "blur(8px)",
-        borderBottom: "1px solid #e4e2dc",
+        borderBottom: "1px solid rgba(255,255,255,0.07)",
         padding: "0 40px",
         height: "64px",
         display: "flex",
@@ -43,7 +43,7 @@ export default function DomainHeader({ domain, onBack, school }: Props) {
         justifyContent: "space-between",
       }}
     >
-      {/* Back button */}
+      {/* Back button — Kallipolis logo + gold Atlas label */}
       <button
         onClick={onBack}
         style={{
@@ -54,21 +54,26 @@ export default function DomainHeader({ domain, onBack, school }: Props) {
           border: "none",
           cursor: "pointer",
           padding: "6px 0",
-          color: "#6b7280",
+          color: "#c9a84c",
           fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
           fontSize: "12px",
           fontWeight: 500,
           letterSpacing: "0.08em",
           textTransform: "uppercase",
-          transition: "color 0.15s",
+          transition: "opacity 0.15s",
         }}
-        onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#111827")}
-        onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "#6b7280")}
+        onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = "0.75")}
+        onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = "1")}
       >
+        <img
+          src="/kallipolis-logo.png"
+          alt="Kallipolis"
+          style={{ height: "28px", width: "auto", objectFit: "contain" }}
+        />
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path
             d="M10 12L6 8l4-4"
-            stroke="currentColor"
+            stroke="#c9a84c"
             strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -86,7 +91,7 @@ export default function DomainHeader({ domain, onBack, school }: Props) {
             fontWeight: 600,
             letterSpacing: "0.14em",
             textTransform: "uppercase",
-            color: school.brandColor,
+            color: school.brandColorLight,
           }}
         >
           {title}
@@ -97,7 +102,7 @@ export default function DomainHeader({ domain, onBack, school }: Props) {
             fontSize: "11px",
             fontWeight: 400,
             letterSpacing: "0.06em",
-            color: "#9ca3af",
+            color: "rgba(255,255,255,0.4)",
             textTransform: "uppercase",
           }}
         >
@@ -108,8 +113,8 @@ export default function DomainHeader({ domain, onBack, school }: Props) {
       {/* School logo */}
       <div
         style={{
-          background: "#ffffff",
-          border: "1px solid #e4e2dc",
+          background: "rgba(255,255,255,0.06)",
+          border: "1px solid rgba(255,255,255,0.12)",
           borderRadius: "6px",
           padding: "4px 10px",
           display: "flex",
