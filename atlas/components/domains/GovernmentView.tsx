@@ -131,12 +131,12 @@ export default function GovernmentView({ school }: Props) {
                   key={key}
                   style={{
                     position: "absolute",
-                    bottom: "28px",
+                    bottom: "48px",
                     left: `${labelPositions[key]}%`,
                     transform: "translateX(-50%)",
                     pointerEvents: "none",
                     fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-                    fontSize: "11px",
+                    fontSize: "13px",
                     fontWeight: 600,
                     letterSpacing: "0.13em",
                     textTransform: "uppercase",
