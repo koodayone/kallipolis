@@ -145,22 +145,6 @@ export default function StateView() {
               />
             </div>
 
-            <motion.span
-              key={mapLabel}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.6 }}
-              transition={{ duration: 0.3 }}
-              style={{
-                fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-                fontSize: "10px",
-                fontWeight: 500,
-                letterSpacing: "0.16em",
-                textTransform: "uppercase",
-                color: "#c9a84c",
-              }}
-            >
-              {mapLabel}
-            </motion.span>
           </div>
 
           {/* Right — info panel */}
