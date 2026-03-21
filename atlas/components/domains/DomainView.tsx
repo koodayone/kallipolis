@@ -16,7 +16,7 @@ export default function DomainView({ domain, onBack }: Props) {
       <DomainHeader domain={domain} onBack={onBack} school={schoolConfig} />
       <main>
         {domain === "government" && <GovernmentView school={schoolConfig} />}
-        {domain === "college" && <CollegeView />}
+        {domain === "college" && <CollegeView school={schoolConfig} />}
         {domain === "industry" && <IndustryView />}
       </main>
     </div>

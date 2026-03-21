@@ -1,207 +1,183 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { getInstitution, InstitutionSummary } from "@/lib/api";
-import Card from "@/components/ui/Card";
-import ProgramTree from "./ProgramTree";
+import { useState, useRef, useCallback, useEffect } from "react";
+import dynamic from "next/dynamic";
+import { AnimatePresence, motion } from "framer-motion";
+import { SchoolConfig } from "@/lib/schoolConfig";
+import { buildCollegeScene, CollegeNodeKey } from "@/lib/collegeScene";
+import StudentsView from "@/components/college/StudentsView";
+import CurriculaView from "@/components/college/CurriculaView";
+import ProgramsView from "@/components/college/ProgramsView";
 
-export default function CollegeView() {
-  const [data, setData] = useState<InstitutionSummary | null>(null);
-  const [error, setError] = useState<string | null>(null);
+const CollegeCanvas = dynamic(
+  () => import("@/components/college/CollegeCanvas"),
+  { ssr: false }
+);
+
+const NODE_NAMES: Record<CollegeNodeKey, string> = {
+  students: "Students",
+  curricula: "Curricula",
+  programs: "Programs",
+};
+
+// Mirror the scene's camera constants to project world-x → screen %.
+const CANVAS_HEIGHT = 360;
+const CAMERA_Z = 5.5;
+const TAN_HALF_FOV = Math.tan((50 / 2) * (Math.PI / 180));
+const NODE_WORLD_X: Record<CollegeNodeKey, number> = {
+  students: -2.2,
+  curricula: 0,
+  programs: 2.2,
+};
+
+function projectWorldX(worldX: number, containerWidth: number): number {
+  const aspect = containerWidth / CANVAS_HEIGHT;
+  const ndcX = worldX / (CAMERA_Z * TAN_HALF_FOV * aspect);
+  return ((ndcX + 1) / 2) * 100;
+}
+
+type CollegeState = "hub" | "transitioning-in" | "report" | "transitioning-out";
+
+type Props = {
+  school: SchoolConfig;
+};
+
+export default function CollegeView({ school }: Props) {
+  const [collegeState, setCollegeState] = useState<CollegeState>("hub");
+  const [activeNode, setActiveNode] = useState<CollegeNodeKey | null>(null);
+  const [labelPositions, setLabelPositions] = useState<Record<CollegeNodeKey, number>>({
+    students: 20,
+    curricula: 50,
+    programs: 80,
+  });
+  const sceneRef = useRef<ReturnType<typeof buildCollegeScene> | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    getInstitution()
-      .then(setData)
-      .catch((e) => setError(e.message));
+    const el = containerRef.current;
+    if (!el) return;
+    const compute = () => {
+      const w = el.clientWidth;
+      if (w === 0) return;
+      setLabelPositions({
+        students: projectWorldX(NODE_WORLD_X.students, w),
+        curricula: projectWorldX(NODE_WORLD_X.curricula, w),
+        programs: projectWorldX(NODE_WORLD_X.programs, w),
+      });
+    };
+    compute();
+    const ro = new ResizeObserver(compute);
+    ro.observe(el);
+    return () => ro.disconnect();
   }, []);
 
-  if (error) {
-    return (
-      <div style={{ padding: "56px 40px", maxWidth: "900px", margin: "0 auto" }}>
-        <p style={{ color: "#9ca3af", fontFamily: "var(--font-inter), Inter, sans-serif", fontSize: "14px" }}>
-          Unable to load institutional data. Ensure the backend is running.
-        </p>
-      </div>
-    );
-  }
+  const handleNodeClick = useCallback((node: CollegeNodeKey) => {
+    setActiveNode(node);
+    setCollegeState("transitioning-in");
+    setTimeout(() => setCollegeState("report"), 700);
+  }, []);
 
-  if (!data) {
-    return (
-      <div style={{ padding: "56px 40px", maxWidth: "900px", margin: "0 auto" }}>
-        <div style={{ display: "flex", gap: "8px" }}>
-          {[0, 1, 2].map((i) => (
-            <div
-              key={i}
-              className="gold-dot"
-              style={{
-                width: "7px",
-                height: "7px",
-                borderRadius: "50%",
-                background: "#c9a84c",
-                animationDelay: `${i * 0.2}s`,
-              }}
-            />
-          ))}
-        </div>
-      </div>
-    );
-  }
+  const handleBack = useCallback(() => {
+    setCollegeState("transitioning-out");
+    setTimeout(() => {
+      setCollegeState("hub");
+      setActiveNode(null);
+      sceneRef.current?.resetScene();
+    }, 450);
+  }, []);
 
-  const totalCurricula = data.programs.reduce((sum, p) => sum + p.curricula.length, 0);
+  const showHub = collegeState === "hub" || collegeState === "transitioning-in";
+  const showReport = collegeState === "report" || collegeState === "transitioning-out";
+  const canvasOpacity = collegeState === "hub" ? 1 : collegeState === "transitioning-out" ? 1 : 0;
 
   return (
-    <div
-      style={{
-        maxWidth: "960px",
-        margin: "0 auto",
-        padding: "56px 40px 80px",
-        display: "flex",
-        flexDirection: "column",
-        gap: "40px",
-      }}
-    >
-      {/* Institution summary */}
-      <div>
-        <h1
-          style={{
-            fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-            fontSize: "24px",
-            fontWeight: 600,
-            color: "#111827",
-            letterSpacing: "-0.02em",
-            marginBottom: "6px",
-          }}
-        >
-          {data.institution_name}
-        </h1>
-        <p
-          style={{
-            fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-            fontSize: "14px",
-            color: "#6b7280",
-            marginBottom: "24px",
-          }}
-        >
-          {data.region}
-        </p>
-
-        {/* Stats */}
-        <div style={{ display: "flex", gap: "20px" }}>
-          {[
-            { label: "Programs", value: data.programs.length },
-            { label: "Curricula", value: totalCurricula },
-          ].map(({ label, value }) => (
+    <div style={{ minHeight: "calc(100vh - 64px)", position: "relative" }}>
+      <AnimatePresence>
+        {showHub && (
+          <motion.div
+            key="hub"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.35 }}
+          >
+            {/* Institution identity strip */}
             <div
-              key={label}
               style={{
-                background: "#ffffff",
-                border: "1px solid #e4e2dc",
-                borderRadius: "8px",
-                padding: "16px 24px",
-                minWidth: "120px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                paddingTop: "36px",
+                paddingBottom: "36px",
+                borderBottom: "1px solid rgba(255,255,255,0.1)",
               }}
             >
-              <div
-                style={{
-                  fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-                  fontSize: "28px",
-                  fontWeight: 600,
-                  color: "#111827",
-                  letterSpacing: "-0.03em",
-                }}
-              >
-                {value}
-              </div>
-              <div
-                style={{
-                  fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-                  fontSize: "11px",
-                  fontWeight: 600,
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  color: "#9ca3af",
-                  marginTop: "4px",
-                }}
-              >
-                {label}
-              </div>
+              <img
+                src={school.logoPathWide ?? school.logoPath}
+                alt={school.name}
+                style={{ height: "60px", width: "auto", objectFit: "contain" }}
+              />
             </div>
-          ))}
-        </div>
-      </div>
 
-      {/* Relational visualization */}
-      <div>
-        <h2
-          style={{
-            fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-            fontSize: "13px",
-            fontWeight: 600,
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-            color: "#9ca3af",
-            marginBottom: "20px",
-          }}
-        >
-          Program Structure
-        </h2>
-        <Card style={{ padding: "28px" }}>
-          <ProgramTree programs={data.programs} />
-        </Card>
-      </div>
+            {/* Mini 3D scene */}
+            <div ref={containerRef} style={{ position: "relative", height: "360px", width: "100%" }}>
+              <CollegeCanvas
+                onNodeClick={handleNodeClick}
+                brandColor={parseInt(school.brandColor.replace("#", ""), 16)}
+                canvasOpacity={canvasOpacity}
+                sceneRef={sceneRef}
+              />
 
-      {/* Program cards */}
-      <div>
-        <h2
-          style={{
-            fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-            fontSize: "13px",
-            fontWeight: 600,
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-            color: "#9ca3af",
-            marginBottom: "20px",
-          }}
-        >
-          Programs
-        </h2>
-        <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-          {data.programs.map((prog) => (
-            <Card key={prog.program_name} style={{ padding: "24px" }}>
-              <h3
-                style={{
-                  fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-                  fontSize: "15px",
-                  fontWeight: 600,
-                  color: "#111827",
-                  marginBottom: "12px",
-                }}
-              >
-                {prog.program_name}
-              </h3>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-                {prog.curricula.map((c) => (
-                  <span
-                    key={c}
-                    style={{
-                      display: "inline-block",
-                      padding: "4px 12px",
-                      background: "#fafaf9",
-                      border: "1px solid #e4e2dc",
-                      borderRadius: "100px",
-                      fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-                      fontSize: "12px",
-                      color: "#374151",
-                    }}
-                  >
-                    {c}
-                  </span>
-                ))}
-              </div>
-            </Card>
-          ))}
-        </div>
-      </div>
+              {/* Per-shape labels — projected to match 3D solid positions */}
+              {(["students", "curricula", "programs"] as CollegeNodeKey[]).map((key) => (
+                <span
+                  key={key}
+                  style={{
+                    position: "absolute",
+                    bottom: "48px",
+                    left: `${labelPositions[key]}%`,
+                    transform: "translateX(-50%)",
+                    pointerEvents: "none",
+                    fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+                    fontSize: "13px",
+                    fontWeight: 600,
+                    letterSpacing: "0.13em",
+                    textTransform: "uppercase",
+                    color: "#ffffff",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {NODE_NAMES[key]}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Sub-view */}
+      <AnimatePresence>
+        {showReport && activeNode && (
+          <motion.div
+            key="report"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: collegeState === "transitioning-out" ? 0 : 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.35 }}
+            style={{ position: "absolute", top: 0, left: 0, right: 0 }}
+          >
+            {activeNode === "students" && (
+              <StudentsView school={school} onBack={handleBack} />
+            )}
+            {activeNode === "curricula" && (
+              <CurriculaView school={school} onBack={handleBack} />
+            )}
+            {activeNode === "programs" && (
+              <ProgramsView school={school} onBack={handleBack} />
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
