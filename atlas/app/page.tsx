@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback, useEffect } from "react";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { buildAtlasScene, DomainKey } from "@/lib/atlasScene";
 import { schoolConfig } from "@/lib/schoolConfig";
@@ -78,6 +79,50 @@ export default function AtlasPage() {
           sceneRef={sceneRef}
         />
       </div>
+
+      {/* State View nav link — top-right, visible on home screen only */}
+      <AnimatePresence>
+        {showLabels && (
+          <motion.div
+            key="state-nav"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.35 }}
+            style={{ position: "fixed", top: "28px", right: "36px", zIndex: 6 }}
+          >
+            <Link
+              href="/state"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+                fontSize: "11px",
+                fontWeight: 500,
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                color: "rgba(255,255,255,0.65)",
+                textDecoration: "none",
+                transition: "color 0.15s",
+              }}
+              onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#ffffff")}
+              onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.65)")}
+            >
+              State View
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path
+                  d="M2.5 6h7M6 2.5l3.5 3.5L6 9.5"
+                  stroke="currentColor"
+                  strokeWidth="1.3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </Link>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Atlas domain labels — fade out during transition */}
       <AnimatePresence>

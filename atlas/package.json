@@ -16,6 +16,7 @@
     "next": "^16.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-simple-maps": "^3.0.0",
     "three": "^0.170.0"
   },
   "devDependencies": {
