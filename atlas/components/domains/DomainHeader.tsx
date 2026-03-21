@@ -33,7 +33,7 @@ export default function DomainHeader({ domain, onBack, school }: Props) {
         position: "sticky",
         top: 0,
         zIndex: 20,
-        background: "rgba(6, 16, 30, 0.95)",
+        background: "rgba(5, 14, 27, 0.95)",
         backdropFilter: "blur(8px)",
         borderBottom: "1px solid rgba(255,255,255,0.07)",
         padding: "0 40px",
@@ -54,7 +54,7 @@ export default function DomainHeader({ domain, onBack, school }: Props) {
           border: "none",
           cursor: "pointer",
           padding: "6px 0",
-          color: "#c9a84c",
+          color: "#ffffff",
           fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
           fontSize: "12px",
           fontWeight: 500,
@@ -70,16 +70,18 @@ export default function DomainHeader({ domain, onBack, school }: Props) {
           alt="Kallipolis"
           style={{ height: "28px", width: "auto", objectFit: "contain" }}
         />
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path
-            d="M10 12L6 8l4-4"
-            stroke="#c9a84c"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-        Atlas
+        <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path
+              d="M10 12L6 8l4-4"
+              stroke="#ffffff"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          Atlas
+        </div>
       </button>
 
       {/* Domain title */}
