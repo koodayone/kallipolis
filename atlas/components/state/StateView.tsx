@@ -8,6 +8,7 @@ import PageTransition from "@/components/transitions/PageTransition";
 import CaliforniaMap from "@/components/state/CaliforniaMap";
 import RisingSun from "@/components/ui/RisingSun";
 import { College, Region, CALIFORNIA_REGIONS, CALIFORNIA_COLLEGES } from "@/lib/californiaColleges";
+import { getCollegeAtlasConfig } from "@/lib/collegeAtlasConfigs";
 
 export default function StateView() {
   const router = useRouter();
@@ -294,30 +295,24 @@ function DefaultPanel() {
 function RegionPanel({ region, collegeCount }: { region: Region; collegeCount: number }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
-      <span style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "11px", fontWeight: 500, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)" }}>
-        California Region
-      </span>
-
       <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
         <h2 style={{ fontFamily: "var(--font-days-one), sans-serif", fontSize: "clamp(24px, 2.8vw, 38px)", lineHeight: 1.2, color: "#ffffff", margin: 0 }}>
           {region.name}
         </h2>
-        <span style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "12px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase", color: "#c9a84c" }}>
+        <span style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "12px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)" }}>
           {region.collegeCount} colleges · {region.counties.length} {region.counties.length === 1 ? "county" : "counties"}
         </span>
       </div>
 
       <div style={{ height: "1px", background: "rgba(255,255,255,0.08)" }} />
-
-      <p style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.35)", margin: 0, letterSpacing: "0.02em" }}>
-        Hover a college marker to explore.
-      </p>
     </div>
   );
 }
 
 function SchoolPanel({ college }: { college: College }) {
   const region = CALIFORNIA_REGIONS.find((r) => r.id === college.regionId);
+  const config = getCollegeAtlasConfig(college.id);
+  const accent = config?.brandColorLight ?? "#c9a84c";
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
@@ -334,15 +329,11 @@ function SchoolPanel({ college }: { college: College }) {
           }}
         />
       )}
-      <span style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "11px", fontWeight: 500, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)" }}>
-        {region?.name ?? college.regionId}
-      </span>
-
       <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
         <h2 style={{ fontFamily: "var(--font-days-one), sans-serif", fontSize: "clamp(22px, 2.4vw, 34px)", lineHeight: 1.2, color: "#ffffff", margin: 0 }}>
           {college.name}
         </h2>
-        <span style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "12px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase", color: "#c9a84c" }}>
+        <span style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "12px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)" }}>
           {college.district}
         </span>
       </div>
@@ -352,9 +343,9 @@ function SchoolPanel({ college }: { college: College }) {
       <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
         <Link
           href={`/${college.id}`}
-          style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "12px 24px", border: "1px solid #c9a84c", borderRadius: "2px", color: "#c9a84c", fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "12px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", width: "fit-content", transition: "background 0.15s, color 0.15s" }}
-          onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "#c9a84c"; (e.currentTarget as HTMLElement).style.color = "#0a0a0f"; }}
-          onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "transparent"; (e.currentTarget as HTMLElement).style.color = "#c9a84c"; }}
+          style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "12px 24px", border: `1px solid ${accent}`, borderRadius: "2px", color: accent, fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "12px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", textDecoration: "none", width: "fit-content", transition: "background 0.15s, color 0.15s" }}
+          onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = accent; (e.currentTarget as HTMLElement).style.color = "#0a0a0f"; }}
+          onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "transparent"; (e.currentTarget as HTMLElement).style.color = accent; }}
         >
           Open Atlas
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">

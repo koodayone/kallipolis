@@ -10,6 +10,7 @@ import {
   CALIFORNIA_COLLEGES,
   COUNTY_TO_REGION,
 } from "@/lib/californiaColleges";
+import { getCollegeAtlasConfig } from "@/lib/collegeAtlasConfigs";
 
 const GEO_URL = "/california-counties.geojson";
 
@@ -193,7 +194,8 @@ export default function CaliforniaMap({
                   const isHovered = hoveredCollegeId === college.id;
                   const isSelected = selectedCollegeId === college.id;
                   const isActive = isHovered || isSelected;
-                  const fill = isActive ? "#5eed96" : "#3ab26e";
+                  const brandColor = getCollegeAtlasConfig(college.id)?.brandColorLight ?? "#3ab26e";
+                  const fill = brandColor;
                   const size = isActive ? DIAMOND * 1.4 : DIAMOND;
 
                   return (
@@ -216,7 +218,7 @@ export default function CaliforniaMap({
                           <circle
                             r={size * 1.7}
                             fill="none"
-                            stroke="#5eed96"
+                            stroke={brandColor}
                             strokeWidth="0.8"
                             strokeOpacity={0.45}
                           />
