@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -29,7 +29,7 @@ type Props = {
   onRegionClick: (id: string) => void;
   onCollegeHover: (college: College | null) => void;
   onCollegeSelect: (college: College) => void;
-  onBack: () => void;
+
 };
 
 function countyFill(
@@ -58,35 +58,25 @@ export default function CaliforniaMap({
   onRegionClick,
   onCollegeHover,
   onCollegeSelect,
-  onBack,
 }: Props) {
   const [projCenter, setProjCenter] = useState<[number, number]>(BASE_CENTER);
   const [projScale, setProjScale] = useState(BASE_SCALE);
-  const [opacity, setOpacity] = useState(1);
 
-  // Animate projection change with cross-fade
-  const transitionProjection = useCallback(
-    (center: [number, number], scale: number) => {
-      setOpacity(0);
-      const t = setTimeout(() => {
-        setProjCenter(center);
-        setProjScale(scale);
-        setOpacity(1);
-      }, 180);
-      return () => clearTimeout(t);
-    },
-    []
-  );
-
-  // When mapView or activeRegionId changes, update projection
+  // Update projection whenever mapView or activeRegionId changes.
+  // Opacity is managed by StateView, so the map is already faded out by the
+  // time this effect runs — the projection swap is invisible.
   useEffect(() => {
     if (mapView === "state") {
-      transitionProjection(BASE_CENTER, BASE_SCALE);
+      setProjCenter(BASE_CENTER);
+      setProjScale(BASE_SCALE);
     } else if (activeRegionId) {
       const region = CALIFORNIA_REGIONS.find((r) => r.id === activeRegionId);
-      if (region) transitionProjection(region.center, region.scale);
+      if (region) {
+        setProjCenter(region.zoomCenter);
+        setProjScale(region.scale);
+      }
     }
-  }, [mapView, activeRegionId, transitionProjection]);
+  }, [mapView, activeRegionId]);
 
   const activeRegionColleges = CALIFORNIA_COLLEGES.filter(
     (c) => c.regionId === activeRegionId
@@ -94,68 +84,7 @@ export default function CaliforniaMap({
 
   return (
     <div style={{ position: "relative", width: "100%", height: "100%" }}>
-      {/* Back affordance — region view only */}
-      <AnimatePresence>
-        {mapView === "region" && (
-          <motion.button
-            key="back"
-            initial={{ opacity: 0, y: -4 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -4 }}
-            transition={{ duration: 0.2 }}
-            onClick={onBack}
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              zIndex: 10,
-              display: "flex",
-              alignItems: "center",
-              gap: "5px",
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              padding: "4px 0",
-              fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-              fontSize: "11px",
-              fontWeight: 500,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "rgba(255,255,255,0.5)",
-              transition: "color 0.15s",
-            }}
-            onMouseEnter={(e) =>
-              ((e.currentTarget as HTMLElement).style.color = "#ffffff")
-            }
-            onMouseLeave={(e) =>
-              ((e.currentTarget as HTMLElement).style.color =
-                "rgba(255,255,255,0.5)")
-            }
-          >
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path
-                d="M8 2L4 6l4 4"
-                stroke="currentColor"
-                strokeWidth="1.3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-            All regions
-          </motion.button>
-        )}
-      </AnimatePresence>
-
-      {/* Map */}
-      <div
-        style={{
-          opacity,
-          transition: "opacity 0.18s ease",
-          width: "100%",
-          height: "100%",
-          marginTop: mapView === "region" ? "20px" : "0",
-        }}
-      >
+      <div style={{ width: "100%", height: "100%" }}>
         <ComposableMap
           projection="geoMercator"
           projectionConfig={{ center: projCenter, scale: projScale }}
@@ -206,29 +135,35 @@ export default function CaliforniaMap({
               CALIFORNIA_REGIONS.map((region) => (
                 <Marker
                   key={region.id}
-                  coordinates={region.center}
+                  coordinates={region.labelCenter}
                   onClick={() => onRegionClick(region.id)}
                   onMouseEnter={() => onRegionHover(region.id)}
                   onMouseLeave={() => onRegionHover(null)}
                 >
                   <motion.text
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: hoveredRegionId === region.id ? 1 : 0.55 }}
+                    animate={{ opacity: hoveredRegionId === region.id ? 1 : 0.85 }}
                     textAnchor="middle"
-                    dominantBaseline="central"
                     style={{
                       fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-                      fontSize: "7px",
-                      fontWeight: 600,
-                      letterSpacing: "0.08em",
+                      fontSize: "9px",
+                      fontWeight: 700,
+                      letterSpacing: "0.1em",
                       textTransform: "uppercase",
-                      fill: hoveredRegionId === region.id ? "#c9a84c" : "rgba(255,255,255,0.7)",
+                      fill: hoveredRegionId === region.id ? "#c9a84c" : "rgba(255,255,255,0.92)",
                       pointerEvents: "none",
                       userSelect: "none",
                       transition: "fill 0.15s",
                     }}
                   >
-                    {region.name}
+                    {region.name.includes(" / ") ? (
+                      <>
+                        <tspan x="0" dy="-5">{region.name.split(" / ")[0] + " /"}</tspan>
+                        <tspan x="0" dy="11">{region.name.split(" / ")[1]}</tspan>
+                      </>
+                    ) : (
+                      <tspan dominantBaseline="central">{region.name}</tspan>
+                    )}
                   </motion.text>
                 </Marker>
               ))}

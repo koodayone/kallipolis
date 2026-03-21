@@ -10,17 +10,19 @@ export type College = {
 export type Region = {
   id: string;
   name: string;
-  center: [number, number]; // [lng, lat] — projection center when zoomed in
-  scale: number;            // projectionConfig.scale for this region
-  counties: string[];       // must match GeoJSON properties.name exactly
-  collegeCount: number;     // total in real dataset
+  labelCenter: [number, number]; // [lng, lat] — label position on state map
+  zoomCenter: [number, number];  // [lng, lat] — projection center when zoomed into region
+  scale: number;                 // projectionConfig.scale for this region
+  counties: string[];            // must match GeoJSON properties.name exactly
+  collegeCount: number;          // total in real dataset
 };
 
 export const CALIFORNIA_REGIONS: Region[] = [
   {
     id: "far-north",
     name: "Far North",
-    center: [-122.0, 40.7],
+    labelCenter: [-122.0, 40.9],
+    zoomCenter: [-121.5, 40.5],
     scale: 7000,
     counties: ["Del Norte", "Siskiyou", "Modoc", "Trinity", "Humboldt", "Shasta", "Lassen", "Tehama"],
     collegeCount: 9,
@@ -28,7 +30,8 @@ export const CALIFORNIA_REGIONS: Region[] = [
   {
     id: "greater-sacramento",
     name: "Greater Sacramento",
-    center: [-121.0, 39.2],
+    labelCenter: [-121.0, 39.2],
+    zoomCenter: [-121.0, 39.2],
     scale: 8000,
     counties: ["Butte", "Glenn", "Colusa", "Plumas", "Sierra", "Nevada", "Placer", "El Dorado", "Yolo", "Sacramento", "Alpine"],
     collegeCount: 14,
@@ -36,7 +39,8 @@ export const CALIFORNIA_REGIONS: Region[] = [
   {
     id: "bay-area",
     name: "Bay Area",
-    center: [-122.1, 37.7],
+    labelCenter: [-122.1, 37.7],
+    zoomCenter: [-122.1, 37.7],
     scale: 11000,
     counties: ["Marin", "Sonoma", "Napa", "Lake", "Mendocino", "Solano", "Contra Costa", "Alameda", "San Francisco", "San Mateo", "Santa Clara", "Santa Cruz"],
     collegeCount: 28,
@@ -44,7 +48,8 @@ export const CALIFORNIA_REGIONS: Region[] = [
   {
     id: "central-valley",
     name: "Central Valley",
-    center: [-120.0, 36.8],
+    labelCenter: [-119.4, 37.3],
+    zoomCenter: [-119.4, 37.3],
     scale: 7000,
     counties: ["San Joaquin", "Calaveras", "Tuolumne", "Amador", "Mono", "Stanislaus", "Merced", "Mariposa", "Fresno", "Madera", "Kings", "Tulare"],
     collegeCount: 18,
@@ -52,7 +57,8 @@ export const CALIFORNIA_REGIONS: Region[] = [
   {
     id: "central-coast",
     name: "Central Coast",
-    center: [-120.4, 35.1],
+    labelCenter: [-120.8, 35.6],
+    zoomCenter: [-120.8, 35.6],
     scale: 9000,
     counties: ["Monterey", "San Benito", "San Luis Obispo", "Santa Barbara"],
     collegeCount: 7,
@@ -60,7 +66,8 @@ export const CALIFORNIA_REGIONS: Region[] = [
   {
     id: "inland-empire",
     name: "Inland Empire",
-    center: [-116.8, 33.9],
+    labelCenter: [-116.2, 34.7],
+    zoomCenter: [-116.2, 34.7],
     scale: 9000,
     counties: ["San Bernardino", "Riverside"],
     collegeCount: 12,
@@ -68,7 +75,8 @@ export const CALIFORNIA_REGIONS: Region[] = [
   {
     id: "los-angeles",
     name: "Los Angeles",
-    center: [-118.2, 34.1],
+    labelCenter: [-118.5, 34.3],
+    zoomCenter: [-118.5, 34.3],
     scale: 13000,
     counties: ["Los Angeles"],
     collegeCount: 28,
@@ -76,7 +84,8 @@ export const CALIFORNIA_REGIONS: Region[] = [
   {
     id: "orange-county",
     name: "Orange County",
-    center: [-117.8, 33.7],
+    labelCenter: [-117.75, 33.55],
+    zoomCenter: [-117.75, 33.55],
     scale: 16000,
     counties: ["Orange"],
     collegeCount: 5,
@@ -84,7 +93,8 @@ export const CALIFORNIA_REGIONS: Region[] = [
   {
     id: "san-diego",
     name: "San Diego / Imperial",
-    center: [-116.8, 33.0],
+    labelCenter: [-116.0, 33.0],
+    zoomCenter: [-116.0, 33.0],
     scale: 9000,
     counties: ["San Diego", "Imperial"],
     collegeCount: 10,

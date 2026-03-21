@@ -16,21 +16,35 @@ export default function StateView() {
   const [hoveredRegionId, setHoveredRegionId] = useState<string | null>(null);
   const [hoveredCollege, setHoveredCollege] = useState<College | null>(null);
   const [selectedCollege, setSelectedCollege] = useState<College | null>(null);
+  const [mapOpacity, setMapOpacity] = useState(1);
+
+  const transitionMap = useCallback((fn: () => void) => {
+    setMapOpacity(0);
+    const t = setTimeout(() => {
+      fn();
+      setMapOpacity(1);
+    }, 200);
+    return () => clearTimeout(t);
+  }, []);
 
   const handleRegionClick = useCallback((id: string) => {
-    setActiveRegionId(id);
-    setMapView("region");
-    setSelectedCollege(null);
-    setHoveredCollege(null);
-  }, []);
+    transitionMap(() => {
+      setActiveRegionId(id);
+      setMapView("region");
+      setSelectedCollege(null);
+      setHoveredCollege(null);
+    });
+  }, [transitionMap]);
 
   const handleMapBack = useCallback(() => {
-    setMapView("state");
-    setActiveRegionId(null);
-    setHoveredRegionId(null);
-    setSelectedCollege(null);
-    setHoveredCollege(null);
-  }, []);
+    transitionMap(() => {
+      setMapView("state");
+      setActiveRegionId(null);
+      setHoveredRegionId(null);
+      setSelectedCollege(null);
+      setHoveredCollege(null);
+    });
+  }, [transitionMap]);
 
   const handleCollegeSelect = useCallback((college: College) => {
     setSelectedCollege((prev) => (prev?.id === college.id ? null : college));
@@ -115,6 +129,7 @@ export default function StateView() {
           <div
             style={{
               flex: 1,
+              position: "relative",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
@@ -123,12 +138,55 @@ export default function StateView() {
               gap: "14px",
             }}
           >
+            {/* Back affordance — anchored to top of panel */}
+            <AnimatePresence>
+              {mapView === "region" && (
+                <motion.button
+                  key="back"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  onClick={handleMapBack}
+                  style={{
+                    position: "absolute",
+                    top: "20px",
+                    left: "24px",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    padding: "4px 0",
+                    fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+                    fontSize: "11px",
+                    fontWeight: 500,
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    color: "rgba(255,255,255,0.5)",
+                    transition: "color 0.15s",
+                    zIndex: 10,
+                  }}
+                  onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#ffffff")}
+                  onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.5)")}
+                >
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M8 2L4 6l4 4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  All regions
+                </motion.button>
+              )}
+            </AnimatePresence>
             <div
               style={{
                 width: "100%",
                 maxWidth: "440px",
                 maxHeight: "80vh",
                 aspectRatio: "400 / 500",
+                paddingTop: mapView === "region" ? "16px" : "0",
+                opacity: mapOpacity,
+                transition: "opacity 0.18s ease",
               }}
             >
               <CaliforniaMap
@@ -141,7 +199,6 @@ export default function StateView() {
                 onRegionClick={handleRegionClick}
                 onCollegeHover={setHoveredCollege}
                 onCollegeSelect={handleCollegeSelect}
-                onBack={handleMapBack}
               />
             </div>
 
@@ -185,29 +242,7 @@ export default function StateView() {
 // ── Panels ────────────────────────────────────────────────────────────────────
 
 function DefaultPanel() {
-  return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "40px" }}>
-      <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-        <span style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "11px", fontWeight: 500, letterSpacing: "0.16em", textTransform: "uppercase", color: "#c9a84c" }}>
-          The State View
-        </span>
-        <div style={{ width: "32px", height: "1px", background: "#c9a84c", opacity: 0.5 }} />
-      </div>
-
-      <h1 style={{ fontFamily: "var(--font-days-one), sans-serif", fontSize: "clamp(28px, 3.2vw, 44px)", lineHeight: 1.15, color: "#ffffff", margin: 0 }}>
-        116 schools.<br />73 districts.<br />One intelligent network.
-      </h1>
-
-      <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
-        <Section label="Statewide Vision" body="Kallipolis empowers California Community Colleges to serve 2 million students in every region of the state." />
-        <Section label="Our Software" body="We unify data & spread intelligence across the ecosystem by deploying AI tailored to empower workforce development initiatives." />
-      </div>
-
-      <p style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.35)", margin: 0, letterSpacing: "0.02em" }}>
-        Select a region on the map to explore.
-      </p>
-    </div>
-  );
+  return null;
 }
 
 function RegionPanel({ region, collegeCount }: { region: Region; collegeCount: number }) {
