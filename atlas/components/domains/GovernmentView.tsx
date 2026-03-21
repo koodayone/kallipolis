@@ -140,7 +140,7 @@ export default function GovernmentView({ school }: Props) {
                     fontWeight: 600,
                     letterSpacing: "0.13em",
                     textTransform: "uppercase",
-                    color: "rgba(255,255,255,0.55)",
+                    color: "#ffffff",
                     whiteSpace: "nowrap",
                   }}
                 >
