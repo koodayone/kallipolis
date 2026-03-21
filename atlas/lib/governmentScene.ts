@@ -1,7 +1,4 @@
 import * as THREE from "three";
-import { Line2 } from "three/examples/jsm/lines/Line2.js";
-import { LineGeometry } from "three/examples/jsm/lines/LineGeometry.js";
-import { LineMaterial } from "three/examples/jsm/lines/LineMaterial.js";
 
 export type GovReportKey = "strong_workforce" | "perkins_v";
 
@@ -30,7 +27,6 @@ type ClickState =
   | { phase: "pulse"; elapsed: number; report: GovReportKey }
   | { phase: "dissolve"; elapsed: number; report: GovReportKey };
 
-const GOLD = 0xc9a84c;
 const LERP_SPEED = 0.08;
 
 const REPORT_COLOR: Record<GovReportKey, number> = {
@@ -45,9 +41,8 @@ export function buildGovernmentScene(
   cleanup: () => void;
   resetScene: () => void;
 } {
-  const initRect = canvas.getBoundingClientRect();
-  const initW = initRect.width || 800;
-  const initH = initRect.height || 360;
+  const initW = canvas.clientWidth || 800;
+  const initH = canvas.clientHeight || 360;
 
   // ── Renderer ──────────────────────────────────────────────────────────────
   const renderer = new THREE.WebGLRenderer({
@@ -56,7 +51,8 @@ export function buildGovernmentScene(
     alpha: true, // transparent — page bg shows through
   });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setSize(initW, initH);
+  // false = don't overwrite the canvas's CSS width/height so the 100% layout holds
+  renderer.setSize(initW, initH, false);
   renderer.setClearColor(0x000000, 0);
 
   // ── Scene & Camera ────────────────────────────────────────────────────────
@@ -66,7 +62,7 @@ export function buildGovernmentScene(
   camera.position.set(0, 0, 5.5);
 
   // ── Lighting ──────────────────────────────────────────────────────────────
-  scene.add(new THREE.AmbientLight(0xffffff, 0.08));
+  scene.add(new THREE.AmbientLight(0xffffff, 0.5));
 
   const keyLight = new THREE.DirectionalLight(0xc9a84c, 0.5);
   keyLight.position.set(5, 8, 4);
@@ -76,7 +72,9 @@ export function buildGovernmentScene(
   rimLight.position.set(-4, -2, -6);
   scene.add(rimLight);
 
-  scene.add(new THREE.DirectionalLight(0xffffff, 0.12)).position.set(0, 5, 8);
+  const fillLight = new THREE.DirectionalLight(0xffffff, 0.12);
+  fillLight.position.set(0, 5, 8);
+  scene.add(fillLight);
 
   // ── Helpers ───────────────────────────────────────────────────────────────
   function makeSolid(
@@ -90,7 +88,7 @@ export function buildGovernmentScene(
     const fillMat = new THREE.MeshPhongMaterial({
       color,
       emissive: color,
-      emissiveIntensity: 0.15,
+      emissiveIntensity: 0.45,
       transparent: false,
       side: THREE.FrontSide,
       depthWrite: true,
@@ -147,26 +145,6 @@ export function buildGovernmentScene(
     ),
   ];
 
-  // ── Connector ─────────────────────────────────────────────────────────────
-  const connectorGeo = new LineGeometry();
-  connectorGeo.setPositions([
-    solids[0].basePos.x, solids[0].basePos.y, solids[0].basePos.z,
-    solids[1].basePos.x, solids[1].basePos.y, solids[1].basePos.z,
-  ]);
-  const connectorMat = new LineMaterial({
-    color: GOLD,
-    linewidth: 2,
-    transparent: true,
-    opacity: 0,
-    resolution: new THREE.Vector2(initW, initH),
-  });
-  const connector = new Line2(connectorGeo, connectorMat);
-  connector.computeLineDistances();
-  scene.add(connector);
-
-  let connectorTargetOpacity = 0;
-  let connectorCurrentOpacity = 0;
-
   // ── Interaction State ─────────────────────────────────────────────────────
   let hoveredReport: GovReportKey | null = null;
   let clickState: ClickState = { phase: "idle" };
@@ -189,7 +167,6 @@ export function buildGovernmentScene(
       s.targetScale = isHovered ? 1.06 : 1.0;
     });
 
-    connectorTargetOpacity = report !== null ? 0.75 : 0;
   }
 
   function handleClick(report: GovReportKey) {
@@ -229,8 +206,7 @@ export function buildGovernmentScene(
     if (w === 0 || h === 0) return;
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
-    renderer.setSize(w, h);
-    connectorMat.resolution.set(w, h);
+    renderer.setSize(w, h, false);
   });
   resizeObserver.observe(canvas);
 
@@ -288,7 +264,6 @@ export function buildGovernmentScene(
             s.targetScale = 0.7;
           }
         });
-        connectorTargetOpacity = 0;
       }
     } else if (clickState.phase === "dissolve") {
       clickState.elapsed += delta;
@@ -325,13 +300,6 @@ export function buildGovernmentScene(
       (s.mesh.material as THREE.MeshPhongMaterial).opacity = s.currentFillOpacity;
     });
 
-    // Connector shimmer
-    connectorCurrentOpacity = lerp(connectorCurrentOpacity, connectorTargetOpacity, LERP_SPEED);
-    const shimmer = connectorCurrentOpacity > 0.01
-      ? 0.7 + 0.3 * Math.sin((now / 1000) * (2 * Math.PI / 3))
-      : 1;
-    connectorMat.opacity = connectorCurrentOpacity * shimmer;
-
     renderer.render(scene, camera);
   }
 
@@ -358,9 +326,6 @@ export function buildGovernmentScene(
       s.hoverLight.intensity = 0;
     });
 
-    connectorTargetOpacity = 0;
-    connectorCurrentOpacity = 0;
-    connectorMat.opacity = 0;
   }
 
   // ── Cleanup ───────────────────────────────────────────────────────────────
