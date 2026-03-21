@@ -66,8 +66,8 @@ export default function DomainHeader({ domain, onBack, school }: Props) {
         onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = "1")}
       >
         <img
-          src="/kallipolis-logo.png"
-          alt="Kallipolis"
+          src={school.logoPath}
+          alt={school.name}
           style={{ height: "28px", width: "auto", objectFit: "contain" }}
         />
         <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
@@ -112,22 +112,29 @@ export default function DomainHeader({ domain, onBack, school }: Props) {
         </span>
       </div>
 
-      {/* School logo */}
+      {/* Kallipolis wordmark */}
       <div
         style={{
-          background: "rgba(255,255,255,0.06)",
-          border: "1px solid rgba(255,255,255,0.12)",
-          borderRadius: "6px",
-          padding: "4px 10px",
           display: "flex",
           alignItems: "center",
+          gap: "10px",
         }}
       >
         <img
-          src={school.logoPath}
-          alt={school.name}
+          src="/kallipolis-logo.png"
+          alt="Kallipolis"
           style={{ height: "28px", width: "auto", objectFit: "contain" }}
         />
+        <span
+          style={{
+            fontFamily: "var(--font-days-one), sans-serif",
+            fontSize: "16px",
+            color: "#ffffff",
+            lineHeight: 1,
+          }}
+        >
+          Kallipolis
+        </span>
       </div>
     </header>
   );
