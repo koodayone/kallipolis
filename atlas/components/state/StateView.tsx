@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import PageTransition from "@/components/transitions/PageTransition";
 import CaliforniaMap from "@/components/state/CaliforniaMap";
+import RisingSun from "@/components/ui/RisingSun";
 import { College, Region, CALIFORNIA_REGIONS, CALIFORNIA_COLLEGES } from "@/lib/californiaColleges";
 
 export default function StateView() {
@@ -178,6 +179,51 @@ export default function StateView() {
                 </motion.button>
               )}
             </AnimatePresence>
+            {/* Sun prompt — state view idle/hover, Nevada geographic area */}
+            <AnimatePresence>
+              {mapView === "state" && (
+                <motion.div
+                  key="sun-prompt"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  style={{
+                    position: "absolute",
+                    right: "18%",
+                    top: "17%",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    pointerEvents: "none",
+                  }}
+                >
+                  <div style={{ opacity: hoveredRegionId ? 1 : 0.45, transition: "opacity 0.4s ease-in-out" }}>
+                    <RisingSun />
+                  </div>
+                  <div style={{ position: "relative", height: "16px", width: "0", marginTop: "10px" }}>
+                    <span style={{
+                      position: "absolute",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+                      fontSize: "11px",
+                      fontWeight: 500,
+                      letterSpacing: "0.14em",
+                      textTransform: "uppercase",
+                      color: hoveredRegionId ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.55)",
+                      whiteSpace: "nowrap",
+                      transition: "color 0.3s ease-in-out",
+                    }}>
+                      {hoveredRegionId
+                        ? (CALIFORNIA_REGIONS.find((r) => r.id === hoveredRegionId)?.name ?? "Select a region")
+                        : "Select a region"}
+                    </span>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             <div
               style={{
                 width: "100%",
