@@ -88,7 +88,7 @@ export default function GovernmentView({ school }: Props) {
   const canvasOpacity = govState === "hub" ? 1 : govState === "transitioning-out" ? 1 : 0;
 
   return (
-    <div style={{ minHeight: "calc(100vh - 64px)" }}>
+    <div style={{ minHeight: "calc(100vh - 64px)", position: "relative" }}>
       {/* Institution identity strip — always visible in hub */}
       <AnimatePresence>
         {showHub && (
@@ -161,6 +161,7 @@ export default function GovernmentView({ school }: Props) {
             animate={{ opacity: govState === "transitioning-out" ? 0 : 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
+            style={{ position: "absolute", top: 0, left: 0, right: 0 }}
           >
             {activeReport === "strong_workforce" && (
               <StrongWorkforceView school={school} onBack={handleBack} />
