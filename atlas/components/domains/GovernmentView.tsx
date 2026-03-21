@@ -120,6 +120,7 @@ export default function GovernmentView({ school }: Props) {
             <div ref={containerRef} style={{ position: "relative", height: "360px", width: "100%" }}>
               <GovernmentCanvas
                 onReportClick={handleReportClick}
+                brandColor={parseInt(school.brandColor.replace("#", ""), 16)}
                 canvasOpacity={canvasOpacity}
                 sceneRef={sceneRef}
               />

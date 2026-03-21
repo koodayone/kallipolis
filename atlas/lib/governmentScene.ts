@@ -5,6 +5,7 @@ export type GovReportKey = "strong_workforce" | "perkins_v";
 export type GovSceneCallbacks = {
   onReportClick: (report: GovReportKey) => void;
   onHoverChange: (report: GovReportKey | null) => void;
+  solidColor: number; // THREE hex int, e.g. 0x7b2d3e
 };
 
 type SolidEntry = {
@@ -28,11 +29,6 @@ type ClickState =
   | { phase: "dissolve"; elapsed: number; report: GovReportKey };
 
 const LERP_SPEED = 0.08;
-
-const REPORT_COLOR: Record<GovReportKey, number> = {
-  strong_workforce: 0xc47a8a, // warm rose — Foothill maroon family
-  perkins_v:        0x7a9ab8, // steel blue — federal, cool
-};
 
 export function buildGovernmentScene(
   canvas: HTMLCanvasElement,
@@ -76,6 +72,8 @@ export function buildGovernmentScene(
   fillLight.position.set(0, 5, 8);
   scene.add(fillLight);
 
+  const solidColor = callbacks.solidColor;
+
   // ── Helpers ───────────────────────────────────────────────────────────────
   function makeSolid(
     geometry: THREE.BufferGeometry,
@@ -83,7 +81,7 @@ export function buildGovernmentScene(
     rotSpeed: THREE.Vector3,
     report: GovReportKey
   ): SolidEntry {
-    const color = REPORT_COLOR[report];
+    const color = solidColor;
 
     const fillMat = new THREE.MeshPhongMaterial({
       color,
