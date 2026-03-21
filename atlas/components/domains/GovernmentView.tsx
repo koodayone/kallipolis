@@ -14,7 +14,7 @@ const GovernmentCanvas = dynamic(
 );
 
 const REPORT_NAMES: Record<GovReportKey, string> = {
-  strong_workforce: "Strong Workforce Program",
+  strong_workforce: "Strong Workforce",
   perkins_v: "Perkins V",
 };
 
