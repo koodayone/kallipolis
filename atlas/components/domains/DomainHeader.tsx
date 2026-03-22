@@ -63,8 +63,9 @@ export default function DomainHeader({ onBack, school }: Props) {
       <span
         style={{
           position: "absolute",
+          top: "50%",
           left: "50%",
-          transform: "translateX(-50%)",
+          transform: "translate(-50%, calc(-50% + 1px))",
           fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
           fontSize: "15px",
           fontWeight: 600,

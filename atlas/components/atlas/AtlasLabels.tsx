@@ -53,11 +53,34 @@ export default function AtlasLabels({ hoveredDomain, school }: Props) {
         </span>
       </div>
 
+      {/* College name — centered top */}
+      <span
+        style={{
+          position: "absolute",
+          top: "26px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          height: "40px",
+          display: "flex",
+          alignItems: "center",
+          fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+          fontSize: "15px",
+          fontWeight: 600,
+          letterSpacing: "0.1em",
+          textTransform: "uppercase",
+          color: "rgba(255,255,255,0.85)",
+          whiteSpace: "nowrap",
+          pointerEvents: "none",
+        }}
+      >
+        {school.name}
+      </span>
+
       {/* Sun + domain label — fade in together on hover */}
       <div
         style={{
           position: "absolute",
-          top: "calc(24% - 74px)",
+          top: "calc(26% - 74px)",
           left: "50%",
           transform: "translateX(-50%)",
           opacity: hoveredDomain ? 1 : 0,
@@ -88,7 +111,7 @@ export default function AtlasLabels({ hoveredDomain, school }: Props) {
       <div
         style={{
           position: "absolute",
-          top: "calc(24% - 74px)",
+          top: "calc(26% - 74px)",
           left: "50%",
           transform: "translateX(-50%)",
           opacity: hoveredDomain ? 0 : 1,

@@ -95,7 +95,7 @@ export default function CollegeAtlasPage() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
-            style={{ position: "fixed", top: "28px", right: "36px", zIndex: 6 }}
+            style={{ position: "fixed", top: "26px", right: "36px", zIndex: 6 }}
           >
             <AtlasMenu navItems={[{ label: "State View", href: "/state", icon: (
               <svg width="12" height="16" viewBox="0 0 16 22" fill="#c9a84c">
