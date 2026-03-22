@@ -9,6 +9,7 @@ import CaliforniaMap from "@/components/state/CaliforniaMap";
 import RisingSun from "@/components/ui/RisingSun";
 import { College, Region, CALIFORNIA_REGIONS, CALIFORNIA_COLLEGES } from "@/lib/californiaColleges";
 import { getCollegeAtlasConfig } from "@/lib/collegeAtlasConfigs";
+import LogoutButton from "@/components/auth/LogoutButton";
 
 export default function StateView() {
   const router = useRouter();
@@ -119,11 +120,14 @@ export default function StateView() {
             Atlas
           </button>
 
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <img src="/kallipolis-logo.png" alt="Kallipolis" style={{ height: "28px", width: "auto", objectFit: "contain" }} />
-            <span style={{ fontFamily: "var(--font-days-one), sans-serif", fontSize: "16px", color: "#ffffff", lineHeight: 1 }}>
-              Kallipolis
-            </span>
+          <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              <img src="/kallipolis-logo.png" alt="Kallipolis" style={{ height: "28px", width: "auto", objectFit: "contain" }} />
+              <span style={{ fontFamily: "var(--font-days-one), sans-serif", fontSize: "16px", color: "#ffffff", lineHeight: 1 }}>
+                Kallipolis
+              </span>
+            </div>
+            <LogoutButton />
           </div>
         </header>
 

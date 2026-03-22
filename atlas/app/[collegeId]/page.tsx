@@ -9,6 +9,7 @@ import { buildAtlasScene, DomainKey } from "@/lib/atlasScene";
 import { getCollegeAtlasConfig } from "@/lib/collegeAtlasConfigs";
 import AtlasLabels from "@/components/atlas/AtlasLabels";
 import DomainView from "@/components/domains/DomainView";
+import LogoutButton from "@/components/auth/LogoutButton";
 
 const AtlasCanvas = dynamic(() => import("@/components/atlas/AtlasCanvas"), {
   ssr: false,
@@ -95,8 +96,9 @@ export default function CollegeAtlasPage() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
-            style={{ position: "fixed", top: "28px", right: "36px", zIndex: 6 }}
+            style={{ position: "fixed", top: "28px", right: "36px", zIndex: 6, display: "flex", alignItems: "center", gap: "20px" }}
           >
+            <LogoutButton />
             <Link
               href="/state"
               style={{

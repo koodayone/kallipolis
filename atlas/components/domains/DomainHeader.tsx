@@ -2,6 +2,7 @@
 
 import { DomainKey } from "@/lib/atlasScene";
 import { SchoolConfig } from "@/lib/schoolConfig";
+import LogoutButton from "@/components/auth/LogoutButton";
 
 type Props = {
   domain: DomainKey;
@@ -65,29 +66,32 @@ export default function DomainHeader({ onBack, school }: Props) {
         </svg>
       </button>
 
-      {/* Kallipolis wordmark */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "10px",
-        }}
-      >
-        <img
-          src="/kallipolis-logo.png"
-          alt="Kallipolis"
-          style={{ height: "28px", width: "auto", objectFit: "contain" }}
-        />
-        <span
+      <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+        {/* Kallipolis wordmark */}
+        <div
           style={{
-            fontFamily: "var(--font-days-one), sans-serif",
-            fontSize: "16px",
-            color: "#ffffff",
-            lineHeight: 1,
+            display: "flex",
+            alignItems: "center",
+            gap: "10px",
           }}
         >
-          Kallipolis
-        </span>
+          <img
+            src="/kallipolis-logo.png"
+            alt="Kallipolis"
+            style={{ height: "28px", width: "auto", objectFit: "contain" }}
+          />
+          <span
+            style={{
+              fontFamily: "var(--font-days-one), sans-serif",
+              fontSize: "16px",
+              color: "#ffffff",
+              lineHeight: 1,
+            }}
+          >
+            Kallipolis
+          </span>
+        </div>
+        <LogoutButton />
       </div>
     </header>
   );
