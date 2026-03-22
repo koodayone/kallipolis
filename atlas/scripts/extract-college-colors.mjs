@@ -108,7 +108,7 @@ async function main() {
 
   // Only process stacked logos (not -long variants) to get the primary mark
   const logoFiles = files.filter(f => {
-    if (!/^[a-z0-9-]+-logo\.(png|jpg|jpeg|svg|gif)$/i.test(f)) return false;
+    if (!/^[a-z0-9-]+-logo\.(png|jpg|jpeg|svg|gif|webp)$/i.test(f)) return false;
     if (f.includes("-logo-long") || f.includes("-logo-2")) return false;
     const id = f.match(/^(.+)-logo\./)?.[1];
     return id && !EXCLUDE.has(id);
