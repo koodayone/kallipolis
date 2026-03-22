@@ -117,9 +117,18 @@ export default function CaliforniaMap({
       const regionColleges = CALIFORNIA_COLLEGES.filter(
         (c) => c.regionId === activeRegionId,
       );
-      const { center, scale } = fitBounds(regionColleges);
-      setProjCenter(center);
-      setProjScale(scale);
+      if (regionColleges.length > 0) {
+        const { center, scale } = fitBounds(regionColleges);
+        setProjCenter(center);
+        setProjScale(scale);
+      } else {
+        // No colleges (e.g. Desert) — use the region's hardcoded zoom
+        const region = CALIFORNIA_REGIONS.find((r) => r.id === activeRegionId);
+        if (region) {
+          setProjCenter(region.zoomCenter);
+          setProjScale(region.scale);
+        }
+      }
     }
   }, [mapView, activeRegionId]);
 
