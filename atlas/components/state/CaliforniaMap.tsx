@@ -196,7 +196,8 @@ export default function CaliforniaMap({
                 >
                   <motion.text
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: hoveredRegionId === region.id ? 1 : 0.85 }}
+                    animate={{ opacity: hoveredRegionId === region.id ? 1 : 0.3 }}
+                    transition={{ duration: 0.15 }}
                     textAnchor="middle"
                     style={{
                       fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
@@ -204,10 +205,9 @@ export default function CaliforniaMap({
                       fontWeight: 700,
                       letterSpacing: "0.1em",
                       textTransform: "uppercase",
-                      fill: hoveredRegionId === region.id ? "#c9a84c" : "rgba(255,255,255,0.92)",
+                      fill: "rgba(255,255,255,0.92)",
                       pointerEvents: "none",
                       userSelect: "none",
-                      transition: "fill 0.15s",
                     }}
                   >
                     {region.name.includes(" / ") ? (
