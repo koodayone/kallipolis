@@ -20,6 +20,48 @@ const BASE_SCALE = 2500;
 
 const DIAMOND = 6; // half-size of diamond marker
 
+const MAP_WIDTH = 400;
+const MAP_HEIGHT = 500;
+const FIT_PADDING = 0.15; // 15% padding around college bounds
+
+/**
+ * Compute projection center and scale that fits all given colleges
+ * within the map viewport with padding.
+ */
+function fitBounds(
+  colleges: College[],
+): { center: [number, number]; scale: number } {
+  if (colleges.length === 0) return { center: BASE_CENTER, scale: BASE_SCALE };
+
+  const lngs = colleges.map((c) => c.lng);
+  const lats = colleges.map((c) => c.lat);
+
+  const minLng = Math.min(...lngs);
+  const maxLng = Math.max(...lngs);
+  const minLat = Math.min(...lats);
+  const maxLat = Math.max(...lats);
+
+  const centerLng = (minLng + maxLng) / 2;
+  const centerLat = (minLat + maxLat) / 2;
+
+  // Expand bounds by padding factor
+  const dLng = (maxLng - minLng) * (1 + FIT_PADDING) || 1;
+  const dLat = (maxLat - minLat) * (1 + FIT_PADDING) || 1;
+
+  // For Mercator, scale ≈ viewportDimension / (radians of extent)
+  // Convert degrees to radians for the calculation
+  const lngRadians = (dLng * Math.PI) / 180;
+  const latRadians = (dLat * Math.PI) / 180;
+
+  const scaleByWidth = MAP_WIDTH / lngRadians;
+  const scaleByHeight = MAP_HEIGHT / latRadians;
+
+  // Use the smaller scale so everything fits
+  const scale = Math.min(scaleByWidth, scaleByHeight);
+
+  return { center: [centerLng, centerLat], scale };
+}
+
 type Props = {
   mapView: "state" | "region";
   activeRegionId: string | null;
@@ -70,11 +112,12 @@ export default function CaliforniaMap({
       setProjCenter(BASE_CENTER);
       setProjScale(BASE_SCALE);
     } else if (activeRegionId) {
-      const region = CALIFORNIA_REGIONS.find((r) => r.id === activeRegionId);
-      if (region) {
-        setProjCenter(region.zoomCenter);
-        setProjScale(region.scale);
-      }
+      const regionColleges = CALIFORNIA_COLLEGES.filter(
+        (c) => c.regionId === activeRegionId,
+      );
+      const { center, scale } = fitBounds(regionColleges);
+      setProjCenter(center);
+      setProjScale(scale);
     }
   }, [mapView, activeRegionId]);
 
