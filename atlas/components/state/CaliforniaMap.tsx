@@ -22,11 +22,19 @@ const DIAMOND = 6; // half-size of diamond marker
 
 const MAP_WIDTH = 400;
 const MAP_HEIGHT = 500;
-const FIT_PADDING = 0.15; // 15% padding around college bounds
+const FIT_PADDING = 0.35; // 35% padding so edge markers have room for labels
+
+/**
+ * Convert latitude to Mercator y (radians).
+ */
+function mercatorY(lat: number): number {
+  const rad = (lat * Math.PI) / 180;
+  return Math.log(Math.tan(Math.PI / 4 + rad / 2));
+}
 
 /**
  * Compute projection center and scale that fits all given colleges
- * within the map viewport with padding.
+ * within the map viewport with padding, accounting for Mercator distortion.
  */
 function fitBounds(
   colleges: College[],
@@ -44,19 +52,13 @@ function fitBounds(
   const centerLng = (minLng + maxLng) / 2;
   const centerLat = (minLat + maxLat) / 2;
 
-  // Expand bounds by padding factor
-  const dLng = (maxLng - minLng) * (1 + FIT_PADDING) || 1;
-  const dLat = (maxLat - minLat) * (1 + FIT_PADDING) || 1;
+  // Mercator: longitude maps linearly, latitude uses log-tan
+  const dLngRad = ((maxLng - minLng) * (1 + FIT_PADDING) * Math.PI) / 180 || 0.01;
+  const dMercY = (mercatorY(maxLat) - mercatorY(minLat)) * (1 + FIT_PADDING) || 0.01;
 
-  // For Mercator, scale ≈ viewportDimension / (radians of extent)
-  // Convert degrees to radians for the calculation
-  const lngRadians = (dLng * Math.PI) / 180;
-  const latRadians = (dLat * Math.PI) / 180;
+  const scaleByWidth = MAP_WIDTH / dLngRad;
+  const scaleByHeight = MAP_HEIGHT / dMercY;
 
-  const scaleByWidth = MAP_WIDTH / lngRadians;
-  const scaleByHeight = MAP_HEIGHT / latRadians;
-
-  // Use the smaller scale so everything fits
   const scale = Math.min(scaleByWidth, scaleByHeight);
 
   return { center: [centerLng, centerLat], scale };

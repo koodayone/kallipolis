@@ -54,9 +54,11 @@ export default function StateView() {
 
   const activeRegion = CALIFORNIA_REGIONS.find((r) => r.id === activeRegionId) ?? null;
   const activeCollege = selectedCollege ?? hoveredCollege;
-  const regionCollegeCount = activeRegionId
-    ? CALIFORNIA_COLLEGES.filter((c) => c.regionId === activeRegionId).length
-    : 0;
+  const regionColleges = activeRegionId
+    ? CALIFORNIA_COLLEGES.filter((c) => c.regionId === activeRegionId)
+    : [];
+  const regionCollegeCount = regionColleges.length;
+  const regionDistrictCount = new Set(regionColleges.map((c) => c.district)).size;
 
   // Right panel label under the map
   const mapLabel = mapView === "region" && activeRegion
@@ -271,7 +273,7 @@ export default function StateView() {
                 </motion.div>
               ) : mapView === "region" && activeRegion ? (
                 <motion.div key={`region-${activeRegion.id}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}>
-                  <RegionPanel region={activeRegion} collegeCount={regionCollegeCount} />
+                  <RegionPanel region={activeRegion} collegeCount={regionCollegeCount} districtCount={regionDistrictCount} />
                 </motion.div>
               ) : (
                 <motion.div key="default" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}>
@@ -292,7 +294,7 @@ function DefaultPanel() {
   return null;
 }
 
-function RegionPanel({ region, collegeCount }: { region: Region; collegeCount: number }) {
+function RegionPanel({ region, collegeCount, districtCount }: { region: Region; collegeCount: number; districtCount: number }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
       <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
@@ -300,7 +302,7 @@ function RegionPanel({ region, collegeCount }: { region: Region; collegeCount: n
           {region.name}
         </h2>
         <span style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "12px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)" }}>
-          {region.collegeCount} colleges · {region.counties.length} {region.counties.length === 1 ? "county" : "counties"}
+          {collegeCount} {collegeCount === 1 ? "college" : "colleges"} · {districtCount} {districtCount === 1 ? "district" : "districts"}
         </span>
       </div>
 
