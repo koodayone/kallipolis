@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -9,10 +9,25 @@ import CaliforniaMap from "@/components/state/CaliforniaMap";
 import RisingSun from "@/components/ui/RisingSun";
 import { College, Region, CALIFORNIA_REGIONS, CALIFORNIA_COLLEGES } from "@/lib/californiaColleges";
 import { getCollegeAtlasConfig } from "@/lib/collegeAtlasConfigs";
-import LogoutButton from "@/components/auth/LogoutButton";
+import AtlasMenu from "@/components/auth/AtlasMenu";
+import type { SchoolConfig } from "@/lib/schoolConfig";
 
 export default function StateView() {
   const router = useRouter();
+  const [userSchool, setUserSchool] = useState<SchoolConfig | null>(null);
+  const [userCollegeId, setUserCollegeId] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch("/api/auth/me")
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.user?.collegeId) {
+          setUserCollegeId(data.user.collegeId);
+          setUserSchool(getCollegeAtlasConfig(data.user.collegeId) ?? null);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   const [mapView, setMapView] = useState<"state" | "region">("state");
   const [activeRegionId, setActiveRegionId] = useState<string | null>(null);
@@ -94,30 +109,31 @@ export default function StateView() {
           }}
         >
           <button
-            onClick={() => router.back()}
+            onClick={() => userCollegeId ? router.push(`/${userCollegeId}`) : router.back()}
             style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "6px",
               background: "none",
               border: "none",
               cursor: "pointer",
-              padding: "6px 0",
-              color: "#ffffff",
-              fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-              fontSize: "12px",
-              fontWeight: 500,
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
+              padding: "8px",
+              color: userSchool?.brandColorLight ?? "rgba(255,255,255,0.7)",
               transition: "opacity 0.15s",
+              display: "flex",
+              alignItems: "center",
+              gap: "6px",
             }}
-            onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = "0.65")}
+            onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = "0.7")}
             onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = "1")}
+            aria-label="Back to Atlas"
           >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M10 12L6 8l4-4" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L3 7.5 12 13l9-5.5L12 2z" fill={userSchool?.brandColor ?? "rgba(255,255,255,0.3)"} opacity="0.85" />
+              <path d="M12 13v9l9-5.5v-9L12 13z" fill={userSchool?.brandColor ?? "rgba(255,255,255,0.3)"} opacity="0.55" />
+              <path d="M12 13v9L3 16.5v-9L12 13z" fill={userSchool?.brandColor ?? "rgba(255,255,255,0.3)"} opacity="0.4" />
+              <path d="M12 2L3 7.5v9L12 22l9-5.5v-9L12 2z M12 13L3 7.5 M12 13l9-5.5 M12 13v9" stroke="rgba(255,255,255,0.55)" strokeWidth="0.7" />
             </svg>
-            Atlas
+            <svg width="20" height="20" viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8l4-4" stroke="rgba(255,255,255,0.85)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </button>
 
           <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
@@ -127,7 +143,14 @@ export default function StateView() {
                 Kallipolis
               </span>
             </div>
-            <LogoutButton />
+            <AtlasMenu navItems={[{ label: "Home View", href: userCollegeId ? `/${userCollegeId}` : "/", icon: (
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2L3 7.5 12 13l9-5.5L12 2z" fill={userSchool?.brandColor ?? "rgba(255,255,255,0.3)"} opacity="0.85" />
+                <path d="M12 13v9l9-5.5v-9L12 13z" fill={userSchool?.brandColor ?? "rgba(255,255,255,0.3)"} opacity="0.55" />
+                <path d="M12 13v9L3 16.5v-9L12 13z" fill={userSchool?.brandColor ?? "rgba(255,255,255,0.3)"} opacity="0.4" />
+                <path d="M12 2L3 7.5v9L12 22l9-5.5v-9L12 2z M12 13L3 7.5 M12 13l9-5.5 M12 13v9" stroke="rgba(255,255,255,0.55)" strokeWidth="0.7" />
+              </svg>
+            ) }]} />
           </div>
         </header>
 

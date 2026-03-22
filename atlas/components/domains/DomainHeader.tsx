@@ -1,8 +1,9 @@
 "use client";
 
+import { useParams } from "next/navigation";
 import { DomainKey } from "@/lib/atlasScene";
 import { SchoolConfig } from "@/lib/schoolConfig";
-import LogoutButton from "@/components/auth/LogoutButton";
+import AtlasMenu from "@/components/auth/AtlasMenu";
 
 type Props = {
   domain: DomainKey;
@@ -11,6 +12,7 @@ type Props = {
 };
 
 export default function DomainHeader({ onBack, school }: Props) {
+  const { collegeId } = useParams<{ collegeId: string }>();
 
   return (
     <header
@@ -28,41 +30,32 @@ export default function DomainHeader({ onBack, school }: Props) {
         justifyContent: "space-between",
       }}
     >
-      {/* Back button — Kallipolis logo + gold Atlas label */}
+      {/* Home button — branded icon, navigates to atlas */}
       <button
         onClick={onBack}
         style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "8px",
           background: "none",
           border: "none",
           cursor: "pointer",
-          padding: "6px 0",
-          color: "#ffffff",
-          fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-          fontSize: "12px",
-          fontWeight: 500,
-          letterSpacing: "0.08em",
-          textTransform: "uppercase",
+          padding: "8px",
+          color: school.brandColorLight,
           transition: "opacity 0.15s",
+          display: "flex",
+          alignItems: "center",
+          gap: "6px",
         }}
-        onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = "0.75")}
+        onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = "0.7")}
         onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = "1")}
+        aria-label={`Back to ${school.name} Atlas`}
       >
-        <img
-          src={school.logoPath}
-          alt={school.name}
-          style={{ height: "28px", width: "auto", objectFit: "contain" }}
-        />
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path
-            d="M10 12L6 8l4-4"
-            stroke="#ffffff"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L3 7.5 12 13l9-5.5L12 2z" fill={school.brandColor} opacity="0.85" />
+          <path d="M12 13v9l9-5.5v-9L12 13z" fill={school.brandColor} opacity="0.55" />
+          <path d="M12 13v9L3 16.5v-9L12 13z" fill={school.brandColor} opacity="0.4" />
+          <path d="M12 2L3 7.5v9L12 22l9-5.5v-9L12 2z M12 13L3 7.5 M12 13l9-5.5 M12 13v9" stroke="rgba(255,255,255,0.55)" strokeWidth="0.7" />
+        </svg>
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="none">
+          <path d="M10 12L6 8l4-4" stroke="rgba(255,255,255,0.85)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>
 
@@ -91,7 +84,16 @@ export default function DomainHeader({ onBack, school }: Props) {
             Kallipolis
           </span>
         </div>
-        <LogoutButton />
+        <AtlasMenu navItems={[
+          { label: "Home View", onClick: onBack, icon: (
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L3 7.5 12 13l9-5.5L12 2z" fill={school.brandColor} opacity="0.85" />
+              <path d="M12 13v9l9-5.5v-9L12 13z" fill={school.brandColor} opacity="0.55" />
+              <path d="M12 13v9L3 16.5v-9L12 13z" fill={school.brandColor} opacity="0.4" />
+              <path d="M12 2L3 7.5v9L12 22l9-5.5v-9L12 2z M12 13L3 7.5 M12 13l9-5.5 M12 13v9" stroke="rgba(255,255,255,0.55)" strokeWidth="0.7" />
+            </svg>
+          ) },
+        ]} />
       </div>
     </header>
   );

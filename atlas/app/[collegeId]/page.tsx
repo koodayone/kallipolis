@@ -3,13 +3,12 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
-import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { buildAtlasScene, DomainKey } from "@/lib/atlasScene";
 import { getCollegeAtlasConfig } from "@/lib/collegeAtlasConfigs";
 import AtlasLabels from "@/components/atlas/AtlasLabels";
 import DomainView from "@/components/domains/DomainView";
-import LogoutButton from "@/components/auth/LogoutButton";
+import AtlasMenu from "@/components/auth/AtlasMenu";
 
 const AtlasCanvas = dynamic(() => import("@/components/atlas/AtlasCanvas"), {
   ssr: false,
@@ -87,47 +86,22 @@ export default function CollegeAtlasPage() {
         />
       </div>
 
-      {/* State View nav link */}
+      {/* Menu — top-right, visible on home screen only */}
       <AnimatePresence>
         {showLabels && (
           <motion.div
-            key="state-nav"
+            key="atlas-menu"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
-            style={{ position: "fixed", top: "28px", right: "36px", zIndex: 6, display: "flex", alignItems: "center", gap: "20px" }}
+            style={{ position: "fixed", top: "28px", right: "36px", zIndex: 6 }}
           >
-            <LogoutButton />
-            <Link
-              href="/state"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "6px",
-                fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-                fontSize: "11px",
-                fontWeight: 500,
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-                color: "rgba(255,255,255,0.65)",
-                textDecoration: "none",
-                transition: "color 0.15s",
-              }}
-              onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#ffffff")}
-              onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.65)")}
-            >
-              State View
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                <path
-                  d="M2.5 6h7M6 2.5l3.5 3.5L6 9.5"
-                  stroke="currentColor"
-                  strokeWidth="1.3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
+            <AtlasMenu navItems={[{ label: "State View", href: "/state", icon: (
+              <svg width="12" height="16" viewBox="0 0 16 22" fill="#c9a84c">
+                <path d="M0.0,3.6L0.9,5.0L1.1,7.2L2.5,9.1L2.2,8.7L2.2,9.3L3.0,9.7L3.1,9.0L4.6,9.2L3.2,9.3L3.9,10.6L3.1,9.7L2.9,10.4L3.2,11.3L4.2,12.0L3.8,12.6L3.9,13.2L5.9,16.0L5.9,17.3L9.2,18.5L9.3,19.2L10.8,20.2L11.3,22.0L15.4,21.5L15.1,20.0L15.5,18.4L16.0,18.0L15.2,16.3L6.9,7.0L6.9,0.0L0.3,0.0L0.5,1.3L0.3,2.9L0.5,2.7L0.0,3.6Z" />
               </svg>
-            </Link>
+            ) }]} />
           </motion.div>
         )}
       </AnimatePresence>

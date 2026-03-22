@@ -4,18 +4,31 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
+const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
+
 const inputStyle: React.CSSProperties = {
   width: "100%",
-  background: "rgba(255,255,255,0.05)",
+  height: "52px",
+  background: "rgba(255,255,255,0.04)",
   border: "1px solid rgba(255,255,255,0.12)",
-  borderRadius: "6px",
-  padding: "12px 16px",
+  borderRadius: "8px",
+  padding: "0 18px",
   color: "#ffffff",
-  fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+  fontFamily: FONT,
   fontSize: "14px",
   outline: "none",
   boxSizing: "border-box",
+  transition: "border-color 0.2s, background 0.2s",
 };
+
+function handleFocus(e: React.FocusEvent<HTMLInputElement>) {
+  e.currentTarget.style.borderColor = "rgba(201,168,76,0.6)";
+  e.currentTarget.style.background = "rgba(255,255,255,0.06)";
+}
+function handleBlur(e: React.FocusEvent<HTMLInputElement>) {
+  e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)";
+  e.currentTarget.style.background = "rgba(255,255,255,0.04)";
+}
 
 export default function LoginForm() {
   const router = useRouter();
@@ -63,16 +76,19 @@ export default function LoginForm() {
         zIndex: 50,
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "48px" }}>
+      {/* Logotype */}
+      <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "64px" }}>
         <img
           src="/kallipolis-logo.png"
           alt="Kallipolis"
-          style={{ height: "36px", width: "auto", objectFit: "contain" }}
+          style={{ height: "56px", width: "auto", objectFit: "contain" }}
         />
         <span
           style={{
             fontFamily: "var(--font-days-one), sans-serif",
-            fontSize: "22px",
+            fontSize: "34px",
+            fontWeight: 400,
+            letterSpacing: "0.04em",
             color: "#ffffff",
             lineHeight: 1,
           }}
@@ -81,66 +97,87 @@ export default function LoginForm() {
         </span>
       </div>
 
-      <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "16px", width: "100%", maxWidth: "400px" }}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          style={inputStyle}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          style={inputStyle}
-        />
+      {/* Card */}
+      <div
+        style={{
+          width: "100%",
+          maxWidth: "420px",
+          background: "rgba(255,255,255,0.03)",
+          border: "1px solid rgba(255,255,255,0.08)",
+          borderRadius: "16px",
+          padding: "32px 28px",
+        }}
+      >
+        <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            style={inputStyle}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            style={inputStyle}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+          />
 
-        {error && (
-          <span style={{ color: "#e55", fontSize: "13px", fontFamily: "var(--font-inter), Inter, system-ui, sans-serif" }}>
-            {error}
-          </span>
-        )}
+          {error && (
+            <span style={{ color: "#e55", fontSize: "13px", fontFamily: FONT }}>
+              {error}
+            </span>
+          )}
 
-        <button
-          type="submit"
-          disabled={loading}
-          style={{
-            padding: "12px 24px",
-            background: loading ? "rgba(201,168,76,0.5)" : "#c9a84c",
-            color: "#111827",
-            border: "none",
-            borderRadius: "6px",
-            fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-            fontSize: "14px",
-            fontWeight: 600,
-            cursor: loading ? "default" : "pointer",
-            transition: "opacity 0.15s",
-          }}
-        >
-          {loading ? "Signing in..." : "Sign in"}
-        </button>
-
-        <div style={{ textAlign: "center", marginTop: "8px" }}>
-          <Link
-            href="/register"
+          <button
+            type="submit"
+            disabled={loading}
             style={{
-              color: "rgba(255,255,255,0.5)",
-              fontSize: "13px",
-              fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-              textDecoration: "none",
-              transition: "color 0.15s",
+              width: "100%",
+              height: "52px",
+              marginTop: "8px",
+              background: loading ? "rgba(201,168,76,0.5)" : "#c9a84c",
+              color: "#0f1f3d",
+              border: "none",
+              borderRadius: "8px",
+              fontFamily: FONT,
+              fontSize: "15px",
+              fontWeight: 600,
+              letterSpacing: "0.02em",
+              cursor: loading ? "default" : "pointer",
+              transition: "background 0.15s",
             }}
-            onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#ffffff")}
-            onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.5)")}
+            onMouseEnter={(e) => { if (!loading) e.currentTarget.style.background = "#d4b65c"; }}
+            onMouseLeave={(e) => { if (!loading) e.currentTarget.style.background = "#c9a84c"; }}
           >
-            Create an account
-          </Link>
-        </div>
-      </form>
+            {loading ? "Signing in..." : "Sign in"}
+          </button>
+
+          <div style={{ textAlign: "center", marginTop: "12px" }}>
+            <Link
+              href="/register"
+              style={{
+                color: "rgba(255,255,255,0.45)",
+                fontSize: "13px",
+                fontFamily: FONT,
+                textDecoration: "none",
+                transition: "color 0.15s",
+              }}
+              onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#ffffff")}
+              onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.45)")}
+            >
+              Create an account
+            </Link>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
