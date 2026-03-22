@@ -12,9 +12,8 @@ const generatedConfigs = Object.fromEntries(
       c.id,
       makeSchoolConfig(
         c.name,
-        c.logoStacked!,
+        `/logos/${c.id}.png`,
         COLLEGE_COLORS[c.id] ?? DEFAULT_BRAND_COLOR,
-        c.logoLongform,
       ),
     ])
 );

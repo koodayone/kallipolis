@@ -99,11 +99,13 @@ export default function AtlasLabels({ hoveredDomain, school }: Props) {
           gap: "10px",
         }}
       >
-        <img
-          src={school.logoPath}
-          alt={school.name}
-          style={{ height: "72px", width: "auto", objectFit: "contain" }}
-        />
+        <div style={{ width: "320px", height: "100px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <img
+            src={school.logoPath}
+            alt={school.name}
+            style={{ maxHeight: "100px", maxWidth: "320px", objectFit: "contain" }}
+          />
+        </div>
         <span
           style={{
             fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",

@@ -19,7 +19,7 @@ const NODE_NAMES: Record<IndustryNodeKey, string> = {
   research: "Research",
 };
 
-const CANVAS_HEIGHT = 360;
+const CANVAS_HEIGHT = 300;
 const CAMERA_Z = 5.5;
 const TAN_HALF_FOV = Math.tan((50 / 2) * (Math.PI / 180));
 const NODE_WORLD_X: Record<IndustryNodeKey, number> = {
@@ -64,7 +64,8 @@ export default function IndustryView({ school }: Props) {
     const el = containerRef.current;
     if (!el) return;
     const compute = () => {
-      const w = el.clientWidth;
+      const canvas = el.querySelector("canvas");
+      const w = canvas ? canvas.clientWidth : el.clientWidth;
       if (w === 0) return;
       setLabelPositions({
         partnerships: projectWorldX(NODE_WORLD_X.partnerships, w),
@@ -114,22 +115,37 @@ export default function IndustryView({ school }: Props) {
             <div
               style={{
                 display: "flex",
+                flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                paddingTop: "36px",
-                paddingBottom: "36px",
-                borderBottom: "1px solid rgba(255,255,255,0.1)",
+                gap: "14px",
+                paddingTop: "48px",
+                paddingBottom: "16px",
               }}
             >
               <img
-                src={school.logoPathWide ?? school.logoPath}
+                src={school.logoPath}
                 alt={school.name}
-                style={{ height: "60px", width: "auto", objectFit: "contain" }}
+                style={{ height: "100px", width: "auto", objectFit: "contain" }}
               />
+              <span
+                style={{
+                  fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+                  fontSize: "15px",
+                  letterSpacing: "0.1em",
+                  color: "rgba(255,255,255,0.85)",
+                  textTransform: "uppercase",
+                  whiteSpace: "nowrap",
+                  opacity: hoveredNode !== null && industryState === "hub" ? 0 : 1,
+                  transition: "opacity 0.5s ease-in-out",
+                }}
+              >
+                Select Industry Domain
+              </span>
             </div>
 
             {/* Mini 3D scene */}
-            <div ref={containerRef} style={{ position: "relative", height: "360px", width: "100%" }}>
+            <div ref={containerRef} style={{ position: "relative", height: "300px", width: "100%" }}>
               <IndustryCanvas
                 onNodeClick={handleNodeClick}
                 onHoverChange={setHoveredNode}
@@ -140,7 +156,7 @@ export default function IndustryView({ school }: Props) {
 
               <RisingSun style={{
                 position: "absolute",
-                top: "13%",
+                top: "10%",
                 left: lastHoveredNode.current ? `${labelPositions[lastHoveredNode.current]}%` : "50%",
                 transform: "translate(-50%, -50%)",
                 opacity: hoveredNode !== null && industryState === "hub" ? 1 : 0,
@@ -154,7 +170,7 @@ export default function IndustryView({ school }: Props) {
                   key={key}
                   style={{
                     position: "absolute",
-                    bottom: "48px",
+                    bottom: "40px",
                     left: `${labelPositions[key]}%`,
                     transform: "translateX(-50%)",
                     pointerEvents: "none",

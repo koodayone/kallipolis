@@ -52,7 +52,7 @@ export default function AtlasMenu({ navItems = DEFAULT_NAV }: Props) {
           padding: "8px",
           display: "flex",
           flexDirection: "column",
-          gap: "4px",
+          gap: "5px",
           transition: "opacity 0.15s",
         }}
         onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = "1")}
@@ -64,8 +64,8 @@ export default function AtlasMenu({ navItems = DEFAULT_NAV }: Props) {
             key={i}
             style={{
               display: "block",
-              width: "20px",
-              height: "1.5px",
+              width: "24px",
+              height: "2px",
               background: "rgba(255,255,255,0.65)",
               borderRadius: "1px",
             }}

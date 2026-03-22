@@ -20,14 +20,14 @@ export default function DomainHeader({ onBack, school }: Props) {
         position: "sticky",
         top: 0,
         zIndex: 20,
-        background: "rgba(5, 14, 27, 0.95)",
+        background: "rgba(4, 30, 84, 0.95)",
         backdropFilter: "blur(8px)",
-        borderBottom: "1px solid rgba(255,255,255,0.07)",
         padding: "0 40px",
-        height: "64px",
+        height: "72px",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
+        position: "relative",
       }}
     >
       {/* Home button — branded icon, navigates to atlas */}
@@ -48,42 +48,37 @@ export default function DomainHeader({ onBack, school }: Props) {
         onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = "1")}
         aria-label={`Back to ${school.name} Atlas`}
       >
-        <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
           <path d="M12 2L3 7.5 12 13l9-5.5L12 2z" fill={school.brandColor} opacity="0.85" />
           <path d="M12 13v9l9-5.5v-9L12 13z" fill={school.brandColor} opacity="0.55" />
           <path d="M12 13v9L3 16.5v-9L12 13z" fill={school.brandColor} opacity="0.4" />
           <path d="M12 2L3 7.5v9L12 22l9-5.5v-9L12 2z M12 13L3 7.5 M12 13l9-5.5 M12 13v9" stroke="rgba(255,255,255,0.55)" strokeWidth="0.7" />
         </svg>
-        <svg width="20" height="20" viewBox="0 0 16 16" fill="none">
+        <svg width="24" height="24" viewBox="0 0 16 16" fill="none">
           <path d="M10 12L6 8l4-4" stroke="rgba(255,255,255,0.85)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>
 
+      {/* College name — centered */}
+      <span
+        style={{
+          position: "absolute",
+          left: "50%",
+          transform: "translateX(-50%)",
+          fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+          fontSize: "15px",
+          fontWeight: 600,
+          letterSpacing: "0.1em",
+          textTransform: "uppercase",
+          color: "rgba(255,255,255,0.85)",
+          whiteSpace: "nowrap",
+          pointerEvents: "none",
+        }}
+      >
+        {school.name}
+      </span>
+
       <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-        {/* Kallipolis wordmark */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-          }}
-        >
-          <img
-            src="/kallipolis-logo.png"
-            alt="Kallipolis"
-            style={{ height: "28px", width: "auto", objectFit: "contain" }}
-          />
-          <span
-            style={{
-              fontFamily: "var(--font-days-one), sans-serif",
-              fontSize: "16px",
-              color: "#ffffff",
-              lineHeight: 1,
-            }}
-          >
-            Kallipolis
-          </span>
-        </div>
         <AtlasMenu navItems={[
           { label: "Home View", onClick: onBack, icon: (
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">

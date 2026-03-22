@@ -345,9 +345,9 @@ function SchoolPanel({ college }: { college: College }) {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
-      {(college.logoLongform ?? college.logoStacked) && (
+      {college.logoStacked && (
         <img
-          src={college.logoLongform ?? college.logoStacked}
+          src={`/logos/${college.id}.png`}
           alt={college.name}
           style={{
             height: "44px",

@@ -135,7 +135,7 @@ export default function CollegeAtlasPage() {
               position: "fixed",
               inset: 0,
               zIndex: 10,
-              background: "#050e1b",
+              background: "#041e54",
               overflowY: "auto",
             }}
           >
