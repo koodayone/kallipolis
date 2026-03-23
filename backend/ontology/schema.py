@@ -26,9 +26,51 @@ def close_driver():
         _driver = None
 
 
+def _migrate_curriculum_to_course(session):
+    """Idempotent migration: rename Curriculum→Course, create Department nodes."""
+    # Check if any Curriculum nodes exist
+    count = session.run("MATCH (n:Curriculum) RETURN count(n) AS cnt").single()["cnt"]
+    if count == 0:
+        return  # Already migrated or fresh DB
+
+    logger.info(f"Migrating {count} Curriculum nodes to Course nodes...")
+
+    # Drop old constraint if it exists
+    try:
+        session.run("DROP CONSTRAINT curriculum_name IF EXISTS")
+    except Exception:
+        pass
+
+    # Rename labels
+    session.run("MATCH (c:Curriculum) REMOVE c:Curriculum SET c:Course")
+
+    # Create Department nodes from distinct department values
+    session.run("""
+        MATCH (c:Course)
+        WHERE c.department IS NOT NULL
+        WITH DISTINCT c.department AS dept
+        MERGE (d:Department {name: dept})
+    """)
+
+    # Create Department→Course relationships
+    session.run("""
+        MATCH (c:Course)
+        WHERE c.department IS NOT NULL
+        MATCH (d:Department {name: c.department})
+        MERGE (d)-[:CONTAINS]->(c)
+    """)
+
+    # Verify student enrollments still resolve
+    student_count = session.run(
+        "MATCH (s:Student)-[:ENROLLED_IN]->(c:Course) RETURN count(c) AS cnt"
+    ).single()["cnt"]
+    logger.info(f"Migration complete. Student enrollments verified: {student_count}")
+
+
 def init_schema():
     driver = get_driver()
     with driver.session() as session:
+        _migrate_curriculum_to_course(session)
         _create_constraints(session)
         if _is_empty(session):
             logger.info("Seeding Neo4j with Sierra Vista Community College data...")
@@ -42,7 +84,8 @@ def _create_constraints(session):
     constraints = [
         "CREATE CONSTRAINT institution_name IF NOT EXISTS FOR (n:Institution) REQUIRE n.name IS UNIQUE",
         "CREATE CONSTRAINT program_name IF NOT EXISTS FOR (n:Program) REQUIRE n.name IS UNIQUE",
-        "CREATE CONSTRAINT curriculum_name IF NOT EXISTS FOR (n:Curriculum) REQUIRE n.name IS UNIQUE",
+        "CREATE CONSTRAINT course_name IF NOT EXISTS FOR (n:Course) REQUIRE n.name IS UNIQUE",
+        "CREATE CONSTRAINT department_name IF NOT EXISTS FOR (n:Department) REQUIRE n.name IS UNIQUE",
         "CREATE CONSTRAINT employer_name IF NOT EXISTS FOR (n:Employer) REQUIRE n.name IS UNIQUE",
         "CREATE CONSTRAINT region_name IF NOT EXISTS FOR (n:LaborMarketRegion) REQUIRE n.name IS UNIQUE",
         "CREATE CONSTRAINT jobrole_title IF NOT EXISTS FOR (n:JobRole) REQUIRE n.title IS UNIQUE",
@@ -116,12 +159,12 @@ def _seed(session):
             MERGE (i)-[:OFFERS]->(p)
         """, program_name=program_name)
 
-        for curriculum_name in curricula:
+        for course_name in curricula:
             session.run("""
                 MATCH (p:Program {name: $program_name})
-                MERGE (c:Curriculum {name: $curriculum_name, program: $program_name})
+                MERGE (c:Course {name: $course_name, program: $program_name})
                 MERGE (p)-[:CONTAINS]->(c)
-            """, program_name=program_name, curriculum_name=curriculum_name)
+            """, program_name=program_name, course_name=course_name)
 
     # ── Employers & Job Roles ─────────────────────────────────────────────────
     employers_roles = {
@@ -361,14 +404,28 @@ def _seed(session):
         },
     }
 
-    for curriculum_name, details in curriculum_details.items():
+    for course_name, details in curriculum_details.items():
         session.run("""
-            MATCH (c:Curriculum {name: $name})
+            MATCH (c:Course {name: $name})
             SET c.code = $code,
                 c.department = $department,
                 c.learning_outcomes = $learning_outcomes,
                 c.skill_mappings = $skill_mappings
-        """, name=curriculum_name, **details)
+        """, name=course_name, **details)
+
+    # ── Department nodes ─────────────────────────────────────────────────────
+    session.run("""
+        MATCH (c:Course)
+        WHERE c.department IS NOT NULL
+        WITH DISTINCT c.department AS dept
+        MERGE (d:Department {name: dept})
+    """)
+    session.run("""
+        MATCH (c:Course)
+        WHERE c.department IS NOT NULL
+        MATCH (d:Department {name: c.department})
+        MERGE (d)-[:CONTAINS]->(c)
+    """)
 
     # ── Anonymous Students with Enrollments ──────────────────────────────────
     terms = ["Fall 2023", "Spring 2024", "Fall 2024", "Spring 2025"]
@@ -391,6 +448,6 @@ def _seed(session):
 
             session.run("""
                 MATCH (s:Student {uuid: $uuid})
-                MATCH (c:Curriculum {name: $course_name})
+                MATCH (c:Course {name: $course_name})
                 CREATE (s)-[:ENROLLED_IN {grade: $grade, term: $term, status: $status}]->(c)
             """, uuid=student_uuid, course_name=course_name, grade=grade, term=term, status=status)

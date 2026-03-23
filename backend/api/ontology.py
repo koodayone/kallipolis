@@ -1,7 +1,7 @@
 from collections import Counter
 from fastapi import APIRouter, HTTPException
 from ontology.schema import get_driver
-from models import InstitutionSummary, ProgramSummary, StudentSummary, StudentDetail, StudentEnrollment
+from models import InstitutionSummary, ProgramSummary, StudentSummary, StudentDetail, StudentEnrollment, DepartmentSummary, CourseSummary
 
 router = APIRouter()
 
@@ -12,7 +12,7 @@ def get_institution():
     try:
         with driver.session() as session:
             result = session.run("""
-                MATCH (i:Institution)-[:OFFERS]->(p:Program)-[:CONTAINS]->(c:Curriculum)
+                MATCH (i:Institution)-[:OFFERS]->(p:Program)-[:CONTAINS]->(c:Course)
                 RETURN i.name AS institution_name, i.region AS region,
                        p.name AS program, collect(c.name) AS curricula
                 ORDER BY p.name
@@ -46,7 +46,7 @@ def get_programs():
     try:
         with driver.session() as session:
             result = session.run("""
-                MATCH (p:Program)-[:CONTAINS]->(c:Curriculum)
+                MATCH (p:Program)-[:CONTAINS]->(c:Course)
                 RETURN p.name AS program, collect(c.name) AS curricula
                 ORDER BY p.name
             """)
@@ -83,7 +83,7 @@ def get_students():
     try:
         with driver.session() as session:
             result = session.run("""
-                MATCH (s:Student)-[e:ENROLLED_IN]->(c:Curriculum)
+                MATCH (s:Student)-[e:ENROLLED_IN]->(c:Course)
                 WITH s, collect({
                     name: c.name,
                     department: c.department,
@@ -120,7 +120,7 @@ def get_student(student_uuid: str):
     try:
         with driver.session() as session:
             result = session.run("""
-                MATCH (s:Student {uuid: $uuid})-[e:ENROLLED_IN]->(c:Curriculum)
+                MATCH (s:Student {uuid: $uuid})-[e:ENROLLED_IN]->(c:Course)
                 RETURN s.uuid AS uuid,
                        c.name AS course_name,
                        c.department AS department,
@@ -167,5 +167,48 @@ def get_student(student_uuid: str):
         )
     except HTTPException:
         raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/curricula/departments", response_model=list[DepartmentSummary])
+def get_departments():
+    driver = get_driver()
+    try:
+        with driver.session() as session:
+            result = session.run("""
+                MATCH (d:Department)-[:CONTAINS]->(c:Course)
+                RETURN d.name AS department, count(c) AS course_count
+                ORDER BY department
+            """)
+            return [
+                DepartmentSummary(department=r["department"], course_count=r["course_count"])
+                for r in result.data()
+            ]
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/curricula/courses", response_model=list[CourseSummary])
+def get_courses(department: str):
+    driver = get_driver()
+    try:
+        with driver.session() as session:
+            result = session.run("""
+                MATCH (d:Department {name: $department})-[:CONTAINS]->(c:Course)
+                RETURN c.name AS name, c.code AS code,
+                       c.learning_outcomes AS learning_outcomes,
+                       c.skill_mappings AS skill_mappings
+                ORDER BY c.name
+            """, department=department)
+            return [
+                CourseSummary(
+                    name=r["name"],
+                    code=r["code"] or "",
+                    learning_outcomes=r["learning_outcomes"] or [],
+                    skill_mappings=r["skill_mappings"] or [],
+                )
+                for r in result.data()
+            ]
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

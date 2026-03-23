@@ -50,7 +50,7 @@ def _gather_context() -> str:
     driver = get_driver()
     with driver.session() as session:
         institution_records = session.run("""
-            MATCH (i:Institution)-[:OFFERS]->(p:Program)-[:CONTAINS]->(c:Curriculum)
+            MATCH (i:Institution)-[:OFFERS]->(p:Program)-[:CONTAINS]->(c:Course)
             RETURN i.name AS institution, i.region AS region,
                    p.name AS program, collect(c.name) AS curricula
             ORDER BY p.name

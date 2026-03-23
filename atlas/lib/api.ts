@@ -89,3 +89,27 @@ export async function getStudent(uuid: string): Promise<ApiStudentDetail> {
   if (!res.ok) throw new Error("Failed to fetch student");
   return res.json();
 }
+
+export type ApiDepartmentSummary = {
+  department: string;
+  course_count: number;
+};
+
+export type ApiCourseSummary = {
+  name: string;
+  code: string;
+  learning_outcomes: string[];
+  skill_mappings: string[];
+};
+
+export async function getDepartments(): Promise<ApiDepartmentSummary[]> {
+  const res = await fetch(`${BASE}/ontology/curricula/departments`);
+  if (!res.ok) throw new Error("Failed to fetch departments");
+  return res.json();
+}
+
+export async function getCourses(department: string): Promise<ApiCourseSummary[]> {
+  const res = await fetch(`${BASE}/ontology/curricula/courses?department=${encodeURIComponent(department)}`);
+  if (!res.ok) throw new Error("Failed to fetch courses");
+  return res.json();
+}

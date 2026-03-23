@@ -40,6 +40,18 @@ class IngestRequest(BaseModel):
     document_type: Optional[str] = None
 
 
+class DepartmentSummary(BaseModel):
+    department: str
+    course_count: int
+
+
+class CourseSummary(BaseModel):
+    name: str
+    code: str
+    learning_outcomes: list[str]
+    skill_mappings: list[str]
+
+
 class StudentEnrollment(BaseModel):
     course_name: str
     department: str

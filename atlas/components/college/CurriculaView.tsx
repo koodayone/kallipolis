@@ -1,17 +1,28 @@
 "use client";
 
-import Card from "@/components/ui/Card";
-import Badge from "@/components/ui/Badge";
-import Button from "@/components/ui/Button";
+import { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { SchoolConfig } from "@/lib/schoolConfig";
+import { getDepartments, getCourses } from "@/lib/api";
+import type { ApiDepartmentSummary, ApiCourseSummary } from "@/lib/api";
+import type { DepartmentSummary, CourseSummary } from "@/lib/curricula/types";
 
-const REQUIREMENTS = [
-  "Course inventory and unit value records",
-  "Curriculum committee approval history",
-  "Articulation agreements with four-year institutions",
-  "Course outline of record (COR) version tracking",
-  "General education pattern mapping",
-];
+const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
+
+type ViewState = "departments" | "courses";
+
+function mapDept(api: ApiDepartmentSummary): DepartmentSummary {
+  return { department: api.department, courseCount: api.course_count };
+}
+
+function mapCourse(api: ApiCourseSummary): CourseSummary {
+  return {
+    name: api.name,
+    code: api.code,
+    learningOutcomes: api.learning_outcomes,
+    skillMappings: api.skill_mappings,
+  };
+}
 
 type Props = {
   school: SchoolConfig;
@@ -19,35 +30,57 @@ type Props = {
 };
 
 export default function CurriculaView({ school, onBack }: Props) {
+  const [view, setView] = useState<ViewState>("departments");
+  const [departments, setDepartments] = useState<DepartmentSummary[]>([]);
+  const [courses, setCourses] = useState<CourseSummary[]>([]);
+  const [activeDept, setActiveDept] = useState<string>("");
+  const [expandedCourses, setExpandedCourses] = useState<Set<string>>(new Set());
+  const [loading, setLoading] = useState(true);
+  const [coursesLoading, setCoursesLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    getDepartments()
+      .then((data) => setDepartments(data.map(mapDept)))
+      .catch((e) => setError(e.message))
+      .finally(() => setLoading(false));
+  }, []);
+
+  const handleDeptClick = useCallback(async (dept: string) => {
+    setCoursesLoading(true);
+    setActiveDept(dept);
+    setExpandedCourses(new Set());
+    try {
+      const data = await getCourses(dept);
+      setCourses(data.map(mapCourse));
+      setView("courses");
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setCoursesLoading(false);
+    }
+  }, []);
+
+  const toggleCourse = useCallback((name: string) => {
+    setExpandedCourses((prev) => {
+      const next = new Set(prev);
+      if (next.has(name)) next.delete(name);
+      else next.add(name);
+      return next;
+    });
+  }, []);
+
   return (
-    <div
-      style={{
-        maxWidth: "800px",
-        margin: "0 auto",
-        padding: "56px 40px 80px",
-        display: "flex",
-        flexDirection: "column",
-        gap: "32px",
-      }}
-    >
+    <div style={{ maxWidth: "800px", margin: "0 auto", padding: "56px 40px 80px", display: "flex", flexDirection: "column", gap: "32px" }}>
+      {/* Back */}
       <button
-        onClick={onBack}
+        onClick={view === "courses" ? () => setView("departments") : onBack}
         style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "6px",
-          background: "none",
-          border: "none",
-          cursor: "pointer",
-          padding: 0,
-          color: "rgba(255,255,255,0.4)",
-          fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-          fontSize: "12px",
-          fontWeight: 500,
-          letterSpacing: "0.08em",
-          textTransform: "uppercase",
-          transition: "color 0.15s",
-          alignSelf: "flex-start",
+          display: "flex", alignItems: "center", gap: "6px",
+          background: "none", border: "none", cursor: "pointer", padding: 0,
+          color: "rgba(255,255,255,0.4)", fontFamily: FONT, fontSize: "12px",
+          fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase",
+          transition: "color 0.15s", alignSelf: "flex-start",
         }}
         onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.85)")}
         onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.4)")}
@@ -55,92 +88,179 @@ export default function CurriculaView({ school, onBack }: Props) {
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
           <path d="M10 12L6 8l4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-        Back
+        {view === "courses" ? "All Departments" : "Back"}
       </button>
 
-      <div>
-        <h1
-          style={{
-            fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-            fontSize: "24px",
-            fontWeight: 600,
-            color: "#f0eef4",
-            letterSpacing: "-0.02em",
-            marginBottom: "8px",
-          }}
-        >
-          Curricula
-        </h1>
-        <p
-          style={{
-            fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-            fontSize: "14px",
-            color: "rgba(255,255,255,0.5)",
-            lineHeight: 1.6,
-          }}
-        >
-          Maps the full course inventory, articulation pathways, and curriculum approval lifecycle.
-          Supports accreditation self-study and transfer readiness reporting.
-        </p>
-      </div>
+      {error && (
+        <p style={{ fontFamily: FONT, fontSize: "14px", color: "#e55" }}>{error}</p>
+      )}
 
-      <Card style={{ padding: "32px", background: school.brandColorDark, border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0 2px 12px rgba(0,0,0,0.4)" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "24px" }}>
-          <span
-            style={{
-              fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-              fontSize: "13px",
-              fontWeight: 600,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "rgba(255,255,255,0.3)",
-            }}
-          >
-            Required Data Inputs
-          </span>
-          <Badge style={{ color: school.brandColorLight, background: "rgba(123,45,62,0.25)", border: "1px solid rgba(123,45,62,0.35)" }}>
-            Ready to Generate
-          </Badge>
-        </div>
-
-        <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "32px" }}>
-          {REQUIREMENTS.map((req) => (
-            <div key={req} style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ flexShrink: 0, marginTop: "1px" }}>
-                <circle cx="7" cy="7" r="6.5" stroke="rgba(255,255,255,0.2)" />
-                <path d="M4.5 7l1.75 1.75L9.5 5.5" stroke="rgba(255,255,255,0.2)" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              <span
-                style={{
-                  fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-                  fontSize: "13px",
-                  color: "rgba(255,255,255,0.38)",
-                  lineHeight: 1.5,
-                }}
-              >
-                {req}
-              </span>
-            </div>
-          ))}
-        </div>
-
-        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-          <div title="Connect your institutional data to enable report generation" style={{ display: "inline-block" }}>
-            <Button variant="solid-gold" disabled style={{ background: school.brandColor, borderColor: school.brandColor, color: "#ffffff" }}>
-              Generate Report
-            </Button>
+      {/* ── Level 1: Department List ── */}
+      {view === "departments" && (
+        <>
+          <div>
+            <h1 style={{ fontFamily: FONT, fontSize: "24px", fontWeight: 600, color: "#f0eef4", letterSpacing: "-0.02em", marginBottom: "8px" }}>
+              Curricula
+            </h1>
+            <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>
+              Academic departments and their course offerings. Select a department to explore courses, learning outcomes, and derived skill mappings.
+            </p>
           </div>
-          <span
-            style={{
-              fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-              fontSize: "12px",
-              color: "rgba(255,255,255,0.35)",
-            }}
-          >
-            Requires data connection to activate
-          </span>
-        </div>
-      </Card>
+
+          {loading ? (
+            <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.4)" }}>Loading...</p>
+          ) : (
+            <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+              {departments.map((dept) => (
+                <button
+                  key={dept.department}
+                  onClick={() => handleDeptClick(dept.department)}
+                  style={{
+                    display: "flex", padding: "18px 24px", justifyContent: "space-between", alignItems: "center",
+                    background: school.brandColorDark, border: "1px solid rgba(255,255,255,0.06)",
+                    borderRadius: "6px", cursor: "pointer", transition: "background 0.15s",
+                    width: "100%", textAlign: "left",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.06)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = school.brandColorDark)}
+                >
+                  <span style={{ fontFamily: FONT, fontSize: "15px", fontWeight: 600, color: "rgba(255,255,255,0.9)" }}>
+                    {dept.department}
+                  </span>
+                  <span style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.4)" }}>
+                    {dept.courseCount} {dept.courseCount === 1 ? "course" : "courses"}
+                  </span>
+                </button>
+              ))}
+            </div>
+          )}
+        </>
+      )}
+
+      {/* ── Level 2: Course List ── */}
+      {view === "courses" && (
+        <>
+          <div>
+            <h1 style={{ fontFamily: FONT, fontSize: "24px", fontWeight: 600, color: "#f0eef4", letterSpacing: "-0.02em", marginBottom: "8px" }}>
+              {activeDept}
+            </h1>
+            <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>
+              {courses.length} courses. Select a course to view learning outcomes and derived skill mappings.
+            </p>
+          </div>
+
+          {coursesLoading ? (
+            <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.4)" }}>Loading...</p>
+          ) : (
+            <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+              {courses.map((course) => {
+                const isExpanded = expandedCourses.has(course.name);
+                return (
+                  <div key={course.name}>
+                    <button
+                      onClick={() => toggleCourse(course.name)}
+                      style={{
+                        display: "flex", padding: "16px 24px", justifyContent: "space-between", alignItems: "center",
+                        background: school.brandColorDark, border: "1px solid rgba(255,255,255,0.06)",
+                        borderRadius: isExpanded ? "6px 6px 0 0" : "6px",
+                        cursor: "pointer", transition: "background 0.15s",
+                        width: "100%", textAlign: "left",
+                      }}
+                      onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.06)")}
+                      onMouseLeave={(e) => (e.currentTarget.style.background = school.brandColorDark)}
+                    >
+                      <div style={{ display: "flex", alignItems: "baseline", gap: "12px" }}>
+                        <span style={{ fontFamily: FONT, fontSize: "12px", fontWeight: 600, letterSpacing: "0.06em", color: school.brandColorLight }}>
+                          {course.code}
+                        </span>
+                        <span style={{ fontFamily: FONT, fontSize: "14px", fontWeight: 500, color: "rgba(255,255,255,0.9)" }}>
+                          {course.name}
+                        </span>
+                      </div>
+                      <svg
+                        width="14" height="14" viewBox="0 0 16 16" fill="none"
+                        style={{ transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s", flexShrink: 0 }}
+                      >
+                        <path d="M4 6l4 4 4-4" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </button>
+
+                    <AnimatePresence>
+                      {isExpanded && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.2 }}
+                          style={{ overflow: "hidden" }}
+                        >
+                          <div
+                            style={{
+                              padding: "20px 24px",
+                              background: school.brandColorDark,
+                              borderLeft: "1px solid rgba(255,255,255,0.06)",
+                              borderRight: "1px solid rgba(255,255,255,0.06)",
+                              borderBottom: "1px solid rgba(255,255,255,0.06)",
+                              borderRadius: "0 0 6px 6px",
+                              display: "flex",
+                              flexDirection: "column",
+                              gap: "20px",
+                            }}
+                          >
+                            {/* Learning Outcomes */}
+                            {course.learningOutcomes.length > 0 && (
+                              <div>
+                                <span style={{ fontFamily: FONT, fontSize: "11px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", display: "block", marginBottom: "10px" }}>
+                                  Learning Outcomes
+                                </span>
+                                <ul style={{ margin: 0, paddingLeft: "18px", display: "flex", flexDirection: "column", gap: "6px" }}>
+                                  {course.learningOutcomes.map((outcome) => (
+                                    <li key={outcome} style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.7)", lineHeight: 1.5 }}>
+                                      {outcome}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            )}
+
+                            {/* Skill Mappings */}
+                            {course.skillMappings.length > 0 && (
+                              <div>
+                                <span style={{ fontFamily: FONT, fontSize: "11px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", display: "block", marginBottom: "10px" }}>
+                                  Derived Skills
+                                </span>
+                                <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+                                  {course.skillMappings.map((skill) => (
+                                    <span
+                                      key={skill}
+                                      style={{
+                                        padding: "6px 14px",
+                                        background: "transparent",
+                                        border: `1px solid ${school.brandColor}`,
+                                        borderRadius: "6px",
+                                        fontFamily: FONT,
+                                        fontSize: "12px",
+                                        fontWeight: 500,
+                                        color: school.brandColorLight,
+                                      }}
+                                    >
+                                      {skill}
+                                    </span>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </>
+      )}
     </div>
   );
 }
