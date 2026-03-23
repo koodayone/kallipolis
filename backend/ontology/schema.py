@@ -81,10 +81,16 @@ def init_schema():
 
 
 def _create_constraints(session):
+    # Drop legacy single-field course name constraint (breaks with multi-college data)
+    try:
+        session.run("DROP CONSTRAINT course_name IF EXISTS")
+    except Exception:
+        pass
+
     constraints = [
         "CREATE CONSTRAINT institution_name IF NOT EXISTS FOR (n:Institution) REQUIRE n.name IS UNIQUE",
         "CREATE CONSTRAINT program_name IF NOT EXISTS FOR (n:Program) REQUIRE n.name IS UNIQUE",
-        "CREATE CONSTRAINT course_name IF NOT EXISTS FOR (n:Course) REQUIRE n.name IS UNIQUE",
+        "CREATE CONSTRAINT course_code_inst IF NOT EXISTS FOR (n:Course) REQUIRE (n.code, n.institution) IS UNIQUE",
         "CREATE CONSTRAINT department_name IF NOT EXISTS FOR (n:Department) REQUIRE n.name IS UNIQUE",
         "CREATE CONSTRAINT employer_name IF NOT EXISTS FOR (n:Employer) REQUIRE n.name IS UNIQUE",
         "CREATE CONSTRAINT region_name IF NOT EXISTS FOR (n:LaborMarketRegion) REQUIRE n.name IS UNIQUE",

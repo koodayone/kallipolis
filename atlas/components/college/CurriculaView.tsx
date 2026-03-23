@@ -21,6 +21,7 @@ function mapCourse(api: ApiCourseSummary): CourseSummary {
     name: api.name,
     code: api.code,
     learningOutcomes: api.learning_outcomes,
+    courseObjectives: api.course_objectives,
     skillMappings: api.skill_mappings,
   };
 }
@@ -225,6 +226,22 @@ export default function CurriculaView({ school, onBack }: Props) {
                                   {course.learningOutcomes.map((outcome) => (
                                     <li key={outcome} style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.7)", lineHeight: 1.5 }}>
                                       {outcome}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            )}
+
+                            {/* Course Objectives — shown only when SLOs are absent */}
+                            {course.learningOutcomes.length === 0 && course.courseObjectives.length > 0 && (
+                              <div>
+                                <span style={{ fontFamily: FONT, fontSize: "11px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", display: "block", marginBottom: "10px" }}>
+                                  Learning Outcomes
+                                </span>
+                                <ul style={{ margin: 0, paddingLeft: "18px", display: "flex", flexDirection: "column", gap: "6px" }}>
+                                  {course.courseObjectives.map((objective) => (
+                                    <li key={objective} style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.7)", lineHeight: 1.5 }}>
+                                      {objective}
                                     </li>
                                   ))}
                                 </ul>

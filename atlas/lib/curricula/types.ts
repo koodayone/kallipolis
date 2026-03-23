@@ -7,5 +7,6 @@ export type CourseSummary = {
   name: string;
   code: string;
   learningOutcomes: string[];
+  courseObjectives: string[];
   skillMappings: string[];
 };

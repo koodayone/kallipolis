@@ -198,6 +198,7 @@ def get_courses(department: str):
                 MATCH (d:Department {name: $department})-[:CONTAINS]->(c:Course)
                 RETURN c.name AS name, c.code AS code,
                        c.learning_outcomes AS learning_outcomes,
+                       c.course_objectives AS course_objectives,
                        c.skill_mappings AS skill_mappings
                 ORDER BY c.name
             """, department=department)
@@ -206,6 +207,7 @@ def get_courses(department: str):
                     name=r["name"],
                     code=r["code"] or "",
                     learning_outcomes=r["learning_outcomes"] or [],
+                    course_objectives=r["course_objectives"] or [],
                     skill_mappings=r["skill_mappings"] or [],
                 )
                 for r in result.data()

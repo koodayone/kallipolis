@@ -93,6 +93,7 @@ export type ApiCourseSummary = {
   name: string;
   code: string;
   learning_outcomes: string[];
+  course_objectives: string[];
   skill_mappings: string[];
 };
 

@@ -136,6 +136,7 @@ def load_college(
                     c.prerequisites = $prerequisites,
                     c.transfer_status = $transfer_status,
                     c.learning_outcomes = $learning_outcomes,
+                    c.course_objectives = $course_objectives,
                     c.skill_mappings = $skill_mappings,
                     c.url = $url
                 ON MATCH SET
@@ -147,6 +148,7 @@ def load_college(
                     c.prerequisites = $prerequisites,
                     c.transfer_status = $transfer_status,
                     c.learning_outcomes = $learning_outcomes,
+                    c.course_objectives = $course_objectives,
                     c.skill_mappings = $skill_mappings,
                     c.url = $url
                 RETURN c
@@ -160,6 +162,7 @@ def load_college(
                 prerequisites=course.get("prerequisites", ""),
                 transfer_status=course.get("transfer_status", ""),
                 learning_outcomes=course.get("learning_outcomes", []),
+                course_objectives=course.get("course_objectives", []),
                 skill_mappings=course.get("skill_mappings", []),
                 institution=config.name,
                 url=course.get("url", ""),
