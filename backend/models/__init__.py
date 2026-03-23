@@ -38,3 +38,27 @@ class ReportRequest(BaseModel):
 class IngestRequest(BaseModel):
     document_text: str
     document_type: Optional[str] = None
+
+
+class StudentEnrollment(BaseModel):
+    course_name: str
+    department: str
+    grade: str
+    term: str
+    status: str
+
+
+class StudentSummary(BaseModel):
+    uuid: str
+    primary_focus: str
+    courses_completed: int
+    avg_performance: str  # "Strong" | "Developing" | "Incomplete"
+
+
+class StudentDetail(BaseModel):
+    uuid: str
+    primary_focus: str
+    courses_completed: int
+    avg_performance: str
+    enrollments: list[StudentEnrollment]
+    skills: list[str]

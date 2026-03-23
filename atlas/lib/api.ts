@@ -53,3 +53,39 @@ export async function getPrograms(): Promise<ProgramSummary[]> {
   if (!res.ok) throw new Error("Failed to fetch programs");
   return res.json();
 }
+
+export type ApiStudentSummary = {
+  uuid: string;
+  primary_focus: string;
+  courses_completed: number;
+  avg_performance: string;
+};
+
+export type ApiStudentEnrollment = {
+  course_name: string;
+  department: string;
+  grade: string;
+  term: string;
+  status: string;
+};
+
+export type ApiStudentDetail = {
+  uuid: string;
+  primary_focus: string;
+  courses_completed: number;
+  avg_performance: string;
+  enrollments: ApiStudentEnrollment[];
+  skills: string[];
+};
+
+export async function getStudents(): Promise<ApiStudentSummary[]> {
+  const res = await fetch(`${BASE}/ontology/students`);
+  if (!res.ok) throw new Error("Failed to fetch students");
+  return res.json();
+}
+
+export async function getStudent(uuid: string): Promise<ApiStudentDetail> {
+  const res = await fetch(`${BASE}/ontology/students/${uuid}`);
+  if (!res.ok) throw new Error("Failed to fetch student");
+  return res.json();
+}

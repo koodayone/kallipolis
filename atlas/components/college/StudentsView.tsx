@@ -1,17 +1,60 @@
 "use client";
 
-import Card from "@/components/ui/Card";
-import Badge from "@/components/ui/Badge";
-import Button from "@/components/ui/Button";
+import { useState, useEffect, useCallback } from "react";
 import { SchoolConfig } from "@/lib/schoolConfig";
+import { getStudents, getStudent } from "@/lib/api";
+import type { ApiStudentSummary, ApiStudentDetail } from "@/lib/api";
+import type { StudentSummary, StudentDetail } from "@/lib/students/types";
 
-const REQUIREMENTS = [
-  "Student enrollment and demographic records",
-  "Course completion and grade data",
-  "Persistence and retention tracking",
-  "Transfer outcome data",
-  "Equity disaggregation by population group",
-];
+const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
+
+type ViewState = "list" | "detail";
+type SortKey = "primaryFocus" | "coursesCompleted" | "avgPerformance";
+type SortDir = "asc" | "desc";
+type DetailTab = "history" | "skills";
+
+const PERF_ORDER = { Strong: 0, Developing: 1, Incomplete: 2 };
+const GRADE_COLORS: Record<string, string> = {
+  A: "rgba(74, 222, 128, 0.8)",
+  B: "rgba(96, 165, 250, 0.8)",
+  C: "rgba(251, 191, 36, 0.8)",
+  D: "rgba(251, 146, 60, 0.8)",
+  F: "rgba(248, 113, 113, 0.8)",
+  W: "rgba(156, 163, 175, 0.6)",
+};
+const PERF_COLORS: Record<string, { bg: string; text: string }> = {
+  Strong: { bg: "rgba(74, 222, 128, 0.12)", text: "rgba(74, 222, 128, 0.9)" },
+  Developing: { bg: "rgba(251, 191, 36, 0.12)", text: "rgba(251, 191, 36, 0.9)" },
+  Incomplete: { bg: "rgba(156, 163, 175, 0.12)", text: "rgba(156, 163, 175, 0.9)" },
+};
+
+function mapSummary(api: ApiStudentSummary, index: number): StudentSummary {
+  return {
+    uuid: api.uuid,
+    displayNumber: index + 1,
+    primaryFocus: api.primary_focus,
+    coursesCompleted: api.courses_completed,
+    avgPerformance: api.avg_performance as StudentSummary["avgPerformance"],
+  };
+}
+
+function mapDetail(api: ApiStudentDetail, displayNumber: number): StudentDetail {
+  return {
+    uuid: api.uuid,
+    displayNumber,
+    primaryFocus: api.primary_focus,
+    coursesCompleted: api.courses_completed,
+    avgPerformance: api.avg_performance,
+    enrollments: api.enrollments.map((e) => ({
+      courseName: e.course_name,
+      department: e.department,
+      grade: e.grade,
+      term: e.term,
+      status: e.status,
+    })),
+    skills: api.skills,
+  };
+}
 
 type Props = {
   school: SchoolConfig;
@@ -19,35 +62,63 @@ type Props = {
 };
 
 export default function StudentsView({ school, onBack }: Props) {
+  const [view, setView] = useState<ViewState>("list");
+  const [students, setStudents] = useState<StudentSummary[]>([]);
+  const [detail, setDetail] = useState<StudentDetail | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [detailLoading, setDetailLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [sortKey, setSortKey] = useState<SortKey>("coursesCompleted");
+  const [sortDir, setSortDir] = useState<SortDir>("desc");
+  const [detailTab, setDetailTab] = useState<DetailTab>("history");
+
+  useEffect(() => {
+    getStudents()
+      .then((data) => setStudents(data.map(mapSummary)))
+      .catch((e) => setError(e.message))
+      .finally(() => setLoading(false));
+  }, []);
+
+  const handleSort = useCallback((key: SortKey) => {
+    setSortDir((prev) => (sortKey === key && prev === "desc" ? "asc" : "desc"));
+    setSortKey(key);
+  }, [sortKey]);
+
+  const handleStudentClick = useCallback(async (student: StudentSummary) => {
+    setDetailLoading(true);
+    setDetailTab("history");
+    try {
+      const data = await getStudent(student.uuid);
+      setDetail(mapDetail(data, student.displayNumber));
+      setView("detail");
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setDetailLoading(false);
+    }
+  }, []);
+
+  const sorted = [...students].sort((a, b) => {
+    const dir = sortDir === "desc" ? -1 : 1;
+    if (sortKey === "primaryFocus") return a.primaryFocus.localeCompare(b.primaryFocus) * dir;
+    if (sortKey === "coursesCompleted") return (a.coursesCompleted - b.coursesCompleted) * dir;
+    if (sortKey === "avgPerformance") {
+      return (PERF_ORDER[a.avgPerformance] - PERF_ORDER[b.avgPerformance]) * dir;
+    }
+    return 0;
+  });
+
   return (
-    <div
-      style={{
-        maxWidth: "800px",
-        margin: "0 auto",
-        padding: "56px 40px 80px",
-        display: "flex",
-        flexDirection: "column",
-        gap: "32px",
-      }}
-    >
+    <div style={{ maxWidth: "800px", margin: "0 auto", padding: "56px 40px 80px", display: "flex", flexDirection: "column", gap: "32px" }}>
+      {/* Back */}
       <button
-        onClick={onBack}
+        onClick={view === "detail" ? () => setView("list") : onBack}
         style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "6px",
-          background: "none",
-          border: "none",
-          cursor: "pointer",
-          padding: 0,
-          color: "rgba(255,255,255,0.4)",
-          fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-          fontSize: "12px",
-          fontWeight: 500,
-          letterSpacing: "0.08em",
-          textTransform: "uppercase",
-          transition: "color 0.15s",
-          alignSelf: "flex-start",
+          display: "flex", alignItems: "center", gap: "6px",
+          background: "none", border: "none", cursor: "pointer", padding: 0,
+          color: "rgba(255,255,255,0.4)", fontFamily: FONT, fontSize: "12px",
+          fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase",
+          transition: "color 0.15s", alignSelf: "flex-start",
         }}
         onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.85)")}
         onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.4)")}
@@ -55,92 +126,231 @@ export default function StudentsView({ school, onBack }: Props) {
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
           <path d="M10 12L6 8l4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-        Back
+        {view === "detail" ? "All Students" : "Back"}
       </button>
 
-      <div>
-        <h1
-          style={{
-            fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-            fontSize: "24px",
-            fontWeight: 600,
-            color: "#f0eef4",
-            letterSpacing: "-0.02em",
-            marginBottom: "8px",
-          }}
-        >
-          Students
-        </h1>
-        <p
-          style={{
-            fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-            fontSize: "14px",
-            color: "rgba(255,255,255,0.5)",
-            lineHeight: 1.6,
-          }}
-        >
-          Tracks enrollment, persistence, completion, and equity outcomes across the student population.
-          Provides the foundation for institutional effectiveness reporting and accreditation evidence.
-        </p>
-      </div>
+      {error && (
+        <p style={{ fontFamily: FONT, fontSize: "14px", color: "#e55" }}>{error}</p>
+      )}
 
-      <Card style={{ padding: "32px", background: school.brandColorDark, border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0 2px 12px rgba(0,0,0,0.4)" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "24px" }}>
-          <span
-            style={{
-              fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-              fontSize: "13px",
-              fontWeight: 600,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "rgba(255,255,255,0.3)",
-            }}
-          >
-            Required Data Inputs
-          </span>
-          <Badge style={{ color: school.brandColorLight, background: "rgba(123,45,62,0.25)", border: "1px solid rgba(123,45,62,0.35)" }}>
-            Ready to Generate
-          </Badge>
-        </div>
+      {/* ── Level 1: Student List ── */}
+      {view === "list" && (
+        <>
+          <div>
+            <h1 style={{ fontFamily: FONT, fontSize: "24px", fontWeight: 600, color: "#f0eef4", letterSpacing: "-0.02em", marginBottom: "8px" }}>
+              Students
+            </h1>
+            <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>
+              {students.length} anonymous student records. Select a student to view their course history and derived skill profile.
+            </p>
+          </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "32px" }}>
-          {REQUIREMENTS.map((req) => (
-            <div key={req} style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ flexShrink: 0, marginTop: "1px" }}>
-                <circle cx="7" cy="7" r="6.5" stroke="rgba(255,255,255,0.2)" />
-                <path d="M4.5 7l1.75 1.75L9.5 5.5" stroke="rgba(255,255,255,0.2)" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+          {loading ? (
+            <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.4)" }}>Loading...</p>
+          ) : (
+            <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+              {/* Sort header */}
+              <div style={{ display: "flex", padding: "10px 20px", gap: "16px", alignItems: "center" }}>
+                <span style={{ minWidth: "100px", fontFamily: FONT, fontSize: "11px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>
+                  Student
+                </span>
+                {([
+                  { key: "primaryFocus" as SortKey, label: "Primary Focus", width: "180px" },
+                  { key: "coursesCompleted" as SortKey, label: "Completed", width: "90px" },
+                  { key: "avgPerformance" as SortKey, label: "Performance", width: "110px" },
+                ]).map((col) => (
+                  <button
+                    key={col.key}
+                    onClick={() => handleSort(col.key)}
+                    style={{
+                      minWidth: col.width, background: "none", border: "none", cursor: "pointer",
+                      padding: 0, fontFamily: FONT, fontSize: "11px", fontWeight: 600,
+                      letterSpacing: "0.1em", textTransform: "uppercase",
+                      color: sortKey === col.key ? school.brandColorLight : "rgba(255,255,255,0.3)",
+                      display: "flex", alignItems: "center", gap: "4px", transition: "color 0.15s",
+                    }}
+                  >
+                    {col.label}
+                    {sortKey === col.key && (
+                      <span style={{ fontSize: "9px" }}>{sortDir === "desc" ? "▼" : "▲"}</span>
+                    )}
+                  </button>
+                ))}
+              </div>
+
+              {/* Rows */}
+              {sorted.map((student) => (
+                <button
+                  key={student.uuid}
+                  onClick={() => handleStudentClick(student)}
+                  disabled={detailLoading}
+                  style={{
+                    display: "flex", padding: "14px 20px", gap: "16px", alignItems: "center",
+                    background: school.brandColorDark, border: "1px solid rgba(255,255,255,0.06)",
+                    borderRadius: "6px", cursor: "pointer", transition: "background 0.15s",
+                    width: "100%", textAlign: "left",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.06)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = school.brandColorDark)}
+                >
+                  <span style={{ minWidth: "100px", fontFamily: FONT, fontSize: "14px", fontWeight: 600, color: "rgba(255,255,255,0.85)" }}>
+                    Student #{student.displayNumber}
+                  </span>
+                  <span style={{ minWidth: "180px", fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.6)" }}>
+                    {student.primaryFocus}
+                  </span>
+                  <span style={{ minWidth: "90px", fontFamily: FONT, fontSize: "14px", fontWeight: 600, color: "rgba(255,255,255,0.8)" }}>
+                    {student.coursesCompleted}
+                  </span>
+                  <span
+                    style={{
+                      minWidth: "110px", fontFamily: FONT, fontSize: "11px", fontWeight: 600,
+                      letterSpacing: "0.06em", textTransform: "uppercase",
+                      padding: "4px 10px", borderRadius: "12px", width: "fit-content",
+                      background: PERF_COLORS[student.avgPerformance]?.bg ?? "rgba(156,163,175,0.12)",
+                      color: PERF_COLORS[student.avgPerformance]?.text ?? "rgba(156,163,175,0.9)",
+                    }}
+                  >
+                    {student.avgPerformance}
+                  </span>
+                </button>
+              ))}
+            </div>
+          )}
+        </>
+      )}
+
+      {/* ── Level 2: Student Detail ── */}
+      {view === "detail" && detail && (
+        <>
+          <div>
+            <h1 style={{ fontFamily: FONT, fontSize: "24px", fontWeight: 600, color: "#f0eef4", letterSpacing: "-0.02em", marginBottom: "8px" }}>
+              Student #{detail.displayNumber}
+            </h1>
+            <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
+              <span style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.5)" }}>
+                {detail.primaryFocus}
+              </span>
+              <span style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.5)" }}>
+                {detail.coursesCompleted} courses completed
+              </span>
               <span
                 style={{
-                  fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-                  fontSize: "13px",
-                  color: "rgba(255,255,255,0.38)",
-                  lineHeight: 1.5,
+                  fontFamily: FONT, fontSize: "11px", fontWeight: 600, letterSpacing: "0.06em",
+                  textTransform: "uppercase", padding: "3px 8px", borderRadius: "10px",
+                  background: PERF_COLORS[detail.avgPerformance]?.bg,
+                  color: PERF_COLORS[detail.avgPerformance]?.text,
                 }}
               >
-                {req}
+                {detail.avgPerformance}
               </span>
             </div>
-          ))}
-        </div>
-
-        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-          <div title="Connect your institutional data to enable report generation" style={{ display: "inline-block" }}>
-            <Button variant="solid-gold" disabled style={{ background: school.brandColor, borderColor: school.brandColor, color: "#ffffff" }}>
-              Generate Report
-            </Button>
           </div>
-          <span
-            style={{
-              fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-              fontSize: "12px",
-              color: "rgba(255,255,255,0.35)",
-            }}
-          >
-            Requires data connection to activate
-          </span>
-        </div>
-      </Card>
+
+          {/* Tabs */}
+          <div style={{ display: "flex", gap: "0", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
+            {([
+              { key: "history" as DetailTab, label: "Course History" },
+              { key: "skills" as DetailTab, label: "Skill Profile" },
+            ]).map((tab) => (
+              <button
+                key={tab.key}
+                onClick={() => setDetailTab(tab.key)}
+                style={{
+                  background: "none", border: "none",
+                  borderBottom: detailTab === tab.key ? `2px solid ${school.brandColorLight}` : "2px solid transparent",
+                  cursor: "pointer", padding: "12px 20px", fontFamily: FONT, fontSize: "12px",
+                  fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase",
+                  color: detailTab === tab.key ? school.brandColorLight : "rgba(255,255,255,0.4)",
+                  transition: "color 0.15s, border-color 0.15s", marginBottom: "-1px",
+                }}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Course History */}
+          {detailTab === "history" && (
+            <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+              {/* Header */}
+              <div style={{ display: "flex", padding: "10px 20px", gap: "16px" }}>
+                {["Course", "Department", "Grade", "Term", "Status"].map((h, i) => (
+                  <span key={h} style={{
+                    flex: i === 0 ? 2 : 1, fontFamily: FONT, fontSize: "11px", fontWeight: 600,
+                    letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)",
+                  }}>
+                    {h}
+                  </span>
+                ))}
+              </div>
+              {detail.enrollments.map((e, i) => (
+                <div
+                  key={i}
+                  style={{
+                    display: "flex", padding: "12px 20px", gap: "16px", alignItems: "center",
+                    background: school.brandColorDark, border: "1px solid rgba(255,255,255,0.06)",
+                    borderRadius: "6px",
+                  }}
+                >
+                  <span style={{ flex: 2, fontFamily: FONT, fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>
+                    {e.courseName}
+                  </span>
+                  <span style={{ flex: 1, fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.5)" }}>
+                    {e.department}
+                  </span>
+                  <span style={{
+                    flex: 1, fontFamily: FONT, fontSize: "13px", fontWeight: 700,
+                    color: GRADE_COLORS[e.grade] ?? "rgba(255,255,255,0.6)",
+                  }}>
+                    {e.grade}
+                  </span>
+                  <span style={{ flex: 1, fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.5)" }}>
+                    {e.term}
+                  </span>
+                  <span style={{ flex: 1, fontFamily: FONT, fontSize: "12px", color: e.status === "Withdrawn" ? "rgba(248,113,113,0.7)" : "rgba(255,255,255,0.5)" }}>
+                    {e.status}
+                  </span>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Skill Profile */}
+          {detailTab === "skills" && (
+            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+              <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.6, marginBottom: "8px" }}>
+                Skills derived from completed coursework and mapped learning outcomes.
+              </p>
+              {detail.skills.length === 0 ? (
+                <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.35)" }}>
+                  No skills derived yet.
+                </p>
+              ) : (
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+                  {detail.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      style={{
+                        padding: "8px 16px",
+                        background: school.brandColorDark,
+                        border: `1px solid ${school.brandColor}`,
+                        borderRadius: "6px",
+                        fontFamily: FONT,
+                        fontSize: "13px",
+                        fontWeight: 500,
+                        color: school.brandColorLight,
+                      }}
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+        </>
+      )}
     </div>
   );
 }
