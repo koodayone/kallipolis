@@ -1,6 +1,6 @@
 import * as THREE from "three";
 
-export type CollegeNodeKey = "students" | "curricula" | "programs";
+export type CollegeNodeKey = "students" | "curricula";
 
 export type CollegeSceneCallbacks = {
   onNodeClick: (node: CollegeNodeKey) => void;
@@ -129,23 +129,16 @@ export function buildCollegeScene(
     // Students — Tetrahedron (left)
     makeSolid(
       new THREE.TetrahedronGeometry(1.1, 0),
-      new THREE.Vector3(-3.0, 0, 0),
+      new THREE.Vector3(-1.8, 0, 0),
       new THREE.Vector3(0.002, 0.0028, 0.0012),
       "students"
     ),
-    // Curricula — Icosahedron (center)
+    // Curricula — Icosahedron (right)
     makeSolid(
       new THREE.IcosahedronGeometry(0.95, 0),
-      new THREE.Vector3(0, 0, 0),
+      new THREE.Vector3(1.8, 0, 0),
       new THREE.Vector3(0.0015, 0.002, 0.001),
       "curricula"
-    ),
-    // Programs — Dodecahedron (right)
-    makeSolid(
-      new THREE.DodecahedronGeometry(0.95, 0),
-      new THREE.Vector3(3.0, 0, 0),
-      new THREE.Vector3(0.0018, 0.0022, 0.0008),
-      "programs"
     ),
   ];
 

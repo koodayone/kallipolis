@@ -7,7 +7,6 @@ import { SchoolConfig } from "@/lib/schoolConfig";
 import { buildCollegeScene, CollegeNodeKey } from "@/lib/collegeScene";
 import StudentsView from "@/components/college/StudentsView";
 import CurriculaView from "@/components/college/CurriculaView";
-import ProgramsView from "@/components/college/ProgramsView";
 import RisingSun from "@/components/ui/RisingSun";
 
 const CollegeCanvas = dynamic(
@@ -18,7 +17,6 @@ const CollegeCanvas = dynamic(
 const NODE_NAMES: Record<CollegeNodeKey, string> = {
   students: "Students",
   curricula: "Curricula",
-  programs: "Programs",
 };
 
 // Mirror the scene's camera constants to project world-x → screen %.
@@ -26,9 +24,8 @@ const CANVAS_HEIGHT = 300;
 const CAMERA_Z = 5.5;
 const TAN_HALF_FOV = Math.tan((50 / 2) * (Math.PI / 180));
 const NODE_WORLD_X: Record<CollegeNodeKey, number> = {
-  students: -3.0,
-  curricula: 0,
-  programs: 3.0,
+  students: -1.8,
+  curricula: 1.8,
 };
 
 function projectWorldX(worldX: number, containerWidth: number): number {
@@ -50,16 +47,15 @@ export default function CollegeView({ school }: Props) {
   const lastHoveredNode = useRef<CollegeNodeKey | null>(null);
   if (hoveredNode !== null) lastHoveredNode.current = hoveredNode;
   const [labelPositions, setLabelPositions] = useState<Record<CollegeNodeKey, number>>({
-    students: 20,
-    curricula: 50,
-    programs: 80,
+    students: 30,
+    curricula: 70,
   });
   const sceneRef = useRef<ReturnType<typeof buildCollegeScene> | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const segment = window.location.hash.replace("#", "").split("/")[1] as CollegeNodeKey;
-    if (["students", "curricula", "programs"].includes(segment)) {
+    if (["students", "curricula"].includes(segment)) {
       setActiveNode(segment);
       setCollegeState("report");
     }
@@ -75,7 +71,6 @@ export default function CollegeView({ school }: Props) {
       setLabelPositions({
         students: projectWorldX(NODE_WORLD_X.students, w),
         curricula: projectWorldX(NODE_WORLD_X.curricula, w),
-        programs: projectWorldX(NODE_WORLD_X.programs, w),
       });
     };
     compute();
@@ -171,7 +166,7 @@ export default function CollegeView({ school }: Props) {
               }} />
 
               {/* Per-shape labels — projected to match 3D solid positions */}
-              {(["students", "curricula", "programs"] as CollegeNodeKey[]).map((key) => (
+              {(["students", "curricula"] as CollegeNodeKey[]).map((key) => (
                 <span
                   key={key}
                   style={{
@@ -185,8 +180,9 @@ export default function CollegeView({ school }: Props) {
                     fontWeight: 600,
                     letterSpacing: "0.13em",
                     textTransform: "uppercase",
-                    color: "#ffffff",
+                    color: hoveredNode === key ? "#c9a84c" : "rgba(255,255,255,0.5)",
                     whiteSpace: "nowrap",
+                    transition: "color 0.3s ease-in-out",
                   }}
                 >
                   {NODE_NAMES[key]}
@@ -213,9 +209,6 @@ export default function CollegeView({ school }: Props) {
             )}
             {activeNode === "curricula" && (
               <CurriculaView school={school} onBack={handleBack} />
-            )}
-            {activeNode === "programs" && (
-              <ProgramsView school={school} onBack={handleBack} />
             )}
           </motion.div>
         )}

@@ -48,12 +48,6 @@ export async function getInstitution(): Promise<InstitutionSummary> {
   return res.json();
 }
 
-export async function getPrograms(): Promise<ProgramSummary[]> {
-  const res = await fetch(`${BASE}/ontology/programs`);
-  if (!res.ok) throw new Error("Failed to fetch programs");
-  return res.json();
-}
-
 export type ApiStudentSummary = {
   uuid: string;
   primary_focus: string;
