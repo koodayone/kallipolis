@@ -60,18 +60,14 @@ def get_programs():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-def _compute_performance(grades: list[str]) -> str:
-    if not grades:
-        return "Incomplete"
-    counts = Counter(grades)
-    total = len(grades)
-    strong = counts.get("A", 0) + counts.get("B", 0)
-    weak = counts.get("D", 0) + counts.get("F", 0) + counts.get("W", 0)
-    if strong / total >= 0.6:
-        return "Strong"
-    if weak / total >= 0.4:
-        return "Incomplete"
-    return "Developing"
+GRADE_POINTS = {"A": 4.0, "B": 3.0, "C": 2.0, "D": 1.0, "F": 0.0}
+
+
+def _compute_gpa(grades: list[str]) -> float:
+    graded = [GRADE_POINTS[g] for g in grades if g in GRADE_POINTS]
+    if not graded:
+        return 0.0
+    return round(sum(graded) / len(graded), 2)
 
 
 def _compute_primary_focus(enrollments: list[dict]) -> str:
@@ -109,7 +105,7 @@ def get_students():
                 uuid=record["uuid"],
                 primary_focus=_compute_primary_focus(enrollments),
                 courses_completed=len(completed),
-                avg_performance=_compute_performance(grades),
+                gpa=_compute_gpa(grades),
             ))
 
         students.sort(key=lambda s: s.courses_completed, reverse=True)
@@ -165,7 +161,7 @@ def get_student(student_uuid: str):
             uuid=student_uuid,
             primary_focus=primary_focus,
             courses_completed=len(all_grades),
-            avg_performance=_compute_performance(all_grades),
+            gpa=_compute_gpa(all_grades),
             enrollments=enrollments,
             skills=sorted(all_skills),
         )

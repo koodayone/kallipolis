@@ -52,13 +52,13 @@ class StudentSummary(BaseModel):
     uuid: str
     primary_focus: str
     courses_completed: int
-    avg_performance: str  # "Strong" | "Developing" | "Incomplete"
+    gpa: float
 
 
 class StudentDetail(BaseModel):
     uuid: str
     primary_focus: str
     courses_completed: int
-    avg_performance: str
+    gpa: float
     enrollments: list[StudentEnrollment]
     skills: list[str]

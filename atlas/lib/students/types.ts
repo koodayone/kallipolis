@@ -3,7 +3,7 @@ export type StudentSummary = {
   displayNumber: number;
   primaryFocus: string;
   coursesCompleted: number;
-  avgPerformance: "Strong" | "Developing" | "Incomplete";
+  gpa: number;
 };
 
 export type StudentEnrollment = {
@@ -19,7 +19,7 @@ export type StudentDetail = {
   displayNumber: number;
   primaryFocus: string;
   coursesCompleted: number;
-  avgPerformance: string;
+  gpa: number;
   enrollments: StudentEnrollment[];
   skills: string[];
 };

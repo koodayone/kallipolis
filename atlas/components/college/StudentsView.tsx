@@ -9,11 +9,10 @@ import type { StudentSummary, StudentDetail } from "@/lib/students/types";
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
 type ViewState = "list" | "detail";
-type SortKey = "primaryFocus" | "coursesCompleted" | "avgPerformance";
+type SortKey = "primaryFocus" | "coursesCompleted" | "gpa";
 type SortDir = "asc" | "desc";
 type DetailTab = "history" | "skills";
 
-const PERF_ORDER = { Strong: 0, Developing: 1, Incomplete: 2 };
 const GRADE_COLORS: Record<string, string> = {
   A: "rgba(74, 222, 128, 0.8)",
   B: "rgba(96, 165, 250, 0.8)",
@@ -22,11 +21,13 @@ const GRADE_COLORS: Record<string, string> = {
   F: "rgba(248, 113, 113, 0.8)",
   W: "rgba(156, 163, 175, 0.6)",
 };
-const PERF_COLORS: Record<string, { bg: string; text: string }> = {
-  Strong: { bg: "rgba(74, 222, 128, 0.12)", text: "rgba(74, 222, 128, 0.9)" },
-  Developing: { bg: "rgba(251, 191, 36, 0.12)", text: "rgba(251, 191, 36, 0.9)" },
-  Incomplete: { bg: "rgba(156, 163, 175, 0.12)", text: "rgba(156, 163, 175, 0.9)" },
-};
+
+function gpaColor(gpa: number): string {
+  if (gpa >= 3.5) return "rgba(74, 222, 128, 0.9)";
+  if (gpa >= 2.5) return "rgba(96, 165, 250, 0.9)";
+  if (gpa >= 1.5) return "rgba(251, 191, 36, 0.9)";
+  return "rgba(248, 113, 113, 0.9)";
+}
 
 function mapSummary(api: ApiStudentSummary, index: number): StudentSummary {
   return {
@@ -34,7 +35,7 @@ function mapSummary(api: ApiStudentSummary, index: number): StudentSummary {
     displayNumber: index + 1,
     primaryFocus: api.primary_focus,
     coursesCompleted: api.courses_completed,
-    avgPerformance: api.avg_performance as StudentSummary["avgPerformance"],
+    gpa: api.gpa,
   };
 }
 
@@ -44,7 +45,7 @@ function mapDetail(api: ApiStudentDetail, displayNumber: number): StudentDetail 
     displayNumber,
     primaryFocus: api.primary_focus,
     coursesCompleted: api.courses_completed,
-    avgPerformance: api.avg_performance,
+    gpa: api.gpa,
     enrollments: api.enrollments.map((e) => ({
       courseName: e.course_name,
       department: e.department,
@@ -102,9 +103,7 @@ export default function StudentsView({ school, onBack }: Props) {
     const dir = sortDir === "desc" ? -1 : 1;
     if (sortKey === "primaryFocus") return a.primaryFocus.localeCompare(b.primaryFocus) * dir;
     if (sortKey === "coursesCompleted") return (a.coursesCompleted - b.coursesCompleted) * dir;
-    if (sortKey === "avgPerformance") {
-      return (PERF_ORDER[a.avgPerformance] - PERF_ORDER[b.avgPerformance]) * dir;
-    }
+    if (sortKey === "gpa") return (a.gpa - b.gpa) * dir;
     return 0;
   });
 
@@ -157,7 +156,7 @@ export default function StudentsView({ school, onBack }: Props) {
                 {([
                   { key: "primaryFocus" as SortKey, label: "Primary Focus", width: "180px" },
                   { key: "coursesCompleted" as SortKey, label: "Completed", width: "90px" },
-                  { key: "avgPerformance" as SortKey, label: "Performance", width: "110px" },
+                  { key: "gpa" as SortKey, label: "GPA", width: "70px" },
                 ]).map((col) => (
                   <button
                     key={col.key}
@@ -202,16 +201,8 @@ export default function StudentsView({ school, onBack }: Props) {
                   <span style={{ minWidth: "90px", fontFamily: FONT, fontSize: "14px", fontWeight: 600, color: "rgba(255,255,255,0.8)" }}>
                     {student.coursesCompleted}
                   </span>
-                  <span
-                    style={{
-                      minWidth: "110px", fontFamily: FONT, fontSize: "11px", fontWeight: 600,
-                      letterSpacing: "0.06em", textTransform: "uppercase",
-                      padding: "4px 10px", borderRadius: "12px", width: "fit-content",
-                      background: PERF_COLORS[student.avgPerformance]?.bg ?? "rgba(156,163,175,0.12)",
-                      color: PERF_COLORS[student.avgPerformance]?.text ?? "rgba(156,163,175,0.9)",
-                    }}
-                  >
-                    {student.avgPerformance}
+                  <span style={{ minWidth: "70px", fontFamily: FONT, fontSize: "14px", fontWeight: 700, color: gpaColor(student.gpa) }}>
+                    {student.gpa.toFixed(2)}
                   </span>
                 </button>
               ))}
@@ -234,15 +225,8 @@ export default function StudentsView({ school, onBack }: Props) {
               <span style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.5)" }}>
                 {detail.coursesCompleted} courses completed
               </span>
-              <span
-                style={{
-                  fontFamily: FONT, fontSize: "11px", fontWeight: 600, letterSpacing: "0.06em",
-                  textTransform: "uppercase", padding: "3px 8px", borderRadius: "10px",
-                  background: PERF_COLORS[detail.avgPerformance]?.bg,
-                  color: PERF_COLORS[detail.avgPerformance]?.text,
-                }}
-              >
-                {detail.avgPerformance}
+              <span style={{ fontFamily: FONT, fontSize: "14px", fontWeight: 700, color: gpaColor(detail.gpa) }}>
+                {detail.gpa.toFixed(2)} GPA
               </span>
             </div>
           </div>
@@ -273,7 +257,6 @@ export default function StudentsView({ school, onBack }: Props) {
           {/* Course History */}
           {detailTab === "history" && (
             <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-              {/* Header */}
               <div style={{ display: "flex", padding: "10px 20px", gap: "16px" }}>
                 {["Course", "Department", "Grade", "Term", "Status"].map((h, i) => (
                   <span key={h} style={{
@@ -299,10 +282,7 @@ export default function StudentsView({ school, onBack }: Props) {
                   <span style={{ flex: 1, fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.5)" }}>
                     {e.department}
                   </span>
-                  <span style={{
-                    flex: 1, fontFamily: FONT, fontSize: "13px", fontWeight: 700,
-                    color: GRADE_COLORS[e.grade] ?? "rgba(255,255,255,0.6)",
-                  }}>
+                  <span style={{ flex: 1, fontFamily: FONT, fontSize: "13px", fontWeight: 700, color: GRADE_COLORS[e.grade] ?? "rgba(255,255,255,0.6)" }}>
                     {e.grade}
                   </span>
                   <span style={{ flex: 1, fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.5)" }}>

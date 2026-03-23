@@ -58,7 +58,7 @@ export type ApiStudentSummary = {
   uuid: string;
   primary_focus: string;
   courses_completed: number;
-  avg_performance: string;
+  gpa: number;
 };
 
 export type ApiStudentEnrollment = {
@@ -73,7 +73,7 @@ export type ApiStudentDetail = {
   uuid: string;
   primary_focus: string;
   courses_completed: number;
-  avg_performance: string;
+  gpa: number;
   enrollments: ApiStudentEnrollment[];
   skills: string[];
 };
