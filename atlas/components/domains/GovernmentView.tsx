@@ -183,8 +183,9 @@ export default function GovernmentView({ school }: Props) {
                     fontWeight: 600,
                     letterSpacing: "0.13em",
                     textTransform: "uppercase",
-                    color: "#ffffff",
+                    color: hoveredReport === key ? "#c9a84c" : "rgba(255,255,255,0.5)",
                     whiteSpace: "nowrap",
+                    transition: "color 0.3s ease-in-out",
                   }}
                 >
                   {REPORT_NAMES[key]}
@@ -204,7 +205,7 @@ export default function GovernmentView({ school }: Props) {
             animate={{ opacity: govState === "transitioning-out" ? 0 : 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
-            style={{ position: "absolute", top: 0, left: 0, right: 0 }}
+            style={{ position: "fixed", inset: 0, background: "#060d1f", overflowY: "auto", zIndex: 25 }}
           >
             {activeReport === "strong_workforce" && (
               <StrongWorkforceView school={school} onBack={handleBack} />

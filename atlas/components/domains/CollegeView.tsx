@@ -202,7 +202,7 @@ export default function CollegeView({ school }: Props) {
             animate={{ opacity: collegeState === "transitioning-out" ? 0 : 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
-            style={{ position: "absolute", top: 0, left: 0, right: 0 }}
+            style={{ position: "fixed", inset: 0, background: "#060d1f", overflowY: "auto", zIndex: 25 }}
           >
             {activeNode === "students" && (
               <StudentsView school={school} onBack={handleBack} />

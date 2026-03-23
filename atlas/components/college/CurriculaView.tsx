@@ -6,6 +6,7 @@ import { SchoolConfig } from "@/lib/schoolConfig";
 import { getDepartments, getCourses } from "@/lib/api";
 import type { ApiDepartmentSummary, ApiCourseSummary } from "@/lib/api";
 import type { DepartmentSummary, CourseSummary } from "@/lib/curricula/types";
+import LeafHeader from "@/components/ui/LeafHeader";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
@@ -71,25 +72,29 @@ export default function CurriculaView({ school, onBack }: Props) {
   }, []);
 
   return (
-    <div style={{ maxWidth: "800px", margin: "0 auto", padding: "56px 40px 80px", display: "flex", flexDirection: "column", gap: "32px" }}>
-      {/* Back */}
-      <button
-        onClick={view === "courses" ? () => setView("departments") : onBack}
-        style={{
-          display: "flex", alignItems: "center", gap: "6px",
-          background: "none", border: "none", cursor: "pointer", padding: 0,
-          color: "rgba(255,255,255,0.4)", fontFamily: FONT, fontSize: "12px",
-          fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase",
-          transition: "color 0.15s", alignSelf: "flex-start",
-        }}
-        onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.85)")}
-        onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.4)")}
-      >
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-          <path d="M10 12L6 8l4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-        {view === "courses" ? "All Departments" : "Back"}
-      </button>
+    <>
+      <LeafHeader school={school} onBack={onBack} parentShape="cube" />
+    <div style={{ maxWidth: "800px", margin: "0 auto", padding: "32px 40px 80px", display: "flex", flexDirection: "column", gap: "32px" }}>
+      {/* Internal back (courses → departments) */}
+      {view === "courses" && (
+        <button
+          onClick={() => setView("departments")}
+          style={{
+            display: "flex", alignItems: "center", gap: "6px",
+            background: "none", border: "none", cursor: "pointer", padding: 0,
+            color: "rgba(255,255,255,0.4)", fontFamily: FONT, fontSize: "12px",
+            fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase",
+            transition: "color 0.15s", alignSelf: "flex-start",
+          }}
+          onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.85)")}
+          onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.4)")}
+        >
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+            <path d="M10 12L6 8l4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          All Departments
+        </button>
+      )}
 
       {error && (
         <p style={{ fontFamily: FONT, fontSize: "14px", color: "#e55" }}>{error}</p>
@@ -262,5 +267,6 @@ export default function CurriculaView({ school, onBack }: Props) {
         </>
       )}
     </div>
+    </>
   );
 }
