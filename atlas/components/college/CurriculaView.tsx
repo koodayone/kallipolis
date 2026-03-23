@@ -163,11 +163,11 @@ export default function CurriculaView({ school, onBack }: Props) {
           ) : (
             <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
               {courses.map((course) => {
-                const isExpanded = expandedCourses.has(course.name);
+                const isExpanded = expandedCourses.has(course.code);
                 return (
-                  <div key={course.name}>
+                  <div key={course.code}>
                     <button
-                      onClick={() => toggleCourse(course.name)}
+                      onClick={() => toggleCourse(course.code)}
                       style={{
                         display: "flex", padding: "16px 24px", justifyContent: "space-between", alignItems: "center",
                         background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.06)",
