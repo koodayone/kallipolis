@@ -17,7 +17,7 @@ function ShapeIcon({ shape, color, edgeColor }: { shape: ParentShape; color: str
 
   if (shape === "cube") {
     return (
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <svg width={size + 4} height={size + 4} viewBox="0 0 24 24" fill="none">
         <path d="M12 2L3 7.5 12 13l9-5.5L12 2z" fill={color} opacity="0.85" />
         <path d="M12 13v9l9-5.5v-9L12 13z" fill={color} opacity="0.55" />
         <path d="M12 13v9L3 16.5v-9L12 13z" fill={color} opacity="0.4" />

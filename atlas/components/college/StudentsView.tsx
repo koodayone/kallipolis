@@ -111,6 +111,9 @@ export default function StudentsView({ school, onBack }: Props) {
   return (
     <>
       <LeafHeader school={school} onBack={onBack} parentShape="cube" />
+      <div style={{ display: "flex", justifyContent: "center", paddingTop: "32px", paddingBottom: "16px" }}>
+        <img src={school.logoPath} alt={school.name} style={{ height: "100px", width: "auto", objectFit: "contain" }} />
+      </div>
     <div style={{ maxWidth: "800px", margin: "0 auto", padding: "32px 40px 80px", display: "flex", flexDirection: "column", gap: "32px" }}>
       {/* Internal back (detail → list) */}
       {view === "detail" && (
@@ -190,12 +193,12 @@ export default function StudentsView({ school, onBack }: Props) {
                   disabled={detailLoading}
                   style={{
                     display: "flex", padding: "14px 20px", gap: "16px", alignItems: "center",
-                    background: school.brandColorDark, border: "1px solid rgba(255,255,255,0.06)",
+                    background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.06)",
                     borderRadius: "6px", cursor: "pointer", transition: "background 0.15s",
                     width: "100%", textAlign: "left",
                   }}
                   onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.06)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.background = school.brandColorDark)}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.04)")}
                 >
                   <span style={{ minWidth: "100px", fontFamily: FONT, fontSize: "14px", fontWeight: 600, color: "rgba(255,255,255,0.85)" }}>
                     Student #{student.displayNumber}
@@ -277,7 +280,7 @@ export default function StudentsView({ school, onBack }: Props) {
                   key={i}
                   style={{
                     display: "flex", padding: "12px 20px", gap: "16px", alignItems: "center",
-                    background: school.brandColorDark, border: "1px solid rgba(255,255,255,0.06)",
+                    background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.06)",
                     borderRadius: "6px",
                   }}
                 >
@@ -318,8 +321,8 @@ export default function StudentsView({ school, onBack }: Props) {
                       key={skill}
                       style={{
                         padding: "8px 16px",
-                        background: school.brandColorDark,
-                        border: `1px solid ${school.brandColor}`,
+                        background: "rgba(255,255,255,0.04)",
+                        border: `1px solid ${school.brandColorLight}`,
                         borderRadius: "6px",
                         fontFamily: FONT,
                         fontSize: "13px",

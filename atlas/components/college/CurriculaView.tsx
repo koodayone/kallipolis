@@ -74,6 +74,9 @@ export default function CurriculaView({ school, onBack }: Props) {
   return (
     <>
       <LeafHeader school={school} onBack={onBack} parentShape="cube" />
+      <div style={{ display: "flex", justifyContent: "center", paddingTop: "32px", paddingBottom: "16px" }}>
+        <img src={school.logoPath} alt={school.name} style={{ height: "100px", width: "auto", objectFit: "contain" }} />
+      </div>
     <div style={{ maxWidth: "800px", margin: "0 auto", padding: "32px 40px 80px", display: "flex", flexDirection: "column", gap: "32px" }}>
       {/* Internal back (courses → departments) */}
       {view === "courses" && (
@@ -122,12 +125,12 @@ export default function CurriculaView({ school, onBack }: Props) {
                   onClick={() => handleDeptClick(dept.department)}
                   style={{
                     display: "flex", padding: "18px 24px", justifyContent: "space-between", alignItems: "center",
-                    background: school.brandColorDark, border: "1px solid rgba(255,255,255,0.06)",
+                    background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.06)",
                     borderRadius: "6px", cursor: "pointer", transition: "background 0.15s",
                     width: "100%", textAlign: "left",
                   }}
                   onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.06)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.background = school.brandColorDark)}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.04)")}
                 >
                   <span style={{ fontFamily: FONT, fontSize: "15px", fontWeight: 600, color: "rgba(255,255,255,0.9)" }}>
                     {dept.department}
@@ -166,13 +169,13 @@ export default function CurriculaView({ school, onBack }: Props) {
                       onClick={() => toggleCourse(course.name)}
                       style={{
                         display: "flex", padding: "16px 24px", justifyContent: "space-between", alignItems: "center",
-                        background: school.brandColorDark, border: "1px solid rgba(255,255,255,0.06)",
+                        background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.06)",
                         borderRadius: isExpanded ? "6px 6px 0 0" : "6px",
                         cursor: "pointer", transition: "background 0.15s",
                         width: "100%", textAlign: "left",
                       }}
                       onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.06)")}
-                      onMouseLeave={(e) => (e.currentTarget.style.background = school.brandColorDark)}
+                      onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.04)")}
                     >
                       <div style={{ display: "flex", alignItems: "baseline", gap: "12px" }}>
                         <span style={{ fontFamily: FONT, fontSize: "12px", fontWeight: 600, letterSpacing: "0.06em", color: school.brandColorLight }}>
@@ -202,7 +205,7 @@ export default function CurriculaView({ school, onBack }: Props) {
                           <div
                             style={{
                               padding: "20px 24px",
-                              background: school.brandColorDark,
+                              background: "rgba(255,255,255,0.04)",
                               borderLeft: "1px solid rgba(255,255,255,0.06)",
                               borderRight: "1px solid rgba(255,255,255,0.06)",
                               borderBottom: "1px solid rgba(255,255,255,0.06)",
@@ -241,7 +244,7 @@ export default function CurriculaView({ school, onBack }: Props) {
                                       style={{
                                         padding: "6px 14px",
                                         background: "transparent",
-                                        border: `1px solid ${school.brandColor}`,
+                                        border: `1px solid ${school.brandColorLight}`,
                                         borderRadius: "6px",
                                         fontFamily: FONT,
                                         fontSize: "12px",

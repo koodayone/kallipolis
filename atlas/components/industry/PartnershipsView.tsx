@@ -23,6 +23,9 @@ export default function PartnershipsView({ school, onBack }: Props) {
   return (
     <>
     <LeafHeader school={school} onBack={onBack} parentShape="tetrahedron" />
+      <div style={{ display: "flex", justifyContent: "center", paddingTop: "32px", paddingBottom: "16px" }}>
+        <img src={school.logoPath} alt={school.name} style={{ height: "100px", width: "auto", objectFit: "contain" }} />
+      </div>
     <div
       style={{
         maxWidth: "800px",
@@ -59,7 +62,7 @@ export default function PartnershipsView({ school, onBack }: Props) {
         </p>
       </div>
 
-      <Card style={{ padding: "32px", background: school.brandColorDark, border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0 2px 12px rgba(0,0,0,0.4)" }}>
+      <Card style={{ padding: "32px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0 2px 12px rgba(0,0,0,0.4)" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "24px" }}>
           <span
             style={{
@@ -101,7 +104,7 @@ export default function PartnershipsView({ school, onBack }: Props) {
 
         <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
           <div title="Connect your institutional data to enable report generation" style={{ display: "inline-block" }}>
-            <Button variant="solid-gold" disabled style={{ background: school.brandColor, borderColor: school.brandColor, color: "#ffffff" }}>
+            <Button variant="solid-gold" disabled style={{ background: school.brandColorLight, borderColor: school.brandColorLight, color: "#ffffff" }}>
               Generate Report
             </Button>
           </div>
