@@ -293,6 +293,24 @@ async def _parse_course_page(
     return course
 
 
+async def _get_department_names(client: httpx.AsyncClient, base_url: str) -> dict[str, str]:
+    """Scrape full department names from the courses-az index page."""
+    html_text = await _fetch(client, f"{base_url}/courses-az/")
+    if not html_text:
+        return {}
+    import html as html_mod
+    pattern = r'<a\s+href="/courses-az/([a-z][^/]+)/"[^>]*>([^<]+)</a>'
+    matches = re.findall(pattern, html_text, re.IGNORECASE)
+    mapping = {}
+    for slug, name in matches:
+        code = slug.upper().replace("-", " ")
+        clean = html_mod.unescape(name.strip())
+        clean = re.sub(r"\s*\([A-Z\s/]+\)\s*$", "", clean).strip()
+        mapping[code] = clean
+    logger.info(f"Resolved {len(mapping)} department names")
+    return mapping
+
+
 async def scrape_catalog(base_url: str = "https://catalog.foothill.edu") -> list[RawCourse]:
     """
     Scrape all courses from a CourseLeaf catalog.
@@ -305,6 +323,9 @@ async def scrape_catalog(base_url: str = "https://catalog.foothill.edu") -> list
     async with httpx.AsyncClient(
         headers={"User-Agent": "Kallipolis/1.0 (educational research)"}
     ) as client:
+        # Get department name mapping (acronym -> full name)
+        dept_names = await _get_department_names(client, base_url)
+
         # Get all course outline links from the index page
         all_links = await _get_all_course_links(client, base_url)
         if not all_links:
@@ -323,6 +344,9 @@ async def scrape_catalog(base_url: str = "https://catalog.foothill.edu") -> list
         results = await asyncio.gather(*[fetch_course(link) for link in all_links])
         for course in results:
             if course is not None:
+                # Resolve department acronym to full name
+                if course.department in dept_names:
+                    course.department = dept_names[course.department]
                 all_courses.append(course)
 
         logger.info(f"Successfully parsed {len(all_courses)} / {len(all_links)} courses")
