@@ -157,20 +157,20 @@ export default function StudentsView({ school, onBack }: Props) {
           ) : (
             <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
               {/* Sort header */}
-              <div style={{ display: "flex", padding: "10px 20px", gap: "16px", alignItems: "center" }}>
-                <span style={{ minWidth: "100px", fontFamily: FONT, fontSize: "11px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "100px 1fr 90px 70px", padding: "10px 20px", gap: "16px", alignItems: "center" }}>
+                <span style={{ fontFamily: FONT, fontSize: "11px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>
                   Student
                 </span>
                 {([
-                  { key: "primaryFocus" as SortKey, label: "Primary Focus", width: "180px" },
-                  { key: "coursesCompleted" as SortKey, label: "Completed", width: "90px" },
-                  { key: "gpa" as SortKey, label: "GPA", width: "70px" },
+                  { key: "primaryFocus" as SortKey, label: "Primary Focus" },
+                  { key: "coursesCompleted" as SortKey, label: "Completed" },
+                  { key: "gpa" as SortKey, label: "GPA" },
                 ]).map((col) => (
                   <button
                     key={col.key}
                     onClick={() => handleSort(col.key)}
                     style={{
-                      minWidth: col.width, background: "none", border: "none", cursor: "pointer",
+                      background: "none", border: "none", cursor: "pointer",
                       padding: 0, fontFamily: FONT, fontSize: "11px", fontWeight: 600,
                       letterSpacing: "0.1em", textTransform: "uppercase",
                       color: sortKey === col.key ? school.brandColorLight : "rgba(255,255,255,0.3)",
@@ -192,7 +192,7 @@ export default function StudentsView({ school, onBack }: Props) {
                   onClick={() => handleStudentClick(student)}
                   disabled={detailLoading}
                   style={{
-                    display: "flex", padding: "14px 20px", gap: "16px", alignItems: "center",
+                    display: "grid", gridTemplateColumns: "100px 1fr 90px 70px", padding: "14px 20px", gap: "16px", alignItems: "center",
                     background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.06)",
                     borderRadius: "6px", cursor: "pointer", transition: "background 0.15s",
                     width: "100%", textAlign: "left",
@@ -200,16 +200,16 @@ export default function StudentsView({ school, onBack }: Props) {
                   onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.06)")}
                   onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.04)")}
                 >
-                  <span style={{ minWidth: "100px", fontFamily: FONT, fontSize: "14px", fontWeight: 600, color: "rgba(255,255,255,0.85)" }}>
+                  <span style={{ fontFamily: FONT, fontSize: "14px", fontWeight: 600, color: "rgba(255,255,255,0.85)" }}>
                     Student #{student.displayNumber}
                   </span>
-                  <span style={{ minWidth: "180px", fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.6)" }}>
+                  <span style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.6)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                     {student.primaryFocus}
                   </span>
-                  <span style={{ minWidth: "90px", fontFamily: FONT, fontSize: "14px", fontWeight: 600, color: "rgba(255,255,255,0.8)" }}>
+                  <span style={{ fontFamily: FONT, fontSize: "14px", fontWeight: 600, color: "rgba(255,255,255,0.8)" }}>
                     {student.coursesCompleted}
                   </span>
-                  <span style={{ minWidth: "70px", fontFamily: FONT, fontSize: "14px", fontWeight: 700, color: gpaColor(student.gpa) }}>
+                  <span style={{ fontFamily: FONT, fontSize: "14px", fontWeight: 700, color: gpaColor(student.gpa) }}>
                     {student.gpa.toFixed(2)}
                   </span>
                 </button>
