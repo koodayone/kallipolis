@@ -286,7 +286,7 @@ export default function StateView() {
               width: "50%",
               flexShrink: 0,
               borderLeft: "1px solid rgba(255,255,255,0.07)",
-              padding: "56px 56px 48px",
+              padding: "56px 56px 150px",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -346,17 +346,19 @@ function SchoolPanel({ college }: { college: College }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
       {college.logoStacked && (
-        <img
-          src={`/logos/${college.id}.png`}
-          alt={college.name}
-          style={{
-            height: "44px",
-            width: "auto",
-            maxWidth: "100%",
-            objectFit: "contain",
-            objectPosition: "left center",
-          }}
-        />
+        <div style={{ maxWidth: "280px", height: "80px" }}>
+          <img
+            src={`/logos/${college.id}.png`}
+            alt={college.name}
+            style={{
+              height: "80px",
+              width: "auto",
+              maxWidth: "280px",
+              objectFit: "contain",
+              objectPosition: "left center",
+            }}
+          />
+        </div>
       )}
       <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
         <h2 style={{ fontFamily: "var(--font-days-one), sans-serif", fontSize: "clamp(22px, 2.4vw, 34px)", lineHeight: 1.2, color: "#ffffff", margin: 0 }}>
@@ -366,8 +368,6 @@ function SchoolPanel({ college }: { college: College }) {
           {college.district}
         </span>
       </div>
-
-      <div style={{ height: "1px", background: "rgba(255,255,255,0.08)" }} />
 
       <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
         <Link

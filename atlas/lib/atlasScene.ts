@@ -204,8 +204,8 @@ export function buildAtlasScene(
   connectors.push({
     line: makeConnector(solids[0].basePos, cubePos),
     triggerDomain: "government",
-    targetOpacity: 0,
-    currentOpacity: 0,
+    targetOpacity: 0.3,
+    currentOpacity: 0.3,
   });
 
   // College → each Industry tetrahedron (revealed on industry hover)
@@ -213,8 +213,8 @@ export function buildAtlasScene(
     connectors.push({
       line: makeConnector(cubePos, s.basePos),
       triggerDomain: "industry",
-      targetOpacity: 0,
-      currentOpacity: 0,
+      targetOpacity: 0.3,
+      currentOpacity: 0.3,
     });
   });
 
@@ -247,7 +247,7 @@ export function buildAtlasScene(
     });
 
     connectors.forEach((c) => {
-      c.targetOpacity = domain !== null && c.triggerDomain === domain ? 0.75 : 0;
+      c.targetOpacity = domain !== null && c.triggerDomain === domain ? 1.0 : 0.3;
     });
   }
 
@@ -442,9 +442,9 @@ export function buildAtlasScene(
     });
 
     connectors.forEach((c) => {
-      c.targetOpacity = 0;
-      c.currentOpacity = 0;
-      (c.line.material as LineMaterial).opacity = 0;
+      c.targetOpacity = 0.3;
+      c.currentOpacity = 0.3;
+      (c.line.material as LineMaterial).opacity = 0.3;
     });
   }
 

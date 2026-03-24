@@ -1,8 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { SchoolConfig } from "@/lib/schoolConfig";
-import AtlasMenu from "@/components/auth/AtlasMenu";
 
 type ParentShape = "dodecahedron" | "cube" | "tetrahedron";
 
@@ -60,17 +58,6 @@ function ShapeIcon({ shape, color, edgeColor }: { shape: ParentShape; color: str
 }
 
 export default function LeafHeader({ school, onBack, parentShape }: Props) {
-  const [userCollegeId, setUserCollegeId] = useState<string | null>(null);
-
-  useEffect(() => {
-    fetch("/api/auth/me")
-      .then((r) => r.json())
-      .then((data) => {
-        if (data.user?.collegeId) setUserCollegeId(data.user.collegeId);
-      })
-      .catch(() => {});
-  }, []);
-
   return (
     <header
       style={{
@@ -128,20 +115,6 @@ export default function LeafHeader({ school, onBack, parentShape }: Props) {
       >
         {school.name}
       </span>
-
-      {/* Hamburger menu */}
-      <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-        <AtlasMenu navItems={[
-          { label: "Home View", href: userCollegeId ? `/${userCollegeId}` : "/", icon: (
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2L3 7.5 12 13l9-5.5L12 2z" fill={school.brandColor} opacity="0.85" />
-              <path d="M12 13v9l9-5.5v-9L12 13z" fill={school.brandColor} opacity="0.55" />
-              <path d="M12 13v9L3 16.5v-9L12 13z" fill={school.brandColor} opacity="0.4" />
-              <path d="M12 2L3 7.5v9L12 22l9-5.5v-9L12 2z M12 13L3 7.5 M12 13l9-5.5 M12 13v9" stroke="rgba(255,255,255,0.55)" strokeWidth="0.7" />
-            </svg>
-          ) },
-        ]} />
-      </div>
     </header>
   );
 }
