@@ -3,14 +3,14 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { PartnershipProposal } from "@/lib/api";
-import Card from "@/components/ui/Card";
-import Badge from "@/components/ui/Badge";
-import Button from "@/components/ui/Button";
+
+const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
 type CardState = "default" | "saved" | "dismissed" | "flagged";
 
 type Props = {
   proposal: PartnershipProposal;
+  brandColor: string;
   onDismiss: () => void;
 };
 
@@ -42,7 +42,7 @@ function CheckIcon() {
   );
 }
 
-export default function ProposalCard({ proposal, onDismiss }: Props) {
+export default function ProposalCard({ proposal, brandColor, onDismiss }: Props) {
   const [state, setState] = useState<CardState>("default");
 
   if (state === "dismissed") return null;
@@ -52,26 +52,37 @@ export default function ProposalCard({ proposal, onDismiss }: Props) {
 
   return (
     <motion.div layout initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}>
-      <Card style={{ padding: "28px", position: "relative" }}>
+      <div
+        style={{
+          padding: "28px",
+          background: "rgba(255,255,255,0.04)",
+          border: "1px solid rgba(255,255,255,0.08)",
+          borderRadius: "8px",
+          position: "relative",
+        }}
+      >
         {/* Status indicator */}
         {(isSaved || isFlagged) && (
-          <div
-            style={{
-              position: "absolute",
-              top: "16px",
-              right: "16px",
-              display: "flex",
-              alignItems: "center",
-              gap: "6px",
-            }}
-          >
-            <Badge variant={isSaved ? "success" : "gold"}>
+          <div style={{ position: "absolute", top: "16px", right: "16px" }}>
+            <span
+              style={{
+                padding: "4px 10px",
+                borderRadius: "100px",
+                fontFamily: FONT,
+                fontSize: "11px",
+                fontWeight: 600,
+                letterSpacing: "0.05em",
+                background: isSaved ? "rgba(74,222,128,0.15)" : "rgba(251,191,36,0.15)",
+                color: isSaved ? "rgba(74,222,128,0.9)" : "rgba(251,191,36,0.9)",
+                border: `1px solid ${isSaved ? "rgba(74,222,128,0.3)" : "rgba(251,191,36,0.3)"}`,
+              }}
+            >
               {isSaved ? "Saved" : "Flagged"}
-            </Badge>
+            </span>
           </div>
         )}
 
-        {/* Header row */}
+        {/* Header */}
         <div
           style={{
             display: "flex",
@@ -83,31 +94,45 @@ export default function ProposalCard({ proposal, onDismiss }: Props) {
         >
           <h3
             style={{
-              fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+              fontFamily: FONT,
               fontSize: "17px",
               fontWeight: 600,
-              color: "#111827",
+              color: "rgba(255,255,255,0.9)",
               letterSpacing: "-0.01em",
               lineHeight: 1.3,
             }}
           >
             {proposal.employer_or_sector}
           </h3>
-          <Badge variant="gold" style={{ flexShrink: 0, marginLeft: "16px" }}>
+          <span
+            style={{
+              flexShrink: 0,
+              marginLeft: "16px",
+              padding: "4px 12px",
+              borderRadius: "100px",
+              fontFamily: FONT,
+              fontSize: "11px",
+              fontWeight: 600,
+              letterSpacing: "0.05em",
+              background: `${brandColor}20`,
+              color: brandColor,
+              border: `1px solid ${brandColor}40`,
+            }}
+          >
             {proposal.partnership_type}
-          </Badge>
+          </span>
         </div>
 
         {/* Curriculum alignment */}
         <div style={{ marginBottom: "16px" }}>
           <p
             style={{
-              fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+              fontFamily: FONT,
               fontSize: "11px",
               fontWeight: 600,
               letterSpacing: "0.1em",
               textTransform: "uppercase",
-              color: "#9ca3af",
+              color: "rgba(255,255,255,0.35)",
               marginBottom: "10px",
             }}
           >
@@ -118,9 +143,9 @@ export default function ProposalCard({ proposal, onDismiss }: Props) {
               <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
                 <span
                   style={{
-                    fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+                    fontFamily: FONT,
                     fontSize: "11px",
-                    color: "#9ca3af",
+                    color: "rgba(255,255,255,0.4)",
                     minWidth: "130px",
                     flexShrink: 0,
                     paddingTop: "1px",
@@ -133,12 +158,12 @@ export default function ProposalCard({ proposal, onDismiss }: Props) {
                     style={{
                       display: "inline-block",
                       padding: "3px 10px",
-                      background: "#fafaf9",
-                      border: "1px solid #e4e2dc",
+                      background: "rgba(255,255,255,0.06)",
+                      border: "1px solid rgba(255,255,255,0.12)",
                       borderRadius: "100px",
-                      fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+                      fontFamily: FONT,
                       fontSize: "12px",
-                      color: "#374151",
+                      color: "rgba(255,255,255,0.8)",
                     }}
                   >
                     {a.curriculum_name}
@@ -146,9 +171,9 @@ export default function ProposalCard({ proposal, onDismiss }: Props) {
                   {a.relevance_note && (
                     <span
                       style={{
-                        fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+                        fontFamily: FONT,
                         fontSize: "11px",
-                        color: "#9ca3af",
+                        color: "rgba(255,255,255,0.4)",
                         lineHeight: 1.4,
                         paddingLeft: "2px",
                       }}
@@ -165,10 +190,10 @@ export default function ProposalCard({ proposal, onDismiss }: Props) {
         {/* Student population relevance */}
         <p
           style={{
-            fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+            fontFamily: FONT,
             fontSize: "13px",
             fontStyle: "italic",
-            color: "#6b7280",
+            color: "rgba(255,255,255,0.5)",
             lineHeight: 1.55,
             marginBottom: "14px",
           }}
@@ -179,9 +204,9 @@ export default function ProposalCard({ proposal, onDismiss }: Props) {
         {/* Rationale */}
         <p
           style={{
-            fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+            fontFamily: FONT,
             fontSize: "14px",
-            color: "#374151",
+            color: "rgba(255,255,255,0.7)",
             lineHeight: 1.65,
             marginBottom: "24px",
           }}
@@ -189,43 +214,71 @@ export default function ProposalCard({ proposal, onDismiss }: Props) {
           {proposal.rationale}
         </p>
 
-        {/* Divider */}
-        <div style={{ borderTop: "1px solid #f0ede6", paddingTop: "16px" }}>
+        {/* Actions */}
+        <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "16px" }}>
           <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-            <Button
-              variant="solid-gold"
-              size="sm"
+            <button
               onClick={() => setState(isSaved ? "default" : "saved")}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                padding: "6px 14px",
+                borderRadius: "6px",
+                fontFamily: FONT,
+                fontSize: "12px",
+                fontWeight: 600,
+                cursor: "pointer",
+                border: "none",
+                background: isSaved ? "rgba(74,222,128,0.15)" : `${brandColor}20`,
+                color: isSaved ? "rgba(74,222,128,0.9)" : brandColor,
+              }}
             >
               <CheckIcon />
               {isSaved ? "Saved" : "Save"}
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
+            </button>
+            <button
               onClick={() => {
                 onDismiss();
                 setState("dismissed");
               }}
+              style={{
+                padding: "6px 14px",
+                borderRadius: "6px",
+                fontFamily: FONT,
+                fontSize: "12px",
+                fontWeight: 500,
+                cursor: "pointer",
+                border: "1px solid rgba(255,255,255,0.12)",
+                background: "transparent",
+                color: "rgba(255,255,255,0.5)",
+              }}
             >
               Dismiss
-            </Button>
-            <Button
-              variant="outlined"
-              size="sm"
+            </button>
+            <button
               onClick={() => setState(isFlagged ? "default" : "flagged")}
               style={{
-                color: isFlagged ? "#a07830" : "#6b7280",
-                borderColor: isFlagged ? "#e8d5a0" : "#d1d5db",
-                background: isFlagged ? "#fdf8ee" : "transparent",
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                padding: "6px 14px",
+                borderRadius: "6px",
+                fontFamily: FONT,
+                fontSize: "12px",
+                fontWeight: 500,
+                cursor: "pointer",
+                border: `1px solid ${isFlagged ? "rgba(251,191,36,0.4)" : "rgba(255,255,255,0.12)"}`,
+                background: isFlagged ? "rgba(251,191,36,0.1)" : "transparent",
+                color: isFlagged ? "rgba(251,191,36,0.9)" : "rgba(255,255,255,0.5)",
               }}
             >
               <FlagIcon />
               Flag
-            </Button>
+            </button>
           </div>
         </div>
-      </Card>
+      </div>
     </motion.div>
   );
 }

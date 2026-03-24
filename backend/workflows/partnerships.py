@@ -2,6 +2,7 @@ import os
 import re
 import json
 import logging
+from collections import Counter
 import anthropic
 from ontology.schema import get_driver
 from models import PartnershipProposal, CurriculumAlignment, ProposalList
@@ -10,16 +11,16 @@ logger = logging.getLogger(__name__)
 
 PARTNERSHIP_PROMPT = """You are an institutional intelligence analyst for California community college workforce partnerships. Your job is to identify specific, actionable industry partnership opportunities between a community college and employers in its labor market region.
 
-Below is the institutional context:
+Below is the institutional context — programs are summarized with their key workforce skills and representative courses:
 
 {context}
 
 Based on this data, generate EXACTLY 6 partnership proposals. Each proposal must:
 1. Name a specific employer from the list above (not a generic sector)
-2. Identify 2-4 specific curricula by their EXACT names as listed above that align to that employer's job roles
-3. Explain concretely which student populations benefit (e.g., "Healthcare Technology students in their second semester who have completed phlebotomy training")
+2. Identify 2-4 specific programs that align to that employer's job roles, referencing the skills and representative courses listed
+3. Explain concretely which student populations benefit (e.g., "Computer Science students completing cloud computing and systems courses")
 4. Specify a concrete partnership type — exactly one of: Internship Pipeline, Apprenticeship Program, Advisory Board Seat, Guest Lecture Series, Equipment Donation & Lab Access, Co-op Employment, Tuition Reimbursement Compact, Hiring Commitment MOU
-5. Provide a 2-3 sentence rationale that references specific job roles the employer needs and specific skills those curricula develop — be concrete, not generic
+5. Provide a 2-3 sentence rationale that references specific job roles the employer needs and specific skills those programs develop — be concrete, not generic
 
 Make proposals specific, differentiated, and actionable. Each proposal should cover a different employer. Avoid generic language — name the exact skill, role, and outcome.
 
@@ -49,11 +50,17 @@ Return ONLY valid JSON with no text before or after, in this exact schema:
 def _gather_context() -> str:
     driver = get_driver()
     with driver.session() as session:
+        # Summarize programs with course counts, skills, and sample courses
         institution_records = session.run("""
             MATCH (i:Institution)-[:OFFERS]->(p:Program)-[:CONTAINS]->(c:Course)
+            WITH i, p, count(c) AS course_count,
+                 collect(c.skill_mappings) AS all_skill_arrays,
+                 collect(c.name) AS course_names
             RETURN i.name AS institution, i.region AS region,
-                   p.name AS program, collect(c.name) AS curricula
-            ORDER BY p.name
+                   p.name AS program, course_count,
+                   course_names[0..5] AS sample_courses,
+                   all_skill_arrays
+            ORDER BY course_count DESC
         """).data()
 
         employer_records = session.run("""
@@ -70,11 +77,20 @@ def _gather_context() -> str:
         lines.append(f"INSTITUTION: {institution_records[0]['institution']}")
         lines.append(f"LABOR MARKET REGION: {institution_records[0]['region']}")
         lines.append("")
-        lines.append("PROGRAMS AND CURRICULA:")
+        lines.append("PROGRAMS (summarized by department with key workforce skills):")
         for record in institution_records:
-            lines.append(f"\n  Program: {record['program']}")
-            for c in sorted(record["curricula"]):
-                lines.append(f"    - {c}")
+            # Flatten skill arrays and find top 5
+            skill_counter = Counter()
+            for skill_list in record["all_skill_arrays"]:
+                if skill_list:
+                    skill_counter.update(skill_list)
+            top_skills = [s for s, _ in skill_counter.most_common(5)]
+
+            lines.append(f"\n  Program: {record['program']} ({record['course_count']} courses)")
+            if top_skills:
+                lines.append(f"    Key Skills: {', '.join(top_skills)}")
+            if record["sample_courses"]:
+                lines.append(f"    Sample Courses: {', '.join(record['sample_courses'][:5])}")
 
     lines.append("")
     lines.append("EMPLOYERS IN THE REGION AND THEIR JOB ROLE NEEDS:")

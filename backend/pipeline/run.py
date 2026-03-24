@@ -220,11 +220,30 @@ def main():
     parser.add_argument(
         "--seed", type=int, default=42, help="Random seed for student generation (default: 42)"
     )
+    parser.add_argument(
+        "--load-employers", action="store_true", help="Load regional employer data"
+    )
     args = parser.parse_args()
 
     # Load env — .env is at repo root (two levels up from backend/)
     env_path = Path(__file__).resolve().parent.parent.parent / ".env"
     load_dotenv(env_path)
+
+    # Handle --load-employers as a standalone action
+    if args.load_employers:
+        from pipeline.employers import load_employers
+        os.environ.setdefault("NEO4J_URI", "bolt://localhost:7687")
+        os.environ.setdefault("NEO4J_USERNAME", "neo4j")
+        os.environ.setdefault("NEO4J_PASSWORD", "kallipolis_dev")
+        college = COLLEGES.get(args.college)
+        if college:
+            driver = get_driver()
+            try:
+                region = college["config"].region
+                load_employers(driver, region)
+            finally:
+                close_driver()
+        return
 
     asyncio.run(run_pipeline(
         college_key=args.college,
