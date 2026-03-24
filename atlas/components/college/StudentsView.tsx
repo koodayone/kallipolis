@@ -75,7 +75,7 @@ export default function StudentsView({ school, onBack }: Props) {
   const [detailTab, setDetailTab] = useState<DetailTab>("history");
 
   useEffect(() => {
-    getStudents()
+    getStudents(school.name)
       .then((data) => setStudents(data.map(mapSummary)))
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
@@ -90,7 +90,7 @@ export default function StudentsView({ school, onBack }: Props) {
     setDetailLoading(true);
     setDetailTab("history");
     try {
-      const data = await getStudent(student.uuid);
+      const data = await getStudent(student.uuid, school.name);
       setDetail(mapDetail(data, student.displayNumber));
       setView("detail");
     } catch (e) {

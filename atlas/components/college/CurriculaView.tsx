@@ -42,7 +42,7 @@ export default function CurriculaView({ school, onBack }: Props) {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    getDepartments()
+    getDepartments(school.name)
       .then((data) => setDepartments(data.map(mapDept)))
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
@@ -53,7 +53,7 @@ export default function CurriculaView({ school, onBack }: Props) {
     setActiveDept(dept);
     setExpandedCourses(new Set());
     try {
-      const data = await getCourses(dept);
+      const data = await getCourses(dept, school.name);
       setCourses(data.map(mapCourse));
       setView("courses");
     } catch (e) {
