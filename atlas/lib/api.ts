@@ -42,6 +42,45 @@ export async function generatePartnerships(): Promise<ProposalList> {
   return res.json();
 }
 
+export async function streamPartnerships(
+  onProposal: (proposal: PartnershipProposal) => void,
+  onDone: () => void,
+  onError: (error: string) => void,
+): Promise<void> {
+  const res = await fetch(`${BASE}/workflows/partnerships/stream`, {
+    method: "POST",
+  });
+  if (!res.ok) {
+    onError(await res.text());
+    return;
+  }
+  const reader = res.body!.getReader();
+  const decoder = new TextDecoder();
+  let buffer = "";
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buffer += decoder.decode(value, { stream: true });
+
+    const lines = buffer.split("\n");
+    buffer = lines.pop() || "";
+    for (const line of lines) {
+      if (line.startsWith("data: ")) {
+        try {
+          const json = JSON.parse(line.slice(6));
+          if (json.done) { onDone(); return; }
+          if (json.error) { onError(json.error); return; }
+          onProposal(json as PartnershipProposal);
+        } catch {
+          // Incomplete JSON line, skip
+        }
+      }
+    }
+  }
+  onDone();
+}
+
 export async function getInstitution(): Promise<InstitutionSummary> {
   const res = await fetch(`${BASE}/ontology/institution`);
   if (!res.ok) throw new Error("Failed to fetch institution data");

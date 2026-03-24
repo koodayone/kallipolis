@@ -4,7 +4,7 @@ import { useState, useCallback } from "react";
 import LeafHeader from "@/components/ui/LeafHeader";
 import ProposalCard from "@/components/domains/ProposalCard";
 import { SchoolConfig } from "@/lib/schoolConfig";
-import { generatePartnerships } from "@/lib/api";
+import { streamPartnerships } from "@/lib/api";
 import type { PartnershipProposal } from "@/lib/api";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
@@ -21,17 +21,22 @@ export default function PartnershipsView({ school, onBack }: Props) {
   const [proposals, setProposals] = useState<PartnershipProposal[]>([]);
   const [error, setError] = useState<string>("");
 
-  const handleGenerate = useCallback(async () => {
+  const handleGenerate = useCallback(() => {
     setViewState("generating");
+    setProposals([]);
     setError("");
-    try {
-      const result = await generatePartnerships();
-      setProposals(result.proposals);
-      setViewState("results");
-    } catch (e) {
-      setError((e as Error).message);
-      setViewState("error");
-    }
+
+    streamPartnerships(
+      (proposal) => {
+        setProposals((prev) => [...prev, proposal]);
+        setViewState("results");
+      },
+      () => {},
+      (err) => {
+        setError(err);
+        setViewState("error");
+      },
+    );
   }, []);
 
   return (
@@ -168,7 +173,7 @@ export default function PartnershipsView({ school, onBack }: Props) {
           <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <span style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.4)" }}>
-                {proposals.length} proposals generated
+                {proposals.length} of 3 proposals generated{proposals.length < 3 ? "..." : ""}
               </span>
               <button
                 onClick={handleGenerate}

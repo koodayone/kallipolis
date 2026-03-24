@@ -1,6 +1,8 @@
+import json
 from fastapi import APIRouter, HTTPException
+from fastapi.responses import StreamingResponse
 from models import ProposalList, ReportRequest, IngestRequest
-from workflows.partnerships import run_partnerships
+from workflows.partnerships import run_partnerships, stream_partnerships
 from workflows.report import run_report
 from workflows.ingestion import run_ingest
 
@@ -15,6 +17,24 @@ async def partnerships():
         raise HTTPException(status_code=422, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/partnerships/stream")
+async def partnerships_stream():
+    def event_generator():
+        try:
+            for proposal in stream_partnerships():
+                data = proposal.model_dump_json()
+                yield f"data: {data}\n\n"
+            yield f'data: {{"done": true}}\n\n'
+        except Exception as e:
+            yield f'data: {{"error": {json.dumps(str(e))}}}\n\n'
+
+    return StreamingResponse(
+        event_generator(),
+        media_type="text/event-stream",
+        headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+    )
 
 
 @router.post("/report")

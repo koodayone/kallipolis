@@ -15,12 +15,12 @@ Below is the institutional context — programs are summarized with their key wo
 
 {context}
 
-Based on this data, generate EXACTLY 6 partnership proposals. Each proposal must:
+Based on this data, generate EXACTLY 3 partnership proposals. Each proposal must:
 1. Name a specific employer from the list above (not a generic sector)
 2. Identify 2-4 specific programs that align to that employer's job roles, referencing the skills and representative courses listed
-3. Explain concretely which student populations benefit (e.g., "Computer Science students completing cloud computing and systems courses")
+3. Explain concretely which student populations benefit, referencing the student pipeline data (number of students, completion depth, and concentrated skills) where available
 4. Specify a concrete partnership type — exactly one of: Internship Pipeline, Apprenticeship Program, Advisory Board Seat, Guest Lecture Series, Equipment Donation & Lab Access, Co-op Employment, Tuition Reimbursement Compact, Hiring Commitment MOU
-5. Provide a 2-3 sentence rationale that references specific job roles the employer needs and specific skills those programs develop — be concrete, not generic
+5. Provide a 2-3 sentence rationale that references specific job roles, the skills those programs develop, and the size of the student pipeline that makes this partnership viable
 
 Make proposals specific, differentiated, and actionable. Each proposal should cover a different employer. Avoid generic language — name the exact skill, role, and outcome.
 
@@ -71,6 +71,22 @@ def _gather_context() -> str:
             ORDER BY e.name
         """).data()
 
+        # Student pipeline: aggregate students per department with skills
+        student_pipeline = session.run("""
+            MATCH (s:Student)-[e:ENROLLED_IN]->(c:Course)
+            WHERE e.status = 'Completed' AND c.department IS NOT NULL
+            WITH c.department AS dept, s,
+                 collect(DISTINCT c.code) AS completed_codes,
+                 reduce(skills = [], sk IN collect(c.skill_mappings) | skills + sk) AS all_skills
+            WITH dept, s, completed_codes, all_skills
+            WITH dept,
+                 count(DISTINCT s) AS total_students,
+                 sum(CASE WHEN size(completed_codes) >= 3 THEN 1 ELSE 0 END) AS deep_pipeline,
+                 collect(all_skills) AS nested_skills
+            RETURN dept, total_students, deep_pipeline, nested_skills
+            ORDER BY total_students DESC
+        """).data()
+
     lines = []
 
     if institution_records:
@@ -99,6 +115,30 @@ def _gather_context() -> str:
         lines.append("  Job Roles Required:")
         for role in sorted(record["job_roles"]):
             lines.append(f"    - {role}")
+
+    # Student pipeline section
+    if student_pipeline:
+        lines.append("")
+        lines.append("STUDENT WORKFORCE PIPELINE (active students with completed coursework):")
+        for record in student_pipeline:
+            if record["total_students"] < 10:
+                continue
+            dept = record["dept"]
+            total = record["total_students"]
+            deep = record["deep_pipeline"]
+
+            # Flatten nested skill arrays and count
+            skill_counter = Counter()
+            for skill_list in record["nested_skills"]:
+                if skill_list:
+                    for skill in skill_list:
+                        skill_counter[skill] += 1
+            top_skills = skill_counter.most_common(5)
+
+            lines.append(f"\n  {dept}: {total} students ({deep} with 3+ courses completed)")
+            if top_skills:
+                skill_str = ", ".join(f"{s} ({c})" for s, c in top_skills)
+                lines.append(f"    Top Skills by Student Count: {skill_str}")
 
     return "\n".join(lines)
 
@@ -172,3 +212,136 @@ async def run_partnerships() -> ProposalList:
     proposals = _parse_proposals(raw)
     logger.info(f"Parsed {len(proposals)} proposals.")
     return ProposalList(proposals=proposals)
+
+
+# ── Streaming support ──────────────────────────────────────────────────────────
+
+
+def _try_extract_next_proposal(
+    accumulated: str, already_found: int
+) -> "PartnershipProposal | None":
+    """
+    Try to extract the (already_found + 1)th complete proposal object
+    from the accumulated JSON stream.
+    """
+    # Find the start of the proposals array
+    array_start = accumulated.find('"proposals"')
+    if array_start == -1:
+        return None
+    bracket_pos = accumulated.find("[", array_start)
+    if bracket_pos == -1:
+        return None
+
+    # Walk through the text after the opening bracket, tracking brace depth
+    # to find complete {...} objects
+    pos = bracket_pos + 1
+    found = 0
+
+    while pos < len(accumulated):
+        # Skip whitespace and commas
+        while pos < len(accumulated) and accumulated[pos] in " \t\n\r,":
+            pos += 1
+
+        if pos >= len(accumulated) or accumulated[pos] != "{":
+            break
+
+        # Found start of an object — track brace depth to find its end
+        obj_start = pos
+        depth = 0
+        in_string = False
+        escape_next = False
+
+        while pos < len(accumulated):
+            ch = accumulated[pos]
+            if escape_next:
+                escape_next = False
+            elif ch == "\\":
+                escape_next = True
+            elif ch == '"' and not escape_next:
+                in_string = not in_string
+            elif not in_string:
+                if ch == "{":
+                    depth += 1
+                elif ch == "}":
+                    depth -= 1
+                    if depth == 0:
+                        # Complete object found
+                        obj_str = accumulated[obj_start : pos + 1]
+                        if found == already_found:
+                            try:
+                                item = json.loads(obj_str)
+                                alignment = [
+                                    CurriculumAlignment(
+                                        program_name=a["program_name"],
+                                        curriculum_name=a["curriculum_name"],
+                                        relevance_note=a.get("relevance_note", ""),
+                                    )
+                                    for a in item.get("curriculum_alignment", [])
+                                ]
+                                return PartnershipProposal(
+                                    employer_or_sector=item["employer_or_sector"],
+                                    curriculum_alignment=alignment,
+                                    student_population_relevance=item[
+                                        "student_population_relevance"
+                                    ],
+                                    partnership_type=item["partnership_type"],
+                                    rationale=item["rationale"],
+                                )
+                            except (json.JSONDecodeError, KeyError):
+                                return None
+                        found += 1
+                        pos += 1
+                        break
+            pos += 1
+        else:
+            # Reached end of accumulated text without closing the object
+            return None
+
+    return None
+
+
+def stream_partnerships():
+    """
+    Generator that yields PartnershipProposal objects as they complete
+    during Claude's streaming response.
+    """
+    context = _gather_context()
+    logger.info("Gathered graph context, starting Claude stream...")
+
+    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+    accumulated = ""
+    proposal_count = 0
+
+    with client.messages.stream(
+        model="claude-sonnet-4-6",
+        max_tokens=4096,
+        messages=[
+            {
+                "role": "user",
+                "content": PARTNERSHIP_PROMPT.format(context=context),
+            }
+        ],
+    ) as stream:
+        for text in stream.text_stream:
+            accumulated += text
+
+            # Check if a new complete proposal has appeared
+            while True:
+                proposal = _try_extract_next_proposal(accumulated, proposal_count)
+                if proposal is None:
+                    break
+                proposal_count += 1
+                logger.info(f"Streamed proposal {proposal_count}: {proposal.employer_or_sector}")
+                yield proposal
+
+    # Fallback: if streaming detection missed any, parse full response
+    try:
+        all_proposals = _parse_proposals(accumulated)
+        for p in all_proposals[proposal_count:]:
+            proposal_count += 1
+            logger.info(f"Fallback proposal {proposal_count}: {p.employer_or_sector}")
+            yield p
+    except Exception:
+        pass
+
+    logger.info(f"Stream complete: {proposal_count} proposals.")
