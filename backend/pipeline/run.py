@@ -5,6 +5,8 @@ Usage:
     python -m pipeline.run --college foothill
     python -m pipeline.run --college foothill --skip-skills  # scrape only, no LLM
     python -m pipeline.run --college foothill --from-cache    # load from cached JSON
+    python -m pipeline.run --college foothill --generate-students --from-cache
+    python -m pipeline.run --college foothill --generate-students --num-students 5000
 """
 
 from __future__ import annotations
@@ -61,6 +63,9 @@ async def run_pipeline(
     skip_skills: bool = False,
     from_cache: bool = False,
     scrape_only: bool = False,
+    generate_students: bool = False,
+    num_students: int = 3000,
+    seed: int = 42,
 ) -> LoadStats | None:
     """Run the full pipeline for a college."""
 
@@ -103,6 +108,34 @@ async def run_pipeline(
     # ── Stage 2: Skill derivation ────────────────────────────────────────
     enriched_cache = _cache_path(college_key, "enriched")
 
+    # If only generating students (with --from-cache), skip stages 2-3
+    # and jump directly to student generation
+    if generate_students and from_cache and enriched_cache.exists():
+        logger.info(f"Loading cached enriched data from {enriched_cache}")
+        with open(enriched_cache) as f:
+            enriched_courses = json.load(f)
+        logger.info(f"Loaded {len(enriched_courses)} courses from cache")
+
+        from pipeline.students import generate_and_load_students
+        logger.info(f"Generating {num_students} synthetic students (seed={seed})...")
+        driver = get_driver()
+        try:
+            gen_stats = generate_and_load_students(
+                college_key=college_key,
+                courses=enriched_courses,
+                institution_name=config.name,
+                driver=driver,
+                num_students=num_students,
+                seed=seed,
+                config=college.get("student_config"),
+            )
+            logger.info(f"Complete: {gen_stats.students_generated} students, "
+                        f"{gen_stats.enrollments_created} enrollments, "
+                        f"success rate: {gen_stats.success_rate:.1%}")
+        finally:
+            close_driver()
+        return None
+
     if skip_skills and enriched_cache.exists():
         logger.info(f"Loading cached enriched data from {enriched_cache}")
         with open(enriched_cache) as f:
@@ -135,11 +168,31 @@ async def run_pipeline(
     logger.info(f"Stage 3 complete: {stats}")
 
     # ── Summary ──────────────────────────────────────────────────────────
-    # Count unique skills across all courses
     all_skills: set[str] = set()
     for c in enriched_courses:
         all_skills.update(c.get("skill_mappings", []))
     logger.info(f"Unique skills in taxonomy: {len(all_skills)}")
+
+    # ── Stage 4: Generate synthetic students (optional) ─────────────────
+    if generate_students:
+        from pipeline.students import generate_and_load_students
+
+        logger.info(f"Generating {num_students} synthetic students (seed={seed})...")
+        driver = get_driver()
+        try:
+            gen_stats = generate_and_load_students(
+                college_key=college_key,
+                courses=enriched_courses,
+                institution_name=config.name,
+                driver=driver,
+                num_students=num_students,
+                seed=seed,
+                config=college.get("student_config"),
+            )
+            logger.info(f"Stage 4 complete: {gen_stats.students_generated} students, "
+                        f"{gen_stats.enrollments_created} enrollments")
+        finally:
+            close_driver()
 
     return stats
 
@@ -158,6 +211,15 @@ def main():
     parser.add_argument(
         "--scrape-only", action="store_true", help="Only scrape, don't derive skills or load"
     )
+    parser.add_argument(
+        "--generate-students", action="store_true", help="Generate synthetic student data"
+    )
+    parser.add_argument(
+        "--num-students", type=int, default=3000, help="Number of students to generate (default: 3000)"
+    )
+    parser.add_argument(
+        "--seed", type=int, default=42, help="Random seed for student generation (default: 42)"
+    )
     args = parser.parse_args()
 
     # Load env — .env is at repo root (two levels up from backend/)
@@ -169,6 +231,9 @@ def main():
         skip_skills=args.skip_skills,
         from_cache=args.from_cache,
         scrape_only=args.scrape_only,
+        generate_students=args.generate_students,
+        num_students=args.num_students,
+        seed=args.seed,
     ))
 
 
