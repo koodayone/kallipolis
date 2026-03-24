@@ -20,6 +20,7 @@ function mapCourse(api: ApiCourseSummary): CourseSummary {
   return {
     name: api.name,
     code: api.code,
+    description: api.description,
     learningOutcomes: api.learning_outcomes,
     courseObjectives: api.course_objectives,
     skillMappings: api.skill_mappings,
@@ -216,6 +217,18 @@ export default function CurriculaView({ school, onBack }: Props) {
                               gap: "20px",
                             }}
                           >
+                            {/* Description */}
+                            {course.description && (
+                              <div>
+                                <span style={{ fontFamily: FONT, fontSize: "11px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", display: "block", marginBottom: "10px" }}>
+                                  Course Description
+                                </span>
+                                <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.65)", lineHeight: 1.6, margin: 0 }}>
+                                  {course.description}
+                                </p>
+                              </div>
+                            )}
+
                             {/* Learning Outcomes */}
                             {course.learningOutcomes.length > 0 && (
                               <div>

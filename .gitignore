@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# pipeline cache (PDFs, extracted JSON, logs)
+backend/pipeline/cache/
+backend/pipeline/logs/

@@ -48,6 +48,7 @@ class DepartmentSummary(BaseModel):
 class CourseSummary(BaseModel):
     name: str
     code: str
+    description: str
     learning_outcomes: list[str]
     course_objectives: list[str]
     skill_mappings: list[str]

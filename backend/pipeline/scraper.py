@@ -81,6 +81,7 @@ class CourseOutlineParser(HTMLParser):
         self._h1_count = 0
         self._in_h1 = False
         self._h1_text = ""
+        self._found_title = False
         self._in_h2 = False
         self._h2_text = ""
         self._section_items: list[str] = []
@@ -99,10 +100,12 @@ class CourseOutlineParser(HTMLParser):
 
         if tag == "h1":
             self._h1_count += 1
-            # The second h1 on the page is the course title
-            if self._h1_count == 2:
-                self._in_h1 = True
-                self._h1_text = ""
+            # Prefer h1 with class "page-title" (Citrus-style),
+            # otherwise fall back to the second h1 (Foothill-style)
+            if "page-title" in cls or self._h1_count == 2:
+                if not self._found_title:
+                    self._in_h1 = True
+                    self._h1_text = ""
 
         if tag == "h2":
             self._flush_section()
@@ -134,6 +137,7 @@ class CourseOutlineParser(HTMLParser):
     def handle_endtag(self, tag):
         if tag == "h1" and self._in_h1:
             self._in_h1 = False
+            self._found_title = True
             self._parse_h1(self._h1_text.strip())
 
         if tag == "h2" and self._in_h2:
@@ -143,7 +147,7 @@ class CourseOutlineParser(HTMLParser):
                 self._current_section = "slo"
             elif "course objective" in section:
                 self._current_section = "objectives"
-            elif "description" == section:
+            elif "description" in section:
                 self._current_section = "description"
                 self._in_desc_section = True
             else:
@@ -294,21 +298,45 @@ async def _parse_course_page(
 
 
 async def _get_department_names(client: httpx.AsyncClient, base_url: str) -> dict[str, str]:
-    """Scrape full department names from the courses-az index page."""
-    html_text = await _fetch(client, f"{base_url}/courses-az/")
-    if not html_text:
-        return {}
+    """Scrape full department names from catalog index pages.
+
+    Tries multiple URL patterns that CourseLeaf catalogs use:
+      1. /courses-az/         (e.g., Foothill)
+      2. /course-descriptions/ (e.g., Citrus)
+      3. /departments/
+      4. /programs/
+    Returns the first one that yields results.
+    """
     import html as html_mod
-    pattern = r'<a\s+href="/courses-az/([a-z][^/]+)/"[^>]*>([^<]+)</a>'
-    matches = re.findall(pattern, html_text, re.IGNORECASE)
-    mapping = {}
-    for slug, name in matches:
-        code = slug.upper().replace("-", " ")
-        clean = html_mod.unescape(name.strip())
-        clean = re.sub(r"\s*\([A-Z\s/]+\)\s*$", "", clean).strip()
-        mapping[code] = clean
-    logger.info(f"Resolved {len(mapping)} department names")
-    return mapping
+
+    candidate_paths = [
+        ("/courses-az/", r'<a\s+href="/courses-az/([a-z][^/]+)/"[^>]*>([^<]+)</a>'),
+        ("/course-descriptions/", r'<a\s+href="/course-descriptions/([a-z][^/]+)/"[^>]*>([^<]+)</a>'),
+        ("/departments/", r'<a\s+href="/departments/([a-z][^/]+)/"[^>]*>([^<]+)</a>'),
+        ("/programs/", r'<a\s+href="/programs/([a-z][^/]+)/"[^>]*>([^<]+)</a>'),
+    ]
+
+    for path, pattern in candidate_paths:
+        html_text = await _fetch(client, f"{base_url}{path}")
+        if not html_text:
+            continue
+        matches = re.findall(pattern, html_text, re.IGNORECASE)
+        if not matches:
+            continue
+
+        mapping = {}
+        for slug, name in matches:
+            code = slug.upper().replace("-", " ")
+            clean = html_mod.unescape(name.strip())
+            # Strip trailing parenthetical acronym, e.g., "Accounting (ACCT)"
+            clean = re.sub(r"\s*\([A-Z\s/]+\)\s*$", "", clean).strip()
+            if code not in mapping:
+                mapping[code] = clean
+        logger.info(f"Resolved {len(mapping)} department names from {path}")
+        return mapping
+
+    logger.warning("Could not resolve department names from any catalog index page")
+    return {}
 
 
 async def scrape_catalog(base_url: str = "https://catalog.foothill.edu") -> list[RawCourse]:

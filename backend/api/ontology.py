@@ -197,6 +197,7 @@ def get_courses(department: str, institution: str):
             result = session.run("""
                 MATCH (d:Department {name: $department})-[:CONTAINS]->(c:Course {institution: $institution})
                 RETURN c.name AS name, c.code AS code,
+                       c.description AS description,
                        c.learning_outcomes AS learning_outcomes,
                        c.course_objectives AS course_objectives,
                        c.skill_mappings AS skill_mappings
@@ -206,6 +207,7 @@ def get_courses(department: str, institution: str):
                 CourseSummary(
                     name=r["name"],
                     code=r["code"] or "",
+                    description=r["description"] or "",
                     learning_outcomes=r["learning_outcomes"] or [],
                     course_objectives=r["course_objectives"] or [],
                     skill_mappings=r["skill_mappings"] or [],

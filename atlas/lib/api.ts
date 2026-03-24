@@ -131,6 +131,7 @@ export type ApiDepartmentSummary = {
 export type ApiCourseSummary = {
   name: string;
   code: string;
+  description: string;
   learning_outcomes: string[];
   course_objectives: string[];
   skill_mappings: string[];

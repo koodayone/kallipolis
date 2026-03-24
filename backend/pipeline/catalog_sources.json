@@ -1,0 +1,233 @@
+{
+  "description": "Catalog PDF sources for the PDF ingestion pipeline. Title 5 requires every CA community college to publish a catalog — these are the direct PDF URLs found via web search. URLs may change year-to-year as colleges publish new catalogs.",
+  "last_updated": "2026-03-24",
+  "region": "San Francisco Bay Area",
+  "colleges": {
+    "foothill": {
+      "name": "Foothill College",
+      "district": "Foothill-De Anza CCD",
+      "city": "Los Altos Hills",
+      "catalog_pdf_url": "https://catalog.foothill.edu/pdf/Foothill%20College%20Catalog%202025-2026%20-%20Effective%20Fall%202025.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "citrus": {
+      "name": "Citrus College",
+      "district": "Citrus CCD",
+      "city": "Glendora",
+      "catalog_pdf_url": "https://catalog.citruscollege.edu/pdf/Full%20PDF%202025-2026%20Catalog.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending",
+      "notes": "Los Angeles region, not Bay Area — included for legacy continuity"
+    },
+    "ccsf": {
+      "name": "City College of San Francisco",
+      "district": "San Francisco CCD",
+      "city": "San Francisco",
+      "catalog_pdf_url": "https://www.ccsf.edu/sites/default/files/2025/document/programs-and-courses-2025-26.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "laney": {
+      "name": "Laney College",
+      "district": "Peralta CCD",
+      "city": "Oakland",
+      "catalog_pdf_url": "https://laney.edu/hubfs/2025-2026%20Catalog_FINAL_rev2_8.18.25.pdf",
+      "catalog_year": "2025-2026",
+      "status": "ingested"
+    },
+    "deanza": {
+      "name": "De Anza College",
+      "district": "Foothill-De Anza CCD",
+      "city": "Cupertino",
+      "catalog_pdf_url": "https://www.deanza.edu/catalog/documents/dac_catalog_2025-2026.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending",
+      "notes": "Server returns 403 to programmatic downloads; manually download to cache/deanza_catalog.pdf"
+    },
+    "skyline": {
+      "name": "Skyline College",
+      "district": "San Mateo CCD",
+      "city": "San Bruno",
+      "catalog_pdf_url": "https://catalog.skylinecollege.edu/current/catalog.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "canada": {
+      "name": "Cañada College",
+      "district": "San Mateo CCD",
+      "city": "Redwood City",
+      "catalog_pdf_url": "https://catalog.canadacollege.edu/current/_pdf-books/can-catalog2025-26-catalog-rights.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending",
+      "notes": "Server returns 404 to programmatic downloads; manually download to cache/canada_catalog.pdf"
+    },
+    "csm": {
+      "name": "College of San Mateo",
+      "district": "San Mateo CCD",
+      "city": "San Mateo",
+      "catalog_pdf_url": "https://collegeofsanmateo.edu/schedule/docs/catalogs/CSM_2025-26_Catalog.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "merritt": {
+      "name": "Merritt College",
+      "district": "Peralta CCD",
+      "city": "Oakland",
+      "catalog_pdf_url": "https://6398505.fs1.hubspotusercontent-na2.net/hubfs/6398505/2025-2026%20Catalog_FINAL_rev_8.14.25.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "berkeleycc": {
+      "name": "Berkeley City College",
+      "district": "Peralta CCD",
+      "city": "Berkeley",
+      "catalog_pdf_url": "https://www.berkeleycitycollege.edu/hubfs/2024-2025%20BCC%20Catalog.pdf",
+      "catalog_year": "2024-2025",
+      "status": "pending"
+    },
+    "losmedanos": {
+      "name": "Los Medanos College",
+      "district": "Contra Costa CCD",
+      "city": "Pittsburg",
+      "catalog_pdf_url": "https://www.losmedanos.edu/schedule/25-26-LMC-Catalog.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "evergreen": {
+      "name": "Evergreen Valley College",
+      "district": "San Jose-Evergreen CCD",
+      "city": "San Jose",
+      "catalog_pdf_url": "https://www.evc.edu/sites/default/files/2025-08/EVC-Catalog_2025-2026.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "sanjosecity": {
+      "name": "San Jose City College",
+      "district": "San Jose-Evergreen CCD",
+      "city": "San Jose",
+      "catalog_pdf_url": "https://sjcc.edu/_resources/PDF/Academic_Affairs/SJCC%202025-2026%20Catalog.FINAL.3.20.25pdf.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "marin": {
+      "name": "College of Marin",
+      "district": "Marin CCD",
+      "city": "Kentfield",
+      "catalog_pdf_url": "https://www1.marin.edu/sites/default/files/Catalog-2025-2026-F.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "santarosa": {
+      "name": "Santa Rosa Junior College",
+      "district": "Sonoma County JCCD",
+      "city": "Santa Rosa",
+      "catalog_pdf_url": "https://catalog2025-2026.santarosa.edu/sites/catalog2025-2026.santarosa.edu/files/documents/The%20Catalog%202025-2026.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending",
+      "notes": "73MB PDF — may exceed Gemini Files API limit; may need to split or compress"
+    },
+    "napavalley": {
+      "name": "Napa Valley College",
+      "district": "Napa Valley CCD",
+      "city": "Napa",
+      "catalog_pdf_url": "http://catalog.napavalley.edu/pdf/Napa%20Valley%20College%20Catalog%202025-2026.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "solano": {
+      "name": "Solano Community College",
+      "district": "Solano CCD",
+      "city": "Fairfield",
+      "catalog_pdf_url": "https://www.solano.edu/administrative-offices/academic-affairs/files/docs/archived-catalogs/full%20catalog%2025-26%20fall%20addendum.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "westvalley": {
+      "name": "West Valley College",
+      "district": "West Valley-Mission CCD",
+      "city": "Saratoga",
+      "catalog_pdf_url": "https://www.westvalley.edu/catalog/catalog.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "ohlone": {
+      "name": "Ohlone College",
+      "district": "Ohlone CCD",
+      "city": "Fremont",
+      "catalog_pdf_url": "https://www.ohlone.edu/sites/default/files/group/Catalog/20252026/2025-2026_ohlone_college_catalog.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "chabot": {
+      "name": "Chabot College",
+      "district": "Chabot-Las Positas CCD",
+      "city": "Hayward",
+      "catalog_pdf_url": "https://www.chabotcollege.edu/academics/docs/catalogs/2025-2026%20Catalog.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "laspositas": {
+      "name": "Las Positas College",
+      "district": "Chabot-Las Positas CCD",
+      "city": "Livermore",
+      "catalog_pdf_url": "https://laspositascollege.edu/catalog/current/LPC%20Catalog%202025-2026.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "alameda": {
+      "name": "College of Alameda",
+      "district": "Peralta CCD",
+      "city": "Alameda",
+      "catalog_pdf_url": "https://www.peralta.edu/hubfs/College%20of%20Alameda%202023-2024%20Course%20Catalog.pdf",
+      "catalog_year": "2023-2024",
+      "status": "pending",
+      "notes": "Older catalog — current year is flipbook only"
+    },
+    "diablo": {
+      "name": "Diablo Valley College",
+      "district": "Contra Costa CCD",
+      "city": "Pleasant Hill",
+      "catalog_pdf_url": "https://www.dvc.edu/sites/default/files/2025-01/college-catalog-2022-2023.pdf",
+      "catalog_year": "2022-2023",
+      "status": "pending",
+      "notes": "Older catalog — migrated to eLumen web-only starting 2023-2024"
+    },
+    "contracosta": {
+      "name": "Contra Costa College",
+      "district": "Contra Costa CCD",
+      "city": "San Pablo",
+      "catalog_pdf_url": "https://www.contracosta.edu/wp-content/uploads/2024/01/CCC-Catalog_2023-24_final-Online-version.pdf",
+      "catalog_year": "2023-2024",
+      "status": "pending",
+      "notes": "Last PDF before eLumen migration"
+    },
+    "cabrillo": {
+      "name": "Cabrillo College",
+      "district": "Cabrillo CCD",
+      "city": "Aptos",
+      "catalog_pdf_url": "https://www.cerritos.edu/mlewellen/Cabrillo_College/Cabrillo_Catalog.pdf",
+      "catalog_year": "2019-2020",
+      "status": "pending",
+      "notes": "Older catalog from mirror — migrated to eLumen starting 2022-2023"
+    },
+    "gavilan": {
+      "name": "Gavilan College",
+      "district": "Gavilan JCCD",
+      "city": "Gilroy",
+      "catalog_pdf_url": "https://www.gavilan.edu/catalog/docs/GavilanCollegeCatalog2017_2019.pdf",
+      "catalog_year": "2017-2019",
+      "status": "pending",
+      "notes": "Older catalog — migrated to CurriQuNet web-only starting 2021-2022"
+    },
+    "mission": {
+      "name": "Mission College",
+      "district": "West Valley-Mission CCD",
+      "city": "Santa Clara",
+      "catalog_pdf_url": "https://missioncollege.edu/catalog/catalog-2023-2024/2023-2024-catalog.pdf",
+      "catalog_year": "2023-2024",
+      "status": "pending",
+      "notes": "Server redirects to HTML; manually download to cache/mission_catalog.pdf"
+    }
+  }
+}

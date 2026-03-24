@@ -25,7 +25,7 @@ from dotenv import load_dotenv
 # Add backend to path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from pipeline.scraper import scrape_catalog, RawCourse
+from pipeline.scraper import RawCourse
 from pipeline.skills import derive_skills
 from pipeline.loader import load_college, CollegeConfig, LoadStats
 from ontology.schema import get_driver, close_driver
@@ -37,19 +37,43 @@ logging.basicConfig(
 logger = logging.getLogger("pipeline")
 
 # ── College registry ───────────────────────────────────────────────────────────
-# Add colleges here as we scale. Each entry has the catalog URL and Neo4j config.
+# All colleges loaded from catalog_sources.json (PDF pipeline).
+# To add a college, add an entry to catalog_sources.json — no code changes needed.
 
-COLLEGES = {
-    "foothill": {
-        "catalog_url": "https://catalog.foothill.edu",
-        "config": CollegeConfig(
-            name="Foothill College",
-            region="San Francisco Bay Area",
-            city="Los Altos Hills",
-            state="California",
-        ),
-    },
-}
+COLLEGES: dict = {}
+
+
+def _load_colleges() -> dict:
+    """Load colleges from catalog_sources.json into the registry."""
+    sources_path = Path(__file__).resolve().parent / "catalog_sources.json"
+    if not sources_path.exists():
+        logger.warning(f"catalog_sources.json not found at {sources_path}")
+        return {}
+
+    with open(sources_path) as f:
+        data = json.load(f)
+
+    region = data.get("region", "Unknown")
+    entries = {}
+
+    for college_id, info in data.get("colleges", {}).items():
+        if not info.get("catalog_pdf_url"):
+            continue  # Skip colleges with no PDF
+        entries[college_id] = {
+            "catalog_pdf_url": info["catalog_pdf_url"],
+            "scraper_type": "pdf",
+            "config": CollegeConfig(
+                name=info["name"],
+                region=region,
+                city=info.get("city", ""),
+                state="California",
+            ),
+        }
+
+    return entries
+
+
+COLLEGES = _load_colleges()
 
 CACHE_DIR = Path(__file__).resolve().parent.parent / "pipeline" / "cache"
 
@@ -86,8 +110,12 @@ async def run_pipeline(
             raw_dicts = json.load(f)
         raw_courses = [RawCourse(**d) for d in raw_dicts]
     else:
-        logger.info(f"Scraping catalog: {college['catalog_url']}")
-        raw_courses = await scrape_catalog(college["catalog_url"])
+        logger.info(f"Extracting courses from catalog PDF: {college['catalog_pdf_url']}")
+        from pipeline.scraper_pdf import scrape_pdf_catalog
+        raw_courses = await scrape_pdf_catalog(
+            pdf_url=college["catalog_pdf_url"],
+            college_key=college_key,
+        )
 
         # Cache raw results
         raw_dicts = [c.to_dict() for c in raw_courses]
@@ -106,6 +134,10 @@ async def run_pipeline(
         return None
 
     # ── Stage 2: Skill derivation ────────────────────────────────────────
+    # The PDF scraper now extracts courses + skills in a single pass,
+    # caching the result as {college_key}_enriched.json. If that cache
+    # exists, Stage 2 is already done. Otherwise, fall back to the
+    # separate skill derivation pipeline.
     enriched_cache = _cache_path(college_key, "enriched")
 
     # If only generating students (with --from-cache), skip stages 2-3
@@ -136,20 +168,22 @@ async def run_pipeline(
             close_driver()
         return None
 
-    if skip_skills and enriched_cache.exists():
-        logger.info(f"Loading cached enriched data from {enriched_cache}")
+    if enriched_cache.exists():
+        # Combined extraction already produced enriched data
+        logger.info(f"Loading enriched data from {enriched_cache}")
         with open(enriched_cache) as f:
             enriched_courses = json.load(f)
+        logger.info(f"Stage 2 skipped — skills already derived during extraction")
     elif skip_skills:
         logger.info("Skipping skill derivation — using raw data with empty skill_mappings")
         enriched_courses = [c.to_dict() for c in raw_courses]
         for c in enriched_courses:
             c["skill_mappings"] = []
     else:
+        # Fallback: separate skill derivation (for non-PDF scrapers)
         logger.info(f"Deriving skills for {len(raw_courses)} courses...")
         enriched_courses = await derive_skills(raw_courses)
 
-        # Cache enriched results
         with open(enriched_cache, "w") as f:
             json.dump(enriched_courses, f, indent=2)
         logger.info(f"Cached enriched courses to {enriched_cache}")
