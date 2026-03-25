@@ -486,6 +486,17 @@ def load_students(driver: Driver, institution: str, students: List[GeneratedStud
             loaded += len(batch)
 
         logger.info(f"Loaded {loaded} enrollments for {len(students)} students")
+
+        # Materialize Student -[HAS_SKILL]-> Skill from completed enrollments
+        result = session.run("""
+            MATCH (st:Student)-[e:ENROLLED_IN]->(c:Course)-[:DEVELOPS]->(s:Skill)
+            WHERE e.status = 'Completed'
+            MERGE (st)-[:HAS_SKILL]->(s)
+            RETURN count(*) AS created
+        """)
+        skills_created = result.single()["created"]
+        logger.info(f"Materialized {skills_created} HAS_SKILL relationships")
+
         return loaded
 
 

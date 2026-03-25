@@ -73,6 +73,29 @@ def load_skill_nodes(driver):
         logger.info(f"  Courses linked to skills: {courses_with}")
 
 
+def load_student_skills(driver):
+    """Materialize Student -[HAS_SKILL]-> Skill from completed enrollments."""
+    with driver.session() as s:
+        logger.info("Creating Student -[HAS_SKILL]-> Skill relationships...")
+        result = s.run("""
+            MATCH (st:Student)-[e:ENROLLED_IN]->(c:Course)-[:DEVELOPS]->(s:Skill)
+            WHERE e.status = 'Completed'
+            MERGE (st)-[:HAS_SKILL]->(s)
+            RETURN count(*) AS relationships_created
+        """)
+        rels = result.single()["relationships_created"]
+        logger.info(f"Created {rels} HAS_SKILL relationships")
+
+        # Verify
+        student_skills = s.run("""
+            MATCH (st:Student)-[:HAS_SKILL]->(s:Skill)
+            RETURN count(DISTINCT st) AS students, count(*) AS relationships
+        """).single()
+        logger.info(f"Verification:")
+        logger.info(f"  Students with skills: {student_skills['students']}")
+        logger.info(f"  HAS_SKILL relationships: {student_skills['relationships']}")
+
+
 def main():
     env_path = Path(__file__).resolve().parent.parent.parent / ".env"
     load_dotenv(env_path)
@@ -80,6 +103,7 @@ def main():
     driver = get_driver()
     try:
         load_skill_nodes(driver)
+        load_student_skills(driver)
     finally:
         close_driver()
 
