@@ -52,11 +52,11 @@ def _gather_context() -> str:
     with driver.session() as session:
         # Summarize departments with course counts, skills, and sample courses
         institution_records = session.run("""
-            MATCH (i:Institution)-[:OFFERS]->(d:Department)-[:CONTAINS]->(c:Course)
-            WITH i, d, count(c) AS course_count,
+            MATCH (col:College)-[:OFFERS]->(d:Department)-[:CONTAINS]->(c:Course)
+            WITH col, d, count(c) AS course_count,
                  collect(c.skill_mappings) AS all_skill_arrays,
                  collect(c.name) AS course_names
-            RETURN i.name AS institution, i.region AS region,
+            RETURN col.name AS institution, col.region AS region,
                    d.name AS department, course_count,
                    course_names[0..5] AS sample_courses,
                    all_skill_arrays
@@ -64,7 +64,7 @@ def _gather_context() -> str:
         """).data()
 
         employer_records = session.run("""
-            MATCH (i:Institution)-[:LOCATED_IN]->(r:LaborMarketRegion)
+            MATCH (col:College)-[:LOCATED_IN]->(r:LaborMarketRegion)
                   <-[:OPERATES_IN]-(e:Employer)-[:REQUIRES]->(j:JobRole)
             RETURN e.name AS employer, e.sector AS sector,
                    collect(DISTINCT j.title) AS job_roles
@@ -90,7 +90,7 @@ def _gather_context() -> str:
     lines = []
 
     if institution_records:
-        lines.append(f"INSTITUTION: {institution_records[0]['institution']}")
+        lines.append(f"COLLEGE: {institution_records[0]['institution']}")
         lines.append(f"LABOR MARKET REGION: {institution_records[0]['region']}")
         lines.append("")
         lines.append("DEPARTMENTS (summarized with key workforce skills):")

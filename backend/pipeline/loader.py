@@ -2,7 +2,7 @@
 Stage 3: Neo4j loader.
 
 Takes enriched course data and persists it into the Neo4j graph database,
-creating Institution, Department, and Course nodes with relationships.
+creating College, Department, and Course nodes with relationships.
 
 Usage:
     from pipeline.loader import load_college
@@ -65,14 +65,14 @@ def load_college(
             "FOR (c:Course) REQUIRE (c.code, c.institution) IS UNIQUE"
         )
 
-        # ── Institution & Region ──────────────────────────────────────────
+        # ── College & Region ───────────────────────────────────────────────
         session.run(
             """
             MERGE (r:LaborMarketRegion {name: $region})
-            MERGE (i:Institution {name: $name})
-            ON CREATE SET i.city = $city, i.state = $state, i.region = $region
-            ON MATCH SET i.city = $city, i.state = $state, i.region = $region
-            MERGE (i)-[:LOCATED_IN]->(r)
+            MERGE (col:College {name: $name})
+            ON CREATE SET col.city = $city, col.state = $state, col.region = $region
+            ON MATCH SET col.city = $city, col.state = $state, col.region = $region
+            MERGE (col)-[:LOCATED_IN]->(r)
             """,
             name=config.name,
             region=config.region,
@@ -88,13 +88,13 @@ def load_college(
             if dept:
                 departments.add(dept)
 
-        # ── Create Departments & link to Institution ─────────────────────
+        # ── Create Departments & link to College ──────────────────────────
         for dept_name in departments:
             session.run(
                 """
-                MATCH (i:Institution {name: $inst_name})
+                MATCH (col:College {name: $inst_name})
                 MERGE (d:Department {name: $dept_name})
-                MERGE (i)-[:OFFERS]->(d)
+                MERGE (col)-[:OFFERS]->(d)
                 """,
                 inst_name=config.name,
                 dept_name=dept_name,

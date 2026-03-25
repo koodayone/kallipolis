@@ -20,15 +20,15 @@ class ProposalList(BaseModel):
     proposals: list[PartnershipProposal]
 
 
-class InstitutionDepartment(BaseModel):
+class CollegeDepartment(BaseModel):
     department_name: str
     curricula: list[str]
 
 
-class InstitutionSummary(BaseModel):
-    institution_name: str
+class CollegeSummary(BaseModel):
+    college_name: str
     region: str
-    departments: list[InstitutionDepartment]
+    departments: list[CollegeDepartment]
 
 
 class ReportRequest(BaseModel):

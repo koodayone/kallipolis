@@ -90,8 +90,14 @@ def _create_constraints(session):
     except Exception:
         pass
 
+    # Drop legacy Institution constraint
+    try:
+        session.run("DROP CONSTRAINT institution_name IF EXISTS")
+    except Exception:
+        pass
+
     constraints = [
-        "CREATE CONSTRAINT institution_name IF NOT EXISTS FOR (n:Institution) REQUIRE n.name IS UNIQUE",
+        "CREATE CONSTRAINT college_name IF NOT EXISTS FOR (n:College) REQUIRE n.name IS UNIQUE",
         "CREATE CONSTRAINT course_code_inst IF NOT EXISTS FOR (n:Course) REQUIRE (n.code, n.institution) IS UNIQUE",
         "CREATE CONSTRAINT department_name IF NOT EXISTS FOR (n:Department) REQUIRE n.name IS UNIQUE",
         "CREATE CONSTRAINT employer_name IF NOT EXISTS FOR (n:Employer) REQUIRE n.name IS UNIQUE",
@@ -104,5 +110,5 @@ def _create_constraints(session):
 
 
 def _is_empty(session) -> bool:
-    result = session.run("MATCH (n:Institution) RETURN count(n) AS cnt")
+    result = session.run("MATCH (n:College) RETURN count(n) AS cnt")
     return result.single()["cnt"] == 0

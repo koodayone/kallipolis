@@ -1,36 +1,36 @@
 from collections import Counter
 from fastapi import APIRouter, HTTPException
 from ontology.schema import get_driver
-from models import InstitutionSummary, InstitutionDepartment, StudentSummary, StudentDetail, StudentEnrollment, DepartmentSummary, CourseSummary
+from models import CollegeSummary, CollegeDepartment, StudentSummary, StudentDetail, StudentEnrollment, DepartmentSummary, CourseSummary
 
 router = APIRouter()
 
 
-@router.get("/institution", response_model=InstitutionSummary)
-def get_institution(institution: str):
+@router.get("/college", response_model=CollegeSummary)
+def get_college(institution: str):
     driver = get_driver()
     try:
         with driver.session() as session:
             result = session.run("""
-                MATCH (i:Institution {name: $institution})-[:OFFERS]->(d:Department)-[:CONTAINS]->(c:Course {institution: $institution})
-                RETURN i.name AS institution_name, i.region AS region,
+                MATCH (col:College {name: $institution})-[:OFFERS]->(d:Department)-[:CONTAINS]->(c:Course {institution: $institution})
+                RETURN col.name AS college_name, col.region AS region,
                        d.name AS department, collect(c.name) AS curricula
                 ORDER BY d.name
             """, institution=institution)
             records = result.data()
 
         if not records:
-            raise HTTPException(status_code=404, detail="No institution data found")
+            raise HTTPException(status_code=404, detail="No college data found")
 
-        departments: list[InstitutionDepartment] = []
+        departments: list[CollegeDepartment] = []
         for record in records:
-            departments.append(InstitutionDepartment(
+            departments.append(CollegeDepartment(
                 department_name=record["department"],
                 curricula=sorted(record["curricula"]),
             ))
 
-        return InstitutionSummary(
-            institution_name=records[0]["institution_name"],
+        return CollegeSummary(
+            college_name=records[0]["college_name"],
             region=records[0]["region"],
             departments=departments,
         )
@@ -46,7 +46,7 @@ def get_departments_with_courses(institution: str):
     try:
         with driver.session() as session:
             result = session.run("""
-                MATCH (i:Institution {name: $institution})-[:OFFERS]->(d:Department)-[:CONTAINS]->(c:Course {institution: $institution})
+                MATCH (col:College {name: $institution})-[:OFFERS]->(d:Department)-[:CONTAINS]->(c:Course {institution: $institution})
                 RETURN d.name AS department, collect(c.name) AS curricula
                 ORDER BY d.name
             """, institution=institution)

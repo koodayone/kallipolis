@@ -19,15 +19,15 @@ export type ProposalList = {
   proposals: PartnershipProposal[];
 };
 
-export type InstitutionDepartment = {
+export type CollegeDepartment = {
   department_name: string;
   curricula: string[];
 };
 
-export type InstitutionSummary = {
-  institution_name: string;
+export type CollegeSummary = {
+  college_name: string;
   region: string;
-  departments: InstitutionDepartment[];
+  departments: CollegeDepartment[];
 };
 
 export async function generatePartnerships(): Promise<ProposalList> {
@@ -81,8 +81,8 @@ export async function streamPartnerships(
   onDone();
 }
 
-export async function getInstitution(institution: string): Promise<InstitutionSummary> {
-  const res = await fetch(`${BASE}/ontology/institution?institution=${encodeURIComponent(institution)}`);
+export async function getCollege(institution: string): Promise<CollegeSummary> {
+  const res = await fetch(`${BASE}/ontology/college?institution=${encodeURIComponent(institution)}`);
   if (!res.ok) throw new Error("Failed to fetch institution data");
   return res.json();
 }
