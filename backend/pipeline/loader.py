@@ -168,6 +168,20 @@ def load_college(
                 )
                 stats.relationships_created += 1
 
+            # Link Course → Skill
+            for skill_name in course.get("skill_mappings", []):
+                session.run(
+                    """
+                    MERGE (s:Skill {name: $skill_name})
+                    WITH s
+                    MATCH (c:Course {code: $code, college: $inst})
+                    MERGE (c)-[:DEVELOPS]->(s)
+                    """,
+                    skill_name=skill_name,
+                    code=code,
+                    inst=config.name,
+                )
+
     logger.info(
         f"Loaded {config.name}: "
         f"{stats.courses_created} courses, "

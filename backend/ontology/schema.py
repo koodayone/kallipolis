@@ -102,6 +102,7 @@ def _create_constraints(session):
         "CREATE CONSTRAINT department_name IF NOT EXISTS FOR (n:Department) REQUIRE n.name IS UNIQUE",
         "CREATE CONSTRAINT employer_name IF NOT EXISTS FOR (n:Employer) REQUIRE n.name IS UNIQUE",
         "CREATE CONSTRAINT region_name IF NOT EXISTS FOR (n:LaborMarketRegion) REQUIRE n.name IS UNIQUE",
+        "CREATE CONSTRAINT skill_name IF NOT EXISTS FOR (n:Skill) REQUIRE n.name IS UNIQUE",
         "CREATE CONSTRAINT jobrole_title IF NOT EXISTS FOR (n:JobRole) REQUIRE n.title IS UNIQUE",
         "CREATE CONSTRAINT student_uuid IF NOT EXISTS FOR (n:Student) REQUIRE n.uuid IS UNIQUE",
     ]
