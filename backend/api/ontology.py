@@ -7,16 +7,16 @@ router = APIRouter()
 
 
 @router.get("/college", response_model=CollegeSummary)
-def get_college(institution: str):
+def get_college(college: str):
     driver = get_driver()
     try:
         with driver.session() as session:
             result = session.run("""
-                MATCH (col:College {name: $institution})-[:OFFERS]->(d:Department)-[:CONTAINS]->(c:Course {institution: $institution})
+                MATCH (col:College {name: $college})-[:OFFERS]->(d:Department)-[:CONTAINS]->(c:Course {college: $college})
                 RETURN col.name AS college_name, col.region AS region,
                        d.name AS department, collect(c.name) AS curricula
                 ORDER BY d.name
-            """, institution=institution)
+            """, college=college)
             records = result.data()
 
         if not records:
@@ -41,15 +41,15 @@ def get_college(institution: str):
 
 
 @router.get("/departments")
-def get_departments_with_courses(institution: str):
+def get_departments_with_courses(college: str):
     driver = get_driver()
     try:
         with driver.session() as session:
             result = session.run("""
-                MATCH (col:College {name: $institution})-[:OFFERS]->(d:Department)-[:CONTAINS]->(c:Course {institution: $institution})
+                MATCH (col:College {name: $college})-[:OFFERS]->(d:Department)-[:CONTAINS]->(c:Course {college: $college})
                 RETURN d.name AS department, collect(c.name) AS curricula
                 ORDER BY d.name
-            """, institution=institution)
+            """, college=college)
             records = result.data()
 
         return [
@@ -78,12 +78,12 @@ def _compute_primary_focus(enrollments: list[dict]) -> str:
 
 
 @router.get("/students", response_model=list[StudentSummary])
-def get_students(institution: str):
+def get_students(college: str):
     driver = get_driver()
     try:
         with driver.session() as session:
             result = session.run("""
-                MATCH (s:Student)-[e:ENROLLED_IN]->(c:Course {institution: $institution})
+                MATCH (s:Student)-[e:ENROLLED_IN]->(c:Course {college: $college})
                 WITH s, collect({
                     name: c.name,
                     department: c.department,
@@ -92,7 +92,7 @@ def get_students(institution: str):
                     status: e.status
                 }) AS enrollments
                 RETURN s.uuid AS uuid, enrollments
-            """, institution=institution)
+            """, college=college)
             records = result.data()
 
         students = []
@@ -115,12 +115,12 @@ def get_students(institution: str):
 
 
 @router.get("/students/{student_uuid}", response_model=StudentDetail)
-def get_student(student_uuid: str, institution: str):
+def get_student(student_uuid: str, college: str):
     driver = get_driver()
     try:
         with driver.session() as session:
             result = session.run("""
-                MATCH (s:Student {uuid: $uuid})-[e:ENROLLED_IN]->(c:Course {institution: $institution})
+                MATCH (s:Student {uuid: $uuid})-[e:ENROLLED_IN]->(c:Course {college: $college})
                 RETURN s.uuid AS uuid,
                        c.name AS course_name,
                        c.department AS department,
@@ -129,7 +129,7 @@ def get_student(student_uuid: str, institution: str):
                        e.term AS term,
                        e.status AS status
                 ORDER BY e.term
-            """, uuid=student_uuid, institution=institution)
+            """, uuid=student_uuid, college=college)
             records = result.data()
 
         if not records:
@@ -172,15 +172,15 @@ def get_student(student_uuid: str, institution: str):
 
 
 @router.get("/curricula/departments", response_model=list[DepartmentSummary])
-def get_departments(institution: str):
+def get_departments(college: str):
     driver = get_driver()
     try:
         with driver.session() as session:
             result = session.run("""
-                MATCH (d:Department)-[:CONTAINS]->(c:Course {institution: $institution})
+                MATCH (d:Department)-[:CONTAINS]->(c:Course {college: $college})
                 RETURN d.name AS department, count(c) AS course_count
                 ORDER BY department
-            """, institution=institution)
+            """, college=college)
             return [
                 DepartmentSummary(department=r["department"], course_count=r["course_count"])
                 for r in result.data()
@@ -190,19 +190,19 @@ def get_departments(institution: str):
 
 
 @router.get("/curricula/courses", response_model=list[CourseSummary])
-def get_courses(department: str, institution: str):
+def get_courses(department: str, college: str):
     driver = get_driver()
     try:
         with driver.session() as session:
             result = session.run("""
-                MATCH (d:Department {name: $department})-[:CONTAINS]->(c:Course {institution: $institution})
+                MATCH (d:Department {name: $department})-[:CONTAINS]->(c:Course {college: $college})
                 RETURN c.name AS name, c.code AS code,
                        c.description AS description,
                        c.learning_outcomes AS learning_outcomes,
                        c.course_objectives AS course_objectives,
                        c.skill_mappings AS skill_mappings
                 ORDER BY c.name
-            """, department=department, institution=institution)
+            """, department=department, college=college)
             return [
                 CourseSummary(
                     name=r["name"],

@@ -81,9 +81,9 @@ export async function streamPartnerships(
   onDone();
 }
 
-export async function getCollege(institution: string): Promise<CollegeSummary> {
-  const res = await fetch(`${BASE}/ontology/college?institution=${encodeURIComponent(institution)}`);
-  if (!res.ok) throw new Error("Failed to fetch institution data");
+export async function getCollege(college: string): Promise<CollegeSummary> {
+  const res = await fetch(`${BASE}/ontology/college?college=${encodeURIComponent(college)}`);
+  if (!res.ok) throw new Error("Failed to fetch college data");
   return res.json();
 }
 
@@ -111,14 +111,14 @@ export type ApiStudentDetail = {
   skills: string[];
 };
 
-export async function getStudents(institution: string): Promise<ApiStudentSummary[]> {
-  const res = await fetch(`${BASE}/ontology/students?institution=${encodeURIComponent(institution)}`);
+export async function getStudents(college: string): Promise<ApiStudentSummary[]> {
+  const res = await fetch(`${BASE}/ontology/students?college=${encodeURIComponent(college)}`);
   if (!res.ok) throw new Error("Failed to fetch students");
   return res.json();
 }
 
-export async function getStudent(uuid: string, institution: string): Promise<ApiStudentDetail> {
-  const res = await fetch(`${BASE}/ontology/students/${uuid}?institution=${encodeURIComponent(institution)}`);
+export async function getStudent(uuid: string, college: string): Promise<ApiStudentDetail> {
+  const res = await fetch(`${BASE}/ontology/students/${uuid}?college=${encodeURIComponent(college)}`);
   if (!res.ok) throw new Error("Failed to fetch student");
   return res.json();
 }
@@ -137,14 +137,14 @@ export type ApiCourseSummary = {
   skill_mappings: string[];
 };
 
-export async function getDepartments(institution: string): Promise<ApiDepartmentSummary[]> {
-  const res = await fetch(`${BASE}/ontology/curricula/departments?institution=${encodeURIComponent(institution)}`);
+export async function getDepartments(college: string): Promise<ApiDepartmentSummary[]> {
+  const res = await fetch(`${BASE}/ontology/curricula/departments?college=${encodeURIComponent(college)}`);
   if (!res.ok) throw new Error("Failed to fetch departments");
   return res.json();
 }
 
-export async function getCourses(department: string, institution: string): Promise<ApiCourseSummary[]> {
-  const res = await fetch(`${BASE}/ontology/curricula/courses?department=${encodeURIComponent(department)}&institution=${encodeURIComponent(institution)}`);
+export async function getCourses(department: string, college: string): Promise<ApiCourseSummary[]> {
+  const res = await fetch(`${BASE}/ontology/curricula/courses?department=${encodeURIComponent(department)}&college=${encodeURIComponent(college)}`);
   if (!res.ok) throw new Error("Failed to fetch courses");
   return res.json();
 }

@@ -56,13 +56,14 @@ def load_college(
 
     with driver.session() as session:
         # ── Update constraints for multi-college support ──────────────────
-        try:
-            session.run("DROP CONSTRAINT course_name IF EXISTS")
-        except Exception:
-            pass
+        for legacy in ["course_name", "course_code_inst"]:
+            try:
+                session.run(f"DROP CONSTRAINT {legacy} IF EXISTS")
+            except Exception:
+                pass
         session.run(
-            "CREATE CONSTRAINT course_code_inst IF NOT EXISTS "
-            "FOR (c:Course) REQUIRE (c.code, c.institution) IS UNIQUE"
+            "CREATE CONSTRAINT course_code_college IF NOT EXISTS "
+            "FOR (c:Course) REQUIRE (c.code, c.college) IS UNIQUE"
         )
 
         # ── College & Region ───────────────────────────────────────────────
@@ -113,7 +114,7 @@ def load_college(
             # MERGE on (code, institution) — unique per college
             session.run(
                 """
-                MERGE (c:Course {code: $code, institution: $institution})
+                MERGE (c:Course {code: $code, college: $college})
                 ON CREATE SET
                     c.name = $name,
                     c.department = $department,
@@ -148,7 +149,7 @@ def load_college(
                 learning_outcomes=course.get("learning_outcomes", []),
                 course_objectives=course.get("course_objectives", []),
                 skill_mappings=course.get("skill_mappings", []),
-                institution=config.name,
+                college=config.name,
                 url=course.get("url", ""),
             )
             stats.courses_created += 1
@@ -158,7 +159,7 @@ def load_college(
                 session.run(
                     """
                     MATCH (d:Department {name: $dept})
-                    MATCH (c:Course {code: $code, institution: $inst})
+                    MATCH (c:Course {code: $code, college: $inst})
                     MERGE (d)-[:CONTAINS]->(c)
                     """,
                     dept=dept,
