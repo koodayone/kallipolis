@@ -3,7 +3,7 @@ from typing import Optional
 
 
 class CurriculumAlignment(BaseModel):
-    program_name: str
+    department_name: str
     curriculum_name: str
     relevance_note: str
 
@@ -20,15 +20,15 @@ class ProposalList(BaseModel):
     proposals: list[PartnershipProposal]
 
 
-class ProgramSummary(BaseModel):
-    program_name: str
+class InstitutionDepartment(BaseModel):
+    department_name: str
     curricula: list[str]
 
 
 class InstitutionSummary(BaseModel):
     institution_name: str
     region: str
-    programs: list[ProgramSummary]
+    departments: list[InstitutionDepartment]
 
 
 class ReportRequest(BaseModel):

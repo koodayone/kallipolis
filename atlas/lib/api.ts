@@ -2,7 +2,7 @@ const BASE =
   process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 
 export type CurriculumAlignment = {
-  program_name: string;
+  department_name: string;
   curriculum_name: string;
   relevance_note: string;
 };
@@ -19,15 +19,15 @@ export type ProposalList = {
   proposals: PartnershipProposal[];
 };
 
-export type ProgramSummary = {
-  program_name: string;
+export type InstitutionDepartment = {
+  department_name: string;
   curricula: string[];
 };
 
 export type InstitutionSummary = {
   institution_name: string;
   region: string;
-  programs: ProgramSummary[];
+  departments: InstitutionDepartment[];
 };
 
 export async function generatePartnerships(): Promise<ProposalList> {

@@ -11,16 +11,16 @@ logger = logging.getLogger(__name__)
 
 PARTNERSHIP_PROMPT = """You are an institutional intelligence analyst for California community college workforce partnerships. Your job is to identify specific, actionable industry partnership opportunities between a community college and employers in its labor market region.
 
-Below is the institutional context — programs are summarized with their key workforce skills and representative courses:
+Below is the institutional context — departments are summarized with their key workforce skills and representative courses:
 
 {context}
 
 Based on this data, generate EXACTLY 3 partnership proposals. Each proposal must:
 1. Name a specific employer from the list above (not a generic sector)
-2. Identify 2-4 specific programs that align to that employer's job roles, referencing the skills and representative courses listed
+2. Identify 2-4 departments whose courses develop skills aligned to that employer's job roles, referencing the skills and representative courses listed
 3. Explain concretely which student populations benefit, referencing the student pipeline data (number of students, completion depth, and concentrated skills) where available
 4. Specify a concrete partnership type — exactly one of: Internship Pipeline, Apprenticeship Program, Advisory Board Seat, Guest Lecture Series, Equipment Donation & Lab Access, Co-op Employment, Tuition Reimbursement Compact, Hiring Commitment MOU
-5. Provide a 2-3 sentence rationale that references specific job roles, the skills those programs develop, and the size of the student pipeline that makes this partnership viable
+5. Provide a 2-3 sentence rationale that references specific job roles, the skills those departments develop, and the size of the student pipeline that makes this partnership viable
 
 Make proposals specific, differentiated, and actionable. Each proposal should cover a different employer. Avoid generic language — name the exact skill, role, and outcome.
 
@@ -33,7 +33,7 @@ Return ONLY valid JSON with no text before or after, in this exact schema:
       "employer_or_sector": "string",
       "curriculum_alignment": [
         {{
-          "program_name": "string",
+          "department_name": "string",
           "curriculum_name": "string",
           "relevance_note": "string"
         }}
@@ -50,14 +50,14 @@ Return ONLY valid JSON with no text before or after, in this exact schema:
 def _gather_context() -> str:
     driver = get_driver()
     with driver.session() as session:
-        # Summarize programs with course counts, skills, and sample courses
+        # Summarize departments with course counts, skills, and sample courses
         institution_records = session.run("""
-            MATCH (i:Institution)-[:OFFERS]->(p:Program)-[:CONTAINS]->(c:Course)
-            WITH i, p, count(c) AS course_count,
+            MATCH (i:Institution)-[:OFFERS]->(d:Department)-[:CONTAINS]->(c:Course)
+            WITH i, d, count(c) AS course_count,
                  collect(c.skill_mappings) AS all_skill_arrays,
                  collect(c.name) AS course_names
             RETURN i.name AS institution, i.region AS region,
-                   p.name AS program, course_count,
+                   d.name AS department, course_count,
                    course_names[0..5] AS sample_courses,
                    all_skill_arrays
             ORDER BY course_count DESC
@@ -93,7 +93,7 @@ def _gather_context() -> str:
         lines.append(f"INSTITUTION: {institution_records[0]['institution']}")
         lines.append(f"LABOR MARKET REGION: {institution_records[0]['region']}")
         lines.append("")
-        lines.append("PROGRAMS (summarized by department with key workforce skills):")
+        lines.append("DEPARTMENTS (summarized with key workforce skills):")
         for record in institution_records:
             # Flatten skill arrays and find top 5
             skill_counter = Counter()
@@ -102,7 +102,7 @@ def _gather_context() -> str:
                     skill_counter.update(skill_list)
             top_skills = [s for s, _ in skill_counter.most_common(5)]
 
-            lines.append(f"\n  Program: {record['program']} ({record['course_count']} courses)")
+            lines.append(f"\n  Department: {record['department']} ({record['course_count']} courses)")
             if top_skills:
                 lines.append(f"    Key Skills: {', '.join(top_skills)}")
             if record["sample_courses"]:
@@ -188,7 +188,7 @@ def _parse_proposals(raw: str) -> list[PartnershipProposal]:
     for item in data.get("proposals", []):
         alignment = [
             CurriculumAlignment(
-                program_name=a["program_name"],
+                department_name=a["department_name"],
                 curriculum_name=a["curriculum_name"],
                 relevance_note=a["relevance_note"],
             )
@@ -272,7 +272,7 @@ def _try_extract_next_proposal(
                                 item = json.loads(obj_str)
                                 alignment = [
                                     CurriculumAlignment(
-                                        program_name=a["program_name"],
+                                        department_name=a["department_name"],
                                         curriculum_name=a["curriculum_name"],
                                         relevance_note=a.get("relevance_note", ""),
                                     )

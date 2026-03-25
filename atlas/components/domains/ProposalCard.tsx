@@ -151,7 +151,7 @@ export default function ProposalCard({ proposal, brandColor, onDismiss }: Props)
                     paddingTop: "1px",
                   }}
                 >
-                  {a.program_name}
+                  {a.department_name}
                 </span>
                 <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
                   <span

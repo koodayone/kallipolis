@@ -1,7 +1,7 @@
 from collections import Counter
 from fastapi import APIRouter, HTTPException
 from ontology.schema import get_driver
-from models import InstitutionSummary, ProgramSummary, StudentSummary, StudentDetail, StudentEnrollment, DepartmentSummary, CourseSummary
+from models import InstitutionSummary, InstitutionDepartment, StudentSummary, StudentDetail, StudentEnrollment, DepartmentSummary, CourseSummary
 
 router = APIRouter()
 
@@ -12,27 +12,27 @@ def get_institution(institution: str):
     try:
         with driver.session() as session:
             result = session.run("""
-                MATCH (i:Institution {name: $institution})-[:OFFERS]->(p:Program)-[:CONTAINS]->(c:Course {institution: $institution})
+                MATCH (i:Institution {name: $institution})-[:OFFERS]->(d:Department)-[:CONTAINS]->(c:Course {institution: $institution})
                 RETURN i.name AS institution_name, i.region AS region,
-                       p.name AS program, collect(c.name) AS curricula
-                ORDER BY p.name
+                       d.name AS department, collect(c.name) AS curricula
+                ORDER BY d.name
             """, institution=institution)
             records = result.data()
 
         if not records:
             raise HTTPException(status_code=404, detail="No institution data found")
 
-        programs: list[ProgramSummary] = []
+        departments: list[InstitutionDepartment] = []
         for record in records:
-            programs.append(ProgramSummary(
-                program_name=record["program"],
+            departments.append(InstitutionDepartment(
+                department_name=record["department"],
                 curricula=sorted(record["curricula"]),
             ))
 
         return InstitutionSummary(
             institution_name=records[0]["institution_name"],
             region=records[0]["region"],
-            programs=programs,
+            departments=departments,
         )
     except HTTPException:
         raise
@@ -40,20 +40,20 @@ def get_institution(institution: str):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/programs")
-def get_programs(institution: str):
+@router.get("/departments")
+def get_departments_with_courses(institution: str):
     driver = get_driver()
     try:
         with driver.session() as session:
             result = session.run("""
-                MATCH (i:Institution {name: $institution})-[:OFFERS]->(p:Program)-[:CONTAINS]->(c:Course {institution: $institution})
-                RETURN p.name AS program, collect(c.name) AS curricula
-                ORDER BY p.name
+                MATCH (i:Institution {name: $institution})-[:OFFERS]->(d:Department)-[:CONTAINS]->(c:Course {institution: $institution})
+                RETURN d.name AS department, collect(c.name) AS curricula
+                ORDER BY d.name
             """, institution=institution)
             records = result.data()
 
         return [
-            {"program_name": r["program"], "curricula": sorted(r["curricula"])}
+            {"department_name": r["department"], "curricula": sorted(r["curricula"])}
             for r in records
         ]
     except Exception as e:

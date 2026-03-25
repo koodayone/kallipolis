@@ -84,9 +84,14 @@ def _create_constraints(session):
     except Exception:
         pass
 
+    # Drop legacy Program constraint
+    try:
+        session.run("DROP CONSTRAINT program_name IF EXISTS")
+    except Exception:
+        pass
+
     constraints = [
         "CREATE CONSTRAINT institution_name IF NOT EXISTS FOR (n:Institution) REQUIRE n.name IS UNIQUE",
-        "CREATE CONSTRAINT program_name IF NOT EXISTS FOR (n:Program) REQUIRE n.name IS UNIQUE",
         "CREATE CONSTRAINT course_code_inst IF NOT EXISTS FOR (n:Course) REQUIRE (n.code, n.institution) IS UNIQUE",
         "CREATE CONSTRAINT department_name IF NOT EXISTS FOR (n:Department) REQUIRE n.name IS UNIQUE",
         "CREATE CONSTRAINT employer_name IF NOT EXISTS FOR (n:Employer) REQUIRE n.name IS UNIQUE",

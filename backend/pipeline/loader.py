@@ -2,7 +2,7 @@
 Stage 3: Neo4j loader.
 
 Takes enriched course data and persists it into the Neo4j graph database,
-creating Institution, Program, Department, and Course nodes with relationships.
+creating Institution, Department, and Course nodes with relationships.
 
 Usage:
     from pipeline.loader import load_college
@@ -38,7 +38,6 @@ class LoadStats:
     departments_created: int = 0
     courses_created: int = 0
     courses_updated: int = 0
-    programs_created: int = 0
     relationships_created: int = 0
 
 
@@ -57,7 +56,6 @@ def load_college(
 
     with driver.session() as session:
         # ── Update constraints for multi-college support ──────────────────
-        # Drop the old single-field constraint and add code-based one
         try:
             session.run("DROP CONSTRAINT course_name IF EXISTS")
         except Exception:
@@ -82,37 +80,26 @@ def load_college(
             state=config.state,
         )
 
-        # ── Collect unique departments and programs ───────────────────────
+        # ── Collect unique departments ────────────────────────────────────
         departments: set[str] = set()
-        programs: set[str] = set()
 
         for course in courses:
             dept = course.get("department", "").strip()
             if dept:
                 departments.add(dept)
-            if dept:
-                programs.add(dept)
 
-        # ── Create Departments ────────────────────────────────────────────
+        # ── Create Departments & link to Institution ─────────────────────
         for dept_name in departments:
-            session.run(
-                "MERGE (d:Department {name: $name}) RETURN d",
-                name=dept_name,
-            )
-            stats.departments_created += 1
-
-        # ── Create Programs & link to Institution ─────────────────────────
-        for prog_name in programs:
             session.run(
                 """
                 MATCH (i:Institution {name: $inst_name})
-                MERGE (p:Program {name: $prog_name})
-                MERGE (i)-[:OFFERS]->(p)
+                MERGE (d:Department {name: $dept_name})
+                MERGE (i)-[:OFFERS]->(d)
                 """,
                 inst_name=config.name,
-                prog_name=prog_name,
+                dept_name=dept_name,
             )
-            stats.programs_created += 1
+            stats.departments_created += 1
 
         # ── Create/Update Courses ─────────────────────────────────────────
         for course in courses:
@@ -124,13 +111,12 @@ def load_college(
                 continue
 
             # MERGE on (code, institution) — unique per college
-            result = session.run(
+            session.run(
                 """
                 MERGE (c:Course {code: $code, institution: $institution})
                 ON CREATE SET
                     c.name = $name,
                     c.department = $department,
-                    c.program = $program,
                     c.units = $units,
                     c.description = $description,
                     c.prerequisites = $prerequisites,
@@ -142,7 +128,6 @@ def load_college(
                 ON MATCH SET
                     c.name = $name,
                     c.department = $department,
-                    c.program = $program,
                     c.units = $units,
                     c.description = $description,
                     c.prerequisites = $prerequisites,
@@ -156,7 +141,6 @@ def load_college(
                 name=name,
                 code=code,
                 department=dept,
-                program=dept,
                 units=course.get("units", ""),
                 description=course.get("description", ""),
                 prerequisites=course.get("prerequisites", ""),
@@ -181,26 +165,11 @@ def load_college(
                     code=code,
                     inst=config.name,
                 )
-
-            # Link Course → Program
-            if dept:
-                session.run(
-                    """
-                    MATCH (p:Program {name: $prog})
-                    MATCH (c:Course {code: $code, institution: $inst})
-                    MERGE (p)-[:CONTAINS]->(c)
-                    """,
-                    prog=dept,
-                    code=code,
-                    inst=config.name,
-                    name=name,
-                )
                 stats.relationships_created += 1
 
     logger.info(
         f"Loaded {config.name}: "
         f"{stats.courses_created} courses, "
-        f"{stats.departments_created} departments, "
-        f"{stats.programs_created} programs"
+        f"{stats.departments_created} departments"
     )
     return stats
