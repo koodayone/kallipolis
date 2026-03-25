@@ -174,8 +174,17 @@ def _split_pdf_pages(pdf_path: Path, page_indices: list[int], tmp_dir: str) -> P
 
 # ── Gemini extraction ─────────────────────────────────────────────────────────
 
-# Sentinel to signal JSON truncation (distinct from empty results)
+# Sentinels (distinct from empty results)
 _TRUNCATED = "__TRUNCATED__"
+_RATE_LIMITED = "__RATE_LIMITED__"
+
+# Consecutive 429s before aborting the entire college
+RATE_LIMIT_ABORT_THRESHOLD = 5
+
+
+class RateLimitAbort(Exception):
+    """Raised when too many consecutive 429s indicate quota exhaustion."""
+    pass
 
 
 async def _extract_batch(
@@ -183,15 +192,20 @@ async def _extract_batch(
     chunk_path: Path,
     page_label: str,
     sem: asyncio.Semaphore,
+    rate_limit_counter: dict,
 ) -> list[dict] | str:
     """
     Extract courses + skills from a small PDF chunk using Gemini Flash.
 
     Returns list of course dicts on success, empty list if no courses found,
-    or _TRUNCATED sentinel if output was truncated (JSON parse error).
+    _TRUNCATED if output was truncated, or _RATE_LIMITED if quota exhausted.
     """
 
     for attempt in range(MAX_RETRIES):
+        # Check if other batches have already tripped the abort threshold
+        if rate_limit_counter["consecutive"] >= RATE_LIMIT_ABORT_THRESHOLD:
+            return _RATE_LIMITED
+
         async with sem:
             try:
                 uploaded = client.files.upload(file=chunk_path)
@@ -215,6 +229,9 @@ async def _extract_batch(
                     ),
                 )
 
+                # Success — reset the rate limit counter
+                rate_limit_counter["consecutive"] = 0
+
                 text = response.text.strip()
                 result = json.loads(text)
 
@@ -232,6 +249,13 @@ async def _extract_batch(
             except Exception as e:
                 error_str = str(e).lower()
                 if "resource_exhausted" in error_str or "429" in error_str:
+                    rate_limit_counter["consecutive"] += 1
+                    if rate_limit_counter["consecutive"] >= RATE_LIMIT_ABORT_THRESHOLD:
+                        logger.error(
+                            f"  {page_label}: hit {RATE_LIMIT_ABORT_THRESHOLD} consecutive "
+                            f"429s — aborting college (API quota exhausted)"
+                        )
+                        return _RATE_LIMITED
                     wait = 2 ** attempt * 5
                     logger.info(f"  Rate limited, waiting {wait}s (attempt {attempt + 1})")
                     await asyncio.sleep(wait)
@@ -371,17 +395,31 @@ async def scrape_pdf_catalog(
 
     logger.info(f"Processing {len(course_pages)} pages in {len(batches)} batches")
 
+    # Shared counter: if consecutive 429s hit the threshold, all batches abort
+    rate_limit_counter = {"consecutive": 0}
+
     with tempfile.TemporaryDirectory() as tmp_dir:
         # Initial extraction pass
         chunk_tasks = []
         for batch_pages in batches:
             chunk_path = _split_pdf_pages(pdf_path, batch_pages, tmp_dir)
             label = f"pages {batch_pages[0]+1}-{batch_pages[-1]+1}"
-            chunk_tasks.append((batch_pages, _extract_batch(client, chunk_path, label, sem)))
+            chunk_tasks.append((batch_pages, _extract_batch(client, chunk_path, label, sem, rate_limit_counter)))
 
         initial_results = await asyncio.gather(*[t for _, t in chunk_tasks])
 
-        # Retry truncated batches with half the page count
+        # Check if we hit rate limit abort
+        rate_limited_count = sum(1 for r in initial_results if r == _RATE_LIMITED)
+        if rate_limited_count > 0:
+            successful = sum(1 for r in initial_results if isinstance(r, list) and r)
+            logger.error(
+                f"Aborted: API rate limit exceeded ({rate_limited_count} batches skipped, "
+                f"{successful} batches succeeded before abort)"
+            )
+            if successful == 0:
+                return []
+
+        # Collect results and identify truncated batches for retry
         all_courses_raw: list[dict] = []
         retry_batches: list[list[int]] = []
 
@@ -391,7 +429,7 @@ async def scrape_pdf_catalog(
             elif isinstance(result, list):
                 all_courses_raw.extend(result)
 
-        if retry_batches:
+        if retry_batches and rate_limit_counter["consecutive"] < RATE_LIMIT_ABORT_THRESHOLD:
             logger.info(f"Retrying {len(retry_batches)} truncated batches with smaller chunks...")
             retry_tasks = []
             for batch_pages in retry_batches:
@@ -401,7 +439,7 @@ async def scrape_pdf_catalog(
                         continue
                     chunk_path = _split_pdf_pages(pdf_path, sub_pages, tmp_dir)
                     label = f"pages {sub_pages[0]+1}-{sub_pages[-1]+1} (retry)"
-                    retry_tasks.append(_extract_batch(client, chunk_path, label, sem))
+                    retry_tasks.append(_extract_batch(client, chunk_path, label, sem, rate_limit_counter))
 
             retry_results = await asyncio.gather(*retry_tasks)
             for result in retry_results:

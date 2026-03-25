@@ -11,14 +11,14 @@
       "catalog_year": "2025-2026",
       "status": "pending"
     },
-    "citrus": {
-      "name": "Citrus College",
-      "district": "Citrus CCD",
-      "city": "Glendora",
-      "catalog_pdf_url": "https://catalog.citruscollege.edu/pdf/Full%20PDF%202025-2026%20Catalog.pdf",
+    "deanza": {
+      "name": "De Anza College",
+      "district": "Foothill-De Anza CCD",
+      "city": "Cupertino",
+      "catalog_pdf_url": "https://www.deanza.edu/catalog/documents/dac_catalog_2025-2026.pdf",
       "catalog_year": "2025-2026",
       "status": "pending",
-      "notes": "Los Angeles region, not Bay Area — included for legacy continuity"
+      "notes": "Server returns 403 to programmatic downloads; manually download to cache/deanza_catalog.pdf"
     },
     "ccsf": {
       "name": "City College of San Francisco",
@@ -36,14 +36,30 @@
       "catalog_year": "2025-2026",
       "status": "ingested"
     },
-    "deanza": {
-      "name": "De Anza College",
-      "district": "Foothill-De Anza CCD",
-      "city": "Cupertino",
-      "catalog_pdf_url": "https://www.deanza.edu/catalog/documents/dac_catalog_2025-2026.pdf",
+    "merritt": {
+      "name": "Merritt College",
+      "district": "Peralta CCD",
+      "city": "Oakland",
+      "catalog_pdf_url": "https://6398505.fs1.hubspotusercontent-na2.net/hubfs/6398505/2025-2026%20Catalog_FINAL_rev_8.14.25.pdf",
       "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "berkeleycc": {
+      "name": "Berkeley City College",
+      "district": "Peralta CCD",
+      "city": "Berkeley",
+      "catalog_pdf_url": "https://www.berkeleycitycollege.edu/hubfs/2024-2025%20BCC%20Catalog.pdf",
+      "catalog_year": "2024-2025",
+      "status": "pending"
+    },
+    "alameda": {
+      "name": "College of Alameda",
+      "district": "Peralta CCD",
+      "city": "Alameda",
+      "catalog_pdf_url": "https://www.peralta.edu/hubfs/College%20of%20Alameda%202023-2024%20Course%20Catalog.pdf",
+      "catalog_year": "2023-2024",
       "status": "pending",
-      "notes": "Server returns 403 to programmatic downloads; manually download to cache/deanza_catalog.pdf"
+      "notes": "Older catalog — current year is flipbook only"
     },
     "skyline": {
       "name": "Skyline College",
@@ -70,22 +86,6 @@
       "catalog_year": "2025-2026",
       "status": "pending"
     },
-    "merritt": {
-      "name": "Merritt College",
-      "district": "Peralta CCD",
-      "city": "Oakland",
-      "catalog_pdf_url": "https://6398505.fs1.hubspotusercontent-na2.net/hubfs/6398505/2025-2026%20Catalog_FINAL_rev_8.14.25.pdf",
-      "catalog_year": "2025-2026",
-      "status": "pending"
-    },
-    "berkeleycc": {
-      "name": "Berkeley City College",
-      "district": "Peralta CCD",
-      "city": "Berkeley",
-      "catalog_pdf_url": "https://www.berkeleycitycollege.edu/hubfs/2024-2025%20BCC%20Catalog.pdf",
-      "catalog_year": "2024-2025",
-      "status": "pending"
-    },
     "losmedanos": {
       "name": "Los Medanos College",
       "district": "Contra Costa CCD",
@@ -93,6 +93,24 @@
       "catalog_pdf_url": "https://www.losmedanos.edu/schedule/25-26-LMC-Catalog.pdf",
       "catalog_year": "2025-2026",
       "status": "pending"
+    },
+    "diablo": {
+      "name": "Diablo Valley College",
+      "district": "Contra Costa CCD",
+      "city": "Pleasant Hill",
+      "catalog_pdf_url": "https://www.dvc.edu/sites/default/files/2025-01/college-catalog-2022-2023.pdf",
+      "catalog_year": "2022-2023",
+      "status": "pending",
+      "notes": "Older catalog — migrated to eLumen web-only starting 2023-2024"
+    },
+    "contracosta": {
+      "name": "Contra Costa College",
+      "district": "Contra Costa CCD",
+      "city": "San Pablo",
+      "catalog_pdf_url": "https://www.contracosta.edu/wp-content/uploads/2024/01/CCC-Catalog_2023-24_final-Online-version.pdf",
+      "catalog_year": "2023-2024",
+      "status": "pending",
+      "notes": "Last PDF before eLumen migration"
     },
     "evergreen": {
       "name": "Evergreen Valley College",
@@ -151,6 +169,15 @@
       "catalog_year": "2025-2026",
       "status": "pending"
     },
+    "mission": {
+      "name": "Mission College",
+      "district": "West Valley-Mission CCD",
+      "city": "Santa Clara",
+      "catalog_pdf_url": "https://missioncollege.edu/catalog/catalog-2023-2024/2023-2024-catalog.pdf",
+      "catalog_year": "2023-2024",
+      "status": "pending",
+      "notes": "Server redirects to HTML; manually download to cache/mission_catalog.pdf"
+    },
     "ohlone": {
       "name": "Ohlone College",
       "district": "Ohlone CCD",
@@ -175,33 +202,6 @@
       "catalog_year": "2025-2026",
       "status": "pending"
     },
-    "alameda": {
-      "name": "College of Alameda",
-      "district": "Peralta CCD",
-      "city": "Alameda",
-      "catalog_pdf_url": "https://www.peralta.edu/hubfs/College%20of%20Alameda%202023-2024%20Course%20Catalog.pdf",
-      "catalog_year": "2023-2024",
-      "status": "pending",
-      "notes": "Older catalog — current year is flipbook only"
-    },
-    "diablo": {
-      "name": "Diablo Valley College",
-      "district": "Contra Costa CCD",
-      "city": "Pleasant Hill",
-      "catalog_pdf_url": "https://www.dvc.edu/sites/default/files/2025-01/college-catalog-2022-2023.pdf",
-      "catalog_year": "2022-2023",
-      "status": "pending",
-      "notes": "Older catalog — migrated to eLumen web-only starting 2023-2024"
-    },
-    "contracosta": {
-      "name": "Contra Costa College",
-      "district": "Contra Costa CCD",
-      "city": "San Pablo",
-      "catalog_pdf_url": "https://www.contracosta.edu/wp-content/uploads/2024/01/CCC-Catalog_2023-24_final-Online-version.pdf",
-      "catalog_year": "2023-2024",
-      "status": "pending",
-      "notes": "Last PDF before eLumen migration"
-    },
     "cabrillo": {
       "name": "Cabrillo College",
       "district": "Cabrillo CCD",
@@ -220,14 +220,722 @@
       "status": "pending",
       "notes": "Older catalog — migrated to CurriQuNet web-only starting 2021-2022"
     },
-    "mission": {
-      "name": "Mission College",
-      "district": "West Valley-Mission CCD",
-      "city": "Santa Clara",
-      "catalog_pdf_url": "https://missioncollege.edu/catalog/catalog-2023-2024/2023-2024-catalog.pdf",
+    "citrus": {
+      "name": "Citrus College",
+      "district": "Citrus CCD",
+      "city": "Glendora",
+      "catalog_pdf_url": "https://catalog.citruscollege.edu/pdf/Full%20PDF%202025-2026%20Catalog.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "cerritos": {
+      "name": "Cerritos College",
+      "district": "Cerritos CCD",
+      "city": "Norwalk",
+      "catalog_pdf_url": "https://www.cerritos.edu/curriculum/_includes/docs/catalog-pdf/2025/Cerritos-Catalog_2025-26_v1.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "canyons": {
+      "name": "College of the Canyons",
+      "district": "Santa Clarita CCD",
+      "city": "Santa Clarita",
+      "catalog_pdf_url": "https://www.canyons.edu/_documents/administration/academicaffairs/collegecatalog/2025-26-Catalog-Rev110625-508.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "elac": {
+      "name": "East Los Angeles College",
+      "district": "Los Angeles CCD",
+      "city": "Monterey Park",
+      "catalog_pdf_url": "https://www.elac.edu/sites/elac.edu/files/2025-09/Catalog-2025-2026.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "elcamino": {
+      "name": "El Camino College",
+      "district": "El Camino CCD",
+      "city": "Torrance",
+      "catalog_pdf_url": "http://catalog.elcamino.edu/mime/media/view/12/721/2025-2026+Catalog+PDF_FINAL.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "glendale": {
+      "name": "Glendale Community College",
+      "district": "Glendale CCD",
+      "city": "Glendale",
+      "catalog_pdf_url": null,
+      "catalog_year": "2025-2026",
+      "status": "pending",
+      "notes": "JS-rendered catalog page at https://www.glendale.edu/academics/catalogs — manually extract PDF link"
+    },
+    "longbeach": {
+      "name": "Long Beach City College",
+      "district": "Long Beach CCD",
+      "city": "Long Beach",
+      "catalog_pdf_url": "https://lbcc-public.courseleaf.com/homepage.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "lacity": {
+      "name": "Los Angeles City College",
+      "district": "Los Angeles CCD",
+      "city": "Los Angeles",
+      "catalog_pdf_url": "https://www.lacc.edu/sites/lacc.edu/files/2025-08/Complete%20LACC%202025-26%20College%20Catalog_0.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "laharbor": {
+      "name": "Los Angeles Harbor College",
+      "district": "Los Angeles CCD",
+      "city": "Wilmington",
+      "catalog_pdf_url": "https://www.lahc.edu/sites/lahc.edu/files/2025-12/LAHC%20Master%20Catalog%20File%202025%20Final%20Draft%C2%A0(1)%20-%20Updated%2012.17.25.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "lamission": {
+      "name": "Los Angeles Mission College",
+      "district": "Los Angeles CCD",
+      "city": "Sylmar",
+      "catalog_pdf_url": "https://www.lamission.edu/sites/lamc.edu/files/2025-05/LAMC-Catalog-2025-2026.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "lapierce": {
+      "name": "Los Angeles Pierce College",
+      "district": "Los Angeles CCD",
+      "city": "Woodland Hills",
+      "catalog_pdf_url": "https://www.lapc.edu/sites/lapc.edu/files/2024-08/LAPC%20General%20Catalog%202024-2025_FINAL-compressed.pdf",
+      "catalog_year": "2024-2025",
+      "status": "pending",
+      "notes": "2025-2026 PDF not yet found — using 2024-2025"
+    },
+    "lasouthwest": {
+      "name": "Los Angeles Southwest College",
+      "district": "Los Angeles CCD",
+      "city": "Los Angeles",
+      "catalog_pdf_url": "https://www.lasc.edu/sites/lasc.edu/files/2026-01/LASC%202025-26%20College%20Catalog_1_5_26.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "lattc": {
+      "name": "Los Angeles Trade-Technical College",
+      "district": "Los Angeles CCD",
+      "city": "Los Angeles",
+      "catalog_pdf_url": "https://www.lattc.edu/sites/lattc.edu/files/2024-09/2248%20LATTC%20College%20Catalog%202024-2025.pdf",
+      "catalog_year": "2024-2025",
+      "status": "pending",
+      "notes": "2025-2026 PDF not yet found — using 2024-2025"
+    },
+    "lavalley": {
+      "name": "Los Angeles Valley College",
+      "district": "Los Angeles CCD",
+      "city": "Valley Glen",
+      "catalog_pdf_url": "https://www.lavc.edu/sites/lavc.edu/files/2025-08/LAVC%20Catalog%202025-2026.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "mtsac": {
+      "name": "Mt. San Antonio College",
+      "district": "Mt. San Antonio CCD",
+      "city": "Walnut",
+      "catalog_pdf_url": "https://www.mtsac.edu/catalog/pdf_ada/Mt_San_Antonio_College_PDF_25-26_82225_ADA.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "pasadena": {
+      "name": "Pasadena City College",
+      "district": "Pasadena Area CCD",
+      "city": "Pasadena",
+      "catalog_pdf_url": "https://curriculum.pasadena.edu/general-information/catalog/catalog.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending",
+      "notes": "CourseLeaf-generated PDF — may be partial"
+    },
+    "riohondo": {
+      "name": "Rio Hondo College",
+      "district": "Rio Hondo CCD",
+      "city": "Whittier",
+      "catalog_pdf_url": "https://www.riohondo.edu/wp-content/uploads/2025/07/2025-2026-Catalog.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "santamonica": {
+      "name": "Santa Monica College",
+      "district": "Santa Monica CCD",
+      "city": "Santa Monica",
+      "catalog_pdf_url": "https://catalog.smc.edu/current/index.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "westla": {
+      "name": "West Los Angeles College",
+      "district": "Los Angeles CCD",
+      "city": "Culver City",
+      "catalog_pdf_url": "https://www.wlac.edu/sites/wlac.edu/files/2024-08/catalog.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "cuyamaca": {
+      "name": "Cuyamaca College",
+      "district": "Grossmont-Cuyamaca CCD",
+      "city": "El Cajon",
+      "catalog_pdf_url": "https://catalog.gcccd.edu/cuyamaca/cuyamaca.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "grossmont": {
+      "name": "Grossmont College",
+      "district": "Grossmont-Cuyamaca CCD",
+      "city": "El Cajon",
+      "catalog_pdf_url": "https://www.grossmont.edu/academics/catalog/_resources/assets/pdf/2025-2026/2025-2026-catalog-final.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "miracosta": {
+      "name": "MiraCosta College",
+      "district": "MiraCosta CCD",
+      "city": "Oceanside",
+      "catalog_pdf_url": null,
+      "catalog_year": "2025-2026",
+      "status": "pending",
+      "notes": "CourseLeaf /pdf/ page is 'Under Construction' — no full PDF available"
+    },
+    "palomar": {
+      "name": "Palomar College",
+      "district": "Palomar CCD",
+      "city": "San Marcos",
+      "catalog_pdf_url": "https://www.palomar.edu/catalog/wp-content/uploads/sites/8/2025/06/2025-2026-College-Catalog-Volume-LXXIV.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "sdcity": {
+      "name": "San Diego City College",
+      "district": "San Diego CCD",
+      "city": "San Diego",
+      "catalog_pdf_url": "https://www.sdccd.edu/docs/ISPT/instsrv/Catalogs/MetaFiles/FinalPDF/City%202025-2026_Final.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "sdmesa": {
+      "name": "San Diego Mesa College",
+      "district": "San Diego CCD",
+      "city": "San Diego",
+      "catalog_pdf_url": "https://www.sdccd.edu/docs/ISPT/instsrv/Catalogs/MetaFiles/FinalPDF/Mesa20252026_Final.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "sdmiramar": {
+      "name": "San Diego Miramar College",
+      "district": "San Diego CCD",
+      "city": "San Diego",
+      "catalog_pdf_url": "https://www.sdccd.edu/docs/ISPT/instsrv/Catalogs/MetaFiles/FinalPDF/Miramar20252026_Final.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "southwestern": {
+      "name": "Southwestern College",
+      "district": "Southwestern CCD",
+      "city": "Chula Vista",
+      "catalog_pdf_url": null,
+      "catalog_year": "2025-2026",
+      "status": "pending",
+      "notes": "CourseLeaf catalog — no full PDF endpoint found"
+    },
+    "coastline": {
+      "name": "Coastline College",
+      "district": "Coast CCD",
+      "city": "Fountain Valley",
+      "catalog_pdf_url": "https://catalog.cccd.edu/coastline/coastline.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "cypress": {
+      "name": "Cypress College",
+      "district": "North Orange County CCD",
+      "city": "Cypress",
+      "catalog_pdf_url": "https://catalog.nocccd.edu/cypress-college/cypress-college.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "fullerton": {
+      "name": "Fullerton College",
+      "district": "North Orange County CCD",
+      "city": "Fullerton",
+      "catalog_pdf_url": "https://catalog.nocccd.edu/fullerton-college/fullerton-college.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "goldenwest": {
+      "name": "Golden West College",
+      "district": "Coast CCD",
+      "city": "Huntington Beach",
+      "catalog_pdf_url": "https://catalog.cccd.edu/golden-west/golden-west.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "irvinevalley": {
+      "name": "Irvine Valley College",
+      "district": "South Orange County CCD",
+      "city": "Irvine",
+      "catalog_pdf_url": null,
+      "catalog_year": "2025-2026",
+      "status": "pending",
+      "notes": "Uses Acalog — 2025-2026 is online-only, no PDF found"
+    },
+    "orangecoast": {
+      "name": "Orange Coast College",
+      "district": "Coast CCD",
+      "city": "Costa Mesa",
+      "catalog_pdf_url": "https://catalog.cccd.edu/orange-coast/orange-coast.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "saddleback": {
+      "name": "Saddleback College",
+      "district": "South Orange County CCD",
+      "city": "Mission Viejo",
+      "catalog_pdf_url": "https://www.saddleback.edu/sites/default/files/2025-05/2025-2026_Saddleback_FallCatalog_v1.0_2025.04.25_ReducedSize.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "santaana": {
+      "name": "Santa Ana College",
+      "district": "Rancho Santiago CCD",
+      "city": "Santa Ana",
+      "catalog_pdf_url": "https://sac.edu/admissions/catalogarchive/SAC_Catalog_2025-2026.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "santiagocanyon": {
+      "name": "Santiago Canyon College",
+      "district": "Rancho Santiago CCD",
+      "city": "Orange",
+      "catalog_pdf_url": "https://sccollege.edu/campus/collegeoffices/curriculum/Shared%20Documents/Catalog%20PDF/SCC_Catalog_print.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "allanhancock": {
+      "name": "Allan Hancock College",
+      "district": "Allan Hancock JCCD",
+      "city": "Santa Maria",
+      "catalog_pdf_url": null,
+      "catalog_year": "2025-2026",
+      "status": "pending",
+      "notes": "Uses CurriQunet — 2024-2025 PDF at https://catalog.hancockcollege.edu/_resources/archives/2024-2025-Catalog.pdf"
+    },
+    "antelopevalley": {
+      "name": "Antelope Valley College",
+      "district": "Antelope Valley CCD",
+      "city": "Lancaster",
+      "catalog_pdf_url": "https://www.avc.edu/sites/default/files/catalog/2526/2025-2026%20Catalog%20with%20cover.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "moorpark": {
+      "name": "Moorpark College",
+      "district": "Ventura County CCD",
+      "city": "Moorpark",
+      "catalog_pdf_url": "https://catalog.vcccd.edu/moorpark/moorpark.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "oxnard": {
+      "name": "Oxnard College",
+      "district": "Ventura County CCD",
+      "city": "Oxnard",
+      "catalog_pdf_url": "https://catalog.vcccd.edu/oxnard/oxnard.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "sbcc": {
+      "name": "Santa Barbara City College",
+      "district": "Santa Barbara CCD",
+      "city": "Santa Barbara",
+      "catalog_pdf_url": "https://catalog.sbcc.edu/pdf/Santa%20Barbara%20City%20College%202025-2026.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "ventura": {
+      "name": "Ventura College",
+      "district": "Ventura County CCD",
+      "city": "Ventura",
+      "catalog_pdf_url": "https://catalog.vcccd.edu/ventura/ventura.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "bakersfield": {
+      "name": "Bakersfield College",
+      "district": "Kern CCD",
+      "city": "Bakersfield",
+      "catalog_pdf_url": null,
+      "catalog_year": "2025-2026",
+      "status": "pending",
+      "notes": "Online-only catalog since 2019 — no PDF available"
+    },
+    "cerrocoso": {
+      "name": "Cerro Coso Community College",
+      "district": "Kern CCD",
+      "city": "Ridgecrest",
+      "catalog_pdf_url": "https://www.cerrocoso.edu/_resources/assets/documents/general-information/2025-2026_catalog.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "sequoias": {
+      "name": "College of the Sequoias",
+      "district": "Sequoias CCD",
+      "city": "Visalia",
+      "catalog_pdf_url": "https://www.cos.edu/en-us/Academic-Services/Documents/2025-2026%20Catalog.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "fresnocity": {
+      "name": "Fresno City College",
+      "district": "State Center CCD",
+      "city": "Fresno",
+      "catalog_pdf_url": null,
+      "catalog_year": "2025-2026",
+      "status": "pending",
+      "notes": "Online-only catalog — only addendum PDF available"
+    },
+    "merced": {
+      "name": "Merced College",
+      "district": "Merced CCD",
+      "city": "Merced",
+      "catalog_pdf_url": null,
+      "catalog_year": "2025-2026",
+      "status": "pending",
+      "notes": "Online catalog at catalog.mccd.edu — no PDF found"
+    },
+    "modesto": {
+      "name": "Modesto Junior College",
+      "district": "Yosemite CCD",
+      "city": "Modesto",
+      "catalog_pdf_url": null,
+      "catalog_year": "2025-2026",
+      "status": "pending",
+      "notes": "eLumen online catalog — no PDF found"
+    },
+    "porterville": {
+      "name": "Porterville College",
+      "district": "Kern CCD",
+      "city": "Porterville",
+      "catalog_pdf_url": "https://www.portervillecollege.edu/_resources/assets/pdfs/Academics/Catalog/2025-2026_Catalog_Updated_Meta_Data.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "reedley": {
+      "name": "Reedley College",
+      "district": "State Center CCD",
+      "city": "Reedley",
+      "catalog_pdf_url": "https://www.reedleycollege.edu/admissions-aid/catalogs/2025_2026_rc_catalog.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending",
+      "notes": "URL inferred from naming pattern — verify link"
+    },
+    "delta": {
+      "name": "San Joaquin Delta College",
+      "district": "San Joaquin Delta CCD",
+      "city": "Stockton",
+      "catalog_pdf_url": "https://catalog.deltacollege.edu/mime/media/view/12/1250/Final_Catalog_25-26_with+cover.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "taft": {
+      "name": "Taft College",
+      "district": "West Kern CCD",
+      "city": "Taft",
+      "catalog_pdf_url": null,
+      "catalog_year": "2025-2026",
+      "status": "pending",
+      "notes": "Catalog is .docx only — SmartCatalogIQ online at https://taftcollege.smartcatalogiq.com/"
+    },
+    "westhillscoalinga": {
+      "name": "West Hills College Coalinga",
+      "district": "West Hills CCD",
+      "city": "Coalinga",
+      "catalog_pdf_url": null,
+      "catalog_year": "2025-2026",
+      "status": "pending",
+      "notes": "Has 'View Full Catalog PDF' button at https://coalingacollege.edu/catalog/2025-2026/ — manually extract link"
+    },
+    "westhillslemoore": {
+      "name": "West Hills College Lemoore",
+      "district": "West Hills CCD",
+      "city": "Lemoore",
+      "catalog_pdf_url": null,
+      "catalog_year": "2024-2025",
+      "status": "pending",
+      "notes": "eLumen online catalog — 2025-2026 not yet published"
+    },
+    "columbia": {
+      "name": "Columbia College",
+      "district": "Yosemite CCD",
+      "city": "Sonora",
+      "catalog_pdf_url": null,
+      "catalog_year": "2025-2026",
+      "status": "pending",
+      "notes": "eLumen online catalog — no PDF found"
+    },
+    "yuba": {
+      "name": "Yuba College",
+      "district": "Yuba CCD",
+      "city": "Marysville",
+      "catalog_pdf_url": "https://yc.yccd.edu/wp-content/uploads/2025/08/Yuba-College-Catalog-25.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "woodland": {
+      "name": "Woodland Community College",
+      "district": "Yuba CCD",
+      "city": "Woodland",
+      "catalog_pdf_url": "https://wcc.yccd.edu/wp-content/uploads/2026/02/WCC-Catalog-2025-26-Revised-Complete-2026-02-10.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "chaffey": {
+      "name": "Chaffey College",
+      "district": "Chaffey CCD",
+      "city": "Rancho Cucamonga",
+      "catalog_pdf_url": "https://www.chaffey.edu/catalogandschedule/docs/catalogs/prior-year-cats/2025-2026-full.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "craftonhills": {
+      "name": "Crafton Hills College",
+      "district": "San Bernardino CCD",
+      "city": "Yucaipa",
+      "catalog_pdf_url": null,
+      "catalog_year": "2025-2026",
+      "status": "pending",
+      "notes": "SmartCatalogIQ online at https://craftonhills.smartcatalogiq.com/ — no PDF found"
+    },
+    "mtsanjacinto": {
+      "name": "Mt. San Jacinto College",
+      "district": "Mt. San Jacinto CCD",
+      "city": "San Jacinto",
+      "catalog_pdf_url": "https://catalog.msjc.edu/pdf/MSJC%202025-2026%20Catalog_100925.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "morenovalley": {
+      "name": "Moreno Valley College",
+      "district": "Riverside CCD",
+      "city": "Moreno Valley",
+      "catalog_pdf_url": null,
+      "catalog_year": "2025-2026",
+      "status": "pending",
+      "notes": "CurriQunet online catalog — no PDF since 2023-2024"
+    },
+    "norco": {
+      "name": "Norco College",
+      "district": "Riverside CCD",
+      "city": "Norco",
+      "catalog_pdf_url": "https://www.norcocollege.edu/catalogs/documents/2023-2024/2023-2024-college-catalog-revised-05-05-2023-nc.pdf",
       "catalog_year": "2023-2024",
       "status": "pending",
-      "notes": "Server redirects to HTML; manually download to cache/mission_catalog.pdf"
+      "notes": "Last PDF before CurriQunet migration"
+    },
+    "riverside": {
+      "name": "Riverside City College",
+      "district": "Riverside CCD",
+      "city": "Riverside",
+      "catalog_pdf_url": "https://www.rcc.edu/assets/documents/academic/catalogs/RCC%20Catalog%2023-24.pdf",
+      "catalog_year": "2023-2024",
+      "status": "pending",
+      "notes": "Last PDF before CurriQunet migration"
+    },
+    "sbvalley": {
+      "name": "San Bernardino Valley College",
+      "district": "San Bernardino CCD",
+      "city": "San Bernardino",
+      "catalog_pdf_url": "https://www.valleycollege.edu/academics/documents/2025-2026-sbvc-catalog.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "victorvalley": {
+      "name": "Victor Valley College",
+      "district": "Victor Valley CCD",
+      "city": "Victorville",
+      "catalog_pdf_url": "https://catalog.vvc.edu/homepage.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "paloverde": {
+      "name": "Palo Verde College",
+      "district": "Palo Verde CCD",
+      "city": "Blythe",
+      "catalog_pdf_url": null,
+      "catalog_year": "2025-2026",
+      "status": "pending",
+      "notes": "PDF URL not confirmed — try https://www.paloverde.edu/current-students/pdf/catalog/25-26/25-26%20PVC%20Catalog.pdf"
+    },
+    "coppermountain": {
+      "name": "Copper Mountain College",
+      "district": "Copper Mountain CCD",
+      "city": "Joshua Tree",
+      "catalog_pdf_url": "https://www.cmccd.edu/wp-content/uploads/2026/02/Catalog-2025-26-Final-02.23.26r1.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "barstow": {
+      "name": "Barstow Community College",
+      "district": "Barstow CCD",
+      "city": "Barstow",
+      "catalog_pdf_url": "https://www.barstow.edu/sites/default/files/media/pdf_document/2025/2526-Catalog-20250731_2.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "desert": {
+      "name": "College of the Desert",
+      "district": "Desert CCD",
+      "city": "Palm Desert",
+      "catalog_pdf_url": "https://catalog.collegeofthedesert.edu/pdf/2025-2026%20CATALOG%20rb%20test.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "imperialvalley": {
+      "name": "Imperial Valley College",
+      "district": "Imperial CCD",
+      "city": "Imperial",
+      "catalog_pdf_url": "https://www.imperial.edu/faculty-and-staff/archives/catalogs/2025-2026%20Full%20IVC%20Catalog.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "americanriver": {
+      "name": "American River College",
+      "district": "Los Rios CCD",
+      "city": "Sacramento",
+      "catalog_pdf_url": "https://arc.losrios.edu/catalog/compiled-catalog/arc-catalog-a_20467.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "cosumnesriver": {
+      "name": "Cosumnes River College",
+      "district": "Los Rios CCD",
+      "city": "Sacramento",
+      "catalog_pdf_url": "https://crc.losrios.edu/crc/main/doc/2-admissions/catalog/catalog-archive/2025-26-catalog-20260101.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "folsomlake": {
+      "name": "Folsom Lake College",
+      "district": "Los Rios CCD",
+      "city": "Folsom",
+      "catalog_pdf_url": "https://flc.losrios.edu/catalog/compiled-catalog/flc-catalog-a_20469.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "sacramentocity": {
+      "name": "Sacramento City College",
+      "district": "Los Rios CCD",
+      "city": "Sacramento",
+      "catalog_pdf_url": "https://scc.losrios.edu/catalog/compiled-catalog/scc-catalog-a_20470.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "sierra": {
+      "name": "Sierra College",
+      "district": "Sierra JCCD",
+      "city": "Rocklin",
+      "catalog_pdf_url": "https://catalog.sierracollege.edu/pdf/2025-2026.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "butte": {
+      "name": "Butte College",
+      "district": "Butte-Glenn CCD",
+      "city": "Oroville",
+      "catalog_pdf_url": "https://www.butte.edu/departments/curriculum/catalog/documents/2024-25ButteCollegeCatalog.pdf",
+      "catalog_year": "2024-2025",
+      "status": "pending",
+      "notes": "2025-2026 is CurriQunet online-only — using 2024-2025 PDF"
+    },
+    "redwoods": {
+      "name": "College of the Redwoods",
+      "district": "Redwoods CCD",
+      "city": "Eureka",
+      "catalog_pdf_url": "https://www.redwoods.edu/academics/catalog/2024-2025.pdf",
+      "catalog_year": "2024-2025",
+      "status": "pending",
+      "notes": "2025-2026 is eLumen online-only — using 2024-2025 PDF"
+    },
+    "siskiyous": {
+      "name": "College of the Siskiyous",
+      "district": "Siskiyous JCCD",
+      "city": "Weed",
+      "catalog_pdf_url": "https://www.siskiyous.edu/catalog/catalog2021.pdf",
+      "catalog_year": "2020-2021",
+      "status": "pending",
+      "notes": "Oldest fallback — migrated to eLumen starting 2021-2022"
+    },
+    "featherriver": {
+      "name": "Feather River College",
+      "district": "Feather River CCD",
+      "city": "Quincy",
+      "catalog_pdf_url": "https://www.frc.edu/instruction/files/Catalogs/Catalog%202024-25.pdf",
+      "catalog_year": "2024-2025",
+      "status": "pending",
+      "notes": "2025-2026 is CurriQunet online-only — using 2024-2025 PDF"
+    },
+    "lassen": {
+      "name": "Lassen College",
+      "district": "Lassen CCD",
+      "city": "Susanville",
+      "catalog_pdf_url": "https://www.lassencollege.edu/wp-content/uploads/2025/07/2025-2026-Catalog-2.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "mendocino": {
+      "name": "Mendocino College",
+      "district": "Mendocino-Lake CCD",
+      "city": "Ukiah",
+      "catalog_pdf_url": "https://www.mendocino.edu/sites/default/files/2025-11/2025-26%20MC%20Catalog%20Amended.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "shasta": {
+      "name": "Shasta College",
+      "district": "Shasta-Tehama-Trinity JCCD",
+      "city": "Redding",
+      "catalog_pdf_url": "https://scmainweb.s3.us-west-1.amazonaws.com/files/resources/2025-26-college-catalog.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "laketahoe": {
+      "name": "Lake Tahoe Community College",
+      "district": "Lake Tahoe CCD",
+      "city": "South Lake Tahoe",
+      "catalog_pdf_url": null,
+      "catalog_year": "2025-2026",
+      "status": "pending",
+      "notes": "eLumen online-only — older PDFs through 2020-2021 at https://ltcc.edu/academics/catalog.php"
+    },
+    "cuesta": {
+      "name": "Cuesta College",
+      "district": "San Luis Obispo County CCD",
+      "city": "San Luis Obispo",
+      "catalog_pdf_url": "https://www.cuesta.edu/academics/documents/catalog/catalog-2023-2024/Cuesta-College-2023-2024-Catalog.pdf",
+      "catalog_year": "2023-2024",
+      "status": "pending",
+      "notes": "2025-2026 is CurriQunet online-only — using 2023-2024 PDF"
+    },
+    "hartnell": {
+      "name": "Hartnell College",
+      "district": "Hartnell CCD",
+      "city": "Salinas",
+      "catalog_pdf_url": "https://coursedog-pdfs-public-prod.s3.us-east-2.amazonaws.com/hartnell_colleague-catalog-1756410519910.pdf",
+      "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "monterey": {
+      "name": "Monterey Peninsula College",
+      "district": "Monterey Peninsula CCD",
+      "city": "Monterey",
+      "catalog_pdf_url": "https://drive.google.com/uc?export=download&id=1BkwoNwFXCMM2otR4y50EeYrodzdM8mAt",
+      "catalog_year": "2025-2026",
+      "status": "pending",
+      "notes": "Google Drive download link"
     }
   }
 }
