@@ -123,6 +123,75 @@ DEPT_CLUSTERS = {
 NON_CREDIT_PREFIXES = ["Non-Credit"]
 
 
+# ── Calibration loading ──────────────────────────────────────────────────────
+
+
+def _load_calibration(college_key: str) -> Optional[dict]:
+    """Load empirical calibration data for a college if available."""
+    path = Path(__file__).parent / "calibrations" / f"{college_key}.json"
+    if path.exists():
+        with open(path) as f:
+            cal = json.load(f)
+        logger.info(f"Loaded calibration for {college_key} (source: {cal.get('source', 'unknown')})")
+        return cal
+    logger.info(f"No calibration file for {college_key}, using defaults")
+    return None
+
+
+class GradeResolver:
+    """Resolves grade distribution per department using TOP group calibration data."""
+
+    PASS_GRADES = ["A", "B", "C", "P"]
+    FAIL_GRADES = ["D", "F", "W"]
+
+    def __init__(self, calibration: Optional[dict]):
+        self._cal = calibration
+        self._dept_to_top = (calibration or {}).get("dept_to_top_group", {})
+        self._top_success = (calibration or {}).get("top_group_success_rate", {})
+        self._top_grades = (calibration or {}).get("top_group_grades", {})
+
+        # College-wide fallback
+        if calibration and "grade_distribution" in calibration:
+            gdist = calibration["grade_distribution"]
+            self._default_success = calibration.get("success_rate", 0.79)
+        else:
+            gdist = GRADE_DIST
+            self._default_success = sum(GRADE_DIST.get(g, 0) for g in self.PASS_GRADES)
+        self._default_pass_w = self._normalize([gdist.get(g, 0) for g in self.PASS_GRADES])
+        self._default_fail_w = self._normalize([gdist.get(g, 0) for g in self.FAIL_GRADES])
+
+        # Pre-compute per-TOP-group weights
+        self._top_pass_w: Dict[str, List[float]] = {}
+        self._top_fail_w: Dict[str, List[float]] = {}
+        for top_name, grades in self._top_grades.items():
+            self._top_pass_w[top_name] = self._normalize([grades.get(g, 0) for g in self.PASS_GRADES])
+            self._top_fail_w[top_name] = self._normalize([grades.get(g, 0) for g in self.FAIL_GRADES])
+
+    @staticmethod
+    def _normalize(weights: List[float]) -> List[float]:
+        total = sum(weights) or 1
+        return [w / total for w in weights]
+
+    def success_rate(self, department: str) -> float:
+        """Get success rate for a department."""
+        top = self._dept_to_top.get(department)
+        if top and top in self._top_success:
+            return self._top_success[top]
+        return self._default_success
+
+    def sample_grade(self, rng: _random_mod.Random, department: str) -> str:
+        """Sample a grade for a department, using per-TOP-group distributions."""
+        top = self._dept_to_top.get(department)
+        sr = self._top_success.get(top, self._default_success) if top else self._default_success
+
+        if rng.random() < sr:
+            weights = self._top_pass_w.get(top, self._default_pass_w) if top else self._default_pass_w
+            return rng.choices(self.PASS_GRADES, weights=weights, k=1)[0]
+        else:
+            weights = self._top_fail_w.get(top, self._default_fail_w) if top else self._default_fail_w
+            return rng.choices(self.FAIL_GRADES, weights=weights, k=1)[0]
+
+
 # ── Data classes ───────────────────────────────────────────────────────────────
 
 
@@ -275,7 +344,7 @@ def _select_course(
 def generate_students(
     college_key: str,
     courses: List[dict],
-    num_students: int = DEFAULT_STUDENT_COUNT,
+    num_students: Optional[int] = None,
     seed: int = 42,
     config: Optional[dict] = None,
 ) -> Tuple[List[GeneratedStudent], GenerationStats]:
@@ -285,7 +354,7 @@ def generate_students(
     Args:
         college_key: College identifier (e.g., "foothill")
         courses: Enriched course data (from cached JSON)
-        num_students: Number of students to generate
+        num_students: Number of students to generate (defaults to calibration enrollment or 3000)
         seed: Random seed for determinism
         config: Optional per-college overrides
 
@@ -293,12 +362,56 @@ def generate_students(
         Tuple of (students list, generation stats)
     """
     cfg = config or {}
-    ft_ratio = cfg.get("ft_ratio", FT_RATIO)
-    retention = cfg.get("retention_rate", RETENTION_RATE)
+    calibration = _load_calibration(college_key)
+
+    # Determine student count: explicit arg > calibration enrollment > default
+    if num_students is None:
+        if calibration and "enrollment" in calibration:
+            num_students = calibration["enrollment"]
+        else:
+            num_students = DEFAULT_STUDENT_COUNT
+    logger.info(f"Generating {num_students} students for {college_key}")
+
+    # Use calibration values, then config overrides, then defaults
+    ft_ratio = cfg.get("ft_ratio", calibration.get("ft_ratio", FT_RATIO) if calibration else FT_RATIO)
+    retention = cfg.get("retention_rate", calibration.get("retention_rate", RETENTION_RATE) if calibration else RETENTION_RATE)
     dept_affinity = cfg.get("dept_affinity", PRIMARY_DEPT_AFFINITY)
+
+    grader = GradeResolver(calibration)
 
     rng = _random_mod.Random(seed)
     dept_courses, dept_weights, ge_courses = _prepare_catalog(courses)
+
+    # Apply calibrated enrollment shares from TOP group data
+    if calibration and "top_group_enrollment_share" in calibration:
+        top_share = calibration["top_group_enrollment_share"]
+        dept_to_top = calibration.get("dept_to_top_group", {})
+
+        # Compute how many departments map to each TOP group
+        top_dept_count: Dict[str, int] = {}
+        for dept in dept_weights:
+            top = dept_to_top.get(dept)
+            if top and top in top_share:
+                top_dept_count[top] = top_dept_count.get(top, 0) + 1
+
+        # Distribute each TOP group's share across its departments (weighted by course count)
+        top_dept_courses: Dict[str, float] = {}
+        for dept in dept_weights:
+            top = dept_to_top.get(dept)
+            if top and top in top_share:
+                top_dept_courses.setdefault(top, 0)
+                top_dept_courses[top] += dept_weights[dept]
+
+        for dept in dept_weights:
+            top = dept_to_top.get(dept)
+            if top and top in top_share and top_dept_courses.get(top, 0) > 0:
+                # This dept gets its proportional share of the TOP group's enrollment
+                dept_weights[dept] = top_share[top] * (dept_weights[dept] / top_dept_courses[top])
+
+        # Normalize all weights to sum to 1.0
+        total = sum(dept_weights.values())
+        for dept in dept_weights:
+            dept_weights[dept] /= total
 
     dept_names = list(dept_weights.keys())
     dept_probs = list(dept_weights.values())
@@ -379,8 +492,9 @@ def generate_students(
                 base_code = code.rstrip("H").rstrip("P")
                 taken_codes.add(base_code)
 
-                # Assign grade
+                # Assign grade using per-department success-gated model
                 grading = course.get("grading", "")
+                dept = course.get("department", "")
                 if "Pass/No Pass Only" in grading:
                     grade = rng.choices(
                         list(PNP_DIST.keys()),
@@ -389,13 +503,8 @@ def generate_students(
                     )[0]
                     status = "Completed" if grade == "P" else "Not Passed"
                 else:
-                    grade = rng.choices(GRADE_CHOICES, weights=GRADE_WEIGHTS, k=1)[0]
-                    if grade == "W":
-                        status = "Withdrawn"
-                    elif grade == "P":
-                        status = "Completed"
-                    else:
-                        status = "Completed"
+                    grade = grader.sample_grade(rng, dept)
+                    status = "Withdrawn" if grade == "W" else "Completed"
 
                 enrollment = Enrollment(
                     course_code=code,
@@ -438,6 +547,20 @@ def generate_students(
         f"success rate: {stats.success_rate:.1%}, "
         f"avg courses/student: {stats.avg_courses_per_student:.1f}"
     )
+
+    # Validation: compare synthetic aggregates against calibration targets
+    if calibration:
+        target_success = calibration.get("success_rate")
+        if target_success is not None:
+            diff = abs(stats.success_rate - target_success)
+            logger.info(
+                f"Calibration check — success rate: "
+                f"synthetic={stats.success_rate:.1%}, "
+                f"target={target_success:.1%}, "
+                f"diff={diff:.1%}"
+            )
+        logger.info(f"Calibration params — ft_ratio={ft_ratio:.0%}, retention={retention:.0%}")
+
     return students, stats
 
 
@@ -452,15 +575,20 @@ def load_students(driver: Driver, institution: str, students: List[GeneratedStud
     for the institution (full replace strategy for synthetic data).
     """
     with driver.session() as session:
-        # Clear existing students for this institution
-        result = session.run(
-            "MATCH (s:Student)-[:ENROLLED_IN]->(c:Course {institution: $inst}) "
-            "DETACH DELETE s RETURN count(s) as cnt",
-            inst=institution,
-        )
-        deleted = result.single()["cnt"]
-        if deleted:
-            logger.info(f"Cleared {deleted} existing students for {institution}")
+        # Clear existing students for this college (in batches to avoid OOM)
+        total_deleted = 0
+        while True:
+            result = session.run(
+                "MATCH (s:Student)-[:ENROLLED_IN]->(c:Course {college: $inst}) "
+                "WITH s LIMIT 1000 DETACH DELETE s RETURN count(s) as cnt",
+                inst=institution,
+            )
+            cnt = result.single()["cnt"]
+            total_deleted += cnt
+            if cnt == 0:
+                break
+        if total_deleted:
+            logger.info(f"Cleared {total_deleted} existing students for {institution}")
 
         # Batch create students and enrollments
         batch = []
@@ -507,7 +635,7 @@ def _write_batch(session, institution: str, batch: List[dict]):
         UNWIND $batch AS row
         MERGE (s:Student {uuid: row.uuid})
         WITH s, row
-        MATCH (c:Course {code: row.course_code, institution: $inst})
+        MATCH (c:Course {code: row.course_code, college: $inst})
         CREATE (s)-[:ENROLLED_IN {
             grade: row.grade,
             term: row.term,
@@ -527,7 +655,7 @@ def generate_and_load_students(
     courses: List[dict],
     institution_name: str,
     driver: Driver,
-    num_students: int = DEFAULT_STUDENT_COUNT,
+    num_students: Optional[int] = None,
     seed: int = 42,
     config: Optional[dict] = None,
 ) -> GenerationStats:

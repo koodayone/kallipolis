@@ -88,7 +88,7 @@ async def run_pipeline(
     from_cache: bool = False,
     scrape_only: bool = False,
     generate_students: bool = False,
-    num_students: int = 3000,
+    num_students: Optional[int] = None,
     seed: int = 42,
 ) -> LoadStats | None:
     """Run the full pipeline for a college."""
@@ -149,7 +149,7 @@ async def run_pipeline(
         logger.info(f"Loaded {len(enriched_courses)} courses from cache")
 
         from pipeline.students import generate_and_load_students
-        logger.info(f"Generating {num_students} synthetic students (seed={seed})...")
+        logger.info(f"Generating synthetic students (seed={seed})...")
         driver = get_driver()
         try:
             gen_stats = generate_and_load_students(
@@ -211,7 +211,7 @@ async def run_pipeline(
     if generate_students:
         from pipeline.students import generate_and_load_students
 
-        logger.info(f"Generating {num_students} synthetic students (seed={seed})...")
+        logger.info(f"Generating synthetic students (seed={seed})...")
         driver = get_driver()
         try:
             gen_stats = generate_and_load_students(
@@ -249,7 +249,7 @@ def main():
         "--generate-students", action="store_true", help="Generate synthetic student data"
     )
     parser.add_argument(
-        "--num-students", type=int, default=3000, help="Number of students to generate (default: 3000)"
+        "--num-students", type=int, default=None, help="Number of students to generate (default: from calibration or 3000)"
     )
     parser.add_argument(
         "--seed", type=int, default=42, help="Random seed for student generation (default: 42)"
