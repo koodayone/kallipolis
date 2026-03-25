@@ -96,15 +96,21 @@ def _create_constraints(session):
     except Exception:
         pass
 
+    # Drop stale constraints for removed node types
+    for old in ["employer_name", "jobrole_title"]:
+        try:
+            session.run(f"DROP CONSTRAINT {old} IF EXISTS")
+        except Exception:
+            pass
+
     constraints = [
         "CREATE CONSTRAINT college_name IF NOT EXISTS FOR (n:College) REQUIRE n.name IS UNIQUE",
         "CREATE CONSTRAINT course_code_college IF NOT EXISTS FOR (n:Course) REQUIRE (n.code, n.college) IS UNIQUE",
         "CREATE CONSTRAINT department_name IF NOT EXISTS FOR (n:Department) REQUIRE n.name IS UNIQUE",
-        "CREATE CONSTRAINT employer_name IF NOT EXISTS FOR (n:Employer) REQUIRE n.name IS UNIQUE",
-        "CREATE CONSTRAINT region_name IF NOT EXISTS FOR (n:LaborMarketRegion) REQUIRE n.name IS UNIQUE",
         "CREATE CONSTRAINT skill_name IF NOT EXISTS FOR (n:Skill) REQUIRE n.name IS UNIQUE",
-        "CREATE CONSTRAINT jobrole_title IF NOT EXISTS FOR (n:JobRole) REQUIRE n.title IS UNIQUE",
         "CREATE CONSTRAINT student_uuid IF NOT EXISTS FOR (n:Student) REQUIRE n.uuid IS UNIQUE",
+        "CREATE CONSTRAINT region_name IF NOT EXISTS FOR (n:Region) REQUIRE n.name IS UNIQUE",
+        "CREATE CONSTRAINT occupation_soc IF NOT EXISTS FOR (n:Occupation) REQUIRE n.soc_code IS UNIQUE",
     ]
     for constraint in constraints:
         session.run(constraint)
