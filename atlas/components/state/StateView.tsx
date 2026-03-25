@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -35,6 +35,25 @@ export default function StateView() {
   const [hoveredCollege, setHoveredCollege] = useState<College | null>(null);
   const [selectedCollege, setSelectedCollege] = useState<College | null>(null);
   const [mapOpacity, setMapOpacity] = useState(1);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchFocused, setSearchFocused] = useState(false);
+  const [searchActiveIndex, setSearchActiveIndex] = useState(-1);
+  const searchRef = useRef<HTMLInputElement>(null);
+
+  const searchResults = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase();
+    if (q.length === 0) return [];
+    return CALIFORNIA_COLLEGES.filter((c) =>
+      c.name.toLowerCase().includes(q) ||
+      c.district.toLowerCase().includes(q) ||
+      CALIFORNIA_REGIONS.find((r) => r.id === c.regionId)?.name.toLowerCase().includes(q)
+    ).slice(0, 12);
+  }, [searchQuery]);
+
+  // Reset active index when results change
+  useEffect(() => { setSearchActiveIndex(-1); }, [searchResults]);
+
+  const showSearchResults = searchQuery.trim().length > 0;
 
   const transitionMap = useCallback((fn: () => void) => {
     setMapOpacity(0);
@@ -67,6 +86,39 @@ export default function StateView() {
   const handleCollegeSelect = useCallback((college: College) => {
     setSelectedCollege((prev) => (prev?.id === college.id ? null : college));
   }, []);
+
+  const handleSearchSelect = useCallback((college: College) => {
+    setSearchQuery("");
+    setSearchActiveIndex(-1);
+    searchRef.current?.blur();
+    // Navigate map to the college's region and select it
+    transitionMap(() => {
+      setActiveRegionId(college.regionId);
+      setMapView("region");
+      setSelectedCollege(college);
+      setHoveredCollege(null);
+    });
+  }, [transitionMap]);
+
+  const handleSearchKeyDown = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!showSearchResults || searchResults.length === 0) return;
+
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setSearchActiveIndex((prev) => (prev < searchResults.length - 1 ? prev + 1 : 0));
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setSearchActiveIndex((prev) => (prev > 0 ? prev - 1 : searchResults.length - 1));
+    } else if (e.key === "Enter" && searchActiveIndex >= 0) {
+      e.preventDefault();
+      handleSearchSelect(searchResults[searchActiveIndex]);
+    } else if (e.key === "Escape") {
+      e.preventDefault();
+      setSearchQuery("");
+      setSearchActiveIndex(-1);
+      searchRef.current?.blur();
+    }
+  }, [showSearchResults, searchResults, searchActiveIndex, handleSearchSelect]);
 
   const activeRegion = CALIFORNIA_REGIONS.find((r) => r.id === activeRegionId) ?? null;
   const activeCollege = selectedCollege ?? hoveredCollege;
@@ -286,28 +338,104 @@ export default function StateView() {
               width: "50%",
               flexShrink: 0,
               borderLeft: "1px solid rgba(255,255,255,0.07)",
-              padding: "56px 56px 150px",
               display: "flex",
               flexDirection: "column",
-              justifyContent: "center",
-              overflowY: "auto",
+              overflow: "hidden",
             }}
           >
-            <AnimatePresence mode="wait">
-              {activeCollege ? (
-                <motion.div key={`school-${activeCollege.id}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}>
-                  <SchoolPanel college={activeCollege} />
-                </motion.div>
-              ) : mapView === "region" && activeRegion ? (
-                <motion.div key={`region-${activeRegion.id}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}>
-                  <RegionPanel region={activeRegion} collegeCount={regionCollegeCount} districtCount={regionDistrictCount} />
-                </motion.div>
-              ) : (
-                <motion.div key="default" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}>
-                  <DefaultPanel />
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {/* Search bar — always visible */}
+            <div style={{ flexShrink: 0, padding: "32px 56px 0" }}>
+              <div
+                style={{
+                  position: "relative",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "12px",
+                  padding: "0 20px",
+                  height: "52px",
+                  background: searchFocused ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
+                  border: `1px solid ${searchFocused ? "rgba(201,168,76,0.4)" : "rgba(255,255,255,0.08)"}`,
+                  borderRadius: "2px",
+                  transition: "all 0.2s ease",
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0, opacity: searchFocused ? 0.8 : 0.4, transition: "opacity 0.2s" }}>
+                  <circle cx="7" cy="7" r="5" stroke="rgba(255,255,255,0.9)" strokeWidth="1.3" />
+                  <path d="M11 11l3.5 3.5" stroke="rgba(255,255,255,0.9)" strokeWidth="1.3" strokeLinecap="round" />
+                </svg>
+                <input
+                  ref={searchRef}
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onKeyDown={handleSearchKeyDown}
+                  onFocus={() => setSearchFocused(true)}
+                  onBlur={() => setTimeout(() => setSearchFocused(false), 150)}
+                  placeholder="Search colleges, districts, or regions…"
+                  style={{
+                    flex: 1,
+                    background: "none",
+                    border: "none",
+                    outline: "none",
+                    fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+                    fontSize: "14px",
+                    fontWeight: 400,
+                    color: "#ffffff",
+                    letterSpacing: "0.01em",
+                  }}
+                />
+                {searchQuery.length > 0 && (
+                  <button
+                    onClick={() => { setSearchQuery(""); searchRef.current?.focus(); }}
+                    style={{
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                      padding: "4px",
+                      color: "rgba(255,255,255,0.4)",
+                      display: "flex",
+                      alignItems: "center",
+                      transition: "color 0.15s",
+                    }}
+                    onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.8)")}
+                    onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.4)")}
+                  >
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <path d="M3.5 3.5l7 7M10.5 3.5l-7 7" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+                    </svg>
+                  </button>
+                )}
+              </div>
+            </div>
+
+            {/* Panel content — scrollable */}
+            <div
+              style={{
+                flex: 1,
+                overflowY: "auto",
+                padding: "24px 56px 150px",
+              }}
+            >
+              <AnimatePresence mode="wait">
+                {showSearchResults ? (
+                  <motion.div key="search-results" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.12 }}>
+                    <SearchResults results={searchResults} query={searchQuery} onSelect={handleSearchSelect} activeIndex={searchActiveIndex} />
+                  </motion.div>
+                ) : activeCollege ? (
+                  <motion.div key={`school-${activeCollege.id}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}>
+                    <SchoolPanel college={activeCollege} />
+                  </motion.div>
+                ) : mapView === "region" && activeRegion ? (
+                  <motion.div key={`region-${activeRegion.id}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}>
+                    <RegionPanel region={activeRegion} collegeCount={regionCollegeCount} districtCount={regionDistrictCount} />
+                  </motion.div>
+                ) : (
+                  <motion.div key="default" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}>
+                    <DefaultPanel />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
         </div>
       </div>
@@ -316,6 +444,157 @@ export default function StateView() {
 }
 
 // ── Panels ────────────────────────────────────────────────────────────────────
+
+function SearchResults({
+  results,
+  query,
+  onSelect,
+  activeIndex,
+}: {
+  results: College[];
+  query: string;
+  onSelect: (college: College) => void;
+  activeIndex: number;
+}) {
+  const listRef = useRef<HTMLDivElement>(null);
+
+  // Scroll active item into view
+  useEffect(() => {
+    if (activeIndex < 0 || !listRef.current) return;
+    const row = listRef.current.children[activeIndex + 1] as HTMLElement | undefined; // +1 for the count label
+    if (row) row.scrollIntoView({ block: "nearest" });
+  }, [activeIndex]);
+
+  if (results.length === 0) {
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "16px", paddingTop: "8px" }}>
+        <span style={{
+          fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+          fontSize: "13px",
+          color: "rgba(255,255,255,0.4)",
+        }}>
+          No colleges matching &ldquo;{query}&rdquo;
+        </span>
+      </div>
+    );
+  }
+
+  return (
+    <div ref={listRef} style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+      <span style={{
+        fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+        fontSize: "10px",
+        fontWeight: 600,
+        letterSpacing: "0.14em",
+        textTransform: "uppercase",
+        color: "rgba(255,255,255,0.35)",
+        padding: "0 0 12px",
+      }}>
+        {results.length} {results.length === 1 ? "result" : "results"}
+      </span>
+      {results.map((college, i) => (
+        <SearchResultRow key={college.id} college={college} onSelect={onSelect} isActive={i === activeIndex} />
+      ))}
+    </div>
+  );
+}
+
+function SearchResultRow({
+  college,
+  onSelect,
+  isActive,
+}: {
+  college: College;
+  onSelect: (college: College) => void;
+  isActive: boolean;
+}) {
+  const config = getCollegeAtlasConfig(college.id);
+  const accent = config?.brandColorLight ?? "#c9a84c";
+  const region = CALIFORNIA_REGIONS.find((r) => r.id === college.regionId);
+
+  return (
+    <button
+      onClick={() => onSelect(college)}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: "16px",
+        padding: "14px 16px",
+        background: isActive ? "rgba(255,255,255,0.06)" : "transparent",
+        border: "none",
+        borderRadius: "2px",
+        cursor: "pointer",
+        textAlign: "left",
+        width: "100%",
+        transition: "background 0.12s ease",
+      }}
+      onMouseEnter={(e) => { if (!isActive) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.04)"; }}
+      onMouseLeave={(e) => { if (!isActive) (e.currentTarget as HTMLElement).style.background = "transparent"; }}
+    >
+      {/* Brand accent bar */}
+      <div style={{
+        width: "3px",
+        height: "36px",
+        borderRadius: "2px",
+        background: accent,
+        opacity: 0.7,
+        flexShrink: 0,
+      }} />
+
+      {/* Logo */}
+      {college.logoStacked ? (
+        <div style={{ width: "36px", height: "36px", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <img
+            src={`/logos/${college.id}.png`}
+            alt=""
+            style={{ maxWidth: "36px", maxHeight: "36px", objectFit: "contain" }}
+          />
+        </div>
+      ) : (
+        <div style={{
+          width: "36px",
+          height: "36px",
+          flexShrink: 0,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "rgba(255,255,255,0.06)",
+          borderRadius: "2px",
+        }}>
+          <span style={{ fontSize: "13px", fontWeight: 700, color: accent }}>
+            {college.name.charAt(0)}
+          </span>
+        </div>
+      )}
+
+      {/* Text */}
+      <div style={{ display: "flex", flexDirection: "column", gap: "3px", minWidth: 0 }}>
+        <span style={{
+          fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+          fontSize: "14px",
+          fontWeight: 600,
+          color: "#ffffff",
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+        }}>
+          {college.name}
+        </span>
+        <span style={{
+          fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+          fontSize: "11px",
+          fontWeight: 400,
+          color: "rgba(255,255,255,0.4)",
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+        }}>
+          {college.district}{region ? ` · ${region.name}` : ""}
+        </span>
+      </div>
+    </button>
+  );
+}
 
 function DefaultPanel() {
   return null;
