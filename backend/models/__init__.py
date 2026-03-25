@@ -76,3 +76,41 @@ class StudentDetail(BaseModel):
     gpa: float
     enrollments: list[StudentEnrollment]
     skills: list[str]
+
+
+# ── Labor Market models ──────────────────────────────────────────────────────
+
+
+class OccupationMatch(BaseModel):
+    soc_code: str
+    title: str
+    description: Optional[str] = None
+    annual_wage: Optional[int] = None
+    employment: Optional[int] = None
+    matching_skills: int
+    skills: list[str]
+
+
+class RegionOverview(BaseModel):
+    region: str
+    occupations: list[OccupationMatch]
+
+
+class LaborMarketOverview(BaseModel):
+    college: str
+    regions: list[RegionOverview]
+
+
+class SkillDetail(BaseModel):
+    skill: str
+    developed: bool
+    courses: list[dict]
+
+
+class OccupationDetail(BaseModel):
+    soc_code: str
+    title: str
+    description: Optional[str] = None
+    annual_wage: Optional[int] = None
+    skills: list[SkillDetail]
+    regions: list[dict]

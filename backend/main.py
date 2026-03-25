@@ -7,6 +7,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from api.ontology import router as ontology_router
 from api.workflows import router as workflows_router
+from api.labor_market import router as labor_market_router
 from ontology.schema import init_schema, close_driver
 
 logging.basicConfig(level=logging.INFO)
@@ -41,6 +42,7 @@ async def shutdown():
 
 app.include_router(ontology_router, prefix="/ontology", tags=["Ontology"])
 app.include_router(workflows_router, prefix="/workflows", tags=["Workflows"])
+app.include_router(labor_market_router, prefix="/labor-market", tags=["Labor Market"])
 
 
 @app.get("/health")

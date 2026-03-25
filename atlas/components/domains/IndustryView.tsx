@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { SchoolConfig } from "@/lib/schoolConfig";
 import { buildIndustryScene, IndustryNodeKey } from "@/lib/industryScene";
 import PartnershipsView from "@/components/industry/PartnershipsView";
-import ResearchView from "@/components/industry/ResearchView";
+import LaborMarketView from "@/components/industry/LaborMarketView";
 import RisingSun from "@/components/ui/RisingSun";
 
 const IndustryCanvas = dynamic(
@@ -16,7 +16,7 @@ const IndustryCanvas = dynamic(
 
 const NODE_NAMES: Record<IndustryNodeKey, string> = {
   partnerships: "Partnerships",
-  research: "Research",
+  research: "Labor Market",
 };
 
 const CANVAS_HEIGHT = 300;
@@ -207,7 +207,7 @@ export default function IndustryView({ school }: Props) {
               <PartnershipsView school={school} onBack={handleBack} />
             )}
             {activeNode === "research" && (
-              <ResearchView school={school} onBack={handleBack} />
+              <LaborMarketView school={school} onBack={handleBack} />
             )}
           </motion.div>
         )}

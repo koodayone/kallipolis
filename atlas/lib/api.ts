@@ -148,3 +148,52 @@ export async function getCourses(department: string, college: string): Promise<A
   if (!res.ok) throw new Error("Failed to fetch courses");
   return res.json();
 }
+
+// ── Labor Market ────────────────────────────────────────────────────────────
+
+export type ApiOccupationMatch = {
+  soc_code: string;
+  title: string;
+  description: string | null;
+  annual_wage: number | null;
+  employment: number | null;
+  matching_skills: number;
+  skills: string[];
+};
+
+export type ApiRegionOverview = {
+  region: string;
+  occupations: ApiOccupationMatch[];
+};
+
+export type ApiLaborMarketOverview = {
+  college: string;
+  regions: ApiRegionOverview[];
+};
+
+export type ApiSkillDetail = {
+  skill: string;
+  developed: boolean;
+  courses: Array<{ code: string; name: string }>;
+};
+
+export type ApiOccupationDetail = {
+  soc_code: string;
+  title: string;
+  description: string | null;
+  annual_wage: number | null;
+  skills: ApiSkillDetail[];
+  regions: Array<{ region: string; employment: number }>;
+};
+
+export async function getLaborMarketOverview(college: string): Promise<ApiLaborMarketOverview> {
+  const res = await fetch(`${BASE}/labor-market/overview?college=${encodeURIComponent(college)}`);
+  if (!res.ok) throw new Error("Failed to fetch labor market data");
+  return res.json();
+}
+
+export async function getOccupationDetail(socCode: string, college: string): Promise<ApiOccupationDetail> {
+  const res = await fetch(`${BASE}/labor-market/occupation/${encodeURIComponent(socCode)}?college=${encodeURIComponent(college)}`);
+  if (!res.ok) throw new Error("Failed to fetch occupation detail");
+  return res.json();
+}

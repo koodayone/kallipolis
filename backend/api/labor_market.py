@@ -1,0 +1,110 @@
+"""Labor market API endpoints — Region and Occupation data."""
+
+from collections import defaultdict
+from fastapi import APIRouter, HTTPException
+from ontology.schema import get_driver
+from models import LaborMarketOverview, RegionOverview, OccupationMatch, OccupationDetail, SkillDetail
+
+router = APIRouter()
+
+
+@router.get("/overview", response_model=LaborMarketOverview)
+def get_labor_market_overview(college: str):
+    """Returns regions and top occupations ranked by skill alignment with the college's curriculum."""
+    driver = get_driver()
+    try:
+        with driver.session() as session:
+            result = session.run("""
+                MATCH (c:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})
+                RETURN r.name AS region,
+                       occ.soc_code AS soc_code, occ.title AS title,
+                       occ.description AS description, occ.annual_wage AS annual_wage,
+                       d.employment AS employment,
+                       count(DISTINCT sk) AS matching_skills,
+                       collect(DISTINCT sk.name) AS skills
+                ORDER BY matching_skills DESC
+            """, college=college)
+            records = result.data()
+
+        if not records:
+            raise HTTPException(status_code=404, detail=f"No labor market data for {college}")
+
+        # Group by region
+        regions: dict[str, list] = defaultdict(list)
+        for r in records:
+            regions[r["region"]].append(OccupationMatch(
+                soc_code=r["soc_code"],
+                title=r["title"],
+                description=r["description"],
+                annual_wage=r["annual_wage"],
+                employment=r["employment"],
+                matching_skills=r["matching_skills"],
+                skills=r["skills"],
+            ))
+
+        return LaborMarketOverview(
+            college=college,
+            regions=[
+                RegionOverview(region=name, occupations=occs)
+                for name, occs in regions.items()
+            ],
+        )
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/occupation/{soc_code}", response_model=OccupationDetail)
+def get_occupation_detail(soc_code: str, college: str):
+    """Returns full detail for an occupation including skill alignment with a specific college."""
+    driver = get_driver()
+    try:
+        with driver.session() as session:
+            # Get occupation info
+            occ_result = session.run("""
+                MATCH (occ:Occupation {soc_code: $soc})
+                RETURN occ.title AS title, occ.description AS description, occ.annual_wage AS annual_wage
+            """, soc=soc_code).single()
+
+            if not occ_result:
+                raise HTTPException(status_code=404, detail=f"Occupation {soc_code} not found")
+
+            # Get skills with course alignment
+            skill_result = session.run("""
+                MATCH (occ:Occupation {soc_code: $soc})-[:REQUIRES_SKILL]->(sk:Skill)
+                OPTIONAL MATCH (course:Course {college: $college})-[:DEVELOPS]->(sk)
+                RETURN sk.name AS skill,
+                       collect(DISTINCT CASE WHEN course IS NOT NULL THEN {code: course.code, name: course.name} END) AS courses
+            """, soc=soc_code, college=college).data()
+
+            skills = []
+            for r in skill_result:
+                courses = [c for c in r["courses"] if c is not None]
+                skills.append(SkillDetail(
+                    skill=r["skill"],
+                    developed=len(courses) > 0,
+                    courses=courses,
+                ))
+            # Sort: developed skills first
+            skills.sort(key=lambda s: (not s.developed, s.skill))
+
+            # Get regional demand
+            region_result = session.run("""
+                MATCH (r:Region)-[d:DEMANDS]->(occ:Occupation {soc_code: $soc})
+                RETURN r.name AS region, d.employment AS employment
+                ORDER BY d.employment DESC
+            """, soc=soc_code).data()
+
+        return OccupationDetail(
+            soc_code=soc_code,
+            title=occ_result["title"],
+            description=occ_result["description"],
+            annual_wage=occ_result["annual_wage"],
+            skills=skills,
+            regions=[{"region": r["region"], "employment": r["employment"]} for r in region_result],
+        )
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
