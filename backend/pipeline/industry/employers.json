@@ -1,0 +1,865 @@
+[
+  {
+    "name": "Apple",
+    "sector": "Technology",
+    "regions": [
+      "San Jose-Sunnyvale-Santa Clara"
+    ],
+    "occupations": [
+      "15-1252",
+      "11-2021",
+      "15-2051"
+    ]
+  },
+  {
+    "name": "Google",
+    "sector": "Technology",
+    "regions": [
+      "San Jose-Sunnyvale-Santa Clara",
+      "San Francisco-San Mateo-Redwood City"
+    ],
+    "occupations": [
+      "15-1252",
+      "15-2051",
+      "11-2021"
+    ]
+  },
+  {
+    "name": "Nvidia",
+    "sector": "Technology",
+    "regions": [
+      "San Jose-Sunnyvale-Santa Clara"
+    ],
+    "occupations": [
+      "15-1252",
+      "15-2051",
+      "15-1299"
+    ]
+  },
+  {
+    "name": "TikTok",
+    "sector": "Technology",
+    "regions": [
+      "San Jose-Sunnyvale-Santa Clara"
+    ],
+    "occupations": [
+      "15-1252",
+      "11-2021",
+      "15-2051"
+    ]
+  },
+  {
+    "name": "Intuit",
+    "sector": "Technology",
+    "regions": [
+      "San Jose-Sunnyvale-Santa Clara"
+    ],
+    "occupations": [
+      "15-1252",
+      "15-2051"
+    ]
+  },
+  {
+    "name": "Palo Alto Networks",
+    "sector": "Technology",
+    "regions": [
+      "San Jose-Sunnyvale-Santa Clara"
+    ],
+    "occupations": [
+      "15-1252",
+      "15-1299"
+    ]
+  },
+  {
+    "name": "Tesla",
+    "sector": "Manufacturing/Technology",
+    "regions": [
+      "San Jose-Sunnyvale-Santa Clara",
+      "Oakland-Fremont-Berkeley"
+    ],
+    "occupations": [
+      "15-1252",
+      "51-4121",
+      "49-3023",
+      "47-2111"
+    ]
+  },
+  {
+    "name": "Amazon",
+    "sector": "Technology/Logistics",
+    "regions": [
+      "San Jose-Sunnyvale-Santa Clara",
+      "San Francisco-San Mateo-Redwood City"
+    ],
+    "occupations": [
+      "15-1252",
+      "15-2051",
+      "41-2031"
+    ]
+  },
+  {
+    "name": "Stanford University",
+    "sector": "Education",
+    "regions": [
+      "San Jose-Sunnyvale-Santa Clara"
+    ],
+    "occupations": [
+      "29-1141",
+      "25-1081",
+      "15-1299"
+    ]
+  },
+  {
+    "name": "Stanford Health Care",
+    "sector": "Healthcare",
+    "regions": [
+      "San Jose-Sunnyvale-Santa Clara"
+    ],
+    "occupations": [
+      "29-1141",
+      "29-1126",
+      "29-2052",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Santa Clara Valley Healthcare",
+    "sector": "Healthcare",
+    "regions": [
+      "San Jose-Sunnyvale-Santa Clara"
+    ],
+    "occupations": [
+      "29-1141",
+      "29-1126",
+      "29-1292",
+      "31-9092",
+      "29-1171"
+    ]
+  },
+  {
+    "name": "El Camino Health",
+    "sector": "Healthcare",
+    "regions": [
+      "San Jose-Sunnyvale-Santa Clara"
+    ],
+    "occupations": [
+      "29-1141",
+      "29-1126",
+      "29-2052"
+    ]
+  },
+  {
+    "name": "Kaiser Permanente",
+    "sector": "Healthcare",
+    "regions": [
+      "Oakland-Fremont-Berkeley",
+      "San Jose-Sunnyvale-Santa Clara",
+      "San Francisco-San Mateo-Redwood City",
+      "San Rafael",
+      "Vallejo"
+    ],
+    "occupations": [
+      "29-1141",
+      "29-2052",
+      "31-9092",
+      "11-9111"
+    ]
+  },
+  {
+    "name": "Sutter Health",
+    "sector": "Healthcare",
+    "regions": [
+      "Oakland-Fremont-Berkeley",
+      "San Francisco-San Mateo-Redwood City",
+      "Santa Cruz-Watsonville",
+      "Vallejo",
+      "Santa Rosa-Petaluma",
+      "Napa"
+    ],
+    "occupations": [
+      "29-1141",
+      "31-9092",
+      "29-2052"
+    ]
+  },
+  {
+    "name": "Alameda Health System",
+    "sector": "Healthcare",
+    "regions": [
+      "Oakland-Fremont-Berkeley"
+    ],
+    "occupations": [
+      "29-1141",
+      "31-9092",
+      "29-1126"
+    ]
+  },
+  {
+    "name": "Hayward Unified School District",
+    "sector": "Education",
+    "regions": [
+      "Oakland-Fremont-Berkeley"
+    ],
+    "occupations": [
+      "25-1081",
+      "39-9011"
+    ]
+  },
+  {
+    "name": "Oakland Unified School District",
+    "sector": "Education",
+    "regions": [
+      "Oakland-Fremont-Berkeley"
+    ],
+    "occupations": [
+      "25-1081",
+      "39-9011"
+    ]
+  },
+  {
+    "name": "University of California, Berkeley",
+    "sector": "Education",
+    "regions": [
+      "Oakland-Fremont-Berkeley"
+    ],
+    "occupations": [
+      "25-1081",
+      "15-1299",
+      "15-1252"
+    ]
+  },
+  {
+    "name": "PG&E",
+    "sector": "Utilities",
+    "regions": [
+      "Oakland-Fremont-Berkeley"
+    ],
+    "occupations": [
+      "47-2111",
+      "47-2061"
+    ]
+  },
+  {
+    "name": "Abbott Laboratories",
+    "sector": "Healthcare/Manufacturing",
+    "regions": [
+      "Oakland-Fremont-Berkeley"
+    ],
+    "occupations": [
+      "19-4021",
+      "19-4031"
+    ]
+  },
+  {
+    "name": "BART",
+    "sector": "Transportation",
+    "regions": [
+      "Oakland-Fremont-Berkeley"
+    ],
+    "occupations": [
+      "47-2111",
+      "49-3023"
+    ]
+  },
+  {
+    "name": "AC Transit",
+    "sector": "Transportation",
+    "regions": [
+      "Oakland-Fremont-Berkeley"
+    ],
+    "occupations": [
+      "49-3031",
+      "49-3023"
+    ]
+  },
+  {
+    "name": "Bio-Rad Laboratories",
+    "sector": "Biotechnology",
+    "regions": [
+      "Oakland-Fremont-Berkeley"
+    ],
+    "occupations": [
+      "19-4021",
+      "19-4031"
+    ]
+  },
+  {
+    "name": "C&H Sugar",
+    "sector": "Manufacturing",
+    "regions": [
+      "Oakland-Fremont-Berkeley"
+    ],
+    "occupations": [
+      "51-4121",
+      "49-9041"
+    ]
+  },
+  {
+    "name": "Golden Gate Sign Company",
+    "sector": "Manufacturing",
+    "regions": [
+      "Oakland-Fremont-Berkeley"
+    ],
+    "occupations": [
+      "51-4121"
+    ]
+  },
+  {
+    "name": "St. Rose Hospital",
+    "sector": "Healthcare",
+    "regions": [
+      "Oakland-Fremont-Berkeley"
+    ],
+    "occupations": [
+      "29-1141",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Superior Mechanical Services",
+    "sector": "HVAC/Mechanical",
+    "regions": [
+      "Oakland-Fremont-Berkeley"
+    ],
+    "occupations": [
+      "49-9021",
+      "47-2152"
+    ]
+  },
+  {
+    "name": "Service Champions",
+    "sector": "HVAC/Plumbing",
+    "regions": [
+      "Oakland-Fremont-Berkeley",
+      "San Jose-Sunnyvale-Santa Clara"
+    ],
+    "occupations": [
+      "49-9021",
+      "47-2152",
+      "47-2111"
+    ]
+  },
+  {
+    "name": "Rivers Plumbing Heating & Air",
+    "sector": "HVAC/Plumbing",
+    "regions": [
+      "Oakland-Fremont-Berkeley"
+    ],
+    "occupations": [
+      "49-9021",
+      "47-2152"
+    ]
+  },
+  {
+    "name": "John Muir Health",
+    "sector": "Healthcare",
+    "regions": [
+      "Oakland-Fremont-Berkeley"
+    ],
+    "occupations": [
+      "29-1141",
+      "31-9092",
+      "11-9111"
+    ]
+  },
+  {
+    "name": "Chevron",
+    "sector": "Energy",
+    "regions": [
+      "Oakland-Fremont-Berkeley"
+    ],
+    "occupations": [
+      "19-4031",
+      "15-1252"
+    ]
+  },
+  {
+    "name": "Bank of America Technology Center",
+    "sector": "Financial Services",
+    "regions": [
+      "Oakland-Fremont-Berkeley"
+    ],
+    "occupations": [
+      "15-1252",
+      "15-1299"
+    ]
+  },
+  {
+    "name": "Meta",
+    "sector": "Technology",
+    "regions": [
+      "San Francisco-San Mateo-Redwood City"
+    ],
+    "occupations": [
+      "15-1252",
+      "15-2051",
+      "11-2021"
+    ]
+  },
+  {
+    "name": "University of California, San Francisco",
+    "sector": "Healthcare/Education",
+    "regions": [
+      "San Francisco-San Mateo-Redwood City"
+    ],
+    "occupations": [
+      "29-1141",
+      "19-4021",
+      "25-1081"
+    ]
+  },
+  {
+    "name": "Genentech",
+    "sector": "Biotechnology",
+    "regions": [
+      "San Francisco-San Mateo-Redwood City"
+    ],
+    "occupations": [
+      "19-4021",
+      "19-4031",
+      "15-1252"
+    ]
+  },
+  {
+    "name": "Visa",
+    "sector": "Financial Services",
+    "regions": [
+      "San Francisco-San Mateo-Redwood City"
+    ],
+    "occupations": [
+      "15-1252",
+      "15-2051"
+    ]
+  },
+  {
+    "name": "Uber",
+    "sector": "Technology",
+    "regions": [
+      "San Francisco-San Mateo-Redwood City"
+    ],
+    "occupations": [
+      "15-1252",
+      "15-2051"
+    ]
+  },
+  {
+    "name": "Accenture",
+    "sector": "Consulting/Technology",
+    "regions": [
+      "San Francisco-San Mateo-Redwood City"
+    ],
+    "occupations": [
+      "15-1252",
+      "15-1299"
+    ]
+  },
+  {
+    "name": "Gilead Sciences",
+    "sector": "Biotechnology",
+    "regions": [
+      "San Francisco-San Mateo-Redwood City"
+    ],
+    "occupations": [
+      "19-4021",
+      "19-4031"
+    ]
+  },
+  {
+    "name": "Truebeck Construction",
+    "sector": "Construction",
+    "regions": [
+      "San Francisco-San Mateo-Redwood City"
+    ],
+    "occupations": [
+      "47-2061",
+      "47-2031"
+    ]
+  },
+  {
+    "name": "Providence",
+    "sector": "Healthcare",
+    "regions": [
+      "Santa Rosa-Petaluma",
+      "Napa"
+    ],
+    "occupations": [
+      "29-1141",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "County of Sonoma",
+    "sector": "Government",
+    "regions": [
+      "Santa Rosa-Petaluma"
+    ],
+    "occupations": [
+      "21-1029",
+      "33-2011"
+    ]
+  },
+  {
+    "name": "Graton Resort & Casino",
+    "sector": "Hospitality",
+    "regions": [
+      "Santa Rosa-Petaluma"
+    ],
+    "occupations": [
+      "11-9051",
+      "35-2014"
+    ]
+  },
+  {
+    "name": "Jackson Family Wines",
+    "sector": "Wine/Agriculture",
+    "regions": [
+      "Santa Rosa-Petaluma"
+    ],
+    "occupations": [
+      "11-9051",
+      "37-1012"
+    ]
+  },
+  {
+    "name": "Stark Reality Restaurants",
+    "sector": "Hospitality",
+    "regions": [
+      "Santa Rosa-Petaluma"
+    ],
+    "occupations": [
+      "35-1011",
+      "35-2014",
+      "11-9051"
+    ]
+  },
+  {
+    "name": "Medtronic",
+    "sector": "Medical Devices",
+    "regions": [
+      "Santa Rosa-Petaluma"
+    ],
+    "occupations": [
+      "19-4021",
+      "19-4031"
+    ]
+  },
+  {
+    "name": "Napa Valley Unified School District",
+    "sector": "Education",
+    "regions": [
+      "Napa"
+    ],
+    "occupations": [
+      "25-1081",
+      "39-9011"
+    ]
+  },
+  {
+    "name": "Adventist Health",
+    "sector": "Healthcare",
+    "regions": [
+      "Napa"
+    ],
+    "occupations": [
+      "29-1141",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Constellation Brands",
+    "sector": "Wine/Beverages",
+    "regions": [
+      "Napa"
+    ],
+    "occupations": [
+      "11-9051",
+      "37-1012"
+    ]
+  },
+  {
+    "name": "Trinchero Family Estates",
+    "sector": "Wine",
+    "regions": [
+      "Napa"
+    ],
+    "occupations": [
+      "11-9051"
+    ]
+  },
+  {
+    "name": "Duckhorn Wine Company",
+    "sector": "Wine",
+    "regions": [
+      "Napa"
+    ],
+    "occupations": [
+      "11-9051"
+    ]
+  },
+  {
+    "name": "Auberge Resorts",
+    "sector": "Hospitality",
+    "regions": [
+      "Napa"
+    ],
+    "occupations": [
+      "11-9051",
+      "35-2014"
+    ]
+  },
+  {
+    "name": "Culinary Institute of America",
+    "sector": "Education/Hospitality",
+    "regions": [
+      "Napa"
+    ],
+    "occupations": [
+      "35-1011",
+      "35-2014",
+      "25-1081"
+    ]
+  },
+  {
+    "name": "City of Napa",
+    "sector": "Government",
+    "regions": [
+      "Napa"
+    ],
+    "occupations": [
+      "47-2061",
+      "33-2011"
+    ]
+  },
+  {
+    "name": "NorthBay Healthcare",
+    "sector": "Healthcare",
+    "regions": [
+      "Vallejo"
+    ],
+    "occupations": [
+      "29-1141",
+      "31-9092",
+      "29-1126"
+    ]
+  },
+  {
+    "name": "Vallejo City Unified School District",
+    "sector": "Education",
+    "regions": [
+      "Vallejo"
+    ],
+    "occupations": [
+      "25-1081",
+      "39-9011"
+    ]
+  },
+  {
+    "name": "General Dynamics",
+    "sector": "Defense/Manufacturing",
+    "regions": [
+      "Vallejo"
+    ],
+    "occupations": [
+      "51-4121",
+      "47-2111"
+    ]
+  },
+  {
+    "name": "Genentech Vacaville",
+    "sector": "Biotechnology",
+    "regions": [
+      "Vallejo"
+    ],
+    "occupations": [
+      "19-4021",
+      "19-4031"
+    ]
+  },
+  {
+    "name": "Lonza",
+    "sector": "Biotechnology",
+    "regions": [
+      "Vallejo"
+    ],
+    "occupations": [
+      "19-4021",
+      "19-4031"
+    ]
+  },
+  {
+    "name": "Thermo Fisher Scientific",
+    "sector": "Biotechnology",
+    "regions": [
+      "Vallejo"
+    ],
+    "occupations": [
+      "19-4021",
+      "19-4031"
+    ]
+  },
+  {
+    "name": "La Clinica de La Raza",
+    "sector": "Healthcare",
+    "regions": [
+      "Vallejo",
+      "Oakland-Fremont-Berkeley"
+    ],
+    "occupations": [
+      "29-1141",
+      "31-9092",
+      "31-9091"
+    ]
+  },
+  {
+    "name": "Partnership HealthPlan of California",
+    "sector": "Healthcare",
+    "regions": [
+      "Vallejo"
+    ],
+    "occupations": [
+      "11-9111",
+      "29-1141"
+    ]
+  },
+  {
+    "name": "University of California, Santa Cruz",
+    "sector": "Education",
+    "regions": [
+      "Santa Cruz-Watsonville"
+    ],
+    "occupations": [
+      "25-1081",
+      "15-1252",
+      "15-1299"
+    ]
+  },
+  {
+    "name": "County of Santa Cruz",
+    "sector": "Government",
+    "regions": [
+      "Santa Cruz-Watsonville"
+    ],
+    "occupations": [
+      "21-1029",
+      "47-2061"
+    ]
+  },
+  {
+    "name": "Dominican Hospital",
+    "sector": "Healthcare",
+    "regions": [
+      "Santa Cruz-Watsonville"
+    ],
+    "occupations": [
+      "29-1141",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Joby Aviation",
+    "sector": "Aerospace",
+    "regions": [
+      "Santa Cruz-Watsonville"
+    ],
+    "occupations": [
+      "15-1252",
+      "15-1299"
+    ]
+  },
+  {
+    "name": "Graniterock",
+    "sector": "Construction",
+    "regions": [
+      "Santa Cruz-Watsonville"
+    ],
+    "occupations": [
+      "47-2061",
+      "51-4121"
+    ]
+  },
+  {
+    "name": "Driscoll's",
+    "sector": "Agriculture",
+    "regions": [
+      "Santa Cruz-Watsonville"
+    ],
+    "occupations": [
+      "37-1012"
+    ]
+  },
+  {
+    "name": "Pajaro Valley Unified School District",
+    "sector": "Education",
+    "regions": [
+      "Santa Cruz-Watsonville"
+    ],
+    "occupations": [
+      "25-1081",
+      "39-9011"
+    ]
+  },
+  {
+    "name": "Marin General Hospital",
+    "sector": "Healthcare",
+    "regions": [
+      "San Rafael"
+    ],
+    "occupations": [
+      "29-1141",
+      "31-9092",
+      "29-1126"
+    ]
+  },
+  {
+    "name": "BioMarin",
+    "sector": "Biotechnology",
+    "regions": [
+      "San Rafael"
+    ],
+    "occupations": [
+      "19-4021",
+      "19-4031",
+      "15-1252"
+    ]
+  },
+  {
+    "name": "County of Marin",
+    "sector": "Government",
+    "regions": [
+      "San Rafael"
+    ],
+    "occupations": [
+      "21-1029",
+      "33-2011"
+    ]
+  },
+  {
+    "name": "Marin Community Clinics",
+    "sector": "Healthcare",
+    "regions": [
+      "San Rafael"
+    ],
+    "occupations": [
+      "29-1141",
+      "31-9092",
+      "31-9091"
+    ]
+  },
+  {
+    "name": "Starbucks",
+    "sector": "Food Service",
+    "regions": [
+      "Oakland-Fremont-Berkeley",
+      "San Jose-Sunnyvale-Santa Clara",
+      "San Francisco-San Mateo-Redwood City",
+      "Santa Rosa-Petaluma",
+      "Napa",
+      "Vallejo",
+      "Santa Cruz-Watsonville"
+    ],
+    "occupations": [
+      "11-9051",
+      "35-2014"
+    ]
+  }
+]

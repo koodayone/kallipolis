@@ -114,3 +114,18 @@ class OccupationDetail(BaseModel):
     annual_wage: Optional[int] = None
     skills: list[SkillDetail]
     regions: list[dict]
+
+
+class EmployerMatch(BaseModel):
+    name: str
+    sector: Optional[str] = None
+    occupations: list[str]
+    matching_skills: int
+    skills: list[str]
+
+
+class EmployerDetail(BaseModel):
+    name: str
+    sector: Optional[str] = None
+    regions: list[str]
+    occupations: list[dict]

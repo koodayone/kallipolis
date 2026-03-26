@@ -197,3 +197,41 @@ export async function getOccupationDetail(socCode: string, college: string): Pro
   if (!res.ok) throw new Error("Failed to fetch occupation detail");
   return res.json();
 }
+
+// ── Employers ───────────────────────────────────────────────────────────────
+
+export type ApiEmployerMatch = {
+  name: string;
+  sector: string | null;
+  occupations: string[];
+  matching_skills: number;
+  skills: string[];
+};
+
+export type ApiEmployerDetail = {
+  name: string;
+  sector: string | null;
+  regions: string[];
+  occupations: Array<{
+    title: string;
+    soc_code: string;
+    annual_wage: number | null;
+    skills: Array<{
+      skill: string;
+      developed: boolean;
+      courses: Array<{ code: string; name: string }>;
+    }>;
+  }>;
+};
+
+export async function getEmployers(college: string): Promise<ApiEmployerMatch[]> {
+  const res = await fetch(`${BASE}/labor-market/employers?college=${encodeURIComponent(college)}`);
+  if (!res.ok) throw new Error("Failed to fetch employers");
+  return res.json();
+}
+
+export async function getEmployerDetail(name: string, college: string): Promise<ApiEmployerDetail> {
+  const res = await fetch(`${BASE}/labor-market/employer/${encodeURIComponent(name)}?college=${encodeURIComponent(college)}`);
+  if (!res.ok) throw new Error("Failed to fetch employer detail");
+  return res.json();
+}
