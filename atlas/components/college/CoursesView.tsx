@@ -148,7 +148,7 @@ export default function CoursesView({ school, onBack }: Props) {
                     border: "1px solid rgba(255,255,255,0.10)", borderRadius: "16px",
                     outline: "none", transition: "border-color 0.2s, box-shadow 0.2s",
                   }}
-                  onFocus={(e) => { e.currentTarget.style.borderColor = `${school.brandColorLight}50`; e.currentTarget.style.boxShadow = `0 0 0 3px ${school.brandColorLight}15`; }}
+                  onFocus={(e) => { e.currentTarget.style.borderColor = `${school.brandColorLight}35`; e.currentTarget.style.boxShadow = `0 0 0 3px ${school.brandColorLight}15`; }}
                   onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)"; e.currentTarget.style.boxShadow = "none"; }}
                 />
               </div>
@@ -157,12 +157,12 @@ export default function CoursesView({ school, onBack }: Props) {
                   <button key={s} onClick={() => handleChip(s)}
                     style={{
                       fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.55)",
-                      background: "transparent", border: "1px solid rgba(255,255,255,0.12)",
+                      background: "transparent", border: `1px solid ${school.brandColorLight}35`,
                       borderRadius: "100px", padding: "8px 18px", cursor: "pointer",
                       transition: "background 0.15s, color 0.15s, border-color 0.15s",
                     }}
                     onMouseEnter={(e) => { const el = e.currentTarget as HTMLElement; el.style.background = `${school.brandColorLight}15`; el.style.borderColor = `${school.brandColorLight}40`; el.style.color = school.brandColorLight; }}
-                    onMouseLeave={(e) => { const el = e.currentTarget as HTMLElement; el.style.background = "transparent"; el.style.borderColor = "rgba(255,255,255,0.12)"; el.style.color = "rgba(255,255,255,0.55)"; }}
+                    onMouseLeave={(e) => { const el = e.currentTarget as HTMLElement; el.style.background = "transparent"; el.style.borderColor = `${school.brandColorLight}35`; el.style.color = "rgba(255,255,255,0.55)"; }}
                   >{s}</button>
                 ))}
               </div>
@@ -200,7 +200,7 @@ export default function CoursesView({ school, onBack }: Props) {
                   border: "1px solid rgba(255,255,255,0.10)", borderRadius: "12px",
                   outline: "none", transition: "border-color 0.2s, box-shadow 0.2s",
                 }}
-                onFocus={(e) => { e.currentTarget.style.borderColor = `${school.brandColorLight}50`; e.currentTarget.style.boxShadow = `0 0 0 3px ${school.brandColorLight}15`; }}
+                onFocus={(e) => { e.currentTarget.style.borderColor = `${school.brandColorLight}35`; e.currentTarget.style.boxShadow = `0 0 0 3px ${school.brandColorLight}15`; }}
                 onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)"; e.currentTarget.style.boxShadow = "none"; }}
               />
               <button onClick={handleReset}
