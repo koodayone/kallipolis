@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { SchoolConfig } from "@/lib/schoolConfig";
 import { buildCollegeScene, CollegeNodeKey } from "@/lib/collegeScene";
 import StudentsView from "@/components/college/StudentsView";
-import CurriculaView from "@/components/college/CurriculaView";
+import CoursesView from "@/components/college/CoursesView";
 import RisingSun from "@/components/ui/RisingSun";
 
 const CollegeCanvas = dynamic(
@@ -16,7 +16,7 @@ const CollegeCanvas = dynamic(
 
 const NODE_NAMES: Record<CollegeNodeKey, string> = {
   students: "Students",
-  curricula: "Curricula",
+  courses: "Courses",
 };
 
 // Mirror the scene's camera constants to project world-x → screen %.
@@ -25,7 +25,7 @@ const CAMERA_Z = 5.5;
 const TAN_HALF_FOV = Math.tan((50 / 2) * (Math.PI / 180));
 const NODE_WORLD_X: Record<CollegeNodeKey, number> = {
   students: -1.8,
-  curricula: 1.8,
+  courses: 1.8,
 };
 
 function projectWorldX(worldX: number, containerWidth: number): number {
@@ -48,14 +48,14 @@ export default function CollegeView({ school }: Props) {
   if (hoveredNode !== null) lastHoveredNode.current = hoveredNode;
   const [labelPositions, setLabelPositions] = useState<Record<CollegeNodeKey, number>>({
     students: 30,
-    curricula: 70,
+    courses: 70,
   });
   const sceneRef = useRef<ReturnType<typeof buildCollegeScene> | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const segment = window.location.hash.replace("#", "").split("/")[1] as CollegeNodeKey;
-    if (["students", "curricula"].includes(segment)) {
+    if (["students", "courses"].includes(segment)) {
       setActiveNode(segment);
       setCollegeState("report");
     }
@@ -70,7 +70,7 @@ export default function CollegeView({ school }: Props) {
       if (w === 0) return;
       setLabelPositions({
         students: projectWorldX(NODE_WORLD_X.students, w),
-        curricula: projectWorldX(NODE_WORLD_X.curricula, w),
+        courses: projectWorldX(NODE_WORLD_X.courses, w),
       });
     };
     compute();
@@ -166,7 +166,7 @@ export default function CollegeView({ school }: Props) {
               }} />
 
               {/* Per-shape labels — projected to match 3D solid positions */}
-              {(["students", "curricula"] as CollegeNodeKey[]).map((key) => (
+              {(["students", "courses"] as CollegeNodeKey[]).map((key) => (
                 <span
                   key={key}
                   style={{
@@ -207,8 +207,8 @@ export default function CollegeView({ school }: Props) {
             {activeNode === "students" && (
               <StudentsView school={school} onBack={handleBack} />
             )}
-            {activeNode === "curricula" && (
-              <CurriculaView school={school} onBack={handleBack} />
+            {activeNode === "courses" && (
+              <CoursesView school={school} onBack={handleBack} />
             )}
           </motion.div>
         )}

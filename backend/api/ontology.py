@@ -171,7 +171,7 @@ def get_student(student_uuid: str, college: str):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/curricula/departments", response_model=list[DepartmentSummary])
+@router.get("/courses/departments", response_model=list[DepartmentSummary])
 def get_departments(college: str):
     driver = get_driver()
     try:
@@ -189,7 +189,7 @@ def get_departments(college: str):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/curricula/courses", response_model=list[CourseSummary])
+@router.get("/courses/list", response_model=list[CourseSummary])
 def get_courses(department: str, college: str):
     driver = get_driver()
     try:

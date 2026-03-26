@@ -148,7 +148,7 @@ export default function StudentsView({ school, onBack }: Props) {
               Students
             </h1>
             <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>
-              {students.length} anonymous student records. Select a student to view their course history and derived skill profile.
+              {students.length.toLocaleString()} anonymous student records. Select a student to view their course history and derived skill profile.
             </p>
           </div>
 

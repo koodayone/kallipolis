@@ -32,7 +32,7 @@ type Props = {
   onBack: () => void;
 };
 
-export default function CurriculaView({ school, onBack }: Props) {
+export default function CoursesView({ school, onBack }: Props) {
   const [view, setView] = useState<ViewState>("departments");
   const [departments, setDepartments] = useState<DepartmentSummary[]>([]);
   const [courses, setCourses] = useState<CourseSummary[]>([]);
@@ -110,7 +110,7 @@ export default function CurriculaView({ school, onBack }: Props) {
         <>
           <div>
             <h1 style={{ fontFamily: FONT, fontSize: "24px", fontWeight: 600, color: "#f0eef4", letterSpacing: "-0.02em", marginBottom: "8px" }}>
-              Curricula
+              Courses
             </h1>
             <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}>
               Academic departments and their course offerings. Select a department to explore courses, learning outcomes, and derived skill mappings.

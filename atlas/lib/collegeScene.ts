@@ -1,6 +1,6 @@
 import * as THREE from "three";
 
-export type CollegeNodeKey = "students" | "curricula";
+export type CollegeNodeKey = "students" | "courses";
 
 export type CollegeSceneCallbacks = {
   onNodeClick: (node: CollegeNodeKey) => void;
@@ -138,7 +138,7 @@ export function buildCollegeScene(
       new THREE.IcosahedronGeometry(0.95, 0),
       new THREE.Vector3(1.8, 0, 0),
       new THREE.Vector3(0.0015, 0.002, 0.001),
-      "curricula"
+      "courses"
     ),
   ];
 
