@@ -6,7 +6,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { SchoolConfig } from "@/lib/schoolConfig";
 import { buildIndustryScene, IndustryNodeKey } from "@/lib/industryScene";
 import PartnershipsView from "@/components/industry/PartnershipsView";
-import LaborMarketView from "@/components/industry/LaborMarketView";
+import OccupationsView from "@/components/industry/OccupationsView";
+import EmployersView from "@/components/industry/EmployersView";
 import RisingSun from "@/components/ui/RisingSun";
 
 const IndustryCanvas = dynamic(
@@ -16,15 +17,17 @@ const IndustryCanvas = dynamic(
 
 const NODE_NAMES: Record<IndustryNodeKey, string> = {
   partnerships: "Partnerships",
-  research: "Labor Market",
+  occupations: "Occupations",
+  employers: "Employers",
 };
 
 const CANVAS_HEIGHT = 300;
 const CAMERA_Z = 5.5;
 const TAN_HALF_FOV = Math.tan((50 / 2) * (Math.PI / 180));
 const NODE_WORLD_X: Record<IndustryNodeKey, number> = {
-  partnerships: -1.8,
-  research: 1.8,
+  partnerships: -3.2,
+  occupations: 0,
+  employers: 3.2,
 };
 
 function projectWorldX(worldX: number, containerWidth: number): number {
@@ -46,15 +49,16 @@ export default function IndustryView({ school }: Props) {
   const lastHoveredNode = useRef<IndustryNodeKey | null>(null);
   if (hoveredNode !== null) lastHoveredNode.current = hoveredNode;
   const [labelPositions, setLabelPositions] = useState<Record<IndustryNodeKey, number>>({
-    partnerships: 30,
-    research: 70,
+    partnerships: 20,
+    occupations: 50,
+    employers: 80,
   });
   const sceneRef = useRef<ReturnType<typeof buildIndustryScene> | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const segment = window.location.hash.replace("#", "").split("/")[1] as IndustryNodeKey;
-    if (["partnerships", "research"].includes(segment)) {
+    if (["partnerships", "occupations", "employers"].includes(segment)) {
       setActiveNode(segment);
       setIndustryState("report");
     }
@@ -69,7 +73,8 @@ export default function IndustryView({ school }: Props) {
       if (w === 0) return;
       setLabelPositions({
         partnerships: projectWorldX(NODE_WORLD_X.partnerships, w),
-        research: projectWorldX(NODE_WORLD_X.research, w),
+        occupations: projectWorldX(NODE_WORLD_X.occupations, w),
+        employers: projectWorldX(NODE_WORLD_X.employers, w),
       });
     };
     compute();
@@ -165,7 +170,7 @@ export default function IndustryView({ school }: Props) {
               }} />
 
               {/* Per-shape labels */}
-              {(["partnerships", "research"] as IndustryNodeKey[]).map((key) => (
+              {(["partnerships", "occupations", "employers"] as IndustryNodeKey[]).map((key) => (
                 <span
                   key={key}
                   style={{
@@ -206,8 +211,11 @@ export default function IndustryView({ school }: Props) {
             {activeNode === "partnerships" && (
               <PartnershipsView school={school} onBack={handleBack} />
             )}
-            {activeNode === "research" && (
-              <LaborMarketView school={school} onBack={handleBack} />
+            {activeNode === "occupations" && (
+              <OccupationsView school={school} onBack={handleBack} />
+            )}
+            {activeNode === "employers" && (
+              <EmployersView school={school} onBack={handleBack} />
             )}
           </motion.div>
         )}

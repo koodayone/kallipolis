@@ -1,6 +1,6 @@
 import * as THREE from "three";
 
-export type IndustryNodeKey = "partnerships" | "research";
+export type IndustryNodeKey = "partnerships" | "occupations" | "employers";
 
 export type IndustrySceneCallbacks = {
   onNodeClick: (node: IndustryNodeKey) => void;
@@ -128,17 +128,24 @@ export function buildIndustryScene(
   const solids: SolidEntry[] = [
     // Partnerships — Octahedron (left)
     makeSolid(
-      new THREE.OctahedronGeometry(1.05, 0),
-      new THREE.Vector3(-1.8, 0, 0),
+      new THREE.OctahedronGeometry(0.9, 0),
+      new THREE.Vector3(-3.2, 0, 0),
       new THREE.Vector3(0.0018, 0.0025, 0.001),
       "partnerships"
     ),
-    // Research — Tetrahedron (right)
+    // Occupations — Tetrahedron (center)
     makeSolid(
-      new THREE.TetrahedronGeometry(1.1, 0),
-      new THREE.Vector3(1.8, 0, 0),
+      new THREE.TetrahedronGeometry(0.95, 0),
+      new THREE.Vector3(0, 0, 0),
       new THREE.Vector3(0.002, 0.0028, 0.0015),
-      "research"
+      "occupations"
+    ),
+    // Employers — Dodecahedron (right)
+    makeSolid(
+      new THREE.DodecahedronGeometry(0.85, 0),
+      new THREE.Vector3(3.2, 0, 0),
+      new THREE.Vector3(0.0015, 0.002, 0.0018),
+      "employers"
     ),
   ];
 

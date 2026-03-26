@@ -28,7 +28,7 @@ function formatEmployment(n: number | null): string {
   return `${n.toLocaleString()} jobs`;
 }
 
-export default function LaborMarketView({ school, onBack }: Props) {
+export default function OccupationsView({ school, onBack }: Props) {
   const [view, setView] = useState<ViewState>("list");
   const [overview, setOverview] = useState<ApiLaborMarketOverview | null>(null);
   const [detail, setDetail] = useState<ApiOccupationDetail | null>(null);
@@ -129,7 +129,7 @@ function OccupationList({
                 marginBottom: "6px",
               }}
             >
-              Labor Market
+              Occupations
             </h1>
             <p
               style={{
