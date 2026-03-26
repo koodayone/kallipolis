@@ -205,7 +205,7 @@ export default function GovernmentView({ school }: Props) {
             animate={{ opacity: govState === "transitioning-out" ? 0 : 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
-            style={{ position: "fixed", inset: 0, background: "#060d1f", overflowY: "auto", zIndex: 25 }}
+            style={{ position: "fixed", inset: 0, background: "#060d1f", overflowY: "auto", overscrollBehavior: "none", zIndex: 25 }}
           >
             {activeReport === "strong_workforce" && (
               <StrongWorkforceView school={school} onBack={handleBack} />

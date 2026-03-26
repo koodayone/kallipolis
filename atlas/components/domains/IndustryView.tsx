@@ -206,7 +206,7 @@ export default function IndustryView({ school }: Props) {
             animate={{ opacity: industryState === "transitioning-out" ? 0 : 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
-            style={{ position: "fixed", inset: 0, background: "#060d1f", overflowY: "auto", zIndex: 25 }}
+            style={{ position: "fixed", inset: 0, background: "#060d1f", overflowY: "auto", overscrollBehavior: "none", zIndex: 25 }}
           >
             {activeNode === "partnerships" && (
               <PartnershipsView school={school} onBack={handleBack} />
