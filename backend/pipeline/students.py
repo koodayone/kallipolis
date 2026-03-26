@@ -1,9 +1,10 @@
 """
 Stage 4: Synthetic student data generator.
 
-Generates anonymous students with realistic aggregate distributions:
-enrollment by department, course popularity, grade distributions,
-retention curves, and department-affine skill profiles.
+Generates anonymous students with enrollment distributions calibrated to
+DataMart 4-digit TOP code grade distributions. Each student is assigned a
+primary TOP code (weighted by real enrollment share), with 60% stickiness
+to that area and 40% random draws from the full distribution.
 
 Usage:
     from pipeline.students import generate_and_load_students
@@ -14,13 +15,12 @@ from __future__ import annotations
 
 import json
 import logging
-import math
-import os
-import random as _random_mod
 import re
 import uuid
+from collections import Counter
 from dataclasses import dataclass, field
 from pathlib import Path
+from random import Random
 from typing import List, Dict, Tuple, Optional
 
 from neo4j import Driver
@@ -30,25 +30,17 @@ logger = logging.getLogger(__name__)
 # ── Deterministic UUID namespace ───────────────────────────────────────────────
 NAMESPACE = uuid.UUID("a1b2c3d4-e5f6-7890-abcd-ef1234567890")
 
-# ── Default parameters (Foothill College, overridable per college) ─────────────
-
+# ── Default parameters ─────────────────────────────────────────────────────────
 DEFAULT_STUDENT_COUNT = 3000
 FT_RATIO = 0.31
 RETENTION_RATE = 0.67
 SUMMER_ENROLLMENT_RATE = 0.15
-PRIMARY_DEPT_AFFINITY = 0.65
+PRIMARY_STICKINESS = 0.60
+DEPT_CAP = 6  # Max courses per department per student
 RETAKE_RATE = 0.05
 ACADEMIC_YEARS = [2022, 2023, 2024]
 
-# Grade distribution (sums to 1.0)
-GRADE_DIST = {"A": 0.28, "B": 0.26, "C": 0.17, "D": 0.05, "F": 0.04, "W": 0.12, "P": 0.08}
-GRADE_CHOICES = list(GRADE_DIST.keys())
-GRADE_WEIGHTS = list(GRADE_DIST.values())
-
-# Pass/No Pass grade distribution
-PNP_DIST = {"P": 0.85, "NP": 0.15}
-
-# Course load per term (number of courses)
+# Course load per term
 PT_LOADS = [1, 2, 3]
 PT_LOAD_WEIGHTS = [0.10, 0.40, 0.50]
 FT_LOADS = [4, 5, 6]
@@ -58,138 +50,24 @@ FT_LOAD_WEIGHTS = [0.55, 0.35, 0.10]
 PT_UNIT_CAP = 11.0
 FT_UNIT_CAP = 20.0
 
-# Starting term distribution (most start in Fall)
+# Starting term distribution
 START_TERM_WEIGHTS = {"Fall": 0.60, "Winter": 0.15, "Spring": 0.20, "Summer": 0.05}
 
-# Boost multipliers for known high-enrollment departments
-HIGH_ENROLLMENT_BOOST = {
-    "Computer Science": 2.5,
-    "Mathematics": 2.0,
-    "English": 2.5,
-    "Biology": 1.8,
-    "Business": 2.0,
-    "Psychology": 1.5,
-    "Economics": 1.5,
-    "Communication Studies": 1.5,
-    "Chemistry": 1.3,
-    "Kinesiology": 1.3,
-    "History": 1.2,
-    "Sociology": 1.2,
-}
-
-# Course number → popularity weight
-COURSE_NUM_WEIGHTS = [(1, 9, 10), (10, 49, 5), (50, 99, 3), (100, 199, 2), (200, 9999, 1)]
-
-# Department affinity clusters
-DEPT_CLUSTERS = {
-    "Computer Science": ["Computer Science", "Mathematics", "Engineering"],
-    "Mathematics": ["Mathematics", "Computer Science", "Physics", "Statistics"],
-    "Engineering": ["Engineering", "Computer Science", "Mathematics", "Physics"],
-    "Business": ["Business", "Accounting", "Economics"],
-    "Accounting": ["Accounting", "Business", "Economics"],
-    "Economics": ["Economics", "Business", "Mathematics"],
-    "Respiratory Therapy": ["Respiratory Therapy", "Biology", "Allied Health Sciences"],
-    "Dental Hygiene": ["Dental Hygiene", "Dental Assisting", "Biology", "Allied Health Sciences"],
-    "Dental Assisting": ["Dental Assisting", "Dental Hygiene", "Allied Health Sciences"],
-    "Radiologic Technology": ["Radiologic Technology", "Biology", "Allied Health Sciences"],
-    "Diagnostic Medical Sonography": ["Diagnostic Medical Sonography", "Biology", "Allied Health Sciences"],
-    "Allied Health Sciences": ["Allied Health Sciences", "Biology", "Respiratory Therapy"],
-    "Pharmacy Technology": ["Pharmacy Technology", "Biology", "Chemistry", "Allied Health Sciences"],
-    "Emergency Medical Services (EMT/EMR/Paramedic)": ["Emergency Medical Services (EMT/EMR/Paramedic)", "Allied Health Sciences", "Biology"],
-    "Psychology": ["Psychology", "Sociology", "Anthropology", "Child Development"],
-    "Sociology": ["Sociology", "Psychology", "Anthropology", "Ethnic Studies"],
-    "Anthropology": ["Anthropology", "Sociology", "History", "Geography"],
-    "Political Science": ["Political Science", "History", "Economics", "Global Studies"],
-    "History": ["History", "Political Science", "Humanities", "Ethnic Studies"],
-    "Physics": ["Physics", "Mathematics", "Chemistry", "Astronomy", "Engineering"],
-    "Chemistry": ["Chemistry", "Biology", "Physics", "Mathematics"],
-    "Biology": ["Biology", "Chemistry", "Environmental Horticulture & Design"],
-    "Astronomy": ["Astronomy", "Physics", "Mathematics"],
-    "English": ["English", "Humanities", "Creative Writing", "Communication Studies"],
-    "Humanities": ["Humanities", "English", "Philosophy", "History"],
-    "Philosophy": ["Philosophy", "Humanities", "English"],
-    "Communication Studies": ["Communication Studies", "English", "Media Studies", "Journalism"],
-    "Media Studies": ["Media Studies", "Communication Studies", "Photography", "Music Technology"],
-    "Art": ["Art", "Photography", "Graphics & Interactive Design"],
-    "Photography": ["Photography", "Art", "Graphics & Interactive Design"],
-    "Theatre Arts": ["Theatre Arts", "Dance", "Music", "English"],
-    "Music": ["Music", "Music Technology", "Theatre Arts"],
-    "Music Technology": ["Music Technology", "Music", "Computer Science"],
-    "Dance": ["Dance", "Theatre Arts", "Kinesiology"],
-    "Child Development": ["Child Development", "Psychology", "Education"],
-}
-
-# Non-credit department prefixes to exclude
+# Non-credit prefixes to exclude
 NON_CREDIT_PREFIXES = ["Non-Credit"]
 
+# Known prefix aliases (catalog prefix → DataMart prefix)
+PREFIX_ALIASES = {
+    "CS": "C S", "DA": "D A", "DH": "D H", "RT": "R T", "VT": "V T",
+    "LA": "L A", "ENGL C": "ENGL", "COMM C": "COMM", "PSYC C": "PSYC",
+    "POLS C": "POLI", "STAT C": "MATH",
+}
 
-# ── Calibration loading ──────────────────────────────────────────────────────
+# Pass/No Pass grade distribution
+PNP_DIST = {"P": 0.85, "NP": 0.15}
 
-
-def _load_calibration(college_key: str) -> Optional[dict]:
-    """Load empirical calibration data for a college if available."""
-    path = Path(__file__).parent / "calibrations" / f"{college_key}.json"
-    if path.exists():
-        with open(path) as f:
-            cal = json.load(f)
-        logger.info(f"Loaded calibration for {college_key} (source: {cal.get('source', 'unknown')})")
-        return cal
-    logger.info(f"No calibration file for {college_key}, using defaults")
-    return None
-
-
-class GradeResolver:
-    """Resolves grade distribution per department using TOP group calibration data."""
-
-    PASS_GRADES = ["A", "B", "C", "P"]
-    FAIL_GRADES = ["D", "F", "W"]
-
-    def __init__(self, calibration: Optional[dict]):
-        self._cal = calibration
-        self._dept_to_top = (calibration or {}).get("dept_to_top_group", {})
-        self._top_success = (calibration or {}).get("top_group_success_rate", {})
-        self._top_grades = (calibration or {}).get("top_group_grades", {})
-
-        # College-wide fallback
-        if calibration and "grade_distribution" in calibration:
-            gdist = calibration["grade_distribution"]
-            self._default_success = calibration.get("success_rate", 0.79)
-        else:
-            gdist = GRADE_DIST
-            self._default_success = sum(GRADE_DIST.get(g, 0) for g in self.PASS_GRADES)
-        self._default_pass_w = self._normalize([gdist.get(g, 0) for g in self.PASS_GRADES])
-        self._default_fail_w = self._normalize([gdist.get(g, 0) for g in self.FAIL_GRADES])
-
-        # Pre-compute per-TOP-group weights
-        self._top_pass_w: Dict[str, List[float]] = {}
-        self._top_fail_w: Dict[str, List[float]] = {}
-        for top_name, grades in self._top_grades.items():
-            self._top_pass_w[top_name] = self._normalize([grades.get(g, 0) for g in self.PASS_GRADES])
-            self._top_fail_w[top_name] = self._normalize([grades.get(g, 0) for g in self.FAIL_GRADES])
-
-    @staticmethod
-    def _normalize(weights: List[float]) -> List[float]:
-        total = sum(weights) or 1
-        return [w / total for w in weights]
-
-    def success_rate(self, department: str) -> float:
-        """Get success rate for a department."""
-        top = self._dept_to_top.get(department)
-        if top and top in self._top_success:
-            return self._top_success[top]
-        return self._default_success
-
-    def sample_grade(self, rng: _random_mod.Random, department: str) -> str:
-        """Sample a grade for a department, using per-TOP-group distributions."""
-        top = self._dept_to_top.get(department)
-        sr = self._top_success.get(top, self._default_success) if top else self._default_success
-
-        if rng.random() < sr:
-            weights = self._top_pass_w.get(top, self._default_pass_w) if top else self._default_pass_w
-            return rng.choices(self.PASS_GRADES, weights=weights, k=1)[0]
-        else:
-            weights = self._top_fail_w.get(top, self._default_fail_w) if top else self._default_fail_w
-            return rng.choices(self.FAIL_GRADES, weights=weights, k=1)[0]
+# Default grade distribution (fallback when TOP4 data unavailable)
+DEFAULT_GRADES = {"A": 0.55, "B": 0.18, "C": 0.08, "D": 0.02, "F": 0.07, "W": 0.07, "P": 0.01}
 
 
 # ── Data classes ───────────────────────────────────────────────────────────────
@@ -223,27 +101,102 @@ class GenerationStats:
     grade_distribution: Dict[str, float] = field(default_factory=dict)
 
 
-# ── Helpers ────────────────────────────────────────────────────────────────────
+# ── Calibration loading ──────────────────────────────────────────────────────
 
 
-def _parse_course_number(code: str) -> int:
-    """Extract numeric portion from course code. 'C S 1A' → 1, 'MATH 105' → 105."""
-    match = re.search(r"(\d+)", code)
-    return int(match.group(1)) if match else 50
+def _load_calibration(college_key: str) -> Optional[dict]:
+    """Load the old 2-digit calibration for ft_ratio and retention_rate."""
+    path = Path(__file__).parent / "calibrations" / f"{college_key}.json"
+    if path.exists():
+        with open(path) as f:
+            return json.load(f)
+    return None
 
 
-def _course_popularity(code: str) -> float:
-    """Return popularity weight based on course number."""
-    num = _parse_course_number(code)
-    for lo, hi, weight in COURSE_NUM_WEIGHTS:
-        if lo <= num <= hi:
-            return float(weight)
-    return 1.0
+def _load_top4_calibration(college_key: str) -> Optional[dict]:
+    """Load 4-digit TOP code calibration data."""
+    path = Path(__file__).parent / "calibrations" / "top4" / f"{college_key}.json"
+    if path.exists():
+        with open(path) as f:
+            cal = json.load(f)
+        logger.info(f"Loaded TOP4 calibration for {college_key}: {len(cal.get('top4_codes', {}))} codes, {cal.get('total_enrollments', 0):,} enrollments")
+        return cal
+    logger.info(f"No TOP4 calibration for {college_key}")
+    return None
 
 
-def _is_honors_variant(code: str, base_code: str) -> bool:
-    """Check if code is an honors variant of base_code. 'MATH 1AH' vs 'MATH 1A'."""
-    return code != base_code and code.rstrip("H").rstrip("P") == base_code
+# ── Prefix → TOP4 mapping ─────────────────────────────────────────────────────
+
+# Master prefix→TOP4 mapping (built from Foothill master course file, applies broadly)
+# This is the dominant TOP4 code for each course prefix across the CCC system.
+_MASTER_PREFIX_TOP4: Dict[str, str] = {}
+_MASTER_PREFIX_PATH = Path(__file__).parent / "calibrations" / "prefix_to_top4.json"
+
+
+def _get_prefix_top4_map() -> Dict[str, str]:
+    """Load or build the prefix → TOP4 mapping."""
+    global _MASTER_PREFIX_TOP4
+    if _MASTER_PREFIX_TOP4:
+        return _MASTER_PREFIX_TOP4
+    if _MASTER_PREFIX_PATH.exists():
+        with open(_MASTER_PREFIX_PATH) as f:
+            _MASTER_PREFIX_TOP4 = json.load(f)
+        return _MASTER_PREFIX_TOP4
+    return {}
+
+
+def _course_prefix(code: str) -> str:
+    """Extract the letter prefix from a course code. 'CS 1A' → 'CS'."""
+    match = re.match(r"([A-Z ]+)", code)
+    return match.group(1).strip() if match else ""
+
+
+def _resolve_prefix(prefix: str) -> str:
+    """Resolve a prefix through aliases. 'CS' → 'C S', 'ENGL C' → 'ENGL'."""
+    if prefix in PREFIX_ALIASES:
+        return PREFIX_ALIASES[prefix]
+    # Try removing trailing C (concurrent enrollment variant)
+    base = re.sub(r"\s*C$", "", prefix)
+    if base != prefix:
+        return base
+    return prefix
+
+
+def _build_top4_course_pools(
+    courses: List[dict],
+    top4_cal: dict,
+) -> Dict[str, List[dict]]:
+    """Group courses into pools by 4-digit TOP code."""
+    prefix_map = _get_prefix_top4_map()
+    valid_top4s = set(top4_cal.get("top4_codes", {}).keys())
+
+    pools: Dict[str, List[dict]] = {code: [] for code in valid_top4s}
+    unmapped = 0
+
+    for c in courses:
+        # Skip non-credit
+        dept = c.get("department", "")
+        if any(dept.startswith(p) for p in NON_CREDIT_PREFIXES):
+            continue
+        units = _parse_units(c.get("units", "0"))
+        if units <= 0:
+            continue
+
+        prefix = _course_prefix(c["code"])
+        resolved = _resolve_prefix(prefix)
+
+        # Look up TOP4
+        top4 = prefix_map.get(resolved) or prefix_map.get(prefix)
+        if top4 and top4 in valid_top4s:
+            c["_units"] = units
+            pools[top4].append(c)
+        else:
+            unmapped += 1
+
+    populated = sum(1 for p in pools.values() if p)
+    total_courses = sum(len(p) for p in pools.values())
+    logger.info(f"Course pools: {total_courses} courses across {populated}/{len(pools)} TOP4 codes ({unmapped} unmapped)")
+    return pools
 
 
 def _parse_units(units_str: str) -> float:
@@ -259,86 +212,20 @@ def _parse_units(units_str: str) -> float:
         return 0.0
 
 
+# ── Term sequence ──────────────────────────────────────────────────────────────
+
+
 def _build_term_sequence() -> List[str]:
     """Build ordered list of term strings."""
     terms = []
     for year in ACADEMIC_YEARS:
         terms.append(f"{year}-Fall")
         terms.append(f"{year}-Winter")
-        # Winter is in the next calendar year for quarter system
         terms.append(f"{year + 1}-Spring")
     return terms
 
 
 # ── Core generation ────────────────────────────────────────────────────────────
-
-
-def _prepare_catalog(courses: List[dict]) -> Tuple[
-    Dict[str, List[dict]],  # dept → courses
-    Dict[str, float],  # dept → enrollment weight
-    List[dict],  # GE courses
-]:
-    """Prepare course catalog for enrollment generation."""
-    # Filter to credit-bearing courses only
-    credit_courses = []
-    for c in courses:
-        dept = c.get("department", "")
-        if any(dept.startswith(prefix) for prefix in NON_CREDIT_PREFIXES):
-            continue
-        units = _parse_units(c.get("units", "0"))
-        if units <= 0:
-            continue
-        c["_units"] = units
-        c["_popularity"] = _course_popularity(c.get("code", ""))
-        credit_courses.append(c)
-
-    logger.info(f"Credit-bearing courses: {len(credit_courses)} / {len(courses)}")
-
-    # Group by department
-    dept_courses: Dict[str, List[dict]] = {}
-    for c in credit_courses:
-        dept = c["department"]
-        dept_courses.setdefault(dept, []).append(c)
-
-    # Compute department enrollment weights
-    dept_weights: Dict[str, float] = {}
-    for dept, courses_list in dept_courses.items():
-        boost = HIGH_ENROLLMENT_BOOST.get(dept, 1.0)
-        dept_weights[dept] = math.sqrt(len(courses_list)) * boost
-
-    # Normalize
-    total = sum(dept_weights.values())
-    for dept in dept_weights:
-        dept_weights[dept] /= total
-
-    # Identify GE courses (transferable)
-    ge_courses = [c for c in credit_courses if c.get("transfer_status") in ("CSU/UC", "CSU")]
-
-    logger.info(f"Departments: {len(dept_courses)}, GE courses: {len(ge_courses)}")
-    return dept_courses, dept_weights, ge_courses
-
-
-def _select_course(
-    rng: _random_mod.Random,
-    course_pool: List[dict],
-    taken_codes: set,
-    allow_retake: bool = False,
-) -> Optional[dict]:
-    """Select a course from pool by popularity weight, avoiding duplicates."""
-    available = []
-    weights = []
-    for c in course_pool:
-        code = c["code"]
-        base = code.rstrip("H").rstrip("P")
-        if base in taken_codes and not (allow_retake and rng.random() < RETAKE_RATE):
-            continue
-        available.append(c)
-        weights.append(c["_popularity"])
-
-    if not available:
-        return None
-
-    return rng.choices(available, weights=weights, k=1)[0]
 
 
 def generate_students(
@@ -348,77 +235,49 @@ def generate_students(
     seed: int = 42,
     config: Optional[dict] = None,
 ) -> Tuple[List[GeneratedStudent], GenerationStats]:
-    """
-    Generate synthetic students with realistic distributions.
-
-    Args:
-        college_key: College identifier (e.g., "foothill")
-        courses: Enriched course data (from cached JSON)
-        num_students: Number of students to generate (defaults to calibration enrollment or 3000)
-        seed: Random seed for determinism
-        config: Optional per-college overrides
-
-    Returns:
-        Tuple of (students list, generation stats)
-    """
+    """Generate synthetic students with 4-digit TOP code calibrated distributions."""
     cfg = config or {}
-    calibration = _load_calibration(college_key)
 
-    # Determine student count: explicit arg > calibration enrollment > default
+    # Load calibrations
+    top4_cal = _load_top4_calibration(college_key)
+    old_cal = _load_calibration(college_key)
+
+    ft_ratio = cfg.get("ft_ratio", (old_cal or {}).get("ft_ratio", FT_RATIO))
+    retention = cfg.get("retention_rate", (old_cal or {}).get("retention_rate", RETENTION_RATE))
+
     if num_students is None:
-        if calibration and "enrollment" in calibration:
-            num_students = calibration["enrollment"]
+        if old_cal and "enrollment" in old_cal:
+            num_students = old_cal["enrollment"]
         else:
             num_students = DEFAULT_STUDENT_COUNT
     logger.info(f"Generating {num_students} students for {college_key}")
 
-    # Use calibration values, then config overrides, then defaults
-    ft_ratio = cfg.get("ft_ratio", calibration.get("ft_ratio", FT_RATIO) if calibration else FT_RATIO)
-    retention = cfg.get("retention_rate", calibration.get("retention_rate", RETENTION_RATE) if calibration else RETENTION_RATE)
-    dept_affinity = cfg.get("dept_affinity", PRIMARY_DEPT_AFFINITY)
+    # Build course pools by TOP4
+    if top4_cal:
+        top4_courses = _build_top4_course_pools(courses, top4_cal)
+        top4_data = top4_cal["top4_codes"]
 
-    grader = GradeResolver(calibration)
+        # Only include TOP4 codes that have both calibration data AND courses
+        valid_codes = [code for code in top4_data if top4_courses.get(code)]
+        top4_weights = [top4_data[code]["enrollment"] for code in valid_codes]
 
-    rng = _random_mod.Random(seed)
-    dept_courses, dept_weights, ge_courses = _prepare_catalog(courses)
+        if not valid_codes:
+            logger.warning("No valid TOP4 codes with courses — falling back to flat generation")
+            top4_cal = None
+    else:
+        valid_codes = []
+        top4_weights = []
 
-    # Apply calibrated enrollment shares from TOP group data
-    if calibration and "top_group_enrollment_share" in calibration:
-        top_share = calibration["top_group_enrollment_share"]
-        dept_to_top = calibration.get("dept_to_top_group", {})
-
-        # Compute how many departments map to each TOP group
-        top_dept_count: Dict[str, int] = {}
-        for dept in dept_weights:
-            top = dept_to_top.get(dept)
-            if top and top in top_share:
-                top_dept_count[top] = top_dept_count.get(top, 0) + 1
-
-        # Distribute each TOP group's share across its departments (weighted by course count)
-        top_dept_courses: Dict[str, float] = {}
-        for dept in dept_weights:
-            top = dept_to_top.get(dept)
-            if top and top in top_share:
-                top_dept_courses.setdefault(top, 0)
-                top_dept_courses[top] += dept_weights[dept]
-
-        for dept in dept_weights:
-            top = dept_to_top.get(dept)
-            if top and top in top_share and top_dept_courses.get(top, 0) > 0:
-                # This dept gets its proportional share of the TOP group's enrollment
-                dept_weights[dept] = top_share[top] * (dept_weights[dept] / top_dept_courses[top])
-
-        # Normalize all weights to sum to 1.0
-        total = sum(dept_weights.values())
-        for dept in dept_weights:
-            dept_weights[dept] /= total
-
-    dept_names = list(dept_weights.keys())
-    dept_probs = list(dept_weights.values())
+    rng = Random(seed)
     all_terms = _build_term_sequence()
-
     start_terms_list = list(START_TERM_WEIGHTS.keys())
     start_terms_weights = list(START_TERM_WEIGHTS.values())
+
+    # Flat course list fallback (if no TOP4 calibration)
+    if not top4_cal:
+        flat_courses = [c for c in courses if _parse_units(c.get("units", "0")) > 0]
+        for c in flat_courses:
+            c["_units"] = _parse_units(c.get("units", "0"))
 
     students: List[GeneratedStudent] = []
     total_enrollments = 0
@@ -429,43 +288,37 @@ def generate_students(
         student_uuid = str(uuid.uuid5(NAMESPACE, f"{college_key}-student-{i}"))
         student = GeneratedStudent(uuid=student_uuid)
 
-        # Profile
         is_ft = rng.random() < ft_ratio
-        primary_dept = rng.choices(dept_names, weights=dept_probs, k=1)[0]
         start_season = rng.choices(start_terms_list, weights=start_terms_weights, k=1)[0]
 
-        # Find starting term index
+        # Assign primary TOP4
+        primary_top4 = rng.choices(valid_codes, weights=top4_weights, k=1)[0] if valid_codes else None
+
+        # Find starting term
         start_idx = 0
         for idx, term in enumerate(all_terms):
             if term.endswith(start_season):
                 start_idx = idx
                 break
 
-        # Determine how many terms this student persists
+        # Determine persistence
         max_terms = 1
         while max_terms < len(all_terms) - start_idx:
             if rng.random() > retention:
                 break
             max_terms += 1
 
-        # Build cluster pool for this student's primary department
-        cluster_depts = DEPT_CLUSTERS.get(primary_dept, [primary_dept])
-        cluster_courses = []
-        for dept in cluster_depts:
-            cluster_courses.extend(dept_courses.get(dept, []))
-
-        taken_codes: set = set()
-        unit_cap = FT_UNIT_CAP if is_ft else PT_UNIT_CAP
-
         active_terms = all_terms[start_idx: start_idx + max_terms]
-        # Filter out summer terms probabilistically
         active_terms = [
             t for t in active_terms
             if not t.endswith("-Summer") or rng.random() < SUMMER_ENROLLMENT_RATE
         ]
 
+        taken_codes: set = set()
+        dept_counts: Dict[str, int] = {}  # Track per-department enrollment count
+        unit_cap = FT_UNIT_CAP if is_ft else PT_UNIT_CAP
+
         for term in active_terms:
-            # Determine course load
             if is_ft:
                 num_courses = rng.choices(FT_LOADS, weights=FT_LOAD_WEIGHTS, k=1)[0]
             else:
@@ -473,41 +326,72 @@ def generate_students(
 
             term_units = 0.0
             for _ in range(num_courses):
-                # Decide: primary cluster or GE
-                if rng.random() < dept_affinity and cluster_courses:
-                    course = _select_course(rng, cluster_courses, taken_codes, allow_retake=True)
+                # Choose TOP4: 60% primary, 40% random
+                if top4_cal and primary_top4:
+                    if rng.random() < PRIMARY_STICKINESS:
+                        chosen_top4 = primary_top4
+                    else:
+                        chosen_top4 = rng.choices(valid_codes, weights=top4_weights, k=1)[0]
+
+                    pool = top4_courses.get(chosen_top4, [])
+                    if not pool:
+                        continue
+
+                    # Pick course, avoid duplicates and enforce department cap
+                    available = [c for c in pool
+                                 if c["code"] not in taken_codes
+                                 and dept_counts.get(c.get("department", ""), 0) < DEPT_CAP]
+                    if not available:
+                        # Try a random TOP4 instead
+                        chosen_top4 = rng.choices(valid_codes, weights=top4_weights, k=1)[0]
+                        pool = top4_courses.get(chosen_top4, [])
+                        if not pool:
+                            continue
+                        available = [c for c in pool
+                                     if c["code"] not in taken_codes
+                                     and dept_counts.get(c.get("department", ""), 0) < DEPT_CAP]
+                        if not available:
+                            continue
+
+                    course = rng.choices(available, k=1)[0]
+
+                    # Check unit cap
+                    course_units = course.get("_units", 3.0)
+                    if term_units + course_units > unit_cap:
+                        continue
+                    term_units += course_units
+                    taken_codes.add(course["code"])
+                    dept = course.get("department", "")
+                    dept_counts[dept] = dept_counts.get(dept, 0) + 1
+
+                    # Grade from TOP4-specific distribution
+                    grading = course.get("grading", "")
+                    if "Pass/No Pass Only" in grading:
+                        grade = rng.choices(list(PNP_DIST.keys()), weights=list(PNP_DIST.values()), k=1)[0]
+                        status = "Completed" if grade == "P" else "Not Passed"
+                    else:
+                        grades = top4_data.get(chosen_top4, {}).get("grades", DEFAULT_GRADES)
+                        g_labels = list(grades.keys())
+                        g_weights = list(grades.values())
+                        grade = rng.choices(g_labels, weights=g_weights, k=1)[0]
+                        status = "Withdrawn" if grade == "W" else "Completed"
+
                 else:
-                    course = _select_course(rng, ge_courses, taken_codes)
-
-                if course is None:
-                    continue
-
-                # Check unit cap
-                course_units = course["_units"]
-                if term_units + course_units > unit_cap:
-                    continue
-
-                term_units += course_units
-                code = course["code"]
-                base_code = code.rstrip("H").rstrip("P")
-                taken_codes.add(base_code)
-
-                # Assign grade using per-department success-gated model
-                grading = course.get("grading", "")
-                dept = course.get("department", "")
-                if "Pass/No Pass Only" in grading:
-                    grade = rng.choices(
-                        list(PNP_DIST.keys()),
-                        weights=list(PNP_DIST.values()),
-                        k=1
-                    )[0]
-                    status = "Completed" if grade == "P" else "Not Passed"
-                else:
-                    grade = grader.sample_grade(rng, dept)
+                    # Fallback: flat course selection
+                    available = [c for c in flat_courses if c["code"] not in taken_codes]
+                    if not available:
+                        continue
+                    course = rng.choices(available, k=1)[0]
+                    course_units = course.get("_units", 3.0)
+                    if term_units + course_units > unit_cap:
+                        continue
+                    term_units += course_units
+                    taken_codes.add(course["code"])
+                    grade = rng.choices(list(DEFAULT_GRADES.keys()), weights=list(DEFAULT_GRADES.values()), k=1)[0]
                     status = "Withdrawn" if grade == "W" else "Completed"
 
                 enrollment = Enrollment(
-                    course_code=code,
+                    course_code=course["code"],
                     course_name=course.get("name", ""),
                     department=course.get("department", ""),
                     term=term,
@@ -537,7 +421,7 @@ def generate_students(
         success_rate=success_count / total_graded if total_graded else 0,
         grade_distribution={
             g: grade_counts.get(g, 0) / total_graded if total_graded else 0
-            for g in GRADE_CHOICES + ["NP"]
+            for g in ["A", "B", "C", "P", "D", "F", "W", "NP"]
         },
     )
 
@@ -548,18 +432,19 @@ def generate_students(
         f"avg courses/student: {stats.avg_courses_per_student:.1f}"
     )
 
-    # Validation: compare synthetic aggregates against calibration targets
-    if calibration:
-        target_success = calibration.get("success_rate")
-        if target_success is not None:
-            diff = abs(stats.success_rate - target_success)
-            logger.info(
-                f"Calibration check — success rate: "
-                f"synthetic={stats.success_rate:.1%}, "
-                f"target={target_success:.1%}, "
-                f"diff={diff:.1%}"
-            )
-        logger.info(f"Calibration params — ft_ratio={ft_ratio:.0%}, retention={retention:.0%}")
+    # Validation: compare against TOP4 calibration
+    if top4_cal:
+        target_success = sum(
+            sum(d["grades"].get(g, 0) for g in success_grades) * d["enrollment"]
+            for d in top4_data.values()
+        ) / sum(d["enrollment"] for d in top4_data.values()) if top4_data else 0
+        diff = abs(stats.success_rate - target_success)
+        logger.info(
+            f"Calibration check — success rate: "
+            f"synthetic={stats.success_rate:.1%}, "
+            f"target={target_success:.1%}, "
+            f"diff={diff:.1%}"
+        )
 
     return students, stats
 
@@ -570,12 +455,9 @@ BATCH_SIZE = 500
 
 
 def load_students(driver: Driver, institution: str, students: List[GeneratedStudent]) -> int:
-    """
-    Load generated students into Neo4j. Replaces existing synthetic students
-    for the institution (full replace strategy for synthetic data).
-    """
+    """Load generated students into Neo4j. Full replace strategy."""
     with driver.session() as session:
-        # Clear existing students for this college (in batches to avoid OOM)
+        # Clear existing students in batches
         total_deleted = 0
         while True:
             result = session.run(
