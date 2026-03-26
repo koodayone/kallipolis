@@ -115,6 +115,14 @@ export default function LeafHeader({ school, onBack, parentShape }: Props) {
       >
         {school.name}
       </span>
+
+      {/* Kallipolis branding — top right */}
+      <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+        <img src="/kallipolis-logo.png" alt="Kallipolis" style={{ height: "28px", width: "auto", objectFit: "contain" }} />
+        <span style={{ fontFamily: "var(--font-days-one), sans-serif", fontSize: "16px", color: "#ffffff", lineHeight: 1 }}>
+          Kallipolis
+        </span>
+      </div>
     </header>
   );
 }
