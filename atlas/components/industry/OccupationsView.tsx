@@ -53,9 +53,9 @@ export default function OccupationsView({ school, onBack }: Props) {
   const [query, setQuery] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [results, setResults] = useState<ApiOccupationMatch[]>([]);
-  const [expandedSoc, setExpandedSoc] = useState<string | null>(null);
-  const [detail, setDetail] = useState<ApiOccupationDetail | null>(null);
-  const [detailLoading, setDetailLoading] = useState(false);
+  const [expandedSocs, setExpandedSocs] = useState<Set<string>>(new Set());
+  const [details, setDetails] = useState<Record<string, ApiOccupationDetail>>({});
+  const [loadingSocs, setLoadingSocs] = useState<Set<string>>(new Set());
   const inputRef = useRef<HTMLInputElement>(null);
 
   const allOccupations = (overview?.regions?.flatMap((r) => r.occupations) ?? []).sort((a, b) => a.title.localeCompare(b.title));
@@ -76,30 +76,36 @@ export default function OccupationsView({ school, onBack }: Props) {
     if (!query.trim()) return;
     setResults(filterOccupations(query, allOccupations));
     setSubmitted(true);
-    setExpandedSoc(null); setDetail(null);
+    setExpandedSocs(new Set());
   }, [query, allOccupations]);
 
   const handleChip = useCallback((text: string) => {
     setQuery(text);
     setResults(filterOccupations(text, allOccupations));
     setSubmitted(true);
-    setExpandedSoc(null); setDetail(null);
+    setExpandedSocs(new Set());
   }, [allOccupations]);
 
   const handleExpand = useCallback(async (occ: ApiOccupationMatch) => {
-    if (expandedSoc === occ.soc_code) { setExpandedSoc(null); setDetail(null); return; }
-    setExpandedSoc(occ.soc_code);
-    setDetailLoading(true);
-    try {
-      const d = await getOccupationDetail(occ.soc_code, school.name);
-      setDetail(d);
-    } catch { setDetail(null); }
-    finally { setDetailLoading(false); }
-  }, [expandedSoc, school.name]);
+    const soc = occ.soc_code;
+    if (expandedSocs.has(soc)) {
+      setExpandedSocs((prev) => { const next = new Set(prev); next.delete(soc); return next; });
+      return;
+    }
+    setExpandedSocs((prev) => new Set(prev).add(soc));
+    if (!details[soc]) {
+      setLoadingSocs((prev) => new Set(prev).add(soc));
+      try {
+        const d = await getOccupationDetail(soc, school.name);
+        setDetails((prev) => ({ ...prev, [soc]: d }));
+      } catch {}
+      finally { setLoadingSocs((prev) => { const next = new Set(prev); next.delete(soc); return next; }); }
+    }
+  }, [expandedSocs, details, school.name]);
 
   const handleReset = useCallback(() => {
     setQuery(""); setSubmitted(false); setResults([]);
-    setExpandedSoc(null); setDetail(null);
+    setExpandedSocs(new Set());
     setTimeout(() => inputRef.current?.focus(), 100);
   }, []);
 
@@ -165,7 +171,7 @@ export default function OccupationsView({ school, onBack }: Props) {
               </p>
               <OccupationList
                 occupations={allOccupations} cap={allOccupations.length} school={school}
-                expandedSoc={expandedSoc} detail={detail} detailLoading={detailLoading}
+                expandedSocs={expandedSocs} details={details} loadingSocs={loadingSocs}
                 onExpand={handleExpand} regionName={regionName}
               />
             </div>
@@ -204,7 +210,7 @@ export default function OccupationsView({ school, onBack }: Props) {
 
             <OccupationList
               occupations={results} cap={200} school={school}
-              expandedSoc={expandedSoc} detail={detail} detailLoading={detailLoading}
+              expandedSocs={expandedSocs} details={details} loadingSocs={loadingSocs}
               onExpand={handleExpand} regionName={regionName}
             />
           </motion.div>
@@ -217,14 +223,14 @@ export default function OccupationsView({ school, onBack }: Props) {
 /* ── Occupation List (shared) ──────────────────────────────────────────── */
 
 function OccupationList({
-  occupations, cap, school, expandedSoc, detail, detailLoading, onExpand, regionName,
+  occupations, cap, school, expandedSocs, details, loadingSocs, onExpand, regionName,
 }: {
   occupations: ApiOccupationMatch[];
   cap: number;
   school: SchoolConfig;
-  expandedSoc: string | null;
-  detail: ApiOccupationDetail | null;
-  detailLoading: boolean;
+  expandedSocs: Set<string>;
+  details: Record<string, ApiOccupationDetail>;
+  loadingSocs: Set<string>;
   onExpand: (occ: ApiOccupationMatch) => void;
   regionName: string;
 }) {
@@ -308,15 +314,15 @@ function OccupationList({
               width: "100%", textAlign: "left",
               display: "grid", gridTemplateColumns: "24px 1fr 100px 100px 85px",
               padding: "12px 16px", gap: "10px", alignItems: "center",
-              background: expandedSoc === occ.soc_code ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
+              background: expandedSocs.has(occ.soc_code) ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
               border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
               cursor: "pointer", transition: "background 0.15s",
             }}
-            onMouseEnter={(e) => { if (expandedSoc !== occ.soc_code) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)"; }}
-            onMouseLeave={(e) => { if (expandedSoc !== occ.soc_code) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)"; }}
+            onMouseEnter={(e) => { if (!expandedSocs.has(occ.soc_code)) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)"; }}
+            onMouseLeave={(e) => { if (!expandedSocs.has(occ.soc_code)) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)"; }}
           >
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-              style={{ transform: expandedSoc === occ.soc_code ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>
+              style={{ transform: expandedSocs.has(occ.soc_code) ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>
               <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
             <span style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)", lineHeight: 1.4 }}>
@@ -339,7 +345,7 @@ function OccupationList({
           </motion.button>
 
           <AnimatePresence>
-            {expandedSoc === occ.soc_code && (
+            {expandedSocs.has(occ.soc_code) && (
               <motion.div
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
@@ -348,8 +354,8 @@ function OccupationList({
                 style={{ overflow: "hidden", background: "rgba(255,255,255,0.02)" }}
               >
                 <div style={{ padding: "16px 20px 24px" }}>
-                  {detailLoading && <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Loading...</p>}
-                  {detail && detail.soc_code === occ.soc_code && (
+                  {loadingSocs.has(occ.soc_code) && <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Loading...</p>}
+                  {details[occ.soc_code] && (() => { const detail = details[occ.soc_code]; return (
                     <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
                       {/* Description */}
                       {detail.description && (
@@ -427,7 +433,7 @@ function OccupationList({
                         </div>
                       )}
                     </div>
-                  )}
+                  ); })()}
                 </div>
               </motion.div>
             )}

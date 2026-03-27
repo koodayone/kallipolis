@@ -65,19 +65,17 @@ function filterStudents(query: string, students: StudentSummary[]): StudentSumma
 /* ── Student List (shared between initial and results state) ────────────── */
 
 function StudentList({
-  students, cap, school, expandedUuid, expandedDetail, detailLoading, detailTab,
-  onExpand, onTabChange,
+  students, cap, school, expandedUuids, studentDetails, loadingUuids, onExpand,
 }: {
   students: StudentSummary[];
   cap: number;
   school: SchoolConfig;
-  expandedUuid: string | null;
-  expandedDetail: StudentDetail | null;
-  detailLoading: boolean;
-  detailTab: "history" | "skills";
+  expandedUuids: Set<string>;
+  studentDetails: Record<string, StudentDetail>;
+  loadingUuids: Set<string>;
   onExpand: (student: StudentSummary) => void;
-  onTabChange: (tab: "history" | "skills") => void;
 }) {
+  const [tabState, setTabState] = useState<Record<string, "history" | "skills">>({});
   const visible = students.slice(0, cap);
 
   return (
@@ -93,7 +91,12 @@ function StudentList({
         <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Courses</span>
         <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>GPA</span>
       </div>
-      {visible.map((student, i) => (
+      {visible.map((student, i) => {
+        const isOpen = expandedUuids.has(student.uuid);
+        const detail = studentDetails[student.uuid];
+        const isLoading = loadingUuids.has(student.uuid);
+        const tab = tabState[student.uuid] || "history";
+        return (
         <div key={student.uuid}>
           <motion.button
             initial={{ opacity: 0, y: 6 }}
@@ -104,15 +107,15 @@ function StudentList({
               width: "100%", textAlign: "left",
               display: "grid", gridTemplateColumns: "24px 110px 1fr 90px 60px",
               padding: "12px 16px", gap: "10px", alignItems: "center",
-              background: expandedUuid === student.uuid ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
+              background: isOpen ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
               border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
               cursor: "pointer", transition: "background 0.15s",
             }}
-            onMouseEnter={(e) => { if (expandedUuid !== student.uuid) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)"; }}
-            onMouseLeave={(e) => { if (expandedUuid !== student.uuid) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)"; }}
+            onMouseEnter={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)"; }}
+            onMouseLeave={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)"; }}
           >
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-              style={{ transform: expandedUuid === student.uuid ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>
+              style={{ transform: isOpen ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>
               <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
             <span style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 600, color: "rgba(255,255,255,0.8)" }}>Student #{student.displayNumber}</span>
@@ -122,7 +125,7 @@ function StudentList({
           </motion.button>
 
           <AnimatePresence>
-            {expandedUuid === student.uuid && (
+            {isOpen && (
               <motion.div
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
@@ -131,27 +134,27 @@ function StudentList({
                 style={{ overflow: "hidden", background: "rgba(255,255,255,0.02)" }}
               >
                 <div style={{ padding: "16px 20px 24px" }}>
-                  {detailLoading && <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Loading...</p>}
-                  {expandedDetail && expandedDetail.uuid === student.uuid && (
+                  {isLoading && <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Loading...</p>}
+                  {detail && (
                     <>
                       <div style={{ display: "flex", gap: "0", borderBottom: "1px solid rgba(255,255,255,0.08)", marginBottom: "16px" }}>
-                        {(["history", "skills"] as const).map((tab) => (
-                          <button key={tab} onClick={(e) => { e.stopPropagation(); onTabChange(tab); }}
+                        {(["history", "skills"] as const).map((t) => (
+                          <button key={t} onClick={(e) => { e.stopPropagation(); setTabState((prev) => ({ ...prev, [student.uuid]: t })); }}
                             style={{
                               background: "none", border: "none",
-                              borderBottom: detailTab === tab ? `2px solid ${school.brandColorLight}` : "2px solid transparent",
+                              borderBottom: tab === t ? `2px solid ${school.brandColorLight}` : "2px solid transparent",
                               cursor: "pointer", padding: "8px 16px", fontFamily: FONT, fontSize: "11px",
                               fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase",
-                              color: detailTab === tab ? school.brandColorLight : "rgba(255,255,255,0.35)",
+                              color: tab === t ? school.brandColorLight : "rgba(255,255,255,0.35)",
                               transition: "color 0.15s", marginBottom: "-1px",
                             }}>
-                            {tab === "history" ? "Course History" : "Skill Profile"}
+                            {t === "history" ? "Course History" : "Skill Profile"}
                           </button>
                         ))}
                       </div>
-                      {detailTab === "history" && (
+                      {tab === "history" && (
                         <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-                          {expandedDetail.enrollments.map((e, ei) => (
+                          {detail.enrollments.map((e, ei) => (
                             <div key={ei} style={{
                               display: "grid", gridTemplateColumns: "2fr 1fr 50px 80px 80px",
                               padding: "8px 12px", gap: "8px", alignItems: "center",
@@ -166,11 +169,11 @@ function StudentList({
                           ))}
                         </div>
                       )}
-                      {detailTab === "skills" && (
+                      {tab === "skills" && (
                         <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-                          {expandedDetail.skills.length === 0 ? (
+                          {detail.skills.length === 0 ? (
                             <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>No skills derived yet.</p>
-                          ) : expandedDetail.skills.map((skill) => (
+                          ) : detail.skills.map((skill) => (
                             <span key={skill} style={{
                               padding: "5px 12px", background: "rgba(255,255,255,0.03)",
                               border: `1px solid ${school.brandColorLight}60`, borderRadius: "6px",
@@ -186,7 +189,8 @@ function StudentList({
             )}
           </AnimatePresence>
         </div>
-      ))}
+        );
+      })}
       {students.length > cap && (
         <p style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.25)", padding: "14px", textAlign: "center" }}>
           Showing {cap} of {students.length.toLocaleString()} students. {students.length > cap ? "Ask a question to narrow down." : ""}
@@ -213,10 +217,9 @@ export default function StudentsView({ school, onBack }: Props) {
   const [query, setQuery] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [results, setResults] = useState<StudentSummary[]>([]);
-  const [expandedUuid, setExpandedUuid] = useState<string | null>(null);
-  const [expandedDetail, setExpandedDetail] = useState<StudentDetail | null>(null);
-  const [detailLoading, setDetailLoading] = useState(false);
-  const [detailTab, setDetailTab] = useState<"history" | "skills">("history");
+  const [expandedUuids, setExpandedUuids] = useState<Set<string>>(new Set());
+  const [studentDetails, setStudentDetails] = useState<Record<string, StudentDetail>>({});
+  const [loadingUuids, setLoadingUuids] = useState<Set<string>>(new Set());
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -234,33 +237,36 @@ export default function StudentsView({ school, onBack }: Props) {
     if (!query.trim()) return;
     setResults(filterStudents(query, students));
     setSubmitted(true);
-    setExpandedUuid(null);
-    setExpandedDetail(null);
+    setExpandedUuids(new Set());
   }, [query, students]);
 
   const handleChip = useCallback((text: string) => {
     setQuery(text);
     setResults(filterStudents(text, students));
     setSubmitted(true);
-    setExpandedUuid(null);
-    setExpandedDetail(null);
+    setExpandedUuids(new Set());
   }, [students]);
 
   const handleExpand = useCallback(async (student: StudentSummary) => {
-    if (expandedUuid === student.uuid) { setExpandedUuid(null); setExpandedDetail(null); return; }
-    setExpandedUuid(student.uuid);
-    setDetailLoading(true);
-    setDetailTab("history");
-    try {
-      const data = await getStudent(student.uuid, school.name);
-      setExpandedDetail(mapDetail(data, student.displayNumber));
-    } catch { setExpandedDetail(null); }
-    finally { setDetailLoading(false); }
-  }, [expandedUuid, school.name]);
+    const uuid = student.uuid;
+    if (expandedUuids.has(uuid)) {
+      setExpandedUuids((prev) => { const next = new Set(prev); next.delete(uuid); return next; });
+      return;
+    }
+    setExpandedUuids((prev) => new Set(prev).add(uuid));
+    if (!studentDetails[uuid]) {
+      setLoadingUuids((prev) => new Set(prev).add(uuid));
+      try {
+        const data = await getStudent(uuid, school.name);
+        setStudentDetails((prev) => ({ ...prev, [uuid]: mapDetail(data, student.displayNumber) }));
+      } catch {}
+      finally { setLoadingUuids((prev) => { const next = new Set(prev); next.delete(uuid); return next; }); }
+    }
+  }, [expandedUuids, studentDetails, school.name]);
 
   const handleReset = useCallback(() => {
     setQuery(""); setSubmitted(false); setResults([]);
-    setExpandedUuid(null); setExpandedDetail(null);
+    setExpandedUuids(new Set());
     setTimeout(() => inputRef.current?.focus(), 100);
   }, []);
 
@@ -331,9 +337,9 @@ export default function StudentsView({ school, onBack }: Props) {
               </p>
               <StudentList
                 students={defaultStudents} cap={100} school={school}
-                expandedUuid={expandedUuid} expandedDetail={expandedDetail}
-                detailLoading={detailLoading} detailTab={detailTab}
-                onExpand={handleExpand} onTabChange={setDetailTab}
+                expandedUuids={expandedUuids} studentDetails={studentDetails}
+                loadingUuids={loadingUuids}
+                onExpand={handleExpand}
               />
             </div>
           </motion.div>

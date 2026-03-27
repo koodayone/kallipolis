@@ -53,10 +53,10 @@ export default function CoursesView({ school, onBack }: Props) {
   const [query, setQuery] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [results, setResults] = useState<DepartmentSummary[]>([]);
-  const [expandedDept, setExpandedDept] = useState<string | null>(null);
-  const [deptCourses, setDeptCourses] = useState<CourseSummary[]>([]);
-  const [coursesLoading, setCoursesLoading] = useState(false);
-  const [expandedCourse, setExpandedCourse] = useState<string | null>(null);
+  const [expandedDepts, setExpandedDepts] = useState<Set<string>>(new Set());
+  const [deptCoursesMap, setDeptCoursesMap] = useState<Record<string, CourseSummary[]>>({});
+  const [loadingDepts, setLoadingDepts] = useState<Set<string>>(new Set());
+  const [expandedCourses, setExpandedCourses] = useState<Set<string>>(new Set());
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -74,39 +74,42 @@ export default function CoursesView({ school, onBack }: Props) {
     if (!query.trim()) return;
     setResults(filterDepartments(query, departments));
     setSubmitted(true);
-    setExpandedDept(null);
-    setDeptCourses([]);
-    setExpandedCourse(null);
+    setExpandedDepts(new Set()); setExpandedCourses(new Set());
   }, [query, departments]);
 
   const handleChip = useCallback((text: string) => {
     setQuery(text);
     setResults(filterDepartments(text, departments));
     setSubmitted(true);
-    setExpandedDept(null);
-    setDeptCourses([]);
-    setExpandedCourse(null);
+    setExpandedDepts(new Set()); setExpandedCourses(new Set());
   }, [departments]);
 
   const handleDeptExpand = useCallback(async (dept: string) => {
-    if (expandedDept === dept) { setExpandedDept(null); setDeptCourses([]); setExpandedCourse(null); return; }
-    setExpandedDept(dept);
-    setExpandedCourse(null);
-    setCoursesLoading(true);
-    try {
-      const data = await getCourses(dept, school.name);
-      setDeptCourses(data.map(mapCourse).sort((a, b) => {
-        const numA = parseInt((a.code.match(/(\d+)/) || ["0"])[0]);
-        const numB = parseInt((b.code.match(/(\d+)/) || ["0"])[0]);
-        return numA - numB || a.code.localeCompare(b.code);
-      }));
-    } catch { setDeptCourses([]); }
-    finally { setCoursesLoading(false); }
-  }, [expandedDept, school.name]);
+    if (expandedDepts.has(dept)) {
+      setExpandedDepts((prev) => { const next = new Set(prev); next.delete(dept); return next; });
+      return;
+    }
+    setExpandedDepts((prev) => new Set(prev).add(dept));
+    if (!deptCoursesMap[dept]) {
+      setLoadingDepts((prev) => new Set(prev).add(dept));
+      try {
+        const data = await getCourses(dept, school.name);
+        setDeptCoursesMap((prev) => ({
+          ...prev,
+          [dept]: data.map(mapCourse).sort((a, b) => {
+            const numA = parseInt((a.code.match(/(\d+)/) || ["0"])[0]);
+            const numB = parseInt((b.code.match(/(\d+)/) || ["0"])[0]);
+            return numA - numB || a.code.localeCompare(b.code);
+          }),
+        }));
+      } catch {}
+      finally { setLoadingDepts((prev) => { const next = new Set(prev); next.delete(dept); return next; }); }
+    }
+  }, [expandedDepts, deptCoursesMap, school.name]);
 
   const handleReset = useCallback(() => {
     setQuery(""); setSubmitted(false); setResults([]);
-    setExpandedDept(null); setDeptCourses([]); setExpandedCourse(null);
+    setExpandedDepts(new Set()); setExpandedCourses(new Set());
     setTimeout(() => inputRef.current?.focus(), 100);
   }, []);
 
@@ -175,10 +178,10 @@ export default function CoursesView({ school, onBack }: Props) {
               </p>
               <DepartmentList
                 departments={departments} school={school}
-                expandedDept={expandedDept} deptCourses={deptCourses}
-                coursesLoading={coursesLoading} expandedCourse={expandedCourse}
+                expandedDepts={expandedDepts} deptCoursesMap={deptCoursesMap}
+                loadingDepts={loadingDepts} expandedCourses={expandedCourses}
                 onDeptExpand={handleDeptExpand}
-                onCourseToggle={(code) => setExpandedCourse(expandedCourse === code ? null : code)}
+                onCourseToggle={(code) => setExpandedCourses((prev) => { const next = new Set(prev); if (next.has(code)) next.delete(code); else next.add(code); return next; })}
               />
             </div>
           </motion.div>
@@ -216,10 +219,10 @@ export default function CoursesView({ school, onBack }: Props) {
 
             <DepartmentList
               departments={results} school={school}
-              expandedDept={expandedDept} deptCourses={deptCourses}
-              coursesLoading={coursesLoading} expandedCourse={expandedCourse}
+              expandedDepts={expandedDepts} deptCoursesMap={deptCoursesMap}
+              loadingDepts={loadingDepts} expandedCourses={expandedCourses}
               onDeptExpand={handleDeptExpand}
-              onCourseToggle={(code) => setExpandedCourse(expandedCourse === code ? null : code)}
+              onCourseToggle={(code) => setExpandedCourses((prev) => { const next = new Set(prev); if (next.has(code)) next.delete(code); else next.add(code); return next; })}
             />
           </motion.div>
         )}
@@ -231,15 +234,15 @@ export default function CoursesView({ school, onBack }: Props) {
 /* ── Department List (shared) ──────────────────────────────────────────── */
 
 function DepartmentList({
-  departments, school, expandedDept, deptCourses, coursesLoading, expandedCourse,
+  departments, school, expandedDepts, deptCoursesMap, loadingDepts, expandedCourses,
   onDeptExpand, onCourseToggle,
 }: {
   departments: DepartmentSummary[];
   school: SchoolConfig;
-  expandedDept: string | null;
-  deptCourses: CourseSummary[];
-  coursesLoading: boolean;
-  expandedCourse: string | null;
+  expandedDepts: Set<string>;
+  deptCoursesMap: Record<string, CourseSummary[]>;
+  loadingDepts: Set<string>;
+  expandedCourses: Set<string>;
   onDeptExpand: (dept: string) => void;
   onCourseToggle: (code: string) => void;
 }) {
@@ -265,15 +268,15 @@ function DepartmentList({
               width: "100%", textAlign: "left",
               display: "grid", gridTemplateColumns: "24px 1fr auto",
               padding: "14px 16px", gap: "12px", alignItems: "center",
-              background: expandedDept === dept.department ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
+              background: expandedDepts.has(dept.department) ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
               border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
               cursor: "pointer", transition: "background 0.15s",
             }}
-            onMouseEnter={(e) => { if (expandedDept !== dept.department) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)"; }}
-            onMouseLeave={(e) => { if (expandedDept !== dept.department) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)"; }}
+            onMouseEnter={(e) => { if (!expandedDepts.has(dept.department)) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)"; }}
+            onMouseLeave={(e) => { if (!expandedDepts.has(dept.department)) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)"; }}
           >
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-              style={{ transform: expandedDept === dept.department ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>
+              style={{ transform: expandedDepts.has(dept.department) ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>
               <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
             <span style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "14px", fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>
@@ -285,7 +288,7 @@ function DepartmentList({
           </motion.button>
 
           <AnimatePresence>
-            {expandedDept === dept.department && (
+            {expandedDepts.has(dept.department) && (
               <motion.div
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
@@ -294,11 +297,11 @@ function DepartmentList({
                 style={{ overflow: "hidden", background: "rgba(255,255,255,0.02)" }}
               >
                 <div style={{ padding: "8px 16px 16px 52px" }}>
-                  {coursesLoading && (
+                  {loadingDepts.has(dept.department) && (
                     <p style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Loading courses...</p>
                   )}
-                  {!coursesLoading && deptCourses.map((course) => {
-                    const isOpen = expandedCourse === course.code;
+                  {!loadingDepts.has(dept.department) && (deptCoursesMap[dept.department] || []).map((course) => {
+                    const isOpen = expandedCourses.has(course.code);
                     return (
                       <div key={course.code} style={{ marginBottom: "2px" }}>
                         <button
