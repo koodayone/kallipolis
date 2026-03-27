@@ -1,422 +1,451 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useCallback, useRef } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { SchoolConfig } from "@/lib/schoolConfig";
 import { getLaborMarketOverview, getOccupationDetail } from "@/lib/api";
 import type { ApiOccupationMatch, ApiLaborMarketOverview, ApiOccupationDetail } from "@/lib/api";
 import LeafHeader from "@/components/ui/LeafHeader";
+import RisingSun from "@/components/ui/RisingSun";
 import Badge from "@/components/ui/Badge";
-import LoadingDots from "@/components/ui/LoadingDots";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
-
-type ViewState = "list" | "detail";
-
-type Props = {
-  school: SchoolConfig;
-  onBack: () => void;
-};
 
 function formatWage(wage: number | null): string {
   if (!wage) return "—";
   return `$${wage.toLocaleString()}`;
 }
 
-function formatEmployment(n: number | null): string {
+function formatJobs(n: number | null): string {
   if (!n) return "—";
-  return `${n.toLocaleString()} jobs`;
+  return n.toLocaleString();
 }
 
+const SUGGESTIONS = [
+  "Highest paying occupations",
+  "Most jobs available",
+  "Software development roles",
+  "Healthcare occupations",
+  "Best skill alignment",
+];
+
+function filterOccupations(query: string, occupations: ApiOccupationMatch[]): ApiOccupationMatch[] {
+  const q = query.toLowerCase().trim();
+  if (!q) return [];
+  if (q.includes("highest paying") || q.includes("highest wage") || q.includes("best paying"))
+    return [...occupations].sort((a, b) => (b.annual_wage ?? 0) - (a.annual_wage ?? 0)).slice(0, 50);
+  if (q.includes("most jobs") || q.includes("most available") || q.includes("most demand"))
+    return [...occupations].sort((a, b) => (b.employment ?? 0) - (a.employment ?? 0)).slice(0, 50);
+  if (q.includes("best alignment") || q.includes("best skill") || q.includes("most aligned"))
+    return [...occupations].sort((a, b) => b.matching_skills - a.matching_skills).slice(0, 50);
+  const match = occupations.filter((o) => o.title.toLowerCase().includes(q));
+  if (match.length > 0) return match;
+  return occupations.filter((o) => o.skills.some((s) => s.toLowerCase().includes(q)));
+}
+
+type Props = { school: SchoolConfig; onBack: () => void };
+
 export default function OccupationsView({ school, onBack }: Props) {
-  const [view, setView] = useState<ViewState>("list");
   const [overview, setOverview] = useState<ApiLaborMarketOverview | null>(null);
-  const [detail, setDetail] = useState<ApiOccupationDetail | null>(null);
   const [loading, setLoading] = useState(true);
-  const [detailLoading, setDetailLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [userName, setUserName] = useState<string>("");
+  const [query, setQuery] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [results, setResults] = useState<ApiOccupationMatch[]>([]);
+  const [expandedSoc, setExpandedSoc] = useState<string | null>(null);
+  const [detail, setDetail] = useState<ApiOccupationDetail | null>(null);
+  const [detailLoading, setDetailLoading] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const allOccupations = (overview?.regions?.flatMap((r) => r.occupations) ?? []).sort((a, b) => a.title.localeCompare(b.title));
+  const regionName = overview?.regions?.[0]?.region ?? "";
 
   useEffect(() => {
     getLaborMarketOverview(school.name)
       .then(setOverview)
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
+    fetch("/api/auth/me")
+      .then((r) => r.json())
+      .then((data) => { if (data?.user?.name) setUserName(data.user.name.split(" ")[0]); })
+      .catch(() => {});
   }, []);
 
-  const handleOccupationClick = (soc_code: string) => {
-    setDetailLoading(true);
-    getOccupationDetail(soc_code, school.name)
-      .then((d) => {
-        setDetail(d);
-        setView("detail");
-      })
-      .catch((e) => setError(e.message))
-      .finally(() => setDetailLoading(false));
-  };
+  const handleSubmit = useCallback(() => {
+    if (!query.trim()) return;
+    setResults(filterOccupations(query, allOccupations));
+    setSubmitted(true);
+    setExpandedSoc(null); setDetail(null);
+  }, [query, allOccupations]);
 
-  const handleDetailBack = () => {
-    setView("list");
-    setDetail(null);
-  };
+  const handleChip = useCallback((text: string) => {
+    setQuery(text);
+    setResults(filterOccupations(text, allOccupations));
+    setSubmitted(true);
+    setExpandedSoc(null); setDetail(null);
+  }, [allOccupations]);
+
+  const handleExpand = useCallback(async (occ: ApiOccupationMatch) => {
+    if (expandedSoc === occ.soc_code) { setExpandedSoc(null); setDetail(null); return; }
+    setExpandedSoc(occ.soc_code);
+    setDetailLoading(true);
+    try {
+      const d = await getOccupationDetail(occ.soc_code, school.name);
+      setDetail(d);
+    } catch { setDetail(null); }
+    finally { setDetailLoading(false); }
+  }, [expandedSoc, school.name]);
+
+  const handleReset = useCallback(() => {
+    setQuery(""); setSubmitted(false); setResults([]);
+    setExpandedSoc(null); setDetail(null);
+    setTimeout(() => inputRef.current?.focus(), 100);
+  }, []);
 
   return (
     <>
       <LeafHeader school={school} onBack={onBack} parentShape="tetrahedron" />
-
       <div style={{ display: "flex", justifyContent: "center", paddingTop: "32px", paddingBottom: "16px" }}>
         <img src={school.logoPath} alt={school.name} style={{ height: "100px", width: "auto", objectFit: "contain" }} />
       </div>
 
-      <div style={{ maxWidth: "800px", margin: "0 auto", padding: "32px 40px 80px" }}>
+      <div style={{ maxWidth: "760px", margin: "0 auto", padding: "0 40px 80px" }}>
+        {error && <p style={{ fontFamily: FONT, fontSize: "14px", color: "#e55", textAlign: "center", paddingTop: "40px" }}>{error}</p>}
         {loading && (
-          <div style={{ display: "flex", justifyContent: "center", paddingTop: "60px" }}>
-            <LoadingDots color={school.brandColorLight} />
+          <div style={{ display: "flex", justifyContent: "center", paddingTop: "80px" }}>
+            <RisingSun style={{ width: "70px", height: "auto", opacity: 0.4 }} />
           </div>
         )}
 
-        {error && (
-          <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,100,100,0.8)", textAlign: "center", paddingTop: "40px" }}>
-            {error}
-          </p>
+        {/* ── Initial State ── */}
+        {!submitted && !loading && overview && (
+          <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
+            style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "24px", paddingTop: "40px" }}>
+              <RisingSun style={{ width: "70px", height: "auto" }} />
+              <h1 style={{ fontFamily: FONT, fontSize: "28px", fontWeight: 600, color: "#f0eef4", letterSpacing: "-0.02em", textAlign: "center" }}>
+                What&apos;s up{userName ? `, ${userName}` : ""}?
+              </h1>
+              <div style={{ width: "100%" }}>
+                <input ref={inputRef} type="text" value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  onKeyDown={(e) => { if (e.key === "Enter") handleSubmit(); }}
+                  placeholder={`Ask me a question about ${school.name} occupations.`}
+                  style={{
+                    width: "100%", padding: "18px 24px", fontFamily: FONT, fontSize: "15px",
+                    color: "#f0eef4", background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.10)", borderRadius: "16px",
+                    outline: "none", transition: "border-color 0.2s, box-shadow 0.2s",
+                  }}
+                  onFocus={(e) => { e.currentTarget.style.borderColor = `${school.brandColorLight}50`; e.currentTarget.style.boxShadow = `0 0 0 3px ${school.brandColorLight}15`; }}
+                  onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)"; e.currentTarget.style.boxShadow = "none"; }}
+                />
+              </div>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", justifyContent: "center" }}>
+                {SUGGESTIONS.map((s) => (
+                  <button key={s} onClick={() => handleChip(s)}
+                    style={{
+                      fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.55)",
+                      background: "transparent", border: `1px solid ${school.brandColorLight}35`,
+                      borderRadius: "100px", padding: "8px 18px", cursor: "pointer",
+                      transition: "background 0.15s, color 0.15s, border-color 0.15s",
+                    }}
+                    onMouseEnter={(e) => { const el = e.currentTarget as HTMLElement; el.style.background = `${school.brandColorLight}15`; el.style.borderColor = `${school.brandColorLight}40`; el.style.color = school.brandColorLight; }}
+                    onMouseLeave={(e) => { const el = e.currentTarget as HTMLElement; el.style.background = "transparent"; el.style.borderColor = `${school.brandColorLight}35`; el.style.color = "rgba(255,255,255,0.55)"; }}
+                  >{s}</button>
+                ))}
+              </div>
+            </div>
+
+            <div style={{ marginTop: "16px" }}>
+              <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.35)", marginBottom: "12px" }}>
+                {allOccupations.length.toLocaleString()} occupations in {regionName}
+              </p>
+              <OccupationList
+                occupations={allOccupations} cap={allOccupations.length} school={school}
+                expandedSoc={expandedSoc} detail={detail} detailLoading={detailLoading}
+                onExpand={handleExpand} regionName={regionName}
+              />
+            </div>
+          </motion.div>
         )}
 
-        {!loading && !error && overview && view === "list" && (
-          <OccupationList
-            overview={overview}
-            school={school}
-            onSelect={handleOccupationClick}
-            detailLoading={detailLoading}
-          />
-        )}
+        {/* ── Results State ── */}
+        {submitted && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}
+            style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
 
-        {view === "detail" && detail && (
-          <OccupationDetailView
-            detail={detail}
-            school={school}
-            onBack={handleDetailBack}
-          />
+            <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+              <input ref={inputRef} type="text" value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                onKeyDown={(e) => { if (e.key === "Enter") handleSubmit(); }}
+                placeholder={`Ask me a question about ${school.name} occupations.`}
+                style={{
+                  flex: 1, padding: "14px 20px", fontFamily: FONT, fontSize: "14px",
+                  color: "#f0eef4", background: "rgba(255,255,255,0.04)",
+                  border: "1px solid rgba(255,255,255,0.10)", borderRadius: "12px",
+                  outline: "none", transition: "border-color 0.2s, box-shadow 0.2s",
+                }}
+                onFocus={(e) => { e.currentTarget.style.borderColor = `${school.brandColorLight}50`; e.currentTarget.style.boxShadow = `0 0 0 3px ${school.brandColorLight}15`; }}
+                onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)"; e.currentTarget.style.boxShadow = "none"; }}
+              />
+              <button onClick={handleReset}
+                style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)", background: "none", border: "none", cursor: "pointer", padding: "8px", transition: "color 0.15s" }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.8)"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.4)"; }}
+              >Clear</button>
+            </div>
+
+            <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)" }}>
+              {results.length.toLocaleString()} occupation{results.length !== 1 ? "s" : ""} found
+            </p>
+
+            <OccupationList
+              occupations={results} cap={200} school={school}
+              expandedSoc={expandedSoc} detail={detail} detailLoading={detailLoading}
+              onExpand={handleExpand} regionName={regionName}
+            />
+          </motion.div>
         )}
       </div>
     </>
   );
 }
 
-/* ── Occupation List ───────────────────────────────────────────────────────── */
+/* ── Occupation List (shared) ──────────────────────────────────────────── */
 
 function OccupationList({
-  overview,
-  school,
-  onSelect,
-  detailLoading,
+  occupations, cap, school, expandedSoc, detail, detailLoading, onExpand, regionName,
 }: {
-  overview: ApiLaborMarketOverview;
+  occupations: ApiOccupationMatch[];
+  cap: number;
   school: SchoolConfig;
-  onSelect: (soc: string) => void;
+  expandedSoc: string | null;
+  detail: ApiOccupationDetail | null;
   detailLoading: boolean;
+  onExpand: (occ: ApiOccupationMatch) => void;
+  regionName: string;
 }) {
-  return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
-      {overview.regions.map((region) => (
-        <div key={region.region}>
-          <div style={{ marginBottom: "20px" }}>
-            <h1
-              style={{
-                fontFamily: FONT,
-                fontSize: "24px",
-                fontWeight: 600,
-                color: "#f0eef4",
-                letterSpacing: "-0.02em",
-                marginBottom: "6px",
-              }}
-            >
-              Occupations
-            </h1>
-            <p
-              style={{
-                fontFamily: FONT,
-                fontSize: "14px",
-                color: "rgba(255,255,255,0.5)",
-                lineHeight: 1.6,
-              }}
-            >
-              {region.region} — {region.occupations.length} occupations aligned with {overview.college} curriculum
-            </p>
-          </div>
+  const [expandedLetters, setExpandedLetters] = useState<Set<string>>(new Set());
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-            {region.occupations.map((occ, i) => (
-              <motion.div
-                key={occ.soc_code}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.25, delay: Math.min(i * 0.02, 0.5) }}
-              >
-                <button
-                  onClick={() => onSelect(occ.soc_code)}
-                  disabled={detailLoading}
-                  style={{
-                    width: "100%",
-                    textAlign: "left",
-                    background: "rgba(255,255,255,0.03)",
-                    border: "none",
-                    borderBottom: "1px solid rgba(255,255,255,0.06)",
-                    padding: "16px 20px",
-                    cursor: detailLoading ? "wait" : "pointer",
-                    transition: "background 0.15s",
-                    display: "grid",
-                    gridTemplateColumns: "1fr auto",
-                    gap: "16px",
-                    alignItems: "center",
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.06)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)";
-                  }}
+  const toggleLetter = (letter: string) => {
+    setExpandedLetters((prev) => {
+      const next = new Set(prev);
+      if (next.has(letter)) next.delete(letter); else next.add(letter);
+      return next;
+    });
+  };
+
+  // Group by first letter
+  const groups: Record<string, ApiOccupationMatch[]> = {};
+  for (const occ of occupations.slice(0, cap)) {
+    const letter = occ.title[0]?.toUpperCase() || "#";
+    if (!groups[letter]) groups[letter] = [];
+    groups[letter].push(occ);
+  }
+  const letters = Object.keys(groups).sort();
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+      {letters.map((letter) => {
+        const isOpen = expandedLetters.has(letter);
+        const occs = groups[letter];
+        return (
+          <div key={letter}>
+            {/* Letter header */}
+            <button
+              onClick={() => toggleLetter(letter)}
+              style={{
+                width: "100%", textAlign: "left",
+                display: "flex", padding: "10px 16px", gap: "10px", alignItems: "center",
+                background: "rgba(255,255,255,0.02)", border: "none",
+                borderBottom: "1px solid rgba(255,255,255,0.05)",
+                cursor: "pointer", transition: "background 0.15s",
+              }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.04)"; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.02)"; }}
+            >
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                style={{ transform: isOpen ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>
+                <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <span style={{ fontFamily: FONT, fontSize: "15px", fontWeight: 700, color: school.brandColorLight }}>{letter}</span>
+              <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.3)" }}>{occs.length} {occs.length === 1 ? "occupation" : "occupations"}</span>
+            </button>
+
+            {/* Occupations within letter */}
+            <AnimatePresence>
+              {isOpen && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.25 }}
+                  style={{ overflow: "hidden" }}
                 >
-                  <div>
-                    <div
-                      style={{
-                        fontFamily: FONT,
-                        fontSize: "14px",
-                        fontWeight: 500,
-                        color: "#f0eef4",
-                        marginBottom: "4px",
-                      }}
-                    >
-                      {occ.title}
-                    </div>
-                    <div
-                      style={{
-                        fontFamily: FONT,
-                        fontSize: "12px",
-                        color: "rgba(255,255,255,0.4)",
-                        display: "flex",
-                        gap: "16px",
-                      }}
-                    >
-                      <span>{formatWage(occ.annual_wage)}</span>
-                      <span>{formatEmployment(occ.employment)}</span>
-                    </div>
+                  {/* Column headers */}
+                  <div style={{
+                    display: "grid", gridTemplateColumns: "24px 1fr 100px 100px 85px",
+                    padding: "12px 16px", gap: "10px", alignItems: "center",
+                  }}>
+                    <span />
+                    <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Occupation</span>
+                    <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Wage</span>
+                    <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Population</span>
+                    <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Skills</span>
                   </div>
-                  <Badge
-                    style={{
-                      color: school.brandColorLight,
-                      background: `${school.brandColorLight}20`,
-                      border: `1px solid ${school.brandColorLight}30`,
-                      fontSize: "11px",
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    {occ.matching_skills} skills
-                  </Badge>
-                </button>
+
+      {occs.map((occ, i) => (
+        <div key={occ.soc_code}>
+          <motion.button
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2, delay: Math.min(i * 0.01, 0.2) }}
+            onClick={() => onExpand(occ)}
+            style={{
+              width: "100%", textAlign: "left",
+              display: "grid", gridTemplateColumns: "24px 1fr 100px 100px 85px",
+              padding: "12px 16px", gap: "10px", alignItems: "center",
+              background: expandedSoc === occ.soc_code ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
+              border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
+              cursor: "pointer", transition: "background 0.15s",
+            }}
+            onMouseEnter={(e) => { if (expandedSoc !== occ.soc_code) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)"; }}
+            onMouseLeave={(e) => { if (expandedSoc !== occ.soc_code) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)"; }}
+          >
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+              style={{ transform: expandedSoc === occ.soc_code ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>
+              <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <span style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)", lineHeight: 1.4 }}>
+              {occ.title}
+            </span>
+            <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.5)" }}>
+              {formatWage(occ.annual_wage)}
+            </span>
+            <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.5)" }}>
+              {formatJobs(occ.employment)}
+            </span>
+            <Badge style={{
+              color: school.brandColorLight,
+              background: `${school.brandColorLight}20`,
+              border: `1px solid ${school.brandColorLight}30`,
+              fontSize: "11px", whiteSpace: "nowrap",
+            }}>
+              {occ.matching_skills} skills
+            </Badge>
+          </motion.button>
+
+          <AnimatePresence>
+            {expandedSoc === occ.soc_code && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                style={{ overflow: "hidden", background: "rgba(255,255,255,0.02)" }}
+              >
+                <div style={{ padding: "16px 20px 24px" }}>
+                  {detailLoading && <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Loading...</p>}
+                  {detail && detail.soc_code === occ.soc_code && (
+                    <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+                      {/* Description */}
+                      {detail.description && (
+                        <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.55)", lineHeight: 1.6, margin: 0 }}>
+                          {detail.description}
+                        </p>
+                      )}
+
+                      {/* Aligned skills */}
+                      {(() => {
+                        const aligned = detail.skills.filter((s) => s.developed);
+                        const gaps = detail.skills.filter((s) => !s.developed);
+                        return (
+                          <>
+                            {aligned.length > 0 && (
+                              <div>
+                                <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, display: "block", marginBottom: "4px" }}>
+                                  Aligned Skills ({aligned.length})
+                                </span>
+                                <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.3)", display: "block", marginBottom: "10px" }}>
+                                  Skills this occupation requires that {school.name} courses develop.
+                                </span>
+                                <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                                  {aligned.map((skill) => (
+                                    <div key={skill.skill} style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                        <circle cx="6" cy="6" r="5" stroke={school.brandColorLight} strokeWidth="1" />
+                                        <path d="M4 6l1.5 1.5L8 5" stroke={school.brandColorLight} strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+                                      </svg>
+                                      <span style={{ fontFamily: FONT, fontSize: "13px", color: school.brandColorLight }}>{skill.skill}</span>
+                                      {skill.courses.length > 0 && (
+                                        <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.3)" }}>
+                                          — {skill.courses.slice(0, 3).map((c: any) => c.code).join(", ")}
+                                        </span>
+                                      )}
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                            {gaps.length > 0 && (
+                              <div>
+                                <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", display: "block", marginBottom: "10px" }}>
+                                  Skill Gaps ({gaps.length})
+                                </span>
+                                <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+                                  {gaps.map((skill) => (
+                                    <span key={skill.skill} style={{
+                                      fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.3)",
+                                      background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)",
+                                      borderRadius: "100px", padding: "4px 10px",
+                                    }}>{skill.skill}</span>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                          </>
+                        );
+                      })()}
+
+                      {/* Regional employment */}
+                      {detail.regions.length > 0 && (
+                        <div>
+                          <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", display: "block", marginBottom: "8px" }}>
+                            Regional Employment
+                          </span>
+                          <div style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.45)", lineHeight: 1.8 }}>
+                            {[...detail.regions].sort((a: any, b: any) => (a.region === regionName ? -1 : b.region === regionName ? 1 : 0)).map((r: any) => (
+                              <div key={r.region}>{r.region}: <span style={{ color: "rgba(255,255,255,0.65)", fontWeight: 500 }}>{r.employment.toLocaleString()}</span> currently employed</div>
+                            ))}
+                          </div>
+                          <p style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.25)", marginTop: "8px", lineHeight: 1.5 }}>
+                            Employment figures from the California Employment Development Department, Occupational Employment and Wage Statistics (OEWS) survey, May 2024.
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
               </motion.div>
-            ))}
-          </div>
+            )}
+          </AnimatePresence>
         </div>
       ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        );
+      })}
+
+      {occupations.length === 0 && (
+        <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.35)", padding: "40px 0", textAlign: "center" }}>
+          No occupations match that query. Try a different question.
+        </p>
+      )}
     </div>
-  );
-}
-
-/* ── Occupation Detail ─────────────────────────────────────────────────────── */
-
-function OccupationDetailView({
-  detail,
-  school,
-  onBack,
-}: {
-  detail: ApiOccupationDetail;
-  school: SchoolConfig;
-  onBack: () => void;
-}) {
-  const aligned = detail.skills.filter((s) => s.developed);
-  const gaps = detail.skills.filter((s) => !s.developed);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 8 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.25 }}
-      style={{ display: "flex", flexDirection: "column", gap: "28px" }}
-    >
-      {/* Back button */}
-      <button
-        onClick={onBack}
-        style={{
-          background: "none",
-          border: "none",
-          cursor: "pointer",
-          display: "flex",
-          alignItems: "center",
-          gap: "6px",
-          fontFamily: FONT,
-          fontSize: "13px",
-          color: "rgba(255,255,255,0.4)",
-          padding: 0,
-          transition: "color 0.2s",
-        }}
-        onMouseEnter={(e) => {
-          (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.7)";
-        }}
-        onMouseLeave={(e) => {
-          (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.4)";
-        }}
-      >
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-          <path d="M9 3L5 7l4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-        Back to occupations
-      </button>
-
-      {/* Header */}
-      <div>
-        <h2
-          style={{
-            fontFamily: FONT,
-            fontSize: "22px",
-            fontWeight: 600,
-            color: "#f0eef4",
-            letterSpacing: "-0.02em",
-            marginBottom: "8px",
-          }}
-        >
-          {detail.title}
-        </h2>
-        {detail.description && (
-          <p
-            style={{
-              fontFamily: FONT,
-              fontSize: "14px",
-              color: "rgba(255,255,255,0.5)",
-              lineHeight: 1.6,
-              marginBottom: "12px",
-            }}
-          >
-            {detail.description}
-          </p>
-        )}
-        <div
-          style={{
-            fontFamily: FONT,
-            fontSize: "13px",
-            color: "rgba(255,255,255,0.4)",
-            display: "flex",
-            gap: "20px",
-          }}
-        >
-          <span>Annual Wage: <span style={{ color: "#f0eef4" }}>{formatWage(detail.annual_wage)}</span></span>
-          {detail.regions.length > 0 && (
-            <span>
-              Regional Employment:{" "}
-              <span style={{ color: "#f0eef4" }}>
-                {detail.regions.map((r) => `${r.region}: ${r.employment.toLocaleString()}`).join(" · ")}
-              </span>
-            </span>
-          )}
-        </div>
-      </div>
-
-      {/* Aligned Skills */}
-      {aligned.length > 0 && (
-        <div>
-          <h3
-            style={{
-              fontFamily: FONT,
-              fontSize: "13px",
-              fontWeight: 600,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "rgba(255,255,255,0.3)",
-              marginBottom: "14px",
-            }}
-          >
-            Aligned Skills ({aligned.length})
-          </h3>
-          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-            {aligned.map((skill) => (
-              <div
-                key={skill.skill}
-                style={{
-                  background: "rgba(255,255,255,0.04)",
-                  borderRadius: "8px",
-                  padding: "14px 18px",
-                }}
-              >
-                <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: skill.courses.length > 0 ? "10px" : 0 }}>
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                    <circle cx="7" cy="7" r="6" stroke={school.brandColorLight} strokeWidth="1.2" />
-                    <path d="M4.5 7l1.75 1.75L9.5 5.5" stroke={school.brandColorLight} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  <span style={{ fontFamily: FONT, fontSize: "14px", fontWeight: 500, color: school.brandColorLight }}>
-                    {skill.skill}
-                  </span>
-                </div>
-                {skill.courses.length > 0 && (
-                  <div style={{ paddingLeft: "24px", display: "flex", flexDirection: "column", gap: "4px" }}>
-                    {skill.courses.slice(0, 5).map((c) => (
-                      <span
-                        key={c.code}
-                        style={{
-                          fontFamily: FONT,
-                          fontSize: "12px",
-                          color: "rgba(255,255,255,0.4)",
-                        }}
-                      >
-                        {c.code} — {c.name}
-                      </span>
-                    ))}
-                    {skill.courses.length > 5 && (
-                      <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.3)" }}>
-                        +{skill.courses.length - 5} more courses
-                      </span>
-                    )}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Gap Skills */}
-      {gaps.length > 0 && (
-        <div>
-          <h3
-            style={{
-              fontFamily: FONT,
-              fontSize: "13px",
-              fontWeight: 600,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "rgba(255,255,255,0.3)",
-              marginBottom: "14px",
-            }}
-          >
-            Skill Gaps ({gaps.length})
-          </h3>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-            {gaps.map((skill) => (
-              <span
-                key={skill.skill}
-                style={{
-                  fontFamily: FONT,
-                  fontSize: "12px",
-                  color: "rgba(255,255,255,0.35)",
-                  background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  borderRadius: "100px",
-                  padding: "5px 12px",
-                }}
-              >
-                {skill.skill}
-              </span>
-            ))}
-          </div>
-        </div>
-      )}
-    </motion.div>
   );
 }
