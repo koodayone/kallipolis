@@ -454,8 +454,8 @@ function OccupationList({
                 style={{ transform: isOpen ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>
                 <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-              <span style={{ fontFamily: FONT, fontSize: "15px", fontWeight: 700, color: school.brandColorLight }}>{letter}</span>
-              <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.3)" }}>{occs.length} {occs.length === 1 ? "occupation" : "occupations"}</span>
+              <span style={{ fontFamily: FONT, fontSize: "15px", fontWeight: 700, color: school.brandColorLight, width: "20px" }}>{letter}</span>
+              <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.3)", flex: 1 }}>{occs.length} {occs.length === 1 ? "occupation" : "occupations"}</span>
             </button>
 
             {/* Occupations within letter */}
