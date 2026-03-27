@@ -170,9 +170,9 @@ export default function OccupationsView({ school, onBack }: Props) {
                 {allOccupations.length.toLocaleString()} occupations in {regionName}
               </p>
               <OccupationList
-                occupations={allOccupations} cap={allOccupations.length} school={school}
+                occupations={allOccupations} initialCap={100} school={school}
                 expandedSocs={expandedSocs} details={details} loadingSocs={loadingSocs}
-                onExpand={handleExpand} regionName={regionName} grouped={true}
+                onExpand={handleExpand} regionName={regionName}
               />
             </div>
           </motion.div>
@@ -209,9 +209,9 @@ export default function OccupationsView({ school, onBack }: Props) {
             </p>
 
             <OccupationList
-              occupations={results} cap={200} school={school}
+              occupations={results} initialCap={200} school={school}
               expandedSocs={expandedSocs} details={details} loadingSocs={loadingSocs}
-              onExpand={handleExpand} regionName={regionName} grouped={false}
+              onExpand={handleExpand} regionName={regionName}
             />
           </motion.div>
         )}
@@ -365,37 +365,37 @@ function OccupationRow({ occ, i, school, expandedSocs, details, loadingSocs, onE
 /* ── Occupation List (shared) ──────────────────────────────────────────── */
 
 function OccupationList({
-  occupations, cap, school, expandedSocs, details, loadingSocs, onExpand, regionName, grouped,
+  occupations, initialCap, school, expandedSocs, details, loadingSocs, onExpand, regionName,
 }: {
   occupations: ApiOccupationMatch[];
-  cap: number;
+  initialCap: number;
   school: SchoolConfig;
   expandedSocs: Set<string>;
   details: Record<string, ApiOccupationDetail>;
   loadingSocs: Set<string>;
   onExpand: (occ: ApiOccupationMatch) => void;
   regionName: string;
-  grouped: boolean;
 }) {
-  const [expandedLetters, setExpandedLetters] = useState<Set<string>>(new Set());
+  const [visibleCount, setVisibleCount] = useState(initialCap);
+  const sentinelRef = useRef<HTMLDivElement>(null);
 
-  const toggleLetter = (letter: string) => {
-    setExpandedLetters((prev) => {
-      const next = new Set(prev);
-      if (next.has(letter)) next.delete(letter); else next.add(letter);
-      return next;
-    });
-  };
+  // Reset visible count when occupations change (e.g., new search)
+  useEffect(() => { setVisibleCount(initialCap); }, [occupations, initialCap]);
 
-  // Group by first letter (for grouped mode)
-  const groups: Record<string, ApiOccupationMatch[]> = {};
-  const visible = occupations.slice(0, cap);
-  for (const occ of visible) {
-    const letter = occ.title[0]?.toUpperCase() || "#";
-    if (!groups[letter]) groups[letter] = [];
-    groups[letter].push(occ);
-  }
-  const letters = Object.keys(groups).sort();
+  // Infinite scroll via IntersectionObserver
+  useEffect(() => {
+    const sentinel = sentinelRef.current;
+    if (!sentinel) return;
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && visibleCount < occupations.length) {
+        setVisibleCount((prev) => Math.min(prev + 100, occupations.length));
+      }
+    }, { threshold: 0.1 });
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, [visibleCount, occupations.length]);
+
+  const visible = occupations.slice(0, visibleCount);
 
   // Column headers
   const columnHeaders = (
@@ -411,76 +411,21 @@ function OccupationList({
     </div>
   );
 
-  // Flat mode (for search results)
-  if (!grouped) {
-    return (
-      <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-        {columnHeaders}
-        {visible.map((occ, i) => (
-          <OccupationRow key={occ.soc_code} occ={occ} i={i} school={school}
-            expandedSocs={expandedSocs} details={details} loadingSocs={loadingSocs}
-            onExpand={onExpand} regionName={regionName} />
-        ))}
-        {occupations.length === 0 && (
-          <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.35)", padding: "40px 0", textAlign: "center" }}>
-            No occupations match that query. Try a different question.
-          </p>
-        )}
-      </div>
-    );
-  }
-
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-      {letters.map((letter) => {
-        const isOpen = expandedLetters.has(letter);
-        const occs = groups[letter];
-        return (
-          <div key={letter}>
-            {/* Letter header */}
-            <button
-              onClick={() => toggleLetter(letter)}
-              style={{
-                width: "100%", textAlign: "left",
-                display: "flex", padding: "10px 16px", gap: "10px", alignItems: "center",
-                background: "rgba(255,255,255,0.02)", border: "none",
-                borderBottom: "1px solid rgba(255,255,255,0.05)",
-                cursor: "pointer", transition: "background 0.15s",
-              }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.04)"; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.02)"; }}
-            >
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                style={{ transform: isOpen ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>
-                <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              <span style={{ fontFamily: FONT, fontSize: "15px", fontWeight: 700, color: school.brandColorLight, width: "20px" }}>{letter}</span>
-              <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.3)", flex: 1 }}>{occs.length} {occs.length === 1 ? "occupation" : "occupations"}</span>
-            </button>
-
-            {/* Occupations within letter */}
-            <AnimatePresence>
-              {isOpen && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.25 }}
-                  style={{ overflow: "hidden" }}
-                >
-                  {columnHeaders}
-                  {occs.map((occ, i) => (
-                    <OccupationRow key={occ.soc_code} occ={occ} i={i} school={school}
-                      expandedSocs={expandedSocs} details={details} loadingSocs={loadingSocs}
-                      onExpand={onExpand} regionName={regionName} />
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        );
-      })}
-
+      {columnHeaders}
+      {visible.map((occ, i) => (
+        <OccupationRow key={occ.soc_code} occ={occ} i={i} school={school}
+          expandedSocs={expandedSocs} details={details} loadingSocs={loadingSocs}
+          onExpand={onExpand} regionName={regionName} />
+      ))}
+      {visibleCount < occupations.length && (
+        <div ref={sentinelRef} style={{ padding: "14px", textAlign: "center" }}>
+          <p style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.25)" }}>
+            Showing {visibleCount} of {occupations.length.toLocaleString()} occupations...
+          </p>
+        </div>
+      )}
       {occupations.length === 0 && (
         <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.35)", padding: "40px 0", textAlign: "center" }}>
           No occupations match that query. Try a different question.
