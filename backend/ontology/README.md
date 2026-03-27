@@ -99,7 +99,7 @@ ORDER BY students DESC
 | Departments | 744 |
 | Courses | 26,204 |
 | Skills | 4,951 |
-| Students | 241,778 |
+| Students | 241,850 |
 | Regions | 8 |
 | Occupations | 724 |
 | Employers | 74 |
@@ -126,30 +126,38 @@ ORDER BY students DESC
 
 ### Stage 3: Synthetic Student Generation
 
-**Source:** Per-college calibration data derived from two California public data systems:
+**Source:** Per-college calibration data derived from three California public data systems:
 
-- **DataMart** (datamart.cccco.edu) — the California Community Colleges Chancellor's Office Management Information System. Provides the Grade Distribution Summary report, which gives actual grade distributions (A/B/C/D/F/W/P percentages) broken out by 2-digit TOP code (Taxonomy of Programs) group per college. This is the empirical basis for how synthetic students perform in different disciplines.
+- **DataMart 4-digit TOP code Grade Distribution** (datamart.cccco.edu) — the California Community Colleges Chancellor's Office Management Information System. Provides grade distributions (A/B/C/D/F/W/P percentages) broken out by 4-digit TOP code (Taxonomy of Programs) per college. Each college has 49-114 distinct 4-digit codes (e.g., 0502 Accounting, 0707 Computer Software Development, 1240 Dental Occupations). This is the empirical basis for both enrollment distribution and grade outcomes across disciplines. Parsed by `pipeline/calibrations/parse_top4.py` into per-college JSON files at `pipeline/calibrations/top4/{college}.json`.
 
-- **College institutional data** — published enrollment headcounts, full-time/part-time ratios, and fall-to-winter retention rates from each college's own fact sheets and institutional metrics pages.
+- **DataMart Master Course Files** — the authoritative course-level TOP code assignments from each college's MIS submission. Each course prefix (e.g., "CS", "ACTG", "BIOL") maps to a 4-digit TOP code. Downloaded for all 26 colleges, parsed into a global mapping at `pipeline/calibrations/prefix_to_top4.json` with 1,939 entries covering 97% of courses.
 
-**Process:** `pipeline/students.py` generates synthetic students for each college using a calibration config at `pipeline/calibrations/{college}.json`. Each config contains:
+- **College institutional data** — published enrollment headcounts, full-time/part-time ratios, and fall-to-winter retention rates from each college's own fact sheets and institutional metrics pages. Stored in `pipeline/calibrations/{college}.json`.
+
+**Process:** `pipeline/students.py` generates synthetic students for each college using the 4-digit TOP code calibration. The algorithm:
+
+1. **Course pooling**: Each enriched course is assigned a 4-digit TOP code via its prefix (using `prefix_to_top4.json`). Courses are grouped into pools by TOP code.
+
+2. **Primary assignment**: Each student is assigned a primary 4-digit TOP code, weighted by the DataMart enrollment share for that code. This determines the student's area of concentration.
+
+3. **Enrollment generation**: For each enrollment, there is a 60% chance of drawing from the student's primary TOP code pool and a 40% chance of drawing from the full TOP code distribution (weighted by enrollment share). This produces realistic course-taking patterns where students concentrate in one area while also taking GE/elective courses across other areas.
+
+4. **Department cap**: A maximum of 6 courses per department per student prevents unrealistic concentration. When a student hits the cap, their enrollment redirects to another TOP code from the full distribution.
+
+5. **Grade assignment**: Each enrollment receives a grade sampled directly from the 4-digit TOP code's grade distribution in the DataMart data. A course in Accounting (0502) uses Accounting's grade distribution; a course in Mathematics (1701) uses Mathematics'. No college-wide averaging.
+
+6. **Skill materialization**: Only completed enrollments (grades A, B, C, P) produce Student → HAS_SKILL → Skill edges, derived from the Course → DEVELOPS → Skill edges of the completed course.
+
+**Key parameters** (from `pipeline/calibrations/{college}.json`):
 - `enrollment` — verified headcount from the college's published data
-- `success_rate` — college-wide course success rate from DataMart
-- `retention_rate` — fall-to-winter retention from college institutional metrics
-- `ft_ratio` — full-time student percentage from college fact sheets
-- `grade_distribution` — college-wide grade percentages from DataMart
-- `top_group_enrollment_share` — enrollment distribution across 2-digit TOP code disciplines from DataMart
-- `top_group_success_rate` — per-discipline success rates from DataMart (e.g., 97% in Engineering vs 72% in Mathematics at Foothill)
-- `top_group_grades` — per-discipline grade distributions from DataMart
-- `dept_to_top_group` — mapping of college-specific department names to DataMart TOP code groups
+- `ft_ratio` — full-time student percentage (determines course load: FT 4-6 courses/term, PT 1-3)
+- `retention_rate` — fall-to-winter retention (geometric decay determines persistence across terms)
 
-The generator uses a success-rate-gated grading model: for each enrollment, the student's probability of passing depends on the discipline-specific success rate, and the grade distribution within pass/fail follows the discipline-specific distribution from DataMart. Students are assigned a primary department (weighted by enrollment share), persist across terms based on the retention rate (geometric decay), and take courses from their department cluster (65% affinity) and GE pool (35%). Only completed enrollments (A/B/C/P grades) produce HAS_SKILL edges.
-
-**Validation:** After generation, the synthetic population's aggregate success rate is compared against the DataMart target. Typical deviation is <1%.
+**Validation:** After generation, the synthetic population's aggregate success rate is compared against the DataMart target. Typical deviation is <1%. Per-department enrollment shares track the 4-digit TOP code distribution within ~1 percentage point. Primary focus distributions (the department where each student has the most completions) closely mirror the enrollment shares due to the 4-digit granularity — each TOP code maps roughly 1-to-1 with a department, eliminating the dilution that occurs with coarser groupings.
 
 **Privacy:** No education records are accessed. All calibration data comes from publicly published aggregates. Synthetic students are generated entities, not de-identified real students. There is zero FERPA exposure.
 
-**Scale:** 241,778 students, 2,031,208 enrollments, 6,266,833 HAS_SKILL edges across 26 colleges.
+**Scale:** 241,850 students, 2,067,687 enrollments across 26 colleges.
 
 ### Stage 4: Regional Occupation Data
 
@@ -190,6 +198,7 @@ Occupation descriptions and skill mappings are generated by `pipeline/industry/g
 | Catalog scraping | `pipeline/scraper_pdf.py` | College PDF catalogs | Raw courses |
 | Skill enrichment | `pipeline/skills.py` | Raw courses + O*NET seed taxonomy | Enriched courses with skill mappings |
 | Curriculum loading | `pipeline/loader.py` | Enriched courses | College, Department, Course, Skill nodes |
-| Student generation | `pipeline/students.py` | Enriched courses + DataMart calibrations | Student, ENROLLED_IN, HAS_SKILL |
+| TOP4 calibration parsing | `pipeline/calibrations/parse_top4.py` | DataMart 4-digit grade distribution CSV | Per-college TOP4 calibration JSON |
+| Student generation | `pipeline/students.py` | Enriched courses + TOP4 calibrations + prefix mapping | Student, ENROLLED_IN, HAS_SKILL |
 | Occupation loading | `pipeline/industry/loader.py` | EDD OEWS XLSX files + occupations.json | Region, Occupation, DEMANDS, REQUIRES_SKILL |
 | Employer loading | `pipeline/industry/employers.py` | EDD HWOL + web research → employers.json | Employer, IN_MARKET, HIRES_FOR |
