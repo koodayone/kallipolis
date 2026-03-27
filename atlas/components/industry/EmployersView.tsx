@@ -256,7 +256,7 @@ function EmployerList({
     <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
       {/* Column headers */}
       <div style={{
-        display: "grid", gridTemplateColumns: "24px 1fr 120px 70px 85px",
+        display: "grid", gridTemplateColumns: "24px 1fr 180px 70px 85px",
         padding: "12px 16px", gap: "10px", alignItems: "center",
       }}>
         <span />
@@ -279,7 +279,7 @@ function EmployerList({
               onClick={() => onExpand(emp)}
               style={{
                 width: "100%", textAlign: "left",
-                display: "grid", gridTemplateColumns: "24px 1fr 120px 70px 85px",
+                display: "grid", gridTemplateColumns: "24px 1fr 180px 70px 85px",
                 padding: "12px 16px", gap: "10px", alignItems: "center",
                 background: isOpen ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
                 border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
