@@ -256,12 +256,13 @@ function EmployerList({
     <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
       {/* Column headers */}
       <div style={{
-        display: "grid", gridTemplateColumns: "24px 1fr 150px 75px",
+        display: "grid", gridTemplateColumns: "24px 1fr 120px 70px 85px",
         padding: "12px 16px", gap: "10px", alignItems: "center",
       }}>
         <span />
         <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Employer</span>
         <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Sector</span>
+        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, textAlign: "center" }}>Roles</span>
         <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Skills</span>
       </div>
 
@@ -278,7 +279,7 @@ function EmployerList({
               onClick={() => onExpand(emp)}
               style={{
                 width: "100%", textAlign: "left",
-                display: "grid", gridTemplateColumns: "24px 1fr 150px 75px",
+                display: "grid", gridTemplateColumns: "24px 1fr 120px 70px 85px",
                 padding: "12px 16px", gap: "10px", alignItems: "center",
                 background: isOpen ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
                 border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
@@ -296,6 +297,9 @@ function EmployerList({
               </span>
               <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)" }}>
                 {emp.sector || "—"}
+              </span>
+              <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)", display: "flex", justifyContent: "center" }}>
+                {emp.occupations.length}
               </span>
               <Badge style={{
                 color: school.brandColorLight,
@@ -327,6 +331,12 @@ function EmployerList({
                             {detail.sector && detail.regions.length > 0 && " · "}
                             {detail.regions.join(" · ")}
                           </div>
+                        )}
+                        {/* Description */}
+                        {detail.description && (
+                          <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.7)", lineHeight: 1.55, margin: 0 }}>
+                            {detail.description}
+                          </p>
                         )}
 
                         {/* Occupations */}

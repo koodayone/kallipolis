@@ -119,6 +119,7 @@ class OccupationDetail(BaseModel):
 class EmployerMatch(BaseModel):
     name: str
     sector: Optional[str] = None
+    description: Optional[str] = None
     occupations: list[str]
     matching_skills: int
     skills: list[str]
@@ -127,5 +128,6 @@ class EmployerMatch(BaseModel):
 class EmployerDetail(BaseModel):
     name: str
     sector: Optional[str] = None
+    description: Optional[str] = None
     regions: list[str]
     occupations: list[dict]

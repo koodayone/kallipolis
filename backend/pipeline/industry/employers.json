@@ -2,6 +2,7 @@
   {
     "name": "Apple",
     "sector": "Technology",
+    "description": "Consumer electronics and software company headquartered in Cupertino, designing iPhone, Mac, and services used by billions worldwide.",
     "regions": [
       "San Jose-Sunnyvale-Santa Clara"
     ],
@@ -14,6 +15,7 @@
   {
     "name": "Google",
     "sector": "Technology",
+    "description": "Search, cloud computing, and advertising technology company headquartered in Mountain View with major offices across the Bay Area.",
     "regions": [
       "San Jose-Sunnyvale-Santa Clara",
       "San Francisco-San Mateo-Redwood City"
@@ -27,6 +29,7 @@
   {
     "name": "Nvidia",
     "sector": "Technology",
+    "description": "GPU and AI chip designer headquartered in Santa Clara, powering gaming, data centers, and autonomous vehicles.",
     "regions": [
       "San Jose-Sunnyvale-Santa Clara"
     ],
@@ -39,6 +42,7 @@
   {
     "name": "TikTok",
     "sector": "Technology",
+    "description": "Short-form video platform with U.S. operations based in San Jose, owned by ByteDance.",
     "regions": [
       "San Jose-Sunnyvale-Santa Clara"
     ],
@@ -51,6 +55,7 @@
   {
     "name": "Intuit",
     "sector": "Technology",
+    "description": "Financial software company headquartered in Mountain View, maker of TurboTax, QuickBooks, and Credit Karma.",
     "regions": [
       "San Jose-Sunnyvale-Santa Clara"
     ],
@@ -62,6 +67,7 @@
   {
     "name": "Palo Alto Networks",
     "sector": "Technology",
+    "description": "Cybersecurity company headquartered in Santa Clara, providing firewall, cloud security, and threat intelligence products.",
     "regions": [
       "San Jose-Sunnyvale-Santa Clara"
     ],
@@ -73,6 +79,7 @@
   {
     "name": "Tesla",
     "sector": "Manufacturing/Technology",
+    "description": "Electric vehicle and clean energy manufacturer headquartered in Austin with a major factory in Fremont.",
     "regions": [
       "San Jose-Sunnyvale-Santa Clara",
       "Oakland-Fremont-Berkeley"
@@ -87,6 +94,7 @@
   {
     "name": "Amazon",
     "sector": "Technology/Logistics",
+    "description": "E-commerce, cloud computing, and logistics company with engineering offices in the Bay Area and fulfillment centers across the region.",
     "regions": [
       "San Jose-Sunnyvale-Santa Clara",
       "San Francisco-San Mateo-Redwood City"
@@ -100,6 +108,7 @@
   {
     "name": "Stanford University",
     "sector": "Education",
+    "description": "Private research university in Stanford employing faculty, researchers, and staff across medicine, engineering, and the humanities.",
     "regions": [
       "San Jose-Sunnyvale-Santa Clara"
     ],
@@ -112,6 +121,7 @@
   {
     "name": "Stanford Health Care",
     "sector": "Healthcare",
+    "description": "Academic medical center affiliated with Stanford University, operating hospitals and clinics across Santa Clara County.",
     "regions": [
       "San Jose-Sunnyvale-Santa Clara"
     ],
@@ -125,6 +135,7 @@
   {
     "name": "Santa Clara Valley Healthcare",
     "sector": "Healthcare",
+    "description": "County-operated public health system serving Santa Clara County through Valley Medical Center and a network of community clinics.",
     "regions": [
       "San Jose-Sunnyvale-Santa Clara"
     ],
@@ -139,6 +150,7 @@
   {
     "name": "El Camino Health",
     "sector": "Healthcare",
+    "description": "Nonprofit hospital system operating campuses in Mountain View and Los Gatos, serving the western Santa Clara Valley.",
     "regions": [
       "San Jose-Sunnyvale-Santa Clara"
     ],
@@ -151,6 +163,7 @@
   {
     "name": "Kaiser Permanente",
     "sector": "Healthcare",
+    "description": "Integrated managed care organization operating hospitals and medical offices across Northern California.",
     "regions": [
       "Oakland-Fremont-Berkeley",
       "San Jose-Sunnyvale-Santa Clara",
@@ -168,6 +181,7 @@
   {
     "name": "Sutter Health",
     "sector": "Healthcare",
+    "description": "Nonprofit health system operating 24 hospitals and over 200 clinics across Northern California.",
     "regions": [
       "Oakland-Fremont-Berkeley",
       "San Francisco-San Mateo-Redwood City",
@@ -185,6 +199,7 @@
   {
     "name": "Alameda Health System",
     "sector": "Healthcare",
+    "description": "County public health system serving Alameda County through Highland Hospital and community wellness centers.",
     "regions": [
       "Oakland-Fremont-Berkeley"
     ],
@@ -197,6 +212,7 @@
   {
     "name": "Hayward Unified School District",
     "sector": "Education",
+    "description": "Public school district serving Hayward with 30+ schools and over 20,000 students from pre-K through 12th grade.",
     "regions": [
       "Oakland-Fremont-Berkeley"
     ],
@@ -208,6 +224,7 @@
   {
     "name": "Oakland Unified School District",
     "sector": "Education",
+    "description": "Public school district operating 80+ schools serving over 34,000 students in Oakland.",
     "regions": [
       "Oakland-Fremont-Berkeley"
     ],
@@ -219,6 +236,7 @@
   {
     "name": "University of California, Berkeley",
     "sector": "Education",
+    "description": "Public research university and flagship UC campus, one of the largest employers in the East Bay.",
     "regions": [
       "Oakland-Fremont-Berkeley"
     ],
@@ -231,6 +249,7 @@
   {
     "name": "PG&E",
     "sector": "Utilities",
+    "description": "Pacific Gas and Electric Company, the primary electric and natural gas utility serving Northern and Central California.",
     "regions": [
       "Oakland-Fremont-Berkeley"
     ],
@@ -242,6 +261,7 @@
   {
     "name": "Abbott Laboratories",
     "sector": "Healthcare/Manufacturing",
+    "description": "Global medical device and diagnostics manufacturer with facilities in the East Bay producing testing and monitoring products.",
     "regions": [
       "Oakland-Fremont-Berkeley"
     ],
@@ -253,6 +273,7 @@
   {
     "name": "BART",
     "sector": "Transportation",
+    "description": "Bay Area Rapid Transit, the regional heavy rail system connecting San Francisco, the East Bay, and South Bay.",
     "regions": [
       "Oakland-Fremont-Berkeley"
     ],
@@ -264,6 +285,7 @@
   {
     "name": "AC Transit",
     "sector": "Transportation",
+    "description": "Alameda-Contra Costa Transit District operating bus service across the East Bay and transbay routes to San Francisco.",
     "regions": [
       "Oakland-Fremont-Berkeley"
     ],
@@ -275,6 +297,7 @@
   {
     "name": "Bio-Rad Laboratories",
     "sector": "Biotechnology",
+    "description": "Life science research and clinical diagnostics company headquartered in Hercules, manufacturing instruments and reagents.",
     "regions": [
       "Oakland-Fremont-Berkeley"
     ],
@@ -286,6 +309,7 @@
   {
     "name": "C&H Sugar",
     "sector": "Manufacturing",
+    "description": "Sugar refinery operating in Crockett since 1906, processing raw cane sugar for consumer and industrial use.",
     "regions": [
       "Oakland-Fremont-Berkeley"
     ],
@@ -297,6 +321,7 @@
   {
     "name": "Golden Gate Sign Company",
     "sector": "Manufacturing",
+    "description": "Custom sign and architectural fabrication company based in Oakland serving commercial and municipal clients.",
     "regions": [
       "Oakland-Fremont-Berkeley"
     ],
@@ -307,6 +332,7 @@
   {
     "name": "St. Rose Hospital",
     "sector": "Healthcare",
+    "description": "Community hospital in Hayward providing emergency, surgical, and outpatient services to southern Alameda County.",
     "regions": [
       "Oakland-Fremont-Berkeley"
     ],
@@ -318,6 +344,7 @@
   {
     "name": "Superior Mechanical Services",
     "sector": "HVAC/Mechanical",
+    "description": "Commercial HVAC and mechanical contracting firm serving the East Bay with installation and maintenance services.",
     "regions": [
       "Oakland-Fremont-Berkeley"
     ],
@@ -329,6 +356,7 @@
   {
     "name": "Service Champions",
     "sector": "HVAC/Plumbing",
+    "description": "Residential HVAC and plumbing service company operating across the East Bay and South Bay.",
     "regions": [
       "Oakland-Fremont-Berkeley",
       "San Jose-Sunnyvale-Santa Clara"
@@ -342,6 +370,7 @@
   {
     "name": "Rivers Plumbing Heating & Air",
     "sector": "HVAC/Plumbing",
+    "description": "Family-owned plumbing and HVAC company serving Pleasanton and the Tri-Valley area.",
     "regions": [
       "Oakland-Fremont-Berkeley"
     ],
@@ -353,6 +382,7 @@
   {
     "name": "John Muir Health",
     "sector": "Healthcare",
+    "description": "Nonprofit health system operating medical centers in Walnut Creek and Concord, serving Contra Costa County.",
     "regions": [
       "Oakland-Fremont-Berkeley"
     ],
@@ -365,6 +395,7 @@
   {
     "name": "Chevron",
     "sector": "Energy",
+    "description": "Multinational energy corporation headquartered in San Ramon with a major refinery in Richmond.",
     "regions": [
       "Oakland-Fremont-Berkeley"
     ],
@@ -376,6 +407,7 @@
   {
     "name": "Bank of America Technology Center",
     "sector": "Financial Services",
+    "description": "Technology operations hub in the East Bay supporting Bank of America's digital banking and infrastructure platforms.",
     "regions": [
       "Oakland-Fremont-Berkeley"
     ],
@@ -387,6 +419,7 @@
   {
     "name": "Meta",
     "sector": "Technology",
+    "description": "Social media and virtual reality company headquartered in Menlo Park, operating Facebook, Instagram, and WhatsApp.",
     "regions": [
       "San Francisco-San Mateo-Redwood City"
     ],
@@ -399,6 +432,7 @@
   {
     "name": "University of California, San Francisco",
     "sector": "Healthcare/Education",
+    "description": "Public research university focused on health sciences, operating hospitals, research labs, and clinics across San Francisco.",
     "regions": [
       "San Francisco-San Mateo-Redwood City"
     ],
@@ -411,6 +445,7 @@
   {
     "name": "Genentech",
     "sector": "Biotechnology",
+    "description": "Pioneer biotechnology company in South San Francisco developing medicines for cancer, immunology, and rare diseases.",
     "regions": [
       "San Francisco-San Mateo-Redwood City"
     ],
@@ -423,6 +458,7 @@
   {
     "name": "Visa",
     "sector": "Financial Services",
+    "description": "Global payments technology company headquartered in San Francisco, processing electronic fund transfers worldwide.",
     "regions": [
       "San Francisco-San Mateo-Redwood City"
     ],
@@ -434,6 +470,7 @@
   {
     "name": "Uber",
     "sector": "Technology",
+    "description": "Ride-hailing and delivery platform headquartered in San Francisco, operating in cities worldwide.",
     "regions": [
       "San Francisco-San Mateo-Redwood City"
     ],
@@ -445,6 +482,7 @@
   {
     "name": "Accenture",
     "sector": "Consulting/Technology",
+    "description": "Global professional services firm with Bay Area offices providing technology consulting, strategy, and managed services.",
     "regions": [
       "San Francisco-San Mateo-Redwood City"
     ],
@@ -456,6 +494,7 @@
   {
     "name": "Gilead Sciences",
     "sector": "Biotechnology",
+    "description": "Biopharmaceutical company headquartered in Foster City, developing antiviral therapies including HIV and hepatitis treatments.",
     "regions": [
       "San Francisco-San Mateo-Redwood City"
     ],
@@ -467,6 +506,7 @@
   {
     "name": "Truebeck Construction",
     "sector": "Construction",
+    "description": "Commercial general contractor based in Redwood City specializing in tech campus, healthcare, and life science facility construction.",
     "regions": [
       "San Francisco-San Mateo-Redwood City"
     ],
@@ -478,6 +518,7 @@
   {
     "name": "Providence",
     "sector": "Healthcare",
+    "description": "Nonprofit health system operating hospitals in Santa Rosa and the North Bay as part of a 52-hospital network across the western U.S.",
     "regions": [
       "Santa Rosa-Petaluma",
       "Napa"
@@ -490,6 +531,7 @@
   {
     "name": "County of Sonoma",
     "sector": "Government",
+    "description": "County government providing public safety, health, social services, and land use administration for Sonoma County residents.",
     "regions": [
       "Santa Rosa-Petaluma"
     ],
@@ -501,6 +543,7 @@
   {
     "name": "Graton Resort & Casino",
     "sector": "Hospitality",
+    "description": "Casino and resort in Rohnert Park operated by the Federated Indians of Graton Rancheria, the largest employer in Sonoma County's hospitality sector.",
     "regions": [
       "Santa Rosa-Petaluma"
     ],
@@ -512,6 +555,7 @@
   {
     "name": "Jackson Family Wines",
     "sector": "Wine/Agriculture",
+    "description": "Family-owned wine company based in Santa Rosa, producing wines from over 40 estate vineyards across California and Oregon.",
     "regions": [
       "Santa Rosa-Petaluma"
     ],
@@ -523,6 +567,7 @@
   {
     "name": "Stark Reality Restaurants",
     "sector": "Hospitality",
+    "description": "Restaurant group operating multiple dining concepts in downtown Santa Rosa.",
     "regions": [
       "Santa Rosa-Petaluma"
     ],
@@ -535,6 +580,7 @@
   {
     "name": "Medtronic",
     "sector": "Medical Devices",
+    "description": "Global medical technology company with a Santa Rosa campus producing cardiac rhythm management and surgical innovation products.",
     "regions": [
       "Santa Rosa-Petaluma"
     ],
@@ -546,6 +592,7 @@
   {
     "name": "Napa Valley Unified School District",
     "sector": "Education",
+    "description": "Public school district serving the city of Napa and surrounding areas with 30 schools and approximately 17,000 students.",
     "regions": [
       "Napa"
     ],
@@ -557,6 +604,7 @@
   {
     "name": "Adventist Health",
     "sector": "Healthcare",
+    "description": "Faith-based health system operating St. Helena Hospital and clinics in the Napa Valley.",
     "regions": [
       "Napa"
     ],
@@ -568,6 +616,7 @@
   {
     "name": "Constellation Brands",
     "sector": "Wine/Beverages",
+    "description": "Fortune 500 beverage company producing wines, beer, and spirits, with Napa Valley wine operations including Robert Mondavi Winery.",
     "regions": [
       "Napa"
     ],
@@ -579,6 +628,7 @@
   {
     "name": "Trinchero Family Estates",
     "sector": "Wine",
+    "description": "Family-owned winery in St. Helena known for Sutter Home and Trinchero Napa Valley brands.",
     "regions": [
       "Napa"
     ],
@@ -589,6 +639,7 @@
   {
     "name": "Duckhorn Wine Company",
     "sector": "Wine",
+    "description": "Luxury wine producer based in St. Helena, crafting Napa Valley wines across multiple estate labels.",
     "regions": [
       "Napa"
     ],
@@ -599,6 +650,7 @@
   {
     "name": "Auberge Resorts",
     "sector": "Hospitality",
+    "description": "Luxury hotel and resort collection headquartered in Napa Valley, operating boutique properties worldwide.",
     "regions": [
       "Napa"
     ],
@@ -610,6 +662,7 @@
   {
     "name": "Culinary Institute of America",
     "sector": "Education/Hospitality",
+    "description": "Premier culinary arts college operating a campus at Greystone in St. Helena with teaching restaurants and continuing education programs.",
     "regions": [
       "Napa"
     ],
@@ -622,6 +675,7 @@
   {
     "name": "City of Napa",
     "sector": "Government",
+    "description": "Municipal government providing public safety, infrastructure, and community services for the city of Napa.",
     "regions": [
       "Napa"
     ],
@@ -633,6 +687,7 @@
   {
     "name": "NorthBay Healthcare",
     "sector": "Healthcare",
+    "description": "Nonprofit health system operating NorthBay Medical Center in Fairfield and VacaValley Hospital in Vacaville.",
     "regions": [
       "Vallejo"
     ],
@@ -645,6 +700,7 @@
   {
     "name": "Vallejo City Unified School District",
     "sector": "Education",
+    "description": "Public school district serving Vallejo with 23 schools and approximately 12,000 students.",
     "regions": [
       "Vallejo"
     ],
@@ -656,6 +712,7 @@
   {
     "name": "General Dynamics",
     "sector": "Defense/Manufacturing",
+    "description": "Defense contractor operating the Mare Island facility in Vallejo for ship maintenance and advanced manufacturing.",
     "regions": [
       "Vallejo"
     ],
@@ -667,6 +724,7 @@
   {
     "name": "Genentech Vacaville",
     "sector": "Biotechnology",
+    "description": "Large-scale biologics manufacturing campus in Vacaville producing Genentech's therapeutic antibody medicines.",
     "regions": [
       "Vallejo"
     ],
@@ -678,6 +736,7 @@
   {
     "name": "Lonza",
     "sector": "Biotechnology",
+    "description": "Swiss pharmaceutical contract manufacturer operating a biologics production facility in Vacaville.",
     "regions": [
       "Vallejo"
     ],
@@ -689,6 +748,7 @@
   {
     "name": "Thermo Fisher Scientific",
     "sector": "Biotechnology",
+    "description": "Life science instruments and reagents company with manufacturing and R&D operations in the Solano County area.",
     "regions": [
       "Vallejo"
     ],
@@ -700,6 +760,7 @@
   {
     "name": "La Clinica de La Raza",
     "sector": "Healthcare",
+    "description": "Federally qualified community health center providing primary care and behavioral health services to underserved populations in the East Bay and Solano County.",
     "regions": [
       "Vallejo",
       "Oakland-Fremont-Berkeley"
@@ -713,6 +774,7 @@
   {
     "name": "Partnership HealthPlan of California",
     "sector": "Healthcare",
+    "description": "Nonprofit managed care plan administering Medi-Cal benefits for over 600,000 members across Northern California counties.",
     "regions": [
       "Vallejo"
     ],
@@ -724,6 +786,7 @@
   {
     "name": "University of California, Santa Cruz",
     "sector": "Education",
+    "description": "Public research university in Santa Cruz known for programs in computer science, marine biology, and astrophysics.",
     "regions": [
       "Santa Cruz-Watsonville"
     ],
@@ -736,6 +799,7 @@
   {
     "name": "County of Santa Cruz",
     "sector": "Government",
+    "description": "County government providing health, social services, public works, and public safety for Santa Cruz County.",
     "regions": [
       "Santa Cruz-Watsonville"
     ],
@@ -747,6 +811,7 @@
   {
     "name": "Dominican Hospital",
     "sector": "Healthcare",
+    "description": "Community hospital in Santa Cruz operated by CommonSpirit Health, providing acute care and specialty services.",
     "regions": [
       "Santa Cruz-Watsonville"
     ],
@@ -758,6 +823,7 @@
   {
     "name": "Joby Aviation",
     "sector": "Aerospace",
+    "description": "Electric vertical takeoff and landing aircraft developer based in Santa Cruz, building air taxis for urban mobility.",
     "regions": [
       "Santa Cruz-Watsonville"
     ],
@@ -769,6 +835,7 @@
   {
     "name": "Graniterock",
     "sector": "Construction",
+    "description": "Construction and building materials company based in Watsonville, providing aggregates, concrete, and paving across Central California.",
     "regions": [
       "Santa Cruz-Watsonville"
     ],
@@ -780,6 +847,7 @@
   {
     "name": "Driscoll's",
     "sector": "Agriculture",
+    "description": "World's largest berry company, headquartered in Watsonville, growing and distributing strawberries, blueberries, and raspberries.",
     "regions": [
       "Santa Cruz-Watsonville"
     ],
@@ -790,6 +858,7 @@
   {
     "name": "Pajaro Valley Unified School District",
     "sector": "Education",
+    "description": "Public school district serving Watsonville and the Pajaro Valley with approximately 18,000 students.",
     "regions": [
       "Santa Cruz-Watsonville"
     ],
@@ -801,6 +870,7 @@
   {
     "name": "Marin General Hospital",
     "sector": "Healthcare",
+    "description": "Community hospital in Greenbrae providing acute care, emergency, and specialty services to Marin County residents.",
     "regions": [
       "San Rafael"
     ],
@@ -813,6 +883,7 @@
   {
     "name": "BioMarin",
     "sector": "Biotechnology",
+    "description": "Rare disease biopharmaceutical company headquartered in San Rafael, developing enzyme replacement and gene therapies.",
     "regions": [
       "San Rafael"
     ],
@@ -825,6 +896,7 @@
   {
     "name": "County of Marin",
     "sector": "Government",
+    "description": "County government providing health, human services, parks, and public safety for Marin County's 260,000 residents.",
     "regions": [
       "San Rafael"
     ],
@@ -836,6 +908,7 @@
   {
     "name": "Marin Community Clinics",
     "sector": "Healthcare",
+    "description": "Federally qualified health center providing primary care, dental, and behavioral health to underserved communities in Marin County.",
     "regions": [
       "San Rafael"
     ],
@@ -848,6 +921,7 @@
   {
     "name": "Starbucks",
     "sector": "Food Service",
+    "description": "Global coffeehouse chain operating hundreds of locations across the Bay Area, one of the region's largest food service employers.",
     "regions": [
       "Oakland-Fremont-Berkeley",
       "San Jose-Sunnyvale-Santa Clara",

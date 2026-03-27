@@ -203,6 +203,7 @@ export async function getOccupationDetail(socCode: string, college: string): Pro
 export type ApiEmployerMatch = {
   name: string;
   sector: string | null;
+  description: string | null;
   occupations: string[];
   matching_skills: number;
   skills: string[];
@@ -211,6 +212,7 @@ export type ApiEmployerMatch = {
 export type ApiEmployerDetail = {
   name: string;
   sector: string | null;
+  description: string | null;
   regions: string[];
   occupations: Array<{
     title: string;
