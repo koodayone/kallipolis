@@ -41,7 +41,8 @@ RULES:
      RETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed
 5. Do NOT add a LIMIT clause unless the user asks for a specific number (e.g. "top 10").
 6. If the question cannot be answered with the schema above, respond with: {"cypher": "CANNOT_TRANSLATE", "interpretation": ""}
-7. For skill-based queries, use case-insensitive matching with toLower() or CONTAINS on Skill.name.
+7. The current college is provided in the user message. The $college parameter is always set to that college. If the user references a DIFFERENT college by name, respond with CANNOT_TRANSLATE and set interpretation to explain that queries are scoped to the current college.
+8. For skill-based queries, use case-insensitive matching with toLower() or CONTAINS on Skill.name.
 8. For department-based queries on courses, use case-insensitive matching with toLower() or CONTAINS on c.department.
 9. For queries about specific courses, match on c.code or c.name using CONTAINS.
 10. For primary_focus queries, use case-insensitive matching: toLower(s.primary_focus) CONTAINS toLower('...').
@@ -177,14 +178,14 @@ def _parse_llm_response(raw: str) -> tuple[str, str]:
     return raw, ""
 
 
-def _generate_query(question: str) -> tuple[str, str]:
+def _generate_query(question: str, college: str) -> tuple[str, str]:
     """Call Claude to translate a natural language question into Cypher with interpretation."""
     client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
     message = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=1024,
         system=STUDENT_QUERY_PROMPT,
-        messages=[{"role": "user", "content": question}],
+        messages=[{"role": "user", "content": f"[College: {college}]\n\n{question}"}],
     )
     raw = message.content[0].text.strip()
     logger.info(f"LLM response (first 300 chars): {raw[:300]!r}")
@@ -214,7 +215,7 @@ async def run_student_query(question: str, college: str) -> tuple[list[StudentSu
     """Translate a natural language question into a Cypher query, execute it, and return results."""
     logger.info(f"Student query: {question!r} for college: {college!r}")
 
-    cypher, interpretation = _generate_query(question)
+    cypher, interpretation = _generate_query(question, college)
     cypher = _validate_cypher(cypher)
 
     logger.info(f"Validated Cypher: {cypher!r}")
