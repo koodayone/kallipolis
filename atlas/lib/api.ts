@@ -313,3 +313,137 @@ export async function queryOccupations(query: string, college: string): Promise<
   }
   return res.json();
 }
+
+// ── Partnership Landscape ──────────────────────────────────────────────────
+
+export type ApiPartnershipOpportunity = {
+  name: string;
+  sector: string | null;
+  description: string | null;
+  alignment_score: number;
+  gap_count: number;
+  pipeline_size: number | null;
+  top_occupation: string | null;
+  top_wage: number | null;
+  aligned_skills: string[];
+  gap_skills: string[];
+};
+
+export type ApiPartnershipLandscape = {
+  college: string;
+  opportunities: ApiPartnershipOpportunity[];
+};
+
+export type PartnershipQueryResponse = {
+  opportunities: ApiPartnershipOpportunity[];
+  message: string;
+  cypher: string | null;
+};
+
+export async function getPartnershipLandscape(college: string): Promise<ApiPartnershipLandscape> {
+  const res = await fetch(`${BASE}/labor-market/partnership-landscape?college=${encodeURIComponent(college)}`);
+  if (!res.ok) throw new Error("Failed to fetch partnership landscape");
+  return res.json();
+}
+
+export async function getEmployerPipeline(employer: string, college: string): Promise<{ pipeline_size: number }> {
+  const res = await fetch(`${BASE}/labor-market/partnership-landscape/pipeline?employer=${encodeURIComponent(employer)}&college=${encodeURIComponent(college)}`);
+  if (!res.ok) throw new Error("Failed to fetch pipeline data");
+  return res.json();
+}
+
+export async function queryPartnerships(query: string, college: string): Promise<PartnershipQueryResponse> {
+  const res = await fetch(`${BASE}/labor-market/partnerships/query`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ query, college }),
+  });
+  if (!res.ok) {
+    const detail = await res.text();
+    throw new Error(detail || "Query failed");
+  }
+  return res.json();
+}
+
+// ── Targeted Proposal ──────────────────────────────────────────────────────
+
+export type ApiAlignmentDetail = {
+  department: string;
+  course_code: string;
+  course_name: string;
+  skill: string;
+};
+
+export type ApiSkillGapDetail = {
+  skill: string;
+  required_by: string[];
+  recommended_action: string;
+};
+
+export type ApiPipelineStats = {
+  total_students: number;
+  students_with_3plus_courses: number;
+  top_skills: string[];
+};
+
+export type ApiEconomicImpact = {
+  occupations: Array<{ title: string; annual_wage: number | null; employment: number | null }>;
+  aggregate_employment: number | null;
+};
+
+export type ApiTargetedProposal = {
+  employer: string;
+  sector: string | null;
+  executive_summary: string;
+  partnership_type: string;
+  partnership_type_rationale: string;
+  curriculum_alignment: ApiAlignmentDetail[];
+  skill_gaps: ApiSkillGapDetail[];
+  student_pipeline: ApiPipelineStats;
+  economic_impact: ApiEconomicImpact;
+  next_steps: string[];
+};
+
+export async function streamTargetedProposal(
+  employer: string,
+  college: string,
+  onProposal: (proposal: ApiTargetedProposal) => void,
+  onDone: () => void,
+  onError: (error: string) => void,
+  objective?: string,
+): Promise<void> {
+  const res = await fetch(`${BASE}/workflows/partnerships/targeted/stream`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ employer, college, ...(objective ? { objective } : {}) }),
+  });
+  if (!res.ok) {
+    onError(await res.text());
+    return;
+  }
+  const reader = res.body!.getReader();
+  const decoder = new TextDecoder();
+  let buffer = "";
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buffer += decoder.decode(value, { stream: true });
+
+    const lines = buffer.split("\n");
+    buffer = lines.pop() || "";
+    for (const line of lines) {
+      if (line.startsWith("data: ")) {
+        try {
+          const json = JSON.parse(line.slice(6));
+          if (json.done) { onDone(); return; }
+          if (json.error) { onError(json.error); return; }
+          onProposal(json as ApiTargetedProposal);
+        } catch {
+          // Incomplete JSON line, skip
+        }
+      }
+    }
+  }
+  onDone();
+}

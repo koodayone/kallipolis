@@ -187,3 +187,81 @@ class OccupationQueryResponse(BaseModel):
     occupations: list[OccupationMatch]
     message: str
     cypher: Optional[str] = None
+
+
+# ── Partnership Landscape models ─────────────────────────────────────────
+
+
+class PartnershipOpportunity(BaseModel):
+    name: str
+    sector: Optional[str] = None
+    description: Optional[str] = None
+    alignment_score: int
+    gap_count: int
+    pipeline_size: Optional[int] = None
+    top_occupation: Optional[str] = None
+    top_wage: Optional[int] = None
+    aligned_skills: list[str]
+    gap_skills: list[str]
+
+
+class PartnershipLandscape(BaseModel):
+    college: str
+    opportunities: list[PartnershipOpportunity]
+
+
+class PartnershipQueryRequest(BaseModel):
+    query: str
+    college: str
+
+
+class PartnershipQueryResponse(BaseModel):
+    opportunities: list[PartnershipOpportunity]
+    message: str
+    cypher: Optional[str] = None
+
+
+class ProposalRequest(BaseModel):
+    employer: str
+    college: str
+    objective: Optional[str] = None
+
+
+# ── Targeted Proposal models ─────────────────────────────────────────────
+
+
+class AlignmentDetail(BaseModel):
+    department: str
+    course_code: str
+    course_name: str
+    skill: str
+
+
+class SkillGapDetail(BaseModel):
+    skill: str
+    required_by: list[str]
+    recommended_action: str
+
+
+class PipelineStats(BaseModel):
+    total_students: int
+    students_with_3plus_courses: int
+    top_skills: list[str]
+
+
+class EconomicImpact(BaseModel):
+    occupations: list[dict]
+    aggregate_employment: Optional[int] = None
+
+
+class TargetedProposal(BaseModel):
+    employer: str
+    sector: Optional[str] = None
+    executive_summary: str
+    partnership_type: str
+    partnership_type_rationale: str
+    curriculum_alignment: list[AlignmentDetail]
+    skill_gaps: list[SkillGapDetail]
+    student_pipeline: PipelineStats
+    economic_impact: EconomicImpact
+    next_steps: list[str]

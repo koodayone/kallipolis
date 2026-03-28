@@ -3,9 +3,15 @@
 from collections import defaultdict
 from fastapi import APIRouter, HTTPException
 from ontology.schema import get_driver
-from models import LaborMarketOverview, RegionOverview, OccupationMatch, OccupationDetail, SkillDetail, EmployerMatch, EmployerDetail, EmployerQueryRequest, EmployerQueryResponse, OccupationQueryRequest, OccupationQueryResponse
+from models import (
+    LaborMarketOverview, RegionOverview, OccupationMatch, OccupationDetail, SkillDetail,
+    EmployerMatch, EmployerDetail, EmployerQueryRequest, EmployerQueryResponse,
+    OccupationQueryRequest, OccupationQueryResponse,
+    PartnershipOpportunity, PartnershipLandscape, PartnershipQueryRequest, PartnershipQueryResponse,
+)
 from workflows.employer_query import run_employer_query
 from workflows.occupation_query import run_occupation_query
+from workflows.partnerships_query import run_partnership_query
 
 router = APIRouter()
 
@@ -221,6 +227,90 @@ async def query_occupations(req: OccupationQueryRequest):
     try:
         occupations, message, cypher = await run_occupation_query(req.query, req.college)
         return OccupationQueryResponse(occupations=occupations, message=message, cypher=cypher)
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# ── Partnership Landscape ────────────────────────────────────────────────────
+
+
+@router.get("/partnership-landscape", response_model=PartnershipLandscape)
+def get_partnership_landscape(college: str):
+    """Returns employers ranked by partnership opportunity — skill alignment, gaps, and top occupation."""
+    driver = get_driver()
+    try:
+        with driver.session() as session:
+            result = session.run("""
+                MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)
+                      -[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)
+                OPTIONAL MATCH (course:Course {college: $college})-[:DEVELOPS]->(sk)
+                WITH emp, sk, occ,
+                     CASE WHEN count(course) > 0 THEN true ELSE false END AS developed
+                WITH emp,
+                     collect(DISTINCT CASE WHEN developed THEN sk.name END) AS raw_aligned,
+                     collect(DISTINCT CASE WHEN NOT developed THEN sk.name END) AS raw_gaps,
+                     collect(DISTINCT {title: occ.title, wage: occ.annual_wage}) AS occ_entries
+                WITH emp,
+                     [x IN raw_aligned WHERE x IS NOT NULL] AS aligned_skills,
+                     [x IN raw_gaps WHERE x IS NOT NULL] AS gap_skills,
+                     occ_entries[0] AS top_occ
+                RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
+                       size(aligned_skills) AS alignment_score,
+                       size(gap_skills) AS gap_count,
+                       aligned_skills, gap_skills,
+                       top_occ.title AS top_occupation, top_occ.wage AS top_wage
+                ORDER BY alignment_score DESC
+            """, college=college)
+            records = result.data()
+
+        return PartnershipLandscape(
+            college=college,
+            opportunities=[
+                PartnershipOpportunity(
+                    name=r["name"],
+                    sector=r.get("sector"),
+                    description=r.get("description"),
+                    alignment_score=r["alignment_score"],
+                    gap_count=r["gap_count"],
+                    aligned_skills=r["aligned_skills"],
+                    gap_skills=r["gap_skills"],
+                    top_occupation=r.get("top_occupation"),
+                    top_wage=r.get("top_wage"),
+                )
+                for r in records
+            ],
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/partnership-landscape/pipeline")
+def get_employer_pipeline(employer: str, college: str):
+    """Returns the student pipeline size for a specific employer — count of students with relevant skills."""
+    driver = get_driver()
+    try:
+        with driver.session() as session:
+            result = session.run("""
+                MATCH (:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer {name: $employer})
+                      -[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)
+                      <-[:HAS_SKILL]-(st:Student)
+                WHERE EXISTS { (st)-[:ENROLLED_IN]->(:Course {college: $college}) }
+                RETURN count(DISTINCT st) AS pipeline_size
+            """, college=college, employer=employer)
+            record = result.single()
+
+        return {"pipeline_size": record["pipeline_size"] if record else 0}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/partnerships/query", response_model=PartnershipQueryResponse)
+async def query_partnerships(req: PartnershipQueryRequest):
+    try:
+        opportunities, message, cypher = await run_partnership_query(req.query, req.college)
+        return PartnershipQueryResponse(opportunities=opportunities, message=message, cypher=cypher)
     except ValueError as e:
         raise HTTPException(status_code=422, detail=str(e))
     except Exception as e:
