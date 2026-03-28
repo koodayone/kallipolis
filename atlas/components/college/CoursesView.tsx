@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { SchoolConfig } from "@/lib/schoolConfig";
-import { getDepartments, getCourses } from "@/lib/api";
+import { getDepartments, getCourses, queryCourses } from "@/lib/api";
 import type { ApiDepartmentSummary, ApiCourseSummary } from "@/lib/api";
 import type { DepartmentSummary, CourseSummary } from "@/lib/curricula/types";
 import LeafHeader from "@/components/ui/LeafHeader";
@@ -25,23 +25,11 @@ function mapCourse(api: ApiCourseSummary): CourseSummary {
 
 const SUGGESTIONS = [
   "Computer Science courses",
-  "Departments with most courses",
-  "Nursing department",
-  "Courses with Programming skills",
+  "Courses that develop Programming skills",
+  "Nursing courses",
   "Mathematics courses",
+  "Courses with Critical Thinking skills",
 ];
-
-function filterDepartments(query: string, departments: DepartmentSummary[]): DepartmentSummary[] {
-  const q = query.toLowerCase().trim();
-  if (!q) return [];
-  if (q.includes("most courses") || q.includes("largest")) {
-    return [...departments].sort((a, b) => b.courseCount - a.courseCount).slice(0, 20);
-  }
-  const cleaned = q.replace(" courses", "").replace(" department", "").replace("courses", "").replace("department", "").trim();
-  const match = departments.filter((d) => d.department.toLowerCase().includes(cleaned));
-  if (match.length > 0) return match;
-  return departments.filter((d) => d.department.toLowerCase().includes(q));
-}
 
 type Props = { school: SchoolConfig; onBack: () => void };
 
@@ -57,6 +45,9 @@ export default function CoursesView({ school, onBack }: Props) {
   const [deptCoursesMap, setDeptCoursesMap] = useState<Record<string, CourseSummary[]>>({});
   const [loadingDepts, setLoadingDepts] = useState<Set<string>>(new Set());
   const [expandedCourses, setExpandedCourses] = useState<Set<string>>(new Set());
+  const [queryLoading, setQueryLoading] = useState(false);
+  const [queryMessage, setQueryMessage] = useState<string | null>(null);
+  const [courseResults, setCourseResults] = useState<CourseSummary[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -70,19 +61,39 @@ export default function CoursesView({ school, onBack }: Props) {
       .catch(() => {});
   }, []);
 
-  const handleSubmit = useCallback(() => {
+  const handleSubmit = useCallback(async () => {
     if (!query.trim()) return;
-    setResults(filterDepartments(query, departments));
     setSubmitted(true);
-    setExpandedDepts(new Set()); setExpandedCourses(new Set());
-  }, [query, departments]);
+    setQueryLoading(true);
+    setExpandedCourses(new Set());
+    try {
+      const resp = await queryCourses(query, school.name);
+      setCourseResults(resp.courses.map(mapCourse));
+      setQueryMessage(resp.message);
+    } catch (e: unknown) {
+      setCourseResults([]);
+      setQueryMessage(e instanceof Error ? e.message : "Something went wrong. Please try again.");
+    } finally {
+      setQueryLoading(false);
+    }
+  }, [query, school.name]);
 
-  const handleChip = useCallback((text: string) => {
+  const handleChip = useCallback(async (text: string) => {
     setQuery(text);
-    setResults(filterDepartments(text, departments));
     setSubmitted(true);
-    setExpandedDepts(new Set()); setExpandedCourses(new Set());
-  }, [departments]);
+    setQueryLoading(true);
+    setExpandedCourses(new Set());
+    try {
+      const resp = await queryCourses(text, school.name);
+      setCourseResults(resp.courses.map(mapCourse));
+      setQueryMessage(resp.message);
+    } catch (e: unknown) {
+      setCourseResults([]);
+      setQueryMessage(e instanceof Error ? e.message : "Something went wrong. Please try again.");
+    } finally {
+      setQueryLoading(false);
+    }
+  }, [school.name]);
 
   const handleDeptExpand = useCallback(async (dept: string) => {
     if (expandedDepts.has(dept)) {
@@ -110,6 +121,7 @@ export default function CoursesView({ school, onBack }: Props) {
   const handleReset = useCallback(() => {
     setQuery(""); setSubmitted(false); setResults([]);
     setExpandedDepts(new Set()); setExpandedCourses(new Set());
+    setCourseResults([]); setQueryMessage(null); setQueryLoading(false);
     setTimeout(() => inputRef.current?.focus(), 100);
   }, []);
 
@@ -213,17 +225,132 @@ export default function CoursesView({ school, onBack }: Props) {
               >Clear</button>
             </div>
 
-            <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)" }}>
-              {results.length} department{results.length !== 1 ? "s" : ""} found
-            </p>
+            {queryLoading && (
+              <div style={{ display: "flex", justifyContent: "center", paddingTop: "40px" }}>
+                <RisingSun style={{ width: "50px", height: "auto", opacity: 0.4 }} />
+              </div>
+            )}
 
-            <DepartmentList
-              departments={results} school={school}
-              expandedDepts={expandedDepts} deptCoursesMap={deptCoursesMap}
-              loadingDepts={loadingDepts} expandedCourses={expandedCourses}
-              onDeptExpand={handleDeptExpand}
-              onCourseToggle={(code) => setExpandedCourses((prev) => { const next = new Set(prev); if (next.has(code)) next.delete(code); else next.add(code); return next; })}
-            />
+            {!queryLoading && queryMessage && (
+              <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)" }}>{queryMessage}</p>
+            )}
+
+            {!queryLoading && courseResults.length > 0 && (
+              <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+                {/* Column headers */}
+                <div style={{
+                  display: "grid", gridTemplateColumns: "24px auto 1fr",
+                  padding: "8px 16px", gap: "12px", alignItems: "center",
+                }}>
+                  <span />
+                  <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Code</span>
+                  <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Name</span>
+                </div>
+                {courseResults.map((course, i) => {
+                  const isOpen = expandedCourses.has(course.code);
+                  return (
+                    <div key={course.code}>
+                      <motion.button
+                        initial={{ opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.2, delay: Math.min(i * 0.01, 0.2) }}
+                        onClick={() => setExpandedCourses((prev) => { const next = new Set(prev); if (next.has(course.code)) next.delete(course.code); else next.add(course.code); return next; })}
+                        style={{
+                          width: "100%", textAlign: "left",
+                          display: "grid", gridTemplateColumns: "24px auto 1fr",
+                          padding: "14px 16px", gap: "12px", alignItems: "center",
+                          background: isOpen ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
+                          border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
+                          cursor: "pointer", transition: "background 0.15s",
+                        }}
+                        onMouseEnter={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)"; }}
+                        onMouseLeave={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)"; }}
+                      >
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                          style={{ transform: isOpen ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>
+                          <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        <span style={{ fontFamily: FONT, fontSize: "12px", fontWeight: 600, color: school.brandColorLight, flexShrink: 0 }}>
+                          {course.code}
+                        </span>
+                        <span style={{ fontFamily: FONT, fontSize: "14px", fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>
+                          {course.name}
+                        </span>
+                      </motion.button>
+
+                      <AnimatePresence>
+                        {isOpen && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                            style={{ overflow: "hidden" }}
+                          >
+                            <div style={{
+                              padding: "16px 16px 20px 52px",
+                              background: "rgba(255,255,255,0.03)",
+                              display: "flex", flexDirection: "column", gap: "16px",
+                            }}>
+                              {course.description && (
+                                <div>
+                                  <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, display: "block", marginBottom: "8px" }}>
+                                    Description
+                                  </span>
+                                  <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.6)", lineHeight: 1.6, margin: 0 }}>
+                                    {course.description}
+                                  </p>
+                                </div>
+                              )}
+                              {course.learningOutcomes.length > 0 && (
+                                <div>
+                                  <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, display: "block", marginBottom: "8px" }}>
+                                    Learning Outcomes
+                                  </span>
+                                  <ul style={{ margin: 0, paddingLeft: "16px", display: "flex", flexDirection: "column", gap: "4px" }}>
+                                    {course.learningOutcomes.map((o) => (
+                                      <li key={o} style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.6)", lineHeight: 1.5 }}>{o}</li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              )}
+                              {course.learningOutcomes.length === 0 && course.courseObjectives.length > 0 && (
+                                <div>
+                                  <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, display: "block", marginBottom: "8px" }}>
+                                    Course Objectives
+                                  </span>
+                                  <ul style={{ margin: 0, paddingLeft: "16px", display: "flex", flexDirection: "column", gap: "4px" }}>
+                                    {course.courseObjectives.map((o) => (
+                                      <li key={o} style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.6)", lineHeight: 1.5 }}>{o}</li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              )}
+                              {course.skillMappings.length > 0 && (
+                                <div>
+                                  <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, display: "block", marginBottom: "8px" }}>
+                                    Derived Skills
+                                  </span>
+                                  <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+                                    {course.skillMappings.map((skill) => (
+                                      <span key={skill} style={{
+                                        padding: "5px 12px", background: "rgba(255,255,255,0.02)",
+                                        border: `1px solid ${school.brandColorLight}60`, borderRadius: "6px",
+                                        fontFamily: FONT, fontSize: "12px", fontWeight: 500, color: school.brandColorLight,
+                                      }}>{skill}</span>
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </motion.div>
         )}
       </div>

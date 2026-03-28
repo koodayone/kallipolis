@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { SchoolConfig } from "@/lib/schoolConfig";
-import { getLaborMarketOverview, getOccupationDetail } from "@/lib/api";
+import { getLaborMarketOverview, getOccupationDetail, queryOccupations } from "@/lib/api";
 import type { ApiOccupationMatch, ApiLaborMarketOverview, ApiOccupationDetail } from "@/lib/api";
 import LeafHeader from "@/components/ui/LeafHeader";
 import RisingSun from "@/components/ui/RisingSun";
@@ -26,22 +26,8 @@ const SUGGESTIONS = [
   "Most jobs available",
   "Software development roles",
   "Healthcare occupations",
-  "Best skill alignment",
+  "Occupations requiring Data Analysis",
 ];
-
-function filterOccupations(query: string, occupations: ApiOccupationMatch[]): ApiOccupationMatch[] {
-  const q = query.toLowerCase().trim();
-  if (!q) return [];
-  if (q.includes("highest paying") || q.includes("highest wage") || q.includes("best paying"))
-    return [...occupations].sort((a, b) => (b.annual_wage ?? 0) - (a.annual_wage ?? 0)).slice(0, 50);
-  if (q.includes("most jobs") || q.includes("most available") || q.includes("most demand"))
-    return [...occupations].sort((a, b) => (b.employment ?? 0) - (a.employment ?? 0)).slice(0, 50);
-  if (q.includes("best alignment") || q.includes("best skill") || q.includes("most aligned"))
-    return [...occupations].sort((a, b) => b.matching_skills - a.matching_skills).slice(0, 50);
-  const match = occupations.filter((o) => o.title.toLowerCase().includes(q));
-  if (match.length > 0) return match;
-  return occupations.filter((o) => o.skills.some((s) => s.toLowerCase().includes(q)));
-}
 
 type Props = { school: SchoolConfig; onBack: () => void };
 
@@ -56,6 +42,8 @@ export default function OccupationsView({ school, onBack }: Props) {
   const [expandedSocs, setExpandedSocs] = useState<Set<string>>(new Set());
   const [details, setDetails] = useState<Record<string, ApiOccupationDetail>>({});
   const [loadingSocs, setLoadingSocs] = useState<Set<string>>(new Set());
+  const [queryLoading, setQueryLoading] = useState(false);
+  const [queryMessage, setQueryMessage] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const allOccupations = (overview?.regions?.flatMap((r) => r.occupations) ?? []).sort((a, b) => a.title.localeCompare(b.title));
@@ -72,19 +60,39 @@ export default function OccupationsView({ school, onBack }: Props) {
       .catch(() => {});
   }, []);
 
-  const handleSubmit = useCallback(() => {
+  const handleSubmit = useCallback(async () => {
     if (!query.trim()) return;
-    setResults(filterOccupations(query, allOccupations));
     setSubmitted(true);
     setExpandedSocs(new Set());
-  }, [query, allOccupations]);
+    setQueryLoading(true);
+    try {
+      const resp = await queryOccupations(query, school.name);
+      setResults(resp.occupations);
+      setQueryMessage(resp.message);
+    } catch (e: any) {
+      setResults([]);
+      setQueryMessage(e?.message ?? "Something went wrong. Please try again.");
+    } finally {
+      setQueryLoading(false);
+    }
+  }, [query, school.name]);
 
-  const handleChip = useCallback((text: string) => {
+  const handleChip = useCallback(async (text: string) => {
     setQuery(text);
-    setResults(filterOccupations(text, allOccupations));
     setSubmitted(true);
     setExpandedSocs(new Set());
-  }, [allOccupations]);
+    setQueryLoading(true);
+    try {
+      const resp = await queryOccupations(text, school.name);
+      setResults(resp.occupations);
+      setQueryMessage(resp.message);
+    } catch (e: any) {
+      setResults([]);
+      setQueryMessage(e?.message ?? "Something went wrong. Please try again.");
+    } finally {
+      setQueryLoading(false);
+    }
+  }, [school.name]);
 
   const handleExpand = useCallback(async (occ: ApiOccupationMatch) => {
     const soc = occ.soc_code;
@@ -104,7 +112,7 @@ export default function OccupationsView({ school, onBack }: Props) {
   }, [expandedSocs, details, school.name]);
 
   const handleReset = useCallback(() => {
-    setQuery(""); setSubmitted(false); setResults([]);
+    setQuery(""); setSubmitted(false); setResults([]); setQueryMessage(null);
     setExpandedSocs(new Set());
     setTimeout(() => inputRef.current?.focus(), 100);
   }, []);
@@ -204,15 +212,29 @@ export default function OccupationsView({ school, onBack }: Props) {
               >Clear</button>
             </div>
 
-            <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)" }}>
-              {results.length.toLocaleString()} occupation{results.length !== 1 ? "s" : ""} found
-            </p>
+            {queryLoading && (
+              <div style={{ display: "flex", justifyContent: "center", paddingTop: "40px" }}>
+                <RisingSun style={{ width: "50px", height: "auto", opacity: 0.4 }} />
+              </div>
+            )}
 
-            <OccupationList
-              occupations={results} initialCap={200} school={school}
-              expandedSocs={expandedSocs} details={details} loadingSocs={loadingSocs}
-              onExpand={handleExpand} regionName={regionName}
-            />
+            {!queryLoading && queryMessage && (
+              <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)" }}>{queryMessage}</p>
+            )}
+
+            {!queryLoading && (
+              <>
+                <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)" }}>
+                  {results.length.toLocaleString()} occupation{results.length !== 1 ? "s" : ""} found
+                </p>
+
+                <OccupationList
+                  occupations={results} initialCap={200} school={school}
+                  expandedSocs={expandedSocs} details={details} loadingSocs={loadingSocs}
+                  onExpand={handleExpand} regionName={regionName}
+                />
+              </>
+            )}
           </motion.div>
         )}
       </div>

@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { SchoolConfig } from "@/lib/schoolConfig";
-import { getEmployers, getEmployerDetail } from "@/lib/api";
+import { getEmployers, getEmployerDetail, queryEmployers } from "@/lib/api";
 import type { ApiEmployerMatch, ApiEmployerDetail } from "@/lib/api";
 import LeafHeader from "@/components/ui/LeafHeader";
 import RisingSun from "@/components/ui/RisingSun";
@@ -14,35 +14,10 @@ const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 const SUGGESTIONS = [
   "Healthcare employers",
   "Technology companies",
-  "Highest skill alignment",
-  "Manufacturing employers",
+  "Employers with most skill alignment",
   "Who hires for Programming?",
+  "Manufacturing sector",
 ];
-
-function filterEmployers(query: string, employers: ApiEmployerMatch[]): ApiEmployerMatch[] {
-  const q = query.toLowerCase().trim();
-  if (!q) return [];
-  if (q.includes("highest") && (q.includes("alignment") || q.includes("skill")))
-    return [...employers].sort((a, b) => b.matching_skills - a.matching_skills);
-  // Sector filter
-  const sectorMatch = employers.filter((e) => (e.sector || "").toLowerCase().includes(q));
-  if (sectorMatch.length > 0 && sectorMatch.length < employers.length) return sectorMatch;
-  // Skill filter ("who hires for X")
-  const skillQ = q.replace("who hires for", "").replace("?", "").trim();
-  if (skillQ !== q) {
-    const skillMatch = employers.filter((e) => e.skills.some((s) => s.toLowerCase().includes(skillQ)));
-    if (skillMatch.length > 0) return skillMatch;
-  }
-  // Name filter
-  const nameMatch = employers.filter((e) => e.name.toLowerCase().includes(q));
-  if (nameMatch.length > 0) return nameMatch;
-  // Broad: name or sector or skills
-  return employers.filter((e) =>
-    e.name.toLowerCase().includes(q) ||
-    (e.sector || "").toLowerCase().includes(q) ||
-    e.skills.some((s) => s.toLowerCase().includes(q))
-  );
-}
 
 type Props = { school: SchoolConfig; onBack: () => void };
 
@@ -57,6 +32,8 @@ export default function EmployersView({ school, onBack }: Props) {
   const [expandedNames, setExpandedNames] = useState<Set<string>>(new Set());
   const [employerDetails, setEmployerDetails] = useState<Record<string, ApiEmployerDetail>>({});
   const [loadingNames, setLoadingNames] = useState<Set<string>>(new Set());
+  const [queryLoading, setQueryLoading] = useState(false);
+  const [queryMessage, setQueryMessage] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const allEmployers = [...employers].sort((a, b) => a.name.localeCompare(b.name));
@@ -72,19 +49,41 @@ export default function EmployersView({ school, onBack }: Props) {
       .catch(() => {});
   }, []);
 
-  const handleSubmit = useCallback(() => {
+  const handleSubmit = useCallback(async () => {
     if (!query.trim()) return;
-    setResults(filterEmployers(query, allEmployers));
     setSubmitted(true);
     setExpandedNames(new Set());
-  }, [query, allEmployers]);
+    setQueryLoading(true);
+    setQueryMessage(null);
+    try {
+      const resp = await queryEmployers(query, school.name);
+      setResults(resp.employers);
+      setQueryMessage(resp.message);
+    } catch (err: any) {
+      setResults([]);
+      setQueryMessage(err?.message || "Something went wrong. Try a different question.");
+    } finally {
+      setQueryLoading(false);
+    }
+  }, [query, school.name]);
 
-  const handleChip = useCallback((text: string) => {
+  const handleChip = useCallback(async (text: string) => {
     setQuery(text);
-    setResults(filterEmployers(text, allEmployers));
     setSubmitted(true);
     setExpandedNames(new Set());
-  }, [allEmployers]);
+    setQueryLoading(true);
+    setQueryMessage(null);
+    try {
+      const resp = await queryEmployers(text, school.name);
+      setResults(resp.employers);
+      setQueryMessage(resp.message);
+    } catch (err: any) {
+      setResults([]);
+      setQueryMessage(err?.message || "Something went wrong. Try a different question.");
+    } finally {
+      setQueryLoading(false);
+    }
+  }, [school.name]);
 
   const handleExpand = useCallback(async (emp: ApiEmployerMatch) => {
     const name = emp.name;
@@ -104,7 +103,7 @@ export default function EmployersView({ school, onBack }: Props) {
   }, [expandedNames, employerDetails, school.name]);
 
   const handleReset = useCallback(() => {
-    setQuery(""); setSubmitted(false); setResults([]);
+    setQuery(""); setSubmitted(false); setResults([]); setQueryMessage(null);
     setExpandedNames(new Set());
     setTimeout(() => inputRef.current?.focus(), 100);
   }, []);
@@ -204,15 +203,31 @@ export default function EmployersView({ school, onBack }: Props) {
               >Clear</button>
             </div>
 
-            <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)" }}>
-              {results.length} employer{results.length !== 1 ? "s" : ""} found
-            </p>
+            {queryLoading && (
+              <div style={{ display: "flex", justifyContent: "center", paddingTop: "40px" }}>
+                <RisingSun style={{ width: "50px", height: "auto", opacity: 0.4 }} />
+              </div>
+            )}
 
-            <EmployerList
-              employers={results} initialCap={50} school={school}
-              expandedNames={expandedNames} employerDetails={employerDetails} loadingNames={loadingNames}
-              onExpand={handleExpand}
-            />
+            {!queryLoading && queryMessage && (
+              <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)" }}>
+                {queryMessage}
+              </p>
+            )}
+
+            {!queryLoading && (
+              <>
+                <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)" }}>
+                  {results.length} employer{results.length !== 1 ? "s" : ""} found
+                </p>
+
+                <EmployerList
+                  employers={results} initialCap={50} school={school}
+                  expandedNames={expandedNames} employerDetails={employerDetails} loadingNames={loadingNames}
+                  onExpand={handleExpand}
+                />
+              </>
+            )}
           </motion.div>
         )}
       </div>

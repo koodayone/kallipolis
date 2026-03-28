@@ -3,7 +3,9 @@
 from collections import defaultdict
 from fastapi import APIRouter, HTTPException
 from ontology.schema import get_driver
-from models import LaborMarketOverview, RegionOverview, OccupationMatch, OccupationDetail, SkillDetail, EmployerMatch, EmployerDetail
+from models import LaborMarketOverview, RegionOverview, OccupationMatch, OccupationDetail, SkillDetail, EmployerMatch, EmployerDetail, EmployerQueryRequest, EmployerQueryResponse, OccupationQueryRequest, OccupationQueryResponse
+from workflows.employer_query import run_employer_query
+from workflows.occupation_query import run_occupation_query
 
 router = APIRouter()
 
@@ -199,5 +201,27 @@ def get_employer_detail(name: str, college: str):
         )
     except HTTPException:
         raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/employers/query", response_model=EmployerQueryResponse)
+async def query_employers(req: EmployerQueryRequest):
+    try:
+        employers, message, cypher = await run_employer_query(req.query, req.college)
+        return EmployerQueryResponse(employers=employers, message=message, cypher=cypher)
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/occupations/query", response_model=OccupationQueryResponse)
+async def query_occupations(req: OccupationQueryRequest):
+    try:
+        occupations, message, cypher = await run_occupation_query(req.query, req.college)
+        return OccupationQueryResponse(occupations=occupations, message=message, cypher=cypher)
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

@@ -168,6 +168,25 @@ export async function getCourses(department: string, college: string): Promise<A
   return res.json();
 }
 
+export type CourseQueryResponse = {
+  courses: ApiCourseSummary[];
+  message: string;
+  cypher: string | null;
+};
+
+export async function queryCourses(query: string, college: string): Promise<CourseQueryResponse> {
+  const res = await fetch(`${BASE}/ontology/courses/query`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ query, college }),
+  });
+  if (!res.ok) {
+    const detail = await res.text();
+    throw new Error(detail || "Query failed");
+  }
+  return res.json();
+}
+
 // ── Labor Market ────────────────────────────────────────────────────────────
 
 export type ApiOccupationMatch = {
@@ -254,5 +273,43 @@ export async function getEmployers(college: string): Promise<ApiEmployerMatch[]>
 export async function getEmployerDetail(name: string, college: string): Promise<ApiEmployerDetail> {
   const res = await fetch(`${BASE}/labor-market/employer/${encodeURIComponent(name)}?college=${encodeURIComponent(college)}`);
   if (!res.ok) throw new Error("Failed to fetch employer detail");
+  return res.json();
+}
+
+export type EmployerQueryResponse = {
+  employers: ApiEmployerMatch[];
+  message: string;
+  cypher: string | null;
+};
+
+export async function queryEmployers(query: string, college: string): Promise<EmployerQueryResponse> {
+  const res = await fetch(`${BASE}/labor-market/employers/query`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ query, college }),
+  });
+  if (!res.ok) {
+    const detail = await res.text();
+    throw new Error(detail || "Query failed");
+  }
+  return res.json();
+}
+
+export type OccupationQueryResponse = {
+  occupations: ApiOccupationMatch[];
+  message: string;
+  cypher: string | null;
+};
+
+export async function queryOccupations(query: string, college: string): Promise<OccupationQueryResponse> {
+  const res = await fetch(`${BASE}/labor-market/occupations/query`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ query, college }),
+  });
+  if (!res.ok) {
+    const detail = await res.text();
+    throw new Error(detail || "Query failed");
+  }
   return res.json();
 }

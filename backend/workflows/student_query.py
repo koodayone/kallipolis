@@ -1,9 +1,7 @@
-import os
-import re
-import json
+"""Semantic translation layer for Student queries."""
+
 import logging
-import anthropic
-from ontology.schema import get_driver
+from workflows.query_engine import validate_cypher, generate_query, execute_query
 from models import StudentSummary
 
 logger = logging.getLogger(__name__)
@@ -43,9 +41,9 @@ RULES:
 6. If the question cannot be answered with the schema above, respond with: {"cypher": "CANNOT_TRANSLATE", "interpretation": ""}
 7. The current college is provided in the user message. The $college parameter is always set to that college. If the user references a DIFFERENT college by name, respond with CANNOT_TRANSLATE and set interpretation to explain that queries are scoped to the current college.
 8. For skill-based queries, use case-insensitive matching with toLower() or CONTAINS on Skill.name.
-8. For department-based queries on courses, use case-insensitive matching with toLower() or CONTAINS on c.department.
-9. For queries about specific courses, match on c.code or c.name using CONTAINS.
-10. For primary_focus queries, use case-insensitive matching: toLower(s.primary_focus) CONTAINS toLower('...').
+9. For department-based queries on courses, use case-insensitive matching with toLower() or CONTAINS on c.department.
+10. For queries about specific courses, match on c.code or c.name using CONTAINS.
+11. For primary_focus queries, use case-insensitive matching: toLower(s.primary_focus) CONTAINS toLower('...').
 
 EXAMPLES:
 
@@ -115,112 +113,24 @@ Respond with a JSON object containing two fields:
 No markdown code fences. Just the raw JSON object."""
 
 
-DISALLOWED_KEYWORDS = {
-    "CREATE", "DELETE", "SET", "MERGE", "REMOVE", "DROP",
-    "DETACH", "CALL", "FOREACH", "LOAD",
-}
+async def run_student_query(question: str, college: str) -> tuple[list[StudentSummary], str, str]:
+    """Translate a natural language question into a Cypher query, execute it, and return results."""
+    logger.info(f"Student query: {question!r} for college: {college!r}")
 
+    cypher, interpretation = generate_query(question, college, STUDENT_QUERY_PROMPT)
+    cypher = validate_cypher(cypher)
+    logger.info(f"Validated Cypher: {cypher!r}")
 
-def _validate_cypher(cypher: str) -> str:
-    """Validate generated Cypher is read-only and college-scoped. Returns cleaned Cypher or raises ValueError."""
-    stripped = cypher.strip()
-
-    if "CANNOT_TRANSLATE" in stripped:
-        raise ValueError("I couldn't translate that question into a query. Try rephrasing — for example, ask about students by department, skills, GPA, courses, or enrollment status.")
-
-    # Strip markdown code fences if present
-    stripped = re.sub(r"^```(?:cypher)?\s*", "", stripped)
-    stripped = re.sub(r"\s*```$", "", stripped)
-    stripped = stripped.strip().rstrip(";")
-
-    # Tokenize and check for disallowed write keywords
-    tokens = re.findall(r"[A-Z_]+", stripped.upper())
-    found = DISALLOWED_KEYWORDS.intersection(tokens)
-    if found:
-        raise ValueError(f"Generated query contains disallowed operations: {', '.join(found)}")
-
-    # Verify college scoping
-    if "$college" not in stripped and "college:" not in stripped.lower():
-        raise ValueError("Generated query is missing college scope.")
-
-    return stripped
-
-
-def _parse_llm_response(raw: str) -> tuple[str, str]:
-    """Parse the LLM response JSON to extract cypher and interpretation."""
-    # Strategy 1: direct JSON parse
-    try:
-        data = json.loads(raw)
-        return data["cypher"], data.get("interpretation", "")
-    except (json.JSONDecodeError, KeyError):
-        pass
-
-    # Strategy 2: extract from ```json code fences
-    match = re.search(r"```json\s*([\s\S]*?)\s*```", raw)
-    if match:
-        try:
-            data = json.loads(match.group(1))
-            return data["cypher"], data.get("interpretation", "")
-        except (json.JSONDecodeError, KeyError):
-            pass
-
-    # Strategy 3: find JSON object via regex
-    match = re.search(r"\{[\s\S]*\}", raw)
-    if match:
-        try:
-            data = json.loads(match.group(0))
-            return data["cypher"], data.get("interpretation", "")
-        except (json.JSONDecodeError, KeyError):
-            pass
-
-    # Fallback: treat entire response as raw Cypher (backward-compatible)
-    logger.warning(f"Could not parse JSON from LLM response, treating as raw Cypher: {raw[:200]!r}")
-    return raw, ""
-
-
-def _generate_query(question: str, college: str) -> tuple[str, str]:
-    """Call Claude to translate a natural language question into Cypher with interpretation."""
-    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
-    message = client.messages.create(
-        model="claude-sonnet-4-6",
-        max_tokens=1024,
-        system=STUDENT_QUERY_PROMPT,
-        messages=[{"role": "user", "content": f"[College: {college}]\n\n{question}"}],
-    )
-    raw = message.content[0].text.strip()
-    logger.info(f"LLM response (first 300 chars): {raw[:300]!r}")
-    return _parse_llm_response(raw)
-
-
-def _execute(cypher: str, college: str) -> list[StudentSummary]:
-    """Execute validated Cypher and map results directly to StudentSummary."""
-    driver = get_driver()
-    with driver.session() as session:
-        result = session.execute_read(
-            lambda tx: tx.run(cypher, college=college).data()
-        )
-
-    return [
+    records = execute_query(cypher, college)
+    students = [
         StudentSummary(
             uuid=r["uuid"],
             gpa=r.get("gpa", 0.0),
             primary_focus=r.get("primary_focus", "Undeclared"),
             courses_completed=r.get("courses_completed", 0),
         )
-        for r in result
+        for r in records
     ]
-
-
-async def run_student_query(question: str, college: str) -> tuple[list[StudentSummary], str, str]:
-    """Translate a natural language question into a Cypher query, execute it, and return results."""
-    logger.info(f"Student query: {question!r} for college: {college!r}")
-
-    cypher, interpretation = _generate_query(question, college)
-    cypher = _validate_cypher(cypher)
-
-    logger.info(f"Validated Cypher: {cypher!r}")
-
-    students = _execute(cypher, college)
 
     count = len(students)
     count_text = f"{count} student{'s' if count != 1 else ''} found."

@@ -1,8 +1,9 @@
 from fastapi import APIRouter, HTTPException
 from ontology.schema import get_driver
 from ontology.utils import compute_gpa
-from models import CollegeSummary, CollegeDepartment, StudentSummary, StudentDetail, StudentEnrollment, DepartmentSummary, CourseSummary, StudentQueryRequest, StudentQueryResponse
+from models import CollegeSummary, CollegeDepartment, StudentSummary, StudentDetail, StudentEnrollment, DepartmentSummary, CourseSummary, StudentQueryRequest, StudentQueryResponse, CourseQueryRequest, CourseQueryResponse
 from workflows.student_query import run_student_query
+from workflows.course_query import run_course_query
 
 router = APIRouter()
 
@@ -200,6 +201,17 @@ async def query_students(req: StudentQueryRequest):
     try:
         students, message, cypher = await run_student_query(req.query, req.college)
         return StudentQueryResponse(students=students, message=message, cypher=cypher)
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/courses/query", response_model=CourseQueryResponse)
+async def query_courses(req: CourseQueryRequest):
+    try:
+        courses, message, cypher = await run_course_query(req.query, req.college)
+        return CourseQueryResponse(courses=courses, message=message, cypher=cypher)
     except ValueError as e:
         raise HTTPException(status_code=422, detail=str(e))
     except Exception as e:

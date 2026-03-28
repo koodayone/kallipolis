@@ -145,3 +145,45 @@ class StudentQueryResponse(BaseModel):
     students: list[StudentSummary]
     message: str
     cypher: Optional[str] = None
+
+
+# ── Course Query models ────────────────────────────────────────────────────
+
+
+class CourseQueryRequest(BaseModel):
+    query: str
+    college: str
+
+
+class CourseQueryResponse(BaseModel):
+    courses: list[CourseSummary]
+    message: str
+    cypher: Optional[str] = None
+
+
+# ── Employer Query models ──────────────────────────────────────────────────
+
+
+class EmployerQueryRequest(BaseModel):
+    query: str
+    college: str
+
+
+class EmployerQueryResponse(BaseModel):
+    employers: list[EmployerMatch]
+    message: str
+    cypher: Optional[str] = None
+
+
+# ── Occupation Query models ────────────────────────────────────────────────
+
+
+class OccupationQueryRequest(BaseModel):
+    query: str
+    college: str
+
+
+class OccupationQueryResponse(BaseModel):
+    occupations: list[OccupationMatch]
+    message: str
+    cypher: Optional[str] = None
