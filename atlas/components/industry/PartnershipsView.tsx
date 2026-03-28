@@ -26,12 +26,14 @@ const SUGGESTIONS = [
 ];
 
 type Phase = "selection" | "split-view" | "generating" | "complete";
+type Mode = "build" | "manage";
 
 type Props = { school: SchoolConfig; onBack: () => void };
 
 export default function PartnershipsView({ school, onBack }: Props) {
-  // Phase state
+  // Phase & mode state
   const [phase, setPhase] = useState<Phase>("selection");
+  const [mode, setMode] = useState<Mode>("build");
   const [selectedEmployer, setSelectedEmployer] = useState<ApiPartnershipOpportunity | null>(null);
   const [objective, setObjective] = useState("");
   const [proposal, setProposal] = useState<ApiTargetedProposal | null>(null);
@@ -178,10 +180,48 @@ export default function PartnershipsView({ school, onBack }: Props) {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.25 }}
           >
-            <div style={{ display: "flex", justifyContent: "center", paddingTop: "32px", paddingBottom: "16px" }}>
+            <div style={{ display: "flex", justifyContent: "center", paddingTop: "32px", paddingBottom: "40px" }}>
               <img src={school.logoPath} alt={school.name} style={{ height: "100px", width: "auto", objectFit: "contain" }} />
             </div>
 
+            {/* Build / Manage segmented control */}
+            <div style={{ display: "flex", justifyContent: "center", marginBottom: "40px" }}>
+              <div style={{
+                display: "flex", borderRadius: "8px",
+                border: "1px solid rgba(255,255,255,0.10)",
+                background: "rgba(255,255,255,0.03)", overflow: "hidden",
+              }}>
+                {(["build", "manage"] as Mode[]).map((m, i) => (
+                  <button key={m} onClick={() => setMode(m)}
+                    style={{
+                      fontFamily: FONT, fontSize: "12px", fontWeight: 600, letterSpacing: "0.02em",
+                      padding: "8px 0", width: "90px", textAlign: "center", cursor: "pointer",
+                      border: "none",
+                      borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.10)" : "none",
+                      background: mode === m ? school.brandColorLight : "transparent",
+                      color: mode === m ? "#ffffff" : "rgba(255,255,255,0.4)",
+                      transition: "background 0.2s, color 0.2s",
+                      textTransform: "capitalize",
+                    }}
+                  >{m}</button>
+                ))}
+              </div>
+            </div>
+
+            {/* ── Manage Mode: Empty State ── */}
+            {mode === "manage" && (
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px", paddingTop: "80px" }}>
+                <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.4)", margin: 0 }}>
+                  No partnerships yet.
+                </p>
+                <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.25)", margin: 0 }}>
+                  Draft your first proposal to get started.
+                </p>
+              </div>
+            )}
+
+            {/* ── Build Mode ── */}
+            {mode === "build" && (
             <div style={{ maxWidth: "760px", margin: "0 auto", padding: "0 40px 80px" }}>
               {error && <p style={{ fontFamily: FONT, fontSize: "14px", color: "#e55", textAlign: "center", paddingTop: "40px" }}>{error}</p>}
               {loading && (
@@ -194,16 +234,16 @@ export default function PartnershipsView({ school, onBack }: Props) {
               {!submitted && !loading && (
                 <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
                   style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "24px", paddingTop: "40px" }}>
+                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "24px" }}>
                     <RisingSun style={{ width: "70px", height: "auto" }} />
                     <h1 style={{ fontFamily: FONT, fontSize: "28px", fontWeight: 600, color: "#f0eef4", letterSpacing: "-0.02em", textAlign: "center" }}>
-                      What&apos;s up{userName ? `, ${userName}` : ""}?
+                      Who is our partner{userName ? `, ${userName}` : ""}?
                     </h1>
                     <div style={{ width: "100%" }}>
                       <input ref={inputRef} type="text" value={query}
                         onChange={(e) => setQuery(e.target.value)}
                         onKeyDown={(e) => { if (e.key === "Enter") handleSubmit(); }}
-                        placeholder={`Ask about partnership opportunities near ${school.name}.`}
+                        placeholder={`Search by employer name, sector, or skill...`}
                         style={{
                           width: "100%", padding: "18px 24px", fontFamily: FONT, fontSize: "15px",
                           color: "#f0eef4", background: "rgba(255,255,255,0.04)",
@@ -250,7 +290,7 @@ export default function PartnershipsView({ school, onBack }: Props) {
                     <input ref={inputRef} type="text" value={query}
                       onChange={(e) => setQuery(e.target.value)}
                       onKeyDown={(e) => { if (e.key === "Enter") handleSubmit(); }}
-                      placeholder={`Ask about partnership opportunities near ${school.name}.`}
+                      placeholder={`Search by employer name, sector, or skill...`}
                       style={{
                         flex: 1, padding: "14px 20px", fontFamily: FONT, fontSize: "14px",
                         color: "#f0eef4", background: "rgba(255,255,255,0.04)",
@@ -289,6 +329,7 @@ export default function PartnershipsView({ school, onBack }: Props) {
                 </motion.div>
               )}
             </div>
+            )}
           </motion.div>
         )}
 
