@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { SchoolConfig } from "@/lib/schoolConfig";
-import { getStudents, getStudent } from "@/lib/api";
+import { getStudents, getStudent, queryStudents } from "@/lib/api";
 import type { ApiStudentSummary, ApiStudentDetail } from "@/lib/api";
 import type { StudentSummary, StudentDetail } from "@/lib/students/types";
 import LeafHeader from "@/components/ui/LeafHeader";
@@ -44,23 +44,9 @@ const SUGGESTIONS = [
   "Students with highest GPA",
   "Computer Science students",
   "Who has Programming skills?",
-  "15+ courses completed",
-  "Dental Hygiene skill profiles",
+  "Students with more than 15 courses",
+  "Biology students with GPA above 3.0",
 ];
-
-function filterStudents(query: string, students: StudentSummary[]): StudentSummary[] {
-  const q = query.toLowerCase().trim();
-  if (!q) return [];
-  const gpaMatch = q.match(/gpa\s*(?:above|over|>)\s*([\d.]+)/);
-  if (gpaMatch) return students.filter((s) => s.gpa >= parseFloat(gpaMatch[1]));
-  if (q.includes("highest gpa")) return [...students].sort((a, b) => b.gpa - a.gpa).slice(0, 50);
-  if (q.includes("lowest gpa")) return [...students].sort((a, b) => a.gpa - b.gpa).slice(0, 50);
-  const courseMatch = q.match(/(\d+)\+?\s*courses|more than\s*(\d+)\s*courses/);
-  if (courseMatch) { const n = parseInt(courseMatch[1] || courseMatch[2]); return students.filter((s) => s.coursesCompleted >= n); }
-  const deptMatch = students.filter((s) => s.primaryFocus.toLowerCase().includes(q.replace(" students", "").replace("students", "").trim()));
-  if (deptMatch.length > 0 && deptMatch.length < students.length) return deptMatch;
-  return students.filter((s) => s.primaryFocus.toLowerCase().includes(q));
-}
 
 /* ── Student List (shared between initial and results state) ────────────── */
 
@@ -217,6 +203,8 @@ export default function StudentsView({ school, onBack }: Props) {
   const [query, setQuery] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [results, setResults] = useState<StudentSummary[]>([]);
+  const [queryLoading, setQueryLoading] = useState(false);
+  const [queryMessage, setQueryMessage] = useState<string | null>(null);
   const [expandedUuids, setExpandedUuids] = useState<Set<string>>(new Set());
   const [studentDetails, setStudentDetails] = useState<Record<string, StudentDetail>>({});
   const [loadingUuids, setLoadingUuids] = useState<Set<string>>(new Set());
@@ -233,19 +221,41 @@ export default function StudentsView({ school, onBack }: Props) {
       .catch(() => {});
   }, []);
 
-  const handleSubmit = useCallback(() => {
+  const handleSubmit = useCallback(async () => {
     if (!query.trim()) return;
-    setResults(filterStudents(query, students));
+    setQueryLoading(true);
     setSubmitted(true);
     setExpandedUuids(new Set());
-  }, [query, students]);
+    setQueryMessage(null);
+    try {
+      const resp = await queryStudents(query, school.name);
+      setResults(resp.students.map(mapSummary));
+      setQueryMessage(resp.message);
+    } catch {
+      setResults([]);
+      setQueryMessage("Something went wrong. Try rephrasing your question.");
+    } finally {
+      setQueryLoading(false);
+    }
+  }, [query, school.name]);
 
-  const handleChip = useCallback((text: string) => {
+  const handleChip = useCallback(async (text: string) => {
     setQuery(text);
-    setResults(filterStudents(text, students));
+    setQueryLoading(true);
     setSubmitted(true);
     setExpandedUuids(new Set());
-  }, [students]);
+    setQueryMessage(null);
+    try {
+      const resp = await queryStudents(text, school.name);
+      setResults(resp.students.map(mapSummary));
+      setQueryMessage(resp.message);
+    } catch {
+      setResults([]);
+      setQueryMessage("Something went wrong. Try rephrasing your question.");
+    } finally {
+      setQueryLoading(false);
+    }
+  }, [school.name]);
 
   const handleExpand = useCallback(async (student: StudentSummary) => {
     const uuid = student.uuid;
@@ -371,16 +381,26 @@ export default function StudentsView({ school, onBack }: Props) {
               >Clear</button>
             </div>
 
-            <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)" }}>
-              {results.length.toLocaleString()} student{results.length !== 1 ? "s" : ""} found
-            </p>
+            {queryLoading && (
+              <div style={{ display: "flex", justifyContent: "center", paddingTop: "40px" }}>
+                <RisingSun style={{ width: "50px", height: "auto", opacity: 0.4 }} />
+              </div>
+            )}
 
-            <StudentList
-              students={results} cap={200} school={school}
-              expandedUuid={expandedUuid} expandedDetail={expandedDetail}
-              detailLoading={detailLoading} detailTab={detailTab}
-              onExpand={handleExpand} onTabChange={setDetailTab}
-            />
+            {!queryLoading && queryMessage && (
+              <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)" }}>
+                {queryMessage}
+              </p>
+            )}
+
+            {!queryLoading && (
+              <StudentList
+                students={results} cap={200} school={school}
+                expandedUuids={expandedUuids} studentDetails={studentDetails}
+                loadingUuids={loadingUuids}
+                onExpand={handleExpand}
+              />
+            )}
           </motion.div>
         )}
       </div>

@@ -131,3 +131,17 @@ class EmployerDetail(BaseModel):
     description: Optional[str] = None
     regions: list[str]
     occupations: list[dict]
+
+
+# ── Student Query models ───────────────────────────────────────────────────
+
+
+class StudentQueryRequest(BaseModel):
+    query: str
+    college: str
+
+
+class StudentQueryResponse(BaseModel):
+    students: list[StudentSummary]
+    message: str
+    cypher: Optional[str] = None

@@ -507,6 +507,39 @@ def load_students(driver: Driver, institution: str, students: List[GeneratedStud
         skills_created = result.single()["created"]
         logger.info(f"Materialized {skills_created} HAS_SKILL relationships")
 
+        # Materialize gpa, primary_focus, courses_completed on Student nodes
+        logger.info("Materializing derived student fields (gpa, primary_focus, courses_completed)...")
+        student_records = session.run("""
+            MATCH (st:Student)-[e:ENROLLED_IN]->(c:Course {college: $inst})
+            WITH st, collect({department: c.department, grade: e.grade, status: e.status}) AS enrollments
+            RETURN st.uuid AS uuid, enrollments
+        """, inst=institution).data()
+
+        from ontology.utils import compute_gpa, compute_primary_focus
+        field_batch = []
+        for rec in student_records:
+            enrollments = rec["enrollments"]
+            completed = [e for e in enrollments if e.get("status") == "Completed"]
+            grades = [e["grade"] for e in completed if e.get("grade")]
+            field_batch.append({
+                "uuid": rec["uuid"],
+                "gpa": compute_gpa(grades),
+                "primary_focus": compute_primary_focus(enrollments),
+                "courses_completed": len(completed),
+            })
+
+        for i in range(0, len(field_batch), 500):
+            batch = field_batch[i : i + 500]
+            session.run("""
+                UNWIND $batch AS row
+                MATCH (s:Student {uuid: row.uuid})
+                SET s.gpa = row.gpa,
+                    s.primary_focus = row.primary_focus,
+                    s.courses_completed = row.courses_completed
+            """, batch=batch)
+
+        logger.info(f"Materialized derived fields on {len(field_batch)} students")
+
         return loaded
 
 

@@ -123,6 +123,25 @@ export async function getStudent(uuid: string, college: string): Promise<ApiStud
   return res.json();
 }
 
+export type StudentQueryResponse = {
+  students: ApiStudentSummary[];
+  message: string;
+  cypher: string | null;
+};
+
+export async function queryStudents(query: string, college: string): Promise<StudentQueryResponse> {
+  const res = await fetch(`${BASE}/ontology/students/query`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ query, college }),
+  });
+  if (!res.ok) {
+    const detail = await res.text();
+    throw new Error(detail || "Query failed");
+  }
+  return res.json();
+}
+
 export type ApiDepartmentSummary = {
   department: string;
   course_count: number;

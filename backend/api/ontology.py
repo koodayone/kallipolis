@@ -1,7 +1,8 @@
-from collections import Counter
 from fastapi import APIRouter, HTTPException
 from ontology.schema import get_driver
-from models import CollegeSummary, CollegeDepartment, StudentSummary, StudentDetail, StudentEnrollment, DepartmentSummary, CourseSummary
+from ontology.utils import compute_gpa
+from models import CollegeSummary, CollegeDepartment, StudentSummary, StudentDetail, StudentEnrollment, DepartmentSummary, CourseSummary, StudentQueryRequest, StudentQueryResponse
+from workflows.student_query import run_student_query
 
 router = APIRouter()
 
@@ -60,21 +61,6 @@ def get_departments_with_courses(college: str):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-GRADE_POINTS = {"A": 4.0, "B": 3.0, "C": 2.0, "D": 1.0, "F": 0.0}
-
-
-def _compute_gpa(grades: list[str]) -> float:
-    graded = [GRADE_POINTS[g] for g in grades if g in GRADE_POINTS]
-    if not graded:
-        return 0.0
-    return round(sum(graded) / len(graded), 2)
-
-
-def _compute_primary_focus(enrollments: list[dict]) -> str:
-    completed = [e["department"] for e in enrollments if e["status"] == "Completed" and e.get("department")]
-    if not completed:
-        return "Undeclared"
-    return Counter(completed).most_common(1)[0][0]
 
 
 @router.get("/students", response_model=list[StudentSummary])
@@ -83,33 +69,24 @@ def get_students(college: str):
     try:
         with driver.session() as session:
             result = session.run("""
-                MATCH (s:Student)-[e:ENROLLED_IN]->(c:Course {college: $college})
-                WITH s, collect({
-                    name: c.name,
-                    department: c.department,
-                    grade: e.grade,
-                    term: e.term,
-                    status: e.status
-                }) AS enrollments
-                RETURN s.uuid AS uuid, enrollments
+                MATCH (s:Student)-[:ENROLLED_IN]->(:Course {college: $college})
+                WITH DISTINCT s
+                RETURN s.uuid AS uuid, s.gpa AS gpa,
+                       s.primary_focus AS primary_focus,
+                       s.courses_completed AS courses_completed
+                ORDER BY s.courses_completed DESC
             """, college=college)
             records = result.data()
 
-        students = []
-        for record in records:
-            enrollments = record["enrollments"]
-            completed = [e for e in enrollments if e["status"] == "Completed"]
-            grades = [e["grade"] for e in completed]
-
-            students.append(StudentSummary(
-                uuid=record["uuid"],
-                primary_focus=_compute_primary_focus(enrollments),
-                courses_completed=len(completed),
-                gpa=_compute_gpa(grades),
-            ))
-
-        students.sort(key=lambda s: s.courses_completed, reverse=True)
-        return students
+        return [
+            StudentSummary(
+                uuid=r["uuid"],
+                primary_focus=r.get("primary_focus", "Undeclared"),
+                courses_completed=r.get("courses_completed", 0),
+                gpa=r.get("gpa", 0.0),
+            )
+            for r in records
+        ]
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -161,7 +138,7 @@ def get_student(student_uuid: str, college: str):
             uuid=student_uuid,
             primary_focus=primary_focus,
             courses_completed=len(all_grades),
-            gpa=_compute_gpa(all_grades),
+            gpa=compute_gpa(all_grades),
             enrollments=enrollments,
             skills=sorted(all_skills),
         )
@@ -214,5 +191,16 @@ def get_courses(department: str, college: str):
                 )
                 for r in result.data()
             ]
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/students/query", response_model=StudentQueryResponse)
+async def query_students(req: StudentQueryRequest):
+    try:
+        students, message, cypher = await run_student_query(req.query, req.college)
+        return StudentQueryResponse(students=students, message=message, cypher=cypher)
+    except ValueError as e:
+        raise HTTPException(status_code=422, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
