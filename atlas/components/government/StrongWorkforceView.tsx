@@ -19,14 +19,11 @@ const PARTNERSHIP_DEFAULTS: Record<string, {
   apprenticeship: boolean;
   wbl: boolean;
 }> = {
-  "Internship Pipeline": { goal: "Workforce", metrics: ["Employed in Field of Study", "Median Annual Earnings"], apprenticeship: false, wbl: true },
-  "Apprenticeship Program": { goal: "Workforce", metrics: ["Employed in Field of Study", "Attained a Living Wage", "Job Closely Related to Field of Study"], apprenticeship: true, wbl: true },
-  "Co-op Employment": { goal: "Workforce", metrics: ["Employed in Field of Study", "Median Annual Earnings"], apprenticeship: false, wbl: true },
-  "Hiring Commitment MOU": { goal: "Workforce", metrics: ["Employed in Field of Study", "Attained a Living Wage"], apprenticeship: false, wbl: false },
-  "Advisory Board Seat": { goal: "Completion", metrics: ["Completed a Degree or Certificate"], apprenticeship: false, wbl: false },
-  "Guest Lecture Series": { goal: "Completion", metrics: ["Completed a Degree or Certificate"], apprenticeship: false, wbl: false },
-  "Equipment Donation & Lab Access": { goal: "Completion", metrics: ["Completed a Degree or Certificate"], apprenticeship: false, wbl: false },
-  "Tuition Reimbursement Compact": { goal: "Completion", metrics: ["Completed a Degree or Certificate", "Transfer to Four-Year Institution"], apprenticeship: false, wbl: false },
+  "internship":          { goal: "Workforce",  metrics: ["Employed in Field of Study", "Median Annual Earnings"], apprenticeship: false, wbl: true },
+  "apprenticeship":      { goal: "Workforce",  metrics: ["Employed in Field of Study", "Attained a Living Wage", "Job Closely Related to Field of Study"], apprenticeship: true, wbl: true },
+  "curriculum_codesign": { goal: "Completion", metrics: ["Completed a Degree or Certificate"], apprenticeship: false, wbl: false },
+  "hiring_mou":          { goal: "Workforce",  metrics: ["Employed in Field of Study", "Attained a Living Wage"], apprenticeship: false, wbl: false },
+  "advisory_board":      { goal: "Completion", metrics: ["Completed a Degree or Certificate"], apprenticeship: false, wbl: false },
 };
 
 type Props = {
@@ -61,7 +58,7 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
     setSwpError(null);
 
     // Pre-fill from partnership type
-    const defaults = PARTNERSHIP_DEFAULTS[saved.proposal.partnership_type] || {
+    const defaults = PARTNERSHIP_DEFAULTS[saved.engagementType] || {
       goal: "Workforce", metrics: ["Employed in Field of Study"], apprenticeship: false, wbl: false,
     };
     setGoal(defaults.goal);

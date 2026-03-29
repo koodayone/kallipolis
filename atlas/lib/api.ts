@@ -403,6 +403,7 @@ export type ApiTargetedProposal = {
   economic_impact: ApiEconomicImpact;
   next_steps: string[];
   measurable_objective?: string;
+  type_details?: Record<string, any>;
 };
 
 export async function streamTargetedProposal(

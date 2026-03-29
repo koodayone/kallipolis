@@ -14,65 +14,168 @@ from models import (
 
 logger = logging.getLogger(__name__)
 
-TARGETED_PROPOSAL_PROMPT = """You are an institutional intelligence analyst for California community college workforce partnerships. Your job is to generate a specific, actionable, and evidence-grounded partnership proposal between a community college and a single employer.
+_PREAMBLE = """You are an institutional intelligence analyst for California community college workforce partnerships.
 
 Below is the institutional context for a specific employer:
 
 {context}
 
-Based on this data, generate a partnership proposal as a single JSON object. Every claim must reference specific data from the context — course codes, skill names, student counts, and wage figures. Do not invent data.
+Generate a partnership proposal as a single JSON object. Every claim must reference specific data from the context — course codes, skill names, student counts, and wage figures. Do not invent data."""
 
-The JSON must match this exact schema:
-
-{{
-  "executive_summary": "2-3 sentences maximum. State the employer, the engagement type, and the expected outcome. Do not enumerate skills, course codes, or statistics — just the core thesis of why this partnership makes sense.",
-  "partnership_type": "one of: Internship Pipeline, Apprenticeship Program, Advisory Board Seat, Guest Lecture Series, Equipment Donation & Lab Access, Co-op Employment, Tuition Reimbursement Compact, Hiring Commitment MOU",
+_BASE_SCHEMA = """
+  "executive_summary": "2-3 sentences maximum. State the employer, the partnership type, and the expected outcome. Do not enumerate skills, course codes, or statistics — just the core thesis.",
+  "partnership_type": "{partnership_type_name}",
   "partnership_type_rationale": "2-3 sentences explaining why this partnership type fits the specific alignment/gap pattern",
   "curriculum_alignment": [
-    {{
-      "department": "department name from context",
-      "course_code": "course code from context",
-      "course_name": "course name from context",
-      "skill": "the skill this course develops that the employer needs"
-    }}
+    {{"department": "department name", "course_code": "course code", "course_name": "course name", "skill": "the skill this course develops that the employer needs"}}
   ],
   "skill_gaps": [
-    {{
-      "skill": "a skill the employer needs that the college does NOT develop",
-      "required_by": ["occupation title(s) that require this skill"],
-      "recommended_action": "a specific, actionable recommendation for how the partnership could close this gap"
-    }}
+    {{"skill": "employer-needed skill the college does NOT develop", "required_by": ["occupation title(s)"], "recommended_action": "specific recommendation"}}
   ],
   "student_pipeline": {{
-    "total_students": <integer from context>,
-    "students_with_3plus_courses": <integer from context>,
+    "total_students": "<integer from context>",
+    "students_with_3plus_courses": "<integer from context>",
     "top_skills": ["top 3-5 skills held by the student pipeline"]
   }},
   "economic_impact": {{
-    "occupations": [
-      {{"title": "occupation title", "annual_wage": <integer or null>, "employment": <integer or null>}}
-    ],
-    "aggregate_employment": <total employment across all listed occupations or null>
+    "occupations": [{{"title": "occupation title", "annual_wage": "<integer or null>", "employment": "<integer or null>"}}],
+    "aggregate_employment": "<total employment or null>"
   }},
-  "next_steps": [
-    "Exactly 3 steps in chronological order. Each is one sentence. First step: immediate action. Last step: partnership launch milestone."
-  ],
-  "measurable_objective": "One sentence stating the quantifiable goal. Reference a specific number of students, a role or occupation, and a timeframe. Example: 'Place 40 students in software engineering internships at Google within the first academic year.'"
-}}
+  "next_steps": ["Exactly 3 steps in chronological order. Each is one sentence. First step: immediate action. Last step: partnership launch milestone."],
+  "measurable_objective": "One sentence: specific number of students + role/occupation + timeframe.","""
 
-Guidelines:
+_BASE_GUIDELINES = """
 - Include 4-8 curriculum alignment entries covering the strongest course-to-skill connections
 - Include ALL skill gaps from the context
-- The coordinator has selected a specific partnership engagement type. This type determines the nature of the proposal:
-  * "work_based_learning": Generate an Internship Pipeline, Apprenticeship Program, Co-op Employment, or Clinical Rotation proposal. Focus on student placement, applied experience, and employer site integration.
-  * "curriculum_development": Generate an Advisory Board Seat, Guest Lecture Series, Equipment Donation, or Curriculum Co-design proposal. Focus on program quality, curriculum alignment, and industry input.
-  * "direct_hire": Generate a Hiring Commitment MOU, Tuition Reimbursement Compact, or Guaranteed Interview Program proposal. Focus on employment outcomes, hiring commitments, and career placement.
-- Select the most appropriate specific sub-type based on the employer data and engagement category.
-- The partnership type, executive summary, curriculum alignment emphasis, and next steps should all reflect the selected engagement model.
 - Economic impact should include all occupations the employer hires for that have wage/employment data
 - Next steps should be actionable by a program coordinator — not generic advice
+- Return ONLY valid JSON with no text before or after."""
 
-Return ONLY valid JSON with no text before or after."""
+INTERNSHIP_PROMPT = _PREAMBLE + """
+
+The coordinator has selected an **Internship Pipeline** partnership. Generate a proposal focused on structured student work rotations at the employer site.
+
+The JSON must match this schema:
+{{
+""" + _BASE_SCHEMA.replace("{partnership_type_name}", "Internship Pipeline") + """
+  "type_details": {{
+    "rotation_duration": "e.g. 16 weeks / one semester — must be between 8-16 weeks",
+    "hours_per_week": <integer, typically 15-20>,
+    "academic_credit": "identify a specific course code and unit count for internship credit from the college's catalog",
+    "supervisor_model": "describe on-site employer supervisor + faculty liaison structure, name the relevant department"
+  }}
+}}
+
+Type-specific guidelines:
+- Rotation must be time-bounded (8-16 weeks typical for a semester)
+- Academic credit path must reference an existing course or cooperative education code
+- Supervisor model must name a specific department for the faculty liaison
+- Next steps should include: identifying site supervisors, establishing liability agreements, and launching the first cohort
+- Measurable objective should reference a specific number of students placed in rotations
+""" + _BASE_GUIDELINES
+
+APPRENTICESHIP_PROMPT = _PREAMBLE + """
+
+The coordinator has selected an **Apprenticeship Program** partnership. Generate a proposal for a registered, paid, multi-year career pathway.
+
+The JSON must match this schema:
+{{
+""" + _BASE_SCHEMA.replace("{partnership_type_name}", "Apprenticeship Program") + """
+  "type_details": {{
+    "program_duration": "2-4 years typical",
+    "wage_progression": "starting hourly wage → journey-level wage, based on occupation wage data from context",
+    "das_registration": "note on filing with the California Division of Apprenticeship Standards",
+    "journeyperson_ratio": "e.g. 1 journeyperson per 4 apprentices"
+  }}
+}}
+
+Type-specific guidelines:
+- Must reference the California Division of Apprenticeship Standards (DAS) registration requirement
+- Must define a wage progression from entry to journey-level, grounded in the wage data from context
+- Program duration should be 2-4 years
+- Next steps should include: convening a program design committee, filing DAS paperwork, and recruiting the first apprentice cohort
+- Measurable objective should reference apprentices reaching journey status
+""" + _BASE_GUIDELINES
+
+CURRICULUM_CODESIGN_PROMPT = _PREAMBLE + """
+
+The coordinator has selected a **Curriculum Co-Design** partnership. Generate a proposal where the employer shapes program content and quality.
+
+The JSON must match this schema:
+{{
+""" + _BASE_SCHEMA.replace("{partnership_type_name}", "Curriculum Co-Design") + """
+  "type_details": {{
+    "collaboration_scope": "which specific programs or courses will be redesigned — reference departments from context",
+    "review_cycle": "e.g. quarterly curriculum review meetings",
+    "deliverables": "concrete artifacts: revised course outlines, new lab exercises, updated learning outcomes, etc.",
+    "skill_gaps_addressed": ["list the specific skill gaps from the context that this collaboration targets"]
+  }}
+}}
+
+Type-specific guidelines:
+- Must reference specific skill gaps from the context that the curriculum redesign addresses
+- Collaboration scope must name specific departments and courses from the context
+- Deliverables must be concrete artifacts, not vague outcomes
+- Review cycle should define a cadence for faculty-industry meetings
+- Next steps should include: convening a faculty-industry working group, conducting a curriculum gap audit, and piloting revised content
+- Measurable objective should reference credential completion or skill gap closure
+""" + _BASE_GUIDELINES
+
+HIRING_MOU_PROMPT = _PREAMBLE + """
+
+The coordinator has selected a **Hiring MOU** partnership. Generate a proposal for a formal employer commitment to hire graduates.
+
+The JSON must match this schema:
+{{
+""" + _BASE_SCHEMA.replace("{partnership_type_name}", "Hiring MOU") + """
+  "type_details": {{
+    "headcount_commitment": <integer — a specific number of hires per year, grounded in pipeline data>,
+    "roles_covered": ["specific occupation titles from the context"],
+    "minimum_qualifications": "what graduates need to qualify — reference relevant courses or credentials",
+    "hiring_timeline": "e.g. rolling basis, annual cohort, upon program completion"
+  }}
+}}
+
+Type-specific guidelines:
+- Must specify a concrete headcount commitment grounded in the student pipeline size (not aspirational)
+- Roles covered must reference specific occupation titles from the context
+- Minimum qualifications should reference courses or credentials the college offers
+- Hiring timeline must be specific, not open-ended
+- Next steps should include: drafting the MOU document, establishing qualification criteria with the employer, and identifying the first eligible cohort
+- Measurable objective should reference hires placed in specific roles
+""" + _BASE_GUIDELINES
+
+ADVISORY_BOARD_PROMPT = _PREAMBLE + """
+
+The coordinator has selected an **Advisory Board** partnership. Generate a proposal for ongoing strategic guidance from the employer. Note: Advisory boards typically do not require SWP or other grant funding — this is a relationship-based partnership.
+
+The JSON must match this schema:
+{{
+""" + _BASE_SCHEMA.replace("{partnership_type_name}", "Advisory Board") + """
+  "type_details": {{
+    "meeting_cadence": "e.g. quarterly, twice per year",
+    "program_scope": ["specific departments or programs the board advises — from context"],
+    "initial_agenda": ["2-3 specific topics for the first meeting, grounded in skill gaps or curriculum alignment from context"],
+    "membership_expectations": "what the employer representative commits to: attendance, feedback, industry trend briefings, etc."
+  }}
+}}
+
+Type-specific guidelines:
+- Must scope the board to specific departments where skill alignment exists in the context
+- Initial agenda topics must be grounded in skill gaps or curriculum needs from the data
+- This partnership does NOT require SWP funding — do not reference grant applications or funding mechanisms
+- Meeting cadence should be realistic (quarterly is standard)
+- Next steps should include: sending a formal invitation, scheduling the inaugural meeting, and preparing the first agenda
+- Measurable objective should reference curriculum improvements or industry alignment milestones, not student placements
+""" + _BASE_GUIDELINES
+
+PROMPTS: dict[str, str] = {
+    "internship": INTERNSHIP_PROMPT,
+    "apprenticeship": APPRENTICESHIP_PROMPT,
+    "curriculum_codesign": CURRICULUM_CODESIGN_PROMPT,
+    "hiring_mou": HIRING_MOU_PROMPT,
+    "advisory_board": ADVISORY_BOARD_PROMPT,
+}
 
 
 def _gather_targeted_context(employer: str, college: str, engagement_type: str = "") -> str:
@@ -252,18 +355,22 @@ def _parse_targeted_proposal(raw: str, employer: str) -> TargetedProposal:
         economic_impact=EconomicImpact(**data["economic_impact"]),
         next_steps=data.get("next_steps", []),
         measurable_objective=data.get("measurable_objective", ""),
+        type_details=data.get("type_details", {}),
     )
 
 
-def _call_claude(context: str) -> str:
+def _get_prompt(engagement_type: str, context: str) -> str:
+    """Select and format the type-specific prompt template."""
+    template = PROMPTS.get(engagement_type, INTERNSHIP_PROMPT)
+    return template.format(context=context)
+
+
+def _call_claude(prompt_text: str) -> str:
     client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
     message = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=4096,
-        messages=[{
-            "role": "user",
-            "content": TARGETED_PROPOSAL_PROMPT.format(context=context),
-        }],
+        messages=[{"role": "user", "content": prompt_text}],
     )
     return message.content[0].text
 
@@ -271,8 +378,9 @@ def _call_claude(context: str) -> str:
 async def run_targeted_proposal(employer: str, college: str, engagement_type: str = "") -> TargetedProposal:
     """Generate a targeted partnership proposal for a specific employer."""
     context = _gather_targeted_context(employer, college, engagement_type)
-    logger.info(f"Gathered targeted context for {employer}, calling Claude...")
-    raw = _call_claude(context)
+    prompt_text = _get_prompt(engagement_type, context)
+    logger.info(f"Gathered targeted context for {employer} ({engagement_type}), calling Claude...")
+    raw = _call_claude(prompt_text)
     logger.info("Claude response received, parsing proposal...")
     proposal = _parse_targeted_proposal(raw, employer)
     logger.info(f"Parsed targeted proposal for {employer}.")
@@ -282,7 +390,8 @@ async def run_targeted_proposal(employer: str, college: str, engagement_type: st
 def stream_targeted_proposal(employer: str, college: str, engagement_type: str = ""):
     """Generator that yields a TargetedProposal when Claude's streaming response completes."""
     context = _gather_targeted_context(employer, college, engagement_type)
-    logger.info(f"Gathered targeted context for {employer}, starting Claude stream...")
+    prompt_text = _get_prompt(engagement_type, context)
+    logger.info(f"Gathered targeted context for {employer} ({engagement_type}), starting Claude stream...")
 
     client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
     accumulated = ""
@@ -290,15 +399,11 @@ def stream_targeted_proposal(employer: str, college: str, engagement_type: str =
     with client.messages.stream(
         model="claude-sonnet-4-6",
         max_tokens=4096,
-        messages=[{
-            "role": "user",
-            "content": TARGETED_PROPOSAL_PROMPT.format(context=context),
-        }],
+        messages=[{"role": "user", "content": prompt_text}],
     ) as stream:
         for text in stream.text_stream:
             accumulated += text
 
-    # Parse the complete response
     proposal = _parse_targeted_proposal(accumulated, employer)
     logger.info(f"Stream complete: proposal for {employer}")
     yield proposal

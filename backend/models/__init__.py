@@ -266,6 +266,7 @@ class TargetedProposal(BaseModel):
     economic_impact: EconomicImpact
     next_steps: list[str]
     measurable_objective: str = ""
+    type_details: dict = {}
 
 
 # ── SWP models ────��────────────────────────────────────────────────────

@@ -12,24 +12,11 @@ import ProposalCard from "@/components/domains/ProposalCard";
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
 const ENGAGEMENT_TYPES = [
-  {
-    key: "work_based_learning",
-    title: "Work-Based Learning",
-    description: "Place students at this employer for hands-on experience",
-    covers: ["Internships", "Apprenticeships", "Co-ops", "Clinical rotations"],
-  },
-  {
-    key: "curriculum_development",
-    title: "Curriculum Development",
-    description: "Partner with this employer to build or improve a program",
-    covers: ["Advisory boards", "Guest lectures", "Equipment donations", "Curriculum co-design"],
-  },
-  {
-    key: "direct_hire",
-    title: "Direct Hire Pipeline",
-    description: "Create a commitment for this employer to hire our graduates",
-    covers: ["Hiring MOUs", "Tuition reimbursement", "Guaranteed interviews", "Scholarships"],
-  },
+  { key: "internship", title: "Internship Pipeline", description: "Place students at this employer for structured work rotations" },
+  { key: "apprenticeship", title: "Apprenticeship Program", description: "Create a registered, paid, multi-year career pathway" },
+  { key: "curriculum_codesign", title: "Curriculum Co-Design", description: "Partner with this employer to shape program content" },
+  { key: "hiring_mou", title: "Hiring MOU", description: "Secure a commitment from this employer to hire graduates" },
+  { key: "advisory_board", title: "Advisory Board", description: "Establish ongoing strategic guidance for your programs" },
 ];
 
 type Props = {
@@ -100,19 +87,8 @@ export default function SplitView({
                     <div style={{ fontFamily: FONT, fontSize: "14px", fontWeight: 600, color: selected ? school.brandColorLight : "rgba(255,255,255,0.85)", marginBottom: "4px" }}>
                       {et.title}
                     </div>
-                    <div style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)", lineHeight: 1.5, marginBottom: "8px" }}>
+                    <div style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)", lineHeight: 1.5 }}>
                       {et.description}
-                    </div>
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-                      {et.covers.map((c) => (
-                        <span key={c} style={{
-                          fontFamily: FONT, fontSize: "11px",
-                          color: selected ? school.brandColorLight : "rgba(255,255,255,0.3)",
-                          background: selected ? `${school.brandColorLight}12` : "rgba(255,255,255,0.04)",
-                          border: `1px solid ${selected ? school.brandColorLight + "25" : "rgba(255,255,255,0.06)"}`,
-                          borderRadius: "100px", padding: "3px 9px",
-                        }}>{c}</span>
-                      ))}
                     </div>
                   </button>
                 );
