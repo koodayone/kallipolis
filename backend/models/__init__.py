@@ -224,7 +224,7 @@ class PartnershipQueryResponse(BaseModel):
 class ProposalRequest(BaseModel):
     employer: str
     college: str
-    objective: Optional[str] = None
+    engagement_type: str = ""
 
 
 # ── Targeted Proposal models ─────────────────────────────────────────────
@@ -265,3 +265,65 @@ class TargetedProposal(BaseModel):
     student_pipeline: PipelineStats
     economic_impact: EconomicImpact
     next_steps: list[str]
+    measurable_objective: str = ""
+
+
+# ── SWP models ────��────────────────────────────────────────────────────
+
+
+class SwpProjectRequest(BaseModel):
+    employer: str
+    college: str
+    partnership_type: str
+    executive_summary: str
+    curriculum_alignment: list[AlignmentDetail]
+    skill_gaps: list[SkillGapDetail]
+    student_pipeline: PipelineStats
+    economic_impact: EconomicImpact
+    project_framing: str
+    goal: str
+    metrics: list[str]
+    apprenticeship: bool = False
+    work_based_learning: bool = False
+    workforce_training_type: Optional[str] = None
+
+
+class LmiOccupation(BaseModel):
+    soc_code: str
+    title: str
+    annual_wage: Optional[int] = None
+    employment: Optional[int] = None
+    region: str
+
+
+class SupplyEstimate(BaseModel):
+    top_code: str
+    top_title: str
+    department: str
+    estimated_annual_completions: int
+
+
+class LmiContext(BaseModel):
+    occupations: list[LmiOccupation]
+    supply_estimates: list[SupplyEstimate]
+    total_demand: int
+    total_supply: int
+    gap: int
+    gap_eligible: bool
+
+
+class SwpSection(BaseModel):
+    key: str
+    title: str
+    content: str
+    char_limit: Optional[int] = None
+
+
+class SwpProject(BaseModel):
+    employer: str
+    college: str
+    partnership_type: str
+    sections: list[SwpSection]
+    lmi_context: LmiContext
+    goal: str
+    metrics: list[str]

@@ -402,6 +402,7 @@ export type ApiTargetedProposal = {
   student_pipeline: ApiPipelineStats;
   economic_impact: ApiEconomicImpact;
   next_steps: string[];
+  measurable_objective?: string;
 };
 
 export async function streamTargetedProposal(
@@ -410,12 +411,12 @@ export async function streamTargetedProposal(
   onProposal: (proposal: ApiTargetedProposal) => void,
   onDone: () => void,
   onError: (error: string) => void,
-  objective?: string,
+  engagementType: string,
 ): Promise<void> {
   const res = await fetch(`${BASE}/workflows/partnerships/targeted/stream`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ employer, college, ...(objective ? { objective } : {}) }),
+    body: JSON.stringify({ employer, college, engagement_type: engagementType }),
   });
   if (!res.ok) {
     onError(await res.text());
@@ -439,6 +440,127 @@ export async function streamTargetedProposal(
           if (json.done) { onDone(); return; }
           if (json.error) { onError(json.error); return; }
           onProposal(json as ApiTargetedProposal);
+        } catch {
+          // Incomplete JSON line, skip
+        }
+      }
+    }
+  }
+  onDone();
+}
+
+
+/* ── SWP Types & Functions ──────────────────────────────────────────── */
+
+export type ApiLmiOccupation = {
+  soc_code: string;
+  title: string;
+  annual_wage: number | null;
+  employment: number | null;
+  region: string;
+};
+
+export type ApiSupplyEstimate = {
+  top_code: string;
+  top_title: string;
+  department: string;
+  estimated_annual_completions: number;
+};
+
+export type ApiLmiContext = {
+  occupations: ApiLmiOccupation[];
+  supply_estimates: ApiSupplyEstimate[];
+  total_demand: number;
+  total_supply: number;
+  gap: number;
+  gap_eligible: boolean;
+};
+
+export type ApiSwpSection = {
+  key: string;
+  title: string;
+  content: string;
+  char_limit: number | null;
+};
+
+export type ApiSwpProject = {
+  employer: string;
+  college: string;
+  partnership_type: string;
+  sections: ApiSwpSection[];
+  lmi_context: ApiLmiContext;
+  goal: string;
+  metrics: string[];
+};
+
+export type SwpProjectRequest = {
+  employer: string;
+  college: string;
+  partnership_type: string;
+  executive_summary: string;
+  curriculum_alignment: ApiAlignmentDetail[];
+  skill_gaps: ApiSkillGapDetail[];
+  student_pipeline: ApiPipelineStats;
+  economic_impact: ApiEconomicImpact;
+  project_framing: string;
+  goal: string;
+  metrics: string[];
+  apprenticeship: boolean;
+  work_based_learning: boolean;
+  workforce_training_type?: string;
+};
+
+export async function getSwpLmiContext(
+  employer: string,
+  college: string,
+): Promise<ApiLmiContext> {
+  const res = await fetch(`${BASE}/workflows/swp/lmi-context`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ employer, college }),
+  });
+  if (!res.ok) throw new Error("Failed to fetch LMI context");
+  return res.json();
+}
+
+export async function streamSwpProject(
+  req: SwpProjectRequest,
+  onLmi: (lmi: ApiLmiContext) => void,
+  onSection: (section: ApiSwpSection) => void,
+  onDone: () => void,
+  onError: (error: string) => void,
+): Promise<void> {
+  const res = await fetch(`${BASE}/workflows/swp/project/stream`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(req),
+  });
+  if (!res.ok) {
+    onError(await res.text());
+    return;
+  }
+  const reader = res.body!.getReader();
+  const decoder = new TextDecoder();
+  let buffer = "";
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buffer += decoder.decode(value, { stream: true });
+
+    const lines = buffer.split("\n");
+    buffer = lines.pop() || "";
+    for (const line of lines) {
+      if (line.startsWith("data: ")) {
+        try {
+          const parsed = JSON.parse(line.slice(6));
+          if (parsed.done) { onDone(); return; }
+          if (parsed.error) { onError(parsed.error); return; }
+          if (parsed.type === "lmi") {
+            onLmi(parsed.lmi_context as ApiLmiContext);
+          } else if (parsed.type === "section") {
+            onSection(parsed.section as ApiSwpSection);
+          }
         } catch {
           // Incomplete JSON line, skip
         }

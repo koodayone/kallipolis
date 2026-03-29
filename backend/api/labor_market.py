@@ -248,14 +248,21 @@ def get_partnership_landscape(college: str):
                 OPTIONAL MATCH (course:Course {college: $college})-[:DEVELOPS]->(sk)
                 WITH emp, sk, occ,
                      CASE WHEN count(course) > 0 THEN true ELSE false END AS developed
+                WITH emp, sk.name AS skill_name, developed,
+                     count(DISTINCT occ) AS occ_count,
+                     collect(DISTINCT occ)[0] AS sample_occ
+                ORDER BY occ_count DESC
                 WITH emp,
-                     collect(DISTINCT CASE WHEN developed THEN sk.name END) AS raw_aligned,
-                     collect(DISTINCT CASE WHEN NOT developed THEN sk.name END) AS raw_gaps,
-                     collect(DISTINCT {title: occ.title, wage: occ.annual_wage}) AS occ_entries
+                     collect(CASE WHEN developed THEN {name: skill_name, freq: occ_count} END) AS raw_aligned,
+                     collect(CASE WHEN NOT developed THEN skill_name END) AS raw_gaps,
+                     collect(DISTINCT {title: sample_occ.title, wage: sample_occ.annual_wage}) AS occ_entries
                 WITH emp,
-                     [x IN raw_aligned WHERE x IS NOT NULL] AS aligned_skills,
+                     [x IN raw_aligned WHERE x IS NOT NULL] AS aligned_ranked,
                      [x IN raw_gaps WHERE x IS NOT NULL] AS gap_skills,
                      occ_entries[0] AS top_occ
+                WITH emp,
+                     [x IN aligned_ranked | x.name] AS aligned_skills,
+                     gap_skills, top_occ
                 RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
                        size(aligned_skills) AS alignment_score,
                        size(gap_skills) AS gap_count,
@@ -297,7 +304,9 @@ def get_employer_pipeline(employer: str, college: str):
                       -[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)
                       <-[:HAS_SKILL]-(st:Student)
                 WHERE EXISTS { (st)-[:ENROLLED_IN]->(:Course {college: $college}) }
-                RETURN count(DISTINCT st) AS pipeline_size
+                WITH st, count(DISTINCT sk) AS matching_skills
+                WHERE matching_skills >= 3
+                RETURN count(st) AS pipeline_size
             """, college=college, employer=employer)
             record = result.single()
 

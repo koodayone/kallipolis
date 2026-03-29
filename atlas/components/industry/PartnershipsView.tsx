@@ -6,14 +6,17 @@ import { SchoolConfig } from "@/lib/schoolConfig";
 import {
   getPartnershipLandscape,
   getEmployerPipeline,
+  getEmployerDetail,
   queryPartnerships,
   streamTargetedProposal,
 } from "@/lib/api";
-import type { ApiPartnershipOpportunity, ApiTargetedProposal } from "@/lib/api";
+import type { ApiPartnershipOpportunity, ApiTargetedProposal, ApiEmployerDetail } from "@/lib/api";
+import { getSavedProposals, removeProposal, type SavedProposal } from "@/lib/savedProposals";
 import LeafHeader from "@/components/ui/LeafHeader";
 import RisingSun from "@/components/ui/RisingSun";
 import Badge from "@/components/ui/Badge";
 import SplitView from "./SplitView";
+import ProposalCard from "@/components/domains/ProposalCard";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
@@ -35,7 +38,7 @@ export default function PartnershipsView({ school, onBack }: Props) {
   const [phase, setPhase] = useState<Phase>("selection");
   const [mode, setMode] = useState<Mode>("build");
   const [selectedEmployer, setSelectedEmployer] = useState<ApiPartnershipOpportunity | null>(null);
-  const [objective, setObjective] = useState("");
+  const [engagementType, setEngagementType] = useState("");
   const [proposal, setProposal] = useState<ApiTargetedProposal | null>(null);
   const [proposalError, setProposalError] = useState<string | null>(null);
 
@@ -54,11 +57,33 @@ export default function PartnershipsView({ school, onBack }: Props) {
   const [pipelineData, setPipelineData] = useState<Record<string, number>>({});
   const [pipelineLoading, setPipelineLoading] = useState<Set<string>>(new Set());
 
-  const allOpportunities = [...landscape].sort((a, b) => b.alignment_score - a.alignment_score);
+  // Employer detail cache (for expanded row occupation list)
+  const [employerDetails, setEmployerDetails] = useState<Record<string, ApiEmployerDetail>>({});
+
+  // Manage mode state
+  const [savedProposals, setSavedProposals] = useState<SavedProposal[]>([]);
+  const [expandedSavedId, setExpandedSavedId] = useState<string | null>(null);
+
+  const allOpportunities = [...landscape].sort((a, b) => a.name.localeCompare(b.name));
+
+  const filteredOpportunities = query.trim()
+    ? allOpportunities.filter((opp) => {
+        const q = query.toLowerCase();
+        return opp.name.toLowerCase().includes(q) || (opp.sector || "").toLowerCase().includes(q);
+      })
+    : allOpportunities;
 
   useEffect(() => {
     getPartnershipLandscape(school.name)
-      .then((data) => setLandscape(data.opportunities))
+      .then((data) => {
+        setLandscape(data.opportunities);
+        // Pre-fetch pipeline sizes for expanded row display
+        for (const opp of data.opportunities.slice(0, 20)) {
+          getEmployerPipeline(opp.name, school.name)
+            .then((d) => setPipelineData((prev) => ({ ...prev, [opp.name]: d.pipeline_size })))
+            .catch(() => {});
+        }
+      })
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
     fetch("/api/auth/me")
@@ -66,6 +91,13 @@ export default function PartnershipsView({ school, onBack }: Props) {
       .then((data) => { if (data?.user?.name) setUserName(data.user.name.split(" ")[0]); })
       .catch(() => {});
   }, [school.name]);
+
+  // Reload saved proposals when switching to manage mode or after saving
+  useEffect(() => {
+    if (mode === "manage") {
+      setSavedProposals(getSavedProposals(school.name));
+    }
+  }, [mode, school.name]);
 
   // Phase 1 handlers
   const handleSubmit = useCallback(async () => {
@@ -119,7 +151,12 @@ export default function PartnershipsView({ school, onBack }: Props) {
       } catch {}
       finally { setPipelineLoading((prev) => { const next = new Set(prev); next.delete(name); return next; }); }
     }
-  }, [expandedNames, pipelineData, pipelineLoading, school.name]);
+    if (!employerDetails[name]) {
+      getEmployerDetail(name, school.name)
+        .then((detail) => setEmployerDetails((prev) => ({ ...prev, [name]: detail })))
+        .catch(() => {});
+    }
+  }, [expandedNames, pipelineData, pipelineLoading, employerDetails, school.name]);
 
   const handleReset = useCallback(() => {
     setQuery(""); setSubmitted(false); setResults([]); setQueryMessage(null);
@@ -131,13 +168,13 @@ export default function PartnershipsView({ school, onBack }: Props) {
   const handleDraftCTA = useCallback((opp: ApiPartnershipOpportunity) => {
     setSelectedEmployer(opp);
     setPhase("split-view");
-    setObjective("");
+    setEngagementType("");
     setProposal(null);
     setProposalError(null);
   }, []);
 
   const handleGenerate = useCallback(() => {
-    if (!selectedEmployer || !objective.trim()) return;
+    if (!selectedEmployer || !engagementType) return;
     setPhase("generating");
     setProposal(null);
     setProposalError(null);
@@ -147,13 +184,13 @@ export default function PartnershipsView({ school, onBack }: Props) {
       (p) => { setProposal(p); setPhase("complete"); },
       () => {},
       (err) => { setProposalError(err); setPhase("complete"); },
-      objective,
+      engagementType,
     );
-  }, [selectedEmployer, objective, school.name]);
+  }, [selectedEmployer, engagementType, school.name]);
 
   const handleReject = useCallback(() => {
     setPhase("split-view");
-    setObjective("");
+    setEngagementType("");
     setProposal(null);
     setProposalError(null);
   }, []);
@@ -161,7 +198,7 @@ export default function PartnershipsView({ school, onBack }: Props) {
   const handleBackFromSplit = useCallback(() => {
     setPhase("selection");
     setSelectedEmployer(null);
-    setObjective("");
+    setEngagementType("");
     setProposal(null);
     setProposalError(null);
   }, []);
@@ -208,15 +245,89 @@ export default function PartnershipsView({ school, onBack }: Props) {
               </div>
             </div>
 
-            {/* ── Manage Mode: Empty State ── */}
+            {/* ── Manage Mode ── */}
             {mode === "manage" && (
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px", paddingTop: "80px" }}>
-                <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.4)", margin: 0 }}>
-                  No partnerships yet.
-                </p>
-                <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.25)", margin: 0 }}>
-                  Draft your first proposal to get started.
-                </p>
+              <div style={{ maxWidth: "760px", margin: "0 auto", padding: "0 40px 80px" }}>
+                {savedProposals.length === 0 ? (
+                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px", paddingTop: "80px" }}>
+                    <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.4)", margin: 0 }}>
+                      No saved partnerships yet.
+                    </p>
+                    <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.25)", margin: 0 }}>
+                      Draft and save your first proposal to get started.
+                    </p>
+                  </div>
+                ) : (
+                  <div style={{ display: "flex", flexDirection: "column", gap: "12px", paddingTop: "24px" }}>
+                    {savedProposals.map((saved) => {
+                      const p = saved.proposal;
+                      const isExpanded = expandedSavedId === saved.id;
+                      return (
+                        <div key={saved.id}>
+                          <button
+                            onClick={() => setExpandedSavedId(isExpanded ? null : saved.id)}
+                            style={{
+                              width: "100%", textAlign: "left", cursor: "pointer",
+                              padding: "20px", background: isExpanded ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.04)",
+                              border: "1px solid rgba(255,255,255,0.08)", borderRadius: isExpanded ? "8px 8px 0 0" : "8px",
+                              transition: "background 0.15s",
+                            }}
+                            onMouseEnter={(e) => { if (!isExpanded) e.currentTarget.style.background = "rgba(255,255,255,0.06)"; }}
+                            onMouseLeave={(e) => { if (!isExpanded) e.currentTarget.style.background = "rgba(255,255,255,0.04)"; }}
+                          >
+                            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+                              <div>
+                                <h3 style={{ fontFamily: FONT, fontSize: "15px", fontWeight: 600, color: "rgba(255,255,255,0.9)", margin: "0 0 4px" }}>
+                                  {p.employer}
+                                </h3>
+                                <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+                                  <span style={{
+                                    padding: "2px 10px", borderRadius: "100px", fontFamily: FONT, fontSize: "11px", fontWeight: 600,
+                                    background: `${school.brandColorLight}20`, color: school.brandColorLight, border: `1px solid ${school.brandColorLight}40`,
+                                  }}>{p.partnership_type}</span>
+                                  <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.25)" }}>
+                                    {new Date(saved.savedAt).toLocaleDateString()}
+                                  </span>
+                                  {saved.status === "flagged" && (
+                                    <span style={{
+                                      padding: "2px 8px", borderRadius: "100px", fontFamily: FONT, fontSize: "10px", fontWeight: 600,
+                                      background: "rgba(251,191,36,0.15)", color: "rgba(251,191,36,0.9)", border: "1px solid rgba(251,191,36,0.3)",
+                                    }}>Flagged</span>
+                                  )}
+                                </div>
+                              </div>
+                              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                style={{ transform: isExpanded ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s", flexShrink: 0, marginTop: "4px" }}>
+                                <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                              </svg>
+                            </div>
+                          </button>
+                          <AnimatePresence>
+                            {isExpanded && (
+                              <motion.div
+                                initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }}
+                                style={{ overflow: "hidden", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.08)", borderTop: "none", borderRadius: "0 0 8px 8px" }}
+                              >
+                                <div style={{ padding: "16px" }}>
+                                  <ProposalCard
+                                    proposal={p}
+                                    brandColor={school.brandColorLight}
+                                    onDismiss={() => {
+                                      removeProposal(school.name, saved.id);
+                                      setSavedProposals(getSavedProposals(school.name));
+                                      setExpandedSavedId(null);
+                                    }}
+                                  />
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
             )}
 
@@ -230,102 +341,41 @@ export default function PartnershipsView({ school, onBack }: Props) {
                 </div>
               )}
 
-              {/* Initial State */}
-              {!submitted && !loading && (
+              {!loading && (
                 <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
                   style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
                   <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "24px" }}>
                     <RisingSun style={{ width: "70px", height: "auto" }} />
-                    <h1 style={{ fontFamily: FONT, fontSize: "28px", fontWeight: 600, color: "#f0eef4", letterSpacing: "-0.02em", textAlign: "center" }}>
+                    <h1 style={{ fontFamily: FONT, fontSize: "28px", fontWeight: 600, color: "#f0eef4", letterSpacing: "-0.02em", textAlign: "center", margin: 0 }}>
                       Who is our partner{userName ? `, ${userName}` : ""}?
                     </h1>
-                    <div style={{ width: "100%" }}>
+                    <div style={{ width: "100%", position: "relative" }}>
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                        style={{ position: "absolute", left: "18px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }}>
+                        <circle cx="7.5" cy="7.5" r="5.5" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" />
+                        <path d="M11.5 11.5L15.5 15.5" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" />
+                      </svg>
                       <input ref={inputRef} type="text" value={query}
                         onChange={(e) => setQuery(e.target.value)}
-                        onKeyDown={(e) => { if (e.key === "Enter") handleSubmit(); }}
-                        placeholder={`Search by employer name, sector, or skill...`}
+                        placeholder="Search employers..."
                         style={{
-                          width: "100%", padding: "18px 24px", fontFamily: FONT, fontSize: "15px",
+                          width: "100%", padding: "18px 24px 18px 48px", fontFamily: FONT, fontSize: "15px",
                           color: "#f0eef4", background: "rgba(255,255,255,0.04)",
-                          border: "1px solid rgba(255,255,255,0.10)", borderRadius: "16px",
+                          border: "1px solid rgba(255,255,255,0.10)", borderRadius: "6px",
                           outline: "none", transition: "border-color 0.2s, box-shadow 0.2s",
                         }}
                         onFocus={(e) => { e.currentTarget.style.borderColor = `${school.brandColorLight}50`; e.currentTarget.style.boxShadow = `0 0 0 3px ${school.brandColorLight}15`; }}
                         onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)"; e.currentTarget.style.boxShadow = "none"; }}
                       />
                     </div>
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", justifyContent: "center" }}>
-                      {SUGGESTIONS.map((s) => (
-                        <button key={s} onClick={() => handleChip(s)}
-                          style={{
-                            fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.55)",
-                            background: "transparent", border: `1px solid ${school.brandColorLight}35`,
-                            borderRadius: "100px", padding: "8px 18px", cursor: "pointer",
-                            transition: "background 0.15s, color 0.15s, border-color 0.15s",
-                          }}
-                          onMouseEnter={(e) => { const el = e.currentTarget as HTMLElement; el.style.background = `${school.brandColorLight}15`; el.style.borderColor = `${school.brandColorLight}40`; el.style.color = school.brandColorLight; }}
-                          onMouseLeave={(e) => { const el = e.currentTarget as HTMLElement; el.style.background = "transparent"; el.style.borderColor = `${school.brandColorLight}35`; el.style.color = "rgba(255,255,255,0.55)"; }}
-                        >{s}</button>
-                      ))}
-                    </div>
                   </div>
-                  <div style={{ marginTop: "16px" }}>
-                    <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.35)", marginBottom: "12px" }}>
-                      {allOpportunities.length} partnership opportunities
-                    </p>
+                  <div style={{ minHeight: "100vh" }}>
                     <PartnershipList
-                      opportunities={allOpportunities} initialCap={50} school={school}
+                      opportunities={filteredOpportunities} initialCap={50} school={school}
                       expandedNames={expandedNames} pipelineData={pipelineData} pipelineLoading={pipelineLoading}
-                      onExpand={handleExpand} onDraft={handleDraftCTA}
+                      employerDetails={employerDetails} onExpand={handleExpand} onDraft={handleDraftCTA}
                     />
                   </div>
-                </motion.div>
-              )}
-
-              {/* Results State */}
-              {submitted && (
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}
-                  style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-                  <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-                    <input ref={inputRef} type="text" value={query}
-                      onChange={(e) => setQuery(e.target.value)}
-                      onKeyDown={(e) => { if (e.key === "Enter") handleSubmit(); }}
-                      placeholder={`Search by employer name, sector, or skill...`}
-                      style={{
-                        flex: 1, padding: "14px 20px", fontFamily: FONT, fontSize: "14px",
-                        color: "#f0eef4", background: "rgba(255,255,255,0.04)",
-                        border: "1px solid rgba(255,255,255,0.10)", borderRadius: "12px",
-                        outline: "none", transition: "border-color 0.2s, box-shadow 0.2s",
-                      }}
-                      onFocus={(e) => { e.currentTarget.style.borderColor = `${school.brandColorLight}50`; e.currentTarget.style.boxShadow = `0 0 0 3px ${school.brandColorLight}15`; }}
-                      onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)"; e.currentTarget.style.boxShadow = "none"; }}
-                    />
-                    <button onClick={handleReset}
-                      style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)", background: "none", border: "none", cursor: "pointer", padding: "8px" }}
-                      onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.8)"; }}
-                      onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.4)"; }}
-                    >Clear</button>
-                  </div>
-                  {queryLoading && (
-                    <div style={{ display: "flex", justifyContent: "center", paddingTop: "40px" }}>
-                      <RisingSun style={{ width: "50px", height: "auto", opacity: 0.4 }} />
-                    </div>
-                  )}
-                  {!queryLoading && queryMessage && (
-                    <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)" }}>{queryMessage}</p>
-                  )}
-                  {!queryLoading && (
-                    <>
-                      <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)" }}>
-                        {results.length} opportunit{results.length !== 1 ? "ies" : "y"} found
-                      </p>
-                      <PartnershipList
-                        opportunities={results} initialCap={50} school={school}
-                        expandedNames={expandedNames} pipelineData={pipelineData} pipelineLoading={pipelineLoading}
-                        onExpand={handleExpand} onDraft={handleDraftCTA}
-                      />
-                    </>
-                  )}
                 </motion.div>
               )}
             </div>
@@ -347,8 +397,8 @@ export default function PartnershipsView({ school, onBack }: Props) {
               school={school}
               employer={selectedEmployer}
               phase={phase as "split-view" | "generating" | "complete"}
-              objective={objective}
-              onObjectiveChange={setObjective}
+              engagementType={engagementType}
+              onEngagementTypeChange={setEngagementType}
               onGenerate={handleGenerate}
               onReject={handleReject}
               proposal={proposal}
@@ -366,7 +416,7 @@ export default function PartnershipsView({ school, onBack }: Props) {
 
 function PartnershipList({
   opportunities, initialCap, school, expandedNames, pipelineData, pipelineLoading,
-  onExpand, onDraft,
+  employerDetails, onExpand, onDraft,
 }: {
   opportunities: ApiPartnershipOpportunity[];
   initialCap: number;
@@ -374,13 +424,14 @@ function PartnershipList({
   expandedNames: Set<string>;
   pipelineData: Record<string, number>;
   pipelineLoading: Set<string>;
+  employerDetails: Record<string, ApiEmployerDetail>;
   onExpand: (opp: ApiPartnershipOpportunity) => void;
   onDraft: (opp: ApiPartnershipOpportunity) => void;
 }) {
   const [visibleCount, setVisibleCount] = useState(initialCap);
   const sentinelRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => { setVisibleCount(initialCap); }, [opportunities, initialCap]);
+  useEffect(() => { setVisibleCount(initialCap); }, [initialCap]);
 
   useEffect(() => {
     const sentinel = sentinelRef.current;
@@ -400,14 +451,12 @@ function PartnershipList({
     <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
       {/* Column headers */}
       <div style={{
-        display: "grid", gridTemplateColumns: "24px 1fr 200px 56px 56px",
+        display: "grid", gridTemplateColumns: "24px 1fr 160px",
         padding: "12px 16px", gap: "10px", alignItems: "center",
       }}>
         <span />
         <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Employer</span>
         <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Sector</span>
-        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, textAlign: "center" }}>Aligned</span>
-        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, textAlign: "center" }}>Gaps</span>
       </div>
 
       {visible.map((opp, i) => {
@@ -415,13 +464,11 @@ function PartnershipList({
         return (
           <div key={opp.name}>
             <motion.button
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.2, delay: Math.min(i * 0.015, 0.3) }}
+              layout
               onClick={() => onExpand(opp)}
               style={{
                 width: "100%", textAlign: "left",
-                display: "grid", gridTemplateColumns: "24px 1fr 200px 56px 56px",
+                display: "grid", gridTemplateColumns: "24px 1fr 160px",
                 padding: "12px 16px", gap: "10px", alignItems: "center",
                 background: isOpen ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
                 border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
@@ -436,12 +483,6 @@ function PartnershipList({
               </svg>
               <span style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>{opp.name}</span>
               <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)" }}>{opp.sector || "—"}</span>
-              <Badge style={{ color: school.brandColorLight, background: `${school.brandColorLight}20`, border: `1px solid ${school.brandColorLight}30`, fontSize: "11px", whiteSpace: "nowrap", display: "flex", justifyContent: "center" }}>
-                {opp.alignment_score}
-              </Badge>
-              <Badge style={{ color: "rgba(255,255,255,0.45)", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.10)", fontSize: "11px", whiteSpace: "nowrap", display: "flex", justifyContent: "center" }}>
-                {opp.gap_count}
-              </Badge>
             </motion.button>
 
             <AnimatePresence>
@@ -453,57 +494,57 @@ function PartnershipList({
                 >
                   <div style={{ padding: "16px 20px 24px" }}>
                     {opp.description && (
-                      <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.7)", lineHeight: 1.55, margin: "0 0 16px" }}>
+                      <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.55)", lineHeight: 1.55, margin: "0 0 14px" }}>
                         {opp.description}
                       </p>
                     )}
-                    {opp.top_occupation && (
-                      <div style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)", marginBottom: "12px" }}>
-                        Top role: <span style={{ color: "rgba(255,255,255,0.6)", fontWeight: 500 }}>{opp.top_occupation}</span>
-                        {opp.top_wage && <span> · ${opp.top_wage.toLocaleString()}/yr</span>}
-                      </div>
-                    )}
-                    <div style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)", marginBottom: "12px" }}>
-                      Student pipeline:{" "}
-                      {pipelineLoading.has(opp.name) ? (
-                        <span style={{ color: "rgba(255,255,255,0.3)" }}>Loading...</span>
-                      ) : pipelineData[opp.name] !== undefined ? (
-                        <span style={{ color: "rgba(255,255,255,0.6)", fontWeight: 500 }}>{pipelineData[opp.name].toLocaleString()} students</span>
-                      ) : null}
-                    </div>
-                    {opp.aligned_skills.length > 0 && (
-                      <div style={{ marginBottom: "12px" }}>
-                        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, display: "block", marginBottom: "8px" }}>
-                          Aligned Skills ({opp.aligned_skills.length})
-                        </span>
-                        <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-                          {opp.aligned_skills.map((skill) => (
-                            <span key={skill} style={{
-                              fontFamily: FONT, fontSize: "11px", color: school.brandColorLight,
-                              background: `${school.brandColorLight}15`, border: `1px solid ${school.brandColorLight}30`,
-                              borderRadius: "100px", padding: "4px 10px",
-                            }}>{skill}</span>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                    {opp.gap_skills.length > 0 && (
+                    {/* Occupations & Wages */}
+                    {employerDetails[opp.name] ? (
                       <div style={{ marginBottom: "16px" }}>
                         <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", display: "block", marginBottom: "8px" }}>
-                          Skill Gaps ({opp.gap_skills.length})
+                          Relevant Occupations
                         </span>
-                        <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-                          {opp.gap_skills.map((skill) => (
-                            <span key={skill} style={{
-                              fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.3)",
-                              background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)",
-                              borderRadius: "100px", padding: "4px 10px",
-                            }}>{skill}</span>
-                          ))}
-                        </div>
+                      <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                        {employerDetails[opp.name].occupations.map((occ: any) => (
+                          <div key={occ.soc_code || occ.title} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontFamily: FONT, fontSize: "13px" }}>
+                            <span style={{ color: "rgba(255,255,255,0.7)" }}>{occ.title}</span>
+                            {occ.annual_wage && (
+                              <span style={{ color: "rgba(255,255,255,0.4)", fontWeight: 500 }}>${occ.annual_wage.toLocaleString()}/yr</span>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                      </div>
+                    ) : (
+                      <div style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.3)", marginBottom: "16px" }}>
+                        Loading occupations...
                       </div>
                     )}
-
+                    {/* Student context */}
+                    {pipelineData[opp.name] !== undefined && (
+                      <div style={{ marginBottom: "16px" }}>
+                        <p style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)", lineHeight: 1.5, margin: 0 }}>
+                          <span style={{ color: "rgba(255,255,255,0.7)", fontWeight: 500 }}>{pipelineData[opp.name].toLocaleString()}</span>
+                          {" "}students have 3 or more skills relevant to this employer&apos;s hiring needs
+                        </p>
+                        {opp.aligned_skills.length > 0 && (
+                          <div style={{ marginTop: "10px" }}>
+                            <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.3)", display: "block", marginBottom: "6px" }}>
+                              Top skills across this employer&apos;s roles
+                            </span>
+                          <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+                            {opp.aligned_skills.slice(0, 4).map((skill) => (
+                              <span key={skill} style={{
+                                fontFamily: FONT, fontSize: "11px", color: school.brandColorLight,
+                                background: `${school.brandColorLight}12`, border: `1px solid ${school.brandColorLight}25`,
+                                borderRadius: "100px", padding: "4px 10px",
+                              }}>{skill}</span>
+                            ))}
+                          </div>
+                          </div>
+                        )}
+                      </div>
+                    )}
                     {/* Draft CTA */}
                     <button
                       onClick={(e) => { e.stopPropagation(); onDraft(opp); }}

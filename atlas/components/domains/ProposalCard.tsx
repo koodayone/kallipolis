@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import type { ApiTargetedProposal } from "@/lib/api";
+import { saveProposal, removeProposal, updateProposalStatus, type SavedProposal } from "@/lib/savedProposals";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
@@ -14,6 +15,9 @@ type Props = {
   onDismiss: () => void;
   onReject?: () => void;
   onRefine?: () => void;
+  collegeId?: string;
+  engagementType?: string;
+  onSaved?: (saved: SavedProposal) => void;
 };
 
 function SectionHeader({ children, color }: { children: React.ReactNode; color?: string }) {
@@ -44,8 +48,9 @@ function FlagIcon() {
   );
 }
 
-export default function ProposalCard({ proposal, brandColor, onDismiss, onReject, onRefine }: Props) {
+export default function ProposalCard({ proposal, brandColor, onDismiss, onReject, onRefine, collegeId, engagementType, onSaved }: Props) {
   const [state, setState] = useState<CardState>("default");
+  const [savedId, setSavedId] = useState<string | null>(null);
 
   if (state === "dismissed") return null;
 
@@ -86,135 +91,91 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
           </span>
         </div>
 
-        {/* Executive Summary */}
-        <div style={{ marginBottom: "20px" }}>
-          <SectionHeader color={brandColor + "99"}>Executive Summary</SectionHeader>
+        {/* ── Section 1: Summary ── */}
+        <div style={{ marginBottom: "24px" }}>
+          <SectionHeader>Summary</SectionHeader>
           <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.7)", lineHeight: 1.65, margin: 0 }}>
             {proposal.executive_summary}
           </p>
         </div>
 
-        {/* Partnership Type Rationale */}
-        <div style={{ marginBottom: "20px" }}>
-          <p style={{ fontFamily: FONT, fontSize: "13px", fontStyle: "italic", color: "rgba(255,255,255,0.45)", lineHeight: 1.55, margin: 0 }}>
-            {proposal.partnership_type_rationale}
-          </p>
-        </div>
-
-        {/* Curriculum Alignment */}
-        {proposal.curriculum_alignment.length > 0 && (
-          <div style={{ marginBottom: "20px" }}>
-            <SectionHeader>Curriculum Alignment</SectionHeader>
-            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-              {proposal.curriculum_alignment.map((a, i) => (
-                <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
-                  <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.35)", minWidth: "110px", flexShrink: 0, paddingTop: "1px" }}>
-                    {a.department}
-                  </span>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "3px" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-                      <span style={{ fontFamily: FONT, fontSize: "12px", fontWeight: 600, color: brandColor }}>{a.course_code}</span>
-                      <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.65)" }}>{a.course_name}</span>
-                    </div>
-                    <span style={{
-                      display: "inline-block", padding: "2px 8px",
-                      background: `${brandColor}15`, border: `1px solid ${brandColor}30`,
-                      borderRadius: "100px", fontFamily: FONT, fontSize: "11px", color: brandColor, alignSelf: "flex-start",
-                    }}>
-                      {a.skill}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Skill Gaps */}
-        {proposal.skill_gaps.length > 0 && (
-          <div style={{ marginBottom: "20px" }}>
-            <SectionHeader>Skill Gaps</SectionHeader>
-            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-              {proposal.skill_gaps.map((g, i) => (
-                <div key={i} style={{ padding: "10px 14px", background: "rgba(255,255,255,0.03)", borderRadius: "6px" }}>
-                  <div style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.7)", marginBottom: "4px" }}>
-                    {g.skill}
-                  </div>
-                  <div style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginBottom: "4px" }}>
-                    Required by: {g.required_by.join(", ")}
-                  </div>
-                  <div style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.5)", lineHeight: 1.5 }}>
-                    {g.recommended_action}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Student Pipeline */}
-        <div style={{ marginBottom: "20px" }}>
-          <SectionHeader>Student Pipeline</SectionHeader>
-          <div style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.6)", lineHeight: 1.8 }}>
-            <span style={{ fontWeight: 500, color: "rgba(255,255,255,0.8)" }}>{proposal.student_pipeline.total_students.toLocaleString()}</span> students with relevant skills
-            {" · "}
-            <span style={{ fontWeight: 500, color: "rgba(255,255,255,0.8)" }}>{proposal.student_pipeline.students_with_3plus_courses.toLocaleString()}</span> with 3+ completed courses
-          </div>
-          {proposal.student_pipeline.top_skills.length > 0 && (
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginTop: "8px" }}>
-              {proposal.student_pipeline.top_skills.map((skill) => (
-                <span key={skill} style={{
-                  fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.5)",
-                  background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)",
-                  borderRadius: "100px", padding: "3px 10px",
-                }}>{skill}</span>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* Economic Impact */}
-        {proposal.economic_impact.occupations.length > 0 && (
-          <div style={{ marginBottom: "20px" }}>
-            <SectionHeader>Economic Impact</SectionHeader>
-            <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-              {proposal.economic_impact.occupations.map((occ, i) => (
-                <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontFamily: FONT, fontSize: "12px" }}>
-                  <span style={{ color: "rgba(255,255,255,0.6)" }}>{occ.title}</span>
-                  <div style={{ display: "flex", gap: "16px" }}>
-                    {occ.annual_wage && <span style={{ color: "rgba(255,255,255,0.5)" }}>${occ.annual_wage.toLocaleString()}/yr</span>}
-                    {occ.employment && <span style={{ color: "rgba(255,255,255,0.4)" }}>{occ.employment.toLocaleString()} employed</span>}
-                  </div>
-                </div>
-              ))}
-            </div>
-            {proposal.economic_impact.aggregate_employment && (
-              <div style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.35)", marginTop: "8px", borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "8px" }}>
-                Total regional employment: <span style={{ fontWeight: 500, color: "rgba(255,255,255,0.5)" }}>{proposal.economic_impact.aggregate_employment.toLocaleString()}</span>
+        {/* ── Section 2: Justification ── */}
+        <div style={{
+          marginBottom: "24px", padding: "20px",
+          background: "rgba(255,255,255,0.03)", borderRadius: "10px",
+          border: "1px solid rgba(255,255,255,0.05)",
+        }}>
+          <SectionHeader>Justification</SectionHeader>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
+            <div>
+              <div style={{ fontFamily: FONT, fontSize: "24px", fontWeight: 600, color: "#f0eef4" }}>
+                {proposal.student_pipeline.students_with_3plus_courses.toLocaleString()}
               </div>
-            )}
+              <div style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.35)", lineHeight: 1.4 }}>
+                students with 3+ relevant courses
+              </div>
+            </div>
+            <div>
+              <div style={{ fontFamily: FONT, fontSize: "24px", fontWeight: 600, color: "#f0eef4" }}>
+                {proposal.economic_impact.aggregate_employment?.toLocaleString() ?? "—"}
+              </div>
+              <div style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.35)", lineHeight: 1.4 }}>
+                regional jobs in employer&apos;s roles
+              </div>
+            </div>
+            <div>
+              <div style={{ fontFamily: FONT, fontSize: "24px", fontWeight: 600, color: "#f0eef4" }}>
+                {proposal.economic_impact.occupations[0]?.annual_wage
+                  ? `$${Math.round(proposal.economic_impact.occupations[0].annual_wage / 1000)}K/yr`
+                  : "—"}
+              </div>
+              <div style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.35)", lineHeight: 1.4 }}>
+                {proposal.economic_impact.occupations[0]?.title || "top occupation"}
+              </div>
+            </div>
+            <div>
+              <div style={{ fontFamily: FONT, fontSize: "24px", fontWeight: 600, color: "#f0eef4" }}>
+                {proposal.curriculum_alignment.length}
+              </div>
+              <div style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.35)", lineHeight: 1.4 }}>
+                courses aligned to employer needs
+              </div>
+            </div>
           </div>
-        )}
+        </div>
 
-        {/* Next Steps */}
-        {proposal.next_steps.length > 0 && (
-          <div style={{ marginBottom: "24px" }}>
-            <SectionHeader>Next Steps</SectionHeader>
-            <ol style={{ margin: 0, paddingLeft: "20px", display: "flex", flexDirection: "column", gap: "6px" }}>
-              {proposal.next_steps.map((step, i) => (
+        {/* ── Section 3: Roadmap ── */}
+        <div style={{ marginBottom: "24px" }}>
+          <SectionHeader>Roadmap</SectionHeader>
+          {proposal.next_steps.length > 0 && (
+            <ol style={{ margin: "0 0 16px", paddingLeft: "20px", display: "flex", flexDirection: "column", gap: "8px" }}>
+              {proposal.next_steps.slice(0, 3).map((step, i) => (
                 <li key={i} style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.6)", lineHeight: 1.55 }}>
                   {step}
                 </li>
               ))}
             </ol>
-          </div>
-        )}
+          )}
+        </div>
 
         {/* Actions */}
         <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "16px" }}>
           <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
             <button
-              onClick={() => setState(isSaved ? "default" : "saved")}
+              onClick={() => {
+                if (isSaved) {
+                  if (collegeId && savedId) removeProposal(collegeId, savedId);
+                  setSavedId(null);
+                  setState("default");
+                } else {
+                  if (collegeId) {
+                    const saved = saveProposal(collegeId, proposal, engagementType ?? "", "saved");
+                    setSavedId(saved.id);
+                    onSaved?.(saved);
+                  }
+                  setState("saved");
+                }
+              }}
               style={{
                 display: "flex", alignItems: "center", gap: "6px",
                 padding: "6px 14px", borderRadius: "6px", fontFamily: FONT, fontSize: "12px", fontWeight: 600,
@@ -237,7 +198,22 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
               Dismiss
             </button>
             <button
-              onClick={() => setState(isFlagged ? "default" : "flagged")}
+              onClick={() => {
+                if (isFlagged) {
+                  if (collegeId && savedId) updateProposalStatus(collegeId, savedId, "saved");
+                  setState("default");
+                } else {
+                  if (collegeId) {
+                    if (savedId) {
+                      updateProposalStatus(collegeId, savedId, "flagged");
+                    } else {
+                      const saved = saveProposal(collegeId, proposal, engagementType ?? "", "flagged");
+                      setSavedId(saved.id);
+                    }
+                  }
+                  setState("flagged");
+                }
+              }}
               style={{
                 display: "flex", alignItems: "center", gap: "6px",
                 padding: "6px 14px", borderRadius: "6px", fontFamily: FONT, fontSize: "12px", fontWeight: 500,

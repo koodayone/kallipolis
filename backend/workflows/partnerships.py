@@ -25,7 +25,7 @@ Based on this data, generate a partnership proposal as a single JSON object. Eve
 The JSON must match this exact schema:
 
 {{
-  "executive_summary": "2-3 sentence pitch referencing the specific employer, the number of aligned skills, student pipeline size, and the core value proposition",
+  "executive_summary": "2-3 sentences maximum. State the employer, the engagement type, and the expected outcome. Do not enumerate skills, course codes, or statistics — just the core thesis of why this partnership makes sense.",
   "partnership_type": "one of: Internship Pipeline, Apprenticeship Program, Advisory Board Seat, Guest Lecture Series, Equipment Donation & Lab Access, Co-op Employment, Tuition Reimbursement Compact, Hiring Commitment MOU",
   "partnership_type_rationale": "2-3 sentences explaining why this partnership type fits the specific alignment/gap pattern",
   "curriculum_alignment": [
@@ -55,22 +55,27 @@ The JSON must match this exact schema:
     "aggregate_employment": <total employment across all listed occupations or null>
   }},
   "next_steps": [
-    "3-5 concrete, actionable steps to initiate the partnership — be specific (name departments, suggest meeting formats, reference timelines)"
-  ]
+    "Exactly 3 steps in chronological order. Each is one sentence. First step: immediate action. Last step: partnership launch milestone."
+  ],
+  "measurable_objective": "One sentence stating the quantifiable goal. Reference a specific number of students, a role or occupation, and a timeframe. Example: 'Place 40 students in software engineering internships at Google within the first academic year.'"
 }}
 
 Guidelines:
 - Include 4-8 curriculum alignment entries covering the strongest course-to-skill connections
 - Include ALL skill gaps from the context
-- For partnership type selection, consider: high alignment + large pipeline → Internship Pipeline or Co-op; high gaps → Advisory Board or Equipment Donation; specialized knowledge gaps → Guest Lecture Series
+- The coordinator has selected a specific partnership engagement type. This type determines the nature of the proposal:
+  * "work_based_learning": Generate an Internship Pipeline, Apprenticeship Program, Co-op Employment, or Clinical Rotation proposal. Focus on student placement, applied experience, and employer site integration.
+  * "curriculum_development": Generate an Advisory Board Seat, Guest Lecture Series, Equipment Donation, or Curriculum Co-design proposal. Focus on program quality, curriculum alignment, and industry input.
+  * "direct_hire": Generate a Hiring Commitment MOU, Tuition Reimbursement Compact, or Guaranteed Interview Program proposal. Focus on employment outcomes, hiring commitments, and career placement.
+- Select the most appropriate specific sub-type based on the employer data and engagement category.
+- The partnership type, executive summary, curriculum alignment emphasis, and next steps should all reflect the selected engagement model.
 - Economic impact should include all occupations the employer hires for that have wage/employment data
 - Next steps should be actionable by a program coordinator — not generic advice
-- If a coordinator's strategic objective is provided, use it as the organizing principle for the entire proposal. The partnership type, executive summary, curriculum alignment emphasis, and next steps should all be oriented around achieving that objective. The objective represents the coordinator's institutional knowledge and intent — it should steer every section.
 
 Return ONLY valid JSON with no text before or after."""
 
 
-def _gather_targeted_context(employer: str, college: str, objective: str | None = None) -> str:
+def _gather_targeted_context(employer: str, college: str, engagement_type: str = "") -> str:
     """Gather employer-specific context from the graph for targeted proposal generation."""
     driver = get_driver()
     lines = []
@@ -197,9 +202,9 @@ def _gather_targeted_context(employer: str, college: str, objective: str | None 
                 emp_count = f"{r['employment']:,} employed" if r["employment"] else "employment data unavailable"
                 lines.append(f"  {r['title']} in {r['region']}: {wage}, {emp_count}")
 
-    if objective:
+    if engagement_type:
         lines.append("")
-        lines.append(f"COORDINATOR'S STRATEGIC OBJECTIVE: {objective}")
+        lines.append(f"PARTNERSHIP ENGAGEMENT TYPE: {engagement_type}")
 
     return "\n".join(lines)
 
@@ -246,6 +251,7 @@ def _parse_targeted_proposal(raw: str, employer: str) -> TargetedProposal:
         student_pipeline=PipelineStats(**data["student_pipeline"]),
         economic_impact=EconomicImpact(**data["economic_impact"]),
         next_steps=data.get("next_steps", []),
+        measurable_objective=data.get("measurable_objective", ""),
     )
 
 
@@ -262,9 +268,9 @@ def _call_claude(context: str) -> str:
     return message.content[0].text
 
 
-async def run_targeted_proposal(employer: str, college: str, objective: str | None = None) -> TargetedProposal:
+async def run_targeted_proposal(employer: str, college: str, engagement_type: str = "") -> TargetedProposal:
     """Generate a targeted partnership proposal for a specific employer."""
-    context = _gather_targeted_context(employer, college, objective)
+    context = _gather_targeted_context(employer, college, engagement_type)
     logger.info(f"Gathered targeted context for {employer}, calling Claude...")
     raw = _call_claude(context)
     logger.info("Claude response received, parsing proposal...")
@@ -273,9 +279,9 @@ async def run_targeted_proposal(employer: str, college: str, objective: str | No
     return proposal
 
 
-def stream_targeted_proposal(employer: str, college: str, objective: str | None = None):
+def stream_targeted_proposal(employer: str, college: str, engagement_type: str = ""):
     """Generator that yields a TargetedProposal when Claude's streaming response completes."""
-    context = _gather_targeted_context(employer, college, objective)
+    context = _gather_targeted_context(employer, college, engagement_type)
     logger.info(f"Gathered targeted context for {employer}, starting Claude stream...")
 
     client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
