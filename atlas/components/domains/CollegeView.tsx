@@ -193,6 +193,11 @@ export default function CollegeView({ school }: Props) {
         )}
       </AnimatePresence>
 
+      {/* Solid backdrop — covers hub instantly during transition */}
+      {(collegeState === "report" || collegeState === "transitioning-out") && (
+        <div style={{ position: "fixed", inset: 0, background: "#060d1f", zIndex: 24 }} />
+      )}
+
       {/* Sub-view */}
       <AnimatePresence>
         {showReport && activeNode && (

@@ -125,7 +125,7 @@ export default function EmployersView({ school, onBack }: Props) {
 
   return (
     <div ref={rootRef}>
-      <LeafHeader school={school} onBack={onBack} parentShape="dodecahedron" />
+      <LeafHeader school={school} onBack={onBack} parentShape="tetrahedron" />
       <div style={{ display: "flex", justifyContent: "center", paddingTop: "32px", paddingBottom: "16px" }}>
         <img src={school.logoPath} alt={school.name} style={{ height: "100px", width: "auto", objectFit: "contain" }} />
       </div>

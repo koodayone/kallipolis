@@ -197,6 +197,11 @@ export default function IndustryView({ school }: Props) {
         )}
       </AnimatePresence>
 
+      {/* Solid backdrop — covers hub instantly during transition */}
+      {(industryState === "report" || industryState === "transitioning-out") && (
+        <div style={{ position: "fixed", inset: 0, background: "#060d1f", zIndex: 24 }} />
+      )}
+
       {/* Sub-view */}
       <AnimatePresence>
         {showReport && activeNode && (

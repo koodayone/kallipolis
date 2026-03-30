@@ -196,6 +196,11 @@ export default function GovernmentView({ school }: Props) {
         )}
       </AnimatePresence>
 
+      {/* Solid backdrop — covers hub instantly during transition */}
+      {(govState === "report" || govState === "transitioning-out") && (
+        <div style={{ position: "fixed", inset: 0, background: "#060d1f", zIndex: 24 }} />
+      )}
+
       {/* Sub-view */}
       <AnimatePresence>
         {showReport && activeReport && (
