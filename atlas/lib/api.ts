@@ -276,6 +276,12 @@ export async function getEmployerDetail(name: string, college: string): Promise<
   return res.json();
 }
 
+export async function getEmployerOccupations(employer: string): Promise<{ occupations: Array<{ title: string; annual_wage: number | null }> }> {
+  const res = await fetch(`${BASE}/labor-market/partnership-landscape/occupations?employer=${encodeURIComponent(employer)}`);
+  if (!res.ok) throw new Error("Failed to fetch employer occupations");
+  return res.json();
+}
+
 export type EmployerQueryResponse = {
   employers: ApiEmployerMatch[];
   message: string;

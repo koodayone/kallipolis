@@ -315,6 +315,22 @@ def get_employer_pipeline(employer: str, college: str):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@router.get("/partnership-landscape/occupations")
+def get_employer_occupations(employer: str):
+    """Returns occupations an employer hires for — lightweight, no skill joins."""
+    driver = get_driver()
+    try:
+        with driver.session() as session:
+            result = session.run("""
+                MATCH (emp:Employer {name: $employer})-[:HIRES_FOR]->(occ:Occupation)
+                RETURN occ.title AS title, occ.annual_wage AS annual_wage
+                ORDER BY occ.annual_wage DESC
+            """, employer=employer).data()
+        return {"occupations": result}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @router.post("/partnerships/query", response_model=PartnershipQueryResponse)
 async def query_partnerships(req: PartnershipQueryRequest):
     try:

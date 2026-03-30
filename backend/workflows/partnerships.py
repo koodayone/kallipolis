@@ -312,7 +312,7 @@ def _gather_targeted_context(employer: str, college: str, engagement_type: str =
     return "\n".join(lines)
 
 
-def _parse_targeted_proposal(raw: str, employer: str) -> TargetedProposal:
+def _parse_targeted_proposal(raw: str, employer: str, sector: str | None = None) -> TargetedProposal:
     """Parse Claude's response into a TargetedProposal."""
     logger.info(f"Claude raw response (first 300 chars): {raw[:300]!r}")
 
@@ -341,7 +341,7 @@ def _parse_targeted_proposal(raw: str, employer: str) -> TargetedProposal:
 
     return TargetedProposal(
         employer=employer,
-        sector=data.get("sector"),
+        sector=sector or data.get("sector"),
         executive_summary=data["executive_summary"],
         partnership_type=data["partnership_type"],
         partnership_type_rationale=data["partnership_type_rationale"],
@@ -357,6 +357,17 @@ def _parse_targeted_proposal(raw: str, employer: str) -> TargetedProposal:
         measurable_objective=data.get("measurable_objective", ""),
         type_details=data.get("type_details", {}),
     )
+
+
+def _get_employer_sector(employer: str) -> str | None:
+    """Look up the employer's sector from the graph."""
+    driver = get_driver()
+    with driver.session() as session:
+        result = session.run(
+            "MATCH (e:Employer {name: $name}) RETURN e.sector AS sector",
+            name=employer,
+        ).single()
+    return result["sector"] if result else None
 
 
 def _get_prompt(engagement_type: str, context: str) -> str:
@@ -377,18 +388,20 @@ def _call_claude(prompt_text: str) -> str:
 
 async def run_targeted_proposal(employer: str, college: str, engagement_type: str = "") -> TargetedProposal:
     """Generate a targeted partnership proposal for a specific employer."""
+    sector = _get_employer_sector(employer)
     context = _gather_targeted_context(employer, college, engagement_type)
     prompt_text = _get_prompt(engagement_type, context)
     logger.info(f"Gathered targeted context for {employer} ({engagement_type}), calling Claude...")
     raw = _call_claude(prompt_text)
     logger.info("Claude response received, parsing proposal...")
-    proposal = _parse_targeted_proposal(raw, employer)
+    proposal = _parse_targeted_proposal(raw, employer, sector)
     logger.info(f"Parsed targeted proposal for {employer}.")
     return proposal
 
 
 def stream_targeted_proposal(employer: str, college: str, engagement_type: str = ""):
     """Generator that yields a TargetedProposal when Claude's streaming response completes."""
+    sector = _get_employer_sector(employer)
     context = _gather_targeted_context(employer, college, engagement_type)
     prompt_text = _get_prompt(engagement_type, context)
     logger.info(f"Gathered targeted context for {employer} ({engagement_type}), starting Claude stream...")
@@ -404,6 +417,6 @@ def stream_targeted_proposal(employer: str, college: str, engagement_type: str =
         for text in stream.text_stream:
             accumulated += text
 
-    proposal = _parse_targeted_proposal(accumulated, employer)
+    proposal = _parse_targeted_proposal(accumulated, employer, sector)
     logger.info(f"Stream complete: proposal for {employer}")
     yield proposal
