@@ -15,7 +15,7 @@ import { getSavedProposals, removeProposal, type SavedProposal } from "@/lib/sav
 import LeafHeader from "@/components/ui/LeafHeader";
 import RisingSun from "@/components/ui/RisingSun";
 import Badge from "@/components/ui/Badge";
-import SplitView from "./SplitView";
+import ProposalFlow from "./ProposalFlow";
 import ProposalCard from "@/components/domains/ProposalCard";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
@@ -28,12 +28,21 @@ const SUGGESTIONS = [
   "Highest paying roles",
 ];
 
-type Phase = "selection" | "split-view" | "generating" | "complete";
+type Phase = "selection" | "draft" | "generating" | "complete";
 type Mode = "build" | "manage";
+
+function findScrollParent(el: HTMLElement | null): HTMLElement | null {
+  while (el) {
+    if (el.scrollHeight > el.clientHeight && getComputedStyle(el).overflowY !== "visible") return el;
+    el = el.parentElement;
+  }
+  return null;
+}
 
 type Props = { school: SchoolConfig; onBack: () => void };
 
 export default function PartnershipsView({ school, onBack }: Props) {
+  const rootRef = useRef<HTMLDivElement>(null);
   // Phase & mode state
   const [phase, setPhase] = useState<Phase>("selection");
   const [mode, setMode] = useState<Mode>("build");
@@ -141,12 +150,18 @@ export default function PartnershipsView({ school, onBack }: Props) {
   }, [school.name]);
 
   const handleExpand = useCallback(async (opp: ApiPartnershipOpportunity) => {
+    const scrollEl = findScrollParent(rootRef.current);
+    const savedScroll = scrollEl?.scrollTop ?? 0;
+    const restoreScroll = () => requestAnimationFrame(() => { if (scrollEl) scrollEl.scrollTop = savedScroll; });
+
     const name = opp.name;
     if (expandedNames.has(name)) {
       setExpandedNames((prev) => { const next = new Set(prev); next.delete(name); return next; });
+      restoreScroll();
       return;
     }
     setExpandedNames((prev) => new Set(prev).add(name));
+    restoreScroll();
     if (pipelineData[name] === undefined && !pipelineLoading.has(name)) {
       setPipelineLoading((prev) => new Set(prev).add(name));
       try {
@@ -168,10 +183,17 @@ export default function PartnershipsView({ school, onBack }: Props) {
     setTimeout(() => inputRef.current?.focus(), 100);
   }, []);
 
+  const toggleWithScroll = useCallback((setter: (v: string | null) => void, current: string | null, id: string) => {
+    const scrollEl = findScrollParent(rootRef.current);
+    const saved = scrollEl?.scrollTop ?? 0;
+    setter(current === id ? null : id);
+    requestAnimationFrame(() => { if (scrollEl) scrollEl.scrollTop = saved; });
+  }, []);
+
   // Phase transition handlers
   const handleDraftCTA = useCallback((opp: ApiPartnershipOpportunity) => {
     setSelectedEmployer(opp);
-    setPhase("split-view");
+    setPhase("draft");
     setEngagementType("");
     setProposal(null);
     setProposalError(null);
@@ -193,7 +215,7 @@ export default function PartnershipsView({ school, onBack }: Props) {
   }, [selectedEmployer, engagementType, school.name]);
 
   const handleReject = useCallback(() => {
-    setPhase("split-view");
+    setPhase("draft");
     setEngagementType("");
     setProposal(null);
     setProposalError(null);
@@ -208,18 +230,17 @@ export default function PartnershipsView({ school, onBack }: Props) {
   }, []);
 
   return (
-    <>
+    <div ref={rootRef}>
       <LeafHeader school={school} onBack={phase === "selection" ? onBack : handleBackFromSplit} parentShape="tetrahedron" />
 
-      <AnimatePresence mode="wait">
-        {/* ── Phase 1: Selection ── */}
-        {phase === "selection" && (
+      <AnimatePresence mode="wait" initial={false}>
+        {phase === "selection" ? (
           <motion.div
             key="selection"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.25 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
           >
             <div style={{ display: "flex", justifyContent: "center", paddingTop: "32px", paddingBottom: "40px" }}>
               <img src={school.logoPath} alt={school.name} style={{ height: "100px", width: "auto", objectFit: "contain" }} />
@@ -305,7 +326,7 @@ export default function PartnershipsView({ school, onBack }: Props) {
                         return (
                           <div key={saved.id}>
                             <button
-                              onClick={() => setExpandedSavedId(isExpanded ? null : saved.id)}
+                              onClick={() => toggleWithScroll(setExpandedSavedId, expandedSavedId, saved.id)}
                               style={{
                                 width: "100%", textAlign: "left", cursor: "pointer",
                                 display: "grid", gridTemplateColumns: "24px 1fr 160px",
@@ -331,27 +352,25 @@ export default function PartnershipsView({ school, onBack }: Props) {
                                 {p.partnership_type}
                               </span>
                             </button>
-                            <AnimatePresence>
-                              {isExpanded && (
-                                <motion.div
-                                  initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }}
-                                  exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }}
-                                  style={{ overflow: "hidden", background: "rgba(255,255,255,0.02)" }}
-                                >
-                                  <div style={{ padding: "16px 20px 24px" }}>
-                                    <ProposalCard
-                                      proposal={p}
-                                      brandColor={school.brandColorLight}
-                                      onDismiss={() => {
-                                        removeProposal(school.name, saved.id);
-                                        setSavedProposals(getSavedProposals(school.name));
-                                        setExpandedSavedId(null);
-                                      }}
-                                    />
-                                  </div>
-                                </motion.div>
-                              )}
-                            </AnimatePresence>
+                            {isExpanded && (
+                              <motion.div
+                                initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }}
+                                transition={{ duration: 0.25 }}
+                                style={{ overflow: "hidden", background: "rgba(255,255,255,0.02)" }}
+                              >
+                                <div style={{ padding: "16px 20px 24px" }}>
+                                  <ProposalCard
+                                    proposal={p}
+                                    brandColor={school.brandColorLight}
+                                    onDismiss={() => {
+                                      removeProposal(school.name, saved.id);
+                                      setSavedProposals(getSavedProposals(school.name));
+                                      setExpandedSavedId(null);
+                                    }}
+                                  />
+                                </div>
+                              </motion.div>
+                            )}
                           </div>
                         );
                       })}
@@ -399,34 +418,29 @@ export default function PartnershipsView({ school, onBack }: Props) {
                       />
                     </div>
                   </div>
-                  <div style={{ minHeight: "100vh" }}>
-                    <PartnershipList
-                      opportunities={filteredOpportunities} initialCap={50} school={school}
-                      expandedNames={expandedNames} pipelineData={pipelineData} pipelineLoading={pipelineLoading}
-                      employerOccupations={employerOccupations} onExpand={handleExpand} onDraft={handleDraftCTA}
-                    />
-                  </div>
+                  <PartnershipList
+                    opportunities={filteredOpportunities} initialCap={50} school={school}
+                    expandedNames={expandedNames} pipelineData={pipelineData} pipelineLoading={pipelineLoading}
+                    employerOccupations={employerOccupations} onExpand={handleExpand} onDraft={handleDraftCTA}
+                  />
                 </motion.div>
               )}
             </div>
             )}
           </motion.div>
-        )}
-
-        {/* ── Phase 2+: Split View ── */}
-        {phase !== "selection" && selectedEmployer && (
+        ) : selectedEmployer ? (
           <motion.div
-            key="split-view"
+            key="proposal-flow"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.25 }}
             style={{ width: "100%" }}
           >
-            <SplitView
+            <ProposalFlow
               school={school}
               employer={selectedEmployer}
-              phase={phase as "split-view" | "generating" | "complete"}
+              phase={phase as "draft" | "generating" | "complete"}
               engagementType={engagementType}
               onEngagementTypeChange={setEngagementType}
               onGenerate={handleGenerate}
@@ -435,9 +449,9 @@ export default function PartnershipsView({ school, onBack }: Props) {
               proposalError={proposalError}
             />
           </motion.div>
-        )}
+        ) : null}
       </AnimatePresence>
-    </>
+    </div>
   );
 }
 
@@ -493,8 +507,7 @@ function PartnershipList({
         const isOpen = expandedNames.has(opp.name);
         return (
           <div key={opp.name}>
-            <motion.button
-              layout
+            <button
               onClick={() => onExpand(opp)}
               style={{
                 width: "100%", textAlign: "left",
@@ -513,19 +526,18 @@ function PartnershipList({
               </svg>
               <span style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>{opp.name}</span>
               <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)" }}>{opp.sector || "—"}</span>
-            </motion.button>
+            </button>
 
-            <AnimatePresence>
-              {isOpen && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }}
-                  style={{ overflow: "hidden", background: "rgba(255,255,255,0.02)" }}
-                >
-                  <div style={{ padding: "16px 20px 24px" }}>
-                    {!(employerOccupations[opp.name] && pipelineData[opp.name] !== undefined) ? (
-                      <div style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.3)", padding: "8px 0" }}>
-                        Loading...
+            {isOpen && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }}
+                transition={{ duration: 0.25 }}
+                style={{ overflow: "hidden", background: "rgba(255,255,255,0.02)" }}
+              >
+                <div style={{ padding: "16px 20px 24px" }}>
+                  {!(employerOccupations[opp.name] && pipelineData[opp.name] !== undefined) ? (
+                    <div style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.3)", padding: "8px 0" }}>
+                      Loading...
                       </div>
                     ) : (<>
                     {opp.description && (
@@ -587,12 +599,11 @@ function PartnershipList({
                       onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
                       onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
                     >
-                      Draft Partnership Proposal with {opp.name}
-                    </button>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+                    Draft Partnership Proposal with {opp.name}
+                  </button>
+                </div>
+              </motion.div>
+            )}
           </div>
         );
       })}

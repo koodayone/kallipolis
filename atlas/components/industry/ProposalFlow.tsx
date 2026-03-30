@@ -18,7 +18,7 @@ const ENGAGEMENT_TYPES = [
 type Props = {
   school: SchoolConfig;
   employer: ApiPartnershipOpportunity;
-  phase: "split-view" | "generating" | "complete";
+  phase: "draft" | "generating" | "complete";
   engagementType: string;
   onEngagementTypeChange: (v: string) => void;
   onGenerate: () => void;
@@ -27,16 +27,16 @@ type Props = {
   proposalError: string | null;
 };
 
-export default function SplitView({
+export default function ProposalFlow({
   school, employer, phase, engagementType, onEngagementTypeChange, onGenerate, onReject, proposal, proposalError,
 }: Props) {
   return (
     <div style={{ maxWidth: "640px", margin: "0 auto", padding: "48px 40px" }}>
       <AnimatePresence mode="wait">
 
-        {/* ── Selection ── */}
-        {phase === "split-view" && (
-          <motion.div key="selection" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
+        {/* ── Draft: engagement type selection ── */}
+        {phase === "draft" && (
+          <motion.div key="draft" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
             <div style={{ marginBottom: "32px" }}>
               <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, margin: 0 }}>
                 You&apos;ve selected <span style={{ color: school.brandColorLight, fontWeight: 600 }}>{employer.name}</span>.
