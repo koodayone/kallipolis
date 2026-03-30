@@ -29,9 +29,18 @@ const SUGGESTIONS = [
   "Occupations requiring Data Analysis",
 ];
 
+function findScrollParent(el: HTMLElement | null): HTMLElement | null {
+  while (el) {
+    if (el.scrollHeight > el.clientHeight && getComputedStyle(el).overflowY !== "visible") return el;
+    el = el.parentElement;
+  }
+  return null;
+}
+
 type Props = { school: SchoolConfig; onBack: () => void };
 
 export default function OccupationsView({ school, onBack }: Props) {
+  const rootRef = useRef<HTMLDivElement>(null);
   const [overview, setOverview] = useState<ApiLaborMarketOverview | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -95,12 +104,18 @@ export default function OccupationsView({ school, onBack }: Props) {
   }, [school.name]);
 
   const handleExpand = useCallback(async (occ: ApiOccupationMatch) => {
+    const scrollEl = findScrollParent(rootRef.current);
+    const savedScroll = scrollEl?.scrollTop ?? 0;
+    const restoreScroll = () => requestAnimationFrame(() => { if (scrollEl) scrollEl.scrollTop = savedScroll; });
+
     const soc = occ.soc_code;
     if (expandedSocs.has(soc)) {
       setExpandedSocs((prev) => { const next = new Set(prev); next.delete(soc); return next; });
+      restoreScroll();
       return;
     }
     setExpandedSocs((prev) => new Set(prev).add(soc));
+    restoreScroll();
     if (!details[soc]) {
       setLoadingSocs((prev) => new Set(prev).add(soc));
       try {
@@ -118,7 +133,7 @@ export default function OccupationsView({ school, onBack }: Props) {
   }, []);
 
   return (
-    <>
+    <div ref={rootRef}>
       <LeafHeader school={school} onBack={onBack} parentShape="tetrahedron" />
       <div style={{ display: "flex", justifyContent: "center", paddingTop: "32px", paddingBottom: "16px" }}>
         <img src={school.logoPath} alt={school.name} style={{ height: "100px", width: "auto", objectFit: "contain" }} />
@@ -238,7 +253,7 @@ export default function OccupationsView({ school, onBack }: Props) {
           </motion.div>
         )}
       </div>
-    </>
+    </div>
   );
 }
 

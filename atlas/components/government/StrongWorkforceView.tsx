@@ -327,7 +327,7 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
                       <p style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.3)", margin: 0 }}>Generate and save an SWP document from the Build tab.</p>
                     </div>
                   ) : (
-                    <>
+                    <div style={{ minHeight: "100vh" }}>
                       {/* Search bar */}
                       <div style={{ position: "relative", marginBottom: "16px" }}>
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
@@ -414,7 +414,7 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
                           </div>
                         );
                       })}
-                    </>
+                    </div>
                   )}
                 </>
               )}

@@ -287,7 +287,7 @@ export default function PartnershipsView({ school, onBack }: Props) {
                     ? savedProposals.filter((s) => s.proposal.employer.toLowerCase().includes(manageQuery.toLowerCase()))
                     : savedProposals;
                   return (
-                    <div style={{ display: "flex", flexDirection: "column", gap: "2px", paddingTop: "24px" }}>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "2px", paddingTop: "24px", minHeight: "100vh" }}>
                       {/* Search bar */}
                       <div style={{ position: "relative", marginBottom: "16px" }}>
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none"

@@ -193,6 +193,14 @@ function StudentList({
 
 /* ── Main Component ─────────────────────────────────────────────────────── */
 
+function findScrollParent(el: HTMLElement | null): HTMLElement | null {
+  while (el) {
+    if (el.scrollHeight > el.clientHeight && getComputedStyle(el).overflowY !== "visible") return el;
+    el = el.parentElement;
+  }
+  return null;
+}
+
 type Props = { school: SchoolConfig; onBack: () => void };
 
 export default function StudentsView({ school, onBack }: Props) {
@@ -209,6 +217,7 @@ export default function StudentsView({ school, onBack }: Props) {
   const [studentDetails, setStudentDetails] = useState<Record<string, StudentDetail>>({});
   const [loadingUuids, setLoadingUuids] = useState<Set<string>>(new Set());
   const inputRef = useRef<HTMLInputElement>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     getStudents(school.name)
@@ -258,12 +267,18 @@ export default function StudentsView({ school, onBack }: Props) {
   }, [school.name]);
 
   const handleExpand = useCallback(async (student: StudentSummary) => {
+    const scrollEl = findScrollParent(rootRef.current);
+    const savedScroll = scrollEl?.scrollTop ?? 0;
+    const restoreScroll = () => requestAnimationFrame(() => { if (scrollEl) scrollEl.scrollTop = savedScroll; });
+
     const uuid = student.uuid;
     if (expandedUuids.has(uuid)) {
       setExpandedUuids((prev) => { const next = new Set(prev); next.delete(uuid); return next; });
+      restoreScroll();
       return;
     }
     setExpandedUuids((prev) => new Set(prev).add(uuid));
+    restoreScroll();
     if (!studentDetails[uuid]) {
       setLoadingUuids((prev) => new Set(prev).add(uuid));
       try {
@@ -284,7 +299,7 @@ export default function StudentsView({ school, onBack }: Props) {
   const defaultStudents = [...students].sort((a, b) => b.coursesCompleted - a.coursesCompleted);
 
   return (
-    <>
+    <div ref={rootRef}>
       <LeafHeader school={school} onBack={onBack} parentShape="cube" />
       <div style={{ display: "flex", justifyContent: "center", paddingTop: "32px", paddingBottom: "16px" }}>
         <img src={school.logoPath} alt={school.name} style={{ height: "100px", width: "auto", objectFit: "contain" }} />
@@ -404,6 +419,6 @@ export default function StudentsView({ school, onBack }: Props) {
           </motion.div>
         )}
       </div>
-    </>
+    </div>
   );
 }

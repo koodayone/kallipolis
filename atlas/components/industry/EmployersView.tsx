@@ -19,9 +19,18 @@ const SUGGESTIONS = [
   "Manufacturing sector",
 ];
 
+function findScrollParent(el: HTMLElement | null): HTMLElement | null {
+  while (el) {
+    if (el.scrollHeight > el.clientHeight && getComputedStyle(el).overflowY !== "visible") return el;
+    el = el.parentElement;
+  }
+  return null;
+}
+
 type Props = { school: SchoolConfig; onBack: () => void };
 
 export default function EmployersView({ school, onBack }: Props) {
+  const rootRef = useRef<HTMLDivElement>(null);
   const [employers, setEmployers] = useState<ApiEmployerMatch[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -86,12 +95,18 @@ export default function EmployersView({ school, onBack }: Props) {
   }, [school.name]);
 
   const handleExpand = useCallback(async (emp: ApiEmployerMatch) => {
+    const scrollEl = findScrollParent(rootRef.current);
+    const savedScroll = scrollEl?.scrollTop ?? 0;
+    const restoreScroll = () => requestAnimationFrame(() => { if (scrollEl) scrollEl.scrollTop = savedScroll; });
+
     const name = emp.name;
     if (expandedNames.has(name)) {
       setExpandedNames((prev) => { const next = new Set(prev); next.delete(name); return next; });
+      restoreScroll();
       return;
     }
     setExpandedNames((prev) => new Set(prev).add(name));
+    restoreScroll();
     if (!employerDetails[name]) {
       setLoadingNames((prev) => new Set(prev).add(name));
       try {
@@ -109,7 +124,7 @@ export default function EmployersView({ school, onBack }: Props) {
   }, []);
 
   return (
-    <>
+    <div ref={rootRef}>
       <LeafHeader school={school} onBack={onBack} parentShape="dodecahedron" />
       <div style={{ display: "flex", justifyContent: "center", paddingTop: "32px", paddingBottom: "16px" }}>
         <img src={school.logoPath} alt={school.name} style={{ height: "100px", width: "auto", objectFit: "contain" }} />
@@ -231,7 +246,7 @@ export default function EmployersView({ school, onBack }: Props) {
           </motion.div>
         )}
       </div>
-    </>
+    </div>
   );
 }
 

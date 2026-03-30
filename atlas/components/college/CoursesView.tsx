@@ -31,9 +31,18 @@ const SUGGESTIONS = [
   "Courses with Critical Thinking skills",
 ];
 
+function findScrollParent(el: HTMLElement | null): HTMLElement | null {
+  while (el) {
+    if (el.scrollHeight > el.clientHeight && getComputedStyle(el).overflowY !== "visible") return el;
+    el = el.parentElement;
+  }
+  return null;
+}
+
 type Props = { school: SchoolConfig; onBack: () => void };
 
 export default function CoursesView({ school, onBack }: Props) {
+  const rootRef = useRef<HTMLDivElement>(null);
   const [departments, setDepartments] = useState<DepartmentSummary[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -95,7 +104,14 @@ export default function CoursesView({ school, onBack }: Props) {
     }
   }, [school.name]);
 
+  const preserveScroll = useCallback(() => {
+    const scrollEl = findScrollParent(rootRef.current);
+    const saved = scrollEl?.scrollTop ?? 0;
+    requestAnimationFrame(() => { if (scrollEl) scrollEl.scrollTop = saved; });
+  }, []);
+
   const handleDeptExpand = useCallback(async (dept: string) => {
+    preserveScroll();
     if (expandedDepts.has(dept)) {
       setExpandedDepts((prev) => { const next = new Set(prev); next.delete(dept); return next; });
       return;
@@ -118,6 +134,11 @@ export default function CoursesView({ school, onBack }: Props) {
     }
   }, [expandedDepts, deptCoursesMap, school.name]);
 
+  const toggleCourse = useCallback((code: string) => {
+    preserveScroll();
+    setExpandedCourses((prev) => { const next = new Set(prev); if (next.has(code)) next.delete(code); else next.add(code); return next; });
+  }, [preserveScroll]);
+
   const handleReset = useCallback(() => {
     setQuery(""); setSubmitted(false); setResults([]);
     setExpandedDepts(new Set()); setExpandedCourses(new Set());
@@ -128,7 +149,7 @@ export default function CoursesView({ school, onBack }: Props) {
   const totalCourses = departments.reduce((sum, d) => sum + d.courseCount, 0);
 
   return (
-    <>
+    <div ref={rootRef}>
       <LeafHeader school={school} onBack={onBack} parentShape="cube" />
       <div style={{ display: "flex", justifyContent: "center", paddingTop: "32px", paddingBottom: "16px" }}>
         <img src={school.logoPath} alt={school.name} style={{ height: "100px", width: "auto", objectFit: "contain" }} />
@@ -193,7 +214,7 @@ export default function CoursesView({ school, onBack }: Props) {
                 expandedDepts={expandedDepts} deptCoursesMap={deptCoursesMap}
                 loadingDepts={loadingDepts} expandedCourses={expandedCourses}
                 onDeptExpand={handleDeptExpand}
-                onCourseToggle={(code) => setExpandedCourses((prev) => { const next = new Set(prev); if (next.has(code)) next.delete(code); else next.add(code); return next; })}
+                onCourseToggle={toggleCourse}
               />
             </div>
           </motion.div>
@@ -254,7 +275,7 @@ export default function CoursesView({ school, onBack }: Props) {
                         initial={{ opacity: 0, y: 6 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.2, delay: Math.min(i * 0.01, 0.2) }}
-                        onClick={() => setExpandedCourses((prev) => { const next = new Set(prev); if (next.has(course.code)) next.delete(course.code); else next.add(course.code); return next; })}
+                        onClick={() => toggleCourse(course.code)}
                         style={{
                           width: "100%", textAlign: "left",
                           display: "grid", gridTemplateColumns: "24px auto 1fr",
@@ -354,7 +375,7 @@ export default function CoursesView({ school, onBack }: Props) {
           </motion.div>
         )}
       </div>
-    </>
+    </div>
   );
 }
 
