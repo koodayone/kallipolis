@@ -1,10 +1,10 @@
 {
   "college": "Merritt College",
-  "source": "DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
-  "enrollment": 6638,
-  "success_rate": 0.7275,
-  "retention_rate": 0.67,
-  "ft_ratio": 0.31,
+  "source": "DataMart CourseRetSuccessSumm, StudentHeadcount, UnitLoadSumm (Fall 2025); DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
+  "enrollment": 7009,
+  "success_rate": 0.7351,
+  "retention_rate": 0.8508,
+  "ft_ratio": 0.16,
   "grade_distribution": {
     "A": 0.4715,
     "B": 0.1374,
@@ -35,14 +35,14 @@
     "Social Sciences": 0.09
   },
   "top_group_success_rate": {
-    "Agriculture and Natural Resources": 0.7692,
-    "Biological Sciences": 0.7855,
+    "Agriculture and Natural Resources": 0.7693,
+    "Biological Sciences": 0.7854,
     "Business and Management": 0.7376,
     "Education": 0.7697,
-    "Family and Consumer Sciences": 0.7893,
-    "Fine and Applied Arts": 0.7662,
+    "Family and Consumer Sciences": 0.7892,
+    "Fine and Applied Arts": 0.7663,
     "Foreign Language": 0.9615,
-    "Health": 0.7742,
+    "Health": 0.7741,
     "Humanities (Letters)": 0.6945,
     "Information Technology": 0.5532,
     "Interdisciplinary Studies": 0.7853,
@@ -52,7 +52,7 @@
     "Physical Sciences": 0.7326,
     "Psychology": 0.7323,
     "Public and Protective Services": 0.7055,
-    "Social Sciences": 0.6018
+    "Social Sciences": 0.6017
   },
   "top_group_grades": {
     "Agriculture and Natural Resources": {
@@ -75,19 +75,19 @@
     },
     "Business and Management": {
       "A": 0.5295,
-      "B": 0.1304,
+      "B": 0.1305,
       "C": 0.0637,
       "D": 0.0404,
       "F": 0.0435,
       "P": 0.014,
-      "W": 0.1491
+      "W": 0.149
     },
     "Education": {
       "A": 0.5913,
       "B": 0.0394,
       "C": 0.0311,
       "D": 0.0041,
-      "F": 0.0436,
+      "F": 0.0435,
       "P": 0.1079,
       "W": 0.1286
     },
@@ -95,7 +95,7 @@
       "A": 0.5125,
       "B": 0.1686,
       "C": 0.1025,
-      "D": 0.0239,
+      "D": 0.024,
       "F": 0.0479,
       "P": 0.0057,
       "W": 0.1264
@@ -128,17 +128,17 @@
       "C": 0.1146,
       "D": 0.0378,
       "F": 0.0848,
-      "P": 0.006,
+      "P": 0.0059,
       "W": 0.1564
     },
     "Information Technology": {
-      "A": 0.391,
+      "A": 0.3909,
       "B": 0.0851,
-      "C": 0.0638,
+      "C": 0.0639,
       "D": 0.0106,
       "F": 0.1356,
       "P": 0.0133,
-      "W": 0.2872
+      "W": 0.2873
     },
     "Interdisciplinary Studies": {
       "A": 0.5382,
@@ -196,17 +196,17 @@
       "B": 0.1163,
       "C": 0.0969,
       "D": 0.0194,
-      "F": 0.0401,
+      "F": 0.04,
       "P": 0.0052,
       "W": 0.1589
     },
     "Social Sciences": {
       "A": 0.3401,
       "B": 0.1773,
-      "C": 0.0766,
+      "C": 0.0765,
       "D": 0.032,
       "F": 0.1289,
-      "P": 0.0078,
+      "P": 0.0077,
       "W": 0.1657
     }
   },

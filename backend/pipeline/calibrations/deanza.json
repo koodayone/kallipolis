@@ -1,10 +1,10 @@
 {
   "college": "De Anza College",
-  "source": "DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
-  "enrollment": 17987,
-  "success_rate": 0.7997,
-  "retention_rate": 0.67,
-  "ft_ratio": 0.31,
+  "source": "DataMart CourseRetSuccessSumm, StudentHeadcount, UnitLoadSumm (Fall 2025); DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
+  "enrollment": 18145,
+  "success_rate": 0.8019,
+  "retention_rate": 0.9258,
+  "ft_ratio": 0.49,
   "grade_distribution": {
     "A": 0.5256,
     "B": 0.1513,
@@ -37,14 +37,14 @@
     "Social Sciences": 0.1543
   },
   "top_group_success_rate": {
-    "Biological Sciences": 0.8433,
+    "Biological Sciences": 0.8434,
     "Business and Management": 0.8047,
     "Education": 0.8707,
-    "Engineering and Industrial Technologies": 0.8391,
+    "Engineering and Industrial Technologies": 0.8392,
     "Environmental Sciences and Technologies": 0.7171,
-    "Family and Consumer Sciences": 0.8124,
-    "Fine and Applied Arts": 0.8549,
-    "Foreign Language": 0.8584,
+    "Family and Consumer Sciences": 0.8125,
+    "Fine and Applied Arts": 0.8548,
+    "Foreign Language": 0.8585,
     "Health": 0.8882,
     "Humanities (Letters)": 0.7878,
     "Information Technology": 0.7719,
@@ -55,14 +55,14 @@
     "Media and Communications": 0.8,
     "Physical Sciences": 0.7682,
     "Psychology": 0.8179,
-    "Public and Protective Services": 0.7377,
+    "Public and Protective Services": 0.7376,
     "Social Sciences": 0.7631
   },
   "top_group_grades": {
     "Biological Sciences": {
       "A": 0.4452,
       "B": 0.2535,
-      "C": 0.1409,
+      "C": 0.141,
       "D": 0.0358,
       "F": 0.0403,
       "P": 0.0037,
@@ -89,7 +89,7 @@
     "Engineering and Industrial Technologies": {
       "A": 0.4774,
       "B": 0.2096,
-      "C": 0.1184,
+      "C": 0.1185,
       "D": 0.0273,
       "F": 0.0567,
       "P": 0.0337,
@@ -117,7 +117,7 @@
       "A": 0.627,
       "B": 0.1557,
       "C": 0.0603,
-      "D": 0.0157,
+      "D": 0.0156,
       "F": 0.0717,
       "P": 0.0119,
       "W": 0.0489
@@ -125,7 +125,7 @@
     "Foreign Language": {
       "A": 0.7066,
       "B": 0.1009,
-      "C": 0.0292,
+      "C": 0.0293,
       "D": 0.0094,
       "F": 0.0613,
       "P": 0.0217,
@@ -135,7 +135,7 @@
       "A": 0.3517,
       "B": 0.1513,
       "C": 0.0348,
-      "D": 0.013,
+      "D": 0.0129,
       "F": 0.0266,
       "P": 0.3504,
       "W": 0.0498
@@ -151,8 +151,8 @@
     },
     "Information Technology": {
       "A": 0.5759,
-      "B": 0.1418,
-      "C": 0.0448,
+      "B": 0.1419,
+      "C": 0.0447,
       "D": 0.0193,
       "F": 0.1056,
       "P": 0.0094,
@@ -195,8 +195,8 @@
     },
     "Media and Communications": {
       "A": 0.5945,
-      "B": 0.147,
-      "C": 0.053,
+      "B": 0.1469,
+      "C": 0.0531,
       "D": 0.0199,
       "F": 0.0906,
       "P": 0.0055,
@@ -224,9 +224,9 @@
       "A": 0.5714,
       "B": 0.1325,
       "C": 0.0338,
-      "D": 0.0208,
+      "D": 0.0207,
       "F": 0.1584,
-      "W": 0.0753
+      "W": 0.0754
     },
     "Social Sciences": {
       "A": 0.5706,
@@ -234,7 +234,7 @@
       "C": 0.0607,
       "D": 0.0224,
       "F": 0.1259,
-      "P": 0.0042,
+      "P": 0.0043,
       "W": 0.0779
     }
   },

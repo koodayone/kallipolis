@@ -1,9 +1,9 @@
 {
   "college": "Gavilan College",
-  "source": "DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
-  "enrollment": 5484,
-  "success_rate": 0.7394,
-  "retention_rate": 0.67,
+  "source": "DataMart CourseRetSuccessSumm, StudentHeadcount, UnitLoadSumm (Fall 2025); DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
+  "enrollment": 7214,
+  "success_rate": 0.7453,
+  "retention_rate": 0.8851,
   "ft_ratio": 0.31,
   "grade_distribution": {
     "A": 0.3728,
@@ -17,7 +17,6 @@
   "top_group_enrollment_share": {
     "Biological Sciences": 0.0417,
     "Business and Management": 0.0544,
-    "Commercial Services": 0.0057,
     "Education": 0.0629,
     "Engineering and Industrial Technologies": 0.0394,
     "Environmental Sciences and Technologies": 0.0027,
@@ -37,24 +36,23 @@
   },
   "top_group_success_rate": {
     "Biological Sciences": 0.7408,
-    "Business and Management": 0.7463,
-    "Commercial Services": 0.9419,
+    "Business and Management": 0.7464,
     "Education": 0.8565,
     "Engineering and Industrial Technologies": 0.8754,
-    "Environmental Sciences and Technologies": 0.683,
+    "Environmental Sciences and Technologies": 0.6829,
     "Family and Consumer Sciences": 0.6611,
-    "Fine and Applied Arts": 0.7695,
-    "Foreign Language": 0.8263,
+    "Fine and Applied Arts": 0.7696,
+    "Foreign Language": 0.8264,
     "Health": 0.8148,
     "Humanities (Letters)": 0.6418,
     "Information Technology": 0.7188,
     "Interdisciplinary Studies": 0.8287,
     "Mathematics": 0.6076,
-    "Media and Communications": 0.712,
-    "Physical Sciences": 0.7854,
+    "Media and Communications": 0.7121,
+    "Physical Sciences": 0.7853,
     "Psychology": 0.7068,
     "Public and Protective Services": 0.9,
-    "Social Sciences": 0.7001
+    "Social Sciences": 0.7003
   },
   "top_group_grades": {
     "Biological Sciences": {
@@ -70,24 +68,17 @@
       "B": 0.2171,
       "C": 0.1195,
       "D": 0.028,
-      "F": 0.1098,
+      "F": 0.1097,
       "P": 0.028,
       "W": 0.1146
-    },
-    "Commercial Services": {
-      "A": 0.2326,
-      "B": 0.6279,
-      "C": 0.0814,
-      "D": 0.0349,
-      "W": 0.0116
     },
     "Education": {
       "A": 0.5084,
       "B": 0.058,
-      "C": 0.039,
+      "C": 0.0391,
       "D": 0.0063,
       "F": 0.0538,
-      "P": 0.2511,
+      "P": 0.251,
       "W": 0.0686
     },
     "Engineering and Industrial Technologies": {
@@ -116,7 +107,7 @@
       "W": 0.1705
     },
     "Fine and Applied Arts": {
-      "A": 0.4609,
+      "A": 0.461,
       "B": 0.2006,
       "C": 0.108,
       "D": 0.028,
@@ -126,10 +117,10 @@
     "Foreign Language": {
       "A": 0.4965,
       "B": 0.2222,
-      "C": 0.1076,
+      "C": 0.1077,
       "D": 0.0451,
       "F": 0.059,
-      "W": 0.0694
+      "W": 0.0695
     },
     "Health": {
       "A": 0.5158,
@@ -177,10 +168,10 @@
     },
     "Media and Communications": {
       "A": 0.5655,
-      "B": 0.0879,
+      "B": 0.088,
       "C": 0.0586,
       "D": 0.0362,
-      "F": 0.1121,
+      "F": 0.112,
       "W": 0.1345
     },
     "Physical Sciences": {
@@ -189,7 +180,7 @@
       "C": 0.1606,
       "D": 0.0423,
       "F": 0.0599,
-      "W": 0.1066
+      "W": 0.1065
     },
     "Psychology": {
       "A": 0.4183,
@@ -210,11 +201,11 @@
     },
     "Social Sciences": {
       "A": 0.3739,
-      "B": 0.2031,
+      "B": 0.2032,
       "C": 0.1218,
       "D": 0.0369,
       "F": 0.1407,
-      "P": 0.0013,
+      "P": 0.0014,
       "W": 0.1133
     }
   },

@@ -1,10 +1,10 @@
 {
   "college": "Las Positas College",
-  "source": "DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
-  "enrollment": 8103,
-  "success_rate": 0.7755,
-  "retention_rate": 0.67,
-  "ft_ratio": 0.31,
+  "source": "DataMart CourseRetSuccessSumm, StudentHeadcount, UnitLoadSumm (Fall 2025); DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
+  "enrollment": 8919,
+  "success_rate": 0.7781,
+  "retention_rate": 0.8967,
+  "ft_ratio": 0.36,
   "grade_distribution": {
     "A": 0.4585,
     "B": 0.1766,
@@ -36,25 +36,25 @@
     "Social Sciences": 0.1475
   },
   "top_group_success_rate": {
-    "Agriculture and Natural Resources": 0.7382,
-    "Biological Sciences": 0.7976,
-    "Business and Management": 0.7984,
-    "Education": 0.8488,
+    "Agriculture and Natural Resources": 0.7381,
+    "Biological Sciences": 0.7977,
+    "Business and Management": 0.7983,
+    "Education": 0.8487,
     "Engineering and Industrial Technologies": 0.906,
     "Environmental Sciences and Technologies": 0.8334,
-    "Family and Consumer Sciences": 0.7228,
-    "Fine and Applied Arts": 0.794,
-    "Foreign Language": 0.6345,
-    "Health": 0.8441,
+    "Family and Consumer Sciences": 0.7227,
+    "Fine and Applied Arts": 0.7939,
+    "Foreign Language": 0.6346,
+    "Health": 0.8442,
     "Humanities (Letters)": 0.7486,
-    "Information Technology": 0.7575,
-    "Interdisciplinary Studies": 0.8056,
-    "Mathematics": 0.6669,
-    "Media and Communications": 0.8112,
+    "Information Technology": 0.7574,
+    "Interdisciplinary Studies": 0.8055,
+    "Mathematics": 0.6668,
+    "Media and Communications": 0.8111,
     "Physical Sciences": 0.7948,
     "Psychology": 0.8055,
     "Public and Protective Services": 0.7397,
-    "Social Sciences": 0.7898
+    "Social Sciences": 0.7899
   },
   "top_group_grades": {
     "Agriculture and Natural Resources": {
@@ -62,8 +62,8 @@
       "B": 0.0714,
       "C": 0.006,
       "F": 0.0357,
-      "P": 0.006,
-      "W": 0.1667
+      "P": 0.0059,
+      "W": 0.1666
     },
     "Biological Sciences": {
       "A": 0.3848,
@@ -85,8 +85,8 @@
     "Education": {
       "A": 0.7076,
       "B": 0.0912,
-      "C": 0.0419,
-      "D": 0.0196,
+      "C": 0.0418,
+      "D": 0.0195,
       "F": 0.0608,
       "P": 0.0081,
       "W": 0.0655
@@ -109,7 +109,7 @@
     },
     "Family and Consumer Sciences": {
       "A": 0.4814,
-      "B": 0.1605,
+      "B": 0.1604,
       "C": 0.0809,
       "D": 0.0539,
       "F": 0.0988,
@@ -120,26 +120,26 @@
       "B": 0.1463,
       "C": 0.0787,
       "D": 0.026,
-      "F": 0.097,
+      "F": 0.0969,
       "P": 0.0111,
       "W": 0.0781
     },
     "Foreign Language": {
-      "A": 0.4038,
+      "A": 0.4039,
       "B": 0.125,
       "C": 0.0769,
       "D": 0.0385,
       "F": 0.0673,
-      "P": 0.0288,
+      "P": 0.0289,
       "W": 0.25
     },
     "Health": {
       "A": 0.4265,
-      "B": 0.2029,
-      "C": 0.1118,
+      "B": 0.203,
+      "C": 0.1117,
       "D": 0.0059,
       "F": 0.0559,
-      "P": 0.1029,
+      "P": 0.103,
       "W": 0.0882
     },
     "Humanities (Letters)": {
@@ -154,7 +154,7 @@
     "Information Technology": {
       "A": 0.4826,
       "B": 0.1736,
-      "C": 0.0928,
+      "C": 0.0927,
       "D": 0.0264,
       "F": 0.0749,
       "P": 0.0085,
@@ -164,17 +164,17 @@
       "A": 0.3913,
       "B": 0.107,
       "C": 0.0656,
-      "D": 0.0081,
-      "F": 0.0644,
-      "P": 0.2417,
-      "W": 0.0736
+      "D": 0.008,
+      "F": 0.0645,
+      "P": 0.2416,
+      "W": 0.0737
     },
     "Mathematics": {
       "A": 0.3001,
       "B": 0.1642,
       "C": 0.1064,
       "D": 0.0456,
-      "F": 0.1028,
+      "F": 0.1027,
       "P": 0.0962,
       "W": 0.1636
     },
@@ -191,9 +191,9 @@
       "A": 0.4117,
       "B": 0.2286,
       "C": 0.1539,
-      "D": 0.0506,
-      "F": 0.0506,
-      "P": 0.0006,
+      "D": 0.0507,
+      "F": 0.0507,
+      "P": 0.0007,
       "W": 0.0974
     },
     "Psychology": {
@@ -211,13 +211,13 @@
       "C": 0.1193,
       "D": 0.0239,
       "F": 0.0889,
-      "W": 0.1453
+      "W": 0.1454
     },
     "Social Sciences": {
       "A": 0.4837,
       "B": 0.2055,
       "C": 0.099,
-      "D": 0.0367,
+      "D": 0.0366,
       "F": 0.0859,
       "P": 0.0016,
       "W": 0.0837

@@ -1,0 +1,189 @@
+{
+  "college": "Woodland Community College",
+  "source": "DataMart CourseRetSuccessSumm, StudentHeadcount, UnitLoadSumm, GradesSummAll (Fall 2025)",
+  "enrollment": 4512,
+  "success_rate": 0.7451,
+  "retention_rate": 0.8885,
+  "ft_ratio": 0.19,
+  "grade_distribution": {
+    "A": 0.4364,
+    "B": 0.1836,
+    "C": 0.1097,
+    "D": 0.0348,
+    "F": 0.1022,
+    "P": 0.021,
+    "W": 0.1123
+  },
+  "top_group_enrollment_share": {
+    "Agriculture and Natural Resources": 0.0532,
+    "Biological Sciences": 0.0575,
+    "Business and Management": 0.1183,
+    "Education": 0.0251,
+    "Engineering and Industrial Technologies": 0.0101,
+    "Family and Consumer Sciences": 0.0998,
+    "Fine and Applied Arts": 0.0479,
+    "Foreign Language": 0.0047,
+    "Health": 0.0088,
+    "Humanities (Letters)": 0.1378,
+    "Interdisciplinary Studies": 0.0485,
+    "Mathematics": 0.0548,
+    "Physical Sciences": 0.0493,
+    "Psychology": 0.0545,
+    "Public and Protective Services": 0.0468,
+    "Social Sciences": 0.1829
+  },
+  "top_group_success_rate": {
+    "Agriculture and Natural Resources": 0.7768,
+    "Biological Sciences": 0.7179,
+    "Business and Management": 0.7153,
+    "Education": 0.8044,
+    "Engineering and Industrial Technologies": 0.7363,
+    "Family and Consumer Sciences": 0.7898,
+    "Fine and Applied Arts": 0.7786,
+    "Foreign Language": 0.9048,
+    "Health": 0.8401,
+    "Humanities (Letters)": 0.6951,
+    "Interdisciplinary Studies": 0.7568,
+    "Mathematics": 0.6905,
+    "Physical Sciences": 0.8327,
+    "Psychology": 0.7541,
+    "Public and Protective Services": 0.7113,
+    "Social Sciences": 0.7814
+  },
+  "top_group_grades": {
+    "Agriculture and Natural Resources": {
+      "A": 0.475,
+      "B": 0.17,
+      "C": 0.1028,
+      "D": 0.0293,
+      "F": 0.08,
+      "P": 0.029,
+      "W": 0.1138
+    },
+    "Biological Sciences": {
+      "A": 0.3307,
+      "B": 0.2257,
+      "C": 0.1615,
+      "D": 0.0681,
+      "F": 0.07,
+      "W": 0.144
+    },
+    "Business and Management": {
+      "A": 0.4466,
+      "B": 0.1614,
+      "C": 0.1064,
+      "D": 0.0228,
+      "F": 0.127,
+      "P": 0.0009,
+      "W": 0.1349
+    },
+    "Education": {
+      "A": 0.4044,
+      "B": 0.0978,
+      "C": 0.08,
+      "D": 0.0133,
+      "F": 0.1289,
+      "P": 0.2222,
+      "W": 0.0533
+    },
+    "Engineering and Industrial Technologies": {
+      "A": 0.2418,
+      "B": 0.3517,
+      "C": 0.1429,
+      "D": 0.033,
+      "F": 0.1429,
+      "W": 0.0879
+    },
+    "Family and Consumer Sciences": {
+      "A": 0.5076,
+      "B": 0.1588,
+      "C": 0.0935,
+      "D": 0.0366,
+      "F": 0.1006,
+      "P": 0.0299,
+      "W": 0.0731
+    },
+    "Fine and Applied Arts": {
+      "A": 0.5479,
+      "B": 0.1422,
+      "C": 0.0861,
+      "D": 0.028,
+      "F": 0.0792,
+      "P": 0.0024,
+      "W": 0.1142
+    },
+    "Foreign Language": {
+      "A": 0.6905,
+      "B": 0.1667,
+      "C": 0.0238,
+      "P": 0.0238,
+      "W": 0.0952
+    },
+    "Health": {
+      "A": 0.0667,
+      "B": 0.1867,
+      "C": 0.0267,
+      "D": 0.0267,
+      "P": 0.56,
+      "W": 0.1333
+    },
+    "Humanities (Letters)": {
+      "A": 0.3722,
+      "B": 0.2101,
+      "C": 0.1128,
+      "D": 0.0357,
+      "F": 0.1249,
+      "W": 0.1443
+    },
+    "Interdisciplinary Studies": {
+      "A": 0.4369,
+      "B": 0.0925,
+      "C": 0.0486,
+      "D": 0.0139,
+      "F": 0.0994,
+      "P": 0.1788,
+      "W": 0.13
+    },
+    "Mathematics": {
+      "A": 0.3035,
+      "B": 0.1976,
+      "C": 0.1894,
+      "D": 0.0692,
+      "F": 0.0998,
+      "W": 0.1405
+    },
+    "Physical Sciences": {
+      "A": 0.4096,
+      "B": 0.2465,
+      "C": 0.1765,
+      "D": 0.0452,
+      "F": 0.0226,
+      "W": 0.0995
+    },
+    "Psychology": {
+      "A": 0.4877,
+      "B": 0.166,
+      "C": 0.1004,
+      "D": 0.0287,
+      "F": 0.1332,
+      "W": 0.084
+    },
+    "Public and Protective Services": {
+      "A": 0.4154,
+      "B": 0.1838,
+      "C": 0.1122,
+      "D": 0.043,
+      "F": 0.124,
+      "W": 0.1217
+    },
+    "Social Sciences": {
+      "A": 0.4877,
+      "B": 0.2002,
+      "C": 0.0928,
+      "D": 0.0299,
+      "F": 0.1002,
+      "P": 0.0006,
+      "W": 0.0885
+    }
+  }
+}

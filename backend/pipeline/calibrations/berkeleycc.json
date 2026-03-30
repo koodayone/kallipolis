@@ -1,10 +1,10 @@
 {
   "college": "Berkeley City College",
-  "source": "DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
-  "enrollment": 4456,
-  "success_rate": 0.718,
-  "retention_rate": 0.67,
-  "ft_ratio": 0.31,
+  "source": "DataMart CourseRetSuccessSumm, StudentHeadcount, UnitLoadSumm (Fall 2025); DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
+  "enrollment": 6644,
+  "success_rate": 0.7216,
+  "retention_rate": 0.8398,
+  "ft_ratio": 0.16,
   "grade_distribution": {
     "A": 0.4668,
     "B": 0.151,
@@ -35,29 +35,29 @@
   },
   "top_group_success_rate": {
     "Biological Sciences": 0.8399,
-    "Business and Management": 0.7013,
-    "Education": 0.6796,
+    "Business and Management": 0.7014,
+    "Education": 0.6795,
     "Environmental Sciences and Technologies": 0.7743,
     "Family and Consumer Sciences": 0.7583,
-    "Fine and Applied Arts": 0.7599,
+    "Fine and Applied Arts": 0.7598,
     "Foreign Language": 0.6562,
-    "Humanities (Letters)": 0.6914,
+    "Humanities (Letters)": 0.6913,
     "Information Technology": 0.74,
-    "Interdisciplinary Studies": 0.7934,
+    "Interdisciplinary Studies": 0.7933,
     "Library Science": 0.8235,
     "Mathematics": 0.7318,
-    "Media and Communications": 0.6686,
-    "Physical Sciences": 0.7647,
+    "Media and Communications": 0.6685,
+    "Physical Sciences": 0.7645,
     "Psychology": 0.7787,
     "Public and Protective Services": 0.5334,
-    "Social Sciences": 0.6804
+    "Social Sciences": 0.6805
   },
   "top_group_grades": {
     "Biological Sciences": {
       "A": 0.5419,
       "B": 0.1995,
       "C": 0.0936,
-      "D": 0.0369,
+      "D": 0.037,
       "F": 0.0148,
       "P": 0.0049,
       "W": 0.0911
@@ -98,7 +98,7 @@
       "A": 0.5564,
       "B": 0.1186,
       "C": 0.0542,
-      "D": 0.0059,
+      "D": 0.0058,
       "F": 0.0732,
       "P": 0.0307,
       "W": 0.1288
@@ -109,22 +109,22 @@
       "C": 0.084,
       "D": 0.0341,
       "F": 0.0656,
-      "P": 0.0472,
+      "P": 0.0473,
       "W": 0.2021
     },
     "Humanities (Letters)": {
       "A": 0.4647,
-      "B": 0.151,
+      "B": 0.1509,
       "C": 0.0659,
       "D": 0.0206,
       "F": 0.0907,
       "P": 0.0098,
-      "W": 0.1674
+      "W": 0.1675
     },
     "Information Technology": {
       "A": 0.4467,
       "B": 0.1967,
-      "C": 0.0933,
+      "C": 0.0934,
       "D": 0.0133,
       "F": 0.08,
       "P": 0.0033,
@@ -132,12 +132,12 @@
     },
     "Interdisciplinary Studies": {
       "A": 0.6186,
-      "B": 0.0906,
+      "B": 0.0905,
       "C": 0.0612,
       "D": 0.0281,
       "F": 0.051,
       "P": 0.023,
-      "W": 0.0957
+      "W": 0.0956
     },
     "Library Science": {
       "A": 0.6471,
@@ -158,7 +158,7 @@
     "Media and Communications": {
       "A": 0.4356,
       "B": 0.1231,
-      "C": 0.0739,
+      "C": 0.0738,
       "D": 0.0284,
       "F": 0.1288,
       "P": 0.036,
@@ -166,11 +166,11 @@
     },
     "Physical Sciences": {
       "A": 0.4428,
-      "B": 0.2225,
-      "C": 0.0994,
+      "B": 0.2224,
+      "C": 0.0993,
       "D": 0.0281,
-      "F": 0.041,
-      "W": 0.1533
+      "F": 0.0411,
+      "W": 0.1534
     },
     "Psychology": {
       "A": 0.4906,

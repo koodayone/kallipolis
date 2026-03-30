@@ -1,9 +1,9 @@
 {
   "college": "Foothill College",
-  "source": "DataMart Grade Distribution (Fall 2025, 2-digit TOP) + Foothill Fast Facts (Fall 2024)",
-  "enrollment": 13625,
-  "success_rate": 0.8211,
-  "retention_rate": 0.67,
+  "source": "DataMart CourseRetSuccessSumm, StudentHeadcount, UnitLoadSumm (Fall 2025); DataMart Grade Distribution (Fall 2025, 2-digit TOP) + Foothill Fast Facts (Fall 2024)",
+  "enrollment": 14135,
+  "success_rate": 0.8242,
+  "retention_rate": 0.9275,
   "ft_ratio": 0.31,
   "grade_distribution": {
     "A": 0.5534,
@@ -36,31 +36,31 @@
     "Social Sciences": 0.1281
   },
   "top_group_success_rate": {
-    "Agriculture and Natural Resources": 0.9242,
+    "Agriculture and Natural Resources": 0.9243,
     "Biological Sciences": 0.8883,
     "Business and Management": 0.8652,
-    "Education": 0.9251,
-    "Engineering and Industrial Technologies": 0.9658,
+    "Education": 0.925,
+    "Engineering and Industrial Technologies": 0.9659,
     "Environmental Sciences and Technologies": 0.7708,
     "Family and Consumer Sciences": 0.8775,
     "Fine and Applied Arts": 0.783,
-    "Foreign Language": 0.8088,
+    "Foreign Language": 0.8089,
     "Health": 0.91,
     "Humanities (Letters)": 0.7437,
-    "Information Technology": 0.7628,
-    "Interdisciplinary Studies": 0.8563,
+    "Information Technology": 0.7627,
+    "Interdisciplinary Studies": 0.8564,
     "Library Science": 0.75,
-    "Mathematics": 0.7171,
-    "Media and Communications": 0.7756,
-    "Physical Sciences": 0.7741,
+    "Mathematics": 0.717,
+    "Media and Communications": 0.7755,
+    "Physical Sciences": 0.7742,
     "Psychology": 0.7745,
-    "Social Sciences": 0.7396
+    "Social Sciences": 0.7395
   },
   "top_group_grades": {
     "Agriculture and Natural Resources": {
       "A": 0.7064,
       "B": 0.2008,
-      "C": 0.017,
+      "C": 0.0171,
       "D": 0.0076,
       "F": 0.036,
       "W": 0.0303
@@ -75,20 +75,20 @@
       "W": 0.0454
     },
     "Business and Management": {
-      "A": 0.6196,
+      "A": 0.6197,
       "B": 0.1623,
       "C": 0.0529,
       "D": 0.0191,
-      "F": 0.0479,
+      "F": 0.0478,
       "P": 0.0304,
       "W": 0.0641
     },
     "Education": {
       "A": 0.8401,
       "B": 0.0513,
-      "C": 0.023,
+      "C": 0.0229,
       "D": 0.0115,
-      "F": 0.0337,
+      "F": 0.0336,
       "P": 0.0107,
       "W": 0.0291
     },
@@ -133,7 +133,7 @@
       "D": 0.0231,
       "F": 0.0294,
       "P": 0.0357,
-      "W": 0.1282
+      "W": 0.1281
     },
     "Health": {
       "A": 0.6316,
@@ -163,13 +163,13 @@
       "W": 0.099
     },
     "Interdisciplinary Studies": {
-      "A": 0.635,
-      "B": 0.1089,
+      "A": 0.6349,
+      "B": 0.109,
       "C": 0.0371,
       "D": 0.0139,
       "F": 0.066,
       "P": 0.0753,
-      "W": 0.0429
+      "W": 0.0428
     },
     "Library Science": {
       "A": 0.5,
@@ -182,10 +182,10 @@
     "Mathematics": {
       "A": 0.4224,
       "B": 0.1677,
-      "C": 0.117,
+      "C": 0.1169,
       "D": 0.0438,
       "F": 0.1274,
-      "P": 0.01,
+      "P": 0.0099,
       "W": 0.088
     },
     "Media and Communications": {
@@ -200,7 +200,7 @@
     "Physical Sciences": {
       "A": 0.3905,
       "B": 0.2297,
-      "C": 0.1476,
+      "C": 0.1477,
       "D": 0.0353,
       "F": 0.0763,
       "P": 0.0063,

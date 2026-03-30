@@ -1,0 +1,182 @@
+{
+  "college": "West Hills College Coalinga",
+  "source": "DataMart CourseRetSuccessSumm, StudentHeadcount, UnitLoadSumm, GradesSummAll (Fall 2025)",
+  "enrollment": 4497,
+  "success_rate": 0.8114,
+  "retention_rate": 0.9399,
+  "ft_ratio": 0.14,
+  "grade_distribution": {
+    "A": 0.4337,
+    "B": 0.2411,
+    "C": 0.1379,
+    "D": 0.0348,
+    "F": 0.0923,
+    "W": 0.0602
+  },
+  "top_group_enrollment_share": {
+    "Agriculture and Natural Resources": 0.0528,
+    "Biological Sciences": 0.0494,
+    "Business and Management": 0.0476,
+    "Education": 0.0523,
+    "Engineering and Industrial Technologies": 0.0379,
+    "Family and Consumer Sciences": 0.0796,
+    "Fine and Applied Arts": 0.0483,
+    "Health": 0.0134,
+    "Humanities (Letters)": 0.1791,
+    "Information Technology": 0.007,
+    "Interdisciplinary Studies": 0.049,
+    "Mathematics": 0.0612,
+    "Physical Sciences": 0.0391,
+    "Psychology": 0.0601,
+    "Public and Protective Services": 0.0302,
+    "Social Sciences": 0.1929
+  },
+  "top_group_success_rate": {
+    "Agriculture and Natural Resources": 0.8336,
+    "Biological Sciences": 0.8017,
+    "Business and Management": 0.839,
+    "Education": 0.8514,
+    "Engineering and Industrial Technologies": 0.7934,
+    "Family and Consumer Sciences": 0.8259,
+    "Fine and Applied Arts": 0.7694,
+    "Health": 0.8304,
+    "Humanities (Letters)": 0.751,
+    "Information Technology": 0.8871,
+    "Interdisciplinary Studies": 0.8052,
+    "Mathematics": 0.867,
+    "Physical Sciences": 0.8188,
+    "Psychology": 0.8552,
+    "Public and Protective Services": 0.8421,
+    "Social Sciences": 0.8211
+  },
+  "top_group_grades": {
+    "Agriculture and Natural Resources": {
+      "A": 0.3005,
+      "B": 0.3022,
+      "C": 0.2309,
+      "D": 0.0302,
+      "F": 0.0865,
+      "W": 0.0497
+    },
+    "Biological Sciences": {
+      "A": 0.3132,
+      "B": 0.2926,
+      "C": 0.1959,
+      "D": 0.0507,
+      "F": 0.0991,
+      "W": 0.0486
+    },
+    "Business and Management": {
+      "A": 0.4613,
+      "B": 0.2623,
+      "C": 0.1154,
+      "D": 0.0216,
+      "F": 0.0938,
+      "W": 0.0457
+    },
+    "Education": {
+      "A": 0.6703,
+      "B": 0.1179,
+      "C": 0.0633,
+      "D": 0.0218,
+      "F": 0.0657,
+      "W": 0.0612
+    },
+    "Engineering and Industrial Technologies": {
+      "A": 0.3443,
+      "B": 0.3054,
+      "C": 0.1437,
+      "D": 0.027,
+      "F": 0.1317,
+      "W": 0.0479
+    },
+    "Family and Consumer Sciences": {
+      "A": 0.5349,
+      "B": 0.184,
+      "C": 0.107,
+      "D": 0.0442,
+      "F": 0.0742,
+      "W": 0.0556
+    },
+    "Fine and Applied Arts": {
+      "A": 0.4024,
+      "B": 0.2142,
+      "C": 0.1529,
+      "D": 0.0377,
+      "F": 0.0894,
+      "W": 0.1035
+    },
+    "Health": {
+      "A": 0.483,
+      "B": 0.2457,
+      "C": 0.1017,
+      "D": 0.0424,
+      "F": 0.1186,
+      "W": 0.0085
+    },
+    "Humanities (Letters)": {
+      "A": 0.3526,
+      "B": 0.251,
+      "C": 0.1474,
+      "D": 0.0502,
+      "F": 0.1327,
+      "W": 0.066
+    },
+    "Information Technology": {
+      "A": 0.4677,
+      "B": 0.2904,
+      "C": 0.129,
+      "D": 0.0161,
+      "F": 0.0484,
+      "W": 0.0484
+    },
+    "Interdisciplinary Studies": {
+      "A": 0.4501,
+      "B": 0.2274,
+      "C": 0.1276,
+      "D": 0.0487,
+      "F": 0.0905,
+      "W": 0.0557
+    },
+    "Mathematics": {
+      "A": 0.4064,
+      "B": 0.2996,
+      "C": 0.161,
+      "D": 0.0206,
+      "F": 0.0506,
+      "W": 0.0618
+    },
+    "Physical Sciences": {
+      "A": 0.2931,
+      "B": 0.3395,
+      "C": 0.1862,
+      "D": 0.0208,
+      "F": 0.0802,
+      "W": 0.0802
+    },
+    "Psychology": {
+      "A": 0.64,
+      "B": 0.1638,
+      "C": 0.0514,
+      "D": 0.0152,
+      "F": 0.0971,
+      "W": 0.0324
+    },
+    "Public and Protective Services": {
+      "A": 0.5075,
+      "B": 0.2218,
+      "C": 0.1128,
+      "D": 0.015,
+      "F": 0.094,
+      "W": 0.0489
+    },
+    "Social Sciences": {
+      "A": 0.4416,
+      "B": 0.2378,
+      "C": 0.1417,
+      "D": 0.0343,
+      "F": 0.0761,
+      "W": 0.0685
+    }
+  }
+}

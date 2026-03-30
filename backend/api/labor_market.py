@@ -28,6 +28,9 @@ def get_labor_market_overview(college: str):
                        occ.soc_code AS soc_code, occ.title AS title,
                        occ.description AS description, occ.annual_wage AS annual_wage,
                        d.employment AS employment,
+                       d.growth_rate AS growth_rate,
+                       d.annual_openings AS annual_openings,
+                       d.education_level AS education_level,
                        count(DISTINCT sk) AS matching_skills,
                        collect(DISTINCT sk.name) AS skills
                 ORDER BY matching_skills DESC
@@ -46,6 +49,9 @@ def get_labor_market_overview(college: str):
                 description=r["description"],
                 annual_wage=r["annual_wage"],
                 employment=r["employment"],
+                growth_rate=r.get("growth_rate"),
+                annual_openings=r.get("annual_openings"),
+                education_level=r.get("education_level"),
                 matching_skills=r["matching_skills"],
                 skills=r["skills"],
             ))
@@ -100,7 +106,9 @@ def get_occupation_detail(soc_code: str, college: str):
             # Get regional demand
             region_result = session.run("""
                 MATCH (r:Region)-[d:DEMANDS]->(occ:Occupation {soc_code: $soc})
-                RETURN r.name AS region, d.employment AS employment
+                RETURN r.name AS region, d.employment AS employment,
+                       d.growth_rate AS growth_rate, d.annual_openings AS annual_openings,
+                       d.education_level AS education_level
                 ORDER BY d.employment DESC
             """, soc=soc_code).data()
 
@@ -110,7 +118,13 @@ def get_occupation_detail(soc_code: str, college: str):
             description=occ_result["description"],
             annual_wage=occ_result["annual_wage"],
             skills=skills,
-            regions=[{"region": r["region"], "employment": r["employment"]} for r in region_result],
+            regions=[{
+                "region": r["region"],
+                "employment": r["employment"],
+                "growth_rate": r.get("growth_rate"),
+                "annual_openings": r.get("annual_openings"),
+                "education_level": r.get("education_level"),
+            } for r in region_result],
         )
     except HTTPException:
         raise

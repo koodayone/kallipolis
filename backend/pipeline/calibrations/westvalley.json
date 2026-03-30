@@ -1,10 +1,10 @@
 {
   "college": "West Valley College",
-  "source": "DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
-  "enrollment": 7272,
-  "success_rate": 0.7608,
-  "retention_rate": 0.67,
-  "ft_ratio": 0.31,
+  "source": "DataMart CourseRetSuccessSumm, StudentHeadcount, UnitLoadSumm (Fall 2025); DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
+  "enrollment": 10210,
+  "success_rate": 0.7622,
+  "retention_rate": 0.8734,
+  "ft_ratio": 0.29,
   "grade_distribution": {
     "A": 0.4857,
     "B": 0.1685,
@@ -16,7 +16,6 @@
   },
   "top_group_enrollment_share": {
     "Agriculture and Natural Resources": 0.0131,
-    "Architecture and Related Technologies": 0.0168,
     "Biological Sciences": 0.0536,
     "Business and Management": 0.0591,
     "Education": 0.0739,
@@ -40,50 +39,40 @@
   },
   "top_group_success_rate": {
     "Agriculture and Natural Resources": 0.808,
-    "Architecture and Related Technologies": 0.8113,
     "Biological Sciences": 0.7562,
     "Business and Management": 0.7633,
-    "Education": 0.8428,
-    "Engineering and Industrial Technologies": 0.7269,
+    "Education": 0.8429,
+    "Engineering and Industrial Technologies": 0.727,
     "Environmental Sciences and Technologies": 0.5882,
     "Family and Consumer Sciences": 0.794,
     "Fine and Applied Arts": 0.7495,
     "Foreign Language": 0.732,
-    "Health": 0.808,
+    "Health": 0.8081,
     "Humanities (Letters)": 0.6817,
     "Information Technology": 0.752,
-    "Interdisciplinary Studies": 0.7818,
+    "Interdisciplinary Studies": 0.7817,
     "Law": 0.7723,
     "Library Science": 0.6785,
     "Mathematics": 0.769,
-    "Media and Communications": 0.8417,
+    "Media and Communications": 0.8416,
     "Physical Sciences": 0.732,
     "Psychology": 0.6762,
     "Public and Protective Services": 0.8175,
-    "Social Sciences": 0.7578
+    "Social Sciences": 0.7577
   },
   "top_group_grades": {
     "Agriculture and Natural Resources": {
       "A": 0.4819,
       "B": 0.2355,
-      "C": 0.0906,
+      "C": 0.0905,
       "D": 0.0254,
       "F": 0.0507,
       "W": 0.1051
     },
-    "Architecture and Related Technologies": {
-      "A": 0.5606,
-      "B": 0.1859,
-      "C": 0.0592,
-      "D": 0.0141,
-      "F": 0.0507,
-      "P": 0.0056,
-      "W": 0.1155
-    },
     "Biological Sciences": {
       "A": 0.4178,
       "B": 0.1979,
-      "C": 0.1405,
+      "C": 0.1404,
       "D": 0.0318,
       "F": 0.0654,
       "W": 0.1431
@@ -93,22 +82,22 @@
       "B": 0.2223,
       "C": 0.0883,
       "D": 0.0345,
-      "F": 0.0835,
+      "F": 0.0834,
       "P": 0.0185,
-      "W": 0.1059
+      "W": 0.106
     },
     "Education": {
       "A": 0.721,
-      "B": 0.0699,
-      "C": 0.0301,
-      "D": 0.0071,
-      "F": 0.0314,
+      "B": 0.07,
+      "C": 0.0302,
+      "D": 0.007,
+      "F": 0.0315,
       "P": 0.0218,
       "W": 0.0975
     },
     "Engineering and Industrial Technologies": {
       "A": 0.4868,
-      "B": 0.1414,
+      "B": 0.1415,
       "C": 0.0921,
       "D": 0.0329,
       "F": 0.0691,
@@ -150,7 +139,7 @@
       "W": 0.1396
     },
     "Health": {
-      "A": 0.5988,
+      "A": 0.5989,
       "B": 0.0998,
       "C": 0.0518,
       "D": 0.0384,
@@ -177,7 +166,7 @@
       "W": 0.148
     },
     "Interdisciplinary Studies": {
-      "A": 0.5341,
+      "A": 0.534,
       "B": 0.1409,
       "C": 0.0712,
       "D": 0.0217,
@@ -213,15 +202,15 @@
     "Media and Communications": {
       "A": 0.5385,
       "B": 0.1674,
-      "C": 0.0649,
+      "C": 0.0648,
       "D": 0.0226,
-      "F": 0.0588,
+      "F": 0.0589,
       "P": 0.0709,
       "W": 0.0543
     },
     "Physical Sciences": {
       "A": 0.3698,
-      "B": 0.2177,
+      "B": 0.2178,
       "C": 0.1368,
       "D": 0.0252,
       "F": 0.0667,

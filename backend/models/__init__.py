@@ -87,6 +87,9 @@ class OccupationMatch(BaseModel):
     description: Optional[str] = None
     annual_wage: Optional[int] = None
     employment: Optional[int] = None
+    growth_rate: Optional[float] = None
+    annual_openings: Optional[int] = None
+    education_level: Optional[str] = None
     matching_skills: int
     skills: list[str]
 
@@ -294,6 +297,9 @@ class LmiOccupation(BaseModel):
     title: str
     annual_wage: Optional[int] = None
     employment: Optional[int] = None
+    growth_rate: Optional[float] = None
+    annual_openings: Optional[int] = None
+    education_level: Optional[str] = None
     region: str
 
 

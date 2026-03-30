@@ -20,12 +20,15 @@ Nodes:
 
 Relationships:
 - (College)-[:IN_MARKET]->(Region)
-- (Region)-[DEMANDS {employment}]->(Occupation)
+- (Region)-[DEMANDS {employment, growth_rate, annual_openings, education_level}]->(Occupation)
   employment: integer, number of jobs in the region for this occupation
+  growth_rate: float, projected 5-year growth rate 2024-2029 (e.g. 0.05 = 5% growth)
+  annual_openings: integer, average annual job openings (new + replacement)
+  education_level: string, typical entry-level education (e.g. "Bachelor's degree", "Associate's degree")
 - (Occupation)-[:REQUIRES_SKILL]->(Skill)
 - (Course)-[:DEVELOPS]->(Skill)
 
-IMPORTANT: employment is a property on the DEMANDS relationship (d.employment), NOT on the Occupation node.
+IMPORTANT: employment, growth_rate, annual_openings, and education_level are properties on the DEMANDS relationship (d.employment, d.growth_rate, etc.), NOT on the Occupation node.
 
 RULES:
 1. Every query MUST use this full traversal as the base MATCH to compute skill alignment between occupations and the college's curriculum:
@@ -37,6 +40,8 @@ RULES:
      RETURN occ.soc_code AS soc_code, occ.title AS title,
             occ.description AS description, occ.annual_wage AS annual_wage,
             d.employment AS employment,
+            d.growth_rate AS growth_rate, d.annual_openings AS annual_openings,
+            d.education_level AS education_level,
             count(DISTINCT sk) AS matching_skills,
             collect(DISTINCT sk.name) AS skills
      ORDER BY matching_skills DESC
@@ -45,8 +50,11 @@ RULES:
 7. The current college is provided in the user message. The $college parameter is always set to that college. If the user references a DIFFERENT college by name, respond with CANNOT_TRANSLATE.
 8. For wage sorting ("highest paying"): use ORDER BY occ.annual_wage DESC
 9. For employment sorting ("most jobs"): use ORDER BY d.employment DESC
-10. For title/role queries: add WHERE toLower(occ.title) CONTAINS '...'
-11. For skill queries: add WHERE toLower(sk.name) CONTAINS '...'
+10. For growth sorting ("fastest growing"): use ORDER BY d.growth_rate DESC
+11. For openings sorting ("most openings"): use ORDER BY d.annual_openings DESC
+12. For education filtering ("associate's degree jobs"): add WHERE d.education_level = "Associate's degree"
+13. For title/role queries: add WHERE toLower(occ.title) CONTAINS '...'
+14. For skill queries: add WHERE toLower(sk.name) CONTAINS '...'
 
 EXAMPLES:
 
@@ -54,7 +62,8 @@ Question: "Highest paying occupations"
 MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})
 RETURN occ.soc_code AS soc_code, occ.title AS title,
        occ.description AS description, occ.annual_wage AS annual_wage,
-       d.employment AS employment,
+       d.employment AS employment, d.growth_rate AS growth_rate,
+       d.annual_openings AS annual_openings, d.education_level AS education_level,
        count(DISTINCT sk) AS matching_skills,
        collect(DISTINCT sk.name) AS skills
 ORDER BY occ.annual_wage DESC
@@ -64,7 +73,8 @@ MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:
 WHERE toLower(occ.title) CONTAINS 'software'
 RETURN occ.soc_code AS soc_code, occ.title AS title,
        occ.description AS description, occ.annual_wage AS annual_wage,
-       d.employment AS employment,
+       d.employment AS employment, d.growth_rate AS growth_rate,
+       d.annual_openings AS annual_openings, d.education_level AS education_level,
        count(DISTINCT sk) AS matching_skills,
        collect(DISTINCT sk.name) AS skills
 ORDER BY matching_skills DESC
@@ -73,7 +83,8 @@ Question: "Most jobs available"
 MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})
 RETURN occ.soc_code AS soc_code, occ.title AS title,
        occ.description AS description, occ.annual_wage AS annual_wage,
-       d.employment AS employment,
+       d.employment AS employment, d.growth_rate AS growth_rate,
+       d.annual_openings AS annual_openings, d.education_level AS education_level,
        count(DISTINCT sk) AS matching_skills,
        collect(DISTINCT sk.name) AS skills
 ORDER BY d.employment DESC
@@ -83,7 +94,8 @@ MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:
 WHERE toLower(sk.name) CONTAINS 'data analysis'
 RETURN occ.soc_code AS soc_code, occ.title AS title,
        occ.description AS description, occ.annual_wage AS annual_wage,
-       d.employment AS employment,
+       d.employment AS employment, d.growth_rate AS growth_rate,
+       d.annual_openings AS annual_openings, d.education_level AS education_level,
        count(DISTINCT sk) AS matching_skills,
        collect(DISTINCT sk.name) AS skills
 ORDER BY matching_skills DESC
@@ -93,7 +105,8 @@ MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:
 WHERE toLower(occ.title) CONTAINS 'health' OR toLower(occ.title) CONTAINS 'nurse' OR toLower(occ.title) CONTAINS 'medical'
 RETURN occ.soc_code AS soc_code, occ.title AS title,
        occ.description AS description, occ.annual_wage AS annual_wage,
-       d.employment AS employment,
+       d.employment AS employment, d.growth_rate AS growth_rate,
+       d.annual_openings AS annual_openings, d.education_level AS education_level,
        count(DISTINCT sk) AS matching_skills,
        collect(DISTINCT sk.name) AS skills
 ORDER BY matching_skills DESC
@@ -121,6 +134,9 @@ async def run_occupation_query(question: str, college: str) -> tuple[list[Occupa
             description=r.get("description"),
             annual_wage=r.get("annual_wage"),
             employment=r.get("employment"),
+            growth_rate=r.get("growth_rate"),
+            annual_openings=r.get("annual_openings"),
+            education_level=r.get("education_level"),
             matching_skills=r.get("matching_skills", 0),
             skills=r.get("skills", []),
         )

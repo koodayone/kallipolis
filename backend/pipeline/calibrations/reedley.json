@@ -1,0 +1,234 @@
+{
+  "college": "Reedley College",
+  "source": "DataMart CourseRetSuccessSumm, StudentHeadcount, UnitLoadSumm, GradesSummAll (Fall 2025)",
+  "enrollment": 10664,
+  "success_rate": 0.7863,
+  "retention_rate": 0.9532,
+  "ft_ratio": 0.22,
+  "grade_distribution": {
+    "A": 0.3922,
+    "B": 0.2322,
+    "C": 0.1457,
+    "D": 0.0454,
+    "F": 0.1179,
+    "P": 0.0197,
+    "W": 0.047
+  },
+  "top_group_enrollment_share": {
+    "Agriculture and Natural Resources": 0.0902,
+    "Biological Sciences": 0.0544,
+    "Business and Management": 0.0589,
+    "Education": 0.0612,
+    "Engineering and Industrial Technologies": 0.0352,
+    "Environmental Sciences and Technologies": 0.0013,
+    "Family and Consumer Sciences": 0.0477,
+    "Fine and Applied Arts": 0.0439,
+    "Foreign Language": 0.0298,
+    "Health": 0.008,
+    "Humanities (Letters)": 0.1611,
+    "Information Technology": 0.0234,
+    "Interdisciplinary Studies": 0.0614,
+    "Library Science": 0.0013,
+    "Mathematics": 0.0972,
+    "Media and Communications": 0.0095,
+    "Physical Sciences": 0.0347,
+    "Psychology": 0.0159,
+    "Public and Protective Services": 0.0271,
+    "Social Sciences": 0.1313
+  },
+  "top_group_success_rate": {
+    "Agriculture and Natural Resources": 0.8791,
+    "Biological Sciences": 0.7369,
+    "Business and Management": 0.7885,
+    "Education": 0.8438,
+    "Engineering and Industrial Technologies": 0.8469,
+    "Environmental Sciences and Technologies": 0.5715,
+    "Family and Consumer Sciences": 0.7692,
+    "Fine and Applied Arts": 0.7843,
+    "Foreign Language": 0.8511,
+    "Health": 0.9368,
+    "Humanities (Letters)": 0.7266,
+    "Information Technology": 0.6903,
+    "Interdisciplinary Studies": 0.8252,
+    "Library Science": 0.5862,
+    "Mathematics": 0.7721,
+    "Media and Communications": 0.6764,
+    "Physical Sciences": 0.6725,
+    "Psychology": 0.685,
+    "Public and Protective Services": 0.8667,
+    "Social Sciences": 0.8177
+  },
+  "top_group_grades": {
+    "Agriculture and Natural Resources": {
+      "A": 0.3946,
+      "B": 0.2688,
+      "C": 0.1756,
+      "D": 0.0367,
+      "F": 0.0607,
+      "P": 0.0401,
+      "W": 0.0235
+    },
+    "Biological Sciences": {
+      "A": 0.2238,
+      "B": 0.2654,
+      "C": 0.2358,
+      "D": 0.1129,
+      "F": 0.1035,
+      "P": 0.0119,
+      "W": 0.0467
+    },
+    "Business and Management": {
+      "A": 0.3688,
+      "B": 0.2519,
+      "C": 0.1341,
+      "D": 0.0336,
+      "F": 0.1216,
+      "P": 0.0336,
+      "W": 0.0563
+    },
+    "Education": {
+      "A": 0.6508,
+      "B": 0.1254,
+      "C": 0.0661,
+      "D": 0.021,
+      "F": 0.1029,
+      "P": 0.0015,
+      "W": 0.0323
+    },
+    "Engineering and Industrial Technologies": {
+      "A": 0.371,
+      "B": 0.3216,
+      "C": 0.1531,
+      "D": 0.0393,
+      "F": 0.0811,
+      "P": 0.0013,
+      "W": 0.0327
+    },
+    "Environmental Sciences and Technologies": {
+      "A": 0.2143,
+      "B": 0.2143,
+      "C": 0.1429,
+      "D": 0.1071,
+      "F": 0.25,
+      "W": 0.0714
+    },
+    "Family and Consumer Sciences": {
+      "A": 0.444,
+      "B": 0.2191,
+      "C": 0.1062,
+      "D": 0.0502,
+      "F": 0.1449,
+      "W": 0.0358
+    },
+    "Fine and Applied Arts": {
+      "A": 0.4607,
+      "B": 0.2073,
+      "C": 0.1152,
+      "D": 0.044,
+      "F": 0.1404,
+      "P": 0.0011,
+      "W": 0.0314
+    },
+    "Foreign Language": {
+      "A": 0.4302,
+      "B": 0.2565,
+      "C": 0.1644,
+      "D": 0.0307,
+      "F": 0.0691,
+      "W": 0.0492
+    },
+    "Health": {
+      "A": 0.477,
+      "B": 0.3161,
+      "C": 0.0575,
+      "D": 0.0172,
+      "F": 0.023,
+      "P": 0.0862,
+      "W": 0.023
+    },
+    "Humanities (Letters)": {
+      "A": 0.3208,
+      "B": 0.2401,
+      "C": 0.1657,
+      "D": 0.048,
+      "F": 0.1565,
+      "W": 0.0689
+    },
+    "Information Technology": {
+      "A": 0.3233,
+      "B": 0.1973,
+      "C": 0.1658,
+      "D": 0.0237,
+      "F": 0.1932,
+      "P": 0.0039,
+      "W": 0.0928
+    },
+    "Interdisciplinary Studies": {
+      "A": 0.3809,
+      "B": 0.1608,
+      "C": 0.0956,
+      "D": 0.0404,
+      "F": 0.0995,
+      "P": 0.1879,
+      "W": 0.0349
+    },
+    "Library Science": {
+      "A": 0.4138,
+      "B": 0.1724,
+      "D": 0.0345,
+      "F": 0.3793
+    },
+    "Mathematics": {
+      "A": 0.3412,
+      "B": 0.2577,
+      "C": 0.1656,
+      "D": 0.0481,
+      "F": 0.1269,
+      "P": 0.0076,
+      "W": 0.0529
+    },
+    "Media and Communications": {
+      "A": 0.2899,
+      "B": 0.2271,
+      "C": 0.1594,
+      "D": 0.0676,
+      "F": 0.2126,
+      "W": 0.0435
+    },
+    "Physical Sciences": {
+      "A": 0.2332,
+      "B": 0.2156,
+      "C": 0.2182,
+      "D": 0.0792,
+      "F": 0.1544,
+      "P": 0.0055,
+      "W": 0.0939
+    },
+    "Psychology": {
+      "A": 0.3584,
+      "B": 0.2312,
+      "C": 0.0954,
+      "D": 0.0578,
+      "F": 0.1908,
+      "W": 0.0665
+    },
+    "Public and Protective Services": {
+      "A": 0.5118,
+      "B": 0.2264,
+      "C": 0.1267,
+      "D": 0.0253,
+      "F": 0.0861,
+      "P": 0.0017,
+      "W": 0.022
+    },
+    "Social Sciences": {
+      "A": 0.4557,
+      "B": 0.2308,
+      "C": 0.128,
+      "D": 0.0406,
+      "F": 0.1022,
+      "P": 0.0032,
+      "W": 0.0395
+    }
+  }
+}

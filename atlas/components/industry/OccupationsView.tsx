@@ -274,7 +274,7 @@ function OccupationRow({ occ, i, school, expandedSocs, details, loadingSocs, onE
         onClick={() => onExpand(occ)}
         style={{
           width: "100%", textAlign: "left",
-          display: "grid", gridTemplateColumns: "24px 1fr 100px 100px 85px",
+          display: "grid", gridTemplateColumns: "24px 1fr 100px 80px 110px",
           padding: "12px 16px", gap: "10px", alignItems: "center",
           background: isOpen ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
           border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
@@ -287,23 +287,21 @@ function OccupationRow({ occ, i, school, expandedSocs, details, loadingSocs, onE
           style={{ transform: isOpen ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>
           <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-        <span style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)", lineHeight: 1.4 }}>
+        <span style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)", lineHeight: 1.4, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
           {occ.title}
         </span>
-        <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.5)" }}>
+        <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.5)", textAlign: "right" }}>
           {formatWage(occ.annual_wage)}
         </span>
-        <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.5)" }}>
-          {formatJobs(occ.employment)}
+        <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.45)", textAlign: "right" }}>
+          {occ.annual_openings != null ? `${occ.annual_openings.toLocaleString()}/yr` : "\u2014"}
         </span>
-        <Badge style={{
-          color: school.brandColorLight,
-          background: `${school.brandColorLight}20`,
-          border: `1px solid ${school.brandColorLight}30`,
-          fontSize: "11px", whiteSpace: "nowrap",
+        <span style={{
+          fontFamily: FONT, fontSize: "12px", fontWeight: 500, textAlign: "right",
+          color: occ.growth_rate != null ? (occ.growth_rate >= 0 ? "#4ade80" : "#f87171") : "rgba(255,255,255,0.25)",
         }}>
-          {occ.matching_skills} skills
-        </Badge>
+          {occ.growth_rate != null ? `${occ.growth_rate >= 0 ? "+" : ""}${(occ.growth_rate * 100).toFixed(1)}%` : "\u2014"}
+        </span>
       </motion.button>
 
       <AnimatePresence>
@@ -319,6 +317,26 @@ function OccupationRow({ occ, i, school, expandedSocs, details, loadingSocs, onE
               {loadingSocs.has(occ.soc_code) && <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Loading...</p>}
               {details[occ.soc_code] && (() => { const detail = details[occ.soc_code]; return (
                 <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+                  {/* Summary stats */}
+                  <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", alignItems: "center" }}>
+                    {occ.employment != null && (
+                      <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.5)" }}>
+                        <span style={{ color: "rgba(255,255,255,0.7)", fontWeight: 500 }}>{occ.employment.toLocaleString()}</span> jobs in region
+                      </span>
+                    )}
+                    <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.5)" }}>
+                      <span style={{ color: school.brandColorLight, fontWeight: 500 }}>{occ.matching_skills}</span> aligned skills
+                    </span>
+                    {occ.education_level && (
+                      <span style={{
+                        fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.4)",
+                        background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)",
+                        borderRadius: "100px", padding: "3px 10px",
+                      }}>
+                        {occ.education_level}
+                      </span>
+                    )}
+                  </div>
                   {detail.description && (
                     <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.55)", lineHeight: 1.6, margin: 0 }}>
                       {detail.description}
@@ -435,16 +453,17 @@ function OccupationList({
   const visible = occupations.slice(0, visibleCount);
 
   // Column headers
+  const hdrStyle: React.CSSProperties = { fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 };
   const columnHeaders = (
     <div style={{
-      display: "grid", gridTemplateColumns: "24px 1fr 100px 100px 85px",
+      display: "grid", gridTemplateColumns: "24px 1fr 100px 80px 110px",
       padding: "12px 16px", gap: "10px", alignItems: "center",
     }}>
       <span />
-      <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Occupation</span>
-      <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Wage</span>
-      <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Population</span>
-      <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Skills</span>
+      <span style={hdrStyle}>Occupation</span>
+      <span style={{ ...hdrStyle, textAlign: "right" }}>Wage</span>
+      <span style={{ ...hdrStyle, textAlign: "right" }}>Openings</span>
+      <span style={{ ...hdrStyle, textAlign: "right" }}>Growth</span>
     </div>
   );
 

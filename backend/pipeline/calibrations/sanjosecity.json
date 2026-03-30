@@ -1,10 +1,10 @@
 {
   "college": "San Jose City College",
-  "source": "DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
-  "enrollment": 8609,
-  "success_rate": 0.7229,
-  "retention_rate": 0.67,
-  "ft_ratio": 0.31,
+  "source": "DataMart CourseRetSuccessSumm, StudentHeadcount, UnitLoadSumm (Fall 2025); DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
+  "enrollment": 8899,
+  "success_rate": 0.7259,
+  "retention_rate": 0.8822,
+  "ft_ratio": 0.21,
   "grade_distribution": {
     "A": 0.4412,
     "B": 0.1616,
@@ -17,7 +17,6 @@
   "top_group_enrollment_share": {
     "Biological Sciences": 0.0521,
     "Business and Management": 0.0708,
-    "Commercial Services": 0.0079,
     "Education": 0.0535,
     "Engineering and Industrial Technologies": 0.0506,
     "Environmental Sciences and Technologies": 0.0069,
@@ -37,15 +36,14 @@
     "Social Sciences": 0.1549
   },
   "top_group_success_rate": {
-    "Biological Sciences": 0.7586,
+    "Biological Sciences": 0.7585,
     "Business and Management": 0.7285,
-    "Commercial Services": 0.9521,
     "Education": 0.8577,
-    "Engineering and Industrial Technologies": 0.8263,
+    "Engineering and Industrial Technologies": 0.8262,
     "Environmental Sciences and Technologies": 0.7008,
-    "Family and Consumer Sciences": 0.8123,
+    "Family and Consumer Sciences": 0.8125,
     "Fine and Applied Arts": 0.7781,
-    "Foreign Language": 0.7616,
+    "Foreign Language": 0.7617,
     "Health": 0.7924,
     "Humanities (Letters)": 0.638,
     "Information Technology": 0.7111,
@@ -54,7 +52,7 @@
     "Mathematics": 0.527,
     "Media and Communications": 0.7097,
     "Physical Sciences": 0.7681,
-    "Psychology": 0.6818,
+    "Psychology": 0.6819,
     "Public and Protective Services": 0.6371,
     "Social Sciences": 0.7627
   },
@@ -63,7 +61,7 @@
       "A": 0.399,
       "B": 0.2114,
       "C": 0.1482,
-      "D": 0.056,
+      "D": 0.0559,
       "F": 0.0715,
       "W": 0.1109
     },
@@ -76,14 +74,6 @@
       "P": 0.0191,
       "W": 0.0908
     },
-    "Commercial Services": {
-      "A": 0.4521,
-      "B": 0.3836,
-      "C": 0.1164,
-      "D": 0.0274,
-      "F": 0.0068,
-      "W": 0.0137
-    },
     "Education": {
       "A": 0.7346,
       "B": 0.0757,
@@ -95,7 +85,7 @@
     },
     "Engineering and Industrial Technologies": {
       "A": 0.5469,
-      "B": 0.1834,
+      "B": 0.1833,
       "C": 0.0949,
       "D": 0.0277,
       "F": 0.0725,
@@ -113,10 +103,10 @@
     "Family and Consumer Sciences": {
       "A": 0.5697,
       "B": 0.1566,
-      "C": 0.0843,
-      "D": 0.0207,
+      "C": 0.0844,
+      "D": 0.0206,
       "F": 0.0585,
-      "P": 0.0017,
+      "P": 0.0018,
       "W": 0.1067
     },
     "Fine and Applied Arts": {
@@ -134,7 +124,7 @@
       "C": 0.0866,
       "D": 0.0505,
       "F": 0.083,
-      "P": 0.0144,
+      "P": 0.0145,
       "W": 0.0975
     },
     "Health": {
@@ -147,7 +137,7 @@
       "W": 0.0859
     },
     "Humanities (Letters)": {
-      "A": 0.3304,
+      "A": 0.3305,
       "B": 0.1824,
       "C": 0.1141,
       "D": 0.0446,
@@ -161,7 +151,7 @@
       "C": 0.0785,
       "D": 0.0324,
       "F": 0.122,
-      "W": 0.1083
+      "W": 0.1084
     },
     "Interdisciplinary Studies": {
       "A": 0.2951,
@@ -170,7 +160,7 @@
       "D": 0.0149,
       "F": 0.0805,
       "P": 0.313,
-      "W": 0.1148
+      "W": 0.1147
     },
     "Library Science": {
       "A": 0.5,
@@ -190,7 +180,7 @@
       "B": 0.2258,
       "C": 0.0968,
       "F": 0.1613,
-      "W": 0.129
+      "W": 0.1291
     },
     "Physical Sciences": {
       "A": 0.4512,
@@ -198,12 +188,12 @@
       "C": 0.1034,
       "D": 0.0502,
       "F": 0.0638,
-      "W": 0.1159
+      "W": 0.116
     },
     "Psychology": {
       "A": 0.3957,
-      "B": 0.1756,
-      "C": 0.1105,
+      "B": 0.1757,
+      "C": 0.1106,
       "D": 0.0382,
       "F": 0.1343,
       "W": 0.1436
@@ -212,8 +202,8 @@
       "A": 0.3974,
       "B": 0.1616,
       "C": 0.0768,
-      "D": 0.0742,
-      "F": 0.1748,
+      "D": 0.0741,
+      "F": 0.1749,
       "P": 0.0013,
       "W": 0.1033
     },

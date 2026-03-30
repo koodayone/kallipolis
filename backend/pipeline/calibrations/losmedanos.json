@@ -1,10 +1,10 @@
 {
   "college": "Los Medanos College",
-  "source": "DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
-  "enrollment": 10997,
-  "success_rate": 0.7581,
-  "retention_rate": 0.67,
-  "ft_ratio": 0.31,
+  "source": "DataMart CourseRetSuccessSumm, StudentHeadcount, UnitLoadSumm (Fall 2025); DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
+  "enrollment": 9416,
+  "success_rate": 0.7598,
+  "retention_rate": 0.8981,
+  "ft_ratio": 0.34,
   "grade_distribution": {
     "A": 0.4377,
     "B": 0.1882,
@@ -35,36 +35,36 @@
   },
   "top_group_success_rate": {
     "Biological Sciences": 0.7677,
-    "Business and Management": 0.7933,
-    "Education": 0.7717,
+    "Business and Management": 0.7934,
+    "Education": 0.7716,
     "Engineering and Industrial Technologies": 0.8365,
     "Family and Consumer Sciences": 0.7638,
     "Fine and Applied Arts": 0.7423,
     "Foreign Language": 0.6884,
-    "Health": 0.9167,
+    "Health": 0.9165,
     "Humanities (Letters)": 0.731,
     "Information Technology": 0.7088,
     "Interdisciplinary Studies": 0.7506,
     "Mathematics": 0.6379,
     "Media and Communications": 0.7951,
-    "Physical Sciences": 0.7539,
+    "Physical Sciences": 0.7538,
     "Psychology": 0.8412,
-    "Public and Protective Services": 0.7705,
-    "Social Sciences": 0.8075
+    "Public and Protective Services": 0.7706,
+    "Social Sciences": 0.8074
   },
   "top_group_grades": {
     "Biological Sciences": {
-      "A": 0.3981,
+      "A": 0.398,
       "B": 0.2388,
       "C": 0.1308,
       "D": 0.0341,
       "F": 0.0487,
-      "W": 0.147
+      "W": 0.1471
     },
     "Business and Management": {
       "A": 0.4679,
       "B": 0.1604,
-      "C": 0.0858,
+      "C": 0.0859,
       "D": 0.0189,
       "F": 0.067,
       "P": 0.0792,
@@ -81,8 +81,8 @@
     },
     "Engineering and Industrial Technologies": {
       "A": 0.4081,
-      "B": 0.2676,
-      "C": 0.1461,
+      "B": 0.2677,
+      "C": 0.146,
       "D": 0.028,
       "F": 0.058,
       "P": 0.0147,
@@ -92,8 +92,8 @@
       "A": 0.5107,
       "B": 0.165,
       "C": 0.087,
-      "D": 0.039,
-      "F": 0.0864,
+      "D": 0.0389,
+      "F": 0.0865,
       "P": 0.0011,
       "W": 0.1028
     },
@@ -102,27 +102,27 @@
       "B": 0.158,
       "C": 0.0969,
       "D": 0.0341,
-      "F": 0.1178,
-      "P": 0.0017,
+      "F": 0.1179,
+      "P": 0.0016,
       "W": 0.0991
     },
     "Foreign Language": {
       "A": 0.5104,
       "B": 0.1068,
-      "C": 0.0682,
+      "C": 0.0683,
       "D": 0.0356,
       "F": 0.1187,
       "P": 0.003,
       "W": 0.1424
     },
     "Health": {
-      "A": 0.4924,
-      "B": 0.2337,
+      "A": 0.4923,
+      "B": 0.2336,
       "C": 0.0501,
-      "D": 0.0083,
-      "F": 0.0376,
+      "D": 0.0084,
+      "F": 0.0375,
       "P": 0.1405,
-      "W": 0.0376
+      "W": 0.0375
     },
     "Humanities (Letters)": {
       "A": 0.425,
@@ -143,11 +143,11 @@
     "Interdisciplinary Studies": {
       "A": 0.4624,
       "B": 0.0988,
-      "C": 0.0435,
+      "C": 0.0436,
       "D": 0.0176,
       "F": 0.1071,
-      "P": 0.1459,
-      "W": 0.0588
+      "P": 0.1458,
+      "W": 0.0589
     },
     "Mathematics": {
       "A": 0.3149,
@@ -188,15 +188,15 @@
       "C": 0.0892,
       "D": 0.0402,
       "F": 0.1284,
-      "P": 0.0225,
-      "W": 0.0578
+      "P": 0.0226,
+      "W": 0.0579
     },
     "Social Sciences": {
       "A": 0.4896,
       "B": 0.2081,
       "C": 0.1091,
       "D": 0.0277,
-      "F": 0.0886,
+      "F": 0.0885,
       "P": 0.0007,
       "W": 0.0673
     }

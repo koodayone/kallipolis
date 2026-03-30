@@ -1,10 +1,10 @@
 {
   "college": "College of Alameda",
-  "source": "DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
-  "enrollment": 4487,
-  "success_rate": 0.7355,
-  "retention_rate": 0.67,
-  "ft_ratio": 0.31,
+  "source": "DataMart CourseRetSuccessSumm, StudentHeadcount, UnitLoadSumm (Fall 2025); DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
+  "enrollment": 6221,
+  "success_rate": 0.7377,
+  "retention_rate": 0.8654,
+  "ft_ratio": 0.13,
   "grade_distribution": {
     "A": 0.4633,
     "B": 0.156,
@@ -34,14 +34,14 @@
     "Social Sciences": 0.2675
   },
   "top_group_success_rate": {
-    "Biological Sciences": 0.785,
+    "Biological Sciences": 0.7851,
     "Business and Management": 0.6837,
     "Education": 0.7389,
     "Engineering and Industrial Technologies": 0.8409,
     "Family and Consumer Sciences": 0.6652,
-    "Fine and Applied Arts": 0.7221,
+    "Fine and Applied Arts": 0.722,
     "Foreign Language": 0.8278,
-    "Health": 0.8382,
+    "Health": 0.8383,
     "Humanities (Letters)": 0.6601,
     "Information Technology": 0.5,
     "Interdisciplinary Studies": 0.8093,
@@ -49,12 +49,12 @@
     "Mathematics": 0.7384,
     "Media and Communications": 0.7368,
     "Physical Sciences": 0.6799,
-    "Psychology": 0.7362,
-    "Social Sciences": 0.7578
+    "Psychology": 0.7363,
+    "Social Sciences": 0.7577
   },
   "top_group_grades": {
     "Biological Sciences": {
-      "A": 0.5343,
+      "A": 0.5344,
       "B": 0.1552,
       "C": 0.0925,
       "D": 0.0418,
@@ -77,15 +77,15 @@
       "D": 0.0088,
       "F": 0.0221,
       "P": 0.115,
-      "W": 0.1504
+      "W": 0.1505
     },
     "Engineering and Industrial Technologies": {
       "A": 0.2851,
       "B": 0.4132,
-      "C": 0.1426,
+      "C": 0.1425,
       "D": 0.0496,
       "F": 0.0351,
-      "W": 0.064
+      "W": 0.0641
     },
     "Family and Consumer Sciences": {
       "A": 0.4304,
@@ -102,7 +102,7 @@
       "C": 0.0869,
       "D": 0.0483,
       "F": 0.0965,
-      "P": 0.0367,
+      "P": 0.0366,
       "W": 0.1178
     },
     "Foreign Language": {
@@ -112,7 +112,7 @@
       "D": 0.0111,
       "F": 0.0278,
       "P": 0.0222,
-      "W": 0.1333
+      "W": 0.1334
     },
     "Health": {
       "A": 0.4669,
@@ -128,14 +128,14 @@
       "C": 0.1193,
       "D": 0.0635,
       "F": 0.0755,
-      "P": 0.0052,
+      "P": 0.0051,
       "W": 0.1794
     },
     "Information Technology": {
       "A": 0.2614,
       "B": 0.142,
       "C": 0.0852,
-      "F": 0.267,
+      "F": 0.2671,
       "P": 0.0114,
       "W": 0.1932
     },
@@ -143,7 +143,7 @@
       "A": 0.6037,
       "B": 0.0936,
       "C": 0.0535,
-      "D": 0.0284,
+      "D": 0.0285,
       "F": 0.0702,
       "P": 0.0585,
       "W": 0.0535
@@ -174,22 +174,22 @@
       "W": 0.1579
     },
     "Physical Sciences": {
-      "A": 0.3091,
+      "A": 0.309,
       "B": 0.2009,
-      "C": 0.1611,
-      "D": 0.0442,
-      "F": 0.0728,
+      "C": 0.1612,
+      "D": 0.0441,
+      "F": 0.0729,
       "P": 0.0088,
       "W": 0.2009
     },
     "Psychology": {
       "A": 0.5446,
-      "B": 0.1176,
+      "B": 0.1177,
       "C": 0.0721,
-      "D": 0.038,
+      "D": 0.0379,
       "F": 0.1063,
       "P": 0.0019,
-      "W": 0.1006
+      "W": 0.1005
     },
     "Social Sciences": {
       "A": 0.5185,

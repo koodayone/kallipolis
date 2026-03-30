@@ -195,6 +195,9 @@ export type ApiOccupationMatch = {
   description: string | null;
   annual_wage: number | null;
   employment: number | null;
+  growth_rate: number | null;
+  annual_openings: number | null;
+  education_level: string | null;
   matching_skills: number;
   skills: string[];
 };
@@ -221,7 +224,13 @@ export type ApiOccupationDetail = {
   description: string | null;
   annual_wage: number | null;
   skills: ApiSkillDetail[];
-  regions: Array<{ region: string; employment: number }>;
+  regions: Array<{
+    region: string;
+    employment: number;
+    growth_rate: number | null;
+    annual_openings: number | null;
+    education_level: string | null;
+  }>;
 };
 
 export async function getLaborMarketOverview(college: string): Promise<ApiLaborMarketOverview> {
@@ -464,6 +473,9 @@ export type ApiLmiOccupation = {
   title: string;
   annual_wage: number | null;
   employment: number | null;
+  growth_rate: number | null;
+  annual_openings: number | null;
+  education_level: string | null;
   region: string;
 };
 

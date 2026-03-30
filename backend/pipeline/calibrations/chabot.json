@@ -1,10 +1,10 @@
 {
   "college": "Chabot College",
-  "source": "DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
-  "enrollment": 11392,
-  "success_rate": 0.7464,
-  "retention_rate": 0.67,
-  "ft_ratio": 0.31,
+  "source": "DataMart CourseRetSuccessSumm, StudentHeadcount, UnitLoadSumm (Fall 2025); DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
+  "enrollment": 14235,
+  "success_rate": 0.7478,
+  "retention_rate": 0.8842,
+  "ft_ratio": 0.29,
   "grade_distribution": {
     "A": 0.447,
     "B": 0.1658,
@@ -15,7 +15,6 @@
     "P": 0.0429
   },
   "top_group_enrollment_share": {
-    "Architecture and Related Technologies": 0.0066,
     "Biological Sciences": 0.0337,
     "Business and Management": 0.0904,
     "Education": 0.0686,
@@ -38,48 +37,39 @@
     "Social Sciences": 0.1501
   },
   "top_group_success_rate": {
-    "Architecture and Related Technologies": 0.6852,
     "Biological Sciences": 0.7395,
     "Business and Management": 0.7496,
-    "Education": 0.8291,
-    "Engineering and Industrial Technologies": 0.8639,
+    "Education": 0.829,
+    "Engineering and Industrial Technologies": 0.8638,
     "Environmental Sciences and Technologies": 0.7037,
-    "Family and Consumer Sciences": 0.7732,
+    "Family and Consumer Sciences": 0.773,
     "Fine and Applied Arts": 0.7689,
-    "Foreign Language": 0.622,
+    "Foreign Language": 0.6221,
     "Health": 0.8539,
-    "Humanities (Letters)": 0.6852,
-    "Information Technology": 0.6211,
+    "Humanities (Letters)": 0.6851,
+    "Information Technology": 0.6212,
     "Interdisciplinary Studies": 0.7756,
     "Law": 0.5454,
     "Library Science": 0.75,
     "Mathematics": 0.5458,
-    "Media and Communications": 0.7631,
+    "Media and Communications": 0.763,
     "Physical Sciences": 0.7183,
     "Psychology": 0.7977,
-    "Public and Protective Services": 0.7302,
+    "Public and Protective Services": 0.7303,
     "Social Sciences": 0.758
   },
   "top_group_grades": {
-    "Architecture and Related Technologies": {
-      "A": 0.3102,
-      "B": 0.2269,
-      "C": 0.1481,
-      "D": 0.0602,
-      "F": 0.0324,
-      "W": 0.2222
-    },
     "Biological Sciences": {
       "A": 0.367,
       "B": 0.2231,
       "C": 0.1494,
       "D": 0.082,
       "F": 0.0337,
-      "W": 0.1393
+      "W": 0.1394
     },
     "Business and Management": {
       "A": 0.5032,
-      "B": 0.1636,
+      "B": 0.1635,
       "C": 0.0801,
       "D": 0.0241,
       "F": 0.0875,
@@ -89,14 +79,14 @@
     "Education": {
       "A": 0.6215,
       "B": 0.0711,
-      "C": 0.0497,
+      "C": 0.0496,
       "D": 0.0179,
       "F": 0.068,
       "P": 0.0868,
       "W": 0.0711
     },
     "Engineering and Industrial Technologies": {
-      "A": 0.3896,
+      "A": 0.3895,
       "B": 0.2435,
       "C": 0.0654,
       "D": 0.0115,
@@ -113,8 +103,8 @@
       "W": 0.1481
     },
     "Family and Consumer Sciences": {
-      "A": 0.5012,
-      "B": 0.1942,
+      "A": 0.5011,
+      "B": 0.1941,
       "C": 0.0778,
       "D": 0.0339,
       "F": 0.0614,
@@ -127,13 +117,13 @@
       "D": 0.0376,
       "F": 0.1046,
       "P": 0.0013,
-      "W": 0.0858
+      "W": 0.0859
     },
     "Foreign Language": {
       "A": 0.3248,
       "B": 0.1762,
       "C": 0.1125,
-      "D": 0.0403,
+      "D": 0.0404,
       "F": 0.0637,
       "P": 0.0085,
       "W": 0.2696
@@ -150,26 +140,26 @@
     "Humanities (Letters)": {
       "A": 0.4198,
       "B": 0.1675,
-      "C": 0.0973,
+      "C": 0.0972,
       "D": 0.0568,
       "F": 0.1175,
       "P": 0.0006,
-      "W": 0.1383
+      "W": 0.1384
     },
     "Information Technology": {
       "A": 0.3852,
-      "B": 0.1396,
+      "B": 0.1397,
       "C": 0.0963,
       "D": 0.053,
       "F": 0.1814,
       "W": 0.1445
     },
     "Interdisciplinary Studies": {
-      "A": 0.4024,
+      "A": 0.4023,
       "B": 0.069,
       "C": 0.041,
-      "D": 0.0173,
-      "F": 0.0647,
+      "D": 0.0172,
+      "F": 0.0648,
       "P": 0.2632,
       "W": 0.0831
     },
@@ -199,13 +189,13 @@
       "A": 0.496,
       "B": 0.1767,
       "C": 0.0884,
-      "D": 0.0382,
+      "D": 0.0381,
       "F": 0.0924,
       "P": 0.002,
       "W": 0.1064
     },
     "Physical Sciences": {
-      "A": 0.3529,
+      "A": 0.353,
       "B": 0.2138,
       "C": 0.1491,
       "D": 0.0563,
@@ -223,7 +213,7 @@
       "W": 0.069
     },
     "Public and Protective Services": {
-      "A": 0.238,
+      "A": 0.2381,
       "B": 0.1491,
       "C": 0.0672,
       "D": 0.0224,

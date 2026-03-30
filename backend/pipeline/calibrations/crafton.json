@@ -1,0 +1,210 @@
+{
+  "college": "Crafton Hills College",
+  "source": "DataMart CourseRetSuccessSumm, StudentHeadcount, UnitLoadSumm, GradesSummAll (Fall 2025)",
+  "enrollment": 7490,
+  "success_rate": 0.7732,
+  "retention_rate": 0.9314,
+  "ft_ratio": 0.26,
+  "grade_distribution": {
+    "A": 0.444,
+    "B": 0.1863,
+    "C": 0.0888,
+    "D": 0.0342,
+    "F": 0.1101,
+    "P": 0.0668,
+    "W": 0.0697
+  },
+  "top_group_enrollment_share": {
+    "Biological Sciences": 0.0503,
+    "Business and Management": 0.0491,
+    "Education": 0.0568,
+    "Environmental Sciences and Technologies": 0.0013,
+    "Family and Consumer Sciences": 0.0202,
+    "Fine and Applied Arts": 0.0697,
+    "Foreign Language": 0.0074,
+    "Health": 0.1419,
+    "Humanities (Letters)": 0.1821,
+    "Information Technology": 0.0278,
+    "Interdisciplinary Studies": 0.0091,
+    "Library Science": 0.0027,
+    "Mathematics": 0.0795,
+    "Media and Communications": 0.0094,
+    "Physical Sciences": 0.0416,
+    "Psychology": 0.0412,
+    "Public and Protective Services": 0.0421,
+    "Social Sciences": 0.1679
+  },
+  "top_group_success_rate": {
+    "Biological Sciences": 0.7654,
+    "Business and Management": 0.7352,
+    "Education": 0.7785,
+    "Environmental Sciences and Technologies": 0.84,
+    "Family and Consumer Sciences": 0.6896,
+    "Fine and Applied Arts": 0.8378,
+    "Foreign Language": 0.6452,
+    "Health": 0.8754,
+    "Humanities (Letters)": 0.7575,
+    "Information Technology": 0.6705,
+    "Interdisciplinary Studies": 0.7879,
+    "Library Science": 0.64,
+    "Mathematics": 0.7046,
+    "Media and Communications": 0.663,
+    "Physical Sciences": 0.7481,
+    "Psychology": 0.7796,
+    "Public and Protective Services": 0.8833,
+    "Social Sciences": 0.8179
+  },
+  "top_group_grades": {
+    "Biological Sciences": {
+      "A": 0.3546,
+      "B": 0.2526,
+      "C": 0.1582,
+      "D": 0.0605,
+      "F": 0.0998,
+      "W": 0.0744
+    },
+    "Business and Management": {
+      "A": 0.4876,
+      "B": 0.1686,
+      "C": 0.0789,
+      "D": 0.0281,
+      "F": 0.1232,
+      "W": 0.1135
+    },
+    "Education": {
+      "A": 0.5362,
+      "B": 0.1493,
+      "C": 0.0864,
+      "D": 0.0366,
+      "F": 0.1051,
+      "P": 0.0066,
+      "W": 0.0799
+    },
+    "Environmental Sciences and Technologies": {
+      "A": 0.24,
+      "B": 0.32,
+      "C": 0.28,
+      "D": 0.04,
+      "W": 0.12
+    },
+    "Family and Consumer Sciences": {
+      "A": 0.3369,
+      "B": 0.2132,
+      "C": 0.1395,
+      "D": 0.0526,
+      "F": 0.1736,
+      "W": 0.0842
+    },
+    "Fine and Applied Arts": {
+      "A": 0.6407,
+      "B": 0.1399,
+      "C": 0.0565,
+      "D": 0.016,
+      "F": 0.0903,
+      "P": 0.0008,
+      "W": 0.0558
+    },
+    "Foreign Language": {
+      "A": 0.4061,
+      "B": 0.1667,
+      "C": 0.0651,
+      "D": 0.1012,
+      "F": 0.0797,
+      "P": 0.0072,
+      "W": 0.1738
+    },
+    "Health": {
+      "A": 0.3015,
+      "B": 0.1778,
+      "C": 0.0363,
+      "D": 0.01,
+      "F": 0.0691,
+      "P": 0.3597,
+      "W": 0.0456
+    },
+    "Humanities (Letters)": {
+      "A": 0.4204,
+      "B": 0.2086,
+      "C": 0.1088,
+      "D": 0.0383,
+      "F": 0.1407,
+      "P": 0.0197,
+      "W": 0.0635
+    },
+    "Information Technology": {
+      "A": 0.4406,
+      "B": 0.1551,
+      "C": 0.0747,
+      "D": 0.0288,
+      "F": 0.2124,
+      "W": 0.0884
+    },
+    "Interdisciplinary Studies": {
+      "A": 0.5333,
+      "B": 0.1758,
+      "C": 0.0788,
+      "D": 0.0303,
+      "F": 0.1394,
+      "W": 0.0424
+    },
+    "Library Science": {
+      "A": 0.42,
+      "B": 0.14,
+      "C": 0.08,
+      "D": 0.02,
+      "F": 0.28,
+      "W": 0.06
+    },
+    "Mathematics": {
+      "A": 0.3253,
+      "B": 0.1761,
+      "C": 0.1076,
+      "D": 0.0349,
+      "F": 0.1351,
+      "P": 0.0955,
+      "W": 0.1255
+    },
+    "Media and Communications": {
+      "A": 0.3989,
+      "B": 0.1798,
+      "C": 0.0843,
+      "D": 0.0393,
+      "F": 0.2023,
+      "W": 0.0955
+    },
+    "Physical Sciences": {
+      "A": 0.4384,
+      "B": 0.1914,
+      "C": 0.1183,
+      "D": 0.1015,
+      "F": 0.0502,
+      "W": 0.1002
+    },
+    "Psychology": {
+      "A": 0.518,
+      "B": 0.1572,
+      "C": 0.1044,
+      "D": 0.0322,
+      "F": 0.1224,
+      "W": 0.0657
+    },
+    "Public and Protective Services": {
+      "A": 0.4569,
+      "B": 0.1281,
+      "C": 0.0393,
+      "D": 0.0241,
+      "F": 0.0635,
+      "P": 0.259,
+      "W": 0.0292
+    },
+    "Social Sciences": {
+      "A": 0.5172,
+      "B": 0.2085,
+      "C": 0.0913,
+      "D": 0.0307,
+      "F": 0.0975,
+      "P": 0.0009,
+      "W": 0.0538
+    }
+  }
+}

@@ -1,10 +1,10 @@
 {
   "college": "Evergreen Valley College",
-  "source": "DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
-  "enrollment": 8989,
-  "success_rate": 0.7755,
-  "retention_rate": 0.67,
-  "ft_ratio": 0.31,
+  "source": "DataMart CourseRetSuccessSumm, StudentHeadcount, UnitLoadSumm (Fall 2025); DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
+  "enrollment": 8729,
+  "success_rate": 0.7779,
+  "retention_rate": 0.9015,
+  "ft_ratio": 0.24,
   "grade_distribution": {
     "A": 0.4302,
     "B": 0.192,
@@ -36,16 +36,16 @@
     "Social Sciences": 0.1298
   },
   "top_group_success_rate": {
-    "Biological Sciences": 0.7502,
+    "Biological Sciences": 0.7503,
     "Business and Management": 0.7893,
-    "Education": 0.8614,
+    "Education": 0.8615,
     "Engineering and Industrial Technologies": 0.8145,
     "Environmental Sciences and Technologies": 0.8961,
     "Family and Consumer Sciences": 0.87,
-    "Fine and Applied Arts": 0.8114,
-    "Foreign Language": 0.823,
-    "Health": 0.907,
-    "Humanities (Letters)": 0.7283,
+    "Fine and Applied Arts": 0.8115,
+    "Foreign Language": 0.8231,
+    "Health": 0.9069,
+    "Humanities (Letters)": 0.7282,
     "Information Technology": 0.7273,
     "Interdisciplinary Studies": 0.7995,
     "Law": 0.8311,
@@ -54,14 +54,14 @@
     "Physical Sciences": 0.7334,
     "Psychology": 0.8222,
     "Public and Protective Services": 0.7568,
-    "Social Sciences": 0.7951
+    "Social Sciences": 0.795
   },
   "top_group_grades": {
     "Biological Sciences": {
-      "A": 0.3345,
+      "A": 0.3346,
       "B": 0.2416,
       "C": 0.1741,
-      "D": 0.0529,
+      "D": 0.0528,
       "F": 0.0565,
       "W": 0.1313
     },
@@ -80,7 +80,7 @@
       "C": 0.0263,
       "D": 0.0048,
       "F": 0.0454,
-      "P": 0.0155,
+      "P": 0.0156,
       "W": 0.0812
     },
     "Engineering and Industrial Technologies": {
@@ -103,13 +103,13 @@
       "A": 0.69,
       "B": 0.12,
       "C": 0.06,
-      "D": 0.0267,
+      "D": 0.0266,
       "F": 0.0433,
       "W": 0.0467
     },
     "Fine and Applied Arts": {
       "A": 0.575,
-      "B": 0.1661,
+      "B": 0.1662,
       "C": 0.0678,
       "D": 0.0205,
       "F": 0.079,
@@ -117,7 +117,7 @@
       "W": 0.0815
     },
     "Foreign Language": {
-      "A": 0.6051,
+      "A": 0.6052,
       "B": 0.1615,
       "C": 0.0564,
       "D": 0.0231,
@@ -129,7 +129,7 @@
       "B": 0.3256,
       "C": 0.0729,
       "D": 0.0171,
-      "F": 0.0326,
+      "F": 0.0325,
       "P": 0.0031,
       "W": 0.0434
     },
@@ -170,7 +170,7 @@
     "Mathematics": {
       "A": 0.2979,
       "B": 0.1937,
-      "C": 0.129,
+      "C": 0.1289,
       "D": 0.0516,
       "F": 0.0855,
       "P": 0.0526,
@@ -188,7 +188,7 @@
       "A": 0.3197,
       "B": 0.2419,
       "C": 0.1687,
-      "D": 0.0455,
+      "D": 0.0454,
       "F": 0.0963,
       "P": 0.0031,
       "W": 0.1186

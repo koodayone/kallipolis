@@ -294,16 +294,22 @@ def _gather_targeted_context(employer: str, college: str, engagement_type: str =
             MATCH (:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)
                   <-[:HIRES_FOR]-(emp:Employer {name: $employer})
             RETURN occ.title AS title, occ.annual_wage AS annual_wage,
-                   d.employment AS employment, r.name AS region
+                   d.employment AS employment, d.growth_rate AS growth_rate,
+                   d.annual_openings AS annual_openings, r.name AS region
         """, employer=employer, college=college).data()
 
         if econ_result:
             lines.append("")
-            lines.append("ECONOMIC DATA (regional employment and wages):")
+            lines.append("ECONOMIC DATA (regional employment, wages, and demand projections):")
             for r in econ_result:
                 wage = f"${r['annual_wage']:,}/yr" if r["annual_wage"] else "wage unavailable"
                 emp_count = f"{r['employment']:,} employed" if r["employment"] else "employment data unavailable"
-                lines.append(f"  {r['title']} in {r['region']}: {wage}, {emp_count}")
+                parts = [f"{r['title']} in {r['region']}: {wage}, {emp_count}"]
+                if r.get("growth_rate") is not None:
+                    parts.append(f"{r['growth_rate']:+.1%} growth (2024-2029)")
+                if r.get("annual_openings") is not None:
+                    parts.append(f"{r['annual_openings']:,} annual openings")
+                lines.append(f"  {', '.join(parts)}")
 
     if engagement_type:
         lines.append("")

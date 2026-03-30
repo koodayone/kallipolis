@@ -1,10 +1,10 @@
 {
   "college": "College of Marin",
-  "source": "DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
-  "enrollment": 4673,
-  "success_rate": 0.7713,
-  "retention_rate": 0.67,
-  "ft_ratio": 0.31,
+  "source": "DataMart CourseRetSuccessSumm, StudentHeadcount, UnitLoadSumm (Fall 2025); DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
+  "enrollment": 6854,
+  "success_rate": 0.7718,
+  "retention_rate": 0.893,
+  "ft_ratio": 0.26,
   "grade_distribution": {
     "A": 0.4568,
     "B": 0.1579,
@@ -15,7 +15,6 @@
     "P": 0.0812
   },
   "top_group_enrollment_share": {
-    "Architecture and Related Technologies": 0.0063,
     "Biological Sciences": 0.0617,
     "Business and Management": 0.0675,
     "Education": 0.0455,
@@ -36,43 +35,34 @@
     "Social Sciences": 0.1222
   },
   "top_group_success_rate": {
-    "Architecture and Related Technologies": 0.8766,
-    "Biological Sciences": 0.7854,
-    "Business and Management": 0.7244,
+    "Biological Sciences": 0.7853,
+    "Business and Management": 0.7243,
     "Education": 0.8681,
-    "Engineering and Industrial Technologies": 0.9212,
+    "Engineering and Industrial Technologies": 0.9211,
     "Environmental Sciences and Technologies": 0.85,
-    "Family and Consumer Sciences": 0.7383,
-    "Fine and Applied Arts": 0.8047,
-    "Foreign Language": 0.8024,
+    "Family and Consumer Sciences": 0.7384,
+    "Fine and Applied Arts": 0.8046,
+    "Foreign Language": 0.8023,
     "Health": 0.8951,
     "Humanities (Letters)": 0.7212,
-    "Information Technology": 0.6879,
+    "Information Technology": 0.688,
     "Interdisciplinary Studies": 0.8025,
     "Mathematics": 0.533,
-    "Media and Communications": 0.7781,
+    "Media and Communications": 0.7782,
     "Physical Sciences": 0.7386,
     "Psychology": 0.7294,
-    "Public and Protective Services": 0.7478,
+    "Public and Protective Services": 0.7477,
     "Social Sciences": 0.7682
   },
   "top_group_grades": {
-    "Architecture and Related Technologies": {
-      "A": 0.5556,
-      "B": 0.284,
-      "C": 0.0123,
-      "F": 0.0494,
-      "P": 0.0247,
-      "W": 0.0494
-    },
     "Biological Sciences": {
       "A": 0.4104,
       "B": 0.25,
-      "C": 0.1162,
-      "D": 0.0316,
+      "C": 0.1161,
+      "D": 0.0315,
       "F": 0.0922,
-      "P": 0.0088,
-      "W": 0.0556
+      "P": 0.0089,
+      "W": 0.0555
     },
     "Business and Management": {
       "A": 0.5029,
@@ -85,7 +75,7 @@
     },
     "Education": {
       "A": 0.6438,
-      "B": 0.0753,
+      "B": 0.0754,
       "C": 0.0411,
       "D": 0.0086,
       "F": 0.0445,
@@ -98,7 +88,7 @@
       "C": 0.1596,
       "D": 0.0115,
       "F": 0.0154,
-      "P": 0.0308,
+      "P": 0.0307,
       "W": 0.0423
     },
     "Environmental Sciences and Technologies": {
@@ -110,18 +100,18 @@
       "W": 0.1
     },
     "Family and Consumer Sciences": {
-      "A": 0.4695,
+      "A": 0.4696,
       "B": 0.1577,
       "C": 0.0968,
       "D": 0.0108,
-      "F": 0.147,
-      "P": 0.0143,
+      "F": 0.1469,
+      "P": 0.0144,
       "W": 0.0681
     },
     "Fine and Applied Arts": {
       "A": 0.5197,
       "B": 0.1382,
-      "C": 0.0702,
+      "C": 0.0701,
       "D": 0.015,
       "F": 0.0501,
       "P": 0.0766,
@@ -134,11 +124,11 @@
       "D": 0.032,
       "F": 0.0727,
       "P": 0.064,
-      "W": 0.064
+      "W": 0.0639
     },
     "Health": {
       "A": 0.4134,
-      "B": 0.0968,
+      "B": 0.0969,
       "C": 0.0447,
       "D": 0.0217,
       "F": 0.0447,
@@ -151,7 +141,7 @@
       "C": 0.0805,
       "D": 0.0352,
       "F": 0.0927,
-      "P": 0.0271,
+      "P": 0.027,
       "W": 0.115
     },
     "Information Technology": {
@@ -184,9 +174,9 @@
     "Media and Communications": {
       "A": 0.4727,
       "B": 0.1964,
-      "C": 0.0945,
+      "C": 0.0946,
       "D": 0.0073,
-      "F": 0.1055,
+      "F": 0.1054,
       "P": 0.0145,
       "W": 0.0618
     },
@@ -204,15 +194,15 @@
       "B": 0.1227,
       "C": 0.0756,
       "D": 0.0252,
-      "F": 0.1361,
+      "F": 0.1362,
       "W": 0.084
     },
     "Public and Protective Services": {
       "A": 0.5135,
-      "B": 0.1802,
-      "C": 0.0541,
+      "B": 0.1801,
+      "C": 0.054,
       "D": 0.009,
-      "F": 0.1441,
+      "F": 0.1442,
       "W": 0.0901
     },
     "Social Sciences": {

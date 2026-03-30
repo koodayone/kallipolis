@@ -1,10 +1,10 @@
 {
   "college": "Ohlone College",
-  "source": "DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
-  "enrollment": 8375,
-  "success_rate": 0.7946,
-  "retention_rate": 0.67,
-  "ft_ratio": 0.31,
+  "source": "DataMart CourseRetSuccessSumm, StudentHeadcount, UnitLoadSumm (Fall 2025); DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
+  "enrollment": 10174,
+  "success_rate": 0.8059,
+  "retention_rate": 0.9117,
+  "ft_ratio": 0.3,
   "grade_distribution": {
     "A": 0.516,
     "B": 0.175,
@@ -36,25 +36,25 @@
     "Social Sciences": 0.1477
   },
   "top_group_success_rate": {
-    "Biological Sciences": 0.7604,
-    "Business and Management": 0.8393,
-    "Education": 0.8686,
+    "Biological Sciences": 0.7605,
+    "Business and Management": 0.8394,
+    "Education": 0.8685,
     "Engineering and Industrial Technologies": 0.7419,
     "Environmental Sciences and Technologies": 0.8955,
     "Family and Consumer Sciences": 0.8131,
-    "Fine and Applied Arts": 0.844,
+    "Fine and Applied Arts": 0.8439,
     "Foreign Language": 0.704,
-    "Health": 0.9248,
+    "Health": 0.9247,
     "Humanities (Letters)": 0.7264,
-    "Information Technology": 0.7973,
-    "Interdisciplinary Studies": 0.789,
+    "Information Technology": 0.7972,
+    "Interdisciplinary Studies": 0.7891,
     "Library Science": 0.7059,
     "Mathematics": 0.7468,
-    "Media and Communications": 0.7697,
-    "Physical Sciences": 0.7363,
+    "Media and Communications": 0.7698,
+    "Physical Sciences": 0.7362,
     "Psychology": 0.8226,
     "Public and Protective Services": 0.8805,
-    "Social Sciences": 0.8341
+    "Social Sciences": 0.834
   },
   "top_group_grades": {
     "Biological Sciences": {
@@ -90,7 +90,7 @@
       "C": 0.0808,
       "D": 0.0535,
       "F": 0.1525,
-      "W": 0.0495
+      "W": 0.0496
     },
     "Environmental Sciences and Technologies": {
       "A": 0.6928,
@@ -104,12 +104,12 @@
       "B": 0.1581,
       "C": 0.0657,
       "D": 0.0246,
-      "F": 0.0595,
+      "F": 0.0596,
       "P": 0.0082,
       "W": 0.0986
     },
     "Fine and Applied Arts": {
-      "A": 0.6555,
+      "A": 0.6554,
       "B": 0.1186,
       "C": 0.063,
       "D": 0.0181,
@@ -128,17 +128,17 @@
     "Health": {
       "A": 0.4823,
       "B": 0.1813,
-      "C": 0.0108,
+      "C": 0.0107,
       "D": 0.0184,
       "F": 0.0215,
       "P": 0.2504,
-      "W": 0.0323
+      "W": 0.0322
     },
     "Humanities (Letters)": {
-      "A": 0.4469,
+      "A": 0.4468,
       "B": 0.1901,
       "C": 0.0894,
-      "D": 0.0361,
+      "D": 0.0362,
       "F": 0.0736,
       "W": 0.0814
     },
@@ -148,14 +148,14 @@
       "C": 0.072,
       "D": 0.0238,
       "F": 0.1033,
-      "P": 0.0044,
+      "P": 0.0043,
       "W": 0.072
     },
     "Interdisciplinary Studies": {
-      "A": 0.4593,
+      "A": 0.4594,
       "B": 0.1319,
       "C": 0.0989,
-      "D": 0.0396,
+      "D": 0.0395,
       "F": 0.0879,
       "P": 0.0989,
       "W": 0.0593
@@ -179,11 +179,11 @@
       "D": 0.0189,
       "F": 0.1203,
       "P": 0.0017,
-      "W": 0.0893
+      "W": 0.0894
     },
     "Physical Sciences": {
-      "A": 0.3889,
-      "B": 0.1999,
+      "A": 0.3888,
+      "B": 0.1998,
       "C": 0.1475,
       "D": 0.0619,
       "F": 0.0551,
@@ -200,15 +200,15 @@
     },
     "Public and Protective Services": {
       "A": 0.3439,
-      "B": 0.1707,
+      "B": 0.1708,
       "C": 0.0439,
-      "D": 0.0171,
-      "F": 0.0732,
-      "P": 0.322,
+      "D": 0.017,
+      "F": 0.0731,
+      "P": 0.3219,
       "W": 0.0244
     },
     "Social Sciences": {
-      "A": 0.5705,
+      "A": 0.5704,
       "B": 0.1826,
       "C": 0.0796,
       "D": 0.0219,

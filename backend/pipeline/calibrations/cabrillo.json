@@ -1,10 +1,10 @@
 {
   "college": "Cabrillo College",
-  "source": "DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
-  "enrollment": 8002,
-  "success_rate": 0.7242,
-  "retention_rate": 0.67,
-  "ft_ratio": 0.31,
+  "source": "DataMart CourseRetSuccessSumm, StudentHeadcount, UnitLoadSumm (Fall 2025); DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
+  "enrollment": 10618,
+  "success_rate": 0.7277,
+  "retention_rate": 0.8705,
+  "ft_ratio": 0.34,
   "grade_distribution": {
     "A": 0.4593,
     "B": 0.1487,
@@ -40,11 +40,11 @@
     "Agriculture and Natural Resources": 0.7067,
     "Biological Sciences": 0.8176,
     "Business and Management": 0.6888,
-    "Education": 0.7998,
-    "Engineering and Industrial Technologies": 0.769,
-    "Environmental Sciences and Technologies": 0.8324,
-    "Family and Consumer Sciences": 0.721,
-    "Fine and Applied Arts": 0.715,
+    "Education": 0.7997,
+    "Engineering and Industrial Technologies": 0.7689,
+    "Environmental Sciences and Technologies": 0.8325,
+    "Family and Consumer Sciences": 0.7209,
+    "Fine and Applied Arts": 0.7149,
     "Foreign Language": 0.7412,
     "Health": 0.9038,
     "Humanities (Letters)": 0.6994,
@@ -64,16 +64,16 @@
       "B": 0.1736,
       "C": 0.0868,
       "D": 0.0744,
-      "F": 0.1116,
+      "F": 0.1115,
       "P": 0.0289,
       "W": 0.0868
     },
     "Biological Sciences": {
-      "A": 0.5143,
+      "A": 0.5144,
       "B": 0.1701,
-      "C": 0.1107,
+      "C": 0.1106,
       "D": 0.0225,
-      "F": 0.0523,
+      "F": 0.0522,
       "P": 0.0225,
       "W": 0.0963
     },
@@ -84,29 +84,29 @@
       "D": 0.0203,
       "F": 0.0954,
       "P": 0.0616,
-      "W": 0.1604
+      "W": 0.1603
     },
     "Education": {
       "A": 0.6439,
-      "B": 0.0722,
+      "B": 0.0721,
       "C": 0.039,
-      "D": 0.018,
+      "D": 0.0181,
       "F": 0.083,
       "P": 0.0447,
       "W": 0.0671
     },
     "Engineering and Industrial Technologies": {
-      "A": 0.5313,
+      "A": 0.5312,
       "B": 0.1354,
       "C": 0.0767,
       "D": 0.0256,
       "F": 0.0616,
       "P": 0.0256,
-      "W": 0.1042
+      "W": 0.1041
     },
     "Environmental Sciences and Technologies": {
       "A": 0.5517,
-      "B": 0.197,
+      "B": 0.1971,
       "C": 0.0788,
       "D": 0.0345,
       "F": 0.0591,
@@ -114,19 +114,19 @@
       "W": 0.064
     },
     "Family and Consumer Sciences": {
-      "A": 0.5182,
+      "A": 0.5181,
       "B": 0.1479,
       "C": 0.0469,
-      "D": 0.0213,
-      "F": 0.1019,
-      "P": 0.008,
+      "D": 0.0212,
+      "F": 0.1018,
+      "P": 0.0079,
       "W": 0.1275
     },
     "Fine and Applied Arts": {
       "A": 0.5013,
-      "B": 0.1258,
+      "B": 0.1257,
       "C": 0.0581,
-      "D": 0.0266,
+      "D": 0.0265,
       "F": 0.0945,
       "P": 0.0298,
       "W": 0.1234
@@ -136,14 +136,14 @@
       "B": 0.2047,
       "C": 0.0833,
       "D": 0.0175,
-      "F": 0.0643,
+      "F": 0.0644,
       "P": 0.038,
       "W": 0.1535
     },
     "Health": {
       "A": 0.6357,
       "B": 0.186,
-      "C": 0.0718,
+      "C": 0.0719,
       "D": 0.0109,
       "F": 0.0404,
       "P": 0.0103,
@@ -171,7 +171,7 @@
       "A": 0.6132,
       "B": 0.1676,
       "C": 0.0677,
-      "D": 0.0178,
+      "D": 0.0179,
       "F": 0.0392,
       "P": 0.0178,
       "W": 0.0624
@@ -205,11 +205,11 @@
     },
     "Physical Sciences": {
       "A": 0.3088,
-      "B": 0.1885,
+      "B": 0.1884,
       "C": 0.1535,
-      "D": 0.0467,
-      "F": 0.1044,
-      "P": 0.0061,
+      "D": 0.0466,
+      "F": 0.1043,
+      "P": 0.0062,
       "W": 0.1762
     },
     "Psychology": {

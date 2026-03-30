@@ -1,0 +1,199 @@
+{
+  "college": "Norco College",
+  "source": "DataMart CourseRetSuccessSumm, StudentHeadcount, UnitLoadSumm, GradesSummAll (Fall 2025)",
+  "enrollment": 12639,
+  "success_rate": 0.7265,
+  "retention_rate": 0.8922,
+  "ft_ratio": 0.15,
+  "grade_distribution": {
+    "A": 0.3856,
+    "B": 0.2006,
+    "C": 0.1236,
+    "D": 0.0423,
+    "F": 0.1177,
+    "P": 0.0238,
+    "W": 0.1064
+  },
+  "top_group_enrollment_share": {
+    "Biological Sciences": 0.0484,
+    "Business and Management": 0.0829,
+    "Education": 0.0443,
+    "Engineering and Industrial Technologies": 0.0447,
+    "Family and Consumer Sciences": 0.0252,
+    "Fine and Applied Arts": 0.0713,
+    "Foreign Language": 0.0186,
+    "Humanities (Letters)": 0.1663,
+    "Information Technology": 0.0216,
+    "Interdisciplinary Studies": 0.0489,
+    "Library Science": 0.0019,
+    "Mathematics": 0.1242,
+    "Media and Communications": 0.0141,
+    "Physical Sciences": 0.038,
+    "Psychology": 0.0448,
+    "Public and Protective Services": 0.0216,
+    "Social Sciences": 0.1806
+  },
+  "top_group_success_rate": {
+    "Biological Sciences": 0.6952,
+    "Business and Management": 0.7477,
+    "Education": 0.7728,
+    "Engineering and Industrial Technologies": 0.8436,
+    "Family and Consumer Sciences": 0.7107,
+    "Fine and Applied Arts": 0.7859,
+    "Foreign Language": 0.7351,
+    "Humanities (Letters)": 0.6406,
+    "Information Technology": 0.7035,
+    "Interdisciplinary Studies": 0.7442,
+    "Library Science": 0.6739,
+    "Mathematics": 0.7395,
+    "Media and Communications": 0.6651,
+    "Physical Sciences": 0.7012,
+    "Psychology": 0.7067,
+    "Public and Protective Services": 0.7944,
+    "Social Sciences": 0.7862
+  },
+  "top_group_grades": {
+    "Biological Sciences": {
+      "A": 0.2441,
+      "B": 0.2437,
+      "C": 0.2065,
+      "D": 0.065,
+      "F": 0.0877,
+      "P": 0.0008,
+      "W": 0.152
+    },
+    "Business and Management": {
+      "A": 0.4451,
+      "B": 0.2007,
+      "C": 0.102,
+      "D": 0.0361,
+      "F": 0.1278,
+      "W": 0.0883
+    },
+    "Education": {
+      "A": 0.488,
+      "B": 0.1691,
+      "C": 0.1147,
+      "D": 0.0424,
+      "F": 0.12,
+      "P": 0.001,
+      "W": 0.0649
+    },
+    "Engineering and Industrial Technologies": {
+      "A": 0.4533,
+      "B": 0.2862,
+      "C": 0.1014,
+      "D": 0.0207,
+      "F": 0.0666,
+      "P": 0.0027,
+      "W": 0.069
+    },
+    "Family and Consumer Sciences": {
+      "A": 0.4134,
+      "B": 0.1844,
+      "C": 0.1129,
+      "D": 0.0413,
+      "F": 0.0843,
+      "W": 0.1638
+    },
+    "Fine and Applied Arts": {
+      "A": 0.5051,
+      "B": 0.1746,
+      "C": 0.1062,
+      "D": 0.0317,
+      "F": 0.0876,
+      "W": 0.0948
+    },
+    "Foreign Language": {
+      "A": 0.498,
+      "B": 0.1662,
+      "C": 0.0709,
+      "D": 0.0088,
+      "F": 0.1211,
+      "W": 0.1348
+    },
+    "Humanities (Letters)": {
+      "A": 0.2706,
+      "B": 0.2023,
+      "C": 0.1261,
+      "D": 0.0515,
+      "F": 0.1824,
+      "P": 0.0416,
+      "W": 0.1254
+    },
+    "Information Technology": {
+      "A": 0.5114,
+      "B": 0.1193,
+      "C": 0.0727,
+      "D": 0.0335,
+      "F": 0.1306,
+      "W": 0.1324
+    },
+    "Interdisciplinary Studies": {
+      "A": 0.4892,
+      "B": 0.1502,
+      "C": 0.0933,
+      "D": 0.0388,
+      "F": 0.1255,
+      "P": 0.0115,
+      "W": 0.0915
+    },
+    "Library Science": {
+      "A": 0.3913,
+      "B": 0.2609,
+      "C": 0.0217,
+      "F": 0.1522,
+      "W": 0.1739
+    },
+    "Mathematics": {
+      "A": 0.3187,
+      "B": 0.1577,
+      "C": 0.1164,
+      "D": 0.036,
+      "F": 0.1003,
+      "P": 0.1466,
+      "W": 0.1242
+    },
+    "Media and Communications": {
+      "A": 0.3881,
+      "B": 0.1603,
+      "C": 0.1168,
+      "D": 0.1032,
+      "F": 0.1603,
+      "W": 0.0714
+    },
+    "Physical Sciences": {
+      "A": 0.2804,
+      "B": 0.2522,
+      "C": 0.1676,
+      "D": 0.0593,
+      "F": 0.0967,
+      "P": 0.0011,
+      "W": 0.1428
+    },
+    "Psychology": {
+      "A": 0.3482,
+      "B": 0.219,
+      "C": 0.1394,
+      "D": 0.0416,
+      "F": 0.1313,
+      "W": 0.1204
+    },
+    "Public and Protective Services": {
+      "A": 0.3907,
+      "B": 0.2426,
+      "C": 0.1611,
+      "D": 0.0593,
+      "F": 0.1093,
+      "W": 0.037
+    },
+    "Social Sciences": {
+      "A": 0.4296,
+      "B": 0.2265,
+      "C": 0.1301,
+      "D": 0.0389,
+      "F": 0.0894,
+      "W": 0.0856
+    }
+  }
+}

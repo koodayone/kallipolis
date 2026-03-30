@@ -1,10 +1,10 @@
 {
   "college": "Napa Valley College",
-  "source": "DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
-  "enrollment": 4844,
-  "success_rate": 0.7466,
-  "retention_rate": 0.67,
-  "ft_ratio": 0.31,
+  "source": "DataMart CourseRetSuccessSumm, StudentHeadcount, UnitLoadSumm (Fall 2025); DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
+  "enrollment": 5444,
+  "success_rate": 0.7513,
+  "retention_rate": 0.9291,
+  "ft_ratio": 0.35,
   "grade_distribution": {
     "A": 0.4287,
     "B": 0.1846,
@@ -37,23 +37,23 @@
   },
   "top_group_success_rate": {
     "Agriculture and Natural Resources": 0.8041,
-    "Biological Sciences": 0.6957,
-    "Business and Management": 0.7674,
-    "Education": 0.8224,
-    "Engineering and Industrial Technologies": 0.7674,
+    "Biological Sciences": 0.6958,
+    "Business and Management": 0.7675,
+    "Education": 0.8225,
+    "Engineering and Industrial Technologies": 0.7675,
     "Family and Consumer Sciences": 0.7006,
     "Fine and Applied Arts": 0.8008,
     "Foreign Language": 0.6834,
-    "Health": 0.8967,
-    "Humanities (Letters)": 0.6788,
-    "Information Technology": 0.7222,
+    "Health": 0.8968,
+    "Humanities (Letters)": 0.6786,
+    "Information Technology": 0.7223,
     "Interdisciplinary Studies": 0.7558,
     "Library Science": 0.6875,
     "Mathematics": 0.6683,
-    "Media and Communications": 0.6377,
+    "Media and Communications": 0.6376,
     "Physical Sciences": 0.7124,
-    "Psychology": 0.805,
-    "Public and Protective Services": 0.6684,
+    "Psychology": 0.8051,
+    "Public and Protective Services": 0.6683,
     "Social Sciences": 0.7689
   },
   "top_group_grades": {
@@ -69,7 +69,7 @@
     "Biological Sciences": {
       "A": 0.2536,
       "B": 0.2678,
-      "C": 0.1727,
+      "C": 0.1728,
       "D": 0.0555,
       "F": 0.1173,
       "P": 0.0016,
@@ -80,7 +80,7 @@
       "B": 0.1493,
       "C": 0.0832,
       "D": 0.0245,
-      "F": 0.1346,
+      "F": 0.1347,
       "P": 0.0012,
       "W": 0.0636
     },
@@ -105,8 +105,8 @@
     "Family and Consumer Sciences": {
       "A": 0.3935,
       "B": 0.2035,
-      "C": 0.1036,
-      "D": 0.0403,
+      "C": 0.1037,
+      "D": 0.0404,
       "F": 0.1459,
       "W": 0.1017
     },
@@ -135,12 +135,12 @@
       "D": 0.0086,
       "F": 0.0497,
       "P": 0.0937,
-      "W": 0.0382
+      "W": 0.0383
     },
     "Humanities (Letters)": {
       "A": 0.3614,
-      "B": 0.1635,
-      "C": 0.0904,
+      "B": 0.1634,
+      "C": 0.0903,
       "D": 0.0401,
       "F": 0.1162,
       "P": 0.0635,
@@ -149,13 +149,13 @@
     "Information Technology": {
       "A": 0.4167,
       "B": 0.1898,
-      "C": 0.1157,
+      "C": 0.1158,
       "D": 0.0463,
       "F": 0.1389,
       "W": 0.0833
     },
     "Interdisciplinary Studies": {
-      "A": 0.5314,
+      "A": 0.5313,
       "B": 0.1518,
       "C": 0.066,
       "D": 0.0495,
@@ -171,7 +171,7 @@
     },
     "Mathematics": {
       "A": 0.2421,
-      "B": 0.1776,
+      "B": 0.1775,
       "C": 0.1396,
       "D": 0.0541,
       "F": 0.1421,
@@ -181,7 +181,7 @@
     "Media and Communications": {
       "A": 0.4058,
       "B": 0.1594,
-      "C": 0.0725,
+      "C": 0.0724,
       "D": 0.087,
       "F": 0.1594,
       "W": 0.087
@@ -198,11 +198,11 @@
     "Psychology": {
       "A": 0.4348,
       "B": 0.237,
-      "C": 0.1318,
+      "C": 0.1319,
       "D": 0.0491,
-      "F": 0.122,
+      "F": 0.1221,
       "P": 0.0014,
-      "W": 0.0168
+      "W": 0.0169
     },
     "Public and Protective Services": {
       "A": 0.3738,
@@ -216,8 +216,8 @@
     "Social Sciences": {
       "A": 0.5131,
       "B": 0.1712,
-      "C": 0.0816,
-      "D": 0.0358,
+      "C": 0.0815,
+      "D": 0.0357,
       "F": 0.1319,
       "P": 0.003,
       "W": 0.0574

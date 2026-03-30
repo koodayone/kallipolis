@@ -1,10 +1,10 @@
 {
   "college": "Contra Costa College",
-  "source": "DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
-  "enrollment": 6538,
-  "success_rate": 0.7421,
-  "retention_rate": 0.67,
-  "ft_ratio": 0.31,
+  "source": "DataMart CourseRetSuccessSumm, StudentHeadcount, UnitLoadSumm (Fall 2025); DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
+  "enrollment": 7438,
+  "success_rate": 0.7446,
+  "retention_rate": 0.8957,
+  "ft_ratio": 0.29,
   "grade_distribution": {
     "A": 0.4358,
     "B": 0.1742,
@@ -35,28 +35,28 @@
     "Social Sciences": 0.1293
   },
   "top_group_success_rate": {
-    "Biological Sciences": 0.6736,
+    "Biological Sciences": 0.6737,
     "Business and Management": 0.8113,
-    "Education": 0.7764,
+    "Education": 0.7765,
     "Engineering and Industrial Technologies": 0.8849,
-    "Family and Consumer Sciences": 0.765,
+    "Family and Consumer Sciences": 0.7651,
     "Fine and Applied Arts": 0.8264,
-    "Foreign Language": 0.6932,
+    "Foreign Language": 0.6933,
     "Health": 0.819,
     "Humanities (Letters)": 0.6874,
     "Information Technology": 0.6813,
     "Interdisciplinary Studies": 0.8356,
     "Library Science": 0.55,
     "Mathematics": 0.7531,
-    "Media and Communications": 0.604,
-    "Physical Sciences": 0.6903,
+    "Media and Communications": 0.6039,
+    "Physical Sciences": 0.6904,
     "Psychology": 0.6548,
-    "Public and Protective Services": 0.741,
-    "Social Sciences": 0.7415
+    "Public and Protective Services": 0.7409,
+    "Social Sciences": 0.7416
   },
   "top_group_grades": {
     "Biological Sciences": {
-      "A": 0.2272,
+      "A": 0.2273,
       "B": 0.1952,
       "C": 0.1301,
       "D": 0.045,
@@ -65,7 +65,7 @@
       "W": 0.1682
     },
     "Business and Management": {
-      "A": 0.5489,
+      "A": 0.5488,
       "B": 0.1695,
       "C": 0.0929,
       "D": 0.0249,
@@ -74,7 +74,7 @@
     },
     "Education": {
       "A": 0.5826,
-      "B": 0.1272,
+      "B": 0.1273,
       "C": 0.0488,
       "D": 0.0202,
       "F": 0.0987,
@@ -90,10 +90,10 @@
       "W": 0.0357
     },
     "Family and Consumer Sciences": {
-      "A": 0.3795,
+      "A": 0.3796,
       "B": 0.1928,
       "C": 0.1108,
-      "D": 0.0361,
+      "D": 0.0362,
       "F": 0.0663,
       "P": 0.0819,
       "W": 0.1205
@@ -119,7 +119,7 @@
     "Health": {
       "A": 0.4318,
       "B": 0.2045,
-      "C": 0.0927,
+      "C": 0.0926,
       "D": 0.0323,
       "F": 0.0734,
       "P": 0.09,
@@ -135,10 +135,10 @@
       "W": 0.1299
     },
     "Information Technology": {
-      "A": 0.4505,
+      "A": 0.4506,
       "B": 0.1319,
       "C": 0.0989,
-      "D": 0.0549,
+      "D": 0.055,
       "F": 0.1297,
       "W": 0.1319
     },
@@ -146,7 +146,7 @@
       "A": 0.5797,
       "B": 0.1593,
       "C": 0.0753,
-      "D": 0.0238,
+      "D": 0.0239,
       "F": 0.0527,
       "P": 0.0213,
       "W": 0.0765
@@ -169,7 +169,7 @@
     "Media and Communications": {
       "A": 0.3663,
       "B": 0.1436,
-      "C": 0.0941,
+      "C": 0.094,
       "D": 0.0743,
       "F": 0.198,
       "W": 0.1089

@@ -1,10 +1,10 @@
 {
   "college": "Diablo Valley College",
-  "source": "DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
-  "enrollment": 16424,
-  "success_rate": 0.7669,
-  "retention_rate": 0.67,
-  "ft_ratio": 0.31,
+  "source": "DataMart CourseRetSuccessSumm, StudentHeadcount, UnitLoadSumm (Fall 2025); DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
+  "enrollment": 17665,
+  "success_rate": 0.7678,
+  "retention_rate": 0.8845,
+  "ft_ratio": 0.36,
   "grade_distribution": {
     "A": 0.4849,
     "B": 0.1752,
@@ -16,7 +16,6 @@
   },
   "top_group_enrollment_share": {
     "Agriculture and Natural Resources": 0.0034,
-    "Architecture and Related Technologies": 0.0107,
     "Biological Sciences": 0.0472,
     "Business and Management": 0.0683,
     "Education": 0.0563,
@@ -38,24 +37,23 @@
   },
   "top_group_success_rate": {
     "Agriculture and Natural Resources": 0.7654,
-    "Architecture and Related Technologies": 0.8225,
     "Biological Sciences": 0.8149,
     "Business and Management": 0.8007,
-    "Education": 0.8091,
+    "Education": 0.8092,
     "Engineering and Industrial Technologies": 0.8039,
-    "Family and Consumer Sciences": 0.8506,
-    "Fine and Applied Arts": 0.7798,
-    "Foreign Language": 0.7341,
-    "Health": 0.885,
+    "Family and Consumer Sciences": 0.8507,
+    "Fine and Applied Arts": 0.7797,
+    "Foreign Language": 0.734,
+    "Health": 0.8849,
     "Humanities (Letters)": 0.7185,
-    "Information Technology": 0.806,
+    "Information Technology": 0.8061,
     "Interdisciplinary Studies": 0.7884,
-    "Library Science": 0.7109,
-    "Mathematics": 0.6233,
+    "Library Science": 0.711,
+    "Mathematics": 0.6234,
     "Media and Communications": 0.7425,
     "Physical Sciences": 0.7723,
     "Psychology": 0.7866,
-    "Public and Protective Services": 0.7988,
+    "Public and Protective Services": 0.7987,
     "Social Sciences": 0.7855
   },
   "top_group_grades": {
@@ -66,18 +64,10 @@
       "F": 0.0741,
       "W": 0.1605
     },
-    "Architecture and Related Technologies": {
-      "A": 0.5306,
-      "B": 0.1913,
-      "C": 0.1006,
-      "D": 0.0138,
-      "F": 0.0394,
-      "W": 0.1243
-    },
     "Biological Sciences": {
       "A": 0.4218,
       "B": 0.2461,
-      "C": 0.1425,
+      "C": 0.1426,
       "D": 0.0269,
       "F": 0.0412,
       "P": 0.0045,
@@ -87,7 +77,7 @@
       "A": 0.5519,
       "B": 0.1611,
       "C": 0.0812,
-      "D": 0.0236,
+      "D": 0.0235,
       "F": 0.0874,
       "P": 0.0065,
       "W": 0.0846
@@ -95,9 +85,9 @@
     "Education": {
       "A": 0.5988,
       "B": 0.1281,
-      "C": 0.0687,
+      "C": 0.0688,
       "D": 0.0225,
-      "F": 0.0687,
+      "F": 0.0688,
       "P": 0.0135,
       "W": 0.0898
     },
@@ -116,12 +106,12 @@
       "C": 0.0728,
       "D": 0.018,
       "F": 0.0659,
-      "P": 0.0359,
+      "P": 0.036,
       "W": 0.0585
     },
     "Fine and Applied Arts": {
       "A": 0.5504,
-      "B": 0.1385,
+      "B": 0.1384,
       "C": 0.0831,
       "D": 0.0237,
       "F": 0.0859,
@@ -142,9 +132,9 @@
       "B": 0.285,
       "C": 0.0814,
       "D": 0.0195,
-      "F": 0.0283,
-      "P": 0.0018,
-      "W": 0.0566
+      "F": 0.0284,
+      "P": 0.0017,
+      "W": 0.0567
     },
     "Humanities (Letters)": {
       "A": 0.4225,
@@ -152,7 +142,7 @@
       "C": 0.1026,
       "D": 0.0409,
       "F": 0.0887,
-      "P": 0.0021,
+      "P": 0.002,
       "W": 0.1488
     },
     "Information Technology": {
@@ -161,7 +151,7 @@
       "C": 0.0596,
       "D": 0.0182,
       "F": 0.0739,
-      "P": 0.0049,
+      "P": 0.005,
       "W": 0.097
     },
     "Interdisciplinary Studies": {
@@ -170,8 +160,8 @@
       "C": 0.0822,
       "D": 0.0349,
       "F": 0.0959,
-      "P": 0.0068,
-      "W": 0.076
+      "P": 0.0069,
+      "W": 0.0761
     },
     "Library Science": {
       "A": 0.2081,
@@ -187,9 +177,9 @@
       "B": 0.1714,
       "C": 0.1288,
       "D": 0.0513,
-      "F": 0.1217,
+      "F": 0.1218,
       "P": 0.0343,
-      "W": 0.1931
+      "W": 0.1932
     },
     "Media and Communications": {
       "A": 0.4977,
@@ -207,7 +197,7 @@
       "D": 0.0368,
       "F": 0.0476,
       "P": 0.0028,
-      "W": 0.1388
+      "W": 0.1387
     },
     "Psychology": {
       "A": 0.5374,
@@ -221,9 +211,9 @@
     "Public and Protective Services": {
       "A": 0.4923,
       "B": 0.2043,
-      "C": 0.1022,
+      "C": 0.1021,
       "D": 0.0232,
-      "F": 0.0991,
+      "F": 0.099,
       "W": 0.0743
     },
     "Social Sciences": {

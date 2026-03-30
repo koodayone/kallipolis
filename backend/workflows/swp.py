@@ -86,6 +86,8 @@ def get_lmi_context(employer: str, college: str) -> LmiContext:
                   -[d:DEMANDS]->(occ:Occupation)<-[:HIRES_FOR]-(emp:Employer {name: $employer})
             RETURN occ.soc_code AS soc_code, occ.title AS title,
                    occ.annual_wage AS annual_wage, d.employment AS employment,
+                   d.growth_rate AS growth_rate, d.annual_openings AS annual_openings,
+                   d.education_level AS education_level,
                    r.name AS region
         """, employer=employer, college=college).data()
 
@@ -105,6 +107,9 @@ def get_lmi_context(employer: str, college: str) -> LmiContext:
             title=r["title"],
             annual_wage=r.get("annual_wage"),
             employment=r.get("employment"),
+            growth_rate=r.get("growth_rate"),
+            annual_openings=r.get("annual_openings"),
+            education_level=r.get("education_level"),
             region=r["region"],
         )
         for r in demand_result
@@ -258,11 +263,18 @@ def _gather_swp_context(req: SwpProjectRequest, lmi: LmiContext) -> str:
     skill_gaps_text = "\n".join(gap_lines) if gap_lines else "  (none)"
 
     # LMI text
-    lmi_lines = ["  Occupations (demand from EDD OEWS):"]
+    lmi_lines = ["  Occupations (demand from EDD OEWS + COE projections):"]
     for occ in lmi.occupations:
         wage = f"${occ.annual_wage:,}/yr" if occ.annual_wage else "wage unavailable"
         emp = f"{occ.employment:,} jobs" if occ.employment else "employment unavailable"
-        lmi_lines.append(f"    {occ.soc_code} {occ.title} in {occ.region}: {wage}, {emp}")
+        parts = [f"{occ.soc_code} {occ.title} in {occ.region}: {wage}, {emp}"]
+        if occ.growth_rate is not None:
+            parts.append(f"{occ.growth_rate:+.1%} projected growth (2024-2029)")
+        if occ.annual_openings is not None:
+            parts.append(f"{occ.annual_openings:,} avg annual openings")
+        if occ.education_level:
+            parts.append(f"entry: {occ.education_level}")
+        lmi_lines.append(f"    {', '.join(parts)}")
     lmi_lines.append(f"  Total regional demand: {lmi.total_demand:,} jobs")
     lmi_lines.append(f"  Estimated annual supply (3-yr avg completions): {lmi.total_supply:,}")
     lmi_lines.append(f"  Demand-supply gap: {lmi.gap:,}")

@@ -1,10 +1,10 @@
 {
   "college": "Ca\u00f1ada College",
-  "source": "DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
-  "enrollment": 5175,
-  "success_rate": 0.7657,
-  "retention_rate": 0.67,
-  "ft_ratio": 0.31,
+  "source": "DataMart CourseRetSuccessSumm, StudentHeadcount, UnitLoadSumm (Fall 2025); DataMart Grade Distribution Summary, Fall 2025, 2-digit TOP",
+  "enrollment": 6761,
+  "success_rate": 0.7676,
+  "retention_rate": 0.9044,
+  "ft_ratio": 0.11,
   "grade_distribution": {
     "A": 0.485,
     "B": 0.1685,
@@ -15,7 +15,6 @@
     "P": 0.0221
   },
   "top_group_enrollment_share": {
-    "Architecture and Related Technologies": 0.0021,
     "Biological Sciences": 0.0646,
     "Business and Management": 0.0904,
     "Education": 0.0783,
@@ -38,9 +37,8 @@
     "Social Sciences": 0.1142
   },
   "top_group_success_rate": {
-    "Architecture and Related Technologies": 0.889,
     "Biological Sciences": 0.7696,
-    "Business and Management": 0.7873,
+    "Business and Management": 0.7872,
     "Education": 0.8454,
     "Engineering and Industrial Technologies": 0.8429,
     "Environmental Sciences and Technologies": 0.8275,
@@ -49,7 +47,7 @@
     "Foreign Language": 0.6175,
     "Health": 0.8547,
     "Humanities (Letters)": 0.7324,
-    "Information Technology": 0.6408,
+    "Information Technology": 0.6409,
     "Interdisciplinary Studies": 0.7372,
     "Law": 0.7748,
     "Library Science": 0.7715,
@@ -61,23 +59,16 @@
     "Social Sciences": 0.745
   },
   "top_group_grades": {
-    "Architecture and Related Technologies": {
-      "A": 0.5556,
-      "B": 0.2593,
-      "C": 0.0741,
-      "F": 0.0741,
-      "W": 0.037
-    },
     "Biological Sciences": {
-      "A": 0.4498,
-      "B": 0.2083,
+      "A": 0.4497,
+      "B": 0.2084,
       "C": 0.1115,
       "D": 0.0392,
       "F": 0.0907,
       "W": 0.0944
     },
     "Business and Management": {
-      "A": 0.4694,
+      "A": 0.4693,
       "B": 0.2049,
       "C": 0.1095,
       "D": 0.028,
@@ -87,12 +78,12 @@
     },
     "Education": {
       "A": 0.6697,
-      "B": 0.0889,
-      "C": 0.0434,
+      "B": 0.0888,
+      "C": 0.0435,
       "D": 0.0162,
-      "F": 0.0525,
+      "F": 0.0526,
       "P": 0.0434,
-      "W": 0.0778
+      "W": 0.0777
     },
     "Engineering and Industrial Technologies": {
       "A": 0.4714,
@@ -116,15 +107,15 @@
       "D": 0.0234,
       "F": 0.1074,
       "P": 0.0212,
-      "W": 0.0782
+      "W": 0.0781
     },
     "Fine and Applied Arts": {
       "A": 0.5464,
       "B": 0.1213,
       "C": 0.0614,
-      "D": 0.0269,
+      "D": 0.027,
       "F": 0.0928,
-      "P": 0.0374,
+      "P": 0.0375,
       "W": 0.0973
     },
     "Foreign Language": {
@@ -141,7 +132,7 @@
       "B": 0.3108,
       "C": 0.1103,
       "D": 0.015,
-      "F": 0.0702,
+      "F": 0.0701,
       "P": 0.0025,
       "W": 0.0551
     },
@@ -164,21 +155,21 @@
       "W": 0.1591
     },
     "Interdisciplinary Studies": {
-      "A": 0.4444,
+      "A": 0.4445,
       "B": 0.1778,
-      "C": 0.0841,
+      "C": 0.084,
       "D": 0.0589,
       "F": 0.0841,
-      "P": 0.0309,
-      "W": 0.1092
+      "P": 0.031,
+      "W": 0.1091
     },
     "Law": {
-      "A": 0.5828,
-      "B": 0.1589,
+      "A": 0.5827,
+      "B": 0.159,
       "C": 0.0331,
       "D": 0.0265,
       "F": 0.0132,
-      "W": 0.1589
+      "W": 0.159
     },
     "Library Science": {
       "A": 0.4,
@@ -207,7 +198,7 @@
     },
     "Physical Sciences": {
       "A": 0.4383,
-      "B": 0.2133,
+      "B": 0.2134,
       "C": 0.1117,
       "D": 0.0317,
       "F": 0.07,
@@ -232,7 +223,7 @@
     "Social Sciences": {
       "A": 0.474,
       "B": 0.167,
-      "C": 0.104,
+      "C": 0.1039,
       "D": 0.0457,
       "F": 0.1137,
       "W": 0.0873
