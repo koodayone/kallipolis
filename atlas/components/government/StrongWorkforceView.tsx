@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { SchoolConfig } from "@/lib/schoolConfig";
-import { getSwpLmiContext, streamSwpProject } from "@/lib/api";
+import { streamSwpProject } from "@/lib/api";
 import type { ApiLmiContext, ApiSwpProject, ApiSwpSection, SwpProjectRequest } from "@/lib/api";
 import { getSavedProposals, getSavedSwpProjects, saveSwpProject, removeSwpProject, type SavedProposal, type SavedSwpProject } from "@/lib/savedProposals";
 import LeafHeader from "@/components/ui/LeafHeader";
@@ -12,7 +12,7 @@ import SwpArtifact from "./SwpArtifact";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
-type SwpPhase = "selection" | "params" | "generating" | "streaming" | "complete";
+type SwpPhase = "selection" | "generating" | "streaming" | "complete";
 type Mode = "build" | "manage";
 
 const PARTNERSHIP_DEFAULTS: Record<string, {
@@ -28,19 +28,6 @@ const PARTNERSHIP_DEFAULTS: Record<string, {
   "advisory_board":      { goal: "Completion", metrics: ["Completed a Degree or Certificate"], apprenticeship: false, wbl: false },
 };
 
-const GOALS = [
-  { key: "Completion", label: "Completion" },
-  { key: "Transfer", label: "Transfer" },
-  { key: "Workforce", label: "Workforce" },
-  { key: "Unit Accumulation", label: "Unit Accumulation" },
-];
-
-const SWP_METRICS: Record<string, string[]> = {
-  Completion: ["Completed a Degree or Certificate", "Attained Apprenticeship Journey Status", "Completed a Noncredit Workforce Milestone"],
-  Transfer: ["Transfer to Four-Year Institution"],
-  Workforce: ["Employed in Field of Study", "Attained a Living Wage", "Median Annual Earnings", "Median Change in Earnings", "Job Closely Related to Field of Study"],
-  "Unit Accumulation": ["Completed a Degree or Certificate"],
-};
 
 type Props = {
   school: SchoolConfig;
@@ -97,11 +84,13 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
     ? savedSwpProjects.filter((s) => s.project.employer.toLowerCase().includes(manageQuery.toLowerCase()))
     : savedSwpProjects;
 
-  const handleSelectPartnership = useCallback(async (saved: SavedProposal) => {
+  const handleDraft = useCallback((saved: SavedProposal) => {
     setSelectedPartnership(saved);
     setSwpProject(null);
     setSwpError(null);
     setStreamedSections([]);
+    setSwpSaved(false);
+    setPhase("generating");
 
     const defaults = PARTNERSHIP_DEFAULTS[saved.engagementType] || {
       goal: "Workforce", metrics: ["Employed in Field of Study"], apprenticeship: false, wbl: false,
@@ -110,37 +99,21 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
     setMetrics(defaults.metrics);
     setApprenticeship(defaults.apprenticeship);
     setWbl(defaults.wbl);
-    setPhase("params");
-
-    try {
-      const lmi = await getSwpLmiContext(saved.proposal.employer, school.name);
-      setLmiContext(lmi);
-    } catch {
-      setLmiContext(null);
-    }
-  }, [school.name]);
-
-  const handleGenerate = useCallback(() => {
-    if (!selectedPartnership || metrics.length === 0) return;
-    setPhase("generating");
-    setSwpProject(null);
-    setStreamedSections([]);
-    setSwpError(null);
 
     const req: SwpProjectRequest = {
-      employer: selectedPartnership.proposal.employer,
+      employer: saved.proposal.employer,
       college: school.name,
-      partnership_type: selectedPartnership.proposal.partnership_type,
-      executive_summary: selectedPartnership.proposal.executive_summary,
-      curriculum_alignment: selectedPartnership.proposal.curriculum_alignment,
-      skill_gaps: selectedPartnership.proposal.skill_gaps,
-      student_pipeline: selectedPartnership.proposal.student_pipeline,
-      economic_impact: selectedPartnership.proposal.economic_impact,
-      project_framing: `${goal} goal targeting ${metrics.join(", ")} through ${selectedPartnership.proposal.partnership_type} with ${selectedPartnership.proposal.employer}`,
-      goal,
-      metrics,
-      apprenticeship,
-      work_based_learning: wbl,
+      partnership_type: saved.proposal.partnership_type,
+      executive_summary: saved.proposal.executive_summary,
+      curriculum_alignment: saved.proposal.curriculum_alignment,
+      skill_gaps: saved.proposal.skill_gaps,
+      student_pipeline: saved.proposal.student_pipeline,
+      economic_impact: saved.proposal.economic_impact,
+      project_framing: `${defaults.goal} goal targeting ${defaults.metrics.join(", ")} through ${saved.proposal.partnership_type} with ${saved.proposal.employer}`,
+      goal: defaults.goal,
+      metrics: defaults.metrics,
+      apprenticeship: defaults.apprenticeship,
+      work_based_learning: defaults.wbl,
     };
 
     streamSwpProject(
@@ -150,7 +123,7 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
       () => { setPhase("complete"); },
       (err) => { setSwpError(err); setPhase("complete"); },
     );
-  }, [selectedPartnership, goal, metrics, apprenticeship, wbl, school.name]);
+  }, [school.name]);
 
   // Build complete SwpProject when streaming finishes
   useEffect(() => {
@@ -171,7 +144,7 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
     setSwpProject(null);
     setSwpError(null);
     setStreamedSections([]);
-    setPhase("params");
+    setPhase("selection");
   }, []);
 
   const handleBackToSelection = useCallback(() => {
@@ -184,7 +157,6 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
 
   const [swpSaved, setSwpSaved] = useState(false);
 
-  const availableMetrics = SWP_METRICS[goal] || [];
 
   return (
     <>
@@ -192,9 +164,12 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
 
       <div style={{ maxWidth: "760px", margin: "0 auto", padding: "0 40px 80px" }}>
 
-        {/* Build / Manage segmented control */}
-        {phase === "selection" && (
-          <div style={{ display: "flex", justifyContent: "center", marginBottom: "32px", paddingTop: "24px" }}>
+        {/* Logo + Build / Manage segmented control */}
+        {phase === "selection" && (<>
+          <div style={{ display: "flex", justifyContent: "center", paddingTop: "32px", paddingBottom: "40px" }}>
+            <img src={school.logoPath} alt={school.name} style={{ height: "100px", width: "auto", objectFit: "contain" }} />
+          </div>
+          <div style={{ display: "flex", justifyContent: "center", marginBottom: "40px" }}>
             <div style={{
               display: "flex", borderRadius: "8px",
               border: "1px solid rgba(255,255,255,0.10)",
@@ -216,7 +191,7 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
               ))}
             </div>
           </div>
-        )}
+        </>)}
 
         {/* Build mode header with sun + greeting */}
         {mode === "build" && phase === "selection" && (
@@ -304,7 +279,7 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
                                 {saved.proposal.partnership_type} partnership with {saved.proposal.employer}{saved.proposal.sector ? ` for the ${saved.proposal.sector} sector` : ""}.
                               </p>
                               <button
-                                onClick={() => handleSelectPartnership(saved)}
+                                onClick={() => handleDraft(saved)}
                                 style={{
                                   width: "100%", padding: "14px 24px", borderRadius: "10px",
                                   fontFamily: FONT, fontSize: "15px", fontWeight: 600, letterSpacing: "-0.01em",
@@ -329,94 +304,17 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
           </>
         )}
 
-        {/* ── Build Mode: SWP Parameters ── */}
-        {mode === "build" && phase === "params" && selectedPartnership && (
-          <div style={{ maxWidth: "640px", margin: "0 auto" }}>
-            <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, marginBottom: "28px" }}>
-              Building SWP project from your{" "}
-              <span style={{ color: school.brandColorLight, fontWeight: 600 }}>{selectedPartnership.proposal.partnership_type}</span>
-              {" "}partnership with{" "}
-              <span style={{ color: school.brandColorLight, fontWeight: 600 }}>{selectedPartnership.proposal.employer}</span>.
-            </p>
-
-            {/* Goal selector */}
-            <div style={{ marginBottom: "16px" }}>
-              <label style={{ fontFamily: FONT, fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.5)", display: "block", marginBottom: "8px", letterSpacing: "0.05em", textTransform: "uppercase" }}>
-                Vision for Success Goal
-              </label>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-                {GOALS.map((g) => (
-                  <button key={g.key} onClick={() => { setGoal(g.key); setMetrics([]); }}
-                    style={{
-                      fontFamily: FONT, fontSize: "12px", fontWeight: goal === g.key ? 600 : 400,
-                      padding: "6px 14px", borderRadius: "6px", cursor: "pointer",
-                      border: `1px solid ${goal === g.key ? school.brandColorLight + "60" : "rgba(255,255,255,0.10)"}`,
-                      background: goal === g.key ? `${school.brandColorLight}15` : "transparent",
-                      color: goal === g.key ? school.brandColorLight : "rgba(255,255,255,0.5)",
-                    }}
-                  >{g.label}</button>
-                ))}
-              </div>
-            </div>
-
-            {/* Metric checkboxes */}
-            {availableMetrics.length > 0 && (
-              <div style={{ marginBottom: "16px" }}>
-                <label style={{ fontFamily: FONT, fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.5)", display: "block", marginBottom: "8px", letterSpacing: "0.05em", textTransform: "uppercase" }}>
-                  SWP Metrics
-                </label>
-                <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                  {availableMetrics.map((m) => (
-                    <label key={m} style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer" }}>
-                      <input type="checkbox" checked={metrics.includes(m)}
-                        onChange={() => setMetrics(prev => prev.includes(m) ? prev.filter(x => x !== m) : [...prev, m])}
-                        style={{ accentColor: school.brandColorLight }}
-                      />
-                      <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.6)" }}>{m}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Scope flags */}
-            <div style={{ marginBottom: "24px" }}>
-              <label style={{ fontFamily: FONT, fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.5)", display: "block", marginBottom: "8px", letterSpacing: "0.05em", textTransform: "uppercase" }}>
-                Program Classification
-              </label>
-              <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                <label style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer" }}>
-                  <input type="checkbox" checked={apprenticeship} onChange={(e) => setApprenticeship(e.target.checked)} style={{ accentColor: school.brandColorLight }} />
-                  <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.6)" }}>Apprenticeship program</span>
-                </label>
-                <label style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer" }}>
-                  <input type="checkbox" checked={wbl} onChange={(e) => setWbl(e.target.checked)} style={{ accentColor: school.brandColorLight }} />
-                  <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.6)" }}>Work-based learning component</span>
-                </label>
-              </div>
-            </div>
-
-            <button onClick={handleGenerate} disabled={metrics.length === 0}
-              style={{
-                width: "100%", padding: "14px 24px", borderRadius: "8px",
-                fontFamily: FONT, fontSize: "14px", fontWeight: 600,
-                cursor: metrics.length > 0 ? "pointer" : "default", border: "none",
-                background: metrics.length > 0 ? school.brandColorLight : "rgba(255,255,255,0.06)",
-                color: metrics.length > 0 ? "#ffffff" : "rgba(255,255,255,0.25)",
-              }}
-            >
-              Generate SWP Document
-            </button>
-          </div>
-        )}
-
         {/* ── Build Mode: Generating ── */}
         {mode === "build" && phase === "generating" && (
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "300px", gap: "16px" }}>
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}
+            style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "400px", gap: "16px" }}>
             <div style={{ width: "32px", height: "32px", border: "3px solid rgba(255,255,255,0.08)", borderTopColor: school.brandColorLight, borderRadius: "50%", animation: "spin 1s linear infinite" }} />
             <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
-            <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.4)" }}>Preparing SWP document...</p>
-          </div>
+            <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.4)" }}>
+              Drafting SWP project proposal for NOVA...
+            </p>
+          </motion.div>
         )}
 
         {/* ── Build Mode: Streaming + Complete ── */}
@@ -465,7 +363,7 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
             {phase === "complete" && swpError && (
               <div style={{ padding: "16px", background: "rgba(248,113,113,0.08)", border: "1px solid rgba(248,113,113,0.2)", borderRadius: "8px", marginTop: "24px" }}>
                 <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(248,113,113,0.9)", margin: "0 0 8px" }}>Failed to generate: {swpError}</p>
-                <button onClick={handleGenerate}
+                <button onClick={() => { if (selectedPartnership) handleDraft(selectedPartnership); }}
                   style={{ fontFamily: FONT, fontSize: "12px", fontWeight: 600, cursor: "pointer", border: "1px solid rgba(255,255,255,0.12)", background: "transparent", color: "rgba(255,255,255,0.7)", borderRadius: "6px", padding: "6px 14px" }}>
                   Retry
                 </button>
@@ -492,7 +390,7 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
                     <path d="M11.5 11.5L15.5 15.5" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" />
                   </svg>
                   <input type="text" value={manageQuery} onChange={(e) => setManageQuery(e.target.value)}
-                    placeholder="Search SWP projects..."
+                    placeholder="Search Strong Workforce Program projects for NOVA..."
                     style={{
                       width: "100%", padding: "18px 24px 18px 48px", fontFamily: FONT, fontSize: "15px",
                       color: "#f0eef4", background: "rgba(255,255,255,0.04)",
