@@ -24,6 +24,7 @@ from __future__ import annotations
 import argparse
 import json
 import logging
+import os
 import re
 from collections import defaultdict
 from pathlib import Path
@@ -138,26 +139,19 @@ def _normalize_name(name: str) -> str:
 def _deduplicate_branches(employers: list[dict]) -> list[dict]:
     """Deduplicate branch locations of the same employer.
 
-    Groups by a normalized key (first 3 significant words), keeps
-    the entry with the largest size class.
+    Groups by full normalized name, keeps the entry with the largest
+    size class. This avoids false collisions (e.g., "University of
+    California, Los Angeles" vs "University of California, San Diego").
     """
-    def _group_key(name: str) -> str:
-        # Normalize and take first 3 words for grouping
-        clean = _normalize_name(name)
-        words = clean.split()[:3]
-        return " ".join(words)
-
     groups: dict[str, list[dict]] = defaultdict(list)
     for emp in employers:
-        key = _group_key(emp["name"])
+        key = _normalize_name(emp["name"])
         groups[key].append(emp)
 
     deduped = []
     for key, entries in groups.items():
-        # Keep the entry with the largest size class
         entries.sort(key=_size_sort_key)
         best = entries[0]
-        # Use cleaned name
         best["name"] = _clean_employer_name(best["name"])
         deduped.append(best)
 
@@ -255,23 +249,24 @@ def _format_for_json(employers: list[dict], metro: str) -> list[dict]:
     """Convert to employers.json schema."""
     formatted = []
     for emp in employers:
-        city = emp.get("city", "")
-        county = emp.get("county", "")
-        industry = emp.get("industry", emp.get("naics_label", ""))
-        size = emp.get("size_class", "")
-
-        parts = [emp["name"]]
-        if city:
-            parts.append(f"in {city}")
-        if county:
-            parts.append(f"({county} County)")
-
-        desc = ", ".join(parts)
-        if industry:
-            desc += f". {industry}"
-        if size:
-            desc += f". {size}"
-        desc += "."
+        # Use LLM description if available, otherwise build from EDD data
+        desc = emp.get("description", "")
+        if not desc or desc == emp["name"]:
+            city = emp.get("city", "")
+            county = emp.get("county", "")
+            industry = emp.get("industry", emp.get("naics_label", ""))
+            size = emp.get("size_class", "")
+            parts = [emp["name"]]
+            if city:
+                parts.append(f"in {city}")
+            if county:
+                parts.append(f"({county} County)")
+            desc = ", ".join(parts)
+            if industry:
+                desc += f". {industry}"
+            if size:
+                desc += f". {size}"
+            desc += "."
 
         formatted.append({
             "name": emp["name"],
@@ -317,12 +312,98 @@ def _merge_employers(
     return existing_employers, added, updated
 
 
+# ── LLM cleanup ───────────────────────────────────────────────────────────
+
+def _llm_cleanup(employers: list[dict], metro: str) -> list[dict]:
+    """Clean employer names and generate descriptions via Gemini Flash.
+
+    Fixes abbreviations, removes branch qualifiers, drops non-employer
+    entries, and generates one-sentence descriptions. Deduplicates any
+    entries that collapse to the same name after cleaning.
+    """
+    api_key = os.environ.get("GEMINI_API_KEY")
+    if not api_key:
+        logger.info("  No GEMINI_API_KEY — skipping LLM cleanup")
+        return employers
+
+    from google import genai
+    from google.genai import types
+
+    client = genai.Client(api_key=api_key)
+
+    names = [e["name"] for e in employers]
+    prompt = (
+        f"Here are {len(names)} employer names from the EDD database for the "
+        f"{metro} metro area. For each, return either:\n"
+        "- The cleaned canonical employer name + a one-sentence description\n"
+        '- "REMOVE" if it should be dropped (branch duplicate, not a real employer, etc.)\n\n'
+        "Clean up: abbreviations, branch location qualifiers, internal department names.\n"
+        "Keep the name recognizable — don't over-normalize.\n\n"
+        "Return JSON: {\"Original Name\": {\"name\": \"Clean Name\", \"description\": \"...\"} "
+        "or \"Original Name\": \"REMOVE\"}\n\n"
+        "Names:\n" + "\n".join(f"- {n}" for n in names)
+    )
+
+    try:
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                max_output_tokens=8192,
+                temperature=0.1,
+                response_mime_type="application/json",
+                thinking_config=types.ThinkingConfig(thinking_budget=0),
+            ),
+        )
+        cleanup = json.loads(response.text)
+    except Exception as e:
+        logger.warning(f"  LLM cleanup failed: {e}")
+        return employers
+
+    # Apply cleanup
+    kept = []
+    removed = 0
+    renamed = 0
+    for emp in employers:
+        action = cleanup.get(emp["name"])
+        if action == "REMOVE":
+            removed += 1
+            continue
+        if isinstance(action, dict):
+            if action.get("name") and action["name"] != emp["name"]:
+                emp["name"] = action["name"]
+                renamed += 1
+            if action.get("description"):
+                emp["description"] = action["description"]
+        kept.append(emp)
+
+    # Post-rename dedup
+    seen: dict[str, dict] = {}
+    final = []
+    for emp in kept:
+        key = emp["name"].lower()
+        if key in seen:
+            # Merge SOC codes
+            existing = seen[key]
+            for soc in emp.get("soc_codes", []):
+                if soc not in existing.get("soc_codes", []):
+                    existing.setdefault("soc_codes", []).append(soc)
+            removed += 1
+        else:
+            seen[key] = emp
+            final.append(emp)
+
+    logger.info(f"  LLM cleanup: {renamed} renamed, {removed} removed, {len(final)} kept")
+    return final
+
+
 # ── Orchestrator ──────────────────────────────────────────────────────────
 
 def generate_for_college(
     college_key: str,
     target: int = 50,
     scrape: bool = True,
+    min_size: str = "G",
 ) -> list[dict]:
     """Run the full employer generation pipeline for one college."""
     from pipeline.industry.edd_employers import search_naics_codes, METRO_COUNTIES
@@ -369,7 +450,7 @@ def generate_for_college(
         edd_employers = []
         seen = set()
         for county in counties:
-            results = search_naics_codes(county, min_size="G")
+            results = search_naics_codes(county, min_size=min_size)
             for emp in results:
                 key = (emp["name"].lower(), emp.get("city", "").lower())
                 if key not in seen:
@@ -416,6 +497,9 @@ def generate_for_college(
     for sector, count in sorted(sector_counts.items(), key=lambda x: -x[1]):
         logger.info(f"    {sector}: {count}")
 
+    # ── Stage 5b: LLM cleanup (descriptions + name fixes) ────────────
+    selected = _llm_cleanup(selected, metro)
+
     # ── Stage 6: Format and merge ─────────────────────────────────────
     formatted = _format_for_json(selected, metro)
 
@@ -431,7 +515,7 @@ def generate_for_college(
     return formatted
 
 
-def generate_all(scrape: bool = True) -> dict[str, int]:
+def generate_all(scrape: bool = True, min_size: str = "G") -> dict[str, int]:
     """Run pipeline for all colleges with enriched caches."""
     from pipeline.industry.region_maps import COLLEGE_REGION_MAP
 
@@ -458,7 +542,7 @@ def generate_all(scrape: bool = True) -> dict[str, int]:
         metro_done.add(metro)
 
         try:
-            employers = generate_for_college(key, scrape=should_scrape)
+            employers = generate_for_college(key, scrape=should_scrape, min_size=min_size)
             results[key] = len(employers)
         except Exception as e:
             logger.error(f"Failed for {key}: {e}")
@@ -478,14 +562,17 @@ def main():
                         help="Use cached EDD data only")
     parser.add_argument("--target", type=int, default=50,
                         help="Target employers per college (default: 50)")
+    parser.add_argument("--min-size", type=str, default="G",
+                        choices=["A", "B", "C", "D", "E", "F", "G", "H", "I"],
+                        help="Minimum employer size class (default: G=250+)")
     args = parser.parse_args()
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)-7s %(message)s", datefmt="%H:%M:%S")
 
     if getattr(args, "all"):
-        generate_all(scrape=not args.no_scrape)
+        generate_all(scrape=not args.no_scrape, min_size=args.min_size)
     else:
-        generate_for_college(args.college, target=args.target, scrape=not args.no_scrape)
+        generate_for_college(args.college, target=args.target, scrape=not args.no_scrape, min_size=args.min_size)
 
 
 if __name__ == "__main__":

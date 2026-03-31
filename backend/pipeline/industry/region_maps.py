@@ -98,4 +98,16 @@ COLLEGE_REGION_MAP: dict[str, str] = {
     "College of Marin": "San Rafael",
     # Los Angeles
     "Los Angeles City College": "Los Angeles-Long Beach-Glendale",
+    "Citrus College": "Los Angeles-Long Beach-Glendale",
+    # Orange County
+    "Coastline College": "Anaheim-Santa Ana-Irvine",
+    "Cypress College": "Anaheim-Santa Ana-Irvine",
+    "Golden West College": "Anaheim-Santa Ana-Irvine",
+    "Orange Coast College": "Anaheim-Santa Ana-Irvine",
+    # Sacramento
+    "American River College": "Sacramento-Roseville-Folsom",
+    # Central / South Coast
+    "Allan Hancock College": "Santa Maria-Santa Barbara",
+    # Rural
+    "Lake Tahoe Community College": "Eastern Sierra-Mother Lode",
 }

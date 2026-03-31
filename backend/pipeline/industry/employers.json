@@ -2,757 +2,941 @@
   {
     "name": "Kaiser Permanente",
     "sector": "Healthcare",
-    "description": "Kaiser Permanente is a major integrated managed care consortium providing comprehensive healthcare services, significantly impacting the health and wellness of the LA community.",
+    "description": "Kaiser Permanente is an integrated managed care consortium, one of the largest not-for-profit healthcare plans in the United States.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "11-9111",
-      "29-1071",
-      "29-1051",
-      "29-1123",
-      "29-1126",
+      "29-1011",
+      "29-1021",
+      "29-1022",
+      "29-1023",
+      "29-1029",
       "29-1031",
-      "29-1122",
-      "29-1127",
-      "13-1071",
-      "13-2011"
+      "29-1041",
+      "29-1051",
+      "29-1071",
+      "29-1081"
     ]
   },
   {
     "name": "ACCO Engineered Systems",
     "sector": "Construction",
-    "description": "ACCO Engineered Systems is a leading mechanical contractor specializing in HVAC and plumbing systems for commercial and industrial projects across the LA area.",
+    "description": "ACCO Engineered Systems is one of the largest mechanical contractors in the Western United States, specializing in HVAC, plumbing, and other building systems.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "11-9021",
-      "17-2141",
-      "17-3027",
-      "13-1051",
-      "17-2051",
-      "17-3011",
-      "13-1081",
-      "11-3061"
+      "47-1011",
+      "47-2011",
+      "47-2021",
+      "47-2022",
+      "47-2031",
+      "47-2041",
+      "47-2042",
+      "47-2044",
+      "47-2051",
+      "47-2061"
     ]
   },
   {
     "name": "Honeywell",
     "sector": "Construction",
-    "description": "Honeywell is a global diversified technology and manufacturing company, with operations in Torrance contributing to advanced building technologies, including HVAC and plumbing solutions, for the LA region.",
+    "description": "Honeywell is a multinational conglomerate operating in aerospace, building technologies, performance materials and technologies, and safety and productivity solutions.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "17-2141",
-      "17-2071",
-      "17-2072",
-      "17-3023",
-      "17-3024",
-      "15-1252",
-      "11-9041",
-      "13-1199"
+      "47-1011",
+      "47-2011",
+      "47-2021",
+      "47-2022",
+      "47-2031",
+      "47-2041",
+      "47-2042",
+      "47-2044",
+      "47-2051",
+      "47-2061"
     ]
   },
   {
     "name": "Bimbo Bakeries USA",
     "sector": "Manufacturing",
-    "description": "Bimbo Bakeries USA is one of the largest baking companies in the United States, with its Montebello facility serving as a key production and distribution hub for baked goods across the LA metropolitan area.",
+    "description": "Bimbo Bakeries USA is the largest bakery company in the United States, producing a variety of bread, buns, and sweet baked goods.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "11-3051",
-      "19-1012",
-      "11-3071",
-      "13-1081",
-      "11-3061",
-      "13-1071",
-      "13-2011",
-      "11-9199"
+      "51-1011",
+      "51-2011",
+      "51-2021",
+      "51-2028",
+      "51-2031",
+      "51-2041",
+      "51-2051",
+      "51-2090",
+      "51-3011",
+      "51-3021"
     ]
   },
   {
-    "name": "Infineon Technologies",
+    "name": "Infineon Technologies Americas",
     "sector": "Manufacturing",
-    "description": "Infineon Technologies is a global leader in semiconductor solutions, with its El Segundo presence contributing to the design and development of advanced microelectronics critical for various industries in the LA tech sector.",
+    "description": "Infineon Technologies Americas is a subsidiary of Infineon Technologies AG, a global leader in semiconductor solutions for power systems and IoT.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "17-2072",
-      "17-2061",
-      "15-1252",
-      "17-3023",
-      "15-1253",
-      "11-9041",
-      "15-1211",
-      "19-2031"
+      "51-1011",
+      "51-2011",
+      "51-2021",
+      "51-2028",
+      "51-2031",
+      "51-2041",
+      "51-2051",
+      "51-2090",
+      "51-3011",
+      "51-3021"
     ]
   },
   {
-    "name": "Galpin Motors",
+    "name": "Galpin Mazda",
     "sector": "Retail",
-    "description": "Galpin Motors is a prominent automotive dealership group in the San Fernando Valley, known for its extensive selection of new and used vehicles and significant presence in the LA retail automotive market.",
+    "description": "Galpin Mazda is an authorized dealership selling new and used Mazda vehicles and providing automotive services.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "11-2022",
-      "13-1161",
-      "13-2072",
-      "11-3012",
-      "13-1071",
-      "13-2011",
-      "11-9199"
+      "41-1011",
+      "41-1012",
+      "41-2011",
+      "41-2012",
+      "41-2021",
+      "41-2022",
+      "41-2031",
+      "41-3011",
+      "41-3021",
+      "41-3031"
     ]
   },
   {
     "name": "Infiniti of Van Nuys",
     "sector": "Retail",
-    "description": "Infiniti of Van Nuys is a luxury car dealership serving the greater Los Angeles area, providing sales and service for Infiniti vehicles.",
+    "description": "Infiniti of Van Nuys is an authorized dealership selling new and used Infiniti vehicles and providing automotive services.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "11-2022",
-      "13-1161",
-      "13-2072",
-      "11-3012",
-      "13-1071",
-      "13-2011",
-      "11-9199"
+      "41-1011",
+      "41-1012",
+      "41-2011",
+      "41-2012",
+      "41-2021",
+      "41-2022",
+      "41-2031",
+      "41-3011",
+      "41-3021",
+      "41-3031"
     ]
   },
   {
-    "name": "Paramount Pictures",
+    "name": "Paramount Pictures Corporation",
     "sector": "Information & Media",
-    "description": "Paramount Pictures is one of the oldest and most iconic film studios in Hollywood, playing a central role in the global entertainment industry and the cultural landscape of Los Angeles.",
+    "description": "Paramount Pictures Corporation is an American film studio that produces and distributes motion pictures and television programs.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "27-2012",
-      "27-4031",
-      "27-4032",
-      "27-1011",
-      "27-3043",
-      "27-3031",
-      "13-1011",
-      "11-9072"
+      "15-1211",
+      "15-1212",
+      "15-1221",
+      "15-1231",
+      "15-1232",
+      "15-1241",
+      "15-1242",
+      "15-1243",
+      "15-1244",
+      "15-1251"
     ]
   },
   {
     "name": "Rhythm & Hues Studios",
     "sector": "Information & Media",
-    "description": "Rhythm & Hues Studios was a renowned visual effects and animation company, contributing significantly to major motion pictures and the creative industry in Los Angeles.",
+    "description": "Rhythm & Hues Studios was an American visual effects and animation company known for its work in feature films.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "27-1014",
-      "27-1024",
-      "27-4032",
-      "15-1252",
-      "27-1011",
-      "15-1255",
-      "11-9072",
-      "15-1299"
+      "15-1211",
+      "15-1212",
+      "15-1221",
+      "15-1231",
+      "15-1232",
+      "15-1241",
+      "15-1242",
+      "15-1243",
+      "15-1244",
+      "15-1251"
     ]
   },
   {
     "name": "Cerritos College",
     "sector": "Education",
-    "description": "Cerritos College is a public community college in Norwalk, providing accessible higher education and vocational training to a diverse student body in Southeast Los Angeles County.",
+    "description": "Cerritos College is a public community college offering associate degrees, transfer programs, and vocational training.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "11-9033",
-      "25-1194",
-      "25-1081",
-      "25-4022",
-      "21-1012",
-      "13-1071",
-      "13-2011",
-      "25-9031"
+      "25-1011",
+      "25-1021",
+      "25-1022",
+      "25-1031",
+      "25-1032",
+      "25-1041",
+      "25-1042",
+      "25-1051",
+      "25-1052",
+      "25-1053"
     ]
   },
   {
     "name": "Glendale Community College",
     "sector": "Education",
-    "description": "Glendale Community College is a public community college serving the Glendale area, offering a wide range of academic and vocational programs to prepare students for transfer or career entry.",
+    "description": "Glendale Community College is a public community college offering associate degrees, transfer programs, and vocational training.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "11-9033",
-      "25-1194",
-      "25-1081",
-      "25-4022",
-      "21-1012",
-      "13-1071",
-      "13-2011",
-      "25-9031"
+      "25-1011",
+      "25-1021",
+      "25-1022",
+      "25-1031",
+      "25-1032",
+      "25-1041",
+      "25-1042",
+      "25-1051",
+      "25-1052",
+      "25-1053"
     ]
   },
   {
     "name": "Ritz-Carlton Los Angeles",
     "sector": "Hospitality & Food Service",
-    "description": "The Ritz-Carlton Los Angeles is a luxury hotel in downtown LA, offering upscale accommodations and services, contributing to the city's vibrant hospitality and tourism sector.",
+    "description": "The Ritz-Carlton Los Angeles is a luxury hotel offering upscale accommodations and amenities in downtown Los Angeles.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "11-9081",
-      "11-9051",
-      "11-2021",
-      "13-1121",
-      "13-1071",
-      "11-3012",
-      "13-2011",
-      "11-9199"
+      "35-1011",
+      "35-1012",
+      "35-2011",
+      "35-2012",
+      "35-2014",
+      "35-2015",
+      "35-2019",
+      "35-2021",
+      "35-3011",
+      "35-3023"
     ]
   },
   {
     "name": "Beverly Hilton",
     "sector": "Hospitality & Food Service",
-    "description": "The Beverly Hilton is an iconic luxury hotel in Beverly Hills, famous for hosting prestigious events and serving as a landmark in the Los Angeles hospitality industry.",
+    "description": "The Beverly Hilton is a historic luxury hotel in Beverly Hills, California, known for hosting major events like the Golden Globe Awards.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "11-9081",
-      "11-9051",
-      "11-2021",
-      "13-1121",
-      "13-1071",
-      "11-3012",
-      "13-2011",
-      "11-9199"
+      "35-1011",
+      "35-1012",
+      "35-2011",
+      "35-2012",
+      "35-2014",
+      "35-2015",
+      "35-2019",
+      "35-2021",
+      "35-3011",
+      "35-3023"
     ]
   },
   {
     "name": "California State Prison-Los Angeles County",
     "sector": "Government",
-    "description": "California State Prison-Los Angeles County is a state correctional facility in Lancaster, playing a critical role in the state's public safety and justice system.",
+    "description": "California State Prison-Los Angeles County is a state prison facility operated by the California Department of Corrections and Rehabilitation.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "21-1092",
-      "11-9199",
-      "13-1071",
-      "13-2011",
-      "21-1018",
-      "21-1023",
-      "11-3012"
+      "33-1011",
+      "33-1012",
+      "33-1021",
+      "33-1091",
+      "33-1099",
+      "33-2011",
+      "33-2021",
+      "33-2022",
+      "33-3012",
+      "33-3021"
     ]
   },
   {
     "name": "Long Beach Police Department",
     "sector": "Government",
-    "description": "The Long Beach Police Department is the primary law enforcement agency for the city of Long Beach, responsible for maintaining public safety and order.",
+    "description": "The Long Beach Police Department is the municipal law enforcement agency for the city of Long Beach, California.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "11-9199",
-      "21-1092",
-      "13-1071",
-      "13-2011",
-      "11-3012",
-      "13-1041"
+      "33-1011",
+      "33-1012",
+      "33-1021",
+      "33-1091",
+      "33-1099",
+      "33-2011",
+      "33-2021",
+      "33-2022",
+      "33-3012",
+      "33-3021"
+    ]
+  },
+  {
+    "name": "City of Los Angeles Information Technology Agency",
+    "sector": "Professional Services",
+    "description": "The City of Los Angeles Information Technology Agency provides technology services and solutions to city departments and residents.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "15-1211",
+      "15-1212",
+      "15-1221",
+      "15-1231",
+      "15-1232",
+      "15-1241",
+      "15-1242",
+      "15-1243",
+      "15-1244",
+      "15-1251"
     ]
   },
   {
     "name": "Source Photonics",
     "sector": "Professional Services",
-    "description": "Source Photonics is a leading provider of optical communication products, with its West Hills location contributing to the advanced technology sector in Los Angeles.",
+    "description": "Source Photonics is a leading provider of optical transceivers for data center, telecom, and access networks.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "17-2072",
-      "17-2071",
-      "15-1252",
-      "17-3023",
-      "11-9041",
       "15-1211",
-      "19-2012",
-      "13-1199"
+      "15-1212",
+      "15-1221",
+      "15-1231",
+      "15-1232",
+      "15-1241",
+      "15-1242",
+      "15-1243",
+      "15-1244",
+      "15-1251"
     ]
   },
   {
     "name": "Distinctive Industries",
     "sector": "Other Services",
-    "description": "Distinctive Industries is a manufacturer of automotive interior restoration parts, serving the classic car and customization market from its Santa Fe Springs facility.",
+    "description": "Distinctive Industries manufactures high-quality automotive interior restoration parts for classic and vintage vehicles.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "11-3051",
-      "17-2141",
-      "13-1051",
-      "11-3061",
-      "13-1071",
-      "13-2011",
-      "11-9199"
+      "49-1011",
+      "49-2011",
+      "49-2022",
+      "49-2091",
+      "49-2092",
+      "49-2093",
+      "49-2094",
+      "49-2095",
+      "49-2097",
+      "49-2098"
     ]
   },
   {
     "name": "Herbalife Nutrition",
     "sector": "Other Services",
-    "description": "Herbalife Nutrition is a global multi-level marketing corporation that develops and sells dietary supplements, with its Carson operations serving as a key hub for its worldwide business.",
+    "description": "Herbalife Nutrition is a global multi-level marketing corporation that develops and sells dietary supplements.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "11-2021",
-      "13-1161",
-      "19-1012",
+      "49-1011",
+      "49-2011",
+      "49-2022",
+      "49-2091",
+      "49-2092",
+      "49-2093",
+      "49-2094",
+      "49-2095",
+      "49-2097",
+      "49-2098"
+    ]
+  },
+  {
+    "name": "Southern California Permanente Medical Group",
+    "sector": "Healthcare",
+    "description": "Southern California Permanente Medical Group is a physician-led organization providing medical care to Kaiser Permanente members in Southern California.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "29-1011",
+      "29-1021",
+      "29-1022",
+      "29-1023",
+      "29-1029",
       "29-1031",
-      "13-1071",
-      "11-3012",
-      "13-2011",
-      "11-9199"
-    ]
-  },
-  {
-    "name": "University of Southern California",
-    "sector": "Healthcare",
-    "description": "The University of Southern California is a leading private research university in Los Angeles, known for its extensive academic programs, research contributions, and significant impact on the local economy and culture.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9033",
-      "25-1071",
-      "25-1072",
-      "25-1066",
-      "25-1021",
-      "21-1012",
-      "13-1071",
-      "13-2011",
-      "11-9111"
-    ]
-  },
-  {
-    "name": "Tenet Healthcare",
-    "sector": "Healthcare",
-    "description": "Tenet Healthcare is a multinational healthcare services company, operating numerous hospitals and outpatient facilities across the Los Angeles area, providing a wide range of medical care.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9111",
-      "29-1071",
+      "29-1041",
       "29-1051",
-      "29-1123",
-      "29-1126",
-      "29-1031",
-      "29-1122",
-      "29-1127",
-      "13-1071",
-      "13-2011"
+      "29-1071",
+      "29-1081"
     ]
   },
   {
-    "name": "University of California, Los Angeles",
+    "name": "USC Engemann Student Health Center",
     "sector": "Healthcare",
-    "description": "The University of California, Los Angeles (UCLA) is a world-renowned public research university, offering extensive academic programs and a major healthcare system that serves the greater Los Angeles community.",
+    "description": "The USC Engemann Student Health Center provides comprehensive medical, mental health, and wellness services to University of Southern California students.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "11-9033",
-      "25-1071",
-      "25-1072",
-      "25-1066",
-      "25-1021",
-      "21-1012",
-      "13-1071",
-      "13-2011",
-      "11-9111"
+      "29-1011",
+      "29-1021",
+      "29-1022",
+      "29-1023",
+      "29-1029",
+      "29-1031",
+      "29-1041",
+      "29-1051",
+      "29-1071",
+      "29-1081"
+    ]
+  },
+  {
+    "name": "Los Angeles County Military and Veterans Affairs",
+    "sector": "Healthcare",
+    "description": "The Los Angeles County Department of Military and Veterans Affairs provides services and support to veterans and their families.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "29-1011",
+      "29-1021",
+      "29-1022",
+      "29-1023",
+      "29-1029",
+      "29-1031",
+      "29-1041",
+      "29-1051",
+      "29-1071",
+      "29-1081"
+    ]
+  },
+  {
+    "name": "Tenet Healthcare Corporation",
+    "sector": "Healthcare",
+    "description": "Tenet Healthcare Corporation is a multinational healthcare services company operating hospitals and other healthcare facilities.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "29-1011",
+      "29-1021",
+      "29-1022",
+      "29-1023",
+      "29-1029",
+      "29-1031",
+      "29-1041",
+      "29-1051",
+      "29-1071",
+      "29-1081"
+    ]
+  },
+  {
+    "name": "UCLA Center for Autism Research and Treatment",
+    "sector": "Healthcare",
+    "description": "The UCLA Center for Autism Research and Treatment (CART) conducts research and provides clinical services for individuals with autism spectrum disorder.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "29-1011",
+      "29-1021",
+      "29-1022",
+      "29-1023",
+      "29-1029",
+      "29-1031",
+      "29-1041",
+      "29-1051",
+      "29-1071",
+      "29-1081"
     ]
   },
   {
     "name": "Adventist Health Glendale",
     "sector": "Healthcare",
-    "description": "Adventist Health Glendale is a general medical and surgical hospital providing comprehensive healthcare services to the Glendale community and surrounding areas.",
+    "description": "Adventist Health Glendale is a hospital providing a range of medical services to the community of Glendale, California.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "11-9111",
-      "29-1071",
-      "29-1051",
-      "29-1123",
-      "29-1126",
+      "29-1011",
+      "29-1021",
+      "29-1022",
+      "29-1023",
+      "29-1029",
       "29-1031",
-      "29-1122",
-      "29-1127",
-      "13-1071",
-      "13-2011"
+      "29-1041",
+      "29-1051",
+      "29-1071",
+      "29-1081"
     ]
   },
   {
     "name": "Centinela Hospital Medical Center",
     "sector": "Healthcare",
-    "description": "Centinela Hospital Medical Center is a general medical and surgical hospital in Inglewood, serving the healthcare needs of the diverse South Bay community.",
+    "description": "Centinela Hospital Medical Center is an acute care hospital providing comprehensive medical services in Inglewood, California.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "11-9111",
-      "29-1071",
-      "29-1051",
-      "29-1123",
-      "29-1126",
+      "29-1011",
+      "29-1021",
+      "29-1022",
+      "29-1023",
+      "29-1029",
       "29-1031",
-      "29-1122",
-      "29-1127",
-      "13-1071",
-      "13-2011"
+      "29-1041",
+      "29-1051",
+      "29-1071",
+      "29-1081"
     ]
   },
   {
-    "name": "Dignity Health-Glendale Memorial",
+    "name": "Dignity Health-Glendale Memorial Hospital and Health Center",
     "sector": "Healthcare",
-    "description": "Dignity Health-Glendale Memorial Hospital is a general medical and surgical hospital providing a wide range of healthcare services to the Glendale community.",
+    "description": "Dignity Health-Glendale Memorial Hospital and Health Center is a full-service acute care hospital serving the Glendale community.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "11-9111",
-      "29-1071",
-      "29-1051",
-      "29-1123",
-      "29-1126",
+      "29-1011",
+      "29-1021",
+      "29-1022",
+      "29-1023",
+      "29-1029",
       "29-1031",
-      "29-1122",
-      "29-1127",
-      "13-1071",
-      "13-2011"
+      "29-1041",
+      "29-1051",
+      "29-1071",
+      "29-1081"
     ]
   },
   {
     "name": "Lighthouse Electric",
     "sector": "Construction",
-    "description": "Lighthouse Electric is an electrical contractor based in Los Angeles, providing electrical services for commercial and residential projects across the region.",
+    "description": "Lighthouse Electric is an electrical contracting company providing services for commercial, industrial, and residential projects.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "11-9021",
-      "17-2071",
-      "17-3023",
-      "13-1051",
-      "11-3013",
-      "13-1071",
-      "13-2011",
-      "11-9199"
+      "47-1011",
+      "47-2011",
+      "47-2021",
+      "47-2022",
+      "47-2031",
+      "47-2041",
+      "47-2042",
+      "47-2044",
+      "47-2051",
+      "47-2061"
     ]
   },
   {
     "name": "Aerojet Rocketdyne",
     "sector": "Manufacturing",
-    "description": "Aerojet Rocketdyne is a leading aerospace and defense manufacturer, with its Canoga Park facility contributing to advanced propulsion systems and space exploration technology.",
+    "description": "Aerojet Rocketdyne is an American manufacturer of rocket, missile, and spacecraft propulsion systems.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "17-2011",
-      "17-2141",
-      "17-2071",
-      "17-3021",
-      "17-3027",
-      "11-9041",
-      "15-1252",
-      "13-1199"
+      "51-1011",
+      "51-2011",
+      "51-2021",
+      "51-2028",
+      "51-2031",
+      "51-2041",
+      "51-2051",
+      "51-2090",
+      "51-3011",
+      "51-3021"
     ]
   },
   {
     "name": "Aerospace Corporation",
     "sector": "Manufacturing",
-    "description": "The Aerospace Corporation is a federally funded research and development center in El Segundo, providing independent technical expertise and objective advice to national security space programs.",
+    "description": "The Aerospace Corporation is a federally funded research and development center providing independent technical and scientific research, development, and advisory services to national security space programs.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "17-2011",
-      "17-2071",
-      "17-2072",
-      "15-1252",
-      "19-2012",
-      "15-1211",
-      "11-9041",
-      "19-2021"
+      "51-1011",
+      "51-2011",
+      "51-2021",
+      "51-2028",
+      "51-2031",
+      "51-2041",
+      "51-2051",
+      "51-2090",
+      "51-3011",
+      "51-3021"
     ]
   },
   {
     "name": "Glenair",
     "sector": "Manufacturing",
-    "description": "Glenair is a leading manufacturer of interconnect solutions for harsh environments, with its Glendale operations serving critical industries like aerospace and defense.",
+    "description": "Glenair is a manufacturer of interconnect components and systems for military, aerospace, and industrial applications.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "17-2071",
-      "17-2072",
-      "17-2141",
-      "17-3023",
-      "17-3027",
-      "11-3051",
-      "13-1051",
-      "11-9041"
+      "51-1011",
+      "51-2011",
+      "51-2021",
+      "51-2028",
+      "51-2031",
+      "51-2041",
+      "51-2051",
+      "51-2090",
+      "51-3011",
+      "51-3021"
     ]
   },
   {
     "name": "Honda North America",
     "sector": "Manufacturing",
-    "description": "Honda North America has a significant presence in Torrance, serving as a key hub for sales, marketing, and research and development for one of the world's largest automobile manufacturers.",
+    "description": "Honda North America is the regional headquarters for Honda's operations in North America, overseeing manufacturing, sales, and research and development.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "17-2141",
-      "17-2071",
-      "11-2021",
-      "13-1161",
-      "13-1071",
-      "11-3012",
-      "13-2011",
-      "11-9199"
+      "51-1011",
+      "51-2011",
+      "51-2021",
+      "51-2028",
+      "51-2031",
+      "51-2041",
+      "51-2051",
+      "51-2090",
+      "51-3011",
+      "51-3021"
     ]
   },
   {
     "name": "Technicolor USA",
     "sector": "Information & Media",
-    "description": "Technicolor USA is a global leader in creative technology and post-production services for the entertainment industry, with its Los Angeles presence central to film and television production.",
+    "description": "Technicolor USA is a subsidiary of Technicolor Creative Studios, a global leader in visual effects, animation, and post-production services for the entertainment industry.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "27-4032",
-      "27-4011",
-      "27-4014",
-      "27-1014",
-      "27-1024",
-      "15-1252",
-      "27-2012",
-      "11-9072"
+      "15-1211",
+      "15-1212",
+      "15-1221",
+      "15-1231",
+      "15-1232",
+      "15-1241",
+      "15-1242",
+      "15-1243",
+      "15-1244",
+      "15-1251"
     ]
   },
   {
     "name": "ADP",
     "sector": "Information & Media",
-    "description": "ADP is a global provider of human capital management solutions, with its San Dimas office supporting businesses across the LA region with payroll, HR, and benefits services.",
+    "description": "ADP is a global provider of human resources management software and services, including payroll, benefits, and talent management.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "13-1071",
-      "13-1141",
-      "11-3121",
-      "15-1232",
       "15-1211",
-      "13-2011",
-      "11-3012",
-      "13-1199"
+      "15-1212",
+      "15-1221",
+      "15-1231",
+      "15-1232",
+      "15-1241",
+      "15-1242",
+      "15-1243",
+      "15-1244",
+      "15-1251"
     ]
   },
   {
     "name": "Azusa Pacific University",
     "sector": "Education",
-    "description": "Azusa Pacific University is a private Christian university in Azusa, offering a wide range of undergraduate and graduate programs and contributing to higher education in the San Gabriel Valley.",
+    "description": "Azusa Pacific University is a private Christian university offering undergraduate and graduate degree programs.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "11-9033",
-      "25-1071",
-      "25-1066",
-      "25-1081",
-      "21-1012",
-      "13-1071",
-      "13-2011",
-      "25-9031"
+      "25-1011",
+      "25-1021",
+      "25-1022",
+      "25-1031",
+      "25-1032",
+      "25-1041",
+      "25-1042",
+      "25-1051",
+      "25-1052",
+      "25-1053"
     ]
   },
   {
     "name": "California State Polytechnic University, Pomona",
     "sector": "Education",
-    "description": "California State Polytechnic University, Pomona (Cal Poly Pomona) is a public polytechnic university known for its learn-by-doing approach and strong programs in engineering, agriculture, and business, serving the greater Los Angeles area.",
+    "description": "California State Polytechnic University, Pomona (Cal Poly Pomona) is a public university known for its polytechnic and learn-by-doing approach.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "11-9033",
+      "25-1011",
+      "25-1021",
+      "25-1022",
+      "25-1031",
       "25-1032",
       "25-1041",
-      "25-1021",
-      "25-1011",
-      "21-1012",
-      "13-1071",
-      "13-2011",
-      "25-9031"
+      "25-1042",
+      "25-1051",
+      "25-1052",
+      "25-1053"
     ]
   },
   {
-    "name": "California State University Northridge",
+    "name": "California State University, Northridge",
     "sector": "Education",
-    "description": "California State University Northridge (CSUN) is a large public university in the San Fernando Valley, offering diverse academic programs and serving as a cultural and educational hub for the region.",
+    "description": "California State University, Northridge (CSUN) is a public university offering a wide range of undergraduate and graduate programs.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "11-9033",
-      "25-1066",
-      "25-1021",
-      "25-1123",
       "25-1011",
-      "21-1012",
-      "13-1071",
-      "13-2011",
-      "25-9031"
+      "25-1021",
+      "25-1022",
+      "25-1031",
+      "25-1032",
+      "25-1041",
+      "25-1042",
+      "25-1051",
+      "25-1052",
+      "25-1053"
+    ]
+  },
+  {
+    "name": "USC Viterbi School of Engineering",
+    "sector": "Education",
+    "description": "The USC Viterbi School of Engineering is the engineering school of the University of Southern California, offering various engineering disciplines.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "25-1011",
+      "25-1021",
+      "25-1022",
+      "25-1031",
+      "25-1032",
+      "25-1041",
+      "25-1042",
+      "25-1051",
+      "25-1052",
+      "25-1053"
+    ]
+  },
+  {
+    "name": "Los Angeles County Fire Department",
+    "sector": "Government",
+    "description": "The Los Angeles County Fire Department provides fire protection, emergency medical services, and other public safety services to unincorporated areas and contract cities within Los Angeles County.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "33-1011",
+      "33-1012",
+      "33-1021",
+      "33-1091",
+      "33-1099",
+      "33-2011",
+      "33-2021",
+      "33-2022",
+      "33-3012",
+      "33-3021"
+    ]
+  },
+  {
+    "name": "Los Angeles County Superior Court",
+    "sector": "Government",
+    "description": "The Los Angeles County Superior Court is the trial court of general jurisdiction for Los Angeles County, California.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "33-1011",
+      "33-1012",
+      "33-1021",
+      "33-1091",
+      "33-1099",
+      "33-2011",
+      "33-2021",
+      "33-2022",
+      "33-3012",
+      "33-3021"
     ]
   },
   {
     "name": "California Access Scaffold",
     "sector": "Construction",
-    "description": "California Access Scaffold provides scaffolding and access solutions for construction projects, supporting infrastructure development across the Los Angeles area.",
+    "description": "California Access Scaffold provides scaffolding rental, sales, and installation services for construction and industrial projects.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "11-9021",
-      "13-1051",
-      "11-3013",
-      "13-1071",
-      "13-2011",
-      "11-9199"
+      "47-1011",
+      "47-2011",
+      "47-2021",
+      "47-2022",
+      "47-2031",
+      "47-2041",
+      "47-2042",
+      "47-2044",
+      "47-2051",
+      "47-2061"
     ]
   },
   {
-    "name": "Kiewit",
+    "name": "Kiewit Corporation",
     "sector": "Construction",
-    "description": "Kiewit is one of North America's largest construction and engineering organizations, with a significant presence in Santa Fe Springs, undertaking major infrastructure and heavy construction projects across the LA region.",
+    "description": "Kiewit Corporation is one of the largest construction and engineering organizations in North America, specializing in infrastructure, building, and mining projects.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "11-9021",
-      "17-2051",
-      "17-2141",
-      "13-1051",
-      "17-3022",
-      "13-1081",
-      "11-3061",
-      "13-1071"
+      "47-1011",
+      "47-2011",
+      "47-2021",
+      "47-2022",
+      "47-2031",
+      "47-2041",
+      "47-2042",
+      "47-2044",
+      "47-2051",
+      "47-2061"
     ]
   },
   {
     "name": "Parsec",
     "sector": "Construction",
-    "description": "Parsec is a construction company specializing in heavy construction projects, contributing to infrastructure development in the Commerce area and beyond.",
+    "description": "Parsec is a company that provides remote desktop software for gaming and professional applications.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "11-9021",
-      "17-2051",
-      "13-1051",
-      "17-3022",
-      "13-1081",
-      "11-3061",
-      "13-1071",
-      "11-9199"
+      "47-1011",
+      "47-2011",
+      "47-2021",
+      "47-2022",
+      "47-2031",
+      "47-2041",
+      "47-2042",
+      "47-2044",
+      "47-2051",
+      "47-2061"
     ]
   },
   {
     "name": "Top Roofing",
     "sector": "Construction",
-    "description": "Top Roofing is a roofing contractor in Los Angeles, providing installation, repair, and maintenance services for residential and commercial properties.",
+    "description": "Top Roofing is a roofing contractor providing installation, repair, and maintenance services for residential and commercial properties.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "11-9021",
-      "13-1051",
-      "11-3013",
-      "13-1071",
-      "13-2011",
-      "11-9199"
+      "47-1011",
+      "47-2011",
+      "47-2021",
+      "47-2022",
+      "47-2031",
+      "47-2041",
+      "47-2042",
+      "47-2044",
+      "47-2051",
+      "47-2061"
+    ]
+  },
+  {
+    "name": "Mitigation",
+    "sector": "Construction",
+    "description": "Mitigation is a company specializing in disaster restoration services, including water damage, fire damage, and mold remediation.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "47-1011",
+      "47-2011",
+      "47-2021",
+      "47-2022",
+      "47-2031",
+      "47-2041",
+      "47-2042",
+      "47-2044",
+      "47-2051",
+      "47-2061"
     ]
   },
   {
     "name": "Color Concepts",
     "sector": "Construction",
-    "description": "Color Concepts is a painting and wall covering contractor in Canoga Park, offering interior and exterior finishing services for various construction projects.",
+    "description": "Color Concepts is a company that provides color management solutions and media profiling services for the digital printing industry.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "11-9021",
-      "13-1051",
-      "11-3013",
-      "13-1071",
-      "13-2011",
-      "11-9199"
+      "47-1011",
+      "47-2011",
+      "47-2021",
+      "47-2022",
+      "47-2031",
+      "47-2041",
+      "47-2042",
+      "47-2044",
+      "47-2051",
+      "47-2061"
     ]
   },
   {
     "name": "Nissin Foods USA",
     "sector": "Manufacturing",
-    "description": "Nissin Foods USA is a major food manufacturer, known for its instant ramen products, with its facilities contributing to the food production industry in the LA area.",
+    "description": "Nissin Foods USA is a subsidiary of Nissin Foods Holdings Co., Ltd., a Japanese company known for inventing instant noodles.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "11-3051",
-      "19-1012",
-      "11-3071",
-      "13-1081",
-      "11-3061",
-      "13-1071",
-      "13-2011",
-      "11-9199"
-    ]
-  },
-  {
-    "name": "Reyes Coca-Cola Bottling",
-    "sector": "Manufacturing",
-    "description": "Reyes Coca-Cola Bottling is a leading bottler and distributor of Coca-Cola products, with its Los Angeles operations playing a crucial role in supplying beverages across Southern California.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-3051",
-      "11-3071",
-      "13-1081",
-      "11-3061",
-      "13-1071",
-      "13-2011",
-      "11-9199"
-    ]
-  },
-  {
-    "name": "Seven-Up Bottling Company",
-    "sector": "Manufacturing",
-    "description": "Seven-Up Bottling Company is a beverage bottling and distribution facility in Vernon, serving the greater Los Angeles market with popular soft drink brands.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-3051",
-      "11-3071",
-      "13-1081",
-      "11-3061",
-      "13-1071",
-      "13-2011",
-      "11-9199"
+      "51-1011",
+      "51-2011",
+      "51-2021",
+      "51-2028",
+      "51-2031",
+      "51-2041",
+      "51-2051",
+      "51-2090",
+      "51-3011",
+      "51-3021"
     ]
   }
 ]

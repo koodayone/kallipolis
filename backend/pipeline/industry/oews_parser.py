@@ -24,8 +24,35 @@ METROS = {
     "Vallejo": "CA-OEWS-Vallejo MSA-2025.xlsx",
     "Santa Cruz-Watsonville": "CA-OEWS-Santa Cruz-Watsonville MSA-2025.xlsx",
     "San Rafael": "CA-OEWS-San Rafael MD-2025.xlsx",
-    # Los Angeles
+    # Los Angeles / Southern California
     "Los Angeles-Long Beach-Glendale": "CA-OEWS-Los Angeles-Long Beach-Glendale MD-2025.xlsx",
+    "Anaheim-Santa Ana-Irvine": "CA-OEWS-Anaheim-Santa Ana-Irvine MD-2025.xlsx",
+    "Riverside-San Bernardino-Ontario": "CA-OEWS-Riverside-San Bernardino-Ontario MSA-2025.xlsx",
+    "Oxnard-Thousand Oaks-Ventura": "CA-OEWS-Oxnard-Thousand Oaks-Ventura MSA-2025.xlsx",
+    "San Diego-Chula Vista-Carlsbad": "CA-OEWS-San Diego-Chula Vista-Carlsbad MSA-2025.xlsx",
+    # Central Valley
+    "Fresno": "CA-OEWS-Fresno MSA-2025.xlsx",
+    "Bakersfield-Delano": "CA-OEWS-Bakersfield-Delano MSA-2025.xlsx",
+    "Stockton-Lodi": "CA-OEWS-Stockton-Lodi MSA-2025.xlsx",
+    "Modesto": "CA-OEWS-Modesto MSA-2025.xlsx",
+    "Visalia": "CA-OEWS-Visalia MSA-2025.xlsx",
+    "Merced": "CA-OEWS-Merced MSA-2025.xlsx",
+    "Hanford-Corcoran": "CA-OEWS-Hanford-Corcoran MSA-2025.xlsx",
+    # Sacramento / Northern California
+    "Sacramento-Roseville-Folsom": "CA-OEWS-Sacramento-Roseville-Folsom MSA-2025.xlsx",
+    "Chico": "CA-OEWS-Chico MSA-2025.xlsx",
+    "Redding": "CA-OEWS-Redding MSA-2025.xlsx",
+    "Yuba City": "CA-OEWS-Yuba City MSA-2025.xlsx",
+    # Central / South Coast
+    "Salinas": "CA-OEWS-Salinas MSA-2025.xlsx",
+    "San Luis Obispo-Paso Robles": "CA-OEWS-San Luis Obispo-Paso Robles MSA-2025.xlsx",
+    "Santa Maria-Santa Barbara": "CA-OEWS-Santa Maria-Santa Barbara MSA-2025.xlsx",
+    # Other / Imperial
+    "El Centro": "CA-OEWS-El Centro MSA-2025.xlsx",
+    # Rural regions
+    "Eastern Sierra-Mother Lode": "CA-OEWS-Eastern Sierra-Mother Lode Region-2025.xlsx",
+    "North Coast": "CA-OEWS-North Coast Region-2025.xlsx",
+    "North Valley-Northern Mountains": "CA-OEWS-North Valley-Northern Mountains Region-2025.xlsx",
 }
 
 

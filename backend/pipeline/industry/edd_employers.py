@@ -93,6 +93,10 @@ METRO_COUNTIES: dict[str, list[str]] = {
     "El Centro": ["Imperial"],
     "San Luis Obispo-Paso Robles": ["San Luis Obispo"],
     "Santa Maria-Santa Barbara": ["Santa Barbara"],
+    # Rural regions
+    "Eastern Sierra-Mother Lode": ["Alpine", "Amador", "Calaveras", "Inyo", "Mariposa", "Mono", "Tuolumne"],
+    "North Coast": ["Del Norte", "Humboldt", "Lake", "Mendocino"],
+    "North Valley-Northern Mountains": ["Lassen", "Modoc", "Nevada", "Plumas", "Sierra", "Siskiyou", "Tehama", "Trinity"],
 }
 
 # CTE-relevant NAICS 4-digit codes with EDD sector codes and labels.
@@ -415,6 +419,8 @@ def search_naics_codes(
 
         if results:
             logger.info(f"    {len(results)} employers ({len(all_employers)} total unique)")
+        else:
+            logger.debug(f"    0 results for {label}")
         time.sleep(0.5)
 
     return all_employers
