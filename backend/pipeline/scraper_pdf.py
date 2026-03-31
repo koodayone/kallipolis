@@ -32,7 +32,7 @@ from google.genai import types
 from pypdf import PdfReader, PdfWriter
 
 from pipeline.scraper import RawCourse
-from pipeline.skills import SEED_TAXONOMY
+from pipeline.skills import UNIFIED_TAXONOMY
 
 logger = logging.getLogger(__name__)
 
@@ -52,7 +52,7 @@ COURSE_CODE_PATTERN = re.compile(
 # Minimum course code matches on a page to consider it a course description page
 MIN_CODES_PER_PAGE = 2
 
-TAXONOMY_LIST = sorted(SEED_TAXONOMY)
+TAXONOMY_LIST = sorted(UNIFIED_TAXONOMY)
 
 SYSTEM_INSTRUCTION = """You are a structured data extraction and workforce skills specialist for community college course catalogs.
 
@@ -71,7 +71,7 @@ For each course, extract:
 - ge_area: General education area if listed, otherwise empty string
 - grading: Grading method if listed (e.g., "Letter Grade", "Pass/No Pass"), otherwise empty string
 - hours: Lecture/lab hours if listed, otherwise empty string
-- skill_mappings: Array of 3-6 workforce skill categories derived from the course description, SLOs, and objectives
+- skill_mappings: Array of workforce skill categories (at least 6) derived from the course description, SLOs, and objectives
 
 COURSE EXTRACTION RULES:
 1. ONLY extract courses from COURSE DESCRIPTION sections — where you see a course code, title, units, and a prose description paragraph. Do NOT extract from program requirement tables, degree/certificate requirement lists, or curriculum guides that only list course codes, titles, and units in a tabular format without descriptions.
@@ -83,12 +83,10 @@ COURSE EXTRACTION RULES:
 7. Department should be the broad discipline name, not the full program title.
 
 SKILL MAPPING RULES:
-1. Use skills from this taxonomy whenever possible (use EXACT names): {taxonomy}
-2. At least 2 of your selected skills per course should come from the taxonomy.
-3. Only introduce a novel skill name if the course teaches something genuinely not covered by ANY taxonomy entry.
-4. Novel skills should be broad and reusable (2-4 words), workforce-relevant.
-5. Focus on demonstrable, transferable competencies — not course topics.
-6. If the course has no description, return an empty skill_mappings array.
+1. You MUST select skills from this taxonomy. Use EXACT names: {taxonomy}
+2. Select ALL skills from the taxonomy that the course meaningfully develops. Do NOT invent new skill names.
+3. Focus on demonstrable, transferable competencies — not course topics.
+4. If the course has no description, return an empty skill_mappings array.
 
 Return ONLY a JSON array of course objects. No explanations or markdown."""
 
@@ -467,7 +465,7 @@ async def scrape_pdf_catalog(
     novel_skills: set[str] = set()
     for c in enriched:
         for s in c.get("skill_mappings", []):
-            if s not in SEED_TAXONOMY:
+            if s not in UNIFIED_TAXONOMY:
                 novel_skills.add(s)
 
     depts: dict[str, int] = {}
