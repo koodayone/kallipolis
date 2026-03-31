@@ -148,7 +148,7 @@ export default function GovernmentView({ school }: Props) {
               <GovernmentCanvas
                 onReportClick={handleReportClick}
                 onHoverChange={setHoveredReport}
-                brandColor={parseInt(school.brandColor.replace("#", ""), 16)}
+                brandColor={parseInt(school.brandColorNeon.replace("#", ""), 16)}
                 canvasOpacity={canvasOpacity}
                 sceneRef={sceneRef}
               />

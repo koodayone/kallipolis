@@ -149,7 +149,7 @@ export default function IndustryView({ school }: Props) {
               <IndustryCanvas
                 onNodeClick={handleNodeClick}
                 onHoverChange={setHoveredNode}
-                brandColor={parseInt(school.brandColor.replace("#", ""), 16)}
+                brandColor={parseInt(school.brandColorNeon.replace("#", ""), 16)}
                 canvasOpacity={canvasOpacity}
                 sceneRef={sceneRef}
               />

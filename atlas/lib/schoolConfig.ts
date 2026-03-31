@@ -5,6 +5,7 @@ export type SchoolConfig = {
   brandColorLight: string; // readable accent on dark backgrounds
   brandColorDim: string;   // subtle tint for badge backgrounds on light surfaces
   brandColorDark: string;  // card/surface color in dark mode UI
+  brandColorNeon: string;  // high-saturation accent for map markers on dark backgrounds
 };
 
 // --- Color derivation utilities ---
@@ -47,7 +48,7 @@ function hslToHex(h: number, s: number, l: number): string {
   return `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
 }
 
-export function deriveSchoolPalette(brandColor: string): Pick<SchoolConfig, "brandColor" | "brandColorLight" | "brandColorDim" | "brandColorDark"> {
+export function deriveSchoolPalette(brandColor: string): Pick<SchoolConfig, "brandColor" | "brandColorLight" | "brandColorDim" | "brandColorDark" | "brandColorNeon"> {
   const [h, s, l] = hexToHsl(brandColor);
 
   // Edge case: near-neutral (grey) — no meaningful hue, fall back to slate
@@ -70,7 +71,36 @@ export function deriveSchoolPalette(brandColor: string): Pick<SchoolConfig, "bra
   const dimS = isNeutral ? 5 : Math.min(s * 0.5, 25);
   const brandColorDim = hslToHex(h, dimS, 95);
 
-  return { brandColor, brandColorLight, brandColorDim, brandColorDark };
+  // brandColorNeon — high-saturation accent for map markers on dark backgrounds
+  // Preserve hue, push saturation high, adjust lightness by perceptual hue band
+  // Shift hues near the background (H~223) away to avoid blending with #060d1f
+  let brandColorNeon: string;
+  if (isNeutral) {
+    brandColorNeon = "#c9a84c";
+  } else {
+    // Hue-shift blues near background hue (223°) toward cyan/sky blue
+    const BG_HUE = 223;
+    const SHIFT_RANGE = 20;
+    let neonH = h;
+    const hueDist = Math.abs(h - BG_HUE);
+    if (hueDist < SHIFT_RANGE) {
+      // Push away from BG_HUE — toward cyan (lower hue values)
+      neonH = BG_HUE - SHIFT_RANGE - (SHIFT_RANGE - hueDist);
+    }
+
+    const neonS = Math.max(85, s);
+    let neonL: number;
+    if (neonH >= 50 && neonH <= 170) {
+      neonL = 55; // yellows/greens — perceptually bright, keep L lower
+    } else if (neonH < 50 || neonH > 330) {
+      neonL = 60; // reds/oranges
+    } else {
+      neonL = 65; // blues/purples — perceptually dark, push L higher
+    }
+    brandColorNeon = hslToHex(neonH, neonS, neonL);
+  }
+
+  return { brandColor, brandColorLight, brandColorDim, brandColorDark, brandColorNeon };
 }
 
 // --- School config ---

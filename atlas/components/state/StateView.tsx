@@ -141,7 +141,7 @@ export default function StateView() {
               border: "none",
               cursor: "pointer",
               padding: "8px",
-              color: userSchool?.brandColorLight ?? "rgba(255,255,255,0.7)",
+              color: userSchool?.brandColorNeonLight ?? "rgba(255,255,255,0.7)",
               transition: "opacity 0.15s",
               display: "flex",
               alignItems: "center",
@@ -152,9 +152,9 @@ export default function StateView() {
             aria-label="Back to Atlas"
           >
             <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2L3 7.5 12 13l9-5.5L12 2z" fill={userSchool?.brandColor ?? "rgba(255,255,255,0.3)"} opacity="0.85" />
-              <path d="M12 13v9l9-5.5v-9L12 13z" fill={userSchool?.brandColor ?? "rgba(255,255,255,0.3)"} opacity="0.55" />
-              <path d="M12 13v9L3 16.5v-9L12 13z" fill={userSchool?.brandColor ?? "rgba(255,255,255,0.3)"} opacity="0.4" />
+              <path d="M12 2L3 7.5 12 13l9-5.5L12 2z" fill={userSchool?.brandColorNeon ?? "rgba(255,255,255,0.3)"} opacity="0.85" />
+              <path d="M12 13v9l9-5.5v-9L12 13z" fill={userSchool?.brandColorNeon ?? "rgba(255,255,255,0.3)"} opacity="0.55" />
+              <path d="M12 13v9L3 16.5v-9L12 13z" fill={userSchool?.brandColorNeon ?? "rgba(255,255,255,0.3)"} opacity="0.4" />
               <path d="M12 2L3 7.5v9L12 22l9-5.5v-9L12 2z M12 13L3 7.5 M12 13l9-5.5 M12 13v9" stroke="rgba(255,255,255,0.55)" strokeWidth="0.7" />
             </svg>
             <svg width="20" height="20" viewBox="0 0 16 16" fill="none">
@@ -171,9 +171,9 @@ export default function StateView() {
             </div>
             <AtlasMenu navItems={[{ label: "Home View", href: userCollegeId ? `/${userCollegeId}` : "/", icon: (
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                <path d="M12 2L3 7.5 12 13l9-5.5L12 2z" fill={userSchool?.brandColor ?? "rgba(255,255,255,0.3)"} opacity="0.85" />
-                <path d="M12 13v9l9-5.5v-9L12 13z" fill={userSchool?.brandColor ?? "rgba(255,255,255,0.3)"} opacity="0.55" />
-                <path d="M12 13v9L3 16.5v-9L12 13z" fill={userSchool?.brandColor ?? "rgba(255,255,255,0.3)"} opacity="0.4" />
+                <path d="M12 2L3 7.5 12 13l9-5.5L12 2z" fill={userSchool?.brandColorNeon ?? "rgba(255,255,255,0.3)"} opacity="0.85" />
+                <path d="M12 13v9l9-5.5v-9L12 13z" fill={userSchool?.brandColorNeon ?? "rgba(255,255,255,0.3)"} opacity="0.55" />
+                <path d="M12 13v9L3 16.5v-9L12 13z" fill={userSchool?.brandColorNeon ?? "rgba(255,255,255,0.3)"} opacity="0.4" />
                 <path d="M12 2L3 7.5v9L12 22l9-5.5v-9L12 2z M12 13L3 7.5 M12 13l9-5.5 M12 13v9" stroke="rgba(255,255,255,0.55)" strokeWidth="0.7" />
               </svg>
             ) }]} />
@@ -467,7 +467,7 @@ function SearchResultRow({
   isActive: boolean;
 }) {
   const config = getCollegeAtlasConfig(college.id);
-  const accent = config?.brandColorLight ?? "#c9a84c";
+  const accent = config?.brandColorNeon ?? "#c9a84c";
   const region = CALIFORNIA_REGIONS.find((r) => r.id === college.regionId);
 
   return (
@@ -552,7 +552,7 @@ function RegionPanel({ region, collegeCount, districtCount }: { region: Region; 
 function SchoolPanel({ college }: { college: College }) {
   const region = CALIFORNIA_REGIONS.find((r) => r.id === college.regionId);
   const config = getCollegeAtlasConfig(college.id);
-  const accent = config?.brandColorLight ?? "#c9a84c";
+  const accent = config?.brandColorNeon ?? "#c9a84c";
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>

@@ -90,7 +90,7 @@ export default function LeafHeader({ school, onBack, parentShape }: Props) {
         onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = "1")}
         aria-label="Back to domain hub"
       >
-        <ShapeIcon shape={parentShape} color={school.brandColor} edgeColor="rgba(255,255,255,0.55)" />
+        <ShapeIcon shape={parentShape} color={school.brandColorNeon} edgeColor="rgba(255,255,255,0.55)" />
         <svg width="20" height="20" viewBox="0 0 16 16" fill="none">
           <path d="M10 12L6 8l4-4" stroke="rgba(255,255,255,0.85)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>

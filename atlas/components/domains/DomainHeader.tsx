@@ -45,9 +45,9 @@ export default function DomainHeader({ onBack, school }: Props) {
         aria-label={`Back to ${school.name} Atlas`}
       >
         <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-          <path d="M12 2L3 7.5 12 13l9-5.5L12 2z" fill={school.brandColor} opacity="0.85" />
-          <path d="M12 13v9l9-5.5v-9L12 13z" fill={school.brandColor} opacity="0.55" />
-          <path d="M12 13v9L3 16.5v-9L12 13z" fill={school.brandColor} opacity="0.4" />
+          <path d="M12 2L3 7.5 12 13l9-5.5L12 2z" fill={school.brandColorNeon} opacity="0.85" />
+          <path d="M12 13v9l9-5.5v-9L12 13z" fill={school.brandColorNeon} opacity="0.55" />
+          <path d="M12 13v9L3 16.5v-9L12 13z" fill={school.brandColorNeon} opacity="0.4" />
           <path d="M12 2L3 7.5v9L12 22l9-5.5v-9L12 2z M12 13L3 7.5 M12 13l9-5.5 M12 13v9" stroke="rgba(255,255,255,0.55)" strokeWidth="0.7" />
         </svg>
         <svg width="24" height="24" viewBox="0 0 16 16" fill="none">

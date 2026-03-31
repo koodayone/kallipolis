@@ -145,7 +145,7 @@ export default function CollegeView({ school }: Props) {
               <CollegeCanvas
                 onNodeClick={handleNodeClick}
                 onHoverChange={setHoveredNode}
-                brandColor={parseInt(school.brandColor.replace("#", ""), 16)}
+                brandColor={parseInt(school.brandColorNeon.replace("#", ""), 16)}
                 canvasOpacity={canvasOpacity}
                 sceneRef={sceneRef}
               />

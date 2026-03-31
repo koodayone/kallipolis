@@ -200,7 +200,7 @@ export default function CaliforniaMap({
               const isHovered = hoveredCollegeId === college.id;
               const isSelected = selectedCollegeId === college.id;
               const isActive = isHovered || isSelected;
-              const brandColor = getCollegeAtlasConfig(college.id)?.brandColorLight ?? "#3ab26e";
+              const brandColor = getCollegeAtlasConfig(college.id)?.brandColorNeon ?? "#3ab26e";
               const size = isActive ? DIAMOND * 1.4 : DIAMOND;
 
               return (

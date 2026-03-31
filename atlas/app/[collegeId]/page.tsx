@@ -81,7 +81,7 @@ export default function CollegeAtlasPage() {
           onDomainClick={handleDomainClick}
           onHoverChange={setHoveredDomain}
           canvasOpacity={canvasOpacity}
-          brandColor={parseInt(config.brandColor.replace("#", ""), 16)}
+          brandColor={parseInt(config.brandColorNeon.replace("#", ""), 16)}
           sceneRef={sceneRef}
         />
       </div>
