@@ -23,9 +23,6 @@ export default function PerkinsView({ school, onBack }: Props) {
   return (
     <>
     <LeafHeader school={school} onBack={onBack} parentShape="dodecahedron" />
-      <div style={{ display: "flex", justifyContent: "center", paddingTop: "32px", paddingBottom: "16px" }}>
-        <img src={school.logoPath} alt={school.name} style={{ height: "100px", width: "auto", objectFit: "contain" }} />
-      </div>
     <div
       style={{
         maxWidth: "800px",

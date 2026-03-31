@@ -39,7 +39,7 @@ type ConnectorEntry = {
 };
 
 const GOLD = 0xc9a84c;
-const BG_COLOR = 0x041e54;
+const BG_COLOR = 0x060d1f;
 const LERP_SPEED = 0.08;
 
 export function buildAtlasScene(

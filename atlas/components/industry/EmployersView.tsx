@@ -126,15 +126,11 @@ export default function EmployersView({ school, onBack }: Props) {
   return (
     <div ref={rootRef}>
       <LeafHeader school={school} onBack={onBack} parentShape="tetrahedron" />
-      <div style={{ display: "flex", justifyContent: "center", paddingTop: "32px", paddingBottom: "16px" }}>
-        <img src={school.logoPath} alt={school.name} style={{ height: "100px", width: "auto", objectFit: "contain" }} />
-      </div>
-
-      <div style={{ maxWidth: "760px", margin: "0 auto", padding: "0 40px 80px" }}>
+      <div style={{ maxWidth: "760px", margin: "0 auto", padding: "32px 40px 80px" }}>
         {error && <p style={{ fontFamily: FONT, fontSize: "14px", color: "#e55", textAlign: "center", paddingTop: "40px" }}>{error}</p>}
         {loading && (
           <div style={{ display: "flex", justifyContent: "center", paddingTop: "80px" }}>
-            <RisingSun style={{ width: "70px", height: "auto", opacity: 0.4 }} />
+            <RisingSun style={{ width: "90px", height: "auto", opacity: 0.4 }} />
           </div>
         )}
 
@@ -144,7 +140,7 @@ export default function EmployersView({ school, onBack }: Props) {
             style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
 
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "24px", paddingTop: "40px" }}>
-              <RisingSun style={{ width: "70px", height: "auto" }} />
+              <RisingSun style={{ width: "90px", height: "auto" }} />
               <h1 style={{ fontFamily: FONT, fontSize: "28px", fontWeight: 600, color: "#f0eef4", letterSpacing: "-0.02em", textAlign: "center" }}>
                 What&apos;s up{userName ? `, ${userName}` : ""}?
               </h1>
@@ -220,7 +216,7 @@ export default function EmployersView({ school, onBack }: Props) {
 
             {queryLoading && (
               <div style={{ display: "flex", justifyContent: "center", paddingTop: "40px" }}>
-                <RisingSun style={{ width: "50px", height: "auto", opacity: 0.4 }} />
+                <RisingSun style={{ width: "64px", height: "auto", opacity: 0.4 }} />
               </div>
             )}
 

@@ -242,10 +242,7 @@ export default function PartnershipsView({ school, onBack }: Props) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <div style={{ display: "flex", justifyContent: "center", paddingTop: "32px", paddingBottom: "40px" }}>
-              <img src={school.logoPath} alt={school.name} style={{ height: "100px", width: "auto", objectFit: "contain" }} />
-            </div>
-
+          <div style={{ maxWidth: "760px", margin: "0 auto", padding: "32px 40px 80px" }}>
             {/* Build / Manage segmented control */}
             <div style={{ display: "flex", justifyContent: "center", marginBottom: "40px" }}>
               <div style={{
@@ -272,7 +269,7 @@ export default function PartnershipsView({ school, onBack }: Props) {
 
             {/* ── Manage Mode ── */}
             {mode === "manage" && (
-              <div style={{ maxWidth: "760px", margin: "0 auto", padding: "0 40px 80px" }}>
+              <div>
                 {savedProposals.length === 0 ? (
                   <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px", paddingTop: "80px" }}>
                     <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.4)", margin: 0 }}>
@@ -382,11 +379,11 @@ export default function PartnershipsView({ school, onBack }: Props) {
 
             {/* ── Build Mode ── */}
             {mode === "build" && (
-            <div style={{ maxWidth: "760px", margin: "0 auto", padding: "0 40px 80px" }}>
+            <div>
               {error && <p style={{ fontFamily: FONT, fontSize: "14px", color: "#e55", textAlign: "center", paddingTop: "40px" }}>{error}</p>}
               {loading && (
                 <div style={{ display: "flex", justifyContent: "center", paddingTop: "80px" }}>
-                  <RisingSun style={{ width: "70px", height: "auto", opacity: 0.4 }} />
+                  <RisingSun style={{ width: "90px", height: "auto", opacity: 0.4 }} />
                 </div>
               )}
 
@@ -394,7 +391,7 @@ export default function PartnershipsView({ school, onBack }: Props) {
                 <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
                   style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
                   <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "24px" }}>
-                    <RisingSun style={{ width: "70px", height: "auto" }} />
+                    <RisingSun style={{ width: "90px", height: "auto" }} />
                     <h1 style={{ fontFamily: FONT, fontSize: "28px", fontWeight: 600, color: "#f0eef4", letterSpacing: "-0.02em", textAlign: "center", margin: 0 }}>
                       Who is our partner{userName ? `, ${userName}` : ""}?
                     </h1>
@@ -427,6 +424,7 @@ export default function PartnershipsView({ school, onBack }: Props) {
               )}
             </div>
             )}
+          </div>
           </motion.div>
         ) : selectedEmployer ? (
           <motion.div

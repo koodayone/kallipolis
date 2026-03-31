@@ -139,7 +139,7 @@ export default function StateView() {
         style={{
           width: "100vw",
           height: "100vh",
-          background: "#041e54",
+          background: "#060d1f",
           display: "flex",
           flexDirection: "column",
           overflow: "hidden",
@@ -154,7 +154,7 @@ export default function StateView() {
             alignItems: "center",
             justifyContent: "space-between",
             padding: "0 40px",
-            background: "rgba(4, 30, 84, 0.95)",
+            background: "rgba(6, 13, 31, 0.95)",
             backdropFilter: "blur(8px)",
             borderBottom: "1px solid rgba(255,255,255,0.07)",
             zIndex: 10,

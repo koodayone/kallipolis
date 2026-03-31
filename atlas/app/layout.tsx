@@ -27,7 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${daysOne.variable}`}>
-      <body style={{ background: "#041e54" }}>{children}</body>
+      <body style={{ background: "#060d1f" }}>{children}</body>
     </html>
   );
 }

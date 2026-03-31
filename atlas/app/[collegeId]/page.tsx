@@ -71,7 +71,7 @@ export default function CollegeAtlasPage() {
         position: "relative",
         width: "100vw",
         height: "100vh",
-        background: "#0a0a0f",
+        background: "#060d1f",
         overflow: "hidden",
       }}
     >
@@ -135,7 +135,7 @@ export default function CollegeAtlasPage() {
               position: "fixed",
               inset: 0,
               zIndex: 10,
-              background: "#041e54",
+              background: "#060d1f",
               overflowY: "auto",
             }}
           >

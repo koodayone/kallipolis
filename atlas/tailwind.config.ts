@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "atlas-bg": "#0a0a0f",
+        "atlas-bg": "#060d1f",
         "atlas-gold": "#c9a84c",
         "atlas-gold-dim": "#8a6e2e",
         surface: "#f8f7f4",

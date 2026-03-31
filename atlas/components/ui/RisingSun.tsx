@@ -20,11 +20,13 @@ function toRad(deg: number) { return (deg * Math.PI) / 180; }
 
 type Props = {
   style?: React.CSSProperties;
+  color?: string;
 };
 
-export default function RisingSun({ style }: Props) {
+export default function RisingSun({ style, color }: Props) {
   const cx = 28, cy = 36;
   const innerR = 15;
+  const c = color ?? "#c9a84c";
 
   return (
     <svg
@@ -32,7 +34,7 @@ export default function RisingSun({ style }: Props) {
       height="60"
       viewBox="0 0 56 36"
       fill="none"
-      style={{ animation: "sun-glow 3s ease-in-out infinite", overflow: "hidden", display: "block", margin: "0 auto", ...style }}
+      style={{ filter: `drop-shadow(0 0 8px ${c}55)`, animation: "sun-glow 3s ease-in-out infinite", overflow: "hidden", display: "block", margin: "0 auto", ...style }}
     >
       <defs>
         <clipPath id="sun-clip">
@@ -53,13 +55,13 @@ export default function RisingSun({ style }: Props) {
               x1={x1} y1={y1}
               x2={x2} y2={y2}
               className="sun-ray"
-              style={{ animationDelay: `${i * 0.18}s` }}
+              style={{ stroke: c, animationDelay: `${i * 0.18}s` }}
             />
           );
         })}
         <path
           d={`M ${cx - innerR} ${cy} A ${innerR} ${innerR} 0 0 1 ${cx + innerR} ${cy} Z`}
-          fill="#c9a84c"
+          fill={c}
         />
       </g>
     </svg>

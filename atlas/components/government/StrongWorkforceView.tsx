@@ -178,7 +178,7 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
     <div ref={rootRef}>
       <LeafHeader school={school} onBack={phase === "selection" ? onBack : handleBackToSelection} parentShape="dodecahedron" />
 
-      <div style={{ maxWidth: "760px", margin: "0 auto", padding: "0 40px 80px" }}>
+      <div style={{ maxWidth: "760px", margin: "0 auto", padding: "32px 40px 80px" }}>
         <AnimatePresence mode="wait" initial={false}>
           {phase === "selection" ? (
             <motion.div
@@ -188,10 +188,7 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
             >
-              {/* Logo + Build / Manage segmented control */}
-              <div style={{ display: "flex", justifyContent: "center", paddingTop: "32px", paddingBottom: "40px" }}>
-                <img src={school.logoPath} alt={school.name} style={{ height: "100px", width: "auto", objectFit: "contain" }} />
-              </div>
+              {/* Build / Manage segmented control */}
               <div style={{ display: "flex", justifyContent: "center", marginBottom: "40px" }}>
                 <div style={{
                   display: "flex", borderRadius: "8px",
@@ -220,7 +217,7 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
                 <>
                   {/* Build mode header with sun + greeting */}
                   <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "24px", marginBottom: "24px" }}>
-                    <RisingSun style={{ width: "70px", height: "auto" }} />
+                    <RisingSun style={{ width: "90px", height: "auto" }} />
                     <h1 style={{ fontFamily: FONT, fontSize: "28px", fontWeight: 600, color: "#f0eef4", letterSpacing: "-0.02em", textAlign: "center", margin: 0 }}>
                       SWP compliance{userName ? `, ${userName}` : ""}?
                     </h1>

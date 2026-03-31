@@ -120,15 +120,10 @@ export default function CollegeView({ school }: Props) {
                 alignItems: "center",
                 justifyContent: "center",
                 gap: "14px",
-                paddingTop: "48px",
-                paddingBottom: "16px",
+                paddingTop: "64px",
+                paddingBottom: "32px",
               }}
             >
-              <img
-                src={school.logoPath}
-                alt={school.name}
-                style={{ height: "100px", width: "auto", objectFit: "contain" }}
-              />
               <span
                 style={{
                   fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",

@@ -20,7 +20,7 @@ export default function DomainHeader({ onBack, school }: Props) {
         position: "sticky",
         top: 0,
         zIndex: 20,
-        background: "rgba(4, 30, 84, 0.95)",
+        background: "rgba(6, 13, 31, 0.95)",
         backdropFilter: "blur(8px)",
         padding: "0 40px",
         height: "72px",

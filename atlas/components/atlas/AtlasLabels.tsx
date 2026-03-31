@@ -109,70 +109,36 @@ export default function AtlasLabels({ hoveredDomain, school }: Props) {
         {school.name}
       </span>
 
-      {/* Sun + domain label — fade in together on hover */}
+      {/* Sun + label area */}
       <div
         style={{
           position: "absolute",
           top: "calc(26% - 74px)",
           left: "50%",
           transform: "translateX(-50%)",
-          opacity: hoveredDomain ? 1 : 0,
-          transition: "opacity 0.5s ease-in-out",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           gap: "8px",
         }}
       >
-        <RisingSun />
-        <span
-          style={{
-            fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-            fontSize: "18px",
-            fontWeight: 600,
-            letterSpacing: "0.14em",
-            textTransform: "uppercase",
-            color: "#ffffff",
-            whiteSpace: "nowrap",
-          }}
-        >
-          {hoveredDomain ? DOMAIN_NAMES[hoveredDomain] : ""}
-        </span>
-      </div>
-
-      {/* Institution logo + instruction — fades out when a domain is hovered */}
-      <div
-        style={{
-          position: "absolute",
-          top: "calc(26% - 74px)",
-          left: "50%",
-          transform: "translateX(-50%)",
-          opacity: hoveredDomain ? 0 : 1,
-          transition: "opacity 0.5s ease-in-out",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "10px",
-        }}
-      >
-        <div style={{ width: "320px", height: "100px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <img
-            src={school.logoPath}
-            alt={school.name}
-            style={{ maxHeight: "100px", maxWidth: "320px", objectFit: "contain" }}
-          />
+        {/* Sun fades in on hover */}
+        <div style={{ opacity: hoveredDomain ? 1 : 0, transition: "opacity 0.5s ease-in-out", height: "60px" }}>
+          <RisingSun />
         </div>
+        {/* Label text — swaps between instruction and domain name */}
         <span
           style={{
             fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
             fontSize: "15px",
-            letterSpacing: "0.1em",
-            color: "rgba(255,255,255,0.85)",
+            fontWeight: 600,
+            letterSpacing: "0.12em",
             textTransform: "uppercase",
+            color: "rgba(255,255,255,0.85)",
             whiteSpace: "nowrap",
           }}
         >
-          Select a domain
+          {hoveredDomain ? DOMAIN_NAMES[hoveredDomain] : "Select a domain"}
         </span>
       </div>
 

@@ -75,7 +75,7 @@ export default function RegisterForm() {
       style={{
         position: "fixed",
         inset: 0,
-        background: "#041e54",
+        background: "#060d1f",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
