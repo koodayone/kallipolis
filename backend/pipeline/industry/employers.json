@@ -4,7 +4,8 @@
     "sector": "Technology",
     "description": "Consumer electronics and software company headquartered in Cupertino, designing iPhone, Mac, and services used by billions worldwide.",
     "regions": [
-      "San Jose-Sunnyvale-Santa Clara"
+      "San Jose-Sunnyvale-Santa Clara",
+      "San Diego-Chula Vista-Carlsbad MSA"
     ],
     "occupations": [
       "15-1252",
@@ -18,7 +19,8 @@
     "description": "Search, cloud computing, and advertising technology company headquartered in Mountain View with major offices across the Bay Area.",
     "regions": [
       "San Jose-Sunnyvale-Santa Clara",
-      "San Francisco-San Mateo-Redwood City"
+      "San Francisco-San Mateo-Redwood City",
+      "Santa Maria-Santa Barbara MSA"
     ],
     "occupations": [
       "15-1252",
@@ -57,7 +59,8 @@
     "sector": "Technology",
     "description": "Financial software company headquartered in Mountain View, maker of TurboTax, QuickBooks, and Credit Karma.",
     "regions": [
-      "San Jose-Sunnyvale-Santa Clara"
+      "San Jose-Sunnyvale-Santa Clara",
+      "San Diego-Chula Vista-Carlsbad MSA"
     ],
     "occupations": [
       "15-1252",
@@ -82,7 +85,8 @@
     "description": "Electric vehicle and clean energy manufacturer headquartered in Austin with a major factory in Fremont.",
     "regions": [
       "San Jose-Sunnyvale-Santa Clara",
-      "Oakland-Fremont-Berkeley"
+      "Oakland-Fremont-Berkeley",
+      "Stockton-Lodi MSA"
     ],
     "occupations": [
       "15-1252",
@@ -177,7 +181,13 @@
       "San Francisco-San Mateo-Redwood City",
       "San Rafael",
       "Vallejo",
-      "Los Angeles-Long Beach-Glendale"
+      "Los Angeles-Long Beach-Glendale",
+      "Fresno MSA",
+      "Modesto MSA",
+      "Napa",
+      "Riverside-San Bernardino-Ontario MSA",
+      "Sacramento-Roseville-Folsom MSA",
+      "Santa Rosa-Petaluma"
     ],
     "occupations": [
       "29-1141",
@@ -200,7 +210,13 @@
       "Santa Cruz-Watsonville",
       "Vallejo",
       "Santa Rosa-Petaluma",
-      "Napa"
+      "Napa",
+      "Modesto MSA",
+      "Sacramento-Roseville-Folsom MSA",
+      "San Rafael",
+      "Santa Maria-Santa Barbara MSA",
+      "Stockton-Lodi MSA",
+      "Yuba City MSA"
     ],
     "occupations": [
       "29-1141",
@@ -497,7 +513,10 @@
     "description": "Global professional services firm with Bay Area offices providing technology consulting, strategy, and managed services.",
     "regions": [
       "San Francisco-San Mateo-Redwood City",
-      "Los Angeles-Long Beach-Glendale"
+      "Los Angeles-Long Beach-Glendale",
+      "Oakland-Fremont-Berkeley",
+      "Sacramento-Roseville-Folsom MSA",
+      "San Diego-Chula Vista-Carlsbad MSA"
     ],
     "occupations": [
       "15-1252",
@@ -542,7 +561,8 @@
     "regions": [
       "Santa Rosa-Petaluma",
       "Napa",
-      "Los Angeles-Long Beach-Glendale"
+      "Los Angeles-Long Beach-Glendale",
+      "Anaheim-Santa Ana-Irvine MD"
     ],
     "occupations": [
       "29-1141",
@@ -632,7 +652,14 @@
     "sector": "Healthcare",
     "description": "Faith-based health system operating St. Helena Hospital and clinics in the Napa Valley.",
     "regions": [
-      "Napa"
+      "Napa",
+      "Bakersfield-Delano MSA",
+      "Chico MSA",
+      "Hanford-Corcoran MSA",
+      "San Luis Obispo-Paso Robles MSA",
+      "Stockton-Lodi MSA",
+      "Visalia MSA",
+      "Yuba City MSA"
     ],
     "occupations": [
       "29-1141",
@@ -956,7 +983,24 @@
       "Napa",
       "Vallejo",
       "Santa Cruz-Watsonville",
-      "Los Angeles-Long Beach-Glendale"
+      "Los Angeles-Long Beach-Glendale",
+      "Anaheim-Santa Ana-Irvine MD",
+      "Bakersfield-Delano MSA",
+      "Chico MSA",
+      "El Centro MSA",
+      "Fresno MSA",
+      "Hanford-Corcoran MSA",
+      "Merced MSA",
+      "Modesto MSA",
+      "Oxnard-Thousand Oaks-Ventura MSA",
+      "Riverside-San Bernardino-Ontario MSA",
+      "Sacramento-Roseville-Folsom MSA",
+      "Salinas MSA",
+      "San Diego-Chula Vista-Carlsbad MSA",
+      "San Luis Obispo-Paso Robles MSA",
+      "Santa Maria-Santa Barbara MSA",
+      "Stockton-Lodi MSA",
+      "Visalia MSA"
     ],
     "occupations": [
       "11-9051",
@@ -977,7 +1021,14 @@
       "43-6014"
     ],
     "regions": [
-      "Los Angeles-Long Beach-Glendale"
+      "Los Angeles-Long Beach-Glendale",
+      "Anaheim-Santa Ana-Irvine MD",
+      "Oakland-Fremont-Berkeley",
+      "Riverside-San Bernardino-Ontario MSA",
+      "San Diego-Chula Vista-Carlsbad MSA",
+      "San Francisco-San Mateo-Redwood City",
+      "Stockton-Lodi MSA",
+      "Vallejo"
     ]
   },
   {
@@ -1040,7 +1091,8 @@
       "17-2071"
     ],
     "regions": [
-      "Los Angeles-Long Beach-Glendale"
+      "Los Angeles-Long Beach-Glendale",
+      "San Diego-Chula Vista-Carlsbad MSA"
     ]
   },
   {
@@ -1071,7 +1123,10 @@
       "35-3011"
     ],
     "regions": [
-      "Los Angeles-Long Beach-Glendale"
+      "Los Angeles-Long Beach-Glendale",
+      "Anaheim-Santa Ana-Irvine MD",
+      "Oxnard-Thousand Oaks-Ventura MSA",
+      "San Luis Obispo-Paso Robles MSA"
     ]
   },
   {
@@ -1088,7 +1143,8 @@
       "11-2021"
     ],
     "regions": [
-      "Los Angeles-Long Beach-Glendale"
+      "Los Angeles-Long Beach-Glendale",
+      "Santa Maria-Santa Barbara MSA"
     ]
   },
   {
@@ -1104,7 +1160,3488 @@
       "43-6013"
     ],
     "regions": [
-      "Los Angeles-Long Beach-Glendale"
+      "Los Angeles-Long Beach-Glendale",
+      "Anaheim-Santa Ana-Irvine MD",
+      "Chico MSA",
+      "Merced MSA",
+      "Modesto MSA",
+      "Oxnard-Thousand Oaks-Ventura MSA",
+      "Sacramento-Roseville-Folsom MSA",
+      "Salinas MSA",
+      "San Rafael",
+      "Santa Cruz-Watsonville",
+      "Santa Rosa-Petaluma",
+      "Visalia MSA"
+    ]
+  },
+  {
+    "name": "AMD",
+    "sector": "Semiconductor",
+    "description": "AMD is a global semiconductor company that designs and integrates technology that powers millions of intelligent devices, including personal computers, game consoles, and cloud servers.",
+    "occupations": [
+      "15-1211",
+      "15-1221",
+      "15-1231",
+      "15-1241",
+      "15-1251",
+      "17-2071",
+      "17-2072",
+      "17-2141"
+    ],
+    "regions": [
+      "San Jose-Sunnyvale-Santa Clara"
+    ]
+  },
+  {
+    "name": "Addus HomeCare",
+    "sector": "Healthcare",
+    "description": "Addus HomeCare provides a range of home care services, including personal care, hospice, and home health, to individuals in need.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1071",
+      "13-1199",
+      "21-1022",
+      "21-1093"
+    ],
+    "regions": [
+      "San Rafael"
+    ]
+  },
+  {
+    "name": "Aerovironment",
+    "sector": "Aerospace",
+    "description": "AeroVironment is a technology company that designs, develops, produces, and supports a portfolio of unmanned aircraft systems and related services.",
+    "occupations": [
+      "17-2011",
+      "17-2071",
+      "17-2072",
+      "17-2141",
+      "15-1211",
+      "15-1251",
+      "11-9041"
+    ],
+    "regions": [
+      "Oxnard-Thousand Oaks-Ventura MSA",
+      "Santa Rosa-Petaluma"
+    ]
+  },
+  {
+    "name": "Air Shasta Rotor & Wing",
+    "sector": "Aviation",
+    "description": "Air Shasta Rotor & Wing offers helicopter and airplane services, including charter flights, tours, and flight training.",
+    "occupations": [
+      "11-2021",
+      "11-9041",
+      "13-1051",
+      "13-1071"
+    ],
+    "regions": [
+      "Redding MSA"
+    ]
+  },
+  {
+    "name": "Albertsons",
+    "sector": "Retail",
+    "description": "Albertsons Companies is one of the largest food and drug retailers in the United States, operating stores under various banners.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3051",
+      "11-3061",
+      "11-9071",
+      "13-1020"
+    ],
+    "regions": [
+      "Oakland-Fremont-Berkeley"
+    ]
+  },
+  {
+    "name": "Amentum",
+    "sector": "Government Services",
+    "description": "Amentum is a global government services contractor providing a broad range of technical and management services to U.S. and allied governments.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-9041",
+      "13-1051",
+      "13-1071",
+      "17-2071",
+      "17-2141"
+    ],
+    "regions": [
+      "Santa Maria-Santa Barbara MSA"
+    ]
+  },
+  {
+    "name": "Amgen",
+    "sector": "Biotechnology",
+    "description": "Amgen is a multinational biopharmaceutical company focused on discovering, developing, manufacturing, and delivering innovative human therapeutics.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "13-1051",
+      "13-1071",
+      "19-1021",
+      "19-1042",
+      "19-2041"
+    ],
+    "regions": [
+      "Oxnard-Thousand Oaks-Ventura MSA"
+    ]
+  },
+  {
+    "name": "Ampla Health",
+    "sector": "Healthcare",
+    "description": "Ampla Health is a non-profit community health center providing comprehensive medical, dental, and behavioral health services to underserved populations.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1071",
+      "13-1199",
+      "21-1012",
+      "21-1022",
+      "21-1093"
+    ],
+    "regions": [
+      "Chico MSA"
+    ]
+  },
+  {
+    "name": "Anduril Industries",
+    "sector": "Defense Technology",
+    "description": "Anduril Industries is a defense technology company building advanced defense products for military and national security applications.",
+    "occupations": [
+      "15-1211",
+      "15-1221",
+      "15-1251",
+      "17-2071",
+      "17-2072",
+      "17-2141",
+      "11-9041"
+    ],
+    "regions": [
+      "Anaheim-Santa Ana-Irvine MD"
+    ]
+  },
+  {
+    "name": "Applied Materials",
+    "sector": "Semiconductor",
+    "description": "Applied Materials is the global leader in materials engineering solutions for the semiconductor, flat panel display, and solar photovoltaic industries.",
+    "occupations": [
+      "15-1211",
+      "15-1221",
+      "15-1251",
+      "17-2071",
+      "17-2072",
+      "17-2141",
+      "11-9041"
+    ],
+    "regions": [
+      "San Jose-Sunnyvale-Santa Clara"
+    ]
+  },
+  {
+    "name": "Bear",
+    "sector": "Outdoor Recreation",
+    "description": "Bear is a brand known for its outdoor and hunting equipment, particularly bows and archery accessories.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3051",
+      "11-9071",
+      "13-1020",
+      "13-1051"
+    ],
+    "regions": [
+      "Napa"
+    ]
+  },
+  {
+    "name": "Blue Shield of California",
+    "sector": "Healthcare Insurance",
+    "description": "Blue Shield of California is a non-profit health plan dedicated to providing Californians with access to high-quality health care at an affordable price.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "13-1071",
+      "13-1075",
+      "13-1111",
+      "13-2053",
+      "15-1255"
+    ],
+    "regions": [
+      "Redding MSA",
+      "Sacramento-Roseville-Folsom MSA",
+      "Stockton-Lodi MSA"
+    ]
+  },
+  {
+    "name": "Brookdale Senior Living",
+    "sector": "Senior Care",
+    "description": "Brookdale Senior Living is the largest operator of senior living communities in the United States, offering independent living, assisted living, memory care, and skilled nursing.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1071",
+      "13-1199",
+      "21-1022",
+      "21-1093"
+    ],
+    "regions": [
+      "Santa Rosa-Petaluma"
+    ]
+  },
+  {
+    "name": "Burlington",
+    "sector": "Retail",
+    "description": "Burlington Stores, Inc. is a national off-price retailer offering a wide assortment of merchandise, including apparel, home goods, and accessories.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3051",
+      "11-3061",
+      "11-9071",
+      "13-1020"
+    ],
+    "regions": [
+      "Hanford-Corcoran MSA"
+    ]
+  },
+  {
+    "name": "Butte County",
+    "sector": "Government",
+    "description": "Butte County provides a wide range of public services to its residents, including public safety, health, social services, and infrastructure.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "13-1071",
+      "13-1111",
+      "13-2011",
+      "19-3039",
+      "21-1012"
+    ],
+    "regions": [
+      "Chico MSA"
+    ]
+  },
+  {
+    "name": "Butte-Glenn Community College District",
+    "sector": "Education",
+    "description": "Butte-Glenn Community College District provides accessible and affordable higher education, workforce training, and lifelong learning opportunities.",
+    "occupations": [
+      "11-9033",
+      "13-1111",
+      "13-1151",
+      "25-1011",
+      "25-1021",
+      "25-1031",
+      "25-1041",
+      "25-1051"
+    ],
+    "regions": [
+      "Chico MSA"
+    ]
+  },
+  {
+    "name": "CHW Mercy Hospital of Bakersfield",
+    "sector": "Healthcare",
+    "description": "Mercy Hospital of Bakersfield is a full-service acute care hospital providing comprehensive medical services to the Bakersfield community.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1071",
+      "13-1199",
+      "21-1012",
+      "21-1022",
+      "21-1093"
+    ],
+    "regions": [
+      "Bakersfield-Delano MSA"
+    ]
+  },
+  {
+    "name": "California Polytechnic State University",
+    "sector": "Education",
+    "description": "California Polytechnic State University, San Luis Obispo, is a public university known for its 'learn by doing' philosophy and strong engineering and agriculture programs.",
+    "occupations": [
+      "11-9033",
+      "13-1111",
+      "13-1151",
+      "25-1011",
+      "25-1021",
+      "25-1031",
+      "25-1041",
+      "25-1051"
+    ],
+    "regions": [
+      "San Luis Obispo-Paso Robles MSA"
+    ]
+  },
+  {
+    "name": "California State University-Chancellors Office",
+    "sector": "Education",
+    "description": "The California State University Chancellor's Office provides leadership and support for the 23 campuses of the CSU system, the largest four-year public university system in the United States.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "13-1071",
+      "13-1111",
+      "13-1151",
+      "15-1251"
+    ],
+    "regions": [
+      "Chico MSA",
+      "Modesto MSA"
+    ]
+  },
+  {
+    "name": "California State University-Chico",
+    "sector": "Education",
+    "description": "California State University, Chico, is a public university offering a wide range of undergraduate and graduate programs.",
+    "occupations": [
+      "11-9033",
+      "13-1111",
+      "13-1151",
+      "25-1011",
+      "25-1021",
+      "25-1031",
+      "25-1041",
+      "25-1051"
+    ],
+    "regions": [
+      "Chico MSA"
+    ]
+  },
+  {
+    "name": "California State University-Fresno",
+    "sector": "Education",
+    "description": "California State University, Fresno, is a public university offering a diverse array of academic programs and research opportunities.",
+    "occupations": [
+      "11-9033",
+      "13-1111",
+      "13-1151",
+      "25-1011",
+      "25-1021",
+      "25-1031",
+      "25-1041",
+      "25-1051"
+    ],
+    "regions": [
+      "Fresno MSA"
+    ]
+  },
+  {
+    "name": "California State University-San Bernardino",
+    "sector": "Education",
+    "description": "California State University, San Bernardino, is a public university serving the Inland Empire region with a focus on student success and community engagement.",
+    "occupations": [
+      "11-9033",
+      "13-1111",
+      "13-1151",
+      "25-1011",
+      "25-1021",
+      "25-1031",
+      "25-1041",
+      "25-1051"
+    ],
+    "regions": [
+      "Riverside-San Bernardino-Ontario MSA"
+    ]
+  },
+  {
+    "name": "California State University-Stanislaus",
+    "sector": "Education",
+    "description": "California State University, Stanislaus, is a public university committed to providing high-quality education and fostering intellectual growth.",
+    "occupations": [
+      "11-9033",
+      "13-1111",
+      "13-1151",
+      "25-1011",
+      "25-1021",
+      "25-1031",
+      "25-1041",
+      "25-1051"
+    ],
+    "regions": [
+      "Modesto MSA"
+    ]
+  },
+  {
+    "name": "Cardinal Health",
+    "sector": "Healthcare Services",
+    "description": "Cardinal Health is a global integrated healthcare services and products company, providing solutions for hospitals, healthcare systems, pharmacies, and other healthcare providers.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "13-1071",
+      "13-1111",
+      "13-2053",
+      "15-1255"
+    ],
+    "regions": [
+      "Sacramento-Roseville-Folsom MSA"
+    ]
+  },
+  {
+    "name": "Central Valley Meat Co",
+    "sector": "Food Production",
+    "description": "Central Valley Meat Co. is a beef processing company committed to providing high-quality meat products to its customers.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3051",
+      "11-3061",
+      "11-9071",
+      "13-1020",
+      "13-1051"
+    ],
+    "regions": [
+      "Hanford-Corcoran MSA"
+    ]
+  },
+  {
+    "name": "Chili's Grill & Bar",
+    "sector": "Restaurant",
+    "description": "Chili's Grill & Bar is a casual dining restaurant chain serving American food with a Tex-Mex influence.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3051",
+      "11-3061",
+      "11-9071",
+      "13-1020"
+    ],
+    "regions": [
+      "Hanford-Corcoran MSA"
+    ]
+  },
+  {
+    "name": "Cisco",
+    "sector": "Technology",
+    "description": "Cisco Systems, Inc. is a global technology conglomerate that develops, manufactures, and sells networking hardware, software, telecommunications equipment, and other high-technology services and products.",
+    "occupations": [
+      "15-1211",
+      "15-1221",
+      "15-1231",
+      "15-1241",
+      "15-1251",
+      "17-2071",
+      "17-2072",
+      "17-2141"
+    ],
+    "regions": [
+      "San Jose-Sunnyvale-Santa Clara"
+    ]
+  },
+  {
+    "name": "City of Chico",
+    "sector": "Government",
+    "description": "The City of Chico provides municipal services to its residents, including public safety, public works, and community development.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "13-1071",
+      "13-1111",
+      "13-2011",
+      "19-3039",
+      "21-1012"
+    ],
+    "regions": [
+      "Chico MSA"
+    ]
+  },
+  {
+    "name": "City of Fresno",
+    "sector": "Government",
+    "description": "The City of Fresno provides essential services to its residents, including public safety, infrastructure, and community programs.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "13-1071",
+      "13-1111",
+      "13-2011",
+      "19-3039",
+      "21-1012"
+    ],
+    "regions": [
+      "Fresno MSA"
+    ]
+  },
+  {
+    "name": "City of Hanford",
+    "sector": "Government",
+    "description": "The City of Hanford provides municipal services to its residents, including public safety, public works, and community services.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "13-1071",
+      "13-1111",
+      "13-2011",
+      "19-3039",
+      "21-1012"
+    ],
+    "regions": [
+      "Hanford-Corcoran MSA"
+    ]
+  },
+  {
+    "name": "City of Merced",
+    "sector": "Government",
+    "description": "The City of Merced provides municipal services and governance to its residents, focusing on public safety, infrastructure, and community development.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "13-1081",
+      "13-2011",
+      "17-2051",
+      "19-4099"
+    ],
+    "regions": [
+      "Merced MSA"
+    ]
+  },
+  {
+    "name": "City of Oxnard",
+    "sector": "Government",
+    "description": "The City of Oxnard delivers essential public services, manages urban planning, and promotes the well-being of its diverse community.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "13-1081",
+      "13-2011",
+      "17-2051",
+      "19-4099"
+    ],
+    "regions": [
+      "Oxnard-Thousand Oaks-Ventura MSA"
+    ]
+  },
+  {
+    "name": "City of San Luis Obispo",
+    "sector": "Government",
+    "description": "The City of San Luis Obispo is responsible for local governance, public services, and maintaining the quality of life for its citizens.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "13-1081",
+      "13-2011",
+      "17-2051",
+      "19-4099"
+    ],
+    "regions": [
+      "San Luis Obispo-Paso Robles MSA"
+    ]
+  },
+  {
+    "name": "City of Santa Cruz",
+    "sector": "Government",
+    "description": "The City of Santa Cruz provides municipal services, manages public infrastructure, and fosters community engagement for its residents.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "13-1081",
+      "13-2011",
+      "17-2051",
+      "19-4099"
+    ],
+    "regions": [
+      "Santa Cruz-Watsonville"
+    ]
+  },
+  {
+    "name": "City of Stockton",
+    "sector": "Government",
+    "description": "The City of Stockton offers a wide range of public services, including public safety, utilities, and community development, to its population.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "13-1081",
+      "13-2011",
+      "17-2051",
+      "19-4099"
+    ],
+    "regions": [
+      "Stockton-Lodi MSA"
+    ]
+  },
+  {
+    "name": "Clinica Sierra Vista",
+    "sector": "Healthcare",
+    "description": "Clinica Sierra Vista is a non-profit healthcare organization providing comprehensive medical, dental, and behavioral health services to underserved communities.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1111",
+      "13-1151",
+      "21-1012",
+      "21-1021",
+      "21-1022"
+    ],
+    "regions": [
+      "Bakersfield-Delano MSA"
+    ]
+  },
+  {
+    "name": "Clovis Unified School District",
+    "sector": "Education",
+    "description": "Clovis Unified School District provides public education services to students from kindergarten through high school, focusing on academic excellence and student development.",
+    "occupations": [
+      "11-9031",
+      "11-9032",
+      "13-1151",
+      "25-1021",
+      "25-1022",
+      "25-1031",
+      "25-1041",
+      "25-1042"
+    ],
+    "regions": [
+      "Fresno MSA"
+    ]
+  },
+  {
+    "name": "College of the Sequoias",
+    "sector": "Education",
+    "description": "College of the Sequoias is a community college offering associate degrees, transfer programs, and vocational training to students in the Central Valley.",
+    "occupations": [
+      "11-9031",
+      "13-1111",
+      "13-1151",
+      "25-1011",
+      "25-1021",
+      "25-1022",
+      "25-1031",
+      "25-1041"
+    ],
+    "regions": [
+      "Visalia MSA"
+    ]
+  },
+  {
+    "name": "CommonSpirit Health",
+    "sector": "Healthcare",
+    "description": "CommonSpirit Health is a large Catholic health system dedicated to advancing health for all people, delivering compassionate and high-quality care.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1111",
+      "13-1151",
+      "21-1012",
+      "21-1021",
+      "21-1022"
+    ],
+    "regions": [
+      "Bakersfield-Delano MSA",
+      "Merced MSA",
+      "Oxnard-Thousand Oaks-Ventura MSA",
+      "Sacramento-Roseville-Folsom MSA",
+      "San Luis Obispo-Paso Robles MSA",
+      "Santa Cruz-Watsonville",
+      "Stockton-Lodi MSA"
+    ]
+  },
+  {
+    "name": "Community Action Partnership of San Luis Obispo",
+    "sector": "Non-profit",
+    "description": "Community Action Partnership of San Luis Obispo (CAPSLO) is a non-profit organization dedicated to helping people and changing lives through various community programs.",
+    "occupations": [
+      "11-9199",
+      "13-1111",
+      "13-1151",
+      "21-1012",
+      "21-1015",
+      "21-1021",
+      "21-1022"
+    ],
+    "regions": [
+      "San Luis Obispo-Paso Robles MSA"
+    ]
+  },
+  {
+    "name": "Community Health Systems Professional Services Corporation",
+    "sector": "Healthcare",
+    "description": "Community Health Systems Professional Services Corporation provides management and administrative support to a network of hospitals and healthcare providers.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1111",
+      "13-1151",
+      "21-1012",
+      "21-1021",
+      "21-1022"
+    ],
+    "regions": [
+      "Fresno MSA"
+    ]
+  },
+  {
+    "name": "Community Memorial Healthcare",
+    "sector": "Healthcare",
+    "description": "Community Memorial Healthcare is a not-for-profit health system providing comprehensive medical services to the Ventura County region.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1111",
+      "13-1151",
+      "21-1012",
+      "21-1021",
+      "21-1022"
+    ],
+    "regions": [
+      "Oxnard-Thousand Oaks-Ventura MSA"
+    ]
+  },
+  {
+    "name": "Cottage Health",
+    "sector": "Healthcare",
+    "description": "Cottage Health is a not-for-profit health system serving the Central Coast of California, committed to providing advanced medical care.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1111",
+      "13-1151",
+      "21-1012",
+      "21-1021",
+      "21-1022"
+    ],
+    "regions": [
+      "Santa Maria-Santa Barbara MSA"
+    ]
+  },
+  {
+    "name": "County of Imperial",
+    "sector": "Government",
+    "description": "The County of Imperial provides a wide array of public services, including health, safety, and infrastructure, to its residents.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "13-1081",
+      "13-2011",
+      "17-2051",
+      "19-4099"
+    ],
+    "regions": [
+      "El Centro MSA"
+    ]
+  },
+  {
+    "name": "County of Monterey",
+    "sector": "Government",
+    "description": "The County of Monterey delivers essential government services, manages public resources, and supports the welfare of its diverse population.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "13-1081",
+      "13-2011",
+      "17-2051",
+      "19-4099"
+    ],
+    "regions": [
+      "Salinas MSA"
+    ]
+  },
+  {
+    "name": "County of Napa",
+    "sector": "Government",
+    "description": "The County of Napa provides local government services, including public health, safety, and environmental protection, to its community.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "13-1081",
+      "13-2011",
+      "17-2051",
+      "19-4099"
+    ],
+    "regions": [
+      "Napa"
+    ]
+  },
+  {
+    "name": "County of Riverside",
+    "sector": "Government",
+    "description": "The County of Riverside offers a broad range of public services, from law enforcement to social services, for its large and growing population.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "13-1081",
+      "13-2011",
+      "17-2051",
+      "19-4099"
+    ],
+    "regions": [
+      "Riverside-San Bernardino-Ontario MSA"
+    ]
+  },
+  {
+    "name": "County of San Luis Obispo",
+    "sector": "Government",
+    "description": "The County of San Luis Obispo provides local government services, including public safety, health, and infrastructure, to its residents.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "13-1081",
+      "13-2011",
+      "17-2051",
+      "19-4099"
+    ],
+    "regions": [
+      "San Luis Obispo-Paso Robles MSA"
+    ]
+  },
+  {
+    "name": "County of San Mateo",
+    "sector": "Government",
+    "description": "The County of San Mateo delivers a variety of public services, including health, social, and environmental programs, to its community.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "13-1081",
+      "13-2011",
+      "17-2051",
+      "19-4099"
+    ],
+    "regions": [
+      "San Francisco-San Mateo-Redwood City"
+    ]
+  },
+  {
+    "name": "County of Santa Barbara",
+    "sector": "Government",
+    "description": "The County of Santa Barbara provides essential government services, manages public resources, and supports the well-being of its residents.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "13-1081",
+      "13-2011",
+      "17-2051",
+      "19-4099"
+    ],
+    "regions": [
+      "Santa Maria-Santa Barbara MSA"
+    ]
+  },
+  {
+    "name": "County of Tulare",
+    "sector": "Government",
+    "description": "The County of Tulare offers a range of public services, including health, safety, and infrastructure, to its agricultural and urban communities.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "13-1081",
+      "13-2011",
+      "17-2051",
+      "19-4099"
+    ],
+    "regions": [
+      "Visalia MSA"
+    ]
+  },
+  {
+    "name": "County of Yuba",
+    "sector": "Government",
+    "description": "The County of Yuba provides local government services, including public safety, health, and infrastructure, to its residents.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "13-1081",
+      "13-2011",
+      "17-2051",
+      "19-4099"
+    ],
+    "regions": [
+      "Yuba City MSA"
+    ]
+  },
+  {
+    "name": "Cuesta College",
+    "sector": "Education",
+    "description": "Cuesta College is a public community college offering associate degrees, transfer programs, and career technical education to students on the Central Coast.",
+    "occupations": [
+      "11-9031",
+      "13-1111",
+      "13-1151",
+      "25-1011",
+      "25-1021",
+      "25-1022",
+      "25-1031",
+      "25-1041"
+    ],
+    "regions": [
+      "San Luis Obispo-Paso Robles MSA"
+    ]
+  },
+  {
+    "name": "Cypress Healthcare Partners",
+    "sector": "Healthcare",
+    "description": "Cypress Healthcare Partners is a physician-led organization focused on improving healthcare delivery and patient outcomes through integrated care models.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1111",
+      "13-1151",
+      "21-1012",
+      "21-1021",
+      "21-1022"
+    ],
+    "regions": [
+      "Salinas MSA"
+    ]
+  },
+  {
+    "name": "DCS Corporation",
+    "sector": "Defense Contractor",
+    "description": "DCS Corporation is an employee-owned company providing advanced technology and engineering solutions to government and commercial clients, primarily in defense.",
+    "occupations": [
+      "11-2021",
+      "11-9041",
+      "13-1111",
+      "15-1211",
+      "15-1241",
+      "17-2071",
+      "17-2072",
+      "17-2112"
+    ],
+    "regions": [
+      "Bakersfield-Delano MSA"
+    ]
+  },
+  {
+    "name": "Delaware North",
+    "sector": "Hospitality",
+    "description": "Delaware North is a global hospitality and food service company operating in various venues including airports, sports stadiums, and national parks.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3021",
+      "11-3051",
+      "11-9051",
+      "13-1111"
+    ],
+    "regions": [
+      "Visalia MSA"
+    ]
+  },
+  {
+    "name": "Doctors Medical Center of Modesto",
+    "sector": "Healthcare",
+    "description": "Doctors Medical Center of Modesto is a full-service acute care hospital providing comprehensive medical and surgical services to the Central Valley.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1111",
+      "13-1151",
+      "21-1012",
+      "21-1021",
+      "21-1022"
+    ],
+    "regions": [
+      "Modesto MSA"
+    ]
+  },
+  {
+    "name": "Dollar General",
+    "sector": "Retail",
+    "description": "Dollar General is a discount retailer offering everyday essentials, food, and general merchandise at affordable prices in convenient neighborhood locations.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3051",
+      "11-9051",
+      "13-1111",
+      "13-1151"
+    ],
+    "regions": [
+      "El Centro MSA"
+    ]
+  },
+  {
+    "name": "Domino's Pizza",
+    "sector": "Food Service",
+    "description": "Domino's Pizza is a global pizza delivery company offering a variety of pizzas, sides, and desserts for carryout or delivery.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3051",
+      "11-9051",
+      "13-1111",
+      "13-1151"
+    ],
+    "regions": [
+      "Anaheim-Santa Ana-Irvine MD",
+      "Fresno MSA",
+      "Los Angeles-Long Beach-Glendale",
+      "Oxnard-Thousand Oaks-Ventura MSA",
+      "Riverside-San Bernardino-Ontario MSA",
+      "Salinas MSA",
+      "Stockton-Lodi MSA"
+    ]
+  },
+  {
+    "name": "El Centro Regional Medical Center",
+    "sector": "Healthcare",
+    "description": "El Centro Regional Medical Center is an acute care hospital providing a wide range of medical services to the Imperial Valley community.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1111",
+      "13-1151",
+      "21-1012",
+      "21-1021",
+      "21-1022"
+    ],
+    "regions": [
+      "El Centro MSA"
+    ]
+  },
+  {
+    "name": "Emanuel Medical Center",
+    "sector": "Healthcare",
+    "description": "Emanuel Medical Center is a full-service acute care hospital providing comprehensive medical services to the Turlock community.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "13-2051",
+      "13-2071",
+      "21-1012"
+    ],
+    "regions": [
+      "Modesto MSA"
+    ]
+  },
+  {
+    "name": "Empirical Systems Aerospace",
+    "sector": "Aerospace Engineering",
+    "description": "Empirical Systems Aerospace specializes in advanced aerospace engineering, design, and analysis for various aircraft and spacecraft systems.",
+    "occupations": [
+      "15-1221",
+      "15-1299",
+      "17-2011",
+      "17-2072",
+      "17-2141",
+      "17-2199",
+      "17-3023",
+      "17-3024"
+    ],
+    "regions": [
+      "San Luis Obispo-Paso Robles MSA"
+    ]
+  },
+  {
+    "name": "Enloe Medical Center",
+    "sector": "Healthcare",
+    "description": "Enloe Medical Center is a regional medical center offering a wide range of healthcare services, including emergency, surgical, and specialty care.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "13-2051",
+      "13-2071",
+      "21-1012"
+    ],
+    "regions": [
+      "Chico MSA"
+    ]
+  },
+  {
+    "name": "Esri",
+    "sector": "Software Development",
+    "description": "Esri is a leading international supplier of geographic information system (GIS) software, web GIS, and geodatabase management applications.",
+    "occupations": [
+      "15-1251",
+      "15-1252",
+      "15-1253",
+      "15-1254",
+      "15-1299",
+      "15-2099",
+      "17-2051",
+      "19-3099"
+    ],
+    "regions": [
+      "Riverside-San Bernardino-Ontario MSA"
+    ]
+  },
+  {
+    "name": "Family Healthcare Network",
+    "sector": "Healthcare",
+    "description": "Family Healthcare Network provides comprehensive primary and preventative healthcare services to underserved communities.",
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "21-1012",
+      "21-1022",
+      "21-1023"
+    ],
+    "regions": [
+      "Visalia MSA"
+    ]
+  },
+  {
+    "name": "Feather Falls Casino",
+    "sector": "Hospitality",
+    "description": "Feather Falls Casino offers gaming, dining, and entertainment options in a resort setting.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3021",
+      "11-3031",
+      "11-9051",
+      "13-1071",
+      "13-1151",
+      "13-2051"
+    ],
+    "regions": [
+      "Chico MSA"
+    ]
+  },
+  {
+    "name": "Food 4 Less",
+    "sector": "Retail",
+    "description": "Food 4 Less is a grocery store chain offering a wide selection of food and household products at competitive prices.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3021",
+      "11-3031",
+      "11-9051",
+      "13-1071",
+      "13-1151"
+    ],
+    "regions": [
+      "El Centro MSA"
+    ]
+  },
+  {
+    "name": "Foster Farms",
+    "sector": "Food Production",
+    "description": "Foster Farms is a leading poultry and prepared foods company, known for its fresh and frozen chicken and turkey products.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3051",
+      "11-3061",
+      "11-9013",
+      "13-1071",
+      "13-1151",
+      "17-2112"
+    ],
+    "regions": [
+      "Fresno MSA",
+      "Merced MSA"
+    ]
+  },
+  {
+    "name": "Foster Poultry Farms",
+    "sector": "Food Production",
+    "description": "Foster Poultry Farms is a leading poultry and prepared foods company, known for its fresh and frozen chicken and turkey products.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3051",
+      "11-3061",
+      "11-9013",
+      "13-1071",
+      "13-1151",
+      "17-2112"
+    ],
+    "regions": [
+      "Merced MSA"
+    ]
+  },
+  {
+    "name": "Fresno Unified School District",
+    "sector": "Education",
+    "description": "Fresno Unified School District is the fourth-largest school district in California, serving a diverse student population across numerous schools.",
+    "occupations": [
+      "11-9031",
+      "11-9032",
+      "11-9033",
+      "13-1071",
+      "13-1111",
+      "13-1151",
+      "25-1011",
+      "25-1021"
+    ],
+    "regions": [
+      "Fresno MSA"
+    ]
+  },
+  {
+    "name": "GHD",
+    "sector": "Consulting Engineering",
+    "description": "GHD is a global professional services company providing engineering, architecture, environmental, and construction services.",
+    "occupations": [
+      "11-9041",
+      "13-1011",
+      "13-1041",
+      "13-1111",
+      "17-2051",
+      "17-2081",
+      "17-2111",
+      "17-2199"
+    ],
+    "regions": [
+      "Santa Rosa-Petaluma"
+    ]
+  },
+  {
+    "name": "General Atomics",
+    "sector": "Defense Aerospace",
+    "description": "General Atomics is a defense contractor specializing in advanced technology solutions, including unmanned aircraft systems and nuclear technologies.",
+    "occupations": [
+      "11-2022",
+      "11-9041",
+      "15-1221",
+      "17-2011",
+      "17-2072",
+      "17-2141",
+      "17-2199",
+      "17-3023"
+    ],
+    "regions": [
+      "San Diego-Chula Vista-Carlsbad MSA"
+    ]
+  },
+  {
+    "name": "General Motors",
+    "sector": "Automotive",
+    "description": "General Motors is a global automotive company that designs, manufactures, markets, and distributes vehicles and vehicle parts.",
+    "occupations": [
+      "11-2022",
+      "11-3051",
+      "11-3061",
+      "13-1071",
+      "13-1111",
+      "17-2071",
+      "17-2141",
+      "17-2199"
+    ],
+    "regions": [
+      "San Jose-Sunnyvale-Santa Clara"
+    ]
+  },
+  {
+    "name": "Golden Valley Health CTRS",
+    "sector": "Healthcare",
+    "description": "Golden Valley Health Centers provide comprehensive primary and preventative healthcare services to underserved communities.",
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "21-1012",
+      "21-1022",
+      "21-1023"
+    ],
+    "regions": [
+      "Merced MSA"
+    ]
+  },
+  {
+    "name": "HCA Healthcare",
+    "sector": "Healthcare",
+    "description": "HCA Healthcare is one of the largest healthcare providers in the U.S., operating hospitals and other healthcare facilities.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "13-2051",
+      "13-2071",
+      "21-1012"
+    ],
+    "regions": [
+      "Oxnard-Thousand Oaks-Ventura MSA"
+    ]
+  },
+  {
+    "name": "Hanford Post Acute",
+    "sector": "Healthcare",
+    "description": "Hanford Post Acute provides skilled nursing and rehabilitation services for patients recovering from illness or injury.",
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "13-1111",
+      "21-1012",
+      "21-1022",
+      "21-1023"
+    ],
+    "regions": [
+      "Hanford-Corcoran MSA"
+    ]
+  },
+  {
+    "name": "Headway",
+    "sector": "Staffing Solutions",
+    "description": "Headway is a staffing and human resources solutions company that connects talent with employers across various industries.",
+    "occupations": [
+      "13-1071",
+      "13-1075",
+      "13-1111",
+      "13-1141",
+      "13-1151",
+      "13-2051",
+      "13-2071"
+    ],
+    "regions": [
+      "El Centro MSA"
+    ]
+  },
+  {
+    "name": "Hilmar Cheese Company",
+    "sector": "Food Production",
+    "description": "Hilmar Cheese Company is a major producer of cheese and whey products, serving customers worldwide.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3051",
+      "11-3061",
+      "11-9013",
+      "13-1071",
+      "13-1151",
+      "17-2112"
+    ],
+    "regions": [
+      "Merced MSA"
+    ]
+  },
+  {
+    "name": "Hilton",
+    "sector": "Hospitality",
+    "description": "Hilton is a global hospitality company operating a diverse portfolio of hotels and resorts.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3021",
+      "11-3031",
+      "11-9051",
+      "13-1071",
+      "13-1151",
+      "13-2051"
+    ],
+    "regions": [
+      "Anaheim-Santa Ana-Irvine MD"
+    ]
+  },
+  {
+    "name": "Hoag Health System",
+    "sector": "Healthcare",
+    "description": "Hoag Health System is a non-profit regional healthcare network providing a wide range of medical services.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "13-2051",
+      "13-2071",
+      "21-1012"
+    ],
+    "regions": [
+      "Anaheim-Santa Ana-Irvine MD"
+    ]
+  },
+  {
+    "name": "Huntington Ingalls Industries",
+    "sector": "Defense Shipbuilding",
+    "description": "Huntington Ingalls Industries is the largest military shipbuilding company in the United States, also providing professional services.",
+    "occupations": [
+      "11-2022",
+      "11-9041",
+      "15-1221",
+      "17-2011",
+      "17-2072",
+      "17-2141",
+      "17-2199",
+      "17-3023"
+    ],
+    "regions": [
+      "Modesto MSA",
+      "Yuba City MSA"
+    ]
+  },
+  {
+    "name": "Hyatt",
+    "sector": "Hospitality",
+    "description": "Hyatt Hotels Corporation is a global hospitality company with a portfolio of luxury and upscale hotel brands.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3021",
+      "11-3031",
+      "11-9051",
+      "13-1071",
+      "13-1151",
+      "13-2051"
+    ],
+    "regions": [
+      "Napa",
+      "Salinas MSA",
+      "San Diego-Chula Vista-Carlsbad MSA"
+    ]
+  },
+  {
+    "name": "Imperial Irrigation District",
+    "sector": "Utilities",
+    "description": "Imperial Irrigation District manages water and power resources for the Imperial Valley, providing essential services to the region.",
+    "occupations": [
+      "11-9041",
+      "13-1011",
+      "13-1041",
+      "13-1111",
+      "17-2051",
+      "17-2081",
+      "17-2111",
+      "17-2199"
+    ],
+    "regions": [
+      "El Centro MSA"
+    ]
+  },
+  {
+    "name": "Imperial Valley College",
+    "sector": "Education",
+    "description": "Imperial Valley College is a public community college offering associate degrees and vocational training programs.",
+    "occupations": [
+      "11-9031",
+      "11-9032",
+      "11-9033",
+      "13-1071",
+      "13-1111",
+      "13-1151",
+      "25-1011",
+      "25-1021"
+    ],
+    "regions": [
+      "El Centro MSA"
+    ]
+  },
+  {
+    "name": "Integral Consulting Services",
+    "sector": "IT Consulting",
+    "description": "Integral Consulting Services provides IT consulting, software development, and cybersecurity solutions to government and commercial clients.",
+    "occupations": [
+      "15-1211",
+      "15-1232",
+      "15-1241",
+      "15-1251",
+      "15-1252",
+      "15-1253",
+      "15-1254",
+      "15-1299"
+    ],
+    "regions": [
+      "Salinas MSA"
+    ]
+  },
+  {
+    "name": "Interwest Insurance Services",
+    "sector": "Insurance",
+    "description": "Interwest Insurance Services is an independent insurance agency offering a wide range of personal and commercial insurance products.",
+    "occupations": [
+      "11-2021",
+      "13-1031",
+      "13-1032",
+      "13-1071",
+      "13-1111",
+      "13-1151",
+      "13-2051"
+    ],
+    "regions": [
+      "Chico MSA"
+    ]
+  },
+  {
+    "name": "Jt4",
+    "sector": "Defense Support",
+    "description": "JT4 provides engineering and technical support to the U.S. Air Force and Navy for test and training ranges.",
+    "occupations": [
+      "11-2022",
+      "11-9041",
+      "15-1221",
+      "17-2011",
+      "17-2072",
+      "17-2141",
+      "17-2199",
+      "17-3023"
+    ],
+    "regions": [
+      "Bakersfield-Delano MSA"
+    ]
+  },
+  {
+    "name": "Kaweah Health",
+    "sector": "Healthcare",
+    "description": "Kaweah Health is a public healthcare district providing comprehensive medical services to the Visalia area.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "13-2051",
+      "13-2071",
+      "21-1012"
+    ],
+    "regions": [
+      "Visalia MSA"
+    ]
+  },
+  {
+    "name": "Kern Community College District",
+    "sector": "Education",
+    "description": "Kern Community College District oversees several community colleges, offering diverse educational programs and workforce training.",
+    "occupations": [
+      "11-9031",
+      "11-9032",
+      "11-9033",
+      "13-1071",
+      "13-1111",
+      "13-1151",
+      "25-1011",
+      "25-1021"
+    ],
+    "regions": [
+      "Bakersfield-Delano MSA"
+    ]
+  },
+  {
+    "name": "Kern County",
+    "sector": "Government",
+    "description": "Kern County provides a wide range of public services, including public safety, health, and infrastructure management, to its residents.",
+    "occupations": [
+      "11-9041",
+      "13-1011",
+      "13-1041",
+      "13-1111",
+      "17-2051",
+      "17-2081",
+      "17-2111",
+      "17-2199"
+    ],
+    "regions": [
+      "Bakersfield-Delano MSA"
+    ]
+  },
+  {
+    "name": "Keysight",
+    "sector": "Technology",
+    "description": "Keysight Technologies is a leading technology company that helps enterprises, service providers, and governments accelerate innovation to connect and secure the world.",
+    "occupations": [
+      "15-1241",
+      "17-2071",
+      "17-2072",
+      "17-2112",
+      "17-2141",
+      "15-1251",
+      "11-2021",
+      "11-9041"
+    ],
+    "regions": [
+      "Santa Rosa-Petaluma"
+    ]
+  },
+  {
+    "name": "Kings County Corp",
+    "sector": "Government",
+    "description": "Kings County Corporation provides a range of public services to the residents of Kings County, California.",
+    "occupations": [
+      "13-1071",
+      "13-1081",
+      "13-1111",
+      "13-1161",
+      "11-9199",
+      "21-1012",
+      "23-1011",
+      "11-3012"
+    ],
+    "regions": [
+      "Hanford-Corcoran MSA"
+    ]
+  },
+  {
+    "name": "LLNL",
+    "sector": "Research",
+    "description": "Lawrence Livermore National Laboratory is a premier research and development institution for science and engineering.",
+    "occupations": [
+      "19-1012",
+      "19-1021",
+      "19-2012",
+      "15-1221",
+      "15-1241",
+      "17-2071",
+      "17-2081",
+      "19-4099"
+    ],
+    "regions": [
+      "Oakland-Fremont-Berkeley"
+    ]
+  },
+  {
+    "name": "Lawrence Livermore National Laboratory",
+    "sector": "Research",
+    "description": "Lawrence Livermore National Laboratory is a premier research and development institution for science and engineering.",
+    "occupations": [
+      "19-1012",
+      "19-1021",
+      "19-2012",
+      "15-1221",
+      "15-1241",
+      "17-2071",
+      "17-2081",
+      "19-4099"
+    ],
+    "regions": [
+      "Oakland-Fremont-Berkeley"
+    ]
+  },
+  {
+    "name": "Legends Hospitality",
+    "sector": "Hospitality",
+    "description": "Legends Hospitality is a global premium experiences company, providing hospitality, merchandise, and venue management services.",
+    "occupations": [
+      "11-3012",
+      "11-3021",
+      "11-3051",
+      "11-9051",
+      "13-1121",
+      "13-1151",
+      "11-9199"
+    ],
+    "regions": [
+      "Yuba City MSA"
+    ]
+  },
+  {
+    "name": "Leidos",
+    "sector": "Technology",
+    "description": "Leidos is a Fortune 500 company that provides scientific, engineering, systems integration, and technical services.",
+    "occupations": [
+      "15-1211",
+      "15-1241",
+      "17-2071",
+      "17-2081",
+      "13-1111",
+      "13-1071",
+      "11-9041",
+      "11-2021"
+    ],
+    "regions": [
+      "Salinas MSA",
+      "Yuba City MSA"
+    ]
+  },
+  {
+    "name": "Leprino Foods Company",
+    "sector": "Food Production",
+    "description": "Leprino Foods Company is the world's largest mozzarella cheese maker and a leading producer of whey protein and lactose.",
+    "occupations": [
+      "11-2022",
+      "11-3051",
+      "11-3061",
+      "11-9041",
+      "13-1071",
+      "13-1111",
+      "17-2112",
+      "19-4012"
+    ],
+    "regions": [
+      "Hanford-Corcoran MSA"
+    ]
+  },
+  {
+    "name": "LifeStance Health",
+    "sector": "Healthcare",
+    "description": "LifeStance Health is a leading provider of outpatient mental health care services.",
+    "occupations": [
+      "21-1012",
+      "21-1013",
+      "21-1022",
+      "21-1023",
+      "21-1094",
+      "11-9111",
+      "11-9121",
+      "11-3012"
+    ],
+    "regions": [
+      "San Diego-Chula Vista-Carlsbad MSA"
+    ]
+  },
+  {
+    "name": "Loma Linda University",
+    "sector": "Education",
+    "description": "Loma Linda University is a health sciences university that offers a wide range of academic programs.",
+    "occupations": [
+      "25-1071",
+      "25-1022",
+      "25-1031",
+      "25-1041",
+      "25-1051",
+      "25-1053",
+      "11-9033",
+      "11-9039"
+    ],
+    "regions": [
+      "Riverside-San Bernardino-Ontario MSA"
+    ]
+  },
+  {
+    "name": "Lompoc Valley Medical Center",
+    "sector": "Healthcare",
+    "description": "Lompoc Valley Medical Center provides comprehensive healthcare services to the Lompoc Valley community.",
+    "occupations": [
+      "11-9111",
+      "11-9121",
+      "11-3012",
+      "13-1071",
+      "13-1111",
+      "21-1012",
+      "21-1022",
+      "11-3021"
+    ],
+    "regions": [
+      "Santa Maria-Santa Barbara MSA"
+    ]
+  },
+  {
+    "name": "Lowe's",
+    "sector": "Retail",
+    "description": "Lowe's is a retail company specializing in home improvement products and services.",
+    "occupations": [
+      "11-2022",
+      "11-3012",
+      "11-3021",
+      "11-3051",
+      "11-9051",
+      "13-1121",
+      "13-1151",
+      "11-9199"
+    ],
+    "regions": [
+      "Visalia MSA"
+    ]
+  },
+  {
+    "name": "MarinHealth",
+    "sector": "Healthcare",
+    "description": "MarinHealth is a healthcare network providing a full spectrum of health services to the Marin County community.",
+    "occupations": [
+      "11-9111",
+      "11-9121",
+      "11-3012",
+      "13-1071",
+      "13-1111",
+      "21-1012",
+      "21-1022",
+      "11-3021"
+    ],
+    "regions": [
+      "San Rafael"
+    ]
+  },
+  {
+    "name": "Marriott International",
+    "sector": "Hospitality",
+    "description": "Marriott International is a leading global lodging company with an extensive portfolio of hotels and resorts.",
+    "occupations": [
+      "11-3012",
+      "11-3021",
+      "11-3051",
+      "11-9051",
+      "13-1121",
+      "13-1151",
+      "11-9199"
+    ],
+    "regions": [
+      "Anaheim-Santa Ana-Irvine MD",
+      "Riverside-San Bernardino-Ontario MSA",
+      "Santa Maria-Santa Barbara MSA"
+    ]
+  },
+  {
+    "name": "Marysville Joint Unified School District",
+    "sector": "Education",
+    "description": "Marysville Joint Unified School District provides public education services to students in the Marysville area.",
+    "occupations": [
+      "11-9031",
+      "11-9032",
+      "11-9033",
+      "11-9039",
+      "25-1021",
+      "25-1022",
+      "25-1031",
+      "25-1041"
+    ],
+    "regions": [
+      "Yuba City MSA"
+    ]
+  },
+  {
+    "name": "Maxim Healthcare Services",
+    "sector": "Healthcare",
+    "description": "Maxim Healthcare Services is a national provider of home healthcare, staffing, and wellness services.",
+    "occupations": [
+      "11-9111",
+      "11-9121",
+      "11-3012",
+      "13-1071",
+      "13-1111",
+      "21-1012",
+      "21-1022",
+      "11-3021"
+    ],
+    "regions": [
+      "Vallejo"
+    ]
+  },
+  {
+    "name": "Merced College",
+    "sector": "Education",
+    "description": "Merced College is a community college offering associate degrees, certificates, and transfer programs.",
+    "occupations": [
+      "11-9031",
+      "11-9032",
+      "11-9033",
+      "11-9039",
+      "25-1021",
+      "25-1022",
+      "25-1031",
+      "25-1041"
+    ],
+    "regions": [
+      "Merced MSA"
+    ]
+  },
+  {
+    "name": "Merced County",
+    "sector": "Government",
+    "description": "Merced County provides a wide range of public services to its residents, including health, social, and administrative services.",
+    "occupations": [
+      "13-1071",
+      "13-1081",
+      "13-1111",
+      "13-1161",
+      "11-9199",
+      "21-1012",
+      "23-1011",
+      "11-3012"
+    ],
+    "regions": [
+      "Merced MSA"
+    ]
+  },
+  {
+    "name": "Mercy",
+    "sector": "Healthcare",
+    "description": "Mercy is a Catholic healthcare system providing compassionate care across multiple states.",
+    "occupations": [
+      "11-9111",
+      "11-9121",
+      "11-3012",
+      "13-1071",
+      "13-1111",
+      "21-1012",
+      "21-1022",
+      "11-3021"
+    ],
+    "regions": [
+      "Redding MSA"
+    ]
+  },
+  {
+    "name": "Mercy Medical Center Redding",
+    "sector": "Healthcare",
+    "description": "Mercy Medical Center Redding is a hospital providing comprehensive medical services to the Redding community.",
+    "occupations": [
+      "11-9111",
+      "11-9121",
+      "11-3012",
+      "13-1071",
+      "13-1111",
+      "21-1012",
+      "21-1022",
+      "11-3021"
+    ],
+    "regions": [
+      "Redding MSA"
+    ]
+  },
+  {
+    "name": "Mercyhealth",
+    "sector": "Healthcare",
+    "description": "Mercyhealth is a multi-regional health system offering a full range of healthcare services.",
+    "occupations": [
+      "11-9111",
+      "11-9121",
+      "11-3012",
+      "13-1071",
+      "13-1111",
+      "21-1012",
+      "21-1022",
+      "11-3021"
+    ],
+    "regions": [
+      "Merced MSA"
+    ]
+  },
+  {
+    "name": "Mollie Stone's Markets",
+    "sector": "Retail",
+    "description": "Mollie Stone's Markets is a family-owned grocery store chain offering high-quality food products.",
+    "occupations": [
+      "11-2022",
+      "11-3012",
+      "11-3021",
+      "11-3051",
+      "11-9051",
+      "13-1121",
+      "13-1151",
+      "11-9199"
+    ],
+    "regions": [
+      "San Rafael"
+    ]
+  },
+  {
+    "name": "Montage Health",
+    "sector": "Healthcare",
+    "description": "Montage Health is a non-profit healthcare system serving the Monterey Peninsula.",
+    "occupations": [
+      "11-9111",
+      "11-9121",
+      "11-3012",
+      "13-1071",
+      "13-1111",
+      "21-1012",
+      "21-1022",
+      "11-3021"
+    ],
+    "regions": [
+      "Salinas MSA"
+    ]
+  },
+  {
+    "name": "Monterey Peninsula College",
+    "sector": "Education",
+    "description": "Monterey Peninsula College is a community college offering academic and vocational programs.",
+    "occupations": [
+      "11-9031",
+      "11-9032",
+      "11-9033",
+      "11-9039",
+      "25-1021",
+      "25-1022",
+      "25-1031",
+      "25-1041"
+    ],
+    "regions": [
+      "Salinas MSA"
+    ]
+  },
+  {
+    "name": "Mount Hermon Association",
+    "sector": "Non-profit",
+    "description": "Mount Hermon Association is a Christian conference and retreat center offering programs and facilities.",
+    "occupations": [
+      "11-3012",
+      "11-3021",
+      "11-3051",
+      "11-9051",
+      "13-1121",
+      "13-1151",
+      "11-9199"
+    ],
+    "regions": [
+      "Santa Cruz-Watsonville"
+    ]
+  },
+  {
+    "name": "Napa Post Acute",
+    "sector": "Healthcare",
+    "description": "Napa Post Acute provides skilled nursing and rehabilitation services.",
+    "occupations": [
+      "11-9111",
+      "11-9121",
+      "11-3012",
+      "13-1071",
+      "13-1111",
+      "21-1012",
+      "21-1022",
+      "11-3021"
+    ],
+    "regions": [
+      "Napa"
+    ]
+  },
+  {
+    "name": "Nas Lemoore",
+    "sector": "Government",
+    "description": "Naval Air Station Lemoore is a United States Navy base located in Lemoore, California.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3021",
+      "11-9041",
+      "13-1071",
+      "13-1111",
+      "17-2071",
+      "17-2112"
+    ],
+    "regions": [
+      "Hanford-Corcoran MSA"
+    ]
+  },
+  {
+    "name": "New York Community Bank",
+    "sector": "Finance",
+    "description": "New York Community Bank is a leading regional bank offering a variety of financial products and services.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3021",
+      "11-3031",
+      "13-1011",
+      "13-1020",
+      "13-1071",
+      "13-1111"
+    ],
+    "regions": [
+      "Santa Rosa-Petaluma"
+    ]
+  },
+  {
+    "name": "One Medical",
+    "sector": "Healthcare",
+    "description": "One Medical is a membership-based primary care practice offering a human-centered and technology-powered approach to healthcare.",
+    "occupations": [
+      "11-9111",
+      "11-9121",
+      "11-3012",
+      "13-1071",
+      "13-1111",
+      "21-1012",
+      "21-1022",
+      "11-3021"
+    ],
+    "regions": [
+      "San Rafael"
+    ]
+  },
+  {
+    "name": "OpenAI",
+    "sector": "Technology",
+    "description": "OpenAI is an AI research and deployment company dedicated to ensuring that artificial general intelligence benefits all of humanity.",
+    "occupations": [
+      "15-1241",
+      "15-1251",
+      "15-1299",
+      "15-2051",
+      "11-2021",
+      "11-9041",
+      "13-1111",
+      "13-1161"
+    ],
+    "regions": [
+      "San Francisco-San Mateo-Redwood City"
+    ]
+  },
+  {
+    "name": "Oroville Hospital",
+    "sector": "Healthcare",
+    "description": "Oroville Hospital is a general acute care hospital serving the Oroville community.",
+    "occupations": [
+      "11-9111",
+      "11-9121",
+      "11-3012",
+      "13-1071",
+      "13-1111",
+      "21-1012",
+      "21-1022",
+      "11-3021"
+    ],
+    "regions": [
+      "Chico MSA"
+    ]
+  },
+  {
+    "name": "Palo Alto Foundation Medical Group",
+    "sector": "Healthcare",
+    "description": "Palo Alto Foundation Medical Group is a not-for-profit healthcare organization that provides medical services to communities in the San Francisco Bay Area.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "15-1255",
+      "21-1012",
+      "21-1021"
+    ],
+    "regions": [
+      "Santa Cruz-Watsonville"
+    ]
+  },
+  {
+    "name": "Paq",
+    "sector": "Technology",
+    "description": "PAQ is a technology company specializing in innovative software solutions and IT consulting services.",
+    "occupations": [
+      "11-2021",
+      "11-3021",
+      "15-1251",
+      "15-1253",
+      "15-1255",
+      "15-1299"
+    ],
+    "regions": [
+      "San Luis Obispo-Paso Robles MSA",
+      "Stockton-Lodi MSA"
+    ]
+  },
+  {
+    "name": "Partnership Healthplan of California",
+    "sector": "Healthcare",
+    "description": "Partnership HealthPlan of California is a non-profit community-based health care organization that contracts with the State to administer Medi-Cal benefits.",
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "15-1255",
+      "21-1012",
+      "21-1021"
+    ],
+    "regions": [
+      "Vallejo"
+    ]
+  },
+  {
+    "name": "PayPal",
+    "sector": "Fintech",
+    "description": "PayPal is a global technology platform and digital payments company that enables digital and mobile payments on behalf of consumers and merchants worldwide.",
+    "occupations": [
+      "11-2021",
+      "11-3021",
+      "13-1111",
+      "13-2051",
+      "15-1251",
+      "15-1253",
+      "15-1255",
+      "15-1299"
+    ],
+    "regions": [
+      "San Jose-Sunnyvale-Santa Clara"
+    ]
+  },
+  {
+    "name": "Pd Systems",
+    "sector": "Defense",
+    "description": "PD Systems is a defense contractor providing logistics, engineering, and technical services to government clients.",
+    "occupations": [
+      "11-2021",
+      "11-3051",
+      "13-1081",
+      "13-1111",
+      "17-2071",
+      "17-2112",
+      "17-2199"
+    ],
+    "regions": [
+      "Salinas MSA"
+    ]
+  },
+  {
+    "name": "Pechanga Resort & Casino",
+    "sector": "Hospitality",
+    "description": "Pechanga Resort Casino is a Native American casino and resort in Temecula, California, offering gaming, entertainment, and hospitality services.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3031",
+      "11-9051",
+      "13-1071",
+      "13-1111",
+      "13-1161"
+    ],
+    "regions": [
+      "Riverside-San Bernardino-Ontario MSA"
+    ]
+  },
+  {
+    "name": "Pennymac",
+    "sector": "Financial Services",
+    "description": "PennyMac Financial Services, Inc. is a specialty financial services firm that focuses on the production and servicing of U.S. mortgage loans.",
+    "occupations": [
+      "11-2021",
+      "11-3031",
+      "13-1031",
+      "13-1041",
+      "13-1051",
+      "13-1071",
+      "13-1111",
+      "13-2051"
+    ],
+    "regions": [
+      "Oxnard-Thousand Oaks-Ventura MSA"
+    ]
+  },
+  {
+    "name": "PetCo",
+    "sector": "Retail",
+    "description": "Petco Health and Wellness Company, Inc. is an American pet supplies retailer, with its headquarters in San Diego, California.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3031",
+      "11-9051",
+      "13-1071",
+      "13-1111",
+      "13-1161"
+    ],
+    "regions": [
+      "Merced MSA"
+    ]
+  },
+  {
+    "name": "Pioneers Memorial Healthcare District",
+    "sector": "Healthcare",
+    "description": "Pioneers Memorial Healthcare District is a healthcare provider offering a range of medical services to the Imperial Valley community.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "15-1255",
+      "21-1012",
+      "21-1021"
+    ],
+    "regions": [
+      "El Centro MSA"
+    ]
+  },
+  {
+    "name": "Qualcomm",
+    "sector": "Technology",
+    "description": "Qualcomm is a global leader in wireless technology and innovation, developing and commercializing foundational technologies for the mobile industry.",
+    "occupations": [
+      "11-2021",
+      "11-3021",
+      "15-1251",
+      "15-1253",
+      "15-1255",
+      "17-2071",
+      "17-2112",
+      "17-2199"
+    ],
+    "regions": [
+      "San Diego-Chula Vista-Carlsbad MSA"
+    ]
+  },
+  {
+    "name": "RTX",
+    "sector": "Aerospace & Defense",
+    "description": "RTX Corporation, formerly Raytheon Technologies, is an American multinational aerospace and defense conglomerate.",
+    "occupations": [
+      "11-2021",
+      "11-3051",
+      "13-1081",
+      "13-1111",
+      "17-2071",
+      "17-2112",
+      "17-2199"
+    ],
+    "regions": [
+      "Santa Maria-Santa Barbara MSA",
+      "Vallejo"
+    ]
+  },
+  {
+    "name": "Redding Rancheria",
+    "sector": "Tribal Government",
+    "description": "Redding Rancheria is a federally recognized tribe that provides governmental services, healthcare, and economic development for its members and the community.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3031",
+      "11-9051",
+      "13-1071",
+      "13-1111",
+      "13-1161"
+    ],
+    "regions": [
+      "Redding MSA"
+    ]
+  },
+  {
+    "name": "Redwood Credit Union",
+    "sector": "Financial Services",
+    "description": "Redwood Credit Union is a not-for-profit financial cooperative providing banking services to members in the North Bay and San Francisco.",
+    "occupations": [
+      "11-2021",
+      "11-3031",
+      "13-1031",
+      "13-1041",
+      "13-1051",
+      "13-1071",
+      "13-1111",
+      "13-2051"
+    ],
+    "regions": [
+      "Napa"
+    ]
+  },
+  {
+    "name": "Ryder",
+    "sector": "Logistics",
+    "description": "Ryder System, Inc. is an American transportation and logistics company, providing fleet management, supply chain management, and dedicated transportation services.",
+    "occupations": [
+      "11-2021",
+      "11-3071",
+      "13-1081",
+      "13-1111",
+      "13-1161",
+      "17-2071",
+      "17-2112",
+      "17-2199"
+    ],
+    "regions": [
+      "Stockton-Lodi MSA"
+    ]
+  },
+  {
+    "name": "Safeway",
+    "sector": "Retail",
+    "description": "Safeway is an American supermarket chain founded by Marion Barton Skaggs in April 1915 in American Falls, Idaho.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3031",
+      "11-9051",
+      "13-1071",
+      "13-1111",
+      "13-1161"
+    ],
+    "regions": [
+      "Santa Rosa-Petaluma"
+    ]
+  },
+  {
+    "name": "Saint Joseph Medical Center",
+    "sector": "Healthcare",
+    "description": "Saint Joseph Medical Center is a hospital providing comprehensive medical care, including emergency services, surgery, and specialized treatments.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "15-1255",
+      "21-1012",
+      "21-1021"
+    ],
+    "regions": [
+      "Redding MSA"
+    ]
+  },
+  {
+    "name": "Salesforce",
+    "sector": "Technology",
+    "description": "Salesforce is a cloud-based software company that provides customer relationship management (CRM) service and a complementary suite of enterprise applications focused on customer service, marketing automation, analytics, and application development.",
+    "occupations": [
+      "11-2021",
+      "11-3021",
+      "13-1111",
+      "13-2051",
+      "15-1251",
+      "15-1253",
+      "15-1255",
+      "15-1299"
+    ],
+    "regions": [
+      "San Francisco-San Mateo-Redwood City"
+    ]
+  },
+  {
+    "name": "San Bernardino County",
+    "sector": "Government",
+    "description": "San Bernardino County is a local government entity providing public services, administration, and community programs to its residents.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3031",
+      "11-9051",
+      "13-1071",
+      "13-1111",
+      "13-1161"
+    ],
+    "regions": [
+      "Riverside-San Bernardino-Ontario MSA"
+    ]
+  },
+  {
+    "name": "San Joaquin County",
+    "sector": "Government",
+    "description": "San Joaquin County is a local government entity providing public services, administration, and community programs to its residents.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3031",
+      "11-9051",
+      "13-1071",
+      "13-1111",
+      "13-1161"
+    ],
+    "regions": [
+      "Stockton-Lodi MSA"
+    ]
+  },
+  {
+    "name": "San Joaquin Delta College",
+    "sector": "Education",
+    "description": "San Joaquin Delta College is a public community college in Stockton, California, offering associate degrees and vocational training.",
+    "occupations": [
+      "11-9033",
+      "13-1111",
+      "13-1151",
+      "13-1161",
+      "25-1011",
+      "25-1021",
+      "25-1031",
+      "25-1032"
+    ],
+    "regions": [
+      "Stockton-Lodi MSA"
+    ]
+  },
+  {
+    "name": "Santa Cruz Beach Boardwalk",
+    "sector": "Entertainment",
+    "description": "The Santa Cruz Beach Boardwalk is an oceanfront amusement park in Santa Cruz, California, offering rides, games, and entertainment.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3031",
+      "11-9051",
+      "13-1071",
+      "13-1111",
+      "13-1161"
+    ],
+    "regions": [
+      "Santa Cruz-Watsonville"
+    ]
+  },
+  {
+    "name": "Saputo Cheese USA",
+    "sector": "Food Production",
+    "description": "Saputo Cheese USA Inc. is a leading dairy company producing a wide range of cheeses and dairy products.",
+    "occupations": [
+      "11-2021",
+      "11-3051",
+      "13-1081",
+      "13-1111",
+      "13-1161",
+      "17-2071",
+      "17-2112",
+      "17-2199"
+    ],
+    "regions": [
+      "Visalia MSA"
+    ]
+  },
+  {
+    "name": "Save Mart Supermarkets",
+    "sector": "Retail",
+    "description": "The Save Mart Companies is an American grocery store chain that operates stores throughout California and Northern Nevada.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3031",
+      "11-9051",
+      "13-1071",
+      "13-1111",
+      "13-1161"
+    ],
+    "regions": [
+      "Modesto MSA",
+      "Yuba City MSA"
+    ]
+  },
+  {
+    "name": "Scripps Health",
+    "sector": "Healthcare",
+    "description": "Scripps Health is a not-for-profit integrated health system based in San Diego, California, providing a full spectrum of healthcare services.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "15-1255",
+      "21-1012",
+      "21-1021"
+    ],
+    "regions": [
+      "San Diego-Chula Vista-Carlsbad MSA"
+    ]
+  },
+  {
+    "name": "Sharp Healthcare",
+    "sector": "Healthcare",
+    "description": "Sharp HealthCare is a not-for-profit regional health care delivery system in San Diego, California, providing a wide range of medical services.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "15-1255",
+      "21-1012",
+      "21-1021"
+    ],
+    "regions": [
+      "San Diego-Chula Vista-Carlsbad MSA"
+    ]
+  },
+  {
+    "name": "Shasta College",
+    "sector": "Education",
+    "description": "Shasta College is a public community college in Redding, California, offering associate degrees and vocational training.",
+    "occupations": [
+      "11-9033",
+      "13-1111",
+      "13-1151",
+      "13-1161",
+      "25-1011",
+      "25-1021",
+      "25-1031",
+      "25-1032"
+    ],
+    "regions": [
+      "Redding MSA"
+    ]
+  },
+  {
+    "name": "Shasta Community Health Center",
+    "sector": "Healthcare",
+    "description": "Shasta Community Health Center is a non-profit organization providing affordable, high-quality primary healthcare services to the community.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "15-1255",
+      "21-1012",
+      "21-1021"
+    ],
+    "regions": [
+      "Redding MSA"
+    ]
+  },
+  {
+    "name": "Shasta County",
+    "sector": "Government",
+    "description": "Shasta County is a local government entity providing public services, administration, and community programs to its residents.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3031",
+      "11-9051",
+      "13-1071",
+      "13-1111",
+      "13-1161"
+    ],
+    "regions": [
+      "Redding MSA"
+    ]
+  },
+  {
+    "name": "Shasta Regional Medical Center",
+    "sector": "Healthcare",
+    "description": "Shasta Regional Medical Center is a hospital providing comprehensive medical care, including emergency services, surgery, and specialized treatments.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "15-1255",
+      "21-1012",
+      "21-1021"
+    ],
+    "regions": [
+      "Redding MSA"
+    ]
+  },
+  {
+    "name": "Sierra Pacific Industries",
+    "sector": "Forestry",
+    "description": "Sierra Pacific Industries is a family-owned forest products company, involved in timberland management, lumber production, and renewable energy.",
+    "occupations": [
+      "11-2021",
+      "11-3051",
+      "13-1081",
+      "13-1111",
+      "17-2071",
+      "17-2112",
+      "17-2199"
+    ],
+    "regions": [
+      "Redding MSA"
+    ]
+  },
+  {
+    "name": "Sierra-View Medical Center",
+    "sector": "Healthcare",
+    "description": "Sierra-View Medical Center is a healthcare provider offering a range of medical services to its community.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "15-1255",
+      "21-1021",
+      "21-1022"
+    ],
+    "regions": [
+      "Visalia MSA"
+    ]
+  },
+  {
+    "name": "Silverado Resort",
+    "sector": "Hospitality",
+    "description": "Silverado Resort is a luxury resort offering accommodations, golf, spa, and dining experiences.",
+    "occupations": [
+      "11-9051",
+      "11-9071",
+      "11-9072",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161"
+    ],
+    "regions": [
+      "Napa"
+    ]
+  },
+  {
+    "name": "Six Flags Discovery Kingdom",
+    "sector": "Entertainment",
+    "description": "Six Flags Discovery Kingdom is a theme park featuring rides, shows, and animal attractions.",
+    "occupations": [
+      "11-9051",
+      "11-9071",
+      "11-9072",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161"
+    ],
+    "regions": [
+      "Vallejo"
+    ]
+  },
+  {
+    "name": "Solano County",
+    "sector": "Government",
+    "description": "Solano County provides a wide array of public services to its residents, including health, safety, and community development.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "21-1021"
+    ],
+    "regions": [
+      "Vallejo"
+    ]
+  },
+  {
+    "name": "Sprouts Farmers Market",
+    "sector": "Retail",
+    "description": "Sprouts Farmers Market is a grocery store chain specializing in natural and organic foods.",
+    "occupations": [
+      "11-9051",
+      "11-9071",
+      "11-9072",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161"
+    ],
+    "regions": [
+      "Santa Maria-Santa Barbara MSA"
+    ]
+  },
+  {
+    "name": "Stanislaus County",
+    "sector": "Government",
+    "description": "Stanislaus County delivers essential public services and programs to its diverse population.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "21-1021"
+    ],
+    "regions": [
+      "Modesto MSA"
+    ]
+  },
+  {
+    "name": "State Center Community College District",
+    "sector": "Education",
+    "description": "State Center Community College District provides higher education and workforce training programs to its students.",
+    "occupations": [
+      "11-9033",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "25-1011",
+      "25-1021",
+      "25-1022"
+    ],
+    "regions": [
+      "Fresno MSA"
+    ]
+  },
+  {
+    "name": "State of California",
+    "sector": "Government",
+    "description": "The State of California is the governing body responsible for public administration and services across the state.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "21-1021"
+    ],
+    "regions": [
+      "Bakersfield-Delano MSA",
+      "El Centro MSA",
+      "Fresno MSA",
+      "Napa",
+      "Redding MSA",
+      "Sacramento-Roseville-Folsom MSA",
+      "Salinas MSA",
+      "San Luis Obispo-Paso Robles MSA",
+      "Vallejo",
+      "Visalia MSA"
+    ]
+  },
+  {
+    "name": "Sutter Bay Medical Foundation",
+    "sector": "Healthcare",
+    "description": "Sutter Bay Medical Foundation is a healthcare organization providing comprehensive medical care and services.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "15-1255",
+      "21-1021",
+      "21-1022"
+    ],
+    "regions": [
+      "Santa Cruz-Watsonville"
+    ]
+  },
+  {
+    "name": "The Estate Yountville",
+    "sector": "Hospitality",
+    "description": "The Estate Yountville is a luxury resort and culinary destination in Napa Valley.",
+    "occupations": [
+      "11-9051",
+      "11-9071",
+      "11-9072",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161"
+    ],
+    "regions": [
+      "Napa"
+    ]
+  },
+  {
+    "name": "The Salvation Army",
+    "sector": "Non-profit",
+    "description": "The Salvation Army is a charitable organization providing social services, disaster relief, and community support.",
+    "occupations": [
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "21-1012",
+      "21-1015",
+      "21-1021",
+      "21-1022"
+    ],
+    "regions": [
+      "Santa Cruz-Watsonville"
+    ]
+  },
+  {
+    "name": "The Wonderful Company",
+    "sector": "Agriculture",
+    "description": "The Wonderful Company is a privately held company with a diverse portfolio of agricultural and consumer brands.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "19-1013"
+    ],
+    "regions": [
+      "Bakersfield-Delano MSA"
+    ]
+  },
+  {
+    "name": "Threshold Enterprises",
+    "sector": "Manufacturing",
+    "description": "Threshold Enterprises is a leading manufacturer and distributor of nutritional supplements.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "17-2111"
+    ],
+    "regions": [
+      "Santa Cruz-Watsonville"
+    ]
+  },
+  {
+    "name": "Tri Counties Bank",
+    "sector": "Finance",
+    "description": "Tri Counties Bank is a community bank offering a range of financial products and services.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "13-2011"
+    ],
+    "regions": [
+      "Chico MSA"
+    ]
+  },
+  {
+    "name": "Trinity Health",
+    "sector": "Healthcare",
+    "description": "Trinity Health is a large Catholic healthcare system providing compassionate care across multiple states.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "15-1255",
+      "21-1021",
+      "21-1022"
+    ],
+    "regions": [
+      "Fresno MSA"
+    ]
+  },
+  {
+    "name": "UC Davis Health",
+    "sector": "Healthcare",
+    "description": "UC Davis Health is an academic health system providing patient care, research, and education.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "15-1255",
+      "21-1021",
+      "21-1022"
+    ],
+    "regions": [
+      "Sacramento-Roseville-Folsom MSA"
+    ]
+  },
+  {
+    "name": "UCSF Medical Center",
+    "sector": "Healthcare",
+    "description": "UCSF Medical Center is a leading academic medical center renowned for its patient care, research, and education.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "15-1255",
+      "21-1021",
+      "21-1022"
+    ],
+    "regions": [
+      "San Francisco-San Mateo-Redwood City"
+    ]
+  },
+  {
+    "name": "Uhs",
+    "sector": "Healthcare",
+    "description": "UHS (Universal Health Services) is one of the largest hospital management companies in the nation.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "15-1255",
+      "21-1021",
+      "21-1022"
+    ],
+    "regions": [
+      "Riverside-San Bernardino-Ontario MSA"
+    ]
+  },
+  {
+    "name": "Ultimate Staffing",
+    "sector": "Staffing",
+    "description": "Ultimate Staffing is a staffing agency connecting job seekers with employers across various industries.",
+    "occupations": [
+      "11-3131",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "13-2011",
+      "13-2020"
+    ],
+    "regions": [
+      "Anaheim-Santa Ana-Irvine MD"
+    ]
+  },
+  {
+    "name": "United Health Centers of The San Joaquin Valley",
+    "sector": "Healthcare",
+    "description": "United Health Centers provides affordable and accessible healthcare services to communities in the San Joaquin Valley.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "15-1255",
+      "21-1021",
+      "21-1022"
+    ],
+    "regions": [
+      "Hanford-Corcoran MSA"
+    ]
+  },
+  {
+    "name": "United States Department of Defense",
+    "sector": "Government",
+    "description": "The United States Department of Defense is responsible for providing the military forces needed to deter war and ensure our nation's security.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "15-1211"
+    ],
+    "regions": [
+      "Hanford-Corcoran MSA"
+    ]
+  },
+  {
+    "name": "United States Department of Homeland Security",
+    "sector": "Government",
+    "description": "The United States Department of Homeland Security works to secure the nation from the many threats we face.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "15-1211"
+    ],
+    "regions": [
+      "El Centro MSA"
+    ]
+  },
+  {
+    "name": "University of California",
+    "sector": "Education",
+    "description": "The University of California is a public university system offering world-class education and research opportunities.",
+    "occupations": [
+      "11-9033",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "25-1011",
+      "25-1021",
+      "25-1022"
+    ],
+    "regions": [
+      "Sacramento-Roseville-Folsom MSA"
+    ]
+  },
+  {
+    "name": "University of California, San Diego",
+    "sector": "Education",
+    "description": "UC San Diego is a public research university known for its strong programs in science, engineering, and medicine.",
+    "occupations": [
+      "11-9033",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "25-1011",
+      "25-1021",
+      "25-1022"
+    ],
+    "regions": [
+      "San Diego-Chula Vista-Carlsbad MSA"
+    ]
+  },
+  {
+    "name": "University of California-Berkeley",
+    "sector": "Education",
+    "description": "UC Berkeley is a public research university recognized globally for its academic excellence and groundbreaking research.",
+    "occupations": [
+      "11-9033",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "25-1011",
+      "25-1021",
+      "25-1022"
+    ],
+    "regions": [
+      "Oakland-Fremont-Berkeley"
+    ]
+  },
+  {
+    "name": "University of California-Davis",
+    "sector": "Education",
+    "description": "UC Davis is a public research university known for its programs in agriculture, veterinary medicine, and environmental science.",
+    "occupations": [
+      "11-9033",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "25-1011",
+      "25-1021",
+      "25-1022"
+    ],
+    "regions": [
+      "Sacramento-Roseville-Folsom MSA"
+    ]
+  },
+  {
+    "name": "University of California-Irvine",
+    "sector": "Education",
+    "description": "UC Irvine is a public research university with strengths in areas such as health sciences, engineering, and the arts.",
+    "occupations": [
+      "11-9033",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "25-1011",
+      "25-1021",
+      "25-1022"
+    ],
+    "regions": [
+      "Anaheim-Santa Ana-Irvine MD"
+    ]
+  },
+  {
+    "name": "University of California-Merced",
+    "sector": "Education",
+    "description": "UC Merced is the newest campus in the University of California system, focusing on research and sustainability.",
+    "occupations": [
+      "11-9033",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "25-1011",
+      "25-1021",
+      "25-1022"
+    ],
+    "regions": [
+      "Merced MSA"
+    ]
+  },
+  {
+    "name": "University of California-San Francisco",
+    "sector": "Education",
+    "description": "UC San Francisco is a leading university dedicated to advancing health worldwide through advanced biomedical research, graduate-level education in the life sciences and health professions, and excellence in patient care.",
+    "occupations": [
+      "11-9033",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "25-1011",
+      "25-1021",
+      "25-1022"
+    ],
+    "regions": [
+      "San Francisco-San Mateo-Redwood City"
+    ]
+  },
+  {
+    "name": "University of California-Santa Barbara",
+    "sector": "Education",
+    "description": "UC Santa Barbara is a public research university known for its strong programs in engineering, science, and the humanities.",
+    "occupations": [
+      "11-9033",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "25-1011",
+      "25-1021",
+      "25-1022"
+    ],
+    "regions": [
+      "Santa Maria-Santa Barbara MSA"
+    ]
+  },
+  {
+    "name": "University of California-Santa Cruz",
+    "sector": "Higher Education",
+    "description": "A public research university offering a wide range of undergraduate and graduate programs.",
+    "occupations": [
+      "25-1011",
+      "25-1021",
+      "25-1031",
+      "25-1041",
+      "25-1051",
+      "11-9033",
+      "13-1111",
+      "15-1299"
+    ],
+    "regions": [
+      "Santa Cruz-Watsonville"
+    ]
+  },
+  {
+    "name": "University of the Pacific",
+    "sector": "Higher Education",
+    "description": "A private university known for its professional programs and liberal arts education.",
+    "occupations": [
+      "25-1011",
+      "25-1022",
+      "25-1032",
+      "25-1042",
+      "25-1052",
+      "11-9033",
+      "13-1111",
+      "15-1299"
+    ],
+    "regions": [
+      "Stockton-Lodi MSA"
+    ]
+  },
+  {
+    "name": "Valley Children's Healthcare",
+    "sector": "Healthcare",
+    "description": "A comprehensive children's hospital providing specialized medical care to young patients.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "15-1211",
+      "15-1255",
+      "19-1042"
+    ],
+    "regions": [
+      "Fresno MSA"
+    ]
+  },
+  {
+    "name": "Ventura County",
+    "sector": "Government",
+    "description": "Provides a wide array of public services to the residents of Ventura County, California.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "13-1071",
+      "13-1111",
+      "13-2011",
+      "19-3039",
+      "21-1012"
+    ],
+    "regions": [
+      "Oxnard-Thousand Oaks-Ventura MSA"
+    ]
+  },
+  {
+    "name": "Ventura County Community College District",
+    "sector": "Higher Education",
+    "description": "Oversees several community colleges offering associate degrees and vocational training.",
+    "occupations": [
+      "25-1011",
+      "25-1021",
+      "25-1031",
+      "25-1041",
+      "25-1051",
+      "11-9033",
+      "13-1111",
+      "15-1299"
+    ],
+    "regions": [
+      "Oxnard-Thousand Oaks-Ventura MSA"
+    ]
+  },
+  {
+    "name": "Vibra Healthcare",
+    "sector": "Healthcare",
+    "description": "Operates long-term acute care hospitals and medical rehabilitation hospitals.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "15-1211",
+      "15-1255",
+      "19-1042"
+    ],
+    "regions": [
+      "Redding MSA"
+    ]
+  },
+  {
+    "name": "Walgreens Boots Alliance",
+    "sector": "Retail",
+    "description": "A global leader in pharmacy-led health and wellbeing retail.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3051",
+      "13-1020",
+      "13-1111",
+      "13-2011",
+      "15-1251"
+    ],
+    "regions": [
+      "Riverside-San Bernardino-Ontario MSA",
+      "Yuba City MSA"
+    ]
+  },
+  {
+    "name": "Walmart",
+    "sector": "Retail",
+    "description": "A multinational retail corporation that operates a chain of hypermarkets, discount department stores, and grocery stores.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3051",
+      "13-1020",
+      "13-1111",
+      "13-2011",
+      "15-1251"
+    ],
+    "regions": [
+      "Bakersfield-Delano MSA",
+      "Modesto MSA",
+      "Riverside-San Bernardino-Ontario MSA",
+      "Sacramento-Roseville-Folsom MSA",
+      "Vallejo",
+      "Visalia MSA",
+      "Yuba City MSA"
+    ]
+  },
+  {
+    "name": "Wellpath",
+    "sector": "Healthcare",
+    "description": "Provides comprehensive medical and mental healthcare services to vulnerable patients in challenging environments.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "15-1211",
+      "15-1255",
+      "19-1042"
+    ],
+    "regions": [
+      "Santa Rosa-Petaluma"
+    ]
+  },
+  {
+    "name": "Wells Fargo",
+    "sector": "Financial Services",
+    "description": "A diversified financial services company providing banking, investment, mortgage, and consumer and commercial finance products and services.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "13-1020",
+      "13-1051",
+      "13-1111",
+      "13-2011",
+      "15-1251"
+    ],
+    "regions": [
+      "San Rafael"
+    ]
+  },
+  {
+    "name": "Whole Foods",
+    "sector": "Retail",
+    "description": "A supermarket chain specializing in organic and natural foods.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3051",
+      "13-1020",
+      "13-1111",
+      "13-2011",
+      "15-1251"
+    ],
+    "regions": [
+      "San Rafael"
+    ]
+  },
+  {
+    "name": "YMCA",
+    "sector": "Non-profit",
+    "description": "A non-profit organization focused on youth development, healthy living, and social responsibility.",
+    "occupations": [
+      "11-9039",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "21-1012",
+      "21-1015",
+      "21-1021"
+    ],
+    "regions": [
+      "San Diego-Chula Vista-Carlsbad MSA",
+      "San Rafael",
+      "Santa Maria-Santa Barbara MSA"
+    ]
+  },
+  {
+    "name": "Yale New Haven Health",
+    "sector": "Healthcare",
+    "description": "A leading healthcare system providing comprehensive medical services and academic medicine.",
+    "occupations": [
+      "11-9111",
+      "11-9199",
+      "13-1071",
+      "13-1111",
+      "13-1161",
+      "15-1211",
+      "15-1255",
+      "19-1042"
+    ],
+    "regions": [
+      "Vallejo"
+    ]
+  },
+  {
+    "name": "Yosemite Community College District",
+    "sector": "Higher Education",
+    "description": "Provides educational opportunities through its community colleges, serving a diverse student population.",
+    "occupations": [
+      "25-1011",
+      "25-1021",
+      "25-1031",
+      "25-1041",
+      "25-1051",
+      "11-9033",
+      "13-1111",
+      "15-1299"
+    ],
+    "regions": [
+      "Modesto MSA"
+    ]
+  },
+  {
+    "name": "Yuba City Unified School District",
+    "sector": "Education",
+    "description": "Manages public schools in Yuba City, providing K-12 education.",
+    "occupations": [
+      "11-9033",
+      "11-9039",
+      "13-1111",
+      "13-1199",
+      "21-1012",
+      "21-1015",
+      "25-1021",
+      "25-1022"
+    ],
+    "regions": [
+      "Yuba City MSA"
+    ]
+  },
+  {
+    "name": "Yuba College",
+    "sector": "Higher Education",
+    "description": "A community college offering associate degrees, transfer programs, and vocational training.",
+    "occupations": [
+      "25-1011",
+      "25-1021",
+      "25-1031",
+      "25-1041",
+      "25-1051",
+      "11-9033",
+      "13-1111",
+      "15-1299"
+    ],
+    "regions": [
+      "Yuba City MSA"
+    ]
+  },
+  {
+    "name": "Yuba County",
+    "sector": "Government",
+    "description": "Provides essential public services and governance for the residents of Yuba County, California.",
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "13-1071",
+      "13-1111",
+      "13-2011",
+      "19-3039",
+      "21-1012"
+    ],
+    "regions": [
+      "Yuba City MSA"
     ]
   }
 ]
