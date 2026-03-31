@@ -95,142 +95,93 @@ METRO_COUNTIES: dict[str, list[str]] = {
     "Santa Maria-Santa Barbara": ["Santa Barbara"],
 }
 
-# CTE-relevant NAICS 4-digit codes mapped to sector labels
-# These are the industries where CC graduates are most commonly hired
-CTE_NAICS_CODES: dict[str, str] = {
-    # Healthcare
-    "6211": "Healthcare - Physician Offices",
-    "6212": "Healthcare - Dental",
-    "6213": "Healthcare - Other Practitioners",
-    "6214": "Healthcare - Outpatient",
-    "6215": "Healthcare - Labs",
-    "6216": "Healthcare - Home Health",
-    "6219": "Healthcare - Other Ambulatory",
-    "6221": "Healthcare - Hospitals (General)",
-    "6222": "Healthcare - Hospitals (Psych/Substance)",
-    "6223": "Healthcare - Hospitals (Specialty)",
-    "6231": "Healthcare - Nursing Facilities",
-    "6232": "Healthcare - Residential Care",
-    "6233": "Healthcare - Continuing Care",
-    # Construction / Trades
-    "2361": "Construction - Residential",
-    "2362": "Construction - Commercial",
-    "2371": "Construction - Utility Systems",
-    "2372": "Construction - Land Subdivision",
-    "2373": "Construction - Highway/Street",
-    "2379": "Construction - Other Heavy",
-    "2381": "Construction - Foundation/Structural",
-    "2382": "Construction - HVAC/Plumbing/Electrical",
-    "2383": "Construction - Finishing",
-    "2389": "Construction - Other Specialty",
-    # Manufacturing
-    "3111": "Manufacturing - Food (Animal)",
-    "3112": "Manufacturing - Food (Grain/Oil)",
-    "3113": "Manufacturing - Food (Sugar/Confection)",
-    "3114": "Manufacturing - Food (Fruit/Vegetable)",
-    "3115": "Manufacturing - Food (Dairy)",
-    "3116": "Manufacturing - Food (Meat)",
-    "3118": "Manufacturing - Food (Bakeries)",
-    "3119": "Manufacturing - Food (Other)",
-    "3121": "Manufacturing - Beverages",
-    "3241": "Manufacturing - Petroleum/Coal",
-    "3251": "Manufacturing - Basic Chemicals",
-    "3254": "Manufacturing - Pharmaceuticals",
-    "3259": "Manufacturing - Other Chemicals",
-    "3261": "Manufacturing - Plastics",
-    "3271": "Manufacturing - Clay/Glass",
-    "3311": "Manufacturing - Iron/Steel",
-    "3312": "Manufacturing - Steel Products",
-    "3314": "Manufacturing - Nonferrous Metals",
-    "3315": "Manufacturing - Foundries",
-    "3321": "Manufacturing - Forging/Stamping",
-    "3322": "Manufacturing - Cutlery/Handtools",
-    "3323": "Manufacturing - Architectural Metals",
-    "3324": "Manufacturing - Boilers/Tanks",
-    "3325": "Manufacturing - Hardware",
-    "3326": "Manufacturing - Springs/Wire",
-    "3327": "Manufacturing - Machine Shops",
-    "3328": "Manufacturing - Coating/Engraving",
-    "3329": "Manufacturing - Other Fabricated Metals",
-    "3331": "Manufacturing - Ag/Construction Equipment",
-    "3332": "Manufacturing - Industrial Machinery",
-    "3333": "Manufacturing - Commercial Equipment",
-    "3334": "Manufacturing - HVAC Equipment",
-    "3335": "Manufacturing - Metalworking Machinery",
-    "3336": "Manufacturing - Engines/Turbines",
-    "3339": "Manufacturing - Other Machinery",
-    "3341": "Manufacturing - Computers",
-    "3342": "Manufacturing - Communications Equipment",
-    "3343": "Manufacturing - Audio/Video Equipment",
-    "3344": "Manufacturing - Semiconductors",
-    "3345": "Manufacturing - Instruments",
-    "3346": "Manufacturing - Magnetic Media",
-    "3351": "Manufacturing - Electrical Equipment",
-    "3353": "Manufacturing - Electrical Transmission",
-    "3359": "Manufacturing - Other Electrical",
-    "3361": "Manufacturing - Motor Vehicles",
-    "3362": "Manufacturing - Motor Vehicle Bodies",
-    "3363": "Manufacturing - Motor Vehicle Parts",
-    "3364": "Manufacturing - Aerospace",
-    "3365": "Manufacturing - Railroad",
-    "3366": "Manufacturing - Ship/Boat",
-    "3369": "Manufacturing - Other Transportation",
-    # Automotive
-    "4411": "Automotive - Dealers",
-    "4412": "Automotive - Other Dealers",
-    "8111": "Automotive - Repair/Maintenance",
-    # IT / Media
-    "5112": "IT - Software Publishing",
-    "5171": "IT - Telecommunications (Wired)",
-    "5172": "IT - Telecommunications (Wireless)",
-    "5174": "IT - Satellite",
-    "5182": "IT - Data Processing/Hosting",
-    "5191": "IT - Other Information Services",
-    "5415": "IT - Computer Systems Design",
-    "5112": "Media - Software Publishing",
-    "5121": "Media - Motion Picture/Video",
-    "5122": "Media - Sound Recording",
-    "5151": "Media - Radio/TV Broadcasting",
-    # Food Service / Hospitality
-    "7211": "Hospitality - Hotels/Motels",
-    "7212": "Hospitality - RV Parks/Camps",
-    "7221": "Food Service - Restaurants (Full)",
-    "7222": "Food Service - Restaurants (Limited)",
-    "7223": "Food Service - Special Food Services",
-    "7224": "Food Service - Bars",
-    # Personal Care
-    "8121": "Personal Care - Personal Services",
-    "8122": "Personal Care - Laundry/Cleaning",
-    # Public Safety (government)
-    "9221": "Public Safety - Courts",
-    "9222": "Public Safety - Police/Fire",
-    "9223": "Public Safety - Corrections",
-    # Education
-    "6111": "Education - Elementary/Secondary",
-    "6112": "Education - Junior Colleges",
-    "6113": "Education - Colleges/Universities",
-    "6114": "Education - Business Schools/Training",
-    "6115": "Education - Technical Schools",
-    "6116": "Education - Other Schools",
-    "6117": "Education - Support Services",
-    # Agriculture
-    "1111": "Agriculture - Crop Production (Oilseed/Grain)",
-    "1112": "Agriculture - Crop Production (Vegetable)",
-    "1113": "Agriculture - Crop Production (Fruit/Tree)",
-    "1114": "Agriculture - Crop Production (Greenhouse)",
-    "1119": "Agriculture - Crop Production (Other)",
-    "1121": "Agriculture - Cattle",
-    "1122": "Agriculture - Hog/Pig",
-    "1123": "Agriculture - Poultry/Egg",
-    "1129": "Agriculture - Other Animals",
-    "1131": "Agriculture - Timber",
-    "1132": "Agriculture - Forest Nurseries",
-    "1141": "Agriculture - Fishing",
-    "1142": "Agriculture - Aquaculture",
-    "1151": "Agriculture - Crop Support",
-    "1152": "Agriculture - Animal Support",
-    "1153": "Agriculture - Forestry Support",
+# CTE-relevant NAICS 4-digit codes with EDD sector codes and labels.
+# The EDD's naicsect URL parameter uses the NAICS 2-digit code for most
+# sectors, except manufacturing where 31/32/33 all work interchangeably.
+# Food service (72) and public safety (92) are not searchable by NAICS
+# in the EDD interface — those employers come from HWOL/major employers.
+#
+# Format: {naics4: (edd_naicsect, label)}
+CTE_NAICS_CODES: dict[str, tuple[str, str]] = {
+    # Healthcare (sector 62)
+    "6211": ("62", "Healthcare - Physician Offices"),
+    "6212": ("62", "Healthcare - Dental"),
+    "6213": ("62", "Healthcare - Other Practitioners"),
+    "6214": ("62", "Healthcare - Outpatient"),
+    "6215": ("62", "Healthcare - Labs"),
+    "6216": ("62", "Healthcare - Home Health"),
+    "6219": ("62", "Healthcare - Other Ambulatory"),
+    "6221": ("62", "Healthcare - Hospitals (General)"),
+    "6222": ("62", "Healthcare - Hospitals (Psych/Substance)"),
+    "6223": ("62", "Healthcare - Hospitals (Specialty)"),
+    "6231": ("62", "Healthcare - Nursing Facilities"),
+    "6232": ("62", "Healthcare - Residential Care"),
+    "6233": ("62", "Healthcare - Continuing Care"),
+    # Construction (sector 23)
+    "2361": ("23", "Construction - Residential"),
+    "2362": ("23", "Construction - Commercial"),
+    "2371": ("23", "Construction - Utility Systems"),
+    "2373": ("23", "Construction - Highway/Street"),
+    "2379": ("23", "Construction - Other Heavy"),
+    "2381": ("23", "Construction - Foundation/Structural"),
+    "2382": ("23", "Construction - HVAC/Plumbing/Electrical"),
+    "2383": ("23", "Construction - Finishing"),
+    "2389": ("23", "Construction - Other Specialty"),
+    # Manufacturing (sector 31 works for all 31xx/32xx/33xx)
+    "3118": ("31", "Manufacturing - Food (Bakeries)"),
+    "3121": ("31", "Manufacturing - Beverages"),
+    "3254": ("31", "Manufacturing - Pharmaceuticals"),
+    "3261": ("31", "Manufacturing - Plastics"),
+    "3323": ("31", "Manufacturing - Architectural Metals"),
+    "3327": ("31", "Manufacturing - Machine Shops"),
+    "3328": ("31", "Manufacturing - Coating/Engraving"),
+    "3329": ("31", "Manufacturing - Other Fabricated Metals"),
+    "3332": ("31", "Manufacturing - Industrial Machinery"),
+    "3334": ("31", "Manufacturing - HVAC Equipment"),
+    "3335": ("31", "Manufacturing - Metalworking Machinery"),
+    "3341": ("31", "Manufacturing - Computers"),
+    "3344": ("31", "Manufacturing - Semiconductors"),
+    "3345": ("31", "Manufacturing - Instruments"),
+    "3351": ("31", "Manufacturing - Electrical Equipment"),
+    "3361": ("31", "Manufacturing - Motor Vehicles"),
+    "3363": ("31", "Manufacturing - Motor Vehicle Parts"),
+    "3364": ("31", "Manufacturing - Aerospace"),
+    "3366": ("31", "Manufacturing - Ship/Boat"),
+    # Automotive (sectors 44, 81)
+    "4411": ("44", "Automotive - Dealers"),
+    "8111": ("81", "Automotive - Repair/Maintenance"),
+    # IT / Media (sectors 51, 54)
+    "5112": ("51", "IT - Software Publishing"),
+    "5121": ("51", "Media - Motion Picture/Video"),
+    "5122": ("51", "Media - Sound Recording"),
+    "5151": ("51", "Media - Radio/TV Broadcasting"),
+    "5171": ("51", "IT - Telecommunications (Wired)"),
+    "5172": ("51", "IT - Telecommunications (Wireless)"),
+    "5182": ("51", "IT - Data Processing/Hosting"),
+    "5415": ("54", "IT - Computer Systems Design"),
+    # Education (sector 61)
+    "6111": ("61", "Education - Elementary/Secondary"),
+    "6112": ("61", "Education - Junior Colleges"),
+    "6113": ("61", "Education - Colleges/Universities"),
+    "6115": ("61", "Education - Technical Schools"),
+    # Food Service / Hospitality (sector 72)
+    "7211": ("72", "Hospitality - Hotels/Motels"),
+    "7223": ("72", "Food Service - Caterers/Special"),
+    "7224": ("72", "Food Service - Bars"),
+    # Personal Care (sector 81)
+    "8121": ("81", "Personal Care - Personal Services"),
+    # Public Safety (sector 92)
+    "9221": ("92", "Public Safety - Justice/Public Order"),
+    # Agriculture (sector 11)
+    "1113": ("11", "Agriculture - Crop Production (Fruit/Tree)"),
+    "1114": ("11", "Agriculture - Crop Production (Greenhouse)"),
+    "1121": ("11", "Agriculture - Cattle"),
+    "1151": ("11", "Agriculture - Crop Support"),
+    "1152": ("11", "Agriculture - Animal Support"),
 }
+
+# Default size filter: 250+ employees (G=250-499, H=500-999, I=1000-4999)
+DEFAULT_MIN_SIZE = "G"
 
 
 # ── HTML parsing ──────────────────────────────────────────────────────────
@@ -409,16 +360,16 @@ def deep_search(
 
 def search_naics_codes(
     county_name: str,
-    naics_codes: list[str],
-    min_size: str = "E",
+    naics_codes: list[str] | None = None,
+    min_size: str = DEFAULT_MIN_SIZE,
     max_pages_per_code: int = 10,
 ) -> list[dict]:
-    """Search multiple NAICS 4-digit codes in a county.
+    """Search CTE-relevant NAICS 4-digit codes in a county.
 
     Args:
         county_name: California county name (e.g., "Los Angeles")
-        naics_codes: List of NAICS 4-digit codes to search
-        min_size: Minimum size code. Default "E" = 50+ employees.
+        naics_codes: List of NAICS 4-digit codes. If None, uses all CTE_NAICS_CODES.
+        min_size: Minimum size code. Default "G" = 250+ employees.
         max_pages_per_code: Max pages to paginate per NAICS code.
 
     Returns: deduplicated list of employer dicts.
@@ -428,14 +379,22 @@ def search_naics_codes(
         logger.error(f"  Unknown county: {county_name}")
         return []
 
+    if naics_codes is None:
+        naics_codes = list(CTE_NAICS_CODES.keys())
+
     geog = f"0604{code}"
     all_employers: list[dict] = []
     seen_keys: set[tuple] = set()
 
     for naics4 in naics_codes:
-        naics_sect = naics4[:2]
-        label = CTE_NAICS_CODES.get(naics4, f"NAICS {naics4}")
-        logger.info(f"  Searching {county_name} — {label} (NAICS {naics4}, size {min_size}+)")
+        entry = CTE_NAICS_CODES.get(naics4)
+        if entry:
+            naics_sect, label = entry
+        else:
+            naics_sect = naics4[:2]
+            label = f"NAICS {naics4}"
+
+        logger.info(f"  {county_name} — {label} (NAICS {naics4}, size {min_size}+)")
 
         results = deep_search(
             geog_area=geog,
@@ -454,7 +413,8 @@ def search_naics_codes(
                 emp["naics_label"] = label
                 all_employers.append(emp)
 
-        logger.info(f"    Found {len(results)} employers ({len(all_employers)} total unique)")
+        if results:
+            logger.info(f"    {len(results)} employers ({len(all_employers)} total unique)")
         time.sleep(0.5)
 
     return all_employers
@@ -463,7 +423,7 @@ def search_naics_codes(
 def search_metro(
     metro: str,
     naics_codes: list[str] | None = None,
-    min_size: str = "E",
+    min_size: str = DEFAULT_MIN_SIZE,
 ) -> list[dict]:
     """Search all counties in a metro area for CTE-relevant employers.
 
