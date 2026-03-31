@@ -1,6171 +1,758 @@
 [
   {
-    "name": "Apple",
-    "sector": "Technology",
-    "description": "Consumer electronics and software company headquartered in Cupertino, designing iPhone, Mac, and services used by billions worldwide.",
-    "regions": [
-      "San Jose-Sunnyvale-Santa Clara",
-      "San Diego-Chula Vista-Carlsbad"
-    ],
-    "occupations": [
-      "15-1252",
-      "11-2021",
-      "15-2051"
-    ]
-  },
-  {
-    "name": "Google",
-    "sector": "Technology",
-    "description": "Search, cloud computing, and advertising technology company headquartered in Mountain View with major offices across the Bay Area.",
-    "regions": [
-      "San Jose-Sunnyvale-Santa Clara",
-      "San Francisco-San Mateo-Redwood City",
-      "Santa Maria-Santa Barbara"
-    ],
-    "occupations": [
-      "15-1252",
-      "15-2051",
-      "11-2021"
-    ]
-  },
-  {
-    "name": "Nvidia",
-    "sector": "Technology",
-    "description": "GPU and AI chip designer headquartered in Santa Clara, powering gaming, data centers, and autonomous vehicles.",
-    "regions": [
-      "San Jose-Sunnyvale-Santa Clara"
-    ],
-    "occupations": [
-      "15-1252",
-      "15-2051",
-      "15-1299"
-    ]
-  },
-  {
-    "name": "TikTok",
-    "sector": "Technology",
-    "description": "Short-form video platform with U.S. operations based in San Jose, owned by ByteDance.",
-    "regions": [
-      "San Jose-Sunnyvale-Santa Clara"
-    ],
-    "occupations": [
-      "15-1252",
-      "11-2021",
-      "15-2051"
-    ]
-  },
-  {
-    "name": "Intuit",
-    "sector": "Technology",
-    "description": "Financial software company headquartered in Mountain View, maker of TurboTax, QuickBooks, and Credit Karma.",
-    "regions": [
-      "San Jose-Sunnyvale-Santa Clara",
-      "San Diego-Chula Vista-Carlsbad"
-    ],
-    "occupations": [
-      "15-1252",
-      "15-2051"
-    ]
-  },
-  {
-    "name": "Palo Alto Networks",
-    "sector": "Technology",
-    "description": "Cybersecurity company headquartered in Santa Clara, providing firewall, cloud security, and threat intelligence products.",
-    "regions": [
-      "San Jose-Sunnyvale-Santa Clara"
-    ],
-    "occupations": [
-      "15-1252",
-      "15-1299"
-    ]
-  },
-  {
-    "name": "Tesla",
-    "sector": "Manufacturing/Technology",
-    "description": "Electric vehicle and clean energy manufacturer headquartered in Austin with a major factory in Fremont.",
-    "regions": [
-      "San Jose-Sunnyvale-Santa Clara",
-      "Oakland-Fremont-Berkeley",
-      "Stockton-Lodi"
-    ],
-    "occupations": [
-      "15-1252",
-      "51-4121",
-      "49-3023",
-      "47-2111"
-    ]
-  },
-  {
-    "name": "Amazon",
-    "sector": "Technology/Logistics",
-    "description": "E-commerce, cloud computing, and logistics company with engineering offices in the Bay Area and fulfillment centers across the region.",
-    "regions": [
-      "San Jose-Sunnyvale-Santa Clara",
-      "San Francisco-San Mateo-Redwood City",
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "15-1252",
-      "15-2051",
-      "41-2031",
-      "15-1251",
-      "15-1244",
-      "13-1161",
-      "43-9061",
-      "11-2021",
-      "53-1047"
-    ]
-  },
-  {
-    "name": "Stanford University",
-    "sector": "Education",
-    "description": "Private research university in Stanford employing faculty, researchers, and staff across medicine, engineering, and the humanities.",
-    "regions": [
-      "San Jose-Sunnyvale-Santa Clara"
-    ],
-    "occupations": [
-      "29-1141",
-      "25-1081",
-      "15-1299"
-    ]
-  },
-  {
-    "name": "Stanford Health Care",
-    "sector": "Healthcare",
-    "description": "Academic medical center affiliated with Stanford University, operating hospitals and clinics across Santa Clara County.",
-    "regions": [
-      "San Jose-Sunnyvale-Santa Clara"
-    ],
-    "occupations": [
-      "29-1141",
-      "29-1126",
-      "29-2052",
-      "31-9092"
-    ]
-  },
-  {
-    "name": "Santa Clara Valley Healthcare",
-    "sector": "Healthcare",
-    "description": "County-operated public health system serving Santa Clara County through Valley Medical Center and a network of community clinics.",
-    "regions": [
-      "San Jose-Sunnyvale-Santa Clara"
-    ],
-    "occupations": [
-      "29-1141",
-      "29-1126",
-      "29-1292",
-      "31-9092",
-      "29-1171"
-    ]
-  },
-  {
-    "name": "El Camino Health",
-    "sector": "Healthcare",
-    "description": "Nonprofit hospital system operating campuses in Mountain View and Los Gatos, serving the western Santa Clara Valley.",
-    "regions": [
-      "San Jose-Sunnyvale-Santa Clara"
-    ],
-    "occupations": [
-      "29-1141",
-      "29-1126",
-      "29-2052"
-    ]
-  },
-  {
     "name": "Kaiser Permanente",
     "sector": "Healthcare",
-    "description": "Integrated managed care organization operating hospitals and medical offices across Northern California.",
+    "description": "Kaiser Permanente is a major integrated managed care consortium providing comprehensive healthcare services, significantly impacting the health and wellness of the LA community.",
     "regions": [
-      "Oakland-Fremont-Berkeley",
-      "San Jose-Sunnyvale-Santa Clara",
-      "San Francisco-San Mateo-Redwood City",
-      "San Rafael",
-      "Vallejo",
-      "Los Angeles-Long Beach-Glendale",
-      "Fresno",
-      "Modesto",
-      "Napa",
-      "Riverside-San Bernardino-Ontario",
-      "Sacramento-Roseville-Folsom",
-      "Santa Rosa-Petaluma"
-    ],
-    "occupations": [
-      "29-1141",
-      "29-2052",
-      "31-9092",
-      "11-9111",
-      "29-1122",
-      "29-2061",
-      "31-1131",
-      "43-6013"
-    ]
-  },
-  {
-    "name": "Sutter Health",
-    "sector": "Healthcare",
-    "description": "Nonprofit health system operating 24 hospitals and over 200 clinics across Northern California.",
-    "regions": [
-      "Oakland-Fremont-Berkeley",
-      "San Francisco-San Mateo-Redwood City",
-      "Santa Cruz-Watsonville",
-      "Vallejo",
-      "Santa Rosa-Petaluma",
-      "Napa",
-      "Modesto",
-      "Sacramento-Roseville-Folsom",
-      "San Rafael",
-      "Santa Maria-Santa Barbara",
-      "Stockton-Lodi",
-      "Yuba City"
-    ],
-    "occupations": [
-      "29-1141",
-      "31-9092",
-      "29-2052"
-    ]
-  },
-  {
-    "name": "Alameda Health System",
-    "sector": "Healthcare",
-    "description": "County public health system serving Alameda County through Highland Hospital and community wellness centers.",
-    "regions": [
-      "Oakland-Fremont-Berkeley"
-    ],
-    "occupations": [
-      "29-1141",
-      "31-9092",
-      "29-1126"
-    ]
-  },
-  {
-    "name": "Hayward Unified School District",
-    "sector": "Education",
-    "description": "Public school district serving Hayward with 30+ schools and over 20,000 students from pre-K through 12th grade.",
-    "regions": [
-      "Oakland-Fremont-Berkeley"
-    ],
-    "occupations": [
-      "25-1081",
-      "39-9011"
-    ]
-  },
-  {
-    "name": "Oakland Unified School District",
-    "sector": "Education",
-    "description": "Public school district operating 80+ schools serving over 34,000 students in Oakland.",
-    "regions": [
-      "Oakland-Fremont-Berkeley"
-    ],
-    "occupations": [
-      "25-1081",
-      "39-9011"
-    ]
-  },
-  {
-    "name": "University of California, Berkeley",
-    "sector": "Education",
-    "description": "Public research university and flagship UC campus, one of the largest employers in the East Bay.",
-    "regions": [
-      "Oakland-Fremont-Berkeley"
-    ],
-    "occupations": [
-      "25-1081",
-      "15-1299",
-      "15-1252"
-    ]
-  },
-  {
-    "name": "PG&E",
-    "sector": "Utilities",
-    "description": "Pacific Gas and Electric Company, the primary electric and natural gas utility serving Northern and Central California.",
-    "regions": [
-      "Oakland-Fremont-Berkeley"
-    ],
-    "occupations": [
-      "47-2111",
-      "47-2061"
-    ]
-  },
-  {
-    "name": "Abbott Laboratories",
-    "sector": "Healthcare/Manufacturing",
-    "description": "Global medical device and diagnostics manufacturer with facilities in the East Bay producing testing and monitoring products.",
-    "regions": [
-      "Oakland-Fremont-Berkeley"
-    ],
-    "occupations": [
-      "19-4021",
-      "19-4031"
-    ]
-  },
-  {
-    "name": "BART",
-    "sector": "Transportation",
-    "description": "Bay Area Rapid Transit, the regional heavy rail system connecting San Francisco, the East Bay, and South Bay.",
-    "regions": [
-      "Oakland-Fremont-Berkeley"
-    ],
-    "occupations": [
-      "47-2111",
-      "49-3023"
-    ]
-  },
-  {
-    "name": "AC Transit",
-    "sector": "Transportation",
-    "description": "Alameda-Contra Costa Transit District operating bus service across the East Bay and transbay routes to San Francisco.",
-    "regions": [
-      "Oakland-Fremont-Berkeley"
-    ],
-    "occupations": [
-      "49-3031",
-      "49-3023"
-    ]
-  },
-  {
-    "name": "Bio-Rad Laboratories",
-    "sector": "Biotechnology",
-    "description": "Life science research and clinical diagnostics company headquartered in Hercules, manufacturing instruments and reagents.",
-    "regions": [
-      "Oakland-Fremont-Berkeley"
-    ],
-    "occupations": [
-      "19-4021",
-      "19-4031"
-    ]
-  },
-  {
-    "name": "C&H Sugar",
-    "sector": "Manufacturing",
-    "description": "Sugar refinery operating in Crockett since 1906, processing raw cane sugar for consumer and industrial use.",
-    "regions": [
-      "Oakland-Fremont-Berkeley"
-    ],
-    "occupations": [
-      "51-4121",
-      "49-9041"
-    ]
-  },
-  {
-    "name": "Golden Gate Sign Company",
-    "sector": "Manufacturing",
-    "description": "Custom sign and architectural fabrication company based in Oakland serving commercial and municipal clients.",
-    "regions": [
-      "Oakland-Fremont-Berkeley"
-    ],
-    "occupations": [
-      "51-4121"
-    ]
-  },
-  {
-    "name": "St. Rose Hospital",
-    "sector": "Healthcare",
-    "description": "Community hospital in Hayward providing emergency, surgical, and outpatient services to southern Alameda County.",
-    "regions": [
-      "Oakland-Fremont-Berkeley"
-    ],
-    "occupations": [
-      "29-1141",
-      "31-9092"
-    ]
-  },
-  {
-    "name": "Superior Mechanical Services",
-    "sector": "HVAC/Mechanical",
-    "description": "Commercial HVAC and mechanical contracting firm serving the East Bay with installation and maintenance services.",
-    "regions": [
-      "Oakland-Fremont-Berkeley"
-    ],
-    "occupations": [
-      "49-9021",
-      "47-2152"
-    ]
-  },
-  {
-    "name": "Service Champions",
-    "sector": "HVAC/Plumbing",
-    "description": "Residential HVAC and plumbing service company operating across the East Bay and South Bay.",
-    "regions": [
-      "Oakland-Fremont-Berkeley",
-      "San Jose-Sunnyvale-Santa Clara"
-    ],
-    "occupations": [
-      "49-9021",
-      "47-2152",
-      "47-2111"
-    ]
-  },
-  {
-    "name": "Rivers Plumbing Heating & Air",
-    "sector": "HVAC/Plumbing",
-    "description": "Family-owned plumbing and HVAC company serving Pleasanton and the Tri-Valley area.",
-    "regions": [
-      "Oakland-Fremont-Berkeley"
-    ],
-    "occupations": [
-      "49-9021",
-      "47-2152"
-    ]
-  },
-  {
-    "name": "John Muir Health",
-    "sector": "Healthcare",
-    "description": "Nonprofit health system operating medical centers in Walnut Creek and Concord, serving Contra Costa County.",
-    "regions": [
-      "Oakland-Fremont-Berkeley"
-    ],
-    "occupations": [
-      "29-1141",
-      "31-9092",
-      "11-9111"
-    ]
-  },
-  {
-    "name": "Chevron",
-    "sector": "Energy",
-    "description": "Multinational energy corporation headquartered in San Ramon with a major refinery in Richmond.",
-    "regions": [
-      "Oakland-Fremont-Berkeley"
-    ],
-    "occupations": [
-      "19-4031",
-      "15-1252"
-    ]
-  },
-  {
-    "name": "Bank of America Technology Center",
-    "sector": "Financial Services",
-    "description": "Technology operations hub in the East Bay supporting Bank of America's digital banking and infrastructure platforms.",
-    "regions": [
-      "Oakland-Fremont-Berkeley"
-    ],
-    "occupations": [
-      "15-1252",
-      "15-1299"
-    ]
-  },
-  {
-    "name": "Meta",
-    "sector": "Technology",
-    "description": "Social media and virtual reality company headquartered in Menlo Park, operating Facebook, Instagram, and WhatsApp.",
-    "regions": [
-      "San Francisco-San Mateo-Redwood City"
-    ],
-    "occupations": [
-      "15-1252",
-      "15-2051",
-      "11-2021"
-    ]
-  },
-  {
-    "name": "University of California, San Francisco",
-    "sector": "Healthcare/Education",
-    "description": "Public research university focused on health sciences, operating hospitals, research labs, and clinics across San Francisco.",
-    "regions": [
-      "San Francisco-San Mateo-Redwood City"
-    ],
-    "occupations": [
-      "29-1141",
-      "19-4021",
-      "25-1081"
-    ]
-  },
-  {
-    "name": "Genentech",
-    "sector": "Biotechnology",
-    "description": "Pioneer biotechnology company in South San Francisco developing medicines for cancer, immunology, and rare diseases.",
-    "regions": [
-      "San Francisco-San Mateo-Redwood City"
-    ],
-    "occupations": [
-      "19-4021",
-      "19-4031",
-      "15-1252"
-    ]
-  },
-  {
-    "name": "Visa",
-    "sector": "Financial Services",
-    "description": "Global payments technology company headquartered in San Francisco, processing electronic fund transfers worldwide.",
-    "regions": [
-      "San Francisco-San Mateo-Redwood City"
-    ],
-    "occupations": [
-      "15-1252",
-      "15-2051"
-    ]
-  },
-  {
-    "name": "Uber",
-    "sector": "Technology",
-    "description": "Ride-hailing and delivery platform headquartered in San Francisco, operating in cities worldwide.",
-    "regions": [
-      "San Francisco-San Mateo-Redwood City"
-    ],
-    "occupations": [
-      "15-1252",
-      "15-2051"
-    ]
-  },
-  {
-    "name": "Accenture",
-    "sector": "Consulting/Technology",
-    "description": "Global professional services firm with Bay Area offices providing technology consulting, strategy, and managed services.",
-    "regions": [
-      "San Francisco-San Mateo-Redwood City",
-      "Los Angeles-Long Beach-Glendale",
-      "Oakland-Fremont-Berkeley",
-      "Sacramento-Roseville-Folsom",
-      "San Diego-Chula Vista-Carlsbad"
-    ],
-    "occupations": [
-      "15-1252",
-      "15-1299",
-      "13-1111",
-      "15-1251",
-      "13-1161",
-      "15-1244",
-      "11-2021",
-      "13-1071",
-      "13-1075"
-    ]
-  },
-  {
-    "name": "Gilead Sciences",
-    "sector": "Biotechnology",
-    "description": "Biopharmaceutical company headquartered in Foster City, developing antiviral therapies including HIV and hepatitis treatments.",
-    "regions": [
-      "San Francisco-San Mateo-Redwood City"
-    ],
-    "occupations": [
-      "19-4021",
-      "19-4031"
-    ]
-  },
-  {
-    "name": "Truebeck Construction",
-    "sector": "Construction",
-    "description": "Commercial general contractor based in Redwood City specializing in tech campus, healthcare, and life science facility construction.",
-    "regions": [
-      "San Francisco-San Mateo-Redwood City"
-    ],
-    "occupations": [
-      "47-2061",
-      "47-2031"
-    ]
-  },
-  {
-    "name": "Providence",
-    "sector": "Healthcare",
-    "description": "Nonprofit health system operating hospitals in Santa Rosa and the North Bay as part of a 52-hospital network across the western U.S.",
-    "regions": [
-      "Santa Rosa-Petaluma",
-      "Napa",
-      "Los Angeles-Long Beach-Glendale",
-      "Anaheim-Santa Ana-Irvine"
-    ],
-    "occupations": [
-      "29-1141",
-      "31-9092",
-      "29-1122",
-      "29-2061",
-      "31-1131",
-      "43-6013",
-      "11-9111"
-    ]
-  },
-  {
-    "name": "County of Sonoma",
-    "sector": "Government",
-    "description": "County government providing public safety, health, social services, and land use administration for Sonoma County residents.",
-    "regions": [
-      "Santa Rosa-Petaluma"
-    ],
-    "occupations": [
-      "21-1029",
-      "33-2011"
-    ]
-  },
-  {
-    "name": "Graton Resort & Casino",
-    "sector": "Hospitality",
-    "description": "Casino and resort in Rohnert Park operated by the Federated Indians of Graton Rancheria, the largest employer in Sonoma County's hospitality sector.",
-    "regions": [
-      "Santa Rosa-Petaluma"
-    ],
-    "occupations": [
-      "11-9051",
-      "35-2014"
-    ]
-  },
-  {
-    "name": "Jackson Family Wines",
-    "sector": "Wine/Agriculture",
-    "description": "Family-owned wine company based in Santa Rosa, producing wines from over 40 estate vineyards across California and Oregon.",
-    "regions": [
-      "Santa Rosa-Petaluma"
-    ],
-    "occupations": [
-      "11-9051",
-      "37-1012"
-    ]
-  },
-  {
-    "name": "Stark Reality Restaurants",
-    "sector": "Hospitality",
-    "description": "Restaurant group operating multiple dining concepts in downtown Santa Rosa.",
-    "regions": [
-      "Santa Rosa-Petaluma"
-    ],
-    "occupations": [
-      "35-1011",
-      "35-2014",
-      "11-9051"
-    ]
-  },
-  {
-    "name": "Medtronic",
-    "sector": "Medical Devices",
-    "description": "Global medical technology company with a Santa Rosa campus producing cardiac rhythm management and surgical innovation products.",
-    "regions": [
-      "Santa Rosa-Petaluma"
-    ],
-    "occupations": [
-      "19-4021",
-      "19-4031"
-    ]
-  },
-  {
-    "name": "Napa Valley Unified School District",
-    "sector": "Education",
-    "description": "Public school district serving the city of Napa and surrounding areas with 30 schools and approximately 17,000 students.",
-    "regions": [
-      "Napa"
-    ],
-    "occupations": [
-      "25-1081",
-      "39-9011"
-    ]
-  },
-  {
-    "name": "Adventist Health",
-    "sector": "Healthcare",
-    "description": "Faith-based health system operating St. Helena Hospital and clinics in the Napa Valley.",
-    "regions": [
-      "Napa",
-      "Bakersfield-Delano",
-      "Chico",
-      "Hanford-Corcoran",
-      "San Luis Obispo-Paso Robles",
-      "Stockton-Lodi",
-      "Visalia",
-      "Yuba City"
-    ],
-    "occupations": [
-      "29-1141",
-      "31-9092"
-    ]
-  },
-  {
-    "name": "Constellation Brands",
-    "sector": "Wine/Beverages",
-    "description": "Fortune 500 beverage company producing wines, beer, and spirits, with Napa Valley wine operations including Robert Mondavi Winery.",
-    "regions": [
-      "Napa"
-    ],
-    "occupations": [
-      "11-9051",
-      "37-1012"
-    ]
-  },
-  {
-    "name": "Trinchero Family Estates",
-    "sector": "Wine",
-    "description": "Family-owned winery in St. Helena known for Sutter Home and Trinchero Napa Valley brands.",
-    "regions": [
-      "Napa"
-    ],
-    "occupations": [
-      "11-9051"
-    ]
-  },
-  {
-    "name": "Duckhorn Wine Company",
-    "sector": "Wine",
-    "description": "Luxury wine producer based in St. Helena, crafting Napa Valley wines across multiple estate labels.",
-    "regions": [
-      "Napa"
-    ],
-    "occupations": [
-      "11-9051"
-    ]
-  },
-  {
-    "name": "Auberge Resorts",
-    "sector": "Hospitality",
-    "description": "Luxury hotel and resort collection headquartered in Napa Valley, operating boutique properties worldwide.",
-    "regions": [
-      "Napa"
-    ],
-    "occupations": [
-      "11-9051",
-      "35-2014"
-    ]
-  },
-  {
-    "name": "Culinary Institute of America",
-    "sector": "Education/Hospitality",
-    "description": "Premier culinary arts college operating a campus at Greystone in St. Helena with teaching restaurants and continuing education programs.",
-    "regions": [
-      "Napa"
-    ],
-    "occupations": [
-      "35-1011",
-      "35-2014",
-      "25-1081"
-    ]
-  },
-  {
-    "name": "City of Napa",
-    "sector": "Government",
-    "description": "Municipal government providing public safety, infrastructure, and community services for the city of Napa.",
-    "regions": [
-      "Napa"
-    ],
-    "occupations": [
-      "47-2061",
-      "33-2011"
-    ]
-  },
-  {
-    "name": "NorthBay Healthcare",
-    "sector": "Healthcare",
-    "description": "Nonprofit health system operating NorthBay Medical Center in Fairfield and VacaValley Hospital in Vacaville.",
-    "regions": [
-      "Vallejo"
-    ],
-    "occupations": [
-      "29-1141",
-      "31-9092",
-      "29-1126"
-    ]
-  },
-  {
-    "name": "Vallejo City Unified School District",
-    "sector": "Education",
-    "description": "Public school district serving Vallejo with 23 schools and approximately 12,000 students.",
-    "regions": [
-      "Vallejo"
-    ],
-    "occupations": [
-      "25-1081",
-      "39-9011"
-    ]
-  },
-  {
-    "name": "General Dynamics",
-    "sector": "Defense/Manufacturing",
-    "description": "Defense contractor operating the Mare Island facility in Vallejo for ship maintenance and advanced manufacturing.",
-    "regions": [
-      "Vallejo"
-    ],
-    "occupations": [
-      "51-4121",
-      "47-2111"
-    ]
-  },
-  {
-    "name": "Genentech Vacaville",
-    "sector": "Biotechnology",
-    "description": "Large-scale biologics manufacturing campus in Vacaville producing Genentech's therapeutic antibody medicines.",
-    "regions": [
-      "Vallejo"
-    ],
-    "occupations": [
-      "19-4021",
-      "19-4031"
-    ]
-  },
-  {
-    "name": "Lonza",
-    "sector": "Biotechnology",
-    "description": "Swiss pharmaceutical contract manufacturer operating a biologics production facility in Vacaville.",
-    "regions": [
-      "Vallejo"
-    ],
-    "occupations": [
-      "19-4021",
-      "19-4031"
-    ]
-  },
-  {
-    "name": "Thermo Fisher Scientific",
-    "sector": "Biotechnology",
-    "description": "Life science instruments and reagents company with manufacturing and R&D operations in the Solano County area.",
-    "regions": [
-      "Vallejo"
-    ],
-    "occupations": [
-      "19-4021",
-      "19-4031"
-    ]
-  },
-  {
-    "name": "La Clinica de La Raza",
-    "sector": "Healthcare",
-    "description": "Federally qualified community health center providing primary care and behavioral health services to underserved populations in the East Bay and Solano County.",
-    "regions": [
-      "Vallejo",
-      "Oakland-Fremont-Berkeley"
-    ],
-    "occupations": [
-      "29-1141",
-      "31-9092",
-      "31-9091"
-    ]
-  },
-  {
-    "name": "Partnership HealthPlan of California",
-    "sector": "Healthcare",
-    "description": "Nonprofit managed care plan administering Medi-Cal benefits for over 600,000 members across Northern California counties.",
-    "regions": [
-      "Vallejo"
+      "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
       "11-9111",
-      "29-1141"
-    ]
-  },
-  {
-    "name": "University of California, Santa Cruz",
-    "sector": "Education",
-    "description": "Public research university in Santa Cruz known for programs in computer science, marine biology, and astrophysics.",
-    "regions": [
-      "Santa Cruz-Watsonville"
-    ],
-    "occupations": [
-      "25-1081",
-      "15-1252",
-      "15-1299"
-    ]
-  },
-  {
-    "name": "County of Santa Cruz",
-    "sector": "Government",
-    "description": "County government providing health, social services, public works, and public safety for Santa Cruz County.",
-    "regions": [
-      "Santa Cruz-Watsonville"
-    ],
-    "occupations": [
-      "21-1029",
-      "47-2061"
-    ]
-  },
-  {
-    "name": "Dominican Hospital",
-    "sector": "Healthcare",
-    "description": "Community hospital in Santa Cruz operated by CommonSpirit Health, providing acute care and specialty services.",
-    "regions": [
-      "Santa Cruz-Watsonville"
-    ],
-    "occupations": [
-      "29-1141",
-      "31-9092"
-    ]
-  },
-  {
-    "name": "Joby Aviation",
-    "sector": "Aerospace",
-    "description": "Electric vertical takeoff and landing aircraft developer based in Santa Cruz, building air taxis for urban mobility.",
-    "regions": [
-      "Santa Cruz-Watsonville"
-    ],
-    "occupations": [
-      "15-1252",
-      "15-1299"
-    ]
-  },
-  {
-    "name": "Graniterock",
-    "sector": "Construction",
-    "description": "Construction and building materials company based in Watsonville, providing aggregates, concrete, and paving across Central California.",
-    "regions": [
-      "Santa Cruz-Watsonville"
-    ],
-    "occupations": [
-      "47-2061",
-      "51-4121"
-    ]
-  },
-  {
-    "name": "Driscoll's",
-    "sector": "Agriculture",
-    "description": "World's largest berry company, headquartered in Watsonville, growing and distributing strawberries, blueberries, and raspberries.",
-    "regions": [
-      "Santa Cruz-Watsonville"
-    ],
-    "occupations": [
-      "37-1012"
-    ]
-  },
-  {
-    "name": "Pajaro Valley Unified School District",
-    "sector": "Education",
-    "description": "Public school district serving Watsonville and the Pajaro Valley with approximately 18,000 students.",
-    "regions": [
-      "Santa Cruz-Watsonville"
-    ],
-    "occupations": [
-      "25-1081",
-      "39-9011"
-    ]
-  },
-  {
-    "name": "Marin General Hospital",
-    "sector": "Healthcare",
-    "description": "Community hospital in Greenbrae providing acute care, emergency, and specialty services to Marin County residents.",
-    "regions": [
-      "San Rafael"
-    ],
-    "occupations": [
-      "29-1141",
-      "31-9092",
-      "29-1126"
-    ]
-  },
-  {
-    "name": "BioMarin",
-    "sector": "Biotechnology",
-    "description": "Rare disease biopharmaceutical company headquartered in San Rafael, developing enzyme replacement and gene therapies.",
-    "regions": [
-      "San Rafael"
-    ],
-    "occupations": [
-      "19-4021",
-      "19-4031",
-      "15-1252"
-    ]
-  },
-  {
-    "name": "County of Marin",
-    "sector": "Government",
-    "description": "County government providing health, human services, parks, and public safety for Marin County's 260,000 residents.",
-    "regions": [
-      "San Rafael"
-    ],
-    "occupations": [
-      "21-1029",
-      "33-2011"
-    ]
-  },
-  {
-    "name": "Marin Community Clinics",
-    "sector": "Healthcare",
-    "description": "Federally qualified health center providing primary care, dental, and behavioral health to underserved communities in Marin County.",
-    "regions": [
-      "San Rafael"
-    ],
-    "occupations": [
-      "29-1141",
-      "31-9092",
-      "31-9091"
-    ]
-  },
-  {
-    "name": "Starbucks",
-    "sector": "Food Service",
-    "description": "Global coffeehouse chain operating hundreds of locations across the Bay Area, one of the region's largest food service employers.",
-    "regions": [
-      "Oakland-Fremont-Berkeley",
-      "San Jose-Sunnyvale-Santa Clara",
-      "San Francisco-San Mateo-Redwood City",
-      "Santa Rosa-Petaluma",
-      "Napa",
-      "Vallejo",
-      "Santa Cruz-Watsonville",
-      "Los Angeles-Long Beach-Glendale",
-      "Anaheim-Santa Ana-Irvine",
-      "Bakersfield-Delano",
-      "Chico",
-      "El Centro",
-      "Fresno",
-      "Hanford-Corcoran",
-      "Merced",
-      "Modesto",
-      "Oxnard-Thousand Oaks-Ventura",
-      "Riverside-San Bernardino-Ontario",
-      "Sacramento-Roseville-Folsom",
-      "Salinas",
-      "San Diego-Chula Vista-Carlsbad",
-      "San Luis Obispo-Paso Robles",
-      "Santa Maria-Santa Barbara",
-      "Stockton-Lodi",
-      "Visalia"
-    ],
-    "occupations": [
-      "11-9051",
-      "35-2014",
-      "35-3023",
-      "35-1012",
-      "41-2011",
-      "43-3031"
-    ]
-  },
-  {
-    "name": "Allied Universal",
-    "sector": "Security Services",
-    "description": "Allied Universal provides security services and solutions, including security personnel, consulting and investigations, and systems integration.",
-    "occupations": [
-      "33-9032",
-      "43-4051",
-      "43-6014"
-    ],
-    "regions": [
-      "Los Angeles-Long Beach-Glendale",
-      "Anaheim-Santa Ana-Irvine",
-      "Oakland-Fremont-Berkeley",
-      "Riverside-San Bernardino-Ontario",
-      "San Diego-Chula Vista-Carlsbad",
-      "San Francisco-San Mateo-Redwood City",
-      "Stockton-Lodi",
-      "Vallejo"
-    ]
-  },
-  {
-    "name": "University of California, Los Angeles",
-    "sector": "Higher Education",
-    "description": "UCLA is a public research university offering a wide range of undergraduate and graduate programs, and conducting extensive research.",
-    "occupations": [
-      "25-1071",
-      "25-1041",
-      "13-1111",
-      "15-1255",
-      "43-6011",
-      "31-1131"
-    ],
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ]
-  },
-  {
-    "name": "Cedars-Sinai",
-    "sector": "Healthcare",
-    "description": "Cedars-Sinai is a non-profit academic healthcare organization providing patient care, research, and medical education.",
-    "occupations": [
-      "29-1141",
-      "29-1122",
-      "29-2061",
-      "31-1131",
-      "43-6013",
-      "11-9111",
-      "13-1111",
-      "27-2012",
-      "15-1252",
-      "15-2051",
-      "13-1199",
-      "13-1082",
-      "27-3043",
-      "13-2011",
-      "13-1071",
-      "27-2022"
-    ],
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ]
-  },
-  {
-    "name": "Dominos Pizza",
-    "sector": "Food Service",
-    "description": "Domino's Pizza is an American multinational pizza restaurant chain, offering pizza, pasta, and other menu items for delivery and carryout.",
-    "occupations": [
-      "35-3023",
-      "35-1012",
-      "53-3032",
-      "43-3031"
-    ],
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ]
-  },
-  {
-    "name": "Northrop Grumman",
-    "sector": "Aerospace Defense",
-    "description": "Northrop Grumman is a global aerospace and defense technology company, specializing in advanced systems and solutions.",
-    "occupations": [
-      "17-2011",
-      "17-2112",
-      "15-1211",
-      "15-1251",
-      "13-1161",
-      "11-2021",
-      "17-2071"
-    ],
-    "regions": [
-      "Los Angeles-Long Beach-Glendale",
-      "San Diego-Chula Vista-Carlsbad"
-    ]
-  },
-  {
-    "name": "University of Southern California",
-    "sector": "Higher Education",
-    "description": "USC is a private research university offering diverse academic programs and contributing significantly to research and innovation.",
-    "occupations": [
-      "25-1071",
-      "25-1041",
-      "13-1111",
-      "15-1255",
-      "43-6011",
-      "31-1131"
-    ],
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ]
-  },
-  {
-    "name": "Kroger",
-    "sector": "Retail",
-    "description": "Kroger is one of the largest supermarket chains in the United States, operating various retail food and drug stores.",
-    "occupations": [
-      "41-2011",
-      "35-2021",
-      "43-5071",
-      "43-3071",
-      "35-3011"
-    ],
-    "regions": [
-      "Los Angeles-Long Beach-Glendale",
-      "Anaheim-Santa Ana-Irvine",
-      "Oxnard-Thousand Oaks-Ventura",
-      "San Luis Obispo-Paso Robles"
-    ]
-  },
-  {
-    "name": "SpaceX",
-    "sector": "Aerospace",
-    "description": "SpaceX designs, manufactures, and launches advanced rockets and spacecraft, with a goal of enabling human life on other planets.",
-    "occupations": [
-      "17-2112",
-      "17-2011",
-      "15-1251",
-      "17-2071",
-      "17-2141",
-      "13-1161",
-      "11-2021"
-    ],
-    "regions": [
-      "Los Angeles-Long Beach-Glendale",
-      "Santa Maria-Santa Barbara"
-    ]
-  },
-  {
-    "name": "CVS Health",
-    "sector": "Healthcare Retail",
-    "description": "CVS Health is a healthcare company that owns CVS Pharmacy, a retail pharmacy chain, and CVS Caremark, a pharmacy benefits manager.",
-    "occupations": [
+      "29-1071",
       "29-1051",
-      "41-2011",
-      "43-3099",
-      "31-9095",
-      "11-9111",
-      "43-6013"
-    ],
-    "regions": [
-      "Los Angeles-Long Beach-Glendale",
-      "Anaheim-Santa Ana-Irvine",
-      "Chico",
-      "Merced",
-      "Modesto",
-      "Oxnard-Thousand Oaks-Ventura",
-      "Sacramento-Roseville-Folsom",
-      "Salinas",
-      "San Rafael",
-      "Santa Cruz-Watsonville",
-      "Santa Rosa-Petaluma",
-      "Visalia"
-    ]
-  },
-  {
-    "name": "AMD",
-    "sector": "Semiconductor",
-    "description": "AMD is a global semiconductor company that designs and integrates technology that powers millions of intelligent devices, including personal computers, game consoles, and cloud servers.",
-    "occupations": [
-      "15-1211",
-      "15-1221",
-      "15-1231",
-      "15-1241",
-      "15-1251",
-      "17-2071",
-      "17-2072",
-      "17-2141"
-    ],
-    "regions": [
-      "San Jose-Sunnyvale-Santa Clara"
-    ]
-  },
-  {
-    "name": "Addus HomeCare",
-    "sector": "Healthcare",
-    "description": "Addus HomeCare provides a range of home care services, including personal care, hospice, and home health, to individuals in need.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
+      "29-1123",
+      "29-1126",
+      "29-1031",
+      "29-1122",
+      "29-1127",
       "13-1071",
-      "13-1199",
-      "21-1022",
-      "21-1093"
-    ],
-    "regions": [
-      "San Rafael"
-    ]
-  },
-  {
-    "name": "Aerovironment",
-    "sector": "Aerospace",
-    "description": "AeroVironment is a technology company that designs, develops, produces, and supports a portfolio of unmanned aircraft systems and related services.",
-    "occupations": [
-      "17-2011",
-      "17-2071",
-      "17-2072",
-      "17-2141",
-      "15-1211",
-      "15-1251",
-      "11-9041"
-    ],
-    "regions": [
-      "Oxnard-Thousand Oaks-Ventura",
-      "Santa Rosa-Petaluma"
-    ]
-  },
-  {
-    "name": "Air Shasta Rotor & Wing",
-    "sector": "Aviation",
-    "description": "Air Shasta Rotor & Wing offers helicopter and airplane services, including charter flights, tours, and flight training.",
-    "occupations": [
-      "11-2021",
-      "11-9041",
-      "13-1051",
-      "13-1071"
-    ],
-    "regions": [
-      "Redding"
-    ]
-  },
-  {
-    "name": "Albertsons",
-    "sector": "Retail",
-    "description": "Albertsons Companies is one of the largest food and drug retailers in the United States, operating stores under various banners.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3051",
-      "11-3061",
-      "11-9071",
-      "13-1020"
-    ],
-    "regions": [
-      "Oakland-Fremont-Berkeley"
-    ]
-  },
-  {
-    "name": "Amentum",
-    "sector": "Government Services",
-    "description": "Amentum is a global government services contractor providing a broad range of technical and management services to U.S. and allied governments.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-9041",
-      "13-1051",
-      "13-1071",
-      "17-2071",
-      "17-2141"
-    ],
-    "regions": [
-      "Santa Maria-Santa Barbara"
-    ]
-  },
-  {
-    "name": "Amgen",
-    "sector": "Biotechnology",
-    "description": "Amgen is a multinational biopharmaceutical company focused on discovering, developing, manufacturing, and delivering innovative human therapeutics.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "13-1051",
-      "13-1071",
-      "19-1021",
-      "19-1042",
-      "19-2041"
-    ],
-    "regions": [
-      "Oxnard-Thousand Oaks-Ventura"
-    ]
-  },
-  {
-    "name": "Ampla Health",
-    "sector": "Healthcare",
-    "description": "Ampla Health is a non-profit community health center providing comprehensive medical, dental, and behavioral health services to underserved populations.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1071",
-      "13-1199",
-      "21-1012",
-      "21-1022",
-      "21-1093"
-    ],
-    "regions": [
-      "Chico"
-    ]
-  },
-  {
-    "name": "Anduril Industries",
-    "sector": "Defense Technology",
-    "description": "Anduril Industries is a defense technology company building advanced defense products for military and national security applications.",
-    "occupations": [
-      "15-1211",
-      "15-1221",
-      "15-1251",
-      "17-2071",
-      "17-2072",
-      "17-2141",
-      "11-9041"
-    ],
-    "regions": [
-      "Anaheim-Santa Ana-Irvine"
-    ]
-  },
-  {
-    "name": "Applied Materials",
-    "sector": "Semiconductor",
-    "description": "Applied Materials is the global leader in materials engineering solutions for the semiconductor, flat panel display, and solar photovoltaic industries.",
-    "occupations": [
-      "15-1211",
-      "15-1221",
-      "15-1251",
-      "17-2071",
-      "17-2072",
-      "17-2141",
-      "11-9041"
-    ],
-    "regions": [
-      "San Jose-Sunnyvale-Santa Clara"
-    ]
-  },
-  {
-    "name": "Bear",
-    "sector": "Outdoor Recreation",
-    "description": "Bear is a brand known for its outdoor and hunting equipment, particularly bows and archery accessories.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3051",
-      "11-9071",
-      "13-1020",
-      "13-1051"
-    ],
-    "regions": [
-      "Napa"
-    ]
-  },
-  {
-    "name": "Blue Shield of California",
-    "sector": "Healthcare Insurance",
-    "description": "Blue Shield of California is a non-profit health plan dedicated to providing Californians with access to high-quality health care at an affordable price.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "13-1071",
-      "13-1075",
-      "13-1111",
-      "13-2053",
-      "15-1255"
-    ],
-    "regions": [
-      "Redding",
-      "Sacramento-Roseville-Folsom",
-      "Stockton-Lodi"
-    ]
-  },
-  {
-    "name": "Brookdale Senior Living",
-    "sector": "Senior Care",
-    "description": "Brookdale Senior Living is the largest operator of senior living communities in the United States, offering independent living, assisted living, memory care, and skilled nursing.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1071",
-      "13-1199",
-      "21-1022",
-      "21-1093"
-    ],
-    "regions": [
-      "Santa Rosa-Petaluma"
-    ]
-  },
-  {
-    "name": "Burlington",
-    "sector": "Retail",
-    "description": "Burlington Stores, Inc. is a national off-price retailer offering a wide assortment of merchandise, including apparel, home goods, and accessories.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3051",
-      "11-3061",
-      "11-9071",
-      "13-1020"
-    ],
-    "regions": [
-      "Hanford-Corcoran"
-    ]
-  },
-  {
-    "name": "Butte County",
-    "sector": "Government",
-    "description": "Butte County provides a wide range of public services to its residents, including public safety, health, social services, and infrastructure.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "13-1071",
-      "13-1111",
-      "13-2011",
-      "19-3039",
-      "21-1012"
-    ],
-    "regions": [
-      "Chico"
-    ]
-  },
-  {
-    "name": "Butte-Glenn Community College District",
-    "sector": "Education",
-    "description": "Butte-Glenn Community College District provides accessible and affordable higher education, workforce training, and lifelong learning opportunities.",
-    "occupations": [
-      "11-9033",
-      "13-1111",
-      "13-1151",
-      "25-1011",
-      "25-1021",
-      "25-1031",
-      "25-1041",
-      "25-1051"
-    ],
-    "regions": [
-      "Chico"
-    ]
-  },
-  {
-    "name": "CHW Mercy Hospital of Bakersfield",
-    "sector": "Healthcare",
-    "description": "Mercy Hospital of Bakersfield is a full-service acute care hospital providing comprehensive medical services to the Bakersfield community.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1071",
-      "13-1199",
-      "21-1012",
-      "21-1022",
-      "21-1093"
-    ],
-    "regions": [
-      "Bakersfield-Delano"
-    ]
-  },
-  {
-    "name": "California Polytechnic State University",
-    "sector": "Education",
-    "description": "California Polytechnic State University, San Luis Obispo, is a public university known for its 'learn by doing' philosophy and strong engineering and agriculture programs.",
-    "occupations": [
-      "11-9033",
-      "13-1111",
-      "13-1151",
-      "25-1011",
-      "25-1021",
-      "25-1031",
-      "25-1041",
-      "25-1051"
-    ],
-    "regions": [
-      "San Luis Obispo-Paso Robles"
-    ]
-  },
-  {
-    "name": "California State University-Chancellors Office",
-    "sector": "Education",
-    "description": "The California State University Chancellor's Office provides leadership and support for the 23 campuses of the CSU system, the largest four-year public university system in the United States.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "13-1071",
-      "13-1111",
-      "13-1151",
-      "15-1251"
-    ],
-    "regions": [
-      "Chico",
-      "Modesto"
-    ]
-  },
-  {
-    "name": "California State University-Chico",
-    "sector": "Education",
-    "description": "California State University, Chico, is a public university offering a wide range of undergraduate and graduate programs.",
-    "occupations": [
-      "11-9033",
-      "13-1111",
-      "13-1151",
-      "25-1011",
-      "25-1021",
-      "25-1031",
-      "25-1041",
-      "25-1051"
-    ],
-    "regions": [
-      "Chico"
-    ]
-  },
-  {
-    "name": "California State University-Fresno",
-    "sector": "Education",
-    "description": "California State University, Fresno, is a public university offering a diverse array of academic programs and research opportunities.",
-    "occupations": [
-      "11-9033",
-      "13-1111",
-      "13-1151",
-      "25-1011",
-      "25-1021",
-      "25-1031",
-      "25-1041",
-      "25-1051"
-    ],
-    "regions": [
-      "Fresno"
-    ]
-  },
-  {
-    "name": "California State University-San Bernardino",
-    "sector": "Education",
-    "description": "California State University, San Bernardino, is a public university serving the Inland Empire region with a focus on student success and community engagement.",
-    "occupations": [
-      "11-9033",
-      "13-1111",
-      "13-1151",
-      "25-1011",
-      "25-1021",
-      "25-1031",
-      "25-1041",
-      "25-1051"
-    ],
-    "regions": [
-      "Riverside-San Bernardino-Ontario"
-    ]
-  },
-  {
-    "name": "California State University-Stanislaus",
-    "sector": "Education",
-    "description": "California State University, Stanislaus, is a public university committed to providing high-quality education and fostering intellectual growth.",
-    "occupations": [
-      "11-9033",
-      "13-1111",
-      "13-1151",
-      "25-1011",
-      "25-1021",
-      "25-1031",
-      "25-1041",
-      "25-1051"
-    ],
-    "regions": [
-      "Modesto"
-    ]
-  },
-  {
-    "name": "Cardinal Health",
-    "sector": "Healthcare Services",
-    "description": "Cardinal Health is a global integrated healthcare services and products company, providing solutions for hospitals, healthcare systems, pharmacies, and other healthcare providers.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "13-1071",
-      "13-1111",
-      "13-2053",
-      "15-1255"
-    ],
-    "regions": [
-      "Sacramento-Roseville-Folsom"
-    ]
-  },
-  {
-    "name": "Central Valley Meat Co",
-    "sector": "Food Production",
-    "description": "Central Valley Meat Co. is a beef processing company committed to providing high-quality meat products to its customers.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3051",
-      "11-3061",
-      "11-9071",
-      "13-1020",
-      "13-1051"
-    ],
-    "regions": [
-      "Hanford-Corcoran"
-    ]
-  },
-  {
-    "name": "Chili's Grill & Bar",
-    "sector": "Restaurant",
-    "description": "Chili's Grill & Bar is a casual dining restaurant chain serving American food with a Tex-Mex influence.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3051",
-      "11-3061",
-      "11-9071",
-      "13-1020"
-    ],
-    "regions": [
-      "Hanford-Corcoran"
-    ]
-  },
-  {
-    "name": "Cisco",
-    "sector": "Technology",
-    "description": "Cisco Systems, Inc. is a global technology conglomerate that develops, manufactures, and sells networking hardware, software, telecommunications equipment, and other high-technology services and products.",
-    "occupations": [
-      "15-1211",
-      "15-1221",
-      "15-1231",
-      "15-1241",
-      "15-1251",
-      "17-2071",
-      "17-2072",
-      "17-2141"
-    ],
-    "regions": [
-      "San Jose-Sunnyvale-Santa Clara"
-    ]
-  },
-  {
-    "name": "City of Chico",
-    "sector": "Government",
-    "description": "The City of Chico provides municipal services to its residents, including public safety, public works, and community development.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "13-1071",
-      "13-1111",
-      "13-2011",
-      "19-3039",
-      "21-1012"
-    ],
-    "regions": [
-      "Chico"
-    ]
-  },
-  {
-    "name": "City of Fresno",
-    "sector": "Government",
-    "description": "The City of Fresno provides essential services to its residents, including public safety, infrastructure, and community programs.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "13-1071",
-      "13-1111",
-      "13-2011",
-      "19-3039",
-      "21-1012"
-    ],
-    "regions": [
-      "Fresno"
-    ]
-  },
-  {
-    "name": "City of Hanford",
-    "sector": "Government",
-    "description": "The City of Hanford provides municipal services to its residents, including public safety, public works, and community services.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "13-1071",
-      "13-1111",
-      "13-2011",
-      "19-3039",
-      "21-1012"
-    ],
-    "regions": [
-      "Hanford-Corcoran"
-    ]
-  },
-  {
-    "name": "City of Merced",
-    "sector": "Government",
-    "description": "The City of Merced provides municipal services and governance to its residents, focusing on public safety, infrastructure, and community development.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "13-1081",
-      "13-2011",
-      "17-2051",
-      "19-4099"
-    ],
-    "regions": [
-      "Merced"
-    ]
-  },
-  {
-    "name": "City of Oxnard",
-    "sector": "Government",
-    "description": "The City of Oxnard delivers essential public services, manages urban planning, and promotes the well-being of its diverse community.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "13-1081",
-      "13-2011",
-      "17-2051",
-      "19-4099"
-    ],
-    "regions": [
-      "Oxnard-Thousand Oaks-Ventura"
-    ]
-  },
-  {
-    "name": "City of San Luis Obispo",
-    "sector": "Government",
-    "description": "The City of San Luis Obispo is responsible for local governance, public services, and maintaining the quality of life for its citizens.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "13-1081",
-      "13-2011",
-      "17-2051",
-      "19-4099"
-    ],
-    "regions": [
-      "San Luis Obispo-Paso Robles"
-    ]
-  },
-  {
-    "name": "City of Santa Cruz",
-    "sector": "Government",
-    "description": "The City of Santa Cruz provides municipal services, manages public infrastructure, and fosters community engagement for its residents.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "13-1081",
-      "13-2011",
-      "17-2051",
-      "19-4099"
-    ],
-    "regions": [
-      "Santa Cruz-Watsonville"
-    ]
-  },
-  {
-    "name": "City of Stockton",
-    "sector": "Government",
-    "description": "The City of Stockton offers a wide range of public services, including public safety, utilities, and community development, to its population.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "13-1081",
-      "13-2011",
-      "17-2051",
-      "19-4099"
-    ],
-    "regions": [
-      "Stockton-Lodi"
-    ]
-  },
-  {
-    "name": "Clinica Sierra Vista",
-    "sector": "Healthcare",
-    "description": "Clinica Sierra Vista is a non-profit healthcare organization providing comprehensive medical, dental, and behavioral health services to underserved communities.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1111",
-      "13-1151",
-      "21-1012",
-      "21-1021",
-      "21-1022"
-    ],
-    "regions": [
-      "Bakersfield-Delano"
-    ]
-  },
-  {
-    "name": "Clovis Unified School District",
-    "sector": "Education",
-    "description": "Clovis Unified School District provides public education services to students from kindergarten through high school, focusing on academic excellence and student development.",
-    "occupations": [
-      "11-9031",
-      "11-9032",
-      "13-1151",
-      "25-1021",
-      "25-1022",
-      "25-1031",
-      "25-1041",
-      "25-1042"
-    ],
-    "regions": [
-      "Fresno"
-    ]
-  },
-  {
-    "name": "College of the Sequoias",
-    "sector": "Education",
-    "description": "College of the Sequoias is a community college offering associate degrees, transfer programs, and vocational training to students in the Central Valley.",
-    "occupations": [
-      "11-9031",
-      "13-1111",
-      "13-1151",
-      "25-1011",
-      "25-1021",
-      "25-1022",
-      "25-1031",
-      "25-1041"
-    ],
-    "regions": [
-      "Visalia"
-    ]
-  },
-  {
-    "name": "CommonSpirit Health",
-    "sector": "Healthcare",
-    "description": "CommonSpirit Health is a large Catholic health system dedicated to advancing health for all people, delivering compassionate and high-quality care.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1111",
-      "13-1151",
-      "21-1012",
-      "21-1021",
-      "21-1022"
-    ],
-    "regions": [
-      "Bakersfield-Delano",
-      "Merced",
-      "Oxnard-Thousand Oaks-Ventura",
-      "Sacramento-Roseville-Folsom",
-      "San Luis Obispo-Paso Robles",
-      "Santa Cruz-Watsonville",
-      "Stockton-Lodi"
-    ]
-  },
-  {
-    "name": "Community Action Partnership of San Luis Obispo",
-    "sector": "Non-profit",
-    "description": "Community Action Partnership of San Luis Obispo (CAPSLO) is a non-profit organization dedicated to helping people and changing lives through various community programs.",
-    "occupations": [
-      "11-9199",
-      "13-1111",
-      "13-1151",
-      "21-1012",
-      "21-1015",
-      "21-1021",
-      "21-1022"
-    ],
-    "regions": [
-      "San Luis Obispo-Paso Robles"
-    ]
-  },
-  {
-    "name": "Community Health Systems Professional Services Corporation",
-    "sector": "Healthcare",
-    "description": "Community Health Systems Professional Services Corporation provides management and administrative support to a network of hospitals and healthcare providers.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1111",
-      "13-1151",
-      "21-1012",
-      "21-1021",
-      "21-1022"
-    ],
-    "regions": [
-      "Fresno"
-    ]
-  },
-  {
-    "name": "Community Memorial Healthcare",
-    "sector": "Healthcare",
-    "description": "Community Memorial Healthcare is a not-for-profit health system providing comprehensive medical services to the Ventura County region.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1111",
-      "13-1151",
-      "21-1012",
-      "21-1021",
-      "21-1022"
-    ],
-    "regions": [
-      "Oxnard-Thousand Oaks-Ventura"
-    ]
-  },
-  {
-    "name": "Cottage Health",
-    "sector": "Healthcare",
-    "description": "Cottage Health is a not-for-profit health system serving the Central Coast of California, committed to providing advanced medical care.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1111",
-      "13-1151",
-      "21-1012",
-      "21-1021",
-      "21-1022"
-    ],
-    "regions": [
-      "Santa Maria-Santa Barbara"
-    ]
-  },
-  {
-    "name": "County of Imperial",
-    "sector": "Government",
-    "description": "The County of Imperial provides a wide array of public services, including health, safety, and infrastructure, to its residents.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "13-1081",
-      "13-2011",
-      "17-2051",
-      "19-4099"
-    ],
-    "regions": [
-      "El Centro"
-    ]
-  },
-  {
-    "name": "County of Monterey",
-    "sector": "Government",
-    "description": "The County of Monterey delivers essential government services, manages public resources, and supports the welfare of its diverse population.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "13-1081",
-      "13-2011",
-      "17-2051",
-      "19-4099"
-    ],
-    "regions": [
-      "Salinas"
-    ]
-  },
-  {
-    "name": "County of Napa",
-    "sector": "Government",
-    "description": "The County of Napa provides local government services, including public health, safety, and environmental protection, to its community.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "13-1081",
-      "13-2011",
-      "17-2051",
-      "19-4099"
-    ],
-    "regions": [
-      "Napa"
-    ]
-  },
-  {
-    "name": "County of Riverside",
-    "sector": "Government",
-    "description": "The County of Riverside offers a broad range of public services, from law enforcement to social services, for its large and growing population.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "13-1081",
-      "13-2011",
-      "17-2051",
-      "19-4099"
-    ],
-    "regions": [
-      "Riverside-San Bernardino-Ontario"
-    ]
-  },
-  {
-    "name": "County of San Luis Obispo",
-    "sector": "Government",
-    "description": "The County of San Luis Obispo provides local government services, including public safety, health, and infrastructure, to its residents.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "13-1081",
-      "13-2011",
-      "17-2051",
-      "19-4099"
-    ],
-    "regions": [
-      "San Luis Obispo-Paso Robles"
-    ]
-  },
-  {
-    "name": "County of San Mateo",
-    "sector": "Government",
-    "description": "The County of San Mateo delivers a variety of public services, including health, social, and environmental programs, to its community.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "13-1081",
-      "13-2011",
-      "17-2051",
-      "19-4099"
-    ],
-    "regions": [
-      "San Francisco-San Mateo-Redwood City"
-    ]
-  },
-  {
-    "name": "County of Santa Barbara",
-    "sector": "Government",
-    "description": "The County of Santa Barbara provides essential government services, manages public resources, and supports the well-being of its residents.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "13-1081",
-      "13-2011",
-      "17-2051",
-      "19-4099"
-    ],
-    "regions": [
-      "Santa Maria-Santa Barbara"
-    ]
-  },
-  {
-    "name": "County of Tulare",
-    "sector": "Government",
-    "description": "The County of Tulare offers a range of public services, including health, safety, and infrastructure, to its agricultural and urban communities.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "13-1081",
-      "13-2011",
-      "17-2051",
-      "19-4099"
-    ],
-    "regions": [
-      "Visalia"
-    ]
-  },
-  {
-    "name": "County of Yuba",
-    "sector": "Government",
-    "description": "The County of Yuba provides local government services, including public safety, health, and infrastructure, to its residents.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "13-1081",
-      "13-2011",
-      "17-2051",
-      "19-4099"
-    ],
-    "regions": [
-      "Yuba City"
-    ]
-  },
-  {
-    "name": "Cuesta College",
-    "sector": "Education",
-    "description": "Cuesta College is a public community college offering associate degrees, transfer programs, and career technical education to students on the Central Coast.",
-    "occupations": [
-      "11-9031",
-      "13-1111",
-      "13-1151",
-      "25-1011",
-      "25-1021",
-      "25-1022",
-      "25-1031",
-      "25-1041"
-    ],
-    "regions": [
-      "San Luis Obispo-Paso Robles"
-    ]
-  },
-  {
-    "name": "Cypress Healthcare Partners",
-    "sector": "Healthcare",
-    "description": "Cypress Healthcare Partners is a physician-led organization focused on improving healthcare delivery and patient outcomes through integrated care models.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1111",
-      "13-1151",
-      "21-1012",
-      "21-1021",
-      "21-1022"
-    ],
-    "regions": [
-      "Salinas"
-    ]
-  },
-  {
-    "name": "DCS Corporation",
-    "sector": "Defense Contractor",
-    "description": "DCS Corporation is an employee-owned company providing advanced technology and engineering solutions to government and commercial clients, primarily in defense.",
-    "occupations": [
-      "11-2021",
-      "11-9041",
-      "13-1111",
-      "15-1211",
-      "15-1241",
-      "17-2071",
-      "17-2072",
-      "17-2112"
-    ],
-    "regions": [
-      "Bakersfield-Delano"
-    ]
-  },
-  {
-    "name": "Delaware North",
-    "sector": "Hospitality",
-    "description": "Delaware North is a global hospitality and food service company operating in various venues including airports, sports stadiums, and national parks.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3021",
-      "11-3051",
-      "11-9051",
-      "13-1111"
-    ],
-    "regions": [
-      "Visalia"
-    ]
-  },
-  {
-    "name": "Doctors Medical Center of Modesto",
-    "sector": "Healthcare",
-    "description": "Doctors Medical Center of Modesto is a full-service acute care hospital providing comprehensive medical and surgical services to the Central Valley.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1111",
-      "13-1151",
-      "21-1012",
-      "21-1021",
-      "21-1022"
-    ],
-    "regions": [
-      "Modesto"
-    ]
-  },
-  {
-    "name": "Dollar General",
-    "sector": "Retail",
-    "description": "Dollar General is a discount retailer offering everyday essentials, food, and general merchandise at affordable prices in convenient neighborhood locations.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3051",
-      "11-9051",
-      "13-1111",
-      "13-1151"
-    ],
-    "regions": [
-      "El Centro"
-    ]
-  },
-  {
-    "name": "Domino's Pizza",
-    "sector": "Food Service",
-    "description": "Domino's Pizza is a global pizza delivery company offering a variety of pizzas, sides, and desserts for carryout or delivery.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3051",
-      "11-9051",
-      "13-1111",
-      "13-1151"
-    ],
-    "regions": [
-      "Anaheim-Santa Ana-Irvine",
-      "Fresno",
-      "Los Angeles-Long Beach-Glendale",
-      "Oxnard-Thousand Oaks-Ventura",
-      "Riverside-San Bernardino-Ontario",
-      "Salinas",
-      "Stockton-Lodi"
-    ]
-  },
-  {
-    "name": "El Centro Regional Medical Center",
-    "sector": "Healthcare",
-    "description": "El Centro Regional Medical Center is an acute care hospital providing a wide range of medical services to the Imperial Valley community.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1111",
-      "13-1151",
-      "21-1012",
-      "21-1021",
-      "21-1022"
-    ],
-    "regions": [
-      "El Centro"
-    ]
-  },
-  {
-    "name": "Emanuel Medical Center",
-    "sector": "Healthcare",
-    "description": "Emanuel Medical Center is a full-service acute care hospital providing comprehensive medical services to the Turlock community.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "13-2051",
-      "13-2071",
-      "21-1012"
-    ],
-    "regions": [
-      "Modesto"
-    ]
-  },
-  {
-    "name": "Empirical Systems Aerospace",
-    "sector": "Aerospace Engineering",
-    "description": "Empirical Systems Aerospace specializes in advanced aerospace engineering, design, and analysis for various aircraft and spacecraft systems.",
-    "occupations": [
-      "15-1221",
-      "15-1299",
-      "17-2011",
-      "17-2072",
-      "17-2141",
-      "17-2199",
-      "17-3023",
-      "17-3024"
-    ],
-    "regions": [
-      "San Luis Obispo-Paso Robles"
-    ]
-  },
-  {
-    "name": "Enloe Medical Center",
-    "sector": "Healthcare",
-    "description": "Enloe Medical Center is a regional medical center offering a wide range of healthcare services, including emergency, surgical, and specialty care.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "13-2051",
-      "13-2071",
-      "21-1012"
-    ],
-    "regions": [
-      "Chico"
-    ]
-  },
-  {
-    "name": "Esri",
-    "sector": "Software Development",
-    "description": "Esri is a leading international supplier of geographic information system (GIS) software, web GIS, and geodatabase management applications.",
-    "occupations": [
-      "15-1251",
-      "15-1252",
-      "15-1253",
-      "15-1254",
-      "15-1299",
-      "15-2099",
-      "17-2051",
-      "19-3099"
-    ],
-    "regions": [
-      "Riverside-San Bernardino-Ontario"
-    ]
-  },
-  {
-    "name": "Family Healthcare Network",
-    "sector": "Healthcare",
-    "description": "Family Healthcare Network provides comprehensive primary and preventative healthcare services to underserved communities.",
-    "occupations": [
-      "11-9111",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "21-1012",
-      "21-1022",
-      "21-1023"
-    ],
-    "regions": [
-      "Visalia"
-    ]
-  },
-  {
-    "name": "Feather Falls Casino",
-    "sector": "Hospitality",
-    "description": "Feather Falls Casino offers gaming, dining, and entertainment options in a resort setting.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3021",
-      "11-3031",
-      "11-9051",
-      "13-1071",
-      "13-1151",
-      "13-2051"
-    ],
-    "regions": [
-      "Chico"
-    ]
-  },
-  {
-    "name": "Food 4 Less",
-    "sector": "Retail",
-    "description": "Food 4 Less is a grocery store chain offering a wide selection of food and household products at competitive prices.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3021",
-      "11-3031",
-      "11-9051",
-      "13-1071",
-      "13-1151"
-    ],
-    "regions": [
-      "El Centro"
-    ]
-  },
-  {
-    "name": "Foster Farms",
-    "sector": "Food Production",
-    "description": "Foster Farms is a leading poultry and prepared foods company, known for its fresh and frozen chicken and turkey products.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3051",
-      "11-3061",
-      "11-9013",
-      "13-1071",
-      "13-1151",
-      "17-2112"
-    ],
-    "regions": [
-      "Fresno",
-      "Merced"
-    ]
-  },
-  {
-    "name": "Foster Poultry Farms",
-    "sector": "Food Production",
-    "description": "Foster Poultry Farms is a leading poultry and prepared foods company, known for its fresh and frozen chicken and turkey products.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3051",
-      "11-3061",
-      "11-9013",
-      "13-1071",
-      "13-1151",
-      "17-2112"
-    ],
-    "regions": [
-      "Merced"
-    ]
-  },
-  {
-    "name": "Fresno Unified School District",
-    "sector": "Education",
-    "description": "Fresno Unified School District is the fourth-largest school district in California, serving a diverse student population across numerous schools.",
-    "occupations": [
-      "11-9031",
-      "11-9032",
-      "11-9033",
-      "13-1071",
-      "13-1111",
-      "13-1151",
-      "25-1011",
-      "25-1021"
-    ],
-    "regions": [
-      "Fresno"
-    ]
-  },
-  {
-    "name": "GHD",
-    "sector": "Consulting Engineering",
-    "description": "GHD is a global professional services company providing engineering, architecture, environmental, and construction services.",
-    "occupations": [
-      "11-9041",
-      "13-1011",
-      "13-1041",
-      "13-1111",
-      "17-2051",
-      "17-2081",
-      "17-2111",
-      "17-2199"
-    ],
-    "regions": [
-      "Santa Rosa-Petaluma"
-    ]
-  },
-  {
-    "name": "General Atomics",
-    "sector": "Defense Aerospace",
-    "description": "General Atomics is a defense contractor specializing in advanced technology solutions, including unmanned aircraft systems and nuclear technologies.",
-    "occupations": [
-      "11-2022",
-      "11-9041",
-      "15-1221",
-      "17-2011",
-      "17-2072",
-      "17-2141",
-      "17-2199",
-      "17-3023"
-    ],
-    "regions": [
-      "San Diego-Chula Vista-Carlsbad"
-    ]
-  },
-  {
-    "name": "General Motors",
-    "sector": "Automotive",
-    "description": "General Motors is a global automotive company that designs, manufactures, markets, and distributes vehicles and vehicle parts.",
-    "occupations": [
-      "11-2022",
-      "11-3051",
-      "11-3061",
-      "13-1071",
-      "13-1111",
-      "17-2071",
-      "17-2141",
-      "17-2199"
-    ],
-    "regions": [
-      "San Jose-Sunnyvale-Santa Clara"
-    ]
-  },
-  {
-    "name": "Golden Valley Health CTRS",
-    "sector": "Healthcare",
-    "description": "Golden Valley Health Centers provide comprehensive primary and preventative healthcare services to underserved communities.",
-    "occupations": [
-      "11-9111",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "21-1012",
-      "21-1022",
-      "21-1023"
-    ],
-    "regions": [
-      "Merced"
-    ]
-  },
-  {
-    "name": "HCA Healthcare",
-    "sector": "Healthcare",
-    "description": "HCA Healthcare is one of the largest healthcare providers in the U.S., operating hospitals and other healthcare facilities.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "13-2051",
-      "13-2071",
-      "21-1012"
-    ],
-    "regions": [
-      "Oxnard-Thousand Oaks-Ventura"
-    ]
-  },
-  {
-    "name": "Hanford Post Acute",
-    "sector": "Healthcare",
-    "description": "Hanford Post Acute provides skilled nursing and rehabilitation services for patients recovering from illness or injury.",
-    "occupations": [
-      "11-9111",
-      "13-1071",
-      "13-1111",
-      "21-1012",
-      "21-1022",
-      "21-1023"
-    ],
-    "regions": [
-      "Hanford-Corcoran"
-    ]
-  },
-  {
-    "name": "Headway",
-    "sector": "Staffing Solutions",
-    "description": "Headway is a staffing and human resources solutions company that connects talent with employers across various industries.",
-    "occupations": [
-      "13-1071",
-      "13-1075",
-      "13-1111",
-      "13-1141",
-      "13-1151",
-      "13-2051",
-      "13-2071"
-    ],
-    "regions": [
-      "El Centro"
-    ]
-  },
-  {
-    "name": "Hilmar Cheese Company",
-    "sector": "Food Production",
-    "description": "Hilmar Cheese Company is a major producer of cheese and whey products, serving customers worldwide.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3051",
-      "11-3061",
-      "11-9013",
-      "13-1071",
-      "13-1151",
-      "17-2112"
-    ],
-    "regions": [
-      "Merced"
-    ]
-  },
-  {
-    "name": "Hilton",
-    "sector": "Hospitality",
-    "description": "Hilton is a global hospitality company operating a diverse portfolio of hotels and resorts.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3021",
-      "11-3031",
-      "11-9051",
-      "13-1071",
-      "13-1151",
-      "13-2051"
-    ],
-    "regions": [
-      "Anaheim-Santa Ana-Irvine"
-    ]
-  },
-  {
-    "name": "Hoag Health System",
-    "sector": "Healthcare",
-    "description": "Hoag Health System is a non-profit regional healthcare network providing a wide range of medical services.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "13-2051",
-      "13-2071",
-      "21-1012"
-    ],
-    "regions": [
-      "Anaheim-Santa Ana-Irvine"
-    ]
-  },
-  {
-    "name": "Huntington Ingalls Industries",
-    "sector": "Defense Shipbuilding",
-    "description": "Huntington Ingalls Industries is the largest military shipbuilding company in the United States, also providing professional services.",
-    "occupations": [
-      "11-2022",
-      "11-9041",
-      "15-1221",
-      "17-2011",
-      "17-2072",
-      "17-2141",
-      "17-2199",
-      "17-3023"
-    ],
-    "regions": [
-      "Modesto",
-      "Yuba City"
-    ]
-  },
-  {
-    "name": "Hyatt",
-    "sector": "Hospitality",
-    "description": "Hyatt Hotels Corporation is a global hospitality company with a portfolio of luxury and upscale hotel brands.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3021",
-      "11-3031",
-      "11-9051",
-      "13-1071",
-      "13-1151",
-      "13-2051"
-    ],
-    "regions": [
-      "Napa",
-      "Salinas",
-      "San Diego-Chula Vista-Carlsbad"
-    ]
-  },
-  {
-    "name": "Imperial Irrigation District",
-    "sector": "Utilities",
-    "description": "Imperial Irrigation District manages water and power resources for the Imperial Valley, providing essential services to the region.",
-    "occupations": [
-      "11-9041",
-      "13-1011",
-      "13-1041",
-      "13-1111",
-      "17-2051",
-      "17-2081",
-      "17-2111",
-      "17-2199"
-    ],
-    "regions": [
-      "El Centro"
-    ]
-  },
-  {
-    "name": "Imperial Valley College",
-    "sector": "Education",
-    "description": "Imperial Valley College is a public community college offering associate degrees and vocational training programs.",
-    "occupations": [
-      "11-9031",
-      "11-9032",
-      "11-9033",
-      "13-1071",
-      "13-1111",
-      "13-1151",
-      "25-1011",
-      "25-1021"
-    ],
-    "regions": [
-      "El Centro"
-    ]
-  },
-  {
-    "name": "Integral Consulting Services",
-    "sector": "IT Consulting",
-    "description": "Integral Consulting Services provides IT consulting, software development, and cybersecurity solutions to government and commercial clients.",
-    "occupations": [
-      "15-1211",
-      "15-1232",
-      "15-1241",
-      "15-1251",
-      "15-1252",
-      "15-1253",
-      "15-1254",
-      "15-1299"
-    ],
-    "regions": [
-      "Salinas"
-    ]
-  },
-  {
-    "name": "Interwest Insurance Services",
-    "sector": "Insurance",
-    "description": "Interwest Insurance Services is an independent insurance agency offering a wide range of personal and commercial insurance products.",
-    "occupations": [
-      "11-2021",
-      "13-1031",
-      "13-1032",
-      "13-1071",
-      "13-1111",
-      "13-1151",
-      "13-2051"
-    ],
-    "regions": [
-      "Chico"
-    ]
-  },
-  {
-    "name": "Jt4",
-    "sector": "Defense Support",
-    "description": "JT4 provides engineering and technical support to the U.S. Air Force and Navy for test and training ranges.",
-    "occupations": [
-      "11-2022",
-      "11-9041",
-      "15-1221",
-      "17-2011",
-      "17-2072",
-      "17-2141",
-      "17-2199",
-      "17-3023"
-    ],
-    "regions": [
-      "Bakersfield-Delano"
-    ]
-  },
-  {
-    "name": "Kaweah Health",
-    "sector": "Healthcare",
-    "description": "Kaweah Health is a public healthcare district providing comprehensive medical services to the Visalia area.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "13-2051",
-      "13-2071",
-      "21-1012"
-    ],
-    "regions": [
-      "Visalia"
-    ]
-  },
-  {
-    "name": "Kern Community College District",
-    "sector": "Education",
-    "description": "Kern Community College District oversees several community colleges, offering diverse educational programs and workforce training.",
-    "occupations": [
-      "11-9031",
-      "11-9032",
-      "11-9033",
-      "13-1071",
-      "13-1111",
-      "13-1151",
-      "25-1011",
-      "25-1021"
-    ],
-    "regions": [
-      "Bakersfield-Delano"
-    ]
-  },
-  {
-    "name": "Kern County",
-    "sector": "Government",
-    "description": "Kern County provides a wide range of public services, including public safety, health, and infrastructure management, to its residents.",
-    "occupations": [
-      "11-9041",
-      "13-1011",
-      "13-1041",
-      "13-1111",
-      "17-2051",
-      "17-2081",
-      "17-2111",
-      "17-2199"
-    ],
-    "regions": [
-      "Bakersfield-Delano"
-    ]
-  },
-  {
-    "name": "Keysight",
-    "sector": "Technology",
-    "description": "Keysight Technologies is a leading technology company that helps enterprises, service providers, and governments accelerate innovation to connect and secure the world.",
-    "occupations": [
-      "15-1241",
-      "17-2071",
-      "17-2072",
-      "17-2112",
-      "17-2141",
-      "15-1251",
-      "11-2021",
-      "11-9041"
-    ],
-    "regions": [
-      "Santa Rosa-Petaluma"
-    ]
-  },
-  {
-    "name": "Kings County Corp",
-    "sector": "Government",
-    "description": "Kings County Corporation provides a range of public services to the residents of Kings County, California.",
-    "occupations": [
-      "13-1071",
-      "13-1081",
-      "13-1111",
-      "13-1161",
-      "11-9199",
-      "21-1012",
-      "23-1011",
-      "11-3012"
-    ],
-    "regions": [
-      "Hanford-Corcoran"
-    ]
-  },
-  {
-    "name": "LLNL",
-    "sector": "Research",
-    "description": "Lawrence Livermore National Laboratory is a premier research and development institution for science and engineering.",
-    "occupations": [
-      "19-1012",
-      "19-1021",
-      "19-2012",
-      "15-1221",
-      "15-1241",
-      "17-2071",
-      "17-2081",
-      "19-4099"
-    ],
-    "regions": [
-      "Oakland-Fremont-Berkeley"
-    ]
-  },
-  {
-    "name": "Lawrence Livermore National Laboratory",
-    "sector": "Research",
-    "description": "Lawrence Livermore National Laboratory is a premier research and development institution for science and engineering.",
-    "occupations": [
-      "19-1012",
-      "19-1021",
-      "19-2012",
-      "15-1221",
-      "15-1241",
-      "17-2071",
-      "17-2081",
-      "19-4099"
-    ],
-    "regions": [
-      "Oakland-Fremont-Berkeley"
-    ]
-  },
-  {
-    "name": "Legends Hospitality",
-    "sector": "Hospitality",
-    "description": "Legends Hospitality is a global premium experiences company, providing hospitality, merchandise, and venue management services.",
-    "occupations": [
-      "11-3012",
-      "11-3021",
-      "11-3051",
-      "11-9051",
-      "13-1121",
-      "13-1151",
-      "11-9199"
-    ],
-    "regions": [
-      "Yuba City"
-    ]
-  },
-  {
-    "name": "Leidos",
-    "sector": "Technology",
-    "description": "Leidos is a Fortune 500 company that provides scientific, engineering, systems integration, and technical services.",
-    "occupations": [
-      "15-1211",
-      "15-1241",
-      "17-2071",
-      "17-2081",
-      "13-1111",
-      "13-1071",
-      "11-9041",
-      "11-2021"
-    ],
-    "regions": [
-      "Salinas",
-      "Yuba City"
-    ]
-  },
-  {
-    "name": "Leprino Foods Company",
-    "sector": "Food Production",
-    "description": "Leprino Foods Company is the world's largest mozzarella cheese maker and a leading producer of whey protein and lactose.",
-    "occupations": [
-      "11-2022",
-      "11-3051",
-      "11-3061",
-      "11-9041",
-      "13-1071",
-      "13-1111",
-      "17-2112",
-      "19-4012"
-    ],
-    "regions": [
-      "Hanford-Corcoran"
-    ]
-  },
-  {
-    "name": "LifeStance Health",
-    "sector": "Healthcare",
-    "description": "LifeStance Health is a leading provider of outpatient mental health care services.",
-    "occupations": [
-      "21-1012",
-      "21-1013",
-      "21-1022",
-      "21-1023",
-      "21-1094",
-      "11-9111",
-      "11-9121",
-      "11-3012"
-    ],
-    "regions": [
-      "San Diego-Chula Vista-Carlsbad"
-    ]
-  },
-  {
-    "name": "Loma Linda University",
-    "sector": "Education",
-    "description": "Loma Linda University is a health sciences university that offers a wide range of academic programs.",
-    "occupations": [
-      "25-1071",
-      "25-1022",
-      "25-1031",
-      "25-1041",
-      "25-1051",
-      "25-1053",
-      "11-9033",
-      "11-9039"
-    ],
-    "regions": [
-      "Riverside-San Bernardino-Ontario"
-    ]
-  },
-  {
-    "name": "Lompoc Valley Medical Center",
-    "sector": "Healthcare",
-    "description": "Lompoc Valley Medical Center provides comprehensive healthcare services to the Lompoc Valley community.",
-    "occupations": [
-      "11-9111",
-      "11-9121",
-      "11-3012",
-      "13-1071",
-      "13-1111",
-      "21-1012",
-      "21-1022",
-      "11-3021"
-    ],
-    "regions": [
-      "Santa Maria-Santa Barbara"
-    ]
-  },
-  {
-    "name": "Lowe's",
-    "sector": "Retail",
-    "description": "Lowe's is a retail company specializing in home improvement products and services.",
-    "occupations": [
-      "11-2022",
-      "11-3012",
-      "11-3021",
-      "11-3051",
-      "11-9051",
-      "13-1121",
-      "13-1151",
-      "11-9199"
-    ],
-    "regions": [
-      "Visalia"
-    ]
-  },
-  {
-    "name": "MarinHealth",
-    "sector": "Healthcare",
-    "description": "MarinHealth is a healthcare network providing a full spectrum of health services to the Marin County community.",
-    "occupations": [
-      "11-9111",
-      "11-9121",
-      "11-3012",
-      "13-1071",
-      "13-1111",
-      "21-1012",
-      "21-1022",
-      "11-3021"
-    ],
-    "regions": [
-      "San Rafael"
-    ]
-  },
-  {
-    "name": "Marriott International",
-    "sector": "Hospitality",
-    "description": "Marriott International is a leading global lodging company with an extensive portfolio of hotels and resorts.",
-    "occupations": [
-      "11-3012",
-      "11-3021",
-      "11-3051",
-      "11-9051",
-      "13-1121",
-      "13-1151",
-      "11-9199"
-    ],
-    "regions": [
-      "Anaheim-Santa Ana-Irvine",
-      "Riverside-San Bernardino-Ontario",
-      "Santa Maria-Santa Barbara"
-    ]
-  },
-  {
-    "name": "Marysville Joint Unified School District",
-    "sector": "Education",
-    "description": "Marysville Joint Unified School District provides public education services to students in the Marysville area.",
-    "occupations": [
-      "11-9031",
-      "11-9032",
-      "11-9033",
-      "11-9039",
-      "25-1021",
-      "25-1022",
-      "25-1031",
-      "25-1041"
-    ],
-    "regions": [
-      "Yuba City"
-    ]
-  },
-  {
-    "name": "Maxim Healthcare Services",
-    "sector": "Healthcare",
-    "description": "Maxim Healthcare Services is a national provider of home healthcare, staffing, and wellness services.",
-    "occupations": [
-      "11-9111",
-      "11-9121",
-      "11-3012",
-      "13-1071",
-      "13-1111",
-      "21-1012",
-      "21-1022",
-      "11-3021"
-    ],
-    "regions": [
-      "Vallejo"
-    ]
-  },
-  {
-    "name": "Merced College",
-    "sector": "Education",
-    "description": "Merced College is a community college offering associate degrees, certificates, and transfer programs.",
-    "occupations": [
-      "11-9031",
-      "11-9032",
-      "11-9033",
-      "11-9039",
-      "25-1021",
-      "25-1022",
-      "25-1031",
-      "25-1041"
-    ],
-    "regions": [
-      "Merced"
-    ]
-  },
-  {
-    "name": "Merced County",
-    "sector": "Government",
-    "description": "Merced County provides a wide range of public services to its residents, including health, social, and administrative services.",
-    "occupations": [
-      "13-1071",
-      "13-1081",
-      "13-1111",
-      "13-1161",
-      "11-9199",
-      "21-1012",
-      "23-1011",
-      "11-3012"
-    ],
-    "regions": [
-      "Merced"
-    ]
-  },
-  {
-    "name": "Mercy",
-    "sector": "Healthcare",
-    "description": "Mercy is a Catholic healthcare system providing compassionate care across multiple states.",
-    "occupations": [
-      "11-9111",
-      "11-9121",
-      "11-3012",
-      "13-1071",
-      "13-1111",
-      "21-1012",
-      "21-1022",
-      "11-3021"
-    ],
-    "regions": [
-      "Redding"
-    ]
-  },
-  {
-    "name": "Mercy Medical Center Redding",
-    "sector": "Healthcare",
-    "description": "Mercy Medical Center Redding is a hospital providing comprehensive medical services to the Redding community.",
-    "occupations": [
-      "11-9111",
-      "11-9121",
-      "11-3012",
-      "13-1071",
-      "13-1111",
-      "21-1012",
-      "21-1022",
-      "11-3021"
-    ],
-    "regions": [
-      "Redding"
-    ]
-  },
-  {
-    "name": "Mercyhealth",
-    "sector": "Healthcare",
-    "description": "Mercyhealth is a multi-regional health system offering a full range of healthcare services.",
-    "occupations": [
-      "11-9111",
-      "11-9121",
-      "11-3012",
-      "13-1071",
-      "13-1111",
-      "21-1012",
-      "21-1022",
-      "11-3021"
-    ],
-    "regions": [
-      "Merced"
-    ]
-  },
-  {
-    "name": "Mollie Stone's Markets",
-    "sector": "Retail",
-    "description": "Mollie Stone's Markets is a family-owned grocery store chain offering high-quality food products.",
-    "occupations": [
-      "11-2022",
-      "11-3012",
-      "11-3021",
-      "11-3051",
-      "11-9051",
-      "13-1121",
-      "13-1151",
-      "11-9199"
-    ],
-    "regions": [
-      "San Rafael"
-    ]
-  },
-  {
-    "name": "Montage Health",
-    "sector": "Healthcare",
-    "description": "Montage Health is a non-profit healthcare system serving the Monterey Peninsula.",
-    "occupations": [
-      "11-9111",
-      "11-9121",
-      "11-3012",
-      "13-1071",
-      "13-1111",
-      "21-1012",
-      "21-1022",
-      "11-3021"
-    ],
-    "regions": [
-      "Salinas"
-    ]
-  },
-  {
-    "name": "Monterey Peninsula College",
-    "sector": "Education",
-    "description": "Monterey Peninsula College is a community college offering academic and vocational programs.",
-    "occupations": [
-      "11-9031",
-      "11-9032",
-      "11-9033",
-      "11-9039",
-      "25-1021",
-      "25-1022",
-      "25-1031",
-      "25-1041"
-    ],
-    "regions": [
-      "Salinas"
-    ]
-  },
-  {
-    "name": "Mount Hermon Association",
-    "sector": "Non-profit",
-    "description": "Mount Hermon Association is a Christian conference and retreat center offering programs and facilities.",
-    "occupations": [
-      "11-3012",
-      "11-3021",
-      "11-3051",
-      "11-9051",
-      "13-1121",
-      "13-1151",
-      "11-9199"
-    ],
-    "regions": [
-      "Santa Cruz-Watsonville"
-    ]
-  },
-  {
-    "name": "Napa Post Acute",
-    "sector": "Healthcare",
-    "description": "Napa Post Acute provides skilled nursing and rehabilitation services.",
-    "occupations": [
-      "11-9111",
-      "11-9121",
-      "11-3012",
-      "13-1071",
-      "13-1111",
-      "21-1012",
-      "21-1022",
-      "11-3021"
-    ],
-    "regions": [
-      "Napa"
-    ]
-  },
-  {
-    "name": "Nas Lemoore",
-    "sector": "Government",
-    "description": "Naval Air Station Lemoore is a United States Navy base located in Lemoore, California.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3021",
-      "11-9041",
-      "13-1071",
-      "13-1111",
-      "17-2071",
-      "17-2112"
-    ],
-    "regions": [
-      "Hanford-Corcoran"
-    ]
-  },
-  {
-    "name": "New York Community Bank",
-    "sector": "Finance",
-    "description": "New York Community Bank is a leading regional bank offering a variety of financial products and services.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3021",
-      "11-3031",
-      "13-1011",
-      "13-1020",
-      "13-1071",
-      "13-1111"
-    ],
-    "regions": [
-      "Santa Rosa-Petaluma"
-    ]
-  },
-  {
-    "name": "One Medical",
-    "sector": "Healthcare",
-    "description": "One Medical is a membership-based primary care practice offering a human-centered and technology-powered approach to healthcare.",
-    "occupations": [
-      "11-9111",
-      "11-9121",
-      "11-3012",
-      "13-1071",
-      "13-1111",
-      "21-1012",
-      "21-1022",
-      "11-3021"
-    ],
-    "regions": [
-      "San Rafael"
-    ]
-  },
-  {
-    "name": "OpenAI",
-    "sector": "Technology",
-    "description": "OpenAI is an AI research and deployment company dedicated to ensuring that artificial general intelligence benefits all of humanity.",
-    "occupations": [
-      "15-1241",
-      "15-1251",
-      "15-1299",
-      "15-2051",
-      "11-2021",
-      "11-9041",
-      "13-1111",
-      "13-1161"
-    ],
-    "regions": [
-      "San Francisco-San Mateo-Redwood City"
-    ]
-  },
-  {
-    "name": "Oroville Hospital",
-    "sector": "Healthcare",
-    "description": "Oroville Hospital is a general acute care hospital serving the Oroville community.",
-    "occupations": [
-      "11-9111",
-      "11-9121",
-      "11-3012",
-      "13-1071",
-      "13-1111",
-      "21-1012",
-      "21-1022",
-      "11-3021"
-    ],
-    "regions": [
-      "Chico"
-    ]
-  },
-  {
-    "name": "Palo Alto Foundation Medical Group",
-    "sector": "Healthcare",
-    "description": "Palo Alto Foundation Medical Group is a not-for-profit healthcare organization that provides medical services to communities in the San Francisco Bay Area.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "15-1255",
-      "21-1012",
-      "21-1021"
-    ],
-    "regions": [
-      "Santa Cruz-Watsonville"
-    ]
-  },
-  {
-    "name": "Paq",
-    "sector": "Technology",
-    "description": "PAQ is a technology company specializing in innovative software solutions and IT consulting services.",
-    "occupations": [
-      "11-2021",
-      "11-3021",
-      "15-1251",
-      "15-1253",
-      "15-1255",
-      "15-1299"
-    ],
-    "regions": [
-      "San Luis Obispo-Paso Robles",
-      "Stockton-Lodi"
-    ]
-  },
-  {
-    "name": "Partnership Healthplan of California",
-    "sector": "Healthcare",
-    "description": "Partnership HealthPlan of California is a non-profit community-based health care organization that contracts with the State to administer Medi-Cal benefits.",
-    "occupations": [
-      "11-9111",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "15-1255",
-      "21-1012",
-      "21-1021"
-    ],
-    "regions": [
-      "Vallejo"
-    ]
-  },
-  {
-    "name": "PayPal",
-    "sector": "Fintech",
-    "description": "PayPal is a global technology platform and digital payments company that enables digital and mobile payments on behalf of consumers and merchants worldwide.",
-    "occupations": [
-      "11-2021",
-      "11-3021",
-      "13-1111",
-      "13-2051",
-      "15-1251",
-      "15-1253",
-      "15-1255",
-      "15-1299"
-    ],
-    "regions": [
-      "San Jose-Sunnyvale-Santa Clara"
-    ]
-  },
-  {
-    "name": "Pd Systems",
-    "sector": "Defense",
-    "description": "PD Systems is a defense contractor providing logistics, engineering, and technical services to government clients.",
-    "occupations": [
-      "11-2021",
-      "11-3051",
-      "13-1081",
-      "13-1111",
-      "17-2071",
-      "17-2112",
-      "17-2199"
-    ],
-    "regions": [
-      "Salinas"
-    ]
-  },
-  {
-    "name": "Pechanga Resort & Casino",
-    "sector": "Hospitality",
-    "description": "Pechanga Resort Casino is a Native American casino and resort in Temecula, California, offering gaming, entertainment, and hospitality services.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3031",
-      "11-9051",
-      "13-1071",
-      "13-1111",
-      "13-1161"
-    ],
-    "regions": [
-      "Riverside-San Bernardino-Ontario"
-    ]
-  },
-  {
-    "name": "Pennymac",
-    "sector": "Financial Services",
-    "description": "PennyMac Financial Services, Inc. is a specialty financial services firm that focuses on the production and servicing of U.S. mortgage loans.",
-    "occupations": [
-      "11-2021",
-      "11-3031",
-      "13-1031",
-      "13-1041",
-      "13-1051",
-      "13-1071",
-      "13-1111",
-      "13-2051"
-    ],
-    "regions": [
-      "Oxnard-Thousand Oaks-Ventura"
-    ]
-  },
-  {
-    "name": "PetCo",
-    "sector": "Retail",
-    "description": "Petco Health and Wellness Company, Inc. is an American pet supplies retailer, with its headquarters in San Diego, California.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3031",
-      "11-9051",
-      "13-1071",
-      "13-1111",
-      "13-1161"
-    ],
-    "regions": [
-      "Merced"
-    ]
-  },
-  {
-    "name": "Pioneers Memorial Healthcare District",
-    "sector": "Healthcare",
-    "description": "Pioneers Memorial Healthcare District is a healthcare provider offering a range of medical services to the Imperial Valley community.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "15-1255",
-      "21-1012",
-      "21-1021"
-    ],
-    "regions": [
-      "El Centro"
-    ]
-  },
-  {
-    "name": "Qualcomm",
-    "sector": "Technology",
-    "description": "Qualcomm is a global leader in wireless technology and innovation, developing and commercializing foundational technologies for the mobile industry.",
-    "occupations": [
-      "11-2021",
-      "11-3021",
-      "15-1251",
-      "15-1253",
-      "15-1255",
-      "17-2071",
-      "17-2112",
-      "17-2199"
-    ],
-    "regions": [
-      "San Diego-Chula Vista-Carlsbad"
-    ]
-  },
-  {
-    "name": "RTX",
-    "sector": "Aerospace & Defense",
-    "description": "RTX Corporation, formerly Raytheon Technologies, is an American multinational aerospace and defense conglomerate.",
-    "occupations": [
-      "11-2021",
-      "11-3051",
-      "13-1081",
-      "13-1111",
-      "17-2071",
-      "17-2112",
-      "17-2199"
-    ],
-    "regions": [
-      "Santa Maria-Santa Barbara",
-      "Vallejo"
-    ]
-  },
-  {
-    "name": "Redding Rancheria",
-    "sector": "Tribal Government",
-    "description": "Redding Rancheria is a federally recognized tribe that provides governmental services, healthcare, and economic development for its members and the community.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3031",
-      "11-9051",
-      "13-1071",
-      "13-1111",
-      "13-1161"
-    ],
-    "regions": [
-      "Redding"
-    ]
-  },
-  {
-    "name": "Redwood Credit Union",
-    "sector": "Financial Services",
-    "description": "Redwood Credit Union is a not-for-profit financial cooperative providing banking services to members in the North Bay and San Francisco.",
-    "occupations": [
-      "11-2021",
-      "11-3031",
-      "13-1031",
-      "13-1041",
-      "13-1051",
-      "13-1071",
-      "13-1111",
-      "13-2051"
-    ],
-    "regions": [
-      "Napa"
-    ]
-  },
-  {
-    "name": "Ryder",
-    "sector": "Logistics",
-    "description": "Ryder System, Inc. is an American transportation and logistics company, providing fleet management, supply chain management, and dedicated transportation services.",
-    "occupations": [
-      "11-2021",
-      "11-3071",
-      "13-1081",
-      "13-1111",
-      "13-1161",
-      "17-2071",
-      "17-2112",
-      "17-2199"
-    ],
-    "regions": [
-      "Stockton-Lodi"
-    ]
-  },
-  {
-    "name": "Safeway",
-    "sector": "Retail",
-    "description": "Safeway is an American supermarket chain founded by Marion Barton Skaggs in April 1915 in American Falls, Idaho.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3031",
-      "11-9051",
-      "13-1071",
-      "13-1111",
-      "13-1161"
-    ],
-    "regions": [
-      "Santa Rosa-Petaluma"
-    ]
-  },
-  {
-    "name": "Saint Joseph Medical Center",
-    "sector": "Healthcare",
-    "description": "Saint Joseph Medical Center is a hospital providing comprehensive medical care, including emergency services, surgery, and specialized treatments.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "15-1255",
-      "21-1012",
-      "21-1021"
-    ],
-    "regions": [
-      "Redding"
-    ]
-  },
-  {
-    "name": "Salesforce",
-    "sector": "Technology",
-    "description": "Salesforce is a cloud-based software company that provides customer relationship management (CRM) service and a complementary suite of enterprise applications focused on customer service, marketing automation, analytics, and application development.",
-    "occupations": [
-      "11-2021",
-      "11-3021",
-      "13-1111",
-      "13-2051",
-      "15-1251",
-      "15-1253",
-      "15-1255",
-      "15-1299"
-    ],
-    "regions": [
-      "San Francisco-San Mateo-Redwood City"
-    ]
-  },
-  {
-    "name": "San Bernardino County",
-    "sector": "Government",
-    "description": "San Bernardino County is a local government entity providing public services, administration, and community programs to its residents.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3031",
-      "11-9051",
-      "13-1071",
-      "13-1111",
-      "13-1161"
-    ],
-    "regions": [
-      "Riverside-San Bernardino-Ontario"
-    ]
-  },
-  {
-    "name": "San Joaquin County",
-    "sector": "Government",
-    "description": "San Joaquin County is a local government entity providing public services, administration, and community programs to its residents.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3031",
-      "11-9051",
-      "13-1071",
-      "13-1111",
-      "13-1161"
-    ],
-    "regions": [
-      "Stockton-Lodi"
-    ]
-  },
-  {
-    "name": "San Joaquin Delta College",
-    "sector": "Education",
-    "description": "San Joaquin Delta College is a public community college in Stockton, California, offering associate degrees and vocational training.",
-    "occupations": [
-      "11-9033",
-      "13-1111",
-      "13-1151",
-      "13-1161",
-      "25-1011",
-      "25-1021",
-      "25-1031",
-      "25-1032"
-    ],
-    "regions": [
-      "Stockton-Lodi"
-    ]
-  },
-  {
-    "name": "Santa Cruz Beach Boardwalk",
-    "sector": "Entertainment",
-    "description": "The Santa Cruz Beach Boardwalk is an oceanfront amusement park in Santa Cruz, California, offering rides, games, and entertainment.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3031",
-      "11-9051",
-      "13-1071",
-      "13-1111",
-      "13-1161"
-    ],
-    "regions": [
-      "Santa Cruz-Watsonville"
-    ]
-  },
-  {
-    "name": "Saputo Cheese USA",
-    "sector": "Food Production",
-    "description": "Saputo Cheese USA Inc. is a leading dairy company producing a wide range of cheeses and dairy products.",
-    "occupations": [
-      "11-2021",
-      "11-3051",
-      "13-1081",
-      "13-1111",
-      "13-1161",
-      "17-2071",
-      "17-2112",
-      "17-2199"
-    ],
-    "regions": [
-      "Visalia"
-    ]
-  },
-  {
-    "name": "Save Mart Supermarkets",
-    "sector": "Retail",
-    "description": "The Save Mart Companies is an American grocery store chain that operates stores throughout California and Northern Nevada.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3031",
-      "11-9051",
-      "13-1071",
-      "13-1111",
-      "13-1161"
-    ],
-    "regions": [
-      "Modesto",
-      "Yuba City"
-    ]
-  },
-  {
-    "name": "Scripps Health",
-    "sector": "Healthcare",
-    "description": "Scripps Health is a not-for-profit integrated health system based in San Diego, California, providing a full spectrum of healthcare services.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "15-1255",
-      "21-1012",
-      "21-1021"
-    ],
-    "regions": [
-      "San Diego-Chula Vista-Carlsbad"
-    ]
-  },
-  {
-    "name": "Sharp Healthcare",
-    "sector": "Healthcare",
-    "description": "Sharp HealthCare is a not-for-profit regional health care delivery system in San Diego, California, providing a wide range of medical services.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "15-1255",
-      "21-1012",
-      "21-1021"
-    ],
-    "regions": [
-      "San Diego-Chula Vista-Carlsbad"
-    ]
-  },
-  {
-    "name": "Shasta College",
-    "sector": "Education",
-    "description": "Shasta College is a public community college in Redding, California, offering associate degrees and vocational training.",
-    "occupations": [
-      "11-9033",
-      "13-1111",
-      "13-1151",
-      "13-1161",
-      "25-1011",
-      "25-1021",
-      "25-1031",
-      "25-1032"
-    ],
-    "regions": [
-      "Redding"
-    ]
-  },
-  {
-    "name": "Shasta Community Health Center",
-    "sector": "Healthcare",
-    "description": "Shasta Community Health Center is a non-profit organization providing affordable, high-quality primary healthcare services to the community.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "15-1255",
-      "21-1012",
-      "21-1021"
-    ],
-    "regions": [
-      "Redding"
-    ]
-  },
-  {
-    "name": "Shasta County",
-    "sector": "Government",
-    "description": "Shasta County is a local government entity providing public services, administration, and community programs to its residents.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3031",
-      "11-9051",
-      "13-1071",
-      "13-1111",
-      "13-1161"
-    ],
-    "regions": [
-      "Redding"
-    ]
-  },
-  {
-    "name": "Shasta Regional Medical Center",
-    "sector": "Healthcare",
-    "description": "Shasta Regional Medical Center is a hospital providing comprehensive medical care, including emergency services, surgery, and specialized treatments.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "15-1255",
-      "21-1012",
-      "21-1021"
-    ],
-    "regions": [
-      "Redding"
-    ]
-  },
-  {
-    "name": "Sierra Pacific Industries",
-    "sector": "Forestry",
-    "description": "Sierra Pacific Industries is a family-owned forest products company, involved in timberland management, lumber production, and renewable energy.",
-    "occupations": [
-      "11-2021",
-      "11-3051",
-      "13-1081",
-      "13-1111",
-      "17-2071",
-      "17-2112",
-      "17-2199"
-    ],
-    "regions": [
-      "Redding"
-    ]
-  },
-  {
-    "name": "Sierra-View Medical Center",
-    "sector": "Healthcare",
-    "description": "Sierra-View Medical Center is a healthcare provider offering a range of medical services to its community.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "15-1255",
-      "21-1021",
-      "21-1022"
-    ],
-    "regions": [
-      "Visalia"
-    ]
-  },
-  {
-    "name": "Silverado Resort",
-    "sector": "Hospitality",
-    "description": "Silverado Resort is a luxury resort offering accommodations, golf, spa, and dining experiences.",
-    "occupations": [
-      "11-9051",
-      "11-9071",
-      "11-9072",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161"
-    ],
-    "regions": [
-      "Napa"
-    ]
-  },
-  {
-    "name": "Six Flags Discovery Kingdom",
-    "sector": "Entertainment",
-    "description": "Six Flags Discovery Kingdom is a theme park featuring rides, shows, and animal attractions.",
-    "occupations": [
-      "11-9051",
-      "11-9071",
-      "11-9072",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161"
-    ],
-    "regions": [
-      "Vallejo"
-    ]
-  },
-  {
-    "name": "Solano County",
-    "sector": "Government",
-    "description": "Solano County provides a wide array of public services to its residents, including health, safety, and community development.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "21-1021"
-    ],
-    "regions": [
-      "Vallejo"
-    ]
-  },
-  {
-    "name": "Sprouts Farmers Market",
-    "sector": "Retail",
-    "description": "Sprouts Farmers Market is a grocery store chain specializing in natural and organic foods.",
-    "occupations": [
-      "11-9051",
-      "11-9071",
-      "11-9072",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161"
-    ],
-    "regions": [
-      "Santa Maria-Santa Barbara"
-    ]
-  },
-  {
-    "name": "Stanislaus County",
-    "sector": "Government",
-    "description": "Stanislaus County delivers essential public services and programs to its diverse population.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "21-1021"
-    ],
-    "regions": [
-      "Modesto"
-    ]
-  },
-  {
-    "name": "State Center Community College District",
-    "sector": "Education",
-    "description": "State Center Community College District provides higher education and workforce training programs to its students.",
-    "occupations": [
-      "11-9033",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "25-1011",
-      "25-1021",
-      "25-1022"
-    ],
-    "regions": [
-      "Fresno"
-    ]
-  },
-  {
-    "name": "State of California",
-    "sector": "Government",
-    "description": "The State of California is the governing body responsible for public administration and services across the state.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "21-1021"
-    ],
-    "regions": [
-      "Bakersfield-Delano",
-      "El Centro",
-      "Fresno",
-      "Napa",
-      "Redding",
-      "Sacramento-Roseville-Folsom",
-      "Salinas",
-      "San Luis Obispo-Paso Robles",
-      "Vallejo",
-      "Visalia"
-    ]
-  },
-  {
-    "name": "Sutter Bay Medical Foundation",
-    "sector": "Healthcare",
-    "description": "Sutter Bay Medical Foundation is a healthcare organization providing comprehensive medical care and services.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "15-1255",
-      "21-1021",
-      "21-1022"
-    ],
-    "regions": [
-      "Santa Cruz-Watsonville"
-    ]
-  },
-  {
-    "name": "The Estate Yountville",
-    "sector": "Hospitality",
-    "description": "The Estate Yountville is a luxury resort and culinary destination in Napa Valley.",
-    "occupations": [
-      "11-9051",
-      "11-9071",
-      "11-9072",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161"
-    ],
-    "regions": [
-      "Napa"
-    ]
-  },
-  {
-    "name": "The Salvation Army",
-    "sector": "Non-profit",
-    "description": "The Salvation Army is a charitable organization providing social services, disaster relief, and community support.",
-    "occupations": [
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "21-1012",
-      "21-1015",
-      "21-1021",
-      "21-1022"
-    ],
-    "regions": [
-      "Santa Cruz-Watsonville"
-    ]
-  },
-  {
-    "name": "The Wonderful Company",
-    "sector": "Agriculture",
-    "description": "The Wonderful Company is a privately held company with a diverse portfolio of agricultural and consumer brands.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "19-1013"
-    ],
-    "regions": [
-      "Bakersfield-Delano"
-    ]
-  },
-  {
-    "name": "Threshold Enterprises",
-    "sector": "Manufacturing",
-    "description": "Threshold Enterprises is a leading manufacturer and distributor of nutritional supplements.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "17-2111"
-    ],
-    "regions": [
-      "Santa Cruz-Watsonville"
-    ]
-  },
-  {
-    "name": "Tri Counties Bank",
-    "sector": "Finance",
-    "description": "Tri Counties Bank is a community bank offering a range of financial products and services.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
       "13-2011"
-    ],
-    "regions": [
-      "Chico"
-    ]
-  },
-  {
-    "name": "Trinity Health",
-    "sector": "Healthcare",
-    "description": "Trinity Health is a large Catholic healthcare system providing compassionate care across multiple states.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "15-1255",
-      "21-1021",
-      "21-1022"
-    ],
-    "regions": [
-      "Fresno"
-    ]
-  },
-  {
-    "name": "UC Davis Health",
-    "sector": "Healthcare",
-    "description": "UC Davis Health is an academic health system providing patient care, research, and education.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "15-1255",
-      "21-1021",
-      "21-1022"
-    ],
-    "regions": [
-      "Sacramento-Roseville-Folsom"
-    ]
-  },
-  {
-    "name": "UCSF Medical Center",
-    "sector": "Healthcare",
-    "description": "UCSF Medical Center is a leading academic medical center renowned for its patient care, research, and education.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "15-1255",
-      "21-1021",
-      "21-1022"
-    ],
-    "regions": [
-      "San Francisco-San Mateo-Redwood City"
-    ]
-  },
-  {
-    "name": "Uhs",
-    "sector": "Healthcare",
-    "description": "UHS (Universal Health Services) is one of the largest hospital management companies in the nation.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "15-1255",
-      "21-1021",
-      "21-1022"
-    ],
-    "regions": [
-      "Riverside-San Bernardino-Ontario"
-    ]
-  },
-  {
-    "name": "Ultimate Staffing",
-    "sector": "Staffing",
-    "description": "Ultimate Staffing is a staffing agency connecting job seekers with employers across various industries.",
-    "occupations": [
-      "11-3131",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "13-2011",
-      "13-2020"
-    ],
-    "regions": [
-      "Anaheim-Santa Ana-Irvine"
-    ]
-  },
-  {
-    "name": "United Health Centers of The San Joaquin Valley",
-    "sector": "Healthcare",
-    "description": "United Health Centers provides affordable and accessible healthcare services to communities in the San Joaquin Valley.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "15-1255",
-      "21-1021",
-      "21-1022"
-    ],
-    "regions": [
-      "Hanford-Corcoran"
-    ]
-  },
-  {
-    "name": "United States Department of Defense",
-    "sector": "Government",
-    "description": "The United States Department of Defense is responsible for providing the military forces needed to deter war and ensure our nation's security.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "15-1211"
-    ],
-    "regions": [
-      "Hanford-Corcoran"
-    ]
-  },
-  {
-    "name": "United States Department of Homeland Security",
-    "sector": "Government",
-    "description": "The United States Department of Homeland Security works to secure the nation from the many threats we face.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "15-1211"
-    ],
-    "regions": [
-      "El Centro"
-    ]
-  },
-  {
-    "name": "University of California",
-    "sector": "Education",
-    "description": "The University of California is a public university system offering world-class education and research opportunities.",
-    "occupations": [
-      "11-9033",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "25-1011",
-      "25-1021",
-      "25-1022"
-    ],
-    "regions": [
-      "Sacramento-Roseville-Folsom"
-    ]
-  },
-  {
-    "name": "University of California, San Diego",
-    "sector": "Education",
-    "description": "UC San Diego is a public research university known for its strong programs in science, engineering, and medicine.",
-    "occupations": [
-      "11-9033",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "25-1011",
-      "25-1021",
-      "25-1022"
-    ],
-    "regions": [
-      "San Diego-Chula Vista-Carlsbad"
-    ]
-  },
-  {
-    "name": "University of California-Berkeley",
-    "sector": "Education",
-    "description": "UC Berkeley is a public research university recognized globally for its academic excellence and groundbreaking research.",
-    "occupations": [
-      "11-9033",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "25-1011",
-      "25-1021",
-      "25-1022"
-    ],
-    "regions": [
-      "Oakland-Fremont-Berkeley"
-    ]
-  },
-  {
-    "name": "University of California-Davis",
-    "sector": "Education",
-    "description": "UC Davis is a public research university known for its programs in agriculture, veterinary medicine, and environmental science.",
-    "occupations": [
-      "11-9033",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "25-1011",
-      "25-1021",
-      "25-1022"
-    ],
-    "regions": [
-      "Sacramento-Roseville-Folsom"
-    ]
-  },
-  {
-    "name": "University of California-Irvine",
-    "sector": "Education",
-    "description": "UC Irvine is a public research university with strengths in areas such as health sciences, engineering, and the arts.",
-    "occupations": [
-      "11-9033",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "25-1011",
-      "25-1021",
-      "25-1022"
-    ],
-    "regions": [
-      "Anaheim-Santa Ana-Irvine"
-    ]
-  },
-  {
-    "name": "University of California-Merced",
-    "sector": "Education",
-    "description": "UC Merced is the newest campus in the University of California system, focusing on research and sustainability.",
-    "occupations": [
-      "11-9033",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "25-1011",
-      "25-1021",
-      "25-1022"
-    ],
-    "regions": [
-      "Merced"
-    ]
-  },
-  {
-    "name": "University of California-San Francisco",
-    "sector": "Education",
-    "description": "UC San Francisco is a leading university dedicated to advancing health worldwide through advanced biomedical research, graduate-level education in the life sciences and health professions, and excellence in patient care.",
-    "occupations": [
-      "11-9033",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "25-1011",
-      "25-1021",
-      "25-1022"
-    ],
-    "regions": [
-      "San Francisco-San Mateo-Redwood City"
-    ]
-  },
-  {
-    "name": "University of California-Santa Barbara",
-    "sector": "Education",
-    "description": "UC Santa Barbara is a public research university known for its strong programs in engineering, science, and the humanities.",
-    "occupations": [
-      "11-9033",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "25-1011",
-      "25-1021",
-      "25-1022"
-    ],
-    "regions": [
-      "Santa Maria-Santa Barbara"
-    ]
-  },
-  {
-    "name": "University of California-Santa Cruz",
-    "sector": "Higher Education",
-    "description": "A public research university offering a wide range of undergraduate and graduate programs.",
-    "occupations": [
-      "25-1011",
-      "25-1021",
-      "25-1031",
-      "25-1041",
-      "25-1051",
-      "11-9033",
-      "13-1111",
-      "15-1299"
-    ],
-    "regions": [
-      "Santa Cruz-Watsonville"
-    ]
-  },
-  {
-    "name": "University of the Pacific",
-    "sector": "Higher Education",
-    "description": "A private university known for its professional programs and liberal arts education.",
-    "occupations": [
-      "25-1011",
-      "25-1022",
-      "25-1032",
-      "25-1042",
-      "25-1052",
-      "11-9033",
-      "13-1111",
-      "15-1299"
-    ],
-    "regions": [
-      "Stockton-Lodi"
-    ]
-  },
-  {
-    "name": "Valley Children's Healthcare",
-    "sector": "Healthcare",
-    "description": "A comprehensive children's hospital providing specialized medical care to young patients.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "15-1211",
-      "15-1255",
-      "19-1042"
-    ],
-    "regions": [
-      "Fresno"
-    ]
-  },
-  {
-    "name": "Ventura County",
-    "sector": "Government",
-    "description": "Provides a wide array of public services to the residents of Ventura County, California.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "13-1071",
-      "13-1111",
-      "13-2011",
-      "19-3039",
-      "21-1012"
-    ],
-    "regions": [
-      "Oxnard-Thousand Oaks-Ventura"
-    ]
-  },
-  {
-    "name": "Ventura County Community College District",
-    "sector": "Higher Education",
-    "description": "Oversees several community colleges offering associate degrees and vocational training.",
-    "occupations": [
-      "25-1011",
-      "25-1021",
-      "25-1031",
-      "25-1041",
-      "25-1051",
-      "11-9033",
-      "13-1111",
-      "15-1299"
-    ],
-    "regions": [
-      "Oxnard-Thousand Oaks-Ventura"
-    ]
-  },
-  {
-    "name": "Vibra Healthcare",
-    "sector": "Healthcare",
-    "description": "Operates long-term acute care hospitals and medical rehabilitation hospitals.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "15-1211",
-      "15-1255",
-      "19-1042"
-    ],
-    "regions": [
-      "Redding"
-    ]
-  },
-  {
-    "name": "Walgreens Boots Alliance",
-    "sector": "Retail",
-    "description": "A global leader in pharmacy-led health and wellbeing retail.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3051",
-      "13-1020",
-      "13-1111",
-      "13-2011",
-      "15-1251"
-    ],
-    "regions": [
-      "Riverside-San Bernardino-Ontario",
-      "Yuba City"
-    ]
-  },
-  {
-    "name": "Walmart",
-    "sector": "Retail",
-    "description": "A multinational retail corporation that operates a chain of hypermarkets, discount department stores, and grocery stores.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3051",
-      "13-1020",
-      "13-1111",
-      "13-2011",
-      "15-1251"
-    ],
-    "regions": [
-      "Bakersfield-Delano",
-      "Modesto",
-      "Riverside-San Bernardino-Ontario",
-      "Sacramento-Roseville-Folsom",
-      "Vallejo",
-      "Visalia",
-      "Yuba City"
-    ]
-  },
-  {
-    "name": "Wellpath",
-    "sector": "Healthcare",
-    "description": "Provides comprehensive medical and mental healthcare services to vulnerable patients in challenging environments.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "15-1211",
-      "15-1255",
-      "19-1042"
-    ],
-    "regions": [
-      "Santa Rosa-Petaluma"
-    ]
-  },
-  {
-    "name": "Wells Fargo",
-    "sector": "Financial Services",
-    "description": "A diversified financial services company providing banking, investment, mortgage, and consumer and commercial finance products and services.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "13-1020",
-      "13-1051",
-      "13-1111",
-      "13-2011",
-      "15-1251"
-    ],
-    "regions": [
-      "San Rafael"
-    ]
-  },
-  {
-    "name": "Whole Foods",
-    "sector": "Retail",
-    "description": "A supermarket chain specializing in organic and natural foods.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3051",
-      "13-1020",
-      "13-1111",
-      "13-2011",
-      "15-1251"
-    ],
-    "regions": [
-      "San Rafael"
-    ]
-  },
-  {
-    "name": "YMCA",
-    "sector": "Non-profit",
-    "description": "A non-profit organization focused on youth development, healthy living, and social responsibility.",
-    "occupations": [
-      "11-9039",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "21-1012",
-      "21-1015",
-      "21-1021"
-    ],
-    "regions": [
-      "San Diego-Chula Vista-Carlsbad",
-      "San Rafael",
-      "Santa Maria-Santa Barbara"
-    ]
-  },
-  {
-    "name": "Yale New Haven Health",
-    "sector": "Healthcare",
-    "description": "A leading healthcare system providing comprehensive medical services and academic medicine.",
-    "occupations": [
-      "11-9111",
-      "11-9199",
-      "13-1071",
-      "13-1111",
-      "13-1161",
-      "15-1211",
-      "15-1255",
-      "19-1042"
-    ],
-    "regions": [
-      "Vallejo"
-    ]
-  },
-  {
-    "name": "Yosemite Community College District",
-    "sector": "Higher Education",
-    "description": "Provides educational opportunities through its community colleges, serving a diverse student population.",
-    "occupations": [
-      "25-1011",
-      "25-1021",
-      "25-1031",
-      "25-1041",
-      "25-1051",
-      "11-9033",
-      "13-1111",
-      "15-1299"
-    ],
-    "regions": [
-      "Modesto"
-    ]
-  },
-  {
-    "name": "Yuba City Unified School District",
-    "sector": "Education",
-    "description": "Manages public schools in Yuba City, providing K-12 education.",
-    "occupations": [
-      "11-9033",
-      "11-9039",
-      "13-1111",
-      "13-1199",
-      "21-1012",
-      "21-1015",
-      "25-1021",
-      "25-1022"
-    ],
-    "regions": [
-      "Yuba City"
-    ]
-  },
-  {
-    "name": "Yuba College",
-    "sector": "Higher Education",
-    "description": "A community college offering associate degrees, transfer programs, and vocational training.",
-    "occupations": [
-      "25-1011",
-      "25-1021",
-      "25-1031",
-      "25-1041",
-      "25-1051",
-      "11-9033",
-      "13-1111",
-      "15-1299"
-    ],
-    "regions": [
-      "Yuba City"
-    ]
-  },
-  {
-    "name": "Yuba County",
-    "sector": "Government",
-    "description": "Provides essential public services and governance for the residents of Yuba County, California.",
-    "occupations": [
-      "11-2021",
-      "11-3012",
-      "13-1071",
-      "13-1111",
-      "13-2011",
-      "19-3039",
-      "21-1012"
-    ],
-    "regions": [
-      "Yuba City"
-    ]
-  },
-  {
-    "name": "PIH Health",
-    "sector": "Professional Services",
-    "description": "PIH Health in Whittier, Los Angeles County. Industry: Health Care Management.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "13-1111",
-      "27-2012",
-      "15-1252",
-      "15-2051",
-      "13-1199",
-      "13-1082",
-      "27-3043",
-      "13-2011",
-      "13-1071",
-      "27-2022"
-    ]
-  },
-  {
-    "name": "Security Industry Specialist",
-    "sector": "Professional Services",
-    "description": "Security Industry Specialist in Culver City, Los Angeles County. Industry: Security Systems Consultants.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "13-1111",
-      "27-2012",
-      "15-1252",
-      "15-2051",
-      "13-1199",
-      "13-1082",
-      "27-3043",
-      "13-2011",
-      "13-1071",
-      "27-2022"
-    ]
-  },
-  {
-    "name": "Sony Pictures Entrtn Inc",
-    "sector": "Information & Media",
-    "description": "Sony Pictures Entrtn Inc in Culver City, Los Angeles County. Industry: Motion Picture Producers & Studios.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "13-1111",
-      "27-2012",
-      "15-1252",
-      "15-2051",
-      "13-1199",
-      "13-1082",
-      "27-3043",
-      "13-2011",
-      "13-1071",
-      "27-2022"
-    ]
-  },
-  {
-    "name": "TELEVISION CITY",
-    "sector": "Information & Media",
-    "description": "TELEVISION CITY in Los Angeles, Los Angeles County. Industry: Television Stations & Broadcasting Co.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "13-1111",
-      "27-2012",
-      "15-1252",
-      "15-2051",
-      "13-1199",
-      "13-1082",
-      "27-3043",
-      "13-2011",
-      "13-1071",
-      "27-2022"
-    ]
-  },
-  {
-    "name": "Emanate Health Queen-The Vly",
-    "sector": "Healthcare",
-    "description": "Emanate Health Queen-The Vly in West Covina, Los Angeles County. Industry: Hospitals.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "21-1021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "29-1141",
-      "11-9021",
-      "11-9032",
-      "11-9033"
-    ]
-  },
-  {
-    "name": "Kaiser Permanente Los Angeles",
-    "sector": "Healthcare",
-    "description": "Kaiser Permanente Los Angeles in Los Angeles, Los Angeles County. Industry: Hospitals.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "21-1021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "29-1141",
-      "11-9021",
-      "11-9032",
-      "11-9033"
-    ]
-  },
-  {
-    "name": "Los Angeles Medical Ctr",
-    "sector": "Healthcare",
-    "description": "Los Angeles Medical Ctr in Los Angeles, Los Angeles County. Industry: Pathologists.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "21-1021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "29-1141",
-      "11-9021",
-      "11-9032",
-      "11-9033"
-    ]
-  },
-  {
-    "name": "Memorialcare Long Beach Med",
-    "sector": "Healthcare",
-    "description": "Memorialcare Long Beach Med in Long Beach, Los Angeles County. Industry: Hospitals.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "21-1021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "29-1141",
-      "11-9021",
-      "11-9032",
-      "11-9033"
-    ]
-  },
-  {
-    "name": "California State Univ Nrthrdg",
-    "sector": "Education",
-    "description": "California State Univ Nrthrdg in Northridge, Los Angeles County. Industry: Schools-Universities & Colleges Academic.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "25-2031",
-      "21-1021",
-      "25-2021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "11-9021",
-      "11-9032"
-    ]
-  },
-  {
-    "name": "UCLA Community Based Learning",
-    "sector": "Education",
-    "description": "UCLA Community Based Learning in Los Angeles, Los Angeles County. Industry: Junior-Community College-Tech Institutes.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "25-2031",
-      "21-1021",
-      "25-2021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "11-9021",
-      "11-9032"
-    ]
-  },
-  {
-    "name": "Long Beach City Hall",
-    "sector": "Government",
-    "description": "Long Beach City Hall in Long Beach, Los Angeles County. Industry: City Hall.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "21-1021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "11-9021",
-      "11-9032",
-      "11-9033",
-      "11-9121"
-    ]
-  },
-  {
-    "name": "Los Angeles County Fire Dept",
-    "sector": "Government",
-    "description": "Los Angeles County Fire Dept in Acton, Los Angeles County. Industry: Fire Departments.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "21-1021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "11-9021",
-      "11-9032",
-      "11-9033",
-      "11-9121"
-    ]
-  },
-  {
-    "name": "Los Angeles County Sheriff",
-    "sector": "Government",
-    "description": "Los Angeles County Sheriff in Monterey Park, Los Angeles County. Industry: Government Offices-County.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "21-1021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "11-9021",
-      "11-9032",
-      "11-9033",
-      "11-9121"
-    ]
-  },
-  {
-    "name": "Los Angeles Police Dept",
-    "sector": "Government",
-    "description": "Los Angeles Police Dept in Los Angeles, Los Angeles County. Industry: Police Departments.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "21-1021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "11-9021",
-      "11-9032",
-      "11-9033",
-      "11-9121"
-    ]
-  },
-  {
-    "name": "Live Nation",
-    "sector": "Arts & Entertainment",
-    "description": "Live Nation in Los Angeles, Los Angeles County. Industry: Entertainment Bureaus.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "27-2012",
-      "27-3043",
-      "39-9031",
-      "27-2022",
-      "27-2042",
-      "39-9011",
-      "27-3041",
-      "35-2014",
-      "27-3031",
-      "27-1014"
-    ]
-  },
-  {
-    "name": "Six Flags Magic Mountain",
-    "sector": "Arts & Entertainment",
-    "description": "Six Flags Magic Mountain in Valencia, Los Angeles County. Industry: Amusement & Theme Parks.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "27-2012",
-      "27-3043",
-      "39-9031",
-      "27-2022",
-      "27-2042",
-      "39-9011",
-      "27-3041",
-      "35-2014",
-      "27-3031",
-      "27-1014"
-    ]
-  },
-  {
-    "name": "Walt Disney Co",
-    "sector": "Arts & Entertainment",
-    "description": "Walt Disney Co in Burbank, Los Angeles County. Industry: Amusement & Theme Parks.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "27-2012",
-      "27-3043",
-      "39-9031",
-      "27-2022",
-      "27-2042",
-      "39-9011",
-      "27-3041",
-      "35-2014",
-      "27-3031",
-      "27-1014"
-    ]
-  },
-  {
-    "name": "Vision X",
-    "sector": "Administrative Services",
-    "description": "Vision X in Los Angeles, Los Angeles County. Industry: Call Centers.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "43-1011",
-      "43-9061",
-      "43-3031",
-      "43-6014",
-      "33-9032",
-      "43-6011",
-      "43-5011",
-      "33-3051",
-      "33-1012",
-      "43-6013"
-    ]
-  },
-  {
-    "name": "All Nations Church",
-    "sector": "Other Services",
-    "description": "All Nations Church in Sylmar, Los Angeles County. Industry: Churches.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "43-1011",
-      "43-9061",
-      "39-9031",
-      "39-9011",
-      "43-3031",
-      "43-6014",
-      "43-6011",
-      "43-5011",
-      "43-6013",
-      "49-1011"
-    ]
-  },
-  {
-    "name": "County-Los Angeles Fire Dept",
-    "sector": "Other Services",
-    "description": "County-Los Angeles Fire Dept in Commerce, Los Angeles County. Industry: Non-Profit Organizations.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "43-1011",
-      "43-9061",
-      "39-9031",
-      "39-9011",
-      "43-3031",
-      "43-6014",
-      "43-6011",
-      "43-5011",
-      "43-6013",
-      "49-1011"
-    ]
-  },
-  {
-    "name": "Longshore Dispatch",
-    "sector": "Other Services",
-    "description": "Longshore Dispatch in Wilmington, Los Angeles County. Industry: Labor Organizations.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "43-1011",
-      "43-9061",
-      "39-9031",
-      "39-9011",
-      "43-3031",
-      "43-6014",
-      "43-6011",
-      "43-5011",
-      "43-6013",
-      "49-1011"
-    ]
-  },
-  {
-    "name": "Water Garden Management",
-    "sector": "Real Estate",
-    "description": "Water Garden Management in Santa Monica, Los Angeles County. Industry: Office Buildings & Parks.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "43-1011",
-      "43-9061",
-      "43-3031",
-      "43-6014",
-      "41-3091",
-      "43-6011",
-      "43-5011",
-      "41-1011",
-      "43-6013",
-      "41-9022"
-    ]
-  },
-  {
-    "name": "Los Angeles Intl Airport-Lax",
-    "sector": "Transportation",
-    "description": "Los Angeles Intl Airport-Lax in Los Angeles, Los Angeles County. Industry: Airports.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "43-1011",
-      "43-9061",
-      "43-3031",
-      "43-6014",
-      "43-6011",
-      "43-5011",
-      "43-6013",
-      "49-1011"
-    ]
-  },
-  {
-    "name": "Infineon Technologies Americas",
-    "sector": "Manufacturing",
-    "description": "Infineon Technologies Americas in El Segundo, Los Angeles County. Industry: Semiconductor Devices (mfrs).",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "15-1252",
-      "15-2051",
-      "15-1299",
-      "15-1211",
-      "15-1255",
-      "15-1212",
-      "15-1253",
-      "15-1241"
-    ]
-  },
-  {
-    "name": "Paramount Pictures Corp",
-    "sector": "Information & Media",
-    "description": "Paramount Pictures Corp, in Los Angeles, (Los Angeles County). Motion Picture and Video Production. 1,000-4,999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "13-1111",
-      "27-2012",
-      "15-1252",
-      "15-2051",
-      "13-1199",
-      "13-1082",
-      "27-3043",
-      "13-2011",
-      "13-1071",
-      "27-2022"
-    ]
-  },
-  {
-    "name": "Rhythm & Hues Studios",
-    "sector": "Information & Media",
-    "description": "Rhythm & Hues Studios, in Los Angeles, (Los Angeles County). Motion Picture and Video Production. 1,000-4,999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "13-1111",
-      "27-2012",
-      "15-1252",
-      "15-2051",
-      "13-1199",
-      "13-1082",
-      "27-3043",
-      "13-2011",
-      "13-1071",
-      "27-2022"
-    ]
-  },
-  {
-    "name": "Technicolor USA Inc",
-    "sector": "Information & Media",
-    "description": "Technicolor USA Inc, in Los Angeles, (Los Angeles County). Motion Picture and Video Production. 1,000-4,999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "13-1111",
-      "27-2012",
-      "15-1252",
-      "15-2051",
-      "13-1199",
-      "13-1082",
-      "27-3043",
-      "13-2011",
-      "13-1071",
-      "27-2022"
-    ]
-  },
-  {
-    "name": "ADP",
-    "sector": "Information & Media",
-    "description": "ADP, in San Dimas, (Los Angeles County). Data processing, hosting and related services. 1,000-4,999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "13-1111",
-      "27-2012",
-      "15-1252",
-      "15-2051",
-      "13-1199",
-      "13-1082",
-      "27-3043",
-      "13-2011",
-      "13-1071",
-      "27-2022"
-    ]
-  },
-  {
-    "name": "Information Technology Agency",
-    "sector": "Professional Services",
-    "description": "Information Technology Agency, in Los Angeles, (Los Angeles County). Custom Computer Programming Services. 500-999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "13-1111",
-      "27-2012",
-      "15-1252",
-      "15-2051",
-      "13-1199",
-      "13-1082",
-      "27-3043",
-      "13-2011",
-      "13-1071",
-      "27-2022"
-    ]
-  },
-  {
-    "name": "Source Photonics Inc",
-    "sector": "Professional Services",
-    "description": "Source Photonics Inc, in West Hills, (Los Angeles County). Computer Systems Design Services. 500-999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "13-1111",
-      "27-2012",
-      "15-1252",
-      "15-2051",
-      "13-1199",
-      "13-1082",
-      "27-3043",
-      "13-2011",
-      "13-1071",
-      "27-2022"
-    ]
-  },
-  {
-    "name": "Lions Gate Entertainment Corp",
-    "sector": "Information & Media",
-    "description": "Lions Gate Entertainment Corp, in Santa Monica, (Los Angeles County). Motion Picture and Video Production. 500-999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "13-1111",
-      "27-2012",
-      "15-1252",
-      "15-2051",
-      "13-1199",
-      "13-1082",
-      "27-3043",
-      "13-2011",
-      "13-1071",
-      "27-2022"
-    ]
-  },
-  {
-    "name": "Geffen Records",
-    "sector": "Information & Media",
-    "description": "Geffen Records, in Santa Monica, (Los Angeles County). Sound Recording Studios. 500-999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "13-1111",
-      "27-2012",
-      "15-1252",
-      "15-2051",
-      "13-1199",
-      "13-1082",
-      "27-3043",
-      "13-2011",
-      "13-1071",
-      "27-2022"
-    ]
-  },
-  {
-    "name": "Universal Music Group Inc",
-    "sector": "Information & Media",
-    "description": "Universal Music Group Inc, in Santa Monica, (Los Angeles County). Sound Recording Studios. 500-999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "13-1111",
-      "27-2012",
-      "15-1252",
-      "15-2051",
-      "13-1199",
-      "13-1082",
-      "27-3043",
-      "13-2011",
-      "13-1071",
-      "27-2022"
-    ]
-  },
-  {
-    "name": "Kaiser Permanente B Orchard",
-    "sector": "Healthcare",
-    "description": "Kaiser Permanente B Orchard, in Downey, (Los Angeles County). Offices of physicians, except mental health. 1,000-4,999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "21-1021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "29-1141",
-      "11-9021",
-      "11-9032",
-      "11-9033"
-    ]
-  },
-  {
-    "name": "Kaiser Permanente Riverside MD",
-    "sector": "Healthcare",
-    "description": "Kaiser Permanente Riverside MD, in City of Industry, (Los Angeles County). Offices of physicians, except mental health. 1,000-4,999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "21-1021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "29-1141",
-      "11-9021",
-      "11-9032",
-      "11-9033"
-    ]
-  },
-  {
-    "name": "Southern CA Permanente Med Grp",
-    "sector": "Healthcare",
-    "description": "Southern CA Permanente Med Grp, in Los Angeles, (Los Angeles County). Offices of physicians, except mental health. 1,000-4,999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "21-1021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "29-1141",
-      "11-9021",
-      "11-9032",
-      "11-9033"
-    ]
-  },
-  {
-    "name": "USC Engemann Student Health",
-    "sector": "Healthcare",
-    "description": "USC Engemann Student Health, in Los Angeles, (Los Angeles County). Offices of physicians, except mental health. 1,000-4,999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "21-1021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "29-1141",
-      "11-9021",
-      "11-9032",
-      "11-9033"
-    ]
-  },
-  {
-    "name": "Los Angeles County Military",
-    "sector": "Healthcare",
-    "description": "Los Angeles County Military, in Sepulveda, (Los Angeles County). Freestanding Emergency Medical Centers. 1,000-4,999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "21-1021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "29-1141",
-      "11-9021",
-      "11-9032",
-      "11-9033"
-    ]
-  },
-  {
-    "name": "Tenet Healthcare Corp",
-    "sector": "Healthcare",
-    "description": "Tenet Healthcare Corp, in Los Angeles, (Los Angeles County). Miscellaneous ambulatory health care services. 1,000-4,999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "21-1021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "29-1141",
-      "11-9021",
-      "11-9032",
-      "11-9033"
-    ]
-  },
-  {
-    "name": "UCLA Cart",
-    "sector": "Healthcare",
-    "description": "UCLA Cart, in Los Angeles, (Los Angeles County). Miscellaneous ambulatory health care services. 1,000-4,999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "21-1021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "29-1141",
-      "11-9021",
-      "11-9032",
-      "11-9033"
-    ]
-  },
-  {
-    "name": "Adventist Health Glendale",
-    "sector": "Healthcare",
-    "description": "Adventist Health Glendale, in Glendale, (Los Angeles County). General Medical and Surgical Hospitals. 1,000-4,999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "21-1021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "29-1141",
-      "11-9021",
-      "11-9032",
-      "11-9033"
-    ]
-  },
-  {
-    "name": "Centinela Hospital Medical Ctr",
-    "sector": "Healthcare",
-    "description": "Centinela Hospital Medical Ctr, in Inglewood, (Los Angeles County). General Medical and Surgical Hospitals. 1,000-4,999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "21-1021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "29-1141",
-      "11-9021",
-      "11-9032",
-      "11-9033"
-    ]
-  },
-  {
-    "name": "Dignity Health-Glendale Meml",
-    "sector": "Healthcare",
-    "description": "Dignity Health-Glendale Meml, in Glendale, (Los Angeles County). General Medical and Surgical Hospitals. 1,000-4,999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "21-1021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "29-1141",
-      "11-9021",
-      "11-9032",
-      "11-9033"
-    ]
-  },
-  {
-    "name": "Cerritos College",
-    "sector": "Education",
-    "description": "Cerritos College, in Norwalk, (Los Angeles County). Junior Colleges. 1,000-4,999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "25-2031",
-      "21-1021",
-      "25-2021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "11-9021",
-      "11-9032"
-    ]
-  },
-  {
-    "name": "Glendale Community College",
-    "sector": "Education",
-    "description": "Glendale Community College, in Glendale, (Los Angeles County). Junior Colleges. 1,000-4,999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "25-2031",
-      "21-1021",
-      "25-2021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "11-9021",
-      "11-9032"
-    ]
-  },
-  {
-    "name": "Azusa Pacific Univ Board-Trsts",
-    "sector": "Education",
-    "description": "Azusa Pacific Univ Board-Trsts, in Azusa, (Los Angeles County). Colleges and Universities. 1,000-4,999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "25-2031",
-      "21-1021",
-      "25-2021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "11-9021",
-      "11-9032"
-    ]
-  },
-  {
-    "name": "California State Polytechnic",
-    "sector": "Education",
-    "description": "California State Polytechnic, in Pomona, (Los Angeles County). Colleges and Universities. 1,000-4,999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "25-2031",
-      "21-1021",
-      "25-2021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "11-9021",
-      "11-9032"
-    ]
-  },
-  {
-    "name": "USC Viterbi School of Engrng",
-    "sector": "Education",
-    "description": "USC Viterbi School of Engrng, in Los Angeles, (Los Angeles County). Colleges and Universities. 1,000-4,999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "25-2031",
-      "21-1021",
-      "25-2021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "11-9021",
-      "11-9032"
-    ]
-  },
-  {
-    "name": "Ritz-Carlton Los Angeles",
-    "sector": "Hospitality & Food Service",
-    "description": "Ritz-Carlton Los Angeles, in Los Angeles, (Los Angeles County). Hotels and motels, except casino hotels. 1,000-4,999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "11-3021",
-      "11-2022",
-      "39-9031",
-      "11-9151",
-      "11-3012",
-      "11-9021",
-      "39-9011",
-      "11-9032",
-      "11-9033"
-    ]
-  },
-  {
-    "name": "Columbus Technologies & Svc",
-    "sector": "Professional Services",
-    "description": "Columbus Technologies & Svc, in El Segundo, (Los Angeles County). Custom Computer Programming Services. 250-499 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "13-1111",
-      "27-2012",
-      "15-1252",
-      "15-2051",
-      "13-1199",
-      "13-1082",
-      "27-3043",
-      "13-2011",
-      "13-1071",
-      "27-2022"
-    ]
-  },
-  {
-    "name": "Barack Obama Global",
-    "sector": "Education",
-    "description": "Barack Obama Global, in Los Angeles, (Los Angeles County). Elementary and Secondary Schools. 500-999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "25-2031",
-      "21-1021",
-      "25-2021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "11-9021",
-      "11-9032"
-    ]
-  },
-  {
-    "name": "Crenshaw High School",
-    "sector": "Education",
-    "description": "Crenshaw High School, in Los Angeles, (Los Angeles County). Elementary and Secondary Schools. 500-999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "25-2031",
-      "21-1021",
-      "25-2021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "11-9021",
-      "11-9032"
-    ]
-  },
-  {
-    "name": "Hawthorne High School",
-    "sector": "Education",
-    "description": "Hawthorne High School, in Hawthorne, (Los Angeles County). Elementary and Secondary Schools. 500-999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "25-2031",
-      "21-1021",
-      "25-2021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "11-9021",
-      "11-9032"
-    ]
-  },
-  {
-    "name": "Help Group",
-    "sector": "Education",
-    "description": "Help Group, in Sherman Oaks, (Los Angeles County). Elementary and Secondary Schools. 500-999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "25-2031",
-      "21-1021",
-      "25-2021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "11-9021",
-      "11-9032"
-    ]
-  },
-  {
-    "name": "California State Prison-Los",
-    "sector": "Government",
-    "description": "California State Prison-Los, in Lancaster, (Los Angeles County). Correctional Institutions. 1,000-4,999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "21-1021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "11-9021",
-      "11-9032",
-      "11-9033",
-      "11-9121"
-    ]
-  },
-  {
-    "name": "Long Beach Chief of Police Ofc",
-    "sector": "Government",
-    "description": "Long Beach Chief of Police Ofc, in Long Beach, (Los Angeles County). Police Protection. 1,000-4,999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "21-1021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "11-9021",
-      "11-9032",
-      "11-9033",
-      "11-9121"
-    ]
-  },
-  {
-    "name": "Long Beach Police-Patrol Admin",
-    "sector": "Government",
-    "description": "Long Beach Police-Patrol Admin, in Long Beach, (Los Angeles County). Police Protection. 1,000-4,999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "21-1021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "11-9021",
-      "11-9032",
-      "11-9033",
-      "11-9121"
-    ]
-  },
-  {
-    "name": "Los Angeles County Superior",
-    "sector": "Government",
-    "description": "Los Angeles County Superior, in Santa Monica, (Los Angeles County). Courts. 1,000-4,999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "21-1021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "11-9021",
-      "11-9032",
-      "11-9033",
-      "11-9121"
-    ]
-  },
-  {
-    "name": "Pie Town Productions",
-    "sector": "Information & Media",
-    "description": "Pie Town Productions, in Valley Village, (Los Angeles County). Motion Picture and Video Production. 250-499 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "13-1111",
-      "27-2012",
-      "15-1252",
-      "15-2051",
-      "13-1199",
-      "13-1082",
-      "27-3043",
-      "13-2011",
-      "13-1071",
-      "27-2022"
-    ]
-  },
-  {
-    "name": "Technicolor",
-    "sector": "Information & Media",
-    "description": "Technicolor, in Burbank, (Los Angeles County). Motion Picture and Video Production. 250-499 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "13-1111",
-      "27-2012",
-      "15-1252",
-      "15-2051",
-      "13-1199",
-      "13-1082",
-      "27-3043",
-      "13-2011",
-      "13-1071",
-      "27-2022"
-    ]
-  },
-  {
-    "name": "Activision Publishing Inc",
-    "sector": "Information & Media",
-    "description": "Activision Publishing Inc, in Santa Monica, (Los Angeles County). Record Production and Distribution. 250-499 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "13-1111",
-      "27-2012",
-      "15-1252",
-      "15-2051",
-      "13-1199",
-      "13-1082",
-      "27-3043",
-      "13-2011",
-      "13-1071",
-      "27-2022"
-    ]
-  },
-  {
-    "name": "Beverly Hilton",
-    "sector": "Hospitality & Food Service",
-    "description": "Beverly Hilton, in Beverly Hills, (Los Angeles County). Hotels and motels, except casino hotels. 500-999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "11-3021",
-      "11-2022",
-      "39-9031",
-      "11-9151",
-      "11-3012",
-      "11-9021",
-      "39-9011",
-      "11-9032",
-      "11-9033"
-    ]
-  },
-  {
-    "name": "Beverly Wilshire A Four",
-    "sector": "Hospitality & Food Service",
-    "description": "Beverly Wilshire A Four, in Beverly Hills, (Los Angeles County). Hotels and motels, except casino hotels. 500-999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "11-3021",
-      "11-2022",
-      "39-9031",
-      "11-9151",
-      "11-3012",
-      "11-9021",
-      "39-9011",
-      "11-9032",
-      "11-9033"
-    ]
-  },
-  {
-    "name": "Four Seasons Hotel Los Angeles",
-    "sector": "Hospitality & Food Service",
-    "description": "Four Seasons Hotel Los Angeles, in Los Angeles, (Los Angeles County). Hotels and motels, except casino hotels. 500-999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "11-3021",
-      "11-2022",
-      "39-9031",
-      "11-9151",
-      "11-3012",
-      "11-9021",
-      "39-9011",
-      "11-9032",
-      "11-9033"
-    ]
-  },
-  {
-    "name": "Los Angeles Airport Marriott",
-    "sector": "Hospitality & Food Service",
-    "description": "Los Angeles Airport Marriott, in Los Angeles, (Los Angeles County). Hotels and motels, except casino hotels. 500-999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "11-3021",
-      "11-2022",
-      "39-9031",
-      "11-9151",
-      "11-3012",
-      "11-9021",
-      "39-9011",
-      "11-9032",
-      "11-9033"
-    ]
-  },
-  {
-    "name": "Queen Mary",
-    "sector": "Hospitality & Food Service",
-    "description": "Queen Mary, in Long Beach, (Los Angeles County). Hotels and motels, except casino hotels. 500-999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "11-3021",
-      "11-2022",
-      "39-9031",
-      "11-9151",
-      "11-3012",
-      "11-9021",
-      "39-9011",
-      "11-9032",
-      "11-9033"
-    ]
-  },
-  {
-    "name": "Dine Brands Global Inc",
-    "sector": "Hospitality & Food Service",
-    "description": "Dine Brands Global Inc, in Pasadena, (Los Angeles County). Food Service Contractors. 500-999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "11-3021",
-      "11-2022",
-      "39-9031",
-      "11-9151",
-      "11-3012",
-      "11-9021",
-      "39-9011",
-      "11-9032",
-      "11-9033"
-    ]
-  },
-  {
-    "name": "Flying Food Group",
-    "sector": "Hospitality & Food Service",
-    "description": "Flying Food Group, in Inglewood, (Los Angeles County). Caterers. 500-999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "11-3021",
-      "11-2022",
-      "39-9031",
-      "11-9151",
-      "11-3012",
-      "11-9021",
-      "39-9011",
-      "11-9032",
-      "11-9033"
-    ]
-  },
-  {
-    "name": "Lapd-Devonshire Cmnty Police",
-    "sector": "Government",
-    "description": "Lapd-Devonshire Cmnty Police, in Northridge, (Los Angeles County). Police Protection. 500-999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-9199",
-      "21-1021",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
-      "11-9021",
-      "11-9032",
-      "11-9033",
-      "11-9121"
-    ]
-  },
-  {
-    "name": "Galpin Mazda",
-    "sector": "Retail",
-    "description": "Galpin Mazda, in North Hills, (Los Angeles County). New Car Dealers. 1,000-4,999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "43-1011",
-      "43-9061",
-      "43-3031",
-      "43-6014",
-      "41-3091",
-      "35-2014",
-      "35-1012",
-      "43-6011",
-      "43-5011",
-      "41-1011"
-    ]
-  },
-  {
-    "name": "Infiniti of Van Nuys",
-    "sector": "Retail",
-    "description": "Infiniti of Van Nuys, in Sherman Oaks, (Los Angeles County). New Car Dealers. 500-999 employees.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "43-1011",
-      "43-9061",
-      "43-3031",
-      "43-6014",
-      "41-3091",
-      "35-2014",
-      "35-1012",
-      "43-6011",
-      "43-5011",
-      "41-1011"
     ]
   },
   {
     "name": "ACCO Engineered Systems",
     "sector": "Construction",
-    "description": "ACCO Engineered Systems, in Pasadena, (Los Angeles County). Plumbing and HVAC Contractors. 1,000-4,999 employees.",
+    "description": "ACCO Engineered Systems is a leading mechanical contractor specializing in HVAC and plumbing systems for commercial and industrial projects across the LA area.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "11-9199",
-      "11-3021",
-      "11-2022",
-      "11-9151",
-      "11-3012",
       "11-9021",
-      "11-9032",
-      "11-9033",
-      "11-9121",
-      "11-3071"
+      "17-2141",
+      "17-3027",
+      "13-1051",
+      "17-2051",
+      "17-3011",
+      "13-1081",
+      "11-3061"
     ]
   },
   {
     "name": "Honeywell",
     "sector": "Construction",
-    "description": "Honeywell, in Torrance, (Los Angeles County). Plumbing and HVAC Contractors. 1,000-4,999 employees.",
+    "description": "Honeywell is a global diversified technology and manufacturing company, with operations in Torrance contributing to advanced building technologies, including HVAC and plumbing solutions, for the LA region.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "17-2141",
+      "17-2071",
+      "17-2072",
+      "17-3023",
+      "17-3024",
+      "15-1252",
+      "11-9041",
+      "13-1199"
+    ]
+  },
+  {
+    "name": "Bimbo Bakeries USA",
+    "sector": "Manufacturing",
+    "description": "Bimbo Bakeries USA is one of the largest baking companies in the United States, with its Montebello facility serving as a key production and distribution hub for baked goods across the LA metropolitan area.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-3051",
+      "19-1012",
+      "11-3071",
+      "13-1081",
+      "11-3061",
+      "13-1071",
+      "13-2011",
+      "11-9199"
+    ]
+  },
+  {
+    "name": "Infineon Technologies",
+    "sector": "Manufacturing",
+    "description": "Infineon Technologies is a global leader in semiconductor solutions, with its El Segundo presence contributing to the design and development of advanced microelectronics critical for various industries in the LA tech sector.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "17-2072",
+      "17-2061",
+      "15-1252",
+      "17-3023",
+      "15-1253",
+      "11-9041",
+      "15-1211",
+      "19-2031"
+    ]
+  },
+  {
+    "name": "Galpin Motors",
+    "sector": "Retail",
+    "description": "Galpin Motors is a prominent automotive dealership group in the San Fernando Valley, known for its extensive selection of new and used vehicles and significant presence in the LA retail automotive market.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-2022",
+      "13-1161",
+      "13-2072",
+      "11-3012",
+      "13-1071",
+      "13-2011",
+      "11-9199"
+    ]
+  },
+  {
+    "name": "Infiniti of Van Nuys",
+    "sector": "Retail",
+    "description": "Infiniti of Van Nuys is a luxury car dealership serving the greater Los Angeles area, providing sales and service for Infiniti vehicles.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-2022",
+      "13-1161",
+      "13-2072",
+      "11-3012",
+      "13-1071",
+      "13-2011",
+      "11-9199"
+    ]
+  },
+  {
+    "name": "Paramount Pictures",
+    "sector": "Information & Media",
+    "description": "Paramount Pictures is one of the oldest and most iconic film studios in Hollywood, playing a central role in the global entertainment industry and the cultural landscape of Los Angeles.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "27-2012",
+      "27-4031",
+      "27-4032",
+      "27-1011",
+      "27-3043",
+      "27-3031",
+      "13-1011",
+      "11-9072"
+    ]
+  },
+  {
+    "name": "Rhythm & Hues Studios",
+    "sector": "Information & Media",
+    "description": "Rhythm & Hues Studios was a renowned visual effects and animation company, contributing significantly to major motion pictures and the creative industry in Los Angeles.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "27-1014",
+      "27-1024",
+      "27-4032",
+      "15-1252",
+      "27-1011",
+      "15-1255",
+      "11-9072",
+      "15-1299"
+    ]
+  },
+  {
+    "name": "Cerritos College",
+    "sector": "Education",
+    "description": "Cerritos College is a public community college in Norwalk, providing accessible higher education and vocational training to a diverse student body in Southeast Los Angeles County.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9033",
+      "25-1194",
+      "25-1081",
+      "25-4022",
+      "21-1012",
+      "13-1071",
+      "13-2011",
+      "25-9031"
+    ]
+  },
+  {
+    "name": "Glendale Community College",
+    "sector": "Education",
+    "description": "Glendale Community College is a public community college serving the Glendale area, offering a wide range of academic and vocational programs to prepare students for transfer or career entry.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9033",
+      "25-1194",
+      "25-1081",
+      "25-4022",
+      "21-1012",
+      "13-1071",
+      "13-2011",
+      "25-9031"
+    ]
+  },
+  {
+    "name": "Ritz-Carlton Los Angeles",
+    "sector": "Hospitality & Food Service",
+    "description": "The Ritz-Carlton Los Angeles is a luxury hotel in downtown LA, offering upscale accommodations and services, contributing to the city's vibrant hospitality and tourism sector.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9081",
+      "11-9051",
+      "11-2021",
+      "13-1121",
+      "13-1071",
+      "11-3012",
+      "13-2011",
+      "11-9199"
+    ]
+  },
+  {
+    "name": "Beverly Hilton",
+    "sector": "Hospitality & Food Service",
+    "description": "The Beverly Hilton is an iconic luxury hotel in Beverly Hills, famous for hosting prestigious events and serving as a landmark in the Los Angeles hospitality industry.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9081",
+      "11-9051",
+      "11-2021",
+      "13-1121",
+      "13-1071",
+      "11-3012",
+      "13-2011",
+      "11-9199"
+    ]
+  },
+  {
+    "name": "California State Prison-Los Angeles County",
+    "sector": "Government",
+    "description": "California State Prison-Los Angeles County is a state correctional facility in Lancaster, playing a critical role in the state's public safety and justice system.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "21-1092",
+      "11-9199",
+      "13-1071",
+      "13-2011",
+      "21-1018",
+      "21-1023",
+      "11-3012"
+    ]
+  },
+  {
+    "name": "Long Beach Police Department",
+    "sector": "Government",
+    "description": "The Long Beach Police Department is the primary law enforcement agency for the city of Long Beach, responsible for maintaining public safety and order.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
       "11-9199",
-      "11-3021",
-      "11-2022",
-      "11-9151",
+      "21-1092",
+      "13-1071",
+      "13-2011",
       "11-3012",
-      "11-9021",
-      "11-9032",
-      "11-9033",
-      "11-9121",
-      "11-3071"
+      "13-1041"
+    ]
+  },
+  {
+    "name": "Source Photonics",
+    "sector": "Professional Services",
+    "description": "Source Photonics is a leading provider of optical communication products, with its West Hills location contributing to the advanced technology sector in Los Angeles.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "17-2072",
+      "17-2071",
+      "15-1252",
+      "17-3023",
+      "11-9041",
+      "15-1211",
+      "19-2012",
+      "13-1199"
     ]
   },
   {
     "name": "Distinctive Industries",
     "sector": "Other Services",
-    "description": "Distinctive Industries, in Santa Fe Springs, (Los Angeles County). Automotive Body and Interior Repair. 250-499 employees.",
+    "description": "Distinctive Industries is a manufacturer of automotive interior restoration parts, serving the classic car and customization market from its Santa Fe Springs facility.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "43-1011",
-      "43-9061",
-      "39-9031",
-      "39-9011",
-      "43-3031",
-      "43-6014",
-      "43-6011",
-      "43-5011",
-      "43-6013",
-      "49-1011"
+      "11-3051",
+      "17-2141",
+      "13-1051",
+      "11-3061",
+      "13-1071",
+      "13-2011",
+      "11-9199"
     ]
   },
   {
     "name": "Herbalife Nutrition",
     "sector": "Other Services",
-    "description": "Herbalife Nutrition, in Carson, (Los Angeles County). Diet and Weight Reducing Centers. 250-499 employees.",
+    "description": "Herbalife Nutrition is a global multi-level marketing corporation that develops and sells dietary supplements, with its Carson operations serving as a key hub for its worldwide business.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
-      "43-1011",
-      "43-9061",
-      "39-9031",
-      "39-9011",
-      "43-3031",
-      "43-6014",
-      "43-6011",
-      "43-5011",
-      "43-6013",
-      "49-1011"
+      "11-2021",
+      "13-1161",
+      "19-1012",
+      "29-1031",
+      "13-1071",
+      "11-3012",
+      "13-2011",
+      "11-9199"
+    ]
+  },
+  {
+    "name": "University of Southern California",
+    "sector": "Healthcare",
+    "description": "The University of Southern California is a leading private research university in Los Angeles, known for its extensive academic programs, research contributions, and significant impact on the local economy and culture.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9033",
+      "25-1071",
+      "25-1072",
+      "25-1066",
+      "25-1021",
+      "21-1012",
+      "13-1071",
+      "13-2011",
+      "11-9111"
+    ]
+  },
+  {
+    "name": "Tenet Healthcare",
+    "sector": "Healthcare",
+    "description": "Tenet Healthcare is a multinational healthcare services company, operating numerous hospitals and outpatient facilities across the Los Angeles area, providing a wide range of medical care.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9111",
+      "29-1071",
+      "29-1051",
+      "29-1123",
+      "29-1126",
+      "29-1031",
+      "29-1122",
+      "29-1127",
+      "13-1071",
+      "13-2011"
+    ]
+  },
+  {
+    "name": "University of California, Los Angeles",
+    "sector": "Healthcare",
+    "description": "The University of California, Los Angeles (UCLA) is a world-renowned public research university, offering extensive academic programs and a major healthcare system that serves the greater Los Angeles community.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9033",
+      "25-1071",
+      "25-1072",
+      "25-1066",
+      "25-1021",
+      "21-1012",
+      "13-1071",
+      "13-2011",
+      "11-9111"
+    ]
+  },
+  {
+    "name": "Adventist Health Glendale",
+    "sector": "Healthcare",
+    "description": "Adventist Health Glendale is a general medical and surgical hospital providing comprehensive healthcare services to the Glendale community and surrounding areas.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9111",
+      "29-1071",
+      "29-1051",
+      "29-1123",
+      "29-1126",
+      "29-1031",
+      "29-1122",
+      "29-1127",
+      "13-1071",
+      "13-2011"
+    ]
+  },
+  {
+    "name": "Centinela Hospital Medical Center",
+    "sector": "Healthcare",
+    "description": "Centinela Hospital Medical Center is a general medical and surgical hospital in Inglewood, serving the healthcare needs of the diverse South Bay community.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9111",
+      "29-1071",
+      "29-1051",
+      "29-1123",
+      "29-1126",
+      "29-1031",
+      "29-1122",
+      "29-1127",
+      "13-1071",
+      "13-2011"
+    ]
+  },
+  {
+    "name": "Dignity Health-Glendale Memorial",
+    "sector": "Healthcare",
+    "description": "Dignity Health-Glendale Memorial Hospital is a general medical and surgical hospital providing a wide range of healthcare services to the Glendale community.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9111",
+      "29-1071",
+      "29-1051",
+      "29-1123",
+      "29-1126",
+      "29-1031",
+      "29-1122",
+      "29-1127",
+      "13-1071",
+      "13-2011"
+    ]
+  },
+  {
+    "name": "Lighthouse Electric",
+    "sector": "Construction",
+    "description": "Lighthouse Electric is an electrical contractor based in Los Angeles, providing electrical services for commercial and residential projects across the region.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9021",
+      "17-2071",
+      "17-3023",
+      "13-1051",
+      "11-3013",
+      "13-1071",
+      "13-2011",
+      "11-9199"
     ]
   },
   {
     "name": "Aerojet Rocketdyne",
     "sector": "Manufacturing",
-    "description": "Aerojet Rocketdyne, in Canoga Park, (Los Angeles County). Search, detection, and navigation instruments. 1,000-4,999 employees.",
+    "description": "Aerojet Rocketdyne is a leading aerospace and defense manufacturer, with its Canoga Park facility contributing to advanced propulsion systems and space exploration technology.",
     "regions": [
       "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
+      "17-2011",
+      "17-2141",
+      "17-2071",
+      "17-3021",
+      "17-3027",
+      "11-9041",
       "15-1252",
-      "15-2051",
-      "15-1299",
+      "13-1199"
+    ]
+  },
+  {
+    "name": "Aerospace Corporation",
+    "sector": "Manufacturing",
+    "description": "The Aerospace Corporation is a federally funded research and development center in El Segundo, providing independent technical expertise and objective advice to national security space programs.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "17-2011",
+      "17-2071",
+      "17-2072",
+      "15-1252",
+      "19-2012",
       "15-1211",
-      "15-1255",
-      "15-1212",
-      "15-1253",
-      "15-1241"
+      "11-9041",
+      "19-2021"
+    ]
+  },
+  {
+    "name": "Glenair",
+    "sector": "Manufacturing",
+    "description": "Glenair is a leading manufacturer of interconnect solutions for harsh environments, with its Glendale operations serving critical industries like aerospace and defense.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "17-2071",
+      "17-2072",
+      "17-2141",
+      "17-3023",
+      "17-3027",
+      "11-3051",
+      "13-1051",
+      "11-9041"
+    ]
+  },
+  {
+    "name": "Honda North America",
+    "sector": "Manufacturing",
+    "description": "Honda North America has a significant presence in Torrance, serving as a key hub for sales, marketing, and research and development for one of the world's largest automobile manufacturers.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "17-2141",
+      "17-2071",
+      "11-2021",
+      "13-1161",
+      "13-1071",
+      "11-3012",
+      "13-2011",
+      "11-9199"
+    ]
+  },
+  {
+    "name": "Technicolor USA",
+    "sector": "Information & Media",
+    "description": "Technicolor USA is a global leader in creative technology and post-production services for the entertainment industry, with its Los Angeles presence central to film and television production.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "27-4032",
+      "27-4011",
+      "27-4014",
+      "27-1014",
+      "27-1024",
+      "15-1252",
+      "27-2012",
+      "11-9072"
+    ]
+  },
+  {
+    "name": "ADP",
+    "sector": "Information & Media",
+    "description": "ADP is a global provider of human capital management solutions, with its San Dimas office supporting businesses across the LA region with payroll, HR, and benefits services.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "13-1071",
+      "13-1141",
+      "11-3121",
+      "15-1232",
+      "15-1211",
+      "13-2011",
+      "11-3012",
+      "13-1199"
+    ]
+  },
+  {
+    "name": "Azusa Pacific University",
+    "sector": "Education",
+    "description": "Azusa Pacific University is a private Christian university in Azusa, offering a wide range of undergraduate and graduate programs and contributing to higher education in the San Gabriel Valley.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9033",
+      "25-1071",
+      "25-1066",
+      "25-1081",
+      "21-1012",
+      "13-1071",
+      "13-2011",
+      "25-9031"
+    ]
+  },
+  {
+    "name": "California State Polytechnic University, Pomona",
+    "sector": "Education",
+    "description": "California State Polytechnic University, Pomona (Cal Poly Pomona) is a public polytechnic university known for its learn-by-doing approach and strong programs in engineering, agriculture, and business, serving the greater Los Angeles area.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9033",
+      "25-1032",
+      "25-1041",
+      "25-1021",
+      "25-1011",
+      "21-1012",
+      "13-1071",
+      "13-2011",
+      "25-9031"
+    ]
+  },
+  {
+    "name": "California State University Northridge",
+    "sector": "Education",
+    "description": "California State University Northridge (CSUN) is a large public university in the San Fernando Valley, offering diverse academic programs and serving as a cultural and educational hub for the region.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9033",
+      "25-1066",
+      "25-1021",
+      "25-1123",
+      "25-1011",
+      "21-1012",
+      "13-1071",
+      "13-2011",
+      "25-9031"
+    ]
+  },
+  {
+    "name": "California Access Scaffold",
+    "sector": "Construction",
+    "description": "California Access Scaffold provides scaffolding and access solutions for construction projects, supporting infrastructure development across the Los Angeles area.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9021",
+      "13-1051",
+      "11-3013",
+      "13-1071",
+      "13-2011",
+      "11-9199"
+    ]
+  },
+  {
+    "name": "Kiewit",
+    "sector": "Construction",
+    "description": "Kiewit is one of North America's largest construction and engineering organizations, with a significant presence in Santa Fe Springs, undertaking major infrastructure and heavy construction projects across the LA region.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9021",
+      "17-2051",
+      "17-2141",
+      "13-1051",
+      "17-3022",
+      "13-1081",
+      "11-3061",
+      "13-1071"
+    ]
+  },
+  {
+    "name": "Parsec",
+    "sector": "Construction",
+    "description": "Parsec is a construction company specializing in heavy construction projects, contributing to infrastructure development in the Commerce area and beyond.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9021",
+      "17-2051",
+      "13-1051",
+      "17-3022",
+      "13-1081",
+      "11-3061",
+      "13-1071",
+      "11-9199"
+    ]
+  },
+  {
+    "name": "Top Roofing",
+    "sector": "Construction",
+    "description": "Top Roofing is a roofing contractor in Los Angeles, providing installation, repair, and maintenance services for residential and commercial properties.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9021",
+      "13-1051",
+      "11-3013",
+      "13-1071",
+      "13-2011",
+      "11-9199"
+    ]
+  },
+  {
+    "name": "Color Concepts",
+    "sector": "Construction",
+    "description": "Color Concepts is a painting and wall covering contractor in Canoga Park, offering interior and exterior finishing services for various construction projects.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9021",
+      "13-1051",
+      "11-3013",
+      "13-1071",
+      "13-2011",
+      "11-9199"
+    ]
+  },
+  {
+    "name": "Nissin Foods USA",
+    "sector": "Manufacturing",
+    "description": "Nissin Foods USA is a major food manufacturer, known for its instant ramen products, with its facilities contributing to the food production industry in the LA area.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-3051",
+      "19-1012",
+      "11-3071",
+      "13-1081",
+      "11-3061",
+      "13-1071",
+      "13-2011",
+      "11-9199"
+    ]
+  },
+  {
+    "name": "Reyes Coca-Cola Bottling",
+    "sector": "Manufacturing",
+    "description": "Reyes Coca-Cola Bottling is a leading bottler and distributor of Coca-Cola products, with its Los Angeles operations playing a crucial role in supplying beverages across Southern California.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3071",
+      "13-1081",
+      "11-3061",
+      "13-1071",
+      "13-2011",
+      "11-9199"
+    ]
+  },
+  {
+    "name": "Seven-Up Bottling Company",
+    "sector": "Manufacturing",
+    "description": "Seven-Up Bottling Company is a beverage bottling and distribution facility in Vernon, serving the greater Los Angeles market with popular soft drink brands.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3071",
+      "13-1081",
+      "11-3061",
+      "13-1071",
+      "13-2011",
+      "11-9199"
     ]
   }
 ]
