@@ -97,12 +97,19 @@
     "description": "E-commerce, cloud computing, and logistics company with engineering offices in the Bay Area and fulfillment centers across the region.",
     "regions": [
       "San Jose-Sunnyvale-Santa Clara",
-      "San Francisco-San Mateo-Redwood City"
+      "San Francisco-San Mateo-Redwood City",
+      "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
       "15-1252",
       "15-2051",
-      "41-2031"
+      "41-2031",
+      "15-1251",
+      "15-1244",
+      "13-1161",
+      "43-9061",
+      "11-2021",
+      "53-1047"
     ]
   },
   {
@@ -169,13 +176,18 @@
       "San Jose-Sunnyvale-Santa Clara",
       "San Francisco-San Mateo-Redwood City",
       "San Rafael",
-      "Vallejo"
+      "Vallejo",
+      "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
       "29-1141",
       "29-2052",
       "31-9092",
-      "11-9111"
+      "11-9111",
+      "29-1122",
+      "29-2061",
+      "31-1131",
+      "43-6013"
     ]
   },
   {
@@ -484,11 +496,19 @@
     "sector": "Consulting/Technology",
     "description": "Global professional services firm with Bay Area offices providing technology consulting, strategy, and managed services.",
     "regions": [
-      "San Francisco-San Mateo-Redwood City"
+      "San Francisco-San Mateo-Redwood City",
+      "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
       "15-1252",
-      "15-1299"
+      "15-1299",
+      "13-1111",
+      "15-1251",
+      "13-1161",
+      "15-1244",
+      "11-2021",
+      "13-1071",
+      "13-1075"
     ]
   },
   {
@@ -521,11 +541,17 @@
     "description": "Nonprofit health system operating hospitals in Santa Rosa and the North Bay as part of a 52-hospital network across the western U.S.",
     "regions": [
       "Santa Rosa-Petaluma",
-      "Napa"
+      "Napa",
+      "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
       "29-1141",
-      "31-9092"
+      "31-9092",
+      "29-1122",
+      "29-2061",
+      "31-1131",
+      "43-6013",
+      "11-9111"
     ]
   },
   {
@@ -929,11 +955,156 @@
       "Santa Rosa-Petaluma",
       "Napa",
       "Vallejo",
-      "Santa Cruz-Watsonville"
+      "Santa Cruz-Watsonville",
+      "Los Angeles-Long Beach-Glendale"
     ],
     "occupations": [
       "11-9051",
-      "35-2014"
+      "35-2014",
+      "35-3023",
+      "35-1012",
+      "41-2011",
+      "43-3031"
+    ]
+  },
+  {
+    "name": "Allied Universal",
+    "sector": "Security Services",
+    "description": "Allied Universal provides security services and solutions, including security personnel, consulting and investigations, and systems integration.",
+    "occupations": [
+      "33-9032",
+      "43-4051",
+      "43-6014"
+    ],
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ]
+  },
+  {
+    "name": "University of California, Los Angeles",
+    "sector": "Higher Education",
+    "description": "UCLA is a public research university offering a wide range of undergraduate and graduate programs, and conducting extensive research.",
+    "occupations": [
+      "25-1071",
+      "25-1041",
+      "13-1111",
+      "15-1255",
+      "43-6011",
+      "31-1131"
+    ],
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ]
+  },
+  {
+    "name": "Cedars-Sinai",
+    "sector": "Healthcare",
+    "description": "Cedars-Sinai is a non-profit academic healthcare organization providing patient care, research, and medical education.",
+    "occupations": [
+      "29-1141",
+      "29-1122",
+      "29-2061",
+      "31-1131",
+      "43-6013",
+      "11-9111"
+    ],
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ]
+  },
+  {
+    "name": "Dominos Pizza",
+    "sector": "Food Service",
+    "description": "Domino's Pizza is an American multinational pizza restaurant chain, offering pizza, pasta, and other menu items for delivery and carryout.",
+    "occupations": [
+      "35-3023",
+      "35-1012",
+      "53-3032",
+      "43-3031"
+    ],
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ]
+  },
+  {
+    "name": "Northrop Grumman",
+    "sector": "Aerospace Defense",
+    "description": "Northrop Grumman is a global aerospace and defense technology company, specializing in advanced systems and solutions.",
+    "occupations": [
+      "17-2011",
+      "17-2112",
+      "15-1211",
+      "15-1251",
+      "13-1161",
+      "11-2021",
+      "17-2071"
+    ],
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ]
+  },
+  {
+    "name": "University of Southern California",
+    "sector": "Higher Education",
+    "description": "USC is a private research university offering diverse academic programs and contributing significantly to research and innovation.",
+    "occupations": [
+      "25-1071",
+      "25-1041",
+      "13-1111",
+      "15-1255",
+      "43-6011",
+      "31-1131"
+    ],
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ]
+  },
+  {
+    "name": "Kroger",
+    "sector": "Retail",
+    "description": "Kroger is one of the largest supermarket chains in the United States, operating various retail food and drug stores.",
+    "occupations": [
+      "41-2011",
+      "35-2021",
+      "43-5071",
+      "43-3071",
+      "35-3011"
+    ],
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ]
+  },
+  {
+    "name": "SpaceX",
+    "sector": "Aerospace",
+    "description": "SpaceX designs, manufactures, and launches advanced rockets and spacecraft, with a goal of enabling human life on other planets.",
+    "occupations": [
+      "17-2112",
+      "17-2011",
+      "15-1251",
+      "17-2071",
+      "17-2141",
+      "13-1161",
+      "11-2021"
+    ],
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ]
+  },
+  {
+    "name": "CVS Health",
+    "sector": "Healthcare Retail",
+    "description": "CVS Health is a healthcare company that owns CVS Pharmacy, a retail pharmacy chain, and CVS Caremark, a pharmacy benefits manager.",
+    "occupations": [
+      "29-1051",
+      "41-2011",
+      "43-3099",
+      "31-9095",
+      "11-9111",
+      "43-6013"
+    ],
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
     ]
   }
 ]
