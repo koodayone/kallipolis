@@ -20,6 +20,13 @@ const BASE_SCALE = 2500;
 
 const DIAMOND = 6; // half-size of diamond marker
 
+export const FEATURED_COLLEGES = new Set([
+  "lassen", "siskiyous", "mendocino", "butte", "saccc", "laketahoe",
+  "hartnell", "foothill", "berkeleycc", "napavalley", "visalia", "merced",
+  "sbcc", "oxnard", "cerrocoso", "desert", "imperial", "sandiegocity",
+  "compton", "lavalley", "bakersfield", "irvinevalley",
+]);
+
 const MAP_WIDTH = 400;
 const MAP_HEIGHT = 500;
 const FIT_PADDING = 0.35; // 35% padding so edge markers have room for labels
@@ -137,14 +144,14 @@ export default function CaliforniaMap({
   );
 
   return (
-    <div style={{ position: "relative", width: "100%", height: "100%" }}>
-      <div style={{ width: "100%", height: "100%" }}>
+    <div style={{ position: "relative", width: "100%", height: "100%", overflow: "visible" }}>
+      <div style={{ width: "100%", height: "100%", overflow: "visible" }}>
         <ComposableMap
           projection="geoMercator"
           projectionConfig={{ center: projCenter, scale: projScale }}
           width={400}
           height={500}
-          style={{ width: "100%", height: "100%" }}
+          style={{ width: "100%", height: "100%", overflow: "visible" }}
         >
           {/* County polygons */}
           <Geographies geography={GEO_URL}>
@@ -183,137 +190,69 @@ export default function CaliforniaMap({
             }
           </Geographies>
 
-          {/* Region name labels — state view */}
-          <AnimatePresence>
-            {mapView === "state" &&
-              CALIFORNIA_REGIONS.map((region) => (
+          {/* College markers — always visible */}
+          {(() => {
+            const colleges = mapView === "region" && activeRegionId
+              ? activeRegionColleges.filter((c) => FEATURED_COLLEGES.has(c.id))
+              : CALIFORNIA_COLLEGES.filter((c) => FEATURED_COLLEGES.has(c.id));
+
+            return colleges.map((college) => {
+              const isHovered = hoveredCollegeId === college.id;
+              const isSelected = selectedCollegeId === college.id;
+              const isActive = isHovered || isSelected;
+              const brandColor = getCollegeAtlasConfig(college.id)?.brandColorLight ?? "#3ab26e";
+              const size = isActive ? DIAMOND * 1.4 : DIAMOND;
+
+              return (
                 <Marker
-                  key={region.id}
-                  coordinates={region.labelCenter}
-                  onClick={() => onRegionClick(region.id)}
-                  onMouseEnter={() => onRegionHover(region.id)}
-                  onMouseLeave={() => onRegionHover(null)}
+                  key={college.id}
+                  coordinates={[college.lng, college.lat]}
+                  onMouseEnter={() => onCollegeHover(college)}
+                  onMouseLeave={() => onCollegeHover(null)}
                 >
-                  <motion.text
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: hoveredRegionId === region.id ? 1 : 0.3 }}
-                    transition={{ duration: 0.15 }}
-                    textAnchor="middle"
-                    style={{
-                      fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-                      fontSize: "9px",
-                      fontWeight: 700,
-                      letterSpacing: "0.1em",
-                      textTransform: "uppercase",
-                      fill: "rgba(255,255,255,0.92)",
-                      pointerEvents: "none",
-                      userSelect: "none",
-                    }}
-                  >
-                    {region.name.includes(" / ") ? (
-                      <>
-                        <tspan x="0" dy="-5">{region.name.split(" / ")[0] + " /"}</tspan>
-                        <tspan x="0" dy="11">{region.name.split(" / ")[1]}</tspan>
-                      </>
-                    ) : (
-                      <tspan dominantBaseline="central">{region.name}</tspan>
+                  <g style={{ cursor: "pointer" }} onClick={(e) => { e.stopPropagation(); onCollegeSelect(college); }}>
+                    {/* Glow ring */}
+                    {isActive && (
+                      <circle
+                        r={size * 1.7}
+                        fill="none"
+                        stroke={brandColor}
+                        strokeWidth="0.8"
+                        strokeOpacity={0.45}
+                      />
                     )}
-                  </motion.text>
-                </Marker>
-              ))}
-          </AnimatePresence>
-
-          {/* College markers + constellation lines — region view */}
-          <AnimatePresence>
-            {mapView === "region" && activeRegionId && (
-              <>
-                {/* Constellation lines */}
-                {activeRegionColleges.map((a, i) =>
-                  activeRegionColleges.slice(i + 1, i + 3).map((b) => (
-                    <Marker
-                      key={`line-${a.id}-${b.id}`}
-                      coordinates={[
-                        (a.lng + b.lng) / 2,
-                        (a.lat + b.lat) / 2,
-                      ]}
-                    >
-                      {/* Lines are rendered via SVG line elements below */}
-                      <g />
-                    </Marker>
-                  ))
-                )}
-
-                {/* College markers */}
-                {activeRegionColleges.map((college) => {
-                  const isHovered = hoveredCollegeId === college.id;
-                  const isSelected = selectedCollegeId === college.id;
-                  const isActive = isHovered || isSelected;
-                  const brandColor = getCollegeAtlasConfig(college.id)?.brandColorLight ?? "#3ab26e";
-                  const fill = brandColor;
-                  const size = isActive ? DIAMOND * 1.4 : DIAMOND;
-
-                  return (
-                    <Marker
-                      key={college.id}
-                      coordinates={[college.lng, college.lat]}
-                      onClick={() => onCollegeSelect(college)}
-                      onMouseEnter={() => onCollegeHover(college)}
-                      onMouseLeave={() => onCollegeHover(null)}
-                    >
-                      <motion.g
-                        initial={{ opacity: 0, scale: 0.5 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.5 }}
-                        transition={{ duration: 0.2 }}
-                        style={{ cursor: "pointer" }}
+                    {/* Diamond */}
+                    <rect
+                      x={-size / 2}
+                      y={-size / 2}
+                      width={size}
+                      height={size}
+                      fill={brandColor}
+                      transform="rotate(45)"
+                      style={{ transition: "fill 0.15s" }}
+                    />
+                    {/* College name on hover */}
+                    {isActive && (
+                      <text
+                        y={-size - 10}
+                        textAnchor="middle"
+                        style={{
+                          fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+                          fontSize: "12px",
+                          fontWeight: 600,
+                          fill: "#ffffff",
+                          pointerEvents: "none",
+                          userSelect: "none",
+                        }}
                       >
-                        {/* Glow ring */}
-                        {isActive && (
-                          <circle
-                            r={size * 1.7}
-                            fill="none"
-                            stroke={brandColor}
-                            strokeWidth="0.8"
-                            strokeOpacity={0.45}
-                          />
-                        )}
-                        {/* Diamond */}
-                        <rect
-                          x={-size / 2}
-                          y={-size / 2}
-                          width={size}
-                          height={size}
-                          fill={fill}
-                          transform="rotate(45)"
-                          style={{ transition: "fill 0.15s" }}
-                        />
-                        {/* College name on hover */}
-                        {isActive && (
-                          <text
-                            y={-size - 4}
-                            textAnchor="middle"
-                            style={{
-                              fontFamily:
-                                "var(--font-inter), Inter, system-ui, sans-serif",
-                              fontSize: "5.5px",
-                              fontWeight: 600,
-                              fill: "#ffffff",
-                              pointerEvents: "none",
-                              userSelect: "none",
-                            }}
-                          >
-                            {college.name.length > 24
-                              ? college.name.slice(0, 24) + "…"
-                              : college.name}
-                          </text>
-                        )}
-                      </motion.g>
-                    </Marker>
-                  );
-                })}
-              </>
-            )}
-          </AnimatePresence>
+                        {college.name}
+                      </text>
+                    )}
+                  </g>
+                </Marker>
+              );
+            });
+          })()}
         </ComposableMap>
 
         {/* Constellation lines drawn as SVG overlay — region view */}

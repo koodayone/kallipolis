@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import PageTransition from "@/components/transitions/PageTransition";
-import CaliforniaMap from "@/components/state/CaliforniaMap";
+import CaliforniaMap, { FEATURED_COLLEGES } from "@/components/state/CaliforniaMap";
 import RisingSun from "@/components/ui/RisingSun";
 import { College, Region, CALIFORNIA_REGIONS, CALIFORNIA_COLLEGES } from "@/lib/californiaColleges";
 import { getCollegeAtlasConfig } from "@/lib/collegeAtlasConfigs";
@@ -36,52 +36,34 @@ export default function StateView() {
   const [selectedCollege, setSelectedCollege] = useState<College | null>(null);
   const [mapOpacity, setMapOpacity] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
+  const [mapPanelHovered, setMapPanelHovered] = useState(false);
   const [searchFocused, setSearchFocused] = useState(false);
   const [searchActiveIndex, setSearchActiveIndex] = useState(-1);
   const searchRef = useRef<HTMLInputElement>(null);
 
+  const featuredCollegesSorted = useMemo(() =>
+    CALIFORNIA_COLLEGES.filter((c) => FEATURED_COLLEGES.has(c.id)).sort((a, b) => a.name.localeCompare(b.name)),
+    []
+  );
+
   const searchResults = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
-    if (q.length === 0) return [];
-    return CALIFORNIA_COLLEGES.filter((c) =>
+    if (q.length === 0) return featuredCollegesSorted;
+    return featuredCollegesSorted.filter((c) =>
       c.name.toLowerCase().includes(q) ||
       c.district.toLowerCase().includes(q) ||
       CALIFORNIA_REGIONS.find((r) => r.id === c.regionId)?.name.toLowerCase().includes(q)
-    ).slice(0, 12);
-  }, [searchQuery]);
+    );
+  }, [searchQuery, featuredCollegesSorted]);
 
   // Reset active index when results change
   useEffect(() => { setSearchActiveIndex(-1); }, [searchResults]);
 
-  const showSearchResults = searchQuery.trim().length > 0;
+  const showSearchResults = searchFocused || searchQuery.trim().length > 0;
 
-  const transitionMap = useCallback((fn: () => void) => {
-    setMapOpacity(0);
-    const t = setTimeout(() => {
-      fn();
-      setMapOpacity(1);
-    }, 200);
-    return () => clearTimeout(t);
+  const handleRegionClick = useCallback((_id: string) => {
+    // Region zoom disabled — hover highlighting only
   }, []);
-
-  const handleRegionClick = useCallback((id: string) => {
-    transitionMap(() => {
-      setActiveRegionId(id);
-      setMapView("region");
-      setSelectedCollege(null);
-      setHoveredCollege(null);
-    });
-  }, [transitionMap]);
-
-  const handleMapBack = useCallback(() => {
-    transitionMap(() => {
-      setMapView("state");
-      setActiveRegionId(null);
-      setHoveredRegionId(null);
-      setSelectedCollege(null);
-      setHoveredCollege(null);
-    });
-  }, [transitionMap]);
 
   const handleCollegeSelect = useCallback((college: College) => {
     setSelectedCollege((prev) => (prev?.id === college.id ? null : college));
@@ -91,14 +73,8 @@ export default function StateView() {
     setSearchQuery("");
     setSearchActiveIndex(-1);
     searchRef.current?.blur();
-    // Navigate map to the college's region and select it
-    transitionMap(() => {
-      setActiveRegionId(college.regionId);
-      setMapView("region");
-      setSelectedCollege(college);
-      setHoveredCollege(null);
-    });
-  }, [transitionMap]);
+    setSelectedCollege(college);
+  }, []);
 
   const handleSearchKeyDown = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
     if (!showSearchResults || searchResults.length === 0) return;
@@ -129,9 +105,7 @@ export default function StateView() {
   const regionDistrictCount = new Set(regionColleges.map((c) => c.district)).size;
 
   // Right panel label under the map
-  const mapLabel = mapView === "region" && activeRegion
-    ? `${activeRegion.name} · ${regionCollegeCount} colleges`
-    : "California · 116 Colleges";
+  const mapLabel = "California · 116 Colleges";
 
   return (
     <PageTransition>
@@ -210,6 +184,9 @@ export default function StateView() {
         <div style={{ flex: 1, display: "flex", overflow: "hidden" }}>
           {/* Left — map */}
           <div
+            onClick={() => setSelectedCollege(null)}
+            onMouseEnter={() => setMapPanelHovered(true)}
+            onMouseLeave={() => setMapPanelHovered(false)}
             style={{
               flex: 1,
               position: "relative",
@@ -221,49 +198,9 @@ export default function StateView() {
               gap: "14px",
             }}
           >
-            {/* Back affordance — anchored to top of panel */}
-            <AnimatePresence>
-              {mapView === "region" && (
-                <motion.button
-                  key="back"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  onClick={handleMapBack}
-                  style={{
-                    position: "absolute",
-                    top: "20px",
-                    left: "24px",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "5px",
-                    background: "none",
-                    border: "none",
-                    cursor: "pointer",
-                    padding: "4px 0",
-                    fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-                    fontSize: "11px",
-                    fontWeight: 500,
-                    letterSpacing: "0.1em",
-                    textTransform: "uppercase",
-                    color: "rgba(255,255,255,0.5)",
-                    transition: "color 0.15s",
-                    zIndex: 10,
-                  }}
-                  onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#ffffff")}
-                  onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.5)")}
-                >
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                    <path d="M8 2L4 6l4 4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  All regions
-                </motion.button>
-              )}
-            </AnimatePresence>
             {/* Sun prompt — state view idle/hover, Nevada geographic area */}
             <AnimatePresence>
-              {mapView === "state" && (
+              {mapPanelHovered && (
                 <motion.div
                   key="sun-prompt"
                   initial={{ opacity: 0 }}
@@ -312,7 +249,7 @@ export default function StateView() {
                 maxWidth: "440px",
                 maxHeight: "80vh",
                 aspectRatio: "400 / 500",
-                paddingTop: mapView === "region" ? "16px" : "0",
+                paddingTop: "0",
                 opacity: mapOpacity,
                 transition: "opacity 0.18s ease",
               }}
@@ -334,6 +271,7 @@ export default function StateView() {
 
           {/* Right — info panel */}
           <div
+            onClick={(e) => e.stopPropagation()}
             style={{
               width: "50%",
               flexShrink: 0,
@@ -424,10 +362,6 @@ export default function StateView() {
                 ) : activeCollege ? (
                   <motion.div key={`school-${activeCollege.id}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}>
                     <SchoolPanel college={activeCollege} />
-                  </motion.div>
-                ) : mapView === "region" && activeRegion ? (
-                  <motion.div key={`region-${activeRegion.id}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}>
-                    <RegionPanel region={activeRegion} collegeCount={regionCollegeCount} districtCount={regionDistrictCount} />
                   </motion.div>
                 ) : (
                   <motion.div key="default" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}>
@@ -541,32 +475,6 @@ function SearchResultRow({
         flexShrink: 0,
       }} />
 
-      {/* Logo */}
-      {college.logoStacked ? (
-        <div style={{ width: "36px", height: "36px", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <img
-            src={`/logos/${college.id}.png`}
-            alt=""
-            style={{ maxWidth: "36px", maxHeight: "36px", objectFit: "contain" }}
-          />
-        </div>
-      ) : (
-        <div style={{
-          width: "36px",
-          height: "36px",
-          flexShrink: 0,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "rgba(255,255,255,0.06)",
-          borderRadius: "2px",
-        }}>
-          <span style={{ fontSize: "13px", fontWeight: 700, color: accent }}>
-            {college.name.charAt(0)}
-          </span>
-        </div>
-      )}
-
       {/* Text */}
       <div style={{ display: "flex", flexDirection: "column", gap: "3px", minWidth: 0 }}>
         <span style={{
@@ -624,21 +532,6 @@ function SchoolPanel({ college }: { college: College }) {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
-      {college.logoStacked && (
-        <div style={{ maxWidth: "280px", height: "80px" }}>
-          <img
-            src={`/logos/${college.id}.png`}
-            alt={college.name}
-            style={{
-              height: "80px",
-              width: "auto",
-              maxWidth: "280px",
-              objectFit: "contain",
-              objectPosition: "left center",
-            }}
-          />
-        </div>
-      )}
       <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
         <h2 style={{ fontFamily: "var(--font-days-one), sans-serif", fontSize: "clamp(22px, 2.4vw, 34px)", lineHeight: 1.2, color: "#ffffff", margin: 0 }}>
           {college.name}
