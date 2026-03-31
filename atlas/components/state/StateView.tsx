@@ -182,7 +182,7 @@ export default function StateView() {
 
         {/* Body */}
         <div style={{ flex: 1, display: "flex", overflow: "hidden" }}>
-          {/* Left — map */}
+          {/* Left — map + search */}
           <div
             onClick={() => setSelectedCollege(null)}
             onMouseEnter={() => setMapPanelHovered(true)}
@@ -193,14 +193,131 @@ export default function StateView() {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              justifyContent: "center",
-              padding: "32px 24px 24px",
-              gap: "14px",
+              padding: "24px 40px 24px",
+              overflow: "hidden",
             }}
           >
-            {/* Sun prompt — state view idle/hover, Nevada geographic area */}
+            {/* Search bar */}
+            <div style={{ width: "100%", maxWidth: "440px", flexShrink: 0, position: "relative", zIndex: 5 }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "12px",
+                  padding: "0 20px",
+                  height: "48px",
+                  background: searchFocused ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
+                  border: `1px solid ${searchFocused ? "rgba(201,168,76,0.4)" : "rgba(255,255,255,0.08)"}`,
+                  borderRadius: "6px",
+                  transition: "all 0.2s ease",
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0, opacity: searchFocused ? 0.8 : 0.4, transition: "opacity 0.2s" }}>
+                  <circle cx="7" cy="7" r="5" stroke="rgba(255,255,255,0.9)" strokeWidth="1.3" />
+                  <path d="M11 11l3.5 3.5" stroke="rgba(255,255,255,0.9)" strokeWidth="1.3" strokeLinecap="round" />
+                </svg>
+                <input
+                  ref={searchRef}
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onKeyDown={handleSearchKeyDown}
+                  onFocus={() => setSearchFocused(true)}
+                  onBlur={() => setTimeout(() => setSearchFocused(false), 150)}
+                  placeholder="Search colleges…"
+                  style={{
+                    flex: 1,
+                    background: "none",
+                    border: "none",
+                    outline: "none",
+                    fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+                    fontSize: "13px",
+                    fontWeight: 400,
+                    color: "#ffffff",
+                    letterSpacing: "0.01em",
+                  }}
+                />
+                {searchQuery.length > 0 && (
+                  <button
+                    onClick={() => { setSearchQuery(""); searchRef.current?.focus(); }}
+                    style={{
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                      padding: "4px",
+                      color: "rgba(255,255,255,0.4)",
+                      display: "flex",
+                      alignItems: "center",
+                      transition: "color 0.15s",
+                    }}
+                    onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.8)")}
+                    onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.4)")}
+                  >
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <path d="M3.5 3.5l7 7M10.5 3.5l-7 7" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+                    </svg>
+                  </button>
+                )}
+              </div>
+
+              {/* Search results dropdown */}
+              <AnimatePresence>
+                {showSearchResults && (
+                  <motion.div
+                    key="search-dropdown"
+                    initial={{ opacity: 0, y: -4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -4 }}
+                    transition={{ duration: 0.12 }}
+                    onClick={(e) => e.stopPropagation()}
+                    style={{
+                      position: "absolute",
+                      top: "calc(100% + 6px)",
+                      left: 0,
+                      right: 0,
+                      maxHeight: "320px",
+                      overflowY: "auto",
+                      background: "rgba(10, 14, 28, 0.97)",
+                      border: "1px solid rgba(255,255,255,0.10)",
+                      borderRadius: "6px",
+                      backdropFilter: "blur(12px)",
+                      padding: "6px 0",
+                    }}
+                  >
+                    <SearchResults results={searchResults} query={searchQuery} onSelect={handleSearchSelect} activeIndex={searchActiveIndex} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Map */}
+            <div
+              style={{
+                flex: 1,
+                width: "100%",
+                maxWidth: "440px",
+                aspectRatio: "400 / 500",
+                marginTop: "8px",
+                opacity: mapOpacity,
+                transition: "opacity 0.18s ease",
+              }}
+            >
+              <CaliforniaMap
+                mapView={mapView}
+                activeRegionId={activeRegionId}
+                hoveredRegionId={hoveredRegionId}
+                hoveredCollegeId={hoveredCollege?.id ?? null}
+                selectedCollegeId={selectedCollege?.id ?? null}
+                onRegionHover={setHoveredRegionId}
+                onRegionClick={handleRegionClick}
+                onCollegeHover={setHoveredCollege}
+                onCollegeSelect={handleCollegeSelect}
+              />
+            </div>
+
+            {/* Sun prompt */}
             <AnimatePresence>
-              {mapPanelHovered && (
+              {mapPanelHovered && !showSearchResults && (
                 <motion.div
                   key="sun-prompt"
                   initial={{ opacity: 0 }}
@@ -209,8 +326,8 @@ export default function StateView() {
                   transition={{ duration: 0.3 }}
                   style={{
                     position: "absolute",
-                    right: "20%",
-                    top: "17%",
+                    right: "18%",
+                    top: "15%",
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
@@ -243,35 +360,11 @@ export default function StateView() {
               )}
             </AnimatePresence>
 
-            <div
-              style={{
-                width: "100%",
-                maxWidth: "440px",
-                maxHeight: "80vh",
-                aspectRatio: "400 / 500",
-                paddingTop: "0",
-                opacity: mapOpacity,
-                transition: "opacity 0.18s ease",
-              }}
-            >
-              <CaliforniaMap
-                mapView={mapView}
-                activeRegionId={activeRegionId}
-                hoveredRegionId={hoveredRegionId}
-                hoveredCollegeId={hoveredCollege?.id ?? null}
-                selectedCollegeId={selectedCollege?.id ?? null}
-                onRegionHover={setHoveredRegionId}
-                onRegionClick={handleRegionClick}
-                onCollegeHover={setHoveredCollege}
-                onCollegeSelect={handleCollegeSelect}
-              />
-            </div>
-
           </div>
 
           {/* Right — info panel */}
           <div
-            onClick={(e) => e.stopPropagation()}
+            onClick={() => setSelectedCollege(null)}
             style={{
               width: "50%",
               flexShrink: 0,
@@ -281,86 +374,17 @@ export default function StateView() {
               overflow: "hidden",
             }}
           >
-            {/* Search bar — always visible */}
-            <div style={{ flexShrink: 0, padding: "32px 56px 0" }}>
-              <div
-                style={{
-                  position: "relative",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "12px",
-                  padding: "0 20px",
-                  height: "52px",
-                  background: searchFocused ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
-                  border: `1px solid ${searchFocused ? "rgba(201,168,76,0.4)" : "rgba(255,255,255,0.08)"}`,
-                  borderRadius: "2px",
-                  transition: "all 0.2s ease",
-                }}
-              >
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0, opacity: searchFocused ? 0.8 : 0.4, transition: "opacity 0.2s" }}>
-                  <circle cx="7" cy="7" r="5" stroke="rgba(255,255,255,0.9)" strokeWidth="1.3" />
-                  <path d="M11 11l3.5 3.5" stroke="rgba(255,255,255,0.9)" strokeWidth="1.3" strokeLinecap="round" />
-                </svg>
-                <input
-                  ref={searchRef}
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  onKeyDown={handleSearchKeyDown}
-                  onFocus={() => setSearchFocused(true)}
-                  onBlur={() => setTimeout(() => setSearchFocused(false), 150)}
-                  placeholder="Search colleges, districts, or regions…"
-                  style={{
-                    flex: 1,
-                    background: "none",
-                    border: "none",
-                    outline: "none",
-                    fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-                    fontSize: "14px",
-                    fontWeight: 400,
-                    color: "#ffffff",
-                    letterSpacing: "0.01em",
-                  }}
-                />
-                {searchQuery.length > 0 && (
-                  <button
-                    onClick={() => { setSearchQuery(""); searchRef.current?.focus(); }}
-                    style={{
-                      background: "none",
-                      border: "none",
-                      cursor: "pointer",
-                      padding: "4px",
-                      color: "rgba(255,255,255,0.4)",
-                      display: "flex",
-                      alignItems: "center",
-                      transition: "color 0.15s",
-                    }}
-                    onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.8)")}
-                    onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.4)")}
-                  >
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                      <path d="M3.5 3.5l7 7M10.5 3.5l-7 7" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
-                    </svg>
-                  </button>
-                )}
-              </div>
-            </div>
-
             {/* Panel content — scrollable */}
             <div
               style={{
                 flex: 1,
                 overflowY: "auto",
-                padding: "24px 56px 150px",
+                padding: "40px 56px 150px",
               }}
             >
               <AnimatePresence mode="wait">
-                {showSearchResults ? (
-                  <motion.div key="search-results" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.12 }}>
-                    <SearchResults results={searchResults} query={searchQuery} onSelect={handleSearchSelect} activeIndex={searchActiveIndex} />
-                  </motion.div>
-                ) : activeCollege ? (
-                  <motion.div key={`school-${activeCollege.id}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}>
+                {activeCollege ? (
+                  <motion.div key={`school-${activeCollege.id}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }} onClick={(e) => e.stopPropagation()}>
                     <SchoolPanel college={activeCollege} />
                   </motion.div>
                 ) : (
