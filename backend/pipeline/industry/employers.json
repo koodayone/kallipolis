@@ -1057,7 +1057,17 @@
       "29-2061",
       "31-1131",
       "43-6013",
-      "11-9111"
+      "11-9111",
+      "13-1111",
+      "27-2012",
+      "15-1252",
+      "15-2051",
+      "13-1199",
+      "13-1082",
+      "27-3043",
+      "13-2011",
+      "13-1071",
+      "27-2022"
     ],
     "regions": [
       "Los Angeles-Long Beach-Glendale"
@@ -4642,6 +4652,1520 @@
     ],
     "regions": [
       "Yuba City"
+    ]
+  },
+  {
+    "name": "PIH Health",
+    "sector": "Professional Services",
+    "description": "PIH Health in Whittier, Los Angeles County. Industry: Health Care Management.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "13-1111",
+      "27-2012",
+      "15-1252",
+      "15-2051",
+      "13-1199",
+      "13-1082",
+      "27-3043",
+      "13-2011",
+      "13-1071",
+      "27-2022"
+    ]
+  },
+  {
+    "name": "Security Industry Specialist",
+    "sector": "Professional Services",
+    "description": "Security Industry Specialist in Culver City, Los Angeles County. Industry: Security Systems Consultants.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "13-1111",
+      "27-2012",
+      "15-1252",
+      "15-2051",
+      "13-1199",
+      "13-1082",
+      "27-3043",
+      "13-2011",
+      "13-1071",
+      "27-2022"
+    ]
+  },
+  {
+    "name": "Sony Pictures Entrtn Inc",
+    "sector": "Information & Media",
+    "description": "Sony Pictures Entrtn Inc in Culver City, Los Angeles County. Industry: Motion Picture Producers & Studios.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "13-1111",
+      "27-2012",
+      "15-1252",
+      "15-2051",
+      "13-1199",
+      "13-1082",
+      "27-3043",
+      "13-2011",
+      "13-1071",
+      "27-2022"
+    ]
+  },
+  {
+    "name": "TELEVISION CITY",
+    "sector": "Information & Media",
+    "description": "TELEVISION CITY in Los Angeles, Los Angeles County. Industry: Television Stations & Broadcasting Co.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "13-1111",
+      "27-2012",
+      "15-1252",
+      "15-2051",
+      "13-1199",
+      "13-1082",
+      "27-3043",
+      "13-2011",
+      "13-1071",
+      "27-2022"
+    ]
+  },
+  {
+    "name": "Emanate Health Queen-The Vly",
+    "sector": "Healthcare",
+    "description": "Emanate Health Queen-The Vly in West Covina, Los Angeles County. Industry: Hospitals.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "21-1021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "29-1141",
+      "11-9021",
+      "11-9032",
+      "11-9033"
+    ]
+  },
+  {
+    "name": "Kaiser Permanente Los Angeles",
+    "sector": "Healthcare",
+    "description": "Kaiser Permanente Los Angeles in Los Angeles, Los Angeles County. Industry: Hospitals.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "21-1021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "29-1141",
+      "11-9021",
+      "11-9032",
+      "11-9033"
+    ]
+  },
+  {
+    "name": "Los Angeles Medical Ctr",
+    "sector": "Healthcare",
+    "description": "Los Angeles Medical Ctr in Los Angeles, Los Angeles County. Industry: Pathologists.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "21-1021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "29-1141",
+      "11-9021",
+      "11-9032",
+      "11-9033"
+    ]
+  },
+  {
+    "name": "Memorialcare Long Beach Med",
+    "sector": "Healthcare",
+    "description": "Memorialcare Long Beach Med in Long Beach, Los Angeles County. Industry: Hospitals.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "21-1021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "29-1141",
+      "11-9021",
+      "11-9032",
+      "11-9033"
+    ]
+  },
+  {
+    "name": "California State Univ Nrthrdg",
+    "sector": "Education",
+    "description": "California State Univ Nrthrdg in Northridge, Los Angeles County. Industry: Schools-Universities & Colleges Academic.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "25-2031",
+      "21-1021",
+      "25-2021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "11-9032"
+    ]
+  },
+  {
+    "name": "UCLA Community Based Learning",
+    "sector": "Education",
+    "description": "UCLA Community Based Learning in Los Angeles, Los Angeles County. Industry: Junior-Community College-Tech Institutes.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "25-2031",
+      "21-1021",
+      "25-2021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "11-9032"
+    ]
+  },
+  {
+    "name": "Long Beach City Hall",
+    "sector": "Government",
+    "description": "Long Beach City Hall in Long Beach, Los Angeles County. Industry: City Hall.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "21-1021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "11-9032",
+      "11-9033",
+      "11-9121"
+    ]
+  },
+  {
+    "name": "Los Angeles County Fire Dept",
+    "sector": "Government",
+    "description": "Los Angeles County Fire Dept in Acton, Los Angeles County. Industry: Fire Departments.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "21-1021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "11-9032",
+      "11-9033",
+      "11-9121"
+    ]
+  },
+  {
+    "name": "Los Angeles County Sheriff",
+    "sector": "Government",
+    "description": "Los Angeles County Sheriff in Monterey Park, Los Angeles County. Industry: Government Offices-County.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "21-1021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "11-9032",
+      "11-9033",
+      "11-9121"
+    ]
+  },
+  {
+    "name": "Los Angeles Police Dept",
+    "sector": "Government",
+    "description": "Los Angeles Police Dept in Los Angeles, Los Angeles County. Industry: Police Departments.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "21-1021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "11-9032",
+      "11-9033",
+      "11-9121"
+    ]
+  },
+  {
+    "name": "Live Nation",
+    "sector": "Arts & Entertainment",
+    "description": "Live Nation in Los Angeles, Los Angeles County. Industry: Entertainment Bureaus.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "27-2012",
+      "27-3043",
+      "39-9031",
+      "27-2022",
+      "27-2042",
+      "39-9011",
+      "27-3041",
+      "35-2014",
+      "27-3031",
+      "27-1014"
+    ]
+  },
+  {
+    "name": "Six Flags Magic Mountain",
+    "sector": "Arts & Entertainment",
+    "description": "Six Flags Magic Mountain in Valencia, Los Angeles County. Industry: Amusement & Theme Parks.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "27-2012",
+      "27-3043",
+      "39-9031",
+      "27-2022",
+      "27-2042",
+      "39-9011",
+      "27-3041",
+      "35-2014",
+      "27-3031",
+      "27-1014"
+    ]
+  },
+  {
+    "name": "Walt Disney Co",
+    "sector": "Arts & Entertainment",
+    "description": "Walt Disney Co in Burbank, Los Angeles County. Industry: Amusement & Theme Parks.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "27-2012",
+      "27-3043",
+      "39-9031",
+      "27-2022",
+      "27-2042",
+      "39-9011",
+      "27-3041",
+      "35-2014",
+      "27-3031",
+      "27-1014"
+    ]
+  },
+  {
+    "name": "Vision X",
+    "sector": "Administrative Services",
+    "description": "Vision X in Los Angeles, Los Angeles County. Industry: Call Centers.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "43-1011",
+      "43-9061",
+      "43-3031",
+      "43-6014",
+      "33-9032",
+      "43-6011",
+      "43-5011",
+      "33-3051",
+      "33-1012",
+      "43-6013"
+    ]
+  },
+  {
+    "name": "All Nations Church",
+    "sector": "Other Services",
+    "description": "All Nations Church in Sylmar, Los Angeles County. Industry: Churches.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "43-1011",
+      "43-9061",
+      "39-9031",
+      "39-9011",
+      "43-3031",
+      "43-6014",
+      "43-6011",
+      "43-5011",
+      "43-6013",
+      "49-1011"
+    ]
+  },
+  {
+    "name": "County-Los Angeles Fire Dept",
+    "sector": "Other Services",
+    "description": "County-Los Angeles Fire Dept in Commerce, Los Angeles County. Industry: Non-Profit Organizations.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "43-1011",
+      "43-9061",
+      "39-9031",
+      "39-9011",
+      "43-3031",
+      "43-6014",
+      "43-6011",
+      "43-5011",
+      "43-6013",
+      "49-1011"
+    ]
+  },
+  {
+    "name": "Longshore Dispatch",
+    "sector": "Other Services",
+    "description": "Longshore Dispatch in Wilmington, Los Angeles County. Industry: Labor Organizations.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "43-1011",
+      "43-9061",
+      "39-9031",
+      "39-9011",
+      "43-3031",
+      "43-6014",
+      "43-6011",
+      "43-5011",
+      "43-6013",
+      "49-1011"
+    ]
+  },
+  {
+    "name": "Water Garden Management",
+    "sector": "Real Estate",
+    "description": "Water Garden Management in Santa Monica, Los Angeles County. Industry: Office Buildings & Parks.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "43-1011",
+      "43-9061",
+      "43-3031",
+      "43-6014",
+      "41-3091",
+      "43-6011",
+      "43-5011",
+      "41-1011",
+      "43-6013",
+      "41-9022"
+    ]
+  },
+  {
+    "name": "Los Angeles Intl Airport-Lax",
+    "sector": "Transportation",
+    "description": "Los Angeles Intl Airport-Lax in Los Angeles, Los Angeles County. Industry: Airports.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "43-1011",
+      "43-9061",
+      "43-3031",
+      "43-6014",
+      "43-6011",
+      "43-5011",
+      "43-6013",
+      "49-1011"
+    ]
+  },
+  {
+    "name": "Infineon Technologies Americas",
+    "sector": "Manufacturing",
+    "description": "Infineon Technologies Americas in El Segundo, Los Angeles County. Industry: Semiconductor Devices (mfrs).",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "15-1252",
+      "15-2051",
+      "15-1299",
+      "15-1211",
+      "15-1255",
+      "15-1212",
+      "15-1253",
+      "15-1241"
+    ]
+  },
+  {
+    "name": "Paramount Pictures Corp",
+    "sector": "Information & Media",
+    "description": "Paramount Pictures Corp, in Los Angeles, (Los Angeles County). Motion Picture and Video Production. 1,000-4,999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "13-1111",
+      "27-2012",
+      "15-1252",
+      "15-2051",
+      "13-1199",
+      "13-1082",
+      "27-3043",
+      "13-2011",
+      "13-1071",
+      "27-2022"
+    ]
+  },
+  {
+    "name": "Rhythm & Hues Studios",
+    "sector": "Information & Media",
+    "description": "Rhythm & Hues Studios, in Los Angeles, (Los Angeles County). Motion Picture and Video Production. 1,000-4,999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "13-1111",
+      "27-2012",
+      "15-1252",
+      "15-2051",
+      "13-1199",
+      "13-1082",
+      "27-3043",
+      "13-2011",
+      "13-1071",
+      "27-2022"
+    ]
+  },
+  {
+    "name": "Technicolor USA Inc",
+    "sector": "Information & Media",
+    "description": "Technicolor USA Inc, in Los Angeles, (Los Angeles County). Motion Picture and Video Production. 1,000-4,999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "13-1111",
+      "27-2012",
+      "15-1252",
+      "15-2051",
+      "13-1199",
+      "13-1082",
+      "27-3043",
+      "13-2011",
+      "13-1071",
+      "27-2022"
+    ]
+  },
+  {
+    "name": "ADP",
+    "sector": "Information & Media",
+    "description": "ADP, in San Dimas, (Los Angeles County). Data processing, hosting and related services. 1,000-4,999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "13-1111",
+      "27-2012",
+      "15-1252",
+      "15-2051",
+      "13-1199",
+      "13-1082",
+      "27-3043",
+      "13-2011",
+      "13-1071",
+      "27-2022"
+    ]
+  },
+  {
+    "name": "Information Technology Agency",
+    "sector": "Professional Services",
+    "description": "Information Technology Agency, in Los Angeles, (Los Angeles County). Custom Computer Programming Services. 500-999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "13-1111",
+      "27-2012",
+      "15-1252",
+      "15-2051",
+      "13-1199",
+      "13-1082",
+      "27-3043",
+      "13-2011",
+      "13-1071",
+      "27-2022"
+    ]
+  },
+  {
+    "name": "Source Photonics Inc",
+    "sector": "Professional Services",
+    "description": "Source Photonics Inc, in West Hills, (Los Angeles County). Computer Systems Design Services. 500-999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "13-1111",
+      "27-2012",
+      "15-1252",
+      "15-2051",
+      "13-1199",
+      "13-1082",
+      "27-3043",
+      "13-2011",
+      "13-1071",
+      "27-2022"
+    ]
+  },
+  {
+    "name": "Lions Gate Entertainment Corp",
+    "sector": "Information & Media",
+    "description": "Lions Gate Entertainment Corp, in Santa Monica, (Los Angeles County). Motion Picture and Video Production. 500-999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "13-1111",
+      "27-2012",
+      "15-1252",
+      "15-2051",
+      "13-1199",
+      "13-1082",
+      "27-3043",
+      "13-2011",
+      "13-1071",
+      "27-2022"
+    ]
+  },
+  {
+    "name": "Geffen Records",
+    "sector": "Information & Media",
+    "description": "Geffen Records, in Santa Monica, (Los Angeles County). Sound Recording Studios. 500-999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "13-1111",
+      "27-2012",
+      "15-1252",
+      "15-2051",
+      "13-1199",
+      "13-1082",
+      "27-3043",
+      "13-2011",
+      "13-1071",
+      "27-2022"
+    ]
+  },
+  {
+    "name": "Universal Music Group Inc",
+    "sector": "Information & Media",
+    "description": "Universal Music Group Inc, in Santa Monica, (Los Angeles County). Sound Recording Studios. 500-999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "13-1111",
+      "27-2012",
+      "15-1252",
+      "15-2051",
+      "13-1199",
+      "13-1082",
+      "27-3043",
+      "13-2011",
+      "13-1071",
+      "27-2022"
+    ]
+  },
+  {
+    "name": "Kaiser Permanente B Orchard",
+    "sector": "Healthcare",
+    "description": "Kaiser Permanente B Orchard, in Downey, (Los Angeles County). Offices of physicians, except mental health. 1,000-4,999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "21-1021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "29-1141",
+      "11-9021",
+      "11-9032",
+      "11-9033"
+    ]
+  },
+  {
+    "name": "Kaiser Permanente Riverside MD",
+    "sector": "Healthcare",
+    "description": "Kaiser Permanente Riverside MD, in City of Industry, (Los Angeles County). Offices of physicians, except mental health. 1,000-4,999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "21-1021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "29-1141",
+      "11-9021",
+      "11-9032",
+      "11-9033"
+    ]
+  },
+  {
+    "name": "Southern CA Permanente Med Grp",
+    "sector": "Healthcare",
+    "description": "Southern CA Permanente Med Grp, in Los Angeles, (Los Angeles County). Offices of physicians, except mental health. 1,000-4,999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "21-1021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "29-1141",
+      "11-9021",
+      "11-9032",
+      "11-9033"
+    ]
+  },
+  {
+    "name": "USC Engemann Student Health",
+    "sector": "Healthcare",
+    "description": "USC Engemann Student Health, in Los Angeles, (Los Angeles County). Offices of physicians, except mental health. 1,000-4,999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "21-1021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "29-1141",
+      "11-9021",
+      "11-9032",
+      "11-9033"
+    ]
+  },
+  {
+    "name": "Los Angeles County Military",
+    "sector": "Healthcare",
+    "description": "Los Angeles County Military, in Sepulveda, (Los Angeles County). Freestanding Emergency Medical Centers. 1,000-4,999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "21-1021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "29-1141",
+      "11-9021",
+      "11-9032",
+      "11-9033"
+    ]
+  },
+  {
+    "name": "Tenet Healthcare Corp",
+    "sector": "Healthcare",
+    "description": "Tenet Healthcare Corp, in Los Angeles, (Los Angeles County). Miscellaneous ambulatory health care services. 1,000-4,999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "21-1021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "29-1141",
+      "11-9021",
+      "11-9032",
+      "11-9033"
+    ]
+  },
+  {
+    "name": "UCLA Cart",
+    "sector": "Healthcare",
+    "description": "UCLA Cart, in Los Angeles, (Los Angeles County). Miscellaneous ambulatory health care services. 1,000-4,999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "21-1021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "29-1141",
+      "11-9021",
+      "11-9032",
+      "11-9033"
+    ]
+  },
+  {
+    "name": "Adventist Health Glendale",
+    "sector": "Healthcare",
+    "description": "Adventist Health Glendale, in Glendale, (Los Angeles County). General Medical and Surgical Hospitals. 1,000-4,999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "21-1021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "29-1141",
+      "11-9021",
+      "11-9032",
+      "11-9033"
+    ]
+  },
+  {
+    "name": "Centinela Hospital Medical Ctr",
+    "sector": "Healthcare",
+    "description": "Centinela Hospital Medical Ctr, in Inglewood, (Los Angeles County). General Medical and Surgical Hospitals. 1,000-4,999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "21-1021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "29-1141",
+      "11-9021",
+      "11-9032",
+      "11-9033"
+    ]
+  },
+  {
+    "name": "Dignity Health-Glendale Meml",
+    "sector": "Healthcare",
+    "description": "Dignity Health-Glendale Meml, in Glendale, (Los Angeles County). General Medical and Surgical Hospitals. 1,000-4,999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "21-1021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "29-1141",
+      "11-9021",
+      "11-9032",
+      "11-9033"
+    ]
+  },
+  {
+    "name": "Cerritos College",
+    "sector": "Education",
+    "description": "Cerritos College, in Norwalk, (Los Angeles County). Junior Colleges. 1,000-4,999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "25-2031",
+      "21-1021",
+      "25-2021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "11-9032"
+    ]
+  },
+  {
+    "name": "Glendale Community College",
+    "sector": "Education",
+    "description": "Glendale Community College, in Glendale, (Los Angeles County). Junior Colleges. 1,000-4,999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "25-2031",
+      "21-1021",
+      "25-2021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "11-9032"
+    ]
+  },
+  {
+    "name": "Azusa Pacific Univ Board-Trsts",
+    "sector": "Education",
+    "description": "Azusa Pacific Univ Board-Trsts, in Azusa, (Los Angeles County). Colleges and Universities. 1,000-4,999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "25-2031",
+      "21-1021",
+      "25-2021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "11-9032"
+    ]
+  },
+  {
+    "name": "California State Polytechnic",
+    "sector": "Education",
+    "description": "California State Polytechnic, in Pomona, (Los Angeles County). Colleges and Universities. 1,000-4,999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "25-2031",
+      "21-1021",
+      "25-2021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "11-9032"
+    ]
+  },
+  {
+    "name": "USC Viterbi School of Engrng",
+    "sector": "Education",
+    "description": "USC Viterbi School of Engrng, in Los Angeles, (Los Angeles County). Colleges and Universities. 1,000-4,999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "25-2031",
+      "21-1021",
+      "25-2021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "11-9032"
+    ]
+  },
+  {
+    "name": "Ritz-Carlton Los Angeles",
+    "sector": "Hospitality & Food Service",
+    "description": "Ritz-Carlton Los Angeles, in Los Angeles, (Los Angeles County). Hotels and motels, except casino hotels. 1,000-4,999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "11-3021",
+      "11-2022",
+      "39-9031",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "39-9011",
+      "11-9032",
+      "11-9033"
+    ]
+  },
+  {
+    "name": "Columbus Technologies & Svc",
+    "sector": "Professional Services",
+    "description": "Columbus Technologies & Svc, in El Segundo, (Los Angeles County). Custom Computer Programming Services. 250-499 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "13-1111",
+      "27-2012",
+      "15-1252",
+      "15-2051",
+      "13-1199",
+      "13-1082",
+      "27-3043",
+      "13-2011",
+      "13-1071",
+      "27-2022"
+    ]
+  },
+  {
+    "name": "Barack Obama Global",
+    "sector": "Education",
+    "description": "Barack Obama Global, in Los Angeles, (Los Angeles County). Elementary and Secondary Schools. 500-999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "25-2031",
+      "21-1021",
+      "25-2021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "11-9032"
+    ]
+  },
+  {
+    "name": "Crenshaw High School",
+    "sector": "Education",
+    "description": "Crenshaw High School, in Los Angeles, (Los Angeles County). Elementary and Secondary Schools. 500-999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "25-2031",
+      "21-1021",
+      "25-2021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "11-9032"
+    ]
+  },
+  {
+    "name": "Hawthorne High School",
+    "sector": "Education",
+    "description": "Hawthorne High School, in Hawthorne, (Los Angeles County). Elementary and Secondary Schools. 500-999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "25-2031",
+      "21-1021",
+      "25-2021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "11-9032"
+    ]
+  },
+  {
+    "name": "Help Group",
+    "sector": "Education",
+    "description": "Help Group, in Sherman Oaks, (Los Angeles County). Elementary and Secondary Schools. 500-999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "25-2031",
+      "21-1021",
+      "25-2021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "11-9032"
+    ]
+  },
+  {
+    "name": "California State Prison-Los",
+    "sector": "Government",
+    "description": "California State Prison-Los, in Lancaster, (Los Angeles County). Correctional Institutions. 1,000-4,999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "21-1021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "11-9032",
+      "11-9033",
+      "11-9121"
+    ]
+  },
+  {
+    "name": "Long Beach Chief of Police Ofc",
+    "sector": "Government",
+    "description": "Long Beach Chief of Police Ofc, in Long Beach, (Los Angeles County). Police Protection. 1,000-4,999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "21-1021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "11-9032",
+      "11-9033",
+      "11-9121"
+    ]
+  },
+  {
+    "name": "Long Beach Police-Patrol Admin",
+    "sector": "Government",
+    "description": "Long Beach Police-Patrol Admin, in Long Beach, (Los Angeles County). Police Protection. 1,000-4,999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "21-1021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "11-9032",
+      "11-9033",
+      "11-9121"
+    ]
+  },
+  {
+    "name": "Los Angeles County Superior",
+    "sector": "Government",
+    "description": "Los Angeles County Superior, in Santa Monica, (Los Angeles County). Courts. 1,000-4,999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "21-1021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "11-9032",
+      "11-9033",
+      "11-9121"
+    ]
+  },
+  {
+    "name": "Pie Town Productions",
+    "sector": "Information & Media",
+    "description": "Pie Town Productions, in Valley Village, (Los Angeles County). Motion Picture and Video Production. 250-499 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "13-1111",
+      "27-2012",
+      "15-1252",
+      "15-2051",
+      "13-1199",
+      "13-1082",
+      "27-3043",
+      "13-2011",
+      "13-1071",
+      "27-2022"
+    ]
+  },
+  {
+    "name": "Technicolor",
+    "sector": "Information & Media",
+    "description": "Technicolor, in Burbank, (Los Angeles County). Motion Picture and Video Production. 250-499 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "13-1111",
+      "27-2012",
+      "15-1252",
+      "15-2051",
+      "13-1199",
+      "13-1082",
+      "27-3043",
+      "13-2011",
+      "13-1071",
+      "27-2022"
+    ]
+  },
+  {
+    "name": "Activision Publishing Inc",
+    "sector": "Information & Media",
+    "description": "Activision Publishing Inc, in Santa Monica, (Los Angeles County). Record Production and Distribution. 250-499 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "13-1111",
+      "27-2012",
+      "15-1252",
+      "15-2051",
+      "13-1199",
+      "13-1082",
+      "27-3043",
+      "13-2011",
+      "13-1071",
+      "27-2022"
+    ]
+  },
+  {
+    "name": "Beverly Hilton",
+    "sector": "Hospitality & Food Service",
+    "description": "Beverly Hilton, in Beverly Hills, (Los Angeles County). Hotels and motels, except casino hotels. 500-999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "11-3021",
+      "11-2022",
+      "39-9031",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "39-9011",
+      "11-9032",
+      "11-9033"
+    ]
+  },
+  {
+    "name": "Beverly Wilshire A Four",
+    "sector": "Hospitality & Food Service",
+    "description": "Beverly Wilshire A Four, in Beverly Hills, (Los Angeles County). Hotels and motels, except casino hotels. 500-999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "11-3021",
+      "11-2022",
+      "39-9031",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "39-9011",
+      "11-9032",
+      "11-9033"
+    ]
+  },
+  {
+    "name": "Four Seasons Hotel Los Angeles",
+    "sector": "Hospitality & Food Service",
+    "description": "Four Seasons Hotel Los Angeles, in Los Angeles, (Los Angeles County). Hotels and motels, except casino hotels. 500-999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "11-3021",
+      "11-2022",
+      "39-9031",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "39-9011",
+      "11-9032",
+      "11-9033"
+    ]
+  },
+  {
+    "name": "Los Angeles Airport Marriott",
+    "sector": "Hospitality & Food Service",
+    "description": "Los Angeles Airport Marriott, in Los Angeles, (Los Angeles County). Hotels and motels, except casino hotels. 500-999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "11-3021",
+      "11-2022",
+      "39-9031",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "39-9011",
+      "11-9032",
+      "11-9033"
+    ]
+  },
+  {
+    "name": "Queen Mary",
+    "sector": "Hospitality & Food Service",
+    "description": "Queen Mary, in Long Beach, (Los Angeles County). Hotels and motels, except casino hotels. 500-999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "11-3021",
+      "11-2022",
+      "39-9031",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "39-9011",
+      "11-9032",
+      "11-9033"
+    ]
+  },
+  {
+    "name": "Dine Brands Global Inc",
+    "sector": "Hospitality & Food Service",
+    "description": "Dine Brands Global Inc, in Pasadena, (Los Angeles County). Food Service Contractors. 500-999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "11-3021",
+      "11-2022",
+      "39-9031",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "39-9011",
+      "11-9032",
+      "11-9033"
+    ]
+  },
+  {
+    "name": "Flying Food Group",
+    "sector": "Hospitality & Food Service",
+    "description": "Flying Food Group, in Inglewood, (Los Angeles County). Caterers. 500-999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "11-3021",
+      "11-2022",
+      "39-9031",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "39-9011",
+      "11-9032",
+      "11-9033"
+    ]
+  },
+  {
+    "name": "Lapd-Devonshire Cmnty Police",
+    "sector": "Government",
+    "description": "Lapd-Devonshire Cmnty Police, in Northridge, (Los Angeles County). Police Protection. 500-999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "21-1021",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "11-9032",
+      "11-9033",
+      "11-9121"
+    ]
+  },
+  {
+    "name": "Galpin Mazda",
+    "sector": "Retail",
+    "description": "Galpin Mazda, in North Hills, (Los Angeles County). New Car Dealers. 1,000-4,999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "43-1011",
+      "43-9061",
+      "43-3031",
+      "43-6014",
+      "41-3091",
+      "35-2014",
+      "35-1012",
+      "43-6011",
+      "43-5011",
+      "41-1011"
+    ]
+  },
+  {
+    "name": "Infiniti of Van Nuys",
+    "sector": "Retail",
+    "description": "Infiniti of Van Nuys, in Sherman Oaks, (Los Angeles County). New Car Dealers. 500-999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "43-1011",
+      "43-9061",
+      "43-3031",
+      "43-6014",
+      "41-3091",
+      "35-2014",
+      "35-1012",
+      "43-6011",
+      "43-5011",
+      "41-1011"
+    ]
+  },
+  {
+    "name": "ACCO Engineered Systems",
+    "sector": "Construction",
+    "description": "ACCO Engineered Systems, in Pasadena, (Los Angeles County). Plumbing and HVAC Contractors. 1,000-4,999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "11-9032",
+      "11-9033",
+      "11-9121",
+      "11-3071"
+    ]
+  },
+  {
+    "name": "Honeywell",
+    "sector": "Construction",
+    "description": "Honeywell, in Torrance, (Los Angeles County). Plumbing and HVAC Contractors. 1,000-4,999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "11-9199",
+      "11-3021",
+      "11-2022",
+      "11-9151",
+      "11-3012",
+      "11-9021",
+      "11-9032",
+      "11-9033",
+      "11-9121",
+      "11-3071"
+    ]
+  },
+  {
+    "name": "Distinctive Industries",
+    "sector": "Other Services",
+    "description": "Distinctive Industries, in Santa Fe Springs, (Los Angeles County). Automotive Body and Interior Repair. 250-499 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "43-1011",
+      "43-9061",
+      "39-9031",
+      "39-9011",
+      "43-3031",
+      "43-6014",
+      "43-6011",
+      "43-5011",
+      "43-6013",
+      "49-1011"
+    ]
+  },
+  {
+    "name": "Herbalife Nutrition",
+    "sector": "Other Services",
+    "description": "Herbalife Nutrition, in Carson, (Los Angeles County). Diet and Weight Reducing Centers. 250-499 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "43-1011",
+      "43-9061",
+      "39-9031",
+      "39-9011",
+      "43-3031",
+      "43-6014",
+      "43-6011",
+      "43-5011",
+      "43-6013",
+      "49-1011"
+    ]
+  },
+  {
+    "name": "Aerojet Rocketdyne",
+    "sector": "Manufacturing",
+    "description": "Aerojet Rocketdyne, in Canoga Park, (Los Angeles County). Search, detection, and navigation instruments. 1,000-4,999 employees.",
+    "regions": [
+      "Los Angeles-Long Beach-Glendale"
+    ],
+    "occupations": [
+      "15-1252",
+      "15-2051",
+      "15-1299",
+      "15-1211",
+      "15-1255",
+      "15-1212",
+      "15-1253",
+      "15-1241"
     ]
   }
 ]
