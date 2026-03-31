@@ -5,7 +5,7 @@
     "description": "Consumer electronics and software company headquartered in Cupertino, designing iPhone, Mac, and services used by billions worldwide.",
     "regions": [
       "San Jose-Sunnyvale-Santa Clara",
-      "San Diego-Chula Vista-Carlsbad MSA"
+      "San Diego-Chula Vista-Carlsbad"
     ],
     "occupations": [
       "15-1252",
@@ -20,7 +20,7 @@
     "regions": [
       "San Jose-Sunnyvale-Santa Clara",
       "San Francisco-San Mateo-Redwood City",
-      "Santa Maria-Santa Barbara MSA"
+      "Santa Maria-Santa Barbara"
     ],
     "occupations": [
       "15-1252",
@@ -60,7 +60,7 @@
     "description": "Financial software company headquartered in Mountain View, maker of TurboTax, QuickBooks, and Credit Karma.",
     "regions": [
       "San Jose-Sunnyvale-Santa Clara",
-      "San Diego-Chula Vista-Carlsbad MSA"
+      "San Diego-Chula Vista-Carlsbad"
     ],
     "occupations": [
       "15-1252",
@@ -86,7 +86,7 @@
     "regions": [
       "San Jose-Sunnyvale-Santa Clara",
       "Oakland-Fremont-Berkeley",
-      "Stockton-Lodi MSA"
+      "Stockton-Lodi"
     ],
     "occupations": [
       "15-1252",
@@ -182,11 +182,11 @@
       "San Rafael",
       "Vallejo",
       "Los Angeles-Long Beach-Glendale",
-      "Fresno MSA",
-      "Modesto MSA",
+      "Fresno",
+      "Modesto",
       "Napa",
-      "Riverside-San Bernardino-Ontario MSA",
-      "Sacramento-Roseville-Folsom MSA",
+      "Riverside-San Bernardino-Ontario",
+      "Sacramento-Roseville-Folsom",
       "Santa Rosa-Petaluma"
     ],
     "occupations": [
@@ -211,12 +211,12 @@
       "Vallejo",
       "Santa Rosa-Petaluma",
       "Napa",
-      "Modesto MSA",
-      "Sacramento-Roseville-Folsom MSA",
+      "Modesto",
+      "Sacramento-Roseville-Folsom",
       "San Rafael",
-      "Santa Maria-Santa Barbara MSA",
-      "Stockton-Lodi MSA",
-      "Yuba City MSA"
+      "Santa Maria-Santa Barbara",
+      "Stockton-Lodi",
+      "Yuba City"
     ],
     "occupations": [
       "29-1141",
@@ -515,8 +515,8 @@
       "San Francisco-San Mateo-Redwood City",
       "Los Angeles-Long Beach-Glendale",
       "Oakland-Fremont-Berkeley",
-      "Sacramento-Roseville-Folsom MSA",
-      "San Diego-Chula Vista-Carlsbad MSA"
+      "Sacramento-Roseville-Folsom",
+      "San Diego-Chula Vista-Carlsbad"
     ],
     "occupations": [
       "15-1252",
@@ -562,7 +562,7 @@
       "Santa Rosa-Petaluma",
       "Napa",
       "Los Angeles-Long Beach-Glendale",
-      "Anaheim-Santa Ana-Irvine MD"
+      "Anaheim-Santa Ana-Irvine"
     ],
     "occupations": [
       "29-1141",
@@ -653,13 +653,13 @@
     "description": "Faith-based health system operating St. Helena Hospital and clinics in the Napa Valley.",
     "regions": [
       "Napa",
-      "Bakersfield-Delano MSA",
-      "Chico MSA",
-      "Hanford-Corcoran MSA",
-      "San Luis Obispo-Paso Robles MSA",
-      "Stockton-Lodi MSA",
-      "Visalia MSA",
-      "Yuba City MSA"
+      "Bakersfield-Delano",
+      "Chico",
+      "Hanford-Corcoran",
+      "San Luis Obispo-Paso Robles",
+      "Stockton-Lodi",
+      "Visalia",
+      "Yuba City"
     ],
     "occupations": [
       "29-1141",
@@ -984,23 +984,23 @@
       "Vallejo",
       "Santa Cruz-Watsonville",
       "Los Angeles-Long Beach-Glendale",
-      "Anaheim-Santa Ana-Irvine MD",
-      "Bakersfield-Delano MSA",
-      "Chico MSA",
-      "El Centro MSA",
-      "Fresno MSA",
-      "Hanford-Corcoran MSA",
-      "Merced MSA",
-      "Modesto MSA",
-      "Oxnard-Thousand Oaks-Ventura MSA",
-      "Riverside-San Bernardino-Ontario MSA",
-      "Sacramento-Roseville-Folsom MSA",
-      "Salinas MSA",
-      "San Diego-Chula Vista-Carlsbad MSA",
-      "San Luis Obispo-Paso Robles MSA",
-      "Santa Maria-Santa Barbara MSA",
-      "Stockton-Lodi MSA",
-      "Visalia MSA"
+      "Anaheim-Santa Ana-Irvine",
+      "Bakersfield-Delano",
+      "Chico",
+      "El Centro",
+      "Fresno",
+      "Hanford-Corcoran",
+      "Merced",
+      "Modesto",
+      "Oxnard-Thousand Oaks-Ventura",
+      "Riverside-San Bernardino-Ontario",
+      "Sacramento-Roseville-Folsom",
+      "Salinas",
+      "San Diego-Chula Vista-Carlsbad",
+      "San Luis Obispo-Paso Robles",
+      "Santa Maria-Santa Barbara",
+      "Stockton-Lodi",
+      "Visalia"
     ],
     "occupations": [
       "11-9051",
@@ -1022,12 +1022,12 @@
     ],
     "regions": [
       "Los Angeles-Long Beach-Glendale",
-      "Anaheim-Santa Ana-Irvine MD",
+      "Anaheim-Santa Ana-Irvine",
       "Oakland-Fremont-Berkeley",
-      "Riverside-San Bernardino-Ontario MSA",
-      "San Diego-Chula Vista-Carlsbad MSA",
+      "Riverside-San Bernardino-Ontario",
+      "San Diego-Chula Vista-Carlsbad",
       "San Francisco-San Mateo-Redwood City",
-      "Stockton-Lodi MSA",
+      "Stockton-Lodi",
       "Vallejo"
     ]
   },
@@ -1092,7 +1092,7 @@
     ],
     "regions": [
       "Los Angeles-Long Beach-Glendale",
-      "San Diego-Chula Vista-Carlsbad MSA"
+      "San Diego-Chula Vista-Carlsbad"
     ]
   },
   {
@@ -1124,9 +1124,9 @@
     ],
     "regions": [
       "Los Angeles-Long Beach-Glendale",
-      "Anaheim-Santa Ana-Irvine MD",
-      "Oxnard-Thousand Oaks-Ventura MSA",
-      "San Luis Obispo-Paso Robles MSA"
+      "Anaheim-Santa Ana-Irvine",
+      "Oxnard-Thousand Oaks-Ventura",
+      "San Luis Obispo-Paso Robles"
     ]
   },
   {
@@ -1144,7 +1144,7 @@
     ],
     "regions": [
       "Los Angeles-Long Beach-Glendale",
-      "Santa Maria-Santa Barbara MSA"
+      "Santa Maria-Santa Barbara"
     ]
   },
   {
@@ -1161,17 +1161,17 @@
     ],
     "regions": [
       "Los Angeles-Long Beach-Glendale",
-      "Anaheim-Santa Ana-Irvine MD",
-      "Chico MSA",
-      "Merced MSA",
-      "Modesto MSA",
-      "Oxnard-Thousand Oaks-Ventura MSA",
-      "Sacramento-Roseville-Folsom MSA",
-      "Salinas MSA",
+      "Anaheim-Santa Ana-Irvine",
+      "Chico",
+      "Merced",
+      "Modesto",
+      "Oxnard-Thousand Oaks-Ventura",
+      "Sacramento-Roseville-Folsom",
+      "Salinas",
       "San Rafael",
       "Santa Cruz-Watsonville",
       "Santa Rosa-Petaluma",
-      "Visalia MSA"
+      "Visalia"
     ]
   },
   {
@@ -1222,7 +1222,7 @@
       "11-9041"
     ],
     "regions": [
-      "Oxnard-Thousand Oaks-Ventura MSA",
+      "Oxnard-Thousand Oaks-Ventura",
       "Santa Rosa-Petaluma"
     ]
   },
@@ -1237,7 +1237,7 @@
       "13-1071"
     ],
     "regions": [
-      "Redding MSA"
+      "Redding"
     ]
   },
   {
@@ -1270,7 +1270,7 @@
       "17-2141"
     ],
     "regions": [
-      "Santa Maria-Santa Barbara MSA"
+      "Santa Maria-Santa Barbara"
     ]
   },
   {
@@ -1287,7 +1287,7 @@
       "19-2041"
     ],
     "regions": [
-      "Oxnard-Thousand Oaks-Ventura MSA"
+      "Oxnard-Thousand Oaks-Ventura"
     ]
   },
   {
@@ -1304,7 +1304,7 @@
       "21-1093"
     ],
     "regions": [
-      "Chico MSA"
+      "Chico"
     ]
   },
   {
@@ -1321,7 +1321,7 @@
       "11-9041"
     ],
     "regions": [
-      "Anaheim-Santa Ana-Irvine MD"
+      "Anaheim-Santa Ana-Irvine"
     ]
   },
   {
@@ -1371,9 +1371,9 @@
       "15-1255"
     ],
     "regions": [
-      "Redding MSA",
-      "Sacramento-Roseville-Folsom MSA",
-      "Stockton-Lodi MSA"
+      "Redding",
+      "Sacramento-Roseville-Folsom",
+      "Stockton-Lodi"
     ]
   },
   {
@@ -1405,7 +1405,7 @@
       "13-1020"
     ],
     "regions": [
-      "Hanford-Corcoran MSA"
+      "Hanford-Corcoran"
     ]
   },
   {
@@ -1422,7 +1422,7 @@
       "21-1012"
     ],
     "regions": [
-      "Chico MSA"
+      "Chico"
     ]
   },
   {
@@ -1440,7 +1440,7 @@
       "25-1051"
     ],
     "regions": [
-      "Chico MSA"
+      "Chico"
     ]
   },
   {
@@ -1457,7 +1457,7 @@
       "21-1093"
     ],
     "regions": [
-      "Bakersfield-Delano MSA"
+      "Bakersfield-Delano"
     ]
   },
   {
@@ -1475,7 +1475,7 @@
       "25-1051"
     ],
     "regions": [
-      "San Luis Obispo-Paso Robles MSA"
+      "San Luis Obispo-Paso Robles"
     ]
   },
   {
@@ -1491,8 +1491,8 @@
       "15-1251"
     ],
     "regions": [
-      "Chico MSA",
-      "Modesto MSA"
+      "Chico",
+      "Modesto"
     ]
   },
   {
@@ -1510,7 +1510,7 @@
       "25-1051"
     ],
     "regions": [
-      "Chico MSA"
+      "Chico"
     ]
   },
   {
@@ -1528,7 +1528,7 @@
       "25-1051"
     ],
     "regions": [
-      "Fresno MSA"
+      "Fresno"
     ]
   },
   {
@@ -1546,7 +1546,7 @@
       "25-1051"
     ],
     "regions": [
-      "Riverside-San Bernardino-Ontario MSA"
+      "Riverside-San Bernardino-Ontario"
     ]
   },
   {
@@ -1564,7 +1564,7 @@
       "25-1051"
     ],
     "regions": [
-      "Modesto MSA"
+      "Modesto"
     ]
   },
   {
@@ -1580,7 +1580,7 @@
       "15-1255"
     ],
     "regions": [
-      "Sacramento-Roseville-Folsom MSA"
+      "Sacramento-Roseville-Folsom"
     ]
   },
   {
@@ -1597,7 +1597,7 @@
       "13-1051"
     ],
     "regions": [
-      "Hanford-Corcoran MSA"
+      "Hanford-Corcoran"
     ]
   },
   {
@@ -1613,7 +1613,7 @@
       "13-1020"
     ],
     "regions": [
-      "Hanford-Corcoran MSA"
+      "Hanford-Corcoran"
     ]
   },
   {
@@ -1648,7 +1648,7 @@
       "21-1012"
     ],
     "regions": [
-      "Chico MSA"
+      "Chico"
     ]
   },
   {
@@ -1665,7 +1665,7 @@
       "21-1012"
     ],
     "regions": [
-      "Fresno MSA"
+      "Fresno"
     ]
   },
   {
@@ -1682,7 +1682,7 @@
       "21-1012"
     ],
     "regions": [
-      "Hanford-Corcoran MSA"
+      "Hanford-Corcoran"
     ]
   },
   {
@@ -1698,7 +1698,7 @@
       "19-4099"
     ],
     "regions": [
-      "Merced MSA"
+      "Merced"
     ]
   },
   {
@@ -1714,7 +1714,7 @@
       "19-4099"
     ],
     "regions": [
-      "Oxnard-Thousand Oaks-Ventura MSA"
+      "Oxnard-Thousand Oaks-Ventura"
     ]
   },
   {
@@ -1730,7 +1730,7 @@
       "19-4099"
     ],
     "regions": [
-      "San Luis Obispo-Paso Robles MSA"
+      "San Luis Obispo-Paso Robles"
     ]
   },
   {
@@ -1762,7 +1762,7 @@
       "19-4099"
     ],
     "regions": [
-      "Stockton-Lodi MSA"
+      "Stockton-Lodi"
     ]
   },
   {
@@ -1779,7 +1779,7 @@
       "21-1022"
     ],
     "regions": [
-      "Bakersfield-Delano MSA"
+      "Bakersfield-Delano"
     ]
   },
   {
@@ -1797,7 +1797,7 @@
       "25-1042"
     ],
     "regions": [
-      "Fresno MSA"
+      "Fresno"
     ]
   },
   {
@@ -1815,7 +1815,7 @@
       "25-1041"
     ],
     "regions": [
-      "Visalia MSA"
+      "Visalia"
     ]
   },
   {
@@ -1832,13 +1832,13 @@
       "21-1022"
     ],
     "regions": [
-      "Bakersfield-Delano MSA",
-      "Merced MSA",
-      "Oxnard-Thousand Oaks-Ventura MSA",
-      "Sacramento-Roseville-Folsom MSA",
-      "San Luis Obispo-Paso Robles MSA",
+      "Bakersfield-Delano",
+      "Merced",
+      "Oxnard-Thousand Oaks-Ventura",
+      "Sacramento-Roseville-Folsom",
+      "San Luis Obispo-Paso Robles",
       "Santa Cruz-Watsonville",
-      "Stockton-Lodi MSA"
+      "Stockton-Lodi"
     ]
   },
   {
@@ -1855,7 +1855,7 @@
       "21-1022"
     ],
     "regions": [
-      "San Luis Obispo-Paso Robles MSA"
+      "San Luis Obispo-Paso Robles"
     ]
   },
   {
@@ -1872,7 +1872,7 @@
       "21-1022"
     ],
     "regions": [
-      "Fresno MSA"
+      "Fresno"
     ]
   },
   {
@@ -1889,7 +1889,7 @@
       "21-1022"
     ],
     "regions": [
-      "Oxnard-Thousand Oaks-Ventura MSA"
+      "Oxnard-Thousand Oaks-Ventura"
     ]
   },
   {
@@ -1906,7 +1906,7 @@
       "21-1022"
     ],
     "regions": [
-      "Santa Maria-Santa Barbara MSA"
+      "Santa Maria-Santa Barbara"
     ]
   },
   {
@@ -1922,7 +1922,7 @@
       "19-4099"
     ],
     "regions": [
-      "El Centro MSA"
+      "El Centro"
     ]
   },
   {
@@ -1938,7 +1938,7 @@
       "19-4099"
     ],
     "regions": [
-      "Salinas MSA"
+      "Salinas"
     ]
   },
   {
@@ -1970,7 +1970,7 @@
       "19-4099"
     ],
     "regions": [
-      "Riverside-San Bernardino-Ontario MSA"
+      "Riverside-San Bernardino-Ontario"
     ]
   },
   {
@@ -1986,7 +1986,7 @@
       "19-4099"
     ],
     "regions": [
-      "San Luis Obispo-Paso Robles MSA"
+      "San Luis Obispo-Paso Robles"
     ]
   },
   {
@@ -2018,7 +2018,7 @@
       "19-4099"
     ],
     "regions": [
-      "Santa Maria-Santa Barbara MSA"
+      "Santa Maria-Santa Barbara"
     ]
   },
   {
@@ -2034,7 +2034,7 @@
       "19-4099"
     ],
     "regions": [
-      "Visalia MSA"
+      "Visalia"
     ]
   },
   {
@@ -2050,7 +2050,7 @@
       "19-4099"
     ],
     "regions": [
-      "Yuba City MSA"
+      "Yuba City"
     ]
   },
   {
@@ -2068,7 +2068,7 @@
       "25-1041"
     ],
     "regions": [
-      "San Luis Obispo-Paso Robles MSA"
+      "San Luis Obispo-Paso Robles"
     ]
   },
   {
@@ -2085,7 +2085,7 @@
       "21-1022"
     ],
     "regions": [
-      "Salinas MSA"
+      "Salinas"
     ]
   },
   {
@@ -2103,7 +2103,7 @@
       "17-2112"
     ],
     "regions": [
-      "Bakersfield-Delano MSA"
+      "Bakersfield-Delano"
     ]
   },
   {
@@ -2119,7 +2119,7 @@
       "13-1111"
     ],
     "regions": [
-      "Visalia MSA"
+      "Visalia"
     ]
   },
   {
@@ -2136,7 +2136,7 @@
       "21-1022"
     ],
     "regions": [
-      "Modesto MSA"
+      "Modesto"
     ]
   },
   {
@@ -2152,7 +2152,7 @@
       "13-1151"
     ],
     "regions": [
-      "El Centro MSA"
+      "El Centro"
     ]
   },
   {
@@ -2168,13 +2168,13 @@
       "13-1151"
     ],
     "regions": [
-      "Anaheim-Santa Ana-Irvine MD",
-      "Fresno MSA",
+      "Anaheim-Santa Ana-Irvine",
+      "Fresno",
       "Los Angeles-Long Beach-Glendale",
-      "Oxnard-Thousand Oaks-Ventura MSA",
-      "Riverside-San Bernardino-Ontario MSA",
-      "Salinas MSA",
-      "Stockton-Lodi MSA"
+      "Oxnard-Thousand Oaks-Ventura",
+      "Riverside-San Bernardino-Ontario",
+      "Salinas",
+      "Stockton-Lodi"
     ]
   },
   {
@@ -2191,7 +2191,7 @@
       "21-1022"
     ],
     "regions": [
-      "El Centro MSA"
+      "El Centro"
     ]
   },
   {
@@ -2209,7 +2209,7 @@
       "21-1012"
     ],
     "regions": [
-      "Modesto MSA"
+      "Modesto"
     ]
   },
   {
@@ -2227,7 +2227,7 @@
       "17-3024"
     ],
     "regions": [
-      "San Luis Obispo-Paso Robles MSA"
+      "San Luis Obispo-Paso Robles"
     ]
   },
   {
@@ -2245,7 +2245,7 @@
       "21-1012"
     ],
     "regions": [
-      "Chico MSA"
+      "Chico"
     ]
   },
   {
@@ -2263,7 +2263,7 @@
       "19-3099"
     ],
     "regions": [
-      "Riverside-San Bernardino-Ontario MSA"
+      "Riverside-San Bernardino-Ontario"
     ]
   },
   {
@@ -2280,7 +2280,7 @@
       "21-1023"
     ],
     "regions": [
-      "Visalia MSA"
+      "Visalia"
     ]
   },
   {
@@ -2298,7 +2298,7 @@
       "13-2051"
     ],
     "regions": [
-      "Chico MSA"
+      "Chico"
     ]
   },
   {
@@ -2315,7 +2315,7 @@
       "13-1151"
     ],
     "regions": [
-      "El Centro MSA"
+      "El Centro"
     ]
   },
   {
@@ -2333,8 +2333,8 @@
       "17-2112"
     ],
     "regions": [
-      "Fresno MSA",
-      "Merced MSA"
+      "Fresno",
+      "Merced"
     ]
   },
   {
@@ -2352,7 +2352,7 @@
       "17-2112"
     ],
     "regions": [
-      "Merced MSA"
+      "Merced"
     ]
   },
   {
@@ -2370,7 +2370,7 @@
       "25-1021"
     ],
     "regions": [
-      "Fresno MSA"
+      "Fresno"
     ]
   },
   {
@@ -2406,7 +2406,7 @@
       "17-3023"
     ],
     "regions": [
-      "San Diego-Chula Vista-Carlsbad MSA"
+      "San Diego-Chula Vista-Carlsbad"
     ]
   },
   {
@@ -2441,7 +2441,7 @@
       "21-1023"
     ],
     "regions": [
-      "Merced MSA"
+      "Merced"
     ]
   },
   {
@@ -2459,7 +2459,7 @@
       "21-1012"
     ],
     "regions": [
-      "Oxnard-Thousand Oaks-Ventura MSA"
+      "Oxnard-Thousand Oaks-Ventura"
     ]
   },
   {
@@ -2475,7 +2475,7 @@
       "21-1023"
     ],
     "regions": [
-      "Hanford-Corcoran MSA"
+      "Hanford-Corcoran"
     ]
   },
   {
@@ -2492,7 +2492,7 @@
       "13-2071"
     ],
     "regions": [
-      "El Centro MSA"
+      "El Centro"
     ]
   },
   {
@@ -2510,7 +2510,7 @@
       "17-2112"
     ],
     "regions": [
-      "Merced MSA"
+      "Merced"
     ]
   },
   {
@@ -2528,7 +2528,7 @@
       "13-2051"
     ],
     "regions": [
-      "Anaheim-Santa Ana-Irvine MD"
+      "Anaheim-Santa Ana-Irvine"
     ]
   },
   {
@@ -2546,7 +2546,7 @@
       "21-1012"
     ],
     "regions": [
-      "Anaheim-Santa Ana-Irvine MD"
+      "Anaheim-Santa Ana-Irvine"
     ]
   },
   {
@@ -2564,8 +2564,8 @@
       "17-3023"
     ],
     "regions": [
-      "Modesto MSA",
-      "Yuba City MSA"
+      "Modesto",
+      "Yuba City"
     ]
   },
   {
@@ -2584,8 +2584,8 @@
     ],
     "regions": [
       "Napa",
-      "Salinas MSA",
-      "San Diego-Chula Vista-Carlsbad MSA"
+      "Salinas",
+      "San Diego-Chula Vista-Carlsbad"
     ]
   },
   {
@@ -2603,7 +2603,7 @@
       "17-2199"
     ],
     "regions": [
-      "El Centro MSA"
+      "El Centro"
     ]
   },
   {
@@ -2621,7 +2621,7 @@
       "25-1021"
     ],
     "regions": [
-      "El Centro MSA"
+      "El Centro"
     ]
   },
   {
@@ -2639,7 +2639,7 @@
       "15-1299"
     ],
     "regions": [
-      "Salinas MSA"
+      "Salinas"
     ]
   },
   {
@@ -2656,7 +2656,7 @@
       "13-2051"
     ],
     "regions": [
-      "Chico MSA"
+      "Chico"
     ]
   },
   {
@@ -2674,7 +2674,7 @@
       "17-3023"
     ],
     "regions": [
-      "Bakersfield-Delano MSA"
+      "Bakersfield-Delano"
     ]
   },
   {
@@ -2692,7 +2692,7 @@
       "21-1012"
     ],
     "regions": [
-      "Visalia MSA"
+      "Visalia"
     ]
   },
   {
@@ -2710,7 +2710,7 @@
       "25-1021"
     ],
     "regions": [
-      "Bakersfield-Delano MSA"
+      "Bakersfield-Delano"
     ]
   },
   {
@@ -2728,7 +2728,7 @@
       "17-2199"
     ],
     "regions": [
-      "Bakersfield-Delano MSA"
+      "Bakersfield-Delano"
     ]
   },
   {
@@ -2764,7 +2764,7 @@
       "11-3012"
     ],
     "regions": [
-      "Hanford-Corcoran MSA"
+      "Hanford-Corcoran"
     ]
   },
   {
@@ -2817,7 +2817,7 @@
       "11-9199"
     ],
     "regions": [
-      "Yuba City MSA"
+      "Yuba City"
     ]
   },
   {
@@ -2835,8 +2835,8 @@
       "11-2021"
     ],
     "regions": [
-      "Salinas MSA",
-      "Yuba City MSA"
+      "Salinas",
+      "Yuba City"
     ]
   },
   {
@@ -2854,7 +2854,7 @@
       "19-4012"
     ],
     "regions": [
-      "Hanford-Corcoran MSA"
+      "Hanford-Corcoran"
     ]
   },
   {
@@ -2872,7 +2872,7 @@
       "11-3012"
     ],
     "regions": [
-      "San Diego-Chula Vista-Carlsbad MSA"
+      "San Diego-Chula Vista-Carlsbad"
     ]
   },
   {
@@ -2890,7 +2890,7 @@
       "11-9039"
     ],
     "regions": [
-      "Riverside-San Bernardino-Ontario MSA"
+      "Riverside-San Bernardino-Ontario"
     ]
   },
   {
@@ -2908,7 +2908,7 @@
       "11-3021"
     ],
     "regions": [
-      "Santa Maria-Santa Barbara MSA"
+      "Santa Maria-Santa Barbara"
     ]
   },
   {
@@ -2926,7 +2926,7 @@
       "11-9199"
     ],
     "regions": [
-      "Visalia MSA"
+      "Visalia"
     ]
   },
   {
@@ -2961,9 +2961,9 @@
       "11-9199"
     ],
     "regions": [
-      "Anaheim-Santa Ana-Irvine MD",
-      "Riverside-San Bernardino-Ontario MSA",
-      "Santa Maria-Santa Barbara MSA"
+      "Anaheim-Santa Ana-Irvine",
+      "Riverside-San Bernardino-Ontario",
+      "Santa Maria-Santa Barbara"
     ]
   },
   {
@@ -2981,7 +2981,7 @@
       "25-1041"
     ],
     "regions": [
-      "Yuba City MSA"
+      "Yuba City"
     ]
   },
   {
@@ -3017,7 +3017,7 @@
       "25-1041"
     ],
     "regions": [
-      "Merced MSA"
+      "Merced"
     ]
   },
   {
@@ -3035,7 +3035,7 @@
       "11-3012"
     ],
     "regions": [
-      "Merced MSA"
+      "Merced"
     ]
   },
   {
@@ -3053,7 +3053,7 @@
       "11-3021"
     ],
     "regions": [
-      "Redding MSA"
+      "Redding"
     ]
   },
   {
@@ -3071,7 +3071,7 @@
       "11-3021"
     ],
     "regions": [
-      "Redding MSA"
+      "Redding"
     ]
   },
   {
@@ -3089,7 +3089,7 @@
       "11-3021"
     ],
     "regions": [
-      "Merced MSA"
+      "Merced"
     ]
   },
   {
@@ -3125,7 +3125,7 @@
       "11-3021"
     ],
     "regions": [
-      "Salinas MSA"
+      "Salinas"
     ]
   },
   {
@@ -3143,7 +3143,7 @@
       "25-1041"
     ],
     "regions": [
-      "Salinas MSA"
+      "Salinas"
     ]
   },
   {
@@ -3196,7 +3196,7 @@
       "17-2112"
     ],
     "regions": [
-      "Hanford-Corcoran MSA"
+      "Hanford-Corcoran"
     ]
   },
   {
@@ -3268,7 +3268,7 @@
       "11-3021"
     ],
     "regions": [
-      "Chico MSA"
+      "Chico"
     ]
   },
   {
@@ -3302,8 +3302,8 @@
       "15-1299"
     ],
     "regions": [
-      "San Luis Obispo-Paso Robles MSA",
-      "Stockton-Lodi MSA"
+      "San Luis Obispo-Paso Robles",
+      "Stockton-Lodi"
     ]
   },
   {
@@ -3355,7 +3355,7 @@
       "17-2199"
     ],
     "regions": [
-      "Salinas MSA"
+      "Salinas"
     ]
   },
   {
@@ -3372,7 +3372,7 @@
       "13-1161"
     ],
     "regions": [
-      "Riverside-San Bernardino-Ontario MSA"
+      "Riverside-San Bernardino-Ontario"
     ]
   },
   {
@@ -3390,7 +3390,7 @@
       "13-2051"
     ],
     "regions": [
-      "Oxnard-Thousand Oaks-Ventura MSA"
+      "Oxnard-Thousand Oaks-Ventura"
     ]
   },
   {
@@ -3407,7 +3407,7 @@
       "13-1161"
     ],
     "regions": [
-      "Merced MSA"
+      "Merced"
     ]
   },
   {
@@ -3425,7 +3425,7 @@
       "21-1021"
     ],
     "regions": [
-      "El Centro MSA"
+      "El Centro"
     ]
   },
   {
@@ -3443,7 +3443,7 @@
       "17-2199"
     ],
     "regions": [
-      "San Diego-Chula Vista-Carlsbad MSA"
+      "San Diego-Chula Vista-Carlsbad"
     ]
   },
   {
@@ -3460,7 +3460,7 @@
       "17-2199"
     ],
     "regions": [
-      "Santa Maria-Santa Barbara MSA",
+      "Santa Maria-Santa Barbara",
       "Vallejo"
     ]
   },
@@ -3478,7 +3478,7 @@
       "13-1161"
     ],
     "regions": [
-      "Redding MSA"
+      "Redding"
     ]
   },
   {
@@ -3514,7 +3514,7 @@
       "17-2199"
     ],
     "regions": [
-      "Stockton-Lodi MSA"
+      "Stockton-Lodi"
     ]
   },
   {
@@ -3549,7 +3549,7 @@
       "21-1021"
     ],
     "regions": [
-      "Redding MSA"
+      "Redding"
     ]
   },
   {
@@ -3584,7 +3584,7 @@
       "13-1161"
     ],
     "regions": [
-      "Riverside-San Bernardino-Ontario MSA"
+      "Riverside-San Bernardino-Ontario"
     ]
   },
   {
@@ -3601,7 +3601,7 @@
       "13-1161"
     ],
     "regions": [
-      "Stockton-Lodi MSA"
+      "Stockton-Lodi"
     ]
   },
   {
@@ -3619,7 +3619,7 @@
       "25-1032"
     ],
     "regions": [
-      "Stockton-Lodi MSA"
+      "Stockton-Lodi"
     ]
   },
   {
@@ -3654,7 +3654,7 @@
       "17-2199"
     ],
     "regions": [
-      "Visalia MSA"
+      "Visalia"
     ]
   },
   {
@@ -3671,8 +3671,8 @@
       "13-1161"
     ],
     "regions": [
-      "Modesto MSA",
-      "Yuba City MSA"
+      "Modesto",
+      "Yuba City"
     ]
   },
   {
@@ -3690,7 +3690,7 @@
       "21-1021"
     ],
     "regions": [
-      "San Diego-Chula Vista-Carlsbad MSA"
+      "San Diego-Chula Vista-Carlsbad"
     ]
   },
   {
@@ -3708,7 +3708,7 @@
       "21-1021"
     ],
     "regions": [
-      "San Diego-Chula Vista-Carlsbad MSA"
+      "San Diego-Chula Vista-Carlsbad"
     ]
   },
   {
@@ -3726,7 +3726,7 @@
       "25-1032"
     ],
     "regions": [
-      "Redding MSA"
+      "Redding"
     ]
   },
   {
@@ -3744,7 +3744,7 @@
       "21-1021"
     ],
     "regions": [
-      "Redding MSA"
+      "Redding"
     ]
   },
   {
@@ -3761,7 +3761,7 @@
       "13-1161"
     ],
     "regions": [
-      "Redding MSA"
+      "Redding"
     ]
   },
   {
@@ -3779,7 +3779,7 @@
       "21-1021"
     ],
     "regions": [
-      "Redding MSA"
+      "Redding"
     ]
   },
   {
@@ -3796,7 +3796,7 @@
       "17-2199"
     ],
     "regions": [
-      "Redding MSA"
+      "Redding"
     ]
   },
   {
@@ -3814,7 +3814,7 @@
       "21-1022"
     ],
     "regions": [
-      "Visalia MSA"
+      "Visalia"
     ]
   },
   {
@@ -3882,7 +3882,7 @@
       "13-1161"
     ],
     "regions": [
-      "Santa Maria-Santa Barbara MSA"
+      "Santa Maria-Santa Barbara"
     ]
   },
   {
@@ -3899,7 +3899,7 @@
       "21-1021"
     ],
     "regions": [
-      "Modesto MSA"
+      "Modesto"
     ]
   },
   {
@@ -3917,7 +3917,7 @@
       "25-1022"
     ],
     "regions": [
-      "Fresno MSA"
+      "Fresno"
     ]
   },
   {
@@ -3934,16 +3934,16 @@
       "21-1021"
     ],
     "regions": [
-      "Bakersfield-Delano MSA",
-      "El Centro MSA",
-      "Fresno MSA",
+      "Bakersfield-Delano",
+      "El Centro",
+      "Fresno",
       "Napa",
-      "Redding MSA",
-      "Sacramento-Roseville-Folsom MSA",
-      "Salinas MSA",
-      "San Luis Obispo-Paso Robles MSA",
+      "Redding",
+      "Sacramento-Roseville-Folsom",
+      "Salinas",
+      "San Luis Obispo-Paso Robles",
       "Vallejo",
-      "Visalia MSA"
+      "Visalia"
     ]
   },
   {
@@ -4013,7 +4013,7 @@
       "19-1013"
     ],
     "regions": [
-      "Bakersfield-Delano MSA"
+      "Bakersfield-Delano"
     ]
   },
   {
@@ -4047,7 +4047,7 @@
       "13-2011"
     ],
     "regions": [
-      "Chico MSA"
+      "Chico"
     ]
   },
   {
@@ -4065,7 +4065,7 @@
       "21-1022"
     ],
     "regions": [
-      "Fresno MSA"
+      "Fresno"
     ]
   },
   {
@@ -4083,7 +4083,7 @@
       "21-1022"
     ],
     "regions": [
-      "Sacramento-Roseville-Folsom MSA"
+      "Sacramento-Roseville-Folsom"
     ]
   },
   {
@@ -4119,7 +4119,7 @@
       "21-1022"
     ],
     "regions": [
-      "Riverside-San Bernardino-Ontario MSA"
+      "Riverside-San Bernardino-Ontario"
     ]
   },
   {
@@ -4136,7 +4136,7 @@
       "13-2020"
     ],
     "regions": [
-      "Anaheim-Santa Ana-Irvine MD"
+      "Anaheim-Santa Ana-Irvine"
     ]
   },
   {
@@ -4154,7 +4154,7 @@
       "21-1022"
     ],
     "regions": [
-      "Hanford-Corcoran MSA"
+      "Hanford-Corcoran"
     ]
   },
   {
@@ -4171,7 +4171,7 @@
       "15-1211"
     ],
     "regions": [
-      "Hanford-Corcoran MSA"
+      "Hanford-Corcoran"
     ]
   },
   {
@@ -4188,7 +4188,7 @@
       "15-1211"
     ],
     "regions": [
-      "El Centro MSA"
+      "El Centro"
     ]
   },
   {
@@ -4206,7 +4206,7 @@
       "25-1022"
     ],
     "regions": [
-      "Sacramento-Roseville-Folsom MSA"
+      "Sacramento-Roseville-Folsom"
     ]
   },
   {
@@ -4224,7 +4224,7 @@
       "25-1022"
     ],
     "regions": [
-      "San Diego-Chula Vista-Carlsbad MSA"
+      "San Diego-Chula Vista-Carlsbad"
     ]
   },
   {
@@ -4260,7 +4260,7 @@
       "25-1022"
     ],
     "regions": [
-      "Sacramento-Roseville-Folsom MSA"
+      "Sacramento-Roseville-Folsom"
     ]
   },
   {
@@ -4278,7 +4278,7 @@
       "25-1022"
     ],
     "regions": [
-      "Anaheim-Santa Ana-Irvine MD"
+      "Anaheim-Santa Ana-Irvine"
     ]
   },
   {
@@ -4296,7 +4296,7 @@
       "25-1022"
     ],
     "regions": [
-      "Merced MSA"
+      "Merced"
     ]
   },
   {
@@ -4332,7 +4332,7 @@
       "25-1022"
     ],
     "regions": [
-      "Santa Maria-Santa Barbara MSA"
+      "Santa Maria-Santa Barbara"
     ]
   },
   {
@@ -4368,7 +4368,7 @@
       "15-1299"
     ],
     "regions": [
-      "Stockton-Lodi MSA"
+      "Stockton-Lodi"
     ]
   },
   {
@@ -4386,7 +4386,7 @@
       "19-1042"
     ],
     "regions": [
-      "Fresno MSA"
+      "Fresno"
     ]
   },
   {
@@ -4403,7 +4403,7 @@
       "21-1012"
     ],
     "regions": [
-      "Oxnard-Thousand Oaks-Ventura MSA"
+      "Oxnard-Thousand Oaks-Ventura"
     ]
   },
   {
@@ -4421,7 +4421,7 @@
       "15-1299"
     ],
     "regions": [
-      "Oxnard-Thousand Oaks-Ventura MSA"
+      "Oxnard-Thousand Oaks-Ventura"
     ]
   },
   {
@@ -4439,7 +4439,7 @@
       "19-1042"
     ],
     "regions": [
-      "Redding MSA"
+      "Redding"
     ]
   },
   {
@@ -4456,8 +4456,8 @@
       "15-1251"
     ],
     "regions": [
-      "Riverside-San Bernardino-Ontario MSA",
-      "Yuba City MSA"
+      "Riverside-San Bernardino-Ontario",
+      "Yuba City"
     ]
   },
   {
@@ -4474,13 +4474,13 @@
       "15-1251"
     ],
     "regions": [
-      "Bakersfield-Delano MSA",
-      "Modesto MSA",
-      "Riverside-San Bernardino-Ontario MSA",
-      "Sacramento-Roseville-Folsom MSA",
+      "Bakersfield-Delano",
+      "Modesto",
+      "Riverside-San Bernardino-Ontario",
+      "Sacramento-Roseville-Folsom",
       "Vallejo",
-      "Visalia MSA",
-      "Yuba City MSA"
+      "Visalia",
+      "Yuba City"
     ]
   },
   {
@@ -4550,9 +4550,9 @@
       "21-1021"
     ],
     "regions": [
-      "San Diego-Chula Vista-Carlsbad MSA",
+      "San Diego-Chula Vista-Carlsbad",
       "San Rafael",
-      "Santa Maria-Santa Barbara MSA"
+      "Santa Maria-Santa Barbara"
     ]
   },
   {
@@ -4588,7 +4588,7 @@
       "15-1299"
     ],
     "regions": [
-      "Modesto MSA"
+      "Modesto"
     ]
   },
   {
@@ -4606,7 +4606,7 @@
       "25-1022"
     ],
     "regions": [
-      "Yuba City MSA"
+      "Yuba City"
     ]
   },
   {
@@ -4624,7 +4624,7 @@
       "15-1299"
     ],
     "regions": [
-      "Yuba City MSA"
+      "Yuba City"
     ]
   },
   {
@@ -4641,7 +4641,7 @@
       "21-1012"
     ],
     "regions": [
-      "Yuba City MSA"
+      "Yuba City"
     ]
   }
 ]
