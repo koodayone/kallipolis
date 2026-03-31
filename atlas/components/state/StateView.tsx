@@ -308,6 +308,7 @@ export default function StateView() {
                 hoveredRegionId={hoveredRegionId}
                 hoveredCollegeId={hoveredCollege?.id ?? null}
                 selectedCollegeId={selectedCollege?.id ?? null}
+                dimMarkers={!mapPanelHovered}
                 onRegionHover={setHoveredRegionId}
                 onRegionClick={handleRegionClick}
                 onCollegeHover={setHoveredCollege}

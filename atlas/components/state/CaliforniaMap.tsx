@@ -77,6 +77,7 @@ type Props = {
   hoveredRegionId: string | null;
   hoveredCollegeId: string | null;
   selectedCollegeId: string | null;
+  dimMarkers?: boolean;
   onRegionHover: (id: string | null) => void;
   onRegionClick: (id: string) => void;
   onCollegeHover: (college: College | null) => void;
@@ -105,6 +106,7 @@ export default function CaliforniaMap({
   hoveredRegionId,
   hoveredCollegeId,
   selectedCollegeId,
+  dimMarkers = false,
   onRegionHover,
   onRegionClick,
   onCollegeHover,
@@ -210,7 +212,7 @@ export default function CaliforniaMap({
                   onMouseEnter={() => onCollegeHover(college)}
                   onMouseLeave={() => onCollegeHover(null)}
                 >
-                  <g style={{ cursor: "pointer" }} onClick={(e) => { e.stopPropagation(); onCollegeSelect(college); }}>
+                  <g style={{ cursor: "pointer", opacity: isActive ? 1 : dimMarkers ? 0.4 : 1, transition: "opacity 0.3s ease" }} onClick={(e) => { e.stopPropagation(); onCollegeSelect(college); }}>
                     {/* Glow ring */}
                     {isActive && (
                       <circle
