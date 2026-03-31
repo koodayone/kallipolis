@@ -108,6 +108,7 @@ COLLEGE_REGION_MAP: dict[str, str] = {
     "American River College": "Sacramento-Roseville-Folsom",
     # Central / South Coast
     "Allan Hancock College": "Santa Maria-Santa Barbara",
+    "Santa Barbara City College": "Santa Maria-Santa Barbara",
     # Rural
     "Lake Tahoe Community College": "Eastern Sierra-Mother Lode",
 }
