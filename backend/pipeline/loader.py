@@ -17,6 +17,8 @@ from typing import List, Optional
 
 from neo4j import Driver
 
+from pipeline.skills import UNIFIED_TAXONOMY
+
 logger = logging.getLogger(__name__)
 
 
@@ -170,6 +172,9 @@ def load_college(
 
             # Link Course → Skill
             for skill_name in course.get("skill_mappings", []):
+                if skill_name not in UNIFIED_TAXONOMY:
+                    logger.warning(f"Off-taxonomy skill skipped: '{skill_name}' on {code}")
+                    continue
                 session.run(
                     """
                     MERGE (s:Skill {name: $skill_name})
@@ -181,6 +186,7 @@ def load_college(
                     code=code,
                     inst=config.name,
                 )
+                stats.relationships_created += 1
 
     logger.info(
         f"Loaded {config.name}: "

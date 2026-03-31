@@ -452,6 +452,11 @@ async def scrape_pdf_catalog(
 
     # Step 5: Cache enriched data (with skill_mappings) directly
     enriched = [_to_enriched_dict(c) for c in unique_courses]
+
+    # Validate skills against taxonomy before caching
+    for course in enriched:
+        course["skill_mappings"] = [s for s in course.get("skill_mappings", []) if s in UNIFIED_TAXONOMY]
+
     enriched_cache = CACHE_DIR / f"{college_key}_enriched.json"
     with open(enriched_cache, "w") as f:
         json.dump(enriched, f, indent=2)

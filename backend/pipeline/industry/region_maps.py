@@ -96,4 +96,6 @@ COLLEGE_REGION_MAP: dict[str, str] = {
     "Solano Community College": "Vallejo",
     "Cabrillo College": "Santa Cruz-Watsonville",
     "College of Marin": "San Rafael",
+    # Los Angeles
+    "Los Angeles City College": "Los Angeles-Long Beach-Glendale",
 }

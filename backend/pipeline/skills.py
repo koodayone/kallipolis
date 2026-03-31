@@ -512,7 +512,7 @@ Course Objectives:
 BATCH_USER_PROMPT = """{courses}
 
 ---
-For each course above, extract 3-6 skill mappings. Return a JSON object mapping course code to skill array, e.g.:
+For each course above, extract at least 6 skill mappings, and include every additional skill the course meaningfully develops. Return a JSON object mapping course code to skill array, e.g.:
 {{"COURSE 101": ["Skill A", "Skill B"], "COURSE 102": ["Skill C", "Skill D"]}}"""
 
 

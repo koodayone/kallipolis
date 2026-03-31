@@ -14,7 +14,8 @@ import openpyxl
 
 logger = logging.getLogger(__name__)
 
-BAY_AREA_METROS = {
+METROS = {
+    # Bay Area
     "San Jose-Sunnyvale-Santa Clara": "CA-OEWS-San Jose-Sunnyvale-Santa Clara MSA-2025.xlsx",
     "Oakland-Fremont-Berkeley": "CA-OEWS-Oakland-Fremont-Berkeley MD-2025.xlsx",
     "San Francisco-San Mateo-Redwood City": "CA-OEWS-San Francisco-San Mateo-Redwood City MD-2025.xlsx",
@@ -23,6 +24,8 @@ BAY_AREA_METROS = {
     "Vallejo": "CA-OEWS-Vallejo MSA-2025.xlsx",
     "Santa Cruz-Watsonville": "CA-OEWS-Santa Cruz-Watsonville MSA-2025.xlsx",
     "San Rafael": "CA-OEWS-San Rafael MD-2025.xlsx",
+    # Los Angeles
+    "Los Angeles-Long Beach-Glendale": "CA-OEWS-Los Angeles-Long Beach-Glendale MD-2025.xlsx",
 }
 
 
@@ -63,7 +66,7 @@ def parse_all(oews_dir: str) -> dict:
 
     # Collect per-region data
     region_data: dict[str, list[dict]] = {}
-    for region_name, filename in BAY_AREA_METROS.items():
+    for region_name, filename in METROS.items():
         filepath = oews_path / filename
         if not filepath.exists():
             logger.warning(f"Missing: {filepath}")
@@ -102,7 +105,7 @@ def parse_all(oews_dir: str) -> dict:
 
     result = {
         "source": "EDD OEWS 2025 (May 2024 employment, Q1 2025 wages)",
-        "regions": list(BAY_AREA_METROS.keys()),
+        "regions": list(METROS.keys()),
         "occupations": occupations,
     }
 

@@ -198,7 +198,8 @@ def _create_requires_skill(session, batch: list[dict]) -> int:
         """
         UNWIND $batch AS row
         MATCH (o:Occupation {soc_code: row.soc_code})
-        MATCH (s:Skill {name: row.skill})
+        MERGE (s:Skill {name: row.skill})
+        WITH o, s
         MERGE (o)-[:REQUIRES_SKILL]->(s)
         RETURN count(*) AS cnt
         """,
