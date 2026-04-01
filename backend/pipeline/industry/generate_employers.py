@@ -338,50 +338,49 @@ def _llm_cleanup(
 
     names = [e["name"] for e in employers]
 
-    # Build occupation assignment section if filtered occupations provided
-    occ_section = ""
+    # Build prompt
     valid_soc_codes: set[str] = set()
+
     if filtered_occupations:
         valid_soc_codes = {o["soc_code"] for o in filtered_occupations}
         occ_lines = [f"- {o['soc_code']}: {o['title']}" for o in filtered_occupations]
-        occ_section = (
-            "\n\nAlso assign 3-8 occupations each employer would plausibly hire for, "
-            "selected from this list:\n\n"
-            "AVAILABLE OCCUPATIONS:\n"
-            + "\n".join(occ_lines)
-            + "\n\nReturn the SOC codes in an \"occupations\" array."
-        )
+        occ_list = "\n".join(occ_lines)
 
-    occ_field = ', "occupations": ["SOC-CODE", ...]' if filtered_occupations else ""
-    prompt = (
-        f"Here are {len(names)} employer names from the EDD database for the "
-        f"{metro} metro area. For each, return either:\n"
-        "- The cleaned canonical employer name + a one-sentence description"
-        + (" + relevant occupation codes" if filtered_occupations else "") + "\n"
-        '- "REMOVE" if it should be dropped\n\n'
-        "NAMING RULES:\n"
-        "- Expand all abbreviations (Hosp→Hospital, Clg→College, Dist→District, Scrmnt→Sacramento, Chldrn→Children)\n"
-        "- Remove branch qualifiers, location suffixes, and department names (e.g. '- Midtown', 'Department of Pathology', 'Collision Center')\n"
-        "- If an entry is a foundation or auxiliary of a parent org that also appears in the list, REMOVE the foundation entry\n"
-        "- If two entries are clearly the same org (e.g. 'Mercy Hospital' and 'Mercy General Hospital'), keep the more canonical name and REMOVE the duplicate\n"
-        "- Keep the name recognizable — use the name people in the region would know\n\n"
-        "REMOVE entries that are:\n"
-        "- Branch locations when the parent is already listed\n"
-        "- Internal departments, not standalone employers\n"
-        "- Foundations or auxiliaries when the parent hospital/org is listed\n"
-        "- Staffing agencies or temp firms\n"
-        + occ_section + "\n\n"
-        'Return JSON: {"Original Name": {"name": "Clean Name", "description": "..."'
-        + occ_field + '} or "Original Name": "REMOVE"}\n\n'
-        "Names:\n" + "\n".join(f"- {n}" for n in names)
-    )
+        prompt = (
+            f"You have TWO tasks for each of these {len(names)} employers in the {metro} metro area.\n\n"
+            "TASK 1 — CLEAN: For each employer, clean the name and write a one-sentence description.\n"
+            "- Expand abbreviations (Hosp→Hospital, Clg→College, Dist→District)\n"
+            "- Remove branch qualifiers, location suffixes, department names\n"
+            "- Keep the name recognizable\n"
+            '- Return "REMOVE" for branch duplicates, internal departments, foundations when parent is listed, staffing agencies\n\n'
+            "TASK 2 — ASSIGN OCCUPATIONS: For each employer, select 3-8 occupation codes from the list below "
+            "that this employer would ACTUALLY hire for, based on what you know about the employer.\n"
+            "This is REQUIRED for every employer that is not removed.\n\n"
+            f"AVAILABLE OCCUPATIONS:\n{occ_list}\n\n"
+            'Return JSON: {"Original Name": {"name": "Clean Name", "description": "...", "occupations": ["SOC-CODE", ...]} '
+            'or "Original Name": "REMOVE"}\n\n'
+            "IMPORTANT: Every non-removed employer MUST have an \"occupations\" array with 3-8 SOC codes.\n\n"
+            "Names:\n" + "\n".join(f"- {n}" for n in names)
+        )
+    else:
+        prompt = (
+            f"Here are {len(names)} employer names from the EDD database for the "
+            f"{metro} metro area. For each, return either:\n"
+            "- The cleaned canonical employer name + a one-sentence description\n"
+            '- "REMOVE" if it should be dropped (branch duplicate, internal dept, foundation, staffing agency)\n\n'
+            "Clean up: abbreviations, branch qualifiers, location suffixes.\n"
+            "Keep the name recognizable.\n\n"
+            'Return JSON: {"Original Name": {"name": "Clean Name", "description": "..."} '
+            'or "Original Name": "REMOVE"}\n\n'
+            "Names:\n" + "\n".join(f"- {n}" for n in names)
+        )
 
     try:
         response = client.models.generate_content(
             model="gemini-2.5-flash",
             contents=prompt,
             config=types.GenerateContentConfig(
-                max_output_tokens=8192,
+                max_output_tokens=65536,
                 temperature=0.1,
                 response_mime_type="application/json",
                 thinking_config=types.ThinkingConfig(thinking_budget=0),
@@ -410,7 +409,9 @@ def _llm_cleanup(
                 emp["description"] = action["description"]
             if action.get("occupations") and valid_soc_codes:
                 # Validate SOC codes against filtered list
-                valid = [s for s in action["occupations"] if s in valid_soc_codes]
+                # LLM sometimes appends titles like "11-3121: Human Resources Managers"
+                raw_socs = [s.split(":")[0].strip() for s in action["occupations"]]
+                valid = [s for s in raw_socs if s in valid_soc_codes]
                 if valid:
                     emp["soc_codes"] = valid
                     occ_assigned += 1
@@ -539,7 +540,7 @@ def generate_for_college(
         logger.info(f"    {sector}: {count}")
 
     # ── Stage 5: LLM cleanup in batches (dedup, normalize, describe, assign occupations)
-    BATCH_SIZE = 50
+    BATCH_SIZE = 30
     selected = []
     for i in range(0, len(deduped), BATCH_SIZE):
         batch = deduped[i:i + BATCH_SIZE]
