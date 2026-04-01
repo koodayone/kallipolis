@@ -22,7 +22,7 @@ const DIAMOND = 6; // half-size of diamond marker
 
 export const FEATURED_COLLEGES = new Set([
   "lassen", "siskiyous", "mendocino", "butte", "saccc", "laketahoe",
-  "hartnell", "foothill", "berkeleycc", "napavalley", "visalia", "merced",
+  "hartnell", "foothill", "berkeleycc", "napavalley", "sequoias", "merced",
   "sbcc", "oxnard", "cerrocoso", "desert", "imperial", "sandiegocity",
   "compton", "lavalley", "bakersfield", "irvinevalley",
 ]);

@@ -920,37 +920,389 @@
     ]
   },
   {
-    "name": "Mercy General Hospital",
-    "sector": "Healthcare",
-    "description": "Mercy General Hospital is a full-service acute care hospital providing comprehensive medical services to the Sacramento community.",
+    "name": "Tulare Joint Union High School District",
+    "sector": "Education",
+    "description": "The Tulare Joint Union High School District provides secondary education to students in the Tulare area.",
     "regions": [
-      "Sacramento-Roseville-Folsom"
+      "Visalia"
     ],
     "occupations": [
-      "11-9111",
-      "29-1141",
-      "29-1215",
-      "29-2061",
-      "31-1131",
-      "29-2072",
-      "13-1071",
-      "13-2011"
+      "25-1022",
+      "25-1072",
+      "25-1121",
+      "25-1123",
+      "25-1194",
+      "25-1199",
+      "25-2011",
+      "25-2012",
+      "25-2021",
+      "25-2022"
+    ]
+  },
+  {
+    "name": "Saputo Cheese USA",
+    "sector": "Manufacturing",
+    "description": "Saputo Cheese USA is a major producer of cheese and dairy products.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "51-1011",
+      "51-2028",
+      "51-3011",
+      "51-4031",
+      "51-4033"
+    ]
+  },
+  {
+    "name": "Land O'Lakes Industrial Cheese",
+    "sector": "Manufacturing",
+    "description": "Land O'Lakes Industrial Cheese is a division of Land O'Lakes, focusing on cheese products for industrial use.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "51-1011",
+      "51-2028",
+      "51-3011",
+      "51-4031",
+      "51-4033"
+    ]
+  },
+  {
+    "name": "Monrovia Nursery",
+    "sector": "Wholesale",
+    "description": "Monrovia Nursery is a wholesale grower of plants and trees for garden centers and landscape professionals.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "41-1011",
+      "41-1012",
+      "41-3021",
+      "41-3031"
+    ]
+  },
+  {
+    "name": "Lo Bue Brothers",
+    "sector": "Wholesale",
+    "description": "Lo Bue Brothers is an agricultural company specializing in growing and packing citrus fruits.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "41-1011",
+      "41-1012",
+      "41-3021",
+      "41-3031"
+    ]
+  },
+  {
+    "name": "Tulare Local Healthcare District",
+    "sector": "Professional Services",
+    "description": "The Tulare Local Healthcare District provides healthcare services and facilities to the community of Tulare.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "15-1211",
+      "15-1212",
+      "15-1231",
+      "15-1232",
+      "15-1242",
+      "15-1244",
+      "15-1251",
+      "15-1252",
+      "15-1299",
+      "15-2031"
+    ]
+  },
+  {
+    "name": "Porterville Developmental Center",
+    "sector": "Healthcare",
+    "description": "The Porterville Developmental Center provides care and treatment for individuals with intellectual and developmental disabilities.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "29-1031",
+      "29-1041",
+      "29-1051",
+      "29-1071",
+      "29-1122",
+      "29-1123",
+      "29-1127",
+      "29-1131",
+      "29-1141"
+    ]
+  },
+  {
+    "name": "Sierra View Medical Center",
+    "sector": "Healthcare",
+    "description": "Sierra View Medical Center is a hospital providing comprehensive medical services to the Porterville community.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "29-1031",
+      "29-1041",
+      "29-1051",
+      "29-1071",
+      "29-1122",
+      "29-1123",
+      "29-1127",
+      "29-1131",
+      "29-1141"
+    ]
+  },
+  {
+    "name": "Yokuts Coffee House",
+    "sector": "Hospitality & Food Service",
+    "description": "Yokuts Coffee House is a local coffee shop offering beverages and light food items.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "35-1011",
+      "35-1012",
+      "35-2012",
+      "35-2014"
+    ]
+  },
+  {
+    "name": "City of Tulare",
+    "sector": "Government",
+    "description": "The City of Tulare provides municipal services and governance to its residents.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "33-1012",
+      "33-1021",
+      "33-1091",
+      "33-2011",
+      "33-3012",
+      "33-3021",
+      "33-3051",
+      "33-9021"
+    ]
+  },
+  {
+    "name": "WinCo Foods",
+    "sector": "Retail",
+    "description": "WinCo Foods is an employee-owned supermarket chain offering groceries and household goods.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "41-1011",
+      "41-1012",
+      "41-3021",
+      "41-3031"
+    ]
+  },
+  {
+    "name": "Keller Williams Realty",
+    "sector": "Real Estate",
+    "description": "Keller Williams Realty is a real estate franchise company that provides services for buying and selling properties.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "41-1011",
+      "41-1012",
+      "41-3021",
+      "41-3031"
+    ]
+  },
+  {
+    "name": "Sun Pacific",
+    "sector": "Wholesale",
+    "description": "Sun Pacific is a large agricultural company specializing in growing, packing, and shipping fresh produce, including citrus, grapes, and kiwifruit.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "41-1011",
+      "41-1012",
+      "41-3021",
+      "41-3031"
+    ]
+  },
+  {
+    "name": "Sun Valley Packing",
+    "sector": "Wholesale",
+    "description": "Sun Valley Packing is an agricultural company focused on packing and distributing fresh produce.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "41-1011",
+      "41-1012",
+      "41-3021",
+      "41-3031"
+    ]
+  },
+  {
+    "name": "Wiebe Farms",
+    "sector": "Wholesale",
+    "description": "Wiebe Farms is an agricultural operation involved in crop cultivation and farming.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "41-1011",
+      "41-1012",
+      "41-3021",
+      "41-3031"
+    ]
+  },
+  {
+    "name": "Porterville College",
+    "sector": "Education",
+    "description": "Porterville College is a community college offering associate degrees and vocational training programs.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "25-1022",
+      "25-1072",
+      "25-1121",
+      "25-1123",
+      "25-1194",
+      "25-1199",
+      "25-2011",
+      "25-2012",
+      "25-2021",
+      "25-2022"
+    ]
+  },
+  {
+    "name": "Visalia Medical Clinic",
+    "sector": "Healthcare",
+    "description": "Visalia Medical Clinic is a multi-specialty medical group providing a wide range of healthcare services.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "29-1031",
+      "29-1041",
+      "29-1051",
+      "29-1071",
+      "29-1122",
+      "29-1123",
+      "29-1127",
+      "29-1131",
+      "29-1141"
+    ]
+  },
+  {
+    "name": "BASS Medical Group",
+    "sector": "Healthcare",
+    "description": "BASS Medical Group is a large physician-owned and operated multi-specialty medical group.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "29-1031",
+      "29-1041",
+      "29-1051",
+      "29-1071",
+      "29-1122",
+      "29-1123",
+      "29-1127",
+      "29-1131",
+      "29-1141"
+    ]
+  },
+  {
+    "name": "Adventist Health Tulare",
+    "sector": "Healthcare",
+    "description": "Adventist Health Tulare is a hospital providing comprehensive medical care and services to the Tulare community.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "29-1031",
+      "29-1041",
+      "29-1051",
+      "29-1071",
+      "29-1122",
+      "29-1123",
+      "29-1127",
+      "29-1131",
+      "29-1141"
+    ]
+  },
+  {
+    "name": "Kaweah Health Rehabilitation Hospital",
+    "sector": "Healthcare",
+    "description": "Kaweah Health Rehabilitation Hospital specializes in inpatient rehabilitation services for patients recovering from serious injuries or illnesses.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "29-1031",
+      "29-1041",
+      "29-1051",
+      "29-1071",
+      "29-1122",
+      "29-1123",
+      "29-1127",
+      "29-1131",
+      "29-1141"
+    ]
+  },
+  {
+    "name": "Tulare County Office of Education",
+    "sector": "Government",
+    "description": "The Tulare County Office of Education provides leadership, resources, and services to support public education throughout Tulare County.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "33-1012",
+      "33-1021",
+      "33-1091",
+      "33-2011",
+      "33-3012",
+      "33-3021",
+      "33-3051",
+      "33-9021"
+    ]
+  },
+  {
+    "name": "United States Cotton Classing Office",
+    "sector": "Government",
+    "description": "The United States Cotton Classing Office provides official classification of cotton to facilitate marketing and trade.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "33-1012",
+      "33-1021",
+      "33-1091",
+      "33-2011",
+      "33-3012",
+      "33-3021",
+      "33-3051",
+      "33-9021"
     ]
   },
   {
     "name": "Villara",
     "sector": "Construction",
-    "description": "Villara provides heating, air conditioning, plumbing, and solar services for residential and commercial clients.",
+    "description": "Villara is a leading provider of home services in Northern California, specializing in HVAC, plumbing, and solar solutions.",
     "regions": [
       "Sacramento-Roseville-Folsom"
     ],
     "occupations": [
-      "49-9021",
+      "11-9021",
       "47-2152",
+      "49-9021",
       "49-9071",
-      "41-4012",
-      "11-9199",
-      "43-9061"
+      "47-1011",
+      "49-1011"
     ]
   },
   {
@@ -961,49 +1313,172 @@
       "Sacramento-Roseville-Folsom"
     ],
     "occupations": [
+      "11-3013",
+      "11-9041",
+      "17-2071",
       "49-9051",
       "51-8013",
-      "17-2071",
-      "17-3023",
-      "15-1244",
       "13-2011",
-      "11-3031",
-      "11-9041"
+      "15-1244",
+      "17-3023"
     ]
   },
   {
     "name": "Ampac Fine Chemicals",
     "sector": "Manufacturing",
-    "description": "Ampac Fine Chemicals is a leading manufacturer of active pharmaceutical ingredients (APIs) for the pharmaceutical industry.",
+    "description": "Ampac Fine Chemicals is a custom manufacturer of active pharmaceutical ingredients (APIs) for the pharmaceutical industry.",
     "regions": [
       "Sacramento-Roseville-Folsom"
     ],
     "occupations": [
-      "19-2031",
-      "17-2041",
-      "51-1011",
-      "51-9061",
       "11-3051",
+      "17-2041",
+      "19-2031",
       "19-4031",
-      "11-9121"
+      "51-1011",
+      "11-9199",
+      "19-1021"
     ]
   },
   {
     "name": "Aerojet Rocketdyne",
     "sector": "Manufacturing",
-    "description": "Aerojet Rocketdyne is an American manufacturer of aerospace and defense products, including rocket engines and propulsion systems.",
+    "description": "Aerojet Rocketdyne is an American manufacturer of rocket, missile, and spacecraft propulsion systems.",
     "regions": [
       "Sacramento-Roseville-Folsom"
     ],
     "occupations": [
+      "11-9041",
       "17-2011",
       "17-2141",
-      "11-9041",
       "15-1252",
       "51-2011",
-      "51-4041",
+      "17-3013",
+      "17-3024",
+      "17-2071"
+    ]
+  },
+  {
+    "name": "Dependable Highway Express",
+    "sector": "Transportation",
+    "description": "Dependable Highway Express is a transportation and logistics company offering freight shipping and warehousing services.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-3071",
       "13-1081",
-      "11-3051"
+      "53-1047",
+      "43-5011",
+      "11-9199"
+    ]
+  },
+  {
+    "name": "Ozark Trucking",
+    "sector": "Transportation",
+    "description": "Ozark Trucking is a freight transportation company providing trucking services across various regions.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-3071",
+      "13-1081",
+      "53-1047",
+      "49-3031"
+    ]
+  },
+  {
+    "name": "Golden 1 Credit Union",
+    "sector": "Finance",
+    "description": "Golden 1 Credit Union is a financial cooperative providing banking services to its members.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-3031",
+      "13-2011",
+      "13-2072",
+      "43-3071",
+      "43-4131",
+      "43-4141",
+      "13-2052"
+    ]
+  },
+  {
+    "name": "Summit Funding",
+    "sector": "Finance",
+    "description": "Summit Funding is a mortgage lender offering a variety of home loan products and services.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-2022",
+      "13-2072",
+      "13-2052",
+      "41-3031",
+      "13-2011",
+      "11-3031"
+    ]
+  },
+  {
+    "name": "Colliers International",
+    "sector": "Real Estate",
+    "description": "Colliers International is a global leader in commercial real estate services and investment management.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9141",
+      "41-9022",
+      "13-1161",
+      "13-2011",
+      "13-2020",
+      "11-2021"
+    ]
+  },
+  {
+    "name": "MyOutDesk",
+    "sector": "Real Estate",
+    "description": "MyOutDesk provides virtual assistant services to businesses, helping them with administrative, marketing, and sales support.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9199",
+      "13-1071",
+      "13-1161",
+      "43-9061",
+      "43-6013",
+      "43-6012"
+    ]
+  },
+  {
+    "name": "Employment Development Department",
+    "sector": "Administrative Services",
+    "description": "The Employment Development Department (EDD) is a California state agency that provides a variety of services to job seekers and employers.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-3121",
+      "13-1071",
+      "13-1041",
+      "43-4061",
+      "13-2081",
+      "11-9151"
+    ]
+  },
+  {
+    "name": "Securitas",
+    "sector": "Administrative Services",
+    "description": "Securitas is a global security services company offering guarding, electronic security, fire and safety, and risk management solutions.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "33-1091",
+      "33-9099",
+      "11-9199"
     ]
   },
   {
@@ -1014,86 +1489,137 @@
       "Sacramento-Roseville-Folsom"
     ],
     "occupations": [
-      "25-1194",
-      "25-1011",
-      "25-9031",
       "11-9033",
+      "25-1199",
+      "25-9031",
+      "25-9044",
       "13-1071",
-      "43-9061",
-      "25-4022"
+      "11-3121",
+      "15-1211",
+      "21-1012"
+    ]
+  },
+  {
+    "name": "Mercy General Hospital",
+    "sector": "Healthcare",
+    "description": "Mercy General Hospital is a full-service acute care hospital providing comprehensive medical services to the Sacramento community.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9111",
+      "29-1141",
+      "29-1215",
+      "29-2032",
+      "29-2055",
+      "31-1131",
+      "29-1051",
+      "29-2072"
+    ]
+  },
+  {
+    "name": "Disabled American Veterans",
+    "sector": "Other Services",
+    "description": "Disabled American Veterans is a non-profit organization dedicated to empowering veterans and their families.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9151",
+      "21-1099",
+      "21-1015",
+      "13-2011",
+      "11-2033"
+    ]
+  },
+  {
+    "name": "Capital Christian Center",
+    "sector": "Other Services",
+    "description": "Capital Christian Center is a church and school providing religious services, education, and community programs.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "21-2011",
+      "21-2021",
+      "11-9032",
+      "25-2021",
+      "25-2022",
+      "11-9199"
+    ]
+  },
+  {
+    "name": "California Exposition & State Fair",
+    "sector": "Government",
+    "description": "The California Exposition & State Fair hosts the annual California State Fair and numerous other events throughout the year.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9072",
+      "13-1121",
+      "27-2012",
+      "11-2011",
+      "11-2021",
+      "11-3013"
     ]
   },
   {
     "name": "California Department of Corrections and Rehabilitation",
     "sector": "Government",
-    "description": "The California Department of Corrections and Rehabilitation is responsible for the incarceration of convicted felons and the supervision of parolees.",
+    "description": "The California Department of Corrections and Rehabilitation is responsible for the incarceration of felons and the supervision of parolees.",
     "regions": [
       "Sacramento-Roseville-Folsom"
     ],
     "occupations": [
+      "11-9151",
       "33-3012",
       "33-1011",
       "21-1092",
-      "13-1041",
-      "11-9151",
       "23-1011",
-      "13-1071"
-    ]
-  },
-  {
-    "name": "Yolo County District Attorney",
-    "sector": "Government",
-    "description": "The Yolo County District Attorney's office prosecutes criminal offenses and serves as the chief law enforcement officer for the county.",
-    "regions": [
-      "Sacramento-Roseville-Folsom"
-    ],
-    "occupations": [
-      "23-1011",
-      "23-2011",
-      "13-1041",
-      "43-4031",
-      "11-3031",
-      "13-1071"
+      "13-1041"
     ]
   },
   {
     "name": "Hewlett Packard Enterprise",
     "sector": "Professional Services",
-    "description": "Hewlett Packard Enterprise is a multinational enterprise information technology company that provides servers, storage, networking, consulting, and support.",
+    "description": "Hewlett Packard Enterprise is a multinational enterprise information technology company.",
     "regions": [
       "Sacramento-Roseville-Folsom"
     ],
     "occupations": [
+      "11-3021",
       "15-1252",
       "15-1211",
-      "11-3021",
+      "15-1241",
+      "15-1212",
       "17-2071",
-      "13-1161",
-      "41-4012",
-      "15-1244",
-      "15-1212"
+      "13-1082",
+      "11-2021"
     ]
   },
   {
-    "name": "Dealertrack",
+    "name": "Woodland Healthcare",
     "sector": "Professional Services",
-    "description": "Dealertrack provides software and services to the automotive retail industry, including solutions for vehicle registration and titling.",
+    "description": "Woodland Healthcare is a community hospital and healthcare provider serving Yolo County.",
     "regions": [
       "Sacramento-Roseville-Folsom"
     ],
     "occupations": [
-      "15-1252",
-      "15-1211",
-      "11-3021",
-      "41-4012",
-      "13-1161",
-      "43-9061"
+      "11-9111",
+      "29-1141",
+      "29-1215",
+      "29-2032",
+      "29-2055",
+      "31-1131",
+      "29-1051",
+      "29-2072"
     ]
   },
   {
     "name": "Northstar California Resort",
     "sector": "Hospitality & Food Service",
-    "description": "Northstar California Resort is a ski resort offering winter sports, mountain biking, and other recreational activities.",
+    "description": "Northstar California Resort is a popular ski resort and summer destination offering outdoor recreation and lodging.",
     "regions": [
       "Sacramento-Roseville-Folsom"
     ],
@@ -1101,15 +1627,15 @@
       "11-9072",
       "39-1014",
       "39-7010",
-      "33-9092",
-      "13-1121",
-      "43-9061"
+      "39-9031",
+      "11-9051",
+      "35-1012"
     ]
   },
   {
     "name": "Palisades Tahoe",
     "sector": "Hospitality & Food Service",
-    "description": "Palisades Tahoe is a ski resort in Olympic Valley, California, known for its challenging terrain and Olympic history.",
+    "description": "Palisades Tahoe is a world-renowned ski resort in Olympic Valley, California, offering winter sports and summer activities.",
     "regions": [
       "Sacramento-Roseville-Folsom"
     ],
@@ -1117,41 +1643,84 @@
       "11-9072",
       "39-1014",
       "39-7010",
-      "33-9092",
-      "13-1121",
-      "43-9061"
+      "39-9031",
+      "11-9051",
+      "35-1012"
+    ]
+  },
+  {
+    "name": "ADESA",
+    "sector": "Wholesale",
+    "description": "ADESA is a leading provider of vehicle auction and remarketing services for new and used vehicles.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-2022",
+      "41-4012",
+      "49-3023",
+      "49-3021",
+      "11-3071",
+      "13-1081"
+    ]
+  },
+  {
+    "name": "Arctic Cascade",
+    "sector": "Wholesale",
+    "description": "Arctic Cascade is a company specializing in water purification and delivery services.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9199",
+      "13-1081",
+      "41-4012",
+      "49-9071"
     ]
   },
   {
     "name": "Sacramento Hyundai",
     "sector": "Retail",
-    "description": "Sacramento Hyundai is an authorized dealership selling new and used Hyundai vehicles and providing automotive service.",
+    "description": "Sacramento Hyundai is an authorized dealership selling new and used Hyundai vehicles and providing automotive services.",
     "regions": [
       "Sacramento-Roseville-Folsom"
     ],
     "occupations": [
-      "41-1011",
+      "11-2022",
       "41-4012",
       "49-3023",
       "49-1011",
-      "13-2072",
-      "43-9061"
+      "41-1011",
+      "13-1032"
     ]
   },
   {
-    "name": "Carmax",
-    "sector": "Retail",
-    "description": "Carmax is a used car retailer known for its no-haggle pricing and extensive inventory.",
+    "name": "Golfland Sunsplash Roseville",
+    "sector": "Arts & Entertainment",
+    "description": "Golfland Sunsplash Roseville is an amusement park featuring water slides, miniature golf, and arcade games.",
     "regions": [
       "Sacramento-Roseville-Folsom"
     ],
     "occupations": [
-      "41-1011",
-      "41-4012",
-      "49-3023",
-      "49-1011",
-      "13-2072",
-      "43-9061"
+      "11-9072",
+      "39-1014",
+      "11-9051",
+      "35-1012"
+    ]
+  },
+  {
+    "name": "Sunrise Recreation and Park District",
+    "sector": "Arts & Entertainment",
+    "description": "The Sunrise Recreation and Park District provides parks, recreation facilities, and community programs for residents.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9072",
+      "11-9151",
+      "21-1099",
+      "49-9071",
+      "11-3013"
     ]
   },
   {
@@ -1162,30 +1731,108 @@
       "Sacramento-Roseville-Folsom"
     ],
     "occupations": [
-      "47-2111",
-      "47-1011",
-      "17-2071",
       "11-9021",
-      "43-9061",
-      "13-1051"
+      "47-1011",
+      "47-2111",
+      "17-2071",
+      "17-3012",
+      "47-3013"
+    ]
+  },
+  {
+    "name": "L.A. Care Health Plan",
+    "sector": "Finance",
+    "description": "L.A. Care Health Plan is the largest publicly operated health plan in the United States, serving low-income residents of Los Angeles County.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1041",
+      "13-2053",
+      "29-1141",
+      "21-1022",
+      "13-1071"
+    ]
+  },
+  {
+    "name": "State Compensation Insurance Fund",
+    "sector": "Finance",
+    "description": "State Compensation Insurance Fund is a California state enterprise that provides workers' compensation insurance.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-3031",
+      "13-2053",
+      "43-9041",
+      "13-1041",
+      "23-1011",
+      "13-2011"
+    ]
+  },
+  {
+    "name": "VSP Global",
+    "sector": "Finance",
+    "description": "VSP Global is a vision care company offering eye care insurance, eyewear, and ophthalmic technology.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9111",
+      "29-1041",
+      "29-2057",
+      "13-2053",
+      "11-2021",
+      "13-1161"
     ]
   },
   {
     "name": "California State University, Sacramento",
     "sector": "Education",
-    "description": "California State University, Sacramento is a public university offering undergraduate and graduate degree programs across various disciplines.",
+    "description": "California State University, Sacramento is a public university offering undergraduate and graduate degree programs.",
     "regions": [
       "Sacramento-Roseville-Folsom"
     ],
     "occupations": [
+      "11-9033",
       "25-1011",
       "25-1021",
       "25-1071",
-      "11-9033",
+      "25-1123",
+      "25-9031",
+      "21-1012",
+      "11-3021"
+    ]
+  },
+  {
+    "name": "Munir's",
+    "sector": "Real Estate",
+    "description": "Munir's is a local restaurant known for its Mediterranean cuisine.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9051",
+      "35-1011",
+      "35-1012",
+      "35-2014"
+    ]
+  },
+  {
+    "name": "PRIDE Industries",
+    "sector": "Administrative Services",
+    "description": "PRIDE Industries is a non-profit social enterprise that creates employment opportunities for people with disabilities.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9151",
+      "21-1015",
+      "21-1093",
       "13-1071",
-      "25-4022",
-      "15-1244",
-      "25-9031"
+      "11-3121",
+      "11-9199"
     ]
   },
   {
@@ -1196,55 +1843,68 @@
       "Sacramento-Roseville-Folsom"
     ],
     "occupations": [
-      "25-1194",
-      "25-1011",
-      "25-9031",
       "11-9033",
+      "25-1194",
+      "25-1199",
+      "25-9031",
+      "21-1012",
       "13-1071",
-      "43-9061",
-      "25-4022"
+      "11-3121"
     ]
   },
   {
-    "name": "Methodist Hospital of Sacramento",
-    "sector": "Healthcare",
-    "description": "Methodist Hospital of Sacramento is an acute care hospital providing a range of medical services to the community.",
+    "name": "City of Roseville",
+    "sector": "Government",
+    "description": "The City of Roseville is a municipal government providing public services to its residents.",
     "regions": [
       "Sacramento-Roseville-Folsom"
     ],
     "occupations": [
-      "11-9111",
-      "29-1141",
-      "29-1215",
-      "29-2061",
-      "31-1131",
-      "29-2072",
-      "13-1071",
-      "13-2011"
+      "11-9199",
+      "17-2051",
+      "19-3051",
+      "33-3051",
+      "47-2152",
+      "51-8031",
+      "13-2011",
+      "11-3013"
     ]
   },
   {
-    "name": "Shriners Hospitals for Children",
-    "sector": "Healthcare",
-    "description": "Shriners Hospitals for Children provides specialized medical care for children with orthopedic conditions, burns, spinal cord injuries, and cleft lip and palate.",
+    "name": "Pacific Coast Producers",
+    "sector": "Manufacturing",
+    "description": "Pacific Coast Producers is an agricultural cooperative that processes and cans fruits and tomatoes.",
     "regions": [
       "Sacramento-Roseville-Folsom"
     ],
     "occupations": [
-      "11-9111",
-      "29-1141",
-      "29-1229",
-      "29-1123",
-      "31-1131",
-      "29-2072",
-      "13-1071",
-      "11-2033"
+      "11-3051",
+      "19-1012",
+      "19-1013",
+      "51-1011",
+      "45-2092",
+      "11-9013"
+    ]
+  },
+  {
+    "name": "Yolo County District Attorney's Office",
+    "sector": "Government",
+    "description": "The Yolo County District Attorney's Office prosecutes criminal offenses and provides legal services to the county.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "23-1011",
+      "23-2011",
+      "33-3021",
+      "13-1041",
+      "11-9199"
     ]
   },
   {
     "name": "Granite Construction",
     "sector": "Construction",
-    "description": "Granite Construction is a large civil construction company specializing in infrastructure projects, including roads, bridges, and dams.",
+    "description": "Granite Construction is a heavy civil general contractor and construction materials producer.",
     "regions": [
       "Sacramento-Roseville-Folsom"
     ],
@@ -1253,39 +1913,38 @@
       "17-2051",
       "47-1011",
       "47-2073",
+      "47-4090",
       "13-1051",
-      "13-1082",
-      "43-9061"
+      "17-3022"
     ]
   },
   {
-    "name": "S. D. Deacon Corporation",
+    "name": "S.D. Deacon Corporation",
     "sector": "Construction",
-    "description": "S. D. Deacon Corporation is a general contractor providing construction services for commercial and industrial projects.",
+    "description": "S.D. Deacon Corporation is a general contractor specializing in commercial construction projects.",
     "regions": [
       "Sacramento-Roseville-Folsom"
     ],
     "occupations": [
       "11-9021",
-      "17-2051",
       "47-1011",
+      "17-2051",
       "13-1051",
       "13-1082",
-      "43-9061"
+      "47-4090"
     ]
   },
   {
     "name": "Kenyon Plastering",
     "sector": "Construction",
-    "description": "Kenyon Plastering is a plastering contractor specializing in commercial and residential plastering services.",
+    "description": "Kenyon Plastering is a construction company specializing in plastering and stucco services.",
     "regions": [
       "Sacramento-Roseville-Folsom"
     ],
     "occupations": [
+      "11-9021",
       "47-1011",
-      "47-4090",
-      "13-1051",
-      "43-9061"
+      "47-4090"
     ]
   },
   {
@@ -1297,311 +1956,40 @@
     ],
     "occupations": [
       "11-3071",
-      "53-1047",
+      "13-1081",
       "41-4012",
+      "53-1047"
+    ]
+  },
+  {
+    "name": "Action Property Management",
+    "sector": "Real Estate",
+    "description": "Action Property Management is a property management company specializing in homeowner associations and condominiums.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9141",
       "43-9061",
-      "13-1161"
+      "49-9071",
+      "13-2011",
+      "11-3013"
     ]
   },
   {
-    "name": "Applied Behavior Consultants",
-    "sector": "Education",
-    "description": "Applied Behavior Consultants provides behavioral therapy and educational services for individuals with autism and other developmental disabilities.",
-    "regions": [
-      "Sacramento-Roseville-Folsom"
-    ],
-    "occupations": [
-      "19-3033",
-      "21-1019",
-      "21-1093",
-      "25-3099",
-      "11-9151",
-      "13-1071"
-    ]
-  },
-  {
-    "name": "Elk Grove Unified School District",
-    "sector": "Education",
-    "description": "The Elk Grove Unified School District is a large public school district serving students in Elk Grove, California.",
-    "regions": [
-      "Sacramento-Roseville-Folsom"
-    ],
-    "occupations": [
-      "11-9032",
-      "25-2021",
-      "25-2022",
-      "25-2052",
-      "25-9045",
-      "13-1071",
-      "21-1012",
-      "25-9031"
-    ]
-  },
-  {
-    "name": "Resort at Squaw Creek",
-    "sector": "Hospitality & Food Service",
-    "description": "The Resort at Squaw Creek is a luxury resort offering lodging, dining, golf, and ski access in Olympic Valley, California.",
-    "regions": [
-      "Sacramento-Roseville-Folsom"
-    ],
-    "occupations": [
-      "11-9072",
-      "11-9051",
-      "35-1011",
-      "39-1014",
-      "13-1121",
-      "43-9061"
-    ]
-  },
-  {
-    "name": "Sky Mountain Charter School",
-    "sector": "Education",
-    "description": "Sky Mountain Charter School provides personalized learning programs for K-12 students through a homeschool model.",
-    "regions": [
-      "Sacramento-Roseville-Folsom"
-    ],
-    "occupations": [
-      "11-9032",
-      "25-2021",
-      "25-2022",
-      "25-2052",
-      "25-3041",
-      "25-9031",
-      "13-1071"
-    ]
-  },
-  {
-    "name": "Sierra-at-Tahoe Resort",
-    "sector": "Hospitality & Food Service",
-    "description": "Sierra-at-Tahoe Resort is a ski resort offering winter sports and summer activities near Lake Tahoe.",
-    "regions": [
-      "Sacramento-Roseville-Folsom"
-    ],
-    "occupations": [
-      "11-9072",
-      "39-1014",
-      "39-7010",
-      "33-9092",
-      "13-1121",
-      "43-9061"
-    ]
-  },
-  {
-    "name": "University of California, Davis Medical Center",
-    "sector": "Healthcare",
-    "description": "UC Davis Medical Center is a nationally recognized academic medical center providing advanced patient care, research, and education.",
+    "name": "Sutter Physician Services",
+    "sector": "Professional Services",
+    "description": "Sutter Physician Services provides administrative and support services for physicians and medical groups within the Sutter Health network.",
     "regions": [
       "Sacramento-Roseville-Folsom"
     ],
     "occupations": [
       "11-9111",
-      "29-1141",
-      "29-1215",
-      "29-2061",
-      "31-1131",
       "29-2072",
-      "13-1071",
-      "19-1042"
-    ]
-  },
-  {
-    "name": "McGuire and Hester",
-    "sector": "Construction",
-    "description": "McGuire and Hester is a heavy civil engineering contractor specializing in infrastructure, site work, and utility projects.",
-    "regions": [
-      "Sacramento-Roseville-Folsom"
-    ],
-    "occupations": [
-      "11-9021",
-      "17-2051",
-      "47-1011",
-      "47-2073",
-      "13-1051",
-      "13-1082",
-      "43-9061"
-    ]
-  },
-  {
-    "name": "Spencer Building Maintenance",
-    "sector": "Construction",
-    "description": "Spencer Building Maintenance provides commercial cleaning and maintenance services for various facilities.",
-    "regions": [
-      "Sacramento-Roseville-Folsom"
-    ],
-    "occupations": [
-      "49-9071",
-      "11-3013",
-      "43-9061",
-      "11-9199"
-    ]
-  },
-  {
-    "name": "Swinerton Builders",
-    "sector": "Construction",
-    "description": "Swinerton Builders is a general contractor offering construction management, design-build, and general contracting services across various sectors.",
-    "regions": [
-      "Sacramento-Roseville-Folsom"
-    ],
-    "occupations": [
-      "11-9021",
-      "17-2051",
-      "47-1011",
-      "13-1051",
-      "13-1082",
-      "43-9061"
-    ]
-  },
-  {
-    "name": "Sacramento Regional County Sanitation District",
-    "sector": "Construction",
-    "description": "The Sacramento Regional County Sanitation District provides wastewater collection, treatment, and disposal services for the Sacramento region.",
-    "regions": [
-      "Sacramento-Roseville-Folsom"
-    ],
-    "occupations": [
-      "51-8031",
-      "17-2081",
-      "47-2151",
-      "11-3013",
-      "13-1041",
-      "43-9061"
-    ]
-  },
-  {
-    "name": "Pepsi Beverages Company",
-    "sector": "Manufacturing",
-    "description": "Pepsi Beverages Company is a division of PepsiCo responsible for the manufacturing, sales, and distribution of PepsiCo beverages.",
-    "regions": [
-      "Sacramento-Roseville-Folsom"
-    ],
-    "occupations": [
-      "11-2022",
-      "11-3071",
-      "41-4012",
-      "53-1047",
-      "11-3051",
-      "13-1161",
-      "43-9061"
-    ]
-  },
-  {
-    "name": "Webex by Cisco",
-    "sector": "Manufacturing",
-    "description": "Webex by Cisco provides video conferencing, online meetings, screen share, and webinars.",
-    "regions": [
-      "Sacramento-Roseville-Folsom"
-    ],
-    "occupations": [
-      "15-1252",
-      "15-1211",
-      "11-3021",
-      "13-1161",
-      "41-4012",
-      "27-4011",
-      "15-1244"
-    ]
-  },
-  {
-    "name": "Micron Technology",
-    "sector": "Manufacturing",
-    "description": "Micron Technology is a global leader in innovative memory and storage solutions.",
-    "regions": [
-      "Sacramento-Roseville-Folsom"
-    ],
-    "occupations": [
-      "15-1252",
-      "17-2071",
-      "11-3021",
-      "11-9041",
-      "51-9162",
-      "15-1211",
-      "13-1082",
-      "51-9061"
-    ]
-  },
-  {
-    "name": "Los Rios Community College District",
-    "sector": "Education",
-    "description": "The Los Rios Community College District oversees four colleges in the Sacramento region, providing higher education and workforce training.",
-    "regions": [
-      "Sacramento-Roseville-Folsom"
-    ],
-    "occupations": [
-      "25-1194",
-      "25-1011",
-      "25-9031",
-      "11-9033",
-      "13-1071",
-      "43-9061",
-      "25-4022"
-    ]
-  },
-  {
-    "name": "Sacramento City Unified School District",
-    "sector": "Education",
-    "description": "The Sacramento City Unified School District is a public school district serving students in Sacramento, California.",
-    "regions": [
-      "Sacramento-Roseville-Folsom"
-    ],
-    "occupations": [
-      "11-9032",
-      "25-2021",
-      "25-2022",
-      "25-2052",
-      "25-9045",
-      "13-1071",
-      "21-1012",
-      "25-9031"
-    ]
-  },
-  {
-    "name": "Twin Rivers Unified School District",
-    "sector": "Education",
-    "description": "The Twin Rivers Unified School District is a public school district serving students in the northern Sacramento area.",
-    "regions": [
-      "Sacramento-Roseville-Folsom"
-    ],
-    "occupations": [
-      "11-9032",
-      "25-2021",
-      "25-2022",
-      "25-2052",
-      "25-9045",
-      "13-1071",
-      "21-1012",
-      "25-9031"
-    ]
-  },
-  {
-    "name": "Holiday Inn Sacramento",
-    "sector": "Hospitality & Food Service",
-    "description": "Holiday Inn Sacramento is a hotel offering lodging, dining, and event facilities for travelers and local guests.",
-    "regions": [
-      "Sacramento-Roseville-Folsom"
-    ],
-    "occupations": [
-      "11-9199",
-      "11-9051",
-      "35-1012",
-      "13-1121",
-      "43-9061",
-      "41-1011"
-    ]
-  },
-  {
-    "name": "Hyatt Regency Sacramento",
-    "sector": "Hospitality & Food Service",
-    "description": "Hyatt Regency Sacramento is a luxury hotel located downtown, offering upscale accommodations, dining, and convention facilities.",
-    "regions": [
-      "Sacramento-Roseville-Folsom"
-    ],
-    "occupations": [
-      "11-9199",
-      "11-9051",
-      "35-1012",
-      "13-1121",
-      "43-9061",
-      "41-1011"
+      "31-9092",
+      "43-6013",
+      "13-2011",
+      "11-3031"
     ]
   }
 ]

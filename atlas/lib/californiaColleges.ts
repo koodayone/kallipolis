@@ -183,7 +183,7 @@ export const CALIFORNIA_COLLEGES: College[] = [
   { id: "fresno",         name: "Fresno City College",             district: "State Center CCD",              regionId: "central-valley",     lat: 36.73, lng: -119.79, logoStacked: "/fresno-logo.png" },
   { id: "reedley",        name: "Reedley College",                 district: "State Center CCD",              regionId: "central-valley",     lat: 36.60, lng: -119.45, logoStacked: "/reedley-logo.png" },
   { id: "clovis",         name: "Clovis Community College",        district: "State Center CCD",              regionId: "central-valley",     lat: 36.83, lng: -119.68, logoStacked: "/clovis-logo.png" },
-  { id: "visalia",        name: "College of the Sequoias",         district: "Sequoias CCD",                  regionId: "central-valley",     lat: 36.32, lng: -119.30, logoStacked: "/visalia-logo.png" },
+  { id: "sequoias",       name: "College of the Sequoias",         district: "Sequoias CCD",                  regionId: "central-valley",     lat: 36.32, lng: -119.30, logoStacked: "/sequoias-logo.png" },
   { id: "merced",         name: "Merced College",                  district: "Merced CCD",                    regionId: "central-valley",     lat: 37.35, lng: -120.49, logoStacked: "/merced-logo.png" },
   { id: "modesto",        name: "Modesto Junior College",          district: "Yosemite CCD",                  regionId: "central-valley",     lat: 37.65, lng: -121.00, logoStacked: "/modesto-logo.svg" },
   { id: "columbia",       name: "Columbia College",                district: "Yosemite CCD",                  regionId: "sierra-nevada",      lat: 38.04, lng: -120.41, logoStacked: "/columbia-logo.png" },
