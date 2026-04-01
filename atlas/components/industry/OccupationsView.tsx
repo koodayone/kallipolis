@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, memo, useMemo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { SchoolConfig } from "@/lib/schoolConfig";
 import { getLaborMarketOverview, getOccupationDetail, queryOccupations } from "@/lib/api";
@@ -55,7 +55,10 @@ export default function OccupationsView({ school, onBack }: Props) {
   const [queryMessage, setQueryMessage] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const allOccupations = (overview?.regions?.flatMap((r) => r.occupations) ?? []).sort((a, b) => a.title.localeCompare(b.title));
+  const allOccupations = useMemo(
+    () => (overview?.regions?.flatMap((r) => r.occupations) ?? []).sort((a, b) => a.title.localeCompare(b.title)),
+    [overview],
+  );
   const regionName = overview?.regions?.[0]?.region ?? "";
 
   useEffect(() => {
@@ -103,19 +106,20 @@ export default function OccupationsView({ school, onBack }: Props) {
     }
   }, [school.name]);
 
-  const handleExpand = useCallback(async (occ: ApiOccupationMatch) => {
+  const preserveScroll = useCallback(() => {
     const scrollEl = findScrollParent(rootRef.current);
-    const savedScroll = scrollEl?.scrollTop ?? 0;
-    const restoreScroll = () => requestAnimationFrame(() => { if (scrollEl) scrollEl.scrollTop = savedScroll; });
+    const saved = scrollEl?.scrollTop ?? 0;
+    requestAnimationFrame(() => { if (scrollEl) scrollEl.scrollTop = saved; });
+  }, []);
 
+  const handleExpand = useCallback(async (occ: ApiOccupationMatch) => {
+    preserveScroll();
     const soc = occ.soc_code;
     if (expandedSocs.has(soc)) {
       setExpandedSocs((prev) => { const next = new Set(prev); next.delete(soc); return next; });
-      restoreScroll();
       return;
     }
     setExpandedSocs((prev) => new Set(prev).add(soc));
-    restoreScroll();
     if (!details[soc]) {
       setLoadingSocs((prev) => new Set(prev).add(soc));
       try {
@@ -124,7 +128,7 @@ export default function OccupationsView({ school, onBack }: Props) {
       } catch {}
       finally { setLoadingSocs((prev) => { const next = new Set(prev); next.delete(soc); return next; }); }
     }
-  }, [expandedSocs, details, school.name]);
+  }, [expandedSocs, details, school.name, preserveScroll]);
 
   const handleReset = useCallback(() => {
     setQuery(""); setSubmitted(false); setResults([]); setQueryMessage(null);
@@ -255,18 +259,20 @@ export default function OccupationsView({ school, onBack }: Props) {
 
 /* ── Occupation Row ────────────────────────────────────────────────────── */
 
-function OccupationRow({ occ, i, school, expandedSocs, details, loadingSocs, onExpand, regionName }: {
+const OccupationRow = memo(function OccupationRow({ occ, i, school, expandedSocs, details, loadingSocs, onExpand, regionName }: {
   occ: ApiOccupationMatch; i: number; school: SchoolConfig;
   expandedSocs: Set<string>; details: Record<string, ApiOccupationDetail>;
   loadingSocs: Set<string>; onExpand: (occ: ApiOccupationMatch) => void; regionName: string;
 }) {
   const isOpen = expandedSocs.has(occ.soc_code);
+  const hasMounted = useRef(false);
+  useEffect(() => { hasMounted.current = true; }, []);
   return (
     <div>
       <motion.button
-        initial={{ opacity: 0, y: 6 }}
+        initial={hasMounted.current ? false : { opacity: 0, y: 6 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.2, delay: Math.min(i * 0.01, 0.2) }}
+        transition={{ duration: 0.2, delay: hasMounted.current ? 0 : Math.min(i * 0.01, 0.2) }}
         onClick={() => onExpand(occ)}
         style={{
           width: "100%", textAlign: "left",
@@ -283,7 +289,7 @@ function OccupationRow({ occ, i, school, expandedSocs, details, loadingSocs, onE
           style={{ transform: isOpen ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>
           <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-        <span style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)", lineHeight: 1.4, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+        <span style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)", lineHeight: 1.4 }}>
           {occ.title}
         </span>
         <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.5)", textAlign: "right" }}>
@@ -306,7 +312,7 @@ function OccupationRow({ occ, i, school, expandedSocs, details, loadingSocs, onE
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.2 }}
             style={{ overflow: "hidden", background: "rgba(255,255,255,0.02)" }}
           >
             <div style={{ padding: "16px 20px 24px" }}>
@@ -411,7 +417,7 @@ function OccupationRow({ occ, i, school, expandedSocs, details, loadingSocs, onE
       </AnimatePresence>
     </div>
   );
-}
+});
 
 /* ── Occupation List (shared) ──────────────────────────────────────────── */
 
