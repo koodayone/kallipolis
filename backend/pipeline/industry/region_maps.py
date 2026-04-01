@@ -116,3 +116,21 @@ COLLEGE_REGION_MAP: dict[str, str] = {
     # Rural
     "Lake Tahoe Community College": "Eastern Sierra-Mother Lode",
 }
+
+# College name → counties to search for EDD employer data.
+# For urban colleges, this defaults to the counties in their OEWS metro.
+# For rural colleges, this expands to include adjacent counties where
+# students realistically commute for employment.
+# If a college is not listed here, the scraper uses METRO_COUNTIES[metro].
+COLLEGE_SEARCH_COUNTIES: dict[str, list[str]] = {
+    # Rural Far North — Shasta (Redding) is the regional hub
+    "Lassen College": ["Lassen", "Shasta", "Tehama", "Plumas"],
+    "College of the Siskiyous": ["Siskiyou", "Shasta"],
+    "Butte College": ["Butte", "Glenn", "Tehama"],
+    # North Coast — Sonoma is the nearest large economy
+    "Mendocino College": ["Mendocino", "Lake", "Humboldt", "Sonoma"],
+    # Central Valley — adjacent major metros
+    "College of the Sequoias": ["Tulare", "Fresno", "Kings"],
+    # Sierra — Sacramento is the commutable hub
+    "Lake Tahoe Community College": ["El Dorado", "Placer", "Alpine"],
+}

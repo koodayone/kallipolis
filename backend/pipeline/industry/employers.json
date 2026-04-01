@@ -1,547 +1,5 @@
 [
   {
-    "name": "Latino Farm Labor Services",
-    "sector": "Construction",
-    "description": "Latino Farm Labor Services is a company that provides labor contracting services primarily for the agricultural sector.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-3121",
-      "13-1071",
-      "43-9061",
-      "45-1011",
-      "45-2092",
-      "45-2099"
-    ]
-  },
-  {
-    "name": "MGM Labor Contracting",
-    "sector": "Construction",
-    "description": "MGM Labor Contracting is a company that provides labor contracting services for various industries.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-3121",
-      "13-1071",
-      "43-9061",
-      "45-1011",
-      "45-2092",
-      "45-2099"
-    ]
-  },
-  {
-    "name": "Land O'Lakes Industrial Cheese",
-    "sector": "Manufacturing",
-    "description": "Land O'Lakes Industrial Cheese is a facility that produces cheese products for industrial use.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-3051",
-      "11-3061",
-      "13-1020",
-      "19-1012",
-      "19-4013",
-      "51-1011",
-      "51-9061",
-      "53-1047"
-    ]
-  },
-  {
-    "name": "Saputo Cheese USA",
-    "sector": "Manufacturing",
-    "description": "Saputo Cheese USA is a large dairy company specializing in the production of various cheese products.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-3051",
-      "11-3061",
-      "13-1020",
-      "19-1012",
-      "19-4013",
-      "51-1011",
-      "51-9061",
-      "53-1047"
-    ]
-  },
-  {
-    "name": "Lo Bue Bros",
-    "sector": "Wholesale",
-    "description": "Lo Bue Bros is an agricultural company involved in farming and potentially packing operations.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-3051",
-      "13-1081",
-      "45-1011",
-      "45-2092",
-      "49-3041",
-      "51-1011",
-      "53-1047"
-    ]
-  },
-  {
-    "name": "Sun Pacific",
-    "sector": "Wholesale",
-    "description": "Sun Pacific is a large agricultural company specializing in growing, packing, and shipping fresh produce.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-2021",
-      "11-3051",
-      "11-3071",
-      "13-1081",
-      "13-1161",
-      "45-1011",
-      "45-2092",
-      "53-1047"
-    ]
-  },
-  {
-    "name": "Sun Valley Packing",
-    "sector": "Wholesale",
-    "description": "Sun Valley Packing is a company involved in the packing and distribution of agricultural products.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-3051",
-      "11-3071",
-      "13-1081",
-      "45-1011",
-      "51-1011",
-      "51-9061",
-      "53-1047"
-    ]
-  },
-  {
-    "name": "Wiebe Farms",
-    "sector": "Wholesale",
-    "description": "Wiebe Farms is an agricultural operation involved in farming.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-9199",
-      "45-1011",
-      "45-2092",
-      "49-3041",
-      "49-9071",
-      "53-7199"
-    ]
-  },
-  {
-    "name": "Monrovia Nursery",
-    "sector": "Wholesale",
-    "description": "Monrovia Nursery is a large wholesale nursery growing and distributing plants.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-3051",
-      "11-3071",
-      "19-1013",
-      "19-4012",
-      "37-1012",
-      "37-3011",
-      "45-1011",
-      "45-2092"
-    ]
-  },
-  {
-    "name": "Winco Foods",
-    "sector": "Retail",
-    "description": "Winco Foods is an employee-owned supermarket chain offering a wide range of groceries.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-2022",
-      "11-3012",
-      "11-9051",
-      "13-1020",
-      "35-1011",
-      "35-1012",
-      "41-1011",
-      "43-9061"
-    ]
-  },
-  {
-    "name": "Keller Williams Realty",
-    "sector": "Real Estate",
-    "description": "Keller Williams Realty is a real estate franchise company.",
-    "regions": [
-      "Visalia",
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "11-2022",
-      "11-3012",
-      "13-1161",
-      "41-1012",
-      "41-9022",
-      "43-9061",
-      "11-3131",
-      "11-9141",
-      "13-1071",
-      "41-9021",
-      "43-4199"
-    ]
-  },
-  {
-    "name": "Tulare Local Healthcare District",
-    "sector": "Professional Services",
-    "description": "The Tulare Local Healthcare District provides healthcare services to the community.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-9111",
-      "13-1071",
-      "29-1141",
-      "29-2061",
-      "31-1131",
-      "31-9092",
-      "43-6013",
-      "43-9061"
-    ]
-  },
-  {
-    "name": "Tulare Joint Union High School District",
-    "sector": "Education",
-    "description": "The Tulare Joint Union High School District oversees high schools in the Tulare area.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-9032",
-      "13-1071",
-      "25-2022",
-      "25-3031",
-      "25-9031",
-      "25-9045",
-      "43-9061"
-    ]
-  },
-  {
-    "name": "Porterville College",
-    "sector": "Education",
-    "description": "Porterville College is a community college offering various academic and vocational programs.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-9033",
-      "13-1071",
-      "21-1012",
-      "25-1194",
-      "25-1199",
-      "25-4022",
-      "25-9044",
-      "43-9061"
-    ]
-  },
-  {
-    "name": "Visalia Medical Clinic",
-    "sector": "Healthcare",
-    "description": "Visalia Medical Clinic is a multi-specialty medical group providing comprehensive healthcare services.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-9111",
-      "13-1071",
-      "29-1141",
-      "29-1215",
-      "31-9092",
-      "31-9097",
-      "43-6013",
-      "43-9061"
-    ]
-  },
-  {
-    "name": "BASS Medical Group",
-    "sector": "Healthcare",
-    "description": "BASS Medical Group is a large physician-owned and operated multi-specialty medical group.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-9111",
-      "13-1071",
-      "29-1141",
-      "29-1215",
-      "31-9092",
-      "31-9097",
-      "43-6013",
-      "43-9061"
-    ]
-  },
-  {
-    "name": "Adventist Health Tulare",
-    "sector": "Healthcare",
-    "description": "Adventist Health Tulare is a hospital providing a range of medical services to the community.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-9111",
-      "13-1071",
-      "29-1141",
-      "29-1215",
-      "29-2034",
-      "31-1131",
-      "31-9092",
-      "43-6013"
-    ]
-  },
-  {
-    "name": "Kaweah Health Rehabilitation Hospital",
-    "sector": "Healthcare",
-    "description": "Kaweah Health Rehabilitation Hospital specializes in inpatient rehabilitation services.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-9111",
-      "13-1071",
-      "29-1122",
-      "29-1123",
-      "29-1141",
-      "31-1131",
-      "31-2011",
-      "31-2021"
-    ]
-  },
-  {
-    "name": "Porterville Developmental Center",
-    "sector": "Healthcare",
-    "description": "The Porterville Developmental Center provides care and treatment for individuals with intellectual and developmental disabilities.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-9111",
-      "11-9151",
-      "19-3033",
-      "21-1018",
-      "21-1023",
-      "29-1141",
-      "31-1131",
-      "39-9041"
-    ]
-  },
-  {
-    "name": "Sierra View Medical Center",
-    "sector": "Healthcare",
-    "description": "Sierra View Medical Center is a hospital providing comprehensive healthcare services to the community.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-9111",
-      "13-1071",
-      "29-1141",
-      "29-1215",
-      "29-2034",
-      "31-1131",
-      "31-9092",
-      "43-6013"
-    ]
-  },
-  {
-    "name": "Health and Human Services",
-    "sector": "Healthcare",
-    "description": "The Department of Health and Human Services provides a wide range of social and health-related programs and assistance.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-9151",
-      "13-1041",
-      "13-1071",
-      "19-3033",
-      "21-1021",
-      "21-1093",
-      "21-1094",
-      "43-4061"
-    ]
-  },
-  {
-    "name": "Tulare County Child Care Program",
-    "sector": "Healthcare",
-    "description": "The Tulare County Child Care Program provides resources and support for childcare services within the county.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-9031",
-      "11-9151",
-      "13-1071",
-      "21-1021",
-      "21-1093",
-      "25-2011",
-      "25-9031",
-      "43-9061"
-    ]
-  },
-  {
-    "name": "Tulare County Parks and Recreation Department",
-    "sector": "Arts & Entertainment",
-    "description": "The Tulare County Parks and Recreation Department manages and maintains parks and recreational facilities.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-3012",
-      "11-3013",
-      "11-9072",
-      "13-1071",
-      "37-1012",
-      "37-3011",
-      "39-1014",
-      "49-9071"
-    ]
-  },
-  {
-    "name": "Yokuts Coffee House",
-    "sector": "Hospitality & Food Service",
-    "description": "Yokuts Coffee House is a local coffee shop serving beverages and light food items.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-9051",
-      "35-1012",
-      "35-2014",
-      "43-9061"
-    ]
-  },
-  {
-    "name": "Solid Waste Collection",
-    "sector": "Government",
-    "description": "Solid Waste Collection provides waste management and recycling services.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-3013",
-      "11-3071",
-      "13-1081",
-      "49-3031",
-      "49-9071",
-      "53-1047",
-      "53-7199"
-    ]
-  },
-  {
-    "name": "City of Tulare",
-    "sector": "Government",
-    "description": "The City of Tulare is a municipal government providing public services to its residents.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-3012",
-      "11-3031",
-      "13-2011",
-      "19-3051",
-      "33-3051",
-      "33-2011",
-      "47-4011",
-      "49-9071"
-    ]
-  },
-  {
-    "name": "Tulare County Office of Education",
-    "sector": "Government",
-    "description": "The Tulare County Office of Education provides leadership, resources, and services to school districts and students in Tulare County.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-9032",
-      "11-9039",
-      "13-1071",
-      "21-1012",
-      "25-9031",
-      "25-9099",
-      "43-9061"
-    ]
-  },
-  {
-    "name": "Tulare County Lake Patrol",
-    "sector": "Government",
-    "description": "The Tulare County Lake Patrol provides law enforcement and safety services on the county's lakes and waterways.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-3012",
-      "33-1012",
-      "33-3051",
-      "43-9061"
-    ]
-  },
-  {
-    "name": "Tulare County Resource Management Agency",
-    "sector": "Government",
-    "description": "The Tulare County Resource Management Agency oversees planning, building, and environmental services for the county.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-9041",
-      "13-1041",
-      "17-1011",
-      "17-1022",
-      "19-2041",
-      "19-3051",
-      "47-4011",
-      "43-9061"
-    ]
-  },
-  {
-    "name": "United States Cotton Classing Office",
-    "sector": "Government",
-    "description": "The United States Cotton Classing Office is responsible for grading and classifying cotton fibers.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-3012",
-      "13-1071",
-      "13-2011",
-      "19-1013",
-      "19-4012",
-      "43-9061",
-      "51-9061"
-    ]
-  },
-  {
-    "name": "Visalia Public Works Department",
-    "sector": "Government",
-    "description": "The Visalia Public Works Department manages the city's infrastructure, including roads, water, and wastewater systems.",
-    "regions": [
-      "Visalia"
-    ],
-    "occupations": [
-      "11-3012",
-      "11-3013",
-      "11-9041",
-      "13-1071",
-      "13-2011",
-      "17-2141",
-      "47-1011",
-      "51-8031"
-    ]
-  },
-  {
     "name": "Granite Construction",
     "sector": "Construction",
     "description": "Granite Construction is a large heavy civil contractor and construction materials producer.",
@@ -959,7 +417,8 @@
     "description": "Home Depot is a retail company that sells tools, construction products, and services.",
     "regions": [
       "Sacramento-Roseville-Folsom",
-      "Los Angeles-Long Beach-Glendale"
+      "Los Angeles-Long Beach-Glendale",
+      "Visalia"
     ],
     "occupations": [
       "11-2022",
@@ -973,7 +432,9 @@
       "11-3121",
       "13-1071",
       "13-1082",
-      "13-2011"
+      "13-2011",
+      "13-1020",
+      "47-2031"
     ]
   },
   {
@@ -982,7 +443,8 @@
     "description": "Lowe's Home Improvement is a retail company specializing in home improvement products and services.",
     "regions": [
       "Sacramento-Roseville-Folsom",
-      "Los Angeles-Long Beach-Glendale"
+      "Los Angeles-Long Beach-Glendale",
+      "Visalia"
     ],
     "occupations": [
       "11-2022",
@@ -996,7 +458,9 @@
       "11-3121",
       "13-1071",
       "13-1082",
-      "13-2011"
+      "13-2011",
+      "13-1020",
+      "47-2031"
     ]
   },
   {
@@ -13683,6 +13147,1892 @@
       "43-4061",
       "43-4161",
       "43-9061"
+    ]
+  },
+  {
+    "name": "Latino Farm Labor Services",
+    "sector": "Construction",
+    "description": "Latino Farm Labor Services is a company that provides labor contracting services primarily for agricultural businesses.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3121",
+      "13-1071",
+      "43-9061",
+      "45-1011",
+      "45-2092",
+      "45-2099",
+      "11-9199"
+    ]
+  },
+  {
+    "name": "MGM Labor Contracting",
+    "sector": "Construction",
+    "description": "MGM Labor Contracting is a company that provides labor contracting services for various industries.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3121",
+      "13-1071",
+      "43-9061",
+      "45-1011",
+      "45-2092",
+      "45-2099",
+      "11-9199"
+    ]
+  },
+  {
+    "name": "Land O'Lakes Industrial Cheese",
+    "sector": "Manufacturing",
+    "description": "Land O'Lakes Industrial Cheese is a facility that produces cheese products for industrial use.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3061",
+      "13-1020",
+      "19-1012",
+      "51-1011",
+      "51-9061",
+      "53-1047",
+      "53-7199"
+    ]
+  },
+  {
+    "name": "Saputo Cheese USA",
+    "sector": "Manufacturing",
+    "description": "Saputo Cheese USA is a dairy company specializing in the production and distribution of cheese products.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3061",
+      "13-1020",
+      "19-1012",
+      "51-1011",
+      "51-9061",
+      "53-1047",
+      "53-7199"
+    ]
+  },
+  {
+    "name": "Lo Bue Brothers",
+    "sector": "Wholesale",
+    "description": "Lo Bue Brothers is an agricultural company involved in farming and produce distribution.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3071",
+      "13-1081",
+      "45-1011",
+      "45-2092",
+      "53-1047",
+      "53-7199"
+    ]
+  },
+  {
+    "name": "Sun Pacific",
+    "sector": "Wholesale",
+    "description": "Sun Pacific is a large agricultural company specializing in growing, packing, and shipping fresh produce.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3071",
+      "13-1081",
+      "45-1011",
+      "45-2092",
+      "53-1047",
+      "53-7199"
+    ]
+  },
+  {
+    "name": "Sun Valley Packing",
+    "sector": "Wholesale",
+    "description": "Sun Valley Packing is a company involved in the packing and distribution of agricultural products.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3071",
+      "13-1081",
+      "45-1011",
+      "51-1011",
+      "53-1047",
+      "53-7199"
+    ]
+  },
+  {
+    "name": "Wiebe Farms",
+    "sector": "Wholesale",
+    "description": "Wiebe Farms is an agricultural enterprise involved in farming operations.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9199",
+      "45-1011",
+      "45-2092",
+      "45-2093",
+      "45-2099",
+      "49-3041"
+    ]
+  },
+  {
+    "name": "Monrovia Nursery",
+    "sector": "Wholesale",
+    "description": "Monrovia Nursery is a horticultural company specializing in growing and distributing plants and trees.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3071",
+      "19-1013",
+      "37-1012",
+      "37-3011",
+      "45-1011",
+      "45-2092",
+      "53-7199"
+    ]
+  },
+  {
+    "name": "Winco Foods",
+    "sector": "Retail",
+    "description": "Winco Foods is a large employee-owned supermarket chain offering a wide range of groceries.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3061",
+      "11-9051",
+      "13-1020",
+      "35-1012",
+      "41-1011",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Keller Williams Realty",
+    "sector": "Real Estate",
+    "description": "Keller Williams Realty is a real estate franchise company.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-2022",
+      "11-3012",
+      "13-1161",
+      "41-1012",
+      "41-9022",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Tulare Local Healthcare District",
+    "sector": "Professional Services",
+    "description": "The Tulare Local Healthcare District provides healthcare services to the local community.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "29-2061",
+      "31-1131",
+      "31-9092",
+      "43-6013",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Tulare County Office of Education",
+    "sector": "Education",
+    "description": "The Tulare County Office of Education provides leadership, resources, and services to schools and students throughout Tulare County.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9032",
+      "11-9039",
+      "13-1071",
+      "25-9031",
+      "25-9099",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Tulare Joint Union High School District",
+    "sector": "Education",
+    "description": "The Tulare Joint Union High School District oversees and operates high schools within the Tulare area.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9032",
+      "13-1071",
+      "25-2022",
+      "25-3099",
+      "25-9031",
+      "25-9045",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Porterville College",
+    "sector": "Education",
+    "description": "Porterville College is a public community college offering associate degrees and vocational training.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9033",
+      "13-1071",
+      "25-1194",
+      "25-1199",
+      "25-4022",
+      "25-9044",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Visalia Medical Clinic",
+    "sector": "Healthcare",
+    "description": "Visalia Medical Clinic is a multi-specialty medical group providing comprehensive healthcare services.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "29-1215",
+      "31-9092",
+      "31-9097",
+      "43-6013",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "BASS Medical Group",
+    "sector": "Healthcare",
+    "description": "BASS Medical Group is a large physician-owned and operated multi-specialty medical group.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "29-1215",
+      "31-9092",
+      "31-9097",
+      "43-6013",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Adventist Health Tulare",
+    "sector": "Healthcare",
+    "description": "Adventist Health Tulare is a hospital providing a range of medical services to the community.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "29-1215",
+      "29-2034",
+      "31-1131",
+      "31-9092",
+      "43-6013"
+    ]
+  },
+  {
+    "name": "Kaweah Health Rehabilitation Hospital",
+    "sector": "Healthcare",
+    "description": "Kaweah Health Rehabilitation Hospital specializes in providing rehabilitative care for patients.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "29-1122",
+      "29-1123",
+      "29-1141",
+      "31-1131",
+      "31-2011",
+      "31-2021"
+    ]
+  },
+  {
+    "name": "Porterville Developmental Center",
+    "sector": "Healthcare",
+    "description": "The Porterville Developmental Center provides care and treatment for individuals with intellectual and developmental disabilities.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9111",
+      "11-9151",
+      "19-3033",
+      "21-1018",
+      "21-1023",
+      "29-1141",
+      "31-1131",
+      "39-9041"
+    ]
+  },
+  {
+    "name": "Sierra View Medical Center",
+    "sector": "Healthcare",
+    "description": "Sierra View Medical Center is a hospital offering a range of medical and surgical services.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "29-1215",
+      "29-2034",
+      "31-1131",
+      "31-9092",
+      "43-6013"
+    ]
+  },
+  {
+    "name": "Health and Human Services Agency",
+    "sector": "Healthcare",
+    "description": "The Health and Human Services Agency provides a wide range of social, health, and welfare services to the community.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9151",
+      "13-1041",
+      "21-1012",
+      "21-1021",
+      "21-1093",
+      "21-1094",
+      "43-4061",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Tulare County Child Care Program",
+    "sector": "Healthcare",
+    "description": "The Tulare County Child Care Program provides resources and support for child care services within the county.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9031",
+      "11-9151",
+      "21-1021",
+      "21-1093",
+      "25-2011",
+      "25-9031",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Tulare County Parks and Recreation Department",
+    "sector": "Arts & Entertainment",
+    "description": "The Tulare County Parks and Recreation Department manages and maintains county parks and recreational facilities.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9072",
+      "11-9151",
+      "37-1012",
+      "37-3011",
+      "39-1014",
+      "39-9031",
+      "49-9071",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Yokuts Coffee House",
+    "sector": "Hospitality & Food Service",
+    "description": "Yokuts Coffee House is a local coffee shop serving beverages and light food items.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9051",
+      "35-1011",
+      "35-1012",
+      "35-2014",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Solid Waste Collection",
+    "sector": "Government",
+    "description": "Solid Waste Collection provides waste management and recycling services.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3071",
+      "13-1081",
+      "49-3031",
+      "49-9071",
+      "53-1047",
+      "53-7199"
+    ]
+  },
+  {
+    "name": "City of Tulare",
+    "sector": "Government",
+    "description": "The City of Tulare is a municipal government providing public services to its residents.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3031",
+      "13-2011",
+      "33-3051",
+      "33-2011",
+      "43-4031",
+      "47-1011",
+      "49-9071"
+    ]
+  },
+  {
+    "name": "Tulare County Lake Patrol",
+    "sector": "Government",
+    "description": "The Tulare County Lake Patrol provides law enforcement and safety services on county lakes and waterways.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9199",
+      "33-1012",
+      "33-3051",
+      "33-9099",
+      "49-9071"
+    ]
+  },
+  {
+    "name": "Tulare County Resource Management Agency",
+    "sector": "Government",
+    "description": "The Tulare County Resource Management Agency oversees planning, building, and environmental services for the county.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9041",
+      "11-9199",
+      "17-1011",
+      "17-1022",
+      "19-3051",
+      "19-5011",
+      "47-4011",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "US Cotton Classing Office",
+    "sector": "Government",
+    "description": "The US Cotton Classing Office provides cotton classification services to growers and the textile industry.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3012",
+      "13-1071",
+      "13-2011",
+      "43-9061",
+      "51-9061",
+      "43-4199"
+    ]
+  },
+  {
+    "name": "Visalia Public Works Administration",
+    "sector": "Government",
+    "description": "Visalia Public Works Administration manages the planning, construction, and maintenance of public infrastructure and services for the city.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3013",
+      "11-9021",
+      "13-1071",
+      "13-2011",
+      "17-1011",
+      "17-2199",
+      "19-3051",
+      "47-4011",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Circle K Ranch",
+    "sector": "Agriculture",
+    "description": "Circle K Ranch is an agricultural operation involved in farming and ranching.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9199",
+      "13-1071",
+      "13-2011",
+      "45-1011",
+      "45-2092",
+      "45-2093",
+      "49-3041"
+    ]
+  },
+  {
+    "name": "Mike Jensen Farms",
+    "sector": "Agriculture",
+    "description": "Mike Jensen Farms is an agricultural business focused on crop cultivation.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9199",
+      "13-1071",
+      "13-2011",
+      "45-1011",
+      "45-2092",
+      "49-3041"
+    ]
+  },
+  {
+    "name": "Pitman Family Farms",
+    "sector": "Agriculture",
+    "description": "Pitman Family Farms is an agricultural company specializing in poultry farming and processing.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3121",
+      "13-1071",
+      "13-2011",
+      "19-1012",
+      "45-1011",
+      "51-1011",
+      "51-9061"
+    ]
+  },
+  {
+    "name": "Foster Farms",
+    "sector": "Agriculture",
+    "description": "Foster Farms is a large poultry company involved in raising, processing, and distributing chicken and turkey products.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3121",
+      "13-1071",
+      "13-2011",
+      "19-1012",
+      "45-1011",
+      "51-1011",
+      "51-9061"
+    ]
+  },
+  {
+    "name": "Woolf Farming Company of California",
+    "sector": "Agriculture",
+    "description": "Woolf Farming Company of California is a diversified agricultural enterprise growing various crops.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9199",
+      "13-1071",
+      "13-2011",
+      "19-1013",
+      "45-1011",
+      "45-2092",
+      "49-3041"
+    ]
+  },
+  {
+    "name": "Clark Brothers Construction",
+    "sector": "Construction",
+    "description": "Clark Brothers Construction is a general construction company undertaking various building projects.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9021",
+      "13-1051",
+      "13-1082",
+      "47-1011",
+      "47-2031",
+      "47-2073",
+      "47-2111",
+      "47-2152"
+    ]
+  },
+  {
+    "name": "Central California Builders and Development",
+    "sector": "Construction",
+    "description": "Central California Builders and Development is a construction and development company operating in the Central Valley.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9021",
+      "13-1051",
+      "13-1082",
+      "47-1011",
+      "47-2031",
+      "47-2073",
+      "47-2111",
+      "47-2152"
+    ]
+  },
+  {
+    "name": "Central Valley Roof Removal",
+    "sector": "Construction",
+    "description": "Central Valley Roof Removal specializes in the demolition and removal of roofing materials.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9021",
+      "13-1051",
+      "47-1011",
+      "47-4090",
+      "49-9071",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Fresno Plumbing and Heating",
+    "sector": "Construction",
+    "description": "Fresno Plumbing and Heating provides plumbing and HVAC services to residential and commercial clients.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9021",
+      "13-1051",
+      "47-1011",
+      "47-2152",
+      "49-9062",
+      "49-9071",
+      "49-9021",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Anlin Industries",
+    "sector": "Construction",
+    "description": "Anlin Industries manufactures energy-efficient vinyl windows and doors.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3061",
+      "13-1020",
+      "13-1071",
+      "13-2011",
+      "51-1011",
+      "51-9061",
+      "41-4012"
+    ]
+  },
+  {
+    "name": "Sun-Maid Growers of California",
+    "sector": "Manufacturing",
+    "description": "Sun-Maid Growers of California is a cooperative of raisin growers that processes and markets dried fruit products.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3061",
+      "13-1020",
+      "13-1071",
+      "13-2011",
+      "19-1012",
+      "51-1011",
+      "51-9061"
+    ]
+  },
+  {
+    "name": "Lion Dehydrators",
+    "sector": "Manufacturing",
+    "description": "Lion Dehydrators specializes in the dehydration of agricultural products.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3051",
+      "13-1071",
+      "13-2011",
+      "19-1012",
+      "51-1011",
+      "51-9061",
+      "49-9071"
+    ]
+  },
+  {
+    "name": "Lion Raisins",
+    "sector": "Manufacturing",
+    "description": "Lion Raisins is a company involved in the processing and distribution of raisins.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3051",
+      "13-1071",
+      "13-2011",
+      "19-1012",
+      "51-1011",
+      "51-9061",
+      "49-9071"
+    ]
+  },
+  {
+    "name": "Cargill",
+    "sector": "Manufacturing",
+    "description": "Cargill is a global food corporation involved in agriculture, food, financial products, and industrial products.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3071",
+      "13-1020",
+      "13-1071",
+      "13-1081",
+      "13-2011",
+      "19-1012",
+      "51-1011"
+    ]
+  },
+  {
+    "name": "Harris Ranch Beef Company",
+    "sector": "Manufacturing",
+    "description": "Harris Ranch Beef Company is a vertically integrated beef producer, from cattle raising to meat processing and distribution.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3071",
+      "13-1071",
+      "13-2011",
+      "19-1012",
+      "45-2093",
+      "51-1011",
+      "51-9061"
+    ]
+  },
+  {
+    "name": "Olam Spices and Vegetables",
+    "sector": "Manufacturing",
+    "description": "Olam Spices and Vegetables is a global agricultural business that sources, processes, and supplies spices and vegetable ingredients.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3061",
+      "13-1020",
+      "13-1071",
+      "13-2011",
+      "19-1012",
+      "51-1011",
+      "51-9061"
+    ]
+  },
+  {
+    "name": "Lyons Magnus",
+    "sector": "Manufacturing",
+    "description": "Lyons Magnus is a food and beverage manufacturer specializing in fruit-based products, syrups, and sauces.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3061",
+      "13-1020",
+      "13-1071",
+      "13-2011",
+      "19-1012",
+      "51-1011",
+      "51-9061"
+    ]
+  },
+  {
+    "name": "Farmex Land Management",
+    "sector": "Wholesale",
+    "description": "Farmex Land Management provides services for the management and development of agricultural land.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9199",
+      "13-1082",
+      "19-1013",
+      "19-4012",
+      "45-1011",
+      "45-2092",
+      "49-3041"
+    ]
+  },
+  {
+    "name": "R & N Packing",
+    "sector": "Wholesale",
+    "description": "R & N Packing is a company involved in the packing and distribution of agricultural produce.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3071",
+      "13-1071",
+      "13-2011",
+      "51-1011",
+      "51-9061",
+      "53-1047"
+    ]
+  },
+  {
+    "name": "Selma Kia",
+    "sector": "Retail",
+    "description": "Selma Kia is an authorized dealership selling new and used Kia vehicles and providing automotive services.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-2022",
+      "11-3012",
+      "13-2072",
+      "41-1011",
+      "41-4012",
+      "49-3023",
+      "49-3031",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Mission Foods",
+    "sector": "Retail",
+    "description": "Mission Foods is a leading manufacturer of tortillas, chips, and other related food products.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3061",
+      "13-1071",
+      "13-2011",
+      "19-1012",
+      "51-1011",
+      "51-3011",
+      "51-9061"
+    ]
+  },
+  {
+    "name": "Stamoules Produce Company",
+    "sector": "Retail",
+    "description": "Stamoules Produce Company is a grower, packer, and shipper of fresh produce.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3071",
+      "13-1071",
+      "13-2011",
+      "45-1011",
+      "45-2092",
+      "51-1011",
+      "51-9061"
+    ]
+  },
+  {
+    "name": "Educational Employees Credit Union",
+    "sector": "Finance",
+    "description": "Educational Employees Credit Union is a financial institution providing banking services to educational employees and their families.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3031",
+      "11-3121",
+      "13-1071",
+      "13-2011",
+      "13-2052",
+      "13-2072",
+      "43-3071",
+      "43-4131"
+    ]
+  },
+  {
+    "name": "Realty Concepts",
+    "sector": "Real Estate",
+    "description": "Realty Concepts is a real estate brokerage firm assisting clients with buying and selling properties.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-2022",
+      "11-3012",
+      "13-1161",
+      "41-9022",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Community Medical Center",
+    "sector": "Professional Services",
+    "description": "Community Medical Center is a healthcare facility providing a wide range of medical services to the community.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "13-2011",
+      "29-1141",
+      "29-1215",
+      "29-2061",
+      "31-1131",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "ULTA Beauty Distribution Center",
+    "sector": "Professional Services",
+    "description": "The ULTA Beauty Distribution Center manages the storage and distribution of beauty products to retail stores.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3071",
+      "11-3121",
+      "13-1071",
+      "13-1081",
+      "13-2011",
+      "53-1047",
+      "53-7199",
+      "49-9071"
+    ]
+  },
+  {
+    "name": "Rodriguez Agricultural Enterprises",
+    "sector": "Administrative Services",
+    "description": "Rodriguez Agricultural Enterprises is a company involved in agricultural operations and services.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3051",
+      "13-1071",
+      "13-2011",
+      "45-1011",
+      "45-2092",
+      "49-3041",
+      "49-9071"
+    ]
+  },
+  {
+    "name": "Geil Enterprises",
+    "sector": "Administrative Services",
+    "description": "Geil Enterprises is a diversified company with interests in various sectors, potentially including real estate or construction.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3031",
+      "13-1071",
+      "13-2011",
+      "13-1161",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Clovis East High School",
+    "sector": "Education",
+    "description": "Clovis East High School is a public secondary educational institution serving students in grades 9-12.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9032",
+      "13-1071",
+      "25-2022",
+      "25-2052",
+      "25-9031",
+      "25-9045",
+      "27-2022",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Clovis High School",
+    "sector": "Education",
+    "description": "Clovis High School is a public secondary educational institution serving students in grades 9-12.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9032",
+      "13-1071",
+      "25-2022",
+      "25-2052",
+      "25-9031",
+      "25-9045",
+      "27-2022",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Roosevelt High School",
+    "sector": "Education",
+    "description": "Roosevelt High School is a public secondary educational institution serving students in grades 9-12.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9032",
+      "13-1071",
+      "25-2022",
+      "25-2052",
+      "25-9031",
+      "25-9045",
+      "27-2022",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Sanger High School",
+    "sector": "Education",
+    "description": "Sanger High School is a public secondary educational institution serving students in grades 9-12.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9032",
+      "13-1071",
+      "25-2022",
+      "25-2052",
+      "25-9031",
+      "25-9045",
+      "27-2022",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Clovis Adult Education",
+    "sector": "Education",
+    "description": "Clovis Adult Education provides educational programs and services for adult learners, including vocational training and high school equivalency.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9033",
+      "13-1071",
+      "25-1194",
+      "25-3099",
+      "25-9031",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Reedley College",
+    "sector": "Education",
+    "description": "Reedley College is a community college offering associate degrees, transfer programs, and vocational training.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9033",
+      "13-1071",
+      "13-2011",
+      "25-1022",
+      "25-1199",
+      "25-4022",
+      "25-9044",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "California State University Fresno",
+    "sector": "Education",
+    "description": "California State University Fresno is a public university offering a wide range of undergraduate and graduate degree programs.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9033",
+      "13-1071",
+      "13-2011",
+      "15-1252",
+      "25-1199",
+      "25-4022",
+      "25-9044",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Community Medical Imaging",
+    "sector": "Healthcare",
+    "description": "Community Medical Imaging provides diagnostic imaging services, including X-rays, MRI, and CT scans.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9111",
+      "29-2032",
+      "29-2034",
+      "29-2035",
+      "29-2072",
+      "31-9097",
+      "43-6013",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Elm Community Health Center",
+    "sector": "Healthcare",
+    "description": "Elm Community Health Center offers primary care, preventive services, and health education to the community.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9111",
+      "21-1094",
+      "29-1141",
+      "29-1215",
+      "29-2061",
+      "31-9092",
+      "43-6013",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Youth Wellness Center",
+    "sector": "Healthcare",
+    "description": "The Youth Wellness Center provides mental health services, counseling, and support programs for young people.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9151",
+      "19-3033",
+      "21-1012",
+      "21-1018",
+      "21-1021",
+      "21-1093",
+      "21-1094",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Horizon Health and Subacute Center",
+    "sector": "Healthcare",
+    "description": "Horizon Health and Subacute Center provides specialized medical care for patients requiring extended recovery and rehabilitation.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9111",
+      "29-1141",
+      "29-2061",
+      "31-1131",
+      "31-2011",
+      "31-2021",
+      "43-6013",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "American Ambulance",
+    "sector": "Healthcare",
+    "description": "American Ambulance provides emergency medical transportation and pre-hospital care services.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9111",
+      "29-2042",
+      "29-2043",
+      "33-1012",
+      "43-9061",
+      "49-3023"
+    ]
+  },
+  {
+    "name": "Adventist Health Reedley",
+    "sector": "Healthcare",
+    "description": "Adventist Health Reedley is a hospital providing comprehensive medical services to the community.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9111",
+      "29-1141",
+      "29-1215",
+      "29-2010",
+      "29-2034",
+      "29-2061",
+      "31-1131",
+      "43-6013"
+    ]
+  },
+  {
+    "name": "Adventist Health Selma",
+    "sector": "Healthcare",
+    "description": "Adventist Health Selma is a hospital providing comprehensive medical services to the community.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9111",
+      "29-1141",
+      "29-1215",
+      "29-2010",
+      "29-2034",
+      "29-2061",
+      "31-1131",
+      "43-6013"
+    ]
+  },
+  {
+    "name": "Fresno Heart and Surgical Hospital",
+    "sector": "Healthcare",
+    "description": "Fresno Heart and Surgical Hospital specializes in cardiac care and various surgical procedures.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9111",
+      "29-1141",
+      "29-1215",
+      "29-2010",
+      "29-2034",
+      "29-2055",
+      "31-1131",
+      "43-6013"
+    ]
+  },
+  {
+    "name": "Fresno VA Hospital Medical Center",
+    "sector": "Healthcare",
+    "description": "The Fresno VA Hospital Medical Center provides healthcare services to military veterans.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9111",
+      "29-1141",
+      "29-1215",
+      "29-2010",
+      "29-2034",
+      "29-2061",
+      "31-1131",
+      "43-6013"
+    ]
+  },
+  {
+    "name": "Kaiser Permanente Fresno Medical Center",
+    "sector": "Healthcare",
+    "description": "Kaiser Permanente Fresno Medical Center is a large integrated healthcare facility offering a wide range of medical services.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9111",
+      "29-1141",
+      "29-1215",
+      "29-2010",
+      "29-2034",
+      "29-2061",
+      "31-1131",
+      "43-6013"
+    ]
+  },
+  {
+    "name": "Saint Agnes Medical Center",
+    "sector": "Healthcare",
+    "description": "Saint Agnes Medical Center is a full-service hospital providing comprehensive healthcare to the community.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9111",
+      "29-1141",
+      "29-1215",
+      "29-2010",
+      "29-2034",
+      "29-2061",
+      "31-1131",
+      "43-6013"
+    ]
+  },
+  {
+    "name": "Dycora Transitional Health",
+    "sector": "Healthcare",
+    "description": "Dycora Transitional Health provides skilled nursing and rehabilitation services for patients transitioning from hospital to home.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9111",
+      "29-1141",
+      "29-2061",
+      "31-1131",
+      "31-2011",
+      "31-2021",
+      "43-6013",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Palm Village Retirement Community",
+    "sector": "Healthcare",
+    "description": "Palm Village Retirement Community offers independent living, assisted living, and skilled nursing care for seniors.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9111",
+      "11-9151",
+      "29-1141",
+      "29-2061",
+      "31-1131",
+      "35-1011",
+      "39-9041",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Central Valley Regional Center",
+    "sector": "Healthcare",
+    "description": "The Central Valley Regional Center provides services and support to individuals with developmental disabilities and their families.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9151",
+      "13-1071",
+      "19-3033",
+      "21-1019",
+      "21-1021",
+      "21-1093",
+      "21-1099",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "John's Incredible Pizza Company",
+    "sector": "Arts & Entertainment",
+    "description": "John's Incredible Pizza Company is a family entertainment center featuring a buffet, games, and rides.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9051",
+      "11-9072",
+      "35-1012",
+      "35-2014",
+      "39-1014",
+      "39-9031",
+      "41-1011",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "China Peak Mountain Resort",
+    "sector": "Hospitality & Food Service",
+    "description": "China Peak Mountain Resort is a ski resort offering winter sports activities and lodging.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9051",
+      "11-9072",
+      "35-1012",
+      "37-1012",
+      "39-1014",
+      "43-4081",
+      "49-9071",
+      "53-1047"
+    ]
+  },
+  {
+    "name": "Blackstone",
+    "sector": "Other Services",
+    "description": "Blackstone is a global investment firm that manages assets across various sectors, including private equity, real estate, and credit.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3031",
+      "13-2011",
+      "13-2051",
+      "13-1161",
+      "15-1252",
+      "23-1011",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Air National Guard",
+    "sector": "Other Services",
+    "description": "The Air National Guard is a federal military reserve force providing air defense and emergency response services.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3121",
+      "13-1071",
+      "15-1244",
+      "29-1141",
+      "33-2011",
+      "49-3023",
+      "49-9071"
+    ]
+  },
+  {
+    "name": "City of Fresno",
+    "sector": "Government",
+    "description": "The City of Fresno is a municipal government providing public services and administration for the city.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3012",
+      "13-1071",
+      "13-2011",
+      "19-3051",
+      "33-3051",
+      "33-2011",
+      "47-4011",
+      "49-9071"
+    ]
+  },
+  {
+    "name": "Fresno County General Services",
+    "sector": "Government",
+    "description": "Fresno County General Services provides centralized support services to various county departments, including facilities management, purchasing, and fleet services.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3013",
+      "11-3061",
+      "13-1020",
+      "13-1071",
+      "13-2011",
+      "49-9071",
+      "53-1047"
+    ]
+  },
+  {
+    "name": "Fresno County Office of Education",
+    "sector": "Government",
+    "description": "The Fresno County Office of Education provides educational leadership, resources, and services to schools and students throughout Fresno County.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3121",
+      "11-9032",
+      "13-1071",
+      "13-2011",
+      "15-1211",
+      "25-9031",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Fresno County Probation Department",
+    "sector": "Government",
+    "description": "The Fresno County Probation Department provides supervision, rehabilitation, and community protection services for adults and juveniles.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3121",
+      "11-9151",
+      "13-1071",
+      "21-1019",
+      "21-1093",
+      "33-3012",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Fresno County Public Works",
+    "sector": "Government",
+    "description": "Fresno County Public Works is responsible for the planning, design, construction, and maintenance of public infrastructure and services.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-9021",
+      "11-9041",
+      "13-1051",
+      "17-1011",
+      "17-2199",
+      "47-1011",
+      "47-4011"
+    ]
+  },
+  {
+    "name": "National Guard",
+    "sector": "Government",
+    "description": "The National Guard is a reserve component of the United States Armed Forces, providing military support and emergency response services.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3121",
+      "13-1071",
+      "15-1211",
+      "29-1141",
+      "33-3051",
+      "49-3023",
+      "49-9071"
+    ]
+  },
+  {
+    "name": "Pleasant Valley State Prison",
+    "sector": "Government",
+    "description": "Pleasant Valley State Prison is a state correctional facility housing male inmates.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3121",
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "33-3012",
+      "43-9061",
+      "49-9071"
+    ]
+  },
+  {
+    "name": "Fresno County District Attorney's Office",
+    "sector": "Government",
+    "description": "The Fresno County District Attorney's Office prosecutes criminal offenses and serves as the chief law enforcement officer for the county.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3121",
+      "13-1041",
+      "13-1071",
+      "23-1011",
+      "23-2011",
+      "43-4031",
+      "43-6012"
+    ]
+  },
+  {
+    "name": "Fresno County Sheriff's Office",
+    "sector": "Government",
+    "description": "The Fresno County Sheriff's Office provides law enforcement services, operates the county jail, and performs civil process duties.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3121",
+      "13-1071",
+      "33-1012",
+      "33-3012",
+      "33-3021",
+      "33-3051",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Fresno County Superior Court",
+    "sector": "Government",
+    "description": "The Fresno County Superior Court is the trial court of general jurisdiction for Fresno County, handling civil, criminal, family, and probate cases.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3121",
+      "13-1071",
+      "23-1011",
+      "23-2011",
+      "27-3092",
+      "43-4031",
+      "43-6012"
+    ]
+  },
+  {
+    "name": "Fresno Police Department",
+    "sector": "Government",
+    "description": "The Fresno Police Department provides law enforcement and public safety services to the city of Fresno.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3121",
+      "13-1071",
+      "33-1012",
+      "33-3021",
+      "33-3051",
+      "43-9061",
+      "49-3023"
+    ]
+  },
+  {
+    "name": "Fresno County Department of Public Health",
+    "sector": "Government",
+    "description": "The Fresno County Department of Public Health works to protect and improve the health and well-being of the community through various programs and services.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3121",
+      "11-9111",
+      "19-2041",
+      "21-1091",
+      "29-1031",
+      "29-1141",
+      "43-6013"
+    ]
+  },
+  {
+    "name": "Warmerdam Packing",
+    "sector": "Agriculture",
+    "description": "Warmerdam Packing is an agricultural company specializing in the growing, packing, and shipping of fresh produce.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3051",
+      "11-3071",
+      "13-1081",
+      "19-1013",
+      "45-1011",
+      "45-2092",
+      "51-1011"
+    ]
+  },
+  {
+    "name": "Leprino Foods",
+    "sector": "Manufacturing",
+    "description": "Leprino Foods is a global leader in mozzarella cheese and dairy ingredient manufacturing.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3051",
+      "11-3071",
+      "13-1081",
+      "19-1012",
+      "49-9041",
+      "51-1011",
+      "51-9061"
+    ]
+  },
+  {
+    "name": "Central Valley Meat Company",
+    "sector": "Manufacturing",
+    "description": "Central Valley Meat Company is a meat processing facility providing beef products.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3051",
+      "11-3071",
+      "13-1081",
+      "19-1012",
+      "49-9041",
+      "51-1011",
+      "51-9061"
+    ]
+  },
+  {
+    "name": "Del Monte Foods",
+    "sector": "Manufacturing",
+    "description": "Del Monte Foods is a food production and distribution company known for its canned fruits, vegetables, and other food products.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3051",
+      "13-1161",
+      "19-1012",
+      "49-9041",
+      "51-1011",
+      "51-9061"
+    ]
+  },
+  {
+    "name": "Marquez Brothers International",
+    "sector": "Wholesale",
+    "description": "Marquez Brothers International is a food company specializing in the production and distribution of Hispanic food products.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3051",
+      "13-1161",
+      "19-1012",
+      "49-9041",
+      "51-1011",
+      "51-9061"
+    ]
+  },
+  {
+    "name": "Zepeda's Farm Labor Services",
+    "sector": "Administrative Services",
+    "description": "Zepeda's Farm Labor Services provides agricultural labor and support to farms.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3121",
+      "13-1071",
+      "43-9061",
+      "45-1011",
+      "45-2092",
+      "45-2099",
+      "49-3041"
+    ]
+  },
+  {
+    "name": "Lemoore High School",
+    "sector": "Education",
+    "description": "Lemoore High School is a public secondary school providing education to students in grades 9-12.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3121",
+      "11-9032",
+      "13-1071",
+      "25-2022",
+      "25-9045",
+      "27-2022",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Naval Health Clinic Lemoore",
+    "sector": "Healthcare",
+    "description": "Naval Health Clinic Lemoore provides comprehensive healthcare services to active duty personnel, their families, and retirees.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9111",
+      "29-1071",
+      "29-1141",
+      "29-1215",
+      "29-2034",
+      "29-2061",
+      "31-1131",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Adventist Health Hanford",
+    "sector": "Healthcare",
+    "description": "Adventist Health Hanford is a hospital providing a range of medical services to the community.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-9111",
+      "29-1031",
+      "29-1141",
+      "29-1215",
+      "29-2010",
+      "29-2034",
+      "31-1131",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "California State Prison, Corcoran",
+    "sector": "Government",
+    "description": "California State Prison, Corcoran is a state correctional facility housing male inmates.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3121",
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "33-3012",
+      "43-9061",
+      "49-9071"
+    ]
+  },
+  {
+    "name": "Kings County Administration",
+    "sector": "Government",
+    "description": "Kings County Administration oversees the general operations and services of Kings County government.",
+    "regions": [
+      "Visalia"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3031",
+      "11-3121",
+      "13-1071",
+      "13-2011",
+      "15-1211",
+      "43-9061",
+      "43-3031"
     ]
   }
 ]

@@ -477,7 +477,12 @@ def generate_for_college(
     logger.info(f"  Metro: {metro}")
 
     # ── Stage 1: Get EDD employers ────────────────────────────────────
-    cache_key = metro.lower().replace(" ", "_").replace("-", "_").replace(",", "")
+    # Use college-specific county list if available, otherwise fall back to metro counties
+    from pipeline.industry.region_maps import COLLEGE_SEARCH_COUNTIES
+    search_counties = COLLEGE_SEARCH_COUNTIES.get(college_name, METRO_COUNTIES.get(metro, []))
+    logger.info(f"  Search counties: {search_counties}")
+
+    cache_key = "_".join(search_counties).lower().replace(" ", "_")
     deep_cache = INDUSTRY_DIR / "cache" / f"edd_deep_{cache_key}.json"
 
     if deep_cache.exists() and not scrape:
@@ -485,14 +490,13 @@ def generate_for_college(
             edd_employers = json.load(f)
         logger.info(f"  Loaded {len(edd_employers)} employers from cache")
     else:
-        counties = METRO_COUNTIES.get(metro, [])
-        if not counties:
-            logger.error(f"  No counties for metro: {metro}")
+        if not search_counties:
+            logger.error(f"  No counties to search")
             return []
 
         edd_employers = []
         seen = set()
-        for county in counties:
+        for county in search_counties:
             results = search_naics_codes(county, min_size=min_size)
             for emp in results:
                 key = (emp["name"].lower(), emp.get("city", "").lower())
