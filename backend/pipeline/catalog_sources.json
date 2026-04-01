@@ -936,6 +936,14 @@
       "catalog_year": "2025-2026",
       "status": "pending",
       "notes": "Google Drive download link"
+    },
+    "compton": {
+      "name": "Compton College",
+      "district": "Compton CCD",
+      "city": "Compton",
+      "catalog_pdf_url": "https://www.compton.edu/academics/catalog",
+      "catalog_year": "2025-2026",
+      "status": "pending"
     }
   }
 }

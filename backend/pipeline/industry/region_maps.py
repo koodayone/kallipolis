@@ -108,6 +108,7 @@ COLLEGE_REGION_MAP: dict[str, str] = {
     "American River College": "Sacramento-Roseville-Folsom",
     "Sacramento City College": "Sacramento-Roseville-Folsom",
     "College of the Sequoias": "Visalia",
+    "Compton College": "Los Angeles-Long Beach-Glendale",
     # Central / South Coast
     "Allan Hancock College": "Santa Maria-Santa Barbara",
     "Santa Barbara City College": "Santa Maria-Santa Barbara",

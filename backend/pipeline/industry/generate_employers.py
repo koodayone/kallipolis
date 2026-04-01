@@ -526,21 +526,26 @@ def generate_for_college(
             group = occ["soc_code"].split("-")[0]
             occ_by_group[group].append(occ["soc_code"])
 
+    # Assign sector labels
     for emp in deduped:
+        naics = emp.get("naics4", emp.get("naics_code", ""))[:2]
+        emp["sector"] = _NAICS_SECTORS.get(naics, emp.get("industry", "Other"))
         emp["soc_codes"] = _assign_soc_codes(emp, occ_by_group)
 
-    # ── Stage 5: Select with sector diversity ─────────────────────────
-    selected = _select_employers(deduped, target=target)
-    logger.info(f"  Selected {len(selected)} employers")
-
     sector_counts: dict[str, int] = {}
-    for emp in selected:
+    for emp in deduped:
         sector_counts[emp["sector"]] = sector_counts.get(emp["sector"], 0) + 1
     for sector, count in sorted(sector_counts.items(), key=lambda x: -x[1]):
         logger.info(f"    {sector}: {count}")
 
-    # ── Stage 5b: LLM cleanup (descriptions + name fixes + occupation assignment)
-    selected = _llm_cleanup(selected, metro, filtered_occupations=filtered_occupations)
+    # ── Stage 5: LLM cleanup in batches (dedup, normalize, describe, assign occupations)
+    BATCH_SIZE = 50
+    selected = []
+    for i in range(0, len(deduped), BATCH_SIZE):
+        batch = deduped[i:i + BATCH_SIZE]
+        cleaned = _llm_cleanup(batch, metro, filtered_occupations=filtered_occupations)
+        selected.extend(cleaned)
+    logger.info(f"  After LLM cleanup: {len(selected)} employers (from {len(deduped)})")
 
     # ── Stage 6: Format and merge ─────────────────────────────────────
     formatted = _format_for_json(selected, metro)
