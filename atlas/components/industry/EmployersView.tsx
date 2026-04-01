@@ -12,12 +12,10 @@ import QueryShell, { findScrollParent } from "@/components/ui/QueryShell";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
-const SUGGESTIONS = [
-  "Healthcare employers",
-  "Technology companies",
-  "Employers with most skill alignment",
-  "Who hires for Programming?",
-  "Manufacturing sector",
+const EXAMPLES = [
+  "Employers with the strongest skill alignment",
+  "Who hires for roles our students are prepared for?",
+  "Largest employers in our region by sector",
 ];
 
 const EMPLOYER_COLUMNS: Column[] = [
@@ -115,7 +113,7 @@ export default function EmployersView({ school, onBack }: Props) {
     <QueryShell<ApiEmployerMatch>
       school={school} onBack={onBack} parentShape="tetrahedron"
       placeholder={`Ask me a question about employers near ${school.name}.`}
-      suggestions={SUGGESTIONS} queryFn={queryFn} loadInitialData={loadInitialData}
+      examples={EXAMPLES} queryFn={queryFn} loadInitialData={loadInitialData}
       renderInitialContent={renderInitialContent} renderResultsContent={renderResultsContent}
       onQueryStart={onQueryStart} onReset={onReset} rootRef={rootRef}
     />

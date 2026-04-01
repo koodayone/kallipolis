@@ -22,12 +22,10 @@ function formatWage(wage: number | null): string {
   return `$${wage.toLocaleString()}`;
 }
 
-const SUGGESTIONS = [
-  "Highest paying occupations",
-  "Most jobs available",
-  "Software development roles",
-  "Healthcare occupations",
-  "Occupations requiring Data Analysis",
+const EXAMPLES = [
+  "Highest paying occupations in our region",
+  "Roles that align most with our curriculum",
+  "Fast-growing occupations with the most openings",
 ];
 
 const OCCUPATION_COLUMNS: Column[] = [
@@ -131,7 +129,7 @@ export default function OccupationsView({ school, onBack }: Props) {
     <QueryShell<ApiOccupationMatch>
       school={school} onBack={onBack} parentShape="tetrahedron"
       placeholder={`Ask me a question about occupations near ${school.name}.`}
-      suggestions={SUGGESTIONS} queryFn={queryFn} loadInitialData={loadInitialData}
+      examples={EXAMPLES} queryFn={queryFn} loadInitialData={loadInitialData}
       renderInitialContent={renderInitialContent} renderResultsContent={renderResultsContent}
       onQueryStart={onQueryStart} onReset={onReset} rootRef={rootRef}
     />

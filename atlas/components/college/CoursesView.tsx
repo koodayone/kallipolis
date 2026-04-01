@@ -29,12 +29,10 @@ const COURSE_COLUMNS: Column[] = [
   { label: "Name", width: "1fr" },
 ];
 
-const SUGGESTIONS = [
-  "Computer Science courses",
-  "Courses that develop Programming skills",
-  "Nursing courses",
-  "Mathematics courses",
-  "Courses with Critical Thinking skills",
+const EXAMPLES = [
+  "Courses that develop the most in-demand skills",
+  "Transferable courses in our largest departments",
+  "What courses build Critical Thinking skills?",
 ];
 
 type Props = { school: SchoolConfig; onBack: () => void };
@@ -135,7 +133,7 @@ export default function CoursesView({ school, onBack }: Props) {
     <QueryShell<CourseSummary>
       school={school} onBack={onBack} parentShape="cube"
       placeholder={`Ask me a question about ${school.name} courses.`}
-      suggestions={SUGGESTIONS} queryFn={queryFn} loadInitialData={loadInitialData}
+      examples={EXAMPLES} queryFn={queryFn} loadInitialData={loadInitialData}
       renderInitialContent={renderInitialContent} renderResultsContent={renderResultsContent}
       onQueryStart={onQueryStart} onReset={onReset} rootRef={rootRef}
     />

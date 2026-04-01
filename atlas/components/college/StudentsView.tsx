@@ -48,12 +48,10 @@ const STUDENT_COLUMNS: Column[] = [
   { label: "GPA", width: "60px" },
 ];
 
-const SUGGESTIONS = [
-  "Students with highest GPA",
-  "Computer Science students",
-  "Who has Programming skills?",
-  "Students with more than 15 courses",
-  "Biology students with GPA above 3.0",
+const EXAMPLES = [
+  "Students with the highest GPA",
+  "Who has skills aligned with healthcare roles?",
+  "Students with the most completed courses",
 ];
 
 type Props = { school: SchoolConfig; onBack: () => void };
@@ -139,7 +137,7 @@ export default function StudentsView({ school, onBack }: Props) {
     <QueryShell<StudentSummary>
       school={school} onBack={onBack} parentShape="cube"
       placeholder={`Ask me a question about ${school.name} students.`}
-      suggestions={SUGGESTIONS} queryFn={queryFn} loadInitialData={loadInitialData}
+      examples={EXAMPLES} queryFn={queryFn} loadInitialData={loadInitialData}
       renderInitialContent={renderInitialContent} renderResultsContent={renderResultsContent}
       onQueryStart={onQueryStart} onReset={onReset} rootRef={rootRef}
     />

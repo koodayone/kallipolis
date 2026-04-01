@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef, type ReactNode } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { SchoolConfig } from "@/lib/schoolConfig";
 import LeafHeader from "@/components/ui/LeafHeader";
 import RisingSun from "@/components/ui/RisingSun";
@@ -21,7 +21,7 @@ export type QueryShellProps<T> = {
   onBack: () => void;
   parentShape: "dodecahedron" | "cube" | "tetrahedron";
   placeholder: string;
-  suggestions: string[];
+  examples: string[];
   queryFn: (query: string, college: string) => Promise<{ items: T[]; message: string }>;
   loadInitialData: () => Promise<void>;
   renderInitialContent: () => ReactNode;
@@ -32,7 +32,7 @@ export type QueryShellProps<T> = {
 };
 
 export default function QueryShell<T>({
-  school, onBack, parentShape, placeholder, suggestions,
+  school, onBack, parentShape, placeholder, examples,
   queryFn, loadInitialData, renderInitialContent, renderResultsContent,
   onQueryStart, onReset, rootRef,
 }: QueryShellProps<T>) {
@@ -44,7 +44,9 @@ export default function QueryShell<T>({
   const [userName, setUserName] = useState<string>("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [helpOpen, setHelpOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const helpRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     loadInitialData()
@@ -55,6 +57,18 @@ export default function QueryShell<T>({
       .then((data) => { if (data?.user?.name) setUserName(data.user.name.split(" ")[0]); })
       .catch(() => {});
   }, []);
+
+  // Click-outside to close help panel
+  useEffect(() => {
+    if (!helpOpen) return;
+    const handleClickOutside = (e: MouseEvent) => {
+      if (helpRef.current && !helpRef.current.contains(e.target as Node)) {
+        setHelpOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [helpOpen]);
 
   const executeQuery = useCallback(async (queryText: string) => {
     if (!queryText.trim()) return;
@@ -78,7 +92,8 @@ export default function QueryShell<T>({
     executeQuery(query);
   }, [executeQuery, query]);
 
-  const handleChip = useCallback((text: string) => {
+  const handleExample = useCallback((text: string) => {
+    setHelpOpen(false);
     setQuery(text);
     executeQuery(text);
   }, [executeQuery]);
@@ -91,6 +106,12 @@ export default function QueryShell<T>({
     onReset?.();
     setTimeout(() => inputRef.current?.focus(), 100);
   }, [onReset]);
+
+  const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    setQuery(val);
+    if (val.length > 0) setHelpOpen(false);
+  }, []);
 
   const onInputFocus = useCallback((e: React.FocusEvent<HTMLInputElement>) => {
     e.currentTarget.style.borderColor = `${school.brandColorLight}50`;
@@ -123,34 +144,89 @@ export default function QueryShell<T>({
               <h1 style={{ fontFamily: FONT, fontSize: "28px", fontWeight: 600, color: "#f0eef4", letterSpacing: "-0.02em", textAlign: "center" }}>
                 What&apos;s up{userName ? `, ${userName}` : ""}?
               </h1>
-              <div style={{ width: "100%" }}>
-                <input ref={inputRef} type="text" value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  onKeyDown={(e) => { if (e.key === "Enter") handleSubmit(); }}
-                  placeholder={placeholder}
-                  style={{
-                    width: "100%", padding: "18px 24px", fontFamily: FONT, fontSize: "15px",
-                    color: "#f0eef4", background: "rgba(255,255,255,0.04)",
-                    border: "1px solid rgba(255,255,255,0.10)", borderRadius: "16px",
-                    outline: "none", transition: "border-color 0.2s, box-shadow 0.2s",
-                  }}
-                  onFocus={onInputFocus}
-                  onBlur={onInputBlur}
-                />
-              </div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", justifyContent: "center" }}>
-                {suggestions.map((s) => (
-                  <button key={s} onClick={() => handleChip(s)}
+              <div ref={helpRef} style={{ width: "100%", position: "relative" }}>
+                <div style={{ position: "relative" }}>
+                  <input ref={inputRef} type="text" value={query}
+                    onChange={handleInputChange}
+                    onKeyDown={(e) => { if (e.key === "Enter") handleSubmit(); }}
+                    placeholder={placeholder}
                     style={{
-                      fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.55)",
-                      background: "transparent", border: `1px solid ${school.brandColorLight}35`,
-                      borderRadius: "100px", padding: "8px 18px", cursor: "pointer",
-                      transition: "background 0.15s, color 0.15s, border-color 0.15s",
+                      width: "100%", padding: "18px 48px 18px 24px", fontFamily: FONT, fontSize: "15px",
+                      color: "#f0eef4", background: "rgba(255,255,255,0.04)",
+                      border: "1px solid rgba(255,255,255,0.10)",
+                      borderRadius: helpOpen ? "16px 16px 0 0" : "16px",
+                      outline: "none", transition: "border-color 0.2s, box-shadow 0.2s, border-radius 0.15s",
                     }}
-                    onMouseEnter={(e) => { const el = e.currentTarget as HTMLElement; el.style.background = `${school.brandColorLight}15`; el.style.borderColor = `${school.brandColorLight}40`; el.style.color = school.brandColorLight; }}
-                    onMouseLeave={(e) => { const el = e.currentTarget as HTMLElement; el.style.background = "transparent"; el.style.borderColor = `${school.brandColorLight}35`; el.style.color = "rgba(255,255,255,0.55)"; }}
-                  >{s}</button>
-                ))}
+                    onFocus={onInputFocus}
+                    onBlur={onInputBlur}
+                  />
+                  <motion.button
+                    onClick={() => setHelpOpen((prev) => !prev)}
+                    initial={{ opacity: 0.4 }}
+                    animate={{ opacity: [0.4, 0.7, 0.4] }}
+                    transition={{ duration: 2, ease: "easeInOut", times: [0, 0.5, 1] }}
+                    whileHover={{ opacity: 0.6 }}
+                    style={{
+                      position: "absolute", right: "16px", top: "50%", transform: "translateY(-50%)",
+                      background: "none", border: "none", cursor: "pointer", padding: "4px",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                    }}
+                    aria-label="Show example queries"
+                  >
+                    <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
+                      <circle cx="8" cy="8" r="7" stroke={helpOpen ? school.brandColorLight : "rgba(255,255,255,0.55)"} strokeWidth="1.2"
+                        style={{ transition: "stroke 0.15s" }} />
+                      <text x="8" y="11.5" textAnchor="middle" fill={helpOpen ? school.brandColorLight : "rgba(255,255,255,0.55)"}
+                        fontSize="10" fontWeight="600" fontFamily={FONT}
+                        style={{ transition: "fill 0.15s" }}>?</text>
+                    </svg>
+                  </motion.button>
+                </div>
+
+                <AnimatePresence>
+                  {helpOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.2 }}
+                      style={{ overflow: "hidden" }}
+                    >
+                      <div style={{
+                        background: "rgba(255,255,255,0.04)",
+                        border: "1px solid rgba(255,255,255,0.10)",
+                        borderTop: "none",
+                        borderRadius: "0 0 16px 16px",
+                      }}>
+                        <div style={{
+                          padding: "12px 24px 4px",
+                          fontFamily: FONT, fontSize: "10px", fontWeight: 600,
+                          letterSpacing: "0.1em", textTransform: "uppercase",
+                          color: school.brandColorLight, opacity: 0.5,
+                        }}>
+                          Try asking...
+                        </div>
+                        {examples.map((example, idx) => (
+                          <button key={example}
+                            onClick={() => handleExample(example)}
+                            style={{
+                              display: "block", width: "100%", textAlign: "left",
+                              padding: "12px 24px", fontFamily: FONT, fontSize: "13px",
+                              color: "rgba(255,255,255,0.45)", background: "transparent",
+                              border: "none",
+                              borderBottom: idx < examples.length - 1 ? "1px solid rgba(255,255,255,0.06)" : "none",
+                              cursor: "pointer", transition: "color 0.15s, background 0.15s",
+                            }}
+                            onMouseEnter={(e) => { const el = e.currentTarget; el.style.color = "rgba(255,255,255,0.7)"; el.style.background = "rgba(255,255,255,0.03)"; }}
+                            onMouseLeave={(e) => { const el = e.currentTarget; el.style.color = "rgba(255,255,255,0.45)"; el.style.background = "transparent"; }}
+                          >
+                            {example}
+                          </button>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </div>
 
