@@ -2009,7 +2009,8 @@
     "sector": "Manufacturing",
     "description": "Sierra Pacific Industries is a forest products company that grows trees and manufactures wood products.",
     "regions": [
-      "Sacramento-Roseville-Folsom"
+      "Sacramento-Roseville-Folsom",
+      "North Valley-Northern Mountains"
     ],
     "occupations": [
       "11-3051",
@@ -2019,7 +2020,12 @@
       "19-1032",
       "45-1011",
       "45-2092",
-      "51-1011"
+      "51-1011",
+      "11-9041",
+      "11-9121",
+      "13-1020",
+      "19-1031",
+      "45-4022"
     ]
   },
   {
@@ -2461,7 +2467,8 @@
     "description": "Blue Shield of California is a health insurance company that provides health coverage and related services to individuals, families, and employers across California.",
     "regions": [
       "Sacramento-Roseville-Folsom",
-      "Los Angeles-Long Beach-Glendale"
+      "Los Angeles-Long Beach-Glendale",
+      "North Valley-Northern Mountains"
     ],
     "occupations": [
       "11-2021",
@@ -2478,7 +2485,9 @@
       "15-1211",
       "29-1141",
       "41-3021",
-      "43-4061"
+      "43-4061",
+      "11-3012",
+      "11-3121"
     ]
   },
   {
@@ -4748,7 +4757,8 @@
     "sector": "Manufacturing",
     "description": "Medtronic is a global healthcare technology company that develops and manufactures medical devices and therapies to treat a wide range of health conditions.",
     "regions": [
-      "Los Angeles-Long Beach-Glendale"
+      "Los Angeles-Long Beach-Glendale",
+      "North Coast"
     ],
     "occupations": [
       "11-9111",
@@ -4758,7 +4768,15 @@
       "29-1141",
       "29-2099",
       "49-9062",
-      "13-1161"
+      "13-1161",
+      "11-2021",
+      "11-3012",
+      "11-3031",
+      "11-9041",
+      "13-1071",
+      "17-2199",
+      "19-1042",
+      "51-1011"
     ]
   },
   {
@@ -12813,343 +12831,6 @@
     ]
   },
   {
-    "name": "Sutter Coast Hospital",
-    "sector": "Healthcare",
-    "description": "Sutter Coast Hospital is a general medical and surgical hospital providing a range of healthcare services to the community.",
-    "regions": [
-      "North Coast"
-    ],
-    "occupations": [
-      "11-9111",
-      "13-1071",
-      "13-2011",
-      "15-1232",
-      "29-1141",
-      "29-1215",
-      "29-2061",
-      "31-1131"
-    ]
-  },
-  {
-    "name": "Yurok Tribe",
-    "sector": "Government",
-    "description": "The Yurok Tribe is a federally recognized Native American tribe that manages tribal lands, resources, and provides services to its members.",
-    "regions": [
-      "North Coast"
-    ],
-    "occupations": [
-      "11-3012",
-      "11-9151",
-      "13-1071",
-      "19-1031",
-      "19-2041",
-      "21-1019",
-      "21-1093",
-      "43-9061"
-    ]
-  },
-  {
-    "name": "Bettendorf Trucking",
-    "sector": "Transportation",
-    "description": "Bettendorf Trucking is a transportation company specializing in freight hauling and logistics services.",
-    "regions": [
-      "North Coast"
-    ],
-    "occupations": [
-      "11-3071",
-      "13-1081",
-      "43-9061",
-      "49-3031",
-      "49-9071",
-      "53-1047",
-      "53-7199"
-    ]
-  },
-  {
-    "name": "Columbia Bank",
-    "sector": "Finance",
-    "description": "Columbia Bank is a financial institution offering banking services to individuals and businesses.",
-    "regions": [
-      "North Coast"
-    ],
-    "occupations": [
-      "11-3031",
-      "13-2011",
-      "13-2052",
-      "13-2072",
-      "41-3031",
-      "43-3031",
-      "43-3071",
-      "43-4131"
-    ]
-  },
-  {
-    "name": "Newmarket International",
-    "sector": "Education",
-    "description": "Newmarket International is a technology company providing software solutions for the hospitality industry.",
-    "regions": [
-      "North Coast"
-    ],
-    "occupations": [
-      "11-2021",
-      "11-3021",
-      "13-1161",
-      "15-1211",
-      "15-1251",
-      "15-1252",
-      "15-1299",
-      "41-4012"
-    ]
-  },
-  {
-    "name": "Providence St Joseph Hospital",
-    "sector": "Healthcare",
-    "description": "Providence St Joseph Hospital is a healthcare facility providing comprehensive medical services to the community.",
-    "regions": [
-      "North Coast"
-    ],
-    "occupations": [
-      "11-9111",
-      "13-1071",
-      "13-2011",
-      "15-1232",
-      "29-1141",
-      "29-1215",
-      "29-2061",
-      "31-1131"
-    ]
-  },
-  {
-    "name": "Humboldt County Department of Health",
-    "sector": "Government",
-    "description": "The Humboldt County Department of Health provides public health services, programs, and initiatives to residents of Humboldt County.",
-    "regions": [
-      "North Coast"
-    ],
-    "occupations": [
-      "11-9111",
-      "11-9151",
-      "19-2041",
-      "21-1022",
-      "21-1091",
-      "21-1094",
-      "29-1141",
-      "43-4061"
-    ]
-  },
-  {
-    "name": "Eureka City Clerk",
-    "sector": "Government",
-    "description": "The Eureka City Clerk's office is responsible for maintaining official city records, managing elections, and providing administrative support to the city government.",
-    "regions": [
-      "North Coast"
-    ],
-    "occupations": [
-      "11-3012",
-      "13-1041",
-      "23-2011",
-      "43-1011",
-      "43-4031",
-      "43-4071",
-      "43-4199",
-      "43-9061"
-    ]
-  },
-  {
-    "name": "Humboldt County Social Services",
-    "sector": "Government",
-    "description": "Humboldt County Social Services provides a range of assistance programs and support services to individuals and families in need.",
-    "regions": [
-      "North Coast"
-    ],
-    "occupations": [
-      "11-9151",
-      "13-1071",
-      "21-1019",
-      "21-1029",
-      "21-1093",
-      "43-4061",
-      "43-4161",
-      "43-9061"
-    ]
-  },
-  {
-    "name": "Calpine",
-    "sector": "Utilities",
-    "description": "Calpine is an independent power producer that generates electricity from natural gas and geothermal resources.",
-    "regions": [
-      "North Coast"
-    ],
-    "occupations": [
-      "11-3013",
-      "11-9041",
-      "17-2112",
-      "17-2141",
-      "19-2042",
-      "49-9071",
-      "51-8021",
-      "51-9061"
-    ]
-  },
-  {
-    "name": "Sutter Lakeside Hospital",
-    "sector": "Healthcare",
-    "description": "Sutter Lakeside Hospital is a community hospital offering a variety of medical and surgical services.",
-    "regions": [
-      "North Coast"
-    ],
-    "occupations": [
-      "11-9111",
-      "13-1071",
-      "13-2011",
-      "15-1232",
-      "29-1141",
-      "29-1215",
-      "29-2061",
-      "31-1131"
-    ]
-  },
-  {
-    "name": "Rancheria Grille",
-    "sector": "Hospitality & Food Service",
-    "description": "Rancheria Grille is a restaurant offering a dining experience with a focus on local cuisine.",
-    "regions": [
-      "North Coast"
-    ],
-    "occupations": [
-      "11-9051",
-      "35-1011",
-      "35-1012",
-      "35-2014",
-      "43-9061"
-    ]
-  },
-  {
-    "name": "Fetzer Vineyards",
-    "sector": "Manufacturing",
-    "description": "Fetzer Vineyards is a winery known for producing a variety of wines with a commitment to sustainable practices.",
-    "regions": [
-      "North Coast"
-    ],
-    "occupations": [
-      "11-3012",
-      "11-3051",
-      "13-1161",
-      "19-1013",
-      "41-4012",
-      "45-1011",
-      "45-2092",
-      "51-1011"
-    ]
-  },
-  {
-    "name": "Mendocino Redwood Company",
-    "sector": "Manufacturing",
-    "description": "Mendocino Redwood Company is a timber company focused on sustainable forest management and lumber production.",
-    "regions": [
-      "North Coast"
-    ],
-    "occupations": [
-      "11-3012",
-      "11-9121",
-      "19-1031",
-      "19-1032",
-      "19-4071",
-      "45-1011",
-      "49-9071",
-      "51-1011"
-    ]
-  },
-  {
-    "name": "Mendocino Community Health",
-    "sector": "Healthcare",
-    "description": "Mendocino Community Health provides accessible and affordable healthcare services to the community.",
-    "regions": [
-      "North Coast"
-    ],
-    "occupations": [
-      "11-9111",
-      "13-1071",
-      "21-1094",
-      "29-1141",
-      "29-1215",
-      "29-2061",
-      "31-1131",
-      "31-9092"
-    ]
-  },
-  {
-    "name": "Adventist Health Mendocino",
-    "sector": "Healthcare",
-    "description": "Adventist Health Mendocino is a healthcare network providing a range of medical services and community health programs.",
-    "regions": [
-      "North Coast"
-    ],
-    "occupations": [
-      "11-9111",
-      "13-1071",
-      "13-2011",
-      "15-1232",
-      "29-1141",
-      "29-1215",
-      "29-2061",
-      "31-1131"
-    ]
-  },
-  {
-    "name": "Adventist Health Ukiah Valley",
-    "sector": "Healthcare",
-    "description": "Adventist Health Ukiah Valley is a hospital offering comprehensive medical care and health services to the Ukiah Valley region.",
-    "regions": [
-      "North Coast"
-    ],
-    "occupations": [
-      "11-9111",
-      "13-1071",
-      "13-2011",
-      "15-1232",
-      "29-1141",
-      "29-1215",
-      "29-2061",
-      "31-1131"
-    ]
-  },
-  {
-    "name": "Mendocino County Sheriff's Office",
-    "sector": "Government",
-    "description": "The Mendocino County Sheriff's Office is responsible for law enforcement, crime prevention, and public safety within Mendocino County.",
-    "regions": [
-      "North Coast"
-    ],
-    "occupations": [
-      "11-3012",
-      "33-1012",
-      "33-3012",
-      "33-3021",
-      "33-3051",
-      "33-9099",
-      "43-9061"
-    ]
-  },
-  {
-    "name": "Mendocino County Social Services",
-    "sector": "Government",
-    "description": "Mendocino County Social Services provides essential social programs and support to residents of Mendocino County.",
-    "regions": [
-      "North Coast"
-    ],
-    "occupations": [
-      "11-9151",
-      "13-1071",
-      "21-1019",
-      "21-1029",
-      "21-1093",
-      "43-4061",
-      "43-4161",
-      "43-9061"
-    ]
-  },
-  {
     "name": "Latino Farm Labor Services",
     "sector": "Construction",
     "description": "Latino Farm Labor Services is a company that provides labor contracting services primarily for agricultural businesses.",
@@ -15033,6 +14714,957 @@
       "15-1211",
       "43-9061",
       "43-3031"
+    ]
+  },
+  {
+    "name": "Fetzer Vineyards",
+    "sector": "Manufacturing",
+    "description": "Fetzer Vineyards is a winery producing a variety of wines.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3031",
+      "13-1071",
+      "13-2011",
+      "19-1013",
+      "45-2092",
+      "51-1011",
+      "53-1047"
+    ]
+  },
+  {
+    "name": "Mendocino Redwood Company",
+    "sector": "Manufacturing",
+    "description": "Mendocino Redwood Company is a sustainable forestry and timber company.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3031",
+      "13-1071",
+      "19-1031",
+      "19-1032",
+      "19-4071",
+      "45-1011",
+      "49-9071"
+    ]
+  },
+  {
+    "name": "Mendocino Community Health Services",
+    "sector": "Healthcare",
+    "description": "Mendocino Community Health Services provides comprehensive healthcare to the community.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "29-1215",
+      "29-2061",
+      "31-1131",
+      "31-9092",
+      "43-6013"
+    ]
+  },
+  {
+    "name": "Adventist Health Mendocino Coast",
+    "sector": "Healthcare",
+    "description": "Adventist Health Mendocino Coast is a hospital providing medical care and services.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "29-1229",
+      "29-2034",
+      "29-2061",
+      "31-1131",
+      "31-9097"
+    ]
+  },
+  {
+    "name": "Adventist Health Ukiah Valley",
+    "sector": "Healthcare",
+    "description": "Adventist Health Ukiah Valley is a hospital offering a range of medical services.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "29-1229",
+      "29-2034",
+      "29-2061",
+      "31-1131",
+      "31-9097"
+    ]
+  },
+  {
+    "name": "Mendocino County Sheriff's Office",
+    "sector": "Government",
+    "description": "The Mendocino County Sheriff's Office provides law enforcement and public safety services.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-3012",
+      "13-1071",
+      "33-1012",
+      "33-3012",
+      "33-3021",
+      "33-3051",
+      "43-4031",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Mendocino County Department of Social Services",
+    "sector": "Government",
+    "description": "The Mendocino County Department of Social Services provides assistance and support to individuals and families.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-9151",
+      "13-1071",
+      "21-1029",
+      "21-1093",
+      "21-1094",
+      "43-4061",
+      "43-4199",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Calpine Corporation",
+    "sector": "Utilities",
+    "description": "Calpine Corporation is an independent power producer that generates electricity.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3031",
+      "11-9041",
+      "13-1071",
+      "17-2199",
+      "49-9071",
+      "51-8021",
+      "51-9061"
+    ]
+  },
+  {
+    "name": "Sutter Lakeside Hospital",
+    "sector": "Healthcare",
+    "description": "Sutter Lakeside Hospital provides comprehensive medical care and services to the community.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "29-1229",
+      "29-2034",
+      "29-2061",
+      "31-1131",
+      "31-9097"
+    ]
+  },
+  {
+    "name": "Rancheria Grille",
+    "sector": "Hospitality & Food Service",
+    "description": "Rancheria Grille is a restaurant offering a variety of dining experiences.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-9051",
+      "13-1071",
+      "35-1011",
+      "35-1012",
+      "35-2014",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Bettendorf Trucking",
+    "sector": "Transportation",
+    "description": "Bettendorf Trucking is a transportation company specializing in freight delivery.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3071",
+      "13-1081",
+      "43-9061",
+      "49-3031",
+      "53-1047"
+    ]
+  },
+  {
+    "name": "Columbia Bank",
+    "sector": "Finance",
+    "description": "Columbia Bank is a financial institution offering banking services to individuals and businesses.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3031",
+      "13-1071",
+      "13-2011",
+      "13-2072",
+      "43-3031",
+      "43-3071"
+    ]
+  },
+  {
+    "name": "Newmarket International",
+    "sector": "Education",
+    "description": "Newmarket International provides software solutions for the hospitality industry.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-3021",
+      "13-1071",
+      "15-1211",
+      "15-1251",
+      "15-1252",
+      "15-1299",
+      "41-4012"
+    ]
+  },
+  {
+    "name": "St. Joseph Hospital",
+    "sector": "Healthcare",
+    "description": "St. Joseph Hospital provides comprehensive medical care and services.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "29-1229",
+      "29-2034",
+      "29-2061",
+      "31-1131",
+      "31-9097"
+    ]
+  },
+  {
+    "name": "Providence St. Joseph Hospital Eureka",
+    "sector": "Healthcare",
+    "description": "Providence St. Joseph Hospital Eureka is a medical facility offering a wide range of healthcare services.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "29-1229",
+      "29-2034",
+      "29-2061",
+      "31-1131",
+      "31-9097"
+    ]
+  },
+  {
+    "name": "Humboldt County Department of Health and Human Services",
+    "sector": "Government",
+    "description": "The Humboldt County Department of Health and Human Services provides public health and social services to residents.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-9111",
+      "11-9151",
+      "13-1071",
+      "19-2041",
+      "21-1022",
+      "21-1094",
+      "29-1141",
+      "43-4061"
+    ]
+  },
+  {
+    "name": "Eureka City Clerk's Office",
+    "sector": "Government",
+    "description": "The Eureka City Clerk's Office manages public records, elections, and administrative functions for the city.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-3012",
+      "13-1041",
+      "23-2011",
+      "43-1011",
+      "43-4031",
+      "43-4071",
+      "43-4199",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Humboldt County Department of Social Services",
+    "sector": "Government",
+    "description": "The Humboldt County Department of Social Services provides assistance and support to individuals and families.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-9151",
+      "13-1071",
+      "21-1029",
+      "21-1093",
+      "21-1094",
+      "43-4061",
+      "43-4199",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Stockham Construction",
+    "sector": "Construction",
+    "description": "Stockham Construction is a general contractor specializing in various construction projects.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-9021",
+      "13-1051",
+      "13-1082",
+      "47-1011",
+      "47-2031",
+      "47-2073",
+      "47-2152",
+      "47-4011"
+    ]
+  },
+  {
+    "name": "Ghilotti Construction Company",
+    "sector": "Construction",
+    "description": "Ghilotti Construction Company is a civil engineering and general contracting firm.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-9021",
+      "13-1051",
+      "13-1082",
+      "47-1011",
+      "47-2031",
+      "47-2073",
+      "47-2152",
+      "47-4011"
+    ]
+  },
+  {
+    "name": "LGC Biosearch Technologies",
+    "sector": "Construction",
+    "description": "LGC Biosearch Technologies is a global provider of genomics and molecular biology tools.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3031",
+      "11-9121",
+      "13-1071",
+      "19-1029",
+      "19-4021",
+      "51-1011"
+    ]
+  },
+  {
+    "name": "Amy's Kitchen",
+    "sector": "Manufacturing",
+    "description": "Amy's Kitchen produces organic and vegetarian convenience foods.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3031",
+      "11-3051",
+      "13-1071",
+      "13-1161",
+      "35-1011",
+      "51-1011"
+    ]
+  },
+  {
+    "name": "Timber Crest Farms",
+    "sector": "Manufacturing",
+    "description": "Timber Crest Farms is a producer of dried fruits and nuts.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3031",
+      "11-3051",
+      "13-1071",
+      "45-2092",
+      "51-1011",
+      "51-9061",
+      "53-1047"
+    ]
+  },
+  {
+    "name": "Aabalat Fine & Rare Wines",
+    "sector": "Manufacturing",
+    "description": "Aabalat Fine & Rare Wines is a retailer specializing in high-quality and collectible wines.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-2022",
+      "11-3012",
+      "13-1161",
+      "41-1011",
+      "41-4012",
+      "43-9061",
+      "53-1047"
+    ]
+  },
+  {
+    "name": "Keysight Technologies",
+    "sector": "Manufacturing",
+    "description": "Keysight Technologies is a leading technology company that helps enterprises, service providers, and governments accelerate innovation to connect and secure the world.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-3021",
+      "11-9041",
+      "13-1071",
+      "15-1252",
+      "17-2112",
+      "17-2141",
+      "51-1011"
+    ]
+  },
+  {
+    "name": "Endologix LLC",
+    "sector": "Manufacturing",
+    "description": "Endologix LLC is a medical device company focused on treating aortic disorders.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3031",
+      "11-9041",
+      "13-1071",
+      "17-2199",
+      "19-1042",
+      "51-1011"
+    ]
+  },
+  {
+    "name": "Freeman Toyota",
+    "sector": "Retail",
+    "description": "Freeman Toyota is an automotive dealership selling new and used Toyota vehicles and providing service.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-2022",
+      "11-3012",
+      "13-1071",
+      "41-1011",
+      "41-4012",
+      "43-9061",
+      "49-1011",
+      "49-3023"
+    ]
+  },
+  {
+    "name": "Sonoma County Water Agency",
+    "sector": "Retail",
+    "description": "The Sonoma County Water Agency manages water resources, wastewater, and flood protection for the county.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3031",
+      "11-9041",
+      "13-1071",
+      "17-2199",
+      "19-2041",
+      "51-8031",
+      "49-9071"
+    ]
+  },
+  {
+    "name": "Protransport",
+    "sector": "Transportation",
+    "description": "Protransport is a medical transportation company providing ambulance and other patient transport services.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-9111",
+      "11-3012",
+      "13-1071",
+      "29-2042",
+      "29-2043",
+      "43-9061",
+      "49-3023"
+    ]
+  },
+  {
+    "name": "First Security Services",
+    "sector": "Administrative Services",
+    "description": "First Security Services provides security guard and patrol services for various clients.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3121",
+      "13-1071",
+      "33-1091",
+      "33-9099",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Providence Santa Rosa Memorial Hospital",
+    "sector": "Healthcare",
+    "description": "Providence Santa Rosa Memorial Hospital is a general medical and surgical hospital providing comprehensive healthcare services.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "29-1215",
+      "29-2061",
+      "31-1131",
+      "43-6013"
+    ]
+  },
+  {
+    "name": "Sutter Santa Rosa Regional Hospital",
+    "sector": "Healthcare",
+    "description": "Sutter Santa Rosa Regional Hospital is a regional hospital offering a wide range of medical services.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "29-1229",
+      "29-2034",
+      "29-2061",
+      "31-1131"
+    ]
+  },
+  {
+    "name": "Santa Rosa Recreation and Parks Department",
+    "sector": "Arts & Entertainment",
+    "description": "The Santa Rosa Recreation and Parks Department manages public parks, recreational facilities, and community programs.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-9072",
+      "11-9151",
+      "13-1071",
+      "27-2022",
+      "37-1012",
+      "37-3011",
+      "39-9031",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Fairmont Sonoma Mission Inn and Spa",
+    "sector": "Hospitality & Food Service",
+    "description": "The Fairmont Sonoma Mission Inn and Spa is a luxury resort offering lodging, dining, and spa services.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-9081",
+      "11-9051",
+      "13-1121",
+      "35-1011",
+      "39-1014",
+      "43-4081"
+    ]
+  },
+  {
+    "name": "H2Hotel",
+    "sector": "Hospitality & Food Service",
+    "description": "H2Hotel is a modern, eco-friendly hotel providing lodging and hospitality services.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-9081",
+      "11-9051",
+      "13-1121",
+      "35-1012",
+      "43-4081",
+      "49-9071"
+    ]
+  },
+  {
+    "name": "City Administration and Finance Department",
+    "sector": "Government",
+    "description": "The City Administration and Finance Department manages the financial operations and administrative services for the city government.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3031",
+      "13-1041",
+      "13-1071",
+      "13-2011",
+      "43-3031",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Sonoma County Transportation and Public Works Department",
+    "sector": "Government",
+    "description": "The Sonoma County Transportation and Public Works Department is responsible for the planning, design, construction, and maintenance of county infrastructure.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-3071",
+      "11-9021",
+      "17-2199",
+      "19-3051",
+      "47-1011",
+      "47-2073",
+      "49-9071"
+    ]
+  },
+  {
+    "name": "Santa Rosa Police Department",
+    "sector": "Government",
+    "description": "The Santa Rosa Police Department provides law enforcement and public safety services to the city of Santa Rosa.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-3012",
+      "13-1071",
+      "21-1092",
+      "33-1012",
+      "33-3021",
+      "33-3051",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Sonoma County Office of Education",
+    "sector": "Government",
+    "description": "The Sonoma County Office of Education provides leadership, resources, and services to support public education throughout Sonoma County.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-9032",
+      "11-9039",
+      "13-1071",
+      "21-1012",
+      "25-9031",
+      "25-9099",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Sierra Army Depot",
+    "sector": "Manufacturing",
+    "description": "Sierra Army Depot is a United States Army installation that stores and maintains conventional ammunition and other military equipment.",
+    "regions": [
+      "North Valley-Northern Mountains"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3071",
+      "13-1020",
+      "13-1071",
+      "13-1081",
+      "49-9071",
+      "53-1047",
+      "53-7199"
+    ]
+  },
+  {
+    "name": "North State Grocery",
+    "sector": "Retail",
+    "description": "North State Grocery is a retail grocery store serving the local community.",
+    "regions": [
+      "North Valley-Northern Mountains"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3121",
+      "13-1071",
+      "13-1161",
+      "41-1011",
+      "43-1011",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Mercy Medical Center Redding",
+    "sector": "Healthcare",
+    "description": "Mercy Medical Center Redding is a hospital providing comprehensive medical care and services.",
+    "regions": [
+      "North Valley-Northern Mountains"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "29-1215",
+      "29-1216",
+      "29-2061",
+      "31-1131",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Mayers Memorial Hospital",
+    "sector": "Healthcare",
+    "description": "Mayers Memorial Hospital is a critical access hospital serving the Burney area with a range of healthcare services.",
+    "regions": [
+      "North Valley-Northern Mountains"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "29-1215",
+      "29-2061",
+      "31-1131",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Shascade Community Services",
+    "sector": "Healthcare",
+    "description": "Shascade Community Services provides a variety of social and community support programs to local residents.",
+    "regions": [
+      "North Valley-Northern Mountains"
+    ],
+    "occupations": [
+      "11-9151",
+      "13-1071",
+      "21-1012",
+      "21-1018",
+      "21-1021",
+      "21-1093",
+      "21-1099",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Bethel Church",
+    "sector": "Other Services",
+    "description": "Bethel Church is a Christian church offering religious services, community programs, and educational initiatives.",
+    "regions": [
+      "North Valley-Northern Mountains"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-9151",
+      "13-1071",
+      "21-2011",
+      "25-3021",
+      "43-1011",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Iris Global",
+    "sector": "Other Services",
+    "description": "Iris Global is a Christian missionary organization focused on humanitarian aid, evangelism, and community development worldwide.",
+    "regions": [
+      "North Valley-Northern Mountains"
+    ],
+    "occupations": [
+      "11-2033",
+      "11-3012",
+      "11-9151",
+      "13-1071",
+      "21-2011",
+      "21-1093",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Shasta County Administrative Office",
+    "sector": "Government",
+    "description": "The Shasta County Administrative Office oversees the general administration and operations of the county government.",
+    "regions": [
+      "North Valley-Northern Mountains"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3031",
+      "11-3121",
+      "13-1041",
+      "13-1071",
+      "13-2011",
+      "23-1011",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Transportation Department",
+    "sector": "Government",
+    "description": "The Transportation Department is responsible for planning, building, and maintaining transportation infrastructure and services.",
+    "regions": [
+      "North Valley-Northern Mountains"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3071",
+      "11-9041",
+      "17-2051",
+      "17-3031",
+      "47-1011",
+      "47-2073",
+      "53-3099"
+    ]
+  },
+  {
+    "name": "Bell-Carter Foods",
+    "sector": "Wholesale",
+    "description": "Bell-Carter Foods is a food processing company specializing in olives and other food products.",
+    "regions": [
+      "North Valley-Northern Mountains"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3071",
+      "13-1020",
+      "13-1161",
+      "19-4013",
+      "51-1011",
+      "53-1047"
+    ]
+  },
+  {
+    "name": "Sierra Pacific Windows",
+    "sector": "Retail",
+    "description": "Sierra Pacific Windows manufactures a variety of windows and doors for residential and commercial use.",
+    "regions": [
+      "North Valley-Northern Mountains"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3071",
+      "11-9041",
+      "13-1020",
+      "17-2112",
+      "51-1011",
+      "53-1047"
+    ]
+  },
+  {
+    "name": "Tehama County Department of Education",
+    "sector": "Education",
+    "description": "The Tehama County Department of Education provides leadership, resources, and services to support public education in Tehama County.",
+    "regions": [
+      "North Valley-Northern Mountains"
+    ],
+    "occupations": [
+      "11-9032",
+      "11-9039",
+      "13-1071",
+      "25-2021",
+      "25-2022",
+      "25-9031",
+      "25-9045",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "St Elizabeth Community Hospital",
+    "sector": "Healthcare",
+    "description": "St Elizabeth Community Hospital is a hospital offering a range of medical services to the community.",
+    "regions": [
+      "North Valley-Northern Mountains"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "29-1215",
+      "29-1216",
+      "29-2061",
+      "31-1131",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "RV Park at Rolling Hills Casino",
+    "sector": "Hospitality & Food Service",
+    "description": "The RV Park at Rolling Hills Casino provides recreational vehicle accommodations and amenities adjacent to the casino.",
+    "regions": [
+      "North Valley-Northern Mountains"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3013",
+      "11-9199",
+      "37-3011",
+      "39-1014",
+      "43-9061",
+      "49-9071"
+    ]
+  },
+  {
+    "name": "Plumas County Board of Supervisors",
+    "sector": "Government",
+    "description": "The Plumas County Board of Supervisors is the governing body of Plumas County, responsible for legislative and administrative oversight.",
+    "regions": [
+      "North Valley-Northern Mountains"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3031",
+      "11-3121",
+      "13-1041",
+      "13-1071",
+      "13-2011",
+      "23-1011",
+      "43-9061"
     ]
   }
 ]

@@ -110,6 +110,7 @@ COLLEGE_REGION_MAP: dict[str, str] = {
     "College of the Sequoias": "Visalia",
     "Compton College": "Los Angeles-Long Beach-Glendale",
     "Mendocino College": "North Coast",
+    "Lassen College": "North Valley-Northern Mountains",
     # Central / South Coast
     "Allan Hancock College": "Santa Maria-Santa Barbara",
     "Santa Barbara City College": "Santa Maria-Santa Barbara",
