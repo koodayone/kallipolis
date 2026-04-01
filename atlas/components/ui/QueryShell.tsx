@@ -173,7 +173,7 @@ export default function QueryShell<T>({
                     }}
                     aria-label="Show example queries"
                   >
-                    <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
+                    <svg width="20" height="20" viewBox="0 0 16 16" fill="none">
                       <circle cx="8" cy="8" r="7" stroke={helpOpen ? school.brandColorLight : "rgba(255,255,255,0.55)"} strokeWidth="1.2"
                         style={{ transition: "stroke 0.15s" }} />
                       <text x="8" y="11.5" textAnchor="middle" fill={helpOpen ? school.brandColorLight : "rgba(255,255,255,0.55)"}
