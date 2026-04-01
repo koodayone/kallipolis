@@ -185,7 +185,7 @@ export default function CaliforniaMap({
                     onClick={
                       isClickable ? () => onRegionClick(region.id) : undefined
                     }
-                    cursor={isClickable ? "pointer" : "default"}
+                    cursor="default"
                   />
                 );
               })
