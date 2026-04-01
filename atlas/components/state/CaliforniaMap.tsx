@@ -21,10 +21,10 @@ const BASE_SCALE = 2500;
 const DIAMOND = 6; // half-size of diamond marker
 
 export const FEATURED_COLLEGES = new Set([
-  "lassen", "siskiyous", "mendocino", "butte", "saccc", "laketahoe",
-  "hartnell", "foothill", "berkeleycc", "napavalley", "sequoias", "merced",
-  "sbcc", "oxnard", "cerrocoso", "desert", "imperial", "sandiegocity",
-  "compton", "lavalley", "bakersfield", "irvinevalley",
+  "lassen", "shasta", "redwoods", "mendocino", "butte", "saccc", "laketahoe",
+  "foothill", "laney", "sequoias", "merced",
+  "montereypen", "hancock", "oxnard", "desert", "imperial", "sandiegocity",
+  "compton", "irvinevalley",
 ]);
 
 const MAP_WIDTH = 400;

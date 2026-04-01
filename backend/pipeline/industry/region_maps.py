@@ -63,6 +63,7 @@ FRONTEND_TO_COE: dict[str, str] = {
     "central-valley": "CVML",
     "central-coast": "SCC",
     "greater-sacramento": "GS",
+    "north-coast": "FN",
     "far-north": "FN",
     "sierra-nevada": "GS",
 }

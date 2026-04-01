@@ -257,32 +257,16 @@ def get_partnership_landscape(college: str):
     try:
         with driver.session() as session:
             result = session.run("""
-                MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)
-                      -[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)
-                OPTIONAL MATCH (course:Course {college: $college})-[:DEVELOPS]->(sk)
-                WITH emp, sk, occ,
-                     CASE WHEN count(course) > 0 THEN true ELSE false END AS developed
-                WITH emp, sk.name AS skill_name, developed,
-                     count(DISTINCT occ) AS occ_count,
-                     collect(DISTINCT occ)[0] AS sample_occ
-                ORDER BY occ_count DESC
-                WITH emp,
-                     collect(CASE WHEN developed THEN {name: skill_name, freq: occ_count} END) AS raw_aligned,
-                     collect(CASE WHEN NOT developed THEN skill_name END) AS raw_gaps,
-                     collect(DISTINCT {title: sample_occ.title, wage: sample_occ.annual_wage}) AS occ_entries
-                WITH emp,
-                     [x IN raw_aligned WHERE x IS NOT NULL] AS aligned_ranked,
-                     [x IN raw_gaps WHERE x IS NOT NULL] AS gap_skills,
-                     occ_entries[0] AS top_occ
-                WITH emp,
-                     [x IN aligned_ranked | x.name] AS aligned_skills,
-                     gap_skills, top_occ
+                MATCH (col:College {name: $college})-[pa:PARTNERSHIP_ALIGNMENT]->(emp:Employer)
                 RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
-                       size(aligned_skills) AS alignment_score,
-                       size(gap_skills) AS gap_count,
-                       aligned_skills, gap_skills,
-                       top_occ.title AS top_occupation, top_occ.wage AS top_wage
-                ORDER BY alignment_score DESC
+                       pa.alignment_score AS alignment_score,
+                       pa.gap_count AS gap_count,
+                       pa.aligned_skills AS aligned_skills,
+                       pa.gap_skills AS gap_skills,
+                       pa.top_occupation AS top_occupation,
+                       pa.top_wage AS top_wage,
+                       pa.pipeline_size AS pipeline_size
+                ORDER BY pa.alignment_score DESC
             """, college=college)
             records = result.data()
 
@@ -299,6 +283,7 @@ def get_partnership_landscape(college: str):
                     gap_skills=r["gap_skills"],
                     top_occupation=r.get("top_occupation"),
                     top_wage=r.get("top_wage"),
+                    pipeline_size=r.get("pipeline_size"),
                 )
                 for r in records
             ],

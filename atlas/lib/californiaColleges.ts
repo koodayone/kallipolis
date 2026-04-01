@@ -20,13 +20,22 @@ export type Region = {
 
 export const CALIFORNIA_REGIONS: Region[] = [
   {
+    id: "north-coast",
+    name: "North Coast",
+    labelCenter: [-123.5, 40.2],
+    zoomCenter: [-123.5, 40.0],
+    scale: 7000,
+    counties: ["Del Norte", "Humboldt", "Mendocino"],
+    collegeCount: 3,
+  },
+  {
     id: "far-north",
     name: "Upstate California",
-    labelCenter: [-122.2, 40.7],
+    labelCenter: [-121.8, 40.7],
     zoomCenter: [-121.5, 40.5],
     scale: 7000,
-    counties: ["Del Norte", "Siskiyou", "Modoc", "Trinity", "Humboldt", "Shasta", "Lassen", "Tehama", "Mendocino"],
-    collegeCount: 6,
+    counties: ["Siskiyou", "Modoc", "Trinity", "Shasta", "Lassen", "Tehama"],
+    collegeCount: 3,
   },
   {
     id: "greater-sacramento",
@@ -130,12 +139,13 @@ for (const region of CALIFORNIA_REGIONS) {
 
 // ~80 colleges across all 9 regions with accurate lat/lng
 export const CALIFORNIA_COLLEGES: College[] = [
+  // North Coast
+  { id: "redwoods",       name: "College of the Redwoods",         district: "Redwoods CCD",                  regionId: "north-coast",       lat: 40.80, lng: -124.16, logoStacked: "/redwoods-logo.svg" },
+  { id: "delnorte",       name: "College of the Redwoods (DN)",    district: "Redwoods CCD",                  regionId: "north-coast",       lat: 41.74, lng: -124.20, logoStacked: "/redwoods-logo.svg"},
   // Far North
-  { id: "redwoods",       name: "College of the Redwoods",         district: "Redwoods CCD",                  regionId: "far-north",         lat: 40.80, lng: -124.16, logoStacked: "/redwoods-logo.svg" },
   { id: "shasta",         name: "Shasta College",                  district: "Shasta-Tehama-Trinity JCCD",    regionId: "far-north",         lat: 40.61, lng: -122.37, logoStacked: "/shasta-logo.svg" },
   { id: "lassen",         name: "Lassen College",                  district: "Lassen CCD",                    regionId: "far-north",         lat: 40.44, lng: -120.65, logoStacked: "/lassen-logo.jpg" },
   { id: "siskiyous",      name: "College of the Siskiyous",        district: "Siskiyous JCCD",                regionId: "far-north",         lat: 41.48, lng: -122.29, logoStacked: "/siskiyous-logo.png" },
-  { id: "delnorte",       name: "College of the Redwoods (DN)",    district: "Redwoods CCD",                  regionId: "far-north",         lat: 41.74, lng: -124.20, logoStacked: "/redwoods-logo.svg"},
   { id: "featherriver",   name: "Feather River College",           district: "Feather River CCD",             regionId: "sierra-nevada",     lat: 39.93, lng: -120.95, logoStacked: "/featherriver-logo.svg" },
 
   // Greater Sacramento
@@ -171,7 +181,7 @@ export const CALIFORNIA_COLLEGES: College[] = [
   { id: "marin",      name: "College of Marin",              district: "Marin CCD",                  regionId: "bay-area", lat: 37.96, lng: -122.55, logoStacked: "/marin-logo.svg" },
   { id: "santarosa",  name: "Santa Rosa Junior College",     district: "Sonoma County JCCD",          regionId: "bay-area", lat: 38.46, lng: -122.72, logoStacked: "/santarosa-logo.png" },
   { id: "napavalley", name: "Napa Valley College",           district: "Napa Valley CCD",             regionId: "bay-area", lat: 38.27, lng: -122.27, logoStacked: "/napavalley-logo.svg" },
-  { id: "mendocino",  name: "Mendocino College",             district: "Mendocino-Lake CCD",          regionId: "far-north", lat: 39.19, lng: -123.23, logoStacked: "/mendocino-logo.png" },
+  { id: "mendocino",  name: "Mendocino College",             district: "Mendocino-Lake CCD",          regionId: "north-coast", lat: 39.19, lng: -123.23, logoStacked: "/mendocino-logo.png" },
   { id: "solano",     name: "Solano Community College",      district: "Solano CCD",                  regionId: "bay-area", lat: 38.24, lng: -122.12, logoStacked: "/solano-logo.svg" },
   { id: "mission",    name: "Mission College",               district: "West Valley-Mission CCD",     regionId: "bay-area", lat: 37.39, lng: -121.98, logoStacked: "/mission-logo.png" },
   { id: "westvalley", name: "West Valley College",           district: "West Valley-Mission CCD",     regionId: "bay-area", lat: 37.26, lng: -122.01, logoStacked: "/westvalley-logo.svg" },

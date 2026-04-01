@@ -87,15 +87,12 @@ export default function PartnershipsView({ school, onBack }: Props) {
     getPartnershipLandscape(school.name)
       .then((data) => {
         setLandscape(data.opportunities);
-        // Pre-fetch all data for instant expand
+        // Populate pipeline data from precomputed values
+        const pipelineMap: Record<string, number> = {};
         for (const opp of data.opportunities) {
-          getEmployerOccupations(opp.name)
-            .then((d) => setEmployerOccupations((prev) => ({ ...prev, [opp.name]: d.occupations })))
-            .catch(() => {});
-          getEmployerPipeline(opp.name, school.name)
-            .then((d) => setPipelineData((prev) => ({ ...prev, [opp.name]: d.pipeline_size })))
-            .catch(() => {});
+          if (opp.pipeline_size != null) pipelineMap[opp.name] = opp.pipeline_size;
         }
+        setPipelineData(pipelineMap);
       })
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
