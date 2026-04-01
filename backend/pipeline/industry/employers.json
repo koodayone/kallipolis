@@ -560,26 +560,6 @@
     ]
   },
   {
-    "name": "Aerojet Rocketdyne",
-    "sector": "Manufacturing",
-    "description": "Aerojet Rocketdyne is an American manufacturer of rocket, missile, and spacecraft propulsion systems.",
-    "regions": [
-      "Los Angeles-Long Beach-Glendale"
-    ],
-    "occupations": [
-      "51-1011",
-      "51-2011",
-      "51-2021",
-      "51-2028",
-      "51-2031",
-      "51-2041",
-      "51-2051",
-      "51-2090",
-      "51-3011",
-      "51-3021"
-    ]
-  },
-  {
     "name": "Aerospace Corporation",
     "sector": "Manufacturing",
     "description": "The Aerospace Corporation is a federally funded research and development center providing independent technical and scientific research, development, and advisory services to national security space programs.",
@@ -937,6 +917,691 @@
       "51-2090",
       "51-3011",
       "51-3021"
+    ]
+  },
+  {
+    "name": "Mercy General Hospital",
+    "sector": "Healthcare",
+    "description": "Mercy General Hospital is a full-service acute care hospital providing comprehensive medical services to the Sacramento community.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9111",
+      "29-1141",
+      "29-1215",
+      "29-2061",
+      "31-1131",
+      "29-2072",
+      "13-1071",
+      "13-2011"
+    ]
+  },
+  {
+    "name": "Villara",
+    "sector": "Construction",
+    "description": "Villara provides heating, air conditioning, plumbing, and solar services for residential and commercial clients.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "49-9021",
+      "47-2152",
+      "49-9071",
+      "41-4012",
+      "11-9199",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Sacramento Municipal Utility District",
+    "sector": "Construction",
+    "description": "SMUD is a community-owned electric utility providing power to Sacramento County and parts of Placer County.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "49-9051",
+      "51-8013",
+      "17-2071",
+      "17-3023",
+      "15-1244",
+      "13-2011",
+      "11-3031",
+      "11-9041"
+    ]
+  },
+  {
+    "name": "Ampac Fine Chemicals",
+    "sector": "Manufacturing",
+    "description": "Ampac Fine Chemicals is a leading manufacturer of active pharmaceutical ingredients (APIs) for the pharmaceutical industry.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "19-2031",
+      "17-2041",
+      "51-1011",
+      "51-9061",
+      "11-3051",
+      "19-4031",
+      "11-9121"
+    ]
+  },
+  {
+    "name": "Aerojet Rocketdyne",
+    "sector": "Manufacturing",
+    "description": "Aerojet Rocketdyne is an American manufacturer of aerospace and defense products, including rocket engines and propulsion systems.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "17-2011",
+      "17-2141",
+      "11-9041",
+      "15-1252",
+      "51-2011",
+      "51-4041",
+      "13-1081",
+      "11-3051"
+    ]
+  },
+  {
+    "name": "American River College",
+    "sector": "Education",
+    "description": "American River College is a public community college offering associate degrees, transfer programs, and career education.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "25-1194",
+      "25-1011",
+      "25-9031",
+      "11-9033",
+      "13-1071",
+      "43-9061",
+      "25-4022"
+    ]
+  },
+  {
+    "name": "California Department of Corrections and Rehabilitation",
+    "sector": "Government",
+    "description": "The California Department of Corrections and Rehabilitation is responsible for the incarceration of convicted felons and the supervision of parolees.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "33-3012",
+      "33-1011",
+      "21-1092",
+      "13-1041",
+      "11-9151",
+      "23-1011",
+      "13-1071"
+    ]
+  },
+  {
+    "name": "Yolo County District Attorney",
+    "sector": "Government",
+    "description": "The Yolo County District Attorney's office prosecutes criminal offenses and serves as the chief law enforcement officer for the county.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "23-1011",
+      "23-2011",
+      "13-1041",
+      "43-4031",
+      "11-3031",
+      "13-1071"
+    ]
+  },
+  {
+    "name": "Hewlett Packard Enterprise",
+    "sector": "Professional Services",
+    "description": "Hewlett Packard Enterprise is a multinational enterprise information technology company that provides servers, storage, networking, consulting, and support.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "15-1252",
+      "15-1211",
+      "11-3021",
+      "17-2071",
+      "13-1161",
+      "41-4012",
+      "15-1244",
+      "15-1212"
+    ]
+  },
+  {
+    "name": "Dealertrack",
+    "sector": "Professional Services",
+    "description": "Dealertrack provides software and services to the automotive retail industry, including solutions for vehicle registration and titling.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "15-1252",
+      "15-1211",
+      "11-3021",
+      "41-4012",
+      "13-1161",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Northstar California Resort",
+    "sector": "Hospitality & Food Service",
+    "description": "Northstar California Resort is a ski resort offering winter sports, mountain biking, and other recreational activities.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9072",
+      "39-1014",
+      "39-7010",
+      "33-9092",
+      "13-1121",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Palisades Tahoe",
+    "sector": "Hospitality & Food Service",
+    "description": "Palisades Tahoe is a ski resort in Olympic Valley, California, known for its challenging terrain and Olympic history.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9072",
+      "39-1014",
+      "39-7010",
+      "33-9092",
+      "13-1121",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Sacramento Hyundai",
+    "sector": "Retail",
+    "description": "Sacramento Hyundai is an authorized dealership selling new and used Hyundai vehicles and providing automotive service.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "41-1011",
+      "41-4012",
+      "49-3023",
+      "49-1011",
+      "13-2072",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Carmax",
+    "sector": "Retail",
+    "description": "Carmax is a used car retailer known for its no-haggle pricing and extensive inventory.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "41-1011",
+      "41-4012",
+      "49-3023",
+      "49-1011",
+      "13-2072",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Barnum & Celillo Electric",
+    "sector": "Construction",
+    "description": "Barnum & Celillo Electric is an electrical contractor providing services for commercial and industrial projects.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "47-2111",
+      "47-1011",
+      "17-2071",
+      "11-9021",
+      "43-9061",
+      "13-1051"
+    ]
+  },
+  {
+    "name": "California State University, Sacramento",
+    "sector": "Education",
+    "description": "California State University, Sacramento is a public university offering undergraduate and graduate degree programs across various disciplines.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "25-1011",
+      "25-1021",
+      "25-1071",
+      "11-9033",
+      "13-1071",
+      "25-4022",
+      "15-1244",
+      "25-9031"
+    ]
+  },
+  {
+    "name": "Sierra Joint Community College District",
+    "sector": "Education",
+    "description": "The Sierra Joint Community College District oversees Sierra College, providing higher education and workforce training.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "25-1194",
+      "25-1011",
+      "25-9031",
+      "11-9033",
+      "13-1071",
+      "43-9061",
+      "25-4022"
+    ]
+  },
+  {
+    "name": "Methodist Hospital of Sacramento",
+    "sector": "Healthcare",
+    "description": "Methodist Hospital of Sacramento is an acute care hospital providing a range of medical services to the community.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9111",
+      "29-1141",
+      "29-1215",
+      "29-2061",
+      "31-1131",
+      "29-2072",
+      "13-1071",
+      "13-2011"
+    ]
+  },
+  {
+    "name": "Shriners Hospitals for Children",
+    "sector": "Healthcare",
+    "description": "Shriners Hospitals for Children provides specialized medical care for children with orthopedic conditions, burns, spinal cord injuries, and cleft lip and palate.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9111",
+      "29-1141",
+      "29-1229",
+      "29-1123",
+      "31-1131",
+      "29-2072",
+      "13-1071",
+      "11-2033"
+    ]
+  },
+  {
+    "name": "Granite Construction",
+    "sector": "Construction",
+    "description": "Granite Construction is a large civil construction company specializing in infrastructure projects, including roads, bridges, and dams.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9021",
+      "17-2051",
+      "47-1011",
+      "47-2073",
+      "13-1051",
+      "13-1082",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "S. D. Deacon Corporation",
+    "sector": "Construction",
+    "description": "S. D. Deacon Corporation is a general contractor providing construction services for commercial and industrial projects.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9021",
+      "17-2051",
+      "47-1011",
+      "13-1051",
+      "13-1082",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Kenyon Plastering",
+    "sector": "Construction",
+    "description": "Kenyon Plastering is a plastering contractor specializing in commercial and residential plastering services.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "47-1011",
+      "47-4090",
+      "13-1051",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Sierra Springs Water",
+    "sector": "Manufacturing",
+    "description": "Sierra Springs Water provides bottled water delivery services to homes and businesses.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-3071",
+      "53-1047",
+      "41-4012",
+      "43-9061",
+      "13-1161"
+    ]
+  },
+  {
+    "name": "Applied Behavior Consultants",
+    "sector": "Education",
+    "description": "Applied Behavior Consultants provides behavioral therapy and educational services for individuals with autism and other developmental disabilities.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "19-3033",
+      "21-1019",
+      "21-1093",
+      "25-3099",
+      "11-9151",
+      "13-1071"
+    ]
+  },
+  {
+    "name": "Elk Grove Unified School District",
+    "sector": "Education",
+    "description": "The Elk Grove Unified School District is a large public school district serving students in Elk Grove, California.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9032",
+      "25-2021",
+      "25-2022",
+      "25-2052",
+      "25-9045",
+      "13-1071",
+      "21-1012",
+      "25-9031"
+    ]
+  },
+  {
+    "name": "Resort at Squaw Creek",
+    "sector": "Hospitality & Food Service",
+    "description": "The Resort at Squaw Creek is a luxury resort offering lodging, dining, golf, and ski access in Olympic Valley, California.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9072",
+      "11-9051",
+      "35-1011",
+      "39-1014",
+      "13-1121",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Sky Mountain Charter School",
+    "sector": "Education",
+    "description": "Sky Mountain Charter School provides personalized learning programs for K-12 students through a homeschool model.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9032",
+      "25-2021",
+      "25-2022",
+      "25-2052",
+      "25-3041",
+      "25-9031",
+      "13-1071"
+    ]
+  },
+  {
+    "name": "Sierra-at-Tahoe Resort",
+    "sector": "Hospitality & Food Service",
+    "description": "Sierra-at-Tahoe Resort is a ski resort offering winter sports and summer activities near Lake Tahoe.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9072",
+      "39-1014",
+      "39-7010",
+      "33-9092",
+      "13-1121",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "University of California, Davis Medical Center",
+    "sector": "Healthcare",
+    "description": "UC Davis Medical Center is a nationally recognized academic medical center providing advanced patient care, research, and education.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9111",
+      "29-1141",
+      "29-1215",
+      "29-2061",
+      "31-1131",
+      "29-2072",
+      "13-1071",
+      "19-1042"
+    ]
+  },
+  {
+    "name": "McGuire and Hester",
+    "sector": "Construction",
+    "description": "McGuire and Hester is a heavy civil engineering contractor specializing in infrastructure, site work, and utility projects.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9021",
+      "17-2051",
+      "47-1011",
+      "47-2073",
+      "13-1051",
+      "13-1082",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Spencer Building Maintenance",
+    "sector": "Construction",
+    "description": "Spencer Building Maintenance provides commercial cleaning and maintenance services for various facilities.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "49-9071",
+      "11-3013",
+      "43-9061",
+      "11-9199"
+    ]
+  },
+  {
+    "name": "Swinerton Builders",
+    "sector": "Construction",
+    "description": "Swinerton Builders is a general contractor offering construction management, design-build, and general contracting services across various sectors.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9021",
+      "17-2051",
+      "47-1011",
+      "13-1051",
+      "13-1082",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Sacramento Regional County Sanitation District",
+    "sector": "Construction",
+    "description": "The Sacramento Regional County Sanitation District provides wastewater collection, treatment, and disposal services for the Sacramento region.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "51-8031",
+      "17-2081",
+      "47-2151",
+      "11-3013",
+      "13-1041",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Pepsi Beverages Company",
+    "sector": "Manufacturing",
+    "description": "Pepsi Beverages Company is a division of PepsiCo responsible for the manufacturing, sales, and distribution of PepsiCo beverages.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-2022",
+      "11-3071",
+      "41-4012",
+      "53-1047",
+      "11-3051",
+      "13-1161",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Webex by Cisco",
+    "sector": "Manufacturing",
+    "description": "Webex by Cisco provides video conferencing, online meetings, screen share, and webinars.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "15-1252",
+      "15-1211",
+      "11-3021",
+      "13-1161",
+      "41-4012",
+      "27-4011",
+      "15-1244"
+    ]
+  },
+  {
+    "name": "Micron Technology",
+    "sector": "Manufacturing",
+    "description": "Micron Technology is a global leader in innovative memory and storage solutions.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "15-1252",
+      "17-2071",
+      "11-3021",
+      "11-9041",
+      "51-9162",
+      "15-1211",
+      "13-1082",
+      "51-9061"
+    ]
+  },
+  {
+    "name": "Los Rios Community College District",
+    "sector": "Education",
+    "description": "The Los Rios Community College District oversees four colleges in the Sacramento region, providing higher education and workforce training.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "25-1194",
+      "25-1011",
+      "25-9031",
+      "11-9033",
+      "13-1071",
+      "43-9061",
+      "25-4022"
+    ]
+  },
+  {
+    "name": "Sacramento City Unified School District",
+    "sector": "Education",
+    "description": "The Sacramento City Unified School District is a public school district serving students in Sacramento, California.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9032",
+      "25-2021",
+      "25-2022",
+      "25-2052",
+      "25-9045",
+      "13-1071",
+      "21-1012",
+      "25-9031"
+    ]
+  },
+  {
+    "name": "Twin Rivers Unified School District",
+    "sector": "Education",
+    "description": "The Twin Rivers Unified School District is a public school district serving students in the northern Sacramento area.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9032",
+      "25-2021",
+      "25-2022",
+      "25-2052",
+      "25-9045",
+      "13-1071",
+      "21-1012",
+      "25-9031"
+    ]
+  },
+  {
+    "name": "Holiday Inn Sacramento",
+    "sector": "Hospitality & Food Service",
+    "description": "Holiday Inn Sacramento is a hotel offering lodging, dining, and event facilities for travelers and local guests.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9199",
+      "11-9051",
+      "35-1012",
+      "13-1121",
+      "43-9061",
+      "41-1011"
+    ]
+  },
+  {
+    "name": "Hyatt Regency Sacramento",
+    "sector": "Hospitality & Food Service",
+    "description": "Hyatt Regency Sacramento is a luxury hotel located downtown, offering upscale accommodations, dining, and convention facilities.",
+    "regions": [
+      "Sacramento-Roseville-Folsom"
+    ],
+    "occupations": [
+      "11-9199",
+      "11-9051",
+      "35-1012",
+      "13-1121",
+      "43-9061",
+      "41-1011"
     ]
   }
 ]

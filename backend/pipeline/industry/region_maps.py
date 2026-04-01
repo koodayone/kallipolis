@@ -106,6 +106,7 @@ COLLEGE_REGION_MAP: dict[str, str] = {
     "Orange Coast College": "Anaheim-Santa Ana-Irvine",
     # Sacramento
     "American River College": "Sacramento-Roseville-Folsom",
+    "Sacramento City College": "Sacramento-Roseville-Folsom",
     # Central / South Coast
     "Allan Hancock College": "Santa Maria-Santa Barbara",
     "Santa Barbara City College": "Santa Maria-Santa Barbara",

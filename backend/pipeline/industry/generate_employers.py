@@ -314,12 +314,17 @@ def _merge_employers(
 
 # ── LLM cleanup ───────────────────────────────────────────────────────────
 
-def _llm_cleanup(employers: list[dict], metro: str) -> list[dict]:
-    """Clean employer names and generate descriptions via Gemini Flash.
+def _llm_cleanup(
+    employers: list[dict],
+    metro: str,
+    filtered_occupations: list[dict] | None = None,
+) -> list[dict]:
+    """Clean employer names, generate descriptions, and assign occupations via Gemini Flash.
 
     Fixes abbreviations, removes branch qualifiers, drops non-employer
-    entries, and generates one-sentence descriptions. Deduplicates any
-    entries that collapse to the same name after cleaning.
+    entries, generates one-sentence descriptions, and (when filtered_occupations
+    is provided) assigns 3-8 relevant occupations per employer. Deduplicates
+    any entries that collapse to the same name after cleaning.
     """
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
@@ -332,15 +337,42 @@ def _llm_cleanup(employers: list[dict], metro: str) -> list[dict]:
     client = genai.Client(api_key=api_key)
 
     names = [e["name"] for e in employers]
+
+    # Build occupation assignment section if filtered occupations provided
+    occ_section = ""
+    valid_soc_codes: set[str] = set()
+    if filtered_occupations:
+        valid_soc_codes = {o["soc_code"] for o in filtered_occupations}
+        occ_lines = [f"- {o['soc_code']}: {o['title']}" for o in filtered_occupations]
+        occ_section = (
+            "\n\nAlso assign 3-8 occupations each employer would plausibly hire for, "
+            "selected from this list:\n\n"
+            "AVAILABLE OCCUPATIONS:\n"
+            + "\n".join(occ_lines)
+            + "\n\nReturn the SOC codes in an \"occupations\" array."
+        )
+
+    occ_field = ', "occupations": ["SOC-CODE", ...]' if filtered_occupations else ""
     prompt = (
         f"Here are {len(names)} employer names from the EDD database for the "
         f"{metro} metro area. For each, return either:\n"
-        "- The cleaned canonical employer name + a one-sentence description\n"
-        '- "REMOVE" if it should be dropped (branch duplicate, not a real employer, etc.)\n\n'
-        "Clean up: abbreviations, branch location qualifiers, internal department names.\n"
-        "Keep the name recognizable — don't over-normalize.\n\n"
-        "Return JSON: {\"Original Name\": {\"name\": \"Clean Name\", \"description\": \"...\"} "
-        "or \"Original Name\": \"REMOVE\"}\n\n"
+        "- The cleaned canonical employer name + a one-sentence description"
+        + (" + relevant occupation codes" if filtered_occupations else "") + "\n"
+        '- "REMOVE" if it should be dropped\n\n'
+        "NAMING RULES:\n"
+        "- Expand all abbreviations (Hosp→Hospital, Clg→College, Dist→District, Scrmnt→Sacramento, Chldrn→Children)\n"
+        "- Remove branch qualifiers, location suffixes, and department names (e.g. '- Midtown', 'Department of Pathology', 'Collision Center')\n"
+        "- If an entry is a foundation or auxiliary of a parent org that also appears in the list, REMOVE the foundation entry\n"
+        "- If two entries are clearly the same org (e.g. 'Mercy Hospital' and 'Mercy General Hospital'), keep the more canonical name and REMOVE the duplicate\n"
+        "- Keep the name recognizable — use the name people in the region would know\n\n"
+        "REMOVE entries that are:\n"
+        "- Branch locations when the parent is already listed\n"
+        "- Internal departments, not standalone employers\n"
+        "- Foundations or auxiliaries when the parent hospital/org is listed\n"
+        "- Staffing agencies or temp firms\n"
+        + occ_section + "\n\n"
+        'Return JSON: {"Original Name": {"name": "Clean Name", "description": "..."'
+        + occ_field + '} or "Original Name": "REMOVE"}\n\n'
         "Names:\n" + "\n".join(f"- {n}" for n in names)
     )
 
@@ -364,6 +396,7 @@ def _llm_cleanup(employers: list[dict], metro: str) -> list[dict]:
     kept = []
     removed = 0
     renamed = 0
+    occ_assigned = 0
     for emp in employers:
         action = cleanup.get(emp["name"])
         if action == "REMOVE":
@@ -375,7 +408,15 @@ def _llm_cleanup(employers: list[dict], metro: str) -> list[dict]:
                 renamed += 1
             if action.get("description"):
                 emp["description"] = action["description"]
+            if action.get("occupations") and valid_soc_codes:
+                # Validate SOC codes against filtered list
+                valid = [s for s in action["occupations"] if s in valid_soc_codes]
+                if valid:
+                    emp["soc_codes"] = valid
+                    occ_assigned += 1
         kept.append(emp)
+    if filtered_occupations:
+        logger.info(f"  LLM occupation assignment: {occ_assigned}/{len(kept)} employers")
 
     # Post-rename dedup
     seen: dict[str, dict] = {}
@@ -404,6 +445,7 @@ def generate_for_college(
     target: int = 50,
     scrape: bool = True,
     min_size: str = "G",
+    filtered_occupations: list[dict] | None = None,
 ) -> list[dict]:
     """Run the full employer generation pipeline for one college."""
     from pipeline.industry.edd_employers import search_naics_codes, METRO_COUNTIES
@@ -497,8 +539,8 @@ def generate_for_college(
     for sector, count in sorted(sector_counts.items(), key=lambda x: -x[1]):
         logger.info(f"    {sector}: {count}")
 
-    # ── Stage 5b: LLM cleanup (descriptions + name fixes) ────────────
-    selected = _llm_cleanup(selected, metro)
+    # ── Stage 5b: LLM cleanup (descriptions + name fixes + occupation assignment)
+    selected = _llm_cleanup(selected, metro, filtered_occupations=filtered_occupations)
 
     # ── Stage 6: Format and merge ─────────────────────────────────────
     formatted = _format_for_json(selected, metro)

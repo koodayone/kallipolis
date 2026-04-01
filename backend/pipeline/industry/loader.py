@@ -7,6 +7,8 @@ Usage:
 
 import json
 import logging
+from collections import Counter
+from math import log
 from pathlib import Path
 from typing import Optional
 
@@ -19,7 +21,59 @@ logger = logging.getLogger(__name__)
 BATCH_SIZE = 500
 
 
-def load_industry(driver: Driver, occupations: list[dict], coe_data: Optional[dict] = None) -> dict:
+def filter_occupations_for_college(
+    occupations: list[dict],
+    college_skills: set[str],
+    metro: str,
+    min_relevance: float = 1.5,
+    min_overlap: int = 2,
+) -> list[dict]:
+    """Filter occupations to those meaningfully relevant to a college's curriculum.
+
+    Uses occupation-side IDF weighting: skills required by few occupations
+    carry more signal than ubiquitous skills like "Troubleshooting".
+
+    Args:
+        occupations: Full occupation list from occupations.json.
+        college_skills: Set of skill names the college's courses develop.
+        metro: OEWS metro name to filter by regional employment.
+        min_relevance: Minimum IDF-weighted relevance score.
+        min_overlap: Minimum distinct shared skills.
+
+    Returns:
+        Filtered list of occupation dicts.
+    """
+    # Compute IDF: how many occupations require each skill
+    skill_occ_count: Counter = Counter()
+    for occ in occupations:
+        for skill in occ["skills"]:
+            skill_occ_count[skill] += 1
+
+    filtered = []
+    for occ in occupations:
+        if metro not in occ.get("regions", {}):
+            continue
+        shared = set(occ["skills"]) & college_skills
+        if len(shared) < min_overlap:
+            continue
+        relevance = sum(1 / log(1 + skill_occ_count[s]) for s in shared)
+        if relevance >= min_relevance:
+            filtered.append(occ)
+
+    logger.info(
+        f"Filtered occupations for {metro}: {len(filtered)} "
+        f"(from {sum(1 for o in occupations if metro in o.get('regions', {}))} in metro, "
+        f"{len(occupations)} total)"
+    )
+    return filtered
+
+
+def load_industry(
+    driver: Driver,
+    occupations: list[dict],
+    coe_data: Optional[dict] = None,
+    filtered_soc_codes: Optional[set[str]] = None,
+) -> dict:
     """Load Region, Occupation, and relationship data into Neo4j.
 
     Args:
@@ -28,7 +82,13 @@ def load_industry(driver: Driver, occupations: list[dict], coe_data: Optional[di
         coe_data: Optional COE parsed data dict from coe_parsed.json.
                   If provided, enriches DEMANDS edges with growth_rate,
                   annual_openings, and education_level.
+        filtered_soc_codes: Optional set of SOC codes to load. If provided,
+                  only these occupations are loaded into the graph.
     """
+    if filtered_soc_codes is not None:
+        before = len(occupations)
+        occupations = [o for o in occupations if o["soc_code"] in filtered_soc_codes]
+        logger.info(f"Filtered to {len(occupations)} occupations (from {before})")
     stats = {"regions": 0, "occupations": 0, "demands": 0, "requires_skill": 0, "college_links": 0, "coe_enriched": 0}
 
     with driver.session() as session:
