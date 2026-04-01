@@ -8,8 +8,15 @@ import type { ApiOccupationMatch, ApiLaborMarketOverview, ApiOccupationDetail } 
 import LeafHeader from "@/components/ui/LeafHeader";
 import RisingSun from "@/components/ui/RisingSun";
 import Badge from "@/components/ui/Badge";
+import EntityScrollList from "@/components/ui/EntityScrollList";
+import type { Column } from "@/components/ui/EntityScrollList";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
+
+function deduplicateBySoc<T extends { soc_code: string }>(items: T[]): T[] {
+  const seen = new Set<string>();
+  return items.filter((o) => { if (seen.has(o.soc_code)) return false; seen.add(o.soc_code); return true; });
+}
 
 function formatWage(wage: number | null): string {
   if (!wage) return "—";
@@ -27,6 +34,13 @@ const SUGGESTIONS = [
   "Software development roles",
   "Healthcare occupations",
   "Occupations requiring Data Analysis",
+];
+
+const OCCUPATION_COLUMNS: Column[] = [
+  { label: "Occupation", width: "1fr" },
+  { label: "Wage", width: "100px", align: "right" },
+  { label: "Openings", width: "80px", align: "right" },
+  { label: "Growth", width: "110px", align: "right" },
 ];
 
 function findScrollParent(el: HTMLElement | null): HTMLElement | null {
@@ -56,10 +70,12 @@ export default function OccupationsView({ school, onBack }: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const allOccupations = useMemo(
-    () => (overview?.regions?.flatMap((r) => r.occupations) ?? []).sort((a, b) => a.title.localeCompare(b.title)),
+    () => deduplicateBySoc(overview?.regions?.flatMap((r) => r.occupations) ?? []).sort((a, b) => a.title.localeCompare(b.title)),
     [overview],
   );
-  const regionName = overview?.regions?.[0]?.region ?? "";
+  const regionNames = useMemo(() => overview?.regions?.map((r) => r.region) ?? [], [overview]);
+  const regionLabel = regionNames.length <= 1 ? (regionNames[0] ?? "") : regionNames.join(" · ");
+  const regionName = regionNames[0] ?? "";
 
   useEffect(() => {
     getLaborMarketOverview(school.name)
@@ -79,7 +95,7 @@ export default function OccupationsView({ school, onBack }: Props) {
     setQueryLoading(true);
     try {
       const resp = await queryOccupations(query, school.name);
-      setResults(resp.occupations);
+      setResults(deduplicateBySoc(resp.occupations));
       setQueryMessage(resp.message);
     } catch (e: any) {
       setResults([]);
@@ -96,7 +112,7 @@ export default function OccupationsView({ school, onBack }: Props) {
     setQueryLoading(true);
     try {
       const resp = await queryOccupations(text, school.name);
-      setResults(resp.occupations);
+      setResults(deduplicateBySoc(resp.occupations));
       setQueryMessage(resp.message);
     } catch (e: any) {
       setResults([]);
@@ -135,6 +151,14 @@ export default function OccupationsView({ school, onBack }: Props) {
     setExpandedSocs(new Set());
     setTimeout(() => inputRef.current?.focus(), 100);
   }, []);
+
+  const renderOccupationRow = useCallback((occ: ApiOccupationMatch, i: number) => (
+    <OccupationRow occ={occ} i={i} school={school}
+      expandedSocs={expandedSocs} details={details} loadingSocs={loadingSocs}
+      onExpand={handleExpand} regionName={regionName} regionNames={regionNames} />
+  ), [school, expandedSocs, details, loadingSocs, handleExpand, regionName, regionNames]);
+
+  const occKeyExtractor = useCallback((occ: ApiOccupationMatch) => occ.soc_code, []);
 
   return (
     <div ref={rootRef}>
@@ -190,12 +214,12 @@ export default function OccupationsView({ school, onBack }: Props) {
 
             <div style={{ marginTop: "16px" }}>
               <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.35)", marginBottom: "12px" }}>
-                {allOccupations.length.toLocaleString()} occupations in {regionName}
+                {allOccupations.length.toLocaleString()} occupations in {regionLabel}
               </p>
-              <OccupationList
-                occupations={allOccupations} initialCap={100} school={school}
-                expandedSocs={expandedSocs} details={details} loadingSocs={loadingSocs}
-                onExpand={handleExpand} regionName={regionName}
+              <EntityScrollList
+                items={allOccupations} initialCap={100} batchSize={100}
+                columns={OCCUPATION_COLUMNS} renderRow={renderOccupationRow}
+                keyExtractor={occKeyExtractor} entityName="occupations" school={school}
               />
             </div>
           </motion.div>
@@ -243,10 +267,10 @@ export default function OccupationsView({ school, onBack }: Props) {
                   {results.length.toLocaleString()} occupation{results.length !== 1 ? "s" : ""} found
                 </p>
 
-                <OccupationList
-                  occupations={results} initialCap={200} school={school}
-                  expandedSocs={expandedSocs} details={details} loadingSocs={loadingSocs}
-                  onExpand={handleExpand} regionName={regionName}
+                <EntityScrollList
+                  items={results} initialCap={200} batchSize={100}
+                  columns={OCCUPATION_COLUMNS} renderRow={renderOccupationRow}
+                  keyExtractor={occKeyExtractor} entityName="occupations" school={school}
                 />
               </>
             )}
@@ -259,10 +283,10 @@ export default function OccupationsView({ school, onBack }: Props) {
 
 /* ── Occupation Row ────────────────────────────────────────────────────── */
 
-const OccupationRow = memo(function OccupationRow({ occ, i, school, expandedSocs, details, loadingSocs, onExpand, regionName }: {
+const OccupationRow = memo(function OccupationRow({ occ, i, school, expandedSocs, details, loadingSocs, onExpand, regionName, regionNames }: {
   occ: ApiOccupationMatch; i: number; school: SchoolConfig;
   expandedSocs: Set<string>; details: Record<string, ApiOccupationDetail>;
-  loadingSocs: Set<string>; onExpand: (occ: ApiOccupationMatch) => void; regionName: string;
+  loadingSocs: Set<string>; onExpand: (occ: ApiOccupationMatch) => void; regionName: string; regionNames: string[];
 }) {
   const isOpen = expandedSocs.has(occ.soc_code);
   const hasMounted = useRef(false);
@@ -319,26 +343,6 @@ const OccupationRow = memo(function OccupationRow({ occ, i, school, expandedSocs
               {loadingSocs.has(occ.soc_code) && <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Loading...</p>}
               {details[occ.soc_code] && (() => { const detail = details[occ.soc_code]; return (
                 <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-                  {/* Summary stats */}
-                  <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", alignItems: "center" }}>
-                    {occ.employment != null && (
-                      <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.5)" }}>
-                        <span style={{ color: "rgba(255,255,255,0.7)", fontWeight: 500 }}>{occ.employment.toLocaleString()}</span> jobs in region
-                      </span>
-                    )}
-                    <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.5)" }}>
-                      <span style={{ color: school.brandColorLight, fontWeight: 500 }}>{occ.matching_skills}</span> aligned skills
-                    </span>
-                    {occ.education_level && (
-                      <span style={{
-                        fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.4)",
-                        background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)",
-                        borderRadius: "100px", padding: "3px 10px",
-                      }}>
-                        {occ.education_level}
-                      </span>
-                    )}
-                  </div>
                   {detail.description && (
                     <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.55)", lineHeight: 1.6, margin: 0 }}>
                       {detail.description}
@@ -394,13 +398,16 @@ const OccupationRow = memo(function OccupationRow({ occ, i, school, expandedSocs
                       </>
                     );
                   })()}
-                  {detail.regions.length > 0 && (
+                  {detail.regions.length > 0 && (() => {
+                    const localRegions = detail.regions.filter((r: any) => regionNames.includes(r.region));
+                    if (localRegions.length === 0) return null;
+                    return (
                     <div>
                       <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", display: "block", marginBottom: "8px" }}>
                         Regional Employment
                       </span>
                       <div style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.45)", lineHeight: 1.8 }}>
-                        {[...detail.regions].sort((a: any, b: any) => (a.region === regionName ? -1 : b.region === regionName ? 1 : 0)).map((r: any) => (
+                        {localRegions.map((r: any) => (
                           <div key={r.region}>{r.region}: <span style={{ color: "rgba(255,255,255,0.65)", fontWeight: 500 }}>{r.employment.toLocaleString()}</span> currently employed</div>
                         ))}
                       </div>
@@ -408,7 +415,8 @@ const OccupationRow = memo(function OccupationRow({ occ, i, school, expandedSocs
                         Employment figures from the California Employment Development Department, Occupational Employment and Wage Statistics (OEWS) survey, May 2024.
                       </p>
                     </div>
-                  )}
+                    );
+                  })()}
                 </div>
               ); })()}
             </div>
@@ -419,76 +427,3 @@ const OccupationRow = memo(function OccupationRow({ occ, i, school, expandedSocs
   );
 });
 
-/* ── Occupation List (shared) ──────────────────────────────────────────── */
-
-function OccupationList({
-  occupations, initialCap, school, expandedSocs, details, loadingSocs, onExpand, regionName,
-}: {
-  occupations: ApiOccupationMatch[];
-  initialCap: number;
-  school: SchoolConfig;
-  expandedSocs: Set<string>;
-  details: Record<string, ApiOccupationDetail>;
-  loadingSocs: Set<string>;
-  onExpand: (occ: ApiOccupationMatch) => void;
-  regionName: string;
-}) {
-  const [visibleCount, setVisibleCount] = useState(initialCap);
-  const sentinelRef = useRef<HTMLDivElement>(null);
-
-  // Reset visible count when occupations change (e.g., new search)
-  useEffect(() => { setVisibleCount(initialCap); }, [occupations, initialCap]);
-
-  // Infinite scroll via IntersectionObserver
-  useEffect(() => {
-    const sentinel = sentinelRef.current;
-    if (!sentinel) return;
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && visibleCount < occupations.length) {
-        setVisibleCount((prev) => Math.min(prev + 100, occupations.length));
-      }
-    }, { threshold: 0.1 });
-    observer.observe(sentinel);
-    return () => observer.disconnect();
-  }, [visibleCount, occupations.length]);
-
-  const visible = occupations.slice(0, visibleCount);
-
-  // Column headers
-  const hdrStyle: React.CSSProperties = { fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 };
-  const columnHeaders = (
-    <div style={{
-      display: "grid", gridTemplateColumns: "24px 1fr 100px 80px 110px",
-      padding: "12px 16px", gap: "10px", alignItems: "center",
-    }}>
-      <span />
-      <span style={hdrStyle}>Occupation</span>
-      <span style={{ ...hdrStyle, textAlign: "right" }}>Wage</span>
-      <span style={{ ...hdrStyle, textAlign: "right" }}>Openings</span>
-      <span style={{ ...hdrStyle, textAlign: "right" }}>Growth</span>
-    </div>
-  );
-
-  return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-      {columnHeaders}
-      {visible.map((occ, i) => (
-        <OccupationRow key={occ.soc_code} occ={occ} i={i} school={school}
-          expandedSocs={expandedSocs} details={details} loadingSocs={loadingSocs}
-          onExpand={onExpand} regionName={regionName} />
-      ))}
-      {visibleCount < occupations.length && (
-        <div ref={sentinelRef} style={{ padding: "14px", textAlign: "center" }}>
-          <p style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.25)" }}>
-            Showing {visibleCount} of {occupations.length.toLocaleString()} occupations...
-          </p>
-        </div>
-      )}
-      {occupations.length === 0 && (
-        <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.35)", padding: "40px 0", textAlign: "center" }}>
-          No occupations match that query. Try a different question.
-        </p>
-      )}
-    </div>
-  );
-}

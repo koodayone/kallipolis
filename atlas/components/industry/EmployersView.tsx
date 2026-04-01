@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, memo, useMemo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { SchoolConfig } from "@/lib/schoolConfig";
 import { getEmployers, getEmployerDetail, queryEmployers } from "@/lib/api";
@@ -8,6 +8,8 @@ import type { ApiEmployerMatch, ApiEmployerDetail } from "@/lib/api";
 import LeafHeader from "@/components/ui/LeafHeader";
 import RisingSun from "@/components/ui/RisingSun";
 import Badge from "@/components/ui/Badge";
+import EntityScrollList from "@/components/ui/EntityScrollList";
+import type { Column } from "@/components/ui/EntityScrollList";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
@@ -17,6 +19,13 @@ const SUGGESTIONS = [
   "Employers with most skill alignment",
   "Who hires for Programming?",
   "Manufacturing sector",
+];
+
+const EMPLOYER_COLUMNS: Column[] = [
+  { label: "Employer", width: "1fr" },
+  { label: "Sector", width: "180px" },
+  { label: "Roles", width: "70px", align: "center" },
+  { label: "Skills", width: "85px" },
 ];
 
 function findScrollParent(el: HTMLElement | null): HTMLElement | null {
@@ -45,7 +54,10 @@ export default function EmployersView({ school, onBack }: Props) {
   const [queryMessage, setQueryMessage] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const allEmployers = [...employers].sort((a, b) => a.name.localeCompare(b.name));
+  const allEmployers = useMemo(
+    () => [...employers].sort((a, b) => a.name.localeCompare(b.name)),
+    [employers],
+  );
 
   useEffect(() => {
     getEmployers(school.name)
@@ -123,6 +135,14 @@ export default function EmployersView({ school, onBack }: Props) {
     setTimeout(() => inputRef.current?.focus(), 100);
   }, []);
 
+  const renderEmployerRow = useCallback((emp: ApiEmployerMatch, i: number) => (
+    <EmployerRow emp={emp} i={i} school={school}
+      expandedNames={expandedNames} employerDetails={employerDetails} loadingNames={loadingNames}
+      onExpand={handleExpand} />
+  ), [school, expandedNames, employerDetails, loadingNames, handleExpand]);
+
+  const empKeyExtractor = useCallback((emp: ApiEmployerMatch) => emp.name, []);
+
   return (
     <div ref={rootRef}>
       <LeafHeader school={school} onBack={onBack} parentShape="tetrahedron" />
@@ -179,10 +199,10 @@ export default function EmployersView({ school, onBack }: Props) {
               <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.35)", marginBottom: "12px" }}>
                 {allEmployers.length} employers
               </p>
-              <EmployerList
-                employers={allEmployers} initialCap={50} school={school}
-                expandedNames={expandedNames} employerDetails={employerDetails} loadingNames={loadingNames}
-                onExpand={handleExpand}
+              <EntityScrollList
+                items={allEmployers} initialCap={50} batchSize={50}
+                columns={EMPLOYER_COLUMNS} renderRow={renderEmployerRow}
+                keyExtractor={empKeyExtractor} entityName="employers" school={school}
               />
             </div>
           </motion.div>
@@ -232,10 +252,10 @@ export default function EmployersView({ school, onBack }: Props) {
                   {results.length} employer{results.length !== 1 ? "s" : ""} found
                 </p>
 
-                <EmployerList
-                  employers={results} initialCap={50} school={school}
-                  expandedNames={expandedNames} employerDetails={employerDetails} loadingNames={loadingNames}
-                  onExpand={handleExpand}
+                <EntityScrollList
+                  items={results} initialCap={50} batchSize={50}
+                  columns={EMPLOYER_COLUMNS} renderRow={renderEmployerRow}
+                  keyExtractor={empKeyExtractor} entityName="employers" school={school}
                 />
               </>
             )}
@@ -246,209 +266,152 @@ export default function EmployersView({ school, onBack }: Props) {
   );
 }
 
-/* ── Employer List ─────────────────────────────────────────────────────── */
+/* ── Employer Row ─────────────────────────────────────────────────────── */
 
-function EmployerList({
-  employers, initialCap, school, expandedNames, employerDetails, loadingNames, onExpand,
-}: {
-  employers: ApiEmployerMatch[];
-  initialCap: number;
-  school: SchoolConfig;
-  expandedNames: Set<string>;
-  employerDetails: Record<string, ApiEmployerDetail>;
-  loadingNames: Set<string>;
-  onExpand: (emp: ApiEmployerMatch) => void;
+const EmployerRow = memo(function EmployerRow({ emp, i, school, expandedNames, employerDetails, loadingNames, onExpand }: {
+  emp: ApiEmployerMatch; i: number; school: SchoolConfig;
+  expandedNames: Set<string>; employerDetails: Record<string, ApiEmployerDetail>;
+  loadingNames: Set<string>; onExpand: (emp: ApiEmployerMatch) => void;
 }) {
-  const [visibleCount, setVisibleCount] = useState(initialCap);
-  const sentinelRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => { setVisibleCount(initialCap); }, [employers, initialCap]);
-
-  useEffect(() => {
-    const sentinel = sentinelRef.current;
-    if (!sentinel) return;
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && visibleCount < employers.length) {
-        setVisibleCount((prev) => Math.min(prev + 50, employers.length));
-      }
-    }, { threshold: 0.1 });
-    observer.observe(sentinel);
-    return () => observer.disconnect();
-  }, [visibleCount, employers.length]);
-
-  const visible = employers.slice(0, visibleCount);
-
+  const isOpen = expandedNames.has(emp.name);
+  const detail = employerDetails[emp.name];
+  const isLoading = loadingNames.has(emp.name);
+  const hasMounted = useRef(false);
+  useEffect(() => { hasMounted.current = true; }, []);
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-      {/* Column headers */}
-      <div style={{
-        display: "grid", gridTemplateColumns: "24px 1fr 180px 70px 85px",
-        padding: "12px 16px", gap: "10px", alignItems: "center",
-      }}>
-        <span />
-        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Employer</span>
-        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Sector</span>
-        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, textAlign: "center" }}>Roles</span>
-        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Skills</span>
-      </div>
+    <div>
+      <motion.button
+        initial={hasMounted.current ? false : { opacity: 0, y: 6 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.2, delay: hasMounted.current ? 0 : Math.min(i * 0.015, 0.3) }}
+        onClick={() => onExpand(emp)}
+        style={{
+          width: "100%", textAlign: "left",
+          display: "grid", gridTemplateColumns: "24px 1fr 180px 70px 85px",
+          padding: "12px 16px", gap: "10px", alignItems: "center",
+          background: isOpen ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
+          border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
+          cursor: "pointer", transition: "background 0.15s",
+        }}
+        onMouseEnter={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)"; }}
+        onMouseLeave={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)"; }}
+      >
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+          style={{ transform: isOpen ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>
+          <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+        <span style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>
+          {emp.name}
+        </span>
+        <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)" }}>
+          {emp.sector || "—"}
+        </span>
+        <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)", display: "flex", justifyContent: "center" }}>
+          {emp.occupations.length}
+        </span>
+        <Badge style={{
+          color: school.brandColorLight,
+          background: `${school.brandColorLight}20`,
+          border: `1px solid ${school.brandColorLight}30`,
+          fontSize: "11px", whiteSpace: "nowrap",
+        }}>
+          {emp.matching_skills} skills
+        </Badge>
+      </motion.button>
 
-      {visible.map((emp, i) => {
-        const isOpen = expandedNames.has(emp.name);
-        const detail = employerDetails[emp.name];
-        const isLoading = loadingNames.has(emp.name);
-        return (
-          <div key={emp.name}>
-            <motion.button
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.2, delay: Math.min(i * 0.015, 0.3) }}
-              onClick={() => onExpand(emp)}
-              style={{
-                width: "100%", textAlign: "left",
-                display: "grid", gridTemplateColumns: "24px 1fr 180px 70px 85px",
-                padding: "12px 16px", gap: "10px", alignItems: "center",
-                background: isOpen ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
-                border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
-                cursor: "pointer", transition: "background 0.15s",
-              }}
-              onMouseEnter={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)"; }}
-              onMouseLeave={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)"; }}
-            >
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                style={{ transform: isOpen ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>
-                <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              <span style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>
-                {emp.name}
-              </span>
-              <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)" }}>
-                {emp.sector || "—"}
-              </span>
-              <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)", display: "flex", justifyContent: "center" }}>
-                {emp.occupations.length}
-              </span>
-              <Badge style={{
-                color: school.brandColorLight,
-                background: `${school.brandColorLight}20`,
-                border: `1px solid ${school.brandColorLight}30`,
-                fontSize: "11px", whiteSpace: "nowrap",
-              }}>
-                {emp.matching_skills} skills
-              </Badge>
-            </motion.button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            style={{ overflow: "hidden", background: "rgba(255,255,255,0.02)" }}
+          >
+            <div style={{ padding: "16px 20px 24px" }}>
+              {isLoading && <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Loading...</p>}
+              {detail && (
+                <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+                  {detail.regions.length > 0 && (
+                    <div style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)" }}>
+                      {detail.sector && <span style={{ color: "rgba(255,255,255,0.55)", fontWeight: 500 }}>{detail.sector}</span>}
+                      {detail.sector && detail.regions.length > 0 && " · "}
+                      {detail.regions.join(" · ")}
+                    </div>
+                  )}
+                  {detail.description && (
+                    <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.7)", lineHeight: 1.55, margin: 0 }}>
+                      {detail.description}
+                    </p>
+                  )}
+                  {detail.occupations.map((occ: any) => {
+                    const aligned = (occ.skills || []).filter((s: any) => s.developed);
+                    const gaps = (occ.skills || []).filter((s: any) => !s.developed);
+                    return (
+                      <div key={occ.soc_code} style={{
+                        background: "rgba(255,255,255,0.03)", borderRadius: "8px", padding: "16px 18px",
+                      }}>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: aligned.length > 0 || gaps.length > 0 ? "12px" : 0 }}>
+                          <div>
+                            <div style={{ fontFamily: FONT, fontSize: "14px", fontWeight: 500, color: "#f0eef4" }}>
+                              {occ.title}
+                            </div>
+                            {occ.annual_wage && (
+                              <div style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)", marginTop: "2px" }}>
+                                ${occ.annual_wage.toLocaleString()} annual
+                              </div>
+                            )}
+                          </div>
+                          <Badge style={{
+                            color: school.brandColorLight,
+                            background: `${school.brandColorLight}20`,
+                            border: `1px solid ${school.brandColorLight}30`,
+                            fontSize: "11px",
+                          }}>
+                            {aligned.length}/{occ.skills?.length || 0} skills
+                          </Badge>
+                        </div>
 
-            <AnimatePresence>
-              {isOpen && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.25 }}
-                  style={{ overflow: "hidden", background: "rgba(255,255,255,0.02)" }}
-                >
-                  <div style={{ padding: "16px 20px 24px" }}>
-                    {isLoading && <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Loading...</p>}
-                    {detail && (
-                      <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-                        {/* Regions */}
-                        {detail.regions.length > 0 && (
-                          <div style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)" }}>
-                            {detail.sector && <span style={{ color: "rgba(255,255,255,0.55)", fontWeight: 500 }}>{detail.sector}</span>}
-                            {detail.sector && detail.regions.length > 0 && " · "}
-                            {detail.regions.join(" · ")}
+                        {aligned.length > 0 && (
+                          <div style={{ display: "flex", flexDirection: "column", gap: "5px", marginBottom: gaps.length > 0 ? "10px" : 0 }}>
+                            {aligned.map((skill: any) => (
+                              <div key={skill.skill} style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                  <circle cx="6" cy="6" r="5" stroke={school.brandColorLight} strokeWidth="1" />
+                                  <path d="M4 6l1.5 1.5L8 5" stroke={school.brandColorLight} strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                                <span style={{ fontFamily: FONT, fontSize: "12px", color: school.brandColorLight }}>{skill.skill}</span>
+                                {skill.courses?.length > 0 && (
+                                  <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.3)" }}>
+                                    — {skill.courses.slice(0, 3).map((c: any) => c.code).join(", ")}
+                                  </span>
+                                )}
+                              </div>
+                            ))}
                           </div>
                         )}
-                        {/* Description */}
-                        {detail.description && (
-                          <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.7)", lineHeight: 1.55, margin: 0 }}>
-                            {detail.description}
-                          </p>
+
+                        {gaps.length > 0 && (
+                          <div style={{ display: "flex", flexWrap: "wrap", gap: "5px" }}>
+                            {gaps.map((skill: any) => (
+                              <span key={skill.skill} style={{
+                                fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.3)",
+                                background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)",
+                                borderRadius: "100px", padding: "3px 10px",
+                              }}>{skill.skill}</span>
+                            ))}
+                          </div>
                         )}
-
-                        {/* Occupations */}
-                        {detail.occupations.map((occ: any) => {
-                          const aligned = (occ.skills || []).filter((s: any) => s.developed);
-                          const gaps = (occ.skills || []).filter((s: any) => !s.developed);
-                          return (
-                            <div key={occ.soc_code} style={{
-                              background: "rgba(255,255,255,0.03)", borderRadius: "8px", padding: "16px 18px",
-                            }}>
-                              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: aligned.length > 0 || gaps.length > 0 ? "12px" : 0 }}>
-                                <div>
-                                  <div style={{ fontFamily: FONT, fontSize: "14px", fontWeight: 500, color: "#f0eef4" }}>
-                                    {occ.title}
-                                  </div>
-                                  {occ.annual_wage && (
-                                    <div style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)", marginTop: "2px" }}>
-                                      ${occ.annual_wage.toLocaleString()} annual
-                                    </div>
-                                  )}
-                                </div>
-                                <Badge style={{
-                                  color: school.brandColorLight,
-                                  background: `${school.brandColorLight}20`,
-                                  border: `1px solid ${school.brandColorLight}30`,
-                                  fontSize: "11px",
-                                }}>
-                                  {aligned.length}/{occ.skills?.length || 0} skills
-                                </Badge>
-                              </div>
-
-                              {aligned.length > 0 && (
-                                <div style={{ display: "flex", flexDirection: "column", gap: "5px", marginBottom: gaps.length > 0 ? "10px" : 0 }}>
-                                  {aligned.map((skill: any) => (
-                                    <div key={skill.skill} style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                                        <circle cx="6" cy="6" r="5" stroke={school.brandColorLight} strokeWidth="1" />
-                                        <path d="M4 6l1.5 1.5L8 5" stroke={school.brandColorLight} strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
-                                      </svg>
-                                      <span style={{ fontFamily: FONT, fontSize: "12px", color: school.brandColorLight }}>{skill.skill}</span>
-                                      {skill.courses?.length > 0 && (
-                                        <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.3)" }}>
-                                          — {skill.courses.slice(0, 3).map((c: any) => c.code).join(", ")}
-                                        </span>
-                                      )}
-                                    </div>
-                                  ))}
-                                </div>
-                              )}
-
-                              {gaps.length > 0 && (
-                                <div style={{ display: "flex", flexWrap: "wrap", gap: "5px" }}>
-                                  {gaps.map((skill: any) => (
-                                    <span key={skill.skill} style={{
-                                      fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.3)",
-                                      background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)",
-                                      borderRadius: "100px", padding: "3px 10px",
-                                    }}>{skill.skill}</span>
-                                  ))}
-                                </div>
-                              )}
-                            </div>
-                          );
-                        })}
                       </div>
-                    )}
-                  </div>
-                </motion.div>
+                    );
+                  })}
+                </div>
               )}
-            </AnimatePresence>
-          </div>
-        );
-      })}
-
-      {visibleCount < employers.length && (
-        <div ref={sentinelRef} style={{ padding: "14px", textAlign: "center" }}>
-          <p style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.25)" }}>
-            Showing {visibleCount} of {employers.length} employers...
-          </p>
-        </div>
-      )}
-      {employers.length === 0 && (
-        <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.35)", padding: "40px 0", textAlign: "center" }}>
-          No employers match that query. Try a different question.
-        </p>
-      )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
-}
+});
+

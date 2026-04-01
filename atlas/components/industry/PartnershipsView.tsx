@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, memo, useMemo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { SchoolConfig } from "@/lib/schoolConfig";
 import {
@@ -15,6 +15,8 @@ import { getSavedProposals, removeProposal, type SavedProposal } from "@/lib/sav
 import LeafHeader from "@/components/ui/LeafHeader";
 import RisingSun from "@/components/ui/RisingSun";
 import Badge from "@/components/ui/Badge";
+import EntityScrollList from "@/components/ui/EntityScrollList";
+import type { Column } from "@/components/ui/EntityScrollList";
 import ProposalFlow from "./ProposalFlow";
 import ProposalCard from "@/components/domains/ProposalCard";
 
@@ -30,6 +32,11 @@ const SUGGESTIONS = [
 
 type Phase = "selection" | "draft" | "generating" | "complete";
 type Mode = "build" | "manage";
+
+const PARTNERSHIP_COLUMNS: Column[] = [
+  { label: "Employer", width: "1fr" },
+  { label: "Sector", width: "160px" },
+];
 
 function findScrollParent(el: HTMLElement | null): HTMLElement | null {
   while (el) {
@@ -74,14 +81,18 @@ export default function PartnershipsView({ school, onBack }: Props) {
   const [expandedSavedId, setExpandedSavedId] = useState<string | null>(null);
   const [manageQuery, setManageQuery] = useState("");
 
-  const allOpportunities = [...landscape].sort((a, b) => a.name.localeCompare(b.name));
+  const allOpportunities = useMemo(
+    () => [...landscape].sort((a, b) => a.name.localeCompare(b.name)),
+    [landscape],
+  );
 
-  const filteredOpportunities = query.trim()
-    ? allOpportunities.filter((opp) => {
-        const q = query.toLowerCase();
-        return opp.name.toLowerCase().includes(q) || (opp.sector || "").toLowerCase().includes(q);
-      })
-    : allOpportunities;
+  const filteredOpportunities = useMemo(() => {
+    if (!query.trim()) return allOpportunities;
+    const q = query.toLowerCase();
+    return allOpportunities.filter((opp) =>
+      opp.name.toLowerCase().includes(q) || (opp.sector || "").toLowerCase().includes(q),
+    );
+  }, [allOpportunities, query]);
 
   useEffect(() => {
     getPartnershipLandscape(school.name)
@@ -225,6 +236,14 @@ export default function PartnershipsView({ school, onBack }: Props) {
     setProposal(null);
     setProposalError(null);
   }, []);
+
+  const renderPartnershipRow = useCallback((opp: ApiPartnershipOpportunity, i: number) => (
+    <PartnershipRow opp={opp} i={i} school={school}
+      expandedNames={expandedNames} pipelineData={pipelineData} pipelineLoading={pipelineLoading}
+      employerOccupations={employerOccupations} onExpand={handleExpand} onDraft={handleDraftCTA} />
+  ), [school, expandedNames, pipelineData, pipelineLoading, employerOccupations, handleExpand, handleDraftCTA]);
+
+  const partnershipKeyExtractor = useCallback((opp: ApiPartnershipOpportunity) => opp.name, []);
 
   return (
     <div ref={rootRef}>
@@ -412,10 +431,10 @@ export default function PartnershipsView({ school, onBack }: Props) {
                       />
                     </div>
                   </div>
-                  <PartnershipList
-                    opportunities={filteredOpportunities} initialCap={50} school={school}
-                    expandedNames={expandedNames} pipelineData={pipelineData} pipelineLoading={pipelineLoading}
-                    employerOccupations={employerOccupations} onExpand={handleExpand} onDraft={handleDraftCTA}
+                  <EntityScrollList
+                    items={filteredOpportunities} initialCap={50} batchSize={50}
+                    columns={PARTNERSHIP_COLUMNS} renderRow={renderPartnershipRow}
+                    keyExtractor={partnershipKeyExtractor} entityName="partnership opportunities" school={school}
                   />
                 </motion.div>
               )}
@@ -451,170 +470,119 @@ export default function PartnershipsView({ school, onBack }: Props) {
 }
 
 
-/* ── Partnership List ────────────────────────────────────────────────────── */
+/* ── Partnership Row ────────────────────────────────────────────────────── */
 
-function PartnershipList({
-  opportunities, initialCap, school, expandedNames, pipelineData, pipelineLoading,
-  employerOccupations, onExpand, onDraft,
-}: {
-  opportunities: ApiPartnershipOpportunity[];
-  initialCap: number;
-  school: SchoolConfig;
-  expandedNames: Set<string>;
-  pipelineData: Record<string, number>;
-  pipelineLoading: Set<string>;
+const PartnershipRow = memo(function PartnershipRow({ opp, i, school, expandedNames, pipelineData, pipelineLoading, employerOccupations, onExpand, onDraft }: {
+  opp: ApiPartnershipOpportunity; i: number; school: SchoolConfig;
+  expandedNames: Set<string>; pipelineData: Record<string, number>; pipelineLoading: Set<string>;
   employerOccupations: Record<string, Array<{ title: string; annual_wage: number | null }>>;
-  onExpand: (opp: ApiPartnershipOpportunity) => void;
-  onDraft: (opp: ApiPartnershipOpportunity) => void;
+  onExpand: (opp: ApiPartnershipOpportunity) => void; onDraft: (opp: ApiPartnershipOpportunity) => void;
 }) {
-  const [visibleCount, setVisibleCount] = useState(initialCap);
-  const sentinelRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => { setVisibleCount(initialCap); }, [initialCap]);
-
-  useEffect(() => {
-    const sentinel = sentinelRef.current;
-    if (!sentinel) return;
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && visibleCount < opportunities.length) {
-        setVisibleCount((prev) => Math.min(prev + 50, opportunities.length));
-      }
-    }, { threshold: 0.1 });
-    observer.observe(sentinel);
-    return () => observer.disconnect();
-  }, [visibleCount, opportunities.length]);
-
-  const visible = opportunities.slice(0, visibleCount);
-
+  const isOpen = expandedNames.has(opp.name);
+  const hasMounted = useRef(false);
+  useEffect(() => { hasMounted.current = true; }, []);
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-      {/* Column headers */}
-      <div style={{
-        display: "grid", gridTemplateColumns: "24px 1fr 160px",
-        padding: "12px 16px", gap: "10px", alignItems: "center",
-      }}>
-        <span />
-        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Employer</span>
-        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Sector</span>
-      </div>
+    <div>
+      <motion.button
+        initial={hasMounted.current ? false : { opacity: 0, y: 6 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.2, delay: hasMounted.current ? 0 : Math.min(i * 0.015, 0.3) }}
+        onClick={() => onExpand(opp)}
+        style={{
+          width: "100%", textAlign: "left",
+          display: "grid", gridTemplateColumns: "24px 1fr 160px",
+          padding: "12px 16px", gap: "10px", alignItems: "center",
+          background: isOpen ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
+          border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
+          cursor: "pointer", transition: "background 0.15s",
+        }}
+        onMouseEnter={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)"; }}
+        onMouseLeave={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)"; }}
+      >
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+          style={{ transform: isOpen ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>
+          <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+        <span style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>{opp.name}</span>
+        <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)" }}>{opp.sector || "—"}</span>
+      </motion.button>
 
-      {visible.map((opp, i) => {
-        const isOpen = expandedNames.has(opp.name);
-        return (
-          <div key={opp.name}>
-            <button
-              onClick={() => onExpand(opp)}
-              style={{
-                width: "100%", textAlign: "left",
-                display: "grid", gridTemplateColumns: "24px 1fr 160px",
-                padding: "12px 16px", gap: "10px", alignItems: "center",
-                background: isOpen ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
-                border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
-                cursor: "pointer", transition: "background 0.15s",
-              }}
-              onMouseEnter={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)"; }}
-              onMouseLeave={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)"; }}
-            >
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                style={{ transform: isOpen ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>
-                <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              <span style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>{opp.name}</span>
-              <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)" }}>{opp.sector || "—"}</span>
-            </button>
-
-            {isOpen && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }}
-                transition={{ duration: 0.25 }}
-                style={{ overflow: "hidden", background: "rgba(255,255,255,0.02)" }}
-              >
-                <div style={{ padding: "16px 20px 24px" }}>
-                  {!(employerOccupations[opp.name] && pipelineData[opp.name] !== undefined) ? (
-                    <div style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.3)", padding: "8px 0" }}>
-                      Loading...
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            style={{ overflow: "hidden", background: "rgba(255,255,255,0.02)" }}
+          >
+            <div style={{ padding: "16px 20px 24px" }}>
+              {!(employerOccupations[opp.name] && pipelineData[opp.name] !== undefined) ? (
+                <div style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.3)", padding: "8px 0" }}>
+                  Loading...
+                </div>
+              ) : (<>
+                {opp.description && (
+                  <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.55)", lineHeight: 1.55, margin: "0 0 14px" }}>
+                    {opp.description}
+                  </p>
+                )}
+                <div style={{ marginBottom: "16px" }}>
+                  <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", display: "block", marginBottom: "8px" }}>
+                    Relevant Occupations
+                  </span>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                    {employerOccupations[opp.name].map((occ) => (
+                      <div key={occ.title} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontFamily: FONT, fontSize: "13px" }}>
+                        <span style={{ color: "rgba(255,255,255,0.7)" }}>{occ.title}</span>
+                        {occ.annual_wage && (
+                          <span style={{ color: "rgba(255,255,255,0.4)", fontWeight: 500 }}>${occ.annual_wage.toLocaleString()}/yr</span>
+                        )}
                       </div>
-                    ) : (<>
-                    {opp.description && (
-                      <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.55)", lineHeight: 1.55, margin: "0 0 14px" }}>
-                        {opp.description}
-                      </p>
-                    )}
-                    {/* Occupations & Wages */}
-                    <div style={{ marginBottom: "16px" }}>
-                      <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", display: "block", marginBottom: "8px" }}>
-                        Relevant Occupations
+                    ))}
+                  </div>
+                </div>
+                <div style={{ marginBottom: "16px" }}>
+                  <p style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)", lineHeight: 1.5, margin: 0 }}>
+                    <span style={{ color: "rgba(255,255,255,0.7)", fontWeight: 500 }}>{pipelineData[opp.name].toLocaleString()}</span>
+                    {" "}students have 3 or more skills relevant to this employer&apos;s hiring needs
+                  </p>
+                  {opp.aligned_skills.length > 0 && (
+                    <div style={{ marginTop: "10px" }}>
+                      <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.3)", display: "block", marginBottom: "6px" }}>
+                        Top skills across this employer&apos;s roles
                       </span>
-                      <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                        {employerOccupations[opp.name].map((occ) => (
-                          <div key={occ.title} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontFamily: FONT, fontSize: "13px" }}>
-                            <span style={{ color: "rgba(255,255,255,0.7)" }}>{occ.title}</span>
-                            {occ.annual_wage && (
-                              <span style={{ color: "rgba(255,255,255,0.4)", fontWeight: 500 }}>${occ.annual_wage.toLocaleString()}/yr</span>
-                            )}
-                          </div>
+                      <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+                        {opp.aligned_skills.slice(0, 4).map((skill) => (
+                          <span key={skill} style={{
+                            fontFamily: FONT, fontSize: "11px", color: school.brandColorLight,
+                            background: `${school.brandColorLight}12`, border: `1px solid ${school.brandColorLight}25`,
+                            borderRadius: "100px", padding: "4px 10px",
+                          }}>{skill}</span>
                         ))}
                       </div>
                     </div>
-                    {/* Student context */}
-                    <div style={{ marginBottom: "16px" }}>
-                      <p style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)", lineHeight: 1.5, margin: 0 }}>
-                        <span style={{ color: "rgba(255,255,255,0.7)", fontWeight: 500 }}>{pipelineData[opp.name].toLocaleString()}</span>
-                        {" "}students have 3 or more skills relevant to this employer&apos;s hiring needs
-                      </p>
-                      {opp.aligned_skills.length > 0 && (
-                        <div style={{ marginTop: "10px" }}>
-                          <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.3)", display: "block", marginBottom: "6px" }}>
-                            Top skills across this employer&apos;s roles
-                          </span>
-                          <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-                            {opp.aligned_skills.slice(0, 4).map((skill) => (
-                              <span key={skill} style={{
-                                fontFamily: FONT, fontSize: "11px", color: school.brandColorLight,
-                                background: `${school.brandColorLight}12`, border: `1px solid ${school.brandColorLight}25`,
-                                borderRadius: "100px", padding: "4px 10px",
-                              }}>{skill}</span>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                    </>)}
-                    {/* Draft CTA */}
-                    <button
-                      onClick={(e) => { e.stopPropagation(); onDraft(opp); }}
-                      style={{
-                        width: "100%", padding: "14px 24px", borderRadius: "10px",
-                        fontFamily: FONT, fontSize: "15px", fontWeight: 600,
-                        cursor: "pointer", border: "none",
-                        background: school.brandColorLight, color: "#ffffff",
-                        transition: "opacity 0.15s",
-                        letterSpacing: "-0.01em",
-                      }}
-                      onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
-                      onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-                    >
-                    Draft Partnership Proposal with {opp.name}
-                  </button>
+                  )}
                 </div>
-              </motion.div>
-            )}
-          </div>
-        );
-      })}
-
-      {visibleCount < opportunities.length && (
-        <div ref={sentinelRef} style={{ padding: "14px", textAlign: "center" }}>
-          <p style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.25)" }}>
-            Showing {visibleCount} of {opportunities.length} opportunities...
-          </p>
-        </div>
-      )}
-      {opportunities.length === 0 && (
-        <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.35)", padding: "40px 0", textAlign: "center" }}>
-          No partnership opportunities match that query. Try a different question.
-        </p>
-      )}
+              </>)}
+              <button
+                onClick={(e) => { e.stopPropagation(); onDraft(opp); }}
+                style={{
+                  width: "100%", padding: "14px 24px", borderRadius: "10px",
+                  fontFamily: FONT, fontSize: "15px", fontWeight: 600,
+                  cursor: "pointer", border: "none",
+                  background: school.brandColorLight, color: "#ffffff",
+                  transition: "opacity 0.15s",
+                  letterSpacing: "-0.01em",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
+                onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+              >
+                Draft Partnership Proposal with {opp.name}
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
-}
+});
