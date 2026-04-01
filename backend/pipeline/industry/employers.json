@@ -13347,5 +13347,342 @@
       "19-4031",
       "19-4042"
     ]
+  },
+  {
+    "name": "Sutter Coast Hospital",
+    "sector": "Healthcare",
+    "description": "Sutter Coast Hospital is a general medical and surgical hospital providing a range of healthcare services to the community.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "13-2011",
+      "15-1232",
+      "29-1141",
+      "29-1215",
+      "29-2061",
+      "31-1131"
+    ]
+  },
+  {
+    "name": "Yurok Tribe",
+    "sector": "Government",
+    "description": "The Yurok Tribe is a federally recognized Native American tribe that manages tribal lands, resources, and provides services to its members.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-9151",
+      "13-1071",
+      "19-1031",
+      "19-2041",
+      "21-1019",
+      "21-1093",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Bettendorf Trucking",
+    "sector": "Transportation",
+    "description": "Bettendorf Trucking is a transportation company specializing in freight hauling and logistics services.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-3071",
+      "13-1081",
+      "43-9061",
+      "49-3031",
+      "49-9071",
+      "53-1047",
+      "53-7199"
+    ]
+  },
+  {
+    "name": "Columbia Bank",
+    "sector": "Finance",
+    "description": "Columbia Bank is a financial institution offering banking services to individuals and businesses.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-3031",
+      "13-2011",
+      "13-2052",
+      "13-2072",
+      "41-3031",
+      "43-3031",
+      "43-3071",
+      "43-4131"
+    ]
+  },
+  {
+    "name": "Newmarket International",
+    "sector": "Education",
+    "description": "Newmarket International is a technology company providing software solutions for the hospitality industry.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-3021",
+      "13-1161",
+      "15-1211",
+      "15-1251",
+      "15-1252",
+      "15-1299",
+      "41-4012"
+    ]
+  },
+  {
+    "name": "Providence St Joseph Hospital",
+    "sector": "Healthcare",
+    "description": "Providence St Joseph Hospital is a healthcare facility providing comprehensive medical services to the community.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "13-2011",
+      "15-1232",
+      "29-1141",
+      "29-1215",
+      "29-2061",
+      "31-1131"
+    ]
+  },
+  {
+    "name": "Humboldt County Department of Health",
+    "sector": "Government",
+    "description": "The Humboldt County Department of Health provides public health services, programs, and initiatives to residents of Humboldt County.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-9111",
+      "11-9151",
+      "19-2041",
+      "21-1022",
+      "21-1091",
+      "21-1094",
+      "29-1141",
+      "43-4061"
+    ]
+  },
+  {
+    "name": "Eureka City Clerk",
+    "sector": "Government",
+    "description": "The Eureka City Clerk's office is responsible for maintaining official city records, managing elections, and providing administrative support to the city government.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-3012",
+      "13-1041",
+      "23-2011",
+      "43-1011",
+      "43-4031",
+      "43-4071",
+      "43-4199",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Humboldt County Social Services",
+    "sector": "Government",
+    "description": "Humboldt County Social Services provides a range of assistance programs and support services to individuals and families in need.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-9151",
+      "13-1071",
+      "21-1019",
+      "21-1029",
+      "21-1093",
+      "43-4061",
+      "43-4161",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Calpine",
+    "sector": "Utilities",
+    "description": "Calpine is an independent power producer that generates electricity from natural gas and geothermal resources.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-3013",
+      "11-9041",
+      "17-2112",
+      "17-2141",
+      "19-2042",
+      "49-9071",
+      "51-8021",
+      "51-9061"
+    ]
+  },
+  {
+    "name": "Sutter Lakeside Hospital",
+    "sector": "Healthcare",
+    "description": "Sutter Lakeside Hospital is a community hospital offering a variety of medical and surgical services.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "13-2011",
+      "15-1232",
+      "29-1141",
+      "29-1215",
+      "29-2061",
+      "31-1131"
+    ]
+  },
+  {
+    "name": "Rancheria Grille",
+    "sector": "Hospitality & Food Service",
+    "description": "Rancheria Grille is a restaurant offering a dining experience with a focus on local cuisine.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-9051",
+      "35-1011",
+      "35-1012",
+      "35-2014",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Fetzer Vineyards",
+    "sector": "Manufacturing",
+    "description": "Fetzer Vineyards is a winery known for producing a variety of wines with a commitment to sustainable practices.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3051",
+      "13-1161",
+      "19-1013",
+      "41-4012",
+      "45-1011",
+      "45-2092",
+      "51-1011"
+    ]
+  },
+  {
+    "name": "Mendocino Redwood Company",
+    "sector": "Manufacturing",
+    "description": "Mendocino Redwood Company is a timber company focused on sustainable forest management and lumber production.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-9121",
+      "19-1031",
+      "19-1032",
+      "19-4071",
+      "45-1011",
+      "49-9071",
+      "51-1011"
+    ]
+  },
+  {
+    "name": "Mendocino Community Health",
+    "sector": "Healthcare",
+    "description": "Mendocino Community Health provides accessible and affordable healthcare services to the community.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "21-1094",
+      "29-1141",
+      "29-1215",
+      "29-2061",
+      "31-1131",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Adventist Health Mendocino",
+    "sector": "Healthcare",
+    "description": "Adventist Health Mendocino is a healthcare network providing a range of medical services and community health programs.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "13-2011",
+      "15-1232",
+      "29-1141",
+      "29-1215",
+      "29-2061",
+      "31-1131"
+    ]
+  },
+  {
+    "name": "Adventist Health Ukiah Valley",
+    "sector": "Healthcare",
+    "description": "Adventist Health Ukiah Valley is a hospital offering comprehensive medical care and health services to the Ukiah Valley region.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "13-2011",
+      "15-1232",
+      "29-1141",
+      "29-1215",
+      "29-2061",
+      "31-1131"
+    ]
+  },
+  {
+    "name": "Mendocino County Sheriff's Office",
+    "sector": "Government",
+    "description": "The Mendocino County Sheriff's Office is responsible for law enforcement, crime prevention, and public safety within Mendocino County.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-3012",
+      "33-1012",
+      "33-3012",
+      "33-3021",
+      "33-3051",
+      "33-9099",
+      "43-9061"
+    ]
+  },
+  {
+    "name": "Mendocino County Social Services",
+    "sector": "Government",
+    "description": "Mendocino County Social Services provides essential social programs and support to residents of Mendocino County.",
+    "regions": [
+      "North Coast"
+    ],
+    "occupations": [
+      "11-9151",
+      "13-1071",
+      "21-1019",
+      "21-1029",
+      "21-1093",
+      "43-4061",
+      "43-4161",
+      "43-9061"
+    ]
   }
 ]
