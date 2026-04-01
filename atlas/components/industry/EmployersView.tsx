@@ -5,11 +5,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import { SchoolConfig } from "@/lib/schoolConfig";
 import { getEmployers, getEmployerDetail, queryEmployers } from "@/lib/api";
 import type { ApiEmployerMatch, ApiEmployerDetail } from "@/lib/api";
-import LeafHeader from "@/components/ui/LeafHeader";
-import RisingSun from "@/components/ui/RisingSun";
 import Badge from "@/components/ui/Badge";
 import EntityScrollList from "@/components/ui/EntityScrollList";
 import type { Column } from "@/components/ui/EntityScrollList";
+import QueryShell, { findScrollParent } from "@/components/ui/QueryShell";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
@@ -28,83 +27,32 @@ const EMPLOYER_COLUMNS: Column[] = [
   { label: "Skills", width: "85px" },
 ];
 
-function findScrollParent(el: HTMLElement | null): HTMLElement | null {
-  while (el) {
-    if (el.scrollHeight > el.clientHeight && getComputedStyle(el).overflowY !== "visible") return el;
-    el = el.parentElement;
-  }
-  return null;
-}
-
 type Props = { school: SchoolConfig; onBack: () => void };
 
 export default function EmployersView({ school, onBack }: Props) {
   const rootRef = useRef<HTMLDivElement>(null);
   const [employers, setEmployers] = useState<ApiEmployerMatch[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [userName, setUserName] = useState<string>("");
-  const [query, setQuery] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const [results, setResults] = useState<ApiEmployerMatch[]>([]);
   const [expandedNames, setExpandedNames] = useState<Set<string>>(new Set());
   const [employerDetails, setEmployerDetails] = useState<Record<string, ApiEmployerDetail>>({});
   const [loadingNames, setLoadingNames] = useState<Set<string>>(new Set());
-  const [queryLoading, setQueryLoading] = useState(false);
-  const [queryMessage, setQueryMessage] = useState<string | null>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
 
   const allEmployers = useMemo(
     () => [...employers].sort((a, b) => a.name.localeCompare(b.name)),
     [employers],
   );
 
-  useEffect(() => {
-    getEmployers(school.name)
-      .then(setEmployers)
-      .catch((e) => setError(e.message))
-      .finally(() => setLoading(false));
-    fetch("/api/auth/me")
-      .then((r) => r.json())
-      .then((data) => { if (data?.user?.name) setUserName(data.user.name.split(" ")[0]); })
-      .catch(() => {});
+  const loadInitialData = useCallback(async () => {
+    const data = await getEmployers(school.name);
+    setEmployers(data);
+  }, [school.name]);
+
+  const queryFn = useCallback(async (query: string, college: string) => {
+    const resp = await queryEmployers(query, college);
+    return { items: resp.employers, message: resp.message };
   }, []);
 
-  const handleSubmit = useCallback(async () => {
-    if (!query.trim()) return;
-    setSubmitted(true);
-    setExpandedNames(new Set());
-    setQueryLoading(true);
-    setQueryMessage(null);
-    try {
-      const resp = await queryEmployers(query, school.name);
-      setResults(resp.employers);
-      setQueryMessage(resp.message);
-    } catch (err: any) {
-      setResults([]);
-      setQueryMessage(err?.message || "Something went wrong. Try a different question.");
-    } finally {
-      setQueryLoading(false);
-    }
-  }, [query, school.name]);
-
-  const handleChip = useCallback(async (text: string) => {
-    setQuery(text);
-    setSubmitted(true);
-    setExpandedNames(new Set());
-    setQueryLoading(true);
-    setQueryMessage(null);
-    try {
-      const resp = await queryEmployers(text, school.name);
-      setResults(resp.employers);
-      setQueryMessage(resp.message);
-    } catch (err: any) {
-      setResults([]);
-      setQueryMessage(err?.message || "Something went wrong. Try a different question.");
-    } finally {
-      setQueryLoading(false);
-    }
-  }, [school.name]);
+  const onQueryStart = useCallback(() => { setExpandedNames(new Set()); }, []);
+  const onReset = useCallback(() => { setExpandedNames(new Set()); }, []);
 
   const handleExpand = useCallback(async (emp: ApiEmployerMatch) => {
     const scrollEl = findScrollParent(rootRef.current);
@@ -129,12 +77,6 @@ export default function EmployersView({ school, onBack }: Props) {
     }
   }, [expandedNames, employerDetails, school.name]);
 
-  const handleReset = useCallback(() => {
-    setQuery(""); setSubmitted(false); setResults([]); setQueryMessage(null);
-    setExpandedNames(new Set());
-    setTimeout(() => inputRef.current?.focus(), 100);
-  }, []);
-
   const renderEmployerRow = useCallback((emp: ApiEmployerMatch, i: number) => (
     <EmployerRow emp={emp} i={i} school={school}
       expandedNames={expandedNames} employerDetails={employerDetails} loadingNames={loadingNames}
@@ -143,126 +85,40 @@ export default function EmployersView({ school, onBack }: Props) {
 
   const empKeyExtractor = useCallback((emp: ApiEmployerMatch) => emp.name, []);
 
-  return (
-    <div ref={rootRef}>
-      <LeafHeader school={school} onBack={onBack} parentShape="tetrahedron" />
-      <div style={{ maxWidth: "760px", margin: "0 auto", padding: "32px 40px 80px" }}>
-        {error && <p style={{ fontFamily: FONT, fontSize: "14px", color: "#e55", textAlign: "center", paddingTop: "40px" }}>{error}</p>}
-        {loading && (
-          <div style={{ display: "flex", justifyContent: "center", paddingTop: "80px" }}>
-            <RisingSun style={{ width: "90px", height: "auto", opacity: 0.4 }} />
-          </div>
-        )}
-
-        {/* ── Initial State ── */}
-        {!submitted && !loading && (
-          <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
-            style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "24px", paddingTop: "40px" }}>
-              <RisingSun style={{ width: "90px", height: "auto" }} />
-              <h1 style={{ fontFamily: FONT, fontSize: "28px", fontWeight: 600, color: "#f0eef4", letterSpacing: "-0.02em", textAlign: "center" }}>
-                What&apos;s up{userName ? `, ${userName}` : ""}?
-              </h1>
-              <div style={{ width: "100%" }}>
-                <input ref={inputRef} type="text" value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  onKeyDown={(e) => { if (e.key === "Enter") handleSubmit(); }}
-                  placeholder={`Ask me a question about employers near ${school.name}.`}
-                  style={{
-                    width: "100%", padding: "18px 24px", fontFamily: FONT, fontSize: "15px",
-                    color: "#f0eef4", background: "rgba(255,255,255,0.04)",
-                    border: "1px solid rgba(255,255,255,0.10)", borderRadius: "16px",
-                    outline: "none", transition: "border-color 0.2s, box-shadow 0.2s",
-                  }}
-                  onFocus={(e) => { e.currentTarget.style.borderColor = `${school.brandColorLight}50`; e.currentTarget.style.boxShadow = `0 0 0 3px ${school.brandColorLight}15`; }}
-                  onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)"; e.currentTarget.style.boxShadow = "none"; }}
-                />
-              </div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", justifyContent: "center" }}>
-                {SUGGESTIONS.map((s) => (
-                  <button key={s} onClick={() => handleChip(s)}
-                    style={{
-                      fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.55)",
-                      background: "transparent", border: `1px solid ${school.brandColorLight}35`,
-                      borderRadius: "100px", padding: "8px 18px", cursor: "pointer",
-                      transition: "background 0.15s, color 0.15s, border-color 0.15s",
-                    }}
-                    onMouseEnter={(e) => { const el = e.currentTarget as HTMLElement; el.style.background = `${school.brandColorLight}15`; el.style.borderColor = `${school.brandColorLight}40`; el.style.color = school.brandColorLight; }}
-                    onMouseLeave={(e) => { const el = e.currentTarget as HTMLElement; el.style.background = "transparent"; el.style.borderColor = `${school.brandColorLight}35`; el.style.color = "rgba(255,255,255,0.55)"; }}
-                  >{s}</button>
-                ))}
-              </div>
-            </div>
-
-            <div style={{ marginTop: "16px" }}>
-              <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.35)", marginBottom: "12px" }}>
-                {allEmployers.length} employers
-              </p>
-              <EntityScrollList
-                items={allEmployers} initialCap={50} batchSize={50}
-                columns={EMPLOYER_COLUMNS} renderRow={renderEmployerRow}
-                keyExtractor={empKeyExtractor} entityName="employers" school={school}
-              />
-            </div>
-          </motion.div>
-        )}
-
-        {/* ── Results State ── */}
-        {submitted && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}
-            style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-
-            <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-              <input ref={inputRef} type="text" value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                onKeyDown={(e) => { if (e.key === "Enter") handleSubmit(); }}
-                placeholder={`Ask me a question about employers near ${school.name}.`}
-                style={{
-                  flex: 1, padding: "14px 20px", fontFamily: FONT, fontSize: "14px",
-                  color: "#f0eef4", background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(255,255,255,0.10)", borderRadius: "12px",
-                  outline: "none", transition: "border-color 0.2s, box-shadow 0.2s",
-                }}
-                onFocus={(e) => { e.currentTarget.style.borderColor = `${school.brandColorLight}50`; e.currentTarget.style.boxShadow = `0 0 0 3px ${school.brandColorLight}15`; }}
-                onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)"; e.currentTarget.style.boxShadow = "none"; }}
-              />
-              <button onClick={handleReset}
-                style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)", background: "none", border: "none", cursor: "pointer", padding: "8px", transition: "color 0.15s" }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.8)"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.4)"; }}
-              >Clear</button>
-            </div>
-
-            {queryLoading && (
-              <div style={{ display: "flex", justifyContent: "center", paddingTop: "40px" }}>
-                <RisingSun style={{ width: "64px", height: "auto", opacity: 0.4 }} />
-              </div>
-            )}
-
-            {!queryLoading && queryMessage && (
-              <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)" }}>
-                {queryMessage}
-              </p>
-            )}
-
-            {!queryLoading && (
-              <>
-                <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)" }}>
-                  {results.length} employer{results.length !== 1 ? "s" : ""} found
-                </p>
-
-                <EntityScrollList
-                  items={results} initialCap={50} batchSize={50}
-                  columns={EMPLOYER_COLUMNS} renderRow={renderEmployerRow}
-                  keyExtractor={empKeyExtractor} entityName="employers" school={school}
-                />
-              </>
-            )}
-          </motion.div>
-        )}
-      </div>
+  const renderInitialContent = useCallback(() => (
+    <div style={{ marginTop: "16px" }}>
+      <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.35)", marginBottom: "12px" }}>
+        {allEmployers.length} employers
+      </p>
+      <EntityScrollList
+        items={allEmployers} initialCap={50} batchSize={50}
+        columns={EMPLOYER_COLUMNS} renderRow={renderEmployerRow}
+        keyExtractor={empKeyExtractor} entityName="employers" school={school}
+      />
     </div>
+  ), [allEmployers, renderEmployerRow, empKeyExtractor, school]);
+
+  const renderResultsContent = useCallback((results: ApiEmployerMatch[]) => (
+    <>
+      <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)" }}>
+        {results.length} employer{results.length !== 1 ? "s" : ""} found
+      </p>
+      <EntityScrollList
+        items={results} initialCap={50} batchSize={50}
+        columns={EMPLOYER_COLUMNS} renderRow={renderEmployerRow}
+        keyExtractor={empKeyExtractor} entityName="employers" school={school}
+      />
+    </>
+  ), [renderEmployerRow, empKeyExtractor, school]);
+
+  return (
+    <QueryShell<ApiEmployerMatch>
+      school={school} onBack={onBack} parentShape="tetrahedron"
+      placeholder={`Ask me a question about employers near ${school.name}.`}
+      suggestions={SUGGESTIONS} queryFn={queryFn} loadInitialData={loadInitialData}
+      renderInitialContent={renderInitialContent} renderResultsContent={renderResultsContent}
+      onQueryStart={onQueryStart} onReset={onReset} rootRef={rootRef}
+    />
   );
 }
 
@@ -414,4 +270,3 @@ const EmployerRow = memo(function EmployerRow({ emp, i, school, expandedNames, e
     </div>
   );
 });
-

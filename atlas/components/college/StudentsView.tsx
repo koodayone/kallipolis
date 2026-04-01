@@ -6,10 +6,9 @@ import { SchoolConfig } from "@/lib/schoolConfig";
 import { getStudents, getStudent, queryStudents } from "@/lib/api";
 import type { ApiStudentSummary, ApiStudentDetail } from "@/lib/api";
 import type { StudentSummary, StudentDetail } from "@/lib/students/types";
-import LeafHeader from "@/components/ui/LeafHeader";
-import RisingSun from "@/components/ui/RisingSun";
 import EntityScrollList from "@/components/ui/EntityScrollList";
 import type { Column } from "@/components/ui/EntityScrollList";
+import QueryShell, { findScrollParent } from "@/components/ui/QueryShell";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
@@ -56,6 +55,96 @@ const SUGGESTIONS = [
   "Students with more than 15 courses",
   "Biology students with GPA above 3.0",
 ];
+
+type Props = { school: SchoolConfig; onBack: () => void };
+
+export default function StudentsView({ school, onBack }: Props) {
+  const rootRef = useRef<HTMLDivElement>(null);
+  const [students, setStudents] = useState<StudentSummary[]>([]);
+  const [expandedUuids, setExpandedUuids] = useState<Set<string>>(new Set());
+  const [studentDetails, setStudentDetails] = useState<Record<string, StudentDetail>>({});
+  const [loadingUuids, setLoadingUuids] = useState<Set<string>>(new Set());
+
+  const defaultStudents = useMemo(
+    () => [...students].sort((a, b) => b.coursesCompleted - a.coursesCompleted),
+    [students],
+  );
+
+  const loadInitialData = useCallback(async () => {
+    const data = await getStudents(school.name);
+    setStudents(data.map(mapSummary));
+  }, [school.name]);
+
+  const queryFn = useCallback(async (query: string, college: string) => {
+    const resp = await queryStudents(query, college);
+    return { items: resp.students.map(mapSummary), message: resp.message };
+  }, []);
+
+  const onQueryStart = useCallback(() => { setExpandedUuids(new Set()); }, []);
+  const onReset = useCallback(() => { setExpandedUuids(new Set()); }, []);
+
+  const handleExpand = useCallback(async (student: StudentSummary) => {
+    const scrollEl = findScrollParent(rootRef.current);
+    const savedScroll = scrollEl?.scrollTop ?? 0;
+    const restoreScroll = () => requestAnimationFrame(() => { if (scrollEl) scrollEl.scrollTop = savedScroll; });
+
+    const uuid = student.uuid;
+    if (expandedUuids.has(uuid)) {
+      setExpandedUuids((prev) => { const next = new Set(prev); next.delete(uuid); return next; });
+      restoreScroll();
+      return;
+    }
+    setExpandedUuids((prev) => new Set(prev).add(uuid));
+    restoreScroll();
+    if (!studentDetails[uuid]) {
+      setLoadingUuids((prev) => new Set(prev).add(uuid));
+      try {
+        const data = await getStudent(uuid, school.name);
+        setStudentDetails((prev) => ({ ...prev, [uuid]: mapDetail(data, student.displayNumber) }));
+      } catch {}
+      finally { setLoadingUuids((prev) => { const next = new Set(prev); next.delete(uuid); return next; }); }
+    }
+  }, [expandedUuids, studentDetails, school.name]);
+
+  const renderStudentRow = useCallback((student: StudentSummary, i: number) => (
+    <StudentRow student={student} i={i} school={school}
+      expandedUuids={expandedUuids} studentDetails={studentDetails}
+      loadingUuids={loadingUuids} onExpand={handleExpand} />
+  ), [school, expandedUuids, studentDetails, loadingUuids, handleExpand]);
+
+  const studentKeyExtractor = useCallback((s: StudentSummary) => s.uuid, []);
+
+  const renderInitialContent = useCallback(() => (
+    <div style={{ marginTop: "16px" }}>
+      <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.35)", marginBottom: "12px" }}>
+        {students.length.toLocaleString()} students
+      </p>
+      <EntityScrollList
+        items={defaultStudents} initialCap={100} batchSize={100}
+        columns={STUDENT_COLUMNS} renderRow={renderStudentRow}
+        keyExtractor={studentKeyExtractor} entityName="students" school={school}
+      />
+    </div>
+  ), [students.length, defaultStudents, renderStudentRow, studentKeyExtractor, school]);
+
+  const renderResultsContent = useCallback((results: StudentSummary[]) => (
+    <EntityScrollList
+      items={results} initialCap={200} batchSize={100}
+      columns={STUDENT_COLUMNS} renderRow={renderStudentRow}
+      keyExtractor={studentKeyExtractor} entityName="students" school={school}
+    />
+  ), [renderStudentRow, studentKeyExtractor, school]);
+
+  return (
+    <QueryShell<StudentSummary>
+      school={school} onBack={onBack} parentShape="cube"
+      placeholder={`Ask me a question about ${school.name} students.`}
+      suggestions={SUGGESTIONS} queryFn={queryFn} loadInitialData={loadInitialData}
+      renderInitialContent={renderInitialContent} renderResultsContent={renderResultsContent}
+      onQueryStart={onQueryStart} onReset={onReset} rootRef={rootRef}
+    />
+  );
+}
 
 /* ── Student Row ───────────────────────────────────────────────────────── */
 
@@ -165,239 +254,3 @@ const StudentRow = memo(function StudentRow({ student, i, school, expandedUuids,
     </div>
   );
 });
-
-/* ── Main Component ─────────────────────────────────────────────────────── */
-
-function findScrollParent(el: HTMLElement | null): HTMLElement | null {
-  while (el) {
-    if (el.scrollHeight > el.clientHeight && getComputedStyle(el).overflowY !== "visible") return el;
-    el = el.parentElement;
-  }
-  return null;
-}
-
-type Props = { school: SchoolConfig; onBack: () => void };
-
-export default function StudentsView({ school, onBack }: Props) {
-  const [students, setStudents] = useState<StudentSummary[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [userName, setUserName] = useState<string>("");
-  const [query, setQuery] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const [results, setResults] = useState<StudentSummary[]>([]);
-  const [queryLoading, setQueryLoading] = useState(false);
-  const [queryMessage, setQueryMessage] = useState<string | null>(null);
-  const [expandedUuids, setExpandedUuids] = useState<Set<string>>(new Set());
-  const [studentDetails, setStudentDetails] = useState<Record<string, StudentDetail>>({});
-  const [loadingUuids, setLoadingUuids] = useState<Set<string>>(new Set());
-  const inputRef = useRef<HTMLInputElement>(null);
-  const rootRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    getStudents(school.name)
-      .then((data) => setStudents(data.map(mapSummary)))
-      .catch((e) => setError(e.message))
-      .finally(() => setLoading(false));
-    fetch("/api/auth/me")
-      .then((r) => r.json())
-      .then((data) => { if (data?.user?.name) setUserName(data.user.name.split(" ")[0]); })
-      .catch(() => {});
-  }, []);
-
-  const handleSubmit = useCallback(async () => {
-    if (!query.trim()) return;
-    setQueryLoading(true);
-    setSubmitted(true);
-    setExpandedUuids(new Set());
-    setQueryMessage(null);
-    try {
-      const resp = await queryStudents(query, school.name);
-      setResults(resp.students.map(mapSummary));
-      setQueryMessage(resp.message);
-    } catch {
-      setResults([]);
-      setQueryMessage("Something went wrong. Try rephrasing your question.");
-    } finally {
-      setQueryLoading(false);
-    }
-  }, [query, school.name]);
-
-  const handleChip = useCallback(async (text: string) => {
-    setQuery(text);
-    setQueryLoading(true);
-    setSubmitted(true);
-    setExpandedUuids(new Set());
-    setQueryMessage(null);
-    try {
-      const resp = await queryStudents(text, school.name);
-      setResults(resp.students.map(mapSummary));
-      setQueryMessage(resp.message);
-    } catch {
-      setResults([]);
-      setQueryMessage("Something went wrong. Try rephrasing your question.");
-    } finally {
-      setQueryLoading(false);
-    }
-  }, [school.name]);
-
-  const handleExpand = useCallback(async (student: StudentSummary) => {
-    const scrollEl = findScrollParent(rootRef.current);
-    const savedScroll = scrollEl?.scrollTop ?? 0;
-    const restoreScroll = () => requestAnimationFrame(() => { if (scrollEl) scrollEl.scrollTop = savedScroll; });
-
-    const uuid = student.uuid;
-    if (expandedUuids.has(uuid)) {
-      setExpandedUuids((prev) => { const next = new Set(prev); next.delete(uuid); return next; });
-      restoreScroll();
-      return;
-    }
-    setExpandedUuids((prev) => new Set(prev).add(uuid));
-    restoreScroll();
-    if (!studentDetails[uuid]) {
-      setLoadingUuids((prev) => new Set(prev).add(uuid));
-      try {
-        const data = await getStudent(uuid, school.name);
-        setStudentDetails((prev) => ({ ...prev, [uuid]: mapDetail(data, student.displayNumber) }));
-      } catch {}
-      finally { setLoadingUuids((prev) => { const next = new Set(prev); next.delete(uuid); return next; }); }
-    }
-  }, [expandedUuids, studentDetails, school.name]);
-
-  const handleReset = useCallback(() => {
-    setQuery(""); setSubmitted(false); setResults([]);
-    setExpandedUuids(new Set());
-    setTimeout(() => inputRef.current?.focus(), 100);
-  }, []);
-
-  const defaultStudents = useMemo(
-    () => [...students].sort((a, b) => b.coursesCompleted - a.coursesCompleted),
-    [students],
-  );
-
-  const renderStudentRow = useCallback((student: StudentSummary, i: number) => (
-    <StudentRow student={student} i={i} school={school}
-      expandedUuids={expandedUuids} studentDetails={studentDetails}
-      loadingUuids={loadingUuids} onExpand={handleExpand} />
-  ), [school, expandedUuids, studentDetails, loadingUuids, handleExpand]);
-
-  const studentKeyExtractor = useCallback((s: StudentSummary) => s.uuid, []);
-
-  return (
-    <div ref={rootRef}>
-      <LeafHeader school={school} onBack={onBack} parentShape="cube" />
-      <div style={{ maxWidth: "760px", margin: "0 auto", padding: "32px 40px 80px" }}>
-        {error && <p style={{ fontFamily: FONT, fontSize: "14px", color: "#e55", textAlign: "center", paddingTop: "40px" }}>{error}</p>}
-        {loading && (
-          <div style={{ display: "flex", justifyContent: "center", paddingTop: "80px" }}>
-            <RisingSun style={{ width: "90px", height: "auto", opacity: 0.4 }} />
-          </div>
-        )}
-
-        {/* ── Initial State ── */}
-        {!submitted && !loading && (
-          <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
-            style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-
-            {/* Chat greeting */}
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "24px", paddingTop: "40px" }}>
-              <RisingSun style={{ width: "90px", height: "auto" }} />
-              <h1 style={{ fontFamily: FONT, fontSize: "28px", fontWeight: 600, color: "#f0eef4", letterSpacing: "-0.02em", textAlign: "center" }}>
-                What&apos;s up{userName ? `, ${userName}` : ""}?
-              </h1>
-              <div style={{ width: "100%" }}>
-                <input ref={inputRef} type="text" value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  onKeyDown={(e) => { if (e.key === "Enter") handleSubmit(); }}
-                  placeholder={`Ask me a question about ${school.name} students.`}
-                  style={{
-                    width: "100%", padding: "18px 24px", fontFamily: FONT, fontSize: "15px",
-                    color: "#f0eef4", background: "rgba(255,255,255,0.04)",
-                    border: "1px solid rgba(255,255,255,0.10)", borderRadius: "16px",
-                    outline: "none", transition: "border-color 0.2s, box-shadow 0.2s",
-                  }}
-                  onFocus={(e) => { e.currentTarget.style.borderColor = `${school.brandColorLight}35`; e.currentTarget.style.boxShadow = `0 0 0 3px ${school.brandColorLight}15`; }}
-                  onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)"; e.currentTarget.style.boxShadow = "none"; }}
-                />
-              </div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", justifyContent: "center" }}>
-                {SUGGESTIONS.map((s) => (
-                  <button key={s} onClick={() => handleChip(s)}
-                    style={{
-                      fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.55)",
-                      background: "transparent", border: `1px solid ${school.brandColorLight}35`,
-                      borderRadius: "100px", padding: "8px 18px", cursor: "pointer",
-                      transition: "background 0.15s, color 0.15s, border-color 0.15s",
-                    }}
-                    onMouseEnter={(e) => { const el = e.currentTarget as HTMLElement; el.style.background = `${school.brandColorLight}15`; el.style.borderColor = `${school.brandColorLight}40`; el.style.color = school.brandColorLight; }}
-                    onMouseLeave={(e) => { const el = e.currentTarget as HTMLElement; el.style.background = "transparent"; el.style.borderColor = `${school.brandColorLight}35`; el.style.color = "rgba(255,255,255,0.55)"; }}
-                  >{s}</button>
-                ))}
-              </div>
-            </div>
-
-            {/* Student list (browsable) */}
-            <div style={{ marginTop: "16px" }}>
-              <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.35)", marginBottom: "12px" }}>
-                {students.length.toLocaleString()} students
-              </p>
-              <EntityScrollList
-                items={defaultStudents} initialCap={100} batchSize={100}
-                columns={STUDENT_COLUMNS} renderRow={renderStudentRow}
-                keyExtractor={studentKeyExtractor} entityName="students" school={school}
-              />
-            </div>
-          </motion.div>
-        )}
-
-        {/* ── Results State ── */}
-        {submitted && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}
-            style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-
-            <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-              <input ref={inputRef} type="text" value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                onKeyDown={(e) => { if (e.key === "Enter") handleSubmit(); }}
-                placeholder={`Ask me a question about ${school.name} students.`}
-                style={{
-                  flex: 1, padding: "14px 20px", fontFamily: FONT, fontSize: "14px",
-                  color: "#f0eef4", background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(255,255,255,0.10)", borderRadius: "12px",
-                  outline: "none", transition: "border-color 0.2s, box-shadow 0.2s",
-                }}
-                onFocus={(e) => { e.currentTarget.style.borderColor = `${school.brandColorLight}35`; e.currentTarget.style.boxShadow = `0 0 0 3px ${school.brandColorLight}15`; }}
-                onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)"; e.currentTarget.style.boxShadow = "none"; }}
-              />
-              <button onClick={handleReset}
-                style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)", background: "none", border: "none", cursor: "pointer", padding: "8px", transition: "color 0.15s" }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.8)"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.4)"; }}
-              >Clear</button>
-            </div>
-
-            {queryLoading && (
-              <div style={{ display: "flex", justifyContent: "center", paddingTop: "40px" }}>
-                <RisingSun style={{ width: "64px", height: "auto", opacity: 0.4 }} />
-              </div>
-            )}
-
-            {!queryLoading && queryMessage && (
-              <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)" }}>
-                {queryMessage}
-              </p>
-            )}
-
-            {!queryLoading && (
-              <EntityScrollList
-                items={results} initialCap={200} batchSize={100}
-                columns={STUDENT_COLUMNS} renderRow={renderStudentRow}
-                keyExtractor={studentKeyExtractor} entityName="students" school={school}
-              />
-            )}
-          </motion.div>
-        )}
-      </div>
-    </div>
-  );
-}

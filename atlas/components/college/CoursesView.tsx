@@ -6,10 +6,9 @@ import { SchoolConfig } from "@/lib/schoolConfig";
 import { getDepartments, getCourses, queryCourses } from "@/lib/api";
 import type { ApiDepartmentSummary, ApiCourseSummary } from "@/lib/api";
 import type { DepartmentSummary, CourseSummary } from "@/lib/curricula/types";
-import LeafHeader from "@/components/ui/LeafHeader";
-import RisingSun from "@/components/ui/RisingSun";
 import EntityScrollList from "@/components/ui/EntityScrollList";
 import type { Column } from "@/components/ui/EntityScrollList";
+import QueryShell, { findScrollParent } from "@/components/ui/QueryShell";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
@@ -38,78 +37,31 @@ const SUGGESTIONS = [
   "Courses with Critical Thinking skills",
 ];
 
-function findScrollParent(el: HTMLElement | null): HTMLElement | null {
-  while (el) {
-    if (el.scrollHeight > el.clientHeight && getComputedStyle(el).overflowY !== "visible") return el;
-    el = el.parentElement;
-  }
-  return null;
-}
-
 type Props = { school: SchoolConfig; onBack: () => void };
 
 export default function CoursesView({ school, onBack }: Props) {
   const rootRef = useRef<HTMLDivElement>(null);
   const [departments, setDepartments] = useState<DepartmentSummary[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [userName, setUserName] = useState<string>("");
-  const [query, setQuery] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const [results, setResults] = useState<DepartmentSummary[]>([]);
   const [expandedDepts, setExpandedDepts] = useState<Set<string>>(new Set());
   const [deptCoursesMap, setDeptCoursesMap] = useState<Record<string, CourseSummary[]>>({});
   const [loadingDepts, setLoadingDepts] = useState<Set<string>>(new Set());
   const [expandedCourses, setExpandedCourses] = useState<Set<string>>(new Set());
-  const [queryLoading, setQueryLoading] = useState(false);
-  const [queryMessage, setQueryMessage] = useState<string | null>(null);
-  const [courseResults, setCourseResults] = useState<CourseSummary[]>([]);
-  const inputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    getDepartments(school.name)
-      .then((data) => setDepartments(data.map(mapDept).sort((a, b) => a.department.localeCompare(b.department))))
-      .catch((e) => setError(e.message))
-      .finally(() => setLoading(false));
-    fetch("/api/auth/me")
-      .then((r) => r.json())
-      .then((data) => { if (data?.user?.name) setUserName(data.user.name.split(" ")[0]); })
-      .catch(() => {});
+  const loadInitialData = useCallback(async () => {
+    const data = await getDepartments(school.name);
+    setDepartments(data.map(mapDept).sort((a, b) => a.department.localeCompare(b.department)));
+  }, [school.name]);
+
+  const queryFn = useCallback(async (query: string, college: string) => {
+    const resp = await queryCourses(query, college);
+    return { items: resp.courses.map(mapCourse), message: resp.message };
   }, []);
 
-  const handleSubmit = useCallback(async () => {
-    if (!query.trim()) return;
-    setSubmitted(true);
-    setQueryLoading(true);
+  const onQueryStart = useCallback(() => { setExpandedCourses(new Set()); }, []);
+  const onReset = useCallback(() => {
+    setExpandedDepts(new Set());
     setExpandedCourses(new Set());
-    try {
-      const resp = await queryCourses(query, school.name);
-      setCourseResults(resp.courses.map(mapCourse));
-      setQueryMessage(resp.message);
-    } catch (e: unknown) {
-      setCourseResults([]);
-      setQueryMessage(e instanceof Error ? e.message : "Something went wrong. Please try again.");
-    } finally {
-      setQueryLoading(false);
-    }
-  }, [query, school.name]);
-
-  const handleChip = useCallback(async (text: string) => {
-    setQuery(text);
-    setSubmitted(true);
-    setQueryLoading(true);
-    setExpandedCourses(new Set());
-    try {
-      const resp = await queryCourses(text, school.name);
-      setCourseResults(resp.courses.map(mapCourse));
-      setQueryMessage(resp.message);
-    } catch (e: unknown) {
-      setCourseResults([]);
-      setQueryMessage(e instanceof Error ? e.message : "Something went wrong. Please try again.");
-    } finally {
-      setQueryLoading(false);
-    }
-  }, [school.name]);
+  }, []);
 
   const preserveScroll = useCallback(() => {
     const scrollEl = findScrollParent(rootRef.current);
@@ -139,19 +91,12 @@ export default function CoursesView({ school, onBack }: Props) {
       } catch {}
       finally { setLoadingDepts((prev) => { const next = new Set(prev); next.delete(dept); return next; }); }
     }
-  }, [expandedDepts, deptCoursesMap, school.name]);
+  }, [expandedDepts, deptCoursesMap, school.name, preserveScroll]);
 
   const toggleCourse = useCallback((code: string) => {
     preserveScroll();
     setExpandedCourses((prev) => { const next = new Set(prev); if (next.has(code)) next.delete(code); else next.add(code); return next; });
   }, [preserveScroll]);
-
-  const handleReset = useCallback(() => {
-    setQuery(""); setSubmitted(false); setResults([]);
-    setExpandedDepts(new Set()); setExpandedCourses(new Set());
-    setCourseResults([]); setQueryMessage(null); setQueryLoading(false);
-    setTimeout(() => inputRef.current?.focus(), 100);
-  }, []);
 
   const totalCourses = departments.reduce((sum, d) => sum + d.courseCount, 0);
 
@@ -162,121 +107,38 @@ export default function CoursesView({ school, onBack }: Props) {
 
   const courseKeyExtractor = useCallback((c: CourseSummary) => c.code, []);
 
-  return (
-    <div ref={rootRef}>
-      <LeafHeader school={school} onBack={onBack} parentShape="cube" />
-      <div style={{ maxWidth: "760px", margin: "0 auto", padding: "32px 40px 80px" }}>
-        {error && <p style={{ fontFamily: FONT, fontSize: "14px", color: "#e55", textAlign: "center", paddingTop: "40px" }}>{error}</p>}
-        {loading && (
-          <div style={{ display: "flex", justifyContent: "center", paddingTop: "80px" }}>
-            <RisingSun style={{ width: "90px", height: "auto", opacity: 0.4 }} />
-          </div>
-        )}
-
-        {/* ── Initial State ── */}
-        {!submitted && !loading && (
-          <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
-            style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "24px", paddingTop: "40px" }}>
-              <RisingSun style={{ width: "90px", height: "auto" }} />
-              <h1 style={{ fontFamily: FONT, fontSize: "28px", fontWeight: 600, color: "#f0eef4", letterSpacing: "-0.02em", textAlign: "center" }}>
-                What&apos;s up{userName ? `, ${userName}` : ""}?
-              </h1>
-              <div style={{ width: "100%" }}>
-                <input ref={inputRef} type="text" value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  onKeyDown={(e) => { if (e.key === "Enter") handleSubmit(); }}
-                  placeholder={`Ask me a question about ${school.name} courses.`}
-                  style={{
-                    width: "100%", padding: "18px 24px", fontFamily: FONT, fontSize: "15px",
-                    color: "#f0eef4", background: "rgba(255,255,255,0.04)",
-                    border: "1px solid rgba(255,255,255,0.10)", borderRadius: "16px",
-                    outline: "none", transition: "border-color 0.2s, box-shadow 0.2s",
-                  }}
-                  onFocus={(e) => { e.currentTarget.style.borderColor = `${school.brandColorLight}35`; e.currentTarget.style.boxShadow = `0 0 0 3px ${school.brandColorLight}15`; }}
-                  onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)"; e.currentTarget.style.boxShadow = "none"; }}
-                />
-              </div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", justifyContent: "center" }}>
-                {SUGGESTIONS.map((s) => (
-                  <button key={s} onClick={() => handleChip(s)}
-                    style={{
-                      fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.55)",
-                      background: "transparent", border: `1px solid ${school.brandColorLight}35`,
-                      borderRadius: "100px", padding: "8px 18px", cursor: "pointer",
-                      transition: "background 0.15s, color 0.15s, border-color 0.15s",
-                    }}
-                    onMouseEnter={(e) => { const el = e.currentTarget as HTMLElement; el.style.background = `${school.brandColorLight}15`; el.style.borderColor = `${school.brandColorLight}40`; el.style.color = school.brandColorLight; }}
-                    onMouseLeave={(e) => { const el = e.currentTarget as HTMLElement; el.style.background = "transparent"; el.style.borderColor = `${school.brandColorLight}35`; el.style.color = "rgba(255,255,255,0.55)"; }}
-                  >{s}</button>
-                ))}
-              </div>
-            </div>
-
-            {/* Department list */}
-            <div style={{ marginTop: "16px" }}>
-              <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.35)", marginBottom: "12px" }}>
-                {departments.length} departments · {totalCourses.toLocaleString()} courses
-              </p>
-              <DepartmentList
-                departments={departments} school={school}
-                expandedDepts={expandedDepts} deptCoursesMap={deptCoursesMap}
-                loadingDepts={loadingDepts} expandedCourses={expandedCourses}
-                onDeptExpand={handleDeptExpand}
-                onCourseToggle={toggleCourse}
-              />
-            </div>
-          </motion.div>
-        )}
-
-        {/* ── Results State ── */}
-        {submitted && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}
-            style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-
-            <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-              <input ref={inputRef} type="text" value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                onKeyDown={(e) => { if (e.key === "Enter") handleSubmit(); }}
-                placeholder={`Ask me a question about ${school.name} courses.`}
-                style={{
-                  flex: 1, padding: "14px 20px", fontFamily: FONT, fontSize: "14px",
-                  color: "#f0eef4", background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(255,255,255,0.10)", borderRadius: "12px",
-                  outline: "none", transition: "border-color 0.2s, box-shadow 0.2s",
-                }}
-                onFocus={(e) => { e.currentTarget.style.borderColor = `${school.brandColorLight}35`; e.currentTarget.style.boxShadow = `0 0 0 3px ${school.brandColorLight}15`; }}
-                onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.10)"; e.currentTarget.style.boxShadow = "none"; }}
-              />
-              <button onClick={handleReset}
-                style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)", background: "none", border: "none", cursor: "pointer", padding: "8px", transition: "color 0.15s" }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.8)"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.4)"; }}
-              >Clear</button>
-            </div>
-
-            {queryLoading && (
-              <div style={{ display: "flex", justifyContent: "center", paddingTop: "40px" }}>
-                <RisingSun style={{ width: "64px", height: "auto", opacity: 0.4 }} />
-              </div>
-            )}
-
-            {!queryLoading && queryMessage && (
-              <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)" }}>{queryMessage}</p>
-            )}
-
-            {!queryLoading && courseResults.length > 0 && (
-              <EntityScrollList
-                items={courseResults} initialCap={100} batchSize={100}
-                columns={COURSE_COLUMNS} renderRow={renderCourseRow}
-                keyExtractor={courseKeyExtractor} entityName="courses" school={school}
-              />
-            )}
-          </motion.div>
-        )}
-      </div>
+  const renderInitialContent = useCallback(() => (
+    <div style={{ marginTop: "16px" }}>
+      <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.35)", marginBottom: "12px" }}>
+        {departments.length} departments · {totalCourses.toLocaleString()} courses
+      </p>
+      <DepartmentList
+        departments={departments} school={school}
+        expandedDepts={expandedDepts} deptCoursesMap={deptCoursesMap}
+        loadingDepts={loadingDepts} expandedCourses={expandedCourses}
+        onDeptExpand={handleDeptExpand} onCourseToggle={toggleCourse}
+      />
     </div>
+  ), [departments, totalCourses, school, expandedDepts, deptCoursesMap, loadingDepts, expandedCourses, handleDeptExpand, toggleCourse]);
+
+  const renderResultsContent = useCallback((results: CourseSummary[]) => (
+    results.length > 0 ? (
+      <EntityScrollList
+        items={results} initialCap={100} batchSize={100}
+        columns={COURSE_COLUMNS} renderRow={renderCourseRow}
+        keyExtractor={courseKeyExtractor} entityName="courses" school={school}
+      />
+    ) : null
+  ), [renderCourseRow, courseKeyExtractor, school]);
+
+  return (
+    <QueryShell<CourseSummary>
+      school={school} onBack={onBack} parentShape="cube"
+      placeholder={`Ask me a question about ${school.name} courses.`}
+      suggestions={SUGGESTIONS} queryFn={queryFn} loadInitialData={loadInitialData}
+      renderInitialContent={renderInitialContent} renderResultsContent={renderResultsContent}
+      onQueryStart={onQueryStart} onReset={onReset} rootRef={rootRef}
+    />
   );
 }
 
@@ -391,7 +253,7 @@ const CourseResultRow = memo(function CourseResultRow({ course, i, school, expan
   );
 });
 
-/* ── Department List (shared) ──────────────────────────────────────────── */
+/* ── Department List ──────────────────────────────────────────────────── */
 
 function DepartmentList({
   departments, school, expandedDepts, deptCoursesMap, loadingDepts, expandedCourses,
@@ -408,14 +270,13 @@ function DepartmentList({
 }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-      {/* Column headers */}
       <div style={{
         display: "grid", gridTemplateColumns: "24px 1fr auto",
         padding: "8px 16px", gap: "12px", alignItems: "center",
       }}>
         <span />
-        <span style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Department</span>
-        <span style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Courses</span>
+        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Department</span>
+        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Courses</span>
       </div>
       {departments.map((dept, i) => (
         <div key={dept.department}>
@@ -439,10 +300,10 @@ function DepartmentList({
               style={{ transform: expandedDepts.has(dept.department) ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>
               <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <span style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "14px", fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>
+            <span style={{ fontFamily: FONT, fontSize: "14px", fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>
               {dept.department}
             </span>
-            <span style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "12px", color: "rgba(255,255,255,0.4)" }}>
+            <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)" }}>
               {dept.courseCount} {dept.courseCount === 1 ? "course" : "courses"}
             </span>
           </motion.button>
@@ -458,7 +319,7 @@ function DepartmentList({
               >
                 <div style={{ padding: "8px 16px 16px 52px" }}>
                   {loadingDepts.has(dept.department) && (
-                    <p style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Loading courses...</p>
+                    <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Loading courses...</p>
                   )}
                   {!loadingDepts.has(dept.department) && (deptCoursesMap[dept.department] || []).map((course) => {
                     const isOpen = expandedCourses.has(course.code);
@@ -476,10 +337,10 @@ function DepartmentList({
                           onMouseEnter={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)"; }}
                           onMouseLeave={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "transparent"; }}
                         >
-                          <span style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "12px", fontWeight: 600, color: school.brandColorLight, flexShrink: 0 }}>
+                          <span style={{ fontFamily: FONT, fontSize: "12px", fontWeight: 600, color: school.brandColorLight, flexShrink: 0 }}>
                             {course.code}
                           </span>
-                          <span style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.75)", flex: 1 }}>
+                          <span style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.75)", flex: 1 }}>
                             {course.name}
                           </span>
                           <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
@@ -505,41 +366,41 @@ function DepartmentList({
                               }}>
                                 {course.description && (
                                   <div>
-                                    <span style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, display: "block", marginBottom: "8px" }}>
+                                    <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, display: "block", marginBottom: "8px" }}>
                                       Description
                                     </span>
-                                    <p style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "13px", color: "rgba(255,255,255,0.6)", lineHeight: 1.6, margin: 0 }}>
+                                    <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.6)", lineHeight: 1.6, margin: 0 }}>
                                       {course.description}
                                     </p>
                                   </div>
                                 )}
                                 {course.learningOutcomes.length > 0 && (
                                   <div>
-                                    <span style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, display: "block", marginBottom: "8px" }}>
+                                    <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, display: "block", marginBottom: "8px" }}>
                                       Learning Outcomes
                                     </span>
                                     <ul style={{ margin: 0, paddingLeft: "16px", display: "flex", flexDirection: "column", gap: "4px" }}>
                                       {course.learningOutcomes.map((o) => (
-                                        <li key={o} style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "12px", color: "rgba(255,255,255,0.6)", lineHeight: 1.5 }}>{o}</li>
+                                        <li key={o} style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.6)", lineHeight: 1.5 }}>{o}</li>
                                       ))}
                                     </ul>
                                   </div>
                                 )}
                                 {course.learningOutcomes.length === 0 && course.courseObjectives.length > 0 && (
                                   <div>
-                                    <span style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, display: "block", marginBottom: "8px" }}>
+                                    <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, display: "block", marginBottom: "8px" }}>
                                       Learning Outcomes
                                     </span>
                                     <ul style={{ margin: 0, paddingLeft: "16px", display: "flex", flexDirection: "column", gap: "4px" }}>
                                       {course.courseObjectives.map((o) => (
-                                        <li key={o} style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "12px", color: "rgba(255,255,255,0.6)", lineHeight: 1.5 }}>{o}</li>
+                                        <li key={o} style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.6)", lineHeight: 1.5 }}>{o}</li>
                                       ))}
                                     </ul>
                                   </div>
                                 )}
                                 {course.skillMappings.length > 0 && (
                                   <div>
-                                    <span style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, display: "block", marginBottom: "8px" }}>
+                                    <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, display: "block", marginBottom: "8px" }}>
                                       Derived Skills
                                     </span>
                                     <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
@@ -547,7 +408,7 @@ function DepartmentList({
                                         <span key={skill} style={{
                                           padding: "5px 12px", background: "rgba(255,255,255,0.02)",
                                           border: `1px solid ${school.brandColorLight}60`, borderRadius: "6px",
-                                          fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "12px", fontWeight: 500, color: school.brandColorLight,
+                                          fontFamily: FONT, fontSize: "12px", fontWeight: 500, color: school.brandColorLight,
                                         }}>{skill}</span>
                                       ))}
                                     </div>
@@ -567,7 +428,7 @@ function DepartmentList({
         </div>
       ))}
       {departments.length === 0 && (
-        <p style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "14px", color: "rgba(255,255,255,0.35)", padding: "40px 0", textAlign: "center" }}>
+        <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.35)", padding: "40px 0", textAlign: "center" }}>
           No departments match that query. Try a different question.
         </p>
       )}
