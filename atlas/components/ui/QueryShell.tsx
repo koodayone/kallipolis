@@ -162,10 +162,6 @@ export default function QueryShell<T>({
                   />
                   <motion.button
                     onClick={() => setHelpOpen((prev) => !prev)}
-                    initial={{ opacity: 0.4 }}
-                    animate={{ opacity: [0.4, 0.7, 0.4] }}
-                    transition={{ duration: 2, ease: "easeInOut", times: [0, 0.5, 1] }}
-                    whileHover={{ opacity: 0.6 }}
                     style={{
                       position: "absolute", right: "16px", top: "50%", transform: "translateY(-50%)",
                       background: "none", border: "none", cursor: "pointer", padding: "4px",
@@ -173,13 +169,39 @@ export default function QueryShell<T>({
                     }}
                     aria-label="Show example queries"
                   >
-                    <svg width="20" height="20" viewBox="0 0 16 16" fill="none">
-                      <circle cx="8" cy="8" r="7" stroke={helpOpen ? school.brandColorLight : "rgba(255,255,255,0.55)"} strokeWidth="1.2"
-                        style={{ transition: "stroke 0.15s" }} />
-                      <text x="8" y="11.5" textAnchor="middle" fill={helpOpen ? school.brandColorLight : "rgba(255,255,255,0.55)"}
+                    <motion.svg width="20" height="20" viewBox="0 0 16 16" fill="none"
+                      initial={{ opacity: 0.4 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 1.5, ease: "easeOut" }}
+                      whileHover={{ opacity: 0.85 }}
+                    >
+                      <circle cx="8" cy="8" r="7" strokeWidth="1.2"
+                        stroke={helpOpen ? school.brandColorLight : "rgba(255,255,255,0.55)"}
+                        style={{ transition: "stroke 1.8s ease-in-out" }}
+                      />
+                      <text x="8" y="11.5" textAnchor="middle"
                         fontSize="10" fontWeight="600" fontFamily={FONT}
-                        style={{ transition: "fill 0.15s" }}>?</text>
-                    </svg>
+                        fill={helpOpen ? school.brandColorLight : "rgba(255,255,255,0.55)"}
+                        style={{ transition: "fill 1.8s ease-in-out" }}
+                      >?</text>
+                      {!helpOpen && (
+                        <>
+                          <motion.circle cx="8" cy="8" r="7" strokeWidth="1.2" fill="none"
+                            stroke={school.brandColorLight}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: [0, 0.6, 0] }}
+                            transition={{ duration: 2.5, ease: "easeInOut", times: [0, 0.4, 1] }}
+                          />
+                          <motion.text x="8" y="11.5" textAnchor="middle"
+                            fontSize="10" fontWeight="600" fontFamily={FONT}
+                            fill={school.brandColorLight}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: [0, 0.6, 0] }}
+                            transition={{ duration: 2.5, ease: "easeInOut", times: [0, 0.4, 1] }}
+                          >?</motion.text>
+                        </>
+                      )}
+                    </motion.svg>
                   </motion.button>
                 </div>
 

@@ -205,52 +205,32 @@ const OccupationRow = memo(function OccupationRow({ occ, i, school, expandedSocs
                   )}
                   {(() => {
                     const aligned = detail.skills.filter((s) => s.developed);
-                    const gaps = detail.skills.filter((s) => !s.developed);
+                    if (aligned.length === 0) return null;
                     return (
-                      <>
-                        {aligned.length > 0 && (
-                          <div>
-                            <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, display: "block", marginBottom: "4px" }}>
-                              Aligned Skills ({aligned.length})
-                            </span>
-                            <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.3)", display: "block", marginBottom: "10px" }}>
-                              Skills this occupation requires that {school.name} courses develop.
-                            </span>
-                            <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                              {aligned.map((skill) => (
-                                <div key={skill.skill} style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                                    <circle cx="6" cy="6" r="5" stroke={school.brandColorLight} strokeWidth="1" />
-                                    <path d="M4 6l1.5 1.5L8 5" stroke={school.brandColorLight} strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
-                                  </svg>
-                                  <span style={{ fontFamily: FONT, fontSize: "13px", color: school.brandColorLight }}>{skill.skill}</span>
-                                  {skill.courses.length > 0 && (
-                                    <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.3)" }}>
-                                      — {skill.courses.slice(0, 3).map((c: any) => c.code).join(", ")}
-                                    </span>
-                                  )}
-                                </div>
-                              ))}
+                      <div>
+                        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, display: "block", marginBottom: "4px" }}>
+                          Aligned Skills ({aligned.length})
+                        </span>
+                        <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.3)", display: "block", marginBottom: "10px" }}>
+                          Skills this occupation requires that {school.name} courses develop.
+                        </span>
+                        <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                          {aligned.map((skill) => (
+                            <div key={skill.skill} style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <circle cx="6" cy="6" r="5" stroke={school.brandColorLight} strokeWidth="1" />
+                                <path d="M4 6l1.5 1.5L8 5" stroke={school.brandColorLight} strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+                              </svg>
+                              <span style={{ fontFamily: FONT, fontSize: "13px", color: school.brandColorLight }}>{skill.skill}</span>
+                              {skill.courses.length > 0 && (
+                                <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.3)" }}>
+                                  — {skill.courses.slice(0, 3).map((c: any) => c.code).join(", ")}
+                                </span>
+                              )}
                             </div>
-                          </div>
-                        )}
-                        {gaps.length > 0 && (
-                          <div>
-                            <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", display: "block", marginBottom: "10px" }}>
-                              Skill Gaps ({gaps.length})
-                            </span>
-                            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-                              {gaps.map((skill) => (
-                                <span key={skill.skill} style={{
-                                  fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.3)",
-                                  background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)",
-                                  borderRadius: "100px", padding: "4px 10px",
-                                }}>{skill.skill}</span>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-                      </>
+                          ))}
+                        </div>
+                      </div>
                     );
                   })()}
                   {detail.regions.length > 0 && (() => {
