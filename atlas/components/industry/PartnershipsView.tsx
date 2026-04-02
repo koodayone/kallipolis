@@ -5,8 +5,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { SchoolConfig } from "@/lib/schoolConfig";
 import {
   getPartnershipLandscape,
-  getEmployerPipeline,
-  getEmployerOccupations,
   queryPartnerships,
   streamTargetedProposal,
 } from "@/lib/api";
@@ -70,11 +68,6 @@ export default function PartnershipsView({ school, onBack }: Props) {
   const [queryMessage, setQueryMessage] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const [expandedNames, setExpandedNames] = useState<Set<string>>(new Set());
-  const [pipelineData, setPipelineData] = useState<Record<string, number>>({});
-  const [pipelineLoading, setPipelineLoading] = useState<Set<string>>(new Set());
-
-  // Employer occupations cache (lightweight, for expanded row)
-  const [employerOccupations, setEmployerOccupations] = useState<Record<string, Array<{ title: string; annual_wage: number | null }>>>({});
 
   // Manage mode state
   const [savedProposals, setSavedProposals] = useState<SavedProposal[]>([]);
@@ -98,12 +91,6 @@ export default function PartnershipsView({ school, onBack }: Props) {
     getPartnershipLandscape(school.name)
       .then((data) => {
         setLandscape(data.opportunities);
-        // Populate pipeline data from precomputed values
-        const pipelineMap: Record<string, number> = {};
-        for (const opp of data.opportunities) {
-          if (opp.pipeline_size != null) pipelineMap[opp.name] = opp.pipeline_size;
-        }
-        setPipelineData(pipelineMap);
       })
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
@@ -170,20 +157,7 @@ export default function PartnershipsView({ school, onBack }: Props) {
     }
     setExpandedNames((prev) => new Set(prev).add(name));
     restoreScroll();
-    if (pipelineData[name] === undefined && !pipelineLoading.has(name)) {
-      setPipelineLoading((prev) => new Set(prev).add(name));
-      try {
-        const data = await getEmployerPipeline(name, school.name);
-        setPipelineData((prev) => ({ ...prev, [name]: data.pipeline_size }));
-      } catch {}
-      finally { setPipelineLoading((prev) => { const next = new Set(prev); next.delete(name); return next; }); }
-    }
-    if (!employerOccupations[name]) {
-      getEmployerOccupations(name)
-        .then((data) => setEmployerOccupations((prev) => ({ ...prev, [name]: data.occupations })))
-        .catch(() => {});
-    }
-  }, [expandedNames, pipelineData, pipelineLoading, employerOccupations, school.name]);
+  }, [expandedNames]);
 
   const handleReset = useCallback(() => {
     setQuery(""); setSubmitted(false); setResults([]); setQueryMessage(null);
@@ -239,9 +213,8 @@ export default function PartnershipsView({ school, onBack }: Props) {
 
   const renderPartnershipRow = useCallback((opp: ApiPartnershipOpportunity, i: number) => (
     <PartnershipRow opp={opp} i={i} school={school}
-      expandedNames={expandedNames} pipelineData={pipelineData} pipelineLoading={pipelineLoading}
-      employerOccupations={employerOccupations} onExpand={handleExpand} onDraft={handleDraftCTA} />
-  ), [school, expandedNames, pipelineData, pipelineLoading, employerOccupations, handleExpand, handleDraftCTA]);
+      expandedNames={expandedNames} onExpand={handleExpand} onDraft={handleDraftCTA} />
+  ), [school, expandedNames, handleExpand, handleDraftCTA]);
 
   const partnershipKeyExtractor = useCallback((opp: ApiPartnershipOpportunity) => opp.name, []);
 
@@ -472,10 +445,9 @@ export default function PartnershipsView({ school, onBack }: Props) {
 
 /* ── Partnership Row ────────────────────────────────────────────────────── */
 
-const PartnershipRow = memo(function PartnershipRow({ opp, i, school, expandedNames, pipelineData, pipelineLoading, employerOccupations, onExpand, onDraft }: {
+const PartnershipRow = memo(function PartnershipRow({ opp, i, school, expandedNames, onExpand, onDraft }: {
   opp: ApiPartnershipOpportunity; i: number; school: SchoolConfig;
-  expandedNames: Set<string>; pipelineData: Record<string, number>; pipelineLoading: Set<string>;
-  employerOccupations: Record<string, Array<{ title: string; annual_wage: number | null }>>;
+  expandedNames: Set<string>;
   onExpand: (opp: ApiPartnershipOpportunity) => void; onDraft: (opp: ApiPartnershipOpportunity) => void;
 }) {
   const isOpen = expandedNames.has(opp.name);
@@ -516,54 +488,11 @@ const PartnershipRow = memo(function PartnershipRow({ opp, i, school, expandedNa
             style={{ overflow: "hidden", background: "rgba(255,255,255,0.02)" }}
           >
             <div style={{ padding: "16px 20px 24px" }}>
-              {!(employerOccupations[opp.name] && pipelineData[opp.name] !== undefined) ? (
-                <div style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.3)", padding: "8px 0" }}>
-                  Loading...
-                </div>
-              ) : (<>
-                {opp.description && (
-                  <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.55)", lineHeight: 1.55, margin: "0 0 14px" }}>
-                    {opp.description}
-                  </p>
-                )}
-                <div style={{ marginBottom: "16px" }}>
-                  <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", display: "block", marginBottom: "8px" }}>
-                    Relevant Occupations
-                  </span>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                    {employerOccupations[opp.name].map((occ) => (
-                      <div key={occ.title} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontFamily: FONT, fontSize: "13px" }}>
-                        <span style={{ color: "rgba(255,255,255,0.7)" }}>{occ.title}</span>
-                        {occ.annual_wage && (
-                          <span style={{ color: "rgba(255,255,255,0.4)", fontWeight: 500 }}>${occ.annual_wage.toLocaleString()}/yr</span>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div style={{ marginBottom: "16px" }}>
-                  <p style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)", lineHeight: 1.5, margin: 0 }}>
-                    <span style={{ color: "rgba(255,255,255,0.7)", fontWeight: 500 }}>{pipelineData[opp.name].toLocaleString()}</span>
-                    {" "}students have 3 or more skills relevant to this employer&apos;s hiring needs
-                  </p>
-                  {opp.aligned_skills.length > 0 && (
-                    <div style={{ marginTop: "10px" }}>
-                      <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.3)", display: "block", marginBottom: "6px" }}>
-                        Top skills across this employer&apos;s roles
-                      </span>
-                      <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-                        {opp.aligned_skills.slice(0, 4).map((skill) => (
-                          <span key={skill} style={{
-                            fontFamily: FONT, fontSize: "11px", color: school.brandColorLight,
-                            background: `${school.brandColorLight}12`, border: `1px solid ${school.brandColorLight}25`,
-                            borderRadius: "100px", padding: "4px 10px",
-                          }}>{skill}</span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </>)}
+              {opp.description && (
+                <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.55)", lineHeight: 1.55, margin: "0 0 16px" }}>
+                  {opp.description}
+                </p>
+              )}
               <button
                 onClick={(e) => { e.stopPropagation(); onDraft(opp); }}
                 style={{
