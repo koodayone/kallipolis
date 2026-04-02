@@ -24,7 +24,7 @@ def get_labor_market_overview(college: str):
         with driver.session() as session:
             result = session.run("""
                 MATCH (c:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})
-                RETURN r.name AS region,
+                RETURN COALESCE(r.display_name, r.name) AS region,
                        occ.soc_code AS soc_code, occ.title AS title,
                        occ.description AS description, d.annual_wage AS annual_wage,
                        d.employment AS employment,
@@ -106,7 +106,7 @@ def get_occupation_detail(soc_code: str, college: str):
             # Get regional demand
             region_result = session.run("""
                 MATCH (r:Region)-[d:DEMANDS]->(occ:Occupation {soc_code: $soc})
-                RETURN r.name AS region, d.employment AS employment,
+                RETURN COALESCE(r.display_name, r.name) AS region, d.employment AS employment,
                        d.annual_wage AS annual_wage,
                        d.growth_rate AS growth_rate, d.annual_openings AS annual_openings,
                        d.education_level AS education_level
@@ -211,7 +211,7 @@ def get_employer_detail(name: str, college: str):
 
             # Get regions
             region_result = session.run(
-                "MATCH (e:Employer {name: $name})-[:IN_MARKET]->(r:Region) RETURN r.name AS region",
+                "MATCH (e:Employer {name: $name})-[:IN_MARKET]->(r:Region) RETURN COALESCE(r.display_name, r.name) AS region",
                 name=name,
             ).data()
 

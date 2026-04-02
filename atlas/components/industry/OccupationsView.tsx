@@ -247,7 +247,7 @@ const OccupationRow = memo(function OccupationRow({ occ, i, school, expandedSocs
                         ))}
                       </div>
                       <p style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.25)", marginTop: "8px", lineHeight: 1.5 }}>
-                        Employment figures from the Centers of Excellence for Labor Market Research.
+                        Occupational demand figures from the Centers of Excellence for Labor Market Research.
                       </p>
                     </div>
                     );

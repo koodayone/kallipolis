@@ -15,7 +15,7 @@ from typing import Optional
 
 from neo4j import Driver
 from ontology.schema import get_driver, close_driver
-from pipeline.industry.region_maps import COLLEGE_COE_REGION
+from pipeline.industry.region_maps import COLLEGE_COE_REGION, COE_REGION_DISPLAY
 
 logger = logging.getLogger(__name__)
 
@@ -60,7 +60,11 @@ def load_industry(
             regions.update(occ["regions"].keys())
 
         for region_name in regions:
-            session.run("MERGE (r:Region {name: $name})", name=region_name)
+            display_name = COE_REGION_DISPLAY.get(region_name, region_name)
+            session.run(
+                "MERGE (r:Region {name: $name}) SET r.display_name = $display",
+                name=region_name, display=display_name,
+            )
             stats["regions"] += 1
         logger.info(f"Created {stats['regions']} Region nodes")
 

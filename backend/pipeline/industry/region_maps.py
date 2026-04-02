@@ -53,6 +53,20 @@ OEWS_METRO_TO_COE: dict[str, str] = {
     "North Valley-Northern Mountains Region": "FN",
 }
 
+# COE region code → display name
+COE_REGION_DISPLAY: dict[str, str] = {
+    "Bay": "Bay Area",
+    "CA": "California",
+    "CVML": "Central Valley / Mother Lode",
+    "FN": "Far North",
+    "GS": "Greater Sacramento",
+    "IE/D": "Inland Empire / Desert",
+    "LA": "Los Angeles",
+    "OC": "Orange County",
+    "SCC": "South Central Coast",
+    "SD/I": "San Diego / Imperial",
+}
+
 # Frontend regionId → COE region code
 FRONTEND_TO_COE: dict[str, str] = {
     "bay-area": "Bay",
