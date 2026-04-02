@@ -185,7 +185,7 @@ def get_employer_detail(name: str, college: str):
                       (e)-[:HIRES_FOR]->(occ:Occupation)<-[d:DEMANDS]-(r),
                       (occ)-[:REQUIRES_SKILL]->(sk:Skill)
                 OPTIONAL MATCH (course:Course {college: $college})-[:DEVELOPS]->(sk)
-                RETURN occ.title AS title, occ.soc_code AS soc_code, d.annual_wage AS annual_wage,
+                RETURN occ.title AS title, occ.soc_code AS soc_code, occ.description AS description, d.annual_wage AS annual_wage,
                        sk.name AS skill,
                        CASE WHEN course IS NOT NULL THEN true ELSE false END AS developed,
                        collect(DISTINCT CASE WHEN course IS NOT NULL THEN {code: course.code, name: course.name} END) AS courses
@@ -199,6 +199,7 @@ def get_employer_detail(name: str, college: str):
                     occ_map[key] = {
                         "title": r["title"],
                         "soc_code": r["soc_code"],
+                        "description": r.get("description"),
                         "annual_wage": r["annual_wage"],
                         "skills": [],
                     }
