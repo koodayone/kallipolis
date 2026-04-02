@@ -65,7 +65,7 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
       }}>
 
         {/* Header: employer + partnership type */}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "20px" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
           <h3 style={{ fontFamily: FONT, fontSize: "17px", fontWeight: 600, color: "rgba(255,255,255,0.9)", letterSpacing: "-0.01em", lineHeight: 1.3, margin: 0 }}>
             {proposal.employer}
           </h3>
