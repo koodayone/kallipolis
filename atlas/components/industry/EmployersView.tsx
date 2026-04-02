@@ -269,6 +269,9 @@ const EmployerRow = memo(function EmployerRow({ emp, i, school, expandedNames, e
                       </div>
                     );
                   })}
+                  <p style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.25)", marginTop: "8px", lineHeight: 1.5 }}>
+                    Regional employer data from the California Employment Development Department.
+                  </p>
                 </div>
               )}
             </div>
