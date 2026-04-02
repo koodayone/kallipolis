@@ -186,13 +186,6 @@ const EmployerRow = memo(function EmployerRow({ emp, i, school, expandedNames, e
               {isLoading && <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Loading...</p>}
               {detail && (
                 <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-                  {detail.regions.length > 0 && (
-                    <div style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)" }}>
-                      {detail.sector && <span style={{ color: "rgba(255,255,255,0.55)", fontWeight: 500 }}>{detail.sector}</span>}
-                      {detail.sector && detail.regions.length > 0 && " · "}
-                      {detail.regions.join(" · ")}
-                    </div>
-                  )}
                   {detail.description && (
                     <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.7)", lineHeight: 1.55, margin: 0 }}>
                       {detail.description}
@@ -200,12 +193,11 @@ const EmployerRow = memo(function EmployerRow({ emp, i, school, expandedNames, e
                   )}
                   {detail.occupations.map((occ: any) => {
                     const aligned = (occ.skills || []).filter((s: any) => s.developed);
-                    const gaps = (occ.skills || []).filter((s: any) => !s.developed);
                     return (
                       <div key={occ.soc_code} style={{
                         background: "rgba(255,255,255,0.03)", borderRadius: "8px", padding: "16px 18px",
                       }}>
-                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: aligned.length > 0 || gaps.length > 0 ? "12px" : 0 }}>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: aligned.length > 0 ? "12px" : 0 }}>
                           <div>
                             <div style={{ fontFamily: FONT, fontSize: "14px", fontWeight: 500, color: "#f0eef4" }}>
                               {occ.title}
@@ -222,12 +214,12 @@ const EmployerRow = memo(function EmployerRow({ emp, i, school, expandedNames, e
                             border: `1px solid ${school.brandColorLight}30`,
                             fontSize: "11px",
                           }}>
-                            {aligned.length}/{occ.skills?.length || 0} skills
+                            {aligned.length} skills
                           </Badge>
                         </div>
 
                         {aligned.length > 0 && (
-                          <div style={{ display: "flex", flexDirection: "column", gap: "5px", marginBottom: gaps.length > 0 ? "10px" : 0 }}>
+                          <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
                             {aligned.map((skill: any) => (
                               <div key={skill.skill} style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
@@ -241,18 +233,6 @@ const EmployerRow = memo(function EmployerRow({ emp, i, school, expandedNames, e
                                   </span>
                                 )}
                               </div>
-                            ))}
-                          </div>
-                        )}
-
-                        {gaps.length > 0 && (
-                          <div style={{ display: "flex", flexWrap: "wrap", gap: "5px" }}>
-                            {gaps.map((skill: any) => (
-                              <span key={skill.skill} style={{
-                                fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.3)",
-                                background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)",
-                                borderRadius: "100px", padding: "3px 10px",
-                              }}>{skill.skill}</span>
                             ))}
                           </div>
                         )}

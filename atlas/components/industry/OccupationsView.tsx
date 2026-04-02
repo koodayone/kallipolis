@@ -101,7 +101,7 @@ export default function OccupationsView({ school, onBack }: Props) {
     overview ? (
       <div style={{ marginTop: "16px" }}>
         <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.35)", marginBottom: "12px" }}>
-          {allOccupations.length.toLocaleString()} occupations in {regionLabel}
+          {allOccupations.length.toLocaleString()} occupations
         </p>
         <EntityScrollList
           items={allOccupations} initialCap={100} batchSize={100}
