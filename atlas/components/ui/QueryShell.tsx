@@ -45,6 +45,7 @@ export default function QueryShell<T>({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [helpOpen, setHelpOpen] = useState(false);
+  const [helpClicked, setHelpClicked] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const helpRef = useRef<HTMLDivElement>(null);
 
@@ -161,17 +162,26 @@ export default function QueryShell<T>({
                     onBlur={onInputBlur}
                   />
                   <motion.button
-                    onClick={() => setHelpOpen((prev) => !prev)}
+                    onClick={() => { setHelpOpen((prev) => !prev); setHelpClicked(true); }}
                     style={{
                       position: "absolute", right: "16px", top: "50%", transform: "translateY(-50%)",
                       background: "none", border: "none", cursor: "pointer", padding: "4px",
                       display: "flex", alignItems: "center", justifyContent: "center",
+                      animation: !helpClicked && !helpOpen ? "helpGlow 2.5s ease-in-out infinite" : "none",
                     }}
                     aria-label="Show example queries"
                   >
+                    {!helpClicked && (
+                      <style>{`
+                        @keyframes helpGlow {
+                          0%, 100% { filter: drop-shadow(0 0 2px ${school.brandColorLight}30); }
+                          50% { filter: drop-shadow(0 0 6px ${school.brandColorLight}70); }
+                        }
+                      `}</style>
+                    )}
                     <motion.svg width="20" height="20" viewBox="0 0 16 16" fill="none"
                       initial={{ opacity: 0.4 }}
-                      animate={{ opacity: 1 }}
+                      animate={{ opacity: helpClicked ? 0.55 : 1 }}
                       transition={{ duration: 1.5, ease: "easeOut" }}
                       whileHover={{ opacity: 0.85 }}
                     >

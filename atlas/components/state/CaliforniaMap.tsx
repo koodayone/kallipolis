@@ -204,6 +204,10 @@ export default function CaliforniaMap({
               const isActive = isHovered || isSelected;
               const brandColor = getCollegeAtlasConfig(college.id)?.brandColorNeon ?? "#3ab26e";
               const size = isActive ? DIAMOND * 1.4 : DIAMOND;
+              // Adjust label anchor for markers near edges
+              const lngRange = { min: -124.5, max: -114 };
+              const lngNorm = (college.lng - lngRange.min) / (lngRange.max - lngRange.min);
+              const labelAnchor = lngNorm < 0.25 ? "start" as const : lngNorm > 0.75 ? "end" as const : "middle" as const;
 
               return (
                 <Marker
@@ -237,7 +241,7 @@ export default function CaliforniaMap({
                     {isActive && (
                       <text
                         y={-size - 10}
-                        textAnchor="middle"
+                        textAnchor={labelAnchor}
                         style={{
                           fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
                           fontSize: "12px",
