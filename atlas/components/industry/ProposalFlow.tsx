@@ -84,7 +84,7 @@ export default function ProposalFlow({
                 fontFamily: FONT, fontSize: "14px", fontWeight: 600,
                 cursor: engagementType ? "pointer" : "default", border: "none",
                 background: engagementType ? school.brandColorLight : "rgba(255,255,255,0.06)",
-                color: engagementType ? "#ffffff" : "rgba(255,255,255,0.25)",
+                color: engagementType ? "#1a1a2e" : "rgba(255,255,255,0.25)",
                 transition: "opacity 0.15s, background 0.2s",
               }}
               onMouseEnter={(e) => { if (engagementType) e.currentTarget.style.opacity = "0.85"; }}

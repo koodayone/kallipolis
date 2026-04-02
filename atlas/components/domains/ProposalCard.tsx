@@ -63,22 +63,9 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
         padding: "28px", background: "rgba(255,255,255,0.04)",
         border: "1px solid rgba(255,255,255,0.08)", borderRadius: "8px", position: "relative",
       }}>
-        {/* Status indicator */}
-        {(isSaved || isFlagged) && (
-          <div style={{ position: "absolute", top: "16px", right: "16px" }}>
-            <span style={{
-              padding: "4px 10px", borderRadius: "100px", fontFamily: FONT, fontSize: "11px", fontWeight: 600, letterSpacing: "0.05em",
-              background: isSaved ? "rgba(74,222,128,0.15)" : "rgba(251,191,36,0.15)",
-              color: isSaved ? "rgba(74,222,128,0.9)" : "rgba(251,191,36,0.9)",
-              border: `1px solid ${isSaved ? "rgba(74,222,128,0.3)" : "rgba(251,191,36,0.3)"}`,
-            }}>
-              {isSaved ? "Saved" : "Flagged"}
-            </span>
-          </div>
-        )}
 
         {/* Header: employer + partnership type */}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "20px", paddingRight: isSaved || isFlagged ? "80px" : "0" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "20px" }}>
           <h3 style={{ fontFamily: FONT, fontSize: "17px", fontWeight: 600, color: "rgba(255,255,255,0.9)", letterSpacing: "-0.01em", lineHeight: 1.3, margin: 0 }}>
             {proposal.employer}
           </h3>

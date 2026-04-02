@@ -222,15 +222,8 @@ export default function PartnershipsView({ school, onBack }: Props) {
     <div ref={rootRef}>
       <LeafHeader school={school} onBack={phase === "selection" ? onBack : handleBackFromSplit} parentShape="tetrahedron" />
 
-      <AnimatePresence mode="wait" initial={false}>
-        {phase === "selection" ? (
-          <motion.div
-            key="selection"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-          >
+      {phase === "selection" && (
+          <div>
           <div style={{ maxWidth: "760px", margin: "0 auto", padding: "32px 40px 80px" }}>
             {/* Build / Manage segmented control */}
             <div style={{ display: "flex", justifyContent: "center", marginBottom: "40px" }}>
@@ -247,7 +240,7 @@ export default function PartnershipsView({ school, onBack }: Props) {
                       border: "none",
                       borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.10)" : "none",
                       background: mode === m ? school.brandColorLight : "transparent",
-                      color: mode === m ? "#ffffff" : "rgba(255,255,255,0.4)",
+                      color: mode === m ? "#1a1a2e" : "rgba(255,255,255,0.4)",
                       transition: "background 0.2s, color 0.2s",
                       textTransform: "capitalize",
                     }}
@@ -414,16 +407,10 @@ export default function PartnershipsView({ school, onBack }: Props) {
             </div>
             )}
           </div>
-          </motion.div>
-        ) : selectedEmployer ? (
-          <motion.div
-            key="proposal-flow"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            style={{ width: "100%" }}
-          >
+          </div>
+        )}
+        {phase !== "selection" && selectedEmployer && (
+          <div style={{ maxWidth: "760px", margin: "0 auto" }}>
             <ProposalFlow
               school={school}
               employer={selectedEmployer}
@@ -435,9 +422,8 @@ export default function PartnershipsView({ school, onBack }: Props) {
               proposal={proposal}
               proposalError={proposalError}
             />
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
+          </div>
+        )}
     </div>
   );
 }
@@ -499,7 +485,7 @@ const PartnershipRow = memo(function PartnershipRow({ opp, i, school, expandedNa
                   width: "100%", padding: "14px 24px", borderRadius: "10px",
                   fontFamily: FONT, fontSize: "15px", fontWeight: 600,
                   cursor: "pointer", border: "none",
-                  background: school.brandColorLight, color: "#ffffff",
+                  background: school.brandColorLight, color: "#1a1a2e",
                   transition: "opacity 0.15s",
                   letterSpacing: "-0.01em",
                 }}
