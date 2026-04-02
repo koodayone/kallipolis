@@ -85,7 +85,7 @@ def get_lmi_context(employer: str, college: str) -> LmiContext:
             MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)
                   -[d:DEMANDS]->(occ:Occupation)<-[:HIRES_FOR]-(emp:Employer {name: $employer})
             RETURN occ.soc_code AS soc_code, occ.title AS title,
-                   occ.annual_wage AS annual_wage, d.employment AS employment,
+                   d.annual_wage AS annual_wage, d.employment AS employment,
                    d.growth_rate AS growth_rate, d.annual_openings AS annual_openings,
                    d.education_level AS education_level,
                    r.name AS region
@@ -263,7 +263,7 @@ def _gather_swp_context(req: SwpProjectRequest, lmi: LmiContext) -> str:
     skill_gaps_text = "\n".join(gap_lines) if gap_lines else "  (none)"
 
     # LMI text
-    lmi_lines = ["  Occupations (demand from EDD OEWS + COE projections):"]
+    lmi_lines = ["  Occupations (demand from Centers of Excellence projections):"]
     for occ in lmi.occupations:
         wage = f"${occ.annual_wage:,}/yr" if occ.annual_wage else "wage unavailable"
         emp = f"{occ.employment:,} jobs" if occ.employment else "employment unavailable"

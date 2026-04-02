@@ -1,98 +1,60 @@
 """
 Load Region and Occupation nodes into Neo4j from generated occupations.json.
 
+Occupations are sourced from Centers of Excellence data. Regions are COE
+region codes (Bay, CVML, FN, etc.), not OEWS metros.
+
 Usage:
     python -m pipeline.industry.loader
 """
 
 import json
 import logging
-from collections import Counter
-from math import log
 from pathlib import Path
 from typing import Optional
 
 from neo4j import Driver
 from ontology.schema import get_driver, close_driver
-from pipeline.industry.region_maps import COLLEGE_REGION_MAP, OEWS_METRO_TO_COE
+from pipeline.industry.region_maps import COLLEGE_COE_REGION
 
 logger = logging.getLogger(__name__)
 
 BATCH_SIZE = 500
 
 
-def filter_occupations_for_college(
-    occupations: list[dict],
-    college_skills: set[str],
-    metro: str,
-    min_relevance: float = 1.5,
-    min_overlap: int = 2,
-) -> list[dict]:
-    """Filter occupations to those meaningfully relevant to a college's curriculum.
-
-    Uses occupation-side IDF weighting: skills required by few occupations
-    carry more signal than ubiquitous skills like "Troubleshooting".
-
-    Args:
-        occupations: Full occupation list from occupations.json.
-        college_skills: Set of skill names the college's courses develop.
-        metro: OEWS metro name to filter by regional employment.
-        min_relevance: Minimum IDF-weighted relevance score.
-        min_overlap: Minimum distinct shared skills.
-
-    Returns:
-        Filtered list of occupation dicts.
-    """
-    # Compute IDF: how many occupations require each skill
-    skill_occ_count: Counter = Counter()
-    for occ in occupations:
-        for skill in occ["skills"]:
-            skill_occ_count[skill] += 1
-
-    filtered = []
-    for occ in occupations:
-        if metro not in occ.get("regions", {}):
-            continue
-        shared = set(occ["skills"]) & college_skills
-        if len(shared) < min_overlap:
-            continue
-        relevance = sum(1 / log(1 + skill_occ_count[s]) for s in shared)
-        if relevance >= min_relevance:
-            filtered.append(occ)
-
-    logger.info(
-        f"Filtered occupations for {metro}: {len(filtered)} "
-        f"(from {sum(1 for o in occupations if metro in o.get('regions', {}))} in metro, "
-        f"{len(occupations)} total)"
-    )
-    return filtered
-
-
 def load_industry(
     driver: Driver,
     occupations: list[dict],
-    coe_data: Optional[dict] = None,
     filtered_soc_codes: Optional[set[str]] = None,
 ) -> dict:
     """Load Region, Occupation, and relationship data into Neo4j.
 
     Args:
         driver: Neo4j driver instance.
-        occupations: List of occupation dicts from occupations.json.
-        coe_data: Optional COE parsed data dict from coe_parsed.json.
-                  If provided, enriches DEMANDS edges with growth_rate,
-                  annual_openings, and education_level.
+        occupations: List of occupation dicts from occupations.json (COE-based).
         filtered_soc_codes: Optional set of SOC codes to load. If provided,
                   only these occupations are loaded into the graph.
     """
+    # Filter to workforce development band: postsecondary certificate through bachelor's
+    _EXCLUDE_EDUCATION = {
+        "No formal educational credential",
+        "High school diploma or equivalent",
+        "Some college, no degree",
+        "Master's degree",
+        "Doctoral or professional degree",
+    }
+    before = len(occupations)
+    occupations = [o for o in occupations if o.get("education_level") not in _EXCLUDE_EDUCATION]
+    logger.info(f"Workforce development band: {len(occupations)} occupations (from {before})")
+
     if filtered_soc_codes is not None:
         before = len(occupations)
         occupations = [o for o in occupations if o["soc_code"] in filtered_soc_codes]
         logger.info(f"Filtered to {len(occupations)} occupations (from {before})")
-    stats = {"regions": 0, "occupations": 0, "demands": 0, "requires_skill": 0, "college_links": 0, "coe_enriched": 0}
+    stats = {"regions": 0, "occupations": 0, "demands": 0, "requires_skill": 0, "college_links": 0}
 
     with driver.session() as session:
-        # 1. Create Region nodes
+        # 1. Create Region nodes from COE region codes
         regions = set()
         for occ in occupations:
             regions.update(occ["regions"].keys())
@@ -102,8 +64,8 @@ def load_industry(
             stats["regions"] += 1
         logger.info(f"Created {stats['regions']} Region nodes")
 
-        # 2. Link Colleges to Regions
-        for college_name, region_name in COLLEGE_REGION_MAP.items():
+        # 2. Link Colleges to COE Regions
+        for college_name, coe_region in COLLEGE_COE_REGION.items():
             result = session.run(
                 """
                 MATCH (c:College {name: $college})
@@ -112,19 +74,19 @@ def load_industry(
                 RETURN count(*) AS cnt
                 """,
                 college=college_name,
-                region=region_name,
+                region=coe_region,
             )
             stats["college_links"] += result.single()["cnt"]
         logger.info(f"Created {stats['college_links']} College-Region links")
 
-        # 3. Create Occupation nodes
+        # 3. Create Occupation nodes (wage is regional, lives on DEMANDS edge)
         occ_batch = []
         for occ in occupations:
             occ_batch.append({
                 "soc_code": occ["soc_code"],
                 "title": occ["title"],
-                "description": occ["description"],
-                "annual_wage": occ["annual_wage"],
+                "description": occ.get("description", ""),
+                "education_level": occ.get("education_level"),
             })
             if len(occ_batch) >= BATCH_SIZE:
                 _create_occupations(session, occ_batch)
@@ -135,14 +97,17 @@ def load_industry(
             stats["occupations"] += len(occ_batch)
         logger.info(f"Created {stats['occupations']} Occupation nodes")
 
-        # 4. Create Region -[:DEMANDS]-> Occupation
+        # 4. Create Region -[:DEMANDS]-> Occupation with full COE data
         demand_batch = []
         for occ in occupations:
-            for region_name, employment in occ["regions"].items():
+            for region_name, region_data in occ["regions"].items():
                 demand_batch.append({
                     "soc_code": occ["soc_code"],
                     "region": region_name,
-                    "employment": employment,
+                    "employment": region_data.get("employment"),
+                    "annual_wage": region_data.get("annual_wage"),
+                    "growth_rate": region_data.get("growth_rate"),
+                    "annual_openings": region_data.get("annual_openings"),
                 })
                 if len(demand_batch) >= BATCH_SIZE:
                     _create_demands(session, demand_batch)
@@ -156,7 +121,7 @@ def load_industry(
         # 5. Create Occupation -[:REQUIRES_SKILL]-> Skill
         skill_batch = []
         for occ in occupations:
-            for skill_name in occ["skills"]:
+            for skill_name in occ.get("skills", []):
                 skill_batch.append({
                     "soc_code": occ["soc_code"],
                     "skill": skill_name,
@@ -170,46 +135,6 @@ def load_industry(
             stats["requires_skill"] += cnt
         logger.info(f"Created {stats['requires_skill']} REQUIRES_SKILL edges")
 
-        # 6. Enrich DEMANDS edges with COE demand projections
-        if coe_data:
-            coe_occs = coe_data.get("occupations", {})
-            enrich_batch = []
-
-            for occ in occupations:
-                soc = occ["soc_code"]
-                coe_occ = coe_occs.get(soc)
-                if not coe_occ:
-                    continue
-
-                for region_name in occ["regions"]:
-                    coe_region = OEWS_METRO_TO_COE.get(region_name)
-                    if not coe_region:
-                        continue
-                    coe_region_data = coe_occ["regions"].get(coe_region)
-                    if not coe_region_data:
-                        # Fall back to statewide
-                        coe_region_data = coe_occ["regions"].get("CA")
-                    if not coe_region_data:
-                        continue
-
-                    enrich_batch.append({
-                        "soc_code": soc,
-                        "region": region_name,
-                        "growth_rate": coe_region_data.get("growth_rate"),
-                        "annual_openings": coe_region_data.get("annual_openings"),
-                        "education_level": coe_occ.get("education_level"),
-                    })
-
-                    if len(enrich_batch) >= BATCH_SIZE:
-                        _enrich_demands(session, enrich_batch)
-                        stats["coe_enriched"] += len(enrich_batch)
-                        enrich_batch = []
-
-            if enrich_batch:
-                _enrich_demands(session, enrich_batch)
-                stats["coe_enriched"] += len(enrich_batch)
-            logger.info(f"Enriched {stats['coe_enriched']} DEMANDS edges with COE data")
-
     return stats
 
 
@@ -220,7 +145,7 @@ def _create_occupations(session, batch: list[dict]):
         MERGE (o:Occupation {soc_code: row.soc_code})
         SET o.title = row.title,
             o.description = row.description,
-            o.annual_wage = row.annual_wage
+            o.education_level = row.education_level
         """,
         batch=batch,
     )
@@ -233,21 +158,10 @@ def _create_demands(session, batch: list[dict]):
         MATCH (r:Region {name: row.region})
         MATCH (o:Occupation {soc_code: row.soc_code})
         MERGE (r)-[d:DEMANDS]->(o)
-        SET d.employment = row.employment
-        """,
-        batch=batch,
-    )
-
-
-def _enrich_demands(session, batch: list[dict]):
-    """Add COE demand projections to existing DEMANDS edges."""
-    session.run(
-        """
-        UNWIND $batch AS row
-        MATCH (r:Region {name: row.region})-[d:DEMANDS]->(o:Occupation {soc_code: row.soc_code})
-        SET d.growth_rate = row.growth_rate,
-            d.annual_openings = row.annual_openings,
-            d.education_level = row.education_level
+        SET d.employment = row.employment,
+            d.annual_wage = row.annual_wage,
+            d.growth_rate = row.growth_rate,
+            d.annual_openings = row.annual_openings
         """,
         batch=batch,
     )
@@ -275,19 +189,11 @@ if __name__ == "__main__":
     with open(data_path) as f:
         occupations = json.load(f)
 
-    # Load COE data if available
-    coe_path = Path(__file__).parent / "coe_parsed.json"
-    coe_data = None
-    if coe_path.exists():
-        with open(coe_path) as f:
-            coe_data = json.load(f)
-        logger.info(f"Loaded COE data: {len(coe_data.get('occupations', {}))} occupations")
-
     logger.info(f"Loading {len(occupations)} occupations into Neo4j")
 
     driver = get_driver()
     try:
-        stats = load_industry(driver, occupations, coe_data=coe_data)
+        stats = load_industry(driver, occupations)
         logger.info(f"\nComplete: {stats}")
     finally:
         close_driver()

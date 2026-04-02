@@ -32,7 +32,7 @@ const OCCUPATION_COLUMNS: Column[] = [
   { label: "Occupation", width: "1fr" },
   { label: "Wage", width: "100px", align: "right" },
   { label: "Openings", width: "80px", align: "right" },
-  { label: "Growth", width: "110px", align: "right" },
+  { label: "5yr Growth", width: "110px", align: "right" },
 ];
 
 type Props = { school: SchoolConfig; onBack: () => void };
@@ -247,7 +247,7 @@ const OccupationRow = memo(function OccupationRow({ occ, i, school, expandedSocs
                         ))}
                       </div>
                       <p style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.25)", marginTop: "8px", lineHeight: 1.5 }}>
-                        Employment figures from the California Employment Development Department, Occupational Employment and Wage Statistics (OEWS) survey, May 2024.
+                        Employment figures from the Centers of Excellence for Labor Market Research.
                       </p>
                     </div>
                     );

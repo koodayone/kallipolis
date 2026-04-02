@@ -114,7 +114,6 @@ class OccupationDetail(BaseModel):
     soc_code: str
     title: str
     description: Optional[str] = None
-    annual_wage: Optional[int] = None
     skills: list[SkillDetail]
     regions: list[dict]
 

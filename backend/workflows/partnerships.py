@@ -206,10 +206,12 @@ def _gather_targeted_context(employer: str, college: str, engagement_type: str =
 
         # B. Skill alignment detail
         skill_result = session.run("""
-            MATCH (emp:Employer {name: $employer})-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)
+            MATCH (emp:Employer {name: $employer})-[:IN_MARKET]->(r:Region),
+                  (emp)-[:HIRES_FOR]->(occ:Occupation)<-[d:DEMANDS]-(r),
+                  (occ)-[:REQUIRES_SKILL]->(sk:Skill)
             OPTIONAL MATCH (course:Course {college: $college})-[:DEVELOPS]->(sk)
             OPTIONAL MATCH (dept:Department)-[:CONTAINS]->(course)
-            RETURN occ.title AS occupation, occ.annual_wage AS annual_wage,
+            RETURN occ.title AS occupation, d.annual_wage AS annual_wage,
                    sk.name AS skill,
                    CASE WHEN course IS NOT NULL THEN true ELSE false END AS developed,
                    course.code AS course_code, course.name AS course_name,
@@ -293,7 +295,7 @@ def _gather_targeted_context(employer: str, college: str, engagement_type: str =
         econ_result = session.run("""
             MATCH (:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)
                   <-[:HIRES_FOR]-(emp:Employer {name: $employer})
-            RETURN occ.title AS title, occ.annual_wage AS annual_wage,
+            RETURN occ.title AS title, d.annual_wage AS annual_wage,
                    d.employment AS employment, d.growth_rate AS growth_rate,
                    d.annual_openings AS annual_openings, r.name AS region
         """, employer=employer, college=college).data()

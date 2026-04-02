@@ -222,11 +222,11 @@ export type ApiOccupationDetail = {
   soc_code: string;
   title: string;
   description: string | null;
-  annual_wage: number | null;
   skills: ApiSkillDetail[];
   regions: Array<{
     region: string;
     employment: number;
+    annual_wage: number | null;
     growth_rate: number | null;
     annual_openings: number | null;
     education_level: string | null;

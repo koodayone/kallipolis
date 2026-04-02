@@ -26,7 +26,7 @@ def get_labor_market_overview(college: str):
                 MATCH (c:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})
                 RETURN r.name AS region,
                        occ.soc_code AS soc_code, occ.title AS title,
-                       occ.description AS description, occ.annual_wage AS annual_wage,
+                       occ.description AS description, d.annual_wage AS annual_wage,
                        d.employment AS employment,
                        d.growth_rate AS growth_rate,
                        d.annual_openings AS annual_openings,
@@ -78,7 +78,7 @@ def get_occupation_detail(soc_code: str, college: str):
             # Get occupation info
             occ_result = session.run("""
                 MATCH (occ:Occupation {soc_code: $soc})
-                RETURN occ.title AS title, occ.description AS description, occ.annual_wage AS annual_wage
+                RETURN occ.title AS title, occ.description AS description
             """, soc=soc_code).single()
 
             if not occ_result:
@@ -107,6 +107,7 @@ def get_occupation_detail(soc_code: str, college: str):
             region_result = session.run("""
                 MATCH (r:Region)-[d:DEMANDS]->(occ:Occupation {soc_code: $soc})
                 RETURN r.name AS region, d.employment AS employment,
+                       d.annual_wage AS annual_wage,
                        d.growth_rate AS growth_rate, d.annual_openings AS annual_openings,
                        d.education_level AS education_level
                 ORDER BY d.employment DESC
@@ -116,11 +117,11 @@ def get_occupation_detail(soc_code: str, college: str):
             soc_code=soc_code,
             title=occ_result["title"],
             description=occ_result["description"],
-            annual_wage=occ_result["annual_wage"],
             skills=skills,
             regions=[{
                 "region": r["region"],
                 "employment": r["employment"],
+                "annual_wage": r.get("annual_wage"),
                 "growth_rate": r.get("growth_rate"),
                 "annual_openings": r.get("annual_openings"),
                 "education_level": r.get("education_level"),
@@ -180,9 +181,11 @@ def get_employer_detail(name: str, college: str):
 
             # Get occupations with skill alignment
             occ_result = session.run("""
-                MATCH (e:Employer {name: $name})-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)
+                MATCH (e:Employer {name: $name})-[:IN_MARKET]->(r:Region),
+                      (e)-[:HIRES_FOR]->(occ:Occupation)<-[d:DEMANDS]-(r),
+                      (occ)-[:REQUIRES_SKILL]->(sk:Skill)
                 OPTIONAL MATCH (course:Course {college: $college})-[:DEVELOPS]->(sk)
-                RETURN occ.title AS title, occ.soc_code AS soc_code, occ.annual_wage AS annual_wage,
+                RETURN occ.title AS title, occ.soc_code AS soc_code, d.annual_wage AS annual_wage,
                        sk.name AS skill,
                        CASE WHEN course IS NOT NULL THEN true ELSE false END AS developed,
                        collect(DISTINCT CASE WHEN course IS NOT NULL THEN {code: course.code, name: course.name} END) AS courses
@@ -321,9 +324,10 @@ def get_employer_occupations(employer: str):
     try:
         with driver.session() as session:
             result = session.run("""
-                MATCH (emp:Employer {name: $employer})-[:HIRES_FOR]->(occ:Occupation)
-                RETURN occ.title AS title, occ.annual_wage AS annual_wage
-                ORDER BY occ.annual_wage DESC
+                MATCH (emp:Employer {name: $employer})-[:IN_MARKET]->(r:Region),
+                      (emp)-[:HIRES_FOR]->(occ:Occupation)<-[d:DEMANDS]-(r)
+                RETURN occ.title AS title, d.annual_wage AS annual_wage
+                ORDER BY d.annual_wage DESC
             """, employer=employer).data()
         return {"occupations": result}
     except Exception as e:

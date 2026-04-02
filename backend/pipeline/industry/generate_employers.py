@@ -28,6 +28,7 @@ import os
 import re
 from collections import defaultdict
 from pathlib import Path
+from pipeline.industry.region_maps import OEWS_METRO_TO_COE
 
 logger = logging.getLogger(__name__)
 
@@ -247,6 +248,7 @@ def _select_employers(
 
 def _format_for_json(employers: list[dict], metro: str) -> list[dict]:
     """Convert to employers.json schema."""
+    coe_region = OEWS_METRO_TO_COE.get(metro, metro)
     formatted = []
     for emp in employers:
         # Use LLM description if available, otherwise build from EDD data
@@ -272,7 +274,7 @@ def _format_for_json(employers: list[dict], metro: str) -> list[dict]:
             "name": emp["name"],
             "sector": emp.get("sector", "Other"),
             "description": desc,
-            "regions": [metro],
+            "regions": [coe_region],
             "occupations": emp.get("soc_codes", []),
         })
     return formatted
@@ -354,7 +356,10 @@ def _llm_cleanup(
             "- Keep the name recognizable\n"
             '- Return "REMOVE" for branch duplicates, internal departments, foundations when parent is listed, staffing agencies\n\n'
             "TASK 2 — ASSIGN OCCUPATIONS: For each employer, select 3-8 occupation codes from the list below "
-            "that this employer would ACTUALLY hire for, based on what you know about the employer.\n"
+            "that this employer would have ON ITS OWN PAYROLL as direct employees.\n"
+            "Only include roles the employer itself employs — not roles performed by external agencies, contractors, "
+            "or government services that operate near the employer. For example, a resort does not employ firefighters "
+            "(those are government employees), and a hospital does not employ police officers.\n"
             "This is REQUIRED for every employer that is not removed.\n\n"
             f"AVAILABLE OCCUPATIONS:\n{occ_list}\n\n"
             'Return JSON: {"Original Name": {"name": "Clean Name", "description": "...", "occupations": ["SOC-CODE", ...]} '
@@ -450,7 +455,7 @@ def generate_for_college(
 ) -> list[dict]:
     """Run the full employer generation pipeline for one college."""
     from pipeline.industry.edd_employers import search_naics_codes, METRO_COUNTIES
-    from pipeline.industry.region_maps import COLLEGE_REGION_MAP, OEWS_METRO_TO_COE
+    from pipeline.industry.region_maps import COLLEGE_REGION_MAP, COLLEGE_COE_REGION
 
     import warnings
     warnings.filterwarnings("ignore")
@@ -468,18 +473,25 @@ def generate_for_college(
         return []
 
     college_name = college_info["name"]
-    metro = COLLEGE_REGION_MAP.get(college_name)
-    if not metro:
+    from pipeline.industry.region_maps import get_college_metros, COLLEGE_SEARCH_COUNTIES
+    metros = get_college_metros(college_name)
+    if not metros:
         logger.error(f"  {college_name} not in COLLEGE_REGION_MAP")
         return []
+    metro = metros[0]  # Primary metro for employer tagging
 
     logger.info(f"  College: {college_name}")
-    logger.info(f"  Metro: {metro}")
+    logger.info(f"  Metros: {' · '.join(metros)}")
 
     # ── Stage 1: Get EDD employers ────────────────────────────────────
-    # Use college-specific county list if available, otherwise fall back to metro counties
-    from pipeline.industry.region_maps import COLLEGE_SEARCH_COUNTIES
-    search_counties = COLLEGE_SEARCH_COUNTIES.get(college_name, METRO_COUNTIES.get(metro, []))
+    # Use college-specific county list if available, otherwise derive from all metros
+    search_counties = COLLEGE_SEARCH_COUNTIES.get(college_name)
+    if not search_counties:
+        search_counties = []
+        for m in metros:
+            for c in METRO_COUNTIES.get(m, []):
+                if c not in search_counties:
+                    search_counties.append(c)
     logger.info(f"  Search counties: {search_counties}")
 
     cache_key = "_".join(search_counties).lower().replace(" ", "_")
@@ -524,14 +536,30 @@ def generate_for_college(
     with open(OCCUPATIONS_PATH) as f:
         occupations = json.load(f)
 
-    # Build SOC codes by major group, filtered to this metro
-    occ_by_group: dict[str, list[str]] = defaultdict(list)
-    for occ in occupations:
-        if metro in occ.get("regions", {}):
-            group = occ["soc_code"].split("-")[0]
-            occ_by_group[group].append(occ["soc_code"])
+    # Filter occupations to the college's COE region, excluding low-credential roles
+    # that don't represent meaningful workforce development outcomes
+    _EXCLUDE_EDUCATION = {
+        "No formal educational credential",
+        "High school diploma or equivalent",
+        "Some college, no degree",
+        "Master's degree",
+        "Doctoral or professional degree",
+    }
+    coe_region = COLLEGE_COE_REGION.get(college_name)
+    regional_occupations = [
+        occ for occ in occupations
+        if coe_region and coe_region in occ.get("regions", {})
+        and occ.get("education_level") not in _EXCLUDE_EDUCATION
+    ]
+    logger.info(f"  Career-track occupations ({coe_region}): {len(regional_occupations)}")
 
-    # Assign sector labels
+    # Build SOC codes by major group (fallback if LLM doesn't assign)
+    occ_by_group: dict[str, list[str]] = defaultdict(list)
+    for occ in regional_occupations:
+        group = occ["soc_code"].split("-")[0]
+        occ_by_group[group].append(occ["soc_code"])
+
+    # Assign sector labels and fallback SOC codes
     for emp in deduped:
         naics = emp.get("naics4", emp.get("naics_code", ""))[:2]
         emp["sector"] = _NAICS_SECTORS.get(naics, emp.get("industry", "Other"))
@@ -544,11 +572,13 @@ def generate_for_college(
         logger.info(f"    {sector}: {count}")
 
     # ── Stage 5: LLM cleanup in batches (dedup, normalize, describe, assign occupations)
+    # Use caller-provided filtered_occupations, or fall back to regional occupations
+    llm_occupations = filtered_occupations or regional_occupations
     BATCH_SIZE = 30
     selected = []
     for i in range(0, len(deduped), BATCH_SIZE):
         batch = deduped[i:i + BATCH_SIZE]
-        cleaned = _llm_cleanup(batch, metro, filtered_occupations=filtered_occupations)
+        cleaned = _llm_cleanup(batch, metro, filtered_occupations=llm_occupations)
         selected.extend(cleaned)
     logger.info(f"  After LLM cleanup: {len(selected)} employers (from {len(deduped)})")
 
