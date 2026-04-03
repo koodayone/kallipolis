@@ -116,15 +116,19 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
     setApprenticeship(defaults.apprenticeship);
     setWbl(defaults.wbl);
 
+    // Legacy: SWP flow reads old-format proposal fields. Proposals saved under
+    // the new narrative schema will not have these fields — SWP integration
+    // needs a dedicated rework pass.
+    const legacy = saved.proposal as any;
     const req: SwpProjectRequest = {
       employer: saved.proposal.employer,
       college: school.name,
       partnership_type: saved.proposal.partnership_type,
-      executive_summary: saved.proposal.executive_summary,
-      curriculum_alignment: saved.proposal.curriculum_alignment,
-      skill_gaps: saved.proposal.skill_gaps,
-      student_pipeline: saved.proposal.student_pipeline,
-      economic_impact: saved.proposal.economic_impact,
+      executive_summary: legacy.executive_summary ?? saved.proposal.summary ?? "",
+      curriculum_alignment: legacy.curriculum_alignment ?? [],
+      skill_gaps: legacy.skill_gaps ?? [],
+      student_pipeline: legacy.student_pipeline ?? { total_students: 0, students_with_3plus_courses: 0, top_skills: [] },
+      economic_impact: legacy.economic_impact ?? { occupations: [], aggregate_employment: null },
       project_framing: `${defaults.goal} goal targeting ${defaults.metrics.join(", ")} through ${saved.proposal.partnership_type} with ${saved.proposal.employer}`,
       goal: defaults.goal,
       metrics: defaults.metrics,

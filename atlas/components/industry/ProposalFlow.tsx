@@ -9,9 +9,7 @@ const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
 const ENGAGEMENT_TYPES = [
   { key: "internship", title: "Internship Pipeline", description: "Place students at this employer for structured work rotations" },
-  { key: "apprenticeship", title: "Apprenticeship Program", description: "Create a registered, paid, multi-year career pathway" },
   { key: "curriculum_codesign", title: "Curriculum Co-Design", description: "Partner with this employer to shape program content" },
-  { key: "hiring_mou", title: "Hiring MOU", description: "Secure a commitment from this employer to hire graduates" },
   { key: "advisory_board", title: "Advisory Board", description: "Establish ongoing strategic guidance for your programs" },
 ];
 

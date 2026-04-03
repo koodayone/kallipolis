@@ -82,7 +82,7 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
         <div style={{ marginBottom: "24px" }}>
           <SectionHeader>Summary</SectionHeader>
           <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.7)", lineHeight: 1.65, margin: 0 }}>
-            {proposal.executive_summary}
+            {proposal.summary}
           </p>
         </div>
 
@@ -91,58 +91,50 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
           marginBottom: "24px", padding: "20px",
           background: "rgba(255,255,255,0.03)", borderRadius: "10px",
           border: "1px solid rgba(255,255,255,0.05)",
+          display: "flex", flexDirection: "column", gap: "20px",
         }}>
           <SectionHeader>Justification</SectionHeader>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
-            <div>
-              <div style={{ fontFamily: FONT, fontSize: "24px", fontWeight: 600, color: "#f0eef4" }}>
-                {proposal.student_pipeline.students_with_3plus_courses.toLocaleString()}
-              </div>
-              <div style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.35)", lineHeight: 1.4 }}>
-                students with 3+ relevant courses
-              </div>
-            </div>
-            <div>
-              <div style={{ fontFamily: FONT, fontSize: "24px", fontWeight: 600, color: "#f0eef4" }}>
-                {proposal.economic_impact.aggregate_employment?.toLocaleString() ?? "—"}
-              </div>
-              <div style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.35)", lineHeight: 1.4 }}>
-                regional jobs in employer&apos;s roles
-              </div>
-            </div>
-            <div>
-              <div style={{ fontFamily: FONT, fontSize: "24px", fontWeight: 600, color: "#f0eef4" }}>
-                {proposal.economic_impact.occupations[0]?.annual_wage
-                  ? `$${Math.round(proposal.economic_impact.occupations[0].annual_wage / 1000)}K/yr`
-                  : "—"}
-              </div>
-              <div style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.35)", lineHeight: 1.4 }}>
-                {proposal.economic_impact.occupations[0]?.title || "top occupation"}
-              </div>
-            </div>
-            <div>
-              <div style={{ fontFamily: FONT, fontSize: "24px", fontWeight: 600, color: "#f0eef4" }}>
-                {proposal.curriculum_alignment.length}
-              </div>
-              <div style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.35)", lineHeight: 1.4 }}>
-                courses aligned to employer needs
-              </div>
-            </div>
+          <div>
+            <span style={{
+              fontFamily: FONT, fontSize: "11px", fontWeight: 600, letterSpacing: "0.06em",
+              textTransform: "uppercase", color: "rgba(255,255,255,0.25)", display: "block", marginBottom: "6px",
+            }}>
+              Student Composition
+            </span>
+            <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.65)", lineHeight: 1.65, margin: 0 }}>
+              {proposal.justification.student_composition}
+            </p>
+          </div>
+          <div>
+            <span style={{
+              fontFamily: FONT, fontSize: "11px", fontWeight: 600, letterSpacing: "0.06em",
+              textTransform: "uppercase", color: "rgba(255,255,255,0.25)", display: "block", marginBottom: "6px",
+            }}>
+              Course Composition
+            </span>
+            <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.65)", lineHeight: 1.65, margin: 0 }}>
+              {proposal.justification.course_composition}
+            </p>
+          </div>
+          <div>
+            <span style={{
+              fontFamily: FONT, fontSize: "11px", fontWeight: 600, letterSpacing: "0.06em",
+              textTransform: "uppercase", color: "rgba(255,255,255,0.25)", display: "block", marginBottom: "6px",
+            }}>
+              Occupational Demand
+            </span>
+            <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.65)", lineHeight: 1.65, margin: 0 }}>
+              {proposal.justification.occupational_demand}
+            </p>
           </div>
         </div>
 
         {/* ── Section 3: Roadmap ── */}
         <div style={{ marginBottom: "24px" }}>
           <SectionHeader>Roadmap</SectionHeader>
-          {proposal.next_steps.length > 0 && (
-            <ol style={{ margin: "0 0 16px", paddingLeft: "20px", display: "flex", flexDirection: "column", gap: "8px" }}>
-              {proposal.next_steps.slice(0, 3).map((step, i) => (
-                <li key={i} style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.6)", lineHeight: 1.55 }}>
-                  {step}
-                </li>
-              ))}
-            </ol>
-          )}
+          <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.7)", lineHeight: 1.65, margin: 0 }}>
+            {proposal.roadmap}
+          </p>
         </div>
 
         {/* Actions */}

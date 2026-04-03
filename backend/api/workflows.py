@@ -2,7 +2,7 @@ import json
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
 from models import (
-    ProposalList, ProposalRequest, TargetedProposal, ReportRequest, IngestRequest,
+    ProposalList, ProposalRequest, NarrativeProposal, ReportRequest, IngestRequest,
     SwpProjectRequest, SwpProject, LmiContext,
 )
 from workflows.partnerships import run_targeted_proposal, stream_targeted_proposal
@@ -13,7 +13,7 @@ from workflows.ingestion import run_ingest
 router = APIRouter()
 
 
-@router.post("/partnerships/targeted", response_model=TargetedProposal)
+@router.post("/partnerships/targeted", response_model=NarrativeProposal)
 async def targeted_partnership(req: ProposalRequest):
     try:
         return await run_targeted_proposal(req.employer, req.college, req.engagement_type)

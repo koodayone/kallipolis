@@ -229,7 +229,25 @@ class ProposalRequest(BaseModel):
     engagement_type: str = ""
 
 
-# ── Targeted Proposal models ─────────────────────────────────────────────
+# ── Narrative Proposal models ────────────────────────────────────────────
+
+
+class Justification(BaseModel):
+    student_composition: str
+    course_composition: str
+    occupational_demand: str
+
+
+class NarrativeProposal(BaseModel):
+    employer: str
+    sector: Optional[str] = None
+    partnership_type: str
+    summary: str
+    justification: Justification
+    roadmap: str
+
+
+# ── Legacy Targeted Proposal models (used by SWP pipeline only) ─────────────────────────────────────────────
 
 
 class AlignmentDetail(BaseModel):

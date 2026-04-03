@@ -1,4 +1,4 @@
-"""Targeted partnership proposal generation — employer-specific, evidence-grounded."""
+"""Three-stage partnership proposal pipeline: context → signal filter → narrative generation."""
 
 import os
 import re
@@ -7,175 +7,130 @@ import logging
 from collections import Counter, defaultdict
 import anthropic
 from ontology.schema import get_driver
-from models import (
-    TargetedProposal, AlignmentDetail, SkillGapDetail,
-    PipelineStats, EconomicImpact,
-)
+from models import NarrativeProposal, Justification
 
 logger = logging.getLogger(__name__)
 
-_PREAMBLE = """You are an institutional intelligence analyst for California community college workforce partnerships.
 
-Below is the institutional context for a specific employer:
+# ═══════════════════════════════════════════════════════════════════════════
+# Stage 2: Signal Filter
+# ═══════════════════════════════════════════════════════════════════════════
+
+_SIGNAL_FILTER_PROMPT = """You are evaluating skill-to-course alignment data from a community college's curriculum.
+
+For each skill-to-course mapping below, assess whether the course genuinely develops the named skill based on the course name, department, and typical curriculum content.
+
+A mapping is CREDIBLE when:
+- The course content directly and obviously relates to the skill (e.g., "Accounting" → BUS 082 Introduction to Business)
+- The department is a natural home for that skill (e.g., "Food Safety" → Food Services Work Experience)
+- A program coordinator would look at this mapping and say "yes, that's real"
+
+A mapping is NOT CREDIBLE when:
+- The connection is incidental or metaphorical (e.g., "Strategic Planning" → Sports Medicine course)
+- The skill name is being matched on surface-level word overlap rather than genuine content alignment (e.g., "Biology" → Psychology course)
+- The course is a generic work experience placeholder being mapped to a specialized skill
+
+Here is the raw alignment data:
 
 {context}
 
-Generate a partnership proposal as a single JSON object. Every claim must reference specific data from the context — course codes, skill names, student counts, and wage figures. Do not invent data."""
+Return a JSON object with two arrays:
 
-_BASE_SCHEMA = """
-  "executive_summary": "2-3 sentences maximum. State the employer, the partnership type, and the expected outcome. Do not enumerate skills, course codes, or statistics — just the core thesis.",
-  "partnership_type": "{partnership_type_name}",
-  "partnership_type_rationale": "2-3 sentences explaining why this partnership type fits the specific alignment/gap pattern",
-  "curriculum_alignment": [
-    {{"department": "department name", "course_code": "course code", "course_name": "course name", "skill": "the skill this course develops that the employer needs"}}
+{{
+  "retained": [
+    {{"skill": "...", "course_code": "...", "course_name": "...", "department": "...", "occupation": "...", "strength": "strong|moderate"}}
   ],
-  "skill_gaps": [
-    {{"skill": "employer-needed skill the college does NOT develop", "required_by": ["occupation title(s)"], "recommended_action": "specific recommendation"}}
-  ],
-  "student_pipeline": {{
-    "total_students": "<integer from context>",
-    "students_with_3plus_courses": "<integer from context>",
-    "top_skills": ["top 3-5 skills held by the student pipeline"]
-  }},
-  "economic_impact": {{
-    "occupations": [{{"title": "occupation title", "annual_wage": "<integer or null>", "employment": "<integer or null>"}}],
-    "aggregate_employment": "<total employment or null>"
-  }},
-  "next_steps": ["Exactly 3 steps in chronological order. Each is one sentence. First step: immediate action. Last step: partnership launch milestone."],
-  "measurable_objective": "One sentence: specific number of students + role/occupation + timeframe.","""
+  "removed": [
+    {{"skill": "...", "course_code": "...", "reason": "brief explanation"}}
+  ]
+}}
 
-_BASE_GUIDELINES = """
-- Include 4-8 curriculum alignment entries covering the strongest course-to-skill connections
-- Include ALL skill gaps from the context
-- Economic impact should include all occupations the employer hires for that have wage/employment data
-- Next steps should be actionable by a program coordinator — not generic advice
+Rules:
+- Be selective. It is better to retain 10 genuinely strong alignments than 40 where half are dubious.
+- "strong" means direct occupational relevance. "moderate" means transferable skill with a reasonable connection.
+- When the same skill appears multiple times across occupations, retain the single best course mapping.
 - Return ONLY valid JSON with no text before or after."""
 
-INTERNSHIP_PROMPT = _PREAMBLE + """
 
-The coordinator has selected an **Internship Pipeline** partnership. Generate a proposal focused on structured student work rotations at the employer site.
+def _filter_context_signals(raw_context: str) -> str:
+    """Stage 2: Filter raw context to retain only credible skill-to-course alignments.
 
-The JSON must match this schema:
-{{
-""" + _BASE_SCHEMA.replace("{partnership_type_name}", "Internship Pipeline") + """
-  "type_details": {{
-    "rotation_duration": "e.g. 16 weeks / one semester — must be between 8-16 weeks",
-    "hours_per_week": <integer, typically 15-20>,
-    "academic_credit": "identify a specific course code and unit count for internship credit from the college's catalog",
-    "supervisor_model": "describe on-site employer supervisor + faculty liaison structure, name the relevant department"
-  }}
-}}
+    Returns a curated context string for the proposal generation stage.
+    """
+    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+    message = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=2048,
+        messages=[{"role": "user", "content": _SIGNAL_FILTER_PROMPT.format(context=raw_context)}],
+    )
+    raw_response = message.content[0].text
 
-Type-specific guidelines:
-- Rotation must be time-bounded (8-16 weeks typical for a semester)
-- Academic credit path must reference an existing course or cooperative education code
-- Supervisor model must name a specific department for the faculty liaison
-- Next steps should include: identifying site supervisors, establishing liability agreements, and launching the first cohort
-- Measurable objective should reference a specific number of students placed in rotations
-""" + _BASE_GUIDELINES
+    # Parse filter output
+    try:
+        match = re.search(r"\{[\s\S]*\}", raw_response)
+        if match:
+            filter_result = json.loads(match.group(0))
+        else:
+            filter_result = json.loads(raw_response)
+    except json.JSONDecodeError:
+        logger.warning("Signal filter returned invalid JSON, falling back to raw context")
+        return raw_context
 
-APPRENTICESHIP_PROMPT = _PREAMBLE + """
+    retained = filter_result.get("retained", [])
+    removed = filter_result.get("removed", [])
 
-The coordinator has selected an **Apprenticeship Program** partnership. Generate a proposal for a registered, paid, multi-year career pathway.
+    logger.info(
+        f"Signal filter: {len(retained)} retained, {len(removed)} removed"
+    )
+    for r in removed[:10]:
+        logger.info(f"  Removed: {r.get('skill')} → {r.get('course_code')} ({r.get('reason', '')})")
 
-The JSON must match this schema:
-{{
-""" + _BASE_SCHEMA.replace("{partnership_type_name}", "Apprenticeship Program") + """
-  "type_details": {{
-    "program_duration": "2-4 years typical",
-    "wage_progression": "starting hourly wage → journey-level wage, based on occupation wage data from context",
-    "das_registration": "note on filing with the California Division of Apprenticeship Standards",
-    "journeyperson_ratio": "e.g. 1 journeyperson per 4 apprentices"
-  }}
-}}
+    # Fallback: if everything was filtered, use raw context with a warning
+    if not retained:
+        logger.warning("Signal filter removed ALL alignments, falling back to raw context")
+        return raw_context + "\n\nNOTE: Alignment quality for this employer-college pair is low. Be conservative in your claims."
 
-Type-specific guidelines:
-- Must reference the California Division of Apprenticeship Standards (DAS) registration requirement
-- Must define a wage progression from entry to journey-level, grounded in the wage data from context
-- Program duration should be 2-4 years
-- Next steps should include: convening a program design committee, filing DAS paperwork, and recruiting the first apprentice cohort
-- Measurable objective should reference apprentices reaching journey status
-""" + _BASE_GUIDELINES
+    return _build_curated_context(raw_context, retained)
 
-CURRICULUM_CODESIGN_PROMPT = _PREAMBLE + """
 
-The coordinator has selected a **Curriculum Co-Design** partnership. Generate a proposal where the employer shapes program content and quality.
+def _build_curated_context(raw_context: str, retained: list[dict]) -> str:
+    """Reconstruct context string with only retained alignments."""
+    lines = []
 
-The JSON must match this schema:
-{{
-""" + _BASE_SCHEMA.replace("{partnership_type_name}", "Curriculum Co-Design") + """
-  "type_details": {{
-    "collaboration_scope": "which specific programs or courses will be redesigned — reference departments from context",
-    "review_cycle": "e.g. quarterly curriculum review meetings",
-    "deliverables": "concrete artifacts: revised course outlines, new lab exercises, updated learning outcomes, etc.",
-    "skill_gaps_addressed": ["list the specific skill gaps from the context that this collaboration targets"]
-  }}
-}}
+    # Extract employer header and student pipeline / economic data from raw context
+    sections = raw_context.split("\n\n")
+    for section in sections:
+        stripped = section.strip()
+        if stripped.startswith("EMPLOYER:") or stripped.startswith("College:"):
+            lines.append(section)
+        elif stripped.startswith("STUDENT PIPELINE:"):
+            lines.append(section)
+        elif stripped.startswith("ECONOMIC DATA"):
+            lines.append(section)
+        elif stripped.startswith("PARTNERSHIP ENGAGEMENT TYPE:"):
+            lines.append(section)
 
-Type-specific guidelines:
-- Must reference specific skill gaps from the context that the curriculum redesign addresses
-- Collaboration scope must name specific departments and courses from the context
-- Deliverables must be concrete artifacts, not vague outcomes
-- Review cycle should define a cadence for faculty-industry meetings
-- Next steps should include: convening a faculty-industry working group, conducting a curriculum gap audit, and piloting revised content
-- Measurable objective should reference credential completion or skill gap closure
-""" + _BASE_GUIDELINES
+    # Rebuild skill alignment section from retained alignments
+    occ_groups: dict[str, list[dict]] = defaultdict(list)
+    for entry in retained:
+        occ_groups[entry.get("occupation", "Unknown")].append(entry)
 
-HIRING_MOU_PROMPT = _PREAMBLE + """
+    lines.append("")
+    lines.append("CURATED SKILL ALIGNMENT BY OCCUPATION (pre-vetted for credibility):")
+    for occ, entries in occ_groups.items():
+        lines.append(f"\n  {occ}:")
+        for e in entries:
+            strength_tag = f" [{e.get('strength', 'moderate')}]" if e.get("strength") else ""
+            lines.append(
+                f"    - {e['skill']} → {e['course_code']} {e['course_name']} ({e['department']}){strength_tag}"
+            )
 
-The coordinator has selected a **Hiring MOU** partnership. Generate a proposal for a formal employer commitment to hire graduates.
+    return "\n".join(lines)
 
-The JSON must match this schema:
-{{
-""" + _BASE_SCHEMA.replace("{partnership_type_name}", "Hiring MOU") + """
-  "type_details": {{
-    "headcount_commitment": <integer — a specific number of hires per year, grounded in pipeline data>,
-    "roles_covered": ["specific occupation titles from the context"],
-    "minimum_qualifications": "what graduates need to qualify — reference relevant courses or credentials",
-    "hiring_timeline": "e.g. rolling basis, annual cohort, upon program completion"
-  }}
-}}
 
-Type-specific guidelines:
-- Must specify a concrete headcount commitment grounded in the student pipeline size (not aspirational)
-- Roles covered must reference specific occupation titles from the context
-- Minimum qualifications should reference courses or credentials the college offers
-- Hiring timeline must be specific, not open-ended
-- Next steps should include: drafting the MOU document, establishing qualification criteria with the employer, and identifying the first eligible cohort
-- Measurable objective should reference hires placed in specific roles
-""" + _BASE_GUIDELINES
-
-ADVISORY_BOARD_PROMPT = _PREAMBLE + """
-
-The coordinator has selected an **Advisory Board** partnership. Generate a proposal for ongoing strategic guidance from the employer. Note: Advisory boards typically do not require SWP or other grant funding — this is a relationship-based partnership.
-
-The JSON must match this schema:
-{{
-""" + _BASE_SCHEMA.replace("{partnership_type_name}", "Advisory Board") + """
-  "type_details": {{
-    "meeting_cadence": "e.g. quarterly, twice per year",
-    "program_scope": ["specific departments or programs the board advises — from context"],
-    "initial_agenda": ["2-3 specific topics for the first meeting, grounded in skill gaps or curriculum alignment from context"],
-    "membership_expectations": "what the employer representative commits to: attendance, feedback, industry trend briefings, etc."
-  }}
-}}
-
-Type-specific guidelines:
-- Must scope the board to specific departments where skill alignment exists in the context
-- Initial agenda topics must be grounded in skill gaps or curriculum needs from the data
-- This partnership does NOT require SWP funding — do not reference grant applications or funding mechanisms
-- Meeting cadence should be realistic (quarterly is standard)
-- Next steps should include: sending a formal invitation, scheduling the inaugural meeting, and preparing the first agenda
-- Measurable objective should reference curriculum improvements or industry alignment milestones, not student placements
-""" + _BASE_GUIDELINES
-
-PROMPTS: dict[str, str] = {
-    "internship": INTERNSHIP_PROMPT,
-    "apprenticeship": APPRENTICESHIP_PROMPT,
-    "curriculum_codesign": CURRICULUM_CODESIGN_PROMPT,
-    "hiring_mou": HIRING_MOU_PROMPT,
-    "advisory_board": ADVISORY_BOARD_PROMPT,
-}
+# ═══════════════════════════════════════════════════════════════════════════
+# Stage 1: Context Gathering (unchanged)
+# ═══════════════════════════════════════════════════════════════════════════
 
 
 def _gather_targeted_context(employer: str, college: str, engagement_type: str = "") -> str:
@@ -320,21 +275,136 @@ def _gather_targeted_context(employer: str, college: str, engagement_type: str =
     return "\n".join(lines)
 
 
-def _parse_targeted_proposal(raw: str, employer: str, sector: str | None = None) -> TargetedProposal:
-    """Parse Claude's response into a TargetedProposal."""
+# ═══════════════════════════════════════════════════════════════════════════
+# Stage 3: Proposal Generation Prompts
+# ═══════════════════════════════════════════════════════════════════════════
+
+_NARRATIVE_PREAMBLE = """You are a workforce partnership analyst writing an internal decision-support brief for a California community college program coordinator.
+
+Below is curated institutional context for a specific employer. Every alignment listed has been pre-vetted for credibility — use all of them. Do not invent alignments, course codes, student counts, or wage figures not present in the context.
+
+{context}
+
+Write a partnership proposal as a single JSON object with this exact schema:
+
+{{
+  "summary": "<3-4 sentences>",
+  "justification": {{
+    "student_composition": "<one paragraph>",
+    "course_composition": "<one paragraph>",
+    "occupational_demand": "<one paragraph>"
+  }},
+  "roadmap": "<one paragraph>"
+}}
+
+Section requirements:
+- SUMMARY: Frame what the partnership is, then make the career pathway case — cite specific entry-level occupations with wages, openings, and growth rates, and show how they extend into higher-earning roles. End with the regional demand signal (total employment across the employer's occupations).
+- JUSTIFICATION — Student Composition: Ground in pipeline size and skills concentration. Connect the strongest student skills to the employer's operational needs.
+- JUSTIFICATION — Course Composition: Cite specific departments, course codes, and the skills they develop. Address skill gaps constructively — frame them as opportunities rather than deficiencies. Lead with the strongest alignment clusters.
+- JUSTIFICATION — Occupational Demand: Cite specific occupations with wages, employment counts, growth rates, and annual openings. Identify entry-level vs. advancement pathways.
+- ROADMAP: Propose directional next steps — specific enough to act on this week (name departments, course sequences, cohort sizes, timelines) but not overly prescriptive. Do not write a project plan.
+
+Style:
+- Write for a knowledgeable reader who will spot generic filler instantly. Every sentence should contain a specific data point or a concrete recommendation.
+- Be concise. Each justification paragraph should be 3-5 sentences.
+- Do not use bullet points or numbered lists inside the JSON string values. Write in flowing prose.
+- Return ONLY valid JSON with no text before or after."""
+
+
+INTERNSHIP_PROMPT = _NARRATIVE_PREAMBLE + """
+
+PARTNERSHIP TYPE: Internship Pipeline — structured student work rotations at the employer site.
+
+Type-specific guidance for the proposal:
+- The summary should frame this as placing students in rotations that connect to a career pathway.
+- The roadmap should reference identifying operational areas for rotations, defining a rotation duration (8-16 weeks typical), mapping to existing Work Experience course sequences for academic credit, and setting a first-cohort target.
+- Think about which departments and courses naturally produce students ready for on-site rotations at this specific employer.
+
+REFERENCE EXAMPLE (match this level of specificity and narrative quality — do not copy its content):
+
+Summary: An internship pipeline between College of the Sequoias and Cargill would place students in structured rotations across Cargill's food production and agricultural operations in the Central Valley. The partnership positions students toward a career pathway that starts with accessible entry points — Food Science Technicians ($47,950/yr, 190 annual openings, +2.5% growth) and Agricultural Inspectors ($57,160/yr, 90 annual openings) — and extends into high-earning management roles such as Industrial Production Managers ($115,380/yr, +6.6% growth) and General & Operations Managers ($101,990/yr, 2,240 annual openings, +8.4% growth). The college's existing programs in agriculture, food services, and business align directly with this pathway, and the Central Valley's concentration of over 46,000 employed workers across Cargill's hiring occupations signals sustained regional demand.
+
+Justification — Student Composition: College of the Sequoias has over 15,000 students with skills relevant to Cargill's hiring needs, with approximately 14,500 having completed three or more courses in aligned programs. The strongest concentration of relevant skills in the pipeline includes research methods, data analysis, and professional ethics — foundational competencies that map to Cargill's quality control, food safety, and regulatory compliance requirements across multiple occupational categories.
+
+Justification — Course Composition: The college develops 48 skills that Cargill's workforce requires, with the most credible alignment concentrated in a few departments. Agriculture Business Management (AGMT 103) directly develops supply chain management knowledge relevant to Cargill's production operations. The Food Services Work Experience sequence (WEXP 193DD, WEXP 196D) develops food production and food safety skills that map to Cargill's food science technician and agricultural inspector roles. The Business department (BUS 082, BUS 295, BUS 297) provides accounting, bookkeeping, and financial literacy that align with Cargill's accounting and auditing functions. The college's only notable skill gaps are auditing and labor relations — specialized competencies that are more appropriately developed through on-site experience during internship rotations.
+
+Justification — Occupational Demand: Cargill hires across 8 occupations in the Central Valley–Mother Lode region, with combined regional employment exceeding 46,000 positions. The most accessible entry points for interns are Food Science Technicians (1,260 employed, 190 annual openings, $47,950/yr) and Agricultural Inspectors (560 employed, 90 annual openings, $57,160/yr). For students progressing into management pathways, Industrial Production Managers ($115,380/yr, 190 annual openings) and General & Operations Managers ($101,990/yr, 2,240 annual openings, +8.4% growth) represent substantial upward mobility within the same employer.
+
+Roadmap: The first step is to convene an introductory meeting between the Agriculture and Business department chairs and Cargill's Central Valley site leadership to identify 2–3 operational areas suitable for student rotations — food quality labs, agricultural field inspection, and production floor operations are natural starting points given the curriculum alignment. From there, the college and Cargill should jointly define a 12–16 week rotation structure that maps to the existing Work Experience course sequence (WEXP series), allowing students to earn academic credit while gaining supervised industry exposure. The target for a first cohort would be 8–12 students placed in rotations within two semesters, with a feedback loop between Cargill site supervisors and faculty liaisons to refine the placement model for subsequent terms."""
+
+
+CURRICULUM_CODESIGN_PROMPT = _NARRATIVE_PREAMBLE + """
+
+PARTNERSHIP TYPE: Curriculum Co-Design — the employer shapes program content and quality through ongoing collaboration with faculty.
+
+Type-specific guidance for the proposal:
+- The summary should frame this as a faculty-industry collaboration to close skill gaps and modernize curriculum.
+- The course composition section is the most important pillar for this type — lead with the specific skill gaps the collaboration would address, and which courses or programs would be redesigned.
+- The roadmap should reference convening a faculty-industry working group, conducting a curriculum gap audit against the employer's skill needs, piloting revised course content, and establishing a review cadence (e.g., quarterly).
+- Frame skill gaps as the primary motivation — this partnership type exists because the employer needs skills the college doesn't yet develop.
+
+REFERENCE EXAMPLE (match this level of specificity and narrative quality — do not copy its content):
+
+Summary: A curriculum co-design partnership between College of the Sequoias and Cargill would bring Cargill's operational expertise into the college's program development process, targeting the specific skill gaps that separate current graduates from Cargill's hiring requirements. The collaboration would focus on closing gaps in auditing and labor relations — skills required across Cargill's Accountants and Auditors ($80,560/yr, 940 annual openings) and Human Resources Specialists ($73,550/yr, 650 annual openings, +7.2% growth) roles — while strengthening existing course content in food safety, quality control, and supply chain management to better reflect current industry practice. With over 46,000 workers employed across Cargill's occupations in the Central Valley and sustained growth projected across all eight hiring categories, aligning curriculum to this employer's standards positions graduates for a labor market with deep and expanding demand.
+
+Justification — Student Composition: The college has over 15,000 students with skills relevant to Cargill's workforce needs, with approximately 14,500 having completed three or more courses in aligned programs. The pipeline's strongest skill concentrations — research methods, data analysis, and professional ethics — indicate that students are developing foundational competencies, but the curriculum co-design would ensure these competencies are calibrated to the specific rigor and application standards Cargill expects in its quality control, compliance, and management functions.
+
+Justification — Course Composition: The college's existing curriculum covers a broad range of Cargill's skill requirements, but two notable gaps — auditing and labor relations — represent skills that no current course develops, despite being required by Cargill's Accountants and Auditors and Human Resources Specialists roles respectively. The co-design collaboration would audit the Business department's course sequence (BUS 082, BUS 295, BUS 297) to identify where auditing concepts could be integrated into existing coursework, and evaluate whether the Social Sciences or Business programs could incorporate labor relations content. Beyond gap closure, the partnership would modernize existing aligned courses: the Food Services Work Experience sequence (WEXP 193DD, WEXP 196D) could be updated to reflect Cargill's current food safety protocols, and Agriculture Business Management (AGMT 103) could incorporate case studies from Cargill's Central Valley supply chain operations.
+
+Justification — Occupational Demand: Cargill's hiring spans 8 occupations in the Central Valley–Mother Lode region with combined employment exceeding 46,000 positions. The roles most affected by curriculum gaps are Accountants and Auditors (10,780 employed, $80,560/yr, +4.7% growth) and Human Resources Specialists (6,590 employed, $73,550/yr, +7.2% growth) — both high-volume, growing occupations where closing even one skill gap meaningfully improves graduate competitiveness. The broader occupation portfolio, including Industrial Production Managers ($115,380/yr) and General & Operations Managers ($101,990/yr, +8.4% growth), ensures that curriculum improvements benefit students across multiple career pathways within the same employer.
+
+Roadmap: The first step is to convene a faculty-industry working group with representatives from the Business and Agriculture departments and Cargill's Central Valley HR and operations leadership, with the initial meeting focused on a structured curriculum gap audit — mapping Cargill's skill requirements against current course learning outcomes to identify specific content additions. From there, the working group should prioritize 2–3 courses for pilot revision in the next catalog cycle, with Cargill contributing industry-current case studies, assessment criteria, or guest instruction modules. A quarterly review cadence would allow the working group to evaluate whether revised content is producing measurable improvement in student preparedness, with the goal of closing both identified skill gaps within two academic years."""
+
+
+ADVISORY_BOARD_PROMPT = _NARRATIVE_PREAMBLE + """
+
+PARTNERSHIP TYPE: Advisory Board — ongoing strategic guidance from the employer to inform program direction.
+
+Type-specific guidance for the proposal:
+- The summary should frame this as establishing a structured channel for industry insight into program decisions.
+- This partnership is relationship-based and does NOT require SWP or other grant funding. Do not reference grant applications or funding mechanisms.
+- The roadmap should reference sending a formal invitation, scheduling an inaugural meeting, preparing an initial agenda grounded in the data (skill gaps, industry trends), and setting a meeting cadence (quarterly is standard).
+- The course composition section should identify which departments the board would advise — scope it to areas with the strongest alignment.
+- Initial agenda topics should be grounded in specific skill gaps or curriculum questions from the data.
+
+REFERENCE EXAMPLE (match this level of specificity and narrative quality — do not copy its content):
+
+Summary: An advisory board partnership with Cargill would give College of the Sequoias a structured channel for industry guidance on its Agriculture, Business, and Food Services programs — the departments most directly aligned with Cargill's Central Valley operations. With Cargill hiring across 8 occupations in the region representing over 46,000 employed workers, the advisory relationship would ensure the college's program direction stays calibrated to a major regional employer whose roles span from entry-level Food Science Technicians ($47,950/yr, +2.5% growth) through General & Operations Managers ($101,990/yr, 2,240 annual openings, +8.4% growth). This is a relationship-based partnership that requires no grant funding — its value is in the ongoing dialogue between faculty and industry leadership.
+
+Justification — Student Composition: The college has over 15,000 students developing skills relevant to Cargill's hiring needs, with approximately 14,500 having completed three or more courses in aligned programs. An advisory board would help the college understand whether the skills these students are developing — particularly research methods, data analysis, and professional ethics — meet the current standard Cargill expects, and where emerging industry trends might require the college to evolve its program emphasis.
+
+Justification — Course Composition: The strongest alignment between the college and Cargill is concentrated in three departments: Agriculture (AGMT 103 develops supply chain management), Food Services (WEXP 193DD, WEXP 196D develop food production and food safety), and Business (BUS 082, BUS 295, BUS 297 develop accounting, bookkeeping, and financial analysis). These departments would form the natural scope for the advisory board. Two specific skill gaps — auditing and labor relations — would be immediate agenda items, as Cargill can advise on whether these gaps are best addressed through new coursework, modifications to existing courses, or alternative pathways like industry certifications.
+
+Justification — Occupational Demand: Cargill's regional presence spans occupations with strong and growing demand: Agricultural Inspectors (560 employed, 90 annual openings, +2.2% growth), Food Science Technicians (1,260 employed, 190 annual openings, +2.5% growth), and a management tier including Industrial Production Managers ($115,380/yr, +6.6% growth) and Marketing Managers ($129,110/yr, +6.4% growth). The advisory board would provide the college with direct insight into how hiring patterns, skill requirements, and technology adoption are shifting across these roles — intelligence that is difficult to obtain from labor market data alone.
+
+Roadmap: The first step is to send a formal invitation to Cargill's Central Valley site or regional leadership, proposing a quarterly advisory board scoped to the Agriculture, Business, and Food Services programs. The inaugural meeting agenda should be grounded in the data: a review of the college's current curriculum alignment with Cargill's skill requirements, a discussion of the auditing and labor relations skill gaps, and an open conversation about emerging workforce trends in food production and agricultural operations. The target is to hold the first meeting within one semester, with a standing quarterly cadence thereafter and a lightweight feedback mechanism — such as a brief survey or structured debrief — to ensure each meeting produces actionable guidance for faculty."""
+
+
+PROMPTS: dict[str, str] = {
+    "internship": INTERNSHIP_PROMPT,
+    "curriculum_codesign": CURRICULUM_CODESIGN_PROMPT,
+    "advisory_board": ADVISORY_BOARD_PROMPT,
+}
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# Parsing & Pipeline
+# ═══════════════════════════════════════════════════════════════════════════
+
+
+def _parse_narrative_proposal(raw: str, employer: str, sector: str | None = None) -> NarrativeProposal:
+    """Parse Claude's response into a NarrativeProposal."""
     logger.info(f"Claude raw response (first 300 chars): {raw[:300]!r}")
 
-    # Strategy 1: extract from ```json ... ``` code block
+    # Extract JSON from response
     match = re.search(r"```json\s*([\s\S]*?)\s*```", raw)
     if match:
         json_str = match.group(1).strip()
     else:
-        # Strategy 2: extract from generic ``` ... ``` code block
         match = re.search(r"```\s*([\s\S]*?)\s*```", raw)
         if match:
             json_str = match.group(1).strip()
         else:
-            # Strategy 3: find JSON object directly
             match = re.search(r"\{[\s\S]*\}", raw)
             if match:
                 json_str = match.group(0).strip()
@@ -347,23 +417,13 @@ def _parse_targeted_proposal(raw: str, employer: str, sector: str | None = None)
         logger.error(f"Failed to parse Claude response as JSON: {e}\nRaw: {raw[:800]}")
         raise ValueError(f"Claude returned invalid JSON: {e}")
 
-    return TargetedProposal(
+    return NarrativeProposal(
         employer=employer,
-        sector=sector or data.get("sector"),
-        executive_summary=data["executive_summary"],
-        partnership_type=data["partnership_type"],
-        partnership_type_rationale=data["partnership_type_rationale"],
-        curriculum_alignment=[
-            AlignmentDetail(**a) for a in data.get("curriculum_alignment", [])
-        ],
-        skill_gaps=[
-            SkillGapDetail(**g) for g in data.get("skill_gaps", [])
-        ],
-        student_pipeline=PipelineStats(**data["student_pipeline"]),
-        economic_impact=EconomicImpact(**data["economic_impact"]),
-        next_steps=data.get("next_steps", []),
-        measurable_objective=data.get("measurable_objective", ""),
-        type_details=data.get("type_details", {}),
+        sector=sector,
+        partnership_type=data.get("partnership_type", ""),
+        summary=data["summary"],
+        justification=Justification(**data["justification"]),
+        roadmap=data["roadmap"],
     )
 
 
@@ -394,25 +454,43 @@ def _call_claude(prompt_text: str) -> str:
     return message.content[0].text
 
 
-async def run_targeted_proposal(employer: str, college: str, engagement_type: str = "") -> TargetedProposal:
+async def run_targeted_proposal(employer: str, college: str, engagement_type: str = "") -> NarrativeProposal:
     """Generate a targeted partnership proposal for a specific employer."""
     sector = _get_employer_sector(employer)
-    context = _gather_targeted_context(employer, college, engagement_type)
-    prompt_text = _get_prompt(engagement_type, context)
-    logger.info(f"Gathered targeted context for {employer} ({engagement_type}), calling Claude...")
+    raw_context = _gather_targeted_context(employer, college, engagement_type)
+    logger.info(f"Stage 1 complete: gathered context for {employer}")
+
+    curated_context = _filter_context_signals(raw_context)
+    logger.info(f"Stage 2 complete: filtered signals for {employer}")
+
+    prompt_text = _get_prompt(engagement_type, curated_context)
     raw = _call_claude(prompt_text)
-    logger.info("Claude response received, parsing proposal...")
-    proposal = _parse_targeted_proposal(raw, employer, sector)
-    logger.info(f"Parsed targeted proposal for {employer}.")
+    logger.info("Stage 3 complete: Claude response received, parsing proposal...")
+
+    proposal = _parse_narrative_proposal(raw, employer, sector)
+    # Ensure partnership_type is set from engagement type if not in response
+    if not proposal.partnership_type:
+        type_labels = {
+            "internship": "Internship Pipeline",
+            "curriculum_codesign": "Curriculum Co-Design",
+            "advisory_board": "Advisory Board",
+        }
+        proposal.partnership_type = type_labels.get(engagement_type, engagement_type)
+    logger.info(f"Parsed narrative proposal for {employer}.")
     return proposal
 
 
 def stream_targeted_proposal(employer: str, college: str, engagement_type: str = ""):
-    """Generator that yields a TargetedProposal when Claude's streaming response completes."""
+    """Generator that yields a NarrativeProposal when Claude's streaming response completes."""
     sector = _get_employer_sector(employer)
-    context = _gather_targeted_context(employer, college, engagement_type)
-    prompt_text = _get_prompt(engagement_type, context)
-    logger.info(f"Gathered targeted context for {employer} ({engagement_type}), starting Claude stream...")
+    raw_context = _gather_targeted_context(employer, college, engagement_type)
+    logger.info(f"Stage 1 complete: gathered context for {employer}")
+
+    curated_context = _filter_context_signals(raw_context)
+    logger.info(f"Stage 2 complete: filtered signals for {employer}")
+
+    prompt_text = _get_prompt(engagement_type, curated_context)
+    logger.info(f"Stage 3: starting Claude stream for {employer} ({engagement_type})...")
 
     client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
     accumulated = ""
@@ -425,6 +503,14 @@ def stream_targeted_proposal(employer: str, college: str, engagement_type: str =
         for text in stream.text_stream:
             accumulated += text
 
-    proposal = _parse_targeted_proposal(accumulated, employer, sector)
-    logger.info(f"Stream complete: proposal for {employer}")
+    proposal = _parse_narrative_proposal(accumulated, employer, sector)
+    # Ensure partnership_type is set
+    if not proposal.partnership_type:
+        type_labels = {
+            "internship": "Internship Pipeline",
+            "curriculum_codesign": "Curriculum Co-Design",
+            "advisory_board": "Advisory Board",
+        }
+        proposal.partnership_type = type_labels.get(engagement_type, engagement_type)
+    logger.info(f"Stream complete: narrative proposal for {employer}")
     yield proposal

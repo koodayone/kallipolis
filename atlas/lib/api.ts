@@ -382,6 +382,22 @@ export async function queryPartnerships(query: string, college: string): Promise
 
 // ── Targeted Proposal ──────────────────────────────────────────────────────
 
+export type ApiJustification = {
+  student_composition: string;
+  course_composition: string;
+  occupational_demand: string;
+};
+
+export type ApiTargetedProposal = {
+  employer: string;
+  sector: string | null;
+  partnership_type: string;
+  summary: string;
+  justification: ApiJustification;
+  roadmap: string;
+};
+
+// Legacy types — used by SWP pipeline only
 export type ApiAlignmentDetail = {
   department: string;
   course_code: string;
@@ -404,21 +420,6 @@ export type ApiPipelineStats = {
 export type ApiEconomicImpact = {
   occupations: Array<{ title: string; annual_wage: number | null; employment: number | null }>;
   aggregate_employment: number | null;
-};
-
-export type ApiTargetedProposal = {
-  employer: string;
-  sector: string | null;
-  executive_summary: string;
-  partnership_type: string;
-  partnership_type_rationale: string;
-  curriculum_alignment: ApiAlignmentDetail[];
-  skill_gaps: ApiSkillGapDetail[];
-  student_pipeline: ApiPipelineStats;
-  economic_impact: ApiEconomicImpact;
-  next_steps: string[];
-  measurable_objective?: string;
-  type_details?: Record<string, any>;
 };
 
 export async function streamTargetedProposal(
