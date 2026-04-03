@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import type { ApiTargetedProposal } from "@/lib/api";
+import type { ApiTargetedProposal, ApiOccupationEvidence, ApiDepartmentEvidence, ApiStudentEvidence } from "@/lib/api";
 import { saveProposal, removeProposal, updateProposalStatus, type SavedProposal } from "@/lib/savedProposals";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
@@ -29,6 +29,138 @@ function SectionHeader({ children, color }: { children: React.ReactNode; color?:
     }}>
       {children}
     </span>
+  );
+}
+
+function SubHeader({ children }: { children: React.ReactNode }) {
+  return (
+    <span style={{
+      fontFamily: FONT, fontSize: "11px", fontWeight: 600, letterSpacing: "0.06em",
+      textTransform: "uppercase", color: "rgba(255,255,255,0.25)", display: "block", marginBottom: "6px",
+    }}>
+      {children}
+    </span>
+  );
+}
+
+function EvidenceContainer({ children }: { children: React.ReactNode }) {
+  return (
+    <div style={{
+      marginTop: "12px", padding: "14px 16px",
+      background: "rgba(255,255,255,0.02)", borderRadius: "8px",
+      border: "1px solid rgba(255,255,255,0.04)",
+    }}>
+      {children}
+    </div>
+  );
+}
+
+function formatWage(wage: number | null): string {
+  if (!wage) return "—";
+  return `$${Math.round(wage / 1000)}K`;
+}
+
+function formatNumber(n: number | null): string {
+  if (n == null) return "—";
+  return n.toLocaleString();
+}
+
+function formatGrowth(rate: number | null): string {
+  if (rate == null) return "—";
+  return `${rate > 0 ? "+" : ""}${(rate * 100).toFixed(1)}%`;
+}
+
+function OccupationEvidenceGrid({ items }: { items: ApiOccupationEvidence[] }) {
+  if (!items.length) return null;
+  return (
+    <EvidenceContainer>
+      <div style={{
+        display: "grid", gridTemplateColumns: "1fr 70px 80px 80px 60px",
+        gap: "4px 12px", alignItems: "center",
+      }}>
+        <span style={{ fontFamily: FONT, fontSize: "9px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.2)" }}>Occupation</span>
+        <span style={{ fontFamily: FONT, fontSize: "9px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.2)", textAlign: "right" }}>Wage</span>
+        <span style={{ fontFamily: FONT, fontSize: "9px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.2)", textAlign: "right" }}>Employed</span>
+        <span style={{ fontFamily: FONT, fontSize: "9px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.2)", textAlign: "right" }}>Openings</span>
+        <span style={{ fontFamily: FONT, fontSize: "9px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.2)", textAlign: "right" }}>Growth</span>
+        {items.map((occ) => (
+          <div key={occ.title} style={{ display: "contents" }}>
+            <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.6)" }}>{occ.title}</span>
+            <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.7)", textAlign: "right", fontWeight: 500 }}>{formatWage(occ.annual_wage)}</span>
+            <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.45)", textAlign: "right" }}>{formatNumber(occ.employment)}</span>
+            <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.45)", textAlign: "right" }}>{formatNumber(occ.annual_openings)}</span>
+            <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.45)", textAlign: "right" }}>{formatGrowth(occ.growth_rate)}</span>
+          </div>
+        ))}
+      </div>
+    </EvidenceContainer>
+  );
+}
+
+function DepartmentEvidenceList({ items }: { items: ApiDepartmentEvidence[] }) {
+  if (!items.length) return null;
+  return (
+    <EvidenceContainer>
+      <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+        {items.map((dept) => (
+          <div key={dept.department}>
+            <span style={{ fontFamily: FONT, fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.65)" }}>
+              {dept.department}
+            </span>
+            <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginLeft: "8px" }}>
+              {dept.course_count} course{dept.course_count !== 1 ? "s" : ""}
+            </span>
+            <div style={{ marginTop: "3px", display: "flex", flexWrap: "wrap", gap: "4px" }}>
+              {dept.aligned_skills.map((skill) => (
+                <span key={skill} style={{
+                  fontFamily: FONT, fontSize: "10px", padding: "2px 8px", borderRadius: "4px",
+                  background: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.4)",
+                }}>
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </EvidenceContainer>
+  );
+}
+
+function StudentEvidenceBar({ data }: { data: ApiStudentEvidence }) {
+  return (
+    <EvidenceContainer>
+      <div style={{ display: "flex", gap: "24px", alignItems: "baseline", flexWrap: "wrap" }}>
+        <div>
+          <span style={{ fontFamily: FONT, fontSize: "18px", fontWeight: 600, color: "#f0eef4" }}>
+            {data.total_students.toLocaleString()}
+          </span>
+          <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginLeft: "6px" }}>
+            students
+          </span>
+        </div>
+        <div>
+          <span style={{ fontFamily: FONT, fontSize: "18px", fontWeight: 600, color: "#f0eef4" }}>
+            {data.students_with_3plus_courses.toLocaleString()}
+          </span>
+          <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginLeft: "6px" }}>
+            with 3+ courses
+          </span>
+        </div>
+        {data.top_skills.length > 0 && (
+          <div style={{ display: "flex", gap: "4px", flexWrap: "wrap" }}>
+            {data.top_skills.map((skill) => (
+              <span key={skill} style={{
+                fontFamily: FONT, fontSize: "10px", padding: "2px 8px", borderRadius: "4px",
+                background: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.4)",
+              }}>
+                {skill}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+    </EvidenceContainer>
   );
 }
 
@@ -78,58 +210,34 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
           </span>
         </div>
 
-        {/* ── Section 1: Summary ── */}
+        {/* ── Opportunity ── */}
         <div style={{ marginBottom: "24px" }}>
-          <SectionHeader>Summary</SectionHeader>
+          <SectionHeader>Opportunity</SectionHeader>
           <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.7)", lineHeight: 1.65, margin: 0 }}>
-            {proposal.summary}
+            {proposal.opportunity}
           </p>
+          <OccupationEvidenceGrid items={proposal.opportunity_evidence} />
         </div>
 
-        {/* ── Section 2: Justification ── */}
-        <div style={{
-          marginBottom: "24px", padding: "20px",
-          background: "rgba(255,255,255,0.03)", borderRadius: "10px",
-          border: "1px solid rgba(255,255,255,0.05)",
-          display: "flex", flexDirection: "column", gap: "20px",
-        }}>
-          <SectionHeader>Justification</SectionHeader>
-          <div>
-            <span style={{
-              fontFamily: FONT, fontSize: "11px", fontWeight: 600, letterSpacing: "0.06em",
-              textTransform: "uppercase", color: "rgba(255,255,255,0.25)", display: "block", marginBottom: "6px",
-            }}>
-              Student Composition
-            </span>
-            <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.65)", lineHeight: 1.65, margin: 0 }}>
-              {proposal.justification.student_composition}
-            </p>
-          </div>
-          <div>
-            <span style={{
-              fontFamily: FONT, fontSize: "11px", fontWeight: 600, letterSpacing: "0.06em",
-              textTransform: "uppercase", color: "rgba(255,255,255,0.25)", display: "block", marginBottom: "6px",
-            }}>
-              Course Composition
-            </span>
-            <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.65)", lineHeight: 1.65, margin: 0 }}>
-              {proposal.justification.course_composition}
-            </p>
-          </div>
-          <div>
-            <span style={{
-              fontFamily: FONT, fontSize: "11px", fontWeight: 600, letterSpacing: "0.06em",
-              textTransform: "uppercase", color: "rgba(255,255,255,0.25)", display: "block", marginBottom: "6px",
-            }}>
-              Occupational Demand
-            </span>
-            <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.65)", lineHeight: 1.65, margin: 0 }}>
-              {proposal.justification.occupational_demand}
-            </p>
-          </div>
+        {/* ── Curriculum Alignment ── */}
+        <div style={{ marginBottom: "24px" }}>
+          <SectionHeader>Curriculum Alignment</SectionHeader>
+          <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.65)", lineHeight: 1.65, margin: 0 }}>
+            {proposal.justification.curriculum_composition}
+          </p>
+          <DepartmentEvidenceList items={proposal.justification.curriculum_evidence} />
         </div>
 
-        {/* ── Section 3: Roadmap ── */}
+        {/* ── Student Pipeline ── */}
+        <div style={{ marginBottom: "24px" }}>
+          <SectionHeader>Student Pipeline</SectionHeader>
+          <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.65)", lineHeight: 1.65, margin: 0 }}>
+            {proposal.justification.student_composition}
+          </p>
+          <StudentEvidenceBar data={proposal.justification.student_evidence} />
+        </div>
+
+        {/* ── Roadmap ── */}
         <div style={{ marginBottom: "24px" }}>
           <SectionHeader>Roadmap</SectionHeader>
           <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.7)", lineHeight: 1.65, margin: 0 }}>
@@ -207,7 +315,6 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
             </button>
           </div>
 
-          {/* Post-generation actions — shown in split-view context */}
           {onReject && (
             <div style={{ display: "flex", gap: "10px", marginTop: "12px" }}>
               <button

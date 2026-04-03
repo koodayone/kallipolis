@@ -124,7 +124,7 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
       employer: saved.proposal.employer,
       college: school.name,
       partnership_type: saved.proposal.partnership_type,
-      executive_summary: legacy.executive_summary ?? saved.proposal.summary ?? "",
+      executive_summary: legacy.executive_summary ?? (saved.proposal as any).opportunity ?? "",
       curriculum_alignment: legacy.curriculum_alignment ?? [],
       skill_gaps: legacy.skill_gaps ?? [],
       student_pipeline: legacy.student_pipeline ?? { total_students: 0, students_with_3plus_courses: 0, top_skills: [] },

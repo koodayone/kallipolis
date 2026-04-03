@@ -382,18 +382,41 @@ export async function queryPartnerships(query: string, college: string): Promise
 
 // ── Targeted Proposal ──────────────────────────────────────────────────────
 
-export type ApiJustification = {
+export type ApiOccupationEvidence = {
+  title: string;
+  soc_code: string | null;
+  annual_wage: number | null;
+  employment: number | null;
+  annual_openings: number | null;
+  growth_rate: number | null;
+};
+
+export type ApiDepartmentEvidence = {
+  department: string;
+  course_count: number;
+  aligned_skills: string[];
+};
+
+export type ApiStudentEvidence = {
+  total_students: number;
+  students_with_3plus_courses: number;
+  top_skills: string[];
+};
+
+export type ApiProposalJustification = {
+  curriculum_composition: string;
+  curriculum_evidence: ApiDepartmentEvidence[];
   student_composition: string;
-  course_composition: string;
-  occupational_demand: string;
+  student_evidence: ApiStudentEvidence;
 };
 
 export type ApiTargetedProposal = {
   employer: string;
   sector: string | null;
   partnership_type: string;
-  summary: string;
-  justification: ApiJustification;
+  opportunity: string;
+  opportunity_evidence: ApiOccupationEvidence[];
+  justification: ApiProposalJustification;
   roadmap: string;
 };
 

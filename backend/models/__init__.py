@@ -232,18 +232,41 @@ class ProposalRequest(BaseModel):
 # ── Narrative Proposal models ────────────────────────────────────────────
 
 
-class Justification(BaseModel):
+class OccupationEvidence(BaseModel):
+    title: str
+    soc_code: Optional[str] = None
+    annual_wage: Optional[int] = None
+    employment: Optional[int] = None
+    annual_openings: Optional[int] = None
+    growth_rate: Optional[float] = None
+
+
+class DepartmentEvidence(BaseModel):
+    department: str
+    course_count: int
+    aligned_skills: list[str]
+
+
+class StudentEvidence(BaseModel):
+    total_students: int
+    students_with_3plus_courses: int
+    top_skills: list[str]
+
+
+class ProposalJustification(BaseModel):
+    curriculum_composition: str
+    curriculum_evidence: list[DepartmentEvidence]
     student_composition: str
-    course_composition: str
-    occupational_demand: str
+    student_evidence: StudentEvidence
 
 
 class NarrativeProposal(BaseModel):
     employer: str
     sector: Optional[str] = None
     partnership_type: str
-    summary: str
-    justification: Justification
+    opportunity: str
+    opportunity_evidence: list[OccupationEvidence]
+    justification: ProposalJustification
     roadmap: str
 
 
