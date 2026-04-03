@@ -32,10 +32,12 @@ TYPE_LABELS = {
 @dataclass
 class GatheredContext:
     """Structured output from Neo4j context gathering."""
-    text: str                                  # Full text context
-    occupation_evidence: list[dict] = field(default_factory=list)
-    student_evidence: dict = field(default_factory=dict)
+    employer_name: str = ""
+    sector: str = ""
+    description: str = ""
     regions: list[str] = field(default_factory=list)
+    college: str = ""
+    occupation_evidence: list[dict] = field(default_factory=list)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -44,14 +46,11 @@ class GatheredContext:
 
 
 def _gather_targeted_context(employer: str, college: str, engagement_type: str = "") -> GatheredContext:
-    """Gather employer-specific context from the graph. Returns structured data + text."""
+    """Gather employer metadata and occupation evidence from the graph."""
     driver = get_driver()
-    lines = []
-    occupation_evidence = []
-    student_evidence = {"total_students": 0, "students_with_3plus_courses": 0, "top_skills": []}
 
     with driver.session() as session:
-        # A. Employer overview
+        # Employer overview
         emp_result = session.run("""
             MATCH (emp:Employer {name: $employer})
             OPTIONAL MATCH (emp)-[:IN_MARKET]->(r:Region)
@@ -62,115 +61,7 @@ def _gather_targeted_context(employer: str, college: str, engagement_type: str =
         if not emp_result:
             raise ValueError(f"Employer '{employer}' not found in the graph.")
 
-        lines.append(f"EMPLOYER: {emp_result['name']}")
-        if emp_result["sector"]:
-            lines.append(f"Sector: {emp_result['sector']}")
-        if emp_result["description"]:
-            lines.append(f"Description: {emp_result['description']}")
-        if emp_result["regions"]:
-            lines.append(f"Regions: {', '.join(emp_result['regions'])}")
-        lines.append(f"College: {college}")
-
-        # B. Skill alignment detail (course-level, for signal filter)
-        skill_result = session.run("""
-            MATCH (emp:Employer {name: $employer})-[:IN_MARKET]->(r:Region),
-                  (emp)-[:HIRES_FOR]->(occ:Occupation)<-[d:DEMANDS]-(r),
-                  (occ)-[:REQUIRES_SKILL]->(sk:Skill)
-            OPTIONAL MATCH (course:Course {college: $college})-[:DEVELOPS]->(sk)
-            OPTIONAL MATCH (dept:Department)-[:CONTAINS]->(course)
-            RETURN occ.title AS occupation, d.annual_wage AS annual_wage,
-                   sk.name AS skill,
-                   CASE WHEN course IS NOT NULL THEN true ELSE false END AS developed,
-                   course.code AS course_code, course.name AS course_name,
-                   dept.name AS department
-        """, employer=employer, college=college).data()
-
-        occ_skills: dict[str, dict] = defaultdict(lambda: {"wage": None, "aligned": [], "gaps": []})
-        for r in skill_result:
-            occ = r["occupation"]
-            occ_skills[occ]["wage"] = r["annual_wage"]
-            if r["developed"] and r["course_code"]:
-                occ_skills[occ]["aligned"].append({
-                    "skill": r["skill"],
-                    "course_code": r["course_code"],
-                    "course_name": r["course_name"],
-                    "department": r["department"] or "Unknown",
-                })
-            else:
-                occ_skills[occ]["gaps"].append(r["skill"])
-
-        lines.append("")
-        lines.append("SKILL ALIGNMENT BY OCCUPATION:")
-        total_aligned = 0
-        total_gaps = 0
-        for occ, data in occ_skills.items():
-            wage_str = f" (${data['wage']:,}/yr)" if data["wage"] else ""
-            lines.append(f"\n  {occ}{wage_str}:")
-            if data["aligned"]:
-                lines.append("    Aligned Skills (college develops these):")
-                seen = set()
-                for entry in data["aligned"]:
-                    if entry["skill"] not in seen:
-                        seen.add(entry["skill"])
-                        lines.append(f"      - {entry['skill']} → {entry['course_code']} {entry['course_name']} ({entry['department']})")
-                        total_aligned += 1
-            if data["gaps"]:
-                unique_gaps = list(dict.fromkeys(data["gaps"]))
-                lines.append("    Unmapped Skills (required by employer, not currently mapped to college courses):")
-                for gap in unique_gaps:
-                    lines.append(f"      - {gap}")
-                    total_gaps += 1
-
-        lines.append(f"\nSUMMARY: {total_aligned} aligned skills, {total_gaps} skill gaps across {len(occ_skills)} occupations.")
-
-        # Skill → occupation count for ranking pipeline skills
-        skill_occ_count: dict[str, int] = Counter()
-        for occ, data in occ_skills.items():
-            for entry in data["aligned"]:
-                skill_occ_count[entry["skill"]] += 1
-            for gap in data["gaps"]:
-                skill_occ_count[gap] += 1
-
-        # C. Student pipeline
-        pipeline_result = session.run("""
-            MATCH (emp:Employer {name: $employer})-[:HIRES_FOR]->(occ:Occupation)
-                  -[:REQUIRES_SKILL]->(sk:Skill)<-[:HAS_SKILL]-(st:Student)
-            WHERE EXISTS { (st)-[:ENROLLED_IN]->(:Course {college: $college}) }
-            WITH DISTINCT st, collect(DISTINCT sk.name) AS student_skills
-            OPTIONAL MATCH (st)-[e:ENROLLED_IN]->(c:Course {college: $college})
-            WHERE e.grade IN ['A','B','C','P']
-            WITH st, student_skills, count(DISTINCT c) AS completed
-            RETURN count(st) AS total_students,
-                   sum(CASE WHEN completed >= 3 THEN 1 ELSE 0 END) AS deep_pipeline,
-                   reduce(all_skills = [], s IN collect(student_skills) | all_skills + s) AS flat_skills
-        """, employer=employer, college=college).single()
-
-        if pipeline_result and pipeline_result["total_students"] > 0:
-            pipeline_skill_set = set(pipeline_result["flat_skills"])
-            relevant_skills = [
-                s for s, _ in sorted(skill_occ_count.items(), key=lambda x: x[1], reverse=True)
-                if s in pipeline_skill_set
-            ][:5]
-
-            student_evidence = {
-                "total_students": pipeline_result["total_students"],
-                "students_with_3plus_courses": pipeline_result["deep_pipeline"],
-                "top_skills": relevant_skills,
-            }
-
-            lines.append("")
-            lines.append("STUDENT PIPELINE:")
-            lines.append(f"  Total students with relevant skills: {pipeline_result['total_students']}")
-            lines.append(f"  Students with 3+ completed courses: {pipeline_result['deep_pipeline']}")
-            if relevant_skills:
-                lines.append(f"  Top employer-relevant skills in pipeline: {', '.join(relevant_skills)}")
-        else:
-            lines.append("")
-            lines.append("STUDENT PIPELINE:")
-            lines.append("  Total students with relevant skills: 0")
-            lines.append("  Students with 3+ completed courses: 0")
-
-        # D. Regional employment (also builds occupation_evidence)
+        # Regional employment data
         econ_result = session.run("""
             MATCH (:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)
                   <-[:HIRES_FOR]-(emp:Employer {name: $employer})
@@ -181,37 +72,23 @@ def _gather_targeted_context(employer: str, college: str, engagement_type: str =
                    COALESCE(r.display_name, r.name) AS region
         """, employer=employer, college=college).data()
 
-        if econ_result:
-            lines.append("")
-            lines.append("ECONOMIC DATA (regional employment, wages, and demand projections):")
-            for r in econ_result:
-                wage = f"${r['annual_wage']:,}/yr" if r["annual_wage"] else "wage unavailable"
-                emp_count = f"{r['employment']:,} employed" if r["employment"] else "employment data unavailable"
-                parts = [f"{r['title']} in {r['region']}: {wage}, {emp_count}"]
-                if r.get("growth_rate") is not None:
-                    parts.append(f"{r['growth_rate']:+.1%} growth (2024-2029)")
-                if r.get("annual_openings") is not None:
-                    parts.append(f"{r['annual_openings']:,} annual openings")
-                lines.append(f"  {', '.join(parts)}")
-
-                occupation_evidence.append({
-                    "title": r["title"],
-                    "soc_code": r.get("soc_code"),
-                    "annual_wage": r["annual_wage"],
-                    "employment": r["employment"],
-                    "annual_openings": r.get("annual_openings"),
-                    "growth_rate": r.get("growth_rate"),
-                })
-
-    if engagement_type:
-        lines.append("")
-        lines.append(f"PARTNERSHIP ENGAGEMENT TYPE: {engagement_type}")
-
     return GatheredContext(
-        text="\n".join(lines),
-        occupation_evidence=occupation_evidence,
-        student_evidence=student_evidence,
-        regions=emp_result["regions"] if emp_result else [],
+        employer_name=emp_result["name"],
+        sector=emp_result["sector"] or "",
+        description=emp_result["description"] or "",
+        regions=emp_result["regions"],
+        college=college,
+        occupation_evidence=[
+            {
+                "title": r["title"],
+                "soc_code": r.get("soc_code"),
+                "annual_wage": r["annual_wage"],
+                "employment": r["employment"],
+                "annual_openings": r.get("annual_openings"),
+                "growth_rate": r.get("growth_rate"),
+            }
+            for r in econ_result
+        ],
     )
 
 
@@ -233,13 +110,33 @@ Return ONLY this JSON with no other text:
 {{"selected_occupation": {{"title": "...", "soc_code": "...", "core_skills": ["...", "...", "..."]}}}}"""
 
 
-def _select_occupation(raw_context: str) -> dict:
-    """Select the primary occupation for this employer. Returns {title, soc_code}."""
+def _build_occupation_selection_context(gathered: GatheredContext) -> str:
+    """Build a concise context string for the occupation selection LLM call."""
+    lines = [
+        f"EMPLOYER: {gathered.employer_name}",
+        f"Sector: {gathered.sector}" if gathered.sector else None,
+        f"Description: {gathered.description}" if gathered.description else None,
+        "",
+        "OCCUPATIONS THIS EMPLOYER HIRES FOR:",
+    ]
+    for occ in gathered.occupation_evidence:
+        parts = [f"  {occ['title']}"]
+        if occ.get("annual_wage"):
+            parts.append(f"${occ['annual_wage']:,}/yr")
+        if occ.get("annual_openings"):
+            parts.append(f"{occ['annual_openings']:,} openings/yr")
+        lines.append(", ".join(parts))
+    return "\n".join(line for line in lines if line is not None)
+
+
+def _select_occupation(gathered: GatheredContext) -> dict:
+    """Select the primary occupation for this employer. Returns {title, soc_code, core_skills}."""
+    context = _build_occupation_selection_context(gathered)
     client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
     message = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=256,
-        messages=[{"role": "user", "content": _OCCUPATION_SELECTION_PROMPT.format(context=raw_context)}],
+        messages=[{"role": "user", "content": _OCCUPATION_SELECTION_PROMPT.format(context=context)}],
     )
     raw_response = message.content[0].text
 
@@ -291,11 +188,14 @@ def _gather_aligned_curriculum(college: str, core_skills: list[str]) -> tuple[st
         })
         dept_agg[dept]["skills"].update(r["aligned_skills"])
 
-    # Build text block for narrative prompt
+    # Build text block for narrative prompt (includes explicit missing skills)
+    core_set = set(core_skills)
     lines = ["DEPARTMENT-LEVEL CURRICULUM ALIGNMENT:"]
     for dept, data in sorted(dept_agg.items(), key=lambda x: len(x[1]["skills"]), reverse=True):
         skills_str = ", ".join(sorted(data["skills"]))
-        lines.append(f"  {dept}: develops {skills_str} (across {len(data['courses'])} courses)")
+        missing = core_set - data["skills"]
+        missing_str = f". Missing: {', '.join(sorted(missing))}" if missing else ""
+        lines.append(f"  {dept}: develops {skills_str} (across {len(data['courses'])} courses){missing_str}")
     dept_text = "\n".join(lines)
 
     # Build curriculum_evidence
@@ -311,34 +211,49 @@ def _gather_aligned_curriculum(college: str, core_skills: list[str]) -> tuple[st
     return dept_text, curriculum_evidence
 
 
-def _build_narrative_context(gathered: GatheredContext, dept_text: str, selected_occ: dict) -> str:
+def _build_narrative_context(gathered: GatheredContext, dept_text: str, selected_occ: dict, engagement_type: str = "") -> str:
     """Build the context string for the narrative generation prompt.
 
-    Uses selected occupation + department-level alignment + student pipeline + economic data.
+    Only includes data scoped to the selected occupation and core skills.
     """
-    lines = []
-
-    # Extract employer header, student pipeline, and economic data from gathered text
-    sections = gathered.text.split("\n\n")
-    for section in sections:
-        stripped = section.strip()
-        if stripped.startswith("EMPLOYER:") or stripped.startswith("College:"):
-            lines.append(section)
-        elif stripped.startswith("STUDENT PIPELINE:"):
-            lines.append(section)
-        elif stripped.startswith("ECONOMIC DATA"):
-            lines.append(section)
-        elif stripped.startswith("PARTNERSHIP ENGAGEMENT TYPE:"):
-            lines.append(section)
-
-    # Insert selected occupation and department-level alignment
     occ_title = selected_occ.get("title", "Unknown")
     occ_soc = selected_occ.get("soc_code", "")
-    lines.insert(1, f"\nSELECTED OCCUPATION: {occ_title} ({occ_soc})\nThis is the occupation the partnership proposal focuses on. All narrative sections should be about placing students into this specific role at this employer.")
-    lines.insert(2, "")
-    lines.insert(3, dept_text)
+    core_skills = selected_occ.get("core_skills", [])
 
-    return "\n\n".join(lines)
+    lines = [
+        f"EMPLOYER: {gathered.employer_name}",
+        f"Sector: {gathered.sector}" if gathered.sector else None,
+        f"Description: {gathered.description}" if gathered.description else None,
+        f"Regions: {', '.join(gathered.regions)}" if gathered.regions else None,
+        f"College: {gathered.college}",
+        "",
+        f"SELECTED OCCUPATION: {occ_title} ({occ_soc})",
+        f"CORE SKILLS: {', '.join(core_skills)}",
+        "",
+        dept_text,
+    ]
+
+    # Economic data for selected occupation only
+    for occ_ev in gathered.occupation_evidence:
+        if occ_ev.get("title") == occ_title:
+            parts = [f"ECONOMIC DATA: {occ_ev['title']}"]
+            if occ_ev.get("annual_wage"):
+                parts.append(f"${occ_ev['annual_wage']:,}/yr")
+            if occ_ev.get("employment"):
+                parts.append(f"{occ_ev['employment']:,} employed")
+            if occ_ev.get("growth_rate") is not None:
+                parts.append(f"{occ_ev['growth_rate']:+.1%} growth")
+            if occ_ev.get("annual_openings"):
+                parts.append(f"{occ_ev['annual_openings']:,} annual openings")
+            lines.append("")
+            lines.append(", ".join(parts))
+            break
+
+    if engagement_type:
+        lines.append("")
+        lines.append(f"PARTNERSHIP ENGAGEMENT TYPE: {engagement_type}")
+
+    return "\n".join(line for line in lines if line is not None)
 
 
 def _gather_top_students(college: str, departments: list[str], core_skills: list[str]) -> tuple[dict, list[dict]]:
@@ -370,21 +285,25 @@ def _gather_top_students(college: str, departments: list[str], core_skills: list
             "with_all_core_skills": stats["with_all_core_skills"] if stats else 0,
         }
 
-        # Top 10 candidates by primary_focus match, sorted by GPA
+        # Top 10 candidates: primary_focus match, sorted by core skill count then GPA
         result = session.run("""
             MATCH (st:Student)
             WHERE EXISTS { (st)-[:ENROLLED_IN]->(:Course {college: $college}) }
               AND ANY(dept IN $departments WHERE st.primary_focus CONTAINS dept
                  OR dept CONTAINS st.primary_focus)
+            OPTIONAL MATCH (st)-[:HAS_SKILL]->(sk:Skill)
+            WHERE sk.name IN $core_skills
+            WITH st, count(DISTINCT sk) AS core_skill_count
             OPTIONAL MATCH (st)-[e:ENROLLED_IN]->(c:Course {college: $college})
             WHERE e.grade IN ['A','B','C','P']
-            WITH st, count(DISTINCT c) AS completed
-            ORDER BY st.gpa DESC, completed DESC
+            WITH st, core_skill_count, count(DISTINCT c) AS completed
+            ORDER BY core_skill_count DESC, st.gpa DESC, completed DESC
             LIMIT 10
             RETURN st.uuid AS uuid, st.primary_focus AS primary_focus,
                    completed AS courses_completed,
-                   COALESCE(st.gpa, 0.0) AS gpa
-        """, college=college, departments=departments).data()
+                   COALESCE(st.gpa, 0.0) AS gpa,
+                   core_skill_count AS matching_skills
+        """, college=college, departments=departments, core_skills=core_skills).data()
 
     top_students = [
         {
@@ -393,7 +312,7 @@ def _gather_top_students(college: str, departments: list[str], core_skills: list
             "primary_focus": r["primary_focus"] or "",
             "courses_completed": r["courses_completed"],
             "gpa": round(r["gpa"], 2),
-            "matching_skills": 0,
+            "matching_skills": r["matching_skills"],
         }
         for i, r in enumerate(result)
     ]
@@ -407,40 +326,42 @@ def _gather_top_students(college: str, departments: list[str], core_skills: list
 
 _NARRATIVE_PREAMBLE = """You are a workforce partnership analyst writing for Kallipolis, an institutional intelligence platform for California community colleges.
 
-Write in the Kallipolis voice: clear, elegant, restrained. Every sentence earns its place through insight, not data. Favor clarity and economy of words. Write prose that a thoughtful analyst would write — not a template filled in. The reader is a busy program coordinator who will skim past anything that feels robotic or formulaic.
+Kallipolis voice: short sentences. Direct. No filler. No em dashes. State the fact, move on. Every sentence carries a concrete claim or a specific insight. If a sentence could be cut without losing information, cut it. The reader is a busy program coordinator who will skim past anything that feels like LLM output.
 
 Below is curated institutional context for a specific employer.
 
 {context}
 
-Each section of the proposal is followed by a structured evidence block that presents all specific figures — wages, openings, growth rates, department details, student counts, skill lists. Your narrative must never duplicate those figures. Your job is to interpret what the evidence means, not to read it aloud. You may reference that supporting evidence follows (e.g., "the occupations below", "as the evidence shows").
+Each section is followed by a structured evidence block with specific figures. Your narrative interprets the evidence. You may cite figures where they make the prose flow naturally, but do not list or enumerate data that the evidence block already presents. Do not speculate about career progressions or advancement pathways unless the data explicitly supports them.
 
-You are writing one continuous argument. Each section picks up where the previous one left off:
-- OPPORTUNITY establishes the economic case
-- CURRICULUM COMPOSITION answers "can we meet that demand?"
-- STUDENT COMPOSITION confirms "is the pipeline real?"
-- ROADMAP proposes "what do we do next?"
+You are writing one continuous argument:
+- OPPORTUNITY: why this employer and occupation matter
+- CURRICULUM COMPOSITION: which departments align and why
+- STUDENT COMPOSITION: whether the pipeline is ready
+- ROADMAP: what to do next
 
-Write a partnership proposal as a single JSON object:
+Write a single JSON object:
 
 {{
-  "opportunity": "<2-4 sentences>",
+  "opportunity": "<2-3 sentences>",
   "justification": {{
-    "curriculum_composition": "<2-4 sentences>",
-    "student_composition": "<2-4 sentences>"
+    "curriculum_composition": "<2-3 sentences>",
+    "student_composition": "<2-3 sentences>"
   }},
-  "roadmap": "<2-4 sentences>"
+  "roadmap": "<2-3 sentences>"
 }}
 
 Section requirements:
-- OPPORTUNITY: 2-4 sentences. Describe the employment opportunity — why this employer matters in the region, what the career pathway looks like, why the demand structure warrants a partnership. Do not cite specific wages, openings, or growth rates — the evidence block presents those.
-- CURRICULUM COMPOSITION: 2-4 sentences. Articulate which departments are the strongest alignment points and why. Do not enumerate course counts or skill lists. When mentioning skill gaps, use hedged language — these may reflect data limitations.
-- STUDENT COMPOSITION: 2-4 sentences. Interpret the pipeline — connect the curriculum to student readiness. Is it deep or shallow, concentrated or broad? Do not restate totals or skill names.
-- ROADMAP: 2-4 sentences. Directional next steps. This section may reference specific departments and timelines since it has no evidence block.
+- OPPORTUNITY: 2-3 sentences. Why this employer matters in the region for this occupation. What makes this a partnership worth pursuing. Stick to what the data shows. Do not speculate about career ladders or advancement pathways.
+- CURRICULUM COMPOSITION: 2-3 sentences. Which departments align with this role and what they contribute. Do not assert how many core skills a department covers or claim complete coverage. The evidence block shows the specific skill-department mappings. Do not introduce skill names that are not in the context.
+- STUDENT COMPOSITION: 2-3 sentences. Whether students in these programs are prepared for this role. Reference the departments and core skills from the sections above. Candidates are ranked by how many core skills they've developed, then by GPA. Do not introduce new skill names or characterize the pipeline with subjective language.
+- ROADMAP: 2-3 sentences. Concrete next steps. Name departments and timelines.
 
 Tone:
-- Measured advocacy grounded in evidence is appropriate. Confidence is earned when the evidence block supports the claim.
-- Do not use bullet points or numbered lists. Write in flowing prose.
+- Short, direct sentences. No subordinate clauses that explain why something matters. State it and move on.
+- Figures are fine where they flow naturally. Do not avoid them artificially.
+- No em dashes. No rhetorical flourishes. No "remarkably," "notably," "importantly."
+- Do not use bullet points or numbered lists.
 - Return ONLY valid JSON with no text before or after."""
 
 
@@ -449,19 +370,19 @@ INTERNSHIP_PROMPT = _NARRATIVE_PREAMBLE + """
 PARTNERSHIP TYPE: Internship Pipeline — structured student work rotations at the employer site.
 
 Type-specific guidance:
-- OPPORTUNITY: Frame the career pathway — entry-level roles leading to management — and why structured rotations at this employer connect students to it.
-- CURRICULUM COMPOSITION: Identify which departments produce students ready for on-site rotations.
-- ROADMAP: Reference identifying operational areas for rotations, rotation duration (8-16 weeks), mapping to existing course sequences for academic credit, and a first-cohort target.
+- OPPORTUNITY: Why this employer hires for this occupation in this region. What structured rotations would look like. No career ladder speculation.
+- CURRICULUM COMPOSITION: Which departments prepare students for on-site rotations in this role.
+- ROADMAP: Operational areas for rotations, duration (8-16 weeks), course credit mapping, first-cohort target.
 
 REFERENCE EXAMPLE (match this prose quality — do not copy its content):
 
-Opportunity: Kaiser Permanente anchors the Central Valley's healthcare hiring pipeline, with nursing and clinical support roles generating the highest-volume openings in the region and compensation that reflects the progression from bedside care through clinical management. An internship pipeline would place students in structured rotations across nursing, clinical, and administrative functions, building supervised experience at one of the region's largest healthcare employers and connecting a credentialed local workforce to a career pathway with demonstrated upward mobility.
+Opportunity: Kaiser Permanente is the largest healthcare employer in the Central Valley, hiring registered nurses at scale with 2,160 annual openings and 7.2% projected growth. An internship pipeline would place students in structured clinical rotations, giving them supervised patient care experience that accelerates licensure readiness.
 
-Curriculum Composition: The college's Nursing department is the strongest alignment point, with clinical documentation, patient care, and nursing process competencies mapping directly to Kaiser's highest-volume hiring needs. The Health Sciences and Work Experience departments extend this alignment into workplace safety and supervised professional hours that translate to hospital rotation readiness, while the Business department offers a moderate administrative pathway.
+Curriculum Composition: The Nursing department is the strongest alignment point, developing patient care, clinical documentation, and nursing process skills across its core program. Health Sciences extends this into workplace safety and supervised clinical hours.
 
-Student Composition: The pipeline runs deep — the vast majority of students with relevant skills have completed three or more courses in aligned programs, indicating genuine program commitment rather than incidental enrollment. The strongest skill concentrations map directly to the clinical and compliance functions that define entry-level hospital rotations.
+Student Composition: Students in the Nursing and Health Sciences programs have completed multiple courses developing the core clinical skills Kaiser requires. The pipeline is concentrated in the right departments with the right preparation.
 
-Roadmap: The first step is to convene a meeting between the Nursing and Health Sciences department chairs and Kaiser's workforce development leadership to identify two to three rotation sites. The college and Kaiser should define an 8–12 week structure mapped to existing Work Experience course sequences, targeting a first cohort of 8–15 students within two semesters."""
+Roadmap: Convene a meeting between the Nursing department chair and Kaiser's workforce development leadership to identify two to three rotation sites. Define an 8-12 week structure mapped to existing Work Experience course sequences, targeting 8-15 students within two semesters."""
 
 
 CURRICULUM_CODESIGN_PROMPT = _NARRATIVE_PREAMBLE + """
@@ -469,19 +390,19 @@ CURRICULUM_CODESIGN_PROMPT = _NARRATIVE_PREAMBLE + """
 PARTNERSHIP TYPE: Curriculum Co-Design — the employer shapes program content and quality through ongoing collaboration with faculty.
 
 Type-specific guidance:
-- OPPORTUNITY: Frame the case for curriculum evolution — what the employer needs that the college doesn't yet fully develop, and why that gap matters given the demand landscape.
-- CURRICULUM COMPOSITION: This is the most important section. Lead with skill gaps and which departments would be involved in closing them.
-- ROADMAP: Reference convening a faculty-industry working group, conducting a curriculum gap audit, piloting revised content, and establishing a quarterly review cadence.
+- OPPORTUNITY: What the employer needs that the college doesn't yet develop. Why that gap matters given regional demand.
+- CURRICULUM COMPOSITION: Most important section. Lead with skill gaps and which departments would close them.
+- ROADMAP: Faculty-industry working group, curriculum gap audit, pilot revision, quarterly review.
 
 REFERENCE EXAMPLE (match this prose quality — do not copy its content):
 
-Opportunity: Cargill's hiring portfolio in the Central Valley includes several high-demand roles where the college's graduates are nearly — but not fully — competitive. The gap is specific and addressable: a small number of employer-required skills are absent from the college's current curriculum, affecting occupations with substantial regional openings and attractive compensation. A co-design partnership would embed Cargill's operational standards directly into program development to close that distance.
+Opportunity: Cargill hires food science technicians at $47,950/yr with 190 annual openings in the Central Valley, but the college's curriculum doesn't fully develop the skills that role requires. A co-design partnership would close that gap by embedding Cargill's standards into program content.
 
-Curriculum Composition: The Business department carries the strongest existing alignment but has a notable gap — auditing competencies required by Cargill's accounting roles are not currently developed by any mapped course, creating a clear co-design target. The Agriculture department's supply chain coverage is relevant but may need deepening to reflect the employer's specific logistics environment, and skill gaps in labor relations represent a second addressable target.
+Curriculum Composition: The Business department has the strongest existing alignment but lacks auditing coverage, a skill Cargill requires for its accounting roles. The Agriculture department's supply chain content may need deepening to match the employer's logistics environment.
 
-Student Composition: The college already has a large, deeply engaged pipeline of students developing skills relevant to Cargill's operations. The co-design effort would be sharpening an existing workforce, not building one from scratch — closing specific skill gaps to extend the pipeline's competitiveness into roles it currently doesn't reach.
+Student Composition: Students in the Business and Agriculture programs are already developing skills relevant to Cargill's operations. The co-design effort would sharpen existing preparation rather than build it from scratch.
 
-Roadmap: The first step is to convene a faculty-industry working group with the Business and Agriculture departments alongside Cargill's HR and operations leadership, structuring the initial session as a curriculum gap audit. The working group should identify two to three courses for pilot revision in the next catalog cycle, with a quarterly review cadence to assess whether changes are producing measurable improvement."""
+Roadmap: Convene a faculty-industry working group with Business and Agriculture department chairs alongside Cargill's HR and operations leadership. Identify two to three courses for pilot revision in the next catalog cycle with quarterly review."""
 
 
 ADVISORY_BOARD_PROMPT = _NARRATIVE_PREAMBLE + """
@@ -489,19 +410,19 @@ ADVISORY_BOARD_PROMPT = _NARRATIVE_PREAMBLE + """
 PARTNERSHIP TYPE: Advisory Board — ongoing strategic guidance from the employer to inform program direction.
 
 Type-specific guidance:
-- OPPORTUNITY: Frame the advisory board as a structured channel for industry insight. This partnership requires no grant funding — its value is in the relationship.
-- CURRICULUM COMPOSITION: Identify which departments the board would advise. Name skill gaps as natural inaugural agenda items.
-- ROADMAP: Reference sending a formal invitation, scheduling an inaugural meeting with 2-3 agenda topics, and setting a quarterly cadence.
+- OPPORTUNITY: Why this employer's perspective matters for the college's programs. No grant funding required.
+- CURRICULUM COMPOSITION: Which departments the board would advise. Skill gaps as inaugural agenda items.
+- ROADMAP: Formal invitation, inaugural meeting with 2-3 topics, quarterly cadence.
 
 REFERENCE EXAMPLE (match this prose quality — do not copy its content):
 
-Opportunity: Cargill's hiring breadth in the Central Valley — spanning entry-level technical roles through operations management, with sustained growth across all categories — makes the company's perspective on workforce readiness relevant to several of the college's programs simultaneously. An advisory board would formalize this relationship as an ongoing channel for industry guidance on curriculum direction, skill standards, and emerging workforce needs, requiring no grant funding.
+Opportunity: Cargill hires across eight occupations in the Central Valley with over 4,500 combined annual openings. That hiring breadth makes their perspective on workforce readiness relevant to several college programs. An advisory board would formalize this as an ongoing channel for industry guidance, requiring no grant funding.
 
-Curriculum Composition: The strongest alignment is concentrated in the Agriculture, Work Experience, and Business departments, which together cover the core skill areas Cargill hires for across its food production, logistics, and corporate functions. Gaps in auditing and labor relations represent natural inaugural agenda items where Cargill can advise on the best remediation approach.
+Curriculum Composition: The Agriculture, Work Experience, and Business departments cover the core skill areas Cargill hires for. Gaps in auditing and labor relations are natural inaugural agenda items.
 
-Student Composition: The college has a substantial and deeply engaged pipeline of students developing skills relevant to Cargill's operations. The advisory board would provide a structured mechanism for Cargill to assess whether this pipeline's preparation meets current operational standards and where emerging industry trends should shift the college's emphasis.
+Student Composition: Students in these programs are developing skills relevant to Cargill's operations. The advisory board would give Cargill a way to assess whether that preparation meets current standards.
 
-Roadmap: The first step is to send a formal invitation to Cargill's Central Valley regional leadership, proposing a quarterly advisory board scoped to the Agriculture, Business, and Food Services programs. The inaugural meeting should address curriculum alignment, identified skill gaps, and emerging workforce trends."""
+Roadmap: Send a formal invitation to Cargill's Central Valley regional leadership proposing a quarterly advisory board scoped to Agriculture, Business, and Food Services. The inaugural meeting should address curriculum alignment and identified skill gaps."""
 
 
 PROMPTS: dict[str, str] = {
@@ -607,17 +528,6 @@ def _assemble_proposal(
     )
 
 
-def _get_employer_sector(employer: str) -> str | None:
-    """Look up the employer's sector from the graph."""
-    driver = get_driver()
-    with driver.session() as session:
-        result = session.run(
-            "MATCH (e:Employer {name: $name}) RETURN e.sector AS sector",
-            name=employer,
-        ).single()
-    return result["sector"] if result else None
-
-
 def _get_prompt(engagement_type: str, context: str) -> str:
     """Select and format the type-specific prompt template."""
     template = PROMPTS.get(engagement_type, INTERNSHIP_PROMPT)
@@ -704,18 +614,17 @@ def _evaluate_proposal(proposal: NarrativeProposal, curated_context: str) -> dic
 
 async def run_targeted_proposal(employer: str, college: str, engagement_type: str = "") -> NarrativeProposal:
     """Generate a targeted partnership proposal for a specific employer."""
-    sector = _get_employer_sector(employer)
     gathered = _gather_targeted_context(employer, college, engagement_type)
     logger.info(f"Stage 1 complete: gathered context for {employer}")
 
-    selected_occ = _select_occupation(gathered.text)
+    selected_occ = _select_occupation(gathered)
     logger.info(f"Stage 2 complete: selected '{selected_occ.get('title', '?')}' for {employer}")
 
     core_skills = selected_occ.get("core_skills", [])
     dept_text, curriculum_evidence = _gather_aligned_curriculum(college, core_skills)
     aligned_depts = [d["department"] for d in curriculum_evidence]
     student_stats, top_students = _gather_top_students(college, aligned_depts, core_skills)
-    narrative_context = _build_narrative_context(gathered, dept_text, selected_occ)
+    narrative_context = _build_narrative_context(gathered, dept_text, selected_occ, engagement_type)
 
     prompt_text = _get_prompt(engagement_type, narrative_context)
     raw = _call_claude(prompt_text)
@@ -723,7 +632,7 @@ async def run_targeted_proposal(employer: str, college: str, engagement_type: st
 
     narrative = _parse_narrative_fields(raw)
     partnership_type = TYPE_LABELS.get(engagement_type, engagement_type)
-    proposal = _assemble_proposal(narrative, employer, sector, partnership_type, gathered, curriculum_evidence, selected_occ, student_stats, top_students)
+    proposal = _assemble_proposal(narrative, employer, gathered.sector, partnership_type, gathered, curriculum_evidence, selected_occ, student_stats, top_students)
 
     _evaluate_proposal(proposal, narrative_context)
     logger.info(f"Proposal complete for {employer}.")
@@ -732,18 +641,17 @@ async def run_targeted_proposal(employer: str, college: str, engagement_type: st
 
 def stream_targeted_proposal(employer: str, college: str, engagement_type: str = ""):
     """Generator that yields a NarrativeProposal when Claude's streaming response completes."""
-    sector = _get_employer_sector(employer)
     gathered = _gather_targeted_context(employer, college, engagement_type)
     logger.info(f"Stage 1 complete: gathered context for {employer}")
 
-    selected_occ = _select_occupation(gathered.text)
+    selected_occ = _select_occupation(gathered)
     logger.info(f"Stage 2 complete: selected '{selected_occ.get('title', '?')}' for {employer}")
 
     core_skills = selected_occ.get("core_skills", [])
     dept_text, curriculum_evidence = _gather_aligned_curriculum(college, core_skills)
     aligned_depts = [d["department"] for d in curriculum_evidence]
     student_stats, top_students = _gather_top_students(college, aligned_depts, core_skills)
-    narrative_context = _build_narrative_context(gathered, dept_text, selected_occ)
+    narrative_context = _build_narrative_context(gathered, dept_text, selected_occ, engagement_type)
 
     prompt_text = _get_prompt(engagement_type, narrative_context)
     logger.info(f"Stage 3: starting Claude stream for {employer} ({engagement_type})...")
@@ -761,7 +669,7 @@ def stream_targeted_proposal(employer: str, college: str, engagement_type: str =
 
     narrative = _parse_narrative_fields(accumulated)
     partnership_type = TYPE_LABELS.get(engagement_type, engagement_type)
-    proposal = _assemble_proposal(narrative, employer, sector, partnership_type, gathered, curriculum_evidence, selected_occ, student_stats, top_students)
+    proposal = _assemble_proposal(narrative, employer, gathered.sector, partnership_type, gathered, curriculum_evidence, selected_occ, student_stats, top_students)
 
     _evaluate_proposal(proposal, narrative_context)
     logger.info(f"Stream complete: proposal for {employer}")
