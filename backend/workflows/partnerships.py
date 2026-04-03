@@ -387,43 +387,42 @@ def _build_narrative_context(gathered: GatheredContext, dept_text: str) -> str:
 # Stage 3: Proposal Generation Prompts
 # ═══════════════════════════════════════════════════════════════════════════
 
-_NARRATIVE_PREAMBLE = """You are a workforce partnership analyst writing an internal decision-support brief for a California community college program coordinator.
+_NARRATIVE_PREAMBLE = """You are a workforce partnership analyst writing for Kallipolis, an institutional intelligence platform for California community colleges.
 
-Below is curated institutional context for a specific employer. These alignments have been pre-vetted for credibility. Do not invent departments, skill names, student counts, or wage figures not present in the context.
+Write in the Kallipolis voice: clear, elegant, restrained. Every sentence earns its place through insight, not data. Favor clarity and economy of words. Write prose that a thoughtful analyst would write — not a template filled in. The reader is a busy program coordinator who will skim past anything that feels robotic or formulaic.
+
+Below is curated institutional context for a specific employer.
 
 {context}
 
-This is a decision-support brief, not a report. Every sentence must earn its place. Density of insight per sentence is what makes a proposal useful.
+Each section of the proposal is followed by a structured evidence block that presents all specific figures — wages, openings, growth rates, department details, student counts, skill lists. Your narrative must never duplicate those figures. Your job is to interpret what the evidence means, not to read it aloud. You may reference that supporting evidence follows (e.g., "the occupations below", "as the evidence shows").
 
-You are writing one continuous argument distributed across four sections. Each section picks up where the previous one left off:
-- OPPORTUNITY establishes the economic case — why this employer matters
-- CURRICULUM COMPOSITION answers "can we meet that demand?" — what we teach that aligns
-- STUDENT COMPOSITION confirms "is the pipeline real?" — who our students are
+You are writing one continuous argument. Each section picks up where the previous one left off:
+- OPPORTUNITY establishes the economic case
+- CURRICULUM COMPOSITION answers "can we meet that demand?"
+- STUDENT COMPOSITION confirms "is the pipeline real?"
 - ROADMAP proposes "what do we do next?"
 
-The opening sentence of each section should flow naturally from the previous section's conclusion.
-
-Write a partnership proposal as a single JSON object with this exact schema:
+Write a partnership proposal as a single JSON object:
 
 {{
-  "opportunity": "<3-4 sentences>",
+  "opportunity": "<2-4 sentences>",
   "justification": {{
-    "curriculum_composition": "<3-5 sentences>",
-    "student_composition": "<3-5 sentences>"
+    "curriculum_composition": "<2-4 sentences>",
+    "student_composition": "<2-4 sentences>"
   }},
-  "roadmap": "<3-5 sentences>"
+  "roadmap": "<2-4 sentences>"
 }}
 
 Section requirements:
-- OPPORTUNITY: 3-4 sentences. Lead with occupational demand — name specific occupations with their annual wages, employment counts, growth rates, and annual openings. Compensation is what makes roles desirable; lead with it. End with what the partnership is and why this employer's demand structure warrants it. This section owns all specific per-occupation figures.
-- CURRICULUM COMPOSITION: 3-5 sentences. Reference departments, not individual courses — "the Nursing department develops Patient Care and Clinical Documentation" not "WEXP 196N develops Patient Care." The evidence block will show course-level detail. When addressing skill gaps, use hedged language — these may reflect data limitations rather than true curricular absences.
-- STUDENT COMPOSITION: 3-5 sentences. Connect the curriculum to the pipeline. These departments produce students with specific skills — name the skills most relevant to the employer's occupations. Ground in pipeline size and depth (3+ courses completed).
-- ROADMAP: 3-5 sentences. Propose directional next steps — specific enough to act on (name departments, timelines) but not overly prescriptive.
+- OPPORTUNITY: 2-4 sentences. Describe the employment opportunity — why this employer matters in the region, what the career pathway looks like, why the demand structure warrants a partnership. Do not cite specific wages, openings, or growth rates — the evidence block presents those.
+- CURRICULUM COMPOSITION: 2-4 sentences. Articulate which departments are the strongest alignment points and why. Do not enumerate course counts or skill lists. When mentioning skill gaps, use hedged language — these may reflect data limitations.
+- STUDENT COMPOSITION: 2-4 sentences. Interpret the pipeline — connect the curriculum to student readiness. Is it deep or shallow, concentrated or broad? Do not restate totals or skill names.
+- ROADMAP: 2-4 sentences. Directional next steps. This section may reference specific departments and timelines since it has no evidence block.
 
 Tone:
-- Measured advocacy grounded in evidence is appropriate. Confidence is earned when backed by specific data.
-- Ungrounded rhetoric is not appropriate — do not make claims without a supporting data point in the same or adjacent sentence.
-- Do not use bullet points or numbered lists inside the JSON string values. Write in flowing prose.
+- Measured advocacy grounded in evidence is appropriate. Confidence is earned when the evidence block supports the claim.
+- Do not use bullet points or numbered lists. Write in flowing prose.
 - Return ONLY valid JSON with no text before or after."""
 
 
@@ -432,19 +431,19 @@ INTERNSHIP_PROMPT = _NARRATIVE_PREAMBLE + """
 PARTNERSHIP TYPE: Internship Pipeline — structured student work rotations at the employer site.
 
 Type-specific guidance:
-- OPPORTUNITY: Lead with the specific occupations and their wages/openings/growth. Frame the career pathway — entry-level roles leading to management. End with the partnership framing (students placed in rotations).
-- CURRICULUM COMPOSITION: Identify which departments produce students ready for on-site rotations. The transition to student composition should be natural.
-- ROADMAP: Reference identifying operational areas for rotations, defining rotation duration (8-16 weeks), mapping to existing course sequences for academic credit, and setting a first-cohort target.
+- OPPORTUNITY: Frame the career pathway — entry-level roles leading to management — and why structured rotations at this employer connect students to it.
+- CURRICULUM COMPOSITION: Identify which departments produce students ready for on-site rotations.
+- ROADMAP: Reference identifying operational areas for rotations, rotation duration (8-16 weeks), mapping to existing course sequences for academic credit, and a first-cohort target.
 
-REFERENCE EXAMPLE (match this narrative quality — do not copy its content):
+REFERENCE EXAMPLE (match this prose quality — do not copy its content):
 
-Opportunity: Registered Nurses earn $129,360/yr with 2,160 annual openings and 7.2% projected growth in the Central Valley, while Nursing Assistants generate 1,870 annual openings at $44,090/yr with 8.9% growth — together representing the highest-volume healthcare hiring pipeline in the region. Medical and Health Services Managers at $130,020/yr with 18.8% growth anchor the management ceiling of this pathway. An internship pipeline with Kaiser Permanente Fresno Medical Center would place students in structured clinical, nursing, and administrative rotations that connect directly to these roles, building supervised experience at one of the region's largest healthcare employers.
+Opportunity: Kaiser Permanente anchors the Central Valley's healthcare hiring pipeline, with nursing and clinical support roles generating the highest-volume openings in the region and compensation that reflects the progression from bedside care through clinical management. An internship pipeline would place students in structured rotations across nursing, clinical, and administrative functions, building supervised experience at one of the region's largest healthcare employers and connecting a credentialed local workforce to a career pathway with demonstrated upward mobility.
 
-Curriculum Composition: The college's Nursing department is the strongest alignment point, developing clinical documentation, patient care, and nursing process competencies across its core program. The Health Sciences and Work Experience departments extend this alignment into workplace safety, record keeping, and supervised professional hours that translate directly to hospital rotation readiness. On the administrative side, the Business and Child Development departments offer moderate alignment to health services management through leadership and administration coursework, though these connections are less direct than the clinical programs.
+Curriculum Composition: The college's Nursing department is the strongest alignment point, with clinical documentation, patient care, and nursing process competencies mapping directly to Kaiser's highest-volume hiring needs. The Health Sciences and Work Experience departments extend this alignment into workplace safety and supervised professional hours that translate to hospital rotation readiness, while the Business department offers a moderate administrative pathway.
 
-Student Composition: These departments produce a pipeline of over 14,900 students with skills relevant to Kaiser's hiring occupations, with approximately 14,300 having completed three or more courses in aligned programs. The strongest skill concentrations — Patient Care, Clinical Documentation, and Workplace Safety — map directly to the nursing assistant and LVN functions that represent the highest-volume entry points for hospital rotations. Professional Ethics and Record Keeping round out the pipeline profile, reinforcing readiness for the compliance-intensive environment that clinical placements demand.
+Student Composition: The pipeline runs deep — the vast majority of students with relevant skills have completed three or more courses in aligned programs, indicating genuine program commitment rather than incidental enrollment. The strongest skill concentrations map directly to the clinical and compliance functions that define entry-level hospital rotations.
 
-Roadmap: The first step is to convene a meeting between the Nursing and Health Sciences department chairs and Kaiser Permanente Fresno's workforce development leadership to identify 2–3 rotation sites — inpatient nursing units, clinical documentation functions, and administrative services are the natural starting points. The college and Kaiser should jointly define an 8–12 week rotation structure mapped to existing Work Experience course sequences so students earn academic credit under current course infrastructure. A first cohort of 8–15 students should be targeted within two semesters, prioritizing nursing assistant and LVN-track students as the highest-volume pipeline match."""
+Roadmap: The first step is to convene a meeting between the Nursing and Health Sciences department chairs and Kaiser's workforce development leadership to identify two to three rotation sites. The college and Kaiser should define an 8–12 week structure mapped to existing Work Experience course sequences, targeting a first cohort of 8–15 students within two semesters."""
 
 
 CURRICULUM_CODESIGN_PROMPT = _NARRATIVE_PREAMBLE + """
@@ -452,19 +451,19 @@ CURRICULUM_CODESIGN_PROMPT = _NARRATIVE_PREAMBLE + """
 PARTNERSHIP TYPE: Curriculum Co-Design — the employer shapes program content and quality through ongoing collaboration with faculty.
 
 Type-specific guidance:
-- OPPORTUNITY: Lead with the occupations most affected by curriculum gaps — name their wages, openings, and growth. Frame the case that curriculum change is warranted because the employer needs skills the college doesn't yet fully develop.
-- CURRICULUM COMPOSITION: This is the most important section for this type. Lead with the specific skill gaps, then identify which departments would be involved in closing them.
+- OPPORTUNITY: Frame the case for curriculum evolution — what the employer needs that the college doesn't yet fully develop, and why that gap matters given the demand landscape.
+- CURRICULUM COMPOSITION: This is the most important section. Lead with skill gaps and which departments would be involved in closing them.
 - ROADMAP: Reference convening a faculty-industry working group, conducting a curriculum gap audit, piloting revised content, and establishing a quarterly review cadence.
 
-REFERENCE EXAMPLE (match this narrative quality — do not copy its content):
+REFERENCE EXAMPLE (match this prose quality — do not copy its content):
 
-Opportunity: Accountants and Auditors earn $80,560/yr with 940 annual openings and 4.7% growth in the Central Valley, while Human Resources Specialists at $73,550/yr generate 650 annual openings with the fastest growth rate in Cargill's hiring portfolio at 7.2%. Both roles require skills — auditing and labor relations respectively — that are not currently mapped in the college's curriculum, creating a specific and addressable gap between graduate preparation and employer hiring standards. A curriculum co-design partnership with Cargill would embed the employer's operational standards directly into program development to close these gaps.
+Opportunity: Cargill's hiring portfolio in the Central Valley includes several high-demand roles where the college's graduates are nearly — but not fully — competitive. The gap is specific and addressable: a small number of employer-required skills are absent from the college's current curriculum, affecting occupations with substantial regional openings and attractive compensation. A co-design partnership would embed Cargill's operational standards directly into program development to close that distance.
 
-Curriculum Composition: The Business department carries the strongest existing alignment, developing accounting, bookkeeping, and financial analysis competencies that serve as the foundation for Cargill's auditing roles — but the auditing skill itself is not currently mapped to any course, suggesting either a true curricular gap or a limitation in the skill data that a co-design audit would resolve. The Agriculture department's supply chain management coverage is relevant to Cargill's production management pipeline but may need deepening to reflect the employer's specific logistics environment. Skill gaps in labor relations and advanced manufacturing processes represent the clearest co-design targets, and the working group's first task should be determining whether these gaps require new course content or integration into existing coursework.
+Curriculum Composition: The Business department carries the strongest existing alignment but has a notable gap — auditing competencies required by Cargill's accounting roles are not currently developed by any mapped course, creating a clear co-design target. The Agriculture department's supply chain coverage is relevant but may need deepening to reflect the employer's specific logistics environment, and skill gaps in labor relations represent a second addressable target.
 
-Student Composition: The college has over 15,000 students with skills relevant to Cargill's workforce needs, with approximately 14,500 having completed three or more courses in aligned programs. The pipeline's strongest concentrations in Quality Control, Regulatory Compliance, and Data Analysis are directly applicable to Cargill's food science and production management roles, indicating that the co-design effort would be refining an already-engaged student base rather than building from scratch. Closing the auditing and labor relations gaps would extend this pipeline's competitiveness into Cargill's accounting and HR hiring tracks.
+Student Composition: The college already has a large, deeply engaged pipeline of students developing skills relevant to Cargill's operations. The co-design effort would be sharpening an existing workforce, not building one from scratch — closing specific skill gaps to extend the pipeline's competitiveness into roles it currently doesn't reach.
 
-Roadmap: The first step is to convene a faculty-industry working group with representatives from the Business and Agriculture departments alongside Cargill's HR and operations leadership, with the initial session structured as a curriculum gap audit. The working group should identify 2–3 courses for pilot revision in the next catalog cycle, with Cargill contributing industry-current case studies or assessment criteria. A quarterly review cadence would allow both parties to assess whether revised content produces measurable improvement in graduate preparedness."""
+Roadmap: The first step is to convene a faculty-industry working group with the Business and Agriculture departments alongside Cargill's HR and operations leadership, structuring the initial session as a curriculum gap audit. The working group should identify two to three courses for pilot revision in the next catalog cycle, with a quarterly review cadence to assess whether changes are producing measurable improvement."""
 
 
 ADVISORY_BOARD_PROMPT = _NARRATIVE_PREAMBLE + """
@@ -472,19 +471,19 @@ ADVISORY_BOARD_PROMPT = _NARRATIVE_PREAMBLE + """
 PARTNERSHIP TYPE: Advisory Board — ongoing strategic guidance from the employer to inform program direction.
 
 Type-specific guidance:
-- OPPORTUNITY: Lead with the occupations and their wages/openings to establish why this employer's perspective matters. Frame the advisory board as a structured channel for industry insight — not a funding mechanism. This partnership requires no grant funding.
-- CURRICULUM COMPOSITION: Identify which departments the board would advise — scope to areas with the strongest alignment. Name skill gaps as natural inaugural agenda items.
-- ROADMAP: Reference sending a formal invitation, scheduling an inaugural meeting with 2-3 grounded agenda topics, and setting a quarterly cadence. Do not elaborate the full agenda.
+- OPPORTUNITY: Frame the advisory board as a structured channel for industry insight. This partnership requires no grant funding — its value is in the relationship.
+- CURRICULUM COMPOSITION: Identify which departments the board would advise. Name skill gaps as natural inaugural agenda items.
+- ROADMAP: Reference sending a formal invitation, scheduling an inaugural meeting with 2-3 agenda topics, and setting a quarterly cadence.
 
-REFERENCE EXAMPLE (match this narrative quality — do not copy its content):
+REFERENCE EXAMPLE (match this prose quality — do not copy its content):
 
-Opportunity: Cargill hires across eight occupations in the Central Valley with wages ranging from $47,950/yr for Food Science Technicians to $129,110/yr for Marketing Managers, generating over 4,500 combined annual openings with growth rates between 2% and 8% through 2029. This breadth of hiring — from entry-level technical roles through operations management — makes Cargill's perspective on workforce readiness relevant across multiple college programs. An advisory board partnership would formalize this relationship as a structured, ongoing channel for industry guidance, requiring no grant funding.
+Opportunity: Cargill's hiring breadth in the Central Valley — spanning entry-level technical roles through operations management, with sustained growth across all categories — makes the company's perspective on workforce readiness relevant to several of the college's programs simultaneously. An advisory board would formalize this relationship as an ongoing channel for industry guidance on curriculum direction, skill standards, and emerging workforce needs, requiring no grant funding.
 
-Curriculum Composition: The strongest curriculum alignment is concentrated in three departments that would form the natural scope for the advisory board: Agriculture develops supply chain management relevant to production operations, the Work Experience and Food Services departments develop food safety, agriculture, and manufacturing competencies applicable to Cargill's technical hiring, and Business develops accounting and financial analysis skills aligned to Cargill's corporate functions. Skill gaps in auditing and labor relations — not currently mapped to college coursework — represent natural inaugural agenda items where Cargill can advise on whether new course content, certification pathways, or other approaches would best serve students.
+Curriculum Composition: The strongest alignment is concentrated in the Agriculture, Work Experience, and Business departments, which together cover the core skill areas Cargill hires for across its food production, logistics, and corporate functions. Gaps in auditing and labor relations represent natural inaugural agenda items where Cargill can advise on the best remediation approach.
 
-Student Composition: The college has over 15,000 students developing skills relevant to Cargill's hiring needs, with approximately 14,500 having completed three or more courses in aligned programs. The advisory board would give Cargill the opportunity to assess whether the pipeline's strongest skill concentrations — Quality Control, Regulatory Compliance, and Data Analysis — meet current operational standards, and where emerging industry trends might require the college to evolve its emphasis.
+Student Composition: The college has a substantial and deeply engaged pipeline of students developing skills relevant to Cargill's operations. The advisory board would provide a structured mechanism for Cargill to assess whether this pipeline's preparation meets current operational standards and where emerging industry trends should shift the college's emphasis.
 
-Roadmap: The first step is to send a formal invitation to Cargill's Central Valley regional leadership, proposing a quarterly advisory board scoped to the Agriculture, Business, and Food Services programs. The inaugural meeting agenda should address the college's current curriculum alignment with Cargill's skill requirements, the auditing and labor relations skill gaps, and emerging workforce trends in food production and agricultural operations. The target is to convene the first meeting within one semester, with a standing quarterly cadence thereafter."""
+Roadmap: The first step is to send a formal invitation to Cargill's Central Valley regional leadership, proposing a quarterly advisory board scoped to the Agriculture, Business, and Food Services programs. The inaugural meeting should address curriculum alignment, identified skill gaps, and emerging workforce trends."""
 
 
 PROMPTS: dict[str, str] = {
@@ -617,17 +616,17 @@ GENERATED PROPOSAL:
 
 RULES:
 
-1. FAITHFULNESS: Every specific figure (dollar amounts, employment counts, growth rates, annual openings), department name, skill name, and region name must appear in or be directly derivable from the curated context. Aggregate figures (ranges, sums) are acceptable if computable from the context. Flag any fabricated or incorrectly expanded data.
+1. FAITHFULNESS: Any directional claims (e.g., "highest-volume", "fastest-growing", "strongest alignment") must be supported by the relative ordering in the curated context data. Any department names, skill names, or region names must appear in the context. Flag fabricated or unsupported claims.
 
-2. NO_REPETITION: A specific per-occupation figure (e.g., "$115,380/yr", "2,240 annual openings", "+8.4%") must not appear in more than one section of the proposal. Only flag exact repetition of the same specific figure across sections.
+2. NO_DATA_IN_NARRATIVE: The narrative sections (opportunity, curriculum_composition, student_composition) should NOT contain specific dollar amounts (e.g., "$80,560"), specific percentages (e.g., "4.7%"), specific counts (e.g., "940 annual openings", "15,000 students"), or specific employment numbers. These belong in the evidence blocks, not the prose. The roadmap section is exempt. Flag any specific figures found in the narrative sections.
 
 Respond with ONLY this JSON object. No reasoning. No commentary. No markdown fences.
 
-{{"faithfulness": {{"pass": true, "violations": []}}, "no_repetition": {{"pass": true, "violations": []}}}}
+{{"faithfulness": {{"pass": true, "violations": []}}, "no_data_in_narrative": {{"pass": true, "violations": []}}}}
 
 Change "pass" to false and add violation strings only where a rule is violated."""
 
-_EVAL_RULES = ["faithfulness", "no_repetition"]
+_EVAL_RULES = ["faithfulness", "no_data_in_narrative"]
 
 
 def _evaluate_proposal(proposal: NarrativeProposal, curated_context: str) -> dict:

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import type { ApiTargetedProposal, ApiOccupationEvidence, ApiDepartmentEvidence, ApiStudentEvidence } from "@/lib/api";
 import { saveProposal, removeProposal, updateProposalStatus, type SavedProposal } from "@/lib/savedProposals";
 
@@ -20,6 +20,8 @@ type Props = {
   onSaved?: (saved: SavedProposal) => void;
 };
 
+/* ── Shared Components ─────────────────────────────────────────────────── */
+
 function SectionHeader({ children, color }: { children: React.ReactNode; color?: string }) {
   return (
     <span style={{
@@ -32,135 +34,12 @@ function SectionHeader({ children, color }: { children: React.ReactNode; color?:
   );
 }
 
-function SubHeader({ children }: { children: React.ReactNode }) {
+function Chevron({ open }: { open: boolean }) {
   return (
-    <span style={{
-      fontFamily: FONT, fontSize: "11px", fontWeight: 600, letterSpacing: "0.06em",
-      textTransform: "uppercase", color: "rgba(255,255,255,0.25)", display: "block", marginBottom: "6px",
-    }}>
-      {children}
-    </span>
-  );
-}
-
-function EvidenceContainer({ children }: { children: React.ReactNode }) {
-  return (
-    <div style={{
-      marginTop: "12px", padding: "14px 16px",
-      background: "rgba(255,255,255,0.02)", borderRadius: "8px",
-      border: "1px solid rgba(255,255,255,0.04)",
-    }}>
-      {children}
-    </div>
-  );
-}
-
-function formatWage(wage: number | null): string {
-  if (!wage) return "—";
-  return `$${Math.round(wage / 1000)}K`;
-}
-
-function formatNumber(n: number | null): string {
-  if (n == null) return "—";
-  return n.toLocaleString();
-}
-
-function formatGrowth(rate: number | null): string {
-  if (rate == null) return "—";
-  return `${rate > 0 ? "+" : ""}${(rate * 100).toFixed(1)}%`;
-}
-
-function OccupationEvidenceGrid({ items }: { items: ApiOccupationEvidence[] }) {
-  if (!items.length) return null;
-  return (
-    <EvidenceContainer>
-      <div style={{
-        display: "grid", gridTemplateColumns: "1fr 70px 80px 80px 60px",
-        gap: "4px 12px", alignItems: "center",
-      }}>
-        <span style={{ fontFamily: FONT, fontSize: "9px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.2)" }}>Occupation</span>
-        <span style={{ fontFamily: FONT, fontSize: "9px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.2)", textAlign: "right" }}>Wage</span>
-        <span style={{ fontFamily: FONT, fontSize: "9px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.2)", textAlign: "right" }}>Employed</span>
-        <span style={{ fontFamily: FONT, fontSize: "9px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.2)", textAlign: "right" }}>Openings</span>
-        <span style={{ fontFamily: FONT, fontSize: "9px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.2)", textAlign: "right" }}>Growth</span>
-        {items.map((occ) => (
-          <div key={occ.title} style={{ display: "contents" }}>
-            <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.6)" }}>{occ.title}</span>
-            <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.7)", textAlign: "right", fontWeight: 500 }}>{formatWage(occ.annual_wage)}</span>
-            <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.45)", textAlign: "right" }}>{formatNumber(occ.employment)}</span>
-            <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.45)", textAlign: "right" }}>{formatNumber(occ.annual_openings)}</span>
-            <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.45)", textAlign: "right" }}>{formatGrowth(occ.growth_rate)}</span>
-          </div>
-        ))}
-      </div>
-    </EvidenceContainer>
-  );
-}
-
-function DepartmentEvidenceList({ items }: { items: ApiDepartmentEvidence[] }) {
-  if (!items.length) return null;
-  return (
-    <EvidenceContainer>
-      <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-        {items.map((dept) => (
-          <div key={dept.department}>
-            <span style={{ fontFamily: FONT, fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.65)" }}>
-              {dept.department}
-            </span>
-            <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginLeft: "8px" }}>
-              {dept.course_count} course{dept.course_count !== 1 ? "s" : ""}
-            </span>
-            <div style={{ marginTop: "3px", display: "flex", flexWrap: "wrap", gap: "4px" }}>
-              {dept.aligned_skills.map((skill) => (
-                <span key={skill} style={{
-                  fontFamily: FONT, fontSize: "10px", padding: "2px 8px", borderRadius: "4px",
-                  background: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.4)",
-                }}>
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-    </EvidenceContainer>
-  );
-}
-
-function StudentEvidenceBar({ data }: { data: ApiStudentEvidence }) {
-  return (
-    <EvidenceContainer>
-      <div style={{ display: "flex", gap: "24px", alignItems: "baseline", flexWrap: "wrap" }}>
-        <div>
-          <span style={{ fontFamily: FONT, fontSize: "18px", fontWeight: 600, color: "#f0eef4" }}>
-            {data.total_students.toLocaleString()}
-          </span>
-          <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginLeft: "6px" }}>
-            students
-          </span>
-        </div>
-        <div>
-          <span style={{ fontFamily: FONT, fontSize: "18px", fontWeight: 600, color: "#f0eef4" }}>
-            {data.students_with_3plus_courses.toLocaleString()}
-          </span>
-          <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.3)", marginLeft: "6px" }}>
-            with 3+ courses
-          </span>
-        </div>
-        {data.top_skills.length > 0 && (
-          <div style={{ display: "flex", gap: "4px", flexWrap: "wrap" }}>
-            {data.top_skills.map((skill) => (
-              <span key={skill} style={{
-                fontFamily: FONT, fontSize: "10px", padding: "2px 8px", borderRadius: "4px",
-                background: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.4)",
-              }}>
-                {skill}
-              </span>
-            ))}
-          </div>
-        )}
-      </div>
-    </EvidenceContainer>
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+      style={{ transform: open ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s", flexShrink: 0 }}>
+      <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
   );
 }
 
@@ -180,6 +59,225 @@ function FlagIcon() {
   );
 }
 
+function SkillBadge({ skill, brandColor }: { skill: string; brandColor: string }) {
+  return (
+    <span style={{
+      fontFamily: FONT, fontSize: "12px", fontWeight: 500, padding: "5px 12px",
+      borderRadius: "6px", border: `1px solid ${brandColor}60`, color: brandColor,
+      background: "rgba(255,255,255,0.02)",
+    }}>
+      {skill}
+    </span>
+  );
+}
+
+/* ── Occupation Evidence (matches OccupationsView) ─────────────────────── */
+
+function OccupationEvidence({ items, brandColor }: { items: ApiOccupationEvidence[]; brandColor: string }) {
+  const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  if (!items.length) return null;
+
+  const hdrStyle = {
+    fontFamily: FONT, fontSize: "10px", fontWeight: 600 as const, letterSpacing: "0.1em",
+    textTransform: "uppercase" as const, color: brandColor, opacity: 0.6,
+  };
+
+  return (
+    <div style={{ marginTop: "12px" }}>
+      <div style={{
+        display: "grid", gridTemplateColumns: "24px 1fr 100px 80px 110px",
+        padding: "12px 16px", gap: "10px", alignItems: "center",
+      }}>
+        <span />
+        <span style={{ ...hdrStyle }}>Occupation</span>
+        <span style={{ ...hdrStyle, textAlign: "right" }}>Wage</span>
+        <span style={{ ...hdrStyle, textAlign: "right" }}>Openings</span>
+        <span style={{ ...hdrStyle, textAlign: "right" }}>Growth</span>
+      </div>
+      {items.map((occ, i) => {
+        const isOpen = expanded.has(occ.title);
+        return (
+          <div key={occ.title}>
+            <motion.button
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.2, delay: Math.min(i * 0.01, 0.2) }}
+              onClick={() => setExpanded(prev => {
+                const next = new Set(prev);
+                isOpen ? next.delete(occ.title) : next.add(occ.title);
+                return next;
+              })}
+              style={{
+                width: "100%", textAlign: "left",
+                display: "grid", gridTemplateColumns: "24px 1fr 100px 80px 110px",
+                padding: "12px 16px", gap: "10px", alignItems: "center",
+                background: isOpen ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
+                border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
+                cursor: "pointer", transition: "background 0.15s",
+              }}
+              onMouseEnter={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)"; }}
+              onMouseLeave={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)"; }}
+            >
+              <Chevron open={isOpen} />
+              <span style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)", lineHeight: 1.4 }}>
+                {occ.title}
+              </span>
+              <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.5)", textAlign: "right" }}>
+                {occ.annual_wage ? `$${occ.annual_wage.toLocaleString()}` : "\u2014"}
+              </span>
+              <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.45)", textAlign: "right" }}>
+                {occ.annual_openings != null ? `${occ.annual_openings.toLocaleString()}/yr` : "\u2014"}
+              </span>
+              <span style={{
+                fontFamily: FONT, fontSize: "12px", fontWeight: 500, textAlign: "right",
+                color: occ.growth_rate != null ? (occ.growth_rate >= 0 ? "#4ade80" : "#f87171") : "rgba(255,255,255,0.25)",
+              }}>
+                {occ.growth_rate != null ? `${occ.growth_rate >= 0 ? "+" : ""}${(occ.growth_rate * 100).toFixed(1)}%` : "\u2014"}
+              </span>
+            </motion.button>
+            <AnimatePresence>
+              {isOpen && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }}
+                  style={{ overflow: "hidden", background: "rgba(255,255,255,0.02)" }}
+                >
+                  <div style={{ padding: "12px 20px 16px", display: "flex", gap: "24px" }}>
+                    {occ.employment != null && (
+                      <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.45)" }}>
+                        {occ.employment.toLocaleString()} employed regionally
+                      </span>
+                    )}
+                    {occ.soc_code && (
+                      <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.3)" }}>
+                        SOC {occ.soc_code}
+                      </span>
+                    )}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+/* ── Department Evidence (matches CoursesView departments) ─────────────── */
+
+function DepartmentEvidence({ items, brandColor }: { items: ApiDepartmentEvidence[]; brandColor: string }) {
+  const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  if (!items.length) return null;
+
+  const hdrStyle = {
+    fontFamily: FONT, fontSize: "10px", fontWeight: 600 as const, letterSpacing: "0.1em",
+    textTransform: "uppercase" as const, color: brandColor, opacity: 0.6,
+  };
+
+  return (
+    <div style={{ marginTop: "12px" }}>
+      <div style={{
+        display: "grid", gridTemplateColumns: "24px 1fr auto",
+        padding: "12px 16px", gap: "10px", alignItems: "center",
+      }}>
+        <span />
+        <span style={{ ...hdrStyle }}>Department</span>
+        <span style={{ ...hdrStyle, textAlign: "right" }}>Courses</span>
+      </div>
+      {items.map((dept, i) => {
+        const isOpen = expanded.has(dept.department);
+        return (
+          <div key={dept.department}>
+            <motion.button
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.2, delay: Math.min(i * 0.01, 0.2) }}
+              onClick={() => setExpanded(prev => {
+                const next = new Set(prev);
+                isOpen ? next.delete(dept.department) : next.add(dept.department);
+                return next;
+              })}
+              style={{
+                width: "100%", textAlign: "left",
+                display: "grid", gridTemplateColumns: "24px 1fr auto",
+                padding: "12px 16px", gap: "10px", alignItems: "center",
+                background: isOpen ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
+                border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
+                cursor: "pointer", transition: "background 0.15s",
+              }}
+              onMouseEnter={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)"; }}
+              onMouseLeave={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)"; }}
+            >
+              <Chevron open={isOpen} />
+              <span style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>
+                {dept.department}
+              </span>
+              <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)" }}>
+                {dept.course_count} course{dept.course_count !== 1 ? "s" : ""}
+              </span>
+            </motion.button>
+            <AnimatePresence>
+              {isOpen && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }}
+                  style={{ overflow: "hidden", background: "rgba(255,255,255,0.02)" }}
+                >
+                  <div style={{ padding: "12px 20px 16px", display: "flex", flexWrap: "wrap", gap: "6px" }}>
+                    {dept.aligned_skills.map(skill => (
+                      <SkillBadge key={skill} skill={skill} brandColor={brandColor} />
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+/* ── Student Evidence (compact stats) ──────────────────────────────────── */
+
+function StudentEvidence({ data, brandColor }: { data: ApiStudentEvidence; brandColor: string }) {
+  return (
+    <div style={{
+      marginTop: "12px", padding: "16px 16px",
+      background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.05)",
+    }}>
+      <div style={{ display: "flex", gap: "24px", alignItems: "baseline", flexWrap: "wrap", marginBottom: data.top_skills.length > 0 ? "12px" : 0 }}>
+        <div>
+          <span style={{ fontFamily: FONT, fontSize: "16px", fontWeight: 600, color: "rgba(255,255,255,0.85)" }}>
+            {data.total_students.toLocaleString()}
+          </span>
+          <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.4)", marginLeft: "6px" }}>
+            students
+          </span>
+        </div>
+        <div>
+          <span style={{ fontFamily: FONT, fontSize: "16px", fontWeight: 600, color: "rgba(255,255,255,0.85)" }}>
+            {data.students_with_3plus_courses.toLocaleString()}
+          </span>
+          <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.4)", marginLeft: "6px" }}>
+            with 3+ courses
+          </span>
+        </div>
+      </div>
+      {data.top_skills.length > 0 && (
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+          {data.top_skills.map(skill => (
+            <SkillBadge key={skill} skill={skill} brandColor={brandColor} />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ── Main ProposalCard ─────────────────────────────────────────────────── */
+
 export default function ProposalCard({ proposal, brandColor, onDismiss, onReject, onRefine, collegeId, engagementType, onSaved }: Props) {
   const [state, setState] = useState<CardState>("default");
   const [savedId, setSavedId] = useState<string | null>(null);
@@ -196,7 +294,7 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
         border: "1px solid rgba(255,255,255,0.08)", borderRadius: "8px", position: "relative",
       }}>
 
-        {/* Header: employer + partnership type */}
+        {/* Header */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>
           <h3 style={{ fontFamily: FONT, fontSize: "17px", fontWeight: 600, color: "rgba(255,255,255,0.9)", letterSpacing: "-0.01em", lineHeight: 1.3, margin: 0 }}>
             {proposal.employer}
@@ -216,7 +314,7 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
           <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.7)", lineHeight: 1.65, margin: 0 }}>
             {proposal.opportunity}
           </p>
-          <OccupationEvidenceGrid items={proposal.opportunity_evidence} />
+          <OccupationEvidence items={proposal.opportunity_evidence} brandColor={brandColor} />
         </div>
 
         {/* ── Curriculum Alignment ── */}
@@ -225,7 +323,7 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
           <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.65)", lineHeight: 1.65, margin: 0 }}>
             {proposal.justification.curriculum_composition}
           </p>
-          <DepartmentEvidenceList items={proposal.justification.curriculum_evidence} />
+          <DepartmentEvidence items={proposal.justification.curriculum_evidence} brandColor={brandColor} />
         </div>
 
         {/* ── Student Pipeline ── */}
@@ -234,7 +332,7 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
           <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.65)", lineHeight: 1.65, margin: 0 }}>
             {proposal.justification.student_composition}
           </p>
-          <StudentEvidenceBar data={proposal.justification.student_evidence} />
+          <StudentEvidence data={proposal.justification.student_evidence} brandColor={brandColor} />
         </div>
 
         {/* ── Roadmap ── */}
