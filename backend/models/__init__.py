@@ -55,6 +55,7 @@ class CourseSummary(BaseModel):
 
 
 class StudentEnrollment(BaseModel):
+    course_code: str = ""
     course_name: str
     department: str
     grade: str
@@ -244,7 +245,9 @@ class OccupationEvidence(BaseModel):
 class CourseEvidence(BaseModel):
     code: str
     name: str
-    skills: list[str]
+    description: str = ""
+    learning_outcomes: list[str] = []
+    skills: list[str] = []
 
 
 class DepartmentEvidence(BaseModel):
@@ -263,8 +266,8 @@ class StudentSummaryEvidence(BaseModel):
 
 
 class StudentEvidence(BaseModel):
-    total_students: int
-    students_with_3plus_courses: int
+    total_in_program: int
+    with_all_core_skills: int
     top_students: list[StudentSummaryEvidence]
 
 
@@ -281,6 +284,8 @@ class NarrativeProposal(BaseModel):
     partnership_type: str
     selected_occupation: str
     selected_soc_code: Optional[str] = None
+    core_skills: list[str] = []
+    regions: list[str] = []
     opportunity: str
     opportunity_evidence: list[OccupationEvidence]
     justification: ProposalJustification

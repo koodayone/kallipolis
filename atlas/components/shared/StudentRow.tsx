@@ -32,6 +32,7 @@ export type StudentData = {
 
 export type StudentDetailData = {
   enrollments: Array<{
+    courseCode?: string;
     courseName: string;
     department: string;
     grade: string;
@@ -72,7 +73,7 @@ export default function StudentRow({ student, index, brandColor, isOpen: control
   };
 
   return (
-    <div>
+    <div style={{ overflowX: "auto" }}>
       <motion.button
         initial={hasMounted.current ? false : { opacity: 0, y: 6 }}
         animate={{ opacity: 1, y: 0 }}
@@ -80,7 +81,7 @@ export default function StudentRow({ student, index, brandColor, isOpen: control
         onClick={handleClick}
         style={{
           width: "100%", textAlign: "left",
-          display: "grid", gridTemplateColumns: "24px 110px 1fr 90px 60px",
+          display: "grid", gridTemplateColumns: "24px 110px 1fr 90px 60px", minWidth: "500px",
           padding: "12px 16px", gap: "10px", alignItems: "center",
           background: isOpen ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
           border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
@@ -116,7 +117,7 @@ export default function StudentRow({ student, index, brandColor, isOpen: control
             transition={{ duration: 0.25 }}
             style={{ overflow: "hidden", background: "rgba(255,255,255,0.02)" }}
           >
-            <div style={{ padding: "16px 20px 24px" }}>
+            <div style={{ padding: "16px 20px 24px", overflowX: "auto" }}>
               {isLoading && <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Loading...</p>}
               {detail && (
                 <>
@@ -136,18 +137,18 @@ export default function StudentRow({ student, index, brandColor, isOpen: control
                     ))}
                   </div>
                   {tab === "history" && (
-                    <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
                       {detail.enrollments.map((e, ei) => (
                         <div key={ei} style={{
-                          display: "grid", gridTemplateColumns: "2fr 1fr 50px 80px 80px",
-                          padding: "8px 12px", gap: "8px", alignItems: "center",
+                          display: "flex", alignItems: "baseline",
+                          padding: "6px 12px",
                           background: "rgba(255,255,255,0.02)", borderRadius: "4px",
+                          gap: "8px",
                         }}>
-                          <span style={{ fontFamily: FONT, fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.75)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{e.courseName}</span>
-                          <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.4)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{e.department}</span>
-                          <span style={{ fontFamily: FONT, fontSize: "12px", fontWeight: 700, color: GRADE_COLORS[e.grade] ?? "rgba(255,255,255,0.5)" }}>{e.grade}</span>
-                          <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.4)" }}>{e.term}</span>
-                          <span style={{ fontFamily: FONT, fontSize: "11px", color: e.status === "Withdrawn" ? "rgba(248,113,113,0.7)" : "rgba(255,255,255,0.4)" }}>{e.status}</span>
+                          {e.courseCode && <span style={{ fontFamily: FONT, fontSize: "11px", fontWeight: 600, color: brandColor, flexShrink: 0 }}>{e.courseCode}</span>}
+                          <span style={{ fontFamily: FONT, fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.7)", flex: 1 }}>{e.courseName}</span>
+                          <span style={{ fontFamily: FONT, fontSize: "12px", fontWeight: 700, color: GRADE_COLORS[e.grade] ?? "rgba(255,255,255,0.5)", flexShrink: 0 }}>{e.grade}</span>
+                          <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.35)", flexShrink: 0, width: "80px", textAlign: "right" }}>{e.term}</span>
                         </div>
                       ))}
                     </div>

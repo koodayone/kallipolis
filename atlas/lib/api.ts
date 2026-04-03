@@ -95,6 +95,7 @@ export type ApiStudentSummary = {
 };
 
 export type ApiStudentEnrollment = {
+  course_code: string;
   course_name: string;
   department: string;
   grade: string;
@@ -394,6 +395,8 @@ export type ApiOccupationEvidence = {
 export type ApiCourseEvidence = {
   code: string;
   name: string;
+  description: string;
+  learning_outcomes: string[];
   skills: string[];
 };
 
@@ -413,8 +416,8 @@ export type ApiStudentSummaryEvidence = {
 };
 
 export type ApiStudentEvidence = {
-  total_students: number;
-  students_with_3plus_courses: number;
+  total_in_program: number;
+  with_all_core_skills: number;
   top_students: ApiStudentSummaryEvidence[];
 };
 
@@ -431,6 +434,8 @@ export type ApiTargetedProposal = {
   partnership_type: string;
   selected_occupation: string;
   selected_soc_code: string | null;
+  core_skills: string[];
+  regions: string[];
   opportunity: string;
   opportunity_evidence: ApiOccupationEvidence[];
   justification: ApiProposalJustification;

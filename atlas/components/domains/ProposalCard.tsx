@@ -2,8 +2,8 @@
 
 import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
-import type { ApiTargetedProposal, ApiStudentDetail } from "@/lib/api";
-import { getStudent } from "@/lib/api";
+import type { ApiTargetedProposal } from "@/lib/api";
+import { getStudent, getOccupationDetail } from "@/lib/api";
 import { saveProposal, removeProposal, updateProposalStatus, type SavedProposal } from "@/lib/savedProposals";
 import OccupationRow from "@/components/shared/OccupationRow";
 import DepartmentRow from "@/components/shared/DepartmentRow";
@@ -57,6 +57,20 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
   const [state, setState] = useState<CardState>("default");
   const [savedId, setSavedId] = useState<string | null>(null);
 
+  // Occupation detail loading for expand
+  const [occDetails, setOccDetails] = useState<Record<string, any>>({});
+  const [loadingOccs, setLoadingOccs] = useState<Set<string>>(new Set());
+
+  const handleOccExpand = useCallback(async (socCode: string) => {
+    if (occDetails[socCode] || !collegeId || !socCode) return;
+    setLoadingOccs(prev => new Set(prev).add(socCode));
+    try {
+      const detail = await getOccupationDetail(socCode, collegeId);
+      setOccDetails(prev => ({ ...prev, [socCode]: detail }));
+    } catch {}
+    finally { setLoadingOccs(prev => { const next = new Set(prev); next.delete(socCode); return next; }); }
+  }, [occDetails, collegeId]);
+
   // Student detail loading for expand
   const [studentDetails, setStudentDetails] = useState<Record<string, any>>({});
   const [loadingStudents, setLoadingStudents] = useState<Set<string>>(new Set());
@@ -70,8 +84,8 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
         ...prev,
         [uuid]: {
           enrollments: detail.enrollments.map((e: any) => ({
-            courseName: e.course_name, department: e.department,
-            grade: e.grade, term: e.term, status: e.status,
+            courseCode: e.course_code, courseName: e.course_name,
+            department: e.department, grade: e.grade, term: e.term, status: e.status,
           })),
           skills: detail.skills,
         },
@@ -124,7 +138,18 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
               brandColor={brandColor}
             />
             {proposal.opportunity_evidence.map((occ, i) => (
-              <OccupationRow key={occ.title} occ={occ} index={i} brandColor={brandColor} />
+              <OccupationRow
+                key={occ.title}
+                occ={occ}
+                index={i}
+                brandColor={brandColor}
+                detail={occ.soc_code ? occDetails[occ.soc_code] ?? null : null}
+                isLoading={occ.soc_code ? loadingOccs.has(occ.soc_code) : false}
+                onExpand={occ.soc_code ? () => handleOccExpand(occ.soc_code!) : undefined}
+                filterSkills={proposal.core_skills}
+                regionNames={proposal.regions}
+                collegeName={collegeId}
+              />
             ))}
           </div>
         </div>
@@ -151,7 +176,10 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
                 courseCount={dept.courses.length}
                 index={i}
                 brandColor={brandColor}
-                courses={dept.courses}
+                courses={dept.courses.map(c => ({
+                  code: c.code, name: c.name, description: c.description,
+                  learningOutcomes: c.learning_outcomes, skillMappings: c.skills,
+                }))}
               />
             ))}
           </div>
@@ -168,29 +196,25 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
             marginTop: "12px",
             background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.05)",
           }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1px 1fr", padding: "16px 0" }}>
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-                <span style={{ fontFamily: FONT, fontSize: "20px", fontWeight: 600, color: "rgba(255,255,255,0.85)" }}>
-                  {proposal.justification.student_evidence.total_students.toLocaleString()}
-                </span>
-                <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>
-                  Students in Pipeline
-                </span>
-              </div>
-              <div style={{ background: "rgba(255,255,255,0.08)" }} />
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-                <span style={{ fontFamily: FONT, fontSize: "20px", fontWeight: 600, color: "rgba(255,255,255,0.85)" }}>
-                  {proposal.justification.student_evidence.students_with_3plus_courses.toLocaleString()}
-                </span>
-                <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>
-                  With 3+ Courses
-                </span>
-              </div>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px", padding: "16px 0" }}>
+              <span style={{ fontFamily: FONT, fontSize: "20px", fontWeight: 600, color: "rgba(255,255,255,0.85)" }}>
+                {proposal.justification.student_evidence.total_in_program.toLocaleString()}
+              </span>
+              <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>
+                Students in Aligned Programs
+              </span>
             </div>
           </div>
           {/* Top compatible students */}
           {proposal.justification.student_evidence.top_students.length > 0 && (
             <div style={{ marginTop: "12px" }}>
+              <span style={{
+                fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em",
+                textTransform: "uppercase", color: "rgba(255,255,255,0.25)",
+                display: "block", marginBottom: "8px", paddingLeft: "16px",
+              }}>
+                Top 10 Candidates
+              </span>
               <ColumnHeaders
                 columns={[
                   { label: "Student", width: "110px" },

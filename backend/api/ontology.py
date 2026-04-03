@@ -100,6 +100,7 @@ def get_student(student_uuid: str, college: str):
             result = session.run("""
                 MATCH (s:Student {uuid: $uuid})-[e:ENROLLED_IN]->(c:Course {college: $college})
                 RETURN s.uuid AS uuid,
+                       c.code AS course_code,
                        c.name AS course_name,
                        c.department AS department,
                        c.skill_mappings AS skill_mappings,
@@ -120,6 +121,7 @@ def get_student(student_uuid: str, college: str):
 
         for r in records:
             enrollments.append(StudentEnrollment(
+                course_code=r["course_code"] or "",
                 course_name=r["course_name"],
                 department=r["department"] or "Unknown",
                 grade=r["grade"],

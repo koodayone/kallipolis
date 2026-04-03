@@ -341,6 +341,7 @@ export default function PartnershipsView({ school, onBack }: Props) {
                                   <ProposalCard
                                     proposal={p}
                                     brandColor={school.brandColorLight}
+                                    collegeId={school.name}
                                     onDismiss={() => {
                                       removeProposal(school.name, saved.id);
                                       setSavedProposals(getSavedProposals(school.name));

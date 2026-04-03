@@ -32,9 +32,10 @@ TYPE_LABELS = {
 @dataclass
 class GatheredContext:
     """Structured output from Neo4j context gathering."""
-    text: str                                  # Full text context (for signal filter)
+    text: str                                  # Full text context
     occupation_evidence: list[dict] = field(default_factory=list)
     student_evidence: dict = field(default_factory=dict)
+    regions: list[str] = field(default_factory=list)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -210,6 +211,7 @@ def _gather_targeted_context(employer: str, college: str, engagement_type: str =
         text="\n".join(lines),
         occupation_evidence=occupation_evidence,
         student_evidence=student_evidence,
+        regions=emp_result["regions"] if emp_result else [],
     )
 
 
@@ -217,140 +219,90 @@ def _gather_targeted_context(employer: str, college: str, engagement_type: str =
 # Stage 2: Signal Filter
 # ═══════════════════════════════════════════════════════════════════════════
 
-_SIGNAL_FILTER_PROMPT = """You are evaluating employer-occupation associations and skill-to-course alignment data for a community college partnership proposal.
+_OCCUPATION_SELECTION_PROMPT = """You are selecting the primary hiring occupation for a community college partnership proposal.
 
-Here is the raw alignment data:
+Given this employer data:
 
 {context}
 
-STEP 1 — OCCUPATION SELECTION:
-Examine the employer's name, sector, and description. Select the ONE occupation from the data that most credibly represents this employer's primary hiring need — the role this specific employer would hire in volume. A plumbing company primarily hires plumbers. A hospital primarily hires nurses. A food manufacturer primarily hires food science technicians. Do not select generic management or administrative roles unless the employer is specifically a management consulting or staffing firm.
+Select the ONE occupation that most credibly represents this employer's primary hiring need — the role they would hire in volume. A plumbing company hires plumbers. A hospital hires nurses. A food manufacturer hires food science technicians. Do not select generic management or administrative roles unless the employer is specifically a management consulting or staffing firm.
 
-STEP 2 — ALIGNMENT FILTERING:
-For the selected occupation only, evaluate each skill-to-course mapping. A mapping is CREDIBLE when the course content directly and obviously relates to the skill. A mapping is NOT CREDIBLE when the connection is incidental, metaphorical, or based on surface-level word overlap.
+Then identify the 3 skills most central to the day-to-day work of that occupation. These should be the skills that define the role — not generic skills like Record Keeping or Professional Ethics that any job requires. For an HVAC mechanic: HVAC Systems, Refrigeration, Plumbing. For a registered nurse: Patient Care, Clinical Documentation, Nursing Process. Choose only from the skills listed in the data.
 
-Return a JSON object:
-
-{{
-  "selected_occupation": {{"title": "...", "soc_code": "..."}},
-  "retained": [
-    {{"skill": "...", "course_code": "...", "course_name": "...", "department": "...", "occupation": "...", "strength": "strong|moderate"}}
-  ],
-  "removed": [
-    {{"skill": "...", "course_code": "...", "reason": "brief explanation"}}
-  ]
-}}
-
-Rules:
-- Only retain alignments for the selected occupation's required skills.
-- Be selective. It is better to retain 8 genuinely strong alignments than 20 where half are dubious.
-- "strong" means direct occupational relevance. "moderate" means transferable skill with a reasonable connection.
-- Return ONLY valid JSON with no text before or after."""
+Return ONLY this JSON with no other text:
+{{"selected_occupation": {{"title": "...", "soc_code": "...", "core_skills": ["...", "...", "..."]}}}}"""
 
 
-def _filter_context_signals(raw_context: str) -> tuple[str, list[dict], dict]:
-    """Filter raw context: select primary occupation, retain credible alignments.
-
-    Returns (curated_context_text, retained_alignments, selected_occupation).
-    """
+def _select_occupation(raw_context: str) -> dict:
+    """Select the primary occupation for this employer. Returns {title, soc_code}."""
     client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
     message = client.messages.create(
         model="claude-sonnet-4-6",
-        max_tokens=4096,
-        messages=[{"role": "user", "content": _SIGNAL_FILTER_PROMPT.format(context=raw_context)}],
+        max_tokens=256,
+        messages=[{"role": "user", "content": _OCCUPATION_SELECTION_PROMPT.format(context=raw_context)}],
     )
     raw_response = message.content[0].text
 
     try:
-        filter_result = _extract_json(raw_response)
+        result = _extract_json(raw_response)
+        selected = result.get("selected_occupation", {})
+        logger.info(f"Occupation selected: {selected.get('title', '?')} ({selected.get('soc_code', '?')})")
+        return selected
     except (json.JSONDecodeError, ValueError) as e:
-        logger.warning(f"Signal filter returned invalid JSON ({e}), falling back to raw context")
-        return raw_context, [], {}
-
-    selected_occ = filter_result.get("selected_occupation", {})
-    retained = filter_result.get("retained", [])
-    removed = filter_result.get("removed", [])
-
-    logger.info(f"Signal filter: selected '{selected_occ.get('title', '?')}', {len(retained)} retained, {len(removed)} removed")
-    for r in removed[:10]:
-        logger.info(f"  Removed: {r.get('skill')} → {r.get('course_code')} ({r.get('reason', '')})")
-
-    if not retained:
-        logger.warning("Signal filter removed ALL alignments, falling back to raw context")
-        return raw_context, [], selected_occ
-
-    curated_text = _build_curated_context(raw_context, retained)
-    return curated_text, retained, selected_occ
-
-
-def _build_curated_context(raw_context: str, retained: list[dict]) -> str:
-    """Reconstruct context string with only retained alignments."""
-    lines = []
-
-    sections = raw_context.split("\n\n")
-    for section in sections:
-        stripped = section.strip()
-        if stripped.startswith("EMPLOYER:") or stripped.startswith("College:"):
-            lines.append(section)
-        elif stripped.startswith("STUDENT PIPELINE:"):
-            lines.append(section)
-        elif stripped.startswith("ECONOMIC DATA"):
-            lines.append(section)
-        elif stripped.startswith("PARTNERSHIP ENGAGEMENT TYPE:"):
-            lines.append(section)
-
-    occ_groups: dict[str, list[dict]] = defaultdict(list)
-    for entry in retained:
-        occ_groups[entry.get("occupation", "Unknown")].append(entry)
-
-    lines.append("")
-    lines.append("CURATED SKILL ALIGNMENT BY OCCUPATION (pre-vetted for credibility):")
-    for occ, entries in occ_groups.items():
-        lines.append(f"\n  {occ}:")
-        for e in entries:
-            strength_tag = f" [{e.get('strength', 'moderate')}]" if e.get("strength") else ""
-            lines.append(
-                f"    - {e['skill']} → {e['course_code']} {e['course_name']} ({e['department']}){strength_tag}"
-            )
-
-    return "\n".join(lines)
+        logger.warning(f"Occupation selection returned invalid JSON ({e})")
+        return {}
 
 
 # ═══════════════════════════════════════════════════════════════════════════
-# Department Aggregation
+# Deterministic Curriculum Query
 # ═══════════════════════════════════════════════════════════════════════════
 
 
-def _aggregate_departments(retained: list[dict]) -> tuple[str, list[dict]]:
-    """Aggregate retained course-level alignments to department level.
+def _gather_aligned_curriculum(college: str, core_skills: list[str]) -> tuple[str, list[dict]]:
+    """Fetch departments and courses that develop the core skills for the selected occupation.
 
     Returns (dept_text_for_prompt, curriculum_evidence_list).
     """
-    dept_agg: dict[str, dict] = defaultdict(lambda: {"skills": set(), "courses": {}})
-    for entry in retained:
-        dept = entry.get("department", "Unknown")
-        dept_agg[dept]["skills"].add(entry["skill"])
-        code = entry["course_code"]
-        if code not in dept_agg[dept]["courses"]:
-            dept_agg[dept]["courses"][code] = {"code": code, "name": entry["course_name"], "skills": set()}
-        dept_agg[dept]["courses"][code]["skills"].add(entry["skill"])
+    driver = get_driver()
+    with driver.session() as session:
+        result = session.run("""
+            MATCH (sk:Skill)<-[:DEVELOPS]-(c:Course {college: $college})
+                  <-[:CONTAINS]-(dept:Department)
+            WHERE sk.name IN $core_skills
+            RETURN dept.name AS department, c.code AS code, c.name AS name,
+                   c.description AS description,
+                   c.learning_outcomes AS learning_outcomes,
+                   c.course_objectives AS course_objectives,
+                   c.skill_mappings AS skill_mappings,
+                   collect(DISTINCT sk.name) AS aligned_skills
+            ORDER BY dept.name, c.code
+        """, core_skills=core_skills, college=college).data()
 
-    # Build text block for the narrative prompt
-    lines = ["DEPARTMENT-LEVEL CURRICULUM ALIGNMENT (aggregated from vetted course-level data):"]
+    # Group by department
+    dept_agg: dict[str, dict] = defaultdict(lambda: {"courses": [], "skills": set()})
+    for r in result:
+        dept = r["department"]
+        dept_agg[dept]["courses"].append({
+            "code": r["code"],
+            "name": r["name"],
+            "description": r["description"] or "",
+            "learning_outcomes": r["learning_outcomes"] or [],
+            "skills": r["aligned_skills"],
+        })
+        dept_agg[dept]["skills"].update(r["aligned_skills"])
+
+    # Build text block for narrative prompt
+    lines = ["DEPARTMENT-LEVEL CURRICULUM ALIGNMENT:"]
     for dept, data in sorted(dept_agg.items(), key=lambda x: len(x[1]["skills"]), reverse=True):
         skills_str = ", ".join(sorted(data["skills"]))
         lines.append(f"  {dept}: develops {skills_str} (across {len(data['courses'])} courses)")
-
     dept_text = "\n".join(lines)
 
-    # Build curriculum_evidence for deterministic output
+    # Build curriculum_evidence
     curriculum_evidence = [
         {
             "department": dept,
-            "courses": [
-                {"code": c["code"], "name": c["name"], "skills": sorted(c["skills"])}
-                for c in data["courses"].values()
-            ],
+            "courses": data["courses"],
             "aligned_skills": sorted(data["skills"]),
         }
         for dept, data in sorted(dept_agg.items(), key=lambda x: len(x[1]["skills"]), reverse=True)
@@ -389,37 +341,64 @@ def _build_narrative_context(gathered: GatheredContext, dept_text: str, selected
     return "\n\n".join(lines)
 
 
-def _gather_top_students(college: str, selected_occ_title: str) -> list[dict]:
-    """Fetch top 10 students most compatible with the selected occupation."""
+def _gather_top_students(college: str, departments: list[str], core_skills: list[str]) -> tuple[dict, list[dict]]:
+    """Fetch student pipeline stats and top 10 candidates by primary_focus match.
+
+    Returns (student_stats, top_students_list).
+    student_stats: {total_in_program, with_all_core_skills}
+    """
     driver = get_driver()
+    num_core = len(core_skills)
+
     with driver.session() as session:
-        result = session.run("""
-            MATCH (occ:Occupation {title: $occupation})-[:REQUIRES_SKILL]->(sk:Skill)
-                  <-[:HAS_SKILL]-(st:Student)
+        # Aggregate stats: students whose primary_focus matches aligned departments
+        stats = session.run("""
+            MATCH (st:Student)
             WHERE EXISTS { (st)-[:ENROLLED_IN]->(:Course {college: $college}) }
-            WITH st, count(DISTINCT sk) AS matching_skills
+              AND ANY(dept IN $departments WHERE st.primary_focus CONTAINS dept
+                 OR dept CONTAINS st.primary_focus)
+            WITH st
+            OPTIONAL MATCH (st)-[:HAS_SKILL]->(sk:Skill)
+            WHERE sk.name IN $core_skills
+            WITH st, count(DISTINCT sk) AS core_count
+            RETURN count(st) AS total_in_program,
+                   sum(CASE WHEN core_count = $num_core THEN 1 ELSE 0 END) AS with_all_core_skills
+        """, college=college, departments=departments, core_skills=core_skills, num_core=num_core).single()
+
+        student_stats = {
+            "total_in_program": stats["total_in_program"] if stats else 0,
+            "with_all_core_skills": stats["with_all_core_skills"] if stats else 0,
+        }
+
+        # Top 10 candidates by primary_focus match, sorted by GPA
+        result = session.run("""
+            MATCH (st:Student)
+            WHERE EXISTS { (st)-[:ENROLLED_IN]->(:Course {college: $college}) }
+              AND ANY(dept IN $departments WHERE st.primary_focus CONTAINS dept
+                 OR dept CONTAINS st.primary_focus)
             OPTIONAL MATCH (st)-[e:ENROLLED_IN]->(c:Course {college: $college})
             WHERE e.grade IN ['A','B','C','P']
-            WITH st, matching_skills, count(DISTINCT c) AS completed
-            ORDER BY matching_skills DESC, completed DESC
+            WITH st, count(DISTINCT c) AS completed
+            ORDER BY st.gpa DESC, completed DESC
             LIMIT 10
             RETURN st.uuid AS uuid, st.primary_focus AS primary_focus,
                    completed AS courses_completed,
-                   COALESCE(st.gpa, 0.0) AS gpa,
-                   matching_skills
-        """, occupation=selected_occ_title, college=college).data()
+                   COALESCE(st.gpa, 0.0) AS gpa
+        """, college=college, departments=departments).data()
 
-    return [
+    top_students = [
         {
             "uuid": r["uuid"],
             "display_number": i + 1,
             "primary_focus": r["primary_focus"] or "",
             "courses_completed": r["courses_completed"],
             "gpa": round(r["gpa"], 2),
-            "matching_skills": r["matching_skills"],
+            "matching_skills": 0,
         }
         for i, r in enumerate(result)
     ]
+
+    return student_stats, top_students
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -597,6 +576,7 @@ def _assemble_proposal(
     gathered: GatheredContext,
     curriculum_evidence: list[dict],
     selected_occ: dict,
+    student_stats: dict,
     top_students: list[dict],
 ) -> NarrativeProposal:
     """Merge LLM-generated narrative with deterministic evidence blocks."""
@@ -606,6 +586,8 @@ def _assemble_proposal(
         partnership_type=partnership_type,
         selected_occupation=selected_occ.get("title", ""),
         selected_soc_code=selected_occ.get("soc_code"),
+        core_skills=selected_occ.get("core_skills", []),
+        regions=gathered.regions,
         opportunity=narrative["opportunity"],
         opportunity_evidence=[
             OccupationEvidence(**o) for o in gathered.occupation_evidence
@@ -616,8 +598,8 @@ def _assemble_proposal(
             curriculum_evidence=[DepartmentEvidence(**d) for d in curriculum_evidence],
             student_composition=narrative["justification"]["student_composition"],
             student_evidence=StudentEvidence(
-                total_students=gathered.student_evidence.get("total_students", 0),
-                students_with_3plus_courses=gathered.student_evidence.get("students_with_3plus_courses", 0),
+                total_in_program=student_stats.get("total_in_program", 0),
+                with_all_core_skills=student_stats.get("with_all_core_skills", 0),
                 top_students=[StudentSummaryEvidence(**s) for s in top_students],
             ),
         ),
@@ -726,11 +708,13 @@ async def run_targeted_proposal(employer: str, college: str, engagement_type: st
     gathered = _gather_targeted_context(employer, college, engagement_type)
     logger.info(f"Stage 1 complete: gathered context for {employer}")
 
-    curated_text, retained, selected_occ = _filter_context_signals(gathered.text)
+    selected_occ = _select_occupation(gathered.text)
     logger.info(f"Stage 2 complete: selected '{selected_occ.get('title', '?')}' for {employer}")
 
-    top_students = _gather_top_students(college, selected_occ.get("title", ""))
-    dept_text, curriculum_evidence = _aggregate_departments(retained)
+    core_skills = selected_occ.get("core_skills", [])
+    dept_text, curriculum_evidence = _gather_aligned_curriculum(college, core_skills)
+    aligned_depts = [d["department"] for d in curriculum_evidence]
+    student_stats, top_students = _gather_top_students(college, aligned_depts, core_skills)
     narrative_context = _build_narrative_context(gathered, dept_text, selected_occ)
 
     prompt_text = _get_prompt(engagement_type, narrative_context)
@@ -739,9 +723,9 @@ async def run_targeted_proposal(employer: str, college: str, engagement_type: st
 
     narrative = _parse_narrative_fields(raw)
     partnership_type = TYPE_LABELS.get(engagement_type, engagement_type)
-    proposal = _assemble_proposal(narrative, employer, sector, partnership_type, gathered, curriculum_evidence, selected_occ, top_students)
+    proposal = _assemble_proposal(narrative, employer, sector, partnership_type, gathered, curriculum_evidence, selected_occ, student_stats, top_students)
 
-    _evaluate_proposal(proposal, curated_text)
+    _evaluate_proposal(proposal, narrative_context)
     logger.info(f"Proposal complete for {employer}.")
     return proposal
 
@@ -752,11 +736,13 @@ def stream_targeted_proposal(employer: str, college: str, engagement_type: str =
     gathered = _gather_targeted_context(employer, college, engagement_type)
     logger.info(f"Stage 1 complete: gathered context for {employer}")
 
-    curated_text, retained, selected_occ = _filter_context_signals(gathered.text)
+    selected_occ = _select_occupation(gathered.text)
     logger.info(f"Stage 2 complete: selected '{selected_occ.get('title', '?')}' for {employer}")
 
-    top_students = _gather_top_students(college, selected_occ.get("title", ""))
-    dept_text, curriculum_evidence = _aggregate_departments(retained)
+    core_skills = selected_occ.get("core_skills", [])
+    dept_text, curriculum_evidence = _gather_aligned_curriculum(college, core_skills)
+    aligned_depts = [d["department"] for d in curriculum_evidence]
+    student_stats, top_students = _gather_top_students(college, aligned_depts, core_skills)
     narrative_context = _build_narrative_context(gathered, dept_text, selected_occ)
 
     prompt_text = _get_prompt(engagement_type, narrative_context)
@@ -775,8 +761,8 @@ def stream_targeted_proposal(employer: str, college: str, engagement_type: str =
 
     narrative = _parse_narrative_fields(accumulated)
     partnership_type = TYPE_LABELS.get(engagement_type, engagement_type)
-    proposal = _assemble_proposal(narrative, employer, sector, partnership_type, gathered, curriculum_evidence, selected_occ, top_students)
+    proposal = _assemble_proposal(narrative, employer, sector, partnership_type, gathered, curriculum_evidence, selected_occ, student_stats, top_students)
 
-    _evaluate_proposal(proposal, curated_text)
+    _evaluate_proposal(proposal, narrative_context)
     logger.info(f"Stream complete: proposal for {employer}")
     yield proposal
