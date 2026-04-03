@@ -96,22 +96,33 @@ def _gather_targeted_context(employer: str, college: str, engagement_type: str =
 # Stage 2: Signal Filter
 # ═══════════════════════════════════════════════════════════════════════════
 
-_OCCUPATION_SELECTION_PROMPT = """You are selecting the primary hiring occupation for a community college partnership proposal.
-
-Given this employer data:
+_OCCUPATION_SELECTION_PROMPT = """Select the primary hiring occupation for this employer. Return ONLY the JSON below — no reasoning, no explanation, no other text.
 
 {context}
 
-Select the ONE occupation that most credibly represents this employer's primary hiring need — the role they would hire in volume. A plumbing company hires plumbers. A hospital hires nurses. A food manufacturer hires food science technicians. Do not select generic management or administrative roles unless the employer is specifically a management consulting or staffing firm.
+Rules:
+- Pick the ONE occupation this employer would hire in volume. A plumbing company hires plumbers. A hospital hires nurses. Not generic management or admin roles.
+- Pick 3 skills most central to the daily work of that role. Choose ONLY from the skills listed under that occupation. Not generic skills like Record Keeping or Professional Ethics.
 
-Then identify the 3 skills most central to the day-to-day work of that occupation. These should be the skills that define the role — not generic skills like Record Keeping or Professional Ethics that any job requires. For an HVAC mechanic: HVAC Systems, Refrigeration, Plumbing. For a registered nurse: Patient Care, Clinical Documentation, Nursing Process. Choose only from the skills listed in the data.
-
-Return ONLY this JSON with no other text:
 {{"selected_occupation": {{"title": "...", "soc_code": "...", "core_skills": ["...", "...", "..."]}}}}"""
 
 
 def _build_occupation_selection_context(gathered: GatheredContext) -> str:
-    """Build a concise context string for the occupation selection LLM call."""
+    """Build context string for the occupation selection LLM call, including skills per occupation."""
+    driver = get_driver()
+
+    # Fetch skills for each occupation
+    occ_skills: dict[str, list[str]] = {}
+    with driver.session() as session:
+        for occ in gathered.occupation_evidence:
+            title = occ["title"]
+            result = session.run("""
+                MATCH (occ:Occupation {title: $title})-[:REQUIRES_SKILL]->(sk:Skill)
+                RETURN sk.name AS skill
+                ORDER BY skill
+            """, title=title).data()
+            occ_skills[title] = [r["skill"] for r in result]
+
     lines = [
         f"EMPLOYER: {gathered.employer_name}",
         f"Sector: {gathered.sector}" if gathered.sector else None,
@@ -126,6 +137,9 @@ def _build_occupation_selection_context(gathered: GatheredContext) -> str:
         if occ.get("annual_openings"):
             parts.append(f"{occ['annual_openings']:,} openings/yr")
         lines.append(", ".join(parts))
+        skills = occ_skills.get(occ["title"], [])
+        if skills:
+            lines.append(f"    Skills: {', '.join(skills)}")
     return "\n".join(line for line in lines if line is not None)
 
 
@@ -135,7 +149,7 @@ def _select_occupation(gathered: GatheredContext) -> dict:
     client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
     message = client.messages.create(
         model="claude-sonnet-4-6",
-        max_tokens=256,
+        max_tokens=512,
         messages=[{"role": "user", "content": _OCCUPATION_SELECTION_PROMPT.format(context=context)}],
     )
     raw_response = message.content[0].text
@@ -499,6 +513,7 @@ def _assemble_proposal(
     selected_occ: dict,
     student_stats: dict,
     top_students: list[dict],
+    core_skills: list[str] | None = None,
 ) -> NarrativeProposal:
     """Merge LLM-generated narrative with deterministic evidence blocks."""
     return NarrativeProposal(
@@ -507,7 +522,7 @@ def _assemble_proposal(
         partnership_type=partnership_type,
         selected_occupation=selected_occ.get("title", ""),
         selected_soc_code=selected_occ.get("soc_code"),
-        core_skills=selected_occ.get("core_skills", []),
+        core_skills=core_skills or selected_occ.get("core_skills", []),
         regions=gathered.regions,
         opportunity=narrative["opportunity"],
         opportunity_evidence=[
@@ -632,7 +647,7 @@ async def run_targeted_proposal(employer: str, college: str, engagement_type: st
 
     narrative = _parse_narrative_fields(raw)
     partnership_type = TYPE_LABELS.get(engagement_type, engagement_type)
-    proposal = _assemble_proposal(narrative, employer, gathered.sector, partnership_type, gathered, curriculum_evidence, selected_occ, student_stats, top_students)
+    proposal = _assemble_proposal(narrative, employer, gathered.sector, partnership_type, gathered, curriculum_evidence, selected_occ, student_stats, top_students, core_skills)
 
     _evaluate_proposal(proposal, narrative_context)
     logger.info(f"Proposal complete for {employer}.")
@@ -669,7 +684,7 @@ def stream_targeted_proposal(employer: str, college: str, engagement_type: str =
 
     narrative = _parse_narrative_fields(accumulated)
     partnership_type = TYPE_LABELS.get(engagement_type, engagement_type)
-    proposal = _assemble_proposal(narrative, employer, gathered.sector, partnership_type, gathered, curriculum_evidence, selected_occ, student_stats, top_students)
+    proposal = _assemble_proposal(narrative, employer, gathered.sector, partnership_type, gathered, curriculum_evidence, selected_occ, student_stats, top_students, core_skills)
 
     _evaluate_proposal(proposal, narrative_context)
     logger.info(f"Stream complete: proposal for {employer}")
