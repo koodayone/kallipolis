@@ -218,7 +218,7 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
               <ColumnHeaders
                 columns={[
                   { label: "Student", width: "110px" },
-                  { label: "Focus", width: "1fr" },
+                  { label: "Primary Focus", width: "1fr" },
                   { label: "Courses", width: "90px" },
                   { label: "GPA", width: "60px" },
                 ]}
