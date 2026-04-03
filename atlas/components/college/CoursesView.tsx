@@ -9,6 +9,8 @@ import type { DepartmentSummary, CourseSummary } from "@/lib/curricula/types";
 import EntityScrollList from "@/components/ui/EntityScrollList";
 import type { Column } from "@/components/ui/EntityScrollList";
 import QueryShell, { findScrollParent } from "@/components/ui/QueryShell";
+import DepartmentRow from "@/components/shared/DepartmentRow";
+import ColumnHeaders from "@/components/shared/ColumnHeaders";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
@@ -113,8 +115,8 @@ export default function CoursesView({ school, onBack }: Props) {
       <DepartmentList
         departments={departments} school={school}
         expandedDepts={expandedDepts} deptCoursesMap={deptCoursesMap}
-        loadingDepts={loadingDepts} expandedCourses={expandedCourses}
-        onDeptExpand={handleDeptExpand} onCourseToggle={toggleCourse}
+        loadingDepts={loadingDepts}
+        onDeptExpand={handleDeptExpand}
       />
     </div>
   ), [departments, totalCourses, school, expandedDepts, deptCoursesMap, loadingDepts, expandedCourses, handleDeptExpand, toggleCourse]);
@@ -254,176 +256,35 @@ const CourseResultRow = memo(function CourseResultRow({ course, i, school, expan
 /* ── Department List ──────────────────────────────────────────────────── */
 
 function DepartmentList({
-  departments, school, expandedDepts, deptCoursesMap, loadingDepts, expandedCourses,
-  onDeptExpand, onCourseToggle,
+  departments, school, expandedDepts, deptCoursesMap, loadingDepts,
+  onDeptExpand,
 }: {
   departments: DepartmentSummary[];
   school: SchoolConfig;
   expandedDepts: Set<string>;
   deptCoursesMap: Record<string, CourseSummary[]>;
   loadingDepts: Set<string>;
-  expandedCourses: Set<string>;
   onDeptExpand: (dept: string) => void;
-  onCourseToggle: (code: string) => void;
 }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-      <div style={{
-        display: "grid", gridTemplateColumns: "24px 1fr auto",
-        padding: "8px 16px", gap: "12px", alignItems: "center",
-      }}>
-        <span />
-        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Department</span>
-        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Courses</span>
-      </div>
+      <ColumnHeaders
+        columns={[{ label: "Department", width: "1fr" }, { label: "Courses", width: "auto", align: "right" }]}
+        gridTemplateColumns="24px 1fr auto"
+        brandColor={school.brandColorLight}
+      />
       {departments.map((dept, i) => (
-        <div key={dept.department}>
-          <motion.button
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.2, delay: Math.min(i * 0.01, 0.2) }}
-            onClick={() => onDeptExpand(dept.department)}
-            style={{
-              width: "100%", textAlign: "left",
-              display: "grid", gridTemplateColumns: "24px 1fr auto",
-              padding: "14px 16px", gap: "12px", alignItems: "center",
-              background: expandedDepts.has(dept.department) ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
-              border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
-              cursor: "pointer", transition: "background 0.15s",
-            }}
-            onMouseEnter={(e) => { if (!expandedDepts.has(dept.department)) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)"; }}
-            onMouseLeave={(e) => { if (!expandedDepts.has(dept.department)) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)"; }}
-          >
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-              style={{ transform: expandedDepts.has(dept.department) ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>
-              <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            <span style={{ fontFamily: FONT, fontSize: "14px", fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>
-              {dept.department}
-            </span>
-            <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)" }}>
-              {dept.courseCount} {dept.courseCount === 1 ? "course" : "courses"}
-            </span>
-          </motion.button>
-
-          <AnimatePresence>
-            {expandedDepts.has(dept.department) && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: "auto", opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.25 }}
-                style={{ overflow: "hidden", background: "rgba(255,255,255,0.02)" }}
-              >
-                <div style={{ padding: "8px 16px 16px 52px" }}>
-                  {loadingDepts.has(dept.department) && (
-                    <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Loading courses...</p>
-                  )}
-                  {!loadingDepts.has(dept.department) && (deptCoursesMap[dept.department] || []).map((course) => {
-                    const isOpen = expandedCourses.has(course.code);
-                    return (
-                      <div key={course.code} style={{ marginBottom: "2px" }}>
-                        <button
-                          onClick={(e) => { e.stopPropagation(); onCourseToggle(course.code); }}
-                          style={{
-                            width: "100%", textAlign: "left",
-                            display: "flex", padding: "10px 12px", alignItems: "baseline", gap: "10px",
-                            background: isOpen ? "rgba(255,255,255,0.04)" : "transparent",
-                            border: "none", borderRadius: isOpen ? "6px 6px 0 0" : "6px",
-                            cursor: "pointer", transition: "background 0.15s",
-                          }}
-                          onMouseEnter={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)"; }}
-                          onMouseLeave={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "transparent"; }}
-                        >
-                          <span style={{ fontFamily: FONT, fontSize: "12px", fontWeight: 600, color: school.brandColorLight, flexShrink: 0 }}>
-                            {course.code}
-                          </span>
-                          <span style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.75)", flex: 1 }}>
-                            {course.name}
-                          </span>
-                          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                            style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s", flexShrink: 0 }}>
-                            <path d="M3 4.5l3 3 3-3" stroke="rgba(255,255,255,0.3)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                          </svg>
-                        </button>
-
-                        <AnimatePresence>
-                          {isOpen && (
-                            <motion.div
-                              initial={{ height: 0, opacity: 0 }}
-                              animate={{ height: "auto", opacity: 1 }}
-                              exit={{ height: 0, opacity: 0 }}
-                              transition={{ duration: 0.2 }}
-                              style={{ overflow: "hidden" }}
-                            >
-                              <div style={{
-                                padding: "16px 16px 20px",
-                                background: "rgba(255,255,255,0.03)",
-                                borderRadius: "0 0 6px 6px",
-                                display: "flex", flexDirection: "column", gap: "16px",
-                              }}>
-                                {course.description && (
-                                  <div>
-                                    <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, display: "block", marginBottom: "8px" }}>
-                                      Description
-                                    </span>
-                                    <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.6)", lineHeight: 1.6, margin: 0 }}>
-                                      {course.description}
-                                    </p>
-                                  </div>
-                                )}
-                                {course.learningOutcomes.length > 0 && (
-                                  <div>
-                                    <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, display: "block", marginBottom: "8px" }}>
-                                      Learning Outcomes
-                                    </span>
-                                    <ul style={{ margin: 0, paddingLeft: "16px", display: "flex", flexDirection: "column", gap: "4px" }}>
-                                      {course.learningOutcomes.map((o) => (
-                                        <li key={o} style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.6)", lineHeight: 1.5 }}>{o}</li>
-                                      ))}
-                                    </ul>
-                                  </div>
-                                )}
-                                {course.learningOutcomes.length === 0 && course.courseObjectives.length > 0 && (
-                                  <div>
-                                    <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, display: "block", marginBottom: "8px" }}>
-                                      Learning Outcomes
-                                    </span>
-                                    <ul style={{ margin: 0, paddingLeft: "16px", display: "flex", flexDirection: "column", gap: "4px" }}>
-                                      {course.courseObjectives.map((o) => (
-                                        <li key={o} style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.6)", lineHeight: 1.5 }}>{o}</li>
-                                      ))}
-                                    </ul>
-                                  </div>
-                                )}
-                                {course.skillMappings.length > 0 && (
-                                  <div>
-                                    <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, display: "block", marginBottom: "8px" }}>
-                                      Derived Skills
-                                    </span>
-                                    <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-                                      {course.skillMappings.map((skill) => (
-                                        <span key={skill} style={{
-                                          padding: "5px 12px", background: "rgba(255,255,255,0.02)",
-                                          border: `1px solid ${school.brandColorLight}60`, borderRadius: "6px",
-                                          fontFamily: FONT, fontSize: "12px", fontWeight: 500, color: school.brandColorLight,
-                                        }}>{skill}</span>
-                                      ))}
-                                    </div>
-                                  </div>
-                                )}
-                              </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </div>
-                    );
-                  })}
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+        <DepartmentRow
+          key={dept.department}
+          department={dept.department}
+          courseCount={dept.courseCount}
+          index={i}
+          brandColor={school.brandColorLight}
+          isOpen={expandedDepts.has(dept.department)}
+          onToggle={() => onDeptExpand(dept.department)}
+          courses={deptCoursesMap[dept.department] ?? null}
+          isLoading={loadingDepts.has(dept.department)}
+        />
       ))}
       {departments.length === 0 && (
         <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.35)", padding: "40px 0", textAlign: "center" }}>

@@ -403,10 +403,19 @@ export type ApiDepartmentEvidence = {
   aligned_skills: string[];
 };
 
+export type ApiStudentSummaryEvidence = {
+  uuid: string;
+  display_number: number;
+  primary_focus: string;
+  courses_completed: number;
+  gpa: number;
+  matching_skills: number;
+};
+
 export type ApiStudentEvidence = {
   total_students: number;
   students_with_3plus_courses: number;
-  top_skills: string[];
+  top_students: ApiStudentSummaryEvidence[];
 };
 
 export type ApiProposalJustification = {
@@ -420,6 +429,8 @@ export type ApiTargetedProposal = {
   employer: string;
   sector: string | null;
   partnership_type: string;
+  selected_occupation: string;
+  selected_soc_code: string | null;
   opportunity: string;
   opportunity_evidence: ApiOccupationEvidence[];
   justification: ApiProposalJustification;

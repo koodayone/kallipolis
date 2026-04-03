@@ -12,7 +12,8 @@ import anthropic
 from ontology.schema import get_driver
 from models import (
     NarrativeProposal, ProposalJustification,
-    OccupationEvidence, DepartmentEvidence, CourseEvidence, StudentEvidence,
+    OccupationEvidence, DepartmentEvidence, CourseEvidence,
+    StudentEvidence, StudentSummaryEvidence,
 )
 
 logger = logging.getLogger(__name__)
@@ -216,27 +217,22 @@ def _gather_targeted_context(employer: str, college: str, engagement_type: str =
 # Stage 2: Signal Filter
 # ═══════════════════════════════════════════════════════════════════════════
 
-_SIGNAL_FILTER_PROMPT = """You are evaluating skill-to-course alignment data from a community college's curriculum.
-
-For each skill-to-course mapping below, assess whether the course genuinely develops the named skill based on the course name, department, and typical curriculum content.
-
-A mapping is CREDIBLE when:
-- The course content directly and obviously relates to the skill (e.g., "Accounting" → BUS 082 Introduction to Business)
-- The department is a natural home for that skill (e.g., "Food Safety" → Food Services Work Experience)
-- A program coordinator would look at this mapping and say "yes, that's real"
-
-A mapping is NOT CREDIBLE when:
-- The connection is incidental or metaphorical (e.g., "Strategic Planning" → Sports Medicine course)
-- The skill name is being matched on surface-level word overlap rather than genuine content alignment (e.g., "Biology" → Psychology course)
-- The course is a generic work experience placeholder being mapped to a specialized skill
+_SIGNAL_FILTER_PROMPT = """You are evaluating employer-occupation associations and skill-to-course alignment data for a community college partnership proposal.
 
 Here is the raw alignment data:
 
 {context}
 
-Return a JSON object with two arrays:
+STEP 1 — OCCUPATION SELECTION:
+Examine the employer's name, sector, and description. Select the ONE occupation from the data that most credibly represents this employer's primary hiring need — the role this specific employer would hire in volume. A plumbing company primarily hires plumbers. A hospital primarily hires nurses. A food manufacturer primarily hires food science technicians. Do not select generic management or administrative roles unless the employer is specifically a management consulting or staffing firm.
+
+STEP 2 — ALIGNMENT FILTERING:
+For the selected occupation only, evaluate each skill-to-course mapping. A mapping is CREDIBLE when the course content directly and obviously relates to the skill. A mapping is NOT CREDIBLE when the connection is incidental, metaphorical, or based on surface-level word overlap.
+
+Return a JSON object:
 
 {{
+  "selected_occupation": {{"title": "...", "soc_code": "..."}},
   "retained": [
     {{"skill": "...", "course_code": "...", "course_name": "...", "department": "...", "occupation": "...", "strength": "strong|moderate"}}
   ],
@@ -246,16 +242,16 @@ Return a JSON object with two arrays:
 }}
 
 Rules:
-- Be selective. It is better to retain 10 genuinely strong alignments than 40 where half are dubious.
+- Only retain alignments for the selected occupation's required skills.
+- Be selective. It is better to retain 8 genuinely strong alignments than 20 where half are dubious.
 - "strong" means direct occupational relevance. "moderate" means transferable skill with a reasonable connection.
-- When the same skill appears multiple times across occupations, retain the single best course mapping.
 - Return ONLY valid JSON with no text before or after."""
 
 
-def _filter_context_signals(raw_context: str) -> tuple[str, list[dict]]:
-    """Filter raw context to retain only credible skill-to-course alignments.
+def _filter_context_signals(raw_context: str) -> tuple[str, list[dict], dict]:
+    """Filter raw context: select primary occupation, retain credible alignments.
 
-    Returns (curated_context_text, retained_alignments).
+    Returns (curated_context_text, retained_alignments, selected_occupation).
     """
     client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
     message = client.messages.create(
@@ -269,21 +265,22 @@ def _filter_context_signals(raw_context: str) -> tuple[str, list[dict]]:
         filter_result = _extract_json(raw_response)
     except (json.JSONDecodeError, ValueError) as e:
         logger.warning(f"Signal filter returned invalid JSON ({e}), falling back to raw context")
-        return raw_context, []
+        return raw_context, [], {}
 
+    selected_occ = filter_result.get("selected_occupation", {})
     retained = filter_result.get("retained", [])
     removed = filter_result.get("removed", [])
 
-    logger.info(f"Signal filter: {len(retained)} retained, {len(removed)} removed")
+    logger.info(f"Signal filter: selected '{selected_occ.get('title', '?')}', {len(retained)} retained, {len(removed)} removed")
     for r in removed[:10]:
         logger.info(f"  Removed: {r.get('skill')} → {r.get('course_code')} ({r.get('reason', '')})")
 
     if not retained:
         logger.warning("Signal filter removed ALL alignments, falling back to raw context")
-        return raw_context, []
+        return raw_context, [], selected_occ
 
     curated_text = _build_curated_context(raw_context, retained)
-    return curated_text, retained
+    return curated_text, retained, selected_occ
 
 
 def _build_curated_context(raw_context: str, retained: list[dict]) -> str:
@@ -362,10 +359,10 @@ def _aggregate_departments(retained: list[dict]) -> tuple[str, list[dict]]:
     return dept_text, curriculum_evidence
 
 
-def _build_narrative_context(gathered: GatheredContext, dept_text: str) -> str:
+def _build_narrative_context(gathered: GatheredContext, dept_text: str, selected_occ: dict) -> str:
     """Build the context string for the narrative generation prompt.
 
-    Uses department-level alignment (not course-level) + student pipeline + economic data.
+    Uses selected occupation + department-level alignment + student pipeline + economic data.
     """
     lines = []
 
@@ -382,11 +379,47 @@ def _build_narrative_context(gathered: GatheredContext, dept_text: str) -> str:
         elif stripped.startswith("PARTNERSHIP ENGAGEMENT TYPE:"):
             lines.append(section)
 
-    # Insert department-level alignment (replaces course-level)
-    lines.insert(1, "")
-    lines.insert(2, dept_text)
+    # Insert selected occupation and department-level alignment
+    occ_title = selected_occ.get("title", "Unknown")
+    occ_soc = selected_occ.get("soc_code", "")
+    lines.insert(1, f"\nSELECTED OCCUPATION: {occ_title} ({occ_soc})\nThis is the occupation the partnership proposal focuses on. All narrative sections should be about placing students into this specific role at this employer.")
+    lines.insert(2, "")
+    lines.insert(3, dept_text)
 
     return "\n\n".join(lines)
+
+
+def _gather_top_students(college: str, selected_occ_title: str) -> list[dict]:
+    """Fetch top 10 students most compatible with the selected occupation."""
+    driver = get_driver()
+    with driver.session() as session:
+        result = session.run("""
+            MATCH (occ:Occupation {title: $occupation})-[:REQUIRES_SKILL]->(sk:Skill)
+                  <-[:HAS_SKILL]-(st:Student)
+            WHERE EXISTS { (st)-[:ENROLLED_IN]->(:Course {college: $college}) }
+            WITH st, count(DISTINCT sk) AS matching_skills
+            OPTIONAL MATCH (st)-[e:ENROLLED_IN]->(c:Course {college: $college})
+            WHERE e.grade IN ['A','B','C','P']
+            WITH st, matching_skills, count(DISTINCT c) AS completed
+            ORDER BY matching_skills DESC, completed DESC
+            LIMIT 10
+            RETURN st.uuid AS uuid, st.primary_focus AS primary_focus,
+                   completed AS courses_completed,
+                   COALESCE(st.gpa, 0.0) AS gpa,
+                   matching_skills
+        """, occupation=selected_occ_title, college=college).data()
+
+    return [
+        {
+            "uuid": r["uuid"],
+            "display_number": i + 1,
+            "primary_focus": r["primary_focus"] or "",
+            "courses_completed": r["courses_completed"],
+            "gpa": round(r["gpa"], 2),
+            "matching_skills": r["matching_skills"],
+        }
+        for i, r in enumerate(result)
+    ]
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -563,31 +596,30 @@ def _assemble_proposal(
     partnership_type: str,
     gathered: GatheredContext,
     curriculum_evidence: list[dict],
+    selected_occ: dict,
+    top_students: list[dict],
 ) -> NarrativeProposal:
     """Merge LLM-generated narrative with deterministic evidence blocks."""
-    # Use skills from vetted curriculum evidence instead of raw pipeline ranking
-    vetted_skills = []
-    seen = set()
-    for dept in curriculum_evidence:
-        for skill in dept["aligned_skills"]:
-            if skill not in seen:
-                seen.add(skill)
-                vetted_skills.append(skill)
-
-    student_ev = dict(gathered.student_evidence)
-    student_ev["top_skills"] = vetted_skills
-
     return NarrativeProposal(
         employer=employer,
         sector=sector,
         partnership_type=partnership_type,
+        selected_occupation=selected_occ.get("title", ""),
+        selected_soc_code=selected_occ.get("soc_code"),
         opportunity=narrative["opportunity"],
-        opportunity_evidence=[OccupationEvidence(**o) for o in gathered.occupation_evidence],
+        opportunity_evidence=[
+            OccupationEvidence(**o) for o in gathered.occupation_evidence
+            if o.get("title") == selected_occ.get("title")
+        ] or [OccupationEvidence(**o) for o in gathered.occupation_evidence[:1]],
         justification=ProposalJustification(
             curriculum_composition=narrative["justification"]["curriculum_composition"],
             curriculum_evidence=[DepartmentEvidence(**d) for d in curriculum_evidence],
             student_composition=narrative["justification"]["student_composition"],
-            student_evidence=StudentEvidence(**student_ev),
+            student_evidence=StudentEvidence(
+                total_students=gathered.student_evidence.get("total_students", 0),
+                students_with_3plus_courses=gathered.student_evidence.get("students_with_3plus_courses", 0),
+                top_students=[StudentSummaryEvidence(**s) for s in top_students],
+            ),
         ),
         roadmap=narrative["roadmap"],
     )
@@ -694,11 +726,12 @@ async def run_targeted_proposal(employer: str, college: str, engagement_type: st
     gathered = _gather_targeted_context(employer, college, engagement_type)
     logger.info(f"Stage 1 complete: gathered context for {employer}")
 
-    curated_text, retained = _filter_context_signals(gathered.text)
-    logger.info(f"Stage 2 complete: filtered signals for {employer}")
+    curated_text, retained, selected_occ = _filter_context_signals(gathered.text)
+    logger.info(f"Stage 2 complete: selected '{selected_occ.get('title', '?')}' for {employer}")
 
+    top_students = _gather_top_students(college, selected_occ.get("title", ""))
     dept_text, curriculum_evidence = _aggregate_departments(retained)
-    narrative_context = _build_narrative_context(gathered, dept_text)
+    narrative_context = _build_narrative_context(gathered, dept_text, selected_occ)
 
     prompt_text = _get_prompt(engagement_type, narrative_context)
     raw = _call_claude(prompt_text)
@@ -706,7 +739,7 @@ async def run_targeted_proposal(employer: str, college: str, engagement_type: st
 
     narrative = _parse_narrative_fields(raw)
     partnership_type = TYPE_LABELS.get(engagement_type, engagement_type)
-    proposal = _assemble_proposal(narrative, employer, sector, partnership_type, gathered, curriculum_evidence)
+    proposal = _assemble_proposal(narrative, employer, sector, partnership_type, gathered, curriculum_evidence, selected_occ, top_students)
 
     _evaluate_proposal(proposal, curated_text)
     logger.info(f"Proposal complete for {employer}.")
@@ -719,11 +752,12 @@ def stream_targeted_proposal(employer: str, college: str, engagement_type: str =
     gathered = _gather_targeted_context(employer, college, engagement_type)
     logger.info(f"Stage 1 complete: gathered context for {employer}")
 
-    curated_text, retained = _filter_context_signals(gathered.text)
-    logger.info(f"Stage 2 complete: filtered signals for {employer}")
+    curated_text, retained, selected_occ = _filter_context_signals(gathered.text)
+    logger.info(f"Stage 2 complete: selected '{selected_occ.get('title', '?')}' for {employer}")
 
+    top_students = _gather_top_students(college, selected_occ.get("title", ""))
     dept_text, curriculum_evidence = _aggregate_departments(retained)
-    narrative_context = _build_narrative_context(gathered, dept_text)
+    narrative_context = _build_narrative_context(gathered, dept_text, selected_occ)
 
     prompt_text = _get_prompt(engagement_type, narrative_context)
     logger.info(f"Stage 3: starting Claude stream for {employer} ({engagement_type})...")
@@ -741,7 +775,7 @@ def stream_targeted_proposal(employer: str, college: str, engagement_type: str =
 
     narrative = _parse_narrative_fields(accumulated)
     partnership_type = TYPE_LABELS.get(engagement_type, engagement_type)
-    proposal = _assemble_proposal(narrative, employer, sector, partnership_type, gathered, curriculum_evidence)
+    proposal = _assemble_proposal(narrative, employer, sector, partnership_type, gathered, curriculum_evidence, selected_occ, top_students)
 
     _evaluate_proposal(proposal, curated_text)
     logger.info(f"Stream complete: proposal for {employer}")

@@ -1,9 +1,14 @@
 "use client";
 
-import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import type { ApiTargetedProposal, ApiOccupationEvidence, ApiDepartmentEvidence, ApiStudentEvidence } from "@/lib/api";
+import { useState, useCallback } from "react";
+import { motion } from "framer-motion";
+import type { ApiTargetedProposal, ApiStudentDetail } from "@/lib/api";
+import { getStudent } from "@/lib/api";
 import { saveProposal, removeProposal, updateProposalStatus, type SavedProposal } from "@/lib/savedProposals";
+import OccupationRow from "@/components/shared/OccupationRow";
+import DepartmentRow from "@/components/shared/DepartmentRow";
+import StudentRow from "@/components/shared/StudentRow";
+import ColumnHeaders from "@/components/shared/ColumnHeaders";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
@@ -20,8 +25,6 @@ type Props = {
   onSaved?: (saved: SavedProposal) => void;
 };
 
-/* ── Shared Components ─────────────────────────────────────────────────── */
-
 function SectionHeader({ children, color }: { children: React.ReactNode; color?: string }) {
   return (
     <span style={{
@@ -31,15 +34,6 @@ function SectionHeader({ children, color }: { children: React.ReactNode; color?:
     }}>
       {children}
     </span>
-  );
-}
-
-function Chevron({ open }: { open: boolean }) {
-  return (
-    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-      style={{ transform: open ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s", flexShrink: 0 }}>
-      <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
   );
 }
 
@@ -59,256 +53,32 @@ function FlagIcon() {
   );
 }
 
-function SkillBadge({ skill, brandColor }: { skill: string; brandColor: string }) {
-  return (
-    <span style={{
-      fontFamily: FONT, fontSize: "12px", fontWeight: 500, padding: "5px 12px",
-      borderRadius: "6px", border: `1px solid ${brandColor}60`, color: brandColor,
-      background: "rgba(255,255,255,0.02)",
-    }}>
-      {skill}
-    </span>
-  );
-}
-
-/* ── Occupation Evidence (matches OccupationsView) ─────────────────────── */
-
-function OccupationEvidence({ items, brandColor }: { items: ApiOccupationEvidence[]; brandColor: string }) {
-  const [expanded, setExpanded] = useState<Set<string>>(new Set());
-  if (!items.length) return null;
-
-  const hdrStyle = {
-    fontFamily: FONT, fontSize: "10px", fontWeight: 600 as const, letterSpacing: "0.1em",
-    textTransform: "uppercase" as const, color: brandColor, opacity: 0.6,
-  };
-
-  return (
-    <div style={{ marginTop: "12px" }}>
-      <div style={{
-        display: "grid", gridTemplateColumns: "24px 1fr 100px 80px 110px",
-        padding: "12px 16px", gap: "10px", alignItems: "center",
-      }}>
-        <span />
-        <span style={{ ...hdrStyle }}>Occupation</span>
-        <span style={{ ...hdrStyle, textAlign: "right" }}>Wage</span>
-        <span style={{ ...hdrStyle, textAlign: "right" }}>Openings</span>
-        <span style={{ ...hdrStyle, textAlign: "right" }}>Growth</span>
-      </div>
-      {items.map((occ, i) => {
-        const isOpen = expanded.has(occ.title);
-        return (
-          <div key={occ.title}>
-            <motion.button
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.2, delay: Math.min(i * 0.01, 0.2) }}
-              onClick={() => setExpanded(prev => {
-                const next = new Set(prev);
-                isOpen ? next.delete(occ.title) : next.add(occ.title);
-                return next;
-              })}
-              style={{
-                width: "100%", textAlign: "left",
-                display: "grid", gridTemplateColumns: "24px 1fr 100px 80px 110px",
-                padding: "12px 16px", gap: "10px", alignItems: "center",
-                background: isOpen ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
-                border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
-                cursor: "pointer", transition: "background 0.15s",
-              }}
-              onMouseEnter={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)"; }}
-              onMouseLeave={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)"; }}
-            >
-              <Chevron open={isOpen} />
-              <span style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)", lineHeight: 1.4 }}>
-                {occ.title}
-              </span>
-              <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.5)", textAlign: "right" }}>
-                {occ.annual_wage ? `$${occ.annual_wage.toLocaleString()}` : "\u2014"}
-              </span>
-              <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.45)", textAlign: "right" }}>
-                {occ.annual_openings != null ? `${occ.annual_openings.toLocaleString()}/yr` : "\u2014"}
-              </span>
-              <span style={{
-                fontFamily: FONT, fontSize: "12px", fontWeight: 500, textAlign: "right",
-                color: occ.growth_rate != null ? (occ.growth_rate >= 0 ? "#4ade80" : "#f87171") : "rgba(255,255,255,0.25)",
-              }}>
-                {occ.growth_rate != null ? `${occ.growth_rate >= 0 ? "+" : ""}${(occ.growth_rate * 100).toFixed(1)}%` : "\u2014"}
-              </span>
-            </motion.button>
-            <AnimatePresence>
-              {isOpen && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }}
-                  style={{ overflow: "hidden", background: "rgba(255,255,255,0.02)" }}
-                >
-                  <div style={{ padding: "12px 20px 16px", display: "flex", gap: "24px" }}>
-                    {occ.employment != null && (
-                      <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.45)" }}>
-                        {occ.employment.toLocaleString()} employed regionally
-                      </span>
-                    )}
-                    {occ.soc_code && (
-                      <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.3)" }}>
-                        SOC {occ.soc_code}
-                      </span>
-                    )}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-
-/* ── Department Evidence (matches CoursesView departments) ─────────────── */
-
-function DepartmentEvidence({ items, brandColor }: { items: ApiDepartmentEvidence[]; brandColor: string }) {
-  const [expanded, setExpanded] = useState<Set<string>>(new Set());
-  if (!items.length) return null;
-
-  const hdrStyle = {
-    fontFamily: FONT, fontSize: "10px", fontWeight: 600 as const, letterSpacing: "0.1em",
-    textTransform: "uppercase" as const, color: brandColor, opacity: 0.6,
-  };
-
-  return (
-    <div style={{ marginTop: "12px" }}>
-      <div style={{
-        display: "grid", gridTemplateColumns: "24px 1fr auto",
-        padding: "12px 16px", gap: "10px", alignItems: "center",
-      }}>
-        <span />
-        <span style={{ ...hdrStyle }}>Department</span>
-        <span style={{ ...hdrStyle, textAlign: "right" }}>Courses</span>
-      </div>
-      {items.map((dept, i) => {
-        const isOpen = expanded.has(dept.department);
-        return (
-          <div key={dept.department}>
-            <motion.button
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.2, delay: Math.min(i * 0.01, 0.2) }}
-              onClick={() => setExpanded(prev => {
-                const next = new Set(prev);
-                isOpen ? next.delete(dept.department) : next.add(dept.department);
-                return next;
-              })}
-              style={{
-                width: "100%", textAlign: "left",
-                display: "grid", gridTemplateColumns: "24px 1fr auto",
-                padding: "12px 16px", gap: "10px", alignItems: "center",
-                background: isOpen ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
-                border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
-                cursor: "pointer", transition: "background 0.15s",
-              }}
-              onMouseEnter={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)"; }}
-              onMouseLeave={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)"; }}
-            >
-              <Chevron open={isOpen} />
-              <span style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>
-                {dept.department}
-              </span>
-              <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)" }}>
-                {dept.courses.length} course{dept.courses.length !== 1 ? "s" : ""}
-              </span>
-            </motion.button>
-            <AnimatePresence>
-              {isOpen && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }}
-                  style={{ overflow: "hidden", background: "rgba(255,255,255,0.02)" }}
-                >
-                  <div style={{ padding: "8px 16px 16px", display: "flex", flexDirection: "column", gap: "2px" }}>
-                    {dept.courses.map(course => (
-                      <div key={course.code} style={{
-                        display: "flex", alignItems: "baseline", gap: "10px",
-                        padding: "8px 12px", borderRadius: "4px", background: "rgba(255,255,255,0.02)",
-                      }}>
-                        <span style={{ fontFamily: FONT, fontSize: "12px", fontWeight: 600, color: brandColor, flexShrink: 0 }}>
-                          {course.code}
-                        </span>
-                        <span style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.65)", flex: 1 }}>
-                          {course.name}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-
-/* ── Student Evidence (compact stats) ──────────────────────────────────── */
-
-function StudentEvidence({ data, brandColor }: { data: ApiStudentEvidence; brandColor: string }) {
-  return (
-    <div style={{
-      marginTop: "12px",
-      background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.05)",
-    }}>
-      {/* Stats bar */}
-      <div style={{
-        display: "grid", gridTemplateColumns: "1fr 1px 1fr",
-        padding: "16px 0",
-      }}>
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-          <span style={{ fontFamily: FONT, fontSize: "20px", fontWeight: 600, color: "rgba(255,255,255,0.85)" }}>
-            {data.total_students.toLocaleString()}
-          </span>
-          <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>
-            Students in Pipeline
-          </span>
-        </div>
-        <div style={{ background: "rgba(255,255,255,0.08)" }} />
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-          <span style={{ fontFamily: FONT, fontSize: "20px", fontWeight: 600, color: "rgba(255,255,255,0.85)" }}>
-            {data.students_with_3plus_courses.toLocaleString()}
-          </span>
-          <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>
-            With 3+ Courses
-          </span>
-        </div>
-      </div>
-      {/* Skills */}
-      {data.top_skills.length > 0 && (
-        <div style={{
-          padding: "12px 16px 16px",
-          borderTop: "1px solid rgba(255,255,255,0.05)",
-        }}>
-          <span style={{
-            fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em",
-            textTransform: "uppercase", color: "rgba(255,255,255,0.2)",
-            display: "block", marginBottom: "8px",
-          }}>
-            Aligned Skills
-          </span>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-            {data.top_skills.map(skill => (
-              <SkillBadge key={skill} skill={skill} brandColor={brandColor} />
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-/* ── Main ProposalCard ─────────────────────────────────────────────────── */
-
 export default function ProposalCard({ proposal, brandColor, onDismiss, onReject, onRefine, collegeId, engagementType, onSaved }: Props) {
   const [state, setState] = useState<CardState>("default");
   const [savedId, setSavedId] = useState<string | null>(null);
+
+  // Student detail loading for expand
+  const [studentDetails, setStudentDetails] = useState<Record<string, any>>({});
+  const [loadingStudents, setLoadingStudents] = useState<Set<string>>(new Set());
+
+  const handleStudentExpand = useCallback(async (uuid: string) => {
+    if (studentDetails[uuid] || !collegeId) return;
+    setLoadingStudents(prev => new Set(prev).add(uuid));
+    try {
+      const detail = await getStudent(uuid, collegeId);
+      setStudentDetails(prev => ({
+        ...prev,
+        [uuid]: {
+          enrollments: detail.enrollments.map((e: any) => ({
+            courseName: e.course_name, department: e.department,
+            grade: e.grade, term: e.term, status: e.status,
+          })),
+          skills: detail.skills,
+        },
+      }));
+    } catch {}
+    finally { setLoadingStudents(prev => { const next = new Set(prev); next.delete(uuid); return next; }); }
+  }, [studentDetails, collegeId]);
 
   if (state === "dismissed") return null;
 
@@ -342,7 +112,21 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
           <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.7)", lineHeight: 1.65, margin: 0 }}>
             {proposal.opportunity}
           </p>
-          <OccupationEvidence items={proposal.opportunity_evidence} brandColor={brandColor} />
+          <div style={{ marginTop: "12px" }}>
+            <ColumnHeaders
+              columns={[
+                { label: "Occupation", width: "1fr" },
+                { label: "Wage", width: "100px", align: "right" },
+                { label: "Openings", width: "80px", align: "right" },
+                { label: "Growth", width: "110px", align: "right" },
+              ]}
+              gridTemplateColumns="24px 1fr 100px 80px 110px"
+              brandColor={brandColor}
+            />
+            {proposal.opportunity_evidence.map((occ, i) => (
+              <OccupationRow key={occ.title} occ={occ} index={i} brandColor={brandColor} />
+            ))}
+          </div>
         </div>
 
         {/* ── Curriculum Alignment ── */}
@@ -351,7 +135,26 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
           <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.65)", lineHeight: 1.65, margin: 0 }}>
             {proposal.justification.curriculum_composition}
           </p>
-          <DepartmentEvidence items={proposal.justification.curriculum_evidence} brandColor={brandColor} />
+          <div style={{ marginTop: "12px" }}>
+            <ColumnHeaders
+              columns={[
+                { label: "Department", width: "1fr" },
+                { label: "Courses", width: "auto", align: "right" },
+              ]}
+              gridTemplateColumns="24px 1fr auto"
+              brandColor={brandColor}
+            />
+            {proposal.justification.curriculum_evidence.map((dept, i) => (
+              <DepartmentRow
+                key={dept.department}
+                department={dept.department}
+                courseCount={dept.courses.length}
+                index={i}
+                brandColor={brandColor}
+                courses={dept.courses}
+              />
+            ))}
+          </div>
         </div>
 
         {/* ── Student Pipeline ── */}
@@ -360,7 +163,64 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
           <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.65)", lineHeight: 1.65, margin: 0 }}>
             {proposal.justification.student_composition}
           </p>
-          <StudentEvidence data={proposal.justification.student_evidence} brandColor={brandColor} />
+          {/* Stats bar */}
+          <div style={{
+            marginTop: "12px",
+            background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.05)",
+          }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1px 1fr", padding: "16px 0" }}>
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
+                <span style={{ fontFamily: FONT, fontSize: "20px", fontWeight: 600, color: "rgba(255,255,255,0.85)" }}>
+                  {proposal.justification.student_evidence.total_students.toLocaleString()}
+                </span>
+                <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>
+                  Students in Pipeline
+                </span>
+              </div>
+              <div style={{ background: "rgba(255,255,255,0.08)" }} />
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
+                <span style={{ fontFamily: FONT, fontSize: "20px", fontWeight: 600, color: "rgba(255,255,255,0.85)" }}>
+                  {proposal.justification.student_evidence.students_with_3plus_courses.toLocaleString()}
+                </span>
+                <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>
+                  With 3+ Courses
+                </span>
+              </div>
+            </div>
+          </div>
+          {/* Top compatible students */}
+          {proposal.justification.student_evidence.top_students.length > 0 && (
+            <div style={{ marginTop: "12px" }}>
+              <ColumnHeaders
+                columns={[
+                  { label: "Student", width: "110px" },
+                  { label: "Focus", width: "1fr" },
+                  { label: "Courses", width: "90px", align: "right" },
+                  { label: "GPA", width: "60px", align: "right" },
+                ]}
+                gridTemplateColumns="24px 110px 1fr 90px 60px"
+                brandColor={brandColor}
+              />
+              {proposal.justification.student_evidence.top_students.map((s, i) => (
+                <StudentRow
+                  key={s.uuid}
+                  student={{
+                    uuid: s.uuid,
+                    displayNumber: s.display_number,
+                    primaryFocus: s.primary_focus,
+                    coursesCompleted: s.courses_completed,
+                    gpa: s.gpa,
+                    matchingSkills: s.matching_skills,
+                  }}
+                  index={i}
+                  brandColor={brandColor}
+                  detail={studentDetails[s.uuid] ?? null}
+                  isLoading={loadingStudents.has(s.uuid)}
+                  onExpand={() => handleStudentExpand(s.uuid)}
+                />
+              ))}
+            </div>
+          )}
         </div>
 
         {/* ── Roadmap ── */}

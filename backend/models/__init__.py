@@ -253,10 +253,19 @@ class DepartmentEvidence(BaseModel):
     aligned_skills: list[str]
 
 
+class StudentSummaryEvidence(BaseModel):
+    uuid: str
+    display_number: int
+    primary_focus: str
+    courses_completed: int
+    gpa: float
+    matching_skills: int
+
+
 class StudentEvidence(BaseModel):
     total_students: int
     students_with_3plus_courses: int
-    top_skills: list[str]
+    top_students: list[StudentSummaryEvidence]
 
 
 class ProposalJustification(BaseModel):
@@ -270,6 +279,8 @@ class NarrativeProposal(BaseModel):
     employer: str
     sector: Optional[str] = None
     partnership_type: str
+    selected_occupation: str
+    selected_soc_code: Optional[str] = None
     opportunity: str
     opportunity_evidence: list[OccupationEvidence]
     justification: ProposalJustification
