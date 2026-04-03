@@ -219,8 +219,8 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
                 columns={[
                   { label: "Student", width: "110px" },
                   { label: "Focus", width: "1fr" },
-                  { label: "Courses", width: "90px", align: "right" },
-                  { label: "GPA", width: "60px", align: "right" },
+                  { label: "Courses", width: "90px" },
+                  { label: "GPA", width: "60px" },
                 ]}
                 gridTemplateColumns="24px 110px 1fr 90px 60px"
                 brandColor={brandColor}
