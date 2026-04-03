@@ -214,7 +214,7 @@ function DepartmentEvidence({ items, brandColor }: { items: ApiDepartmentEvidenc
                 {dept.department}
               </span>
               <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)" }}>
-                {dept.course_count} course{dept.course_count !== 1 ? "s" : ""}
+                {dept.courses.length} course{dept.courses.length !== 1 ? "s" : ""}
               </span>
             </motion.button>
             <AnimatePresence>
@@ -224,9 +224,19 @@ function DepartmentEvidence({ items, brandColor }: { items: ApiDepartmentEvidenc
                   exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }}
                   style={{ overflow: "hidden", background: "rgba(255,255,255,0.02)" }}
                 >
-                  <div style={{ padding: "12px 20px 16px", display: "flex", flexWrap: "wrap", gap: "6px" }}>
-                    {dept.aligned_skills.map(skill => (
-                      <SkillBadge key={skill} skill={skill} brandColor={brandColor} />
+                  <div style={{ padding: "8px 16px 16px", display: "flex", flexDirection: "column", gap: "2px" }}>
+                    {dept.courses.map(course => (
+                      <div key={course.code} style={{
+                        display: "flex", alignItems: "baseline", gap: "10px",
+                        padding: "8px 12px", borderRadius: "4px", background: "rgba(255,255,255,0.02)",
+                      }}>
+                        <span style={{ fontFamily: FONT, fontSize: "12px", fontWeight: 600, color: brandColor, flexShrink: 0 }}>
+                          {course.code}
+                        </span>
+                        <span style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.65)", flex: 1 }}>
+                          {course.name}
+                        </span>
+                      </div>
                     ))}
                   </div>
                 </motion.div>
@@ -244,32 +254,50 @@ function DepartmentEvidence({ items, brandColor }: { items: ApiDepartmentEvidenc
 function StudentEvidence({ data, brandColor }: { data: ApiStudentEvidence; brandColor: string }) {
   return (
     <div style={{
-      marginTop: "12px", padding: "16px 16px",
+      marginTop: "12px",
       background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.05)",
     }}>
-      <div style={{ display: "flex", gap: "24px", alignItems: "baseline", flexWrap: "wrap", marginBottom: data.top_skills.length > 0 ? "12px" : 0 }}>
-        <div>
-          <span style={{ fontFamily: FONT, fontSize: "16px", fontWeight: 600, color: "rgba(255,255,255,0.85)" }}>
+      {/* Stats bar */}
+      <div style={{
+        display: "grid", gridTemplateColumns: "1fr 1px 1fr",
+        padding: "16px 0",
+      }}>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
+          <span style={{ fontFamily: FONT, fontSize: "20px", fontWeight: 600, color: "rgba(255,255,255,0.85)" }}>
             {data.total_students.toLocaleString()}
           </span>
-          <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.4)", marginLeft: "6px" }}>
-            students
+          <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>
+            Students in Pipeline
           </span>
         </div>
-        <div>
-          <span style={{ fontFamily: FONT, fontSize: "16px", fontWeight: 600, color: "rgba(255,255,255,0.85)" }}>
+        <div style={{ background: "rgba(255,255,255,0.08)" }} />
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
+          <span style={{ fontFamily: FONT, fontSize: "20px", fontWeight: 600, color: "rgba(255,255,255,0.85)" }}>
             {data.students_with_3plus_courses.toLocaleString()}
           </span>
-          <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.4)", marginLeft: "6px" }}>
-            with 3+ courses
+          <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>
+            With 3+ Courses
           </span>
         </div>
       </div>
+      {/* Skills */}
       {data.top_skills.length > 0 && (
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-          {data.top_skills.map(skill => (
-            <SkillBadge key={skill} skill={skill} brandColor={brandColor} />
-          ))}
+        <div style={{
+          padding: "12px 16px 16px",
+          borderTop: "1px solid rgba(255,255,255,0.05)",
+        }}>
+          <span style={{
+            fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em",
+            textTransform: "uppercase", color: "rgba(255,255,255,0.2)",
+            display: "block", marginBottom: "8px",
+          }}>
+            Aligned Skills
+          </span>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+            {data.top_skills.map(skill => (
+              <SkillBadge key={skill} skill={skill} brandColor={brandColor} />
+            ))}
+          </div>
         </div>
       )}
     </div>

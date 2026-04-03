@@ -391,9 +391,15 @@ export type ApiOccupationEvidence = {
   growth_rate: number | null;
 };
 
+export type ApiCourseEvidence = {
+  code: string;
+  name: string;
+  skills: string[];
+};
+
 export type ApiDepartmentEvidence = {
   department: string;
-  course_count: number;
+  courses: ApiCourseEvidence[];
   aligned_skills: string[];
 };
 

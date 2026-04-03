@@ -1,5 +1,7 @@
 import type { ApiTargetedProposal } from "./api";
 
+const PROPOSAL_SCHEMA_VERSION = 3;
+
 export type SavedProposal = {
   id: string;
   proposal: ApiTargetedProposal;
@@ -7,6 +9,7 @@ export type SavedProposal = {
   collegeId: string;
   savedAt: string;
   status: "saved" | "flagged";
+  schemaVersion?: number;
 };
 
 export type SavedSwpProject = {
@@ -29,7 +32,9 @@ export function getSavedProposals(collegeId: string): SavedProposal[] {
   if (typeof window === "undefined") return [];
   try {
     const raw = localStorage.getItem(PROPOSALS_KEY(collegeId));
-    return raw ? JSON.parse(raw) : [];
+    if (!raw) return [];
+    const all: SavedProposal[] = JSON.parse(raw);
+    return all.filter((p) => p.schemaVersion === PROPOSAL_SCHEMA_VERSION);
   } catch {
     return [];
   }
@@ -48,6 +53,7 @@ export function saveProposal(
     collegeId,
     savedAt: new Date().toISOString(),
     status,
+    schemaVersion: PROPOSAL_SCHEMA_VERSION,
   };
   const all = getSavedProposals(collegeId);
   all.unshift(saved);

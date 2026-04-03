@@ -241,9 +241,15 @@ class OccupationEvidence(BaseModel):
     growth_rate: Optional[float] = None
 
 
+class CourseEvidence(BaseModel):
+    code: str
+    name: str
+    skills: list[str]
+
+
 class DepartmentEvidence(BaseModel):
     department: str
-    course_count: int
+    courses: list[CourseEvidence]
     aligned_skills: list[str]
 
 

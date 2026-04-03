@@ -12,7 +12,7 @@ import anthropic
 from ontology.schema import get_driver
 from models import (
     NarrativeProposal, ProposalJustification,
-    OccupationEvidence, DepartmentEvidence, StudentEvidence,
+    OccupationEvidence, DepartmentEvidence, CourseEvidence, StudentEvidence,
 )
 
 logger = logging.getLogger(__name__)
@@ -329,11 +329,14 @@ def _aggregate_departments(retained: list[dict]) -> tuple[str, list[dict]]:
 
     Returns (dept_text_for_prompt, curriculum_evidence_list).
     """
-    dept_agg: dict[str, dict] = defaultdict(lambda: {"skills": set(), "courses": set()})
+    dept_agg: dict[str, dict] = defaultdict(lambda: {"skills": set(), "courses": {}})
     for entry in retained:
         dept = entry.get("department", "Unknown")
         dept_agg[dept]["skills"].add(entry["skill"])
-        dept_agg[dept]["courses"].add(entry["course_code"])
+        code = entry["course_code"]
+        if code not in dept_agg[dept]["courses"]:
+            dept_agg[dept]["courses"][code] = {"code": code, "name": entry["course_name"], "skills": set()}
+        dept_agg[dept]["courses"][code]["skills"].add(entry["skill"])
 
     # Build text block for the narrative prompt
     lines = ["DEPARTMENT-LEVEL CURRICULUM ALIGNMENT (aggregated from vetted course-level data):"]
@@ -347,7 +350,10 @@ def _aggregate_departments(retained: list[dict]) -> tuple[str, list[dict]]:
     curriculum_evidence = [
         {
             "department": dept,
-            "course_count": len(data["courses"]),
+            "courses": [
+                {"code": c["code"], "name": c["name"], "skills": sorted(c["skills"])}
+                for c in data["courses"].values()
+            ],
             "aligned_skills": sorted(data["skills"]),
         }
         for dept, data in sorted(dept_agg.items(), key=lambda x: len(x[1]["skills"]), reverse=True)
@@ -559,6 +565,18 @@ def _assemble_proposal(
     curriculum_evidence: list[dict],
 ) -> NarrativeProposal:
     """Merge LLM-generated narrative with deterministic evidence blocks."""
+    # Use skills from vetted curriculum evidence instead of raw pipeline ranking
+    vetted_skills = []
+    seen = set()
+    for dept in curriculum_evidence:
+        for skill in dept["aligned_skills"]:
+            if skill not in seen:
+                seen.add(skill)
+                vetted_skills.append(skill)
+
+    student_ev = dict(gathered.student_evidence)
+    student_ev["top_skills"] = vetted_skills
+
     return NarrativeProposal(
         employer=employer,
         sector=sector,
@@ -569,7 +587,7 @@ def _assemble_proposal(
             curriculum_composition=narrative["justification"]["curriculum_composition"],
             curriculum_evidence=[DepartmentEvidence(**d) for d in curriculum_evidence],
             student_composition=narrative["justification"]["student_composition"],
-            student_evidence=StudentEvidence(**gathered.student_evidence),
+            student_evidence=StudentEvidence(**student_ev),
         ),
         roadmap=narrative["roadmap"],
     )
