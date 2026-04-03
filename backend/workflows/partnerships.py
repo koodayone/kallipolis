@@ -225,6 +225,65 @@ def _gather_aligned_curriculum(college: str, core_skills: list[str]) -> tuple[st
     return dept_text, curriculum_evidence
 
 
+# ═══════════════════════════════════════════════════════════════════════════
+# Department Relevance Filter
+# ═══════════════════════════════════════════════════════════════════════════
+
+_DEPT_FILTER_PROMPT = """Filter this list of departments to only those genuinely relevant to training students for this occupation at this employer. Return ONLY the JSON — no reasoning.
+
+Employer: {employer}
+Occupation: {occupation}
+Departments: {department_list}
+
+A department is relevant if its coursework would directly prepare a student for this role. A Fashion department is not relevant to a food manufacturer. A Sociology department is not relevant to a plumbing company. Only keep departments whose training content is directly applicable.
+
+{{"relevant_departments": ["...", "..."]}}"""
+
+
+def _filter_relevant_departments(employer: str, occupation: str, departments: list[str]) -> list[str]:
+    """Filter departments to those semantically relevant to this employer and occupation."""
+    if not departments:
+        return departments
+
+    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+    message = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=256,
+        messages=[{"role": "user", "content": _DEPT_FILTER_PROMPT.format(
+            employer=employer,
+            occupation=occupation,
+            department_list=", ".join(departments),
+        )}],
+    )
+    raw = message.content[0].text
+
+    try:
+        result = _extract_json(raw)
+        relevant = result.get("relevant_departments", [])
+        logger.info(f"Department filter: {len(relevant)}/{len(departments)} departments kept")
+        removed = set(departments) - set(relevant)
+        if removed:
+            logger.info(f"  Removed: {', '.join(sorted(removed))}")
+        return relevant
+    except (json.JSONDecodeError, ValueError) as e:
+        logger.warning(f"Department filter returned invalid JSON ({e}), keeping all")
+        return departments
+
+
+def _build_dept_text(curriculum_evidence: list[dict], core_skills: list[str]) -> str:
+    """Build department-level text for the narrative prompt from filtered evidence."""
+    core_set = set(core_skills)
+    lines = ["DEPARTMENT-LEVEL CURRICULUM ALIGNMENT:"]
+    for dept_ev in curriculum_evidence:
+        dept = dept_ev["department"]
+        skills = set(dept_ev["aligned_skills"])
+        skills_str = ", ".join(sorted(skills))
+        missing = core_set - skills
+        missing_str = f". Missing: {', '.join(sorted(missing))}" if missing else ""
+        lines.append(f"  {dept}: develops {skills_str} (across {len(dept_ev['courses'])} courses){missing_str}")
+    return "\n".join(lines)
+
+
 def _build_narrative_context(gathered: GatheredContext, dept_text: str, selected_occ: dict, engagement_type: str = "") -> str:
     """Build the context string for the narrative generation prompt.
 
@@ -636,7 +695,14 @@ async def run_targeted_proposal(employer: str, college: str, engagement_type: st
     logger.info(f"Stage 2 complete: selected '{selected_occ.get('title', '?')}' for {employer}")
 
     core_skills = selected_occ.get("core_skills", [])
-    dept_text, curriculum_evidence = _gather_aligned_curriculum(college, core_skills)
+    _, curriculum_evidence = _gather_aligned_curriculum(college, core_skills)
+
+    # Filter departments by semantic relevance
+    all_dept_names = [d["department"] for d in curriculum_evidence]
+    relevant_depts = _filter_relevant_departments(gathered.employer_name, selected_occ.get("title", ""), all_dept_names)
+    curriculum_evidence = [d for d in curriculum_evidence if d["department"] in relevant_depts]
+    dept_text = _build_dept_text(curriculum_evidence, core_skills)
+
     aligned_depts = [d["department"] for d in curriculum_evidence]
     student_stats, top_students = _gather_top_students(college, aligned_depts, core_skills)
     narrative_context = _build_narrative_context(gathered, dept_text, selected_occ, engagement_type)
@@ -663,7 +729,14 @@ def stream_targeted_proposal(employer: str, college: str, engagement_type: str =
     logger.info(f"Stage 2 complete: selected '{selected_occ.get('title', '?')}' for {employer}")
 
     core_skills = selected_occ.get("core_skills", [])
-    dept_text, curriculum_evidence = _gather_aligned_curriculum(college, core_skills)
+    _, curriculum_evidence = _gather_aligned_curriculum(college, core_skills)
+
+    # Filter departments by semantic relevance
+    all_dept_names = [d["department"] for d in curriculum_evidence]
+    relevant_depts = _filter_relevant_departments(gathered.employer_name, selected_occ.get("title", ""), all_dept_names)
+    curriculum_evidence = [d for d in curriculum_evidence if d["department"] in relevant_depts]
+    dept_text = _build_dept_text(curriculum_evidence, core_skills)
+
     aligned_depts = [d["department"] for d in curriculum_evidence]
     student_stats, top_students = _gather_top_students(college, aligned_depts, core_skills)
     narrative_context = _build_narrative_context(gathered, dept_text, selected_occ, engagement_type)

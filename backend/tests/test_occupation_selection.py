@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 logging.basicConfig(level=logging.WARNING, format="%(levelname)s %(message)s")
 
-from workflows.partnerships import _gather_targeted_context, _select_occupation
+from workflows.partnerships import _gather_targeted_context, _select_occupation, _gather_aligned_curriculum, _filter_relevant_departments
 from ontology.schema import get_driver
 
 COLLEGE = "College of the Sequoias"
@@ -32,86 +32,110 @@ TEST_CASES = [
     # Trades / Specific
     {
         "employer": "Fresno Plumbing and Heating",
-        "expect_contains": "Heating",  # HVAC Mechanics
+        "expect_contains": "Heating",
         "reject": ["Accountants", "General and Operations", "Administrative"],
         "sector": "Construction",
+        "expect_depts": ["Environmental Control|Construction"],
+        "reject_depts": ["Sociology", "English", "Psychology", "Fashion"],
     },
     # Agriculture - Poultry Processor
     {
         "employer": "Foster Farms",
-        "expect_contains": "Agri|Food",  # Agricultural Technicians or Food Scientists
+        "expect_contains": "Agri|Food",
         "reject": ["Accountants", "General and Operations", "Human Resources"],
         "sector": "Agriculture",
+        "expect_depts": ["Agri"],
+        "reject_depts": ["Sociology", "English", "Fashion"],
     },
     # Food Manufacturing
     {
         "employer": "Cargill",
-        "expect_contains": "Food",  # Food Science Technicians or Food Scientists
+        "expect_contains": "Food",
         "reject": ["Accountants", "Marketing", "Human Resources"],
         "sector": "Manufacturing",
+        "expect_depts": ["Agri|Food|Work Experience"],
+        "reject_depts": ["Sociology", "English", "Fashion"],
     },
     # Healthcare
     {
         "employer": "Adventist Health Hanford",
-        "expect_contains": "Nurs",  # Nursing Assistants, LVNs, or RNs
+        "expect_contains": "Nurs",
         "reject": ["Accountants", "Administrative", "Human Resources"],
         "sector": "Healthcare",
+        "expect_depts": ["Nurs|Health"],
+        "reject_depts": ["Sociology", "English", "Fashion", "Welding"],
     },
     # Healthcare - Hospital
     {
         "employer": "Community Medical Center",
-        "expect_contains": "Nurs",  # Nursing
+        "expect_contains": "Nurs",
         "reject": ["Accountants", "Administrative", "Human Resources"],
         "sector": "Professional Services",
+        "expect_depts": ["Nurs|Health"],
+        "reject_depts": ["Sociology", "English", "Fashion", "Welding"],
     },
     # Education
     {
         "employer": "Clovis Adult Education",
-        "expect_contains": "Teach|Instruct",  # Teachers or Instructors
+        "expect_contains": "Teach|Instruct",
         "reject": ["Accountants", "Administrative", "Human Resources"],
         "sector": "Education",
+        "expect_depts": ["Educ|Child"],
+        "reject_depts": ["Welding", "Fashion", "Automotive"],
     },
     # Construction
     {
         "employer": "Central California Builders and Development",
-        "expect_contains": "Civil|Construction",  # Civil Engineers or Construction Managers
+        "expect_contains": "Civil|Construction",
         "reject": ["Accountants", "Human Resources", "General and Operations"],
         "sector": "Construction",
+        "expect_depts": ["Engineer|Construction|Draft"],
+        "reject_depts": ["Sociology", "English", "Fashion"],
     },
-    # Government - Prison (nurses, correctional officers, or probation — all valid)
+    # Government - Prison
     {
         "employer": "California State Prison, Corcoran",
         "expect_contains": "Nurs|Correct|Probation",
         "reject": ["Accountants", "Administrative", "General and Operations"],
         "sector": "Government",
+        "expect_depts": ["Nurs|Justice|Health"],
+        "reject_depts": ["Fashion", "Welding", "Automotive"],
     },
-    # Food Manufacturing - Meat (safety is central to meat processing)
+    # Food Manufacturing - Meat
     {
         "employer": "Central Valley Meat Company",
-        "expect_contains": "Food|Safety",  # Food Scientists or Safety Specialists
+        "expect_contains": "Food|Safety",
         "reject": ["Accountants", "Human Resources", "General and Operations"],
         "sector": "Manufacturing",
+        "expect_depts": ["Food|Agri|Health|Work Experience"],
+        "reject_depts": ["Sociology", "English", "Fashion"],
     },
     # Retail - Home Improvement
     {
         "employer": "Home Depot",
-        "expect_contains": "Sales",  # Sales Representatives
+        "expect_contains": "Sales",
         "reject": ["Accountants", "Human Resources"],
         "sector": "Retail",
+        "expect_depts": ["Bus|Market"],
+        "reject_depts": ["Welding", "Fashion", "Nursing"],
     },
     # Distribution
     {
         "employer": "ULTA Beauty Distribution Center",
-        "expect_contains": "Logist",  # Logisticians
+        "expect_contains": "Logist",
         "reject": ["Accountants", "Human Resources", "Administrative"],
         "sector": "Professional Services",
+        "expect_depts": ["Bus|Supply|Manage|Industrial|Work Experience"],
+        "reject_depts": ["Nursing", "Fashion", "Welding"],
     },
     # Agriculture - Farm
     {
         "employer": "Mike Jensen Farms",
-        "expect_contains": "Agri",  # Agricultural Technicians/Inspectors
+        "expect_contains": "Agri",
         "reject": ["Accountants", "General and Operations"],
         "sector": "Agriculture",
+        "expect_depts": ["Agri|Plant|Farm"],
+        "reject_depts": ["Sociology", "English", "Fashion"],
     },
 ]
 
@@ -160,16 +184,47 @@ def run_tests():
                             skills_exist = False
                             missing_skills.append(skill)
 
-            passed = expect_pass and not rejected and skills_exist
+            # Check downstream curriculum alignment (with department filter)
+            dept_names = []
+            dept_pass = True
+            dept_reject_hit = ""
+            dept_expect_miss = ""
+            if core_skills and skills_exist:
+                _, curriculum_evidence = _gather_aligned_curriculum(COLLEGE, core_skills)
+                all_dept_names = [d["department"] for d in curriculum_evidence]
+                dept_names = _filter_relevant_departments(employer, title, all_dept_names)
+
+                # Check expected departments (at least one match required per pattern)
+                for pattern in tc.get("expect_depts", []):
+                    found = any(
+                        any(term.strip().lower() in dept.lower() for term in pattern.split("|"))
+                        for dept in dept_names
+                    )
+                    if not found:
+                        dept_pass = False
+                        dept_expect_miss = pattern
+
+                # Check rejected departments
+                for dept in dept_names:
+                    for reject_dept in tc.get("reject_depts", []):
+                        if reject_dept.lower() in dept.lower():
+                            dept_pass = False
+                            dept_reject_hit = f"{dept} (matches reject '{reject_dept}')"
+
+            passed = expect_pass and not rejected and skills_exist and dept_pass
             status = "PASS" if passed else "FAIL"
 
             reason = ""
             if not expect_pass:
                 reason = f"expected '{tc['expect_contains']}' in title"
-            if rejected:
+            elif rejected:
                 reason = f"selected rejected occupation (contains '{rejected_by}')"
-            if not skills_exist:
+            elif not skills_exist:
                 reason = f"core skills not in graph: {', '.join(missing_skills)}"
+            elif dept_expect_miss:
+                reason = f"expected dept matching '{dept_expect_miss}' not found in: {', '.join(dept_names)}"
+            elif dept_reject_hit:
+                reason = f"rejected dept found: {dept_reject_hit}"
 
             results.append({
                 "employer": employer,
@@ -177,6 +232,7 @@ def run_tests():
                 "selected": title,
                 "soc_code": soc_code,
                 "core_skills": core_skills,
+                "departments": dept_names,
                 "status": status,
                 "reason": reason,
                 "elapsed": elapsed,
@@ -219,6 +275,7 @@ def run_tests():
             print(f"\n{r['employer']} ({r['sector']}):")
             print(f"  Selected: {r['selected']} ({r['soc_code']})")
             print(f"  Core skills: {', '.join(r['core_skills'])}")
+            print(f"  Departments: {', '.join(r.get('departments', []))}")
             print(f"  Reason: {r['reason']}")
 
     # Detail for all selections
@@ -227,7 +284,10 @@ def run_tests():
     print(f"{'='*80}")
     for r in results:
         skills = ", ".join(r["core_skills"][:3])
-        print(f"  {r['employer']}: {r['selected']} [{skills}]")
+        depts = ", ".join(r.get("departments", [])[:5])
+        print(f"  {r['employer']}: {r['selected']}")
+        print(f"    Skills: [{skills}]")
+        print(f"    Depts:  [{depts}]")
 
 
 if __name__ == "__main__":
