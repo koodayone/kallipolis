@@ -103,6 +103,7 @@ _OCCUPATION_SELECTION_PROMPT = """Select the primary hiring occupation for this 
 Rules:
 - Pick the ONE occupation this employer would hire in volume. A plumbing company hires plumbers. A hospital hires nurses. Not generic management or admin roles.
 - Pick 3 skills most central to the daily work of that role. Choose ONLY from the skills listed under that occupation. Not generic skills like Record Keeping or Professional Ethics.
+- Prefer skills the college develops (course count > 0). You may include one skill with 0 courses if it is genuinely central to the occupation — this represents a curriculum gap worth noting.
 
 {{"selected_occupation": {{"title": "...", "soc_code": "...", "core_skills": ["...", "...", "..."]}}}}"""
 
@@ -111,17 +112,18 @@ def _build_occupation_selection_context(gathered: GatheredContext) -> str:
     """Build context string for the occupation selection LLM call, including skills per occupation."""
     driver = get_driver()
 
-    # Fetch skills for each occupation
-    occ_skills: dict[str, list[str]] = {}
+    # Fetch skills for each occupation with college course coverage
+    occ_skills: dict[str, list[dict]] = {}
     with driver.session() as session:
         for occ in gathered.occupation_evidence:
             title = occ["title"]
             result = session.run("""
                 MATCH (occ:Occupation {title: $title})-[:REQUIRES_SKILL]->(sk:Skill)
-                RETURN sk.name AS skill
+                OPTIONAL MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk)
+                RETURN sk.name AS skill, count(DISTINCT c) AS course_count
                 ORDER BY skill
-            """, title=title).data()
-            occ_skills[title] = [r["skill"] for r in result]
+            """, title=title, college=gathered.college).data()
+            occ_skills[title] = result
 
     lines = [
         f"EMPLOYER: {gathered.employer_name}",
@@ -139,7 +141,12 @@ def _build_occupation_selection_context(gathered: GatheredContext) -> str:
         lines.append(", ".join(parts))
         skills = occ_skills.get(occ["title"], [])
         if skills:
-            lines.append(f"    Skills: {', '.join(skills)}")
+            skill_parts = []
+            for s in skills:
+                cnt = s["course_count"]
+                gap = " — gap" if cnt == 0 else ""
+                skill_parts.append(f"{s['skill']} ({cnt} courses{gap})")
+            lines.append(f"    Skills: {', '.join(skill_parts)}")
     return "\n".join(line for line in lines if line is not None)
 
 

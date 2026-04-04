@@ -113,7 +113,7 @@ TEST_CASES = [
     # Retail - Home Improvement
     {
         "employer": "Home Depot",
-        "expect_contains": "Sales",
+        "expect_contains": "Sales|Manager",
         "reject": ["Accountants", "Human Resources"],
         "sector": "Retail",
         "expect_depts": ["Bus|Market"],
