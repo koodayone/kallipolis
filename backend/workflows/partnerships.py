@@ -13,7 +13,7 @@ from ontology.schema import get_driver
 from models import (
     NarrativeProposal, ProposalJustification,
     OccupationEvidence, DepartmentEvidence, CourseEvidence,
-    StudentEvidence, StudentSummaryEvidence,
+    StudentEvidence, StudentSummaryEvidence, StudentEnrollmentEvidence,
 )
 
 logger = logging.getLogger(__name__)
@@ -229,13 +229,13 @@ def _gather_aligned_curriculum(college: str, core_skills: list[str]) -> tuple[st
 # Department Relevance Filter
 # ═══════════════════════════════════════════════════════════════════════════
 
-_DEPT_FILTER_PROMPT = """Filter this list of departments to only those genuinely relevant to training students for this occupation at this employer. Return ONLY the JSON — no reasoning.
+_DEPT_FILTER_PROMPT = """Filter this list of departments to only those that directly train students for this specific occupation. Return ONLY the JSON — no reasoning.
 
 Employer: {employer}
 Occupation: {occupation}
 Departments: {department_list}
 
-A department is relevant if its coursework would directly prepare a student for this role. A Fashion department is not relevant to a food manufacturer. A Sociology department is not relevant to a plumbing company. Only keep departments whose training content is directly applicable.
+The question is: would coursework in this department contribute to a student's ability to perform this occupation? Remove departments with no plausible connection to the role. An Ornamental Horticulture department does not train Sales Representatives. A Fashion department does not train Food Science Technicians. A Mathematics department does not train Plumbers. But an Agriculture department IS relevant to Food Science Technicians because food science draws on agricultural knowledge.
 
 {{"relevant_departments": ["...", "..."]}}"""
 
@@ -329,26 +329,30 @@ def _build_narrative_context(gathered: GatheredContext, dept_text: str, selected
     return "\n".join(line for line in lines if line is not None)
 
 
-def _gather_top_students(college: str, departments: list[str], core_skills: list[str]) -> tuple[dict, list[dict]]:
-    """Fetch student pipeline stats and top 10 candidates by primary_focus match.
+def _gather_student_pipeline(college: str, departments: list[str], core_skills: list[str]) -> tuple[dict, list[dict]]:
+    """Find students enrolled in courses within aligned departments that develop core skills.
 
-    Returns (student_stats, top_students_list).
-    student_stats: {total_in_program, with_all_core_skills}
+    Students are guaranteed to have at least one relevant enrollment.
+    Returns (student_stats, top_students_with_detail).
     """
     driver = get_driver()
     num_core = len(core_skills)
 
     with driver.session() as session:
-        # Aggregate stats: students whose primary_focus matches aligned departments
+        # Stats: students enrolled in relevant courses with matching primary_focus
         stats = session.run("""
-            MATCH (st:Student)
-            WHERE EXISTS { (st)-[:ENROLLED_IN]->(:Course {college: $college}) }
-              AND ANY(dept IN $departments WHERE st.primary_focus CONTAINS dept
-                 OR dept CONTAINS st.primary_focus)
-            WITH st
-            OPTIONAL MATCH (st)-[:HAS_SKILL]->(sk:Skill)
-            WHERE sk.name IN $core_skills
-            WITH st, count(DISTINCT sk) AS core_count
+            MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk:Skill),
+                  (c)<-[:CONTAINS]-(dept:Department)
+            WHERE sk.name IN $core_skills AND dept.name IN $departments
+            WITH collect(DISTINCT c) AS relevant_courses
+            UNWIND relevant_courses AS rc
+            MATCH (st:Student)-[:ENROLLED_IN]->(rc)
+            WHERE ANY(dept IN $departments WHERE st.primary_focus CONTAINS dept
+               OR dept CONTAINS st.primary_focus)
+            WITH DISTINCT st
+            OPTIONAL MATCH (st)-[:HAS_SKILL]->(sk2:Skill)
+            WHERE sk2.name IN $core_skills
+            WITH st, count(DISTINCT sk2) AS core_count
             RETURN count(st) AS total_in_program,
                    sum(CASE WHEN core_count = $num_core THEN 1 ELSE 0 END) AS with_all_core_skills
         """, college=college, departments=departments, core_skills=core_skills, num_core=num_core).single()
@@ -358,24 +362,26 @@ def _gather_top_students(college: str, departments: list[str], core_skills: list
             "with_all_core_skills": stats["with_all_core_skills"] if stats else 0,
         }
 
-        # Top 10 candidates: primary_focus match, sorted by core skill count then GPA
+        # Top 10 with all courses developing core skills (filtered by primary_focus)
         result = session.run("""
-            MATCH (st:Student)
-            WHERE EXISTS { (st)-[:ENROLLED_IN]->(:Course {college: $college}) }
-              AND ANY(dept IN $departments WHERE st.primary_focus CONTAINS dept
-                 OR dept CONTAINS st.primary_focus)
-            OPTIONAL MATCH (st)-[:HAS_SKILL]->(sk:Skill)
+            MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk:Skill)
             WHERE sk.name IN $core_skills
-            WITH st, count(DISTINCT sk) AS core_skill_count
-            OPTIONAL MATCH (st)-[e:ENROLLED_IN]->(c:Course {college: $college})
-            WHERE e.grade IN ['A','B','C','P']
-            WITH st, core_skill_count, count(DISTINCT c) AS completed
-            ORDER BY core_skill_count DESC, st.gpa DESC, completed DESC
+            WITH collect(DISTINCT c) AS relevant_courses
+            UNWIND relevant_courses AS rc
+            MATCH (st:Student)-[e:ENROLLED_IN]->(rc)
+            WHERE ANY(dept IN $departments WHERE st.primary_focus CONTAINS dept
+               OR dept CONTAINS st.primary_focus)
+            WITH st, collect(DISTINCT {code: rc.code, name: rc.name, grade: e.grade, term: e.term}) AS enrollments
+            OPTIONAL MATCH (st)-[:HAS_SKILL]->(sk2:Skill)
+            WHERE sk2.name IN $core_skills
+            WITH st, enrollments, collect(DISTINCT sk2.name) AS relevant_skills, count(DISTINCT sk2) AS core_count
+            ORDER BY core_count DESC, st.gpa DESC
             LIMIT 10
             RETURN st.uuid AS uuid, st.primary_focus AS primary_focus,
-                   completed AS courses_completed,
+                   size(enrollments) AS courses_completed,
                    COALESCE(st.gpa, 0.0) AS gpa,
-                   core_skill_count AS matching_skills
+                   core_count AS matching_skills,
+                   enrollments, relevant_skills
         """, college=college, departments=departments, core_skills=core_skills).data()
 
     top_students = [
@@ -386,6 +392,11 @@ def _gather_top_students(college: str, departments: list[str], core_skills: list
             "courses_completed": r["courses_completed"],
             "gpa": round(r["gpa"], 2),
             "matching_skills": r["matching_skills"],
+            "enrollments": [
+                {"code": e["code"], "name": e["name"], "grade": e["grade"], "term": e["term"]}
+                for e in r["enrollments"]
+            ],
+            "relevant_skills": r["relevant_skills"],
         }
         for i, r in enumerate(result)
     ]
@@ -704,7 +715,7 @@ async def run_targeted_proposal(employer: str, college: str, engagement_type: st
     dept_text = _build_dept_text(curriculum_evidence, core_skills)
 
     aligned_depts = [d["department"] for d in curriculum_evidence]
-    student_stats, top_students = _gather_top_students(college, aligned_depts, core_skills)
+    student_stats, top_students = _gather_student_pipeline(college, aligned_depts, core_skills)
     narrative_context = _build_narrative_context(gathered, dept_text, selected_occ, engagement_type)
 
     prompt_text = _get_prompt(engagement_type, narrative_context)
@@ -738,7 +749,7 @@ def stream_targeted_proposal(employer: str, college: str, engagement_type: str =
     dept_text = _build_dept_text(curriculum_evidence, core_skills)
 
     aligned_depts = [d["department"] for d in curriculum_evidence]
-    student_stats, top_students = _gather_top_students(college, aligned_depts, core_skills)
+    student_stats, top_students = _gather_student_pipeline(college, aligned_depts, core_skills)
     narrative_context = _build_narrative_context(gathered, dept_text, selected_occ, engagement_type)
 
     prompt_text = _get_prompt(engagement_type, narrative_context)

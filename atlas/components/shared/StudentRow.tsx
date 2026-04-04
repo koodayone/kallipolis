@@ -53,9 +53,11 @@ type Props = {
   detail?: StudentDetailData | null;
   isLoading?: boolean;
   onExpand?: () => void;
+  // Show skills match instead of courses (proposal context)
+  totalCoreSkills?: number;
 };
 
-export default function StudentRow({ student, index, brandColor, isOpen: controlledOpen, onToggle, detail, isLoading, onExpand }: Props) {
+export default function StudentRow({ student, index, brandColor, isOpen: controlledOpen, onToggle, detail, isLoading, onExpand, totalCoreSkills }: Props) {
   const [internalOpen, setInternalOpen] = useState(false);
   const [tab, setTab] = useState<"history" | "skills">("history");
   const isOpen = controlledOpen ?? internalOpen;
@@ -100,9 +102,22 @@ export default function StudentRow({ student, index, brandColor, isOpen: control
         <span style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.55)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
           {student.primaryFocus}
         </span>
-        <span style={{ fontFamily: FONT, fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.6)" }}>
-          {student.coursesCompleted} courses
-        </span>
+        {totalCoreSkills != null ? (
+          <span style={{ display: "flex" }}>
+            <span style={{
+              fontFamily: FONT, fontSize: "10px", fontWeight: 600,
+              padding: "3px 8px", borderRadius: "100px",
+              background: `${brandColor}15`, color: brandColor, border: `1px solid ${brandColor}40`,
+              whiteSpace: "nowrap",
+            }}>
+              {student.matchingSkills ?? 0}/{totalCoreSkills} SKILLS
+            </span>
+          </span>
+        ) : (
+          <span style={{ fontFamily: FONT, fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.6)" }}>
+            {student.coursesCompleted} courses
+          </span>
+        )}
         <span style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 700, color: gpaColor(student.gpa) }}>
           {student.gpa.toFixed(2)}
         </span>

@@ -3,7 +3,7 @@
 import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import type { ApiTargetedProposal } from "@/lib/api";
-import { getStudent, getOccupationDetail } from "@/lib/api";
+import { getOccupationDetail } from "@/lib/api";
 import { saveProposal, removeProposal, updateProposalStatus, type SavedProposal } from "@/lib/savedProposals";
 import OccupationRow from "@/components/shared/OccupationRow";
 import DepartmentRow from "@/components/shared/DepartmentRow";
@@ -71,28 +71,7 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
     finally { setLoadingOccs(prev => { const next = new Set(prev); next.delete(socCode); return next; }); }
   }, [occDetails, collegeId]);
 
-  // Student detail loading for expand
-  const [studentDetails, setStudentDetails] = useState<Record<string, any>>({});
-  const [loadingStudents, setLoadingStudents] = useState<Set<string>>(new Set());
 
-  const handleStudentExpand = useCallback(async (uuid: string) => {
-    if (studentDetails[uuid] || !collegeId) return;
-    setLoadingStudents(prev => new Set(prev).add(uuid));
-    try {
-      const detail = await getStudent(uuid, collegeId);
-      setStudentDetails(prev => ({
-        ...prev,
-        [uuid]: {
-          enrollments: detail.enrollments.map((e: any) => ({
-            courseCode: e.course_code, courseName: e.course_name,
-            department: e.department, grade: e.grade, term: e.term, status: e.status,
-          })),
-          skills: detail.skills,
-        },
-      }));
-    } catch {}
-    finally { setLoadingStudents(prev => { const next = new Set(prev); next.delete(uuid); return next; }); }
-  }, [studentDetails, collegeId]);
 
   if (state === "dismissed") return null;
 
@@ -219,7 +198,7 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
                 columns={[
                   { label: "Student", width: "110px" },
                   { label: "Primary Focus", width: "1fr" },
-                  { label: "Courses", width: "90px" },
+                  { label: "Skills", width: "90px" },
                   { label: "GPA", width: "60px" },
                 ]}
                 gridTemplateColumns="24px 110px 1fr 90px 60px"
@@ -228,6 +207,7 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
               {proposal.justification.student_evidence.top_students.map((s, i) => (
                 <StudentRow
                   key={s.uuid}
+                  totalCoreSkills={proposal.core_skills.length}
                   student={{
                     uuid: s.uuid,
                     displayNumber: s.display_number,
@@ -238,9 +218,14 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
                   }}
                   index={i}
                   brandColor={brandColor}
-                  detail={studentDetails[s.uuid] ?? null}
-                  isLoading={loadingStudents.has(s.uuid)}
-                  onExpand={() => handleStudentExpand(s.uuid)}
+                  detail={{
+                    enrollments: (s.enrollments || []).map(e => ({
+                      courseCode: e.code, courseName: e.name,
+                      grade: e.grade, term: e.term,
+                      department: "", status: "",
+                    })),
+                    skills: s.relevant_skills || [],
+                  }}
                 />
               ))}
             </div>

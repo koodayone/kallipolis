@@ -406,6 +406,13 @@ export type ApiDepartmentEvidence = {
   aligned_skills: string[];
 };
 
+export type ApiStudentEnrollmentEvidence = {
+  code: string;
+  name: string;
+  grade: string;
+  term: string;
+};
+
 export type ApiStudentSummaryEvidence = {
   uuid: string;
   display_number: number;
@@ -413,6 +420,8 @@ export type ApiStudentSummaryEvidence = {
   courses_completed: number;
   gpa: number;
   matching_skills: number;
+  enrollments: ApiStudentEnrollmentEvidence[];
+  relevant_skills: string[];
 };
 
 export type ApiStudentEvidence = {

@@ -256,6 +256,13 @@ class DepartmentEvidence(BaseModel):
     aligned_skills: list[str]
 
 
+class StudentEnrollmentEvidence(BaseModel):
+    code: str
+    name: str
+    grade: str
+    term: str
+
+
 class StudentSummaryEvidence(BaseModel):
     uuid: str
     display_number: int
@@ -263,6 +270,8 @@ class StudentSummaryEvidence(BaseModel):
     courses_completed: int
     gpa: float
     matching_skills: int
+    enrollments: list[StudentEnrollmentEvidence] = []
+    relevant_skills: list[str] = []
 
 
 class StudentEvidence(BaseModel):
