@@ -444,6 +444,7 @@ export type ApiTargetedProposal = {
   selected_occupation: string;
   selected_soc_code: string | null;
   core_skills: string[];
+  gap_skill: string;
   regions: string[];
   opportunity: string;
   opportunity_evidence: ApiOccupationEvidence[];

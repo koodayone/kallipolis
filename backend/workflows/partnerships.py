@@ -107,6 +107,16 @@ Rules:
 
 {{"selected_occupation": {{"title": "...", "soc_code": "...", "core_skills": ["...", "...", "..."]}}}}"""
 
+_OCCUPATION_SELECTION_CODESIGN_PROMPT = """Select the primary hiring occupation for this employer. Return ONLY the JSON below — no reasoning, no explanation, no other text.
+
+{context}
+
+Rules:
+- Pick the ONE occupation this employer would hire in volume. Not generic management or admin roles.
+- Pick 3 core skills from the "Skills the college develops" list. These represent existing alignment.
+
+{{"selected_occupation": {{"title": "...", "soc_code": "...", "core_skills": ["...", "...", "..."]}}}}"""
+
 
 def _build_occupation_selection_context(gathered: GatheredContext) -> str:
     """Build context string for the occupation selection LLM call, including skills per occupation."""
@@ -150,14 +160,122 @@ def _build_occupation_selection_context(gathered: GatheredContext) -> str:
     return "\n".join(line for line in lines if line is not None)
 
 
-def _select_occupation(gathered: GatheredContext) -> dict:
-    """Select the primary occupation for this employer. Returns {title, soc_code, core_skills}."""
-    context = _build_occupation_selection_context(gathered)
+_GAP_IDENTIFICATION_PROMPT = """You are identifying a curriculum gap for a community college partnership proposal.
+
+Employer: {employer_name} ({sector})
+Occupation: {occupation}
+
+The college currently develops these skills for this occupation:
+{skills_list}
+
+Your task: Identify ONE skill that is critical to the daily practice of this occupation at this employer but is genuinely NOT covered by the college's existing curriculum.
+
+Before selecting, verify your choice against these criteria:
+1. SEMANTIC CHECK: Is your proposed skill a synonym, subset, or variant of ANY skill in the list above? "Medication Administration" is a synonym of "Drug Administration." "Patient Triage" is a subset of "Patient Assessment." If there is any semantic overlap, reject it and choose something else.
+2. SPECIFICITY: The skill must be specific enough that a curriculum developer could build a course module around it. "Communication" is too broad. "Electronic Health Records (EHR) Navigation" is specific.
+3. SCOPE: The skill must be teachable at a community college level. "Surgical Technique" is beyond scope. "Sterile Field Preparation" is within scope.
+4. RELEVANCE: The skill must be something this specific employer would value. Consider the employer's sector and operational context.
+5. ACTIONABILITY: A faculty-industry working group could reasonably address this gap within one catalog cycle.
+
+Return ONLY this JSON:
+{{"gap_skill": "...", "rationale": "one sentence explaining why this skill is absent and why it matters for this occupation at this employer"}}"""
+
+
+def _get_developed_skills(college: str, occupation_title: str) -> list[str]:
+    """Get all skill names the college develops for a given occupation."""
+    driver = get_driver()
+    with driver.session() as session:
+        result = session.run("""
+            MATCH (occ:Occupation {title: $title})-[:REQUIRES_SKILL]->(sk:Skill)
+                  <-[:DEVELOPS]-(c:Course {college: $college})
+            RETURN DISTINCT sk.name AS skill
+            ORDER BY skill
+        """, title=occupation_title, college=college).data()
+    return [r["skill"] for r in result]
+
+
+def _identify_gap_skill(employer_name: str, sector: str, occupation: str, college_skills: list[str]) -> dict:
+    """Dedicated LLM call to identify a genuine curriculum gap skill.
+
+    Returns {gap_skill, rationale}.
+    """
+    skills_list = "\n".join(f"  - {s}" for s in college_skills)
+    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+    message = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=256,
+        messages=[{"role": "user", "content": _GAP_IDENTIFICATION_PROMPT.format(
+            employer_name=employer_name,
+            sector=sector or "Unknown",
+            occupation=occupation,
+            skills_list=skills_list,
+        )}],
+    )
+    raw = message.content[0].text
+
+    try:
+        result = _extract_json(raw)
+        gap = result.get("gap_skill", "")
+        rationale = result.get("rationale", "")
+        logger.info(f"Gap skill identified: {gap} — {rationale}")
+        return {"gap_skill": gap, "rationale": rationale}
+    except (json.JSONDecodeError, ValueError) as e:
+        logger.warning(f"Gap identification returned invalid JSON ({e})")
+        return {"gap_skill": "", "rationale": ""}
+
+
+def _build_codesign_selection_context(gathered: GatheredContext) -> str:
+    """Build context for co-design occupation selection — skills with coverage only, no gap labels."""
+    driver = get_driver()
+
+    occ_skills: dict[str, list[dict]] = {}
+    with driver.session() as session:
+        for occ in gathered.occupation_evidence:
+            title = occ["title"]
+            result = session.run("""
+                MATCH (occ:Occupation {title: $title})-[:REQUIRES_SKILL]->(sk:Skill)
+                OPTIONAL MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk)
+                WITH sk.name AS skill, count(DISTINCT c) AS course_count
+                WHERE course_count > 0
+                RETURN skill, course_count
+                ORDER BY skill
+            """, title=title, college=gathered.college).data()
+            occ_skills[title] = result
+
+    lines = [
+        f"EMPLOYER: {gathered.employer_name}",
+        f"Sector: {gathered.sector}" if gathered.sector else None,
+        f"Description: {gathered.description}" if gathered.description else None,
+        "",
+        "OCCUPATIONS THIS EMPLOYER HIRES FOR:",
+    ]
+    for occ in gathered.occupation_evidence:
+        parts = [f"  {occ['title']}"]
+        if occ.get("annual_wage"):
+            parts.append(f"${occ['annual_wage']:,}/yr")
+        if occ.get("annual_openings"):
+            parts.append(f"{occ['annual_openings']:,} openings/yr")
+        lines.append(", ".join(parts))
+        skills = occ_skills.get(occ["title"], [])
+        if skills:
+            skill_parts = [f"{s['skill']} ({s['course_count']} courses)" for s in skills]
+            lines.append(f"    Skills the college develops: {', '.join(skill_parts)}")
+    return "\n".join(line for line in lines if line is not None)
+
+
+def _select_occupation(gathered: GatheredContext, engagement_type: str = "") -> dict:
+    """Select the primary occupation for this employer. Returns {title, soc_code, core_skills, gap_skill?}."""
+    if engagement_type == "curriculum_codesign":
+        context = _build_codesign_selection_context(gathered)
+        prompt = _OCCUPATION_SELECTION_CODESIGN_PROMPT
+    else:
+        context = _build_occupation_selection_context(gathered)
+        prompt = _OCCUPATION_SELECTION_PROMPT
     client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
     message = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=512,
-        messages=[{"role": "user", "content": _OCCUPATION_SELECTION_PROMPT.format(context=context)}],
+        messages=[{"role": "user", "content": prompt.format(context=context)}],
     )
     raw_response = message.content[0].text
 
@@ -277,6 +395,59 @@ def _filter_relevant_departments(employer: str, occupation: str, departments: li
         return departments
 
 
+def _select_primary_department_by_count(curriculum_evidence: list[dict]) -> str:
+    """Fallback: select the department with the most aligned courses."""
+    if not curriculum_evidence:
+        return ""
+    return max(curriculum_evidence, key=lambda d: len(d["courses"]))["department"]
+
+
+_PRIMARY_DEPT_PROMPT = """Select the ONE department that is the most natural home for a curriculum co-design partnership focused on this occupation. Return ONLY the JSON — no reasoning.
+
+Employer: {employer}
+Occupation: {occupation}
+Departments: {department_list}
+
+The question is: which department would a program coordinator naturally approach to build a workforce partnership for this role? Not which department has the most courses — which department's identity and mission most directly align with this occupation.
+
+Prefer departments that train students specifically for this occupation over departments that teach foundational prerequisites. Chemistry and Biology teach foundational science that supports many careers. Agriculture, Culinary, and Nursing train students specifically for their respective industries. For a Food Science Technician at a food manufacturer, prefer Agriculture or Culinary over Chemistry or Biology. If only foundational departments are available, pick the most directly relevant one.
+
+{{"primary_department": "..."}}"""
+
+
+def _select_primary_department_llm(employer: str, occupation: str, departments: list[str]) -> str:
+    """LLM-guided primary department selection for curriculum co-design."""
+    if not departments:
+        return ""
+    if len(departments) == 1:
+        return departments[0]
+
+    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+    message = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=128,
+        messages=[{"role": "user", "content": _PRIMARY_DEPT_PROMPT.format(
+            employer=employer,
+            occupation=occupation,
+            department_list=", ".join(departments),
+        )}],
+    )
+    raw = message.content[0].text
+
+    try:
+        result = _extract_json(raw)
+        primary = result.get("primary_department", "")
+        if primary in departments:
+            logger.info(f"Primary department selected: {primary}")
+            return primary
+        logger.warning(f"LLM selected '{primary}' not in department list, falling back")
+    except (json.JSONDecodeError, ValueError) as e:
+        logger.warning(f"Primary department selection returned invalid JSON ({e}), falling back")
+
+    # Fallback to deterministic
+    return departments[0]
+
+
 def _build_dept_text(curriculum_evidence: list[dict], core_skills: list[str]) -> str:
     """Build department-level text for the narrative prompt from filtered evidence."""
     core_set = set(core_skills)
@@ -314,6 +485,50 @@ def _build_narrative_context(gathered: GatheredContext, dept_text: str, selected
     ]
 
     # Economic data for selected occupation only
+    for occ_ev in gathered.occupation_evidence:
+        if occ_ev.get("title") == occ_title:
+            parts = [f"ECONOMIC DATA: {occ_ev['title']}"]
+            if occ_ev.get("annual_wage"):
+                parts.append(f"${occ_ev['annual_wage']:,}/yr")
+            if occ_ev.get("employment"):
+                parts.append(f"{occ_ev['employment']:,} employed")
+            if occ_ev.get("growth_rate") is not None:
+                parts.append(f"{occ_ev['growth_rate']:+.1%} growth")
+            if occ_ev.get("annual_openings"):
+                parts.append(f"{occ_ev['annual_openings']:,} annual openings")
+            lines.append("")
+            lines.append(", ".join(parts))
+            break
+
+    if engagement_type:
+        lines.append("")
+        lines.append(f"PARTNERSHIP ENGAGEMENT TYPE: {engagement_type}")
+
+    return "\n".join(line for line in lines if line is not None)
+
+
+def _build_codesign_context(gathered: GatheredContext, dept_text: str, selected_occ: dict, gap_skill: str, engagement_type: str = "", gap_rationale: str = "") -> str:
+    """Build context for curriculum co-design narrative — includes gap skill."""
+    occ_title = selected_occ.get("title", "Unknown")
+    occ_soc = selected_occ.get("soc_code", "")
+    core_skills = selected_occ.get("core_skills", [])
+
+    lines = [
+        f"EMPLOYER: {gathered.employer_name}",
+        f"Sector: {gathered.sector}" if gathered.sector else None,
+        f"Description: {gathered.description}" if gathered.description else None,
+        f"Regions: {', '.join(gathered.regions)}" if gathered.regions else None,
+        f"College: {gathered.college}",
+        "",
+        f"SELECTED OCCUPATION: {occ_title} ({occ_soc})",
+        f"CORE SKILLS (college develops these): {', '.join(core_skills)}",
+        f"GAP SKILL: {gap_skill}",
+        f"RATIONALE: {gap_rationale}" if gap_rationale else None,
+        "This area can be more rigorously developed through co-design with the employer. A collaborative review would determine the scope and curricular approach.",
+        "",
+        dept_text,
+    ]
+
     for occ_ev in gathered.occupation_evidence:
         if occ_ev.get("title") == occ_title:
             parts = [f"ECONOMIC DATA: {occ_ev['title']}"]
@@ -452,6 +667,8 @@ Tone:
 - Short, direct sentences. No subordinate clauses that explain why something matters. State it and move on.
 - Figures are fine where they flow naturally. Do not avoid them artificially.
 - No em dashes. No rhetorical flourishes. No "remarkably," "notably," "importantly."
+- When discussing the college's programs, lead with what the department does well. Frame development areas as opportunities to strengthen existing preparation, not deficiencies to correct. The coordinator built these programs. Respect that work.
+- Do not say "gaps," "missing," "does not address," "falls short," or "not fully prepared." Instead say "can be strengthened," "an opportunity to deepen," or "an area for continued development."
 - Do not use bullet points or numbered lists.
 - Return ONLY valid JSON with no text before or after."""
 
@@ -462,7 +679,8 @@ PARTNERSHIP TYPE: Internship Pipeline — structured student work rotations at t
 
 Type-specific guidance:
 - OPPORTUNITY: Why this employer hires for this occupation in this region. What structured rotations would look like. No career ladder speculation.
-- CURRICULUM COMPOSITION: Which departments prepare students for on-site rotations in this role.
+- CURRICULUM COMPOSITION: Affirm the department's alignment. Which departments prepare students for on-site rotations in this role. Do not suggest the program is insufficient.
+- STUDENT COMPOSITION: Students are prepared. Frame their readiness positively.
 - ROADMAP: Operational areas for rotations, duration (8-16 weeks), course credit mapping, first-cohort target.
 
 REFERENCE EXAMPLE (match this prose quality — do not copy its content):
@@ -478,22 +696,23 @@ Roadmap: Convene a meeting between the Nursing department chair and Kaiser's wor
 
 CURRICULUM_CODESIGN_PROMPT = _NARRATIVE_PREAMBLE + """
 
-PARTNERSHIP TYPE: Curriculum Co-Design — the employer shapes program content and quality through ongoing collaboration with faculty.
+PARTNERSHIP TYPE: Curriculum Co-Design — the employer shapes program content through collaboration with faculty to close a specific skill gap.
 
 Type-specific guidance:
-- OPPORTUNITY: What the employer needs that the college doesn't yet develop. Why that gap matters given regional demand.
-- CURRICULUM COMPOSITION: Most important section. Lead with skill gaps and which departments would close them.
-- ROADMAP: Faculty-industry working group, curriculum gap audit, pilot revision, quarterly review.
+- OPPORTUNITY: The college's primary department is well-positioned for this occupation with strong existing alignment. There is one area that a co-design partnership could strengthen further. Tone is collaborative — the college is well-aligned, not falling short.
+- CURRICULUM COMPOSITION: Focus on the primary department's strengths across the core skills, then introduce the gap skill as an area that can be more rigorously addressed through collaboration with the employer. Do not say "not addressed" or "missing" — say "can be strengthened" or "can be more rigorously developed." The co-design audit would determine the scope and approach.
+- STUDENT COMPOSITION: Students in the primary department who are developing the core skills.
+- ROADMAP: Collaborative curriculum review with the primary department and employer, focused on strengthening the identified area. Pilot development within the next catalog cycle.
 
 REFERENCE EXAMPLE (match this prose quality — do not copy its content):
 
-Opportunity: Cargill hires food science technicians at $47,950/yr with 190 annual openings in the Central Valley, but the college's curriculum doesn't fully develop the skills that role requires. A co-design partnership would close that gap by embedding Cargill's standards into program content.
+Opportunity: The college's Nursing department is well-aligned with Adventist Health's registered nurse hiring needs. A co-design partnership would strengthen the program further by developing areas like EHR proficiency that are increasingly central to clinical workflows.
 
-Curriculum Composition: The Business department has the strongest existing alignment but lacks auditing coverage, a skill Cargill requires for its accounting roles. The Agriculture department's supply chain content may need deepening to match the employer's logistics environment.
+Curriculum Composition: Nursing develops Clinical Documentation, Nursing Process, and Patient Assessment across its core program. EHR navigation is a practical requirement in modern hospital settings that can be more rigorously developed through collaboration with Adventist Health's clinical education team.
 
-Student Composition: Students in the Business and Agriculture programs are already developing skills relevant to Cargill's operations. The co-design effort would sharpen existing preparation rather than build it from scratch.
+Student Composition: Nursing students are completing coursework in the core clinical skills this role requires. They represent the strongest candidates for a co-design effort that strengthens their readiness for the specific clinical environment at Adventist Health.
 
-Roadmap: Convene a faculty-industry working group with Business and Agriculture department chairs alongside Cargill's HR and operations leadership. Identify two to three courses for pilot revision in the next catalog cycle with quarterly review."""
+Roadmap: Convene a working group between the Nursing department chair and Adventist Health's clinical education leadership. Evaluate EHR coverage and other practice-specific requirements, then pilot revised content within the next catalog cycle."""
 
 
 ADVISORY_BOARD_PROMPT = _NARRATIVE_PREAMBLE + """
@@ -502,16 +721,16 @@ PARTNERSHIP TYPE: Advisory Board — ongoing strategic guidance from the employe
 
 Type-specific guidance:
 - OPPORTUNITY: Why this employer's perspective matters for the college's programs. No grant funding required.
-- CURRICULUM COMPOSITION: Which departments the board would advise. Skill gaps as inaugural agenda items.
+- CURRICULUM COMPOSITION: Which departments the board would advise. Areas for continued development as inaugural agenda items.
 - ROADMAP: Formal invitation, inaugural meeting with 2-3 topics, quarterly cadence.
 
 REFERENCE EXAMPLE (match this prose quality — do not copy its content):
 
 Opportunity: Cargill hires across eight occupations in the Central Valley with over 4,500 combined annual openings. That hiring breadth makes their perspective on workforce readiness relevant to several college programs. An advisory board would formalize this as an ongoing channel for industry guidance, requiring no grant funding.
 
-Curriculum Composition: The Agriculture, Work Experience, and Business departments cover the core skill areas Cargill hires for. Gaps in auditing and labor relations are natural inaugural agenda items.
+Curriculum Composition: The Agriculture, Work Experience, and Business departments cover the core skill areas Cargill hires for. Auditing and labor relations are areas where Cargill's perspective could strengthen program content.
 
-Student Composition: Students in these programs are developing skills relevant to Cargill's operations. The advisory board would give Cargill a way to assess whether that preparation meets current standards.
+Student Composition: Students in these programs are developing skills relevant to Cargill's operations. The advisory board would give Cargill a way to share current industry standards and help the college stay calibrated.
 
 Roadmap: Send a formal invitation to Cargill's Central Valley regional leadership proposing a quarterly advisory board scoped to Agriculture, Business, and Food Services. The inaugural meeting should address curriculum alignment and identified skill gaps."""
 
@@ -591,6 +810,7 @@ def _assemble_proposal(
     student_stats: dict,
     top_students: list[dict],
     core_skills: list[str] | None = None,
+    gap_skill: str = "",
 ) -> NarrativeProposal:
     """Merge LLM-generated narrative with deterministic evidence blocks."""
     return NarrativeProposal(
@@ -600,6 +820,7 @@ def _assemble_proposal(
         selected_occupation=selected_occ.get("title", ""),
         selected_soc_code=selected_occ.get("soc_code"),
         core_skills=core_skills or selected_occ.get("core_skills", []),
+        gap_skill=gap_skill,
         regions=gathered.regions,
         opportunity=narrative["opportunity"],
         opportunity_evidence=[
@@ -704,26 +925,61 @@ def _evaluate_proposal(proposal: NarrativeProposal, curated_context: str) -> dic
 # ═══════════════════════════════════════════════════════════════════════════
 
 
-async def run_targeted_proposal(employer: str, college: str, engagement_type: str = "") -> NarrativeProposal:
-    """Generate a targeted partnership proposal for a specific employer."""
-    gathered = _gather_targeted_context(employer, college, engagement_type)
-    logger.info(f"Stage 1 complete: gathered context for {employer}")
+def _build_proposal_context(employer: str, college: str, engagement_type: str, gathered: GatheredContext, selected_occ: dict):
+    """Shared pipeline logic: build curriculum evidence, students, and narrative context.
 
-    selected_occ = _select_occupation(gathered)
-    logger.info(f"Stage 2 complete: selected '{selected_occ.get('title', '?')}' for {employer}")
-
+    Returns (curriculum_evidence, student_stats, top_students, narrative_context, core_skills, gap_skill).
+    """
     core_skills = selected_occ.get("core_skills", [])
+    gap_skill = ""
+    gap_rationale = ""
+
+    # Curriculum co-design: dedicated gap identification
+    if engagement_type == "curriculum_codesign":
+        occ_title = selected_occ.get("title", "")
+        college_skills = _get_developed_skills(college, occ_title)
+        gap_result = _identify_gap_skill(gathered.employer_name, gathered.sector, occ_title, college_skills)
+        gap_skill = gap_result.get("gap_skill", "")
+        gap_rationale = gap_result.get("rationale", "")
+
     _, curriculum_evidence = _gather_aligned_curriculum(college, core_skills)
 
     # Filter departments by semantic relevance
     all_dept_names = [d["department"] for d in curriculum_evidence]
     relevant_depts = _filter_relevant_departments(gathered.employer_name, selected_occ.get("title", ""), all_dept_names)
     curriculum_evidence = [d for d in curriculum_evidence if d["department"] in relevant_depts]
-    dept_text = _build_dept_text(curriculum_evidence, core_skills)
 
+    # Curriculum co-design: narrow to one primary department via LLM
+    if engagement_type == "curriculum_codesign" and curriculum_evidence:
+        dept_names = [d["department"] for d in curriculum_evidence]
+        primary_dept = _select_primary_department_llm(
+            gathered.employer_name, selected_occ.get("title", ""), dept_names
+        )
+        curriculum_evidence = [d for d in curriculum_evidence if d["department"] == primary_dept]
+
+    dept_text = _build_dept_text(curriculum_evidence, core_skills)
     aligned_depts = [d["department"] for d in curriculum_evidence]
     student_stats, top_students = _gather_student_pipeline(college, aligned_depts, core_skills)
-    narrative_context = _build_narrative_context(gathered, dept_text, selected_occ, engagement_type)
+
+    # Build narrative context — co-design gets gap skill + rationale
+    if engagement_type == "curriculum_codesign":
+        narrative_context = _build_codesign_context(gathered, dept_text, selected_occ, gap_skill, engagement_type, gap_rationale)
+    else:
+        narrative_context = _build_narrative_context(gathered, dept_text, selected_occ, engagement_type)
+
+    return curriculum_evidence, student_stats, top_students, narrative_context, core_skills, gap_skill
+
+
+async def run_targeted_proposal(employer: str, college: str, engagement_type: str = "") -> NarrativeProposal:
+    """Generate a targeted partnership proposal for a specific employer."""
+    gathered = _gather_targeted_context(employer, college, engagement_type)
+    logger.info(f"Stage 1 complete: gathered context for {employer}")
+
+    selected_occ = _select_occupation(gathered, engagement_type)
+    logger.info(f"Stage 2 complete: selected '{selected_occ.get('title', '?')}' for {employer}")
+
+    curriculum_evidence, student_stats, top_students, narrative_context, core_skills, gap_skill = \
+        _build_proposal_context(employer, college, engagement_type, gathered, selected_occ)
 
     prompt_text = _get_prompt(engagement_type, narrative_context)
     raw = _call_claude(prompt_text)
@@ -731,7 +987,7 @@ async def run_targeted_proposal(employer: str, college: str, engagement_type: st
 
     narrative = _parse_narrative_fields(raw)
     partnership_type = TYPE_LABELS.get(engagement_type, engagement_type)
-    proposal = _assemble_proposal(narrative, employer, gathered.sector, partnership_type, gathered, curriculum_evidence, selected_occ, student_stats, top_students, core_skills)
+    proposal = _assemble_proposal(narrative, employer, gathered.sector, partnership_type, gathered, curriculum_evidence, selected_occ, student_stats, top_students, core_skills, gap_skill)
 
     _evaluate_proposal(proposal, narrative_context)
     logger.info(f"Proposal complete for {employer}.")
@@ -743,21 +999,11 @@ def stream_targeted_proposal(employer: str, college: str, engagement_type: str =
     gathered = _gather_targeted_context(employer, college, engagement_type)
     logger.info(f"Stage 1 complete: gathered context for {employer}")
 
-    selected_occ = _select_occupation(gathered)
+    selected_occ = _select_occupation(gathered, engagement_type)
     logger.info(f"Stage 2 complete: selected '{selected_occ.get('title', '?')}' for {employer}")
 
-    core_skills = selected_occ.get("core_skills", [])
-    _, curriculum_evidence = _gather_aligned_curriculum(college, core_skills)
-
-    # Filter departments by semantic relevance
-    all_dept_names = [d["department"] for d in curriculum_evidence]
-    relevant_depts = _filter_relevant_departments(gathered.employer_name, selected_occ.get("title", ""), all_dept_names)
-    curriculum_evidence = [d for d in curriculum_evidence if d["department"] in relevant_depts]
-    dept_text = _build_dept_text(curriculum_evidence, core_skills)
-
-    aligned_depts = [d["department"] for d in curriculum_evidence]
-    student_stats, top_students = _gather_student_pipeline(college, aligned_depts, core_skills)
-    narrative_context = _build_narrative_context(gathered, dept_text, selected_occ, engagement_type)
+    curriculum_evidence, student_stats, top_students, narrative_context, core_skills, gap_skill = \
+        _build_proposal_context(employer, college, engagement_type, gathered, selected_occ)
 
     prompt_text = _get_prompt(engagement_type, narrative_context)
     logger.info(f"Stage 3: starting Claude stream for {employer} ({engagement_type})...")
@@ -775,7 +1021,7 @@ def stream_targeted_proposal(employer: str, college: str, engagement_type: str =
 
     narrative = _parse_narrative_fields(accumulated)
     partnership_type = TYPE_LABELS.get(engagement_type, engagement_type)
-    proposal = _assemble_proposal(narrative, employer, gathered.sector, partnership_type, gathered, curriculum_evidence, selected_occ, student_stats, top_students, core_skills)
+    proposal = _assemble_proposal(narrative, employer, gathered.sector, partnership_type, gathered, curriculum_evidence, selected_occ, student_stats, top_students, core_skills, gap_skill)
 
     _evaluate_proposal(proposal, narrative_context)
     logger.info(f"Stream complete: proposal for {employer}")

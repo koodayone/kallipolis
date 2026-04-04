@@ -294,6 +294,7 @@ class NarrativeProposal(BaseModel):
     selected_occupation: str
     selected_soc_code: Optional[str] = None
     core_skills: list[str] = []
+    gap_skill: str = ""
     regions: list[str] = []
     opportunity: str
     opportunity_evidence: list[OccupationEvidence]
