@@ -1,0 +1,1296 @@
+{
+  "college_name": "Pasadena",
+  "total_enrollments": 71982,
+  "top4_codes": {
+    "0502": {
+      "name": "Accounting",
+      "enrollment": 1069,
+      "grades": {
+        "W": 0.1552,
+        "A": 0.4088,
+        "B": 0.2264,
+        "C": 0.1179,
+        "D": 0.0468,
+        "F": 0.0449
+      }
+    },
+    "2105": {
+      "name": "Administration of Justice",
+      "enrollment": 424,
+      "grades": {
+        "A": 0.5944,
+        "B": 0.1792,
+        "C": 0.0566,
+        "D": 0.0047,
+        "F": 0.0566,
+        "W": 0.1085
+      }
+    },
+    "0410": {
+      "name": "Anatomy and Physiology",
+      "enrollment": 1023,
+      "grades": {
+        "W": 0.151,
+        "A": 0.3794,
+        "B": 0.2363,
+        "C": 0.1333,
+        "D": 0.0284,
+        "F": 0.0696,
+        "P": 0.002
+      }
+    },
+    "2202": {
+      "name": "Anthropology",
+      "enrollment": 1258,
+      "grades": {
+        "W": 0.1155,
+        "A": 0.518,
+        "B": 0.178,
+        "C": 0.097,
+        "D": 0.0321,
+        "F": 0.0593
+      }
+    },
+    "1009": {
+      "name": "Applied Design",
+      "enrollment": 115,
+      "grades": {
+        "A": 0.4,
+        "B": 0.2522,
+        "C": 0.1217,
+        "D": 0.0348,
+        "F": 0.0435,
+        "W": 0.1478
+      }
+    },
+    "1112": {
+      "name": "Arabic",
+      "enrollment": 29,
+      "grades": {
+        "A": 0.5173,
+        "B": 0.1034,
+        "W": 0.3793
+      }
+    },
+    "0201": {
+      "name": "Architecture and Architectural Technology",
+      "enrollment": 444,
+      "grades": {
+        "A": 0.4505,
+        "B": 0.2185,
+        "C": 0.0541,
+        "D": 0.036,
+        "F": 0.0991,
+        "W": 0.1419
+      }
+    },
+    "1002": {
+      "name": "Art",
+      "enrollment": 898,
+      "grades": {
+        "W": 0.1183,
+        "A": 0.5804,
+        "B": 0.1919,
+        "C": 0.0547,
+        "D": 0.0145,
+        "F": 0.0402
+      }
+    },
+    "1911": {
+      "name": "Astronomy",
+      "enrollment": 72,
+      "grades": {
+        "A": 0.5694,
+        "B": 0.2083,
+        "C": 0.0833,
+        "D": 0.0556,
+        "F": 0.0278,
+        "W": 0.0556
+      }
+    },
+    "0948": {
+      "name": "Automotive Technology",
+      "enrollment": 290,
+      "grades": {
+        "A": 0.4425,
+        "B": 0.2474,
+        "C": 0.1184,
+        "D": 0.0522,
+        "F": 0.0767,
+        "W": 0.0628
+      }
+    },
+    "0401": {
+      "name": "Biology, General",
+      "enrollment": 1220,
+      "grades": {
+        "W": 0.1094,
+        "A": 0.4942,
+        "B": 0.1932,
+        "C": 0.1242,
+        "D": 0.0296,
+        "F": 0.0486,
+        "P": 0.0008
+      }
+    },
+    "0430": {
+      "name": "Biotechnology and Biomedical Technology",
+      "enrollment": 39,
+      "grades": {
+        "A": 0.7179,
+        "B": 0.1026,
+        "C": 0.0513,
+        "F": 0.1026,
+        "P": 0.0256
+      }
+    },
+    "0402": {
+      "name": "Botany, General",
+      "enrollment": 52,
+      "grades": {
+        "A": 0.4082,
+        "B": 0.2653,
+        "C": 0.1429,
+        "F": 0.0204,
+        "W": 0.1632
+      }
+    },
+    "0505": {
+      "name": "Business Administration",
+      "enrollment": 148,
+      "grades": {
+        "A": 0.6351,
+        "B": 0.1419,
+        "C": 0.0811,
+        "D": 0.027,
+        "F": 0.0068,
+        "W": 0.1081
+      }
+    },
+    "0501": {
+      "name": "Business and Commerce, General",
+      "enrollment": 1152,
+      "grades": {
+        "W": 0.1302,
+        "A": 0.5685,
+        "B": 0.1736,
+        "C": 0.0738,
+        "D": 0.02,
+        "F": 0.0339
+      }
+    },
+    "0506": {
+      "name": "Business Management",
+      "enrollment": 296,
+      "grades": {
+        "W": 0.1191,
+        "A": 0.4898,
+        "B": 0.1972,
+        "C": 0.0987,
+        "D": 0.0408,
+        "F": 0.051,
+        "P": 0.0034
+      }
+    },
+    "1213": {
+      "name": "Cardiovascular Technician",
+      "enrollment": 9,
+      "grades": {
+        "P": 1.0
+      }
+    },
+    "1905": {
+      "name": "Chemistry, General",
+      "enrollment": 1498,
+      "grades": {
+        "W": 0.1687,
+        "A": 0.3353,
+        "B": 0.2075,
+        "C": 0.1821,
+        "D": 0.0435,
+        "F": 0.0596,
+        "P": 0.0033
+      }
+    },
+    "1305": {
+      "name": "Child Development/Early Care and Education",
+      "enrollment": 925,
+      "grades": {
+        "A": 0.4692,
+        "B": 0.1686,
+        "C": 0.1016,
+        "D": 0.0357,
+        "F": 0.1059,
+        "W": 0.1189
+      }
+    },
+    "1107": {
+      "name": "Chinese",
+      "enrollment": 410,
+      "grades": {
+        "W": 0.1076,
+        "A": 0.5649,
+        "B": 0.2274,
+        "C": 0.0513,
+        "D": 0.0146,
+        "F": 0.0342
+      }
+    },
+    "0957": {
+      "name": "Civil and Construction Management Technology",
+      "enrollment": 245,
+      "grades": {
+        "A": 0.5837,
+        "B": 0.1714,
+        "C": 0.0612,
+        "D": 0.0082,
+        "F": 0.0694,
+        "W": 0.1061
+      }
+    },
+    "1013": {
+      "name": "Commercial Art",
+      "enrollment": 326,
+      "grades": {
+        "A": 0.437,
+        "B": 0.2185,
+        "C": 0.0893,
+        "D": 0.0246,
+        "F": 0.0554,
+        "W": 0.1753
+      }
+    },
+    "1005": {
+      "name": "Commercial Music",
+      "enrollment": 181,
+      "grades": {
+        "A": 0.4483,
+        "B": 0.2299,
+        "C": 0.0517,
+        "D": 0.0287,
+        "F": 0.0747,
+        "W": 0.1667
+      }
+    },
+    "0708": {
+      "name": "Computer Infrastructure and Support",
+      "enrollment": 104,
+      "grades": {
+        "A": 0.3846,
+        "B": 0.2019,
+        "C": 0.125,
+        "D": 0.0577,
+        "F": 0.0865,
+        "W": 0.1442
+      }
+    },
+    "0706": {
+      "name": "Computer Science (Transfer)",
+      "enrollment": 723,
+      "grades": {
+        "W": 0.1342,
+        "A": 0.5574,
+        "B": 0.1452,
+        "C": 0.0636,
+        "D": 0.0249,
+        "F": 0.0719,
+        "P": 0.0028
+      }
+    },
+    "0707": {
+      "name": "Computer Software Development",
+      "enrollment": 497,
+      "grades": {
+        "A": 0.5092,
+        "B": 0.1324,
+        "C": 0.0733,
+        "D": 0.0143,
+        "F": 0.0815,
+        "W": 0.1894
+      }
+    },
+    "0952": {
+      "name": "Construction Crafts Technology",
+      "enrollment": 177,
+      "grades": {
+        "A": 0.5029,
+        "B": 0.2286,
+        "C": 0.1257,
+        "D": 0.0114,
+        "F": 0.0857,
+        "W": 0.0457
+      }
+    },
+    "3007": {
+      "name": "Cosmetology and Barbering",
+      "enrollment": 221,
+      "grades": {
+        "A": 0.5883,
+        "B": 0.3077,
+        "C": 0.0588,
+        "D": 0.0045,
+        "F": 0.0226,
+        "W": 0.0181
+      }
+    },
+    "0518": {
+      "name": "Customer Service",
+      "enrollment": 34,
+      "grades": {
+        "A": 0.8824,
+        "B": 0.0294,
+        "D": 0.0294,
+        "F": 0.0588
+      }
+    },
+    "1008": {
+      "name": "Dance",
+      "enrollment": 172,
+      "grades": {
+        "A": 0.6353,
+        "B": 0.0706,
+        "C": 0.0529,
+        "D": 0.0117,
+        "F": 0.0706,
+        "W": 0.1588
+      }
+    },
+    "1240": {
+      "name": "Dental Occupations",
+      "enrollment": 428,
+      "grades": {
+        "A": 0.629,
+        "B": 0.1966,
+        "C": 0.0467,
+        "P": 0.0811,
+        "W": 0.0467
+      }
+    },
+    "0614": {
+      "name": "Digital Media",
+      "enrollment": 505,
+      "grades": {
+        "W": 0.1367,
+        "A": 0.5029,
+        "B": 0.1485,
+        "C": 0.0733,
+        "D": 0.0376,
+        "F": 0.101
+      }
+    },
+    "0953": {
+      "name": "Drafting Technology",
+      "enrollment": 154,
+      "grades": {
+        "W": 0.2208,
+        "A": 0.4805,
+        "B": 0.1494,
+        "C": 0.0649,
+        "D": 0.0195,
+        "F": 0.0649
+      }
+    },
+    "1007": {
+      "name": "Dramatic Arts",
+      "enrollment": 1086,
+      "grades": {
+        "A": 0.6144,
+        "B": 0.1255,
+        "C": 0.0678,
+        "D": 0.0214,
+        "F": 0.0716,
+        "P": 0.0009,
+        "W": 0.0985
+      }
+    },
+    "2204": {
+      "name": "Economics",
+      "enrollment": 1127,
+      "grades": {
+        "A": 0.5751,
+        "B": 0.2435,
+        "C": 0.08,
+        "D": 0.0195,
+        "F": 0.0409,
+        "P": 0.0009,
+        "W": 0.04
+      }
+    },
+    "0801": {
+      "name": "Education, General",
+      "enrollment": 99,
+      "grades": {
+        "A": 0.2551,
+        "B": 0.0918,
+        "C": 0.0612,
+        "D": 0.0204,
+        "F": 0.102,
+        "W": 0.4694
+      }
+    },
+    "0802": {
+      "name": "Educational Aide (Teacher Assistant)",
+      "enrollment": 31,
+      "grades": {
+        "A": 0.6333,
+        "B": 0.1,
+        "D": 0.0334,
+        "F": 0.0666,
+        "W": 0.1667
+      }
+    },
+    "0934": {
+      "name": "Electronics and Electric Technology",
+      "enrollment": 116,
+      "grades": {
+        "A": 0.5087,
+        "B": 0.181,
+        "C": 0.0948,
+        "D": 0.0259,
+        "F": 0.0603,
+        "W": 0.1293
+      }
+    },
+    "1250": {
+      "name": "Emergency Medical Services",
+      "enrollment": 219,
+      "grades": {
+        "A": 0.3059,
+        "B": 0.1781,
+        "C": 0.1142,
+        "D": 0.1142,
+        "F": 0.1781,
+        "W": 0.1096
+      }
+    },
+    "0924": {
+      "name": "Engineering Technology, General",
+      "enrollment": 100,
+      "grades": {
+        "A": 0.47,
+        "B": 0.16,
+        "C": 0.14,
+        "D": 0.06,
+        "F": 0.07,
+        "W": 0.1
+      }
+    },
+    "0901": {
+      "name": "Engineering, General",
+      "enrollment": 93,
+      "grades": {
+        "A": 0.2796,
+        "B": 0.3226,
+        "C": 0.1935,
+        "D": 0.0538,
+        "F": 0.0538,
+        "W": 0.0968
+      }
+    },
+    "1501": {
+      "name": "English",
+      "enrollment": 7252,
+      "grades": {
+        "W": 0.1548,
+        "A": 0.4021,
+        "B": 0.1725,
+        "C": 0.0978,
+        "D": 0.0444,
+        "F": 0.1085,
+        "P": 0.0199
+      }
+    },
+    "0302": {
+      "name": "Environmental Studies",
+      "enrollment": 251,
+      "grades": {
+        "A": 0.344,
+        "B": 0.292,
+        "C": 0.132,
+        "D": 0.052,
+        "F": 0.076,
+        "P": 0.008,
+        "W": 0.096
+      }
+    },
+    "2203": {
+      "name": "Ethnic Studies",
+      "enrollment": 1194,
+      "grades": {
+        "W": 0.1275,
+        "A": 0.4111,
+        "B": 0.2215,
+        "C": 0.1149,
+        "D": 0.0353,
+        "F": 0.088,
+        "P": 0.0017
+      }
+    },
+    "1303": {
+      "name": "Fashion",
+      "enrollment": 331,
+      "grades": {
+        "W": 0.1843,
+        "A": 0.3293,
+        "B": 0.1329,
+        "C": 0.1148,
+        "D": 0.0453,
+        "F": 0.1934
+      }
+    },
+    "0612": {
+      "name": "Film Studies",
+      "enrollment": 293,
+      "grades": {
+        "A": 0.6747,
+        "B": 0.1883,
+        "C": 0.0582,
+        "F": 0.0206,
+        "P": 0.0034,
+        "W": 0.0548
+      }
+    },
+    "1001": {
+      "name": "Fine Arts, General",
+      "enrollment": 698,
+      "grades": {
+        "W": 0.1498,
+        "A": 0.4582,
+        "B": 0.1614,
+        "C": 0.0778,
+        "D": 0.0332,
+        "F": 0.1152,
+        "P": 0.0043
+      }
+    },
+    "2133": {
+      "name": "Fire Technology",
+      "enrollment": 396,
+      "grades": {
+        "A": 0.5101,
+        "B": 0.1928,
+        "C": 0.0559,
+        "D": 0.0178,
+        "F": 0.0762,
+        "W": 0.1472
+      }
+    },
+    "1101": {
+      "name": "Foreign Languages, General",
+      "enrollment": 57,
+      "grades": {
+        "A": 0.4561,
+        "B": 0.2456,
+        "C": 0.1404,
+        "D": 0.0351,
+        "F": 0.0351,
+        "W": 0.0877
+      }
+    },
+    "1102": {
+      "name": "French",
+      "enrollment": 185,
+      "grades": {
+        "A": 0.3889,
+        "B": 0.1166,
+        "C": 0.0667,
+        "D": 0.0222,
+        "F": 0.0945,
+        "P": 0.0166,
+        "W": 0.2945
+      }
+    },
+    "4930": {
+      "name": "General Studies",
+      "enrollment": 4012,
+      "grades": {
+        "W": 0.0584,
+        "A": 0.5633,
+        "B": 0.1549,
+        "C": 0.1077,
+        "D": 0.0387,
+        "F": 0.0715,
+        "P": 0.0055
+      }
+    },
+    "4932": {
+      "name": "General Work Experience",
+      "enrollment": 46,
+      "grades": {
+        "A": 0.9546,
+        "B": 0.0227,
+        "W": 0.0227
+      }
+    },
+    "2206": {
+      "name": "Geography",
+      "enrollment": 840,
+      "grades": {
+        "A": 0.5417,
+        "B": 0.1917,
+        "C": 0.1048,
+        "D": 0.0464,
+        "F": 0.0452,
+        "P": 0.0012,
+        "W": 0.069
+      }
+    },
+    "1914": {
+      "name": "Geology",
+      "enrollment": 539,
+      "grades": {
+        "A": 0.314,
+        "B": 0.2262,
+        "C": 0.1701,
+        "D": 0.0598,
+        "F": 0.0935,
+        "W": 0.1364
+      }
+    },
+    "1103": {
+      "name": "German",
+      "enrollment": 64,
+      "grades": {
+        "A": 0.4062,
+        "B": 0.1094,
+        "C": 0.0625,
+        "D": 0.0469,
+        "F": 0.1719,
+        "P": 0.0313,
+        "W": 0.1719
+      }
+    },
+    "1309": {
+      "name": "Gerontology",
+      "enrollment": 32,
+      "grades": {
+        "A": 0.9062,
+        "B": 0.0938
+      }
+    },
+    "1030": {
+      "name": "Graphic Art and Design",
+      "enrollment": 58,
+      "grades": {
+        "A": 0.6379,
+        "B": 0.2069,
+        "C": 0.069,
+        "F": 0.0517,
+        "W": 0.0345
+      }
+    },
+    "0837": {
+      "name": "Health Education",
+      "enrollment": 749,
+      "grades": {
+        "W": 0.1078,
+        "A": 0.5176,
+        "B": 0.1658,
+        "C": 0.0579,
+        "D": 0.031,
+        "F": 0.1199
+      }
+    },
+    "1201": {
+      "name": "Health Occupations, General",
+      "enrollment": 614,
+      "grades": {
+        "A": 0.4769,
+        "B": 0.1925,
+        "C": 0.102,
+        "D": 0.0345,
+        "F": 0.0444,
+        "P": 0.028,
+        "W": 0.1217
+      }
+    },
+    "2205": {
+      "name": "History",
+      "enrollment": 1802,
+      "grades": {
+        "W": 0.1552,
+        "A": 0.359,
+        "B": 0.2088,
+        "C": 0.1268,
+        "D": 0.0464,
+        "F": 0.1033,
+        "P": 0.0006
+      }
+    },
+    "1307": {
+      "name": "Hospitality",
+      "enrollment": 117,
+      "grades": {
+        "A": 0.3189,
+        "B": 0.2845,
+        "C": 0.0862,
+        "D": 0.0517,
+        "F": 0.069,
+        "W": 0.1896
+      }
+    },
+    "0701": {
+      "name": "Information Technology, General",
+      "enrollment": 182,
+      "grades": {
+        "A": 0.4286,
+        "B": 0.1099,
+        "C": 0.1044,
+        "D": 0.011,
+        "F": 0.1154,
+        "W": 0.2308
+      }
+    },
+    "0508": {
+      "name": "International Business and Trade",
+      "enrollment": 76,
+      "grades": {
+        "A": 0.4079,
+        "B": 0.0789,
+        "C": 0.0263,
+        "D": 0.0395,
+        "F": 0.0658,
+        "W": 0.3816
+      }
+    },
+    "2210": {
+      "name": "International Studies",
+      "enrollment": 60,
+      "grades": {
+        "W": 0.2334,
+        "A": 0.3667,
+        "B": 0.2167,
+        "C": 0.15,
+        "F": 0.0333
+      }
+    },
+    "1104": {
+      "name": "Italian",
+      "enrollment": 227,
+      "grades": {
+        "A": 0.6637,
+        "B": 0.157,
+        "C": 0.0718,
+        "D": 0.009,
+        "P": 0.0045,
+        "W": 0.0942
+      }
+    },
+    "1108": {
+      "name": "Japanese",
+      "enrollment": 331,
+      "grades": {
+        "A": 0.4441,
+        "B": 0.148,
+        "C": 0.0876,
+        "D": 0.0665,
+        "F": 0.0785,
+        "P": 0.006,
+        "W": 0.1692
+      }
+    },
+    "0602": {
+      "name": "Journalism",
+      "enrollment": 76,
+      "grades": {
+        "A": 0.5,
+        "B": 0.1316,
+        "C": 0.1316,
+        "F": 0.1447,
+        "W": 0.0921
+      }
+    },
+    "1270": {
+      "name": "Kinesiology",
+      "enrollment": 264,
+      "grades": {
+        "W": 0.1226,
+        "A": 0.6628,
+        "B": 0.069,
+        "C": 0.0613,
+        "D": 0.0345,
+        "F": 0.0383,
+        "P": 0.0115
+      }
+    },
+    "1109": {
+      "name": "Latin",
+      "enrollment": 19,
+      "grades": {
+        "A": 0.7895,
+        "B": 0.0526,
+        "W": 0.1579
+      }
+    },
+    "1401": {
+      "name": "Law, General",
+      "enrollment": 537,
+      "grades": {
+        "W": 0.1043,
+        "A": 0.5084,
+        "B": 0.2011,
+        "C": 0.095,
+        "D": 0.0372,
+        "F": 0.054
+      }
+    },
+    "1601": {
+      "name": "Library Science, General",
+      "enrollment": 45,
+      "grades": {
+        "A": 0.5556,
+        "B": 0.1333,
+        "C": 0.0444,
+        "D": 0.0444,
+        "F": 0.0667,
+        "W": 0.1556
+      }
+    },
+    "1602": {
+      "name": "Library Technician (Aide)",
+      "enrollment": 188,
+      "grades": {
+        "A": 0.7059,
+        "B": 0.0962,
+        "C": 0.0267,
+        "D": 0.0053,
+        "F": 0.0535,
+        "P": 0.0053,
+        "W": 0.107
+      }
+    },
+    "0956": {
+      "name": "Manufacturing and Industrial Technology",
+      "enrollment": 216,
+      "grades": {
+        "A": 0.6419,
+        "B": 0.1767,
+        "C": 0.0884,
+        "D": 0.0093,
+        "F": 0.014,
+        "P": 0.0046,
+        "W": 0.0651
+      }
+    },
+    "0509": {
+      "name": "Marketing and Distribution",
+      "enrollment": 187,
+      "grades": {
+        "A": 0.3208,
+        "B": 0.2566,
+        "C": 0.0963,
+        "D": 0.0642,
+        "F": 0.0428,
+        "W": 0.2193
+      }
+    },
+    "1702": {
+      "name": "Mathematics Skills",
+      "enrollment": 35,
+      "grades": {
+        "A": 0.6286,
+        "B": 0.1714,
+        "C": 0.0857,
+        "D": 0.0571,
+        "F": 0.0286,
+        "W": 0.0286
+      }
+    },
+    "1701": {
+      "name": "Mathematics, General",
+      "enrollment": 6726,
+      "grades": {
+        "W": 0.2234,
+        "A": 0.2976,
+        "B": 0.1646,
+        "C": 0.1152,
+        "D": 0.0606,
+        "F": 0.1098,
+        "P": 0.0287
+      }
+    },
+    "0601": {
+      "name": "Media and Communications, General",
+      "enrollment": 245,
+      "grades": {
+        "A": 0.5551,
+        "B": 0.1959,
+        "C": 0.0653,
+        "D": 0.0286,
+        "F": 0.0898,
+        "P": 0.0041,
+        "W": 0.0612
+      }
+    },
+    "1208": {
+      "name": "Medical Assisting",
+      "enrollment": 151,
+      "grades": {
+        "A": 0.6754,
+        "B": 0.1854,
+        "C": 0.0464,
+        "D": 0.0199,
+        "F": 0.0199,
+        "W": 0.053
+      }
+    },
+    "0403": {
+      "name": "Microbiology",
+      "enrollment": 282,
+      "grades": {
+        "W": 0.0889,
+        "A": 0.3524,
+        "B": 0.3666,
+        "C": 0.0961,
+        "D": 0.0534,
+        "F": 0.0391,
+        "P": 0.0035
+      }
+    },
+    "1004": {
+      "name": "Music",
+      "enrollment": 2449,
+      "grades": {
+        "W": 0.1084,
+        "A": 0.5764,
+        "B": 0.1197,
+        "C": 0.0716,
+        "D": 0.0285,
+        "F": 0.095,
+        "P": 0.0004
+      }
+    },
+    "1230": {
+      "name": "Nursing",
+      "enrollment": 1231,
+      "grades": {
+        "A": 0.3445,
+        "B": 0.2433,
+        "C": 0.0351,
+        "D": 0.0065,
+        "F": 0.0016,
+        "P": 0.3445,
+        "W": 0.0245
+      }
+    },
+    "1306": {
+      "name": "Nutrition, Foods, and Culinary Arts",
+      "enrollment": 1011,
+      "grades": {
+        "W": 0.0871,
+        "A": 0.6409,
+        "B": 0.1157,
+        "C": 0.0623,
+        "D": 0.0218,
+        "F": 0.0712,
+        "P": 0.001
+      }
+    },
+    "0514": {
+      "name": "Office Technology/Office Computer Applications",
+      "enrollment": 417,
+      "grades": {
+        "A": 0.6594,
+        "B": 0.0624,
+        "C": 0.0384,
+        "D": 0.0096,
+        "F": 0.0144,
+        "W": 0.2158
+      }
+    },
+    "0599": {
+      "name": "Other Business and Management",
+      "enrollment": 32,
+      "grades": {
+        "A": 0.7187,
+        "B": 0.0313,
+        "D": 0.0938,
+        "F": 0.0625,
+        "W": 0.0938
+      }
+    },
+    "0999": {
+      "name": "Other Engineering and Related Industrial Technologies",
+      "enrollment": 37,
+      "grades": {
+        "A": 0.6389,
+        "B": 0.1111,
+        "C": 0.0278,
+        "F": 0.0834,
+        "W": 0.1389
+      }
+    },
+    "1099": {
+      "name": "Other Fine and Applied Arts",
+      "enrollment": 86,
+      "grades": {
+        "A": 0.4535,
+        "B": 0.2093,
+        "C": 0.093,
+        "D": 0.0698,
+        "F": 0.0349,
+        "W": 0.1395
+      }
+    },
+    "1402": {
+      "name": "Paralegal",
+      "enrollment": 732,
+      "grades": {
+        "A": 0.5262,
+        "B": 0.1708,
+        "C": 0.0703,
+        "D": 0.0221,
+        "F": 0.0426,
+        "P": 0.0413,
+        "W": 0.1267
+      }
+    },
+    "1509": {
+      "name": "Philosophy",
+      "enrollment": 1908,
+      "grades": {
+        "W": 0.1018,
+        "A": 0.4676,
+        "B": 0.1724,
+        "C": 0.107,
+        "D": 0.0301,
+        "F": 0.1202,
+        "P": 0.001
+      }
+    },
+    "1011": {
+      "name": "Photography",
+      "enrollment": 590,
+      "grades": {
+        "A": 0.4779,
+        "B": 0.1378,
+        "C": 0.0527,
+        "D": 0.0187,
+        "F": 0.1292,
+        "W": 0.1837
+      }
+    },
+    "0835": {
+      "name": "Physical Education",
+      "enrollment": 2064,
+      "grades": {
+        "W": 0.0748,
+        "A": 0.8192,
+        "B": 0.0495,
+        "C": 0.0263,
+        "D": 0.0087,
+        "F": 0.02,
+        "P": 0.0015
+      }
+    },
+    "1901": {
+      "name": "Physical Sciences, General",
+      "enrollment": 95,
+      "grades": {
+        "A": 0.4947,
+        "B": 0.2211,
+        "C": 0.1789,
+        "D": 0.0316,
+        "F": 0.0211,
+        "W": 0.0526
+      }
+    },
+    "1902": {
+      "name": "Physics, General",
+      "enrollment": 738,
+      "grades": {
+        "W": 0.1765,
+        "A": 0.3707,
+        "B": 0.2298,
+        "C": 0.1423,
+        "D": 0.0165,
+        "F": 0.0479,
+        "P": 0.0165
+      }
+    },
+    "0103": {
+      "name": "Plant Science",
+      "enrollment": 105,
+      "grades": {
+        "A": 0.3726,
+        "B": 0.2255,
+        "C": 0.1961,
+        "F": 0.0196,
+        "P": 0.0196,
+        "W": 0.1667
+      }
+    },
+    "2207": {
+      "name": "Political Science",
+      "enrollment": 1660,
+      "grades": {
+        "W": 0.0984,
+        "A": 0.5525,
+        "B": 0.1817,
+        "C": 0.0719,
+        "D": 0.0193,
+        "F": 0.0755,
+        "P": 0.0006
+      }
+    },
+    "1119": {
+      "name": "Portuguese",
+      "enrollment": 19,
+      "grades": {
+        "A": 0.1111,
+        "B": 0.2778,
+        "C": 0.1667,
+        "D": 0.0555,
+        "P": 0.0555,
+        "W": 0.3333
+      }
+    },
+    "2001": {
+      "name": "Psychology, General",
+      "enrollment": 3457,
+      "grades": {
+        "W": 0.0908,
+        "A": 0.5184,
+        "B": 0.188,
+        "C": 0.0957,
+        "D": 0.0354,
+        "F": 0.0715,
+        "P": 0.0003
+      }
+    },
+    "0604": {
+      "name": "Radio and Television",
+      "enrollment": 391,
+      "grades": {
+        "A": 0.5476,
+        "B": 0.1774,
+        "C": 0.0874,
+        "D": 0.0231,
+        "F": 0.0642,
+        "W": 0.1002
+      }
+    },
+    "1225": {
+      "name": "Radiologic Technology",
+      "enrollment": 162,
+      "grades": {
+        "A": 0.3889,
+        "B": 0.4444,
+        "C": 0.0802,
+        "D": 0.0247,
+        "W": 0.0617
+      }
+    },
+    "1510": {
+      "name": "Religious Studies",
+      "enrollment": 97,
+      "grades": {
+        "W": 0.1146,
+        "A": 0.5938,
+        "B": 0.1562,
+        "C": 0.052,
+        "D": 0.0416,
+        "F": 0.0416
+      }
+    },
+    "1106": {
+      "name": "Russian",
+      "enrollment": 82,
+      "grades": {
+        "A": 0.5243,
+        "B": 0.1098,
+        "C": 0.061,
+        "F": 0.0122,
+        "P": 0.0122,
+        "W": 0.2805
+      }
+    },
+    "0850": {
+      "name": "Sign Language",
+      "enrollment": 563,
+      "grades": {
+        "A": 0.4192,
+        "B": 0.1368,
+        "C": 0.1048,
+        "D": 0.0302,
+        "F": 0.1563,
+        "P": 0.0036,
+        "W": 0.1492
+      }
+    },
+    "2208": {
+      "name": "Sociology",
+      "enrollment": 2809,
+      "grades": {
+        "W": 0.0869,
+        "A": 0.5377,
+        "B": 0.1716,
+        "C": 0.0919,
+        "D": 0.0268,
+        "F": 0.0841,
+        "P": 0.0011
+      }
+    },
+    "1105": {
+      "name": "Spanish",
+      "enrollment": 698,
+      "grades": {
+        "W": 0.1547,
+        "A": 0.4585,
+        "B": 0.1562,
+        "C": 0.0989,
+        "D": 0.0258,
+        "F": 0.1017,
+        "P": 0.0043
+      }
+    },
+    "0809": {
+      "name": "Special Education",
+      "enrollment": 64,
+      "grades": {
+        "A": 0.5781,
+        "B": 0.1875,
+        "C": 0.0625,
+        "D": 0.0156,
+        "F": 0.0469,
+        "W": 0.1094
+      }
+    },
+    "1506": {
+      "name": "Speech Communication",
+      "enrollment": 2787,
+      "grades": {
+        "W": 0.1594,
+        "A": 0.4475,
+        "B": 0.1626,
+        "C": 0.0971,
+        "D": 0.0259,
+        "F": 0.1076
+      }
+    },
+    "1220": {
+      "name": "Speech/Language Pathology and Audiology",
+      "enrollment": 213,
+      "grades": {
+        "A": 0.5399,
+        "B": 0.1831,
+        "C": 0.0939,
+        "F": 0.0282,
+        "P": 0.0704,
+        "W": 0.0845
+      }
+    },
+    "1006": {
+      "name": "Technical Theater",
+      "enrollment": 99,
+      "grades": {
+        "A": 0.7011,
+        "B": 0.2268,
+        "C": 0.0206,
+        "D": 0.0103,
+        "F": 0.0103,
+        "W": 0.0309
+      }
+    }
+  }
+}
