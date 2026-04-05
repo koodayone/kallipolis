@@ -287,6 +287,11 @@ class ProposalJustification(BaseModel):
     student_evidence: StudentEvidence
 
 
+class AgendaTopic(BaseModel):
+    topic: str
+    rationale: str
+
+
 class NarrativeProposal(BaseModel):
     employer: str
     sector: Optional[str] = None
@@ -300,6 +305,10 @@ class NarrativeProposal(BaseModel):
     opportunity_evidence: list[OccupationEvidence]
     justification: ProposalJustification
     roadmap: str
+    # Advisory board specific
+    selected_occupations: list[str] = []
+    advisory_thesis: str = ""
+    agenda_topics: list[AgendaTopic] = []
 
 
 # ── Legacy Targeted Proposal models (used by SWP pipeline only) ─────────────────────────────────────────────

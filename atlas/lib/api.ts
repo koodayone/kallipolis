@@ -437,6 +437,11 @@ export type ApiProposalJustification = {
   student_evidence: ApiStudentEvidence;
 };
 
+export type ApiAgendaTopic = {
+  topic: string;
+  rationale: string;
+};
+
 export type ApiTargetedProposal = {
   employer: string;
   sector: string | null;
@@ -450,6 +455,10 @@ export type ApiTargetedProposal = {
   opportunity_evidence: ApiOccupationEvidence[];
   justification: ApiProposalJustification;
   roadmap: string;
+  // Advisory board specific
+  selected_occupations?: string[];
+  advisory_thesis?: string;
+  agenda_topics?: ApiAgendaTopic[];
 };
 
 // Legacy types — used by SWP pipeline only

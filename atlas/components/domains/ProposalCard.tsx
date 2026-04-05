@@ -105,6 +105,20 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
           <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.7)", lineHeight: 1.65, margin: 0 }}>
             {proposal.opportunity}
           </p>
+          {proposal.advisory_thesis && (
+            <div style={{
+              marginTop: "12px", padding: "12px 16px",
+              borderLeft: `2px solid ${brandColor}40`,
+              background: `${brandColor}08`, borderRadius: "0 6px 6px 0",
+            }}>
+              <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", display: "block", marginBottom: "6px" }}>
+                Thesis
+              </span>
+              <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.75)", lineHeight: 1.6, margin: 0, fontStyle: "italic" }}>
+                {proposal.advisory_thesis}
+              </p>
+            </div>
+          )}
           <div style={{ marginTop: "12px" }}>
             <ColumnHeaders
               columns={[
@@ -238,6 +252,33 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
           <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.7)", lineHeight: 1.65, margin: 0 }}>
             {proposal.roadmap}
           </p>
+          {proposal.agenda_topics && proposal.agenda_topics.length > 0 && (
+            <div style={{ marginTop: "14px" }}>
+              <span style={{
+                fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.08em",
+                textTransform: "uppercase", color: "rgba(255,255,255,0.25)",
+                display: "block", marginBottom: "8px",
+              }}>
+                Inaugural Agenda
+              </span>
+              {proposal.agenda_topics.map((topic, i) => (
+                <div key={i} style={{
+                  padding: "10px 14px", marginBottom: "6px",
+                  background: "rgba(255,255,255,0.03)", borderRadius: "6px",
+                  border: "1px solid rgba(255,255,255,0.06)",
+                }}>
+                  <p style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.8)", margin: 0, lineHeight: 1.5 }}>
+                    {topic.topic}
+                  </p>
+                  {topic.rationale && (
+                    <p style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)", margin: "4px 0 0 0", lineHeight: 1.5 }}>
+                      {topic.rationale}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Actions */}

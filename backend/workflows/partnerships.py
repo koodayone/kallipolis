@@ -290,6 +290,149 @@ def _select_occupation(gathered: GatheredContext, engagement_type: str = "") -> 
 
 
 # ═══════════════════════════════════════════════════════════════════════════
+# Advisory Board: Identity-Driven Selection
+# ═══════════════════════════════════════════════════════════════════════════
+
+_ADVISORY_OCCUPATION_SELECTION_PROMPT = """Select 2-4 occupations that best define this employer's institutional identity. Return ONLY the JSON below — no reasoning, no explanation, no other text.
+
+{context}
+
+Rules:
+- Choose occupations that reveal what this employer DOES — the roles that define its operational focus. A food manufacturer is defined by food science and production roles. A hospital is defined by clinical care roles.
+- Prefer identity-defining occupations over generic ones. Sales Representatives, Office Clerks, and General Managers tell you less about what makes this employer distinctive. But do not exclude generic roles if they are genuinely important to the employer's labor composition.
+- For each occupation, pick 2 skills the college develops (course count > 0) that connect this role to the college's programs.
+- The selected occupations together should paint a clear picture of this employer's operational focus.
+
+{{"selected_occupations": [{{"title": "...", "soc_code": "...", "core_skills": ["...", "..."]}}, ...]}}"""
+
+
+_ADVISORY_THESIS_PROMPT = """You are characterizing why this employer's perspective would be valuable to a community college's programs. Return ONLY the JSON below.
+
+Employer: {employer_name}
+Sector: {sector}
+Description: {description}
+
+Identity-defining occupations this employer hires for:
+{occupations_text}
+
+Write a 1-2 sentence thesis that captures what is distinctive about this employer's operational reality and why it is relevant to the college's programs. Be specific — the thesis should describe THIS employer, not any employer in the same sector. Do not claim the employer is unique or irreplaceable. Characterize what they do and let the relevance speak for itself.
+
+{{"thesis": "..."}}"""
+
+
+_ADVISORY_AGENDA_PROMPT = """Identify 2-3 inaugural agenda topics for an advisory board between this employer and the college. Return ONLY the JSON below.
+
+Employer: {employer_name} ({sector})
+Thesis: {thesis}
+
+Selected occupations:
+{occupations_text}
+
+Relevant departments at the college:
+{departments_text}
+
+Skills the college develops for these occupations:
+{skills_text}
+
+Each topic should be:
+1. A specific question this employer can answer from operational experience — not a generic workforce question like "what skills do you need"
+2. Actionable for the college's program development within one catalog cycle
+3. Grounded in the intersection of the employer's operations and the college's existing programs
+
+{{"agenda_topics": [{{"topic": "...", "rationale": "one sentence explaining why this topic matters for both parties"}}, ...]}}"""
+
+
+def _select_advisory_occupations(gathered: GatheredContext) -> list[dict]:
+    """Select 2-4 identity-defining occupations for advisory board proposal."""
+    context = _build_occupation_selection_context(gathered)
+    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+    message = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=1024,
+        messages=[{"role": "user", "content": _ADVISORY_OCCUPATION_SELECTION_PROMPT.format(context=context)}],
+    )
+    raw = message.content[0].text
+
+    try:
+        result = _extract_json(raw)
+        selected = result.get("selected_occupations", [])
+        titles = [o.get("title", "?") for o in selected]
+        logger.info(f"Advisory occupations selected: {titles}")
+        return selected
+    except (json.JSONDecodeError, ValueError) as e:
+        logger.warning(f"Advisory occupation selection returned invalid JSON ({e})")
+        return []
+
+
+def _synthesize_advisory_thesis(employer_name: str, sector: str, description: str, selected_occupations: list[dict]) -> str:
+    """Synthesize a thesis for why this employer's perspective matters."""
+    occ_lines = []
+    for occ in selected_occupations:
+        skills = ", ".join(occ.get("core_skills", []))
+        occ_lines.append(f"  {occ.get('title', '?')}: {skills}")
+    occupations_text = "\n".join(occ_lines)
+
+    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+    message = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=256,
+        messages=[{"role": "user", "content": _ADVISORY_THESIS_PROMPT.format(
+            employer_name=employer_name,
+            sector=sector or "Unknown",
+            description=description or "",
+            occupations_text=occupations_text,
+        )}],
+    )
+    raw = message.content[0].text
+
+    try:
+        result = _extract_json(raw)
+        thesis = result.get("thesis", "")
+        logger.info(f"Advisory thesis: {thesis}")
+        return thesis
+    except (json.JSONDecodeError, ValueError) as e:
+        logger.warning(f"Thesis synthesis returned invalid JSON ({e})")
+        return ""
+
+
+def _identify_agenda_topics(employer_name: str, sector: str, thesis: str,
+                            occupations: list[dict], departments: list[str],
+                            skills: list[str]) -> list[dict]:
+    """Identify 2-3 inaugural agenda topics for the advisory board."""
+    occ_lines = []
+    for occ in occupations:
+        occ_skills = ", ".join(occ.get("core_skills", []))
+        occ_lines.append(f"  {occ.get('title', '?')}: {occ_skills}")
+    occupations_text = "\n".join(occ_lines)
+    departments_text = "\n".join(f"  {d}" for d in departments)
+    skills_text = "\n".join(f"  {s}" for s in skills)
+
+    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+    message = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=512,
+        messages=[{"role": "user", "content": _ADVISORY_AGENDA_PROMPT.format(
+            employer_name=employer_name,
+            sector=sector or "Unknown",
+            thesis=thesis,
+            occupations_text=occupations_text,
+            departments_text=departments_text,
+            skills_text=skills_text,
+        )}],
+    )
+    raw = message.content[0].text
+
+    try:
+        result = _extract_json(raw)
+        topics = result.get("agenda_topics", [])
+        logger.info(f"Agenda topics identified: {[t.get('topic', '?') for t in topics]}")
+        return topics
+    except (json.JSONDecodeError, ValueError) as e:
+        logger.warning(f"Agenda topic identification returned invalid JSON ({e})")
+        return []
+
+
+# ═══════════════════════════════════════════════════════════════════════════
 # Deterministic Curriculum Query
 # ═══════════════════════════════════════════════════════════════════════════
 
@@ -551,6 +694,64 @@ def _build_codesign_context(gathered: GatheredContext, dept_text: str, selected_
     return "\n".join(line for line in lines if line is not None)
 
 
+def _build_advisory_context(gathered: GatheredContext, dept_text: str,
+                            selected_occupations: list[dict], thesis: str,
+                            agenda_topics: list[dict], core_skills: list[str],
+                            engagement_type: str = "") -> str:
+    """Build context for advisory board narrative — multiple occupations, thesis, agenda topics."""
+    lines = [
+        f"EMPLOYER: {gathered.employer_name}",
+        f"Sector: {gathered.sector}" if gathered.sector else None,
+        f"Description: {gathered.description}" if gathered.description else None,
+        f"Regions: {', '.join(gathered.regions)}" if gathered.regions else None,
+        f"College: {gathered.college}",
+        "",
+        f"THESIS: {thesis}",
+        "",
+        "IDENTITY-DEFINING OCCUPATIONS:",
+    ]
+
+    occ_titles = {o.get("title") for o in selected_occupations}
+    for occ in selected_occupations:
+        occ_title = occ.get("title", "Unknown")
+        occ_skills = ", ".join(occ.get("core_skills", []))
+        lines.append(f"  {occ_title}: {occ_skills}")
+
+    lines.append("")
+    lines.append(f"CROSS-CUTTING SKILLS: {', '.join(core_skills)}")
+    lines.append("")
+    lines.append(dept_text)
+
+    # Economic data for all selected occupations
+    for occ_ev in gathered.occupation_evidence:
+        if occ_ev.get("title") in occ_titles:
+            parts = [f"ECONOMIC DATA: {occ_ev['title']}"]
+            if occ_ev.get("annual_wage"):
+                parts.append(f"${occ_ev['annual_wage']:,}/yr")
+            if occ_ev.get("employment"):
+                parts.append(f"{occ_ev['employment']:,} employed")
+            if occ_ev.get("growth_rate") is not None:
+                parts.append(f"{occ_ev['growth_rate']:+.1%} growth")
+            if occ_ev.get("annual_openings"):
+                parts.append(f"{occ_ev['annual_openings']:,} annual openings")
+            lines.append("")
+            lines.append(", ".join(parts))
+
+    if agenda_topics:
+        lines.append("")
+        lines.append("INAUGURAL AGENDA TOPICS:")
+        for t in agenda_topics:
+            lines.append(f"  {t.get('topic', '')}")
+            if t.get("rationale"):
+                lines.append(f"    Rationale: {t['rationale']}")
+
+    if engagement_type:
+        lines.append("")
+        lines.append(f"PARTNERSHIP ENGAGEMENT TYPE: {engagement_type}")
+
+    return "\n".join(line for line in lines if line is not None)
+
+
 def _gather_student_pipeline(college: str, departments: list[str], core_skills: list[str]) -> tuple[dict, list[dict]]:
     """Find students enrolled in courses within aligned departments that develop core skills.
 
@@ -569,8 +770,8 @@ def _gather_student_pipeline(college: str, departments: list[str], core_skills: 
             WITH collect(DISTINCT c) AS relevant_courses
             UNWIND relevant_courses AS rc
             MATCH (st:Student)-[:ENROLLED_IN]->(rc)
-            WHERE ANY(dept IN $departments WHERE st.primary_focus CONTAINS dept
-               OR dept CONTAINS st.primary_focus)
+            WHERE ANY(dept IN $departments WHERE st.primary_focus STARTS WITH dept
+               OR dept STARTS WITH st.primary_focus)
             WITH DISTINCT st
             OPTIONAL MATCH (st)-[:HAS_SKILL]->(sk2:Skill)
             WHERE sk2.name IN $core_skills
@@ -591,8 +792,8 @@ def _gather_student_pipeline(college: str, departments: list[str], core_skills: 
             WITH collect(DISTINCT c) AS relevant_courses
             UNWIND relevant_courses AS rc
             MATCH (st:Student)-[e:ENROLLED_IN]->(rc)
-            WHERE ANY(dept IN $departments WHERE st.primary_focus CONTAINS dept
-               OR dept CONTAINS st.primary_focus)
+            WHERE ANY(dept IN $departments WHERE st.primary_focus STARTS WITH dept
+               OR dept STARTS WITH st.primary_focus)
             WITH st, collect(DISTINCT {code: rc.code, name: rc.name, grade: e.grade, term: e.term}) AS enrollments
             OPTIONAL MATCH (st)-[:HAS_SKILL]->(sk2:Skill)
             WHERE sk2.name IN $core_skills
@@ -670,6 +871,9 @@ Tone:
 - When discussing the college's programs, lead with what the department does well. Frame development areas as opportunities to strengthen existing preparation, not deficiencies to correct. The coordinator built these programs. Respect that work.
 - Do not say "gaps," "missing," "does not address," "falls short," or "not fully prepared." Instead say "can be strengthened," "an opportunity to deepen," or "an area for continued development."
 - Do not use bullet points or numbered lists.
+
+Epistemic standard: Be persuasive and epistemically rigorous. Persuade through specificity and grounded evidence, not through superlatives or exclusivity claims. Do not claim the employer is unique, the only option, the best fit, or irreplaceable. Characterize what they do and let the evidence make the case. If a claim cannot be verified from the data provided, do not make it.
+
 - Return ONLY valid JSON with no text before or after."""
 
 
@@ -719,20 +923,23 @@ ADVISORY_BOARD_PROMPT = _NARRATIVE_PREAMBLE + """
 
 PARTNERSHIP TYPE: Advisory Board — ongoing strategic guidance from the employer to inform program direction.
 
+The context includes a THESIS characterizing this employer's distinctive operational focus, IDENTITY-DEFINING OCCUPATIONS that reveal what this employer does, and INAUGURAL AGENDA TOPICS for the first meeting. Use these to build a thesis-driven argument.
+
 Type-specific guidance:
-- OPPORTUNITY: Why this employer's perspective matters for the college's programs. No grant funding required.
-- CURRICULUM COMPOSITION: Which departments the board would advise. Areas for continued development as inaugural agenda items.
-- ROADMAP: Formal invitation, inaugural meeting with 2-3 topics, quarterly cadence.
+- OPPORTUNITY: 2-3 sentences. Ground the argument in the thesis. Why does this employer's operational reality make its perspective relevant to the college's programs? Do not merely list occupations or hiring volume. Characterize the employer and explain why that characterization matters for the college. No grant funding is required.
+- CURRICULUM COMPOSITION: 2-3 sentences. Which departments align across this employer's operational areas. The employer's perspective is relevant to multiple programs. Name the departments and what they contribute.
+- STUDENT COMPOSITION: 2-3 sentences. The aggregate student pipeline across the relevant departments. Students in these programs are developing skills aligned with this employer's operations.
+- ROADMAP: 2-3 sentences. Formal invitation to the employer's regional leadership. Reference the inaugural agenda topics from the context. Propose quarterly cadence.
 
 REFERENCE EXAMPLE (match this prose quality — do not copy its content):
 
-Opportunity: Cargill hires across eight occupations in the Central Valley with over 4,500 combined annual openings. That hiring breadth makes their perspective on workforce readiness relevant to several college programs. An advisory board would formalize this as an ongoing channel for industry guidance, requiring no grant funding.
+Opportunity: Cargill operates at the intersection of agricultural production and food processing in the Central Valley, hiring food science technicians, industrial production managers, and agricultural workers at scale. That operational scope makes its perspective on workforce readiness relevant to programs that span agriculture, food science, and industrial technology. An advisory board would formalize this as an ongoing channel for industry guidance, requiring no grant funding.
 
-Curriculum Composition: The Agriculture, Work Experience, and Business departments cover the core skill areas Cargill hires for. Auditing and labor relations are areas where Cargill's perspective could strengthen program content.
+Curriculum Composition: The Agriculture, Culinary and Nutrition, and Industrial Technology departments develop skills that align with Cargill's core operations. Together they cover food safety, production management, and agricultural science. The advisory board would give Cargill a structured way to share how industry standards in these areas are evolving.
 
-Student Composition: Students in these programs are developing skills relevant to Cargill's operations. The advisory board would give Cargill a way to share current industry standards and help the college stay calibrated.
+Student Composition: Students across these departments are developing skills relevant to Cargill's operations. The pipeline spans multiple programs, reflecting the breadth of Cargill's hiring relationship with the region.
 
-Roadmap: Send a formal invitation to Cargill's Central Valley regional leadership proposing a quarterly advisory board scoped to Agriculture, Business, and Food Services. The inaugural meeting should address curriculum alignment and identified skill gaps."""
+Roadmap: Send a formal invitation to Cargill's Central Valley regional leadership proposing a quarterly advisory board. The inaugural meeting should address food safety automation standards and their implications for curriculum, and how agricultural technology is changing the competencies production teams require."""
 
 
 PROMPTS: dict[str, str] = {
@@ -811,22 +1018,41 @@ def _assemble_proposal(
     top_students: list[dict],
     core_skills: list[str] | None = None,
     gap_skill: str = "",
+    selected_occupations: list[dict] | None = None,
+    advisory_thesis: str = "",
+    agenda_topics: list[dict] | None = None,
 ) -> NarrativeProposal:
     """Merge LLM-generated narrative with deterministic evidence blocks."""
+    from models import AgendaTopic
+
+    # Advisory board: multiple occupations in evidence, broader scope
+    if selected_occupations:
+        occ_titles = {o.get("title") for o in selected_occupations}
+        occ_evidence = [
+            OccupationEvidence(**o) for o in gathered.occupation_evidence
+            if o.get("title") in occ_titles
+        ] or [OccupationEvidence(**o) for o in gathered.occupation_evidence[:1]]
+        primary_title = selected_occupations[0].get("title", "") if selected_occupations else ""
+        primary_soc = selected_occupations[0].get("soc_code") if selected_occupations else None
+    else:
+        occ_evidence = [
+            OccupationEvidence(**o) for o in gathered.occupation_evidence
+            if o.get("title") == selected_occ.get("title")
+        ] or [OccupationEvidence(**o) for o in gathered.occupation_evidence[:1]]
+        primary_title = selected_occ.get("title", "")
+        primary_soc = selected_occ.get("soc_code")
+
     return NarrativeProposal(
         employer=employer,
         sector=sector,
         partnership_type=partnership_type,
-        selected_occupation=selected_occ.get("title", ""),
-        selected_soc_code=selected_occ.get("soc_code"),
+        selected_occupation=primary_title,
+        selected_soc_code=primary_soc,
         core_skills=core_skills or selected_occ.get("core_skills", []),
         gap_skill=gap_skill,
         regions=gathered.regions,
         opportunity=narrative["opportunity"],
-        opportunity_evidence=[
-            OccupationEvidence(**o) for o in gathered.occupation_evidence
-            if o.get("title") == selected_occ.get("title")
-        ] or [OccupationEvidence(**o) for o in gathered.occupation_evidence[:1]],
+        opportunity_evidence=occ_evidence,
         justification=ProposalJustification(
             curriculum_composition=narrative["justification"]["curriculum_composition"],
             curriculum_evidence=[DepartmentEvidence(**d) for d in curriculum_evidence],
@@ -838,6 +1064,9 @@ def _assemble_proposal(
             ),
         ),
         roadmap=narrative["roadmap"],
+        selected_occupations=[o.get("title", "") for o in (selected_occupations or [])],
+        advisory_thesis=advisory_thesis,
+        agenda_topics=[AgendaTopic(**t) for t in (agenda_topics or [])],
     )
 
 
@@ -925,14 +1154,78 @@ def _evaluate_proposal(proposal: NarrativeProposal, curated_context: str) -> dic
 # ═══════════════════════════════════════════════════════════════════════════
 
 
-def _build_proposal_context(employer: str, college: str, engagement_type: str, gathered: GatheredContext, selected_occ: dict):
+def _build_proposal_context(employer: str, college: str, engagement_type: str,
+                            gathered: GatheredContext,
+                            selected_occ: dict = None,
+                            selected_occupations: list[dict] = None) -> dict:
     """Shared pipeline logic: build curriculum evidence, students, and narrative context.
 
-    Returns (curriculum_evidence, student_stats, top_students, narrative_context, core_skills, gap_skill).
+    Returns dict with keys: curriculum_evidence, student_stats, top_students,
+    narrative_context, core_skills, gap_skill, and advisory-specific fields
+    (advisory_thesis, agenda_topics, selected_occupations).
     """
-    core_skills = selected_occ.get("core_skills", [])
     gap_skill = ""
     gap_rationale = ""
+    advisory_thesis = ""
+    agenda_topics = []
+
+    # ── Advisory board: multi-occupation, thesis-driven ──
+    if engagement_type == "advisory_board" and selected_occupations:
+        # Union core skills across all selected occupations
+        core_skills = []
+        seen = set()
+        for occ in selected_occupations:
+            for sk in occ.get("core_skills", []):
+                if sk not in seen:
+                    core_skills.append(sk)
+                    seen.add(sk)
+
+        # Synthesize thesis
+        advisory_thesis = _synthesize_advisory_thesis(
+            gathered.employer_name, gathered.sector, gathered.description, selected_occupations
+        )
+
+        # Curriculum query scoped to union of core skills
+        _, curriculum_evidence = _gather_aligned_curriculum(college, core_skills)
+
+        # Department filter — use first occupation title as representative for the filter prompt
+        # but pass all occupations' context through the employer name + sector
+        all_dept_names = [d["department"] for d in curriculum_evidence]
+        occ_titles = ", ".join(o.get("title", "") for o in selected_occupations)
+        relevant_depts = _filter_relevant_departments(gathered.employer_name, occ_titles, all_dept_names)
+        curriculum_evidence = [d for d in curriculum_evidence if d["department"] in relevant_depts]
+
+        # No primary department narrowing — breadth is appropriate for advisory
+
+        dept_text = _build_dept_text(curriculum_evidence, core_skills)
+        aligned_depts = [d["department"] for d in curriculum_evidence]
+        student_stats, top_students = _gather_student_pipeline(college, aligned_depts, core_skills)
+
+        # Agenda topics
+        agenda_topics = _identify_agenda_topics(
+            gathered.employer_name, gathered.sector, advisory_thesis,
+            selected_occupations, aligned_depts, core_skills
+        )
+
+        narrative_context = _build_advisory_context(
+            gathered, dept_text, selected_occupations, advisory_thesis,
+            agenda_topics, core_skills, engagement_type
+        )
+
+        return {
+            "curriculum_evidence": curriculum_evidence,
+            "student_stats": student_stats,
+            "top_students": top_students,
+            "narrative_context": narrative_context,
+            "core_skills": core_skills,
+            "gap_skill": "",
+            "advisory_thesis": advisory_thesis,
+            "agenda_topics": agenda_topics,
+            "selected_occupations": selected_occupations,
+        }
+
+    # ── Internship / Curriculum Co-Design: single-occupation ──
+    core_skills = selected_occ.get("core_skills", [])
 
     # Curriculum co-design: dedicated gap identification
     if engagement_type == "curriculum_codesign":
@@ -967,62 +1260,64 @@ def _build_proposal_context(employer: str, college: str, engagement_type: str, g
     else:
         narrative_context = _build_narrative_context(gathered, dept_text, selected_occ, engagement_type)
 
-    return curriculum_evidence, student_stats, top_students, narrative_context, core_skills, gap_skill
+    return {
+        "curriculum_evidence": curriculum_evidence,
+        "student_stats": student_stats,
+        "top_students": top_students,
+        "narrative_context": narrative_context,
+        "core_skills": core_skills,
+        "gap_skill": gap_skill,
+        "advisory_thesis": "",
+        "agenda_topics": [],
+        "selected_occupations": [],
+    }
+
+
+def _run_pipeline(employer: str, college: str, engagement_type: str, gathered: GatheredContext) -> NarrativeProposal:
+    """Shared pipeline logic for both sync and streaming entry points."""
+    # Stage 2: Occupation selection — advisory board selects multiple
+    if engagement_type == "advisory_board":
+        selected_occs = _select_advisory_occupations(gathered)
+        titles = [o.get("title", "?") for o in selected_occs]
+        logger.info(f"Stage 2 complete: selected advisory occupations {titles} for {employer}")
+        selected_occ = selected_occs[0] if selected_occs else {}
+        ctx = _build_proposal_context(employer, college, engagement_type, gathered,
+                                      selected_occ=selected_occ, selected_occupations=selected_occs)
+    else:
+        selected_occ = _select_occupation(gathered, engagement_type)
+        logger.info(f"Stage 2 complete: selected '{selected_occ.get('title', '?')}' for {employer}")
+        ctx = _build_proposal_context(employer, college, engagement_type, gathered,
+                                      selected_occ=selected_occ)
+
+    prompt_text = _get_prompt(engagement_type, ctx["narrative_context"])
+    raw = _call_claude(prompt_text)
+    logger.info("Stage 3 complete: Claude response received")
+
+    narrative = _parse_narrative_fields(raw)
+    partnership_type = TYPE_LABELS.get(engagement_type, engagement_type)
+    proposal = _assemble_proposal(
+        narrative, employer, gathered.sector, partnership_type, gathered,
+        ctx["curriculum_evidence"], selected_occ, ctx["student_stats"], ctx["top_students"],
+        ctx["core_skills"], ctx["gap_skill"],
+        selected_occupations=ctx.get("selected_occupations"),
+        advisory_thesis=ctx.get("advisory_thesis", ""),
+        agenda_topics=ctx.get("agenda_topics"),
+    )
+
+    _evaluate_proposal(proposal, ctx["narrative_context"])
+    logger.info(f"Proposal complete for {employer}.")
+    return proposal
 
 
 async def run_targeted_proposal(employer: str, college: str, engagement_type: str = "") -> NarrativeProposal:
     """Generate a targeted partnership proposal for a specific employer."""
     gathered = _gather_targeted_context(employer, college, engagement_type)
     logger.info(f"Stage 1 complete: gathered context for {employer}")
-
-    selected_occ = _select_occupation(gathered, engagement_type)
-    logger.info(f"Stage 2 complete: selected '{selected_occ.get('title', '?')}' for {employer}")
-
-    curriculum_evidence, student_stats, top_students, narrative_context, core_skills, gap_skill = \
-        _build_proposal_context(employer, college, engagement_type, gathered, selected_occ)
-
-    prompt_text = _get_prompt(engagement_type, narrative_context)
-    raw = _call_claude(prompt_text)
-    logger.info("Stage 3 complete: Claude response received")
-
-    narrative = _parse_narrative_fields(raw)
-    partnership_type = TYPE_LABELS.get(engagement_type, engagement_type)
-    proposal = _assemble_proposal(narrative, employer, gathered.sector, partnership_type, gathered, curriculum_evidence, selected_occ, student_stats, top_students, core_skills, gap_skill)
-
-    _evaluate_proposal(proposal, narrative_context)
-    logger.info(f"Proposal complete for {employer}.")
-    return proposal
+    return _run_pipeline(employer, college, engagement_type, gathered)
 
 
 def stream_targeted_proposal(employer: str, college: str, engagement_type: str = ""):
     """Generator that yields a NarrativeProposal when Claude's streaming response completes."""
     gathered = _gather_targeted_context(employer, college, engagement_type)
     logger.info(f"Stage 1 complete: gathered context for {employer}")
-
-    selected_occ = _select_occupation(gathered, engagement_type)
-    logger.info(f"Stage 2 complete: selected '{selected_occ.get('title', '?')}' for {employer}")
-
-    curriculum_evidence, student_stats, top_students, narrative_context, core_skills, gap_skill = \
-        _build_proposal_context(employer, college, engagement_type, gathered, selected_occ)
-
-    prompt_text = _get_prompt(engagement_type, narrative_context)
-    logger.info(f"Stage 3: starting Claude stream for {employer} ({engagement_type})...")
-
-    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
-    accumulated = ""
-
-    with client.messages.stream(
-        model="claude-sonnet-4-6",
-        max_tokens=4096,
-        messages=[{"role": "user", "content": prompt_text}],
-    ) as stream:
-        for text in stream.text_stream:
-            accumulated += text
-
-    narrative = _parse_narrative_fields(accumulated)
-    partnership_type = TYPE_LABELS.get(engagement_type, engagement_type)
-    proposal = _assemble_proposal(narrative, employer, gathered.sector, partnership_type, gathered, curriculum_evidence, selected_occ, student_stats, top_students, core_skills, gap_skill)
-
-    _evaluate_proposal(proposal, narrative_context)
-    logger.info(f"Stream complete: proposal for {employer}")
-    yield proposal
+    yield _run_pipeline(employer, college, engagement_type, gathered)

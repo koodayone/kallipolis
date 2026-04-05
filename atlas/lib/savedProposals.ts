@@ -1,6 +1,6 @@
 import type { ApiTargetedProposal } from "./api";
 
-const PROPOSAL_SCHEMA_VERSION = 7;
+const PROPOSAL_SCHEMA_VERSION = 8;
 
 export type SavedProposal = {
   id: string;
