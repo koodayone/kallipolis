@@ -338,6 +338,9 @@ Each topic should be:
 1. A specific question this employer can answer from operational experience — not a generic workforce question like "what skills do you need"
 2. Actionable for the college's program development within one catalog cycle
 3. Grounded in the intersection of the employer's operations and the college's existing programs
+4. Focused on workforce-oriented programs (e.g., agriculture, industrial technology, nursing). Be cautious about suggesting changes to foundational or general education courses (biology, chemistry, mathematics) — these serve many pathways and whether they should be tailored to one employer's needs depends on context the system does not have. If a foundational department is relevant, present it tentatively.
+
+Tone: Use the same voice as the rest of the proposal. Do not capitalize skill names as proper nouns — "food safety" not "Food Safety," "operations management" not "Operations Management." Legitimate acronyms (HVAC, HACCP, EPA, OSHA, EHR) retain their standard capitalization. Reference the college's actual department and program names in rationales, not skill labels as standalone curricula — "the industrial technology program" not "Operations Management and Quality Control curriculum."
 
 {{"agenda_topics": [{{"topic": "...", "rationale": "one sentence explaining why this topic matters for both parties"}}, ...]}}"""
 
@@ -862,12 +865,14 @@ Section requirements:
 - OPPORTUNITY: 2-3 sentences. Why this employer matters in the region for this occupation. What makes this a partnership worth pursuing. Stick to what the data shows. Do not speculate about career ladders or advancement pathways.
 - CURRICULUM COMPOSITION: 2-3 sentences. Which departments align with this role and what they contribute. Do not assert how many core skills a department covers or claim complete coverage. The evidence block shows the specific skill-department mappings. Do not introduce skill names that are not in the context.
 - STUDENT COMPOSITION: 2-3 sentences. Whether students in these programs are prepared for this role. Reference the departments and core skills from the sections above. Candidates are ranked by how many core skills they've developed, then by GPA. Do not introduce new skill names or characterize the pipeline with subjective language.
-- ROADMAP: 2-3 sentences. Concrete next steps. Name departments and timelines.
+- ROADMAP: 2-3 sentences. Suggest potential next steps as options, not directives. Focus recommendations on workforce-oriented programs. Be cautious about recommending changes to foundational or general education courses (e.g., biology, chemistry, mathematics) based on a single employer's needs — these courses serve many pathways and whether they should be tailored to one employer depends on context the system does not have.
 
 Tone:
 - Short, direct sentences. No subordinate clauses that explain why something matters. State it and move on.
 - Figures are fine where they flow naturally. Do not avoid them artificially.
 - No em dashes. No rhetorical flourishes. No "remarkably," "notably," "importantly."
+- Reference departments and skills naturally within the flow of sentences. Do not capitalize skill names as though they are proper nouns. "The nursing program builds clinical documentation and patient assessment skills" reads better than "The Nursing department develops Clinical Documentation and Patient Assessment." Weave names into the argument rather than listing them as labels. Legitimate acronyms (HVAC, HACCP, EPA, OSHA, EHR, BLS) retain their standard capitalization.
+- Present evidence and options, not instructions. Use "could explore," "a potential starting point," "one area worth examining" rather than "should address," "must implement," "the meeting should open with." The reader is the decision-maker. The narrative presents the case. It does not prescribe the action.
 - When discussing the college's programs, lead with what the department does well. Frame development areas as opportunities to strengthen existing preparation, not deficiencies to correct. The coordinator built these programs. Respect that work.
 - Do not say "gaps," "missing," "does not address," "falls short," or "not fully prepared." Instead say "can be strengthened," "an opportunity to deepen," or "an area for continued development."
 - Do not use bullet points or numbered lists.
@@ -885,17 +890,17 @@ Type-specific guidance:
 - OPPORTUNITY: Why this employer hires for this occupation in this region. What structured rotations would look like. No career ladder speculation.
 - CURRICULUM COMPOSITION: Affirm the department's alignment. Which departments prepare students for on-site rotations in this role. Do not suggest the program is insufficient.
 - STUDENT COMPOSITION: Students are prepared. Frame their readiness positively.
-- ROADMAP: Operational areas for rotations, duration (8-16 weeks), course credit mapping, first-cohort target.
+- ROADMAP: Suggest potential rotation areas, duration (8-16 weeks), course credit mapping, first-cohort target. Present as options.
 
 REFERENCE EXAMPLE (match this prose quality — do not copy its content):
 
-Opportunity: Kaiser Permanente is the largest healthcare employer in the Central Valley, hiring registered nurses at scale with 2,160 annual openings and 7.2% projected growth. An internship pipeline would place students in structured clinical rotations, giving them supervised patient care experience that accelerates licensure readiness.
+Opportunity: Kaiser Permanente is the largest healthcare employer in the Central Valley, hiring registered nurses at scale with 2,160 annual openings and 7.2% projected growth. An internship pipeline could place students in structured clinical rotations, giving them supervised patient care experience that accelerates licensure readiness.
 
-Curriculum Composition: The Nursing department is the strongest alignment point, developing patient care, clinical documentation, and nursing process skills across its core program. Health Sciences extends this into workplace safety and supervised clinical hours.
+Curriculum Composition: The nursing program is the strongest alignment point, building patient care, clinical documentation, and nursing process skills across its core courses. Health sciences extends this into workplace safety and supervised clinical hours.
 
-Student Composition: Students in the Nursing and Health Sciences programs have completed multiple courses developing the core clinical skills Kaiser requires. The pipeline is concentrated in the right departments with the right preparation.
+Student Composition: Students in nursing and health sciences have completed multiple courses developing the core clinical skills Kaiser requires. The pipeline is concentrated in the right programs with the right preparation.
 
-Roadmap: Convene a meeting between the Nursing department chair and Kaiser's workforce development leadership to identify two to three rotation sites. Define an 8-12 week structure mapped to existing Work Experience course sequences, targeting 8-15 students within two semesters."""
+Roadmap: A potential starting point is a meeting between the nursing department chair and Kaiser's workforce development leadership to explore rotation sites. An 8-12 week structure mapped to existing work experience course sequences could target 8-15 students within two semesters."""
 
 
 CURRICULUM_CODESIGN_PROMPT = _NARRATIVE_PREAMBLE + """
@@ -906,17 +911,17 @@ Type-specific guidance:
 - OPPORTUNITY: The college's primary department is well-positioned for this occupation with strong existing alignment. There is one area that a co-design partnership could strengthen further. Tone is collaborative — the college is well-aligned, not falling short.
 - CURRICULUM COMPOSITION: Focus on the primary department's strengths across the core skills, then introduce the gap skill as an area that can be more rigorously addressed through collaboration with the employer. Do not say "not addressed" or "missing" — say "can be strengthened" or "can be more rigorously developed." The co-design audit would determine the scope and approach.
 - STUDENT COMPOSITION: Students in the primary department who are developing the core skills.
-- ROADMAP: Collaborative curriculum review with the primary department and employer, focused on strengthening the identified area. Pilot development within the next catalog cycle.
+- ROADMAP: Suggest a collaborative curriculum review as a potential path forward. Pilot development within the next catalog cycle. Present as options.
 
 REFERENCE EXAMPLE (match this prose quality — do not copy its content):
 
-Opportunity: The college's Nursing department is well-aligned with Adventist Health's registered nurse hiring needs. A co-design partnership would strengthen the program further by developing areas like EHR proficiency that are increasingly central to clinical workflows.
+Opportunity: The college's nursing program is well-aligned with Adventist Health's registered nurse hiring needs. A co-design partnership could strengthen the program further by developing areas like EHR proficiency that are increasingly central to clinical workflows.
 
-Curriculum Composition: Nursing develops Clinical Documentation, Nursing Process, and Patient Assessment across its core program. EHR navigation is a practical requirement in modern hospital settings that can be more rigorously developed through collaboration with Adventist Health's clinical education team.
+Curriculum Composition: The nursing program builds clinical documentation, nursing process, and patient assessment skills across its core courses. EHR navigation is a practical requirement in modern hospital settings that could be more rigorously developed through collaboration with Adventist Health's clinical education team.
 
 Student Composition: Nursing students are completing coursework in the core clinical skills this role requires. They represent the strongest candidates for a co-design effort that strengthens their readiness for the specific clinical environment at Adventist Health.
 
-Roadmap: Convene a working group between the Nursing department chair and Adventist Health's clinical education leadership. Evaluate EHR coverage and other practice-specific requirements, then pilot revised content within the next catalog cycle."""
+Roadmap: One path forward is a working group between the nursing department chair and Adventist Health's clinical education leadership to evaluate EHR coverage and other practice-specific requirements. Revised content could be piloted within the next catalog cycle."""
 
 
 ADVISORY_BOARD_PROMPT = _NARRATIVE_PREAMBLE + """
@@ -927,19 +932,19 @@ The context includes a THESIS characterizing this employer's distinctive operati
 
 Type-specific guidance:
 - OPPORTUNITY: 2-3 sentences. Ground the argument in the thesis. Why does this employer's operational reality make its perspective relevant to the college's programs? Do not merely list occupations or hiring volume. Characterize the employer and explain why that characterization matters for the college. No grant funding is required.
-- CURRICULUM COMPOSITION: 2-3 sentences. Which departments align across this employer's operational areas. The employer's perspective is relevant to multiple programs. Name the departments and what they contribute.
-- STUDENT COMPOSITION: 2-3 sentences. The aggregate student pipeline across the relevant departments. Students in these programs are developing skills aligned with this employer's operations.
-- ROADMAP: 2-3 sentences. Formal invitation to the employer's regional leadership. Reference the inaugural agenda topics from the context. Propose quarterly cadence.
+- CURRICULUM COMPOSITION: 2-3 sentences. Which workforce-oriented departments align across this employer's operational areas. Weave department and skill names naturally into the prose. Be cautious about framing foundational departments (biology, chemistry) as targets for employer-specific advisory input — present any such connection tentatively.
+- STUDENT COMPOSITION: 2-3 sentences. The aggregate student pipeline across the relevant departments.
+- ROADMAP: 2-3 sentences. Suggest a potential path forward: a quarterly advisory board with the employer's regional leadership. Reference the inaugural agenda topics from the context as potential starting points for the first meeting, not as prescribed actions.
 
 REFERENCE EXAMPLE (match this prose quality — do not copy its content):
 
-Opportunity: Cargill operates at the intersection of agricultural production and food processing in the Central Valley, hiring food science technicians, industrial production managers, and agricultural workers at scale. That operational scope makes its perspective on workforce readiness relevant to programs that span agriculture, food science, and industrial technology. An advisory board would formalize this as an ongoing channel for industry guidance, requiring no grant funding.
+Opportunity: Cargill operates at the intersection of agricultural production and food processing in the Central Valley, employing food science technicians, production managers, and agricultural inspectors across its facilities. That operational scope touches workforce readiness questions that span multiple programs at the college. Formalizing that perspective as an advisory board would create an ongoing channel for industry guidance, with no grant funding required.
 
-Curriculum Composition: The Agriculture, Culinary and Nutrition, and Industrial Technology departments develop skills that align with Cargill's core operations. Together they cover food safety, production management, and agricultural science. The advisory board would give Cargill a structured way to share how industry standards in these areas are evolving.
+Curriculum Composition: The college's agriculture, culinary, and industrial technology programs develop the applied skills most closely aligned with Cargill's operations, from food safety and regulatory compliance to production oversight and quality control. Agricultural business management adds preparation in the commercial dimensions of commodity production. These are the programs where Cargill's operational perspective could inform how curriculum stays current with industry practice.
 
-Student Composition: Students across these departments are developing skills relevant to Cargill's operations. The pipeline spans multiple programs, reflecting the breadth of Cargill's hiring relationship with the region.
+Student Composition: Students across these programs are building skills relevant to Cargill's workforce needs. The pipeline spans agriculture, food science, and manufacturing pathways, with many students developing multiple competencies that intersect with the roles Cargill fills in the region.
 
-Roadmap: Send a formal invitation to Cargill's Central Valley regional leadership proposing a quarterly advisory board. The inaugural meeting should address food safety automation standards and their implications for curriculum, and how agricultural technology is changing the competencies production teams require."""
+Roadmap: A quarterly advisory board with Cargill's Central Valley leadership could give these programs a sustained signal on how industry standards are shifting. Potential starting points for the inaugural meeting include how food safety audit processes map onto the competencies new hires are expected to have, and what production floor workflows reveal about the preparation students need in operations management and quality control."""
 
 
 PROMPTS: dict[str, str] = {
@@ -1195,7 +1200,11 @@ def _build_proposal_context(employer: str, college: str, engagement_type: str,
         relevant_depts = _filter_relevant_departments(gathered.employer_name, occ_titles, all_dept_names)
         curriculum_evidence = [d for d in curriculum_evidence if d["department"] in relevant_depts]
 
-        # No primary department narrowing — breadth is appropriate for advisory
+        # Cap to top 7 departments by number of aligned skills
+        if len(curriculum_evidence) > 7:
+            curriculum_evidence = sorted(
+                curriculum_evidence, key=lambda d: len(d["aligned_skills"]), reverse=True
+            )[:7]
 
         dept_text = _build_dept_text(curriculum_evidence, core_skills)
         aligned_depts = [d["department"] for d in curriculum_evidence]

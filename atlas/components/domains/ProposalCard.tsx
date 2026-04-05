@@ -105,20 +105,6 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
           <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.7)", lineHeight: 1.65, margin: 0 }}>
             {proposal.opportunity}
           </p>
-          {proposal.advisory_thesis && (
-            <div style={{
-              marginTop: "12px", padding: "12px 16px",
-              borderLeft: `2px solid ${brandColor}40`,
-              background: `${brandColor}08`, borderRadius: "0 6px 6px 0",
-            }}>
-              <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", display: "block", marginBottom: "6px" }}>
-                Thesis
-              </span>
-              <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.75)", lineHeight: 1.6, margin: 0, fontStyle: "italic" }}>
-                {proposal.advisory_thesis}
-              </p>
-            </div>
-          )}
           <div style={{ marginTop: "12px" }}>
             <ColumnHeaders
               columns={[
