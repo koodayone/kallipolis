@@ -181,10 +181,10 @@ def run_tests():
 
             # 2-4 selected occupations
             occ_count = len(proposal.selected_occupations)
-            if 2 <= occ_count <= 4:
+            if 2 <= occ_count <= 3:
                 checks.append(("occ_count", "PASS", f"{occ_count} occupations"))
             else:
-                checks.append(("occ_count", "FAIL", f"{occ_count} occupations (expected 2-4)"))
+                checks.append(("occ_count", "FAIL", f"{occ_count} occupations (expected 2-3)"))
 
             # No generic occupations dominating
             generic_selected = [o for o in proposal.selected_occupations if o in GENERIC_OCCUPATIONS]
@@ -219,10 +219,10 @@ def run_tests():
 
             # Department count <= 7
             dept_count = len(proposal.justification.curriculum_evidence)
-            if dept_count <= 7:
+            if dept_count <= 3:
                 checks.append(("dept_count", "PASS", f"{dept_count} departments"))
             else:
-                checks.append(("dept_count", "FAIL", f"{dept_count} departments (max 7)"))
+                checks.append(("dept_count", "FAIL", f"{dept_count} departments (max 3)"))
 
             # Expected departments present
             dept_names = [d.department for d in proposal.justification.curriculum_evidence]

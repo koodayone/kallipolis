@@ -293,7 +293,7 @@ def _select_occupation(gathered: GatheredContext, engagement_type: str = "") -> 
 # Advisory Board: Identity-Driven Selection
 # ═══════════════════════════════════════════════════════════════════════════
 
-_ADVISORY_OCCUPATION_SELECTION_PROMPT = """Select 2-4 occupations that best define this employer's institutional identity. Return ONLY the JSON below — no reasoning, no explanation, no other text.
+_ADVISORY_OCCUPATION_SELECTION_PROMPT = """Select 2-3 occupations that best define this employer's institutional identity. Return ONLY the JSON below — no reasoning, no explanation, no other text.
 
 {context}
 
@@ -335,14 +335,18 @@ Skills the college develops for these occupations:
 {skills_text}
 
 Each topic should be:
-1. A specific question this employer can answer from operational experience — not a generic workforce question like "what skills do you need"
-2. Actionable for the college's program development within one catalog cycle
-3. Grounded in the intersection of the employer's operations and the college's existing programs
-4. Focused on workforce-oriented programs (e.g., agriculture, industrial technology, nursing). Be cautious about suggesting changes to foundational or general education courses (biology, chemistry, mathematics) — these serve many pathways and whether they should be tailored to one employer's needs depends on context the system does not have. If a foundational department is relevant, present it tentatively.
+1. A specific question this employer can answer from operational experience. Not a generic workforce question like "what skills do you need."
+2. Actionable for the college's program development within one catalog cycle.
+3. Grounded in the intersection of the employer's operations and the college's existing programs.
+4. Focused on workforce-oriented programs. Be cautious about suggesting changes to foundational or general education courses. If a foundational department is relevant, present it tentatively.
 
-Tone: Use the same voice as the rest of the proposal. Department names are proper nouns and should be capitalized (Industrial Technology, Agricultural Business Management). Skill names are not proper nouns and should be lowercase (food safety, operations management, quality control). Legitimate acronyms (HVAC, HACCP, EPA, OSHA, EHR) retain their standard capitalization. Reference the college's actual department and program names in rationales, not skill labels as standalone curricula — "the Industrial Technology program" not "Operations Management and Quality Control curriculum."
+Topic format: Each topic is a short, direct question. One question per topic. Do not combine two questions with "and." Keep questions under 25 words.
 
-{{"agenda_topics": [{{"topic": "...", "rationale": "one sentence explaining why this topic matters for both parties"}}, ...]}}"""
+Rationale format: One concise sentence. Do not use deficit language — no "gaps," "falls short," "deficiencies," "shortcomings," or "inadequately." Frame in terms of what the employer's input could strengthen or inform.
+
+Tone: Department names are proper nouns and should be capitalized. Skill names are lowercase. Legitimate acronyms (HVAC, HACCP, EPA, OSHA, EHR) retain standard capitalization. Reference actual department names in rationales, not skill labels as curricula.
+
+{{"agenda_topics": [{{"topic": "...", "rationale": "..."}}, ...]}}"""
 
 
 def _select_advisory_occupations(gathered: GatheredContext) -> list[dict]:
@@ -500,52 +504,48 @@ def _gather_aligned_curriculum(college: str, core_skills: list[str]) -> tuple[st
 # Department Relevance Filter
 # ═══════════════════════════════════════════════════════════════════════════
 
-_DEPT_FILTER_PROMPT = """Filter this list of departments to only those that directly train students for this specific occupation. Return ONLY the JSON — no reasoning.
+_DEPT_SELECTION_PROMPT = """Select up to {max_departments} departments most relevant to this partnership. Return ONLY the JSON — no reasoning.
 
 Employer: {employer}
-Occupation: {occupation}
+Occupation(s): {occupation}
 Departments: {department_list}
 
-The question is: would coursework in this department contribute to a student's ability to perform this occupation? Remove departments with no plausible connection to the role. An Ornamental Horticulture department does not train Sales Representatives. A Fashion department does not train Food Science Technicians. A Mathematics department does not train Plumbers. But an Agriculture department IS relevant to Food Science Technicians because food science draws on agricultural knowledge.
+Select the departments whose programs most directly prepare students for the work this employer does. Prefer workforce-oriented departments over foundational or general education departments. If fewer than {max_departments} departments are genuinely relevant, return fewer.
 
-{{"relevant_departments": ["...", "..."]}}"""
+{{"selected_departments": ["...", "..."]}}"""
 
 
-def _filter_relevant_departments(employer: str, occupation: str, departments: list[str]) -> list[str]:
-    """Filter departments to those semantically relevant to this employer and occupation."""
+def _select_relevant_departments(employer: str, occupation: str, departments: list[str], max_departments: int = 3) -> list[str]:
+    """Select the most relevant departments for this partnership, capped at max_departments."""
     if not departments:
+        return departments
+    if len(departments) <= max_departments:
         return departments
 
     client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
     message = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=256,
-        messages=[{"role": "user", "content": _DEPT_FILTER_PROMPT.format(
+        messages=[{"role": "user", "content": _DEPT_SELECTION_PROMPT.format(
             employer=employer,
             occupation=occupation,
             department_list=", ".join(departments),
+            max_departments=max_departments,
         )}],
     )
     raw = message.content[0].text
 
     try:
         result = _extract_json(raw)
-        relevant = result.get("relevant_departments", [])
-        logger.info(f"Department filter: {len(relevant)}/{len(departments)} departments kept")
-        removed = set(departments) - set(relevant)
-        if removed:
-            logger.info(f"  Removed: {', '.join(sorted(removed))}")
-        return relevant
+        selected = result.get("selected_departments", [])
+        # Ensure only valid department names are returned
+        selected = [d for d in selected if d in departments][:max_departments]
+        logger.info(f"Department selection: {len(selected)}/{len(departments)} departments selected")
+        return selected
     except (json.JSONDecodeError, ValueError) as e:
-        logger.warning(f"Department filter returned invalid JSON ({e}), keeping all")
-        return departments
-
-
-def _select_primary_department_by_count(curriculum_evidence: list[dict]) -> str:
-    """Fallback: select the department with the most aligned courses."""
-    if not curriculum_evidence:
-        return ""
-    return max(curriculum_evidence, key=lambda d: len(d["courses"]))["department"]
+        logger.warning(f"Department selection returned invalid JSON ({e}), falling back to top {max_departments} by skill count")
+        # Deterministic fallback: can't sort here since we don't have skill counts, return first N
+        return departments[:max_departments]
 
 
 _PRIMARY_DEPT_PROMPT = """Select the ONE department that is the most natural home for a curriculum co-design partnership focused on this occupation. Return ONLY the JSON — no reasoning.
@@ -842,7 +842,7 @@ Below is curated institutional context for a specific employer.
 
 {context}
 
-Each section is followed by a structured evidence block with specific figures. Your narrative interprets the evidence. You may cite figures where they flow naturally, but do not list or enumerate data that the evidence block already presents. Do not speculate about career progressions or advancement pathways unless the data explicitly supports them.
+Each section is followed by a structured evidence block that shows the complete record — every department, course, skill, and figure. The evidence block handles completeness. Your narrative handles meaning. Be selective: highlight the most significant elements and explain why they matter for this partnership. Do not summarize or enumerate what the evidence block already shows. Do not speculate about career progressions or advancement pathways.
 
 Argument structure: You are writing one continuous argument across four sections: opportunity, curriculum composition, student composition, and roadmap. Begin each section with its central claim in a single direct sentence. The first sentence states what the section argues. The sentences that follow substantiate that claim with evidence from the context. Do not build toward the point. State it, then support it. Each topic sentence must be specific to this employer and college — not a generic template phrase. The opportunity topic sentence should naturally connect the employer, the partnership type, and the college's programs so the reader knows in the first sentence what is being proposed and why.
 
@@ -858,13 +858,13 @@ Write a single JSON object:
 }}
 
 Tone:
-- Short, direct sentences. No subordinate clauses that explain why something matters. State it and move on.
+- Short, direct sentences. Each sentence makes one point. If a sentence has more than one comma, it is probably making more than one point. Split it. No subordinate clauses that explain why something matters. State it and move on.
 - Figures are fine where they flow naturally. Do not avoid them artificially.
 - No em dashes. No rhetorical flourishes. No "remarkably," "notably," "importantly."
 - Reference departments and skills naturally within the flow of sentences. Department names are proper nouns and should be capitalized. When referencing a department, use "the [Name] department" or "the [Name] program" so the reader knows it is an organizational unit, not a general concept — "the Environmental Control Technology department" not "Environmental Control Technology." Skill names are not proper nouns and should be lowercase (food safety, operations management, clinical documentation). Legitimate acronyms (HVAC, HACCP, EPA, OSHA, EHR, BLS) retain their standard capitalization. Weave names into the argument rather than listing them as labels.
 - Present evidence and options, not instructions. Use "could explore," "a potential starting point," "one area worth examining" rather than "should address," "must implement," "the meeting should open with." The reader is the decision-maker. The narrative presents the case. It does not prescribe the action.
-- When discussing the college's programs, affirm what the department does well. Frame development areas as opportunities to strengthen existing preparation, not deficiencies to correct. The coordinator built these programs. Respect that work.
-- Do not say "gaps," "missing," "does not address," "falls short," or "not fully prepared." Instead say "can be strengthened," "an opportunity to deepen," or "an area for continued development."
+- When discussing the college's programs, affirm what the department does well. The coordinator built these programs. Respect that work. Do not introduce development areas or weaknesses unless the partnership type specifically calls for it.
+- Do not say "gaps," "missing," "does not address," "falls short," or "not fully prepared."
 - Do not use bullet points or numbered lists.
 - Focus recommendations on workforce-oriented programs. Be cautious about recommending changes to foundational or general education courses (e.g., biology, chemistry, mathematics) based on a single employer's needs — these courses serve many pathways.
 - Do not introduce skill names that are not in the context. Do not assert how many core skills a department covers or claim complete coverage.
@@ -881,42 +881,42 @@ PARTNERSHIP TYPE: Internship Pipeline — structured on-site work experience at 
 
 Each section argues:
 - OPPORTUNITY (2-3 sentences): This section claims that the employer is a compelling internship partner for the relevant program. Substantiate with regional demand and what the internship could look like. Do not speculate about career ladders.
-- CURRICULUM COMPOSITION (2-3 sentences): This section claims that the relevant program provides direct preparation for an internship at this employer. Describe how coursework connects to the work students would do on-site. Do not suggest the program is insufficient.
-- STUDENT COMPOSITION (2-3 sentences): This section asserts the composition and alignment of the student pipeline with this internship opportunity. Do not evaluate readiness — state it.
+- CURRICULUM COMPOSITION (2-3 sentences): This section claims that the relevant program provides direct preparation for an internship at this employer. Explain why the program's preparation matters for this specific role — do not inventory what each department teaches. The evidence block shows the detail. Do not suggest the program is insufficient.
+- STUDENT COMPOSITION (2-3 sentences): This section asserts the composition and alignment of the student pipeline with this internship opportunity. Describe who the students are and what they are studying. Do not evaluate readiness — state it. Do not include economic data — that belongs in the opportunity section.
 - ROADMAP (2-3 sentences): Concise recommended path forward. State the next step, then add specifics: internship duration (8-16 weeks), course credit mapping, first-cohort target. Present as options.
 
 REFERENCE EXAMPLE (match this prose quality — do not copy its content):
 
-Opportunity: Kaiser Permanente represents one of the strongest internship partners for the college's nursing program in the Central Valley. The region has sustained demand for registered nurses, and structured clinical rotations could give students supervised experience in the patient care workflows they are already learning in the classroom.
+Opportunity: Kaiser Permanente represents one of the strongest internship partners for the college's Nursing program in the Central Valley. The region has sustained demand for registered nurses. Structured clinical rotations could give students supervised experience in the patient care workflows they are already learning in the classroom.
 
-Curriculum Composition: The nursing program provides the most direct preparation for on-site rotations at Kaiser. Its coursework develops the clinical reasoning, documentation, and patient assessment competencies that define the daily work of a registered nurse, and the health sciences program extends this into workplace safety and supervised clinical practice.
+Curriculum Composition: The Nursing department provides the most direct preparation for an internship at Kaiser. Its coursework mirrors the clinical reasoning and documentation workflows students would encounter on the floor. The Health Sciences program extends this into supervised practice settings.
 
-Student Composition: Students in the college's nursing and health sciences programs are completing coursework aligned with the core competencies Kaiser requires. The pipeline is concentrated in the programs most relevant to this role, with candidates ranked by skill coverage and academic performance.
+Student Composition: Students in the Nursing and Health Sciences programs are completing coursework aligned with the competencies Kaiser requires. The pipeline is concentrated in the programs most relevant to this role.
 
-Roadmap: A meeting between the nursing department chair and Kaiser's workforce development team could establish rotation sites and capacity for a first cohort. An 8-12 week structure mapped to existing work experience course sequences could place 8-15 students within two semesters."""
+Roadmap: A meeting between the Nursing department chair and Kaiser's workforce development team could establish internship sites and capacity for a first cohort. An 8-12 week structure mapped to existing work experience course sequences could place 8-15 students within two semesters."""
 
 
 CURRICULUM_CODESIGN_PROMPT = _NARRATIVE_PREAMBLE + """
 
 PARTNERSHIP TYPE: Curriculum Co-Design — the employer shapes program content through collaboration with faculty to strengthen a specific area.
 
-The context identifies a GAP SKILL — a specific area where collaboration with the employer could strengthen the program. This gap skill is the reason the co-design partnership exists. It should be introduced in the opportunity, contextualized in the curriculum composition, and named in the roadmap.
+The context identifies a GAP SKILL — a specific area where collaboration with the employer could strengthen the program. This gap skill is the reason the co-design partnership exists. It should be introduced in the opportunity, contextualized in the curriculum composition, and named in the roadmap. Frame the gap as an opportunity to strengthen existing preparation, not a deficiency to correct. Use "can be strengthened," "an opportunity to deepen," or "can be more rigorously developed."
 
 Each section argues:
 - OPPORTUNITY (2-3 sentences): This section claims that the primary department is well-positioned for this occupation and that a co-design partnership could strengthen it further in the gap skill area. Tone is collaborative — the college is well-aligned, not falling short.
-- CURRICULUM COMPOSITION (2-3 sentences): This section claims that the primary department is the right home for this partnership. Describe the department's curricular strength, then contextualize the gap skill as an area that could be more rigorously developed through collaboration. Do not say "not addressed" or "missing" — say "can be strengthened" or "can be more rigorously developed."
-- STUDENT COMPOSITION (2-3 sentences): This section asserts the composition and alignment of students in the primary department with this co-design opportunity. Do not evaluate readiness — state it.
+- CURRICULUM COMPOSITION (2-3 sentences): This section claims that the primary department is the right home for this partnership. Characterize the department's curricular strength for this role, then contextualize the gap skill as an area that could be more rigorously developed through collaboration. Do not enumerate individual skills — the evidence block shows them. Do not say "not addressed" or "missing" — say "can be strengthened" or "can be more rigorously developed."
+- STUDENT COMPOSITION (2-3 sentences): This section asserts the composition and alignment of students in the primary department with this co-design opportunity. Describe who the students are and what they are studying. Do not evaluate readiness — state it. Do not include economic data — that belongs in the opportunity section.
 - ROADMAP (2-3 sentences): Concise recommended path forward. Name the gap skill specifically as the focus area the working group would evaluate. Pilot within the next catalog cycle. Present as options.
 
 REFERENCE EXAMPLE (match this prose quality — do not copy its content):
 
-Opportunity: The college's nursing program is well-positioned to deepen its alignment with Adventist Health through a co-design partnership focused on electronic health record proficiency. The program develops the core clinical competencies registered nurses need, and collaboration with Adventist Health's clinical education team could strengthen preparation in EHR workflows that are increasingly central to hospital practice.
+Opportunity: The college's Nursing program is well-positioned to deepen its alignment with Adventist Health through a co-design partnership focused on electronic health record proficiency. The program develops the core clinical competencies registered nurses need. Collaboration with Adventist Health's clinical education team could strengthen preparation in EHR workflows that are increasingly central to hospital practice.
 
-Curriculum Composition: Nursing provides the strongest curricular foundation for this partnership, preparing students for the documentation, assessment, and care planning that define registered nursing practice. EHR navigation is a practical requirement in modern clinical settings that could be more rigorously developed through direct collaboration with Adventist Health.
+Curriculum Composition: The Nursing department provides the strongest curricular foundation for this partnership. Its coursework prepares students for the documentation and assessment workflows that define daily nursing practice. EHR navigation is a practical requirement in modern clinical settings that could be more rigorously developed through collaboration with Adventist Health.
 
-Student Composition: Students in the nursing program are completing coursework in the clinical competencies this role requires. They represent the strongest candidates for a co-design effort that deepens their preparation for the specific clinical environment at Adventist Health.
+Student Composition: Students in the Nursing program are completing coursework in the clinical competencies this role requires. They represent the strongest candidates for a co-design effort that deepens their preparation for Adventist Health's clinical environment.
 
-Roadmap: A working group between the nursing department chair and Adventist Health's clinical education leadership could evaluate how EHR proficiency is currently addressed in clinical coursework and where collaboration could strengthen that preparation. Revised content could be piloted within the next catalog cycle."""
+Roadmap: A working group between the Nursing department chair and Adventist Health's clinical education leadership could evaluate how EHR proficiency is addressed in clinical coursework. Revised content could be piloted within the next catalog cycle."""
 
 
 ADVISORY_BOARD_PROMPT = _NARRATIVE_PREAMBLE + """
@@ -925,19 +925,19 @@ PARTNERSHIP TYPE: Advisory Board — ongoing strategic guidance from the employe
 
 Each section argues:
 - OPPORTUNITY (2-3 sentences): This section claims that this employer is a compelling advisory board partner for the college's programs. The topic sentence connects the employer, the advisory board proposition, and the college's programs in a single claim. Substantiate with a characterization of the employer grounded in the thesis from the context. No grant funding is required.
-- CURRICULUM COMPOSITION (2-3 sentences): This section claims that specific workforce-oriented programs provide the closest match to this employer's operations. Describe what those programs develop and why this employer's perspective could inform them. Be cautious about framing foundational departments as targets for employer-specific advisory input.
-- STUDENT COMPOSITION (2-3 sentences): This section asserts the scope and composition of the aggregate student pipeline across programs aligned with this employer's workforce. Do not evaluate readiness — state the alignment.
+- CURRICULUM COMPOSITION (2-3 sentences): This section claims that specific workforce-oriented programs provide the closest match to this employer's operations. Characterize the nature of the alignment — what kind of preparation these programs provide and why it connects to this employer's operations. Do not argue what the advisory relationship could do for the departments — that belongs in the roadmap. The evidence block shows the full inventory. Be cautious about framing foundational departments as targets for employer-specific advisory input.
+- STUDENT COMPOSITION (2-3 sentences): This section asserts the scope and composition of the aggregate student pipeline across programs aligned with this employer's workforce. Describe who the students are and what they are studying. Do not include economic data (wages, employment counts, openings) — that belongs in the opportunity section and evidence blocks.
 - ROADMAP (2-3 sentences): Concise recommended path forward. State the quarterly advisory board format, then reference the agenda topics from the context as potential starting points for the inaugural meeting. Not prescribed actions.
 
 REFERENCE EXAMPLE (match this prose quality — do not copy its content):
 
-Opportunity: Cargill's operational scope across agricultural production and food processing makes it a compelling advisory board partner for several of the college's workforce programs. The company employs food science technicians, production managers, and agricultural inspectors across its Central Valley facilities, and formalizing that perspective as an advisory board would create an ongoing channel for industry guidance with no grant funding required.
+Opportunity: Cargill's operational scope across agricultural production and food processing makes it a compelling advisory board partner for several of the college's workforce programs. The company employs food science technicians, production managers, and agricultural inspectors across its Central Valley facilities. Formalizing that perspective as an advisory board would create an ongoing channel for industry guidance with no grant funding required.
 
-Curriculum Composition: The college's agriculture, culinary, and industrial technology programs provide the closest curricular match to Cargill's workforce operations, spanning food safety, regulatory compliance, production oversight, and quality control. Agricultural business management adds preparation in the commercial dimensions of commodity production, and these are the programs where sustained industry input could most directly inform how coursework stays current.
+Curriculum Composition: The Agriculture, Culinary and Nutrition, and Industrial Technology departments provide the closest curricular match to Cargill's workforce operations. These programs span the applied technical and production management competencies that Cargill's roles require. Sustained industry input could directly inform how coursework in these departments stays current with operational practice.
 
-Student Composition: Students across the college's agriculture, culinary, and industrial technology programs are developing competencies aligned with the roles Cargill fills in the region. The pipeline spans multiple pathways, with students building applied skills in food science, manufacturing, and agricultural production.
+Student Composition: Students across these departments are developing competencies aligned with the roles Cargill fills in the region. The pipeline spans multiple pathways in food science, manufacturing, and agricultural production.
 
-Roadmap: A quarterly advisory board with Cargill's Central Valley leadership could give these programs sustained access to industry perspective on how workforce standards are evolving. Potential starting points for the inaugural meeting include how food safety audit processes map onto the competencies new hires need, and what production floor workflows reveal about preparation in operations and quality assurance."""
+Roadmap: A quarterly advisory board with Cargill's Central Valley leadership could give these programs sustained access to industry perspective. Potential starting points for the inaugural meeting include how food safety audit processes map onto the competencies new hires need and what production floor workflows reveal about preparation in operations and quality assurance."""
 
 
 PROMPTS: dict[str, str] = {
@@ -1186,18 +1186,11 @@ def _build_proposal_context(employer: str, college: str, engagement_type: str,
         # Curriculum query scoped to union of core skills
         _, curriculum_evidence = _gather_aligned_curriculum(college, core_skills)
 
-        # Department filter — use first occupation title as representative for the filter prompt
-        # but pass all occupations' context through the employer name + sector
+        # Select top 3 most relevant departments
         all_dept_names = [d["department"] for d in curriculum_evidence]
         occ_titles = ", ".join(o.get("title", "") for o in selected_occupations)
-        relevant_depts = _filter_relevant_departments(gathered.employer_name, occ_titles, all_dept_names)
-        curriculum_evidence = [d for d in curriculum_evidence if d["department"] in relevant_depts]
-
-        # Cap to top 7 departments by number of aligned skills
-        if len(curriculum_evidence) > 7:
-            curriculum_evidence = sorted(
-                curriculum_evidence, key=lambda d: len(d["aligned_skills"]), reverse=True
-            )[:7]
+        selected_depts = _select_relevant_departments(gathered.employer_name, occ_titles, all_dept_names)
+        curriculum_evidence = [d for d in curriculum_evidence if d["department"] in selected_depts]
 
         dept_text = _build_dept_text(curriculum_evidence, core_skills)
         aligned_depts = [d["department"] for d in curriculum_evidence]
@@ -1239,10 +1232,10 @@ def _build_proposal_context(employer: str, college: str, engagement_type: str,
 
     _, curriculum_evidence = _gather_aligned_curriculum(college, core_skills)
 
-    # Filter departments by semantic relevance
+    # Select top 3 most relevant departments
     all_dept_names = [d["department"] for d in curriculum_evidence]
-    relevant_depts = _filter_relevant_departments(gathered.employer_name, selected_occ.get("title", ""), all_dept_names)
-    curriculum_evidence = [d for d in curriculum_evidence if d["department"] in relevant_depts]
+    selected_depts = _select_relevant_departments(gathered.employer_name, selected_occ.get("title", ""), all_dept_names)
+    curriculum_evidence = [d for d in curriculum_evidence if d["department"] in selected_depts]
 
     # Curriculum co-design: narrow to one primary department via LLM
     if engagement_type == "curriculum_codesign" and curriculum_evidence:
