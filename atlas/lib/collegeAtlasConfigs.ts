@@ -18,8 +18,25 @@ const generatedConfigs = Object.fromEntries(
     ])
 );
 
+// Manual brand color overrides (survives auto-generation of collegeColors)
+const COLOR_OVERRIDES: Record<string, string> = {
+  shasta: "#3A6F3A",
+  redwoods: "#7B2D3E",
+  sequoias: "#84be00",
+};
+
+const overrideConfigs = Object.fromEntries(
+  Object.entries(COLOR_OVERRIDES)
+    .filter(([id]) => generatedConfigs[id])
+    .map(([id]) => {
+      const college = CALIFORNIA_COLLEGES.find((c) => c.id === id)!;
+      return [id, makeSchoolConfig(college.name, `/logos/${id}.png`, COLOR_OVERRIDES[id])];
+    })
+);
+
 export const COLLEGE_ATLAS_CONFIGS: Record<string, SchoolConfig> = {
   ...generatedConfigs,
+  ...overrideConfigs,
   // Foothill overrides with its real hand-tuned brand color
   foothill: schoolConfig,
 };
