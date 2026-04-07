@@ -38,7 +38,7 @@ export default function StateView() {
   const [selectedCollege, setSelectedCollege] = useState<College | null>(null);
   const [mapOpacity, setMapOpacity] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
-  const [mapPanelHovered, setMapPanelHovered] = useState(false);
+
   const [searchFocused, setSearchFocused] = useState(false);
   const [searchActiveIndex, setSearchActiveIndex] = useState(-1);
   const searchRef = useRef<HTMLInputElement>(null);
@@ -184,11 +184,9 @@ export default function StateView() {
 
         {/* Body */}
         <div style={{ flex: 1, display: "flex", overflow: "hidden" }}>
-          {/* Left — map + search */}
+          {/* Left — map */}
           <div
             onClick={() => setSelectedCollege(null)}
-            onMouseEnter={() => setMapPanelHovered(true)}
-            onMouseLeave={() => setMapPanelHovered(false)}
             style={{
               flex: 1,
               position: "relative",
@@ -199,8 +197,94 @@ export default function StateView() {
               overflow: "hidden",
             }}
           >
+            {/* Map */}
+            <div
+              style={{
+                flex: 1,
+                width: "100%",
+                maxWidth: "440px",
+                aspectRatio: "400 / 500",
+                opacity: mapOpacity,
+                transition: "opacity 0.18s ease",
+              }}
+            >
+              <CaliforniaMap
+                mapView={mapView}
+                activeRegionId={activeRegionId}
+                hoveredRegionId={hoveredRegionId}
+                hoveredCollegeId={hoveredCollege?.id ?? null}
+                selectedCollegeId={selectedCollege?.id ?? null}
+                dimMarkers={false}
+                onRegionHover={setHoveredRegionId}
+                onRegionClick={handleRegionClick}
+                onCollegeHover={setHoveredCollege}
+                onCollegeSelect={handleCollegeSelect}
+              />
+            </div>
+
+            {/* Sun prompt */}
+            <AnimatePresence>
+              {!showSearchResults && (
+                <motion.div
+                  key="sun-prompt"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  style={{
+                    position: "absolute",
+                    right: "18%",
+                    top: "15%",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    pointerEvents: "none",
+                  }}
+                >
+                  <div style={{ opacity: activeCollege || hoveredRegionId ? 1 : 0.45, transition: "opacity 0.4s ease-in-out" }}>
+                    <RisingSun />
+                  </div>
+                  <div style={{ position: "relative", height: "16px", width: "0", marginTop: "10px" }}>
+                    <span style={{
+                      position: "absolute",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+                      fontSize: "11px",
+                      fontWeight: 500,
+                      letterSpacing: "0.14em",
+                      textTransform: "uppercase",
+                      color: activeCollege || hoveredRegionId ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.55)",
+                      whiteSpace: "nowrap",
+                      transition: "color 0.3s ease-in-out",
+                    }}>
+                      {activeCollege
+                        ? activeCollege.name
+                        : hoveredRegionId
+                        ? (CALIFORNIA_REGIONS.find((r) => r.id === hoveredRegionId)?.name ?? "Select a region")
+                        : "Select a region"}
+                    </span>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+          </div>
+
+          {/* Right — search + info panel */}
+          <div
+            onClick={() => setSelectedCollege(null)}
+            style={{
+              width: "50%",
+              flexShrink: 0,
+              borderLeft: "1px solid rgba(255,255,255,0.07)",
+              display: "flex",
+              flexDirection: "column",
+              overflow: "hidden",
+            }}
+          >
             {/* Search bar */}
-            <div style={{ width: "100%", maxWidth: "440px", flexShrink: 0, position: "relative", zIndex: 5 }}>
+            <div style={{ flexShrink: 0, padding: "24px 56px 0", position: "relative", zIndex: 5 }}>
               <div
                 style={{
                   display: "flex",
@@ -275,9 +359,9 @@ export default function StateView() {
                     style={{
                       position: "absolute",
                       top: "calc(100% + 6px)",
-                      left: 0,
-                      right: 0,
-                      maxHeight: "320px",
+                      left: "56px",
+                      right: "56px",
+                      maxHeight: "calc(100vh - 240px)",
                       overflowY: "auto",
                       background: "rgba(10, 14, 28, 0.97)",
                       border: "1px solid rgba(255,255,255,0.10)",
@@ -292,97 +376,12 @@ export default function StateView() {
               </AnimatePresence>
             </div>
 
-            {/* Map */}
-            <div
-              style={{
-                flex: 1,
-                width: "100%",
-                maxWidth: "440px",
-                aspectRatio: "400 / 500",
-                marginTop: "8px",
-                opacity: mapOpacity,
-                transition: "opacity 0.18s ease",
-              }}
-            >
-              <CaliforniaMap
-                mapView={mapView}
-                activeRegionId={activeRegionId}
-                hoveredRegionId={hoveredRegionId}
-                hoveredCollegeId={hoveredCollege?.id ?? null}
-                selectedCollegeId={selectedCollege?.id ?? null}
-                dimMarkers={!mapPanelHovered}
-                onRegionHover={setHoveredRegionId}
-                onRegionClick={handleRegionClick}
-                onCollegeHover={setHoveredCollege}
-                onCollegeSelect={handleCollegeSelect}
-              />
-            </div>
-
-            {/* Sun prompt */}
-            <AnimatePresence>
-              {mapPanelHovered && !showSearchResults && (
-                <motion.div
-                  key="sun-prompt"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  style={{
-                    position: "absolute",
-                    right: "18%",
-                    top: "15%",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    pointerEvents: "none",
-                  }}
-                >
-                  <div style={{ opacity: hoveredRegionId ? 1 : 0.45, transition: "opacity 0.4s ease-in-out" }}>
-                    <RisingSun />
-                  </div>
-                  <div style={{ position: "relative", height: "16px", width: "0", marginTop: "10px" }}>
-                    <span style={{
-                      position: "absolute",
-                      left: "50%",
-                      transform: "translateX(-50%)",
-                      fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-                      fontSize: "11px",
-                      fontWeight: 500,
-                      letterSpacing: "0.14em",
-                      textTransform: "uppercase",
-                      color: hoveredRegionId ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.55)",
-                      whiteSpace: "nowrap",
-                      transition: "color 0.3s ease-in-out",
-                    }}>
-                      {hoveredRegionId
-                        ? (CALIFORNIA_REGIONS.find((r) => r.id === hoveredRegionId)?.name ?? "Select a region")
-                        : "Select a region"}
-                    </span>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-          </div>
-
-          {/* Right — info panel */}
-          <div
-            onClick={() => setSelectedCollege(null)}
-            style={{
-              width: "50%",
-              flexShrink: 0,
-              borderLeft: "1px solid rgba(255,255,255,0.07)",
-              display: "flex",
-              flexDirection: "column",
-              overflow: "hidden",
-            }}
-          >
             {/* Panel content — scrollable */}
             <div
               style={{
                 flex: 1,
                 overflowY: "auto",
-                padding: "40px 56px 150px",
+                padding: "32px 56px 150px",
               }}
             >
               <AnimatePresence mode="wait">
