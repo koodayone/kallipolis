@@ -224,7 +224,7 @@ export default function StateView() {
 
             {/* Sun prompt */}
             <AnimatePresence>
-              {!showSearchResults && (
+              {(
                 <motion.div
                   key="sun-prompt"
                   initial={{ opacity: 0 }}
@@ -261,8 +261,8 @@ export default function StateView() {
                       {activeCollege
                         ? activeCollege.name
                         : hoveredRegionId
-                        ? (CALIFORNIA_REGIONS.find((r) => r.id === hoveredRegionId)?.name ?? "Select a region")
-                        : "Select a region"}
+                        ? (CALIFORNIA_REGIONS.find((r) => r.id === hoveredRegionId)?.name ?? "Select a college")
+                        : "Select a college"}
                     </span>
                   </div>
                 </motion.div>
