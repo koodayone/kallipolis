@@ -4,17 +4,21 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import { AnimatePresence, motion } from "framer-motion";
-import { buildAtlasScene, DomainKey } from "@/lib/atlasScene";
+import { buildAtlasScene, AtlasNodeKey, ALL_NODE_KEYS, NODE_NAMES } from "@/lib/atlasScene";
 import { getCollegeAtlasConfig } from "@/lib/collegeAtlasConfigs";
-import AtlasLabels from "@/components/atlas/AtlasLabels";
-import DomainView from "@/components/domains/DomainView";
 import AtlasMenu from "@/components/auth/AtlasMenu";
+import StudentsView from "@/components/college/StudentsView";
+import CoursesView from "@/components/college/CoursesView";
+import PartnershipsView from "@/components/industry/PartnershipsView";
+import OccupationsView from "@/components/industry/OccupationsView";
+import EmployersView from "@/components/industry/EmployersView";
+import StrongWorkforceView from "@/components/government/StrongWorkforceView";
 
 const AtlasCanvas = dynamic(() => import("@/components/atlas/AtlasCanvas"), {
   ssr: false,
 });
 
-type AppState = "home" | "transitioning-in" | "domain" | "transitioning-out";
+type AppState = "home" | "transitioning-in" | "leaf" | "transitioning-out";
 
 export default function CollegeAtlasPage() {
   const { collegeId } = useParams<{ collegeId: string }>();
@@ -22,36 +26,53 @@ export default function CollegeAtlasPage() {
   const config = getCollegeAtlasConfig(collegeId);
 
   const [appState, setAppState] = useState<AppState>("home");
-  const [activeDomain, setActiveDomain] = useState<DomainKey | null>(null);
-  const [hoveredDomain, setHoveredDomain] = useState<DomainKey | null>(null);
+  const [activeNode, setActiveNode] = useState<AtlasNodeKey | null>(null);
+  const [hoveredNode, setHoveredNode] = useState<AtlasNodeKey | null>(null);
   const sceneRef = useRef<ReturnType<typeof buildAtlasScene> | null>(null);
+
+  // Projected label positions from the 3D scene
+  const [projectedPositions, setProjectedPositions] = useState<Record<string, { x: number; y: number }>>({});
 
   // Redirect if college not found
   useEffect(() => {
     if (!config) router.replace("/");
   }, [config, router]);
 
-  // Restore domain from URL hash on mount
+  // Restore node from URL hash on mount
   useEffect(() => {
-    const hash = window.location.hash.replace("#", "").split("/")[0] as DomainKey;
-    if (["government", "college", "industry"].includes(hash)) {
-      setActiveDomain(hash);
-      setAppState("domain");
+    const hash = window.location.hash.replace("#", "") as AtlasNodeKey;
+    if (ALL_NODE_KEYS.includes(hash)) {
+      setActiveNode(hash);
+      setAppState("leaf");
     }
   }, []);
 
-  const handleDomainClick = useCallback((domain: DomainKey) => {
-    setActiveDomain(domain);
+  // Track projected positions from 3D scene
+  useEffect(() => {
+    let rafId: number;
+    const update = () => {
+      if (sceneRef.current?.getProjectedPositions) {
+        setProjectedPositions(sceneRef.current.getProjectedPositions());
+      }
+      rafId = requestAnimationFrame(update);
+    };
+    const timeout = setTimeout(() => { rafId = requestAnimationFrame(update); }, 100);
+    return () => { cancelAnimationFrame(rafId); clearTimeout(timeout); };
+  }, []);
+
+  const handleNodeClick = useCallback((node: AtlasNodeKey) => {
+    setActiveNode(node);
     setAppState("transitioning-in");
-    window.location.hash = domain;
-    setTimeout(() => setAppState("domain"), 850);
+    window.location.hash = node;
+    setTimeout(() => setAppState("leaf"), 850);
   }, []);
 
   const handleBack = useCallback(() => {
     setAppState("transitioning-out");
     setTimeout(() => {
       setAppState("home");
-      setActiveDomain(null);
+      setActiveNode(null);
+      setHoveredNode(null);
       history.pushState(null, "", window.location.pathname);
       sceneRef.current?.resetScene();
     }, 550);
@@ -63,7 +84,7 @@ export default function CollegeAtlasPage() {
     appState === "home" ? 1 : appState === "transitioning-out" ? 1 : 0;
 
   const showLabels = appState === "home";
-  const showDomain = appState === "domain" || appState === "transitioning-out";
+  const showLeaf = appState === "leaf" || appState === "transitioning-out";
 
   return (
     <div
@@ -78,8 +99,8 @@ export default function CollegeAtlasPage() {
       {/* Persistent Three.js canvas */}
       <div style={{ position: "fixed", inset: 0, zIndex: 0 }}>
         <AtlasCanvas
-          onDomainClick={handleDomainClick}
-          onHoverChange={setHoveredDomain}
+          onNodeClick={handleNodeClick}
+          onHoverChange={setHoveredNode}
           canvasOpacity={canvasOpacity}
           brandColor={parseInt(config.brandColorNeon.replace("#", ""), 16)}
           sceneRef={sceneRef}
@@ -106,27 +127,113 @@ export default function CollegeAtlasPage() {
         )}
       </AnimatePresence>
 
-      {/* Atlas domain labels */}
+      {/* College name — top center */}
       <AnimatePresence>
         {showLabels && (
           <motion.div
-            key="labels"
+            key="college-name"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.35 }}
+            style={{
+              position: "fixed",
+              top: "26px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              zIndex: 6,
+              pointerEvents: "none",
+            }}
+          >
+            <span style={{
+              fontFamily: "var(--font-days-one), sans-serif",
+              fontSize: "18px",
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              color: "rgba(255,255,255,0.85)",
+            }}>
+              {config.name}
+            </span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Kallipolis logo — top left */}
+      <AnimatePresence>
+        {showLabels && (
+          <motion.div
+            key="logo"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.35 }}
+            style={{
+              position: "fixed",
+              top: "20px",
+              left: "28px",
+              zIndex: 6,
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+              cursor: "pointer",
+              pointerEvents: "auto",
+            }}
+            onClick={() => router.push("/state")}
+          >
+            <img src="/kallipolis-logo.png" alt="Kallipolis" style={{ height: "36px", width: "auto", objectFit: "contain" }} />
+            <span style={{ fontFamily: "var(--font-days-one), sans-serif", fontSize: "20px", color: "#ffffff", lineHeight: 1 }}>
+              Kallipolis
+            </span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Node labels — positioned using 3D projection */}
+      <AnimatePresence>
+        {showLabels && (
+          <motion.div
+            key="node-labels"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
             style={{ position: "fixed", inset: 0, zIndex: 5, pointerEvents: "none" }}
           >
-            <AtlasLabels hoveredDomain={hoveredDomain} school={config} />
+            {ALL_NODE_KEYS.map((key) => {
+              const pos = projectedPositions[key];
+              if (!pos) return null;
+              return (
+                <span
+                  key={key}
+                  style={{
+                    position: "absolute",
+                    top: `${pos.y + 14}%`,
+                    left: `${pos.x}%`,
+                    transform: "translateX(-50%)",
+                    pointerEvents: "none",
+                    fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+                    fontSize: "13px",
+                    fontWeight: 600,
+                    letterSpacing: "0.13em",
+                    textTransform: "uppercase",
+                    color: hoveredNode === key ? "#c9a84c" : "rgba(255,255,255,0.35)",
+                    whiteSpace: "nowrap",
+                    transition: "color 0.3s ease-in-out",
+                  }}
+                >
+                  {NODE_NAMES[key]}
+                </span>
+              );
+            })}
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Domain overlay */}
+      {/* Leaf view overlay */}
       <AnimatePresence>
-        {showDomain && activeDomain && (
+        {showLeaf && activeNode && (
           <motion.div
-            key="domain"
+            key="leaf"
             initial={{ opacity: 0 }}
             animate={{ opacity: appState === "transitioning-out" ? 0 : 1 }}
             exit={{ opacity: 0 }}
@@ -137,9 +244,27 @@ export default function CollegeAtlasPage() {
               zIndex: 10,
               background: "#060d1f",
               overflowY: "auto",
+              overscrollBehavior: "none",
             }}
           >
-            <DomainView domain={activeDomain} onBack={handleBack} school={config} />
+            {activeNode === "students" && (
+              <StudentsView school={config} onBack={handleBack} />
+            )}
+            {activeNode === "courses" && (
+              <CoursesView school={config} onBack={handleBack} />
+            )}
+            {activeNode === "partnerships" && (
+              <PartnershipsView school={config} onBack={handleBack} />
+            )}
+            {activeNode === "occupations" && (
+              <OccupationsView school={config} onBack={handleBack} />
+            )}
+            {activeNode === "employers" && (
+              <EmployersView school={config} onBack={handleBack} />
+            )}
+            {activeNode === "strong_workforce" && (
+              <StrongWorkforceView school={config} onBack={handleBack} />
+            )}
           </motion.div>
         )}
       </AnimatePresence>

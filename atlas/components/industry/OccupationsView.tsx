@@ -135,7 +135,7 @@ export default function OccupationsView({ school, onBack }: Props) {
 
   return (
     <QueryShell<ApiOccupationMatch>
-      school={school} onBack={onBack} parentShape="tetrahedron"
+      school={school} onBack={onBack} parentShape="cube"
       placeholder={`Ask me a question about occupations near ${school.name}.`}
       examples={EXAMPLES} queryFn={queryFn} loadInitialData={loadInitialData}
       renderInitialContent={renderInitialContent} renderResultsContent={renderResultsContent}

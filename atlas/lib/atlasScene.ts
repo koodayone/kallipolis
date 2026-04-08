@@ -1,62 +1,86 @@
 import * as THREE from "three";
-import { buildScene, createPrimitiveForm } from "./sceneEngine";
+import { buildScene } from "./sceneEngine";
+import { createMortarboardForm } from "./forms/mortarboard";
+import { createBookForm } from "./forms/book";
+import { createChainlinkForm } from "./forms/chainlink";
+import { createHardhatForm } from "./forms/hardhat";
+import { createSkyscraperForm } from "./forms/skyscraper";
+import { createDumbbellForm } from "./forms/dumbbell";
 import type { SceneConfig } from "./sceneEngine";
 
-export type DomainKey = "government" | "college" | "industry";
+export type AtlasNodeKey =
+  | "students"
+  | "courses"
+  | "partnerships"
+  | "occupations"
+  | "employers"
+  | "strong_workforce";
 
 export type SceneCallbacks = {
-  onDomainClick: (domain: DomainKey) => void;
-  onHoverChange: (domain: DomainKey | null) => void;
+  onNodeClick: (node: AtlasNodeKey) => void;
+  onHoverChange: (node: AtlasNodeKey | null) => void;
   solidColor: number;
 };
 
-const config: SceneConfig<DomainKey> = {
+export const NODE_NAMES: Record<AtlasNodeKey, string> = {
+  students: "Students",
+  courses: "Courses",
+  partnerships: "Partnerships",
+  occupations: "Occupations",
+  employers: "Employers",
+  strong_workforce: "Strong Workforce",
+};
+
+export const ALL_NODE_KEYS: AtlasNodeKey[] = [
+  "students", "partnerships", "employers",
+  "courses", "occupations", "strong_workforce",
+];
+
+const config: SceneConfig<AtlasNodeKey> = {
   forms: [
+    // Top row
     {
-      key: "government",
-      factory: (color: number) => createPrimitiveForm(new THREE.DodecahedronGeometry(1.05, 0), color),
-      position: new THREE.Vector3(-3.6, 0, 0),
+      key: "students",
+      factory: createMortarboardForm,
+      position: new THREE.Vector3(-4.2, 1.9, 0),
       rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001),
     },
     {
-      key: "college",
-      factory: (color: number) => createPrimitiveForm(new THREE.BoxGeometry(1.5, 1.5, 1.5), color),
-      position: new THREE.Vector3(0, 0, 0),
-      rotSpeed: new THREE.Vector3(0.001, 0.004, 0.002),
+      key: "partnerships",
+      factory: createChainlinkForm,
+      position: new THREE.Vector3(0, 1.9, 0),
+      rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001),
     },
     {
-      key: "industry",
-      id: "industry_top",
-      factory: (color: number) => createPrimitiveForm(new THREE.TetrahedronGeometry(0.85, 0), color),
-      position: new THREE.Vector3(3.6, 1.3, -0.4),
-      rotSpeed: new THREE.Vector3(0.003, 0.002, 0.0025),
+      key: "employers",
+      factory: createSkyscraperForm,
+      position: new THREE.Vector3(4.2, 1.9, 0),
+      rotSpeed: new THREE.Vector3(0.0015, 0.002, 0.0018),
+    },
+    // Bottom row
+    {
+      key: "courses",
+      factory: createBookForm,
+      position: new THREE.Vector3(-4.2, -2.1, 0),
+      rotSpeed: new THREE.Vector3(0.0015, 0.002, 0.001),
     },
     {
-      key: "industry",
-      id: "industry_mid",
-      factory: (color: number) => createPrimitiveForm(new THREE.TetrahedronGeometry(0.95, 0), color),
-      position: new THREE.Vector3(4.4, 0, 0.2),
-      rotSpeed: new THREE.Vector3(0.002, 0.003, 0.002),
+      key: "occupations",
+      factory: createHardhatForm,
+      position: new THREE.Vector3(0, -2.1, 0),
+      rotSpeed: new THREE.Vector3(0.002, 0.0028, 0.0012),
     },
     {
-      key: "industry",
-      id: "industry_bot",
-      factory: (color: number) => createPrimitiveForm(new THREE.TetrahedronGeometry(0.85, 0), color),
-      position: new THREE.Vector3(3.6, -1.3, -0.4),
-      rotSpeed: new THREE.Vector3(0.0025, 0.002, 0.003),
+      key: "strong_workforce",
+      factory: createDumbbellForm,
+      position: new THREE.Vector3(4.2, -2.1, 0),
+      rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001),
     },
   ],
-  connectors: [
-    { fromId: "government", toId: "college", triggerKey: "government" },
-    { fromId: "college", toId: "industry_top", triggerKey: "industry" },
-    { fromId: "college", toId: "industry_mid", triggerKey: "industry" },
-    { fromId: "college", toId: "industry_bot", triggerKey: "industry" },
-  ],
-  camera: { position: new THREE.Vector3(0, 0.4, 9), fov: 50 },
+  camera: { position: new THREE.Vector3(0, -0.15, 11), fov: 50 },
   ambientIntensity: 0.08,
   clearAlpha: 1,
-  fog: { density: 0.03 },
-  sceneHalfWidth: 5.5,
+  fog: { density: 0.015 },
 };
 
 export function buildAtlasScene(
@@ -65,9 +89,10 @@ export function buildAtlasScene(
 ): {
   cleanup: () => void;
   resetScene: () => void;
+  getProjectedPositions: () => Record<string, { x: number; y: number }>;
 } {
-  return buildScene<DomainKey>(canvas, config, {
-    onClick: callbacks.onDomainClick,
+  return buildScene<AtlasNodeKey>(canvas, config, {
+    onClick: callbacks.onNodeClick,
     onHoverChange: callbacks.onHoverChange,
     solidColor: callbacks.solidColor,
   });

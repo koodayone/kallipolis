@@ -1,32 +1,32 @@
 "use client";
 
 import { useRef, useEffect, useCallback } from "react";
-import { buildAtlasScene, DomainKey, SceneCallbacks } from "@/lib/atlasScene";
+import { buildAtlasScene, AtlasNodeKey, SceneCallbacks } from "@/lib/atlasScene";
 
 type Props = {
-  onDomainClick: (domain: DomainKey) => void;
-  onHoverChange?: (domain: DomainKey | null) => void;
-  canvasOpacity: number;
+  onNodeClick: (node: AtlasNodeKey) => void;
+  onHoverChange?: (node: AtlasNodeKey | null) => void;
   brandColor: number;
+  canvasOpacity: number;
   sceneRef: React.MutableRefObject<ReturnType<typeof buildAtlasScene> | null>;
 };
 
 export default function AtlasCanvas({
-  onDomainClick,
+  onNodeClick,
   onHoverChange,
-  canvasOpacity,
   brandColor,
+  canvasOpacity,
   sceneRef,
 }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  const stableOnClick = useCallback(onDomainClick, []);
+  const stableOnClick = useCallback(onNodeClick, []);
   const stableOnHover = useCallback(onHoverChange ?? (() => {}), []);
 
   useEffect(() => {
     if (!canvasRef.current) return;
     const callbacks: SceneCallbacks = {
-      onDomainClick: stableOnClick,
+      onNodeClick: stableOnClick,
       onHoverChange: stableOnHover,
       solidColor: brandColor,
     };

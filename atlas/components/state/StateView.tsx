@@ -143,7 +143,7 @@ export default function StateView() {
               border: "none",
               cursor: "pointer",
               padding: "8px",
-              color: userSchool?.brandColorNeonLight ?? "rgba(255,255,255,0.7)",
+              color: userSchool?.brandColorLight ?? "rgba(255,255,255,0.7)",
               transition: "opacity 0.15s",
               display: "flex",
               alignItems: "center",

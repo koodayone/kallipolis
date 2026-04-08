@@ -220,7 +220,7 @@ export default function PartnershipsView({ school, onBack }: Props) {
 
   return (
     <div ref={rootRef}>
-      <LeafHeader school={school} onBack={phase === "selection" ? onBack : handleBackFromSplit} parentShape="tetrahedron" />
+      <LeafHeader school={school} onBack={phase === "selection" ? onBack : handleBackFromSplit} parentShape="cube" />
 
       {phase === "selection" && (
           <div>

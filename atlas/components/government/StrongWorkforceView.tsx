@@ -180,7 +180,7 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
 
   return (
     <div ref={rootRef}>
-      <LeafHeader school={school} onBack={phase === "selection" ? onBack : handleBackToSelection} parentShape="dodecahedron" />
+      <LeafHeader school={school} onBack={phase === "selection" ? onBack : handleBackToSelection} parentShape="cube" />
 
       <div style={{ maxWidth: "760px", margin: "0 auto", padding: "32px 40px 80px" }}>
         <AnimatePresence mode="wait" initial={false}>
