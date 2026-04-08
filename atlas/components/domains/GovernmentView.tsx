@@ -39,12 +39,12 @@ const TAN_HALF_FOV = Math.tan((50 / 2) * (Math.PI / 180));
 
 // World positions matching the scene config
 const SOLID_POSITIONS: Record<GovReportKey, { x: number; y: number }> = {
-  students:         { x: -4.2, y:  1.5 },
-  partnerships:     { x:  0.0, y:  1.5 },
-  employers:        { x:  4.2, y:  1.5 },
-  courses:          { x: -4.2, y: -2.0 },
-  occupations:      { x:  0.0, y: -2.0 },
-  strong_workforce: { x:  4.2, y: -2.0 },
+  students:         { x: -4.2, y:  1.9 },
+  partnerships:     { x:  0.0, y:  1.9 },
+  employers:        { x:  4.2, y:  1.9 },
+  courses:          { x: -4.2, y: -2.1 },
+  occupations:      { x:  0.0, y: -2.1 },
+  strong_workforce: { x:  4.2, y: -2.1 },
 };
 
 function projectWorldX(worldX: number, containerWidth: number): number {
@@ -53,7 +53,7 @@ function projectWorldX(worldX: number, containerWidth: number): number {
   return ((ndcX + 1) / 2) * 100;
 }
 
-const CAMERA_Y = 0.2;
+const CAMERA_Y = -0.15;
 
 function projectWorldY(worldY: number): number {
   const ndcY = (worldY - CAMERA_Y) / (CAMERA_Z * TAN_HALF_FOV);
@@ -141,45 +141,6 @@ export default function GovernmentView({ school }: Props) {
             {/* 3D scene */}
             <div ref={containerRef} style={{ position: "relative", height: "calc(100vh - 180px)", width: "100%", marginTop: "16px" }}>
 
-              {/* Sun + label — absolutely positioned over the canvas */}
-              <div
-                style={{
-                  position: "absolute",
-                  top: "-2%",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  gap: "16px",
-                  zIndex: 5,
-                  pointerEvents: "none",
-                }}
-              >
-                <div style={{
-                  opacity: hoveredReport !== null && govState === "hub" ? 1 : 0,
-                  transition: "opacity 0.5s ease-in-out",
-                  height: "48px",
-                  marginTop: "-14px",
-                }}>
-                  <RisingSun />
-                </div>
-
-                <span
-                  style={{
-                    fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-                    fontSize: "15px",
-                    fontWeight: 600,
-                    letterSpacing: "0.12em",
-                    color: hoveredReport ? "#c9a84c" : "rgba(255,255,255,0.85)",
-                    textTransform: "uppercase",
-                    whiteSpace: "nowrap",
-                    transition: "color 0.3s ease-in-out",
-                  }}
-                >
-                  {hoveredReport && govState === "hub" ? REPORT_NAMES[hoveredReport] : "Select a Domain"}
-                </span>
-              </div>
               <GovernmentCanvas
                 onReportClick={handleReportClick}
                 onHoverChange={setHoveredReport}
@@ -197,7 +158,7 @@ export default function GovernmentView({ school }: Props) {
                     key={key}
                     style={{
                       position: "absolute",
-                      top: `${pos.y + 18}%`,
+                      top: `${pos.y + 20}%`,
                       left: `${pos.x}%`,
                       transform: "translateX(-50%)",
                       pointerEvents: "none",

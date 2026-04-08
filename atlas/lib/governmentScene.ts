@@ -28,42 +28,42 @@ const config: SceneConfig<GovReportKey> = {
     {
       key: "students",
       factory: createMortarboardForm,
-      position: new THREE.Vector3(-4.2, 1.5, 0),
+      position: new THREE.Vector3(-4.2, 1.9, 0),
       rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001),
     },
     {
       key: "partnerships",
       factory: createChainlinkForm,
-      position: new THREE.Vector3(0, 1.5, 0),
+      position: new THREE.Vector3(0, 1.9, 0),
       rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001),
     },
     {
       key: "employers",
       factory: createSkyscraperForm,
-      position: new THREE.Vector3(4.2, 1.5, 0),
+      position: new THREE.Vector3(4.2, 1.9, 0),
       rotSpeed: new THREE.Vector3(0.0015, 0.002, 0.0018),
     },
     // Bottom row (y = -0.8)
     {
       key: "courses",
       factory: createBookForm,
-      position: new THREE.Vector3(-4.2, -2.0, 0),
+      position: new THREE.Vector3(-4.2, -2.1, 0),
       rotSpeed: new THREE.Vector3(0.0015, 0.002, 0.001),
     },
     {
       key: "occupations",
       factory: createHardhatForm,
-      position: new THREE.Vector3(0, -2.0, 0),
+      position: new THREE.Vector3(0, -2.1, 0),
       rotSpeed: new THREE.Vector3(0.002, 0.0028, 0.0012),
     },
     {
       key: "strong_workforce",
       factory: createDumbbellForm,
-      position: new THREE.Vector3(4.2, -2.0, 0),
+      position: new THREE.Vector3(4.2, -2.1, 0),
       rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001),
     },
   ],
-  camera: { position: new THREE.Vector3(0, 0.2, 8.5), fov: 50 },
+  camera: { position: new THREE.Vector3(0, -0.15, 8.5), fov: 50 },
   ambientIntensity: 0.5,
 };
 
