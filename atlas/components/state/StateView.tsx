@@ -388,11 +388,13 @@ function SearchResults({
   results,
   query,
   onSelect,
+  onHover,
   activeIndex,
 }: {
   results: College[];
   query: string;
   onSelect: (college: College) => void;
+  onHover?: (college: College | null) => void;
   activeIndex: number;
 }) {
   const listRef = useRef<HTMLDivElement>(null);
@@ -400,7 +402,7 @@ function SearchResults({
   // Scroll active item into view
   useEffect(() => {
     if (activeIndex < 0 || !listRef.current) return;
-    const row = listRef.current.children[activeIndex + 1] as HTMLElement | undefined; // +1 for the count label
+    const row = listRef.current.children[activeIndex] as HTMLElement | undefined;
     if (row) row.scrollIntoView({ block: "nearest" });
   }, [activeIndex]);
 
@@ -421,7 +423,7 @@ function SearchResults({
   return (
     <div ref={listRef} style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
       {results.map((college, i) => (
-        <SearchResultRow key={college.id} college={college} onSelect={onSelect} isActive={i === activeIndex} />
+        <SearchResultRow key={college.id} college={college} onSelect={onSelect} onHover={onHover} isActive={i === activeIndex} />
       ))}
     </div>
   );
@@ -430,10 +432,12 @@ function SearchResults({
 function SearchResultRow({
   college,
   onSelect,
+  onHover,
   isActive,
 }: {
   college: College;
   onSelect: (college: College) => void;
+  onHover?: (college: College | null) => void;
   isActive: boolean;
 }) {
   const config = getCollegeAtlasConfig(college.id);
@@ -456,8 +460,8 @@ function SearchResultRow({
         width: "100%",
         transition: "background 0.12s ease",
       }}
-      onMouseEnter={(e) => { if (!isActive) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.04)"; }}
-      onMouseLeave={(e) => { if (!isActive) (e.currentTarget as HTMLElement).style.background = "transparent"; }}
+      onMouseEnter={(e) => { if (!isActive) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.04)"; onHover?.(college); }}
+      onMouseLeave={(e) => { if (!isActive) (e.currentTarget as HTMLElement).style.background = "transparent"; onHover?.(null); }}
     >
       {/* Brand accent bar */}
       <div style={{
