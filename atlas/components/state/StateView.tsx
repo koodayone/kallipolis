@@ -284,7 +284,7 @@ export default function StateView() {
             }}
           >
             {/* Search bar */}
-            <div style={{ flexShrink: 0, padding: "24px 56px 0", position: "relative", zIndex: 5 }}>
+            <div style={{ flexShrink: 0, padding: "24px 56px 0" }}>
               <div
                 style={{
                   display: "flex",
@@ -345,53 +345,32 @@ export default function StateView() {
                   </button>
                 )}
               </div>
-
-              {/* Search results dropdown */}
-              <AnimatePresence>
-                {showSearchResults && (
-                  <motion.div
-                    key="search-dropdown"
-                    initial={{ opacity: 0, y: -4 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -4 }}
-                    transition={{ duration: 0.12 }}
-                    onClick={(e) => e.stopPropagation()}
-                    style={{
-                      position: "absolute",
-                      top: "calc(100% + 6px)",
-                      left: "56px",
-                      right: "56px",
-                      maxHeight: "calc(100vh - 240px)",
-                      overflowY: "auto",
-                      background: "rgba(10, 14, 28, 0.97)",
-                      border: "1px solid rgba(255,255,255,0.10)",
-                      borderRadius: "6px",
-                      backdropFilter: "blur(12px)",
-                      padding: "6px 0",
-                    }}
-                  >
-                    <SearchResults results={searchResults} query={searchQuery} onSelect={handleSearchSelect} activeIndex={searchActiveIndex} />
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </div>
 
-            {/* Panel content — scrollable */}
+            {/* College list or school panel */}
             <div
+              onClick={(e) => e.stopPropagation()}
               style={{
-                flex: 1,
+                margin: "16px 56px 24px",
+                maxHeight: "calc(100vh - 240px)",
                 overflowY: "auto",
-                padding: "32px 56px 150px",
               }}
             >
               <AnimatePresence mode="wait">
                 {activeCollege ? (
-                  <motion.div key={`school-${activeCollege.id}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }} onClick={(e) => e.stopPropagation()}>
+                  <motion.div key={`school-${activeCollege.id}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}>
                     <SchoolPanel college={activeCollege} />
                   </motion.div>
                 ) : (
-                  <motion.div key="default" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}>
-                    <DefaultPanel />
+                  <motion.div key="college-list" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}
+                    style={{
+                      borderRadius: "6px",
+                      border: "1px solid rgba(255,255,255,0.06)",
+                      background: "rgba(255,255,255,0.02)",
+                      padding: "6px 0",
+                    }}
+                  >
+                    <SearchResults results={searchResults} query={searchQuery} onSelect={handleSearchSelect} activeIndex={searchActiveIndex} />
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -441,17 +420,6 @@ function SearchResults({
 
   return (
     <div ref={listRef} style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-      <span style={{
-        fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-        fontSize: "10px",
-        fontWeight: 600,
-        letterSpacing: "0.14em",
-        textTransform: "uppercase",
-        color: "rgba(255,255,255,0.35)",
-        padding: "0 0 12px",
-      }}>
-        {results.length} {results.length === 1 ? "result" : "results"}
-      </span>
       {results.map((college, i) => (
         <SearchResultRow key={college.id} college={college} onSelect={onSelect} isActive={i === activeIndex} />
       ))}
@@ -557,12 +525,12 @@ function SchoolPanel({ college }: { college: College }) {
   const accent = config?.brandColorNeon ?? "#c9a84c";
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
-      <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-        <h2 style={{ fontFamily: "var(--font-days-one), sans-serif", fontSize: "clamp(22px, 2.4vw, 34px)", lineHeight: 1.2, color: "#ffffff", margin: 0 }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: "32px", paddingTop: "48px" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+        <h2 style={{ fontFamily: "var(--font-days-one), sans-serif", fontSize: "clamp(26px, 2.8vw, 40px)", lineHeight: 1.2, color: "#ffffff", margin: 0 }}>
           {college.name}
         </h2>
-        <span style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "12px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)" }}>
+        <span style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "13px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)" }}>
           {college.district}
         </span>
       </div>
