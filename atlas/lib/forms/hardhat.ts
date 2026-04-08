@@ -25,14 +25,14 @@ export function createHardhatForm(color: number): THREE.Group {
   group.add(domeMesh);
 
   // 2. Brim — full torus ring around the base, slightly wider than the dome
-  const brimGeo = new THREE.TorusGeometry(0.775, 0.05, 12, 48);
+  const brimGeo = new THREE.TorusGeometry(0.80, 0.10, 12, 48);
   const brimMesh = new THREE.Mesh(brimGeo, mat);
   brimMesh.rotation.x = Math.PI / 2;
   brimMesh.scale.set(0.9, 1.15, 1.0);
   group.add(brimMesh);
 
   // 3. Reinforcement ridges — thin torus arcs across the dome
-  const ridgeRadius = 0.76;
+  const ridgeRadius = 0.75;
   const ridgeTube = 0.004;
   const ridgeSegments = 32;
 
