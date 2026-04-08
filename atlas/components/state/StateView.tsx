@@ -284,7 +284,7 @@ export default function StateView() {
             }}
           >
             {/* Search bar */}
-            <div style={{ flexShrink: 0, padding: "24px 56px 0" }}>
+            <div style={{ flexShrink: 0, padding: "24px 40px 0" }}>
               <div
                 style={{
                   display: "flex",
@@ -351,7 +351,7 @@ export default function StateView() {
             <div
               onClick={(e) => e.stopPropagation()}
               style={{
-                margin: "16px 56px 24px",
+                margin: "16px 40px 24px",
                 maxHeight: "calc(100vh - 240px)",
                 overflowY: "auto",
               }}
@@ -525,7 +525,7 @@ function SchoolPanel({ college }: { college: College }) {
   const accent = config?.brandColorNeon ?? "#c9a84c";
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "32px", paddingTop: "48px" }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: "32px", paddingTop: "48px", paddingLeft: "16px" }}>
       <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
         <h2 style={{ fontFamily: "var(--font-days-one), sans-serif", fontSize: "clamp(26px, 2.8vw, 40px)", lineHeight: 1.2, color: "#ffffff", margin: 0 }}>
           {college.name}
