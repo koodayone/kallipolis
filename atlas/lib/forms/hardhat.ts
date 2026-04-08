@@ -31,26 +31,26 @@ export function createHardhatForm(color: number): THREE.Group {
   brimMesh.scale.set(0.9, 1.15, 1.0);
   group.add(brimMesh);
 
-  // 3. Reinforcement ridges — arcs running front-to-back across the dome
-  const ridgeRadius = 0.76; // slightly larger than dome to sit on surface
-  const ridgeTube = 0.007;
+  // 3. Reinforcement ridges — thin torus arcs across the dome
+  const ridgeRadius = 0.76;
+  const ridgeTube = 0.004;
   const ridgeSegments = 32;
 
   const ridgeMat = new THREE.MeshBasicMaterial({
     color: 0xffffff,
     transparent: true,
-    opacity: 0.35,
+    opacity: 0.15,
   });
 
   // Center ridge
-  const centerRidgeGeo = new THREE.TorusGeometry(ridgeRadius, ridgeTube, 6, ridgeSegments, Math.PI);
+  const centerRidgeGeo = new THREE.TorusGeometry(ridgeRadius, ridgeTube, 4, ridgeSegments, Math.PI);
   const centerRidge = new THREE.Mesh(centerRidgeGeo, ridgeMat);
   centerRidge.rotation.set(0, Math.PI / 2, 0);
   centerRidge.scale.set(1.15, 1.1, 0.9);
   group.add(centerRidge);
 
   // Left ridge
-  const leftRidgeGeo = new THREE.TorusGeometry(ridgeRadius, ridgeTube, 6, ridgeSegments, Math.PI);
+  const leftRidgeGeo = new THREE.TorusGeometry(ridgeRadius, ridgeTube, 4, ridgeSegments, Math.PI);
   const leftRidge = new THREE.Mesh(leftRidgeGeo, ridgeMat);
   leftRidge.rotation.set(0, Math.PI / 2, 0);
   leftRidge.position.x = -0.22;
@@ -58,12 +58,26 @@ export function createHardhatForm(color: number): THREE.Group {
   group.add(leftRidge);
 
   // Right ridge
-  const rightRidgeGeo = new THREE.TorusGeometry(ridgeRadius, ridgeTube, 6, ridgeSegments, Math.PI);
+  const rightRidgeGeo = new THREE.TorusGeometry(ridgeRadius, ridgeTube, 4, ridgeSegments, Math.PI);
   const rightRidge = new THREE.Mesh(rightRidgeGeo, ridgeMat);
   rightRidge.rotation.set(0, Math.PI / 2, 0);
   rightRidge.position.x = 0.22;
   rightRidge.scale.set(1.1, 1.05, 0.8);
   group.add(rightRidge);
+
+  // Invisible base disc — makes the empty space under the dome clickable
+  const baseGeo = new THREE.CircleGeometry(0.7, 24);
+  const baseMat = new THREE.MeshBasicMaterial({
+    opacity: 0,
+    transparent: true,
+    side: THREE.DoubleSide,
+    depthWrite: false,
+    colorWrite: false,
+  });
+  const baseMesh = new THREE.Mesh(baseGeo, baseMat);
+  baseMesh.rotation.x = -Math.PI / 2;
+  baseMesh.position.y = 0;
+  group.add(baseMesh);
 
   group.position.y = -0.15;
 
