@@ -1,6 +1,8 @@
 import * as THREE from "three";
 import { buildScene, createPrimitiveForm } from "./sceneEngine";
 import { createChainlinkForm } from "./forms/chainlink";
+import { createHardhatForm } from "./forms/hardhat";
+import { createSkyscraperForm } from "./forms/skyscraper";
 import type { SceneConfig } from "./sceneEngine";
 
 export type IndustryNodeKey = "partnerships" | "occupations" | "employers";
@@ -21,13 +23,13 @@ const config: SceneConfig<IndustryNodeKey> = {
     },
     {
       key: "occupations",
-      factory: (color: number) => createPrimitiveForm(new THREE.TetrahedronGeometry(0.95, 0), color),
+      factory: createHardhatForm,
       position: new THREE.Vector3(0, 0, 0),
       rotSpeed: new THREE.Vector3(0.002, 0.0028, 0.0015),
     },
     {
       key: "employers",
-      factory: (color: number) => createPrimitiveForm(new THREE.DodecahedronGeometry(0.85, 0), color),
+      factory: createSkyscraperForm,
       position: new THREE.Vector3(3.2, 0, 0),
       rotSpeed: new THREE.Vector3(0.0015, 0.002, 0.0018),
     },
