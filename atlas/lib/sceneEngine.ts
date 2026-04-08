@@ -160,6 +160,7 @@ export function buildScene<K extends string>(
 ): {
   cleanup: () => void;
   resetScene: () => void;
+  getProjectedPositions: () => Record<string, { x: number; y: number }>;
 } {
   const initRect = canvas.getBoundingClientRect();
   const initW = initRect.width || canvas.clientWidth || 800;
@@ -557,5 +558,20 @@ export function buildScene<K extends string>(
     renderer.dispose();
   }
 
-  return { cleanup, resetScene };
+  function getProjectedPositions(): Record<string, { x: number; y: number }> {
+    const positions: Record<string, { x: number; y: number }> = {};
+    const canvasRect = canvas.getBoundingClientRect();
+    for (const f of forms) {
+      const pos = f.group.position.clone();
+      pos.project(camera);
+      // Convert NDC (-1 to 1) to percentage (0 to 100)
+      positions[f.key] = {
+        x: ((pos.x + 1) / 2) * 100,
+        y: ((1 - pos.y) / 2) * 100,
+      };
+    }
+    return positions;
+  }
+
+  return { cleanup, resetScene, getProjectedPositions };
 }
