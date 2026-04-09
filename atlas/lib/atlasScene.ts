@@ -90,6 +90,7 @@ export function buildAtlasScene(
   cleanup: () => void;
   resetScene: () => void;
   getProjectedPositions: () => Record<string, { x: number; y: number }>;
+  setPaused: (paused: boolean) => void;
 } {
   return buildScene<AtlasNodeKey>(canvas, config, {
     onClick: callbacks.onNodeClick,

@@ -398,9 +398,11 @@ export function buildScene<K extends string>(
   let rafId = 0;
   let lastTime = performance.now();
   const startTime = performance.now();
+  let paused = false;
 
   function tick() {
     rafId = requestAnimationFrame(tick);
+    if (paused) return;
     const now = performance.now();
     const delta = Math.min((now - lastTime) / 1000, 0.05);
     lastTime = now;
@@ -548,6 +550,13 @@ export function buildScene<K extends string>(
     });
   }
 
+  function setPaused(p: boolean) {
+    paused = p;
+    if (!p) {
+      lastTime = performance.now();
+    }
+  }
+
   // ── Cleanup ───────────────────────────────────────────────────────────────
 
   function cleanup() {
@@ -573,5 +582,5 @@ export function buildScene<K extends string>(
     return positions;
   }
 
-  return { cleanup, resetScene, getProjectedPositions };
+  return { cleanup, resetScene, getProjectedPositions, setPaused };
 }

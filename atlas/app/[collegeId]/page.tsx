@@ -44,37 +44,42 @@ export default function CollegeAtlasPage() {
     if (ALL_NODE_KEYS.includes(hash)) {
       setActiveNode(hash);
       setAppState("leaf");
+      setTimeout(() => sceneRef.current?.setPaused(true), 200);
     }
   }, []);
 
-  // Track projected positions from 3D scene
+  // Track projected positions from 3D scene — only when home
   useEffect(() => {
     let rafId: number;
     const update = () => {
-      if (sceneRef.current?.getProjectedPositions) {
+      if (appState === "home" && sceneRef.current?.getProjectedPositions) {
         setProjectedPositions(sceneRef.current.getProjectedPositions());
       }
       rafId = requestAnimationFrame(update);
     };
     const timeout = setTimeout(() => { rafId = requestAnimationFrame(update); }, 100);
     return () => { cancelAnimationFrame(rafId); clearTimeout(timeout); };
-  }, []);
+  }, [appState]);
 
   const handleNodeClick = useCallback((node: AtlasNodeKey) => {
     setActiveNode(node);
     setAppState("transitioning-in");
     window.location.hash = node;
-    setTimeout(() => setAppState("leaf"), 850);
+    setTimeout(() => {
+      setAppState("leaf");
+      sceneRef.current?.setPaused(true);
+    }, 850);
   }, []);
 
   const handleBack = useCallback(() => {
     setAppState("transitioning-out");
     setTimeout(() => {
+      sceneRef.current?.setPaused(false);
+      sceneRef.current?.resetScene();
       setAppState("home");
       setActiveNode(null);
       setHoveredNode(null);
       history.pushState(null, "", window.location.pathname);
-      sceneRef.current?.resetScene();
     }, 550);
   }, []);
 
