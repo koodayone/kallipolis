@@ -27,31 +27,27 @@ def get_lmi_context(req: SwpProjectRequest) -> LmiContext:
     Supply: Course prefixes from the proposal's curriculum evidence → COE supply CSV.
     Both sides are annual flow metrics (openings vs. completions).
     """
-    # Demand: use the proposal's selected occupation SOC code for focused LMI
-    # The proposal selects one occupation as the partnership's target;
-    # opportunity_evidence may contain all employer occupations which is too broad.
-    if req.selected_soc_code:
-        soc_codes = [req.selected_soc_code]
-    else:
-        soc_codes = [
-            e.soc_code for e in req.opportunity_evidence
-            if e.soc_code
-        ]
-    occupations_data, total_demand = get_coe_demand(soc_codes, req.college)
+    # Demand: use the proposal's opportunity_evidence directly.
+    # The partnership pipeline already computed the occupation data with
+    # wages, openings, and growth from the Neo4j graph. No need to re-derive
+    # from the COE CSV (which can fail on SOC code granularity mismatches).
+    from pipeline.industry.region_maps import COLLEGE_COE_REGION
+    coe_region = COLLEGE_COE_REGION.get(req.college, "")
 
     occupations = [
         LmiOccupation(
-            soc_code=o["soc_code"],
-            title=o["title"],
-            annual_wage=o.get("annual_wage"),
-            employment=o.get("employment"),
-            growth_rate=o.get("growth_rate"),
-            annual_openings=o.get("annual_openings"),
-            education_level=o.get("education_level"),
-            region=o.get("region", ""),
+            soc_code=e.soc_code or "",
+            title=e.title,
+            annual_wage=e.annual_wage,
+            employment=e.employment,
+            growth_rate=e.growth_rate,
+            annual_openings=e.annual_openings,
+            education_level=None,
+            region=coe_region,
         )
-        for o in occupations_data
+        for e in req.opportunity_evidence
     ]
+    total_demand = sum(o.annual_openings or 0 for o in occupations)
 
     # Supply: look up exact TOP6 codes for the proposal's courses via MCF
     course_codes = [
@@ -86,79 +82,80 @@ def get_lmi_context(req: SwpProjectRequest) -> LmiContext:
 
 # ── Claude prompt ─────────────────────────────────────────���─────────────
 
-SWP_PROJECT_PROMPT = """You are a compliance writer for California's Strong Workforce Program (SWP). You are generating a NOVA-compatible SWP project application document that translates a community college's industry partnership into the compliance format required for state workforce funding.
+SWP_PROJECT_PROMPT = """You are a NOVA compliance writer for California's Strong Workforce Program (SWP). You produce concise, form-style responses that answer specific NOVA questions. Each section is a direct response — not a narrative essay.
 
-Every claim must reference specific data from the context provided. Do not invent data.
+Voice rules:
+- The LMI data table (provided separately to the reviewer) owns all numbers. Do NOT restate specific figures (dollar amounts, percentages, counts, openings) that appear in the LMI data. Reference the occupational cluster and gap direction instead.
+- Open each section with its central claim in one direct sentence.
+- Short, direct sentences. No filler, no em dashes, no rhetorical flourishes.
+- Every claim must be grounded in the context provided. Do not invent assertions.
+- This is a compliance response, not a persuasive narrative. Answer the NOVA question, nothing more.
+- Use commitment language: "will" not "could explore." Compliance requires commitment.
+- "Gap" is legitimate as a quantitative measurement. Do not use "missing," "falls short," or "deficient" as judgments on the college. Frame the college as capable of executing.
+- Department names are proper nouns (capitalize). Skill names are lowercase. Acronyms (HVAC, HACCP, EHR) retain standard capitalization.
+- Do not repeat information across sections. Each sentence introduces new information.
 
-PARTNERSHIP CONTEXT:
+CONTEXT:
 Employer: {employer}
 College: {college}
 Partnership Type: {partnership_type}
-Selected Occupation: {selected_occupation}
+Selected Occupation: {selected_occupation} ({selected_soc_code})
 Core Skills: {core_skills}
+Objective Type: {objective_type}
+Vision for Success Goal: {vision_goal}
+SWP Metrics: {swp_metrics}
 
-OPPORTUNITY:
+PARTNERSHIP OPPORTUNITY:
 {opportunity}
 
-CURRICULUM:
+CURRICULUM ALIGNMENT:
 {curriculum_composition}
 
 {curriculum_detail}
 
-SKILL GAP:
-{gap_skill_text}
-
 STUDENT PIPELINE:
 {student_composition}
 
-Pipeline size: {pipeline_total} students in program, {pipeline_qualified} with all core skills
-Top students: {top_student_count} profiled
+Pipeline: {pipeline_total} students in program, {pipeline_qualified} with all core skills
 
 LABOR MARKET INTELLIGENCE (Centers of Excellence):
 {lmi_text}
 
-COORDINATOR DIRECTION:
-Goal: {goal}
-SWP Metrics: {metrics}
-Apprenticeship Component: {apprenticeship}
-Work-Based Learning Component: {wbl}
+PROPOSED NEXT STEPS (from partnership proposal):
+{roadmap}
 
-Generate a JSON array of objects, each with keys "key", "title", and "content". Generate exactly these 8 sections:
+Generate exactly 7 sections as a JSON array. Each section answers a specific NOVA question concisely.
 
-1. key: "project_name"
-   title: "Project Name & Description"
-   content: A project name (max 100 characters) followed by " | " followed by a project description (max 500 characters). The name should summarize the partnership and program area at a glance. The description should state the goal, the employer, and the expected impact.
+1. key: "project_name", title: "Project Name"
+   content: Short label summarizing the partnership, program area, and college. Max 100 characters.
 
-2. key: "rationale"
-   title: "Project Rationale & Needs Assessment"
-   content: Up to 10000 characters. Explain what needs motivate this project. Reference specific LMI data (occupation titles, annual openings, wages), and how the partnership addresses a documented regional workforce need. Ground every claim in the data above.
+2. key: "project_description", title: "Project Description"
+   content: 1-2 sentences stating the goal, employer, program area, and expected impact. Max 500 characters.
 
-3. key: "sector"
-   title: "Industry Sector Classification"
-   content: Name the primary sector and any secondary sectors. Use standard SWP sector names (e.g., Advanced Manufacturing, Health, Information & Communication Technologies, etc.).
+3. key: "rationale", title: "Project Rationale"
+   content: Answers "What needs motivate this project?" 3-4 sentences. Reference the occupational cluster and the demand/supply gap direction without restating specific numbers. Name the SOC code and relevant TOP codes so the reviewer can cross-check the LMI table. State why this employer and this program are the right match.
 
-4. key: "employer_narrative"
-   title: "Employer Partner & Community Value"
-   content: Up to 2500 characters. Describe why this partnership would be valuable to the employer and the community. Reference the employer's hiring needs, the skill alignment with the college's curriculum, and the economic context (wages, annual openings).
+4. key: "student_impact", title: "Student Impact"
+   content: Answers "How many students will be positively impacted and how was this determined?" 2-3 sentences. State the pipeline size and qualification count from the data. Describe what positive impact looks like for these students.
 
-5. key: "metrics_narrative"
-   title: "Metrics & Investment Narrative"
-   content: Up to 10000 characters. Describe how the planned investments will result in improved performance on the selected SWP metrics ({metrics}). Reference specific student pipeline data, curriculum alignment, and projected outcomes. Connect each metric to concrete evidence.
+5. key: "vision_goal", title: "Vision for Success Goal"
+   content: State the SWP Vision for Success goal. 1-2 sentences connecting this project to that goal. This establishes what the project aims to achieve.
 
-6. key: "workplan_activities"
-   title: "Workplan: Major Activities"
-   content: Up to 10000 characters. List 4-8 major activities that execute the partnership. Each activity should be concrete, time-bound where possible. Include: curriculum alignment activities, employer engagement milestones, student placement steps, and any skill gap closure actions.
+6. key: "objective", title: "Objective"
+   content: Three sub-components in one block. First line: "Objective Type: {objective_type}". Then 1-2 sentences describing a quantifiable, measurable objective. Then 1 sentence stating how this objective addresses regional workforce priorities.
 
-7. key: "workplan_outcomes"
-   title: "Workplan: Major Outcomes"
-   content: Up to 10000 characters. List 4-8 measurable outcomes tied to the selected SWP metrics. Each outcome should specify what will be measured, the target, and how it connects to the LMI data. Reference student counts, completion projections, and employment outcomes.
-
-8. key: "risks"
-   title: "Risks & Mitigation"
-   content: Up to 10000 characters. Identify 3-5 risks that may prevent successful completion. For each risk, provide a specific mitigation strategy. Consider: employer commitment risks, student pipeline risks, curriculum timeline risks, and labor market shift risks.
+7. key: "activity", title: "Activity"
+   content: Answers "Who, what, when?" 2-3 sentences describing concrete actions that will be taken, by whom, in what timeframe. Tied to the objective above. Derived from the proposed next steps.
 
 Return ONLY valid JSON: [{{"key": "...", "title": "...", "content": "..."}}, ...]
 Do NOT include any text before or after the JSON array."""
+
+
+_OBJECTIVE_TYPE_MAP: dict[str, str] = {
+    "Internship Pipeline": "Improve career readiness and job placement",
+    "Curriculum Co-Design": "Increase quality of existing program(s)",
+    "Advisory Board": "Increase quality of existing program(s)",
+}
 
 
 def _gather_swp_context(req: SwpProjectRequest, lmi: LmiContext) -> str:
@@ -171,9 +168,6 @@ def _gather_swp_context(req: SwpProjectRequest, lmi: LmiContext) -> str:
             skills_str = ", ".join(course.skills) if course.skills else ""
             curriculum_lines.append(f"    {course.code} {course.name}" + (f" — {skills_str}" if skills_str else ""))
     curriculum_detail = "\n".join(curriculum_lines) if curriculum_lines else "  (none)"
-
-    # Gap skill text
-    gap_skill_text = f"  {req.gap_skill}" if req.gap_skill else "  (none identified)"
 
     # LMI text — COE-grounded demand and supply
     lmi_lines = ["  Occupations (demand from Centers of Excellence projections):"]
@@ -199,44 +193,45 @@ def _gather_swp_context(req: SwpProjectRequest, lmi: LmiContext) -> str:
     lmi_lines.append(f"  Funding eligibility: {'ELIGIBLE (demand exceeds supply)' if lmi.gap_eligible else 'NOT ELIGIBLE (supply exceeds demand)'}")
     lmi_text = "\n".join(lmi_lines)
 
+    # Deterministic objective type from partnership type
+    objective_type = _OBJECTIVE_TYPE_MAP.get(req.partnership_type, "Improve career readiness and job placement")
+
     # Student pipeline
     student_ev = req.student_evidence
     pipeline_total = student_ev.total_in_program
     pipeline_qualified = student_ev.with_all_core_skills
-    top_student_count = len(student_ev.top_students)
 
     return SWP_PROJECT_PROMPT.format(
         employer=req.employer,
         college=req.college,
         partnership_type=req.partnership_type,
         selected_occupation=req.selected_occupation,
+        selected_soc_code=req.selected_soc_code or "",
         core_skills=", ".join(req.core_skills),
+        objective_type=objective_type,
+        vision_goal=req.goal,
+        swp_metrics=", ".join(req.metrics),
         opportunity=req.opportunity,
         curriculum_composition=req.curriculum_composition,
         curriculum_detail=curriculum_detail,
-        gap_skill_text=gap_skill_text,
         student_composition=req.student_composition,
         pipeline_total=pipeline_total,
         pipeline_qualified=pipeline_qualified,
-        top_student_count=top_student_count,
         lmi_text=lmi_text,
-        goal=req.goal,
-        metrics=", ".join(req.metrics),
-        apprenticeship="Yes" if req.apprenticeship else "No",
-        wbl="Yes" if req.work_based_learning else "No",
+        roadmap=req.roadmap,
     )
 
 
 # ── Claude invocation & parsing ─────────────────────────────────────────
 
 _SECTION_CHAR_LIMITS: dict[str, int] = {
-    "project_name": 600,  # 100 name + " | " + 500 description
-    "rationale": 10000,
-    "employer_narrative": 2500,
-    "metrics_narrative": 10000,
-    "workplan_activities": 10000,
-    "workplan_outcomes": 10000,
-    "risks": 10000,
+    "project_name": 100,
+    "project_description": 500,
+    "rationale": 1000,
+    "student_impact": 600,
+    "vision_goal": 400,
+    "objective": 800,
+    "activity": 600,
 }
 
 
@@ -304,7 +299,7 @@ def _call_claude(prompt_text: str) -> str:
     client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
     message = client.messages.create(
         model="claude-sonnet-4-6",
-        max_tokens=8192,
+        max_tokens=2048,
         messages=[{"role": "user", "content": prompt_text}],
     )
     return message.content[0].text
@@ -406,7 +401,7 @@ def stream_swp_project(req: SwpProjectRequest):
 
     with client.messages.stream(
         model="claude-sonnet-4-6",
-        max_tokens=8192,
+        max_tokens=2048,
         messages=[{"role": "user", "content": prompt_text}],
     ) as stream:
         for text in stream.text_stream:

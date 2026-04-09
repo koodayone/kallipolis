@@ -8,14 +8,13 @@ import Badge from "@/components/ui/Badge";
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
 const NOVA_LABELS: Record<string, string> = {
-  project_name: "NOVA Part I/III",
-  rationale: "NOVA Part III",
-  sector: "NOVA Part III",
-  employer_narrative: "NOVA Part V",
-  metrics_narrative: "NOVA Part VII",
-  workplan_activities: "NOVA Part VIII",
-  workplan_outcomes: "NOVA Part VIII",
-  risks: "NOVA Part III",
+  project_name: "NOVA Plan Part I",
+  project_description: "NOVA Plan Part I",
+  rationale: "NOVA Plan Part III",
+  student_impact: "NOVA Plan Part III",
+  vision_goal: "NOVA Plan Part IV",
+  objective: "NOVA Plan Part IV",
+  activity: "NOVA Plan Part VIII",
 };
 
 type Props = {
@@ -64,7 +63,7 @@ export default function SwpArtifact({ project, streamedSections, lmiContext, bra
           }} />
           <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
           <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.35)" }}>
-            Generating section {sections.length + 1} of 8...
+            Generating section {sections.length + 1} of 7...
           </span>
         </div>
       )}
