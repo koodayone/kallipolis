@@ -130,6 +130,7 @@ export default function StateView() {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
+            position: "relative",
             padding: "0 40px",
             background: "rgba(6, 13, 31, 0.95)",
             backdropFilter: "blur(8px)",
@@ -165,9 +166,25 @@ export default function StateView() {
             </svg>
           </button>
 
+          <span style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            fontFamily: "var(--font-days-one), sans-serif",
+            fontSize: "18px",
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            color: "rgba(255,255,255,0.85)",
+            whiteSpace: "nowrap",
+            pointerEvents: "none",
+          }}>
+            State View
+          </span>
+
           <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
             <KallipolisBrand />
-            <AtlasMenu navItems={[{ label: "Home View", href: userCollegeId ? `/${userCollegeId}` : "/", icon: (
+            <AtlasMenu navItems={[{ label: "Atlas", href: userCollegeId ? `/${userCollegeId}` : "/", icon: (
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                 <path d="M12 2L3 7.5 12 13l9-5.5L12 2z" fill={userSchool?.brandColorNeon ?? "rgba(255,255,255,0.3)"} opacity="0.85" />
                 <path d="M12 13v9l9-5.5v-9L12 13z" fill={userSchool?.brandColorNeon ?? "rgba(255,255,255,0.3)"} opacity="0.55" />

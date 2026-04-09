@@ -90,7 +90,7 @@ export default function AtlasMenu({ navItems = DEFAULT_NAV }: Props) {
               border: "1px solid rgba(255,255,255,0.1)",
               borderRadius: "8px",
               padding: "6px 0",
-              minWidth: "160px",
+              whiteSpace: "nowrap",
               zIndex: 100,
             }}
           >
