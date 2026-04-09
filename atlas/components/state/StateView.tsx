@@ -8,6 +8,7 @@ import PageTransition from "@/components/transitions/PageTransition";
 import dynamic from "next/dynamic";
 const CaliforniaMap = dynamic(() => import("@/components/state/CaliforniaMap"), { ssr: false });
 import { FEATURED_COLLEGES } from "@/components/state/CaliforniaMap";
+import KallipolisBrand from "@/components/ui/KallipolisBrand";
 import RisingSun from "@/components/ui/RisingSun";
 import { College, Region, CALIFORNIA_REGIONS, CALIFORNIA_COLLEGES } from "@/lib/californiaColleges";
 import { getCollegeAtlasConfig } from "@/lib/collegeAtlasConfigs";
@@ -165,12 +166,7 @@ export default function StateView() {
           </button>
 
           <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              <img src="/kallipolis-logo.png" alt="Kallipolis" style={{ height: "28px", width: "auto", objectFit: "contain" }} />
-              <span style={{ fontFamily: "var(--font-days-one), sans-serif", fontSize: "16px", color: "#ffffff", lineHeight: 1 }}>
-                Kallipolis
-              </span>
-            </div>
+            <KallipolisBrand />
             <AtlasMenu navItems={[{ label: "Home View", href: userCollegeId ? `/${userCollegeId}` : "/", icon: (
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                 <path d="M12 2L3 7.5 12 13l9-5.5L12 2z" fill={userSchool?.brandColorNeon ?? "rgba(255,255,255,0.3)"} opacity="0.85" />
@@ -547,8 +543,11 @@ function SchoolPanel({ college }: { college: College }) {
           onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "transparent"; (e.currentTarget as HTMLElement).style.color = accent; }}
         >
           Open Atlas
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L3 7.5 12 13l9-5.5L12 2z" fill="currentColor" opacity="0.85" />
+            <path d="M12 13v9l9-5.5v-9L12 13z" fill="currentColor" opacity="0.55" />
+            <path d="M12 13v9L3 16.5v-9L12 13z" fill="currentColor" opacity="0.4" />
+            <path d="M12 2L3 7.5v9L12 22l9-5.5v-9L12 2z M12 13L3 7.5 M12 13l9-5.5 M12 13v9" stroke="currentColor" strokeWidth="0.7" opacity="0.6" />
           </svg>
         </Link>
       </div>

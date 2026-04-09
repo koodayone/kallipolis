@@ -13,6 +13,7 @@ import PartnershipsView from "@/components/industry/PartnershipsView";
 import OccupationsView from "@/components/industry/OccupationsView";
 import EmployersView from "@/components/industry/EmployersView";
 import StrongWorkforceView from "@/components/government/StrongWorkforceView";
+import KallipolisBrand from "@/components/ui/KallipolisBrand";
 
 const AtlasCanvas = dynamic(() => import("@/components/atlas/AtlasCanvas"), {
   ssr: false,
@@ -179,16 +180,13 @@ export default function CollegeAtlasPage() {
               zIndex: 6,
               display: "flex",
               alignItems: "center",
-              gap: "10px",
+              gap: "7px",
               cursor: "pointer",
               pointerEvents: "auto",
             }}
             onClick={() => router.push("/state")}
           >
-            <img src="/kallipolis-logo.png" alt="Kallipolis" style={{ height: "36px", width: "auto", objectFit: "contain" }} />
-            <span style={{ fontFamily: "var(--font-days-one), sans-serif", fontSize: "20px", color: "#ffffff", lineHeight: 1 }}>
-              Kallipolis
-            </span>
+            <KallipolisBrand />
           </motion.div>
         )}
       </AnimatePresence>

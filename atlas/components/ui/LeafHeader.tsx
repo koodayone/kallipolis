@@ -1,6 +1,7 @@
 "use client";
 
 import { SchoolConfig } from "@/lib/schoolConfig";
+import KallipolisBrand from "@/components/ui/KallipolisBrand";
 
 type ParentShape = "dodecahedron" | "cube" | "tetrahedron";
 
@@ -103,10 +104,9 @@ export default function LeafHeader({ school, onBack, parentShape }: Props) {
           top: "50%",
           left: "50%",
           transform: "translate(-50%, calc(-50% + 1px))",
-          fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-          fontSize: "15px",
-          fontWeight: 600,
-          letterSpacing: "0.1em",
+          fontFamily: "var(--font-days-one), sans-serif",
+          fontSize: "18px",
+          letterSpacing: "0.08em",
           textTransform: "uppercase",
           color: "rgba(255,255,255,0.85)",
           whiteSpace: "nowrap",
@@ -117,12 +117,7 @@ export default function LeafHeader({ school, onBack, parentShape }: Props) {
       </span>
 
       {/* Kallipolis branding — top right */}
-      <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-        <img src="/kallipolis-logo.png" alt="Kallipolis" style={{ height: "28px", width: "auto", objectFit: "contain" }} />
-        <span style={{ fontFamily: "var(--font-days-one), sans-serif", fontSize: "16px", color: "#ffffff", lineHeight: 1 }}>
-          Kallipolis
-        </span>
-      </div>
+      <KallipolisBrand />
     </header>
   );
 }
