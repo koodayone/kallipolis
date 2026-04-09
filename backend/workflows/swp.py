@@ -9,8 +9,9 @@ from typing import Optional
 import anthropic
 from models import (
     SwpProjectRequest, SwpProject, SwpSection,
-    LmiContext, LmiOccupation, SupplyEstimate,
+    LmiContext, LmiOccupation, SupplyEstimate, DepartmentEnrollment,
 )
+from ontology.schema import get_driver
 from pipeline.industry.coe_supply import get_coe_supply, get_coe_demand
 from pipeline.industry.mcf_lookup import lookup_top6
 
@@ -70,9 +71,28 @@ def get_lmi_context(req: SwpProjectRequest) -> LmiContext:
 
     gap = total_demand - total_supply
 
+    # Department-level student enrollment counts for Student Impact justification
+    departments = [d.department for d in req.curriculum_evidence]
+    dept_enrollments: list[DepartmentEnrollment] = []
+    if departments:
+        driver = get_driver()
+        with driver.session() as session:
+            result = session.run("""
+                MATCH (dept:Department)-[:CONTAINS]->(c:Course {college: $college})
+                      <-[:ENROLLED_IN]-(s:Student)
+                WHERE dept.name IN $departments
+                RETURN dept.name AS department, count(DISTINCT s) AS student_count
+                ORDER BY student_count DESC
+            """, college=req.college, departments=departments).data()
+            dept_enrollments = [
+                DepartmentEnrollment(department=r["department"], student_count=r["student_count"])
+                for r in result
+            ]
+
     return LmiContext(
         occupations=occupations,
         supply_estimates=supply_estimates,
+        department_enrollments=dept_enrollments,
         total_demand=total_demand,
         total_supply=total_supply,
         gap=gap,
@@ -87,9 +107,9 @@ SWP_PROJECT_PROMPT = """You are a NOVA compliance writer for California's Strong
 Voice rules:
 - The LMI data table (provided separately to the reviewer) owns all numbers. Do NOT restate specific figures (dollar amounts, percentages, counts, openings) that appear in the LMI data. Reference the occupational cluster and gap direction instead.
 - Open each section with its central claim in one direct sentence.
-- Short, direct sentences. No filler, no em dashes, no rhetorical flourishes.
+- Short, direct sentences. No filler, no em dashes, no rhetorical flourishes. Each section should be the minimum number of sentences needed to answer the question. If 2 sentences suffice, do not write 3.
 - Every claim must be grounded in the context provided. Do not invent assertions.
-- This is a compliance response, not a persuasive narrative. Answer the NOVA question, nothing more.
+- This is a compliance response, not a persuasive narrative. Answer the NOVA question at a high level, nothing more.
 - Use commitment language: "will" not "could explore." Compliance requires commitment.
 - "Gap" is legitimate as a quantitative measurement. Do not use "missing," "falls short," or "deficient" as judgments on the college. Frame the college as capable of executing.
 - Department names are proper nouns (capitalize). Skill names are lowercase. Acronyms (HVAC, HACCP, EHR) retain standard capitalization.
@@ -113,10 +133,10 @@ CURRICULUM ALIGNMENT:
 
 {curriculum_detail}
 
-STUDENT PIPELINE:
-{student_composition}
+STUDENT IMPACT:
+{dept_enrollment_text}
 
-Pipeline: {pipeline_total} students in program, {pipeline_qualified} with all core skills
+Total students across aligned departments: {dept_enrollment_total}
 
 LABOR MARKET INTELLIGENCE (Centers of Excellence):
 {lmi_text}
@@ -127,16 +147,16 @@ PROPOSED NEXT STEPS (from partnership proposal):
 Generate exactly 7 sections as a JSON array. Each section answers a specific NOVA question concisely.
 
 1. key: "project_name", title: "Project Name"
-   content: Short label summarizing the partnership, program area, and college. Max 100 characters.
+   content: Short label summarizing the partnership and program area. Do not include the college name. Max 100 characters.
 
 2. key: "project_description", title: "Project Description"
    content: 1-2 sentences stating the goal, employer, program area, and expected impact. Max 500 characters.
 
 3. key: "rationale", title: "Project Rationale"
-   content: Answers "What needs motivate this project?" 3-4 sentences. Reference the occupational cluster and the demand/supply gap direction without restating specific numbers. Name the SOC code and relevant TOP codes so the reviewer can cross-check the LMI table. State why this employer and this program are the right match.
+   content: Answers "What needs motivate this project?" This is the most important section — develop the case fully but keep each sentence concise and substantive. Establish the demand/supply framework: annual job openings (demand, by SOC code) substantially exceed annual program completions (supply, by TOP code), creating a measurable gap this project addresses. Name the SOC and TOP codes so the reviewer can cross-check the LMI table. Connect the employer to the college's programs and explain why this partnership is the right response to the gap. Paragraph breaks are appropriate. Do not restate specific numbers — the LMI table handles that.
 
 4. key: "student_impact", title: "Student Impact"
-   content: Answers "How many students will be positively impacted and how was this determined?" 2-3 sentences. State the pipeline size and qualification count from the data. Describe what positive impact looks like for these students.
+   content: Answers "How many students will be positively impacted?" 1-2 sentences. State the pipeline size and which programs they are enrolled in. Make clear that this number is derived from students in programs whose courses develop skills required by the employer's occupations.
 
 5. key: "vision_goal", title: "Vision for Success Goal"
    content: State the SWP Vision for Success goal. 1-2 sentences connecting this project to that goal. This establishes what the project aims to achieve.
@@ -145,7 +165,7 @@ Generate exactly 7 sections as a JSON array. Each section answers a specific NOV
    content: Three sub-components in one block. First line: "Objective Type: {objective_type}". Then 1-2 sentences describing a quantifiable, measurable objective. Then 1 sentence stating how this objective addresses regional workforce priorities.
 
 7. key: "activity", title: "Activity"
-   content: Answers "Who, what, when?" 2-3 sentences describing concrete actions that will be taken, by whom, in what timeframe. Tied to the objective above. Derived from the proposed next steps.
+   content: Answers "Who, what, when?" 2-3 sentences describing the structure and cadence of the activity — who convenes, how often, starting when. Stay high-level. Do not prescribe specific agenda items or meeting content — those are the coordinator's decisions. Tied to the objective above.
 
 Return ONLY valid JSON: [{{"key": "...", "title": "...", "content": "..."}}, ...]
 Do NOT include any text before or after the JSON array."""
@@ -196,10 +216,12 @@ def _gather_swp_context(req: SwpProjectRequest, lmi: LmiContext) -> str:
     # Deterministic objective type from partnership type
     objective_type = _OBJECTIVE_TYPE_MAP.get(req.partnership_type, "Improve career readiness and job placement")
 
-    # Student pipeline
-    student_ev = req.student_evidence
-    pipeline_total = student_ev.total_in_program
-    pipeline_qualified = student_ev.with_all_core_skills
+    # Department enrollment for student impact (from LMI context)
+    dept_enrollment_lines = []
+    for d in lmi.department_enrollments:
+        dept_enrollment_lines.append(f"  {d.department}: {d.student_count:,} students")
+    dept_enrollment_text = "\n".join(dept_enrollment_lines) if dept_enrollment_lines else "  (no enrollment data)"
+    dept_enrollment_total = sum(d.student_count for d in lmi.department_enrollments)
 
     return SWP_PROJECT_PROMPT.format(
         employer=req.employer,
@@ -214,9 +236,8 @@ def _gather_swp_context(req: SwpProjectRequest, lmi: LmiContext) -> str:
         opportunity=req.opportunity,
         curriculum_composition=req.curriculum_composition,
         curriculum_detail=curriculum_detail,
-        student_composition=req.student_composition,
-        pipeline_total=pipeline_total,
-        pipeline_qualified=pipeline_qualified,
+        dept_enrollment_text=dept_enrollment_text,
+        dept_enrollment_total=f"{dept_enrollment_total:,}",
         lmi_text=lmi_text,
         roadmap=req.roadmap,
     )
@@ -227,7 +248,7 @@ def _gather_swp_context(req: SwpProjectRequest, lmi: LmiContext) -> str:
 _SECTION_CHAR_LIMITS: dict[str, int] = {
     "project_name": 100,
     "project_description": 500,
-    "rationale": 1000,
+    "rationale": 3000,
     "student_impact": 600,
     "vision_goal": 400,
     "objective": 800,
@@ -299,7 +320,7 @@ def _call_claude(prompt_text: str) -> str:
     client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
     message = client.messages.create(
         model="claude-sonnet-4-6",
-        max_tokens=2048,
+        max_tokens=4096,
         messages=[{"role": "user", "content": prompt_text}],
     )
     return message.content[0].text
@@ -401,7 +422,7 @@ def stream_swp_project(req: SwpProjectRequest):
 
     with client.messages.stream(
         model="claude-sonnet-4-6",
-        max_tokens=2048,
+        max_tokens=4096,
         messages=[{"role": "user", "content": prompt_text}],
     ) as stream:
         for text in stream.text_stream:

@@ -527,9 +527,15 @@ export type ApiSupplyEstimate = {
   annual_projected_supply: number;
 };
 
+export type ApiDepartmentEnrollment = {
+  department: string;
+  student_count: number;
+};
+
 export type ApiLmiContext = {
   occupations: ApiLmiOccupation[];
   supply_estimates: ApiSupplyEstimate[];
+  department_enrollments: ApiDepartmentEnrollment[];
   total_demand: number;
   total_supply: number;
   gap: number;

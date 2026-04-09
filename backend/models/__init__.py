@@ -355,9 +355,15 @@ class SupplyEstimate(BaseModel):
     annual_projected_supply: float
 
 
+class DepartmentEnrollment(BaseModel):
+    department: str
+    student_count: int
+
+
 class LmiContext(BaseModel):
     occupations: list[LmiOccupation]
     supply_estimates: list[SupplyEstimate]
+    department_enrollments: list[DepartmentEnrollment] = []
     total_demand: int            # annual openings (flow)
     total_supply: float          # annual projected supply (flow)
     gap: float                   # demand - supply
