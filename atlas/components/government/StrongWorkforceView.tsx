@@ -116,20 +116,22 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
     setApprenticeship(defaults.apprenticeship);
     setWbl(defaults.wbl);
 
-    // Legacy: SWP flow reads old-format proposal fields. Proposals saved under
-    // the new narrative schema will not have these fields — SWP integration
-    // needs a dedicated rework pass.
-    const legacy = saved.proposal as any;
+    const p = saved.proposal;
     const req: SwpProjectRequest = {
-      employer: saved.proposal.employer,
+      employer: p.employer,
       college: school.name,
-      partnership_type: saved.proposal.partnership_type,
-      executive_summary: legacy.executive_summary ?? (saved.proposal as any).opportunity ?? "",
-      curriculum_alignment: legacy.curriculum_alignment ?? [],
-      skill_gaps: legacy.skill_gaps ?? [],
-      student_pipeline: legacy.student_pipeline ?? { total_students: 0, students_with_3plus_courses: 0, top_skills: [] },
-      economic_impact: legacy.economic_impact ?? { occupations: [], aggregate_employment: null },
-      project_framing: `${defaults.goal} goal targeting ${defaults.metrics.join(", ")} through ${saved.proposal.partnership_type} with ${saved.proposal.employer}`,
+      partnership_type: p.partnership_type,
+      selected_occupation: p.selected_occupation,
+      selected_soc_code: p.selected_soc_code ?? null,
+      core_skills: p.core_skills,
+      gap_skill: p.gap_skill,
+      opportunity: p.opportunity,
+      opportunity_evidence: p.opportunity_evidence,
+      curriculum_composition: p.justification.curriculum_composition,
+      curriculum_evidence: p.justification.curriculum_evidence,
+      student_composition: p.justification.student_composition,
+      student_evidence: p.justification.student_evidence,
+      roadmap: p.roadmap,
       goal: defaults.goal,
       metrics: defaults.metrics,
       apprenticeship: defaults.apprenticeship,

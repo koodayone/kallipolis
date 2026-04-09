@@ -461,30 +461,6 @@ export type ApiTargetedProposal = {
   agenda_topics?: ApiAgendaTopic[];
 };
 
-// Legacy types — used by SWP pipeline only
-export type ApiAlignmentDetail = {
-  department: string;
-  course_code: string;
-  course_name: string;
-  skill: string;
-};
-
-export type ApiSkillGapDetail = {
-  skill: string;
-  required_by: string[];
-  recommended_action: string;
-};
-
-export type ApiPipelineStats = {
-  total_students: number;
-  students_with_3plus_courses: number;
-  top_skills: string[];
-};
-
-export type ApiEconomicImpact = {
-  occupations: Array<{ title: string; annual_wage: number | null; employment: number | null }>;
-  aggregate_employment: number | null;
-};
 
 export async function streamTargetedProposal(
   employer: string,
@@ -547,8 +523,8 @@ export type ApiLmiOccupation = {
 export type ApiSupplyEstimate = {
   top_code: string;
   top_title: string;
-  department: string;
-  estimated_annual_completions: number;
+  award_level: string;
+  annual_projected_supply: number;
 };
 
 export type ApiLmiContext = {
@@ -581,31 +557,22 @@ export type SwpProjectRequest = {
   employer: string;
   college: string;
   partnership_type: string;
-  executive_summary: string;
-  curriculum_alignment: ApiAlignmentDetail[];
-  skill_gaps: ApiSkillGapDetail[];
-  student_pipeline: ApiPipelineStats;
-  economic_impact: ApiEconomicImpact;
-  project_framing: string;
+  selected_occupation: string;
+  selected_soc_code: string | null;
+  core_skills: string[];
+  gap_skill: string;
+  opportunity: string;
+  opportunity_evidence: ApiOccupationEvidence[];
+  curriculum_composition: string;
+  curriculum_evidence: ApiDepartmentEvidence[];
+  student_composition: string;
+  student_evidence: ApiStudentEvidence;
+  roadmap: string;
   goal: string;
   metrics: string[];
   apprenticeship: boolean;
   work_based_learning: boolean;
-  workforce_training_type?: string;
 };
-
-export async function getSwpLmiContext(
-  employer: string,
-  college: string,
-): Promise<ApiLmiContext> {
-  const res = await fetch(`${BASE}/workflows/swp/lmi-context`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ employer, college }),
-  });
-  if (!res.ok) throw new Error("Failed to fetch LMI context");
-  return res.json();
-}
 
 export async function streamSwpProject(
   req: SwpProjectRequest,

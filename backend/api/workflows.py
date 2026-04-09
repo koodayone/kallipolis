@@ -42,10 +42,10 @@ async def targeted_partnership_stream(req: ProposalRequest):
 
 
 @router.post("/swp/lmi-context", response_model=LmiContext)
-async def swp_lmi_context(req: ProposalRequest):
-    """Phase 2: pre-fetch LMI demand/supply data for the SWP context panel."""
+async def swp_lmi_context(req: SwpProjectRequest):
+    """Pre-fetch LMI demand/supply data for the SWP context panel."""
     try:
-        return get_lmi_context(req.employer, req.college)
+        return get_lmi_context(req)
     except ValueError as e:
         raise HTTPException(status_code=422, detail=str(e))
     except Exception as e:

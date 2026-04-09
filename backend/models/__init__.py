@@ -311,66 +311,30 @@ class NarrativeProposal(BaseModel):
     agenda_topics: list[AgendaTopic] = []
 
 
-# ── Legacy Targeted Proposal models (used by SWP pipeline only) ─────────────────────────────────────────────
-
-
-class AlignmentDetail(BaseModel):
-    department: str
-    course_code: str
-    course_name: str
-    skill: str
-
-
-class SkillGapDetail(BaseModel):
-    skill: str
-    required_by: list[str]
-    recommended_action: str
-
-
-class PipelineStats(BaseModel):
-    total_students: int
-    students_with_3plus_courses: int
-    top_skills: list[str]
-
-
-class EconomicImpact(BaseModel):
-    occupations: list[dict]
-    aggregate_employment: Optional[int] = None
-
-
-class TargetedProposal(BaseModel):
-    employer: str
-    sector: Optional[str] = None
-    executive_summary: str
-    partnership_type: str
-    partnership_type_rationale: str
-    curriculum_alignment: list[AlignmentDetail]
-    skill_gaps: list[SkillGapDetail]
-    student_pipeline: PipelineStats
-    economic_impact: EconomicImpact
-    next_steps: list[str]
-    measurable_objective: str = ""
-    type_details: dict = {}
-
-
-# ── SWP models ────��────────────────────────────────────────────────────
+# ── SWP models ────────────────────────────────────────────────────────
 
 
 class SwpProjectRequest(BaseModel):
     employer: str
     college: str
     partnership_type: str
-    executive_summary: str
-    curriculum_alignment: list[AlignmentDetail]
-    skill_gaps: list[SkillGapDetail]
-    student_pipeline: PipelineStats
-    economic_impact: EconomicImpact
-    project_framing: str
+    # From NarrativeProposal directly
+    selected_occupation: str
+    selected_soc_code: Optional[str] = None
+    core_skills: list[str] = []
+    gap_skill: str = ""
+    opportunity: str
+    opportunity_evidence: list[OccupationEvidence]
+    curriculum_composition: str
+    curriculum_evidence: list[DepartmentEvidence]
+    student_composition: str
+    student_evidence: StudentEvidence
+    roadmap: str
+    # SWP-specific framing
     goal: str
     metrics: list[str]
     apprenticeship: bool = False
     work_based_learning: bool = False
-    workforce_training_type: Optional[str] = None
 
 
 class LmiOccupation(BaseModel):
@@ -387,16 +351,16 @@ class LmiOccupation(BaseModel):
 class SupplyEstimate(BaseModel):
     top_code: str
     top_title: str
-    department: str
-    estimated_annual_completions: int
+    award_level: str
+    annual_projected_supply: float
 
 
 class LmiContext(BaseModel):
     occupations: list[LmiOccupation]
     supply_estimates: list[SupplyEstimate]
-    total_demand: int
-    total_supply: int
-    gap: int
+    total_demand: int            # annual openings (flow)
+    total_supply: float          # annual projected supply (flow)
+    gap: float                   # demand - supply
     gap_eligible: bool
 
 
