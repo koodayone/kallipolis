@@ -9,7 +9,6 @@ Both files are published by the California Community Colleges Centers of Excelle
 from __future__ import annotations
 
 import csv
-import json
 import logging
 from pathlib import Path
 from functools import lru_cache
@@ -17,7 +16,6 @@ from functools import lru_cache
 logger = logging.getLogger(__name__)
 
 _DATA_DIR = Path(__file__).parent
-_CALIBRATIONS_DIR = Path(__file__).parent.parent / "calibrations"
 
 # ── College name normalization ──────────────────────────────────────────
 # Supply CSV uses short names ("Foothill", "Deanza"); Neo4j uses full names
@@ -98,9 +96,8 @@ def _normalize_college(college: str) -> str:
 @lru_cache(maxsize=1)
 def _load_supply_index() -> dict[tuple[str, str], list[dict]]:
     """
-    Parse supply_by_top.csv into an index keyed by (top4, college_name_lower).
+    Parse supply_by_top.csv into an index keyed by (top6, college_name_lower).
 
-    TOP4 is the first 4 digits of the 6-digit TOP code from the CSV.
     Each value is a list of rows (one per award level) with supply data.
     """
     index: dict[tuple[str, str], list[dict]] = {}
@@ -108,7 +105,7 @@ def _load_supply_index() -> dict[tuple[str, str], list[dict]]:
 
     with open(csv_path, newline="", encoding="utf-8") as f:
         reader = csv.reader(f)
-        header = next(reader)
+        next(reader)  # skip header
 
         for row in reader:
             if len(row) < 7:
@@ -124,7 +121,6 @@ def _load_supply_index() -> dict[tuple[str, str], list[dict]]:
                 continue
             top6 = parts[0].strip()
             top6_title = parts[1].strip()
-            top4 = top6[:4]
 
             # Parse projected supply
             try:
@@ -135,7 +131,7 @@ def _load_supply_index() -> dict[tuple[str, str], list[dict]]:
             if annual_projected <= 0:
                 continue
 
-            key = (top4, college.lower())
+            key = (top6, college.lower())
             if key not in index:
                 index[key] = []
             index[key].append({
@@ -145,7 +141,7 @@ def _load_supply_index() -> dict[tuple[str, str], list[dict]]:
                 "annual_projected_supply": annual_projected,
             })
 
-    logger.info(f"Loaded supply index: {len(index)} (top4, college) keys")
+    logger.info(f"Loaded supply index: {len(index)} (top6, college) keys")
     return index
 
 
@@ -212,40 +208,25 @@ def _load_demand_index() -> dict[tuple[str, str], dict]:
     return index
 
 
-# ── Prefix → TOP4 mapping ──────────────────────────────────────────────
-
-@lru_cache(maxsize=1)
-def _load_prefix_to_top4() -> dict[str, str]:
-    path = _CALIBRATIONS_DIR / "prefix_to_top4.json"
-    return json.loads(path.read_text())
-
-
 # ── Public API ──────────────────────────────────────────────────────────
 
 def get_coe_supply(
-    course_prefixes: list[str],
+    top6_codes: set[str],
     college: str,
 ) -> tuple[list[dict], float]:
     """
-    Look up COE-published supply for a college given course prefixes from the proposal.
+    Look up COE-published supply for a college given exact TOP6 codes.
 
+    TOP6 codes come from MCF lookup (mcf_lookup.py), not prefix approximation.
     Returns (supply_estimates, total_supply) where each estimate has:
     top_code, top_title, award_level, annual_projected_supply.
     """
-    prefix_to_top4 = _load_prefix_to_top4()
     supply_index = _load_supply_index()
     college_norm = _normalize_college(college).lower()
 
-    # Deduplicate prefixes → TOP4 codes
-    top4_codes: set[str] = set()
-    for prefix in course_prefixes:
-        top4 = prefix_to_top4.get(prefix.upper()) or prefix_to_top4.get(prefix)
-        if top4:
-            top4_codes.add(top4)
-
     estimates: list[dict] = []
-    for top4 in sorted(top4_codes):
-        rows = supply_index.get((top4, college_norm), [])
+    for top6 in sorted(top6_codes):
+        rows = supply_index.get((top6, college_norm), [])
         for row in rows:
             estimates.append({
                 "top_code": row["top6"],

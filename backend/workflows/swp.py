@@ -12,6 +12,7 @@ from models import (
     LmiContext, LmiOccupation, SupplyEstimate,
 )
 from pipeline.industry.coe_supply import get_coe_supply, get_coe_demand
+from pipeline.industry.mcf_lookup import lookup_top6
 
 logger = logging.getLogger(__name__)
 
@@ -26,11 +27,16 @@ def get_lmi_context(req: SwpProjectRequest) -> LmiContext:
     Supply: Course prefixes from the proposal's curriculum evidence → COE supply CSV.
     Both sides are annual flow metrics (openings vs. completions).
     """
-    # Demand: extract SOC codes from the proposal's occupation evidence
-    soc_codes = [
-        e.soc_code for e in req.opportunity_evidence
-        if e.soc_code
-    ]
+    # Demand: use the proposal's selected occupation SOC code for focused LMI
+    # The proposal selects one occupation as the partnership's target;
+    # opportunity_evidence may contain all employer occupations which is too broad.
+    if req.selected_soc_code:
+        soc_codes = [req.selected_soc_code]
+    else:
+        soc_codes = [
+            e.soc_code for e in req.opportunity_evidence
+            if e.soc_code
+        ]
     occupations_data, total_demand = get_coe_demand(soc_codes, req.college)
 
     occupations = [
@@ -47,16 +53,14 @@ def get_lmi_context(req: SwpProjectRequest) -> LmiContext:
         for o in occupations_data
     ]
 
-    # Supply: extract course prefixes from the proposal's curriculum evidence
-    prefixes: set[str] = set()
-    for dept_ev in req.curriculum_evidence:
-        for course in dept_ev.courses:
-            # Course code is e.g. "ACCT 101" — extract prefix before the space
-            parts = course.code.split()
-            if parts:
-                prefixes.add(parts[0])
-
-    supply_data, total_supply = get_coe_supply(list(prefixes), req.college)
+    # Supply: look up exact TOP6 codes for the proposal's courses via MCF
+    course_codes = [
+        course.code
+        for dept_ev in req.curriculum_evidence
+        for course in dept_ev.courses
+    ]
+    top6_codes = lookup_top6(course_codes, req.college)
+    supply_data, total_supply = get_coe_supply(top6_codes, req.college)
 
     supply_estimates = [
         SupplyEstimate(
