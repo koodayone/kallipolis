@@ -33,7 +33,7 @@ export const NODE_NAMES: Record<AtlasNodeKey, string> = {
 
 export const ALL_NODE_KEYS: AtlasNodeKey[] = [
   "students", "partnerships", "employers",
-  "courses", "occupations", "strong_workforce",
+  "courses", "strong_workforce", "occupations",
 ];
 
 const config: SceneConfig<AtlasNodeKey> = {
@@ -65,16 +65,16 @@ const config: SceneConfig<AtlasNodeKey> = {
       rotSpeed: new THREE.Vector3(0.0015, 0.002, 0.001),
     },
     {
-      key: "occupations",
-      factory: createHardhatForm,
-      position: new THREE.Vector3(0, -2.1, 0),
-      rotSpeed: new THREE.Vector3(0.002, 0.0028, 0.0012),
-    },
-    {
       key: "strong_workforce",
       factory: createDumbbellForm,
-      position: new THREE.Vector3(4.2, -2.1, 0),
+      position: new THREE.Vector3(0, -2.1, 0),
       rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001),
+    },
+    {
+      key: "occupations",
+      factory: createHardhatForm,
+      position: new THREE.Vector3(4.2, -2.1, 0),
+      rotSpeed: new THREE.Vector3(0.002, 0.0028, 0.0012),
     },
   ],
   camera: { position: new THREE.Vector3(0, -0.15, 11), fov: 50 },
