@@ -200,7 +200,7 @@ def _identify_gap_skill(employer_name: str, sector: str, occupation: str, colleg
     Returns {gap_skill, rationale}.
     """
     skills_list = "\n".join(f"  - {s}" for s in college_skills)
-    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"], max_retries=3)
+    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
     message = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=256,
@@ -271,7 +271,7 @@ def _select_occupation(gathered: GatheredContext, engagement_type: str = "") -> 
     else:
         context = _build_occupation_selection_context(gathered)
         prompt = _OCCUPATION_SELECTION_PROMPT
-    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"], max_retries=3)
+    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
     message = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=512,
@@ -352,7 +352,7 @@ Tone: Department names are proper nouns and should be capitalized. Skill names a
 def _select_advisory_occupations(gathered: GatheredContext) -> list[dict]:
     """Select 2-4 identity-defining occupations for advisory board proposal."""
     context = _build_occupation_selection_context(gathered)
-    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"], max_retries=3)
+    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
     message = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=1024,
@@ -379,7 +379,7 @@ def _synthesize_advisory_thesis(employer_name: str, sector: str, description: st
         occ_lines.append(f"  {occ.get('title', '?')}: {skills}")
     occupations_text = "\n".join(occ_lines)
 
-    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"], max_retries=3)
+    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
     message = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=256,
@@ -414,7 +414,7 @@ def _identify_agenda_topics(employer_name: str, sector: str, thesis: str,
     departments_text = "\n".join(f"  {d}" for d in departments)
     skills_text = "\n".join(f"  {s}" for s in skills)
 
-    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"], max_retries=3)
+    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
     message = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=512,
@@ -522,7 +522,7 @@ def _select_relevant_departments(employer: str, occupation: str, departments: li
     if len(departments) <= max_departments:
         return departments
 
-    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"], max_retries=3)
+    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
     message = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=256,
@@ -568,7 +568,7 @@ def _select_primary_department_llm(employer: str, occupation: str, departments: 
     if len(departments) == 1:
         return departments[0]
 
-    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"], max_retries=3)
+    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
     message = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=128,
@@ -1075,7 +1075,7 @@ def _get_prompt(engagement_type: str, context: str) -> str:
 
 
 def _call_claude(prompt_text: str) -> str:
-    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"], max_retries=3)
+    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
     message = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=4096,
@@ -1123,7 +1123,7 @@ def _evaluate_proposal(proposal: NarrativeProposal, curated_context: str) -> dic
     prompt = _EVAL_PROMPT.format(context=curated_context, proposal=proposal_text)
 
     try:
-        client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"], max_retries=3)
+        client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
         message = client.messages.create(
             model="claude-sonnet-4-6",
             max_tokens=1536,

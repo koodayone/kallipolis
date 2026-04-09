@@ -301,7 +301,7 @@ def _build_swp_project(
 
 
 def _call_claude(prompt_text: str) -> str:
-    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"], max_retries=3)
+    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
     message = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=8192,
@@ -400,23 +400,30 @@ def stream_swp_project(req: SwpProjectRequest):
     # Yield LMI context first so frontend can render immediately
     yield ("lmi", lmi)
 
-    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"], max_retries=3)
-    message = client.messages.create(
+    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+    accumulated = ""
+    sections_yielded = 0
+
+    with client.messages.stream(
         model="claude-sonnet-4-6",
         max_tokens=8192,
         messages=[{"role": "user", "content": prompt_text}],
-    )
-    raw = message.content[0].text
-    sections_data = _parse_swp_sections(raw)
+    ) as stream:
+        for text in stream.text_stream:
+            accumulated += text
 
-    for section_data in sections_data:
-        key = section_data.get("key", "")
-        section = SwpSection(
-            key=key,
-            title=section_data.get("title", key),
-            content=section_data.get("content", ""),
-            char_limit=_SECTION_CHAR_LIMITS.get(key),
-        )
-        yield ("section", section)
+            sections, _ = _extract_complete_sections(accumulated)
+            while sections_yielded < len(sections):
+                section_data = sections[sections_yielded]
+                key = section_data.get("key", "")
+                section = SwpSection(
+                    key=key,
+                    title=section_data.get("title", key),
+                    content=section_data.get("content", ""),
+                    char_limit=_SECTION_CHAR_LIMITS.get(key),
+                )
+                logger.info(f"Streaming section {sections_yielded + 1}: {key}")
+                yield ("section", section)
+                sections_yielded += 1
 
-    logger.info(f"Generated {len(sections_data)} sections for {req.employer}")
+    logger.info(f"Stream complete: {sections_yielded} sections for {req.employer}")
