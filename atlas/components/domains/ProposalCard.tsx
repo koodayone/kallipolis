@@ -155,6 +155,7 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
                 courseCount={dept.courses.length}
                 index={i}
                 brandColor={brandColor}
+                schoolName={collegeId}
                 courses={dept.courses.map(c => ({
                   code: c.code, name: c.name, description: c.description,
                   learningOutcomes: c.learning_outcomes, skillMappings: c.skills,
