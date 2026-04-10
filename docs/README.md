@@ -40,7 +40,7 @@ Documents how the workforce development worldview manifests in the context of Ca
 How the system is built. The technical choices are downstream of the product framing rather than upstream of it. Same audience as the product and domain sections: written for mental model first, with the option of becoming engineering-onboarding material later.
 
 - [System Overview](./architecture/system-overview.md) — Three apps, one graph, the AI surface, the streaming and authentication patterns
-- Graph Model — The full Neo4j schema and the relationships that encode the supply-demand chain *(pending)*
+- [Graph Model](./architecture/graph-model.md) — The Neo4j schema: eight node types, eleven relationships, and the bridge logic that connects curriculum to labor market through skills
 - AI Integration — Where Claude and Gemini are called, what each model is asked to do, and the constraints on each call *(pending)*
 
 ### [Pipeline](./pipeline/)
