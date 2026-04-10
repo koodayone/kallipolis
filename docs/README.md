@@ -31,7 +31,7 @@ Each form in the ontology receives its own dedicated treatment, describing the p
 Documents how the workforce development worldview manifests in the context of California Community Colleges, and the components of that manifestation that most directly shape Kallipolis. Same audience as the product section: written for mental model first, with the option of becoming broader-audience material later.
 
 - [Overview](./domain/overview.md) — The worldview, how it manifests in California Community Colleges, and how the four domain areas relate to the realization of the Kallipolis vision
-- Strong Workforce Program — The funding and compliance structure through which the worldview is operationalized at scale *(pending)*
+- [Strong Workforce Program](./domain/strong-workforce-program.md) — The funding and compliance structure through which the worldview is operationalized at scale, grounded in California Education Code Part 54.5 (sections 88820–88833)
 - Data Authorities — The four institutional sources that ground every claim Kallipolis makes *(pending)*
 - California Community College System — The 116-college institutional structure within which the worldview is enacted *(pending)*
 - Glossary — The vocabulary the worldview speaks in *(pending)*

@@ -1,70 +1,44 @@
 # The Strong Workforce Program
 
-*Audience: anyone working on Kallipolis who needs to understand the policy environment the product operates in. Read this before working on the SWP builder, the partnership proposal generator, or the labor market intelligence layer.*
+The Strong Workforce Program is the California state funding and compliance structure through which the workforce development worldview is operationalized at scale. It is the institutional mechanism that organizes how community colleges across California secure the funding required to form workforce partnerships with industry, and its design — formula-based allocation administered through regional consortia, with explicit accountability and equity provisions — is what makes the worldview legible at the level of state policy.
 
-The Strong Workforce Program (SWP) is the funding mechanism that makes Kallipolis actionable. Without it, partnership insights are interesting but unfunded. Understanding SWP is understanding why this product exists and what its outputs need to be defensible against.
+## The essence
 
-## What SWP is
+The Strong Workforce Program is the California Community Colleges' recurring annual investment in career technical education, framed by the Chancellor's Office around two complementary objectives: *more* (increasing the number of students enrolled in programs leading to high-demand, high-wage jobs) and *better* (improving program quality, completion, employment, and earnings). It is funded at $290 million per year and is the operational expression of the workforce development worldview at California state scale.
 
-SWP was created by AB 1602 in 2016 to reverse 25 years of declining career and technical education enrollment in California community colleges and to address a projected shortfall of one million middle-skill workers. It is a recurring Proposition 98 appropriation, originally set at $290 million per year. Recent years have allocated approximately $230 million as a portion of the funding has been redirected to nursing through 2029.
+## What the program is
 
-SWP is **not a competitive grant**. It is a formula-based allocation that flows to every district in the state annually. The policy lever is the formula itself. Weights are assigned to enrollment, unemployment, projected job openings, and program performance. A 17% incentive component is doubled for economically disadvantaged students.
+The Chancellor's Office describes the program as creating *one million more middle-skill workers* through *more and better career technical education to increase social mobility and fuel regional economies with skilled workers*. Established in 2016 by AB 1602 (codified as California Education Code Part 54.5), it is administered by the Chancellor's Office of the California Community Colleges and operates across the entire 116-college system.
 
-## Funding structure
+The agency positions the program around data-driven outcomes rather than activity-based compliance. This is a specific framing move: the program is presented as outcome-focused and innovation-oriented, not as a grant that rewards effort. What gets funded is what produces measurable workforce results.
 
-SWP funds are split three ways:
+## The funding architecture
 
-| Share | Allocation | Mechanism |
-|---|---|---|
-| 60% | Local share | Distributed by formula directly to 72 districts |
-| 40% | Regional share | Distributed through 8 regional consortia |
-| 5% | Systemwide | Reserved for Chancellor's Office activities |
+SWP funds are split into two shares:
 
-Roughly half of SWP spending goes to employee compensation — CTE faculty salaries, career services staff, counselors. The remainder funds equipment, capital expenditures, and program development.
+- **60% local share** — distributed by formula directly to community college districts based on regional unemployment, existing CTE enrollment, projected job openings, and successful workforce outcomes
+- **40% regional share** — distributed through regional consortia for collaborative projects, with each consortium responsible for prioritizing how its share is invested
 
-## Why regional variation matters
+The 60/40 split is a structural commitment to workforce development as a regional rather than purely institutional activity. Both shares require collaboration with other colleges, industry partners, and local workforce development boards. The regional consortium structure means each district participates in a regional consortium that administers the regional share for the colleges in that region, and every district in the state participates in exactly one consortium. This is the worldview's commitment to regional coordination made concrete in the funding mechanism.
 
-The eight regional consortia distribute the regional share differently. Five of them make centralized spending decisions through the consortium itself. Three operate as **pass-through** regions where individual colleges apply for regional funds through collaborative proposals called Regional Joint Ventures.
+## What the program holds programs accountable to
 
-The Bay Area is one of the three pass-through regions. This is the region Kallipolis currently targets, and it shapes the product directly: in a pass-through region, partnership proposals are literally the currency for accessing the 40% regional share. Colleges that build compelling, data-backed cases get funded. Colleges that don't, don't.
+The Chancellor's Office tracks specific outcome metrics for SWP-funded work, including CTE unit completion, credential attainment, employment in field-related positions, median earnings, and living wage attainment. Outcome data is reported with demographic breakdowns by race and gender, so that progress on equity gaps in program access, completion, and earnings can be evaluated by the public and the Legislature.
 
-The Legislative Analyst's Office (LAO 2025) found that the five centralized consortia produced better student earnings outcomes than the three pass-through regions. The pass-through model puts the burden on individual colleges to make their own cases — which is exactly the burden Kallipolis is designed to lift.
+This is the worldview holding programs accountable to outcomes that matter. It is not enough to run a program; the program must be shown to produce measurable workforce results, and those results must be evaluable for whether they reach the populations the worldview is meant to serve.
 
-## What SWP applications require
+## NOVA
 
-A SWP project application is submitted through NOVA, the state online project planning and reporting system. Each project requires eight narrative sections, all of which need to be defensible under audit:
+NOVA is the Chancellor's Office online platform through which SWP applications are submitted and SWP-funded work is reported. It is the operational system the program runs on — where consortia submit their plans, where districts submit project applications, and where outcome data is tracked and reported across the program's reporting cycles. NOVA's structure determines what an SWP application is in operational terms, distinct from what the legislation requires it to contain. The legislation establishes the program; NOVA is where the program lives day to day.
 
-1. **Project name and description** — concise framing of the project
-2. **Rationale** — labor market justification with regional demand and supply data
-3. **Sector** — the industry classification the project serves
-4. **Employer narrative** — why this employer or partnership is valuable
-5. **Metrics narrative** — how the investment translates to measurable outcomes
-6. **Workplan activities** — the concrete actions the project will undertake
-7. **Workplan outcomes** — the measurable results those activities produce
-8. **Risks and mitigation** — what could go wrong and how it will be addressed
-
-Kallipolis generates all eight sections from the partnership proposal and labor market context already assembled in the graph. The output is intended to be a strong first draft, not a finished application — coordinators retain control of the final submission.
-
-## Pain points Kallipolis addresses
-
-1. **Labor market justification is slow.** Coordinators must demonstrate demand using COE data, employer surveys, or regional validation. Kallipolis automates demand-supply gap analysis directly from the graph.
-2. **Reporting burden falls on under-resourced staff.** Small colleges often have a single CTE coordinator handling multiple programs. The SWP builder generates evidence-backed narrative sections that would otherwise consume days of writing.
-3. **Curriculum development is bottlenecked by justification.** New CTE programs take 18 months or more. Faster data-backed cases shorten the front of that pipeline.
-4. **Assessment is duplicated.** The community college system (through the nine COEs) and local workforce boards both conduct labor market research. Kallipolis consolidates the views into one graph so coordinators stop reconciling overlapping reports.
-
-## Key infrastructure SWP runs on
-
-| System | What it does |
-|---|---|
-| **NOVA** | State online project planning, expenditure tracking, and reporting system. Where SWP applications are submitted. |
-| **CTE LaunchBoard** | Statewide data system tracking certificate and degree completion, job placement, median earnings, and living wage attainment |
-| **9 Centers of Excellence** | Regional labor market research arms of the community college system. Produce supply-demand gap reports and environmental scans. |
-| **8 regional consortia** | Distribute the 40% regional share. Five centralized, three pass-through (Bay Area is pass-through). |
+For Kallipolis, NOVA is the institutional consumer of the strong workforce form's output. The product is built to produce documents that fit the shape NOVA expects, so that the artifact a coordinator generates can be submitted as part of the program's institutional process rather than serving only as a coordinator's working draft.
 
 ## How this shapes Kallipolis
 
-Three implications for anyone working on the product:
+The Strong Workforce Program is the institutional structure that the [strong workforce form](../product/strong-workforce.md) in Kallipolis is built to participate in. Three commitments in the program shape what the product looks like at the system level.
 
-1. **SWP outputs must be NOVA-compatible.** Character limits, section names, and required metadata follow NOVA's schema. Don't introduce sections NOVA does not have.
-2. **Narratives must trace to authoritative sources.** Every claim in a generated SWP narrative needs to be defensible. The pipeline grounds claims in COE occupation data, EDD employer data, college DataMart enrollment, and the college's own course catalog.
-3. **Bay Area is the design target.** The pass-through model is what makes Kallipolis valuable. In a centralized consortium, the consortium itself does much of this work. In a pass-through region, the colleges do — and that is where the product earns its keep.
+**The empirical justification requirement shapes the data assembly.** SWP-funded work has to be justified by labor market data, curriculum alignment, and student pipeline evidence. The product's emphasis on grounding partnership opportunities in authoritative data sources is a direct response to this requirement. Without the empirical foundation, an SWP application is not defensible. With it, the application has the substance the program expects.
+
+**The regional structure shapes the product's regional perspective.** Because SWP is administered through regional consortia and the formula factors in regional unemployment, job openings, and workforce outcomes, the product represents occupations and employers from a school's regional perspective rather than as abstract national categories. This is not a stylistic choice. It is what makes the product's outputs meaningful within the institutional structure SWP creates.
+
+**The state-level orientation matches the product's architectural commitment.** SWP is a state program that operates across the entire community college system. Kallipolis is built to operate at the same scale, with individual colleges as entry points into a larger structure rather than as isolated installations. The [State Atlas](../product/the-atlas.md) is the literal manifestation of this commitment, and the strong workforce form is its peer-level expression as a unit of action. Both choices say the same thing: Kallipolis is built for the system the program serves.
