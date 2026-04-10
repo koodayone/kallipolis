@@ -1,60 +1,35 @@
 # Kallipolis: Overview
 
-*Audience: CTE coordinators, deans, workforce partners, prospective stakeholders. No engineering knowledge assumed.*
+## Mission
 
-Kallipolis is an institutional intelligence platform for California community college workforce program coordinators. It helps colleges identify industry partnerships grounded in their actual curriculum, demonstrate labor market demand from authoritative sources, and turn that evidence into fundable Strong Workforce Program project applications.
+Kallipolis is a partnership intelligence layer that unifies academic and labor market data for community colleges to forge stronger workforce partnerships with industry.
 
-## The problem
+This is the long arc. Everything the product does today, and everything it will do as it grows, is in service of that sentence. The unit of work is the partnership. The actor is the institution. The contribution is the intelligence the institution brings to bear on the work of building, justifying, and proposing partnerships with industry.
 
-California community colleges are the largest workforce development system in the country. Every year, coordinators are asked to justify new programs, expand existing ones, and apply for Strong Workforce Program funds that flow through regional consortia. The work is bottlenecked by four recurring frictions:
+## What the product does today
 
-1. **Labor market justification.** Demonstrating demand requires assembling Centers of Excellence reports, OEWS wage data, employer surveys, and regional projections from disconnected sources.
-2. **Reporting burden.** NOVA, the state planning system, requires GL-reconciled expenditure tracking and quarterly forecasting. Small colleges with one CTE coordinator wearing multiple hats struggle to keep up.
-3. **Curriculum development latency.** A new CTE program typically takes 18 months or more to move through approval. Faster, data-backed justification accelerates the pipeline.
-4. **Duplicated assessment.** Both the community college system and local workforce boards conduct overlapping labor market research. Coordinators reconcile the same questions across multiple sources.
+The ontology unifies disparate, institutionally backed data sources in order to drive meaningful partnerships with industry with the help of artificial intelligence.
 
-Kallipolis addresses these frictions by consolidating curriculum, student, occupation, and employer data into a single graph and applying AI to the operational tasks that consume the most time.
+Today's Kallipolis is built around a graph that brings academic data and labor market data into a single joinable artifact. Course catalogs, student records, regional occupation projections, and employer establishment data — sources that exist independently across distinct institutions and have not previously been joined in a usable way — are unified into one structure where the relationships between them can be queried, traversed, and reasoned about. The unification is the precondition. Everything else the product does is built on top of it.
 
-## What it does
+On top of the ontology, the product offers analytical and generative work supported by artificial intelligence: an interactive atlas where coordinators navigate the graph from their own institution outward, natural language access for asking the graph questions in plain English, and AI-generated artifacts — partnership proposals, project narratives — that turn the empirical foundation into material a coordinator can act on. The AI is in service of the partnership goal. It is the help, not the headline.
 
-Kallipolis is organized around three actions: **discover**, **propose**, and **fund**.
+Each data source the ontology draws on is institutionally backed. Every claim the product surfaces traces to a single named authority responsible for that kind of evidence. The ontology does not blend sources, does not average across methodologies, and does not invent values. When a coordinator asks where a number comes from, the answer is one line: it comes from the institution whose job it is to know.
 
-### Discover
-The atlas surfaces partnership opportunities by traversing the skill graph from a college's actual courses and students to occupations in regional demand and employers hiring for those occupations. Coordinators can query the graph in plain English ("which manufacturing employers hire for the skills our welding program teaches?") and get answers grounded in their own curriculum and authoritative regional data.
+## The thesis
 
-### Propose
-Once an opportunity is identified, Kallipolis generates a partnership proposal narrative. Three engagement types are supported: internships, curriculum co-design, and advisory boards. The narrative names specific occupations, draws on the college's actual courses and student composition, and identifies skill gaps where curriculum could be extended. Proposals are written in a voice intended to be sent — direct, evidence-grounded, and respectful of existing programs.
+The bet Kallipolis is making is that an institution equipped with unified, authoritatively grounded data and AI-augmented intelligence will have the capacity to forge stronger partnerships than an institution working without that foundation.
 
-### Fund
-The Strong Workforce Program builder takes a partnership proposal and produces the eight narrative sections required for a NOVA-compatible SWP project application. Each section is anchored in labor market intelligence drawn from the graph: regional demand, college supply estimates, demand-supply gaps, and the curriculum alignment evidence assembled during the proposal stage.
+The product does not claim to make partnerships stronger on its own. It claims to empower the institution with the capacity to do so. The agency remains with the college. The coordinator forges the partnership. The dean approves it. The faculty integrate it. The product's contribution is that the work of building and justifying those partnerships is no longer constrained by the absence of a usable empirical foundation.
 
-## Who it's for
+This is a paradigm move, not a feature improvement. The traditional way of building college-industry partnerships in California's workforce development system is constrained by data that lives across disconnected institutional silos and by the time it takes to assemble defensible labor market justification by hand. Kallipolis introduces a different paradigm: data that has already been joined, evidence that can be assembled in minutes rather than days, and AI that reduces the drafting burden so coordinators can spend their time on judgment and relationships rather than research and writing. Whether this paradigm produces measurably better outcomes is a question that will be answered over time, in partnership with the institutional stakeholders the product serves. But the paradigm itself — the existence of a unified, authoritatively grounded, AI-leveraged intelligence layer for partnership work — is the current contribution.
 
-**Primary users.** California community college CTE coordinators, deans of workforce education, and program directors who write SWP applications and broker industry partnerships.
+## Why this exists
 
-**Secondary audiences.** Centers of Excellence analysts who supply the labor market intelligence; regional consortium leads who evaluate SWP proposals; workforce development board staff coordinating with colleges.
+California community colleges are the largest workforce development system in the country, and they sit at the intersection of two data worlds that until now have not been brought together in a form that makes the intersection workable. On the academic side are the curricula, students, programs, departments, and outcomes that colleges generate as they teach. On the labor market side are the regional occupations, employers, wage data, and skill requirements that describe what the economy is actually doing. Both sides have institutional authorities responsible for them. Both sides produce real, defensible, recurring data. Neither side has a natural affordance for asking questions of the other.
 
-**Not the audience.** Students looking for jobs, employers looking to hire, or faculty looking for curriculum design tools. Kallipolis is operational infrastructure for the institutional layer.
+Kallipolis is the affordance. It is the place where the two sides meet in a structure that supports partnership work. A coordinator can ask which regional employers hire for the skills their welding program teaches, how strong the alignment is, how many students are in the pipeline for those skills, and what a partnership proposal to one of those employers might look like — and get answers grounded in the actual sources of institutional truth. That question, asked plainly, is what the product is built to make answerable.
 
-## What grounds the work
+## Initial form
 
-Every analytical node in Kallipolis traces to a single institutional authority. This is a deliberate epistemic choice — no source is asked to answer a question outside its expertise.
-
-| Node | Authority | What it answers |
-|---|---|---|
-| Students | DataMart | Who is enrolled, in what programs, with what outcomes |
-| Courses | Course catalogs | What the college actually teaches |
-| Occupations | Centers of Excellence | What jobs are in demand in the region |
-| Employers | Employment Development Department | Who hires in the region and at what scale |
-
-When a dean asks where a number comes from, the answer is one line: it comes from the institution whose job it is to know. No blending across sources. No averaging across methodologies. No provenance ambiguity.
-
-## What it does not do
-
-Kallipolis does not replace NOVA, COE research, or institutional research offices. It is not a system of record. It does not store student PII. It does not generate curriculum, manage course approval, or handle expenditure reporting. It is an analytical and drafting layer that sits above the systems of record and accelerates the work of building defensible cases for partnership and funding.
-
-## Where to go next
-
-- [Strong Workforce Program](../domain/strong-workforce-program.md) — The funding mechanism that makes Kallipolis actionable
-- Discover → Propose → Fund — The end-to-end product flow *(draft)*
-- The Atlas — What the interactive interface does *(draft)*
+The Kallipolis available today is the initial form of a longer arc. The mission persists across versions of the product; the operational capabilities evolve as the ontology grows, the AI matures, and the institutional partnerships that shape what *stronger* actually means develop alongside it. What is described above is the product as it exists now, in service of the mission as it has been defined now. Both will sharpen over time.
