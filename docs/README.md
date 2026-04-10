@@ -10,10 +10,9 @@ This directory holds the canonical documentation for the product, the domain it 
 What Kallipolis is, what it does today, and what it is aiming toward. Operates at two altitudes: the long-arc mission, and the present-day operational reality. No engineering or pipeline detail.
 
 - [Overview](./product/overview.md) — Mission, what the product does today, the thesis, and the gap it fills
-- The Atlas — The user's interface to the intelligence layer *(draft, pending spine)*
-- Partnership Proposals — One kind of artifact the layer produces *(draft, pending spine)*
-- SWP Project Builder — Another kind of artifact the layer produces *(draft, pending spine)*
-- Natural Language Queries — Asking the graph in plain language *(draft, pending spine)*
+- [The Ontology](./product/the-ontology.md) — The foundation: four entities, four authorities, and the propositional commitment that grounds everything else
+- The Atlas — The working surface where users navigate the ontology *(pending spine)*
+- Partnership Artifacts — What the layer produces: proposals, project applications, and other generative output *(pending spine)*
 
 ### [Domain](./domain/)
 The institutional and policy context that shapes the product. Background needed to make sense of why the product exists and looks the way it does. The spine of this section is pending — the existing draft is heavily SWP-organized and needs to be reconsidered against the new product overview.
