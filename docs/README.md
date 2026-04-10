@@ -25,7 +25,7 @@ Each form in the ontology receives its own dedicated treatment, describing the p
 
 **Units of action:**
 - [Partnerships](./product/partnerships.md) — Data-driven partnership opportunities formulated from the four units of analysis, presented as drafts a coordinator can use; the discovery stage of the partnership lifecycle and the core value proposition of Kallipolis
-- Strong Workforce *(pending spine)*
+- [Strong Workforce](./product/strong-workforce.md) — The justification stage of the partnership lifecycle, where a discovered partnership is translated into a NOVA-compatible SWP project application; the form through which Kallipolis becomes institutionally legible at state scale
 
 ### [Domain](./domain/)
 The institutional and policy context that shapes the product. Background needed to make sense of why the product exists and looks the way it does. The spine of this section is pending — the existing draft is heavily SWP-organized and needs to be reconsidered against the new product overview.
