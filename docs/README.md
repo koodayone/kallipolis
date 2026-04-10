@@ -17,7 +17,7 @@ Each form in the ontology receives its own dedicated treatment, describing the p
 
 **Units of analysis:**
 - [Students](./product/students.md) — Represented people whose competency portrait makes the supply side of workforce development empirical
-- Courses *(pending spine)*
+- [Courses](./product/courses.md) — The institution's commitment to teach, interpreted through a unified taxonomy to produce the skills that bridge curriculum to labor market
 - Occupations *(pending spine)*
 - Employers *(pending spine)*
 
