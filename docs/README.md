@@ -37,14 +37,11 @@ Documents how the workforce development worldview manifests in the context of Ca
 - [Glossary](./domain/glossary.md) — The vocabulary the worldview speaks in: institutional names, classification systems, and policy concepts that appear throughout the documentation
 
 ### [Architecture](./architecture/)
-How the system is built. For engineers extending or modifying Kallipolis. The technical choices are downstream of the product framing rather than upstream of it, so most of the existing draft survives — but voice and emphasis should be checked against the new overview.
+How the system is built. The technical choices are downstream of the product framing rather than upstream of it. Same audience as the product and domain sections: written for mental model first, with the option of becoming engineering-onboarding material later.
 
-- [System Overview](./architecture/system-overview.md) — Three apps, one graph, the AI surface *(needs review for voice consistency)*
-- Graph Model — The Neo4j schema *(draft)*
-- API Reference — All endpoints by router *(draft, candidate for auto-generation)*
-- AI Integration — Where Claude and Gemini are called and why *(draft)*
-- Streaming — SSE for proposals and SWP sections *(draft)*
-- Authentication — JWT, college scoping, middleware *(draft)*
+- [System Overview](./architecture/system-overview.md) — Three apps, one graph, the AI surface, the streaming and authentication patterns
+- Graph Model — The full Neo4j schema and the relationships that encode the supply-demand chain *(pending)*
+- AI Integration — Where Claude and Gemini are called, what each model is asked to do, and the constraints on each call *(pending)*
 
 ### [Pipeline](./pipeline/)
 How institutional data enters the graph. The mechanism by which the ontology comes into being. Operationally the most subtle part of the system.
@@ -55,14 +52,6 @@ How institutional data enters the graph. The mechanism by which the ontology com
 - Industry Data — Occupations and regions *(draft)*
 - [Employer Generation](./pipeline/employer-generation.md) — EDD scraping, county→metro→COE crosswalk, merge semantics
 - Region Reload — Full graph rebuild and verification *(draft)*
-
-### [Operations](./operations/)
-Runbooks for setting up and operating Kallipolis.
-
-- Local Setup *(draft)*
-- Adding a College *(draft)*
-- Adding a Region *(draft)*
-- Troubleshooting *(draft)*
 
 ## Conventions
 
