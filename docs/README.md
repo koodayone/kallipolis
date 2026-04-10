@@ -24,7 +24,7 @@ Each form in the ontology receives its own dedicated treatment, describing the p
 - [Employers](./product/employers.md) — Real organizations grounded in EDD records, restrictively scoped to actors the workforce development ecosystem can coordinate with, the operational target the other three foundationals direct work toward
 
 **Units of action:**
-- Partnerships *(pending spine)*
+- [Partnerships](./product/partnerships.md) — Data-driven partnership opportunities formulated from the four units of analysis, presented as drafts a coordinator can use; the discovery stage of the partnership lifecycle and the core value proposition of Kallipolis
 - Strong Workforce *(pending spine)*
 
 ### [Domain](./domain/)
