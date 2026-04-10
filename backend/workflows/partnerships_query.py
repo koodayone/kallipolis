@@ -13,7 +13,7 @@ SCHEMA:
 Nodes:
 - College (properties: name)
 - Region (properties: name)
-- Employer (properties: name, sector, description)
+- Employer (properties: name, sector, description, website)
 - Occupation (properties: soc_code, title, description, annual_wage)
 - Skill (properties: name)
 - Course (properties: code, college, name)

@@ -19,7 +19,7 @@ from pathlib import Path
 from pipeline.loader import load_college, CollegeConfig
 from pipeline.students import generate_and_load_students
 from pipeline.industry.loader import load_industry
-from pipeline.industry.employers import load_employers
+from pipeline.industry.employers import load_employers, cleanup_stale_employers
 from ontology.schema import get_driver, close_driver, init_schema
 
 logger = logging.getLogger(__name__)
@@ -146,6 +146,7 @@ def load_industry_data(driver) -> None:
     with open(emp_path) as f:
         employers = json.load(f)
 
+    cleanup_stale_employers(driver, [e["name"] for e in employers])
     emp_stats = load_employers(driver, employers)
     logger.info(f"  Employers: {emp_stats.get('employers', 0)}, "
                 f"HIRES_FOR: {emp_stats.get('hires_for', 0)}")

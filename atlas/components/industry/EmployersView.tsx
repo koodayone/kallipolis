@@ -193,6 +193,27 @@ const EmployerRow = memo(function EmployerRow({ emp, i, school, expandedNames, e
                       {detail.description}
                     </p>
                   )}
+                  {detail.website && (() => {
+                    let domain: string;
+                    try { domain = new URL(detail.website).hostname.replace(/^www\./, ""); } catch { domain = detail.website; }
+                    return (
+                      <a
+                        href={detail.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ fontFamily: FONT, fontSize: "12px", color: school.brandColorLight, opacity: 0.7, textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "5px", transition: "opacity 0.15s" }}
+                        onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.opacity = "1"; }}
+                        onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.opacity = "0.7"; }}
+                      >
+                        {domain}
+                        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M4.5 1.5H2.5C1.95 1.5 1.5 1.95 1.5 2.5V9.5C1.5 10.05 1.95 10.5 2.5 10.5H9.5C10.05 10.5 10.5 10.05 10.5 9.5V7.5" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
+                          <path d="M7 1.5H10.5V5" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+                          <path d="M10.5 1.5L5.5 6.5" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
+                        </svg>
+                      </a>
+                    );
+                  })()}
                   {detail.occupations.map((occ: any) => {
                     const aligned = (occ.skills || []).filter((s: any) => s.developed);
                     return (

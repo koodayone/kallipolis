@@ -252,6 +252,7 @@ export type ApiEmployerMatch = {
   name: string;
   sector: string | null;
   description: string | null;
+  website: string | null;
   occupations: string[];
   matching_skills: number;
   skills: string[];
@@ -261,6 +262,7 @@ export type ApiEmployerDetail = {
   name: string;
   sector: string | null;
   description: string | null;
+  website: string | null;
   regions: string[];
   occupations: Array<{
     title: string;

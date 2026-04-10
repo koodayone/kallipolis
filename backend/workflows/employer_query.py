@@ -13,7 +13,7 @@ SCHEMA:
 Nodes:
 - College (properties: name)
 - Region (properties: name)
-- Employer (properties: name, sector, description)
+- Employer (properties: name, sector, description, website)
 - Occupation (properties: soc_code, title, description, annual_wage)
 - Skill (properties: name)
 - Course (properties: code, college, name)
@@ -33,6 +33,7 @@ RULES:
 3. NEVER use CREATE, DELETE, SET, MERGE, REMOVE, DROP, DETACH, CALL, FOREACH, LOAD, or any write/mutation clause.
 4. Always return results in this exact shape:
      RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
+            emp.website AS website,
             collect(DISTINCT occ.title) AS occupations,
             count(DISTINCT sk) AS matching_skills,
             collect(DISTINCT sk.name) AS skills
@@ -50,6 +51,7 @@ Question: "Healthcare employers"
 MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})
 WHERE toLower(emp.sector) CONTAINS 'health'
 RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
+       emp.website AS website,
        collect(DISTINCT occ.title) AS occupations,
        count(DISTINCT sk) AS matching_skills,
        collect(DISTINCT sk.name) AS skills
@@ -59,6 +61,7 @@ Question: "Technology companies"
 MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})
 WHERE toLower(emp.sector) CONTAINS 'technology'
 RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
+       emp.website AS website,
        collect(DISTINCT occ.title) AS occupations,
        count(DISTINCT sk) AS matching_skills,
        collect(DISTINCT sk.name) AS skills
@@ -68,6 +71,7 @@ Question: "Who hires for Programming?"
 MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})
 WHERE toLower(sk.name) CONTAINS 'programming'
 RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
+       emp.website AS website,
        collect(DISTINCT occ.title) AS occupations,
        count(DISTINCT sk) AS matching_skills,
        collect(DISTINCT sk.name) AS skills
@@ -76,6 +80,7 @@ ORDER BY matching_skills DESC
 Question: "Employers with the most skill alignment"
 MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})
 RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
+       emp.website AS website,
        collect(DISTINCT occ.title) AS occupations,
        count(DISTINCT sk) AS matching_skills,
        collect(DISTINCT sk.name) AS skills
@@ -102,6 +107,7 @@ async def run_employer_query(question: str, college: str) -> tuple[list[Employer
             name=r["name"],
             sector=r.get("sector"),
             description=r.get("description"),
+            website=r.get("website"),
             occupations=r.get("occupations", []),
             matching_skills=r.get("matching_skills", 0),
             skills=r.get("skills", []),

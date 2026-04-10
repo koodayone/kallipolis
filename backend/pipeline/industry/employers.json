@@ -1,37 +1,5 @@
 [
   {
-    "name": "Latino Farm Labor Services",
-    "sector": "Construction",
-    "description": "Latino Farm Labor Services is a company that provides labor contracting services to agricultural businesses.",
-    "regions": [
-      "CVML"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3121",
-      "13-1071",
-      "13-1199",
-      "13-2011",
-      "43-4161"
-    ]
-  },
-  {
-    "name": "MGM Labor Contracting",
-    "sector": "Construction",
-    "description": "MGM Labor Contracting is a company that provides labor contracting services to various industries.",
-    "regions": [
-      "CVML"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3121",
-      "13-1071",
-      "13-1199",
-      "13-2011",
-      "43-4161"
-    ]
-  },
-  {
     "name": "Land O'Lakes Industrial Cheese",
     "sector": "Manufacturing",
     "description": "Land O'Lakes Industrial Cheese is a facility that produces cheese products for industrial use.",
@@ -47,7 +15,8 @@
       "17-2112",
       "19-1012",
       "19-4013"
-    ]
+    ],
+    "website": "https://www.landolakes.com"
   },
   {
     "name": "Saputo Cheese USA",
@@ -65,24 +34,8 @@
       "17-2112",
       "19-1012",
       "19-4013"
-    ]
-  },
-  {
-    "name": "Lo Bue Brothers",
-    "sector": "Wholesale",
-    "description": "Lo Bue Brothers is an agricultural company involved in farming and produce distribution.",
-    "regions": [
-      "CVML"
     ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1081",
-      "13-1199",
-      "13-2011",
-      "19-1013",
-      "19-4012"
-    ]
+    "website": "https://www.saputocheeseusa.com"
   },
   {
     "name": "Sun Pacific",
@@ -99,39 +52,8 @@
       "13-2011",
       "19-1013",
       "19-4012"
-    ]
-  },
-  {
-    "name": "Sun Valley Packing",
-    "sector": "Wholesale",
-    "description": "Sun Valley Packing is a company involved in the packing and distribution of agricultural products.",
-    "regions": [
-      "CVML"
     ],
-    "occupations": [
-      "11-1021",
-      "11-3051",
-      "13-1081",
-      "13-2011",
-      "19-1013",
-      "19-4012"
-    ]
-  },
-  {
-    "name": "Wiebe Farms",
-    "sector": "Wholesale",
-    "description": "Wiebe Farms is an agricultural enterprise engaged in farming operations.",
-    "regions": [
-      "CVML"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1199",
-      "13-2011",
-      "19-1013",
-      "19-4012"
-    ]
+    "website": "https://sunpacific.com"
   },
   {
     "name": "Monrovia Nursery",
@@ -148,7 +70,8 @@
       "13-2011",
       "19-1013",
       "19-4012"
-    ]
+    ],
+    "website": "https://www.monrovia.com"
   },
   {
     "name": "Winco Foods",
@@ -166,7 +89,8 @@
       "11-3121",
       "13-1071",
       "13-2011"
-    ]
+    ],
+    "website": "https://www.wincofoods.com"
   },
   {
     "name": "Keller Williams Realty",
@@ -182,7 +106,8 @@
       "11-3012",
       "13-1161",
       "13-2011"
-    ]
+    ],
+    "website": "https://www.kw.com"
   },
   {
     "name": "Tulare Local Healthcare District",
@@ -200,7 +125,8 @@
       "13-2011",
       "29-1141",
       "29-2061"
-    ]
+    ],
+    "website": "https://www.tularelocalhealthcaredistrict.org"
   },
   {
     "name": "Tulare Joint Union High School District",
@@ -218,7 +144,8 @@
       "13-2011",
       "25-2031",
       "25-9099"
-    ]
+    ],
+    "website": "https://www.tjuhsd.org"
   },
   {
     "name": "Porterville College",
@@ -236,7 +163,8 @@
       "13-2011",
       "25-3099",
       "25-9044"
-    ]
+    ],
+    "website": "https://www.portervillecollege.edu"
   },
   {
     "name": "Visalia Medical Clinic",
@@ -254,7 +182,8 @@
       "13-2011",
       "29-1141",
       "31-9092"
-    ]
+    ],
+    "website": "https://www.adventisthealth.org/visaliamedicalclinic"
   },
   {
     "name": "BASS Medical Group",
@@ -272,7 +201,8 @@
       "13-2011",
       "29-1141",
       "31-9092"
-    ]
+    ],
+    "website": "https://www.bassmedicalgroup.com"
   },
   {
     "name": "Adventist Health Tulare",
@@ -290,7 +220,8 @@
       "13-2011",
       "29-1141",
       "31-1131"
-    ]
+    ],
+    "website": "https://www.adventisthealth.org"
   },
   {
     "name": "Kaweah Health Rehabilitation Hospital",
@@ -308,7 +239,8 @@
       "13-2011",
       "29-1141",
       "29-1125"
-    ]
+    ],
+    "website": "https://www.kaweahhealth.org"
   },
   {
     "name": "Porterville Developmental Center",
@@ -326,7 +258,8 @@
       "13-2011",
       "21-1018",
       "29-1141"
-    ]
+    ],
+    "website": "https://www.dds.ca.gov/services/state-facilities/porterville-dc/"
   },
   {
     "name": "Sierra View Medical Center",
@@ -344,7 +277,8 @@
       "13-2011",
       "29-1141",
       "31-1131"
-    ]
+    ],
+    "website": "https://www.sierra-view.com"
   },
   {
     "name": "Tulare County Health & Human Services Agency",
@@ -362,39 +296,8 @@
       "13-2011",
       "21-1029",
       "21-1099"
-    ]
-  },
-  {
-    "name": "Yokuts Coffee House",
-    "sector": "Hospitality & Food Service",
-    "description": "Yokuts Coffee House is a local coffee shop serving beverages and light food items.",
-    "regions": [
-      "CVML"
     ],
-    "occupations": [
-      "11-1021",
-      "11-9199",
-      "13-1199",
-      "13-2011"
-    ]
-  },
-  {
-    "name": "Solid Waste Collection",
-    "sector": "Government",
-    "description": "Solid Waste Collection provides waste management and recycling services.",
-    "regions": [
-      "CVML"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3013",
-      "13-1081",
-      "13-2011",
-      "17-2081",
-      "19-2041",
-      "19-4042"
-    ]
+    "website": "https://tchhsa.org"
   },
   {
     "name": "City of Tulare",
@@ -412,7 +315,8 @@
       "13-1071",
       "13-2011",
       "17-2051"
-    ]
+    ],
+    "website": "https://www.tulare.ca.gov"
   },
   {
     "name": "Tulare County Office of Education",
@@ -430,73 +334,8 @@
       "13-2011",
       "25-3099",
       "25-9099"
-    ]
-  },
-  {
-    "name": "United States Cotton Classing Office",
-    "sector": "Government",
-    "description": "This government office is responsible for grading and classifying cotton.",
-    "regions": [
-      "CVML"
     ],
-    "occupations": [
-      "11-1021",
-      "13-1041",
-      "13-1199",
-      "19-4012",
-      "19-4099",
-      "43-9111"
-    ]
-  },
-  {
-    "name": "Visalia Public Works Administration",
-    "sector": "Government",
-    "description": "This is the administrative division responsible for managing public works projects and services for the City of Visalia.",
-    "regions": [
-      "CVML"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3031",
-      "13-1071",
-      "13-1082",
-      "13-2011",
-      "17-2051",
-      "17-3022"
-    ]
-  },
-  {
-    "name": "Circle K Ranch",
-    "sector": "Agriculture",
-    "description": "Circle K Ranch is an agricultural operation involved in farming and ranching activities.",
-    "regions": [
-      "CVML"
-    ],
-    "occupations": [
-      "11-1021",
-      "13-1071",
-      "13-2011",
-      "19-1013",
-      "19-4012",
-      "45-2011"
-    ]
-  },
-  {
-    "name": "Mike Jensen Farms",
-    "sector": "Agriculture",
-    "description": "Mike Jensen Farms is an agricultural business engaged in crop cultivation and farming operations.",
-    "regions": [
-      "CVML"
-    ],
-    "occupations": [
-      "11-1021",
-      "13-1071",
-      "13-2011",
-      "19-1013",
-      "19-4012",
-      "45-2011"
-    ]
+    "website": "https://www.tcoe.org"
   },
   {
     "name": "Pitman Family Farms",
@@ -513,7 +352,8 @@
       "19-1011",
       "19-4012",
       "45-2011"
-    ]
+    ],
+    "website": "https://www.pitmanfarms.com"
   },
   {
     "name": "Foster Farms",
@@ -531,7 +371,8 @@
       "19-1011",
       "19-1012",
       "19-4012"
-    ]
+    ],
+    "website": "https://www.fosterfarms.com"
   },
   {
     "name": "Woolf Farming Company of California",
@@ -547,7 +388,8 @@
       "19-1013",
       "19-4012",
       "45-2011"
-    ]
+    ],
+    "website": "https://www.woolffarming.com"
   },
   {
     "name": "Clark Brothers Construction",
@@ -565,40 +407,8 @@
       "17-1011",
       "17-2051",
       "17-3011"
-    ]
-  },
-  {
-    "name": "Central California Builders and Development",
-    "sector": "Construction",
-    "description": "Central California Builders and Development is a construction and development company operating in the Central Valley.",
-    "regions": [
-      "CVML"
     ],
-    "occupations": [
-      "11-1021",
-      "11-9021",
-      "13-1051",
-      "13-1082",
-      "13-2011",
-      "17-1011",
-      "17-2051",
-      "17-3011"
-    ]
-  },
-  {
-    "name": "Central Valley Roof Removal",
-    "sector": "Construction",
-    "description": "Central Valley Roof Removal specializes in the removal of roofing materials for residential and commercial properties.",
-    "regions": [
-      "CVML"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9021",
-      "13-1051",
-      "13-1082",
-      "13-2011"
-    ]
+    "website": "https://www.clarkbrosinc.com"
   },
   {
     "name": "Fresno Plumbing and Heating",
@@ -613,7 +423,8 @@
       "13-1051",
       "13-2011",
       "49-9021"
-    ]
+    ],
+    "website": "https://www.fresnoplumbinginc.com"
   },
   {
     "name": "Anlin Industries",
@@ -630,7 +441,8 @@
       "13-2011",
       "17-2112",
       "51-4111"
-    ]
+    ],
+    "website": "https://www.anlin.com"
   },
   {
     "name": "Sun-Maid Growers of California",
@@ -648,23 +460,8 @@
       "19-1012",
       "19-4013",
       "45-2011"
-    ]
-  },
-  {
-    "name": "Lion Dehydrators",
-    "sector": "Manufacturing",
-    "description": "Lion Dehydrators is a company involved in the dehydration of agricultural products.",
-    "regions": [
-      "CVML"
     ],
-    "occupations": [
-      "11-1021",
-      "11-3051",
-      "13-1071",
-      "13-2011",
-      "19-1012",
-      "19-4013"
-    ]
+    "website": "https://www.sunmaid.com"
   },
   {
     "name": "Lion Raisins",
@@ -681,7 +478,8 @@
       "19-1012",
       "19-4013",
       "45-2011"
-    ]
+    ],
+    "website": "https://www.lionraisins.com"
   },
   {
     "name": "Cargill",
@@ -699,7 +497,8 @@
       "19-1012",
       "19-4013",
       "45-2011"
-    ]
+    ],
+    "website": "https://www.cargill.com"
   },
   {
     "name": "Harris Ranch Beef Company",
@@ -717,7 +516,8 @@
       "19-1011",
       "19-1012",
       "19-4013"
-    ]
+    ],
+    "website": "https://www.harrisranchbeef.com"
   },
   {
     "name": "Olam Spices and Vegetables",
@@ -735,7 +535,8 @@
       "19-1012",
       "19-4013",
       "45-2011"
-    ]
+    ],
+    "website": "https://www.ofi.com"
   },
   {
     "name": "Lyons Magnus",
@@ -752,40 +553,8 @@
       "13-2011",
       "19-1012",
       "19-4013"
-    ]
-  },
-  {
-    "name": "Farmex Land Management",
-    "sector": "Wholesale",
-    "description": "Farmex Land Management provides services for the management and development of agricultural land.",
-    "regions": [
-      "CVML"
     ],
-    "occupations": [
-      "11-1021",
-      "13-1071",
-      "13-2011",
-      "19-1013",
-      "19-4012",
-      "45-2011"
-    ]
-  },
-  {
-    "name": "R & N Packing",
-    "sector": "Wholesale",
-    "description": "R & N Packing is a company involved in the packing and processing of agricultural products.",
-    "regions": [
-      "CVML"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3051",
-      "13-1071",
-      "13-2011",
-      "19-1012",
-      "19-4013",
-      "45-2011"
-    ]
+    "website": "https://www.lyonsmagnus.com"
   },
   {
     "name": "Selma Kia",
@@ -801,7 +570,8 @@
       "13-2011",
       "41-4011",
       "49-3023"
-    ]
+    ],
+    "website": "https://www.selmakia.com"
   },
   {
     "name": "Home Depot",
@@ -817,7 +587,8 @@
       "13-1071",
       "13-2011",
       "41-4011"
-    ]
+    ],
+    "website": "https://www.homedepot.com"
   },
   {
     "name": "Lowe's Home Improvement",
@@ -833,7 +604,8 @@
       "13-1071",
       "13-2011",
       "41-4011"
-    ]
+    ],
+    "website": "https://www.lowes.com"
   },
   {
     "name": "Mission Foods",
@@ -850,7 +622,8 @@
       "13-2011",
       "19-1012",
       "19-4013"
-    ]
+    ],
+    "website": "https://www.missionfoods.com"
   },
   {
     "name": "Stamoules Produce Company",
@@ -867,7 +640,8 @@
       "19-1013",
       "19-4012",
       "45-2011"
-    ]
+    ],
+    "website": "http://www.stamoules.com"
   },
   {
     "name": "Educational Employees Credit Union",
@@ -884,23 +658,8 @@
       "13-2072",
       "15-1211",
       "15-1244"
-    ]
-  },
-  {
-    "name": "Realty Concepts",
-    "sector": "Real Estate",
-    "description": "Realty Concepts is a real estate brokerage firm assisting clients with property buying and selling.",
-    "regions": [
-      "CVML"
     ],
-    "occupations": [
-      "11-1021",
-      "11-2021",
-      "11-3012",
-      "13-1161",
-      "13-2011",
-      "13-2028"
-    ]
+    "website": "https://www.myeecu.org"
   },
   {
     "name": "Community Medical Center",
@@ -918,7 +677,8 @@
       "13-2011",
       "29-1141",
       "29-2061"
-    ]
+    ],
+    "website": "https://www.communitymedical.org"
   },
   {
     "name": "ULTA Beauty Distribution Center",
@@ -935,24 +695,8 @@
       "13-1081",
       "13-2011",
       "15-1244"
-    ]
-  },
-  {
-    "name": "Rodriguez Agricultural Enterprises",
-    "sector": "Administrative Services",
-    "description": "Rodriguez Agricultural Enterprises is a company involved in agricultural operations and services.",
-    "regions": [
-      "CVML"
     ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1071",
-      "13-1199",
-      "19-1013",
-      "19-4012",
-      "45-2011"
-    ]
+    "website": "https://www.ulta.com"
   },
   {
     "name": "Geil Enterprises",
@@ -969,7 +713,8 @@
       "13-2011",
       "15-1211",
       "15-1244"
-    ]
+    ],
+    "website": "https://geilenterprises.com"
   },
   {
     "name": "Clovis East High School",
@@ -987,7 +732,8 @@
       "25-2058",
       "27-2022",
       "25-9099"
-    ]
+    ],
+    "website": "https://www.cusd.com"
   },
   {
     "name": "Clovis High School",
@@ -1005,7 +751,8 @@
       "25-2058",
       "27-2022",
       "25-9099"
-    ]
+    ],
+    "website": "https://www.cusd.com"
   },
   {
     "name": "Roosevelt High School",
@@ -1023,7 +770,8 @@
       "25-2058",
       "27-2022",
       "25-9099"
-    ]
+    ],
+    "website": "https://www.fresnounified.org"
   },
   {
     "name": "Sanger High School",
@@ -1041,7 +789,8 @@
       "25-2058",
       "27-2022",
       "25-9099"
-    ]
+    ],
+    "website": "https://www.sanger.k12.ca.us"
   },
   {
     "name": "Clovis Adult Education",
@@ -1058,7 +807,8 @@
       "25-3011",
       "25-3099",
       "25-9099"
-    ]
+    ],
+    "website": "https://www.cusd.com"
   },
   {
     "name": "Reedley College",
@@ -1075,7 +825,8 @@
       "25-9044",
       "25-9099",
       "27-2022"
-    ]
+    ],
+    "website": "https://www.reedleycollege.edu"
   },
   {
     "name": "California State University Fresno",
@@ -1093,24 +844,8 @@
       "13-1071",
       "13-2011",
       "25-9044"
-    ]
-  },
-  {
-    "name": "Community Medical Imaging",
-    "sector": "Healthcare",
-    "description": "Community Medical Imaging provides diagnostic imaging services to patients.",
-    "regions": [
-      "CVML"
     ],
-    "occupations": [
-      "11-9111",
-      "11-3012",
-      "13-1071",
-      "29-2032",
-      "29-2034",
-      "29-2035",
-      "29-2099"
-    ]
+    "website": "https://www.fresnostate.edu"
   },
   {
     "name": "Elm Community Health Center",
@@ -1127,24 +862,8 @@
       "29-2061",
       "31-9092",
       "21-1091"
-    ]
-  },
-  {
-    "name": "Youth Wellness Center",
-    "sector": "Healthcare",
-    "description": "The Youth Wellness Center offers mental health and wellness services specifically for young people.",
-    "regions": [
-      "CVML"
     ],
-    "occupations": [
-      "11-9151",
-      "11-3012",
-      "13-1071",
-      "21-1018",
-      "21-1021",
-      "21-1091",
-      "29-1141"
-    ]
+    "website": "https://www.clinicasierravista.org"
   },
   {
     "name": "Horizon Health and Subacute Center",
@@ -1162,7 +881,8 @@
       "31-1131",
       "29-1031",
       "29-1126"
-    ]
+    ],
+    "website": "https://lifegen.net/locations/horizon-health-and-sub-acute/"
   },
   {
     "name": "American Ambulance",
@@ -1179,7 +899,8 @@
       "29-2043",
       "29-1141",
       "49-3023"
-    ]
+    ],
+    "website": "https://www.americanambulance.com"
   },
   {
     "name": "Adventist Health Reedley",
@@ -1197,7 +918,8 @@
       "31-1131",
       "29-2034",
       "29-2018"
-    ]
+    ],
+    "website": "https://www.adventisthealth.org"
   },
   {
     "name": "Adventist Health Selma",
@@ -1215,7 +937,8 @@
       "31-1131",
       "29-2034",
       "29-2018"
-    ]
+    ],
+    "website": "https://www.adventisthealth.org"
   },
   {
     "name": "Fresno Heart and Surgical Hospital",
@@ -1233,7 +956,8 @@
       "29-2031",
       "29-9093",
       "31-1131"
-    ]
+    ],
+    "website": "https://www.communitymedical.org"
   },
   {
     "name": "Fresno VA Hospital Medical Center",
@@ -1251,7 +975,8 @@
       "31-1131",
       "29-2034",
       "29-2018"
-    ]
+    ],
+    "website": "https://www.va.gov/central-california-health-care/"
   },
   {
     "name": "Kaiser Permanente Fresno Medical Center",
@@ -1269,7 +994,8 @@
       "31-1131",
       "29-2034",
       "29-2018"
-    ]
+    ],
+    "website": "https://healthy.kaiserpermanente.org"
   },
   {
     "name": "Saint Agnes Medical Center",
@@ -1287,7 +1013,8 @@
       "31-1131",
       "29-2034",
       "29-2018"
-    ]
+    ],
+    "website": "https://www.samc.com"
   },
   {
     "name": "Dycora Transitional Health",
@@ -1305,7 +1032,8 @@
       "31-1131",
       "29-1125",
       "31-2021"
-    ]
+    ],
+    "website": "https://lifegen.net"
   },
   {
     "name": "Palm Village Retirement Community",
@@ -1322,7 +1050,8 @@
       "29-2061",
       "31-1131",
       "11-9179"
-    ]
+    ],
+    "website": "https://www.palmvillage.com"
   },
   {
     "name": "Central Valley Regional Center",
@@ -1339,7 +1068,8 @@
       "21-1099",
       "13-1199",
       "21-1018"
-    ]
+    ],
+    "website": "https://www.cvrc.org"
   },
   {
     "name": "John's Incredible Pizza Company",
@@ -1357,7 +1087,8 @@
       "13-1121",
       "11-2021",
       "11-2032"
-    ]
+    ],
+    "website": "https://johnspizza.com"
   },
   {
     "name": "China Peak Mountain Resort",
@@ -1375,43 +1106,8 @@
       "13-1121",
       "11-2021",
       "11-2032"
-    ]
-  },
-  {
-    "name": "Blackstone",
-    "sector": "Other Services",
-    "description": "Blackstone is a global investment firm that invests across alternative asset classes.",
-    "regions": [
-      "CVML"
     ],
-    "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-3031",
-      "13-2051",
-      "13-1111",
-      "13-2011",
-      "15-1211",
-      "13-2054"
-    ]
-  },
-  {
-    "name": "Air National Guard",
-    "sector": "Other Services",
-    "description": "The Air National Guard is a federal military reserve force that provides air defense and support to state and federal missions.",
-    "regions": [
-      "CVML"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1071",
-      "17-2071",
-      "49-2091",
-      "49-3011",
-      "53-2011",
-      "55-9999"
-    ]
+    "website": "https://www.skichinapeak.com"
   },
   {
     "name": "City of Fresno",
@@ -1429,7 +1125,8 @@
       "13-1071",
       "13-2011",
       "17-2051"
-    ]
+    ],
+    "website": "https://www.fresno.gov"
   },
   {
     "name": "Fresno County General Services",
@@ -1447,7 +1144,8 @@
       "13-2011",
       "17-2051",
       "17-3022"
-    ]
+    ],
+    "website": "https://www.fresnocountyca.gov"
   },
   {
     "name": "Fresno County Office of Education",
@@ -1465,7 +1163,8 @@
       "15-1211",
       "25-2011",
       "25-9099"
-    ]
+    ],
+    "website": "https://www.fcoe.org"
   },
   {
     "name": "Fresno County Probation Department",
@@ -1483,7 +1182,8 @@
       "21-1029",
       "13-2011",
       "15-1211"
-    ]
+    ],
+    "website": "https://www.fresnocountyca.gov"
   },
   {
     "name": "Fresno County Public Works",
@@ -1501,7 +1201,8 @@
       "13-1081",
       "13-2011",
       "15-1211"
-    ]
+    ],
+    "website": "https://www.fresnocountyca.gov"
   },
   {
     "name": "National Guard",
@@ -1519,7 +1220,8 @@
       "29-1141",
       "49-3011",
       "55-9999"
-    ]
+    ],
+    "website": "https://www.nationalguard.com"
   },
   {
     "name": "Pleasant Valley State Prison",
@@ -1537,7 +1239,8 @@
       "29-1141",
       "29-2061",
       "31-1131"
-    ]
+    ],
+    "website": "https://www.cdcr.ca.gov"
   },
   {
     "name": "Fresno County District Attorney",
@@ -1555,7 +1258,8 @@
       "23-2011",
       "15-1211",
       "27-3031"
-    ]
+    ],
+    "website": "https://www.fresnocountyca.gov"
   },
   {
     "name": "Fresno County Sheriff's Office",
@@ -1573,7 +1277,8 @@
       "15-1211",
       "29-1141",
       "29-2061"
-    ]
+    ],
+    "website": "https://www.fresnosheriff.org"
   },
   {
     "name": "Fresno County Superior Court",
@@ -1591,7 +1296,8 @@
       "15-1211",
       "23-2011",
       "27-3092"
-    ]
+    ],
+    "website": "https://www.fresno.courts.ca.gov"
   },
   {
     "name": "Fresno Police Department",
@@ -1609,7 +1315,8 @@
       "15-1211",
       "27-3031",
       "29-2042"
-    ]
+    ],
+    "website": "https://www.fresno.gov/police"
   },
   {
     "name": "Fresno County Department of Public Health",
@@ -1627,7 +1334,8 @@
       "21-1091",
       "29-1031",
       "29-1141"
-    ]
+    ],
+    "website": "https://www.fresnocountyca.gov"
   },
   {
     "name": "Warmerdam Packing",
@@ -1645,7 +1353,8 @@
       "13-2011",
       "19-1013",
       "45-2011"
-    ]
+    ],
+    "website": "https://warmerdampacking.com"
   },
   {
     "name": "Leprino Foods",
@@ -1663,7 +1372,8 @@
       "13-2011",
       "19-1012",
       "17-2112"
-    ]
+    ],
+    "website": "https://leprino.com"
   },
   {
     "name": "Central Valley Meat Company",
@@ -1681,25 +1391,8 @@
       "13-2011",
       "19-1012",
       "19-5011"
-    ]
-  },
-  {
-    "name": "Del Monte Foods",
-    "sector": "Manufacturing",
-    "description": "Del Monte Foods is a food production and distribution company known for its canned fruits, vegetables, and other food products.",
-    "regions": [
-      "CVML"
     ],
-    "occupations": [
-      "11-1021",
-      "11-3051",
-      "11-3061",
-      "13-1081",
-      "13-1028",
-      "13-2011",
-      "19-1012",
-      "17-2112"
-    ]
+    "website": "https://www.centralvalleymeat.com"
   },
   {
     "name": "Marquez Brothers International",
@@ -1717,25 +1410,8 @@
       "13-2011",
       "13-1161",
       "41-4011"
-    ]
-  },
-  {
-    "name": "Zepeda's Farm Labor Services",
-    "sector": "Administrative Services",
-    "description": "Zepeda's Farm Labor Services provides agricultural labor and support to farms in the region.",
-    "regions": [
-      "CVML"
     ],
-    "occupations": [
-      "11-1021",
-      "11-3121",
-      "13-1071",
-      "13-1041",
-      "13-2011",
-      "13-1199",
-      "19-4012",
-      "45-2011"
-    ]
+    "website": "https://elmexicano.net"
   },
   {
     "name": "Lemoore High School",
@@ -1753,7 +1429,8 @@
       "25-2032",
       "25-2058",
       "27-2022"
-    ]
+    ],
+    "website": "https://lemoorehigh.luhsd.k12.ca.us"
   },
   {
     "name": "Naval Health Clinic Lemoore",
@@ -1771,7 +1448,8 @@
       "29-2034",
       "29-2018",
       "31-1131"
-    ]
+    ],
+    "website": "https://www.med.navy.mil"
   },
   {
     "name": "Adventist Health Hanford",
@@ -1789,7 +1467,8 @@
       "29-2034",
       "29-2018",
       "31-1131"
-    ]
+    ],
+    "website": "https://www.adventisthealth.org"
   },
   {
     "name": "California State Prison, Corcoran",
@@ -1807,7 +1486,8 @@
       "29-1141",
       "29-2061",
       "31-1131"
-    ]
+    ],
+    "website": "https://www.cdcr.ca.gov"
   },
   {
     "name": "Kings County Administration",
@@ -1825,6 +1505,7 @@
       "13-1071",
       "13-2011",
       "15-1211"
-    ]
+    ],
+    "website": "https://www.countyofkingsca.gov"
   }
 ]

@@ -142,6 +142,7 @@ def get_employers(college: str):
             result = session.run("""
                 MATCH (c:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})
                 RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
+                       emp.website AS website,
                        collect(DISTINCT occ.title) AS occupations,
                        count(DISTINCT sk) AS matching_skills,
                        collect(DISTINCT sk.name) AS skills
@@ -154,6 +155,7 @@ def get_employers(college: str):
                 name=r["name"],
                 sector=r["sector"],
                 description=r["description"],
+                website=r["website"],
                 occupations=r["occupations"],
                 matching_skills=r["matching_skills"],
                 skills=r["skills"],
@@ -172,7 +174,7 @@ def get_employer_detail(name: str, college: str):
         with driver.session() as session:
             # Get employer info
             emp_result = session.run(
-                "MATCH (e:Employer {name: $name}) RETURN e.name AS name, e.sector AS sector, e.description AS description",
+                "MATCH (e:Employer {name: $name}) RETURN e.name AS name, e.sector AS sector, e.description AS description, e.website AS website",
                 name=name,
             ).single()
 
@@ -220,6 +222,7 @@ def get_employer_detail(name: str, college: str):
             name=emp_result["name"],
             sector=emp_result["sector"],
             description=emp_result["description"],
+            website=emp_result["website"],
             regions=[r["region"] for r in region_result],
             occupations=list(occ_map.values()),
         )
