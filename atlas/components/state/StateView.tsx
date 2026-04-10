@@ -153,7 +153,7 @@ export default function StateView() {
             }}
             onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = "0.7")}
             onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = "1")}
-            aria-label="Back to Atlas"
+            aria-label="Back to Home Atlas"
           >
             <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
               <path d="M12 2L3 7.5 12 13l9-5.5L12 2z" fill={userSchool?.brandColorNeon ?? "rgba(255,255,255,0.3)"} opacity="0.85" />
@@ -179,12 +179,12 @@ export default function StateView() {
             whiteSpace: "nowrap",
             pointerEvents: "none",
           }}>
-            State View
+            State Atlas
           </span>
 
           <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
             <KallipolisBrand />
-            <AtlasMenu navItems={[{ label: "Atlas", href: userCollegeId ? `/${userCollegeId}` : "/", icon: (
+            <AtlasMenu navItems={[{ label: "Home Atlas", href: userCollegeId ? `/${userCollegeId}` : "/", icon: (
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                 <path d="M12 2L3 7.5 12 13l9-5.5L12 2z" fill={userSchool?.brandColorNeon ?? "rgba(255,255,255,0.3)"} opacity="0.85" />
                 <path d="M12 13v9l9-5.5v-9L12 13z" fill={userSchool?.brandColorNeon ?? "rgba(255,255,255,0.3)"} opacity="0.55" />
@@ -559,7 +559,7 @@ function SchoolPanel({ college }: { college: College }) {
           onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = accent; (e.currentTarget as HTMLElement).style.color = "#0a0a0f"; }}
           onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "transparent"; (e.currentTarget as HTMLElement).style.color = accent; }}
         >
-          Open Atlas
+          Open College Atlas
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
             <path d="M12 2L3 7.5 12 13l9-5.5L12 2z" fill="currentColor" opacity="0.85" />
             <path d="M12 13v9l9-5.5v-9L12 13z" fill="currentColor" opacity="0.55" />

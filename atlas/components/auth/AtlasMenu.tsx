@@ -18,7 +18,7 @@ type Props = {
   navItems?: NavItem[];
 };
 
-const DEFAULT_NAV: NavItem[] = [{ label: "State View", href: "/state" }];
+const DEFAULT_NAV: NavItem[] = [{ label: "State Atlas", href: "/state" }];
 
 export default function AtlasMenu({ navItems = DEFAULT_NAV }: Props) {
   const router = useRouter();
