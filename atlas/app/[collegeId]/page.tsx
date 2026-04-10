@@ -181,10 +181,8 @@ export default function CollegeAtlasPage() {
               display: "flex",
               alignItems: "center",
               gap: "7px",
-              cursor: "pointer",
               pointerEvents: "auto",
             }}
-            onClick={() => router.push("/state")}
           >
             <KallipolisBrand />
           </motion.div>
