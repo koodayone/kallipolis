@@ -10,8 +10,8 @@ This directory holds the canonical documentation for the product, the domain it 
 What Kallipolis is, what it does today, and what it is aiming toward. Operates at two altitudes: the long-arc mission, and the present-day operational reality. No engineering or pipeline detail.
 
 - [Overview](./product/overview.md) — Mission, what the product does today, the thesis, and the gap it fills
-- [The Ontology](./product/the-ontology.md) — The foundation: four entities, four authorities, and the propositional commitment that grounds everything else
-- The Atlas — The working surface where users navigate the ontology *(pending spine)*
+- [The Ontology](./product/the-ontology.md) — The two arenas: four units of analysis grounded in institutional authority, and two units of action formulated from them
+- [The Atlas](./product/the-atlas.md) — The navigational layer where the user visualizes and moves through both arenas of the ontology
 - Partnership Artifacts — What the layer produces: proposals, project applications, and other generative output *(pending spine)*
 
 ### [Domain](./domain/)
