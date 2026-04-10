@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import DataCitation from "@/components/ui/DataCitation";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
@@ -28,9 +29,10 @@ type Props = {
   courses?: CourseItem[] | null;
   isLoading?: boolean;
   onExpand?: () => void;
+  schoolName?: string;
 };
 
-export default function DepartmentRow({ department, courseCount, index, brandColor, isOpen: controlledOpen, onToggle, courses, isLoading, onExpand }: Props) {
+export default function DepartmentRow({ department, courseCount, index, brandColor, isOpen: controlledOpen, onToggle, courses, isLoading, onExpand, schoolName }: Props) {
   const [internalOpen, setInternalOpen] = useState(false);
   const [expandedCourses, setExpandedCourses] = useState<Set<string>>(new Set());
   const isOpen = controlledOpen ?? internalOpen;
@@ -201,6 +203,7 @@ export default function DepartmentRow({ department, courseCount, index, brandCol
                   </div>
                 );
               })}
+              {schoolName && <DataCitation source={`${schoolName} Catalog`} />}
             </div>
           </motion.div>
         )}

@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import DataCitation from "@/components/ui/DataCitation";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
@@ -181,6 +182,7 @@ export default function StudentRow({ student, index, brandColor, isOpen: control
                       ))}
                     </div>
                   )}
+                  <DataCitation source="California Community Colleges MIS DataMart" />
                 </>
               )}
             </div>

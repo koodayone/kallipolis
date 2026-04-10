@@ -280,6 +280,7 @@ function DepartmentList({
           courseCount={dept.courseCount}
           index={i}
           brandColor={school.brandColorLight}
+          schoolName={school.name}
           isOpen={expandedDepts.has(dept.department)}
           onToggle={() => onDeptExpand(dept.department)}
           courses={deptCoursesMap[dept.department] ?? null}
