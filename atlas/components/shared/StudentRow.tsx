@@ -182,7 +182,7 @@ export default function StudentRow({ student, index, brandColor, isOpen: control
                       ))}
                     </div>
                   )}
-                  <DataCitation source="California Community Colleges MIS DataMart" />
+                  <DataCitation source="California Community Colleges Chancellor's Office MIS Data Mart" />
                 </div>
               )}
             </div>
