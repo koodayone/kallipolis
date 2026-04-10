@@ -19,7 +19,7 @@ Each form in the ontology receives its own dedicated treatment, describing the p
 - [Students](./product/students.md) — Represented people whose competency portrait makes the supply side of workforce development empirical
 - [Courses](./product/courses.md) — The institution's commitment to teach, interpreted through a unified taxonomy to produce the skills that bridge curriculum to labor market
 - [Occupations](./product/occupations.md) — Categories of regional labor market demand, grounded in Centers of Excellence research, with skill gap identification as the unique improvement vector
-- Employers *(pending spine)*
+- [Employers](./product/employers.md) — Real organizations grounded in EDD records, restrictively scoped to actors the workforce development ecosystem can coordinate with, the operational target the other three foundationals direct work toward
 
 **Units of action:**
 - Partnerships *(pending spine)*
