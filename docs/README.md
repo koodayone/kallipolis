@@ -12,7 +12,18 @@ What Kallipolis is, what it does today, and what it is aiming toward. Operates a
 - [Overview](./product/overview.md) — Mission, what the product does today, the thesis, and the gap it fills
 - [The Ontology](./product/the-ontology.md) — The two arenas: four units of analysis grounded in institutional authority, and two units of action formulated from them
 - [The Atlas](./product/the-atlas.md) — The navigational layer where the user visualizes and moves through both arenas of the ontology
-- Partnership Artifacts — What the layer produces: proposals, project applications, and other generative output *(pending spine)*
+
+Each form in the ontology receives its own dedicated treatment, describing the product experience in relation to that form.
+
+**Units of analysis:**
+- [Students](./product/students.md) — Represented people whose competency portrait makes the supply side of workforce development empirical
+- Courses *(pending spine)*
+- Occupations *(pending spine)*
+- Employers *(pending spine)*
+
+**Units of action:**
+- Partnerships *(pending spine)*
+- Strong Workforce *(pending spine)*
 
 ### [Domain](./domain/)
 The institutional and policy context that shapes the product. Background needed to make sense of why the product exists and looks the way it does. The spine of this section is pending — the existing draft is heavily SWP-organized and needs to be reconsidered against the new product overview.
