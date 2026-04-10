@@ -136,8 +136,8 @@ export default function StudentRow({ student, index, brandColor, isOpen: control
             <div style={{ padding: "16px 20px 24px", overflowX: "auto" }}>
               {isLoading && <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Loading...</p>}
               {detail && (
-                <>
-                  <div style={{ display: "flex", gap: "0", borderBottom: "1px solid rgba(255,255,255,0.08)", marginBottom: "16px" }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+                  <div style={{ display: "flex", gap: "0", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
                     {(["history", "skills"] as const).map((t) => (
                       <button key={t} onClick={(e) => { e.stopPropagation(); setTab(t); }}
                         style={{
@@ -183,7 +183,7 @@ export default function StudentRow({ student, index, brandColor, isOpen: control
                     </div>
                   )}
                   <DataCitation source="California Community Colleges MIS DataMart" />
-                </>
+                </div>
               )}
             </div>
           </motion.div>

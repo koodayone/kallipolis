@@ -7,12 +7,11 @@ type Props = {
 export default function DataCitation({ source }: Props) {
   return (
     <div style={{
-      marginTop: "16px",
       paddingTop: "12px",
       borderTop: "1px solid rgba(255,255,255,0.05)",
       fontFamily: FONT,
       fontSize: "11px",
-      color: "rgba(255,255,255,0.25)",
+      color: "rgba(255,255,255,0.4)",
       letterSpacing: "0.02em",
     }}>
       Source: {source}

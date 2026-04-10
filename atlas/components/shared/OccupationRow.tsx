@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import DataCitation from "@/components/ui/DataCitation";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
@@ -195,12 +196,10 @@ export default function OccupationRow({ occ, index, brandColor, isOpen: controll
                             <div key={r.region}>{r.region}: <span style={{ color: "rgba(255,255,255,0.65)", fontWeight: 500 }}>{r.employment.toLocaleString()}</span> currently employed</div>
                           ))}
                         </div>
-                        <p style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.25)", marginTop: "8px", lineHeight: 1.5 }}>
-                          Occupational demand figures from the Centers of Excellence for Labor Market Research.
-                        </p>
                       </div>
                     );
                   })()}
+                  <DataCitation source="Centers of Excellence for Labor Market Research" />
                 </div>
               )}
 

@@ -9,6 +9,7 @@ import Badge from "@/components/ui/Badge";
 import EntityScrollList from "@/components/ui/EntityScrollList";
 import type { Column } from "@/components/ui/EntityScrollList";
 import QueryShell, { findScrollParent } from "@/components/ui/QueryShell";
+import DataCitation from "@/components/ui/DataCitation";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
@@ -289,9 +290,7 @@ const EmployerRow = memo(function EmployerRow({ emp, i, school, expandedNames, e
                       </div>
                     );
                   })}
-                  <p style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.25)", marginTop: "8px", lineHeight: 1.5 }}>
-                    Regional employer data from the California Employment Development Department.
-                  </p>
+                  <DataCitation source="California Employment Development Department" />
                 </div>
               )}
             </div>
