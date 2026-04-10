@@ -12,7 +12,7 @@ What Kallipolis is, what it does today, and what it is aiming toward. Operates a
 **Foundational elements:**
 - [Overview](./product/overview.md) — Mission, what the product does today, the thesis, and the gap it fills
 - [The Ontology](./product/the-ontology.md) — The two arenas: four units of analysis grounded in institutional authority, and two units of action formulated from them
-- [The Atlas](./product/the-atlas.md) — The navigational layer where the user visualizes and moves through both arenas of the ontology
+- [The Atlas](./product/the-atlas.md) — The navigational layer at two scales: the College Atlas, where the user visualizes and moves through both arenas of the ontology within a single institution, and the State Atlas, which surfaces the system of institutions itself for navigation across the California community college ecosystem
 - [The Unified Skills Taxonomy](./product/the-skills-taxonomy.md) — The controlled vocabulary through which the ontology semantically reasons about relationships between the four foundational forms; the semantic center of the ontology's analytical capability
 
 Each form in the ontology receives its own dedicated treatment, describing the product experience in relation to that form.
