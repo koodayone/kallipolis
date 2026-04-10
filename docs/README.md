@@ -28,12 +28,13 @@ Each form in the ontology receives its own dedicated treatment, describing the p
 - [Strong Workforce](./product/strong-workforce.md) — The justification stage of the partnership lifecycle, where a discovered partnership is translated into a NOVA-compatible SWP project application; the form through which Kallipolis becomes institutionally legible at state scale
 
 ### [Domain](./domain/)
-The institutional and policy context that shapes the product. Background needed to make sense of why the product exists and looks the way it does. The spine of this section is pending — the existing draft is heavily SWP-organized and needs to be reconsidered against the new product overview.
+Documents how the workforce development worldview manifests in the context of California Community Colleges, and the components of that manifestation that most directly shape Kallipolis. Same audience as the product section: written for mental model first, with the option of becoming broader-audience material later.
 
-- Strong Workforce Program — Policy, funding, regional variation *(needs revision: was framed as the central organizing concept; should become one piece of context among several)*
-- Data Authorities — The institutional sources that ground every claim *(draft)*
-- California Community College System — Structure, scale, and the consortia model *(draft)*
-- Glossary — Domain vocabulary *(draft)*
+- [Overview](./domain/overview.md) — The worldview, how it manifests in California Community Colleges, and how the four domain areas relate to the realization of the Kallipolis vision
+- Strong Workforce Program — The funding and compliance structure through which the worldview is operationalized at scale *(pending)*
+- Data Authorities — The four institutional sources that ground every claim Kallipolis makes *(pending)*
+- California Community College System — The 116-college institutional structure within which the worldview is enacted *(pending)*
+- Glossary — The vocabulary the worldview speaks in *(pending)*
 
 ### [Architecture](./architecture/)
 How the system is built. For engineers extending or modifying Kallipolis. The technical choices are downstream of the product framing rather than upstream of it, so most of the existing draft survives — but voice and emphasis should be checked against the new overview.
