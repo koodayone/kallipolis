@@ -72,10 +72,8 @@ One specific area of possible development is partnership *management* — suppor
 
 ## The core value proposition
 
-Partnerships unify their angles around a single observation: the formulation of data-driven partnership opportunities is the core value proposition of Kallipolis, and the entire ontology is dedicated to enabling this formulation.
+Partnerships unify their angles around a single observation: the formulation of data-driven partnership opportunities is the core value proposition of Kallipolis, and the entire ontology is dedicated to enabling it. Partnerships are not one of six forms in a neutral taxonomy. They are the activity the rest of the ontology exists to enable.
 
-For students, the unification was about the present-to-future gap. For courses, the unification was about leverage — the source of the bridge. For occupations, the unification was about epistemic robustness paired with the skills-layer pressure point. For employers, the unification was about being the operational target. For partnerships, the unification is centrality to the value proposition. Partnerships are not one of six forms. They are the activity the rest of the ontology exists to enable.
+The four units of analysis provide the empirical material. The unified skills taxonomy provides the semantic medium. The Atlas provides the surface where the user encounters all of this. And partnerships are where the analytical work pays off — the moment a coordinator sees a data-driven case for engaging with a specific employer in a specific way, with the empirical foundation visible right next to the narrative.
 
-The four units of analysis provide the empirical material — the occupations the labor market demands, the courses the college teaches, the students the college serves, the employers who hire in the region. The unified skills taxonomy provides the semantic medium that lets the analytical material be reasoned about. The Atlas provides the surface where the user encounters all of this. And partnerships are where the analytical work actually pays off — the moment a coordinator sees a data-driven case for engaging with a specific employer in a specific way, with the empirical foundation visible right next to the narrative.
-
-This is the core value proposition operating in the first person. Everything upstream of the partnership generation flow is preparation. The flow itself is the moment Kallipolis does its job.
+Everything upstream of the partnership generation flow is preparation. The flow itself is the moment Kallipolis does its job.

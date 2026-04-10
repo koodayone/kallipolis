@@ -42,9 +42,9 @@ The two sides meet on skills. A skill that is developed by a course on the suppl
 
 ## Skills as emergent
 
-Skills appear in the ontology as the mechanism by which courses connect to occupations, but they are not foundational in the same way the units of analysis are. Skills do not have their own institutional authority. They are derived from analysis of what courses develop and what occupations require, produced by the pipeline as it interprets curriculum descriptions and occupational specifications against a unified skill taxonomy that gives both sides a common vocabulary.
+Skills appear in the ontology as the bridge between courses and occupations, but they are not foundational in the same way the units of analysis are. They have no institutional authority of their own; they are derived from analysis of what courses develop and what occupations require, against a unified taxonomy that gives both sides a common vocabulary. Skills carry the relational logic of the analytical layer without being authored alongside the foundationals — and treating them as a bridge rather than a foundation is what keeps the four-entity grounding clean.
 
-Skills are real and they carry the relational logic of the entire analytical layer. But they are emergent from the foundationals, not authored alongside them. Treating skills as the bridge rather than as a foundation is what allows the four-entity grounding to remain clean.
+For the full treatment of the taxonomy and the work it does, see [The Unified Skills Taxonomy](./the-skills-taxonomy.md).
 
 ## The units of action
 

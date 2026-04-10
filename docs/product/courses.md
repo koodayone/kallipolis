@@ -38,7 +38,9 @@ The derivation step from course content to skills is constrained by the taxonomy
 
 The empirical results pass the inspection that matters. When the skills extracted for a particular course are compared against what a knowledgeable reviewer would say that course actually develops, the classifications are recognizable as accurate. This is the most direct evidence the methodology is doing what it claims to do — producing skill profiles that reflect the course's real content, not interpretive noise. A methodology that produces outputs which can be inspected and recognized as faithful by a domain reviewer is doing its job, even when more formal verification infrastructure is not yet in place.
 
-What this methodology is not is a finished thing. The current implementation is principled but not yet enriched by the kinds of validation that would make it stronger: expert review of the taxonomy by people who understand both academic curriculum and labor market needs, longitudinal feedback from real outcomes, human-in-the-loop adjudication for edge cases, richer source data that gives the extraction more material to work with. These improvements are real, and they are paths the methodology can evolve along without changing its fundamental design. The methodology is principled and improvable — principled in its current state, and improvable in directions that are concrete rather than speculative.
+The current implementation is principled but not yet enriched by the kinds of validation that would make it stronger: expert review of the taxonomy by people who understand both academic curriculum and labor market needs, longitudinal feedback from real outcomes, human-in-the-loop adjudication for edge cases, richer source data. These are paths the methodology can evolve along without changing its fundamental design — principled in its current state, improvable in directions that are concrete rather than speculative.
+
+For the full treatment of the taxonomy itself, see [The Unified Skills Taxonomy](./the-skills-taxonomy.md).
 
 ## How the methodology will evolve
 
@@ -54,10 +56,8 @@ None of these improvements require throwing away the current methodology. Each i
 
 ## What unifies the four angles
 
-The four angles do not describe four different things about courses. They describe one thing — the source of the bridge between curriculum and labor market — from four different positions.
+The four angles do not describe four different things about courses. They describe one thing — the source of the bridge between curriculum and labor market — from four different positions. What unifies them is leverage.
 
-The attributional angle says what a course contains: source text and derived skills. The relational angle says what courses do in the larger logic of the ontology — position the college's productive capacity through departments and TOP codes, and serve as the origin point of competency. The methodological angle says how the bridge is constructed: through a deliberate taxonomy and a constrained derivation. The architectural angle says how the bridge will become stronger: through richer source data, expert validation, and outcomes feedback.
-
-What unifies them is leverage. Courses are not just one of four foundational entities — they are the form whose fidelity determines whether the supply side connects to the demand side at all. Students carry the skills, occupations require them, employers hire for them, but courses are where the skills come from. Everything downstream of a course inherits whatever the course's skill derivation produces. This is the highest-leverage point in the ontology, and the methodology that operates at this point is correspondingly important to get right.
+Courses are not just one of four foundational entities. They are the form whose fidelity determines whether the supply side connects to the demand side at all. Students carry the skills, occupations require them, employers hire for them, but courses are where the skills come from. Everything downstream of a course inherits whatever the course's skill derivation produces. This is the highest-leverage point in the ontology, and the methodology that operates at this point is correspondingly important to get right.
 
 It is also being gotten right. The methodology is principled, the design choices are defensible, the empirical results pass inspection, and the evolution path is concrete. Courses do their job in the ontology today, and the work to make them do it more rigorously is well-defined. The leverage and the responsibility for honoring it are in the same place.

@@ -2,7 +2,7 @@
 
 Documentation for Kallipolis, a partnership intelligence layer that unifies academic and labor market data for community colleges to forge stronger workforce partnerships with industry.
 
-This directory holds the canonical documentation for the product, the domain it operates in, and the system that delivers it. It is currently being developed as a working document for building a coherent mental model of Kallipolis, and will evolve into broader-audience documentation as the structure stabilizes.
+This directory holds the canonical documentation for the product, the domain it operates in, and the system that delivers it. The product section is at a coherent first-draft state; the other sections (domain, architecture, pipeline, operations) remain in development. As the structure stabilizes, the documentation will evolve into broader-audience material.
 
 ## Sections
 
@@ -12,7 +12,7 @@ What Kallipolis is, what it does today, and what it is aiming toward. Operates a
 **Foundational elements:**
 - [Overview](./product/overview.md) — Mission, what the product does today, the thesis, and the gap it fills
 - [The Ontology](./product/the-ontology.md) — The two arenas: four units of analysis grounded in institutional authority, and two units of action formulated from them
-- [The Atlas](./product/the-atlas.md) — The navigational layer at two scales: the College Atlas, where the user visualizes and moves through both arenas of the ontology within a single institution, and the State Atlas, which surfaces the system of institutions itself for navigation across the California community college ecosystem
+- [The Atlas](./product/the-atlas.md) — The navigational layer at two scales: the College Atlas surfaces a single institution through six iconic entry points, the State Atlas surfaces the entire California community college system for cross-institution navigation
 - [The Unified Skills Taxonomy](./product/the-skills-taxonomy.md) — The controlled vocabulary through which the ontology semantically reasons about relationships between the four foundational forms; the semantic center of the ontology's analytical capability
 
 Each form in the ontology receives its own dedicated treatment, describing the product experience in relation to that form.
