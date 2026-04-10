@@ -193,27 +193,26 @@ const EmployerRow = memo(function EmployerRow({ emp, i, school, expandedNames, e
                       {detail.description}
                     </p>
                   )}
-                  {detail.website && (() => {
-                    let domain: string;
-                    try { domain = new URL(detail.website).hostname.replace(/^www\./, ""); } catch { domain = detail.website; }
-                    return (
-                      <a
-                        href={detail.website}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{ fontFamily: FONT, fontSize: "12px", color: school.brandColorLight, opacity: 0.7, textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "5px", transition: "opacity 0.15s" }}
-                        onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.opacity = "1"; }}
-                        onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.opacity = "0.7"; }}
-                      >
-                        {domain}
-                        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M4.5 1.5H2.5C1.95 1.5 1.5 1.95 1.5 2.5V9.5C1.5 10.05 1.95 10.5 2.5 10.5H9.5C10.05 10.5 10.5 10.05 10.5 9.5V7.5" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
-                          <path d="M7 1.5H10.5V5" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
-                          <path d="M10.5 1.5L5.5 6.5" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
-                        </svg>
-                      </a>
-                    );
-                  })()}
+                  {detail.website && (
+                    <a
+                      href={detail.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ display: "inline-flex", alignItems: "center", gap: "6px", padding: "3px 10px", borderRadius: "100px", fontFamily: FONT, fontSize: "11px", fontWeight: 600, letterSpacing: "0.07em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.5)", background: "transparent", border: "1px solid rgba(255,255,255,0.12)", textDecoration: "none", transition: "border-color 0.15s, color 0.15s", width: "fit-content" }}
+                      onMouseEnter={e => { const el = e.currentTarget; el.style.borderColor = `${school.brandColorLight}4d`; el.style.color = school.brandColorLight; el.querySelectorAll("svg").forEach(s => s.style.stroke = school.brandColorLight); }}
+                      onMouseLeave={e => { const el = e.currentTarget; el.style.borderColor = "rgba(255,255,255,0.12)"; el.style.color = "rgba(255,255,255,0.5)"; el.querySelectorAll("svg").forEach(s => s.style.stroke = "rgba(255,255,255,0.4)"); }}
+                    >
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" style={{ stroke: "rgba(255,255,255,0.4)", transition: "stroke 0.15s", flexShrink: 0 }} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="12" cy="12" r="10" /><path d="M2 12h20" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                      </svg>
+                      Employer Home Page
+                    </a>
+                  )}
+                  {detail.occupations.length > 0 && (
+                    <div style={{ fontFamily: FONT, fontSize: "11px", fontWeight: 600, letterSpacing: "0.07em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginTop: "4px" }}>
+                      Employer Occupations ({detail.occupations.length})
+                    </div>
+                  )}
                   {detail.occupations.map((occ: any) => {
                     const aligned = (occ.skills || []).filter((s: any) => s.developed);
                     return (
