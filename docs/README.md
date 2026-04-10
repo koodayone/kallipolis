@@ -41,7 +41,7 @@ How the system is built. The technical choices are downstream of the product fra
 
 - [System Overview](./architecture/system-overview.md) — Three apps, one graph, the AI surface, the streaming and authentication patterns
 - [Graph Model](./architecture/graph-model.md) — The Neo4j schema: eight node types, eleven relationships, and the bridge logic that connects curriculum to labor market through skills
-- AI Integration — Where Claude and Gemini are called, what each model is asked to do, and the constraints on each call *(pending)*
+- [AI Integration](./architecture/ai-integration.md) — Where Claude and Gemini are called, what each model is asked to do, and the constraints that make the integration principled and improvable
 
 ### [Pipeline](./pipeline/)
 How institutional data enters the graph. The mechanism by which the ontology comes into being. Operationally the most subtle part of the system.
