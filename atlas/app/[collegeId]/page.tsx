@@ -1,226 +1,85 @@
 "use client";
 
-import { useState, useRef, useCallback, useEffect } from "react";
-import { useParams, useRouter } from "next/navigation";
-import dynamic from "next/dynamic";
-import { AnimatePresence, motion } from "framer-motion";
-import { buildAtlasScene, FormKey, ALL_FORM_KEYS, FORM_NAMES } from "@/college-atlas/scene";
+import { useParams } from "next/navigation";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { ALL_FORM_KEYS, FORM_NAMES, FORM_URL_SLUGS } from "@/college-atlas/scene";
+import { useHomeSceneContext } from "@/college-atlas/homeSceneContext";
 import { getCollegeAtlasConfig } from "@/config/collegeAtlasConfigs";
 import AtlasMenu from "@/auth/AtlasMenu";
-import StudentsView from "@/college-atlas/students/StudentsView";
-import CoursesView from "@/college-atlas/courses/CoursesView";
-import PartnershipsView from "@/college-atlas/partnerships/PartnershipsView";
-import OccupationsView from "@/college-atlas/occupations/OccupationsView";
-import EmployersView from "@/college-atlas/employers/EmployersView";
-import StrongWorkforceView from "@/college-atlas/strong-workforce/StrongWorkforceView";
 import KallipolisBrand from "@/ui/KallipolisBrand";
 import AtlasHeader from "@/ui/AtlasHeader";
 
-const CollegeAtlasCanvas = dynamic(() => import("@/college-atlas/CollegeAtlasCanvas"), {
-  ssr: false,
-});
-
-type AppState = "home" | "transitioning-in" | "focused" | "transitioning-out";
-
-export default function CollegeAtlasPage() {
+export default function CollegeAtlasHomePage() {
   const { collegeId } = useParams<{ collegeId: string }>();
-  const router = useRouter();
   const config = getCollegeAtlasConfig(collegeId);
-
-  const [appState, setAppState] = useState<AppState>("home");
-  const [activeForm, setActiveForm] = useState<FormKey | null>(null);
-  const [hoveredForm, setHoveredForm] = useState<FormKey | null>(null);
-  const sceneRef = useRef<ReturnType<typeof buildAtlasScene> | null>(null);
-
-  // Projected label positions from the 3D scene
-  const [projectedPositions, setProjectedPositions] = useState<Record<string, { x: number; y: number }>>({});
-
-  // Redirect if college not found
-  useEffect(() => {
-    if (!config) router.replace("/");
-  }, [config, router]);
-
-  // Restore form from URL hash on mount
-  useEffect(() => {
-    const hash = window.location.hash.replace("#", "") as FormKey;
-    if (ALL_FORM_KEYS.includes(hash)) {
-      setActiveForm(hash);
-      setAppState("focused");
-      setTimeout(() => sceneRef.current?.setPaused(true), 200);
-    }
-  }, []);
-
-  // Track projected positions from 3D scene — only when home
-  useEffect(() => {
-    let rafId: number;
-    const update = () => {
-      if (appState === "home" && sceneRef.current?.getProjectedPositions) {
-        setProjectedPositions(sceneRef.current.getProjectedPositions());
-      }
-      rafId = requestAnimationFrame(update);
-    };
-    const timeout = setTimeout(() => { rafId = requestAnimationFrame(update); }, 100);
-    return () => { cancelAnimationFrame(rafId); clearTimeout(timeout); };
-  }, [appState]);
-
-  const handleFormClick = useCallback((form: FormKey) => {
-    setActiveForm(form);
-    setAppState("transitioning-in");
-    window.location.hash = form;
-    setTimeout(() => {
-      setAppState("focused");
-      sceneRef.current?.setPaused(true);
-    }, 850);
-  }, []);
-
-  const handleBack = useCallback(() => {
-    setAppState("transitioning-out");
-    setTimeout(() => {
-      sceneRef.current?.setPaused(false);
-      sceneRef.current?.resetScene();
-      setAppState("home");
-      setActiveForm(null);
-      setHoveredForm(null);
-      history.pushState(null, "", window.location.pathname);
-    }, 550);
-  }, []);
+  const { projectedPositions } = useHomeSceneContext();
 
   if (!config) return null;
 
-  const canvasOpacity =
-    appState === "home" ? 1 : appState === "transitioning-out" ? 1 : 0;
-
-  const showLabels = appState === "home";
-  const showFocused = appState === "focused" || appState === "transitioning-out";
-
   return (
-    <div
-      style={{
-        position: "relative",
-        width: "100vw",
-        height: "100vh",
-        background: "#060d1f",
-        overflow: "hidden",
-      }}
-    >
-      {/* Persistent Three.js canvas */}
-      <div style={{ position: "fixed", inset: 0, zIndex: 0 }}>
-        <CollegeAtlasCanvas
-          onFormClick={handleFormClick}
-          onHoverChange={setHoveredForm}
-          canvasOpacity={canvasOpacity}
-          brandColor={parseInt(config.brandColorNeon.replace("#", ""), 16)}
-          sceneRef={sceneRef}
+    <>
+      {/* Home header — brand on the left, college name centered, State Atlas menu on the right */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.35 }}
+        style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 6 }}
+      >
+        <AtlasHeader
+          position="static"
+          title={config.name}
+          leftSlot={<KallipolisBrand />}
+          rightSlot={
+            <AtlasMenu navItems={[{ label: "State Atlas", href: "/state", icon: (
+              <svg width="12" height="16" viewBox="0 0 16 22" fill="#c9a84c">
+                <path d="M0.0,3.6L0.9,5.0L1.1,7.2L2.5,9.1L2.2,8.7L2.2,9.3L3.0,9.7L3.1,9.0L4.6,9.2L3.2,9.3L3.9,10.6L3.1,9.7L2.9,10.4L3.2,11.3L4.2,12.0L3.8,12.6L3.9,13.2L5.9,16.0L5.9,17.3L9.2,18.5L9.3,19.2L10.8,20.2L11.3,22.0L15.4,21.5L15.1,20.0L15.5,18.4L16.0,18.0L15.2,16.3L6.9,7.0L6.9,0.0L0.3,0.0L0.5,1.3L0.3,2.9L0.5,2.7L0.0,3.6Z" />
+              </svg>
+            ) }]} />
+          }
         />
-      </div>
+      </motion.div>
 
-      {/* Unified College Atlas header — fades with the six-form scene */}
-      <AnimatePresence>
-        {showLabels && (
-          <motion.div
-            key="college-atlas-header"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.35 }}
-            style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 6 }}
-          >
-            <AtlasHeader
-              position="static"
-              title={config.name}
-              leftSlot={<KallipolisBrand />}
-              rightSlot={
-                <AtlasMenu navItems={[{ label: "State Atlas", href: "/state", icon: (
-                  <svg width="12" height="16" viewBox="0 0 16 22" fill="#c9a84c">
-                    <path d="M0.0,3.6L0.9,5.0L1.1,7.2L2.5,9.1L2.2,8.7L2.2,9.3L3.0,9.7L3.1,9.0L4.6,9.2L3.2,9.3L3.9,10.6L3.1,9.7L2.9,10.4L3.2,11.3L4.2,12.0L3.8,12.6L3.9,13.2L5.9,16.0L5.9,17.3L9.2,18.5L9.3,19.2L10.8,20.2L11.3,22.0L15.4,21.5L15.1,20.0L15.5,18.4L16.0,18.0L15.2,16.3L6.9,7.0L6.9,0.0L0.3,0.0L0.5,1.3L0.3,2.9L0.5,2.7L0.0,3.6Z" />
-                  </svg>
-                ) }]} />
-              }
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Form labels — positioned using 3D projection */}
-      <AnimatePresence>
-        {showLabels && (
-          <motion.div
-            key="form-labels"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.35 }}
-            style={{ position: "fixed", inset: 0, zIndex: 5, pointerEvents: "none" }}
-          >
-            {ALL_FORM_KEYS.map((key) => {
-              const pos = projectedPositions[key];
-              if (!pos) return null;
-              return (
-                <span
-                  key={key}
-                  style={{
-                    position: "absolute",
-                    top: `${pos.y + 14}%`,
-                    left: `${pos.x}%`,
-                    transform: "translateX(-50%)",
-                    pointerEvents: "none",
-                    fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-                    fontSize: "13px",
-                    fontWeight: 600,
-                    letterSpacing: "0.13em",
-                    textTransform: "uppercase",
-                    color: hoveredForm === key ? "#c9a84c" : "rgba(255,255,255,0.35)",
-                    whiteSpace: "nowrap",
-                    transition: "color 0.3s ease-in-out",
-                  }}
-                >
-                  {FORM_NAMES[key]}
-                </span>
-              );
-            })}
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Focused form view overlay */}
-      <AnimatePresence>
-        {showFocused && activeForm && (
-          <motion.div
-            key="focused"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: appState === "transitioning-out" ? 0 : 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.45 }}
-            style={{
-              position: "fixed",
-              inset: 0,
-              zIndex: 10,
-              background: "#060d1f",
-              overflowY: "auto",
-              overscrollBehavior: "none",
-            }}
-          >
-            {activeForm === "students" && (
-              <StudentsView school={config} onBack={handleBack} />
-            )}
-            {activeForm === "courses" && (
-              <CoursesView school={config} onBack={handleBack} />
-            )}
-            {activeForm === "partnerships" && (
-              <PartnershipsView school={config} onBack={handleBack} />
-            )}
-            {activeForm === "occupations" && (
-              <OccupationsView school={config} onBack={handleBack} />
-            )}
-            {activeForm === "employers" && (
-              <EmployersView school={config} onBack={handleBack} />
-            )}
-            {activeForm === "strong_workforce" && (
-              <StrongWorkforceView school={config} onBack={handleBack} />
-            )}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+      {/* Form labels — projected from the 3D scene, each is a link into its form route */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.35 }}
+        style={{ position: "fixed", inset: 0, zIndex: 5, pointerEvents: "none" }}
+      >
+        {ALL_FORM_KEYS.map((key) => {
+          const pos = projectedPositions[key];
+          if (!pos) return null;
+          return (
+            <Link
+              key={key}
+              href={`/${collegeId}/${FORM_URL_SLUGS[key]}`}
+              style={{
+                position: "absolute",
+                top: `${pos.y + 14}%`,
+                left: `${pos.x}%`,
+                transform: "translateX(-50%)",
+                pointerEvents: "auto",
+                fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+                fontSize: "13px",
+                fontWeight: 600,
+                letterSpacing: "0.13em",
+                textTransform: "uppercase",
+                color: "rgba(255,255,255,0.35)",
+                whiteSpace: "nowrap",
+                textDecoration: "none",
+                transition: "color 0.3s ease-in-out",
+              }}
+              onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#c9a84c")}
+              onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.35)")}
+            >
+              {FORM_NAMES[key]}
+            </Link>
+          );
+        })}
+      </motion.div>
+    </>
   );
 }

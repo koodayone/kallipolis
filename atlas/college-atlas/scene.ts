@@ -36,6 +36,18 @@ export const ALL_FORM_KEYS: FormKey[] = [
   "courses", "strong_workforce", "occupations",
 ];
 
+// URL slugs for each form. Kebab-case to match backend conventions
+// and the docs. The only one that differs from its FormKey is
+// strong_workforce → strong-workforce; the rest round-trip.
+export const FORM_URL_SLUGS: Record<FormKey, string> = {
+  students: "students",
+  courses: "courses",
+  partnerships: "partnerships",
+  occupations: "occupations",
+  employers: "employers",
+  strong_workforce: "strong-workforce",
+};
+
 const config: SceneConfig<FormKey> = {
   forms: [
     // Top row
