@@ -214,8 +214,8 @@ const EmployerRow = memo(function EmployerRow({ emp, i, school, expandedNames, e
                       Employer Occupations ({detail.occupations.length})
                     </div>
                   )}
-                  {detail.occupations.map((occ: any) => {
-                    const aligned = (occ.skills || []).filter((s: any) => s.developed);
+                  {detail.occupations.map((occ) => {
+                    const aligned = (occ.skills || []).filter((s) => s.developed);
                     return (
                       <div key={occ.soc_code} style={{
                         background: "rgba(255,255,255,0.03)", borderRadius: "8px", padding: "16px 18px",
@@ -270,7 +270,7 @@ const EmployerRow = memo(function EmployerRow({ emp, i, school, expandedNames, e
                               </span>
                             </span>
                             <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                              {aligned.map((skill: any) => (
+                              {aligned.map((skill) => (
                                 <div key={skill.skill} style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                                     <circle cx="6" cy="6" r="5" stroke={school.brandColorLight} strokeWidth="1" />
@@ -279,7 +279,7 @@ const EmployerRow = memo(function EmployerRow({ emp, i, school, expandedNames, e
                                   <span style={{ fontFamily: FONT, fontSize: "13px", color: school.brandColorLight }}>{skill.skill}</span>
                                   {skill.courses?.length > 0 && (
                                     <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.3)" }}>
-                                      — {skill.courses.slice(0, 3).map((c: any) => c.code).join(", ")}
+                                      — {skill.courses.slice(0, 3).map((c) => c.code).join(", ")}
                                     </span>
                                   )}
                                 </div>

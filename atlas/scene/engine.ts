@@ -571,7 +571,6 @@ export function buildScene<K extends string>(
 
   function getProjectedPositions(): Record<string, { x: number; y: number }> {
     const positions: Record<string, { x: number; y: number }> = {};
-    const canvasRect = canvas.getBoundingClientRect();
     for (const f of forms) {
       const pos = f.group.position.clone();
       pos.project(camera);

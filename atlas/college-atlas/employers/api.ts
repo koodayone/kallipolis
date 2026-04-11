@@ -19,6 +19,7 @@ export type ApiEmployerDetail = {
   occupations: Array<{
     title: string;
     soc_code: string;
+    description: string | null;
     annual_wage: number | null;
     skills: Array<{
       skill: string;

@@ -16,11 +16,6 @@ function deduplicateBySoc<T extends { soc_code: string }>(items: T[]): T[] {
   return items.filter((o) => { if (seen.has(o.soc_code)) return false; seen.add(o.soc_code); return true; });
 }
 
-function formatWage(wage: number | null): string {
-  if (!wage) return "—";
-  return `$${wage.toLocaleString()}`;
-}
-
 const EXAMPLES = [
   "Highest paying occupations in our region",
   "Roles that align most with our curriculum",
@@ -49,7 +44,6 @@ export default function OccupationsView({ school, onBack }: Props) {
   );
   const regionNames = useMemo(() => overview?.regions?.map((r) => r.region) ?? [], [overview]);
   const regionLabel = regionNames.length <= 1 ? (regionNames[0] ?? "") : regionNames.join(" · ");
-  const regionName = regionNames[0] ?? "";
 
   const loadInitialData = useCallback(async () => {
     const data = await getLaborMarketOverview(school.name);

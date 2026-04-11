@@ -1,16 +1,14 @@
 name: Atlas checks
 
-# Gates the atlas frontend on type safety, unit tests, and a
-# production build. The chain runs fast → slow so the cheapest
+# Gates the atlas frontend on type safety, lint, unit tests, and
+# a production build. The chain runs fast → slow so the cheapest
 # failures surface first: tsc catches type errors in paths the
-# tests don't exercise, Vitest exercises the logic the tests do
-# cover, and next build catches production-only failures that
-# dev mode forgives. Path-filtered to atlas/** so unrelated
-# changes don't trigger the job.
-#
-# Lint is not currently gated — see atlas/.eslintrc drift noted
-# in the testing docs. Add the lint step after the eslint config
-# is repaired.
+# tests don't exercise, ESLint catches code-smell violations that
+# tsc doesn't (unused vars, explicit any, unescaped JSX entities),
+# Vitest exercises the logic the tests do cover, and next build
+# catches production-only failures that dev mode forgives.
+# Path-filtered to atlas/** so unrelated changes don't trigger
+# the job.
 
 on:
   pull_request:
@@ -51,6 +49,9 @@ jobs:
 
       - name: Type check
         run: npx tsc --noEmit
+
+      - name: Lint
+        run: npm run lint
 
       - name: Unit tests
         run: npm test -- --reporter=verbose

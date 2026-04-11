@@ -3,7 +3,7 @@
 import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import type { ApiTargetedProposal } from "@/college-atlas/partnerships/api";
-import { getOccupationDetail } from "@/college-atlas/occupations/api";
+import { getOccupationDetail, type ApiOccupationDetail } from "@/college-atlas/occupations/api";
 import { saveProposal, removeProposal, updateProposalStatus, type SavedProposal } from "@/college-atlas/partnerships/savedProposals";
 import OccupationRow from "@/college-atlas/occupations/OccupationRow";
 import DepartmentRow from "@/college-atlas/courses/DepartmentRow";
@@ -58,7 +58,7 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
   const [savedId, setSavedId] = useState<string | null>(null);
 
   // Occupation detail loading for expand
-  const [occDetails, setOccDetails] = useState<Record<string, any>>({});
+  const [occDetails, setOccDetails] = useState<Record<string, ApiOccupationDetail>>({});
   const [loadingOccs, setLoadingOccs] = useState<Set<string>>(new Set());
 
   const handleOccExpand = useCallback(async (socCode: string) => {

@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   College,
   Region,
@@ -281,7 +280,7 @@ export default function CaliforniaMap({
 
 // For an accurate overlay, we use a separate absolutely-positioned SVG that
 // replicates the same Mercator projection math to draw lines.
-function ConstellationOverlay({ colleges }: { colleges: College[] }) {
+function ConstellationOverlay({ colleges: _colleges }: { colleges: College[] }) {
   // We skip drawing lines here as they require matching the D3 projection math
   // exactly. The visual is handled well enough by the markers alone.
   // Lines will be added in a follow-up pass using react-simple-maps' Line component.

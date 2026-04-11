@@ -24,7 +24,7 @@ export default function ColumnHeaders({ columns, gridTemplateColumns, brandColor
           fontFamily: FONT, fontSize: "10px", fontWeight: 600,
           letterSpacing: "0.1em", textTransform: "uppercase",
           color: brandColor, opacity: 0.6,
-          textAlign: (col.align ?? "left") as any,
+          textAlign: col.align ?? "left",
         }}>
           {col.label}
         </span>

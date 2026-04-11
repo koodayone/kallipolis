@@ -11,7 +11,7 @@ import { FEATURED_COLLEGES } from "@/state-atlas/CaliforniaMap";
 import KallipolisBrand from "@/ui/KallipolisBrand";
 import AtlasHeader from "@/ui/AtlasHeader";
 import RisingSun from "@/ui/RisingSun";
-import { College, Region, CALIFORNIA_REGIONS, CALIFORNIA_COLLEGES } from "@/state-atlas/californiaColleges";
+import { College, CALIFORNIA_REGIONS, CALIFORNIA_COLLEGES } from "@/state-atlas/californiaColleges";
 import { getCollegeAtlasConfig } from "@/config/collegeAtlasConfigs";
 import AtlasMenu from "@/auth/AtlasMenu";
 import type { SchoolConfig } from "@/config/schoolConfig";
@@ -33,12 +33,16 @@ export default function StateAtlas() {
       .catch(() => {});
   }, []);
 
-  const [mapView, setMapView] = useState<"state" | "region">("state");
-  const [activeRegionId, setActiveRegionId] = useState<string | null>(null);
+  // Region zoom was scoped out; these three stay as one-off state so the
+  // CaliforniaMap prop surface is unchanged, but their setters are never
+  // called because the feature was abandoned. Left as state (not const) so
+  // the state machinery is in place if the region-zoom flow is ever revived.
+  const [mapView] = useState<"state" | "region">("state");
+  const [activeRegionId] = useState<string | null>(null);
   const [hoveredRegionId, setHoveredRegionId] = useState<string | null>(null);
   const [hoveredCollege, setHoveredCollege] = useState<College | null>(null);
   const [selectedCollege, setSelectedCollege] = useState<College | null>(null);
-  const [mapOpacity, setMapOpacity] = useState(1);
+  const [mapOpacity] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
 
   const [searchFocused, setSearchFocused] = useState(false);
@@ -100,16 +104,7 @@ export default function StateAtlas() {
     }
   }, [showSearchResults, searchResults, searchActiveIndex, handleSearchSelect]);
 
-  const activeRegion = CALIFORNIA_REGIONS.find((r) => r.id === activeRegionId) ?? null;
   const activeCollege = selectedCollege ?? hoveredCollege;
-  const regionColleges = activeRegionId
-    ? CALIFORNIA_COLLEGES.filter((c) => c.regionId === activeRegionId)
-    : [];
-  const regionCollegeCount = regionColleges.length;
-  const regionDistrictCount = new Set(regionColleges.map((c) => c.district)).size;
-
-  // Right panel label under the map
-  const mapLabel = "California · 116 Colleges";
 
   return (
     <PageTransition>
@@ -463,29 +458,7 @@ function SearchResultRow({
   );
 }
 
-function DefaultPanel() {
-  return null;
-}
-
-function RegionPanel({ region, collegeCount, districtCount }: { region: Region; collegeCount: number; districtCount: number }) {
-  return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
-      <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-        <h2 style={{ fontFamily: "var(--font-days-one), sans-serif", fontSize: "clamp(24px, 2.8vw, 38px)", lineHeight: 1.2, color: "#ffffff", margin: 0 }}>
-          {region.name}
-        </h2>
-        <span style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "12px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)" }}>
-          {collegeCount} {collegeCount === 1 ? "college" : "colleges"} · {districtCount} {districtCount === 1 ? "district" : "districts"}
-        </span>
-      </div>
-
-      <div style={{ height: "1px", background: "rgba(255,255,255,0.08)" }} />
-    </div>
-  );
-}
-
 function SchoolPanel({ college }: { college: College }) {
-  const region = CALIFORNIA_REGIONS.find((r) => r.id === college.regionId);
   const config = getCollegeAtlasConfig(college.id);
   const accent = config?.brandColorNeon ?? "#c9a84c";
 
@@ -520,15 +493,3 @@ function SchoolPanel({ college }: { college: College }) {
   );
 }
 
-function Section({ label, body }: { label: string; body: string }) {
-  return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "8px", paddingLeft: "16px", borderLeft: "2px solid rgba(201,168,76,0.35)" }}>
-      <span style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "10px", fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase", color: "#c9a84c" }}>
-        {label}
-      </span>
-      <p style={{ fontFamily: "var(--font-inter), Inter, system-ui, sans-serif", fontSize: "14px", lineHeight: 1.65, color: "rgba(255,255,255,0.72)", margin: 0 }}>
-        {body}
-      </p>
-    </div>
-  );
-}

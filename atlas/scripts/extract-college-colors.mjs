@@ -88,7 +88,7 @@ function extractDominantColor(buffer) {
 
 async function processLogo(filePath) {
   try {
-    const { data, info } = await sharp(filePath, { density: 150 })
+    const { data } = await sharp(filePath, { density: 150 })
       .resize(80, 80, { fit: "inside", withoutEnlargement: false })
       .ensureAlpha()
       .raw()

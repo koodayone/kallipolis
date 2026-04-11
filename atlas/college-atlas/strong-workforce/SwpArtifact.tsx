@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import type { ApiSwpProject, ApiSwpSection, ApiLmiContext } from "@/college-atlas/strong-workforce/api";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
@@ -188,7 +188,7 @@ export default function SwpArtifact({ project, streamedSections, lmiContext, bra
                     {lmi.department_enrollments.reduce((sum, d) => sum + d.student_count, 0).toLocaleString()}
                   </div>
                   <div style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.35)", marginTop: "6px" }}>
-                    Source: California Community Colleges Chancellor's Office MIS Data Mart
+                    Source: California Community Colleges Chancellor&apos;s Office MIS Data Mart
                   </div>
                 </div>
               )}

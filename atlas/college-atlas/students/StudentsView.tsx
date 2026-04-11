@@ -12,22 +12,6 @@ import StudentRow from "@/college-atlas/students/StudentRow";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
-const GRADE_COLORS: Record<string, string> = {
-  A: "rgba(74, 222, 128, 0.8)",
-  B: "rgba(96, 165, 250, 0.8)",
-  C: "rgba(251, 191, 36, 0.8)",
-  D: "rgba(251, 146, 60, 0.8)",
-  F: "rgba(248, 113, 113, 0.8)",
-  W: "rgba(156, 163, 175, 0.6)",
-};
-
-function gpaColor(gpa: number): string {
-  if (gpa >= 3.5) return "rgba(74, 222, 128, 0.9)";
-  if (gpa >= 2.5) return "rgba(96, 165, 250, 0.9)";
-  if (gpa >= 1.5) return "rgba(251, 191, 36, 0.9)";
-  return "rgba(248, 113, 113, 0.9)";
-}
-
 function mapSummary(api: ApiStudentSummary, index: number): StudentSummary {
   return { uuid: api.uuid, displayNumber: index + 1, primaryFocus: api.primary_focus, coursesCompleted: api.courses_completed, gpa: api.gpa };
 }
