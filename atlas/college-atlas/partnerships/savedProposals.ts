@@ -1,5 +1,4 @@
 import type { ApiTargetedProposal } from "@/college-atlas/partnerships/api";
-import type { ApiSwpProject } from "@/college-atlas/strong-workforce/api";
 
 const PROPOSAL_SCHEMA_VERSION = 8;
 
@@ -13,21 +12,8 @@ export type SavedProposal = {
   schemaVersion?: number;
 };
 
-export type SavedSwpProject = {
-  id: string;
-  project: ApiSwpProject;
-  partnershipId: string;
-  collegeId: string;
-  savedAt: string;
-};
-
 const PROPOSALS_KEY = (collegeId: string) =>
   `kallipolis-saved-proposals-${collegeId}`;
-
-const SWP_KEY = (collegeId: string) =>
-  `kallipolis-saved-swp-${collegeId}`;
-
-/* ── Partnership Proposals ──────────────────────────────────────────── */
 
 export function getSavedProposals(collegeId: string): SavedProposal[] {
   if (typeof window === "undefined") return [];
@@ -78,39 +64,4 @@ export function updateProposalStatus(
     item.status = status;
     localStorage.setItem(PROPOSALS_KEY(collegeId), JSON.stringify(all));
   }
-}
-
-/* ── SWP Projects ───────────────────────────────────────────────────── */
-
-export function getSavedSwpProjects(collegeId: string): SavedSwpProject[] {
-  if (typeof window === "undefined") return [];
-  try {
-    const raw = localStorage.getItem(SWP_KEY(collegeId));
-    return raw ? JSON.parse(raw) : [];
-  } catch {
-    return [];
-  }
-}
-
-export function saveSwpProject(
-  collegeId: string,
-  project: ApiSwpProject,
-  partnershipId: string,
-): SavedSwpProject {
-  const saved: SavedSwpProject = {
-    id: crypto.randomUUID(),
-    project,
-    partnershipId,
-    collegeId,
-    savedAt: new Date().toISOString(),
-  };
-  const all = getSavedSwpProjects(collegeId);
-  all.unshift(saved);
-  localStorage.setItem(SWP_KEY(collegeId), JSON.stringify(all));
-  return saved;
-}
-
-export function removeSwpProject(collegeId: string, id: string): void {
-  const all = getSavedSwpProjects(collegeId).filter((p) => p.id !== id);
-  localStorage.setItem(SWP_KEY(collegeId), JSON.stringify(all));
 }

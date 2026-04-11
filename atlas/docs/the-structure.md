@@ -96,15 +96,17 @@ The root `api.ts` holds one export: the `API_BASE` constant resolved from `NEXT_
 
 ## Cross-feature dependencies
 
-The intended cross-feature dependency is **`strong-workforce/` → `partnerships/`**, one-way, and only for the shared proposal evidence types (`ApiOccupationEvidence`, `ApiCourseEvidence`, `ApiDepartmentEvidence`, `ApiStudentEvidence`, `ApiProposalJustification`). A SWP project application is the *fund* stage of a discovered partnership; it consumes the evidence that `partnerships/` produces. This dependency mirrors the backend's `strong_workforce.generate` importing from `partnerships.generate`.
+The only allowed cross-feature dependency is **`strong-workforce/` → `partnerships/`**, one-way, at two touch points:
+
+1. **Shared proposal evidence types.** `strong-workforce/api.ts` type-imports `ApiOccupationEvidence`, `ApiCourseEvidence`, `ApiDepartmentEvidence`, `ApiStudentEvidence`, and `ApiProposalJustification` from `partnerships/api.ts`. A SWP project application is the *fund* stage of a discovered partnership; it consumes the evidence that `partnerships/` produces.
+
+2. **Reading saved partnership proposals.** `strong-workforce/StrongWorkforceView.tsx` reads `getSavedProposals` and `SavedProposal` from `partnerships/savedProposals.ts` so that the SWP builder can pick up a previously saved partnership and turn it into a funding application.
+
+Both touch points are read-only from the strong-workforce side — `partnerships/` is never a consumer of `strong-workforce/`. This mirrors the backend's `strong_workforce.generate` → `partnerships.generate` direction.
+
+Saved SWP projects live in their own module at `strong-workforce/savedSwpProjects.ts` alongside their feature, so `partnerships/` has no reason to know about `ApiSwpProject` or any SWP-specific persistence.
 
 All features can freely import from `ui/`, `config/`, `auth/`, and `scene/`. These are cross-cutting infrastructure folders; importing from them is the normal case.
-
-### Known tension: `savedProposals.ts`
-
-The `partnerships/savedProposals.ts` module currently serves both features — saved partnership proposals (`ApiTargetedProposal`) *and* saved SWP projects (`ApiSwpProject`). It type-imports `ApiSwpProject` from `strong-workforce/api.ts`, which creates a type-level back-edge in the dependency graph. TypeScript resolves the cycle because the back-edge is type-only, but structurally both features reach into each other through this one file.
-
-The clean fix is to split the module into per-feature persistence files: `partnerships/savedProposals.ts` for partnership proposals only, and `strong-workforce/savedSwpProjects.ts` for SWP projects only. That restores the one-way dependency. The split is small (the two halves are largely independent inside the current file) but is deferred until someone picks up the work as part of a focused cleanup.
 
 ## Anti-patterns
 

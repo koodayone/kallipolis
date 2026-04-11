@@ -88,16 +88,13 @@ scene/, ui/, auth/, config/  →  features  →  app/
 
 Features may freely import from `scene/`, `ui/`, `auth/`, and `config/`.
 The only allowed cross-feature import is `strong-workforce/` → `partnerships/`,
-and only for shared proposal evidence types — a SWP project is the *fund*
-stage of a discovered partnership, so it consumes partnership output. This
-mirrors the backend's `strong_workforce.generate` → `partnerships.generate`
-direction.
+one-way, for shared proposal evidence types and for reading saved partnership
+proposals. A SWP project is the *fund* stage of a discovered partnership, so
+it consumes partnership output. This mirrors the backend's
+`strong_workforce.generate` → `partnerships.generate` direction.
 
-One known tension: `atlas/college-atlas/partnerships/savedProposals.ts`
-currently serves both features, creating a type-level back-edge from
-`partnerships/` to `strong-workforce/`. It is documented and queued for
-cleanup — see the *Known tension* section of
-[`atlas/docs/the-structure.md`](./docs/the-structure.md).
+See [`atlas/docs/the-structure.md`](./docs/the-structure.md) for the full
+dependency contract and the anti-patterns the layout exists to prevent.
 
 ## Running
 
