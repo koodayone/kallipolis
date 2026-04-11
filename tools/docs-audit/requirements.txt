@@ -1,0 +1,4 @@
+# The audit itself uses only Python stdlib. No runtime dependencies.
+#
+# For running the audit's own test suite:
+#   pip install pytest

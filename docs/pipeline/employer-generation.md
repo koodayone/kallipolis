@@ -48,7 +48,7 @@ The crosswalk is defined in `backend/pipeline/industry/region_maps.py`. It inclu
 
 For the broader treatment of where Gemini is called and what constraints apply, see [AI Integration](../architecture/ai-integration.md).
 
-**6. Format and merge.** Cleaned employers are formatted to the `employers.json` schema (name, sector, description, regions array, occupations array) and merged into the shared `pipeline/industry/employers.json`. The merge function deduplicates by normalized name. When a name collides, the regions and occupation lists are unioned with the existing entry.
+**6. Format and merge.** Cleaned employers are formatted to the `employers.json` schema (name, sector, description, regions array, occupations array) and merged into the shared `backend/pipeline/industry/employers.json`. The merge function deduplicates by normalized name. When a name collides, the regions and occupation lists are unioned with the existing entry.
 
 ## Why the merge semantics matter
 
@@ -102,7 +102,7 @@ The criteria themselves are the operational expression of the partial-by-design 
 
 ## Loading into the graph
 
-`generate_employers.py` produces `employers.json`. A separate script, `pipeline/industry/employers.py`, loads it into Neo4j. The loader creates one `Employer` node per record, links it to each region in its `regions` array via `IN_MARKET`, and links it to each occupation in its `occupations` array via `HIRES_FOR`. Loading is idempotent: re-running adds new edges without duplicating existing ones.
+`generate_employers.py` produces `employers.json`. A separate script, `backend/pipeline/industry/employers.py`, loads it into Neo4j. The loader creates one `Employer` node per record, links it to each region in its `regions` array via `IN_MARKET`, and links it to each occupation in its `occupations` array via `HIRES_FOR`. Loading is idempotent: re-running adds new edges without duplicating existing ones.
 
 ## Known sharp edges
 

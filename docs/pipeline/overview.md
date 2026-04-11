@@ -54,9 +54,9 @@ For the industry side overall, occupations and employers together populate the d
 
 The pipeline is orchestrated by two scripts depending on the scope of the operation.
 
-`pipeline/run.py` runs the full per-college pipeline (stages 1–4) for one college at a time. It supports incremental execution: stages can be skipped if their cached output exists, students can be generated without re-running extraction, and skill enrichment can be skipped for a scrape-only run. This is the script used during development and when adding new colleges to the system.
+`backend/pipeline/run.py` runs the full per-college pipeline (stages 1–4) for one college at a time. It supports incremental execution: stages can be skipped if their cached output exists, students can be generated without re-running extraction, and skill enrichment can be skipped for a scrape-only run. This is the script used during development and when adding new colleges to the system.
 
-`pipeline/reload.py` runs a full graph rebuild for an entire region. It clears the existing graph, then loads courses, industry data, and students for every college in the region. This is the script used when the graph schema changes, when a calibration methodology is updated, or when a region's data needs to be regenerated from scratch.
+`backend/pipeline/reload.py` runs a full graph rebuild for an entire region. It clears the existing graph, then loads courses, industry data, and students for every college in the region. This is the script used when the graph schema changes, when a calibration methodology is updated, or when a region's data needs to be regenerated from scratch.
 
 The two scripts are complementary. `run.py` is for incremental work; `reload.py` is for system-wide rebuilds.
 
