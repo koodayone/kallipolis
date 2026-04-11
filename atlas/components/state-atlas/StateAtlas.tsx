@@ -9,6 +9,7 @@ import dynamic from "next/dynamic";
 const CaliforniaMap = dynamic(() => import("@/components/state-atlas/CaliforniaMap"), { ssr: false });
 import { FEATURED_COLLEGES } from "@/components/state-atlas/CaliforniaMap";
 import KallipolisBrand from "@/components/ui/KallipolisBrand";
+import AtlasHeader from "@/components/ui/AtlasHeader";
 import RisingSun from "@/components/ui/RisingSun";
 import { College, Region, CALIFORNIA_REGIONS, CALIFORNIA_COLLEGES } from "@/lib/californiaColleges";
 import { getCollegeAtlasConfig } from "@/lib/collegeAtlasConfigs";
@@ -122,78 +123,25 @@ export default function StateAtlas() {
           overflow: "hidden",
         }}
       >
-        {/* Header */}
-        <header
-          style={{
-            flexShrink: 0,
-            height: "64px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            position: "relative",
-            padding: "0 40px",
-            background: "rgba(6, 13, 31, 0.95)",
-            backdropFilter: "blur(8px)",
-            borderBottom: "1px solid rgba(255,255,255,0.07)",
-            zIndex: 10,
-          }}
-        >
-          <button
-            onClick={() => userCollegeId ? router.push(`/${userCollegeId}`) : router.back()}
-            style={{
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              padding: "8px",
-              color: userSchool?.brandColorLight ?? "rgba(255,255,255,0.7)",
-              transition: "opacity 0.15s",
-              display: "flex",
-              alignItems: "center",
-              gap: "6px",
-            }}
-            onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = "0.7")}
-            onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = "1")}
-            aria-label="Back to Home Atlas"
-          >
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2L3 7.5 12 13l9-5.5L12 2z" fill={userSchool?.brandColorNeon ?? "rgba(255,255,255,0.3)"} opacity="0.85" />
-              <path d="M12 13v9l9-5.5v-9L12 13z" fill={userSchool?.brandColorNeon ?? "rgba(255,255,255,0.3)"} opacity="0.55" />
-              <path d="M12 13v9L3 16.5v-9L12 13z" fill={userSchool?.brandColorNeon ?? "rgba(255,255,255,0.3)"} opacity="0.4" />
-              <path d="M12 2L3 7.5v9L12 22l9-5.5v-9L12 2z M12 13L3 7.5 M12 13l9-5.5 M12 13v9" stroke="rgba(255,255,255,0.55)" strokeWidth="0.7" />
-            </svg>
-            <svg width="20" height="20" viewBox="0 0 16 16" fill="none">
-              <path d="M10 12L6 8l4-4" stroke="rgba(255,255,255,0.85)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
-
-          <span style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            fontFamily: "var(--font-days-one), sans-serif",
-            fontSize: "18px",
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-            color: "rgba(255,255,255,0.85)",
-            whiteSpace: "nowrap",
-            pointerEvents: "none",
-          }}>
-            State Atlas
-          </span>
-
-          <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-            <KallipolisBrand />
-            <AtlasMenu navItems={[{ label: "Home Atlas", href: userCollegeId ? `/${userCollegeId}` : "/", icon: (
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                <path d="M12 2L3 7.5 12 13l9-5.5L12 2z" fill={userSchool?.brandColorNeon ?? "rgba(255,255,255,0.3)"} opacity="0.85" />
-                <path d="M12 13v9l9-5.5v-9L12 13z" fill={userSchool?.brandColorNeon ?? "rgba(255,255,255,0.3)"} opacity="0.55" />
-                <path d="M12 13v9L3 16.5v-9L12 13z" fill={userSchool?.brandColorNeon ?? "rgba(255,255,255,0.3)"} opacity="0.4" />
-                <path d="M12 2L3 7.5v9L12 22l9-5.5v-9L12 2z M12 13L3 7.5 M12 13l9-5.5 M12 13v9" stroke="rgba(255,255,255,0.55)" strokeWidth="0.7" />
-              </svg>
-            ) }]} />
-          </div>
-        </header>
+        <AtlasHeader
+          position="static"
+          school={userSchool ?? undefined}
+          title="State Atlas"
+          onBack={() => userCollegeId ? router.push(`/${userCollegeId}`) : router.back()}
+          rightSlot={
+            <>
+              <KallipolisBrand />
+              <AtlasMenu navItems={[{ label: "Home Atlas", href: userCollegeId ? `/${userCollegeId}` : "/", icon: (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2L3 7.5 12 13l9-5.5L12 2z" fill={userSchool?.brandColorNeon ?? "rgba(255,255,255,0.3)"} opacity="0.85" />
+                  <path d="M12 13v9l9-5.5v-9L12 13z" fill={userSchool?.brandColorNeon ?? "rgba(255,255,255,0.3)"} opacity="0.55" />
+                  <path d="M12 13v9L3 16.5v-9L12 13z" fill={userSchool?.brandColorNeon ?? "rgba(255,255,255,0.3)"} opacity="0.4" />
+                  <path d="M12 2L3 7.5v9L12 22l9-5.5v-9L12 2z M12 13L3 7.5 M12 13l9-5.5 M12 13v9" stroke="rgba(255,255,255,0.55)" strokeWidth="0.7" />
+                </svg>
+              ) }]} />
+            </>
+          }
+        />
 
         {/* Body */}
         <div style={{ flex: 1, display: "flex", overflow: "hidden" }}>

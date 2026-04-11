@@ -11,6 +11,7 @@ import {
 import type { ApiPartnershipOpportunity, ApiTargetedProposal } from "@/lib/api";
 import { getSavedProposals, removeProposal, type SavedProposal } from "@/lib/savedProposals";
 import AtlasHeader from "@/components/ui/AtlasHeader";
+import KallipolisBrand from "@/components/ui/KallipolisBrand";
 import RisingSun from "@/components/ui/RisingSun";
 import Badge from "@/components/ui/Badge";
 import EntityScrollList from "@/components/ui/EntityScrollList";
@@ -220,7 +221,12 @@ export default function PartnershipsView({ school, onBack }: Props) {
 
   return (
     <div ref={rootRef}>
-      <AtlasHeader school={school} onBack={phase === "selection" ? onBack : handleBackFromSplit} />
+      <AtlasHeader
+        school={school}
+        onBack={phase === "selection" ? onBack : handleBackFromSplit}
+        title={school.name}
+        rightSlot={<KallipolisBrand />}
+      />
 
       {phase === "selection" && (
           <div>

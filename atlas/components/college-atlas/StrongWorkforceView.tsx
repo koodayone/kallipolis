@@ -7,6 +7,7 @@ import { streamSwpProject } from "@/lib/api";
 import type { ApiLmiContext, ApiSwpProject, ApiSwpSection, SwpProjectRequest } from "@/lib/api";
 import { getSavedProposals, getSavedSwpProjects, saveSwpProject, removeSwpProject, type SavedProposal, type SavedSwpProject } from "@/lib/savedProposals";
 import AtlasHeader from "@/components/ui/AtlasHeader";
+import KallipolisBrand from "@/components/ui/KallipolisBrand";
 import RisingSun from "@/components/ui/RisingSun";
 import SwpArtifact from "./SwpArtifact";
 
@@ -182,7 +183,12 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
 
   return (
     <div ref={rootRef}>
-      <AtlasHeader school={school} onBack={phase === "selection" ? onBack : handleBackToSelection} />
+      <AtlasHeader
+        school={school}
+        onBack={phase === "selection" ? onBack : handleBackToSelection}
+        title={school.name}
+        rightSlot={<KallipolisBrand />}
+      />
 
       <div style={{ maxWidth: "760px", margin: "0 auto", padding: "32px 40px 80px" }}>
         <AnimatePresence mode="wait" initial={false}>

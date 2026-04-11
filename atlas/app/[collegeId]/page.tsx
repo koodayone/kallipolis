@@ -14,6 +14,7 @@ import OccupationsView from "@/components/college-atlas/OccupationsView";
 import EmployersView from "@/components/college-atlas/EmployersView";
 import StrongWorkforceView from "@/components/college-atlas/StrongWorkforceView";
 import KallipolisBrand from "@/components/ui/KallipolisBrand";
+import AtlasHeader from "@/components/ui/AtlasHeader";
 
 const CollegeAtlasCanvas = dynamic(() => import("@/components/college-atlas/CollegeAtlasCanvas"), {
   ssr: false,
@@ -113,78 +114,29 @@ export default function CollegeAtlasPage() {
         />
       </div>
 
-      {/* Menu — top-right, visible on home screen only */}
+      {/* Unified College Atlas header — fades with the six-form scene */}
       <AnimatePresence>
         {showLabels && (
           <motion.div
-            key="atlas-menu"
+            key="college-atlas-header"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
-            style={{ position: "fixed", top: "26px", right: "36px", zIndex: 6 }}
+            style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 6 }}
           >
-            <AtlasMenu navItems={[{ label: "State Atlas", href: "/state", icon: (
-              <svg width="12" height="16" viewBox="0 0 16 22" fill="#c9a84c">
-                <path d="M0.0,3.6L0.9,5.0L1.1,7.2L2.5,9.1L2.2,8.7L2.2,9.3L3.0,9.7L3.1,9.0L4.6,9.2L3.2,9.3L3.9,10.6L3.1,9.7L2.9,10.4L3.2,11.3L4.2,12.0L3.8,12.6L3.9,13.2L5.9,16.0L5.9,17.3L9.2,18.5L9.3,19.2L10.8,20.2L11.3,22.0L15.4,21.5L15.1,20.0L15.5,18.4L16.0,18.0L15.2,16.3L6.9,7.0L6.9,0.0L0.3,0.0L0.5,1.3L0.3,2.9L0.5,2.7L0.0,3.6Z" />
-              </svg>
-            ) }]} />
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* College name — top center */}
-      <AnimatePresence>
-        {showLabels && (
-          <motion.div
-            key="college-name"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.35 }}
-            style={{
-              position: "fixed",
-              top: "26px",
-              left: "50%",
-              transform: "translateX(-50%)",
-              zIndex: 6,
-              pointerEvents: "none",
-            }}
-          >
-            <span style={{
-              fontFamily: "var(--font-days-one), sans-serif",
-              fontSize: "18px",
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              color: "rgba(255,255,255,0.85)",
-            }}>
-              {config.name}
-            </span>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Kallipolis logo — top left */}
-      <AnimatePresence>
-        {showLabels && (
-          <motion.div
-            key="logo"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.35 }}
-            style={{
-              position: "fixed",
-              top: "20px",
-              left: "28px",
-              zIndex: 6,
-              display: "flex",
-              alignItems: "center",
-              gap: "7px",
-              pointerEvents: "auto",
-            }}
-          >
-            <KallipolisBrand />
+            <AtlasHeader
+              position="static"
+              title={config.name}
+              leftSlot={<KallipolisBrand />}
+              rightSlot={
+                <AtlasMenu navItems={[{ label: "State Atlas", href: "/state", icon: (
+                  <svg width="12" height="16" viewBox="0 0 16 22" fill="#c9a84c">
+                    <path d="M0.0,3.6L0.9,5.0L1.1,7.2L2.5,9.1L2.2,8.7L2.2,9.3L3.0,9.7L3.1,9.0L4.6,9.2L3.2,9.3L3.9,10.6L3.1,9.7L2.9,10.4L3.2,11.3L4.2,12.0L3.8,12.6L3.9,13.2L5.9,16.0L5.9,17.3L9.2,18.5L9.3,19.2L10.8,20.2L11.3,22.0L15.4,21.5L15.1,20.0L15.5,18.4L16.0,18.0L15.2,16.3L6.9,7.0L6.9,0.0L0.3,0.0L0.5,1.3L0.3,2.9L0.5,2.7L0.0,3.6Z" />
+                  </svg>
+                ) }]} />
+              }
+            />
           </motion.div>
         )}
       </AnimatePresence>
