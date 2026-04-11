@@ -142,7 +142,7 @@ export default function StudentsView({ school, onBack }: Props) {
 
   return (
     <QueryShell<StudentSummary>
-      school={school} onBack={onBack} parentShape="cube"
+      school={school} onBack={onBack}
       placeholder={`Ask me a question about ${school.name} students.`}
       examples={EXAMPLES} queryFn={queryFn} loadInitialData={loadInitialData}
       renderInitialContent={renderInitialContent} renderResultsContent={renderResultsContent}

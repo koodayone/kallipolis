@@ -19,7 +19,6 @@ export function findScrollParent(el: HTMLElement | null): HTMLElement | null {
 export type QueryShellProps<T> = {
   school: SchoolConfig;
   onBack: () => void;
-  parentShape: "dodecahedron" | "cube" | "tetrahedron";
   placeholder: string;
   examples: string[];
   queryFn: (query: string, college: string) => Promise<{ items: T[]; message: string }>;
@@ -32,7 +31,7 @@ export type QueryShellProps<T> = {
 };
 
 export default function QueryShell<T>({
-  school, onBack, parentShape, placeholder, examples,
+  school, onBack, placeholder, examples,
   queryFn, loadInitialData, renderInitialContent, renderResultsContent,
   onQueryStart, onReset, rootRef,
 }: QueryShellProps<T>) {
@@ -126,7 +125,7 @@ export default function QueryShell<T>({
 
   return (
     <div ref={rootRef}>
-      <AtlasHeader school={school} onBack={onBack} parentShape={parentShape} />
+      <AtlasHeader school={school} onBack={onBack} />
       <div style={{ maxWidth: "760px", margin: "0 auto", padding: "32px 40px 80px" }}>
         {error && <p style={{ fontFamily: FONT, fontSize: "14px", color: "#e55", textAlign: "center", paddingTop: "40px" }}>{error}</p>}
         {loading && (

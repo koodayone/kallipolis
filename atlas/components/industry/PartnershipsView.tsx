@@ -220,7 +220,7 @@ export default function PartnershipsView({ school, onBack }: Props) {
 
   return (
     <div ref={rootRef}>
-      <AtlasHeader school={school} onBack={phase === "selection" ? onBack : handleBackFromSplit} parentShape="cube" />
+      <AtlasHeader school={school} onBack={phase === "selection" ? onBack : handleBackFromSplit} />
 
       {phase === "selection" && (
           <div>

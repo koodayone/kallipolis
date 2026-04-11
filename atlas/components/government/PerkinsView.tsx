@@ -22,7 +22,7 @@ type Props = {
 export default function PerkinsView({ school, onBack }: Props) {
   return (
     <>
-    <AtlasHeader school={school} onBack={onBack} parentShape="cube" />
+    <AtlasHeader school={school} onBack={onBack} />
     <div
       style={{
         maxWidth: "800px",
