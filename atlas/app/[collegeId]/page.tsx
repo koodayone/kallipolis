@@ -2,7 +2,6 @@
 
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { ALL_FORM_KEYS, FORM_NAMES, FORM_URL_SLUGS } from "@/college-atlas/scene";
 import { useHomeSceneContext } from "@/college-atlas/homeSceneContext";
 import { getCollegeAtlasConfig } from "@/config/collegeAtlasConfigs";
@@ -20,13 +19,7 @@ export default function CollegeAtlasHomePage() {
   return (
     <>
       {/* Home header — brand on the left, college name centered, State Atlas menu on the right */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.35 }}
-        style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 6 }}
-      >
+      <div style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 6 }}>
         <AtlasHeader
           position="static"
           title={config.name}
@@ -39,16 +32,10 @@ export default function CollegeAtlasHomePage() {
             ) }]} />
           }
         />
-      </motion.div>
+      </div>
 
       {/* Form labels — projected from the 3D scene, each is a link into its form route */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.35 }}
-        style={{ position: "fixed", inset: 0, zIndex: 5, pointerEvents: "none" }}
-      >
+      <div style={{ position: "fixed", inset: 0, zIndex: 5, pointerEvents: "none" }}>
         {ALL_FORM_KEYS.map((key) => {
           const pos = projectedPositions[key];
           if (!pos) return null;
@@ -80,7 +67,7 @@ export default function CollegeAtlasHomePage() {
             </Link>
           );
         })}
-      </motion.div>
+      </div>
     </>
   );
 }

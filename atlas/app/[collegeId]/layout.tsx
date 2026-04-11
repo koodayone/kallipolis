@@ -36,28 +36,40 @@ export default function CollegeAtlasLayout({ children }: { children: ReactNode }
     if (isHome) sceneRef.current?.resetScene();
   }, [isHome]);
 
-  // Project the canvas's 2D label positions once on mount (after the scene
-  // has built) and again on window resize (which changes the camera aspect).
-  // The forms' world positions and the camera are otherwise fixed, so there
-  // is no reason to re-project every frame — that would cause a re-render
-  // storm in the home page's label list.
+  // Project the canvas's 2D label positions once the scene has built, and
+  // again on window resize. The canvas is dynamically imported, so sceneRef
+  // may not be populated on the first tick after navigation — keep trying
+  // on requestAnimationFrame until we see non-empty positions, then stop.
+  // The forms and camera are otherwise fixed, so no ongoing polling is
+  // needed once the first projection succeeds.
   useEffect(() => {
     if (!isHome) return;
 
+    let rafId = 0;
     let cancelled = false;
-    const project = () => {
+
+    const pollUntilReady = () => {
       if (cancelled) return;
+      const positions = sceneRef.current?.getProjectedPositions?.();
+      if (positions && Object.keys(positions).length > 0) {
+        setProjectedPositions(positions);
+        return; // stop polling; positions are stable from here
+      }
+      rafId = requestAnimationFrame(pollUntilReady);
+    };
+
+    const reproject = () => {
       const positions = sceneRef.current?.getProjectedPositions?.();
       if (positions) setProjectedPositions(positions);
     };
 
-    // Wait briefly for the scene to initialize after mount/navigation.
-    const timeout = setTimeout(project, 150);
-    window.addEventListener("resize", project);
+    rafId = requestAnimationFrame(pollUntilReady);
+    window.addEventListener("resize", reproject);
+
     return () => {
       cancelled = true;
-      clearTimeout(timeout);
-      window.removeEventListener("resize", project);
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("resize", reproject);
     };
   }, [isHome]);
 
