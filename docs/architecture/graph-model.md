@@ -10,7 +10,7 @@ Five node types live on the curriculum side, three on the industry side. Each on
 
 | Node | Key properties | Constraint | What it represents |
 |---|---|---|---|
-| **College** | name, city, state, region | `name UNIQUE` | A California community college |
+| **College** | name, city, state, region | `city UNIQUE` | A California community college |
 | **Department** | name | `name UNIQUE` | A department within a college (e.g., Welding, Nursing) |
 | **Course** | code, college, name, department, units, description, prerequisites, learning_outcomes, course_objectives, skill_mappings, transfer_status, url | `(code, college) UNIQUE` | A course actually taught at a college |
 | **Skill** | name | `name UNIQUE` | A workforce-relevant competency from the unified taxonomy |
