@@ -97,7 +97,7 @@ export default function EmployersView({ school, onBack }: Props) {
         keyExtractor={empKeyExtractor} entityName="employers" school={school}
       />
     </div>
-  ), [allEmployers, EMPLOYER_COLUMNS, renderEmployerRow, empKeyExtractor, school]);
+  ), [allEmployers, renderEmployerRow, empKeyExtractor, school]);
 
   const renderResultsContent = useCallback((results: ApiEmployerMatch[]) => (
     <>
@@ -110,7 +110,7 @@ export default function EmployersView({ school, onBack }: Props) {
         keyExtractor={empKeyExtractor} entityName="employers" school={school}
       />
     </>
-  ), [EMPLOYER_COLUMNS, renderEmployerRow, empKeyExtractor, school]);
+  ), [renderEmployerRow, empKeyExtractor, school]);
 
   return (
     <QueryShell<ApiEmployerMatch>

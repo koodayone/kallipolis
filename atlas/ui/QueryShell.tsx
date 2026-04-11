@@ -57,6 +57,12 @@ export default function QueryShell<T>({
       .then((r) => r.json())
       .then((data) => { if (data?.user?.name) setUserName(data.user.name.split(" ")[0]); })
       .catch(() => {});
+    // Load once on mount. loadInitialData is omitted from deps because
+    // parents pass fresh function identities on every render; including
+    // it here would refetch on every parent re-render. Parents that want
+    // reactive loading should wrap loadInitialData in their own useCallback
+    // with the actual dependencies.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Click-outside to close help panel

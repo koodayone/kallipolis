@@ -78,6 +78,9 @@ export default function LoginForm() {
     >
       {/* Logotype */}
       <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "64px" }}>
+        {/* Static login/register logo with a fixed layout-time height;
+            next/image's optimization pipeline adds no value here. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/kallipolis-logo.png"
           alt="Kallipolis"

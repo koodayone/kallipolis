@@ -119,7 +119,7 @@ export default function CoursesView({ school, onBack }: Props) {
         onDeptExpand={handleDeptExpand}
       />
     </div>
-  ), [departments, totalCourses, school, expandedDepts, deptCoursesMap, loadingDepts, expandedCourses, handleDeptExpand, toggleCourse]);
+  ), [departments, totalCourses, school, expandedDepts, deptCoursesMap, loadingDepts, handleDeptExpand]);
 
   const renderResultsContent = useCallback((results: CourseSummary[]) => (
     results.length > 0 ? (

@@ -43,7 +43,6 @@ export default function OccupationsView({ school, onBack }: Props) {
     [overview],
   );
   const regionNames = useMemo(() => overview?.regions?.map((r) => r.region) ?? [], [overview]);
-  const regionLabel = regionNames.length <= 1 ? (regionNames[0] ?? "") : regionNames.join(" · ");
 
   const loadInitialData = useCallback(async () => {
     const data = await getLaborMarketOverview(school.name);
@@ -112,7 +111,7 @@ export default function OccupationsView({ school, onBack }: Props) {
         />
       </div>
     ) : null
-  ), [overview, allOccupations, regionLabel, renderOccupationRow, occKeyExtractor, school]);
+  ), [overview, allOccupations, renderOccupationRow, occKeyExtractor, school]);
 
   const renderResultsContent = useCallback((results: ApiOccupationMatch[]) => (
     <>
