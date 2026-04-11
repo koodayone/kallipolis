@@ -13,7 +13,7 @@ import AtlasHeader from "@/ui/AtlasHeader";
 export default function CollegeAtlasHomePage() {
   const { collegeId } = useParams<{ collegeId: string }>();
   const config = getCollegeAtlasConfig(collegeId);
-  const { projectedPositions } = useHomeSceneContext();
+  const { projectedPositions, hoveredForm, setHoveredForm } = useHomeSceneContext();
 
   if (!config) return null;
 
@@ -52,10 +52,13 @@ export default function CollegeAtlasHomePage() {
         {ALL_FORM_KEYS.map((key) => {
           const pos = projectedPositions[key];
           if (!pos) return null;
+          const isHovered = hoveredForm === key;
           return (
             <Link
               key={key}
               href={`/${collegeId}/${FORM_URL_SLUGS[key]}`}
+              onMouseEnter={() => setHoveredForm(key)}
+              onMouseLeave={() => setHoveredForm(null)}
               style={{
                 position: "absolute",
                 top: `${pos.y + 14}%`,
@@ -67,13 +70,11 @@ export default function CollegeAtlasHomePage() {
                 fontWeight: 600,
                 letterSpacing: "0.13em",
                 textTransform: "uppercase",
-                color: "rgba(255,255,255,0.35)",
+                color: isHovered ? "#c9a84c" : "rgba(255,255,255,0.35)",
                 whiteSpace: "nowrap",
                 textDecoration: "none",
                 transition: "color 0.3s ease-in-out",
               }}
-              onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#c9a84c")}
-              onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.35)")}
             >
               {FORM_NAMES[key]}
             </Link>

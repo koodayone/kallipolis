@@ -20,6 +20,7 @@ export default function CollegeAtlasLayout({ children }: { children: ReactNode }
 
   const sceneRef = useRef<ReturnType<typeof buildAtlasScene> | null>(null);
   const [projectedPositions, setProjectedPositions] = useState<Record<string, ProjectedPosition>>({});
+  const [hoveredForm, setHoveredForm] = useState<FormKey | null>(null);
 
   const homePath = `/${collegeId}`;
   const isHome = pathname === homePath;
@@ -60,7 +61,10 @@ export default function CollegeAtlasLayout({ children }: { children: ReactNode }
     };
   }, [isHome]);
 
-  const homeSceneState = useMemo(() => ({ projectedPositions }), [projectedPositions]);
+  const homeSceneState = useMemo(
+    () => ({ projectedPositions, hoveredForm, setHoveredForm }),
+    [projectedPositions, hoveredForm],
+  );
 
   // Clicking a 3D form in the canvas navigates to that form's route.
   // This is the canvas's sole interaction pathway; labels on the home
@@ -69,11 +73,13 @@ export default function CollegeAtlasLayout({ children }: { children: ReactNode }
     router.push(`/${collegeId}/${FORM_URL_SLUGS[form]}`);
   }, [router, collegeId]);
 
-  // Hover feedback on the 3D form itself (brightening via hoverLight) is
-  // handled inside the scene engine without needing a React callback.
-  // The gold label highlight from the pre-routing design is dropped here;
-  // it can be restored later via a small context if the UX gap matters.
-  const noopHoverChange = useCallback((_form: FormKey | null) => {}, []);
+  // Canvas hover feeds into the shared HomeSceneContext so the home page
+  // can highlight the matching 2D label in gold. The 3D form itself is
+  // still brightened by the scene engine's hoverLight independently.
+  const handleHoverChange = useCallback(
+    (form: FormKey | null) => setHoveredForm(form),
+    [],
+  );
 
   if (!config) return null;
 
@@ -92,7 +98,7 @@ export default function CollegeAtlasLayout({ children }: { children: ReactNode }
       <div style={{ position: "fixed", inset: 0, zIndex: 0 }}>
         <CollegeAtlasCanvas
           onFormClick={handleFormClick}
-          onHoverChange={noopHoverChange}
+          onHoverChange={handleHoverChange}
           canvasOpacity={isHome ? 1 : 0}
           brandColor={parseInt(config.brandColorNeon.replace("#", ""), 16)}
           sceneRef={sceneRef}
