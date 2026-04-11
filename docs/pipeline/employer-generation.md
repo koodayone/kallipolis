@@ -2,6 +2,10 @@
 
 Employer data is the most operationally subtle stage in the Kallipolis pipeline. It is sourced from the California Employment Development Department at the *county* level, scraped *per college*, tagged to a *Centers of Excellence region*, and merged into a *shared* employer pool consumed by every college in that region. Each of those scopes matters and they do not always align. This document describes how the stage runs, why the design is the way it is, and what makes it different from the other pipeline stages.
 
+## The essence
+
+Employer generation turns county-level EDD records into a region-shared employer pool, with a per-college scope that follows commutability rather than Centers of Excellence polygons. The stage runs as a pipeline of deterministic filters around a single Gemini call: EDD scrape, pre-filter, branch dedup, Gemini cleanup against the regional occupation list, cross-college merge. The result — `backend/employers/employers.json` — accumulates state across runs, so order of operations and merge semantics matter more here than in any other stage.
+
 ## Source
 
 Employer records come from the EDD Labor Market Information Division's ALMIS Employer Database, hosted at `labormarketinfo.edd.ca.gov`. The database is sourced from Data Axle and queryable by California county, NAICS industry code, and employee size class.
@@ -15,7 +19,7 @@ The pipeline scrapes EDD via two endpoints:
 
 Both are ASP.NET pages, which means the deep search requires `__VIEWSTATE` and `__EVENTVALIDATION` form state to apply filters and paginate. The parsing details are in `backend/employers/edd_scrape.py`.
 
-The pipeline restricts queries to a curated set of CTE-relevant NAICS 4-digit codes — agriculture, construction, manufacturing, healthcare, IT, professional services, and others. Hospitality and government codes are partially excluded because they are not searchable by NAICS in the EDD interface. The default size filter is `G` (250+ employees), since smaller employers rarely sustain the kind of partnerships SWP funds.
+The pipeline restricts queries to a curated set of CTE-relevant NAICS 4-digit codes — agriculture, construction, manufacturing, healthcare, IT, professional services, hospitality, government, and others. Staffing and business-support codes (NAICS 5613 and 5614) are deliberately excluded because their members place workers at other employers rather than hire workers onto their own payroll, so they are structurally not partnership targets. The default size filter is `G` (250+ employees), since smaller employers rarely sustain the kind of partnerships SWP funds.
 
 For the broader institutional context on EDD as a data authority, see [Data Authorities](../domain/data-authorities.md).
 
@@ -34,21 +38,23 @@ The crosswalk is defined in `backend/ontology/regions.py`. It includes mappings 
 
 ## How the stage runs
 
-`generate_for_college(college_key)` orchestrates the full flow for one college. It runs in six steps.
+`generate_for_college(college_key)` orchestrates the full flow for one college. It runs in five steps.
 
 **1. Resolve scope.** The college is looked up in `catalog_sources.json` and matched to its OEWS metro via `COLLEGE_REGION_MAP`. The primary metro is used for COE region tagging. Search counties come from `COLLEGE_SEARCH_COUNTIES` if defined; otherwise they default to the counties associated with the primary metro.
 
-**2. Scrape EDD.** For each search county, the pipeline iterates the curated CTE NAICS codes and calls `deep_search()` against `empResults.aspx`. Each call applies the size filter, paginates through results, parses the HTML table, and deduplicates by `(name, city)`. Results are cached as JSON in `backend/employers/cache/`.
+**2. Scrape EDD.** For each search county, the pipeline iterates the curated CTE NAICS codes and calls `deep_search()` against `empResults.aspx`. Each call applies the size filter, paginates through results, parses the HTML table, and deduplicates by `(name, city)`. Results are cached as JSON in `backend/employers/cache/`. The cache key is the OEWS metro slug when the college uses default metro-derived counties — so sibling colleges in the same metro share one scrape — and the county-list slug when the college has a `COLLEGE_SEARCH_COUNTIES` override. A legacy county-list path is honored as a fallback so older cache files are still read.
 
-**3. Clean and deduplicate branches.** Employer names from EDD are full of abbreviations (`Hosp`, `Mfg`, `Ctr`, `Univ`). The pipeline expands them via a fixed substitution table and strips legal suffixes (`Inc`, `LLC`, `Corp`). Branches of the same employer are grouped by normalized name and the largest entry is kept.
+**3. Pre-filter, clean, and deduplicate branches.** Before dedup, a deterministic pre-filter drops rows whose NAICS is in the never-employer set (`5613`, `5614`) and rows whose name matches the sub-unit patterns (`Dept Of`, `County Of`, `City Of`, `State Of`). Survivors then pass through an abbreviation expansion table (`Hosp` → `Hospital`, `Mfg` → `Manufacturing`, `Ctr` → `Center`, and ~40 others) and have legal suffixes stripped (`Inc`, `LLC`, `Corp`). Branches of the same employer are grouped by canonical key — lowercased, suffix-stripped, trailing-location-stripped, whitespace-collapsed — and the largest size entry is kept.
 
-**4. Assign sector and SOC codes.** Each employer is tagged with a human-readable sector derived from its NAICS 2-digit code. Fallback SOC codes are assigned by mapping the NAICS sector to SOC major groups and pulling occupations from those groups that exist in the college's COE region. The fallback is replaced when LLM cleanup runs.
+**4. Assign sector and fallback SOC codes.** Each employer is tagged with a human-readable sector derived from its NAICS 2-digit code. Fallback SOC codes are assigned by mapping the NAICS sector to SOC major groups and pulling occupations from those groups that exist in the college's COE region. The regional occupation pool is pre-filtered to career-track credentials — roles requiring "no formal credential", a high school diploma, or a graduate-level degree are excluded, since they do not represent meaningful community-college workforce-development outcomes. The fallback SOC codes are replaced when LLM cleanup runs.
 
-**5. LLM cleanup with Gemini.** Batches of 30 employers are sent to Gemini with two tasks. First, clean the name and write a one-sentence description, or return `REMOVE` for branch duplicates, internal departments, foundations, and staffing agencies. Second, assign 3-8 SOC codes from the regional occupation list, restricted to roles the employer would have on its own payroll. The prompt explicitly excludes services performed by external agencies — a hospital does not employ police officers, a resort does not employ firefighters. Returned SOC codes are validated against the regional occupation set before being attached to the employer.
+**5. LLM cleanup with Gemini, then format and merge.** Batches of `BATCH_SIZE = 100` employers are sent to Gemini Flash with two tasks. First, clean the name and write a one-sentence description, or return `REMOVE` for branch duplicates, internal departments, foundations, and staffing agencies. Second, assign 3–8 SOC codes from the regional occupation list, restricted to roles the employer would have on its own payroll. The prompt explicitly excludes services performed by external agencies — a hospital does not employ police officers, a resort does not employ firefighters. Returned SOC codes are matched against the regional occupation set with a tolerant regex so the model can return bare codes or codes wrapped with titles in any separator format.
+
+Each Gemini call is wrapped in a retry loop with exponential backoff (up to three attempts). A batch that exhausts retries is dropped with its employer names logged, and the operator can re-run with `--no-scrape` to retry only the failed batches without re-scraping EDD. The regional occupation list — the largest and most repetitive portion of the prompt — is published to Gemini's context cache once per run and referenced by cache name on every subsequent batch, so per-batch input tokens are spent only on the 100 employer names and the response-shape directive. If cache creation fails (the library version, quota, or the model's minimum cached-token floor), the pipeline falls back to inlining the occupation list in each prompt.
+
+After the LLM step, a second dedup pass inside `_llm_cleanup` collapses entries whose cleaned names collide under the canonical key — this is where `Kaiser Permanente Los Angeles` and `Kaiser Permanente, Fresno` converge to one record. Cleaned employers are then formatted to the `employers.json` schema (name, sector, description, regions array, occupations array) and merged into `backend/employers/employers.json`. The merge dedups by the same canonical key. When a name collides, the regions and occupation lists are unioned with the existing entry.
 
 For the broader treatment of where Gemini is called and what constraints apply, see [AI Integration](../architecture/ai-integration.md).
-
-**6. Format and merge.** Cleaned employers are formatted to the `employers.json` schema (name, sector, description, regions array, occupations array) and merged into the shared `backend/employers/employers.json`. The merge function deduplicates by normalized name. When a name collides, the regions and occupation lists are unioned with the existing entry.
 
 ## Why the merge semantics matter
 
@@ -106,8 +112,10 @@ The criteria themselves are the operational expression of the partial-by-design 
 
 ## Known sharp edges
 
-Two operational caveats are worth knowing.
+Three operational caveats are worth knowing.
 
-**EDD scraping is fragile.** ASP.NET form state is parsed with regex. If the EDD page structure changes, the scraper can fail silently. Verifying scraper output against expected cache file sizes is the operational discipline that catches this.
+**EDD scraping is fragile.** ASP.NET form state is parsed with regex. If the EDD page structure changes, the parsers detect the shift by checking for sentinel markers (`empDetails.aspx`, `tableData`, `__VIEWSTATE`) and emit a loud warning when those markers are present but the row or form-state regex fails to capture. This makes regressions visible in the run log rather than silent in the cache file, but the regex itself still needs updating when EDD re-templates its pages.
 
-**Gemini cleanup requires an API key.** Without `GEMINI_API_KEY`, the pipeline skips the LLM cleanup step and uses fallback NAICS-derived SOC codes. The output is loadable but lower quality, since the fallback assigns occupations based purely on industry sector mapping rather than on inference about what each specific employer actually hires for.
+**Gemini cleanup can fail partially.** Each batch retries up to three times with exponential backoff. A batch that exhausts retries is dropped — its employers do not reach `employers.json` for that run — and the failing names are logged so the operator can re-run with `--no-scrape` to retry just the failed batches. Without `GEMINI_API_KEY` at all, the pipeline skips the LLM cleanup step entirely and uses fallback NAICS-derived SOC codes. The output is loadable but lower quality, since the fallback assigns occupations based purely on industry sector mapping rather than on inference about what each specific employer actually hires for.
+
+**The merged employers.json accumulates state across runs.** Because the merge unions regions and occupations on collision, re-running a college against an already-populated file grows entries rather than replacing them. This is the intended behavior — a national employer legitimately accumulates regional tags as more pipelines run — but a destructive rebuild requires clearing the file first rather than trusting the merge to overwrite.
