@@ -44,6 +44,13 @@ REPO_RELATIVE_PREFIXES = (
     "public/",
 )
 
+# Additional markdown files outside docs/ that the audit should verify.
+# These are navigation/orientation READMEs that cite code paths — we want
+# them covered by the same drift protection the docs tree gets.
+EXTRA_AUDITED_MD_FILES = (
+    "backend/README.md",
+)
+
 # Recognized file extensions for path candidates
 PATH_EXTENSIONS = frozenset(
     {
@@ -209,7 +216,13 @@ class FilePathsCheck(Check):
         broken_refs: List[Tuple[PathReference, Path]] = []
         items_checked = 0
 
-        for doc_file in sorted(docs_dir.rglob("*.md")):
+        doc_files = list(sorted(docs_dir.rglob("*.md")))
+        for extra in EXTRA_AUDITED_MD_FILES:
+            extra_path = repo_root / extra
+            if extra_path.exists():
+                doc_files.append(extra_path)
+
+        for doc_file in doc_files:
             for ref in extract_path_references(doc_file):
                 items_checked += 1
                 resolved = resolve_path(ref, repo_root)
