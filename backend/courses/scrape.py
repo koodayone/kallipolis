@@ -217,7 +217,7 @@ class CourseOutlineParser(HTMLParser):
             self.course.transfer_status = value
         elif "ge" in label_lower or "general education" in label_lower:
             self.course.ge_area = value
-        elif "grade" in label_lower:
+        elif "grad" in label_lower:
             self.course.grading = value
 
     def _flush_section(self):

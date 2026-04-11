@@ -18,11 +18,14 @@ Usage:
 from __future__ import annotations
 
 import asyncio
+import hashlib
 import json
 import logging
 import os
 import re
 import tempfile
+import time
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
 
@@ -44,9 +47,20 @@ PAGES_PER_BATCH = 25  # pages per Gemini call (smaller = less output truncation)
 CONCURRENCY = 5       # concurrent Gemini calls (lighter per-call now)
 MAX_RETRIES = 5
 
-# Regex to detect course code patterns on a page (e.g., "ENGL 1A", "BUS 010")
+# Regex to detect course code patterns on a page.
+#
+# Matches:
+#   - "ENGL 1A"      (single-word prefix)
+#   - "BUS 010"      (leading zeros)
+#   - "C S 1A"       (multi-word prefix, e.g. Foothill "Computer Science")
+#   - "MED A 10"     (multi-word prefix)
+#   - "CIS 101L"     (two-letter suffix)
+#
+# The previous pattern `\b[A-Z]{2,6}\s+\d{1,4}[A-Z]?\b` silently dropped
+# multi-word-prefix codes entirely (they never had 2-6 contiguous uppercase
+# letters before the digits) and numeric suffixes longer than one letter.
 COURSE_CODE_PATTERN = re.compile(
-    r'\b[A-Z]{2,6}\s+\d{1,4}[A-Z]?\b'
+    r"\b[A-Z]{1,6}(?:\s[A-Z]{1,5}){0,2}\s+\d{1,4}[A-Z]{0,2}\b"
 )
 
 # Minimum course code matches on a page to consider it a course description page
@@ -270,23 +284,41 @@ async def _extract_batch(
 
 # ── Post-processing ───────────────────────────────────────────────────────────
 
+_COURSE_CODE_CLEAN_RE = re.compile(r"[\s\-_.]+")
+
+
+def normalize_course_code(code: str) -> str:
+    """
+    Canonical form for dedupe and downstream lookup: uppercase, strip all
+    internal whitespace/hyphens/underscores/dots. "C S 1A", "CS 1A",
+    "cs-1a", and "CS.1A" all collapse to "CS1A".
+
+    The original catalog spelling is preserved on the course record; this
+    form is only used as a key.
+    """
+    return _COURSE_CODE_CLEAN_RE.sub("", code.upper()).strip()
+
+
 def _deduplicate_courses(all_courses: list[dict]) -> list[dict]:
-    """Deduplicate courses by code, keeping the most complete entry."""
+    """Deduplicate courses by normalized code, keeping the most complete entry."""
     seen: dict[str, dict] = {}
 
     for course in all_courses:
-        code = course.get("code", "").strip()
-        if not code:
+        raw_code = course.get("code", "").strip()
+        if not raw_code:
+            continue
+        key = normalize_course_code(raw_code)
+        if not key:
             continue
 
-        if code not in seen:
-            seen[code] = course
+        if key not in seen:
+            seen[key] = course
         else:
-            existing = seen[code]
+            existing = seen[key]
             existing_score = sum(1 for v in existing.values() if v)
             new_score = sum(1 for v in course.values() if v)
             if new_score > existing_score:
-                seen[code] = course
+                seen[key] = course
 
     return list(seen.values())
 
@@ -327,6 +359,93 @@ def _to_enriched_dict(course_dict: dict) -> dict:
     return d
 
 
+def _taxonomy_hash() -> str:
+    """Stable short hash of the current unified skill taxonomy."""
+    payload = "\n".join(sorted(UNIFIED_TAXONOMY)).encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()[:12]
+
+
+def _write_extraction_meta(
+    college_key: str,
+    pdf_url: str,
+    enriched: list[dict],
+    stats: dict,
+) -> None:
+    """
+    Write a sidecar `{college}_extraction_meta.json` next to the enriched
+    cache. Sidecar rather than wrapping the enriched JSON itself, to avoid
+    breaking the list-shaped contract that `pipeline/run.py` reads.
+
+    The sidecar captures:
+      - Provenance: which extractor, when, against which PDF URL, against
+        which taxonomy version.
+      - Coverage: page and chunk counts, extraction success rate.
+      - Quality: taxonomy conformance, skill-count distribution, empty
+        fields.
+    """
+    total = len(enriched) or 1
+    skill_counts = [len(c.get("skill_mappings") or []) for c in enriched]
+    skills_total = sum(skill_counts)
+    skills_min = min(skill_counts) if skill_counts else 0
+    skills_max = max(skill_counts) if skill_counts else 0
+    under_four = sum(1 for n in skill_counts if n < 4)
+    at_least_six = sum(1 for n in skill_counts if n >= 6)
+
+    unique_skills: set[str] = set()
+    for c in enriched:
+        for s in c.get("skill_mappings") or []:
+            unique_skills.add(s)
+
+    missing_description = sum(1 for c in enriched if not (c.get("description") or "").strip())
+    missing_department = sum(1 for c in enriched if not (c.get("department") or "").strip())
+
+    meta = {
+        "_meta": {
+            "extractor": "scrape_pdf",
+            "extractor_version": 2,
+            "extracted_at": datetime.now(timezone.utc).isoformat(),
+            "pdf_url": pdf_url,
+            "taxonomy_hash": _taxonomy_hash(),
+            "taxonomy_size": len(UNIFIED_TAXONOMY),
+        },
+        "coverage": {
+            "pdf_pages_total": stats.get("pdf_pages_total", 0),
+            "pdf_pages_with_courses": stats.get("pdf_pages_with_courses", 0),
+            "course_page_fraction": round(
+                stats.get("pdf_pages_with_courses", 0)
+                / max(stats.get("pdf_pages_total", 1), 1),
+                3,
+            ),
+            "batches_total": stats.get("batches_total", 0),
+            "batches_truncated": stats.get("batches_truncated", 0),
+            "batches_rate_limited": stats.get("batches_rate_limited", 0),
+            "extraction_seconds": stats.get("extraction_seconds", 0.0),
+        },
+        "quality": {
+            "courses_extracted": len(enriched),
+            "raw_courses_before_dedup": stats.get("raw_course_count", len(enriched)),
+            "courses_with_skills": sum(1 for n in skill_counts if n > 0),
+            "avg_skills_per_course": round(skills_total / total, 2),
+            "min_skills_per_course": skills_min,
+            "max_skills_per_course": skills_max,
+            "courses_with_fewer_than_four_skills": under_four,
+            "courses_meeting_six_skill_target": at_least_six,
+            "unique_taxonomy_skills": len(unique_skills),
+            "missing_description": missing_description,
+            "missing_department": missing_department,
+        },
+    }
+
+    path = CACHE_DIR / f"{college_key}_extraction_meta.json"
+    path.write_text(json.dumps(meta, indent=2))
+    logger.info(
+        f"Coverage: {meta['quality']['courses_extracted']} courses, "
+        f"avg {meta['quality']['avg_skills_per_course']} skills, "
+        f"{meta['coverage']['batches_truncated']} truncated / "
+        f"{meta['coverage']['batches_rate_limited']} rate-limited batches"
+    )
+
+
 # ── Main entry point ──────────────────────────────────────────────────────────
 
 async def scrape_pdf_catalog(
@@ -350,6 +469,8 @@ async def scrape_pdf_catalog(
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
         raise ValueError("GEMINI_API_KEY environment variable is required")
+
+    started_at = time.monotonic()
 
     # Step 1: Download PDF
     pdf_path = await _download_pdf(pdf_url, college_key)
@@ -406,6 +527,8 @@ async def scrape_pdf_catalog(
 
         initial_results = await asyncio.gather(*[t for _, t in chunk_tasks])
 
+        batches_truncated = sum(1 for r in initial_results if r == _TRUNCATED)
+
         # Check if we hit rate limit abort
         rate_limited_count = sum(1 for r in initial_results if r == _RATE_LIMITED)
         if rate_limited_count > 0:
@@ -461,6 +584,21 @@ async def scrape_pdf_catalog(
     with open(enriched_cache, "w") as f:
         json.dump(enriched, f, indent=2)
     logger.info(f"Cached enriched courses (with skills) to {enriched_cache}")
+
+    _write_extraction_meta(
+        college_key=college_key,
+        pdf_url=pdf_url,
+        enriched=enriched,
+        stats={
+            "pdf_pages_total": total_pages,
+            "pdf_pages_with_courses": len(course_pages),
+            "batches_total": len(batches),
+            "batches_truncated": batches_truncated,
+            "batches_rate_limited": rate_limited_count,
+            "extraction_seconds": round(time.monotonic() - started_at, 2),
+            "raw_course_count": len(all_courses_raw),
+        },
+    )
 
     # Convert to RawCourse for the pipeline interface
     courses = [_to_raw_course(c) for c in unique_courses]
