@@ -1,0 +1,46 @@
+name: Docs Audit
+
+# Run the deterministic documentation audit on any change that could
+# affect what the audit verifies: the docs themselves, the backend or
+# atlas code they make claims about, or the audit infrastructure. The
+# audit is pure stdlib and runs in under a second, so this job is
+# cheap and safe to gate merges on.
+
+on:
+  pull_request:
+    paths:
+      - 'docs/**'
+      - 'backend/**'
+      - 'atlas/**'
+      - 'tools/docs-audit/**'
+      - '.github/workflows/docs-audit.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'backend/**'
+      - 'atlas/**'
+      - 'tools/docs-audit/**'
+      - '.github/workflows/docs-audit.yml'
+
+jobs:
+  audit:
+    name: Run documentation audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install test dependencies
+        run: pip install pytest
+
+      - name: Run audit check tests
+        run: python -m pytest tools/docs-audit/tests/ -v
+
+      - name: Run documentation audit
+        run: python tools/docs-audit/audit.py

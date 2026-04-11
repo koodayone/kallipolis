@@ -24,6 +24,10 @@ To run a single check:
 python tools/docs-audit/audit.py --check file_paths
 ```
 
+## Continuous integration
+
+The audit runs automatically on every pull request that touches `docs/`, `backend/`, `atlas/`, or `tools/docs-audit/` itself, and on every push to `main` with the same scope. The workflow lives in [`.github/workflows/docs-audit.yml`](../../.github/workflows/docs-audit.yml) and runs both the audit's own test suite and the audit against the repo. A failing audit blocks merge — this is what turns the audit from a local convenience into the repo's trust artifact.
+
 ## Running the audit's own tests
 
 The audit is itself a piece of code that needs its own tests. To run them:
