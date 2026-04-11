@@ -25,6 +25,7 @@ from checks.file_paths import FilePathsCheck  # noqa: E402
 from checks.markdown_links import MarkdownLinksCheck  # noqa: E402
 from checks.api_endpoints import APIEndpointsCheck  # noqa: E402
 from checks.model_names import ModelNamesCheck  # noqa: E402
+from checks.schema_constraints import SchemaConstraintsCheck  # noqa: E402
 from lib.reporter import HumanReporter  # noqa: E402
 
 
@@ -34,6 +35,7 @@ ALL_CHECKS: list[Check] = [
     MarkdownLinksCheck(),
     APIEndpointsCheck(),
     ModelNamesCheck(),
+    SchemaConstraintsCheck(),
 ]
 
 
