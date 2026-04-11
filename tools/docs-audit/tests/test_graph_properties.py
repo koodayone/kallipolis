@@ -194,9 +194,9 @@ class TestExtractPropertiesFromCypher:
 
 class TestExtractActualProperties:
     def test_walks_loader_files(self, tmp_path):
-        loader_dir = tmp_path / "backend" / "pipeline"
+        loader_dir = tmp_path / "backend" / "courses"
         loader_dir.mkdir(parents=True)
-        (loader_dir / "loader.py").write_text(
+        (loader_dir / "load.py").write_text(
             'def load():\n'
             '    session.run(\n'
             '        "MERGE (c:College {name: $name}) '
@@ -216,9 +216,9 @@ def _make_repo(tmp_path: Path, doc_text: str, loader_text: str) -> None:
     doc_dir.mkdir(parents=True)
     (doc_dir / "graph-model.md").write_text(doc_text)
 
-    loader_dir = tmp_path / "backend" / "pipeline"
+    loader_dir = tmp_path / "backend" / "courses"
     loader_dir.mkdir(parents=True)
-    (loader_dir / "loader.py").write_text(loader_text)
+    (loader_dir / "load.py").write_text(loader_text)
 
 
 class TestGraphPropertiesCheck:
@@ -307,9 +307,9 @@ class TestGraphPropertiesCheck:
         assert "annual_wage" in result.details
 
     def test_skips_when_doc_missing(self, tmp_path):
-        loader_dir = tmp_path / "backend" / "pipeline"
+        loader_dir = tmp_path / "backend" / "courses"
         loader_dir.mkdir(parents=True)
-        (loader_dir / "loader.py").write_text("# empty\n")
+        (loader_dir / "load.py").write_text("# empty\n")
         result = GraphPropertiesCheck().run(tmp_path)
         assert result.status == Status.SKIP
 

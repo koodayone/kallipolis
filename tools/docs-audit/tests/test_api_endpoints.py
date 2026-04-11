@@ -43,29 +43,28 @@ class TestExtractRouterPrefixes:
 
 class TestExtractActualEndpoints:
     def test_extracts_endpoints_with_prefix(self, tmp_path):
-        api_dir = tmp_path / "api"
-        api_dir.mkdir()
-        (api_dir / "ontology.py").write_text(
-            "@router.get('/students')\n"
+        backend_dir = tmp_path / "backend"
+        feature_dir = backend_dir / "students"
+        feature_dir.mkdir(parents=True)
+        (feature_dir / "api.py").write_text(
+            "@router.get('/')\n"
             "def list_students(): pass\n"
             "\n"
-            '@router.post("/courses/query")\n'
-            "def query_courses(): pass\n"
+            '@router.post("/query")\n'
+            "def query_students(): pass\n"
         )
-        prefixes = {"ontology": "/ontology"}
-        endpoints = extract_actual_endpoints(api_dir, prefixes)
-        assert ("GET", "/ontology/students") in endpoints
-        assert ("POST", "/ontology/courses/query") in endpoints
+        prefixes = {"students": "/students"}
+        endpoints = extract_actual_endpoints(backend_dir, prefixes)
+        assert ("GET", "/students") in endpoints
+        assert ("POST", "/students/query") in endpoints
 
-    def test_skips_init_files(self, tmp_path):
-        api_dir = tmp_path / "api"
-        api_dir.mkdir()
-        (api_dir / "__init__.py").write_text(
-            '@router.get("/should/not/match")\n'
-            "def x(): pass\n"
-        )
-        prefixes = {}
-        endpoints = extract_actual_endpoints(api_dir, prefixes)
+    def test_feature_without_api_file_is_skipped(self, tmp_path):
+        # A feature listed in prefixes but without an api.py file is silently
+        # ignored (e.g., a feature that holds data and helpers but no routes).
+        backend_dir = tmp_path / "backend"
+        (backend_dir / "students").mkdir(parents=True)
+        prefixes = {"students": "/students"}
+        endpoints = extract_actual_endpoints(backend_dir, prefixes)
         assert endpoints == set()
 
 
@@ -114,14 +113,14 @@ class TestExtractDocumentedEndpoints:
 def _make_minimal_repo(
     tmp_path: Path, doc_text: str, code_text: str, prefix: str = "/test"
 ) -> None:
-    """Create a minimal repo with one doc and one router file."""
+    """Create a minimal repo with one doc and one feature router file."""
     docs = tmp_path / "docs"
     docs.mkdir(parents=True)
     (docs / "test.md").write_text(doc_text)
 
-    api = tmp_path / "backend" / "api"
-    api.mkdir(parents=True)
-    (api / "test.py").write_text(code_text)
+    feature_dir = tmp_path / "backend" / "test"
+    feature_dir.mkdir(parents=True)
+    (feature_dir / "api.py").write_text(code_text)
 
     main = tmp_path / "backend" / "main.py"
     main.write_text(
@@ -160,7 +159,7 @@ class TestAPIEndpointsCheck:
         assert result.status == Status.PASS
         assert result.items_checked == 0
 
-    def test_skips_when_backend_missing(self, tmp_path):
+    def test_skips_when_main_missing(self, tmp_path):
         docs = tmp_path / "docs"
         docs.mkdir()
         (docs / "test.md").write_text("`POST /foo`")

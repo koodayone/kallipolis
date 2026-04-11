@@ -125,9 +125,9 @@ class TestExtractDocumentedEdges:
 
 class TestExtractActualEdges:
     def test_walks_loader_files(self, tmp_path):
-        loader_dir = tmp_path / "backend" / "pipeline"
+        loader_dir = tmp_path / "backend" / "courses"
         loader_dir.mkdir(parents=True)
-        (loader_dir / "loader.py").write_text(
+        (loader_dir / "load.py").write_text(
             'def load():\n'
             '    session.run(\n'
             '        "MATCH (col:College) MATCH (d:Department) "\n'
@@ -146,9 +146,9 @@ def _make_repo(tmp_path: Path, doc_text: str, loader_text: str) -> None:
     doc_dir.mkdir(parents=True)
     (doc_dir / "graph-model.md").write_text(doc_text)
 
-    loader_dir = tmp_path / "backend" / "pipeline"
+    loader_dir = tmp_path / "backend" / "courses"
     loader_dir.mkdir(parents=True)
-    (loader_dir / "loader.py").write_text(loader_text)
+    (loader_dir / "load.py").write_text(loader_text)
 
 
 class TestRelationshipInventoryCheck:
@@ -241,9 +241,9 @@ class TestRelationshipInventoryCheck:
         assert "College → Department" in result.details
 
     def test_skips_when_doc_missing(self, tmp_path):
-        loader_dir = tmp_path / "backend" / "pipeline"
+        loader_dir = tmp_path / "backend" / "courses"
         loader_dir.mkdir(parents=True)
-        (loader_dir / "loader.py").write_text("# empty\n")
+        (loader_dir / "load.py").write_text("# empty\n")
         result = RelationshipInventoryCheck().run(tmp_path)
         assert result.status == Status.SKIP
 
