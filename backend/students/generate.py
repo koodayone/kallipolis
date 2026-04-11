@@ -21,11 +21,15 @@ import re
 import uuid
 from collections import Counter
 from dataclasses import dataclass, field
+from functools import lru_cache
+from itertools import accumulate
 from pathlib import Path
 from random import Random
 from typing import List, Dict, Tuple, Optional
 
 from neo4j import Driver
+
+from students.helpers import compute_gpa, compute_primary_focus
 
 logger = logging.getLogger(__name__)
 
@@ -36,10 +40,8 @@ NAMESPACE = uuid.UUID("a1b2c3d4-e5f6-7890-abcd-ef1234567890")
 DEFAULT_STUDENT_COUNT = 3000
 FT_RATIO = 0.31
 RETENTION_RATE = 0.67
-SUMMER_ENROLLMENT_RATE = 0.15
 PRIMARY_STICKINESS = 0.60
 DEPT_CAP = 6  # Max courses per department per student
-RETAKE_RATE = 0.05
 ACADEMIC_YEARS = [2022, 2023, 2024]
 
 # Course load per term
@@ -52,8 +54,9 @@ FT_LOAD_WEIGHTS = [0.55, 0.35, 0.10]
 PT_UNIT_CAP = 11.0
 FT_UNIT_CAP = 20.0
 
-# Starting term distribution
-START_TERM_WEIGHTS = {"Fall": 0.60, "Winter": 0.15, "Spring": 0.20, "Summer": 0.05}
+# Starting term distribution (season-only; year is spread uniformly across
+# ACADEMIC_YEARS when the per-student start term is sampled).
+START_TERM_WEIGHTS = {"Fall": 0.60, "Winter": 0.15, "Spring": 0.25}
 
 # Non-credit prefixes to exclude
 NON_CREDIT_PREFIXES = ["Non-Credit"]
@@ -134,19 +137,15 @@ def _load_top4_calibration(college_key: str) -> Optional[dict]:
 _MCF_DIR = Path(os.environ.get("MCF_DIR", Path.home() / "Desktop" / "cc_dataset" / "mastercoursefiles"))
 
 # System-wide fallback (only used when a college has no MCF)
-_FALLBACK_PREFIX_TOP4: Dict[str, str] = {}
 _FALLBACK_PREFIX_PATH = Path(__file__).parent.parent / "ontology" / "calibrations" / "prefix_to_top4.json"
 
 
+@lru_cache(maxsize=1)
 def _get_fallback_prefix_map() -> Dict[str, str]:
     """Load system-wide prefix → TOP4 fallback mapping."""
-    global _FALLBACK_PREFIX_TOP4
-    if _FALLBACK_PREFIX_TOP4:
-        return _FALLBACK_PREFIX_TOP4
     if _FALLBACK_PREFIX_PATH.exists():
         with open(_FALLBACK_PREFIX_PATH) as f:
-            _FALLBACK_PREFIX_TOP4 = json.load(f)
-        return _FALLBACK_PREFIX_TOP4
+            return json.load(f)
     return {}
 
 
@@ -169,18 +168,19 @@ def _resolve_prefix(prefix: str, prefix_map: Dict[str, str]) -> str:
     return prefix
 
 
+@lru_cache(maxsize=None)
 def _load_college_prefix_map(college_key: str) -> Dict[str, str]:
     """Build prefix → TOP4 mapping from a college's own master course file.
 
     Each college's MCF is authoritative for its prefix assignments.
-    Falls back to system-wide mapping only if no MCF exists.
+    Falls back to system-wide mapping only if no MCF exists. Memoized per
+    college so multi-college pipeline runs don't re-parse the same CSV.
     """
     mcf_path = _MCF_DIR / f"MasterCourseFile_{college_key}.csv"
     if not mcf_path.exists():
         logger.info(f"No MCF for {college_key}, using system-wide fallback")
         return _get_fallback_prefix_map()
 
-    from collections import Counter
     prefix_votes: Dict[str, Counter] = {}
     try:
         with open(mcf_path, encoding="utf-8", errors="replace") as f:
@@ -302,6 +302,12 @@ def generate_students(
     logger.info(f"Generating {num_students} students for {college_key}")
 
     # Build course pools by TOP4
+    top4_data: Dict[str, dict] = {}
+    top4_courses: Dict[str, List[dict]] = {}
+    top4_to_dept: Dict[str, str] = {}
+    valid_codes: List[str] = []
+    top4_weights: List[float] = []
+
     if top4_cal:
         top4_courses = _build_top4_course_pools(courses, top4_cal, college_key)
         top4_data = top4_cal["top4_codes"]
@@ -311,7 +317,6 @@ def generate_students(
         top4_weights = [top4_data[code]["enrollment"] for code in valid_codes]
 
         # Build TOP4 → department mapping from course pools (authoritative)
-        top4_to_dept: Dict[str, str] = {}
         for code, pool in top4_courses.items():
             if pool:
                 dept_counter: Dict[str, int] = {}
@@ -325,16 +330,30 @@ def generate_students(
         if not valid_codes:
             logger.warning("No valid TOP4 codes with courses — falling back to flat generation")
             top4_cal = None
-    else:
-        valid_codes = []
-        top4_weights = []
+
+    # Precompute cumulative weights once — hot-loop TOP4 draws reuse them
+    top4_cum_weights = list(accumulate(top4_weights)) if top4_weights else []
 
     rng = Random(seed)
     all_terms = _build_term_sequence()
-    start_terms_list = list(START_TERM_WEIGHTS.keys())
-    start_terms_weights = list(START_TERM_WEIGHTS.values())
+
+    # Build weighted starting-term candidates across the full term sequence.
+    # Spreading the season draw over every academic year eliminates the
+    # "every student starts at all_terms[0]" bug and produces multi-year
+    # start cohorts. Weight each candidate by its season weight; the year
+    # dimension is implicitly uniform.
+    start_candidates: List[int] = []
+    start_cand_weights: List[float] = []
+    for idx, term in enumerate(all_terms):
+        _, season = term.split("-", 1)
+        weight = START_TERM_WEIGHTS.get(season, 0.0)
+        if weight > 0:
+            start_candidates.append(idx)
+            start_cand_weights.append(weight)
+    start_cum_weights = list(accumulate(start_cand_weights)) if start_cand_weights else []
 
     # Flat course list fallback (if no TOP4 calibration)
+    flat_courses: List[dict] = []
     if not top4_cal:
         flat_courses = [c for c in courses if _parse_units(c.get("units", "0")) > 0]
         for c in flat_courses:
@@ -344,23 +363,26 @@ def generate_students(
     total_enrollments = 0
     grade_counts: Dict[str, int] = {}
     depts_seen: set = set()
+    top4_enrollment_counts: Dict[str, int] = {}
 
     for i in range(num_students):
         student_uuid = str(uuid.uuid5(NAMESPACE, f"{college_key}-student-{i}"))
-        primary_top4 = rng.choices(valid_codes, weights=top4_weights, k=1)[0] if valid_codes else ""
+        primary_top4 = (
+            rng.choices(valid_codes, cum_weights=top4_cum_weights, k=1)[0]
+            if valid_codes else ""
+        )
         student = GeneratedStudent(uuid=student_uuid, primary_top4=primary_top4)
 
         is_ft = rng.random() < ft_ratio
-        start_season = rng.choices(start_terms_list, weights=start_terms_weights, k=1)[0]
 
-        # Find starting term
-        start_idx = 0
-        for idx, term in enumerate(all_terms):
-            if term.endswith(start_season):
-                start_idx = idx
-                break
+        # Sample a start term index from weighted candidates. Falls back to 0
+        # only when no candidates exist (empty term sequence).
+        start_idx = (
+            rng.choices(start_candidates, cum_weights=start_cum_weights, k=1)[0]
+            if start_candidates else 0
+        )
 
-        # Determine persistence
+        # Determine persistence (geometric decay from the start term).
         max_terms = 1
         while max_terms < len(all_terms) - start_idx:
             if rng.random() > retention:
@@ -368,10 +390,6 @@ def generate_students(
             max_terms += 1
 
         active_terms = all_terms[start_idx: start_idx + max_terms]
-        active_terms = [
-            t for t in active_terms
-            if not t.endswith("-Summer") or rng.random() < SUMMER_ENROLLMENT_RATE
-        ]
 
         taken_codes: set = set()
         dept_counts: Dict[str, int] = {}  # Track per-department enrollment count
@@ -385,12 +403,12 @@ def generate_students(
 
             term_units = 0.0
             for _ in range(num_courses):
-                # Choose TOP4: 60% primary, 40% random
+                # Choose TOP4: 60% primary, 40% share-weighted random
                 if top4_cal and primary_top4:
                     if rng.random() < PRIMARY_STICKINESS:
                         chosen_top4 = primary_top4
                     else:
-                        chosen_top4 = rng.choices(valid_codes, weights=top4_weights, k=1)[0]
+                        chosen_top4 = rng.choices(valid_codes, cum_weights=top4_cum_weights, k=1)[0]
 
                     pool = top4_courses.get(chosen_top4, [])
                     if not pool:
@@ -402,7 +420,7 @@ def generate_students(
                                  and dept_counts.get(c.get("department", ""), 0) < DEPT_CAP]
                     if not available:
                         # Try a random TOP4 instead
-                        chosen_top4 = rng.choices(valid_codes, weights=top4_weights, k=1)[0]
+                        chosen_top4 = rng.choices(valid_codes, cum_weights=top4_cum_weights, k=1)[0]
                         pool = top4_courses.get(chosen_top4, [])
                         if not pool:
                             continue
@@ -422,6 +440,7 @@ def generate_students(
                     taken_codes.add(course["code"])
                     dept = course.get("department", "")
                     dept_counts[dept] = dept_counts.get(dept, 0) + 1
+                    top4_enrollment_counts[chosen_top4] = top4_enrollment_counts.get(chosen_top4, 0) + 1
 
                     # Grade from TOP4-specific distribution
                     grading = course.get("grading", "")
@@ -506,6 +525,34 @@ def generate_students(
             f"diff={diff:.1%}"
         )
 
+        # Per-TOP4 enrollment share delta (top 5 by absolute magnitude).
+        # The algorithm draws only from `valid_codes`; target shares are
+        # renormalized over that set so the delta reflects sampling drift,
+        # not the share absorbed by unmapped TOP4s.
+        total_cal = sum(top4_data[c]["enrollment"] for c in valid_codes)
+        total_synth = sum(top4_enrollment_counts.values())
+        if total_cal and total_synth:
+            deltas = []
+            for code in valid_codes:
+                target = top4_data[code]["enrollment"] / total_cal
+                actual = top4_enrollment_counts.get(code, 0) / total_synth
+                deltas.append((code, top4_data[code].get("name", code), actual - target))
+            deltas.sort(key=lambda row: abs(row[2]), reverse=True)
+            top5 = "; ".join(
+                f"{code} {name}: {delta:+.1%}" for code, name, delta in deltas[:5]
+            )
+            logger.info(f"Top-5 TOP4 share deltas (synthetic − target): {top5}")
+
+            # Dropped-share report: how much calibration weight lives in
+            # TOP4 codes that had no matching courses in the catalog.
+            all_cal_total = sum(d["enrollment"] for d in top4_data.values())
+            dropped = all_cal_total - total_cal
+            if all_cal_total and dropped:
+                logger.info(
+                    f"Dropped share (TOP4s with no courses): "
+                    f"{dropped / all_cal_total:.1%} of calibration weight redistributed"
+                )
+
     return students, stats
 
 
@@ -514,8 +561,48 @@ def generate_students(
 BATCH_SIZE = 500
 
 
+def _derive_student_fields(
+    students: List[GeneratedStudent],
+    top4_to_dept: Dict[str, str],
+) -> List[dict]:
+    """Compute gpa, primary_focus, courses_completed from in-memory state.
+
+    The previous implementation round-tripped every enrollment through
+    Neo4j only to recompute these three derived fields. The GeneratedStudent
+    dataclass already holds everything needed — this helper materializes
+    them without touching the database.
+    """
+    rows: List[dict] = []
+    for st in students:
+        completed = [e for e in st.enrollments if e.status == "Completed"]
+        grades = [e.grade for e in completed if e.grade]
+
+        primary_focus = top4_to_dept.get(st.primary_top4, "")
+        if not primary_focus:
+            primary_focus = compute_primary_focus(
+                [{"department": e.department, "status": e.status} for e in st.enrollments]
+            )
+
+        rows.append({
+            "uuid": st.uuid,
+            "gpa": compute_gpa(grades),
+            "primary_focus": primary_focus,
+            "courses_completed": len(completed),
+        })
+    return rows
+
+
 def load_students(driver: Driver, institution: str, students: List[GeneratedStudent], top4_to_dept: Optional[Dict[str, str]] = None) -> int:
-    """Load generated students into Neo4j. Full replace strategy."""
+    """Load generated students into Neo4j. Full replace strategy.
+
+    Derived fields (gpa, primary_focus, courses_completed) are computed from
+    the in-memory GeneratedStudent population before any Neo4j writes. Student
+    nodes are pre-written with those fields, enrollments are batch-created
+    against the pre-existing nodes, and HAS_SKILL edges are materialized in
+    a single pass. No post-write read-back.
+    """
+    student_rows = _derive_student_fields(students, top4_to_dept or {})
+
     with driver.session() as session:
         # Clear existing students in batches
         total_deleted = 0
@@ -532,10 +619,24 @@ def load_students(driver: Driver, institution: str, students: List[GeneratedStud
         if total_deleted:
             logger.info(f"Cleared {total_deleted} existing students for {institution}")
 
-        # Batch create students and enrollments
-        batch = []
-        loaded = 0
+        # Pre-create Student nodes with derived fields in one UNWIND pass.
+        for i in range(0, len(student_rows), BATCH_SIZE):
+            chunk = student_rows[i:i + BATCH_SIZE]
+            session.run(
+                """
+                UNWIND $batch AS row
+                MERGE (s:Student {uuid: row.uuid})
+                SET s.gpa = row.gpa,
+                    s.primary_focus = row.primary_focus,
+                    s.courses_completed = row.courses_completed
+                """,
+                batch=chunk,
+            )
+        logger.info(f"Pre-created {len(student_rows)} Student nodes with derived fields")
 
+        # Batch create enrollments against the pre-existing Student nodes.
+        batch: List[dict] = []
+        loaded = 0
         for student in students:
             for enrollment in student.enrollments:
                 batch.append({
@@ -567,60 +668,15 @@ def load_students(driver: Driver, institution: str, students: List[GeneratedStud
         skills_created = result.single()["created"]
         logger.info(f"Materialized {skills_created} HAS_SKILL relationships")
 
-        # Use the authoritative TOP4 → department mapping from course pools
-        dept_lookup = top4_to_dept or {}
-
-        # Materialize gpa, primary_focus, courses_completed on Student nodes
-        logger.info("Materializing derived student fields (gpa, primary_focus, courses_completed)...")
-        student_records = session.run("""
-            MATCH (st:Student)-[e:ENROLLED_IN]->(c:Course {college: $inst})
-            WITH st, collect({department: c.department, grade: e.grade, status: e.status}) AS enrollments
-            RETURN st.uuid AS uuid, enrollments
-        """, inst=institution).data()
-
-        # Build uuid → primary_top4 lookup
-        uuid_to_top4 = {s.uuid: s.primary_top4 for s in students}
-
-        from students.helpers import compute_gpa, compute_primary_focus
-        field_batch = []
-        for rec in student_records:
-            enrollments = rec["enrollments"]
-            completed = [e for e in enrollments if e.get("status") == "Completed"]
-            grades = [e["grade"] for e in completed if e.get("grade")]
-
-            # Primary focus from declared TOP4, fallback to enrollment-derived
-            student_top4 = uuid_to_top4.get(rec["uuid"], "")
-            primary_focus = dept_lookup.get(student_top4, "") or compute_primary_focus(enrollments)
-
-            field_batch.append({
-                "uuid": rec["uuid"],
-                "gpa": compute_gpa(grades),
-                "primary_focus": primary_focus,
-                "courses_completed": len(completed),
-            })
-
-        for i in range(0, len(field_batch), 500):
-            batch = field_batch[i : i + 500]
-            session.run("""
-                UNWIND $batch AS row
-                MATCH (s:Student {uuid: row.uuid})
-                SET s.gpa = row.gpa,
-                    s.primary_focus = row.primary_focus,
-                    s.courses_completed = row.courses_completed
-            """, batch=batch)
-
-        logger.info(f"Materialized derived fields on {len(field_batch)} students")
-
         return loaded
 
 
 def _write_batch(session, institution: str, batch: List[dict]):
-    """Write a batch of enrollments to Neo4j."""
+    """Write a batch of enrollments against pre-existing Student nodes."""
     session.run(
         """
         UNWIND $batch AS row
-        MERGE (s:Student {uuid: row.uuid})
-        WITH s, row
+        MATCH (s:Student {uuid: row.uuid})
         MATCH (c:Course {code: row.course_code, college: $inst})
         CREATE (s)-[:ENROLLED_IN {
             grade: row.grade,
