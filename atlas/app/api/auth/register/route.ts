@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { hashPassword } from "@/lib/auth/crypto";
-import { createSessionToken, buildSessionCookie } from "@/lib/auth/jwt";
-import { getStorage } from "@/lib/auth/storage";
-import { CALIFORNIA_COLLEGES } from "@/lib/californiaColleges";
+import { hashPassword } from "@/auth/crypto";
+import { createSessionToken, buildSessionCookie } from "@/auth/jwt";
+import { getStorage } from "@/auth/storage";
+import { CALIFORNIA_COLLEGES } from "@/state-atlas/californiaColleges";
 
 export async function POST(request: NextRequest) {
   const body = await request.json();

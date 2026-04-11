@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import DataCitation from "@/components/ui/DataCitation";
+import DataCitation from "@/ui/DataCitation";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 

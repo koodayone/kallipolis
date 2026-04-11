@@ -2,14 +2,14 @@
 
 import { useState, useEffect, useCallback, useRef, memo, useMemo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { SchoolConfig } from "@/lib/schoolConfig";
-import { getEmployers, getEmployerDetail, queryEmployers } from "@/lib/api";
-import type { ApiEmployerMatch, ApiEmployerDetail } from "@/lib/api";
-import Badge from "@/components/ui/Badge";
-import EntityScrollList from "@/components/ui/EntityScrollList";
-import type { Column } from "@/components/ui/EntityScrollList";
-import QueryShell, { findScrollParent } from "@/components/ui/QueryShell";
-import DataCitation from "@/components/ui/DataCitation";
+import { SchoolConfig } from "@/config/schoolConfig";
+import { getEmployers, getEmployerDetail, queryEmployers } from "@/college-atlas/employers/api";
+import type { ApiEmployerMatch, ApiEmployerDetail } from "@/college-atlas/employers/api";
+import Badge from "@/ui/Badge";
+import EntityScrollList from "@/ui/EntityScrollList";
+import type { Column } from "@/ui/EntityScrollList";
+import QueryShell, { findScrollParent } from "@/ui/QueryShell";
+import DataCitation from "@/ui/DataCitation";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 

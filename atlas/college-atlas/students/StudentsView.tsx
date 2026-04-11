@@ -1,14 +1,14 @@
 "use client";
 
 import { useState, useCallback, useRef, useMemo } from "react";
-import { SchoolConfig } from "@/lib/schoolConfig";
-import { getStudents, getStudent, queryStudents } from "@/lib/api";
-import type { ApiStudentSummary, ApiStudentDetail } from "@/lib/api";
-import type { StudentSummary, StudentDetail } from "@/lib/students/types";
-import EntityScrollList from "@/components/ui/EntityScrollList";
-import type { Column } from "@/components/ui/EntityScrollList";
-import QueryShell, { findScrollParent } from "@/components/ui/QueryShell";
-import StudentRow from "@/components/shared/StudentRow";
+import { SchoolConfig } from "@/config/schoolConfig";
+import { getStudents, getStudent, queryStudents } from "@/college-atlas/students/api";
+import type { ApiStudentSummary, ApiStudentDetail } from "@/college-atlas/students/api";
+import type { StudentSummary, StudentDetail } from "@/college-atlas/students/types";
+import EntityScrollList from "@/ui/EntityScrollList";
+import type { Column } from "@/ui/EntityScrollList";
+import QueryShell, { findScrollParent } from "@/ui/QueryShell";
+import StudentRow from "@/college-atlas/students/StudentRow";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 

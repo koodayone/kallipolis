@@ -4,17 +4,17 @@ import { useState, useCallback, useEffect, useRef, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import PageTransition from "@/components/transitions/PageTransition";
+import PageTransition from "@/ui/PageTransition";
 import dynamic from "next/dynamic";
-const CaliforniaMap = dynamic(() => import("@/components/state-atlas/CaliforniaMap"), { ssr: false });
-import { FEATURED_COLLEGES } from "@/components/state-atlas/CaliforniaMap";
-import KallipolisBrand from "@/components/ui/KallipolisBrand";
-import AtlasHeader from "@/components/ui/AtlasHeader";
-import RisingSun from "@/components/ui/RisingSun";
-import { College, Region, CALIFORNIA_REGIONS, CALIFORNIA_COLLEGES } from "@/lib/californiaColleges";
-import { getCollegeAtlasConfig } from "@/lib/collegeAtlasConfigs";
-import AtlasMenu from "@/components/auth/AtlasMenu";
-import type { SchoolConfig } from "@/lib/schoolConfig";
+const CaliforniaMap = dynamic(() => import("@/state-atlas/CaliforniaMap"), { ssr: false });
+import { FEATURED_COLLEGES } from "@/state-atlas/CaliforniaMap";
+import KallipolisBrand from "@/ui/KallipolisBrand";
+import AtlasHeader from "@/ui/AtlasHeader";
+import RisingSun from "@/ui/RisingSun";
+import { College, Region, CALIFORNIA_REGIONS, CALIFORNIA_COLLEGES } from "@/state-atlas/californiaColleges";
+import { getCollegeAtlasConfig } from "@/config/collegeAtlasConfigs";
+import AtlasMenu from "@/auth/AtlasMenu";
+import type { SchoolConfig } from "@/config/schoolConfig";
 
 export default function StateAtlas() {
   const router = useRouter();

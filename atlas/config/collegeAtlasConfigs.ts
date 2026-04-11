@@ -1,6 +1,6 @@
-import { makeSchoolConfig, schoolConfig, SchoolConfig } from "./schoolConfig";
-import { CALIFORNIA_COLLEGES } from "./californiaColleges";
-import { COLLEGE_COLORS } from "./collegeColors.generated";
+import { makeSchoolConfig, schoolConfig, SchoolConfig } from "@/config/schoolConfig";
+import { CALIFORNIA_COLLEGES } from "@/state-atlas/californiaColleges";
+import { COLLEGE_COLORS } from "@/config/collegeColors.generated";
 
 const DEFAULT_BRAND_COLOR = "#1e3a5f";
 

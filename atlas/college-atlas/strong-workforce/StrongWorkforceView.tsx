@@ -2,13 +2,13 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { SchoolConfig } from "@/lib/schoolConfig";
-import { streamSwpProject } from "@/lib/api";
-import type { ApiLmiContext, ApiSwpProject, ApiSwpSection, SwpProjectRequest } from "@/lib/api";
-import { getSavedProposals, getSavedSwpProjects, saveSwpProject, removeSwpProject, type SavedProposal, type SavedSwpProject } from "@/lib/savedProposals";
-import AtlasHeader from "@/components/ui/AtlasHeader";
-import KallipolisBrand from "@/components/ui/KallipolisBrand";
-import RisingSun from "@/components/ui/RisingSun";
+import { SchoolConfig } from "@/config/schoolConfig";
+import { streamSwpProject } from "@/college-atlas/strong-workforce/api";
+import type { ApiLmiContext, ApiSwpProject, ApiSwpSection, SwpProjectRequest } from "@/college-atlas/strong-workforce/api";
+import { getSavedProposals, getSavedSwpProjects, saveSwpProject, removeSwpProject, type SavedProposal, type SavedSwpProject } from "@/college-atlas/partnerships/savedProposals";
+import AtlasHeader from "@/ui/AtlasHeader";
+import KallipolisBrand from "@/ui/KallipolisBrand";
+import RisingSun from "@/ui/RisingSun";
 import SwpArtifact from "./SwpArtifact";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";

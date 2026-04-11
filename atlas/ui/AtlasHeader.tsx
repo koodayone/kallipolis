@@ -1,7 +1,7 @@
 "use client";
 
 import type { CSSProperties, ReactNode } from "react";
-import { SchoolConfig } from "@/lib/schoolConfig";
+import { SchoolConfig } from "@/config/schoolConfig";
 
 type Props = {
   title: string;

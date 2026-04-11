@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, type ReactNode } from "react";
-import { SchoolConfig } from "@/lib/schoolConfig";
+import { SchoolConfig } from "@/config/schoolConfig";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 

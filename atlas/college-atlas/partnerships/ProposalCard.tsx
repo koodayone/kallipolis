@@ -2,13 +2,13 @@
 
 import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
-import type { ApiTargetedProposal } from "@/lib/api";
-import { getOccupationDetail } from "@/lib/api";
-import { saveProposal, removeProposal, updateProposalStatus, type SavedProposal } from "@/lib/savedProposals";
-import OccupationRow from "@/components/shared/OccupationRow";
-import DepartmentRow from "@/components/shared/DepartmentRow";
-import StudentRow from "@/components/shared/StudentRow";
-import ColumnHeaders from "@/components/shared/ColumnHeaders";
+import type { ApiTargetedProposal } from "@/college-atlas/partnerships/api";
+import { getOccupationDetail } from "@/college-atlas/occupations/api";
+import { saveProposal, removeProposal, updateProposalStatus, type SavedProposal } from "@/college-atlas/partnerships/savedProposals";
+import OccupationRow from "@/college-atlas/occupations/OccupationRow";
+import DepartmentRow from "@/college-atlas/courses/DepartmentRow";
+import StudentRow from "@/college-atlas/students/StudentRow";
+import ColumnHeaders from "@/ui/ColumnHeaders";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 

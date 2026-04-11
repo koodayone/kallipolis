@@ -9,8 +9,8 @@ import {
   CALIFORNIA_REGIONS,
   CALIFORNIA_COLLEGES,
   COUNTY_TO_REGION,
-} from "@/lib/californiaColleges";
-import { getCollegeAtlasConfig } from "@/lib/collegeAtlasConfigs";
+} from "@/state-atlas/californiaColleges";
+import { getCollegeAtlasConfig } from "@/config/collegeAtlasConfigs";
 
 const GEO_URL = "/california-counties.geojson";
 

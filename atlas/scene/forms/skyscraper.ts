@@ -8,7 +8,7 @@
  */
 
 import * as THREE from "three";
-import { createFormMaterial } from "../sceneEngine";
+import { createFormMaterial } from "@/scene/engine";
 
 export function createSkyscraperForm(color: number): THREE.Group {
   const group = new THREE.Group();

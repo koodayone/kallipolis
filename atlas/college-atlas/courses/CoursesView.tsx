@@ -2,15 +2,15 @@
 
 import { useState, useEffect, useCallback, useRef, memo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { SchoolConfig } from "@/lib/schoolConfig";
-import { getDepartments, getCourses, queryCourses } from "@/lib/api";
-import type { ApiDepartmentSummary, ApiCourseSummary } from "@/lib/api";
-import type { DepartmentSummary, CourseSummary } from "@/lib/curricula/types";
-import EntityScrollList from "@/components/ui/EntityScrollList";
-import type { Column } from "@/components/ui/EntityScrollList";
-import QueryShell, { findScrollParent } from "@/components/ui/QueryShell";
-import DepartmentRow from "@/components/shared/DepartmentRow";
-import ColumnHeaders from "@/components/shared/ColumnHeaders";
+import { SchoolConfig } from "@/config/schoolConfig";
+import { getDepartments, getCourses, queryCourses } from "@/college-atlas/courses/api";
+import type { ApiDepartmentSummary, ApiCourseSummary } from "@/college-atlas/courses/api";
+import type { DepartmentSummary, CourseSummary } from "@/college-atlas/courses/types";
+import EntityScrollList from "@/ui/EntityScrollList";
+import type { Column } from "@/ui/EntityScrollList";
+import QueryShell, { findScrollParent } from "@/ui/QueryShell";
+import DepartmentRow from "@/college-atlas/courses/DepartmentRow";
+import ColumnHeaders from "@/ui/ColumnHeaders";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 

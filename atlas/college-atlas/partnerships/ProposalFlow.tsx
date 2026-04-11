@@ -1,8 +1,8 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { SchoolConfig } from "@/lib/schoolConfig";
-import type { ApiPartnershipOpportunity, ApiTargetedProposal } from "@/lib/api";
+import { SchoolConfig } from "@/config/schoolConfig";
+import type { ApiPartnershipOpportunity, ApiTargetedProposal } from "@/college-atlas/partnerships/api";
 import ProposalCard from "./ProposalCard";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";

@@ -1,4 +1,4 @@
-import StateAtlas from "@/components/state-atlas/StateAtlas";
+import StateAtlas from "@/state-atlas/StateAtlas";
 
 export default function StatePage() {
   return <StateAtlas />;

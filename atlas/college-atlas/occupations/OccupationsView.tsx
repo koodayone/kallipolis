@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useCallback, useRef, useMemo } from "react";
-import { SchoolConfig } from "@/lib/schoolConfig";
-import { getLaborMarketOverview, getOccupationDetail, queryOccupations } from "@/lib/api";
-import type { ApiOccupationMatch, ApiLaborMarketOverview, ApiOccupationDetail } from "@/lib/api";
-import EntityScrollList from "@/components/ui/EntityScrollList";
-import type { Column } from "@/components/ui/EntityScrollList";
-import QueryShell, { findScrollParent } from "@/components/ui/QueryShell";
-import OccupationRow from "@/components/shared/OccupationRow";
+import { SchoolConfig } from "@/config/schoolConfig";
+import { getLaborMarketOverview, getOccupationDetail, queryOccupations } from "@/college-atlas/occupations/api";
+import type { ApiOccupationMatch, ApiLaborMarketOverview, ApiOccupationDetail } from "@/college-atlas/occupations/api";
+import EntityScrollList from "@/ui/EntityScrollList";
+import type { Column } from "@/ui/EntityScrollList";
+import QueryShell, { findScrollParent } from "@/ui/QueryShell";
+import OccupationRow from "@/college-atlas/occupations/OccupationRow";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 

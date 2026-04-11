@@ -2,20 +2,20 @@
 
 import { useState, useEffect, useCallback, useRef, memo, useMemo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { SchoolConfig } from "@/lib/schoolConfig";
+import { SchoolConfig } from "@/config/schoolConfig";
 import {
   getPartnershipLandscape,
   queryPartnerships,
   streamTargetedProposal,
-} from "@/lib/api";
-import type { ApiPartnershipOpportunity, ApiTargetedProposal } from "@/lib/api";
-import { getSavedProposals, removeProposal, type SavedProposal } from "@/lib/savedProposals";
-import AtlasHeader from "@/components/ui/AtlasHeader";
-import KallipolisBrand from "@/components/ui/KallipolisBrand";
-import RisingSun from "@/components/ui/RisingSun";
-import Badge from "@/components/ui/Badge";
-import EntityScrollList from "@/components/ui/EntityScrollList";
-import type { Column } from "@/components/ui/EntityScrollList";
+} from "@/college-atlas/partnerships/api";
+import type { ApiPartnershipOpportunity, ApiTargetedProposal } from "@/college-atlas/partnerships/api";
+import { getSavedProposals, removeProposal, type SavedProposal } from "@/college-atlas/partnerships/savedProposals";
+import AtlasHeader from "@/ui/AtlasHeader";
+import KallipolisBrand from "@/ui/KallipolisBrand";
+import RisingSun from "@/ui/RisingSun";
+import Badge from "@/ui/Badge";
+import EntityScrollList from "@/ui/EntityScrollList";
+import type { Column } from "@/ui/EntityScrollList";
 import ProposalFlow from "./ProposalFlow";
 import ProposalCard from "./ProposalCard";
 

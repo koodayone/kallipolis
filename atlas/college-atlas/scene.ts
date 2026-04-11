@@ -1,12 +1,12 @@
 import * as THREE from "three";
-import { buildScene } from "./sceneEngine";
-import { createMortarboardForm } from "./forms/mortarboard";
-import { createBookForm } from "./forms/book";
-import { createChainlinkForm } from "./forms/chainlink";
-import { createHardhatForm } from "./forms/hardhat";
-import { createSkyscraperForm } from "./forms/skyscraper";
-import { createDumbbellForm } from "./forms/dumbbell";
-import type { SceneConfig } from "./sceneEngine";
+import { buildScene } from "@/scene/engine";
+import { createMortarboardForm } from "@/scene/forms/mortarboard";
+import { createBookForm } from "@/scene/forms/book";
+import { createChainlinkForm } from "@/scene/forms/chainlink";
+import { createHardhatForm } from "@/scene/forms/hardhat";
+import { createSkyscraperForm } from "@/scene/forms/skyscraper";
+import { createDumbbellForm } from "@/scene/forms/dumbbell";
+import type { SceneConfig } from "@/scene/engine";
 
 export type FormKey =
   | "students"

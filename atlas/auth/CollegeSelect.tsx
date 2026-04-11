@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { CALIFORNIA_COLLEGES } from "@/lib/californiaColleges";
+import { CALIFORNIA_COLLEGES } from "@/state-atlas/californiaColleges";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 

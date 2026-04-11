@@ -4,19 +4,19 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import { AnimatePresence, motion } from "framer-motion";
-import { buildAtlasScene, FormKey, ALL_FORM_KEYS, FORM_NAMES } from "@/lib/atlasScene";
-import { getCollegeAtlasConfig } from "@/lib/collegeAtlasConfigs";
-import AtlasMenu from "@/components/auth/AtlasMenu";
-import StudentsView from "@/components/college-atlas/StudentsView";
-import CoursesView from "@/components/college-atlas/CoursesView";
-import PartnershipsView from "@/components/college-atlas/PartnershipsView";
-import OccupationsView from "@/components/college-atlas/OccupationsView";
-import EmployersView from "@/components/college-atlas/EmployersView";
-import StrongWorkforceView from "@/components/college-atlas/StrongWorkforceView";
-import KallipolisBrand from "@/components/ui/KallipolisBrand";
-import AtlasHeader from "@/components/ui/AtlasHeader";
+import { buildAtlasScene, FormKey, ALL_FORM_KEYS, FORM_NAMES } from "@/college-atlas/scene";
+import { getCollegeAtlasConfig } from "@/config/collegeAtlasConfigs";
+import AtlasMenu from "@/auth/AtlasMenu";
+import StudentsView from "@/college-atlas/students/StudentsView";
+import CoursesView from "@/college-atlas/courses/CoursesView";
+import PartnershipsView from "@/college-atlas/partnerships/PartnershipsView";
+import OccupationsView from "@/college-atlas/occupations/OccupationsView";
+import EmployersView from "@/college-atlas/employers/EmployersView";
+import StrongWorkforceView from "@/college-atlas/strong-workforce/StrongWorkforceView";
+import KallipolisBrand from "@/ui/KallipolisBrand";
+import AtlasHeader from "@/ui/AtlasHeader";
 
-const CollegeAtlasCanvas = dynamic(() => import("@/components/college-atlas/CollegeAtlasCanvas"), {
+const CollegeAtlasCanvas = dynamic(() => import("@/college-atlas/CollegeAtlasCanvas"), {
   ssr: false,
 });
 

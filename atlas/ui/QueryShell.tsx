@@ -2,10 +2,10 @@
 
 import { useState, useEffect, useCallback, useRef, type ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { SchoolConfig } from "@/lib/schoolConfig";
-import AtlasHeader from "@/components/ui/AtlasHeader";
-import KallipolisBrand from "@/components/ui/KallipolisBrand";
-import RisingSun from "@/components/ui/RisingSun";
+import { SchoolConfig } from "@/config/schoolConfig";
+import AtlasHeader from "@/ui/AtlasHeader";
+import KallipolisBrand from "@/ui/KallipolisBrand";
+import RisingSun from "@/ui/RisingSun";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 

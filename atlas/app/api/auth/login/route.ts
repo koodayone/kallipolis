@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { verifyPassword } from "@/lib/auth/crypto";
-import { createSessionToken, buildSessionCookie } from "@/lib/auth/jwt";
-import { getStorage } from "@/lib/auth/storage";
+import { verifyPassword } from "@/auth/crypto";
+import { createSessionToken, buildSessionCookie } from "@/auth/jwt";
+import { getStorage } from "@/auth/storage";
 
 export async function POST(request: NextRequest) {
   const body = await request.json();

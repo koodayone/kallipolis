@@ -9,7 +9,7 @@
  */
 
 import * as THREE from "three";
-import { addWithEdges, createFormMaterial } from "../sceneEngine";
+import { addWithEdges, createFormMaterial } from "@/scene/engine";
 
 export function createBookForm(color: number): THREE.Group {
   const group = new THREE.Group();

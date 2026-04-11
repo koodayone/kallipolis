@@ -1,4 +1,5 @@
-import type { ApiTargetedProposal } from "./api";
+import type { ApiTargetedProposal } from "@/college-atlas/partnerships/api";
+import type { ApiSwpProject } from "@/college-atlas/strong-workforce/api";
 
 const PROPOSAL_SCHEMA_VERSION = 8;
 
@@ -14,7 +15,7 @@ export type SavedProposal = {
 
 export type SavedSwpProject = {
   id: string;
-  project: import("./api").ApiSwpProject;
+  project: ApiSwpProject;
   partnershipId: string;
   collegeId: string;
   savedAt: string;
@@ -93,7 +94,7 @@ export function getSavedSwpProjects(collegeId: string): SavedSwpProject[] {
 
 export function saveSwpProject(
   collegeId: string,
-  project: import("./api").ApiSwpProject,
+  project: ApiSwpProject,
   partnershipId: string,
 ): SavedSwpProject {
   const saved: SavedSwpProject = {

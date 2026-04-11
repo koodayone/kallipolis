@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import type { ApiSwpProject, ApiSwpSection, ApiLmiContext } from "@/lib/api";
+import type { ApiSwpProject, ApiSwpSection, ApiLmiContext } from "@/college-atlas/strong-workforce/api";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 

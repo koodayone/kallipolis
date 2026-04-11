@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { verifySessionToken, COOKIE_NAME } from "@/lib/auth/jwt";
+import { verifySessionToken, COOKIE_NAME } from "@/auth/jwt";
 
 export default async function RootPage() {
   const cookieStore = await cookies();

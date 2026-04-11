@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useCallback } from "react";
-import { buildAtlasScene, FormKey, SceneCallbacks } from "@/lib/atlasScene";
+import { buildAtlasScene, FormKey, SceneCallbacks } from "@/college-atlas/scene";
 
 type Props = {
   onFormClick: (form: FormKey) => void;

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { buildLogoutCookie } from "@/lib/auth/jwt";
+import { buildLogoutCookie } from "@/auth/jwt";
 
 export async function POST() {
   const response = NextResponse.json({ ok: true });
