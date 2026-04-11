@@ -6,7 +6,7 @@ import { SchoolConfig } from "@/lib/schoolConfig";
 import { streamSwpProject } from "@/lib/api";
 import type { ApiLmiContext, ApiSwpProject, ApiSwpSection, SwpProjectRequest } from "@/lib/api";
 import { getSavedProposals, getSavedSwpProjects, saveSwpProject, removeSwpProject, type SavedProposal, type SavedSwpProject } from "@/lib/savedProposals";
-import LeafHeader from "@/components/ui/LeafHeader";
+import AtlasHeader from "@/components/ui/AtlasHeader";
 import RisingSun from "@/components/ui/RisingSun";
 import SwpArtifact from "./SwpArtifact";
 
@@ -182,7 +182,7 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
 
   return (
     <div ref={rootRef}>
-      <LeafHeader school={school} onBack={phase === "selection" ? onBack : handleBackToSelection} parentShape="cube" />
+      <AtlasHeader school={school} onBack={phase === "selection" ? onBack : handleBackToSelection} parentShape="cube" />
 
       <div style={{ maxWidth: "760px", margin: "0 auto", padding: "32px 40px 80px" }}>
         <AnimatePresence mode="wait" initial={false}>

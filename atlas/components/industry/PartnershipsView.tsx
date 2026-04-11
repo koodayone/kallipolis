@@ -10,7 +10,7 @@ import {
 } from "@/lib/api";
 import type { ApiPartnershipOpportunity, ApiTargetedProposal } from "@/lib/api";
 import { getSavedProposals, removeProposal, type SavedProposal } from "@/lib/savedProposals";
-import LeafHeader from "@/components/ui/LeafHeader";
+import AtlasHeader from "@/components/ui/AtlasHeader";
 import RisingSun from "@/components/ui/RisingSun";
 import Badge from "@/components/ui/Badge";
 import EntityScrollList from "@/components/ui/EntityScrollList";
@@ -220,7 +220,7 @@ export default function PartnershipsView({ school, onBack }: Props) {
 
   return (
     <div ref={rootRef}>
-      <LeafHeader school={school} onBack={phase === "selection" ? onBack : handleBackFromSplit} parentShape="cube" />
+      <AtlasHeader school={school} onBack={phase === "selection" ? onBack : handleBackFromSplit} parentShape="cube" />
 
       {phase === "selection" && (
           <div>

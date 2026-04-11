@@ -3,7 +3,7 @@
 import Card from "@/components/ui/Card";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
-import LeafHeader from "@/components/ui/LeafHeader";
+import AtlasHeader from "@/components/ui/AtlasHeader";
 import { SchoolConfig } from "@/lib/schoolConfig";
 
 const REQUIREMENTS = [
@@ -22,7 +22,7 @@ type Props = {
 export default function PerkinsView({ school, onBack }: Props) {
   return (
     <>
-    <LeafHeader school={school} onBack={onBack} parentShape="cube" />
+    <AtlasHeader school={school} onBack={onBack} parentShape="cube" />
     <div
       style={{
         maxWidth: "800px",

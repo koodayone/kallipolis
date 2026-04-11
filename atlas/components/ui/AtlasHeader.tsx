@@ -58,7 +58,7 @@ function ShapeIcon({ shape, color, edgeColor }: { shape: ParentShape; color: str
   );
 }
 
-export default function LeafHeader({ school, onBack, parentShape }: Props) {
+export default function AtlasHeader({ school, onBack, parentShape }: Props) {
   return (
     <header
       style={{
@@ -89,7 +89,7 @@ export default function LeafHeader({ school, onBack, parentShape }: Props) {
         }}
         onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = "0.7")}
         onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = "1")}
-        aria-label="Back to domain hub"
+        aria-label="Back to College Atlas"
       >
         <ShapeIcon shape={parentShape} color={school.brandColorNeon} edgeColor="rgba(255,255,255,0.55)" />
         <svg width="20" height="20" viewBox="0 0 16 16" fill="none">

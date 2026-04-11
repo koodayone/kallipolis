@@ -8,7 +8,7 @@ import { createSkyscraperForm } from "./forms/skyscraper";
 import { createDumbbellForm } from "./forms/dumbbell";
 import type { SceneConfig } from "./sceneEngine";
 
-export type AtlasNodeKey =
+export type FormKey =
   | "students"
   | "courses"
   | "partnerships"
@@ -17,12 +17,12 @@ export type AtlasNodeKey =
   | "strong_workforce";
 
 export type SceneCallbacks = {
-  onNodeClick: (node: AtlasNodeKey) => void;
-  onHoverChange: (node: AtlasNodeKey | null) => void;
+  onFormClick: (form: FormKey) => void;
+  onHoverChange: (form: FormKey | null) => void;
   solidColor: number;
 };
 
-export const NODE_NAMES: Record<AtlasNodeKey, string> = {
+export const FORM_NAMES: Record<FormKey, string> = {
   students: "Students",
   courses: "Courses",
   partnerships: "Partnerships",
@@ -31,12 +31,12 @@ export const NODE_NAMES: Record<AtlasNodeKey, string> = {
   strong_workforce: "Strong Workforce",
 };
 
-export const ALL_NODE_KEYS: AtlasNodeKey[] = [
+export const ALL_FORM_KEYS: FormKey[] = [
   "students", "partnerships", "employers",
   "courses", "strong_workforce", "occupations",
 ];
 
-const config: SceneConfig<AtlasNodeKey> = {
+const config: SceneConfig<FormKey> = {
   forms: [
     // Top row
     {
@@ -92,8 +92,8 @@ export function buildAtlasScene(
   getProjectedPositions: () => Record<string, { x: number; y: number }>;
   setPaused: (paused: boolean) => void;
 } {
-  return buildScene<AtlasNodeKey>(canvas, config, {
-    onClick: callbacks.onNodeClick,
+  return buildScene<FormKey>(canvas, config, {
+    onClick: callbacks.onFormClick,
     onHoverChange: callbacks.onHoverChange,
     solidColor: callbacks.solidColor,
   });

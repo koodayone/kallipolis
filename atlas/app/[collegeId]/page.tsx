@@ -4,7 +4,7 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import { AnimatePresence, motion } from "framer-motion";
-import { buildAtlasScene, AtlasNodeKey, ALL_NODE_KEYS, NODE_NAMES } from "@/lib/atlasScene";
+import { buildAtlasScene, FormKey, ALL_FORM_KEYS, FORM_NAMES } from "@/lib/atlasScene";
 import { getCollegeAtlasConfig } from "@/lib/collegeAtlasConfigs";
 import AtlasMenu from "@/components/auth/AtlasMenu";
 import StudentsView from "@/components/college/StudentsView";
@@ -19,7 +19,7 @@ const AtlasCanvas = dynamic(() => import("@/components/atlas/AtlasCanvas"), {
   ssr: false,
 });
 
-type AppState = "home" | "transitioning-in" | "leaf" | "transitioning-out";
+type AppState = "home" | "transitioning-in" | "focused" | "transitioning-out";
 
 export default function CollegeAtlasPage() {
   const { collegeId } = useParams<{ collegeId: string }>();
@@ -27,8 +27,8 @@ export default function CollegeAtlasPage() {
   const config = getCollegeAtlasConfig(collegeId);
 
   const [appState, setAppState] = useState<AppState>("home");
-  const [activeNode, setActiveNode] = useState<AtlasNodeKey | null>(null);
-  const [hoveredNode, setHoveredNode] = useState<AtlasNodeKey | null>(null);
+  const [activeForm, setActiveForm] = useState<FormKey | null>(null);
+  const [hoveredForm, setHoveredForm] = useState<FormKey | null>(null);
   const sceneRef = useRef<ReturnType<typeof buildAtlasScene> | null>(null);
 
   // Projected label positions from the 3D scene
@@ -39,12 +39,12 @@ export default function CollegeAtlasPage() {
     if (!config) router.replace("/");
   }, [config, router]);
 
-  // Restore node from URL hash on mount
+  // Restore form from URL hash on mount
   useEffect(() => {
-    const hash = window.location.hash.replace("#", "") as AtlasNodeKey;
-    if (ALL_NODE_KEYS.includes(hash)) {
-      setActiveNode(hash);
-      setAppState("leaf");
+    const hash = window.location.hash.replace("#", "") as FormKey;
+    if (ALL_FORM_KEYS.includes(hash)) {
+      setActiveForm(hash);
+      setAppState("focused");
       setTimeout(() => sceneRef.current?.setPaused(true), 200);
     }
   }, []);
@@ -62,12 +62,12 @@ export default function CollegeAtlasPage() {
     return () => { cancelAnimationFrame(rafId); clearTimeout(timeout); };
   }, [appState]);
 
-  const handleNodeClick = useCallback((node: AtlasNodeKey) => {
-    setActiveNode(node);
+  const handleFormClick = useCallback((form: FormKey) => {
+    setActiveForm(form);
     setAppState("transitioning-in");
-    window.location.hash = node;
+    window.location.hash = form;
     setTimeout(() => {
-      setAppState("leaf");
+      setAppState("focused");
       sceneRef.current?.setPaused(true);
     }, 850);
   }, []);
@@ -78,8 +78,8 @@ export default function CollegeAtlasPage() {
       sceneRef.current?.setPaused(false);
       sceneRef.current?.resetScene();
       setAppState("home");
-      setActiveNode(null);
-      setHoveredNode(null);
+      setActiveForm(null);
+      setHoveredForm(null);
       history.pushState(null, "", window.location.pathname);
     }, 550);
   }, []);
@@ -90,7 +90,7 @@ export default function CollegeAtlasPage() {
     appState === "home" ? 1 : appState === "transitioning-out" ? 1 : 0;
 
   const showLabels = appState === "home";
-  const showLeaf = appState === "leaf" || appState === "transitioning-out";
+  const showFocused = appState === "focused" || appState === "transitioning-out";
 
   return (
     <div
@@ -105,8 +105,8 @@ export default function CollegeAtlasPage() {
       {/* Persistent Three.js canvas */}
       <div style={{ position: "fixed", inset: 0, zIndex: 0 }}>
         <AtlasCanvas
-          onNodeClick={handleNodeClick}
-          onHoverChange={setHoveredNode}
+          onFormClick={handleFormClick}
+          onHoverChange={setHoveredForm}
           canvasOpacity={canvasOpacity}
           brandColor={parseInt(config.brandColorNeon.replace("#", ""), 16)}
           sceneRef={sceneRef}
@@ -189,18 +189,18 @@ export default function CollegeAtlasPage() {
         )}
       </AnimatePresence>
 
-      {/* Node labels — positioned using 3D projection */}
+      {/* Form labels — positioned using 3D projection */}
       <AnimatePresence>
         {showLabels && (
           <motion.div
-            key="node-labels"
+            key="form-labels"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
             style={{ position: "fixed", inset: 0, zIndex: 5, pointerEvents: "none" }}
           >
-            {ALL_NODE_KEYS.map((key) => {
+            {ALL_FORM_KEYS.map((key) => {
               const pos = projectedPositions[key];
               if (!pos) return null;
               return (
@@ -217,12 +217,12 @@ export default function CollegeAtlasPage() {
                     fontWeight: 600,
                     letterSpacing: "0.13em",
                     textTransform: "uppercase",
-                    color: hoveredNode === key ? "#c9a84c" : "rgba(255,255,255,0.35)",
+                    color: hoveredForm === key ? "#c9a84c" : "rgba(255,255,255,0.35)",
                     whiteSpace: "nowrap",
                     transition: "color 0.3s ease-in-out",
                   }}
                 >
-                  {NODE_NAMES[key]}
+                  {FORM_NAMES[key]}
                 </span>
               );
             })}
@@ -230,11 +230,11 @@ export default function CollegeAtlasPage() {
         )}
       </AnimatePresence>
 
-      {/* Leaf view overlay */}
+      {/* Focused form view overlay */}
       <AnimatePresence>
-        {showLeaf && activeNode && (
+        {showFocused && activeForm && (
           <motion.div
-            key="leaf"
+            key="focused"
             initial={{ opacity: 0 }}
             animate={{ opacity: appState === "transitioning-out" ? 0 : 1 }}
             exit={{ opacity: 0 }}
@@ -248,22 +248,22 @@ export default function CollegeAtlasPage() {
               overscrollBehavior: "none",
             }}
           >
-            {activeNode === "students" && (
+            {activeForm === "students" && (
               <StudentsView school={config} onBack={handleBack} />
             )}
-            {activeNode === "courses" && (
+            {activeForm === "courses" && (
               <CoursesView school={config} onBack={handleBack} />
             )}
-            {activeNode === "partnerships" && (
+            {activeForm === "partnerships" && (
               <PartnershipsView school={config} onBack={handleBack} />
             )}
-            {activeNode === "occupations" && (
+            {activeForm === "occupations" && (
               <OccupationsView school={config} onBack={handleBack} />
             )}
-            {activeNode === "employers" && (
+            {activeForm === "employers" && (
               <EmployersView school={config} onBack={handleBack} />
             )}
-            {activeNode === "strong_workforce" && (
+            {activeForm === "strong_workforce" && (
               <StrongWorkforceView school={config} onBack={handleBack} />
             )}
           </motion.div>

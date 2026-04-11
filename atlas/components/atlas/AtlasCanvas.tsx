@@ -1,18 +1,18 @@
 "use client";
 
 import { useRef, useEffect, useCallback } from "react";
-import { buildAtlasScene, AtlasNodeKey, SceneCallbacks } from "@/lib/atlasScene";
+import { buildAtlasScene, FormKey, SceneCallbacks } from "@/lib/atlasScene";
 
 type Props = {
-  onNodeClick: (node: AtlasNodeKey) => void;
-  onHoverChange?: (node: AtlasNodeKey | null) => void;
+  onFormClick: (form: FormKey) => void;
+  onHoverChange?: (form: FormKey | null) => void;
   brandColor: number;
   canvasOpacity: number;
   sceneRef: React.MutableRefObject<ReturnType<typeof buildAtlasScene> | null>;
 };
 
 export default function AtlasCanvas({
-  onNodeClick,
+  onFormClick,
   onHoverChange,
   brandColor,
   canvasOpacity,
@@ -20,13 +20,13 @@ export default function AtlasCanvas({
 }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  const stableOnClick = useCallback(onNodeClick, []);
+  const stableOnClick = useCallback(onFormClick, []);
   const stableOnHover = useCallback(onHoverChange ?? (() => {}), []);
 
   useEffect(() => {
     if (!canvasRef.current) return;
     const callbacks: SceneCallbacks = {
-      onNodeClick: stableOnClick,
+      onFormClick: stableOnClick,
       onHoverChange: stableOnHover,
       solidColor: brandColor,
     };

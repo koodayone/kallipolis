@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef, type ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { SchoolConfig } from "@/lib/schoolConfig";
-import LeafHeader from "@/components/ui/LeafHeader";
+import AtlasHeader from "@/components/ui/AtlasHeader";
 import RisingSun from "@/components/ui/RisingSun";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
@@ -126,7 +126,7 @@ export default function QueryShell<T>({
 
   return (
     <div ref={rootRef}>
-      <LeafHeader school={school} onBack={onBack} parentShape={parentShape} />
+      <AtlasHeader school={school} onBack={onBack} parentShape={parentShape} />
       <div style={{ maxWidth: "760px", margin: "0 auto", padding: "32px 40px 80px" }}>
         {error && <p style={{ fontFamily: FONT, fontSize: "14px", color: "#e55", textAlign: "center", paddingTop: "40px" }}>{error}</p>}
         {loading && (
