@@ -8,9 +8,8 @@ export default defineConfig({
     },
   },
   test: {
-    // Pure logic tests only in this pass — no DOM, no React rendering.
-    // When we add component tests we'll flip this to "jsdom" or "happy-dom".
-    environment: "node",
+    environment: "happy-dom",
+    setupFiles: ["./test/setup.ts"],
     include: ["**/*.test.ts", "**/*.test.tsx"],
     exclude: ["node_modules/**", ".next/**"],
   },

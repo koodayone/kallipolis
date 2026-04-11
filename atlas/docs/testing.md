@@ -2,7 +2,7 @@
 
 This document is the contract for how tests are written and organized in the atlas. It is load-bearing for the test suite's legibility and for the docs audit that verifies it. Read this before adding a new test file, moving tests around, or changing the test conventions.
 
-The atlas test suite is deliberately narrow right now. It exercises pure logic — the `api.ts` clients, the `scene.ts` vocabulary, the small number of extracted pure helpers like `buildSwpRequest.ts`. It does not exercise React rendering, the 3D scene, the backend, or any end-to-end flow. Adding those is a future commitment; the conventions below are designed so the pass is cheap to start and the suite can grow without losing legibility.
+The atlas test suite exercises two layers. The first is pure logic — the `api.ts` clients, the `scene.ts` vocabulary, small extracted helpers like `buildSwpRequest.ts`. The second is component rendering — shared UI primitives under `ui/` (starting with `AtlasHeader`) tested with React Testing Library against happy-dom. It does not yet exercise the 3D scene, the backend, or full end-to-end flows.
 
 ## Philosophy
 
@@ -10,13 +10,17 @@ The atlas test suite is deliberately narrow right now. It exercises pure logic �
 
 **Test names read as specifications.** A reader skimming the test file or running `npm test -- --reporter=verbose` should see sentences describing what the unit does, not noun phrases describing what the test is. "Falls back to a Workforce default when the engagement type is unrecognized" is a specification. "Tests fallback" is not. The convention applies to both `describe` labels and `it` labels.
 
-**Pure logic first.** Anything that can be tested without React, without a browser, without a network call, is tested that way. Component tests, DOM tests, and backend-integration tests are deferred until the pure-logic pass is load-bearing. This is a sequencing decision, not a permanent rule — we will add those layers when the suite needs them.
+**Pure logic first, components second.** Anything that can be tested without React or a DOM is tested that way — it's faster, more stable, and the failure modes are unambiguous. Component tests exist for the second category of bug: user-visible regressions that pure logic cannot catch, like a missing button, a broken click handler, or a conditional slot that renders the wrong thing. Backend-integration and end-to-end tests remain deferred.
+
+**Component tests assert behavior, not appearance.** Query the DOM by role, label, or accessible name — never by class name, CSS selector, or computed style. Interact via `@testing-library/user-event`, not synthetic events. Assert what a user would perceive: "a button with this label exists", "clicking it calls this handler", "this text is in the document". Do not assert font sizes, colors, pixel positions, or inline-style values. If you find yourself reaching for `getComputedStyle` or `toHaveStyle`, you are testing the wrong layer — that belongs in a visual regression tool, not Vitest.
 
 ## Framework
 
-**Vitest** is the test runner. Jest-compatible API (`describe`, `it`, `expect`, `vi`), native TypeScript and ESM support, sub-second startup. The config lives at `atlas/vitest.config.ts` and uses the Node environment; we will flip it to `jsdom` or `happy-dom` when we add component tests.
+**Vitest** is the test runner. Jest-compatible API (`describe`, `it`, `expect`, `vi`), native TypeScript and ESM support, sub-second startup. The config lives at `atlas/vitest.config.ts` and uses the **happy-dom** environment so the same runner handles both pure-logic and component tests. Pure-logic tests don't pay a meaningful cost from the DOM environment — happy-dom is lazy and the suite still runs in well under a second.
 
-Tests are picked up by the pattern `**/*.test.{ts,tsx}`, excluding `node_modules/` and `.next/`.
+Tests are picked up by the pattern `**/*.test.{ts,tsx}`, excluding `node_modules/` and `.next/`. A shared `atlas/test/setup.ts` runs before every test file; it imports `@testing-library/jest-dom/vitest` so matchers like `toBeInTheDocument` are available, and it registers an `afterEach` that calls React Testing Library's `cleanup` to unmount components between tests.
+
+**Component test dependencies.** `@testing-library/react` (render, screen, queries), `@testing-library/user-event` (realistic user interactions), `@testing-library/jest-dom` (assertion matchers), and `happy-dom` (fast DOM implementation). All four are devDependencies on atlas.
 
 ## File organization
 
@@ -65,11 +69,22 @@ The goal is that `npm test -- --reporter=verbose` produces output a non-author c
 - **Import real modules, not mocks, for pure-logic tests.** `buildSwpRequest.test.ts` imports `buildSwpRequest` directly and builds plain-object fixtures.
 - **Avoid `vi.mock` at module scope unless necessary.** It interacts badly with import hoisting and makes tests harder to read. Prefer explicit dependency injection where possible.
 
+## Component testing conventions
+
+Component tests live next to the component they cover, named `<Component>.test.tsx`. The same JSDoc coverage header and `describe`/`it` naming rules apply.
+
+- **Query by role first.** `screen.getByRole("button", { name: "Back to College Atlas" })` is the canonical query. Fall back to `getByLabelText`, `getByText`, or `getByTestId` only when role-based queries don't fit. A `data-testid` is an escape hatch, not a default.
+- **Interact via `userEvent`, not `fireEvent`.** `await userEvent.click(...)` simulates the realistic sequence of pointer and focus events a real click dispatches. Synthetic-event APIs skip that sequence and hide bugs.
+- **Assert the user-perceived outcome.** "The button exists", "the handler was called", "the text is in the document". Do not assert inline style values, hex colors, pixel widths, or DOM structure that a user cannot perceive.
+- **Use `cleanup` implicitly.** The shared `test/setup.ts` already calls `cleanup` after each test. Do not call `unmount()` manually unless you are testing unmount behavior specifically.
+- **Mock what's outside the component.** A component that calls `fetch` should have `fetch` stubbed the same way pure-logic tests do. A component that uses `next/navigation` should have `useRouter` mocked via `vi.mock("next/navigation", ...)`.
+
+See `ui/AtlasHeader.test.tsx` for the canonical pattern.
+
 ## Out of scope (for now)
 
 The following are deliberately not tested yet. They belong in future sessions:
 
-- **React component rendering.** Requires `jsdom` or `happy-dom`, `@testing-library/react`, and a set of component-test conventions. The pure-logic pass covers the unit-level correctness; component tests would cover the JSX layer.
 - **3D scene interactions.** The scene engine's Three.js integration would require a canvas mock. Not worth the complexity until a regression in hover/click behavior demonstrates the need.
 - **Backend integration.** The atlas tests never hit a real backend. Integration coverage belongs in the backend's own test suite.
 - **Route-level end-to-end.** Playwright or similar. Worth revisiting once the core suite is established.
