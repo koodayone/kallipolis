@@ -49,6 +49,7 @@ How institutional data enters the graph. The mechanism by which the ontology com
 - [Overview](./pipeline/overview.md) — The five stages, what each stage produces, and how the curriculum-side and industry-side pipelines converge in the same graph
 - [Student Generation](./pipeline/student-generation.md) — The synthetic methodology, the DataMart calibration, and what the generated population is and is not
 - [Employer Generation](./pipeline/employer-generation.md) — EDD scraping, county→metro→COE crosswalk, merge semantics
+- [Occupation Generation](./pipeline/occupation-generation.md) — COE demand feed, workforce-development band filter, skill-assignment retry loop, and the `education_level`-on-node design choice
 
 ## Conventions
 

@@ -45,7 +45,7 @@ For the full treatment of the synthetic student methodology, see [Student Genera
 
 The industry-side pipeline runs once per region and populates Region, Occupation, and Employer nodes with their relationships. It is structurally distinct from the curriculum-side pipeline because the data sources are different and the operations happen at the region level rather than the college level.
 
-**Occupation loading** parses Centers of Excellence occupational demand data at `backend/occupations/generate.py`, covering ~800 SOC codes across nine COE regions plus statewide and filtering to the community-college workforce-development band before writing `occupations.json`. The loader at `backend/occupations/load.py` then writes Region and Occupation nodes with `DEMANDS` edges that carry regional employment, wage, growth, and openings data. Occupations are enriched with skill assignments via a Gemini call constrained to the existing skill taxonomy, producing `REQUIRES_SKILL` edges. COE is the sole data source for the occupations domain; an earlier OEWS-based pipeline has been retired.
+**Occupation loading** parses Centers of Excellence occupational demand data across nine COE regions plus statewide, filters to the community-college workforce-development band, attaches descriptions and controlled-vocabulary skill assignments, and writes `Region`, `Occupation`, `DEMANDS`, and `REQUIRES_SKILL` structures into Neo4j. COE is the sole data source for the occupations domain; an earlier OEWS-based pipeline has been retired. The full treatment is in [Occupation Generation](./occupation-generation.md).
 
 **Employer loading** is the most operationally subtle stage in the pipeline because employers are sourced at the county level from EDD records, scoped per college, and merged into a region-shared employer pool with deliberate cleanup. The full treatment is in [Employer Generation](./employer-generation.md).
 
@@ -82,9 +82,10 @@ In every case, the LLM is operating against a constrained context — either a s
 
 ## What this section does not yet cover
 
-This overview is the entry point for the pipeline section. Two sub-documents fill in the substantive detail:
+This overview is the entry point for the pipeline section. Three sub-documents fill in the substantive detail:
 
 - [Student Generation](./student-generation.md) — the synthetic methodology, the calibration data, the per-college TOP-code distribution algorithm, and what the generated population is and is not
 - [Employer Generation](./employer-generation.md) — the EDD scraping, the county-to-region crosswalk, the merge semantics, and the pass-through model that lets multiple colleges share an employer pool
+- [Occupation Generation](./occupation-generation.md) — the COE demand feed, the workforce-development band filter, the skill-assignment retry loop, and why `education_level` lives on the `Occupation` node rather than on the `DEMANDS` edge
 
-The other stages — course extraction, skill enrichment, curriculum loading, occupation loading — are described at the right level here and do not warrant separate documents at the current stage. If they become operationally complex enough to require their own treatment later, they can be added.
+The remaining stages — course extraction, skill enrichment, curriculum loading — are described at the right level here and do not warrant separate documents at the current stage. If they become operationally complex enough to require their own treatment later, they can be added.
