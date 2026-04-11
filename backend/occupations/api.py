@@ -31,7 +31,7 @@ def get_labor_market_overview(college: str):
                        d.employment AS employment,
                        d.growth_rate AS growth_rate,
                        d.annual_openings AS annual_openings,
-                       d.education_level AS education_level,
+                       occ.education_level AS education_level,
                        count(DISTINCT sk) AS matching_skills,
                        collect(DISTINCT sk.name) AS skills
                 ORDER BY matching_skills DESC
@@ -77,7 +77,8 @@ def get_occupation_detail(soc_code: str, college: str):
         with driver.session() as session:
             occ_result = session.run("""
                 MATCH (occ:Occupation {soc_code: $soc})
-                RETURN occ.title AS title, occ.description AS description
+                RETURN occ.title AS title, occ.description AS description,
+                       occ.education_level AS education_level
             """, soc=soc_code).single()
 
             if not occ_result:
@@ -104,8 +105,7 @@ def get_occupation_detail(soc_code: str, college: str):
                 MATCH (r:Region)-[d:DEMANDS]->(occ:Occupation {soc_code: $soc})
                 RETURN COALESCE(r.display_name, r.name) AS region, d.employment AS employment,
                        d.annual_wage AS annual_wage,
-                       d.growth_rate AS growth_rate, d.annual_openings AS annual_openings,
-                       d.education_level AS education_level
+                       d.growth_rate AS growth_rate, d.annual_openings AS annual_openings
                 ORDER BY d.employment DESC
             """, soc=soc_code).data()
 
@@ -113,6 +113,7 @@ def get_occupation_detail(soc_code: str, college: str):
             soc_code=soc_code,
             title=occ_result["title"],
             description=occ_result["description"],
+            education_level=occ_result["education_level"],
             skills=skills,
             regions=[{
                 "region": r["region"],
@@ -120,7 +121,6 @@ def get_occupation_detail(soc_code: str, college: str):
                 "annual_wage": r.get("annual_wage"),
                 "growth_rate": r.get("growth_rate"),
                 "annual_openings": r.get("annual_openings"),
-                "education_level": r.get("education_level"),
             } for r in region_result],
         )
     except HTTPException:

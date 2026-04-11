@@ -14,7 +14,7 @@ Nodes:
 - College (properties: name)
 - Region (properties: name)
 - Occupation (properties: soc_code, title, description, education_level)
-  education_level: string, typical entry-level education (e.g. "Bachelor's degree", "Associate's degree")
+  education_level: string, typical entry-level education (e.g. "Bachelor's degree", "Associate's degree"). This is a property on the Occupation NODE, not on the DEMANDS edge.
 - Skill (properties: name)
 - Course (properties: code, college, name)
 
@@ -28,7 +28,7 @@ Relationships:
 - (Occupation)-[:REQUIRES_SKILL]->(Skill)
 - (Course)-[:DEVELOPS]->(Skill)
 
-IMPORTANT: employment, annual_wage, growth_rate, and annual_openings are properties on the DEMANDS relationship (d.employment, d.annual_wage, etc.), NOT on the Occupation node.
+IMPORTANT: employment, annual_wage, growth_rate, and annual_openings are properties on the DEMANDS relationship (d.employment, d.annual_wage, etc.), NOT on the Occupation node. Conversely, education_level is a property on the Occupation NODE (occ.education_level), NOT on the DEMANDS edge.
 
 RULES:
 1. Every query MUST use this full traversal as the base MATCH to compute skill alignment between occupations and the college's curriculum:

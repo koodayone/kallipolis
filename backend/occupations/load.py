@@ -31,22 +31,13 @@ def load_industry(
 
     Args:
         driver: Neo4j driver instance.
-        occupations: List of occupation dicts from occupations.json (COE-based).
+        occupations: List of occupation dicts from occupations.json. The
+            workforce-development band filter is applied upstream in
+            occupations/generate.py, so this list is already scoped to
+            loadable rows.
         filtered_soc_codes: Optional set of SOC codes to load. If provided,
                   only these occupations are loaded into the graph.
     """
-    # Filter to workforce development band: postsecondary certificate through bachelor's
-    _EXCLUDE_EDUCATION = {
-        "No formal educational credential",
-        "High school diploma or equivalent",
-        "Some college, no degree",
-        "Master's degree",
-        "Doctoral or professional degree",
-    }
-    before = len(occupations)
-    occupations = [o for o in occupations if o.get("education_level") not in _EXCLUDE_EDUCATION]
-    logger.info(f"Workforce development band: {len(occupations)} occupations (from {before})")
-
     if filtered_soc_codes is not None:
         before = len(occupations)
         occupations = [o for o in occupations if o["soc_code"] in filtered_soc_codes]

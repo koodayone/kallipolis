@@ -1,12 +1,18 @@
 """
 Generate occupations.json from COE (Centers of Excellence) data.
 
-COE is the sole data source for the occupations domain. This replaces
-the previous OEWS-based generation pipeline.
+COE is the sole data source for the occupations domain.
+
+The workforce-development band filter is applied here (not at load time), so
+every row written to occupations.json is a row the graph will load. The band
+matches docs/product/occupations.md: postsecondary certificate through
+bachelor's degree.
 
 Usage:
-    python -m pipeline.industry.generate_occupations_from_coe
+    python -m occupations.generate
 """
+
+from __future__ import annotations
 
 import csv
 import json
@@ -20,6 +26,69 @@ COE_CSV_DEFAULT = Path(__file__).parents[3] / "cc_dataset" / "occupational_deman
 OUTPUT_PATH = Path(__file__).parent / "occupations.json"
 EXISTING_PATH = Path(__file__).parent / "occupations.json"
 
+# Education levels excluded from the workforce-development band. Occupations
+# whose typical entry-level education falls outside postsecondary certificate
+# through bachelor's are not what community colleges serve.
+EXCLUDED_EDUCATION = frozenset({
+    "No formal educational credential",
+    "High school diploma or equivalent",
+    "Some college, no degree",
+    "Master's degree",
+    "Doctoral or professional degree",
+    "N/A",
+})
+
+
+def _parse_int(value) -> int | None:
+    """Coerce a CSV cell to int, returning None on empty or bad input."""
+    if value is None or value == "":
+        return None
+    try:
+        return int(value)
+    except (ValueError, TypeError):
+        return None
+
+
+def _parse_float(value) -> float | None:
+    """Coerce a CSV cell to float, returning None on empty or bad input."""
+    if value is None or value == "":
+        return None
+    try:
+        return float(value)
+    except (ValueError, TypeError):
+        return None
+
+
+def _parse_row(row: dict) -> tuple[str, str, dict, str, dict]:
+    """Extract (soc, region, occupation_shell, education, region_metrics) from a CSV row."""
+    soc = row["SOC"].strip()
+    region = row["Region"].strip()
+    title = row["Description"].strip()
+    education = row["Typical Entry Level Education"].strip()
+
+    occupation_shell = {
+        "soc_code": soc,
+        "title": title,
+        "description": "",
+        "skills": [],
+        "education_level": education,
+        "regions": {},
+    }
+
+    region_metrics = {
+        "employment": _parse_int(row.get("2024 Jobs")),
+        "annual_wage": _parse_int(row.get("Median Annual Earnings")),
+        "growth_rate": _parse_float(row.get("2024 - 2029 % Change")),
+        "annual_openings": _parse_int(row.get("Average Annual Job Openings")),
+    }
+
+    return soc, region, occupation_shell, education, region_metrics
+
+
+def _is_in_workforce_band(education_level: str) -> bool:
+    """True when an education level falls inside the community-college workforce band."""
+    return education_level not in EXCLUDED_EDUCATION
+
 
 def generate_from_coe(csv_path: Path) -> list[dict]:
     """Parse COE CSV and produce occupations list for the pipeline."""
@@ -28,48 +97,15 @@ def generate_from_coe(csv_path: Path) -> list[dict]:
     with open(csv_path, newline="") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            soc = row["SOC"].strip()
-            region = row["Region"].strip()
-            title = row["Description"].strip()
-            education = row["Typical Entry Level Education"].strip()
+            soc, region, shell, education, metrics = _parse_row(row)
 
-            # Parse numeric fields
-            try:
-                growth_rate = float(row["2024 - 2029 % Change"]) if row["2024 - 2029 % Change"] else None
-            except (ValueError, TypeError):
-                growth_rate = None
-
-            try:
-                annual_openings = int(row["Average Annual Job Openings"]) if row["Average Annual Job Openings"] else None
-            except (ValueError, TypeError):
-                annual_openings = None
-
-            try:
-                median_annual = int(row["Median Annual Earnings"]) if row["Median Annual Earnings"] else None
-            except (ValueError, TypeError):
-                median_annual = None
-
-            try:
-                jobs = int(row["2024 Jobs"]) if row["2024 Jobs"] else None
-            except (ValueError, TypeError):
-                jobs = None
+            if not _is_in_workforce_band(education):
+                continue
 
             if soc not in occupations:
-                occupations[soc] = {
-                    "soc_code": soc,
-                    "title": title,
-                    "description": "",
-                    "skills": [],
-                    "education_level": education,
-                    "regions": {},
-                }
+                occupations[soc] = shell
 
-            occupations[soc]["regions"][region] = {
-                "employment": jobs,
-                "annual_wage": median_annual,
-                "growth_rate": growth_rate,
-                "annual_openings": annual_openings,
-            }
+            occupations[soc]["regions"][region] = metrics
 
     # Preserve existing skills and descriptions if occupations.json exists
     if EXISTING_PATH.exists():
@@ -85,9 +121,8 @@ def generate_from_coe(csv_path: Path) -> list[dict]:
                     occ["description"] = prev["description"]
 
     result = sorted(occupations.values(), key=lambda o: o["soc_code"])
-    logger.info(f"Generated {len(result)} occupations from COE data")
+    logger.info(f"Generated {len(result)} occupations in the workforce-development band")
 
-    # Log region coverage
     regions = set()
     for occ in result:
         regions.update(occ["regions"].keys())

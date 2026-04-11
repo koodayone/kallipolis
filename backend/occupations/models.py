@@ -35,6 +35,7 @@ class OccupationDetail(BaseModel):
     soc_code: str
     title: str
     description: Optional[str] = None
+    education_level: Optional[str] = None
     skills: list[SkillDetail]
     regions: list[dict]
 
