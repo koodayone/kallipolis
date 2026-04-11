@@ -110,7 +110,8 @@ cd atlas && npx tsc --noEmit
 
 # Unit tests (Vitest, pure-logic only)
 cd atlas && npm test
-cd atlas && npm run test:watch   # interactive watch mode
+cd atlas && npm run test:watch            # interactive watch mode
+cd atlas && npm test -- --reporter=verbose  # list every describe/it — the "what's covered?" view
 
 # Docs audit (verifies this README's code path references)
 python3 tools/docs-audit/audit.py
@@ -120,6 +121,7 @@ python3 tools/docs-audit/audit.py
 
 - **Product docs** — [`docs/product/`](../docs/product/): what each ontology unit *is*, not just what the code does. Start with [`the-atlas.md`](../docs/product/the-atlas.md) for the two-scale framing.
 - **Structural reference** — [`atlas/docs/the-structure.md`](./docs/the-structure.md): the principles behind this layout, the folder contract, and the anti-patterns it exists to prevent. Read this before adding, moving, or reorganizing files under `atlas/`.
+- **Testing reference** — [`atlas/docs/testing.md`](./docs/testing.md): the test suite's philosophy, file organization, naming convention, and the JSDoc coverage header convention the docs audit enforces. Read this before adding a new test file.
 - **Agent entry point** — [`atlas/CLAUDE.md`](./CLAUDE.md): short pointer-style directive that routes agents to `the-structure.md` at decision points.
 - **Backend counterpart** — [`backend/README.md`](../backend/README.md): the frontend and backend share the same feature-primary vocabulary. A product doc maps in one hop to both sides.
 - **System architecture** — [`docs/architecture/system-overview.md`](../docs/architecture/system-overview.md): three apps, one graph, streaming and auth patterns.

@@ -1,4 +1,23 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
+/**
+ * Tests for the students feature's API client — verifies URL
+ * construction, response parsing, and error handling for the three
+ * exported functions that wrap backend endpoints under /students.
+ *
+ * The fetch global is stubbed with vi.stubGlobal so assertions can
+ * inspect the URL and request init without hitting a real backend.
+ * This mocking pattern is the template the other five feature
+ * api.test.ts files will follow when they are added.
+ *
+ * Coverage:
+ *   - getStudents: URL encoding of the college parameter, successful
+ *     body parsing, error branch on non-ok response
+ *   - getStudent: URL includes both uuid and college, error branch
+ *   - queryStudents: POST body shape, Content-Type header, successful
+ *     body parsing, server error text surfaced in thrown error,
+ *     fallback "Query failed" message on empty error body
+ */
+
+import { describe, it, expect, afterEach, vi } from "vitest";
 import {
   getStudents,
   getStudent,

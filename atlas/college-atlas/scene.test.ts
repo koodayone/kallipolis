@@ -1,3 +1,20 @@
+/**
+ * Tests for the College Atlas scene vocabulary — the FormKey set and
+ * the FORM_URL_SLUGS map that connect the six-form layout to the
+ * route URLs under /[collegeId]/<form-slug>.
+ *
+ * These tests guard the one-hop mapping between FormKey, FORM_NAMES,
+ * and FORM_URL_SLUGS so a future refactor cannot silently break URL
+ * generation for any form.
+ *
+ * Coverage:
+ *   - ALL_FORM_KEYS and FORM_NAMES cover the same six forms
+ *   - Every FormKey in ALL_FORM_KEYS has a FORM_URL_SLUGS entry
+ *   - All slugs are kebab-case (no underscores, no uppercase)
+ *   - strong_workforce specifically maps to strong-workforce
+ *   - Every slug is unique so every form produces a distinct route
+ */
+
 import { describe, it, expect } from "vitest";
 import { ALL_FORM_KEYS, FORM_NAMES, FORM_URL_SLUGS, type FormKey } from "./scene";
 

@@ -1,3 +1,18 @@
+/**
+ * Tests for buildSwpRequest — the pure helper that transforms a
+ * SavedProposal plus its engagement type into an SwpProjectRequest
+ * ready for the /strong-workforce/project/stream backend endpoint.
+ *
+ * Coverage:
+ *   - Engagement-type default lookup: all five recognized types
+ *     (internship, apprenticeship, curriculum_codesign, hiring_mou,
+ *     advisory_board) and the fallback for unrecognized types
+ *   - Field passthrough from proposal into request
+ *   - Flattening of the proposal's nested justification object
+ *   - College argument takes precedence over SavedProposal.collegeId
+ *   - Null selected_soc_code is preserved, not coerced to "null"
+ */
+
 import { describe, it, expect } from "vitest";
 import { buildSwpRequest } from "./buildSwpRequest";
 import type { SavedProposal } from "@/college-atlas/partnerships/savedProposals";
