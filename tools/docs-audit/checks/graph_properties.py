@@ -55,6 +55,15 @@ LOADER_FILES = [
     "backend/employers/load.py",
 ]
 
+# Edges that are documented in graph-model.md as derived / precomputed and
+# are deliberately not materialized by any file in LOADER_FILES. These are
+# exempted from the "docs must match loaders" rule — the documentation is
+# the contract the reader is expected to honor, not a claim that a loader
+# produces the edge.
+DERIVED_EDGES = frozenset({
+    "PARTNERSHIP_ALIGNMENT",
+})
+
 
 # ── Patterns ──────────────────────────────────────────────────────────
 
@@ -292,6 +301,8 @@ class GraphPropertiesCheck(Check):
         # ── Compare edge properties ───────────────────────────────────
         all_edges = set(doc_edge_props) | set(actual_edge_props)
         for edge in sorted(all_edges):
+            if edge in DERIVED_EDGES:
+                continue
             doc_props = doc_edge_props.get(edge, set())
             actual = actual_edge_props.get(edge, set())
 

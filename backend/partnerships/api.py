@@ -20,7 +20,13 @@ router = APIRouter()
 
 @router.get("/landscape", response_model=PartnershipLandscape)
 def get_partnership_landscape(college: str):
-    """Returns employers ranked by partnership opportunity — skill alignment, gaps, and top occupation."""
+    """Returns employers ranked by partnership opportunity — skill alignment, gaps, and top occupation.
+
+    Reads the precomputed `PARTNERSHIP_ALIGNMENT` edge. The writer that
+    materializes this edge is not currently checked into the repository
+    (see docs/architecture/graph-model.md "Known gap"), so on a fresh
+    database this endpoint returns an empty opportunities list.
+    """
     driver = get_driver()
     try:
         with driver.session() as session:

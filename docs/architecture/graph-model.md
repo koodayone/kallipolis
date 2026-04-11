@@ -45,6 +45,18 @@ Relationships encode the supply-demand logic of workforce development. Each one 
 
 The `IN_MARKET` relationship is overloaded: the same edge type connects both colleges and employers to their regional labor markets. This works because the semantics are the same in both cases — the entity operates within the region — even though the entities being connected are different node types.
 
+### The precomputed analytical edge
+
+One additional edge type exists alongside the ten base relationships above. It is a derived analytical edge rather than a foundational one: it encodes the output of a computation over the base graph rather than a raw fact from an institutional authority.
+
+| Relationship | From → To | Properties | What it encodes |
+|---|---|---|---|
+| `PARTNERSHIP_ALIGNMENT` | College → Employer | alignment_score, gap_count, aligned_skills, gap_skills, top_occupation, top_wage, pipeline_size | Precomputed partnership opportunity metrics between a college and an employer in its region |
+
+`PARTNERSHIP_ALIGNMENT` is read by the partnership landscape endpoint (`backend/partnerships/api.py`) so that the landscape view can return 500+ employers in under a second rather than recomputing alignment traversals on each request. Unlike the ten base relationships, its properties are not sourced from an institutional authority — they are the output of a graph traversal materialized onto an edge.
+
+**⚠ Known gap.** The precomputation step that materializes `PARTNERSHIP_ALIGNMENT` is not currently checked into the repository. Commit `5fc19f6` ("Precompute partnership alignment + pipeline") updated the reader but the corresponding writer was never committed, so on a fresh database the landscape endpoint returns empty. The edge shape documented above is what the reader expects; restoring the writer is tracked as separate work.
+
 ## Schema diagram
 
 ```

@@ -64,17 +64,22 @@ The split is deliberate. Claude is asked to reason about institutional context �
 
 For the full treatment of where each model is called and why, see [AI Integration](./ai-integration.md).
 
-## The three API surfaces
+## The six API surfaces
 
-The backend exposes three routers, each scoped to a domain.
+The backend exposes one router per ontology unit, each scoped to a single conceptual noun. The four units of analysis each have a router that exposes both deterministic retrieval and Claude-generated Cypher retrieval. The two units of action each have a router that exposes LLM-backed proposal generation, streamed via server-sent events.
 
 | Router | Path prefix | Purpose |
 |---|---|---|
-| `ontology` | `/ontology/*` | College, departments, courses, students |
-| `labor_market` | `/labor-market/*` | Occupations, employers, partnership landscape |
-| `workflows` | `/workflows/*` | Partnership proposals (streaming), SWP builder (streaming) |
+| `students` | `/students/*` | Student roster and detail, NL student query |
+| `courses` | `/courses/*` | College and department structure, course listing, NL course query |
+| `occupations` | `/occupations/*` | Labor market overview, occupation detail, NL occupation query |
+| `employers` | `/employers/*` | Employer listing and detail, NL employer query |
+| `partnerships` | `/partnerships/*` | Partnership landscape (read), NL partnership query, targeted proposal generation (streaming) |
+| `strong_workforce` | `/strong-workforce/*` | LMI context, SWP project generation (streaming) |
 
-The ontology and labor market routers expose both **direct query endpoints** (deterministic Cypher) and **NL query endpoints** (Claude-generated Cypher with validation). The workflow router is exclusively AI-driven and streams its output.
+The four analysis-unit routers (`students`, `courses`, `occupations`, `employers`) expose both direct query endpoints (deterministic Cypher) and an NL `/query` endpoint (Claude-generated Cypher with a safety gate). The two action-unit routers (`partnerships`, `strong_workforce`) are AI-driven and stream their output.
+
+For the full endpoint catalog — methods, paths, request shapes, response shapes — see [API Reference](./api-reference.md).
 
 ## Streaming
 
@@ -88,20 +93,31 @@ This is appropriate for the product's current stage. The threat model is institu
 
 ## What lives where
 
+The backend is **feature-primary**: each ontology unit owns a directory containing routes, queries, models, and ingestion code for that unit. Cross-unit infrastructure lives in `ontology/` (graph schema, shared reference data, calibrations) and `llm/` (the NL-to-Cypher engine). `pipeline/` is a thin orchestration layer that imports from features, not the other way around.
+
 ```
 kallipolis/
 ├── app/, components/, lib/      # Landing page (port 3000)
 ├── atlas/                       # Atlas (port 3001) — full app
-├── backend/                     # FastAPI + pipeline + graph schema
-│   ├── api/                     # FastAPI routers
-│   ├── workflows/               # Business logic and AI orchestration
-│   ├── ontology/                # Neo4j schema and driver
-│   ├── pipeline/                # ETL ingestion (per-college and per-region)
-│   ├── models/                  # Pydantic data models
-│   └── main.py                  # FastAPI entry point
+├── backend/
+│   ├── main.py                  # FastAPI entry point; mounts per-feature routers
+│   ├── ontology/                # Neo4j schema, driver, unified skills taxonomy,
+│   │                            #   regions, supply/demand, crosswalks, calibrations
+│   ├── llm/                     # Shared NL-to-Cypher engine with safety gate
+│   ├── students/                # ↔ docs/product/students.md
+│   ├── courses/                 # ↔ docs/product/courses.md
+│   ├── occupations/             # ↔ docs/product/occupations.md
+│   ├── employers/               # ↔ docs/product/employers.md
+│   ├── partnerships/            # ↔ docs/product/partnerships.md (unit of action)
+│   ├── strong_workforce/        # ↔ docs/product/strong-workforce.md (unit of action)
+│   ├── pipeline/                # Ingestion orchestration + calibration prep
+│   ├── tests/unit/              # Fast, no I/O unit suite (CI-gated)
+│   └── tests/integration/       # Neo4j + LLM-coupled scripts (local only)
 ├── docs/                        # This documentation
 └── docker-compose.yml           # Neo4j + backend orchestration
 ```
+
+Each feature directory follows the same file shape: `models.py`, `api.py`, `query.py` (analysis units) or `generate.py` (action units), `load.py` (when ingested), plus feature-specific scrapers or reference data. For the full per-directory conventions, see [`backend/README.md`](../../backend/README.md).
 
 The landing page lives at the repository root because it was the first thing built. The atlas was added later as a sibling directory rather than being absorbed into the root app, which keeps the two frontends cleanly separated.
 

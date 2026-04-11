@@ -49,6 +49,14 @@ LOADER_FILES = [
     "backend/employers/load.py",
 ]
 
+# Edge types that are documented in graph-model.md as derived / precomputed
+# and are deliberately not materialized by any file in LOADER_FILES. Triples
+# whose relationship type is in this set are exempted from the
+# "doc/loader must agree" rule.
+DERIVED_EDGE_TYPES = frozenset({
+    "PARTNERSHIP_ALIGNMENT",
+})
+
 
 # ── Patterns ──────────────────────────────────────────────────────────
 
@@ -235,15 +243,23 @@ class RelationshipInventoryCheck(Check):
         documented = extract_documented_edges(doc_file)
         actual = extract_actual_edges(repo_root)
 
+        # Derived edges are documented but not materialized by design.
+        documented_verified = {
+            e for e in documented if e.rel_type not in DERIVED_EDGE_TYPES
+        }
+        actual_verified = {
+            e for e in actual if e.rel_type not in DERIVED_EDGE_TYPES
+        }
+
         problems: List[str] = []
 
-        missing_in_code = documented - actual
+        missing_in_code = documented_verified - actual_verified
         for edge in sorted(missing_in_code, key=str):
             problems.append(
                 f"  documented but no loader has it: {edge}"
             )
 
-        extra_in_code = actual - documented
+        extra_in_code = actual_verified - documented_verified
         for edge in sorted(extra_in_code, key=str):
             problems.append(
                 f"  loader has it but no doc row: {edge}"
