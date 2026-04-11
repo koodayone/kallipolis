@@ -85,7 +85,7 @@ For each course, extract:
 - ge_area: General education area if listed, otherwise empty string
 - grading: Grading method if listed (e.g., "Letter Grade", "Pass/No Pass"), otherwise empty string
 - hours: Lecture/lab hours if listed, otherwise empty string
-- skill_mappings: Array of workforce skill categories (at least 6) derived from the course description, SLOs, and objectives
+- skill_mappings: Array of canonical workforce skills derived from the course description, SLOs, and objectives. Typically 3–8 skills per course; may be fewer for narrow technical content or more for broad content. No minimum. Do not pad to hit a target count.
 
 COURSE EXTRACTION RULES:
 1. ONLY extract courses from COURSE DESCRIPTION sections — where you see a course code, title, units, and a prose description paragraph. Do NOT extract from program requirement tables, degree/certificate requirement lists, or curriculum guides that only list course codes, titles, and units in a tabular format without descriptions.
@@ -96,11 +96,24 @@ COURSE EXTRACTION RULES:
 6. If no course descriptions are found on these pages, return an empty array [].
 7. Department should be the broad discipline name, not the full program title.
 
-SKILL MAPPING RULES:
-1. You MUST select skills from this taxonomy. Use EXACT names: {taxonomy}
-2. Select ALL skills from the taxonomy that the course meaningfully develops. Do NOT invent new skill names.
-3. Focus on demonstrable, transferable competencies — not course topics.
-4. If the course has no description, return an empty skill_mappings array.
+SKILL MAPPING RULES
+
+1. Canonical-only. Every skill you emit must appear as an EXACT string in the canonical taxonomy below. Do not invent, compound, pluralize, rephrase, or add modifiers. "Equipment Operation & Maintenance" is wrong — emit "Equipment Operation". "Clinical Patient Care" is wrong — emit "Patient Care". "Quality Control Analysis" is wrong — emit "Quality Control". "Sociology & Anthropology" is wrong — emit "Sociology" and "Anthropology" as two separate entries.
+
+Canonical taxonomy: {taxonomy}
+
+2. Competencies, not topics or traits. A skill is a demonstrable, transferable competency a student can perform after completing the course. It is not a topic the course covers, not a method used to teach the course, and not a generic trait every job requires.
+
+Explicitly exclude:
+- Pedagogical descriptors: "active learning", "collaborative learning", "project-based learning"
+- Generic soft skills every job requires: "professionalism", "time management", "active listening", "social perceptiveness"
+- Broad umbrellas when a specific canonical term applies: "critical thinking", "complex problem solving", "oral communication", "reading comprehension", "science", "computers & electronics", "personnel & human resources"
+
+When a catalog description uses an umbrella phrase, pick the specific canonical term that describes what the course actually develops. A course teaching critical thinking in a scientific context should emit "Scientific Methodology" or "Research Methods". A course teaching complex problem solving in manufacturing should emit "Troubleshooting" or "Quality Control". A course teaching oral communication in a counseling program should emit "Counseling" or "Customer Service".
+
+3. Specific over generic. When multiple canonical terms could apply, pick the most specific one that the course actually develops. A course teaching Python programming should emit "Programming", not the broader "Digital Literacy". A course teaching biology research design should emit "Research Methods" or "Scientific Methodology", not the broader "Biology" unless the course is a general biology survey.
+
+4. No minimum count, no padding. A typical course develops 3–8 canonical skills; emit as many or as few as genuinely apply. Four precise canonical skills are better than eight loose ones. If no canonical term carries a given competency, omit it rather than substituting something looser. An empty skill_mappings array is valid if the course description describes no canonical competencies.
 
 Return ONLY a JSON array of course objects. No explanations or markdown."""
 
