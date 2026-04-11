@@ -1,3 +1,7 @@
+---
+type: reference
+---
+
 # Graph Model
 
 The Kallipolis ontology is implemented as a Neo4j property graph with eight node types and ten relationship pairings. This document describes the schema — what each node type represents, what each relationship encodes, and how the supply-demand chain is realized in actual graph structure.
