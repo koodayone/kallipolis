@@ -27,6 +27,7 @@ from checks.api_endpoints import APIEndpointsCheck  # noqa: E402
 from checks.model_names import ModelNamesCheck  # noqa: E402
 from checks.schema_constraints import SchemaConstraintsCheck  # noqa: E402
 from checks.graph_properties import GraphPropertiesCheck  # noqa: E402
+from checks.numerical_constants import NumericalConstantsCheck  # noqa: E402
 from lib.reporter import HumanReporter  # noqa: E402
 
 
@@ -38,6 +39,7 @@ ALL_CHECKS: list[Check] = [
     ModelNamesCheck(),
     SchemaConstraintsCheck(),
     GraphPropertiesCheck(),
+    NumericalConstantsCheck(),
 ]
 
 
