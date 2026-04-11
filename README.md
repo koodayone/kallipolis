@@ -72,3 +72,7 @@ pip install -r requirements.txt
 # Ensure .env has NEO4J_URI pointing to your running Neo4j instance
 uvicorn main:app --reload --port 8000
 ```
+
+## Documentation
+
+For the project's mental model and architecture, see [`docs/README.md`](./docs/README.md) — an annotated index of every doc in the documentation tree.
