@@ -90,6 +90,79 @@ Always relative markdown links: `[The Atlas](./product/the-atlas.md)`. Never abs
 
 ---
 
+## Feature-primary layout and vocabulary alignment
+
+The backend and the atlas are organized around **ontology units**, not around engineering layers. Each unit (students, courses, occupations, employers, partnerships, strong-workforce) owns a directory containing all of its code, and the name of that unit is the same across every layer of conversation about it — product doc, backend directory, URL prefix, atlas directory. This is what keeps product language and engineering language in sync, and what keeps multi-agent work composable: two agents working on two features touch non-overlapping files.
+
+This section is the contract. Two audit checks — `backend_layout` and `vocabulary_alignment` — enforce it mechanically on every push.
+
+### The principle
+
+One concept, one canonical name, mechanical transformations to every other surface form, bidirectional verification. The canonical source is the product doc filename stem under `docs/product/`. Every other surface form derives from it via a well-defined rule, not via a handwritten mapping that could drift independently.
+
+### Surface forms and transformations
+
+Each ontology unit currently has four load-bearing surface forms, enforced by the audit:
+
+| Surface | Location | Derivation from canonical |
+|---|---|---|
+| Product doc | *docs/product/CANONICAL.md* | Canonical (identity) |
+| Backend package | *backend/CANONICAL_WITH_UNDERSCORES/* | Replace `-` with `_` |
+| Atlas feature | *atlas/college-atlas/CANONICAL/* | Canonical (identity) |
+| URL prefix | */CANONICAL* in `backend/main.py` | Prepend `/` |
+
+For example, `strong-workforce` (the canonical form, matching `docs/product/strong-workforce.md`) derives `backend/strong_workforce/`, `atlas/college-atlas/strong-workforce/`, and `/strong-workforce` respectively. The hyphen-to-underscore transform exists because Python packages cannot contain hyphens; the other three surfaces preserve the canonical form.
+
+Three further surface forms exist but are **not yet enforced** by the audit: Neo4j node labels (`Student`, `Course`, etc.), Pydantic model prefixes (`StudentSummary`, `EmployerMatch`), and test file names (`test_student_helpers.py`). These involve PascalCase and singular/plural rules that need more design before mechanical enforcement.
+
+### Rules enforced by `backend_layout`
+
+The `backend_layout` check (in `tools/docs-audit/checks/backend_layout.py`) enforces three structural invariants about `backend/`:
+
+1. Only known directories live at the top of `backend/`. The six feature directories plus the shared-infrastructure directories (`backend/ontology/`, `backend/llm/`, `backend/pipeline/`, `backend/tests/`, `backend/scripts/`, `backend/docs/`) are allowed. A new top-level directory under `backend/` — for example, a catchment named *shared/* or *utils/* — fails the check. New features go in their own feature directory; new shared code goes in `backend/ontology/` or `backend/llm/`.
+
+2. Each feature directory contains at least `__init__.py`, `api.py`, and `models.py`. A feature missing one of those is either half-built or structurally broken.
+
+3. No stray Python files at `backend/` top level except `main.py`. Every `.py` file belongs in a feature directory or a shared-infrastructure directory.
+
+### Rules enforced by `vocabulary_alignment`
+
+The `vocabulary_alignment` check (in `tools/docs-audit/checks/vocabulary_alignment.py`) enforces bidirectional correspondence across the four current surface forms. It walks:
+
+1. **Forward:** for each non-meta product doc under `docs/product/`, verify that the derived backend directory, atlas directory, and URL prefix all exist.
+
+2. **Reverse:** for each backend feature directory and each atlas feature directory, verify that a corresponding product doc exists.
+
+Both directions are necessary. Forward catches aspiration without implementation (a product doc for a unit that wasn't built). Reverse catches implementation without documentation (a feature built without being described in product language).
+
+### How to add a new ontology unit
+
+The sequence is: write the product doc first, then derive the other surface forms. The product doc is the source of truth, and everything else is bound to it.
+
+1. Create the new product document under `docs/product/` — its filename stem (e.g., `regional-workforce-boards` for `regional-workforce-boards.md`) is the canonical form.
+2. Create the new backend feature directory under `backend/`, applying the hyphen-to-underscore transform to the canonical form. Include at minimum `__init__.py`, `api.py`, and `models.py`.
+3. Create the new atlas feature directory under `atlas/college-atlas/`, preserving the canonical form's hyphens.
+4. Add the router to `backend/main.py` with an `app.include_router` call whose `prefix` argument is `/` followed by the canonical form.
+5. Run `python3 tools/docs-audit/audit.py` and confirm both `backend_layout` and `vocabulary_alignment` still pass.
+
+Any deviation from this sequence — a product doc without code, code without a doc, a URL prefix that doesn't match the feature directory — will fail the audit at step 5.
+
+### How to add a meta doc under `docs/product/`
+
+Meta documents that describe the ontology framing rather than naming a unit (for example, `the-ontology.md`, `the-atlas.md`, `the-skills-taxonomy.md`) must be registered explicitly in the audit, or the vocabulary alignment check will treat them as units and demand matching code.
+
+Add the filename stem to the `_META_DOC_STEMS` set in `tools/docs-audit/checks/vocabulary_alignment.py`. This is a deliberate friction — it forces the contributor to answer "is this a unit or meta?" every time a new product-section document is added.
+
+### How to add an exemption
+
+If a unit legitimately skips one of the four surface forms — for example, an action unit whose atlas experience is nested inside a consuming analysis unit rather than standing alone — the exemption lives in the `UNIT_EXEMPTIONS` dict at the top of `tools/docs-audit/checks/vocabulary_alignment.py`. The entry must document *why* the exemption exists so future readers can judge whether it still applies. The dict is currently empty; all six units currently have all four surface forms.
+
+### Why this is the convention
+
+Feature-primary layout and vocabulary alignment are the substrate for two properties the project depends on: **agentic parallelization** (two agents working on two features touch non-overlapping files, so their work composes by merging directories rather than by merging within files), and **product-engineering vocabulary alignment** (the name a coordinator reads in the product doc is the same name a developer reads in the code directory and the same name an agent uses when asked to "improve the Students feature"). Without mechanical enforcement, both properties decay on natural timescales as new code is added, features are renamed, and shortcuts are taken under deadline. The two audit checks listed above are what keeps the substrate load-bearing instead of aspirational.
+
+---
+
 ## What this enables
 
 ### The audit (`tools/docs-audit/`)
