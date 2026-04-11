@@ -108,6 +108,10 @@ cd atlas && npm run build && npm run start
 # Type check (no emit)
 cd atlas && npx tsc --noEmit
 
+# Unit tests (Vitest, pure-logic only)
+cd atlas && npm test
+cd atlas && npm run test:watch   # interactive watch mode
+
 # Docs audit (verifies this README's code path references)
 python3 tools/docs-audit/audit.py
 ```

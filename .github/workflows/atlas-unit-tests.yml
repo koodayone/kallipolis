@@ -1,0 +1,38 @@
+name: Atlas unit tests
+
+# Vitest runs the atlas frontend's pure-logic unit tests. Fast (sub-second
+# on a clean checkout) and pure Node — no browser, no backend, no graph.
+# Gated on PRs and main so merges don't break the test harness silently.
+
+on:
+  pull_request:
+    paths:
+      - 'atlas/**'
+      - '.github/workflows/atlas-unit-tests.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'atlas/**'
+      - '.github/workflows/atlas-unit-tests.yml'
+
+jobs:
+  unit-tests:
+    name: Atlas unit tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: atlas
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: atlas/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run unit tests
+        run: npm test

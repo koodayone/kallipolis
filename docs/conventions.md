@@ -157,6 +157,16 @@ Add the filename stem to the `_META_DOC_STEMS` set in `tools/docs-audit/checks/v
 
 If a unit legitimately skips one of the four surface forms — for example, an action unit whose atlas experience is nested inside a consuming analysis unit rather than standing alone — the exemption lives in the `UNIT_EXEMPTIONS` dict at the top of `tools/docs-audit/checks/vocabulary_alignment.py`. The entry must document *why* the exemption exists so future readers can judge whether it still applies. The dict is currently empty; all six units currently have all four surface forms.
 
+### Test file location
+
+Unit tests live next to the source files they verify, inside the feature directory. A source file at `backend/students/helpers.py` has its tests at `backend/students/test_helpers.py`. The atlas follows the same rule with colocated `*.test.ts` files under each feature directory in `atlas/college-atlas/`.
+
+Integration tests that span multiple features — typically those that require a live Neo4j instance or external APIs — live at `backend/tests/integration/` because they are *not feature-local by definition*. A test exercising partnerships, occupations, and students simultaneously doesn't belong to any single feature, so it goes in a category directory that names what it is (integration tests) rather than where in the feature tree it "attaches."
+
+This rule applies uniformly across the stack. There is no per-ecosystem exception — the feature-primary principle governs test placement in both Python and TypeScript, and the integration tests' separate home is a *semantic* distinction (tests that span features) rather than an ad-hoc exception. Uniform colocation is also the cleanest substrate for agent parallelization: two agents working on two features touch zero common files, including test files.
+
+Backend test discovery is configured in `backend/pyproject.toml` via `testpaths`, which lists each feature directory plus shared-infrastructure directories that contain tests. Adding a new feature means adding it to that list — a small forcing function that prevents silent test coverage gaps.
+
 ### Why this is the convention
 
 Feature-primary layout and vocabulary alignment are the substrate for two properties the project depends on: **agentic parallelization** (two agents working on two features touch non-overlapping files, so their work composes by merging directories rather than by merging within files), and **product-engineering vocabulary alignment** (the name a coordinator reads in the product doc is the same name a developer reads in the code directory and the same name an agent uses when asked to "improve the Students feature"). Without mechanical enforcement, both properties decay on natural timescales as new code is added, features are renamed, and shortcuts are taken under deadline. The two audit checks listed above are what keeps the substrate load-bearing instead of aspirational.

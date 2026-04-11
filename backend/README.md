@@ -41,8 +41,9 @@ backend/
 │   └── ...                Calibration and taxonomy prep utilities
 │
 ├── tests/
-│   ├── unit/              Fast, no I/O, no external deps
-│   └── integration/       Neo4j + LLM-coupled scripts
+│   └── integration/       Neo4j + LLM-coupled scripts (multi-feature scenarios)
+│   # Unit tests live next to the source files they verify — see
+│   # e.g. backend/students/test_helpers.py alongside helpers.py.
 │
 ├── scripts/               One-off maintenance utilities
 └── docs/                  Backend-specific internal notes
@@ -55,13 +56,14 @@ every file, but when a file exists, its name means the same thing:
 
 ```
 <feature>/
-├── models.py       Pydantic schemas for this feature
-├── api.py          FastAPI routes for this feature
-├── query.py        LLM-backed retrieval (for units of analysis)
-├── generate.py     LLM-backed generation (for units of action)
-├── load.py         Neo4j persistence for ingested data
-├── <source>.py     External data fetch (scrapers, parsers)
-└── *.json, *.csv   Feature-specific reference data
+├── models.py         Pydantic schemas for this feature
+├── api.py            FastAPI routes for this feature
+├── query.py          LLM-backed retrieval (for units of analysis)
+├── generate.py       LLM-backed generation (for units of action)
+├── load.py           Neo4j persistence for ingested data
+├── <source>.py       External data fetch (scrapers, parsers)
+├── test_<file>.py    Unit tests colocated with the file they verify
+└── *.json, *.csv     Feature-specific reference data
 ```
 
 ## Dependency direction
@@ -80,8 +82,8 @@ and imports from features; features never import from `pipeline/`.
 ## Running
 
 ```bash
-# Unit tests (fast, no dependencies)
-cd backend && python3 -m pytest tests/unit/
+# Unit tests (fast, no dependencies) — discovered via backend/pyproject.toml
+cd backend && python3 -m pytest
 
 # Docs audit (stdlib only, verifies this README too)
 python3 tools/docs-audit/audit.py

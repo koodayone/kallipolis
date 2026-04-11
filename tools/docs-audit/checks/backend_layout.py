@@ -63,6 +63,7 @@ _ALLOWED_TOP_LEVEL_FILES = frozenset({
     "Dockerfile",
     "requirements.txt",
     "run_all.sh",
+    "pyproject.toml",
 })
 
 # Directories ignored entirely (generated, unchecked).

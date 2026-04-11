@@ -26,4 +26,4 @@ jobs:
 
       - name: Run unit tests
         working-directory: backend
-        run: python -m pytest tests/unit/ -v
+        run: python -m pytest -v

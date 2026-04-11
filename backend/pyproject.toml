@@ -1,0 +1,22 @@
+[tool.pytest.ini_options]
+# Test discovery: unit tests are colocated next to the source files they
+# verify, inside their feature directories. Integration tests that span
+# multiple features live under tests/integration/ because they are not
+# feature-local by definition.
+#
+# The default `python -m pytest` command (no path argument) discovers the
+# colocated unit tests below. To run integration tests, invoke them
+# explicitly: `python -m pytest tests/integration/`.
+testpaths = [
+    "students",
+    "courses",
+    "occupations",
+    "employers",
+    "partnerships",
+    "strong_workforce",
+    "ontology",
+    "llm",
+]
+
+# Filename pattern for test file discovery. pytest's default.
+python_files = ["test_*.py"]
