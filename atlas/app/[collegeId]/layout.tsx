@@ -36,6 +36,15 @@ export default function CollegeAtlasLayout({ children }: { children: ReactNode }
     if (isHome) sceneRef.current?.resetScene();
   }, [isHome]);
 
+  // Forward React-side hover state (from 2D labels) into the scene so that
+  // hovering a label brightens the matching 3D form via the scene engine's
+  // hoverLight. When the scene's own raycaster sets hover, it flows back
+  // through onHoverChange → setHoveredForm → this effect → setExternalHover,
+  // which is a no-op because handleHover debounces on key equality.
+  useEffect(() => {
+    sceneRef.current?.setExternalHover?.(hoveredForm);
+  }, [hoveredForm]);
+
   // Project the canvas's 2D label positions once the scene has built, and
   // again on window resize. The canvas is dynamically imported, so sceneRef
   // may not be populated on the first tick after navigation — keep trying

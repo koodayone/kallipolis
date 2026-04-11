@@ -103,6 +103,7 @@ export function buildAtlasScene(
   resetScene: () => void;
   getProjectedPositions: () => Record<string, { x: number; y: number }>;
   setPaused: (paused: boolean) => void;
+  setExternalHover: (form: FormKey | null) => void;
 } {
   return buildScene<FormKey>(canvas, config, {
     onClick: callbacks.onFormClick,

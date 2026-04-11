@@ -162,6 +162,7 @@ export function buildScene<K extends string>(
   resetScene: () => void;
   getProjectedPositions: () => Record<string, { x: number; y: number }>;
   setPaused: (paused: boolean) => void;
+  setExternalHover: (key: K | null) => void;
 } {
   const initRect = canvas.getBoundingClientRect();
   const initW = initRect.width || canvas.clientWidth || 800;
@@ -583,5 +584,16 @@ export function buildScene<K extends string>(
     return positions;
   }
 
-  return { cleanup, resetScene, getProjectedPositions, setPaused };
+  return {
+    cleanup,
+    resetScene,
+    getProjectedPositions,
+    setPaused,
+    // External hover: lets React-side hover (e.g. from a 2D label) drive
+    // the same visual state that the scene's own raycaster produces.
+    // handleHover has a key-equality early-return, so when React state
+    // flows back from the raycaster → onHoverChange → setHoveredForm,
+    // the resulting setExternalHover call is a safe no-op.
+    setExternalHover: handleHover,
+  };
 }
