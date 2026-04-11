@@ -658,10 +658,15 @@ def load_students(driver: Driver, institution: str, students: List[GeneratedStud
 
         logger.info(f"Loaded {loaded} enrollments for {len(students)} students")
 
-        # Materialize Student -[HAS_SKILL]-> Skill from completed enrollments
+        # Materialize Student -[HAS_SKILL]-> Skill only from enrollments the
+        # student successfully completed at a passing grade. Status='Completed'
+        # is not sufficient: the generator sets status='Completed' for D and F
+        # as well, and a student who failed a course did not acquire its
+        # skills. The success set matches the grade filter documented in
+        # docs/pipeline/student-generation.md.
         result = session.run("""
             MATCH (st:Student)-[e:ENROLLED_IN]->(c:Course)-[:DEVELOPS]->(s:Skill)
-            WHERE e.status = 'Completed'
+            WHERE e.grade IN ['A', 'B', 'C', 'P']
             MERGE (st)-[:HAS_SKILL]->(s)
             RETURN count(*) AS created
         """)
