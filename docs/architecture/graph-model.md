@@ -12,7 +12,7 @@ Five node types live on the curriculum side, three on the industry side. Each on
 |---|---|---|---|
 | **College** | name, city, state, region | `name UNIQUE` | A California community college |
 | **Department** | name | `name UNIQUE` | A department within a college (e.g., Welding, Nursing) |
-| **Course** | code, college, name, department, units, description, learning_outcomes, course_objectives, skill_mappings, transfer_status, url | `(code, college) UNIQUE` | A course actually taught at a college |
+| **Course** | code, college, name, department, units, description, prerequisites, learning_outcomes, course_objectives, skill_mappings, transfer_status, url | `(code, college) UNIQUE` | A course actually taught at a college |
 | **Skill** | name | `name UNIQUE` | A workforce-relevant competency from the unified taxonomy |
 | **Student** | uuid, gpa, primary_focus, courses_completed | `uuid UNIQUE` | A student enrolled at a college (synthetic). The derived fields are materialized after enrollment generation. |
 
