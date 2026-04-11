@@ -44,14 +44,11 @@ How the system is built. The technical choices are downstream of the product fra
 - [AI Integration](./architecture/ai-integration.md) — Where Claude and Gemini are called, what each model is asked to do, and the constraints that make the integration principled and improvable
 
 ### [Pipeline](./pipeline/)
-How institutional data enters the graph. The mechanism by which the ontology comes into being. Operationally the most subtle part of the system.
+How institutional data enters the graph. The mechanism by which the ontology comes into being. Same audience as the architecture section: written for mental model first.
 
-- Overview — The layers and what "loaded" means *(draft)*
-- Course Extraction — PDF scraping, Gemini, the unified skill taxonomy *(draft)*
-- Student Generation — Synthetic enrollments and calibration data *(draft)*
-- Industry Data — Occupations and regions *(draft)*
+- [Overview](./pipeline/overview.md) — The five stages, what each stage produces, and how the curriculum-side and industry-side pipelines converge in the same graph
+- [Student Generation](./pipeline/student-generation.md) — The synthetic methodology, the DataMart calibration, and what the generated population is and is not
 - [Employer Generation](./pipeline/employer-generation.md) — EDD scraping, county→metro→COE crosswalk, merge semantics
-- Region Reload — Full graph rebuild and verification *(draft)*
 
 ## Conventions
 
