@@ -53,6 +53,7 @@ LOADER_FILES = [
     "backend/pipeline/load_skills.py",
     "backend/occupations/load.py",
     "backend/employers/load.py",
+    "backend/partnerships/compute.py",
 ]
 
 # Edges that are documented in graph-model.md as derived / precomputed and
@@ -60,9 +61,7 @@ LOADER_FILES = [
 # exempted from the "docs must match loaders" rule — the documentation is
 # the contract the reader is expected to honor, not a claim that a loader
 # produces the edge.
-DERIVED_EDGES = frozenset({
-    "PARTNERSHIP_ALIGNMENT",
-})
+DERIVED_EDGES: frozenset[str] = frozenset()
 
 
 # ── Patterns ──────────────────────────────────────────────────────────

@@ -49,6 +49,7 @@ REPO_RELATIVE_PREFIXES = (
 # them covered by the same drift protection the docs tree gets.
 EXTRA_AUDITED_MD_FILES = (
     "backend/README.md",
+    "atlas/README.md",
 )
 
 # Recognized file extensions for path candidates

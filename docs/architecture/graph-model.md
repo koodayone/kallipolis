@@ -55,7 +55,7 @@ One additional edge type exists alongside the ten base relationships above. It i
 
 `PARTNERSHIP_ALIGNMENT` is read by the partnership landscape endpoint (`backend/partnerships/api.py`) so that the landscape view can return 500+ employers in under a second rather than recomputing alignment traversals on each request. Unlike the ten base relationships, its properties are not sourced from an institutional authority — they are the output of a graph traversal materialized onto an edge.
 
-**⚠ Known gap.** The precomputation step that materializes `PARTNERSHIP_ALIGNMENT` is not currently checked into the repository. Commit `5fc19f6` ("Precompute partnership alignment + pipeline") updated the reader but the corresponding writer was never committed, so on a fresh database the landscape endpoint returns empty. The edge shape documented above is what the reader expects; restoring the writer is tracked as separate work.
+The materialization step lives in [`backend/partnerships/compute.py`](../../backend/partnerships/compute.py). It runs after industry and student data have been loaded, traverses the college-region-employer-occupation-skill-course chain to derive alignment and gap sets, pairs each employer with its highest-wage occupation and the college's matching student pipeline, and writes the edge per (College, Employer) pair that shares a region. `backend/pipeline/reload.py` invokes it automatically after student generation.
 
 ## Schema diagram
 

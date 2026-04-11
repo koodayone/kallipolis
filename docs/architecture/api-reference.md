@@ -76,7 +76,7 @@ data: {"done": true}\n\n
 ```
 On error: `data: {"error": "<message>"}\n\n`.
 
-**⚠ Landscape endpoint caveat.** `GET /partnerships/landscape` and `GET /partnerships/employer-pipeline` depend on the `PARTNERSHIP_ALIGNMENT` edge in the graph. The writer that materializes this edge is not currently checked into the repository (see [Graph Model → Known gap](./graph-model.md#the-precomputed-analytical-edge)); on a fresh database these endpoints return empty results.
+`GET /partnerships/landscape` reads the precomputed `PARTNERSHIP_ALIGNMENT` edge, which is materialized by `backend/partnerships/compute.py` during ingestion. `GET /partnerships/employer-pipeline` computes its result with a live traversal and does not depend on precomputed data. For the edge schema, see [Graph Model → Precomputed analytical edge](./graph-model.md#the-precomputed-analytical-edge).
 
 ## Strong Workforce
 

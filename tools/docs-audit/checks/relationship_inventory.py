@@ -47,15 +47,14 @@ LOADER_FILES = [
     "backend/pipeline/load_skills.py",
     "backend/occupations/load.py",
     "backend/employers/load.py",
+    "backend/partnerships/compute.py",
 ]
 
 # Edge types that are documented in graph-model.md as derived / precomputed
 # and are deliberately not materialized by any file in LOADER_FILES. Triples
 # whose relationship type is in this set are exempted from the
 # "doc/loader must agree" rule.
-DERIVED_EDGE_TYPES = frozenset({
-    "PARTNERSHIP_ALIGNMENT",
-})
+DERIVED_EDGE_TYPES: frozenset[str] = frozenset()
 
 
 # ── Patterns ──────────────────────────────────────────────────────────

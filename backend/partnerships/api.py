@@ -22,10 +22,10 @@ router = APIRouter()
 def get_partnership_landscape(college: str):
     """Returns employers ranked by partnership opportunity — skill alignment, gaps, and top occupation.
 
-    Reads the precomputed `PARTNERSHIP_ALIGNMENT` edge. The writer that
-    materializes this edge is not currently checked into the repository
-    (see docs/architecture/graph-model.md "Known gap"), so on a fresh
-    database this endpoint returns an empty opportunities list.
+    Reads the precomputed `PARTNERSHIP_ALIGNMENT` edge, materialized at
+    ingestion time by `partnerships/compute.py`. If the edge set is
+    empty, either ingestion hasn't run for this college or the compute
+    step was skipped; rerun `python -m pipeline.reload --region <r>`.
     """
     driver = get_driver()
     try:
