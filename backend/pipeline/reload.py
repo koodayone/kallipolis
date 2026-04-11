@@ -16,17 +16,17 @@ import logging
 import time
 from pathlib import Path
 
-from pipeline.loader import load_college, CollegeConfig
-from pipeline.students import generate_and_load_students
-from pipeline.industry.loader import load_industry
-from pipeline.industry.employers import load_employers, cleanup_stale_employers
+from courses.load import load_college, CollegeConfig
+from students.generate import generate_and_load_students
+from occupations.load import load_industry
+from employers.load import load_employers, cleanup_stale_employers
 from ontology.schema import get_driver, close_driver, init_schema
 
 logger = logging.getLogger(__name__)
 
 CACHE_DIR = Path(__file__).parent / "cache"
-CALIBRATIONS_DIR = Path(__file__).parent / "calibrations"
-INDUSTRY_DIR = Path(__file__).parent / "industry"
+OCCUPATIONS_DIR = Path(__file__).parent.parent / "occupations"
+EMPLOYERS_DIR = Path(__file__).parent.parent / "employers"
 
 BAY_AREA = [
     "foothill", "deanza", "ccsf", "laney", "merritt", "berkeleycc",
@@ -125,12 +125,12 @@ def load_industry_data(driver) -> None:
     logger.info("Loading industry data...")
 
     # Occupations
-    occ_path = INDUSTRY_DIR / "occupations.json"
+    occ_path = OCCUPATIONS_DIR / "occupations.json"
     with open(occ_path) as f:
         occupations = json.load(f)
 
     # Check for COE data
-    coe_path = INDUSTRY_DIR / "coe_data.json"
+    coe_path = OCCUPATIONS_DIR / "coe_data.json"
     coe_data = None
     if coe_path.exists():
         with open(coe_path) as f:
@@ -142,7 +142,7 @@ def load_industry_data(driver) -> None:
                 f"REQUIRES_SKILL: {stats.get('requires_skill', 0)}")
 
     # Employers
-    emp_path = INDUSTRY_DIR / "employers.json"
+    emp_path = EMPLOYERS_DIR / "employers.json"
     with open(emp_path) as f:
         employers = json.load(f)
 

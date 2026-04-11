@@ -14,7 +14,7 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from ontology.schema import get_driver
-from ontology.utils import compute_gpa, compute_primary_focus
+from students.helpers import compute_gpa, compute_primary_focus
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 logger = logging.getLogger(__name__)

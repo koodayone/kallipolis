@@ -123,7 +123,7 @@ def main():
     mapping = build_prefix_mapping(mcf_dir)
 
     # Load existing mapping to preserve any manual entries
-    output_path = Path(__file__).parent / "calibrations" / "prefix_to_top4.json"
+    output_path = Path(__file__).parent.parent / "ontology" / "calibrations" / "prefix_to_top4.json"
     existing = {}
     if output_path.exists():
         with open(output_path) as f:

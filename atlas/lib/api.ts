@@ -31,7 +31,7 @@ export type CollegeSummary = {
 };
 
 export async function generatePartnerships(): Promise<ProposalList> {
-  const res = await fetch(`${BASE}/workflows/partnerships`, {
+  const res = await fetch(`${BASE}/partnerships`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
   });
@@ -47,7 +47,7 @@ export async function streamPartnerships(
   onDone: () => void,
   onError: (error: string) => void,
 ): Promise<void> {
-  const res = await fetch(`${BASE}/workflows/partnerships/stream`, {
+  const res = await fetch(`${BASE}/partnerships/stream`, {
     method: "POST",
   });
   if (!res.ok) {
@@ -82,7 +82,7 @@ export async function streamPartnerships(
 }
 
 export async function getCollege(college: string): Promise<CollegeSummary> {
-  const res = await fetch(`${BASE}/ontology/college?college=${encodeURIComponent(college)}`);
+  const res = await fetch(`${BASE}/courses/college?college=${encodeURIComponent(college)}`);
   if (!res.ok) throw new Error("Failed to fetch college data");
   return res.json();
 }
@@ -113,13 +113,13 @@ export type ApiStudentDetail = {
 };
 
 export async function getStudents(college: string): Promise<ApiStudentSummary[]> {
-  const res = await fetch(`${BASE}/ontology/students?college=${encodeURIComponent(college)}`);
+  const res = await fetch(`${BASE}/students?college=${encodeURIComponent(college)}`);
   if (!res.ok) throw new Error("Failed to fetch students");
   return res.json();
 }
 
 export async function getStudent(uuid: string, college: string): Promise<ApiStudentDetail> {
-  const res = await fetch(`${BASE}/ontology/students/${uuid}?college=${encodeURIComponent(college)}`);
+  const res = await fetch(`${BASE}/students/${uuid}?college=${encodeURIComponent(college)}`);
   if (!res.ok) throw new Error("Failed to fetch student");
   return res.json();
 }
@@ -131,7 +131,7 @@ export type StudentQueryResponse = {
 };
 
 export async function queryStudents(query: string, college: string): Promise<StudentQueryResponse> {
-  const res = await fetch(`${BASE}/ontology/students/query`, {
+  const res = await fetch(`${BASE}/students/query`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ query, college }),
@@ -158,13 +158,13 @@ export type ApiCourseSummary = {
 };
 
 export async function getDepartments(college: string): Promise<ApiDepartmentSummary[]> {
-  const res = await fetch(`${BASE}/ontology/courses/departments?college=${encodeURIComponent(college)}`);
+  const res = await fetch(`${BASE}/courses/departments?college=${encodeURIComponent(college)}`);
   if (!res.ok) throw new Error("Failed to fetch departments");
   return res.json();
 }
 
 export async function getCourses(department: string, college: string): Promise<ApiCourseSummary[]> {
-  const res = await fetch(`${BASE}/ontology/courses/list?department=${encodeURIComponent(department)}&college=${encodeURIComponent(college)}`);
+  const res = await fetch(`${BASE}/courses/?department=${encodeURIComponent(department)}&college=${encodeURIComponent(college)}`);
   if (!res.ok) throw new Error("Failed to fetch courses");
   return res.json();
 }
@@ -176,7 +176,7 @@ export type CourseQueryResponse = {
 };
 
 export async function queryCourses(query: string, college: string): Promise<CourseQueryResponse> {
-  const res = await fetch(`${BASE}/ontology/courses/query`, {
+  const res = await fetch(`${BASE}/courses/query`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ query, college }),
@@ -235,13 +235,13 @@ export type ApiOccupationDetail = {
 };
 
 export async function getLaborMarketOverview(college: string): Promise<ApiLaborMarketOverview> {
-  const res = await fetch(`${BASE}/labor-market/overview?college=${encodeURIComponent(college)}`);
+  const res = await fetch(`${BASE}/occupations/overview?college=${encodeURIComponent(college)}`);
   if (!res.ok) throw new Error("Failed to fetch labor market data");
   return res.json();
 }
 
 export async function getOccupationDetail(socCode: string, college: string): Promise<ApiOccupationDetail> {
-  const res = await fetch(`${BASE}/labor-market/occupation/${encodeURIComponent(socCode)}?college=${encodeURIComponent(college)}`);
+  const res = await fetch(`${BASE}/occupations/${encodeURIComponent(socCode)}?college=${encodeURIComponent(college)}`);
   if (!res.ok) throw new Error("Failed to fetch occupation detail");
   return res.json();
 }
@@ -277,19 +277,19 @@ export type ApiEmployerDetail = {
 };
 
 export async function getEmployers(college: string): Promise<ApiEmployerMatch[]> {
-  const res = await fetch(`${BASE}/labor-market/employers?college=${encodeURIComponent(college)}`);
+  const res = await fetch(`${BASE}/employers/?college=${encodeURIComponent(college)}`);
   if (!res.ok) throw new Error("Failed to fetch employers");
   return res.json();
 }
 
 export async function getEmployerDetail(name: string, college: string): Promise<ApiEmployerDetail> {
-  const res = await fetch(`${BASE}/labor-market/employer/${encodeURIComponent(name)}?college=${encodeURIComponent(college)}`);
+  const res = await fetch(`${BASE}/employers/${encodeURIComponent(name)}?college=${encodeURIComponent(college)}`);
   if (!res.ok) throw new Error("Failed to fetch employer detail");
   return res.json();
 }
 
 export async function getEmployerOccupations(employer: string): Promise<{ occupations: Array<{ title: string; annual_wage: number | null }> }> {
-  const res = await fetch(`${BASE}/labor-market/partnership-landscape/occupations?employer=${encodeURIComponent(employer)}`);
+  const res = await fetch(`${BASE}/partnerships/employer-occupations?employer=${encodeURIComponent(employer)}`);
   if (!res.ok) throw new Error("Failed to fetch employer occupations");
   return res.json();
 }
@@ -301,7 +301,7 @@ export type EmployerQueryResponse = {
 };
 
 export async function queryEmployers(query: string, college: string): Promise<EmployerQueryResponse> {
-  const res = await fetch(`${BASE}/labor-market/employers/query`, {
+  const res = await fetch(`${BASE}/employers/query`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ query, college }),
@@ -320,7 +320,7 @@ export type OccupationQueryResponse = {
 };
 
 export async function queryOccupations(query: string, college: string): Promise<OccupationQueryResponse> {
-  const res = await fetch(`${BASE}/labor-market/occupations/query`, {
+  const res = await fetch(`${BASE}/occupations/query`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ query, college }),
@@ -359,19 +359,19 @@ export type PartnershipQueryResponse = {
 };
 
 export async function getPartnershipLandscape(college: string): Promise<ApiPartnershipLandscape> {
-  const res = await fetch(`${BASE}/labor-market/partnership-landscape?college=${encodeURIComponent(college)}`);
+  const res = await fetch(`${BASE}/partnerships/landscape?college=${encodeURIComponent(college)}`);
   if (!res.ok) throw new Error("Failed to fetch partnership landscape");
   return res.json();
 }
 
 export async function getEmployerPipeline(employer: string, college: string): Promise<{ pipeline_size: number }> {
-  const res = await fetch(`${BASE}/labor-market/partnership-landscape/pipeline?employer=${encodeURIComponent(employer)}&college=${encodeURIComponent(college)}`);
+  const res = await fetch(`${BASE}/partnerships/employer-pipeline?employer=${encodeURIComponent(employer)}&college=${encodeURIComponent(college)}`);
   if (!res.ok) throw new Error("Failed to fetch pipeline data");
   return res.json();
 }
 
 export async function queryPartnerships(query: string, college: string): Promise<PartnershipQueryResponse> {
-  const res = await fetch(`${BASE}/labor-market/partnerships/query`, {
+  const res = await fetch(`${BASE}/partnerships/query`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ query, college }),
@@ -472,7 +472,7 @@ export async function streamTargetedProposal(
   onError: (error: string) => void,
   engagementType: string,
 ): Promise<void> {
-  const res = await fetch(`${BASE}/workflows/partnerships/targeted/stream`, {
+  const res = await fetch(`${BASE}/partnerships/targeted/stream`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ employer, college, engagement_type: engagementType }),
@@ -589,7 +589,7 @@ export async function streamSwpProject(
   onDone: () => void,
   onError: (error: string) => void,
 ): Promise<void> {
-  const res = await fetch(`${BASE}/workflows/swp/project/stream`, {
+  const res = await fetch(`${BASE}/strong-workforce/project/stream`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(req),

@@ -50,7 +50,7 @@ Within these parameters, the algorithm is deterministic for a given seed. The sa
 
 ## Validation
 
-After generation, the synthetic population's aggregate success rate is compared against the DataMart target and the difference is logged. The mechanism is in `backend/pipeline/students.py` and runs after every generation. In practice, observed deviations have been small — typically within a percentage point or so — though the algorithm does not enforce a hard threshold and the exact magnitude depends on the calibration data for the specific college.
+After generation, the synthetic population's aggregate success rate is compared against the DataMart target and the difference is logged. The mechanism is in `backend/students/generate.py` and runs after every generation. In practice, observed deviations have been small — typically within a percentage point or so — though the algorithm does not enforce a hard threshold and the exact magnitude depends on the calibration data for the specific college.
 
 The validation matters because it is what gives the synthetic population its claim to structural fidelity. The students are not real, but the population behaves the way the real population does at the aggregate level. A coordinator analyzing the synthetic population will see the same patterns of concentration, completion, and skill acquisition that the real population would produce.
 

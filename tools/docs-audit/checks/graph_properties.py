@@ -48,11 +48,11 @@ from .base import Check, CheckResult, Status
 # ── Loader files to scan ──────────────────────────────────────────────
 
 LOADER_FILES = [
-    "backend/pipeline/loader.py",
-    "backend/pipeline/students.py",
+    "backend/courses/load.py",
+    "backend/students/generate.py",
     "backend/pipeline/load_skills.py",
-    "backend/pipeline/industry/loader.py",
-    "backend/pipeline/industry/employers.py",
+    "backend/occupations/load.py",
+    "backend/employers/load.py",
 ]
 
 

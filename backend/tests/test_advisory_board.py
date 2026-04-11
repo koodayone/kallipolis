@@ -22,7 +22,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 logging.basicConfig(level=logging.WARNING, format="%(levelname)s %(message)s")
 
-from workflows.partnerships import (
+from partnerships.generate import (
     _gather_targeted_context, _run_pipeline,
 )
 

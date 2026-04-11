@@ -60,15 +60,15 @@ class DocumentedEndpoint:
 
 
 def extract_router_prefixes(main_py: Path) -> Dict[str, str]:
-    """Read backend/main.py and return a mapping of router module name to prefix.
+    """Read backend/main.py and return a mapping of feature name to URL prefix.
 
     A line like:
-        app.include_router(ontology_router, prefix="/ontology", tags=["Ontology"])
+        app.include_router(students_router, prefix="/students", tags=["Students"])
     produces:
-        {"ontology": "/ontology"}
+        {"students": "/students"}
 
-    The mapping uses the module name (the part before "_router") so that the
-    same name can be used to look up the file in backend/api/.
+    The mapping uses the feature name (the part before "_router") so that the
+    same name can be used to look up the file at backend/<feature>/api.py.
     """
     content = main_py.read_text()
     prefixes: Dict[str, str] = {}
@@ -76,23 +76,22 @@ def extract_router_prefixes(main_py: Path) -> Dict[str, str]:
         router_name = match.group(1)
         prefix = match.group(2)
         if router_name.endswith("_router"):
-            module = router_name[: -len("_router")]
-            prefixes[module] = prefix
+            feature = router_name[: -len("_router")]
+            prefixes[feature] = prefix
     return prefixes
 
 
-def extract_actual_endpoints(api_dir: Path, prefixes: Dict[str, str]) -> Set[Tuple[str, str]]:
-    """Extract all actual endpoints from FastAPI router files.
+def extract_actual_endpoints(backend_dir: Path, prefixes: Dict[str, str]) -> Set[Tuple[str, str]]:
+    """Extract all actual endpoints from per-feature FastAPI router files.
 
     Returns a set of (METHOD, FULL_PATH) tuples where FULL_PATH includes
-    the router prefix.
+    the router prefix. Each feature's routes live at backend/<feature>/api.py.
     """
     endpoints: Set[Tuple[str, str]] = set()
-    for api_file in sorted(api_dir.glob("*.py")):
-        if api_file.name == "__init__.py":
+    for feature, prefix in prefixes.items():
+        api_file = backend_dir / feature / "api.py"
+        if not api_file.exists():
             continue
-        module_name = api_file.stem
-        prefix = prefixes.get(module_name, "")
         try:
             content = api_file.read_text()
         except (UnicodeDecodeError, PermissionError):
@@ -100,7 +99,10 @@ def extract_actual_endpoints(api_dir: Path, prefixes: Dict[str, str]) -> Set[Tup
         for match in ROUTER_DECORATOR_RE.finditer(content):
             method = match.group(1).upper()
             path = match.group(2)
+            # Strip a trailing slash unless the full path would be empty
             full_path = prefix + path
+            if len(full_path) > 1 and full_path.endswith("/"):
+                full_path = full_path.rstrip("/")
             endpoints.add((method, full_path))
     return endpoints
 
@@ -127,20 +129,14 @@ class APIEndpointsCheck(Check):
 
     def run(self, repo_root: Path) -> CheckResult:
         docs_dir = repo_root / "docs"
-        api_dir = repo_root / "backend" / "api"
-        main_py = repo_root / "backend" / "main.py"
+        backend_dir = repo_root / "backend"
+        main_py = backend_dir / "main.py"
 
         if not docs_dir.exists():
             return CheckResult(
                 check=self.name,
                 status=Status.SKIP,
                 details=f"docs/ not found at {docs_dir}",
-            )
-        if not api_dir.exists():
-            return CheckResult(
-                check=self.name,
-                status=Status.SKIP,
-                details=f"backend/api/ not found at {api_dir}",
             )
         if not main_py.exists():
             return CheckResult(
@@ -150,7 +146,7 @@ class APIEndpointsCheck(Check):
             )
 
         prefixes = extract_router_prefixes(main_py)
-        actual = extract_actual_endpoints(api_dir, prefixes)
+        actual = extract_actual_endpoints(backend_dir, prefixes)
 
         broken: List[DocumentedEndpoint] = []
         items_checked = 0
@@ -178,7 +174,7 @@ class APIEndpointsCheck(Check):
                 rel_doc = endpoint.doc_file
             details_lines.append(
                 f"  {rel_doc}:{endpoint.line}: "
-                f"`{endpoint.method} {endpoint.path}` not found in backend/api/"
+                f"`{endpoint.method} {endpoint.path}` not found in any feature's api.py"
             )
 
         return CheckResult(
@@ -190,6 +186,6 @@ class APIEndpointsCheck(Check):
                 "For each documented endpoint that is missing from the code, "
                 "either update the documentation to remove or correct the "
                 "reference, or add the missing endpoint to the corresponding "
-                "router in backend/api/."
+                "feature's api.py (e.g., backend/students/api.py)."
             ),
         )

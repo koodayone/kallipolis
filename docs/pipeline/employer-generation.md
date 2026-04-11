@@ -13,7 +13,7 @@ The pipeline scrapes EDD via two endpoints:
 | `empResults.aspx` | Deep search by NAICS 4-digit code with size filtering and pagination |
 | `countymajorer.asp` | Top ~25 major employers per county (used for fallback overview) |
 
-Both are ASP.NET pages, which means the deep search requires `__VIEWSTATE` and `__EVENTVALIDATION` form state to apply filters and paginate. The parsing details are in `backend/pipeline/industry/edd_employers.py`.
+Both are ASP.NET pages, which means the deep search requires `__VIEWSTATE` and `__EVENTVALIDATION` form state to apply filters and paginate. The parsing details are in `backend/employers/edd_scrape.py`.
 
 The pipeline restricts queries to a curated set of CTE-relevant NAICS 4-digit codes — agriculture, construction, manufacturing, healthcare, IT, professional services, and others. Hospitality and government codes are partially excluded because they are not searchable by NAICS in the EDD interface. The default size filter is `G` (250+ employees), since smaller employers rarely sustain the kind of partnerships SWP funds.
 
@@ -30,7 +30,7 @@ The pipeline coordinates four geographic concepts. Confusing them is the most co
 | COE region | Bay | Centers of Excellence regional grouping |
 | College | Foothill College | The institution running the pipeline |
 
-The crosswalk is defined in `backend/pipeline/industry/region_maps.py`. It includes mappings from college to primary OEWS metro, college to COE region code, OEWS metro to COE region, and OEWS metro to counties. A separate `COLLEGE_SEARCH_COUNTIES` map provides explicit county overrides for rural colleges where the default metro-derived counties do not capture commutable employers.
+The crosswalk is defined in `backend/ontology/regions.py`. It includes mappings from college to primary OEWS metro, college to COE region code, OEWS metro to COE region, and OEWS metro to counties. A separate `COLLEGE_SEARCH_COUNTIES` map provides explicit county overrides for rural colleges where the default metro-derived counties do not capture commutable employers.
 
 ## How the stage runs
 
@@ -48,7 +48,7 @@ The crosswalk is defined in `backend/pipeline/industry/region_maps.py`. It inclu
 
 For the broader treatment of where Gemini is called and what constraints apply, see [AI Integration](../architecture/ai-integration.md).
 
-**6. Format and merge.** Cleaned employers are formatted to the `employers.json` schema (name, sector, description, regions array, occupations array) and merged into the shared `backend/pipeline/industry/employers.json`. The merge function deduplicates by normalized name. When a name collides, the regions and occupation lists are unioned with the existing entry.
+**6. Format and merge.** Cleaned employers are formatted to the `employers.json` schema (name, sector, description, regions array, occupations array) and merged into the shared `backend/employers/employers.json`. The merge function deduplicates by normalized name. When a name collides, the regions and occupation lists are unioned with the existing entry.
 
 ## Why the merge semantics matter
 
@@ -102,7 +102,7 @@ The criteria themselves are the operational expression of the partial-by-design 
 
 ## Loading into the graph
 
-`generate_employers.py` produces `employers.json`. A separate script, `backend/pipeline/industry/employers.py`, loads it into Neo4j. The loader creates one `Employer` node per record, links it to each region in its `regions` array via `IN_MARKET`, and links it to each occupation in its `occupations` array via `HIRES_FOR`. Loading is idempotent: re-running adds new edges without duplicating existing ones.
+`generate_employers.py` produces `employers.json`. A separate script, `backend/employers/load.py`, loads it into Neo4j. The loader creates one `Employer` node per record, links it to each region in its `regions` array via `IN_MARKET`, and links it to each occupation in its `occupations` array via `HIRES_FOR`. Loading is idempotent: re-running adds new edges without duplicating existing ones.
 
 ## Known sharp edges
 

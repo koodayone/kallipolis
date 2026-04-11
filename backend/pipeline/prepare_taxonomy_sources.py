@@ -22,7 +22,8 @@ logger = logging.getLogger(__name__)
 
 CACHE_DIR = Path(__file__).parent / "cache"
 MCF_DIR = Path("/Users/dayonekoo/Desktop/cc_dataset/mastercoursefiles")
-INDUSTRY_DIR = Path(__file__).parent / "industry"
+OCCUPATIONS_DIR = Path(__file__).parent.parent / "occupations"
+ONTOLOGY_DIR = Path(__file__).parent.parent / "ontology"
 
 
 def _extract_top_code_programs() -> dict:
@@ -55,7 +56,7 @@ def _extract_top_code_programs() -> dict:
 
     # Load TOP4 program names from calibration files
     top4_names = {}
-    for cal_path in sorted((Path(__file__).parent / "calibrations" / "top4").glob("*.json")):
+    for cal_path in sorted((ONTOLOGY_DIR / "calibrations" / "top4").glob("*.json")):
         try:
             with open(cal_path) as f:
                 data = json.load(f)
@@ -162,7 +163,7 @@ def _extract_enriched_skills() -> dict:
 
 def _extract_occupation_skills() -> dict:
     """Parse occupations.json for industry-side skill vocabulary."""
-    occ_path = INDUSTRY_DIR / "occupations.json"
+    occ_path = OCCUPATIONS_DIR / "occupations.json"
     if not occ_path.exists():
         return {"skills": [], "occupations": 0}
 
@@ -223,7 +224,7 @@ def _extract_occupation_skills() -> dict:
 
 def _extract_generate_occ_vocabulary() -> dict:
     """Parse generate_occupations.py to extract the full embedded vocabulary."""
-    gen_path = INDUSTRY_DIR / "generate_occupations.py"
+    gen_path = OCCUPATIONS_DIR / "generate.py"
     if not gen_path.exists():
         return {"base_skills": {}, "pattern_skills": []}
 
@@ -263,7 +264,7 @@ def _extract_current_taxonomy() -> dict:
     """Load the current SEED + TIER2 taxonomy."""
     import sys
     sys.path.insert(0, str(Path(__file__).parent.parent))
-    from pipeline.skills import UNIFIED_TAXONOMY
+    from ontology.skills import UNIFIED_TAXONOMY
 
     return {
         "unified_taxonomy": sorted(UNIFIED_TAXONOMY),

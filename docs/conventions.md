@@ -62,11 +62,11 @@ These are the conventions the audit relies on. Any claim that needs to be auto-v
 
 ### File path references
 
-Inline code spans or markdown links: `` `backend/api/workflows.py` `` or `[the loader](../backend/pipeline/loader.py)`. The audit verifies that the referenced file exists.
+Inline code spans or markdown links: `` `backend/partnerships/api.py` `` or `[the loader](../backend/courses/load.py)`. The audit verifies that the referenced file exists.
 
 ### API endpoints
 
-In markdown tables with `Method` and `Path` columns, or inline as `` `POST /workflows/partnerships/targeted/stream` ``. The audit prefers tables for systematic listings because they are more reliably parsed than prose.
+In markdown tables with `Method` and `Path` columns, or inline as `` `POST /partnerships/targeted/stream` ``. The audit prefers tables for systematic listings because they are more reliably parsed than prose.
 
 ### Schema — node types, properties, constraints
 

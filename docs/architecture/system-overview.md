@@ -56,7 +56,7 @@ For the full schema, see [Graph Model](./graph-model.md).
 
 Kallipolis calls two LLM providers, each for a distinct role.
 
-**Claude** handles linguistic operations against existing data. Five system prompts translate natural language questions into validated Cypher (`backend/workflows/query_engine.py`). Two narrative generators write partnership proposals and SWP project sections (`backend/workflows/partnerships.py`, `backend/workflows/swp.py`). Both use server-sent events for streaming output.
+**Claude** handles linguistic operations against existing data. Five system prompts translate natural language questions into validated Cypher (`backend/llm/query_engine.py`). Two narrative generators write partnership proposals and SWP project sections (`backend/partnerships/generate.py`, `backend/strong_workforce/generate.py`). Both use server-sent events for streaming output.
 
 **Gemini** handles data extraction during the ETL pipeline. Course extraction from PDF catalogs, skill taxonomy mapping, occupation-skill assignment, and employer name cleanup all run on Gemini.
 

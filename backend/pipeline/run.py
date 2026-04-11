@@ -25,9 +25,9 @@ from dotenv import load_dotenv
 # Add backend to path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from pipeline.scraper import RawCourse
-from pipeline.skills import derive_skills
-from pipeline.loader import load_college, CollegeConfig, LoadStats
+from courses.scrape import RawCourse
+from ontology.skills import derive_skills
+from courses.load import load_college, CollegeConfig, LoadStats
 from ontology.schema import get_driver, close_driver
 
 logging.basicConfig(
@@ -111,7 +111,7 @@ async def run_pipeline(
         raw_courses = [RawCourse(**d) for d in raw_dicts]
     else:
         logger.info(f"Extracting courses from catalog PDF: {college['catalog_pdf_url']}")
-        from pipeline.scraper_pdf import scrape_pdf_catalog
+        from courses.scrape_pdf import scrape_pdf_catalog
         raw_courses = await scrape_pdf_catalog(
             pdf_url=college["catalog_pdf_url"],
             college_key=college_key,
@@ -148,7 +148,7 @@ async def run_pipeline(
             enriched_courses = json.load(f)
         logger.info(f"Loaded {len(enriched_courses)} courses from cache")
 
-        from pipeline.students import generate_and_load_students
+        from students.generate import generate_and_load_students
         logger.info(f"Generating synthetic students (seed={seed})...")
         driver = get_driver()
         try:
@@ -209,7 +209,7 @@ async def run_pipeline(
 
     # ── Stage 4: Generate synthetic students (optional) ─────────────────
     if generate_students:
-        from pipeline.students import generate_and_load_students
+        from students.generate import generate_and_load_students
 
         logger.info(f"Generating synthetic students (seed={seed})...")
         driver = get_driver()

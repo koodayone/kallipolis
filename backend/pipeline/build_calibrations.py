@@ -164,7 +164,7 @@ def main():
     colleges = parse_grades_file(filepath)
     print(f"Found {len(colleges)} colleges")
 
-    output_dir = Path(__file__).parent / "calibrations" / "top4"
+    output_dir = Path(__file__).parent.parent / "ontology" / "calibrations" / "top4"
     output_dir.mkdir(parents=True, exist_ok=True)
 
     written = 0
