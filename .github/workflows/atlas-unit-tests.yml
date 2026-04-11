@@ -1,8 +1,16 @@
-name: Atlas unit tests
+name: Atlas checks
 
-# Vitest runs the atlas frontend's pure-logic unit tests. Fast (sub-second
-# on a clean checkout) and pure Node — no browser, no backend, no graph.
-# Gated on PRs and main so merges don't break the test harness silently.
+# Gates the atlas frontend on type safety, unit tests, and a
+# production build. The chain runs fast → slow so the cheapest
+# failures surface first: tsc catches type errors in paths the
+# tests don't exercise, Vitest exercises the logic the tests do
+# cover, and next build catches production-only failures that
+# dev mode forgives. Path-filtered to atlas/** so unrelated
+# changes don't trigger the job.
+#
+# Lint is not currently gated — see atlas/.eslintrc drift noted
+# in the testing docs. Add the lint step after the eslint config
+# is repaired.
 
 on:
   pull_request:
@@ -14,10 +22,17 @@ on:
     paths:
       - 'atlas/**'
       - '.github/workflows/atlas-unit-tests.yml'
+  workflow_dispatch:
+
+# Cancel stale runs when a newer commit lands on the same ref so we
+# don't spend CI minutes on superseded code.
+concurrency:
+  group: atlas-checks-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  unit-tests:
-    name: Atlas unit tests
+  checks:
+    name: Atlas checks
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -34,5 +49,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run unit tests
-        run: npm test
+      - name: Type check
+        run: npx tsc --noEmit
+
+      - name: Unit tests
+        run: npm test -- --reporter=verbose
+
+      - name: Production build
+        run: npm run build
