@@ -31,9 +31,7 @@ The pipeline divides naturally into two halves, each populating one side of the 
 
 The curriculum-side pipeline takes a college from a catalog PDF to a populated set of courses, departments, and synthetic students. Stages 1, 2, 3, and 4 run for each college.
 
-**Stage 1 (Course extraction)** uses Gemini to extract structured course data from the college's catalog PDF. The PDF is downloaded, course-bearing pages are detected by regex on course code patterns, and pages are batched in groups of 25 for the model to process. Each batch produces structured course records — code, title, department, units, description, learning outcomes, course objectives, transfer status. Output is cached as `{college}_raw.json`.
-
-**Stage 2 (Skill enrichment)** sends the extracted courses back through Gemini, this time with the unified skill taxonomy as a controlled vocabulary. Each course gets 3–6 skills assigned from the taxonomy, with the model constrained to prefer existing terms and only introduce new ones when the course teaches something genuinely uncovered. Output is cached as `{college}_enriched.json`.
+**Stages 1 and 2 (Course extraction and skill enrichment)** are a single Gemini call per page-range chunk. The catalog PDF is downloaded, course-bearing pages are filtered by a course-code regex, and chunks are sent to `gemini-2.5-flash` with the unified skill taxonomy interpolated into the system prompt. Each response carries both the structured course fields and a `skill_mappings` list drawn from the taxonomy. Output is cached as `{college}_enriched.json` with a provenance sidecar at `{college}_extraction_meta.json`. For the full treatment of the extraction methodology, the skill-derivation guard, and the sidecar schema, see [Course Generation](./course-generation.md).
 
 **Stage 3 (Curriculum loading)** writes the enriched courses into Neo4j. The College node is created or matched, Departments are derived from the course department fields, Course nodes are written with all properties, and `Course → DEVELOPS → Skill` edges are created against the (already-existing or newly-created) Skill nodes. This is direct database writing — no LLM involvement.
 
@@ -82,10 +80,11 @@ In every case, the LLM is operating against a constrained context — either a s
 
 ## What this section does not yet cover
 
-This overview is the entry point for the pipeline section. Three sub-documents fill in the substantive detail:
+This overview is the entry point for the pipeline section. Four sub-documents fill in the substantive detail:
 
+- [Course Generation](./course-generation.md) — the PDF extraction methodology, the closed-vocabulary skill derivation and loader-side validation, the extraction_meta sidecar, and the known sharp edges around PDF text-layer variance and program-table contamination
 - [Student Generation](./student-generation.md) — the synthetic methodology, the calibration data, the per-college TOP-code distribution algorithm, and what the generated population is and is not
-- [Employer Generation](./employer-generation.md) — the EDD scraping, the county-to-region crosswalk, the merge semantics, and the pass-through model that lets multiple colleges share an employer pool
 - [Occupation Generation](./occupation-generation.md) — the COE demand feed, the workforce-development band filter, the skill-assignment retry loop, and why `education_level` lives on the `Occupation` node rather than on the `DEMANDS` edge
+- [Employer Generation](./employer-generation.md) — the EDD scraping, the county-to-region crosswalk, the merge semantics, and the pass-through model that lets multiple colleges share an employer pool
 
-The remaining stages — course extraction, skill enrichment, curriculum loading — are described at the right level here and do not warrant separate documents at the current stage. If they become operationally complex enough to require their own treatment later, they can be added.
+Stage 3 (curriculum loading) is described at the right level here and does not warrant a separate document at the current stage.
