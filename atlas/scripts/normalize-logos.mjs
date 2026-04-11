@@ -22,7 +22,7 @@ const PADDING = 8;
 // Parse californiaColleges.ts to extract college entries with logos
 function getCollegesWithLogos() {
   const src = readFileSync(
-    join(__dirname, "../lib/californiaColleges.ts"),
+    join(__dirname, "../state-atlas/californiaColleges.ts"),
     "utf8",
   );
   const entries = [];

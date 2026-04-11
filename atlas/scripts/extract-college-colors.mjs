@@ -3,7 +3,7 @@
  *
  * Scans /public for college logo files (*-logo.{png,jpg,svg}),
  * extracts the dominant vibrant color from each, and writes
- * lib/collegeColors.generated.ts for use in collegeAtlasConfigs.ts.
+ * config/collegeColors.generated.ts for use in collegeAtlasConfigs.ts.
  *
  * Run automatically via predev / prebuild npm hooks.
  */
@@ -15,7 +15,7 @@ import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PUBLIC_DIR = join(__dirname, "../public");
-const OUT_FILE = join(__dirname, "../lib/collegeColors.generated.ts");
+const OUT_FILE = join(__dirname, "../config/collegeColors.generated.ts");
 const DEFAULT_COLOR = "#1e3a5f";
 
 // ── Color utilities ─────────────────────────────────────────────────────────
@@ -140,7 +140,7 @@ ${entries}
 `;
 
   await writeFile(OUT_FILE, output, "utf8");
-  console.log(`\nWrote ${Object.keys(results).length} college colors → lib/collegeColors.generated.ts`);
+  console.log(`\nWrote ${Object.keys(results).length} college colors → config/collegeColors.generated.ts`);
 }
 
 main().catch(err => { console.error(err); process.exit(1); });
