@@ -3,6 +3,17 @@
 These two functions are the lookup-key bridge between Neo4j course codes
 ("CT 100") and the Chancellor's Office Master Course File format
 ("CT100AB"). Drift here silently breaks TOP6 resolution for SWP projects.
+Both normalizers must agree on the same canonical form for the
+(normalized_course_id, college_lower) index lookup to work at runtime.
+
+Coverage:
+  - _normalize_course_code: space stripping between prefix and number
+  - _normalize_course_code: multiletter prefixes and split prefixes
+  - _normalize_course_code: alphanumeric suffix preservation
+  - _normalize_course_code: case folding and whitespace cleanup
+  - _normalize_mcf_course_id: trailing-dot stripping (MCF export quirk)
+  - _normalize_mcf_course_id: whitespace and case handling
+  - Round-trip equivalence between the two normalizers on the same input
 """
 
 from ontology.mcf_lookup import _normalize_course_code, _normalize_mcf_course_id

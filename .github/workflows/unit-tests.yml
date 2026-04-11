@@ -1,9 +1,20 @@
 name: Backend unit tests
 
+# pytest runs the backend's pure-logic unit tests. Fast (under half a second
+# on a clean checkout) and pure Python — no database, no LLM calls, no
+# network. Gated on PRs and pushes to main so backend regressions can't
+# land silently.
+
 on:
+  pull_request:
+    paths:
+      - 'backend/**'
+      - '.github/workflows/unit-tests.yml'
   push:
     branches: [main]
-  pull_request:
+    paths:
+      - 'backend/**'
+      - '.github/workflows/unit-tests.yml'
 
 jobs:
   unit-tests:

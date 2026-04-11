@@ -1,8 +1,20 @@
 """Unit tests for partnerships pure helpers.
 
-Covers the JSON parser that every LLM-based selection call depends on,
+Targets the JSON parser that every LLM-based selection call depends on,
 the narrative field parser that wraps it, and the deterministic
-department-text builder used to construct LLM prompts.
+department-text builder used to construct LLM prompts. Each of these is
+a brittle point — the LLM responses vary in surface form (code fences,
+leading prose, trailing commentary) and the parser has to tolerate the
+variance without corrupting the selection path.
+
+Coverage:
+  - _extract_json: plain objects, markdown code fences (with and without
+    json hint), leading and trailing text, nested objects, braces in
+    string literals, malformed input, empty strings
+  - _parse_narrative_fields: well-formed responses, missing opportunity,
+    missing justification block, fence-wrapped responses
+  - _build_dept_text: empty evidence, single and multiple departments,
+    missing-skill reporting, alphabetical sorting of missing skills
 """
 
 import pytest

@@ -3,6 +3,16 @@
 This is the only thing standing between LLM-generated queries and the graph.
 Regressions here are silent and high-impact, so the suite is deliberately
 opinionated about write keywords, college scoping, and formatting quirks.
+The parametrization over DISALLOWED_KEYWORDS means new write operations
+added to that set are automatically covered.
+
+Coverage:
+  - Rejection of every keyword in DISALLOWED_KEYWORDS (parametrized)
+  - Case-insensitive write-keyword detection
+  - College scoping via $college parameter or literal `college:` property
+  - Markdown fence stripping and trailing semicolon cleanup
+  - Surrounding whitespace normalization
+  - CANNOT_TRANSLATE user-facing error pass-through
 """
 
 import pytest

@@ -1,9 +1,23 @@
 """Unit tests for employers/generate.py pure helpers.
 
-Covers the name-cleaning regex chain and the branch deduplication that
-collapses multiple EDD records for the same employer down to the entry
-with the largest size class. Drift in either routine silently corrupts
-the employer index feeding partnership proposals.
+Targets the name-cleaning regex chain, the ordering key used to sort
+EDD records by employer size, and the branch deduplication that
+collapses multiple records for the same employer down to the entry
+with the largest size class. Drift in any of these routines silently
+corrupts the employer index feeding partnership proposals — partners
+with the wrong names, wrong sector tags, or two entries where there
+should be one.
+
+Coverage:
+  - _clean_employer_name: abbreviation expansion (Ctr, Hosp, Med, etc.)
+  - _clean_employer_name: corporate suffix stripping (Inc, LLC, Ltd)
+  - _clean_employer_name: case-insensitive matching and whitespace
+  - _normalize_name: lowercasing and suffix stripping for dedup keys
+  - _size_sort_key: ordering by size class, unknown/missing fall last
+  - _size_sort_key: substring matching against real EDD size strings
+  - _deduplicate_branches: single-entry pass-through, collapse to
+    largest size, branch preservation (e.g. UCLA vs UCSD), name
+    cleanup on the surviving entry
 """
 
 from employers.generate import (
