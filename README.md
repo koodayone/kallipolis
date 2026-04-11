@@ -4,12 +4,15 @@ Institutional intelligence platform for California Community College program coo
 
 ## Repository Structure
 
+The repo root is a Next.js project (the landing page, port 3000). Other applications and supporting code live in subdirectories:
+
 ```
 kallipolis/
-├── app/          # Landing page (Next.js, port 3000)
-├── atlas/        # Atlas application (Next.js, port 3001)
-├── backend/      # API server (FastAPI + Neo4j)
-└── docker-compose.yml
+├── atlas/              # Atlas application (Next.js, port 3001)
+├── backend/            # API server (FastAPI + Neo4j, port 8000)
+├── docs/               # Project documentation — see docs/README.md
+├── tools/              # Tooling, including the documentation audit
+└── docker-compose.yml  # Local dev orchestration
 ```
 
 ## Setup
