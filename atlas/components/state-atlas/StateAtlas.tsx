@@ -6,8 +6,8 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import PageTransition from "@/components/transitions/PageTransition";
 import dynamic from "next/dynamic";
-const CaliforniaMap = dynamic(() => import("@/components/state/CaliforniaMap"), { ssr: false });
-import { FEATURED_COLLEGES } from "@/components/state/CaliforniaMap";
+const CaliforniaMap = dynamic(() => import("@/components/state-atlas/CaliforniaMap"), { ssr: false });
+import { FEATURED_COLLEGES } from "@/components/state-atlas/CaliforniaMap";
 import KallipolisBrand from "@/components/ui/KallipolisBrand";
 import RisingSun from "@/components/ui/RisingSun";
 import { College, Region, CALIFORNIA_REGIONS, CALIFORNIA_COLLEGES } from "@/lib/californiaColleges";
@@ -15,7 +15,7 @@ import { getCollegeAtlasConfig } from "@/lib/collegeAtlasConfigs";
 import AtlasMenu from "@/components/auth/AtlasMenu";
 import type { SchoolConfig } from "@/lib/schoolConfig";
 
-export default function StateView() {
+export default function StateAtlas() {
   const router = useRouter();
   const [userSchool, setUserSchool] = useState<SchoolConfig | null>(null);
   const [userCollegeId, setUserCollegeId] = useState<string | null>(null);

@@ -11,7 +11,7 @@ type Props = {
   sceneRef: React.MutableRefObject<ReturnType<typeof buildAtlasScene> | null>;
 };
 
-export default function AtlasCanvas({
+export default function CollegeAtlasCanvas({
   onFormClick,
   onHoverChange,
   brandColor,

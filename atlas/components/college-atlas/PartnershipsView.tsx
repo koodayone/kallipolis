@@ -16,7 +16,7 @@ import Badge from "@/components/ui/Badge";
 import EntityScrollList from "@/components/ui/EntityScrollList";
 import type { Column } from "@/components/ui/EntityScrollList";
 import ProposalFlow from "./ProposalFlow";
-import ProposalCard from "@/components/domains/ProposalCard";
+import ProposalCard from "./ProposalCard";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 

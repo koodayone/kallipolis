@@ -1,5 +1,5 @@
-import StateView from "@/components/state/StateView";
+import StateAtlas from "@/components/state-atlas/StateAtlas";
 
 export default function StatePage() {
-  return <StateView />;
+  return <StateAtlas />;
 }

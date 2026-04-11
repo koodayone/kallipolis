@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { SchoolConfig } from "@/lib/schoolConfig";
 import type { ApiPartnershipOpportunity, ApiTargetedProposal } from "@/lib/api";
-import ProposalCard from "@/components/domains/ProposalCard";
+import ProposalCard from "./ProposalCard";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 

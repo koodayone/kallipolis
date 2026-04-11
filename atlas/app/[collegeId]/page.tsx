@@ -7,15 +7,15 @@ import { AnimatePresence, motion } from "framer-motion";
 import { buildAtlasScene, FormKey, ALL_FORM_KEYS, FORM_NAMES } from "@/lib/atlasScene";
 import { getCollegeAtlasConfig } from "@/lib/collegeAtlasConfigs";
 import AtlasMenu from "@/components/auth/AtlasMenu";
-import StudentsView from "@/components/college/StudentsView";
-import CoursesView from "@/components/college/CoursesView";
-import PartnershipsView from "@/components/industry/PartnershipsView";
-import OccupationsView from "@/components/industry/OccupationsView";
-import EmployersView from "@/components/industry/EmployersView";
-import StrongWorkforceView from "@/components/government/StrongWorkforceView";
+import StudentsView from "@/components/college-atlas/StudentsView";
+import CoursesView from "@/components/college-atlas/CoursesView";
+import PartnershipsView from "@/components/college-atlas/PartnershipsView";
+import OccupationsView from "@/components/college-atlas/OccupationsView";
+import EmployersView from "@/components/college-atlas/EmployersView";
+import StrongWorkforceView from "@/components/college-atlas/StrongWorkforceView";
 import KallipolisBrand from "@/components/ui/KallipolisBrand";
 
-const AtlasCanvas = dynamic(() => import("@/components/atlas/AtlasCanvas"), {
+const CollegeAtlasCanvas = dynamic(() => import("@/components/college-atlas/CollegeAtlasCanvas"), {
   ssr: false,
 });
 
@@ -104,7 +104,7 @@ export default function CollegeAtlasPage() {
     >
       {/* Persistent Three.js canvas */}
       <div style={{ position: "fixed", inset: 0, zIndex: 0 }}>
-        <AtlasCanvas
+        <CollegeAtlasCanvas
           onFormClick={handleFormClick}
           onHoverChange={setHoveredForm}
           canvasOpacity={canvasOpacity}
