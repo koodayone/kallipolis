@@ -45,7 +45,7 @@ For the full treatment of the synthetic student methodology, see [Student Genera
 
 The industry-side pipeline runs once per region and populates Region, Occupation, and Employer nodes with their relationships. It is structurally distinct from the curriculum-side pipeline because the data sources are different and the operations happen at the region level rather than the college level.
 
-**Occupation loading** parses EDD OEWS XLSX files for the metro areas in the region, deduplicates occupations across metros, and writes Region and Occupation nodes with `DEMANDS` edges (carrying employment data). Occupations are then enriched with skill assignments via a Gemini call constrained to the existing skill taxonomy, producing `REQUIRES_SKILL` edges.
+**Occupation loading** parses Centers of Excellence occupational demand data (`backend/occupations/coe_parser.py`), covering ~800 SOC codes across nine COE regions plus statewide, and writes Region and Occupation nodes with `DEMANDS` edges that carry regional employment, wage, growth, and openings data. The generation step at `backend/occupations/generate.py` turns the parsed COE data into `occupations.json`. Occupations are then enriched with skill assignments via a Gemini call constrained to the existing skill taxonomy, producing `REQUIRES_SKILL` edges. COE is the sole data source for the occupations domain; an earlier OEWS-based pipeline has been retired.
 
 **Employer loading** is the most operationally subtle stage in the pipeline because employers are sourced at the county level from EDD records, scoped per college, and merged into a region-shared employer pool with deliberate cleanup. The full treatment is in [Employer Generation](./employer-generation.md).
 
@@ -61,15 +61,15 @@ The logic lives in `backend/partnerships/compute.py` and is deterministic — no
 
 The pipeline is orchestrated by two scripts depending on the scope of the operation.
 
-`backend/pipeline/run.py` runs the full per-college pipeline (stages 1–4) for one college at a time. It supports incremental execution: stages can be skipped if their cached output exists, students can be generated without re-running extraction, and skill enrichment can be skipped for a scrape-only run. This is the script used during development and when adding new colleges to the system.
+`backend/pipeline/run.py` runs the curriculum-side stages (1–4) for one college at a time. It supports incremental execution: stages can be skipped if their cached output exists, students can be generated without re-running extraction, and skill enrichment can be skipped for a scrape-only run. This is the script used during development and when adding new colleges to the system. Because `run.py` is scoped to one college's curriculum, it does not run stage 5 (industry data, which is region-scoped) or stage 6 (partnership alignment, which depends on both sides being loaded).
 
-`backend/pipeline/reload.py` runs a full graph rebuild for an entire region. It clears the existing graph, then loads courses, industry data, and students for every college in the region. This is the script used when the graph schema changes, when a calibration methodology is updated, or when a region's data needs to be regenerated from scratch.
+`backend/pipeline/reload.py` runs a full graph rebuild for an entire region. It clears the existing graph, then runs stages 3 (curriculum loading), 5 (industry data), 4 (student generation), and 6 (partnership alignment precompute) for every college in the region. This is the script used when the graph schema changes, when a calibration methodology is updated, or when a region's data needs to be regenerated from scratch. It is also the only script that produces `PARTNERSHIP_ALIGNMENT` edges, which means partnership landscape queries return empty until `reload.py` has run against the target database.
 
-The two scripts are complementary. `run.py` is for incremental work; `reload.py` is for system-wide rebuilds.
+The two scripts are complementary. `run.py` is for incremental curriculum work; `reload.py` is for system-wide rebuilds including industry and partnership alignment.
 
 ## Where the LLM-mediated work happens
 
-Three of the five stages use LLM calls, all of them through Gemini in the pipeline (Claude is reserved for request-time work; see [AI Integration](../architecture/ai-integration.md) for the full split).
+Three stages use LLM calls — the three that derive structure from unstructured or semi-structured sources. Stages 3, 4, and 6 are deterministic and write directly to Neo4j. All pipeline LLM calls go through Gemini; Claude is reserved for request-time work (see [AI Integration](../architecture/ai-integration.md) for the full split).
 
 | Stage | LLM operation | Constraint |
 |---|---|---|
