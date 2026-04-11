@@ -1,17 +1,17 @@
 """
 Generate employer lists from EDD's ALMIS Employer Database.
 
-Purely data-driven: every employer is a verified Data Axle/EDD entry,
-selected by NAICS industry code and employee count. No LLM inference,
-no composite scoring, no debatable weights.
+Every employer is a verified Data Axle/EDD entry, selected by NAICS
+industry code and employee count. Gemini is used to clean names,
+generate descriptions, and assign SOC codes from the regional
+occupation list.
 
 Pipeline:
   1. Scrape EDD employers by CTE NAICS codes + size filter (250+)
-  2. Clean and deduplicate employer names
-  3. Assign sector from NAICS code
-  4. Assign SOC codes via NAICS→SOC mapping
-  5. Select with sector diversity
-  6. Merge into employers.json
+  2. Clean and deduplicate employer names (deterministic pre-filters)
+  3. Assign sector + fallback SOC codes via NAICS→SOC mapping
+  4. LLM cleanup via Gemini (names, descriptions, regional SOC codes)
+  5. Format and merge into employers.json
 
 Usage:
     python -m pipeline.industry.generate_employers --college lacity
@@ -26,11 +26,60 @@ import json
 import logging
 import os
 import re
+import time
 from collections import defaultdict
 from pathlib import Path
 from ontology.regions import OEWS_METRO_TO_COE
 
 logger = logging.getLogger(__name__)
+
+
+class LLMCleanupError(RuntimeError):
+    """Raised when a Gemini cleanup batch fails after all retries."""
+
+
+# Career-track education levels excluded from the regional occupation
+# pool fed to the LLM. "No formal credential" and "HS diploma" exclude
+# roles that don't represent meaningful CTE outcomes; graduate-degree
+# levels exclude roles out of scope for community college pathways.
+_EXCLUDE_EDUCATION = frozenset({
+    "No formal educational credential",
+    "High school diploma or equivalent",
+    "Some college, no degree",
+    "Master's degree",
+    "Doctoral or professional degree",
+})
+
+# NAICS 4-digit codes whose members are structurally not partnership
+# targets. Staffing agencies (5613) and business-support services
+# (5614) place workers at other employers; listing them as employers
+# creates false positives the LLM would otherwise have to filter out.
+_NEVER_EMPLOYER_NAICS = frozenset({"5613", "5614"})
+
+# Name patterns that signal a sub-unit or non-institutional entry
+# that should be dropped before the LLM step. These are intentionally
+# conservative — the LLM still gets the last word on everything that
+# survives.
+_DROP_NAME_PATTERNS = [
+    re.compile(r"^\s*Dept\s+Of\b", re.IGNORECASE),
+    re.compile(r"^\s*County\s+Of\b", re.IGNORECASE),
+    re.compile(r"^\s*City\s+Of\b", re.IGNORECASE),
+    re.compile(r"^\s*State\s+Of\b", re.IGNORECASE),
+]
+
+# SOC code regex — matches e.g. "11-3121" anywhere in a string, so the
+# LLM can return bare codes or codes followed by titles with any
+# separator (":", " - ", " — ", whitespace).
+_SOC_RE = re.compile(r"\b(\d{2}-\d{4})\b")
+
+# Gemini batch size. Gemini 2.5 Flash with 1M context easily handles
+# hundreds of employer names in one request; 100 is a conservative
+# choice that still cuts request count 3× vs. the prior value of 30.
+BATCH_SIZE = 100
+
+# Retry policy for transient Gemini failures.
+_GEMINI_MAX_ATTEMPTS = 3
+_GEMINI_BACKOFF_BASE_SECONDS = 2.0
 
 EMPLOYERS_PATH = Path(__file__).parent / "employers.json"
 OCCUPATIONS_PATH = Path(__file__).parent.parent / "occupations" / "occupations.json"
@@ -99,25 +148,50 @@ def _size_sort_key(emp: dict) -> int:
 # ── Name cleaning ─────────────────────────────────────────────────────────
 
 _ABBREVIATIONS = [
+    # General institutional
     (r"\bCtr\b", "Center"), (r"\bHosp\b", "Hospital"),
     (r"\bDept\b", "Department"), (r"\bUniv\b", "University"),
-    (r"\bMed\b", "Medical"), (r"\bSvc\b", "Services"),
-    (r"\bMeml\b", "Memorial"), (r"\bEntrtn\b", "Entertainment"),
+    (r"\bMed\b", "Medical"), (r"\bMeml\b", "Memorial"),
+    (r"\bInst\b", "Institute"), (r"\bAssn\b", "Association"),
+    (r"\bAssoc\b", "Association"), (r"\bFdn\b", "Foundation"),
+    (r"\bSch\b", "School"), (r"\bDist\b", "District"),
+    (r"\bLbry\b", "Library"),
+    # Business / services
+    (r"\bSvc\b", "Services"), (r"\bSvcs\b", "Services"),
+    (r"\bSrvc\b", "Services"), (r"\bSrvcs\b", "Services"),
+    (r"\bSys\b", "System"), (r"\bMgmt\b", "Management"),
+    (r"\bGrp\b", "Group"), (r"\bIntl\b", "International"),
+    (r"\bAdmn\b", "Administration"), (r"\bAdmin\b", "Administration"),
+    (r"\bCmnty\b", "Community"), (r"\bComnty\b", "Community"),
+    (r"\bRsrch\b", "Research"), (r"\bDvlpmt\b", "Development"),
+    (r"\bGovt\b", "Government"), (r"\bPub\b", "Public"),
+    (r"\bRltrs\b", "Realtors"), (r"\bProd\b", "Products"),
+    (r"\bProds\b", "Products"), (r"\bInd\b", "Industries"),
+    (r"\bBros\b", "Brothers"), (r"\bJr\b", "Junior"),
+    (r"\bOfc\b", "Office"), (r"\bChf\b", "Chief"),
+    # Construction / trades
     (r"\bHtg\b", "Heating"), (r"\bCond\b", "Conditioning"),
     (r"\bPlbg\b", "Plumbing"), (r"\bMfg\b", "Manufacturing"),
     (r"\bTech\b", "Technology"), (r"\bCorp\b", "Corporation"),
-    (r"\bGrp\b", "Group"), (r"\bIntl\b", "International"),
-    (r"\bAdmn\b", "Administration"), (r"\bCmnty\b", "Community"),
-    (r"\bNrthrdg\b", "Northridge"), (r"\bEngrng\b", "Engineering"),
-    (r"\bHllywd\b", "Hollywood"), (r"\bHls\b", "Hills"),
-    (r"\bNcr\b", "Cancer"), (r"\bCncr\b", "Cancer"),
-    (r"\bOfc\b", "Office"), (r"\bChf\b", "Chief"),
+    (r"\bEngrng\b", "Engineering"),
+    # Healthcare
+    (r"\bHlth\b", "Health"), (r"\bNcr\b", "Cancer"),
+    (r"\bCncr\b", "Cancer"),
+    # Place names that appear frequently in LA cached data
+    (r"\bNrthrdg\b", "Northridge"), (r"\bHllywd\b", "Hollywood"),
+    (r"\bHls\b", "Hills"), (r"\bMtn\b", "Mountain"),
 ]
 
 _STRIP_SUFFIXES = re.compile(
     r"\s*\b(Inc\.?|LLC|Corp\.?|Co\.?|Ltd\.?|LP)\s*$",
     re.IGNORECASE,
 )
+
+# Trailing location qualifiers attached to the same employer record by
+# EDD — "Kaiser Permanente - Los Angeles" vs "Kaiser Permanente, Fresno"
+# should collapse to one canonical key. Matches a trailing dash/comma
+# followed by any whitespace-terminated tail.
+_TRAILING_LOCATION = re.compile(r"\s*[-,]\s+[A-Za-z][A-Za-z\s]+$")
 
 
 def _clean_employer_name(name: str) -> str:
@@ -130,9 +204,31 @@ def _clean_employer_name(name: str) -> str:
 
 
 def _normalize_name(name: str) -> str:
-    """Normalize for deduplication matching."""
-    name = _STRIP_SUFFIXES.sub("", name).strip()
-    return name.lower()
+    """Normalize for deduplication matching. Delegates to _canonical_key."""
+    return _canonical_key(name)
+
+
+def _canonical_key(name: str) -> str:
+    """Unified canonical dedup key.
+
+    Strips legal suffixes, trailing location qualifiers, collapses
+    whitespace, lowercases. Used as the single normalization scheme for
+    branch dedup, post-LLM dedup, and cross-college merge.
+    """
+    s = name.strip()
+    s = _STRIP_SUFFIXES.sub("", s)
+    # Apply trailing-location stripping repeatedly (e.g. "Foo - Bar, CA")
+    prev = None
+    while prev != s:
+        prev = s
+        s = _TRAILING_LOCATION.sub("", s).strip()
+    s = re.sub(r"\s+", " ", s)
+    return s.lower()
+
+
+def _should_drop_name(name: str) -> bool:
+    """Deterministic pre-filter for names that are never employers."""
+    return any(p.search(name) for p in _DROP_NAME_PATTERNS)
 
 
 # ── Branch deduplication ──────────────────────────────────────────────────
@@ -190,58 +286,6 @@ def _assign_soc_codes(
         soc_codes.extend(occupations_by_group.get(group, []))
 
     return soc_codes[:10]
-
-
-# ── Selection ─────────────────────────────────────────────────────────────
-
-def _select_employers(
-    employers: list[dict],
-    target: int = 50,
-    min_per_sector: int = 2,
-    max_per_sector: int = 10,
-) -> list[dict]:
-    """Select employers sorted by size with sector diversity guarantees."""
-    # Assign sector
-    for emp in employers:
-        naics = emp.get("naics4", emp.get("naics_code", ""))[:2]
-        emp["sector"] = _NAICS_SECTORS.get(naics, emp.get("industry", "Other"))
-
-    # Sort by size (largest first)
-    employers.sort(key=_size_sort_key)
-
-    # Group by sector
-    by_sector: dict[str, list[dict]] = defaultdict(list)
-    for emp in employers:
-        by_sector[emp["sector"]].append(emp)
-
-    selected = []
-    selected_keys: set[str] = set()
-    sector_counts: dict[str, int] = {}
-
-    # Phase 1: Guarantee minimum per sector
-    for sector, emps in by_sector.items():
-        for emp in emps[:min_per_sector]:
-            key = _normalize_name(emp["name"])
-            if key not in selected_keys and len(selected) < target:
-                selected.append(emp)
-                selected_keys.add(key)
-                sector_counts[sector] = sector_counts.get(sector, 0) + 1
-
-    # Phase 2: Fill remaining by size, respecting max per sector
-    for emp in employers:
-        if len(selected) >= target:
-            break
-        key = _normalize_name(emp["name"])
-        if key in selected_keys:
-            continue
-        sector = emp["sector"]
-        if sector_counts.get(sector, 0) >= max_per_sector:
-            continue
-        selected.append(emp)
-        selected_keys.add(key)
-        sector_counts[sector] = sector_counts.get(sector, 0) + 1
-
-    return selected
 
 
 # ── Formatting ────────────────────────────────────────────────────────────
@@ -316,17 +360,75 @@ def _merge_employers(
 
 # ── LLM cleanup ───────────────────────────────────────────────────────────
 
+def _build_occupation_prefix(metro: str, filtered_occupations: list[dict]) -> str:
+    """Build the shared prefix that's cacheable across batches in a run.
+
+    Contains the task framing and the full regional occupation list —
+    i.e., everything that's identical from one batch to the next.
+    Separating it out lets Gemini context caching eliminate re-sending
+    the occupation list with every batch.
+    """
+    occ_lines = [f"- {o['soc_code']}: {o['title']}" for o in filtered_occupations]
+    occ_list = "\n".join(occ_lines)
+    return (
+        f"You are cleaning employer records for the {metro} metro area.\n\n"
+        "For each employer name you receive, perform TWO tasks:\n\n"
+        "TASK 1 — CLEAN: clean the name and write a one-sentence description.\n"
+        "- Expand abbreviations (Hosp→Hospital, Clg→College, Dist→District)\n"
+        "- Remove branch qualifiers, location suffixes, department names\n"
+        "- Keep the name recognizable\n"
+        '- Return "REMOVE" for branch duplicates, internal departments, foundations when parent is listed, staffing agencies\n\n'
+        "TASK 2 — ASSIGN OCCUPATIONS: select 3-8 SOC codes from the list below "
+        "that this employer would have ON ITS OWN PAYROLL as direct employees.\n"
+        "Only include roles the employer itself employs — not roles performed by "
+        "external agencies, contractors, or government services. For example, a "
+        "resort does not employ firefighters, and a hospital does not employ police officers.\n"
+        "This is REQUIRED for every employer that is not removed.\n\n"
+        f"AVAILABLE OCCUPATIONS:\n{occ_list}\n"
+    )
+
+
+def _create_occupation_cache(
+    client,
+    types_module,
+    prefix: str,
+) -> str | None:
+    """Create a Gemini CachedContent for the shared prefix. Returns its
+    resource name, or None if caching is unavailable or fails (e.g., the
+    prefix is below the model's minimum cache size).
+    """
+    try:
+        cache = client.caches.create(
+            model="gemini-2.5-flash",
+            config=types_module.CreateCachedContentConfig(
+                contents=[
+                    types_module.Content(
+                        role="user",
+                        parts=[types_module.Part(text=prefix)],
+                    )
+                ],
+                ttl="3600s",
+            ),
+        )
+        logger.info(f"  Gemini context cache created: {cache.name}")
+        return cache.name
+    except Exception as e:
+        logger.info(f"  Gemini context caching unavailable ({e}) — using inline prefix")
+        return None
+
+
 def _llm_cleanup(
     employers: list[dict],
     metro: str,
     filtered_occupations: list[dict] | None = None,
+    cached_prefix_name: str | None = None,
 ) -> list[dict]:
     """Clean employer names, generate descriptions, and assign occupations via Gemini Flash.
 
-    Fixes abbreviations, removes branch qualifiers, drops non-employer
-    entries, generates one-sentence descriptions, and (when filtered_occupations
-    is provided) assigns 3-8 relevant occupations per employer. Deduplicates
-    any entries that collapse to the same name after cleaning.
+    When cached_prefix_name is provided, the per-batch request is
+    minimized to the employer names + response-shape directive, and the
+    cached prefix (occupation list + task framing) is attached via
+    GenerateContentConfig.cached_content.
     """
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
@@ -345,28 +447,29 @@ def _llm_cleanup(
 
     if filtered_occupations:
         valid_soc_codes = {o["soc_code"] for o in filtered_occupations}
-        occ_lines = [f"- {o['soc_code']}: {o['title']}" for o in filtered_occupations]
-        occ_list = "\n".join(occ_lines)
-
-        prompt = (
-            f"You have TWO tasks for each of these {len(names)} employers in the {metro} metro area.\n\n"
-            "TASK 1 — CLEAN: For each employer, clean the name and write a one-sentence description.\n"
-            "- Expand abbreviations (Hosp→Hospital, Clg→College, Dist→District)\n"
-            "- Remove branch qualifiers, location suffixes, department names\n"
-            "- Keep the name recognizable\n"
-            '- Return "REMOVE" for branch duplicates, internal departments, foundations when parent is listed, staffing agencies\n\n'
-            "TASK 2 — ASSIGN OCCUPATIONS: For each employer, select 3-8 occupation codes from the list below "
-            "that this employer would have ON ITS OWN PAYROLL as direct employees.\n"
-            "Only include roles the employer itself employs — not roles performed by external agencies, contractors, "
-            "or government services that operate near the employer. For example, a resort does not employ firefighters "
-            "(those are government employees), and a hospital does not employ police officers.\n"
-            "This is REQUIRED for every employer that is not removed.\n\n"
-            f"AVAILABLE OCCUPATIONS:\n{occ_list}\n\n"
+        names_block = "\n".join(f"- {n}" for n in names)
+        response_shape = (
             'Return JSON: {"Original Name": {"name": "Clean Name", "description": "...", "occupations": ["SOC-CODE", ...]} '
             'or "Original Name": "REMOVE"}\n\n'
-            "IMPORTANT: Every non-removed employer MUST have an \"occupations\" array with 3-8 SOC codes.\n\n"
-            "Names:\n" + "\n".join(f"- {n}" for n in names)
+            'IMPORTANT: Every non-removed employer MUST have an "occupations" array with 3-8 SOC codes.\n\n'
         )
+        if cached_prefix_name:
+            # Cached prefix carries the task framing + occupation list;
+            # per-batch payload is minimal.
+            prompt = (
+                f"Here are {len(names)} employer names to process for the "
+                f"{metro} metro area.\n\n"
+                f"{response_shape}"
+                f"Names:\n{names_block}"
+            )
+        else:
+            prefix = _build_occupation_prefix(metro, filtered_occupations)
+            prompt = (
+                f"{prefix}\n"
+                f"Process these {len(names)} employer names:\n\n"
+                f"{response_shape}"
+                f"Names:\n{names_block}"
+            )
     else:
         prompt = (
             f"Here are {len(names)} employer names from the EDD database for the "
@@ -380,21 +483,42 @@ def _llm_cleanup(
             "Names:\n" + "\n".join(f"- {n}" for n in names)
         )
 
-    try:
-        response = client.models.generate_content(
-            model="gemini-2.5-flash",
-            contents=prompt,
-            config=types.GenerateContentConfig(
+    last_error: Exception | None = None
+    cleanup: dict | None = None
+    for attempt in range(1, _GEMINI_MAX_ATTEMPTS + 1):
+        try:
+            config_kwargs = dict(
                 max_output_tokens=65536,
                 temperature=0.1,
                 response_mime_type="application/json",
                 thinking_config=types.ThinkingConfig(thinking_budget=0),
-            ),
-        )
-        cleanup = json.loads(response.text)
-    except Exception as e:
-        logger.warning(f"  LLM cleanup failed: {e}")
-        return employers
+            )
+            if cached_prefix_name:
+                config_kwargs["cached_content"] = cached_prefix_name
+            response = client.models.generate_content(
+                model="gemini-2.5-flash",
+                contents=prompt,
+                config=types.GenerateContentConfig(**config_kwargs),
+            )
+            cleanup = json.loads(response.text)
+            break
+        except Exception as e:
+            last_error = e
+            if attempt < _GEMINI_MAX_ATTEMPTS:
+                delay = _GEMINI_BACKOFF_BASE_SECONDS ** attempt
+                logger.warning(
+                    f"  LLM cleanup attempt {attempt}/{_GEMINI_MAX_ATTEMPTS} "
+                    f"failed: {e}. Retrying in {delay:.1f}s"
+                )
+                time.sleep(delay)
+            else:
+                logger.error(
+                    f"  LLM cleanup failed after {_GEMINI_MAX_ATTEMPTS} attempts: {e}"
+                )
+    if cleanup is None:
+        raise LLMCleanupError(
+            f"Gemini cleanup failed for batch of {len(employers)} employers"
+        ) from last_error
 
     # Apply cleanup
     kept = []
@@ -413,9 +537,13 @@ def _llm_cleanup(
             if action.get("description"):
                 emp["description"] = action["description"]
             if action.get("occupations") and valid_soc_codes:
-                # Validate SOC codes against filtered list
-                # LLM sometimes appends titles like "11-3121: Human Resources Managers"
-                raw_socs = [s.split(":")[0].strip() for s in action["occupations"]]
+                # Extract SOC codes with a regex — tolerates any wrapping
+                # format ("11-3121", "11-3121: Title", "11-3121 - Title").
+                raw_socs: list[str] = []
+                for s in action["occupations"]:
+                    m = _SOC_RE.search(str(s))
+                    if m:
+                        raw_socs.append(m.group(1))
                 valid = [s for s in raw_socs if s in valid_soc_codes]
                 if valid:
                     emp["soc_codes"] = valid
@@ -424,11 +552,11 @@ def _llm_cleanup(
     if filtered_occupations:
         logger.info(f"  LLM occupation assignment: {occ_assigned}/{len(kept)} employers")
 
-    # Post-rename dedup
+    # Post-rename dedup — uses the unified canonical key, not ad-hoc lowercase.
     seen: dict[str, dict] = {}
     final = []
     for emp in kept:
-        key = emp["name"].lower()
+        key = _canonical_key(emp["name"])
         if key in seen:
             # Merge SOC codes
             existing = seen[key]
@@ -446,9 +574,27 @@ def _llm_cleanup(
 
 # ── Orchestrator ──────────────────────────────────────────────────────────
 
+def _cache_path_for(
+    metro: str,
+    search_counties: list[str],
+    has_override: bool,
+) -> Path:
+    """Resolve the EDD scrape cache path.
+
+    When the college uses the default metro-derived counties, key by
+    metro so sibling colleges in the same OEWS metro share the scrape.
+    When the college has a COLLEGE_SEARCH_COUNTIES override, key by
+    the county list so the override is honored.
+    """
+    if has_override:
+        slug = "_".join(search_counties).lower().replace(" ", "_")
+    else:
+        slug = metro.lower().replace(" ", "_").replace("-", "_").replace(",", "")
+    return CACHE_DIR / f"edd_deep_{slug}.json"
+
+
 def generate_for_college(
     college_key: str,
-    target: int = 50,
     scrape: bool = True,
     min_size: str = "G",
     filtered_occupations: list[dict] | None = None,
@@ -485,8 +631,11 @@ def generate_for_college(
 
     # ── Stage 1: Get EDD employers ────────────────────────────────────
     # Use college-specific county list if available, otherwise derive from all metros
-    search_counties = COLLEGE_SEARCH_COUNTIES.get(college_name)
-    if not search_counties:
+    override_counties = COLLEGE_SEARCH_COUNTIES.get(college_name)
+    has_override = override_counties is not None
+    if has_override:
+        search_counties = override_counties
+    else:
         search_counties = []
         for m in metros:
             for c in METRO_COUNTIES.get(m, []):
@@ -494,8 +643,16 @@ def generate_for_college(
                     search_counties.append(c)
     logger.info(f"  Search counties: {search_counties}")
 
-    cache_key = "_".join(search_counties).lower().replace(" ", "_")
-    deep_cache = CACHE_DIR / f"edd_deep_{cache_key}.json"
+    deep_cache = _cache_path_for(metro, search_counties, has_override)
+    # Backwards-compatible fallback: earlier runs keyed every cache by the
+    # search-counties slug, even when no override was set. Honor that if
+    # the metro-keyed file does not yet exist.
+    legacy_cache = (
+        CACHE_DIR
+        / f"edd_deep_{'_'.join(search_counties).lower().replace(' ', '_')}.json"
+    )
+    if not deep_cache.exists() and legacy_cache.exists():
+        deep_cache = legacy_cache
 
     if deep_cache.exists() and not scrape:
         with open(deep_cache) as f:
@@ -525,7 +682,22 @@ def generate_for_college(
         logger.error(f"  No employers found")
         return []
 
-    # ── Stage 2: Clean names and deduplicate branches ─────────────────
+    # ── Stage 2: Pre-filter, clean names, and deduplicate branches ────
+    # Deterministic pre-filters: drop staffing/business-support NAICS
+    # rows and names matching the "never employer" patterns. The LLM
+    # step still has final say on everything that survives.
+    pre_count = len(edd_employers)
+    edd_employers = [
+        emp for emp in edd_employers
+        if emp.get("naics4", "") not in _NEVER_EMPLOYER_NAICS
+        and not _should_drop_name(emp.get("name", ""))
+    ]
+    if pre_count != len(edd_employers):
+        logger.info(
+            f"  Pre-filter: dropped {pre_count - len(edd_employers)} rows "
+            f"(staffing/business-support NAICS + name patterns)"
+        )
+
     for emp in edd_employers:
         emp["name"] = _clean_employer_name(emp["name"])
 
@@ -536,15 +708,6 @@ def generate_for_college(
     with open(OCCUPATIONS_PATH) as f:
         occupations = json.load(f)
 
-    # Filter occupations to the college's COE region, excluding low-credential roles
-    # that don't represent meaningful workforce development outcomes
-    _EXCLUDE_EDUCATION = {
-        "No formal educational credential",
-        "High school diploma or equivalent",
-        "Some college, no degree",
-        "Master's degree",
-        "Doctoral or professional degree",
-    }
     coe_region = COLLEGE_COE_REGION.get(college_name)
     regional_occupations = [
         occ for occ in occupations
@@ -574,13 +737,46 @@ def generate_for_college(
     # ── Stage 5: LLM cleanup in batches (dedup, normalize, describe, assign occupations)
     # Use caller-provided filtered_occupations, or fall back to regional occupations
     llm_occupations = filtered_occupations or regional_occupations
-    BATCH_SIZE = 30
+
+    # Create a Gemini context cache for the occupation-list prefix once,
+    # then reuse across every batch. If caching fails (model min-token
+    # floor, quota, library version), _llm_cleanup falls back to inline.
+    cached_prefix_name: str | None = None
+    if llm_occupations and os.environ.get("GEMINI_API_KEY"):
+        try:
+            from google import genai
+            from google.genai import types as _gtypes
+            _client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+            _prefix = _build_occupation_prefix(metro, llm_occupations)
+            cached_prefix_name = _create_occupation_cache(_client, _gtypes, _prefix)
+        except Exception as e:
+            logger.info(f"  Gemini cache setup skipped: {e}")
+
     selected = []
+    failed_batches = 0
     for i in range(0, len(deduped), BATCH_SIZE):
         batch = deduped[i:i + BATCH_SIZE]
-        cleaned = _llm_cleanup(batch, metro, filtered_occupations=llm_occupations)
-        selected.extend(cleaned)
+        try:
+            cleaned = _llm_cleanup(
+                batch,
+                metro,
+                filtered_occupations=llm_occupations,
+                cached_prefix_name=cached_prefix_name,
+            )
+            selected.extend(cleaned)
+        except LLMCleanupError as e:
+            failed_batches += 1
+            failing_names = [emp["name"] for emp in batch]
+            logger.error(
+                f"  LLM cleanup batch {i // BATCH_SIZE} dropped "
+                f"({len(batch)} employers): {e}. Names: {failing_names}"
+            )
     logger.info(f"  After LLM cleanup: {len(selected)} employers (from {len(deduped)})")
+    if failed_batches:
+        logger.warning(
+            f"  {failed_batches} LLM batches failed — their employers were skipped. "
+            f"Re-run with --no-scrape to retry."
+        )
 
     # ── Stage 6: Format and merge ─────────────────────────────────────
     formatted = _format_for_json(selected, metro)
@@ -642,8 +838,6 @@ def main():
     group.add_argument("--all", action="store_true")
     parser.add_argument("--no-scrape", action="store_true",
                         help="Use cached EDD data only")
-    parser.add_argument("--target", type=int, default=50,
-                        help="Target employers per college (default: 50)")
     parser.add_argument("--min-size", type=str, default="G",
                         choices=["A", "B", "C", "D", "E", "F", "G", "H", "I"],
                         help="Minimum employer size class (default: G=250+)")
@@ -654,7 +848,7 @@ def main():
     if getattr(args, "all"):
         generate_all(scrape=not args.no_scrape, min_size=args.min_size)
     else:
-        generate_for_college(args.college, target=args.target, scrape=not args.no_scrape, min_size=args.min_size)
+        generate_for_college(args.college, scrape=not args.no_scrape, min_size=args.min_size)
 
 
 if __name__ == "__main__":

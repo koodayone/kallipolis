@@ -232,8 +232,9 @@ CTE_NAICS_CODES: dict[str, tuple[str, str]] = {
     "5621": ("56", "Waste - Collection"),
     "5622": ("56", "Waste - Treatment/Disposal"),
     # Administrative / Support (sector 56)
-    "5613": ("56", "Admin - Employment Services/Staffing"),
-    "5614": ("56", "Admin - Business Support Services"),
+    # Employment services (5613) and business support (5614) deliberately
+    # excluded: their members are staffing agencies that place workers at
+    # other employers rather than hire workers onto their own payroll.
     "5616": ("56", "Admin - Investigation/Security"),
     "5617": ("56", "Admin - Janitorial/Landscaping"),
     # Education (sector 61)
@@ -303,8 +304,21 @@ _ROW_PATTERN = re.compile(
 )
 
 
+# Sentinel markers present on every empResults.aspx page. Used to
+# distinguish a legitimate empty result set from an HTML-structure
+# shift that silently broke _ROW_PATTERN or _extract_form_state.
+_RESULT_TABLE_SENTINEL = "empDetails.aspx"
+_FORM_SENTINEL = "__VIEWSTATE"
+
+
 def _parse_employer_rows(html: str) -> list[dict]:
-    """Parse employer table rows from empResults page."""
+    """Parse employer table rows from empResults page.
+
+    Returns an empty list both for "no results" and "markup shift broke
+    the selector"; the two cases are distinguishable by inspecting the
+    returned list together with the result_table_present flag from
+    _is_result_page_recognizable.
+    """
     rows = _ROW_PATTERN.findall(html)
     employers = []
     for emp_id, geog, name, addr, city, industry, size in rows:
@@ -318,16 +332,31 @@ def _parse_employer_rows(html: str) -> list[dict]:
             "emp_id": emp_id.strip(),
             "geog_area": geog.strip(),
         })
+    if not employers and _RESULT_TABLE_SENTINEL in html and "tableData" in html:
+        logger.warning(
+            "  _parse_employer_rows: 0 rows but result table markers present — "
+            "EDD page structure may have shifted"
+        )
     return employers
 
 
 def _extract_form_state(html: str) -> dict:
-    """Extract ASP.NET form state for POST requests."""
+    """Extract ASP.NET form state for POST requests.
+
+    If the sentinel __VIEWSTATE token is present but the regex fails to
+    capture, logs a warning so the operator can tell markup drift apart
+    from a page that never had form state to begin with.
+    """
     state = {}
     for field in ("__VIEWSTATE", "__EVENTVALIDATION", "__VIEWSTATEGENERATOR"):
         match = re.search(rf'{field}.*?value="([^"]+)"', html)
         if match:
             state[field] = match.group(1)
+    if _FORM_SENTINEL in html and "__VIEWSTATE" not in state:
+        logger.warning(
+            "  _extract_form_state: __VIEWSTATE token present but regex failed "
+            "to capture — EDD form rendering may have shifted"
+        )
     return state
 
 
@@ -421,6 +450,7 @@ def deep_search(
         return []
 
     # Paginate
+    pages_fetched = 1
     for page in range(2, max_pages + 1):
         form_state = _extract_form_state(html)
         if not form_state.get("__VIEWSTATE"):
@@ -449,7 +479,17 @@ def deep_search(
         if not new_rows:
             break
         all_employers.extend(new_rows)
+        pages_fetched = page
         time.sleep(0.3)
+
+    # Warn on silent truncation: pagination hit max_pages but another
+    # "Next" button is still present, meaning additional results were
+    # left unfetched.
+    if pages_fetched >= max_pages and "btnGridPagerNext" in html:
+        logger.warning(
+            f"  Pagination truncated at max_pages={max_pages} for "
+            f"{county_name or geog_area} naics4={naics4} — results incomplete"
+        )
 
     # Deduplicate by (name, city)
     seen = set()
