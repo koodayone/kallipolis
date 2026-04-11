@@ -9,7 +9,7 @@ Two scraping modes:
 Data source: labormarketinfo.edd.ca.gov (Data Axle ALMIS database)
 
 Usage:
-    from pipeline.industry.edd_employers import deep_search, scrape_metro
+    from employers.edd_scrape import deep_search, scrape_metro
     employers = deep_search("0604000037", naics4="2382", min_size="E")
 """
 

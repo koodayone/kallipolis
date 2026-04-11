@@ -5,7 +5,7 @@ Takes enriched course data and persists it into the Neo4j graph database,
 creating College, Department, and Course nodes with relationships.
 
 Usage:
-    from pipeline.loader import load_college
+    from courses.load import load_college
     stats = load_college(driver, college_config, enriched_courses)
 """
 
@@ -17,7 +17,7 @@ from typing import List, Optional
 
 from neo4j import Driver
 
-from pipeline.skills import UNIFIED_TAXONOMY
+from ontology.skills import UNIFIED_TAXONOMY
 
 logger = logging.getLogger(__name__)
 

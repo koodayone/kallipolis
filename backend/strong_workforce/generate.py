@@ -7,13 +7,13 @@ import json
 import logging
 from typing import Optional
 import anthropic
-from models import (
+from strong_workforce.models import (
     SwpProjectRequest, SwpProject, SwpSection,
     LmiContext, LmiOccupation, SupplyEstimate, DepartmentEnrollment,
 )
 from ontology.schema import get_driver
-from pipeline.industry.coe_supply import get_coe_supply, get_coe_demand
-from pipeline.industry.mcf_lookup import lookup_top6
+from ontology.supply import get_coe_supply, get_coe_demand
+from ontology.mcf_lookup import lookup_top6
 
 logger = logging.getLogger(__name__)
 
@@ -32,7 +32,7 @@ def get_lmi_context(req: SwpProjectRequest) -> LmiContext:
     # The partnership pipeline already computed the occupation data with
     # wages, openings, and growth from the Neo4j graph. No need to re-derive
     # from the COE CSV (which can fail on SOC code granularity mismatches).
-    from pipeline.industry.region_maps import COLLEGE_COE_REGION
+    from ontology.regions import COLLEGE_COE_REGION
     coe_region = COLLEGE_COE_REGION.get(req.college, "")
 
     occupations = [

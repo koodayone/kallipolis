@@ -7,7 +7,7 @@ primary TOP code (weighted by real enrollment share), with 60% stickiness
 to that area and 40% random draws from the full distribution.
 
 Usage:
-    from pipeline.students import generate_and_load_students
+    from students.generate import generate_and_load_students
     stats = generate_and_load_students("foothill", num_students=3000, seed=42)
 """
 
@@ -110,7 +110,7 @@ class GenerationStats:
 
 def _load_calibration(college_key: str) -> Optional[dict]:
     """Load the old 2-digit calibration for ft_ratio and retention_rate."""
-    path = Path(__file__).parent / "calibrations" / f"{college_key}.json"
+    path = Path(__file__).parent.parent / "ontology" / "calibrations" / f"{college_key}.json"
     if path.exists():
         with open(path) as f:
             return json.load(f)
@@ -119,7 +119,7 @@ def _load_calibration(college_key: str) -> Optional[dict]:
 
 def _load_top4_calibration(college_key: str) -> Optional[dict]:
     """Load 4-digit TOP code calibration data."""
-    path = Path(__file__).parent / "calibrations" / "top4" / f"{college_key}.json"
+    path = Path(__file__).parent.parent / "ontology" / "calibrations" / "top4" / f"{college_key}.json"
     if path.exists():
         with open(path) as f:
             cal = json.load(f)
@@ -135,7 +135,7 @@ _MCF_DIR = Path(os.environ.get("MCF_DIR", Path.home() / "Desktop" / "cc_dataset"
 
 # System-wide fallback (only used when a college has no MCF)
 _FALLBACK_PREFIX_TOP4: Dict[str, str] = {}
-_FALLBACK_PREFIX_PATH = Path(__file__).parent / "calibrations" / "prefix_to_top4.json"
+_FALLBACK_PREFIX_PATH = Path(__file__).parent.parent / "ontology" / "calibrations" / "prefix_to_top4.json"
 
 
 def _get_fallback_prefix_map() -> Dict[str, str]:
@@ -581,7 +581,7 @@ def load_students(driver: Driver, institution: str, students: List[GeneratedStud
         # Build uuid → primary_top4 lookup
         uuid_to_top4 = {s.uuid: s.primary_top4 for s in students}
 
-        from ontology.utils import compute_gpa, compute_primary_focus
+        from students.helpers import compute_gpa, compute_primary_focus
         field_batch = []
         for rec in student_records:
             enrollments = rec["enrollments"]

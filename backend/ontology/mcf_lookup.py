@@ -14,7 +14,7 @@ import logging
 from pathlib import Path
 from functools import lru_cache
 
-from pipeline.industry.coe_supply import _normalize_college
+from ontology.supply import _normalize_college
 
 logger = logging.getLogger(__name__)
 

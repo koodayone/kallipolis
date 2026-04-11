@@ -35,9 +35,9 @@ logger = logging.getLogger(__name__)
 
 # ── Paths ──────────────────────────────────────────────────────────────────
 
-CACHE_DIR = Path(__file__).parent / "cache"
+CACHE_DIR = Path(__file__).parent.parent / "pipeline" / "cache"
 MCF_DIR = Path("/Users/dayonekoo/Desktop/cc_dataset/mastercoursefiles")
-SYSTEM_PROMPT_PATH = Path(__file__).parent / "extraction_prompt.txt"
+SYSTEM_PROMPT_PATH = Path(__file__).parent.parent / "pipeline" / "extraction_prompt.txt"
 
 # ── Constants ──────────────────────────────────────────────────────────────
 
@@ -270,7 +270,7 @@ def _deduplicate_courses(all_courses: list[dict]) -> list[dict]:
 
 def _validate_skills(courses: list[dict]) -> list[dict]:
     """Validate skills against UNIFIED_TAXONOMY. Drop off-taxonomy terms."""
-    from pipeline.skills import UNIFIED_TAXONOMY
+    from ontology.skills import UNIFIED_TAXONOMY
     off_taxonomy: Counter = Counter()
     for course in courses:
         skills = course.get("skill_mappings", [])
@@ -310,7 +310,7 @@ def _cross_reference_mcf(courses: list[dict], mcf_data: dict[str, dict]) -> list
 # ── Coverage Reporting ─────────────────────────────────────────────────────
 
 def _write_coverage(college_key, courses, mcf_data, total_pages, course_pages, failed):
-    from pipeline.skills import UNIFIED_TAXONOMY
+    from ontology.skills import UNIFIED_TAXONOMY
     all_skills = [s for c in courses for s in c.get("skill_mappings", [])]
     unique = set(all_skills)
     report = {

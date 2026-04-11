@@ -8,7 +8,7 @@ Optimized pipeline:
   3. Extract courses + derive skills in a single LLM call
 
 Usage:
-    from pipeline.scraper_pdf import scrape_pdf_catalog
+    from courses.scrape_pdf import scrape_pdf_catalog
     courses = await scrape_pdf_catalog(
         pdf_url="https://laney.edu/hubfs/2025-2026%20Catalog_FINAL_rev2_8.18.25.pdf",
         college_key="laney",
@@ -31,12 +31,12 @@ from google import genai
 from google.genai import types
 from pypdf import PdfReader, PdfWriter
 
-from pipeline.scraper import RawCourse
-from pipeline.skills import UNIFIED_TAXONOMY
+from courses.scrape import RawCourse
+from ontology.skills import UNIFIED_TAXONOMY
 
 logger = logging.getLogger(__name__)
 
-CACHE_DIR = Path(__file__).resolve().parent / "cache"
+CACHE_DIR = Path(__file__).resolve().parent.parent / "pipeline" / "cache"
 
 # ── Config ────────────────────────────────────────────────────────────────────
 

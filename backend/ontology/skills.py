@@ -6,7 +6,7 @@ to extract workforce-aligned skill_mappings. Normalizes against the unified
 skill taxonomy — a closed vocabulary connecting curriculum to labor markets.
 
 Usage:
-    from pipeline.skills import derive_skills
+    from ontology.skills import derive_skills
     enriched = await derive_skills(raw_courses)
 """
 
@@ -21,7 +21,7 @@ from typing import List
 from google import genai
 from google.genai import types
 
-from pipeline.scraper import RawCourse
+from courses.scrape import RawCourse
 
 logger = logging.getLogger(__name__)
 

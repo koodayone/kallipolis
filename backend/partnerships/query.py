@@ -1,8 +1,8 @@
 """Semantic translation layer for Partnership Landscape queries."""
 
 import logging
-from workflows.query_engine import validate_cypher, generate_query, execute_query
-from models import PartnershipOpportunity
+from llm.query_engine import validate_cypher, generate_query, execute_query
+from partnerships.models import PartnershipOpportunity
 
 logger = logging.getLogger(__name__)
 

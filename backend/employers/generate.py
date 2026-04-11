@@ -28,14 +28,14 @@ import os
 import re
 from collections import defaultdict
 from pathlib import Path
-from pipeline.industry.region_maps import OEWS_METRO_TO_COE
+from ontology.regions import OEWS_METRO_TO_COE
 
 logger = logging.getLogger(__name__)
 
-INDUSTRY_DIR = Path(__file__).parent
-EMPLOYERS_PATH = INDUSTRY_DIR / "employers.json"
-OCCUPATIONS_PATH = INDUSTRY_DIR / "occupations.json"
-CACHE_DIR = Path(__file__).parent.parent / "cache"
+EMPLOYERS_PATH = Path(__file__).parent / "employers.json"
+OCCUPATIONS_PATH = Path(__file__).parent.parent / "occupations" / "occupations.json"
+CACHE_DIR = Path(__file__).parent / "cache"
+PIPELINE_CACHE_DIR = Path(__file__).parent.parent / "pipeline" / "cache"
 
 # ── NAICS → SOC major groups ─────────────────────────────────────────────
 # Maps NAICS 2-digit sector to SOC major groups employed in that industry.
@@ -454,8 +454,8 @@ def generate_for_college(
     filtered_occupations: list[dict] | None = None,
 ) -> list[dict]:
     """Run the full employer generation pipeline for one college."""
-    from pipeline.industry.edd_employers import search_naics_codes, METRO_COUNTIES
-    from pipeline.industry.region_maps import COLLEGE_REGION_MAP, COLLEGE_COE_REGION
+    from employers.edd_scrape import search_naics_codes, METRO_COUNTIES
+    from ontology.regions import COLLEGE_REGION_MAP, COLLEGE_COE_REGION
 
     import warnings
     warnings.filterwarnings("ignore")
@@ -464,7 +464,7 @@ def generate_for_college(
     logger.info(f"Generating employers for: {college_key}")
 
     # ── Resolve college → metro ───────────────────────────────────────
-    sources_path = Path(__file__).parent.parent / "catalog_sources.json"
+    sources_path = Path(__file__).parent.parent / "pipeline" / "catalog_sources.json"
     with open(sources_path) as f:
         sources = json.load(f)
     college_info = sources.get("colleges", {}).get(college_key)
@@ -473,7 +473,7 @@ def generate_for_college(
         return []
 
     college_name = college_info["name"]
-    from pipeline.industry.region_maps import get_college_metros, COLLEGE_SEARCH_COUNTIES
+    from ontology.regions import get_college_metros, COLLEGE_SEARCH_COUNTIES
     metros = get_college_metros(college_name)
     if not metros:
         logger.error(f"  {college_name} not in COLLEGE_REGION_MAP")
@@ -495,7 +495,7 @@ def generate_for_college(
     logger.info(f"  Search counties: {search_counties}")
 
     cache_key = "_".join(search_counties).lower().replace(" ", "_")
-    deep_cache = INDUSTRY_DIR / "cache" / f"edd_deep_{cache_key}.json"
+    deep_cache = CACHE_DIR / f"edd_deep_{cache_key}.json"
 
     if deep_cache.exists() and not scrape:
         with open(deep_cache) as f:
@@ -599,13 +599,13 @@ def generate_for_college(
 
 def generate_all(scrape: bool = True, min_size: str = "G") -> dict[str, int]:
     """Run pipeline for all colleges with enriched caches."""
-    from pipeline.industry.region_maps import COLLEGE_REGION_MAP
+    from ontology.regions import COLLEGE_REGION_MAP
 
-    sources_path = Path(__file__).parent.parent / "catalog_sources.json"
+    sources_path = Path(__file__).parent.parent / "pipeline" / "catalog_sources.json"
     with open(sources_path) as f:
         sources = json.load(f)
 
-    enriched_files = sorted(CACHE_DIR.glob("*_enriched.json"))
+    enriched_files = sorted(PIPELINE_CACHE_DIR.glob("*_enriched.json"))
     college_keys = [p.stem.replace("_enriched", "") for p in enriched_files]
 
     metro_done: set[str] = set()

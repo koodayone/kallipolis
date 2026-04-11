@@ -1,8 +1,8 @@
 """Semantic translation layer for Occupation queries."""
 
 import logging
-from workflows.query_engine import validate_cypher, generate_query, execute_query
-from models import OccupationMatch
+from llm.query_engine import validate_cypher, generate_query, execute_query
+from occupations.models import OccupationMatch
 
 logger = logging.getLogger(__name__)
 

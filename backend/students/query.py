@@ -1,8 +1,8 @@
 """Semantic translation layer for Student queries."""
 
 import logging
-from workflows.query_engine import validate_cypher, generate_query, execute_query
-from models import StudentSummary
+from llm.query_engine import validate_cypher, generate_query, execute_query
+from students.models import StudentSummary
 
 logger = logging.getLogger(__name__)
 

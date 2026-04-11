@@ -5,7 +5,7 @@ Scrapes a CourseLeaf-based college catalog to extract full Course Outline
 of Record (COR) data for every course.
 
 Usage:
-    from pipeline.scraper import scrape_catalog
+    from courses.scrape import scrape_catalog
     courses = await scrape_catalog("https://catalog.foothill.edu")
 """
 

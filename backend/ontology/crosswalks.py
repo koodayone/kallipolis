@@ -6,7 +6,7 @@ programs to federal occupational classifications. Used for demand profiling
 and employer-occupation alignment.
 
 Usage:
-    from pipeline.industry.crosswalks import build_demand_profile
+    from ontology.crosswalks import build_demand_profile
     profile = build_demand_profile("lacity", occupations, coe_demand)
 """
 
@@ -28,7 +28,7 @@ TOP_CIP_PATH = DATASET_DIR / "top_cip_crosswalk.csv"
 CIP_SOC_PATH = DATASET_DIR / "CIP2020_SOC2018_Crosswalk.xlsx"
 COE_DEMAND_PATH = DATASET_DIR / "occupational_demand_coe.csv"
 
-CALIBRATIONS_DIR = Path(__file__).parent.parent / "calibrations"
+CALIBRATIONS_DIR = Path(__file__).parent / "calibrations"
 
 
 # ── Crosswalk loaders (cached) ────────────────────────────────────────────

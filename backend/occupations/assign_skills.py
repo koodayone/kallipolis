@@ -91,7 +91,7 @@ async def _assign_batch(
 
 async def assign_all() -> None:
     """Assign skills to all occupations."""
-    from pipeline.skills import UNIFIED_TAXONOMY
+    from ontology.skills import UNIFIED_TAXONOMY
 
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:

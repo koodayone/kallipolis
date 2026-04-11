@@ -249,7 +249,7 @@ def get_coe_demand(
     Returns (occupations, total_demand) where total_demand = sum of annual_openings.
     Falls back to statewide ("CA") data if regional entry is missing.
     """
-    from pipeline.industry.region_maps import COLLEGE_COE_REGION
+    from ontology.regions import COLLEGE_COE_REGION
 
     demand_index = _load_demand_index()
     coe_region = COLLEGE_COE_REGION.get(college, "CA")

@@ -8,7 +8,7 @@ this system and expose public CORs at {college}.curriqunet.com.
 Output is a list[RawCourse] — same contract as the CourseLeaf scraper.
 
 Usage:
-    from pipeline.scraper_curricunet import scrape_curricunet
+    from courses.scrape_curricunet import scrape_curricunet
     courses = await scrape_curricunet("https://ccsf.curriqunet.com", report_id=28)
 """
 
@@ -23,7 +23,7 @@ from pathlib import Path
 
 import httpx
 
-from pipeline.scraper import RawCourse
+from courses.scrape import RawCourse
 
 logger = logging.getLogger(__name__)
 
@@ -37,7 +37,7 @@ SCAN_DELAY = 0.02  # lighter delay for enumeration probes
 
 COMMON_REPORT_IDS = [28, 99, 48, 52, 44]
 
-CACHE_DIR = Path(__file__).resolve().parent / "cache"
+CACHE_DIR = Path(__file__).resolve().parent.parent / "pipeline" / "cache"
 
 # ── URL helpers ───────────────────────────────────────────────────────────────
 

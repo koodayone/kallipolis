@@ -15,7 +15,7 @@ from typing import Optional
 
 from neo4j import Driver
 from ontology.schema import get_driver, close_driver
-from pipeline.industry.region_maps import COLLEGE_COE_REGION, COE_REGION_DISPLAY
+from ontology.regions import COLLEGE_COE_REGION, COE_REGION_DISPLAY
 
 logger = logging.getLogger(__name__)
 

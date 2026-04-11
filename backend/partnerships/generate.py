@@ -10,7 +10,7 @@ from dataclasses import dataclass, field
 from collections import Counter, defaultdict
 import anthropic
 from ontology.schema import get_driver
-from models import (
+from partnerships.models import (
     NarrativeProposal, ProposalJustification,
     OccupationEvidence, DepartmentEvidence, CourseEvidence,
     StudentEvidence, StudentSummaryEvidence, StudentEnrollmentEvidence,
@@ -1021,7 +1021,7 @@ def _assemble_proposal(
     agenda_topics: list[dict] | None = None,
 ) -> NarrativeProposal:
     """Merge LLM-generated narrative with deterministic evidence blocks."""
-    from models import AgendaTopic
+    from partnerships.models import AgendaTopic
 
     # Advisory board: multiple occupations in evidence, broader scope
     if selected_occupations:
