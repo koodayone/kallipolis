@@ -22,12 +22,18 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from checks.base import Check, Status  # noqa: E402
 from checks.file_paths import FilePathsCheck  # noqa: E402
+from checks.markdown_links import MarkdownLinksCheck  # noqa: E402
+from checks.api_endpoints import APIEndpointsCheck  # noqa: E402
+from checks.model_names import ModelNamesCheck  # noqa: E402
 from lib.reporter import HumanReporter  # noqa: E402
 
 
 # Registry of all checks. Add new checks here as they are built.
 ALL_CHECKS: list[Check] = [
     FilePathsCheck(),
+    MarkdownLinksCheck(),
+    APIEndpointsCheck(),
+    ModelNamesCheck(),
 ]
 
 
