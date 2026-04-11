@@ -78,6 +78,28 @@ This is correct for a workforce tool. The question the pipeline is answering is 
 
 The override is the operational expression of a structural decision: the pipeline serves colleges, not regions, and the geographic scope of relevance is defined by what the college's students would realistically consider.
 
+## Validation and enrichment
+
+After the pipeline produces the merged `employers.json`, a separate validation step assesses each employer against partnership viability criteria and enriches the survivors with their official website URLs. The validation is implemented as a Claude skill, `validate-employers`, and runs as a manual step before the data is loaded into the graph.
+
+The skill applies five viability criteria, derived from the Strong Workforce Program's partnership requirements. An employer must satisfy all five to be retained.
+
+1. **Institutional web presence.** The organization must have an official website representing it as an institution, not just a third-party directory listing. The skill verifies each candidate URL by fetching the page and confirming it serves real business content. Parked domains, expired sites, and ad-network placeholders are common false positives in search results, which is why the fetch-and-verify step is non-negotiable.
+
+2. **Currently operating.** The organization must be actively operating — not closed, sold, or pending shutdown. The skill searches recent news for closure indicators.
+
+3. **Distinct entity.** The employer must be a standalone organizational entity, not a sub-unit, internal venue, or alias of another employer in the list. Internal departments of larger entities, restaurants inside casinos, and generic names that cannot be resolved to a specific organization all fail this check.
+
+4. **CTE-relevant workforce.** The employer must hire for roles that community college CTE programs prepare students for. Farm labor contracting, sole-proprietor retail with no career ladder, and graduate-degree-only operations all fail this check.
+
+5. **Partnership capacity.** The organization must have the institutional infrastructure (HR, management, training) to sustain a workforce development partnership. Sector-specific size thresholds guide the assessment: 25+ employees for healthcare, 100+ for manufacturing, 200+ for agriculture, 50+ for trades and professional services, with smaller thresholds where institutional capacity is inherent (government, education).
+
+Each employer that passes all five criteria is enriched with a verified `website` field. Employers that fail any criterion are removed with their removal reason logged.
+
+The validation step is what closes the gap between *what EDD's filters can produce* and *what the workforce development ecosystem can actually coordinate with*. The pipeline's NAICS and size filters are good at generating a candidate list, but they cannot distinguish between an employer with the institutional capacity for partnership work and one without it. Closed facilities, sub-departments mistaken for distinct entities, and small operations whose appearance in EDD does not translate to real partnership infrastructure all pass the generation filters but fail the viability criteria. Without this step, the employer pool would carry significant noise into the partnership generation flow that the product is built around.
+
+The criteria themselves are the operational expression of the partial-by-design principle the [employers product document](../product/employers.md) describes — Kallipolis is built to coordinate with the actors the workforce development ecosystem already recognizes, and the validation step is how that recognition gets enforced employer by employer. The website enrichment is also what makes the [home page property](../product/employers.md) on each employer real. The product section names the home page as the unique attributional feature that distinguishes employers from the other foundationals; the validation step is how that link gets there.
+
 ## Loading into the graph
 
 `generate_employers.py` produces `employers.json`. A separate script, `pipeline/industry/employers.py`, loads it into Neo4j. The loader creates one `Employer` node per record, links it to each region in its `regions` array via `IN_MARKET`, and links it to each occupation in its `occupations` array via `HIRES_FOR`. Loading is idempotent: re-running adds new edges without duplicating existing ones.

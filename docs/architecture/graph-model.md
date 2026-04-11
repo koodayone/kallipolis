@@ -14,15 +14,15 @@ Five node types live on the curriculum side, three on the industry side. Each on
 | **Department** | name | `name UNIQUE` | A department within a college (e.g., Welding, Nursing) |
 | **Course** | code, college, name, department, units, description, learning_outcomes, course_objectives, skill_mappings, transfer_status, url | `(code, college) UNIQUE` | A course actually taught at a college |
 | **Skill** | name | `name UNIQUE` | A workforce-relevant competency from the unified taxonomy |
-| **Student** | uuid | `uuid UNIQUE` | A student enrolled at a college (synthetic) |
+| **Student** | uuid, gpa, primary_focus, courses_completed | `uuid UNIQUE` | A student enrolled at a college (synthetic). The derived fields are materialized after enrollment generation. |
 
 ### Industry side
 
 | Node | Key properties | Constraint | What it represents |
 |---|---|---|---|
-| **Region** | name | `name UNIQUE` | A regional labor market |
-| **Occupation** | soc_code, title, description, annual_wage | `soc_code UNIQUE` | A SOC-coded occupation in regional demand |
-| **Employer** | name, sector | `name UNIQUE` | A real organization that hires in California |
+| **Region** | name, display_name | `name UNIQUE` | A regional labor market |
+| **Occupation** | soc_code, title, description, education_level | `soc_code UNIQUE` | A SOC-coded occupation in regional demand. Wage and employment data live on the `DEMANDS` edge, not on the node, because the same occupation has different demand profiles in different regions. |
+| **Employer** | name, sector, description, website | `name UNIQUE` | A real organization that hires in California. The `website` property is the verified official URL produced by the validation step in the [employer generation pipeline](../pipeline/employer-generation.md). |
 
 The eight node types map cleanly to the conceptual structure documented in the product section. The four units of analysis — students, courses, occupations, employers — each have a node type. The two structural elements — colleges and departments on the curriculum side, regions on the industry side — are containers and intermediaries. The skill node is the emergent bridge that connects supply to demand.
 
@@ -39,7 +39,7 @@ Relationships encode the supply-demand logic of workforce development. Each one 
 | `HAS_SKILL` | Student → Skill | — | A student has acquired a skill (derived from completed enrollments) |
 | `IN_MARKET` | College → Region | — | A college operates within a regional labor market |
 | `IN_MARKET` | Employer → Region | — | An employer operates within a regional labor market |
-| `DEMANDS` | Region → Occupation | employment | A region has demand for an occupation, with regional employment data |
+| `DEMANDS` | Region → Occupation | employment, annual_wage, growth_rate, annual_openings | A region has demand for an occupation, with the regional employment, wage, growth, and openings metadata that varies by region |
 | `REQUIRES_SKILL` | Occupation → Skill | — | An occupation requires a skill (derived from the taxonomy) |
 | `HIRES_FOR` | Employer → Occupation | — | An employer hires for an occupation |
 
