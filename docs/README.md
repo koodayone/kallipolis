@@ -52,9 +52,10 @@ How institutional data enters the graph. The mechanism by which the ontology com
 
 ## Conventions
 
-- **Voice.** Institutional, declarative, direct. Short sentences. No hype. The institution is the agent; the product empowers institutional capacity.
-- **Two altitudes.** Distinguish what the product does today (operational, defensible) from what it is aiming toward (mission, aspirational). Do not collapse one into the other.
-- **Spines first, content second.** Each section has a governing principle that determines what belongs in it. Content is written against the spine, not the other way around. When the spine drifts, the content drifts with it.
-- **Spines unify; they do not gatekeep.** The job of a spine is to name the through-line that makes everything in the section coherent, not to argue features in or out.
-- **Citations.** Where a claim comes from code, cite `path/to/file.py`. Where it comes from external policy or research, cite the source by name.
-- **Living, not frozen.** Documentation that describes code should be regenerable from the code. Documentation that describes policy or product strategy is hand-written and revised dialectically.
+The patterns this documentation follows are codified in [conventions.md](./conventions.md), which serves as the contract that the audit infrastructure (`tools/docs-audit/`) and any skill that writes documentation both reference. In brief:
+
+- **Voice.** Institutional, declarative, direct. The institution is the agent; the product empowers institutional capacity.
+- **Two altitudes.** Distinguish what the product does today (operational, defensible) from what it is aiming toward (mission, aspirational).
+- **Spines first, content second.** Each section has a governing principle that determines what belongs in it. Spines unify; they do not gatekeep.
+- **Code-grounded claims have structured forms.** Claims that need to be auto-verified live in tables, code spans, or markdown links — not in unstructured prose. See [conventions.md](./conventions.md) for the specific patterns.
+- **Living, not frozen.** Documentation that describes code is verified against the code by the audit and revised when either side changes.
