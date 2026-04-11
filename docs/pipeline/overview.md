@@ -10,7 +10,7 @@ The pipeline is run per college (for the curriculum side) and per region (for th
 
 ## The stages
 
-The pipeline has five stages, each one corresponding to a specific transformation from source to graph.
+The pipeline has six stages, each one corresponding to a specific transformation from source to graph.
 
 | Stage | Input | Transformation | Output |
 |---|---|---|---|
@@ -19,8 +19,9 @@ The pipeline has five stages, each one corresponding to a specific transformatio
 | **3. Curriculum loading** | Enriched courses | Direct write to Neo4j | College, Department, Course, Skill nodes and their relationships |
 | **4. Student generation** | Enriched courses + per-college calibration data | Synthetic generation against DataMart enrollment distributions | Student nodes with `ENROLLED_IN` and `HAS_SKILL` edges |
 | **5. Industry data** | EDD OEWS, COE labor market data, EDD employer records | Parsing, LLM cleanup, controlled-vocabulary skill assignment | Region, Occupation, Employer nodes and their relationships |
+| **6. Partnership alignment** | The loaded graph (curriculum + industry + students) | Deterministic traversal that derives per-employer alignment metrics | `PARTNERSHIP_ALIGNMENT` edges from each College to the employers in its region |
 
-The stages are not strictly sequential. Stages 1–4 run per college and produce the curriculum side of the graph. Stage 5 runs per region and produces the industry side. The two sides are independent until they meet at the skill nodes, where the unified taxonomy allows curriculum-side and industry-side skill claims to be matched against each other.
+Stages 1–4 run per college and produce the curriculum side of the graph. Stage 5 runs per region and produces the industry side. Stage 6 runs per college but depends on both sides being loaded, so it comes last; it is the only stage that writes a derived analytical edge rather than loading source data. The two halves of the graph are independent until they meet at the skill nodes, where the unified taxonomy allows curriculum-side and industry-side skill claims to be matched against each other — and stage 6 is where that match gets precomputed for the partnership landscape view.
 
 ## The two halves of the pipeline
 
@@ -49,6 +50,12 @@ The industry-side pipeline runs once per region and populates Region, Occupation
 **Employer loading** is the most operationally subtle stage in the pipeline because employers are sourced at the county level from EDD records, scoped per college, and merged into a region-shared employer pool with deliberate cleanup. The full treatment is in [Employer Generation](./employer-generation.md).
 
 For the industry side overall, occupations and employers together populate the demand layer of the graph, and the skill assignments connect them to the same taxonomy the curriculum side uses.
+
+### Partnership alignment precompute
+
+After both sides of the graph are loaded, stage 6 traverses the college-region-employer-occupation-skill-course chain to derive per-employer alignment metrics for each college and writes them onto a `PARTNERSHIP_ALIGNMENT` edge from the College node to each relevant Employer node. The edge carries seven properties (`alignment_score`, `gap_count`, `aligned_skills`, `gap_skills`, `top_occupation`, `top_wage`, `pipeline_size`) and exists so that the [partnership landscape endpoint](../architecture/api-reference.md) can return 500+ employers in under a second by reading precomputed properties rather than re-traversing the graph on each request.
+
+The logic lives in `backend/partnerships/compute.py` and is deterministic — no LLM involvement. Stale edges are cleared per-college before recomputation so that employers removed from a region do not leave dangling alignments. For the edge schema, see [Graph Model → Precomputed analytical edge](../architecture/graph-model.md#the-precomputed-analytical-edge).
 
 ## Orchestration
 

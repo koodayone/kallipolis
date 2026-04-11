@@ -38,7 +38,7 @@ The crosswalk is defined in `backend/ontology/regions.py`. It includes mappings 
 
 **1. Resolve scope.** The college is looked up in `catalog_sources.json` and matched to its OEWS metro via `COLLEGE_REGION_MAP`. The primary metro is used for COE region tagging. Search counties come from `COLLEGE_SEARCH_COUNTIES` if defined; otherwise they default to the counties associated with the primary metro.
 
-**2. Scrape EDD.** For each search county, the pipeline iterates the curated CTE NAICS codes and calls `deep_search()` against `empResults.aspx`. Each call applies the size filter, paginates through results, parses the HTML table, and deduplicates by `(name, city)`. Results are cached as JSON in `pipeline/industry/cache/`.
+**2. Scrape EDD.** For each search county, the pipeline iterates the curated CTE NAICS codes and calls `deep_search()` against `empResults.aspx`. Each call applies the size filter, paginates through results, parses the HTML table, and deduplicates by `(name, city)`. Results are cached as JSON in `backend/employers/cache/`.
 
 **3. Clean and deduplicate branches.** Employer names from EDD are full of abbreviations (`Hosp`, `Mfg`, `Ctr`, `Univ`). The pipeline expands them via a fixed substitution table and strips legal suffixes (`Inc`, `LLC`, `Corp`). Branches of the same employer are grouped by normalized name and the largest entry is kept.
 

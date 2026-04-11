@@ -25,13 +25,21 @@ Every translated query is validated before execution. The validator strips markd
 
 The query engine also handles JSON parsing fallback: Claude is asked to return a JSON object with `cypher` and `interpretation` fields, but the engine tolerates several response shapes (direct JSON, markdown-fenced JSON, or raw Cypher) so that minor formatting variation does not break the query path.
 
-### Narrative generation
+### Partnership proposal generation
 
-The partnership opportunity flow (`backend/partnerships/generate.py`) and the strong workforce project flow (`backend/strong_workforce/generate.py`) both use Claude to produce the narratives that get presented to the coordinator. The partnership flow makes multiple Claude calls per opportunity — semantic classification of the partnership type, data assembly logic, narrative section generation — and the SWP flow makes additional calls to produce each NOVA-shaped section.
+The partnership opportunity flow is split across three modules — `backend/partnerships/filter.py`, `backend/partnerships/narrative.py`, and the orchestrator at `backend/partnerships/generate.py` — and makes between three and seven Claude calls per opportunity depending on the engagement type.
+
+`backend/partnerships/filter.py` owns the sequence of selection decisions. For an internship pipeline, Claude picks the primary hiring occupation for the employer and a small set of core skills from the college's curriculum. For a curriculum co-design partnership, Claude additionally identifies a specific gap skill — a capability the occupation needs that the college does not currently teach — and selects the primary department that should host the partnership. For an advisory board, Claude instead picks several identity-defining occupations, synthesizes a one-sentence thesis about the employer's operational focus, and proposes two to three inaugural agenda topics. All three engagement types run a department relevance filter to narrow the curriculum evidence down to the departments that matter most for this partnership. Every call in the filter module is a constrained selection from existing graph data, not free generation.
+
+`backend/partnerships/narrative.py` then takes the filtered context and produces the four-section narrative — opportunity, curriculum composition, student composition, roadmap — in a single Claude call, followed by a proposal evaluation pass that scores the output against faithfulness and no-data-in-narrative rules.
+
+### Strong workforce project generation
+
+The strong workforce project flow (`backend/strong_workforce/generate.py`) also uses Claude, producing each section of a NOVA-shaped SWP project as a separate streamed output. The flow uses Claude's streaming API (`client.messages.stream`) and the implementation does brace-depth JSON parsing on the stream so that each section becomes available as soon as Claude finishes generating it, rather than waiting for the entire response to complete. This is what makes the streaming experience in the [strong workforce form](../product/strong-workforce.md) feel responsive rather than batched.
+
+### Shared constraint
 
 Both flows are constrained the same way: Claude operates against a tightly bounded context window that contains only the empirical material assembled in the previous step. The model cannot invent evidence, cannot generalize beyond the specific occupations, courses, students, and employers in the assembled context, and cannot reach outside the prompt for additional information. The narrative is grounded by construction, not by post-hoc validation.
-
-The SWP flow also uses Claude's streaming API (`client.messages.stream`) to produce sections progressively. The implementation does brace-depth JSON parsing on the stream so that each section becomes available as soon as Claude finishes generating it, rather than waiting for the entire response to complete. This is what makes the streaming experience in the [strong workforce form](../product/strong-workforce.md) feel responsive rather than batched.
 
 ## Where Gemini is called
 
@@ -63,7 +71,7 @@ The constraint here is the same controlled-set discipline: the model cannot inve
 
 ## What makes the AI calls safe
 
-Across all seven call sites — three for Claude (NL-to-Cypher, partnership narrative, SWP narrative), four for Gemini (course extraction, skill enrichment, occupation-to-skill assignment, employer cleanup) — the same discipline applies. The model is given a constrained context, asked to operate within a bounded vocabulary, and validated either before execution (the Cypher validator) or by being filtered against the existing graph state (the skill and occupation taxonomies).
+Across every call site — Claude at request time (NL-to-Cypher per feature, partnership selection, partnership narrative, proposal evaluation, SWP section streaming) and Gemini in the pipeline (course extraction, skill enrichment, occupation-to-skill assignment, employer cleanup) — the same discipline applies. The model is given a constrained context, asked to operate within a bounded vocabulary, and validated either before execution (the Cypher validator) or by being filtered against the existing graph state (the skill and occupation taxonomies).
 
 This is what makes the AI integration *principled and improvable* in the register the product section establishes. The current implementation produces outputs that pass inspection by knowledgeable reviewers. The improvement vectors are concrete: better source data, expert validation of the controlled vocabularies, longitudinal feedback from outcomes, and refinement of the prompts. None of these improvements require redoing the integration. Each is a path along which the existing pattern can become more rigorous without changing its fundamental shape.
 
