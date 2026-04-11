@@ -3,8 +3,12 @@ import type { Config } from "tailwindcss";
 const config: Config = {
   content: [
     "./app/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./lib/**/*.{ts,tsx}",
+    "./college-atlas/**/*.{ts,tsx}",
+    "./state-atlas/**/*.{ts,tsx}",
+    "./scene/**/*.{ts,tsx}",
+    "./ui/**/*.{ts,tsx}",
+    "./auth/**/*.{ts,tsx}",
+    "./config/**/*.{ts,tsx}",
   ],
   theme: {
     extend: {
