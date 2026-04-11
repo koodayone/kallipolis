@@ -1,6 +1,6 @@
 # Graph Model
 
-The Kallipolis ontology is implemented as a Neo4j property graph with eight node types and roughly eleven relationship types. This document describes the schema — what each node type represents, what each relationship encodes, and how the supply-demand chain is realized in actual graph structure.
+The Kallipolis ontology is implemented as a Neo4j property graph with eight node types and ten relationship pairings. This document describes the schema — what each node type represents, what each relationship encodes, and how the supply-demand chain is realized in actual graph structure.
 
 ## The eight node types
 
@@ -26,7 +26,7 @@ Five node types live on the curriculum side, three on the industry side. Each on
 
 The eight node types map cleanly to the conceptual structure documented in the product section. The four units of analysis — students, courses, occupations, employers — each have a node type. The two structural elements — colleges and departments on the curriculum side, regions on the industry side — are containers and intermediaries. The skill node is the emergent bridge that connects supply to demand.
 
-## The eleven relationship types
+## The ten relationship pairings
 
 Relationships encode the supply-demand logic of workforce development. Each one is directional and most carry no properties.
 

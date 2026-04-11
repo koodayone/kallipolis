@@ -63,7 +63,7 @@ The constraint here is the same controlled-set discipline: the model cannot inve
 
 ## What makes the AI calls safe
 
-Across all six call sites — two for Claude, four for Gemini — the same discipline applies. The model is given a constrained context, asked to operate within a bounded vocabulary, and validated either before execution (the Cypher validator) or by being filtered against the existing graph state (the skill and occupation taxonomies).
+Across all seven call sites — three for Claude (NL-to-Cypher, partnership narrative, SWP narrative), four for Gemini (course extraction, skill enrichment, occupation-to-skill assignment, employer cleanup) — the same discipline applies. The model is given a constrained context, asked to operate within a bounded vocabulary, and validated either before execution (the Cypher validator) or by being filtered against the existing graph state (the skill and occupation taxonomies).
 
 This is what makes the AI integration *principled and improvable* in the register the product section establishes. The current implementation produces outputs that pass inspection by knowledgeable reviewers. The improvement vectors are concrete: better source data, expert validation of the controlled vocabularies, longitudinal feedback from outcomes, and refinement of the prompts. None of these improvements require redoing the integration. Each is a path along which the existing pattern can become more rigorous without changing its fundamental shape.
 

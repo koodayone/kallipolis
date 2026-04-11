@@ -68,14 +68,15 @@ def load_college(
             "FOR (c:Course) REQUIRE (c.code, c.college) IS UNIQUE"
         )
 
-        # ── College & Region ───────────────────────────────────────────────
+        # ── College ────────────────────────────────────────────────────────
+        # Note: the College.region property is preserved as a string for
+        # informational purposes. Region nodes (and the IN_MARKET edge from
+        # College to Region) are created separately by the industry pipeline.
         session.run(
             """
-            MERGE (r:LaborMarketRegion {name: $region})
             MERGE (col:College {name: $name})
             ON CREATE SET col.city = $city, col.state = $state, col.region = $region
             ON MATCH SET col.city = $city, col.state = $state, col.region = $region
-            MERGE (col)-[:LOCATED_IN]->(r)
             """,
             name=config.name,
             region=config.region,

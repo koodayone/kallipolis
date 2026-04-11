@@ -42,7 +42,7 @@ The landing page and atlas are independent Next.js apps. They share no code and 
 
 ## The graph at the center
 
-Everything in Kallipolis revolves around a single Neo4j graph. The graph holds eight node types and roughly eleven relationship types, encoding the curriculum side and the industry side of the workforce development equation, bridged through skills.
+Everything in Kallipolis revolves around a single Neo4j graph. The graph holds eight node types and ten directional relationship pairings (built from nine unique relationship type names, with `IN_MARKET` overloaded across College→Region and Employer→Region), encoding the curriculum side and the industry side of the workforce development equation, bridged through skills.
 
 **Curriculum side.** `College → Department → Course → Skill ← Student`. A college offers departments, which contain courses, which develop skills. Students enroll in courses and inherit the skills those courses develop.
 
