@@ -30,6 +30,7 @@ from checks.graph_properties import GraphPropertiesCheck  # noqa: E402
 from checks.numerical_constants import NumericalConstantsCheck  # noqa: E402
 from checks.relationship_inventory import RelationshipInventoryCheck  # noqa: E402
 from checks.backend_layout import BackendLayoutCheck  # noqa: E402
+from checks.vocabulary_alignment import VocabularyAlignmentCheck  # noqa: E402
 from lib.reporter import HumanReporter  # noqa: E402
 
 
@@ -44,6 +45,7 @@ ALL_CHECKS: list[Check] = [
     NumericalConstantsCheck(),
     RelationshipInventoryCheck(),
     BackendLayoutCheck(),
+    VocabularyAlignmentCheck(),
 ]
 
 
