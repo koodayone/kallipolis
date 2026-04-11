@@ -27,7 +27,7 @@ export type QueryShellProps<T> = {
   renderResultsContent: (results: T[]) => ReactNode;
   onQueryStart?: () => void;
   onReset?: () => void;
-  rootRef?: React.RefObject<HTMLDivElement>;
+  rootRef?: React.RefObject<HTMLDivElement | null>;
 };
 
 export default function QueryShell<T>({

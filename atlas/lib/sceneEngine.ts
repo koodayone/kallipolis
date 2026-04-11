@@ -161,6 +161,7 @@ export function buildScene<K extends string>(
   cleanup: () => void;
   resetScene: () => void;
   getProjectedPositions: () => Record<string, { x: number; y: number }>;
+  setPaused: (paused: boolean) => void;
 } {
   const initRect = canvas.getBoundingClientRect();
   const initW = initRect.width || canvas.clientWidth || 800;
