@@ -38,6 +38,7 @@ REPO_RELATIVE_PREFIXES = (
     "tools/",
     "scripts/",
     ".github/",
+    ".claude/",
     "app/",
     "components/",
     "lib/",

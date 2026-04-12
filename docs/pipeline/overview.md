@@ -57,6 +57,8 @@ The logic lives in `backend/partnerships/compute.py` and is deterministic — no
 
 ## Orchestration
 
+The operator-facing entry point for running the full pipeline end-to-end for a new college is the `onboard-college` Claude Code skill at `.claude/skills/onboard-college/SKILL.md`. The skill wraps the scripts described below into a six-stage sequence — curriculum extraction, student generation, employer generation, employer validation (via the `validate-employers` skill), employer load, and partnership alignment precompute — with a preflight verification pass and a final graph-state check. Running "onboard College X" inside Claude Code executes the full sequence with cache-aware re-run detection and no operator knowledge of the intermediate commands. The raw Python scripts below remain supported for testing and partial re-runs.
+
 The pipeline is orchestrated by two scripts depending on the scope of the operation.
 
 `backend/pipeline/run.py` runs the curriculum-side stages (1–4) for one college at a time. It supports incremental execution: stages can be skipped if their cached output exists, students can be generated without re-running extraction, and skill enrichment can be skipped for a scrape-only run. This is the script used during development and when adding new colleges to the system. Because `run.py` is scoped to one college's curriculum, it does not run stage 5 (industry data, which is region-scoped) or stage 6 (partnership alignment, which depends on both sides being loaded).
