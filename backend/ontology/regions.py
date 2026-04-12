@@ -119,6 +119,8 @@ COLLEGE_REGION_MAP: dict = {
     "Cypress College": "Anaheim-Santa Ana-Irvine",
     "Golden West College": "Anaheim-Santa Ana-Irvine",
     "Orange Coast College": "Anaheim-Santa Ana-Irvine",
+    # Inland Empire / Desert
+    "College of the Desert": "Riverside-San Bernardino-Ontario",
     # Sacramento
     "American River College": "Sacramento-Roseville-Folsom",
     "Sacramento City College": "Sacramento-Roseville-Folsom",
@@ -182,6 +184,8 @@ COLLEGE_COE_REGION: dict[str, str] = {
     "Cypress College": "OC",
     "Golden West College": "OC",
     "Orange Coast College": "OC",
+    # Inland Empire / Desert
+    "College of the Desert": "IE/D",
     # Greater Sacramento
     "American River College": "GS",
     "Sacramento City College": "GS",

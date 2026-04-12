@@ -53,18 +53,21 @@ def _load_colleges() -> dict:
     with open(sources_path) as f:
         data = json.load(f)
 
-    region = data.get("region", "Unknown")
+    default_region = data.get("region", "Unknown")
     entries = {}
 
     for college_id, info in data.get("colleges", {}).items():
         if not info.get("catalog_pdf_url"):
             continue  # Skip colleges with no PDF
+        # Prefer per-college region override so the registry can hold
+        # colleges from multiple regions without the top-level region
+        # field silently mislabeling them.
         entries[college_id] = {
             "catalog_pdf_url": info["catalog_pdf_url"],
             "scraper_type": "pdf",
             "config": CollegeConfig(
                 name=info["name"],
-                region=region,
+                region=info.get("region", default_region),
                 city=info.get("city", ""),
                 state="California",
             ),

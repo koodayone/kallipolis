@@ -47,13 +47,15 @@ def _load_college_configs() -> dict[str, dict]:
     sources_path = Path(__file__).parent / "catalog_sources.json"
     with open(sources_path) as f:
         data = json.load(f)
-    region = data.get("region", "San Francisco Bay Area")
+    default_region = data.get("region", "San Francisco Bay Area")
     configs = {}
     for key, info in data.get("colleges", {}).items():
         configs[key] = {
             "name": info.get("name", key),
             "city": info.get("city", ""),
-            "region": region,
+            # Per-college region wins over the top-level default so the
+            # registry can hold colleges from multiple regions.
+            "region": info.get("region", default_region),
         }
     return configs
 

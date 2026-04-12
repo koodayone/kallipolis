@@ -832,6 +832,16 @@ def generate_all(scrape: bool = True, min_size: str = "G") -> dict[str, int]:
 
 
 def main():
+    # Load .env so GEMINI_API_KEY is available when invoked directly
+    # (pipeline/run.py already does this, but `python -m employers.generate`
+    # bypasses that entry point).
+    try:
+        from dotenv import load_dotenv
+        env_path = Path(__file__).resolve().parent.parent.parent / ".env"
+        load_dotenv(env_path)
+    except ImportError:
+        pass
+
     parser = argparse.ArgumentParser(description="Generate employer lists from EDD data")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--college", type=str)
