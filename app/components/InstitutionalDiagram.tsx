@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
-import { buildInstitutionalScene } from "@/lib/institutionalScene";
+import { buildInstitutionalScene } from "../lib/institutionalScene";
 
 type LegendItem = {
   shape: "pentagon" | "square" | "triangle";
