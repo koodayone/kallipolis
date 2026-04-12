@@ -138,10 +138,18 @@ def _step_predict(employers: list[dict], region_display: str) -> dict[str, str]:
             "'Summit Healthcare' in Arizona\n"
             "- A 'Premier Plumbing' in Riverside is NOT 'Premier Plumbing' in Texas\n"
             "- Use the NAICS industry to confirm the right company\n\n"
-            "Rules:\n"
+            "URL QUALITY RULES:\n"
+            "- Prefer the employer's OWN root domain (e.g., haascnc.com) over a "
+            "sub-page within a parent organization\n"
+            "- If the employer is a subsidiary or facility within a larger org "
+            "(e.g., a hospital within a health system), use the parent org's ROOT "
+            "domain (e.g., adventisthealth.org) — NOT a deep facility-finder or "
+            "location-directory page\n"
+            "- A dedicated sub-site with its own content is acceptable "
+            "(e.g., adventisthealth.org/simi-valley/) but a deep directory path is "
+            "not (e.g., /locations/facilities/id-12345)\n"
             "- Government entities: use .gov or .org domain\n"
             "- Education: use .edu domain\n"
-            "- Healthcare systems: use the system's domain\n"
             "- Return NONE if the business is too small/local to have a website\n"
             "- Return NONE rather than guess — a wrong URL is worse than no URL\n\n"
             "Return JSON only: {\"employer_name\": \"https://...\" or \"NONE\"}\n"
@@ -190,8 +198,16 @@ def _step_fetch(predictions: dict[str, str]) -> dict[str, dict]:
             text = r.text[:5000]
             text_lower = text.lower()
 
-            # Check for parked domains
+            # Check for parked domains and JS-only redirect shells
             if any(signal in text_lower for signal in _PARKED_SIGNALS):
+                return name, {"status": "PARKED", "url": url}
+
+            # Detect JS-redirect-only pages (common parked domain pattern)
+            # These have minimal HTML with just a window.location redirect
+            stripped = re.sub(r'\s+', '', text_lower)
+            if (len(stripped) < 500
+                    and 'window.location' in stripped
+                    and '/lander' in stripped):
                 return name, {"status": "PARKED", "url": url}
 
             # Extract readable content for verification
@@ -312,13 +328,26 @@ def _step_verify(
         prompt = (
             "For each employer below, verify whether the predicted URL belongs to "
             "this SPECIFIC employer in this SPECIFIC location and industry.\n\n"
-            "Return one of:\n"
-            "- MATCH: the page clearly belongs to this employer (or its parent company)\n"
-            "- WRONG: the page belongs to a DIFFERENT company with a similar name\n"
-            "- ACCEPT: the page was blocked but the URL pattern is credible "
-            "(e.g., .gov, .edu, major brand domain)\n"
-            "- REJECT: the page was blocked AND the URL looks suspicious\n\n"
-            "Return JSON: {\"employer_name\": \"MATCH\" or \"WRONG\" or \"ACCEPT\" or \"REJECT\"}\n"
+            "TWO checks — both must pass:\n\n"
+            "CHECK 1 — IDENTITY: Does this URL belong to this employer or its "
+            "parent organization? A parent org's website is acceptable (e.g., "
+            "adventisthealth.org for Adventist Health Tulare).\n\n"
+            "CHECK 2 — URL QUALITY: Is this URL an institutional landing page, "
+            "or is it a fragile deep sub-page?\n"
+            "- GOOD: root domain (haascnc.com), dedicated sub-site with its own "
+            "content (adventisthealth.org/simi-valley/), department page "
+            "(fresno.gov/police)\n"
+            "- BAD: deep directory/facility-finder path (dignityhealth.org/central-"
+            "coast/locations/arroyo-grande), location ID pages, search results\n"
+            "If the URL is a deep sub-page, return the parent domain root instead.\n\n"
+            "Return JSON with the VERIFIED URL (which may differ from the predicted "
+            "URL if you upgraded to a parent root):\n"
+            "{\"employer_name\": {\"verdict\": \"MATCH\"|\"WRONG\"|\"ACCEPT\"|\"REJECT\", "
+            "\"url\": \"the best URL to use\"}}\n"
+            "- MATCH: identity confirmed, URL is good (return the best URL)\n"
+            "- WRONG: page belongs to a DIFFERENT company\n"
+            "- ACCEPT: page was blocked but URL pattern is credible (return as-is)\n"
+            "- REJECT: page was blocked AND URL looks suspicious\n\n"
             "No markdown fences.\n\n"
             + "\n---\n".join(lines)
         )
@@ -331,13 +360,26 @@ def _step_verify(
             verdicts = json.loads(text)
 
             for emp, fetch in batch:
-                verdict = verdicts.get(emp["name"], "REJECT")
-                url = predictions.get(emp["name"], "")
+                entry = verdicts.get(emp["name"], "REJECT")
+                predicted_url = predictions.get(emp["name"], "")
+
+                # Handle both old format (string) and new format (dict with verdict+url)
+                if isinstance(entry, dict):
+                    verdict = entry.get("verdict", "REJECT")
+                    best_url = entry.get("url", predicted_url)
+                else:
+                    verdict = entry
+                    best_url = predicted_url
 
                 if verdict in ("MATCH", "ACCEPT"):
-                    # Use the final URL (after redirects) if available
-                    final_url = fetch.get("url", url) if fetch.get("status") == "OK" else url
-                    verified[emp["name"]] = final_url
+                    # Use the verified/upgraded URL from Gemini if provided,
+                    # otherwise fall back to the fetch's final URL or prediction
+                    if best_url and best_url.startswith("http"):
+                        verified[emp["name"]] = best_url
+                    elif fetch.get("status") == "OK":
+                        verified[emp["name"]] = fetch.get("url", predicted_url)
+                    else:
+                        verified[emp["name"]] = predicted_url
                 else:
                     failures.append(emp)
 
