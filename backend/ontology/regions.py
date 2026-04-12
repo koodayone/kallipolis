@@ -260,7 +260,7 @@ COLLEGE_COE_REGION: dict[str, str] = {
     "Shasta College": "FN",
     "Lassen College": "FN",
     "College of the Siskiyous": "FN",
-    # Greater Sacramento (includes Sierra Nevada feeders)
+    # Greater Sacramento
     "American River College": "GS",
     "Sacramento City College": "GS",
     "Cosumnes River College": "GS",
@@ -268,11 +268,12 @@ COLLEGE_COE_REGION: dict[str, str] = {
     "Sierra College": "GS",
     "Yuba College": "GS",
     "Woodland Community College": "GS",
-    "Feather River College": "GS",
-    "Columbia College": "GS",
-    "Butte College": "GS",
     "Lake Tahoe Community College": "GS",
+    # Corrected per NFNRC subregion definitions (https://nfnrc.org/about/)
+    "Feather River College": "FN",  # Plumas County → NFNRC "Far North"
+    "Butte College": "FN",  # Butte County → NFNRC "Far North"
     # Central Valley / Mother Lode
+    "Columbia College": "CVML",  # Tuolumne County → CVML Consortium (https://crconsortium.com/)
     "Fresno City College": "CVML",
     "Reedley College": "CVML",
     "Clovis Community College": "CVML",
