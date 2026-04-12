@@ -82,7 +82,7 @@ The `ui/` folder contains primitives only. A component lives here if and only if
 
 Cross-cutting auth infrastructure. Contains the JWT and storage library (`jwt.ts`, `storage.ts`, `storage-kv.ts`, `storage-json.ts`, `crypto.ts`, `types.ts`) and the auth UI forms (`LoginForm.tsx`, `RegisterForm.tsx`, `LogoutButton.tsx`, `CollegeSelect.tsx`, `AtlasMenu.tsx`).
 
-Auth is a cross-cutting concern because every route under `/` is gated by the session cookie verified in `middleware.ts`. The auth folder holds both the library layer and the UI layer together because neither is meaningful without the other.
+Auth is a cross-cutting concern because every route under `/` is gated by the session cookie verified in `proxy.ts`. The auth folder holds both the library layer and the UI layer together because neither is meaningful without the other.
 
 ### `config/`
 

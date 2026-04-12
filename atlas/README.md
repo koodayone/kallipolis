@@ -55,7 +55,7 @@ atlas/
 ├── config/                     Static configuration (per-college branding)
 │
 ├── api.ts                      Shared API_BASE constant
-├── middleware.ts               JWT cookie verification
+├── proxy.ts                    JWT cookie verification (Next.js 16 proxy convention)
 └── docs/                       Atlas-specific internal notes
 ```
 

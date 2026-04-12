@@ -4,7 +4,7 @@ import { jwtVerify } from "jose";
 const COOKIE_NAME = "atlas-session";
 const PUBLIC_PREFIXES = ["/login", "/register", "/api/auth/"];
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Allow public paths
