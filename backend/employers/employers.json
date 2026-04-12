@@ -579,7 +579,8 @@
     "description": "Home Depot is a large retail chain offering home improvement products and services.",
     "regions": [
       "CVML",
-      "IE/D"
+      "IE/D",
+      "SCC"
     ],
     "occupations": [
       "11-1021",
@@ -589,7 +590,10 @@
       "13-2011",
       "41-4011",
       "11-3061",
-      "13-1028"
+      "13-1028",
+      "13-1161",
+      "15-1244",
+      "43-4161"
     ],
     "website": "https://www.homedepot.com"
   },
@@ -599,7 +603,8 @@
     "description": "Lowe's Home Improvement is a major retail company specializing in home improvement products and services.",
     "regions": [
       "CVML",
-      "IE/D"
+      "IE/D",
+      "SCC"
     ],
     "occupations": [
       "11-1021",
@@ -609,7 +614,10 @@
       "13-2011",
       "41-4011",
       "11-3061",
-      "13-1028"
+      "13-1028",
+      "13-1161",
+      "15-1244",
+      "43-4161"
     ],
     "website": "https://www.lowes.com"
   },
@@ -1215,7 +1223,8 @@
     "sector": "Government",
     "description": "The National Guard is a reserve military force that serves both state and federal missions, including emergency response and national defense.",
     "regions": [
-      "CVML"
+      "CVML",
+      "SCC"
     ],
     "occupations": [
       "11-1021",
@@ -1225,7 +1234,15 @@
       "15-1211",
       "29-1141",
       "49-3011",
-      "55-9999"
+      "55-9999",
+      "11-3012",
+      "13-2011",
+      "15-1244",
+      "17-2199",
+      "11-9161",
+      "17-2051",
+      "19-5011",
+      "33-2011"
     ],
     "website": "https://www.nationalguard.com"
   },
@@ -1951,7 +1968,8 @@
     "sector": "Retail",
     "description": "This is a smaller format Walmart store focused on groceries and everyday essentials.",
     "regions": [
-      "IE/D"
+      "IE/D",
+      "SCC"
     ],
     "occupations": [
       "11-1021",
@@ -1959,7 +1977,11 @@
       "11-3061",
       "13-1028",
       "13-1071",
-      "13-2011"
+      "13-2011",
+      "11-2022",
+      "13-1161",
+      "15-1244",
+      "43-4161"
     ],
     "website": "https://www.walmart.com/"
   },
@@ -4215,5 +4237,1397 @@
       "43-4161"
     ],
     "website": "https://www.cityofredlands.org/police"
+  },
+  {
+    "name": "Talley Farms",
+    "sector": "Agriculture",
+    "description": "This employer is an agricultural farm specializing in growing and harvesting produce.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3012",
+      "13-1028",
+      "13-1071",
+      "13-1199",
+      "19-1013",
+      "19-4012",
+      "45-2011"
+    ],
+    "website": "https://talleyfarms.com"
+  },
+  {
+    "name": "Pacific Gas & Electric",
+    "sector": "Utilities",
+    "description": "This employer is a major utility company providing natural gas and electricity services.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3012",
+      "11-3031",
+      "13-1071",
+      "15-1241",
+      "17-2071",
+      "17-3023",
+      "49-2095"
+    ],
+    "website": "https://www.pge.com"
+  },
+  {
+    "name": "Glenair",
+    "sector": "Manufacturing",
+    "description": "This employer is a manufacturer of interconnect components and accessories for aerospace and other industries.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3051",
+      "13-1028",
+      "17-2011",
+      "17-2071",
+      "17-3012",
+      "17-3023",
+      "51-4111"
+    ],
+    "website": "https://www.glenair.com"
+  },
+  {
+    "name": "San Luis Obispo County Office of Education",
+    "sector": "Education",
+    "description": "This employer provides educational leadership, resources, and services to school districts within San Luis Obispo County.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9039",
+      "13-1071",
+      "13-1151",
+      "13-2011",
+      "15-1244",
+      "25-2059",
+      "25-3099"
+    ],
+    "website": "https://www.slocoe.org"
+  },
+  {
+    "name": "Cuesta College",
+    "sector": "Education",
+    "description": "This employer is a public community college offering associate degrees and vocational training.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9039",
+      "13-1071",
+      "13-1151",
+      "13-2011",
+      "15-1244",
+      "25-3099",
+      "25-9044"
+    ],
+    "website": "https://www.cuesta.edu"
+  },
+  {
+    "name": "California Polytechnic State University",
+    "sector": "Education",
+    "description": "This employer is a public university known for its 'learn by doing' approach and strong engineering and agricultural programs.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9039",
+      "13-1071",
+      "13-1151",
+      "13-2011",
+      "15-1244",
+      "17-2141",
+      "25-9044"
+    ],
+    "website": "https://www.calpoly.edu"
+  },
+  {
+    "name": "Adventist Health Twin Cities",
+    "sector": "Healthcare",
+    "description": "This employer is a hospital providing a range of medical services.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "13-2011",
+      "29-1141",
+      "29-2034",
+      "29-2061",
+      "29-2072",
+      "31-1131"
+    ],
+    "website": "https://www.adventisthealth.org/central-coast/locations/twin-cities-community-hospital/"
+  },
+  {
+    "name": "Arroyo Grande Community Hospital",
+    "sector": "Healthcare",
+    "description": "This employer is a community hospital offering various healthcare services.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "13-2011",
+      "29-1141",
+      "29-2034",
+      "29-2061",
+      "29-2072",
+      "31-1131"
+    ],
+    "website": "https://www.dignityhealth.org/central-coast/locations/arroyo-grande"
+  },
+  {
+    "name": "Dignity Health French Hospital Medical Center",
+    "sector": "Healthcare",
+    "description": "This employer is a medical center providing comprehensive healthcare services.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "13-2011",
+      "29-1141",
+      "29-2034",
+      "29-2061",
+      "29-2072",
+      "31-1131"
+    ],
+    "website": "https://www.dignityhealth.org/central-coast/locations/french-hospital"
+  },
+  {
+    "name": "California State Parks",
+    "sector": "Arts & Entertainment",
+    "description": "This employer manages and protects California's state parks, natural, cultural, and recreational resources.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3012",
+      "13-1071",
+      "19-1031",
+      "19-4071",
+      "27-3031",
+      "33-3031",
+      "45-2011"
+    ],
+    "website": "https://www.parks.ca.gov"
+  },
+  {
+    "name": "Apple Farm Inn",
+    "sector": "Hospitality & Food Service",
+    "description": "This employer is a hotel and restaurant offering lodging and dining services.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3012",
+      "13-1071",
+      "13-1161",
+      "13-1199",
+      "27-3031",
+      "35-2013",
+      "39-5094"
+    ],
+    "website": "https://www.applefarm.com"
+  },
+  {
+    "name": "San Luis Obispo Sheriff's Department",
+    "sector": "Government",
+    "description": "This employer is a law enforcement agency responsible for public safety and county jail operations.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3012",
+      "13-1041",
+      "13-1071",
+      "13-1199",
+      "15-1244",
+      "19-4092"
+    ],
+    "website": "https://www.slosheriff.org"
+  },
+  {
+    "name": "Marborg Industries",
+    "sector": "Construction",
+    "description": "This employer provides waste management and recycling services.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3012",
+      "13-1071",
+      "13-1199",
+      "17-2081",
+      "17-3025",
+      "19-4042",
+      "53-3032"
+    ],
+    "website": "https://marborg.com"
+  },
+  {
+    "name": "Pictsweet",
+    "sector": "Manufacturing",
+    "description": "This employer is a food processing company specializing in frozen vegetables.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3051",
+      "13-1028",
+      "13-1071",
+      "19-1012",
+      "19-4013",
+      "19-5011",
+      "53-3032"
+    ],
+    "website": "https://www.pictsweet.com"
+  },
+  {
+    "name": "FLIR Commercial Systems",
+    "sector": "Manufacturing",
+    "description": "This employer designs and manufactures thermal imaging cameras and sensors for commercial applications.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3051",
+      "17-2072",
+      "17-3023",
+      "15-1252",
+      "13-1028",
+      "13-1071",
+      "49-2094"
+    ],
+    "website": "https://www.flir.com"
+  },
+  {
+    "name": "Safran Cabin",
+    "sector": "Manufacturing",
+    "description": "This employer designs and manufactures aircraft cabin interiors.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3051",
+      "17-2011",
+      "17-2141",
+      "17-3013",
+      "13-1028",
+      "13-1071",
+      "49-3011"
+    ],
+    "website": "https://www.safran-cabin.com"
+  },
+  {
+    "name": "Hardy Diagnostics",
+    "sector": "Manufacturing",
+    "description": "This employer manufactures and distributes microbiology products for clinical and industrial laboratories.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3051",
+      "19-1022",
+      "19-2031",
+      "19-4021",
+      "19-4031",
+      "13-1028",
+      "13-1071"
+    ],
+    "website": "https://www.hardydiagnostics.com"
+  },
+  {
+    "name": "Raytheon",
+    "sector": "Manufacturing",
+    "description": "This employer is a major aerospace and defense company providing advanced systems and services.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3051",
+      "17-2011",
+      "17-2071",
+      "15-1252",
+      "13-1028",
+      "13-1071",
+      "49-2091"
+    ],
+    "website": "https://www.rtx.com"
+  },
+  {
+    "name": "Den Mat Holdings",
+    "sector": "Wholesale",
+    "description": "This employer is a dental products manufacturer.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3051",
+      "13-1028",
+      "13-1071",
+      "13-1161",
+      "17-2141",
+      "19-2031",
+      "19-4031"
+    ],
+    "website": "https://www.denmat.com"
+  },
+  {
+    "name": "Jordano's",
+    "sector": "Wholesale",
+    "description": "This employer is a food service distributor.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3012",
+      "13-1028",
+      "13-1071",
+      "13-1081",
+      "13-1161",
+      "53-3032"
+    ],
+    "website": "https://jordanos.com"
+  },
+  {
+    "name": "Manzanita Berry Farms",
+    "sector": "Wholesale",
+    "description": "This employer is an agricultural farm specializing in growing and harvesting berries.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3012",
+      "13-1028",
+      "13-1071",
+      "13-1199",
+      "19-1013",
+      "19-4012",
+      "45-2011"
+    ],
+    "website": "http://www.berryfarmer.com"
+  },
+  {
+    "name": "Student Transportation of America",
+    "sector": "Transportation",
+    "description": "This employer provides student transportation services for school districts.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3012",
+      "13-1071",
+      "13-1199",
+      "15-1244",
+      "19-5011",
+      "53-3032"
+    ],
+    "website": "https://www.ridesta.com"
+  },
+  {
+    "name": "Coasthills Credit Union",
+    "sector": "Finance",
+    "description": "This employer is a financial institution providing banking and lending services.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3031",
+      "13-1071",
+      "13-2011",
+      "13-2072",
+      "15-1212",
+      "15-1244",
+      "41-3031"
+    ],
+    "website": "https://coasthills.coop"
+  },
+  {
+    "name": "Montecito Bank & Trust",
+    "sector": "Finance",
+    "description": "This employer is a financial institution providing banking and trust services.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3031",
+      "13-1071",
+      "13-2011",
+      "13-2072",
+      "15-1212",
+      "15-1244",
+      "41-3031"
+    ],
+    "website": "https://www.montecito.bank"
+  },
+  {
+    "name": "Commission Junction",
+    "sector": "Professional Services",
+    "description": "This employer is an affiliate marketing network.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-2021",
+      "13-1161",
+      "15-1252",
+      "15-1254",
+      "15-1255",
+      "27-1024",
+      "27-3031"
+    ],
+    "website": "https://www.cj.com"
+  },
+  {
+    "name": "Cottage Health",
+    "sector": "Professional Services",
+    "description": "This employer is a healthcare system providing a wide range of medical services.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "13-2011",
+      "29-1141",
+      "29-2034",
+      "29-2061",
+      "29-2072",
+      "31-1131"
+    ],
+    "website": "https://www.cottagehealth.org"
+  },
+  {
+    "name": "Big Green Cleaning",
+    "sector": "Administrative Services",
+    "description": "This employer provides commercial and residential cleaning services.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3012",
+      "13-1071",
+      "13-1161",
+      "13-1199"
+    ],
+    "website": "https://www.biggreenclean.com"
+  },
+  {
+    "name": "Santa Maria-Bonita School District",
+    "sector": "Education",
+    "description": "This employer is a public school district providing elementary and middle school education.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9039",
+      "13-1071",
+      "13-1151",
+      "13-2011",
+      "15-1244",
+      "25-2021",
+      "25-2022"
+    ],
+    "website": "https://www.smbsd.net"
+  },
+  {
+    "name": "University of California, Santa Barbara",
+    "sector": "Education",
+    "description": "This employer is a public research university and one of the ten campuses of the University of California system.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9039",
+      "13-1071",
+      "13-1151",
+      "13-2011",
+      "15-1244",
+      "19-2041",
+      "25-9044"
+    ],
+    "website": "https://www.ucsb.edu"
+  },
+  {
+    "name": "Sansum Clinic Pesetas Health",
+    "sector": "Healthcare",
+    "description": "This employer is a multi-specialty medical clinic providing various healthcare services.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "13-2011",
+      "29-1141",
+      "29-2061",
+      "29-2072",
+      "31-9092",
+      "31-9097"
+    ],
+    "website": "https://www.sansumclinic.org"
+  },
+  {
+    "name": "Casa Dorinda",
+    "sector": "Healthcare",
+    "description": "This employer is a luxury continuing care retirement community.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-9179",
+      "13-1071",
+      "13-1121",
+      "29-1141",
+      "29-2061",
+      "31-1131",
+      "35-2013"
+    ],
+    "website": "https://www.casadorinda.org"
+  },
+  {
+    "name": "Dignity Health Marian Regional Medical Center",
+    "sector": "Healthcare",
+    "description": "This employer is a regional medical center providing comprehensive healthcare services.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "13-2011",
+      "29-1141",
+      "29-2034",
+      "29-2061",
+      "29-2072",
+      "31-1131"
+    ],
+    "website": "https://www.dignityhealth.org/central-coast/locations/marian-regional"
+  },
+  {
+    "name": "Alisal Ranch",
+    "sector": "Hospitality & Food Service",
+    "description": "This employer is a luxury resort and guest ranch offering lodging, dining, and recreational activities.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-9072",
+      "13-1071",
+      "13-1121",
+      "13-1161",
+      "27-2022",
+      "35-2013",
+      "39-5094"
+    ],
+    "website": "https://www.alisal.com"
+  },
+  {
+    "name": "Four Seasons Resort",
+    "sector": "Hospitality & Food Service",
+    "description": "This employer is a luxury resort offering high-end lodging, dining, and amenities.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-9072",
+      "13-1071",
+      "13-1121",
+      "13-1161",
+      "27-2022",
+      "35-2013",
+      "39-5094"
+    ],
+    "website": "https://www.fourseasons.com/santabarbara/"
+  },
+  {
+    "name": "Hilton Santa Barbara",
+    "sector": "Hospitality & Food Service",
+    "description": "This employer is a hotel offering lodging, dining, and event services.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-9072",
+      "13-1071",
+      "13-1121",
+      "13-1161",
+      "27-3031",
+      "35-2013",
+      "39-5094"
+    ],
+    "website": "https://www.hilton.com"
+  },
+  {
+    "name": "Ritz-Carlton Bacara Santa Barbara",
+    "sector": "Hospitality & Food Service",
+    "description": "This employer is a luxury resort offering high-end lodging, dining, and amenities.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-9072",
+      "13-1071",
+      "13-1121",
+      "13-1161",
+      "27-2022",
+      "35-2013",
+      "39-5094"
+    ],
+    "website": "https://www.ritzcarlton.com"
+  },
+  {
+    "name": "San Ysidro Ranch",
+    "sector": "Hospitality & Food Service",
+    "description": "This employer is a luxury resort offering high-end lodging, dining, and amenities.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-9072",
+      "13-1071",
+      "13-1121",
+      "13-1161",
+      "27-2022",
+      "35-2013",
+      "39-5094"
+    ],
+    "website": "https://www.sanysidroranch.com"
+  },
+  {
+    "name": "City of Santa Barbara",
+    "sector": "Government",
+    "description": "This employer is a municipal government providing public services to the city of Santa Barbara.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-1021",
+      "11-3012",
+      "13-1071",
+      "13-2011",
+      "17-2051",
+      "19-2041",
+      "33-2011"
+    ],
+    "website": "https://www.santabarbaraca.gov"
+  },
+  {
+    "name": "Santa Barbara County Probation Department",
+    "sector": "Government",
+    "description": "This employer is a county department responsible for probation services and community corrections.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-9151",
+      "13-1041",
+      "13-1071",
+      "21-1092",
+      "21-1099",
+      "23-2099"
+    ],
+    "website": "https://www.countyofsb.org/probation"
+  },
+  {
+    "name": "Santa Barbara County Social Services Department",
+    "sector": "Government",
+    "description": "This employer is a county department providing social services and assistance programs.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-9151",
+      "13-1041",
+      "13-1071",
+      "21-1021",
+      "21-1029",
+      "21-1099"
+    ],
+    "website": "https://www.countyofsb.org/social-services"
+  },
+  {
+    "name": "Santa Barbara Public Works Department",
+    "sector": "Government",
+    "description": "This employer is a municipal department responsible for public infrastructure and services.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3013",
+      "13-1051",
+      "13-1071",
+      "17-2051",
+      "17-3022",
+      "19-2041",
+      "19-5011"
+    ],
+    "website": "https://www.countyofsb.org/public-works"
+  },
+  {
+    "name": "United States Penitentiary",
+    "sector": "Government",
+    "description": "This employer is a high-security federal prison.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3012",
+      "13-1041",
+      "13-1071",
+      "15-1244",
+      "21-1092",
+      "29-1141",
+      "31-1131"
+    ],
+    "website": "https://www.bop.gov/locations/institutions/lom/"
+  },
+  {
+    "name": "Muranaka Farm",
+    "sector": "Agriculture",
+    "description": "This employer is an agricultural farm specializing in growing and harvesting produce.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3012",
+      "13-1028",
+      "13-1071",
+      "13-1199",
+      "19-1013",
+      "19-4012",
+      "45-2011"
+    ],
+    "website": "http://www.muranakafarm.com"
+  },
+  {
+    "name": "Anacapa Foods",
+    "sector": "Manufacturing",
+    "description": "This employer is a food processing company.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3051",
+      "13-1028",
+      "13-1071",
+      "19-1012",
+      "19-4013",
+      "19-5011",
+      "53-3032"
+    ],
+    "website": "https://anacapafoods.com"
+  },
+  {
+    "name": "J.M. Smucker Company",
+    "sector": "Manufacturing",
+    "description": "This employer is a food processing company known for its fruit spreads, peanut butter, and other food products.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3051",
+      "13-1028",
+      "13-1071",
+      "19-1012",
+      "19-4013",
+      "19-5011",
+      "53-3032"
+    ],
+    "website": "https://www.jmsmucker.com"
+  },
+  {
+    "name": "Hi-Temp Insulation",
+    "sector": "Manufacturing",
+    "description": "This employer provides insulation services for industrial and commercial applications.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-9021",
+      "13-1051",
+      "13-1071",
+      "13-1199",
+      "19-5011"
+    ],
+    "website": "https://hi-tempinsulation.com"
+  },
+  {
+    "name": "Haas Automation",
+    "sector": "Manufacturing",
+    "description": "This employer is a manufacturer of CNC machine tools.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3051",
+      "17-2141",
+      "17-3013",
+      "17-3027",
+      "15-1252",
+      "51-9162",
+      "49-2094"
+    ],
+    "website": "https://www.haascnc.com"
+  },
+  {
+    "name": "Boskovich Farms",
+    "sector": "Wholesale",
+    "description": "This employer is an agricultural farm specializing in growing and harvesting vegetables.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3012",
+      "13-1028",
+      "13-1071",
+      "13-1199",
+      "19-1013",
+      "19-4012",
+      "45-2011"
+    ],
+    "website": "https://www.boskovichfarms.com"
+  },
+  {
+    "name": "Dole Packaged Foods",
+    "sector": "Wholesale",
+    "description": "This employer is a food processing company specializing in packaged fruit and food products.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3051",
+      "13-1028",
+      "13-1071",
+      "19-1012",
+      "19-4013",
+      "19-5011",
+      "53-3032"
+    ],
+    "website": "https://www.dole.com"
+  },
+  {
+    "name": "First Auto Group",
+    "sector": "Retail",
+    "description": "This employer is an automotive dealership group selling new and used vehicles.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-2022",
+      "11-3031",
+      "13-1071",
+      "13-2072",
+      "41-4011",
+      "49-3023"
+    ],
+    "website": "https://www.1stautogroup.com"
+  },
+  {
+    "name": "Harbor Freight Tools",
+    "sector": "Retail",
+    "description": "This employer is a retail company selling tools and equipment.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-2022",
+      "11-3012",
+      "13-1071",
+      "13-1161",
+      "13-2011",
+      "15-1244",
+      "43-4161"
+    ],
+    "website": "https://www.harborfreight.com"
+  },
+  {
+    "name": "San Miguel Produce",
+    "sector": "Retail",
+    "description": "This employer is a produce company specializing in growing and packaging leafy greens.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3051",
+      "13-1028",
+      "13-1071",
+      "19-1013",
+      "19-4012",
+      "19-5011",
+      "53-3032"
+    ],
+    "website": "https://www.sanmiguelproduce.com"
+  },
+  {
+    "name": "Community Memorial Health System",
+    "sector": "Professional Services",
+    "description": "This employer is a healthcare system providing a wide range of medical services.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "13-2011",
+      "29-1141",
+      "29-2034",
+      "29-2061",
+      "29-2072",
+      "31-1131"
+    ],
+    "website": "https://www.mycmh.org"
+  },
+  {
+    "name": "Westlake High School",
+    "sector": "Education",
+    "description": "This employer is a public high school providing secondary education.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-9039",
+      "13-1071",
+      "13-1151",
+      "13-2011",
+      "15-1244",
+      "25-2031",
+      "25-2032"
+    ],
+    "website": "https://whs.conejousd.org"
+  },
+  {
+    "name": "Moorpark College",
+    "sector": "Education",
+    "description": "This employer is a public community college offering associate degrees and vocational training.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9039",
+      "13-1071",
+      "13-1151",
+      "13-2011",
+      "15-1244",
+      "25-3099",
+      "25-9044"
+    ],
+    "website": "https://www.moorparkcollege.edu"
+  },
+  {
+    "name": "University Village Thousand Oaks",
+    "sector": "Education",
+    "description": "This employer is a continuing care retirement community.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-9179",
+      "13-1071",
+      "13-1121",
+      "29-1141",
+      "29-2061",
+      "31-1131",
+      "35-2013"
+    ],
+    "website": "https://uvto.com"
+  },
+  {
+    "name": "Adventist Health Simi Valley",
+    "sector": "Healthcare",
+    "description": "This employer is a hospital providing a range of medical services.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "13-2011",
+      "29-1141",
+      "29-2034",
+      "29-2061",
+      "29-2072",
+      "31-1131"
+    ],
+    "website": "https://www.adventisthealth.org/simi-valley/"
+  },
+  {
+    "name": "Dignity Health St. John's Regional Medical Center",
+    "sector": "Healthcare",
+    "description": "This employer is a regional medical center providing comprehensive healthcare services.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "13-2011",
+      "29-1141",
+      "29-2034",
+      "29-2061",
+      "29-2072",
+      "31-1131"
+    ],
+    "website": "https://www.dignityhealth.org/central-coast/locations/stjohnsregional"
+  },
+  {
+    "name": "Kaiser Permanente Ventura",
+    "sector": "Healthcare",
+    "description": "This employer is a healthcare provider offering medical services and health plans.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "13-2011",
+      "29-1141",
+      "29-2034",
+      "29-2061",
+      "29-2072",
+      "31-1131"
+    ],
+    "website": "https://healthy.kaiserpermanente.org/southern-california/facilities/ventura-888-south-hill-road-medical-offices-100537"
+  },
+  {
+    "name": "Glenwood Care Center",
+    "sector": "Healthcare",
+    "description": "This employer is a skilled nursing and rehabilitation facility.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "13-2011",
+      "29-1141",
+      "29-2061",
+      "31-1131",
+      "31-2011",
+      "31-2021"
+    ],
+    "website": "https://glenwoodcarecenter.com"
+  },
+  {
+    "name": "Thousand Oaks Civic Arts Plaza",
+    "sector": "Arts & Entertainment",
+    "description": "This employer is a performing arts center and cultural venue.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-9072",
+      "13-1071",
+      "13-1121",
+      "27-2012",
+      "27-4011",
+      "27-4014",
+      "27-4031"
+    ],
+    "website": "https://bapacthousandoaks.com"
+  },
+  {
+    "name": "Ojai Valley Inn",
+    "sector": "Hospitality & Food Service",
+    "description": "This employer is a luxury resort and spa offering lodging, dining, and recreational activities.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-9072",
+      "13-1071",
+      "13-1121",
+      "13-1161",
+      "27-2022",
+      "35-2013",
+      "39-5094"
+    ],
+    "website": "https://www.ojaivalleyinn.com"
+  },
+  {
+    "name": "Camp Ramah In California",
+    "sector": "Hospitality & Food Service",
+    "description": "This employer is a Jewish summer camp offering recreational and educational programs.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-9072",
+      "13-1071",
+      "13-1151",
+      "21-2021",
+      "25-3099",
+      "27-2022"
+    ],
+    "website": "https://ramah.org"
+  },
+  {
+    "name": "Domino's Pizza Corporate Office",
+    "sector": "Hospitality & Food Service",
+    "description": "This employer is the corporate headquarters for the pizza delivery chain.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-1021",
+      "11-2021",
+      "11-3031",
+      "13-1071",
+      "13-1161",
+      "15-1252",
+      "17-2112"
+    ],
+    "website": "https://biz.dominos.com"
+  },
+  {
+    "name": "Jims USA",
+    "sector": "Other Services",
+    "description": "This employer manufactures specialty tools for Harley-Davidson motorcycles.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3051",
+      "13-1028",
+      "13-1071",
+      "17-2141",
+      "17-3013",
+      "49-3052",
+      "51-4111"
+    ],
+    "website": "https://www.jimsusa.com"
+  },
+  {
+    "name": "Casa Pacifica",
+    "sector": "Government",
+    "description": "This employer is a non-profit organization providing residential and community-based services for children and families.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-9151",
+      "13-1071",
+      "13-1131",
+      "21-1018",
+      "21-1021",
+      "21-1029",
+      "25-2059"
+    ],
+    "website": "https://www.casapacifica.org"
+  },
+  {
+    "name": "Ventura County District Attorney's Office",
+    "sector": "Government",
+    "description": "This employer is a county department responsible for prosecuting criminal offenses.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "13-1041",
+      "13-1071",
+      "13-1199",
+      "23-2011",
+      "23-2099",
+      "27-3092"
+    ],
+    "website": "https://da.venturacounty.gov"
+  },
+  {
+    "name": "Ventura County General Services Agency",
+    "sector": "Government",
+    "description": "This employer is a county agency providing support services to other county departments.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3012",
+      "11-3013",
+      "13-1071",
+      "13-2011",
+      "15-1244",
+      "17-2051",
+      "19-5011"
+    ],
+    "website": "https://venturacounty.gov/general-services-agency"
+  },
+  {
+    "name": "Ventura County Public Works Agency",
+    "sector": "Government",
+    "description": "This employer is a county agency responsible for public infrastructure and services.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3013",
+      "13-1051",
+      "13-1071",
+      "17-2051",
+      "17-3022",
+      "19-2041",
+      "19-5011"
+    ],
+    "website": "https://publicworks.venturacounty.gov"
+  },
+  {
+    "name": "Oxnard Police Department",
+    "sector": "Government",
+    "description": "This employer is a municipal law enforcement agency responsible for public safety.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3012",
+      "13-1041",
+      "13-1071",
+      "13-1199",
+      "15-1244",
+      "19-4092"
+    ],
+    "website": "https://www.oxnard.gov/police-department"
+  },
+  {
+    "name": "Ventura County Probation Agency",
+    "sector": "Government",
+    "description": "This government agency provides probation services for Ventura County.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3012",
+      "11-3121",
+      "13-1071",
+      "13-1151",
+      "13-2011",
+      "21-1092",
+      "21-1099"
+    ],
+    "website": "https://probation.venturacounty.gov"
+  },
+  {
+    "name": "Ventura County Sheriff's Office",
+    "sector": "Government",
+    "description": "This government agency provides law enforcement and public safety services for Ventura County.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3012",
+      "11-3121",
+      "13-1071",
+      "13-1151",
+      "13-2011",
+      "15-1244",
+      "19-4092"
+    ],
+    "website": "https://www.venturasheriff.org"
+  },
+  {
+    "name": "Ventura County Superior Court",
+    "sector": "Government",
+    "description": "This government entity serves as the superior court for Ventura County.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3012",
+      "11-3121",
+      "13-1071",
+      "13-2011",
+      "23-2011",
+      "23-2099",
+      "27-3092"
+    ],
+    "website": "https://ventura.courts.ca.gov"
+  },
+  {
+    "name": "Ventura County Office of Education",
+    "sector": "Government",
+    "description": "This government agency provides educational leadership, resources, and services to schools and students in Ventura County.",
+    "regions": [
+      "SCC"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3012",
+      "11-3121",
+      "11-9039",
+      "13-1071",
+      "13-1151",
+      "13-2011",
+      "25-9099"
+    ],
+    "website": "https://www.vcoe.org"
   }
 ]
