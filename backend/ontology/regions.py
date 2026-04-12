@@ -203,6 +203,42 @@ COLLEGE_COE_REGION: dict[str, str] = {
 }
 
 
+def ensure_college_region_link(driver, college_name: str) -> bool:
+    """Ensure (College {name})-[:IN_MARKET]->(Region {name}) exists.
+
+    The edge that links a college to its COE region is load-bearing
+    for every industry-side traversal (occupations, employers,
+    partnership alignment). It used to be written only from
+    ``occupations/load.py::load_industry``, which meant loading a
+    college's curriculum without also re-loading industry left the
+    graph in a state where partnership precompute returned zero
+    matches. This helper owns the MERGE so both entry points produce
+    the edge consistently.
+
+    Idempotent. Returns True if the college has a mapping in
+    ``COLLEGE_COE_REGION`` and the edge is now in place (either newly
+    created or already present); returns False without touching the
+    driver if the college has no mapping.
+    """
+    coe_region = COLLEGE_COE_REGION.get(college_name)
+    if not coe_region:
+        return False
+    display = COE_REGION_DISPLAY.get(coe_region, coe_region)
+    with driver.session() as session:
+        session.run(
+            """
+            MATCH (c:College {name: $college})
+            MERGE (r:Region {name: $region})
+              ON CREATE SET r.display_name = $display
+            MERGE (c)-[:IN_MARKET]->(r)
+            """,
+            college=college_name,
+            region=coe_region,
+            display=display,
+        )
+    return True
+
+
 # College name → counties to search for EDD employer data.
 # For urban colleges, this defaults to the counties in their OEWS metro.
 # For rural colleges, this expands to include adjacent counties where

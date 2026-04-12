@@ -15,7 +15,11 @@ from typing import Optional
 
 from neo4j import Driver
 from ontology.schema import get_driver, close_driver
-from ontology.regions import COLLEGE_COE_REGION, COE_REGION_DISPLAY
+from ontology.regions import (
+    COLLEGE_COE_REGION,
+    COE_REGION_DISPLAY,
+    ensure_college_region_link,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -59,21 +63,15 @@ def load_industry(
             stats["regions"] += 1
         logger.info(f"Created {stats['regions']} Region nodes")
 
-        # 2. Link Colleges to COE Regions
-        for college_name, coe_region in COLLEGE_COE_REGION.items():
-            result = session.run(
-                """
-                MATCH (c:College {name: $college})
-                MERGE (r:Region {name: $region})
-                MERGE (c)-[:IN_MARKET]->(r)
-                RETURN count(*) AS cnt
-                """,
-                college=college_name,
-                region=coe_region,
-            )
-            stats["college_links"] += result.single()["cnt"]
-        logger.info(f"Created {stats['college_links']} College-Region links")
+    # 2. Link Colleges to COE Regions — delegates to the helper in
+    # ontology/regions.py so the MERGE lives in exactly one place.
+    # The helper manages its own session.
+    for college_name in COLLEGE_COE_REGION:
+        if ensure_college_region_link(driver, college_name):
+            stats["college_links"] += 1
+    logger.info(f"Created {stats['college_links']} College-Region links")
 
+    with driver.session() as session:
         # 3. Create Occupation nodes (wage is regional, lives on DEMANDS edge)
         occ_batch = []
         for occ in occupations:

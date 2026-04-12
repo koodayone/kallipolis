@@ -17,6 +17,7 @@ from typing import List, Optional
 
 from neo4j import Driver
 
+from ontology.regions import ensure_college_region_link
 from ontology.skills import UNIFIED_TAXONOMY
 
 logger = logging.getLogger(__name__)
@@ -69,9 +70,11 @@ def load_college(
         )
 
         # ── College ────────────────────────────────────────────────────────
-        # Note: the College.region property is preserved as a string for
-        # informational purposes. Region nodes (and the IN_MARKET edge from
-        # College to Region) are created separately by the industry pipeline.
+        # College.region is a scalar display string for informational use.
+        # The load-bearing (College)-[:IN_MARKET]->(Region) edge is
+        # written after this session closes via ensure_college_region_link
+        # so that loading a college is self-sufficient for the
+        # partnership traversal.
         session.run(
             """
             MERGE (col:College {name: $name})
@@ -188,6 +191,11 @@ def load_college(
                     inst=config.name,
                 )
                 stats.relationships_created += 1
+
+    # Link the College to its COE Region. This helper owns the MERGE
+    # and is also called from occupations/load.py::load_industry, so
+    # running either loader produces the edge consistently.
+    ensure_college_region_link(driver, config.name)
 
     logger.info(
         f"Loaded {config.name}: "
