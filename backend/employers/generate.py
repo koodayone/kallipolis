@@ -7,7 +7,7 @@ generate descriptions, and assign SOC codes from the regional
 occupation list.
 
 Pipeline:
-  1. Scrape EDD employers by CTE NAICS codes + size filter (250+)
+  1. Scrape EDD employers by CTE NAICS codes + size filter (100+)
   2. Clean and deduplicate employer names (deterministic pre-filters)
   3. Assign sector + fallback SOC codes via NAICS→SOC mapping
   4. LLM cleanup via Gemini (names, descriptions, regional SOC codes)
@@ -596,7 +596,7 @@ def _cache_path_for(
 def generate_for_college(
     college_key: str,
     scrape: bool = True,
-    min_size: str = "G",
+    min_size: str = "F",
     filtered_occupations: list[dict] | None = None,
 ) -> list[dict]:
     """Run the full employer generation pipeline for one college."""
@@ -796,7 +796,7 @@ def generate_for_college(
 def generate_for_region(
     region_code: str,
     scrape: bool = True,
-    min_size: str = "G",
+    min_size: str = "F",
 ) -> list[dict]:
     """Run the employer generation pipeline for an entire COE region.
 
@@ -936,7 +936,7 @@ def generate_for_region(
     return formatted
 
 
-def generate_all(scrape: bool = True, min_size: str = "G") -> dict[str, int]:
+def generate_all(scrape: bool = True, min_size: str = "F") -> dict[str, int]:
     """Run pipeline for all colleges with enriched caches."""
     from ontology.regions import COLLEGE_REGION_MAP
 
@@ -994,9 +994,9 @@ def main():
     group.add_argument("--all", action="store_true")
     parser.add_argument("--no-scrape", action="store_true",
                         help="Use cached EDD data only")
-    parser.add_argument("--min-size", type=str, default="G",
+    parser.add_argument("--min-size", type=str, default="F",
                         choices=["A", "B", "C", "D", "E", "F", "G", "H", "I"],
-                        help="Minimum employer size class (default: G=250+)")
+                        help="Minimum employer size class (default: F=100+)")
     args = parser.parse_args()
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)-7s %(message)s", datefmt="%H:%M:%S")

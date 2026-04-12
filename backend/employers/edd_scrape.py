@@ -287,8 +287,8 @@ CTE_NAICS_CODES: dict[str, tuple[str, str]] = {
     "9241": ("92", "Government - Environmental Quality"),
 }
 
-# Default size filter: 250+ employees (G=250-499, H=500-999, I=1000-4999)
-DEFAULT_MIN_SIZE = "G"
+# Default size filter: 100+ employees (F=100-249, G=250-499, H=500-999, I=1000-4999)
+DEFAULT_MIN_SIZE = "F"
 
 
 # ── HTML parsing ──────────────────────────────────────────────────────────
