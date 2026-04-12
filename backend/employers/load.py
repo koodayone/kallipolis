@@ -30,6 +30,32 @@ def cleanup_stale_employers(driver: Driver, valid_names: list[str]) -> int:
     return deleted
 
 
+def prune_region_in_market(
+    driver: Driver,
+    region_code: str,
+    valid_employer_names: list[str],
+) -> int:
+    """Delete stale IN_MARKET edges for a region without touching other regions.
+
+    When a regional re-scrape produces a new employer pool, some employers
+    that were previously tagged with this region may no longer be in the
+    pool. cleanup_stale_employers only removes stale nodes; this function
+    removes stale edges so that employers which lost a region tag don't
+    retain orphaned IN_MARKET edges in the graph.
+    """
+    with driver.session() as session:
+        result = session.run(
+            "MATCH (e:Employer)-[r:IN_MARKET]->(reg:Region {name: $region}) "
+            "WHERE NOT e.name IN $names DELETE r RETURN count(r) AS cnt",
+            region=region_code,
+            names=valid_employer_names,
+        )
+        pruned = result.single()["cnt"]
+    if pruned:
+        logger.info(f"Pruned {pruned} stale IN_MARKET edges for region {region_code}")
+    return pruned
+
+
 def load_employers(driver: Driver, employers: list[dict]) -> dict:
     """Load Employer nodes and relationships into Neo4j."""
     stats = {"employers": 0, "in_market": 0, "hires_for": 0}

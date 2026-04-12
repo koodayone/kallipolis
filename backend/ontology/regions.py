@@ -82,6 +82,48 @@ FRONTEND_TO_COE: dict[str, str] = {
     "sierra-nevada": "GS",
 }
 
+# COE region → list of California counties. This is the canonical geographic
+# partition for employer scraping: every county belongs to exactly one region,
+# and every region's employer pool is shared by all colleges in that region.
+# Sourced from the Centers of Excellence (coeccc.net), the SWP Regional
+# Consortia, and the individual consortium websites (BACCC, CVML, NFNRC,
+# LARC, OCRC, SDIC, SCCRC). 58 counties, 9 regions, no overlap.
+COE_REGION_TO_COUNTIES: dict[str, list[str]] = {
+    # Source: BACCC https://baccc.net/ (28 colleges, 12 counties)
+    "Bay": [
+        "Alameda", "Contra Costa", "Marin", "Monterey", "Napa", "San Benito",
+        "San Francisco", "San Mateo", "Santa Clara", "Santa Cruz", "Solano", "Sonoma",
+    ],
+    # Source: CVML Consortium https://crconsortium.com/ (15 counties)
+    "CVML": [
+        "Alpine", "Amador", "Calaveras", "Fresno", "Inyo", "Kern", "Kings",
+        "Madera", "Mariposa", "Merced", "Mono", "San Joaquin", "Stanislaus",
+        "Tulare", "Tuolumne",
+    ],
+    # Source: NFNRC https://nfnrc.org/about/ ("Far North" subregion)
+    "FN": [
+        "Butte", "Del Norte", "Glenn", "Humboldt", "Lake", "Lassen",
+        "Mendocino", "Modoc", "Plumas", "Shasta", "Sierra", "Siskiyou",
+        "Tehama", "Trinity",
+    ],
+    # Source: NFNRC https://nfnrc.org/about/ ("North" subregion = Greater Sacramento)
+    "GS": [
+        "Colusa", "El Dorado", "Nevada", "Placer", "Sacramento",
+        "Sutter", "Yolo", "Yuba",
+    ],
+    # Source: coeccc.net https://coeccc.net/region/inland-empire-desert/
+    "IE/D": ["Riverside", "San Bernardino"],
+    # Source: LARC https://losangelesrc.org/
+    "LA": ["Los Angeles"],
+    # Source: OCRC https://ocregionalconsortium.org/
+    "OC": ["Orange"],
+    # Source: coeccc.net https://coeccc.net/region/san-diego-imperial/
+    "SD/I": ["San Diego", "Imperial"],
+    # Source: SCC Consortium https://sccrcolleges.org/
+    "SCC": ["San Luis Obispo", "Santa Barbara", "Ventura"],
+}
+
+
 # College name → OEWS metro(s) for occupation demand data and IN_MARKET edges.
 # Single string for urban colleges, list for rural colleges spanning multiple metros.
 # Covers every college currently featured in the state atlas (logoStacked set).

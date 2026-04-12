@@ -290,9 +290,9 @@ def _assign_soc_codes(
 
 # ── Formatting ────────────────────────────────────────────────────────────
 
-def _format_for_json(employers: list[dict], metro: str) -> list[dict]:
+def _format_for_json(employers: list[dict], metro_or_region: str) -> list[dict]:
     """Convert to employers.json schema."""
-    coe_region = OEWS_METRO_TO_COE.get(metro, metro)
+    coe_region = OEWS_METRO_TO_COE.get(metro_or_region, metro_or_region)
     formatted = []
     for emp in employers:
         # Use LLM description if available, otherwise build from EDD data
@@ -793,6 +793,149 @@ def generate_for_college(
     return formatted
 
 
+def generate_for_region(
+    region_code: str,
+    scrape: bool = True,
+    min_size: str = "G",
+) -> list[dict]:
+    """Run the employer generation pipeline for an entire COE region.
+
+    Scrapes all counties in the region, deduplicates, runs LLM cleanup,
+    and returns the formatted employer list. Does NOT merge into
+    employers.json — the caller decides when and how to merge.
+    """
+    from employers.edd_scrape import scrape_region, load_region_cached, _region_cache_path
+    from ontology.regions import COE_REGION_TO_COUNTIES, COE_REGION_DISPLAY
+
+    import warnings
+    warnings.filterwarnings("ignore")
+
+    counties = COE_REGION_TO_COUNTIES.get(region_code)
+    if not counties:
+        logger.error(f"Unknown COE region: {region_code}")
+        return []
+
+    region_display = COE_REGION_DISPLAY.get(region_code, region_code)
+
+    logger.info(f"{'=' * 60}")
+    logger.info(f"Generating employers for region: {region_code} ({region_display})")
+    logger.info(f"  Counties: {', '.join(counties)}")
+
+    # ── Stage 1: Get EDD employers ────────────────────────────────────
+    if not scrape:
+        edd_employers = load_region_cached(region_code, min_size)
+        if edd_employers is None:
+            logger.error(
+                f"  No regional cache for {region_code}. "
+                f"Run: python -m employers.generate --region {region_code}"
+            )
+            return []
+        logger.info(f"  Loaded {len(edd_employers)} employers from cache")
+    else:
+        edd_employers = scrape_region(region_code, min_size=min_size)
+
+    if not edd_employers:
+        logger.error(f"  No employers found for region {region_code}")
+        return []
+
+    # Save pre-LLM raw intermediate
+    raw_path = _region_cache_path(region_code, min_size).with_suffix(".raw.json")
+    with open(raw_path, "w") as f:
+        json.dump(edd_employers, f, indent=2)
+    logger.info(f"  Saved pre-LLM raw to {raw_path.name}")
+
+    # ── Stage 2: Pre-filter, clean, deduplicate ───────────────────────
+    pre_count = len(edd_employers)
+    edd_employers = [
+        emp for emp in edd_employers
+        if emp.get("naics4", "") not in _NEVER_EMPLOYER_NAICS
+        and not _should_drop_name(emp.get("name", ""))
+    ]
+    if pre_count != len(edd_employers):
+        logger.info(
+            f"  Pre-filter: dropped {pre_count - len(edd_employers)} rows "
+            f"(staffing/business-support NAICS + name patterns)"
+        )
+
+    for emp in edd_employers:
+        emp["name"] = _clean_employer_name(emp["name"])
+
+    deduped = _deduplicate_branches(edd_employers)
+    logger.info(f"  After dedup: {len(deduped)} (from {len(edd_employers)})")
+
+    # ── Stage 3: Assign sector and SOC codes ──────────────────────────
+    with open(OCCUPATIONS_PATH) as f:
+        occupations = json.load(f)
+
+    regional_occupations = [
+        occ for occ in occupations
+        if region_code in occ.get("regions", {})
+        and occ.get("education_level") not in _EXCLUDE_EDUCATION
+    ]
+    logger.info(f"  Career-track occupations ({region_code}): {len(regional_occupations)}")
+
+    occ_by_group: dict[str, list[str]] = defaultdict(list)
+    for occ in regional_occupations:
+        group = occ["soc_code"].split("-")[0]
+        occ_by_group[group].append(occ["soc_code"])
+
+    for emp in deduped:
+        naics = emp.get("naics4", emp.get("naics_code", ""))[:2]
+        emp["sector"] = _NAICS_SECTORS.get(naics, emp.get("industry", "Other"))
+        emp["soc_codes"] = _assign_soc_codes(emp, occ_by_group)
+
+    sector_counts: dict[str, int] = {}
+    for emp in deduped:
+        sector_counts[emp["sector"]] = sector_counts.get(emp["sector"], 0) + 1
+    for sector, count in sorted(sector_counts.items(), key=lambda x: -x[1]):
+        logger.info(f"    {sector}: {count}")
+
+    # ── Stage 4: LLM cleanup ─────────────────────────────────────────
+    cached_prefix_name: str | None = None
+    if regional_occupations and os.environ.get("GEMINI_API_KEY"):
+        try:
+            from google import genai
+            from google.genai import types as _gtypes
+            _client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+            _prefix = _build_occupation_prefix(
+                f"{region_display} region of California", regional_occupations
+            )
+            cached_prefix_name = _create_occupation_cache(_client, _gtypes, _prefix)
+        except Exception as e:
+            logger.info(f"  Gemini cache setup skipped: {e}")
+
+    selected = []
+    failed_batches = 0
+    for i in range(0, len(deduped), BATCH_SIZE):
+        batch = deduped[i:i + BATCH_SIZE]
+        try:
+            cleaned = _llm_cleanup(
+                batch,
+                f"{region_display} region of California",
+                filtered_occupations=regional_occupations,
+                cached_prefix_name=cached_prefix_name,
+            )
+            selected.extend(cleaned)
+        except LLMCleanupError as e:
+            failed_batches += 1
+            logger.error(
+                f"  LLM cleanup batch {i // BATCH_SIZE} dropped "
+                f"({len(batch)} employers): {e}"
+            )
+    logger.info(f"  After LLM cleanup: {len(selected)} employers (from {len(deduped)})")
+    if failed_batches:
+        logger.warning(
+            f"  {failed_batches} LLM batches failed — their employers were skipped. "
+            f"Re-run with --no-scrape to retry."
+        )
+
+    # ── Stage 5: Format (no merge — caller decides) ──────────────────
+    formatted = _format_for_json(selected, region_code)
+
+    logger.info(f"  Formatted {len(formatted)} employers for region {region_code}")
+    return formatted
+
+
 def generate_all(scrape: bool = True, min_size: str = "G") -> dict[str, int]:
     """Run pipeline for all colleges with enriched caches."""
     from ontology.regions import COLLEGE_REGION_MAP
@@ -844,7 +987,10 @@ def main():
 
     parser = argparse.ArgumentParser(description="Generate employer lists from EDD data")
     group = parser.add_mutually_exclusive_group(required=True)
-    group.add_argument("--college", type=str)
+    group.add_argument("--college", type=str,
+                       help="Generate for a single college (legacy per-metro path)")
+    group.add_argument("--region", type=str,
+                       help="Generate for an entire COE region (e.g., SCC, CVML, Bay)")
     group.add_argument("--all", action="store_true")
     parser.add_argument("--no-scrape", action="store_true",
                         help="Use cached EDD data only")
@@ -855,7 +1001,12 @@ def main():
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)-7s %(message)s", datefmt="%H:%M:%S")
 
-    if getattr(args, "all"):
+    if args.region:
+        result = generate_for_region(
+            args.region, scrape=not args.no_scrape, min_size=args.min_size,
+        )
+        logger.info(f"Region {args.region}: {len(result)} employers generated (not merged)")
+    elif getattr(args, "all"):
         generate_all(scrape=not args.no_scrape, min_size=args.min_size)
     else:
         generate_for_college(args.college, scrape=not args.no_scrape, min_size=args.min_size)

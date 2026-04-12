@@ -611,6 +611,72 @@ def search_metro(
     return all_employers
 
 
+def scrape_region(
+    region_code: str,
+    naics_codes: list[str] | None = None,
+    min_size: str = DEFAULT_MIN_SIZE,
+) -> list[dict]:
+    """Search all counties in a COE region for CTE-relevant employers.
+
+    The COE region is the institutional unit used by the California Community
+    Colleges Chancellor's Office, the Strong Workforce Program, and the
+    Centers of Excellence. Each region maps to a fixed set of counties via
+    COE_REGION_TO_COUNTIES.
+    """
+    from ontology.regions import COE_REGION_TO_COUNTIES
+
+    counties = COE_REGION_TO_COUNTIES.get(region_code, [])
+    if not counties:
+        logger.error(f"Unknown COE region: {region_code}")
+        return []
+
+    if naics_codes is None:
+        naics_codes = list(CTE_NAICS_CODES.keys())
+
+    logger.info(
+        f"Scraping region {region_code} ({len(counties)} counties, "
+        f"{len(naics_codes)} NAICS codes, min_size={min_size})"
+    )
+
+    all_employers: list[dict] = []
+    seen_keys: set[tuple] = set()
+
+    for i, county_name in enumerate(counties, 1):
+        logger.info(f"  County {i}/{len(counties)}: {county_name}")
+        results = search_naics_codes(county_name, naics_codes, min_size)
+        for emp in results:
+            key = (emp["name"].lower(), emp["city"].lower())
+            if key not in seen_keys:
+                seen_keys.add(key)
+                all_employers.append(emp)
+
+    logger.info(f"Total unique employers across {region_code}: {len(all_employers)}")
+
+    CACHE_DIR.mkdir(exist_ok=True)
+    cache_path = _region_cache_path(region_code, min_size)
+    with open(cache_path, "w") as f:
+        json.dump(all_employers, f, indent=2)
+    logger.info(f"Cached to {cache_path.name}")
+
+    return all_employers
+
+
+def _region_cache_path(region_code: str, min_size: str = DEFAULT_MIN_SIZE) -> Path:
+    sanitized = region_code.lower().replace("/", "_")
+    return CACHE_DIR / f"edd_region_{sanitized}_{min_size.lower()}.json"
+
+
+def load_region_cached(region_code: str, min_size: str = DEFAULT_MIN_SIZE) -> list[dict] | None:
+    """Load cached regional EDD employer data."""
+    cache_path = _region_cache_path(region_code, min_size)
+    if cache_path.exists():
+        with open(cache_path) as f:
+            data = json.load(f)
+        logger.info(f"  Loaded {len(data)} employers from regional cache ({cache_path.name})")
+        return data
+    return None
+
+
 def load_cached(metro: str, deep: bool = False) -> list[dict] | None:
     """Load cached EDD employer data for a metro."""
     prefix = "edd_deep_" if deep else "edd_"
