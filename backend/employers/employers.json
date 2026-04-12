@@ -1530,7 +1530,8 @@
       "17-2021",
       "19-1013",
       "19-4012"
-    ]
+    ],
+    "website": "https://oasisdate.com/"
   },
   {
     "name": "Coachella Valley Water District",
@@ -1548,7 +1549,8 @@
       "13-1071",
       "13-2011",
       "17-2051"
-    ]
+    ],
+    "website": "https://www.cvwd.org/"
   },
   {
     "name": "Pacific Hydrotech Corporation",
@@ -1566,7 +1568,8 @@
       "17-2051",
       "17-2081",
       "17-3022"
-    ]
+    ],
+    "website": "https://pachydro.com/"
   },
   {
     "name": "J Ginger Masonry",
@@ -1582,23 +1585,8 @@
       "13-1051",
       "13-1071",
       "13-2011"
-    ]
-  },
-  {
-    "name": "Pacific Production Plumbing",
-    "sector": "Construction",
-    "description": "This company offers plumbing services, likely specializing in large-scale or production-oriented plumbing installations and repairs.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-9021",
-      "13-1051",
-      "13-1071",
-      "13-2011"
-    ]
+    "website": "https://www.jgingermasonry.com/"
   },
   {
     "name": "Renova Energy",
@@ -1616,23 +1604,8 @@
       "13-1161",
       "17-2071",
       "17-3023"
-    ]
-  },
-  {
-    "name": "Pro Wall Lath & Plaster",
-    "sector": "Construction",
-    "description": "This company provides lath and plaster services for construction projects, specializing in wall finishes.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-9021",
-      "13-1051",
-      "13-1071",
-      "13-2011"
-    ]
+    "website": "https://renovaenergy.com/"
   },
   {
     "name": "Galasso's Bakery",
@@ -1650,7 +1623,8 @@
       "13-1071",
       "13-1161",
       "13-2011"
-    ]
+    ],
+    "website": "https://galassos.com/"
   },
   {
     "name": "Monster Beverage Corporation",
@@ -1668,7 +1642,8 @@
       "11-3012",
       "11-3031",
       "13-1161"
-    ]
+    ],
+    "website": "https://www.monsterbevcorp.com/"
   },
   {
     "name": "Pepsi Beverages",
@@ -1686,7 +1661,8 @@
       "13-1081",
       "13-2011",
       "41-4011"
-    ]
+    ],
+    "website": "https://www.pepsico.com/"
   },
   {
     "name": "Dart Container Corporation",
@@ -1704,25 +1680,8 @@
       "13-1071",
       "13-1081",
       "13-2011"
-    ]
-  },
-  {
-    "name": "First American Card Services",
-    "sector": "Manufacturing",
-    "description": "This company provides payment processing solutions and merchant services for businesses.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-1021",
-      "11-2022",
-      "11-3012",
-      "11-3021",
-      "13-1041",
-      "13-1071",
-      "13-2011",
-      "15-1212"
-    ]
+    "website": "https://www.dartcontainer.com/"
   },
   {
     "name": "Highland Plastics",
@@ -1740,7 +1699,8 @@
       "13-1071",
       "13-2011",
       "17-2131"
-    ]
+    ],
+    "website": "https://highlandplastics.com/"
   },
   {
     "name": "Merrick Engineering",
@@ -1758,7 +1718,8 @@
       "17-2141",
       "17-3011",
       "17-3022"
-    ]
+    ],
+    "website": "https://www.merrickengineering.com/"
   },
   {
     "name": "CIRCOR Aerospace",
@@ -1776,7 +1737,8 @@
       "17-2011",
       "17-2141",
       "49-2091"
-    ]
+    ],
+    "website": "https://www.circor.com/"
   },
   {
     "name": "Collins Aerospace",
@@ -1794,7 +1756,8 @@
       "13-1071",
       "17-2011",
       "17-2071"
-    ]
+    ],
+    "website": "https://www.collinsaerospace.com/"
   },
   {
     "name": "Abbott Vascular",
@@ -1812,7 +1775,8 @@
       "17-2031",
       "17-2141",
       "19-1029"
-    ]
+    ],
+    "website": "https://www.cardiovascular.abbott/"
   },
   {
     "name": "Sun World International",
@@ -1830,7 +1794,8 @@
       "19-1013",
       "19-4012",
       "45-2011"
-    ]
+    ],
+    "website": "https://www.sun-world.com/"
   },
   {
     "name": "US Foods",
@@ -1848,7 +1813,8 @@
       "13-1081",
       "13-2011",
       "53-3032"
-    ]
+    ],
+    "website": "https://www.usfoods.com/"
   },
   {
     "name": "Gosch Toyota",
@@ -1865,7 +1831,8 @@
       "13-2011",
       "41-4011",
       "49-3023"
-    ]
+    ],
+    "website": "https://www.goschtoyota.com/"
   },
   {
     "name": "Moss Brothers Auto Group",
@@ -1883,7 +1850,8 @@
       "13-2011",
       "41-4011",
       "49-3023"
-    ]
+    ],
+    "website": "https://www.mossbrosautogroup.com/"
   },
   {
     "name": "Paradise Chevrolet",
@@ -1900,7 +1868,8 @@
       "13-2011",
       "41-4011",
       "49-3023"
-    ]
+    ],
+    "website": "https://www.paradiseautos.com/"
   },
   {
     "name": "Pedder Auto Group",
@@ -1918,7 +1887,8 @@
       "13-2011",
       "41-4011",
       "49-3023"
-    ]
+    ],
+    "website": "https://pedderautogroup.com/"
   },
   {
     "name": "California TrusFrame",
@@ -1936,7 +1906,8 @@
       "13-1071",
       "17-2051",
       "17-3011"
-    ]
+    ],
+    "website": "https://www.caltrusframe.com/"
   },
   {
     "name": "Milgard Windows & Doors",
@@ -1954,25 +1925,8 @@
       "13-2011",
       "17-2141",
       "41-4011"
-    ]
-  },
-  {
-    "name": "PSLQ",
-    "sector": "Retail",
-    "description": "This company provides specialized services, likely in a technical or consulting field, though the exact nature is not specified.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1071",
-      "13-1082",
-      "13-1111",
-      "13-2011",
-      "15-1211",
-      "15-1252"
-    ]
+    "website": "https://www.milgard.com/"
   },
   {
     "name": "Vons",
@@ -1989,7 +1943,8 @@
       "13-1028",
       "13-1071",
       "13-2011"
-    ]
+    ],
+    "website": "https://www.vons.com/"
   },
   {
     "name": "Walmart Neighborhood Market",
@@ -2005,7 +1960,8 @@
       "13-1028",
       "13-1071",
       "13-2011"
-    ]
+    ],
+    "website": "https://www.walmart.com/"
   },
   {
     "name": "FedEx Freight",
@@ -2022,7 +1978,8 @@
       "13-1081",
       "13-2011",
       "53-3032"
-    ]
+    ],
+    "website": "https://www.fedex.com/"
   },
   {
     "name": "McLane Foodservice",
@@ -2040,7 +1997,8 @@
       "13-1081",
       "13-2011",
       "53-3032"
-    ]
+    ],
+    "website": "https://www.mclaneco.com/"
   },
   {
     "name": "Sunline Transit Agency",
@@ -2058,25 +2016,8 @@
       "13-1071",
       "13-2011",
       "49-3023"
-    ]
-  },
-  {
-    "name": "Golden Era Productions",
-    "sector": "Information & Media",
-    "description": "This company is a media production facility, primarily producing films, videos, and other media content.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-1021",
-      "11-2011",
-      "11-3012",
-      "13-1071",
-      "27-2012",
-      "27-3043",
-      "27-4011",
-      "27-4031"
-    ]
+    "website": "https://www.sunline.org/"
   },
   {
     "name": "Imperial Western Products",
@@ -2094,7 +2035,8 @@
       "13-2011",
       "17-2081",
       "53-3032"
-    ]
+    ],
+    "website": "https://www.iwpinc.com/"
   },
   {
     "name": "State Compensation Insurance Fund",
@@ -2112,7 +2054,8 @@
       "13-1071",
       "13-2011",
       "13-2053"
-    ]
+    ],
+    "website": "https://www.statefundca.com/"
   },
   {
     "name": "Action Property Management",
@@ -2128,7 +2071,8 @@
       "13-1071",
       "13-2011",
       "13-2028"
-    ]
+    ],
+    "website": "https://www.actionlife.com/"
   },
   {
     "name": "Realty One Group Southwest",
@@ -2145,24 +2089,8 @@
       "13-1071",
       "13-1161",
       "13-2011"
-    ]
-  },
-  {
-    "name": "Temecula Valley Real Estate",
-    "sector": "Real Estate",
-    "description": "This real estate company specializes in property transactions within the Temecula Valley region.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-1021",
-      "11-2021",
-      "11-2022",
-      "11-3012",
-      "13-1071",
-      "13-1161",
-      "13-2011"
-    ]
+    "website": "https://www.realtyonegroupsouthwest.com/"
   },
   {
     "name": "Skanska USA Civil West",
@@ -2180,7 +2108,8 @@
       "13-1082",
       "17-2051",
       "17-3022"
-    ]
+    ],
+    "website": "https://www.usa.skanska.com/"
   },
   {
     "name": "DXC Technology",
@@ -2198,7 +2127,8 @@
       "15-1211",
       "15-1212",
       "15-1252"
-    ]
+    ],
+    "website": "https://www.dxc.com/"
   },
   {
     "name": "Amazon Fulfillment Center",
@@ -2216,7 +2146,8 @@
       "13-2011",
       "15-1244",
       "17-2112"
-    ]
+    ],
+    "website": "https://www.aboutamazon.com/"
   },
   {
     "name": "CR & R Environmental Services",
@@ -2234,7 +2165,8 @@
       "13-2011",
       "17-2081",
       "53-3032"
-    ]
+    ],
+    "website": "https://www.crrwasteservices.com/"
   },
   {
     "name": "Lineage Logistics",
@@ -2252,7 +2184,8 @@
       "13-2011",
       "17-2112",
       "53-3032"
-    ]
+    ],
+    "website": "https://www.lineagelogistics.com/"
   },
   {
     "name": "American Integrated Services",
@@ -2270,7 +2203,8 @@
       "13-2011",
       "17-2081",
       "19-5011"
-    ]
+    ],
+    "website": "https://www.americanintegrated.com/"
   },
   {
     "name": "Securitas",
@@ -2286,7 +2220,8 @@
       "13-1071",
       "13-1151",
       "13-2011"
-    ]
+    ],
+    "website": "https://www.securitas.com/"
   },
   {
     "name": "Lloyd Pest & Termite Control",
@@ -2302,58 +2237,8 @@
       "13-1071",
       "13-1161",
       "13-2011"
-    ]
-  },
-  {
-    "name": "Canyon Lake Middle School",
-    "sector": "Education",
-    "description": "This is a public middle school providing education for students in grades 6-8.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-9039",
-      "11-3012",
-      "13-1071",
-      "25-2022",
-      "25-2057",
-      "25-3031",
-      "25-9099"
-    ]
-  },
-  {
-    "name": "Chaparral High School",
-    "sector": "Education",
-    "description": "This is a public high school providing education for students in grades 9-12.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-9039",
-      "11-3012",
-      "13-1071",
-      "25-2031",
-      "25-2058",
-      "25-3031",
-      "25-9099"
-    ]
-  },
-  {
-    "name": "Coachella Valley High School",
-    "sector": "Education",
-    "description": "This is a public high school providing education for students in grades 9-12.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-9039",
-      "11-3012",
-      "13-1071",
-      "25-2031",
-      "25-2058",
-      "25-3031",
-      "25-9099"
-    ]
+    "website": "https://www.lloydpest.com/"
   },
   {
     "name": "Coachella Valley Unified School District",
@@ -2371,7 +2256,8 @@
       "11-9039",
       "13-1071",
       "13-2011"
-    ]
+    ],
+    "website": "https://www.cvusd.us/"
   },
   {
     "name": "Corona-Norco Unified School District",
@@ -2389,7 +2275,8 @@
       "11-9039",
       "13-1071",
       "13-2011"
-    ]
+    ],
+    "website": "https://www.cnusd.k12.ca.us/"
   },
   {
     "name": "Hemet Unified School District",
@@ -2407,7 +2294,8 @@
       "11-9039",
       "13-1071",
       "13-2011"
-    ]
+    ],
+    "website": "https://www.hemetusd.org/"
   },
   {
     "name": "Jurupa Unified School District",
@@ -2425,24 +2313,8 @@
       "11-9039",
       "13-1071",
       "13-2011"
-    ]
-  },
-  {
-    "name": "Valley View High School",
-    "sector": "Education",
-    "description": "This is a public high school providing education for students in grades 9-12.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-9039",
-      "11-3012",
-      "13-1071",
-      "25-2031",
-      "25-2058",
-      "25-3031",
-      "25-9099"
-    ]
+    "website": "https://www.jusd.k12.ca.us/"
   },
   {
     "name": "Riverside City College",
@@ -2460,25 +2332,8 @@
       "11-9039",
       "13-1071",
       "13-2011"
-    ]
-  },
-  {
-    "name": "Diabetes Center",
-    "sector": "Healthcare",
-    "description": "This medical facility specializes in the diagnosis, treatment, and management of diabetes and related conditions.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-9111",
-      "13-1071",
-      "13-2011",
-      "29-1031",
-      "29-1141",
-      "29-2051",
-      "31-1131",
-      "31-9092"
-    ]
+    "website": "https://www.rcc.edu/"
   },
   {
     "name": "Riverside Medical Clinic",
@@ -2496,7 +2351,8 @@
       "31-1131",
       "31-9092",
       "31-9097"
-    ]
+    ],
+    "website": "https://www.rivmed.com/"
   },
   {
     "name": "Supercare Health",
@@ -2514,24 +2370,8 @@
       "29-1141",
       "29-2099",
       "49-9062"
-    ]
-  },
-  {
-    "name": "Inland Respite",
-    "sector": "Healthcare",
-    "description": "This organization provides respite care services, offering temporary relief to primary caregivers of individuals with disabilities or special needs.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-9151",
-      "13-1071",
-      "13-2011",
-      "21-1029",
-      "21-1099",
-      "29-1141",
-      "31-1131"
-    ]
+    "website": "https://www.supercarehealth.com/"
   },
   {
     "name": "American Medical Response",
@@ -2549,7 +2389,8 @@
       "29-2043",
       "29-2061",
       "29-1141"
-    ]
+    ],
+    "website": "https://www.amr.net/"
   },
   {
     "name": "Corona Regional Medical Center",
@@ -2567,7 +2408,8 @@
       "29-2034",
       "29-2061",
       "31-1131"
-    ]
+    ],
+    "website": "https://www.coronaregional.com/"
   },
   {
     "name": "Desert Regional Medical Center",
@@ -2585,7 +2427,8 @@
       "29-2034",
       "29-2061",
       "31-1131"
-    ]
+    ],
+    "website": "https://www.desertcarenetwork.com/"
   },
   {
     "name": "Eisenhower Medical Center",
@@ -2603,7 +2446,8 @@
       "29-2034",
       "29-2061",
       "31-1131"
-    ]
+    ],
+    "website": "https://www.eisenhowerhealth.org/"
   },
   {
     "name": "JFK Memorial Hospital",
@@ -2621,7 +2465,8 @@
       "29-2034",
       "29-2061",
       "31-1131"
-    ]
+    ],
+    "website": "https://www.jfkmemorialhosp.com/"
   },
   {
     "name": "Kaiser Permanente Riverside Medical Center",
@@ -2639,7 +2484,8 @@
       "29-2034",
       "29-2061",
       "31-1131"
-    ]
+    ],
+    "website": "https://healthy.kaiserpermanente.org/"
   },
   {
     "name": "Menifee Valley Medical Center",
@@ -2657,7 +2503,8 @@
       "29-2034",
       "29-2061",
       "31-1131"
-    ]
+    ],
+    "website": "https://www.menifeeglobalmedicalcenter.com/"
   },
   {
     "name": "Riverside University Health System",
@@ -2675,7 +2522,8 @@
       "29-2034",
       "29-2061",
       "31-1131"
-    ]
+    ],
+    "website": "https://www.ruhealth.org/"
   },
   {
     "name": "Southwest Healthcare Rancho Springs Medical Center",
@@ -2693,43 +2541,8 @@
       "29-2034",
       "29-2061",
       "31-1131"
-    ]
-  },
-  {
-    "name": "Murrieta Health & Rehabilitation Center",
-    "sector": "Healthcare",
-    "description": "This facility provides skilled nursing care and rehabilitation services for patients recovering from illness or injury.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-9111",
-      "13-1071",
-      "13-2011",
-      "29-1141",
-      "29-2061",
-      "31-1131",
-      "31-2011",
-      "31-2021"
-    ]
-  },
-  {
-    "name": "Vista Hospital of Riverside",
-    "sector": "Healthcare",
-    "description": "This is a specialized hospital, likely focusing on long-term acute care or rehabilitation services.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-9111",
-      "13-1071",
-      "13-2011",
-      "29-1141",
-      "29-2061",
-      "31-1131",
-      "31-2011",
-      "31-2021"
-    ]
+    "website": "https://www.southwesthealthcaresystem.com/"
   },
   {
     "name": "ProMedica Skilled Nursing and Rehabilitation",
@@ -2747,7 +2560,8 @@
       "31-1131",
       "31-2011",
       "31-2021"
-    ]
+    ],
+    "website": "https://www.promedica.org/"
   },
   {
     "name": "Coachella Valley Recreation and Parks District",
@@ -2764,7 +2578,8 @@
       "13-1071",
       "13-2011",
       "27-2022"
-    ]
+    ],
+    "website": "https://www.cvrpd.org/"
   },
   {
     "name": "Castle Park",
@@ -2780,7 +2595,8 @@
       "13-1071",
       "13-1121",
       "13-2011"
-    ]
+    ],
+    "website": "https://www.castlepark.com/"
   },
   {
     "name": "BIGHORN Golf Club",
@@ -2795,7 +2611,8 @@
       "11-9072",
       "13-1071",
       "13-2011"
-    ]
+    ],
+    "website": "https://www.bighorngolf.com/"
   },
   {
     "name": "Eldorado Country Club",
@@ -2810,7 +2627,8 @@
       "11-9072",
       "13-1071",
       "13-2011"
-    ]
+    ],
+    "website": "https://www.eldoradocountryclub.com/"
   },
   {
     "name": "Mission Hills Country Club",
@@ -2825,7 +2643,8 @@
       "11-9072",
       "13-1071",
       "13-2011"
-    ]
+    ],
+    "website": "https://www.invitedclubs.com/clubs/mission-hills-country-club/"
   },
   {
     "name": "Oak Grove Center",
@@ -2843,7 +2662,8 @@
       "25-2059",
       "29-1141",
       "31-1131"
-    ]
+    ],
+    "website": "https://oakgrovecenter.org/"
   },
   {
     "name": "DoubleTree by Hilton Hotel",
@@ -2859,7 +2679,8 @@
       "13-1071",
       "13-1121",
       "13-2011"
-    ]
+    ],
+    "website": "https://www.hilton.com/"
   },
   {
     "name": "Hyatt Regency Indian Wells Resort & Spa",
@@ -2877,7 +2698,8 @@
       "13-1121",
       "13-2011",
       "31-9011"
-    ]
+    ],
+    "website": "https://www.hyatt.com/"
   },
   {
     "name": "Marriott's Shadow Ridge II",
@@ -2893,7 +2715,8 @@
       "11-9179",
       "13-1071",
       "13-2011"
-    ]
+    ],
+    "website": "https://www.marriott.com/"
   },
   {
     "name": "Mission Inn Hotel & Spa",
@@ -2911,7 +2734,8 @@
       "13-1121",
       "13-2011",
       "31-9011"
-    ]
+    ],
+    "website": "https://www.missioninn.com/"
   },
   {
     "name": "Omni Rancho Las Palmas Resort & Spa",
@@ -2929,7 +2753,8 @@
       "13-1121",
       "13-2011",
       "31-9011"
-    ]
+    ],
+    "website": "https://www.omnihotels.com/"
   },
   {
     "name": "Renaissance Esmeralda Resort & Spa",
@@ -2947,7 +2772,8 @@
       "13-1121",
       "13-2011",
       "31-9011"
-    ]
+    ],
+    "website": "https://www.marriott.com/"
   },
   {
     "name": "Ritz-Carlton Rancho Mirage",
@@ -2965,7 +2791,8 @@
       "13-1121",
       "13-2011",
       "31-9011"
-    ]
+    ],
+    "website": "https://www.ritzcarlton.com/"
   },
   {
     "name": "South Coast Winery Resort & Spa",
@@ -2983,109 +2810,8 @@
       "13-1121",
       "13-2011",
       "31-9011"
-    ]
-  },
-  {
-    "name": "Stagecoach Motor Inn",
-    "sector": "Hospitality & Food Service",
-    "description": "This is a motor inn offering basic accommodations for travelers.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-9179",
-      "13-1071",
-      "13-2011"
-    ]
-  },
-  {
-    "name": "Savoury's",
-    "sector": "Hospitality & Food Service",
-    "description": "This is a restaurant offering a specific culinary experience, likely with a focus on savory dishes.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9179",
-      "13-1071",
-      "13-2011"
-    ]
-  },
-  {
-    "name": "Agave Sunset",
-    "sector": "Hospitality & Food Service",
-    "description": "This is a restaurant or bar, likely with a theme related to agave spirits or Southwestern cuisine.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9179",
-      "13-1071",
-      "13-2011"
-    ]
-  },
-  {
-    "name": "1882 Cantina",
-    "sector": "Hospitality & Food Service",
-    "description": "This is a cantina-style restaurant, likely serving Mexican cuisine and beverages.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9179",
-      "13-1071",
-      "13-2011"
-    ]
-  },
-  {
-    "name": "Mister Parker's",
-    "sector": "Hospitality & Food Service",
-    "description": "This is a restaurant, likely offering a specific dining experience or cuisine.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9179",
-      "13-1071",
-      "13-2011"
-    ]
-  },
-  {
-    "name": "Citrus Club",
-    "sector": "Other Services",
-    "description": "This is a private club, likely offering dining, social events, and recreational facilities.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-9072",
-      "11-9179",
-      "13-1071",
-      "13-2011"
-    ]
-  },
-  {
-    "name": "Desert Princess Homeowners Association",
-    "sector": "Other Services",
-    "description": "This homeowners association manages the common areas and amenities for the Desert Princess residential community.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3013",
-      "13-1071",
-      "13-2011"
-    ]
+    "website": "https://www.wineresort.com/"
   },
   {
     "name": "Toscana Country Club",
@@ -3101,7 +2827,8 @@
       "11-9179",
       "13-1071",
       "13-2011"
-    ]
+    ],
+    "website": "https://www.toscanacc.com/"
   },
   {
     "name": "Cabazon Band of Mission Indians",
@@ -3118,97 +2845,8 @@
       "13-1071",
       "13-2011",
       "21-1099"
-    ]
-  },
-  {
-    "name": "Corona City Hall",
-    "sector": "Government",
-    "description": "The administrative center for the city of Corona, handling municipal government operations.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-3012",
-      "13-1041",
-      "13-1071",
-      "13-2011",
-      "15-1211",
-      "15-1244"
-    ]
-  },
-  {
-    "name": "Hemet City Hall",
-    "sector": "Government",
-    "description": "The administrative center for the city of Hemet, handling municipal government operations.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-3012",
-      "13-1041",
-      "13-1071",
-      "13-2011",
-      "15-1211",
-      "15-1244"
-    ]
-  },
-  {
-    "name": "Indio City Finance and Treasurer",
-    "sector": "Government",
-    "description": "The department responsible for managing the financial operations and treasury functions of the city of Indio.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-3031",
-      "13-2011",
-      "13-2031",
-      "13-2041",
-      "13-2081",
-      "13-2099",
-      "11-1021",
-      "13-1071"
-    ]
-  },
-  {
-    "name": "Moreno Valley Public Works",
-    "sector": "Government",
-    "description": "The department responsible for the infrastructure and public services of Moreno Valley, including roads, utilities, and facilities.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3013",
-      "17-2051",
-      "17-3022",
-      "13-1081",
-      "13-1071",
-      "13-2011"
-    ]
-  },
-  {
-    "name": "Palm Springs Personnel Department",
-    "sector": "Government",
-    "description": "The department responsible for human resources functions for the city of Palm Springs.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-3121",
-      "13-1071",
-      "13-1075",
-      "13-1141",
-      "13-1151",
-      "43-4161",
-      "11-1021",
-      "13-1041"
-    ]
+    "website": "https://www.cabazonindians-nsn.gov/"
   },
   {
     "name": "Riverside County Superior Court",
@@ -3226,7 +2864,8 @@
       "27-3092",
       "13-1071",
       "13-2011"
-    ]
+    ],
+    "website": "https://www.riverside.courts.ca.gov/"
   },
   {
     "name": "Coachella City Police Department",
@@ -3244,7 +2883,8 @@
       "15-1244",
       "11-9161",
       "13-1199"
-    ]
+    ],
+    "website": "https://www.coachella.org/departments/police-department"
   },
   {
     "name": "Corona Police Department",
@@ -3262,7 +2902,8 @@
       "15-1244",
       "11-9161",
       "13-1199"
-    ]
+    ],
+    "website": "https://www.coronaca.gov/government/departments-divisions/police"
   },
   {
     "name": "Department of Corrections and Rehabilitation",
@@ -3280,25 +2921,8 @@
       "15-1244",
       "21-1092",
       "29-1141"
-    ]
-  },
-  {
-    "name": "Robert Presley Detention Center",
-    "sector": "Government",
-    "description": "A correctional facility for the detention of individuals awaiting trial or serving short sentences.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3121",
-      "13-1071",
-      "13-2011",
-      "29-1141",
-      "29-2061",
-      "31-1131"
-    ]
+    "website": "https://www.cdcr.ca.gov/"
   },
   {
     "name": "Riverside County Office of Education",
@@ -3316,25 +2940,8 @@
       "15-1211",
       "25-3099",
       "25-9099"
-    ]
-  },
-  {
-    "name": "Marine Corps Base",
-    "sector": "Construction",
-    "description": "A military installation serving as a base for the United States Marine Corps.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3013",
-      "13-1071",
-      "13-2011",
-      "15-1244",
-      "17-2051",
-      "49-3011"
-    ]
+    "website": "https://www.rcoe.us/"
   },
   {
     "name": "Micromist Systems",
@@ -3352,43 +2959,8 @@
       "13-1028",
       "13-1161",
       "13-2011"
-    ]
-  },
-  {
-    "name": "Superior Electric",
-    "sector": "Construction",
-    "description": "A company providing electrical contracting and services.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-1021",
-      "11-9021",
-      "13-1051",
-      "13-1071",
-      "13-2011",
-      "17-2071",
-      "17-3023",
-      "49-2094"
-    ]
-  },
-  {
-    "name": "Superior Electrical Mechanical",
-    "sector": "Construction",
-    "description": "A company providing electrical and mechanical contracting and services.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9021",
-      "13-1051",
-      "13-1071",
-      "13-2011",
-      "17-2071",
-      "17-2141",
-      "49-9021"
-    ]
+    "website": "http://micromist.com/"
   },
   {
     "name": "Reyes Coca-Cola Bottling",
@@ -3406,7 +2978,8 @@
       "13-2011",
       "41-4011",
       "53-3032"
-    ]
+    ],
+    "website": "https://www.reyesholdings.com/"
   },
   {
     "name": "Repet",
@@ -3424,7 +2997,8 @@
       "17-2112",
       "19-2031",
       "19-4031"
-    ]
+    ],
+    "website": "https://www.repetinc.com/"
   },
   {
     "name": "Cargo Solution Express",
@@ -3442,7 +3016,8 @@
       "15-1211",
       "53-3032",
       "13-1071"
-    ]
+    ],
+    "website": "https://cargosolutionexpress.com/"
   },
   {
     "name": "American Security Products",
@@ -3460,7 +3035,8 @@
       "17-2141",
       "17-3013",
       "41-4011"
-    ]
+    ],
+    "website": "https://americansecuritysafes.com/"
   },
   {
     "name": "Hussmann Corporation",
@@ -3478,25 +3054,8 @@
       "17-3013",
       "49-9021",
       "13-1071"
-    ]
-  },
-  {
-    "name": "Metropolitan Auto Warehouse",
-    "sector": "Manufacturing",
-    "description": "A large-scale warehouse facility for automotive parts and accessories.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1028",
-      "13-1081",
-      "13-2011",
-      "13-1071",
-      "15-1244",
-      "49-3023"
-    ]
+    "website": "https://www.hussmann.com/"
   },
   {
     "name": "Jensen Precast",
@@ -3514,7 +3073,8 @@
       "17-3011",
       "17-3022",
       "13-1071"
-    ]
+    ],
+    "website": "https://www.jensenprecast.com/"
   },
   {
     "name": "Classic Containers",
@@ -3532,7 +3092,8 @@
       "17-3013",
       "13-1071",
       "11-2022"
-    ]
+    ],
+    "website": "https://classiccontainers.com/"
   },
   {
     "name": "McLane Foodservice Distribution",
@@ -3550,7 +3111,8 @@
       "13-2011",
       "53-3032",
       "13-1071"
-    ]
+    ],
+    "website": "https://www.mclaneco.com/"
   },
   {
     "name": "Carmax",
@@ -3568,7 +3130,8 @@
       "41-9031",
       "49-3023",
       "13-2072"
-    ]
+    ],
+    "website": "https://www.carmax.com/"
   },
   {
     "name": "Crown Toyota",
@@ -3586,7 +3149,8 @@
       "41-9031",
       "49-3023",
       "13-2072"
-    ]
+    ],
+    "website": "https://www.crowntoyota.com/"
   },
   {
     "name": "Valley Hi Automotive Group",
@@ -3604,7 +3168,8 @@
       "41-9031",
       "49-3023",
       "13-2072"
-    ]
+    ],
+    "website": "https://www.valleyhi.com/"
   },
   {
     "name": "Coronado Stone Products",
@@ -3622,7 +3187,8 @@
       "17-1011",
       "17-3011",
       "13-1071"
-    ]
+    ],
+    "website": "https://coronado.com/"
   },
   {
     "name": "Prime-Line Products",
@@ -3640,7 +3206,8 @@
       "17-2141",
       "17-3013",
       "13-1071"
-    ]
+    ],
+    "website": "https://www.prime-line.com/"
   },
   {
     "name": "Cardenas Market",
@@ -3658,7 +3225,8 @@
       "13-2011",
       "13-1161",
       "15-1244"
-    ]
+    ],
+    "website": "https://www.cardenasmarkets.com/"
   },
   {
     "name": "Dalton Trucking",
@@ -3676,7 +3244,8 @@
       "53-3032",
       "13-1071",
       "15-1244"
-    ]
+    ],
+    "website": "https://daltontrucking.com/"
   },
   {
     "name": "FedEx Ground",
@@ -3694,7 +3263,8 @@
       "53-3032",
       "13-1071",
       "13-1199"
-    ]
+    ],
+    "website": "https://www.fedex.com/"
   },
   {
     "name": "Estes Express Lines",
@@ -3712,7 +3282,8 @@
       "53-3032",
       "13-1071",
       "13-1199"
-    ]
+    ],
+    "website": "https://www.estes-express.com/"
   },
   {
     "name": "Omnitrans",
@@ -3730,25 +3301,8 @@
       "49-3023",
       "13-1081",
       "13-1199"
-    ]
-  },
-  {
-    "name": "El Mirage Field Adelanto",
-    "sector": "Transportation",
-    "description": "An airport or airfield facility located in Adelanto, California.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1071",
-      "13-2011",
-      "15-1244",
-      "49-3011",
-      "53-2011",
-      "53-2021"
-    ]
+    "website": "https://www.omnitrans.org/"
   },
   {
     "name": "Inland Empire Health Plan",
@@ -3766,7 +3320,8 @@
       "13-2011",
       "15-1211",
       "29-1141"
-    ]
+    ],
+    "website": "https://www.iehp.org/"
   },
   {
     "name": "Mercury Casualty",
@@ -3784,7 +3339,8 @@
       "13-2011",
       "13-2053",
       "15-1211"
-    ]
+    ],
+    "website": "https://www.mercuryinsurance.com/"
   },
   {
     "name": "Lewis Apartment Communities",
@@ -3802,25 +3358,8 @@
       "13-2011",
       "13-2028",
       "11-9021"
-    ]
-  },
-  {
-    "name": "San Bernardino County IT Department",
-    "sector": "Professional Services",
-    "description": "The department responsible for managing information technology services for San Bernardino County.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-3021",
-      "15-1211",
-      "15-1212",
-      "15-1231",
-      "15-1241",
-      "15-1242",
-      "15-1244",
-      "15-1252"
-    ]
+    "website": "https://www.lewisapartments.com/"
   },
   {
     "name": "Environmental Systems Research Institute",
@@ -3838,7 +3377,8 @@
       "19-2041",
       "15-2051",
       "15-1254"
-    ]
+    ],
+    "website": "https://www.esri.com/"
   },
   {
     "name": "LEGACY Supply Chain Services",
@@ -3856,7 +3396,8 @@
       "15-1244",
       "13-1071",
       "53-3032"
-    ]
+    ],
+    "website": "https://legacyscs.com/"
   },
   {
     "name": "Motivational Fulfillment",
@@ -3874,7 +3415,8 @@
       "15-1244",
       "13-1071",
       "53-3032"
-    ]
+    ],
+    "website": "https://mfals.com/"
   },
   {
     "name": "Radial",
@@ -3892,7 +3434,8 @@
       "15-1252",
       "15-1254",
       "13-1071"
-    ]
+    ],
+    "website": "https://www.radial.com/"
   },
   {
     "name": "Searles Valley Minerals",
@@ -3910,7 +3453,8 @@
       "19-2031",
       "19-4031",
       "13-1071"
-    ]
+    ],
+    "website": "https://www.svm.com/"
   },
   {
     "name": "FedEx Ship Center",
@@ -3928,25 +3472,8 @@
       "13-1071",
       "13-1199",
       "53-3032"
-    ]
-  },
-  {
-    "name": "Guard Systems",
-    "sector": "Administrative Services",
-    "description": "A company providing security services and systems.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1071",
-      "13-2011",
-      "15-1212",
-      "15-1244",
-      "49-2094",
-      "13-1199"
-    ]
+    "website": "https://www.fedex.com/"
   },
   {
     "name": "Brightview Landscape Services",
@@ -3964,115 +3491,8 @@
       "17-1012",
       "13-1199",
       "11-9021"
-    ]
-  },
-  {
-    "name": "Mr. Clean Maintenance Systems",
-    "sector": "Administrative Services",
-    "description": "A company providing commercial cleaning and maintenance services.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1051",
-      "13-1071",
-      "13-2011",
-      "13-1199",
-      "11-9199",
-      "13-1161"
-    ]
-  },
-  {
-    "name": "Arroyo Valley High School",
-    "sector": "Education",
-    "description": "A secondary educational institution providing instruction to students in grades 9-12.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9039",
-      "13-1071",
-      "13-2011",
-      "25-2031",
-      "25-2058",
-      "25-3099",
-      "25-9099"
-    ]
-  },
-  {
-    "name": "Bloomington High School",
-    "sector": "Education",
-    "description": "A secondary educational institution providing instruction to students in grades 9-12.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9039",
-      "13-1071",
-      "13-2011",
-      "25-2031",
-      "25-2058",
-      "25-3099",
-      "25-9099"
-    ]
-  },
-  {
-    "name": "Cajon High School",
-    "sector": "Education",
-    "description": "A secondary educational institution providing instruction to students in grades 9-12.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9039",
-      "13-1071",
-      "13-2011",
-      "25-2031",
-      "25-2058",
-      "25-3099",
-      "25-9099"
-    ]
-  },
-  {
-    "name": "Etiwanda High School",
-    "sector": "Education",
-    "description": "A secondary educational institution providing instruction to students in grades 9-12.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9039",
-      "13-1071",
-      "13-2011",
-      "25-2031",
-      "25-2058",
-      "25-3099",
-      "25-9099"
-    ]
-  },
-  {
-    "name": "Fontana High School",
-    "sector": "Education",
-    "description": "A secondary educational institution providing instruction to students in grades 9-12.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9039",
-      "13-1071",
-      "13-2011",
-      "25-2031",
-      "25-2058",
-      "25-3099",
-      "25-9099"
-    ]
+    "website": "https://www.brightview.com/"
   },
   {
     "name": "Ontario-Montclair School District",
@@ -4090,25 +3510,8 @@
       "25-2021",
       "25-2022",
       "25-2031"
-    ]
-  },
-  {
-    "name": "Rialto High School",
-    "sector": "Education",
-    "description": "A secondary educational institution providing instruction to students in grades 9-12.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-1021",
-      "11-9039",
-      "13-1071",
-      "13-2011",
-      "25-2031",
-      "25-2058",
-      "25-3099",
-      "25-9099"
-    ]
+    "website": "https://www.omsd.k12.ca.us/"
   },
   {
     "name": "San Bernardino City Unified School District",
@@ -4126,7 +3529,8 @@
       "25-2021",
       "25-2022",
       "25-2031"
-    ]
+    ],
+    "website": "https://sbcusd.com/"
   },
   {
     "name": "Snowline Joint Unified School District",
@@ -4144,25 +3548,8 @@
       "25-2021",
       "25-2022",
       "25-2031"
-    ]
-  },
-  {
-    "name": "Upland High School",
-    "sector": "Education",
-    "description": "A secondary educational institution providing instruction to students in grades 9-12.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-1021",
-      "11-9039",
-      "13-1071",
-      "13-2011",
-      "25-2031",
-      "25-2058",
-      "25-3099",
-      "25-9099"
-    ]
+    "website": "https://www.snowlineschools.com/"
   },
   {
     "name": "Yucaipa-Calimesa Joint Unified School District",
@@ -4180,7 +3567,8 @@
       "25-2021",
       "25-2022",
       "25-2031"
-    ]
+    ],
+    "website": "https://www.ycjusd.us/"
   },
   {
     "name": "Barstow Community College",
@@ -4198,7 +3586,8 @@
       "25-3099",
       "25-9044",
       "25-9099"
-    ]
+    ],
+    "website": "https://www.barstow.edu/"
   },
   {
     "name": "Crafton Hills College",
@@ -4216,7 +3605,8 @@
       "25-3099",
       "25-9044",
       "25-9099"
-    ]
+    ],
+    "website": "https://www.craftonhills.edu/"
   },
   {
     "name": "California State University San Bernardino",
@@ -4234,7 +3624,8 @@
       "25-3099",
       "25-9044",
       "25-9099"
-    ]
+    ],
+    "website": "https://www.csusb.edu/"
   },
   {
     "name": "Loma Linda University School of Dentistry",
@@ -4252,25 +3643,8 @@
       "25-3099",
       "29-1292",
       "31-9091"
-    ]
-  },
-  {
-    "name": "Hospital of California Institute for Men",
-    "sector": "Healthcare",
-    "description": "A hospital facility associated with a correctional institution for men, providing medical care.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-1021",
-      "11-9111",
-      "13-1071",
-      "13-2011",
-      "29-1141",
-      "29-2061",
-      "31-1131",
-      "29-2053"
-    ]
+    "website": "https://dentistry.llu.edu/"
   },
   {
     "name": "Optum California",
@@ -4288,61 +3662,8 @@
       "15-1211",
       "29-1141",
       "29-2072"
-    ]
-  },
-  {
-    "name": "Primary Care Association Medical Group",
-    "sector": "Healthcare",
-    "description": "A medical group focused on providing primary healthcare services to patients.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-1021",
-      "11-9111",
-      "13-1071",
-      "13-2011",
-      "29-1141",
-      "29-2061",
-      "31-9092",
-      "29-2072"
-    ]
-  },
-  {
-    "name": "Smiley Medical Spa and Wellness",
-    "sector": "Healthcare",
-    "description": "A medical spa and wellness center offering aesthetic treatments and health services.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9179",
-      "13-1071",
-      "13-2011",
-      "29-1141",
-      "31-9011",
-      "39-5094",
-      "31-9092"
-    ]
-  },
-  {
-    "name": "Hi-Desert Medical Outpatient Rehabilitation",
-    "sector": "Healthcare",
-    "description": "An outpatient facility providing rehabilitation services for medical conditions.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9111",
-      "13-1071",
-      "13-2011",
-      "29-1125",
-      "29-1129",
-      "31-2011",
-      "31-2021"
-    ]
+    "website": "https://www.optum.com/"
   },
   {
     "name": "Beaver Medical Group",
@@ -4360,7 +3681,8 @@
       "29-2061",
       "31-9092",
       "29-2072"
-    ]
+    ],
+    "website": "https://www.beavermedicalgroup.com/"
   },
   {
     "name": "LifeStream",
@@ -4378,7 +3700,8 @@
       "13-2011",
       "29-1141",
       "31-9097"
-    ]
+    ],
+    "website": "https://www.lstream.org/"
   },
   {
     "name": "OneLegacy",
@@ -4396,25 +3719,8 @@
       "13-2011",
       "29-1141",
       "29-9099"
-    ]
-  },
-  {
-    "name": "Public Health Department",
-    "sector": "Healthcare",
-    "description": "A government agency responsible for protecting and improving community health through various programs and services.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-1021",
-      "11-9111",
-      "11-9151",
-      "13-1041",
-      "13-1071",
-      "13-2011",
-      "19-2041",
-      "21-1091"
-    ]
+    "website": "https://www.onelegacy.org/"
   },
   {
     "name": "Arrowhead Regional Medical Center",
@@ -4432,7 +3738,8 @@
       "29-2042",
       "29-2061",
       "31-1131"
-    ]
+    ],
+    "website": "https://arrowheadmedcenter.org/"
   },
   {
     "name": "Barstow Community Hospital",
@@ -4450,7 +3757,8 @@
       "29-2042",
       "29-2061",
       "31-1131"
-    ]
+    ],
+    "website": "https://www.barstowhospital.com/"
   },
   {
     "name": "Canyon Ridge Hospital",
@@ -4468,7 +3776,8 @@
       "29-1141",
       "29-2053",
       "31-1131"
-    ]
+    ],
+    "website": "https://canyonridgehospital.com/"
   },
   {
     "name": "Chino Valley Medical Center",
@@ -4486,7 +3795,8 @@
       "29-2042",
       "29-2061",
       "31-1131"
-    ]
+    ],
+    "website": "https://www.primehealthcare.com/"
   },
   {
     "name": "Desert Valley Hospital",
@@ -4504,7 +3814,8 @@
       "29-2042",
       "29-2061",
       "31-1131"
-    ]
+    ],
+    "website": "https://www.primehealthcare.com/"
   },
   {
     "name": "Dignity Health Community Hospital San Bernardino",
@@ -4522,7 +3833,8 @@
       "29-2042",
       "29-2061",
       "31-1131"
-    ]
+    ],
+    "website": "https://www.dignityhealth.org/"
   },
   {
     "name": "Dignity Health St. Bernardine Medical Center",
@@ -4540,7 +3852,8 @@
       "29-2042",
       "29-2061",
       "31-1131"
-    ]
+    ],
+    "website": "https://www.dignityhealth.org/"
   },
   {
     "name": "Hi-Desert Medical Center",
@@ -4558,7 +3871,8 @@
       "29-2042",
       "29-2061",
       "31-1131"
-    ]
+    ],
+    "website": "https://www.hidesertmedicalcenter.org/"
   },
   {
     "name": "Kindred Hospital Ontario",
@@ -4576,7 +3890,8 @@
       "29-2061",
       "31-1131",
       "29-1126"
-    ]
+    ],
+    "website": "https://www.kindredhealthcare.com/"
   },
   {
     "name": "Kindred Hospital Rancho",
@@ -4594,7 +3909,8 @@
       "29-2061",
       "31-1131",
       "29-1126"
-    ]
+    ],
+    "website": "https://www.kindredhealthcare.com/"
   },
   {
     "name": "Naval Hospital Twentynine Palms",
@@ -4612,7 +3928,8 @@
       "29-2042",
       "29-2061",
       "31-1131"
-    ]
+    ],
+    "website": "https://twentyninepalms.tricare.mil/"
   },
   {
     "name": "Patton State Hospital",
@@ -4630,7 +3947,8 @@
       "29-1141",
       "29-2053",
       "31-1131"
-    ]
+    ],
+    "website": "https://www.dsh.ca.gov/patton/"
   },
   {
     "name": "Redlands Community Hospital",
@@ -4648,7 +3966,8 @@
       "29-2042",
       "29-2061",
       "31-1131"
-    ]
+    ],
+    "website": "https://www.redlandshospital.org/"
   },
   {
     "name": "Totally Kids Rehabilitation Hospital",
@@ -4666,7 +3985,8 @@
       "29-1129",
       "31-2011",
       "31-2021"
-    ]
+    ],
+    "website": "https://www.totallykidsrehab.org/"
   },
   {
     "name": "Victor Valley Global Medical Center",
@@ -4684,25 +4004,8 @@
       "29-2042",
       "29-2061",
       "31-1131"
-    ]
-  },
-  {
-    "name": "Institute for Behavioral Health",
-    "sector": "Healthcare",
-    "description": "A facility dedicated to providing treatment and support for behavioral health conditions.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-1021",
-      "11-9111",
-      "13-1071",
-      "13-2011",
-      "21-1018",
-      "29-1141",
-      "29-2053",
-      "31-1131"
-    ]
+    "website": "https://www.vvgmc.com/"
   },
   {
     "name": "Inland Regional Center",
@@ -4720,7 +4023,8 @@
       "21-1029",
       "21-1099",
       "29-1141"
-    ]
+    ],
+    "website": "https://www.inlandrc.org/"
   },
   {
     "name": "Chuze Fitness",
@@ -4738,7 +4042,8 @@
       "13-2011",
       "29-1128",
       "27-2022"
-    ]
+    ],
+    "website": "https://www.chuzefitness.com/"
   },
   {
     "name": "Bear Mountain",
@@ -4756,7 +4061,8 @@
       "13-2011",
       "27-2022",
       "13-1161"
-    ]
+    ],
+    "website": "https://www.bigbearmountainresort.com/"
   },
   {
     "name": "Mountain High Ski Resort",
@@ -4774,7 +4080,8 @@
       "13-2011",
       "27-2022",
       "13-1161"
-    ]
+    ],
+    "website": "https://www.mthigh.com/"
   },
   {
     "name": "Snow Valley Mountain Resort",
@@ -4792,25 +4099,8 @@
       "13-2011",
       "27-2022",
       "13-1161"
-    ]
-  },
-  {
-    "name": "Robinson's Gourmet To Go",
-    "sector": "Hospitality & Food Service",
-    "description": "A food service business specializing in gourmet take-out meals.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-1021",
-      "11-2021",
-      "11-3012",
-      "13-1028",
-      "13-1071",
-      "13-2011",
-      "13-1161",
-      "29-1031"
-    ]
+    "website": "https://www.snow-valley.com/"
   },
   {
     "name": "Biscomerica Corporation",
@@ -4828,7 +4118,8 @@
       "13-2011",
       "19-1012",
       "13-1161"
-    ]
+    ],
+    "website": "https://www.biscomerica.com/"
   },
   {
     "name": "Dave & Buster's",
@@ -4846,43 +4137,8 @@
       "13-2011",
       "13-1161",
       "11-9179"
-    ]
-  },
-  {
-    "name": "Chino City Clerk",
-    "sector": "Government",
-    "description": "The office responsible for maintaining official city records and facilitating government meetings for the city of Chino.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1041",
-      "13-1071",
-      "13-2011",
-      "13-1199",
-      "15-1244",
-      "23-2099"
-    ]
-  },
-  {
-    "name": "City Hall",
-    "sector": "Government",
-    "description": "The administrative center for a city, handling municipal government operations.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-3012",
-      "13-1041",
-      "13-1071",
-      "13-2011",
-      "15-1211",
-      "15-1244"
-    ]
+    "website": "https://www.daveandbusters.com/"
   },
   {
     "name": "City of Colton",
@@ -4900,61 +4156,8 @@
       "15-1211",
       "17-2051",
       "43-4161"
-    ]
-  },
-  {
-    "name": "Ontario Public Services Agency",
-    "sector": "Government",
-    "description": "The Ontario Public Services Agency is a government agency providing various public services to the community of Ontario.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3121",
-      "13-1071",
-      "13-1151",
-      "13-2011",
-      "15-1211",
-      "21-1099"
-    ]
-  },
-  {
-    "name": "San Bernardino County Information Services",
-    "sector": "Government",
-    "description": "San Bernardino County Information Services provides technology and information support for the county government.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-3021",
-      "15-1211",
-      "15-1212",
-      "15-1241",
-      "15-1244",
-      "15-1252",
-      "15-1254",
-      "15-1299"
-    ]
-  },
-  {
-    "name": "West Valley Detention Center",
-    "sector": "Government",
-    "description": "The West Valley Detention Center is a correctional facility operated by the San Bernardino County Sheriff's Department.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3121",
-      "13-1071",
-      "13-2011",
-      "21-1092",
-      "29-1141",
-      "31-1131"
-    ]
+    "website": "https://www.coltonca.gov/"
   },
   {
     "name": "Fontana Police Department",
@@ -4972,7 +4175,8 @@
       "15-1211",
       "27-3031",
       "43-4161"
-    ]
+    ],
+    "website": "https://www.fontana.org/162/Police-Department"
   },
   {
     "name": "Ontario Police Department",
@@ -4990,7 +4194,8 @@
       "15-1211",
       "27-3031",
       "43-4161"
-    ]
+    ],
+    "website": "https://www.ontarioca.gov/OPD"
   },
   {
     "name": "Redlands Police Department",
@@ -5008,24 +4213,7 @@
       "15-1211",
       "27-3031",
       "43-4161"
-    ]
-  },
-  {
-    "name": "Searles Valley Minerals Fire Department",
-    "sector": "Government",
-    "description": "The Searles Valley Minerals Fire Department provides fire protection and emergency services for Searles Valley Minerals.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3121",
-      "13-1071",
-      "13-2011",
-      "33-1021",
-      "33-2011",
-      "33-2021"
-    ]
+    "website": "https://www.cityofredlands.org/police"
   }
 ]
