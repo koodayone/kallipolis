@@ -94,6 +94,25 @@ export default function Nav() {
           }}
         >
           <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 14, padding: "16px 24px 20px" }}>
+            {pathname !== "/" && (
+              <Link href="/" onClick={handleLogoClick} className="text-sm uppercase tracking-widest text-white hover:text-white/60 transition-colors" style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", display: "inline-flex", alignItems: "center", gap: 8 }}>
+                Home
+                <svg width="20" height="14" viewBox="6 12 44 26" fill="none" style={{ overflow: "hidden", position: "relative", top: -1 }}>
+                  <defs><clipPath id="nav-sun-clip"><rect x="6" y="10" width="44" height="28" /></clipPath></defs>
+                  <g clipPath="url(#nav-sun-clip)">
+                    <path d={`M ${28 - 12} 36 A 12 12 0 0 1 ${28 + 12} 36 Z`} fill="currentColor" />
+                    {[-90, -60, -30, 0, 30, 60, 90].map((angle, i) => {
+                      const rad = (angle - 90) * Math.PI / 180;
+                      const x1 = 28 + Math.cos(rad) * 16;
+                      const y1 = 36 + Math.sin(rad) * 16;
+                      const x2 = 28 + Math.cos(rad) * 22;
+                      const y2 = 36 + Math.sin(rad) * 22;
+                      return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />;
+                    })}
+                  </g>
+                </svg>
+              </Link>
+            )}
             <Link href="/atlas" className="text-sm uppercase tracking-widest text-white hover:text-white/60 transition-colors" style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", display: "inline-flex", alignItems: "center", gap: 8 }}>
               Atlas
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
