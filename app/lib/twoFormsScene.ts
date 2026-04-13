@@ -93,8 +93,8 @@ type FormDef = {
 };
 
 const formDefs: FormDef[] = [
-  { label: "Partnerships",     factory: createChainlinkForm, position: new THREE.Vector3(-3.0, 1.6, 0),  rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
-  { label: "Strong Workforce", factory: createDumbbellForm,  position: new THREE.Vector3(-3.0, -3.4, 0), rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
+  { label: "Partnerships",     factory: createChainlinkForm, position: new THREE.Vector3(-3.0, 1.2, 0),  rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
+  { label: "Strong Workforce", factory: createDumbbellForm,  position: new THREE.Vector3(-3.0, -3.8, 0), rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
 ];
 
 export const FORM_LABELS = formDefs.map((f) => f.label);

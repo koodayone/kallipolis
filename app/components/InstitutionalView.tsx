@@ -100,7 +100,7 @@ export default function InstitutionalView({ dark = false, activeIndex = 0, opaci
         <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 30, justifyContent: "center", alignSelf: "center" }}>
 
           {/* Header */}
-          <div style={{ textAlign: "center" }}>
+          <div style={{ textAlign: "center", marginBottom: 24 }}>
             <p style={{ fontSize: 13, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.15em", color: "rgba(255,255,255,0.45)", marginBottom: 16 }}>
               Intelligent Partnerships
             </p>
