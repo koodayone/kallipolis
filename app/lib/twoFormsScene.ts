@@ -30,6 +30,7 @@ export type TwoFormsResult = {
   cleanup: () => void;
   getProjectedPositions: () => Record<string, { x: number; y: number }>;
   onHoverChange: (cb: (label: string | null) => void) => void;
+  setExternalHover: (label: string | null) => void;
 };
 
 export function buildTwoFormsScene(canvas: HTMLCanvasElement): TwoFormsResult {
@@ -73,6 +74,7 @@ export function buildTwoFormsScene(canvas: HTMLCanvasElement): TwoFormsResult {
   const mouse = new THREE.Vector2(-999, -999);
   const raycaster = new THREE.Raycaster();
   let hoveredIndex: number | null = null;
+  let externalHover: number | null = null;
   let hoverCallback: ((label: string | null) => void) | null = null;
 
   function getAllMeshes(): THREE.Mesh[] {
@@ -117,7 +119,7 @@ export function buildTwoFormsScene(canvas: HTMLCanvasElement): TwoFormsResult {
     raycaster.setFromCamera(mouse, camera);
     const hits = raycaster.intersectObjects(getAllMeshes());
     const hitIndex = hits.length > 0 ? (hits[0].object.userData.formIndex as number) ?? null : null;
-    handleHover(hitIndex);
+    handleHover(externalHover ?? hitIndex);
     canvas.style.cursor = hitIndex !== null ? "pointer" : "default";
 
     for (const e of entries) {
@@ -152,5 +154,9 @@ export function buildTwoFormsScene(canvas: HTMLCanvasElement): TwoFormsResult {
       return positions;
     },
     onHoverChange: (cb: (label: string | null) => void) => { hoverCallback = cb; },
+    setExternalHover: (label: string | null) => {
+      externalHover = label !== null ? formDefs.findIndex((f) => f.label === label) : null;
+      if (externalHover === -1) externalHover = null;
+    },
   };
 }

@@ -46,6 +46,14 @@ export default function TwoFormsDiagram() {
         return (
           <span
             key={label}
+            onMouseEnter={() => {
+              setHoveredLabel(label);
+              sceneRef.current?.setExternalHover(label);
+            }}
+            onMouseLeave={() => {
+              setHoveredLabel(null);
+              sceneRef.current?.setExternalHover(null);
+            }}
             style={{
               position: "absolute",
               left: `${pos.x + 22}%`,
@@ -56,8 +64,9 @@ export default function TwoFormsDiagram() {
               letterSpacing: "0.12em",
               textTransform: "uppercase",
               color: isHovered ? "#d0c8ff" : isDimmed ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.35)",
-              transition: "color 0.2s ease",
-              pointerEvents: "none",
+              textShadow: isHovered ? "0 0 12px rgba(176,160,255,0.5)" : "none",
+              transition: "color 0.2s ease, text-shadow 0.2s ease",
+              cursor: "pointer",
               whiteSpace: "nowrap",
             }}
           >

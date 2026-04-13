@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
+import { useState, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import { FADE_DURATION } from "../lib/collegeRotation";
 
 type Props = {
@@ -68,11 +68,26 @@ function MailIcon({ color }: { color: string }) {
 
 export default function ActionBadge({ label = "Action", neonColor, opacity, icon = "cube", inline = false, href }: Props) {
   const [hovered, setHovered] = useState(false);
+  const router = useRouter();
+
+  const handleClick = useCallback(() => {
+    if (!href) return;
+    // Fade the page out before navigating
+    const main = document.querySelector("main");
+    if (main) {
+      (main as HTMLElement).style.transition = "opacity 0.4s ease";
+      (main as HTMLElement).style.opacity = "0";
+      setTimeout(() => router.push(href), 400);
+    } else {
+      router.push(href);
+    }
+  }, [href, router]);
 
   const badge = (
       <div
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
+        onClick={href ? handleClick : undefined}
         style={{
           display: "inline-flex",
           alignItems: "center",
@@ -108,15 +123,11 @@ export default function ActionBadge({ label = "Action", neonColor, opacity, icon
       </div>
   );
 
-  const wrappedBadge = href
-    ? <Link href={href} style={{ textDecoration: "none" }}>{badge}</Link>
-    : badge;
-
-  if (inline) return wrappedBadge;
+  if (inline) return badge;
 
   return (
     <section style={{ background: "#060d1f", padding: "0 64px 24px", textAlign: "center" }}>
-      {wrappedBadge}
+      {badge}
     </section>
   );
 }
