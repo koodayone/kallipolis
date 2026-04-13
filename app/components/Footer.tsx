@@ -2,7 +2,7 @@ const columns = ["About", "Documentation", "Product"];
 
 export default function Footer() {
   return (
-    <footer className="bg-footer-dark text-gray-400 border-t border-gray-800">
+    <footer className="text-gray-400" style={{ backgroundColor: "#060d1f" }}>
       <div className="max-w-7xl mx-auto px-6 py-10">
         <div className="flex items-start mb-8">
           {/* Brand */}

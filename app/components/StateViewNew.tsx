@@ -38,7 +38,8 @@ export default function StateViewNew({ activeIndex, opacity }: Props) {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "flex-end",
-              cursor: "pointer",
+              cursor: "default",
+              pointerEvents: "none",
             }}
           >
             <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>

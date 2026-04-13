@@ -1,10 +1,14 @@
+"use client";
+
+import { useState } from "react";
 import { FADE_DURATION } from "../lib/collegeRotation";
 
 type Props = {
   label?: string;
   neonColor: string;
   opacity: number;
-  icon?: "cube" | "lightbulb" | "chainlink";
+  icon?: "cube" | "lightbulb" | "chainlink" | "mail" | "play";
+  inline?: boolean;
 };
 
 function CubeIcon({ color }: { color: string }) {
@@ -43,10 +47,30 @@ function ChainlinkIcon({ color }: { color: string }) {
   );
 }
 
-export default function ExploreOntology({ label = "Explore Ontology", neonColor, opacity, icon = "cube" }: Props) {
+function PlayIcon({ color }: { color: string }) {
   return (
-    <section style={{ background: "#060d1f", padding: "0 64px 24px", textAlign: "center" }}>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+      <polygon points="6,3 21,12 6,21" fill={color} opacity="0.85" stroke={color} strokeWidth="1" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function MailIcon({ color }: { color: string }) {
+  return (
+    <svg width="16" height="12" viewBox="0 0 24 18" fill="none">
+      <rect x="1" y="1" width="22" height="16" rx="2" stroke={color} strokeWidth="1.5" fill="none" opacity="0.85" />
+      <path d="M1 1 L12 10 L23 1" stroke={color} strokeWidth="1.5" fill="none" opacity="0.85" />
+    </svg>
+  );
+}
+
+export default function ExploreOntology({ label = "Explore Ontology", neonColor, opacity, icon = "cube", inline = false }: Props) {
+  const [hovered, setHovered] = useState(false);
+
+  const badge = (
       <div
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
         style={{
           display: "inline-flex",
           alignItems: "center",
@@ -54,9 +78,12 @@ export default function ExploreOntology({ label = "Explore Ontology", neonColor,
           padding: "10px 18px",
           border: `1px solid ${neonColor}`,
           borderRadius: 6,
-          cursor: "default",
+          cursor: "pointer",
           opacity,
-          transition: `opacity ${FADE_DURATION}ms ease, border-color ${FADE_DURATION}ms ease`,
+          transform: hovered ? "scale(1.05)" : "scale(1)",
+          background: hovered ? `${neonColor}15` : "transparent",
+          boxShadow: hovered ? `0 0 12px ${neonColor}30` : "none",
+          transition: `opacity ${FADE_DURATION}ms ease, border-color ${FADE_DURATION}ms ease, transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease`,
         }}
       >
         <span
@@ -65,16 +92,25 @@ export default function ExploreOntology({ label = "Explore Ontology", neonColor,
             fontWeight: 600,
             letterSpacing: "0.14em",
             textTransform: "uppercase",
-            color: neonColor,
-            transition: `color ${FADE_DURATION}ms ease`,
+            color: hovered ? "#ffffff" : neonColor,
+            transition: `color 0.2s ease`,
           }}
         >
           {label}
         </span>
-        {icon === "cube" && <CubeIcon color={neonColor} />}
-        {icon === "lightbulb" && <LightbulbIcon color={neonColor} />}
-        {icon === "chainlink" && <ChainlinkIcon color={neonColor} />}
+        {icon === "cube" && <CubeIcon color={hovered ? "#ffffff" : neonColor} />}
+        {icon === "lightbulb" && <LightbulbIcon color={hovered ? "#ffffff" : neonColor} />}
+        {icon === "chainlink" && <ChainlinkIcon color={hovered ? "#ffffff" : neonColor} />}
+        {icon === "mail" && <MailIcon color={hovered ? "#ffffff" : neonColor} />}
+        {icon === "play" && <PlayIcon color={hovered ? "#ffffff" : neonColor} />}
       </div>
+  );
+
+  if (inline) return badge;
+
+  return (
+    <section style={{ background: "#060d1f", padding: "0 64px 24px", textAlign: "center" }}>
+      {badge}
     </section>
   );
 }

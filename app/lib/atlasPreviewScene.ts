@@ -136,6 +136,16 @@ function createChainlinkForm(color: number): THREE.Group {
   ring2.rotation.set(0, Math.PI / 2, 0);
   group.add(ring2);
 
+  // Invisible disc fills for hover/click targets
+  const invisMat = new THREE.MeshBasicMaterial({ opacity: 0, transparent: true, side: THREE.DoubleSide, depthWrite: false, colorWrite: false });
+  const fill1 = new THREE.Mesh(new THREE.CircleGeometry(ringRadius, 24), invisMat);
+  fill1.position.copy(ring1.position);
+  group.add(fill1);
+  const fill2 = new THREE.Mesh(new THREE.CircleGeometry(ringRadius, 24), invisMat);
+  fill2.position.copy(ring2.position);
+  fill2.rotation.copy(ring2.rotation);
+  group.add(fill2);
+
   return group;
 }
 
@@ -173,6 +183,12 @@ function createHardhatForm(color: number): THREE.Group {
     ridge.scale.set(1.1, 1.05, 0.8);
     group.add(ridge);
   }
+
+  // Invisible base disc for hover target
+  const baseMat = new THREE.MeshBasicMaterial({ opacity: 0, transparent: true, side: THREE.DoubleSide, depthWrite: false, colorWrite: false });
+  const baseMesh = new THREE.Mesh(new THREE.CircleGeometry(0.7, 24), baseMat);
+  baseMesh.rotation.x = -Math.PI / 2;
+  group.add(baseMesh);
 
   group.position.y = -0.15;
   return group;

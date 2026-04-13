@@ -3,7 +3,7 @@
 import { useRef, useEffect, useState } from "react";
 import { buildEpistemologyScene, ROW_DATA } from "../lib/epistemologyScene";
 import type { EpistemologyResult } from "../lib/epistemologyScene";
-import { ROTATION_COLLEGES, FADE_DURATION } from "../lib/collegeRotation";
+import { FADE_DURATION } from "../lib/collegeRotation";
 
 type Props = {
   activeIndex?: number;
@@ -17,8 +17,7 @@ export default function EpistemologyGraph({ activeIndex = 0, opacity = 1 }: Prop
     forms: Record<string, { x: number; y: number }>;
     ends: Record<string, { x: number; y: number }>;
   }>({ forms: {}, ends: {} });
-
-  const neonColor = "#c9a84c";
+  const [hoveredLabel, setHoveredLabel] = useState<string | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -26,6 +25,7 @@ export default function EpistemologyGraph({ activeIndex = 0, opacity = 1 }: Prop
 
     const result = buildEpistemologyScene(canvas);
     sceneRef.current = result;
+    result.onHoverChange(setHoveredLabel);
 
     let rafId: number;
     function update() {
@@ -58,6 +58,8 @@ export default function EpistemologyGraph({ activeIndex = 0, opacity = 1 }: Prop
       {ROW_DATA.map((row) => {
         const pos = positions.forms[row.label];
         if (!pos) return null;
+        const isHovered = hoveredLabel === row.label;
+        const isDimmed = hoveredLabel !== null && !isHovered;
         return (
           <span
             key={`form-${row.label}`}
@@ -70,7 +72,8 @@ export default function EpistemologyGraph({ activeIndex = 0, opacity = 1 }: Prop
               fontWeight: 600,
               letterSpacing: "0.1em",
               textTransform: "uppercase",
-              color: "rgba(255,255,255,0.35)",
+              color: isHovered ? "#FFCC33" : isDimmed ? "rgba(255,255,255,0.15)" : "rgba(255,255,255,0.35)",
+              transition: "color 0.2s ease",
               pointerEvents: "none",
               whiteSpace: "nowrap",
             }}
@@ -92,6 +95,8 @@ export default function EpistemologyGraph({ activeIndex = 0, opacity = 1 }: Prop
         };
         const logo = logos[row.authority];
         if (!logo) return null;
+        const isHovered = hoveredLabel === row.label;
+        const isDimmed = hoveredLabel !== null && !isHovered;
         return (
           <div
             key={`auth-${row.label}`}
@@ -101,13 +106,15 @@ export default function EpistemologyGraph({ activeIndex = 0, opacity = 1 }: Prop
               top: `${pos.y}%`,
               transform: "translate(0, -50%)",
               pointerEvents: "none",
+              opacity: isDimmed ? 0.3 : 1,
+              transition: "opacity 0.2s ease",
             }}
           >
             <div
               style={{
                 width: 150,
                 height: 70,
-                backgroundColor: "rgba(255,255,255,0.85)",
+                backgroundColor: isHovered ? "#ffffff" : "rgba(255,255,255,0.85)",
                 WebkitMaskImage: `url(${logo})`,
                 WebkitMaskSize: "contain",
                 WebkitMaskRepeat: "no-repeat",
@@ -116,8 +123,8 @@ export default function EpistemologyGraph({ activeIndex = 0, opacity = 1 }: Prop
                 maskSize: "contain",
                 maskRepeat: "no-repeat",
                 maskPosition: "center",
-                transition: `background-color ${FADE_DURATION}ms ease`,
-                filter: "drop-shadow(0 0 4px rgba(255,255,255,0.15))",
+                transition: `background-color 0.2s ease`,
+                filter: isHovered ? "drop-shadow(0 0 8px rgba(255,255,255,0.3))" : "drop-shadow(0 0 4px rgba(255,255,255,0.15))",
               }}
             />
           </div>

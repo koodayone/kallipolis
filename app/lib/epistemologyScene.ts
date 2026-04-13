@@ -82,6 +82,10 @@ function createHardhatForm(color: number): THREE.Group {
     const r = new THREE.Mesh(new THREE.TorusGeometry(0.75, 0.012, 4, 32, Math.PI), ridgeMat);
     r.rotation.set(0, Math.PI / 2, 0); r.position.x = x; r.scale.set(1.1, 1.05, 0.8); group.add(r);
   }
+  const baseMat = new THREE.MeshBasicMaterial({ opacity: 0, transparent: true, side: THREE.DoubleSide, depthWrite: false, colorWrite: false });
+  const baseMesh = new THREE.Mesh(new THREE.CircleGeometry(0.7, 24), baseMat);
+  baseMesh.rotation.x = -Math.PI / 2;
+  group.add(baseMesh);
   group.position.y = -0.15;
   return group;
 }
@@ -138,6 +142,7 @@ export type EpistemologyResult = {
   cleanup: () => void;
   getProjectedPositions: () => { forms: Record<string, { x: number; y: number }>; ends: Record<string, { x: number; y: number }> };
   setColor: (color: number) => void;
+  onHoverChange: (cb: (label: string | null) => void) => void;
 };
 
 export const ROW_DATA = rows.map((r) => ({ label: r.label, authority: r.authority }));
@@ -156,7 +161,7 @@ export function buildEpistemologyScene(canvas: HTMLCanvasElement): EpistemologyR
   scene.fog = new THREE.FogExp2(BG_COLOR, 0.012);
 
   const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 100);
-  camera.position.set(0, -0.8, 9);
+  camera.position.set(0, -0.4, 9);
 
   scene.add(new THREE.AmbientLight(0xffffff, 0.08));
   const keyLight = new THREE.DirectionalLight(GOLD, 0.5);
@@ -184,7 +189,7 @@ export function buildEpistemologyScene(canvas: HTMLCanvasElement): EpistemologyR
   });
   const junctionGeo = new THREE.SphereGeometry(0.04, 8, 8);
 
-  const formGroups: { group: THREE.Group; rotSpeed: THREE.Vector3 }[] = [];
+  const formGroups: { group: THREE.Group; rotSpeed: THREE.Vector3; hoverLight: THREE.PointLight; targetScale: number; currentScale: number; targetEdgeOpacity: number; currentEdgeOpacity: number }[] = [];
   const connectorMeshes: THREE.Mesh[] = [];
   const glowMeshes: THREE.Mesh[] = [];
   const formPositions: THREE.Vector3[] = [];
@@ -201,7 +206,11 @@ export function buildEpistemologyScene(canvas: HTMLCanvasElement): EpistemologyR
     group.position.copy(formPos);
     group.scale.setScalar(FORM_SCALE);
     scene.add(group);
-    formGroups.push({ group, rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) });
+    group.traverse((child) => { if (child instanceof THREE.Mesh) child.userData.formIndex = formGroups.length; });
+    const hoverLight = new THREE.PointLight(GOLD, 0, 4);
+    hoverLight.position.copy(formPos);
+    scene.add(hoverLight);
+    formGroups.push({ group, rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001), hoverLight, targetScale: FORM_SCALE, currentScale: FORM_SCALE, targetEdgeOpacity: 0.7, currentEdgeOpacity: 0.7 });
 
     const startX = row.formX + 0.9;
     const endX = row.endX - 0.3;
@@ -241,6 +250,39 @@ export function buildEpistemologyScene(canvas: HTMLCanvasElement): EpistemologyR
     scene.add(glow2);
   }
 
+  // Hover raycasting
+  const mouse = new THREE.Vector2(-999, -999);
+  const raycaster = new THREE.Raycaster();
+  let hoveredIndex: number | null = null;
+  let hoverCallback: ((label: string | null) => void) | null = null;
+
+  function getAllMeshes(): THREE.Mesh[] {
+    const meshes: THREE.Mesh[] = [];
+    for (const fg of formGroups) fg.group.traverse((c) => { if (c instanceof THREE.Mesh) meshes.push(c); });
+    return meshes;
+  }
+
+  function handleHover(index: number | null) {
+    if (hoveredIndex === index) return;
+    hoveredIndex = index;
+    hoverCallback?.(index !== null ? rows[index].label : null);
+    formGroups.forEach((fg, i) => {
+      const isHovered = index !== null && i === index;
+      fg.targetEdgeOpacity = isHovered ? 1.0 : index !== null ? 0.35 : 0.7;
+      fg.hoverLight.intensity = isHovered ? 0.8 : 0;
+      fg.targetScale = isHovered ? FORM_SCALE * 1.12 : FORM_SCALE;
+    });
+  }
+
+  function onMouseMove(ev: MouseEvent) {
+    const r = canvas.getBoundingClientRect();
+    mouse.x = ((ev.clientX - r.left) / r.width) * 2 - 1;
+    mouse.y = -((ev.clientY - r.top) / r.height) * 2 + 1;
+  }
+  function onMouseLeave() { mouse.set(-999, -999); handleHover(null); }
+  canvas.addEventListener("mousemove", onMouseMove);
+  canvas.addEventListener("mouseleave", onMouseLeave);
+
   // Resize
   const resizeObserver = new ResizeObserver((obs) => {
     const e = obs[0]; const w = e.contentRect.width; const h = e.contentRect.height;
@@ -252,14 +294,33 @@ export function buildEpistemologyScene(canvas: HTMLCanvasElement): EpistemologyR
   // Animation
   let rafId = 0;
   const startTime = performance.now();
+  const LERP = 0.08;
   function tick() {
     rafId = requestAnimationFrame(tick);
     const elapsed = (performance.now() - startTime) / 1000;
+
+    // Hover raycasting
+    raycaster.setFromCamera(mouse, camera);
+    const hits = raycaster.intersectObjects(getAllMeshes());
+    const hitIndex = hits.length > 0 ? (hits[0].object.userData.formIndex as number) ?? null : null;
+    handleHover(hitIndex);
+    canvas.style.cursor = hitIndex !== null ? "pointer" : "default";
 
     for (const fg of formGroups) {
       fg.group.rotation.x += fg.rotSpeed.x;
       fg.group.rotation.y += fg.rotSpeed.y;
       fg.group.rotation.z += fg.rotSpeed.z;
+
+      // Scale lerp
+      fg.currentScale += (fg.targetScale - fg.currentScale) * LERP;
+      fg.group.scale.setScalar(fg.currentScale);
+
+      // Edge opacity lerp
+      fg.currentEdgeOpacity += (fg.targetEdgeOpacity - fg.currentEdgeOpacity) * LERP;
+      fg.group.traverse((child) => {
+        if (child instanceof THREE.LineSegments)
+          (child.material as THREE.LineBasicMaterial).opacity = fg.currentEdgeOpacity;
+      });
     }
 
     // Gentle shimmer on glow halos — each row offset for a wave effect
@@ -279,6 +340,8 @@ export function buildEpistemologyScene(canvas: HTMLCanvasElement): EpistemologyR
   return {
     cleanup: () => {
       cancelAnimationFrame(rafId);
+      canvas.removeEventListener("mousemove", onMouseMove);
+      canvas.removeEventListener("mouseleave", onMouseLeave);
       resizeObserver.disconnect();
       renderer.dispose();
     },
@@ -309,5 +372,6 @@ export function buildEpistemologyScene(canvas: HTMLCanvasElement): EpistemologyR
         });
       }
     },
+    onHoverChange: (cb: (label: string | null) => void) => { hoverCallback = cb; },
   };
 }

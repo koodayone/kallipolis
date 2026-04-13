@@ -101,6 +101,10 @@ function createHardhatForm(color: number): THREE.Group {
     r.scale.set(1.1, 1.05, 0.8);
     group.add(r);
   }
+  const baseMat = new THREE.MeshBasicMaterial({ opacity: 0, transparent: true, side: THREE.DoubleSide, depthWrite: false, colorWrite: false });
+  const baseMesh = new THREE.Mesh(new THREE.CircleGeometry(0.7, 24), baseMat);
+  baseMesh.rotation.x = -Math.PI / 2;
+  group.add(baseMesh);
   group.position.y = -0.15;
   return group;
 }

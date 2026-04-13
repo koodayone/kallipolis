@@ -46,6 +46,15 @@ function createChainlinkForm(color: number): THREE.Group {
   ring2.rotation.set(0, Math.PI / 2, 0);
   group.add(ring2);
 
+  const invisMat = new THREE.MeshBasicMaterial({ opacity: 0, transparent: true, side: THREE.DoubleSide, depthWrite: false, colorWrite: false });
+  const fill1 = new THREE.Mesh(new THREE.CircleGeometry(ringRadius, 24), invisMat);
+  fill1.position.copy(ring1.position);
+  group.add(fill1);
+  const fill2 = new THREE.Mesh(new THREE.CircleGeometry(ringRadius, 24), invisMat);
+  fill2.position.copy(ring2.position);
+  fill2.rotation.copy(ring2.rotation);
+  group.add(fill2);
+
   return group;
 }
 
