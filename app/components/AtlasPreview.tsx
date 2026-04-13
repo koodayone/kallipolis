@@ -108,7 +108,7 @@ function AtlasScene({ activeIndex, opacity }: Props) {
                 fontWeight: 600,
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                color: isHovered ? "#FFCC33" : isDimmed ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.35)",
+                color: isHovered ? college.neonHex : isDimmed ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.35)",
                 transition: "color 0.2s ease",
                 pointerEvents: "none",
                 whiteSpace: "nowrap",
