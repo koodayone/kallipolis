@@ -11,7 +11,7 @@ type Props = {
   opacity: number;
 };
 
-export default function StateViewNew({ activeIndex, opacity }: Props) {
+export default function StateAtlas({ activeIndex, opacity }: Props) {
   const college = ROTATION_COLLEGES[activeIndex];
   const neonColor = NEON_COLORS[college.id] ?? college.neonHex;
 

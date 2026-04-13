@@ -64,7 +64,7 @@ function MailIcon({ color }: { color: string }) {
   );
 }
 
-export default function ExploreOntology({ label = "Explore Ontology", neonColor, opacity, icon = "cube", inline = false }: Props) {
+export default function ActionBadge({ label = "Action", neonColor, opacity, icon = "cube", inline = false }: Props) {
   const [hovered, setHovered] = useState(false);
 
   const badge = (

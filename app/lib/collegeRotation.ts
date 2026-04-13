@@ -1,6 +1,6 @@
 /**
  * Shared college rotation order for the landing page.
- * Both AtlasPreview and StateViewNew cycle through this list in sync.
+ * Both AtlasPreview and StateAtlas cycle through this list in sync.
  */
 
 export const ROTATION_COLLEGES = [

@@ -10,107 +10,12 @@
  */
 
 import * as THREE from "three";
-
-// ── Helpers ───────────────────────────────────────────────────────────────────
-
-function createFormMaterial(color: number): THREE.MeshPhongMaterial {
-  return new THREE.MeshPhongMaterial({
-    color, emissive: color, emissiveIntensity: 0.45,
-    transparent: false, side: THREE.FrontSide, depthWrite: true,
-  });
-}
-
-function addWithEdges(
-  group: THREE.Group, geometry: THREE.BufferGeometry, material: THREE.Material,
-  position?: THREE.Vector3, rotation?: THREE.Euler
-): void {
-  const mesh = new THREE.Mesh(geometry, material);
-  if (position) mesh.position.copy(position);
-  if (rotation) mesh.rotation.copy(rotation);
-  group.add(mesh);
-  const edgesGeo = new THREE.EdgesGeometry(geometry, 12);
-  const edgeMat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.7 });
-  const edges = new THREE.LineSegments(edgesGeo, edgeMat);
-  if (position) edges.position.copy(position);
-  if (rotation) edges.rotation.copy(rotation);
-  group.add(edges);
-}
-
-// ── Form factories ────────────────────────────────────────────────────────────
-
-function createMortarboardForm(color: number): THREE.Group {
-  const group = new THREE.Group();
-  const mat = createFormMaterial(color);
-  addWithEdges(group, new THREE.BoxGeometry(1.53, 0.077, 1.53), mat, new THREE.Vector3(0, 0.281, 0));
-  addWithEdges(group, new THREE.CylinderGeometry(0.523, 0.612, 0.255, 6), mat, new THREE.Vector3(0, 0.102, 0));
-  addWithEdges(group, new THREE.SphereGeometry(0.089, 8, 6), mat, new THREE.Vector3(0, 0.37, 0));
-  addWithEdges(group, new THREE.CylinderGeometry(0.026, 0.026, 0.765, 4), mat, new THREE.Vector3(0.765 / 2, 0.344, 0), new THREE.Euler(0, 0, Math.PI / 2));
-  addWithEdges(group, new THREE.CylinderGeometry(0.026, 0.026, 0.638, 4), mat, new THREE.Vector3(0.765, 0.344 - 0.638 / 2, 0));
-  addWithEdges(group, new THREE.SphereGeometry(0.089, 6, 4), mat, new THREE.Vector3(0.765, 0.344 - 0.638, 0));
-  group.position.y = -0.128;
-  return group;
-}
-
-function createBookForm(color: number): THREE.Group {
-  const group = new THREE.Group();
-  const mat = createFormMaterial(color);
-  const cw = 1.05, ch = 1.35, ct = 0.06, oa = 0.25;
-  addWithEdges(group, new THREE.BoxGeometry(cw, ch, ct), mat,
-    new THREE.Vector3(-cw / 2 * Math.cos(oa), 0, -cw / 2 * Math.sin(oa)), new THREE.Euler(0, oa, 0));
-  addWithEdges(group, new THREE.BoxGeometry(cw, ch, ct), mat,
-    new THREE.Vector3(cw / 2 * Math.cos(oa), 0, -cw / 2 * Math.sin(oa)), new THREE.Euler(0, -oa, 0));
-  const pw = cw * 0.88, ph = ch * 0.92, pd = 0.225;
-  addWithEdges(group, new THREE.BoxGeometry(0.03, ch, pd), mat, new THREE.Vector3(0, 0, -cw * Math.sin(oa) * 0.65));
-  addWithEdges(group, new THREE.BoxGeometry(pw, ph, pd), mat,
-    new THREE.Vector3(-pw / 2 * Math.cos(oa), 0, -pw / 2 * Math.sin(oa)), new THREE.Euler(0, oa, 0));
-  addWithEdges(group, new THREE.BoxGeometry(pw, ph, pd), mat,
-    new THREE.Vector3(pw / 2 * Math.cos(oa), 0, -pw / 2 * Math.sin(oa)), new THREE.Euler(0, -oa, 0));
-  return group;
-}
-
-function createHardhatForm(color: number): THREE.Group {
-  const group = new THREE.Group();
-  const mat = createFormMaterial(color);
-  const dome = new THREE.Mesh(new THREE.SphereGeometry(0.75, 32, 20, 0, Math.PI * 2, 0, Math.PI / 2), mat);
-  dome.scale.set(0.9, 1.1, 1.15); group.add(dome);
-  const brim = new THREE.Mesh(new THREE.TorusGeometry(0.80, 0.10, 12, 48), mat);
-  brim.rotation.x = Math.PI / 2; brim.scale.set(0.9, 1.15, 1.0); group.add(brim);
-  const ridgeMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 1.0 });
-  const cr = new THREE.Mesh(new THREE.TorusGeometry(0.75, 0.012, 4, 32, Math.PI), ridgeMat);
-  cr.rotation.set(0, Math.PI / 2, 0); cr.scale.set(1.15, 1.1, 0.9); group.add(cr);
-  for (const x of [-0.22, 0.22]) {
-    const r = new THREE.Mesh(new THREE.TorusGeometry(0.75, 0.012, 4, 32, Math.PI), ridgeMat);
-    r.rotation.set(0, Math.PI / 2, 0); r.position.x = x; r.scale.set(1.1, 1.05, 0.8); group.add(r);
-  }
-  const baseMat = new THREE.MeshBasicMaterial({ opacity: 0, transparent: true, side: THREE.DoubleSide, depthWrite: false, colorWrite: false });
-  const baseMesh = new THREE.Mesh(new THREE.CircleGeometry(0.7, 24), baseMat);
-  baseMesh.rotation.x = -Math.PI / 2;
-  group.add(baseMesh);
-  group.position.y = -0.15;
-  return group;
-}
-
-function createSkyscraperForm(color: number): THREE.Group {
-  const group = new THREE.Group();
-  const mat = createFormMaterial(color); mat.side = THREE.DoubleSide;
-  const bW = 0.3, tW = 0.2, bY = -1, mY = 0, tY = 1, mS = 0.85;
-  const v = [
-    -bW,bY,-bW, bW,bY,-bW, bW,bY,bW, -bW,bY,bW,
-    -bW*mS,mY,-bW*mS, 0,mY,-tW*Math.SQRT2*1.1, bW*mS,mY,-bW*mS, tW*Math.SQRT2*1.1,mY,0,
-    bW*mS,mY,bW*mS, 0,mY,tW*Math.SQRT2*1.1, -bW*mS,mY,bW*mS, -tW*Math.SQRT2*1.1,mY,0,
-    0,tY,-tW*Math.SQRT2, tW*Math.SQRT2,tY,0, 0,tY,tW*Math.SQRT2, -tW*Math.SQRT2,tY,0,
-  ];
-  const f = [0,2,1,0,3,2,0,5,4,0,1,5,1,6,5,1,7,6,1,2,7,2,8,7,2,9,8,2,3,9,3,10,9,3,11,10,3,0,11,0,4,11,
-    4,5,12,5,6,12,6,13,12,6,7,13,7,8,13,8,14,13,8,9,14,9,10,14,10,15,14,10,11,15,11,4,15,4,12,15,12,13,14,12,14,15];
-  const geo = new THREE.BufferGeometry();
-  geo.setAttribute("position", new THREE.Float32BufferAttribute(v, 3));
-  geo.setIndex(f); geo.computeVertexNormals();
-  group.add(new THREE.Mesh(geo, mat));
-  group.add(new THREE.LineSegments(new THREE.EdgesGeometry(geo, 5), new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.7 })));
-  const spire = new THREE.Mesh(new THREE.CylinderGeometry(0.005, 0.025, 0.35, 6), mat);
-  spire.position.y = tY + 0.175; group.add(spire);
-  return group;
-}
+import {
+  createMortarboardForm,
+  createBookForm,
+  createHardhatForm,
+  createSkyscraperForm,
+} from "./formFactories";
 
 // ── Scene config ──────────────────────────────────────────────────────────────
 

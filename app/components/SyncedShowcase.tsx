@@ -3,9 +3,9 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { ROTATION_COLLEGES, CYCLE_INTERVAL, FADE_DURATION } from "../lib/collegeRotation";
 import AtlasPreview from "./AtlasPreview";
-import ExploreOntology from "./ExploreOntology";
-import StateViewNew from "./StateViewNew";
-import InstitutionalView from "./InstitutionalView";
+import ActionBadge from "./ActionBadge";
+import StateAtlas from "./StateAtlas";
+import EpistemologySection from "./EpistemologySection";
 
 export default function SyncedShowcase() {
   const [collegeIndex, setCollegeIndex] = useState(0);
@@ -46,9 +46,9 @@ export default function SyncedShowcase() {
   return (
     <>
       <AtlasPreview activeIndex={displayIndex} opacity={opacity} />
-      <StateViewNew activeIndex={displayIndex} opacity={opacity} />
-      <ExploreOntology label="Explore Atlas" neonColor={ROTATION_COLLEGES[displayIndex].neonHex} opacity={opacity} />
-      <InstitutionalView dark />
+      <StateAtlas activeIndex={displayIndex} opacity={opacity} />
+      <ActionBadge label="Explore Atlas" neonColor={ROTATION_COLLEGES[displayIndex].neonHex} opacity={opacity} />
+      <EpistemologySection />
     </>
   );
 }
