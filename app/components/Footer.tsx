@@ -1,4 +1,4 @@
-const columns = ["About", "Documentation", "Product"];
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -23,14 +23,20 @@ export default function Footer() {
 
           {/* Link columns */}
           <div className="flex flex-1 justify-evenly" style={{ paddingTop: 5 }}>
-            {columns.map((col) => (
-              <div key={col} className="flex flex-col gap-2">
-                <h4 className="text-sm font-medium uppercase tracking-widest text-gray-400">
-                  {col}
-                </h4>
-                <p className="text-xs uppercase tracking-widest text-gray-600">Coming Soon</p>
-              </div>
-            ))}
+            <div className="flex flex-col gap-2">
+              <h4 className="text-sm font-medium uppercase tracking-widest text-gray-400">About</h4>
+              <p className="text-xs uppercase tracking-widest text-gray-600">Coming Soon</p>
+            </div>
+            <div className="flex flex-col gap-2">
+              <h4 className="text-sm font-medium uppercase tracking-widest text-gray-400">Documentation</h4>
+              <Link href="/atlas" className="text-xs uppercase tracking-widest text-gray-500 hover:text-white transition-colors" style={{ textDecoration: "none" }}>Atlas</Link>
+              <Link href="/sources" className="text-xs uppercase tracking-widest text-gray-500 hover:text-white transition-colors" style={{ textDecoration: "none" }}>Sources</Link>
+              <Link href="/partnerships" className="text-xs uppercase tracking-widest text-gray-500 hover:text-white transition-colors" style={{ textDecoration: "none" }}>Partnerships</Link>
+            </div>
+            <div className="flex flex-col gap-2">
+              <h4 className="text-sm font-medium uppercase tracking-widest text-gray-400">Product</h4>
+              <p className="text-xs uppercase tracking-widest text-gray-600">Coming Soon</p>
+            </div>
           </div>
         </div>
 

@@ -108,9 +108,10 @@ for (const c of [...FEATURED, ...BACKGROUND]) {
 
 type Props = {
   activeCollegeId?: string | null;
+  brightenAll?: boolean;
 };
 
-export default function StateMap({ activeCollegeId = null }: Props) {
+export default function StateMap({ activeCollegeId = null, brightenAll = false }: Props) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   return (
@@ -147,7 +148,7 @@ export default function StateMap({ activeCollegeId = null }: Props) {
           const brandColor = NEON_COLORS[college.id];
           return (
             <Marker key={college.id} coordinates={[college.lng, college.lat]}>
-              <g style={{ opacity: 0.3 }}>
+              <g style={{ opacity: brightenAll ? 0.85 : 0.3, transition: "opacity 0.6s ease" }}>
                 <rect
                   x={-DIAMOND / 2}
                   y={-DIAMOND / 2}
@@ -164,7 +165,7 @@ export default function StateMap({ activeCollegeId = null }: Props) {
         {/* Featured college markers */}
         {FEATURED.map((college) => {
           const isActive = hoveredId === college.id || activeCollegeId === college.id;
-          const isDimmed = (hoveredId !== null || activeCollegeId !== null) && !isActive;
+          const isDimmed = !brightenAll && (hoveredId !== null || activeCollegeId !== null) && !isActive;
           const brandColor = NEON_COLORS[college.id];
           const size = isActive ? DIAMOND * 1.4 : DIAMOND;
 

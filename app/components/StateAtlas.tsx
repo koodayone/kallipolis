@@ -86,7 +86,7 @@ export default function StateAtlas({ activeIndex, opacity }: Props) {
             <p className="text-sm font-medium uppercase tracking-[0.15em] text-white/40" style={{ marginBottom: 16 }}>
               The State Atlas
             </p>
-            <div style={{ width: 64, height: 2, background: "#FFCC33", borderRadius: 1, opacity: 0.9, margin: "0 auto 24px" }} />
+            <div style={{ width: 64, height: 2, background: neonColor, borderRadius: 1, opacity, transition: `opacity ${FADE_DURATION}ms ease`, margin: "0 auto 24px" }} />
             <h2 className="text-[24px] md:text-[30px] leading-[1.12] tracking-[-0.02em] text-white" style={{ fontFamily: "var(--font-days-one)", fontWeight: 400 }}>
               116 schools. 73 districts. One intelligent network.
             </h2>
@@ -95,7 +95,7 @@ export default function StateAtlas({ activeIndex, opacity }: Props) {
           {/* Data points */}
           <div style={{ display: "flex", flexDirection: "column", gap: 30 }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
-              <p style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "#FFCC33", opacity: 0.85, margin: 0 }}>
+              <p style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: neonColor, opacity: opacity * 0.85, transition: `opacity ${FADE_DURATION}ms ease`, margin: 0 }}>
                 Unified Perspective
               </p>
               <p style={{ fontSize: 18, fontWeight: 500, lineHeight: 1.6, color: "rgba(255,255,255,0.85)", margin: 0 }}>
@@ -103,7 +103,7 @@ export default function StateAtlas({ activeIndex, opacity }: Props) {
               </p>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
-              <p style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "#FFCC33", opacity: 0.85, margin: 0 }}>
+              <p style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: neonColor, opacity: opacity * 0.85, transition: `opacity ${FADE_DURATION}ms ease`, margin: 0 }}>
                 Statewide Collaboration
               </p>
               <p style={{ fontSize: 18, fontWeight: 500, lineHeight: 1.6, color: "rgba(255,255,255,0.85)", margin: 0 }}>
@@ -111,11 +111,11 @@ export default function StateAtlas({ activeIndex, opacity }: Props) {
               </p>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
-              <p style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "#FFCC33", opacity: 0.85, margin: 0 }}>
+              <p style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: neonColor, opacity: opacity * 0.85, transition: `opacity ${FADE_DURATION}ms ease`, margin: 0 }}>
                 Regional Insights
               </p>
               <p style={{ fontSize: 18, fontWeight: 500, lineHeight: 1.6, color: "rgba(255,255,255,0.85)", margin: 0 }}>
-                Drive tailored partnership strategies based on regional economic supply &amp; demand signals.
+                Drive tailored partnership strategies based on regional supply &amp; demand signals.
               </p>
             </div>
           </div>

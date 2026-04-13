@@ -47,7 +47,7 @@ export default function SyncedShowcase() {
     <>
       <AtlasPreview activeIndex={displayIndex} opacity={opacity} />
       <StateAtlas activeIndex={displayIndex} opacity={opacity} />
-      <ActionBadge label="Explore Atlas" neonColor={ROTATION_COLLEGES[displayIndex].neonHex} opacity={opacity} />
+      <ActionBadge label="Explore Atlas" neonColor={ROTATION_COLLEGES[displayIndex].neonHex} opacity={opacity} href="/atlas" />
       <EpistemologySection />
     </>
   );

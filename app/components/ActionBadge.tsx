@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { FADE_DURATION } from "../lib/collegeRotation";
 
 type Props = {
@@ -9,6 +10,7 @@ type Props = {
   opacity: number;
   icon?: "cube" | "lightbulb" | "chainlink" | "mail" | "play";
   inline?: boolean;
+  href?: string;
 };
 
 function CubeIcon({ color }: { color: string }) {
@@ -64,7 +66,7 @@ function MailIcon({ color }: { color: string }) {
   );
 }
 
-export default function ActionBadge({ label = "Action", neonColor, opacity, icon = "cube", inline = false }: Props) {
+export default function ActionBadge({ label = "Action", neonColor, opacity, icon = "cube", inline = false, href }: Props) {
   const [hovered, setHovered] = useState(false);
 
   const badge = (
@@ -106,11 +108,15 @@ export default function ActionBadge({ label = "Action", neonColor, opacity, icon
       </div>
   );
 
-  if (inline) return badge;
+  const wrappedBadge = href
+    ? <Link href={href} style={{ textDecoration: "none" }}>{badge}</Link>
+    : badge;
+
+  if (inline) return wrappedBadge;
 
   return (
     <section style={{ background: "#060d1f", padding: "0 64px 24px", textAlign: "center" }}>
-      {badge}
+      {wrappedBadge}
     </section>
   );
 }

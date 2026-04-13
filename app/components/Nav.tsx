@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
@@ -26,7 +27,7 @@ export default function Nav() {
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
 
         {/* Logo + wordmark */}
-        <div className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3" style={{ textDecoration: "none" }}>
           <img
             src="/kallipolis-logo.png"
             alt="Kallipolis logo"
@@ -39,7 +40,7 @@ export default function Nav() {
           >
             Kallipolis
           </span>
-        </div>
+        </Link>
 
         {/* Right controls */}
         <div className="flex items-center gap-4">
@@ -84,8 +85,10 @@ export default function Nav() {
           borderTop: open ? "1px solid rgba(255,255,255,0.1)" : "none",
         }}
       >
-        <div className="max-w-7xl mx-auto px-6 py-8 flex items-center justify-center">
-          <p className="text-xs uppercase tracking-widest text-white/40">Coming Soon</p>
+        <div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-center gap-8">
+          <Link href="/atlas" className="text-xs uppercase tracking-widest text-white/40 hover:text-white transition-colors" style={{ textDecoration: "none" }}>Atlas</Link>
+          <Link href="/sources" className="text-xs uppercase tracking-widest text-white/40 hover:text-white transition-colors" style={{ textDecoration: "none" }}>Sources</Link>
+          <Link href="/partnerships" className="text-xs uppercase tracking-widest text-white/40 hover:text-white transition-colors" style={{ textDecoration: "none" }}>Partnerships</Link>
         </div>
       </div>
     </nav>

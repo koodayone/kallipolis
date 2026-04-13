@@ -17,3 +17,22 @@ html, body {
   --color-redwood-green: #2D5016;
   --color-promise-granite: #D1D5DB;
 }
+
+@keyframes blink { 50% { opacity: 0; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@keyframes sun-glow {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(201, 168, 76, 0.3)); }
+  50%       { filter: drop-shadow(0 0 14px rgba(201, 168, 76, 0.75)); }
+}
+
+@keyframes ray-shimmer {
+  0%, 100% { opacity: 0.45; }
+  50%       { opacity: 1.0; }
+}
+
+.sun-ray {
+  stroke-width: 2;
+  stroke-linecap: round;
+  animation: ray-shimmer 2.2s ease-in-out infinite;
+}
