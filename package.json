@@ -16,6 +16,12 @@
     "react-simple-maps": "^3.0.0",
     "three": "^0.183.2"
   },
+  "overrides": {
+    "react-simple-maps": {
+      "react": "19.2.3",
+      "react-dom": "19.2.3"
+    }
+  },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
