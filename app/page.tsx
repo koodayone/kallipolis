@@ -2,7 +2,6 @@ import Nav from "./components/Nav";
 import Vision from "./components/Vision";
 import SyncedShowcase from "./components/SyncedShowcase";
 import ExploreOntology from "./components/ExploreOntology";
-import InstitutionalView from "./components/InstitutionalView";
 import Promise from "./components/Promise";
 import Footer from "./components/Footer";
 
@@ -13,7 +12,6 @@ export default function Home() {
       <Vision />
       <SyncedShowcase />
       <ExploreOntology label="Explore Sources" neonColor="#c9a84c" opacity={1} icon="lightbulb" />
-      <InstitutionalView />
       <Promise />
       <Footer />
     </main>

@@ -37,8 +37,7 @@ function LightbulbIcon({ color }: { color: string }) {
 export default function ExploreOntology({ label = "Explore Ontology", neonColor, opacity, icon = "cube" }: Props) {
   return (
     <section style={{ background: "#060d1f", padding: "0 64px 24px", textAlign: "center" }}>
-      <a
-        href="/docs"
+      <div
         style={{
           display: "inline-flex",
           alignItems: "center",
@@ -46,8 +45,7 @@ export default function ExploreOntology({ label = "Explore Ontology", neonColor,
           padding: "10px 18px",
           border: `1px solid ${neonColor}`,
           borderRadius: 6,
-          cursor: "pointer",
-          textDecoration: "none",
+          cursor: "default",
           opacity,
           transition: `opacity ${FADE_DURATION}ms ease, border-color ${FADE_DURATION}ms ease`,
         }}
@@ -65,7 +63,7 @@ export default function ExploreOntology({ label = "Explore Ontology", neonColor,
           {label}
         </span>
         {icon === "cube" ? <CubeIcon color={neonColor} /> : <LightbulbIcon color={neonColor} />}
-      </a>
+      </div>
     </section>
   );
 }
