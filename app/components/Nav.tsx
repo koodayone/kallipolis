@@ -61,14 +61,6 @@ export default function Nav() {
 
         {/* Right controls */}
         <div className="flex items-center gap-4">
-          {/* Search icon */}
-          <button onClick={() => setOpen((o) => !o)} aria-label="Search" className="text-white hover:text-white transition-colors">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-          </button>
-
           {/* Hamburger */}
           <button
           onClick={() => setOpen((o) => !o)}
@@ -92,20 +84,47 @@ export default function Nav() {
 
       </div>
 
-      {/* Slide-down curtain */}
-      <div
-        style={{
-          maxHeight: open ? 120 : 0,
-          overflow: "hidden",
-          transition: "max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
-          backgroundColor: scrolled ? "#060d1f" : "transparent",
-          borderTop: open ? "1px solid rgba(255,255,255,0.1)" : "none",
-        }}
-      >
-        <div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-center gap-8">
-          <Link href="/atlas" className="text-xs uppercase tracking-widest text-white/40 hover:text-white transition-colors" style={{ textDecoration: "none" }}>Atlas</Link>
-          <Link href="/sources" className="text-xs uppercase tracking-widest text-white/40 hover:text-white transition-colors" style={{ textDecoration: "none" }}>Sources</Link>
-          <Link href="/partnerships" className="text-xs uppercase tracking-widest text-white/40 hover:text-white transition-colors" style={{ textDecoration: "none" }}>Partnerships</Link>
+      {/* Slide-down menu — right-aligned, compact */}
+      <div style={{ position: "absolute", right: 0, top: 64, background: scrolled ? "#060d1f" : "transparent", borderRadius: "0 0 0 8px", zIndex: 50, transition: "background 0.3s ease" }}>
+        <div
+          style={{
+            maxHeight: open ? 160 : 0,
+            overflow: "hidden",
+            transition: "max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
+          }}
+        >
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 14, padding: "16px 24px 20px" }}>
+            <Link href="/atlas" className="text-sm uppercase tracking-widest text-white hover:text-white/60 transition-colors" style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", display: "inline-flex", alignItems: "center", gap: 8 }}>
+              Atlas
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2L3 7.5 12 13l9-5.5L12 2z" fill="currentColor" opacity="0.85" />
+                <path d="M12 13v9l9-5.5v-9L12 13z" fill="currentColor" opacity="0.55" />
+                <path d="M12 13v9L3 16.5v-9L12 13z" fill="currentColor" opacity="0.4" />
+                <path d="M12 2L3 7.5v9L12 22l9-5.5v-9L12 2z M12 13L3 7.5 M12 13l9-5.5 M12 13v9" stroke="currentColor" strokeWidth="0.7" opacity="0.55" />
+              </svg>
+            </Link>
+            <Link href="/sources" className="text-sm uppercase tracking-widest text-white hover:text-white/60 transition-colors" style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", display: "inline-flex", alignItems: "center", gap: 8 }}>
+              Sources
+              <svg width="14" height="14" viewBox="2 2 20 20" fill="none">
+                <path d="M12 2 L13 10 L12 9 L11 10 Z" fill="currentColor" />
+                <path d="M12 22 L13 14 L12 15 L11 14 Z" fill="currentColor" />
+                <path d="M2 12 L10 11 L9 12 L10 13 Z" fill="currentColor" />
+                <path d="M22 12 L14 11 L15 12 L14 13 Z" fill="currentColor" />
+                <circle cx="12" cy="12" r="2" fill="currentColor" />
+                <line x1="5" y1="5" x2="9" y2="9" stroke="currentColor" strokeWidth="1" opacity="0.8" />
+                <line x1="19" y1="5" x2="15" y2="9" stroke="currentColor" strokeWidth="1" opacity="0.8" />
+                <line x1="5" y1="19" x2="9" y2="15" stroke="currentColor" strokeWidth="1" opacity="0.8" />
+                <line x1="19" y1="19" x2="15" y2="15" stroke="currentColor" strokeWidth="1" opacity="0.8" />
+              </svg>
+            </Link>
+            <Link href="/partnerships" className="text-sm uppercase tracking-widest text-white hover:text-white/60 transition-colors" style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", display: "inline-flex", alignItems: "center", gap: 8 }}>
+              Partnerships
+              <svg width="12" height="12" viewBox="3 4 18 16" fill="none">
+                <circle cx="9.5" cy="14" r="5.5" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.85" />
+                <circle cx="14.5" cy="10" r="5.5" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.85" />
+              </svg>
+            </Link>
+          </div>
         </div>
       </div>
     </nav>
