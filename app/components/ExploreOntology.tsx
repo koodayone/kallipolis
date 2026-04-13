@@ -36,12 +36,9 @@ function LightbulbIcon({ color }: { color: string }) {
 
 function ChainlinkIcon({ color }: { color: string }) {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-      {/* Two interlocked rings */}
-      <ellipse cx="10" cy="12" rx="6" ry="4" stroke={color} strokeWidth="2" fill="none" opacity="0.85" />
-      <ellipse cx="14" cy="12" rx="6" ry="4" stroke={color} strokeWidth="2" fill="none" opacity="0.85" />
-      {/* Center overlap fill */}
-      <ellipse cx="12" cy="12" rx="2" ry="3.5" fill={color} opacity="0.3" />
+    <svg width="12" height="12" viewBox="3 4 18 16" fill="none">
+      <circle cx="9.5" cy="14" r="5.5" stroke={color} strokeWidth="2" fill="none" opacity="0.85" />
+      <circle cx="14.5" cy="10" r="5.5" stroke={color} strokeWidth="2" fill="none" opacity="0.85" />
     </svg>
   );
 }
