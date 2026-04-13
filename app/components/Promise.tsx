@@ -15,8 +15,8 @@ export default function Promise() {
         </p>
         <div style={{ width: 64, height: 2, background: "#FFCC33", borderRadius: 1, opacity: 0.9, margin: "0 auto 24px" }} />
         <h2
-          className="text-[36px] md:text-[48px] font-bold leading-[1.12] tracking-[-0.02em] text-pure-text"
-          style={{ textShadow: "none" }}
+          className="text-[32px] md:text-[40px] leading-[1.12] tracking-[-0.02em] text-pure-text"
+          style={{ fontFamily: "var(--font-days-one)", fontWeight: 400, textShadow: "none" }}
         >
           Activating human potential, with California leading the way.
         </h2>

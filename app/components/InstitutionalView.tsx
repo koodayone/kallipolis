@@ -105,7 +105,7 @@ export default function InstitutionalView({ dark = false, activeIndex = 0, opaci
               Intelligent Partnerships
             </p>
             <div style={{ width: 64, height: 2, background: "#b0a0ff", borderRadius: 1, opacity: 0.9, margin: "0 auto 24px" }} />
-            <h2 className="text-[22px] md:text-[26px] leading-[1.2] tracking-[-0.02em] text-white" style={{ fontFamily: "var(--font-days-one)", fontWeight: 400 }}>
+            <h2 className="text-[22px] md:text-[28px] leading-[1.15] tracking-[-0.02em] text-white" style={{ fontFamily: "var(--font-days-one)", fontWeight: 400 }}>
               Data-driven partnerships compliant with Strong Workforce.
             </h2>
           </div>
