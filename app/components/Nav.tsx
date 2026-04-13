@@ -1,11 +1,28 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const handleLogoClick = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    if (pathname === "/") return;
+    const content = document.querySelector("[data-fade-target]") as HTMLElement
+      ?? document.querySelector("main") as HTMLElement;
+    if (content) {
+      content.style.transition = "opacity 0.4s ease";
+      content.style.opacity = "0";
+      setTimeout(() => router.push("/"), 400);
+    } else {
+      router.push("/");
+    }
+  }, [pathname, router]);
 
   useEffect(() => {
     function onScroll() {
@@ -27,7 +44,7 @@ export default function Nav() {
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
 
         {/* Logo + wordmark */}
-        <Link href="/" className="flex items-center gap-3" style={{ textDecoration: "none" }}>
+        <Link href="/" onClick={handleLogoClick} className="flex items-center gap-3" style={{ textDecoration: "none" }}>
           <img
             src="/kallipolis-logo.png"
             alt="Kallipolis logo"

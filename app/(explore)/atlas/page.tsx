@@ -49,7 +49,7 @@ const FORMS = [
   // Bottom row
   { factory: createBookForm,        label: "Courses",          source: "College Curriculum Catalogs",     description: "The institution's curricular commitment. The courses that are taught, and the skills they teach." },
   { factory: createDumbbellForm,    label: "Strong Workforce", source: "Derived from partnerships",      description: "Partnership proposals translated into NOVA-compatible Strong Workforce Program applications." },
-  { factory: createHardhatForm,     label: "Occupations",      source: "Centers of Excellence",          description: "Regional labor demand signals grounded in workforce-oriented research." },
+  { factory: createHardhatForm,     label: "Occupations",      source: "Centers of Excellence",          description: "Regional labor demand signals of CTE occupations grounded in workforce-oriented research." },
 ];
 
 // ── Page ─────────────────────────────────────────────────────────────────────

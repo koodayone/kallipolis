@@ -16,5 +16,5 @@ export default function PageFadeIn({ children }: { children: React.ReactNode }) 
     });
   }, []);
 
-  return <div ref={ref}>{children}</div>;
+  return <div ref={ref} data-fade-target>{children}</div>;
 }
