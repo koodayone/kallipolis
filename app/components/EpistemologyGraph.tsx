@@ -112,8 +112,8 @@ export default function EpistemologyGraph({ activeIndex = 0, opacity = 1 }: Prop
           >
             <div
               style={{
-                width: 200,
-                height: 90,
+                width: 140,
+                height: 55,
                 backgroundColor: isHovered ? "#ffffff" : "rgba(255,255,255,0.85)",
                 WebkitMaskImage: `url(${logo})`,
                 WebkitMaskSize: "contain",
