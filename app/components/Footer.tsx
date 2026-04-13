@@ -45,6 +45,10 @@ export default function Footer() {
                   <path d="M2 12 L10 11 L9 12 L10 13 Z" fill="currentColor" />
                   <path d="M22 12 L14 11 L15 12 L14 13 Z" fill="currentColor" />
                   <circle cx="12" cy="12" r="2" fill="currentColor" />
+                  <line x1="5" y1="5" x2="9" y2="9" stroke="currentColor" strokeWidth="1" opacity="0.8" />
+                  <line x1="19" y1="5" x2="15" y2="9" stroke="currentColor" strokeWidth="1" opacity="0.8" />
+                  <line x1="5" y1="19" x2="9" y2="15" stroke="currentColor" strokeWidth="1" opacity="0.8" />
+                  <line x1="19" y1="19" x2="15" y2="15" stroke="currentColor" strokeWidth="1" opacity="0.8" />
                 </svg>
               </Link>
               <Link href="/partnerships" className="uppercase tracking-widest text-gray-500 hover:text-white transition-colors" style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", fontSize: 10, display: "inline-flex", alignItems: "center", gap: 6 }}>

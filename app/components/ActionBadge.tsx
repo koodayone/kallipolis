@@ -11,6 +11,7 @@ type Props = {
   icon?: "cube" | "lightbulb" | "chainlink" | "mail" | "play";
   inline?: boolean;
   href?: string;
+  invertHover?: boolean;
 };
 
 function CubeIcon({ color }: { color: string }) {
@@ -66,7 +67,7 @@ function MailIcon({ color }: { color: string }) {
   );
 }
 
-export default function ActionBadge({ label = "Action", neonColor, opacity, icon = "cube", inline = false, href }: Props) {
+export default function ActionBadge({ label = "Action", neonColor, opacity, icon = "cube", inline = false, href, invertHover = false }: Props) {
   const [hovered, setHovered] = useState(false);
   const router = useRouter();
 
@@ -93,7 +94,7 @@ export default function ActionBadge({ label = "Action", neonColor, opacity, icon
           alignItems: "center",
           gap: 10,
           padding: "10px 18px",
-          border: `1px solid ${neonColor}`,
+          border: `1px solid ${invertHover ? "rgba(255,255,255,0.5)" : neonColor}`,
           borderRadius: 6,
           cursor: "pointer",
           opacity,
@@ -109,17 +110,28 @@ export default function ActionBadge({ label = "Action", neonColor, opacity, icon
             fontWeight: 600,
             letterSpacing: "0.14em",
             textTransform: "uppercase",
-            color: hovered ? "#ffffff" : neonColor,
+            color: invertHover
+              ? (hovered ? neonColor : "#ffffff")
+              : (hovered ? "#ffffff" : neonColor),
             transition: `color 0.2s ease`,
           }}
         >
           {label}
         </span>
-        {icon === "cube" && <CubeIcon color={hovered ? "#ffffff" : neonColor} />}
-        {icon === "lightbulb" && <LightbulbIcon color={hovered ? "#ffffff" : neonColor} />}
-        {icon === "chainlink" && <ChainlinkIcon color={hovered ? "#ffffff" : neonColor} />}
-        {icon === "mail" && <MailIcon color={hovered ? "#ffffff" : neonColor} />}
-        {icon === "play" && <PlayIcon color={hovered ? "#ffffff" : neonColor} />}
+        {(() => {
+          const iconColor = invertHover
+            ? (hovered ? neonColor : "#ffffff")
+            : (hovered ? "#ffffff" : neonColor);
+          return (
+            <>
+              {icon === "cube" && <CubeIcon color={iconColor} />}
+              {icon === "lightbulb" && <LightbulbIcon color={iconColor} />}
+              {icon === "chainlink" && <ChainlinkIcon color={iconColor} />}
+              {icon === "mail" && <MailIcon color={iconColor} />}
+              {icon === "play" && <PlayIcon color={iconColor} />}
+            </>
+          );
+        })()}
       </div>
   );
 
