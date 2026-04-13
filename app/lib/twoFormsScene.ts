@@ -21,7 +21,7 @@ type FormDef = {
 
 const formDefs: FormDef[] = [
   { label: "Partnerships",     factory: createChainlinkForm, position: new THREE.Vector3(-3.0, 1.2, 0),  rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
-  { label: "Strong Workforce", factory: createDumbbellForm,  position: new THREE.Vector3(-3.0, -3.8, 0), rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
+  { label: "Strong Workforce", factory: createDumbbellForm,  position: new THREE.Vector3(-3.0, -3.2, 0), rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
 ];
 
 export const FORM_LABELS = formDefs.map((f) => f.label);
@@ -47,7 +47,7 @@ export function buildTwoFormsScene(canvas: HTMLCanvasElement): TwoFormsResult {
   scene.fog = new THREE.FogExp2(BG_COLOR, 0.015);
 
   const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 100);
-  camera.position.set(0, -0.15, 12);
+  camera.position.set(0, -1.8, 12);
 
   scene.add(new THREE.AmbientLight(0xffffff, 0.08));
   const keyLight = new THREE.DirectionalLight(SOLID_COLOR, 0.5);

@@ -1,4 +1,5 @@
 import EpistemologyGraph from "./EpistemologyGraph";
+import ActionBadge from "./ActionBadge";
 
 export default function EpistemologySection({ activeIndex = 0, opacity = 1 }: { activeIndex?: number; opacity?: number }) {
   return (
@@ -66,10 +67,14 @@ export default function EpistemologySection({ activeIndex = 0, opacity = 1 }: { 
             ))}
           </div>
 
+          <div style={{ marginTop: 8, textAlign: "center" }}>
+            <ActionBadge label="Explore Sources" neonColor="#c9a84c" opacity={1} icon="lightbulb" inline href="/sources" />
+          </div>
+
         </div>
 
         {/* Right column — Four forms diagram */}
-        <div style={{ flex: 1, minHeight: 500 }}>
+        <div style={{ flex: 1, minHeight: 360 }}>
           <EpistemologyGraph activeIndex={activeIndex} opacity={opacity} />
         </div>
       </div>

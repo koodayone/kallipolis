@@ -138,7 +138,7 @@ export default function ActionBadge({ label = "Action", neonColor, opacity, icon
   if (inline) return badge;
 
   return (
-    <section style={{ background: "#060d1f", padding: "0 64px 24px", textAlign: "center" }}>
+    <section style={{ background: "#060d1f", padding: "16px 64px 16px", textAlign: "center" }}>
       {badge}
     </section>
   );

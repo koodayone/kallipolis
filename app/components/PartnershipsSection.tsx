@@ -1,4 +1,5 @@
 import TwoFormsDiagram from "./TwoFormsDiagram";
+import ActionBadge from "./ActionBadge";
 
 const points = [
   { label: "Generative Proposals", text: "Draft intelligent partnership proposals justified by Strong Workforce Program standards." },
@@ -8,13 +9,18 @@ const points = [
 
 export default function PartnershipsSection() {
   return (
-    <section style={{ backgroundColor: "#060d1f", paddingTop: 64, paddingLeft: 64, paddingRight: 64, paddingBottom: 0 }}>
+    <section style={{ backgroundColor: "#060d1f", paddingTop: 40, paddingLeft: 64, paddingRight: 64, paddingBottom: 0 }}>
 
       <div style={{ display: "flex", gap: 48, alignItems: "stretch", paddingBottom: 64 }}>
 
-        {/* Left column — Three.js diagram */}
-        <div style={{ flex: "0 0 45%", minHeight: 300, borderRadius: 10, overflow: "hidden" }}>
-          <TwoFormsDiagram />
+        {/* Left column — Three.js diagram + badge */}
+        <div style={{ flex: "0 0 45%", display: "flex", flexDirection: "column", gap: 8 }}>
+          <div style={{ minHeight: 280, borderRadius: 10, overflow: "hidden" }}>
+            <TwoFormsDiagram />
+          </div>
+          <div style={{ textAlign: "center", marginTop: -40 }}>
+            <ActionBadge label="Explore Partnerships" neonColor="#b0a0ff" opacity={1} icon="chainlink" inline href="/partnerships" />
+          </div>
         </div>
 
         {/* Right column — header + points */}
