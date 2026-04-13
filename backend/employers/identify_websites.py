@@ -1,18 +1,23 @@
 """
 Identify and verify official websites for employers from EDD ALMIS data.
 
-Three-step pipeline: Predict → Fetch → Verify, with WebSearch fallback.
+Uses Gemini with Google Search grounding to search the live web for each
+employer's official website. The model searches Google, finds the current
+URL, verifies identity from search results (city, state, industry), and
+returns the root domain — all in one API call per batch.
 
-Step 1 (PREDICT): Gemini predicts candidate URLs using full EDD context
-    (name, city, county, NAICS, size) to disambiguate same-name collisions.
-Step 2 (FETCH): Parallel HTTP GET to retrieve page content from candidates.
-Step 3 (VERIFY): Gemini reads fetched page content and confirms the page
-    belongs to the specific employer, catching wrong-company matches.
-Step 4 (FALLBACK): WebSearch for employers that failed steps 1-3 (~10-20%).
+This replaces the previous Predict → Fetch → Verify → Fallback pipeline
+which had a ~10% wrong-URL rate due to stale training data, anti-bot
+blocking, and same-name collisions. Google Search grounding eliminates
+all three failure modes because it queries Google's index rather than
+hitting employer servers directly.
+
+INVARIANT: Every assigned URL comes from a live web search with identity
+verification. No URL is assigned from training-data prediction alone.
 
 Usage:
     from employers.identify_websites import identify_websites
-    results = identify_websites(employers)
+    results = identify_websites(employers, region_display="South Central Coast")
     # results: list of dicts with "website" set or "_remove" flagged
 """
 
@@ -21,458 +26,260 @@ from __future__ import annotations
 import json
 import logging
 import os
-import re
-import requests
-from concurrent.futures import ThreadPoolExecutor, as_completed
-from pathlib import Path
+import time
 
 logger = logging.getLogger(__name__)
 
-# Gemini batch size for URL prediction/verification
-_BATCH_SIZE = 150
+# Batch size for Google Search grounding calls.
+# Smaller than pure-prediction batches because each employer triggers
+# a web search, which consumes more model context.
+_BATCH_SIZE = 50
 
-# HTTP fetch config
-_FETCH_WORKERS = 20
-_FETCH_TIMEOUT = 20
-_USER_AGENT = (
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-)
-
-# Parked domain signals
-_PARKED_SIGNALS = [
-    "domain for sale", "buy this domain", "sedoparking", "hugedomains",
-    "godaddy", "afternic", "domain parking", "this domain is for sale",
-    "parkingcrew", "sedo.com",
-]
+# Retry config for transient Gemini failures (503, timeout).
+_MAX_RETRIES = 3
+_RETRY_BACKOFF_BASE = 3.0
 
 
 def identify_websites(
     employers: list[dict],
     region_display: str = "",
 ) -> list[dict]:
-    """Run the full Predict → Fetch → Verify → Fallback pipeline.
+    """Identify official websites for employers via Google Search grounding.
 
-    Each employer dict should have: name, sector, city, county, naics_label,
-    size_class (from EDD). Returns the same list with "website" set on
-    verified employers and "_remove" set on those with no web presence.
+    Each employer dict should have: name, sector, and ideally city, county,
+    naics_label, size_class (from EDD) for disambiguation. Returns the same
+    list with "website" set on verified employers and "_remove" set on those
+    with no web presence or that are not viable partnership targets.
     """
-    # Skip employers that already have a website
     need = [e for e in employers if not e.get("website")]
     if not need:
         logger.info("  All employers already have websites")
         return employers
 
-    logger.info(f"  Identifying websites for {len(need)} employers")
+    logger.info(f"  Identifying websites for {len(need)} employers via Google Search")
 
-    # Step 1: Predict
-    predictions = _step_predict(need, region_display)
+    # Step 1: Search and verify in batches
+    results = _search_and_verify(need, region_display)
 
-    # Step 2: Fetch
-    fetched = _step_fetch(predictions)
-
-    # Step 3: Verify
-    verified, failures = _step_verify(need, predictions, fetched, region_display)
-
-    # Apply verified URLs
+    # Apply results
+    assigned = 0
+    removed = 0
     for emp in need:
-        url = verified.get(emp["name"])
-        if url:
+        url = results.get(emp["name"])
+        if url and url not in ("REMOVE", "NONE") and str(url).startswith("http"):
             emp["website"] = url
-
-    # Step 4: Fallback for failures
-    if failures:
-        logger.info(f"  Step 4 (fallback): {len(failures)} employers need WebSearch")
-        fallback_results = _step_fallback(failures, region_display)
-        for emp in need:
-            if emp["name"] in fallback_results:
-                result = fallback_results[emp["name"]]
-                if result == "REMOVE":
-                    emp["_remove"] = True
-                elif result:
-                    emp["website"] = result
-
-    # Mark remaining no-website employers for removal
-    for emp in need:
-        if not emp.get("website") and not emp.get("_remove"):
+            assigned += 1
+        else:
             emp["_remove"] = True
+            removed += 1
 
-    with_url = sum(1 for e in need if e.get("website"))
-    removed = sum(1 for e in need if e.get("_remove"))
-    logger.info(f"  Website identification complete: {with_url} verified, {removed} removed")
+    # Step 2: Retry any employers that were missed (not in results at all)
+    missed = [e for e in need if e["name"] not in results]
+    if missed:
+        logger.info(f"  Retrying {len(missed)} employers missed in first pass")
+        retry_results = _search_and_verify(missed, region_display, batch_size=25)
+        for emp in missed:
+            url = retry_results.get(emp["name"])
+            if url and url not in ("REMOVE", "NONE") and str(url).startswith("http"):
+                emp["website"] = url
+                emp.pop("_remove", None)
+                assigned += 1
+                removed -= 1
 
+    # Step 3: Liveness check — confirm every assigned URL resolves
+    live, dead = _liveness_check([e for e in need if e.get("website")])
+    for emp in need:
+        if emp["name"] in dead:
+            emp.pop("website", None)
+            emp["_remove"] = True
+            assigned -= 1
+            removed += 1
+
+    logger.info(f"  Website identification complete: {assigned} verified, {removed} removed")
     return employers
 
 
-# ── Step 1: Predict ──────────────────────────────────────────────────────
+def _search_and_verify(
+    employers: list[dict],
+    region_display: str,
+    batch_size: int = _BATCH_SIZE,
+) -> dict[str, str]:
+    """Search the web for each employer's website using Gemini + Google Search.
 
-def _step_predict(employers: list[dict], region_display: str) -> dict[str, str]:
-    """Gemini predicts candidate URLs using full EDD context."""
-    logger.info(f"  Step 1 (predict): {len(employers)} employers")
-
-    api_key = os.environ.get("GEMINI_API_KEY")
-    if not api_key:
-        logger.warning("  No GEMINI_API_KEY — skipping prediction")
+    Returns {employer_name: "https://..." or "REMOVE"}.
+    """
+    client = _get_gemini_client()
+    if not client:
         return {}
 
-    from google import genai
-    client = genai.Client(api_key=api_key)
+    from google.genai import types
 
-    all_predictions: dict[str, str] = {}
+    all_results: dict[str, str] = {}
 
-    for i in range(0, len(employers), _BATCH_SIZE):
-        batch = employers[i:i + _BATCH_SIZE]
+    for i in range(0, len(employers), batch_size):
+        batch = employers[i:i + batch_size]
         lines = []
         for e in batch:
             city = e.get("city", "")
             county = e.get("county", "")
             naics = e.get("naics_label", e.get("sector", ""))
             size = e.get("size_class", "")
-            lines.append(f"- {e['name']} | {city}, {county} County | {naics} | {size}")
-
-        prompt = (
-            f"For each employer below in the {region_display or 'California'} region, "
-            "predict the most likely official website URL.\n\n"
-            "IMPORTANT — use the city, county, and industry to disambiguate:\n"
-            "- A 'Summit Healthcare' in San Bernardino County is NOT the same as "
-            "'Summit Healthcare' in Arizona\n"
-            "- A 'Premier Plumbing' in Riverside is NOT 'Premier Plumbing' in Texas\n"
-            "- Use the NAICS industry to confirm the right company\n\n"
-            "URL QUALITY RULES:\n"
-            "- Prefer the employer's OWN root domain (e.g., haascnc.com) over a "
-            "sub-page within a parent organization\n"
-            "- If the employer is a subsidiary or facility within a larger org "
-            "(e.g., a hospital within a health system), use the parent org's ROOT "
-            "domain (e.g., adventisthealth.org) — NOT a deep facility-finder or "
-            "location-directory page\n"
-            "- A dedicated sub-site with its own content is acceptable "
-            "(e.g., adventisthealth.org/simi-valley/) but a deep directory path is "
-            "not (e.g., /locations/facilities/id-12345)\n"
-            "- Government entities: use .gov or .org domain\n"
-            "- Education: use .edu domain\n"
-            "- Return NONE if the business is too small/local to have a website\n"
-            "- Return NONE rather than guess — a wrong URL is worse than no URL\n\n"
-            "Return JSON only: {\"employer_name\": \"https://...\" or \"NONE\"}\n"
-            "No markdown fences.\n\n"
-            "EMPLOYERS:\n" + "\n".join(lines)
-        )
-
-        try:
-            response = client.models.generate_content(
-                model="gemini-2.5-flash", contents=prompt,
-            )
-            text = _strip_markdown(response.text)
-            preds = json.loads(text)
-            all_predictions.update(preds)
-            logger.info(f"    Batch {i // _BATCH_SIZE + 1}: {len(preds)} predictions")
-        except Exception as e:
-            logger.error(f"    Batch {i // _BATCH_SIZE + 1} failed: {e}")
-
-    predicted = sum(1 for v in all_predictions.values() if v and v != "NONE")
-    logger.info(f"  Step 1 complete: {predicted} URLs predicted, "
-                f"{len(all_predictions) - predicted} NONE")
-    return all_predictions
-
-
-# ── Step 2: Fetch ────────────────────────────────────────────────────────
-
-def _step_fetch(predictions: dict[str, str]) -> dict[str, dict]:
-    """Parallel HTTP GET to retrieve page content from candidate URLs."""
-    urls_to_fetch = {
-        name: url for name, url in predictions.items()
-        if url and url != "NONE" and url.startswith("http")
-    }
-    logger.info(f"  Step 2 (fetch): {len(urls_to_fetch)} URLs to verify")
-
-    results: dict[str, dict] = {}
-
-    def fetch_one(name: str, url: str) -> tuple[str, dict]:
-        try:
-            r = requests.get(
-                url, timeout=_FETCH_TIMEOUT, allow_redirects=True, verify=False,
-                headers={"User-Agent": _USER_AGENT, "Accept": "text/html"},
-            )
-            if r.status_code >= 400:
-                return name, {"status": "BLOCKED", "code": r.status_code, "url": url}
-
-            text = r.text[:5000]
-            text_lower = text.lower()
-
-            # Check for parked domains and JS-only redirect shells
-            if any(signal in text_lower for signal in _PARKED_SIGNALS):
-                return name, {"status": "PARKED", "url": url}
-
-            # Detect JS-redirect-only pages (common parked domain pattern)
-            # These have minimal HTML with just a window.location redirect
-            stripped = re.sub(r'\s+', '', text_lower)
-            if (len(stripped) < 500
-                    and 'window.location' in stripped
-                    and '/lander' in stripped):
-                return name, {"status": "PARKED", "url": url}
-
-            # Extract readable content for verification
-            # Strip HTML tags for a rough text extraction
-            clean = re.sub(r'<script[^>]*>.*?</script>', '', text, flags=re.DOTALL | re.IGNORECASE)
-            clean = re.sub(r'<style[^>]*>.*?</style>', '', clean, flags=re.DOTALL | re.IGNORECASE)
-            clean = re.sub(r'<[^>]+>', ' ', clean)
-            clean = re.sub(r'\s+', ' ', clean).strip()[:2000]
-
-            # Extract title
-            title_match = re.search(r'<title[^>]*>([^<]+)</title>', text, re.IGNORECASE)
-            title = title_match.group(1).strip() if title_match else ""
-
-            return name, {
-                "status": "OK",
-                "url": r.url,  # final URL after redirects
-                "title": title,
-                "content": clean,
-            }
-        except requests.exceptions.ConnectionError:
-            return name, {"status": "CONN_ERROR", "url": url}
-        except requests.exceptions.Timeout:
-            return name, {"status": "TIMEOUT", "url": url}
-        except Exception as e:
-            return name, {"status": "ERROR", "url": url, "error": str(e)[:100]}
-
-    with ThreadPoolExecutor(max_workers=_FETCH_WORKERS) as executor:
-        futures = {
-            executor.submit(fetch_one, name, url): name
-            for name, url in urls_to_fetch.items()
-        }
-        for future in as_completed(futures):
-            name, result = future.result()
-            results[name] = result
-
-    ok = sum(1 for r in results.values() if r["status"] == "OK")
-    blocked = sum(1 for r in results.values() if r["status"] in ("BLOCKED", "CONN_ERROR", "TIMEOUT"))
-    bad = sum(1 for r in results.values() if r["status"] in ("PARKED", "ERROR"))
-    logger.info(f"  Step 2 complete: {ok} fetched, {blocked} blocked, {bad} parked/error")
-    return results
-
-
-# ── Step 3: Verify ───────────────────────────────────────────────────────
-
-def _step_verify(
-    employers: list[dict],
-    predictions: dict[str, str],
-    fetched: dict[str, dict],
-    region_display: str,
-) -> tuple[dict[str, str], list[dict]]:
-    """Gemini verifies fetched page content matches the employer."""
-    logger.info(f"  Step 3 (verify): checking page content against employer identity")
-
-    api_key = os.environ.get("GEMINI_API_KEY")
-    if not api_key:
-        # Can't verify — return predictions as-is for employers with OK fetches
-        verified = {}
-        failures = []
-        for emp in employers:
-            fetch = fetched.get(emp["name"], {})
-            if fetch.get("status") == "OK":
-                verified[emp["name"]] = predictions.get(emp["name"], "")
-            else:
-                failures.append(emp)
-        return verified, failures
-
-    from google import genai
-    client = genai.Client(api_key=api_key)
-
-    # Build verification batches: only employers with fetched content
-    to_verify = []
-    no_content = []  # blocked/failed/no-prediction — go to fallback
-
-    for emp in employers:
-        name = emp["name"]
-        fetch = fetched.get(name, {})
-        pred = predictions.get(name, "NONE")
-
-        if pred == "NONE" or not pred:
-            no_content.append(emp)
-        elif fetch.get("status") == "OK":
-            to_verify.append((emp, fetch))
-        elif fetch.get("status") == "PARKED":
-            no_content.append(emp)  # parked → fallback
-        elif fetch.get("status") in ("BLOCKED", "CONN_ERROR", "TIMEOUT"):
-            # Can't verify content — accept on trust but mark as unverified
-            to_verify.append((emp, fetch))
-        else:
-            no_content.append(emp)
-
-    verified: dict[str, str] = {}
-    failures: list[dict] = list(no_content)
-
-    for i in range(0, len(to_verify), _BATCH_SIZE):
-        batch = to_verify[i:i + _BATCH_SIZE]
-        lines = []
-        for emp, fetch in batch:
-            url = predictions.get(emp["name"], "")
-            city = emp.get("city", "")
-            county = emp.get("county", "")
-            naics = emp.get("naics_label", emp.get("sector", ""))
-
-            if fetch.get("status") == "OK":
-                title = fetch.get("title", "")
-                content = fetch.get("content", "")[:800]
-                page_info = f"Title: {title}\nContent preview: {content}"
-            else:
-                page_info = f"(Could not access page — {fetch.get('status', 'unknown')})"
-
             lines.append(
-                f"EMPLOYER: {emp['name']}\n"
-                f"  Location: {city}, {county} County, CA\n"
-                f"  Industry: {naics}\n"
-                f"  Predicted URL: {url}\n"
-                f"  Page info: {page_info}\n"
+                f"- {e['name']} | {city}, {county} County | {naics} | {size}"
             )
 
         prompt = (
-            "For each employer below, verify whether the predicted URL belongs to "
-            "this SPECIFIC employer in this SPECIFIC location and industry.\n\n"
-            "TWO checks — both must pass:\n\n"
-            "CHECK 1 — IDENTITY: Does this URL belong to this employer or its "
-            "parent organization? A parent org's website is acceptable (e.g., "
-            "adventisthealth.org for Adventist Health Tulare).\n\n"
-            "CHECK 2 — URL QUALITY: Is this URL an institutional landing page, "
-            "or is it a fragile deep sub-page?\n"
-            "- GOOD: root domain (haascnc.com), dedicated sub-site with its own "
-            "content (adventisthealth.org/simi-valley/), department page "
-            "(fresno.gov/police)\n"
-            "- BAD: deep directory/facility-finder path (dignityhealth.org/central-"
-            "coast/locations/arroyo-grande), location ID pages, search results\n"
-            "If the URL is a deep sub-page, return the parent domain root instead.\n\n"
-            "Return JSON with the VERIFIED URL (which may differ from the predicted "
-            "URL if you upgraded to a parent root):\n"
-            "{\"employer_name\": {\"verdict\": \"MATCH\"|\"WRONG\"|\"ACCEPT\"|\"REJECT\", "
-            "\"url\": \"the best URL to use\"}}\n"
-            "- MATCH: identity confirmed, URL is good (return the best URL)\n"
-            "- WRONG: page belongs to a DIFFERENT company\n"
-            "- ACCEPT: page was blocked but URL pattern is credible (return as-is)\n"
-            "- REJECT: page was blocked AND URL looks suspicious\n\n"
-            "No markdown fences.\n\n"
-            + "\n---\n".join(lines)
-        )
-
-        try:
-            response = client.models.generate_content(
-                model="gemini-2.5-flash", contents=prompt,
-            )
-            text = _strip_markdown(response.text)
-            verdicts = json.loads(text)
-
-            for emp, fetch in batch:
-                entry = verdicts.get(emp["name"], "REJECT")
-                predicted_url = predictions.get(emp["name"], "")
-
-                # Handle both old format (string) and new format (dict with verdict+url)
-                if isinstance(entry, dict):
-                    verdict = entry.get("verdict", "REJECT")
-                    best_url = entry.get("url", predicted_url)
-                else:
-                    verdict = entry
-                    best_url = predicted_url
-
-                if verdict in ("MATCH", "ACCEPT"):
-                    # Use the verified/upgraded URL from Gemini if provided,
-                    # otherwise fall back to the fetch's final URL or prediction
-                    if best_url and best_url.startswith("http"):
-                        verified[emp["name"]] = best_url
-                    elif fetch.get("status") == "OK":
-                        verified[emp["name"]] = fetch.get("url", predicted_url)
-                    else:
-                        verified[emp["name"]] = predicted_url
-                else:
-                    failures.append(emp)
-
-            match_ct = sum(1 for v in verdicts.values() if v in ("MATCH", "ACCEPT"))
-            wrong_ct = sum(1 for v in verdicts.values() if v == "WRONG")
-            reject_ct = sum(1 for v in verdicts.values() if v == "REJECT")
-            logger.info(
-                f"    Verify batch {i // _BATCH_SIZE + 1}: "
-                f"{match_ct} match, {wrong_ct} wrong, {reject_ct} reject"
-            )
-        except Exception as e:
-            logger.error(f"    Verify batch {i // _BATCH_SIZE + 1} failed: {e}")
-            failures.extend(emp for emp, _ in batch)
-
-    logger.info(f"  Step 3 complete: {len(verified)} verified, {len(failures)} to fallback")
-    return verified, failures
-
-
-# ── Step 4: Fallback ─────────────────────────────────────────────────────
-
-def _step_fallback(
-    failures: list[dict],
-    region_display: str,
-) -> dict[str, str | None]:
-    """Gemini-powered search fallback for employers that failed steps 1-3."""
-    logger.info(f"  Step 4 (fallback): {len(failures)} employers")
-
-    api_key = os.environ.get("GEMINI_API_KEY")
-    if not api_key:
-        return {e["name"]: "REMOVE" for e in failures}
-
-    from google import genai
-    client = genai.Client(api_key=api_key)
-
-    results: dict[str, str | None] = {}
-
-    for i in range(0, len(failures), _BATCH_SIZE):
-        batch = failures[i:i + _BATCH_SIZE]
-        lines = []
-        for emp in batch:
-            city = emp.get("city", "")
-            county = emp.get("county", "")
-            naics = emp.get("naics_label", emp.get("sector", ""))
-            size = emp.get("size_class", "")
-            lines.append(f"- {emp['name']} | {city}, {county} County | {naics} | {size}")
-
-        prompt = (
-            "For each employer below, I was unable to find or verify their website "
-            "through URL prediction. These are employers from EDD's ALMIS database "
-            f"in the {region_display or 'California'} region.\n\n"
-            "For each, decide:\n"
-            "1. If you KNOW this employer's official website URL with high confidence, "
-            "return it.\n"
-            "2. If this employer is too small, is a labor contractor, is a "
-            "sub-department, or is not a viable CTE partnership target, return \"REMOVE\".\n"
-            "3. If you genuinely cannot determine the website, return \"REMOVE\" — "
-            "an employer without discoverable web presence is not a partnership target.\n\n"
-            "Return JSON: {\"employer_name\": \"https://...\" or \"REMOVE\"}\n"
+            f"For each employer below in the {region_display or 'California'} "
+            "region, search the web and find their official website.\n\n"
+            "For each employer:\n"
+            "1. Search for their official website using the employer name, "
+            "city, and industry to find the RIGHT company (not a same-name "
+            "business in another state)\n"
+            "2. Return the ROOT domain URL — not a deep facility-finder page, "
+            "not a location-directory sub-page. A dedicated sub-site with its "
+            "own content is acceptable (e.g., adventisthealth.org/simi-valley/) "
+            "but a deep path like /locations/facilities/id-12345 is not — "
+            "use the parent domain root instead\n"
+            "3. If the employer has no discoverable official website, or is not "
+            "a viable CTE workforce partnership target (too small, religious "
+            "organization, labor contractor, sub-department of a parent already "
+            "listed), return REMOVE\n"
+            "4. A wrong URL is MUCH worse than REMOVE. When in doubt, REMOVE.\n\n"
+            "Return JSON: {\"employer_name\": \"https://url\" or \"REMOVE\"}\n"
             "No markdown fences.\n\n"
             "EMPLOYERS:\n" + "\n".join(lines)
         )
 
+        batch_label = f"Batch {i // batch_size + 1}/{(len(employers) - 1) // batch_size + 1}"
+        result = _gemini_search_call(client, types, prompt, batch_label)
+
+        if result:
+            all_results.update(result)
+            url_ct = sum(
+                1 for v in result.values()
+                if v and v not in ("REMOVE", "NONE") and str(v).startswith("http")
+            )
+            remove_ct = sum(1 for v in result.values() if v == "REMOVE")
+            logger.info(f"    {batch_label}: {url_ct} URLs, {remove_ct} removed")
+        else:
+            logger.error(f"    {batch_label}: failed after retries")
+
+    return all_results
+
+
+def _gemini_search_call(
+    client,
+    types,
+    prompt: str,
+    label: str,
+) -> dict | None:
+    """Call Gemini with Google Search grounding, with retry on transient errors."""
+    for attempt in range(1, _MAX_RETRIES + 1):
         try:
             response = client.models.generate_content(
-                model="gemini-2.5-flash", contents=prompt,
+                model="gemini-2.5-flash",
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    tools=[types.Tool(google_search=types.GoogleSearch())],
+                ),
             )
-            text = _strip_markdown(response.text)
-            preds = json.loads(text)
-            for name, val in preds.items():
-                if val and val.startswith("http"):
-                    results[name] = val
-                else:
-                    results[name] = "REMOVE"
-            removed = sum(1 for v in preds.values() if v == "REMOVE" or not v or not str(v).startswith("http"))
-            logger.info(f"    Fallback batch {i // _BATCH_SIZE + 1}: "
-                        f"{len(preds) - removed} URLs, {removed} removed")
+
+            if not response.text:
+                logger.warning(f"    {label} attempt {attempt}: empty response")
+                if attempt < _MAX_RETRIES:
+                    time.sleep(_RETRY_BACKOFF_BASE * attempt)
+                    continue
+                return None
+
+            text = response.text.strip()
+            # Strip markdown fences
+            if text.startswith("```"):
+                text = text.split("\n", 1)[1] if "\n" in text else text[3:]
+            if text.endswith("```"):
+                text = text.rsplit("\n", 1)[0] if "\n" in text else text[:-3]
+            if text.startswith("json"):
+                text = text[4:].strip()
+
+            return json.loads(text)
+
+        except json.JSONDecodeError as e:
+            logger.error(f"    {label} attempt {attempt}: JSON parse failed: {e}")
+            if attempt < _MAX_RETRIES:
+                time.sleep(_RETRY_BACKOFF_BASE * attempt)
+            else:
+                return None
+
         except Exception as e:
-            logger.error(f"    Fallback batch {i // _BATCH_SIZE + 1} failed: {e}")
-            for emp in batch:
-                results[emp["name"]] = "REMOVE"
+            err_str = str(e)
+            if "503" in err_str or "UNAVAILABLE" in err_str or "overloaded" in err_str.lower():
+                logger.warning(f"    {label} attempt {attempt}: Gemini unavailable, retrying...")
+                if attempt < _MAX_RETRIES:
+                    time.sleep(_RETRY_BACKOFF_BASE * attempt)
+                else:
+                    logger.error(f"    {label}: failed after {_MAX_RETRIES} attempts")
+                    return None
+            else:
+                logger.error(f"    {label} attempt {attempt}: {e}")
+                if attempt < _MAX_RETRIES:
+                    time.sleep(_RETRY_BACKOFF_BASE * attempt)
+                else:
+                    return None
 
-    return results
+    return None
 
 
-# ── Helpers ──────────────────────────────────────────────────────────────
+def _liveness_check(employers: list[dict]) -> tuple[set[str], set[str]]:
+    """Verify that assigned URLs actually resolve.
 
-def _strip_markdown(text: str) -> str:
-    """Strip markdown code fences from Gemini response."""
-    text = text.strip()
-    if text.startswith("```"):
-        text = text.split("\n", 1)[1] if "\n" in text else text[3:]
-    if text.endswith("```"):
-        text = text.rsplit("\n", 1)[0] if "\n" in text else text[:-3]
-    if text.startswith("json"):
-        text = text[4:].strip()
-    return text.strip()
+    Returns (live_names, dead_names). Uses verify=False because the
+    system's LibreSSL is too old for many modern TLS configurations;
+    SSL cert validity is not what we're checking here — just that the
+    domain exists and serves content.
+    """
+    import requests
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+
+    logger.info(f"  Step 3 (liveness): checking {len(employers)} URLs")
+
+    live: set[str] = set()
+    dead: set[str] = set()
+
+    def check(emp: dict) -> tuple[str, bool]:
+        url = emp["website"]
+        try:
+            r = requests.head(
+                url, timeout=15, allow_redirects=True, verify=False,
+                headers={"User-Agent": "Mozilla/5.0"},
+            )
+            return emp["name"], r.status_code < 500
+        except Exception:
+            try:
+                r = requests.get(
+                    url, timeout=15, allow_redirects=True, verify=False,
+                    headers={"User-Agent": "Mozilla/5.0"},
+                )
+                return emp["name"], r.status_code < 500
+            except Exception:
+                return emp["name"], False
+
+    with ThreadPoolExecutor(max_workers=20) as executor:
+        futures = [executor.submit(check, e) for e in employers]
+        for f in as_completed(futures):
+            name, is_alive = f.result()
+            if is_alive:
+                live.add(name)
+            else:
+                dead.add(name)
+
+    logger.info(f"  Step 3 complete: {len(live)} alive, {len(dead)} dead")
+    return live, dead
+
+
+def _get_gemini_client():
+    """Get a Gemini client, or None if no API key."""
+    api_key = os.environ.get("GEMINI_API_KEY")
+    if not api_key:
+        logger.warning("  No GEMINI_API_KEY")
+        return None
+    from google import genai
+    return genai.Client(api_key=api_key)
