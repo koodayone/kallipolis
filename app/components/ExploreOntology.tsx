@@ -4,7 +4,7 @@ type Props = {
   label?: string;
   neonColor: string;
   opacity: number;
-  icon?: "cube" | "lightbulb";
+  icon?: "cube" | "lightbulb" | "chainlink";
 };
 
 function CubeIcon({ color }: { color: string }) {
@@ -30,6 +30,18 @@ function LightbulbIcon({ color }: { color: string }) {
       <line x1="19" y1="5" x2="15" y2="9" stroke={color} strokeWidth="1" opacity="0.8" />
       <line x1="5" y1="19" x2="9" y2="15" stroke={color} strokeWidth="1" opacity="0.8" />
       <line x1="19" y1="19" x2="15" y2="15" stroke={color} strokeWidth="1" opacity="0.8" />
+    </svg>
+  );
+}
+
+function ChainlinkIcon({ color }: { color: string }) {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+      {/* Two interlocked rings */}
+      <ellipse cx="10" cy="12" rx="6" ry="4" stroke={color} strokeWidth="2" fill="none" opacity="0.85" />
+      <ellipse cx="14" cy="12" rx="6" ry="4" stroke={color} strokeWidth="2" fill="none" opacity="0.85" />
+      {/* Center overlap fill */}
+      <ellipse cx="12" cy="12" rx="2" ry="3.5" fill={color} opacity="0.3" />
     </svg>
   );
 }
@@ -62,7 +74,9 @@ export default function ExploreOntology({ label = "Explore Ontology", neonColor,
         >
           {label}
         </span>
-        {icon === "cube" ? <CubeIcon color={neonColor} /> : <LightbulbIcon color={neonColor} />}
+        {icon === "cube" && <CubeIcon color={neonColor} />}
+        {icon === "lightbulb" && <LightbulbIcon color={neonColor} />}
+        {icon === "chainlink" && <ChainlinkIcon color={neonColor} />}
       </div>
     </section>
   );
