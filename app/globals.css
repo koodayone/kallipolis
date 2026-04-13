@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+html, body {
+  background-color: #060d1f;
+  overscroll-behavior: none;
+}
+
 @theme {
   --font-sans: var(--font-geist);
   --color-pacific-navy: #002366;

@@ -1,12 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 80);
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const bgStyle = scrolled
+    ? { backgroundColor: "#060d1f", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }
+    : { backgroundColor: "transparent" };
 
   return (
-    <nav className="sticky top-0 z-50 w-full" style={{ backgroundColor: "#002366" }}>
+    <nav
+      className="fixed top-0 z-50 w-full"
+      style={{ ...bgStyle, transition: "background-color 0.3s ease" }}
+    >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
 
         {/* Logo + wordmark */}
@@ -64,7 +80,7 @@ export default function Nav() {
           maxHeight: open ? 120 : 0,
           overflow: "hidden",
           transition: "max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
-          backgroundColor: "#002366",
+          backgroundColor: scrolled ? "#060d1f" : "transparent",
           borderTop: open ? "1px solid rgba(255,255,255,0.1)" : "none",
         }}
       >

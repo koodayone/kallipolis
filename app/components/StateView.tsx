@@ -7,7 +7,7 @@ const points = [
 
 export default function StateView() {
   return (
-    <section className="bg-deep-charcoal" style={{ paddingTop: 64, paddingLeft: 64, paddingRight: 64, paddingBottom: 64 }}>
+    <section style={{ backgroundColor: "#060d1f", paddingTop: 64, paddingLeft: 64, paddingRight: 64, paddingBottom: 64 }}>
       <div style={{ display: "flex", gap: 48, alignItems: "stretch" }}>
 
         {/* Left column — California map */}

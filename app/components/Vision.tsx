@@ -26,8 +26,8 @@ export default function Vision() {
           {/* Gold divider rule */}
           <div style={{ width: 64, height: 2, background: "#FFCC33", borderRadius: 1, opacity: 0.9, margin: "0 auto 24px" }} />
 
-          <h1 className="text-[40px] md:text-[56px] font-bold leading-[1.08] tracking-[-0.03em] text-white mb-6">
-            California&apos;s intelligence layer for workforce development
+          <h1 className="text-[40px] md:text-[56px] leading-[1.08] tracking-[-0.03em] text-white mb-6" style={{ fontFamily: "var(--font-days-one)", fontWeight: 400 }}>
+            California&apos;s<br />intelligence layer for<br />workforce development
           </h1>
           <p className="text-xl font-normal leading-[1.6] tracking-normal text-white/85 max-w-[600px] mx-auto">
             Empowering the workforce to meet the AI moment.
@@ -42,16 +42,6 @@ export default function Vision() {
           position: "absolute", bottom: 0, left: "50%", transform: "translateX(-50%)",
           width: 600, height: 260, pointerEvents: "none",
           background: "radial-gradient(ellipse at 50% 100%, rgba(255,204,51,0.13) 0%, rgba(255,204,51,0.04) 45%, transparent 70%)",
-        }}
-      />
-
-      {/* Big Sur green accent line */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: "absolute", bottom: 0, left: 0, width: "100%", height: 3,
-          background: "linear-gradient(to right, transparent 0%, #4A7C59 20%, #5B8A6F 50%, #4A7C59 80%, transparent 100%)",
-          opacity: 0.65,
         }}
       />
     </section>
