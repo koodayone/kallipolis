@@ -1,7 +1,20 @@
-import EpistemologySection from "../../components/EpistemologySection";
-import DataAuthoritySection from "../../components/DataAuthoritySection";
+"use client";
+
+import AuthorityCard from "../../components/AuthorityCard";
+import DemoStudents from "../../components/DemoStudents";
+import DemoCourses from "../../components/DemoCourses";
+import DemoOccupations from "../../components/DemoOccupations";
+import DemoEmployers from "../../components/DemoEmployers";
 import PipelineDiagram from "../../components/PipelineDiagram";
 import ActionBadge from "../../components/ActionBadge";
+import {
+  createMortarboardForm,
+  createBookForm,
+  createHardhatForm,
+  createSkyscraperForm,
+} from "../../lib/formFactories";
+
+const ACCENT = "#c9a84c";
 
 // ── Section primitives ───────────────────────────────────────────────────────
 
@@ -14,7 +27,7 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 }
 
 function GoldDivider() {
-  return <div style={{ width: 64, height: 2, background: "#FFCC33", borderRadius: 1, opacity: 0.9, margin: "0 auto 24px" }} />;
+  return <div style={{ width: 64, height: 2, background: ACCENT, borderRadius: 1, opacity: 0.9, margin: "0 auto 24px" }} />;
 }
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
@@ -28,48 +41,48 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
   );
 }
 
-// ── Data authority content ───────────────────────────────────────────────────
+// ── Authority data ──────────────────────────────────────────────────────────
 
 const AUTHORITIES = [
   {
     unitName: "Students",
     authorityName: "Chancellor's Office DataMart",
     logoPath: "/logos/chancellors_logo.png",
-    whatData: "Four-digit TOP code grade distributions, enrollment shares by program area, term calendar patterns, and demographic breakdowns from the statewide Management Information Systems.",
-    whatTransformation: "Synthetic student populations generated through a calibration model that reproduces real grade distributions, enrollment stickiness patterns (60% primary area retention), and program-level proportions. Each student receives a deterministic UUID and a competency portrait derived from their course history.",
-    whyThisSource: "The Chancellor's Office DataMart is the canonical record of who enrolled, what they studied, and how they performed across the entire California Community College system. No other source has this scope or institutional authority.",
-    limitation: "Student data is currently synthetic — calibrated to real distributions but not drawn from actual enrollment records.",
-    invitation: "Direct MIS integration would replace synthetic records with actual enrollment data. This requires only a data-sharing agreement between Kallipolis and the participating institution, and the pipeline is already architected for this transition.",
+    factory: createMortarboardForm,
+    demoScene: <DemoStudents />,
+    whatData: "Four-digit TOP code grade distributions, enrollment shares by program area, and term calendar patterns from the statewide Management Information Systems.",
+    transformation: "Synthetic student populations calibrated to real grade distributions and enrollment stickiness patterns. Each student receives a deterministic UUID and a competency portrait derived from their course history.",
+    whyThisSource: "The Chancellor's Office DataMart is the canonical record of who enrolled, what they studied, and how they performed across the entire California Community College system.",
   },
   {
     unitName: "Courses",
     authorityName: "College Curriculum Catalogs",
-    logoPath: undefined,
+    logoPath: "/logos/colleges_combined_white.png",
+    factory: createBookForm,
+    demoScene: <DemoCourses />,
     whatData: "Course names, codes, departments, unit counts, descriptions, prerequisites, learning outcomes, and course objectives extracted from institutional catalog PDFs.",
-    whatTransformation: "PDF extraction recovers structured course records from unstructured catalog documents. Each course's learning outcomes are then interpreted through the unified skills taxonomy, producing skill graph edges that bridge curriculum to labor market demand.",
-    whyThisSource: "The college's own catalog is its curricular commitment — the official declaration of what it promises to teach, at what depth, with what outcomes. No third-party source can substitute for this institutional self-description.",
-    limitation: "Catalog PDFs lag behind live curricula. New courses, revised learning outcomes, and program changes may not appear until the next catalog publication cycle.",
-    invitation: "API access to live curriculum management systems would make course data real-time. Several CMS platforms in use across the CCC system support structured exports — a partnership with the institution's curriculum office closes this gap directly.",
+    transformation: "PDF extraction recovers structured course records. Each course's learning outcomes are interpreted through a skills taxonomy, producing graph edges that bridge curriculum to labor market demand.",
+    whyThisSource: "The college's own catalog is its curricular commitment. The official declaration of what it promises to teach, at what depth, with what outcomes.",
   },
   {
     unitName: "Occupations",
     authorityName: "Centers of Excellence",
     logoPath: "/logos/coe_logo_clean.png",
-    whatData: "SOC-coded occupation records with annual wages, employment counts, five-year growth rates, annual openings, and education level requirements — organized by Centers of Excellence region.",
-    whatTransformation: "A workforce-development band filter retains only occupations requiring education between a postsecondary certificate and a bachelor's degree — the credential range that community colleges serve. Regional demand signals are aggregated by COE region rather than by county, aligning with the system's own geographic logic.",
-    whyThisSource: "Centers of Excellence research is regionally calibrated to CCC service areas, making it more relevant than national BLS or O*NET data. COE analysts interpret labor market data through a workforce development lens that mirrors the institutional perspective Kallipolis serves.",
-    limitation: "COE regional granularity varies across the state. Some regions publish more detailed demand data than others, and update cycles differ.",
-    invitation: "Collaboration with individual COE offices could refine demand signals with college-specific labor market intelligence — local employer relationships, advisory board insights, and regional economic development context that published data alone cannot capture.",
+    factory: createHardhatForm,
+    demoScene: <DemoOccupations />,
+    whatData: "SOC-coded occupation records with annual wages, employment counts, five-year growth rates, annual openings, and education level requirements organized by COE region.",
+    transformation: "A workforce-development band filter retains only occupations in the credential range community colleges serve. Regional demand signals are aggregated by COE region, aligning with the system's own geographic logic.",
+    whyThisSource: "Centers of Excellence research is regionally calibrated to CCC service areas. More relevant than national BLS or O*NET data for workforce development planning.",
   },
   {
     unitName: "Employers",
     authorityName: "Employment Development Department",
     logoPath: "/logos/edd_logo_clean.png",
+    factory: createSkyscraperForm,
+    demoScene: <DemoEmployers />,
     whatData: "Employer records from the EDD ALMIS database, including organization names, NAICS industry codes, county-level location, and employee counts.",
-    whatTransformation: "Employers are filtered to organizations with 100 or more employees — a size threshold that ensures operational capacity for workforce partnerships. A NAICS-to-SOC crosswalk connects each employer to the occupations it plausibly hires for. Organization names and descriptions are cleaned through an LLM pass to normalize formatting and fill descriptive gaps.",
-    whyThisSource: "EDD maintains the state's authoritative employer records — verifiable, comprehensive, and publicly maintained. Unlike commercial databases, EDD data carries institutional legitimacy that matters in public-sector procurement contexts.",
-    limitation: "EDD records capture registered employers, not hiring intent. An employer's presence in the database does not guarantee active recruitment or partnership readiness.",
-    invitation: "Validation with local industry contacts — career services offices, advisory board members, workforce development boards — would surface which employers are actively engaged. Forward-deployment into the institution makes this validation a shared activity rather than a remote inference.",
+    transformation: "Filtered to organizations with 100 or more employees. A NAICS-to-SOC crosswalk connects each employer to the occupations it hires for. Names and descriptions normalized through an LLM pass.",
+    whyThisSource: "EDD maintains the state's authoritative employer records. Verifiable, comprehensive, and publicly maintained. Institutional legitimacy that matters in public-sector procurement.",
   },
 ];
 
@@ -78,8 +91,8 @@ const AUTHORITIES = [
 export default function ExploreSourcesPage() {
   return (
     <>
-      {/* ── Section 1: Hero ── */}
-      <section style={{ paddingTop: 120, paddingBottom: 64, paddingLeft: 64, paddingRight: 64 }}>
+      {/* ── Section 1: Hero (prose-led) ── */}
+      <section style={{ paddingTop: 120, paddingBottom: 48, paddingLeft: 64, paddingRight: 64 }}>
         <div className="max-w-3xl mx-auto text-center">
           <Eyebrow>The Epistemology</Eyebrow>
           <GoldDivider />
@@ -87,47 +100,53 @@ export default function ExploreSourcesPage() {
             Every claim has a public source.<br />Every source has a public institution.
           </SectionHeading>
           <p style={{ fontSize: 18, lineHeight: 1.6, color: "rgba(255,255,255,0.65)", marginTop: 24, maxWidth: 600, marginLeft: "auto", marginRight: "auto" }}>
-            Kallipolis makes no claim it cannot ground in data from a named public institution. The four units of analysis — students, courses, occupations, employers — each trace to a specific institutional authority.
+            Four analytical forms. Four public data authorities. Each unit of analysis traces to one institution whose data grounds every claim.
           </p>
         </div>
       </section>
 
-      {/* ── Section 2: Epistemology Overview ── */}
-      <EpistemologySection />
-
-      {/* ── Sections 3-6: Data Authority Deep Dives ── */}
-      <section style={{ paddingTop: 64, paddingBottom: 48, paddingLeft: 64, paddingRight: 64 }}>
-        <div className="max-w-3xl mx-auto text-center" style={{ marginBottom: 48 }}>
-          <Eyebrow>The Four Authorities</Eyebrow>
-          <GoldDivider />
-          <SectionHeading>One institution per unit.<br />No exceptions.</SectionHeading>
-        </div>
-
-        <div style={{ maxWidth: 800, margin: "0 auto" }}>
+      {/* ── Section 2: Authority deep dives — each with its graph row ── */}
+      <section style={{ paddingTop: 32, paddingBottom: 32, paddingLeft: 64, paddingRight: 64 }}>
+        <div>
           {AUTHORITIES.map((auth) => (
-            <DataAuthoritySection key={auth.unitName} {...auth} />
+            <AuthorityCard key={auth.unitName} {...auth} />
           ))}
         </div>
       </section>
 
-      {/* ── Section 7: Pipeline Synthesis ── */}
+      {/* ── Section 3: Forward Deployment (prose-led) ── */}
+      <section style={{ paddingTop: 48, paddingBottom: 48, paddingLeft: 64, paddingRight: 64 }}>
+        <div className="max-w-2xl mx-auto text-center">
+          <Eyebrow>Forward Deployment</Eyebrow>
+          <GoldDivider />
+          <SectionHeading>Limitations become invitations</SectionHeading>
+          <p style={{ fontSize: 16, lineHeight: 1.65, color: "rgba(255,255,255,0.55)", marginTop: 24 }}>
+            Student data is synthetic, not real enrollments. Catalog PDFs lag behind live curricula. COE granularity varies by region. EDD captures registered employers, not hiring intent.
+          </p>
+          <p style={{ fontSize: 16, lineHeight: 1.65, color: "rgba(255,255,255,0.55)", marginTop: 16 }}>
+            Each of these limitations is an invitation to collaborate. The pipeline is architected for institutional partnership. Direct MIS feeds replace synthetic students. Curriculum API access makes courses real-time. Local industry contacts validate employer readiness. Forward-deployment into the institution closes the gaps that distance creates.
+          </p>
+        </div>
+      </section>
+
+      {/* ── Section 4: Pipeline (component-led) ── */}
       <section style={{ paddingTop: 48, paddingBottom: 64, paddingLeft: 64, paddingRight: 64 }}>
         <div className="max-w-3xl mx-auto text-center" style={{ marginBottom: 48 }}>
           <Eyebrow>The Pipeline</Eyebrow>
           <GoldDivider />
           <SectionHeading>From institutional data<br />to a unified knowledge graph</SectionHeading>
           <p style={{ fontSize: 16, lineHeight: 1.6, color: "rgba(255,255,255,0.55)", marginTop: 20 }}>
-            Each data authority feeds a dedicated pipeline stage. The five stages converge in a single Neo4j graph where curriculum, labor market, and institutional data are connected through a shared skills vocabulary.
+            Each data authority feeds a dedicated pipeline stage. The stages converge in a single graph where curriculum, labor market, and institutional data connect through a shared skills vocabulary.
           </p>
         </div>
 
         <PipelineDiagram />
       </section>
 
-      {/* ── Section 8: Cross-links ── */}
+      {/* ── Section 5: Cross-links ── */}
       <section style={{ background: "#060d1f", padding: "24px 64px 48px", display: "flex", justifyContent: "center", gap: 16 }}>
-        <ActionBadge label="Explore Atlas" neonColor="#c9a84c" opacity={1} icon="cube" inline href="/atlas" />
-        <ActionBadge label="Explore Partnerships" neonColor="#b0a0ff" opacity={1} icon="chainlink" inline href="/partnerships" />
+        <ActionBadge label="Explore Atlas" neonColor="#f0425e" opacity={1} icon="cube" inline href="/atlas" invertHover />
+        <ActionBadge label="Explore Partnerships" neonColor="#b0a0ff" opacity={1} icon="chainlink" inline href="/partnerships" invertHover />
       </section>
     </>
   );
