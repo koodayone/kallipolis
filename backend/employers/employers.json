@@ -95,7 +95,7 @@
   {
     "name": "Keller Williams Realty",
     "sector": "Real Estate",
-    "description": "Keller Williams Realty is a real estate franchise company.",
+    "description": "Keller Williams Realty is a global real estate franchise company with over 110,000 agents worldwide, focusing on helping clients buy and sell properties. They prioritize agent training, technology, and wealth-building opportunities through a unique profit-sharing program. CTE-relevant roles include real estate agents, administrative assistants, marketing specialists, and office management.",
     "regions": [
       "CVML",
       "SCC"
@@ -580,7 +580,7 @@
   {
     "name": "Home Depot",
     "sector": "Retail",
-    "description": "Home Depot is a large retail chain offering home improvement products and services.",
+    "description": "Home Depot is a large retail company specializing in home improvement products and services, offering a wide range of tools, materials, and support for DIY projects and professional contractors. CTE-relevant roles include retail sales, customer service, logistics, and skilled trades support. They serve numerous communities through their extensive store network.",
     "regions": [
       "CVML",
       "IE/D",
@@ -604,7 +604,7 @@
   {
     "name": "Lowe's Home Improvement",
     "sector": "Retail",
-    "description": "Lowe's Home Improvement is a major retail company specializing in home improvement products and services.",
+    "description": "Lowe's Home Improvement is a Fortune 100 home improvement retailer operating over 1,700 stores across the U.S. and employing a significant workforce. The company offers a wide range of products and services for home repair and improvement. CTE-relevant roles include sales associates, customer service, cashiers, stockers, plumbing and electrical specialists, and supply chain positions.",
     "regions": [
       "CVML",
       "IE/D",
@@ -1954,7 +1954,7 @@
   {
     "name": "Vons",
     "sector": "Retail",
-    "description": "This is a supermarket chain offering groceries, fresh produce, meat, and other household items.",
+    "description": "Vons operates as a grocery store providing in-store shopping, delivery, and pickup services. It offers a wide range of food and household products to local communities. CTE-relevant roles involve retail management, food handling, inventory, and customer service.",
     "regions": [
       "IE/D",
       "SCC"
@@ -1975,7 +1975,7 @@
   {
     "name": "Walmart Neighborhood Market",
     "sector": "Retail",
-    "description": "This is a smaller format Walmart store focused on groceries and everyday essentials.",
+    "description": "Walmart Neighborhood Market is a retail establishment focused on providing groceries and general merchandise with an emphasis on affordability. As part of the larger Walmart chain, it offers a convenient shopping experience in local neighborhoods. CTE-relevant roles include retail associates, stockers, cashiers, and store management.",
     "regions": [
       "IE/D",
       "SCC"
@@ -3153,7 +3153,7 @@
   {
     "name": "Carmax",
     "sector": "Retail",
-    "description": "A used car retailer offering a wide selection of vehicles and related services.",
+    "description": "CarMax is a large retailer specializing in the sale of used cars, offering both online shopping and in-store purchasing options. They provide a streamlined process for buying and selling vehicles. CTE-relevant roles include automotive sales, vehicle reconditioning, maintenance technicians, and customer service.",
     "regions": [
       "IE/D",
       "SCC"
@@ -4258,7 +4258,7 @@
   {
     "name": "Greenheart Farms",
     "sector": "Agriculture",
-    "description": "This employer is a farm specializing in agricultural production.",
+    "description": "Greenheart Farms is California's leading high-volume greenhouse grower of young vegetable, fruit, herb, ornamental, and restoration plants. Since 1979, they have focused on providing high-quality plant material and exceptional customer service. CTE-relevant roles include horticulture, agricultural production, greenhouse operations, and plant science.",
     "regions": [
       "SCC"
     ],
@@ -4276,7 +4276,7 @@
   {
     "name": "Talley Farms",
     "sector": "Agriculture",
-    "description": "This employer is a farm involved in agricultural cultivation and harvesting.",
+    "description": "Talley Farms has been cultivating produce on California's Central Coast since 1948, focusing on growing high-quality agricultural products. This long-standing farm maintains a significant operation to supply fresh produce. CTE-relevant roles include farm labor, equipment operators, agricultural technicians, and farm management.",
     "regions": [
       "SCC"
     ],
@@ -4294,7 +4294,7 @@
   {
     "name": "Pacific Gas & Electric",
     "sector": "Utilities",
-    "description": "This employer is a utility company providing gas and electricity services.",
+    "description": "Pacific Gas & Electric Company (PG&E) is a major utility provider delivering gas and electric services. They manage extensive infrastructure to ensure reliable energy supply across their service area. CTE-relevant roles include electrical technicians, gas pipeline operators, utility maintenance workers, and customer support specialists.",
     "regions": [
       "SCC"
     ],
@@ -4313,7 +4313,7 @@
   {
     "name": "Shea Homes",
     "sector": "Construction",
-    "description": "This employer is a residential home builder.",
+    "description": "Shea Homes is an award-winning builder specializing in constructing new homes. They focus on delivering quality residential properties and managing various construction projects. CTE-relevant roles encompass skilled trades like carpentry, electrical, and plumbing, as well as construction management and site supervision.",
     "regions": [
       "SCC"
     ],
@@ -4332,7 +4332,7 @@
   {
     "name": "MGE Underground",
     "sector": "Construction",
-    "description": "This employer specializes in underground utility construction.",
+    "description": "MGE Underground provides specialized utility construction services, focusing on \"groundbreaking\" projects related to underground infrastructure. They are involved in building and maintaining essential utility networks. CTE-relevant roles include heavy equipment operators, pipe layers, utility technicians, and safety coordinators.",
     "regions": [
       "SCC"
     ],
@@ -4349,7 +4349,7 @@
   {
     "name": "E & J Gallo Winery",
     "sector": "Manufacturing",
-    "description": "This employer is a large winery producing and distributing wine.",
+    "description": "E & J Gallo Winery is a global leader in the wine and spirits industry, founded in 1933, committed to sustainable growth. They operate significant manufacturing facilities, including the largest single glass plant. CTE-relevant roles involve winemaking, bottling, manufacturing operations, logistics, and quality control.",
     "regions": [
       "SCC"
     ],
@@ -4368,7 +4368,7 @@
   {
     "name": "Tolosa Winery",
     "sector": "Manufacturing",
-    "description": "This employer is a winery involved in wine production and sales.",
+    "description": "Tolosa Winery specializes in producing California Pinot Noir and Chardonnay, crafting wines for discerning customers. They manage the entire winemaking process from grape to bottle. CTE-relevant roles include cellar technicians, bottling line operators, viticulture support, and quality assurance.",
     "regions": [
       "SCC"
     ],
@@ -4385,7 +4385,7 @@
   {
     "name": "Ennis",
     "sector": "Manufacturing",
-    "description": "This employer is a printing company specializing in business forms and products.",
+    "description": "Ennis is a leading manufacturer of business forms and other printed products, serving a broad range of industries across the United States. They operate numerous facilities, producing items like custom forms, tags, labels, and envelopes. CTE-relevant roles could include print technicians, graphic designers, production managers, and machine operators.",
     "regions": [
       "SCC"
     ],
@@ -4403,7 +4403,7 @@
   {
     "name": "Zurn Engineered Water Solutions",
     "sector": "Manufacturing",
-    "description": "This employer manufactures engineered water solutions and plumbing products.",
+    "description": "Zurn Engineered Water Solutions, now Zurn Elkay Water Solutions, is a global supplier of plumbing and water delivery solutions with over 2800 employees worldwide, operating from 24 locations. They manufacture engineered water solutions for commercial, municipal, and industrial markets, focusing on building water safety and site drainage. CTE-relevant roles include manufacturing technicians, warehouse workers, quality assurance analysts, customer service representatives, and engineering support.",
     "regions": [
       "SCC"
     ],
@@ -4420,7 +4420,7 @@
   {
     "name": "Glenair",
     "sector": "Manufacturing",
-    "description": "This employer manufactures interconnect components and systems for various industries.",
+    "description": "Glenair manufactures \"mission-critical interconnect solutions,\" including aerospace-grade circular and rectangular connectors. They specialize in high-precision components essential for various advanced applications. CTE-relevant roles include manufacturing technicians, assemblers, quality control specialists, and precision machinists.",
     "regions": [
       "SCC"
     ],
@@ -4439,7 +4439,7 @@
   {
     "name": "Trust Automation",
     "sector": "Manufacturing",
-    "description": "This employer designs and manufactures custom motion control and automation systems.",
+    "description": "Trust Automation provides advanced motion, motor control, and power management solutions. They specialize in developing and manufacturing high-tech components for various industries. CTE-relevant roles include electronics assemblers, test technicians, mechanical fabricators, and quality assurance personnel.",
     "regions": [
       "SCC"
     ],
@@ -4458,7 +4458,7 @@
   {
     "name": "Berry Man",
     "sector": "Wholesale",
-    "description": "This employer is a food service distributor providing produce and specialty foods.",
+    "description": "Berry Man (inferred as a wholesale produce distributor) facilitates the distribution of agricultural products, potentially specializing in berries, to businesses. Their operations involve procurement, warehousing, and transportation of goods. CTE-relevant roles include logistics coordinators, warehouse associates, and commercial drivers.",
     "regions": [
       "SCC"
     ],
@@ -4475,7 +4475,7 @@
   {
     "name": "Albertsons",
     "sector": "Retail",
-    "description": "This employer is a grocery store chain.",
+    "description": "Albertsons is a major grocery retailer offering in-store shopping, grocery delivery, and pickup services. They provide a wide selection of food and household items across numerous locations. CTE-relevant roles include retail associates, deli and bakery staff, stockers, and customer service representatives.",
     "regions": [
       "SCC"
     ],
@@ -4492,7 +4492,7 @@
   {
     "name": "Paso Robles Dial A Ride",
     "sector": "Transportation",
-    "description": "This employer provides on-demand public transportation services.",
+    "description": "Paso Robles Dial A Ride offers origin-to-destination paratransit transportation services within local communities, primarily serving eligible individuals who cannot use fixed-route transit due to disability, age, or income. This service provides affordable, customized rides, typically requiring advance reservations. CTE-relevant roles include bus drivers, dispatchers, scheduling supervisors, and administrative support.",
     "regions": [
       "SCC"
     ],
@@ -4507,7 +4507,7 @@
   {
     "name": "SESLOC Federal Credit Union",
     "sector": "Finance",
-    "description": "This employer is a credit union offering financial services to its members.",
+    "description": "SESLOC Federal Credit Union is a financial institution offering various banking services to its members. As a community-focused credit union, they provide accounts, loans, and financial guidance. CTE-relevant roles include tellers, member service representatives, loan processors, and accounting support.",
     "regions": [
       "SCC"
     ],
@@ -4526,7 +4526,7 @@
   {
     "name": "Morris & Garritano Insurance Agency",
     "sector": "Finance",
-    "description": "This employer is an insurance agency providing various insurance products.",
+    "description": "Morris & Garritano Insurance Agency provides various insurance products and financial protection services. They serve clients by helping them find suitable insurance coverage. CTE-relevant roles include insurance agents, customer service representatives, and administrative support staff.",
     "regions": [
       "SCC"
     ],
@@ -4543,7 +4543,7 @@
   {
     "name": "Broad Street Storage",
     "sector": "Real Estate",
-    "description": "This employer operates a self-storage facility.",
+    "description": "Broad Street Storage of Canfield LLC operates a storage facility providing secure units for personal and business use in Canfield, Ohio. They offer convenient storage solutions to the local community. CTE-relevant roles include facility managers, maintenance technicians, and customer service staff.",
     "regions": [
       "SCC"
     ],
@@ -4559,7 +4559,7 @@
   {
     "name": "Century 21 Hometown Realty",
     "sector": "Real Estate",
-    "description": "This employer is a real estate brokerage firm.",
+    "description": "Century 21 Hometown Realty is part of the global Century 21 Real Estate franchise, which has over 131,000 agents in more than 11,000 offices worldwide. They specialize in assisting clients with buying, selling, and leasing residential and commercial properties. CTE-relevant roles include real estate agents, administrative assistants, transaction coordinators, and marketing specialists.",
     "regions": [
       "SCC"
     ],
@@ -4575,7 +4575,7 @@
   {
     "name": "Duncan Group",
     "sector": "Real Estate",
-    "description": "This employer is a real estate development and investment company.",
+    "description": "Duncan Group is a real estate firm, likely operating on a local or regional scale within California, specializing in property transactions. CTE-relevant roles include real estate agents, property management assistants, and administrative support staff.",
     "regions": [
       "SCC"
     ],
@@ -4592,7 +4592,7 @@
   {
     "name": "Trust RCM",
     "sector": "Professional Services",
-    "description": "This employer provides revenue cycle management services for healthcare providers.",
+    "description": "Trust RCM (inferred as a Revenue Cycle Management provider) offers professional services, likely specializing in financial and administrative solutions for businesses, potentially in healthcare. They aim to optimize financial processes and improve revenue collection. CTE-relevant roles include medical billers, administrative assistants, and data entry specialists.",
     "regions": [
       "SCC"
     ],
@@ -4610,7 +4610,7 @@
   {
     "name": "Cannon Associates",
     "sector": "Professional Services",
-    "description": "This employer is an engineering and surveying firm.",
+    "description": "Cannon Associates provides professional services, including facility solutions like engineering, commissioning, and consulting. This firm operates with a significant scale, serving various clients with technical expertise. CTE-relevant roles involve engineering technicians, CAD drafters, project coordinators, and administrative support.",
     "regions": [
       "SCC"
     ],
@@ -4627,7 +4627,7 @@
   {
     "name": "RRM Design Group",
     "sector": "Professional Services",
-    "description": "This employer is a design firm offering architectural, landscape, and planning services.",
+    "description": "RRM Design Group is a professional services firm focused on \"creating environments people enjoy\" through design. They likely offer architectural, landscape, urban planning, and civil engineering services. CTE-relevant roles include CAD drafters, design technicians, and administrative support for project teams.",
     "regions": [
       "SCC"
     ],
@@ -4645,7 +4645,7 @@
   {
     "name": "Sierra Delta Consultant",
     "sector": "Professional Services",
-    "description": "This employer provides consulting services.",
+    "description": "Sierra Delta Consultant (inferred as a professional services firm) likely offers consulting in areas such as business strategy, technology, or management. They provide expert advice and solutions to their clients. CTE-relevant roles may include administrative support, project coordination, and research assistance.",
     "regions": [
       "SCC"
     ],
@@ -4660,7 +4660,7 @@
   {
     "name": "Atascadero High School",
     "sector": "Education",
-    "description": "This employer is a secondary educational institution.",
+    "description": "Atascadero High School is an educational institution operating within the Atascadero Unified School District, providing secondary education. It serves students by offering academic programs and extracurricular activities. CTE-relevant roles include career technical education instructors, administrative support, and facilities maintenance staff.",
     "regions": [
       "SCC"
     ],
@@ -4678,7 +4678,7 @@
   {
     "name": "Glen Speck Elementary School",
     "sector": "Education",
-    "description": "This employer is an elementary educational institution.",
+    "description": "Glen Speck Elementary School is part of the Paso Robles Joint Unified School District, offering educational services to elementary-aged children. As a community elementary school, it serves a local student population. CTE-relevant roles include paraeducators, administrative assistants, and food service and maintenance staff who support daily school operations.",
     "regions": [
       "SCC"
     ],
@@ -4696,7 +4696,7 @@
   {
     "name": "Paso Robles High School",
     "sector": "Education",
-    "description": "This employer is a secondary educational institution.",
+    "description": "Paso Robles High School is an educational institution dedicated to providing secondary education to its student body. It offers a range of academic courses and vocational training opportunities. CTE-relevant roles include career education instructors, school administrative staff, and various support positions.",
     "regions": [
       "SCC"
     ],
@@ -4714,7 +4714,7 @@
   {
     "name": "Pat Butler Elementary School",
     "sector": "Education",
-    "description": "This employer is an elementary educational institution.",
+    "description": "Pat Butler Elementary School is an educational institution within the Paso Robles Joint Unified School District, providing foundational learning for elementary students. It operates as a local community school serving its immediate area. CTE-relevant roles involve instructional assistants, administrative support, and personnel in food service and custodial roles.",
     "regions": [
       "SCC"
     ],
@@ -4732,7 +4732,7 @@
   {
     "name": "San Luis Obispo County Office of Education",
     "sector": "Education",
-    "description": "This employer provides administrative and support services for schools within the county.",
+    "description": "The San Luis Obispo County Office of Education provides leadership and services to support schools and students across the county. They facilitate various educational programs and resources for local districts. CTE-relevant roles include educational program specialists, administrative assistants, and IT support staff.",
     "regions": [
       "SCC"
     ],
@@ -4751,7 +4751,7 @@
   {
     "name": "Cuesta College",
     "sector": "Education",
-    "description": "This employer is a community college offering higher education.",
+    "description": "Cuesta College is a community college offering a diverse range of academic programs and resources to students. They provide higher education and vocational training opportunities through various departments. CTE-relevant roles include career technical education faculty, student support services, and campus operations staff.",
     "regions": [
       "SCC"
     ],
@@ -4770,7 +4770,7 @@
   {
     "name": "Laurus College",
     "sector": "Education",
-    "description": "This employer is a private college offering career-focused education.",
+    "description": "Laurus College is an educational institution specializing in online Associate and Bachelor's degrees. They provide accessible higher education through a digital learning platform. CTE-relevant roles include online instructors, IT support for virtual learning, and administrative staff managing student services.",
     "regions": [
       "SCC"
     ],
@@ -4789,7 +4789,7 @@
   {
     "name": "California Polytechnic State University",
     "sector": "Education",
-    "description": "This employer is a public university offering undergraduate and graduate programs.",
+    "description": "California Polytechnic State University, known for its \"Learn by Doing\" philosophy, is a comprehensive university offering a wide array of academic programs. It emphasizes hands-on education across various disciplines. CTE-relevant roles include instructional support, laboratory technicians, administrative positions, and IT specialists.",
     "regions": [
       "SCC"
     ],
@@ -4808,7 +4808,7 @@
   {
     "name": "Limberg LASIK Institute",
     "sector": "Healthcare",
-    "description": "This employer is a medical facility specializing in LASIK eye surgery.",
+    "description": "Limberg LASIK Institute specializes in providing LASIK eye surgery and other vision correction procedures. They offer advanced ophthalmic care to patients seeking improved eyesight. CTE-relevant roles include ophthalmic technicians, medical assistants, patient coordinators, and administrative support.",
     "regions": [
       "SCC"
     ],
@@ -4825,7 +4825,7 @@
   {
     "name": "Adventist Health Twin Cities",
     "sector": "Healthcare",
-    "description": "This employer is a hospital providing comprehensive medical care.",
+    "description": "Adventist Health Twin Cities is part of Adventist Health Central Coast, providing various healthcare services to the community. They offer medical care, doctor access, and patient support across their facilities. CTE-relevant roles include medical assistants, patient care technicians, administrative staff, and facilities management.",
     "regions": [
       "SCC"
     ],
@@ -4844,7 +4844,7 @@
   {
     "name": "Arroyo Grande Community Hospital",
     "sector": "Healthcare",
-    "description": "This employer is a community hospital offering a range of healthcare services.",
+    "description": "Arroyo Grande Community Hospital, a Dignity Health facility, provides healthcare services to the Arroyo Grande community. As a community hospital, it offers a range of medical care and operates at a moderate scale. CTE-relevant roles include certified nursing assistants, medical assistants, patient registration, and dietary and environmental services.",
     "regions": [
       "SCC"
     ],
@@ -4863,7 +4863,7 @@
   {
     "name": "Dignity Health French Hospital Medical Center",
     "sector": "Healthcare",
-    "description": "This employer is a medical center providing advanced healthcare services.",
+    "description": "Dignity Health French Hospital Medical Center provides comprehensive healthcare services as part of the larger Dignity Health system, which is transitioning to CommonSpirit.org. They deliver patient-centered care across multiple medical specializations. CTE-relevant roles include medical assistants, patient support staff, healthcare administrators, and facilities maintenance personnel.",
     "regions": [
       "SCC"
     ],
@@ -4882,7 +4882,7 @@
   {
     "name": "California State Parks",
     "sector": "Arts & Entertainment",
-    "description": "This employer manages and maintains state parks and recreational areas.",
+    "description": "California State Parks is a statewide organization responsible for managing 280 state parks across California, focusing on recreation, preservation, and education. It operates on a large scale as the largest park system in the nation. CTE-relevant roles include park maintenance workers, park aides, environmental technicians, administrative specialists, and park peace officers such as rangers and lifeguards.",
     "regions": [
       "SCC"
     ],
@@ -4900,7 +4900,7 @@
   {
     "name": "City of San Luis Obispo Parks and Recreation",
     "sector": "Arts & Entertainment",
-    "description": "This employer manages and maintains city parks and recreational programs.",
+    "description": "This municipal department manages parks and recreation services for the City of San Luis Obispo. They offer various public programs and maintain numerous green spaces. CTE-relevant roles include park maintenance, recreation program coordination, event planning, and administrative support.",
     "regions": [
       "SCC"
     ],
@@ -4917,7 +4917,7 @@
   {
     "name": "Pismo State Beach",
     "sector": "Arts & Entertainment",
-    "description": "This employer manages and maintains Pismo State Beach.",
+    "description": "Pismo State Beach is a specific park unit within the larger California State Parks system, providing recreational access to the coast. Its scale is localized as a single beach unit but is supported by the extensive state park infrastructure. CTE-relevant roles at the local level involve park maintenance, seasonal park aides, and lifeguards.",
     "regions": [
       "SCC"
     ],
@@ -4935,7 +4935,7 @@
   {
     "name": "Mustang Waterpark",
     "sector": "Arts & Entertainment",
-    "description": "This employer operates a waterpark offering recreational activities.",
+    "description": "Mustang Waterpark appears to be a recreational facility operating under SLO County Parks, offering water-based attractions. This seasonal employer likely has a workforce involved in guest services and facility operation. CTE-relevant roles include lifeguards, ride attendants, maintenance, and food service staff.",
     "regions": [
       "SCC"
     ],
@@ -4951,7 +4951,7 @@
   {
     "name": "Ravine Water Park",
     "sector": "Arts & Entertainment",
-    "description": "This employer operates a waterpark offering recreational activities.",
+    "description": "Ravine Water Park operates as a large-scale recreational water park. They provide a range of aquatic entertainment and hospitality services. CTE-relevant roles include lifeguards, ride operators, food service, ticketing, maintenance, and guest relations.",
     "regions": [
       "SCC"
     ],
@@ -4967,7 +4967,7 @@
   {
     "name": "Allegretto Vineyard Resort Paso Robles",
     "sector": "Hospitality & Food Service",
-    "description": "This employer is a luxury resort and vineyard offering accommodations and amenities.",
+    "description": "Allegretto Vineyard Resort Paso Robles is a 20-acre luxury resort and winery offering hospitality, dining, and spa services in Paso Robles. This European-inspired retreat operates as a full-service hotel with 171 rooms and suites. CTE-relevant roles include guest service representatives, culinary staff (chefs, cooks, banquet captains), housekeeping, landscaping, and vineyard hosts.",
     "regions": [
       "SCC"
     ],
@@ -4986,7 +4986,7 @@
   {
     "name": "Apple Farm Inn",
     "sector": "Hospitality & Food Service",
-    "description": "This employer is a hotel and restaurant.",
+    "description": "Apple Farm Inn functions as a hotel in San Luis Obispo, providing accommodation and hospitality services to guests. It operates on a local scale, catering to visitors with a range of lodging and dining options. CTE-relevant roles include front desk associates, housekeeping, culinary staff, and hospitality management.",
     "regions": [
       "SCC"
     ],
@@ -5004,7 +5004,7 @@
   {
     "name": "Dolphin Bay Resort & Spa",
     "sector": "Hospitality & Food Service",
-    "description": "This employer is a luxury resort and spa.",
+    "description": "Dolphin Bay Resort & Spa is a high-end resort and spa located in Pismo Beach, offering luxury accommodations, wellness treatments, and dining experiences. This establishment employs a diverse team to manage its comprehensive guest services. CTE-relevant roles include spa therapists, hotel operations, culinary arts, event management, and maintenance.",
     "regions": [
       "SCC"
     ],
@@ -5023,7 +5023,7 @@
   {
     "name": "Embassy Suites By Hilton San Luis Obispo",
     "sector": "Hospitality & Food Service",
-    "description": "This employer is a hotel offering accommodations and event services.",
+    "description": "Embassy Suites By Hilton San Luis Obispo is a hotel providing accommodation and hospitality services, part of the globally recognized Hilton brand. It operates as a significant hotel property within the San Luis Obispo area. CTE-relevant roles include front desk agents, housekeeping, food and beverage staff, and hotel maintenance technicians.",
     "regions": [
       "SCC"
     ],
@@ -5041,7 +5041,7 @@
   {
     "name": "Madonna Inn Bakery",
     "sector": "Hospitality & Food Service",
-    "description": "This employer is a bakery associated with the Madonna Inn.",
+    "description": "Madonna Inn Bakery is part of the iconic Madonna Inn in San Luis Obispo, specializing in producing baked goods. As a component of a larger hotel and dining complex, it likely operates with a dedicated team of culinary professionals. CTE-relevant roles include bakers, pastry chefs, kitchen assistants, and counter service staff.",
     "regions": [
       "SCC"
     ],
@@ -5056,7 +5056,7 @@
   {
     "name": "Moonstone Hotel Properties",
     "sector": "Hospitality & Food Service",
-    "description": "This employer manages and operates multiple hotel properties.",
+    "description": "Moonstone Hotel Properties manages and operates a portfolio of hotels across California and Oregon. They oversee various hospitality establishments, indicating a broader corporate structure. CTE-relevant roles span hotel operations, management, marketing, and guest services across multiple locations.",
     "regions": [
       "SCC"
     ],
@@ -5073,7 +5073,7 @@
   {
     "name": "Sycamore Mineral Springs Resort & Spa",
     "sector": "Hospitality & Food Service",
-    "description": "This employer is a resort and spa known for its mineral springs.",
+    "description": "Sycamore Mineral Springs Resort & Spa is a destination resort and spa known for its mineral springs. The establishment provides lodging, spa services, and wellness-focused amenities. CTE-relevant roles include spa technicians, hotel management, guest services, culinary positions, and groundskeeping.",
     "regions": [
       "SCC"
     ],
@@ -5092,7 +5092,7 @@
   {
     "name": "Mr Rick's",
     "sector": "Hospitality & Food Service",
-    "description": "This employer is a restaurant.",
+    "description": "Mr. Rick's is a hospitality establishment located in Avila Beach, likely offering dining or entertainment services. As a local business, it likely serves the community with food and beverage offerings. CTE-relevant roles include kitchen staff, servers, bartenders, and management.",
     "regions": [
       "SCC"
     ],
@@ -5107,7 +5107,7 @@
   {
     "name": "Jack In the Box",
     "sector": "Hospitality & Food Service",
-    "description": "This employer is a fast-food restaurant.",
+    "description": "Jack in the Box is a national fast-food restaurant chain, offering quick-service meals through numerous locations. It operates on a large scale with a significant workforce in various regions. CTE-relevant roles include food preparation, counter service, shift management, and restaurant operations.",
     "regions": [
       "SCC"
     ],
@@ -5122,7 +5122,7 @@
   {
     "name": "Olive Garden",
     "sector": "Hospitality & Food Service",
-    "description": "This employer is a casual dining restaurant.",
+    "description": "Olive Garden is a widely recognized Italian restaurant chain offering family-style dining. It operates numerous locations nationally, requiring a large workforce for its extensive food service operations. CTE-relevant roles include chefs, line cooks, servers, hosts, and restaurant management.",
     "regions": [
       "SCC"
     ],
@@ -5137,7 +5137,7 @@
   {
     "name": "San Luis Obispo Golf & Country Club",
     "sector": "Other Services",
-    "description": "This employer operates a golf and country club.",
+    "description": "The San Luis Obispo Golf & Country Club provides a private recreational and social environment for its members, featuring golf, tennis, and fitness facilities. This establishment caters to a discerning clientele with a range of services. CTE-relevant roles include golf course maintenance, culinary arts, fitness instruction, and hospitality services.",
     "regions": [
       "SCC"
     ],
@@ -5154,7 +5154,7 @@
   {
     "name": "Caltrans District 5",
     "sector": "Government",
-    "description": "This employer is a regional office of the California Department of Transportation.",
+    "description": "Caltrans District 5 is a regional division of the California Department of Transportation, responsible for planning, building, and maintaining state roads and infrastructure. It operates as a large government entity with a broad scope of public works. CTE-relevant roles include civil engineering, equipment operation, construction, administrative support, and traffic management.",
     "regions": [
       "SCC"
     ],
@@ -5171,7 +5171,7 @@
   {
     "name": "CAL Fire San Luis Obispo County",
     "sector": "Government",
-    "description": "This employer provides fire protection and emergency services for San Luis Obispo County.",
+    "description": "CAL Fire San Luis Obispo County provides consolidated fire protection and emergency services for the county and several cities. This government agency is critical for public safety and emergency response. CTE-relevant roles include firefighters, EMTs, dispatchers, forestry technicians, and administrative support.",
     "regions": [
       "SCC"
     ],
@@ -5189,7 +5189,7 @@
   {
     "name": "San Luis Obispo Sheriff's Department",
     "sector": "Government",
-    "description": "This employer provides law enforcement and public safety services for San Luis Obispo County.",
+    "description": "The San Luis Obispo Sheriff's Department is a law enforcement agency serving San Luis Obispo County. It is responsible for public safety, crime prevention, and emergency response across a wide geographic area. CTE-relevant roles include patrol deputies, dispatchers, corrections officers, and administrative support.",
     "regions": [
       "SCC"
     ],
@@ -5206,7 +5206,7 @@
   {
     "name": "Mesa Vineyard Management",
     "sector": "Agriculture",
-    "description": "This employer provides vineyard management services.",
+    "description": "Mesa Vineyard Management specializes in the management and operation of vineyards. They provide expertise in viticulture, overseeing agricultural practices for grape production. CTE-relevant roles include viticulturists, vineyard workers, agricultural equipment operators, and farm management.",
     "regions": [
       "SCC"
     ],
@@ -5224,7 +5224,7 @@
   {
     "name": "Babe Farms",
     "sector": "Agriculture",
-    "description": "This employer is a farm specializing in specialty produce.",
+    "description": "Babe Farms is an agricultural business involved in farming and produce cultivation. They focus on growing and supplying specialty vegetables. CTE-relevant roles include farm labor, agricultural equipment operation, harvesting, and packaging.",
     "regions": [
       "SCC"
     ],
@@ -5242,7 +5242,7 @@
   {
     "name": "Allen Associates",
     "sector": "Construction",
-    "description": "This employer is a construction company specializing in commercial and residential projects.",
+    "description": "Allen Associates is a construction company providing building services. They undertake various projects, contributing to infrastructure and property development. CTE-relevant roles include carpenters, electricians, plumbers, construction managers, and heavy equipment operators.",
     "regions": [
       "SCC"
     ],
@@ -5277,7 +5277,7 @@
   {
     "name": "Heritage Concrete",
     "sector": "Construction",
-    "description": "Heritage Concrete is a construction company providing concrete services for various projects.",
+    "description": "Heritage Concrete is a company specializing in concrete services and products. They likely supply materials and provide installation for various construction projects. CTE-relevant roles include concrete finishers, masons, heavy equipment operators, and construction laborers.",
     "regions": [
       "SCC"
     ],
@@ -5296,7 +5296,7 @@
   {
     "name": "Agrojal Farms",
     "sector": "Construction",
-    "description": "Agrojal Farms is an agricultural enterprise involved in farming and crop production.",
+    "description": "Agro-Jal Farms is an agricultural enterprise located in Santa Maria, CA, focusing on crop production. They are involved in large-scale farming operations. CTE-relevant roles include farm management, agricultural technicians, equipment operators, and harvesting specialists.",
     "regions": [
       "SCC"
     ],
@@ -5315,7 +5315,7 @@
   {
     "name": "Pictsweet",
     "sector": "Manufacturing",
-    "description": "Pictsweet is a food processing company specializing in frozen vegetables and other food products.",
+    "description": "Pictsweet is a family-owned company specializing in the production and distribution of frozen vegetables. It is one of the largest frozen vegetable suppliers in the United States, operating for over 80 years. CTE-relevant roles encompass production associates, machine operators, quality control technicians, forklift operators, and maintenance technicians.",
     "regions": [
       "SCC"
     ],
@@ -5353,7 +5353,7 @@
   {
     "name": "Helical Products",
     "sector": "Manufacturing",
-    "description": "Helical Products is a manufacturing company that produces flexible couplings and machined springs.",
+    "description": "Helical Products manufactures unique and innovative mechanical components, specifically helical springs and custom-engineered solutions. They operate within the manufacturing sector, producing precision parts. CTE-relevant roles include machinists, mechanical engineers, quality control technicians, and manufacturing production staff.",
     "regions": [
       "SCC"
     ],
@@ -5391,7 +5391,7 @@
   {
     "name": "Freedom Photonics",
     "sector": "Manufacturing",
-    "description": "Freedom Photonics is a technology company specializing in advanced photonic components and systems.",
+    "description": "Freedom Photonics specializes in creating unique and innovative photonic solutions. This company operates in the high-tech manufacturing sector, focusing on advanced optical and light-based technologies. CTE-relevant roles include opticians, manufacturing technicians, electrical engineers, and quality assurance specialists.",
     "regions": [
       "SCC"
     ],
@@ -5429,7 +5429,7 @@
   {
     "name": "Agilent Technologies",
     "sector": "Manufacturing",
-    "description": "Agilent Technologies is a global analytical instrumentation and diagnostics company.",
+    "description": "Agilent Technologies is a global leader in life sciences, diagnostics, and applied chemical markets, providing instruments, software, services, and consumables. They innovate across a broad spectrum of scientific fields. CTE-relevant roles include lab technicians, manufacturing engineers, instrument repair specialists, and software developers.",
     "regions": [
       "SCC"
     ],
@@ -5486,7 +5486,7 @@
   {
     "name": "Bega US",
     "sector": "Manufacturing",
-    "description": "Bega US is a company that manufactures and distributes high-quality architectural lighting products.",
+    "description": "Bega US (BEGA North America) is a manufacturer of architectural lighting solutions with its North American headquarters in Carpinteria, CA. The company is expanding its operational footprint, aiming to double its space and create 100 new jobs, indicating a growing scale. CTE-relevant roles include manufacturing technicians, assembly line workers, quality control specialists, and logistics and administrative support.",
     "regions": [
       "SCC"
     ],
@@ -5505,7 +5505,7 @@
   {
     "name": "Moss Motors",
     "sector": "Manufacturing",
-    "description": "Moss Motors is a retailer specializing in parts and accessories for classic British sports cars.",
+    "description": "Moss Motors is a supplier of parts and accessories for classic British sports cars like MG, Triumph, Austin Healey, and Jaguar. They serve a niche market by providing components for vehicle restoration and maintenance. CTE-relevant roles include auto mechanics, parts specialists, warehousing, and inventory management.",
     "regions": [
       "SCC"
     ],
@@ -5543,7 +5543,7 @@
   {
     "name": "Freudenberg Medical",
     "sector": "Manufacturing",
-    "description": "Freudenberg Medical is a global manufacturer of medical components and devices.",
+    "description": "Freudenberg Medical is a medical contract manufacturing partner, producing components and systems for the biopharma and cardiac/interventional markets. They offer specialized solutions for critical fluid transfer and minimally invasive devices. CTE-relevant roles include manufacturing technicians, quality control, biomedical equipment technicians, and process engineers.",
     "regions": [
       "SCC"
     ],
@@ -5581,7 +5581,7 @@
   {
     "name": "KARL STORZ Imaging",
     "sector": "Manufacturing",
-    "description": "KARL STORZ Imaging is a medical technology company specializing in endoscopic imaging systems.",
+    "description": "KARL STORZ Imaging is a global company specializing in endoscopy, developing and manufacturing medical instruments and video systems for human and veterinary medicine. They are a leader in advanced visualization technologies for diagnostics and surgery. CTE-relevant roles include precision instrument makers, electronics technicians, quality assurance specialists, and biomedical equipment repairers.",
     "regions": [
       "SCC"
     ],
@@ -5600,7 +5600,7 @@
   {
     "name": "Raytheon",
     "sector": "Manufacturing",
-    "description": "Raytheon is a major aerospace and defense company providing advanced systems and services.",
+    "description": "Raytheon, part of RTX, is a leading aerospace and defense company providing advanced systems and services for commercial, military, and government customers worldwide. They are a major global employer in high-technology manufacturing and engineering. CTE-relevant roles include aerospace manufacturing technicians, electrical engineers, machinists, and mechanical drafters.",
     "regions": [
       "SCC"
     ],
@@ -5638,7 +5638,7 @@
   {
     "name": "Inogen",
     "sector": "Wholesale",
-    "description": "Inogen is a medical technology company that develops and manufactures portable oxygen concentrators.",
+    "description": "Inogen manufactures portable oxygen concentrators, establishing itself as a leader in the American market for respiratory medical devices. They provide innovative solutions for individuals requiring oxygen therapy. CTE-relevant roles include manufacturing technicians, quality control specialists, customer service representatives, and biomedical equipment technicians.",
     "regions": [
       "SCC"
     ],
@@ -5676,7 +5676,7 @@
   {
     "name": "Gold Coast Packing",
     "sector": "Wholesale",
-    "description": "Gold Coast Packing is a produce company specializing in processing and packaging fresh vegetables.",
+    "description": "Gold Coast Packing is a wholesale company involved in the packaging and distribution of produce. They serve the food industry by providing packaged fresh vegetables. CTE-relevant roles include packaging machine operators, warehouse staff, logistics coordinators, and quality control inspectors.",
     "regions": [
       "SCC"
     ],
@@ -5714,7 +5714,7 @@
   {
     "name": "Manzanita Berry Farms",
     "sector": "Wholesale",
-    "description": "Manzanita Berry Farms is an agricultural business focused on growing and harvesting berries.",
+    "description": "Manzanita Berry Farms, as indicated by its domain, was involved in the cultivation and sale of berries. However, its website currently states the domain has expired, suggesting it is no longer an active online entity under this name.",
     "regions": [
       "SCC"
     ],
@@ -5733,7 +5733,7 @@
   {
     "name": "Westerlay Orchids",
     "sector": "Wholesale",
-    "description": "Westerlay Orchids is a horticultural company specializing in the cultivation and sale of orchids.",
+    "description": "Westerlay Orchids is a wholesale grower of orchids, cultivating and distributing a variety of orchid products. The company operates on a scale that supports wholesale distribution. CTE students could find opportunities in horticulture, greenhouse management, agricultural operations, logistics, sales, and marketing roles.",
     "regions": [
       "SCC"
     ],
@@ -5809,7 +5809,7 @@
   {
     "name": "Sprouts Farmers Market",
     "sector": "Retail",
-    "description": "Sprouts Farmers Market is a grocery store chain focusing on natural and organic foods.",
+    "description": "Sprouts Farmers Market is a national grocery store chain focused on natural and organic foods. It operates numerous retail locations across the country, indicating a large-scale retail presence. CTE-relevant roles include cashiers, produce clerks, stockers, deli associates, and assistant store managers.",
     "regions": [
       "SCC"
     ],
@@ -5828,7 +5828,7 @@
   {
     "name": "Trader Joe's",
     "sector": "Retail",
-    "description": "Trader Joe's is a popular grocery store chain known for its unique and specialty food items.",
+    "description": "Trader Joe's is a national grocery store chain known for its unique product selection and customer-focused approach. It operates many retail locations across the United States. CTE-relevant roles include crew members (covering cashier, stocking, and customer service), and potential leadership development positions.",
     "regions": [
       "SCC"
     ],
@@ -5885,7 +5885,7 @@
   {
     "name": "Student Transportation of America",
     "sector": "Transportation",
-    "description": "Student Transportation of America is a company providing school bus transportation services.",
+    "description": "Student Transportation of America specializes in providing student transportation services, aiming to 'Drive the Future'. The company likely operates a large fleet of vehicles and employs numerous staff to ensure safe and efficient school commutes. CTE students could pursue careers as bus drivers, automotive technicians, or in transportation logistics and operations.",
     "regions": [
       "SCC"
     ],
@@ -5999,7 +5999,7 @@
   {
     "name": "Berkshire Hathaway HomeServices California Properties",
     "sector": "Real Estate",
-    "description": "Berkshire Hathaway HomeServices California Properties is a real estate brokerage firm.",
+    "description": "Berkshire Hathaway HomeServices California Properties is a real estate company serving clients across California for residential and commercial property transactions. As part of a large network, it offers extensive services for buying and selling properties. CTE pathways could include real estate sales, administrative assistance, marketing, or property management support roles.",
     "regions": [
       "SCC"
     ],
@@ -6018,7 +6018,7 @@
   {
     "name": "Legacy Real Estate Management",
     "sector": "Real Estate",
-    "description": "Legacy Real Estate Management is a company specializing in property management services.",
+    "description": "Legacy Real Estate Management provides comprehensive real estate management services. This firm likely operates on a regional scale, managing various property types. CTE-relevant roles include property managers, leasing agents, administrative assistants, and maintenance coordinators.",
     "regions": [
       "SCC"
     ],
@@ -6037,7 +6037,7 @@
   {
     "name": "Towbes Group",
     "sector": "Real Estate",
-    "description": "The Towbes Group is a real estate development and property management company.",
+    "description": "The Towbes Group is a real estate company specializing in both residential and commercial properties. They are involved in the development, leasing, and management of various real estate assets. CTE students could find roles in property management, administrative support, maintenance services, or real estate marketing.",
     "regions": [
       "SCC"
     ],
@@ -6056,7 +6056,7 @@
   {
     "name": "Village Properties",
     "sector": "Real Estate",
-    "description": "Village Properties is a real estate brokerage firm serving the Santa Barbara area.",
+    "description": "Village Properties is a top-producing independent real estate company in Santa Barbara County, representing buyers and sellers for over 26 years. With over 180 agents, it operates at a significant regional scale, recently expanding into commercial real estate. CTE-relevant roles include real estate agents, administrative support, marketing specialists, and property management assistants.",
     "regions": [
       "SCC"
     ],
@@ -6075,7 +6075,7 @@
   {
     "name": "Gigavac",
     "sector": "Professional Services",
-    "description": "Gigavac is a company that designs and manufactures high-voltage relays and contactors.",
+    "description": "Gigavac manufactures high-voltage relays and contactors for various applications, indicating a specialized manufacturing operation. The company likely operates on a global scale given its niche product. CTE-relevant roles include manufacturing technicians, electrical assembly workers, quality control inspectors, and sales support.",
     "regions": [
       "SCC"
     ],
@@ -6094,7 +6094,7 @@
   {
     "name": "Isa Bird",
     "sector": "Professional Services",
-    "description": "Isa Bird is an individual or sole proprietorship, likely providing specialized services.",
+    "description": "ISA BIRD is a professional services entity, though its specific area of expertise is not immediately clear from the homepage content. The company likely utilizes digital tools for marketing and operations. Potential CTE roles might include administrative support, digital marketing assistance, or client service coordination depending on the service offered.",
     "regions": [
       "SCC"
     ],
@@ -6108,7 +6108,7 @@
   {
     "name": "L3Harris Technologies",
     "sector": "Professional Services",
-    "description": "L3Harris Technologies is an aerospace and defense technology innovator.",
+    "description": "L3Harris Technologies is a global aerospace and defense technology innovator, focused on developing advanced solutions for complex challenges. The company operates on a large scale, contributing to national security and commercial applications. CTE students could explore careers in engineering technology, advanced manufacturing, IT support, and skilled trades within this high-tech environment.",
     "regions": [
       "SCC"
     ],
@@ -6146,7 +6146,7 @@
   {
     "name": "Commission Junction",
     "sector": "Professional Services",
-    "description": "Commission Junction is an affiliate marketing network connecting advertisers with publishers.",
+    "description": "Commission Junction (CJ) is the world's largest and most established affiliate marketing network, connecting brands with publishers globally. With over 700 associates across 7 countries and reaching over 1 billion digital consumers, it operates on a vast international scale. CTE-relevant roles include digital marketing specialists, data analysts, client support, business development, and software development and engineering roles.",
     "regions": [
       "SCC"
     ],
@@ -6165,7 +6165,7 @@
   {
     "name": "Cottage Health",
     "sector": "Professional Services",
-    "description": "Cottage Health is a non-profit hospital system providing comprehensive medical services.",
+    "description": "Cottage Health is a healthcare system offering a wide range of services, including hospitals, urgent care centers, clinics, and virtual visits. The organization provides comprehensive medical care to its community. CTE students can pursue numerous roles in patient care, medical administration, health information technology, and facilities support.",
     "regions": [
       "SCC"
     ],
@@ -6184,7 +6184,7 @@
   {
     "name": "Allthenticate",
     "sector": "Administrative Services",
-    "description": "Allthenticate is a technology company developing secure authentication solutions.",
+    "description": "Allthenticate delivers advanced cybersecurity solutions, specializing in passwordless SSH, Single Sign-On (SSO), and access control for Windows, Mac, and Linux systems. This technology company helps businesses enhance their security and streamline access management. CTE students could find opportunities in cybersecurity, IT support, network administration, and technical sales roles.",
     "regions": [
       "SCC"
     ],
@@ -6203,7 +6203,7 @@
   {
     "name": "Big Green Cleaning",
     "sector": "Administrative Services",
-    "description": "Big Green Cleaning is a cleaning service company offering eco-friendly cleaning solutions.",
+    "description": "Big Green Cleaning offers professional cleaning services, likely emphasizing environmentally friendly practices. The company serves various clients with their custodial and maintenance needs. CTE students interested in facilities services, business operations, or client management could find relevant opportunities.",
     "regions": [
       "SCC"
     ],
@@ -6221,7 +6221,7 @@
   {
     "name": "Alice Shaw Elementary School",
     "sector": "Education",
-    "description": "Alice Shaw Elementary School is an educational institution providing elementary education.",
+    "description": "Alice Shaw Elementary School is part of the Santa Maria-Bonita School District, providing foundational education for elementary students. The school focuses on academic and developmental growth within its community. CTE opportunities include educational support, administrative roles, IT assistance, and facilities maintenance.",
     "regions": [
       "SCC"
     ],
@@ -6239,7 +6239,7 @@
   {
     "name": "Canalino Elementary School",
     "sector": "Education",
-    "description": "Canalino Elementary School is an educational institution providing elementary education.",
+    "description": "Canalino Elementary School provides elementary education, likely integrating modern educational technologies based on the content. It focuses on fostering student development and learning within a structured environment. CTE students could find roles in educational support, administrative services, IT helpdesk for school systems, or facilities and nutrition services.",
     "regions": [
       "SCC"
     ],
@@ -6257,7 +6257,7 @@
   {
     "name": "Dos Pueblos High School",
     "sector": "Education",
-    "description": "Dos Pueblos High School is an educational institution providing secondary education.",
+    "description": "Dos Pueblos High School provides secondary education, fostering academic excellence and student development within a comprehensive high school setting. The school supports a large student body and offers various programs and services. CTE students could engage in educational support, administrative roles, IT assistance, and facilities or food services.",
     "regions": [
       "SCC"
     ],
@@ -6275,7 +6275,7 @@
   {
     "name": "Ernest Righetti High School",
     "sector": "Education",
-    "description": "Ernest Righetti High School is an educational institution providing secondary education.",
+    "description": "Ernest Righetti High School delivers secondary education, aiming to prepare students for college and careers through academic programs including Advanced Placement. The school operates with a full complement of staff to serve its student population. CTE students can explore opportunities in educational support, administrative services, IT, facilities, and transportation roles like bus driving.",
     "regions": [
       "SCC"
     ],
@@ -6293,7 +6293,7 @@
   {
     "name": "Goleta Union Elementary School District",
     "sector": "Education",
-    "description": "Goleta Union Elementary School District oversees elementary schools in the Goleta area.",
+    "description": "Goleta Union Elementary School District provides public education for elementary students in the Goleta area. As a school district, it encompasses multiple schools and serves a substantial student population. CTE-relevant roles include paraeducators, administrative support staff, IT technicians, and food service and custodial personnel.",
     "regions": [
       "SCC"
     ],
@@ -6311,7 +6311,7 @@
   {
     "name": "Hope Elementary School District",
     "sector": "Education",
-    "description": "Hope Elementary School District oversees elementary schools in its designated area.",
+    "description": "Hope Elementary School District is responsible for educating elementary school children in Santa Barbara, aiming to foster lifelong learning. This district manages multiple elementary schools. CTE-relevant roles include instructional assistants, administrative staff, health services support, and maintenance workers.",
     "regions": [
       "SCC"
     ],
@@ -6329,7 +6329,7 @@
   {
     "name": "Joe Nightingale Elementary School",
     "sector": "Education",
-    "description": "Joe Nightingale Elementary School is an educational institution providing elementary education.",
+    "description": "Joe Nightingale Elementary School is an educational institution operating within the Santa Maria-Bonita School District, providing elementary-level instruction. The school contributes to the district's strategic goals for student success. CTE opportunities include educational support, administrative assistance, IT, and facilities or food services within the school environment.",
     "regions": [
       "SCC"
     ],
@@ -6365,7 +6365,7 @@
   {
     "name": "Laguna Blanca School",
     "sector": "Education",
-    "description": "Laguna Blanca School is an independent K-12 school offering a comprehensive educational program.",
+    "description": "Laguna Blanca School is an educational institution with a focus on both academic and athletic development, evidenced by its calendars and programs. The school serves its students through a dedicated faculty and staff. CTE students could explore roles in educational support, administrative functions, athletic program assistance, and IT or facilities management.",
     "regions": [
       "SCC"
     ],
@@ -6384,7 +6384,7 @@
   {
     "name": "Lakeview Junior High School",
     "sector": "Education",
-    "description": "Lakeview Junior High School is an educational institution providing middle school education.",
+    "description": "Lakeview Junior High School is part of the Santa Maria-Bonita School District, providing education for junior high students. The school contributes to the district's educational objectives and strategic plan. CTE opportunities include educational support, administrative assistance, IT, and facilities or food services within the school environment.",
     "regions": [
       "SCC"
     ],
@@ -6402,7 +6402,7 @@
   {
     "name": "Liberty Elementary School",
     "sector": "Education",
-    "description": "Liberty Elementary School is an educational institution providing elementary education.",
+    "description": "Liberty Elementary School is an educational institution dedicated to providing elementary education and various student support programs, including after-school activities. The school is likely part of a broader district, working to engage parents and students. CTE students could find roles in educational support, administrative functions, IT, facilities, and after-school program coordination.",
     "regions": [
       "SCC"
     ],
@@ -6439,7 +6439,7 @@
   {
     "name": "Montecito Union Elementary School",
     "sector": "Education",
-    "description": "Montecito Union Elementary School is an educational institution providing elementary education.",
+    "description": "Montecito Union Elementary School is an educational institution focused on providing elementary education. It serves its student community with a dedicated learning environment. CTE students could find relevant experience in educational support, administrative services, IT assistance, and facilities or food services.",
     "regions": [
       "SCC"
     ],
@@ -6457,7 +6457,7 @@
   {
     "name": "Peabody Charter School",
     "sector": "Education",
-    "description": "Peabody Charter School is a public charter elementary school.",
+    "description": "Peabody Charter School is an educational institution providing a distinct learning environment within the public education system. The school aims to foster student growth and development through its specific charter programs. CTE students could find opportunities in educational support, administrative roles, IT assistance, and facilities or food services.",
     "regions": [
       "SCC"
     ],
@@ -6475,7 +6475,7 @@
   {
     "name": "Pioneer Valley High School",
     "sector": "Education",
-    "description": "Pioneer Valley High School is an educational institution providing secondary education.",
+    "description": "Pioneer Valley High School offers comprehensive secondary education, including Advanced Placement and AVID programs, preparing students for future academic and career paths. The school maintains a robust environment with various support services like transportation and parent involvement. CTE students could pursue roles in educational support, administrative services, IT, facilities, transportation, and athletic program assistance.",
     "regions": [
       "SCC"
     ],
@@ -6493,7 +6493,7 @@
   {
     "name": "San Marcos High School",
     "sector": "Education",
-    "description": "San Marcos High School is an educational institution providing secondary education.",
+    "description": "San Marcos High School is a secondary educational institution operating within the Santa Barbara Unified School District. The school is governed by district policies and leadership to provide a structured learning environment. CTE students could find opportunities in educational support, administrative assistance, IT, and facilities or food services within the school environment.",
     "regions": [
       "SCC"
     ],
@@ -6511,7 +6511,7 @@
   {
     "name": "Sanchez Elementary School",
     "sector": "Education",
-    "description": "Sanchez Elementary School is an educational institution providing elementary education.",
+    "description": "Sanchez Elementary School is an educational institution operating within the Santa Maria-Bonita School District, dedicated to elementary-level education. The school aligns with the district's strategic goals for student achievement and development. CTE opportunities include educational support, administrative assistance, IT, and facilities or food services within the school environment.",
     "regions": [
       "SCC"
     ],
@@ -6529,7 +6529,7 @@
   {
     "name": "Santa Barbara High School",
     "sector": "Education",
-    "description": "Santa Barbara High School is an educational institution providing secondary education.",
+    "description": "Santa Barbara High School provides secondary education, fostering a dynamic learning environment with academic programs and a strong connection to its alumni community. The school manages various operational aspects from registration to campus tours. CTE students could find roles in educational support, administrative services, IT, facilities, and communications or event coordination.",
     "regions": [
       "SCC"
     ],
@@ -6566,7 +6566,7 @@
   {
     "name": "Santa Maria Elementary School District",
     "sector": "Education",
-    "description": "Santa Maria Elementary School District oversees elementary schools in the Santa Maria area.",
+    "description": "The Santa Maria Elementary School District operates as part of the larger Santa Maria-Bonita School District, providing educational governance and support for its elementary schools. It oversees school board operations, policies, and strategic planning for student success. CTE students could pursue opportunities in educational administration, district-level IT support, facilities management, or human resources.",
     "regions": [
       "SCC"
     ],
@@ -6584,7 +6584,7 @@
   {
     "name": "Santa Maria High School",
     "sector": "Education",
-    "description": "Santa Maria High School is an educational institution providing secondary education.",
+    "description": "Santa Maria High School offers comprehensive secondary education, emphasizing a safe and supportive learning environment for its students. The school operates with a full administrative team and various services including bus transportation. CTE students could find roles in educational support, administrative assistance, IT, facilities management, bus driving, or school safety.",
     "regions": [
       "SCC"
     ],
@@ -6602,7 +6602,7 @@
   {
     "name": "Santa Maria-Bonita School District",
     "sector": "Education",
-    "description": "Santa Maria-Bonita School District oversees public schools in the Santa Maria and Bonita areas.",
+    "description": "The Santa Maria-Bonita School District governs and supports a network of schools, overseeing educational policies, strategic planning, and community engagement. The district has a board, superintendent, and various administrative functions to serve its student population. CTE students can pursue opportunities in educational administration, district-level IT, human resources, or facilities management.",
     "regions": [
       "SCC"
     ],
@@ -6621,7 +6621,7 @@
   {
     "name": "Santa Ynez High School",
     "sector": "Education",
-    "description": "Santa Ynez High School is an educational institution providing secondary education.",
+    "description": "Santa Ynez Valley Union High School provides secondary education, offering academic programs alongside a variety of student services, including health and wellness support. The school is supported by its administration and a district office, catering to a diverse student body. CTE students could find roles in educational support, administrative assistance, IT, facilities, transportation, or health services support.",
     "regions": [
       "SCC"
     ],
@@ -6658,7 +6658,7 @@
   {
     "name": "Music Academy of the West",
     "sector": "Education",
-    "description": "Music Academy of the West is a renowned summer school and festival for classical music training.",
+    "description": "The Music Academy of the West is an educational institution dedicated to advanced music training and performance. It likely hosts various events and requires a skilled team to support its artistic mission. CTE students could find opportunities in event management, audio-visual technical support, marketing, and administrative roles.",
     "regions": [
       "SCC"
     ],
@@ -6677,7 +6677,7 @@
   {
     "name": "Isolite Systems",
     "sector": "Healthcare",
-    "description": "Isolite Systems is a dental company that manufactures and sells dental isolation systems.",
+    "description": "Isolite Systems specializes in providing emergency lighting solutions, boasting 35 years of expertise in the field. The company focuses on safety and reliable illumination for various environments. CTE students could find opportunities in electrical technology, manufacturing, quality control, sales, or logistics support.",
     "regions": [
       "SCC"
     ],
@@ -6715,7 +6715,7 @@
   {
     "name": "Farmacy",
     "sector": "Healthcare",
-    "description": "Farmacy is a restaurant focused on fresh, local ingredients.",
+    "description": "Farmacy, operating in the healthcare sector, is presumed to provide pharmacy-related services, though specific details are not available from the homepage content provided. The company likely focuses on dispensing medications or healthcare products. CTE students could pursue careers as pharmacy technicians, administrative assistants, or in customer service roles.",
     "regions": [
       "SCC"
     ],
@@ -6732,7 +6732,7 @@
   {
     "name": "Visiting Nurses Santa Barbara",
     "sector": "Healthcare",
-    "description": "Visiting Nurses Santa Barbara provides home healthcare and hospice services.",
+    "description": "The provided content consists solely of JavaScript code, which does not contain descriptive information about what Visiting Nurses Santa Barbara does, its scale, or CTE-relevant roles. Therefore, a description cannot be generated from the given text.",
     "regions": [
       "SCC"
     ],
@@ -6769,7 +6769,7 @@
   {
     "name": "Marian Extended Care Center",
     "sector": "Healthcare",
-    "description": "Marian Extended Care Center offers skilled nursing and rehabilitation services.",
+    "description": "Marian Extended Care Center is part of Marian Regional Medical Center in Santa Maria, CA, operating under Dignity Health, a large healthcare system. Dignity Health delivers patient-centered experiences across California, Arizona, and Nevada, indicating a broad operational scale. CTE-relevant roles include nursing assistants, medical records specialists, administrative support, and various therapy aides.",
     "regions": [
       "SCC"
     ],
@@ -6825,7 +6825,7 @@
   {
     "name": "Solvang Lutheran Home",
     "sector": "Healthcare",
-    "description": "Solvang Lutheran Home is a senior living community offering various levels of care.",
+    "description": "Solvang Lutheran Home, part of Atterdag Village, is a senior living community offering various levels of care to residents. It provides a range of healthcare and supportive services. CTE-relevant roles include certified nursing assistants, caregivers, activities coordinators, dietary staff, and environmental services personnel.",
     "regions": [
       "SCC"
     ],
@@ -6843,7 +6843,7 @@
   {
     "name": "Vista Del Monte Retirement Community",
     "sector": "Healthcare",
-    "description": "Vista Del Monte Retirement Community offers independent and assisted living services.",
+    "description": "The provided content consists solely of encoded or diagnostic data, which does not contain descriptive information about what Vista Del Monte Retirement Community does, its scale, or CTE-relevant roles. Therefore, a description cannot be generated from the given text.",
     "regions": [
       "SCC"
     ],
@@ -6879,7 +6879,7 @@
   {
     "name": "Mission Terrace",
     "sector": "Healthcare",
-    "description": "Mission Terrace provides skilled nursing and rehabilitation services.",
+    "description": "Mission Terrace Convalescent Hospital provides convalescent care services in Santa Barbara, CA. While their website is under construction, it indicates their focus on patient care. CTE-relevant roles would include Certified Nursing Assistants, dietary staff, and administrative support.",
     "regions": [
       "SCC"
     ],
@@ -6897,7 +6897,7 @@
   {
     "name": "Samarkand",
     "sector": "Healthcare",
-    "description": "Samarkand is a continuing care retirement community.",
+    "description": "Samarkand is a Front Porch retirement community, offering residential living, assisted living, and skilled nursing care. This community provides a comprehensive range of services for seniors. CTE-relevant roles include certified nursing assistants, caregivers, dining services staff, activities coordinators, and maintenance personnel.",
     "regions": [
       "SCC"
     ],
@@ -6970,7 +6970,7 @@
   {
     "name": "Santa Barbara Recovery",
     "sector": "Healthcare",
-    "description": "Santa Barbara Recovery provides addiction treatment and recovery services.",
+    "description": "The provided content consists solely of JavaScript code, which does not contain descriptive information about what Santa Barbara Recovery does, its scale, or CTE-relevant roles. Therefore, a description cannot be generated from the given text.",
     "regions": [
       "SCC"
     ],
@@ -7024,7 +7024,7 @@
   {
     "name": "River Course Golf Course",
     "sector": "Arts & Entertainment",
-    "description": "River Course Golf Course is a public golf facility.",
+    "description": "River Course at the Alisal is an 18-hole public golf club located in Solvang, CA, offering recreational golfing experiences. This facility caters to the local community and visitors. CTE-relevant roles include groundskeeping and landscape maintenance, culinary and hospitality positions, and administrative support for club operations.",
     "regions": [
       "SCC"
     ],
@@ -7041,7 +7041,7 @@
   {
     "name": "Swell Santa Barbara Athletic Club",
     "sector": "Arts & Entertainment",
-    "description": "Swell Santa Barbara Athletic Club is a fitness and recreation facility.",
+    "description": "Swell Clubs operates athletic clubs in both Goleta and Santa Barbara, offering fitness and wellness services. These clubs cater to local memberships across their multiple locations. CTE-relevant roles include fitness trainers, customer service representatives, facilities maintenance, and administrative staff.",
     "regions": [
       "SCC"
     ],
@@ -7095,7 +7095,7 @@
   {
     "name": "Four Seasons Resort",
     "sector": "Hospitality & Food Service",
-    "description": "Four Seasons Resort is a luxury hotel offering accommodations, dining, and amenities.",
+    "description": "Four Seasons Resort The Biltmore Santa Barbara is a luxury resort providing high-end hospitality services including accommodation and amenities. As part of the Four Seasons brand, it maintains extensive operations catering to a sophisticated clientele. CTE-relevant roles encompass culinary arts, hotel management, guest services, housekeeping, maintenance, and spa and recreation services.",
     "regions": [
       "SCC"
     ],
@@ -7114,7 +7114,7 @@
   {
     "name": "Hilton Santa Barbara",
     "sector": "Hospitality & Food Service",
-    "description": "Hilton Santa Barbara is a hotel offering accommodations, dining, and event spaces.",
+    "description": "Hilton Santa Barbara (referring to Hilton Santa Barbara Beachfront Resort) is a prominent resort offering luxury accommodation and hospitality services. As part of the global Hilton brand, it operates as a large-scale hotel property. CTE-relevant roles include front office associates, housekeeping, culinary professionals, event staff, and spa service providers.",
     "regions": [
       "SCC"
     ],
@@ -7132,7 +7132,7 @@
   {
     "name": "Kimpton Canary Santa Barbara",
     "sector": "Hospitality & Food Service",
-    "description": "Kimpton Canary Santa Barbara is a boutique hotel offering accommodations and dining.",
+    "description": "Kimpton Canary Hotel is a luxury hotel in Santa Barbara offering accommodations, a rooftop pool, wellness services, and event spaces. It features an on-site restaurant, Finch & Fork, and hosts meetings and weddings. CTE-relevant roles include culinary positions, event planning, hospitality management, front desk operations, housekeeping, and facilities maintenance.",
     "regions": [
       "SCC"
     ],
@@ -7150,7 +7150,7 @@
   {
     "name": "Mar Monte Hotel, The Unbound Collection by Hyatt",
     "sector": "Hospitality & Food Service",
-    "description": "Mar Monte Hotel is a luxury hotel offering accommodations, dining, and event spaces.",
+    "description": "The provided content consists solely of JavaScript code, which does not contain descriptive information about what Mar Monte Hotel does, its scale, or CTE-relevant roles. Therefore, a description cannot be generated from the given text.",
     "regions": [
       "SCC"
     ],
@@ -7187,7 +7187,7 @@
   {
     "name": "San Ysidro Ranch",
     "sector": "Hospitality & Food Service",
-    "description": "San Ysidro Ranch is a luxury resort offering accommodations, dining, and spa services.",
+    "description": "San Ysidro Ranch is a luxury resort located in Santa Barbara, offering high-end accommodations and experiences. As a 'Ty Warner Property,' it signifies a prestigious and well-resourced operation. CTE-relevant roles include culinary arts, resort management, guest services, landscaping, and maintenance.",
     "regions": [
       "SCC"
     ],
@@ -7224,7 +7224,7 @@
   {
     "name": "Chick-Fil-A",
     "sector": "Hospitality & Food Service",
-    "description": "Chick-Fil-A is a fast-food restaurant chain specializing in chicken sandwiches.",
+    "description": "Chick-fil-A is a well-known fast-food chain specializing in chicken sandwiches and other menu items available for pickup or delivery. As a national brand with numerous locations, it operates on a large scale. CTE-relevant roles include food preparation, customer service, restaurant management, and logistics.",
     "regions": [
       "SCC"
     ],
@@ -7242,7 +7242,7 @@
   {
     "name": "El Encanto Dining Room & Terrace",
     "sector": "Hospitality & Food Service",
-    "description": "El Encanto Dining Room & Terrace is a fine dining restaurant located within a luxury hotel.",
+    "description": "El Encanto Dining Room & Terrace is a high-end dining establishment located within the luxury Belmond El Encanto hotel. It serves as a key component of the hotel's hospitality offerings. CTE-relevant roles include cooks, waitstaff, bartenders, hosts/hostesses, and culinary support staff.",
     "regions": [
       "SCC"
     ],
@@ -7258,7 +7258,7 @@
   {
     "name": "Harbor Restaurant",
     "sector": "Hospitality & Food Service",
-    "description": "Harbor Restaurant is a restaurant offering seafood and waterfront dining.",
+    "description": "The Harbor Restaurant is a food service establishment, likely located in a harbor area, offering dining experiences to its patrons. Its online presence suggests it operates as a single restaurant. CTE-relevant roles include culinary staff, waitstaff, hosts, and administrative support for restaurant operations.",
     "regions": [
       "SCC"
     ],
@@ -7274,7 +7274,7 @@
   {
     "name": "Raising Cane's Chicken Fingers",
     "sector": "Hospitality & Food Service",
-    "description": "Raising Cane's Chicken Fingers is a fast-food restaurant chain specializing in chicken fingers.",
+    "description": "Raising Cane's Chicken Fingers is a fast-food restaurant chain specializing in chicken finger meals. It operates numerous restaurant locations as a national brand. CTE-relevant roles include crew members (food preparation, cashiering, customer service) and shift leadership positions.",
     "regions": [
       "SCC"
     ],
@@ -7292,7 +7292,7 @@
   {
     "name": "Alcohol, Drug & Mental Health Services",
     "sector": "Government",
-    "description": "Alcohol, Drug & Mental Health Services is a government agency providing behavioral health services.",
+    "description": "Alcohol, Drug & Mental Health Services operates under Santa Barbara County's Behavioral Wellness department, providing public behavioral health services. As an official government entity, it serves the entire county's population. CTE-relevant roles include counseling support, administrative assistants, and community outreach coordinators.",
     "regions": [
       "SCC"
     ],
@@ -7310,7 +7310,7 @@
   {
     "name": "City of Santa Barbara",
     "sector": "Government",
-    "description": "The City of Santa Barbara is a municipal government providing public services to its residents.",
+    "description": "The City of Santa Barbara is a local government entity responsible for providing municipal services and governance to its residents. It manages a wide array of public services and infrastructure within its jurisdiction. CTE-relevant roles include administrative support, public works maintenance, urban planning support, and various departmental technical roles.",
     "regions": [
       "SCC"
     ],
@@ -7416,7 +7416,7 @@
   {
     "name": "Lompoc Federal Correctional Complex",
     "sector": "Government",
-    "description": "The Lompoc Federal Correctional Complex is a federal prison facility.",
+    "description": "Lompoc Federal Correctional Complex is a facility operated by the Federal Bureau of Prisons, part of the United States government. It is responsible for the incarceration and management of federal inmates. CTE-relevant roles include correctional officers, administrative staff, maintenance workers, and healthcare support positions within the complex.",
     "regions": [
       "SCC"
     ],
@@ -7434,7 +7434,7 @@
   {
     "name": "Lompoc Police Department",
     "sector": "Government",
-    "description": "The Lompoc Police Department is a law enforcement agency serving the city of Lompoc.",
+    "description": "The Lompoc Police Department is a local law enforcement agency serving the city of Lompoc, CA. It is responsible for public safety, crime prevention, and emergency response within its jurisdiction. CTE-relevant roles include police services assistants, dispatchers, records specialists, and administrative support staff.",
     "regions": [
       "SCC"
     ],
@@ -7451,7 +7451,7 @@
   {
     "name": "Santa Barbara Police Department",
     "sector": "Government",
-    "description": "The Santa Barbara Police Department is a law enforcement agency serving the city of Santa Barbara.",
+    "description": "The Santa Barbara Police Department is a local law enforcement agency operating under the City of Santa Barbara, responsible for ensuring public safety and enforcing laws. It serves the residents and visitors of Santa Barbara. CTE-relevant roles include police services assistants, dispatchers, records specialists, and administrative support staff.",
     "regions": [
       "SCC"
     ],
@@ -7468,7 +7468,7 @@
   {
     "name": "Santa Maria City Police Department",
     "sector": "Government",
-    "description": "The Santa Maria City Police Department is a law enforcement agency serving the city of Santa Maria.",
+    "description": "The Santa Maria City Police Department is the municipal law enforcement agency serving the City of Santa Maria. It is a full-service department with 140 sworn officers and 56 civilian staff, handling approximately 160,000 calls for service annually. CTE-relevant roles include police officers, dispatchers, records specialists, and crime scene technicians.",
     "regions": [
       "SCC"
     ],
@@ -7485,7 +7485,7 @@
   {
     "name": "United States Penitentiary",
     "sector": "Government",
-    "description": "A United States Penitentiary is a high-security federal prison.",
+    "description": "The United States Penitentiary is a facility operated by the Federal Bureau of Prisons, part of the United States government. It is responsible for the incarceration and management of federal inmates. CTE-relevant roles include correctional officers, administrative staff, maintenance workers, and healthcare support positions within the complex.",
     "regions": [
       "SCC"
     ],
@@ -7520,7 +7520,7 @@
   {
     "name": "Solimar Farms",
     "sector": "Agriculture",
-    "description": "Solimar Farms is an agricultural operation involved in crop production.",
+    "description": "Solimar Farms is an agricultural producer primarily focused on growing and distributing various crops, often emphasizing sustainable practices. While specific scale details may vary, they contribute to the local and regional food supply. CTE-relevant roles include agricultural technicians, farm managers, equipment operators, and horticulture specialists.",
     "regions": [
       "SCC"
     ],
@@ -7537,7 +7537,7 @@
   {
     "name": "Muranaka Farm",
     "sector": "Agriculture",
-    "description": "Muranaka Farm is an agricultural operation involved in crop production.",
+    "description": "Muranaka Farm specializes in growing and shipping bunched green onions and other specialty vegetables, having supplied quality produce since 1950. They operate with shipping from Los Angeles. CTE-relevant roles include agricultural production, harvesting, packaging, logistics support, and quality control.",
     "regions": [
       "SCC"
     ],
@@ -7554,7 +7554,7 @@
   {
     "name": "Dairy Farmers of America",
     "sector": "Agriculture",
-    "description": "Dairy Farmers of America is a national milk marketing cooperative and dairy food processor.",
+    "description": "Dairy Farmers of America (DFA) is a farmer-owned dairy cooperative engaged in processing and marketing dairy products. It represents a large collective of dairy farmers, operating on a national scale. CTE-relevant roles include agricultural technicians, processing plant operators, quality control specialists, and logistics and distribution support.",
     "regions": [
       "SCC"
     ],
@@ -7592,7 +7592,7 @@
   {
     "name": "C.D. Lyon Construction",
     "sector": "Construction",
-    "description": "C.D. Lyon Construction is a construction company specializing in building projects.",
+    "description": "C.D. Lyon Inc. is a full-service general contractor based in Ventura, CA, with over 25 years of experience in the construction industry. They provide quality and excellence in various construction projects. CTE-relevant roles include construction trades, project management support, administrative roles, and skilled equipment operators.",
     "regions": [
       "SCC"
     ],
@@ -7609,7 +7609,7 @@
   {
     "name": "CEMEX",
     "sector": "Construction",
-    "description": "CEMEX is a global building materials company providing cement, ready-mix concrete, and aggregates.",
+    "description": "CEMEX is a global building materials company providing cement, ready-mix concrete, and aggregates. As a corporate entity, it operates on an international scale, supplying materials for diverse construction needs. CTE-relevant roles include industrial operations, logistics, equipment maintenance, and quality control technicians.",
     "regions": [
       "SCC"
     ],
@@ -7628,7 +7628,7 @@
   {
     "name": "Toro Enterprises",
     "sector": "Construction",
-    "description": "Toro Enterprises is a construction and general contracting company.",
+    "description": "Toro Enterprises Inc. specializes in 'Building Better Roads,' focusing on road construction and infrastructure projects. Their work contributes to developing and maintaining transportation networks. CTE-relevant roles include heavy equipment operators, civil engineering technicians, construction laborers, and site supervisors.",
     "regions": [
       "SCC"
     ],
@@ -7662,7 +7662,7 @@
   {
     "name": "Taft Electric Company",
     "sector": "Construction",
-    "description": "Taft Electric Company is an electrical contracting firm.",
+    "description": "The provided content consists solely of JavaScript code, which does not contain descriptive information about what Taft Electric Company does, its scale, or CTE-relevant roles. Therefore, a description cannot be generated from the given text.",
     "regions": [
       "SCC"
     ],
@@ -7680,7 +7680,7 @@
   {
     "name": "Venco Western",
     "sector": "Construction",
-    "description": "Venco Western is a construction company specializing in underground utilities and infrastructure.",
+    "description": "Venco Western, Inc. specializes in landscape construction, design, property maintenance, and irrigation/water management for HOA, commercial, government, and municipal properties. Serving Santa Barbara, Ventura, and Los Angeles Counties since 1960, they emphasize efficient horticulture techniques. CTE-relevant roles include landscape designers, irrigation technicians, horticulturists, groundskeepers, and administrative support.",
     "regions": [
       "SCC"
     ],
@@ -7697,7 +7697,7 @@
   {
     "name": "Millworks By Design",
     "sector": "Construction",
-    "description": "Millworks By Design is a custom millwork and cabinetry manufacturer.",
+    "description": "Millworks By Design specializes in custom millwork, contributing to the construction and interior design sectors. They provide custom fabrication and installation services for architectural elements. CTE-relevant roles include cabinetmakers, millworkers, carpenters, and design/drafting assistants.",
     "regions": [
       "SCC"
     ],
@@ -7714,7 +7714,7 @@
   {
     "name": "Rolls Scaffold",
     "sector": "Construction",
-    "description": "Rolls Scaffold provides scaffolding rental and erection services.",
+    "description": "Rolls Scaffold provides scaffolding services, which are essential for various construction and maintenance projects requiring elevated access. They support the construction industry by offering temporary structures. CTE-relevant roles include scaffold builders, equipment operators, and logistics support staff.",
     "regions": [
       "SCC"
     ],
@@ -7730,7 +7730,7 @@
   {
     "name": "Tidwell Excavating",
     "sector": "Construction",
-    "description": "Tidwell Excavating is an excavation and site work contractor.",
+    "description": "Tidwell Excavating specializes in excavation services for electrical utility and telecommunications infrastructure projects. They play a critical role in developing and maintaining essential services. CTE-relevant roles include heavy equipment operators, utility line installers, groundworkers, and project support.",
     "regions": [
       "SCC"
     ],
@@ -7746,7 +7746,7 @@
   {
     "name": "Ventura Unified School District",
     "sector": "Construction",
-    "description": "Ventura Unified School District provides public education services to students in the Ventura area.",
+    "description": "The Ventura Unified School District provides educational services to students across multiple schools in the Ventura area. They manage various academic and administrative functions for a significant student population. CTE-relevant roles within the district include administrative support, maintenance and facilities, IT support, and food service staff.",
     "regions": [
       "SCC"
     ],
@@ -7771,7 +7771,7 @@
   {
     "name": "Anacapa Foods",
     "sector": "Manufacturing",
-    "description": "Anacapa Foods is a food processing and distribution company.",
+    "description": "Anacapa Foods, LLC. is a manufacturer and distributor specializing in IQF (Individually Quick Frozen) strawberries under the Well Pict Berries brand. The company's operations involve food processing, manufacturing, and distribution, offering CTE-relevant roles in production, logistics, and quality assurance.",
     "regions": [
       "SCC"
     ],
@@ -7788,7 +7788,7 @@
   {
     "name": "J.M. Smucker Company",
     "sector": "Manufacturing",
-    "description": "The J.M. Smucker Company is a manufacturer of food products.",
+    "description": "The J.M. Smucker Co. is a large, publicly traded company manufacturing a wide array of food and beverage products, including frozen foods, coffee, pet foods, and sweet baked snacks. Their extensive operations involve food processing, production management, and distribution, creating numerous CTE opportunities in manufacturing, supply chain, and quality control.",
     "regions": [
       "SCC"
     ],
@@ -7806,7 +7806,7 @@
   {
     "name": "Poly-Tainer",
     "sector": "Manufacturing",
-    "description": "Poly-Tainer is a manufacturer of plastic containers.",
+    "description": "Poly-Tainer is a manufacturing company, likely specializing in the production of plastic containers. This business would involve processes such as injection molding, material handling, and quality assurance, offering CTE-relevant roles in manufacturing operations and maintenance.",
     "regions": [
       "SCC"
     ],
@@ -7824,7 +7824,7 @@
   {
     "name": "Amgen",
     "sector": "Manufacturing",
-    "description": "Amgen is a multinational biopharmaceutical company.",
+    "description": "Amgen is a global biotechnology company that pioneers the development and manufacturing of innovative medicines. Their operations involve advanced biomanufacturing processes, providing CTE opportunities in laboratory support, bioprocess technician roles, and specialized equipment maintenance.",
     "regions": [
       "SCC"
     ],
@@ -7843,7 +7843,7 @@
   {
     "name": "Hi-Temp Insulation",
     "sector": "Manufacturing",
-    "description": "Hi-Temp Insulation manufactures and installs high-temperature insulation products.",
+    "description": "Hi-Temp Insulation is a manufacturing company focused on producing high-temperature insulation materials. Their work involves material processing, fabrication, and quality control, offering CTE opportunities in manufacturing, specialized material production, and industrial applications.",
     "regions": [
       "SCC"
     ],
@@ -7878,7 +7878,7 @@
   {
     "name": "Milgard Manufacturing",
     "sector": "Manufacturing",
-    "description": "Milgard Manufacturing is a manufacturer of windows and patio doors.",
+    "description": "Milgard Manufacturing is a prominent West Coast manufacturer of windows and patio doors for both new construction and replacement projects. They operate multiple facilities and distribution centers, serving residential and commercial markets. CTE-relevant roles encompass manufacturing technicians, welders, assemblers, quality control specialists, and logistics coordinators.",
     "regions": [
       "SCC"
     ],
@@ -7896,7 +7896,7 @@
   {
     "name": "Parker Hannifin Products",
     "sector": "Manufacturing",
-    "description": "Parker Hannifin Products is a manufacturer of motion and control technologies and systems.",
+    "description": "Parker Hannifin is a global leader in motion and control technologies, manufacturing a wide range of products including hydraulic, pneumatic, and electromechanical components and systems. This involves advanced manufacturing processes, providing CTE-relevant roles in machining, assembly, maintenance, and technical support.",
     "regions": [
       "SCC"
     ],
@@ -7914,7 +7914,7 @@
   {
     "name": "N2Power",
     "sector": "Manufacturing",
-    "description": "N2Power designs and manufactures power supplies.",
+    "description": "N2Power, a Qualstar Corporation subsidiary, designs and manufactures high-efficiency, energy-dense power supplies for OEM markets globally. Their operations involve electronics manufacturing, assembly, and rigorous testing, offering CTE opportunities in electrical and electronics technician roles, as well as production and quality control.",
     "regions": [
       "SCC"
     ],
@@ -7932,7 +7932,7 @@
   {
     "name": "Teledyne Imaging Sensors",
     "sector": "Manufacturing",
-    "description": "Teledyne Imaging Sensors designs and manufactures advanced imaging sensors for various applications.",
+    "description": "Teledyne Imaging Sensors, part of Teledyne Technologies, specializes in the development and manufacturing of high-tech imaging sensors. Their work involves advanced precision manufacturing, optics, and electronics, creating CTE-relevant positions in cleanroom production, equipment operation, and quality assurance.",
     "regions": [
       "SCC"
     ],
@@ -7970,7 +7970,7 @@
   {
     "name": "PSI Bearing Operation",
     "sector": "Manufacturing",
-    "description": "PSI Bearing Operation manufactures bearings for various industrial applications.",
+    "description": "PSI Bearing Operation's website domain is currently listed for sale, indicating that the business does not have an active online presence to describe its operations.",
     "regions": [
       "SCC"
     ],
@@ -7988,7 +7988,7 @@
   {
     "name": "Haas Automation",
     "sector": "Manufacturing",
-    "description": "Haas Automation is a manufacturer of CNC machine tools.",
+    "description": "Haas Automation is one of the largest machine tool builders in the Western world, specializing in CNC machine tools and rotary products. They have a global presence, offering a wide range of vertical and horizontal machining centers, lathes, and rotary tables. CTE-relevant roles include CNC programmers, machinists, electrical technicians, mechanical engineers, and manufacturing assembly technicians.",
     "regions": [
       "SCC"
     ],
@@ -8006,7 +8006,7 @@
   {
     "name": "American Tooth",
     "sector": "Manufacturing",
-    "description": "American Tooth is a dental laboratory manufacturing dental prosthetics.",
+    "description": "American Tooth Industries manufactures dental products, specifically artificial teeth, with a focus on 'Made in the USA' production. Their operations likely involve precision manufacturing, materials processing, and quality control, offering CTE roles for dental laboratory technicians and specialized production operators.",
     "regions": [
       "SCC"
     ],
@@ -8041,7 +8041,7 @@
   {
     "name": "Dole Packaged Foods",
     "sector": "Wholesale",
-    "description": "This company processes and distributes packaged food products, primarily fruits and vegetables.",
+    "description": "Dole Packaged Foods is a global leader in sourcing, processing, distributing, and marketing healthy packaged fruit and food products. They operate on a large international scale, offering a variety of fruit snacks, juices, and frozen fruits to consumers worldwide. CTE-relevant roles could include food processing technicians, quality assurance specialists, logistics and supply chain managers, and marketing professionals.",
     "regions": [
       "SCC"
     ],
@@ -8060,7 +8060,7 @@
   {
     "name": "Ventura Pacific",
     "sector": "Wholesale",
-    "description": "This company is likely involved in agricultural production or processing in the Ventura region.",
+    "description": "Ventura Pacific is a wholesale company, though specific details about their operations and scale are not readily available through general web searches. Based on their industry, CTE-relevant roles could include logistics and supply chain management, warehousing operations, and sales and marketing, requiring skills in inventory management, transportation, and customer service.",
     "regions": [
       "SCC"
     ],
@@ -8079,7 +8079,7 @@
   {
     "name": "Pacific Beverage",
     "sector": "Wholesale",
-    "description": "This company distributes beverages.",
+    "description": "Pacific Beverage is a wholesale distributor. Given the nature of wholesale operations, the company likely operates on a regional scale, distributing various beverages. CTE-relevant roles would encompass logistics and distribution, warehouse management, sales and merchandising, and administrative support, requiring expertise in inventory control, transportation, and customer relations.",
     "regions": [
       "SCC"
     ],
@@ -8098,7 +8098,7 @@
   {
     "name": "Southland Sod Farms",
     "sector": "Wholesale",
-    "description": "This company cultivates and sells sod.",
+    "description": "Southland Sod Farms specializes in growing and selling 'Marathon SOD Grass,' indicating they are an agricultural business focused on turfgrass production and wholesale distribution. Their operations involve farming, irrigation management, and logistics, providing CTE-relevant opportunities in agricultural machinery operation, horticulture, and supply chain.",
     "regions": [
       "SCC"
     ],
@@ -8117,7 +8117,7 @@
   {
     "name": "First Auto Group",
     "sector": "Retail",
-    "description": "This is an automotive dealership group.",
+    "description": "First Auto Group is a multi-location car dealership operating in Simi Valley, Chatsworth, Thousand Oaks, Camarillo, and Moorpark, California, selling new and used vehicles. They offer CTE-relevant roles in automotive sales, service, maintenance, and parts management.",
     "regions": [
       "SCC"
     ],
@@ -8136,7 +8136,7 @@
   {
     "name": "First Nissan of Simi Valley",
     "sector": "Retail",
-    "description": "This is a Nissan automotive dealership.",
+    "description": "First Nissan of Simi Valley operates as an automotive dealership, specializing in the sale and service of Nissan vehicles. They provide CTE opportunities in automotive repair and maintenance, sales, and customer service roles.",
     "regions": [
       "SCC"
     ],
@@ -8155,7 +8155,7 @@
   {
     "name": "Lexus of Thousand Oaks",
     "sector": "Retail",
-    "description": "This is a Lexus automotive dealership.",
+    "description": "Lexus of Thousand Oaks is an automotive dealership providing sales and service for Lexus vehicles to customers in Thousand Oaks and surrounding California communities. The dealership offers CTE-relevant roles in automotive technology, luxury vehicle maintenance, and sales.",
     "regions": [
       "SCC"
     ],
@@ -8174,7 +8174,7 @@
   {
     "name": "Team Nissan",
     "sector": "Retail",
-    "description": "This is a Nissan automotive dealership.",
+    "description": "Team Nissan is a car dealership located in Vineland, NJ, offering new and used Nissan vehicles for sale. This business provides CTE opportunities for automotive technicians, sales professionals, and parts and service specialists.",
     "regions": [
       "SCC"
     ],
@@ -8193,7 +8193,7 @@
   {
     "name": "Harbor Freight Tools",
     "sector": "Retail",
-    "description": "This company is a retailer of tools and equipment.",
+    "description": "Harbor Freight Tools is a national retail chain selling a wide variety of tools and equipment for professional and DIY use. Their operations involve extensive inventory management, logistics, and customer service, providing CTE opportunities in retail management, sales, and supply chain support.",
     "regions": [
       "SCC"
     ],
@@ -8212,7 +8212,7 @@
   {
     "name": "Riviera Bronze",
     "sector": "Retail",
-    "description": "This company specializes in custom bronze fabrication.",
+    "description": "Riviera Bronze manufactures luxury steel windows and doors, focusing on high-end custom architectural solutions. This involves specialized metal fabrication, welding, and installation, offering CTE-relevant roles in advanced manufacturing, drafting, and skilled trades.",
     "regions": [
       "SCC"
     ],
@@ -8231,7 +8231,7 @@
   {
     "name": "Amazon Fresh",
     "sector": "Retail",
-    "description": "This is a grocery store chain operated by Amazon.",
+    "description": "Amazon Fresh is a grocery service offered by Amazon, providing fresh produce and groceries, likely through delivery and physical store locations. Its operations involve complex logistics, inventory management, and customer service, creating CTE opportunities in warehousing, delivery, and retail food handling.",
     "regions": [
       "SCC"
     ],
@@ -8250,7 +8250,7 @@
   {
     "name": "El Super",
     "sector": "Retail",
-    "description": "This is a grocery store chain.",
+    "description": "El Super operates as a supermarket chain, offering a variety of produce, meats, and general groceries. Their business involves retail management, food handling, and inventory control, providing CTE-relevant roles in supermarket operations, culinary arts, and customer service.",
     "regions": [
       "SCC"
     ],
@@ -8269,7 +8269,7 @@
   {
     "name": "Gelson's",
     "sector": "Retail",
-    "description": "This is an upscale grocery store chain.",
+    "description": "Gelson's Markets is a gourmet food market and deli chain primarily serving Southern California, offering high-quality produce, meats, and specialty items. Their operations provide CTE opportunities in culinary arts, retail management, food service, and customer relations.",
     "regions": [
       "SCC"
     ],
@@ -8288,7 +8288,7 @@
   {
     "name": "Grocery Outlet",
     "sector": "Retail",
-    "description": "This is a discount grocery store chain.",
+    "description": "Grocery Outlet is a supermarket chain specializing in discount groceries, providing a variety of food products at reduced prices. This business offers CTE-relevant roles in retail operations, inventory management, food handling, and customer service.",
     "regions": [
       "SCC"
     ],
@@ -8307,7 +8307,7 @@
   {
     "name": "Smart & Final Extra!",
     "sector": "Retail",
-    "description": "This is a warehouse-style grocery store chain.",
+    "description": "Smart & Final Extra! is a grocery store chain offering produce, meat, and general groceries in a warehouse-style format. Their operations include large-scale inventory management, supply chain coordination, and retail customer service, providing CTE opportunities in grocery retail, logistics, and food preparation.",
     "regions": [
       "SCC"
     ],
@@ -8326,7 +8326,7 @@
   {
     "name": "San Miguel Produce",
     "sector": "Retail",
-    "description": "This company grows and distributes fresh produce.",
+    "description": "San Miguel Produce, Inc. is involved in the agricultural sector, specializing in the cultivation and processing of produce. Their operations encompass farm management, harvesting, packaging, and distribution, offering CTE-relevant roles in agriculture, food safety, and logistics.",
     "regions": [
       "SCC"
     ],
@@ -8345,7 +8345,7 @@
   {
     "name": "Gold Coast Transit",
     "sector": "Transportation",
-    "description": "This is a public transportation agency serving the Gold Coast region.",
+    "description": "Gold Coast Transit District provides public transportation services, operating bus routes for communities within its district. Their operations require a workforce in vehicle maintenance, dispatch, and transit operations, offering CTE opportunities for diesel mechanics, bus operators, and logistics support.",
     "regions": [
       "SCC"
     ],
@@ -8364,7 +8364,7 @@
   {
     "name": "Roadrunner Shuttle & Limo Services",
     "sector": "Transportation",
-    "description": "This company provides shuttle and limousine transportation services.",
+    "description": "Roadrunner Shuttle & Limo Services provides professional transportation, including shuttle and limousine services for individuals and groups. Their business offers CTE-relevant roles in professional driving, vehicle maintenance, customer service, and dispatch operations.",
     "regions": [
       "SCC"
     ],
@@ -8383,7 +8383,7 @@
   {
     "name": "First Group",
     "sector": "Transportation",
-    "description": "This is a transportation company, likely operating bus or rail services.",
+    "description": "First Student, Inc. is a leading provider of student transportation, operating school bus services across various communities. The company's extensive fleet requires CTE-relevant roles in diesel and automotive mechanics, professional driving, dispatch, and fleet management.",
     "regions": [
       "SCC"
     ],
@@ -8402,7 +8402,7 @@
   {
     "name": "Technicolor",
     "sector": "Information & Media",
-    "description": "This company provides services and technologies for the entertainment and media industries.",
+    "description": "Technicolor is a global company providing various services to the media and entertainment industry, including post-production, visual effects, and content distribution. Their operations offer CTE opportunities in digital media production, audio/video editing, IT support, and animation.",
     "regions": [
       "SCC"
     ],
@@ -8421,7 +8421,7 @@
   {
     "name": "Oceanair Federal Credit Union",
     "sector": "Finance",
-    "description": "This is a member-owned financial cooperative providing banking services.",
+    "description": "Oceanair Federal Credit Union is a community-focused financial institution that offers a full range of personal and business banking, lending, credit card products, insurance, and wealth services in Ventura County. They emphasize personalized solutions and digital convenience, serving over 27,000 members with 129 full-time employees. CTE-relevant roles include positions in finance (tellers, loan officers), customer service, marketing, and IT support, requiring skills in financial literacy, data management, and digital technologies.",
     "regions": [
       "SCC"
     ],
@@ -8440,7 +8440,7 @@
   {
     "name": "Ventura County Credit Union",
     "sector": "Finance",
-    "description": "This is a member-owned financial cooperative providing banking services to Ventura County.",
+    "description": "Ventura County Credit Union is a financial institution serving Ventura County, California, providing banking services such as accounts and loans to its members. They offer CTE-relevant roles in financial services, member support, accounting, and information technology.",
     "regions": [
       "SCC"
     ],
@@ -8459,7 +8459,7 @@
   {
     "name": "Dignified Home Loans",
     "sector": "Finance",
-    "description": "This company provides home loan and mortgage services.",
+    "description": "Dignified Home Loans provides financial services specializing in home loans for individuals. This business offers CTE opportunities in loan origination and processing, financial advising, and customer service within the real estate finance sector.",
     "regions": [
       "SCC"
     ],
@@ -8478,7 +8478,7 @@
   {
     "name": "New York Life Insurance",
     "sector": "Finance",
-    "description": "This company provides life insurance and financial services.",
+    "description": "New York Life Insurance is a major financial services company providing trusted guidance and protection through various insurance products and financial planning services. They offer numerous CTE-relevant roles in insurance sales, customer service, claims processing, and financial advising.",
     "regions": [
       "SCC"
     ],
@@ -8497,7 +8497,7 @@
   {
     "name": "Coldwell Banker Residential",
     "sector": "Real Estate",
-    "description": "This is a residential real estate brokerage firm.",
+    "description": "Coldwell Banker Residential is a major real estate brokerage firm, providing residential real estate services across numerous markets. They operate on a significant scale with many agents and offices, assisting clients with buying, selling, and renting properties. CTE-relevant roles include real estate agents, administrative assistants, marketing coordinators, and property management support.",
     "regions": [
       "SCC"
     ],
@@ -8516,7 +8516,7 @@
   {
     "name": "Dahl Keli",
     "sector": "Real Estate",
-    "description": "This is likely a real estate agent or small real estate office.",
+    "description": "Keli Dahl is a real estate agent associated with a larger brokerage, focusing on residential property transactions in specific local markets. Her scale is individual within the broader real estate industry, serving clients with personalized buying and selling needs. CTE-relevant roles primarily involve real estate sales, marketing support, and client relationship management.",
     "regions": [
       "SCC"
     ],
@@ -8535,7 +8535,7 @@
   {
     "name": "Evolve Real Estate",
     "sector": "Real Estate",
-    "description": "This is a real estate brokerage firm.",
+    "description": "Evolve Real Estate is a real estate brokerage offering services for residential and potentially commercial property transactions within its operational region. They aim to provide comprehensive real estate solutions to clients. CTE-relevant roles include real estate agents, administrative support, and marketing specialists.",
     "regions": [
       "SCC"
     ],
@@ -8554,7 +8554,7 @@
   {
     "name": "RE/MAX Gold Coast",
     "sector": "Real Estate",
-    "description": "This is a real estate brokerage firm.",
+    "description": "RE/MAX Gold Coast is a real estate brokerage part of the global RE/MAX network, specializing in residential and commercial property sales and rentals. They operate with a team of agents, serving clients in the Ventura County area of California. CTE-relevant roles include real estate agents, administrative support, marketing coordinators, and transaction coordinators.",
     "regions": [
       "SCC"
     ],
@@ -8573,7 +8573,7 @@
   {
     "name": "RE/MAX Gold Coast Realtors",
     "sector": "Real Estate",
-    "description": "This is a real estate brokerage firm.",
+    "description": "RE/MAX Gold Coast Realtors is functionally the same entity as RE/MAX Gold Coast, representing a real estate brokerage within the RE/MAX franchise network. They focus on residential and commercial real estate services in the Ventura County region. CTE-relevant roles include real estate agents, administrative assistants, and marketing and client service support.",
     "regions": [
       "SCC"
     ],
@@ -8611,7 +8611,7 @@
   {
     "name": "Testan Law",
     "sector": "Professional Services",
-    "description": "This is a law firm.",
+    "description": "Testan Law is a multi-state law firm specializing in workers' compensation defense, representing employers and insurance carriers. They operate across several states with multiple offices, handling a high volume of legal cases. CTE-relevant roles include legal assistants, paralegals, administrative support, and potentially IT support specialists.",
     "regions": [
       "SCC"
     ],
@@ -8630,7 +8630,7 @@
   {
     "name": "Olde Thompson",
     "sector": "Professional Services",
-    "description": "This company manufactures and distributes spices and seasonings.",
+    "description": "Olde Thompson is a leading manufacturer and marketer of spices, seasonings, and grinders for both retail and foodservice sectors. They operate on a national and international scale, supplying a wide variety of culinary products. CTE-relevant roles include food production technicians, quality control specialists, packaging specialists, and logistics coordinators.",
     "regions": [
       "SCC"
     ],
@@ -8649,7 +8649,7 @@
   {
     "name": "Vortech Engineering",
     "sector": "Professional Services",
-    "description": "This company specializes in automotive performance engineering.",
+    "description": "Vortech Engineering designs and manufactures superchargers and air-to-air charge coolers for a variety of automotive applications. They are a specialized player in the performance automotive aftermarket, serving enthusiasts and professional tuners. CTE-relevant roles include automotive technicians, machinists, mechanical designers, and assembly technicians.",
     "regions": [
       "SCC"
     ],
@@ -8668,7 +8668,7 @@
   {
     "name": "Scosche Industries",
     "sector": "Professional Services",
-    "description": "This company designs and manufactures car audio and mobile accessories.",
+    "description": "Scosche Industries is a global leader in automotive aftermarket accessories, consumer tech, and powersports products, including car audio installation kits, mounts, and charging solutions. They operate internationally, serving both retail and OEM clients with innovative electronic accessories. CTE-relevant roles include product designers, manufacturing technicians, quality assurance specialists, and sales and marketing professionals.",
     "regions": [
       "SCC"
     ],
@@ -8687,7 +8687,7 @@
   {
     "name": "Boyd & Associates",
     "sector": "Professional Services",
-    "description": "This is a professional services firm, likely in consulting or accounting.",
+    "description": "Boyd & Associates likely refers to a professional services firm, potentially in security consulting or investigations, given typical naming conventions. Their scale would depend on their client base and regional focus, providing specialized expertise. CTE-relevant roles could include administrative assistants, research assistants, and IT support for secure systems.",
     "regions": [
       "SCC"
     ],
@@ -8706,7 +8706,7 @@
   {
     "name": "Communications & Power Industries",
     "sector": "Professional Services",
-    "description": "This company manufactures electronic components and subsystems for communications and defense.",
+    "description": "Communications & Power Industries (CPI) is a global manufacturer of electronic components and subsystems primarily for communications, defense, medical, and industrial applications. They operate internationally with multiple divisions, producing a wide range of high-power vacuum electron devices and related technologies. CTE-relevant roles include electrical technicians, mechanical technicians, manufacturing assemblers, quality control specialists, and engineering support staff.",
     "regions": [
       "SCC"
     ],
@@ -8725,7 +8725,7 @@
   {
     "name": "Community Memorial Health System",
     "sector": "Professional Services",
-    "description": "This is a healthcare system providing hospital and medical services.",
+    "description": "Community Memorial Health System is a not-for-profit health system providing comprehensive healthcare services, including hospitals, urgent care centers, and physician practices. They serve the Ventura County region with a broad range of medical specialties and facilities. CTE-relevant roles include medical assistants, nurses, allied health professionals, IT support specialists, and administrative and clerical staff.",
     "regions": [
       "SCC"
     ],
@@ -8744,7 +8744,7 @@
   {
     "name": "Vonazon",
     "sector": "Professional Services",
-    "description": "This company is a marketing and advertising agency.",
+    "description": "Vonazon is a full-service B2B marketing agency specializing in demand generation, branding, and web development for a variety of businesses. They serve clients across different industries, providing strategic marketing solutions. CTE-relevant roles include marketing assistants, graphic designers, web developers, content creators, and administrative support.",
     "regions": [
       "SCC"
     ],
@@ -8763,7 +8763,7 @@
   {
     "name": "Allied Beverages",
     "sector": "Professional Services",
-    "description": "This company distributes various beverages.",
+    "description": "Allied Beverages is categorized as 'Professional Services,' suggesting they likely provide services related to the beverage industry, possibly distribution, consulting, or brokerage. Details about their specific operations and scale are not readily available. CTE-relevant roles could involve sales, marketing, logistics coordination, and administrative support, focusing on business operations and client relations.",
     "regions": [
       "SCC"
     ],
@@ -8782,7 +8782,7 @@
   {
     "name": "Harrison E.J. & Sons",
     "sector": "Administrative Services",
-    "description": "This is a family-owned business, likely involved in waste management or recycling.",
+    "description": "E.J. Harrison & Sons is a family-owned and operated company providing solid waste collection, recycling, and disposal services to communities in Ventura County. They operate on a large regional scale, managing waste services for residential and commercial customers. CTE-relevant roles include heavy equipment operators, mechanics, administrative staff, and environmental services technicians.",
     "regions": [
       "SCC"
     ],
@@ -8801,7 +8801,7 @@
   {
     "name": "CLS Private Security Group",
     "sector": "Administrative Services",
-    "description": "This company provides private security services.",
+    "description": "CLS Private Security Group offers a range of security services, including armed and unarmed guards, patrols, and executive protection, for businesses and individuals. They operate regionally, providing tailored security solutions. CTE-relevant roles include security guards, dispatchers, administrative assistants, and potentially operations coordinators.",
     "regions": [
       "SCC"
     ],
@@ -8820,7 +8820,7 @@
   {
     "name": "SR Global",
     "sector": "Administrative Services",
-    "description": "This is a global company, likely involved in trade or consulting.",
+    "description": "SR Global Security provides comprehensive security solutions, including security personnel, consulting, and technology integration for various clients. They operate within a specific region, aiming to meet diverse security needs. CTE-relevant roles could include security officers, administrative support, and dispatchers.",
     "regions": [
       "SCC"
     ],
@@ -8839,7 +8839,7 @@
   {
     "name": "Adolfo Camarillo High School",
     "sector": "Education",
-    "description": "This is a public high school.",
+    "description": "Adolfo Camarillo High School is a public secondary educational institution providing academic and vocational instruction to students in grades 9-12. As part of the Oxnard Union High School District, it serves a local community, preparing students for college and careers. CTE-relevant roles include various teaching positions across CTE pathways, administrative support, and instructional aides.",
     "regions": [
       "SCC"
     ],
@@ -8858,7 +8858,7 @@
   {
     "name": "Channel Islands High School",
     "sector": "Education",
-    "description": "This is a public high school.",
+    "description": "Channel Islands High School is a public high school offering a comprehensive curriculum, including academic subjects and career technical education programs, to students in grades 9-12. Serving a diverse student body within the Oxnard Union High School District, it focuses on preparing students for post-secondary success. CTE-relevant roles encompass CTE instructors in various fields, school administrative staff, and student support services.",
     "regions": [
       "SCC"
     ],
@@ -8877,7 +8877,7 @@
   {
     "name": "Conejo Valley Unified School District",
     "sector": "Education",
-    "description": "This is a public school district overseeing schools in the Conejo Valley.",
+    "description": "Conejo Valley Unified School District (CVUSD) is a large public school district providing K-12 education to communities in the Conejo Valley. It encompasses numerous schools and serves thousands of students, offering a wide range of academic and extracurricular programs. CTE-relevant roles include CTE teachers, administrative staff, IT support, maintenance personnel, and school counselors.",
     "regions": [
       "SCC"
     ],
@@ -8896,7 +8896,7 @@
   {
     "name": "Curren Elementary School",
     "sector": "Education",
-    "description": "This is a public elementary school.",
+    "description": "Curren Elementary School is a public elementary school providing foundational education to young students, typically from transitional kindergarten through fifth grade. As part of the Oxnard School District, it serves a local neighborhood community. CTE-relevant roles include administrative assistants, school support staff, and possibly playground supervisors or cafeteria workers.",
     "regions": [
       "SCC"
     ],
@@ -8915,7 +8915,7 @@
   {
     "name": "Kamala Elementary School",
     "sector": "Education",
-    "description": "This is a public elementary school.",
+    "description": "Kamala Elementary School is a public elementary institution focused on providing primary education to students in the early grades. As a part of the Oxnard School District, it serves a specific local community. CTE-relevant roles include administrative assistants, school support staff, and various instructional aides.",
     "regions": [
       "SCC"
     ],
@@ -8934,7 +8934,7 @@
   {
     "name": "Newbury Park High School",
     "sector": "Education",
-    "description": "This is a public high school.",
+    "description": "Newbury Park High School is an educational institution. As a high school, it serves a local student population, providing academic and potentially vocational education. CTE-relevant roles within the school system could include educational support staff, administrative assistants, and possibly roles in facilities management, requiring skills in office administration, child development, or trades.",
     "regions": [
       "SCC"
     ],
@@ -8953,7 +8953,7 @@
   {
     "name": "Oak Park High School",
     "sector": "Education",
-    "description": "This is a public high school.",
+    "description": "Oak Park High School is an educational institution known for its award-winning Career Technical Education (CTE) program, offering pathways in Software and Systems Development, Engineering and Design, Architectural Design, Production and Managerial Arts, and Design and Visual and Media Arts. The school serves a local student population and emphasizes real-world learning opportunities to prepare students for college and careers. CTE-relevant roles extend beyond teaching to include career counselors, IT support, lab technicians, and administrative staff, supporting the diverse CTE offerings.",
     "regions": [
       "SCC"
     ],
@@ -8972,7 +8972,7 @@
   {
     "name": "Oxnard High School",
     "sector": "Education",
-    "description": "This is a public high school.",
+    "description": "Oxnard High School is a public high school offering a diverse curriculum, including a strong emphasis on career technical education pathways, to students in grades 9-12. It is a large institution within the Oxnard Union High School District, preparing students for college and careers. CTE-relevant roles include CTE teachers in numerous subjects, administrative personnel, and student support services.",
     "regions": [
       "SCC"
     ],
@@ -8991,7 +8991,7 @@
   {
     "name": "Oxnard Union High School District",
     "sector": "Education",
-    "description": "This is a public school district overseeing high schools in the Oxnard area.",
+    "description": "Oxnard Union High School District (OUHSD) is a large public school district overseeing multiple high schools and providing secondary education to a significant student population in the Oxnard Plain. It is a major educational employer in the region, offering a wide array of academic and CTE programs. CTE-relevant roles include CTE pathway teachers, district-level administrative staff, IT specialists, maintenance and operations personnel, and student support professionals.",
     "regions": [
       "SCC"
     ],
@@ -9010,7 +9010,7 @@
   {
     "name": "Pacifica High School",
     "sector": "Education",
-    "description": "This is a public high school.",
+    "description": "Pacifica High School is a public high school offering a comprehensive education, including various CTE programs, to students in grades 9-12. It serves a local community as part of the Oxnard Union High School District, preparing students for higher education and workforce entry. CTE-relevant roles include CTE instructors across various disciplines, school administrative staff, and support personnel.",
     "regions": [
       "SCC"
     ],
@@ -9029,7 +9029,7 @@
   {
     "name": "Royal High School",
     "sector": "Education",
-    "description": "This is a public high school.",
+    "description": "Royal High School is a secondary educational institution within the Simi Valley Unified School District, providing comprehensive academic programs. It employs a structured faculty across various departments and facilitates student career development through work permit processes. CTE-relevant roles include teaching, administrative support, and staff involved in student services.",
     "regions": [
       "SCC"
     ],
@@ -9048,7 +9048,7 @@
   {
     "name": "Santa Paula High School",
     "sector": "Education",
-    "description": "This is a public high school.",
+    "description": "Santa Paula High School operates as part of the Santa Paula Unified School District, which oversees K-12 education. The district features academies, including those focused on Sports and Health Science and Visual Arts. This structure provides various CTE-relevant roles in teaching, administration, and specialized academy instruction.",
     "regions": [
       "SCC"
     ],
@@ -9067,7 +9067,7 @@
   {
     "name": "Simi Valley High School",
     "sector": "Education",
-    "description": "This is a public high school.",
+    "description": "Simi Valley High School is a secondary educational institution offering comprehensive academic programs and services. The school explicitly supports Career Technical Education (CTE) and employs diverse staff across administration, child nutrition, counseling, facilities, and a health office. These functions provide numerous CTE-relevant roles in specialized instruction and operational support.",
     "regions": [
       "SCC"
     ],
@@ -9086,7 +9086,7 @@
   {
     "name": "Simi Valley Unified School District",
     "sector": "Education",
-    "description": "This is a public school district overseeing schools in Simi Valley.",
+    "description": "The Simi Valley Unified School District manages public K-12 education across its schools, overseeing district leadership, finances, and safety plans. It encompasses a large workforce covering all aspects of educational administration and operation. CTE-relevant roles within the district include teaching, administration, facilities management, and specialized program coordination across multiple campuses.",
     "regions": [
       "SCC"
     ],
@@ -9105,7 +9105,7 @@
   {
     "name": "Thousand Oaks High School",
     "sector": "Education",
-    "description": "This is a public high school.",
+    "description": "Thousand Oaks High School is an educational institution serving a local student population with academic and potentially vocational programs. As a high school, its scale is localized to the community it serves. CTE-relevant roles could involve educational support, administrative positions, and facilities maintenance, requiring skills in office management, child development, or trades.",
     "regions": [
       "SCC"
     ],
@@ -9124,7 +9124,7 @@
   {
     "name": "Ventura High School",
     "sector": "Education",
-    "description": "This is a public high school.",
+    "description": "Ventura High School is a secondary educational institution dedicated to academic achievement and student life. It prominently features a Career Technical Education program and a College & Career Center, emphasizing student readiness for post-secondary pathways. CTE-relevant roles include specialized instructors, career counselors, and various support staff.",
     "regions": [
       "SCC"
     ],
@@ -9143,7 +9143,7 @@
   {
     "name": "Moorpark College",
     "sector": "Education",
-    "description": "This is a public community college.",
+    "description": "Moorpark College is an institution of higher education, offering a wide range of academic courses via its class schedule and Canvas platform. As a college, it likely provides numerous CTE-relevant programs and certifications, requiring a substantial workforce of instructors, administrative professionals, and student support staff.",
     "regions": [
       "SCC"
     ],
@@ -9162,7 +9162,7 @@
   {
     "name": "Oxnard College",
     "sector": "Education",
-    "description": "This is a public community college.",
+    "description": "Oxnard College is a higher education institution offering diverse academic programs, accessible through its class schedule and Canvas platform. As a college, it likely supports a broad spectrum of Career Technical Education pathways. Its operations require a significant workforce, including educators, administrative personnel, and various student support roles.",
     "regions": [
       "SCC"
     ],
@@ -9181,7 +9181,7 @@
   {
     "name": "Ventura College",
     "sector": "Education",
-    "description": "This is a public community college.",
+    "description": "Ventura College is an institution of higher education, providing a wide array of courses through its academic calendar and Canvas. It is expected to offer numerous Career Technical Education programs, employing instructors for various fields, along with administrative and student support staff to manage its operations.",
     "regions": [
       "SCC"
     ],
@@ -9200,7 +9200,7 @@
   {
     "name": "University Village Thousand Oaks",
     "sector": "Education",
-    "description": "This is a senior living community.",
+    "description": "University Village Thousand Oaks is listed as 'Education,' but it is a senior living community offering a vibrant lifestyle with various amenities and care options. As a large senior living community, it has a substantial resident population and requires a diverse staff. CTE-relevant roles include healthcare support (CNAs, LVNs), hospitality services (culinary, housekeeping), activities coordination, and administrative roles, emphasizing elder care, culinary arts, and event planning.",
     "regions": [
       "SCC"
     ],
@@ -9219,7 +9219,7 @@
   {
     "name": "Art Trek",
     "sector": "Education",
-    "description": "This organization provides art education and programs.",
+    "description": "Art Trek is a non-profit arts education organization that provides hands-on art lessons to individuals of all ages and socio-economic backgrounds, reaching over 50,000 youth and adults annually across classrooms and communities. They offer a sequential and process-oriented curriculum in visual, literary, and performing arts, also extending into high-risk programs for underserved populations and professional training workshops for educators. CTE-relevant roles include art instructors, program coordinators, administrative support, marketing, and event planning, requiring skills in art techniques, education, and non-profit management.",
     "regions": [
       "SCC"
     ],
@@ -9238,7 +9238,7 @@
   {
     "name": "Las Islas Family Medical Group",
     "sector": "Healthcare",
-    "description": "This is a medical group providing family healthcare services.",
+    "description": "Las Islas Family Medical Group is part of the Ventura County Health Care Agency, providing medical services to the community. As a component of a larger healthcare system, it supports numerous CTE-relevant roles including medical assistants, registered nurses, and administrative professionals.",
     "regions": [
       "SCC"
     ],
@@ -9257,7 +9257,7 @@
   {
     "name": "Nancy Reagan Breast Center",
     "sector": "Healthcare",
-    "description": "This is a medical center specializing in breast health and cancer care.",
+    "description": "The Nancy Reagan Breast Center offers specialized healthcare services focusing on breast health within Ventura County, operating as part of Community Memorial Health. It provides a range of CTE-relevant opportunities for medical professionals such as mammography technicians, nurses, and administrative support staff.",
     "regions": [
       "SCC"
     ],
@@ -9276,7 +9276,7 @@
   {
     "name": "Buena Vista Palliative Care and Hospice",
     "sector": "Healthcare",
-    "description": "This organization provides palliative care and hospice services.",
+    "description": "Buena Vista Palliative Care and Hospice delivers specialized healthcare services focused on comfort and end-of-life care. This organization employs a dedicated team of healthcare professionals, including nurses, certified nursing assistants, social workers, and administrative staff, all relevant to CTE pathways.",
     "regions": [
       "SCC"
     ],
@@ -9295,7 +9295,7 @@
   {
     "name": "Ventura County Search and Rescue",
     "sector": "Healthcare",
-    "description": "An organization dedicated to search and rescue operations within Ventura County.",
+    "description": "Ventura County Search and Rescue is comprised of specialized teams operating under the Ventura County Sheriff's Department, providing emergency search and rescue services. This organization offers CTE-relevant roles in emergency response, including EMTs, paramedics, communications specialists, and logistics support personnel.",
     "regions": [
       "SCC"
     ],
@@ -9313,7 +9313,7 @@
   {
     "name": "Adventist Health Simi Valley",
     "sector": "Healthcare",
-    "description": "A hospital providing healthcare services in Simi Valley.",
+    "description": "Adventist Health Simi Valley is a healthcare provider offering a range of medical services in Simi Valley, as part of the broader Adventist Health system. The facility actively recruits, indicating a substantial workforce that includes CTE-relevant roles such as nurses, medical assistants, patient care technicians, and administrative support staff.",
     "regions": [
       "SCC"
     ],
@@ -9332,7 +9332,7 @@
   {
     "name": "Aurora Vista Del Mar",
     "sector": "Healthcare",
-    "description": "A healthcare facility, likely specializing in behavioral health.",
+    "description": "Aurora Vista Del Mar, also known as Vista del Mar Hospital, is a mental health facility in Ventura, California, providing specialized psychiatric care. It employs a dedicated team of professionals including mental health technicians, psychiatric nurses, social workers, and administrative staff, all highly relevant to CTE healthcare pathways.",
     "regions": [
       "SCC"
     ],
@@ -9351,7 +9351,7 @@
   {
     "name": "Community Memorial Hospital Ojai",
     "sector": "Healthcare",
-    "description": "A community hospital located in Ojai.",
+    "description": "Community Memorial Hospital Ojai delivers comprehensive healthcare services as part of the broader Community Memorial Health system in Ventura County. This hospital supports numerous CTE-relevant roles, including nursing, patient care, medical imaging, surgical technology, and various administrative and support positions.",
     "regions": [
       "SCC"
     ],
@@ -9370,7 +9370,7 @@
   {
     "name": "Dignity Health St. John's Regional Medical Center",
     "sector": "Healthcare",
-    "description": "A regional medical center part of Dignity Health.",
+    "description": "Dignity Health St. John's Regional Medical Center is a comprehensive hospital in Oxnard, CA, operating as part of the large Dignity Health network. As a regional medical center, it employs a wide range of healthcare professionals in CTE-relevant roles, including nursing, patient care, medical technology, and administrative support.",
     "regions": [
       "SCC"
     ],
@@ -9389,7 +9389,7 @@
   {
     "name": "Kaiser Permanente Ventura",
     "sector": "Healthcare",
-    "description": "A Kaiser Permanente medical facility in Ventura.",
+    "description": "Kaiser Permanente Ventura provides comprehensive healthcare services as part of a large integrated managed care consortium. Their scale is significant, serving a broad patient base in Ventura County with various medical facilities. CTE-relevant roles are diverse, including medical assistants, phlebotomists, administrative support, healthcare IT, and entry-level roles in nursing and allied health professions.",
     "regions": [
       "SCC"
     ],
@@ -9408,7 +9408,7 @@
   {
     "name": "Los Robles Regional Medical Center",
     "sector": "Healthcare",
-    "description": "A regional medical center providing comprehensive healthcare services.",
+    "description": "Los Robles Regional Medical Center is a major healthcare facility offering comprehensive medical services to the region. This large medical center provides numerous CTE-relevant career opportunities in various healthcare fields, including nursing, allied health, medical administration, and facility support services.",
     "regions": [
       "SCC"
     ],
@@ -9427,7 +9427,7 @@
   {
     "name": "Santa Paula Hospital",
     "sector": "Healthcare",
-    "description": "A hospital serving the Santa Paula community.",
+    "description": "Santa Paula Hospital provides healthcare services within Ventura County, operating as part of the Community Memorial Health system. This facility supports a diverse range of CTE-relevant healthcare professions, including nurses, medical assistants, patient care technicians, and administrative support roles.",
     "regions": [
       "SCC"
     ],
@@ -9446,7 +9446,7 @@
   {
     "name": "St. John's Hospital Camarillo",
     "sector": "Healthcare",
-    "description": "A hospital located in Camarillo.",
+    "description": "St. John's Hospital Camarillo, operated by Dignity Health, is a community hospital with 58 acute care and 74 skilled nursing beds, serving Camarillo and surrounding communities. It is part of the largest acute healthcare organization in Ventura County, offering a full spectrum of services including emergency care, heart health, neurological care, and a hyperbaric medicine unit. CTE-relevant roles include certified nursing assistants (CNAs), medical assistants, surgical technologists, phlebotomists, medical records specialists, and various administrative support positions within a hospital setting.",
     "regions": [
       "SCC"
     ],
@@ -9465,7 +9465,7 @@
   {
     "name": "Addison Behavioral Resources",
     "sector": "Healthcare",
-    "description": "An organization providing behavioral health resources.",
+    "description": "Addison Behavioral Resources (ABR) offers Applied Behavior Analysis (ABA) treatment programs and caregiver support for children with disabilities in Ventura County. The organization emphasizes one-on-one treatment, employing behavioral health technicians, registered behavior technicians, and administrative staff in CTE-relevant roles.",
     "regions": [
       "SCC"
     ],
@@ -9483,7 +9483,7 @@
   {
     "name": "Institute For Applied Behavior",
     "sector": "Healthcare",
-    "description": "An institute focused on applied behavior studies and services.",
+    "description": "The Institute for Applied Behavior Analysis (IABA) provides behavior support services across California, with a focus on Applied Behavior Analysis. The organization employs behavioral therapists, registered behavior technicians, case managers, and administrative personnel. These roles are directly relevant to CTE pathways in healthcare and social services.",
     "regions": [
       "SCC"
     ],
@@ -9501,7 +9501,7 @@
   {
     "name": "Covenant Care",
     "sector": "Healthcare",
-    "description": "A healthcare provider specializing in skilled nursing and rehabilitation services.",
+    "description": "Covenant Care operates skilled nursing, assisted living, and senior living communities, with a focus on providing compassionate care and rehabilitation services. They have a presence in multiple locations, including Turlock, CA, and are recognized for home health and hospice care. CTE-relevant roles include certified nursing assistants (CNAs), licensed vocational nurses (LVNs), physical therapy assistants, occupational therapy assistants, medical records clerks, and administrative support staff, emphasizing elder care and rehabilitation.",
     "regions": [
       "SCC"
     ],
@@ -9520,7 +9520,7 @@
   {
     "name": "Glenwood Care Center",
     "sector": "Healthcare",
-    "description": "A care center providing various health services.",
+    "description": "Glenwood Care Center provides skilled nursing, rehabilitation therapy, and general healthcare services in Oxnard, CA. This facility offers CTE-relevant roles for nurses, certified nursing assistants, and rehabilitation therapy assistants, along with administrative and dietary support staff.",
     "regions": [
       "SCC"
     ],
@@ -9539,7 +9539,7 @@
   {
     "name": "Livingston Memorial Visiting Nurse Association Hospice",
     "sector": "Healthcare",
-    "description": "A visiting nurse association and hospice providing home healthcare services.",
+    "description": "Livingston Memorial Visiting Nurse Association Hospice delivers in-home visiting nurse and hospice care services. This organization employs a dedicated team of registered nurses, licensed vocational nurses, hospice aides, and social workers. These roles are highly relevant to CTE pathways in patient care and healthcare administration.",
     "regions": [
       "SCC"
     ],
@@ -9558,7 +9558,7 @@
   {
     "name": "Shoreline Care Center",
     "sector": "Healthcare",
-    "description": "A care center offering health and rehabilitation services.",
+    "description": "Shoreline Care Center is a 193-bed skilled nursing and rehabilitation facility in Oxnard, California, dedicated to providing high-quality, compassionate care to its residents. They offer a variety of specialized services including skilled nursing, physical, occupational, and speech therapy, medication management, and memory care. CTE-relevant roles include certified nursing assistants (CNAs), physical therapy aides, occupational therapy aides, dietary aides, and administrative support, focusing on patient care and rehabilitation.",
     "regions": [
       "SCC"
     ],
@@ -9577,7 +9577,7 @@
   {
     "name": "Sunrise at Wood Ranch",
     "sector": "Healthcare",
-    "description": "An assisted living and memory care community.",
+    "description": "Sunrise at Wood Ranch is a large assisted living and memory care community in Simi Valley, California, licensed for 75 residents. They provide a holistic approach to senior care, offering 24-hour nurse support, medication management, and a variety of wellness and recreation programs. CTE-relevant roles include certified nursing assistants (CNAs), caregivers, activities coordinators, dietary staff, and administrative assistants, all focused on supporting the well-being of senior residents.",
     "regions": [
       "SCC"
     ],
@@ -9596,7 +9596,7 @@
   {
     "name": "Scott Retirement Advisors",
     "sector": "Healthcare",
-    "description": "A firm providing retirement advisory services.",
+    "description": "Scott Retirement Advisors, Inc. specializes in providing retirement planning and financial advisory services. The firm employs financial assistants, administrative staff, and client service representatives to support its operations. These roles offer CTE-relevant opportunities in business and finance.",
     "regions": [
       "SCC"
     ],
@@ -9614,7 +9614,7 @@
   {
     "name": "Simi Valley Care Center",
     "sector": "Healthcare",
-    "description": "A care center located in Simi Valley.",
+    "description": "Simi Valley Care Center is a reputable aged care facility in Simi Valley, California, offering skilled nursing care, rehabilitation services, respite care, long-term care, and memory care programs. It operates under private ownership and has a strong reputation for excellence in elder care, with 99 licensed beds. CTE-relevant roles encompass certified nursing assistants (CNAs), licensed vocational nurses (LVNs), physical therapy aides, occupational therapy aides, and dietary and administrative support, focusing on direct patient care and facility operations.",
     "regions": [
       "SCC"
     ],
@@ -9633,7 +9633,7 @@
   {
     "name": "Ventura Townehouse",
     "sector": "Healthcare",
-    "description": "A senior living community offering independent and assisted living.",
+    "description": "Ventura Townehouse is a senior living community in Ventura, CA, providing independent living services and amenities to its residents. The community employs staff in various CTE-relevant roles, including hospitality, culinary arts, facilities maintenance, and administrative support.",
     "regions": [
       "SCC"
     ],
@@ -9652,7 +9652,7 @@
   {
     "name": "Boys & Girls Club of America",
     "sector": "Healthcare",
-    "description": "A national organization providing youth development programs.",
+    "description": "The Boys & Girls Clubs of America is a national organization dedicated to providing youth development programs and services. Operating through numerous local clubs, it offers CTE-relevant opportunities for youth program facilitators, administrative staff, and community outreach coordinators.",
     "regions": [
       "SCC"
     ],
@@ -9671,7 +9671,7 @@
   {
     "name": "Interface Children & Family Services",
     "sector": "Healthcare",
-    "description": "An organization providing services for children and families.",
+    "description": "Interface Children & Family Services delivers crucial support and resources to children and families across Ventura County. They aim to strengthen family well-being and provide essential community services. CTE-relevant roles could include social work assistants, administrative support, and program coordinators.",
     "regions": [
       "SCC"
     ],
@@ -9690,7 +9690,7 @@
   {
     "name": "Tri-Counties Regional Center",
     "sector": "Healthcare",
-    "description": "A regional center providing services and support for individuals with developmental disabilities.",
+    "description": "Tri-Counties Regional Center is a private, non-profit organization that contracts with the State of California to serve individuals with developmental disabilities and their families in San Luis Obispo, Santa Barbara, and Ventura Counties. They coordinate lifelong services and supports for eligible individuals. CTE-relevant roles include service coordinators, administrative assistants, community outreach specialists, and support staff for various programs, requiring skills in social services, case management, and office administration.",
     "regions": [
       "SCC"
     ],
@@ -9727,7 +9727,7 @@
   {
     "name": "Ventura County Job & Career Center",
     "sector": "Healthcare",
-    "description": "A center providing job and career services for Ventura County residents.",
+    "description": "The Ventura County Job & Career Center, part of the Workforce Development Board, provides resources and services to connect job seekers with employers throughout Ventura County. They support career development and enhance the local workforce. CTE-relevant roles may include career advisors, administrative assistants, and program support staff.",
     "regions": [
       "SCC"
     ],
@@ -9745,7 +9745,7 @@
   {
     "name": "Conejo Players Theatre",
     "sector": "Arts & Entertainment",
-    "description": "A community theater group producing live stage performances.",
+    "description": "Conejo Players Theatre is a community-based organization dedicated to producing live theatrical performances for local audiences. They offer opportunities for individuals interested in various aspects of theatre production. CTE-relevant roles could include stage management, technical theatre (lighting, sound, set construction), costume design, and box office administration.",
     "regions": [
       "SCC"
     ],
@@ -9764,7 +9764,7 @@
   {
     "name": "Thousand Oaks Civic Arts Plaza",
     "sector": "Arts & Entertainment",
-    "description": "A performing arts center and cultural venue in Thousand Oaks.",
+    "description": "The Thousand Oaks Civic Arts Plaza, home to the Bank of America Performing Arts Center, serves as a premier venue for diverse artistic and cultural events in Thousand Oaks. It provides a platform for performances and community engagement. CTE-relevant roles include technical theater specialists, event support staff, box office personnel, and facilities maintenance technicians.",
     "regions": [
       "SCC"
     ],
@@ -9783,7 +9783,7 @@
   {
     "name": "Rancho Simi Recreation and Park District",
     "sector": "Arts & Entertainment",
-    "description": "A district managing parks and recreational facilities in the Rancho Simi area.",
+    "description": "The Rancho Simi Recreation and Park District manages parks, facilities, and offers various recreation programs for the community in Rancho Simi, California. They provide spaces and activities for public enjoyment and well-being. CTE-relevant roles include park maintenance, recreation assistants, administrative support, and facility operations.",
     "regions": [
       "SCC"
     ],
@@ -9802,7 +9802,7 @@
   {
     "name": "Conejo Recreation and Park District",
     "sector": "Arts & Entertainment",
-    "description": "A district managing parks and recreational facilities in the Conejo Valley.",
+    "description": "The Conejo Recreation and Park District is responsible for managing parks, recreational facilities, and community programs within the Conejo Valley. They aim to enrich residents' lives through diverse outdoor and cultural opportunities. CTE-relevant roles include park operations, recreation specialists, administrative support, and event coordination.",
     "regions": [
       "SCC"
     ],
@@ -9821,7 +9821,7 @@
   {
     "name": "EOS Fitness",
     "sector": "Arts & Entertainment",
-    "description": "A fitness center offering gym facilities and classes.",
+    "description": "EOS Fitness is a large gym chain offering various fitness amenities and programs. With multiple locations, it operates on a significant regional scale, providing fitness services to a broad membership base. CTE-relevant roles include certified personal trainers, group fitness instructors, front desk staff, maintenance personnel, and sales associates, requiring expertise in fitness instruction, customer service, and facility management.",
     "regions": [
       "SCC"
     ],
@@ -9840,7 +9840,7 @@
   {
     "name": "Moorpark Country Club",
     "sector": "Arts & Entertainment",
-    "description": "A country club offering golf, dining, and social amenities.",
+    "description": "Moorpark Country Club is a private club offering golf, dining, and event facilities. As a country club, it caters to members and guests with a range of hospitality and recreational services. CTE-relevant roles include golf course maintenance (turf management), culinary arts (chefs, cooks), hospitality services (servers, event staff), administrative support, and pro shop operations, requiring skills in groundskeeping, food service, and customer relations.",
     "regions": [
       "SCC"
     ],
@@ -9859,7 +9859,7 @@
   {
     "name": "Crowne Plaza Ventura Beach",
     "sector": "Hospitality & Food Service",
-    "description": "A hotel located on Ventura Beach, part of the Crowne Plaza chain.",
+    "description": "Crowne Plaza Ventura Beach offers hotel accommodations and hospitality services in Ventura, catering to travelers and local events. As part of the IHG brand, they provide a range of amenities. CTE-relevant roles include front desk associates, housekeeping staff, culinary support, and maintenance technicians.",
     "regions": [
       "SCC"
     ],
@@ -9878,7 +9878,7 @@
   {
     "name": "Four Points by Sheraton",
     "sector": "Hospitality & Food Service",
-    "description": "A hotel, part of the Four Points by Sheraton brand.",
+    "description": "Four Points by Sheraton Ventura Harbor Resort is a hotel located directly on Ventura Harbor, offering 106 rooms and suites, dining, and various amenities like an outdoor pool and fitness center. It caters to both business and leisure travelers, providing hospitality services near local attractions. CTE-relevant roles include front desk associates, hospitality managers, culinary staff, housekeeping, event planning support, and maintenance technicians, requiring skills in customer service, food preparation, and hotel operations.",
     "regions": [
       "SCC"
     ],
@@ -9897,7 +9897,7 @@
   {
     "name": "Grand Vista Hotel Simi Valley",
     "sector": "Hospitality & Food Service",
-    "description": "A hotel in Simi Valley offering accommodation and event services.",
+    "description": "Grand Vista Hotel Simi Valley operates as a hotel providing accommodation and hospitality services to guests in Simi Valley. They offer various amenities to ensure a comfortable stay. CTE-relevant roles include front desk receptionists, housekeeping, culinary arts support, and facilities maintenance.",
     "regions": [
       "SCC"
     ],
@@ -9916,7 +9916,7 @@
   {
     "name": "Ojai Valley Inn",
     "sector": "Hospitality & Food Service",
-    "description": "A luxury resort and spa located in Ojai Valley.",
+    "description": "Ojai Valley Inn is a luxury resort offering accommodations, a spa, golf, and multiple dining options. It operates on a high-end scale, catering to a diverse clientele seeking a premium hospitality experience. CTE-relevant roles are extensive and include culinary arts (chefs, bakers, line cooks), hospitality management, spa therapists, golf course maintenance, event planning, and various guest services, requiring specialized skills in luxury service, culinary excellence, and resort operations.",
     "regions": [
       "SCC"
     ],
@@ -9935,7 +9935,7 @@
   {
     "name": "Ventura Beach Marriott",
     "sector": "Hospitality & Food Service",
-    "description": "A Marriott hotel located on Ventura Beach.",
+    "description": "Ventura Beach Marriott is a four-story, 286-room conference-oriented resort hotel located near the beach in Ventura, CA, offering dining, an outdoor pool, fitness center, and extensive meeting spaces. It caters to both business and leisure travelers, providing a wide range of hospitality services. CTE-relevant roles include front desk and guest services, culinary and banquet staff, housekeeping, event coordinators, sales and marketing, and facility maintenance, requiring skills in customer service, food and beverage, and hotel administration.",
     "regions": [
       "SCC"
     ],
@@ -9954,7 +9954,7 @@
   {
     "name": "Camp Ramah in California",
     "sector": "Hospitality & Food Service",
-    "description": "A Jewish summer camp located in California.",
+    "description": "Camp Ramah in California serves as both a vibrant summer camp and a retreat center, offering enriching experiences for youth and groups. They focus on fostering personal growth and community engagement in a natural setting. CTE-relevant roles could include camp counselors, food service staff, facilities maintenance, and administrative assistants.",
     "regions": [
       "SCC"
     ],
@@ -9973,7 +9973,7 @@
   {
     "name": "Brent's Delicatessen & Restaurant",
     "sector": "Hospitality & Food Service",
-    "description": "A delicatessen and restaurant serving a variety of food.",
+    "description": "Brent's Delicatessen & Restaurant is a full-service eatery and bar providing a range of dining experiences, including happy hour, catering, and delivery. They are a local institution known for their deli offerings. CTE-relevant roles include culinary positions, food service staff, catering assistants, and hospitality management support.",
     "regions": [
       "SCC"
     ],
@@ -9992,7 +9992,7 @@
   {
     "name": "Domino's Pizza Corporate Office",
     "sector": "Hospitality & Food Service",
-    "description": "The corporate office for Domino's Pizza.",
+    "description": "Domino's Pizza Corporate Office oversees the global operations, franchising, and strategic development of the Domino's brand across the world. They focus on innovation, leadership, and supporting their extensive network of franchises. CTE-relevant roles could include business administration, IT support, logistics coordination, and marketing assistants.",
     "regions": [
       "SCC"
     ],
@@ -10011,7 +10011,7 @@
   {
     "name": "Oxnard Levity Live",
     "sector": "Hospitality & Food Service",
-    "description": "A comedy club and entertainment venue in Oxnard.",
+    "description": "Oxnard Levity Live is a comedy club and entertainment venue, offering live performances and food and beverage service. It operates on a local to regional scale, providing entertainment and hospitality. CTE-relevant roles include event management, box office and ticketing, food and beverage service (bartenders, servers), technical support (lighting, sound), and marketing, requiring skills in event coordination, customer service, and theatrical production.",
     "regions": [
       "SCC"
     ],
@@ -10030,7 +10030,7 @@
   {
     "name": "BJ's Restaurant & Brewhouse",
     "sector": "Hospitality & Food Service",
-    "description": "A casual dining restaurant and brewery.",
+    "description": "BJ's Restaurant & Brewhouse operates multiple restaurant locations, serving a diverse menu alongside their handcrafted beers. They offer a casual dining experience for guests. CTE-relevant roles include culinary positions, food and beverage service, brewing apprenticeships, and hospitality management.",
     "regions": [
       "SCC"
     ],
@@ -10049,7 +10049,7 @@
   {
     "name": "The Cheesecake Factory",
     "sector": "Hospitality & Food Service",
-    "description": "A full-service restaurant known for its extensive menu and cheesecakes.",
+    "description": "The Cheesecake Factory is a prominent full-service restaurant chain recognized for its extensive menu, large portions, and wide selection of cheesecakes. They provide a unique dining experience across numerous locations. CTE-relevant roles include culinary positions (cooks, pastry chefs), front-of-house service staff, and hospitality management.",
     "regions": [
       "SCC"
     ],
@@ -10068,7 +10068,7 @@
   {
     "name": "Chili's Grill & Bar",
     "sector": "Hospitality & Food Service",
-    "description": "A casual dining restaurant chain.",
+    "description": "Chili's Grill & Bar operates casual dining restaurants offering a menu of burgers, fajitas, crispers, and margaritas. They provide a relaxed atmosphere for dining and socializing. CTE-relevant roles include line cooks, servers, bartenders, and restaurant management support.",
     "regions": [
       "SCC"
     ],
@@ -10087,7 +10087,7 @@
   {
     "name": "In-N-Out Burger",
     "sector": "Hospitality & Food Service",
-    "description": "A regional chain of fast-food restaurants.",
+    "description": "In-N-Out Burger is a popular fast-food chain known for its limited menu of fresh hamburgers, fries, and shakes. They prioritize quality ingredients and customer service across their regional locations. CTE-relevant roles include food service team members, customer service representatives, and restaurant operations support.",
     "regions": [
       "SCC"
     ],
@@ -10106,7 +10106,7 @@
   {
     "name": "Jolene's Wings + Beer",
     "sector": "Hospitality & Food Service",
-    "description": "A restaurant specializing in wings and beer.",
+    "description": "Jolene's Wings + Beer is a restaurant specializing in wings and beer. It operates as a local food service establishment, catering to a casual dining market. CTE-relevant roles include culinary positions (cooks, kitchen staff), front-of-house service (servers, hosts),bartending, and restaurant management, requiring skills in food preparation, customer service, and hospitality operations.",
     "regions": [
       "SCC"
     ],
@@ -10125,7 +10125,7 @@
   {
     "name": "Lazy Dog Restaurant & Bar",
     "sector": "Hospitality & Food Service",
-    "description": "A casual dining restaurant and bar with a lodge-like atmosphere.",
+    "description": "Lazy Dog Restaurant & Bar is a chain restaurant offering American cuisine in a lodge-like atmosphere. It operates on a multi-location scale, providing a consistent dining experience across various communities. CTE-relevant roles include culinary arts (chefs, line cooks, prep cooks), front-of-house staff (servers, hosts, bussers), bartenders, and restaurant management, requiring skills in food preparation, customer service, and restaurant operations.",
     "regions": [
       "SCC"
     ],
@@ -10144,7 +10144,7 @@
   {
     "name": "P.F. Chang's",
     "sector": "Hospitality & Food Service",
-    "description": "An Asian-themed casual dining restaurant chain.",
+    "description": "P.F. Chang's is a casual dining restaurant specializing in handcrafted Asian-inspired cuisine, available for dine-in, to-go, and catering. They aim to provide a unique culinary experience with a focus on fresh ingredients. CTE-relevant roles include culinary positions, food service staff, and catering event support.",
     "regions": [
       "SCC"
     ],
@@ -10163,7 +10163,7 @@
   {
     "name": "Vista Cove Care Center at Santa Paula",
     "sector": "Hospitality & Food Service",
-    "description": "A care center located in Santa Paula.",
+    "description": "Vista Cove Care Center at Santa Paula is a healthcare facility, likely a skilled nursing or long-term care center, given its classification as 'Hospitality & Food Service' in this context may refer to the provision of meals within the care setting. It operates on a local scale, serving residents needing specialized care. CTE-relevant roles include dietary staff (cooks, food preparers), environmental services (housekeeping), and administrative support, focusing on providing essential services within a care environment.",
     "regions": [
       "SCC"
     ],
@@ -10182,7 +10182,7 @@
   {
     "name": "Wood Ranch Barbecue & Grill",
     "sector": "Hospitality & Food Service",
-    "description": "A restaurant specializing in barbecue and grilled dishes.",
+    "description": "Wood Ranch Barbecue & Grill is a restaurant chain known for its American barbecue cuisine. It operates on a multi-location scale across California, offering a consistent dining experience. CTE-relevant roles include culinary arts (grill cooks, prep cooks, kitchen managers), front-of-house staff (servers, hosts, bussers), and restaurant management, requiring skills in food preparation, customer service, and restaurant operations.",
     "regions": [
       "SCC"
     ],
@@ -10201,7 +10201,7 @@
   {
     "name": "Wood Ranch BBQ & Grill",
     "sector": "Hospitality & Food Service",
-    "description": "A restaurant specializing in barbecue and grilled dishes.",
+    "description": "Wood Ranch BBQ & Grill is a regional chain of casual dining restaurants specializing in American barbecue and grilled dishes. They operate multiple locations, providing full-service dining experiences. CTE-relevant roles include cooks, kitchen staff, servers, hosts, restaurant managers, and administrative support.",
     "regions": [
       "SCC"
     ],
@@ -10220,7 +10220,7 @@
   {
     "name": "Yolanda's Mexican Cafe",
     "sector": "Hospitality & Food Service",
-    "description": "A Mexican cafe serving traditional Mexican cuisine.",
+    "description": "Yolanda's Mexican Cafe is a restaurant serving Mexican cuisine. It operates as a local dining establishment, providing a cultural culinary experience. CTE-relevant roles include culinary positions (cooks, prep cooks), front-of-house staff (servers, hosts), and restaurant management, requiring skills in food preparation, customer service, and ethnic cuisine.",
     "regions": [
       "SCC"
     ],
@@ -10239,7 +10239,7 @@
   {
     "name": "Jims USA",
     "sector": "Other Services",
-    "description": "A company specializing in tools and parts for Harley-Davidson motorcycles.",
+    "description": "JIMS USA specializes in manufacturing high-performance parts and tools for Harley-Davidson motorcycles. They serve the aftermarket and performance upgrade segment of the motorcycle industry. CTE-relevant roles could include machining, manufacturing assembly, quality control technicians, and automotive technology specialists focused on motorcycles.",
     "regions": [
       "SCC"
     ],
@@ -10258,7 +10258,7 @@
   {
     "name": "Las Posas Country Club",
     "sector": "Other Services",
-    "description": "A country club offering golf, dining, and social amenities.",
+    "description": "Las Posas Country Club is a private club located in Camarillo, CA, offering golf, dining, and various social amenities to its members. They provide an exclusive recreational and social environment. CTE-relevant roles include groundskeeping, golf course maintenance, culinary arts, event planning, and hospitality services.",
     "regions": [
       "SCC"
     ],
@@ -10277,7 +10277,7 @@
   {
     "name": "Camarillo City Hall",
     "sector": "Government",
-    "description": "The administrative center for the City of Camarillo.",
+    "description": "Camarillo City Hall serves as the administrative center for the City of Camarillo, providing various governmental services to its residents. Its scale is local, serving the community of Camarillo. CTE-relevant roles include administrative assistants, office clerks, public works support, and other municipal administrative positions, requiring skills in public administration, office technology, and community relations.",
     "regions": [
       "SCC"
     ],
@@ -10315,7 +10315,7 @@
   {
     "name": "Children Protective Services",
     "sector": "Government",
-    "description": "A government agency responsible for protecting children from abuse and neglect.",
+    "description": "Children Protective Services, operating under the Human Services Agency, is dedicated to protecting children and promoting family well-being within the community. They provide essential intervention and support services. CTE-relevant roles include administrative assistants, data specialists, and program support staff.",
     "regions": [
       "SCC"
     ],
@@ -10333,7 +10333,7 @@
   {
     "name": "Conservation Corps",
     "sector": "Government",
-    "description": "An organization engaging young adults in environmental conservation work.",
+    "description": "The California Conservation Corps is a state agency that engages young adults in environmental conservation projects, emergency response, and community service. They provide valuable job training, education, and life skills development. CTE-relevant roles include conservation technicians, emergency response support, equipment operators, and administrative support.",
     "regions": [
       "SCC"
     ],
@@ -10352,7 +10352,7 @@
   {
     "name": "Highway Patrol Department",
     "sector": "Government",
-    "description": "A law enforcement agency responsible for patrolling highways and enforcing traffic laws.",
+    "description": "The Highway Patrol Department, referring to the California Highway Patrol (CHP), is a statewide law enforcement agency responsible for traffic safety and law enforcement on California's freeways and unincorporated roads. It operates on a large, statewide scale with numerous offices and personnel. CTE-relevant roles include administrative support, dispatchers, auto mechanics for fleet maintenance, IT support, and entry-level positions in law enforcement, requiring skills in public safety, automotive technology, and administrative procedures.",
     "regions": [
       "SCC"
     ],
@@ -10369,7 +10369,7 @@
   {
     "name": "Santa Paula City Hall",
     "sector": "Government",
-    "description": "The administrative center for the City of Santa Paula.",
+    "description": "Santa Paula City Hall is the central administrative hub for the City of Santa Paula, providing essential municipal services and governance to its residents. It manages public resources and community development. CTE-relevant roles include administrative support, public works assistants, and general office roles.",
     "regions": [
       "SCC"
     ],
@@ -10388,7 +10388,7 @@
   {
     "name": "Simi Valley Public Works Maintenance",
     "sector": "Government",
-    "description": "The public works department responsible for maintenance in Simi Valley.",
+    "description": "Simi Valley Public Works Maintenance is a municipal department responsible for maintaining the city's infrastructure, including roads, parks, facilities, and public utilities. They serve the entire city of Simi Valley, ensuring the upkeep of public assets. CTE-relevant roles include heavy equipment operators, mechanics, electricians, plumbers, landscapers, and administrative support.",
     "regions": [
       "SCC"
     ],
@@ -10407,7 +10407,7 @@
   {
     "name": "U.S. Department of the Navy",
     "sector": "Government",
-    "description": "A branch of the United States Armed Forces responsible for naval operations.",
+    "description": "The U.S. Department of the Navy operates the United States Navy, providing naval defense, deterrence, and maritime security globally. It is a large, complex organization with a worldwide presence. CTE-relevant roles encompass a vast array of technical fields, including engineering, electronics, logistics, healthcare, and culinary services.",
     "regions": [
       "SCC"
     ],
@@ -10426,7 +10426,7 @@
   {
     "name": "Ventura City Hall",
     "sector": "Government",
-    "description": "The administrative center for the City of Ventura.",
+    "description": "Ventura City Hall serves as the administrative center for the City of Ventura, housing various municipal departments that provide public services and govern the city. It oversees a wide range of functions for the city's residents and businesses. CTE-relevant roles include administrative assistants, city clerks, public information specialists, and support staff for various departments.",
     "regions": [
       "SCC"
     ],
@@ -10445,7 +10445,7 @@
   {
     "name": "Ventura County Adult Mental Health Services",
     "sector": "Government",
-    "description": "A department providing mental health services for adults in Ventura County.",
+    "description": "Ventura County Adult Mental Health Services, part of Ventura County Behavioral Health, offers comprehensive mental health care and support to adults within the county. They are dedicated to promoting well-being and recovery for residents. CTE-relevant roles include administrative assistants, patient support staff, and community health outreach.",
     "regions": [
       "SCC"
     ],
@@ -10464,7 +10464,7 @@
   {
     "name": "Ventura County Assessor's Office",
     "sector": "Government",
-    "description": "The county office responsible for assessing property values for tax purposes.",
+    "description": "The Ventura County Assessor's Office is responsible for accurately assessing the value of all taxable property, including real estate, businesses, and vessels, within Ventura County. They also maintain extensive public records and maps related to property information. CTE-relevant roles include administrative assistants, data entry specialists, GIS mapping support, and records management.",
     "regions": [
       "SCC"
     ],
@@ -10483,7 +10483,7 @@
   {
     "name": "Ventura County District Attorney's Office",
     "sector": "Government",
-    "description": "The county office responsible for prosecuting criminal offenses.",
+    "description": "The Ventura County District Attorney's Office is dedicated to upholding justice by prosecuting criminal cases and advocating for public safety within Ventura County. They work to protect the community and ensure fair legal processes. CTE-relevant roles include legal administrative assistants, paralegal support, and victim services advocates.",
     "regions": [
       "SCC"
     ],
@@ -10502,7 +10502,7 @@
   {
     "name": "Ventura County General Services Agency",
     "sector": "Government",
-    "description": "A county agency providing general services and support to other county departments.",
+    "description": "The Ventura County General Services Agency provides essential support services for county government operations, including facilities management, procurement, and fleet services. They employ a diverse workforce to maintain infrastructure and provide administrative support across various county departments. CTE-relevant roles include automotive technicians, skilled trades, and logistics specialists.",
     "regions": [
       "SCC"
     ],
@@ -10521,7 +10521,7 @@
   {
     "name": "Ventura County Public Works Agency",
     "sector": "Government",
-    "description": "A county agency responsible for public infrastructure and services.",
+    "description": "The Ventura County Public Works Agency is responsible for designing, building, and maintaining essential public infrastructure, including roads, flood control, and water resources, serving the entire county. Their operations require a substantial workforce, offering CTE-relevant roles such as civil engineering technicians, heavy equipment operators, construction trades, and maintenance professionals.",
     "regions": [
       "SCC"
     ],
@@ -10540,7 +10540,7 @@
   {
     "name": "Ventura County Resource Management Agency",
     "sector": "Government",
-    "description": "A county agency focused on managing natural resources and land use.",
+    "description": "The Ventura County Resource Management Agency oversees land use planning, environmental protection, and building and safety standards throughout Ventura County. They work to balance development with natural resource conservation, requiring professionals in fields like environmental science, urban planning, and building inspection. CTE-relevant roles include planning assistants, GIS technicians, and building trades inspectors.",
     "regions": [
       "SCC"
     ],
@@ -10559,7 +10559,7 @@
   {
     "name": "Ventura County Sheriff's Department",
     "sector": "Government",
-    "description": "The primary law enforcement agency for Ventura County.",
+    "description": "The Ventura County Sheriff's Department provides comprehensive law enforcement services, operates the county jail, and manages court security across Ventura County. This extensive organization offers various CTE-relevant careers, including sworn deputies, correctional officers, dispatchers, and forensic support staff.",
     "regions": [
       "SCC"
     ],
@@ -10576,7 +10576,7 @@
   {
     "name": "Oxnard Fire Department Headquarters",
     "sector": "Government",
-    "description": "The main administrative office for the Oxnard Fire Department.",
+    "description": "Oxnard Fire Department Headquarters is the central administrative and operational hub for the city's fire and emergency services. It manages fire suppression, emergency medical services, and fire prevention efforts for the city of Oxnard. CTE-relevant roles include firefighters, paramedics, administrative assistants, dispatchers, and fire prevention specialists.",
     "regions": [
       "SCC"
     ],
@@ -10595,7 +10595,7 @@
   {
     "name": "Oxnard Police Department",
     "sector": "Government",
-    "description": "The primary law enforcement agency for the City of Oxnard.",
+    "description": "The Oxnard Police Department is the primary law enforcement agency responsible for maintaining public safety, preventing crime, and responding to emergencies within the city of Oxnard. It operates as a large municipal department, serving a diverse urban population. CTE-relevant roles include police officers, dispatchers, records clerks, forensic technicians, and administrative support staff.",
     "regions": [
       "SCC"
     ],
@@ -10612,7 +10612,7 @@
   {
     "name": "Simi Valley Police Department",
     "sector": "Government",
-    "description": "The primary law enforcement agency for the City of Simi Valley.",
+    "description": "The Simi Valley Police Department is dedicated to providing law enforcement and public safety services specifically within the city of Simi Valley. They maintain order, respond to emergencies, and investigate crimes for the local community. CTE-relevant roles include police officers, dispatchers, and crime scene technicians.",
     "regions": [
       "SCC"
     ],
@@ -10629,7 +10629,7 @@
   {
     "name": "Thousand Oaks Police Department",
     "sector": "Government",
-    "description": "The primary law enforcement agency for the City of Thousand Oaks.",
+    "description": "The Thousand Oaks Police Department provides law enforcement services to the city of Thousand Oaks, operating under a contract with the Ventura County Sheriff's Office. This arrangement delivers public safety and crime prevention for the community. CTE-relevant roles include sheriff's deputies, dispatchers, and evidence processing personnel.",
     "regions": [
       "SCC"
     ],
@@ -10646,7 +10646,7 @@
   {
     "name": "Ventura County Fire Department Headquarters",
     "sector": "Government",
-    "description": "The main administrative office for the Ventura County Fire Department.",
+    "description": "The Ventura County Fire Department Headquarters coordinates fire suppression, emergency medical services, and hazard response for the entire county. Their extensive operations ensure public safety and emergency preparedness. CTE-relevant roles include firefighters, paramedics, EMTs, and fire prevention specialists.",
     "regions": [
       "SCC"
     ],
@@ -10665,7 +10665,7 @@
   {
     "name": "Ventura County Probation Agency",
     "sector": "Government",
-    "description": "A county agency responsible for supervising offenders and providing rehabilitation services.",
+    "description": "The Ventura County Probation Agency supervises adult and juvenile offenders within the community, focusing on rehabilitation, public safety, and crime prevention. They manage a significant caseload across the county, offering CTE-relevant roles such as probation officers, administrative support staff, and youth counselors.",
     "regions": [
       "SCC"
     ],
@@ -10684,7 +10684,7 @@
   {
     "name": "Ventura County Sheriff's Office",
     "sector": "Government",
-    "description": "The primary law enforcement agency for Ventura County.",
+    "description": "The Ventura County Sheriff's Office is responsible for county-wide law enforcement, operating the county jail, and providing court services. This major public safety organization protects residents and maintains order across Ventura County. CTE-relevant roles include sheriff's deputies, correctional officers, dispatchers, and forensic technicians.",
     "regions": [
       "SCC"
     ],
@@ -10701,7 +10701,7 @@
   {
     "name": "Ventura County Superior Court",
     "sector": "Government",
-    "description": "The superior court for Ventura County, handling various legal cases.",
+    "description": "The Ventura County Superior Court is the trial court of general jurisdiction for Ventura County, handling a wide range of civil, criminal, family, and juvenile cases. It serves the entire county population by administering justice. CTE-relevant roles include court clerks, administrative assistants, judicial assistants, and interpreters.",
     "regions": [
       "SCC"
     ],
@@ -10720,7 +10720,7 @@
   {
     "name": "Ventura Superior Municipal Court",
     "sector": "Government",
-    "description": "The superior municipal court for Ventura, handling various legal cases.",
+    "description": "The Ventura Superior Municipal Court refers to the Superior Court of California, County of Ventura, which consolidated the former municipal and superior courts into a single trial court system. It handles a full range of legal cases for Ventura County. CTE-relevant roles include court clerks, administrative staff, and judicial support personnel.",
     "regions": [
       "SCC"
     ],
@@ -10739,7 +10739,7 @@
   {
     "name": "Ventura County Human Services Agency",
     "sector": "Government",
-    "description": "A county agency providing a range of human services to residents.",
+    "description": "The Ventura County Human Services Agency delivers vital social services, including welfare assistance, child protective services, and aging and adult care, to residents across the county. They aim to improve community well-being and self-sufficiency. CTE-relevant roles include social work assistants, eligibility specialists, and administrative support staff.",
     "regions": [
       "SCC"
     ],
@@ -10758,7 +10758,7 @@
   {
     "name": "Ventura County Office of Education",
     "sector": "Government",
-    "description": "The county office providing educational leadership, services, and programs.",
+    "description": "The Ventura County Office of Education provides leadership, support, and specialized services to the K-12 school districts and students throughout Ventura County. They aim to enhance educational outcomes and professional development. CTE-relevant roles include educational assistants, IT support specialists, administrative staff, and trades for facilities maintenance.",
     "regions": [
       "SCC"
     ],
