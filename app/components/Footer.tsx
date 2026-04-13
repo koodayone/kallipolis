@@ -23,19 +23,41 @@ export default function Footer() {
 
           {/* Link columns */}
           <div className="flex flex-1 justify-evenly" style={{ paddingTop: 5 }}>
-            <div className="flex flex-col gap-2">
-              <h4 className="text-sm font-medium uppercase tracking-widest text-gray-400">About</h4>
-              <p className="text-xs uppercase tracking-widest text-gray-600">Coming Soon</p>
+            <div className="flex flex-col gap-3">
+              <h4 className="text-sm font-medium uppercase tracking-widest text-gray-400" style={{ fontFamily: "var(--font-days-one)" }}>About</h4>
+              <p className="uppercase tracking-widest text-gray-600" style={{ fontFamily: "var(--font-days-one)", fontSize: 10 }}>Coming Soon</p>
             </div>
-            <div className="flex flex-col gap-2">
-              <h4 className="text-sm font-medium uppercase tracking-widest text-gray-400">Documentation</h4>
-              <Link href="/atlas" className="text-xs uppercase tracking-widest text-gray-500 hover:text-white transition-colors" style={{ textDecoration: "none" }}>Atlas</Link>
-              <Link href="/sources" className="text-xs uppercase tracking-widest text-gray-500 hover:text-white transition-colors" style={{ textDecoration: "none" }}>Sources</Link>
-              <Link href="/partnerships" className="text-xs uppercase tracking-widest text-gray-500 hover:text-white transition-colors" style={{ textDecoration: "none" }}>Partnerships</Link>
+            <div className="flex flex-col gap-3">
+              <h4 className="text-sm font-medium uppercase tracking-widest text-gray-400" style={{ fontFamily: "var(--font-days-one)" }}>Documentation</h4>
+              <Link href="/atlas" className="uppercase tracking-widest text-gray-500 hover:text-white transition-colors" style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", fontSize: 10, display: "inline-flex", alignItems: "center", gap: 6 }}>
+                Atlas
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2L3 7.5 12 13l9-5.5L12 2z" fill="currentColor" opacity="0.85" />
+                  <path d="M12 13v9l9-5.5v-9L12 13z" fill="currentColor" opacity="0.55" />
+                  <path d="M12 13v9L3 16.5v-9L12 13z" fill="currentColor" opacity="0.4" />
+                </svg>
+              </Link>
+              <Link href="/sources" className="uppercase tracking-widest text-gray-500 hover:text-white transition-colors" style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", fontSize: 10, display: "inline-flex", alignItems: "center", gap: 6 }}>
+                Sources
+                <svg width="10" height="10" viewBox="2 2 20 20" fill="none">
+                  <path d="M12 2 L13 10 L12 9 L11 10 Z" fill="currentColor" />
+                  <path d="M12 22 L13 14 L12 15 L11 14 Z" fill="currentColor" />
+                  <path d="M2 12 L10 11 L9 12 L10 13 Z" fill="currentColor" />
+                  <path d="M22 12 L14 11 L15 12 L14 13 Z" fill="currentColor" />
+                  <circle cx="12" cy="12" r="2" fill="currentColor" />
+                </svg>
+              </Link>
+              <Link href="/partnerships" className="uppercase tracking-widest text-gray-500 hover:text-white transition-colors" style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", fontSize: 10, display: "inline-flex", alignItems: "center", gap: 6 }}>
+                Partnerships
+                <svg width="10" height="10" viewBox="3 4 18 16" fill="none">
+                  <circle cx="9.5" cy="14" r="5.5" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.85" />
+                  <circle cx="14.5" cy="10" r="5.5" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.85" />
+                </svg>
+              </Link>
             </div>
-            <div className="flex flex-col gap-2">
-              <h4 className="text-sm font-medium uppercase tracking-widest text-gray-400">Product</h4>
-              <p className="text-xs uppercase tracking-widest text-gray-600">Coming Soon</p>
+            <div className="flex flex-col gap-3">
+              <h4 className="text-sm font-medium uppercase tracking-widest text-gray-400" style={{ fontFamily: "var(--font-days-one)" }}>Product</h4>
+              <p className="uppercase tracking-widest text-gray-600" style={{ fontFamily: "var(--font-days-one)", fontSize: 10 }}>Coming Soon</p>
             </div>
           </div>
         </div>
