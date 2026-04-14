@@ -58,7 +58,7 @@ function stepStyle(step: number, currentStep: number, totalSteps = 3): React.CSS
 const EXPAND_COURSE = 2;
 
 export default function DemoCourses() {
-  const { phase, typedText, isRowExpanded, highlightedRow, showRows, detailStep, containerRef } = useDemoJourney({
+  const { phase, typedText, isRowExpanded, highlightedRow, dimOtherRows, showRows, detailStep, containerRef } = useDemoJourney({
     query: "courses that develop industrial manufacturing skills",
     detailSteps: 3,
   });
@@ -136,7 +136,7 @@ export default function DemoCourses() {
         {/* Course rows */}
         {COURSES.map((c, i) => {
           const isTarget = i === EXPAND_COURSE;
-          const isDimmed = highlightedRow && !isTarget;
+          const isDimmed = dimOtherRows && !isTarget;
           return (
             <div key={c.code} style={{ opacity: isDimmed ? 0.35 : 1, transition: "opacity 0.4s ease" }}>
               <div style={{

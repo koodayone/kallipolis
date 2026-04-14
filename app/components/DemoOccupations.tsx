@@ -70,7 +70,7 @@ const EXPAND_ROW = 1;
 const GRID = "24px 1fr 80px 60px 70px";
 
 export default function DemoOccupations() {
-  const { phase, typedText, isRowExpanded, highlightedRow, showRows, detailStep, containerRef } = useDemoJourney({
+  const { phase, typedText, isRowExpanded, highlightedRow, dimOtherRows, showRows, detailStep, containerRef } = useDemoJourney({
     query: "highest paying manufacturing occupations in our region",
     detailSteps: 3,
   });
@@ -138,7 +138,7 @@ export default function DemoOccupations() {
 
         {OCCUPATIONS.map((o, i) => {
           const isTarget = i === EXPAND_ROW;
-          const isDimmed = highlightedRow && !isTarget;
+          const isDimmed = dimOtherRows && !isTarget;
           return (
             <div key={o.title} style={{ opacity: isDimmed ? 0.35 : 1, transition: "opacity 0.4s ease" }}>
               <div style={{

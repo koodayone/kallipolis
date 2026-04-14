@@ -63,11 +63,30 @@ function stepStyle(step: number, currentStep: number, totalSteps = 3): React.CSS
   };
 }
 
+// Enrollment table is the shared focus for steps 1 (courses) and 2 (grades).
+// Stay "active" for both steps, fade to past state at step 3+.
+function enrollmentStepStyle(currentStep: number, totalSteps = 3): React.CSSProperties {
+  const isVisible = currentStep >= 1;
+  const isActive = currentStep === 1 || currentStep === 2;
+  const isResting = currentStep > totalSteps;
+  const isPast = currentStep > 2 && !isResting;
+  return {
+    opacity: isVisible ? (isPast ? 0.5 : 1) : 0,
+    transform: isVisible ? "translateY(0)" : "translateY(8px)",
+    transition: "opacity 0.5s ease, transform 0.5s ease, border-color 0.4s ease, background 0.4s ease",
+    borderLeft: isActive ? `2px solid ${ACCENT}` : "2px solid transparent",
+    paddingLeft: 12,
+    background: isActive ? `${ACCENT}08` : "transparent",
+    borderRadius: isActive ? "0 4px 4px 0" : 0,
+    marginBottom: 10,
+  };
+}
+
 const EXPAND_ROW = 0;
 const GRID = "24px 60px 1fr 55px 44px";
 
 export default function DemoStudents() {
-  const { phase, typedText, isRowExpanded, highlightedRow, showRows, detailStep, containerRef } = useDemoJourney({
+  const { phase, typedText, isRowExpanded, highlightedRow, dimOtherRows, showRows, detailStep, containerRef } = useDemoJourney({
     query: "students in advanced manufacturing with highest GPA",
     detailSteps: 3,
   });
@@ -135,7 +154,7 @@ export default function DemoStudents() {
 
         {STUDENTS.map((s, i) => {
           const isTarget = i === EXPAND_ROW;
-          const isDimmed = highlightedRow && !isTarget;
+          const isDimmed = dimOtherRows && !isTarget;
           return (
             <div key={s.id} style={{ opacity: isDimmed ? 0.35 : 1, transition: "opacity 0.4s ease" }}>
               <div style={{
@@ -168,8 +187,8 @@ export default function DemoStudents() {
                       <span style={{ padding: "6px 14px", fontSize: 10, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", borderBottom: "2px solid transparent", marginBottom: -1 }}>Skill Profile</span>
                     </div>
 
-                    {/* Step 1: Enrollment rows */}
-                    <div style={stepStyle(1, detailStep)}>
+                    {/* Steps 1-2: Enrollment rows (active during both steps) */}
+                    <div style={enrollmentStepStyle(detailStep)}>
                       <div style={{ display: "flex", flexDirection: "column", gap: 1 }}>
                         {ENROLLMENTS.map((e) => (
                           <div key={e.code} style={{ display: "flex", alignItems: "baseline", gap: 8, padding: "5px 0" }}>

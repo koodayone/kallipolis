@@ -68,11 +68,30 @@ function stepStyle(step: number, currentStep: number, totalSteps = 4): React.CSS
   };
 }
 
+// Occupation card holds both step 3 (card reveal) and step 4 (aligned skills).
+// Stay active during both steps, fade to past at rest.
+function occupationCardStepStyle(currentStep: number, totalSteps = 4): React.CSSProperties {
+  const isVisible = currentStep >= 3;
+  const isActive = currentStep === 3;  // Only highlight outer card for step 3; step 4's own stepStyle takes over
+  const isResting = currentStep > totalSteps;
+  const isPast = currentStep > 4 && !isResting;
+  return {
+    opacity: isVisible ? (isPast ? 0.5 : 1) : 0,
+    transform: isVisible ? "translateY(0)" : "translateY(8px)",
+    transition: "opacity 0.5s ease, transform 0.5s ease, border-color 0.4s ease, background 0.4s ease",
+    borderLeft: isActive ? `2px solid ${ACCENT}` : "2px solid transparent",
+    paddingLeft: 12,
+    background: isActive ? `${ACCENT}08` : "transparent",
+    borderRadius: isActive ? "0 4px 4px 0" : 0,
+    marginBottom: 10,
+  };
+}
+
 const EXPAND_ROW = 0;
 const GRID = "24px 1.2fr 1fr 50px 85px";
 
 export default function DemoEmployers() {
-  const { phase, typedText, isRowExpanded, highlightedRow, showRows, detailStep, containerRef } = useDemoJourney({
+  const { phase, typedText, isRowExpanded, highlightedRow, dimOtherRows, showRows, detailStep, containerRef } = useDemoJourney({
     query: "employers aligned with our manufacturing program",
     detailSteps: 4,
   });
@@ -140,7 +159,7 @@ export default function DemoEmployers() {
 
         {EMPLOYERS.map((e, i) => {
           const isTarget = i === EXPAND_ROW;
-          const isDimmed = highlightedRow && !isTarget;
+          const isDimmed = dimOtherRows && !isTarget;
           return (
             <div key={e.name} style={{ opacity: isDimmed ? 0.35 : 1, transition: "opacity 0.4s ease" }}>
               <div style={{
@@ -187,8 +206,8 @@ export default function DemoEmployers() {
                       </span>
                     </div>
 
-                    {/* Step 3: Occupation card */}
-                    <div style={stepStyle(3, detailStep)}>
+                    {/* Step 3: Occupation card (keeps full opacity during step 4) */}
+                    <div style={occupationCardStepStyle(detailStep)}>
                       <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.07em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", display: "block", marginBottom: 8 }}>Employer Occupations (1)</span>
                       <div style={{ background: "rgba(255,255,255,0.03)", borderRadius: 8, padding: "14px 16px" }}>
                         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>

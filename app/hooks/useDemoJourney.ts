@@ -35,12 +35,12 @@ export type DemoJourneyConfig = {
 const DEFAULTS = {
   idlePause: 1500,
   typeSpeed: 80,
-  postTypePause: 600,
+  postTypePause: 800,
   loadingDuration: 1000,
-  rowsPause: 1500,
-  highlightSettle: 300,
-  stepDuration: 3500,
-  finalHold: 10000,
+  rowsPause: 2500,
+  highlightSettle: 400,
+  stepDuration: 5500,
+  finalHold: 0,
   fadeDuration: 400,
 };
 
@@ -49,6 +49,7 @@ export type DemoJourneyState = {
   typedText: string;
   isRowExpanded: boolean;
   highlightedRow: boolean;
+  dimOtherRows: boolean;
   showRows: boolean;
   detailStep: number;
   containerRef: React.RefObject<HTMLDivElement | null>;
@@ -123,7 +124,7 @@ export function useDemoJourney(config: DemoJourneyConfig): DemoJourneyState {
                     setPhase("detail");
                     setDetailStep(1);
 
-                    // Step through detail sub-phases
+                    // Step through detail sub-phases — no loop, rest forever
                     let step = 1;
                     function advanceStep() {
                       step++;
@@ -131,24 +132,20 @@ export function useDemoJourney(config: DemoJourneyConfig): DemoJourneyState {
                         setDetailStep(step);
                         timerRef.current = setTimeout(advanceStep, t.stepDuration);
                       } else {
-                        // All steps shown — enter rest (no highlight, everything visible)
-                        setDetailStep(totalSteps + 1);
+                        // All steps shown — arrive at rest and stay there
                         timerRef.current = setTimeout(() => {
-                          setPhase("hold");
-                          timerRef.current = setTimeout(runCycle, t.fadeDuration);
-                        }, t.finalHold);
+                          setDetailStep(totalSteps + 1);
+                        }, t.stepDuration);
                       }
                     }
 
                     if (totalSteps > 1) {
                       timerRef.current = setTimeout(advanceStep, t.stepDuration);
                     } else {
-                      // Single step — go to rest then hold
-                      setDetailStep(totalSteps + 1);
+                      // Single step — fade to rest after stepDuration
                       timerRef.current = setTimeout(() => {
-                        setPhase("hold");
-                        timerRef.current = setTimeout(runCycle, t.fadeDuration);
-                      }, t.finalHold);
+                        setDetailStep(totalSteps + 1);
+                      }, t.stepDuration);
                     }
 
                   }, 300);
@@ -171,7 +168,8 @@ export function useDemoJourney(config: DemoJourneyConfig): DemoJourneyState {
     phase,
     typedText,
     isRowExpanded: phaseAtLeast(phase, "expanding") && phase !== "hold",
-    highlightedRow: phaseAtLeast(phase, "highlighting") && phase !== "hold",
+    highlightedRow: phase === "highlighting" || phase === "expanding",
+    dimOtherRows: phaseAtLeast(phase, "highlighting"),
     showRows: phaseAtLeast(phase, "rows") && phase !== "hold",
     detailStep,
     containerRef,
