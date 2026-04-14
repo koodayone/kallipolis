@@ -227,14 +227,14 @@ export function buildUnifiedKnowledgeScene(canvas: HTMLCanvasElement): UnifiedKn
 
     // Form rotation
     for (const f of formGroups) {
-      f.group.rotation.x += 0.003;
-      f.group.rotation.y += 0.004;
-      f.group.rotation.z += 0.0018;
+      f.group.rotation.x += 0.002;
+      f.group.rotation.y += 0.0028;
+      f.group.rotation.z += 0.0012;
     }
 
     // Cube rotation — slower, different axes
-    cube.rotation.y += 0.005;
-    cube.rotation.x += 0.002;
+    cube.rotation.y += 0.0035;
+    cube.rotation.x += 0.0014;
 
     // Connector shimmer — unified across all connectors
     const glowOpacity = 0.1 + 0.1 * Math.sin(elapsed * 1.8);

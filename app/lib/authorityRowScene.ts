@@ -134,9 +134,9 @@ export function buildAuthorityRowScene(
     rafId = requestAnimationFrame(tick);
     const elapsed = (performance.now() - startTime) / 1000;
 
-    group.rotation.x += 0.003;
-    group.rotation.y += 0.004;
-    group.rotation.z += 0.0018;
+    group.rotation.x += 0.002;
+    group.rotation.y += 0.0028;
+    group.rotation.z += 0.0012;
 
     // Glow halo shimmer — richer range
     glowMat.opacity = 0.1 + 0.1 * Math.sin(elapsed * 1.8);
