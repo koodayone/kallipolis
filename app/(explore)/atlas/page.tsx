@@ -63,7 +63,7 @@ export default function ExploreAtlasPage() {
           <Eyebrow>The Atlas</Eyebrow>
           <GoldDivider />
           <SectionHeading>
-            A navigational ontology<br />for workforce development
+            Navigational ontology<br />for workforce development
           </SectionHeading>
           <p style={{ fontSize: 18, lineHeight: 1.6, color: "rgba(255,255,255,0.65)", marginTop: 24, maxWidth: 560, marginLeft: "auto", marginRight: "auto" }}>
             Every college in the California Community College system receives a unified surface — six dimensions of institutional intelligence, navigable in natural language.
