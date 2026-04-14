@@ -1,28 +1,13 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const router = useRouter();
   const pathname = usePathname();
-
-  const handleLogoClick = useCallback((e: React.MouseEvent) => {
-    e.preventDefault();
-    if (pathname === "/") return;
-    const content = document.querySelector("[data-fade-target]") as HTMLElement
-      ?? document.querySelector("main") as HTMLElement;
-    if (content) {
-      content.style.transition = "opacity 0.4s ease";
-      content.style.opacity = "0";
-      setTimeout(() => router.push("/"), 400);
-    } else {
-      router.push("/");
-    }
-  }, [pathname, router]);
 
   useEffect(() => {
     function onScroll() {
@@ -31,6 +16,9 @@ export default function Nav() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Close the hamburger menu whenever the route changes.
+  useEffect(() => { setOpen(false); }, [pathname]);
 
   const bgStyle = scrolled
     ? { backgroundColor: "#060d1f", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }
@@ -44,7 +32,7 @@ export default function Nav() {
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
 
         {/* Logo + wordmark */}
-        <Link href="/" onClick={handleLogoClick} className="flex items-center gap-3" style={{ textDecoration: "none" }}>
+        <Link href="/" className="flex items-center gap-3" style={{ textDecoration: "none" }}>
           <img
             src="/kallipolis-logo.png"
             alt="Kallipolis logo"
@@ -95,7 +83,7 @@ export default function Nav() {
         >
           <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 14, padding: "16px 24px 20px" }}>
             {pathname !== "/" && (
-              <Link href="/" onClick={handleLogoClick} className="text-sm uppercase tracking-widest text-white hover:text-white/60 transition-colors" style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", display: "inline-flex", alignItems: "center", gap: 8 }}>
+              <Link href="/" className="text-sm uppercase tracking-widest text-white hover:text-white/60 transition-colors" style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", display: "inline-flex", alignItems: "center", gap: 8 }}>
                 Home
                 <svg width="20" height="14" viewBox="6 12 44 26" fill="none" style={{ overflow: "hidden", position: "relative", top: -1 }}>
                   <defs><clipPath id="nav-sun-clip"><rect x="6" y="10" width="44" height="28" /></clipPath></defs>
