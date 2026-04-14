@@ -5,7 +5,7 @@ import DemoStudents from "../../components/DemoStudents";
 import DemoCourses from "../../components/DemoCourses";
 import DemoOccupations from "../../components/DemoOccupations";
 import DemoEmployers from "../../components/DemoEmployers";
-import PipelineDiagram from "../../components/PipelineDiagram";
+import UnifiedKnowledgeDiagram from "../../components/UnifiedKnowledgeDiagram";
 import ActionBadge from "../../components/ActionBadge";
 import {
   createMortarboardForm,
@@ -115,7 +115,7 @@ export default function ExploreSourcesPage() {
       </section>
 
       {/* ── Section 3: Pipeline (component-led) ── */}
-      <section style={{ paddingTop: 48, paddingBottom: 64, paddingLeft: 64, paddingRight: 64 }}>
+      <section style={{ paddingTop: 48, paddingBottom: 0, paddingLeft: 64, paddingRight: 64 }}>
         <div className="max-w-3xl mx-auto text-center" style={{ marginBottom: 48 }}>
           <Eyebrow>Unified Knowledge</Eyebrow>
           <GoldDivider />
@@ -125,11 +125,13 @@ export default function ExploreSourcesPage() {
           </p>
         </div>
 
-        <PipelineDiagram />
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <UnifiedKnowledgeDiagram />
+        </div>
       </section>
 
       {/* ── Section 4: Forward Deployment (prose-led) ── */}
-      <section style={{ paddingTop: 48, paddingBottom: 48, paddingLeft: 64, paddingRight: 64 }}>
+      <section style={{ paddingTop: 48, paddingBottom: 48, paddingLeft: 64, paddingRight: 64, marginTop: -260 }}>
         <div className="max-w-2xl mx-auto text-center">
           <Eyebrow>Forward Deployment</Eyebrow>
           <GoldDivider />

@@ -299,3 +299,15 @@ export function createDumbbellForm(color: number): THREE.Group {
 
   return group;
 }
+
+export function createCubeForm(color: number): THREE.Group {
+  const group = new THREE.Group();
+  group.name = "platonic-cube";
+  const mat = createFormMaterial(color);
+
+  const size = 1.4;
+  const cubeGeo = new THREE.BoxGeometry(size, size, size);
+  addWithEdges(group, cubeGeo, mat);
+
+  return group;
+}
