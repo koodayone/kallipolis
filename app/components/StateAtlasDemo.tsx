@@ -321,34 +321,34 @@ export default function StateAtlasDemo() {
       </div>
 
       {/* Right — text */}
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", gap: 40, paddingLeft: 48 }}>
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "flex-start", gap: 48, paddingLeft: 48, paddingTop: 24 }}>
         <div style={{ textAlign: "center" }}>
           <p style={{ fontSize: 13, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.15em", color: "rgba(255,255,255,0.4)", marginBottom: 16 }}>
             Two Scales
           </p>
           <div style={{ width: 64, height: 2, background: "#f0425e", borderRadius: 1, opacity: 0.9, margin: "0 auto 24px" }} />
           <h2
-            className="text-[24px] md:text-[32px] leading-[1.12] tracking-[-0.02em] text-white"
+            className="text-[26px] md:text-[30px] leading-[1.12] tracking-[-0.02em] text-white"
             style={{ fontFamily: "var(--font-days-one)", fontWeight: 400 }}
           >
-            From the state<br />to the college
+            One system.<br />Every California college.
           </h2>
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 36 }}>
           <div>
-            <span style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#f0425e", display: "block", marginBottom: 6 }}>
+            <span style={{ fontSize: 12, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "#f0425e", display: "block", marginBottom: 6 }}>
               State Atlas
             </span>
-            <p style={{ fontSize: 16, lineHeight: 1.6, color: "rgba(255,255,255,0.65)", margin: 0 }}>
+            <p style={{ fontSize: 15, lineHeight: 1.6, color: "rgba(255,255,255,0.65)", margin: 0 }}>
               116 colleges across 73 districts and 8 regional consortia. Search for any college, and the atlas surfaces it in context.
             </p>
           </div>
           <div>
-            <span style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#f0425e", display: "block", marginBottom: 6 }}>
+            <span style={{ fontSize: 12, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "#f0425e", display: "block", marginBottom: 6 }}>
               College Atlas
             </span>
-            <p style={{ fontSize: 16, lineHeight: 1.6, color: "rgba(255,255,255,0.65)", margin: 0 }}>
+            <p style={{ fontSize: 15, lineHeight: 1.6, color: "rgba(255,255,255,0.65)", margin: 0 }}>
               A college atlas opens into six forms, each representing an element of a workforce development worldview.
             </p>
           </div>

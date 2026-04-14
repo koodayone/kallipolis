@@ -58,38 +58,22 @@ export default function ExploreAtlasPage() {
   return (
     <>
       {/* ── Section 1: Hero ── */}
-      <section style={{ paddingTop: 120, paddingBottom: 64, paddingLeft: 64, paddingRight: 64 }}>
+      <section style={{ paddingTop: 120, paddingBottom: 48, paddingLeft: 64, paddingRight: 64 }}>
         <div className="max-w-3xl mx-auto text-center">
           <Eyebrow>The Atlas</Eyebrow>
           <GoldDivider />
-          <SectionHeading>
-            Navigational ontology<br />for workforce development
-          </SectionHeading>
-          <p style={{ fontSize: 18, lineHeight: 1.6, color: "rgba(255,255,255,0.65)", marginTop: 24, maxWidth: 560, marginLeft: "auto", marginRight: "auto" }}>
-            Every college in the California Community College system receives a unified surface — six dimensions of institutional intelligence, navigable in natural language.
-          </p>
-        </div>
-      </section>
-
-      {/* ── Section 2: Two Scales ── */}
-      <section style={{ paddingTop: 0, paddingBottom: 64, paddingLeft: 64, paddingRight: 64 }}>
-        <StateAtlasDemo />
-      </section>
-
-      {/* ── Section 3: The Six Forms ── */}
-      <section style={{ paddingTop: 48, paddingBottom: 64, paddingLeft: 64, paddingRight: 64 }}>
-        <div className="max-w-3xl mx-auto text-center" style={{ marginBottom: 48 }}>
-          <Eyebrow>The Six Forms</Eyebrow>
-          <GoldDivider />
           <SectionHeading>Each college is a world</SectionHeading>
-          <p style={{ fontSize: 16, lineHeight: 1.6, color: "rgba(255,255,255,0.55)", marginTop: 20 }}>
+          <p style={{ fontSize: 17, lineHeight: 1.6, color: "rgba(255,255,255,0.65)", marginTop: 24 }}>
             Selecting a college opens a three-dimensional space of six rotating forms. Each form is an entry point into a dimension of institutional reality — click to explore, and the atlas dissolves into a natural language interface native to the form.
           </p>
-          <p style={{ fontSize: 16, lineHeight: 1.6, color: "rgba(255,255,255,0.55)", marginTop: 16 }}>
+          <p style={{ fontSize: 17, lineHeight: 1.6, color: "rgba(255,255,255,0.65)", marginTop: 16 }}>
             Four of these forms are analytical — students, courses, occupations, and employers — each grounded in a public data authority. The remaining two are action-driven: partnerships and strong workforce proposals formulated from the four analytical forms.
           </p>
         </div>
+      </section>
 
+      {/* ── Section 2: The Six Forms ── */}
+      <section style={{ paddingTop: 16, paddingBottom: 64, paddingLeft: 64, paddingRight: 64 }}>
         <div
           style={{
             display: "grid",
@@ -111,8 +95,13 @@ export default function ExploreAtlasPage() {
         </div>
       </section>
 
+      {/* ── Section 3: Two Scales ── */}
+      <section style={{ paddingTop: 48, paddingBottom: 64, paddingLeft: 64, paddingRight: 64 }}>
+        <StateAtlasDemo />
+      </section>
+
       {/* ── Section 4: Natural Language Interface ── */}
-      <section style={{ paddingTop: 80, paddingBottom: 64, paddingLeft: 64, paddingRight: 64 }}>
+      <section style={{ paddingTop: 32, paddingBottom: 64, paddingLeft: 64, paddingRight: 64 }}>
         <div className="max-w-3xl mx-auto text-center" style={{ marginBottom: 40 }}>
           <Eyebrow>Ask Anything</Eyebrow>
           <GoldDivider />
