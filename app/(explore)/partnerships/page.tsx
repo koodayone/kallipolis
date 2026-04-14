@@ -6,7 +6,7 @@ import ActionBadge from "../../components/ActionBadge";
 
 // ── Section primitives ───────────────────────────────────────────────────────
 
-const BRAND = "#b0a0ff";
+const BRAND = "#4fd1fd";
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (

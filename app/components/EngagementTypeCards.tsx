@@ -1,4 +1,4 @@
-const BRAND = "#b0a0ff";
+const BRAND = "#4fd1fd";
 
 const TYPES = [
   {

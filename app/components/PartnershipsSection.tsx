@@ -19,7 +19,7 @@ export default function PartnershipsSection() {
             <TwoFormsDiagram />
           </div>
           <div style={{ textAlign: "center", marginTop: -40 }}>
-            <ActionBadge label="Explore Partnerships" neonColor="#b0a0ff" opacity={1} icon="chainlink" inline href="/partnerships" />
+            <ActionBadge label="Explore Partnerships" neonColor="#4fd1fd" opacity={1} icon="chainlink" inline href="/partnerships" />
           </div>
         </div>
 
@@ -31,7 +31,7 @@ export default function PartnershipsSection() {
             <p style={{ fontSize: 13, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.15em", color: "rgba(255,255,255,0.45)", marginBottom: 16 }}>
               Intelligent Partnerships
             </p>
-            <div style={{ width: 64, height: 2, background: "#b0a0ff", borderRadius: 1, opacity: 0.9, margin: "0 auto 24px" }} />
+            <div style={{ width: 64, height: 2, background: "#4fd1fd", borderRadius: 1, opacity: 0.9, margin: "0 auto 24px" }} />
             <h2 className="text-[22px] md:text-[28px] leading-[1.15] tracking-[-0.02em] text-white" style={{ fontFamily: "var(--font-days-one)", fontWeight: 400 }}>
               Data-driven partnerships compliant with Strong Workforce.
             </h2>
@@ -45,7 +45,7 @@ export default function PartnershipsSection() {
                 gap: 5,
               }}
             >
-              <p style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "#b0a0ff", opacity: 0.85, margin: 0 }}>
+              <p style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "#4fd1fd", opacity: 0.85, margin: 0 }}>
                 {point.label}
               </p>
               <p style={{ fontSize: 18, fontWeight: 500, lineHeight: 1.6, color: "rgba(255,255,255,0.85)", margin: 0 }}>

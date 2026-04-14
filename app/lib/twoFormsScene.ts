@@ -8,7 +8,7 @@ import { createChainlinkForm, createDumbbellForm } from "./formFactories";
 
 // ── Scene ─────────────────────────────────────────────────────────────────────
 
-const SOLID_COLOR = 0xb0a0ff;
+const SOLID_COLOR = 0x4fd1fd;
 const BG_COLOR = 0x060d1f;
 const FORM_SCALE = 1.4;
 
@@ -20,8 +20,8 @@ type FormDef = {
 };
 
 const formDefs: FormDef[] = [
-  { label: "Partnerships",     factory: createChainlinkForm, position: new THREE.Vector3(-3.0, 1.2, 0),  rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
-  { label: "Strong Workforce", factory: createDumbbellForm,  position: new THREE.Vector3(-3.0, -3.2, 0), rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
+  { label: "Partnerships",     factory: createChainlinkForm, position: new THREE.Vector3(-2.4, 1.2, 0),  rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
+  { label: "Strong Workforce", factory: createDumbbellForm,  position: new THREE.Vector3(-2.4, -3.2, 0), rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
 ];
 
 export const FORM_LABELS = formDefs.map((f) => f.label);

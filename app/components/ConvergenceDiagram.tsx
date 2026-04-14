@@ -61,7 +61,7 @@ export default function ConvergenceDiagram() {
                   key={i}
                   x1="0" y1={startY}
                   x2="300" y2="100"
-                  stroke="rgba(176,160,255,0.25)"
+                  stroke="rgba(79,209,253,0.25)"
                   strokeWidth="1"
                   style={{
                     opacity: active ? 1 : 0,
@@ -73,7 +73,7 @@ export default function ConvergenceDiagram() {
             {/* Center node */}
             <circle
               cx="300" cy="100" r="6"
-              fill="#b0a0ff"
+              fill="#4fd1fd"
               style={{
                 opacity: active ? 1 : 0,
                 transition: "opacity 0.5s ease 0.9s",
@@ -91,12 +91,12 @@ export default function ConvergenceDiagram() {
         }}>
           <div style={{
             padding: "14px 20px",
-            background: "rgba(176,160,255,0.08)",
-            border: "1px solid rgba(176,160,255,0.2)",
+            background: "rgba(79,209,253,0.08)",
+            border: "1px solid rgba(79,209,253,0.2)",
             borderRadius: 8,
             textAlign: "center",
           }}>
-            <span style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#b0a0ff", display: "block", marginBottom: 4 }}>
+            <span style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#4fd1fd", display: "block", marginBottom: 4 }}>
               Partnership
             </span>
             <span style={{ fontSize: 13, color: "rgba(255,255,255,0.5)" }}>

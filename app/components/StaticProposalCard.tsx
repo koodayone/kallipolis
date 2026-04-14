@@ -1,7 +1,7 @@
 import { SAMPLE_PROPOSAL } from "../lib/sampleProposal";
 
 const FONT = "var(--font-geist), system-ui, sans-serif";
-const BRAND = "#b0a0ff";
+const BRAND = "#4fd1fd";
 
 function SectionHeader({ children, color }: { children: React.ReactNode; color?: string }) {
   return (

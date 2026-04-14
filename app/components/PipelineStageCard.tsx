@@ -6,7 +6,7 @@ type Props = {
   methodology: string;
 };
 
-const BRAND = "#b0a0ff";
+const BRAND = "#4fd1fd";
 
 export default function PipelineStageCard({ number, name, inputs, outputs, methodology }: Props) {
   return (
