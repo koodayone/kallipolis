@@ -188,8 +188,8 @@ export default function ExplorePartnershipsPage() {
 
       {/* ── Section 7: Cross-links ── */}
       <section style={{ background: "#060d1f", padding: "24px 64px 48px", display: "flex", justifyContent: "center", gap: 16 }}>
-        <ActionBadge label="Explore Atlas" neonColor="#c9a84c" opacity={1} icon="cube" inline href="/atlas" />
-        <ActionBadge label="Explore Sources" neonColor="#c9a84c" opacity={1} icon="lightbulb" inline href="/sources" />
+        <ActionBadge label="Explore Atlas" neonColor="#f0425e" opacity={1} icon="cube" inline href="/atlas" invertHover />
+        <ActionBadge label="Explore Sources" neonColor="#c9a84c" opacity={1} icon="lightbulb" inline href="/sources" invertHover />
       </section>
     </>
   );
