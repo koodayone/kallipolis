@@ -121,10 +121,10 @@ export default function ExploreSourcesPage() {
           <GoldDivider />
           <SectionHeading>Limitations become invitations</SectionHeading>
           <p style={{ fontSize: 16, lineHeight: 1.65, color: "rgba(255,255,255,0.55)", marginTop: 24 }}>
-            Student data is synthetic, not real enrollments. Catalog PDFs lag behind live curricula. COE granularity varies by region. EDD captures registered employers, not hiring intent.
+            Student data is synthetic, not real enrollments. Catalog PDFs lag behind live curricula. Regional classifications don't always match a college's local reality. Public datasets don't offer a complete view of each employer.
           </p>
           <p style={{ fontSize: 16, lineHeight: 1.65, color: "rgba(255,255,255,0.55)", marginTop: 16 }}>
-            Each of these limitations is an invitation to collaborate. The pipeline is architected for institutional partnership. Direct MIS feeds replace synthetic students. Curriculum API access makes courses real-time. Local industry contacts validate employer readiness. Forward-deployment into the institution closes the gaps that distance creates.
+            Each of these limitations is an invitation to collaborate. The system is architected for institutional partnership. Direct MIS feeds replace synthetic students. Curriculum API access makes courses real-time. Local industry contacts validate employer readiness. Forward-deployment into the institution closes the gaps that distance creates.
           </p>
         </div>
       </section>
