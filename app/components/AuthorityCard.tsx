@@ -10,9 +10,9 @@ type Props = {
   unitName: string;
   authorityName: string;
   logoPath?: string;
-  whatData: string;
-  transformation: string;
-  whyThisSource: string;
+  authority: string;
+  intelligence: string;
+  methodology: string;
   factory: (color: number) => THREE.Group;
   demoScene?: React.ReactNode;
 };
@@ -21,9 +21,9 @@ export default function AuthorityCard({
   unitName,
   authorityName,
   logoPath,
-  whatData,
-  transformation,
-  whyThisSource,
+  authority,
+  intelligence,
+  methodology,
   factory,
   demoScene,
 }: Props) {
@@ -160,35 +160,35 @@ export default function AuthorityCard({
         <div style={{ flex: "0 0 38%", display: "flex", flexDirection: "column", gap: 20 }}>
           <h3 style={{
             fontFamily: "var(--font-days-one)", fontWeight: 400,
-            fontSize: 18, color: ACCENT, margin: 0,
+            fontSize: 18, color: "rgba(255,255,255,0.9)", margin: 0,
           }}>
             {authorityName}
           </h3>
 
           <div>
-            <span style={{ fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "rgba(255,255,255,0.3)", display: "block", marginBottom: 4 }}>
-              What data
+            <span style={{ fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: ACCENT, display: "block", marginBottom: 4 }}>
+              The Authority
             </span>
             <p style={{ fontSize: 14, lineHeight: 1.65, color: "rgba(255,255,255,0.65)", margin: 0 }}>
-              {whatData}
+              {authority}
             </p>
           </div>
 
           <div>
-            <span style={{ fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "rgba(255,255,255,0.3)", display: "block", marginBottom: 4 }}>
-              Transformation
+            <span style={{ fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: ACCENT, display: "block", marginBottom: 4 }}>
+              The Intelligence
             </span>
             <p style={{ fontSize: 14, lineHeight: 1.65, color: "rgba(255,255,255,0.65)", margin: 0 }}>
-              {transformation}
+              {intelligence}
             </p>
           </div>
 
           <div>
-            <span style={{ fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${ACCENT}90`, display: "block", marginBottom: 4 }}>
-              Why this source
+            <span style={{ fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: ACCENT, display: "block", marginBottom: 4 }}>
+              The Methodology
             </span>
             <p style={{ fontSize: 14, lineHeight: 1.65, color: "rgba(255,255,255,0.65)", margin: 0 }}>
-              {whyThisSource}
+              {methodology}
             </p>
           </div>
         </div>
