@@ -43,13 +43,13 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 
 const FORMS = [
   // Top row
-  { factory: createMortarboardForm, label: "Students",         source: "Chancellor's Office DataMart",   description: "The people the college system serves. Simulated academic trajectories calibrated to state data." },
-  { factory: createChainlinkForm,   label: "Partnerships",     source: "Synthesized from analysis", description: "Data-driven partnership proposals that connect institutional capacity to employer need." },
+  { factory: createMortarboardForm, label: "Students",         source: "Chancellor's Office DataMart",   description: "The people the college system serves. Simulated academic journeys calibrated to state data." },
+  { factory: createChainlinkForm,   label: "Partnerships",     source: "Generated Through Analysis", description: "Data-driven partnership proposals that connect institutional capacity to employer need." },
   { factory: createSkyscraperForm,  label: "Employers",        source: "Employment Development Dept.",    description: "Real organizations from state labor records, scoped to those community colleges can meaningfully engage." },
   // Bottom row
   { factory: createBookForm,        label: "Courses",          source: "College Curriculum Catalogs",     description: "The institution's curricular commitment. The courses that are taught, and the skills they teach." },
   { factory: createDumbbellForm,    label: "Strong Workforce", source: "Derived from partnerships",      description: "Partnership proposals translated into NOVA-compatible Strong Workforce Program applications." },
-  { factory: createHardhatForm,     label: "Occupations",      source: "Centers of Excellence",          description: "Regional labor demand signals of CTE occupations grounded in workforce-oriented research." },
+  { factory: createHardhatForm,     label: "Occupations",      source: "Centers of Excellence",          description: "Regional labor demand signals of relevant occupations grounded in workforce-oriented research." },
 ];
 
 // ── Page ─────────────────────────────────────────────────────────────────────
