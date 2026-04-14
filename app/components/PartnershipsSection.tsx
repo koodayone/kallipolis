@@ -4,7 +4,7 @@ import ActionBadge from "./ActionBadge";
 const points = [
   { label: "Generative Proposals", text: "Draft intelligent partnership proposals justified by Strong Workforce Program standards." },
   { label: "Tailored Engagement", text: "Generate employer-specific narratives for internship pipelines, advisory boards, and curriculum co-design." },
-  { label: "Labor Market Integration", text: "Instantaneously identify TOP codes, SOC mappings, supply-demand gaps, and quantifiable student impact relevant to industry partnerships." },
+  { label: "Labor Market Integration", text: "Instantly identify TOP codes, SOC mappings, supply-demand gaps, and quantifiable student impact relevant to industry partnerships." },
 ];
 
 export default function PartnershipsSection() {
