@@ -69,7 +69,7 @@ export function buildAuthorityRowScene(
   });
 
   // Connector
-  const startX = formX + 2.8;
+  const startX = formX + 2.9;
   const connEndX = endX - 0.5;
   const length = connEndX - startX;
   const midX = startX + length / 2;
