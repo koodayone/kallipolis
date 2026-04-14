@@ -116,7 +116,7 @@ export default function StateAtlasDemo() {
 
   const showResults = searchFocused || searchQuery.trim().length > 0;
 
-  const sunColor = selectedCollege?.neonColor ?? "#c9a84c";
+  const sunColor = "#c9a84c";
   const sunLabel = selectedCollege?.name ?? "Select a college";
 
   // Viewport observer

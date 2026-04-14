@@ -100,7 +100,7 @@ export default function ExploreSourcesPage() {
             Every claim has a public source.<br />Every source has a public institution.
           </SectionHeading>
           <p style={{ fontSize: 18, lineHeight: 1.6, color: "rgba(255,255,255,0.65)", marginTop: 24, maxWidth: 600, marginLeft: "auto", marginRight: "auto" }}>
-            Four analytical forms. Four public data authorities. Each unit of analysis traces to one institution whose data grounds every claim.
+            Students. Courses. Occupations. Employers.<br />Each unit of analysis traces to one authoritative institution.
           </p>
         </div>
       </section>
