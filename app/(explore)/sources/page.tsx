@@ -114,7 +114,21 @@ export default function ExploreSourcesPage() {
         </div>
       </section>
 
-      {/* ── Section 3: Forward Deployment (prose-led) ── */}
+      {/* ── Section 3: Pipeline (component-led) ── */}
+      <section style={{ paddingTop: 48, paddingBottom: 64, paddingLeft: 64, paddingRight: 64 }}>
+        <div className="max-w-3xl mx-auto text-center" style={{ marginBottom: 48 }}>
+          <Eyebrow>Unified Knowledge</Eyebrow>
+          <GoldDivider />
+          <SectionHeading>Uniting fragmented institutional data<br />into a single knowledge graph</SectionHeading>
+          <p style={{ fontSize: 16, lineHeight: 1.6, color: "rgba(255,255,255,0.55)", marginTop: 20 }}>
+            Students, courses, occupations, and employers exist in separate data sources across the ecosystem. Kallipolis connects them in a single graph — making relationships visible that no individual source can surface alone.
+          </p>
+        </div>
+
+        <PipelineDiagram />
+      </section>
+
+      {/* ── Section 4: Forward Deployment (prose-led) ── */}
       <section style={{ paddingTop: 48, paddingBottom: 48, paddingLeft: 64, paddingRight: 64 }}>
         <div className="max-w-2xl mx-auto text-center">
           <Eyebrow>Forward Deployment</Eyebrow>
@@ -127,20 +141,6 @@ export default function ExploreSourcesPage() {
             Each of these limitations is an invitation to collaborate. The system is architected for institutional partnership. Direct MIS feeds replace synthetic students. Curriculum API access makes courses real-time. Local industry contacts validate employer readiness. Forward-deployment into the institution closes the gaps that distance creates.
           </p>
         </div>
-      </section>
-
-      {/* ── Section 4: Pipeline (component-led) ── */}
-      <section style={{ paddingTop: 48, paddingBottom: 64, paddingLeft: 64, paddingRight: 64 }}>
-        <div className="max-w-3xl mx-auto text-center" style={{ marginBottom: 48 }}>
-          <Eyebrow>The Pipeline</Eyebrow>
-          <GoldDivider />
-          <SectionHeading>From institutional data<br />to a unified knowledge graph</SectionHeading>
-          <p style={{ fontSize: 16, lineHeight: 1.6, color: "rgba(255,255,255,0.55)", marginTop: 20 }}>
-            Each data authority feeds a dedicated pipeline stage. The stages converge in a single graph where curriculum, labor market, and institutional data connect through a shared skills vocabulary.
-          </p>
-        </div>
-
-        <PipelineDiagram />
       </section>
 
       {/* ── Section 5: Cross-links ── */}
