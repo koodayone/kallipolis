@@ -27,9 +27,9 @@ const FORM_Y = 0;
 const LOGO_Y = -3.8;
 const CUBE_Y = 3.8;
 
-const FORM_BASE_OFFSET = 1.7;
+const FORM_BASE_OFFSET = 1.8;
 const FORM_TOP_OFFSET = 1.5;
-const FORM_LABEL_Y = FORM_Y - 1.2;
+const FORM_LABEL_Y = FORM_Y - 1.35;
 const LOGO_TOP = LOGO_Y + 0.6;
 const LOGO_ANCHOR_Y = LOGO_Y - 0.6;
 const CUBE_BASE = CUBE_Y - CUBE_SCALE * 0.8;
@@ -144,7 +144,7 @@ export function buildUnifiedKnowledgeScene(canvas: HTMLCanvasElement): UnifiedKn
     cyl.scale.y = length;
   }
 
-  function buildConnector(start: THREE.Vector3, end: THREE.Vector3) {
+  function buildConnector(start: THREE.Vector3, end: THREE.Vector3, skipEndJunction = false) {
     const length = start.distanceTo(end);
     const direction = new THREE.Vector3().subVectors(end, start).normalize();
 
@@ -164,9 +164,11 @@ export function buildUnifiedKnowledgeScene(canvas: HTMLCanvasElement): UnifiedKn
     const jStart = new THREE.Mesh(junctionGeo, junctionMat);
     jStart.position.copy(start);
     scene.add(jStart);
-    const jEnd = new THREE.Mesh(junctionGeo, junctionMat);
-    jEnd.position.copy(end);
-    scene.add(jEnd);
+    if (!skipEndJunction) {
+      const jEnd = new THREE.Mesh(junctionGeo, junctionMat);
+      jEnd.position.copy(end);
+      scene.add(jEnd);
+    }
 
     // Static glow lights along the connector
     const glowLights: THREE.PointLight[] = [];
@@ -200,7 +202,7 @@ export function buildUnifiedKnowledgeScene(canvas: HTMLCanvasElement): UnifiedKn
   for (const f of FORMS) {
     const x = COLUMNS_X[f.columnIndex];
     const start = new THREE.Vector3(x, FORM_Y + FORM_TOP_OFFSET, 0);
-    buildConnector(start, cubeBaseCenter.clone());
+    buildConnector(start, cubeBaseCenter.clone(), true);
   }
 
   // ── Resize ─────────────────────────────────────────────────────
