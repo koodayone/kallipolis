@@ -51,7 +51,7 @@ const AUTHORITIES = [
     factory: createMortarboardForm,
     demoScene: <DemoStudents />,
     authority: "The California Community Colleges Chancellor's Office maintains the Management Information System Data Mart — the statewide system of record for enrollment, course-taking, and academic outcomes across all 116 colleges. Every student who enrolls in a California community college is represented in this system.",
-    intelligence: "Kallipolis models student populations that mirror real enrollment patterns reported by each institution. The system surfaces academic trajectories, program concentrations, and competency profiles — the supply side of workforce development made empirical. A coordinator can see not just how many students are in a program, but what skills they carry and how those skills align with regional employer demand.",
+    intelligence: "Kallipolis models student populations that mirror real enrollment patterns reported by each institution. The system surfaces academic trajectories, program concentrations, and competency profiles. A coordinator can see not just how many students are in a program, but what skills they carry and how those skills align with regional employer demand.",
     methodology: "Student populations are synthetically generated and calibrated to DataMart's grade distributions by program area. Aggregate patterns — enrollment concentration, academic performance, program retention — match institutional reality by design. The methodology is a present-day commitment to privacy that the architecture is designed to outgrow through direct institutional partnership.",
   },
   {
@@ -60,7 +60,7 @@ const AUTHORITIES = [
     logoPath: "/logos/colleges_combined_white.png",
     factory: createBookForm,
     demoScene: <DemoCourses />,
-    authority: "Each college's course catalog is its curricular commitment — the institutional declaration of what it promises to teach, at what depth, with what outcomes. No third-party aggregator has the authority to define what an institution teaches. Kallipolis sources directly from the institution itself.",
+    authority: "Each college's course catalog is its curricular commitment — the institutional declaration of what it promises to teach, at what depth, with what outcomes. Kallipolis sources directly from the institution itself.",
     intelligence: "Every course is interpreted through a skills taxonomy that connects curriculum to labor market language. The system knows not just what courses exist, but what skills they develop and how those skills map to occupational demand. This bridge between education and industry is what makes partnership proposals empirically grounded rather than anecdotal.",
     methodology: "Course content is extracted from institutional catalog publications. Learning outcomes and course objectives are interpreted against a controlled skills vocabulary — skills are assigned from the taxonomy, not freely generated. This constraint ensures consistency across institutions and prevents the system from inventing competencies that don't exist in the curriculum.",
   },
@@ -70,8 +70,8 @@ const AUTHORITIES = [
     logoPath: "/logos/coe_logo_clean.png",
     factory: createHardhatForm,
     demoScene: <DemoOccupations />,
-    authority: "The Centers of Excellence for Labor Market Research are the analytical arm of California's community college system. Their institutional purpose is to produce the labor market intelligence that workforce development decisions depend on. COE research is regionally calibrated to community college service areas — more relevant than national BLS or O*NET data for the institutions Kallipolis serves.",
-    intelligence: "For every region, Kallipolis surfaces the occupations that community colleges are positioned to serve — filtered to the credential range between a postsecondary certificate and a bachelor's degree. Each occupation carries regional wages, employment levels, growth projections, and annual openings. Combined with skill alignment data, this turns abstract labor market trends into actionable partnership targets.",
+    authority: "The Centers of Excellence for Labor Market Research is the analytical arm of California's community college system. Its institutional purpose is to produce the labor market intelligence that workforce development decisions depend on. COE research is regionally calibrated to community college service areas.",
+    intelligence: "For every region, Kallipolis surfaces the occupations that community colleges are positioned to serve — filtered to the credential range between a postsecondary certificate and a bachelor's degree. Each occupation carries regional wages, employment levels, growth projections, and annual openings.",
     methodology: "COE's regional demand data is filtered to the workforce-development band — the occupations where community college credentials are the pathway. Each occupation is assigned skills from the same controlled taxonomy used for courses, creating a shared vocabulary that makes skill gap identification possible. The system can identify not just what occupations exist, but which skills employers need that the curriculum does not yet develop.",
   },
   {
@@ -80,9 +80,9 @@ const AUTHORITIES = [
     logoPath: "/logos/edd_logo_clean.png",
     factory: createSkyscraperForm,
     demoScene: <DemoEmployers />,
-    authority: "The California Employment Development Department maintains employer records for every organization with payroll obligations in the state. EDD's administrative reach — processing payroll tax for California's entire employer base — gives it coverage no private database can match. These are verifiable, publicly maintained records that carry institutional legitimacy in public-sector procurement.",
+    authority: "The California Employment Development Department maintains employer records for every organization with payroll obligations in the state. These are verifiable, publicly maintained records that carry institutional legitimacy.",
     intelligence: "Kallipolis surfaces employers scoped to those community colleges can meaningfully engage — organizations with operational capacity for workforce partnerships. Each employer is connected to the occupations it hires for, the skills those roles require, and the curriculum that develops those skills. A coordinator sees not a list of companies, but a ranked landscape of partnership-ready organizations with empirical alignment scores.",
-    methodology: "Employer records are filtered to organizations above a size threshold that ensures partnership capacity. Industry classification connects each employer to plausible occupations through a sector-to-role crosswalk. The result is a curated set of real organizations — not a comprehensive economic census, but a workforce development lens on the employers that matter for institutional action.",
+    methodology: "Employer records are filtered to organizations above a size threshold that ensures partnership capacity. Each employer is validated to have an active web presence, and industry classification connects them to plausible occupations through a sector-to-role crosswalk. The result is a curated set of real, verifiable organizations — a workforce development lens on the employers that matter for institutional action.",
   },
 ];
 
