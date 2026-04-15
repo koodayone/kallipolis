@@ -51,13 +51,13 @@ export default function Footer() {
                   <line x1="19" y1="19" x2="15" y2="15" stroke="currentColor" strokeWidth="1" opacity="0.8" />
                 </svg>
               </Link>
-              <Link href="/partnerships" className="uppercase tracking-widest text-gray-500 hover:text-white transition-colors" style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", fontSize: 10, display: "inline-flex", alignItems: "center", gap: 6 }}>
+              <span className="uppercase tracking-widest text-gray-500 hover:text-white transition-colors cursor-pointer" style={{ fontFamily: "var(--font-days-one)", fontSize: 10, display: "inline-flex", alignItems: "center", gap: 6 }}>
                 Partnerships
                 <svg width="10" height="10" viewBox="3 4 18 16" fill="none">
                   <circle cx="9.5" cy="14" r="5.5" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.85" />
                   <circle cx="14.5" cy="10" r="5.5" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.85" />
                 </svg>
-              </Link>
+              </span>
             </div>
             <div className="flex flex-col gap-3">
               <h4 className="text-sm font-medium uppercase tracking-widest text-gray-400" style={{ fontFamily: "var(--font-days-one)" }}>Product</h4>
