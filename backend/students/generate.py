@@ -558,7 +558,7 @@ def generate_students(
 
 # ── Neo4j loader ───────────────────────────────────────────────────────────────
 
-BATCH_SIZE = 500
+BATCH_SIZE = 2000
 
 
 def _derive_student_fields(
@@ -658,19 +658,50 @@ def load_students(driver: Driver, institution: str, students: List[GeneratedStud
 
         logger.info(f"Loaded {loaded} enrollments for {len(students)} students")
 
-        # Materialize Student -[HAS_SKILL]-> Skill only from enrollments the
-        # student successfully completed at a passing grade. Status='Completed'
-        # is not sufficient: the generator sets status='Completed' for D and F
-        # as well, and a student who failed a course did not acquire its
-        # skills. The success set matches the grade filter documented in
-        # docs/pipeline/student-generation.md.
-        result = session.run("""
-            MATCH (st:Student)-[e:ENROLLED_IN]->(c:Course)-[:DEVELOPS]->(s:Skill)
-            WHERE e.grade IN ['A', 'B', 'C', 'P']
-            MERGE (st)-[:HAS_SKILL]->(s)
-            RETURN count(*) AS created
-        """)
-        skills_created = result.single()["created"]
+        # Materialize Student -[HAS_SKILL]-> Skill. Computed in Python from
+        # the in-memory student population + a one-shot course→skill lookup,
+        # then batch-inserted. The previous approach traversed all
+        # Student→ENROLLED_IN→Course→DEVELOPS→Skill paths in Neo4j (~20M
+        # for a large college) to MERGE ~200K unique edges — 94x redundancy.
+        # The Python approach computes the unique (student, skill) pairs
+        # directly and inserts them without any graph traversal.
+        _PASS_GRADES = {"A", "B", "C", "P"}
+
+        # One-shot lookup: course_code → list of skill names
+        course_skills_result = session.run(
+            "MATCH (c:Course {college: $inst})-[:DEVELOPS]->(s:Skill) "
+            "RETURN c.code AS code, collect(s.name) AS skills",
+            inst=institution,
+        ).data()
+        course_skill_map: Dict[str, List[str]] = {
+            r["code"]: r["skills"] for r in course_skills_result
+        }
+
+        # Compute unique (student_uuid, skill_name) pairs in Python
+        skill_pairs: List[dict] = []
+        for student in students:
+            student_skills: set = set()
+            for enrollment in student.enrollments:
+                if enrollment.grade in _PASS_GRADES:
+                    for skill in course_skill_map.get(enrollment.course_code, []):
+                        student_skills.add(skill)
+            for skill in student_skills:
+                skill_pairs.append({"uuid": student.uuid, "skill": skill})
+
+        # Batch insert
+        skills_created = 0
+        for i in range(0, len(skill_pairs), BATCH_SIZE):
+            chunk = skill_pairs[i:i + BATCH_SIZE]
+            session.run(
+                """
+                UNWIND $batch AS row
+                MATCH (st:Student {uuid: row.uuid})
+                MATCH (sk:Skill {name: row.skill})
+                MERGE (st)-[:HAS_SKILL]->(sk)
+                """,
+                batch=chunk,
+            )
+            skills_created += len(chunk)
         logger.info(f"Materialized {skills_created} HAS_SKILL relationships")
 
         return loaded
