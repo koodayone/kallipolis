@@ -3,7 +3,7 @@ export default function Promise() {
     <section
       className="pt-12 pb-24 px-6"
       style={{
-        backgroundImage: "url('/sunny_modernism.png')",
+        backgroundImage: "url('/sunny_modernism_3.png')",
         backgroundSize: "cover",
         backgroundPosition: "top",
         minHeight: 620,
