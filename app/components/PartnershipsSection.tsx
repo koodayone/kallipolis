@@ -3,7 +3,7 @@ import ActionBadge from "./ActionBadge";
 
 const points = [
   { label: "Generative Proposals", text: "Generate intelligent partnership proposals adhering to Strong Workforce Program standards." },
-  { label: "Regional Engagement", text: "Align employer-specific partnerships with regional Strong Workforce Program development plans." },
+  { label: "Regional Engagement", text: "Align employer-specific partnerships with regional SWP development plans." },
   { label: "Labor Market Integration", text: "Instantly identify TOP codes, SOC mappings, supply-demand gaps, and quantifiable student impact." },
 ];
 
