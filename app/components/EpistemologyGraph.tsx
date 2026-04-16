@@ -48,8 +48,7 @@ export default function EpistemologyGraph({ activeIndex = 0, opacity = 1 }: Prop
       style={{
         position: "relative",
         width: "100%",
-        height: "100%",
-        minHeight: 700,
+        height: 620,
       }}
     >
       <canvas ref={canvasRef} style={{ width: "100%", height: "100%", display: "block" }} />

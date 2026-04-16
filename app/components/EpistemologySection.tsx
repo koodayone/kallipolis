@@ -3,11 +3,11 @@ import ActionBadge from "./ActionBadge";
 
 export default function EpistemologySection({ activeIndex = 0, opacity = 1 }: { activeIndex?: number; opacity?: number }) {
   return (
-    <section style={{ backgroundColor: "#060d1f", paddingTop: 64, paddingLeft: 64, paddingRight: 64, paddingBottom: 0 }}>
-      <div style={{ display: "flex", gap: 40, alignItems: "stretch" }}>
+    <section style={{ backgroundColor: "#060d1f", paddingTop: 64, paddingLeft: 64, paddingRight: 64, paddingBottom: 48 }}>
+      <div style={{ display: "flex", gap: 40, alignItems: "flex-start" }}>
 
         {/* Left column — header + points */}
-        <div style={{ flex: "0 0 40%", display: "flex", flexDirection: "column", justifyContent: "flex-start", gap: 40 }}>
+        <div style={{ flex: "0 0 40%", display: "flex", flexDirection: "column", justifyContent: "flex-start", gap: 40, marginTop: -24 }}>
 
           {/* Header */}
           <div style={{ textAlign: "center" }}>
