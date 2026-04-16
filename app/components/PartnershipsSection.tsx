@@ -2,9 +2,9 @@ import TwoFormsDiagram from "./TwoFormsDiagram";
 import ActionBadge from "./ActionBadge";
 
 const points = [
-  { label: "Generative Proposals", text: "Draft intelligent partnership proposals adhering to Strong Workforce Program standards." },
-  { label: "Regional Engagement", text: "Generate employer-specific partnerships tailored to regional Strong Workforce Program development plans." },
-  { label: "Labor Market Integration", text: "Instantly identify TOP codes, SOC mappings, supply-demand gaps, and quantifiable student impact relevant to industry partnerships." },
+  { label: "Generative Proposals", text: "Generate intelligent partnership proposals adhering to Strong Workforce Program standards." },
+  { label: "Regional Engagement", text: "Employer-specific partnerships tailored to regional Strong Workforce Program development plans." },
+  { label: "Labor Market Integration", text: "Instantly identify TOP codes, SOC mappings, supply-demand gaps, and quantifiable student impact." },
 ];
 
 export default function PartnershipsSection() {
