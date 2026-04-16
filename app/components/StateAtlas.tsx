@@ -84,7 +84,7 @@ export default function StateAtlas({ activeIndex, opacity }: Props) {
           {/* Header block */}
           <div style={{ textAlign: "center" }}>
             <p className="text-sm font-medium uppercase tracking-[0.15em] text-white/40" style={{ marginBottom: 16 }}>
-              The State Atlas
+              The Atlas
             </p>
             <div style={{ width: 64, height: 2, background: neonColor, borderRadius: 1, opacity, transition: `opacity ${FADE_DURATION}ms ease`, margin: "0 auto 24px" }} />
             <h2 className="text-[24px] md:text-[30px] leading-[1.12] tracking-[-0.02em] text-white" style={{ fontFamily: "var(--font-days-one)", fontWeight: 400 }}>

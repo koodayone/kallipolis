@@ -31,6 +31,15 @@ html, body {
   animation: page-fade-in 280ms ease-out;
 }
 
+@keyframes ken-burns {
+  0%   { transform: scale(1); }
+  100% { transform: scale(1.06) translate(-0.4%, -0.8%); }
+}
+.ken-burns {
+  animation: ken-burns 30s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
 @keyframes sun-glow {
   0%, 100% { filter: drop-shadow(0 0 4px rgba(201, 168, 76, 0.3)); }
   50%       { filter: drop-shadow(0 0 14px rgba(201, 168, 76, 0.75)); }

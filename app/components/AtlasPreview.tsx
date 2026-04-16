@@ -131,7 +131,7 @@ export default function AtlasPreview({ activeIndex, opacity }: Props) {
       {/* Section header */}
       <div style={{ textAlign: "center", marginBottom: 48 }}>
         <p style={{ fontSize: 13, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.15em", color: "rgba(255,255,255,0.45)", marginBottom: 16 }}>
-          The College Atlas
+          The Vision
         </p>
         <div style={{ width: 64, height: 2, background: college.neonHex, borderRadius: 1, opacity, transition: `opacity ${FADE_DURATION}ms ease`, margin: "0 auto 24px" }} />
         <h2 style={{ fontFamily: "var(--font-days-one)", fontSize: 36, fontWeight: 400, lineHeight: 1.15, letterSpacing: "-0.02em", color: "white", margin: "0 auto", maxWidth: 750 }}>

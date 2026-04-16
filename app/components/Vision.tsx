@@ -7,6 +7,7 @@ export default function Vision() {
         src="/hero-illustration.jpg"
         alt=""
         aria-hidden="true"
+        className="ken-burns"
         style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 75%", zIndex: 0 }}
       />
 
@@ -16,8 +17,9 @@ export default function Vision() {
       {/* 3. Gradient overlay */}
       <div aria-hidden="true" style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(0,18,64,0.65) 0%, rgba(0,35,102,0.5) 30%, rgba(10,74,143,0.25) 60%, rgba(26,111,173,0.08) 85%, transparent 100%)", zIndex: 2 }} />
 
-      {/* 4. Content */}
-      <div className="pt-16" style={{ position: "relative", zIndex: 3 }}>
+
+{/* 4. Content */}
+      <div className="pt-22" style={{ position: "relative", zIndex: 3 }}>
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-sm font-medium uppercase tracking-[0.15em] text-white/40 mb-4">
             Institutional Intelligence
@@ -29,9 +31,6 @@ export default function Vision() {
           <h1 className="text-[40px] md:text-[56px] leading-[1.08] tracking-[-0.03em] text-white mb-6" style={{ fontFamily: "var(--font-days-one)", fontWeight: 400 }}>
             California&apos;s<br />intelligence layer for<br />workforce development
           </h1>
-          <p className="text-xl font-normal leading-[1.6] tracking-normal text-white/85 max-w-[600px] mx-auto">
-            Empowering the workforce to meet the AI moment.
-          </p>
         </div>
       </div>
 
