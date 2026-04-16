@@ -33,10 +33,10 @@ html, body {
 
 @keyframes ken-burns {
   0%   { transform: scale(1); }
-  100% { transform: scale(1.06) translate(-0.4%, -0.8%); }
+  100% { transform: scale(1.10) translate(-0.8%, -1.2%); }
 }
 .ken-burns {
-  animation: ken-burns 30s ease-in-out infinite alternate;
+  animation: ken-burns 26s ease-in-out infinite alternate;
   will-change: transform;
 }
 
