@@ -99,7 +99,7 @@ export default function StateAtlas({ activeIndex, opacity }: Props) {
                 Unified Perspective
               </p>
               <p style={{ fontSize: 18, fontWeight: 500, lineHeight: 1.6, color: "rgba(255,255,255,0.85)", margin: 0 }}>
-                Harmonize academic &amp; labor market data to support workforce development for 2 million students.
+                Harmonize academic &amp; labor market data to support workforce development for every region in the state.
               </p>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
@@ -107,7 +107,7 @@ export default function StateAtlas({ activeIndex, opacity }: Props) {
                 Statewide Collaboration
               </p>
               <p style={{ fontSize: 18, fontWeight: 500, lineHeight: 1.6, color: "rgba(255,255,255,0.85)", margin: 0 }}>
-                Collaborate with stakeholders statewide based on a shared source of truth.
+                Collaborate with stakeholders statewide from a shared source of truth.
               </p>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
@@ -115,7 +115,7 @@ export default function StateAtlas({ activeIndex, opacity }: Props) {
                 Regional Insights
               </p>
               <p style={{ fontSize: 18, fontWeight: 500, lineHeight: 1.6, color: "rgba(255,255,255,0.85)", margin: 0 }}>
-                Drive tailored partnership strategies based on regional supply &amp; demand signals.
+                Strategize workforce programs shaped by regional economic signals.
               </p>
             </div>
           </div>

@@ -3,7 +3,7 @@ import ActionBadge from "./ActionBadge";
 
 const points = [
   { label: "Generative Proposals", text: "Generate intelligent partnership proposals adhering to Strong Workforce Program standards." },
-  { label: "Regional Engagement", text: "Employer-specific partnerships tailored to regional Strong Workforce Program development plans." },
+  { label: "Regional Engagement", text: "Align employer-specific partnerships with regional Strong Workforce Program development plans." },
   { label: "Labor Market Integration", text: "Instantly identify TOP codes, SOC mappings, supply-demand gaps, and quantifiable student impact." },
 ];
 
@@ -13,18 +13,8 @@ export default function PartnershipsSection() {
 
       <div style={{ display: "flex", gap: 48, alignItems: "stretch", paddingBottom: 64 }}>
 
-        {/* Left column — Three.js diagram + badge */}
-        <div style={{ flex: "0 0 45%", display: "flex", flexDirection: "column", gap: 8 }}>
-          <div style={{ minHeight: 280, borderRadius: 10, overflow: "hidden" }}>
-            <TwoFormsDiagram />
-          </div>
-          <div style={{ textAlign: "center", marginTop: -40 }}>
-            <ActionBadge label="Explore Partnerships" neonColor="#4fd1fd" opacity={1} icon="chainlink" inline />
-          </div>
-        </div>
-
-        {/* Right column — header + points */}
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 30, justifyContent: "center", alignSelf: "center" }}>
+        {/* Left column — header + points */}
+        <div style={{ flex: "0 0 42%", display: "flex", flexDirection: "column", gap: 24, justifyContent: "center", alignSelf: "center" }}>
 
           {/* Header */}
           <div style={{ textAlign: "center", marginBottom: 24 }}>
@@ -33,7 +23,7 @@ export default function PartnershipsSection() {
             </p>
             <div style={{ width: 64, height: 2, background: "#4fd1fd", borderRadius: 1, opacity: 0.9, margin: "0 auto 24px" }} />
             <h2 className="text-[22px] md:text-[28px] leading-[1.15] tracking-[-0.02em] text-white" style={{ fontFamily: "var(--font-days-one)", fontWeight: 400 }}>
-              Data-driven partnerships that advance Strong Workforce.
+              Drive partnerships that advance a<br />Strong Workforce.
             </h2>
           </div>
           {points.map((point) => (
@@ -48,11 +38,21 @@ export default function PartnershipsSection() {
               <p style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "#4fd1fd", opacity: 0.85, margin: 0 }}>
                 {point.label}
               </p>
-              <p style={{ fontSize: 18, fontWeight: 500, lineHeight: 1.6, color: "rgba(255,255,255,0.85)", margin: 0 }}>
+              <p style={{ fontSize: 15, fontWeight: 500, lineHeight: 1.6, color: "rgba(255,255,255,0.85)", margin: 0 }}>
                 {point.text}
               </p>
             </div>
           ))}
+        </div>
+
+        {/* Right column — Three.js diagram + badge */}
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 8 }}>
+          <div style={{ minHeight: 280, borderRadius: 10, overflow: "hidden" }}>
+            <TwoFormsDiagram />
+          </div>
+          <div style={{ textAlign: "center", marginTop: -40 }}>
+            <ActionBadge label="Explore Partnerships" neonColor="#4fd1fd" opacity={1} icon="chainlink" inline />
+          </div>
         </div>
       </div>
     </section>

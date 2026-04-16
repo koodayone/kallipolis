@@ -5,7 +5,6 @@ import { ROTATION_COLLEGES, CYCLE_INTERVAL, FADE_DURATION } from "../lib/college
 import AtlasPreview from "./AtlasPreview";
 import ActionBadge from "./ActionBadge";
 import StateAtlas from "./StateAtlas";
-import EpistemologySection from "./EpistemologySection";
 
 export default function SyncedShowcase() {
   const [collegeIndex, setCollegeIndex] = useState(0);
@@ -48,7 +47,6 @@ export default function SyncedShowcase() {
       <AtlasPreview activeIndex={displayIndex} opacity={opacity} />
       <StateAtlas activeIndex={displayIndex} opacity={opacity} />
       <ActionBadge label="Explore Atlas" neonColor={ROTATION_COLLEGES[displayIndex].neonHex} opacity={1} href="/atlas" />
-      <EpistemologySection />
     </>
   );
 }

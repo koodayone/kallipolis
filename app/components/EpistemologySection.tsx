@@ -12,7 +12,7 @@ export default function EpistemologySection({ activeIndex = 0, opacity = 1 }: { 
           {/* Header */}
           <div style={{ textAlign: "center" }}>
             <p style={{ fontSize: 13, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.15em", color: "rgba(255,255,255,0.45)", marginBottom: 16 }}>
-              The Epistemology
+              The Methodology
             </p>
             <div style={{ width: 64, height: 2, background: "#FFCC33", borderRadius: 1, opacity: 0.9, margin: "0 auto 24px" }} />
             <h2 className="text-[22px] md:text-[26px] leading-[1.12] tracking-[-0.02em] text-white" style={{ fontFamily: "var(--font-days-one)", fontWeight: 400 }}>
