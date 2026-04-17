@@ -2,10 +2,19 @@
 
 import { useState, useRef, useEffect, useMemo } from "react";
 import dynamic from "next/dynamic";
+import MiniFormCell from "./MiniFormCell";
+import {
+  createMortarboardForm,
+  createBookForm,
+  createChainlinkForm,
+  createHardhatForm,
+  createSkyscraperForm,
+  createDumbbellForm,
+} from "../lib/formFactories";
 
 const StateMap = dynamic(() => import("./StateMap"), { ssr: false });
 
-// ── Inline RisingSun (adapted from atlas/ui/RisingSun.tsx) ───────────────────
+// ── Inline RisingSun ───────────────────────────────────────────────────────
 
 const RAYS = [
   { angle: -90, long: true  },
@@ -63,7 +72,7 @@ function RisingSun({ color }: { color: string }) {
   );
 }
 
-// ── College data (subset for demo) ──────────────────────────────────────────
+// ── College data ───────────────────────────────────────────────────────────
 
 type DemoCollege = {
   id: string;
@@ -90,12 +99,19 @@ const DEMO_COLLEGES: DemoCollege[] = [
   { id: "irvinevalley",name: "Irvine Valley College",          district: "South Orange County CCD",    neonColor: "#2bee64" },
 ];
 
-// ── Demo target ─────────────────────────────────────────────────────────────
-
 const TARGET_COLLEGE = DEMO_COLLEGES.find((c) => c.id === "foothill")!;
 const TARGET_QUERY = "foothill college";
 
-// ── Component ───────────────────────────────────────────────────────────────
+const COLLEGE_FORMS = [
+  { factory: createMortarboardForm, label: "Students" },
+  { factory: createChainlinkForm,   label: "Partnerships" },
+  { factory: createSkyscraperForm,  label: "Employers" },
+  { factory: createBookForm,        label: "Courses" },
+  { factory: createDumbbellForm,    label: "Strong Workforce" },
+  { factory: createHardhatForm,     label: "Occupations" },
+];
+
+// ── Component ──────────────────────────────────────────────────────────────
 
 export default function StateAtlasDemo() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -103,8 +119,12 @@ export default function StateAtlasDemo() {
   const [selectedCollege, setSelectedCollege] = useState<DemoCollege | null>(null);
   const [activeIndex, setActiveIndex] = useState(-1);
   const [visible, setVisible] = useState(false);
+  const [phase, setPhase] = useState<"atlas" | "college">("atlas");
+  const [showOpenButton, setShowOpenButton] = useState(false);
+  const [buttonPressed, setButtonPressed] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const intervalsRef = useRef<ReturnType<typeof setInterval>[]>([]);
 
   const searchResults = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
@@ -119,7 +139,6 @@ export default function StateAtlasDemo() {
   const sunColor = "#c9a84c";
   const sunLabel = selectedCollege?.name ?? "Select a college";
 
-  // Viewport observer
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
@@ -131,27 +150,33 @@ export default function StateAtlasDemo() {
     return () => observer.disconnect();
   }, [visible]);
 
-  // Automated demo sequence
   useEffect(() => {
     if (!visible) return;
 
-    function clearTimer() {
+    function clearTimers() {
       if (timerRef.current) clearTimeout(timerRef.current);
+      for (const id of intervalsRef.current) clearInterval(id);
+      intervalsRef.current = [];
+    }
+
+    function schedule(fn: () => void, ms: number) {
+      timerRef.current = setTimeout(fn, ms);
     }
 
     function runCycle() {
-      // Reset
+      clearTimers();
       setSearchQuery("");
       setSearchFocused(false);
       setSelectedCollege(null);
       setActiveIndex(-1);
+      setShowOpenButton(false);
+      setButtonPressed(false);
+      setPhase("atlas");
 
-      // Step 1: Focus search bar — shows full college list
-      timerRef.current = setTimeout(() => {
+      schedule(() => {
         setSearchFocused(true);
 
-        // Step 2: Pause to let the full list be visible, then start typing
-        timerRef.current = setTimeout(() => {
+        schedule(() => {
           let i = 0;
           const typeInterval = setInterval(() => {
             i++;
@@ -159,169 +184,282 @@ export default function StateAtlasDemo() {
             if (i >= TARGET_QUERY.length) {
               clearInterval(typeInterval);
 
-              // Step 3: Pause after typing, then highlight Foothill in results
-              timerRef.current = setTimeout(() => {
+              schedule(() => {
                 const filtered = DEMO_COLLEGES.filter((c) =>
                   c.name.toLowerCase().includes(TARGET_QUERY)
                 );
                 const idx = filtered.findIndex((c) => c.id === TARGET_COLLEGE.id);
                 setActiveIndex(idx >= 0 ? idx : 0);
 
-                // Step 4: Pause on highlight, then select
-                timerRef.current = setTimeout(() => {
+                schedule(() => {
                   setSearchQuery("");
                   setSearchFocused(false);
                   setActiveIndex(-1);
                   setSelectedCollege(TARGET_COLLEGE);
 
-                  // Step 5: Hold on selected state, then restart
-                  timerRef.current = setTimeout(runCycle, 8000);
+                  // Show the "Open College Atlas" button
+                  schedule(() => {
+                    setShowOpenButton(true);
+
+                    // Press the button
+                    schedule(() => {
+                      setButtonPressed(true);
+
+                      // Transition to college forms
+                      schedule(() => {
+                        setPhase("college");
+
+                        // Cycle back to atlas
+                        schedule(runCycle, 5000);
+                      }, 600);
+                    }, 1200);
+                  }, 1500);
                 }, 2000);
               }, 1500);
             }
           }, 95);
+          intervalsRef.current.push(typeInterval);
         }, 3000);
       }, 2500);
     }
 
     runCycle();
 
-    return clearTimer;
+    return clearTimers;
   }, [visible]);
+
+  const collegeColor = 0xf0425e;
 
   return (
     <div ref={containerRef} style={{ display: "flex", gap: 0, alignItems: "stretch" }}>
 
-      {/* Left — Map panel containing search, map, sun, and results */}
+      {/* Left — Map / College forms panel */}
       <div style={{
-        flex: "0 0 55%", position: "relative", minHeight: 480,
+        flex: "0 0 55%", position: "relative", minHeight: 530,
         borderRadius: 10, overflow: "hidden",
         border: "1px solid rgba(255,255,255,0.06)",
-        padding: "8px 24px 24px",
       }}>
-        {/* Search bar */}
-        <div style={{ marginBottom: 0 }}>
-          <div
-            style={{
-              display: "flex", alignItems: "center", gap: 12,
-              padding: "0 16px", height: 40,
-              background: searchFocused ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
-              border: `1px solid ${searchFocused ? "rgba(240,66,94,0.4)" : "rgba(255,255,255,0.08)"}`,
-              borderRadius: 6,
-              transition: "all 0.2s ease",
-            }}
-          >
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0, opacity: searchFocused ? 0.8 : 0.4, transition: "opacity 0.2s" }}>
-              <circle cx="7" cy="7" r="5" stroke="rgba(255,255,255,0.9)" strokeWidth="1.3" />
-              <path d="M11 11l3.5 3.5" stroke="rgba(255,255,255,0.9)" strokeWidth="1.3" strokeLinecap="round" />
-            </svg>
-            <div style={{ flex: 1, minHeight: 20 }}>
-              {searchQuery ? (
-                <span style={{ fontSize: 13, color: "rgba(255,255,255,0.85)" }}>
-                  {searchQuery}
-                  {searchFocused && <span style={{ opacity: 0.6, animation: "blink 1s step-end infinite" }}>|</span>}
+
+        {/* Atlas phase — map + search */}
+        <div style={{
+          position: "absolute",
+          inset: 0,
+          padding: "8px 24px 40px",
+          opacity: phase === "atlas" ? 1 : 0,
+          transition: "opacity 0.8s ease",
+          pointerEvents: phase === "atlas" ? "auto" : "none",
+          display: "flex",
+          flexDirection: "column",
+        }}>
+          {/* Search bar */}
+          <div style={{ marginBottom: 0 }}>
+            <div
+              style={{
+                display: "flex", alignItems: "center", gap: 12,
+                padding: "0 16px", height: 40,
+                background: searchFocused ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
+                border: `1px solid ${searchFocused ? "rgba(240,66,94,0.4)" : "rgba(255,255,255,0.08)"}`,
+                borderRadius: 6,
+                transition: "all 0.2s ease",
+              }}
+            >
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0, opacity: searchFocused ? 0.8 : 0.4, transition: "opacity 0.2s" }}>
+                <circle cx="7" cy="7" r="5" stroke="rgba(255,255,255,0.9)" strokeWidth="1.3" />
+                <path d="M11 11l3.5 3.5" stroke="rgba(255,255,255,0.9)" strokeWidth="1.3" strokeLinecap="round" />
+              </svg>
+              <div style={{ flex: 1, minHeight: 20 }}>
+                {searchQuery ? (
+                  <span style={{ fontSize: 13, color: "rgba(255,255,255,0.85)" }}>
+                    {searchQuery}
+                    {searchFocused && <span style={{ opacity: 0.6, animation: "blink 1s step-end infinite" }}>|</span>}
+                  </span>
+                ) : (
+                  <span style={{ fontSize: 13, color: "rgba(255,255,255,0.25)" }}>
+                    Search colleges...
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Map */}
+          <div style={{ maxWidth: 500, marginTop: 28, flex: 1, minHeight: 0 }}>
+            <StateMap activeCollegeId={selectedCollege?.id ?? null} brightenAll={!selectedCollege} />
+          </div>
+
+          {/* RisingSun + label + Open button */}
+          {!showResults && (
+            <div
+              style={{
+                position: "absolute",
+                right: "12%",
+                top: "16%",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                pointerEvents: "none",
+              }}
+            >
+              <div style={{ transition: "opacity 0.4s ease-in-out", opacity: selectedCollege ? 1 : 0.45 }}>
+                <RisingSun color={sunColor} />
+              </div>
+              <div style={{ position: "relative", height: 16, width: 0, marginTop: 10 }}>
+                <span style={{
+                  position: "absolute",
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  fontSize: 11, fontWeight: 500,
+                  letterSpacing: "0.14em", textTransform: "uppercase",
+                  color: selectedCollege ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.55)",
+                  whiteSpace: "nowrap",
+                  transition: "color 0.3s ease-in-out",
+                }}>
+                  {sunLabel}
                 </span>
+              </div>
+
+              {/* Open College Atlas button */}
+              <div style={{
+                marginTop: 20,
+                opacity: showOpenButton ? 1 : 0,
+                transform: showOpenButton ? "translateY(0)" : "translateY(6px)",
+                transition: "opacity 0.4s ease, transform 0.4s ease",
+              }}>
+                <div style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 8,
+                  padding: "6px 14px",
+                  border: `1px solid ${buttonPressed ? "#f0425e" : "rgba(240,66,94,0.5)"}`,
+                  borderRadius: 5,
+                  background: buttonPressed ? "rgba(240,66,94,0.15)" : "transparent",
+                  boxShadow: buttonPressed ? "0 0 12px rgba(240,66,94,0.3)" : "none",
+                  transform: buttonPressed ? "scale(1.05)" : "scale(1)",
+                  transition: "all 0.25s ease",
+                }}>
+                  <span style={{
+                    fontSize: 9,
+                    fontWeight: 600,
+                    letterSpacing: "0.14em",
+                    textTransform: "uppercase",
+                    color: buttonPressed ? "#ffffff" : "#f0425e",
+                    transition: "color 0.25s ease",
+                    whiteSpace: "nowrap",
+                  }}>
+                    Open College Atlas
+                  </span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L3 7.5 12 13l9-5.5L12 2z" fill={buttonPressed ? "#ffffff" : "#f0425e"} opacity="0.85" />
+                    <path d="M12 13v9l9-5.5v-9L12 13z" fill={buttonPressed ? "#ffffff" : "#f0425e"} opacity="0.55" />
+                    <path d="M12 13v9L3 16.5v-9L12 13z" fill={buttonPressed ? "#ffffff" : "#f0425e"} opacity="0.4" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Search results dropdown */}
+          {showResults && (
+            <div
+              style={{
+                position: "absolute",
+                right: "24px",
+                top: "12%",
+                width: "40%",
+                maxHeight: 260,
+                overflowY: "auto",
+                background: "rgba(6,13,31,0.95)",
+                border: "1px solid rgba(255,255,255,0.08)",
+                borderRadius: 6,
+                padding: "4px 0",
+                backdropFilter: "blur(12px)",
+              }}
+            >
+              {searchResults.length === 0 ? (
+                <div style={{ padding: "12px 16px", fontSize: 13, color: "rgba(255,255,255,0.4)" }}>
+                  No colleges matching &ldquo;{searchQuery}&rdquo;
+                </div>
               ) : (
-                <span style={{ fontSize: 13, color: "rgba(255,255,255,0.25)" }}>
-                  Search colleges...
-                </span>
+                searchResults.map((college, i) => (
+                  <div
+                    key={college.id}
+                    style={{
+                      display: "flex", alignItems: "center", gap: 12,
+                      padding: "10px 14px", width: "100%",
+                      background: i === activeIndex ? "rgba(255,255,255,0.06)" : "transparent",
+                      borderRadius: 2,
+                      transition: "background 0.12s ease",
+                    }}
+                  >
+                    <div style={{
+                      width: 3, height: 28, borderRadius: 2,
+                      background: college.neonColor, opacity: 0.7, flexShrink: 0,
+                    }} />
+                    <div style={{ display: "flex", flexDirection: "column", gap: 2, minWidth: 0 }}>
+                      <span style={{ fontSize: 13, fontWeight: 600, color: "#ffffff", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                        {college.name}
+                      </span>
+                      <span style={{ fontSize: 10, color: "rgba(255,255,255,0.35)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                        {college.district}
+                      </span>
+                    </div>
+                  </div>
+                ))
               )}
             </div>
-          </div>
+          )}
         </div>
 
-        {/* Map */}
-        <div style={{ maxWidth: 440, marginTop: 28 }}>
-          <StateMap activeCollegeId={selectedCollege?.id ?? null} brightenAll={!selectedCollege} />
+        {/* College phase — six forms grid */}
+        <div style={{
+          position: "absolute",
+          inset: 0,
+          padding: "8px 24px 24px",
+          opacity: phase === "college" ? 1 : 0,
+          transition: "opacity 0.8s ease",
+          pointerEvents: phase === "college" ? "auto" : "none",
+          display: "flex",
+          flexDirection: "column",
+        }}>
+          <h3 style={{
+            fontFamily: "var(--font-days-one)",
+            fontWeight: 400,
+            fontSize: 18,
+            color: "rgba(255,255,255,0.85)",
+            textAlign: "center",
+            textTransform: "uppercase",
+            letterSpacing: "0.08em",
+            margin: "12px 0 16px",
+          }}>
+            Foothill College
+          </h3>
+          <div style={{
+            width: "100%", height: 1, background: "rgba(255,255,255,0.08)",
+            margin: "0 0 12px",
+          }} />
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: 16,
+            flex: 1,
+            alignContent: "center",
+            padding: "8px 12px",
+          }}>
+            {COLLEGE_FORMS.map((form) => (
+              <MiniFormCell
+                key={form.label}
+                factory={form.factory}
+                label={form.label}
+                color={collegeColor}
+                active={phase === "college"}
+              />
+            ))}
+          </div>
         </div>
-
-        {/* RisingSun + label — absolute in Nevada space, hidden when results show */}
-        {!showResults && (
-          <div
-            style={{
-              position: "absolute",
-              right: "22%",
-              top: "22%",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              pointerEvents: "none",
-            }}
-          >
-            <div style={{ transition: "opacity 0.4s ease-in-out", opacity: selectedCollege ? 1 : 0.45 }}>
-              <RisingSun color={sunColor} />
-            </div>
-            <div style={{ position: "relative", height: 16, width: 0, marginTop: 10 }}>
-              <span style={{
-                position: "absolute",
-                left: "50%",
-                transform: "translateX(-50%)",
-                fontSize: 11, fontWeight: 500,
-                letterSpacing: "0.14em", textTransform: "uppercase",
-                color: selectedCollege ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.55)",
-                whiteSpace: "nowrap",
-                transition: "color 0.3s ease-in-out",
-              }}>
-                {sunLabel}
-              </span>
-            </div>
-          </div>
-        )}
-
-        {/* Search results dropdown — absolute in Nevada space, replaces sun */}
-        {showResults && (
-          <div
-            style={{
-              position: "absolute",
-              right: "24px",
-              top: "12%",
-              width: "40%",
-              maxHeight: 260,
-              overflowY: "auto",
-              background: "rgba(6,13,31,0.95)",
-              border: "1px solid rgba(255,255,255,0.08)",
-              borderRadius: 6,
-              padding: "4px 0",
-              backdropFilter: "blur(12px)",
-            }}
-          >
-            {searchResults.length === 0 ? (
-              <div style={{ padding: "12px 16px", fontSize: 13, color: "rgba(255,255,255,0.4)" }}>
-                No colleges matching &ldquo;{searchQuery}&rdquo;
-              </div>
-            ) : (
-              searchResults.map((college, i) => (
-                <div
-                  key={college.id}
-                  style={{
-                    display: "flex", alignItems: "center", gap: 12,
-                    padding: "10px 14px", width: "100%",
-                    background: i === activeIndex ? "rgba(255,255,255,0.06)" : "transparent",
-                    borderRadius: 2,
-                    transition: "background 0.12s ease",
-                  }}
-                >
-                  <div style={{
-                    width: 3, height: 28, borderRadius: 2,
-                    background: college.neonColor, opacity: 0.7, flexShrink: 0,
-                  }} />
-                  <div style={{ display: "flex", flexDirection: "column", gap: 2, minWidth: 0 }}>
-                    <span style={{ fontSize: 13, fontWeight: 600, color: "#ffffff", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                      {college.name}
-                    </span>
-                    <span style={{ fontSize: 10, color: "rgba(255,255,255,0.35)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                      {college.district}
-                    </span>
-                  </div>
-                </div>
-              ))
-            )}
-          </div>
-        )}
       </div>
 
       {/* Right — text */}
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "flex-start", gap: 48, paddingLeft: 48, paddingTop: 24 }}>
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "flex-start", gap: 40, paddingLeft: 48, paddingTop: 16 }}>
         <div style={{ textAlign: "center" }}>
           <p style={{ fontSize: 13, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.15em", color: "rgba(255,255,255,0.4)", marginBottom: 16 }}>
             Two Scales
@@ -340,7 +478,7 @@ export default function StateAtlasDemo() {
             <span style={{ fontSize: 12, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "#f0425e", display: "block", marginBottom: 6 }}>
               State Atlas
             </span>
-            <p style={{ fontSize: 15, lineHeight: 1.6, color: "rgba(255,255,255,0.65)", margin: 0 }}>
+            <p style={{ fontSize: 17, lineHeight: 1.6, color: "rgba(255,255,255,0.65)", margin: 0 }}>
               116 colleges across 73 districts and 8 regional consortia. Search for any college, and the atlas surfaces it in context.
             </p>
           </div>
@@ -348,7 +486,7 @@ export default function StateAtlasDemo() {
             <span style={{ fontSize: 12, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "#f0425e", display: "block", marginBottom: 6 }}>
               College Atlas
             </span>
-            <p style={{ fontSize: 15, lineHeight: 1.6, color: "rgba(255,255,255,0.65)", margin: 0 }}>
+            <p style={{ fontSize: 17, lineHeight: 1.6, color: "rgba(255,255,255,0.65)", margin: 0 }}>
               A college atlas opens into six forms, each representing an element of a workforce development worldview.
             </p>
           </div>

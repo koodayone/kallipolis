@@ -1,7 +1,6 @@
 "use client";
 
 import FormCard from "../../components/FormCard";
-import QueryShellDemo from "../../components/QueryShellDemo";
 import StateAtlasDemo from "../../components/StateAtlasDemo";
 import ActionBadge from "../../components/ActionBadge";
 import {
@@ -100,21 +99,7 @@ export default function ExploreAtlasPage() {
         <StateAtlasDemo />
       </section>
 
-      {/* ── Section 4: Natural Language Interface ── */}
-      <section style={{ paddingTop: 32, paddingBottom: 64, paddingLeft: 64, paddingRight: 64 }}>
-        <div className="max-w-3xl mx-auto text-center" style={{ marginBottom: 40 }}>
-          <Eyebrow>Ask Anything</Eyebrow>
-          <GoldDivider />
-          <SectionHeading>Natural language meets<br />institutional data</SectionHeading>
-          <p style={{ fontSize: 16, lineHeight: 1.6, color: "rgba(255,255,255,0.55)", marginTop: 20 }}>
-            Analytical elements of the atlas are queryable in plain language. Ask about students, courses, occupations, or employers — the system translates your question into a structured graph query and returns accurate results.
-          </p>
-        </div>
-
-        <QueryShellDemo />
-      </section>
-
-      {/* ── Section 6: Cross-links ── */}
+      {/* ── Section 4: Cross-links ── */}
       <section style={{ background: "#060d1f", padding: "24px 64px 48px", display: "flex", justifyContent: "center", gap: 16 }}>
         <ActionBadge label="Explore Sources" neonColor="#c9a84c" opacity={1} icon="lightbulb" inline href="/sources" invertHover />
         <ActionBadge label="Explore Partnerships" neonColor="#4fd1fd" opacity={1} icon="chainlink" inline invertHover />
