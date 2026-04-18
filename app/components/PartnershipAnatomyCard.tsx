@@ -527,7 +527,7 @@ export function SupplyDemandBridgeBand({ expandProgress = 0 }: { expandProgress?
           Partnership Narrative
         </span>
         <p style={{ fontSize: 13, color: "rgba(255,255,255,0.65)", lineHeight: 1.65, margin: 0 }}>
-          Sierra Grid Electric&apos;s operations across commercial and residential grid infrastructure make it a compelling internship partner for the college&apos;s Electrical Technology program. The Central Valley has sustained demand for electricians with strong regional wages. The college&apos;s Electrical Technology, Construction Technology, and Environmental Control Technology departments collectively develop the core competencies this role requires. Structured work-based learning placements could give students supervised experience in the installation and maintenance workflows they are already practicing in the classroom.
+          Sierra Grid Electric&apos;s operations across commercial and residential grid infrastructure position it as a strong partnership candidate. The Central Valley has sustained demand for electricians with strong regional wages. The Electrical Technology department develops the core competencies this occupation requires: electrical systems, circuit design, and safety compliance. Occupational demand metrics from the Centers of Excellence indicate an unmet workforce gap of 274 on an annual basis.
         </p>
       </div>
 
@@ -578,28 +578,49 @@ export function SupplyDemandBridgeBand({ expandProgress = 0 }: { expandProgress?
 
         <div style={{ padding: "20px 16px 16px" }}>
           {/* Openings bar */}
-          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 6 }}>
             <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "rgba(255,255,255,0.35)", width: 70, flexShrink: 0 }}>Openings</span>
-            <div style={{ flex: 1, height: 22, background: "rgba(255,255,255,0.06)", borderRadius: 4, position: "relative", overflow: "hidden" }}>
+            <div style={{ flex: 1, height: 24, background: "rgba(255,255,255,0.06)", borderRadius: 4, position: "relative", overflow: "hidden" }}>
               <div style={{ width: "100%", height: "100%", background: "rgba(255,255,255,0.12)", borderRadius: 4 }} />
             </div>
             <span style={{ fontSize: 13, fontWeight: 700, color: "rgba(255,255,255,0.75)", width: 36, textAlign: "right", flexShrink: 0 }}>340</span>
           </div>
 
-          {/* Supply bar */}
-          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
+          {/* Supply bar with gap region */}
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 6 }}>
             <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${BRAND}90`, width: 70, flexShrink: 0 }}>Supply</span>
-            <div style={{ flex: 1, height: 22, background: "rgba(255,255,255,0.06)", borderRadius: 4, position: "relative", overflow: "hidden" }}>
-              <div style={{ width: `${(66 / 340) * 100}%`, height: "100%", background: `${BRAND}60`, borderRadius: 4, boxShadow: `0 0 12px ${BRAND}30` }} />
+            <div style={{ flex: 1, height: 24, background: "rgba(255,255,255,0.06)", borderRadius: 4, position: "relative", overflow: "hidden" }}>
+              <div style={{ width: `${(66 / 340) * 100}%`, height: "100%", background: BRAND, borderRadius: "4px 0 0 4px", boxShadow: `0 0 12px ${BRAND}30` }} />
             </div>
             <span style={{ fontSize: 13, fontWeight: 700, color: BRAND, width: 36, textAlign: "right", flexShrink: 0 }}>66</span>
           </div>
 
-          {/* Gap callout */}
-          <div style={{ display: "flex", justifyContent: "center", alignItems: "baseline", gap: 8, paddingTop: 4 }}>
-            <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "rgba(255,255,255,0.3)" }}>Workforce Gap</span>
-            <span style={{ fontSize: 22, fontWeight: 700, color: BRAND, filter: `drop-shadow(0 0 8px ${BRAND}40)` }}>+274</span>
+          {/* Gap indicator — aligned to the gap region of the bar */}
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <span style={{ width: 70, flexShrink: 0 }} />
+            <div style={{ flex: 1, position: "relative" }}>
+              {/* Gap bracket spanning from supply end to openings end */}
+              <div style={{
+                position: "absolute",
+                left: `${(66 / 340) * 100}%`,
+                right: 0,
+                top: 0,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}>
+                <div style={{ width: "100%", height: 2, background: `${BRAND}40`, borderRadius: 1 }} />
+                <div style={{ marginTop: 8, textAlign: "center" }}>
+                  <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${BRAND}80`, display: "block", marginBottom: 2 }}>Workforce Gap</span>
+                  <span style={{ fontSize: 28, fontWeight: 700, color: BRAND, filter: `drop-shadow(0 0 10px ${BRAND}50)`, lineHeight: 1 }}>+274</span>
+                </div>
+              </div>
+            </div>
+            <span style={{ width: 36, flexShrink: 0 }} />
           </div>
+
+          {/* Spacer for the gap callout */}
+          <div style={{ height: 60 }} />
         </div>
       </div>
 
