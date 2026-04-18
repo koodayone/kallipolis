@@ -275,10 +275,19 @@ const DEPARTMENTS = [
 ];
 
 const EXPANDED_COURSES = [
-  { code: "ELEC 101", name: "Fundamentals of Electricity", description: "Introduction to electrical theory, circuits, and safety practices for residential and commercial applications.", skills: ["Electrical Systems"] },
-  { code: "ELEC 112", name: "Wiring Principles", description: "Hands-on training in wiring methods, conduit installation, and National Electrical Code compliance.", skills: ["Electrical Systems", "Safety Compliance"] },
+  {
+    code: "ELEC 201", name: "Commercial Electrical Systems",
+    description: "Design, install, and troubleshoot three-phase commercial electrical systems including motor controls, transformers, and power distribution panels. Emphasis on NEC code compliance for commercial occupancies and industrial safety protocols.",
+    outcomes: [
+      "Apply NEC code requirements to commercial electrical installations",
+      "Design and install three-phase power distribution systems",
+      "Troubleshoot motor control circuits using schematic diagrams",
+    ],
+    skills: ["Electrical Systems", "Circuit Design", "Safety Compliance"],
+  },
   { code: "ELEC 145", name: "Residential Wiring", description: "Complete residential electrical installation including service entrance, branch circuits, and grounding systems.", skills: ["Circuit Design"] },
-  { code: "ELEC 201", name: "Commercial Electrical Systems", description: "Advanced commercial and industrial electrical systems including three-phase power distribution.", skills: ["Electrical Systems", "Circuit Design"] },
+  { code: "ELEC 112", name: "Wiring Principles", description: "Hands-on training in wiring methods, conduit installation, and National Electrical Code compliance.", skills: ["Electrical Systems", "Safety Compliance"] },
+  { code: "ELEC 101", name: "Fundamentals of Electricity", description: "Introduction to electrical theory, circuits, and safety practices for residential and commercial applications.", skills: ["Electrical Systems"] },
   { code: "ELEC 295", name: "Electrical Code & Safety", description: "Comprehensive study of the National Electrical Code and Cal/OSHA electrical safety requirements.", skills: ["Safety Compliance"] },
 ];
 
@@ -332,6 +341,18 @@ export function CurriculumAlignmentBand({ expandProgress = 0 }: { expandProgress
                       <div style={{ padding: "14px 16px 18px 48px", background: "rgba(255,255,255,0.03)" }}>
                         <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${BRAND}90`, display: "block", marginBottom: 4 }}>Description</span>
                         <p style={{ fontSize: 12, color: "rgba(255,255,255,0.6)", lineHeight: 1.6, margin: "0 0 12px" }}>{c.description}</p>
+
+                        {"outcomes" in c && (c as typeof EXPANDED_COURSES[0]).outcomes && (
+                          <>
+                            <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${BRAND}90`, display: "block", marginBottom: 6 }}>Learning Outcomes</span>
+                            <ul style={{ margin: "0 0 12px", paddingLeft: 16 }}>
+                              {(c as typeof EXPANDED_COURSES[0]).outcomes!.map((o) => (
+                                <li key={o} style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", lineHeight: 1.5, marginBottom: 2 }}>{o}</li>
+                              ))}
+                            </ul>
+                          </>
+                        )}
+
                         <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${BRAND}90`, display: "block", marginBottom: 6 }}>Derived Skills</span>
                         <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
                           {c.skills.map((s) => <DerivedSkillPill key={s} name={s} />)}
@@ -360,7 +381,15 @@ const STUDENTS = [
 const EXPANDED_STUDENT_COURSES = [
   { code: "ELEC 201", name: "Commercial Electrical Systems", grade: "A", term: "2025-Fall" },
   { code: "ELEC 145", name: "Residential Wiring", grade: "A", term: "2025-Spring" },
-  { code: "CNST 110", name: "Construction Safety", grade: "B", term: "2025-Spring" },
+  { code: "ELEC 112", name: "Wiring Principles", grade: "B", term: "2025-Spring" },
+  { code: "CNST 110", name: "Construction Safety", grade: "A", term: "2024-Fall" },
+  { code: "ELEC 101", name: "Fundamentals of Electricity", grade: "A", term: "2024-Fall" },
+];
+
+const STUDENT_SKILLS = [
+  { skill: "Electrical Systems", occupation: "Electricians" },
+  { skill: "Circuit Design", occupation: "Electricians" },
+  { skill: "Safety Compliance", occupation: "Electricians" },
 ];
 
 function gradeColor(grade: string) {
@@ -377,18 +406,11 @@ function gpaColor(gpa: number) {
 
 export function StudentImpactBand({ expandProgress = 0 }: { expandProgress?: number }) {
   const { expanded, opacity: accordionOpacity } = expandState(expandProgress);
+  const activeTab = expandProgress > 0.60 ? "skills" : "history";
   const GRID = "24px 60px 1fr 60px 44px";
 
   return (
     <Card>
-      {/* Headline metric */}
-      <div style={{ background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.05)", marginBottom: 8 }}>
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4, padding: "16px 0" }}>
-          <span style={{ fontSize: 20, fontWeight: 600, color: "rgba(255,255,255,0.85)" }}>428</span>
-          <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>Students in Aligned Programs</span>
-        </div>
-      </div>
-
       <GridHeaders template={GRID} labels={[
         { text: "", primary: false },
         { text: "Student", primary: true },
@@ -423,20 +445,65 @@ export function StudentImpactBand({ expandProgress = 0 }: { expandProgress?: num
                 <div style={{ padding: "14px 16px 18px", background: "rgba(255,255,255,0.02)" }}>
                   {/* Tab bar */}
                   <div style={{ display: "flex", gap: 0, borderBottom: "1px solid rgba(255,255,255,0.08)", marginBottom: 12 }}>
-                    <span style={{ fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: BRAND, padding: "6px 14px", borderBottom: `2px solid ${BRAND}`, marginBottom: -1 }}>Course History</span>
-                    <span style={{ fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "rgba(255,255,255,0.3)", padding: "6px 14px", borderBottom: "2px solid transparent", marginBottom: -1 }}>Skill Profile</span>
+                    <span style={{
+                      fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em",
+                      color: activeTab === "history" ? BRAND : "rgba(255,255,255,0.3)",
+                      padding: "6px 14px",
+                      borderBottom: `2px solid ${activeTab === "history" ? BRAND : "transparent"}`,
+                      marginBottom: -1,
+                      transition: "color 0.3s ease, border-color 0.3s ease",
+                    }}>Course History</span>
+                    <span style={{
+                      fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em",
+                      color: activeTab === "skills" ? BRAND : "rgba(255,255,255,0.3)",
+                      padding: "6px 14px",
+                      borderBottom: `2px solid ${activeTab === "skills" ? BRAND : "transparent"}`,
+                      marginBottom: -1,
+                      transition: "color 0.3s ease, border-color 0.3s ease",
+                    }}>Skill Profile</span>
                   </div>
 
-                  {/* Course history */}
-                  <div style={{ display: "flex", flexDirection: "column", gap: 1 }}>
-                    {EXPANDED_STUDENT_COURSES.map((c) => (
-                      <div key={c.code} style={{ display: "flex", alignItems: "center", gap: 8, padding: "5px 0" }}>
-                        <span style={{ fontSize: 10, fontWeight: 600, color: BRAND, flexShrink: 0, width: 65 }}>{c.code}</span>
-                        <span style={{ fontSize: 11, fontWeight: 500, color: "rgba(255,255,255,0.7)", flex: 1 }}>{c.name}</span>
-                        <span style={{ fontSize: 11, fontWeight: 700, color: gradeColor(c.grade) }}>{c.grade}</span>
-                        <span style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", width: 60, textAlign: "right" }}>{c.term}</span>
-                      </div>
-                    ))}
+                  {/* Course History */}
+                  <div style={{
+                    opacity: activeTab === "history" ? 1 : 0,
+                    maxHeight: activeTab === "history" ? 500 : 0,
+                    overflow: "hidden",
+                    transition: "opacity 0.3s ease, max-height 0.3s ease",
+                  }}>
+                    <div style={{ display: "flex", flexDirection: "column", gap: 1 }}>
+                      {EXPANDED_STUDENT_COURSES.map((c) => (
+                        <div key={c.code} style={{ display: "flex", alignItems: "center", gap: 8, padding: "5px 0" }}>
+                          <span style={{ fontSize: 10, fontWeight: 600, color: BRAND, flexShrink: 0, width: 65 }}>{c.code}</span>
+                          <span style={{ fontSize: 11, fontWeight: 500, color: "rgba(255,255,255,0.7)", flex: 1 }}>{c.name}</span>
+                          <span style={{ fontSize: 11, fontWeight: 700, color: gradeColor(c.grade) }}>{c.grade}</span>
+                          <span style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", width: 60, textAlign: "right" }}>{c.term}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Skill Profile */}
+                  <div style={{
+                    opacity: activeTab === "skills" ? 1 : 0,
+                    maxHeight: activeTab === "skills" ? 500 : 0,
+                    overflow: "hidden",
+                    transition: "opacity 0.3s ease, max-height 0.3s ease",
+                  }}>
+                    <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                      {STUDENT_SKILLS.map((s) => (
+                        <div key={s.skill} style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 0", borderBottom: "1px solid rgba(255,255,255,0.03)" }}>
+                          <SkillCheckmark />
+                          <span style={{ fontSize: 13, color: BRAND, fontWeight: 500, flex: 1 }}>{s.skill}</span>
+                          <span style={{
+                            fontSize: 10, color: "rgba(255,255,255,0.4)",
+                            padding: "2px 8px", border: "1px solid rgba(255,255,255,0.12)",
+                            borderRadius: 100, textTransform: "uppercase", letterSpacing: "0.05em",
+                          }}>
+                            Aligned with {s.occupation}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>

@@ -93,8 +93,8 @@ const STEPS = [
   },
   {
     num: "04",
-    question: "How many students will be impacted by this partnership?",
-    prose: "Before the partnership begins, you already know how many students stand to benefit — quantified by department, sourced from enrollment data.",
+    question: "Which students will benefit from this partnership?",
+    prose: "Know which students can benefit the most from the partnership — by coursework, by skills, and by academic performance.",
     Band: StudentImpactBand,
     hasAccordion: true,
   },
