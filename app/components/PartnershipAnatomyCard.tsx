@@ -179,7 +179,6 @@ export function EmployerLandscapeBand({ expandProgress = 0 }: { expandProgress?:
           </div>
         );
       })}
-      <SourceLine>Source: Employment Development Department · Centers of Excellence</SourceLine>
     </Card>
   );
 }
@@ -263,7 +262,6 @@ export function OccupationalDemandBand({ expandProgress = 0 }: { expandProgress?
           </div>
         );
       })}
-      <SourceLine>Source: Centers of Excellence for Labor Market Research</SourceLine>
     </Card>
   );
 }
@@ -347,7 +345,6 @@ export function CurriculumAlignmentBand({ expandProgress = 0 }: { expandProgress
           </div>
         );
       })}
-      <SourceLine>Source: College Curriculum Catalog</SourceLine>
     </Card>
   );
 }
@@ -355,9 +352,9 @@ export function CurriculumAlignmentBand({ expandProgress = 0 }: { expandProgress
 // ── Step 04: Student Impact ──────────────────────────────────────────────
 
 const STUDENTS = [
-  { id: "Student #1", focus: "Electrical Technology", skills: 3, total: 3, gpa: 3.57 },
-  { id: "Student #2", focus: "Construction Technology", skills: 2, total: 3, gpa: 3.42 },
-  { id: "Student #3", focus: "Electrical Technology", skills: 3, total: 3, gpa: 3.28 },
+  { id: "#412", focus: "Electrical Technology", courses: 11, gpa: 3.57 },
+  { id: "#738", focus: "Construction Technology", courses: 9, gpa: 3.42 },
+  { id: "#1055", focus: "Electrical Technology", courses: 10, gpa: 3.28 },
 ];
 
 const EXPANDED_STUDENT_COURSES = [
@@ -380,7 +377,7 @@ function gpaColor(gpa: number) {
 
 export function StudentImpactBand({ expandProgress = 0 }: { expandProgress?: number }) {
   const { expanded, opacity: accordionOpacity } = expandState(expandProgress);
-  const GRID = "24px 60px 1fr 55px 44px";
+  const GRID = "24px 60px 1fr 60px 44px";
 
   return (
     <Card>
@@ -396,7 +393,7 @@ export function StudentImpactBand({ expandProgress = 0 }: { expandProgress?: num
         { text: "", primary: false },
         { text: "Student", primary: true },
         { text: "Primary Focus" },
-        { text: "Skills", align: "right" },
+        { text: "Courses", align: "right" },
         { text: "GPA", align: "right" },
       ]} />
 
@@ -417,7 +414,7 @@ export function StudentImpactBand({ expandProgress = 0 }: { expandProgress?: num
               <Chevron open={isTarget && expanded} />
               <span style={{ fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.8)" }}>{s.id}</span>
               <span style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{s.focus}</span>
-              <SkillPill count={s.skills} />
+              <span style={{ fontSize: 11, fontWeight: 500, color: "rgba(255,255,255,0.6)", textAlign: "right" }}>{s.courses}</span>
               <span style={{ fontSize: 12, fontWeight: 700, color: gpaColor(s.gpa), textAlign: "right" }}>{s.gpa.toFixed(2)}</span>
             </div>
 
@@ -447,7 +444,6 @@ export function StudentImpactBand({ expandProgress = 0 }: { expandProgress?: num
           </div>
         );
       })}
-      <SourceLine>Source: California Community Colleges Chancellor&apos;s Office MIS Data Mart</SourceLine>
     </Card>
   );
 }
@@ -509,7 +505,6 @@ export function SupplyDemandBridgeBand() {
         <span style={{ fontSize: 14, fontWeight: 600, color: "rgba(255,255,255,0.75)" }}>Gap: <span style={{ color: BRAND }}>+274</span></span>
       </div>
 
-      <SourceLine>Source: Centers of Excellence for Labor Market Research</SourceLine>
     </Card>
   );
 }
