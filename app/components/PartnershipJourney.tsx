@@ -103,7 +103,7 @@ const STEPS = [
     question: "What unmet regional labor market demand will this partnership address?",
     prose: "Proposals that instantaneously bridge TOP to SOC codes. Precisely quantify how your school supplies unmet labor demand.",
     Band: SupplyDemandBridgeBand,
-    hasAccordion: false,
+    hasAccordion: true,
   },
 ];
 

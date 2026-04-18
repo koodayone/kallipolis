@@ -505,59 +505,102 @@ export function StudentImpactBand({ expandProgress = 0 }: { expandProgress?: num
 
 // ── Step 05: Supply-Demand Bridge ────────────────────────────────────────
 
-export function SupplyDemandBridgeBand() {
+export function SupplyDemandBridgeBand({ expandProgress = 0 }: { expandProgress?: number }) {
+  const showBridge = expandProgress > 0.30;
+  const bridgeOpacity = showBridge ? Math.min(1, (expandProgress - 0.30) / 0.12) : 0;
+
   return (
     <Card>
-      <GridHeaders template="90px 1fr 80px 100px 120px" labels={[
-        { text: "SOC Code", primary: true },
-        { text: "Occupation", primary: true },
-        { text: "Region" },
-        { text: "Wage", align: "right" },
-        { text: "Annual Openings", align: "right" },
-      ]} />
+      {/* Phase 1: Narrative — always visible */}
       <div style={{
-        display: "grid", gridTemplateColumns: "90px 1fr 80px 100px 120px",
-        padding: "10px 12px", background: "rgba(255,255,255,0.02)",
-        borderBottom: "1px solid rgba(255,255,255,0.04)", fontSize: 13,
+        borderLeft: `3px solid ${BRAND}40`,
+        padding: "16px 20px",
+        background: "rgba(255,255,255,0.03)",
+        borderRadius: "0 6px 6px 0",
+        marginBottom: 20,
       }}>
-        <span style={{ color: "rgba(255,255,255,0.65)", fontFamily: "monospace", fontSize: 12 }}>47-2111</span>
-        <span style={{ color: "rgba(255,255,255,0.85)" }}>Electricians</span>
-        <span style={{ color: "rgba(255,255,255,0.55)" }}>CVML</span>
-        <span style={{ color: "rgba(255,255,255,0.65)", textAlign: "right" }}>$82,340</span>
-        <span style={{ color: "rgba(255,255,255,0.65)", textAlign: "right" }}>340</span>
+        <span style={{
+          fontSize: 9, fontWeight: 600, textTransform: "uppercase",
+          letterSpacing: "0.1em", color: `${BRAND}90`,
+          display: "block", marginBottom: 10,
+        }}>
+          Partnership Narrative
+        </span>
+        <p style={{ fontSize: 13, color: "rgba(255,255,255,0.65)", lineHeight: 1.65, margin: 0 }}>
+          Sierra Grid Electric&apos;s operations across commercial and residential grid infrastructure make it a compelling internship partner for the college&apos;s Electrical Technology program. The Central Valley has sustained demand for electricians with strong regional wages. The college&apos;s Electrical Technology, Construction Technology, and Environmental Control Technology departments collectively develop the core competencies this role requires. Structured work-based learning placements could give students supervised experience in the installation and maintenance workflows they are already practicing in the classroom.
+        </p>
       </div>
 
-      <div style={{ height: 16 }} />
+      {/* Phase 2: SOC→TOP bridge — fades in at 0.30 */}
+      <div style={{
+        opacity: bridgeOpacity,
+        maxHeight: showBridge ? 600 : 0,
+        overflow: "hidden",
+        transition: "opacity 0.3s ease, max-height 0.3s ease",
+      }}>
+        <GridHeaders template="90px 1fr 80px 100px 120px" labels={[
+          { text: "SOC Code", primary: true },
+          { text: "Occupation", primary: true },
+          { text: "Region" },
+          { text: "Wage", align: "right" },
+          { text: "Annual Openings", align: "right" },
+        ]} />
+        <div style={{
+          display: "grid", gridTemplateColumns: "90px 1fr 80px 100px 120px",
+          padding: "10px 12px", background: "rgba(255,255,255,0.02)",
+          borderBottom: "1px solid rgba(255,255,255,0.04)", fontSize: 13,
+        }}>
+          <span style={{ color: "rgba(255,255,255,0.65)", fontFamily: "monospace", fontSize: 12 }}>47-2111</span>
+          <span style={{ color: "rgba(255,255,255,0.85)" }}>Electricians</span>
+          <span style={{ color: "rgba(255,255,255,0.55)" }}>CVML</span>
+          <span style={{ color: "rgba(255,255,255,0.65)", textAlign: "right" }}>$82,340</span>
+          <span style={{ color: "rgba(255,255,255,0.65)", textAlign: "right" }}>340</span>
+        </div>
 
-      <GridHeaders template="90px 1fr 1fr 110px" labels={[
-        { text: "TOP Code", primary: true },
-        { text: "Program", primary: true },
-        { text: "Award Level" },
-        { text: "Annual Supply", align: "right" },
-      ]} />
-      {[
-        { top: "093400", program: "Electrical Technology", award: "Certificate (30<60 units)", supply: "42" },
-        { top: "095200", program: "Construction Crafts Technology", award: "Associate Degree", supply: "9" },
-        { top: "094600", program: "Environmental Control Technology (HVAC)", award: "Certificate (16<30 units)", supply: "15" },
-      ].map((row) => (
-        <div key={row.top} style={{
+        <div style={{ height: 12 }} />
+
+        <GridHeaders template="90px 1fr 1fr 110px" labels={[
+          { text: "TOP Code", primary: true },
+          { text: "Program", primary: true },
+          { text: "Award Level" },
+          { text: "Annual Supply", align: "right" },
+        ]} />
+        <div style={{
           display: "grid", gridTemplateColumns: "90px 1fr 1fr 110px",
           padding: "10px 12px", background: "rgba(255,255,255,0.02)",
           borderBottom: "1px solid rgba(255,255,255,0.04)", fontSize: 13,
         }}>
-          <span style={{ color: "rgba(255,255,255,0.55)", fontFamily: "monospace", fontSize: 12 }}>{row.top}</span>
-          <span style={{ color: "rgba(255,255,255,0.75)" }}>{row.program}</span>
-          <span style={{ color: "rgba(255,255,255,0.5)", fontSize: 12 }}>{row.award}</span>
-          <span style={{ color: "rgba(255,255,255,0.65)", textAlign: "right" }}>{row.supply}</span>
+          <span style={{ color: "rgba(255,255,255,0.55)", fontFamily: "monospace", fontSize: 12 }}>093400</span>
+          <span style={{ color: "rgba(255,255,255,0.75)" }}>Electrical Technology</span>
+          <span style={{ color: "rgba(255,255,255,0.5)", fontSize: 12 }}>Associate Degree</span>
+          <span style={{ color: "rgba(255,255,255,0.65)", textAlign: "right" }}>66</span>
         </div>
-      ))}
 
-      <div style={{ padding: "14px 16px", display: "flex", gap: 8, alignItems: "baseline" }}>
-        <span style={{ fontSize: 14, fontWeight: 600, color: "rgba(255,255,255,0.75)" }}>Annual Openings: 340</span>
-        <span style={{ color: "rgba(255,255,255,0.3)" }}>·</span>
-        <span style={{ fontSize: 14, fontWeight: 600, color: "rgba(255,255,255,0.75)" }}>Annual Supply: 66</span>
-        <span style={{ color: "rgba(255,255,255,0.3)" }}>·</span>
-        <span style={{ fontSize: 14, fontWeight: 600, color: "rgba(255,255,255,0.75)" }}>Gap: <span style={{ color: BRAND }}>+274</span></span>
+        <div style={{ padding: "20px 16px 16px" }}>
+          {/* Openings bar */}
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+            <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "rgba(255,255,255,0.35)", width: 70, flexShrink: 0 }}>Openings</span>
+            <div style={{ flex: 1, height: 22, background: "rgba(255,255,255,0.06)", borderRadius: 4, position: "relative", overflow: "hidden" }}>
+              <div style={{ width: "100%", height: "100%", background: "rgba(255,255,255,0.12)", borderRadius: 4 }} />
+            </div>
+            <span style={{ fontSize: 13, fontWeight: 700, color: "rgba(255,255,255,0.75)", width: 36, textAlign: "right", flexShrink: 0 }}>340</span>
+          </div>
+
+          {/* Supply bar */}
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
+            <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${BRAND}90`, width: 70, flexShrink: 0 }}>Supply</span>
+            <div style={{ flex: 1, height: 22, background: "rgba(255,255,255,0.06)", borderRadius: 4, position: "relative", overflow: "hidden" }}>
+              <div style={{ width: `${(66 / 340) * 100}%`, height: "100%", background: `${BRAND}60`, borderRadius: 4, boxShadow: `0 0 12px ${BRAND}30` }} />
+            </div>
+            <span style={{ fontSize: 13, fontWeight: 700, color: BRAND, width: 36, textAlign: "right", flexShrink: 0 }}>66</span>
+          </div>
+
+          {/* Gap callout */}
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "baseline", gap: 8, paddingTop: 4 }}>
+            <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "rgba(255,255,255,0.3)" }}>Workforce Gap</span>
+            <span style={{ fontSize: 22, fontWeight: 700, color: BRAND, filter: `drop-shadow(0 0 8px ${BRAND}40)` }}>+274</span>
+          </div>
+        </div>
       </div>
 
     </Card>
