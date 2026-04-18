@@ -51,7 +51,7 @@ export default function PartnershipsSection() {
             <TwoFormsDiagram />
           </div>
           <div style={{ textAlign: "center", marginTop: -40 }}>
-            <ActionBadge label="Explore Partnerships" neonColor="#4fd1fd" opacity={1} icon="chainlink" inline />
+            <ActionBadge label="Explore Partnerships" neonColor="#4fd1fd" opacity={1} icon="chainlink" inline href="/partnerships" />
           </div>
         </div>
       </div>

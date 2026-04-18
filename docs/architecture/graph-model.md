@@ -20,7 +20,7 @@ Five node types live on the curriculum side, three on the industry side. Each on
 
 | Node | Key properties | Constraint | What it represents |
 |---|---|---|---|
-| **Region** | name, display_name | `name UNIQUE` | A regional labor market |
+| **Region** | name, display_name, priority_sectors | `name UNIQUE` | A regional labor market. The `priority_sectors` list property names the SWP priority industry sectors from the region's Strong Workforce Program development plan. |
 | **Occupation** | soc_code, title, description, education_level | `soc_code UNIQUE` | A SOC-coded occupation in regional demand. Wage and employment data live on the `DEMANDS` edge, not on the node, because the same occupation has different demand profiles in different regions. |
 | **Employer** | name, sector, description, website | `name UNIQUE` | A real organization that hires in California. The `website` property is the verified official URL produced by the validation step in the [employer generation pipeline](../pipeline/employer-generation.md). |
 

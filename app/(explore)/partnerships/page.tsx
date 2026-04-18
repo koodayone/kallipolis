@@ -1,8 +1,11 @@
-import ConvergenceDiagram from "../../components/ConvergenceDiagram";
-import PipelineStageCard from "../../components/PipelineStageCard";
-import StaticProposalCard from "../../components/StaticProposalCard";
-import EngagementTypeCards from "../../components/EngagementTypeCards";
+"use client";
+
+import dynamic from "next/dynamic";
+import PartnershipJourney from "../../components/PartnershipJourney";
 import ActionBadge from "../../components/ActionBadge";
+
+const ConvergenceFlowDiagram = dynamic(() => import("../../components/ConvergenceFlowDiagram"), { ssr: false });
+const StateMap = dynamic(() => import("../../components/StateMap"), { ssr: false });
 
 // ── Section primitives ───────────────────────────────────────────────────────
 
@@ -16,7 +19,7 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
   );
 }
 
-function PurpleDivider() {
+function BlueDivider() {
   return <div style={{ width: 64, height: 2, background: BRAND, borderRadius: 1, opacity: 0.9, margin: "0 auto 24px" }} />;
 }
 
@@ -36,157 +39,67 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 export default function ExplorePartnershipsPage() {
   return (
     <>
-      {/* ── Section 1: Hero ── */}
-      <section style={{ paddingTop: 120, paddingBottom: 64, paddingLeft: 64, paddingRight: 64 }}>
+      {/* ── Section 1: Convergence ── */}
+      <section style={{ paddingTop: 120, paddingBottom: 0, paddingLeft: 64, paddingRight: 64 }}>
         <div className="max-w-3xl mx-auto text-center">
           <Eyebrow>Intelligent Partnerships</Eyebrow>
-          <PurpleDivider />
+          <BlueDivider />
           <SectionHeading>
-            From data convergence<br />to actionable proposals
+            Build a Strong Workforce<br />by building strong partnerships.
           </SectionHeading>
-          <p style={{ fontSize: 18, lineHeight: 1.6, color: "rgba(255,255,255,0.65)", marginTop: 24, maxWidth: 600, marginLeft: "auto", marginRight: "auto" }}>
-            Partnership proposals are not templates. They emerge from the convergence of all four units of analysis — students, courses, occupations, and employers — queried simultaneously against a unified knowledge graph.
-          </p>
-        </div>
-      </section>
-
-      {/* ── Section 2: Convergence ── */}
-      <section style={{ paddingTop: 0, paddingBottom: 48, paddingLeft: 64, paddingRight: 64 }}>
-        <div className="max-w-3xl mx-auto text-center" style={{ marginBottom: 24 }}>
-          <Eyebrow>The Convergence</Eyebrow>
-          <PurpleDivider />
-          <SectionHeading>Four units in.<br />One proposal out.</SectionHeading>
-        </div>
-
-        <ConvergenceDiagram />
-
-        <div className="max-w-2xl mx-auto" style={{ marginTop: 24 }}>
-          <p style={{ fontSize: 16, lineHeight: 1.65, color: "rgba(255,255,255,0.55)", textAlign: "center" }}>
-            Each proposal draws on employer metadata, regional occupation demand, aligned curriculum, and student pipeline data. The system queries across all four simultaneously, ensuring that every claim in the proposal is grounded in evidence from the graph.
-          </p>
-        </div>
-      </section>
-
-      {/* ── Section 3: Three-Stage Pipeline ── */}
-      <section style={{ paddingTop: 48, paddingBottom: 48, paddingLeft: 64, paddingRight: 64 }}>
-        <div className="max-w-3xl mx-auto text-center" style={{ marginBottom: 40 }}>
-          <Eyebrow>The Pipeline</Eyebrow>
-          <PurpleDivider />
-          <SectionHeading>Gather. Filter. Narrate.</SectionHeading>
-        </div>
-
-        <div style={{ display: "flex", gap: 20, maxWidth: 960, margin: "0 auto" }}>
-          <PipelineStageCard
-            number="1"
-            name="Gather"
-            methodology="Graph queries retrieve the full context for a partnership: employer metadata, the occupations it hires for, regional demand evidence, curriculum aligned to core skills, and the student pipeline with matching competency profiles."
-            inputs="Employer name, college identity, engagement type"
-            outputs="Employer context, occupation evidence, curriculum alignment, student pipeline data"
-          />
-          <PipelineStageCard
-            number="2"
-            name="Filter"
-            methodology="LLM-based intelligence applies domain judgment to the gathered context. It selects the primary occupation, identifies the core skills, narrows to the most relevant departments, and — for curriculum co-design — identifies one gap skill the curriculum does not yet develop."
-            inputs="Full gathered context from Stage 1"
-            outputs="Selected occupation, core skills, relevant departments, gap skill (if applicable)"
-          />
-          <PipelineStageCard
-            number="3"
-            name="Narrate"
-            methodology="Claude generates proposal prose constrained to evidence from the gather stage. The narrative cannot hallucinate — it can only reference data that was retrieved from the graph. A post-generation faithfulness check verifies that every claim is supported."
-            inputs="Filtered context with selected occupation and core skills"
-            outputs="Four-section proposal: opportunity, curriculum alignment, student pipeline, roadmap"
-          />
-        </div>
-      </section>
-
-      {/* ── Section 4: Anatomy of a Proposal ── */}
-      <section style={{ paddingTop: 48, paddingBottom: 48, paddingLeft: 64, paddingRight: 64 }}>
-        <div className="max-w-3xl mx-auto text-center" style={{ marginBottom: 40 }}>
-          <Eyebrow>The Proposal</Eyebrow>
-          <PurpleDivider />
-          <SectionHeading>Anatomy of a<br />data-driven partnership</SectionHeading>
-          <p style={{ fontSize: 16, lineHeight: 1.6, color: "rgba(255,255,255,0.55)", marginTop: 20 }}>
-            Every proposal follows the same structure: an opportunity grounded in labor market evidence, curriculum alignment verified against institutional course records, a student pipeline quantified from enrollment data, and a concrete roadmap. Narrative prose is always accompanied by its underlying evidence.
+          <p style={{ fontSize: 17, lineHeight: 1.6, color: "rgba(255,255,255,0.6)", marginTop: 24, maxWidth: 640, marginLeft: "auto", marginRight: "auto" }}>
+            Students, courses, occupations, and employers converge into a single partnership proposal — every claim grounded in evidence, every partnership positioned to advance a Strong Workforce.
           </p>
         </div>
 
-        <div style={{ maxWidth: 800, margin: "0 auto", position: "relative" }}>
-          {/* Annotations */}
-          <div style={{
-            position: "absolute", left: -220, top: 40, width: 180,
-            display: "flex", flexDirection: "column", gap: 120,
-          }}>
-            {[
-              { label: "Labor market evidence", note: "Wages, openings, and growth rates from Centers of Excellence regional data" },
-              { label: "Institutional curriculum", note: "Course records from the college's own catalog, parsed and skill-mapped" },
-              { label: "Student pipeline", note: "Enrollment counts and competency profiles calibrated to DataMart" },
-            ].map((ann) => (
-              <div key={ann.label} style={{ textAlign: "right" }}>
-                <span style={{ fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${BRAND}90`, display: "block", marginBottom: 4 }}>
-                  {ann.label}
-                </span>
-                <p style={{ fontSize: 12, lineHeight: 1.5, color: "rgba(255,255,255,0.35)", margin: 0 }}>
-                  {ann.note}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <StaticProposalCard />
+        <div style={{ maxWidth: 1100, margin: "0 auto", marginTop: -16 }}>
+          <ConvergenceFlowDiagram />
         </div>
       </section>
 
-      {/* ── Section 5: Engagement Types ── */}
-      <section style={{ paddingTop: 48, paddingBottom: 48, paddingLeft: 64, paddingRight: 64 }}>
-        <div className="max-w-3xl mx-auto text-center" style={{ marginBottom: 40 }}>
-          <Eyebrow>Three Engagement Types</Eyebrow>
-          <PurpleDivider />
-          <SectionHeading>One pipeline, three modes<br />of institutional engagement</SectionHeading>
+      {/* ── Section 2: Anatomy ── */}
+      <section style={{ paddingTop: 32, paddingBottom: 0, paddingLeft: 64, paddingRight: 64 }}>
+        <div className="max-w-3xl mx-auto text-center" style={{ marginBottom: 0 }}>
+          <Eyebrow>Regional Alignment</Eyebrow>
+          <BlueDivider />
+          <SectionHeading>Data-driven partnerships<br />that supply regional demand</SectionHeading>
+          <p style={{ fontSize: 16, lineHeight: 1.6, color: "rgba(255,255,255,0.55)", marginTop: 24, maxWidth: 460, marginLeft: "auto", marginRight: "auto" }}>
+            Craft partnership proposals that answer the questions workforce development demands — backed by trusted data from trusted institutions.
+          </p>
         </div>
 
-        <EngagementTypeCards />
+        <PartnershipJourney />
+
       </section>
 
-      {/* ── Section 6: Strong Workforce Connection ── */}
+      {/* ── Section 3: Regional Alignment ── */}
       <section style={{ paddingTop: 48, paddingBottom: 64, paddingLeft: 64, paddingRight: 64 }}>
-        <div className="max-w-2xl mx-auto text-center">
-          <Eyebrow>Strong Workforce</Eyebrow>
-          <PurpleDivider />
-          <SectionHeading>From partnership<br />to funded project</SectionHeading>
-          <p style={{ fontSize: 16, lineHeight: 1.65, color: "rgba(255,255,255,0.55)", marginTop: 24 }}>
-            A discovered partnership is not an endpoint — it is feedstock for institutional action. The same occupation evidence, curriculum alignment, and student pipeline data that justifies a partnership also supplies the labor market information context required for a NOVA-compatible Strong Workforce Program application. The proposal becomes a fundable project.
-          </p>
+        <div style={{ display: "flex", gap: 48, alignItems: "flex-start", maxWidth: 1100, margin: "0 auto" }}>
 
-          <div style={{
-            marginTop: 32, padding: "20px 28px",
-            background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)",
-            borderRadius: 8, textAlign: "left",
-          }}>
-            <span style={{ fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "rgba(255,255,255,0.3)", display: "block", marginBottom: 12 }}>
-              NOVA Application Sections
-            </span>
-            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-              {[
-                "Vision for Success alignment",
-                "Regional labor market demand",
-                "Supply and capacity analysis",
-                "Student impact justification",
-                "Curriculum alignment",
-                "Employer engagement strategy",
-                "Outcome metrics and evaluation",
-              ].map((section) => (
-                <div key={section} style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <div style={{ width: 4, height: 4, borderRadius: "50%", background: `${BRAND}60`, flexShrink: 0 }} />
-                  <span style={{ fontSize: 14, color: "rgba(255,255,255,0.55)" }}>{section}</span>
-                </div>
-              ))}
+          {/* Left — Map */}
+          <div style={{ flex: "0 0 50%", minHeight: 400 }}>
+            <StateMap brightenAll />
+          </div>
+
+          {/* Right — Prose */}
+          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 32, paddingTop: 16 }}>
+            <div style={{ textAlign: "center" }}>
+              <Eyebrow>Regional Alignment</Eyebrow>
+              <BlueDivider />
+              <SectionHeading>Data-driven partnerships<br />that supply regional demand</SectionHeading>
             </div>
+
+            <p style={{ fontSize: 16, lineHeight: 1.65, color: "rgba(255,255,255,0.55)" }}>
+              California&apos;s community colleges operate within eight regional consortia, each with a Strong Workforce Program development plan that names priority sectors and commits to advancing career technical education.
+            </p>
+            <p style={{ fontSize: 16, lineHeight: 1.65, color: "rgba(255,255,255,0.55)" }}>
+              Kallipolis knows which sectors each region prioritizes. When a partnership aligns with a regional priority, the system surfaces that alignment automatically — connecting the proposal to the institutional mandate the consortium has already committed to.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* ── Section 7: Cross-links ── */}
+      {/* ── Section 4: Cross-links ── */}
       <section style={{ background: "#060d1f", padding: "24px 64px 48px", display: "flex", justifyContent: "center", gap: 16 }}>
         <ActionBadge label="Explore Atlas" neonColor="#f0425e" opacity={1} icon="cube" inline href="/atlas" invertHover />
         <ActionBadge label="Explore Sources" neonColor="#c9a84c" opacity={1} icon="lightbulb" inline href="/sources" invertHover />

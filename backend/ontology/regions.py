@@ -67,6 +67,90 @@ COE_REGION_DISPLAY: dict[str, str] = {
     "SD/I": "San Diego / Imperial",
 }
 
+# COE region code → SWP priority sectors as named in each region's
+# Strong Workforce Program development plan. Sourced from the 2023-2029
+# regional plans. GS and FN share the North/Far North consortium plan;
+# both receive the same priority set (top 5 by investment allocation).
+# "CA" is omitted — it is a statewide aggregate, not a consortium.
+COE_REGION_PRIORITY_SECTORS: dict[str, list[str]] = {
+    "Bay": [
+        "Advanced Manufacturing",
+        "Advanced Transportation",
+        "Health",
+        "ICT / Digital Media",
+        "Public Safety",
+        "Education",
+    ],
+    "CVML": [
+        "Advanced Manufacturing",
+        "Agriculture, Water & Environmental Technologies",
+        "Health",
+        "Retail, Hospitality & Tourism",
+        "Business & Entrepreneurship",
+        "ICT / Digital Media",
+    ],
+    "FN": [
+        "Advanced Manufacturing",
+        "Health",
+        "Public Safety",
+        "Advanced Transportation & Logistics",
+        "Energy, Construction & Utilities",
+    ],
+    "GS": [
+        "Advanced Manufacturing",
+        "Health",
+        "Public Safety",
+        "Advanced Transportation & Logistics",
+        "Energy, Construction & Utilities",
+    ],
+    "IE/D": [
+        "Advanced Manufacturing",
+        "Advanced Transportation & Logistics",
+        "Business & Entrepreneurship",
+        "Energy, Construction & Utilities",
+        "Health",
+        "ICT / Digital Media",
+        "Retail, Hospitality & Tourism",
+    ],
+    "LA": [
+        "Advanced Manufacturing",
+        "Advanced Transportation & Logistics",
+        "Business & Entrepreneurship",
+        "Energy, Construction & Utilities",
+        "Health",
+        "ICT / Digital Media",
+        "Life Sciences & Biotechnology",
+        "Retail, Hospitality & Tourism",
+    ],
+    "OC": [
+        "Health",
+        "ICT / Digital Media",
+        "Business & Entrepreneurship",
+        "Education & Human Development",
+        "Energy, Construction & Utilities",
+        "Life Sciences & Biotechnology",
+    ],
+    "SCC": [
+        "Advanced Manufacturing",
+        "Advanced Transportation",
+        "Agriculture, Water & Environmental Technologies",
+        "Business & Entrepreneurship",
+        "Education",
+        "Energy, Construction & Utilities",
+        "Health",
+        "ICT / Digital Media",
+        "Life Sciences & Biotechnology",
+        "Public Safety",
+        "Retail, Hospitality & Tourism",
+    ],
+    "SD/I": [
+        "Advanced Manufacturing",
+        "Advanced Transportation & Logistics",
+        "Health",
+        "ICT / Digital Media",
+    ],
+}
+
 # Frontend regionId → COE region code
 FRONTEND_TO_COE: dict[str, str] = {
     "bay-area": "Bay",

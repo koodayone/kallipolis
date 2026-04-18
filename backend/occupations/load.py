@@ -18,6 +18,7 @@ from ontology.schema import get_driver, close_driver
 from ontology.regions import (
     COLLEGE_COE_REGION,
     COE_REGION_DISPLAY,
+    COE_REGION_PRIORITY_SECTORS,
     ensure_college_region_link,
 )
 
@@ -56,9 +57,11 @@ def load_industry(
 
         for region_name in regions:
             display_name = COE_REGION_DISPLAY.get(region_name, region_name)
+            priority_sectors = COE_REGION_PRIORITY_SECTORS.get(region_name, [])
             session.run(
-                "MERGE (r:Region {name: $name}) SET r.display_name = $display",
-                name=region_name, display=display_name,
+                "MERGE (r:Region {name: $name}) "
+                "SET r.display_name = $display, r.priority_sectors = $sectors",
+                name=region_name, display=display_name, sectors=priority_sectors,
             )
             stats["regions"] += 1
         logger.info(f"Created {stats['regions']} Region nodes")
