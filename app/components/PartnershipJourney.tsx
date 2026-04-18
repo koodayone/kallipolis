@@ -94,14 +94,14 @@ const STEPS = [
   {
     num: "04",
     question: "Which students will benefit from this partnership?",
-    prose: "Know which students can benefit the most from the partnership — by coursework, by skills, and by academic performance.",
+    prose: "Know which students can benefit the most from a partnership — by coursework, by skills, and by academic performance.",
     Band: StudentImpactBand,
     hasAccordion: true,
   },
   {
     num: "05",
     question: "What unmet regional labor market demand will this partnership address?",
-    prose: "The bridge between SOC codes and TOP codes is where labor market language meets curriculum language. The gap tells you exactly how many more openings exist than graduates your programs currently produce.",
+    prose: "Proposals that instantaneously bridge TOP to SOC codes. Precisely quantify how your school supplies unmet labor demand.",
     Band: SupplyDemandBridgeBand,
     hasAccordion: false,
   },

@@ -288,7 +288,6 @@ const EXPANDED_COURSES = [
   { code: "ELEC 145", name: "Residential Wiring", description: "Complete residential electrical installation including service entrance, branch circuits, and grounding systems.", skills: ["Circuit Design"] },
   { code: "ELEC 112", name: "Wiring Principles", description: "Hands-on training in wiring methods, conduit installation, and National Electrical Code compliance.", skills: ["Electrical Systems", "Safety Compliance"] },
   { code: "ELEC 101", name: "Fundamentals of Electricity", description: "Introduction to electrical theory, circuits, and safety practices for residential and commercial applications.", skills: ["Electrical Systems"] },
-  { code: "ELEC 295", name: "Electrical Code & Safety", description: "Comprehensive study of the National Electrical Code and Cal/OSHA electrical safety requirements.", skills: ["Safety Compliance"] },
 ];
 
 export function CurriculumAlignmentBand({ expandProgress = 0 }: { expandProgress?: number }) {
@@ -342,18 +341,7 @@ export function CurriculumAlignmentBand({ expandProgress = 0 }: { expandProgress
                         <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${BRAND}90`, display: "block", marginBottom: 4 }}>Description</span>
                         <p style={{ fontSize: 12, color: "rgba(255,255,255,0.6)", lineHeight: 1.6, margin: "0 0 12px" }}>{c.description}</p>
 
-                        {"outcomes" in c && (c as typeof EXPANDED_COURSES[0]).outcomes && (
-                          <>
-                            <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${BRAND}90`, display: "block", marginBottom: 6 }}>Learning Outcomes</span>
-                            <ul style={{ margin: "0 0 12px", paddingLeft: 16 }}>
-                              {(c as typeof EXPANDED_COURSES[0]).outcomes!.map((o) => (
-                                <li key={o} style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", lineHeight: 1.5, marginBottom: 2 }}>{o}</li>
-                              ))}
-                            </ul>
-                          </>
-                        )}
-
-                        <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${BRAND}90`, display: "block", marginBottom: 6 }}>Derived Skills</span>
+<span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${BRAND}90`, display: "block", marginBottom: 6 }}>Derived Skills</span>
                         <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
                           {c.skills.map((s) => <DerivedSkillPill key={s} name={s} />)}
                         </div>
@@ -548,9 +536,9 @@ export function SupplyDemandBridgeBand() {
         { text: "Annual Supply", align: "right" },
       ]} />
       {[
-        { top: "093400", program: "Electrical Technology", award: "Certificate (30<60 units)", supply: "42.33" },
-        { top: "095200", program: "Construction Crafts Technology", award: "Associate Degree", supply: "8.67" },
-        { top: "094600", program: "Environmental Control Technology (HVAC)", award: "Certificate (16<30 units)", supply: "15.00" },
+        { top: "093400", program: "Electrical Technology", award: "Certificate (30<60 units)", supply: "42" },
+        { top: "095200", program: "Construction Crafts Technology", award: "Associate Degree", supply: "9" },
+        { top: "094600", program: "Environmental Control Technology (HVAC)", award: "Certificate (16<30 units)", supply: "15" },
       ].map((row) => (
         <div key={row.top} style={{
           display: "grid", gridTemplateColumns: "90px 1fr 1fr 110px",
