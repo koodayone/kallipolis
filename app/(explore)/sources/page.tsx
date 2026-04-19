@@ -94,13 +94,13 @@ export default function ExploreSourcesPage() {
       {/* ── Section 1: Hero (prose-led) ── */}
       <section style={{ paddingTop: 120, paddingBottom: 48, paddingLeft: 64, paddingRight: 64 }}>
         <div className="max-w-3xl mx-auto text-center">
-          <Eyebrow>The Epistemology</Eyebrow>
+          <Eyebrow>The Methodology</Eyebrow>
           <GoldDivider />
           <SectionHeading>
             Every claim has a public source.<br />Every source has a public institution.
           </SectionHeading>
           <p style={{ fontSize: 18, lineHeight: 1.6, color: "rgba(255,255,255,0.65)", marginTop: 24, maxWidth: 600, marginLeft: "auto", marginRight: "auto" }}>
-            Students. Courses. Occupations. Employers.<br />Each unit of analysis traces to one authoritative institution.
+            Students. Courses. Occupations. Employers.<br />Each unit of analysis traces to one authoritative institution.<br />Query each domain via natural language.
           </p>
         </div>
       </section>
