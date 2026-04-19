@@ -54,7 +54,7 @@ export default function ExplorePartnershipsPage() {
             Build a Strong Workforce<br />by building strong partnerships.
           </SectionHeading>
           <p style={{ fontSize: 17, lineHeight: 1.6, color: "rgba(255,255,255,0.6)", marginTop: 24, maxWidth: 640, marginLeft: "auto", marginRight: "auto" }}>
-            Students, courses, occupations, and employers converge into a single partnership proposal — every claim grounded in evidence, every partnership positioned to advance a Strong Workforce.
+            Students, courses, occupations, and employers converge into a single partnership proposal. Every claim is grounded in evidence, and every partnership is positioned to advance a Strong Workforce.
           </p>
         </div>
 
@@ -70,7 +70,7 @@ export default function ExplorePartnershipsPage() {
           <BlueDivider />
           <SectionHeading>Data-driven partnerships<br />that supply regional demand</SectionHeading>
           <p style={{ fontSize: 16, lineHeight: 1.6, color: "rgba(255,255,255,0.55)", marginTop: 24, maxWidth: 460, marginLeft: "auto", marginRight: "auto" }}>
-            Craft partnership proposals that answer the questions workforce development demands. Let&apos;s journey through the layers of a partnership proposal with Golden State Solar, an imaginary company in the renewable energy sector.
+            Craft partnership proposals that answer the questions workforce development demands. Let&apos;s journey through the layers of a partnership proposal for Golden State Solar, an imaginary company in the renewable energy sector.
           </p>
         </div>
 
