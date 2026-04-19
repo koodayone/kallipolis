@@ -100,7 +100,7 @@ export default function ExplorePartnershipsPage() {
                 Eight Regional Consortia
               </span>
               <p style={{ fontSize: 16, lineHeight: 1.65, color: "rgba(255,255,255,0.55)", margin: 0 }}>
-                Partnerships that promote regional priorities require effective coordination. Collaborate on partnerships based on a shared source of truth.
+                Partnerships that promote regional priorities require effective coordination. Collaborate on partnerships based on a shared surface.
               </p>
             </div>
 
