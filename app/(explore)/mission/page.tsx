@@ -119,7 +119,9 @@ export default function MissionPage() {
 
       {/* ── 6. Cross-links ── */}
       <section style={{ background: "#F5F2EB", padding: "48px 64px", display: "flex", justifyContent: "center" }}>
-        <ActionBadge label="Home" neonColor="#2D5016" opacity={1} icon="sun" inline href="/" />
+        <div style={{ transform: "scale(1.04)", transformOrigin: "center" }}>
+          <ActionBadge label="Home" neonColor="#2D5016" opacity={1} icon="sun" inline href="/" />
+        </div>
       </section>
     </div>
   );
