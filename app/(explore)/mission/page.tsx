@@ -53,26 +53,20 @@ export default function MissionPage() {
   return (
     <div style={{ background: "#F5F2EB", minHeight: "100vh" }}>
 
-      {/* ── 1. Mission Statement ── */}
-      <section style={{ padding: "160px 64px 120px", textAlign: "center" }}>
+      {/* ── 1. Hero Image — Tahoe ── */}
+      <div style={{ paddingTop: 80 }}>
+        <LandscapeImage src="/tahoe_art.png" alt="Lake Tahoe" />
+      </div>
+
+      {/* ── 2. Mission Statement ── */}
+      <section style={{ padding: "120px 64px", textAlign: "center" }}>
         <div style={{ maxWidth: 640, margin: "0 auto" }}>
           <Eyebrow>Mission</Eyebrow>
           <GreenDivider />
           <SectionHeading>
             Advance the spirit of reinvention<br />in our public institutions.
           </SectionHeading>
-        </div>
-      </section>
-
-      {/* ── 2. Hero Image — Tahoe ── */}
-      <LandscapeImage src="/tahoe_art.png" alt="Lake Tahoe" />
-
-      {/* ── 3. Who We Are ── */}
-      <section style={{ padding: "120px 64px", textAlign: "center" }}>
-        <div style={{ maxWidth: 640, margin: "0 auto" }}>
-          <Eyebrow>Who We Are</Eyebrow>
-          <GreenDivider />
-          <p style={{ fontSize: 17, lineHeight: 1.7, color: "#3d3a36", marginTop: 0 }}>
+          <p style={{ fontSize: 17, lineHeight: 1.7, color: "#3d3a36", marginTop: 28 }}>
             Kallipolis is an ode to the State of California and the spirit of reinvention. We believe that there is no institution that more faithfully represents this spirit than California Community Colleges. In the face of historic technological and social change, it is imperative that we reinvent what it means to build the future. Developing a vibrant workforce is central to that cause, and it is here that Kallipolis aims to make its contribution.
           </p>
         </div>
