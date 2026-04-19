@@ -1,206 +1,171 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { ComposableMap, Geographies, Geography } from "react-simple-maps";
+import { useMemo } from "react";
+import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
+import { geoMercator } from "d3-geo";
 
-// ── County → COE Region mapping (from backend/ontology/regions.py) ──────
+const BRAND = "#4fd1fd";
 
-const COUNTY_TO_REGION: Record<string, string> = {
-  Alameda: "Bay", "Contra Costa": "Bay", Marin: "Bay", Monterey: "Bay",
-  Napa: "Bay", "San Benito": "Bay", "San Francisco": "Bay", "San Mateo": "Bay",
-  "Santa Clara": "Bay", "Santa Cruz": "Bay", Solano: "Bay", Sonoma: "Bay",
+const PROJECTION_CONFIG = { center: [-119.5, 37.0] as [number, number], scale: 2100 };
+const MAP_WIDTH = 460;
+const MAP_HEIGHT = 520;
 
-  Alpine: "CVML", Amador: "CVML", Calaveras: "CVML", Fresno: "CVML",
-  Inyo: "CVML", Kern: "CVML", Kings: "CVML", Madera: "CVML",
-  Mariposa: "CVML", Merced: "CVML", Mono: "CVML", "San Joaquin": "CVML",
-  Stanislaus: "CVML", Tulare: "CVML", Tuolumne: "CVML",
+// ── Consortium centers (lat/lng) ────────────────────────────────────────
 
-  "Del Norte": "FN", Humboldt: "FN", Lake: "FN", Lassen: "FN",
-  Mendocino: "FN", Modoc: "FN", Siskiyou: "FN", Trinity: "FN",
-
-  Butte: "GS", Colusa: "GS", "El Dorado": "GS", Glenn: "GS",
-  Nevada: "GS", Placer: "GS", Sacramento: "GS", Shasta: "GS",
-  Sierra: "GS", Sutter: "GS", Tehama: "GS", Yolo: "GS", Yuba: "GS",
-  Plumas: "GS",
-
-  Riverside: "IE/D", "San Bernardino": "IE/D",
-
-  "Los Angeles": "LA",
-
-  Orange: "OC",
-
-  "San Luis Obispo": "SCC", "Santa Barbara": "SCC", Ventura: "SCC",
-
-  "San Diego": "SD/I", Imperial: "SD/I",
-};
-
-// ── Region config ───────────────────────────────────────────────────────
-
-const REGIONS: Record<string, { color: string; dx: number; dy: number; delay: number }> = {
-  "FN":   { color: "#2a7a9c", dx: 0,   dy: -25, delay: 0.3 },
-  "GS":   { color: "#3498b8", dx: 12,  dy: -12, delay: 0.2 },
-  "Bay":  { color: "#4fd1fd", dx: -25, dy: -8,  delay: 0.15 },
-  "CVML": { color: "#3bb5d9", dx: 8,   dy: 5,   delay: 0.1 },
-  "SCC":  { color: "#2a8aad", dx: -20, dy: 12,  delay: 0.2 },
-  "LA":   { color: "#45c4ed", dx: -12, dy: 20,  delay: 0.25 },
-  "OC":   { color: "#5dd8ff", dx: 0,   dy: 25,  delay: 0.3 },
-  "IE/D": { color: "#3098ba", dx: 18,  dy: 18,  delay: 0.25 },
-  "SD/I": { color: "#2580a0", dx: 12,  dy: 28,  delay: 0.35 },
-};
-
-// ── RisingSun ───────────────────────────────────────────────────────────
-
-const SUN_RAYS = [
-  { angle: -90, long: true },  { angle: -75, long: false },
-  { angle: -60, long: true },  { angle: -45, long: false },
-  { angle: -30, long: true },  { angle: -15, long: false },
-  { angle:   0, long: true },  { angle:  15, long: false },
-  { angle:  30, long: true },  { angle:  45, long: false },
-  { angle:  60, long: true },  { angle:  75, long: false },
-  { angle:  90, long: true },
+const CONSORTIA = [
+  { key: "NFN",  label: "North / Far North",    coords: [-121.5, 40.5] as [number, number] },
+  { key: "Bay",  label: "Bay Area",              coords: [-122.6, 38.1] as [number, number] },
+  { key: "CVML", label: "Central Valley /\nMother Lode", coords: [-119.4, 37.1] as [number, number] },
+  { key: "SCC",  label: "South Central Coast",   coords: [-120.6, 35.1] as [number, number] },
+  { key: "LA",   label: "Los Angeles",           coords: [-118.2, 34.3] as [number, number] },
+  { key: "OC",   label: "Orange County",         coords: [-117.8, 33.6] as [number, number] },
+  { key: "IE/D", label: "Inland Empire /\nDesert", coords: [-116.0, 34.8] as [number, number] },
+  { key: "SD/I", label: "San Diego / Imperial",  coords: [-116.5, 32.8] as [number, number] },
 ];
 
-function toRad(deg: number) { return (deg * Math.PI) / 180; }
-
-function RisingSun() {
-  const cx = 28, cy = 36, innerR = 15;
-  const color = "#c9a84c";
-  return (
-    <svg
-      width="80" height="50" viewBox="0 0 56 36" fill="none"
-      style={{ filter: `drop-shadow(0 0 8px ${color}55)`, animation: "sun-glow 3s ease-in-out infinite", overflow: "hidden", display: "block" }}
-    >
-      <defs>
-        <clipPath id="regional-sun-clip">
-          <rect x="0" y="0" width="56" height="37" />
-        </clipPath>
-      </defs>
-      <g clipPath="url(#regional-sun-clip)">
-        {SUN_RAYS.map((r, i) => {
-          const rad = toRad(r.angle - 90);
-          const len = r.long ? 9 : 6;
-          const x1 = cx + Math.cos(rad) * (innerR + 3);
-          const y1 = cy + Math.sin(rad) * (innerR + 3);
-          const x2 = cx + Math.cos(rad) * (innerR + 3 + len);
-          const y2 = cy + Math.sin(rad) * (innerR + 3 + len);
-          return (
-            <line
-              key={i}
-              x1={x1} y1={y1} x2={x2} y2={y2}
-              className="sun-ray"
-              style={{ stroke: color, animationDelay: `${i * 0.18}s` }}
-            />
-          );
-        })}
-        <path
-          d={`M ${cx - innerR} ${cy} A ${innerR} ${innerR} 0 0 1 ${cx + innerR} ${cy} Z`}
-          fill={color}
-        />
-      </g>
-    </svg>
-  );
-}
+// Label anchor directions
+const LABEL_ANCHORS: Record<string, { side: "left" | "right"; dx?: number; dy?: number }> = {
+  "NFN":  { side: "left" },
+  "Bay":  { side: "right" },
+  "CVML": { side: "left", dx: 2, dy: -8 },
+  "SCC":  { side: "right" },
+  "LA":   { side: "right", dy: 10 },
+  "OC":   { side: "right", dy: 14 },
+  "IE/D": { side: "left" },
+  "SD/I": { side: "left" },
+};
 
 // ── Component ───────────────────────────────────────────────────────────
 
 export default function RegionalUnificationMap() {
-  const [unified, setUnified] = useState(false);
-  const [visible, setVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Project lat/lng to screen pixels for the constellation lines
+  const projected = useMemo(() => {
+    const projection = geoMercator()
+      .center(PROJECTION_CONFIG.center)
+      .scale(PROJECTION_CONFIG.scale)
+      .translate([MAP_WIDTH / 2, MAP_HEIGHT / 2]);
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => setVisible(entry.isIntersecting),
-      { threshold: 0.1 },
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
+    return CONSORTIA.map((c) => {
+      const p = projection(c.coords);
+      return { key: c.key, x: p ? p[0] : 0, y: p ? p[1] : 0 };
+    });
   }, []);
 
-  useEffect(() => {
-    if (!visible) {
-      setUnified(false);
-      if (timerRef.current) clearTimeout(timerRef.current);
-      return;
-    }
+  // Constellation edges — pairs of consortium keys
+  const EDGES: [string, string][] = [
+    // Perimeter loop
+    ["NFN", "Bay"],
+    ["Bay", "SCC"],
+    ["SCC", "LA"],
+    ["LA", "OC"],
+    ["OC", "SD/I"],
+    ["SD/I", "IE/D"],
+    ["IE/D", "CVML"],
+    ["CVML", "NFN"],
+    // Interior cross-connections
+    ["Bay", "CVML"],
+    ["CVML", "SCC"],
+    ["CVML", "LA"],
+    ["LA", "IE/D"],
+  ];
 
-    function cycle() {
-      setUnified(true);
-      timerRef.current = setTimeout(() => {
-        setUnified(false);
-        timerRef.current = setTimeout(cycle, 2000);
-      }, 5000);
-    }
-
-    timerRef.current = setTimeout(cycle, 500);
-
-    return () => { if (timerRef.current) clearTimeout(timerRef.current); };
-  }, [visible]);
+  const projectedMap = Object.fromEntries(projected.map((p) => [p.key, p]));
 
   return (
-    <div ref={ref} style={{ position: "relative", width: "100%", minHeight: 440 }}>
-      {/* Kallipolis sun — centered on the map */}
-      <div style={{
-        position: "absolute",
-        top: "42%",
-        left: "38%",
-        transform: "translate(-50%, -50%)",
-        zIndex: 10,
-        opacity: 0.8,
-      }}>
-        <RisingSun />
-      </div>
-
+    <div style={{ position: "relative", width: "100%", minHeight: 480 }}>
       <ComposableMap
-        width={460}
-        height={440}
+        width={MAP_WIDTH}
+        height={MAP_HEIGHT}
         projection="geoMercator"
-        projectionConfig={{ center: [-119, 37.5], scale: 2400 }}
+        projectionConfig={PROJECTION_CONFIG}
         style={{ width: "100%", height: "auto" }}
       >
+        {/* Base map — unified white California */}
         <Geographies geography="/california-counties.geojson">
-          {({ geographies }) => {
-            const grouped = new Map<string, typeof geographies>();
-            for (const geo of geographies) {
-              const region = COUNTY_TO_REGION[geo.properties.name as string] ?? "CVML";
-              if (!grouped.has(region)) grouped.set(region, []);
-              grouped.get(region)!.push(geo);
-            }
-
-            return Array.from(grouped.entries()).map(([regionKey, geos]) => {
-              const region = REGIONS[regionKey];
-              if (!region) return null;
-              return (
-                <g
-                  key={regionKey}
-                  style={{
-                    transform: unified
-                      ? "translate(0px, 0px)"
-                      : `translate(${region.dx}px, ${region.dy}px)`,
-                    opacity: unified ? 1 : 0.6,
-                    transition: `transform 2.2s ease-out ${region.delay}s, opacity 1.5s ease-out ${region.delay}s`,
-                  }}
-                >
-                  {geos.map((geo) => (
-                    <Geography
-                      key={geo.rsmKey}
-                      geography={geo}
-                      style={{
-                        default: { fill: region.color, stroke: "#060d1f", strokeWidth: 0.5, outline: "none" },
-                        hover: { fill: region.color, outline: "none" },
-                        pressed: { fill: region.color, outline: "none" },
-                      }}
-                    />
-                  ))}
-                </g>
-              );
-            });
-          }}
+          {({ geographies }) =>
+            geographies.map((geo) => (
+              <Geography
+                key={geo.rsmKey}
+                geography={geo}
+                style={{
+                  default: { fill: "rgba(255,255,255,0.07)", stroke: "rgba(255,255,255,0.13)", strokeWidth: 0.3, outline: "none" },
+                  hover: { fill: "rgba(255,255,255,0.07)", outline: "none" },
+                  pressed: { fill: "rgba(255,255,255,0.07)", outline: "none" },
+                }}
+              />
+            ))
+          }
         </Geographies>
+
+        {/* Constellation lines — breathing pulse */}
+        {EDGES.map(([fromKey, toKey], i) => {
+          const from = projectedMap[fromKey];
+          const to = projectedMap[toKey];
+          if (!from || !to) return null;
+          const avgY = (from.y + to.y) / 2;
+          const delay = (avgY / MAP_HEIGHT) * 1.8;
+          return (
+            <line
+              key={`${fromKey}-${toKey}`}
+              x1={from.x} y1={from.y}
+              x2={to.x} y2={to.y}
+              stroke="#c9a84c"
+              strokeWidth={1.2}
+              strokeLinecap="round"
+              className="constellation-breathe"
+              style={{ animationDelay: `${delay}s` }}
+            />
+          );
+        })}
+
+        {/* Diamond markers at consortium centers */}
+        {CONSORTIA.map((c, i) => {
+          const p = projected[i];
+          const delay = (p.y / MAP_HEIGHT) * 2;
+          return (
+            <Marker key={c.key} coordinates={c.coords}>
+              <rect
+                x={-5} y={-5} width={10} height={10}
+                transform="rotate(45)"
+                fill={BRAND}
+                className="constellation-diamond"
+                style={{ animationDelay: `${delay}s` }}
+              />
+            </Marker>
+          );
+        })}
       </ComposableMap>
+
+      {/* Labels — positioned using projected coordinates */}
+      {CONSORTIA.map((c, i) => {
+        const p = projected[i];
+        const anchor = LABEL_ANCHORS[c.key] ?? { side: "left" as const };
+        const xPct = (p.x / MAP_WIDTH) * 100;
+        const yPct = (p.y / MAP_HEIGHT) * 100;
+        const dx = anchor.dx ?? 0;
+        const dy = anchor.dy ?? 0;
+        return (
+          <span
+            key={c.key}
+            style={{
+              position: "absolute",
+              left: `calc(${xPct}% + ${dx}px)`,
+              top: `calc(${yPct}% + ${dy}px)`,
+              transform: anchor.side === "right" ? "translate(calc(-100% - 12px), -50%)" : "translate(12px, -50%)",
+              fontSize: 10,
+              fontWeight: 700,
+              textTransform: "uppercase",
+              letterSpacing: "0.12em",
+              color: "rgba(255,255,255,0.6)",
+              textShadow: "0 1px 3px rgba(0,0,0,0.5)",
+              whiteSpace: "pre",
+              pointerEvents: "none",
+            }}
+          >
+            {c.label}
+          </span>
+        );
+      })}
     </div>
   );
 }

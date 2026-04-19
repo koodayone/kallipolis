@@ -79,7 +79,7 @@ export default function ExplorePartnershipsPage() {
       </section>
 
       {/* ── Section 3: Regional Alignment ── */}
-      <section style={{ paddingTop: 48, paddingBottom: 64, paddingLeft: 64, paddingRight: 64 }}>
+      <section style={{ paddingTop: 0, paddingBottom: 64, paddingLeft: 64, paddingRight: 64, marginTop: -24 }}>
         <div style={{ display: "flex", gap: 48, alignItems: "flex-start", maxWidth: 1100, margin: "0 auto" }}>
 
           {/* Left — Map */}

@@ -36,6 +36,24 @@ html, body {
   to   { opacity: 1; }
 }
 
+@keyframes constellation-breathe {
+  0%, 100% { stroke-opacity: 0.15; }
+  50%      { stroke-opacity: 0.6; }
+}
+.constellation-breathe {
+  stroke-opacity: 0.15;
+  animation: constellation-breathe 3.5s ease-in-out infinite;
+}
+
+@keyframes diamond-pulse {
+  0%, 100% { opacity: 0.7; filter: drop-shadow(0 0 2px rgba(79,209,253,0.2)); }
+  50%      { opacity: 1;   filter: drop-shadow(0 0 8px rgba(79,209,253,0.6)); }
+}
+.constellation-diamond {
+  opacity: 0.7;
+  animation: diamond-pulse 4s ease-in-out infinite;
+}
+
 @keyframes ken-burns {
   0%   { transform: scale(1); }
   100% { transform: scale(1.10) translate(-0.8%, -1.2%); }
