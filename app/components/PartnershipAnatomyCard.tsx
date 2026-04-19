@@ -374,12 +374,6 @@ const EXPANDED_STUDENT_COURSES = [
   { code: "ELEC 101", name: "Fundamentals of Electricity", grade: "A", term: "2024-Fall" },
 ];
 
-const STUDENT_SKILLS = [
-  { skill: "Electrical Systems", occupation: "Electricians" },
-  { skill: "Circuit Design", occupation: "Electricians" },
-  { skill: "Safety Compliance", occupation: "Electricians" },
-];
-
 function gradeColor(grade: string) {
   if (grade === "A") return "#4ade80";
   if (grade === "B") return BRAND;
@@ -394,7 +388,6 @@ function gpaColor(gpa: number) {
 
 export function StudentImpactBand({ expandProgress = 0 }: { expandProgress?: number }) {
   const { expanded, opacity: accordionOpacity } = expandState(expandProgress);
-  const activeTab = expandProgress > 0.60 ? "skills" : "history";
   const GRID = "24px 60px 1fr 60px 44px";
 
   return (
@@ -435,63 +428,26 @@ export function StudentImpactBand({ expandProgress = 0 }: { expandProgress?: num
                   <div style={{ display: "flex", gap: 0, borderBottom: "1px solid rgba(255,255,255,0.08)", marginBottom: 12 }}>
                     <span style={{
                       fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em",
-                      color: activeTab === "history" ? BRAND : "rgba(255,255,255,0.3)",
-                      padding: "6px 14px",
-                      borderBottom: `2px solid ${activeTab === "history" ? BRAND : "transparent"}`,
-                      marginBottom: -1,
-                      transition: "color 0.3s ease, border-color 0.3s ease",
+                      color: BRAND, padding: "6px 14px",
+                      borderBottom: `2px solid ${BRAND}`, marginBottom: -1,
                     }}>Course History</span>
                     <span style={{
                       fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em",
-                      color: activeTab === "skills" ? BRAND : "rgba(255,255,255,0.3)",
-                      padding: "6px 14px",
-                      borderBottom: `2px solid ${activeTab === "skills" ? BRAND : "transparent"}`,
-                      marginBottom: -1,
-                      transition: "color 0.3s ease, border-color 0.3s ease",
+                      color: "rgba(255,255,255,0.3)", padding: "6px 14px",
+                      borderBottom: "2px solid transparent", marginBottom: -1,
                     }}>Skill Profile</span>
                   </div>
 
                   {/* Course History */}
-                  <div style={{
-                    opacity: activeTab === "history" ? 1 : 0,
-                    maxHeight: activeTab === "history" ? 500 : 0,
-                    overflow: "hidden",
-                    transition: "opacity 0.3s ease, max-height 0.3s ease",
-                  }}>
-                    <div style={{ display: "flex", flexDirection: "column", gap: 1 }}>
-                      {EXPANDED_STUDENT_COURSES.map((c) => (
-                        <div key={c.code} style={{ display: "flex", alignItems: "center", gap: 8, padding: "5px 0" }}>
-                          <span style={{ fontSize: 10, fontWeight: 600, color: BRAND, flexShrink: 0, width: 65 }}>{c.code}</span>
-                          <span style={{ fontSize: 11, fontWeight: 500, color: "rgba(255,255,255,0.7)", flex: 1 }}>{c.name}</span>
-                          <span style={{ fontSize: 11, fontWeight: 700, color: gradeColor(c.grade) }}>{c.grade}</span>
-                          <span style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", width: 60, textAlign: "right" }}>{c.term}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Skill Profile */}
-                  <div style={{
-                    opacity: activeTab === "skills" ? 1 : 0,
-                    maxHeight: activeTab === "skills" ? 500 : 0,
-                    overflow: "hidden",
-                    transition: "opacity 0.3s ease, max-height 0.3s ease",
-                  }}>
-                    <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                      {STUDENT_SKILLS.map((s) => (
-                        <div key={s.skill} style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 0", borderBottom: "1px solid rgba(255,255,255,0.03)" }}>
-                          <SkillCheckmark />
-                          <span style={{ fontSize: 13, color: BRAND, fontWeight: 500, flex: 1 }}>{s.skill}</span>
-                          <span style={{
-                            fontSize: 10, color: "rgba(255,255,255,0.4)",
-                            padding: "2px 8px", border: "1px solid rgba(255,255,255,0.12)",
-                            borderRadius: 100, textTransform: "uppercase", letterSpacing: "0.05em",
-                          }}>
-                            Aligned with {s.occupation}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 1 }}>
+                    {EXPANDED_STUDENT_COURSES.map((c) => (
+                      <div key={c.code} style={{ display: "flex", alignItems: "center", gap: 8, padding: "5px 0" }}>
+                        <span style={{ fontSize: 10, fontWeight: 600, color: BRAND, flexShrink: 0, width: 65 }}>{c.code}</span>
+                        <span style={{ fontSize: 11, fontWeight: 500, color: "rgba(255,255,255,0.7)", flex: 1 }}>{c.name}</span>
+                        <span style={{ fontSize: 11, fontWeight: 700, color: gradeColor(c.grade) }}>{c.grade}</span>
+                        <span style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", width: 60, textAlign: "right" }}>{c.term}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -512,21 +468,15 @@ export function SupplyDemandBridgeBand({ expandProgress = 0 }: { expandProgress?
   return (
     <Card>
       {/* Phase 1: Narrative — always visible */}
-      <div style={{
-        borderLeft: `3px solid ${BRAND}40`,
-        padding: "16px 20px",
-        background: "rgba(255,255,255,0.03)",
-        borderRadius: "0 6px 6px 0",
-        marginBottom: 20,
-      }}>
+      <div style={{ marginBottom: 20 }}>
         <span style={{
           fontSize: 9, fontWeight: 600, textTransform: "uppercase",
-          letterSpacing: "0.1em", color: `${BRAND}90`,
+          letterSpacing: "0.1em", color: BRAND,
           display: "block", marginBottom: 10,
         }}>
           Partnership Narrative
         </span>
-        <p style={{ fontSize: 13, color: "rgba(255,255,255,0.65)", lineHeight: 1.65, margin: 0 }}>
+        <p style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", lineHeight: 1.7, margin: 0 }}>
           Sierra Grid Electric&apos;s operations across commercial and residential grid infrastructure position it as a strong partnership candidate. The Central Valley has sustained demand for electricians with strong regional wages. The Electrical Technology department develops the core competencies this occupation requires: electrical systems, circuit design, and safety compliance. Occupational demand metrics from the Centers of Excellence indicate an unmet workforce gap of 274 on an annual basis.
         </p>
       </div>
