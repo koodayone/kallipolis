@@ -25,7 +25,7 @@ const CONSORTIA = [
 
 // Label anchor directions
 const LABEL_ANCHORS: Record<string, { side: "left" | "right" | "center"; dx?: number; dy?: number }> = {
-  "NFN":  { side: "left" },
+  "NFN":  { side: "center", dx: 24, dy: -36 },
   "Bay":  { side: "right" },
   "CVML": { side: "left", dx: 2, dy: -8 },
   "SCC":  { side: "right" },
