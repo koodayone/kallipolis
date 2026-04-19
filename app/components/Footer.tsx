@@ -27,7 +27,7 @@ export default function Footer() {
               <h4 className="text-sm font-medium uppercase tracking-widest text-gray-400" style={{ fontFamily: "var(--font-days-one)" }}>About</h4>
               <p className="uppercase tracking-widest text-gray-600" style={{ fontFamily: "var(--font-days-one)", fontSize: 10 }}>Coming Soon</p>
             </div>
-            <div className="flex flex-col gap-3" style={{ marginLeft: "auto", marginRight: "1%" }}>
+            <div className="flex flex-col gap-3" style={{ marginLeft: "auto", marginRight: "3%" }}>
               <h4 className="text-sm font-medium uppercase tracking-widest text-gray-400" style={{ fontFamily: "var(--font-days-one)" }}>Documentation</h4>
               <Link href="/atlas" className="uppercase tracking-widest text-gray-500 hover:text-white transition-colors" style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", fontSize: 10, display: "inline-flex", alignItems: "center", gap: 6 }}>
                 Atlas
