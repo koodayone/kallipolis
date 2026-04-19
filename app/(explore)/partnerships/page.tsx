@@ -100,7 +100,7 @@ export default function ExplorePartnershipsPage() {
                 Eight Regional Consortia
               </span>
               <p style={{ fontSize: 16, lineHeight: 1.65, color: "rgba(255,255,255,0.55)", margin: 0 }}>
-                Establishing strategic regional priorities requires effective coordination. Collaborate on partnerships based on a shared source of truth.
+                Partnerships that promote regional priorities require effective coordination. Collaborate on partnerships based on a shared source of truth.
               </p>
             </div>
 
@@ -117,7 +117,7 @@ export default function ExplorePartnershipsPage() {
       </section>
 
       {/* ── Section 4: Cross-links ── */}
-      <section style={{ background: "#060d1f", padding: "24px 64px 48px", display: "flex", justifyContent: "center", gap: 16 }}>
+      <section style={{ background: "#060d1f", padding: "0 64px 48px", display: "flex", justifyContent: "center", gap: 16 }}>
         <ActionBadge label="Explore Atlas" neonColor="#f0425e" opacity={1} icon="cube" inline href="/atlas" invertHover />
         <ActionBadge label="Explore Sources" neonColor="#c9a84c" opacity={1} icon="lightbulb" inline href="/sources" invertHover />
       </section>

@@ -243,7 +243,6 @@ export default function PartnershipJourney() {
             opacity: 1,
           }}>
             <span
-              key={`num-${activeStep}`}
               style={{
                 position: "absolute",
                 right: "calc(100% + 24px)",
@@ -255,7 +254,6 @@ export default function PartnershipJourney() {
                 opacity: 0.35,
                 whiteSpace: "nowrap",
                 lineHeight: 1,
-                animation: "fade-in-quick 0.25s ease",
               }}
             >
               {active.num}
