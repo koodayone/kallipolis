@@ -13,5 +13,5 @@ export const ROTATION_COLLEGES = [
   { id: "desert",    name: "College of the Desert",          district: "Desert CCD",                 neonColor: 0xffc933, neonHex: "#ffc933" },
 ] as const;
 
-export const CYCLE_INTERVAL = 10000;
+export const CYCLE_INTERVAL = 5000;
 export const FADE_DURATION = 700;

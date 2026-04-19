@@ -45,7 +45,9 @@ export default function SyncedShowcase() {
   return (
     <>
       <AtlasPreview activeIndex={displayIndex} opacity={opacity} />
-      <StateAtlas activeIndex={displayIndex} opacity={opacity} />
+      <div id="atlas">
+        <StateAtlas activeIndex={displayIndex} opacity={opacity} />
+      </div>
       <ActionBadge label="Explore Atlas" neonColor={ROTATION_COLLEGES[displayIndex].neonHex} opacity={1} href="/atlas" />
     </>
   );

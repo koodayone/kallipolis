@@ -101,8 +101,9 @@ export default function ExploreAtlasPage() {
 
       {/* ── Section 4: Cross-links ── */}
       <section style={{ background: "#060d1f", padding: "24px 64px 48px", display: "flex", justifyContent: "center", gap: 16 }}>
-        <ActionBadge label="Explore Sources" neonColor="#c9a84c" opacity={1} icon="lightbulb" inline href="/sources" invertHover />
+        <ActionBadge label="Home" neonColor="#f5e6c8" opacity={1} icon="sun" inline href="/#atlas" invertHover />
         <ActionBadge label="Explore Partnerships" neonColor="#4fd1fd" opacity={1} icon="chainlink" inline href="/partnerships" invertHover />
+        <ActionBadge label="Explore Sources" neonColor="#c9a84c" opacity={1} icon="lightbulb" inline href="/sources" invertHover />
       </section>
     </>
   );

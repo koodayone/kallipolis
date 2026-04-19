@@ -8,7 +8,7 @@ type Props = {
   label?: string;
   neonColor: string;
   opacity: number;
-  icon?: "cube" | "lightbulb" | "chainlink" | "mail" | "play";
+  icon?: "cube" | "lightbulb" | "chainlink" | "mail" | "play" | "sun";
   inline?: boolean;
   href?: string;
   invertHover?: boolean;
@@ -54,6 +54,27 @@ function PlayIcon({ color }: { color: string }) {
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
       <polygon points="6,3 21,12 6,21" fill={color} opacity="0.85" stroke={color} strokeWidth="1" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function SunIcon({ color }: { color: string }) {
+  const cx = 28, cy = 36;
+  const rays = [-90, -60, -30, 0, 30, 60, 90];
+  return (
+    <svg width="20" height="14" viewBox="6 12 44 26" fill="none" style={{ overflow: "hidden", position: "relative", top: -1 }}>
+      <defs><clipPath id="badge-sun-clip"><rect x="6" y="10" width="44" height="28" /></clipPath></defs>
+      <g clipPath="url(#badge-sun-clip)">
+        <path d={`M ${cx - 12} ${cy} A 12 12 0 0 1 ${cx + 12} ${cy} Z`} fill={color} />
+        {rays.map((angle, i) => {
+          const rad = (angle - 90) * Math.PI / 180;
+          const x1 = cx + Math.cos(rad) * 16;
+          const y1 = cy + Math.sin(rad) * 16;
+          const x2 = cx + Math.cos(rad) * 22;
+          const y2 = cy + Math.sin(rad) * 22;
+          return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke={color} strokeWidth="2.5" strokeLinecap="round" />;
+        })}
+      </g>
     </svg>
   );
 }
@@ -114,6 +135,7 @@ export default function ActionBadge({ label = "Action", neonColor, opacity, icon
               {icon === "chainlink" && <ChainlinkIcon color={iconColor} />}
               {icon === "mail" && <MailIcon color={iconColor} />}
               {icon === "play" && <PlayIcon color={iconColor} />}
+              {icon === "sun" && <SunIcon color={iconColor} />}
             </>
           );
         })()}
