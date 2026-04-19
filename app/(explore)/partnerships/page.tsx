@@ -8,7 +8,7 @@ const ConvergenceFlowDiagram = dynamic(() => import("../../components/Convergenc
   ssr: false,
   loading: () => <div style={{ width: "100%", height: 600 }} />,
 });
-const StateMap = dynamic(() => import("../../components/StateMap"), {
+const RegionalUnificationMap = dynamic(() => import("../../components/RegionalUnificationMap"), {
   ssr: false,
   loading: () => <div style={{ width: "100%", minHeight: 400 }} />,
 });
@@ -84,22 +84,22 @@ export default function ExplorePartnershipsPage() {
 
           {/* Left — Map */}
           <div style={{ flex: "0 0 50%", minHeight: 400 }}>
-            <StateMap brightenAll />
+            <RegionalUnificationMap />
           </div>
 
           {/* Right — Prose */}
-          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 32, paddingTop: 16 }}>
+          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 24, paddingTop: 0 }}>
             <div style={{ textAlign: "center" }}>
-              <Eyebrow>State-level Coordination</Eyebrow>
+              <Eyebrow>Regional Alignment</Eyebrow>
               <BlueDivider />
-              <SectionHeading>Data-driven partnerships<br />that supply regional demand</SectionHeading>
+              <SectionHeading>Coordinate within and across<br />Regional Consortia</SectionHeading>
             </div>
 
             <p style={{ fontSize: 16, lineHeight: 1.65, color: "rgba(255,255,255,0.55)" }}>
               California&apos;s community colleges operate within eight regional consortia, each with a Strong Workforce Program development plan that names priority sectors and commits to advancing career technical education.
             </p>
             <p style={{ fontSize: 16, lineHeight: 1.65, color: "rgba(255,255,255,0.55)" }}>
-              Kallipolis knows which sectors each region prioritizes. When a partnership aligns with a regional priority, the system surfaces that alignment automatically — connecting the proposal to the institutional mandate the consortium has already committed to.
+              Advance a Strong Workforce by aligning partnership intelligence with the priorities each regional consortium has committed to.
             </p>
           </div>
         </div>

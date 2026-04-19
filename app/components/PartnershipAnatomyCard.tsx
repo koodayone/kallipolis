@@ -449,7 +449,7 @@ export function SupplyDemandBridgeBand({ expandProgress = 0 }: { expandProgress?
   return (
     <Card>
       {/* Phase 1: Narrative — always visible */}
-      <div style={{ marginBottom: 14 }}>
+      <div style={{ marginBottom: 20 }}>
         <span style={{
           fontSize: 9, fontWeight: 600, textTransform: "uppercase",
           letterSpacing: "0.1em", color: BRAND,
@@ -507,7 +507,7 @@ export function SupplyDemandBridgeBand({ expandProgress = 0 }: { expandProgress?
           <span style={{ color: "rgba(255,255,255,0.65)", textAlign: "right" }}>48</span>
         </div>
 
-        <div style={{ padding: "14px 16px 8px" }}>
+        <div style={{ padding: "20px 16px 16px" }}>
           {/* Openings bar */}
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 5 }}>
             <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "rgba(255,255,255,0.35)", width: 70, flexShrink: 0 }}>Openings</span>
@@ -540,16 +540,16 @@ export function SupplyDemandBridgeBand({ expandProgress = 0 }: { expandProgress?
                 alignItems: "center",
               }}>
                 <div style={{ width: "100%", height: 2, background: `${BRAND}40`, borderRadius: 1 }} />
-                <div style={{ marginTop: 6, textAlign: "center" }}>
-                  <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${BRAND}80`, display: "block", marginBottom: 2 }}>Workforce Gap</span>
-                  <span style={{ fontSize: 24, fontWeight: 700, color: BRAND, filter: `drop-shadow(0 0 10px ${BRAND}50)`, lineHeight: 1 }}>+232</span>
+                <div style={{ marginTop: 4, textAlign: "center" }}>
+                  <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${BRAND}80`, display: "block", marginBottom: 1 }}>Workforce Gap</span>
+                  <span style={{ fontSize: 20, fontWeight: 700, color: BRAND, filter: `drop-shadow(0 0 10px ${BRAND}50)`, lineHeight: 1 }}>+232</span>
                 </div>
               </div>
             </div>
             <span style={{ width: 36, flexShrink: 0 }} />
           </div>
 
-          <div style={{ height: 40 }} />
+          <div style={{ height: 24 }} />
         </div>
       </div>
     </Card>

@@ -108,9 +108,9 @@ const STEPS = [
 ];
 
 // Fixed layout positions (px from top of sticky frame)
-const SUN_TOP = 70;
-const TEXT_TOP = 150;
-const BAND_TOP = 300;
+const SUN_TOP = 55;
+const TEXT_TOP = 135;
+const BAND_TOP = 285;
 
 // ── Progress Indicator ───────────────────────────────────────────────────
 
@@ -118,7 +118,7 @@ function ProgressIndicator({ activeStep, stepProgress }: { activeStep: number; s
   return (
     <div style={{
       position: "absolute",
-      right: 24,
+      right: 48,
       top: "50%",
       transform: "translateY(-50%)",
       display: "flex",
@@ -196,12 +196,12 @@ export default function PartnershipJourney() {
   return (
     <div
       ref={containerRef}
-      style={{ height: `${STEP_COUNT * 100}vh`, position: "relative" }}
+      style={{ height: `${STEP_COUNT * 100 + 30}vh`, position: "relative" }}
     >
       <div style={{
         position: "sticky",
         top: 0,
-        height: "100vh",
+        height: activeStep === 4 ? "115vh" : "100vh",
         overflow: "hidden",
         opacity: sunVisible ? 1 : 0.15,
         transition: "opacity 0.8s ease",
