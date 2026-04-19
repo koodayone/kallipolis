@@ -13,17 +13,6 @@ function Card({ children }: { children: React.ReactNode }) {
   );
 }
 
-function SourceLine({ children }: { children: React.ReactNode }) {
-  return (
-    <p style={{
-      fontSize: 12, color: "rgba(255,255,255,0.35)", fontStyle: "italic",
-      margin: "12px 0 0", padding: "0 16px",
-    }}>
-      {children}
-    </p>
-  );
-}
-
 function Chevron({ open = false }: { open?: boolean }) {
   return (
     <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
@@ -92,22 +81,22 @@ function expandState(progress: number) {
 // ── Step 01: Employer Landscape ──────────────────────────────────────────
 
 const EMPLOYERS = [
+  { name: "Golden State Solar", sector: "Renewable Energy", roles: 11, skills: 15 },
   { name: "Sierra Grid Electric", sector: "Energy & Utilities", roles: 14, skills: 18 },
-  { name: "Golden State Solar", sector: "Renewable Energy", roles: 9, skills: 12 },
-  { name: "Central Valley Mechanical", sector: "Construction", roles: 11, skills: 15 },
+  { name: "Central Valley Mechanical", sector: "Construction", roles: 9, skills: 12 },
   { name: "Pacific Infrastructure Group", sector: "Construction", roles: 7, skills: 10 },
 ];
 
 const EXPANDED_EMPLOYER = {
-  description: "Regional electrical contractor specializing in commercial and residential grid infrastructure across Central California.",
+  description: "Residential and commercial solar installation and maintenance provider operating across Central California.",
   occupation: {
-    title: "Electricians",
-    wage: 82340,
-    description: "Install, maintain, and repair electrical wiring, equipment, and fixtures.",
+    title: "Solar Photovoltaic Installers",
+    wage: 47670,
+    description: "Assemble, install, and maintain solar photovoltaic systems on rooftops and other structures.",
     skills: [
-      { skill: "Electrical Systems", course: "ELEC 101, ELEC 201" },
-      { skill: "Circuit Design", course: "ELEC 145, ELEC 150" },
-      { skill: "Safety Compliance", course: "CNST 110, ELEC 102" },
+      { skill: "Solar Installation", course: "ENRG 201, ENRG 210" },
+      { skill: "Photovoltaic Systems", course: "ENRG 145, ENRG 150" },
+      { skill: "Electrical Safety", course: "ELEC 101, CNST 110" },
     ],
   },
 };
@@ -186,21 +175,21 @@ export function EmployerLandscapeBand({ expandProgress = 0 }: { expandProgress?:
 // ── Step 02: Occupational Demand ─────────────────────────────────────────
 
 const OCCUPATIONS = [
+  { title: "Solar Photovoltaic Installers", wage: "$47,670", openings: "280/yr", growth: "+22.3%" },
   { title: "Electricians", wage: "$82,340", openings: "340/yr", growth: "+8.2%" },
-  { title: "HVAC Mechanics", wage: "$58,820", openings: "210/yr", growth: "+5.4%" },
   { title: "Construction Managers", wage: "$105,640", openings: "180/yr", growth: "+7.1%" },
 ];
 
 const EXPANDED_OCCUPATION = {
-  soc: "47-2111",
-  description: "Install, maintain, and repair electrical wiring, equipment, and fixtures.",
+  soc: "47-2231",
+  description: "Assemble, install, and maintain solar photovoltaic systems on rooftops and other structures.",
   skills: [
-    { skill: "Electrical Systems", course: "ELEC 101, ELEC 201" },
-    { skill: "Circuit Design", course: "ELEC 145, ELEC 150" },
-    { skill: "Safety Compliance", course: "CNST 110, ELEC 102" },
+    { skill: "Solar Installation", course: "ENRG 201, ENRG 210" },
+    { skill: "Photovoltaic Systems", course: "ENRG 145, ENRG 150" },
+    { skill: "Electrical Safety", course: "ELEC 101, CNST 110" },
   ],
   region: "Central Valley / Mother Lode",
-  employed: "3,140",
+  employed: "1,840",
 };
 
 export function OccupationalDemandBand({ expandProgress = 0 }: { expandProgress?: number }) {
@@ -269,25 +258,20 @@ export function OccupationalDemandBand({ expandProgress = 0 }: { expandProgress?
 // ── Step 03: Curriculum Alignment ────────────────────────────────────────
 
 const DEPARTMENTS = [
+  { name: "Energy Systems Technology", courses: 8 },
   { name: "Electrical Technology", courses: 10 },
-  { name: "Construction Technology", courses: 7 },
-  { name: "Environmental Control Technology", courses: 5 },
+  { name: "Construction Technology", courses: 5 },
 ];
 
 const EXPANDED_COURSES = [
   {
-    code: "ELEC 201", name: "Commercial Electrical Systems",
-    description: "Design, install, and troubleshoot three-phase commercial electrical systems including motor controls, transformers, and power distribution panels. Emphasis on NEC code compliance for commercial occupancies and industrial safety protocols.",
-    outcomes: [
-      "Apply NEC code requirements to commercial electrical installations",
-      "Design and install three-phase power distribution systems",
-      "Troubleshoot motor control circuits using schematic diagrams",
-    ],
-    skills: ["Electrical Systems", "Circuit Design", "Safety Compliance"],
+    code: "ENRG 201", name: "Solar System Design & Installation",
+    description: "Design, size, and install residential and commercial photovoltaic systems including panel layout, inverter selection, and grid interconnection. Emphasis on NEC Article 690 compliance and Cal/OSHA safety requirements.",
+    skills: ["Solar Installation", "Photovoltaic Systems", "Electrical Safety"],
   },
-  { code: "ELEC 145", name: "Residential Wiring", description: "Complete residential electrical installation including service entrance, branch circuits, and grounding systems.", skills: ["Circuit Design"] },
-  { code: "ELEC 112", name: "Wiring Principles", description: "Hands-on training in wiring methods, conduit installation, and National Electrical Code compliance.", skills: ["Electrical Systems", "Safety Compliance"] },
-  { code: "ELEC 101", name: "Fundamentals of Electricity", description: "Introduction to electrical theory, circuits, and safety practices for residential and commercial applications.", skills: ["Electrical Systems"] },
+  { code: "ENRG 145", name: "Photovoltaic Fundamentals", description: "Principles of photovoltaic energy conversion, solar cell technology, and system components.", skills: ["Photovoltaic Systems"] },
+  { code: "ENRG 150", name: "Energy Storage & Grid Integration", description: "Battery storage systems, grid-tie inverters, and utility interconnection standards.", skills: ["Photovoltaic Systems"] },
+  { code: "ENRG 101", name: "Introduction to Renewable Energy", description: "Survey of renewable energy technologies including solar, wind, and geothermal applications.", skills: ["Solar Installation"] },
 ];
 
 export function CurriculumAlignmentBand({ expandProgress = 0 }: { expandProgress?: number }) {
@@ -340,8 +324,7 @@ export function CurriculumAlignmentBand({ expandProgress = 0 }: { expandProgress
                       <div style={{ padding: "14px 16px 18px 48px", background: "rgba(255,255,255,0.03)" }}>
                         <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${BRAND}90`, display: "block", marginBottom: 4 }}>Description</span>
                         <p style={{ fontSize: 12, color: "rgba(255,255,255,0.6)", lineHeight: 1.6, margin: "0 0 12px" }}>{c.description}</p>
-
-<span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${BRAND}90`, display: "block", marginBottom: 6 }}>Derived Skills</span>
+                        <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${BRAND}90`, display: "block", marginBottom: 6 }}>Derived Skills</span>
                         <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
                           {c.skills.map((s) => <DerivedSkillPill key={s} name={s} />)}
                         </div>
@@ -361,17 +344,17 @@ export function CurriculumAlignmentBand({ expandProgress = 0 }: { expandProgress
 // ── Step 04: Student Impact ──────────────────────────────────────────────
 
 const STUDENTS = [
-  { id: "#412", focus: "Electrical Technology", courses: 11, gpa: 3.57 },
-  { id: "#738", focus: "Construction Technology", courses: 9, gpa: 3.42 },
-  { id: "#1055", focus: "Electrical Technology", courses: 10, gpa: 3.28 },
+  { id: "#412", focus: "Energy Systems Technology", courses: 9, gpa: 3.72 },
+  { id: "#738", focus: "Electrical Technology", courses: 11, gpa: 3.45 },
+  { id: "#1055", focus: "Energy Systems Technology", courses: 8, gpa: 3.38 },
 ];
 
 const EXPANDED_STUDENT_COURSES = [
-  { code: "ELEC 201", name: "Commercial Electrical Systems", grade: "A", term: "2025-Fall" },
-  { code: "ELEC 145", name: "Residential Wiring", grade: "A", term: "2025-Spring" },
-  { code: "ELEC 112", name: "Wiring Principles", grade: "B", term: "2025-Spring" },
-  { code: "CNST 110", name: "Construction Safety", grade: "A", term: "2024-Fall" },
+  { code: "ENRG 201", name: "Solar System Design & Installation", grade: "A", term: "2025-Fall" },
+  { code: "ENRG 150", name: "Energy Storage & Grid Integration", grade: "A", term: "2025-Spring" },
+  { code: "ENRG 145", name: "Photovoltaic Fundamentals", grade: "B", term: "2025-Spring" },
   { code: "ELEC 101", name: "Fundamentals of Electricity", grade: "A", term: "2024-Fall" },
+  { code: "ENRG 101", name: "Introduction to Renewable Energy", grade: "A", term: "2024-Fall" },
 ];
 
 function gradeColor(grade: string) {
@@ -424,7 +407,6 @@ export function StudentImpactBand({ expandProgress = 0 }: { expandProgress?: num
             {isTarget && (
               <div style={{ maxHeight: expanded ? 700 : 0, opacity: accordionOpacity, overflow: "hidden", transition: "max-height 0.3s ease, opacity 0.3s ease" }}>
                 <div style={{ padding: "14px 16px 18px", background: "rgba(255,255,255,0.02)" }}>
-                  {/* Tab bar */}
                   <div style={{ display: "flex", gap: 0, borderBottom: "1px solid rgba(255,255,255,0.08)", marginBottom: 12 }}>
                     <span style={{
                       fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em",
@@ -438,7 +420,6 @@ export function StudentImpactBand({ expandProgress = 0 }: { expandProgress?: num
                     }}>Skill Profile</span>
                   </div>
 
-                  {/* Course History */}
                   <div style={{ display: "flex", flexDirection: "column", gap: 1 }}>
                     {EXPANDED_STUDENT_COURSES.map((c) => (
                       <div key={c.code} style={{ display: "flex", alignItems: "center", gap: 8, padding: "5px 0" }}>
@@ -477,7 +458,7 @@ export function SupplyDemandBridgeBand({ expandProgress = 0 }: { expandProgress?
           Partnership Narrative
         </span>
         <p style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", lineHeight: 1.7, margin: 0 }}>
-          Sierra Grid Electric&apos;s operations across commercial and residential grid infrastructure position it as a strong partnership candidate. The Central Valley has sustained demand for electricians with strong regional wages. The Electrical Technology department develops the core competencies this occupation requires: electrical systems, circuit design, and safety compliance. Occupational demand metrics from the Centers of Excellence indicate an unmet workforce gap of 274 on an annual basis.
+          Golden State Solar&apos;s residential and commercial installation operations position it as a strong partnership candidate. The Central Valley has accelerating demand for solar photovoltaic installers driven by California&apos;s clean energy mandates. The Energy Systems Technology department develops the core competencies this occupation requires: solar installation, photovoltaic systems, and electrical safety. Occupational demand metrics from the Centers of Excellence indicate an unmet workforce gap of 232 on an annual basis.
         </p>
       </div>
 
@@ -500,11 +481,11 @@ export function SupplyDemandBridgeBand({ expandProgress = 0 }: { expandProgress?
           padding: "10px 12px", background: "rgba(255,255,255,0.02)",
           borderBottom: "1px solid rgba(255,255,255,0.04)", fontSize: 13,
         }}>
-          <span style={{ color: "rgba(255,255,255,0.65)", fontFamily: "monospace", fontSize: 12 }}>47-2111</span>
-          <span style={{ color: "rgba(255,255,255,0.85)" }}>Electricians</span>
+          <span style={{ color: "rgba(255,255,255,0.65)", fontFamily: "monospace", fontSize: 12 }}>47-2231</span>
+          <span style={{ color: "rgba(255,255,255,0.85)" }}>Solar Photovoltaic Installers</span>
           <span style={{ color: "rgba(255,255,255,0.55)" }}>CVML</span>
-          <span style={{ color: "rgba(255,255,255,0.65)", textAlign: "right" }}>$82,340</span>
-          <span style={{ color: "rgba(255,255,255,0.65)", textAlign: "right" }}>340</span>
+          <span style={{ color: "rgba(255,255,255,0.65)", textAlign: "right" }}>$47,670</span>
+          <span style={{ color: "rgba(255,255,255,0.65)", textAlign: "right" }}>280</span>
         </div>
 
         <div style={{ height: 12 }} />
@@ -520,10 +501,10 @@ export function SupplyDemandBridgeBand({ expandProgress = 0 }: { expandProgress?
           padding: "10px 12px", background: "rgba(255,255,255,0.02)",
           borderBottom: "1px solid rgba(255,255,255,0.04)", fontSize: 13,
         }}>
-          <span style={{ color: "rgba(255,255,255,0.55)", fontFamily: "monospace", fontSize: 12 }}>093400</span>
-          <span style={{ color: "rgba(255,255,255,0.75)" }}>Electrical Technology</span>
+          <span style={{ color: "rgba(255,255,255,0.55)", fontFamily: "monospace", fontSize: 12 }}>094500</span>
+          <span style={{ color: "rgba(255,255,255,0.75)" }}>Energy Systems Technology</span>
           <span style={{ color: "rgba(255,255,255,0.5)", fontSize: 12 }}>Associate Degree</span>
-          <span style={{ color: "rgba(255,255,255,0.65)", textAlign: "right" }}>66</span>
+          <span style={{ color: "rgba(255,255,255,0.65)", textAlign: "right" }}>48</span>
         </div>
 
         <div style={{ padding: "20px 16px 16px" }}>
@@ -533,26 +514,25 @@ export function SupplyDemandBridgeBand({ expandProgress = 0 }: { expandProgress?
             <div style={{ flex: 1, height: 24, background: "rgba(255,255,255,0.06)", borderRadius: 4, position: "relative", overflow: "hidden" }}>
               <div style={{ width: "100%", height: "100%", background: "rgba(255,255,255,0.12)", borderRadius: 4 }} />
             </div>
-            <span style={{ fontSize: 13, fontWeight: 700, color: "rgba(255,255,255,0.75)", width: 36, textAlign: "right", flexShrink: 0 }}>340</span>
+            <span style={{ fontSize: 13, fontWeight: 700, color: "rgba(255,255,255,0.75)", width: 36, textAlign: "right", flexShrink: 0 }}>280</span>
           </div>
 
-          {/* Supply bar with gap region */}
+          {/* Supply bar */}
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 6 }}>
             <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${BRAND}90`, width: 70, flexShrink: 0 }}>Supply</span>
             <div style={{ flex: 1, height: 24, background: "rgba(255,255,255,0.06)", borderRadius: 4, position: "relative", overflow: "hidden" }}>
-              <div style={{ width: `${(66 / 340) * 100}%`, height: "100%", background: BRAND, borderRadius: "4px 0 0 4px", boxShadow: `0 0 12px ${BRAND}30` }} />
+              <div style={{ width: `${(48 / 280) * 100}%`, height: "100%", background: BRAND, borderRadius: "4px 0 0 4px", boxShadow: `0 0 12px ${BRAND}30` }} />
             </div>
-            <span style={{ fontSize: 13, fontWeight: 700, color: BRAND, width: 36, textAlign: "right", flexShrink: 0 }}>66</span>
+            <span style={{ fontSize: 13, fontWeight: 700, color: BRAND, width: 36, textAlign: "right", flexShrink: 0 }}>48</span>
           </div>
 
-          {/* Gap indicator — aligned to the gap region of the bar */}
+          {/* Gap indicator */}
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <span style={{ width: 70, flexShrink: 0 }} />
             <div style={{ flex: 1, position: "relative" }}>
-              {/* Gap bracket spanning from supply end to openings end */}
               <div style={{
                 position: "absolute",
-                left: `${(66 / 340) * 100}%`,
+                left: `${(48 / 280) * 100}%`,
                 right: 0,
                 top: 0,
                 display: "flex",
@@ -562,18 +542,16 @@ export function SupplyDemandBridgeBand({ expandProgress = 0 }: { expandProgress?
                 <div style={{ width: "100%", height: 2, background: `${BRAND}40`, borderRadius: 1 }} />
                 <div style={{ marginTop: 8, textAlign: "center" }}>
                   <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${BRAND}80`, display: "block", marginBottom: 2 }}>Workforce Gap</span>
-                  <span style={{ fontSize: 28, fontWeight: 700, color: BRAND, filter: `drop-shadow(0 0 10px ${BRAND}50)`, lineHeight: 1 }}>+274</span>
+                  <span style={{ fontSize: 28, fontWeight: 700, color: BRAND, filter: `drop-shadow(0 0 10px ${BRAND}50)`, lineHeight: 1 }}>+232</span>
                 </div>
               </div>
             </div>
             <span style={{ width: 36, flexShrink: 0 }} />
           </div>
 
-          {/* Spacer for the gap callout */}
           <div style={{ height: 60 }} />
         </div>
       </div>
-
     </Card>
   );
 }
