@@ -177,9 +177,9 @@ export default function DemoCourses() {
                       </ul>
                     </div>
 
-                    {/* Step 3: Derived Skills */}
+                    {/* Step 3: Developed Skills */}
                     <div style={stepStyle(3, detailStep)}>
-                      <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${ACCENT}99`, display: "block", marginBottom: 6 }}>Derived Skills</span>
+                      <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${ACCENT}99`, display: "block", marginBottom: 6 }}>Developed Skills</span>
                       <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
                         {EXPANDED_COURSE.skills.map((sk) => (
                           <span key={sk} style={{ padding: "4px 10px", border: `1px solid ${ACCENT}60`, borderRadius: 6, fontSize: 11, fontWeight: 500, color: ACCENT }}>{sk}</span>

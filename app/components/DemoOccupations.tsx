@@ -171,9 +171,9 @@ export default function DemoOccupations() {
                       <p style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", lineHeight: 1.6, margin: "8px 0 14px" }}>{EXPANDED.description}</p>
                     </div>
 
-                    {/* Step 2: Aligned Skills */}
+                    {/* Step 2: Required Skills */}
                     <div style={stepStyle(2, detailStep)}>
-                      <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${ACCENT}99`, display: "block", marginBottom: 8 }}>Aligned Skills ({EXPANDED.skills.length})</span>
+                      <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${ACCENT}99`, display: "block", marginBottom: 8 }}>Required Skills ({EXPANDED.skills.length})</span>
                       <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
                         {EXPANDED.skills.map((s) => (
                           <div key={s.skill} style={{ display: "flex", alignItems: "center", gap: 7 }}>

@@ -218,7 +218,7 @@ export default function DemoEmployers() {
 
                         {/* Step 4: Aligned skills within occupation card */}
                         <div style={stepStyle(4, detailStep)}>
-                          <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${ACCENT}99`, display: "block", marginBottom: 6 }}>Aligned Skills ({EXPANDED.occupation.skills.length})</span>
+                          <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${ACCENT}99`, display: "block", marginBottom: 6 }}>Required Skills ({EXPANDED.occupation.skills.length})</span>
                           <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                             {EXPANDED.occupation.skills.map((s) => (
                               <div key={s.skill} style={{ display: "flex", alignItems: "center", gap: 7 }}>

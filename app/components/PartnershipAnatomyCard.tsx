@@ -151,7 +151,7 @@ export function EmployerLandscapeBand({ expandProgress = 0 }: { expandProgress?:
                       <span style={{ fontSize: 11, fontWeight: 500, color: "rgba(255,255,255,0.55)" }}>${EXPANDED_EMPLOYER.occupation.wage.toLocaleString()} annual</span>
                     </div>
                     <p style={{ fontSize: 11, color: "rgba(255,255,255,0.45)", lineHeight: 1.5, margin: "6px 0 10px" }}>{EXPANDED_EMPLOYER.occupation.description}</p>
-                    <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${BRAND}99`, display: "block", marginBottom: 6 }}>Aligned Skills ({EXPANDED_EMPLOYER.occupation.skills.length})</span>
+                    <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${BRAND}99`, display: "block", marginBottom: 6 }}>Required Skills ({EXPANDED_EMPLOYER.occupation.skills.length})</span>
                     <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                       {EXPANDED_EMPLOYER.occupation.skills.map((s) => (
                         <div key={s.skill} style={{ display: "flex", alignItems: "center", gap: 7 }}>
@@ -232,7 +232,7 @@ export function OccupationalDemandBand({ expandProgress = 0 }: { expandProgress?
                 <div style={{ padding: "14px 16px 18px", background: "rgba(255,255,255,0.02)" }}>
                   <p style={{ fontSize: 10, color: "rgba(255,255,255,0.4)", margin: "0 0 4px" }}>SOC {EXPANDED_OCCUPATION.soc}</p>
                   <p style={{ fontSize: 12, color: "rgba(255,255,255,0.6)", lineHeight: 1.6, margin: "0 0 14px" }}>{EXPANDED_OCCUPATION.description}</p>
-                  <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${BRAND}99`, display: "block", marginBottom: 6 }}>Aligned Skills ({EXPANDED_OCCUPATION.skills.length})</span>
+                  <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${BRAND}99`, display: "block", marginBottom: 6 }}>Required Skills ({EXPANDED_OCCUPATION.skills.length})</span>
                   <div style={{ display: "flex", flexDirection: "column", gap: 4, marginBottom: 14 }}>
                     {EXPANDED_OCCUPATION.skills.map((s) => (
                       <div key={s.skill} style={{ display: "flex", alignItems: "center", gap: 7 }}>
@@ -324,7 +324,7 @@ export function CurriculumAlignmentBand({ expandProgress = 0 }: { expandProgress
                       <div style={{ padding: "14px 16px 18px 48px", background: "rgba(255,255,255,0.03)" }}>
                         <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${BRAND}90`, display: "block", marginBottom: 4 }}>Description</span>
                         <p style={{ fontSize: 12, color: "rgba(255,255,255,0.6)", lineHeight: 1.6, margin: "0 0 12px" }}>{c.description}</p>
-                        <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${BRAND}90`, display: "block", marginBottom: 6 }}>Derived Skills</span>
+                        <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${BRAND}90`, display: "block", marginBottom: 6 }}>Developed Skills</span>
                         <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
                           {c.skills.map((s) => <DerivedSkillPill key={s} name={s} />)}
                         </div>
