@@ -70,7 +70,7 @@ export default function ExplorePartnershipsPage() {
           <BlueDivider />
           <SectionHeading>Data-driven partnerships<br />that supply regional demand</SectionHeading>
           <p style={{ fontSize: 16, lineHeight: 1.6, color: "rgba(255,255,255,0.55)", marginTop: 24, maxWidth: 460, marginLeft: "auto", marginRight: "auto" }}>
-            Craft partnership proposals that answer the questions workforce development demands. Let&apos;s journey through the layers of a partnership proposal with Golden State Solar.
+            Craft partnership proposals that answer the questions workforce development demands. Let&apos;s journey through the layers of a partnership proposal with Golden State Solar, an imaginary company in the renewable energy sector.
           </p>
         </div>
 
