@@ -83,24 +83,35 @@ export default function ExplorePartnershipsPage() {
         <div style={{ display: "flex", gap: 48, alignItems: "flex-start", maxWidth: 1100, margin: "0 auto" }}>
 
           {/* Left — Map */}
-          <div style={{ flex: "0 0 50%", minHeight: 400 }}>
+          <div style={{ flex: "0 0 55%", minHeight: 400, paddingRight: 24 }}>
             <RegionalUnificationMap />
           </div>
 
           {/* Right — Prose */}
-          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 24, paddingTop: 0 }}>
+          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 36, paddingTop: 0 }}>
             <div style={{ textAlign: "center" }}>
               <Eyebrow>Regional Alignment</Eyebrow>
               <BlueDivider />
-              <SectionHeading>Coordinate within and across<br />Regional Consortia</SectionHeading>
+              <SectionHeading>Coordinate across<br />Regional Consortia</SectionHeading>
             </div>
 
-            <p style={{ fontSize: 16, lineHeight: 1.65, color: "rgba(255,255,255,0.55)" }}>
-              California&apos;s community colleges operate within eight regional consortia, each with a Strong Workforce Program development plan that names priority sectors and commits to advancing career technical education.
-            </p>
-            <p style={{ fontSize: 16, lineHeight: 1.65, color: "rgba(255,255,255,0.55)" }}>
-              Advance a Strong Workforce by aligning partnership intelligence with the priorities each regional consortium has committed to.
-            </p>
+            <div>
+              <span style={{ fontSize: 12, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: BRAND, display: "block", marginBottom: 8 }}>
+                Eight Regional Consortia
+              </span>
+              <p style={{ fontSize: 16, lineHeight: 1.65, color: "rgba(255,255,255,0.55)", margin: 0 }}>
+                Establishing strategic regional priorities requires effective coordination. Collaborate on partnerships based on a shared source of truth.
+              </p>
+            </div>
+
+            <div>
+              <span style={{ fontSize: 12, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: BRAND, display: "block", marginBottom: 8 }}>
+                Strong Workforce
+              </span>
+              <p style={{ fontSize: 16, lineHeight: 1.65, color: "rgba(255,255,255,0.55)", margin: 0 }}>
+                Every California Community College shares the common goal of Strong Workforce. Lead partnerships that move the vision forward.
+              </p>
+            </div>
           </div>
         </div>
       </section>

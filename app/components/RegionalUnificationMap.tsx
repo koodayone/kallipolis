@@ -24,15 +24,15 @@ const CONSORTIA = [
 ];
 
 // Label anchor directions
-const LABEL_ANCHORS: Record<string, { side: "left" | "right"; dx?: number; dy?: number }> = {
+const LABEL_ANCHORS: Record<string, { side: "left" | "right" | "center"; dx?: number; dy?: number }> = {
   "NFN":  { side: "left" },
   "Bay":  { side: "right" },
   "CVML": { side: "left", dx: 2, dy: -8 },
   "SCC":  { side: "right" },
   "LA":   { side: "right", dy: 10 },
   "OC":   { side: "right", dy: 14 },
-  "IE/D": { side: "left" },
-  "SD/I": { side: "left" },
+  "IE/D": { side: "left", dy: -12 },
+  "SD/I": { side: "center", dy: 16 },
 };
 
 // ── Component ───────────────────────────────────────────────────────────
@@ -151,7 +151,7 @@ export default function RegionalUnificationMap() {
               position: "absolute",
               left: `calc(${xPct}% + ${dx}px)`,
               top: `calc(${yPct}% + ${dy}px)`,
-              transform: anchor.side === "right" ? "translate(calc(-100% - 12px), -50%)" : "translate(12px, -50%)",
+              transform: anchor.side === "center" ? "translate(-50%, 0)" : anchor.side === "right" ? "translate(calc(-100% - 12px), -50%)" : "translate(12px, -50%)",
               fontSize: 10,
               fontWeight: 700,
               textTransform: "uppercase",

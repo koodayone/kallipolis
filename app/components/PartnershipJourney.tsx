@@ -114,17 +114,20 @@ const BAND_TOP = 285;
 
 // ── Progress Indicator ───────────────────────────────────────────────────
 
-function ProgressIndicator({ activeStep, stepProgress }: { activeStep: number; stepProgress: number }) {
+function ProgressIndicator({ activeStep, stepProgress, visible }: { activeStep: number; stepProgress: number; visible: boolean }) {
   return (
     <div style={{
-      position: "absolute",
-      right: 48,
+      position: "fixed",
+      right: 40,
       top: "50%",
       transform: "translateY(-50%)",
       display: "flex",
       flexDirection: "column",
       gap: 12,
       zIndex: 20,
+      opacity: visible ? 1 : 0,
+      transition: "opacity 0.4s ease",
+      pointerEvents: visible ? "auto" : "none",
     }}>
       {STEPS.map((_, i) => {
         const isPast = i < activeStep;
@@ -177,7 +180,7 @@ export default function PartnershipJourney() {
     const progressWithinStep = (v * STEP_COUNT) - step;
     setActiveStep(step);
     setStepProgress(progressWithinStep);
-    setSunVisible(v > 0.02);
+    setSunVisible(v > 0.02 && v < 0.99);
   });
 
   const active = STEPS[activeStep];
@@ -196,7 +199,7 @@ export default function PartnershipJourney() {
   return (
     <div
       ref={containerRef}
-      style={{ height: `${STEP_COUNT * 100 + 30}vh`, position: "relative" }}
+      style={{ height: `${STEP_COUNT * 100 + 60}vh`, position: "relative" }}
     >
       <div style={{
         position: "sticky",
@@ -297,7 +300,7 @@ export default function PartnershipJourney() {
           left: "50%",
           transform: "translateX(-50%)",
           width: "100%",
-          maxWidth: 900,
+          maxWidth: 860,
           padding: "0 24px",
           opacity: contentOpacity,
         }}>
@@ -312,7 +315,7 @@ export default function PartnershipJourney() {
           </div>
         </div>
 
-        <ProgressIndicator activeStep={activeStep} stepProgress={stepProgress} />
+        <ProgressIndicator activeStep={activeStep} stepProgress={stepProgress} visible={sunVisible} />
       </div>
     </div>
   );

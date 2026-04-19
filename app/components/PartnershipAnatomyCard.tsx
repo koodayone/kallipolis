@@ -458,7 +458,7 @@ export function SupplyDemandBridgeBand({ expandProgress = 0 }: { expandProgress?
           Partnership Narrative
         </span>
         <p style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", lineHeight: 1.7, margin: 0 }}>
-          Golden State Solar&apos;s residential and commercial installation operations position it as a strong partnership candidate. The Central Valley has accelerating demand for solar photovoltaic installers driven by California&apos;s clean energy mandates. The Energy Systems Technology department develops the core competencies this occupation requires: solar installation, photovoltaic systems, and electrical safety. Occupational demand metrics from the Centers of Excellence indicate an unmet workforce gap of 232 on an annual basis.
+          Golden State Solar&apos;s residential and commercial installation operations position it as a strong partnership candidate. The Central Valley has accelerating demand for solar photovoltaic installers driven by California&apos;s clean energy mandates. The Energy Systems Technology department develops the core competencies this occupation requires: solar installation, photovoltaic systems, and electrical safety. Labor market analysis indicates an unmet workforce gap of 232 on an annual basis.
         </p>
       </div>
 
