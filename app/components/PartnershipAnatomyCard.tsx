@@ -449,7 +449,7 @@ export function SupplyDemandBridgeBand({ expandProgress = 0 }: { expandProgress?
   return (
     <Card>
       {/* Phase 1: Narrative — always visible */}
-      <div style={{ marginBottom: 20 }}>
+      <div style={{ marginBottom: 14 }}>
         <span style={{
           fontSize: 9, fontWeight: 600, textTransform: "uppercase",
           letterSpacing: "0.1em", color: BRAND,
@@ -507,9 +507,9 @@ export function SupplyDemandBridgeBand({ expandProgress = 0 }: { expandProgress?
           <span style={{ color: "rgba(255,255,255,0.65)", textAlign: "right" }}>48</span>
         </div>
 
-        <div style={{ padding: "20px 16px 16px" }}>
+        <div style={{ padding: "14px 16px 8px" }}>
           {/* Openings bar */}
-          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 6 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 5 }}>
             <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "rgba(255,255,255,0.35)", width: 70, flexShrink: 0 }}>Openings</span>
             <div style={{ flex: 1, height: 24, background: "rgba(255,255,255,0.06)", borderRadius: 4, position: "relative", overflow: "hidden" }}>
               <div style={{ width: "100%", height: "100%", background: "rgba(255,255,255,0.12)", borderRadius: 4 }} />
@@ -518,7 +518,7 @@ export function SupplyDemandBridgeBand({ expandProgress = 0 }: { expandProgress?
           </div>
 
           {/* Supply bar */}
-          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 6 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 5 }}>
             <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${BRAND}90`, width: 70, flexShrink: 0 }}>Supply</span>
             <div style={{ flex: 1, height: 24, background: "rgba(255,255,255,0.06)", borderRadius: 4, position: "relative", overflow: "hidden" }}>
               <div style={{ width: `${(48 / 280) * 100}%`, height: "100%", background: BRAND, borderRadius: "4px 0 0 4px", boxShadow: `0 0 12px ${BRAND}30` }} />
@@ -540,16 +540,16 @@ export function SupplyDemandBridgeBand({ expandProgress = 0 }: { expandProgress?
                 alignItems: "center",
               }}>
                 <div style={{ width: "100%", height: 2, background: `${BRAND}40`, borderRadius: 1 }} />
-                <div style={{ marginTop: 8, textAlign: "center" }}>
+                <div style={{ marginTop: 6, textAlign: "center" }}>
                   <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${BRAND}80`, display: "block", marginBottom: 2 }}>Workforce Gap</span>
-                  <span style={{ fontSize: 28, fontWeight: 700, color: BRAND, filter: `drop-shadow(0 0 10px ${BRAND}50)`, lineHeight: 1 }}>+232</span>
+                  <span style={{ fontSize: 24, fontWeight: 700, color: BRAND, filter: `drop-shadow(0 0 10px ${BRAND}50)`, lineHeight: 1 }}>+232</span>
                 </div>
               </div>
             </div>
             <span style={{ width: 36, flexShrink: 0 }} />
           </div>
 
-          <div style={{ height: 60 }} />
+          <div style={{ height: 40 }} />
         </div>
       </div>
     </Card>

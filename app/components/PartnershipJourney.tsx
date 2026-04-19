@@ -108,9 +108,9 @@ const STEPS = [
 ];
 
 // Fixed layout positions (px from top of sticky frame)
-const SUN_TOP = 80;
-const TEXT_TOP = 160;
-const BAND_TOP = 320;
+const SUN_TOP = 70;
+const TEXT_TOP = 150;
+const BAND_TOP = 300;
 
 // ── Progress Indicator ───────────────────────────────────────────────────
 

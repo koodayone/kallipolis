@@ -4,8 +4,14 @@ import dynamic from "next/dynamic";
 import PartnershipJourney from "../../components/PartnershipJourney";
 import ActionBadge from "../../components/ActionBadge";
 
-const ConvergenceFlowDiagram = dynamic(() => import("../../components/ConvergenceFlowDiagram"), { ssr: false });
-const StateMap = dynamic(() => import("../../components/StateMap"), { ssr: false });
+const ConvergenceFlowDiagram = dynamic(() => import("../../components/ConvergenceFlowDiagram"), {
+  ssr: false,
+  loading: () => <div style={{ width: "100%", height: 600 }} />,
+});
+const StateMap = dynamic(() => import("../../components/StateMap"), {
+  ssr: false,
+  loading: () => <div style={{ width: "100%", minHeight: 400 }} />,
+});
 
 // ── Section primitives ───────────────────────────────────────────────────────
 
