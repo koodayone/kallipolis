@@ -18,6 +18,7 @@ export default function Home() {
       <Promise />
       <div style={{ background: "#060d1f", paddingTop: 48, paddingBottom: 8, display: "flex", justifyContent: "center", gap: 16 }}>
         <ActionBadge label="Reach Out" neonColor="#f5e6c8" opacity={1} icon="mail" inline />
+        <ActionBadge label="Mission" neonColor="#f5e6c8" opacity={1} icon="tree" inline href="/mission" />
         <ActionBadge label="Get Started" neonColor="#f5e6c8" opacity={1} icon="play" inline />
       </div>
       <Footer />

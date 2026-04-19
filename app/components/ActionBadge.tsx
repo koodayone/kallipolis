@@ -8,7 +8,7 @@ type Props = {
   label?: string;
   neonColor: string;
   opacity: number;
-  icon?: "cube" | "lightbulb" | "chainlink" | "mail" | "play" | "sun";
+  icon?: "cube" | "lightbulb" | "chainlink" | "mail" | "play" | "sun" | "tree";
   inline?: boolean;
   href?: string;
   invertHover?: boolean;
@@ -79,6 +79,17 @@ function SunIcon({ color }: { color: string }) {
   );
 }
 
+function TreeIcon({ color }: { color: string }) {
+  return (
+    <svg width="12" height="14" viewBox="0 0 20 24" fill={color}>
+      <polygon points="10,1 6,7 14,7" />
+      <polygon points="10,5 4,12 16,12" />
+      <polygon points="10,9.5 2,18 18,18" />
+      <rect x="8.5" y="18" width="3" height="5" rx="0.5" />
+    </svg>
+  );
+}
+
 function MailIcon({ color }: { color: string }) {
   return (
     <svg width="16" height="12" viewBox="0 0 24 18" fill="none">
@@ -136,6 +147,7 @@ export default function ActionBadge({ label = "Action", neonColor, opacity, icon
               {icon === "mail" && <MailIcon color={iconColor} />}
               {icon === "play" && <PlayIcon color={iconColor} />}
               {icon === "sun" && <SunIcon color={iconColor} />}
+              {icon === "tree" && <TreeIcon color={iconColor} />}
             </>
           );
         })()}

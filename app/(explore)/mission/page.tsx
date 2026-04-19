@@ -28,7 +28,7 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
   );
 }
 
-function LandscapeImage({ src, alt, position = "center 15%" }: { src: string; alt: string; position?: string }) {
+function LandscapeImage({ src, alt, position = "center 15%", height = 480 }: { src: string; alt: string; position?: string; height?: number }) {
   return (
     <div style={{ padding: "0 64px" }}>
       <img
@@ -36,7 +36,7 @@ function LandscapeImage({ src, alt, position = "center 15%" }: { src: string; al
         alt={alt}
         style={{
           width: "100%",
-          height: 480,
+          height,
           objectFit: "cover",
           objectPosition: position,
           borderRadius: 10,
@@ -108,21 +108,18 @@ export default function MissionPage() {
               Dayone Koo is a proud graduate of the California Community College system. He received an Associate of Arts in Social Sciences at Foothill College, where he first conceived the motivation to build software that empowers democratic institutions.
             </p>
             <p style={{ fontSize: 17, lineHeight: 1.7, color: "#3d3a36", marginTop: 20 }}>
-              After Foothill, Dayone transferred to and graduated from UC Berkeley with a Bachelor of Arts in Computer Science. Upon graduation he gathered experience as a software engineer building global scale enterprise systems at Walmart and Salesforce. Founding Kallipolis is his attempt at pursuing his original motivation to build technology.
+              After Foothill, Dayone transferred to and graduated from UC Berkeley with a Bachelor of Arts in Computer Science. Upon graduation he gathered experience as a software engineer building global scale enterprise systems at Walmart and Salesforce. Founding Kallipolis is an attempt at pursuing his original motivation to build technology.
             </p>
           </div>
         </div>
       </section>
 
       {/* ── 5. Closing Image — Tenaya ── */}
-      <LandscapeImage src="/tenaya_art.png" alt="Tenaya Lake" position="center 35%" />
+      <LandscapeImage src="/tenaya_art.png" alt="Tenaya Lake" position="center 28%" height={520} />
 
       {/* ── 6. Cross-links ── */}
-      <section style={{ background: "#F5F2EB", padding: "48px 64px", display: "flex", justifyContent: "center", gap: 16 }}>
+      <section style={{ background: "#F5F2EB", padding: "48px 64px", display: "flex", justifyContent: "center" }}>
         <ActionBadge label="Home" neonColor="#2D5016" opacity={1} icon="sun" inline href="/" />
-        <ActionBadge label="Explore Atlas" neonColor="#2D5016" opacity={1} icon="cube" inline href="/atlas" />
-        <ActionBadge label="Explore Partnerships" neonColor="#2D5016" opacity={1} icon="chainlink" inline href="/partnerships" />
-        <ActionBadge label="Explore Sources" neonColor="#2D5016" opacity={1} icon="lightbulb" inline href="/sources" />
       </section>
     </div>
   );
