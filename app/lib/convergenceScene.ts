@@ -63,6 +63,7 @@ function positionCylinderBetween(
 export type ConvergenceResult = {
   cleanup: () => void;
   getProjectedPositions: () => Record<string, { x: number; y: number }>;
+  onHoverChange: (cb: (label: string | null) => void) => void;
 };
 
 export function buildConvergenceScene(canvas: HTMLCanvasElement): ConvergenceResult {
@@ -93,14 +94,67 @@ export function buildConvergenceScene(canvas: HTMLCanvasElement): ConvergenceRes
   scene.add(fillLight);
 
   // Build forms
-  const groups: THREE.Group[] = [];
-  for (const f of formDefs) {
+  const formEntries: {
+    group: THREE.Group;
+    baseScale: number;
+    targetScale: number;
+    currentScale: number;
+    targetEdgeOpacity: number;
+    currentEdgeOpacity: number;
+    hoverLight: THREE.PointLight;
+  }[] = [];
+
+  for (let i = 0; i < formDefs.length; i++) {
+    const f = formDefs[i];
     const g = f.factory(f.color);
     g.position.copy(f.position);
     g.scale.setScalar(f.scale);
     scene.add(g);
-    groups.push(g);
+    g.traverse((child) => { if (child instanceof THREE.Mesh) child.userData.formIndex = i; });
+    const hoverLight = new THREE.PointLight(f.color, 0, 5);
+    hoverLight.position.copy(f.position);
+    scene.add(hoverLight);
+    formEntries.push({
+      group: g, baseScale: f.scale,
+      targetScale: f.scale, currentScale: f.scale,
+      targetEdgeOpacity: 0.7, currentEdgeOpacity: 0.7,
+      hoverLight,
+    });
   }
+  const groups = formEntries.map((e) => e.group);
+
+  // Hover raycasting
+  const mouse = new THREE.Vector2(-999, -999);
+  const raycaster = new THREE.Raycaster();
+  let hoveredIndex: number | null = null;
+  let hoverCallback: ((label: string | null) => void) | null = null;
+
+  function getAllMeshes(): THREE.Mesh[] {
+    const meshes: THREE.Mesh[] = [];
+    for (const e of formEntries) e.group.traverse((c) => { if (c instanceof THREE.Mesh) meshes.push(c); });
+    return meshes;
+  }
+
+  function handleHover(index: number | null) {
+    if (hoveredIndex === index) return;
+    hoveredIndex = index;
+    hoverCallback?.(index !== null ? formDefs[index].label : null);
+    formEntries.forEach((e, i) => {
+      const isHovered = index !== null && i === index;
+      e.targetEdgeOpacity = isHovered ? 1.0 : index !== null ? 0.35 : 0.7;
+      e.hoverLight.intensity = isHovered ? 0.8 : 0;
+      e.targetScale = isHovered ? e.baseScale * 1.1 : e.baseScale;
+    });
+  }
+
+  function onMouseMove(ev: MouseEvent) {
+    const r = canvas.getBoundingClientRect();
+    mouse.x = ((ev.clientX - r.left) / r.width) * 2 - 1;
+    mouse.y = -((ev.clientY - r.top) / r.height) * 2 + 1;
+  }
+  function onMouseLeave() { mouse.set(-999, -999); handleHover(null); }
+  canvas.addEventListener("mousemove", onMouseMove);
+  canvas.addEventListener("mouseleave", onMouseLeave);
 
   // ── Connector materials ──────────────────────────────────────────────
 
@@ -205,11 +259,26 @@ export function buildConvergenceScene(canvas: HTMLCanvasElement): ConvergenceRes
     rafId = requestAnimationFrame(tick);
     const elapsed = (performance.now() - startTime) / 1000;
 
-    // Form rotation
-    for (const g of groups) {
-      g.rotation.x += 0.002;
-      g.rotation.y += 0.003;
-      g.rotation.z += 0.001;
+    // Hover raycasting
+    raycaster.setFromCamera(mouse, camera);
+    const hits = raycaster.intersectObjects(getAllMeshes());
+    const hitIndex = hits.length > 0 ? (hits[0].object.userData.formIndex as number) ?? null : null;
+    handleHover(hitIndex);
+    canvas.style.cursor = hitIndex !== null ? "pointer" : "default";
+
+    const LERP = 0.08;
+    // Form rotation + hover lerp
+    for (const e of formEntries) {
+      e.group.rotation.x += 0.002;
+      e.group.rotation.y += 0.003;
+      e.group.rotation.z += 0.001;
+      e.currentScale += (e.targetScale - e.currentScale) * LERP;
+      e.group.scale.setScalar(e.currentScale);
+      e.currentEdgeOpacity += (e.targetEdgeOpacity - e.currentEdgeOpacity) * LERP;
+      e.group.traverse((child) => {
+        if (child instanceof THREE.LineSegments)
+          (child.material as THREE.LineBasicMaterial).opacity = e.currentEdgeOpacity;
+      });
     }
 
     // Glow shimmer
@@ -239,9 +308,12 @@ export function buildConvergenceScene(canvas: HTMLCanvasElement): ConvergenceRes
   return {
     cleanup: () => {
       cancelAnimationFrame(rafId);
+      canvas.removeEventListener("mousemove", onMouseMove);
+      canvas.removeEventListener("mouseleave", onMouseLeave);
       resizeObserver.disconnect();
       renderer.dispose();
     },
+    onHoverChange: (cb: (label: string | null) => void) => { hoverCallback = cb; },
     getProjectedPositions: () => {
       const positions: Record<string, { x: number; y: number }> = {};
       for (let i = 0; i < formDefs.length; i++) {

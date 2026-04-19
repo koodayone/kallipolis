@@ -8,6 +8,7 @@ export default function ConvergenceFlowDiagram() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const sceneRef = useRef<ConvergenceResult | null>(null);
   const [labelPositions, setLabelPositions] = useState<Record<string, { x: number; y: number }>>({});
+  const [hoveredLabel, setHoveredLabel] = useState<string | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -15,6 +16,7 @@ export default function ConvergenceFlowDiagram() {
 
     const result = buildConvergenceScene(canvas);
     sceneRef.current = result;
+    result.onHoverChange(setHoveredLabel);
 
     let rafId: number;
     function updateLabels() {
@@ -40,6 +42,8 @@ export default function ConvergenceFlowDiagram() {
         const pos = labelPositions[label];
         if (!pos) return null;
         const isCenterForm = label === "Partnerships" || label === "Strong Workforce";
+        const isHovered = hoveredLabel === label;
+        const isDimmed = hoveredLabel !== null && !isHovered;
         return (
           <span
             key={label}
@@ -52,7 +56,9 @@ export default function ConvergenceFlowDiagram() {
               fontWeight: 600,
               letterSpacing: "0.1em",
               textTransform: "uppercase",
-              color: "rgba(255,255,255,0.4)",
+              color: isHovered ? "#4fd1fd" : isDimmed ? "rgba(255,255,255,0.15)" : "rgba(255,255,255,0.4)",
+              textShadow: isHovered ? "0 0 12px rgba(79,209,253,0.5)" : "none",
+              transition: "color 0.2s ease, text-shadow 0.2s ease",
               pointerEvents: "none",
               whiteSpace: "nowrap",
             }}
