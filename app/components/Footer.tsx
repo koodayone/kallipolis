@@ -61,6 +61,13 @@ export default function Footer() {
                   <path d="M12 13v9L3 16.5v-9L12 13z" fill="currentColor" opacity="0.4" />
                 </svg>
               </Link>
+              <Link href="/partnerships" className={linkClass} style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", fontSize: 10, display: "inline-flex", alignItems: "center", gap: 6 }}>
+                Partnerships
+                <svg width="10" height="10" viewBox="3 4 18 16" fill="none">
+                  <circle cx="9.5" cy="14" r="5.5" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.85" />
+                  <circle cx="14.5" cy="10" r="5.5" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.85" />
+                </svg>
+              </Link>
               <Link href="/sources" className={linkClass} style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", fontSize: 10, display: "inline-flex", alignItems: "center", gap: 6 }}>
                 Sources
                 <svg width="10" height="10" viewBox="2 2 20 20" fill="none">
@@ -73,13 +80,6 @@ export default function Footer() {
                   <line x1="19" y1="5" x2="15" y2="9" stroke="currentColor" strokeWidth="1" opacity="0.8" />
                   <line x1="5" y1="19" x2="9" y2="15" stroke="currentColor" strokeWidth="1" opacity="0.8" />
                   <line x1="19" y1="19" x2="15" y2="15" stroke="currentColor" strokeWidth="1" opacity="0.8" />
-                </svg>
-              </Link>
-              <Link href="/partnerships" className={linkClass} style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", fontSize: 10, display: "inline-flex", alignItems: "center", gap: 6 }}>
-                Partnerships
-                <svg width="10" height="10" viewBox="3 4 18 16" fill="none">
-                  <circle cx="9.5" cy="14" r="5.5" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.85" />
-                  <circle cx="14.5" cy="10" r="5.5" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.85" />
                 </svg>
               </Link>
             </div>
