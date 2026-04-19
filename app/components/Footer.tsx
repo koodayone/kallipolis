@@ -22,12 +22,12 @@ export default function Footer() {
           </div>
 
           {/* Link columns */}
-          <div className="flex flex-1 justify-evenly" style={{ paddingTop: 5 }}>
-            <div className="flex flex-col gap-3">
+          <div className="flex flex-1" style={{ paddingTop: 5, position: "relative" }}>
+            <div className="flex flex-col gap-3" style={{ position: "absolute", left: "44%", transform: "translateX(-50%)" }}>
               <h4 className="text-sm font-medium uppercase tracking-widest text-gray-400" style={{ fontFamily: "var(--font-days-one)" }}>About</h4>
               <p className="uppercase tracking-widest text-gray-600" style={{ fontFamily: "var(--font-days-one)", fontSize: 10 }}>Coming Soon</p>
             </div>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3" style={{ marginLeft: "auto", marginRight: "1%" }}>
               <h4 className="text-sm font-medium uppercase tracking-widest text-gray-400" style={{ fontFamily: "var(--font-days-one)" }}>Documentation</h4>
               <Link href="/atlas" className="uppercase tracking-widest text-gray-500 hover:text-white transition-colors" style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", fontSize: 10, display: "inline-flex", alignItems: "center", gap: 6 }}>
                 Atlas
@@ -58,10 +58,6 @@ export default function Footer() {
                   <circle cx="14.5" cy="10" r="5.5" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.85" />
                 </svg>
               </Link>
-            </div>
-            <div className="flex flex-col gap-3">
-              <h4 className="text-sm font-medium uppercase tracking-widest text-gray-400" style={{ fontFamily: "var(--font-days-one)" }}>Product</h4>
-              <p className="uppercase tracking-widest text-gray-600" style={{ fontFamily: "var(--font-days-one)", fontSize: 10 }}>Coming Soon</p>
             </div>
           </div>
         </div>

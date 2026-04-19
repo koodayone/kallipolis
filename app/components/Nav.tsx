@@ -110,6 +110,13 @@ export default function Nav() {
                 <path d="M12 2L3 7.5v9L12 22l9-5.5v-9L12 2z M12 13L3 7.5 M12 13l9-5.5 M12 13v9" stroke="currentColor" strokeWidth="0.7" opacity="0.55" />
               </svg>
             </Link>
+            <Link href="/partnerships" className="text-sm uppercase tracking-widest text-white hover:text-white/60 transition-colors" style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", display: "inline-flex", alignItems: "center", gap: 8 }}>
+              Partnerships
+              <svg width="12" height="12" viewBox="3 4 18 16" fill="none">
+                <circle cx="9.5" cy="14" r="5.5" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.85" />
+                <circle cx="14.5" cy="10" r="5.5" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.85" />
+              </svg>
+            </Link>
             <Link href="/sources" className="text-sm uppercase tracking-widest text-white hover:text-white/60 transition-colors" style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", display: "inline-flex", alignItems: "center", gap: 8 }}>
               Sources
               <svg width="14" height="14" viewBox="2 2 20 20" fill="none">
@@ -122,13 +129,6 @@ export default function Nav() {
                 <line x1="19" y1="5" x2="15" y2="9" stroke="currentColor" strokeWidth="1" opacity="0.8" />
                 <line x1="5" y1="19" x2="9" y2="15" stroke="currentColor" strokeWidth="1" opacity="0.8" />
                 <line x1="19" y1="19" x2="15" y2="15" stroke="currentColor" strokeWidth="1" opacity="0.8" />
-              </svg>
-            </Link>
-            <Link href="/partnerships" className="text-sm uppercase tracking-widest text-white hover:text-white/60 transition-colors" style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", display: "inline-flex", alignItems: "center", gap: 8 }}>
-              Partnerships
-              <svg width="12" height="12" viewBox="3 4 18 16" fill="none">
-                <circle cx="9.5" cy="14" r="5.5" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.85" />
-                <circle cx="14.5" cy="10" r="5.5" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.85" />
               </svg>
             </Link>
           </div>
