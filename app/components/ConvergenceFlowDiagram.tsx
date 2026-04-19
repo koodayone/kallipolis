@@ -35,7 +35,7 @@ export default function ConvergenceFlowDiagram() {
   }, []);
 
   return (
-    <div style={{ position: "relative", width: "100%", height: 600, overflow: "hidden" }}>
+    <div style={{ position: "relative", width: "100%", height: 600, overflow: "hidden", animation: "page-fade-in 600ms ease-out" }}>
       <canvas ref={canvasRef} style={{ width: "100%", height: "100%", display: "block" }} />
 
       {CONVERGENCE_LABELS.map((label) => {

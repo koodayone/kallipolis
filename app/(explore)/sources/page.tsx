@@ -81,7 +81,7 @@ const AUTHORITIES = [
     factory: createSkyscraperForm,
     demoScene: <DemoEmployers />,
     authority: "The California Employment Development Department maintains employer records for every organization with payroll obligations in the state. These are verifiable, publicly maintained records that carry institutional legitimacy.",
-    intelligence: "Kallipolis surfaces employers scoped to those community colleges can meaningfully engage — organizations with operational capacity for workforce partnerships. Each employer is connected to the occupations it hires for, the skills those roles require, and the curriculum that develops those skills. A coordinator sees not a list of companies, but a ranked landscape of partnership-ready organizations with empirical alignment scores.",
+    intelligence: "Kallipolis surfaces employers scoped to those community colleges can meaningfully engage — organizations with operational capacity for workforce partnerships. Each employer is connected to the occupations it hires for, the skills those roles require, and the curriculum that develops those skills. A coordinator sees not a list of companies, but a landscape of partnership-ready organizations.",
     methodology: "Employer records are filtered to organizations above a size threshold that ensures partnership capacity. Each employer is validated to have an active web presence and connected to relevant occupations through industry classification. The result is a curated set of real, verifiable organizations — a workforce development lens on the employers that matter for institutional action.",
   },
 ];
