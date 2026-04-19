@@ -66,11 +66,11 @@ export default function ExplorePartnershipsPage() {
       {/* ── Section 2: Anatomy ── */}
       <section style={{ paddingTop: 32, paddingBottom: 0, paddingLeft: 64, paddingRight: 64 }}>
         <div className="max-w-3xl mx-auto text-center" style={{ marginBottom: 0 }}>
-          <Eyebrow>Regional Alignment</Eyebrow>
+          <Eyebrow>Anatomy of a Partnership</Eyebrow>
           <BlueDivider />
           <SectionHeading>Data-driven partnerships<br />that supply regional demand</SectionHeading>
           <p style={{ fontSize: 16, lineHeight: 1.6, color: "rgba(255,255,255,0.55)", marginTop: 24, maxWidth: 460, marginLeft: "auto", marginRight: "auto" }}>
-            Craft partnership proposals that answer the questions workforce development demands — backed by trusted data from trusted institutions.
+            Craft partnership proposals that answer the questions workforce development demands. Let&apos;s journey through the layers of a partnership proposal with Golden State Solar.
           </p>
         </div>
 
@@ -90,7 +90,7 @@ export default function ExplorePartnershipsPage() {
           {/* Right — Prose */}
           <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 32, paddingTop: 16 }}>
             <div style={{ textAlign: "center" }}>
-              <Eyebrow>Regional Alignment</Eyebrow>
+              <Eyebrow>State-level Coordination</Eyebrow>
               <BlueDivider />
               <SectionHeading>Data-driven partnerships<br />that supply regional demand</SectionHeading>
             </div>

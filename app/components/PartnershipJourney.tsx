@@ -87,7 +87,7 @@ const STEPS = [
   {
     num: "03",
     question: "Which of our academic departments have most synergy with this employer?",
-    prose: "Specific departments at your college whose coursework develops the skills this employer's occupations require.",
+    prose: "Determine the specific departments whose coursework develops the skills this employer's occupations require.",
     Band: CurriculumAlignmentBand,
     hasAccordion: true,
   },
@@ -101,7 +101,7 @@ const STEPS = [
   {
     num: "05",
     question: "What unmet regional labor market demand will this partnership address?",
-    prose: "Proposals that instantaneously bridge TOP to SOC codes. Precisely quantify how your school supplies unmet labor demand.",
+    prose: "Instantaneously bridge TOP to SOC codes. Precisely quantify how your school supplies unmet labor demand.",
     Band: SupplyDemandBridgeBand,
     hasAccordion: true,
   },
