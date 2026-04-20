@@ -151,21 +151,6 @@ COE_REGION_PRIORITY_SECTORS: dict[str, list[str]] = {
     ],
 }
 
-# Frontend regionId → COE region code
-FRONTEND_TO_COE: dict[str, str] = {
-    "bay-area": "Bay",
-    "los-angeles": "LA",
-    "orange-county": "OC",
-    "san-diego": "SD/I",
-    "inland-empire": "IE/D",
-    "central-valley": "CVML",
-    "central-coast": "SCC",
-    "greater-sacramento": "GS",
-    "north-coast": "FN",
-    "far-north": "FN",
-    "sierra-nevada": "GS",
-}
-
 # COE region → list of California counties. This is the canonical geographic
 # partition for employer scraping: every county belongs to exactly one region,
 # and every region's employer pool is shared by all colleges in that region.

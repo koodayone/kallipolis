@@ -33,16 +33,9 @@ export default function StateAtlas() {
       .catch(() => {});
   }, []);
 
-  // Region zoom was scoped out; these three stay as one-off state so the
-  // CaliforniaMap prop surface is unchanged, but their setters are never
-  // called because the feature was abandoned. Left as state (not const) so
-  // the state machinery is in place if the region-zoom flow is ever revived.
-  const [mapView] = useState<"state" | "region">("state");
-  const [activeRegionId] = useState<string | null>(null);
   const [hoveredRegionId, setHoveredRegionId] = useState<string | null>(null);
   const [hoveredCollege, setHoveredCollege] = useState<College | null>(null);
   const [selectedCollege, setSelectedCollege] = useState<College | null>(null);
-  const [mapOpacity] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
 
   const [searchFocused, setSearchFocused] = useState(false);
@@ -68,10 +61,6 @@ export default function StateAtlas() {
   useEffect(() => { setSearchActiveIndex(-1); }, [searchResults]);
 
   const showSearchResults = searchFocused || searchQuery.trim().length > 0;
-
-  const handleRegionClick = useCallback((_id: string) => {
-    // Region zoom disabled — hover highlighting only
-  }, []);
 
   const handleCollegeSelect = useCallback((college: College) => {
     setSelectedCollege((prev) => (prev?.id === college.id ? null : college));
@@ -160,19 +149,14 @@ export default function StateAtlas() {
                 width: "100%",
                 maxWidth: "440px",
                 aspectRatio: "400 / 500",
-                opacity: mapOpacity,
-                transition: "opacity 0.18s ease",
               }}
             >
               <CaliforniaMap
-                mapView={mapView}
-                activeRegionId={activeRegionId}
                 hoveredRegionId={hoveredRegionId}
                 hoveredCollegeId={hoveredCollege?.id ?? null}
                 selectedCollegeId={selectedCollege?.id ?? null}
                 dimMarkers={false}
                 onRegionHover={setHoveredRegionId}
-                onRegionClick={handleRegionClick}
                 onCollegeHover={setHoveredCollege}
                 onCollegeSelect={handleCollegeSelect}
               />

@@ -87,7 +87,7 @@ Two endpoints stream their output to the atlas using server-sent events: the par
 
 ## Authentication and scoping
 
-Authentication lives in the atlas, not the backend. The atlas issues JWTs via Next.js API routes under `atlas/app/api/auth/`, stores them in HttpOnly cookies, and validates them in middleware (`atlas/middleware.ts`). The backend trusts the atlas — it does not verify tokens itself. All backend endpoints require a `college` query parameter, and Cypher queries are scoped by that parameter. There is no user-level authorization in the backend; college scoping is the only access boundary.
+Authentication lives in the atlas, not the backend. The atlas issues JWTs via Next.js API routes under `atlas/app/api/auth/`, stores them in HttpOnly cookies, and validates them in a proxy layer (`atlas/proxy.ts`). The backend trusts the atlas — it does not verify tokens itself. All backend endpoints require a `college` query parameter, and Cypher queries are scoped by that parameter. There is no user-level authorization in the backend; college scoping is the only access boundary.
 
 This is appropriate for the product's current stage. The threat model is institutional rather than adversarial: the product is a single-tenant intelligence layer where the principal trust boundary is between colleges, not between users. As the product matures and integrates with multi-stakeholder institutional environments, this boundary will need to be reinforced.
 
