@@ -32,7 +32,7 @@ export type StudentQueryResponse = {
 };
 
 export async function getStudents(college: string): Promise<ApiStudentSummary[]> {
-  const res = await fetch(`${API_BASE}/students?college=${encodeURIComponent(college)}`);
+  const res = await fetch(`${API_BASE}/students/?college=${encodeURIComponent(college)}`);
   if (!res.ok) throw new Error("Failed to fetch students");
   return res.json();
 }
