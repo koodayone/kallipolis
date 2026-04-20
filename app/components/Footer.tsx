@@ -92,7 +92,7 @@ export default function Footer() {
           <div className="flex gap-6">
             <a href="#" className={bottomLinkClass}>Privacy</a>
             <a href="#" className={bottomLinkClass}>Terms</a>
-            <a href="#" className={bottomLinkClass}>Contact</a>
+            <a href="mailto:dayonekoo@kallipolis.us" className={bottomLinkClass}>Contact</a>
           </div>
         </div>
       </div>
