@@ -115,7 +115,7 @@ export default function StateAtlas({ activeIndex, opacity }: Props) {
                 Regional Insights
               </p>
               <p style={{ fontSize: 18, fontWeight: 500, lineHeight: 1.6, color: "rgba(255,255,255,0.85)", margin: 0 }}>
-                Strategize workforce programs shaped by regional economic signals.
+                Strategize workforce programs shaped by regional economic priorities.
               </p>
             </div>
           </div>
