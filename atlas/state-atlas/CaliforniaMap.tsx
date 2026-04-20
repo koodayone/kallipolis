@@ -16,11 +16,20 @@ const BASE_SCALE = 2500;
 
 const DIAMOND = 6;
 
+// MVP scope: one anchor college per CCC regional consortium. The State Atlas
+// surfaces the eight consortia as first-class units; each consortium is
+// represented on the map by a single college whose College Atlas is
+// production-ready. The set will expand (and eventually dissolve into the
+// full college list) as additional institutions reach that bar.
 export const FEATURED_COLLEGES = new Set([
-  "lassen", "shasta", "redwoods", "mendocino", "butte", "saccc", "laketahoe",
-  "foothill", "laney", "sequoias", "merced",
-  "montereypen", "hancock", "oxnard", "desert", "imperial", "sandiegocity",
-  "compton", "irvinevalley",
+  "shasta",        // North / Far North
+  "foothill",      // Bay Area
+  "sequoias",      // Central Valley / Mother Lode
+  "oxnard",        // South Central Coast
+  "compton",       // Los Angeles
+  "irvinevalley",  // Orange County
+  "desert",        // Inland Empire / Desert
+  "sandiegocity",  // San Diego / Imperial
 ]);
 
 type Props = {

@@ -16,6 +16,7 @@
  *   - every College.regionId resolves to a Region in CALIFORNIA_REGIONS
  *   - each Region.collegeCount equals the count of colleges with that regionId
  *   - COUNTY_TO_REGION indexes every county to its owning region
+ *   - FEATURED_COLLEGES has exactly one anchor per consortium (MVP scope)
  */
 
 import { describe, it, expect } from "vitest";
@@ -24,6 +25,7 @@ import {
   CALIFORNIA_COLLEGES,
   COUNTY_TO_REGION,
 } from "./californiaColleges";
+import { FEATURED_COLLEGES } from "./CaliforniaMap";
 
 const CALIFORNIA_COUNTIES = [
   "Alameda", "Alpine", "Amador", "Butte", "Calaveras", "Colusa", "Contra Costa",
@@ -94,6 +96,28 @@ describe("CALIFORNIA_COLLEGES region assignments", () => {
         count: actual,
       });
     }
+  });
+});
+
+describe("FEATURED_COLLEGES (MVP anchor set)", () => {
+  const regionIds = CALIFORNIA_REGIONS.map((r) => r.id);
+  const byId = new Map(CALIFORNIA_COLLEGES.map((c) => [c.id, c]));
+
+  it("contains exactly 8 anchor colleges, one per consortium", () => {
+    expect(FEATURED_COLLEGES.size).toBe(8);
+  });
+
+  it("resolves every featured college id to a real college", () => {
+    for (const id of FEATURED_COLLEGES) {
+      expect(byId.get(id), `featured id "${id}" is not in CALIFORNIA_COLLEGES`).toBeDefined();
+    }
+  });
+
+  it("covers every consortium exactly once", () => {
+    const featuredRegions = Array.from(FEATURED_COLLEGES)
+      .map((id) => byId.get(id)!.regionId)
+      .sort();
+    expect(featuredRegions).toEqual([...regionIds].sort());
   });
 });
 
