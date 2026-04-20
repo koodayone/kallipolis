@@ -25,11 +25,11 @@ export default function Nav() {
     ? "text-sm uppercase tracking-widest text-[#1a1a2e] hover:text-[#1a1a2e]/60 transition-colors"
     : "text-sm uppercase tracking-widest text-white hover:text-white/60 transition-colors";
 
-  const bgStyle = scrolled
-    ? isLightPage
-      ? { backgroundColor: "#F5F2EB", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }
-      : { backgroundColor: "#060d1f", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }
-    : { backgroundColor: "transparent" };
+  const bgStyle = isLightPage
+    ? { backgroundColor: "#F5F2EB" }
+    : scrolled
+      ? { backgroundColor: "#060d1f", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }
+      : { backgroundColor: "transparent" };
 
   return (
     <nav
@@ -80,7 +80,7 @@ export default function Nav() {
       </div>
 
       {/* Slide-down menu — right-aligned, compact */}
-      <div style={{ position: "absolute", right: 0, top: 64, background: scrolled ? (isLightPage ? "#F5F2EB" : "#060d1f") : "transparent", borderRadius: "0 0 0 8px", zIndex: 50, transition: "background 0.3s ease" }}>
+      <div style={{ position: "absolute", right: 0, top: 64, background: isLightPage ? "#F5F2EB" : (scrolled ? "#060d1f" : "transparent"), borderRadius: "0 0 0 8px", zIndex: 50, transition: "background 0.3s ease" }}>
         <div
           style={{
             maxHeight: open ? 240 : 0,
