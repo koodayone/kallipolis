@@ -41,7 +41,7 @@ export default function Footer() {
           <div className="flex flex-1" style={{ paddingTop: 5, position: "relative" }}>
             <div className="flex flex-col gap-3" style={{ position: "absolute", left: "44%", transform: "translateX(-50%)" }}>
               <h4 className={headingClass} style={{ fontFamily: "var(--font-days-one)" }}>About</h4>
-              <Link href="/mission" className={linkClass} style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", fontSize: 10, display: "inline-flex", alignItems: "center", gap: 5 }}>
+              <Link href="/mission" className={linkClass} style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", fontSize: 12, display: "inline-flex", alignItems: "center", gap: 5 }}>
                 Mission
                 <svg width="10" height="12" viewBox="0 0 20 24" fill="currentColor">
                   <polygon points="10,1 6,7 14,7" />
@@ -53,7 +53,7 @@ export default function Footer() {
             </div>
             <div className="flex flex-col gap-3" style={{ marginLeft: "auto", marginRight: "3%" }}>
               <h4 className={headingClass} style={{ fontFamily: "var(--font-days-one)" }}>Documentation</h4>
-              <Link href="/atlas" className={linkClass} style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", fontSize: 10, display: "inline-flex", alignItems: "center", gap: 6 }}>
+              <Link href="/atlas" className={linkClass} style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", fontSize: 12, display: "inline-flex", alignItems: "center", gap: 6 }}>
                 Atlas
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
                   <path d="M12 2L3 7.5 12 13l9-5.5L12 2z" fill="currentColor" opacity="0.85" />
@@ -61,14 +61,14 @@ export default function Footer() {
                   <path d="M12 13v9L3 16.5v-9L12 13z" fill="currentColor" opacity="0.4" />
                 </svg>
               </Link>
-              <Link href="/partnerships" className={linkClass} style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", fontSize: 10, display: "inline-flex", alignItems: "center", gap: 6 }}>
+              <Link href="/partnerships" className={linkClass} style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", fontSize: 12, display: "inline-flex", alignItems: "center", gap: 6 }}>
                 Partnerships
                 <svg width="10" height="10" viewBox="3 4 18 16" fill="none">
                   <circle cx="9.5" cy="14" r="5.5" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.85" />
                   <circle cx="14.5" cy="10" r="5.5" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.85" />
                 </svg>
               </Link>
-              <Link href="/sources" className={linkClass} style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", fontSize: 10, display: "inline-flex", alignItems: "center", gap: 6 }}>
+              <Link href="/sources" className={linkClass} style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", fontSize: 12, display: "inline-flex", alignItems: "center", gap: 6 }}>
                 Sources
                 <svg width="10" height="10" viewBox="2 2 20 20" fill="none">
                   <path d="M12 2 L13 10 L12 9 L11 10 Z" fill="currentColor" />
