@@ -87,9 +87,11 @@ Two endpoints stream their output to the atlas using server-sent events: the par
 
 ## Authentication and scoping
 
-Authentication lives in the atlas, not the backend. The atlas issues JWTs via Next.js API routes under `atlas/app/api/auth/`, stores them in HttpOnly cookies, and validates them in a proxy layer (`atlas/proxy.ts`). The backend trusts the atlas — it does not verify tokens itself. All backend endpoints require a `college` query parameter, and Cypher queries are scoped by that parameter. There is no user-level authorization in the backend; college scoping is the only access boundary.
+The preview deployment ships without authentication. The atlas serves the State Atlas at the root route; any visitor can navigate to any college's College Atlas and exercise the same flows, including the streaming generation endpoints. All backend endpoints require a `college` query parameter, and Cypher queries in `backend/ontology/schema.py` and each feature's `query.py` are scoped by that parameter. College scoping is the only access boundary, and it is currently enforced by the atlas passing the correct college name — the backend trusts the origin.
 
-This is appropriate for the product's current stage. The threat model is institutional rather than adversarial: the product is a single-tenant intelligence layer where the principal trust boundary is between colleges, not between users. As the product matures and integrates with multi-stakeholder institutional environments, this boundary will need to be reinforced.
+This is appropriate for the product's current stage. The preview is a pre-pilot GTM instrument operating on entirely public data (DataMart, Centers of Excellence, EDD, college catalogs), so the threat model has no adversarial component yet. Persistence is deferred alongside authentication: saves are disabled in the preview with a tooltip directing prospects to contact for pilot activation, and in-session drafts live in React state only. When the first pilot signs, authentication, server-side saves, and per-user state return together. The code path for those features is intentionally present in skeleton form — `atlas/session/SessionDraftsContext.tsx` holds the session boundary, and the `NEXT_PUBLIC_AUTH_ENABLED` flag gates preview-specific UI — so activation is additive rather than a refactor.
+
+See [Deployment](./deployment.md) for how the preview topology operationalizes this posture.
 
 ## What lives where
 
@@ -125,4 +127,5 @@ The landing page lives at the repository root because it was the first thing bui
 
 - [Graph Model](./graph-model.md) — The full Neo4j schema, constraints, and the relationship types that encode the supply-demand chain
 - [AI Integration](./ai-integration.md) — Where and why each LLM is called, and what the constraints on each call are
+- [Deployment](./deployment.md) — How this system ships to production: Cloudflare Pages, a GCP VM, Caddy-terminated TLS, nightly backups to Cloud Storage
 - [Pipeline Overview](../pipeline/) — How institutional data enters the graph

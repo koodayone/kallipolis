@@ -21,7 +21,6 @@ import { findScrollParent } from "@/ui/QueryShell";
 import { PREVIEW_MODE } from "@/preview/mode";
 import { getSeededProposals } from "@/preview/seededPartnerships";
 import { getSeededSwpProjects } from "@/preview/seededSwpProjects";
-import { useSessionDrafts } from "@/college-atlas/session/SessionDraftsContext";
 import { buildSwpRequest, type SwpDefaults } from "./buildSwpRequest";
 import SwpBuildMode from "./SwpBuildMode";
 import SwpManageMode from "./SwpManageMode";
@@ -39,7 +38,6 @@ type Props = {
 
 export default function StrongWorkforceView({ school, onBack }: Props) {
   const rootRef = useRef<HTMLDivElement>(null);
-  const sessionDrafts = useSessionDrafts();
   const [mode, setMode] = useState<Mode>("build");
   const [phase, setPhase] = useState<SwpPhase>("selection");
 
@@ -47,7 +45,6 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
   const [savedProposals, setSavedProposals] = useState<SavedProposal[]>([]);
   const [buildQuery, setBuildQuery] = useState("");
   const [expandedBuildId, setExpandedBuildId] = useState<string | null>(null);
-  const [capturedSwpKey, setCapturedSwpKey] = useState<string | null>(null);
 
   // Draft / streaming state — holds the in-flight or completed SWP project.
   const [selectedPartnership, setSelectedPartnership] = useState<SavedProposal | null>(null);
@@ -65,27 +62,27 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
 
   const [userName, setUserName] = useState("");
 
-  // Load saved partnerships + user name on mount. In preview mode the
-  // partnerships list is seeded content plus whatever the visitor drafted
-  // in their current session in the Partnerships view.
+  // Load saved partnerships on mount. Preview surfaces the seeded set
+  // only — session-generated drafts are intentionally excluded from the
+  // SWP picker to keep the preview's "nothing persists" story coherent.
   useEffect(() => {
     if (PREVIEW_MODE) {
-      setSavedProposals([...sessionDrafts.partnerships, ...getSeededProposals(school.name)]);
+      setSavedProposals(getSeededProposals(school.name));
     } else {
       setSavedProposals(getSavedProposals(school.name));
     }
-  }, [school.name, sessionDrafts.partnerships]);
+  }, [school.name]);
 
   // Reload saved SWP projects when switching to manage mode. Preview
-  // surfaces seeded artifacts plus any session-drafted SWPs.
+  // surfaces seeded artifacts only.
   useEffect(() => {
     if (mode !== "manage") return;
     if (PREVIEW_MODE) {
-      setSavedSwpProjects([...sessionDrafts.swpProjects, ...getSeededSwpProjects(school.name)]);
+      setSavedSwpProjects(getSeededSwpProjects(school.name));
     } else {
       setSavedSwpProjects(getSavedSwpProjects(school.name));
     }
-  }, [mode, school.name, sessionDrafts.swpProjects]);
+  }, [mode, school.name]);
 
   // Assemble the final SwpProject from streamed sections once the stream
   // finishes cleanly. The defaults captured when the draft started
@@ -162,40 +159,13 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
 
   const handleSave = useCallback(() => {
     if (swpSaved || !selectedPartnership || !swpProject) return;
-    // In preview mode, persistence is session-only — no localStorage write.
-    if (PREVIEW_MODE) {
-      const draft: SavedSwpProject = {
-        id: `session-swp-${selectedPartnership.id}-${Date.now()}`,
-        project: swpProject,
-        partnershipId: selectedPartnership.id,
-        collegeId: school.name,
-        savedAt: new Date().toISOString(),
-      };
-      sessionDrafts.addSwpDraft(draft);
-    } else {
+    // In preview mode, Save is a no-op — visitors see the generated artifact
+    // but nothing persists anywhere. Persistence returns with pilot-tier auth.
+    if (!PREVIEW_MODE) {
       saveSwpProject(school.name, swpProject, selectedPartnership.id);
     }
     setSwpSaved(true);
-  }, [swpSaved, selectedPartnership, swpProject, school.name, sessionDrafts]);
-
-  // Preview: auto-capture a completed SWP project into session state so it
-  // surfaces in Manage Mode without requiring a Save click.
-  useEffect(() => {
-    if (!PREVIEW_MODE) return;
-    if (phase !== "complete" || !swpProject || !selectedPartnership || swpError) return;
-    const key = `${selectedPartnership.id}|${swpProject.partnership_type}`;
-    if (capturedSwpKey === key) return;
-
-    const draft: SavedSwpProject = {
-      id: `session-swp-${key}-${Date.now()}`,
-      project: swpProject,
-      partnershipId: selectedPartnership.id,
-      collegeId: school.name,
-      savedAt: new Date().toISOString(),
-    };
-    sessionDrafts.addSwpDraft(draft);
-    setCapturedSwpKey(key);
-  }, [phase, swpProject, selectedPartnership, swpError, school.name, capturedSwpKey, sessionDrafts]);
+  }, [swpSaved, selectedPartnership, swpProject, school.name]);
 
   const handleRetry = useCallback(() => {
     if (selectedPartnership) handleDraft(selectedPartnership);

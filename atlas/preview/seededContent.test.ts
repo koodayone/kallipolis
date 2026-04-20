@@ -1,15 +1,16 @@
 /**
- * Covers:
- *   - atlas/preview/seededPartnerships.ts
- *   - atlas/preview/seededSwpProjects.ts
+ * Coverage:
+ *   - atlas/preview/seededPartnerships.ts schema-version invariant
+ *   - atlas/preview/seededPartnerships.ts stable-slug id invariant
+ *   - atlas/preview/seededSwpProjects.ts partnershipId cross-reference
  *
  * Guards the schema contract between seeded preview content and the
  * runtime save types. If PROPOSAL_SCHEMA_VERSION bumps, every seeded
  * partnership must be regenerated (see atlas/preview/README.md); this
- * test fails the build until the seeds catch up.
- *
- * Also verifies SWP seeds reference partnership seeds by id — a stale
- * partnershipId would silently break the Manage Mode link-back.
+ * test fails the build until the seeds catch up. A stale partnershipId
+ * on a seeded SWP would silently break the Manage Mode link-back, so
+ * we also verify every SWP seed references a seeded partnership id for
+ * the same college.
  */
 
 import { describe, it, expect } from "vitest";

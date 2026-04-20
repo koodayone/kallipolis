@@ -5,7 +5,7 @@ import { useParams, usePathname, useRouter } from "next/navigation";
 import { buildAtlasScene, type FormKey, FORM_URL_SLUGS } from "@/college-atlas/scene";
 import { getCollegeAtlasConfig } from "@/config/collegeAtlasConfigs";
 import { HomeSceneContext, type ProjectedPosition } from "@/college-atlas/homeSceneContext";
-import { SessionDraftsProvider } from "@/college-atlas/session/SessionDraftsContext";
+import { SessionDraftsProvider } from "@/session/SessionDraftsContext";
 // Direct import, not dynamic(ssr:false): the parent is "use client" so
 // the whole subtree is client-bundled anyway, and the Three.js init
 // inside CollegeAtlasCanvas is gated by useEffect — SSR renders a bare
