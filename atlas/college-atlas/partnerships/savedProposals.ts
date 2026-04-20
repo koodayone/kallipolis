@@ -1,6 +1,6 @@
 import type { ApiTargetedProposal } from "@/college-atlas/partnerships/api";
 
-const PROPOSAL_SCHEMA_VERSION = 8;
+export const PROPOSAL_SCHEMA_VERSION = 8;
 
 export type SavedProposal = {
   id: string;

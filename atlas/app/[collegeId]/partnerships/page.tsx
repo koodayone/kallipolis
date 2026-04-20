@@ -1,33 +1,10 @@
-"use client";
+import { FEATURED_COLLEGES } from "@/state-atlas/featuredColleges";
+import ClientPage from "./ClientPage";
 
-import { useParams, useRouter } from "next/navigation";
-import { motion } from "framer-motion";
-import PartnershipsView from "@/college-atlas/partnerships/PartnershipsView";
-import { getCollegeAtlasConfig } from "@/config/collegeAtlasConfigs";
+export async function generateStaticParams() {
+  return Array.from(FEATURED_COLLEGES).map((collegeId) => ({ collegeId }));
+}
 
-export default function PartnershipsRoute() {
-  const { collegeId } = useParams<{ collegeId: string }>();
-  const router = useRouter();
-  const config = getCollegeAtlasConfig(collegeId);
-
-  if (!config) return null;
-
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.45 }}
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 10,
-        background: "#060d1f",
-        overflowY: "auto",
-        overscrollBehavior: "none",
-      }}
-    >
-      <PartnershipsView school={config} onBack={() => router.push(`/${collegeId}`)} />
-    </motion.div>
-  );
+export default function Page() {
+  return <ClientPage />;
 }

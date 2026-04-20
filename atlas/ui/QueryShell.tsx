@@ -53,10 +53,6 @@ export default function QueryShell<T>({
     loadInitialData()
       .catch((e) => setError(e instanceof Error ? e.message : String(e)))
       .finally(() => setLoading(false));
-    fetch("/api/auth/me")
-      .then((r) => r.json())
-      .then((data) => { if (data?.user?.name) setUserName(data.user.name.split(" ")[0]); })
-      .catch(() => {});
     // Load once on mount. loadInitialData is omitted from deps because
     // parents pass fresh function identities on every render; including
     // it here would refetch on every parent re-render. Parents that want

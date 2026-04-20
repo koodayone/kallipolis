@@ -1,4 +1,5 @@
 import logging
+import os
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -22,9 +23,14 @@ app = FastAPI(
     version="0.1.0",
 )
 
+cors_origins = [
+    o.strip()
+    for o in os.environ.get("CORS_ORIGINS", "http://localhost:3001").split(",")
+    if o.strip()
+]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3001"],
+    allow_origins=cors_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

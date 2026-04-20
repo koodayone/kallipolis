@@ -126,7 +126,7 @@ async def _assign_batch(
         async with sem:
             try:
                 response = await client.aio.models.generate_content(
-                    model="gemini-2.5-flash",
+                    model=os.environ.get("GEMINI_MODEL", "gemini-2.5-flash"),
                     contents=user_msg,
                     config=types.GenerateContentConfig(
                         system_instruction=system,

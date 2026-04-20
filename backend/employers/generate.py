@@ -77,9 +77,31 @@ _SOC_RE = re.compile(r"\b(\d{2}-\d{4})\b")
 # choice that still cuts request count 3× vs. the prior value of 30.
 BATCH_SIZE = 100
 
+# Model used for employer LLM cleanup. Overridable via GEMINI_CLEANUP_MODEL
+# so we can route around service-side congestion on any one endpoint
+# (`gemini-2.5-flash` has periodic 503 storms; `gemini-2.5-flash-lite`
+# is a lighter-weight alternative on a different capacity pool).
+# Read at call time — load_dotenv runs in __main__ below, which happens
+# AFTER module-level evaluation, so a module-level constant would
+# miss .env overrides.
+def _gemini_model() -> str:
+    return os.environ.get("GEMINI_CLEANUP_MODEL", "gemini-2.5-flash")
+
 # Retry policy for transient Gemini failures.
 _GEMINI_MAX_ATTEMPTS = 3
 _GEMINI_BACKOFF_BASE_SECONDS = 2.0
+
+# 503 UNAVAILABLE responses from Gemini 2.5 Flash are most often TPM
+# quota exhaustion disguised as "high demand" — a single batch can
+# burn 30–50k output tokens, and sending 7 back-to-back trips the
+# per-minute ceiling on shared tiers. A minimum inter-batch delay
+# smooths the request rate enough to stay under quota.
+_INTER_BATCH_DELAY_SECONDS = 20.0
+
+# When Gemini returns 503 UNAVAILABLE specifically, treat it as a
+# rate-limit signal: wait longer than the generic backoff so the
+# per-minute token bucket has time to refill.
+_GEMINI_503_BACKOFF_SECONDS = 65.0
 
 EMPLOYERS_PATH = Path(__file__).parent / "employers.json"
 OCCUPATIONS_PATH = Path(__file__).parent.parent / "occupations" / "occupations.json"
@@ -399,7 +421,7 @@ def _create_occupation_cache(
     """
     try:
         cache = client.caches.create(
-            model="gemini-2.5-flash",
+            model=_gemini_model(),
             config=types_module.CreateCachedContentConfig(
                 contents=[
                     types_module.Content(
@@ -496,7 +518,7 @@ def _llm_cleanup(
             if cached_prefix_name:
                 config_kwargs["cached_content"] = cached_prefix_name
             response = client.models.generate_content(
-                model="gemini-2.5-flash",
+                model=_gemini_model(),
                 contents=prompt,
                 config=types.GenerateContentConfig(**config_kwargs),
             )
@@ -505,7 +527,12 @@ def _llm_cleanup(
         except Exception as e:
             last_error = e
             if attempt < _GEMINI_MAX_ATTEMPTS:
-                delay = _GEMINI_BACKOFF_BASE_SECONDS ** attempt
+                is_503 = "503" in str(e) or "UNAVAILABLE" in str(e)
+                delay = (
+                    _GEMINI_503_BACKOFF_SECONDS
+                    if is_503
+                    else _GEMINI_BACKOFF_BASE_SECONDS ** attempt
+                )
                 logger.warning(
                     f"  LLM cleanup attempt {attempt}/{_GEMINI_MAX_ATTEMPTS} "
                     f"failed: {e}. Retrying in {delay:.1f}s"
@@ -754,8 +781,15 @@ def generate_for_college(
 
     selected = []
     failed_batches = 0
+    total_batches = (len(deduped) + BATCH_SIZE - 1) // BATCH_SIZE
     for i in range(0, len(deduped), BATCH_SIZE):
         batch = deduped[i:i + BATCH_SIZE]
+        batch_idx = i // BATCH_SIZE
+        if batch_idx > 0:
+            # Smooth the request rate to stay under Gemini's per-minute TPM
+            # quota. See _INTER_BATCH_DELAY_SECONDS.
+            time.sleep(_INTER_BATCH_DELAY_SECONDS)
+        logger.info(f"  LLM cleanup batch {batch_idx + 1}/{total_batches} ({len(batch)} employers)")
         try:
             cleaned = _llm_cleanup(
                 batch,
@@ -768,7 +802,7 @@ def generate_for_college(
             failed_batches += 1
             failing_names = [emp["name"] for emp in batch]
             logger.error(
-                f"  LLM cleanup batch {i // BATCH_SIZE} dropped "
+                f"  LLM cleanup batch {batch_idx} dropped "
                 f"({len(batch)} employers): {e}. Names: {failing_names}"
             )
     logger.info(f"  After LLM cleanup: {len(selected)} employers (from {len(deduped)})")
@@ -906,8 +940,15 @@ def generate_for_region(
 
     selected = []
     failed_batches = 0
+    total_batches = (len(deduped) + BATCH_SIZE - 1) // BATCH_SIZE
     for i in range(0, len(deduped), BATCH_SIZE):
         batch = deduped[i:i + BATCH_SIZE]
+        batch_idx = i // BATCH_SIZE
+        if batch_idx > 0:
+            # Smooth the request rate to stay under Gemini's per-minute TPM
+            # quota. See _INTER_BATCH_DELAY_SECONDS.
+            time.sleep(_INTER_BATCH_DELAY_SECONDS)
+        logger.info(f"  LLM cleanup batch {batch_idx + 1}/{total_batches} ({len(batch)} employers)")
         try:
             cleaned = _llm_cleanup(
                 batch,

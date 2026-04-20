@@ -7,10 +7,13 @@ import {
   streamTargetedProposal,
 } from "@/college-atlas/partnerships/api";
 import type { ApiPartnershipOpportunity, ApiTargetedProposal } from "@/college-atlas/partnerships/api";
-import { getSavedProposals, type SavedProposal } from "@/college-atlas/partnerships/savedProposals";
+import { getSavedProposals, PROPOSAL_SCHEMA_VERSION, type SavedProposal } from "@/college-atlas/partnerships/savedProposals";
 import AtlasHeader from "@/ui/AtlasHeader";
 import KallipolisBrand from "@/ui/KallipolisBrand";
 import { findScrollParent } from "@/ui/QueryShell";
+import { PREVIEW_MODE } from "@/preview/mode";
+import { getSeededProposals } from "@/preview/seededPartnerships";
+import { useSessionDrafts } from "@/college-atlas/session/SessionDraftsContext";
 import ProposalFlow from "./ProposalFlow";
 import PartnershipBuildMode from "./PartnershipBuildMode";
 import PartnershipManageMode from "./PartnershipManageMode";
@@ -24,6 +27,7 @@ type Props = { school: SchoolConfig; onBack: () => void };
 
 export default function PartnershipsView({ school, onBack }: Props) {
   const rootRef = useRef<HTMLDivElement>(null);
+  const sessionDrafts = useSessionDrafts();
 
   // Phase state — drives the selection screen → ProposalFlow handoff.
   const [phase, setPhase] = useState<Phase>("selection");
@@ -32,6 +36,7 @@ export default function PartnershipsView({ school, onBack }: Props) {
   const [engagementType, setEngagementType] = useState("");
   const [proposal, setProposal] = useState<ApiTargetedProposal | null>(null);
   const [proposalError, setProposalError] = useState<string | null>(null);
+  const [capturedProposalKey, setCapturedProposalKey] = useState<string | null>(null);
 
   // Build mode state — landscape data + search query + row expansion.
   const [landscape, setLandscape] = useState<ApiPartnershipOpportunity[]>([]);
@@ -62,18 +67,42 @@ export default function PartnershipsView({ school, onBack }: Props) {
       .then((data) => setLandscape(data.opportunities))
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
-    fetch("/api/auth/me")
-      .then((r) => r.json())
-      .then((data) => { if (data?.user?.name) setUserName(data.user.name.split(" ")[0]); })
-      .catch(() => {});
   }, [school.name]);
 
-  // Reload saved proposals when switching to manage mode.
+  // Reload saved proposals when switching to manage mode. In preview mode,
+  // saves are ephemeral — show seeded partnerships plus any session drafts
+  // the visitor has generated so far.
   useEffect(() => {
-    if (mode === "manage") {
+    if (mode !== "manage") return;
+    if (PREVIEW_MODE) {
+      setSavedProposals([...sessionDrafts.partnerships, ...getSeededProposals(school.name)]);
+    } else {
       setSavedProposals(getSavedProposals(school.name));
     }
-  }, [mode, school.name]);
+  }, [mode, school.name, sessionDrafts.partnerships]);
+
+  // Preview mode: auto-capture a completed proposal into session state so
+  // it becomes selectable in the Strong Workforce flow without requiring
+  // a Save click (Save is disabled in preview). Guarded by a per-proposal
+  // key so we don't re-capture on re-renders.
+  useEffect(() => {
+    if (!PREVIEW_MODE) return;
+    if (phase !== "complete" || !proposal || !selectedEmployer) return;
+    const key = `${selectedEmployer.name}|${engagementType}|${proposal.partnership_type}`;
+    if (capturedProposalKey === key) return;
+
+    const draft: SavedProposal = {
+      id: `session-${key}-${Date.now()}`,
+      proposal,
+      engagementType,
+      collegeId: school.name,
+      savedAt: new Date().toISOString(),
+      status: "saved",
+      schemaVersion: PROPOSAL_SCHEMA_VERSION,
+    };
+    sessionDrafts.addPartnershipDraft(draft);
+    setCapturedProposalKey(key);
+  }, [phase, proposal, selectedEmployer, engagementType, school.name, capturedProposalKey, sessionDrafts]);
 
   // Expand/collapse a row while preserving the scroll position of the
   // nearest scrollable ancestor — avoids jumping when the row height changes.

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -21,7 +20,6 @@ type Props = {
 const DEFAULT_NAV: NavItem[] = [{ label: "State Atlas", href: "/state" }];
 
 export default function AtlasMenu({ navItems = DEFAULT_NAV }: Props) {
-  const router = useRouter();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -34,11 +32,6 @@ export default function AtlasMenu({ navItems = DEFAULT_NAV }: Props) {
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
-
-  async function handleLogout() {
-    await fetch("/api/auth/logout", { method: "POST" });
-    router.push("/login");
-  }
 
   return (
     <div ref={ref} style={{ position: "relative" }}>
@@ -151,35 +144,6 @@ export default function AtlasMenu({ navItems = DEFAULT_NAV }: Props) {
                 </button>
               );
             })}
-            <button
-              onClick={handleLogout}
-              style={{
-                display: "block",
-                width: "100%",
-                textAlign: "left",
-                padding: "14px 20px",
-                color: "rgba(255,255,255,0.7)",
-                fontSize: "13px",
-                fontWeight: 500,
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-                fontFamily: FONT,
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                transition: "color 0.1s, background 0.1s",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = "#ffffff";
-                e.currentTarget.style.background = "rgba(255,255,255,0.06)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = "rgba(255,255,255,0.7)";
-                e.currentTarget.style.background = "transparent";
-              }}
-            >
-              Log Out
-            </button>
           </motion.div>
         )}
       </AnimatePresence>

@@ -13,25 +13,12 @@ import AtlasHeader from "@/ui/AtlasHeader";
 import RisingSun from "@/ui/RisingSun";
 import { College, CALIFORNIA_REGIONS, CALIFORNIA_COLLEGES } from "@/state-atlas/californiaColleges";
 import { getCollegeAtlasConfig } from "@/config/collegeAtlasConfigs";
-import AtlasMenu from "@/auth/AtlasMenu";
-import type { SchoolConfig } from "@/config/schoolConfig";
 
 export default function StateAtlas() {
   const router = useRouter();
-  const [userSchool, setUserSchool] = useState<SchoolConfig | null>(null);
-  const [userCollegeId, setUserCollegeId] = useState<string | null>(null);
-
-  useEffect(() => {
-    fetch("/api/auth/me")
-      .then((r) => r.json())
-      .then((data) => {
-        if (data.user?.collegeId) {
-          setUserCollegeId(data.user.collegeId);
-          setUserSchool(getCollegeAtlasConfig(data.user.collegeId) ?? null);
-        }
-      })
-      .catch(() => {});
-  }, []);
+  // The State Atlas is the doorway into the product. With auth removed
+  // there is no concept of a user-specific "home college" — every visitor
+  // sees the system-level map and picks a college from it.
 
   const [hoveredRegionId, setHoveredRegionId] = useState<string | null>(null);
   const [hoveredCollege, setHoveredCollege] = useState<College | null>(null);
@@ -109,22 +96,8 @@ export default function StateAtlas() {
       >
         <AtlasHeader
           position="static"
-          school={userSchool ?? undefined}
           title="State Atlas"
-          onBack={() => userCollegeId ? router.push(`/${userCollegeId}`) : router.back()}
-          rightSlot={
-            <>
-              <KallipolisBrand />
-              <AtlasMenu navItems={[{ label: "Home Atlas", href: userCollegeId ? `/${userCollegeId}` : "/", icon: (
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 2L3 7.5 12 13l9-5.5L12 2z" fill={userSchool?.brandColorNeon ?? "rgba(255,255,255,0.3)"} opacity="0.85" />
-                  <path d="M12 13v9l9-5.5v-9L12 13z" fill={userSchool?.brandColorNeon ?? "rgba(255,255,255,0.3)"} opacity="0.55" />
-                  <path d="M12 13v9L3 16.5v-9L12 13z" fill={userSchool?.brandColorNeon ?? "rgba(255,255,255,0.3)"} opacity="0.4" />
-                  <path d="M12 2L3 7.5v9L12 22l9-5.5v-9L12 2z M12 13L3 7.5 M12 13l9-5.5 M12 13v9" stroke="rgba(255,255,255,0.55)" strokeWidth="0.7" />
-                </svg>
-              ) }]} />
-            </>
-          }
+          rightSlot={<KallipolisBrand />}
         />
 
         {/* Body */}

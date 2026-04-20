@@ -2,15 +2,17 @@
 
 import { useRef, useEffect, useState, useCallback, useMemo, type ReactNode } from "react";
 import { useParams, usePathname, useRouter } from "next/navigation";
-import dynamic from "next/dynamic";
 import { buildAtlasScene, type FormKey, FORM_URL_SLUGS } from "@/college-atlas/scene";
 import { getCollegeAtlasConfig } from "@/config/collegeAtlasConfigs";
 import { HomeSceneContext, type ProjectedPosition } from "@/college-atlas/homeSceneContext";
-
-const CollegeAtlasCanvas = dynamic(
-  () => import("@/college-atlas/CollegeAtlasCanvas"),
-  { ssr: false },
-);
+import { SessionDraftsProvider } from "@/college-atlas/session/SessionDraftsContext";
+// Direct import, not dynamic(ssr:false): the parent is "use client" so
+// the whole subtree is client-bundled anyway, and the Three.js init
+// inside CollegeAtlasCanvas is gated by useEffect — SSR renders a bare
+// <canvas> element safely. The prior dynamic wrapper caused the canvas
+// to vanish client-side under `output: "export"` because the RSC
+// bailout template wasn't being replaced during hydration.
+import CollegeAtlasCanvas from "@/college-atlas/CollegeAtlasCanvas";
 
 export default function CollegeAtlasLayout({ children }: { children: ReactNode }) {
   const { collegeId } = useParams<{ collegeId: string }>();
@@ -23,7 +25,12 @@ export default function CollegeAtlasLayout({ children }: { children: ReactNode }
   const [hoveredForm, setHoveredForm] = useState<FormKey | null>(null);
 
   const homePath = `/${collegeId}`;
-  const isHome = pathname === homePath;
+  // Normalize trailing slash — `trailingSlash: true` in next.config causes
+  // usePathname() to return `/irvinevalley/` while homePath is constructed
+  // without one, which would make `isHome` false at the home route and
+  // leave the Three.js canvas at opacity 0.
+  const normalizedPathname = pathname?.replace(/\/$/, "") || pathname;
+  const isHome = normalizedPathname === homePath;
 
   // Redirect if college not found
   useEffect(() => {
@@ -115,7 +122,9 @@ export default function CollegeAtlasLayout({ children }: { children: ReactNode }
       }}
     >
       {/* Persistent Three.js canvas — fades out when focused on a form,
-          stays mounted across child route transitions. */}
+          stays mounted across child route transitions. Directly imported
+          (not dynamic) because Three.js init is gated by useEffect and
+          therefore only runs on the client regardless. */}
       <div style={{ position: "fixed", inset: 0, zIndex: 0 }}>
         <CollegeAtlasCanvas
           onFormClick={handleFormClick}
@@ -127,7 +136,9 @@ export default function CollegeAtlasLayout({ children }: { children: ReactNode }
       </div>
 
       <HomeSceneContext.Provider value={homeSceneState}>
-        {children}
+        <SessionDraftsProvider key={collegeId} collegeId={collegeId}>
+          {children}
+        </SessionDraftsProvider>
       </HomeSceneContext.Provider>
     </div>
   );

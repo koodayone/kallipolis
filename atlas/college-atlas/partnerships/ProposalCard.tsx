@@ -9,6 +9,11 @@ import OccupationRow from "@/college-atlas/occupations/OccupationRow";
 import DepartmentRow from "@/college-atlas/courses/DepartmentRow";
 import StudentRow from "@/college-atlas/students/StudentRow";
 import ColumnHeaders from "@/ui/ColumnHeaders";
+import { PREVIEW_MODE } from "@/preview/mode";
+import { reportFlag } from "@/preview/reportFlag";
+
+const SAVE_PREVIEW_TOOLTIP =
+  "Saving is available to pilot partners — contact us to activate for your college.";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
@@ -23,6 +28,9 @@ type Props = {
   collegeId?: string;
   engagementType?: string;
   onSaved?: (saved: SavedProposal) => void;
+  // Override preview detection for tests or special-case rendering. Defaults
+  // to the build-time PREVIEW_MODE flag.
+  isPreviewMode?: boolean;
 };
 
 function SectionHeader({ children, color }: { children: React.ReactNode; color?: string }) {
@@ -53,7 +61,7 @@ function FlagIcon() {
   );
 }
 
-export default function ProposalCard({ proposal, brandColor, onDismiss, onReject, onRefine, collegeId, engagementType, onSaved }: Props) {
+export default function ProposalCard({ proposal, brandColor, onDismiss, onReject, onRefine, collegeId, engagementType, onSaved, isPreviewMode = PREVIEW_MODE }: Props) {
   const [state, setState] = useState<CardState>("default");
   const [savedId, setSavedId] = useState<string | null>(null);
 
@@ -246,6 +254,7 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
           <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
             <button
               onClick={() => {
+                if (isPreviewMode) return;
                 if (isSaved) {
                   if (collegeId && savedId) removeProposal(collegeId, savedId);
                   setSavedId(null);
@@ -259,10 +268,13 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
                   setState("saved");
                 }
               }}
+              disabled={isPreviewMode}
+              title={isPreviewMode ? SAVE_PREVIEW_TOOLTIP : undefined}
               style={{
                 display: "flex", alignItems: "center", gap: "6px",
                 padding: "6px 14px", borderRadius: "6px", fontFamily: FONT, fontSize: "12px", fontWeight: 600,
-                cursor: "pointer", border: "none",
+                cursor: isPreviewMode ? "not-allowed" : "pointer", border: "none",
+                opacity: isPreviewMode ? 0.45 : 1,
                 background: isSaved ? "rgba(74,222,128,0.15)" : `${brandColor}20`,
                 color: isSaved ? "rgba(74,222,128,0.9)" : brandColor,
               }}
@@ -282,6 +294,20 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
             </button>
             <button
               onClick={() => {
+                if (isPreviewMode) {
+                  if (isFlagged) {
+                    setState("default");
+                  } else {
+                    void reportFlag({
+                      collegeId: collegeId ?? "",
+                      artifactKind: "partnership",
+                      artifactId: proposal.employer,
+                      snapshot: proposal,
+                    });
+                    setState("flagged");
+                  }
+                  return;
+                }
                 if (isFlagged) {
                   if (collegeId && savedId) updateProposalStatus(collegeId, savedId, "saved");
                   setState("default");

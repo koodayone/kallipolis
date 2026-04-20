@@ -18,6 +18,10 @@ import {
 import AtlasHeader from "@/ui/AtlasHeader";
 import KallipolisBrand from "@/ui/KallipolisBrand";
 import { findScrollParent } from "@/ui/QueryShell";
+import { PREVIEW_MODE } from "@/preview/mode";
+import { getSeededProposals } from "@/preview/seededPartnerships";
+import { getSeededSwpProjects } from "@/preview/seededSwpProjects";
+import { useSessionDrafts } from "@/college-atlas/session/SessionDraftsContext";
 import { buildSwpRequest, type SwpDefaults } from "./buildSwpRequest";
 import SwpBuildMode from "./SwpBuildMode";
 import SwpManageMode from "./SwpManageMode";
@@ -35,6 +39,7 @@ type Props = {
 
 export default function StrongWorkforceView({ school, onBack }: Props) {
   const rootRef = useRef<HTMLDivElement>(null);
+  const sessionDrafts = useSessionDrafts();
   const [mode, setMode] = useState<Mode>("build");
   const [phase, setPhase] = useState<SwpPhase>("selection");
 
@@ -42,6 +47,7 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
   const [savedProposals, setSavedProposals] = useState<SavedProposal[]>([]);
   const [buildQuery, setBuildQuery] = useState("");
   const [expandedBuildId, setExpandedBuildId] = useState<string | null>(null);
+  const [capturedSwpKey, setCapturedSwpKey] = useState<string | null>(null);
 
   // Draft / streaming state — holds the in-flight or completed SWP project.
   const [selectedPartnership, setSelectedPartnership] = useState<SavedProposal | null>(null);
@@ -59,21 +65,27 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
 
   const [userName, setUserName] = useState("");
 
-  // Load saved partnerships + user name on mount.
+  // Load saved partnerships + user name on mount. In preview mode the
+  // partnerships list is seeded content plus whatever the visitor drafted
+  // in their current session in the Partnerships view.
   useEffect(() => {
-    setSavedProposals(getSavedProposals(school.name));
-    fetch("/api/auth/me")
-      .then((r) => r.json())
-      .then((data) => { if (data?.user?.name) setUserName(data.user.name.split(" ")[0]); })
-      .catch(() => {});
-  }, [school.name]);
+    if (PREVIEW_MODE) {
+      setSavedProposals([...sessionDrafts.partnerships, ...getSeededProposals(school.name)]);
+    } else {
+      setSavedProposals(getSavedProposals(school.name));
+    }
+  }, [school.name, sessionDrafts.partnerships]);
 
-  // Reload saved SWP projects when switching to manage mode.
+  // Reload saved SWP projects when switching to manage mode. Preview
+  // surfaces seeded artifacts plus any session-drafted SWPs.
   useEffect(() => {
-    if (mode === "manage") {
+    if (mode !== "manage") return;
+    if (PREVIEW_MODE) {
+      setSavedSwpProjects([...sessionDrafts.swpProjects, ...getSeededSwpProjects(school.name)]);
+    } else {
       setSavedSwpProjects(getSavedSwpProjects(school.name));
     }
-  }, [mode, school.name]);
+  }, [mode, school.name, sessionDrafts.swpProjects]);
 
   // Assemble the final SwpProject from streamed sections once the stream
   // finishes cleanly. The defaults captured when the draft started
@@ -150,9 +162,40 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
 
   const handleSave = useCallback(() => {
     if (swpSaved || !selectedPartnership || !swpProject) return;
-    saveSwpProject(school.name, swpProject, selectedPartnership.id);
+    // In preview mode, persistence is session-only — no localStorage write.
+    if (PREVIEW_MODE) {
+      const draft: SavedSwpProject = {
+        id: `session-swp-${selectedPartnership.id}-${Date.now()}`,
+        project: swpProject,
+        partnershipId: selectedPartnership.id,
+        collegeId: school.name,
+        savedAt: new Date().toISOString(),
+      };
+      sessionDrafts.addSwpDraft(draft);
+    } else {
+      saveSwpProject(school.name, swpProject, selectedPartnership.id);
+    }
     setSwpSaved(true);
-  }, [swpSaved, selectedPartnership, swpProject, school.name]);
+  }, [swpSaved, selectedPartnership, swpProject, school.name, sessionDrafts]);
+
+  // Preview: auto-capture a completed SWP project into session state so it
+  // surfaces in Manage Mode without requiring a Save click.
+  useEffect(() => {
+    if (!PREVIEW_MODE) return;
+    if (phase !== "complete" || !swpProject || !selectedPartnership || swpError) return;
+    const key = `${selectedPartnership.id}|${swpProject.partnership_type}`;
+    if (capturedSwpKey === key) return;
+
+    const draft: SavedSwpProject = {
+      id: `session-swp-${key}-${Date.now()}`,
+      project: swpProject,
+      partnershipId: selectedPartnership.id,
+      collegeId: school.name,
+      savedAt: new Date().toISOString(),
+    };
+    sessionDrafts.addSwpDraft(draft);
+    setCapturedSwpKey(key);
+  }, [phase, swpProject, selectedPartnership, swpError, school.name, capturedSwpKey, sessionDrafts]);
 
   const handleRetry = useCallback(() => {
     if (selectedPartnership) handleDraft(selectedPartnership);

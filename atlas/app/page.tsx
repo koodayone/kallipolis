@@ -1,15 +1,10 @@
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
-import { verifySessionToken, COOKIE_NAME } from "@/auth/jwt";
+// Root route. Renders the State Atlas directly — it's the doorway into the
+// product for both anonymous preview visitors and (eventually) signed-in
+// users. The former login-gated cookie-check flow was removed when the
+// atlas moved to static export for preview deployment.
 
-export default async function RootPage() {
-  const cookieStore = await cookies();
-  const token = cookieStore.get(COOKIE_NAME)?.value;
+import StateAtlas from "@/state-atlas/StateAtlas";
 
-  if (!token) redirect("/login");
-
-  const payload = await verifySessionToken(token);
-  if (!payload) redirect("/login");
-
-  redirect(`/${payload.collegeId}`);
+export default function RootPage() {
+  return <StateAtlas />;
 }

@@ -236,7 +236,7 @@ async def _extract_batch(
                 uploaded = client.files.upload(file=chunk_path)
 
                 response = await client.aio.models.generate_content(
-                    model="gemini-2.5-flash",
+                    model=os.environ.get("GEMINI_MODEL", "gemini-2.5-flash"),
                     contents=[
                         uploaded,
                         USER_PROMPT,

@@ -409,7 +409,7 @@
       "catalog_year": "2025-2026",
       "status": "pending"
     },
-    "sdcity": {
+    "sandiegocity": {
       "name": "San Diego City College",
       "district": "San Diego CCD",
       "city": "San Diego",
@@ -478,10 +478,10 @@
       "name": "Irvine Valley College",
       "district": "South Orange County CCD",
       "city": "Irvine",
-      "catalog_pdf_url": null,
+      "catalog_pdf_url": "file:///Users/dayonekoo/Desktop/code/kallipolis/backend/pipeline/cache/irvinevalley_catalog.pdf",
       "catalog_year": "2025-2026",
       "status": "pending",
-      "notes": "Uses Acalog — 2025-2026 is online-only, no PDF found"
+      "notes": "Acalog online-only — using manually captured PDF cached at pipeline/cache/irvinevalley_catalog.pdf. file:// URL short-circuits download via cached-file check in _download_pdf."
     },
     "orangecoast": {
       "name": "Orange Coast College",
