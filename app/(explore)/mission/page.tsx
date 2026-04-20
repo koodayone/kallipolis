@@ -99,7 +99,7 @@ export default function MissionPage() {
               <GreenDivider />
             </div>
             <p style={{ fontSize: 17, lineHeight: 1.7, color: "#3d3a36", marginTop: 28 }}>
-              Dayone Koo is a proud graduate of the California Community College system. He received an Associate of Arts in Social Sciences at Foothill College, where he first conceived the motivation to build software that empowers democratic institutions.
+              Dayone Koo is a proud graduate of the California Community Colleges system. He received an Associate of Arts in Social Sciences at Foothill College, where he first conceived the motivation to build software that empowers democratic institutions.
             </p>
             <p style={{ fontSize: 17, lineHeight: 1.7, color: "#3d3a36", marginTop: 20 }}>
               After Foothill, Dayone transferred to and graduated from UC Berkeley with a Bachelor of Arts in Computer Science. Upon graduation he gathered experience as a software engineer building global scale enterprise systems at Walmart and Salesforce. Founding Kallipolis is an attempt at pursuing his original motivation to build technology.
