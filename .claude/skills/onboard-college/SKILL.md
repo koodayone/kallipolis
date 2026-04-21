@@ -52,16 +52,22 @@ are available so the operator can disambiguate.
 ## Cost and wall-time expectations
 
 Surface these to the operator at the start of the skill so they know what they are committing
-to:
+to. Employer work is regional: if another college in the same COE region has already been
+onboarded, stages 3–5 (employer generation, validation, load) short-circuit via the regional
+cache. Only the first college in a given region pays the full employer cost.
 
-- **Fresh run (no caches)**: ~35–45 minutes total wall time. Dominated by PDF extraction
-  (~17 min) and EDD scrape (~15 min). Costs on the order of a few dollars in Gemini tokens.
-- **Cached re-run (caches present)**: ~5–10 minutes total wall time. Most stages short-circuit
-  via the existing cache files. Costs cents in Gemini tokens (only the employer cleanup LLM
-  call repeats).
-- **Network dependencies**: live access to the EDD ALMIS database for the employer scrape,
-  live access to the Gemini API for curriculum and employer cleanup, live access to each
-  employer's website for the validation step.
+- **First college in a region, no caches**: ~45–75 minutes total wall time. Dominated by PDF
+  extraction (~17 min) and regional EDD scrape (~15–40 min depending on region size — Bay has
+  12 counties, FN has 14, whereas LA and OC are single-county). Costs on the order of a few
+  dollars in Gemini tokens.
+- **Subsequent college in an already-onboarded region**: ~5–10 minutes total wall time.
+  The regional employer cache is reused as-is; no re-scrape, no re-validation, no re-load.
+  Only curriculum and students are college-specific.
+- **Fully cached re-run (everything already generated)**: ~2–5 minutes total wall time. All
+  stages short-circuit.
+- **Network dependencies**: live access to the EDD ALMIS database for the regional employer
+  scrape, live access to the Gemini API for curriculum and employer cleanup, live access to
+  each employer's website for the validation step.
 
 ## Stage 0 — Preflight verification
 
@@ -78,13 +84,11 @@ The checks, in order:
    for the College node's `region` property, but the Neo4j IN_MARKET edge is driven by
    `COLLEGE_COE_REGION` instead).
 
-2. **Region mappings exist.** Read `backend/ontology/regions.py` (or import and inspect)
-   and confirm the human-readable college name is a key in both `COLLEGE_REGION_MAP`
-   (maps to an OEWS metro) and `COLLEGE_COE_REGION` (maps to a COE region code). If
-   either is missing, stop and tell the operator the exact file and dict name to edit.
-   Optionally note whether `COLLEGE_SEARCH_COUNTIES` has an entry (override for rural
-   commute patterns); this is not required, but flag it if present so the operator
-   knows the default metro-derived county list is not in effect.
+2. **Region mapping exists.** Read `backend/ontology/regions.py` (or import and inspect)
+   and confirm the human-readable college name is a key in `COLLEGE_COE_REGION` (maps to
+   a COE region code: Bay, CVML, FN, GS, IE/D, LA, OC, SCC, or SD/I). If missing, stop
+   and tell the operator the exact file and dict name to edit. Record the resolved COE
+   region code — stages 3–5 are keyed by it.
 
 3. **Student calibration files exist.** Verify these three paths, substituting `{key}`:
    - `backend/ontology/calibrations/{key}.json` — 2-digit TOP code enrollment distribution
@@ -137,20 +141,36 @@ signal (not a failure, but worth a manual check).
 
 Report student count, enrollment count, and top-5 TOP4 share deltas to the operator.
 
-## Stage 3 — Employer generation
+## Stage 3 — Employer generation (regional)
 
-Run the employer pipeline. If
-`backend/employers/cache/edd_deep_{metro_slug}.json` exists (where `metro_slug` is derived
-from the OEWS metro name in `COLLEGE_REGION_MAP`, or from `search_counties` for colleges
-with a `COLLEGE_SEARCH_COUNTIES` override), reuse the cached EDD scrape.
+Employers are generated at the COE region level. Every college in a region shares the same
+employer pool, so this stage is a **no-op** when another college in the same region has
+already been onboarded.
 
-- **Fresh**: `cd backend && python3 -m employers.generate --college {key}`
-- **Cached**: `cd backend && python3 -m employers.generate --college {key} --no-scrape`
+Let `{code}` be the COE region code resolved in preflight (e.g., `Bay`, `SCC`, `IE/D`).
 
-Wall time: ~15 min fresh (dominated by EDD scrape), ~2 min cached (only Gemini cleanup
-runs). Run in the background.
+First, check whether the region has already been generated. If both
+`backend/employers/cache/edd_region_{code_slug}_f.json` exists AND `employers.json` already
+contains entries tagged with `{code}`, skip this stage and Stage 4 (validate) — there are
+no new employers to generate or validate. Report the count of employers currently tagged
+with `{code}` in `employers.json` to the operator, then proceed directly to Stage 5 (which
+is idempotent) to ensure the graph reflects the file.
 
-Confirm the log shows `Merge: N new, M updated. Total: T`. Also confirm the log shows
+If the region has not yet been generated, run the regional pipeline:
+
+- **Fresh**: `cd backend && python3 -m employers.generate --region {code}`
+- **Cached** (regional raw cache present, but LLM cleanup needs re-running):
+  `cd backend && python3 -m employers.generate --region {code} --no-scrape`
+
+Wall time varies by region size (number of counties × NAICS codes):
+- 1–3 county regions (LA, OC, SD/I, SCC, IE/D): ~8–15 min fresh
+- 8+ county regions (GS, Bay, CVML, FN): ~25–45 min fresh
+- Cached: ~2–5 min (Gemini cleanup only)
+
+Run in the background. The `{code_slug}` is `{code}` lowercased with `/` replaced by `_`
+(e.g., `SD/I` → `sd_i`).
+
+Confirm the log shows `Merge: N new, M updated. Total: T` with non-zero N. Also confirm
 Gemini context cache creation (`Gemini context cache created: cachedContents/...`) and
 non-zero occupation assignment counts. If the log shows `No GEMINI_API_KEY — skipping
 LLM cleanup`, the `.env` loading failed silently — stop and report the issue; do not
@@ -304,8 +324,9 @@ Specific failure classes:
 The raw Python scripts remain supported for testing, partial re-runs, and anything that
 does not fit the full onboarding sequence. `python3 -m pipeline.run --college {key}` is
 still the right command for iterating on curriculum extraction. `python3 -m
-employers.generate --college {key}` is still the right command for iterating on the
-employer pipeline. The skill is the default workflow; the scripts are the escape hatch.
+employers.generate --region {code}` is still the right command for iterating on the
+employer pipeline at a regional scope. The skill is the default workflow; the scripts are
+the escape hatch.
 
 ## Related
 

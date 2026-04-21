@@ -1,10 +1,10 @@
 # Employer Generation
 
-Employer data is the most operationally subtle stage in the Kallipolis pipeline. It is sourced from the California Employment Development Department at the *county* level, scraped *per college*, tagged to a *Centers of Excellence region*, and merged into a *shared* employer pool consumed by every college in that region. Each of those scopes matters and they do not always align. This document describes how the stage runs, why the design is the way it is, and what makes it different from the other pipeline stages.
+Employer data enters the graph at the granularity the workforce development ecosystem actually coordinates at — the Centers of Excellence region. Every college in a region shares the same employer pool, and the pool is built once per region from every county the region spans.
 
 ## The essence
 
-Employer generation turns county-level EDD records into a region-shared employer pool, with a per-college scope that follows commutability rather than Centers of Excellence polygons. The stage runs as a pipeline of deterministic filters around a single Gemini call: EDD scrape, pre-filter, branch dedup, Gemini cleanup against the regional occupation list, cross-college merge. The result — `backend/employers/employers.json` — accumulates state across runs, so order of operations and merge semantics matter more here than in any other stage.
+Employer generation turns county-level EDD records into a region-scoped employer pool. The stage runs as a pipeline of deterministic filters around a single Gemini call: EDD scrape across every county in the COE region, pre-filter, branch dedup, Gemini cleanup against the regional occupation list, merge into the shared employer file. The output — `backend/employers/employers.json` — accumulates entries across regions; a given employer can carry multiple region tags when it genuinely operates in more than one.
 
 ## Source
 
@@ -19,70 +19,53 @@ The pipeline scrapes EDD via two endpoints:
 
 Both are ASP.NET pages, which means the deep search requires `__VIEWSTATE` and `__EVENTVALIDATION` form state to apply filters and paginate. The parsing details are in `backend/employers/edd_scrape.py`.
 
-The pipeline restricts queries to a curated set of CTE-relevant NAICS 4-digit codes — agriculture, construction, manufacturing, healthcare, IT, professional services, hospitality, government, and others. Staffing and business-support codes (NAICS 5613 and 5614) are deliberately excluded because their members place workers at other employers rather than hire workers onto their own payroll, so they are structurally not partnership targets. The default size filter is `G` (250+ employees), since smaller employers rarely sustain the kind of partnerships SWP funds.
+The pipeline restricts queries to a curated set of CTE-relevant NAICS 4-digit codes — agriculture, construction, manufacturing, healthcare, IT, professional services, hospitality, government, and others. Staffing and business-support codes (NAICS 5613 and 5614) are deliberately excluded because their members place workers at other employers rather than hire workers onto their own payroll, so they are structurally not partnership targets. The default size filter is `F` (100+ employees), since smaller employers rarely sustain the kind of partnerships SWP funds.
 
 For the broader institutional context on EDD as a data authority, see [Data Authorities](../domain/data-authorities.md).
 
-## The four-level scope crosswalk
+## Region and county
 
-The pipeline coordinates four geographic concepts. Confusing them is the most common source of bugs.
+The pipeline operates in two coordinates: the **COE region** and the **county**. The region is the unit of generation; the county is the unit of EDD scraping. Every California county belongs to exactly one COE region, and the mapping is in `COE_REGION_TO_COUNTIES` in `backend/ontology/regions.py`.
 
-| Level | Example | Where it comes from |
-|---|---|---|
-| County | Santa Clara | EDD scraping unit |
-| OEWS metro | San Jose-Sunnyvale-Santa Clara | EDD's metropolitan statistical areas |
-| COE region | Bay | Centers of Excellence regional grouping |
-| College | Foothill College | The institution running the pipeline |
+| COE region | Counties |
+|---|---|
+| Bay | Alameda, Contra Costa, Marin, Monterey, Napa, San Benito, San Francisco, San Mateo, Santa Clara, Santa Cruz, Solano, Sonoma |
+| CVML | Alpine, Amador, Calaveras, Fresno, Inyo, Kern, Kings, Madera, Mariposa, Merced, Mono, San Joaquin, Stanislaus, Tulare, Tuolumne |
+| FN | Butte, Del Norte, Glenn, Humboldt, Lake, Lassen, Mendocino, Modoc, Plumas, Shasta, Sierra, Siskiyou, Tehama, Trinity |
+| GS | Colusa, El Dorado, Nevada, Placer, Sacramento, Sutter, Yolo, Yuba |
+| IE/D | Riverside, San Bernardino |
+| LA | Los Angeles |
+| OC | Orange |
+| SCC | San Luis Obispo, Santa Barbara, Ventura |
+| SD/I | San Diego, Imperial |
 
-The crosswalk is defined in `backend/ontology/regions.py`. It includes mappings from college to primary OEWS metro, college to COE region code, OEWS metro to COE region, and OEWS metro to counties. A separate `COLLEGE_SEARCH_COUNTIES` map provides explicit county overrides for rural colleges where the default metro-derived counties do not capture commutable employers.
+College-to-region membership is defined in `COLLEGE_COE_REGION` in the same file. OEWS metros also appear in the ontology — they remain the authority for occupation demand data keyed by `COE_REGION_DISPLAY` — but they do not participate in employer generation.
 
 ## How the stage runs
 
-`generate_for_college(college_key)` orchestrates the full flow for one college. It runs in five steps.
+`generate_for_region(region_code)` in `backend/employers/generate.py` orchestrates the full flow for one region. It runs in five steps.
 
-**1. Resolve scope.** The college is looked up in `catalog_sources.json` and matched to its OEWS metro via `COLLEGE_REGION_MAP`. The primary metro is used for COE region tagging. Search counties come from `COLLEGE_SEARCH_COUNTIES` if defined; otherwise they default to the counties associated with the primary metro.
+**1. Scrape EDD.** For every county in the region, the pipeline iterates the curated CTE NAICS codes and calls `deep_search()` against `empResults.aspx`. Each call applies the size filter, paginates through results, parses the HTML table, and deduplicates by `(name, city)`. Results are cached as JSON in `backend/employers/cache/`, with filenames keyed by the COE region code and the minimum size filter — for example, `backend/employers/cache/edd_region_scc_f.json`. A subsequent run with `--no-scrape` reads the cache instead of re-hitting EDD.
 
-**2. Scrape EDD.** For each search county, the pipeline iterates the curated CTE NAICS codes and calls `deep_search()` against `empResults.aspx`. Each call applies the size filter, paginates through results, parses the HTML table, and deduplicates by `(name, city)`. Results are cached as JSON in `backend/employers/cache/`. The cache key is the OEWS metro slug when the college uses default metro-derived counties — so sibling colleges in the same metro share one scrape — and the county-list slug when the college has a `COLLEGE_SEARCH_COUNTIES` override. A legacy county-list path is honored as a fallback so older cache files are still read.
+**2. Pre-filter, clean, and deduplicate branches.** Before dedup, a deterministic pre-filter drops rows whose NAICS is in the never-employer set (`5613`, `5614`) and rows whose name matches the sub-unit patterns (`Dept Of`, `County Of`, `City Of`, `State Of`). Survivors then pass through an abbreviation expansion table (`Hosp` → `Hospital`, `Mfg` → `Manufacturing`, `Ctr` → `Center`, and ~40 others) and have legal suffixes stripped (`Inc`, `LLC`, `Corp`). Branches of the same employer are grouped by canonical key — lowercased, suffix-stripped, trailing-location-stripped, whitespace-collapsed — and the largest size entry is kept.
 
-**3. Pre-filter, clean, and deduplicate branches.** Before dedup, a deterministic pre-filter drops rows whose NAICS is in the never-employer set (`5613`, `5614`) and rows whose name matches the sub-unit patterns (`Dept Of`, `County Of`, `City Of`, `State Of`). Survivors then pass through an abbreviation expansion table (`Hosp` → `Hospital`, `Mfg` → `Manufacturing`, `Ctr` → `Center`, and ~40 others) and have legal suffixes stripped (`Inc`, `LLC`, `Corp`). Branches of the same employer are grouped by canonical key — lowercased, suffix-stripped, trailing-location-stripped, whitespace-collapsed — and the largest size entry is kept.
+**3. Assign sector and fallback SOC codes.** Each employer is tagged with a human-readable sector derived from its NAICS 2-digit code. Fallback SOC codes are assigned by mapping the NAICS sector to SOC major groups and pulling occupations from those groups that exist in the region. The regional occupation pool is pre-filtered to career-track credentials — roles requiring "no formal credential", a high school diploma, or a graduate-level degree are excluded, since they do not represent meaningful community-college workforce-development outcomes. The fallback SOC codes are replaced when LLM cleanup runs.
 
-**4. Assign sector and fallback SOC codes.** Each employer is tagged with a human-readable sector derived from its NAICS 2-digit code. Fallback SOC codes are assigned by mapping the NAICS sector to SOC major groups and pulling occupations from those groups that exist in the college's COE region. The regional occupation pool is pre-filtered to career-track credentials — roles requiring "no formal credential", a high school diploma, or a graduate-level degree are excluded, since they do not represent meaningful community-college workforce-development outcomes. The fallback SOC codes are replaced when LLM cleanup runs.
+**4. LLM cleanup with Gemini.** Batches of `BATCH_SIZE = 100` employers are sent to Gemini Flash with two tasks. First, clean the name and write a one-sentence description, or return `REMOVE` for branch duplicates, internal departments, foundations, and staffing agencies. Second, assign 3–8 SOC codes from the regional occupation list, restricted to roles the employer would have on its own payroll. The prompt explicitly excludes services performed by external agencies — a hospital does not employ police officers, a resort does not employ firefighters. Returned SOC codes are matched against the regional occupation set with a tolerant regex so the model can return bare codes or codes wrapped with titles in any separator format.
 
-**5. LLM cleanup with Gemini, then format and merge.** Batches of `BATCH_SIZE = 100` employers are sent to Gemini Flash with two tasks. First, clean the name and write a one-sentence description, or return `REMOVE` for branch duplicates, internal departments, foundations, and staffing agencies. Second, assign 3–8 SOC codes from the regional occupation list, restricted to roles the employer would have on its own payroll. The prompt explicitly excludes services performed by external agencies — a hospital does not employ police officers, a resort does not employ firefighters. Returned SOC codes are matched against the regional occupation set with a tolerant regex so the model can return bare codes or codes wrapped with titles in any separator format.
+Each Gemini call is wrapped in a retry loop with exponential backoff (up to three attempts). A batch that exhausts retries is dropped with its employer names logged, and the operator can re-run with `--no-scrape` to retry only the failed batches. The regional occupation list — the largest and most repetitive portion of the prompt — is published to Gemini's context cache once per run and referenced by cache name on every subsequent batch, so per-batch input tokens are spent only on the 100 employer names and the response-shape directive. If cache creation fails, the pipeline falls back to inlining the occupation list in each prompt.
 
-Each Gemini call is wrapped in a retry loop with exponential backoff (up to three attempts). A batch that exhausts retries is dropped with its employer names logged, and the operator can re-run with `--no-scrape` to retry only the failed batches without re-scraping EDD. The regional occupation list — the largest and most repetitive portion of the prompt — is published to Gemini's context cache once per run and referenced by cache name on every subsequent batch, so per-batch input tokens are spent only on the 100 employer names and the response-shape directive. If cache creation fails (the library version, quota, or the model's minimum cached-token floor), the pipeline falls back to inlining the occupation list in each prompt.
-
-After the LLM step, a second dedup pass inside `_llm_cleanup` collapses entries whose cleaned names collide under the canonical key — this is where `Kaiser Permanente Los Angeles` and `Kaiser Permanente, Fresno` converge to one record. Cleaned employers are then formatted to the `employers.json` schema (name, sector, description, regions array, occupations array) and merged into `backend/employers/employers.json`. The merge dedups by the same canonical key. When a name collides, the regions and occupation lists are unioned with the existing entry.
+**5. Format and merge into `employers.json`.** Cleaned employers are formatted to the `employers.json` schema (name, sector, description, regions array, occupations array) and merged into `backend/employers/employers.json` by canonical name. When a name collides with an existing entry from a previous region run, the regions and occupation lists are unioned — a national employer genuinely operating in multiple regions ends up tagged with all of them.
 
 For the broader treatment of where Gemini is called and what constraints apply, see [AI Integration](../architecture/ai-integration.md).
 
-## Why the merge semantics matter
+## Why region, not college
 
-Because `employers.json` is shared across all colleges and the merge unions regions, the file accumulates state over time. Three consequences follow.
+The COE region is the unit the California Community Colleges Chancellor's Office, the Strong Workforce Program, and the Centers of Excellence all coordinate at. The eight regional consortia (plus the Far North subregion split) are the institutional bodies that own employer relationships at scale, publish regional demand data, and allocate SWP investment. Generating employers at the region level makes the data model match the institution, not fight it.
 
-**Order of operations matters.** The first college to run `generate_for_college` for a given county seeds the employer pool from that county. Later colleges in the same COE region add to it incrementally rather than starting from scratch.
+It also removes a class of silent bugs the earlier per-college scope produced. Under a college-scoped design, an employer scraped from a single metro within a region would be tagged with the full region code regardless of whether the rest of the region had been scraped — every sibling college in the region saw the same partial pool, mis-labeled as complete. Region-scoped generation closes the gap by construction: the counties scraped are exactly the counties the region's label asserts.
 
-**Region tags can grow.** When a Bay Area college scrapes Kaiser Permanente from Santa Clara County and tags it with the Bay region, then later a Los Angeles college scrapes Kaiser from LA County and tags it with the LA region, the merged entry ends up tagged with both regions. A national employer accumulates regional tags as more pipelines run, which is correct — the same organization is genuinely active in multiple regions.
-
-**The COE region is set by the college, not the county.** An employer scraped from Sonoma County by Mendocino College's pipeline gets tagged with whatever COE region Mendocino's primary metro resolves to, not necessarily the COE region Sonoma geographically belongs to. This is the most subtle of the merge semantics and it follows from the design choice described in the next section.
-
-## Why the design is intentional
-
-A naive design would scope the scrape to "all counties in the COE region" and tag employers strictly by where they sit. Kallipolis does not do that. Search counties are defined by *commutability to the college*, not by COE region boundaries.
-
-This is correct for a workforce tool. The question the pipeline is answering is *which employers are relevant to this college's students?* not *which employers fall inside this COE polygon?* Students commute across COE boundaries. Mendocino students commute to Sonoma. College of the Sequoias students commute to Fresno. Lake Tahoe students commute through El Dorado County and into Sacramento.
-
-`COLLEGE_SEARCH_COUNTIES` makes the cross-region commutability explicit for rural colleges where the default metro-derived counties miss a substantial fraction of the employers a student would actually consider.
-
-| College | Search counties | Notes |
-|---|---|---|
-| Lassen College | Lassen, Shasta, Tehama, Plumas | Shasta (Redding) is the regional hub |
-| College of the Siskiyous | Siskiyou, Shasta | Same hub logic |
-| Mendocino College | Mendocino, Lake, Humboldt, Sonoma | Sonoma is the nearest large economy |
-| College of the Sequoias | Tulare, Fresno, Kings | Fresno is the adjacent metro |
-| Lake Tahoe Community College | El Dorado, Placer, Alpine | Sacramento is the commutable hub |
-
-The override is the operational expression of a structural decision: the pipeline serves colleges, not regions, and the geographic scope of relevance is defined by what the college's students would realistically consider.
+The trade-off is commutability. A handful of rural colleges have students who realistically commute across COE boundaries for employment. Under the regional model, those students see only their home region's pool. The simplification is deliberate: consistent, defensible, and aligned with the institutional unit that actually runs regional workforce development, at the cost of some edge-case coverage. If the cost turns out to matter for a specific college, the remedy is an explicit cross-region union at query time, not a return to per-college scrape scope.
 
 ## Validation and enrichment
 
@@ -104,13 +87,15 @@ Each employer that passes all five criteria is enriched with a verified `website
 
 The validation step is what closes the gap between *what EDD's filters can produce* and *what the workforce development ecosystem can actually coordinate with*. The pipeline's NAICS and size filters are good at generating a candidate list, but they cannot distinguish between an employer with the institutional capacity for partnership work and one without it. Closed facilities, sub-departments mistaken for distinct entities, and small operations whose appearance in EDD does not translate to real partnership infrastructure all pass the generation filters but fail the viability criteria. Without this step, the employer pool would carry significant noise into the partnership generation flow that the product is built around.
 
-The criteria themselves are the operational expression of the partial-by-design principle the [employers product document](../product/employers.md) describes — Kallipolis is built to coordinate with the actors the workforce development ecosystem already recognizes, and the validation step is how that recognition gets enforced employer by employer. The website enrichment is also what makes the [home page property](../product/employers.md) on each employer real. The product section names the home page as the unique attributional feature that distinguishes employers from the other foundationals; the validation step is how that link gets there.
+The criteria themselves are the operational expression of the partial-by-design principle the [employers product document](../product/employers.md) describes — Kallipolis is built to coordinate with the actors the workforce development ecosystem already recognizes, and the validation step is how that recognition gets enforced employer by employer. The website enrichment is also what makes the home page property on each employer real.
 
-The operator-facing entry point for running the full onboarding pipeline for a new college is the `onboard-college` Claude Code skill at `.claude/skills/onboard-college/SKILL.md`. That skill owns the six-stage runbook, invokes `validate-employers` automatically at the appropriate step between employer generation and employer load, and runs verification queries against the graph when the sequence completes. This document describes what the employer stage does internally; the skill describes how the stage fits into the broader onboarding sequence. Running `python3 -m employers.generate` and `python3 -m employers.load` directly is still supported for testing and partial re-runs, but skips validation and is not the intended default workflow.
+The operator-facing entry point for running the full onboarding pipeline for a new college is the `onboard-college` Claude Code skill at `.claude/skills/onboard-college/SKILL.md`. That skill owns the runbook, invokes `validate-employers` automatically at the appropriate step between employer generation and employer load, and short-circuits the employer stages when the college's region has already been generated by a prior onboarding. Running `python3 -m employers.generate --region <code>` and `python3 -m employers.load` directly is still supported for testing and partial re-runs, but skips validation and is not the intended default workflow.
 
 ## Loading into the graph
 
-`generate_employers.py` produces `employers.json`. A separate script, `backend/employers/load.py`, loads it into Neo4j. The loader creates one `Employer` node per record, links it to each region in its `regions` array via `IN_MARKET`, and links it to each occupation in its `occupations` array via `HIRES_FOR`. Loading is idempotent: re-running adds new edges without duplicating existing ones.
+`generate.py` produces `employers.json`. A separate script, `backend/employers/load.py`, loads it into Neo4j. The loader creates one `Employer` node per record, links it to each region in its `regions` array via `IN_MARKET`, and links it to each occupation in its `occupations` array via `HIRES_FOR`. Loading is idempotent: re-running adds new edges without duplicating existing ones. A companion helper, `prune_region_in_market()`, removes stale `IN_MARKET` edges when a region's employer pool is re-scraped and some prior entries no longer survive the new run.
+
+Because colleges attach to the same region nodes via `IN_MARKET` (written by `ensure_college_region_link()` in `backend/ontology/regions.py`), every college in a region traverses to the same employer set at query time. This is the graph-level expression of the region-as-unit design: there is no per-college employer assignment, only a shared regional pool that all member colleges reach through the region node.
 
 ## Known sharp edges
 
@@ -120,4 +105,4 @@ Three operational caveats are worth knowing.
 
 **Gemini cleanup can fail partially.** Each batch retries up to three times with exponential backoff. A batch that exhausts retries is dropped — its employers do not reach `employers.json` for that run — and the failing names are logged so the operator can re-run with `--no-scrape` to retry just the failed batches. Without `GEMINI_API_KEY` at all, the pipeline skips the LLM cleanup step entirely and uses fallback NAICS-derived SOC codes. The output is loadable but lower quality, since the fallback assigns occupations based purely on industry sector mapping rather than on inference about what each specific employer actually hires for.
 
-**The merged employers.json accumulates state across runs.** Because the merge unions regions and occupations on collision, re-running a college against an already-populated file grows entries rather than replacing them. This is the intended behavior — a national employer legitimately accumulates regional tags as more pipelines run — but a destructive rebuild requires clearing the file first rather than trusting the merge to overwrite.
+**The merged `employers.json` accumulates state across regions.** Because the merge unions regions and occupations on name collisions, re-running one region against an already-populated file grows entries for cross-region employers rather than replacing them. This is the intended behavior — an employer that genuinely operates in both Bay and LA legitimately accumulates both tags. A destructive rebuild requires clearing the file first rather than trusting the merge to overwrite.

@@ -9,7 +9,7 @@ Two scraping modes:
 Data source: labormarketinfo.edd.ca.gov (Data Axle ALMIS database)
 
 Usage:
-    from employers.edd_scrape import deep_search, scrape_metro
+    from employers.edd_scrape import deep_search, scrape_region
     employers = deep_search("0604000037", naics4="2382", min_size="E")
 """
 
@@ -63,41 +63,6 @@ COUNTY_CODES: dict[str, str] = {
     "Yuba": "000115",
 }
 
-# OEWS metro → counties
-METRO_COUNTIES: dict[str, list[str]] = {
-    "Los Angeles-Long Beach-Glendale": ["Los Angeles"],
-    "San Jose-Sunnyvale-Santa Clara": ["Santa Clara", "San Benito"],
-    "Oakland-Fremont-Berkeley": ["Alameda", "Contra Costa"],
-    "San Francisco-San Mateo-Redwood City": ["San Francisco", "San Mateo"],
-    "Santa Rosa-Petaluma": ["Sonoma"],
-    "Napa": ["Napa"],
-    "Vallejo": ["Solano"],
-    "Santa Cruz-Watsonville": ["Santa Cruz"],
-    "San Rafael": ["Marin"],
-    "Sacramento-Roseville-Folsom": ["Sacramento", "Placer", "El Dorado", "Yolo"],
-    "Fresno": ["Fresno"],
-    "Bakersfield-Delano": ["Kern"],
-    "San Diego-Chula Vista-Carlsbad": ["San Diego"],
-    "Riverside-San Bernardino-Ontario": ["Riverside", "San Bernardino"],
-    "Anaheim-Santa Ana-Irvine": ["Orange"],
-    "Stockton-Lodi": ["San Joaquin"],
-    "Modesto": ["Stanislaus"],
-    "Oxnard-Thousand Oaks-Ventura": ["Ventura"],
-    "Salinas": ["Monterey"],
-    "Visalia": ["Tulare"],
-    "Redding": ["Shasta"],
-    "Chico": ["Butte"],
-    "Merced": ["Merced"],
-    "Hanford-Corcoran": ["Kings"],
-    "Yuba City": ["Sutter", "Yuba"],
-    "El Centro": ["Imperial"],
-    "San Luis Obispo-Paso Robles": ["San Luis Obispo"],
-    "Santa Maria-Santa Barbara": ["Santa Barbara"],
-    # Rural regions
-    "Eastern Sierra-Mother Lode": ["Alpine", "Amador", "Calaveras", "Inyo", "Mariposa", "Mono", "Tuolumne"],
-    "North Coast": ["Del Norte", "Humboldt", "Lake", "Mendocino"],
-    "North Valley-Northern Mountains": ["Lassen", "Modoc", "Nevada", "Plumas", "Sierra", "Siskiyou", "Tehama", "Trinity"],
-}
 
 # CTE-relevant NAICS 4-digit codes with EDD sector codes and labels.
 # The EDD's naicsect URL parameter uses the NAICS 2-digit code for most
@@ -568,49 +533,6 @@ def search_naics_codes(
     return all_employers
 
 
-def search_metro(
-    metro: str,
-    naics_codes: list[str] | None = None,
-    min_size: str = DEFAULT_MIN_SIZE,
-) -> list[dict]:
-    """Search all counties in a metro area for CTE-relevant employers.
-
-    If naics_codes is None, uses all CTE_NAICS_CODES.
-    """
-    counties = METRO_COUNTIES.get(metro, [])
-    if not counties:
-        logger.warning(f"No county mapping for metro: {metro}")
-        return []
-
-    if naics_codes is None:
-        naics_codes = list(CTE_NAICS_CODES.keys())
-
-    logger.info(f"Searching {metro} ({len(counties)} counties, {len(naics_codes)} NAICS codes)")
-
-    all_employers: list[dict] = []
-    seen_keys: set[tuple] = set()
-
-    for county_name in counties:
-        results = search_naics_codes(county_name, naics_codes, min_size)
-        for emp in results:
-            key = (emp["name"].lower(), emp["city"].lower())
-            if key not in seen_keys:
-                seen_keys.add(key)
-                all_employers.append(emp)
-
-    logger.info(f"Total unique employers across {metro}: {len(all_employers)}")
-
-    # Cache
-    CACHE_DIR.mkdir(exist_ok=True)
-    cache_key = metro.lower().replace(" ", "_").replace("-", "_").replace(",", "")
-    cache_path = CACHE_DIR / f"edd_deep_{cache_key}.json"
-    with open(cache_path, "w") as f:
-        json.dump(all_employers, f, indent=2)
-    logger.info(f"Cached to {cache_path.name}")
-
-    return all_employers
-
-
 def scrape_region(
     region_code: str,
     naics_codes: list[str] | None = None,
@@ -673,19 +595,6 @@ def load_region_cached(region_code: str, min_size: str = DEFAULT_MIN_SIZE) -> li
         with open(cache_path) as f:
             data = json.load(f)
         logger.info(f"  Loaded {len(data)} employers from regional cache ({cache_path.name})")
-        return data
-    return None
-
-
-def load_cached(metro: str, deep: bool = False) -> list[dict] | None:
-    """Load cached EDD employer data for a metro."""
-    prefix = "edd_deep_" if deep else "edd_"
-    cache_key = metro.lower().replace(" ", "_").replace("-", "_").replace(",", "")
-    cache_path = CACHE_DIR / f"{prefix}{cache_key}.json"
-    if cache_path.exists():
-        with open(cache_path) as f:
-            data = json.load(f)
-        logger.info(f"  Loaded {len(data)} employers from cache ({cache_path.name})")
         return data
     return None
 

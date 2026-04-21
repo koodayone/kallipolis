@@ -1,57 +1,13 @@
 """
-Centralized region mappings across OEWS metros, COE regions, and frontend regions.
+Centralized region mappings for the Kallipolis ontology.
 
-Three coordinate systems exist for California regions:
-  1. OEWS metros — fine-grained MSA/MD names from EDD occupational surveys
-  2. COE regions — 9 broad regions used by Centers of Excellence demand projections
-  3. Frontend regions — UI region slugs in californiaColleges.ts
-
-This module provides the canonical mappings between them.
+All region-level coordination happens at the COE region granularity — the
+institutional unit used by the California Community Colleges Chancellor's
+Office, the Strong Workforce Program, and the Centers of Excellence. Nine
+regions partition the 58 California counties: Bay, CVML, FN, GS, IE/D,
+LA, OC, SCC, SD/I. Every College and every Employer attaches to a Region
+node keyed by this code.
 """
-
-# OEWS metro name → COE region code
-OEWS_METRO_TO_COE: dict[str, str] = {
-    # Bay Area
-    "San Jose-Sunnyvale-Santa Clara": "Bay",
-    "Oakland-Fremont-Berkeley": "Bay",
-    "San Francisco-San Mateo-Redwood City": "Bay",
-    "Santa Rosa-Petaluma": "Bay",
-    "Napa": "Bay",
-    "Vallejo": "Bay",
-    "Santa Cruz-Watsonville": "Bay",
-    "San Rafael": "Bay",
-    # Los Angeles
-    "Los Angeles-Long Beach-Glendale": "LA",
-    # Orange County
-    "Anaheim-Santa Ana-Irvine": "OC",
-    # San Diego / Imperial
-    "San Diego-Chula Vista-Carlsbad": "SD/I",
-    "El Centro": "SD/I",
-    # Inland Empire / Desert
-    "Riverside-San Bernardino-Ontario": "IE/D",
-    # Greater Sacramento
-    "Sacramento-Roseville-Folsom": "GS",
-    "Yuba City": "GS",
-    "Chico": "GS",
-    "Eastern Sierra-Mother Lode Region": "GS",
-    # Central Valley / Mother Lode
-    "Fresno": "CVML",
-    "Modesto": "CVML",
-    "Merced": "CVML",
-    "Visalia": "CVML",
-    "Hanford-Corcoran": "CVML",
-    "Stockton-Lodi": "CVML",
-    "Bakersfield-Delano": "CVML",
-    # Central Coast (South Central Coast COE)
-    "Oxnard-Thousand Oaks-Ventura": "SCC",
-    "Salinas": "SCC",
-    "San Luis Obispo-Paso Robles": "SCC",
-    "Santa Maria-Santa Barbara": "SCC",
-    # Far North
-    "Redding": "FN",
-    "North Coast Region": "FN",
-    "North Valley-Northern Mountains Region": "FN",
-}
 
 # COE region code → display name
 COE_REGION_DISPLAY: dict[str, str] = {
@@ -191,145 +147,6 @@ COE_REGION_TO_COUNTIES: dict[str, list[str]] = {
     # Source: SCC Consortium https://sccrcolleges.org/
     "SCC": ["San Luis Obispo", "Santa Barbara", "Ventura"],
 }
-
-
-# College name → OEWS metro(s) for occupation demand data and IN_MARKET edges.
-# Single string for urban colleges, list for rural colleges spanning multiple metros.
-# Covers every college currently featured in the state atlas (logoStacked set).
-COLLEGE_REGION_MAP: dict = {
-    # Bay Area — Silicon Valley
-    "Foothill College": "San Jose-Sunnyvale-Santa Clara",
-    "De Anza College": "San Jose-Sunnyvale-Santa Clara",
-    "Mission College": "San Jose-Sunnyvale-Santa Clara",
-    "Evergreen Valley College": "San Jose-Sunnyvale-Santa Clara",
-    "San Jose City College": "San Jose-Sunnyvale-Santa Clara",
-    "West Valley College": "San Jose-Sunnyvale-Santa Clara",
-    "Gavilan College": "San Jose-Sunnyvale-Santa Clara",
-    # Bay Area — East Bay
-    "Laney College": "Oakland-Fremont-Berkeley",
-    "Merritt College": "Oakland-Fremont-Berkeley",
-    "College of Alameda": "Oakland-Fremont-Berkeley",
-    "Berkeley City College": "Oakland-Fremont-Berkeley",
-    "Chabot College": "Oakland-Fremont-Berkeley",
-    "Ohlone College": "Oakland-Fremont-Berkeley",
-    "Las Positas College": "Oakland-Fremont-Berkeley",
-    "Diablo Valley College": "Oakland-Fremont-Berkeley",
-    "Los Medanos College": "Oakland-Fremont-Berkeley",
-    "Contra Costa College": "Oakland-Fremont-Berkeley",
-    # Bay Area — San Francisco / Peninsula
-    "City College of San Francisco": "San Francisco-San Mateo-Redwood City",
-    "Cañada College": "San Francisco-San Mateo-Redwood City",
-    "College of San Mateo": "San Francisco-San Mateo-Redwood City",
-    "Skyline College": "San Francisco-San Mateo-Redwood City",
-    # Bay Area — North Bay / outer
-    "Santa Rosa Junior College": "Santa Rosa-Petaluma",
-    "Napa Valley College": "Napa",
-    "Solano Community College": "Vallejo",
-    "Cabrillo College": "Santa Cruz-Watsonville",
-    "College of Marin": "San Rafael",
-    # North Coast (FN)
-    "College of the Redwoods": "North Coast Region",
-    "College of the Redwoods (DN)": "North Coast Region",
-    "Mendocino College": ["North Coast Region", "Santa Rosa-Petaluma"],
-    # Far North (FN)
-    "Shasta College": "Redding",
-    "Lassen College": ["North Valley-Northern Mountains Region", "Redding"],
-    "College of the Siskiyous": ["North Valley-Northern Mountains Region", "Redding"],
-    # Sierra Nevada (GS)
-    "Feather River College": "Eastern Sierra-Mother Lode Region",
-    "Columbia College": "Eastern Sierra-Mother Lode Region",
-    "Lake Tahoe Community College": ["Eastern Sierra-Mother Lode Region", "Sacramento-Roseville-Folsom"],
-    # Greater Sacramento
-    "American River College": "Sacramento-Roseville-Folsom",
-    "Sacramento City College": "Sacramento-Roseville-Folsom",
-    "Cosumnes River College": "Sacramento-Roseville-Folsom",
-    "Folsom Lake College": "Sacramento-Roseville-Folsom",
-    "Sierra College": "Sacramento-Roseville-Folsom",
-    "Woodland Community College": "Sacramento-Roseville-Folsom",
-    "Yuba College": "Yuba City",
-    "Butte College": ["Chico", "Sacramento-Roseville-Folsom"],
-    # Central Valley / Mother Lode
-    "Fresno City College": "Fresno",
-    "Reedley College": "Fresno",
-    "Clovis Community College": "Fresno",
-    "Madera Community College": "Fresno",
-    "West Hills College Coalinga": "Fresno",
-    "Merced College": "Merced",
-    "Modesto Junior College": "Modesto",
-    "San Joaquin Delta College": "Stockton-Lodi",
-    "West Hills College Lemoore": "Hanford-Corcoran",
-    "College of the Sequoias": ["Visalia", "Fresno"],
-    "Porterville College": "Visalia",
-    "Bakersfield College": "Bakersfield-Delano",
-    "Cerro Coso Community College": "Bakersfield-Delano",
-    "Taft College": "Bakersfield-Delano",
-    # Central / South Coast
-    "Cuesta College": "San Luis Obispo-Paso Robles",
-    "Hartnell College": "Salinas",
-    "Monterey Peninsula College": "Salinas",
-    "Allan Hancock College": "Santa Maria-Santa Barbara",
-    "Santa Barbara City College": "Santa Maria-Santa Barbara",
-    "Ventura College": "Oxnard-Thousand Oaks-Ventura",
-    "Oxnard College": "Oxnard-Thousand Oaks-Ventura",
-    "Moorpark College": "Oxnard-Thousand Oaks-Ventura",
-    # Los Angeles
-    "Los Angeles City College": "Los Angeles-Long Beach-Glendale",
-    "Los Angeles Valley College": "Los Angeles-Long Beach-Glendale",
-    "Los Angeles Harbor College": "Los Angeles-Long Beach-Glendale",
-    "Los Angeles Mission College": "Los Angeles-Long Beach-Glendale",
-    "East Los Angeles College": "Los Angeles-Long Beach-Glendale",
-    "West Los Angeles College": "Los Angeles-Long Beach-Glendale",
-    "Pasadena City College": "Los Angeles-Long Beach-Glendale",
-    "Mt. San Antonio College": "Los Angeles-Long Beach-Glendale",
-    "Long Beach City College": "Los Angeles-Long Beach-Glendale",
-    "El Camino College": "Los Angeles-Long Beach-Glendale",
-    "Santa Monica College": "Los Angeles-Long Beach-Glendale",
-    "Citrus College": "Los Angeles-Long Beach-Glendale",
-    "Rio Hondo College": "Los Angeles-Long Beach-Glendale",
-    "Cerritos College": "Los Angeles-Long Beach-Glendale",
-    "Compton College": "Los Angeles-Long Beach-Glendale",
-    "Antelope Valley College": "Los Angeles-Long Beach-Glendale",
-    "College of the Canyons": "Los Angeles-Long Beach-Glendale",
-    # Orange County
-    "Coastline College": "Anaheim-Santa Ana-Irvine",
-    "Cypress College": "Anaheim-Santa Ana-Irvine",
-    "Golden West College": "Anaheim-Santa Ana-Irvine",
-    "Orange Coast College": "Anaheim-Santa Ana-Irvine",
-    "Fullerton College": "Anaheim-Santa Ana-Irvine",
-    "Santa Ana College": "Anaheim-Santa Ana-Irvine",
-    "Saddleback College": "Anaheim-Santa Ana-Irvine",
-    "Irvine Valley College": "Anaheim-Santa Ana-Irvine",
-    # Inland Empire / Desert
-    "College of the Desert": "Riverside-San Bernardino-Ontario",
-    "San Bernardino Valley College": "Riverside-San Bernardino-Ontario",
-    "Crafton Hills College": "Riverside-San Bernardino-Ontario",
-    "Chaffey College": "Riverside-San Bernardino-Ontario",
-    "Riverside City College": "Riverside-San Bernardino-Ontario",
-    "Norco College": "Riverside-San Bernardino-Ontario",
-    "Moreno Valley College": "Riverside-San Bernardino-Ontario",
-    "Mt. San Jacinto College": "Riverside-San Bernardino-Ontario",
-    "Victor Valley College": "Riverside-San Bernardino-Ontario",
-    "Barstow Community College": "Riverside-San Bernardino-Ontario",
-    "Palo Verde College": "Riverside-San Bernardino-Ontario",
-    "Copper Mountain College": "Riverside-San Bernardino-Ontario",
-    # San Diego / Imperial
-    "San Diego Mesa College": "San Diego-Chula Vista-Carlsbad",
-    "San Diego City College": "San Diego-Chula Vista-Carlsbad",
-    "San Diego Miramar College": "San Diego-Chula Vista-Carlsbad",
-    "Grossmont College": "San Diego-Chula Vista-Carlsbad",
-    "Cuyamaca College": "San Diego-Chula Vista-Carlsbad",
-    "Palomar College": "San Diego-Chula Vista-Carlsbad",
-    "MiraCosta College": "San Diego-Chula Vista-Carlsbad",
-    "Southwestern College": "San Diego-Chula Vista-Carlsbad",
-    "SD College of Continuing Ed": "San Diego-Chula Vista-Carlsbad",
-    "Imperial Valley College": "El Centro",
-}
-
-
-def get_college_metros(college_name: str) -> list[str]:
-    """Return the OEWS metro(s) for a college as a list."""
-    entry = COLLEGE_REGION_MAP.get(college_name, "")
-    return entry if isinstance(entry, list) else [entry] if entry else []
 
 
 # College name → COE region for graph loading (occupation + employer region linking).
@@ -498,20 +315,3 @@ def ensure_college_region_link(driver, college_name: str) -> bool:
     return True
 
 
-# College name → counties to search for EDD employer data.
-# For urban colleges, this defaults to the counties in their OEWS metro.
-# For rural colleges, this expands to include adjacent counties where
-# students realistically commute for employment.
-# If a college is not listed here, the scraper uses METRO_COUNTIES[metro].
-COLLEGE_SEARCH_COUNTIES: dict[str, list[str]] = {
-    # Rural Far North — Shasta (Redding) is the regional hub
-    "Lassen College": ["Lassen", "Shasta", "Tehama", "Plumas"],
-    "College of the Siskiyous": ["Siskiyou", "Shasta"],
-    "Butte College": ["Butte", "Glenn", "Tehama"],
-    # North Coast — Sonoma is the nearest large economy
-    "Mendocino College": ["Mendocino", "Lake", "Humboldt", "Sonoma"],
-    # Central Valley — adjacent major metros
-    "College of the Sequoias": ["Tulare", "Fresno", "Kings"],
-    # Sierra — Sacramento is the commutable hub
-    "Lake Tahoe Community College": ["El Dorado", "Placer", "Alpine"],
-}

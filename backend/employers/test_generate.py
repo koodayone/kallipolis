@@ -227,7 +227,7 @@ class TestFormatForJson:
         result = _format_for_json(
             [{"name": "Acme", "sector": "Manufacturing",
               "description": "Acme makes cogs.", "soc_codes": ["51-1011"]}],
-            metro="Los Angeles-Long Beach-Glendale",
+            region_code="LA",
         )
         assert len(result) == 1
         assert result[0]["description"] == "Acme makes cogs."
@@ -247,7 +247,7 @@ class TestFormatForJson:
                 "size_class": "500-999 employees",
                 "soc_codes": [],
             }],
-            metro="Fresno",
+            region_code="CVML",
         )
         desc = result[0]["description"]
         assert "Acme" in desc
@@ -255,17 +255,15 @@ class TestFormatForJson:
         assert "Machine Shops" in desc
         assert "500-999" in desc
 
-    def test_regions_derived_from_metro(self):
-        # The formatted record's regions array comes from
-        # OEWS_METRO_TO_COE; if a metro doesn't map, the metro name is
-        # used as-is (legacy fallback).
+    def test_region_code_passes_through_to_regions_array(self):
+        # The formatted record's regions array carries the COE region
+        # code the caller passed in. No metro lookup anymore — the
+        # generator operates strictly in region-code units.
         result = _format_for_json(
             [{"name": "A", "sector": "X", "description": "d", "soc_codes": []}],
-            metro="Los Angeles-Long Beach-Glendale",
+            region_code="LA",
         )
-        assert len(result[0]["regions"]) == 1
-        # LA metro maps to the "LA" COE code, not back to the full metro name.
-        assert result[0]["regions"][0] != "Los Angeles-Long Beach-Glendale"
+        assert result[0]["regions"] == ["LA"]
 
 
 class TestMergeEmployers:
