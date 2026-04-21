@@ -57,7 +57,7 @@ export default function CollegeAtlasHomePage() {
                 fontWeight: 600,
                 letterSpacing: "0.13em",
                 textTransform: "uppercase",
-                color: isHovered ? "#c9a84c" : "rgba(255,255,255,0.35)",
+                color: isHovered ? config.brandColorNeon : "rgba(255,255,255,0.35)",
                 whiteSpace: "nowrap",
                 textDecoration: "none",
                 transition: "color 0.3s ease-in-out",
