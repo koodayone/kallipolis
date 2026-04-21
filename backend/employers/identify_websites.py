@@ -35,9 +35,27 @@ logger = logging.getLogger(__name__)
 # a web search, which consumes more model context.
 _BATCH_SIZE = 50
 
-# Retry config for transient Gemini failures (503, timeout).
-_MAX_RETRIES = 3
+# Retry config for transient Gemini failures.
+_MAX_RETRIES = 4
 _RETRY_BACKOFF_BASE = 3.0
+
+# 503 UNAVAILABLE responses from Gemini 2.5 Flash are almost always
+# TPM quota exhaustion disguised as "high demand" — a search-grounded
+# batch burns enough tokens that several back-to-back trips trip the
+# per-minute ceiling on the shared tier. Wait long enough for the
+# token bucket to refill rather than retrying blindly and exhausting
+# retry attempts against the same quota wall.
+_GEMINI_503_BACKOFF_SECONDS = 65.0
+
+# Minimum spacing between batches. Smooths the request rate enough to
+# stay under TPM quota across multi-batch runs.
+_INTER_BATCH_DELAY_SECONDS = 20.0
+
+# Model for search-grounded identification. Overridable via env so
+# operators can route around service-side congestion on any one
+# endpoint without editing code.
+def _gemini_search_model() -> str:
+    return os.environ.get("GEMINI_SEARCH_MODEL", "gemini-2.5-flash")
 
 
 def identify_websites(
@@ -61,41 +79,60 @@ def identify_websites(
     # Step 1: Search and verify in batches
     results = _search_and_verify(need, region_display)
 
-    # Apply results
+    # Apply results. An entry is assigned a website only when Gemini
+    # returned a valid URL. An entry is flagged for removal only when
+    # Gemini explicitly returned "REMOVE" or "NONE" — a deliberate
+    # viability call. Entries absent from results (batch failed, 503s,
+    # etc.) are left untouched so a future run can re-attempt them.
     assigned = 0
     removed = 0
     for emp in need:
         url = results.get(emp["name"])
-        if url and url not in ("REMOVE", "NONE") and str(url).startswith("http"):
+        if url and str(url).startswith("http"):
             emp["website"] = url
             assigned += 1
-        else:
+        elif url in ("REMOVE", "NONE"):
             emp["_remove"] = True
             removed += 1
+        # else: url is None → Gemini never classified this entry.
+        # Leave the entry untouched for a future retry.
 
-    # Step 2: Retry any employers that were missed (not in results at all)
-    missed = [e for e in need if e["name"] not in results]
-    if missed:
-        logger.info(f"  Retrying {len(missed)} employers missed in first pass")
-        retry_results = _search_and_verify(missed, region_display, batch_size=25)
-        for emp in missed:
+    # Step 2: Retry any employers not yet classified (no URL assigned,
+    # no _remove flag). These are the batch-failure cases from step 1.
+    unclassified = [e for e in need if not e.get("website") and not e.get("_remove")]
+    if unclassified:
+        logger.info(f"  Retrying {len(unclassified)} unclassified employers")
+        retry_results = _search_and_verify(unclassified, region_display, batch_size=25)
+        for emp in unclassified:
             url = retry_results.get(emp["name"])
-            if url and url not in ("REMOVE", "NONE") and str(url).startswith("http"):
+            if url and str(url).startswith("http"):
                 emp["website"] = url
-                emp.pop("_remove", None)
                 assigned += 1
-                removed -= 1
+            elif url in ("REMOVE", "NONE"):
+                emp["_remove"] = True
+                removed += 1
 
-    # Step 3: Liveness check — confirm every assigned URL resolves
+    # Step 3: Liveness check — confirm every assigned URL resolves.
+    # A URL that fails liveness is downgraded to unattempted (no
+    # website, no _remove flag), not flagged for removal — Gemini
+    # said the entity was viable, we just couldn't confirm the URL
+    # lives right now. Next run tries again.
     live, dead = _liveness_check([e for e in need if e.get("website")])
+    downgraded = 0
     for emp in need:
         if emp["name"] in dead:
             emp.pop("website", None)
-            emp["_remove"] = True
             assigned -= 1
-            removed += 1
+            downgraded += 1
 
-    logger.info(f"  Website identification complete: {assigned} verified, {removed} removed")
+    unclassified_final = sum(
+        1 for e in need if not e.get("website") and not e.get("_remove")
+    )
+    logger.info(
+        f"  Website identification complete: {assigned} verified, "
+        f"{removed} removed, {unclassified_final} unclassified "
+        f"(will retry next run), {downgraded} URLs downgraded after liveness fail"
+    )
     return employers
 
 
@@ -117,6 +154,12 @@ def _search_and_verify(
     all_results: dict[str, str] = {}
 
     for i in range(0, len(employers), batch_size):
+        batch_idx = i // batch_size
+        if batch_idx > 0:
+            # Inter-batch delay smooths the request rate so a multi-
+            # batch run doesn't burn through the per-minute token
+            # quota and trigger 503 storms.
+            time.sleep(_INTER_BATCH_DELAY_SECONDS)
         batch = employers[i:i + batch_size]
         lines = []
         for e in batch:
@@ -174,10 +217,11 @@ def _gemini_search_call(
     label: str,
 ) -> dict | None:
     """Call Gemini with Google Search grounding, with retry on transient errors."""
+    model = _gemini_search_model()
     for attempt in range(1, _MAX_RETRIES + 1):
         try:
             response = client.models.generate_content(
-                model="gemini-2.5-flash",
+                model=model,
                 contents=prompt,
                 config=types.GenerateContentConfig(
                     tools=[types.Tool(google_search=types.GoogleSearch())],
@@ -211,10 +255,22 @@ def _gemini_search_call(
 
         except Exception as e:
             err_str = str(e)
-            if "503" in err_str or "UNAVAILABLE" in err_str or "overloaded" in err_str.lower():
-                logger.warning(f"    {label} attempt {attempt}: Gemini unavailable, retrying...")
+            is_503 = (
+                "503" in err_str
+                or "UNAVAILABLE" in err_str
+                or "overloaded" in err_str.lower()
+            )
+            if is_503:
+                # 503 on Gemini 2.5 Flash is almost always TPM quota
+                # exhaustion. Short backoffs burn the retry count
+                # against the same quota wall; wait a real minute for
+                # the bucket to refill.
+                logger.warning(
+                    f"    {label} attempt {attempt}: Gemini 503 (TPM/overload), "
+                    f"waiting {_GEMINI_503_BACKOFF_SECONDS:.0f}s..."
+                )
                 if attempt < _MAX_RETRIES:
-                    time.sleep(_RETRY_BACKOFF_BASE * attempt)
+                    time.sleep(_GEMINI_503_BACKOFF_SECONDS)
                 else:
                     logger.error(f"    {label}: failed after {_MAX_RETRIES} attempts")
                     return None

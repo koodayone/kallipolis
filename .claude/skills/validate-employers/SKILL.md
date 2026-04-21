@@ -66,9 +66,18 @@ can omit the argument to process all pending attempts.
 
 ## Process
 
-### 1. Read, Filter, Batch
+Validation runs through `backend/employers/identify_websites.py`, which uses
+Gemini with Google Search grounding to find and verify each employer's
+official website. This backend is non-negotiable — do **not** validate via
+per-entry WebFetch. Web searches through Gemini hit Google's index, never the
+employer's server, so bot-protection failures (403s on legitimate hospital and
+corporate sites) don't enter the picture. The module batches calls, retries
+transient Gemini failures, and runs a parallel liveness check on every
+assigned URL.
 
-Read `employers.json`. Build the attempt set:
+### 1. Read and filter
+
+Read `backend/employers/employers.json`. Build the attempt set:
 
 - `website` key must be absent (not `null`, not present as a string)
 - If a `region` argument was provided, `region ∈ employer.regions`
@@ -77,34 +86,82 @@ Entries with `website: null` are already-flagged human-review cases; skip them.
 Entries with a URL are already validated; skip them. Entries in other regions
 (when a region arg is set) are out of scope; skip them.
 
-Report the attempt-set size before processing begins. Process the attempt set in
-batches of 10-15 to maintain quality of web research per employer. Report
-progress after each batch.
+Report the attempt-set size before invoking the Gemini backend. If the set is
+empty, stop and report "nothing to do."
 
-### 2. Web Research (per employer)
+### 2. Invoke the Gemini backend
 
-For each employer, conduct a focused web search:
-- Search: `"{employer name}" {sector} {region} official website`
-- Identify whether an **official institutional website** exists
-- Distinguish official sites from directory listings (Yelp, BBB, Yellow Pages, Manta)
+Call `identify_websites()` in a single Bash one-liner that reads the file,
+filters to the attempt set, invokes the module, merges the `website` (or
+`_remove` flag) back into the full list, and writes the file back. The
+module's own logging reports per-batch progress; no batching or progress
+reporting is needed at the skill level.
 
-**CRITICAL — Verify every URL by fetching the page.** Search results frequently
-surface parked domains, expired sites, and ad-stuffed placeholder pages that appear
-legitimate in search snippets. Before assigning any `website` value:
-- Fetch the candidate URL with WebFetch
-- Confirm the page contains actual business content (company description, services,
-  contact information, careers/about pages)
-- Reject any domain that is parked, under construction, redirecting to ad networks,
-  or serving only tracking scripts and iframes
-- If the top search result is not fetchable or is parked, check the next 2-3 results
-  before concluding the employer has no website
+The region-display string passed to the module should be the human-readable
+COE region name from `backend/ontology/regions.py::COE_REGION_DISPLAY` (e.g.,
+`"Bay Area"`, `"Far North"`, `"South Central Coast"`) — this disambiguates
+same-name employers in different parts of California. When no region
+argument was provided, pass `"California"`.
 
-### 3. Apply Viability Criteria
+Example one-liner shape (actual script should be equivalent):
 
-Evaluate each employer against the five criteria defined in
-`references/viability-criteria.md`. An employer must satisfy **all five** to be retained.
+```python
+python3 -c "
+import json, os, sys
+sys.path.insert(0, 'backend')
+from dotenv import load_dotenv
+load_dotenv('.env')
+from employers.identify_websites import identify_websites
 
-**Quick reference — the five criteria:**
+REGION = None  # or a COE code like 'FN'
+REGION_DISPLAY = 'Far North'  # or 'California' if REGION is None
+
+with open('backend/employers/employers.json') as f:
+    emps = json.load(f)
+
+attempt = [e for e in emps if 'website' not in e and (REGION is None or REGION in e.get('regions', []))]
+print(f'Attempt set: {len(attempt)}')
+
+identify_websites(attempt, region_display=REGION_DISPLAY)
+
+# The module mutates attempt entries in-place; apply _remove flags
+kept = [e for e in emps if not e.get('_remove')]
+for e in kept: e.pop('_remove', None)
+
+with open('backend/employers/employers.json', 'w') as f:
+    json.dump(kept, f, indent=2)
+
+retained = sum(1 for e in attempt if isinstance(e.get('website'), str))
+removed = sum(1 for e in attempt if e.get('_remove'))
+print(f'Retained: {retained}, Removed: {removed}')
+"
+```
+
+### 3. Report outcome
+
+Read the log output from the module invocation. Parse the reported numbers
+for retained URLs, removed entries, and liveness-check dead URLs. Present a
+summary:
+
+```
+VALIDATION COMPLETE
+━━━━━━━━━━━━━━━━━━
+Attempt set:  113
+Retained:      95 (84%)
+Removed:       18 (16%) — no web presence, sub-departments, labor contractors, etc.
+Dead URLs:      2 (assigned but failed liveness; removed)
+```
+
+Spot-check 5-10 retained entries — read their new `website` values from the
+updated file and list them with sector tags for the operator to scan.
+
+### 4. Viability criteria (reference for the Gemini prompt)
+
+The Gemini prompt inside `identify_websites.py` already encodes the partnership
+viability criteria — entries that fail any of the five are returned as
+`REMOVE`. Criteria preserved here as reference for audit and for future
+prompt revisions:
+
 1. **Institutional web presence** — Has an official website representing the organization
 2. **Currently operating** — Not closed, sold, defunct, or pending closure
 3. **Distinct entity** — Not a sub-department, satellite venue, or duplicate of a parent org
@@ -112,35 +169,20 @@ Evaluate each employer against the five criteria defined in
 5. **Partnership capacity** — Has organizational infrastructure (HR, training, management)
    beyond a sole proprietor or micro-operation
 
-### 4. Enrich Viable Employers
+Detailed criteria with examples are in `references/viability-criteria.md`. If
+those criteria change, update the Gemini prompt in `identify_websites.py`
+correspondingly — the criteria list and the prompt are the two places where
+the partnership-viability definition lives.
 
-For each employer that passes validation, add a `website` field with the verified URL:
-```json
-{
-  "name": "Kaweah Health",
-  "sector": "Healthcare",
-  "description": "...",
-  "regions": ["CVML"],
-  "occupations": ["29-1141"],
-  "website": "https://www.kaweahhealth.org"
-}
-```
+### 5. Parent-organization URLs
 
-For employers under a parent organization (e.g., a clinic within a health system),
-use the parent organization's website and note the relationship in the description.
-
-### 5. Record Removals
-
-Track every removed employer with a reason. After processing, report:
-- Total employers assessed
-- Employers retained (with website)
-- Employers removed (with name and reason)
-
-### 6. Write Output
-
-Write the filtered and enriched list back to `employers.json`. Preserve the existing
-JSON schema — only add the `website` field and update descriptions where needed.
-Do not modify `occupations`, `regions`, or `sector` fields.
+For employers under a parent organization (e.g., a clinic within a health
+system, a plant under a corporate umbrella), the module returns the parent
+organization's root URL or a dedicated sub-site with its own content (e.g.,
+`adventisthealth.org/ukiah-valley/`). Deep facility-finder paths are
+explicitly rejected by the prompt. This is the correct behavior: partnership
+contact flows through the parent entity regardless of which specific facility
+is listed.
 
 ## Output Format
 
@@ -175,12 +217,17 @@ REMOVALS:
 
 ## Constraints
 
-- Do not invent or guess URLs. Every `website` value must be verified via web search.
+- Do not invent or guess URLs. Every `website` value must come from
+  `identify_websites()` via Gemini + Google Search grounding.
+- Do not fall back to per-entry WebFetch validation if the Gemini call fails.
+  Report the failure, check `GEMINI_API_KEY`, and retry. Per-entry WebFetch
+  is the mechanism this wiring exists to replace — bot-protection on major
+  institutional sites makes it unreliable.
 - Do not modify the employer's `name` field — the pipeline already cleaned names.
 - Do not re-score or re-rank employers. This step is binary: viable or not.
 - Do not re-attempt entries where `website` is already present (either as a URL or
   as `null`). These are durable attempt records from prior runs — a URL means
-  validated, `null` means flagged for human review. Re-attempting wastes web
+  validated, `null` means flagged for human review. Re-attempting wastes API
   calls and can silently overwrite a deliberate human flag.
 - Preserve the file's JSON array structure and field ordering.
 
