@@ -43,7 +43,7 @@ For the full treatment of the synthetic student methodology, see [Student Genera
 
 The industry-side pipeline runs once per region and populates Region, Occupation, and Employer nodes with their relationships. It is structurally distinct from the curriculum-side pipeline because the data sources are different and the operations happen at the region level rather than the college level.
 
-**Occupation loading** parses Centers of Excellence occupational demand data across nine COE regions plus statewide, filters to the community-college workforce-development band, attaches descriptions and controlled-vocabulary skill assignments, and writes `Region`, `Occupation`, `DEMANDS`, and `REQUIRES_SKILL` structures into Neo4j. COE is the sole data source for the occupations domain; an earlier OEWS-based pipeline has been retired. The full treatment is in [Occupation Generation](./occupation-generation.md).
+**Occupation loading** parses Centers of Excellence occupational demand data across nine COE regions plus statewide, restricts it to the occupations the Chancellor's Office classifies as Career Technical Education (via the TOP→CIP→SOC crosswalk and the PCAH sector file), attaches descriptions and controlled-vocabulary skill assignments, and writes `Region`, `Occupation`, `DEMANDS`, and `REQUIRES_SKILL` structures into Neo4j. COE is the sole source for demand metrics; an earlier OEWS-based pipeline has been retired. The full treatment is in [Occupation Generation](./occupation-generation.md).
 
 **Employer loading** is the most operationally subtle stage in the pipeline because employers are sourced at the county level from EDD records, scoped per college, and merged into a region-shared employer pool with deliberate cleanup. The full treatment is in [Employer Generation](./employer-generation.md).
 
@@ -86,7 +86,7 @@ This overview is the entry point for the pipeline section. Four sub-documents fi
 
 - [Course Generation](./course-generation.md) — the PDF extraction methodology, the closed-vocabulary skill derivation and loader-side validation, the extraction_meta sidecar, and the known sharp edges around PDF text-layer variance and program-table contamination
 - [Student Generation](./student-generation.md) — the synthetic methodology, the calibration data, the per-college TOP-code distribution algorithm, and what the generated population is and is not
-- [Occupation Generation](./occupation-generation.md) — the COE demand feed, the workforce-development band filter, the skill-assignment retry loop, and why `education_level` lives on the `Occupation` node rather than on the `DEMANDS` edge
+- [Occupation Generation](./occupation-generation.md) — the COE demand feed, the institutional CTE scope filter (PCAH TOP→CIP→SOC), the skill-assignment retry loop, and why `education_level` lives on the `Occupation` node rather than on the `DEMANDS` edge
 - [Employer Generation](./employer-generation.md) — the EDD scraping, the county-to-region crosswalk, the merge semantics, and the pass-through model that lets multiple colleges share an employer pool
 
 Stage 3 (curriculum loading) is described at the right level here and does not warrant a separate document at the current stage.

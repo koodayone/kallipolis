@@ -27,6 +27,7 @@ DATASET_DIR = Path("/Users/dayonekoo/Desktop/cc_dataset")
 TOP_CIP_PATH = DATASET_DIR / "top_cip_crosswalk.csv"
 CIP_SOC_PATH = DATASET_DIR / "CIP2020_SOC2018_Crosswalk.xlsx"
 COE_DEMAND_PATH = DATASET_DIR / "occupational_demand_coe.csv"
+PCAH_SECTORS_PATH = DATASET_DIR / "TOP Codes to Sectors.xlsx"
 
 CALIBRATIONS_DIR = Path(__file__).parent / "calibrations"
 
@@ -36,6 +37,8 @@ CALIBRATIONS_DIR = Path(__file__).parent / "calibrations"
 _top_to_cip: dict[str, set[str]] | None = None
 _cip_to_soc: dict[str, set[str]] | None = None
 _coe_demand: dict[str, dict[str, dict]] | None = None
+_top4_to_sector: dict[str, str] | None = None
+_cte_reachable_socs_cache: set[str] | None = None
 
 
 def _load_top_to_cip() -> dict[str, set[str]]:
@@ -110,6 +113,74 @@ def _load_coe_demand() -> dict[str, dict[str, dict]]:
     _coe_demand = data
     logger.info(f"Loaded COE demand: {len(data)} regions, {sum(len(v) for v in data.values())} entries")
     return data
+
+
+def _load_pcah_cte_top4() -> dict[str, str]:
+    """Load PCAH TOP6 → sector mapping, normalized to TOP4 keys.
+
+    The Chancellor's Office *TOP Codes to Sectors* file (PCAH) lists every
+    TOP6 code classified as CTE under one of the 12 Doing-What-MATTERS /
+    Strong Workforce industry sectors. This is the authoritative institutional
+    definition of CTE scope for the California community college system.
+
+    The PCAH file uses 6-digit TOP codes as integers (e.g. 10100, 30220).
+    The existing crosswalk indexes on 4-digit TOP strings with leading zero
+    preserved (e.g. "0101", "0302"). Conversion: ``f"{top6 // 100:04d}"`` —
+    this drops the last two digits (the within-TOP4 subdivision) and formats
+    the result with a leading zero.
+
+    Multiple TOP6 codes under the same TOP4 share a sector in this file, so
+    last-write-wins on the TOP4 key does not lose information.
+
+    Returns: {top4: sector_name} for every CTE-classified TOP4.
+    """
+    global _top4_to_sector
+    if _top4_to_sector is not None:
+        return _top4_to_sector
+
+    mapping: dict[str, str] = {}
+    wb = openpyxl.load_workbook(PCAH_SECTORS_PATH, read_only=True)
+    ws = wb["Sheet1"]
+    # Row 1 is a preamble, row 2 is the header. Data starts at row 3.
+    for row in ws.iter_rows(min_row=3, values_only=True):
+        top6, _title, sector = row
+        if top6 is None or sector is None:
+            continue
+        top4 = f"{int(top6) // 100:04d}"
+        mapping[top4] = str(sector)
+    wb.close()
+
+    _top4_to_sector = mapping
+    logger.info(f"Loaded PCAH CTE sectors: {len(mapping)} TOP4 codes")
+    return mapping
+
+
+def cte_reachable_socs() -> set[str]:
+    """Return the set of SOC codes reachable from any PCAH-classified CTE TOP4.
+
+    Composition: for every TOP4 classified as CTE in the PCAH file, walks
+    the existing TOP→CIP→SOC chain and collects the union of target SOCs.
+    The result is the institutional-CTE SOC universe — an upstream input to
+    the occupations generation filter.
+
+    Cached for the process lifetime.
+    """
+    global _cte_reachable_socs_cache
+    if _cte_reachable_socs_cache is not None:
+        return _cte_reachable_socs_cache
+
+    cte_top4 = set(_load_pcah_cte_top4().keys())
+    top_cip = _load_top_to_cip()
+    cip_soc = _load_cip_to_soc()
+
+    socs: set[str] = set()
+    for top4 in cte_top4 & set(top_cip.keys()):
+        for cip in top_cip[top4]:
+            socs.update(cip_soc.get(cip, set()))
+
+    _cte_reachable_socs_cache = socs
+    logger.info(f"Computed CTE-reachable SOC set: {len(socs)} SOCs")
+    return socs
 
 
 # ── Core functions ────────────────────────────────────────────────────────

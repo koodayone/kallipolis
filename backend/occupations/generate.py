@@ -1,12 +1,20 @@
 """
 Generate occupations.json from COE (Centers of Excellence) data.
 
-COE is the sole data source for the occupations domain.
+COE is the sole data source for occupation demand metrics.
 
-The workforce-development band filter is applied here (not at load time), so
-every row written to occupations.json is a row the graph will load. The band
-matches docs/product/occupations.md: postsecondary certificate through
-bachelor's degree.
+The CTE scope filter is applied here (not at load time), so every row written
+to occupations.json is a row the graph will load. An occupation is included
+iff both of the following hold:
+
+  1. COE tracks regional demand for it (the SOC appears in the COE CSV).
+  2. A PCAH-classified CTE TOP6 code targets it (the SOC is reachable from
+     at least one TOP code in the Chancellor's Office *TOP Codes to Sectors*
+     file via the TOP4→CIP→SOC chain in ontology/crosswalks.py).
+
+This replaces an earlier BLS-entry-education proxy filter. See
+docs/product/occupations.md and docs/pipeline/occupation-generation.md for
+the product and pipeline framing.
 
 Usage:
     python -m occupations.generate
@@ -20,23 +28,13 @@ import logging
 import sys
 from pathlib import Path
 
+from ontology.crosswalks import cte_reachable_socs
+
 logger = logging.getLogger(__name__)
 
 COE_CSV_DEFAULT = Path(__file__).parents[3] / "cc_dataset" / "occupational_demand_coe.csv"
 OUTPUT_PATH = Path(__file__).parent / "occupations.json"
 EXISTING_PATH = Path(__file__).parent / "occupations.json"
-
-# Education levels excluded from the workforce-development band. Occupations
-# whose typical entry-level education falls outside postsecondary certificate
-# through bachelor's are not what community colleges serve.
-EXCLUDED_EDUCATION = frozenset({
-    "No formal educational credential",
-    "High school diploma or equivalent",
-    "Some college, no degree",
-    "Master's degree",
-    "Doctoral or professional degree",
-    "N/A",
-})
 
 
 def _parse_int(value) -> int | None:
@@ -59,8 +57,8 @@ def _parse_float(value) -> float | None:
         return None
 
 
-def _parse_row(row: dict) -> tuple[str, str, dict, str, dict]:
-    """Extract (soc, region, occupation_shell, education, region_metrics) from a CSV row."""
+def _parse_row(row: dict) -> tuple[str, str, dict, dict]:
+    """Extract (soc, region, occupation_shell, region_metrics) from a CSV row."""
     soc = row["SOC"].strip()
     region = row["Region"].strip()
     title = row["Description"].strip()
@@ -82,24 +80,20 @@ def _parse_row(row: dict) -> tuple[str, str, dict, str, dict]:
         "annual_openings": _parse_int(row.get("Average Annual Job Openings")),
     }
 
-    return soc, region, occupation_shell, education, region_metrics
-
-
-def _is_in_workforce_band(education_level: str) -> bool:
-    """True when an education level falls inside the community-college workforce band."""
-    return education_level not in EXCLUDED_EDUCATION
+    return soc, region, occupation_shell, region_metrics
 
 
 def generate_from_coe(csv_path: Path) -> list[dict]:
     """Parse COE CSV and produce occupations list for the pipeline."""
+    cte_socs = cte_reachable_socs()
     occupations: dict[str, dict] = {}
 
     with open(csv_path, newline="") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            soc, region, shell, education, metrics = _parse_row(row)
+            soc, region, shell, metrics = _parse_row(row)
 
-            if not _is_in_workforce_band(education):
+            if soc not in cte_socs:
                 continue
 
             if soc not in occupations:
@@ -121,7 +115,7 @@ def generate_from_coe(csv_path: Path) -> list[dict]:
                     occ["description"] = prev["description"]
 
     result = sorted(occupations.values(), key=lambda o: o["soc_code"])
-    logger.info(f"Generated {len(result)} occupations in the workforce-development band")
+    logger.info(f"Generated {len(result)} occupations in CTE scope (COE ∩ PCAH CTE)")
 
     regions = set()
     for occ in result:

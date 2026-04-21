@@ -27,6 +27,27 @@ logger = logging.getLogger(__name__)
 BATCH_SIZE = 500
 
 
+def cleanup_stale_occupations(driver: Driver, valid_soc_codes: list[str]) -> int:
+    """DETACH DELETE Occupation nodes not in the valid set. Returns count deleted.
+
+    DETACH removes attached edges automatically, so DEMANDS (from Region) and
+    REQUIRES_SKILL (to Skill) edges on stale Occupation nodes are cleaned up
+    in the same step. HIRES_FOR edges from Employer nodes are likewise removed;
+    the Employer nodes themselves remain (their own cleanup lives in
+    employers/load.py).
+    """
+    with driver.session() as session:
+        result = session.run(
+            "MATCH (o:Occupation) WHERE NOT o.soc_code IN $socs DETACH DELETE o "
+            "RETURN count(o) AS cnt",
+            socs=valid_soc_codes,
+        )
+        deleted = result.single()["cnt"]
+    if deleted:
+        logger.info(f"Cleaned up {deleted} stale Occupation nodes")
+    return deleted
+
+
 def load_industry(
     driver: Driver,
     occupations: list[dict],
@@ -189,6 +210,8 @@ if __name__ == "__main__":
 
     driver = get_driver()
     try:
+        valid_socs = [o["soc_code"] for o in occupations]
+        cleanup_stale_occupations(driver, valid_socs)
         stats = load_industry(driver, occupations)
         logger.info(f"\nComplete: {stats}")
     finally:
