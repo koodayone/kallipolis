@@ -25,7 +25,7 @@ capacity to sustain a partnership and enriches them with web presence data.
 
 ## Input
 
-The employer data file: `backend/pipeline/industry/employers.json`
+The employer data file: `backend/employers/employers.json`
 
 Each employer entry:
 ```json
@@ -38,12 +38,48 @@ Each employer entry:
 }
 ```
 
+### The `website` field is a three-state attempt record
+
+The skill uses the presence and value of the `website` field as a durable record of
+what has been done to each employer:
+
+- **Key absent** — never attempted. These are the entries the skill processes.
+- **Value is a URL string** — attempted, retained, viable. Do not re-attempt.
+- **Value is `null`** — attempted, flagged for human review (typically a large
+  employer whose official website couldn't be confirmed automatically). Do not
+  re-attempt; a human decides whether to enrich or remove.
+
+Removed entries are deleted from `employers.json` entirely, so they don't appear
+in any of the three states. If a re-scrape re-introduces a previously removed
+employer, it re-enters the "key absent" state and will be re-attempted — which is
+correct, since circumstances (website, operating status) may have changed.
+
+### Optional `region` argument
+
+The skill accepts an optional argument naming a COE region code (e.g., `Bay`,
+`SCC`, `IE/D`, `SD/I`, `FN`, `GS`, `LA`, `OC`, `CVML`). When provided, the skill
+restricts its attempt set to employers tagged with that region. When absent, the
+skill processes every employer with an absent `website` key across all regions.
+
+The onboard-college skill always passes the college's region; ad-hoc invocations
+can omit the argument to process all pending attempts.
+
 ## Process
 
-### 1. Read and Batch
+### 1. Read, Filter, Batch
 
-Read `employers.json`. Process employers in batches of 10-15 to maintain quality of
-web research per employer. Report progress after each batch.
+Read `employers.json`. Build the attempt set:
+
+- `website` key must be absent (not `null`, not present as a string)
+- If a `region` argument was provided, `region ∈ employer.regions`
+
+Entries with `website: null` are already-flagged human-review cases; skip them.
+Entries with a URL are already validated; skip them. Entries in other regions
+(when a region arg is set) are out of scope; skip them.
+
+Report the attempt-set size before processing begins. Process the attempt set in
+batches of 10-15 to maintain quality of web research per employer. Report
+progress after each batch.
 
 ### 2. Web Research (per employer)
 
@@ -126,7 +162,9 @@ REMOVALS:
 ## Edge Cases
 
 - **Large employer without website** (e.g., 500+ employees): Flag for manual review
-  rather than auto-removing. Add to retained list with `"website": null` and a note.
+  rather than auto-removing. Set `"website": null` and note in the description why
+  it was flagged. This is a durable state — future skill runs will not re-attempt
+  the entry. A human must edit the record to either supply a URL or remove it.
 - **Parent/child overlap**: When both a parent org and its subsidiary appear (e.g.,
   Community Medical Centers and Fresno Heart & Surgical Hospital), keep both but
   ensure the child's description references the parent relationship.
@@ -140,6 +178,10 @@ REMOVALS:
 - Do not invent or guess URLs. Every `website` value must be verified via web search.
 - Do not modify the employer's `name` field — the pipeline already cleaned names.
 - Do not re-score or re-rank employers. This step is binary: viable or not.
+- Do not re-attempt entries where `website` is already present (either as a URL or
+  as `null`). These are durable attempt records from prior runs — a URL means
+  validated, `null` means flagged for human review. Re-attempting wastes web
+  calls and can silently overwrite a deliberate human flag.
 - Preserve the file's JSON array structure and field ordering.
 
 ## Additional Resources

@@ -69,7 +69,7 @@ The trade-off is commutability. A handful of rural colleges have students who re
 
 ## Validation and enrichment
 
-After the pipeline produces the merged `employers.json`, a separate validation step assesses each employer against partnership viability criteria and enriches the survivors with their official website URLs. The validation is implemented as a Claude skill, `validate-employers`, and runs as a manual step before the data is loaded into the graph.
+After the pipeline produces the merged `employers.json`, a separate validation step assesses each employer against partnership viability criteria and enriches the survivors with their official website URLs. The validation is implemented as a Claude skill, `validate-employers`, and runs as a manual step before the data is loaded into the graph. The skill accepts an optional region code so its scope matches the generation step's scope, and it treats the presence of a `website` field as a durable attempt record — entries with a URL are viable-and-validated, entries with `website: null` are flagged for human review, and entries with no `website` key are the ones that still need a first-time attempt. This is what keeps re-runs from re-attempting entries that have already been processed.
 
 The skill applies five viability criteria, derived from the Strong Workforce Program's partnership requirements. An employer must satisfy all five to be retained.
 

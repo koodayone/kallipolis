@@ -180,21 +180,31 @@ fallback SOC codes.
 ## Stage 4 — Validate employers (via Skill tool)
 
 This is the critical step that prior manual runs have silently skipped. Invoke the
-`validate-employers` skill via the Skill tool:
+`validate-employers` skill via the Skill tool, passing the college's COE region code
+(resolved during preflight from `COLLEGE_COE_REGION`) as the argument so the
+validation scope matches the generation scope:
 
-> Use the Skill tool with `skill: "validate-employers"`.
+> Use the Skill tool with `skill: "validate-employers"` and `args` set to the region
+> code string (e.g., `"Bay"`, `"SCC"`, `"IE/D"`, `"SD/I"`, `"FN"`).
 
-The skill reads `backend/employers/employers.json` directly, iterates through employers
-that lack a `website` field (i.e., the newly added ones from Stage 3), fetches and
-verifies each candidate URL, applies the five viability criteria, and writes the
-enriched and filtered list back to the same file. Wall time: ~5–15 minutes depending
-on the number of new employers (it does per-employer WebFetch verification with rate
-limiting).
+The skill reads `backend/employers/employers.json` directly, filters to employers
+that are tagged with the passed region AND have no `website` key (i.e., never
+previously attempted — see the skill's three-state `website` field semantics),
+fetches and verifies each candidate URL, applies the five viability criteria, and
+writes the enriched and filtered list back to the same file. Wall time: ~5–15
+minutes depending on the number of new employers (per-employer WebFetch
+verification with rate limiting).
+
+Passing the region is what prevents validation from re-attempting stragglers from
+other regions that were never validated under the older workflow. Without the
+region arg, the skill falls back to all-missing-website across the file, which is
+the right default for ad-hoc invocations but wrong during onboarding.
 
 When the skill completes, confirm that it reported a validation summary (assessed /
-retained / removed counts). Spot-check `employers.json` to confirm the new records now
-have `website` fields populated. If the skill reports zero assessed or aborts early,
-stop and report the issue; do not proceed to load unvalidated data.
+retained / removed counts). Spot-check `employers.json` to confirm the new records
+for this region now have `website` fields populated. If the skill reports zero
+assessed or aborts early, stop and report the issue; do not proceed to load
+unvalidated data.
 
 ## Stage 5 — Employer load
 
