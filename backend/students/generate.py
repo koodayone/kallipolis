@@ -2,9 +2,18 @@
 Stage 4: Synthetic student data generator.
 
 Generates anonymous students with enrollment distributions calibrated to
-DataMart 4-digit TOP code grade distributions. Each student is assigned a
-primary TOP code (weighted by real enrollment share), with 60% stickiness
+DataMart 6-digit TOP code grade distributions. Each student is assigned a
+primary TOP6 (weighted by real enrollment share), with 60% stickiness
 to that area and 40% random draws from the full distribution.
+
+Per-course TOP6 assignment flows through `ontology.mcf_lookup`, which
+reads the 125 MCFs bundled in the backend source tree at
+`backend/ontology/mastercoursefiles/`. College-key ↔ MCF-filename
+translation goes through `pipeline.mcf_key_map.pdf_to_mcf_key`.
+
+Grade sampling uses a tier-ladder fallback when a specific TOP6's grade
+distribution is suppressed: exact TOP6 -> parent TOP4 rollup (first four
+digits) -> college-wide DEFAULT_GRADES.
 
 Usage:
     from students.generate import generate_and_load_students
@@ -13,15 +22,10 @@ Usage:
 
 from __future__ import annotations
 
-import csv
 import json
 import logging
-import os
-import re
 import uuid
-from collections import Counter
 from dataclasses import dataclass, field
-from functools import lru_cache
 from itertools import accumulate
 from pathlib import Path
 from random import Random
@@ -29,7 +33,26 @@ from typing import List, Dict, Tuple, Optional
 
 from neo4j import Driver
 
-from students.helpers import compute_gpa, compute_primary_focus
+from students.helpers import compute_gpa, compute_primary_focus, course_order_key
+from ontology.mcf_lookup import _normalize_course_code
+from pipeline.mcf_key_map import pdf_to_mcf_key
+
+import csv as _csv
+import re as _re
+
+# Catalog codes use natural numbers ("HLTH 20") but the MCF uses
+# zero-padded forms ("HLTH020"). This regex strips the leading zero run
+# between the alphabetic prefix and the first non-zero digit so both
+# sides collapse to the same canonical form (HLTH20) during MCF lookup.
+_LEADING_ZERO_RE = _re.compile(r"([A-Z])(0+)(\d)")
+
+
+def _canonical_course_id(code: str) -> str:
+    """Canonicalize a course code for MCF matching — uppercase, strip
+    internal whitespace, collapse leading zeros in the numeric portion.
+    """
+    s = _LEADING_ZERO_RE.sub(r"\1\3", _normalize_course_code(code))
+    return s
 
 logger = logging.getLogger(__name__)
 
@@ -61,18 +84,16 @@ START_TERM_WEIGHTS = {"Fall": 0.60, "Winter": 0.15, "Spring": 0.25}
 # Non-credit prefixes to exclude
 NON_CREDIT_PREFIXES = ["Non-Credit"]
 
-# Known prefix aliases (catalog prefix → DataMart prefix)
-PREFIX_ALIASES = {
-    "CS": "C S", "DA": "D A", "DH": "D H", "RT": "R T", "VT": "V T",
-    "LA": "L A", "ENGL C": "ENGL", "COMM C": "COMM", "PSYC C": "PSYC",
-    "POLS C": "POLI", "STAT C": "MATH",
-}
-
 # Pass/No Pass grade distribution
 PNP_DIST = {"P": 0.85, "NP": 0.15}
 
-# Default grade distribution (fallback when TOP4 data unavailable)
+# Default grade distribution (fallback when no calibrated data available)
 DEFAULT_GRADES = {"A": 0.55, "B": 0.18, "C": 0.08, "D": 0.02, "F": 0.07, "W": 0.07, "P": 0.01}
+
+# Sentinel TOP6 for courses that can't be mapped via the MCF. These are
+# bucketed separately rather than silently dropped; the generation summary
+# reports a per-college count so orphans are visible.
+UNMAPPED_TOP6 = "000000"
 
 
 # ── Data classes ───────────────────────────────────────────────────────────────
@@ -91,7 +112,7 @@ class Enrollment:
 @dataclass
 class GeneratedStudent:
     uuid: str
-    primary_top4: str = ""
+    primary_top6: str = ""
     enrollments: List[Enrollment] = field(default_factory=list)
 
 
@@ -105,14 +126,19 @@ class GenerationStats:
     avg_courses_per_student: float = 0.0
     success_rate: float = 0.0
     grade_distribution: Dict[str, float] = field(default_factory=dict)
-    top4_to_dept: Dict[str, str] = field(default_factory=dict)
+    top6_to_dept: Dict[str, str] = field(default_factory=dict)
+    unmapped_courses: int = 0
+    fallback_grade_samples: int = 0
 
 
 # ── Calibration loading ──────────────────────────────────────────────────────
 
 
 def _load_calibration(college_key: str) -> Optional[dict]:
-    """Load the old 2-digit calibration for ft_ratio and retention_rate."""
+    """Load the older 2-digit calibration for ft_ratio, retention_rate,
+    enrollment. This file is independent of the TOP4/TOP6 grade
+    calibrations and predates them.
+    """
     path = Path(__file__).parent.parent / "ontology" / "calibrations" / f"{college_key}.json"
     if path.exists():
         with open(path) as f:
@@ -120,106 +146,180 @@ def _load_calibration(college_key: str) -> Optional[dict]:
     return None
 
 
-def _load_top4_calibration(college_key: str) -> Optional[dict]:
-    """Load 4-digit TOP code calibration data."""
-    path = Path(__file__).parent.parent / "ontology" / "calibrations" / "top4" / f"{college_key}.json"
+def _load_top6_calibration(college_key: str) -> Optional[dict]:
+    """Load 6-digit TOP code calibration: per-college TOP6 grade
+    distributions plus parent-TOP4 rollup used by the grade sampler's
+    fallback tier.
+    """
+    path = Path(__file__).parent.parent / "ontology" / "calibrations" / "top6" / f"{college_key}.json"
     if path.exists():
         with open(path) as f:
             cal = json.load(f)
-        logger.info(f"Loaded TOP4 calibration for {college_key}: {len(cal.get('top4_codes', {}))} codes, {cal.get('total_enrollments', 0):,} enrollments")
+        logger.info(
+            f"Loaded TOP6 calibration for {college_key}: "
+            f"{len(cal.get('top6_codes', {}))} codes, "
+            f"{cal.get('total_enrollments', 0):,} enrollments"
+        )
         return cal
-    logger.info(f"No TOP4 calibration for {college_key}")
+    logger.warning(f"No TOP6 calibration for {college_key}")
     return None
 
 
-# ── Prefix → TOP4 mapping ─────────────────────────────────────────────────────
-
-_MCF_DIR = Path(os.environ.get("MCF_DIR", Path.home() / "Desktop" / "cc_dataset" / "mastercoursefiles"))
-
-# System-wide fallback (only used when a college has no MCF)
-_FALLBACK_PREFIX_PATH = Path(__file__).parent.parent / "ontology" / "calibrations" / "prefix_to_top4.json"
+# ── Per-course TOP6 lookup via the bundled MCFs ─────────────────────────────
 
 
-@lru_cache(maxsize=1)
-def _get_fallback_prefix_map() -> Dict[str, str]:
-    """Load system-wide prefix → TOP4 fallback mapping."""
-    if _FALLBACK_PREFIX_PATH.exists():
-        with open(_FALLBACK_PREFIX_PATH) as f:
-            return json.load(f)
-    return {}
+_MCF_DIR = Path(__file__).parent.parent / "ontology" / "mastercoursefiles"
 
 
-def _course_prefix(code: str) -> str:
-    """Extract the letter prefix from a course code. 'CS 1A' → 'CS'."""
-    match = re.match(r"([A-Z ]+)", code)
-    return match.group(1).strip() if match else ""
+def _build_course_to_top6(courses: List[dict], college_key: str) -> Dict[str, str]:
+    """Map each catalog course code to its 6-digit TOP code.
 
+    Reads the college's MCF file directly from the bundled MCF directory
+    rather than routing through `ontology.mcf_lookup._load_mcf_index`.
+    The bundled filenames use the backend college key
+    (`MasterCourseFile_sandiegocity.csv`, `MasterCourseFile_irvinevalley.csv`)
+    but the `College` column inside those files uses the human-readable
+    form ("San Diego City"), which is the mismatch that makes an
+    index-level lookup unreliable. Reading the file directly bypasses
+    the column entirely.
 
-def _resolve_prefix(prefix: str, prefix_map: Dict[str, str]) -> str:
-    """Resolve a prefix through aliases and concurrent-enrollment variants."""
-    if prefix in PREFIX_ALIASES:
-        return PREFIX_ALIASES[prefix]
-    # "ENGL C" → "ENGL" (concurrent enrollment variant, space required)
-    # but NOT "AGTC" → "AGT"
-    if prefix.endswith(" C"):
-        base = prefix[:-2]
-        if base in prefix_map and prefix not in prefix_map:
-            return base
-    return prefix
+    When the same course appears multiple times in the MCF (across
+    Issue/Update Dates reflecting TOP-code reclassifications), the
+    latest-dated entry wins. This avoids the staleness seen on Foothill
+    where HLTH020 went 040100 -> 120100 -> 126000 over the years — the
+    most recent classification is the one the calibration expects.
 
-
-@lru_cache(maxsize=None)
-def _load_college_prefix_map(college_key: str) -> Dict[str, str]:
-    """Build prefix → TOP4 mapping from a college's own master course file.
-
-    Each college's MCF is authoritative for its prefix assignments.
-    Falls back to system-wide mapping only if no MCF exists. Memoized per
-    college so multi-college pipeline runs don't re-parse the same CSV.
+    Courses without an MCF entry are mapped to UNMAPPED_TOP6 so they
+    remain visible in the generation summary rather than being silently
+    dropped.
     """
+    # Try backend-key filename first; fall back to pdf_to_mcf_key form.
     mcf_path = _MCF_DIR / f"MasterCourseFile_{college_key}.csv"
     if not mcf_path.exists():
-        logger.info(f"No MCF for {college_key}, using system-wide fallback")
-        return _get_fallback_prefix_map()
+        alt = pdf_to_mcf_key(college_key)
+        alt_path = _MCF_DIR / f"MasterCourseFile_{alt}.csv"
+        if alt_path.exists():
+            mcf_path = alt_path
+        else:
+            logger.warning(
+                f"No MCF file for {college_key} at {mcf_path.name} or "
+                f"{alt_path.name}; all courses will be UNMAPPED_TOP6"
+            )
+            return {c.get("code", ""): UNMAPPED_TOP6 for c in courses if c.get("code")}
 
-    prefix_votes: Dict[str, Counter] = {}
-    try:
-        with open(mcf_path, encoding="utf-8", errors="replace") as f:
-            reader = csv.DictReader(f)
-            for row in reader:
-                course_id = row.get("Course ID", "").strip()
-                top_code = row.get("TOP Code", "").strip()
-                if not course_id or not top_code:
-                    continue
-                prefix = _course_prefix(course_id)
-                if not prefix:
-                    continue
-                top4 = top_code[:4] if len(top_code) >= 4 else top_code
-                if top4 and top4 != "0000":
-                    prefix_votes.setdefault(prefix, Counter())[top4] += 1
-    except Exception as e:
-        logger.warning(f"Could not read MCF for {college_key}: {e}")
-        return _get_fallback_prefix_map()
+    # canonical_course_id -> (top6, issue_date). Latest date wins.
+    college_index: Dict[str, Tuple[str, str]] = {}
+    with open(mcf_path, encoding="utf-8", errors="replace") as f:
+        reader = _csv.DictReader(f)
+        for row in reader:
+            course_id = row.get("Course ID", "") or ""
+            top_code = (row.get("TOP Code", "") or "").strip()
+            date = (row.get("Issue/Update Date", "") or "").strip()
+            if not course_id or not top_code:
+                continue
+            canon = _canonical_course_id(course_id.strip().rstrip("."))
+            if not canon:
+                continue
+            if len(top_code) == 6:
+                top6 = top_code
+            elif len(top_code) == 4:
+                top6 = top_code + "00"
+            else:
+                continue
+            existing = college_index.get(canon)
+            if existing is None or date > existing[1]:
+                college_index[canon] = (top6, date)
 
-    # Resolve each prefix to its most common TOP4 within this college
-    mapping = {prefix: votes.most_common(1)[0][0] for prefix, votes in prefix_votes.items()}
-    logger.info(f"Loaded {len(mapping)} prefix mappings from {college_key} MCF")
+    canon_to_top6: Dict[str, str] = {k: v[0] for k, v in college_index.items()}
+
+    mapping: Dict[str, str] = {}
+    for c in courses:
+        code = c.get("code", "")
+        if not code:
+            continue
+        canon = _canonical_course_id(code)
+        top6 = canon_to_top6.get(canon)
+        if not top6:
+            # Prefix fallback: catalog "CT100" against MCF "CT100AB".
+            for mcf_id, mcf_top6 in canon_to_top6.items():
+                if mcf_id.startswith(canon):
+                    top6 = mcf_top6
+                    break
+        mapping[code] = top6 or UNMAPPED_TOP6
     return mapping
 
 
-def _build_top4_course_pools(
-    courses: List[dict],
-    top4_cal: dict,
-    college_key: str = "",
-) -> Dict[str, List[dict]]:
-    """Group courses into pools by 4-digit TOP code."""
-    prefix_map = _load_college_prefix_map(college_key) if college_key else _get_fallback_prefix_map()
-    valid_top4s = set(top4_cal.get("top4_codes", {}).keys())
+# ── Per-student prefix ordering ──────────────────────────────────────────────
 
-    pools: Dict[str, List[dict]] = {code: [] for code in valid_top4s}
+
+def _course_prefix(code: str) -> str:
+    """Extract the letter prefix from a course code. 'CS 1A' -> 'CS'."""
+    import re as _re
+    match = _re.match(r"([A-Z ]+)", code)
+    return match.group(1).strip() if match else ""
+
+
+def _ordering_ok(code: str, prefix_max: Dict[str, Tuple[int, str]]) -> bool:
+    """True iff this course may be taken next given the student's history
+    in its prefix. Within a single prefix, order keys must be
+    non-decreasing (equality permits retakes). First enrollment in a new
+    prefix is unconstrained.
+    """
+    prefix = _course_prefix(code)
+    if not prefix or prefix not in prefix_max:
+        return True
+    return course_order_key(code) >= prefix_max[prefix]
+
+
+def _record_prefix(code: str, prefix_max: Dict[str, Tuple[int, str]]) -> None:
+    """Update the student's per-prefix max order key after an enrollment."""
+    prefix = _course_prefix(code)
+    if not prefix:
+        return
+    key = course_order_key(code)
+    current = prefix_max.get(prefix)
+    if current is None or key > current:
+        prefix_max[prefix] = key
+
+
+# ── Course pool building ────────────────────────────────────────────────────
+
+
+def _parse_units(units_str: str) -> float:
+    """Parse units string to float. '4.5' -> 4.5, '1-2' -> 1.5, '3unit(s)' -> 3.0."""
+    import re as _re
+    if not units_str:
+        return 0.0
+    m = _re.match(r"([\d.]+)", units_str.strip())
+    if not m:
+        return 0.0
+    try:
+        if "-" in units_str:
+            parts = _re.findall(r"[\d.]+", units_str)
+            if len(parts) >= 2:
+                return (float(parts[0]) + float(parts[1])) / 2
+        return float(m.group(1))
+    except (ValueError, IndexError):
+        return 0.0
+
+
+def _build_top6_course_pools(
+    courses: List[dict],
+    top6_cal: dict,
+    course_to_top6: Dict[str, str],
+) -> Tuple[Dict[str, List[dict]], int]:
+    """Group courses into pools keyed by 6-digit TOP code.
+
+    Returns (pools, unmapped_count). Pools only include TOP6 codes that
+    are both present in `course_to_top6` and have a calibration entry —
+    courses whose TOP6 is not calibrated are counted as unmapped so
+    calibration gaps are visible, not silent.
+    """
+    valid_top6s = set(top6_cal.get("top6_codes", {}).keys())
+    pools: Dict[str, List[dict]] = {code: [] for code in valid_top6s}
     unmapped = 0
 
     for c in courses:
-        # Skip non-credit
         dept = c.get("department", "")
         if any(dept.startswith(p) for p in NON_CREDIT_PREFIXES):
             continue
@@ -227,38 +327,21 @@ def _build_top4_course_pools(
         if units <= 0:
             continue
 
-        prefix = _course_prefix(c["code"])
-        resolved = _resolve_prefix(prefix, prefix_map)
-
-        top4 = prefix_map.get(resolved) or prefix_map.get(prefix)
-        if top4 and top4 in valid_top4s:
-            c["_units"] = units
-            pools[top4].append(c)
-        else:
+        top6 = course_to_top6.get(c["code"], UNMAPPED_TOP6)
+        if top6 == UNMAPPED_TOP6 or top6 not in valid_top6s:
             unmapped += 1
+            continue
+
+        c["_units"] = units
+        pools[top6].append(c)
 
     populated = sum(1 for p in pools.values() if p)
     total_courses = sum(len(p) for p in pools.values())
-    logger.info(f"Course pools: {total_courses} courses across {populated}/{len(pools)} TOP4 codes ({unmapped} unmapped)")
-    return pools
-
-
-def _parse_units(units_str: str) -> float:
-    """Parse units string to float. '4.5' → 4.5, '1-2' → 1.5, '3unit(s)' → 3.0."""
-    if not units_str:
-        return 0.0
-    # Extract leading number from any format
-    m = re.match(r"([\d.]+)", units_str.strip())
-    if not m:
-        return 0.0
-    try:
-        if "-" in units_str:
-            parts = re.findall(r"[\d.]+", units_str)
-            if len(parts) >= 2:
-                return (float(parts[0]) + float(parts[1])) / 2
-        return float(m.group(1))
-    except (ValueError, IndexError):
-        return 0.0
+    logger.info(
+        f"Course pools: {total_courses} courses across {populated}/{len(pools)} "
+        f"TOP6 codes ({unmapped} unmapped)"
+    )
+    return pools, unmapped
 
 
 # ── Term sequence ──────────────────────────────────────────────────────────────
@@ -274,6 +357,40 @@ def _build_term_sequence() -> List[str]:
     return terms
 
 
+# ── Grade sampling with tier-ladder fallback ────────────────────────────────
+
+
+def _sample_grade(
+    top6: str,
+    top6_data: Dict[str, dict],
+    top4_rollup: Dict[str, dict],
+    default_grades: Dict[str, float],
+    rng: Random,
+) -> Tuple[str, str, int]:
+    """Sample a grade for a TOP6 using the tier ladder:
+        1. exact TOP6 grade distribution
+        2. parent TOP4 rollup (first 4 digits of TOP6)
+        3. DEFAULT_GRADES
+
+    Returns (grade, status, fallback_level). fallback_level is 0 for
+    exact, 1 for parent rollup, 2 for default.
+    """
+    grades = top6_data.get(top6, {}).get("grades")
+    fallback = 0
+    if not grades:
+        grades = top4_rollup.get(top6[:4], {}).get("grades")
+        fallback = 1
+    if not grades:
+        grades = default_grades
+        fallback = 2
+
+    labels = list(grades.keys())
+    weights = list(grades.values())
+    grade = rng.choices(labels, weights=weights, k=1)[0]
+    status = "Withdrawn" if grade == "W" else "Completed"
+    return grade, status, fallback
+
+
 # ── Core generation ────────────────────────────────────────────────────────────
 
 
@@ -284,11 +401,11 @@ def generate_students(
     seed: int = 42,
     config: Optional[dict] = None,
 ) -> Tuple[List[GeneratedStudent], GenerationStats]:
-    """Generate synthetic students with 4-digit TOP code calibrated distributions."""
+    """Generate synthetic students with TOP6-calibrated distributions."""
     cfg = config or {}
 
     # Load calibrations
-    top4_cal = _load_top4_calibration(college_key)
+    top6_cal = _load_top6_calibration(college_key)
     old_cal = _load_calibration(college_key)
 
     ft_ratio = cfg.get("ft_ratio", (old_cal or {}).get("ft_ratio", FT_RATIO))
@@ -301,23 +418,28 @@ def generate_students(
             num_students = DEFAULT_STUDENT_COUNT
     logger.info(f"Generating {num_students} students for {college_key}")
 
-    # Build course pools by TOP4
-    top4_data: Dict[str, dict] = {}
-    top4_courses: Dict[str, List[dict]] = {}
-    top4_to_dept: Dict[str, str] = {}
+    # Per-course TOP6 mapping via MCF
+    course_to_top6 = _build_course_to_top6(courses, college_key)
+
+    # Build course pools by TOP6
+    top6_data: Dict[str, dict] = {}
+    top4_rollup: Dict[str, dict] = {}
+    top6_courses: Dict[str, List[dict]] = {}
+    top6_to_dept: Dict[str, str] = {}
     valid_codes: List[str] = []
-    top4_weights: List[float] = []
+    top6_weights: List[float] = []
+    unmapped_count = 0
 
-    if top4_cal:
-        top4_courses = _build_top4_course_pools(courses, top4_cal, college_key)
-        top4_data = top4_cal["top4_codes"]
+    if top6_cal:
+        top6_courses, unmapped_count = _build_top6_course_pools(courses, top6_cal, course_to_top6)
+        top6_data = top6_cal["top6_codes"]
+        top4_rollup = top6_cal.get("top4_rollup", {})
 
-        # Only include TOP4 codes that have both calibration data AND courses
-        valid_codes = [code for code in top4_data if top4_courses.get(code)]
-        top4_weights = [top4_data[code]["enrollment"] for code in valid_codes]
+        valid_codes = [code for code in top6_data if top6_courses.get(code)]
+        top6_weights = [top6_data[code]["enrollment"] for code in valid_codes]
 
-        # Build TOP4 → department mapping from course pools (authoritative)
-        for code, pool in top4_courses.items():
+        # Build TOP6 -> department mapping from course pools.
+        for code, pool in top6_courses.items():
             if pool:
                 dept_counter: Dict[str, int] = {}
                 for c in pool:
@@ -325,23 +447,18 @@ def generate_students(
                     if d:
                         dept_counter[d] = dept_counter.get(d, 0) + 1
                 if dept_counter:
-                    top4_to_dept[code] = max(dept_counter, key=dept_counter.get)
+                    top6_to_dept[code] = max(dept_counter, key=dept_counter.get)
 
         if not valid_codes:
-            logger.warning("No valid TOP4 codes with courses — falling back to flat generation")
-            top4_cal = None
+            logger.warning("No valid TOP6 codes with courses — falling back to flat generation")
+            top6_cal = None
 
-    # Precompute cumulative weights once — hot-loop TOP4 draws reuse them
-    top4_cum_weights = list(accumulate(top4_weights)) if top4_weights else []
+    top6_cum_weights = list(accumulate(top6_weights)) if top6_weights else []
 
     rng = Random(seed)
     all_terms = _build_term_sequence()
 
-    # Build weighted starting-term candidates across the full term sequence.
-    # Spreading the season draw over every academic year eliminates the
-    # "every student starts at all_terms[0]" bug and produces multi-year
-    # start cohorts. Weight each candidate by its season weight; the year
-    # dimension is implicitly uniform.
+    # Flat weighted candidates for student start terms
     start_candidates: List[int] = []
     start_cand_weights: List[float] = []
     for idx, term in enumerate(all_terms):
@@ -352,9 +469,9 @@ def generate_students(
             start_cand_weights.append(weight)
     start_cum_weights = list(accumulate(start_cand_weights)) if start_cand_weights else []
 
-    # Flat course list fallback (if no TOP4 calibration)
+    # Flat course list fallback (if no TOP6 calibration at all)
     flat_courses: List[dict] = []
-    if not top4_cal:
+    if not top6_cal:
         flat_courses = [c for c in courses if _parse_units(c.get("units", "0")) > 0]
         for c in flat_courses:
             c["_units"] = _parse_units(c.get("units", "0"))
@@ -363,26 +480,24 @@ def generate_students(
     total_enrollments = 0
     grade_counts: Dict[str, int] = {}
     depts_seen: set = set()
-    top4_enrollment_counts: Dict[str, int] = {}
+    top6_enrollment_counts: Dict[str, int] = {}
+    fallback_grade_samples = 0
 
     for i in range(num_students):
         student_uuid = str(uuid.uuid5(NAMESPACE, f"{college_key}-student-{i}"))
-        primary_top4 = (
-            rng.choices(valid_codes, cum_weights=top4_cum_weights, k=1)[0]
+        primary_top6 = (
+            rng.choices(valid_codes, cum_weights=top6_cum_weights, k=1)[0]
             if valid_codes else ""
         )
-        student = GeneratedStudent(uuid=student_uuid, primary_top4=primary_top4)
+        student = GeneratedStudent(uuid=student_uuid, primary_top6=primary_top6)
 
         is_ft = rng.random() < ft_ratio
 
-        # Sample a start term index from weighted candidates. Falls back to 0
-        # only when no candidates exist (empty term sequence).
         start_idx = (
             rng.choices(start_candidates, cum_weights=start_cum_weights, k=1)[0]
             if start_candidates else 0
         )
 
-        # Determine persistence (geometric decay from the start term).
         max_terms = 1
         while max_terms < len(all_terms) - start_idx:
             if rng.random() > retention:
@@ -392,7 +507,9 @@ def generate_students(
         active_terms = all_terms[start_idx: start_idx + max_terms]
 
         taken_codes: set = set()
-        dept_counts: Dict[str, int] = {}  # Track per-department enrollment count
+        dept_counts: Dict[str, int] = {}
+        # Per-prefix max order key — enforces same-subject numeric ordering.
+        prefix_max: Dict[str, Tuple[int, str]] = {}
         unit_cap = FT_UNIT_CAP if is_ft else PT_UNIT_CAP
 
         for term in active_terms:
@@ -403,60 +520,61 @@ def generate_students(
 
             term_units = 0.0
             for _ in range(num_courses):
-                # Choose TOP4: 60% primary, 40% share-weighted random
-                if top4_cal and primary_top4:
+                if top6_cal and primary_top6:
                     if rng.random() < PRIMARY_STICKINESS:
-                        chosen_top4 = primary_top4
+                        chosen_top6 = primary_top6
                     else:
-                        chosen_top4 = rng.choices(valid_codes, cum_weights=top4_cum_weights, k=1)[0]
+                        chosen_top6 = rng.choices(valid_codes, cum_weights=top6_cum_weights, k=1)[0]
 
-                    pool = top4_courses.get(chosen_top4, [])
+                    pool = top6_courses.get(chosen_top6, [])
                     if not pool:
                         continue
 
-                    # Pick course, avoid duplicates and enforce department cap
                     available = [c for c in pool
                                  if c["code"] not in taken_codes
-                                 and dept_counts.get(c.get("department", ""), 0) < DEPT_CAP]
+                                 and dept_counts.get(c.get("department", ""), 0) < DEPT_CAP
+                                 and _ordering_ok(c["code"], prefix_max)]
                     if not available:
-                        # Try a random TOP4 instead
-                        chosen_top4 = rng.choices(valid_codes, cum_weights=top4_cum_weights, k=1)[0]
-                        pool = top4_courses.get(chosen_top4, [])
+                        chosen_top6 = rng.choices(valid_codes, cum_weights=top6_cum_weights, k=1)[0]
+                        pool = top6_courses.get(chosen_top6, [])
                         if not pool:
                             continue
                         available = [c for c in pool
                                      if c["code"] not in taken_codes
-                                     and dept_counts.get(c.get("department", ""), 0) < DEPT_CAP]
+                                     and dept_counts.get(c.get("department", ""), 0) < DEPT_CAP
+                                     and _ordering_ok(c["code"], prefix_max)]
                         if not available:
                             continue
 
                     course = rng.choices(available, k=1)[0]
 
-                    # Check unit cap
                     course_units = course.get("_units", 3.0)
                     if term_units + course_units > unit_cap:
                         continue
                     term_units += course_units
                     taken_codes.add(course["code"])
+                    _record_prefix(course["code"], prefix_max)
                     dept = course.get("department", "")
                     dept_counts[dept] = dept_counts.get(dept, 0) + 1
-                    top4_enrollment_counts[chosen_top4] = top4_enrollment_counts.get(chosen_top4, 0) + 1
+                    top6_enrollment_counts[chosen_top6] = top6_enrollment_counts.get(chosen_top6, 0) + 1
 
-                    # Grade from TOP4-specific distribution
+                    # Grade sampling with tier-ladder fallback.
                     grading = course.get("grading", "")
                     if "Pass/No Pass Only" in grading:
                         grade = rng.choices(list(PNP_DIST.keys()), weights=list(PNP_DIST.values()), k=1)[0]
                         status = "Completed" if grade == "P" else "Not Passed"
                     else:
-                        grades = top4_data.get(chosen_top4, {}).get("grades", DEFAULT_GRADES)
-                        g_labels = list(grades.keys())
-                        g_weights = list(grades.values())
-                        grade = rng.choices(g_labels, weights=g_weights, k=1)[0]
-                        status = "Withdrawn" if grade == "W" else "Completed"
+                        grade, status, fallback_level = _sample_grade(
+                            chosen_top6, top6_data, top4_rollup, DEFAULT_GRADES, rng,
+                        )
+                        if fallback_level > 0:
+                            fallback_grade_samples += 1
 
                 else:
-                    # Fallback: flat course selection
-                    available = [c for c in flat_courses if c["code"] not in taken_codes]
+                    # No calibration path: flat sampling with ordering rule.
+                    available = [c for c in flat_courses
+                                 if c["code"] not in taken_codes
+                                 and _ordering_ok(c["code"], prefix_max)]
                     if not available:
                         continue
                     course = rng.choices(available, k=1)[0]
@@ -465,6 +583,7 @@ def generate_students(
                         continue
                     term_units += course_units
                     taken_codes.add(course["code"])
+                    _record_prefix(course["code"], prefix_max)
                     grade = rng.choices(list(DEFAULT_GRADES.keys()), weights=list(DEFAULT_GRADES.values()), k=1)[0]
                     status = "Withdrawn" if grade == "W" else "Completed"
 
@@ -484,7 +603,7 @@ def generate_students(
         if student.enrollments:
             students.append(student)
 
-    # Compute stats
+    # Stats
     success_grades = {"A", "B", "C", "P"}
     total_graded = sum(grade_counts.values())
     success_count = sum(grade_counts.get(g, 0) for g in success_grades)
@@ -501,7 +620,9 @@ def generate_students(
             g: grade_counts.get(g, 0) / total_graded if total_graded else 0
             for g in ["A", "B", "C", "P", "D", "F", "W", "NP"]
         },
-        top4_to_dept=top4_to_dept if top4_cal else {},
+        top6_to_dept=top6_to_dept if top6_cal else {},
+        unmapped_courses=unmapped_count,
+        fallback_grade_samples=fallback_grade_samples,
     )
 
     logger.info(
@@ -510,13 +631,20 @@ def generate_students(
         f"success rate: {stats.success_rate:.1%}, "
         f"avg courses/student: {stats.avg_courses_per_student:.1f}"
     )
+    if unmapped_count:
+        logger.warning(f"{unmapped_count} courses were unmapped (no MCF/TOP6 match) — excluded from pools")
+    if fallback_grade_samples:
+        pct = fallback_grade_samples / total_enrollments if total_enrollments else 0
+        logger.info(
+            f"Grade-sampling fallback tier used {fallback_grade_samples} times "
+            f"({pct:.1%} of enrollments) — TOP6 missing, fell back to parent TOP4 or default"
+        )
 
-    # Validation: compare against TOP4 calibration
-    if top4_cal:
+    if top6_cal:
         target_success = sum(
             sum(d["grades"].get(g, 0) for g in success_grades) * d["enrollment"]
-            for d in top4_data.values()
-        ) / sum(d["enrollment"] for d in top4_data.values()) if top4_data else 0
+            for d in top6_data.values()
+        ) / sum(d["enrollment"] for d in top6_data.values()) if top6_data else 0
         diff = abs(stats.success_rate - target_success)
         logger.info(
             f"Calibration check — success rate: "
@@ -525,31 +653,25 @@ def generate_students(
             f"diff={diff:.1%}"
         )
 
-        # Per-TOP4 enrollment share delta (top 5 by absolute magnitude).
-        # The algorithm draws only from `valid_codes`; target shares are
-        # renormalized over that set so the delta reflects sampling drift,
-        # not the share absorbed by unmapped TOP4s.
-        total_cal = sum(top4_data[c]["enrollment"] for c in valid_codes)
-        total_synth = sum(top4_enrollment_counts.values())
+        total_cal = sum(top6_data[c]["enrollment"] for c in valid_codes)
+        total_synth = sum(top6_enrollment_counts.values())
         if total_cal and total_synth:
             deltas = []
             for code in valid_codes:
-                target = top4_data[code]["enrollment"] / total_cal
-                actual = top4_enrollment_counts.get(code, 0) / total_synth
-                deltas.append((code, top4_data[code].get("name", code), actual - target))
+                target = top6_data[code]["enrollment"] / total_cal
+                actual = top6_enrollment_counts.get(code, 0) / total_synth
+                deltas.append((code, top6_data[code].get("name", code), actual - target))
             deltas.sort(key=lambda row: abs(row[2]), reverse=True)
             top5 = "; ".join(
                 f"{code} {name}: {delta:+.1%}" for code, name, delta in deltas[:5]
             )
-            logger.info(f"Top-5 TOP4 share deltas (synthetic − target): {top5}")
+            logger.info(f"Top-5 TOP6 share deltas (synthetic − target): {top5}")
 
-            # Dropped-share report: how much calibration weight lives in
-            # TOP4 codes that had no matching courses in the catalog.
-            all_cal_total = sum(d["enrollment"] for d in top4_data.values())
+            all_cal_total = sum(d["enrollment"] for d in top6_data.values())
             dropped = all_cal_total - total_cal
             if all_cal_total and dropped:
                 logger.info(
-                    f"Dropped share (TOP4s with no courses): "
+                    f"Dropped share (TOP6s with no courses): "
                     f"{dropped / all_cal_total:.1%} of calibration weight redistributed"
                 )
 
@@ -563,21 +685,15 @@ BATCH_SIZE = 2000
 
 def _derive_student_fields(
     students: List[GeneratedStudent],
-    top4_to_dept: Dict[str, str],
+    top6_to_dept: Dict[str, str],
 ) -> List[dict]:
-    """Compute gpa, primary_focus, courses_completed from in-memory state.
-
-    The previous implementation round-tripped every enrollment through
-    Neo4j only to recompute these three derived fields. The GeneratedStudent
-    dataclass already holds everything needed — this helper materializes
-    them without touching the database.
-    """
+    """Compute gpa, primary_focus, courses_completed from in-memory state."""
     rows: List[dict] = []
     for st in students:
         completed = [e for e in st.enrollments if e.status == "Completed"]
         grades = [e.grade for e in completed if e.grade]
 
-        primary_focus = top4_to_dept.get(st.primary_top4, "")
+        primary_focus = top6_to_dept.get(st.primary_top6, "")
         if not primary_focus:
             primary_focus = compute_primary_focus(
                 [{"department": e.department, "status": e.status} for e in st.enrollments]
@@ -587,24 +703,22 @@ def _derive_student_fields(
             "uuid": st.uuid,
             "gpa": compute_gpa(grades),
             "primary_focus": primary_focus,
+            "primary_top6": st.primary_top6,
             "courses_completed": len(completed),
         })
     return rows
 
 
-def load_students(driver: Driver, institution: str, students: List[GeneratedStudent], top4_to_dept: Optional[Dict[str, str]] = None) -> int:
-    """Load generated students into Neo4j. Full replace strategy.
-
-    Derived fields (gpa, primary_focus, courses_completed) are computed from
-    the in-memory GeneratedStudent population before any Neo4j writes. Student
-    nodes are pre-written with those fields, enrollments are batch-created
-    against the pre-existing nodes, and HAS_SKILL edges are materialized in
-    a single pass. No post-write read-back.
-    """
-    student_rows = _derive_student_fields(students, top4_to_dept or {})
+def load_students(
+    driver: Driver,
+    institution: str,
+    students: List[GeneratedStudent],
+    top6_to_dept: Optional[Dict[str, str]] = None,
+) -> int:
+    """Load generated students into Neo4j. Full replace strategy."""
+    student_rows = _derive_student_fields(students, top6_to_dept or {})
 
     with driver.session() as session:
-        # Clear existing students in batches
         total_deleted = 0
         while True:
             result = session.run(
@@ -619,7 +733,6 @@ def load_students(driver: Driver, institution: str, students: List[GeneratedStud
         if total_deleted:
             logger.info(f"Cleared {total_deleted} existing students for {institution}")
 
-        # Pre-create Student nodes with derived fields in one UNWIND pass.
         for i in range(0, len(student_rows), BATCH_SIZE):
             chunk = student_rows[i:i + BATCH_SIZE]
             session.run(
@@ -628,13 +741,13 @@ def load_students(driver: Driver, institution: str, students: List[GeneratedStud
                 MERGE (s:Student {uuid: row.uuid})
                 SET s.gpa = row.gpa,
                     s.primary_focus = row.primary_focus,
+                    s.primary_top6 = row.primary_top6,
                     s.courses_completed = row.courses_completed
                 """,
                 batch=chunk,
             )
         logger.info(f"Pre-created {len(student_rows)} Student nodes with derived fields")
 
-        # Batch create enrollments against the pre-existing Student nodes.
         batch: List[dict] = []
         loaded = 0
         for student in students:
@@ -646,7 +759,6 @@ def load_students(driver: Driver, institution: str, students: List[GeneratedStud
                     "term": enrollment.term,
                     "status": enrollment.status,
                 })
-
                 if len(batch) >= BATCH_SIZE:
                     _write_batch(session, institution, batch)
                     loaded += len(batch)
@@ -658,16 +770,9 @@ def load_students(driver: Driver, institution: str, students: List[GeneratedStud
 
         logger.info(f"Loaded {loaded} enrollments for {len(students)} students")
 
-        # Materialize Student -[HAS_SKILL]-> Skill. Computed in Python from
-        # the in-memory student population + a one-shot course→skill lookup,
-        # then batch-inserted. The previous approach traversed all
-        # Student→ENROLLED_IN→Course→DEVELOPS→Skill paths in Neo4j (~20M
-        # for a large college) to MERGE ~200K unique edges — 94x redundancy.
-        # The Python approach computes the unique (student, skill) pairs
-        # directly and inserts them without any graph traversal.
+        # Materialize Student -[HAS_SKILL]-> Skill from completed enrollments.
         _PASS_GRADES = {"A", "B", "C", "P"}
 
-        # One-shot lookup: course_code → list of skill names
         course_skills_result = session.run(
             "MATCH (c:Course {college: $inst})-[:DEVELOPS]->(s:Skill) "
             "RETURN c.code AS code, collect(s.name) AS skills",
@@ -677,7 +782,6 @@ def load_students(driver: Driver, institution: str, students: List[GeneratedStud
             r["code"]: r["skills"] for r in course_skills_result
         }
 
-        # Compute unique (student_uuid, skill_name) pairs in Python
         skill_pairs: List[dict] = []
         for student in students:
             student_skills: set = set()
@@ -688,7 +792,6 @@ def load_students(driver: Driver, institution: str, students: List[GeneratedStud
             for skill in student_skills:
                 skill_pairs.append({"uuid": student.uuid, "skill": skill})
 
-        # Batch insert
         skills_created = 0
         for i in range(0, len(skill_pairs), BATCH_SIZE):
             chunk = skill_pairs[i:i + BATCH_SIZE]
@@ -746,5 +849,5 @@ def generate_and_load_students(
         config=config,
     )
 
-    load_students(driver, institution_name, students, top4_to_dept=stats.top4_to_dept)
+    load_students(driver, institution_name, students, top6_to_dept=stats.top6_to_dept)
     return stats

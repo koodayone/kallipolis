@@ -10,7 +10,7 @@ iff both of the following hold:
   1. COE tracks regional demand for it (the SOC appears in the COE CSV).
   2. A PCAH-classified CTE TOP6 code targets it (the SOC is reachable from
      at least one TOP code in the Chancellor's Office *TOP Codes to Sectors*
-     file via the TOP4→CIP→SOC chain in ontology/crosswalks.py).
+     file via the TOP6→CIP→SOC chain in ontology/crosswalks.py).
 
 This replaces an earlier BLS-entry-education proxy filter. See
 docs/product/occupations.md and docs/pipeline/occupation-generation.md for

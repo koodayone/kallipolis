@@ -1,9 +1,15 @@
 """
-Crosswalk utilities: TOP → CIP → SOC chain.
+Crosswalk utilities: TOP6 → CIP → SOC chain.
 
 Provides authoritative government mappings from California community college
 programs to federal occupational classifications. Used for demand profiling
 and employer-occupation alignment.
+
+All TOP codes are 6-digit throughout. The TOP-CIP crosswalk published by the
+Chancellor's Office is natively TOP6 (rows like "0101.00 - Agriculture..."
+strip to "010100"); the PCAH TOP Codes to Sectors file is also TOP6. Student
+calibrations are TOP6 after the student-generator refactor. No TOP4
+truncation happens in this module.
 
 Usage:
     from ontology.crosswalks import build_demand_profile
@@ -37,12 +43,19 @@ CALIBRATIONS_DIR = Path(__file__).parent / "calibrations"
 _top_to_cip: dict[str, set[str]] | None = None
 _cip_to_soc: dict[str, set[str]] | None = None
 _coe_demand: dict[str, dict[str, dict]] | None = None
-_top4_to_sector: dict[str, str] | None = None
+_top6_to_sector: dict[str, str] | None = None
 _cte_reachable_socs_cache: set[str] | None = None
 
 
 def _load_top_to_cip() -> dict[str, set[str]]:
-    """Load TOP4 → CIP code mapping from Chancellor's Office crosswalk."""
+    """Load TOP6 → CIP code mapping from Chancellor's Office crosswalk.
+
+    The source CSV's TOP column has the form "0101.00 - Agriculture...";
+    stripping the dot yields the 6-digit code "010100". Previously this
+    was truncated to 4 digits to align with a TOP4-native student
+    generator. The student generator is TOP6 now, so the full 6-digit
+    resolution is preserved here.
+    """
     global _top_to_cip
     if _top_to_cip is not None:
         return _top_to_cip
@@ -52,14 +65,14 @@ def _load_top_to_cip() -> dict[str, set[str]]:
         reader = csv.reader(f)
         next(reader)  # skip header
         for row in reader:
-            top_raw = row[0].split(" - ")[0].strip()
+            top_raw = row[0].split(" - ")[0].strip().strip('"')
             cip_raw = row[2].split(" - ")[0].strip()
-            top4 = top_raw.replace(".", "")[:4]
-            if top4 and cip_raw:
-                mapping.setdefault(top4, set()).add(cip_raw)
+            top6 = top_raw.replace(".", "")
+            if len(top6) == 6 and top6.isdigit() and cip_raw:
+                mapping.setdefault(top6, set()).add(cip_raw)
 
     _top_to_cip = mapping
-    logger.info(f"Loaded TOP→CIP crosswalk: {len(mapping)} TOP4 codes")
+    logger.info(f"Loaded TOP→CIP crosswalk: {len(mapping)} TOP6 codes")
     return mapping
 
 
@@ -115,52 +128,48 @@ def _load_coe_demand() -> dict[str, dict[str, dict]]:
     return data
 
 
-def _load_pcah_cte_top4() -> dict[str, str]:
-    """Load PCAH TOP6 → sector mapping, normalized to TOP4 keys.
+def _load_pcah_cte_top6() -> dict[str, str]:
+    """Load PCAH TOP6 → sector mapping.
 
     The Chancellor's Office *TOP Codes to Sectors* file (PCAH) lists every
     TOP6 code classified as CTE under one of the 12 Doing-What-MATTERS /
-    Strong Workforce industry sectors. This is the authoritative institutional
-    definition of CTE scope for the California community college system.
+    Strong Workforce industry sectors. This is the authoritative
+    institutional definition of CTE scope for the California community
+    college system.
 
-    The PCAH file uses 6-digit TOP codes as integers (e.g. 10100, 30220).
-    The existing crosswalk indexes on 4-digit TOP strings with leading zero
-    preserved (e.g. "0101", "0302"). Conversion: ``f"{top6 // 100:04d}"`` —
-    this drops the last two digits (the within-TOP4 subdivision) and formats
-    the result with a leading zero.
+    The PCAH file stores TOP6 codes as integers (e.g. 10100, 30220);
+    formatted as six-digit strings with leading zeros ("010100",
+    "030220") they align with the TOP-CIP crosswalk's key shape.
 
-    Multiple TOP6 codes under the same TOP4 share a sector in this file, so
-    last-write-wins on the TOP4 key does not lose information.
-
-    Returns: {top4: sector_name} for every CTE-classified TOP4.
+    Returns: {top6: sector_name} for every CTE-classified TOP6.
     """
-    global _top4_to_sector
-    if _top4_to_sector is not None:
-        return _top4_to_sector
+    global _top6_to_sector
+    if _top6_to_sector is not None:
+        return _top6_to_sector
 
     mapping: dict[str, str] = {}
     wb = openpyxl.load_workbook(PCAH_SECTORS_PATH, read_only=True)
     ws = wb["Sheet1"]
     # Row 1 is a preamble, row 2 is the header. Data starts at row 3.
     for row in ws.iter_rows(min_row=3, values_only=True):
-        top6, _title, sector = row
-        if top6 is None or sector is None:
+        top6_val, _title, sector = row
+        if top6_val is None or sector is None:
             continue
-        top4 = f"{int(top6) // 100:04d}"
-        mapping[top4] = str(sector)
+        top6 = f"{int(top6_val):06d}"
+        mapping[top6] = str(sector)
     wb.close()
 
-    _top4_to_sector = mapping
-    logger.info(f"Loaded PCAH CTE sectors: {len(mapping)} TOP4 codes")
+    _top6_to_sector = mapping
+    logger.info(f"Loaded PCAH CTE sectors: {len(mapping)} TOP6 codes")
     return mapping
 
 
 def cte_reachable_socs() -> set[str]:
-    """Return the set of SOC codes reachable from any PCAH-classified CTE TOP4.
+    """Return the set of SOC codes reachable from any PCAH-classified CTE TOP6.
 
-    Composition: for every TOP4 classified as CTE in the PCAH file, walks
-    the existing TOP→CIP→SOC chain and collects the union of target SOCs.
-    The result is the institutional-CTE SOC universe — an upstream input to
+    Composition: for every TOP6 classified as CTE in the PCAH file, walks
+    the TOP6→CIP→SOC chain and collects the union of target SOCs. The
+    result is the institutional-CTE SOC universe — an upstream input to
     the occupations generation filter.
 
     Cached for the process lifetime.
@@ -169,13 +178,13 @@ def cte_reachable_socs() -> set[str]:
     if _cte_reachable_socs_cache is not None:
         return _cte_reachable_socs_cache
 
-    cte_top4 = set(_load_pcah_cte_top4().keys())
+    cte_top6 = set(_load_pcah_cte_top6().keys())
     top_cip = _load_top_to_cip()
     cip_soc = _load_cip_to_soc()
 
     socs: set[str] = set()
-    for top4 in cte_top4 & set(top_cip.keys()):
-        for cip in top_cip[top4]:
+    for top6 in cte_top6 & set(top_cip.keys()):
+        for cip in top_cip[top6]:
             socs.update(cip_soc.get(cip, set()))
 
     _cte_reachable_socs_cache = socs
@@ -185,22 +194,22 @@ def cte_reachable_socs() -> set[str]:
 
 # ── Core functions ────────────────────────────────────────────────────────
 
-def top4_to_soc(top4_codes: list[str]) -> dict[str, set[str]]:
-    """Map TOP4 codes to SOC codes via TOP→CIP→SOC chain.
+def top6_to_soc(top6_codes: list[str]) -> dict[str, set[str]]:
+    """Map TOP6 codes to SOC codes via TOP6→CIP→SOC chain.
 
-    Returns: {top4: {soc_code, ...}} for each TOP4 that has a mapping.
+    Returns: {top6: {soc_code, ...}} for each TOP6 that has a mapping.
     """
     top_cip = _load_top_to_cip()
     cip_soc = _load_cip_to_soc()
 
     result: dict[str, set[str]] = {}
-    for top4 in top4_codes:
-        cips = top_cip.get(top4, set())
+    for top6 in top6_codes:
+        cips = top_cip.get(top6, set())
         socs: set[str] = set()
         for cip in cips:
             socs.update(cip_soc.get(cip, set()))
         if socs:
-            result[top4] = socs
+            result[top6] = socs
 
     return result
 
@@ -212,8 +221,9 @@ def build_demand_profile(
 ) -> list[dict]:
     """Build ranked demand profile for a college.
 
-    Computes which occupations this college should be producing graduates for,
-    ranked by composite score of enrollment weight × annual openings × growth × wage.
+    Computes which occupations this college should be producing graduates
+    for, ranked by composite score of enrollment weight × annual openings
+    × growth × wage.
 
     Args:
         college_key: Pipeline key (e.g., "lacity")
@@ -223,50 +233,46 @@ def build_demand_profile(
     Returns:
         Ranked list of dicts:
         [{soc_code, title, annual_openings, growth_rate, median_wage,
-          enrollment_weight, composite_score, top4_sources}]
+          enrollment_weight, composite_score, top6_sources}]
     """
-    # Load calibration for enrollment weights
-    cal_path = CALIBRATIONS_DIR / "top4" / f"{college_key}.json"
+    cal_path = CALIBRATIONS_DIR / "top6" / f"{college_key}.json"
     if not cal_path.exists():
-        logger.warning(f"No TOP4 calibration for {college_key}")
+        logger.warning(f"No TOP6 calibration for {college_key}")
         return []
 
     with open(cal_path) as f:
         cal = json.load(f)
 
-    top4_data = cal.get("top4_codes", {})
+    top6_data = cal.get("top6_codes", {})
     total_enrollment = cal.get("total_enrollments", 1)
 
-    # Map TOP4 → SOC
-    top4_codes = list(top4_data.keys())
-    top4_soc_map = top4_to_soc(top4_codes)
+    # Map TOP6 → SOC
+    top6_codes = list(top6_data.keys())
+    top6_soc_map = top6_to_soc(top6_codes)
 
-    # Build SOC → enrollment weight (sum across all TOP4s that feed this SOC)
+    # Build SOC → enrollment weight (sum across all TOP6s that feed this SOC)
     valid_socs = {o["soc_code"] for o in occupations}
     soc_weights: dict[str, float] = {}
-    soc_top4_sources: dict[str, list[str]] = {}
+    soc_top6_sources: dict[str, list[str]] = {}
 
-    for top4, socs in top4_soc_map.items():
-        enrollment = top4_data.get(top4, {}).get("enrollment", 0)
+    for top6, socs in top6_soc_map.items():
+        enrollment = top6_data.get(top6, {}).get("enrollment", 0)
         weight = enrollment / total_enrollment if total_enrollment else 0
         for soc in socs:
             if soc in valid_socs:
                 soc_weights[soc] = soc_weights.get(soc, 0) + weight
-                soc_top4_sources.setdefault(soc, []).append(top4)
+                soc_top6_sources.setdefault(soc, []).append(top6)
 
     if not soc_weights:
         logger.warning(f"No SOC codes reachable for {college_key}")
         return []
 
-    # Load COE demand for this region
     coe = _load_coe_demand()
     region_demand = coe.get(coe_region, {})
     if not region_demand:
-        # Fallback to statewide
         region_demand = coe.get("CA", {})
         logger.warning(f"No COE data for region {coe_region}, using statewide")
 
-    # Score each SOC
     raw_scores: list[dict] = []
     for soc, enrollment_weight in soc_weights.items():
         demand = region_demand.get(soc)
@@ -281,15 +287,14 @@ def build_demand_profile(
             "jobs_2024": demand["jobs_2024"],
             "education": demand["education"],
             "enrollment_weight": enrollment_weight,
-            "top4_sources": soc_top4_sources.get(soc, []),
+            "top6_sources": soc_top6_sources.get(soc, []),
         })
 
     if not raw_scores:
         return []
 
-    # Normalize and compute composite score
     openings = [s["annual_openings"] for s in raw_scores]
-    growths = [1 + s["growth_rate"] for s in raw_scores]  # shift so negative growth < 1
+    growths = [1 + s["growth_rate"] for s in raw_scores]
     wages = [s["median_wage"] for s in raw_scores]
     weights = [s["enrollment_weight"] for s in raw_scores]
 
