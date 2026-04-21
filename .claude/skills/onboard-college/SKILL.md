@@ -106,7 +106,26 @@ The checks, in order:
    via a small Python one-liner through the Bash tool. If the driver cannot connect, stop
    and tell the operator that Neo4j needs to be running before the skill can proceed.
 
-Only after all five checks pass, proceed to Stage 1.
+6. **Department mapping overlay exists for this college.** Verify
+   `backend/courses/department_mapping/overlays/{key}.json` exists. This file assigns
+   human-readable names (e.g., "Dance", "Statistics") to each course-code prefix that
+   appears in the college's catalog. Without it, Stage 1's Stage 2.5 canonicalization step
+   will fail loudly rather than propagate fragmented Gemini department strings into the
+   graph.
+
+   If the file does not exist, run the seeder to propose one, then stop and tell the
+   operator what to review:
+   ```
+   cd backend && python3 ../tools/courses-audit/seed_department_mapping.py --college {key}
+   ```
+   This scans the catalog PDF for `Subject Name (PREFIX)` section headers and writes
+   `overlays/{key}.proposed.json`. The operator must review (especially any `WARNING`
+   lines about prefixes not found in PDF headers — those require manual entries), fill in
+   gaps, rename to `overlays/{key}.json`, and commit. Then re-invoke this skill.
+
+   On re-runs where the file exists, this check is a fast no-op.
+
+Only after all six checks pass, proceed to Stage 1.
 
 ## Stage 1 — Curriculum extraction and Neo4j load
 
@@ -115,6 +134,14 @@ the prior Gemini extraction; otherwise run a fresh extraction against the PDF ca
 
 - **Fresh**: `cd backend && python3 -m pipeline.run --college {key}`
 - **Cached**: `cd backend && python3 -m pipeline.run --college {key} --from-cache`
+
+Between skill derivation and Neo4j load, the pipeline runs Stage 2.5 to canonicalize the
+`department` field on every course using the prefix→name mapping in
+`backend/courses/department_mapping/` (the overlay was verified in Stage 0 preflight). The
+log should show `Stage 2.5 complete: rewrote department on N/M course(s); K unique
+department names after canonicalization`. If Stage 2.5 raises `UnknownPrefixError`, the
+catalog contains a course-code prefix that isn't in the mapping — stop, re-run the seeder,
+and ask the operator to add the missing entry.
 
 Run the command via the `Bash` tool in the background (wall time can be ~17 min fresh).
 When the command completes, confirm the log contains `Stage 3 complete: LoadStats(...)`

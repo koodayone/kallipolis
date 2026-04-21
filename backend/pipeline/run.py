@@ -28,6 +28,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from courses.scrape import RawCourse
 from ontology.skills import derive_skills
 from courses.load import load_college, CollegeConfig, LoadStats
+from courses.department_mapping import (
+    OVERLAY_DIR as DEPT_OVERLAY_DIR,
+    UnknownPrefixError,
+    canonicalize_courses,
+    resolve_unknown_prefixes,
+)
 from ontology.schema import get_driver, close_driver
 
 logging.basicConfig(
@@ -85,6 +91,79 @@ def _cache_path(college_key: str, stage: str) -> Path:
     return CACHE_DIR / f"{college_key}_{stage}.json"
 
 
+def _canonicalize_departments(
+    college_key: str,
+    enriched_courses: list[dict],
+    *,
+    allow_unmapped: bool,
+) -> list[dict]:
+    """Stage 2.5: rewrite every course's `department` field to the canonical
+    human-readable name derived from the course code's prefix.
+
+    Skipped (with a warning) for colleges that don't yet have a committed
+    overlay file at `backend/courses/department_mapping/overlays/{key}.json`.
+    Existing enriched data flows through unchanged in that case, preserving
+    prior behavior during rollout.
+
+    When an overlay exists and Stage 2.5 runs, any course prefix not in the
+    merged mapping is a hard failure by default — the operator must add an
+    overlay entry before the load can proceed. The `--allow-unmapped`
+    escape hatch swaps the failure for a deliberately ugly `Unmapped: XXX`
+    placeholder, which surfaces visibly in the atlas UI and prevents a
+    one-day outage from blocking a 79-college reload.
+
+    Writes the canonicalized list back to `{college}_enriched.json` so
+    every downstream consumer (Neo4j loader, student generator, partnership
+    gatherer, audits) reads the canonical department value without needing
+    to know this step happened.
+    """
+    overlay_path = DEPT_OVERLAY_DIR / f"{college_key}.json"
+    if not overlay_path.exists():
+        logger.warning(
+            "Stage 2.5 skipped — no department overlay at %s. Run "
+            "`python tools/courses-audit/seed_department_mapping.py "
+            "--college %s` to generate one.",
+            overlay_path.relative_to(Path(__file__).resolve().parent.parent.parent),
+            college_key,
+        )
+        return enriched_courses
+
+    if not allow_unmapped:
+        # Surface the full set of missing prefixes at once rather than
+        # raising on the first one — gives the operator a complete punch
+        # list instead of a whack-a-mole sequence.
+        missing = resolve_unknown_prefixes(enriched_courses, college_key)
+        if missing:
+            lines = [
+                f"Stage 2.5: {len(missing)} prefix(es) in {college_key}_enriched.json",
+                f"  have no mapping entry in overlays/{college_key}.json:",
+            ]
+            for prefix, count in missing.items():
+                lines.append(f"    {prefix!r}: {count} course(s)")
+            lines.append(
+                "Add entries to the overlay under 'prefixes', or rerun with "
+                "--allow-unmapped to use placeholder labels."
+            )
+            raise UnknownPrefixError(next(iter(missing)), college_key).__class__(
+                "\n".join(lines)
+            )
+
+    canonicalized, rewrote = canonicalize_courses(
+        enriched_courses, college_key, strict=not allow_unmapped
+    )
+    enriched_cache = _cache_path(college_key, "enriched")
+    with enriched_cache.open("w") as f:
+        json.dump(canonicalized, f, indent=2, ensure_ascii=False)
+    logger.info(
+        "Stage 2.5 complete: rewrote department on %d/%d course(s); "
+        "%d unique department names after canonicalization",
+        rewrote,
+        len(canonicalized),
+        len({c.get("department", "") for c in canonicalized}),
+    )
+    return canonicalized
+
+
 async def run_pipeline(
     college_key: str,
     skip_skills: bool = False,
@@ -93,6 +172,7 @@ async def run_pipeline(
     generate_students: bool = False,
     num_students: Optional[int] = None,
     seed: int = 42,
+    allow_unmapped_departments: bool = False,
 ) -> LoadStats | None:
     """Run the full pipeline for a college."""
 
@@ -151,6 +231,13 @@ async def run_pipeline(
             enriched_courses = json.load(f)
         logger.info(f"Loaded {len(enriched_courses)} courses from cache")
 
+        # Stage 2.5 runs even on the student-gen-only path so that synthetic
+        # enrollments are sampled from canonical department buckets, not the
+        # fragmented ones Gemini originally emitted.
+        enriched_courses = _canonicalize_departments(
+            college_key, enriched_courses, allow_unmapped=allow_unmapped_departments
+        )
+
         from students.generate import generate_and_load_students
         logger.info(f"Generating synthetic students (seed={seed})...")
         driver = get_driver()
@@ -192,6 +279,16 @@ async def run_pipeline(
         logger.info(f"Cached enriched courses to {enriched_cache}")
 
     logger.info(f"Stage 2 complete: {len(enriched_courses)} courses enriched")
+
+    # ── Stage 2.5: Canonicalize department field ─────────────────────────
+    # Rewrite each course's `department` to the human-readable name derived
+    # from its code prefix via the committed mapping. This eliminates the
+    # "Dance" vs "Dance (DANC)" fragmentation that Gemini introduces when
+    # extracting subject headers from chunked PDF pages. See
+    # backend/courses/department_mapping/ for the mapping + invariants.
+    enriched_courses = _canonicalize_departments(
+        college_key, enriched_courses, allow_unmapped=allow_unmapped_departments
+    )
 
     # ── Stage 3: Load into Neo4j ─────────────────────────────────────────
     logger.info(f"Loading {len(enriched_courses)} courses into Neo4j for {config.name}...")
@@ -257,6 +354,14 @@ def main():
     parser.add_argument(
         "--seed", type=int, default=42, help="Random seed for student generation (default: 42)"
     )
+    parser.add_argument(
+        "--allow-unmapped-departments",
+        action="store_true",
+        help="Instead of failing on a course prefix with no department mapping "
+             "entry, substitute 'Unmapped: PREFIX' as a placeholder label. "
+             "Use only as an operational escape hatch; the placeholder is "
+             "deliberately ugly and must be fixed in the overlay within 7 days.",
+    )
     args = parser.parse_args()
 
     # Load env — .env is at repo root (two levels up from backend/)
@@ -271,6 +376,7 @@ def main():
         generate_students=args.generate_students,
         num_students=args.num_students,
         seed=args.seed,
+        allow_unmapped_departments=args.allow_unmapped_departments,
     ))
 
 

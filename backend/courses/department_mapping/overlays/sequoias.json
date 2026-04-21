@@ -1,0 +1,96 @@
+{
+  "_meta": {
+    "college": "sequoias",
+    "last_reviewed": "2026-04-21",
+    "seeded_from": "pypdf evidence from backend/pipeline/cache/sequoias_catalog.pdf + Claude canonicalization (claude-sonnet-4-6)",
+    "allowed_collisions": [
+      [
+        "JOUR",
+        "JRNL"
+      ],
+      [
+        "KINE",
+        "KINS"
+      ],
+      [
+        "POLI",
+        "POLS"
+      ],
+      [
+        "BUS",
+        "BUS/COMM"
+      ],
+      [
+        "PTA",
+        "РТА"
+      ]
+    ]
+  },
+  "prefixes": {
+    "ACCT": "Accounting",
+    "AG": "Agriculture",
+    "AGMT": "Agricultural Management",
+    "AGTC": "Agricultural Technology",
+    "AJ": "Administration of Justice",
+    "ARCH": "Architecture",
+    "ASCI": "Animal Science",
+    "ASL": "American Sign Language",
+    "AUTO": "Automotive Technology",
+    "BUS": "Business",
+    "BUS/COMM": "Business",
+    "CHLD": "Child Development",
+    "CINA": "Cinema Arts",
+    "COMP": "Computer",
+    "COSM": "Cosmetology",
+    "COUN": "Counseling",
+    "CSCI": "Computer Science",
+    "CT": "Construction Technology",
+    "CULN": "Culinary",
+    "DANC": "Dance",
+    "DRAM": "Drama",
+    "DRFT": "Drafting",
+    "ECT": "Environment Control Technology",
+    "EDUC": "Education",
+    "EMT": "Emergency Medical Technician",
+    "ENGR": "Engineering",
+    "ESCI": "Earth Science",
+    "ESL": "English As A Second Language",
+    "ET": "Electrician Training",
+    "ETHN": "Ethnic Studies",
+    "FASH": "Fashion",
+    "FIRE": "Fire Technology",
+    "GD": "Graphic Design",
+    "GEOL": "Geology",
+    "HDEV": "Human Development",
+    "HSRV": "Human Services",
+    "HW": "Health and Wellness",
+    "IA": "Intercollegiate Athletics",
+    "ICT": "Info/Communication Technology",
+    "IS": "Interdisciplinary Studies",
+    "ITEC": "Industry and Technology",
+    "JOUR": "Journalism",
+    "KINE": "Kinesiology",
+    "LING": "Linguistics",
+    "LS": "Learning Skills",
+    "NSCI": "Natural Sciences",
+    "NURS": "Nursing",
+    "NUTR": "Nutrition/Foods",
+    "OH": "Ornamental Horticulture",
+    "PARA": "Paralegal",
+    "PEAC": "PE Activity",
+    "PHSC": "Public Health Science",
+    "PLSI": "Plant Science",
+    "PM": "Paramedicine",
+    "PORT": "Portuguese",
+    "PS": "Police Science",
+    "PSCI": "Physical Science",
+    "PT": "Pharmacy Technology",
+    "PTA": "Physical Therapy Assistant",
+    "SMED": "Sports Medicine",
+    "SSCI": "Social Science",
+    "VT": "Veterinary Technician",
+    "WELD": "Welding",
+    "WEXP": "Work Experience",
+    "РТА": "Physical Therapy Assistant"
+  }
+}

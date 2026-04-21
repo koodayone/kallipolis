@@ -197,6 +197,69 @@ def load_college(
     # running either loader produces the edge consistently.
     ensure_college_region_link(driver, config.name)
 
+    # ── Stale edge + orphan cleanup ───────────────────────────────────────
+    # The loader MERGEs nodes but is additive on relationships — it never
+    # deletes old CONTAINS or OFFERS edges. When Stage 2.5 renames a
+    # department (e.g., "Dance (DANC)" → "Dance") the Course node's
+    # `department` property updates in place, but the old CONTAINS edge
+    # from the stale "Dance (DANC)" Department node to that Course is
+    # still there, which keeps the stale Department from being detected
+    # as an orphan. This three-step sweep repairs the drift on every
+    # load:
+    #   1. Drop CONTAINS edges where Department.name disagrees with the
+    #      Course's current `department` property (for this college's
+    #      courses only — other colleges' edges are out of scope).
+    #   2. Drop OFFERS edges from this College to any Department that no
+    #      longer has courses from this college.
+    #   3. DETACH DELETE any Department now left with no CONTAINS-out
+    #      edges at all (globally — safe because step 1 was college-scoped
+    #      but orphan status is a graph-wide property).
+    #
+    # The graph-state correctness this provides matters more than the
+    # per-load cost: the Department catalog displayed in the atlas UI is
+    # derived directly from these edges, and stale names are exactly the
+    # fragmentation bug Stage 2.5 exists to fix.
+    with driver.session() as session:
+        stale_contains = session.run(
+            """
+            MATCH (col:College {name: $inst_name})
+            MATCH (c:Course {college: col.name})
+            MATCH (d:Department)-[rel:CONTAINS]->(c)
+            WHERE d.name <> c.department
+            DELETE rel
+            RETURN count(rel) AS n
+            """,
+            inst_name=config.name,
+        ).single()["n"]
+
+        stale_offers = session.run(
+            """
+            MATCH (col:College {name: $inst_name})-[rel:OFFERS]->(d:Department)
+            WHERE NOT EXISTS { MATCH (d)-[:CONTAINS]->(:Course {college: col.name}) }
+            DELETE rel
+            RETURN count(rel) AS n
+            """,
+            inst_name=config.name,
+        ).single()["n"]
+
+        orphans = session.run(
+            """
+            MATCH (d:Department)
+            WHERE NOT (d)-[:CONTAINS]->(:Course)
+            DETACH DELETE d
+            RETURN count(d) AS n
+            """
+        ).single()["n"]
+
+        if stale_contains or stale_offers or orphans:
+            logger.info(
+                "Department cleanup: %d stale CONTAINS edge(s), "
+                "%d stale OFFERS edge(s), %d orphan Department node(s) removed",
+                stale_contains,
+                stale_offers,
+                orphans,
+            )
+
     logger.info(
         f"Loaded {config.name}: "
         f"{stats.courses_created} courses, "

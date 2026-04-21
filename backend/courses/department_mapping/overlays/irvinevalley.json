@@ -1,0 +1,89 @@
+{
+  "_meta": {
+    "college": "irvinevalley",
+    "last_reviewed": "2026-04-21",
+    "seeded_from": "pypdf evidence from backend/pipeline/cache/irvinevalley_catalog.pdf + Claude canonicalization (claude-sonnet-4-6)",
+    "allowed_collisions": [
+      [
+        "BIO",
+        "BIOL"
+      ],
+      [
+        "HUM",
+        "HUMN"
+      ],
+      [
+        "JA",
+        "JAPN"
+      ],
+      [
+        "KINS",
+        "KNES"
+      ],
+      [
+        "POLI",
+        "POLS",
+        "PS"
+      ],
+      [
+        "ENG",
+        "FILM"
+      ]
+    ]
+  },
+  "prefixes": {
+    "ACCT": "Accounting",
+    "AESL": "Non-Credit: Adult English as a Second Language",
+    "AJ": "Administration of Justice",
+    "ARTH": "Art History",
+    "ASL": "American Sign Language",
+    "BIO": "Biology",
+    "BIOT": "Biotechnology",
+    "CHI": "Chinese",
+    "CIM": "Computer Information Management",
+    "COUN": "Counseling",
+    "CS": "Computer Science",
+    "CWE": "Cooperative Work Experience",
+    "DMA": "Digital Media Arts",
+    "DMP": "Design and Model Making",
+    "DNCE": "Dance",
+    "DR": "Drafting",
+    "ELEC": "Electrical",
+    "ENG": "Film",
+    "ENGR": "Engineering",
+    "ENTR": "Entrepreneurship",
+    "ENV": "Environmental Studies",
+    "ERTH": "Earth Science",
+    "ESL": "English as a Second Language",
+    "ET": "Electronics Technology",
+    "ETHN": "Ethnic Studies",
+    "FILM": "Film",
+    "FN": "Food and Nutrition",
+    "FR": "French",
+    "GEOL": "Geology",
+    "GLBL": "Global Studies",
+    "GS": "Gender and Sexuality Studies",
+    "HD": "Human Development",
+    "HUM": "Humanities",
+    "IA": "Intercollegiate Athletics",
+    "IMA": "Interactive Media Arts",
+    "JA": "Japanese",
+    "KNEA": "Kinesiology: Adapted",
+    "KNES": "Kinesiology",
+    "LGL": "Legal Studies",
+    "LIB": "Library",
+    "LIT": "Literature",
+    "MGT": "Management",
+    "MS": "Marine Science",
+    "MSS": "Mathematics Support Services",
+    "NUT": "Nutrition",
+    "PHOT": "Photography",
+    "PS": "Political Science",
+    "RD": "Reading",
+    "RE": "Real Estate",
+    "SRM": "Sustainability and Resource Management",
+    "TA": "Theatre Arts",
+    "TU": "Tutoring",
+    "WR": "Writing"
+  }
+}
