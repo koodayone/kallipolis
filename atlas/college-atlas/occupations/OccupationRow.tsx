@@ -119,6 +119,11 @@ export default function OccupationRow({ occ, index, brandColor, isOpen: controll
               {/* Full detail view (analytical view mode) */}
               {detail && (
                 <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+                  {detail.soc_code && (
+                    <span style={{ fontFamily: "var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace", fontSize: "11px", fontWeight: 500, letterSpacing: "0.05em", color: "rgba(255,255,255,0.4)", fontVariantNumeric: "tabular-nums" }}>
+                      SOC {detail.soc_code}
+                    </span>
+                  )}
                   {detail.description && (
                     <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.55)", lineHeight: 1.6, margin: 0 }}>
                       {detail.description}
@@ -170,11 +175,6 @@ export default function OccupationRow({ occ, index, brandColor, isOpen: controll
                                 <path d="M4 6l1.5 1.5L8 5" stroke={brandColor} strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
                               </svg>
                               <span style={{ fontFamily: FONT, fontSize: "13px", color: brandColor }}>{skill.skill}</span>
-                              {skill.courses.length > 0 && (
-                                <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.3)" }}>
-                                  — {skill.courses.slice(0, 3).map((c) => c.code).join(", ")}
-                                </span>
-                              )}
                             </div>
                           ))}
                         </div>
