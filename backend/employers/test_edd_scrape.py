@@ -1,4 +1,4 @@
-"""Unit tests for employers/edd_scrape.py HTML parsers.
+"""Unit tests for employers/edd_scrape.py HTML parsers and NAICS catalog.
 
 The EDD ALMIS employer database is an ASP.NET application scraped via
 regex. Any shift in its HTML structure silently breaks the name-row
@@ -12,6 +12,13 @@ one result row and one __VIEWSTATE token — extracted from a capture of
 a real response. If these tests fail, compare the fixture to a fresh
 capture to decide whether the scraper needs updating.
 
+The NAICS catalog tests guard CTE_NAICS_CODES against structural drift.
+The dict is organized by the SWP "Doing What Matters" sector framework
+(see docs/pipeline/swp-sector-naics.md) and each entry carries sector
+tags alongside the EDD query parameter and label. A typo'd sector name
+or a missing tag when a contributor adds a NAICS code would silently
+corrupt the sector framework; these tests surface the drift immediately.
+
 Coverage:
   - _parse_employer_rows: extracts name, address, city, industry, size
     class from the result-table markup
@@ -19,9 +26,20 @@ Coverage:
   - _extract_form_state: captures __VIEWSTATE, __EVENTVALIDATION,
     __VIEWSTATEGENERATOR values when present
   - _extract_form_state: returns empty dict when form state is absent
+  - CTE_NAICS_CODES: every entry is a 3-tuple of (naicsect, label, sectors)
+  - CTE_NAICS_CODES: every NAICS key is a 4-digit string of digits
+  - CTE_NAICS_CODES: every naicsect value is a 2-digit string of digits
+  - CTE_NAICS_CODES: every sector tag is a member of SWP_SECTORS
+  - CTE_NAICS_CODES: every entry has a non-empty sector list
+  - CTE_NAICS_CODES: every SWP sector has at least one primary NAICS
 """
 
-from employers.edd_scrape import _extract_form_state, _parse_employer_rows
+from employers.edd_scrape import (
+    CTE_NAICS_CODES,
+    SWP_SECTORS,
+    _extract_form_state,
+    _parse_employer_rows,
+)
 
 
 # The row regex is sensitive to inter-cell whitespace — the live EDD
@@ -91,3 +109,45 @@ class TestExtractFormState:
         state = _extract_form_state(html)
         assert state.get("__VIEWSTATE") == "ONLY_VS"
         assert "__EVENTVALIDATION" not in state
+
+
+class TestCTENAICSCodes:
+    def test_every_entry_is_a_three_tuple(self):
+        for naics4, entry in CTE_NAICS_CODES.items():
+            assert isinstance(entry, tuple), f"{naics4}: entry is not a tuple"
+            assert len(entry) == 3, f"{naics4}: entry has {len(entry)} elements, expected 3"
+
+    def test_every_naics_key_is_four_digits(self):
+        for naics4 in CTE_NAICS_CODES:
+            assert len(naics4) == 4, f"{naics4!r}: NAICS key must be 4 digits"
+            assert naics4.isdigit(), f"{naics4!r}: NAICS key must be all digits"
+
+    def test_every_naicsect_is_two_digits(self):
+        for naics4, (naicsect, _label, _sectors) in CTE_NAICS_CODES.items():
+            assert len(naicsect) == 2, f"{naics4}: naicsect {naicsect!r} must be 2 digits"
+            assert naicsect.isdigit(), f"{naics4}: naicsect {naicsect!r} must be all digits"
+
+    def test_every_label_is_non_empty(self):
+        for naics4, (_naicsect, label, _sectors) in CTE_NAICS_CODES.items():
+            assert isinstance(label, str) and label, f"{naics4}: label must be a non-empty string"
+
+    def test_every_sector_tag_is_in_swp_sectors(self):
+        valid = set(SWP_SECTORS)
+        for naics4, (_naicsect, _label, sectors) in CTE_NAICS_CODES.items():
+            for s in sectors:
+                assert s in valid, f"{naics4}: sector {s!r} is not in SWP_SECTORS"
+
+    def test_every_entry_has_at_least_one_sector(self):
+        for naics4, (_naicsect, _label, sectors) in CTE_NAICS_CODES.items():
+            assert isinstance(sectors, list) and sectors, f"{naics4}: must have at least one sector"
+
+    def test_every_swp_sector_has_at_least_one_primary_naics(self):
+        # A sector with no primary NAICS is a dead entry in SWP_SECTORS —
+        # either the sector should be removed or a representative NAICS
+        # code should be added under it.
+        primaries = {entry[2][0] for entry in CTE_NAICS_CODES.values()}
+        for sector in SWP_SECTORS:
+            assert sector in primaries, (
+                f"SWP sector {sector!r} has no NAICS code as primary — "
+                "add a representative code or remove the sector"
+            )
