@@ -115,7 +115,7 @@ export default function EmployersView({ school, onBack }: Props) {
 
   return (
     <QueryShell<ApiEmployerMatch>
-      school={school} onBack={onBack}
+      school={school} formName="Employers" onBack={onBack}
       placeholder={`Ask me a question about employers near ${school.name}.`}
       examples={EXAMPLES} queryFn={queryFn} loadInitialData={loadInitialData}
       renderInitialContent={renderInitialContent} renderResultsContent={renderResultsContent}

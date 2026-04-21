@@ -17,6 +17,7 @@ import {
 } from "@/college-atlas/strong-workforce/savedSwpProjects";
 import AtlasHeader from "@/ui/AtlasHeader";
 import KallipolisBrand from "@/ui/KallipolisBrand";
+import FormHeader from "@/ui/FormHeader";
 import { findScrollParent } from "@/ui/QueryShell";
 import { PREVIEW_MODE } from "@/preview/mode";
 import { getSeededProposals } from "@/preview/seededPartnerships";
@@ -212,6 +213,10 @@ export default function StrongWorkforceView({ school, onBack }: Props) {
                     >{m}</button>
                   ))}
                 </div>
+              </div>
+
+              <div style={{ marginBottom: "40px" }}>
+                <FormHeader formName="Strong Workforce" />
               </div>
 
               {mode === "build" && (

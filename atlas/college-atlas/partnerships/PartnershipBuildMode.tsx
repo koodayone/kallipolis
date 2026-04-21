@@ -83,10 +83,6 @@ export default function PartnershipBuildMode({
       style={{ display: "flex", flexDirection: "column", gap: "24px" }}
     >
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "24px" }}>
-        <RisingSun style={{ width: "90px", height: "auto" }} />
-        <h1 style={{ fontFamily: FONT, fontSize: "28px", fontWeight: 600, color: "#f0eef4", letterSpacing: "-0.02em", textAlign: "center", margin: 0 }}>
-          Who is our partner{userName ? `, ${userName}` : ""}?
-        </h1>
         <div style={{ width: "100%", position: "relative" }}>
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
             style={{ position: "absolute", left: "18px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }}>

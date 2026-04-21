@@ -10,6 +10,7 @@ import type { ApiPartnershipOpportunity, ApiTargetedProposal } from "@/college-a
 import { getSavedProposals, type SavedProposal } from "@/college-atlas/partnerships/savedProposals";
 import AtlasHeader from "@/ui/AtlasHeader";
 import KallipolisBrand from "@/ui/KallipolisBrand";
+import FormHeader from "@/ui/FormHeader";
 import { findScrollParent } from "@/ui/QueryShell";
 import { PREVIEW_MODE } from "@/preview/mode";
 import { getSeededProposals } from "@/preview/seededPartnerships";
@@ -175,6 +176,10 @@ export default function PartnershipsView({ school, onBack }: Props) {
                   >{m}</button>
                 ))}
               </div>
+            </div>
+
+            <div style={{ marginBottom: "40px" }}>
+              <FormHeader formName="Partnerships" />
             </div>
 
             {mode === "manage" && (

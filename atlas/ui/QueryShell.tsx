@@ -6,6 +6,7 @@ import { SchoolConfig } from "@/config/schoolConfig";
 import AtlasHeader from "@/ui/AtlasHeader";
 import KallipolisBrand from "@/ui/KallipolisBrand";
 import RisingSun from "@/ui/RisingSun";
+import FormHeader from "@/ui/FormHeader";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
@@ -19,6 +20,7 @@ export function findScrollParent(el: HTMLElement | null): HTMLElement | null {
 
 export type QueryShellProps<T> = {
   school: SchoolConfig;
+  formName: string;
   onBack: () => void;
   placeholder: string;
   examples: string[];
@@ -32,7 +34,7 @@ export type QueryShellProps<T> = {
 };
 
 export default function QueryShell<T>({
-  school, onBack, placeholder, examples,
+  school, formName, onBack, placeholder, examples,
   queryFn, loadInitialData, renderInitialContent, renderResultsContent,
   onQueryStart, onReset, rootRef,
 }: QueryShellProps<T>) {
@@ -41,7 +43,6 @@ export default function QueryShell<T>({
   const [results, setResults] = useState<T[]>([]);
   const [queryLoading, setQueryLoading] = useState(false);
   const [queryMessage, setQueryMessage] = useState<string | null>(null);
-  const [userName, setUserName] = useState<string>("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [helpOpen, setHelpOpen] = useState(false);
@@ -147,11 +148,8 @@ export default function QueryShell<T>({
           <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
             style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
 
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "24px", paddingTop: "40px" }}>
-              <RisingSun style={{ width: "90px", height: "auto" }} />
-              <h1 style={{ fontFamily: FONT, fontSize: "28px", fontWeight: 600, color: "#f0eef4", letterSpacing: "-0.02em", textAlign: "center" }}>
-                What&apos;s up{userName ? `, ${userName}` : ""}?
-              </h1>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "24px" }}>
+              <FormHeader formName={formName} />
               <div ref={helpRef} style={{ width: "100%", position: "relative" }}>
                 <div style={{ position: "relative" }}>
                   <input ref={inputRef} type="text" value={query}

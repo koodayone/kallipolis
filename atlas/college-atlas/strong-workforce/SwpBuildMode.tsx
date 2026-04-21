@@ -33,14 +33,6 @@ export default function SwpBuildMode({
 
   return (
     <>
-      {/* Build mode header with sun + greeting */}
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "24px", marginBottom: "24px" }}>
-        <RisingSun style={{ width: "90px", height: "auto" }} />
-        <h1 style={{ fontFamily: FONT, fontSize: "28px", fontWeight: 600, color: "#f0eef4", letterSpacing: "-0.02em", textAlign: "center", margin: 0 }}>
-          SWP compliance{userName ? `, ${userName}` : ""}?
-        </h1>
-      </div>
-
       {savedProposals.length === 0 ? (
         <div style={{ padding: "40px", textAlign: "center", background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: "8px" }}>
           <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)", margin: "0 0 8px" }}>No saved partnerships yet.</p>
