@@ -4995,7 +4995,9 @@
       "49-2095",
       "11-3013",
       "53-5031",
-      "13-1082"
+      "13-1082",
+      "11-3051",
+      "11-9199"
     ],
     "website": "https://www.pge.com"
   },
@@ -5830,7 +5832,8 @@
     "description": "Olive Garden is a widely recognized Italian restaurant chain offering family-style dining. It operates numerous locations nationally, requiring a large workforce for its extensive food service operations. CTE-relevant roles include chefs, line cooks, servers, hosts, and restaurant management.",
     "regions": [
       "SCC",
-      "Bay"
+      "Bay",
+      "FN"
     ],
     "occupations": [
       "11-1021",
@@ -5840,7 +5843,8 @@
       "11-2021",
       "13-1121",
       "27-1021",
-      "41-4011"
+      "41-4011",
+      "43-4161"
     ],
     "website": "https://www.olivegarden.com"
   },
@@ -9117,7 +9121,8 @@
     "description": "Grocery Outlet is a supermarket chain specializing in discount groceries, providing a variety of food products at reduced prices. This business offers CTE-relevant roles in retail operations, inventory management, food handling, and customer service.",
     "regions": [
       "SCC",
-      "SD/I"
+      "SD/I",
+      "FN"
     ],
     "occupations": [
       "11-1021",
@@ -9131,7 +9136,9 @@
       "29-1031",
       "31-9092",
       "41-4011",
-      "43-4161"
+      "43-4161",
+      "11-2021",
+      "43-9081"
     ],
     "website": "https://www.groceryoutlet.com"
   },
@@ -21799,7 +21806,11 @@
       "11-3051",
       "17-2199",
       "49-9081",
-      "13-1082"
+      "13-1082",
+      "11-3013",
+      "11-9199",
+      "17-2071",
+      "53-5031"
     ],
     "website": "https://patternenergy.com/projects/hatchet-ridge-wind/"
   },
@@ -21815,7 +21826,11 @@
       "13-1051",
       "17-2051",
       "17-3022",
-      "43-4161"
+      "43-4161",
+      "13-1082",
+      "17-2071",
+      "43-9111",
+      "51-4111"
     ],
     "website": "https://smci-const.com/"
   },
@@ -21847,7 +21862,10 @@
       "13-1081",
       "17-2112",
       "49-3023",
-      "51-4111"
+      "51-4111",
+      "11-3061",
+      "17-2071",
+      "49-9062"
     ],
     "website": "https://www.spi-ind.com/"
   },
@@ -21863,7 +21881,12 @@
       "11-3051",
       "17-2051",
       "49-3023",
-      "53-3032"
+      "53-3032",
+      "11-3061",
+      "13-1051",
+      "17-2071",
+      "49-9062",
+      "51-4111"
     ],
     "website": "https://www.calportland.com/"
   },
@@ -21879,7 +21902,11 @@
       "13-1081",
       "17-2112",
       "49-2094",
-      "51-4111"
+      "51-4111",
+      "11-3061",
+      "13-1051",
+      "17-3026",
+      "51-9162"
     ],
     "website": "https://www.surveying.com/"
   },
@@ -21896,7 +21923,11 @@
       "29-2061",
       "31-1131",
       "31-9092",
-      "39-4011"
+      "39-4011",
+      "13-1071",
+      "21-1021",
+      "29-2053",
+      "31-2021"
     ],
     "website": "https://quartzhillpostacute.com/"
   },
@@ -21912,7 +21943,10 @@
       "11-3012",
       "13-1081",
       "41-4011",
-      "53-3032"
+      "53-3032",
+      "11-3061",
+      "11-9199",
+      "43-4161"
     ],
     "website": null
   },
@@ -21928,7 +21962,9 @@
       "11-3012",
       "41-9031",
       "43-4161",
-      "49-3023"
+      "49-3023",
+      "11-3061",
+      "13-1071"
     ],
     "website": "https://www.crownmotorsredding.com/"
   },
@@ -21944,7 +21980,11 @@
       "11-3012",
       "13-1081",
       "41-4011",
-      "43-9081"
+      "43-9081",
+      "11-2021",
+      "13-1071",
+      "35-2013",
+      "43-4161"
     ],
     "website": "https://www.shopholidaymarket.com/"
   },
@@ -21960,7 +22000,11 @@
       "11-3012",
       "13-1081",
       "41-4011",
-      "43-9081"
+      "43-9081",
+      "11-2021",
+      "13-1071",
+      "35-2013",
+      "43-4161"
     ],
     "website": "https://www.shopholidaymarket.com/"
   },
@@ -21976,7 +22020,9 @@
       "11-3012",
       "13-1081",
       "41-4011",
-      "43-9081"
+      "43-9081",
+      "11-2021",
+      "43-4161"
     ],
     "website": "https://www.raleys.com/"
   },
@@ -21994,7 +22040,9 @@
       "13-1081",
       "41-4011",
       "43-9081",
-      "53-3032"
+      "53-3032",
+      "11-2021",
+      "43-4161"
     ],
     "website": "https://www.safeway.com/"
   },
@@ -22222,7 +22270,9 @@
       "29-1141",
       "29-2061",
       "31-1131",
-      "31-9092"
+      "31-9092",
+      "21-1091",
+      "29-2057"
     ],
     "website": "https://www.va.gov/northern-california-health-care/locations/redding-va-clinic/"
   },
@@ -22240,7 +22290,9 @@
       "29-1141",
       "29-2061",
       "31-1131",
-      "31-9092"
+      "31-9092",
+      "21-1021",
+      "29-2051"
     ],
     "website": "https://www.shastahealth.org/"
   },
@@ -22275,7 +22327,8 @@
       "29-1141",
       "29-2061",
       "31-1131",
-      "31-9092"
+      "31-9092",
+      "29-2053"
     ],
     "website": "https://myowens.com/"
   },
@@ -22291,7 +22344,9 @@
       "11-3012",
       "11-9151",
       "13-1071",
-      "21-1099"
+      "21-1099",
+      "11-3121",
+      "13-2011"
     ],
     "website": "https://www.rrths.org/"
   },
@@ -22327,7 +22382,9 @@
       "29-1141",
       "29-2061",
       "31-1131",
-      "31-9092"
+      "31-9092",
+      "11-1011",
+      "29-2034"
     ],
     "website": "https://www.dignityhealth.org/north-state/locations/mercy-redding"
   },
@@ -22362,7 +22419,10 @@
       "29-2061",
       "31-1131",
       "31-9092",
-      "39-4011"
+      "39-4011",
+      "13-1071",
+      "21-1021",
+      "31-2021"
     ],
     "website": "https://copperridgecarecenter.com/"
   },
@@ -22379,7 +22439,10 @@
       "29-2061",
       "31-1131",
       "31-9092",
-      "39-4011"
+      "39-4011",
+      "13-1071",
+      "21-1021",
+      "31-2021"
     ],
     "website": "https://www.reddingpostacute.net/"
   },
@@ -22396,7 +22459,10 @@
       "29-2061",
       "31-1131",
       "31-9092",
-      "39-4011"
+      "39-4011",
+      "13-1071",
+      "21-1021",
+      "31-2021"
     ],
     "website": "https://www.windsorreddingcc.com/"
   },
@@ -22495,7 +22561,8 @@
       "11-3012",
       "11-9179",
       "13-1121",
-      "43-4161"
+      "43-4161",
+      "39-5012"
     ],
     "website": "https://www.sonesta.com/red-lion-hotels/ca/redding/red-lion-hotel-redding"
   },
@@ -22592,7 +22659,12 @@
       "11-9041",
       "17-2051",
       "49-9062",
-      "53-3032"
+      "53-3032",
+      "11-9199",
+      "13-1081",
+      "17-2071",
+      "17-3022",
+      "49-3023"
     ],
     "website": "https://www.shastacounty.gov/public-works"
   },
@@ -22675,7 +22747,9 @@
       "17-2081",
       "19-1031",
       "19-1032",
-      "19-4071"
+      "19-4071",
+      "11-1011",
+      "11-9031"
     ],
     "website": "https://www.fs.usda.gov/r05/lassen"
   },
@@ -22692,7 +22766,9 @@
       "17-2081",
       "19-1031",
       "19-1032",
-      "19-4071"
+      "19-4071",
+      "11-1011",
+      "11-9031"
     ],
     "website": "https://www.fs.usda.gov/r05/shasta-trinity"
   },
@@ -32809,7 +32885,8 @@
     "description": "Xerox Business Solutions West provides document management and office technology solutions.",
     "regions": [
       "SD/I",
-      "OC"
+      "OC",
+      "FN"
     ],
     "occupations": [
       "11-1021",
@@ -32821,7 +32898,10 @@
       "49-2022",
       "11-3031",
       "13-1082",
-      "15-1211"
+      "15-1211",
+      "11-2021",
+      "11-3021",
+      "13-1161"
     ],
     "website": "https://www.xerox.com/"
   },
@@ -52768,5 +52848,1785 @@
       "43-4161"
     ],
     "website": "https://www.ocwaste.com/"
+  },
+  {
+    "name": "Pacific Coast Producers",
+    "sector": "Manufacturing",
+    "description": "Pacific Coast Producers is a food and beverage company involved in the production of wine and other agricultural products.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3061",
+      "13-1081",
+      "13-2011",
+      "49-9062",
+      "51-9162"
+    ]
+  },
+  {
+    "name": "BCM Construction",
+    "sector": "Construction",
+    "description": "BCM Construction is a construction company that manages building projects.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-9021",
+      "11-3013",
+      "13-1051",
+      "17-3022",
+      "49-3023"
+    ]
+  },
+  {
+    "name": "Wrex Products Inc",
+    "sector": "Manufacturing",
+    "description": "Wrex Products Inc is a manufacturing company.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3061",
+      "13-1081",
+      "15-1251",
+      "49-2094",
+      "51-9162"
+    ]
+  },
+  {
+    "name": "Ammunition Accessories",
+    "sector": "Manufacturing",
+    "description": "Ammunition Accessories is a company that manufactures and sells ammunition-related products.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3061",
+      "13-1081",
+      "15-1251",
+      "49-2094"
+    ]
+  },
+  {
+    "name": "Cascade Auto Glass",
+    "sector": "Other Services",
+    "description": "Cascade Auto Glass provides automotive glass repair and replacement services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "49-3023",
+      "49-9062"
+    ]
+  },
+  {
+    "name": "Oroville Dam",
+    "sector": "Utilities",
+    "description": "Oroville Dam is a major dam and hydroelectric facility.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-3013",
+      "11-9041",
+      "17-2071",
+      "49-2095",
+      "53-5031"
+    ]
+  },
+  {
+    "name": "Farmers International",
+    "sector": "Wholesale",
+    "description": "Farmers International is an agricultural company involved in farming operations.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-9121",
+      "13-1081",
+      "19-4012",
+      "45-2011"
+    ]
+  },
+  {
+    "name": "Paiva Farm Management",
+    "sector": "Wholesale",
+    "description": "Paiva Farm Management provides services for managing agricultural operations.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-9121",
+      "13-1081",
+      "19-4012",
+      "45-2011"
+    ]
+  },
+  {
+    "name": "Wil-Ker-Son Kiwi Ranch",
+    "sector": "Wholesale",
+    "description": "Wil-Ker-Son Kiwi Ranch is an agricultural operation focused on growing kiwis.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-9121",
+      "13-1081",
+      "19-4012",
+      "45-2011"
+    ]
+  },
+  {
+    "name": "Agromillora California",
+    "sector": "Wholesale",
+    "description": "Agromillora California is an agricultural company specializing in plant propagation and nursery stock.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-9121",
+      "13-1081",
+      "19-1013",
+      "19-4012",
+      "45-2011"
+    ]
+  },
+  {
+    "name": "Chico Sports Club",
+    "sector": "Healthcare",
+    "description": "Chico Sports Club is a recreational facility offering sports and fitness activities.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-9072",
+      "11-3012",
+      "13-1121",
+      "27-2022",
+      "29-1128",
+      "31-9011"
+    ]
+  },
+  {
+    "name": "Enloe Medical Center",
+    "sector": "Healthcare",
+    "description": "Enloe Medical Center is a hospital providing comprehensive healthcare services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9111",
+      "13-1071",
+      "15-1211",
+      "29-1141",
+      "29-2055",
+      "31-1131",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Northern Valley Catholic",
+    "sector": "Healthcare",
+    "description": "Northern Valley Catholic is a social service organization providing community support.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-9151",
+      "11-3012",
+      "13-1071",
+      "21-1021",
+      "21-1099"
+    ]
+  },
+  {
+    "name": "Feather River Tribal Health",
+    "sector": "Healthcare",
+    "description": "Feather River Tribal Health provides healthcare services to the tribal community.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9111",
+      "13-1071",
+      "21-1091",
+      "29-1141",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "First Responder EMS",
+    "sector": "Healthcare",
+    "description": "First Responder EMS provides emergency medical transportation and services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9161",
+      "13-1071",
+      "29-2042",
+      "29-2043"
+    ]
+  },
+  {
+    "name": "Enloe Health",
+    "sector": "Healthcare",
+    "description": "Enloe Health is a healthcare system that includes hospitals and medical services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9111",
+      "13-1071",
+      "15-1211",
+      "29-1141",
+      "29-2055",
+      "31-1131",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Far Northern Regional Development",
+    "sector": "Healthcare",
+    "description": "Far Northern Regional Development is an organization focused on community and economic development.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-9151",
+      "13-1111",
+      "13-1199",
+      "21-1099"
+    ]
+  },
+  {
+    "name": "Arbor Post Acute",
+    "sector": "Healthcare",
+    "description": "Arbor Post Acute is a healthcare facility providing post-acute and rehabilitation services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "29-1292",
+      "31-1131",
+      "31-2021"
+    ]
+  },
+  {
+    "name": "Enloe Homecare",
+    "sector": "Healthcare",
+    "description": "Enloe Homecare provides medical and support services to patients in their homes.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "21-1091",
+      "29-1141",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Riverside Convalescent",
+    "sector": "Healthcare",
+    "description": "Riverside Convalescent is a healthcare facility offering skilled nursing and rehabilitation services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "31-1131",
+      "31-2021"
+    ]
+  },
+  {
+    "name": "Windsor Chico Creek Care-Rehab",
+    "sector": "Healthcare",
+    "description": "Windsor Chico Creek Care-Rehab is a facility providing skilled nursing and rehabilitation services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "31-1131",
+      "31-2021"
+    ]
+  },
+  {
+    "name": "BMW of Chico",
+    "sector": "Retail",
+    "description": "BMW of Chico is a dealership selling and servicing BMW vehicles.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "41-4011",
+      "43-4161",
+      "49-3023"
+    ]
+  },
+  {
+    "name": "Pajouh Automotive Group",
+    "sector": "Retail",
+    "description": "Pajouh Automotive Group is a company that owns and operates car dealerships.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "41-4011",
+      "43-4161",
+      "49-3023"
+    ]
+  },
+  {
+    "name": "Wittmeier Chevrolet",
+    "sector": "Retail",
+    "description": "Wittmeier Chevrolet is a car dealership selling and servicing Chevrolet vehicles.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "41-4011",
+      "43-4161",
+      "49-3023"
+    ]
+  },
+  {
+    "name": "Richard Heath & Association",
+    "sector": "Retail",
+    "description": "Richard Heath & Association is a consulting firm providing professional services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3012",
+      "13-1111",
+      "13-2011",
+      "15-1211"
+    ]
+  },
+  {
+    "name": "Deseret Farms California",
+    "sector": "Retail",
+    "description": "Deseret Farms California is an agricultural operation involved in farming.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-9121",
+      "13-1081",
+      "19-4012",
+      "45-2011"
+    ]
+  },
+  {
+    "name": "Save Mart",
+    "sector": "Retail",
+    "description": "Save Mart is a supermarket chain primarily operating in California.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "41-4011",
+      "43-4161",
+      "43-9081"
+    ]
+  },
+  {
+    "name": "S-S Organic Produce",
+    "sector": "Retail",
+    "description": "S-S Organic Produce is a company involved in the production and distribution of organic produce.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-9121",
+      "13-1081",
+      "19-4012",
+      "45-2011"
+    ]
+  },
+  {
+    "name": "Associated Students Conference",
+    "sector": "Arts & Entertainment",
+    "description": "Associated Students Conference is likely an organization related to student governance or events at a college or university.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3012",
+      "11-9039",
+      "13-1121",
+      "25-9099"
+    ]
+  },
+  {
+    "name": "Waste Management North Valley",
+    "sector": "Professional Services",
+    "description": "Waste Management North Valley provides waste collection and disposal services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3012",
+      "11-3013",
+      "13-1081",
+      "43-4161",
+      "53-3032"
+    ]
+  },
+  {
+    "name": "Sutter Coast Hospital",
+    "sector": "Healthcare",
+    "description": "Sutter Coast Hospital is a healthcare facility providing medical and surgical services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "31-1131",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Hambro Forest Products",
+    "sector": "Retail",
+    "description": "Hambro Forest Products is a company involved in the processing of wood and forest products.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3061",
+      "13-1081",
+      "17-2071",
+      "49-9062",
+      "51-4111"
+    ]
+  },
+  {
+    "name": "Elk Valley Casino",
+    "sector": "Hospitality & Food Service",
+    "description": "Elk Valley Casino is a gaming establishment offering casino entertainment.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-2011",
+      "11-3012",
+      "11-9072",
+      "41-4011",
+      "43-4161"
+    ]
+  },
+  {
+    "name": "Sunsweet Dryers",
+    "sector": "Wholesale",
+    "description": "Sunsweet Dryers is involved in the processing and drying of agricultural products, likely fruits.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3061",
+      "13-1081",
+      "19-1012",
+      "49-9062",
+      "51-9162"
+    ]
+  },
+  {
+    "name": "Glenn Family Medical Group",
+    "sector": "Healthcare",
+    "description": "Glenn Family Medical Group is a healthcare practice providing family medicine services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Sierra Nevada Cheese",
+    "sector": "Retail",
+    "description": "Sierra Nevada Cheese is a company that produces and sells cheese products.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3061",
+      "13-1081",
+      "19-1012",
+      "49-9062",
+      "51-9162"
+    ]
+  },
+  {
+    "name": "Humboldt Creamery",
+    "sector": "Manufacturing",
+    "description": "Humboldt Creamery is a dairy processing company producing milk and dairy products.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3061",
+      "13-1081",
+      "19-1012",
+      "49-9062",
+      "51-9162"
+    ]
+  },
+  {
+    "name": "Danco Group",
+    "sector": "Construction",
+    "description": "Danco Group is a diversified company with interests in various industries.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3012",
+      "11-3061",
+      "13-1111",
+      "15-1211"
+    ]
+  },
+  {
+    "name": "O & M Industries",
+    "sector": "Manufacturing",
+    "description": "O & M Industries is a company involved in industrial operations and manufacturing.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3061",
+      "13-1081",
+      "15-1251",
+      "49-2094",
+      "51-9162"
+    ]
+  },
+  {
+    "name": "Bettendorf Trucking",
+    "sector": "Transportation",
+    "description": "Bettendorf Trucking is a transportation company specializing in freight hauling.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3012",
+      "13-1081",
+      "43-4161",
+      "53-3032"
+    ]
+  },
+  {
+    "name": "North Coast Co-Op",
+    "sector": "Wholesale",
+    "description": "North Coast Co-Op is a cooperative grocery store focused on natural and organic products.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "41-4011",
+      "43-4161",
+      "43-9081"
+    ]
+  },
+  {
+    "name": "Hospice of Humboldt",
+    "sector": "Healthcare",
+    "description": "Hospice of Humboldt provides end-of-life care and support services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9111",
+      "13-1071",
+      "21-1099",
+      "29-1141",
+      "31-1131"
+    ]
+  },
+  {
+    "name": "Humboldt County Department of Health",
+    "sector": "Healthcare",
+    "description": "Humboldt County Department of Health is a public health agency responsible for community health services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9111",
+      "11-9151",
+      "13-1041",
+      "19-5011",
+      "21-1091"
+    ]
+  },
+  {
+    "name": "St Joseph Health Medical Group",
+    "sector": "Healthcare",
+    "description": "St Joseph Health Medical Group is a network of physicians and healthcare providers.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "United Indian Health Services",
+    "sector": "Healthcare",
+    "description": "United Indian Health Services provides healthcare services to Native American communities.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9111",
+      "13-1071",
+      "21-1091",
+      "29-1141",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Humboldt County Mental Health",
+    "sector": "Healthcare",
+    "description": "Humboldt County Mental Health provides mental health services and support to residents.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9151",
+      "13-1071",
+      "21-1021",
+      "21-1099"
+    ]
+  },
+  {
+    "name": "Providence St Joseph Hospital",
+    "sector": "Healthcare",
+    "description": "Providence St Joseph Hospital is a healthcare facility providing a range of medical services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "31-1131",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Redwood Memorial Hospital",
+    "sector": "Healthcare",
+    "description": "Redwood Memorial Hospital is a community hospital offering medical and surgical care.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "31-1131",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Fortuna Rehabilitation and Wellness",
+    "sector": "Healthcare",
+    "description": "Fortuna Rehabilitation and Wellness provides physical therapy and wellness services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "29-1128",
+      "31-2021"
+    ]
+  },
+  {
+    "name": "Granada Rehabilitation and Wellness",
+    "sector": "Healthcare",
+    "description": "Granada Rehabilitation and Wellness offers rehabilitation and wellness programs.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "29-1128",
+      "31-2021"
+    ]
+  },
+  {
+    "name": "Timber Ridge At Eureka",
+    "sector": "Healthcare",
+    "description": "Timber Ridge At Eureka is a senior living community offering assisted living and memory care.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-9111",
+      "11-9151",
+      "13-1071",
+      "21-1021",
+      "31-1131"
+    ]
+  },
+  {
+    "name": "Suddenlink",
+    "sector": "Information & Media",
+    "description": "Suddenlink is a telecommunications company providing internet, cable TV, and phone services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3021",
+      "15-1211",
+      "49-2022"
+    ]
+  },
+  {
+    "name": "Pierson Building Center",
+    "sector": "Retail",
+    "description": "Pierson Building Center is a retail store selling building materials and home improvement supplies.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3061",
+      "41-4011",
+      "43-4161",
+      "49-9062"
+    ]
+  },
+  {
+    "name": "Healthsport",
+    "sector": "Arts & Entertainment",
+    "description": "Healthsport is a fitness and wellness center offering gym facilities and classes.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-9072",
+      "11-3012",
+      "13-1121",
+      "27-2022",
+      "29-1128",
+      "31-9011"
+    ]
+  },
+  {
+    "name": "Red Lion Hotel Eureka",
+    "sector": "Hospitality & Food Service",
+    "description": "Red Lion Hotel Eureka is a hospitality establishment providing lodging and related services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-9072",
+      "41-4011",
+      "43-4161"
+    ]
+  },
+  {
+    "name": "Calpine",
+    "sector": "Utilities",
+    "description": "Calpine is a power generation company operating various types of power plants.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-3013",
+      "11-3051",
+      "17-2071",
+      "49-2095",
+      "53-5031"
+    ]
+  },
+  {
+    "name": "Scully Packing",
+    "sector": "Wholesale",
+    "description": "Scully Packing is a company involved in the packing and processing of agricultural products.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3061",
+      "13-1081",
+      "19-1012",
+      "49-9062",
+      "51-9162"
+    ]
+  },
+  {
+    "name": "Adventist Health Clear Lake",
+    "sector": "Healthcare",
+    "description": "Adventist Health Clear Lake is a hospital providing healthcare services to the Clear Lake region.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "31-1131",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Sutter Lakeside Hospital",
+    "sector": "Healthcare",
+    "description": "Sutter Lakeside Hospital is a healthcare facility offering a range of medical services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "31-1131",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Meadow Nursing Center",
+    "sector": "Healthcare",
+    "description": "Meadow Nursing Center is a skilled nursing facility providing long-term care and rehabilitation.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "31-1131",
+      "31-2021"
+    ]
+  },
+  {
+    "name": "Marval's Sentry Market",
+    "sector": "Retail",
+    "description": "Marval's Sentry Market is a grocery store.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "41-4011",
+      "43-4161",
+      "43-9081"
+    ]
+  },
+  {
+    "name": "Rancheria Grille",
+    "sector": "Hospitality & Food Service",
+    "description": "Rancheria Grille is a restaurant.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "35-2013",
+      "41-4011",
+      "43-4161"
+    ]
+  },
+  {
+    "name": "Forestry and Fire Protection",
+    "sector": "Government",
+    "description": "Forestry and Fire Protection is a government agency responsible for forest management and firefighting.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-3013",
+      "11-9031",
+      "11-9161",
+      "19-1032",
+      "33-1021",
+      "33-2011"
+    ]
+  },
+  {
+    "name": "Sierra Army Depot",
+    "sector": "Manufacturing",
+    "description": "Sierra Army Depot is a U.S. Army installation responsible for storage and maintenance of military supplies.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-3012",
+      "11-3061",
+      "13-1081",
+      "15-1211",
+      "49-2094"
+    ]
+  },
+  {
+    "name": "Northeastern Rural Health",
+    "sector": "Healthcare",
+    "description": "Northeastern Rural Health is a healthcare provider serving rural communities.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Banner Lassen Medical Center",
+    "sector": "Healthcare",
+    "description": "Banner Lassen Medical Center is a hospital providing comprehensive healthcare services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "31-1131",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Caito Fisheries",
+    "sector": "Manufacturing",
+    "description": "Caito Fisheries is a company involved in the fishing and seafood processing industry.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3061",
+      "13-1081",
+      "49-9092",
+      "53-5021",
+      "53-5022"
+    ]
+  },
+  {
+    "name": "Constellation Brands",
+    "sector": "Manufacturing",
+    "description": "Constellation Brands is a multinational producer and marketer of beer, wine, and spirits.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-2021",
+      "11-3051",
+      "11-3061",
+      "13-1081",
+      "15-1251",
+      "41-4011"
+    ]
+  },
+  {
+    "name": "Fetzer Vineyards",
+    "sector": "Manufacturing",
+    "description": "Fetzer Vineyards is a winery producing and selling wine.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3051",
+      "11-3061",
+      "13-1081",
+      "19-1012",
+      "41-4011"
+    ]
+  },
+  {
+    "name": "Sawmill",
+    "sector": "Manufacturing",
+    "description": "Sawmill is a facility engaged in the processing of timber into lumber.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3061",
+      "13-1081",
+      "17-2071",
+      "49-9062",
+      "51-4111"
+    ]
+  },
+  {
+    "name": "Mendocino Redwood",
+    "sector": "Manufacturing",
+    "description": "Mendocino Redwood is a company involved in the timber and lumber industry.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3061",
+      "13-1081",
+      "17-2071",
+      "49-9062",
+      "51-4111"
+    ]
+  },
+  {
+    "name": "Mendocino Community Health",
+    "sector": "Healthcare",
+    "description": "Mendocino Community Health is a healthcare organization providing services to the community.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Adventist Health Mendocino",
+    "sector": "Healthcare",
+    "description": "Adventist Health Mendocino is a healthcare provider serving the Mendocino region.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "31-1131",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Pacific Medical Resources",
+    "sector": "Healthcare",
+    "description": "Pacific Medical Resources is a company that provides medical equipment and supplies.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-3012",
+      "11-3061",
+      "13-1071",
+      "15-1211",
+      "41-4011",
+      "49-9062"
+    ]
+  },
+  {
+    "name": "Adventist Health Ukiah Valley",
+    "sector": "Healthcare",
+    "description": "Adventist Health Ukiah Valley is a hospital providing comprehensive healthcare services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "31-1131",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Ukiah Health Care",
+    "sector": "Healthcare",
+    "description": "Ukiah Health Care is a healthcare facility providing medical services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Redwood Cove Healthcare Center",
+    "sector": "Healthcare",
+    "description": "Redwood Cove Healthcare Center is a facility offering skilled nursing and rehabilitation services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "31-1131",
+      "31-2021"
+    ]
+  },
+  {
+    "name": "Thurston Toyota",
+    "sector": "Retail",
+    "description": "Thurston Toyota is a car dealership selling and servicing Toyota vehicles.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "41-4011",
+      "43-4161",
+      "49-3023"
+    ]
+  },
+  {
+    "name": "Ukiah City Civic Center",
+    "sector": "Arts & Entertainment",
+    "description": "Ukiah City Civic Center is a municipal building housing government offices and services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-3012",
+      "11-3013",
+      "13-1111",
+      "43-4161"
+    ]
+  },
+  {
+    "name": "Heritage House Resort & Spa",
+    "sector": "Hospitality & Food Service",
+    "description": "Heritage House Resort & Spa is a hospitality establishment offering lodging, dining, and spa services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-9072",
+      "41-4011",
+      "43-4161",
+      "31-9011"
+    ]
+  },
+  {
+    "name": "Little River Inn",
+    "sector": "Hospitality & Food Service",
+    "description": "Little River Inn is a hospitality establishment providing lodging and dining services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-9072",
+      "41-4011",
+      "43-4161"
+    ]
+  },
+  {
+    "name": "Modoc National Forest",
+    "sector": "Government",
+    "description": "Modoc National Forest is a protected area managed by the U.S. Forest Service for conservation and recreation.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-3013",
+      "11-9031",
+      "11-9121",
+      "19-1032",
+      "19-4071"
+    ]
+  },
+  {
+    "name": "US Forest Service - Modoc National Forest",
+    "sector": "Government",
+    "description": "US Forest Service - Modoc National Forest manages the national forest for conservation and public use.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-3013",
+      "11-9031",
+      "11-9121",
+      "19-1032",
+      "19-4071",
+      "13-1081",
+      "17-1022",
+      "19-1031",
+      "45-2011"
+    ]
+  },
+  {
+    "name": "Feather River Family Dentistry",
+    "sector": "Healthcare",
+    "description": "Feather River Family Dentistry provides general dental care services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9111",
+      "13-1071",
+      "29-1292",
+      "31-9091"
+    ]
+  },
+  {
+    "name": "Seneca Healthcare District",
+    "sector": "Professional Services",
+    "description": "Seneca Healthcare District is a public healthcare entity providing medical services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "31-1131",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Forest Service",
+    "sector": "Government",
+    "description": "Forest Service is a government agency responsible for managing national forests.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-3013",
+      "11-9031",
+      "11-9121",
+      "19-1032",
+      "19-4071"
+    ]
+  },
+  {
+    "name": "Shasta County Mental Health Services",
+    "sector": "Healthcare",
+    "description": "Provides mental health services to the residents of Shasta County.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-9151",
+      "13-1071",
+      "21-1021",
+      "21-1099",
+      "29-1129",
+      "29-2053"
+    ]
+  },
+  {
+    "name": "Vibra Hospital of Northern California",
+    "sector": "Healthcare",
+    "description": "A hospital specializing in long-term acute care.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "29-1126",
+      "29-2055",
+      "31-1131"
+    ]
+  },
+  {
+    "name": "Mayers Memorial Hospital Burney",
+    "sector": "Healthcare",
+    "description": "A hospital providing healthcare services to the Burney community.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "29-2034",
+      "31-1131",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Tops Industries",
+    "sector": "Retail",
+    "description": "A company involved in manufacturing or industrial operations.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3061",
+      "13-1051",
+      "17-3026",
+      "49-2094",
+      "51-4111"
+    ]
+  },
+  {
+    "name": "Yanaco",
+    "sector": "Arts & Entertainment",
+    "description": "A company involved in mining or resource extraction.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-3051",
+      "11-3061",
+      "13-1081",
+      "17-2199",
+      "19-2042",
+      "49-9062"
+    ]
+  },
+  {
+    "name": "Bridge Bay Resort",
+    "sector": "Hospitality & Food Service",
+    "description": "A resort located at Shasta Lake offering recreational activities.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-9072",
+      "13-1121",
+      "27-2022",
+      "39-5012",
+      "43-4161"
+    ]
+  },
+  {
+    "name": "Mayers Memorial Hospital District",
+    "sector": "Professional Services",
+    "description": "A hospital district providing healthcare services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "29-2034",
+      "31-1131",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Ephc Loyalton Skilled Nursing",
+    "sector": "Healthcare",
+    "description": "Provides skilled nursing care in Loyalton.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "21-1021",
+      "29-1141",
+      "31-1131",
+      "31-2021"
+    ]
+  },
+  {
+    "name": "Klamath National Forest",
+    "sector": "Government",
+    "description": "Manages and protects the Klamath National Forest.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-9121",
+      "13-1081",
+      "17-1022",
+      "19-1031",
+      "19-1032",
+      "19-4071",
+      "45-2011"
+    ]
+  },
+  {
+    "name": "Siskiyou County Public Works",
+    "sector": "Construction",
+    "description": "Manages and maintains public infrastructure for Siskiyou County.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-3013",
+      "11-9199",
+      "13-1081",
+      "17-2071",
+      "17-3022",
+      "49-3023",
+      "53-3032"
+    ]
+  },
+  {
+    "name": "Fairchild Medical Clinic",
+    "sector": "Healthcare",
+    "description": "Provides outpatient medical services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "29-2057",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Siskiyou County Coroner",
+    "sector": "Healthcare",
+    "description": "Investigates deaths within Siskiyou County.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9199",
+      "13-1041",
+      "19-4092",
+      "23-2011"
+    ]
+  },
+  {
+    "name": "Fairchild Medical Center",
+    "sector": "Healthcare",
+    "description": "A hospital providing comprehensive medical services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "29-2034",
+      "31-1131",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Mercy Medical Center Mount Shasta",
+    "sector": "Healthcare",
+    "description": "A hospital providing medical services in the Mount Shasta area.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "29-2034",
+      "31-1131",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Roseburg Forest Products",
+    "sector": "Retail",
+    "description": "A company involved in the manufacturing of wood products.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3061",
+      "13-1051",
+      "17-3026",
+      "19-1032",
+      "51-4111"
+    ]
+  },
+  {
+    "name": "Mount Shasta Resort",
+    "sector": "Hospitality & Food Service",
+    "description": "A resort offering lodging and recreational activities in Mount Shasta.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-9072",
+      "13-1121",
+      "27-2022",
+      "39-5012",
+      "43-4161"
+    ]
+  },
+  {
+    "name": "Siskiyou Lake",
+    "sector": "Hospitality & Food Service",
+    "description": "A natural lake and recreational area.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-9072",
+      "13-1081",
+      "19-1031",
+      "19-4071",
+      "53-5021",
+      "53-5022"
+    ]
+  },
+  {
+    "name": "Crain Walnut Shelling",
+    "sector": "Manufacturing",
+    "description": "A facility for shelling and processing walnuts.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3061",
+      "13-1081",
+      "19-1013",
+      "19-4013",
+      "51-9162"
+    ]
+  },
+  {
+    "name": "Bell-Carter Foods",
+    "sector": "Wholesale",
+    "description": "A food processing company specializing in olives.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3061",
+      "13-1081",
+      "19-1012",
+      "19-4013",
+      "51-9162"
+    ]
+  },
+  {
+    "name": "St Elizabeth Community Hospital",
+    "sector": "Healthcare",
+    "description": "A community hospital providing a range of healthcare services.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "29-2034",
+      "31-1131",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Tehama County Health Services Agency",
+    "sector": "Healthcare",
+    "description": "Provides public health services for Tehama County.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1011",
+      "11-3012",
+      "11-9151",
+      "13-1071",
+      "21-1091",
+      "29-1141",
+      "29-9021"
+    ]
+  },
+  {
+    "name": "Red Bluff Health Center",
+    "sector": "Healthcare",
+    "description": "A health center providing medical services in Red Bluff.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-9111",
+      "13-1071",
+      "29-1141",
+      "29-2057",
+      "31-9092"
+    ]
+  },
+  {
+    "name": "Corning Ford",
+    "sector": "Retail",
+    "description": "A Ford dealership selling and servicing vehicles in Corning.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-2021",
+      "11-3012",
+      "11-3061",
+      "13-1071",
+      "43-4161",
+      "49-3023"
+    ]
+  },
+  {
+    "name": "Sierra Pacific Windows",
+    "sector": "Retail",
+    "description": "A manufacturer of windows and doors.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3061",
+      "13-1051",
+      "17-3011",
+      "17-3013",
+      "49-2094",
+      "51-4111"
+    ]
+  },
+  {
+    "name": "Rolling Hills Casino RV Park",
+    "sector": "Hospitality & Food Service",
+    "description": "An RV park associated with Rolling Hills Casino.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3012",
+      "11-9072",
+      "13-1121",
+      "39-5012",
+      "43-4161"
+    ]
+  },
+  {
+    "name": "USDA Forest Service",
+    "sector": "Government",
+    "description": "Manages and protects national forests and grasslands under the USDA.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-9121",
+      "13-1081",
+      "17-1022",
+      "19-1031",
+      "19-1032",
+      "19-4071",
+      "45-2011"
+    ]
+  },
+  {
+    "name": "Trinity River Lumber",
+    "sector": "Manufacturing",
+    "description": "A company involved in lumber production and processing.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-3051",
+      "11-3061",
+      "13-1051",
+      "17-3026",
+      "19-1032",
+      "51-4111"
+    ]
   }
 ]
