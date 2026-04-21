@@ -19,7 +19,7 @@ The pipeline scrapes EDD via two endpoints:
 
 Both are ASP.NET pages, which means the deep search requires `__VIEWSTATE` and `__EVENTVALIDATION` form state to apply filters and paginate. The parsing details are in `backend/employers/edd_scrape.py`.
 
-The pipeline restricts queries to a curated set of CTE-relevant NAICS 4-digit codes — agriculture, construction, manufacturing, healthcare, IT, professional services, hospitality, government, and others. Staffing and business-support codes (NAICS 5613 and 5614) are deliberately excluded because their members place workers at other employers rather than hire workers onto their own payroll, so they are structurally not partnership targets. The default size filter is `F` (100+ employees), since smaller employers rarely sustain the kind of partnerships SWP funds.
+The pipeline restricts queries to NAICS 4-digit codes that represent at least one Strong Workforce Program priority sector. The sector framework and the NAICS composition of each sector are documented in [SWP Sector NAICS Composition](./swp-sector-naics.md); `CTE_NAICS_CODES` in `backend/employers/edd_scrape.py` is the machine-readable form. Staffing and business-support codes (NAICS 5613 and 5614) are deliberately excluded because their members place workers at other employers rather than hire onto their own payroll, so they are structurally not partnership targets. The default size filter is `F` (100+ employees), since smaller employers rarely sustain the kind of partnerships SWP funds.
 
 For the broader institutional context on EDD as a data authority, see [Data Authorities](../domain/data-authorities.md).
 

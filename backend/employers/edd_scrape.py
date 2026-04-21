@@ -64,192 +64,201 @@ COUNTY_CODES: dict[str, str] = {
 }
 
 
-# CTE-relevant NAICS 4-digit codes with EDD sector codes and labels.
-# The EDD's naicsect URL parameter uses the NAICS 2-digit code for most
-# sectors, except manufacturing where 31/32/33 all work interchangeably.
-# Food service (72) and public safety (92) are not searchable by NAICS
-# in the EDD interface — those employers come from HWOL/major employers.
+# CTE-relevant NAICS 4-digit codes, organized by the Strong Workforce
+# Program's "Doing What Matters" sector framework (the California
+# Community Colleges Chancellor's Office authority for CTE sector
+# membership — see docs/pipeline/swp-sector-naics.md).
 #
-# Format: {naics4: (edd_naicsect, label)}
-CTE_NAICS_CODES: dict[str, tuple[str, str]] = {
-    # Agriculture (sector 11)
-    "1111": ("11", "Agriculture - Oilseed/Grain"),
-    "1112": ("11", "Agriculture - Vegetables/Melons"),
-    "1113": ("11", "Agriculture - Fruit/Tree Nuts"),
-    "1114": ("11", "Agriculture - Greenhouse/Nursery"),
-    "1119": ("11", "Agriculture - Other Crops"),
-    "1121": ("11", "Agriculture - Cattle"),
-    "1122": ("11", "Agriculture - Hogs/Pigs"),
-    "1123": ("11", "Agriculture - Poultry/Eggs"),
-    "1124": ("11", "Agriculture - Sheep/Goats"),
-    "1125": ("11", "Agriculture - Aquaculture"),
-    "1129": ("11", "Agriculture - Other Animals"),
-    "1151": ("11", "Agriculture - Crop Support"),
-    "1152": ("11", "Agriculture - Animal Support"),
-    # Utilities (sector 22)
-    "2211": ("22", "Utilities - Electric Power"),
-    "2212": ("22", "Utilities - Natural Gas"),
-    "2213": ("22", "Utilities - Water/Sewer"),
-    # Construction (sector 23)
-    "2361": ("23", "Construction - Residential"),
-    "2362": ("23", "Construction - Commercial"),
-    "2371": ("23", "Construction - Utility Systems"),
-    "2373": ("23", "Construction - Highway/Street"),
-    "2379": ("23", "Construction - Other Heavy"),
-    "2381": ("23", "Construction - Foundation/Structural"),
-    "2382": ("23", "Construction - HVAC/Plumbing/Electrical"),
-    "2383": ("23", "Construction - Finishing"),
-    "2389": ("23", "Construction - Other Specialty"),
-    # Manufacturing - Food/Beverage (sector 31)
-    "3111": ("31", "Manufacturing - Animal Food"),
-    "3114": ("31", "Manufacturing - Fruit/Vegetable Preserving"),
-    "3115": ("31", "Manufacturing - Dairy Products"),
-    "3116": ("31", "Manufacturing - Meat Processing"),
-    "3117": ("31", "Manufacturing - Seafood Processing"),
-    "3118": ("31", "Manufacturing - Bakeries"),
-    "3119": ("31", "Manufacturing - Other Food"),
-    "3121": ("31", "Manufacturing - Beverages"),
-    # Manufacturing - Materials/Chemicals (sector 32)
-    "3241": ("32", "Manufacturing - Petroleum/Coal"),
-    "3254": ("32", "Manufacturing - Pharmaceuticals"),
-    "3261": ("32", "Manufacturing - Plastics"),
-    # Manufacturing - Wood/Paper/Printing (sector 32)
-    "3211": ("32", "Manufacturing - Sawmills/Wood"),
-    "3212": ("32", "Manufacturing - Veneer/Plywood"),
-    "3219": ("32", "Manufacturing - Other Wood Products"),
-    "3231": ("32", "Manufacturing - Printing"),
-    "3273": ("32", "Manufacturing - Cement/Concrete"),
-    # Manufacturing - Metals/Machinery/Electronics (sector 33)
-    "3323": ("33", "Manufacturing - Architectural Metals"),
-    "3327": ("33", "Manufacturing - Machine Shops"),
-    "3328": ("33", "Manufacturing - Coating/Engraving"),
-    "3329": ("33", "Manufacturing - Other Fabricated Metals"),
-    "3332": ("33", "Manufacturing - Industrial Machinery"),
-    "3334": ("33", "Manufacturing - HVAC Equipment"),
-    "3335": ("33", "Manufacturing - Metalworking Machinery"),
-    "3341": ("33", "Manufacturing - Computers"),
-    "3344": ("33", "Manufacturing - Semiconductors"),
-    "3345": ("33", "Manufacturing - Instruments"),
-    "3351": ("33", "Manufacturing - Electrical Equipment"),
-    "3361": ("33", "Manufacturing - Motor Vehicles"),
-    "3363": ("33", "Manufacturing - Motor Vehicle Parts"),
-    "3364": ("33", "Manufacturing - Aerospace"),
-    "3366": ("33", "Manufacturing - Ship/Boat"),
-    "3331": ("33", "Manufacturing - Ag/Construction Machinery"),
-    "3391": ("33", "Manufacturing - Medical Equipment"),
-    # Wholesale Trade (sector 42)
-    "4231": ("42", "Wholesale - Motor Vehicles/Parts"),
-    "4234": ("42", "Wholesale - Professional Equipment"),
-    "4241": ("42", "Wholesale - Paper/Packaging"),
-    "4244": ("42", "Wholesale - Grocery/Related"),
-    "4245": ("42", "Wholesale - Farm Products"),
-    "4247": ("42", "Wholesale - Petroleum"),
-    "4248": ("42", "Wholesale - Beer/Wine/Spirits"),
-    "4249": ("42", "Wholesale - Miscellaneous Nondurable"),
-    # Retail Trade (sector 44-45)
-    "4411": ("44", "Retail - Auto Dealers"),
-    "4441": ("44", "Retail - Building Materials"),
-    "4451": ("44", "Retail - Grocery Stores"),
-    "4452": ("44", "Retail - Specialty Food"),
-    "4461": ("44", "Retail - Health/Personal Care"),
-    "4511": ("45", "Retail - Sporting Goods/Hobby"),
-    "4521": ("45", "Retail - Department Stores"),
-    "4529": ("45", "Retail - General Merchandise"),
-    # Transportation & Warehousing (sector 48-49)
-    "4811": ("48", "Transportation - Air"),
-    "4841": ("48", "Transportation - Trucking (General)"),
-    "4842": ("48", "Transportation - Trucking (Specialized)"),
-    "4851": ("48", "Transportation - Transit/Ground Passenger"),
-    "4853": ("48", "Transportation - Taxi/Limo"),
-    "4854": ("48", "Transportation - School Bus"),
-    "4859": ("48", "Transportation - Other Transit"),
-    "4881": ("48", "Transportation - Support Activities (Air)"),
-    "4921": ("49", "Transportation - Couriers/Express Delivery"),
-    "4931": ("49", "Transportation - Warehousing/Storage"),
-    # Information / IT / Media (sector 51)
-    "5112": ("51", "IT - Software Publishing"),
-    "5121": ("51", "Media - Motion Picture/Video"),
-    "5122": ("51", "Media - Sound Recording"),
-    "5151": ("51", "Media - Radio/TV Broadcasting"),
-    "5171": ("51", "IT - Telecommunications (Wired)"),
-    "5172": ("51", "IT - Telecommunications (Wireless)"),
-    "5182": ("51", "IT - Data Processing/Hosting"),
-    # Finance & Insurance (sector 52)
-    "5221": ("52", "Finance - Banks/Credit Unions"),
-    "5222": ("52", "Finance - Nondepository Credit"),
-    "5231": ("52", "Finance - Securities/Brokerage"),
-    "5241": ("52", "Insurance - Carriers"),
-    "5242": ("52", "Insurance - Agencies/Brokerages"),
-    # Real Estate (sector 53)
-    "5311": ("53", "Real Estate - Lessors"),
-    "5312": ("53", "Real Estate - Agents/Brokers"),
-    "5313": ("53", "Real Estate - Property Management"),
-    # Professional / Scientific / Technical (sector 54)
-    "5411": ("54", "Professional - Legal Services"),
-    "5412": ("54", "Professional - Accounting/Tax"),
-    "5413": ("54", "Professional - Architecture/Engineering"),
-    "5414": ("54", "Professional - Graphic/Industrial Design"),
-    "5415": ("54", "Professional - Computer Systems Design"),
-    "5416": ("54", "Professional - Management/Technical Consulting"),
-    "5417": ("54", "Professional - Scientific R&D"),
-    "5418": ("54", "Professional - Advertising/PR"),
-    # Waste Management (sector 56)
-    "5621": ("56", "Waste - Collection"),
-    "5622": ("56", "Waste - Treatment/Disposal"),
-    # Administrative / Support (sector 56)
-    # Employment services (5613) and business support (5614) deliberately
-    # excluded: their members are staffing agencies that place workers at
-    # other employers rather than hire workers onto their own payroll.
-    "5616": ("56", "Admin - Investigation/Security"),
-    "5617": ("56", "Admin - Janitorial/Landscaping"),
-    # Education (sector 61)
-    "6111": ("61", "Education - Elementary/Secondary"),
-    "6112": ("61", "Education - Junior Colleges"),
-    "6113": ("61", "Education - Colleges/Universities"),
-    "6115": ("61", "Education - Technical Schools"),
-    "6116": ("61", "Education - Other Schools"),
-    # Healthcare (sector 62)
-    "6211": ("62", "Healthcare - Physician Offices"),
-    "6212": ("62", "Healthcare - Dental"),
-    "6213": ("62", "Healthcare - Other Practitioners"),
-    "6214": ("62", "Healthcare - Outpatient"),
-    "6215": ("62", "Healthcare - Labs"),
-    "6216": ("62", "Healthcare - Home Health"),
-    "6219": ("62", "Healthcare - Other Ambulatory"),
-    "6221": ("62", "Healthcare - Hospitals (General)"),
-    "6222": ("62", "Healthcare - Hospitals (Psych/Substance)"),
-    "6223": ("62", "Healthcare - Hospitals (Specialty)"),
-    "6231": ("62", "Healthcare - Nursing Facilities"),
-    "6232": ("62", "Healthcare - Residential Care"),
-    "6233": ("62", "Healthcare - Continuing Care"),
-    # Social Assistance (sector 62)
-    "6241": ("62", "Social Services - Individual/Family"),
-    "6242": ("62", "Social Services - Emergency/Relief"),
-    "6243": ("62", "Social Services - Vocational Rehab"),
-    "6244": ("62", "Social Services - Child Day Care"),
-    # Arts / Entertainment / Recreation (sector 71)
-    "7111": ("71", "Arts - Performing Arts Companies"),
-    "7121": ("71", "Arts - Museums/Historical Sites"),
-    "7131": ("71", "Arts - Amusement Parks/Arcades"),
-    "7139": ("71", "Arts - Other Amusement/Recreation"),
-    # Hospitality / Food Service (sector 72)
-    "7211": ("72", "Hospitality - Hotels/Motels"),
-    "7212": ("72", "Hospitality - RV Parks/Camps"),
-    "7223": ("72", "Food Service - Special/Caterers"),
-    "7224": ("72", "Food Service - Bars"),
-    "7225": ("72", "Food Service - Restaurants"),
-    # Other Services (sector 81)
-    "8111": ("81", "Services - Auto Repair/Maintenance"),
-    "8121": ("81", "Services - Personal Care"),
-    "8131": ("81", "Services - Religious Organizations"),
-    "8134": ("81", "Services - Civic/Social Organizations"),
-    # Government (sector 92)
-    "9211": ("92", "Government - Executive/Legislative"),
-    "9221": ("92", "Government - Justice/Public Order"),
-    "9222": ("92", "Government - Fire Protection"),
-    "9223": ("92", "Government - Administration (Human Resources)"),
-    "9231": ("92", "Government - Admin (Economic Programs)"),
-    "9241": ("92", "Government - Environmental Quality"),
+# Every NAICS code in this list maps to at least one SWP sector. Codes
+# that don't represent any SWP sector (real estate, finance/insurance,
+# K-12 education, general government administration, religious and
+# civic organizations) are deliberately excluded.
+#
+# The EDD's naicsect URL parameter uses the NAICS 2-digit code for most
+# sectors; manufacturing codes (31/32/33) can use any of the three
+# interchangeably.
+#
+# Staffing and business-support codes (5613, 5614) are excluded because
+# their members place workers at other employers rather than hire onto
+# their own payroll.
+#
+# Format: {naics4: (naicsect, label, [swp_sectors])}. The first sector
+# in the list is the primary DWM classification; any additional sectors
+# reflect legitimate cross-sector representation.
+
+SWP_SECTORS: tuple[str, ...] = (
+    "Advanced Manufacturing and Advanced Technology",
+    "Advanced Transportation & Renewable Energy",
+    "Agriculture, Water & Environmental Technologies",
+    "Energy (Efficiency) & Utilities",
+    "Global Trade & Logistics",
+    "Health",
+    "Information & Communication Technologies (ICT) / Digital Media",
+    "Life Sciences / Biotechnology",
+    "Retail/Hospitality/Tourism",
+    "Small Business",
+)
+
+# Shorthand used only in this dict to keep row widths readable.
+_AMAT = "Advanced Manufacturing and Advanced Technology"
+_AT_RE = "Advanced Transportation & Renewable Energy"
+_AG_W_ET = "Agriculture, Water & Environmental Technologies"
+_ENERGY = "Energy (Efficiency) & Utilities"
+_GT_L = "Global Trade & Logistics"
+_HEALTH = "Health"
+_ICT = "Information & Communication Technologies (ICT) / Digital Media"
+_LIFE_SCI = "Life Sciences / Biotechnology"
+_RHT = "Retail/Hospitality/Tourism"
+_SB = "Small Business"
+
+CTE_NAICS_CODES: dict[str, tuple[str, str, list[str]]] = {
+    # ── Agriculture, Water & Environmental Technologies ─────────────
+    "1111": ("11", "Agriculture - Oilseed/Grain", [_AG_W_ET]),
+    "1112": ("11", "Agriculture - Vegetables/Melons", [_AG_W_ET]),
+    "1113": ("11", "Agriculture - Fruit/Tree Nuts", [_AG_W_ET]),
+    "1114": ("11", "Agriculture - Greenhouse/Nursery", [_AG_W_ET]),
+    "1119": ("11", "Agriculture - Other Crops", [_AG_W_ET]),
+    "1121": ("11", "Agriculture - Cattle", [_AG_W_ET]),
+    "1122": ("11", "Agriculture - Hogs/Pigs", [_AG_W_ET]),
+    "1123": ("11", "Agriculture - Poultry/Eggs", [_AG_W_ET]),
+    "1124": ("11", "Agriculture - Sheep/Goats", [_AG_W_ET]),
+    "1125": ("11", "Agriculture - Aquaculture", [_AG_W_ET]),
+    "1129": ("11", "Agriculture - Other Animals", [_AG_W_ET]),
+    "1151": ("11", "Agriculture - Crop Support", [_AG_W_ET]),
+    "1152": ("11", "Agriculture - Animal Support", [_AG_W_ET]),
+    "2213": ("22", "Utilities - Water/Sewer", [_AG_W_ET, _ENERGY]),
+    "3111": ("31", "Manufacturing - Animal Food", [_AG_W_ET]),
+    "3114": ("31", "Manufacturing - Fruit/Vegetable Preserving", [_AG_W_ET]),
+    "3115": ("31", "Manufacturing - Dairy Products", [_AG_W_ET]),
+    "3116": ("31", "Manufacturing - Meat Processing", [_AG_W_ET]),
+    "3117": ("31", "Manufacturing - Seafood Processing", [_AG_W_ET]),
+    "3118": ("31", "Manufacturing - Bakeries", [_AG_W_ET, _SB]),
+    "3119": ("31", "Manufacturing - Other Food", [_AG_W_ET]),
+    "3121": ("31", "Manufacturing - Beverages", [_AG_W_ET]),
+    "4245": ("42", "Wholesale - Farm Products", [_AG_W_ET, _GT_L]),
+    "5621": ("56", "Waste - Collection", [_AG_W_ET]),
+    "5622": ("56", "Waste - Treatment/Disposal", [_AG_W_ET]),
+    "9241": ("92", "Environmental Quality - Government", [_AG_W_ET]),
+
+    # ── Advanced Manufacturing and Advanced Technology ──────────────
+    "2361": ("23", "Construction - Residential", [_AMAT]),
+    "2362": ("23", "Construction - Commercial", [_AMAT]),
+    "2371": ("23", "Construction - Utility Systems", [_AMAT, _ENERGY]),
+    "2373": ("23", "Construction - Highway/Street", [_AMAT, _AT_RE]),
+    "2379": ("23", "Construction - Other Heavy", [_AMAT]),
+    "2381": ("23", "Construction - Foundation/Structural", [_AMAT]),
+    "2382": ("23", "Construction - HVAC/Plumbing/Electrical", [_AMAT, _ENERGY]),
+    "2383": ("23", "Construction - Finishing", [_AMAT]),
+    "2389": ("23", "Construction - Other Specialty", [_AMAT]),
+    "3211": ("32", "Manufacturing - Sawmills/Wood", [_AMAT]),
+    "3212": ("32", "Manufacturing - Veneer/Plywood", [_AMAT]),
+    "3219": ("32", "Manufacturing - Other Wood Products", [_AMAT]),
+    "3231": ("32", "Manufacturing - Printing", [_AMAT]),
+    "3261": ("32", "Manufacturing - Plastics", [_AMAT]),
+    "3273": ("32", "Manufacturing - Cement/Concrete", [_AMAT]),
+    "3323": ("33", "Manufacturing - Architectural Metals", [_AMAT]),
+    "3327": ("33", "Manufacturing - Machine Shops", [_AMAT]),
+    "3328": ("33", "Manufacturing - Coating/Engraving", [_AMAT]),
+    "3329": ("33", "Manufacturing - Other Fabricated Metals", [_AMAT]),
+    "3331": ("33", "Manufacturing - Ag/Construction Machinery", [_AMAT, _AG_W_ET]),
+    "3332": ("33", "Manufacturing - Industrial Machinery", [_AMAT]),
+    "3335": ("33", "Manufacturing - Metalworking Machinery", [_AMAT]),
+
+    # ── Advanced Transportation & Renewable Energy ──────────────────
+    "3361": ("33", "Manufacturing - Motor Vehicles", [_AT_RE, _AMAT]),
+    "3363": ("33", "Manufacturing - Motor Vehicle Parts", [_AT_RE, _AMAT]),
+    "3364": ("33", "Manufacturing - Aerospace", [_AT_RE, _AMAT]),
+    "3366": ("33", "Manufacturing - Ship/Boat", [_AT_RE, _AMAT]),
+    "4231": ("42", "Wholesale - Motor Vehicles/Parts", [_AT_RE, _GT_L]),
+    "4811": ("48", "Transportation - Air", [_AT_RE, _GT_L]),
+    "4841": ("48", "Transportation - Trucking (General)", [_AT_RE, _GT_L]),
+    "4842": ("48", "Transportation - Trucking (Specialized)", [_AT_RE, _GT_L]),
+    "4851": ("48", "Transportation - Transit/Ground Passenger", [_AT_RE]),
+    "4853": ("48", "Transportation - Taxi/Limo", [_AT_RE]),
+    "4854": ("48", "Transportation - School Bus", [_AT_RE]),
+    "4859": ("48", "Transportation - Other Transit", [_AT_RE]),
+    "4881": ("48", "Transportation - Support Activities (Air)", [_AT_RE, _GT_L]),
+    "4921": ("49", "Transportation - Couriers/Express Delivery", [_AT_RE, _GT_L]),
+    "8111": ("81", "Services - Auto Repair/Maintenance", [_AT_RE]),
+
+    # ── Energy (Efficiency) & Utilities ─────────────────────────────
+    "2111": ("21", "Mining - Oil/Gas Extraction", [_ENERGY]),
+    "2211": ("22", "Utilities - Electric Power", [_ENERGY]),
+    "2212": ("22", "Utilities - Natural Gas", [_ENERGY]),
+    "3241": ("32", "Manufacturing - Petroleum/Coal", [_ENERGY, _AMAT]),
+    "3334": ("33", "Manufacturing - HVAC Equipment", [_ENERGY, _AMAT]),
+    "3351": ("33", "Manufacturing - Electrical Equipment", [_ENERGY, _AMAT]),
+
+    # ── Global Trade & Logistics ────────────────────────────────────
+    "4234": ("42", "Wholesale - Professional Equipment", [_GT_L]),
+    "4241": ("42", "Wholesale - Paper/Packaging", [_GT_L]),
+    "4244": ("42", "Wholesale - Grocery/Related", [_GT_L, _AG_W_ET]),
+    "4247": ("42", "Wholesale - Petroleum", [_GT_L, _ENERGY]),
+    "4249": ("42", "Wholesale - Miscellaneous Nondurable", [_GT_L]),
+    "4931": ("49", "Transportation - Warehousing/Storage", [_GT_L, _AT_RE]),
+
+    # ── Health ──────────────────────────────────────────────────────
+    "6211": ("62", "Healthcare - Physician Offices", [_HEALTH]),
+    "6212": ("62", "Healthcare - Dental", [_HEALTH]),
+    "6213": ("62", "Healthcare - Other Practitioners", [_HEALTH]),
+    "6214": ("62", "Healthcare - Outpatient", [_HEALTH]),
+    "6215": ("62", "Healthcare - Labs", [_HEALTH, _LIFE_SCI]),
+    "6216": ("62", "Healthcare - Home Health", [_HEALTH]),
+    "6219": ("62", "Healthcare - Other Ambulatory", [_HEALTH]),
+    "6221": ("62", "Healthcare - Hospitals (General)", [_HEALTH]),
+    "6222": ("62", "Healthcare - Hospitals (Psych/Substance)", [_HEALTH]),
+    "6223": ("62", "Healthcare - Hospitals (Specialty)", [_HEALTH]),
+    "6231": ("62", "Healthcare - Nursing Facilities", [_HEALTH]),
+    "6232": ("62", "Healthcare - Residential Care", [_HEALTH]),
+    "6233": ("62", "Healthcare - Continuing Care", [_HEALTH]),
+    "3391": ("33", "Manufacturing - Medical Equipment", [_HEALTH, _LIFE_SCI, _AMAT]),
+
+    # ── Information & Communication Technologies / Digital Media ────
+    "3341": ("33", "Manufacturing - Computers", [_ICT, _AMAT]),
+    "3344": ("33", "Manufacturing - Semiconductors", [_ICT, _AMAT]),
+    "5112": ("51", "IT - Software Publishing", [_ICT]),
+    "5121": ("51", "Media - Motion Picture/Video", [_ICT]),
+    "5122": ("51", "Media - Sound Recording", [_ICT]),
+    "5151": ("51", "Media - Radio/TV Broadcasting", [_ICT]),
+    "5171": ("51", "IT - Telecommunications (Wired)", [_ICT]),
+    "5172": ("51", "IT - Telecommunications (Wireless)", [_ICT]),
+    "5182": ("51", "IT - Data Processing/Hosting", [_ICT]),
+    "5191": ("51", "IT - Other Information Services/Web Portals", [_ICT]),
+    "5415": ("54", "Professional - Computer Systems Design", [_ICT]),
+
+    # ── Life Sciences / Biotechnology ───────────────────────────────
+    "3254": ("32", "Manufacturing - Pharmaceuticals", [_LIFE_SCI, _AMAT]),
+    "3345": ("33", "Manufacturing - Instruments", [_LIFE_SCI, _AMAT]),
+    "5417": ("54", "Professional - Scientific R&D", [_LIFE_SCI]),
+
+    # ── Retail/Hospitality/Tourism ──────────────────────────────────
+    "4248": ("42", "Wholesale - Beer/Wine/Spirits", [_RHT, _AG_W_ET]),
+    "4411": ("44", "Retail - Auto Dealers", [_RHT]),
+    "4441": ("44", "Retail - Building Materials", [_RHT]),
+    "4451": ("44", "Retail - Grocery Stores", [_RHT]),
+    "4452": ("44", "Retail - Specialty Food", [_RHT]),
+    "4461": ("44", "Retail - Health/Personal Care", [_RHT]),
+    "4511": ("45", "Retail - Sporting Goods/Hobby", [_RHT]),
+    "4521": ("45", "Retail - Department Stores", [_RHT]),
+    "4529": ("45", "Retail - General Merchandise", [_RHT]),
+    "5616": ("56", "Admin - Investigation/Security", [_RHT]),
+    "7131": ("71", "Arts - Amusement Parks/Arcades", [_RHT]),
+    "7139": ("71", "Arts - Other Amusement/Recreation", [_RHT]),
+    "7211": ("72", "Hospitality - Hotels/Motels", [_RHT]),
+    "7212": ("72", "Hospitality - RV Parks/Camps", [_RHT]),
+    "7223": ("72", "Food Service - Special/Caterers", [_RHT, _SB]),
+    "7224": ("72", "Food Service - Bars", [_RHT]),
+    "7225": ("72", "Food Service - Restaurants", [_RHT]),
+
+    # ── Small Business (cross-cutting professional + personal services) ─
+    "5412": ("54", "Professional - Accounting/Tax", [_SB]),
+    "5413": ("54", "Professional - Architecture/Engineering", [_SB, _AMAT]),
+    "5414": ("54", "Professional - Graphic/Industrial Design", [_SB]),
+    "5416": ("54", "Professional - Management/Technical Consulting", [_SB]),
+    "5418": ("54", "Professional - Advertising/PR", [_SB]),
+    "5617": ("56", "Admin - Janitorial/Landscaping", [_SB, _AG_W_ET]),
+    "6244": ("62", "Social Services - Child Day Care", [_SB]),
+    "8121": ("81", "Services - Personal Care", [_SB]),
 }
 
 # Default size filter: 100+ employees (F=100-249, G=250-499, H=500-999, I=1000-4999)
@@ -500,7 +509,7 @@ def search_naics_codes(
     for naics4 in naics_codes:
         entry = CTE_NAICS_CODES.get(naics4)
         if entry:
-            naics_sect, label = entry
+            naics_sect, label, _sectors = entry
         else:
             naics_sect = naics4[:2]
             label = f"NAICS {naics4}"
