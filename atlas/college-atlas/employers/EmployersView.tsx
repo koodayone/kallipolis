@@ -10,6 +10,7 @@ import EntityScrollList from "@/ui/EntityScrollList";
 import type { Column } from "@/ui/EntityScrollList";
 import QueryShell, { findScrollParent } from "@/ui/QueryShell";
 import DataCitation from "@/ui/DataCitation";
+import RequiredSkillsList from "@/ui/RequiredSkillsList";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
@@ -239,52 +240,11 @@ const EmployerRow = memo(function EmployerRow({ emp, i, school, expandedNames, e
 
                         {aligned.length > 0 && (
                           <div style={{ marginTop: "12px" }}>
-                            <span style={{ display: "inline-flex", alignItems: "center", gap: "6px", marginBottom: "10px", position: "relative" }}
-                              onMouseEnter={(e) => { const tip = e.currentTarget.querySelector("[data-tooltip]") as HTMLElement; if (tip) tip.style.opacity = "1"; }}
-                              onMouseLeave={(e) => { const tip = e.currentTarget.querySelector("[data-tooltip]") as HTMLElement; if (tip) tip.style.opacity = "0"; }}
-                            >
-                              <span style={{
-                                fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase",
-                                color: school.brandColorLight, opacity: 0.6,
-                              }}>
-                                Aligned Skills ({aligned.length})
-                              </span>
-                              <svg width="13" height="13" viewBox="0 0 16 16" fill="none"
-                                style={{ cursor: "help", opacity: 0.4, transition: "opacity 0.15s" }}
-                                onMouseEnter={(e) => { (e.currentTarget as SVGSVGElement).style.opacity = "0.7"; }}
-                                onMouseLeave={(e) => { (e.currentTarget as SVGSVGElement).style.opacity = "0.4"; }}
-                              >
-                                <circle cx="8" cy="8" r="7" stroke={school.brandColorLight} strokeWidth="1" />
-                                <circle cx="8" cy="4.5" r="0.8" fill={school.brandColorLight} />
-                                <rect x="7.2" y="6.5" width="1.6" height="5" rx="0.8" fill={school.brandColorLight} />
-                              </svg>
-                              <span data-tooltip style={{
-                                position: "absolute", left: 0, bottom: "calc(100% + 6px)", zIndex: 10,
-                                background: "rgba(20,18,28,0.95)", border: `1px solid ${school.brandColorLight}20`,
-                                borderRadius: "8px", padding: "10px 14px", width: "260px",
-                                fontFamily: FONT, fontSize: "11px", fontWeight: 400, letterSpacing: "0",
-                                textTransform: "none", color: "rgba(255,255,255,0.55)", lineHeight: 1.5,
-                                opacity: 0, pointerEvents: "none", transition: "opacity 0.15s",
-                              }}>
-                                Skills this role requires that {school.name} courses develop.
-                              </span>
-                            </span>
-                            <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                              {aligned.map((skill) => (
-                                <div key={skill.skill} style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                                    <circle cx="6" cy="6" r="5" stroke={school.brandColorLight} strokeWidth="1" />
-                                    <path d="M4 6l1.5 1.5L8 5" stroke={school.brandColorLight} strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
-                                  </svg>
-                                  <span style={{ fontFamily: FONT, fontSize: "13px", color: school.brandColorLight }}>{skill.skill}</span>
-                                  {skill.courses?.length > 0 && (
-                                    <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.3)" }}>
-                                      — {skill.courses.slice(0, 3).map((c) => c.code).join(", ")}
-                                    </span>
-                                  )}
-                                </div>
-                              ))}
-                            </div>
+                            <RequiredSkillsList
+                              skills={aligned}
+                              brandColor={school.brandColorLight}
+                              collegeName={school.name}
+                            />
                           </div>
                         )}
                       </div>
