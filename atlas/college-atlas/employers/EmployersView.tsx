@@ -1,16 +1,15 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef, memo, useMemo } from "react";
+import { useState, useEffect, useCallback, useRef, memo, useMemo, Fragment } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { SchoolConfig } from "@/config/schoolConfig";
 import { getEmployers, getEmployerDetail, queryEmployers } from "@/college-atlas/employers/api";
 import type { ApiEmployerMatch, ApiEmployerDetail } from "@/college-atlas/employers/api";
 import Badge from "@/ui/Badge";
-import EntityScrollList from "@/ui/EntityScrollList";
-import type { Column } from "@/ui/EntityScrollList";
 import QueryShell, { findScrollParent } from "@/ui/QueryShell";
 import DataCitation from "@/ui/DataCitation";
 import RequiredSkillsList from "@/ui/RequiredSkillsList";
+import ColumnHeaders from "@/ui/ColumnHeaders";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
@@ -20,28 +19,17 @@ const EXAMPLES = [
   "Largest employers in our region by sector",
 ];
 
-const EMPLOYER_COLUMNS: Column[] = [
-  { label: "Employer", width: "1fr" },
-  { label: "SWP Sector", width: "280px" },
-  { label: "Roles", width: "70px", align: "center" },
-  { label: "Skills", width: "85px" },
-];
+const UNCLASSIFIED = "Unclassified";
 
 type Props = { school: SchoolConfig; onBack: () => void };
 
 export default function EmployersView({ school, onBack }: Props) {
   const rootRef = useRef<HTMLDivElement>(null);
   const [employers, setEmployers] = useState<ApiEmployerMatch[]>([]);
+  const [expandedSectors, setExpandedSectors] = useState<Set<string>>(new Set());
   const [expandedNames, setExpandedNames] = useState<Set<string>>(new Set());
   const [employerDetails, setEmployerDetails] = useState<Record<string, ApiEmployerDetail>>({});
   const [loadingNames, setLoadingNames] = useState<Set<string>>(new Set());
-
-  const allEmployers = useMemo(
-    () => [...employers].sort((a, b) => a.name.localeCompare(b.name)),
-    [employers],
-  );
-
-
 
   const loadInitialData = useCallback(async () => {
     const data = await getEmployers(school.name);
@@ -53,22 +41,38 @@ export default function EmployersView({ school, onBack }: Props) {
     return { items: resp.employers, message: resp.message };
   }, []);
 
-  const onQueryStart = useCallback(() => { setExpandedNames(new Set()); }, []);
-  const onReset = useCallback(() => { setExpandedNames(new Set()); }, []);
+  const onQueryStart = useCallback(() => {
+    setExpandedNames(new Set());
+    setExpandedSectors(new Set());
+  }, []);
+  const onReset = useCallback(() => {
+    setExpandedNames(new Set());
+    setExpandedSectors(new Set());
+  }, []);
+
+  const preserveScroll = useCallback(() => {
+    const scrollEl = findScrollParent(rootRef.current);
+    const saved = scrollEl?.scrollTop ?? 0;
+    requestAnimationFrame(() => { if (scrollEl) scrollEl.scrollTop = saved; });
+  }, []);
+
+  const handleSectorToggle = useCallback((sector: string) => {
+    preserveScroll();
+    setExpandedSectors((prev) => {
+      const next = new Set(prev);
+      if (next.has(sector)) next.delete(sector); else next.add(sector);
+      return next;
+    });
+  }, [preserveScroll]);
 
   const handleExpand = useCallback(async (emp: ApiEmployerMatch) => {
-    const scrollEl = findScrollParent(rootRef.current);
-    const savedScroll = scrollEl?.scrollTop ?? 0;
-    const restoreScroll = () => requestAnimationFrame(() => { if (scrollEl) scrollEl.scrollTop = savedScroll; });
-
+    preserveScroll();
     const name = emp.name;
     if (expandedNames.has(name)) {
       setExpandedNames((prev) => { const next = new Set(prev); next.delete(name); return next; });
-      restoreScroll();
       return;
     }
     setExpandedNames((prev) => new Set(prev).add(name));
-    restoreScroll();
     if (!employerDetails[name]) {
       setLoadingNames((prev) => new Set(prev).add(name));
       try {
@@ -77,7 +81,7 @@ export default function EmployersView({ school, onBack }: Props) {
       } catch {}
       finally { setLoadingNames((prev) => { const next = new Set(prev); next.delete(name); return next; }); }
     }
-  }, [expandedNames, employerDetails, school.name]);
+  }, [expandedNames, employerDetails, school.name, preserveScroll]);
 
   const renderEmployerRow = useCallback((emp: ApiEmployerMatch, i: number) => (
     <EmployerRow emp={emp} i={i} school={school}
@@ -85,33 +89,27 @@ export default function EmployersView({ school, onBack }: Props) {
       onExpand={handleExpand} />
   ), [school, expandedNames, employerDetails, loadingNames, handleExpand]);
 
-  const empKeyExtractor = useCallback((emp: ApiEmployerMatch) => emp.name, []);
-
   const renderInitialContent = useCallback(() => (
-    <div style={{ marginTop: "16px" }}>
-      <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.35)", marginBottom: "12px" }}>
-        {allEmployers.length} employers
-      </p>
-      <EntityScrollList
-        items={allEmployers} initialCap={50} batchSize={50}
-        columns={EMPLOYER_COLUMNS} renderRow={renderEmployerRow}
-        keyExtractor={empKeyExtractor} entityName="employers" school={school}
-      />
-    </div>
-  ), [allEmployers, renderEmployerRow, empKeyExtractor, school]);
+    <SectorGroupedList
+      employers={employers}
+      school={school}
+      expandedSectors={expandedSectors}
+      onSectorToggle={handleSectorToggle}
+      renderEmployerRow={renderEmployerRow}
+      summaryLine={`${employers.length} employers`}
+    />
+  ), [employers, school, expandedSectors, handleSectorToggle, renderEmployerRow]);
 
   const renderResultsContent = useCallback((results: ApiEmployerMatch[]) => (
-    <>
-      <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)" }}>
-        {results.length} employer{results.length !== 1 ? "s" : ""} found
-      </p>
-      <EntityScrollList
-        items={results} initialCap={50} batchSize={50}
-        columns={EMPLOYER_COLUMNS} renderRow={renderEmployerRow}
-        keyExtractor={empKeyExtractor} entityName="employers" school={school}
-      />
-    </>
-  ), [renderEmployerRow, empKeyExtractor, school]);
+    <SectorGroupedList
+      employers={results}
+      school={school}
+      expandedSectors={expandedSectors}
+      onSectorToggle={handleSectorToggle}
+      renderEmployerRow={renderEmployerRow}
+      summaryLine={`${results.length} employer${results.length !== 1 ? "s" : ""} found`}
+    />
+  ), [school, expandedSectors, handleSectorToggle, renderEmployerRow]);
 
   return (
     <QueryShell<ApiEmployerMatch>
@@ -124,44 +122,180 @@ export default function EmployersView({ school, onBack }: Props) {
   );
 }
 
-/* ── Sector Cell ──────────────────────────────────────────────────────── */
+/* ── Sector Grouped List ──────────────────────────────────────────────── */
 
-// Renders the employer's primary SWP sector. When the employer's swp_sectors
-// intersects the college region's priority sectors, the cell shows a small
-// brand-colored dot to mark it as a priority-aligned partnership candidate.
-// Falls back to the NAICS-2 display label (emp.sector) when swp_sectors is
-// empty — these are out-of-scope or name-drifted records that keep the
-// older label until a re-scrape regenerates their canonical tags.
-function SectorCell({ swpSectors, prioritySectorsMatched, fallback, brandColor }: {
-  swpSectors: string[];
-  prioritySectorsMatched: string[];
-  fallback: string | null;
-  brandColor: string;
+// Priority set is derived from the union of every employer's
+// priority_sectors_matched: a region's priority sector is only surfaced here
+// if at least one employer in this response holds it. Priority sectors with
+// zero employers would need a second API call to be identified, and every
+// priority sector for the preview colleges has at least one member, so we
+// accept the limitation rather than plumb a new endpoint.
+function SectorGroupedList({
+  employers, school, expandedSectors, onSectorToggle, renderEmployerRow, summaryLine,
+}: {
+  employers: ApiEmployerMatch[];
+  school: SchoolConfig;
+  expandedSectors: Set<string>;
+  onSectorToggle: (sector: string) => void;
+  renderEmployerRow: (emp: ApiEmployerMatch, i: number) => React.ReactNode;
+  summaryLine: string;
 }) {
-  const primary = swpSectors[0];
-  const isPriority = prioritySectorsMatched.length > 0;
-  const label = primary || fallback || "—";
+  const { sectors, groups, prioritySet } = useMemo(() => {
+    const groups: Record<string, ApiEmployerMatch[]> = {};
+    const prioritySet = new Set<string>();
+    for (const emp of employers) {
+      const key = emp.swp_sectors[0] ?? UNCLASSIFIED;
+      (groups[key] ??= []).push(emp);
+      for (const p of emp.priority_sectors_matched) prioritySet.add(p);
+    }
+    for (const k of Object.keys(groups)) {
+      groups[k].sort((a, b) => b.matching_skills - a.matching_skills);
+    }
+    const sectors = Object.keys(groups).sort((a, b) => {
+      if (a === UNCLASSIFIED) return 1;
+      if (b === UNCLASSIFIED) return -1;
+      return a.localeCompare(b);
+    });
+    return { sectors, groups, prioritySet };
+  }, [employers]);
+
+  if (employers.length === 0) {
+    return (
+      <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.35)", padding: "40px 0", textAlign: "center" }}>
+        No employers match that query. Try a different question.
+      </p>
+    );
+  }
+
   return (
-    <span style={{
-      fontFamily: FONT, fontSize: "12px",
-      color: primary ? "rgba(255,255,255,0.55)" : "rgba(255,255,255,0.3)",
-      display: "flex", alignItems: "center", gap: "6px",
-      overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis",
-    }}>
-      {isPriority && (
-        <span
-          title={`Regional priority: ${prioritySectorsMatched.join(", ")}`}
-          style={{
-            display: "inline-block", width: "6px", height: "6px",
-            borderRadius: "50%", background: brandColor, flexShrink: 0,
-          }}
-        />
-      )}
-      <span style={{ overflow: "hidden", textOverflow: "ellipsis" }}>{label}</span>
-    </span>
+    <div style={{ marginTop: "16px" }}>
+      <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.35)", marginBottom: "12px" }}>
+        {summaryLine}
+      </p>
+      <ColumnHeaders
+        columns={[{ label: "Sector", width: "1fr" }, { label: "Employers", width: "auto", align: "right" }]}
+        gridTemplateColumns="24px 1fr auto"
+        brandColor={school.brandColorLight}
+      />
+      <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+        {sectors.map((sector, idx) => (
+          <SectorGroup
+            key={sector}
+            sector={sector}
+            employers={groups[sector]}
+            index={idx}
+            isOpen={expandedSectors.has(sector)}
+            isPriority={prioritySet.has(sector)}
+            brandColor={school.brandColorLight}
+            onToggle={() => onSectorToggle(sector)}
+            renderEmployerRow={renderEmployerRow}
+          />
+        ))}
+      </div>
+    </div>
   );
 }
 
+/* ── Sector Group ─────────────────────────────────────────────────────── */
+
+function SectorGroup({
+  sector, employers, index, isOpen, isPriority, brandColor, onToggle, renderEmployerRow,
+}: {
+  sector: string;
+  employers: ApiEmployerMatch[];
+  index: number;
+  isOpen: boolean;
+  isPriority: boolean;
+  brandColor: string;
+  onToggle: () => void;
+  renderEmployerRow: (emp: ApiEmployerMatch, i: number) => React.ReactNode;
+}) {
+  const hasMounted = useRef(false);
+  useEffect(() => { hasMounted.current = true; }, []);
+  const count = employers.length;
+  return (
+    <div>
+      <motion.button
+        initial={hasMounted.current ? false : { opacity: 0, y: 6 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.2, delay: hasMounted.current ? 0 : Math.min(index * 0.01, 0.2) }}
+        onClick={onToggle}
+        style={{
+          width: "100%", textAlign: "left",
+          display: "grid", gridTemplateColumns: "24px 1fr auto",
+          padding: "18px 16px", gap: "12px", alignItems: "center",
+          background: isOpen ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.035)",
+          border: "none", borderBottom: `1px solid ${isOpen ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.05)"}`,
+          borderTop: isOpen ? `2px solid ${brandColor}80` : "2px solid transparent",
+          cursor: "pointer", transition: "background 0.15s, border-color 0.15s",
+        }}
+        onMouseEnter={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.055)"; }}
+        onMouseLeave={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.035)"; }}
+      >
+        <svg width="14" height="14" viewBox="0 0 12 12" fill="none"
+          style={{ transform: isOpen ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>
+          <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.5)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+        <span style={{ display: "flex", alignItems: "center", gap: "10px", minWidth: 0 }}>
+          <span style={{
+            fontFamily: FONT, fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em",
+            textTransform: "uppercase", color: "rgba(255,255,255,0.98)",
+            overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap",
+          }}>
+            {sector}
+          </span>
+          {isPriority && (
+            <span
+              title="Regional priority sector"
+              style={{
+                display: "inline-block", width: "7px", height: "7px",
+                borderRadius: "50%", background: brandColor, flexShrink: 0,
+                boxShadow: `0 0 6px ${brandColor}80`,
+              }}
+            />
+          )}
+        </span>
+        <span style={{ fontFamily: FONT, fontSize: "11px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>
+          {count} {count === 1 ? "employer" : "employers"}
+        </span>
+      </motion.button>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            style={{ overflow: "hidden", background: "rgba(255,255,255,0.02)" }}
+          >
+            <div>
+              <div style={{
+                display: "grid", gridTemplateColumns: "20px 1fr 70px 85px",
+                padding: "10px 16px 10px 44px", gap: "10px", alignItems: "center",
+                borderBottom: "1px solid rgba(255,255,255,0.04)",
+              }}>
+                <span />
+                <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: brandColor, opacity: 0.6 }}>
+                  Employer
+                </span>
+                <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: brandColor, opacity: 0.6, textAlign: "center" }}>
+                  Roles
+                </span>
+                <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: brandColor, opacity: 0.6 }}>
+                  Skills
+                </span>
+              </div>
+              {employers.map((emp, i) => (
+                <Fragment key={emp.name}>{renderEmployerRow(emp, i)}</Fragment>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
 /* ── Employer Row ─────────────────────────────────────────────────────── */
 
@@ -184,29 +318,23 @@ const EmployerRow = memo(function EmployerRow({ emp, i, school, expandedNames, e
         onClick={() => onExpand(emp)}
         style={{
           width: "100%", textAlign: "left",
-          display: "grid", gridTemplateColumns: "24px 1fr 280px 70px 85px",
-          padding: "12px 16px", gap: "10px", alignItems: "center",
-          background: isOpen ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
-          border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
+          display: "grid", gridTemplateColumns: "20px 1fr 70px 85px",
+          padding: "10px 16px 10px 44px", gap: "10px", alignItems: "center",
+          background: isOpen ? "rgba(255,255,255,0.045)" : "transparent",
+          border: "none", borderBottom: "1px solid rgba(255,255,255,0.035)",
           cursor: "pointer", transition: "background 0.15s",
         }}
-        onMouseEnter={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)"; }}
-        onMouseLeave={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)"; }}
+        onMouseEnter={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.025)"; }}
+        onMouseLeave={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "transparent"; }}
       >
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+        <svg width="10" height="10" viewBox="0 0 12 12" fill="none"
           style={{ transform: isOpen ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>
-          <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-        <span style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>
+        <span style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 400, color: "rgba(255,255,255,0.72)" }}>
           {emp.name}
         </span>
-        <SectorCell
-          swpSectors={emp.swp_sectors}
-          prioritySectorsMatched={emp.priority_sectors_matched}
-          fallback={emp.sector}
-          brandColor={school.brandColorLight}
-        />
-        <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)", display: "flex", justifyContent: "center" }}>
+        <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.35)", display: "flex", justifyContent: "center" }}>
           {emp.occupations.length}
         </span>
         <Badge style={{
