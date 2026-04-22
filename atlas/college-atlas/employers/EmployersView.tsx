@@ -9,7 +9,6 @@ import Badge from "@/ui/Badge";
 import QueryShell, { findScrollParent } from "@/ui/QueryShell";
 import DataCitation from "@/ui/DataCitation";
 import RequiredSkillsList from "@/ui/RequiredSkillsList";
-import ColumnHeaders from "@/ui/ColumnHeaders";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
@@ -192,11 +191,44 @@ function SectorGroupedList({
       <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.35)", marginBottom: "12px" }}>
         {summaryLine}
       </p>
-      <ColumnHeaders
-        columns={[{ label: "Sector", width: "1fr" }, { label: "Employers", width: "auto", align: "right" }]}
-        gridTemplateColumns="24px 1fr auto"
-        brandColor={school.brandColorLight}
-      />
+      <div style={{
+        display: "grid", gridTemplateColumns: "24px 1fr auto",
+        padding: "12px 16px", gap: "10px", alignItems: "center",
+      }}>
+        <span />
+        <span style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+          <span style={{
+            fontFamily: FONT, fontSize: "10px", fontWeight: 600,
+            letterSpacing: "0.1em", textTransform: "uppercase",
+            color: school.brandColorLight, opacity: 0.6,
+          }}>
+            Sector
+          </span>
+          {prioritySet.size > 0 && (
+            <span style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+              <span style={{
+                width: "6px", height: "6px", borderRadius: "50%",
+                background: school.brandColorLight, opacity: 0.7,
+              }} />
+              <span style={{
+                fontFamily: FONT, fontSize: "9px", fontWeight: 500,
+                letterSpacing: "0.1em", textTransform: "uppercase",
+                color: school.brandColorLight, opacity: 0.4,
+              }}>
+                Regional priority
+              </span>
+            </span>
+          )}
+        </span>
+        <span style={{
+          fontFamily: FONT, fontSize: "10px", fontWeight: 600,
+          letterSpacing: "0.1em", textTransform: "uppercase",
+          color: school.brandColorLight, opacity: 0.6,
+          textAlign: "right",
+        }}>
+          Employers
+        </span>
+      </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
         {sectors.map((sector, idx) => (
           <SectorGroup
@@ -260,7 +292,7 @@ function SectorGroup({
           <span style={{
             fontFamily: FONT, fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em",
             textTransform: "uppercase", color: "rgba(255,255,255,0.98)",
-            overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap",
+            lineHeight: 1.4,
           }}>
             {sector}
           </span>

@@ -83,7 +83,7 @@ export default function DepartmentRow({ department, courseCount, index, brandCol
         <span style={{
           fontFamily: FONT, fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em",
           textTransform: "uppercase", color: "rgba(255,255,255,0.98)",
-          overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap",
+          lineHeight: 1.4,
         }}>
           {department}
         </span>
