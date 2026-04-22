@@ -93,6 +93,119 @@ def _retag_key(name: str) -> str:
     return key
 
 
+# LLM-rewrite fallback suffixes: Gemini commonly appends these to cleaned
+# names in ways that break exact-key joins. Each entry is a suffix to strip
+# (in order) if the exact key misses.
+_LLM_SUFFIX_STRIPS = (" district", " inc", " llc", " corporation", " corp", " co")
+
+# Substring-match guards: minimum shorter-key length (blocks generic
+# tokens like "ca inc") and minimum coverage ratio (blocks generic
+# umbrella matches like "los angeles county" inheriting into every
+# subordinate department).
+_SUBSTRING_MIN_LEN = 10
+_SUBSTRING_COVERAGE_MIN = 0.5
+
+
+def _try_with_suffix_strips(key: str, index: dict[str, set[str]]) -> set[str] | None:
+    for suffix in _LLM_SUFFIX_STRIPS:
+        if key.endswith(suffix):
+            stripped = key[: -len(suffix)].strip()
+            hit = index.get(stripped)
+            if hit:
+                return hit
+    return None
+
+
+def _try_substring_match(
+    key: str,
+    substring_candidates: list[tuple[str, set[str]]],
+    cte_codes: dict | None = None,
+) -> tuple[set[str], str] | None:
+    """Third-tier fallback: substring match in either direction.
+
+    Scans the index for cache keys where one key is a substring of the
+    other. Two guards keep the match specific:
+
+      * Shorter key must be ≥ _SUBSTRING_MIN_LEN chars (blocks generic
+        short matches like "ca inc").
+      * Shared substring must cover ≥ _SUBSTRING_COVERAGE_MIN of the
+        longer key (blocks generic umbrella matches).
+
+    Picks the longest shared-substring match; rejects if two candidates
+    tie at the top length with different NAICS4 sets (ambiguous).
+
+    When ``cte_codes`` is supplied, additionally rejects matches whose
+    in-scope NAICS4s span multiple primary SWP sectors — a strong
+    signal that the cache key shadows two distinct entities.
+
+    Returns (naics_set, matched_cache_key) or None.
+    """
+    if len(key) < _SUBSTRING_MIN_LEN:
+        return None
+    hits: list[tuple[str, set[str], int]] = []
+    for ik, naics_set in substring_candidates:
+        shorter_len = min(len(key), len(ik))
+        longer_len = max(len(key), len(ik))
+        if shorter_len < _SUBSTRING_MIN_LEN:
+            continue
+        if shorter_len / longer_len < _SUBSTRING_COVERAGE_MIN:
+            continue
+        if (len(key) <= len(ik) and key in ik) or (len(ik) < len(key) and ik in key):
+            hits.append((ik, naics_set, shorter_len))
+    if not hits:
+        return None
+    hits.sort(key=lambda h: -h[2])
+    best_len = hits[0][2]
+    top = [h for h in hits if h[2] == best_len]
+    if len(top) == 1:
+        chosen_set, chosen_key = top[0][1], top[0][0]
+    else:
+        first_set = top[0][1]
+        if not all(h[1] == first_set for h in top[1:]):
+            return None
+        chosen_set, chosen_key = first_set, top[0][0]
+
+    if cte_codes is not None:
+        in_scope = [n for n in chosen_set if n in cte_codes]
+        primaries = {
+            cte_codes[n4][2][0]
+            for n4 in in_scope
+            if cte_codes[n4][2]
+        }
+        if len(primaries) > 1:
+            return None
+    return chosen_set, chosen_key
+
+
+def _filter_substring_candidates(index: dict[str, set[str]]) -> list[tuple[str, set[str]]]:
+    """Pre-filter to keys ≥ _SUBSTRING_MIN_LEN for the substring loop."""
+    return [(ik, ns) for ik, ns in index.items() if len(ik) >= _SUBSTRING_MIN_LEN]
+
+
+def recover_naics4_set(
+    key: str,
+    index: dict[str, set[str]],
+    substring_candidates: list[tuple[str, set[str]]] | None = None,
+    cte_codes: dict | None = None,
+) -> tuple[set[str] | None, str | None]:
+    """Three-tier NAICS4 recovery: exact → suffix-strip → substring.
+
+    Returns (naics_set, source) where source ∈ {"exact","suffix","substring",None}.
+    Substring tier is only attempted when ``substring_candidates`` is supplied.
+    """
+    hit = index.get(key)
+    if hit:
+        return hit, "exact"
+    hit = _try_with_suffix_strips(key, index)
+    if hit:
+        return hit, "suffix"
+    if substring_candidates is not None:
+        sub = _try_substring_match(key, substring_candidates, cte_codes)
+        if sub:
+            return sub[0], "substring"
+    return None, None
+
+
 def _build_canonical_key_index() -> dict[str, set[str]]:
     """Walk all EDD cache files and build retag_key → {naics4,...}.
 
@@ -154,29 +267,20 @@ def retag(dry_run: bool = False, verbose: bool = False) -> dict:
     naics_not_in_list = 0
     sector_unchanged = 0
     sector_changed = 0
+    substring_matched = 0
 
-    # LLM-rewrite fallback suffixes: Gemini commonly appends these to
-    # cleaned names in ways that break exact-key joins. Each entry is a
-    # suffix to strip (in order) if the exact key misses.
-    _LLM_SUFFIX_STRIPS = (" district", " inc", " llc", " corporation", " corp", " co")
-
-    def _try_with_suffix_strips(key: str) -> set[str] | None:
-        for suffix in _LLM_SUFFIX_STRIPS:
-            if key.endswith(suffix):
-                stripped = key[: -len(suffix)].strip()
-                hit = index.get(stripped)
-                if hit:
-                    return hit
-        return None
+    substring_candidates = _filter_substring_candidates(index)
 
     for emp in employers:
         name = emp["name"]
         key = _retag_key(name)
-        naics_set = index.get(key)
-
-        if not naics_set:
-            # LLM-suffix fallback: try stripping common appended suffixes
-            naics_set = _try_with_suffix_strips(key)
+        naics_set, source = recover_naics4_set(
+            key, index, substring_candidates, CTE_NAICS_CODES
+        )
+        if source == "substring":
+            substring_matched += 1
+            if verbose:
+                print(f"  SUB   {name!r} N4={sorted(naics_set)!r}", file=sys.stderr)
 
         if not naics_set:
             missing += 1
@@ -251,6 +355,7 @@ def retag(dry_run: bool = False, verbose: bool = False) -> dict:
         "missing": missing,
         "multi_naics": multi_naics,
         "naics_not_in_list": naics_not_in_list,
+        "substring_matched": substring_matched,
         "sector_changed": sector_changed,
         "sector_unchanged": sector_unchanged,
     }
