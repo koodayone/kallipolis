@@ -1,16 +1,26 @@
 """Unit tests for ontology/regions.py.
 
-Targets the ensure_college_region_link helper, which owns the MERGE
-that writes the (College)-[:IN_MARKET]->(Region) edge. That edge is
-the precondition for every industry-side traversal — occupation
-demand, employer matching, partnership alignment precompute — so any
-drift in the helper's behavior silently corrupts downstream queries.
-The helper is called from both backend/courses/load.py::load_college
-and backend/occupations/load.py::load_industry, and the test below
-verifies the two properties that matter independent of a live Neo4j
+Targets the ensure_college_region_link helper (load-bearing edge
+writer) and the sector-string integrity of COE_REGION_PRIORITY_SECTORS
+against the PCAH xlsx. The ensure_college_region_link helper writes
+the (College)-[:IN_MARKET]->(Region) edge that precedes every
+industry-side traversal — occupation demand, employer matching,
+partnership alignment precompute — so any drift in the helper's
+behavior silently corrupts downstream queries. The helper is called
+from both backend/courses/load.py::load_college and
+backend/occupations/load.py::load_industry, and the tests below
+verify the two properties that matter independent of a live Neo4j
 driver: the mapping-lookup return value, and that the MERGE is
 issued against the right college / region / display name when a
 mapping exists.
+
+The separate COE_REGION_PRIORITY_SECTORS tests guard sector-string
+consistency: every priority-sector string in the dict must appear in
+the canonical SWP_SECTORS tuple loaded from
+backend/ontology/data/TOP Codes to Sectors.xlsx. Without this check,
+a typo'd priority-sector string would silently fail to intersect
+with an Employer's swp_sectors list at query time, producing empty
+priority-match results for a region with no visible error.
 
 The driver is replaced with a MagicMock so the tests run with zero
 network cost. The correctness of the underlying Cypher MERGE is
@@ -24,12 +34,16 @@ Coverage:
     MERGE, and passes the canonical COE region code + display name
     when the college has a mapping
   - Repeated calls for an unmapped college remain side-effect-free
+  - Every string in every COE_REGION_PRIORITY_SECTORS region list
+    is a canonical PCAH sector name
+  - COE_REGION_PRIORITY_SECTORS contains no empty region entries
 """
 
 from unittest.mock import MagicMock
 
 from ontology.regions import (
     COE_REGION_DISPLAY,
+    COE_REGION_PRIORITY_SECTORS,
     COLLEGE_COE_REGION,
     ensure_college_region_link,
 )
@@ -94,3 +108,42 @@ class TestEnsureCollegeRegionLink:
             assert kwargs["display"] == synthetic_region
         finally:
             del COLLEGE_COE_REGION[college]
+
+
+class TestRegionPrioritySectorsAreCanonical:
+    """Guard COE_REGION_PRIORITY_SECTORS against sector-string drift.
+
+    Every priority-sector string must match a canonical PCAH sector
+    name verbatim (the 12 sectors loaded from the xlsx at import time
+    by employers.edd_scrape.SWP_SECTORS). A drifted string would
+    silently fail to intersect with Employer.swp_sectors at query
+    time, producing empty priority-match results for a whole region.
+    """
+
+    def _canonical_sectors(self) -> set[str]:
+        # Import here (not at module top) so a regression in the
+        # xlsx-backed SWP_SECTORS loader shows as a distinct failure
+        # at test-collection time rather than as a module-level
+        # ImportError that masks all other tests in the module.
+        from employers.edd_scrape import SWP_SECTORS
+
+        return set(SWP_SECTORS)
+
+    def test_every_priority_sector_is_canonical(self):
+        canonical = self._canonical_sectors()
+        offenders: list[tuple[str, str]] = []
+        for region_code, sectors in COE_REGION_PRIORITY_SECTORS.items():
+            for s in sectors:
+                if s not in canonical:
+                    offenders.append((region_code, s))
+        assert not offenders, (
+            f"Non-canonical priority-sector strings: {offenders!r}. "
+            f"Canonical set from PCAH xlsx: {sorted(canonical)!r}"
+        )
+
+    def test_no_region_has_empty_priority_sector_list(self):
+        empties = [
+            code for code, sectors in COE_REGION_PRIORITY_SECTORS.items()
+            if not sectors
+        ]
+        assert not empties, f"Regions with empty priority sectors: {empties!r}"

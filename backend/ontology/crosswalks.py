@@ -33,7 +33,14 @@ DATASET_DIR = Path("/Users/dayonekoo/Desktop/cc_dataset")
 TOP_CIP_PATH = DATASET_DIR / "top_cip_crosswalk.csv"
 CIP_SOC_PATH = DATASET_DIR / "CIP2020_SOC2018_Crosswalk.xlsx"
 COE_DEMAND_PATH = DATASET_DIR / "occupational_demand_coe.csv"
-PCAH_SECTORS_PATH = DATASET_DIR / "TOP Codes to Sectors.xlsx"
+
+# PCAH sector file ships in-repo because it is the taxonomy authority for the
+# ontology — both the occupation side (this module) and the employer side
+# (backend/employers/edd_scrape.py) need to load from the same source of
+# truth, including on dev machines that don't carry the external cc_dataset
+# directory. The other crosswalk files above remain external because they
+# are BLS/Census reference datasets on a different update cadence.
+PCAH_SECTORS_PATH = Path(__file__).parent / "data" / "TOP Codes to Sectors.xlsx"
 
 CALIBRATIONS_DIR = Path(__file__).parent / "calibrations"
 

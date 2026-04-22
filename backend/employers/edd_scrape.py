@@ -65,14 +65,19 @@ COUNTY_CODES: dict[str, str] = {
 
 
 # CTE-relevant NAICS 4-digit codes, organized by the Strong Workforce
-# Program's "Doing What Matters" sector framework (the California
-# Community Colleges Chancellor's Office authority for CTE sector
-# membership — see docs/pipeline/swp-sector-naics.md).
+# Program sector framework from the Chancellor's Office PCAH file
+# `TOP Codes to Sectors.xlsx` (shipped in-repo at
+# backend/ontology/data/). The list below maps each NAICS 4-digit code
+# to one or more of the 12 canonical PCAH sectors; the sector string
+# set is loaded from the xlsx at import time so this module stays in
+# sync with the occupation side of the ontology (which reads the same
+# file via backend.ontology.crosswalks._load_pcah_cte_top6).
 #
 # Every NAICS code in this list maps to at least one SWP sector. Codes
-# that don't represent any SWP sector (real estate, finance/insurance,
-# K-12 education, general government administration, religious and
-# civic organizations) are deliberately excluded.
+# that don't represent any SWP sector (finance, insurance, real
+# estate, legal services outside business-admin support, religious
+# and civic organizations, general government administration beyond
+# Public Safety and Environmental Quality) are deliberately excluded.
 #
 # The EDD's naicsect URL parameter uses the NAICS 2-digit code for most
 # sectors; manufacturing codes (31/32/33) can use any of the three
@@ -83,73 +88,75 @@ COUNTY_CODES: dict[str, str] = {
 # their own payroll.
 #
 # Format: {naics4: (naicsect, label, [swp_sectors])}. The first sector
-# in the list is the primary DWM classification; any additional sectors
+# in the list is the primary classification; any additional sectors
 # reflect legitimate cross-sector representation.
 
-SWP_SECTORS: tuple[str, ...] = (
-    "Advanced Manufacturing and Advanced Technology",
-    "Advanced Transportation & Renewable Energy",
-    "Agriculture, Water & Environmental Technologies",
-    "Energy (Efficiency) & Utilities",
-    "Global Trade & Logistics",
-    "Health",
-    "Information & Communication Technologies (ICT) / Digital Media",
-    "Life Sciences / Biotechnology",
-    "Retail/Hospitality/Tourism",
-    "Small Business",
-)
 
-# Shorthand used only in this dict to keep row widths readable.
-_AMAT = "Advanced Manufacturing and Advanced Technology"
-_AT_RE = "Advanced Transportation & Renewable Energy"
-_AG_W_ET = "Agriculture, Water & Environmental Technologies"
-_ENERGY = "Energy (Efficiency) & Utilities"
-_GT_L = "Global Trade & Logistics"
+def _load_swp_sectors() -> tuple[str, ...]:
+    """Load the canonical SWP sector tuple from the PCAH xlsx.
+
+    Mirrors the occupation side (`_load_pcah_cte_top6`) by reading the
+    same file. Excludes the administrative "Unassigned" bucket. Sorted
+    alphabetically for determinism.
+    """
+    # Imported lazily to avoid a circular import at module load; the
+    # ontology.crosswalks module does not depend on anything in this
+    # package, so this is a one-way dependency.
+    from ontology.crosswalks import _load_pcah_cte_top6
+
+    mapping = _load_pcah_cte_top6()
+    return tuple(sorted(set(mapping.values()) - {"Unassigned"}))
+
+
+SWP_SECTORS: tuple[str, ...] = _load_swp_sectors()
+
+# Shorthand used only in CTE_NAICS_CODES to keep row widths readable.
+# Strings verbatim from the PCAH xlsx — any edit here must round-trip
+# through _load_swp_sectors() (which is enforced by the invariant
+# test_every_sector_tag_is_in_swp_sectors).
+_AMAT = "Advanced Manufacturing"
+_ATL = "Advanced Transportation and Logistics"
+_AWET = "Agriculture, Water and Environmental Technologies"
+_BE = "Business and Entrepreneurship"
+_EHD = "Education and Human Development"
+_ECU = "Energy, Construction and Utilities"
+_GT = "Global Trade"
 _HEALTH = "Health"
-_ICT = "Information & Communication Technologies (ICT) / Digital Media"
-_LIFE_SCI = "Life Sciences / Biotechnology"
-_RHT = "Retail/Hospitality/Tourism"
-_SB = "Small Business"
+_ICT = "Information and Communication Technologies - Digital Media"
+_LIFE_SCI = "Life Sciences - Biotechnology"
+_PS = "Public Safety"
+_RHT = "Retail, Hospitality and Tourism"
 
 CTE_NAICS_CODES: dict[str, tuple[str, str, list[str]]] = {
-    # ── Agriculture, Water & Environmental Technologies ─────────────
-    "1111": ("11", "Agriculture - Oilseed/Grain", [_AG_W_ET]),
-    "1112": ("11", "Agriculture - Vegetables/Melons", [_AG_W_ET]),
-    "1113": ("11", "Agriculture - Fruit/Tree Nuts", [_AG_W_ET]),
-    "1114": ("11", "Agriculture - Greenhouse/Nursery", [_AG_W_ET]),
-    "1119": ("11", "Agriculture - Other Crops", [_AG_W_ET]),
-    "1121": ("11", "Agriculture - Cattle", [_AG_W_ET]),
-    "1122": ("11", "Agriculture - Hogs/Pigs", [_AG_W_ET]),
-    "1123": ("11", "Agriculture - Poultry/Eggs", [_AG_W_ET]),
-    "1124": ("11", "Agriculture - Sheep/Goats", [_AG_W_ET]),
-    "1125": ("11", "Agriculture - Aquaculture", [_AG_W_ET]),
-    "1129": ("11", "Agriculture - Other Animals", [_AG_W_ET]),
-    "1151": ("11", "Agriculture - Crop Support", [_AG_W_ET]),
-    "1152": ("11", "Agriculture - Animal Support", [_AG_W_ET]),
-    "2213": ("22", "Utilities - Water/Sewer", [_AG_W_ET, _ENERGY]),
-    "3111": ("31", "Manufacturing - Animal Food", [_AG_W_ET]),
-    "3114": ("31", "Manufacturing - Fruit/Vegetable Preserving", [_AG_W_ET]),
-    "3115": ("31", "Manufacturing - Dairy Products", [_AG_W_ET]),
-    "3116": ("31", "Manufacturing - Meat Processing", [_AG_W_ET]),
-    "3117": ("31", "Manufacturing - Seafood Processing", [_AG_W_ET]),
-    "3118": ("31", "Manufacturing - Bakeries", [_AG_W_ET, _SB]),
-    "3119": ("31", "Manufacturing - Other Food", [_AG_W_ET]),
-    "3121": ("31", "Manufacturing - Beverages", [_AG_W_ET]),
-    "4245": ("42", "Wholesale - Farm Products", [_AG_W_ET, _GT_L]),
-    "5621": ("56", "Waste - Collection", [_AG_W_ET]),
-    "5622": ("56", "Waste - Treatment/Disposal", [_AG_W_ET]),
-    "9241": ("92", "Environmental Quality - Government", [_AG_W_ET]),
+    # ── Agriculture, Water and Environmental Technologies ───────────
+    "1111": ("11", "Agriculture - Oilseed/Grain", [_AWET]),
+    "1112": ("11", "Agriculture - Vegetables/Melons", [_AWET]),
+    "1113": ("11", "Agriculture - Fruit/Tree Nuts", [_AWET]),
+    "1114": ("11", "Agriculture - Greenhouse/Nursery", [_AWET]),
+    "1119": ("11", "Agriculture - Other Crops", [_AWET]),
+    "1121": ("11", "Agriculture - Cattle", [_AWET]),
+    "1122": ("11", "Agriculture - Hogs/Pigs", [_AWET]),
+    "1123": ("11", "Agriculture - Poultry/Eggs", [_AWET]),
+    "1124": ("11", "Agriculture - Sheep/Goats", [_AWET]),
+    "1125": ("11", "Agriculture - Aquaculture", [_AWET]),
+    "1129": ("11", "Agriculture - Other Animals", [_AWET]),
+    "1151": ("11", "Agriculture - Crop Support", [_AWET]),
+    "1152": ("11", "Agriculture - Animal Support", [_AWET]),
+    "2213": ("22", "Utilities - Water/Sewer", [_AWET, _ECU]),
+    "3111": ("31", "Manufacturing - Animal Food", [_AWET]),
+    "3114": ("31", "Manufacturing - Fruit/Vegetable Preserving", [_AWET]),
+    "3115": ("31", "Manufacturing - Dairy Products", [_AWET]),
+    "3116": ("31", "Manufacturing - Meat Processing", [_AWET]),
+    "3117": ("31", "Manufacturing - Seafood Processing", [_AWET]),
+    "3118": ("31", "Manufacturing - Bakeries", [_AWET, _BE]),
+    "3119": ("31", "Manufacturing - Other Food", [_AWET]),
+    "3121": ("31", "Manufacturing - Beverages", [_AWET]),
+    "4245": ("42", "Wholesale - Farm Products", [_AWET, _GT]),
+    "5621": ("56", "Waste - Collection", [_AWET]),
+    "5622": ("56", "Waste - Treatment/Disposal", [_AWET]),
+    "9241": ("92", "Environmental Quality - Government", [_AWET]),
 
-    # ── Advanced Manufacturing and Advanced Technology ──────────────
-    "2361": ("23", "Construction - Residential", [_AMAT]),
-    "2362": ("23", "Construction - Commercial", [_AMAT]),
-    "2371": ("23", "Construction - Utility Systems", [_AMAT, _ENERGY]),
-    "2373": ("23", "Construction - Highway/Street", [_AMAT, _AT_RE]),
-    "2379": ("23", "Construction - Other Heavy", [_AMAT]),
-    "2381": ("23", "Construction - Foundation/Structural", [_AMAT]),
-    "2382": ("23", "Construction - HVAC/Plumbing/Electrical", [_AMAT, _ENERGY]),
-    "2383": ("23", "Construction - Finishing", [_AMAT]),
-    "2389": ("23", "Construction - Other Specialty", [_AMAT]),
+    # ── Advanced Manufacturing ──────────────────────────────────────
     "3211": ("32", "Manufacturing - Sawmills/Wood", [_AMAT]),
     "3212": ("32", "Manufacturing - Veneer/Plywood", [_AMAT]),
     "3219": ("32", "Manufacturing - Other Wood Products", [_AMAT]),
@@ -160,42 +167,87 @@ CTE_NAICS_CODES: dict[str, tuple[str, str, list[str]]] = {
     "3327": ("33", "Manufacturing - Machine Shops", [_AMAT]),
     "3328": ("33", "Manufacturing - Coating/Engraving", [_AMAT]),
     "3329": ("33", "Manufacturing - Other Fabricated Metals", [_AMAT]),
-    "3331": ("33", "Manufacturing - Ag/Construction Machinery", [_AMAT, _AG_W_ET]),
+    "3331": ("33", "Manufacturing - Ag/Construction Machinery", [_AMAT, _AWET]),
     "3332": ("33", "Manufacturing - Industrial Machinery", [_AMAT]),
     "3335": ("33", "Manufacturing - Metalworking Machinery", [_AMAT]),
 
-    # ── Advanced Transportation & Renewable Energy ──────────────────
-    "3361": ("33", "Manufacturing - Motor Vehicles", [_AT_RE, _AMAT]),
-    "3363": ("33", "Manufacturing - Motor Vehicle Parts", [_AT_RE, _AMAT]),
-    "3364": ("33", "Manufacturing - Aerospace", [_AT_RE, _AMAT]),
-    "3366": ("33", "Manufacturing - Ship/Boat", [_AT_RE, _AMAT]),
-    "4231": ("42", "Wholesale - Motor Vehicles/Parts", [_AT_RE, _GT_L]),
-    "4811": ("48", "Transportation - Air", [_AT_RE, _GT_L]),
-    "4841": ("48", "Transportation - Trucking (General)", [_AT_RE, _GT_L]),
-    "4842": ("48", "Transportation - Trucking (Specialized)", [_AT_RE, _GT_L]),
-    "4851": ("48", "Transportation - Transit/Ground Passenger", [_AT_RE]),
-    "4853": ("48", "Transportation - Taxi/Limo", [_AT_RE]),
-    "4854": ("48", "Transportation - School Bus", [_AT_RE]),
-    "4859": ("48", "Transportation - Other Transit", [_AT_RE]),
-    "4881": ("48", "Transportation - Support Activities (Air)", [_AT_RE, _GT_L]),
-    "4921": ("49", "Transportation - Couriers/Express Delivery", [_AT_RE, _GT_L]),
-    "8111": ("81", "Services - Auto Repair/Maintenance", [_AT_RE]),
+    # ── Advanced Transportation and Logistics ───────────────────────
+    "3361": ("33", "Manufacturing - Motor Vehicles", [_ATL, _AMAT]),
+    "3363": ("33", "Manufacturing - Motor Vehicle Parts", [_ATL, _AMAT]),
+    "3364": ("33", "Manufacturing - Aerospace", [_ATL, _AMAT]),
+    "3366": ("33", "Manufacturing - Ship/Boat", [_ATL, _AMAT]),
+    "4231": ("42", "Wholesale - Motor Vehicles/Parts", [_ATL, _GT]),
+    "4811": ("48", "Transportation - Air", [_ATL, _GT]),
+    "4841": ("48", "Transportation - Trucking (General)", [_ATL, _GT]),
+    "4842": ("48", "Transportation - Trucking (Specialized)", [_ATL, _GT]),
+    "4851": ("48", "Transportation - Transit/Ground Passenger", [_ATL]),
+    "4853": ("48", "Transportation - Taxi/Limo", [_ATL]),
+    "4854": ("48", "Transportation - School Bus", [_ATL]),
+    "4859": ("48", "Transportation - Other Transit", [_ATL]),
+    "4881": ("48", "Transportation - Support Activities (Air)", [_ATL, _GT]),
+    "4921": ("49", "Transportation - Couriers/Express Delivery", [_ATL, _GT]),
+    "4931": ("49", "Transportation - Warehousing/Storage", [_ATL, _GT]),
+    "8111": ("81", "Services - Auto Repair/Maintenance", [_ATL]),
 
-    # ── Energy (Efficiency) & Utilities ─────────────────────────────
-    "2111": ("21", "Mining - Oil/Gas Extraction", [_ENERGY]),
-    "2211": ("22", "Utilities - Electric Power", [_ENERGY]),
-    "2212": ("22", "Utilities - Natural Gas", [_ENERGY]),
-    "3241": ("32", "Manufacturing - Petroleum/Coal", [_ENERGY, _AMAT]),
-    "3334": ("33", "Manufacturing - HVAC Equipment", [_ENERGY, _AMAT]),
-    "3351": ("33", "Manufacturing - Electrical Equipment", [_ENERGY, _AMAT]),
+    # ── Business and Entrepreneurship ───────────────────────────────
+    # Cross-cutting sector housing professional services that serve small
+    # and medium businesses as customers, plus personal-service
+    # industries with small-operator workforce patterns.
+    "5412": ("54", "Professional - Accounting/Tax", [_BE]),
+    "5413": ("54", "Professional - Architecture/Engineering", [_BE, _AMAT]),
+    "5414": ("54", "Professional - Graphic/Industrial Design", [_BE]),
+    "5416": ("54", "Professional - Management/Technical Consulting", [_BE]),
+    "5418": ("54", "Professional - Advertising/PR", [_BE]),
+    "5617": ("56", "Admin - Janitorial/Landscaping", [_BE, _AWET]),
+    "8121": ("81", "Services - Personal Care", [_BE]),
 
-    # ── Global Trade & Logistics ────────────────────────────────────
-    "4234": ("42", "Wholesale - Professional Equipment", [_GT_L]),
-    "4241": ("42", "Wholesale - Paper/Packaging", [_GT_L]),
-    "4244": ("42", "Wholesale - Grocery/Related", [_GT_L, _AG_W_ET]),
-    "4247": ("42", "Wholesale - Petroleum", [_GT_L, _ENERGY]),
-    "4249": ("42", "Wholesale - Miscellaneous Nondurable", [_GT_L]),
-    "4931": ("49", "Transportation - Warehousing/Storage", [_GT_L, _AT_RE]),
+    # ── Education and Human Development ─────────────────────────────
+    # K-12 districts are among the largest CTE employers in any region
+    # (facilities, operations, food service, transportation, admin).
+    # Post-secondary education, educational support services, and
+    # social-services sub-sectors round out the sector.
+    "6111": ("61", "Education - Elementary/Secondary", [_EHD]),
+    "6112": ("61", "Education - Junior Colleges", [_EHD]),
+    "6113": ("61", "Education - Colleges/Universities", [_EHD]),
+    "6114": ("61", "Education - Business/Management Training", [_EHD, _BE]),
+    "6115": ("61", "Education - Technical/Trade Schools", [_EHD]),
+    "6116": ("61", "Education - Other Schools", [_EHD]),
+    "6117": ("61", "Education - Educational Support Services", [_EHD]),
+    "6241": ("62", "Social Services - Individual/Family", [_EHD]),
+    "6242": ("62", "Social Services - Community Emergency Relief", [_EHD]),
+    "6243": ("62", "Social Services - Vocational Rehab", [_EHD]),
+    "6244": ("62", "Social Services - Child Day Care", [_EHD, _BE]),
+
+    # ── Energy, Construction and Utilities ──────────────────────────
+    # Canonical SWP taxonomy groups construction with utilities and
+    # energy — skilled trades and infrastructure workforce treated as
+    # one sector. The per-employer NAICS still distinguishes them for
+    # display.
+    "2111": ("21", "Mining - Oil/Gas Extraction", [_ECU]),
+    "2211": ("22", "Utilities - Electric Power", [_ECU]),
+    "2212": ("22", "Utilities - Natural Gas", [_ECU]),
+    "2361": ("23", "Construction - Residential", [_ECU]),
+    "2362": ("23", "Construction - Commercial", [_ECU]),
+    "2371": ("23", "Construction - Utility Systems", [_ECU]),
+    "2373": ("23", "Construction - Highway/Street", [_ECU, _ATL]),
+    "2379": ("23", "Construction - Other Heavy", [_ECU]),
+    "2381": ("23", "Construction - Foundation/Structural", [_ECU, _AMAT]),
+    "2382": ("23", "Construction - HVAC/Plumbing/Electrical", [_ECU]),
+    "2383": ("23", "Construction - Finishing", [_ECU]),
+    "2389": ("23", "Construction - Other Specialty", [_ECU]),
+    "3241": ("32", "Manufacturing - Petroleum/Coal", [_ECU, _AMAT]),
+    "3334": ("33", "Manufacturing - HVAC Equipment", [_ECU, _AMAT]),
+    "3351": ("33", "Manufacturing - Electrical Equipment", [_ECU, _AMAT]),
+
+    # ── Global Trade ────────────────────────────────────────────────
+    # Under the canonical taxonomy, Logistics moved to Advanced
+    # Transportation and Logistics. Global Trade now covers wholesale
+    # distribution chains.
+    "4234": ("42", "Wholesale - Professional Equipment", [_GT]),
+    "4241": ("42", "Wholesale - Paper/Packaging", [_GT]),
+    "4244": ("42", "Wholesale - Grocery/Related", [_GT, _AWET]),
+    "4247": ("42", "Wholesale - Petroleum", [_GT, _ECU]),
+    "4249": ("42", "Wholesale - Miscellaneous Nondurable", [_GT]),
 
     # ── Health ──────────────────────────────────────────────────────
     "6211": ("62", "Healthcare - Physician Offices", [_HEALTH]),
@@ -213,7 +265,7 @@ CTE_NAICS_CODES: dict[str, tuple[str, str, list[str]]] = {
     "6233": ("62", "Healthcare - Continuing Care", [_HEALTH]),
     "3391": ("33", "Manufacturing - Medical Equipment", [_HEALTH, _LIFE_SCI, _AMAT]),
 
-    # ── Information & Communication Technologies / Digital Media ────
+    # ── Information and Communication Technologies - Digital Media ──
     "3341": ("33", "Manufacturing - Computers", [_ICT, _AMAT]),
     "3344": ("33", "Manufacturing - Semiconductors", [_ICT, _AMAT]),
     "5112": ("51", "IT - Software Publishing", [_ICT]),
@@ -226,13 +278,22 @@ CTE_NAICS_CODES: dict[str, tuple[str, str, list[str]]] = {
     "5191": ("51", "IT - Other Information Services/Web Portals", [_ICT]),
     "5415": ("54", "Professional - Computer Systems Design", [_ICT]),
 
-    # ── Life Sciences / Biotechnology ───────────────────────────────
+    # ── Life Sciences - Biotechnology ───────────────────────────────
     "3254": ("32", "Manufacturing - Pharmaceuticals", [_LIFE_SCI, _AMAT]),
     "3345": ("33", "Manufacturing - Instruments", [_LIFE_SCI, _AMAT]),
     "5417": ("54", "Professional - Scientific R&D", [_LIFE_SCI]),
 
-    # ── Retail/Hospitality/Tourism ──────────────────────────────────
-    "4248": ("42", "Wholesale - Beer/Wine/Spirits", [_RHT, _AG_W_ET]),
+    # ── Public Safety ───────────────────────────────────────────────
+    # NAICS 9221 covers police, courts, corrections, and fire per the
+    # 2017+ rollup. Some EDD data additionally returns 9222 as a
+    # distinct Fire Protection subdivision (non-standard but preserved
+    # because the upstream source uses it); both map to Public Safety.
+    "9221": ("92", "Government - Justice/Public Order/Safety", [_PS]),
+    "9222": ("92", "Government - Fire Protection", [_PS]),
+    "5616": ("56", "Admin - Investigation/Security", [_PS]),
+
+    # ── Retail, Hospitality and Tourism ─────────────────────────────
+    "4248": ("42", "Wholesale - Beer/Wine/Spirits", [_RHT, _AWET]),
     "4411": ("44", "Retail - Auto Dealers", [_RHT]),
     "4441": ("44", "Retail - Building Materials", [_RHT]),
     "4451": ("44", "Retail - Grocery Stores", [_RHT]),
@@ -241,24 +302,13 @@ CTE_NAICS_CODES: dict[str, tuple[str, str, list[str]]] = {
     "4511": ("45", "Retail - Sporting Goods/Hobby", [_RHT]),
     "4521": ("45", "Retail - Department Stores", [_RHT]),
     "4529": ("45", "Retail - General Merchandise", [_RHT]),
-    "5616": ("56", "Admin - Investigation/Security", [_RHT]),
     "7131": ("71", "Arts - Amusement Parks/Arcades", [_RHT]),
     "7139": ("71", "Arts - Other Amusement/Recreation", [_RHT]),
     "7211": ("72", "Hospitality - Hotels/Motels", [_RHT]),
     "7212": ("72", "Hospitality - RV Parks/Camps", [_RHT]),
-    "7223": ("72", "Food Service - Special/Caterers", [_RHT, _SB]),
+    "7223": ("72", "Food Service - Special/Caterers", [_RHT, _BE]),
     "7224": ("72", "Food Service - Bars", [_RHT]),
     "7225": ("72", "Food Service - Restaurants", [_RHT]),
-
-    # ── Small Business (cross-cutting professional + personal services) ─
-    "5412": ("54", "Professional - Accounting/Tax", [_SB]),
-    "5413": ("54", "Professional - Architecture/Engineering", [_SB, _AMAT]),
-    "5414": ("54", "Professional - Graphic/Industrial Design", [_SB]),
-    "5416": ("54", "Professional - Management/Technical Consulting", [_SB]),
-    "5418": ("54", "Professional - Advertising/PR", [_SB]),
-    "5617": ("56", "Admin - Janitorial/Landscaping", [_SB, _AG_W_ET]),
-    "6244": ("62", "Social Services - Child Day Care", [_SB]),
-    "8121": ("81", "Services - Personal Care", [_SB]),
 }
 
 # Default size filter: 100+ employees (F=100-249, G=250-499, H=500-999, I=1000-4999)
