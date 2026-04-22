@@ -105,6 +105,13 @@ export default function EmployersView({ school, onBack }: Props) {
       e.name.toLowerCase().includes(lower) ||
       e.swp_sectors.some(s => s.toLowerCase().includes(lower))
     );
+    if (filtered.length === 0) {
+      return (
+        <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.35)", padding: "40px 0", textAlign: "center" }}>
+          No results found.
+        </p>
+      );
+    }
     const allSectors = new Set(filtered.map(e => e.swp_sectors[0] ?? UNCLASSIFIED));
     return (
       <SectorGroupedList
@@ -119,15 +126,26 @@ export default function EmployersView({ school, onBack }: Props) {
   }, [employers, school, handleSectorToggle, renderEmployerRow]);
 
   const renderResultsContent = useCallback((results: ApiEmployerMatch[]) => (
-    <SectorGroupedList
-      employers={results}
-      school={school}
-      expandedSectors={expandedSectors}
-      onSectorToggle={handleSectorToggle}
-      renderEmployerRow={renderEmployerRow}
-      summaryLine={`${results.length} employer${results.length !== 1 ? "s" : ""} found`}
-    />
-  ), [school, expandedSectors, handleSectorToggle, renderEmployerRow]);
+    <div>
+      <div style={{
+        display: "grid", gridTemplateColumns: "20px 1fr 70px 85px",
+        padding: "10px 16px 10px 44px", gap: "10px", alignItems: "center",
+        borderBottom: "1px solid rgba(255,255,255,0.04)",
+      }}>
+        <span />
+        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>
+          Employer
+        </span>
+        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, textAlign: "center" }}>
+          Roles
+        </span>
+        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>
+          Skills
+        </span>
+      </div>
+      {results.map((emp, i) => renderEmployerRow(emp, i))}
+    </div>
+  ), [school, renderEmployerRow]);
 
   return (
     <QueryShell<ApiEmployerMatch>
@@ -372,12 +390,12 @@ const EmployerRow = memo(function EmployerRow({ emp, i, school, expandedNames, e
           width: "100%", textAlign: "left",
           display: "grid", gridTemplateColumns: "20px 1fr 70px 85px",
           padding: "10px 16px 10px 44px", gap: "10px", alignItems: "center",
-          background: isOpen ? "rgba(255,255,255,0.045)" : "transparent",
-          border: "none", borderBottom: "1px solid rgba(255,255,255,0.035)",
+          background: isOpen ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
+          border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
           cursor: "pointer", transition: "background 0.15s",
         }}
-        onMouseEnter={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.025)"; }}
-        onMouseLeave={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "transparent"; }}
+        onMouseEnter={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)"; }}
+        onMouseLeave={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)"; }}
       >
         <svg width="10" height="10" viewBox="0 0 12 12" fill="none"
           style={{ transform: isOpen ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>

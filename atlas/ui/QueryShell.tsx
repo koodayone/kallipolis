@@ -386,7 +386,7 @@ export default function QueryShell<T>({
 
             {queryLoading && (
               <div style={{ display: "flex", justifyContent: "center", paddingTop: "40px" }}>
-                <RisingSun style={{ width: "64px", height: "auto", opacity: 0.4 }} />
+                <RisingSun style={{ width: "90px", height: "auto", opacity: 0.4 }} />
               </div>
             )}
 

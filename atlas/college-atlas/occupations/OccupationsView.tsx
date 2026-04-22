@@ -119,6 +119,13 @@ export default function OccupationsView({ school, onBack }: Props) {
       o.title.toLowerCase().includes(lower) ||
       o.soc_code.toLowerCase().includes(lower)
     );
+    if (filtered.length === 0) {
+      return (
+        <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.35)", padding: "40px 0", textAlign: "center" }}>
+          No results found.
+        </p>
+      );
+    }
     return (
       <div style={{ marginTop: "16px" }}>
         <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.35)", marginBottom: "12px" }}>

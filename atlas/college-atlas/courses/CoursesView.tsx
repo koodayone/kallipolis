@@ -27,7 +27,7 @@ function mapCourse(api: ApiCourseSummary): CourseSummary {
 }
 
 const COURSE_COLUMNS: Column[] = [
-  { label: "Code", width: "auto" },
+  { label: "Code", width: "100px" },
   { label: "Name", width: "1fr" },
 ];
 
@@ -146,6 +146,13 @@ export default function CoursesView({ school, onBack }: Props) {
   const renderSearchContent = useCallback((q: string) => {
     const lower = q.toLowerCase();
     const filtered = departments.filter(d => d.department.toLowerCase().includes(lower));
+    if (filtered.length === 0) {
+      return (
+        <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.35)", padding: "40px 0", textAlign: "center" }}>
+          No results found.
+        </p>
+      );
+    }
     const allExpanded = new Set(filtered.map(d => d.department));
     return (
       <div style={{ marginTop: "16px" }}>
@@ -203,7 +210,7 @@ const CourseResultRow = memo(function CourseResultRow({ course, i, school, expan
         onClick={() => onToggle(course.code)}
         style={{
           width: "100%", textAlign: "left",
-          display: "grid", gridTemplateColumns: "24px auto 1fr",
+          display: "grid", gridTemplateColumns: "24px 100px 1fr",
           padding: "14px 16px", gap: "12px", alignItems: "center",
           background: isOpen ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
           border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
