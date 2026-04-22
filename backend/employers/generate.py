@@ -315,7 +315,16 @@ def _assign_soc_codes(
 # ── Formatting ────────────────────────────────────────────────────────────
 
 def _format_for_json(employers: list[dict], region_code: str) -> list[dict]:
-    """Convert to employers.json schema."""
+    """Convert to employers.json schema.
+
+    Also tags each output row with canonical PCAH `swp_sectors` from
+    `CTE_NAICS_CODES[naics4][2]`. This keeps scraped output
+    self-consistent — a future generate_for_region run produces
+    records with `swp_sectors` already populated, so the retag script
+    only needs to run when re-baselining historical data.
+    """
+    from employers.edd_scrape import CTE_NAICS_CODES
+
     formatted = []
     for emp in employers:
         # Use LLM description if available, otherwise build from EDD data
@@ -337,9 +346,13 @@ def _format_for_json(employers: list[dict], region_code: str) -> list[dict]:
                 desc += f". {size}"
             desc += "."
 
+        naics4 = emp.get("naics4", emp.get("naics_code", ""))
+        swp_sectors = list(CTE_NAICS_CODES.get(naics4, ("", "", []))[2])
+
         formatted.append({
             "name": emp["name"],
             "sector": emp.get("sector", "Other"),
+            "swp_sectors": swp_sectors,
             "description": desc,
             "regions": [region_code],
             "occupations": emp.get("soc_codes", []),
