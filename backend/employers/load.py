@@ -64,11 +64,14 @@ def load_employers(driver: Driver, employers: list[dict]) -> dict:
         # Create Employer nodes
         for emp in employers:
             session.run(
-                "MERGE (e:Employer {name: $name}) SET e.sector = $sector, e.description = $description, e.website = $website",
+                "MERGE (e:Employer {name: $name}) "
+                "SET e.sector = $sector, e.description = $description, "
+                "    e.website = $website, e.swp_sectors = $swp_sectors",
                 name=emp["name"],
                 sector=emp["sector"],
                 description=emp.get("description"),
                 website=emp.get("website"),
+                swp_sectors=emp.get("swp_sectors", []),
             )
             stats["employers"] += 1
 
