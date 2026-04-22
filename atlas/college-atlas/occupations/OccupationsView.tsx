@@ -113,6 +113,26 @@ export default function OccupationsView({ school, onBack }: Props) {
     ) : null
   ), [overview, allOccupations, renderOccupationRow, occKeyExtractor, school]);
 
+  const renderSearchContent = useCallback((q: string) => {
+    const lower = q.toLowerCase();
+    const filtered = allOccupations.filter(o =>
+      o.title.toLowerCase().includes(lower) ||
+      o.soc_code.toLowerCase().includes(lower)
+    );
+    return (
+      <div style={{ marginTop: "16px" }}>
+        <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.35)", marginBottom: "12px" }}>
+          {filtered.length.toLocaleString()} occupation{filtered.length !== 1 ? "s" : ""}
+        </p>
+        <EntityScrollList
+          items={filtered} initialCap={100} batchSize={100}
+          columns={OCCUPATION_COLUMNS} renderRow={renderOccupationRow}
+          keyExtractor={occKeyExtractor} entityName="occupations" school={school}
+        />
+      </div>
+    );
+  }, [allOccupations, renderOccupationRow, occKeyExtractor, school]);
+
   const renderResultsContent = useCallback((results: ApiOccupationMatch[]) => (
     <>
       <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)" }}>
@@ -132,6 +152,7 @@ export default function OccupationsView({ school, onBack }: Props) {
       placeholder={`Ask me a question about occupations near ${school.name}.`}
       examples={EXAMPLES} queryFn={queryFn} loadInitialData={loadInitialData}
       renderInitialContent={renderInitialContent} renderResultsContent={renderResultsContent}
+      renderSearchContent={renderSearchContent}
       onQueryStart={onQueryStart} onReset={onReset} rootRef={rootRef}
     />
   );

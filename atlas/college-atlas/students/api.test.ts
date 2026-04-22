@@ -45,7 +45,7 @@ describe("students api client", () => {
 
       expect(mockFetch).toHaveBeenCalledTimes(1);
       const url = mockFetch.mock.calls[0][0] as string;
-      expect(url).toContain("/students?college=");
+      expect(url).toContain("/students/?college=");
       expect(url).toContain("Foothill%20College");
     });
 

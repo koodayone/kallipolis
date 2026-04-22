@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef, memo } from "react";
+import { useState, useEffect, useCallback, useRef, memo, useMemo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { SchoolConfig } from "@/config/schoolConfig";
 import { getDepartments, getCourses, queryCourses } from "@/college-atlas/courses/api";
@@ -69,6 +69,28 @@ export default function CoursesView({ school, onBack }: Props) {
     requestAnimationFrame(() => { if (scrollEl) scrollEl.scrollTop = saved; });
   }, []);
 
+  const deptCoursesMapRef = useRef(deptCoursesMap);
+  deptCoursesMapRef.current = deptCoursesMap;
+  const loadingDeptsRef = useRef(loadingDepts);
+  loadingDeptsRef.current = loadingDepts;
+
+  const ensureCoursesLoaded = useCallback(async (dept: string) => {
+    if (deptCoursesMapRef.current[dept] || loadingDeptsRef.current.has(dept)) return;
+    setLoadingDepts((prev) => new Set(prev).add(dept));
+    try {
+      const data = await getCourses(dept, school.name);
+      setDeptCoursesMap((prev) => ({
+        ...prev,
+        [dept]: data.map(mapCourse).sort((a, b) => {
+          const numA = parseInt((a.code.match(/(\d+)/) || ["0"])[0]);
+          const numB = parseInt((b.code.match(/(\d+)/) || ["0"])[0]);
+          return numA - numB || a.code.localeCompare(b.code);
+        }),
+      }));
+    } catch {}
+    finally { setLoadingDepts((prev) => { const next = new Set(prev); next.delete(dept); return next; }); }
+  }, [school.name]);
+
   const handleDeptExpand = useCallback(async (dept: string) => {
     preserveScroll();
     if (expandedDepts.has(dept)) {
@@ -121,6 +143,26 @@ export default function CoursesView({ school, onBack }: Props) {
     </div>
   ), [departments, totalCourses, school, expandedDepts, deptCoursesMap, loadingDepts, handleDeptExpand]);
 
+  const renderSearchContent = useCallback((q: string) => {
+    const lower = q.toLowerCase();
+    const filtered = departments.filter(d => d.department.toLowerCase().includes(lower));
+    const allExpanded = new Set(filtered.map(d => d.department));
+    return (
+      <div style={{ marginTop: "16px" }}>
+        <SearchDepartmentLoader departments={filtered} ensureLoaded={ensureCoursesLoaded} />
+        <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.35)", marginBottom: "12px" }}>
+          {filtered.length} department{filtered.length !== 1 ? "s" : ""} matching &ldquo;{q}&rdquo;
+        </p>
+        <DepartmentList
+          departments={filtered} school={school}
+          expandedDepts={allExpanded} deptCoursesMap={deptCoursesMap}
+          loadingDepts={loadingDepts}
+          onDeptExpand={handleDeptExpand}
+        />
+      </div>
+    );
+  }, [departments, school, deptCoursesMap, loadingDepts, handleDeptExpand, ensureCoursesLoaded]);
+
   const renderResultsContent = useCallback((results: CourseSummary[]) => (
     results.length > 0 ? (
       <EntityScrollList
@@ -137,6 +179,7 @@ export default function CoursesView({ school, onBack }: Props) {
       placeholder={`Ask me a question about ${school.name} courses.`}
       examples={EXAMPLES} queryFn={queryFn} loadInitialData={loadInitialData}
       renderInitialContent={renderInitialContent} renderResultsContent={renderResultsContent}
+      renderSearchContent={renderSearchContent}
       onQueryStart={onQueryStart} onReset={onReset} rootRef={rootRef}
     />
   );
@@ -252,6 +295,20 @@ const CourseResultRow = memo(function CourseResultRow({ course, i, school, expan
     </div>
   );
 });
+
+/* ── Search auto-loader ──────────────────────────────────────────────── */
+
+function SearchDepartmentLoader({ departments, ensureLoaded }: {
+  departments: DepartmentSummary[];
+  ensureLoaded: (dept: string) => Promise<void>;
+}) {
+  const key = useMemo(() => departments.map(d => d.department).join("\0"), [departments]);
+  useEffect(() => {
+    departments.forEach(d => ensureLoaded(d.department));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [key, ensureLoaded]);
+  return null;
+}
 
 /* ── Department List ──────────────────────────────────────────────────── */
 

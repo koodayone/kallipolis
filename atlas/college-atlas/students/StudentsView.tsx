@@ -116,6 +116,25 @@ export default function StudentsView({ school, onBack }: Props) {
     </div>
   ), [students.length, defaultStudents, renderStudentRow, studentKeyExtractor, school]);
 
+  const renderSearchContent = useCallback((q: string) => {
+    const lower = q.toLowerCase();
+    const filtered = defaultStudents.filter(s =>
+      s.primaryFocus.toLowerCase().includes(lower)
+    );
+    return (
+      <div style={{ marginTop: "16px" }}>
+        <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.35)", marginBottom: "12px" }}>
+          {filtered.length.toLocaleString()} student{filtered.length !== 1 ? "s" : ""}
+        </p>
+        <EntityScrollList
+          items={filtered} initialCap={100} batchSize={100}
+          columns={STUDENT_COLUMNS} renderRow={renderStudentRow}
+          keyExtractor={studentKeyExtractor} entityName="students" school={school}
+        />
+      </div>
+    );
+  }, [defaultStudents, renderStudentRow, studentKeyExtractor, school]);
+
   const renderResultsContent = useCallback((results: StudentSummary[]) => (
     <EntityScrollList
       items={results} initialCap={200} batchSize={100}
@@ -130,6 +149,7 @@ export default function StudentsView({ school, onBack }: Props) {
       placeholder={`Ask me a question about ${school.name} students.`}
       examples={EXAMPLES} queryFn={queryFn} loadInitialData={loadInitialData}
       renderInitialContent={renderInitialContent} renderResultsContent={renderResultsContent}
+      renderSearchContent={renderSearchContent}
       onQueryStart={onQueryStart} onReset={onReset} rootRef={rootRef}
     />
   );

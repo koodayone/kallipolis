@@ -100,6 +100,25 @@ export default function EmployersView({ school, onBack }: Props) {
     />
   ), [employers, school, expandedSectors, handleSectorToggle, renderEmployerRow]);
 
+  const renderSearchContent = useCallback((q: string) => {
+    const lower = q.toLowerCase();
+    const filtered = employers.filter(e =>
+      e.name.toLowerCase().includes(lower) ||
+      e.swp_sectors.some(s => s.toLowerCase().includes(lower))
+    );
+    const allSectors = new Set(filtered.map(e => e.swp_sectors[0] ?? UNCLASSIFIED));
+    return (
+      <SectorGroupedList
+        employers={filtered}
+        school={school}
+        expandedSectors={allSectors}
+        onSectorToggle={handleSectorToggle}
+        renderEmployerRow={renderEmployerRow}
+        summaryLine={`${filtered.length} employer${filtered.length !== 1 ? "s" : ""}`}
+      />
+    );
+  }, [employers, school, handleSectorToggle, renderEmployerRow]);
+
   const renderResultsContent = useCallback((results: ApiEmployerMatch[]) => (
     <SectorGroupedList
       employers={results}
@@ -117,6 +136,7 @@ export default function EmployersView({ school, onBack }: Props) {
       placeholder={`Ask me a question about employers near ${school.name}.`}
       examples={EXAMPLES} queryFn={queryFn} loadInitialData={loadInitialData}
       renderInitialContent={renderInitialContent} renderResultsContent={renderResultsContent}
+      renderSearchContent={renderSearchContent}
       onQueryStart={onQueryStart} onReset={onReset} rootRef={rootRef}
     />
   );
