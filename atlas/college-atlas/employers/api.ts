@@ -3,6 +3,8 @@ import { API_BASE } from "@/api";
 export type ApiEmployerMatch = {
   name: string;
   sector: string | null;
+  swp_sectors: string[];
+  priority_sectors_matched: string[];
   description: string | null;
   website: string | null;
   occupations: string[];
@@ -13,6 +15,8 @@ export type ApiEmployerMatch = {
 export type ApiEmployerDetail = {
   name: string;
   sector: string | null;
+  swp_sectors: string[];
+  priority_sectors_matched: string[];
   description: string | null;
   website: string | null;
   regions: string[];

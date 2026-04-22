@@ -22,7 +22,7 @@ const EXAMPLES = [
 
 const EMPLOYER_COLUMNS: Column[] = [
   { label: "Employer", width: "1fr" },
-  { label: "Sector", width: "180px" },
+  { label: "SWP Sector", width: "280px" },
   { label: "Roles", width: "70px", align: "center" },
   { label: "Skills", width: "85px" },
 ];
@@ -124,6 +124,45 @@ export default function EmployersView({ school, onBack }: Props) {
   );
 }
 
+/* ── Sector Cell ──────────────────────────────────────────────────────── */
+
+// Renders the employer's primary SWP sector. When the employer's swp_sectors
+// intersects the college region's priority sectors, the cell shows a small
+// brand-colored dot to mark it as a priority-aligned partnership candidate.
+// Falls back to the NAICS-2 display label (emp.sector) when swp_sectors is
+// empty — these are out-of-scope or name-drifted records that keep the
+// older label until a re-scrape regenerates their canonical tags.
+function SectorCell({ swpSectors, prioritySectorsMatched, fallback, brandColor }: {
+  swpSectors: string[];
+  prioritySectorsMatched: string[];
+  fallback: string | null;
+  brandColor: string;
+}) {
+  const primary = swpSectors[0];
+  const isPriority = prioritySectorsMatched.length > 0;
+  const label = primary || fallback || "—";
+  return (
+    <span style={{
+      fontFamily: FONT, fontSize: "12px",
+      color: primary ? "rgba(255,255,255,0.55)" : "rgba(255,255,255,0.3)",
+      display: "flex", alignItems: "center", gap: "6px",
+      overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis",
+    }}>
+      {isPriority && (
+        <span
+          title={`Regional priority: ${prioritySectorsMatched.join(", ")}`}
+          style={{
+            display: "inline-block", width: "6px", height: "6px",
+            borderRadius: "50%", background: brandColor, flexShrink: 0,
+          }}
+        />
+      )}
+      <span style={{ overflow: "hidden", textOverflow: "ellipsis" }}>{label}</span>
+    </span>
+  );
+}
+
+
 /* ── Employer Row ─────────────────────────────────────────────────────── */
 
 const EmployerRow = memo(function EmployerRow({ emp, i, school, expandedNames, employerDetails, loadingNames, onExpand }: {
@@ -145,7 +184,7 @@ const EmployerRow = memo(function EmployerRow({ emp, i, school, expandedNames, e
         onClick={() => onExpand(emp)}
         style={{
           width: "100%", textAlign: "left",
-          display: "grid", gridTemplateColumns: "24px 1fr 180px 70px 85px",
+          display: "grid", gridTemplateColumns: "24px 1fr 280px 70px 85px",
           padding: "12px 16px", gap: "10px", alignItems: "center",
           background: isOpen ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
           border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
@@ -161,9 +200,12 @@ const EmployerRow = memo(function EmployerRow({ emp, i, school, expandedNames, e
         <span style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>
           {emp.name}
         </span>
-        <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)" }}>
-          {emp.sector || "—"}
-        </span>
+        <SectorCell
+          swpSectors={emp.swp_sectors}
+          prioritySectorsMatched={emp.priority_sectors_matched}
+          fallback={emp.sector}
+          brandColor={school.brandColorLight}
+        />
         <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)", display: "flex", justifyContent: "center" }}>
           {emp.occupations.length}
         </span>

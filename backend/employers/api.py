@@ -15,18 +15,26 @@ router = APIRouter()
 
 @router.get("/", response_model=list[EmployerMatch])
 def get_employers(college: str):
-    """Returns employers in the college's region ranked by skill alignment."""
+    """Returns employers in the college's region ranked by skill alignment.
+
+    Each employer row also carries the intersection of its swp_sectors
+    with the college's region priority sectors (priority_sectors_matched),
+    computed live in Cypher so COE_REGION_PRIORITY_SECTORS edits stay
+    visible without a graph reload.
+    """
     driver = get_driver()
     try:
         with driver.session() as session:
             result = session.run("""
                 MATCH (c:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})
+                WITH c, r, emp, collect(DISTINCT occ.title) AS occupations,
+                     count(DISTINCT sk) AS matching_skills,
+                     collect(DISTINCT sk.name) AS skills
                 RETURN emp.name AS name, emp.sector AS sector,
                        COALESCE(emp.swp_sectors, []) AS swp_sectors,
+                       [s IN COALESCE(emp.swp_sectors, []) WHERE s IN COALESCE(r.priority_sectors, [])] AS priority_sectors_matched,
                        emp.description AS description, emp.website AS website,
-                       collect(DISTINCT occ.title) AS occupations,
-                       count(DISTINCT sk) AS matching_skills,
-                       collect(DISTINCT sk.name) AS skills
+                       occupations, matching_skills, skills
                 ORDER BY matching_skills DESC
             """, college=college)
             records = result.data()
@@ -36,6 +44,7 @@ def get_employers(college: str):
                 name=r["name"],
                 sector=r["sector"],
                 swp_sectors=r.get("swp_sectors", []) or [],
+                priority_sectors_matched=r.get("priority_sectors_matched", []) or [],
                 description=r["description"],
                 website=r["website"],
                 occupations=r["occupations"],
