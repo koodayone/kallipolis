@@ -67,22 +67,27 @@ export default function DepartmentRow({ department, courseCount, index, brandCol
         style={{
           width: "100%", textAlign: "left",
           display: "grid", gridTemplateColumns: "24px 1fr auto",
-          padding: "14px 16px", gap: "12px", alignItems: "center",
-          background: isOpen ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
-          border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
-          cursor: "pointer", transition: "background 0.15s",
+          padding: "18px 16px", gap: "12px", alignItems: "center",
+          background: isOpen ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.035)",
+          border: "none", borderBottom: `1px solid ${isOpen ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.05)"}`,
+          borderTop: isOpen ? `2px solid ${brandColor}80` : "2px solid transparent",
+          cursor: "pointer", transition: "background 0.15s, border-color 0.15s",
         }}
-        onMouseEnter={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)"; }}
-        onMouseLeave={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)"; }}
+        onMouseEnter={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.055)"; }}
+        onMouseLeave={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.035)"; }}
       >
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+        <svg width="14" height="14" viewBox="0 0 12 12" fill="none"
           style={{ transform: isOpen ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>
-          <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.5)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-        <span style={{ fontFamily: FONT, fontSize: "14px", fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>
+        <span style={{
+          fontFamily: FONT, fontSize: "11px", fontWeight: 700, letterSpacing: "0.12em",
+          textTransform: "uppercase", color: "rgba(255,255,255,0.98)",
+          overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap",
+        }}>
           {department}
         </span>
-        <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)" }}>
+        <span style={{ fontFamily: FONT, fontSize: "11px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)" }}>
           {courseCount} {courseCount === 1 ? "course" : "courses"}
         </span>
       </motion.button>
