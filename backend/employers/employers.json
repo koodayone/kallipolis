@@ -21,7 +21,9 @@
       "51-4111"
     ],
     "website": "https://www.landolakes.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Agriculture, Water and Environmental Technologies"
+    ]
   },
   {
     "name": "Saputo Cheese USA",
@@ -303,7 +305,9 @@
       "31-2021"
     ],
     "website": "https://www.kaweahhealth.org",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Porterville Developmental Center",
@@ -357,26 +361,6 @@
     ]
   },
   {
-    "name": "City of Tulare",
-    "sector": "Government",
-    "description": "The City of Tulare is a municipal government providing public services to its residents.",
-    "regions": [
-      "CVML"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-1031",
-      "11-3031",
-      "11-3121",
-      "13-1071",
-      "13-2011",
-      "17-2051"
-    ],
-    "website": "https://www.tulare.ca.gov",
-    "swp_sectors": []
-  },
-  {
     "name": "Tulare County Office of Education",
     "sector": "Government",
     "description": "The Tulare County Office of Education provides leadership, resources, and services to school districts and students in Tulare County.",
@@ -394,7 +378,9 @@
       "25-9099"
     ],
     "website": "https://www.tcoe.org",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "Pitman Family Farms",
@@ -465,7 +451,9 @@
       "53-3032"
     ],
     "website": "https://www.woolffarming.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Agriculture, Water and Environmental Technologies"
+    ]
   },
   {
     "name": "Clark Brothers Construction",
@@ -833,29 +821,6 @@
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
     ]
-  },
-  {
-    "name": "Educational Employees Credit Union",
-    "sector": "Finance",
-    "description": "Educational Employees Credit Union is a financial institution providing banking services primarily to educational employees.",
-    "regions": [
-      "CVML"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3031",
-      "13-1071",
-      "13-2011",
-      "13-2072",
-      "15-1211",
-      "15-1244",
-      "11-3012",
-      "13-2041",
-      "41-3031",
-      "43-4161"
-    ],
-    "website": "https://www.myeecu.org",
-    "swp_sectors": []
   },
   {
     "name": "Community Medical Center",
@@ -1312,7 +1277,9 @@
       "29-2018"
     ],
     "website": "https://www.samc.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Dycora Transitional Health",
@@ -1452,7 +1419,9 @@
       "43-4161"
     ],
     "website": "https://www.fresnocountyca.gov",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Public Safety"
+    ]
   },
   {
     "name": "Fresno County Sheriff's Office",
@@ -1549,7 +1518,9 @@
       "43-4161"
     ],
     "website": "https://www.fresnocountyca.gov",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Warmerdam Packing",
@@ -2149,7 +2120,9 @@
       "53-3032"
     ],
     "website": "https://www.usfoods.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Global Trade"
+    ]
   },
   {
     "name": "Gosch Toyota",
@@ -2408,7 +2381,9 @@
       "53-3032"
     ],
     "website": "https://www.mclaneco.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Advanced Transportation and Logistics"
+    ]
   },
   {
     "name": "Sunline Transit Agency",
@@ -2434,30 +2409,6 @@
     "swp_sectors": [
       "Advanced Transportation and Logistics"
     ]
-  },
-  {
-    "name": "State Compensation Insurance Fund",
-    "sector": "Finance",
-    "description": "This is a state-run workers' compensation insurance carrier, providing coverage to California employers.",
-    "regions": [
-      "IE/D",
-      "OC"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-3012",
-      "11-3031",
-      "13-1041",
-      "13-1071",
-      "13-2011",
-      "13-2053",
-      "13-2061",
-      "43-4161",
-      "11-9199"
-    ],
-    "website": "https://www.statefundca.com/",
-    "swp_sectors": []
   },
   {
     "name": "Skanska USA Civil West",
@@ -2549,7 +2500,9 @@
       "53-3032"
     ],
     "website": "https://www.crrwasteservices.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Energy, Construction and Utilities"
+    ]
   },
   {
     "name": "Lineage Logistics",
@@ -2751,7 +2704,9 @@
       "13-2011"
     ],
     "website": "https://www.jusd.k12.ca.us/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "Riverside City College",
@@ -2975,7 +2930,9 @@
       "31-1131"
     ],
     "website": "https://healthy.kaiserpermanente.org/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Menifee Valley Medical Center",
@@ -3068,26 +3025,9 @@
       "31-2021"
     ],
     "website": "https://www.promedica.org/",
-    "swp_sectors": []
-  },
-  {
-    "name": "Coachella Valley Recreation and Parks District",
-    "sector": "Arts & Entertainment",
-    "description": "This public agency provides recreational programs, facilities, and park maintenance for the Coachella Valley community.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-9072",
-      "11-9151",
-      "13-1071",
-      "13-2011",
-      "27-2022"
-    ],
-    "website": "https://www.cvrpd.org/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Castle Park",
@@ -3111,23 +3051,6 @@
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
     ]
-  },
-  {
-    "name": "BIGHORN Golf Club",
-    "sector": "Arts & Entertainment",
-    "description": "This is a private golf club featuring a championship golf course and luxury amenities.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-9072",
-      "13-1071",
-      "13-2011"
-    ],
-    "website": "https://www.bighorngolf.com/",
-    "swp_sectors": []
   },
   {
     "name": "Eldorado Country Club",
@@ -3313,7 +3236,9 @@
       "31-9011"
     ],
     "website": "https://www.omnihotels.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Renaissance Esmeralda Resort & Spa",
@@ -3333,7 +3258,9 @@
       "31-9011"
     ],
     "website": "https://www.marriott.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Ritz-Carlton Rancho Mirage",
@@ -3381,29 +3308,9 @@
       "53-5022"
     ],
     "website": "https://www.wineresort.com/",
-    "swp_sectors": []
-  },
-  {
-    "name": "Cabazon Band of Mission Indians",
-    "sector": "Government",
-    "description": "This is a federally recognized Native American tribe, operating various enterprises and providing services to its members and the community.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-3012",
-      "11-3031",
-      "13-1071",
-      "13-2011",
-      "21-1099",
-      "11-1031",
-      "11-9151",
-      "13-1199"
-    ],
-    "website": "https://www.cabazonindians-nsn.gov/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Riverside County Superior Court",
@@ -3425,7 +3332,9 @@
       "11-9199"
     ],
     "website": "https://www.riverside.courts.ca.gov/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Public Safety"
+    ]
   },
   {
     "name": "Coachella City Police Department",
@@ -3492,7 +3401,9 @@
       "11-9151"
     ],
     "website": "https://www.cdcr.ca.gov/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Public Safety"
+    ]
   },
   {
     "name": "Micromist Systems",
@@ -3713,7 +3624,9 @@
       "11-3061"
     ],
     "website": "https://www.mclaneco.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Global Trade"
+    ]
   },
   {
     "name": "Carmax",
@@ -4194,7 +4107,9 @@
       "25-9044"
     ],
     "website": "https://sbcusd.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "Snowline Joint Unified School District",
@@ -4217,7 +4132,9 @@
       "25-9044"
     ],
     "website": "https://www.snowlineschools.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "Yucaipa-Calimesa Joint Unified School District",
@@ -4310,7 +4227,9 @@
       "11-3031"
     ],
     "website": "https://www.csusb.edu/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "Loma Linda University School of Dentistry",
@@ -4332,7 +4251,9 @@
       "11-3121"
     ],
     "website": "https://dentistry.llu.edu/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "Optum California",
@@ -4401,7 +4322,9 @@
       "31-9097"
     ],
     "website": "https://www.lstream.org/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "OneLegacy",
@@ -4421,7 +4344,9 @@
       "29-9099"
     ],
     "website": "https://www.onelegacy.org/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Arrowhead Regional Medical Center",
@@ -4574,7 +4499,9 @@
       "11-3131"
     ],
     "website": "https://www.dignityhealth.org/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Dignity Health St. Bernardine Medical Center",
@@ -4594,7 +4521,9 @@
       "31-1131"
     ],
     "website": "https://www.dignityhealth.org/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Hi-Desert Medical Center",
@@ -4687,7 +4616,9 @@
       "31-1131"
     ],
     "website": "https://twentyninepalms.tricare.mil/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Patton State Hospital",
@@ -4758,7 +4689,9 @@
       "31-2021"
     ],
     "website": "https://www.totallykidsrehab.org/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Victor Valley Global Medical Center",
@@ -4782,7 +4715,9 @@
       "11-3131"
     ],
     "website": "https://www.vvgmc.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Inland Regional Center",
@@ -4958,26 +4893,6 @@
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
     ]
-  },
-  {
-    "name": "City of Colton",
-    "sector": "Government",
-    "description": "The City of Colton is a local government entity providing municipal services to its residents.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-3012",
-      "13-1071",
-      "13-2011",
-      "15-1211",
-      "17-2051",
-      "43-4161"
-    ],
-    "website": "https://www.coltonca.gov/",
-    "swp_sectors": []
   },
   {
     "name": "Fontana Police Department",
@@ -5254,7 +5169,9 @@
       "17-3027"
     ],
     "website": "https://www.zurn.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Advanced Manufacturing"
+    ]
   },
   {
     "name": "Glenair",
@@ -5374,24 +5291,6 @@
     "swp_sectors": [
       "Advanced Transportation and Logistics"
     ]
-  },
-  {
-    "name": "Morris & Garritano Insurance Agency",
-    "sector": "Finance",
-    "description": "Morris & Garritano Insurance Agency provides various insurance products and financial protection services. They serve clients by helping them find suitable insurance coverage. CTE-relevant roles include insurance agents, customer service representatives, and administrative support staff.",
-    "regions": [
-      "SCC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-2022",
-      "11-3012",
-      "13-1071",
-      "13-2053",
-      "41-3031"
-    ],
-    "website": "https://morrisgarritano.com",
-    "swp_sectors": []
   },
   {
     "name": "Trust RCM",
@@ -5577,7 +5476,9 @@
       "15-1211"
     ],
     "website": "https://www.slocoe.org",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "Cuesta College",
@@ -5619,7 +5520,9 @@
       "25-9044"
     ],
     "website": "https://lauruscollege.edu",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "California Polytechnic State University",
@@ -5639,7 +5542,9 @@
       "25-9044"
     ],
     "website": "https://www.calpoly.edu",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "Limberg LASIK Institute",
@@ -5723,7 +5628,9 @@
       "29-2034"
     ],
     "website": "https://www.dignityhealth.org",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Mustang Waterpark",
@@ -5781,7 +5688,9 @@
       "39-5094"
     ],
     "website": "https://www.allegrettovineyardresort.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Apple Farm Inn",
@@ -5903,7 +5812,9 @@
       "31-9011"
     ],
     "website": "https://www.sycamoresprings.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Mr Rick's",
@@ -5986,7 +5897,9 @@
       "33-2021"
     ],
     "website": "https://www.calfireslo.org",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Public Safety"
+    ]
   },
   {
     "name": "San Luis Obispo Sheriff's Department",
@@ -6363,7 +6276,9 @@
       "17-2071"
     ],
     "website": "https://www.bega.com/us/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Advanced Manufacturing"
+    ]
   },
   {
     "name": "Moss Motors",
@@ -6880,26 +6795,6 @@
     "swp_sectors": [
       "Advanced Transportation and Logistics"
     ]
-  },
-  {
-    "name": "Berkshire Hathaway HomeServices California Properties",
-    "sector": "Real Estate",
-    "description": "Berkshire Hathaway HomeServices California Properties is a real estate company serving clients across California for residential and commercial property transactions. As part of a large network, it offers extensive services for buying and selling properties. CTE pathways could include real estate sales, administrative assistance, marketing, or property management support roles.",
-    "regions": [
-      "SCC"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-2021",
-      "11-2022",
-      "11-3012",
-      "13-1071",
-      "13-1161",
-      "13-2011"
-    ],
-    "website": "https://www.bhhscalifornia.com",
-    "swp_sectors": []
   },
   {
     "name": "Isa Bird",
@@ -7472,7 +7367,9 @@
       "25-9099"
     ],
     "website": "https://www.smbsd.org",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "Santa Maria High School",
@@ -7565,7 +7462,9 @@
       "23-2011"
     ],
     "website": "https://www.ucsb.edu",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "Music Academy of the West",
@@ -7735,7 +7634,9 @@
       "29-2034"
     ],
     "website": "https://www.dignityhealth.org/marianregional",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Star Autism Inc.",
@@ -7797,7 +7698,9 @@
       "31-1131"
     ],
     "website": "https://www.frontporch.net/communities/vista-del-monte",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Maravilla",
@@ -7967,7 +7870,9 @@
       "21-1099"
     ],
     "website": "https://alphasb.org",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "VTC Enterprises",
@@ -8011,24 +7916,6 @@
     ]
   },
   {
-    "name": "Swell Santa Barbara Athletic Club",
-    "sector": "Arts & Entertainment",
-    "description": "Swell Clubs operates athletic clubs in both Goleta and Santa Barbara, offering fitness and wellness services. These clubs cater to local memberships across their multiple locations. CTE-relevant roles include fitness trainers, customer service representatives, facilities maintenance, and administrative staff.",
-    "regions": [
-      "SCC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3013",
-      "11-9072",
-      "13-1071",
-      "27-2022"
-    ],
-    "website": "https://swellclubs.com",
-    "swp_sectors": []
-  },
-  {
     "name": "Alisal Ranch",
     "sector": "Hospitality & Food Service",
     "description": "Alisal Ranch is a luxury resort and working ranch offering accommodations, dining, and recreational activities.",
@@ -8067,7 +7954,9 @@
       "35-2013"
     ],
     "website": "https://theclub.ucsb.edu",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Four Seasons Resort",
@@ -8087,7 +7976,9 @@
       "35-2013"
     ],
     "website": "https://www.fourseasons.com/santabarbara",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Hilton Santa Barbara",
@@ -8170,7 +8061,9 @@
       "35-2013"
     ],
     "website": "https://www.ritzcarlton.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "San Ysidro Ranch",
@@ -8256,7 +8149,9 @@
       "35-2013"
     ],
     "website": "https://www.belmond.com/hotels/north-america/usa/california/santa-barbara/belmond-el-encanto",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Harbor Restaurant",
@@ -8297,44 +8192,6 @@
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
     ]
-  },
-  {
-    "name": "City of Santa Barbara",
-    "sector": "Government",
-    "description": "The City of Santa Barbara is a local government entity responsible for providing municipal services and governance to its residents. It manages a wide array of public services and infrastructure within its jurisdiction. CTE-relevant roles include administrative support, public works maintenance, urban planning support, and various departmental technical roles.",
-    "regions": [
-      "SCC"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-3012",
-      "11-3031",
-      "13-1041",
-      "13-1071",
-      "15-1211",
-      "17-2051"
-    ],
-    "website": "https://www.santabarbaraca.gov",
-    "swp_sectors": []
-  },
-  {
-    "name": "Santa Barbara County Recorder",
-    "sector": "Government",
-    "description": "The Santa Barbara County Recorder's Office is responsible for recording and maintaining public records.",
-    "regions": [
-      "SCC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1041",
-      "13-1071",
-      "15-1242",
-      "15-1244"
-    ],
-    "website": "https://www.countyofsb.org/recorder",
-    "swp_sectors": []
   },
   {
     "name": "Lompoc Federal Correctional Complex",
@@ -8434,7 +8291,9 @@
       "29-1141"
     ],
     "website": "https://www.bop.gov",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Public Safety"
+    ]
   },
   {
     "name": "Vandenberg Air Force Base Fire Department",
@@ -8568,7 +8427,9 @@
       "17-2051"
     ],
     "website": "https://cdlyon.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Energy, Construction and Utilities"
+    ]
   },
   {
     "name": "CEMEX",
@@ -8802,7 +8663,9 @@
       "19-2031"
     ],
     "website": "https://www.jmsmucker.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Advanced Manufacturing"
+    ]
   },
   {
     "name": "Poly-Tainer",
@@ -9611,26 +9474,6 @@
     ]
   },
   {
-    "name": "Housing Authority City of San Buenaventura",
-    "sector": "Real Estate",
-    "description": "This is a government agency providing affordable housing services for the City of San Buenaventura (Ventura).",
-    "regions": [
-      "SCC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3031",
-      "11-9151",
-      "13-1041",
-      "13-1071",
-      "13-2011",
-      "21-1029"
-    ],
-    "website": "https://www.venturahousing.org",
-    "swp_sectors": []
-  },
-  {
     "name": "Olde Thompson",
     "sector": "Professional Services",
     "description": "Olde Thompson is a leading manufacturer and marketer of spices, seasonings, and grinders for both retail and foodservice sectors. They operate on a national and international scale, supplying a wide variety of culinary products. CTE-relevant roles include food production technicians, quality control specialists, packaging specialists, and logistics coordinators.",
@@ -9699,26 +9542,6 @@
     ]
   },
   {
-    "name": "Boyd & Associates",
-    "sector": "Professional Services",
-    "description": "Boyd & Associates likely refers to a professional services firm, potentially in security consulting or investigations, given typical naming conventions. Their scale would depend on their client base and regional focus, providing specialized expertise. CTE-relevant roles could include administrative assistants, research assistants, and IT support for secure systems.",
-    "regions": [
-      "SCC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3031",
-      "13-1071",
-      "13-1111",
-      "13-2011",
-      "15-1211",
-      "13-1199"
-    ],
-    "website": "https://www.boydsecurity.com",
-    "swp_sectors": []
-  },
-  {
     "name": "Communications & Power Industries",
     "sector": "Professional Services",
     "description": "Communications & Power Industries (CPI) is a global manufacturer of electronic components and subsystems primarily for communications, defense, medical, and industrial applications. They operate internationally with multiple divisions, producing a wide range of high-power vacuum electron devices and related technologies. CTE-relevant roles include electrical technicians, mechanical technicians, manufacturing assemblers, quality control specialists, and engineering support staff.",
@@ -9736,7 +9559,9 @@
       "17-3023"
     ],
     "website": "https://www.cpii.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Advanced Manufacturing"
+    ]
   },
   {
     "name": "Community Memorial Health System",
@@ -10401,7 +10226,9 @@
       "21-1029"
     ],
     "website": "https://buenavistahealthcare.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Ventura County Search and Rescue",
@@ -10420,7 +10247,9 @@
       "43-4161"
     ],
     "website": "https://www.vcsar.org",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Adventist Health Simi Valley",
@@ -10487,7 +10316,9 @@
       "31-1131"
     ],
     "website": "https://www.cmhshealth.org/locations/community-memorial-hospital-ojai",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Dignity Health St. John's Regional Medical Center",
@@ -10507,7 +10338,9 @@
       "31-1131"
     ],
     "website": "https://www.dignityhealth.org/stjohnsregional",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Kaiser Permanente Ventura",
@@ -10706,7 +10539,9 @@
       "43-4161"
     ],
     "website": "https://www.lmvna.org",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Shoreline Care Center",
@@ -10900,7 +10735,9 @@
       "21-1099"
     ],
     "website": "https://goodwillvsb.org",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Ventura County Job & Career Center",
@@ -10922,26 +10759,6 @@
     "swp_sectors": [
       "Education and Human Development"
     ]
-  },
-  {
-    "name": "Rancho Simi Recreation and Park District",
-    "sector": "Arts & Entertainment",
-    "description": "The Rancho Simi Recreation and Park District manages parks, facilities, and offers various recreation programs for the community in Rancho Simi, California. They provide spaces and activities for public enjoyment and well-being. CTE-relevant roles include park maintenance, recreation assistants, administrative support, and facility operations.",
-    "regions": [
-      "SCC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3013",
-      "11-9072",
-      "13-1071",
-      "17-1012",
-      "19-1031",
-      "43-4161"
-    ],
-    "website": "https://rsrpd.org",
-    "swp_sectors": []
   },
   {
     "name": "Conejo Recreation and Park District",
@@ -11071,7 +10888,9 @@
       "43-4161"
     ],
     "website": "https://grandvistahotel.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Ojai Valley Inn",
@@ -11164,7 +10983,9 @@
       "43-4161"
     ],
     "website": "https://brentsdeli.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Domino's Pizza Corporate Office",
@@ -11285,7 +11106,9 @@
       "11-3051"
     ],
     "website": "https://www.chilis.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "In-N-Out Burger",
@@ -11461,7 +11284,9 @@
       "43-4161"
     ],
     "website": "https://yolandasmexicancafe.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Jims USA",
@@ -11507,7 +11332,9 @@
       "21-1099"
     ],
     "website": "https://casapacifica.org",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "Simi Valley Public Works Maintenance",
@@ -11527,7 +11354,9 @@
       "43-4161"
     ],
     "website": "https://www.simivalley.org/departments/public-works/maintenance",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Energy, Construction and Utilities"
+    ]
   },
   {
     "name": "Ventura County Sheriff's Department",
@@ -11545,7 +11374,9 @@
       "43-4161"
     ],
     "website": "https://sheriff.venturacounty.gov/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Public Safety"
+    ]
   },
   {
     "name": "Oxnard Fire Department Headquarters",
@@ -11649,7 +11480,9 @@
       "33-2021"
     ],
     "website": "https://www.vcfd.org/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Public Safety"
+    ]
   },
   {
     "name": "Ventura County Probation Agency",
@@ -11671,7 +11504,9 @@
       "21-1029"
     ],
     "website": "https://probation.venturacounty.gov",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Public Safety"
+    ]
   },
   {
     "name": "Ventura County Sheriff's Office",
@@ -11691,7 +11526,9 @@
       "13-2011"
     ],
     "website": "https://sheriff.venturacounty.gov/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Public Safety"
+    ]
   },
   {
     "name": "Ventura County Superior Court",
@@ -11739,7 +11576,9 @@
       "23-1022"
     ],
     "website": "https://www.ventura.courts.ca.gov",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Public Safety"
+    ]
   },
   {
     "name": "Ventura County Human Services Agency",
@@ -11759,7 +11598,9 @@
       "43-4161"
     ],
     "website": "https://www.venturacounty.gov/human-services-agency",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Burbank Water and Power",
@@ -12181,7 +12022,9 @@
       "43-9031"
     ],
     "website": "https://www.decore.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Energy, Construction and Utilities"
+    ]
   },
   {
     "name": "CP Foods North America",
@@ -12435,7 +12278,9 @@
       "41-4011"
     ],
     "website": "https://www.conagrabrands.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Agriculture, Water and Environmental Technologies"
+    ]
   },
   {
     "name": "Frito-Lay",
@@ -12563,7 +12408,9 @@
       "41-4011"
     ],
     "website": "https://www.keurigdrpepper.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Agriculture, Water and Environmental Technologies"
+    ]
   },
   {
     "name": "Southern Glazer's Wine and Spirits",
@@ -12582,7 +12429,9 @@
       "41-4011"
     ],
     "website": "https://www.southernglazers.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Agriculture, Water and Environmental Technologies"
+    ]
   },
   {
     "name": "Torrance Refining Company",
@@ -12816,7 +12665,9 @@
       "51-4111"
     ],
     "website": "https://washingtoniron.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Advanced Manufacturing"
+    ]
   },
   {
     "name": "PB Fasteners",
@@ -13047,7 +12898,9 @@
       "51-4111"
     ],
     "website": "https://hirelco.net",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Advanced Manufacturing"
+    ]
   },
   {
     "name": "Infineon Technologies Americas",
@@ -13519,7 +13372,9 @@
       "51-9162"
     ],
     "website": "https://msaerospace.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Advanced Manufacturing"
+    ]
   },
   {
     "name": "Millennium Space Systems",
@@ -13703,7 +13558,9 @@
       "29-9021"
     ],
     "website": "https://www.amphastar.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Advanced Manufacturing"
+    ]
   },
   {
     "name": "KARL STORZ Endoscopy-America",
@@ -14171,7 +14028,9 @@
       "53-3032"
     ],
     "website": "https://www.abwholesaler.com/anheuser-busch-sales-of-la-south-bay/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Global Trade"
+    ]
   },
   {
     "name": "Breakthru Beverage CA",
@@ -14826,7 +14685,9 @@
       "53-2011"
     ],
     "website": "https://www.jetblue.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Advanced Transportation and Logistics"
+    ]
   },
   {
     "name": "Southwest Airlines",
@@ -15106,7 +14967,9 @@
       "27-1014"
     ],
     "website": "https://www.lionsgate.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Information and Communication Technologies - Digital Media"
+    ]
   },
   {
     "name": "Paramount Pictures Corporation",
@@ -15346,119 +15209,6 @@
     "swp_sectors": [
       "Information and Communication Technologies - Digital Media"
     ]
-  },
-  {
-    "name": "Keenan & Associates",
-    "sector": "Finance",
-    "description": "Keenan & Associates is an insurance brokerage and consulting firm.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-3061",
-      "13-1041",
-      "13-1111",
-      "41-4011"
-    ],
-    "website": "https://www.keenan.com",
-    "swp_sectors": []
-  },
-  {
-    "name": "Mercer Human Resource Consulting",
-    "sector": "Finance",
-    "description": "Mercer Human Resource Consulting provides human resources consulting services.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-3111",
-      "11-3121",
-      "13-1071",
-      "13-1111",
-      "13-1141"
-    ],
-    "website": "https://www.mercer.com",
-    "swp_sectors": []
-  },
-  {
-    "name": "Coldwell Banker Hallmark Realty",
-    "sector": "Real Estate",
-    "description": "Coldwell Banker Hallmark Realty is a real estate brokerage firm.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-3013",
-      "11-9199",
-      "13-1082",
-      "41-9031"
-    ],
-    "website": "https://cbhallmark.com",
-    "swp_sectors": []
-  },
-  {
-    "name": "Jeffer Mangels Butler & Mitchell LLP",
-    "sector": "Professional Services",
-    "description": "Jeffer Mangels Butler & Mitchell LLP is a law firm.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-3012",
-      "11-9199",
-      "13-1041",
-      "23-2011"
-    ],
-    "website": "https://www.jmbm.com",
-    "swp_sectors": []
-  },
-  {
-    "name": "LA County District Attorney Office",
-    "sector": "Professional Services",
-    "description": "The LA County District Attorney's Office prosecutes criminal cases.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-3012",
-      "13-1041",
-      "23-2011"
-    ],
-    "website": "https://da.lacounty.gov",
-    "swp_sectors": []
-  },
-  {
-    "name": "Lewis Brisbois Bisgaard & Smith LLP",
-    "sector": "Professional Services",
-    "description": "Lewis Brisbois Bisgaard & Smith LLP is a law firm.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-3012",
-      "11-9199",
-      "13-1041",
-      "23-2011"
-    ],
-    "website": "https://lewisbrisbois.com",
-    "swp_sectors": []
-  },
-  {
-    "name": "Los Angeles County Alternate Public Defender",
-    "sector": "Professional Services",
-    "description": "The Los Angeles County Alternate Public Defender provides legal defense services.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-3012",
-      "13-1041",
-      "23-2011"
-    ],
-    "website": "https://apd.lacounty.gov",
-    "swp_sectors": []
   },
   {
     "name": "EY",
@@ -15846,39 +15596,6 @@
     ]
   },
   {
-    "name": "B2B Data Partners",
-    "sector": "Professional Services",
-    "description": "B2B Data Partners provides data solutions and services for businesses.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-3021",
-      "13-1111",
-      "15-1211",
-      "15-2051"
-    ],
-    "website": "https://www.b2bdatapartners.com",
-    "swp_sectors": []
-  },
-  {
-    "name": "Branded Entertainment Network",
-    "sector": "Professional Services",
-    "description": "Branded Entertainment Network connects brands with entertainment.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-2011",
-      "11-2021",
-      "11-2032",
-      "13-1121",
-      "27-1011"
-    ],
-    "website": "https://www.benlabs.com",
-    "swp_sectors": []
-  },
-  {
     "name": "CEVA Logistics",
     "sector": "Professional Services",
     "description": "CEVA Logistics is a global supply chain and logistics company.",
@@ -15917,25 +15634,6 @@
     "swp_sectors": [
       "Business and Entrepreneurship"
     ]
-  },
-  {
-    "name": "Mallory Alexander International Logistics",
-    "sector": "Professional Services",
-    "description": "An international logistics company managing supply chains and transportation.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3013",
-      "11-3061",
-      "13-1081",
-      "13-2011",
-      "41-4011",
-      "53-3032"
-    ],
-    "website": "https://www.mallorygroup.com",
-    "swp_sectors": []
   },
   {
     "name": "PIH Health",
@@ -16084,25 +15782,6 @@
     ]
   },
   {
-    "name": "Honda Research and Development Americas",
-    "sector": "Professional Services",
-    "description": "A research and development facility for Honda in the Americas.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9041",
-      "15-1252",
-      "17-2011",
-      "17-2141",
-      "19-2032",
-      "49-3011"
-    ],
-    "website": "https://global.honda/en/innovation/design/designstudio/studio7.html",
-    "swp_sectors": []
-  },
-  {
     "name": "Mannkind",
     "sector": "Professional Services",
     "description": "A biopharmaceutical company focused on developing treatments for diabetes and other diseases.",
@@ -16242,45 +15921,6 @@
     "swp_sectors": [
       "Business and Entrepreneurship"
     ]
-  },
-  {
-    "name": "Rubin Postaer and Associates",
-    "sector": "Professional Services",
-    "description": "An advertising and marketing agency.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-2011",
-      "11-2021",
-      "11-2033",
-      "13-1161",
-      "13-1199",
-      "27-1024",
-      "27-3031"
-    ],
-    "website": "https://www.rpa.com",
-    "swp_sectors": []
-  },
-  {
-    "name": "TBWA\u00a0Chiat\u00a0Day",
-    "sector": "Professional Services",
-    "description": "A global advertising agency known for its creative campaigns.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-2011",
-      "11-2021",
-      "11-2033",
-      "13-1161",
-      "13-1199",
-      "27-1011",
-      "27-1024",
-      "27-3031"
-    ],
-    "website": "https://tbwachiatdayla.com",
-    "swp_sectors": []
   },
   {
     "name": "Larey Rubbish Pick Up Services",
@@ -16729,7 +16369,9 @@
       "13-1071"
     ],
     "website": "https://www.busd.k12.ca.us",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "Belmont High School",
@@ -16833,7 +16475,9 @@
       "25-9044"
     ],
     "website": "https://eastmanavees.lausd.org",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "El Camino Real Charter High School",
@@ -16916,7 +16560,9 @@
       "25-9044"
     ],
     "website": "https://www.ghctk12.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "Harvard-Westlake School",
@@ -17095,7 +16741,9 @@
       "13-1071"
     ],
     "website": "https://www.apu.edu",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "California State Polytechnic University",
@@ -17192,7 +16840,9 @@
       "15-1211"
     ],
     "website": "https://www.usc.edu",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "USC School of Pharmacy",
@@ -17246,7 +16896,9 @@
       "29-1141"
     ],
     "website": "https://www.westernu.edu",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "East Los Angeles Occupational Center",
@@ -17295,7 +16947,9 @@
       "29-2043"
     ],
     "website": "https://www.brault.us",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "High Desert Health System",
@@ -17416,7 +17070,9 @@
       "31-1131"
     ],
     "website": "https://healthy.kaiserpermanente.org/southern-california",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Mental Health Department",
@@ -17478,7 +17134,9 @@
       "13-2011"
     ],
     "website": "https://southerncalifornia.permanente.org",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "USC Engemann Student Health Center",
@@ -17553,7 +17211,9 @@
       "29-1129"
     ],
     "website": "https://www.scadpinc.org",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Visiting Nurse Association and Hospice of Southern California",
@@ -17573,7 +17233,9 @@
       "31-9092"
     ],
     "website": "https://www.vnacare.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "All Saints Healthcare",
@@ -17635,7 +17297,9 @@
       "31-1131"
     ],
     "website": "https://choc.org/locations/health-center-at-pih-health/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Kaiser Permanente Imperial",
@@ -17715,7 +17379,9 @@
       "29-1129"
     ],
     "website": "https://www.movinglivesforward.org",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Tenet Healthcare Corporation",
@@ -17818,7 +17484,9 @@
       "31-9092"
     ],
     "website": "https://www.casacolina.org",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Centinela Hospital Medical Center",
@@ -17899,7 +17567,9 @@
       "31-9092"
     ],
     "website": "https://www.dignityhealth.org/socal/locations/glendalememorial",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Dignity Health Northridge Hospital",
@@ -17918,7 +17588,9 @@
       "31-9092"
     ],
     "website": "https://www.dignityhealth.org/socal/locations/northridgehospital",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "East Los Angeles Doctors Hospital",
@@ -17999,7 +17671,9 @@
       "31-9092"
     ],
     "website": "https://www.emanatehealth.org/locations/emanate-health-queen-of-the-valley-hospital/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Encino Hospital Medical Center",
@@ -18038,7 +17712,9 @@
       "31-1131"
     ],
     "website": "https://www.gatewayshospital.org",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Glendora Community Hospital",
@@ -18141,7 +17817,9 @@
       "31-9092"
     ],
     "website": "https://healthy.kaiserpermanente.org/southern-california",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Kaiser Permanente Woodland Hills",
@@ -18429,7 +18107,9 @@
       "31-9092"
     ],
     "website": "https://msagardens.org",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Park Avenue Healthcare",
@@ -18564,7 +18244,9 @@
       "21-1099"
     ],
     "website": "https://hillsides.org",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Pilgrim Place",
@@ -18601,7 +18283,9 @@
       "29-1129"
     ],
     "website": "https://www.elarc.org",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Inland Valley Care and Rehabilitation Center",
@@ -18620,7 +18304,9 @@
       "31-9092"
     ],
     "website": "https://healthy.kaiserpermanente.org/southern-california/facilities/inland-valley-care-and-rehabilitation-center-326995",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Lincoln Training Center",
@@ -18661,24 +18347,6 @@
     "swp_sectors": [
       "Education and Human Development"
     ]
-  },
-  {
-    "name": "Los Angeles County Department of Parks and Recreation",
-    "sector": "Arts & Entertainment",
-    "description": "This department oversees and manages parks, recreational facilities, and programs throughout Los Angeles County.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-9072",
-      "11-3013",
-      "13-1121",
-      "15-1255",
-      "27-1029",
-      "39-5091"
-    ],
-    "website": "https://parks.lacounty.gov",
-    "swp_sectors": []
   },
   {
     "name": "Pacific Park",
@@ -18810,7 +18478,9 @@
       "41-4011"
     ],
     "website": "https://www.fairmont.com/en/hotels/santa-monica/fairmont-miramar-hotel-bungalows.html",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Four Points by Sheraton Los Angeles",
@@ -19222,7 +18892,9 @@
       "49-9062"
     ],
     "website": "https://www.visitcatalinaisland.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Sheraton Gateway Los Angeles",
@@ -19613,60 +19285,6 @@
     ]
   },
   {
-    "name": "Church of Jesus Christ of Latter-day Saints",
-    "sector": "Other Services",
-    "description": "A religious institution providing spiritual leadership and community support.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-9199",
-      "13-1131",
-      "21-2011",
-      "21-2021",
-      "21-2099",
-      "25-3099"
-    ],
-    "website": "https://www.churchofjesuschrist.org",
-    "swp_sectors": []
-  },
-  {
-    "name": "Church of Scientology Celebrity Centre",
-    "sector": "Other Services",
-    "description": "A specific branch of the Church of Scientology.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-9199",
-      "13-1131",
-      "21-2011",
-      "21-2021",
-      "21-2099",
-      "25-3099"
-    ],
-    "website": "https://www.scientology.cc",
-    "swp_sectors": []
-  },
-  {
-    "name": "Los Angeles Council Korean",
-    "sector": "Other Services",
-    "description": "A council or organization representing the Korean community in Los Angeles.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-9151",
-      "13-1111",
-      "21-1099",
-      "27-3031"
-    ],
-    "website": "https://www.kafla.info",
-    "swp_sectors": []
-  },
-  {
     "name": "Court of Appeal",
     "sector": "Government",
     "description": "A judicial body that hears appeals from lower courts.",
@@ -19688,44 +19306,6 @@
     ]
   },
   {
-    "name": "Department of Business Oversight",
-    "sector": "Government",
-    "description": "A government department responsible for regulating businesses.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-3012",
-      "13-1041",
-      "13-2061",
-      "13-2081",
-      "43-4161"
-    ],
-    "website": "https://dfpi.ca.gov",
-    "swp_sectors": []
-  },
-  {
-    "name": "Los Angeles County Museum of Natural History",
-    "sector": "Government",
-    "description": "A museum dedicated to natural history and scientific research.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-9039",
-      "11-9121",
-      "11-9199",
-      "13-1111",
-      "25-4013",
-      "27-1011",
-      "27-1013"
-    ],
-    "website": "https://nhmlac.org",
-    "swp_sectors": []
-  },
-  {
     "name": "Los Angeles County Public Social Services",
     "sector": "Government",
     "description": "A county agency administering social welfare programs.",
@@ -19742,7 +19322,9 @@
       "29-9099"
     ],
     "website": "https://dpss.lacounty.gov",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "CHS Century Regional Detention Facility",
@@ -19760,7 +19342,9 @@
       "43-4161"
     ],
     "website": "https://lasd.org",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Public Safety"
+    ]
   },
   {
     "name": "Commerce City Public Safety",
@@ -19839,7 +19423,9 @@
       "43-4161"
     ],
     "website": "https://lasd.org",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Public Safety"
+    ]
   },
   {
     "name": "Lancaster Sheriff's Office",
@@ -19899,7 +19485,9 @@
       "43-4161"
     ],
     "website": "https://www.longbeach.gov/police/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Public Safety"
+    ]
   },
   {
     "name": "Los Angeles City Attorney",
@@ -20002,7 +19590,9 @@
       "43-4161"
     ],
     "website": "https://www.lausd.org",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "Monterey Park Police Department",
@@ -20040,7 +19630,9 @@
       "29-9099"
     ],
     "website": "https://dcfs.lacounty.gov/parents/adoption/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "Long Beach Department of Health and Human Services",
@@ -20059,7 +19651,9 @@
       "29-9099"
     ],
     "website": "https://www.longbeach.gov/health/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Los Angeles County Department of Children and Family Services",
@@ -20097,7 +19691,9 @@
       "43-4161"
     ],
     "website": "https://www.va.gov/careers-employment/vocational-rehabilitation/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "Hyperion Treatment Plant",
@@ -20245,26 +19841,9 @@
       "29-1141"
     ],
     "website": "https://www.dignityhealth.org/central-coast/locations/stjohnsregional",
-    "swp_sectors": []
-  },
-  {
-    "name": "Casa Pacific App",
-    "sector": "Government",
-    "description": "Casa Pacific App is a technology company developing mobile applications.",
-    "regions": [
-      "SCC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3021",
-      "13-1082",
-      "15-1252",
-      "15-1254",
-      "43-9031"
-    ],
-    "website": "https://www.casapacifica.org/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Pacific Production Plumbing",
@@ -20343,7 +19922,9 @@
       "35-2013"
     ],
     "website": "https://www.usfoods.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Global Trade"
+    ]
   },
   {
     "name": "Moss Brothers Honda",
@@ -20399,7 +19980,9 @@
       "53-3032"
     ],
     "website": "https://www.mclaneco.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Advanced Transportation and Logistics"
+    ]
   },
   {
     "name": "Golden Era Productions",
@@ -20421,61 +20004,6 @@
     "swp_sectors": [
       "Information and Communication Technologies - Digital Media"
     ]
-  },
-  {
-    "name": "Skanska USA Civil West California District",
-    "sector": "Professional Services",
-    "description": "A civil engineering and construction company operating in California.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-9021",
-      "11-9041",
-      "13-1051",
-      "13-1082",
-      "17-2051",
-      "17-3022"
-    ],
-    "website": "https://www.usa.skanska.com/who-we-are/contact-us/skanska-offices/riverside-ca/",
-    "swp_sectors": []
-  },
-  {
-    "name": "CR&R Inc. Perris",
-    "sector": "Professional Services",
-    "description": "A waste management and recycling company.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-3012",
-      "11-3013",
-      "13-1199",
-      "17-2081",
-      "53-3032"
-    ],
-    "website": "https://crrwasteservices.com/",
-    "swp_sectors": []
-  },
-  {
-    "name": "Physicians for Healthy Hospitals",
-    "sector": "Professional Services",
-    "description": "A group of physicians advocating for and supporting hospital operations.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-3031",
-      "11-9111",
-      "13-1071",
-      "15-1211",
-      "29-1141"
-    ],
-    "website": "https://www.physiciansforhealthyhospitals.us/",
-    "swp_sectors": []
   },
   {
     "name": "Canyon Lake Middle School",
@@ -20696,24 +20224,9 @@
       "31-2021"
     ],
     "website": "https://promedicaskillednursing.org/",
-    "swp_sectors": []
-  },
-  {
-    "name": "Coachella Valley Recreation & Parks",
-    "sector": "Arts & Entertainment",
-    "description": "A district managing parks and recreational activities in the Coachella Valley.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-3012",
-      "11-9072",
-      "13-1199",
-      "27-2022"
-    ],
-    "website": "https://www.myrecreationdistrict.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "BIGHORN Mountains Course",
@@ -20768,7 +20281,9 @@
       "13-1199"
     ],
     "website": "https://www.omnihotels.com/hotels/palm-springs-rancho-las-palmas",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Renaissance Esmeralda Resort",
@@ -20785,7 +20300,9 @@
       "53-5022"
     ],
     "website": "https://www.marriott.com/en-us/hotels/pspsr-renaissance-esmeralda-resort-and-spa-indian-wells/overview/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Savoury's",
@@ -20818,7 +20335,9 @@
       "11-3012"
     ],
     "website": "https://www.coachella.org/departments/police-department",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Public Safety"
+    ]
   },
   {
     "name": "Robert Presley Detention Center",
@@ -20851,7 +20370,9 @@
       "11-9199"
     ],
     "website": "https://www.29palms.marines.mil/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Energy, Construction and Utilities"
+    ]
   },
   {
     "name": "Superior Electrical Mechanical",
@@ -20891,24 +20412,6 @@
       "Advanced Transportation and Logistics",
       "Advanced Manufacturing"
     ]
-  },
-  {
-    "name": "San Bernardino County IT Department",
-    "sector": "Professional Services",
-    "description": "Manages the information technology infrastructure and services for San Bernardino County government.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-3021",
-      "15-1211",
-      "15-1244",
-      "15-1252",
-      "43-9031",
-      "11-3012"
-    ],
-    "website": "https://wp.sbcounty.gov/it/",
-    "swp_sectors": []
   },
   {
     "name": "Environmental Systems Research",
@@ -21112,7 +20615,9 @@
       "11-3131"
     ],
     "website": "https://www.cdcr.ca.gov/facility-locator/cim/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Primary Care Association Medical Group",
@@ -21314,44 +20819,6 @@
     "swp_sectors": [
       "Health"
     ]
-  },
-  {
-    "name": "San Bernardino County",
-    "sector": "Government",
-    "description": "This entry represents the county government for San Bernardino.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-3012",
-      "11-3121",
-      "13-1071",
-      "15-1244",
-      "23-2011",
-      "43-4161"
-    ],
-    "website": "https://main.sbcounty.gov/",
-    "swp_sectors": []
-  },
-  {
-    "name": "Upland City",
-    "sector": "Government",
-    "description": "This is the city government for Upland.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-3012",
-      "11-3121",
-      "13-1071",
-      "15-1244",
-      "23-2011",
-      "43-4161"
-    ],
-    "website": "https://www.uplandca.gov/",
-    "swp_sectors": []
   },
   {
     "name": "Sun Valley Packing",
@@ -21987,26 +21454,6 @@
     ]
   },
   {
-    "name": "Mayers Memorial Hospital",
-    "sector": "Professional Services",
-    "description": "A hospital providing healthcare services.",
-    "regions": [
-      "FN"
-    ],
-    "occupations": [
-      "11-9111",
-      "11-3012",
-      "13-1071",
-      "15-1211",
-      "29-1141",
-      "29-2061",
-      "31-1131",
-      "31-9092"
-    ],
-    "website": "https://www.mayersmemorial.com/",
-    "swp_sectors": []
-  },
-  {
     "name": "Elite Universal Security",
     "sector": "Administrative Services",
     "description": "A security services company.",
@@ -22496,24 +21943,6 @@
     ]
   },
   {
-    "name": "Whiskeytown National Recreation Area",
-    "sector": "Arts & Entertainment",
-    "description": "A national park area managed by the National Park Service.",
-    "regions": [
-      "FN"
-    ],
-    "occupations": [
-      "11-9072",
-      "11-9199",
-      "13-1041",
-      "19-1031",
-      "19-2041",
-      "27-1011"
-    ],
-    "website": "https://www.nps.gov/whis/",
-    "swp_sectors": []
-  },
-  {
     "name": "Bridge Bay At Shasta Lake",
     "sector": "Hospitality & Food Service",
     "description": "A resort or recreational facility located at Shasta Lake.",
@@ -22569,7 +21998,9 @@
       "53-3032"
     ],
     "website": "https://www.cityofredding.gov/government/departments/public_works/index.php",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Energy, Construction and Utilities"
+    ]
   },
   {
     "name": "Redding Police Department",
@@ -24410,7 +23841,9 @@
       "49-2094"
     ],
     "website": "https://www.foxconn.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Advanced Manufacturing"
+    ]
   },
   {
     "name": "Infineon Technologies",
@@ -25895,38 +25328,6 @@
     ]
   },
   {
-    "name": "Pillsbury Winthrop Shaw Pittman",
-    "sector": "Professional Services",
-    "description": "A law firm with a broad practice, including technology, finance, and litigation.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "11-3031",
-      "13-2011",
-      "23-2011",
-      "11-1011"
-    ],
-    "website": "https://www.pillsburylaw.com/",
-    "swp_sectors": []
-  },
-  {
-    "name": "Wilson Sonsini Goodrich & Rosati",
-    "sector": "Professional Services",
-    "description": "A law firm focused on technology, life sciences, and venture capital.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "11-3031",
-      "13-2011",
-      "23-2011",
-      "11-1011"
-    ],
-    "website": "https://www.wsgr.com/",
-    "swp_sectors": []
-  },
-  {
     "name": "Moss Adams LLP",
     "sector": "Professional Services",
     "description": "An accounting and consulting firm serving a variety of industries.",
@@ -26617,23 +26018,6 @@
     ]
   },
   {
-    "name": "County of Santa Clara Health System",
-    "sector": "Professional Services",
-    "description": "A public healthcare system serving the residents of Santa Clara County.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "11-9111",
-      "29-1141",
-      "31-1131",
-      "11-3012",
-      "13-2011"
-    ],
-    "website": "https://scvmc.sccgov.org/",
-    "swp_sectors": []
-  },
-  {
     "name": "Deloitte Consulting",
     "sector": "Professional Services",
     "description": "A professional services firm offering consulting in strategy, operations, and technology.",
@@ -26725,22 +26109,6 @@
     "swp_sectors": [
       "Business and Entrepreneurship"
     ]
-  },
-  {
-    "name": "RFI Communications and Security",
-    "sector": "Professional Services",
-    "description": "A company providing communication and security systems integration.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "49-2022",
-      "11-3013",
-      "15-1212",
-      "49-2097"
-    ],
-    "website": "https://www.rfi.com/",
-    "swp_sectors": []
   },
   {
     "name": "Spirent Communications",
@@ -26930,21 +26298,6 @@
     ]
   },
   {
-    "name": "Ampco System Parking",
-    "sector": "Administrative Services",
-    "description": "A company providing parking management and operational services.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "11-3013",
-      "11-1021",
-      "11-9179"
-    ],
-    "website": "https://www.ampcosystemparking.com/",
-    "swp_sectors": []
-  },
-  {
     "name": "Armorcode",
     "sector": "Administrative Services",
     "description": "A company likely in the cybersecurity or software development sector.",
@@ -27059,24 +26412,6 @@
     "swp_sectors": [
       "Public Safety"
     ]
-  },
-  {
-    "name": "Sandis Civil Engineers Surveyors",
-    "sector": "Administrative Services",
-    "description": "A firm providing civil engineering and surveying services.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "11-9041",
-      "13-1051",
-      "17-1022",
-      "17-2051",
-      "17-3022",
-      "17-3011"
-    ],
-    "website": "https://www.sandis.net/",
-    "swp_sectors": []
   },
   {
     "name": "Sonicwall",
@@ -27623,7 +26958,9 @@
       "27-3041"
     ],
     "website": "https://www.arts4all.org/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "Cupertino High School",
@@ -27699,7 +27036,9 @@
       "25-9044"
     ],
     "website": "https://www.escuelapopular.org/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "Forest Hill Elementary School",
@@ -27938,7 +27277,9 @@
       "29-1141"
     ],
     "website": "https://med.stanford.edu/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "Kaiser Permanente Campbell Medical",
@@ -28134,7 +27475,9 @@
       "31-9092"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Seniors At Home",
@@ -28170,7 +27513,9 @@
       "31-9092"
     ],
     "website": "https://www.visitingangels.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Idylwood Care Center",
@@ -28264,7 +27609,9 @@
       "31-2021"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Stanford Blood Center",
@@ -28339,7 +27686,9 @@
       "31-1131"
     ],
     "website": "https://www.elcaminohealth.org/locations/los-gatos",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Good Samaritan Hospital",
@@ -28470,7 +27819,9 @@
       "31-1131"
     ],
     "website": "https://www.regionalmedicalsanjose.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Alum Rock Counseling Center",
@@ -28544,7 +27895,9 @@
       "31-9092"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Grant Cuesta Sub-Acute and Rehabilitation",
@@ -29212,24 +28565,9 @@
       "11-3012"
     ],
     "website": "https://www.paccc.org/",
-    "swp_sectors": []
-  },
-  {
-    "name": "The Tech Interactive",
-    "sector": "Arts & Entertainment",
-    "description": "A science and technology museum offering interactive exhibits and educational programs.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "11-9072",
-      "11-3012",
-      "25-4013",
-      "11-2011",
-      "13-1111"
-    ],
-    "website": "https://www.thetech.org/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "California's Great America",
@@ -29365,23 +28703,6 @@
     ]
   },
   {
-    "name": "San Jose Convention & Visitors Bureau",
-    "sector": "Arts & Entertainment",
-    "description": "An organization promoting tourism and business events in San Jose.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "11-2021",
-      "11-2032",
-      "11-3012",
-      "13-1121",
-      "11-2011"
-    ],
-    "website": "https://www.sanjose.org/",
-    "swp_sectors": []
-  },
-  {
     "name": "Cordevalle",
     "sector": "Hospitality & Food Service",
     "description": "A resort and golf destination offering lodging, dining, and recreational activities.",
@@ -29494,7 +28815,9 @@
       "13-1121"
     ],
     "website": "https://www.hilton.com/en/hotels/sjcmhgi-hilton-garden-inn-milpitas/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Hilton San Jose",
@@ -29549,7 +28872,9 @@
       "13-1121"
     ],
     "website": "https://www.ihg.com/holidayinn/hotels/us/en/san-jose/sjcnn/hoteldetail",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Hotel Valencia Santana Row",
@@ -30111,76 +29436,6 @@
     ]
   },
   {
-    "name": "Palo Alto Hills Golf & Country Club",
-    "sector": "Other Services",
-    "description": "A private country club featuring golf and recreational facilities.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "11-9072",
-      "11-3012",
-      "11-3013",
-      "13-1121",
-      "27-2022",
-      "43-4161"
-    ],
-    "website": "https://www.paloaltohillsgcc.com/",
-    "swp_sectors": []
-  },
-  {
-    "name": "Silver Creek Valley Country Club",
-    "sector": "Other Services",
-    "description": "A private country club with golf and dining amenities.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "11-9072",
-      "11-3012",
-      "11-3013",
-      "13-1121",
-      "27-2022",
-      "43-4161"
-    ],
-    "website": "https://www.silvercreekvalleyclub.com/",
-    "swp_sectors": []
-  },
-  {
-    "name": "YWCA Golden Gate Silicon Valley",
-    "sector": "Other Services",
-    "description": "A non-profit organization focused on empowering women and girls.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "11-9151",
-      "11-3012",
-      "13-1071",
-      "21-1021",
-      "21-1099",
-      "43-4161"
-    ],
-    "website": "https://www.ywca-gg.org/",
-    "swp_sectors": []
-  },
-  {
-    "name": "Santa Clara County Communications",
-    "sector": "Government",
-    "description": "Manages public communications and media relations for Santa Clara County.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "11-2032",
-      "11-3012",
-      "27-3031",
-      "43-4161"
-    ],
-    "website": "https://www.sccgov.org/sites/opa/",
-    "swp_sectors": []
-  },
-  {
     "name": "Santa Clara County Department of Environmental Protection",
     "sector": "Government",
     "description": "Oversees environmental regulations and programs for Santa Clara County.",
@@ -30195,7 +29450,9 @@
       "43-4161"
     ],
     "website": "https://deh.sccgov.org/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Energy, Construction and Utilities"
+    ]
   },
   {
     "name": "Santa Clara County Information Services",
@@ -30229,7 +29486,9 @@
       "43-4161"
     ],
     "website": "https://publicdefender.sccgov.org/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Public Safety"
+    ]
   },
   {
     "name": "Campbell Police Department",
@@ -30318,7 +29577,9 @@
       "43-4161"
     ],
     "website": "https://countyda.sccgov.org/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Public Safety"
+    ]
   },
   {
     "name": "Santa Clara County Juvenile Services",
@@ -30411,7 +29672,9 @@
       "43-4161"
     ],
     "website": "https://www.sanjoseca.gov/your-government/departments-offices/environmental-services",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Energy, Construction and Utilities"
+    ]
   },
   {
     "name": "Coke Farm",
@@ -30526,7 +29789,9 @@
       "43-4161"
     ],
     "website": "https://www.cosb.us/departments/sheriff-coroner",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Public Safety"
+    ]
   },
   {
     "name": "Armstrong Growers",
@@ -31244,7 +30509,9 @@
       "51-4111"
     ],
     "website": "https://www.aoreed.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Energy, Construction and Utilities"
+    ]
   },
   {
     "name": "Baker Electric",
@@ -31305,7 +30572,9 @@
       "51-4111"
     ],
     "website": "https://billhowe.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Energy, Construction and Utilities"
+    ]
   },
   {
     "name": "Foshay Electric",
@@ -31819,7 +31088,9 @@
       "51-5111"
     ],
     "website": "https://www.bakedinthesun.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Agriculture, Water and Environmental Technologies"
+    ]
   },
   {
     "name": "Ne-Mo's Bakery",
@@ -31943,7 +31214,9 @@
       "53-3032"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Agriculture, Water and Environmental Technologies"
+    ]
   },
   {
     "name": "Southern Glazer's Wine & Spirits",
@@ -31963,7 +31236,9 @@
       "53-3032"
     ],
     "website": "https://www.southernglazers.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Agriculture, Water and Environmental Technologies"
+    ]
   },
   {
     "name": "Stone Brewing",
@@ -32226,7 +31501,9 @@
       "43-4161"
     ],
     "website": "https://www.pettitkohn.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Advanced Manufacturing"
+    ]
   },
   {
     "name": "RRD San Diego",
@@ -32265,7 +31542,9 @@
       "51-4111"
     ],
     "website": "https://www.martinmarietta.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Advanced Manufacturing"
+    ]
   },
   {
     "name": "Oldcastle Infrastructure",
@@ -32509,7 +31788,9 @@
       "49-2094"
     ],
     "website": "https://www.programmablepower.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Advanced Manufacturing"
+    ]
   },
   {
     "name": "Asymtek",
@@ -32678,7 +31959,9 @@
       "17-2072"
     ],
     "website": "https://gdmissionsystems.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Advanced Manufacturing"
+    ]
   },
   {
     "name": "H M Electronics",
@@ -33001,7 +32284,9 @@
       "29-1141"
     ],
     "website": "https://www.usa.philips.com/healthcare/solutions/interventional-devices-and-therapies",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Advanced Manufacturing"
+    ]
   },
   {
     "name": "Teledyne RD Instruments",
@@ -33122,7 +32407,9 @@
       "53-5031"
     ],
     "website": "https://www.hiiindustrialsolutions.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Advanced Manufacturing"
+    ]
   },
   {
     "name": "General Dynamics NASSCO",
@@ -33297,7 +32584,9 @@
       "29-1141"
     ],
     "website": "https://www.bd.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Advanced Manufacturing"
+    ]
   },
   {
     "name": "Dexcom",
@@ -33772,7 +33061,9 @@
       "53-3032"
     ],
     "website": "https://www.sysco.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Global Trade"
+    ]
   },
   {
     "name": "Airgas Store",
@@ -33834,7 +33125,9 @@
       "53-3032"
     ],
     "website": "https://www.anheuser-busch.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Global Trade"
+    ]
   },
   {
     "name": "Liquid Investments",
@@ -33891,7 +33184,9 @@
       "41-4011"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Global Trade"
+    ]
   },
   {
     "name": "Mellano &",
@@ -34145,25 +33440,6 @@
     ]
   },
   {
-    "name": "East County Preowned Sprinter",
-    "sector": "Retail",
-    "description": "East County Preowned Sprinter sells used Sprinter vans.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-2021",
-      "11-3012",
-      "13-1081",
-      "41-9031",
-      "43-4161",
-      "49-3023"
-    ],
-    "website": null,
-    "swp_sectors": []
-  },
-  {
     "name": "Encinitas Ford",
     "sector": "Retail",
     "description": "Encinitas Ford is a dealership selling new and used Ford vehicles.",
@@ -34405,25 +33681,6 @@
     ]
   },
   {
-    "name": "JELD-WEN",
-    "sector": "Retail",
-    "description": "A manufacturer of windows and doors.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-3051",
-      "11-9041",
-      "13-1051",
-      "13-1081",
-      "17-2112",
-      "49-9062",
-      "51-4111"
-    ],
-    "website": "https://www.jeld-wen.com/",
-    "swp_sectors": []
-  },
-  {
     "name": "Defense Commissary Agency",
     "sector": "Retail",
     "description": "Operates commissaries for military personnel and their families.",
@@ -34538,23 +33795,6 @@
     ]
   },
   {
-    "name": "Buster's Beach House",
-    "sector": "Retail",
-    "description": "A beachfront restaurant offering seafood and casual dining.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-9179",
-      "13-1121",
-      "35-2013",
-      "41-4011",
-      "43-4161"
-    ],
-    "website": "https://www.bustersbeachhouse.com/",
-    "swp_sectors": []
-  },
-  {
     "name": "FedEx Corporation",
     "sector": "Transportation",
     "description": "A global courier delivery services company.",
@@ -34652,7 +33892,9 @@
       "25-2052"
     ],
     "website": "https://www.cvesd.org/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Advanced Transportation and Logistics"
+    ]
   },
   {
     "name": "San Diego Metropolitan Transit System",
@@ -34692,7 +33934,9 @@
       "51-5111"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Advanced Transportation and Logistics"
+    ]
   },
   {
     "name": "San Diego International Airport",
@@ -34755,148 +33999,6 @@
     "swp_sectors": [
       "Information and Communication Technologies - Digital Media"
     ]
-  },
-  {
-    "name": "First Financial & Real Estate Services",
-    "sector": "Finance",
-    "description": "Provides integrated financial and real estate services.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3031",
-      "13-2011",
-      "13-2051",
-      "13-2052",
-      "41-3031",
-      "43-4161"
-    ],
-    "website": null,
-    "swp_sectors": []
-  },
-  {
-    "name": "Anchor General Insurance Agency",
-    "sector": "Finance",
-    "description": "An insurance agency providing various types of insurance.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-2021",
-      "13-1032",
-      "13-2053",
-      "41-4011",
-      "43-4161"
-    ],
-    "website": "https://www.anchorgeneral.com/",
-    "swp_sectors": []
-  },
-  {
-    "name": "CSA Travel Protection",
-    "sector": "Finance",
-    "description": "Provides travel insurance and assistance services.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-2021",
-      "13-1032",
-      "13-2053",
-      "41-4011",
-      "43-4161"
-    ],
-    "website": "https://www.csatravelprotection.com/",
-    "swp_sectors": []
-  },
-  {
-    "name": "Insurance Company of the West",
-    "sector": "Finance",
-    "description": "An insurance company offering a range of insurance products.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-2021",
-      "11-3061",
-      "13-1032",
-      "13-2053",
-      "41-4011",
-      "43-4161"
-    ],
-    "website": "https://www.icw.com/",
-    "swp_sectors": []
-  },
-  {
-    "name": "Bremer Whyte Brown & O'Meara LLP",
-    "sector": "Professional Services",
-    "description": "A law firm specializing in civil litigation defense.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1021",
-      "13-1111",
-      "23-2011",
-      "43-4161"
-    ],
-    "website": "https://www.bremerwhyte.com/",
-    "swp_sectors": []
-  },
-  {
-    "name": "Federal Defenders of San Diego",
-    "sector": "Professional Services",
-    "description": "A legal defense organization providing representation to indigent defendants in federal court.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-3031",
-      "13-1071",
-      "13-2011",
-      "23-2011",
-      "23-2099"
-    ],
-    "website": "https://www.fdsdi.com/",
-    "swp_sectors": []
-  },
-  {
-    "name": "Lewis Brisbois Bisgaard & Smith",
-    "sector": "Professional Services",
-    "description": "A national law firm with a diverse practice and industry focus.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-3031",
-      "13-1071",
-      "13-2011",
-      "23-2011",
-      "23-2099"
-    ],
-    "website": "https://lewisbrisbois.com/",
-    "swp_sectors": []
-  },
-  {
-    "name": "Robbins Geller Rudman & Dowd LLP",
-    "sector": "Professional Services",
-    "description": "A law firm specializing in complex litigation, including securities and antitrust cases.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-3031",
-      "13-1071",
-      "13-2011",
-      "23-2011",
-      "23-2099"
-    ],
-    "website": "https://www.rgrdlaw.com/",
-    "swp_sectors": []
   },
   {
     "name": "Deloitte Tax LLP",
@@ -35171,25 +34273,6 @@
     ]
   },
   {
-    "name": "G2 Software Systems",
-    "sector": "Professional Services",
-    "description": "A software development company.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-3021",
-      "13-1081",
-      "13-1082",
-      "15-1211",
-      "15-1252",
-      "15-1254"
-    ],
-    "website": "https://www.g2-inc.com/",
-    "swp_sectors": []
-  },
-  {
     "name": "General Atomics",
     "sector": "Professional Services",
     "description": "A company involved in energy and defense technologies, including nuclear and aerospace.",
@@ -35229,7 +34312,9 @@
       "17-3022"
     ],
     "website": "https://www.rickengineering.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Energy, Construction and Utilities"
+    ]
   },
   {
     "name": "Glumac",
@@ -35345,24 +34430,6 @@
     ]
   },
   {
-    "name": "Carrier Johnson + Culture",
-    "sector": "Professional Services",
-    "description": "An architecture and design firm focused on creating innovative and sustainable environments.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-3013",
-      "11-9041",
-      "13-1081",
-      "17-1011",
-      "27-1011"
-    ],
-    "website": "https://carrierjohnson.com/",
-    "swp_sectors": []
-  },
-  {
     "name": "CACI",
     "sector": "Professional Services",
     "description": "A company providing information technology and consulting services to government and commercial clients.",
@@ -35466,25 +34533,6 @@
     "swp_sectors": [
       "Information and Communication Technologies - Digital Media"
     ]
-  },
-  {
-    "name": "Jack Henry & Associates",
-    "sector": "Professional Services",
-    "description": "A company providing technology solutions and services to financial institutions.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-3012",
-      "11-3021",
-      "13-1081",
-      "13-2011",
-      "15-1211",
-      "15-1252"
-    ],
-    "website": "https://www.jackhenry.com/",
-    "swp_sectors": []
   },
   {
     "name": "Kontron America",
@@ -35866,62 +34914,6 @@
     ]
   },
   {
-    "name": "The Ken Blanchard Companies",
-    "sector": "Professional Services",
-    "description": "A company providing leadership training and organizational development services.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-3131",
-      "13-1151",
-      "13-1111",
-      "25-3099"
-    ],
-    "website": "https://www.kenblanchard.com/",
-    "swp_sectors": []
-  },
-  {
-    "name": "Kimley-Horn & Associates",
-    "sector": "Professional Services",
-    "description": "A consulting firm providing engineering, planning, and design services.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-3013",
-      "11-9041",
-      "13-1081",
-      "13-1082",
-      "17-2051",
-      "17-3022"
-    ],
-    "website": "https://www.kimley-horn.com/",
-    "swp_sectors": []
-  },
-  {
-    "name": "Kratos Defense & Security Solutions",
-    "sector": "Professional Services",
-    "description": "A company providing technology solutions for defense, security, and aerospace.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-3021",
-      "11-3051",
-      "13-1081",
-      "15-1252",
-      "17-2011",
-      "17-2061",
-      "17-2071"
-    ],
-    "website": "https://www.kratosdefense.com/",
-    "swp_sectors": []
-  },
-  {
     "name": "Medical Travelers",
     "sector": "Professional Services",
     "description": "A staffing agency for healthcare professionals.",
@@ -36199,26 +35191,6 @@
     ]
   },
   {
-    "name": "Johnson & Johnson Research & Development",
-    "sector": "Professional Services",
-    "description": "A company involved in research and development of pharmaceuticals and medical devices.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-3051",
-      "11-9041",
-      "13-1081",
-      "15-1252",
-      "17-2031",
-      "19-1022",
-      "29-1141"
-    ],
-    "website": "https://www.jnj.com/",
-    "swp_sectors": []
-  },
-  {
     "name": "Kleinfelder Group",
     "sector": "Professional Services",
     "description": "A company providing engineering, construction management, and environmental services.",
@@ -36368,7 +35340,9 @@
       "51-4111"
     ],
     "website": "https://www.pedinc.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Energy, Construction and Utilities"
+    ]
   },
   {
     "name": "Salk Institute for Biological Studies",
@@ -36434,25 +35408,6 @@
     "swp_sectors": [
       "Life Sciences - Biotechnology"
     ]
-  },
-  {
-    "name": "Twining Laboratories",
-    "sector": "Professional Services",
-    "description": "A company providing materials testing and engineering services.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-3013",
-      "11-9041",
-      "13-1051",
-      "17-2131",
-      "17-3028",
-      "19-4031"
-    ],
-    "website": "https://www.twininginc.com/",
-    "swp_sectors": []
   },
   {
     "name": "Havas Worldwide",
@@ -36727,22 +35682,6 @@
     "swp_sectors": [
       "Public Safety"
     ]
-  },
-  {
-    "name": "Rancho Santa Fe Security Systems",
-    "sector": "Administrative Services",
-    "description": "Rancho Santa Fe Security Systems provides security system installation and monitoring.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "15-1211",
-      "49-2022"
-    ],
-    "website": null,
-    "swp_sectors": []
   },
   {
     "name": "Aztec Landscaping",
@@ -37537,7 +36476,9 @@
       "13-2011"
     ],
     "website": "https://www.miracosta.edu/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "Pacific College of Oriental Medicine",
@@ -37554,7 +36495,9 @@
       "13-2011"
     ],
     "website": "https://www.pacificcollege.edu/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "Palomar College",
@@ -37608,7 +36551,9 @@
       "13-2011"
     ],
     "website": "https://www.csusm.edu/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "California Western School of Law",
@@ -37677,7 +36622,9 @@
       "13-2011"
     ],
     "website": "https://pharmacy.ucsd.edu/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "University of Arizona Global Campus",
@@ -37692,7 +36639,9 @@
       "13-2011"
     ],
     "website": "https://www.uagc.edu/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "University of California San Diego, Scripps Institution of Oceanography",
@@ -37711,7 +36660,9 @@
       "13-2011"
     ],
     "website": "https://scripps.ucsd.edu/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "Vincennes University",
@@ -37860,7 +36811,9 @@
       "13-2011"
     ],
     "website": "https://scpa.sandiegounified.org/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "Sweetwater Union High School District",
@@ -37917,7 +36870,9 @@
       "13-2011"
     ],
     "website": "https://www.sdrc.org/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Family Health Center of San Diego",
@@ -37992,7 +36947,9 @@
       "13-2011"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Linda Vista Health Care Center",
@@ -38104,7 +37061,9 @@
       "13-2011"
     ],
     "website": "https://shileyeye.ucsd.edu/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Tri-City Orthopedic Surgery",
@@ -38122,7 +37081,9 @@
       "13-2011"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Tri-City Wellness Center",
@@ -38239,7 +37200,9 @@
       "13-1071"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Scripps Clinic Urgent Care",
@@ -38317,7 +37280,9 @@
       "13-2011"
     ],
     "website": "https://www.sharp.com/locations/sharp-rees-stealy-san-diego-downtown",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Accent Care",
@@ -38353,7 +37318,9 @@
       "13-1071"
     ],
     "website": "https://www.allhearthomecare.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Excel Home Health",
@@ -38389,7 +37356,9 @@
       "13-1071"
     ],
     "website": "https://www.sharp.com/services/home-health",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Community Health Systems",
@@ -38444,7 +37413,9 @@
       "13-2011"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Jacob Health Care Center",
@@ -38559,7 +37530,9 @@
       "13-2011"
     ],
     "website": "https://www.scripps.org/services/laboratory-services",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Sharp Rees-Stealy Medical Group",
@@ -38637,7 +37610,9 @@
       "13-2011"
     ],
     "website": "https://www.bayviewbehavioralhealth.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Jennifer Moreno Department of Veterans Affairs",
@@ -38654,7 +37629,9 @@
       "21-1099"
     ],
     "website": "https://www.va.gov/san-diego-health-care/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Kaiser Permanente San Diego Medical",
@@ -38672,7 +37649,9 @@
       "13-2011"
     ],
     "website": "https://healthy.kaiserpermanente.org/southern-california/facilities/san-diego-medical-center-100055",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Kindred Hospital San Diego",
@@ -38730,7 +37709,9 @@
       "13-2011"
     ],
     "website": "https://www.sandiegocounty.gov/hhsa/programs/bhs/sdcphf/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Scripps Green Hospital",
@@ -38768,7 +37749,9 @@
       "13-2011"
     ],
     "website": "https://www.scripps.org/locations/hospitals-5/scripps-memorial-hospital-encinitas",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Scripps Memorial Hospital La Jolla",
@@ -38826,7 +37809,9 @@
       "13-2011"
     ],
     "website": "https://www.scripps.org/locations/hospitals-5/scripps-mercy-hospital-san-diego",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Select Specialty Hospital San Diego",
@@ -38844,7 +37829,9 @@
       "13-1071"
     ],
     "website": "https://www.selectspecialtyhospitals.com/locations/california/san-diego/san-diego/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Sharp Chula Vista Medical Center",
@@ -39039,7 +38026,9 @@
       "13-1071"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Community Care Center",
@@ -39117,7 +38106,9 @@
       "13-1071"
     ],
     "website": "https://www.covenantliving.org/locations/mount-miguel",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Elizabeth Hospice",
@@ -39155,7 +38146,9 @@
       "13-1071"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Frederica Manor Health Care",
@@ -39230,7 +38223,9 @@
       "13-1071"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "La Costa Glen",
@@ -39267,7 +38262,9 @@
       "13-1071"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Lakeside Special Care Center",
@@ -39381,7 +38378,9 @@
       "13-1071"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Progressive Care Center",
@@ -39571,7 +38570,9 @@
       "13-1071"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Cove at La Jolla",
@@ -39879,7 +38880,9 @@
       "21-1099"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Dan McKinney Family YMCA",
@@ -40208,7 +39211,9 @@
       "43-4161"
     ],
     "website": "https://www.upacsd.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Veterans Village of San Diego",
@@ -40338,7 +39343,9 @@
       "43-4161"
     ],
     "website": "https://workforce.org/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Sharp Grossmont Rehabilitation Center",
@@ -40356,7 +39363,9 @@
       "49-9062"
     ],
     "website": "https://www.sharp.com/locations/sharp-grossmont-rehabilitation-center",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Sharp Rehabilitation Services",
@@ -40436,23 +39445,6 @@
       "Education and Human Development",
       "Business and Entrepreneurship"
     ]
-  },
-  {
-    "name": "Old Globe Theatre",
-    "sector": "Arts & Entertainment",
-    "description": "This is a well-known theater.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-9072",
-      "11-2011",
-      "11-3012",
-      "27-1011",
-      "27-2012"
-    ],
-    "website": "https://www.theoldglobe.org/",
-    "swp_sectors": []
   },
   {
     "name": "Belmont Park",
@@ -40650,7 +39642,9 @@
       "13-1121"
     ],
     "website": "https://www.bestwestern.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Best Western Seven Seas",
@@ -40716,7 +39710,9 @@
       "13-1121"
     ],
     "website": "https://www.marriott.com/en-us/hotels/sancb-coronado-island-marriott-resort-and-spa/overview/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Courtyard San Diego Central",
@@ -40748,7 +39744,9 @@
       "13-1121"
     ],
     "website": "https://www.marriott.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Crowne Plaza San Diego-Mission Valley",
@@ -40763,7 +39761,9 @@
       "13-1121"
     ],
     "website": "https://www.ihg.com/crowneplaza/hotels/us/en/san-diego/sanmv/hoteldetail",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Dana on Mission Bay",
@@ -40918,7 +39918,9 @@
       "13-1121"
     ],
     "website": "https://www.fairmont.com/san-diego/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Grand Pacific Palisades Resort",
@@ -41054,7 +40056,9 @@
       "13-1121"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Barleymash",
@@ -41100,7 +40104,9 @@
       "11-3012"
     ],
     "website": "https://www.bistrowest.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Black & Blue Steakhouse",
@@ -41363,41 +40369,6 @@
     ]
   },
   {
-    "name": "Bridges Club",
-    "sector": "Other Services",
-    "description": "A private club located in Rancho Santa Fe offering exclusive amenities.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9072",
-      "11-3012",
-      "13-1121",
-      "41-9031"
-    ],
-    "website": "https://thebridgesrsf.com/",
-    "swp_sectors": []
-  },
-  {
-    "name": "Veterans Home Chula Vista",
-    "sector": "Other Services",
-    "description": "A residential facility providing care and services for veterans.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9111",
-      "11-3012",
-      "29-1141",
-      "31-1131",
-      "43-4161"
-    ],
-    "website": "https://www.calvet.ca.gov/VetHomes/Pages/Chula-Vista.aspx",
-    "swp_sectors": []
-  },
-  {
     "name": "San Diego Zoo Safari Park",
     "sector": "Government",
     "description": "A large zoological park and conservation center featuring diverse animal species and habitats.",
@@ -41539,7 +40510,9 @@
       "17-3022"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Energy, Construction and Utilities"
+    ]
   },
   {
     "name": "Cal Atlantic Homes",
@@ -42303,7 +41276,9 @@
       "51-9162"
     ],
     "website": "https://www.airerite.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Energy, Construction and Utilities"
+    ]
   },
   {
     "name": "Albd Electric & Cable",
@@ -42560,7 +41535,9 @@
       "49-9062"
     ],
     "website": "https://www.servicechampions.net/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Energy, Construction and Utilities"
+    ]
   },
   {
     "name": "Sigler",
@@ -42700,7 +41677,9 @@
       "51-9162"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Energy, Construction and Utilities"
+    ]
   },
   {
     "name": "Grani Installation",
@@ -42818,7 +41797,9 @@
       "49-9062"
     ],
     "website": "https://markbeamishwaterproofing.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Energy, Construction and Utilities"
+    ]
   },
   {
     "name": "Mr Crane",
@@ -42933,7 +41914,9 @@
       "19-1012"
     ],
     "website": "https://www.sunnyd.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Agriculture, Water and Environmental Technologies"
+    ]
   },
   {
     "name": "So Cal Bakeries",
@@ -44565,7 +43548,9 @@
       "49-2093"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Advanced Manufacturing"
+    ]
   },
   {
     "name": "Epson America",
@@ -44845,7 +43830,9 @@
       "49-2093"
     ],
     "website": "https://www.souriau.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Advanced Manufacturing"
+    ]
   },
   {
     "name": "South Coast Circuits",
@@ -44928,7 +43915,9 @@
       "41-4011"
     ],
     "website": "https://toshiba.semicon-storage.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Advanced Manufacturing"
+    ]
   },
   {
     "name": "Anduril Industries",
@@ -45120,7 +44109,9 @@
       "49-2093"
     ],
     "website": "https://www.l3harris.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Advanced Manufacturing"
+    ]
   },
   {
     "name": "Mirion Technologies",
@@ -46526,7 +45517,9 @@
       "49-2022"
     ],
     "website": "https://www.business.toshiba.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Global Trade"
+    ]
   },
   {
     "name": "V Q Orthopedic Care",
@@ -46913,25 +45906,6 @@
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
     ]
-  },
-  {
-    "name": "Beach Cities Toyota Westminster",
-    "sector": "Retail",
-    "description": "Beach Cities Toyota Westminster is a dealership selling and servicing Toyota vehicles.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-2021",
-      "11-3012",
-      "11-3061",
-      "13-1082",
-      "41-4011",
-      "49-3023"
-    ],
-    "website": "https://www.beachcitiestoyota.com/",
-    "swp_sectors": []
   },
   {
     "name": "Buena Park Honda",
@@ -47531,7 +46505,9 @@
       "53-3032"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Advanced Transportation and Logistics"
+    ]
   },
   {
     "name": "Nextday Delivery Services",
@@ -47677,7 +46653,9 @@
       "49-3011"
     ],
     "website": "https://www.ocair.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Advanced Transportation and Logistics"
+    ]
   },
   {
     "name": "Menzies Aviation",
@@ -47851,7 +46829,9 @@
       "43-4161"
     ],
     "website": "https://www.rakuten.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Information and Communication Technologies - Digital Media"
+    ]
   },
   {
     "name": "Towne Allpoints Communications",
@@ -47873,83 +46853,6 @@
     "swp_sectors": [
       "Information and Communication Technologies - Digital Media"
     ]
-  },
-  {
-    "name": "Schoolsfirst Federal Credit Union",
-    "sector": "Finance",
-    "description": "A credit union serving the education community.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3031",
-      "13-2011",
-      "13-2041",
-      "13-2072",
-      "41-3031",
-      "43-4161"
-    ],
-    "website": "https://www.schoolsfirstfcu.org/",
-    "swp_sectors": []
-  },
-  {
-    "name": "First American Mortgage Solutions",
-    "sector": "Finance",
-    "description": "A provider of mortgage services and technology solutions.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3031",
-      "13-2011",
-      "13-2041",
-      "13-2072",
-      "15-1211",
-      "43-4161"
-    ],
-    "website": "https://firstam.com/",
-    "swp_sectors": []
-  },
-  {
-    "name": "PacifiCare Health Systems",
-    "sector": "Finance",
-    "description": "A health maintenance organization (HMO) and health insurance provider.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-9111",
-      "13-1041",
-      "13-2011",
-      "29-1141",
-      "43-4161"
-    ],
-    "website": "https://www.uhc.com/",
-    "swp_sectors": []
-  },
-  {
-    "name": "Pacific Pioneer Insurance Group",
-    "sector": "Finance",
-    "description": "An insurance group offering various insurance products.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1041",
-      "13-2011",
-      "13-2053",
-      "43-4161"
-    ],
-    "website": null,
-    "swp_sectors": []
   },
   {
     "name": "CliftonLarsonAllen LLP",
@@ -48144,43 +47047,6 @@
       "Business and Entrepreneurship",
       "Advanced Manufacturing"
     ]
-  },
-  {
-    "name": "Calscience Environmental Laboratories",
-    "sector": "Professional Services",
-    "description": "Provides environmental testing and analytical services.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-9121",
-      "13-1041",
-      "15-2051",
-      "17-2081",
-      "19-2031",
-      "19-4031",
-      "19-4042"
-    ],
-    "website": "https://www.calscience.com/",
-    "swp_sectors": []
-  },
-  {
-    "name": "City of Orange City Hall",
-    "sector": "Professional Services",
-    "description": "The administrative center for the city government of Orange.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-3012",
-      "11-3031",
-      "13-1041",
-      "13-2081",
-      "13-1111"
-    ],
-    "website": "https://www.cityoforange.org/",
-    "swp_sectors": []
   },
   {
     "name": "Control Components",
@@ -48564,24 +47430,6 @@
     ]
   },
   {
-    "name": "Corsair Electrical Connectors",
-    "sector": "Professional Services",
-    "description": "Manufactures electrical connectors.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-3051",
-      "13-1081",
-      "15-1252",
-      "17-2072",
-      "49-2094",
-      "51-4111"
-    ],
-    "website": null,
-    "swp_sectors": []
-  },
-  {
     "name": "Credencys Solutions",
     "sector": "Professional Services",
     "description": "Provides IT consulting and software development services.",
@@ -48771,24 +47619,6 @@
     "swp_sectors": [
       "Business and Entrepreneurship"
     ]
-  },
-  {
-    "name": "California Pacific Physicians Medical Group",
-    "sector": "Professional Services",
-    "description": "A medical group providing physician services.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-9111",
-      "13-1071",
-      "29-1141",
-      "29-2061",
-      "29-9021",
-      "31-9092"
-    ],
-    "website": null,
-    "swp_sectors": []
   },
   {
     "name": "Chambers Group",
@@ -49232,22 +48062,6 @@
     ]
   },
   {
-    "name": "EC Distribution Services",
-    "sector": "Professional Services",
-    "description": "EC Distribution Services is a logistics and distribution company.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-3012",
-      "11-3051",
-      "13-1081",
-      "53-3032"
-    ],
-    "website": null,
-    "swp_sectors": []
-  },
-  {
     "name": "Mascom Advertising",
     "sector": "Professional Services",
     "description": "Mascom Advertising is an advertising and marketing agency.",
@@ -49338,23 +48152,6 @@
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
     ]
-  },
-  {
-    "name": "MG Disposal Systems",
-    "sector": "Administrative Services",
-    "description": "MG Disposal Systems offers waste management and recycling services.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3051",
-      "13-1081",
-      "53-3032"
-    ],
-    "website": null,
-    "swp_sectors": []
   },
   {
     "name": "USA Hazmat",
@@ -49730,38 +48527,6 @@
     ]
   },
   {
-    "name": "CG Landscape",
-    "sector": "Administrative Services",
-    "description": "CG Landscape provides landscape maintenance and installation services.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1081",
-      "19-4071"
-    ],
-    "website": null,
-    "swp_sectors": []
-  },
-  {
-    "name": "CMS - Creative Maintenance System",
-    "sector": "Administrative Services",
-    "description": "CMS - Creative Maintenance System offers building maintenance and janitorial services.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3013",
-      "43-4161"
-    ],
-    "website": null,
-    "swp_sectors": []
-  },
-  {
     "name": "COIT Carpet & Drapery Cleaners",
     "sector": "Administrative Services",
     "description": "COIT Carpet & Drapery Cleaners provides professional cleaning services for carpets and upholstery.",
@@ -49938,22 +48703,6 @@
       "Business and Entrepreneurship",
       "Agriculture, Water and Environmental Technologies"
     ]
-  },
-  {
-    "name": "Matsunaga Landscape Maintenance",
-    "sector": "Administrative Services",
-    "description": "Matsunaga Landscape Maintenance provides landscape upkeep and horticultural services.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1081",
-      "19-4071"
-    ],
-    "website": null,
-    "swp_sectors": []
   },
   {
     "name": "Orange County Conservation",
@@ -50429,7 +49178,9 @@
       "43-4161"
     ],
     "website": "https://www.cristoreyocmotorsports.org/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "Cypress High School",
@@ -50579,7 +49330,9 @@
       "43-4161"
     ],
     "website": "https://www.ketchum.edu/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "UC Irvine Athletics",
@@ -50692,7 +49445,9 @@
       "43-4161"
     ],
     "website": "https://sldckids.org/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Education and Human Development"
+    ]
   },
   {
     "name": "Waterworks Aquatics",
@@ -50727,7 +49482,9 @@
       "43-4161"
     ],
     "website": "https://www.altamed.org/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Amen Clinics",
@@ -51035,7 +49792,9 @@
       "43-4161"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "St. Jude Heritage Family Medical Group",
@@ -51091,7 +49850,9 @@
       "43-4161"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Victor Medical",
@@ -51146,7 +49907,9 @@
       "51-4111"
     ],
     "website": "https://glidewelldental.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Nash Dental Lab",
@@ -51500,7 +50263,9 @@
       "43-4161"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Wilshire Convalescent Center",
@@ -51621,7 +50386,9 @@
       "43-4161"
     ],
     "website": "https://www.encompasshealth.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Garden Grove Hospital Medical Center",
@@ -51887,7 +50654,9 @@
       "43-4161"
     ],
     "website": "https://www.providence.org/locations/mission-hospital",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Providence St. Joseph Hospital Orange",
@@ -51906,7 +50675,9 @@
       "43-4161"
     ],
     "website": "https://www.providence.org/locations/sjo",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "South Coast Global Medical Center",
@@ -51946,7 +50717,9 @@
       "43-4161"
     ],
     "website": "https://www.placentialinda.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "West Anaheim Medical Center",
@@ -52404,7 +51177,9 @@
       "29-2053"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Park Regency Care Center",
@@ -52442,7 +51217,9 @@
       "29-2053"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Park Vista",
@@ -52600,7 +51377,9 @@
       "29-2053"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Palm Terrace Healthcare Center",
@@ -52778,7 +51557,9 @@
       "29-2053"
     ],
     "website": "https://www.walnutvillage.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Akua Mind-Body-Addiction",
@@ -52959,42 +51740,6 @@
     ]
   },
   {
-    "name": "Medieval Times Dinner & Tournament",
-    "sector": "Arts & Entertainment",
-    "description": "An entertainment venue offering dinner and a medieval-themed tournament.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-9072",
-      "11-9199",
-      "27-2012",
-      "39-5091",
-      "41-4011",
-      "53-3032"
-    ],
-    "website": "https://www.medievaltimes.com/",
-    "swp_sectors": []
-  },
-  {
-    "name": "Santa Ana Parks & Recreation",
-    "sector": "Arts & Entertainment",
-    "description": "The department managing parks and recreation services for the city of Santa Ana.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-3013",
-      "11-9072",
-      "13-1081",
-      "17-1022",
-      "21-1099",
-      "33-3031"
-    ],
-    "website": "https://www.santa-ana.org/parks-recreation-and-community-services/",
-    "swp_sectors": []
-  },
-  {
     "name": "Adventure City",
     "sector": "Arts & Entertainment",
     "description": "A family amusement park offering rides and attractions.",
@@ -53089,23 +51834,6 @@
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
     ]
-  },
-  {
-    "name": "Coto De Caza Golf & Racquet Club",
-    "sector": "Arts & Entertainment",
-    "description": "A private club offering golf and racquet sports facilities.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-9072",
-      "11-9179",
-      "13-1121",
-      "27-2022",
-      "41-4011"
-    ],
-    "website": "https://www.ccmcnet.com/coto",
-    "swp_sectors": []
   },
   {
     "name": "Los Coyotes Country Club",
@@ -53261,7 +51989,9 @@
       "43-4161"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Ayres Hotel Costa Mesa/Newport",
@@ -53523,7 +52253,9 @@
       "43-4161"
     ],
     "website": "https://www.hilton.com/en/hotels/snacmhf-hilton-orange-county-costa-mesa/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Holiday Inn Suites Anaheim",
@@ -53541,7 +52273,9 @@
       "43-4161"
     ],
     "website": "https://www.ihg.com/holidayinn/hotels/us/en/anaheim/anadt/hoteldetail",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Hotel Fera Anaheim",
@@ -53712,7 +52446,9 @@
       "11-3012"
     ],
     "website": null,
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Kura Sushi USA",
@@ -54103,78 +52839,6 @@
     ]
   },
   {
-    "name": "E V Free Church",
-    "sector": "Other Services",
-    "description": "E V Free Church is a religious organization providing spiritual guidance and community services.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9199",
-      "13-1199",
-      "21-2011",
-      "21-2021",
-      "21-2099",
-      "43-4161"
-    ],
-    "website": "https://www.evfreefullerton.com/",
-    "swp_sectors": []
-  },
-  {
-    "name": "Santa Margarita Catholic Church",
-    "sector": "Other Services",
-    "description": "Santa Margarita Catholic Church is a religious institution serving its parishioners.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9199",
-      "13-1199",
-      "21-2011",
-      "21-2021",
-      "21-2099",
-      "43-4161"
-    ],
-    "website": "https://stmargaretcc.org/",
-    "swp_sectors": []
-  },
-  {
-    "name": "Bella Collina Towne and Golf Club",
-    "sector": "Other Services",
-    "description": "Bella Collina Towne and Golf Club is a private club with golf facilities and community amenities.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-9072",
-      "13-1121",
-      "13-1199",
-      "43-4161"
-    ],
-    "website": "https://www.bellacollina.com/",
-    "swp_sectors": []
-  },
-  {
-    "name": "Brea City Administration",
-    "sector": "Government",
-    "description": "Brea City Administration provides general information and administrative services for the city.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1041",
-      "43-4161"
-    ],
-    "website": "https://www.cityofbrea.net/",
-    "swp_sectors": []
-  },
-  {
     "name": "Laguna Beach Lifeguard Services",
     "sector": "Government",
     "description": "Laguna Beach Lifeguard Services provides beach safety and emergency response.",
@@ -54189,23 +52853,9 @@
       "43-4161"
     ],
     "website": "https://www.lagunabeachcity.net/city-hall/marine-safety",
-    "swp_sectors": []
-  },
-  {
-    "name": "Fountain Valley Human Resources",
-    "sector": "Government",
-    "description": "Fountain Valley Human Resources manages employment and personnel matters for the city.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3121",
-      "13-1071",
-      "43-4161"
-    ],
-    "website": "https://www.fountainvalley.org/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Public Safety"
+    ]
   },
   {
     "name": "Fullerton Public Works Maintenance",
@@ -54223,7 +52873,9 @@
       "49-9062"
     ],
     "website": "https://www.cityoffullerton.com/gov/departments/public_works/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Energy, Construction and Utilities"
+    ]
   },
   {
     "name": "Anaheim Police Department",
@@ -54277,7 +52929,9 @@
       "43-4161"
     ],
     "website": "https://www.buenapark.com/departments/police-department",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Public Safety"
+    ]
   },
   {
     "name": "Costa Mesa Fire and Rescue Administration",
@@ -54389,7 +53043,9 @@
       "43-4161"
     ],
     "website": "https://www.newportbeachca.gov/government/departments/fire-department/lifeguard-division",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Public Safety"
+    ]
   },
   {
     "name": "Orange County Probation Department",
@@ -54425,7 +53081,9 @@
       "43-4161"
     ],
     "website": "https://www.ocsheriff.gov/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Public Safety"
+    ]
   },
   {
     "name": "Orange Police Department",
@@ -54460,7 +53118,9 @@
       "43-4161"
     ],
     "website": "https://www.santa-ana.org/police/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Public Safety"
+    ]
   },
   {
     "name": "Theo Lacy Facility",
@@ -54516,7 +53176,9 @@
       "43-4161"
     ],
     "website": "https://www.ochealthinfo.com/about-hca/environmental-health",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Orange County Hazardous Waste Management",
@@ -55029,7 +53691,9 @@
       "21-1091"
     ],
     "website": "https://humboldtgov.org",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "St Joseph Health Medical Group",
@@ -55143,7 +53807,9 @@
       "31-2021"
     ],
     "website": "https://fortunarehabwc.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Granada Rehabilitation and Wellness",
@@ -55159,7 +53825,9 @@
       "31-2021"
     ],
     "website": "https://granadarehabwc.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Suddenlink",
@@ -55176,7 +53844,9 @@
       "49-2022"
     ],
     "website": "https://www.suddenlink.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Information and Communication Technologies - Digital Media"
+    ]
   },
   {
     "name": "Pierson Building Center",
@@ -55789,7 +54459,9 @@
       "29-2053"
     ],
     "website": "https://www.shastacounty.gov/mental-health",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Vibra Hospital of Northern California",
@@ -55827,7 +54499,9 @@
       "31-9092"
     ],
     "website": "https://www.mayersmemorial.com/",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Bridge Bay Resort",
@@ -55844,7 +54518,9 @@
       "39-5012",
       "43-4161"
     ],
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Mayers Memorial Hospital District",
@@ -55882,7 +54558,9 @@
       "31-1131",
       "31-2021"
     ],
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Klamath National Forest",
@@ -56001,7 +54679,9 @@
       "31-9092"
     ],
     "website": "https://www.dignityhealth.org/north-state/locations/mercy-mtshasta",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Roseburg Forest Products",
@@ -56039,7 +54719,9 @@
       "43-4161"
     ],
     "website": "https://www.mountshastaresort.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "Crain Walnut Shelling",
@@ -56138,7 +54820,9 @@
       "29-2057",
       "31-9092"
     ],
-    "swp_sectors": []
+    "swp_sectors": [
+      "Health"
+    ]
   },
   {
     "name": "Corning Ford",
@@ -56197,7 +54881,9 @@
       "43-4161"
     ],
     "website": "https://www.rollinghillscasino.com",
-    "swp_sectors": []
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ]
   },
   {
     "name": "USDA Forest Service",
