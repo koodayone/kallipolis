@@ -223,13 +223,14 @@ function SectorGroupedList({
             Sector
           </span>
           {prioritySet.size > 0 && (
-            <span style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+            <span style={{ display: "inline-flex", alignItems: "baseline", gap: "5px" }}>
               <span style={{
-                width: "6px", height: "6px", borderRadius: "50%",
+                width: "5px", height: "5px", borderRadius: "50%",
                 background: school.brandColorLight, opacity: 0.7,
+                position: "relative", top: "-1px",
               }} />
               <span style={{
-                fontFamily: FONT, fontSize: "9px", fontWeight: 500,
+                fontFamily: FONT, fontSize: "10px", fontWeight: 500,
                 letterSpacing: "0.1em", textTransform: "uppercase",
                 color: school.brandColorLight, opacity: 0.4,
               }}>
