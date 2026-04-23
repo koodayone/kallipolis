@@ -92,7 +92,17 @@ def get_employer_detail(name: str, college: str):
                        collect(DISTINCT CASE WHEN course IS NOT NULL THEN {code: course.code, name: course.name} END) AS courses
             """, name=name, college=college).data()
 
+            # Dedupe by (soc_code, skill). An employer that spans
+            # multiple regions demanding the same occupation produces
+            # multiple Cypher rows for the same (occ, sk) pair (one
+            # per traversal path), and the Cypher `collect(DISTINCT
+            # courses)` aggregates the same courses for each — so
+            # duplicate rows are redundant, not additive. Accumulating
+            # them untouched would expose duplicate skill entries to
+            # the UI (React "duplicate key" warning) and inflate the
+            # "Required Skills (N)" count.
             occ_map: dict[str, dict] = {}
+            seen_skills: dict[str, set[str]] = {}
             for r in occ_result:
                 key = r["soc_code"]
                 if key not in occ_map:
@@ -103,6 +113,10 @@ def get_employer_detail(name: str, college: str):
                         "annual_wage": r["annual_wage"],
                         "skills": [],
                     }
+                    seen_skills[key] = set()
+                if r["skill"] in seen_skills[key]:
+                    continue
+                seen_skills[key].add(r["skill"])
                 courses = [c for c in r["courses"] if c is not None]
                 occ_map[key]["skills"].append({
                     "skill": r["skill"],

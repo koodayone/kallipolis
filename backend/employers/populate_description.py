@@ -107,6 +107,31 @@ def _build_prompt(batch: list[dict]) -> str:
     )
 
 
+# LLM-failure patterns — descriptions matching these are the model
+# telling us it couldn't fetch the URL, dressed up as a description.
+# They slip past length and template-prefix gates because they're
+# grammatically normal sentences. Matched at start, case-insensitive.
+_LLM_FAILURE_PATTERNS = (
+    "i am unable to",
+    "i cannot",
+    "i could not",
+    "unable to access",
+    "unable to provide a description",
+    "cannot provide a description",
+    "website content could not be",
+    "website could not be browsed",
+    "url could not be fetched",
+    "url could not be accessed",
+    "no description can be",
+    "no description could be",
+)
+
+
+def _is_llm_failure_leak(description: str) -> bool:
+    lower = description.strip().lower()
+    return any(p in lower for p in _LLM_FAILURE_PATTERNS)
+
+
 async def _generate_batch_async(
     client, types, batch: list[dict], label: str
 ) -> dict[str, str] | None:
@@ -117,6 +142,11 @@ async def _generate_batch_async(
       * 5xx / 429 / rate → one retry after _TRANSIENT_RETRY_SLEEP
       * Empty response / no JSON array / parse error → immediate None
       * Any other exception → immediate None
+    Per-description gate: descriptions matching LLM failure patterns
+    are dropped (returned as empty string) so the upstream flag-null
+    path handles them. These patterns are the model saying "I couldn't
+    read the URL" in prose form; they slip past length/template gates
+    because they're grammatically normal sentences.
     """
     prompt = _build_prompt(batch)
     config = types.GenerateContentConfig(
@@ -168,10 +198,16 @@ async def _generate_batch_async(
         )
         return None
 
-    return {
-        batch[i]["name"]: str(parsed[i].get("description", "") or "").strip()
-        for i in range(len(batch))
-    }
+    out: dict[str, str] = {}
+    for i in range(len(batch)):
+        desc = str(parsed[i].get("description", "") or "").strip()
+        if desc and _is_llm_failure_leak(desc):
+            # Model produced a prose "I can't read this URL" as the
+            # description. Treat as failure, not success.
+            out[batch[i]["name"]] = ""
+        else:
+            out[batch[i]["name"]] = desc
+    return out
 
 
 async def _run_all_batches(

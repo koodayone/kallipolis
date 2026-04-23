@@ -382,30 +382,6 @@
     ]
   },
   {
-    "name": "Pitman Family Farms",
-    "sector": "Agriculture",
-    "description": "I am unable to access the website for Pitman Family Farms, so I cannot provide a description of what they do or their primary industry.",
-    "regions": [
-      "CVML"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3051",
-      "13-1071",
-      "13-2011",
-      "19-1011",
-      "19-4012",
-      "45-2011",
-      "11-3012",
-      "13-1199",
-      "43-4161"
-    ],
-    "website": "https://www.pitmanfarms.com",
-    "swp_sectors": [
-      "Agriculture, Water and Environmental Technologies"
-    ]
-  },
-  {
     "name": "Foster Farms",
     "sector": "Agriculture",
     "description": "Foster Farms is a poultry company that produces and sells premium chicken and turkey products, ranging from fresh whole chickens to ready-to-eat meals, operating within the food and agriculture industry.",
@@ -600,7 +576,7 @@
     ],
     "website": "https://www.cargill.com",
     "swp_sectors": [
-      "Agriculture, Water and Environmental Technologies"
+      "Global Trade"
     ]
   },
   {
@@ -866,29 +842,7 @@
     ],
     "website": "https://www.ulta.com",
     "swp_sectors": [
-      "Advanced Transportation and Logistics"
-    ]
-  },
-  {
-    "name": "Geil Enterprises",
-    "sector": "Administrative Services",
-    "description": "I am unable to provide a description for Geil Enterprises as the website content was not accessible.",
-    "regions": [
-      "CVML"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1071",
-      "13-1199",
-      "13-2011",
-      "15-1211",
-      "15-1244",
-      "43-4161"
-    ],
-    "website": "https://geilenterprises.com",
-    "swp_sectors": [
-      "Business and Entrepreneurship"
+      "Retail, Hospitality and Tourism"
     ]
   },
   {
@@ -1327,30 +1281,6 @@
     ]
   },
   {
-    "name": "Central Valley Regional Center",
-    "sector": "Healthcare",
-    "description": "I am unable to provide a description for Central Valley Regional Center as the website content could not be accessed.",
-    "regions": [
-      "CVML"
-    ],
-    "occupations": [
-      "11-9151",
-      "11-3012",
-      "13-1071",
-      "21-1029",
-      "21-1099",
-      "13-1199",
-      "21-1018",
-      "11-1021",
-      "13-2011",
-      "15-1244"
-    ],
-    "website": "https://www.cvrc.org",
-    "swp_sectors": [
-      "Education and Human Development"
-    ]
-  },
-  {
     "name": "John's Incredible Pizza Company",
     "sector": "Arts & Entertainment",
     "description": "John's Incredible Pizza Company is an entertainment and restaurant business offering an all-you-can-eat buffet with pizza, pasta, and desserts, combined with a large game room featuring rides and attractions, primarily in the family entertainment and casual dining industry.",
@@ -1518,7 +1448,7 @@
     ],
     "website": "https://www.fresnocountyca.gov",
     "swp_sectors": [
-      "Education and Human Development"
+      "Health"
     ]
   },
   {
@@ -1614,7 +1544,7 @@
     ],
     "website": "https://elmexicano.net",
     "swp_sectors": [
-      "Agriculture, Water and Environmental Technologies"
+      "Global Trade"
     ]
   },
   {
@@ -1849,7 +1779,7 @@
     ],
     "website": "https://galassos.com/",
     "swp_sectors": [
-      "Agriculture, Water and Environmental Technologies"
+      "Advanced Manufacturing"
     ]
   },
   {
@@ -2556,28 +2486,6 @@
     ]
   },
   {
-    "name": "Jurupa Unified School District",
-    "sector": "Education",
-    "description": "I am unable to provide a description for Jurupa Unified School District as the website could not be browsed.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-3012",
-      "11-3031",
-      "11-3121",
-      "11-9039",
-      "13-1071",
-      "13-2011"
-    ],
-    "website": "https://www.jusd.k12.ca.us/",
-    "swp_sectors": [
-      "Education and Human Development"
-    ]
-  },
-  {
     "name": "Riverside City College",
     "sector": "Education",
     "description": "Riverside City College is an educational institution offering diverse academic programs, degrees, and certificates across eight instructional pathways, serving students in higher education.",
@@ -2599,32 +2507,6 @@
     "website": "https://www.rcc.edu/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
-  },
-  {
-    "name": "Riverside Medical Clinic",
-    "sector": "Healthcare",
-    "description": "I am unable to provide a description for Riverside Medical Clinic as the website could not be browsed.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-9111",
-      "13-1071",
-      "13-2011",
-      "29-1141",
-      "29-2072",
-      "31-1131",
-      "31-9092",
-      "31-9097",
-      "21-1091",
-      "25-3041",
-      "29-1031",
-      "43-9081"
-    ],
-    "website": "https://www.rivmed.com/",
-    "swp_sectors": [
-      "Health"
     ]
   },
   {
@@ -2850,28 +2732,6 @@
       "15-1211"
     ],
     "website": "https://www.ruhealth.org/",
-    "swp_sectors": [
-      "Health"
-    ]
-  },
-  {
-    "name": "Southwest Healthcare Rancho Springs Medical Center",
-    "sector": "Healthcare",
-    "description": "I am unable to provide a description for Southwest Healthcare Rancho Springs Medical Center as the website content was not accessible.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-9111",
-      "13-1071",
-      "13-2011",
-      "29-1141",
-      "29-2018",
-      "29-2034",
-      "29-2061",
-      "31-1131"
-    ],
-    "website": "https://www.southwesthealthcaresystem.com/",
     "swp_sectors": [
       "Health"
     ]
@@ -4418,54 +4278,6 @@
     ]
   },
   {
-    "name": "Totally Kids Rehabilitation Hospital",
-    "sector": "Healthcare",
-    "description": "Totally Kids Rehabilitation Hospital's website could not be browsed, so a description of their services and primary industry cannot be provided at this time.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9111",
-      "13-1071",
-      "13-2011",
-      "29-1125",
-      "29-1129",
-      "31-2011",
-      "31-2021"
-    ],
-    "website": "https://www.totallykidsrehab.org/",
-    "swp_sectors": [
-      "Health"
-    ]
-  },
-  {
-    "name": "Victor Valley Global Medical Center",
-    "sector": "Healthcare",
-    "description": "Victor Valley Global Medical Center's website could not be browsed, so a description of their services and primary industry cannot be provided at this time.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9111",
-      "13-1071",
-      "13-2011",
-      "29-1141",
-      "29-2042",
-      "29-2061",
-      "31-1131",
-      "11-9179",
-      "11-3012",
-      "29-2018",
-      "11-3131"
-    ],
-    "website": "https://www.vvgmc.com/",
-    "swp_sectors": [
-      "Health"
-    ]
-  },
-  {
     "name": "Inland Regional Center",
     "sector": "Healthcare",
     "description": "Inland Regional Center is dedicated to improving the quality of life for people with developmental disabilities in San Bernardino and Riverside Counties, providing services that promote independence, empowerment, and inclusion.",
@@ -4664,34 +4476,6 @@
       "33-2021"
     ],
     "website": "https://www.fontana.org/162/Police-Department",
-    "swp_sectors": [
-      "Public Safety"
-    ]
-  },
-  {
-    "name": "Ontario Police Department",
-    "sector": "Government",
-    "description": "I am unable to provide a description for the Ontario Police Department as the provided URL could not be fetched.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3121",
-      "13-1071",
-      "13-2011",
-      "15-1211",
-      "27-3031",
-      "43-4161",
-      "11-1011",
-      "11-9161",
-      "13-1041",
-      "15-1244",
-      "33-1021",
-      "33-2021"
-    ],
-    "website": "https://www.ontarioca.gov/OPD",
     "swp_sectors": [
       "Public Safety"
     ]
@@ -5642,26 +5426,6 @@
     ]
   },
   {
-    "name": "San Luis Obispo Sheriff's Department",
-    "sector": "Government",
-    "description": "I am unable to provide a description for San Luis Obispo Sheriff's Department as the provided URL could not be fetched. Please ensure the URL is correct and accessible.",
-    "regions": [
-      "SCC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-9161",
-      "13-1041",
-      "13-1071",
-      "21-1092"
-    ],
-    "website": "https://www.slosheriff.org",
-    "swp_sectors": [
-      "Public Safety"
-    ]
-  },
-  {
     "name": "Mesa Vineyard Management",
     "sector": "Agriculture",
     "description": "Mesa Vineyard Management is a leading company on the Central Coast of California and Oregon, specializing in vineyard management services, wine grape sales, and vineyard real estate. Its primary industry is agriculture, specifically viticulture.",
@@ -5917,7 +5681,7 @@
     ],
     "website": "https://www.resonant.com",
     "swp_sectors": [
-      "Information and Communication Technologies - Digital Media"
+      "Advanced Manufacturing"
     ]
   },
   {
@@ -6010,7 +5774,7 @@
     ],
     "website": "https://www.bega.com/us/",
     "swp_sectors": [
-      "Global Trade"
+      "Agriculture, Water and Environmental Technologies"
     ]
   },
   {
@@ -6098,7 +5862,7 @@
     ],
     "website": "https://hardydiagnostics.com",
     "swp_sectors": [
-      "Advanced Manufacturing"
+      "Life Sciences - Biotechnology"
     ]
   },
   {
@@ -6213,7 +5977,7 @@
     ],
     "website": "https://apeelsciences.com",
     "swp_sectors": [
-      "Agriculture, Water and Environmental Technologies"
+      "Life Sciences - Biotechnology"
     ]
   },
   {
@@ -6854,27 +6618,6 @@
     ]
   },
   {
-    "name": "Pioneer Valley High School",
-    "sector": "Education",
-    "description": "I am unable to provide a description for Pioneer Valley High School as the website content was not accessible.",
-    "regions": [
-      "SCC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9039",
-      "13-1071",
-      "13-2011",
-      "25-2031",
-      "25-2058",
-      "25-9099"
-    ],
-    "website": "https://www.pvhspanthers.org",
-    "swp_sectors": [
-      "Education and Human Development"
-    ]
-  },
-  {
     "name": "San Marcos High School",
     "sector": "Education",
     "description": "San Marcos High School is part of the Santa Barbara Unified School District, which is dedicated to creating joyful, engaging, and inclusive learning environments that foster a love of learning for all students.",
@@ -7076,28 +6819,6 @@
     ]
   },
   {
-    "name": "Music Academy of the West",
-    "sector": "Education",
-    "description": "I am unable to access the content of the Music Academy of the West website to provide a description.",
-    "regions": [
-      "SCC"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-2033",
-      "11-3012",
-      "13-1131",
-      "13-2011",
-      "25-3099",
-      "27-2041"
-    ],
-    "website": "https://www.musicacademy.org",
-    "swp_sectors": [
-      "Education and Human Development"
-    ]
-  },
-  {
     "name": "Isolite Systems",
     "sector": "Healthcare",
     "description": "Isolite Systems is a manufacturing company specializing in emergency lighting solutions, including exit signs, emergency lights, inverters, and control devices for various applications.",
@@ -7287,7 +7008,7 @@
     ],
     "website": "https://atterdagvillage.org",
     "swp_sectors": [
-      "Health"
+      "Education and Human Development"
     ]
   },
   {
@@ -7308,7 +7029,7 @@
     ],
     "website": "https://www.frontporch.net/communities/vista-del-monte",
     "swp_sectors": [
-      "Health"
+      "Education and Human Development"
     ]
   },
   {
@@ -7329,7 +7050,7 @@
     ],
     "website": "https://www.srgseniorliving.com/communities/santa-barbara-ca/maravilla-santa-barbara",
     "swp_sectors": [
-      "Health"
+      "Education and Human Development"
     ]
   },
   {
@@ -7372,7 +7093,7 @@
     ],
     "website": "https://www.frontporch.net/communities/samarkand",
     "swp_sectors": [
-      "Health"
+      "Education and Human Development"
     ]
   },
   {
@@ -7863,26 +7584,6 @@
     ]
   },
   {
-    "name": "Santa Maria City Police Department",
-    "sector": "Government",
-    "description": "I am unable to provide a description for Santa Maria City Police Department as the provided URL could not be accessed. Please ensure the URL is correct and accessible.",
-    "regions": [
-      "SCC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3121",
-      "13-1041",
-      "13-1071",
-      "15-1244"
-    ],
-    "website": "https://www.cityofsantamaria.org/city-hall/departments/police-department",
-    "swp_sectors": [
-      "Public Safety"
-    ]
-  },
-  {
     "name": "United States Penitentiary",
     "sector": "Government",
     "description": "The United States Penitentiary, part of the Federal Bureau of Prisons, is a government agency responsible for the incarceration and management of federal inmates, operating within the public safety and corrections industry.",
@@ -8343,33 +8044,6 @@
     ]
   },
   {
-    "name": "Irwin Industries",
-    "sector": "Manufacturing",
-    "description": "I am unable to provide a description for Irwin Industries as the website content could not be accessed.",
-    "regions": [
-      "SCC"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-3051",
-      "11-9021",
-      "13-1028",
-      "13-1051",
-      "17-2141",
-      "11-3012",
-      "13-1081",
-      "13-2011",
-      "15-1252",
-      "17-2112",
-      "51-4111"
-    ],
-    "website": "https://irwinindustries.com/",
-    "swp_sectors": [
-      "Advanced Manufacturing"
-    ]
-  },
-  {
     "name": "Milgard Manufacturing",
     "sector": "Manufacturing",
     "description": "Milgard Manufacturing produces custom, quality replacement, and energy-efficient windows and patio doors in various materials like vinyl, fiberglass, and aluminum, serving the residential construction and home improvement industry.",
@@ -8391,27 +8065,6 @@
       "51-4111"
     ],
     "website": "https://www.milgard.com",
-    "swp_sectors": [
-      "Advanced Manufacturing"
-    ]
-  },
-  {
-    "name": "Parker Hannifin Products",
-    "sector": "Manufacturing",
-    "description": "I am unable to provide a description for Parker Hannifin Products as the website content could not be accessed.",
-    "regions": [
-      "SCC"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-3051",
-      "11-9041",
-      "13-1028",
-      "17-2141",
-      "51-9162"
-    ],
-    "website": "https://www.parker.com",
     "swp_sectors": [
       "Advanced Manufacturing"
     ]
@@ -8571,7 +8224,7 @@
     ],
     "website": "https://www.baxter.com",
     "swp_sectors": [
-      "Advanced Manufacturing"
+      "Health"
     ]
   },
   {
@@ -9261,7 +8914,7 @@
     ],
     "website": "https://clspsg.com",
     "swp_sectors": [
-      "Business and Entrepreneurship"
+      "Public Safety"
     ]
   },
   {
@@ -9283,7 +8936,7 @@
     ],
     "website": "https://srglobalsecurity.com",
     "swp_sectors": [
-      "Business and Entrepreneurship"
+      "Public Safety"
     ]
   },
   {
@@ -10369,7 +10022,7 @@
     ],
     "website": "https://crpd.org",
     "swp_sectors": [
-      "Retail, Hospitality and Tourism"
+      "Education and Human Development"
     ]
   },
   {
@@ -10395,28 +10048,6 @@
     ]
   },
   {
-    "name": "Moorpark Country Club",
-    "sector": "Arts & Entertainment",
-    "description": "I am unable to provide a description for Moorpark Country Club as the website content could not be accessed.",
-    "regions": [
-      "SCC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-2021",
-      "11-3012",
-      "11-9072",
-      "13-1121",
-      "13-1161",
-      "35-2013",
-      "43-4161"
-    ],
-    "website": "https://moorparkcountryclub.com",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
     "name": "Crowne Plaza Ventura Beach",
     "sector": "Hospitality & Food Service",
     "description": "Crowne Plaza Ventura Beach is a beachfront hotel providing accommodations, event spaces, dining, and amenities like a pool and fitness center, operating within the hospitality industry.",
@@ -10434,28 +10065,6 @@
       "43-4161"
     ],
     "website": "https://www.ihg.com/crowneplaza/hotels/us/en/ventura/vntca/hoteldetail",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
-    "name": "Four Points by Sheraton",
-    "sector": "Hospitality & Food Service",
-    "description": "I am unable to provide a description for Four Points by Sheraton as the website content could not be accessed.",
-    "regions": [
-      "SCC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-2021",
-      "11-3012",
-      "11-3121",
-      "11-9179",
-      "13-1071",
-      "13-1121",
-      "43-4161"
-    ],
-    "website": "https://www.marriott.com/en-us/hotels/laxfp-four-points-by-sheraton-ventura-harbor/overview/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
     ]
@@ -10503,28 +10112,6 @@
       "39-5094"
     ],
     "website": "https://www.ojaivalleyinn.com",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
-    "name": "Ventura Beach Marriott",
-    "sector": "Hospitality & Food Service",
-    "description": "Information for Ventura Beach Marriott is unavailable as the provided URL could not be fetched.",
-    "regions": [
-      "SCC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-2021",
-      "11-3012",
-      "11-3121",
-      "11-9179",
-      "13-1071",
-      "13-1121",
-      "43-4161"
-    ],
-    "website": "https://www.marriott.com/en-us/hotels/oxrvn-ventura-beach-marriott/overview/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
     ]
@@ -10922,28 +10509,6 @@
     "website": "https://casapacifica.org",
     "swp_sectors": [
       "Education and Human Development"
-    ]
-  },
-  {
-    "name": "Simi Valley Public Works Maintenance",
-    "sector": "Government",
-    "description": "I am unable to provide a description for Simi Valley Public Works Maintenance as the provided URL could not be accessed.",
-    "regions": [
-      "SCC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3013",
-      "11-9021",
-      "13-1028",
-      "17-2051",
-      "17-3022",
-      "43-4161"
-    ],
-    "website": "https://www.simivalley.org/departments/public-works/maintenance",
-    "swp_sectors": [
-      "Energy, Construction and Utilities"
     ]
   },
   {
@@ -11563,7 +11128,7 @@
     ],
     "website": "https://www.honeywell.com/us/en",
     "swp_sectors": [
-      "Advanced Manufacturing"
+      "Energy, Construction and Utilities"
     ]
   },
   {
@@ -12051,7 +11616,7 @@
     ],
     "website": "http://www.essentiallypure.com",
     "swp_sectors": [
-      "Global Trade"
+      "Advanced Manufacturing"
     ]
   },
   {
@@ -12261,7 +11826,7 @@
     ],
     "website": "https://www.pccfasteners.com/companies/pcc-fasteners/pb-fasteners.html",
     "swp_sectors": [
-      "Global Trade"
+      "Advanced Manufacturing"
     ]
   },
   {
@@ -12429,7 +11994,7 @@
     ],
     "website": "https://www.aero-electric.com",
     "swp_sectors": [
-      "Global Trade"
+      "Advanced Manufacturing"
     ]
   },
   {
@@ -12471,7 +12036,7 @@
     ],
     "website": "https://hirelco.net",
     "swp_sectors": [
-      "Global Trade"
+      "Advanced Manufacturing"
     ]
   },
   {
@@ -14414,7 +13979,7 @@
     ],
     "website": "https://lacounty.gov",
     "swp_sectors": [
-      "Education and Human Development"
+      "Public Safety"
     ]
   },
   {
@@ -14857,7 +14422,7 @@
     ],
     "website": "https://www.marmol-radziner.com",
     "swp_sectors": [
-      "Energy, Construction and Utilities"
+      "Business and Entrepreneurship"
     ]
   },
   {
@@ -14876,7 +14441,7 @@
     ],
     "website": "https://www.moffattnichol.com",
     "swp_sectors": [
-      "Energy, Construction and Utilities"
+      "Business and Entrepreneurship"
     ]
   },
   {
@@ -14913,7 +14478,7 @@
     ],
     "website": "https://p2sinc.com",
     "swp_sectors": [
-      "Energy, Construction and Utilities"
+      "Business and Entrepreneurship"
     ]
   },
   {
@@ -15075,7 +14640,7 @@
     ],
     "website": "https://www.adt.com",
     "swp_sectors": [
-      "Public Safety"
+      "Retail, Hospitality and Tourism"
     ]
   },
   {
@@ -15560,7 +15125,7 @@
     ],
     "website": "https://us.brinks.com",
     "swp_sectors": [
-      "Public Safety"
+      "Advanced Transportation and Logistics"
     ]
   },
   {
@@ -17499,7 +17064,7 @@
     ],
     "website": "https://claremontmanorrehab.org",
     "swp_sectors": [
-      "Education and Human Development"
+      "Health"
     ]
   },
   {
@@ -17602,7 +17167,7 @@
     ],
     "website": "https://msagardens.org",
     "swp_sectors": [
-      "Education and Human Development"
+      "Health"
     ]
   },
   {
@@ -20118,7 +19683,7 @@
     ],
     "website": "https://dph.sbcounty.gov/",
     "swp_sectors": [
-      "Education and Human Development"
+      "Health"
     ]
   },
   {
@@ -22147,7 +21712,7 @@
     ],
     "website": "https://sprinkles.com/",
     "swp_sectors": [
-      "Retail, Hospitality and Tourism"
+      "Advanced Manufacturing"
     ]
   },
   {
@@ -22208,7 +21773,7 @@
     ],
     "website": "https://www.olamgroup.com/",
     "swp_sectors": [
-      "Agriculture, Water and Environmental Technologies"
+      "Global Trade"
     ]
   },
   {
@@ -22495,7 +22060,7 @@
     ],
     "website": "https://www.dell.com/en-us/shop/dell-thin-clients/ar/4595",
     "swp_sectors": [
-      "Information and Communication Technologies - Digital Media"
+      "Advanced Manufacturing"
     ]
   },
   {
@@ -22559,7 +22124,7 @@
     ],
     "website": "https://www.ixsystems.com/",
     "swp_sectors": [
-      "Information and Communication Technologies - Digital Media"
+      "Advanced Manufacturing"
     ]
   },
   {
@@ -23108,7 +22673,7 @@
     ],
     "website": "https://www.kla.com/",
     "swp_sectors": [
-      "Business and Entrepreneurship"
+      "Advanced Manufacturing"
     ]
   },
   {
@@ -24474,7 +24039,7 @@
     ],
     "website": "https://www.biggscardosa.com/",
     "swp_sectors": [
-      "Business and Entrepreneurship"
+      "Energy, Construction and Utilities"
     ]
   },
   {
@@ -24492,7 +24057,7 @@
     ],
     "website": "https://www.bkf.com/",
     "swp_sectors": [
-      "Business and Entrepreneurship"
+      "Energy, Construction and Utilities"
     ]
   },
   {
@@ -24566,7 +24131,7 @@
     ],
     "website": "https://www.siemens.com/us/en.html",
     "swp_sectors": [
-      "Information and Communication Technologies - Digital Media"
+      "Advanced Manufacturing"
     ]
   },
   {
@@ -24656,7 +24221,7 @@
     ],
     "website": "https://www.apexon.com/",
     "swp_sectors": [
-      "Information and Communication Technologies - Digital Media"
+      "Business and Entrepreneurship"
     ]
   },
   {
@@ -24692,7 +24257,7 @@
     ],
     "website": "https://www.cognizant.com/",
     "swp_sectors": [
-      "Information and Communication Technologies - Digital Media"
+      "Business and Entrepreneurship"
     ]
   },
   {
@@ -24746,7 +24311,7 @@
     ],
     "website": "https://www.idctechnologies.com/",
     "swp_sectors": [
-      "Information and Communication Technologies - Digital Media"
+      "Business and Entrepreneurship"
     ]
   },
   {
@@ -24872,7 +24437,7 @@
     ],
     "website": "https://www.netgear.com/",
     "swp_sectors": [
-      "Advanced Manufacturing"
+      "Information and Communication Technologies - Digital Media"
     ]
   },
   {
@@ -24909,7 +24474,7 @@
     ],
     "website": "https://www.nvidia.com/",
     "swp_sectors": [
-      "Information and Communication Technologies - Digital Media"
+      "Advanced Manufacturing"
     ]
   },
   {
@@ -24945,7 +24510,7 @@
     ],
     "website": "https://pliancy.com/",
     "swp_sectors": [
-      "Information and Communication Technologies - Digital Media"
+      "Business and Entrepreneurship"
     ]
   },
   {
@@ -25128,7 +24693,7 @@
     ],
     "website": "https://www.nexsales.com/",
     "swp_sectors": [
-      "Information and Communication Technologies - Digital Media"
+      "Business and Entrepreneurship"
     ]
   },
   {
@@ -26356,7 +25921,7 @@
     ],
     "website": "https://www.accentcare.com/",
     "swp_sectors": [
-      "Education and Human Development"
+      "Health"
     ]
   },
   {
@@ -26375,7 +25940,7 @@
     ],
     "website": "https://www.homeinstead.com/",
     "swp_sectors": [
-      "Education and Human Development"
+      "Health"
     ]
   },
   {
@@ -26394,7 +25959,7 @@
     ],
     "website": "https://homecarecalifornia.com/",
     "swp_sectors": [
-      "Education and Human Development"
+      "Health"
     ]
   },
   {
@@ -26413,7 +25978,7 @@
     ],
     "website": "https://www.seniorsathome.jfcs.org/",
     "swp_sectors": [
-      "Education and Human Development"
+      "Health"
     ]
   },
   {
@@ -26432,7 +25997,7 @@
     ],
     "website": "https://www.visitingangels.com/",
     "swp_sectors": [
-      "Education and Human Development"
+      "Health"
     ]
   },
   {
@@ -28840,7 +28405,7 @@
     ],
     "website": "https://www.bakedinthesun.com/",
     "swp_sectors": [
-      "Agriculture, Water and Environmental Technologies"
+      "Advanced Manufacturing"
     ]
   },
   {
@@ -28860,7 +28425,7 @@
     ],
     "website": "https://www.nemosbakery.com/",
     "swp_sectors": [
-      "Agriculture, Water and Environmental Technologies"
+      "Advanced Manufacturing"
     ]
   },
   {
@@ -29224,7 +28789,7 @@
     ],
     "website": "https://www.martinmarietta.com/",
     "swp_sectors": [
-      "Advanced Manufacturing"
+      "Energy, Construction and Utilities"
     ]
   },
   {
@@ -29245,7 +28810,7 @@
     ],
     "website": "https://oldcastleinfrastructure.com/",
     "swp_sectors": [
-      "Advanced Manufacturing"
+      "Energy, Construction and Utilities"
     ]
   },
   {
@@ -29265,7 +28830,7 @@
     ],
     "website": "https://www2.gerdau.com/",
     "swp_sectors": [
-      "Advanced Manufacturing"
+      "Energy, Construction and Utilities"
     ]
   },
   {
@@ -29554,7 +29119,7 @@
     ],
     "website": "https://www.maxlinear.com/",
     "swp_sectors": [
-      "Advanced Manufacturing"
+      "Information and Communication Technologies - Digital Media"
     ]
   },
   {
@@ -29612,7 +29177,7 @@
     ],
     "website": "https://www.psemi.com/",
     "swp_sectors": [
-      "Advanced Manufacturing"
+      "Information and Communication Technologies - Digital Media"
     ]
   },
   {
@@ -29696,7 +29261,7 @@
     ],
     "website": "https://www.beckmancoulter.com/",
     "swp_sectors": [
-      "Advanced Manufacturing"
+      "Life Sciences - Biotechnology"
     ]
   },
   {
@@ -29738,7 +29303,7 @@
     ],
     "website": "https://genasys.com/",
     "swp_sectors": [
-      "Advanced Manufacturing"
+      "Public Safety"
     ]
   },
   {
@@ -30320,7 +29885,7 @@
     ],
     "website": "https://www.manheim.com/locations/cafs/general",
     "swp_sectors": [
-      "Business and Entrepreneurship"
+      "Global Trade"
     ]
   },
   {
@@ -31168,7 +30733,7 @@
     ],
     "website": "https://www.sdfreightliner.com/",
     "swp_sectors": [
-      "Retail, Hospitality and Tourism"
+      "Advanced Transportation and Logistics"
     ]
   },
   {
@@ -31426,7 +30991,7 @@
     ],
     "website": "https://www.woodplc.com/",
     "swp_sectors": [
-      "Energy, Construction and Utilities"
+      "Agriculture, Water and Environmental Technologies"
     ]
   },
   {
@@ -31533,7 +31098,7 @@
     ],
     "website": "https://www.rickengineering.com/",
     "swp_sectors": [
-      "Energy, Construction and Utilities"
+      "Business and Entrepreneurship"
     ]
   },
   {
@@ -31577,7 +31142,7 @@
     ],
     "website": "https://www.nv5.com/",
     "swp_sectors": [
-      "Energy, Construction and Utilities"
+      "Business and Entrepreneurship"
     ]
   },
   {
@@ -31599,7 +31164,7 @@
     ],
     "website": "https://www.sandag.org/",
     "swp_sectors": [
-      "Business and Entrepreneurship"
+      "Education and Human Development"
     ]
   },
   {
@@ -31747,7 +31312,7 @@
     ],
     "website": "https://www.kontron.com/en-us",
     "swp_sectors": [
-      "Information and Communication Technologies - Digital Media"
+      "Advanced Manufacturing"
     ]
   },
   {
@@ -31980,7 +31545,7 @@
     ],
     "website": "https://energycenter.org/",
     "swp_sectors": [
-      "Education and Human Development"
+      "Energy, Construction and Utilities"
     ]
   },
   {
@@ -32150,7 +31715,7 @@
     ],
     "website": "https://silvergateretirement.com/",
     "swp_sectors": [
-      "Education and Human Development"
+      "Health"
     ]
   },
   {
@@ -32577,7 +32142,7 @@
     ],
     "website": "https://www.promoshop.com/",
     "swp_sectors": [
-      "Retail, Hospitality and Tourism"
+      "Global Trade"
     ]
   },
   {
@@ -33392,7 +32957,7 @@
     ],
     "website": "https://www.gia.edu/",
     "swp_sectors": [
-      "Business and Entrepreneurship"
+      "Education and Human Development"
     ]
   },
   {
@@ -34642,7 +34207,7 @@
     ],
     "website": "https://lanterncrest.com/",
     "swp_sectors": [
-      "Education and Human Development"
+      "Health"
     ]
   },
   {
@@ -34661,7 +34226,7 @@
     ],
     "website": "https://www.pacificaseniorliving.com/",
     "swp_sectors": [
-      "Education and Human Development"
+      "Health"
     ]
   },
   {
@@ -34680,7 +34245,7 @@
     ],
     "website": "https://www.theremingtonclub.com/",
     "swp_sectors": [
-      "Education and Human Development"
+      "Health"
     ]
   },
   {
@@ -34703,7 +34268,7 @@
     ],
     "website": "https://www.silverado.com/",
     "swp_sectors": [
-      "Education and Human Development"
+      "Health"
     ]
   },
   {
@@ -35943,7 +35508,7 @@
     ],
     "website": "https://mitchell1.com/",
     "swp_sectors": [
-      "Information and Communication Technologies - Digital Media"
+      "Business and Entrepreneurship"
     ]
   },
   {
@@ -36742,7 +36307,7 @@
     ],
     "website": "https://tae.com/",
     "swp_sectors": [
-      "Energy, Construction and Utilities"
+      "Advanced Manufacturing"
     ]
   },
   {
@@ -37028,7 +36593,7 @@
     ],
     "website": "https://www.bioduro-sundia.com/",
     "swp_sectors": [
-      "Life Sciences - Biotechnology"
+      "Advanced Manufacturing"
     ]
   },
   {
@@ -37048,7 +36613,7 @@
     ],
     "website": "https://www.nexgenpharma.com/",
     "swp_sectors": [
-      "Life Sciences - Biotechnology"
+      "Advanced Manufacturing"
     ]
   },
   {
@@ -37088,7 +36653,7 @@
     ],
     "website": "https://www.sohminc.com/",
     "swp_sectors": [
-      "Life Sciences - Biotechnology"
+      "Advanced Manufacturing"
     ]
   },
   {
@@ -37338,7 +36903,7 @@
     ],
     "website": "https://mittera.com/",
     "swp_sectors": [
-      "Information and Communication Technologies - Digital Media"
+      "Business and Entrepreneurship"
     ]
   },
   {
@@ -39196,7 +38761,7 @@
     ],
     "website": "https://www.manheim.com/",
     "swp_sectors": [
-      "Business and Entrepreneurship"
+      "Global Trade"
     ]
   },
   {
@@ -39301,7 +38866,7 @@
     ],
     "website": "https://healthcaresolutions-us.fujifilm.com/",
     "swp_sectors": [
-      "Advanced Manufacturing"
+      "Global Trade"
     ]
   },
   {
@@ -39365,7 +38930,7 @@
     ],
     "website": "https://www.ricoh-usa.com/",
     "swp_sectors": [
-      "Information and Communication Technologies - Digital Media"
+      "Business and Entrepreneurship"
     ]
   },
   {
@@ -39386,7 +38951,7 @@
     ],
     "website": "https://www.business.toshiba.com/",
     "swp_sectors": [
-      "Information and Communication Technologies - Digital Media"
+      "Business and Entrepreneurship"
     ]
   },
   {
@@ -39556,7 +39121,7 @@
     ],
     "website": "https://www.heritagefoods.com/",
     "swp_sectors": [
-      "Advanced Manufacturing"
+      "Agriculture, Water and Environmental Technologies"
     ]
   },
   {
@@ -39915,7 +39480,7 @@
     ],
     "website": "https://www.kia.com/us/en",
     "swp_sectors": [
-      "Advanced Manufacturing"
+      "Global Trade"
     ]
   },
   {
@@ -40432,7 +39997,7 @@
     ],
     "website": "https://www.aaeaerospace.com/",
     "swp_sectors": [
-      "Energy, Construction and Utilities"
+      "Business and Entrepreneurship"
     ]
   },
   {
@@ -40514,7 +40079,7 @@
     ],
     "website": "https://www.fuscoe.com/",
     "swp_sectors": [
-      "Energy, Construction and Utilities"
+      "Business and Entrepreneurship"
     ]
   },
   {
@@ -40555,7 +40120,7 @@
     ],
     "website": "https://www.idsplans.com/",
     "swp_sectors": [
-      "Energy, Construction and Utilities"
+      "Business and Entrepreneurship"
     ]
   },
   {
@@ -40573,7 +40138,7 @@
     ],
     "website": "https://ktgy.com/",
     "swp_sectors": [
-      "Energy, Construction and Utilities"
+      "Business and Entrepreneurship"
     ]
   },
   {
@@ -40592,7 +40157,7 @@
     ],
     "website": "https://www.lpadesignstudios.com/",
     "swp_sectors": [
-      "Energy, Construction and Utilities"
+      "Business and Entrepreneurship"
     ]
   },
   {
@@ -40612,7 +40177,7 @@
     ],
     "website": "https://mbakerintl.com/",
     "swp_sectors": [
-      "Energy, Construction and Utilities"
+      "Business and Entrepreneurship"
     ]
   },
   {
@@ -40631,7 +40196,7 @@
     ],
     "website": "https://www.psomas.com/",
     "swp_sectors": [
-      "Energy, Construction and Utilities"
+      "Business and Entrepreneurship"
     ]
   },
   {
@@ -40652,7 +40217,7 @@
     ],
     "website": "https://www.stantec.com/",
     "swp_sectors": [
-      "Energy, Construction and Utilities"
+      "Business and Entrepreneurship"
     ]
   },
   {
@@ -40672,7 +40237,7 @@
     ],
     "website": "https://www.verdantas.com/",
     "swp_sectors": [
-      "Agriculture, Water and Environmental Technologies"
+      "Business and Entrepreneurship"
     ]
   },
   {
@@ -40690,7 +40255,7 @@
     ],
     "website": "https://www.wimberlyinteriors.com/",
     "swp_sectors": [
-      "Energy, Construction and Utilities"
+      "Business and Entrepreneurship"
     ]
   },
   {
@@ -40897,7 +40462,7 @@
     ],
     "website": "https://www.chambersgroupinc.com/",
     "swp_sectors": [
-      "Agriculture, Water and Environmental Technologies"
+      "Business and Entrepreneurship"
     ]
   },
   {
@@ -41065,7 +40630,7 @@
     ],
     "website": "https://www.nikken.com/",
     "swp_sectors": [
-      "Retail, Hospitality and Tourism"
+      "Advanced Manufacturing"
     ]
   },
   {
@@ -41183,7 +40748,7 @@
     ],
     "website": "https://www.bdsconnected.com/",
     "swp_sectors": [
-      "Information and Communication Technologies - Digital Media"
+      "Business and Entrepreneurship"
     ]
   },
   {
@@ -41354,7 +40919,7 @@
     ],
     "website": "https://www.aus.com/",
     "swp_sectors": [
-      "Energy, Construction and Utilities"
+      "Business and Entrepreneurship"
     ]
   },
   {
@@ -42312,7 +41877,7 @@
     ],
     "website": "https://www.lindora.com/",
     "swp_sectors": [
-      "Business and Entrepreneurship"
+      "Health"
     ]
   },
   {
@@ -42902,7 +42467,7 @@
     ],
     "website": "https://clearwaterliving.com/",
     "swp_sectors": [
-      "Health"
+      "Education and Human Development"
     ]
   },
   {
@@ -42943,7 +42508,7 @@
     ],
     "website": "https://www.freedomvillageca.com/",
     "swp_sectors": [
-      "Health"
+      "Retail, Hospitality and Tourism"
     ]
   },
   {
@@ -42963,7 +42528,7 @@
     ],
     "website": "https://www.towncountrymanor.com/",
     "swp_sectors": [
-      "Health"
+      "Retail, Hospitality and Tourism"
     ]
   },
   {
@@ -42983,7 +42548,7 @@
     ],
     "website": "https://www.walnutvillage.com/",
     "swp_sectors": [
-      "Health"
+      "Retail, Hospitality and Tourism"
     ]
   },
   {
@@ -44784,7 +44349,7 @@
     ],
     "website": "https://humboldtgov.org",
     "swp_sectors": [
-      "Education and Human Development"
+      "Health"
     ]
   },
   {
@@ -45295,7 +44860,7 @@
     ],
     "website": "https://www.pacificmedicalresources.com",
     "swp_sectors": [
-      "Business and Entrepreneurship"
+      "Global Trade"
     ]
   },
   {
