@@ -50,8 +50,8 @@ export async function queryStudents(query: string, college: string): Promise<Stu
     body: JSON.stringify({ query, college }),
   });
   if (!res.ok) {
-    const detail = await res.text();
-    throw new Error(detail || "Query failed");
+    const body = await res.json().catch(() => null);
+    throw new Error(body?.detail || "Query failed");
   }
   return res.json();
 }
