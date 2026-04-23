@@ -97,7 +97,7 @@ async def run_employer_query(question: str, college: str) -> tuple[list[Employer
     """Translate a natural language question into a Cypher query and return employer results."""
     logger.info(f"Employer query: {question!r} for college: {college!r}")
 
-    cypher, interpretation = generate_query(question, college, EMPLOYER_QUERY_PROMPT)
+    cypher, interpretation = generate_query(question, college, EMPLOYER_QUERY_PROMPT, view="employer")
     cypher = validate_cypher(cypher)
     logger.info(f"Validated Cypher: {cypher!r}")
 

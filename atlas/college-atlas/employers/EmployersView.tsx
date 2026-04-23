@@ -13,7 +13,7 @@ import RequiredSkillsList from "@/ui/RequiredSkillsList";
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
 const EXAMPLES = [
-  "Employer partners in the healthcare sector",
+  "Which employers need skills in healthcare?",
   "Employers whose skill needs align with our curriculum",
   "Employers in the manufacturing sector",
 ];

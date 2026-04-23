@@ -110,11 +110,11 @@ STUDENT_BASE = [
 
 QUERY_SPECS: dict[str, tuple[str, list[tuple[str, str]]]] = {
     # ── Employers ──
-    "Employer partners in the healthcare sector": (
+    "Which employers need skills in healthcare?": (
         EMPLOYER_QUERY_PROMPT,
         _patterns(EMPLOYER_BASE, [
-            ("filters on health sector",
-             r"tolower\(emp\.sector\)\s+contains\s+'health"),
+            ("filters on health skill",
+             r"tolower\(sk\.name\).*contains\s+'health"),
         ]),
     ),
     "Employers whose skill needs align with our curriculum": (
@@ -246,7 +246,7 @@ class EvalResult:
 
 CATEGORIES = {
     "employers": [
-        "Employer partners in the healthcare sector",
+        "Which employers need skills in healthcare?",
         "Employers whose skill needs align with our curriculum",
         "Employers in the manufacturing sector",
     ],
@@ -265,6 +265,14 @@ CATEGORIES = {
         "Students with skills in business and accounting",
         "Who is best prepared for information technology roles?",
     ],
+}
+
+
+PROMPT_TO_VIEW = {
+    id(EMPLOYER_QUERY_PROMPT): "employer",
+    id(OCCUPATION_QUERY_PROMPT): "occupation",
+    id(COURSE_QUERY_PROMPT): "course",
+    id(STUDENT_QUERY_PROMPT): "student",
 }
 
 
@@ -306,7 +314,8 @@ def run_single_eval(
     t0 = time.time()
 
     try:
-        cypher, interpretation = generate_query(question, college, prompt)
+        view = PROMPT_TO_VIEW.get(id(prompt), "")
+        cypher, interpretation = generate_query(question, college, prompt, view=view)
         result.cypher = cypher
         result.interpretation = interpretation
         result.cypher_generated = True

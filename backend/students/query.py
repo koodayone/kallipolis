@@ -117,7 +117,7 @@ async def run_student_query(question: str, college: str) -> tuple[list[StudentSu
     """Translate a natural language question into a Cypher query, execute it, and return results."""
     logger.info(f"Student query: {question!r} for college: {college!r}")
 
-    cypher, interpretation = generate_query(question, college, STUDENT_QUERY_PROMPT)
+    cypher, interpretation = generate_query(question, college, STUDENT_QUERY_PROMPT, view="student")
     cypher = validate_cypher(cypher)
     logger.info(f"Validated Cypher: {cypher!r}")
 

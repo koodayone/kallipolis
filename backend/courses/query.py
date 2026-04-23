@@ -92,7 +92,7 @@ async def run_course_query(question: str, college: str) -> tuple[list[CourseSumm
     """Translate a natural language question into a Cypher query and return course results."""
     logger.info(f"Course query: {question!r} for college: {college!r}")
 
-    cypher, interpretation = generate_query(question, college, COURSE_QUERY_PROMPT)
+    cypher, interpretation = generate_query(question, college, COURSE_QUERY_PROMPT, view="course")
     cypher = validate_cypher(cypher)
     logger.info(f"Validated Cypher: {cypher!r}")
 

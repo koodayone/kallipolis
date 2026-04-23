@@ -122,7 +122,7 @@ async def run_occupation_query(question: str, college: str) -> tuple[list[Occupa
     """Translate a natural language question into a Cypher query and return occupation results."""
     logger.info(f"Occupation query: {question!r} for college: {college!r}")
 
-    cypher, interpretation = generate_query(question, college, OCCUPATION_QUERY_PROMPT)
+    cypher, interpretation = generate_query(question, college, OCCUPATION_QUERY_PROMPT, view="occupation")
     cypher = validate_cypher(cypher)
     logger.info(f"Validated Cypher: {cypher!r}")
 

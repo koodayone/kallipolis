@@ -156,7 +156,7 @@ async def run_partnership_query(question: str, college: str) -> tuple[list[Partn
     """Translate a natural language question into a Cypher query and return partnership opportunities."""
     logger.info(f"Partnership query: {question!r} for college: {college!r}")
 
-    cypher, interpretation = generate_query(question, college, PARTNERSHIP_QUERY_PROMPT)
+    cypher, interpretation = generate_query(question, college, PARTNERSHIP_QUERY_PROMPT, view="partnership")
     cypher = validate_cypher(cypher)
     logger.info(f"Validated Cypher: {cypher!r}")
 
