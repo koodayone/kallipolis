@@ -53,54 +53,82 @@ _INCREMENTAL_WRITE_EVERY = 5
 _TRANSIENT_RETRY_SLEEP = 30.0
 
 
+# Identity-based sector definitions. Each sector is anchored by its
+# core value-creation activity — the fundamental thing an organization
+# does to create value for customers — and 2-3 example employers.
+# This framing resolves boundary cases automatically: a sod farm grows
+# plants (Agriculture) regardless of how it sells them; a medical-device
+# manufacturer produces instruments (Advanced Manufacturing) regardless
+# of whether the output is used in healthcare. No exclusion clauses
+# needed — identity carries the distinction.
 _SECTOR_DEFINITIONS: dict[str, str] = {
     "Advanced Manufacturing": (
-        "Manufacturing of complex products: defense, aerospace, "
-        "electronics, machinery, medical devices, industrial equipment."
+        "Core value-creation: producing physical products. "
+        "Examples: Boeing, Medtronic, Pacific Steel Castings."
     ),
     "Advanced Transportation and Logistics": (
-        "Transit systems, trucking, shipping, warehousing, "
-        "distribution, last-mile delivery, supply-chain operations."
+        "Core value-creation: moving people, goods, or vehicles at scale. "
+        "Examples: UPS, a metropolitan transit system, a freight carrier."
     ),
     "Agriculture, Water and Environmental Technologies": (
-        "Farming, food processing, beverages, dairy, water management, "
-        "environmental services, waste management, conservation."
+        "Core value-creation: growing, harvesting, or processing "
+        "agricultural products, or managing water and environmental systems. "
+        "Examples: Foster Farms, Woolf Farming, a regional water district."
     ),
     "Business and Entrepreneurship": (
-        "Management consulting, business services, marketing/PR, "
-        "professional services that support general business operations."
+        "Core value-creation: providing professional services that "
+        "support other businesses operating (consulting, marketing, "
+        "accounting, business process support). "
+        "Examples: Deloitte, a marketing agency, a management consulting firm."
     ),
     "Education and Human Development": (
-        "Schools, school districts, universities, training programs, "
-        "social services, family services, child welfare, vocational rehab."
+        "Core value-creation: teaching, training, or providing social "
+        "services to children, families, and communities (not individual "
+        "healthcare delivery — that is Health). "
+        "Examples: Tulare Joint Union High School District, a community "
+        "college, a child welfare agency, a vocational training program."
     ),
     "Energy, Construction and Utilities": (
-        "Construction trades, builders, contractors, utilities, "
-        "energy production/distribution, infrastructure, public works."
+        "Core value-creation: building, repairing, operating, or "
+        "performing trades work on physical infrastructure, properties, "
+        "or utilities. "
+        "Examples: Clark Brothers Construction, a utility company, "
+        "Clark Pest Control, a landscape contractor."
     ),
     "Global Trade": (
-        "Wholesale distribution, import/export, large-scale "
-        "wholesale of consumer or industrial goods."
+        "Core value-creation: intermediating between producers and "
+        "buyers at scale — wholesale distribution and import/export — "
+        "without producing the goods themselves. "
+        "Examples: Sysco, a food wholesale distributor, an electronics "
+        "import-export company."
     ),
     "Health": (
-        "Hospitals, clinics, medical practices, healthcare delivery, "
-        "dental, behavioral health, healthcare facilities."
+        "Core value-creation: delivering healthcare services to patients. "
+        "Examples: a hospital, a medical clinic, a dental practice, "
+        "a skilled nursing facility."
     ),
     "Information and Communication Technologies - Digital Media": (
-        "Software, IT services, telecommunications, networking, "
-        "digital media production, broadcasting, web/cloud services."
+        "Core value-creation: producing or operating software, digital "
+        "services, telecommunications networks, or media content. "
+        "Examples: Palo Alto Networks, a telecommunications provider, "
+        "a software-as-a-service company."
     ),
     "Life Sciences - Biotechnology": (
-        "Biotech R&D, pharmaceutical research, life-sciences research, "
-        "genetic/diagnostic research, scientific R&D."
+        "Core value-creation: biological research, drug discovery, or "
+        "genomic/diagnostic investigation. Output is scientific knowledge, "
+        "novel compounds, or research findings. "
+        "Examples: Genentech, Amgen, Scripps Research."
     ),
     "Public Safety": (
-        "Police, sheriff, fire, corrections, jail/detention, courts, "
-        "district attorney/public defender, lifeguards, emergency response."
+        "Core value-creation: protecting public safety — law enforcement, "
+        "emergency response, corrections, judicial operations. "
+        "Examples: a sheriff's department, a fire department, a district "
+        "attorney's office, a correctional facility."
     ),
     "Retail, Hospitality and Tourism": (
-        "Restaurants, hotels/resorts, retail stores, tourism, "
-        "recreation venues, food service, casinos, theme parks."
+        "Core value-creation: selling directly to consumers, providing "
+        "hospitality, or operating recreational and entertainment venues. "
+        "Examples: a grocery chain, a hotel, a restaurant, a theme park."
     ),
 }
 
@@ -137,16 +165,14 @@ def _build_prompt(batch: list[dict], sectors: list[str]) -> str:
     )
     return (
         "Classify each employer below into exactly ONE Strong Workforce "
-        "Program sector based on their description.\n\n"
+        "Program sector. For each employer, identify the core value-"
+        "creation activity — the thing the organization fundamentally "
+        "does to create value for customers — and pick the single "
+        "sector whose identity principle best matches that core activity.\n\n"
         "SECTORS:\n" + sector_lines + "\n\n"
-        "Rules:\n"
-        "1. Pick the SINGLE most representative sector for the employer's "
-        "primary line of business.\n"
-        "2. Use the description as the source of truth. Read it carefully; "
-        "the employer name alone is not enough.\n"
-        "3. For multi-line conglomerates, pick what they are most known "
-        "for / do most.\n"
-        "4. Use the exact input employer name verbatim in the 'name' field.\n\n"
+        "Use the description as the source of truth; the employer name "
+        "alone is not enough. Use the exact input employer name verbatim "
+        "in the 'name' field.\n\n"
         'Return ONLY a JSON array: [{"name": "...", "sector": "..."}]. '
         "One object per input, same order as input. No prose outside JSON.\n\n"
         "EMPLOYERS:\n" + employer_lines
@@ -207,17 +233,33 @@ async def _classify_batch_async(
         _progress(f"    {label}: FAIL — JSON parse: {e}")
         return None
 
-    if not isinstance(parsed, list) or len(parsed) != len(batch):
-        _progress(f"    {label}: FAIL — shape mismatch")
+    if not isinstance(parsed, list):
+        _progress(f"    {label}: FAIL — response not an array")
         return None
 
     valid_sectors = set(sectors)
     out: dict[str, str] = {}
-    for i in range(len(batch)):
-        name = batch[i]["name"]
-        sector = parsed[i].get("sector")
-        if sector in valid_sectors:
-            out[name] = sector
+
+    if len(parsed) == len(batch):
+        # Positional match — the happy path.
+        for i in range(len(batch)):
+            sector = parsed[i].get("sector")
+            if sector in valid_sectors:
+                out[batch[i]["name"]] = sector
+    else:
+        # Size mismatch: fall back to name-based matching. Model
+        # occasionally skips or duplicates items; recovering partial
+        # results is far better than wiping the whole batch.
+        input_names = {e["name"] for e in batch}
+        for item in parsed:
+            name = item.get("name", "")
+            sector = item.get("sector")
+            if name in input_names and sector in valid_sectors:
+                out[name] = sector
+        _progress(
+            f"    {label}: partial — input {len(batch)}, output {len(parsed)}, "
+            f"name-matched {len(out)}"
+        )
     return out
 
 
