@@ -12,6 +12,12 @@ type Props = {
 
 export default function RequiredSkillsList({ skills, brandColor, collegeName }: Props) {
   if (skills.length === 0) return null;
+  // Dedupe by skill name. The backend can return duplicate entries
+  // (same skill, different backing Skill node or region path) that
+  // would produce React "duplicate key" warnings. Root cause is in
+  // the get_employer_detail Cypher grouping; deduping here is the
+  // defensive guard at the component boundary.
+  const unique = Array.from(new Map(skills.map((s) => [s.skill, s])).values());
   return (
     <div>
       <span
@@ -23,7 +29,7 @@ export default function RequiredSkillsList({ skills, brandColor, collegeName }: 
           fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase",
           color: brandColor, opacity: 0.6,
         }}>
-          Required Skills ({skills.length})
+          Required Skills ({unique.length})
         </span>
         <svg width="13" height="13" viewBox="0 0 16 16" fill="none"
           style={{ cursor: "help", opacity: 0.4, transition: "opacity 0.15s" }}
@@ -46,7 +52,7 @@ export default function RequiredSkillsList({ skills, brandColor, collegeName }: 
         </span>
       </span>
       <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-        {skills.map((s) => (
+        {unique.map((s) => (
           <div key={s.skill} style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
               <circle cx="6" cy="6" r="5" stroke={brandColor} strokeWidth="1" />

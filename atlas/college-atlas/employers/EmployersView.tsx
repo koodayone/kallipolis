@@ -13,9 +13,9 @@ import RequiredSkillsList from "@/ui/RequiredSkillsList";
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
 const EXAMPLES = [
-  "Employers with the strongest skill alignment",
-  "Who hires for roles our students are prepared for?",
-  "Largest employers in our region by sector",
+  "Employer partners in the healthcare sector",
+  "Employers whose skill needs align with our curriculum",
+  "Employers in the manufacturing sector",
 ];
 
 const UNCLASSIFIED = "Unclassified";

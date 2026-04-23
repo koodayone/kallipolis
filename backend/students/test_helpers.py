@@ -1,21 +1,25 @@
-"""Unit tests for students.helpers — GPA and primary-focus derivation.
+"""Unit tests for students.helpers — GPA, primary-focus derivation, and
+course code ordering.
 
-These two functions produce the derived fields materialized onto every
-Student node after enrollment generation. compute_gpa maps letter grades
-to grade points and averages; compute_primary_focus tallies completed
-enrollments by department and picks the most common. Both are pure and
-have to stay that way — drift silently corrupts the student pipeline
-the partnership landscape view reads from.
+compute_gpa and compute_primary_focus produce derived fields materialized
+onto every Student node after enrollment generation. course_order_key
+supplies the ordering used by the sampler to enforce same-prefix numeric
+sequence within a student's enrollment history. All three are pure and
+have to stay that way — drift silently corrupts the student pipeline the
+partnership landscape view reads from.
 
 Coverage:
   - compute_gpa grade point mapping, averaging, and rounding
   - Invalid grade handling (withdrawals, incompletes, unknown letters)
   - compute_primary_focus department tallying across completed courses
   - Status filtering (only "Completed" enrollments count)
-  - Empty-input defaults for both functions
+  - Empty-input defaults for both derivation functions
+  - course_order_key parsing across simple, multi-letter prefix, CSU
+    concurrent-enrollment, repeatable, honors, and multi-digit forms
+  - Ordering correctness via tuple comparison within a numeric class
 """
 
-from students.helpers import compute_gpa, compute_primary_focus
+from students.helpers import compute_gpa, compute_primary_focus, course_order_key
 
 
 class TestComputeGpa:
@@ -79,3 +83,43 @@ class TestComputePrimaryFocus:
             {"department": "Biology", "status": "Completed"},
         ]
         assert compute_primary_focus(enrollments) == "Biology"
+
+
+class TestCourseOrderKey:
+    def test_simple_prefix_and_number(self):
+        assert course_order_key("HIST 17") == (17, "")
+
+    def test_letter_suffix_captured(self):
+        assert course_order_key("HIST 17B") == (17, "B")
+
+    def test_multi_letter_prefix(self):
+        assert course_order_key("C S 77B") == (77, "B")
+
+    def test_csu_concurrent_enrollment_code(self):
+        assert course_order_key("ENGL C1001") == (1001, "")
+
+    def test_csu_concurrent_with_honors_suffix(self):
+        assert course_order_key("PSYC C1000H") == (1000, "H")
+
+    def test_multi_digit_with_multi_letter_suffix(self):
+        assert course_order_key("CHEM 12AL") == (12, "AL")
+
+    def test_honors_suffix_preserved(self):
+        assert course_order_key("ENGL 1CH") == (1, "CH")
+
+    def test_repeatable_suffix_preserved(self):
+        assert course_order_key("PSYC 72R") == (72, "R")
+
+    def test_no_number_returns_zero(self):
+        assert course_order_key("UNKNOWN") == (0, "")
+
+    def test_ordering_number_dominates(self):
+        assert course_order_key("HIST 17B") < course_order_key("HIST 18A")
+
+    def test_ordering_suffix_breaks_tie_on_equal_number(self):
+        assert course_order_key("HIST 17A") < course_order_key("HIST 17B")
+        assert course_order_key("HIST 17B") < course_order_key("HIST 17C")
+
+    def test_ordering_plain_number_before_suffixed(self):
+        # 17 with no suffix sorts before 17A
+        assert course_order_key("HIST 17") < course_order_key("HIST 17A")

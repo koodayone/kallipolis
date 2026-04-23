@@ -33,9 +33,9 @@ const STUDENT_COLUMNS: Column[] = [
 ];
 
 const EXAMPLES = [
-  "Students with the highest GPA",
-  "Who has skills aligned with healthcare roles?",
-  "Students with the most completed courses",
+  "Students most ready for a healthcare internship",
+  "Students with skills in business and accounting",
+  "Who is best prepared for information technology roles?",
 ];
 
 type Props = { school: SchoolConfig; onBack: () => void };
