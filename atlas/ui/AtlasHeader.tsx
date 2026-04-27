@@ -2,6 +2,7 @@
 
 import type { CSSProperties, ReactNode } from "react";
 import { SchoolConfig } from "@/config/schoolConfig";
+import { PREVIEW_MODE } from "@/preview/mode";
 
 type Props = {
   title: string;
@@ -83,7 +84,7 @@ export default function AtlasHeader({
           left: "50%",
           transform: "translate(-50%, -50%)",
           fontFamily: "var(--font-days-one), sans-serif",
-          fontSize: "18px",
+          fontSize: "20px",
           letterSpacing: "0.08em",
           textTransform: "uppercase",
           color: "rgba(255,255,255,0.85)",
@@ -93,6 +94,25 @@ export default function AtlasHeader({
       >
         {title}
       </span>
+      {PREVIEW_MODE && (
+        <span
+          style={{
+            position: "absolute",
+            top: "calc(50% + 15px)",
+            left: "50%",
+            transform: "translateX(-50%)",
+            fontSize: "9px",
+            fontWeight: 500,
+            letterSpacing: "0.24em",
+            textTransform: "uppercase",
+            color: "rgba(201, 168, 76, 0.65)",
+            whiteSpace: "nowrap",
+            pointerEvents: "none",
+          }}
+        >
+          Preview Mode
+        </span>
+      )}
 
       <div style={{ display: "flex", alignItems: "center", gap: "20px", minWidth: 0, justifyContent: "flex-end" }}>
         {rightSlot}
