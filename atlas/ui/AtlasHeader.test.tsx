@@ -21,15 +21,33 @@
  *   - A custom leftSlot overrides the default back button even when
  *     onBack is also provided
  *   - A rightSlot renders in the trailing slot
+ *   - The "Preview Mode" eyebrow is hidden when PREVIEW_MODE is false
+ *   - The "Preview Mode" eyebrow renders when PREVIEW_MODE is true
  */
 
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+
+// Mock @/preview/mode with a getter over hoisted mutable state so each
+// test can toggle PREVIEW_MODE before rendering. The getter preserves
+// ES-module live-binding semantics: AtlasHeader reads the current value
+// at render time, not at import time.
+const previewState = vi.hoisted(() => ({ enabled: false }));
+vi.mock("@/preview/mode", () => ({
+  get PREVIEW_MODE() {
+    return previewState.enabled;
+  },
+}));
+
 import AtlasHeader from "./AtlasHeader";
 import type { SchoolConfig } from "@/config/schoolConfig";
 
 describe("AtlasHeader", () => {
+  beforeEach(() => {
+    previewState.enabled = false;
+  });
+
   it("renders the title text", () => {
     render(<AtlasHeader title="COLLEGE ATLAS" />);
     expect(screen.getByText("COLLEGE ATLAS")).toBeInTheDocument();
@@ -88,5 +106,17 @@ describe("AtlasHeader", () => {
       />,
     );
     expect(screen.getByTestId("right")).toHaveTextContent("Profile Menu");
+  });
+
+  it("does not render the Preview Mode eyebrow when PREVIEW_MODE is false", () => {
+    previewState.enabled = false;
+    render(<AtlasHeader title="STATE ATLAS" />);
+    expect(screen.queryByText("Preview Mode")).not.toBeInTheDocument();
+  });
+
+  it("renders the Preview Mode eyebrow when PREVIEW_MODE is true", () => {
+    previewState.enabled = true;
+    render(<AtlasHeader title="STATE ATLAS" />);
+    expect(screen.getByText("Preview Mode")).toBeInTheDocument();
   });
 });
