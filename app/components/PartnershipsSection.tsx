@@ -23,7 +23,7 @@ export default function PartnershipsSection() {
             </p>
             <div style={{ width: 64, height: 2, background: "#4fd1fd", borderRadius: 1, opacity: 0.9, margin: "0 auto 24px" }} />
             <h2 className="text-[22px] md:text-[28px] leading-[1.15] tracking-[-0.02em] text-white" style={{ fontFamily: "var(--font-days-one)", fontWeight: 400 }}>
-              Drive partnerships that advance a<br />Strong Workforce.
+              Drive partnerships that advance a Strong Workforce.
             </h2>
           </div>
           {points.map((point) => (
