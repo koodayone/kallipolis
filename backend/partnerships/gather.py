@@ -98,26 +98,32 @@ def _gather_aligned_curriculum(
 ) -> tuple[str, list[dict]]:
     """Fetch departments and courses that prepare students for the selected occupation.
 
-    Gating swapped from skills-overlap to TOP-SOC alignment via the
-    institutional crosswalk: a course is "aligned" iff its top_code
-    crosswalks to the selected SOC, materialized as the
-    Course-[:PREPARES_FOR]->Occupation edge written by
-    ontology.prepares_for at load time. Skills are no longer the gate —
-    they are a within-set ranker, used here to decorate each course
-    with which of the occupation's core skills it develops, so the
-    narrative prompt can speak to specific course-skill matches.
+    The role of `core_skills` here is CHARACTERIZATION, not gating.
+    Per the institutional-deference architectural commitment: the
+    pathway claim is established by the institutional crosswalk
+    (Course-[:PREPARES_FOR]->Occupation, written from the Chancellor's
+    Office TOP-CIP and BLS/NCES CIP-SOC crosswalks). Skills are then
+    surfaced via OPTIONAL MATCH to decorate each course with which of
+    the occupation's required skills it develops, so the narrative
+    prompt can speak to specific course-skill matches as
+    characterization of what the institutionally-aligned program
+    teaches. Skills do not gate which departments surface; the
+    crosswalk does.
 
-    The skills-overlap gate produced cross-domain false positives
-    (nursing courses surfacing under manufacturing partnerships because
-    both develop generic skills like documentation). PREPARES_FOR
-    grounds the gate in the Chancellor's-Office TOP↔CIP↔SOC chain:
+    The skills-overlap gate (retired in A.1) produced cross-domain
+    false positives — nursing courses surfacing under manufacturing
+    partnerships because both develop generic skills like documentation.
+    PREPARES_FOR grounds the gate in the institutional record:
     institutional ground truth, not LLM-derived skill similarity.
 
     When no departments at this college prepare students for the SOC,
     returns ("", []) — caller surfaces this honestly rather than
     falling back to the prior skills-soup matching.
 
-    Returns (dept_text_for_prompt, curriculum_evidence_list).
+    Returns (dept_text_for_prompt, curriculum_evidence_list). The
+    curriculum_evidence list carries `via_top` and `via_cip` per
+    department for downstream institutional-source attribution
+    (atlas rendering, eval rules, narrative chain block).
     """
     driver = get_driver()
     with driver.session() as session:
@@ -217,6 +223,15 @@ def _gather_student_pipeline(
 ) -> tuple[dict, list[dict]]:
     """Find students whose academic pathway aligns with the partnership.
 
+    The role of `core_skills` here is CHARACTERIZATION + within-set
+    ranking, not gating. The eligibility gate is department membership
+    (per principle 3 of the institutional-deference commitment): a
+    student is eligible if their `primary_focus` matches one of the
+    aligned departments returned by _gather_aligned_curriculum (which
+    are themselves PREPARES_FOR-gated by the institutional crosswalk).
+    Skills then rank top-N exemplars within that eligible set, never
+    outside it.
+
     The gating principle: the unit of partnership engagement is the
     department, not the course. A signed partnership with an employer
     benefits every student whose primary focus is in an aligned
@@ -227,17 +242,22 @@ def _gather_student_pipeline(
     population.
 
     Concretely:
-      - Eligibility gate: student.primary_focus IN aligned_departments
-        (those returned by _gather_aligned_curriculum, derived from
+      - Eligibility gate (institutional): student.primary_focus IN
+        aligned_departments (those returned by
+        _gather_aligned_curriculum, derived from
         Department-[:CONTAINS]->Course-[:PREPARES_FOR]->Occupation).
       - Headline count: |eligible students at this college|.
       - "All core skills" subcount: how many of the eligible students
         already demonstrate all the SOC's core skills via HAS_SKILL —
-        a finer-grained signal of pipeline readiness.
-      - Top-N exemplars: ranked within the eligible set by skill-match
-        count, then GPA. Their displayed enrollments are the courses
-        they have taken that PREPARES_FOR the selected SOC, so the
-        artifact surfaces concrete curricular evidence per student.
+        a finer-grained CHARACTERIZATION signal of pipeline readiness,
+        not a gate. Skills here describe what students hold; the
+        institutional credential is what qualifies them.
+      - Top-N exemplars: ranked WITHIN the eligible set by skill-match
+        count, then GPA. Skills are the within-set ranker; the gating
+        decision was already made by the department-membership filter.
+        Their displayed enrollments are the courses they have taken
+        that PREPARES_FOR the selected SOC, so the artifact surfaces
+        concrete curricular evidence per student.
 
     The prior gate (enrollment in skills-developing courses + STARTS
     WITH bidirectional primary_focus matching) was both narrower
