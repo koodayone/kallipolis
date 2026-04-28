@@ -9,3 +9,4 @@ python-dotenv==1.0.1
 httpx>=0.28.1,<1.0.0
 google-genai==1.14.0
 pypdf==6.9.2
+openpyxl==3.1.5
