@@ -14,7 +14,7 @@ The deployment is an intentional minimum. Three hosts, one graph, one VM. The at
 | `https://app.kallipolis.us` | Atlas preview (static Next.js export) | Cloudflare Pages |
 | `https://api.kallipolis.us` | FastAPI backend + Neo4j | GCP Compute Engine VM |
 
-The atlas is built via `NEXT_STATIC_EXPORT=true npm run build` — a flag read by `atlas/next.config.ts` that enables `output: "export"` for production while keeping `next dev` in the standard server-rendered mode for local work. The build output is a pure static bundle under `atlas/out/` that Cloudflare Pages serves directly from its edge network.
+The atlas is built via `NEXT_STATIC_EXPORT=true npm run build` — a flag read by `atlas/next.config.ts` that enables `output: "export"` for production while keeping `next dev` in the standard server-rendered mode for local work. The build emits a pure static bundle to an `out/` directory under `atlas/` that Cloudflare Pages serves directly from its edge network.
 
 The backend runs under Docker Compose on the VM: `docker-compose.yml` at the repository root defines two services, `neo4j` (pinned to `neo4j:5.18-community`) and `backend` (built from `backend/Dockerfile`). Both have `restart: unless-stopped` so a VM reboot brings them back up; the backend binds to `127.0.0.1:8000` so only Caddy on the same host can reach it, never the public internet directly.
 
