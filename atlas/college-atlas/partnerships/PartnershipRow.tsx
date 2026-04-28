@@ -1,7 +1,7 @@
 "use client";
 
 import { memo, useEffect, useRef } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import type { SchoolConfig } from "@/config/schoolConfig";
 import type { ApiPartnershipOpportunity } from "@/college-atlas/partnerships/api";
 
@@ -11,75 +11,80 @@ type Props = {
   opp: ApiPartnershipOpportunity;
   i: number;
   school: SchoolConfig;
-  expandedNames: Set<string>;
-  onExpand: (opp: ApiPartnershipOpportunity) => void;
+  savedCount: number;
   onDraft: (opp: ApiPartnershipOpportunity) => void;
 };
 
-const PartnershipRow = memo(function PartnershipRow({ opp, i, school, expandedNames, onExpand, onDraft }: Props) {
-  const isOpen = expandedNames.has(opp.name);
+// Single-line row in the partnerships Build mode. Not expandable —
+// employer context (description, website, occupations) lives in the
+// picker view that opens when the coordinator clicks Draft Partnership.
+//
+// The row carries three things:
+//   1. Employer name (left)
+//   2. Optional "● N saved" indicator if the coordinator has drafts saved
+//      against this employer (subtle visibility into existing work)
+//   3. Draft Partnership CTA (right) — the only interaction
+const PartnershipRow = memo(function PartnershipRow({
+  opp, i, school, savedCount, onDraft,
+}: Props) {
   const hasMounted = useRef(false);
   useEffect(() => { hasMounted.current = true; }, []);
-  return (
-    <div>
-      <motion.button
-        initial={hasMounted.current ? false : { opacity: 0, y: 6 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.2, delay: hasMounted.current ? 0 : Math.min(i * 0.015, 0.3) }}
-        onClick={() => onExpand(opp)}
-        style={{
-          width: "100%", textAlign: "left",
-          display: "grid", gridTemplateColumns: "24px 1fr 160px",
-          padding: "12px 16px", gap: "10px", alignItems: "center",
-          background: isOpen ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
-          border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
-          cursor: "pointer", transition: "background 0.15s",
-        }}
-        onMouseEnter={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)"; }}
-        onMouseLeave={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)"; }}
-      >
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-          style={{ transform: isOpen ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>
-          <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-        <span style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>{opp.name}</span>
-        <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)" }}>{opp.sector || "—"}</span>
-      </motion.button>
 
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            style={{ overflow: "hidden", background: "rgba(255,255,255,0.02)" }}
-          >
-            <div style={{ padding: "16px 20px 24px" }}>
-              {opp.description && (
-                <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.55)", lineHeight: 1.55, margin: "0 0 16px" }}>
-                  {opp.description}
-                </p>
-              )}
-              <button
-                onClick={(e) => { e.stopPropagation(); onDraft(opp); }}
-                style={{
-                  width: "100%", padding: "14px 24px", borderRadius: "10px",
-                  fontFamily: FONT, fontSize: "15px", fontWeight: 600,
-                  cursor: "pointer", border: "none",
-                  background: school.brandColorLight, color: "#1a1a2e",
-                  transition: "opacity 0.15s",
-                  letterSpacing: "-0.01em",
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
-                onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-              >
-                Draft Partnership Proposal with {opp.name}
-              </button>
-            </div>
-          </motion.div>
+  return (
+    <motion.div
+      initial={hasMounted.current ? false : { opacity: 0, y: 6 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.2, delay: hasMounted.current ? 0 : Math.min(i * 0.015, 0.3) }}
+      style={{
+        display: "grid", gridTemplateColumns: "1fr auto",
+        padding: "12px 16px 12px 44px", gap: "12px", alignItems: "center",
+        background: "rgba(255,255,255,0.03)",
+        borderBottom: "1px solid rgba(255,255,255,0.05)",
+        transition: "background 0.15s",
+      }}
+      onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)"; }}
+      onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)"; }}
+    >
+      <span style={{ display: "flex", alignItems: "center", gap: "12px", minWidth: 0 }}>
+        <span style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>
+          {opp.name}
+        </span>
+        {savedCount > 0 && (
+          <span style={{
+            display: "inline-flex", alignItems: "center", gap: "5px",
+            fontFamily: FONT, fontSize: "11px", fontWeight: 500,
+            color: school.brandColorLight, opacity: 0.75,
+          }}>
+            <span style={{
+              width: "5px", height: "5px", borderRadius: "50%",
+              background: school.brandColorLight, opacity: 0.85,
+            }} />
+            {savedCount} saved
+          </span>
         )}
-      </AnimatePresence>
-    </div>
+      </span>
+      <button
+        onClick={() => onDraft(opp)}
+        style={{
+          display: "inline-flex", alignItems: "center", gap: "6px",
+          padding: "8px 14px", borderRadius: "6px",
+          fontFamily: FONT, fontSize: "12px", fontWeight: 600,
+          letterSpacing: "0.01em",
+          cursor: "pointer", border: "none",
+          background: `${school.brandColorLight}20`,
+          color: school.brandColorLight,
+          transition: "background 0.15s, opacity 0.15s",
+          whiteSpace: "nowrap",
+        }}
+        onMouseEnter={(e) => { e.currentTarget.style.background = `${school.brandColorLight}30`; }}
+        onMouseLeave={(e) => { e.currentTarget.style.background = `${school.brandColorLight}20`; }}
+      >
+        Draft Partnership
+        <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+          <path d="M3 6h6m-2.5-2.5L9 6 6.5 8.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+    </motion.div>
   );
 });
 

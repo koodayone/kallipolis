@@ -51,29 +51,45 @@ export default function PartnershipsView({ school, onBack }: Props) {
   const [occupationsLoading, setOccupationsLoading] = useState(false);
   const [occupationsError, setOccupationsError] = useState<string | null>(null);
 
-  // Build mode state — landscape data + search query + row expansion.
+  // Build mode state — landscape data + search query. Rows are no longer
+  // expandable; the picker absorbs all per-employer context (description,
+  // website, occupations).
   const [landscape, setLandscape] = useState<ApiPartnershipOpportunity[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
-  const [expandedNames, setExpandedNames] = useState<Set<string>>(new Set());
 
-  // Manage mode state — saved proposal search + row expansion.
+  // Manage mode state — saved proposal search + row expansion. Saved
+  // proposals are also surfaced in Build mode as a per-employer
+  // "N saved" indicator, so we refetch on every return to the selection
+  // phase (not just when entering Manage).
   const [savedProposals, setSavedProposals] = useState<SavedProposal[]>([]);
   const [expandedSavedId, setExpandedSavedId] = useState<string | null>(null);
   const [manageQuery, setManageQuery] = useState("");
 
   const filteredOpportunities = useMemo(() => {
-    const sorted = [...landscape].sort((a, b) => a.name.localeCompare(b.name));
-    if (!query.trim()) return sorted;
+    if (!query.trim()) return landscape;
     const q = query.toLowerCase();
-    return sorted.filter((opp) =>
-      opp.name.toLowerCase().includes(q) || (opp.sector || "").toLowerCase().includes(q),
+    return landscape.filter((opp) =>
+      opp.name.toLowerCase().includes(q)
+      || (opp.sector || "").toLowerCase().includes(q)
+      || opp.swp_sectors.some((s) => s.toLowerCase().includes(q)),
     );
   }, [landscape, query]);
 
-  // Load landscape + user name on mount.
+  // Saved-count per employer, used for the "N saved" indicator in Build
+  // mode rows. Recomputes whenever savedProposals changes (which happens
+  // on phase return — see effect below).
+  const savedCountsByEmployer = useMemo(() => {
+    const counts: Record<string, number> = {};
+    for (const sp of savedProposals) {
+      counts[sp.proposal.employer] = (counts[sp.proposal.employer] ?? 0) + 1;
+    }
+    return counts;
+  }, [savedProposals]);
+
+  // Load landscape on mount.
   useEffect(() => {
     getPartnershipLandscape(school.name)
       .then((data) => setLandscape(data.opportunities))
@@ -81,34 +97,20 @@ export default function PartnershipsView({ school, onBack }: Props) {
       .finally(() => setLoading(false));
   }, [school.name]);
 
-  // Reload saved proposals when switching to manage mode. In preview mode
-  // the library is the static seeded set only — session-generated drafts
-  // are intentionally not surfaced in Manage to keep the "nothing persists
-  // in preview" story coherent.
+  // Reload saved proposals whenever we land back on the selection phase
+  // (initial mount, after picker dismiss, after a generation completes).
+  // Build mode reads them for the saved-count indicator; Manage mode
+  // reads them for its row list. In preview mode the library is the
+  // static seeded set — session-generated drafts are not surfaced in
+  // Manage to keep the "nothing persists in preview" story coherent.
   useEffect(() => {
-    if (mode !== "manage") return;
+    if (phase !== "selection") return;
     if (PREVIEW_MODE) {
       setSavedProposals(getSeededProposals(school.name));
     } else {
       setSavedProposals(getSavedProposals(school.name));
     }
-  }, [mode, school.name]);
-
-  // Expand/collapse a row while preserving the scroll position of the
-  // nearest scrollable ancestor — avoids jumping when the row height changes.
-  const handleExpand = useCallback((opp: ApiPartnershipOpportunity) => {
-    const scrollEl = findScrollParent(rootRef.current);
-    const savedScroll = scrollEl?.scrollTop ?? 0;
-    const restoreScroll = () => requestAnimationFrame(() => { if (scrollEl) scrollEl.scrollTop = savedScroll; });
-
-    setExpandedNames((prev) => {
-      const next = new Set(prev);
-      if (next.has(opp.name)) next.delete(opp.name);
-      else next.add(opp.name);
-      return next;
-    });
-    restoreScroll();
-  }, []);
+  }, [phase, school.name]);
 
   const toggleSavedExpanded = useCallback((id: string) => {
     const scrollEl = findScrollParent(rootRef.current);
@@ -256,13 +258,13 @@ export default function PartnershipsView({ school, onBack }: Props) {
                 {mode === "build" && (
                   <PartnershipBuildMode
                     school={school}
+                    loading={loading}
                     error={error}
                     query={query}
                     setQuery={setQuery}
                     inputRef={inputRef}
                     filteredOpportunities={filteredOpportunities}
-                    expandedNames={expandedNames}
-                    onExpand={handleExpand}
+                    savedCountsByEmployer={savedCountsByEmployer}
                     onDraft={handleDraftCTA}
                   />
                 )}

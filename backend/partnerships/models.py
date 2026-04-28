@@ -5,7 +5,19 @@ from typing import Optional
 class PartnershipOpportunity(BaseModel):
     name: str
     sector: Optional[str] = None
+    # Multi-sector tagging (Doing-What-Matters / SWP framework). swp_sectors
+    # is the employer's full set; priority_sectors_matched is the intersection
+    # of that set with the college's region's priority sectors, computed
+    # live in Cypher so COE_REGION_PRIORITY_SECTORS edits stay visible
+    # without a graph reload. Same pattern as the employers landscape
+    # endpoint — both views need this for sector grouping with the
+    # regional-priority dot indicator.
+    swp_sectors: list[str] = []
+    priority_sectors_matched: list[str] = []
     description: Optional[str] = None
+    # Employer homepage URL — surfaced in the partnership picker view as the
+    # "Employer Home Page" link, matching the employers view's affordance.
+    website: Optional[str] = None
     alignment_score: int
     gap_count: int
     pipeline_size: Optional[int] = None

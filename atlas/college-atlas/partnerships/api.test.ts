@@ -82,7 +82,10 @@ describe("partnerships api client", () => {
           {
             name: "Kaiser",
             sector: "Healthcare",
+            swp_sectors: ["Health"],
+            priority_sectors_matched: ["Health"],
             description: null,
+            website: null,
             alignment_score: 0.87,
             gap_count: 2,
             pipeline_size: 24,

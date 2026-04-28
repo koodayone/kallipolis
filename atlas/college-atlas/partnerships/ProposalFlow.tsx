@@ -61,19 +61,68 @@ export default function ProposalFlow({
         {/* ── Draft: occupation picker ── */}
         {phase === "draft" && (
           <motion.div key="draft" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
-            <div style={{ marginBottom: "20px" }}>
+            <div style={{ marginBottom: "16px" }}>
               <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)", lineHeight: 1.6, margin: 0 }}>
                 You&apos;ve selected <span style={{ color: brandColor, fontWeight: 600 }}>{employer.name}</span>.
               </p>
             </div>
 
+            {/* Employer overview block — description + homepage. Surfaces the
+                context that used to live in the expandable Build mode row. */}
+            {(employer.description || employer.website) && (
+              <div style={{ marginBottom: "32px", display: "flex", flexDirection: "column", gap: "14px" }}>
+                {employer.description && (
+                  <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.7)", lineHeight: 1.6, margin: 0 }}>
+                    {employer.description}
+                  </p>
+                )}
+                {employer.website && (
+                  <a
+                    href={employer.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: "inline-flex", alignItems: "center", gap: "6px",
+                      padding: "3px 10px", borderRadius: "100px",
+                      fontFamily: FONT, fontSize: "11px", fontWeight: 600, letterSpacing: "0.07em",
+                      textTransform: "uppercase",
+                      color: "rgba(255,255,255,0.5)", background: "transparent",
+                      border: "1px solid rgba(255,255,255,0.12)", textDecoration: "none",
+                      transition: "border-color 0.15s, color 0.15s", width: "fit-content",
+                    }}
+                    onMouseEnter={(e) => { const el = e.currentTarget; el.style.borderColor = `${brandColor}4d`; el.style.color = brandColor; el.querySelectorAll("svg").forEach((s) => (s.style.stroke = brandColor)); }}
+                    onMouseLeave={(e) => { const el = e.currentTarget; el.style.borderColor = "rgba(255,255,255,0.12)"; el.style.color = "rgba(255,255,255,0.5)"; el.querySelectorAll("svg").forEach((s) => (s.style.stroke = "rgba(255,255,255,0.4)")); }}
+                  >
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" style={{ stroke: "rgba(255,255,255,0.4)", transition: "stroke 0.15s", flexShrink: 0 }} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10" /><path d="M2 12h20" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                    </svg>
+                    Employer Home Page
+                  </a>
+                )}
+              </div>
+            )}
+
+            {/* Headline + info-icon tooltip explaining what the selection scopes. */}
             <div style={{ marginBottom: "8px" }}>
-              <h3 style={{ fontFamily: FONT, fontSize: "16px", fontWeight: 600, color: "#f0eef4", margin: "0 0 6px" }}>
+              <h3 style={{
+                fontFamily: FONT, fontSize: "16px", fontWeight: 600, color: "#f0eef4",
+                margin: "0 0 6px", display: "flex", alignItems: "center", gap: "8px",
+              }}>
                 Which role at {employer.name} are you targeting?
+                <span
+                  title="The selection scopes the partnership artifact's regional demand, curriculum alignment, and student impact sections."
+                  style={{
+                    display: "inline-flex", alignItems: "center", justifyContent: "center",
+                    width: "16px", height: "16px", borderRadius: "50%",
+                    border: "1px solid rgba(255,255,255,0.25)",
+                    fontSize: "10px", fontWeight: 600, color: "rgba(255,255,255,0.55)",
+                    cursor: "help", lineHeight: 1,
+                  }}
+                  aria-label="The selection scopes the partnership artifact's regional demand, curriculum alignment, and student impact sections."
+                >
+                  i
+                </span>
               </h3>
-              <p style={{ fontFamily: FONT, fontSize: "12px", fontStyle: "italic", color: "rgba(255,255,255,0.45)", lineHeight: 1.5, margin: 0 }}>
-                The selection scopes the partnership artifact&apos;s regional demand, curriculum alignment, and student impact sections.
-              </p>
             </div>
 
             {/* Loading / error / empty / list */}

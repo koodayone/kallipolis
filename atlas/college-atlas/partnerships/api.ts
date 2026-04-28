@@ -3,7 +3,14 @@ import { API_BASE } from "@/api";
 export type ApiPartnershipOpportunity = {
   name: string;
   sector: string | null;
+  // Multi-sector tagging used for grouping in the partnerships Build mode.
+  // priority_sectors_matched is the intersection with the college's region's
+  // priority sectors — flags the green dot on the sector header.
+  swp_sectors: string[];
+  priority_sectors_matched: string[];
   description: string | null;
+  // Employer homepage URL — surfaced in the partnership picker.
+  website: string | null;
   alignment_score: number;
   gap_count: number;
   pipeline_size: number | null;

@@ -31,8 +31,12 @@ def get_partnership_landscape(college: str):
     try:
         with driver.session() as session:
             result = session.run("""
-                MATCH (col:College {name: $college})-[pa:PARTNERSHIP_ALIGNMENT]->(emp:Employer)
-                RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
+                MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region),
+                      (col)-[pa:PARTNERSHIP_ALIGNMENT]->(emp:Employer)
+                RETURN emp.name AS name, emp.sector AS sector,
+                       COALESCE(emp.swp_sectors, []) AS swp_sectors,
+                       [s IN COALESCE(emp.swp_sectors, []) WHERE s IN COALESCE(r.priority_sectors, [])] AS priority_sectors_matched,
+                       emp.description AS description, emp.website AS website,
                        pa.alignment_score AS alignment_score,
                        pa.gap_count AS gap_count,
                        pa.aligned_skills AS aligned_skills,
@@ -50,7 +54,10 @@ def get_partnership_landscape(college: str):
                 PartnershipOpportunity(
                     name=r["name"],
                     sector=r.get("sector"),
+                    swp_sectors=r.get("swp_sectors", []) or [],
+                    priority_sectors_matched=r.get("priority_sectors_matched", []) or [],
                     description=r.get("description"),
+                    website=r.get("website"),
                     alignment_score=r["alignment_score"],
                     gap_count=r["gap_count"],
                     aligned_skills=r["aligned_skills"],
