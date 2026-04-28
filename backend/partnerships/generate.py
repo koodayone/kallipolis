@@ -18,7 +18,6 @@ from partnerships.evals import evaluate_proposal
 from partnerships.filter import (
     _select_core_skills_for,
     _select_occupation,
-    _select_relevant_departments,
 )
 from partnerships.gather import (
     GatheredContext,
@@ -242,17 +241,15 @@ def _run_pipeline(
     selected_soc = selected_occ.get("soc_code") or ""
     _, curriculum_evidence = _gather_aligned_curriculum(college, selected_soc, core_skills)
 
-    # Cap to top 3 most relevant departments. With PREPARES_FOR-gating
-    # the inbound set is already TOP-aligned, so the LLM filter operates
-    # on a much smaller and more honest candidate pool. When the
-    # inbound set is empty (no aligned curriculum at this college), we
-    # skip the filter call — there is nothing for it to choose from.
-    if curriculum_evidence:
-        all_dept_names = [d["department"] for d in curriculum_evidence]
-        selected_depts = _select_relevant_departments(
-            gathered.employer_name, selected_occ.get("title", ""), all_dept_names
-        )
-        curriculum_evidence = [d for d in curriculum_evidence if d["department"] in selected_depts]
+    # Per the institutional-deference commitment, the full PREPARES_FOR-gated
+    # set passes through downstream. The prior LLM cap-to-3 was retired in
+    # C3 because the inbound set is already institutionally legitimate —
+    # every department is there because the Chancellor's-Office crosswalk
+    # places it there. Adding LLM judgment over a curated set is precisely
+    # the skills-as-connective-tissue anti-pattern in a different guise.
+    # Visual sprawl at the rendering layer is bounded by ProposalCard's
+    # collapsible department rows; that is a rendering concern, not a
+    # gating concern.
 
     dept_text = _build_dept_text(curriculum_evidence, core_skills)
     aligned_depts = [d["department"] for d in curriculum_evidence]

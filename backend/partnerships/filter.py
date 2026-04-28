@@ -1,16 +1,25 @@
-"""LLM-based selection: occupation pick + department relevance filter.
+"""Deterministic selection helpers for the partnership pipeline.
 
-Also houses the shared `_extract_json` utility used by this module and
-narrative.py."""
+Per the institutional-deference architectural commitment, all selection
+in the partnership flow is deterministic and rooted in the institutional
+crosswalk. The legacy LLM-driven occupation picker was retired in C2;
+the LLM department-relevance cap-to-3 was retired in C3 because the
+inbound department set is already PREPARES_FOR-gated (institutionally
+aligned), so applying LLM judgment on top would dilute the institutional
+purity that the gating layer establishes.
+
+Surviving helpers:
+  - _select_occupation: deterministic crosswalk-depth ranker
+  - _select_core_skills_for: deterministic core-skills characterization
+  - _extract_json: shared JSON-parsing utility used by narrative.py
+"""
 
 from __future__ import annotations
 
 import json
 import logging
-import os
 import re
 
-import anthropic
 from ontology.schema import get_driver
 
 from partnerships.gather import GatheredContext
@@ -167,49 +176,3 @@ def _select_occupation(gathered: GatheredContext) -> dict:
     }
 
 
-# ═══════════════════════════════════════════════════════════════════════════
-# Department Relevance Filter
-# ═══════════════════════════════════════════════════════════════════════════
-
-_DEPT_SELECTION_PROMPT = """Select up to {max_departments} departments most relevant to this partnership. Return ONLY the JSON — no reasoning.
-
-Employer: {employer}
-Occupation(s): {occupation}
-Departments: {department_list}
-
-Select the departments whose programs most directly prepare students for the work this employer does. Prefer workforce-oriented departments over foundational or general education departments. If fewer than {max_departments} departments are genuinely relevant, return fewer.
-
-{{"selected_departments": ["...", "..."]}}"""
-
-
-def _select_relevant_departments(employer: str, occupation: str, departments: list[str], max_departments: int = 3) -> list[str]:
-    """Select the most relevant departments for this partnership, capped at max_departments."""
-    if not departments:
-        return departments
-    if len(departments) <= max_departments:
-        return departments
-
-    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
-    message = client.messages.create(
-        model="claude-sonnet-4-6",
-        max_tokens=256,
-        messages=[{"role": "user", "content": _DEPT_SELECTION_PROMPT.format(
-            employer=employer,
-            occupation=occupation,
-            department_list=", ".join(departments),
-            max_departments=max_departments,
-        )}],
-    )
-    raw = message.content[0].text
-
-    try:
-        result = _extract_json(raw)
-        selected = result.get("selected_departments", [])
-        # Ensure only valid department names are returned
-        selected = [d for d in selected if d in departments][:max_departments]
-        logger.info(f"Department selection: {len(selected)}/{len(departments)} departments selected")
-        return selected
-    except (json.JSONDecodeError, ValueError) as e:
-        logger.warning(f"Department selection returned invalid JSON ({e}), falling back to first {max_departments}")
-        # Deterministic fallback: can't sort here since we don't have skill counts, return first N
-        return departments[:max_departments]
