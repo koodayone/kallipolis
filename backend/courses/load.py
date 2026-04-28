@@ -17,6 +17,8 @@ from typing import List, Optional
 
 from neo4j import Driver
 
+from ontology.mcf_lookup import lookup_top6_per_course
+from ontology.prepares_for import materialize_prepares_for
 from ontology.regions import ensure_college_region_link
 from ontology.skills import UNIFIED_TAXONOMY
 
@@ -42,6 +44,8 @@ class LoadStats:
     courses_created: int = 0
     courses_updated: int = 0
     relationships_created: int = 0
+    courses_with_top_code: int = 0
+    prepares_for_edges_created: int = 0
 
 
 def load_college(
@@ -197,6 +201,34 @@ def load_college(
     # running either loader produces the edge consistently.
     ensure_college_region_link(driver, config.name)
 
+    # ── Set Course.top_code from MCF (per-course TOP6) ────────────────────
+    # The Master Course File is the Chancellor's-Office authoritative
+    # course-to-TOP6 assignment (one TOP per course per college). Storing
+    # it as a property on Course nodes is the precondition for
+    # materialize_prepares_for, which derives Course→Occupation edges
+    # from this property + the TOP6→SOC crosswalk. Idempotent via SET.
+    code_to_top6 = lookup_top6_per_course(
+        [c.get("code", "").strip() for c in courses if c.get("code")],
+        config.name,
+    )
+    top_code_batch = [
+        {"code": code, "top_code": top6}
+        for code, top6 in code_to_top6.items()
+        if top6
+    ]
+    stats.courses_with_top_code = len(top_code_batch)
+    if top_code_batch:
+        with driver.session() as session:
+            session.run(
+                """
+                UNWIND $batch AS row
+                MATCH (c:Course {code: row.code, college: $college})
+                SET c.top_code = row.top_code
+                """,
+                batch=top_code_batch,
+                college=config.name,
+            )
+
     # ── Stale edge + orphan cleanup ───────────────────────────────────────
     # The loader MERGEs nodes but is additive on relationships — it never
     # deletes old CONTAINS or OFFERS edges. When Stage 2.5 renames a
@@ -260,9 +292,30 @@ def load_college(
                 orphans,
             )
 
+    # ── Materialize PREPARES_FOR edges from Course.top_code ──────────────
+    # Course→Occupation gating used by partnerships replaces the prior
+    # skills-overlap matching. Depends on (a) Course.top_code being set
+    # (above) and (b) Occupation nodes existing (created by
+    # occupations/load_industry). When Occupation nodes are missing the
+    # call writes zero edges and logs the gap rather than failing — the
+    # college load remains self-sufficient.
+    try:
+        prepares_stats = materialize_prepares_for(driver, config.name)
+        stats.prepares_for_edges_created = prepares_stats["edges_created"]
+    except Exception as e:
+        # The crosswalk depends on external CSV files (cc_dataset). On
+        # dev machines without that directory, log and continue rather
+        # than fail the whole course load.
+        logger.warning(
+            f"materialize_prepares_for failed for {config.name}: {e}; "
+            f"PREPARES_FOR edges not written"
+        )
+
     logger.info(
         f"Loaded {config.name}: "
         f"{stats.courses_created} courses, "
-        f"{stats.departments_created} departments"
+        f"{stats.departments_created} departments, "
+        f"{stats.courses_with_top_code} courses tagged with TOP6, "
+        f"{stats.prepares_for_edges_created} PREPARES_FOR edges"
     )
     return stats

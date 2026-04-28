@@ -28,19 +28,25 @@ import openpyxl
 logger = logging.getLogger(__name__)
 
 # ── Data paths ────────────────────────────────────────────────────────────
+#
+# All four artifacts now ship in-repo. The TOP→CIP crosswalk
+# (Chancellor's Office), CIP→SOC crosswalk (NCES/BLS), PCAH sector file
+# (Chancellor's Office), and COE demand file (California Centers of
+# Excellence) are public-domain federal/state datasets on slow update
+# cadences (years between revisions). Bundling them removes a dev-machine
+# path dependency and lets ingestion-time code (occupations generation,
+# Course→Occupation edge materialization) run inside any environment
+# the backend container reaches — no cc_dataset directory required.
+#
+# COE_DEMAND_PATH points at the same file ontology/supply.py reads at
+# runtime; previously this module referenced an out-of-repo duplicate,
+# a dormant inconsistency.
 
-DATASET_DIR = Path("/Users/dayonekoo/Desktop/cc_dataset")
-TOP_CIP_PATH = DATASET_DIR / "top_cip_crosswalk.csv"
-CIP_SOC_PATH = DATASET_DIR / "CIP2020_SOC2018_Crosswalk.xlsx"
-COE_DEMAND_PATH = DATASET_DIR / "occupational_demand_coe.csv"
-
-# PCAH sector file ships in-repo because it is the taxonomy authority for the
-# ontology — both the occupation side (this module) and the employer side
-# (backend/employers/edd_scrape.py) need to load from the same source of
-# truth, including on dev machines that don't carry the external cc_dataset
-# directory. The other crosswalk files above remain external because they
-# are BLS/Census reference datasets on a different update cadence.
-PCAH_SECTORS_PATH = Path(__file__).parent / "data" / "TOP Codes to Sectors.xlsx"
+_DATA_DIR = Path(__file__).parent / "data"
+TOP_CIP_PATH = _DATA_DIR / "top_cip_crosswalk.csv"
+CIP_SOC_PATH = _DATA_DIR / "CIP2020_SOC2018_Crosswalk.xlsx"
+PCAH_SECTORS_PATH = _DATA_DIR / "TOP Codes to Sectors.xlsx"
+COE_DEMAND_PATH = Path(__file__).parent / "occupational_demand_coe.csv"
 
 CALIBRATIONS_DIR = Path(__file__).parent / "calibrations"
 

@@ -105,28 +105,47 @@ def lookup_top6(course_codes: list[str], college: str) -> set[str]:
 
     Returns deduplicated set of TOP6 codes found in the MCF.
     """
+    return {t for t in lookup_top6_per_course(course_codes, college).values() if t}
+
+
+def lookup_top6_per_course(
+    course_codes: list[str], college: str
+) -> dict[str, str | None]:
+    """Look up TOP6 codes per course code at a specific college.
+
+    Per-course variant of lookup_top6. Used by the loader to set the
+    Course.top_code property and (downstream) materialize PREPARES_FOR
+    edges from each course to the occupations its TOP6 crosswalks to.
+
+    Returns: {course_code: top6 or None} for every input code. None
+    indicates the MCF has no row for that course at that college, which
+    is normal for non-credit / general-education entries that fall outside
+    the institutional CTE catalog.
+    """
     mcf = _load_mcf_index()
     college_norm = _normalize_college(college).lower()
+    prefix_index = _build_prefix_scan_index()
+    college_courses = prefix_index.get(college_norm, [])
 
-    top6_codes: set[str] = set()
-
+    out: dict[str, str | None] = {}
     for code in course_codes:
         normalized = _normalize_course_code(code)
         if not normalized:
+            out[code] = None
             continue
 
-        # Try exact match
+        # Exact match
         top6 = mcf.get((normalized, college_norm))
         if top6:
-            top6_codes.add(top6)
+            out[code] = top6
             continue
 
-        # Fallback: prefix match (handles CT100 matching CT100AB)
-        prefix_index = _build_prefix_scan_index()
-        college_courses = prefix_index.get(college_norm, [])
+        # Prefix fallback (handles catalog "CT100" matching MCF "CT100AB")
+        matched: str | None = None
         for mcf_id, mcf_top6 in college_courses:
             if mcf_id.startswith(normalized):
-                top6_codes.add(mcf_top6)
-                break  # Take first match
+                matched = mcf_top6
+                break
+        out[code] = matched
 
-    return top6_codes
+    return out

@@ -28,11 +28,15 @@ import logging
 import sys
 from pathlib import Path
 
-from ontology.crosswalks import cte_reachable_socs
+from ontology.crosswalks import COE_DEMAND_PATH, cte_reachable_socs
 
 logger = logging.getLogger(__name__)
 
-COE_CSV_DEFAULT = Path(__file__).parents[3] / "cc_dataset" / "occupational_demand_coe.csv"
+# COE demand CSV ships in-repo via ontology/crosswalks.py (the same file
+# ontology/supply.py reads at runtime). Previously this module pointed at
+# an out-of-repo dev path; centralizing through crosswalks.py makes the
+# data layout single-source-of-truth.
+COE_CSV_DEFAULT = COE_DEMAND_PATH
 OUTPUT_PATH = Path(__file__).parent / "occupations.json"
 EXISTING_PATH = Path(__file__).parent / "occupations.json"
 
