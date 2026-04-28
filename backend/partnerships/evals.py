@@ -168,11 +168,15 @@ _DIRECT_MAPPING_PATTERNS = [
     r"\bdirect(?:ly)? align(?:ed|s|ment)\b",
     r"\bdirect(?:ly)? prepar(?:e|es|ing)\b",
     r"\bperfect(?:ly)? (?:fit|align(?:ed|ment)?|match(?:ed)?)\b",
-    r"\bturn[- ]?key\b",
     r"\bseamless(?:ly)?\b",
     r"\b1[: ]1 alignment\b",
     r"\bideal (?:fit|match|partner)\b",
     r"\bnatural (?:fit|partner)\b",
+    # "turnkey" deliberately omitted: the cross-industry honesty
+    # phrasing we want to encourage often uses it as the negation
+    # ("a transferable foundation rather than a turnkey match"), and
+    # flagging that produces false positives. The other patterns
+    # catch the real overclaim cases.
 ]
 
 # Skills-as-pathway claims. Skills describe what courses develop; they
