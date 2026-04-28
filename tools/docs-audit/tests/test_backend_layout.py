@@ -13,14 +13,13 @@ def _make_valid_backend(tmp_path: Path) -> Path:
     (backend / "main.py").write_text("")
     (backend / "__init__.py").write_text("")
 
-    # The six feature directories, each with the core file shape.
+    # The five feature directories, each with the core file shape.
     for feature in (
         "students",
         "courses",
         "occupations",
         "employers",
         "partnerships",
-        "strong_workforce",
     ):
         fdir = backend / feature
         fdir.mkdir()

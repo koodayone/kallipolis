@@ -39,7 +39,6 @@ export default function PartnershipsView({ school, onBack }: Props) {
   const [landscape, setLandscape] = useState<ApiPartnershipOpportunity[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [userName, setUserName] = useState<string>("");
   const [query, setQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
   const [expandedNames, setExpandedNames] = useState<Set<string>>(new Set());
@@ -196,7 +195,6 @@ export default function PartnershipsView({ school, onBack }: Props) {
             {mode === "build" && (
               <PartnershipBuildMode
                 school={school}
-                userName={userName}
                 loading={loading}
                 error={error}
                 query={query}

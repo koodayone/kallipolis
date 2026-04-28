@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useCallback, useEffect, useRef, useMemo } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import PageTransition from "@/ui/PageTransition";
@@ -15,7 +14,6 @@ import { College, CALIFORNIA_REGIONS, CALIFORNIA_COLLEGES } from "@/state-atlas/
 import { getCollegeAtlasConfig } from "@/config/collegeAtlasConfigs";
 
 export default function StateAtlas() {
-  const router = useRouter();
   // The State Atlas is the doorway into the product. With auth removed
   // there is no concept of a user-specific "home college" — every visitor
   // sees the system-level map and picks a college from it.
