@@ -21,6 +21,35 @@ logger = logging.getLogger(__name__)
 _MCF_DIR = Path(__file__).parent / "mastercoursefiles"
 
 
+def _strip_punctuation(code: str) -> str:
+    """Strip punctuation that varies arbitrarily across MCF formats and
+    catalog-scraper artifacts.
+
+    Two distinct phenomena collapse here:
+
+      1. MCF separator drift: some colleges' MCFs separate the alpha
+         prefix from the numeric body with hyphens ("ACR-20", "ENGL-129"),
+         others run them together ("ACR1", "ENGL101A"). Within a single
+         MCF the convention can be inconsistent (Shasta: "ANTH-5" alongside
+         "ANTH10"). Hyphens carry no semantic content — they're a typing
+         convention — so stripping them lets one canonical key cover both
+         shapes.
+
+      2. Catalog-scrape artifacts: PDF extractors sometimes pick up
+         footnote markers ("ENGL C1000*", "MATH 1A†") or trailing dots
+         ("MATH 1A.") that aren't part of the course code. The trailing
+         dot is already handled by _normalize_mcf_course_id; stripping
+         "*" and a few peers here closes the symmetric gap on the
+         catalog side.
+
+    The character set is intentionally narrow — only punctuation that
+    has been observed as either an MCF separator or a scrape artifact.
+    Periods are left to the caller's existing rstrip pass; alphanumerics
+    and whitespace pass through.
+    """
+    return re.sub(r"[\-*†§¶]", "", code)
+
+
 def _strip_numeric_padding(code: str) -> str:
     """Strip leading zeros from the numeric portion that follows the
     alphabetic prefix.
@@ -37,8 +66,9 @@ def _strip_numeric_padding(code: str) -> str:
     Strategy: identify the boundary between the alphabetic prefix and
     the first numeric block, strip leading zeros from that block, and
     leave any trailing alpha suffix intact. Codes without an alpha
-    prefix (pure numeric, hyphenated, etc.) pass through unchanged so
-    the function is safe to apply to every college's lookup keys.
+    prefix (pure numeric, hyphenated remainders, etc.) pass through
+    unchanged so the function is safe to apply to every college's
+    lookup keys.
 
     Examples:
         "ATHL004"     → "ATHL4"
@@ -49,7 +79,6 @@ def _strip_numeric_padding(code: str) -> str:
         "ATHL4"       → "ATHL4"      (no zeros to strip)
         "ART3L"       → "ART3L"      (no zeros to strip)
         "055"         → "055"        (no alpha prefix; pass through)
-        "ACR-20"      → "ACR-20"     (hyphenated; pass through)
     """
     m = re.match(r"^([A-Z]+)0+(\d+[A-Z]*)$", code)
     return m.group(1) + m.group(2) if m else code
@@ -70,6 +99,7 @@ def _normalize_course_code(code: str) -> str:
     """
     code = code.strip().upper()
     code = re.sub(r"\s+", "", code)
+    code = _strip_punctuation(code)
     return _strip_numeric_padding(code)
 
 
@@ -81,6 +111,7 @@ def _normalize_mcf_course_id(course_id: str) -> str:
     """
     course_id = course_id.strip().rstrip(".").strip().upper()
     course_id = re.sub(r"\s+", "", course_id)
+    course_id = _strip_punctuation(course_id)
     return _strip_numeric_padding(course_id)
 
 

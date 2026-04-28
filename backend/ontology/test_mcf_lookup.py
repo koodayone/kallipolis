@@ -35,6 +35,7 @@ from ontology.mcf_lookup import (
     _normalize_course_code,
     _normalize_mcf_course_id,
     _strip_numeric_padding,
+    _strip_punctuation,
 )
 
 
@@ -131,6 +132,36 @@ class TestStripNumericPadding:
         assert _strip_numeric_padding("055") == "055"
 
     def test_passes_hyphenated_through(self):
-        # Compton MCF uses hyphens ("ACR-20"). Pattern doesn't match,
-        # so we leave it alone; Compton's lookup path is unaffected.
+        # Compton MCF uses hyphens ("ACR-20") which the punctuation
+        # stripper handles upstream; this helper itself leaves the
+        # hyphen alone (it would no-op since the pattern requires
+        # alpha-prefix-then-digits).
         assert _strip_numeric_padding("ACR-20") == "ACR-20"
+
+
+class TestStripPunctuation:
+    """The hyphen / asterisk / footnote-marker cleanup. Catches MCF
+    convention drift (Compton 'ACR-20', Shasta 'ENGL-129') and
+    catalog-scrape artifacts ('ENGL C1000*', 'MATH 1A†')."""
+
+    def test_strips_hyphens_in_mcf_separator_drift(self):
+        assert _strip_punctuation("ENGL-129") == "ENGL129"
+        assert _strip_punctuation("ACR-20") == "ACR20"
+        assert _strip_punctuation("ANTH-5") == "ANTH5"
+
+    def test_strips_asterisk_catalog_scrape_artifact(self):
+        assert _strip_punctuation("ENGLC1000*") == "ENGLC1000"
+
+    def test_strips_obscure_footnote_markers(self):
+        # Daggers and section markers occasionally appear in PDFs.
+        assert _strip_punctuation("MATH1A†") == "MATH1A"
+        assert _strip_punctuation("HIST20§") == "HIST20"
+
+    def test_passes_clean_codes_through(self):
+        assert _strip_punctuation("CS1A") == "CS1A"
+        assert _strip_punctuation("ATHL004") == "ATHL004"
+
+    def test_round_trips_via_full_normalizer_strips_then_pads(self):
+        # The catalog-scrape miss "ENGL-129" (Shasta MCF) and the
+        # catalog form "ENGL 129" must converge.
+        assert _normalize_course_code("ENGL 129") == _normalize_mcf_course_id("ENGL-129")
