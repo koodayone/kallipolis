@@ -114,29 +114,27 @@
   {
     "name": "Winco Foods",
     "sector": "Retail",
-    "description": "WinCo Foods is an employee-owned American supermarket chain that operates a network of discount grocery stores, offering a wide range of produce, meat, bakery, and general grocery items at low prices.",
+    "description": "WinCo Foods operates as an employee-owned supermarket chain, providing a wide range of groceries and household products at low prices. The company serves shoppers across multiple regions, offering departments such as produce, meat, deli, seafood, bakery, and WinCo Foods brand items. Key business activities include in-store services, digital coupons, weekly ads, and promotions, with a focus on providing value and extra savings to its customers. WinCo Foods also emphasizes career opportunities and community support.",
     "regions": [
       "CVML",
       "FN"
     ],
     "occupations": [
       "11-1021",
-      "11-2021",
-      "11-2022",
-      "11-3012",
-      "11-3031",
-      "11-3121",
       "13-1071",
       "13-2011",
-      "41-4011",
-      "43-4161",
-      "13-1081",
-      "43-9081"
+      "15-1244",
+      "19-1012",
+      "49-9021",
+      "53-3032"
     ],
     "website": "https://www.wincofoods.com",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Tulare Local Healthcare District",
@@ -678,7 +676,7 @@
   {
     "name": "Home Depot",
     "sector": "Retail",
-    "description": "Home Depot is the #1 home improvement retailer, offering a vast array of products for building, renovation, and home maintenance, including appliances, tools, garden supplies, and installation services, to both DIY customers and professionals.",
+    "description": "Home Depot is a prominent retail organization specializing in home improvement products and services. It serves a broad customer base, including DIY enthusiasts and professionals, by offering a vast array of items across categories such as appliances, building materials, tools, paint, flooring, garden supplies, and smart home technology. The company also provides various services, including professional installation, truck and tool rental, and DIY project ideas. Home Depot operates on a large scale, with a significant online presence and physical stores, offering daily deals and special savings to its customers.",
     "regions": [
       "CVML",
       "IE/D",
@@ -692,32 +690,25 @@
     "occupations": [
       "11-1021",
       "11-2022",
-      "11-3012",
       "13-1071",
-      "13-2011",
-      "41-4011",
-      "11-3061",
-      "13-1028",
-      "13-1161",
-      "15-1244",
-      "43-4161",
       "13-1081",
-      "49-9062",
-      "11-2021",
-      "11-3013",
-      "11-1011",
-      "13-1199",
-      "11-3051"
+      "13-1151",
+      "27-1025",
+      "49-9021",
+      "11-3012"
     ],
     "website": "https://www.homedepot.com",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Lowe's Home Improvement",
     "sector": "Retail",
-    "description": "Lowe's Home Improvement is a major home improvement retailer providing products and services for home renovation, maintenance, and outdoor living, including appliances, tools, building materials, and garden supplies.",
+    "description": "Lowe's Home Improvement operates as a retailer providing a wide array of products and services for home improvement, serving both individual homeowners and professionals. The company offers appliances, building supplies, tools, lawn and garden items, home decor, and plumbing supplies, among many other categories. Lowe's also provides various installation services, including kitchen and bathroom remodeling, flooring, and window treatments. The organization aims to assist customers with projects ranging from routine maintenance to major renovations, offering resources like buying guides, calculators, and DIY workshops.",
     "regions": [
       "CVML",
       "IE/D",
@@ -728,29 +719,22 @@
       "SD/I"
     ],
     "occupations": [
-      "11-1021",
       "11-2022",
-      "11-3012",
-      "13-1071",
-      "13-2011",
-      "41-4011",
-      "11-3061",
-      "13-1028",
-      "13-1161",
-      "15-1244",
-      "43-4161",
       "13-1081",
-      "49-9062",
-      "11-2021",
+      "53-3032",
+      "13-1071",
+      "11-3012",
       "11-3013",
-      "11-1011",
-      "13-1199",
-      "11-3051"
+      "11-3021",
+      "13-1151"
     ],
     "website": "https://www.lowes.com",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Mission Foods",
@@ -4553,30 +4537,26 @@
   {
     "name": "Pacific Gas & Electric",
     "sector": "Utilities",
-    "description": "Pacific Gas & Electric Company (PG&E) is a major utility company providing natural gas and electric services to customers across California, focusing on energy delivery, safety, and clean energy initiatives.",
+    "description": "Pacific Gas and Electric Company (PG&E) is a utility provider that serves multiple California regions, offering electric and natural gas services. The company's key business activities include managing outages, providing billing and assistance, and supporting clean energy initiatives such as solar, electric vehicles, and battery storage. PG&E also focuses on wildfire safety and offers various rebates and incentives to help customers save energy and money.",
     "regions": [
       "SCC",
       "FN"
     ],
     "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-3012",
-      "11-3021",
-      "11-3031",
-      "13-1071",
-      "17-2071",
       "49-2095",
-      "11-3013",
-      "53-5031",
+      "17-3023",
       "13-1082",
-      "11-3051",
-      "11-9199"
+      "11-9021",
+      "15-1244",
+      "19-1032"
     ],
     "website": "https://www.pge.com",
     "swp_sectors": [
       "Energy, Construction and Utilities"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Shea Homes",
@@ -5382,27 +5362,29 @@
   {
     "name": "Olive Garden",
     "sector": "Hospitality & Food Service",
-    "description": "Olive Garden is a casual dining restaurant chain specializing in Italian-American cuisine, offering a variety of pasta dishes, salads, and breadsticks in a family-style setting. Its primary industry is full-service restaurants.",
+    "description": "Olive Garden is an Italian restaurant chain offering family-style dining, serving a variety of Italian food including classic entrees, pasta, appetizers, and desserts. The organization provides dine-in, ToGo, and delivery services, along with catering options for events. Olive Garden operates across multiple locations, facilitating online ordering, waitlist management, and gift card purchases. It serves a broad customer base seeking casual Italian dining experiences and offers career opportunities within its restaurant network.",
     "regions": [
       "SCC",
       "Bay",
       "FN"
     ],
     "occupations": [
+      "11-1011",
       "11-1021",
-      "11-3012",
+      "11-3031",
+      "11-3121",
       "13-1071",
-      "35-2013",
-      "11-2021",
-      "13-1121",
-      "27-1021",
-      "41-4011",
-      "43-4161"
+      "13-1151",
+      "13-1161",
+      "13-2011"
     ],
     "website": "https://www.olivegarden.com",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "CAL Fire San Luis Obispo County",
@@ -7442,26 +7424,26 @@
   {
     "name": "Chick-Fil-A",
     "sector": "Hospitality & Food Service",
-    "description": "Chick-fil-A is a fast-food restaurant chain known for its chicken sandwiches and other menu items, offering dine-in, pickup, and delivery services in the quick-service restaurant industry.",
+    "description": "Chick-fil-A is a quick-service restaurant chain primarily serving delicious chicken sandwiches and a variety of other menu items, including breakfast entr\u00e9es, salads, sides, kid's meals, family-style meals, treats, and beverages. It caters to individual customers for pickup or delivery and offers catering services for groups and events. The organization emphasizes quality ingredients and operates daily, except Sundays. Key business activities include food preparation, order fulfillment, and a customer loyalty program called Chick-fil-A One\u00ae rewards.",
     "regions": [
       "SCC",
       "FN"
     ],
     "occupations": [
       "11-1021",
-      "11-2021",
-      "11-3012",
-      "11-3121",
-      "11-9179",
+      "13-1151",
       "13-1071",
-      "35-2013",
-      "41-4011",
-      "43-4161"
+      "13-1161",
+      "11-3013",
+      "15-1299"
     ],
     "website": "https://www.chick-fil-a.com",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "El Encanto Dining Room & Terrace",
@@ -8546,7 +8528,7 @@
   {
     "name": "Grocery Outlet",
     "sector": "Retail",
-    "description": "Grocery Outlet is a discount grocery retailer offering name brand groceries and farm-fresh organic produce at significantly reduced prices compared to conventional grocery stores.",
+    "description": "Grocery Outlet is a discount grocery retailer offering name-brand groceries and organic produce at 40-70% less than conventional stores. The company serves customers seeking significant savings on their everyday grocery needs. Grocery Outlet operates numerous stores, including locations across multiple California regions, and provides options for delivery and gift card purchases. Key business activities include sourcing products, operating retail locations, and offering opportunities for independent operators to own a Grocery Outlet store.",
     "regions": [
       "SCC",
       "SD/I",
@@ -8555,23 +8537,18 @@
     "occupations": [
       "11-1021",
       "11-3012",
-      "11-3031",
-      "13-1028",
+      "11-3121",
       "13-1071",
-      "13-2011",
-      "13-1161",
-      "15-1211",
-      "29-1031",
-      "31-9092",
-      "41-4011",
-      "43-4161",
-      "11-2021",
-      "43-9081"
+      "13-1081",
+      "13-1161"
     ],
     "website": "https://www.groceryoutlet.com",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Smart & Final Extra!",
@@ -20071,136 +20048,149 @@
   {
     "name": "Hatchet Ridge Wind",
     "sector": "Utilities",
-    "description": "A wind energy facility.",
+    "description": "Hatchet Ridge Wind operates a 101 MW utility-scale wind facility in Shasta County, California, near Burney, which was the only such facility to become operational in California in 2010. The facility utilizes 44 SWT-2.3-93 wind turbines to generate electricity, equivalent to the needs of over 100,000 Americans, which is sold to Pacific Gas and Electric Company under a 15-year power purchase agreement. Beyond energy production, Hatchet Ridge Wind contributes significantly to the local community through over $30 million in tax payments benefiting schools and the region, and a $5 million Community Benefits Program.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-1021",
-      "11-3051",
-      "17-2199",
       "49-9081",
-      "13-1082",
-      "11-3013",
-      "11-9199",
-      "17-2071",
-      "53-5031"
+      "49-2095",
+      "11-3051",
+      "17-3023",
+      "19-5011",
+      "13-1082"
     ],
     "website": "https://patternenergy.com/projects/hatchet-ridge-wind/",
     "swp_sectors": [
       "Energy, Construction and Utilities"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Steve Manning Construction",
     "sector": "Construction",
-    "description": "A construction company.",
+    "description": "Steve Manning Construction, Inc. is a leading general engineering contractor in Northern California, specializing in heavy civil construction, highway, and road building. Certified by the U.S. Small Business Association (SBA) as a HUBZone contractor, the company offers services including earth moving, materials processing, rock excavation, slope repair, and paving. They serve clients requiring dirt moving, rock excavating, and paving, leveraging years of experience and a diverse fleet of heavy equipment. The company is affiliated with Operating Engineers Union Local 3 and Laborers Union Local 185.",
     "regions": [
       "FN"
     ],
     "occupations": [
       "11-9021",
+      "11-1021",
       "13-1051",
-      "17-2051",
-      "17-3022",
-      "43-4161",
       "13-1082",
-      "17-2071",
-      "43-9111",
-      "51-4111"
+      "17-3022",
+      "49-3023",
+      "53-3032",
+      "19-5011"
     ],
     "website": "https://smci-const.com/",
     "swp_sectors": [
       "Energy, Construction and Utilities"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Shasta County Road Department",
     "sector": "Construction",
-    "description": "Responsible for maintaining county roads.",
+    "description": "The Shasta County Department of Public Works is responsible for maintaining and improving the infrastructure within Shasta County, California. Its operations encompass a wide range of services including bridge maintenance, pavement maintenance, roadside maintenance, snowplowing, signal and sign maintenance, and traffic striping. The department also manages facilities, airports like Fall River Mills Airport, and provides garbage and water/sewer services (CSAs). It serves the residents and businesses of Shasta County by ensuring safe and efficient transportation routes and essential public utilities.",
     "regions": [
       "FN"
     ],
     "occupations": [
       "11-3013",
-      "17-2051",
+      "11-9021",
+      "17-1022",
       "17-3022",
       "49-3023",
-      "53-3032"
+      "53-3032",
+      "19-4042"
     ],
     "website": "https://www.shastacounty.gov/public-works",
     "swp_sectors": [
       "Energy, Construction and Utilities"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Sierra Pacific Industries",
     "sector": "Manufacturing",
-    "description": "A lumber and wood products company.",
+    "description": "Sierra Pacific Industries is a manufacturing organization focused on sustainable forestry and wood product production. The company manages forests, having sequestered over 165 million metric tons of CO2, and operates a conifer nursery that has produced 300 million seedlings. Key business activities include growing forests, lumber production (Ponderosa Pine, Douglas Fir, etc.), and manufacturing a range of products such as windows, doors, mouldings, millwork, specialty products, and fencing. They serve customers through their sales team and engage in buying logs, land, or timber.",
     "regions": [
       "FN"
     ],
     "occupations": [
       "11-3051",
-      "13-1081",
-      "17-2112",
-      "49-3023",
-      "51-4111",
-      "11-3061",
-      "17-2071",
-      "49-9062"
+      "13-1071",
+      "19-1032",
+      "49-2094",
+      "53-3032",
+      "13-1051",
+      "11-2022",
+      "17-3029"
     ],
     "website": "https://www.spi-ind.com/",
     "swp_sectors": [
       "Advanced Manufacturing"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Calportland",
     "sector": "Manufacturing",
-    "description": "A construction materials supplier.",
+    "description": "CalPortland is a leading manufacturer and distributor of high-quality building materials, serving various construction needs. The company produces and supplies cement, concrete, aggregates, asphalt, and offers construction services, including a mobile concrete group. CalPortland emphasizes sustainability through initiatives like GHG reduction, blended cements, alternative fuels, and energy management. With a focus on safety and environmental leadership, CalPortland operates facilities that have received awards for safety and environmental excellence, demonstrating a commitment to community and sustainable practices.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-9021",
-      "11-3051",
-      "17-2051",
-      "49-3023",
       "53-3032",
-      "11-3061",
-      "13-1051",
-      "17-2071",
-      "49-9062",
-      "51-4111"
+      "49-3023",
+      "49-2094",
+      "11-3051",
+      "19-5011",
+      "13-1071",
+      "13-2011",
+      "41-4011"
     ],
     "website": "https://www.calportland.com/",
     "swp_sectors": [
       "Advanced Manufacturing"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "SECO Manufacturing",
     "sector": "Manufacturing",
-    "description": "A manufacturing company.",
+    "description": "SECO Manufacturing specializes in surveying equipment and instruments, serving professionals in the surveying industry globally. The company offers a range of products including safety vests, shoulder harnesses, tripods, levels, and hydration packs. With customer service operations for North, Central & South America, APAC, and Europe, Middle East, Africa, SECO demonstrates a worldwide reach in providing precision tools and accessories for surveyors.",
     "regions": [
       "FN"
     ],
     "occupations": [
       "11-3051",
-      "13-1081",
-      "17-2112",
-      "49-2094",
-      "51-4111",
-      "11-3061",
-      "13-1051",
-      "17-3026",
-      "51-9162"
+      "11-9041",
+      "17-2071",
+      "17-3027",
+      "41-4011",
+      "13-1161",
+      "13-1071",
+      "13-2011"
     ],
     "website": "https://www.surveying.com/",
     "swp_sectors": [
       "Advanced Manufacturing"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Quartz Hill Post Acute",
@@ -20224,268 +20214,324 @@
     "website": "https://quartzhillpostacute.com/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Crown Motors",
     "sector": "Retail",
-    "description": "An automobile dealership.",
+    "description": "Crown Motors is an automotive dealership group based in Redding, CA, serving customers in the Far North region of California, including areas like Red Bluff, Anderson, and Cottonwood. The organization specializes in the sale of new vehicles from brands such as Dodge, Ford, Honda, Ram, and Nissan, alongside a diverse inventory of used cars, trucks, and SUVs. Key business activities include vehicle sales, comprehensive auto financing services, and a full-service center offering maintenance, repairs, and genuine OEM parts. Crown Motors emphasizes a customer-centric approach, providing online tools for convenient car shopping and financing.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-2021",
-      "11-3012",
-      "41-9031",
-      "43-4161",
+      "11-1021",
+      "11-2022",
+      "11-3031",
+      "13-1161",
+      "13-2072",
       "49-3023",
-      "11-3061",
-      "13-1071"
+      "13-1071",
+      "13-2011"
     ],
     "website": "https://www.crownmotorsredding.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Holiday Market",
     "sector": "Retail",
-    "description": "A grocery store.",
+    "description": "Holiday Market is an employee-owned and operated neighborhood grocery store chain primarily serving communities across Northern California and Southern Oregon. Established in 1962, the company focuses on providing customers with friendly service and the freshest meats and produce available. With fifteen Holiday Market locations, including stores in Trinity County and Penn Valley, California, they offer a range of retail grocery products, often including deli and pharmacy services, filling essential needs within their operating regions. Their business activities center on high-quality food retail and customer satisfaction.",
     "regions": [
       "FN"
     ],
     "occupations": [
       "11-1021",
-      "11-3012",
-      "13-1081",
-      "41-4011",
-      "43-9081",
-      "11-2021",
+      "11-3121",
       "13-1071",
-      "35-2013",
-      "43-4161"
+      "13-2011",
+      "13-1081",
+      "11-3061",
+      "11-3012",
+      "15-1244"
     ],
     "website": "https://www.shopholidaymarket.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "North State Grocery",
     "sector": "Retail",
-    "description": "A grocery store chain.",
+    "description": "North State Grocery, Inc. is an employee-owned chain of approximately 19-20 neighborhood grocery stores operating throughout Northern California and Southern Oregon. Headquartered in Cottonwood, California, the company serves communities through two formats: Holiday Market, a high-end community grocery store, and Sav Mor, a price impact supermarket. Key business activities involve retailing a general line of food, including fresh fruits, vegetables, meats, and pantry items, with a strong emphasis on friendly service and fresh products. The organization also incorporates environmentally friendly measures into its operations.",
     "regions": [
       "FN"
     ],
     "occupations": [
       "11-1021",
+      "11-3031",
+      "11-3121",
+      "11-3061",
+      "13-2011",
+      "15-1244",
       "11-3012",
-      "13-1081",
-      "41-4011",
-      "43-9081",
-      "11-2021",
-      "13-1071",
-      "35-2013",
-      "43-4161"
+      "11-2021"
     ],
     "website": "https://www.shopholidaymarket.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Raley's",
     "sector": "Retail",
-    "description": "A supermarket chain.",
+    "description": "Raley's is a family-owned American grocery store chain that has been serving communities for 85 years. The company provides a wide range of products including produce, meat, seafood, dairy, deli, bakery, pantry essentials, beverages, snacks, and health and beauty items. Raley's offers convenient shopping options such as in-store shopping, online ordering for pickup and delivery, and a mobile app for exclusive deals. They also emphasize wellness through their Shelf Guide\u2122 icons, helping customers find products aligned with various dietary needs.",
     "regions": [
       "FN"
     ],
     "occupations": [
       "11-1021",
-      "11-3012",
-      "13-1081",
-      "41-4011",
-      "43-9081",
-      "11-2021",
-      "43-4161"
+      "13-1071",
+      "13-2011",
+      "15-1244",
+      "19-1012",
+      "29-1031",
+      "49-9021",
+      "53-3032"
     ],
     "website": "https://www.raleys.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Safeway",
     "sector": "Retail",
-    "description": "A supermarket chain.",
+    "description": "Safeway operates as a retail grocery chain, providing a wide array of products and services to individual consumers. Its key business activities include offering fresh produce, meat, seafood, bakery items, dairy, pantry staples, beverages, and frozen foods. Beyond groceries, Safeway also provides pharmacy services, household goods, personal care products, and pet care items. The company facilitates shopping through in-store visits, online ordering for delivery, and pickup options, including a FreshPass\u00ae subscription for unlimited free delivery. Safeway also features exclusive brands like O Organics\u00ae and Signature Select\u00ae.",
     "regions": [
       "FN",
       "Bay"
     ],
     "occupations": [
       "11-1021",
-      "11-3012",
-      "13-1081",
-      "41-4011",
-      "43-9081",
-      "53-3032",
-      "11-2021",
-      "43-4161"
+      "11-3013",
+      "13-1071",
+      "13-2011",
+      "15-1244",
+      "19-4013",
+      "49-3023",
+      "53-3032"
     ],
     "website": "https://www.safeway.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Redding Lumber Transport",
     "sector": "Transportation",
-    "description": "A company involved in the transportation of lumber.",
+    "description": "Redding Lumber Transport, Inc. is a California-based trucking company specializing in comprehensive transportation and logistics services. The company offers dry van, flatbed, and refrigerated hauling, catering to diverse cargo needs. With operations along the I-5 corridor, Redding Lumber Transport serves businesses requiring efficient and reliable freight movement. Key activities include freight transportation and logistics management, supported by ongoing driver recruitment efforts to maintain their operational capacity.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-3012",
+      "53-3032",
       "13-1081",
-      "49-3023",
-      "53-3032"
+      "11-1021",
+      "13-1071",
+      "49-3023"
     ],
     "website": "https://www.rlttrucking.com/",
     "swp_sectors": [
       "Advanced Transportation and Logistics"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Elite Universal Security",
     "sector": "Administrative Services",
-    "description": "A security services company.",
+    "description": "Elite Universal Security is a full-service private security provider operating in California's Far North region, with offices in Olivehurst, Redding, and Chico. As a disabled veteran-owned and American-owned company, it offers tailored security services to businesses and residential clients. Key activities include 24-hour mobile patrol, standing/site officers, bicycle/golf cart patrol, residential vacation checks, employee escorts, and lockout services. Their officers are California-licensed, undergo extensive training, and some have law enforcement or military backgrounds. The company emphasizes customer service and officer accountability, utilizing GPS-equipped patrol vehicles and electronic tour systems.",
     "regions": [
       "FN"
     ],
     "occupations": [
       "11-1021",
+      "13-1071",
+      "13-2011",
       "11-3012",
-      "13-1041",
-      "43-4161"
+      "11-1011",
+      "11-3031"
     ],
     "website": "http://www.eliteuniversalsecurity.com/",
     "swp_sectors": [
       "Public Safety"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "North State Security",
     "sector": "Administrative Services",
-    "description": "A security services company.",
+    "description": "North State Security, a locally owned and operated company since 1968, provides comprehensive security services across Shasta, Tehama, Butte, Siskiyou, Trinity, Del Norte, Humboldt, Lassen, Glenn, and Lake Counties in Northern California. They offer guard services with over 100 licensed and trained security professionals, the largest mobile patrol fleet in the region, and a 24/7 in-house dispatch center. Services include armed and unarmed guards, mobile patrols, emergency response, and specialized event security for diverse clients such as construction sites, medical facilities, financial institutions, schools, and residential subdivisions.",
     "regions": [
       "FN"
     ],
     "occupations": [
       "11-1021",
       "11-3012",
+      "11-3121",
+      "13-1071",
       "13-1041",
-      "43-4161"
+      "13-2011",
+      "13-1151"
     ],
     "website": "https://www.northstatesecurity.com/",
     "swp_sectors": [
       "Public Safety"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Securitas Security Services",
     "sector": "Administrative Services",
-    "description": "A security services company.",
+    "description": "Securitas Security Services offers customized security and guarding solutions, integrating specialized guarding services with world-class technology to make the world safer for clients and their customers. The organization provides a comprehensive suite of services including on-site guarding, mobile patrol, remote security, electronic security, fire & safety, and corporate risk management. Securitas serves diverse industries such as Logistics, Healthcare, and Higher Education, tailoring solutions for businesses ranging from small to large, complex organizations. With a global footprint and local teams across over 44 markets, Securitas protects employees and property 24/7 by combining skilled professionals, advanced technology, and data analytics.",
     "regions": [
       "FN"
     ],
     "occupations": [
       "11-1021",
-      "11-3012",
       "13-1041",
-      "43-4161"
+      "13-1071",
+      "13-1082",
+      "15-1212",
+      "19-5011",
+      "49-2094"
     ],
     "website": "https://www.securitasinc.com/",
     "swp_sectors": [
       "Public Safety"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "American Christian Academy",
     "sector": "Education",
-    "description": "A private educational institution.",
+    "description": "American Christian Academy (ACA) is a non-denominational ministry that has supported home educators and homeschool parents for over 25 years across 14 northern California counties. As a Private School Satellite Program (PSP), ACA provides independent study administrative oversight and guidance for grades 1-12. The organization focuses on cultivating self-governing families through Christian life and living, self-education, and individual self-government. Key activities include academic support, college readiness, and facilitating meetings for report cards, attendance, and curriculum sharing.",
     "regions": [
       "FN"
     ],
     "occupations": [
       "11-9039",
+      "11-3012",
+      "13-2011",
       "13-1071",
-      "25-2021",
-      "25-2031",
-      "25-9044"
+      "25-3099",
+      "25-9099"
     ],
     "website": "https://acaec.net/w/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Cottonwood Union School District",
     "sector": "Education",
-    "description": "A public school district.",
+    "description": "The Cottonwood Union School District is an educational institution located in Cottonwood, CA, dedicated to serving students every day. The district encompasses North Cottonwood School and West Cottonwood Jr. High School, providing education from preschool through junior high. Key activities include managing school calendars, facilitating state testing, and engaging parents through clubs. The district office is situated at 20512 First Street, Cottonwood, CA 96022.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-9039",
-      "11-3012",
-      "13-1071",
       "25-2021",
-      "25-2031",
-      "25-9044"
+      "25-2057",
+      "25-9099",
+      "11-9039",
+      "11-3031",
+      "13-1071",
+      "15-1244"
     ],
     "website": "https://www.cwusd.com/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Fall River School District",
     "sector": "Education",
-    "description": "A public school district.",
+    "description": "The Fall River Joint Unified School District is an educational institution in Burney, CA, dedicated to providing a positive environment for students through a partnership between the school and home. The district serves students, parents, staff, and community members in the Far North region of California. It operates multiple schools, including Burney Elementary, Burney Jr. Sr. High, Fall River Elementary, and Fall River Jr. Sr. High Schools. Key activities include offering educational programs, food services, and engaging the community through initiatives like LCAP meetings and facility modernization projects.",
     "regions": [
       "FN"
     ],
     "occupations": [
       "11-9039",
-      "11-3012",
-      "13-1071",
       "25-2021",
       "25-2031",
-      "25-9044"
+      "21-1021",
+      "13-1071",
+      "13-2011",
+      "11-3013",
+      "15-1244"
     ],
     "website": "https://www.frjusd.org/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Foothill High School",
     "sector": "Education",
-    "description": "A secondary educational institution.",
+    "description": "Foothill High School, located at 9733 Deschutes Road, Palo Cedro, CA 96073, is an educational institution serving students in the Far North region of California. As a California Distinguished School, it offers a comprehensive curriculum including academic tutoring, career technical education (CTE) classes, and dual enrollment courses, catering to 9th through 12th-grade students. The school also provides various athletic programs, counseling services, and student support resources, aiming to foster academic achievement and personal development within its student body.",
     "regions": [
       "FN"
     ],
     "occupations": [
       "11-9039",
-      "13-1071",
       "25-2031",
-      "25-3041",
-      "25-9044"
+      "25-2058",
+      "21-1021",
+      "11-3013",
+      "25-9099",
+      "13-1151",
+      "29-9091"
     ],
     "website": "https://www.foothillcougars.com/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Sequoia Middle School",
@@ -20504,91 +20550,108 @@
     "website": "https://sequoia.reddingschools.net/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Shasta High School",
     "sector": "Education",
-    "description": "A secondary educational institution.",
+    "description": "Shasta High School, located in Redding, CA, is an educational institution serving students in the Far North region of California. The school provides a comprehensive curriculum including AP/Honors courses, Career Technical Education, and various academic offerings. Key activities encompass academics, athletics with live-streamed events, counseling services, and numerous clubs and student organizations. The school also manages enrollment, registration, and provides resources for parents and students, operating within the Shasta Union School District.",
     "regions": [
       "FN"
     ],
     "occupations": [
       "11-9039",
-      "13-1071",
       "25-2031",
-      "25-3041",
-      "25-9044"
+      "25-2058",
+      "25-3099",
+      "21-1021",
+      "27-2022",
+      "13-1071",
+      "15-1244"
     ],
     "website": "https://www.shastawolves.com/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Shasta College",
     "sector": "Education",
-    "description": "A community college providing higher education.",
+    "description": "Shasta College is a community college in the Far North region of California, serving new and returning students, high school students, and the wider community. The college offers 119 programs, 89 degrees, and 47 certificates, focusing on academic, career, and workforce development. Key activities include providing college credits, career education and training, community education, and business training workshops. Shasta College also offers extensive student support services, including financial aid, counseling, and resources for transfer to four-year institutions.",
     "regions": [
       "FN"
     ],
     "occupations": [
+      "25-3099",
       "11-9039",
-      "11-3012",
       "13-1071",
-      "25-3011",
+      "13-2011",
+      "15-1244",
       "25-4031",
-      "25-9044"
+      "11-3013",
+      "21-1099"
     ],
     "website": "https://www.shastacollege.edu/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Redding VA Outpatient Clinic",
     "sector": "Healthcare",
-    "description": "A medical clinic providing outpatient services for veterans.",
+    "description": "The Redding VA Clinic, part of VA Northern California Health Care, provides comprehensive medical and ancillary services to Veterans in the Far North region of California. Key offerings include primary care, audiology, cardiology, chiropractic, dental, gastroenterology, mental health, nutrition, ophthalmology, optometry, physical therapy, podiatry, radiology, social work, urgent care, urology, and women's health. The clinic also supports homeless Veterans with transitional housing and other resources. Operating Monday through Friday, the clinic aims to deliver patient-centered care, including whole health approaches like acupuncture and yoga, to improve Veterans' well-being.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-9111",
-      "13-1071",
       "29-1141",
       "29-2061",
-      "31-1131",
       "31-9092",
-      "21-1091",
-      "29-2057"
+      "31-1131",
+      "29-2034",
+      "31-9091",
+      "31-2021",
+      "21-1029"
     ],
     "website": "https://www.va.gov/northern-california-health-care/locations/redding-va-clinic/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Shasta Community Health Center",
     "sector": "Healthcare",
-    "description": "A community health center providing medical services.",
+    "description": "Shasta Community Health Center is a prominent provider of integrated healthcare services in Northern California, offering a comprehensive array of medical, vision, dental, specialty, behavioral, and wellness programs. The organization serves individuals and families, irrespective of their insurance status. Key business activities include primary care, mental and behavioral health, maternity care, dental care, vision services, and patient outreach programs like HIV-Early Intervention Services and the HOPE Program. They also provide urgent care services and offer free community classes and workshops.",
     "regions": [
       "FN"
     ],
     "occupations": [
       "11-9111",
-      "13-1071",
-      "21-1091",
       "29-1141",
       "29-2061",
-      "31-1131",
       "31-9092",
-      "21-1021",
-      "29-2051"
+      "31-9091",
+      "29-1292",
+      "21-1091",
+      "21-1029"
     ],
     "website": "https://www.shastahealth.org/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Shasta Orthopaedics-Sports",
@@ -20609,28 +20672,32 @@
     "website": "https://shastaortho.com/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Owens Healthcare",
     "sector": "Healthcare",
-    "description": "A healthcare services provider.",
+    "description": "Owens Healthcare, a Friesen Group Company, provides state-of-the-art medical equipment and in-home respiratory services to patients and caregivers throughout the North State of California. Established in 1957 and locally owned, Owens offers custom healthcare solutions including CPAP/BiPAP, non-invasive ventilation, nebulized medications, oxygen, and airway clearance therapies. The organization serves patients, providers, and payors, ensuring seamless continuity of care from hospital to home with 24/7 support and a team of experienced respiratory therapists and sleep specialists. Owens has been accredited by The Joint Commission since 2003, demonstrating a commitment to quality and compliance.",
     "regions": [
       "FN"
     ],
     "occupations": [
+      "29-1126",
+      "49-9062",
+      "31-9092",
+      "29-2061",
       "11-9111",
       "13-1071",
-      "29-1141",
-      "29-2061",
-      "31-1131",
-      "31-9092",
-      "29-2053"
+      "11-1021"
     ],
     "website": "https://myowens.com/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Redding Rancheria",
@@ -20651,277 +20718,328 @@
     "website": "https://www.rrths.org/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Mental Health-Shasta County",
     "sector": "Healthcare",
-    "description": "A county department providing mental health services.",
+    "description": "Mental Health-Shasta County, part of the Shasta County Health and Human Services Agency, provides mental health and substance use recovery services to individuals in the Far North region of California. The organization offers a range of services including adult mental health, children's mental health, crisis mental health, and substance use treatment. They also provide resources for mental health providers and operate a Crisis Residential & Recovery Center. The agency aims to support the well-being of people living with serious emotional disturbances and mental illness, believing that mental wellness and recovery are achievable.",
     "regions": [
       "FN"
     ],
     "occupations": [
+      "21-1029",
+      "21-1099",
+      "29-1141",
+      "29-2053",
       "11-9151",
-      "11-3012",
+      "11-9111",
       "13-1071",
-      "21-1018",
-      "21-1021",
-      "21-1099"
+      "13-2011"
     ],
     "website": "https://www.shastacounty.gov/health-human-services/page/mental-health-substance-use-recovery",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Mercy Medical Center Redding",
     "sector": "Healthcare",
-    "description": "A hospital providing comprehensive medical services.",
+    "description": "Mercy Medical Center Redding is a Dignity Health facility dedicated to keeping individuals happy, healthy, and whole in Redding, CA. The center offers a comprehensive range of services including cancer care, emergency and trauma services, heart care, maternity services, neurology, spine services, and orthopedics. Recognized as an LGBTQ+ Healthcare Equality High Performer, Mercy Medical Center Redding is committed to equitable treatment and inclusion for its patients, visitors, and employees. The organization also actively engages in community health initiatives, providing grants to local non-profits and promoting health awareness.",
     "regions": [
       "FN"
     ],
     "occupations": [
       "11-9111",
-      "11-3012",
-      "13-1071",
-      "15-1211",
       "29-1141",
+      "29-2034",
       "29-2061",
       "31-1131",
       "31-9092",
-      "11-1011",
-      "29-2034"
+      "31-9097",
+      "49-9062"
     ],
     "website": "https://www.dignityhealth.org/north-state/locations/mercy-redding",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Vibra Hospital of Northern CA",
     "sector": "Healthcare",
-    "description": "A hospital specializing in long-term acute care.",
+    "description": "Vibra Hospital of Northern California is a critical care hospital in Redding, California, specializing in extended hospitalization for patients with complex medical issues. They serve individuals requiring longer-term hospital services due to critical and chronic medical conditions, offering specialized care in areas such as cardiac, medically complex, neuro, respiratory, sepsis & infectious disease, post-trauma, skilled nursing, and wound care. The hospital focuses on developing individualized treatment plans to help patients overcome obstacles and achieve recovery goals, emphasizing high standards of performance, quality, and patient safety, as evidenced by their Joint Commission's Gold Seal of Approval\u00ae for Hospital Accreditation.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-9111",
-      "11-3012",
-      "13-1071",
       "29-1141",
-      "29-2061",
+      "29-1126",
       "31-1131",
-      "31-9092"
+      "31-2021",
+      "31-9092",
+      "11-9111",
+      "29-2061",
+      "29-1031"
     ],
     "website": "https://norcalrehab.com/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Copper Ridge Care Center",
     "sector": "Healthcare",
-    "description": "A skilled nursing and rehabilitation facility.",
+    "description": "Copper Ridge Care Center is a five-star rated skilled nursing and rehabilitation facility located in Redding, California, serving the Shasta County community. The center provides 24/7 nursing care, short-term rehabilitation, and long-term care services, recognized by U.S. News Best Nursing Homes awards. Key activities include patient-centered care, physical therapy in an expansive rehab gym, and a focus on patient well-being and recovery.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-9111",
       "29-1141",
       "29-2061",
       "31-1131",
-      "31-9092",
-      "39-4011",
+      "31-2021",
+      "11-9111",
       "13-1071",
-      "21-1021",
-      "31-2021"
+      "29-1031",
+      "29-2051"
     ],
     "website": "https://copperridgecarecenter.com/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Redding Post Acute",
     "sector": "Healthcare",
-    "description": "A post-acute care facility.",
+    "description": "Redding Post Acute is a 5-star rated skilled nursing and short-term rehabilitation facility located in Redding, Northern California, serving the community for nearly 60 years. The organization provides 24-hour skilled nursing services, rehabilitation services, and post-acute care. Key business activities include an activities program and social services, focusing on quality and service for seniors. The facility, repurposed in 2016 by West Harbor Healthcare, is open 24/7 and accepts referrals.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-9111",
       "29-1141",
       "29-2061",
       "31-1131",
-      "31-9092",
-      "39-4011",
-      "13-1071",
-      "21-1021",
-      "31-2021"
+      "11-9111",
+      "31-2021",
+      "31-2011",
+      "29-1031",
+      "21-1029"
     ],
     "website": "https://www.reddingpostacute.net/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Windsor Redding Care Center",
     "sector": "Healthcare",
-    "description": "A skilled nursing and rehabilitation facility.",
+    "description": "Windsor Redding Care Center is a skilled nursing facility and nursing home located in Redding, California, serving the Far North region. It offers comprehensive healthcare services, including 24-hour skilled nursing care, assisted living, and independent living options. The center provides extensive rehabilitation services such as physical, occupational, and speech therapy, aiming to help patients recover from illness or surgery and reintegrate into daily life. With 113 certified beds and an average daily occupancy of 104 residents, the facility is Medicare and Medicaid certified, delivering approximately 4.87 hours of nursing care per resident daily.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-9111",
-      "29-1141",
-      "29-2061",
       "31-1131",
-      "31-9092",
-      "39-4011",
-      "13-1071",
-      "21-1021",
-      "31-2021"
+      "29-2061",
+      "29-1141",
+      "31-2021",
+      "31-2011",
+      "11-9111",
+      "29-1031",
+      "11-3013"
     ],
     "website": "https://www.windsorreddingcc.com/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Shascade Community Services",
     "sector": "Healthcare",
-    "description": "A provider of community-based social services.",
+    "description": "Shascade Community Services is dedicated to helping adults with developmental disabilities achieve greater independence by providing a range of supportive programs. The organization offers supported employment services through Shascade Work Connection, assisting individuals in finding and maintaining jobs. Additionally, it provides inclusive community-based day programs and independent living skills instruction to foster community integration, social development, and self-sufficiency. Shascade also offers Personal Finance Services, acting as a representative payee for various benefits to help individuals regain financial control. Serving the Far North region of California, including Redding, Burney, and Weaverville, Shascade is committed to improving the lives of adults with disabilities.",
     "regions": [
       "FN"
     ],
     "occupations": [
       "11-9151",
-      "11-3012",
+      "21-1099",
       "13-1071",
-      "21-1021",
-      "21-1099"
+      "13-2011",
+      "11-1021",
+      "13-1151",
+      "11-3012"
     ],
     "website": "https://www.shascade.org/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Far Northern Regional",
     "sector": "Healthcare",
-    "description": "A regional center providing services for individuals with developmental disabilities.",
+    "description": "Far Northern Regional Center partners with individuals with developmental disabilities, empowering them to live as equal and valued community members in a nine-county area of Northern California, including Butte, Shasta, Modoc, Trinity, Glenn, Lassen, Plumas, Tehama, and Siskiyou. The organization provides a range of services such as Early Start, eligibility determination, employment support, self-determination programs, and special education assistance. Additionally, they offer advocacy, language access, and cultural competency resources, while also supporting a network of providers to ensure comprehensive care and community integration for their clients.",
     "regions": [
       "FN"
     ],
     "occupations": [
+      "11-1011",
+      "11-9111",
       "11-9151",
-      "11-3012",
       "13-1071",
-      "21-1021",
-      "21-1099"
+      "13-2011",
+      "21-1099",
+      "29-1141"
     ],
     "website": "https://www.farnorthernrc.org/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Oak River Rehab",
     "sector": "Healthcare",
-    "description": "A rehabilitation center.",
+    "description": "Oak River Rehab is a five-star Medicare-certified short-term rehabilitation and skilled nursing facility located in Anderson, California. The organization provides 24/7 personalized healthcare services, including skilled nursing care after surgery, illness, or injury, and short-term rehabilitation therapies such as physical, occupational, speech, and respiratory therapies. They serve patients needing recovery and rehabilitation, aiming to help them regain strength and confidence. Oak River Rehab also offers social services, engaging activities, and amenities like private rooms, an expansive rehab gym, and spacious courtyards.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-9111",
-      "29-1129",
+      "31-1131",
+      "29-2061",
       "29-1141",
       "31-2021",
-      "31-9011"
+      "31-2011",
+      "29-1031",
+      "11-9111",
+      "29-1125"
     ],
     "website": "https://oakriver-rehab.com/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Bridge Bay At Shasta Lake",
     "sector": "Hospitality & Food Service",
-    "description": "A resort or recreational facility located at Shasta Lake.",
-    "regions": [
-      "FN"
-    ],
-    "occupations": [
-      "11-9072",
-      "11-2021",
-      "11-3012",
-      "13-1121",
-      "27-2022",
-      "43-4161"
-    ],
-    "website": "https://bridgebayhouseboats.com/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
-    "name": "Red Lion Hotel Redding",
-    "sector": "Hospitality & Food Service",
-    "description": "A hotel providing lodging and hospitality services.",
+    "description": "Bridge Bay at Shasta Lake is a hospitality organization offering houseboat and small boat rentals, including ski boats, patio boats, and personal watercraft, for recreational activities on Shasta Lake. It serves individuals, families, and groups seeking vacations, water sports, and outdoor adventures. The resort also provides lodging at The Lodge, moorage slips, a restaurant, and hosts special events such as weddings, live entertainment, and corporate retreats, catering to both travelers and locals in the Far North region of California.",
     "regions": [
       "FN"
     ],
     "occupations": [
       "11-1021",
-      "11-2021",
-      "11-3012",
-      "11-9179",
+      "11-3013",
       "13-1121",
-      "43-4161",
-      "39-5012"
+      "13-1071",
+      "13-2011",
+      "49-3023",
+      "53-5022",
+      "11-9072"
     ],
-    "website": "https://www.sonesta.com/red-lion-hotels/ca/redding/red-lion-hotel-redding",
+    "website": "https://bridgebayhouseboats.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
-    "name": "City of Redding Public Works",
-    "sector": "Government",
-    "description": "A municipal department responsible for public infrastructure.",
+    "name": "Red Lion Hotel Redding",
+    "sector": "Hospitality & Food Service",
+    "description": "Red Lion Hotel Redding by Sonesta is a hospitality organization located in Redding, CA, serving families, couples, and business travelers. The hotel offers accommodations, an on-site bar & grill called Three Shastas Bar & Grill, and flexible meeting and event spaces spanning over 8,000 square feet, capable of hosting up to 650 guests. Key business activities include providing lodging, dining services, and catering for various events such as business meetings, conferences, and weddings. The hotel also features amenities like complimentary Wi-Fi, a fitness center, and the largest outdoor pool in Redding, and is recognized by the California Green Lodging Program.",
     "regions": [
       "FN"
     ],
     "occupations": [
+      "11-1021",
+      "11-3012",
       "11-3013",
+      "11-3121",
+      "11-2022",
+      "13-1121",
+      "13-2011"
+    ],
+    "website": "https://www.sonesta.com/red-lion-hotels/ca/redding/red-lion-hotel-redding",
+    "swp_sectors": [
+      "Retail, Hospitality and Tourism"
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
+  },
+  {
+    "name": "City of Redding Public Works",
+    "sector": "Government",
+    "description": "The City of Redding Public Works department provides essential municipal services to the residents of Redding, Shasta County, California, a city with a 2020 population of 93,611. The department manages all transportation and engineering functions, including streets and traffic operations, alongside comprehensive field operations. Key business activities encompass the provision and maintenance of wastewater, water, and storm drain utilities. Operating from two locations, they also handle engineering design, conduct surveys for city right-of-way, secure necessary permits for infrastructure projects, and offer critical support during flood and disaster situations, such as providing sandbags and road closure information.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
       "11-9041",
-      "17-2051",
-      "49-9062",
-      "53-3032"
+      "11-3013",
+      "17-1022",
+      "17-2199",
+      "17-3022",
+      "49-3023"
     ],
     "website": "https://www.cityofredding.gov/government/departments/public_works/index.php",
     "swp_sectors": [
       "Energy, Construction and Utilities"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Redding Police Department",
     "sector": "Government",
-    "description": "The municipal law enforcement agency for Redding.",
+    "description": "The Redding Police Department is a government agency providing 24/7 law enforcement, investigations, and crime prevention services to the City of Redding, California, the most populous city in Shasta County. Key activities include patrol, traffic enforcement, and criminal investigations for various offenses. The department also operates a communication center and manages community programs such as Neighborhood Watch and abandoned vehicle initiatives. With up to 119 sworn officers and a total of 190 full and part-time positions, it collaborates with county partners in the local justice system.",
     "regions": [
       "FN"
     ],
     "occupations": [
       "11-1011",
+      "11-1021",
       "11-3012",
-      "13-1041",
-      "13-1111",
-      "43-4161"
+      "13-1071",
+      "13-1151",
+      "15-1244",
+      "19-4092",
+      "21-1099"
     ],
     "website": "https://www.cityofredding.gov/government/departments/police/index.php",
     "swp_sectors": [
       "Public Safety"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Shasta County Fire Department",
@@ -20941,51 +21059,57 @@
     "website": "https://www.shastacounty.gov/fire",
     "swp_sectors": [
       "Public Safety"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Lassen National Forest",
     "sector": "Government",
-    "description": "A national forest managed by the U.S. Forest Service.",
+    "description": "Lassen National Forest, a government entity within the U.S. Department of Agriculture Forest Service, manages 1.2 million acres across seven counties in Northern California, including Lassen, Shasta, Tehama, Butte, Plumas, Siskiyou, and Modoc. It serves the public by offering diverse recreation opportunities such as camping, cabins, and epic adventures, while also focusing on fire information, prevention, and forest management through timber sales and natural resource oversight. Key activities include planning projects, managing wilderness areas, and engaging in public comment processes for initiatives like the Green Badger Project and OHV grant applications.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-9121",
-      "11-3013",
-      "17-2081",
       "19-1031",
       "19-1032",
       "19-4071",
-      "11-1011",
-      "11-9031"
+      "33-2011",
+      "11-9121",
+      "13-1082",
+      "11-3012"
     ],
     "website": "https://www.fs.usda.gov/r05/lassen",
     "swp_sectors": [
-      "Agriculture, Water and Environmental Technologies"
-    ]
+      "Energy, Construction and Utilities"
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Shasta-Trinity National Forest",
     "sector": "Government",
-    "description": "A national forest managed by the U.S. Forest Service.",
+    "description": "The Shasta-Trinity National Forest, the largest National Forest in California, manages 2.1 million acres across diverse landscapes, including five wilderness areas, hundreds of lakes, and thousands of miles of streams and rivers. It serves a wide range of visitors seeking recreation such as climbing, boating, hiking, and camping, while also engaging with contractors, volunteers, and tribal partners. Key activities include comprehensive natural resource management, fire prevention and response, forest product oversight, and the protection of archaeological and cultural resources.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-9121",
-      "11-3013",
-      "17-2081",
+      "33-2011",
       "19-1031",
       "19-1032",
       "19-4071",
-      "11-1011",
-      "11-9031"
+      "19-2041",
+      "19-2043",
+      "11-1021",
+      "13-1071"
     ],
     "website": "https://www.fs.usda.gov/r05/shasta-trinity",
     "swp_sectors": [
-      "Agriculture, Water and Environmental Technologies"
-    ]
+      "Energy, Construction and Utilities"
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Palo Alto City",
@@ -29963,31 +30087,29 @@
   {
     "name": "Xerox Business Solutions West",
     "sector": "Wholesale",
-    "description": "Xerox Business Solutions West provides document management and office technology solutions.",
+    "description": "Xerox Business Solutions West, leveraging Xerox's global reach and industry-leading technologies, provides comprehensive workplace and digital printing solutions. The organization offers a range of products including home office, office laser, multifunction, and digital sheet-fed printing presses, along with essential supplies. Key business activities encompass print management software, enterprise content management, workflow automation, and various digital services like invoice management and marketing campaign solutions. Additionally, they deliver IT solutions covering data, network, and security. Xerox serves diverse sectors such as education, financial services, government, healthcare, legal, retail, and small to medium businesses, aiming to streamline their operations.",
     "regions": [
       "SD/I",
       "OC",
       "FN"
     ],
     "occupations": [
-      "11-1021",
-      "11-2011",
-      "11-3012",
-      "13-1081",
       "41-4011",
-      "43-9031",
-      "49-2022",
-      "11-3031",
+      "15-1231",
+      "15-1244",
+      "49-2094",
+      "13-1161",
       "13-1082",
-      "15-1211",
-      "11-2021",
-      "11-3021",
-      "13-1161"
+      "15-1212",
+      "11-2022"
     ],
     "website": "https://www.xerox.com/",
     "swp_sectors": [
       "Business and Entrepreneurship"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Modern Postcard",
@@ -43899,299 +44021,371 @@
   {
     "name": "Pacific Coast Producers",
     "sector": "Manufacturing",
-    "description": "Pacific Coast Producers is a food and beverage company involved in the production of wine and other agricultural products.",
+    "description": "Pacific Coast Producers is an agricultural cooperative owned by over 150 family farms in Central and Northern California, specializing in canning fruits and tomatoes for Private Brands globally. They produce a variety of shelf-stable items, including diced tomatoes, peach halves, sliced pears, and fruit bowls, using crops harvested at peak ripeness. The cooperative serves retail, foodservice, and industrial sectors, providing quality private label items. Their operations involve sustainable practices by multi-generational farmers to produce high-quality products for worldwide distribution.",
     "regions": [
       "FN"
     ],
     "occupations": [
+      "11-1021",
       "11-3051",
-      "11-3061",
-      "13-1081",
+      "13-1071",
       "13-2011",
-      "49-9062",
-      "51-9162"
+      "19-4013",
+      "41-4011",
+      "43-4161",
+      "49-2094"
     ],
     "website": "https://pacificcoastproducers.com",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Wrex Products Inc",
     "sector": "Manufacturing",
-    "description": "Wrex Products Inc is a manufacturing company.",
+    "description": "Wrex Products Inc. of Chico is a contract manufacturer specializing in high-quality plastic injection molding, die casting (aluminum and zinc), and powder coating services. Established in 1960, the company provides complete solutions for custom plastic and metal parts, serving a diverse customer base ranging from small businesses to multi-billion-dollar corporations. Key activities include tooling and engineering, finishing, pad printing, CNC machining, and assembly, with a focus on precision parts, prototypes, and high-volume production. Wrex Products Inc. also holds ISO 9001:2015 and ISO 13485:2016 certifications, indicating expertise in medical device manufacturing.",
     "regions": [
       "FN"
     ],
     "occupations": [
       "11-3051",
-      "11-3061",
-      "13-1081",
-      "15-1251",
-      "49-2094",
+      "11-9041",
+      "13-1051",
+      "17-3013",
+      "17-3027",
+      "41-4011",
+      "51-4111",
       "51-9162"
     ],
     "website": "https://wrexproducts.com",
     "swp_sectors": [
       "Advanced Manufacturing"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Agromillora California",
     "sector": "Wholesale",
-    "description": "Agromillora California is an agricultural company specializing in plant propagation and nursery stock.",
+    "description": "Agromillora is a global leader in plant propagation and innovation, specializing in developing and commercializing high-quality plant materials for various agricultural crops. The organization serves fruit growers and the agribusiness sector by offering products like almonds, apples, berries, cherries, citrus, kiwis, olives, ornamental plants, pears, pistachios, rootstocks, stone fruit trees, and vines. Agromillora promotes Super High Density (SHD) systems for crops such as olives, almonds, citrus, and stone fruits, aiming to lower cultivation costs, maximize production, and improve fruit quality. With 39 years of experience, Agromillora operates across five continents, in 25 markets, and has 12 subsidiaries and 11 laboratories worldwide. Key activities include genetic research, micropropagation technology, and a commitment to sustainable and efficient agricultural solutions.",
     "regions": [
       "FN"
     ],
     "occupations": [
       "11-1021",
+      "11-2022",
+      "11-3051",
       "11-9121",
-      "13-1081",
       "19-1013",
-      "19-4012",
-      "45-2011"
+      "19-4021",
+      "41-4011"
     ],
     "website": "https://agromillora.com",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Chico Sports Club",
     "sector": "Healthcare",
-    "description": "Chico Sports Club is a recreational facility offering sports and fitness activities.",
+    "description": "Chico Sports Club is a fitness organization in Chico, CA, dedicated to facilitating healthy lifestyles for everyone in the community, regardless of age, experience, or physical condition. The club offers various services including personal training (NXT Level), group movement classes, and access to facilities like a heated pool and free weights. They also provide childcare services during specific hours. Chico Sports Club aims to deliver superior customer service and assist members and guests in achieving a happier and healthier way of life through consistency, credibility, and professionalism.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-9072",
-      "11-3012",
-      "13-1121",
-      "27-2022",
       "29-1128",
-      "31-9011"
+      "29-9091",
+      "11-9072",
+      "11-9031",
+      "11-1021",
+      "11-3013",
+      "13-1161",
+      "43-4161"
     ],
     "website": "https://chicosportsclub.com",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Enloe Medical Center",
     "sector": "Healthcare",
-    "description": "Enloe Medical Center is a hospital providing comprehensive healthcare services.",
+    "description": "Enloe Health is an independent, nonprofit health system in Chico, CA, offering a wide array of medical services. It operates a 264-bed hospital, a Level II Trauma Center, and California's only hospital-owned and -operated air ambulance service. Enloe Health provides comprehensive care including bariatrics, cancer care, heart care, orthopedics, and maternity services, serving the community with a focus on whole-person care. The organization has received accolades such as Gold Re-Certification from Planetree International and recognition among America's 250 Best Hospitals for 2024 by Healthgrades.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-1011",
       "11-9111",
-      "13-1071",
       "15-1211",
       "29-1141",
       "29-2055",
+      "29-2072",
       "31-1131",
-      "31-9092"
+      "31-9092",
+      "31-9097"
     ],
     "website": "https://www.enloe.org",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Northern Valley Catholic",
     "sector": "Healthcare",
-    "description": "Northern Valley Catholic is a social service organization providing community support.",
+    "description": "Northern Valley Catholic Social Service (NVCSS) strengthens children, families, and the community by offering over 60 programs and services across six counties in Northern California: Butte, Glenn, Shasta, Siskiyou, Tehama, and Trinity. The organization provides compassionate services addressing housing, mental health support, crisis response, and basic needs, serving individuals and families through various life stages. Key activities include disaster response, family support, foster youth advocacy (CASA), immigrant legal services, counseling, wellness centers, and nutrition programs like CalFresh assistance and meals for school children. NVCSS has transformed over 84,500 lives, supported 17,000 children, and met the basic needs of 9,850 individuals.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-9151",
-      "11-3012",
-      "13-1071",
       "21-1021",
-      "21-1099"
+      "11-9151",
+      "21-1099",
+      "29-1129",
+      "11-1021",
+      "13-2011",
+      "13-1071",
+      "13-1131"
     ],
     "website": "https://nvcss.org",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Enloe Health",
     "sector": "Healthcare",
-    "description": "Enloe Health is a healthcare system that includes hospitals and medical services.",
+    "description": "Enloe Health is a proudly independent, nonprofit health system based in Chico, CA, offering a wide array of medical services to the Far North region of California. It operates a 264-bed hospital, a Level II Trauma Center, and California's only hospital-owned and -operated air ambulance service. Key services include bariatrics, cancer care, heart care, orthopedics, prompt care, and maternity services, with a focus on whole-person care, as evidenced by its Gold Re-Certification from Planetree International. The organization is recognized for its quality, ranking among America's 250 Best Hospitals for 2024 by Healthgrades.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-1011",
       "11-9111",
       "13-1071",
       "15-1211",
       "29-1141",
-      "29-2055",
+      "29-2034",
+      "29-2043",
       "31-1131",
       "31-9092"
     ],
     "website": "https://www.enloe.org",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Enloe Homecare",
     "sector": "Healthcare",
-    "description": "Enloe Homecare provides medical and support services to patients in their homes.",
+    "description": "Enloe Health is a proudly independent, nonprofit health system based in Chico, CA, offering a comprehensive array of medical services to the community. It operates a 264-bed hospital, a Level II Trauma Center, and California's only hospital-owned and -operated air ambulance service. Key activities include providing specialized care in areas such as bariatrics, cancer, heart health, orthopedics, and maternity, alongside prompt care services. The organization is recognized for its commitment to whole-person care and has received multiple accreditations and awards for its quality and safety standards.",
     "regions": [
       "FN"
     ],
     "occupations": [
       "11-9111",
-      "13-1071",
-      "21-1091",
       "29-1141",
-      "31-9092"
+      "29-2034",
+      "29-2055",
+      "31-9092",
+      "49-9062",
+      "29-2043",
+      "29-1031"
     ],
     "website": "https://www.enloe.org",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "BMW of Chico",
     "sector": "Retail",
-    "description": "BMW of Chico is a dealership selling and servicing BMW vehicles.",
+    "description": "BMW of Chico, formerly Courtesy BMW, operates as a new and pre-owned car dealership located at 13330 Garner Ln, Chico, CA 95973. The organization serves customers in the Far North region of California, including areas near Yuba City and Paradise, by offering a range of luxury BMW sedans, SUVs, coupes, convertibles, and electrified models. Key business activities include sales of new and BMW Certified pre-owned vehicles, providing expert maintenance and repair services, offering parts, and facilitating financing and leasing options. They also provide services such as collision repair, tire sales, and auto detailing.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-2021",
-      "11-3012",
+      "49-3023",
+      "11-2022",
       "41-4011",
-      "43-4161",
-      "49-3023"
+      "13-2011",
+      "11-1021",
+      "11-3012"
     ],
     "website": "https://www.bmwofchico.com",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Pajouh Automotive Group",
     "sector": "Retail",
-    "description": "Pajouh Automotive Group is a company that owns and operates car dealerships.",
+    "description": "Pajouh Automotive Center, formerly known as Courtesy Automotive Center, is an automotive dealership group located in Chico, CA, serving drivers in the local area. The organization offers a vast selection of new and pre-owned vehicles from brands such as BMW, Cadillac, GMC, Mercedes-Benz, Subaru, and Volvo. Key business activities include vehicle sales, financing options, and comprehensive car care services, including service centers, parts centers, tire centers, and an auto detail shop. Pajouh Automotive Center operates six dealerships, demonstrating a significant scale of operations in the Far North region of California.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-2021",
+      "49-3023",
+      "11-2022",
+      "13-2072",
+      "11-1021",
       "11-3012",
-      "41-4011",
-      "43-4161",
-      "49-3023"
+      "13-1071",
+      "13-2011",
+      "13-1051"
     ],
     "website": "https://pajouhauto.com",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Wittmeier Chevrolet",
     "sector": "Retail",
-    "description": "Wittmeier Chevrolet is a car dealership selling and servicing Chevrolet vehicles.",
+    "description": "Wittmeier Chevrolet is a car dealership located in Chico, CA, serving customers in the surrounding areas, including Corning and Oroville. The organization specializes in the sale of new and pre-owned Chevrolet vehicles, offering a wide range of cars, trucks, SUVs, and electric models. Key business activities include vehicle sales, financing services, a service center for maintenance and repairs, and a parts department for genuine GM accessories. They also provide a lifetime powertrain warranty on new vehicles and support local communities.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-2021",
-      "11-3012",
-      "41-4011",
-      "43-4161",
+      "11-1021",
+      "11-2022",
+      "11-3061",
+      "13-2072",
+      "13-2011",
+      "13-1161",
       "49-3023"
     ],
     "website": "https://www.wittmeierchevy.com",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Save Mart",
     "sector": "Retail",
-    "description": "Save Mart is a supermarket chain primarily operating in California.",
+    "description": "Save Mart operates as a retail grocery chain, offering a wide range of products including fresh food, pantry staples, beverages, household items, and personal care products. The organization serves everyday consumers, providing options for in-store shopping, online ordering for delivery, or free pick-up at select stores. Save Mart emphasizes value through weekly ads, special offers, and a rewards program that provides cash back on groceries and fuel savings at participating Shell\u00ae stations. They also offer \"Made To Order\" services for items like cakes, party trays, and fried chicken, and provide floral arrangements for events.",
     "regions": [
       "FN"
     ],
     "occupations": [
+      "11-1021",
+      "11-2022",
       "11-2021",
-      "11-3012",
-      "41-4011",
-      "43-4161",
-      "43-9081"
+      "11-3021",
+      "11-3121",
+      "13-1081",
+      "13-2011"
     ],
     "website": "https://www.savemart.com",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "S-S Organic Produce",
     "sector": "Retail",
-    "description": "S-S Organic Produce is a company involved in the production and distribution of organic produce.",
-    "regions": [
-      "FN"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9121",
-      "13-1081",
-      "19-4012",
-      "45-2011"
-    ],
-    "website": "https://www.ssproduce.com",
-    "swp_sectors": [
-      "Agriculture, Water and Environmental Technologies"
-    ]
-  },
-  {
-    "name": "Waste Management North Valley",
-    "sector": "Administrative Services",
-    "description": "Waste Management North Valley provides waste collection and disposal services.",
+    "description": "S&S Organic Produce and Natural Foods is a retail establishment in Chico, California, offering a wide selection of local, organic, and fresh natural foods, including produce, meats, and deli items. Established in 1967, the store also provides body and supplement products, bulk foods, and aromatherapy items. They serve the local community by supporting sustainable agriculture and small and large family farms. The business operates a butcher shop and a BBQ and deli, providing personalized service and convenient meal options.",
     "regions": [
       "FN"
     ],
     "occupations": [
       "11-1021",
       "11-3012",
-      "11-3013",
-      "13-1081",
-      "43-4161",
-      "53-3032"
+      "13-1071",
+      "13-2011",
+      "13-1161",
+      "29-1031",
+      "49-9021"
     ],
-    "website": "https://www.wm.com",
+    "website": "https://www.ssproduce.com",
     "swp_sectors": [
-      "Agriculture, Water and Environmental Technologies"
-    ]
+      "Retail, Hospitality and Tourism"
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
-    "name": "Sutter Coast Hospital",
-    "sector": "Healthcare",
-    "description": "Sutter Coast Hospital is a healthcare facility providing medical and surgical services.",
+    "name": "Waste Management North Valley",
+    "sector": "Administrative Services",
+    "description": "WM, formerly known as Waste Management, is North America's leading provider of comprehensive environmental solutions. The organization serves both residential and commercial customers, offering services such as curbside trash and recycling pickup, roll-off dumpster rentals for various projects, bulk trash pickup, and construction waste disposal. WM also provides environmental solutions, including eWaste services. The company's key business activities revolve around waste management and recycling, aiming to be the best choice for homes and businesses while considering environmental impact.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-1011",
-      "11-9111",
+      "53-3032",
+      "49-3023",
+      "11-3012",
       "13-1071",
+      "13-1041",
+      "17-3029",
+      "13-1161",
+      "15-1299"
+    ],
+    "website": "https://www.wm.com",
+    "swp_sectors": [
+      "Energy, Construction and Utilities"
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
+  },
+  {
+    "name": "Sutter Coast Hospital",
+    "sector": "Healthcare",
+    "description": "Sutter Health is a not-for-profit integrated healthcare network serving communities across Northern and Central California. The organization provides a wide range of services, including primary care, urgent care, emergency care, and specialized advanced care in areas such as behavioral health, cancer, children's health, heart and vascular, neuroscience, orthopedics, pregnancy and childbirth, and women's health. Sutter Health offers various ways to access care, including virtual visits, walk-in care, and appointments, and is recognized for excellence with multiple awards for hospital quality and as a top employer. The network also supports research, clinical trials, and graduate medical education programs.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
       "29-1141",
+      "29-2061",
       "31-1131",
-      "31-9092"
+      "31-9092",
+      "31-9097",
+      "11-9111",
+      "29-1126",
+      "29-2034"
     ],
     "website": "https://www.sutterhealth.org",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Hambro Forest Products",
@@ -44211,126 +44405,152 @@
     "website": "https://www.hambrowsg.com",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Elk Valley Casino",
     "sector": "Hospitality & Food Service",
-    "description": "Elk Valley Casino is a gaming establishment offering casino entertainment.",
+    "description": "Elk Valley Casino is a hospitality and entertainment venue located in Crescent City, CA, serving individuals aged 21 and older. As Northern California's newest casino, it offers an expansive gaming floor with over 300 slot machines, a poker room, and table games like Blackjack. Key business activities include gaming, complemented by diverse dining options such as Warrior's Bar & Grill and Perks! Coffee, Tobacco & Gifts. The casino also hosts various entertainment events and concerts, providing a comprehensive destination for play, dining, and celebration amidst panoramic coastal views.",
     "regions": [
       "FN"
     ],
     "occupations": [
       "11-1021",
-      "11-2011",
-      "11-3012",
+      "11-2021",
+      "11-3013",
       "11-9072",
-      "41-4011",
-      "43-4161"
+      "13-1041",
+      "13-1161",
+      "13-2011"
     ],
     "website": "https://www.elkvalleycasino.com",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Sunsweet Dryers",
     "sector": "Wholesale",
-    "description": "Sunsweet Dryers is involved in the processing and drying of agricultural products, likely fruits.",
+    "description": "Sunsweet Growers is a grower-owned cooperative established in 1917, specializing in the production and marketing of prunes, prune juices, and various dried fruits such as mango, apricots, and dates. The organization is responsible for 20% of the world's prune production, serving consumers seeking nutritious, fiber-rich snacks and ingredients for overall wellness and digestive health. Key business activities include cultivating, processing, and distributing a wide range of dried fruit products, alongside continuous innovation and promoting the health benefits of their offerings.",
     "regions": [
       "FN"
     ],
     "occupations": [
+      "11-1021",
       "11-3051",
-      "11-3061",
       "13-1081",
+      "13-1161",
+      "13-2011",
       "19-1012",
-      "49-9062",
-      "51-9162"
+      "41-4011",
+      "53-3032"
     ],
     "website": "https://www.sunsweet.com",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Sierra Nevada Cheese",
     "sector": "Retail",
-    "description": "Sierra Nevada Cheese is a company that produces and sells cheese products.",
+    "description": "Sierra Nevada Cheese Company produces a range of pasture-raised and traditionally made cow and goat dairy products, including butter, cultured products, various cow and goat cheeses, and yogurts. The company partners with local, multi-generational farmers and employs sustainable practices to craft its dairy offerings. They serve customers seeking natural dairy products with a focus on quality and flavor, available through their store and potentially food service/bulk orders. Key business activities include dairy production, farming partnerships, and retail sales of their branded products like Graziers, Bella Capra, Organic Gina Marie, and Kendall Farms.",
     "regions": [
       "FN"
     ],
     "occupations": [
+      "11-1021",
       "11-3051",
-      "11-3061",
-      "13-1081",
+      "13-1071",
+      "13-1161",
+      "13-2011",
       "19-1012",
-      "49-9062",
-      "51-9162"
+      "19-4013"
     ],
     "website": "https://www.sierranevadacheese.com",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Humboldt Creamery",
     "sector": "Manufacturing",
-    "description": "Humboldt Creamery is a dairy processing company producing milk and dairy products.",
+    "description": "Humboldt Creamery is a manufacturing organization based in Humboldt County, California, dedicated to producing a range of delicious and healthy dairy products. The company's mission is to create beloved items, from organic classics to new favorites, serving consumers who appreciate quality dairy. Operations involve sourcing milk from cows raised in Humboldt County's agricultural environment, emphasizing the local origin and natural quality of their ingredients. Key activities include product development, manufacturing, and distribution of their diverse dairy offerings.",
     "regions": [
       "FN"
     ],
     "occupations": [
       "11-3051",
-      "11-3061",
+      "13-1071",
+      "19-5011",
       "13-1081",
       "19-1012",
-      "49-9062",
-      "51-9162"
+      "49-9021",
+      "41-4011"
     ],
     "website": "https://www.humboldtcreamery.com",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "North Coast Co-Op",
     "sector": "Wholesale",
-    "description": "North Coast Co-Op is a cooperative grocery store focused on natural and organic products.",
+    "description": "North Coast Co-op is a community-owned grocery cooperative established in 1973, operating in Humboldt County, California, with locations in Arcata and Eureka. It serves the local community by providing a wide range of grocery products, including fresh produce and items from over 120 local vendors, contributing over $9 million annually in local sales. The co-op emphasizes supporting local farmers, makers, and producers from Humboldt, Trinity, and Del Norte counties. Key activities include retail grocery sales, online deli orders, and community engagement through programs like the Cooperative Community Fund and Seeds for Change. With over 22,000 owners, it reinvests profits locally and offers employment with benefits.",
     "regions": [
       "FN"
     ],
     "occupations": [
+      "11-1021",
       "11-2021",
-      "11-3012",
-      "41-4011",
-      "43-4161",
-      "43-9081"
+      "11-9199",
+      "13-1071",
+      "13-2011"
     ],
     "website": "https://northcoast.coop",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Hospice of Humboldt",
     "sector": "Healthcare",
-    "description": "Hospice of Humboldt provides end-of-life care and support services.",
+    "description": "Hospice of Humboldt provides comfort and care as a philosophy of care for individuals with life-threatening illnesses, focusing on quality of life, pain control, and symptom management. They serve people of all diagnoses and ages, offering hospice care, palliative care services, and grief support. Key activities include informational visits, operating the Ida Emmerson Hospice House, and community grief support groups in various locations like Eureka, Arcata, and Rio Dell. The organization also engages in fundraising through donations and The Hospice Shop.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-1011",
-      "11-9111",
-      "13-1071",
-      "21-1099",
       "29-1141",
-      "31-1131"
+      "29-2061",
+      "31-1131",
+      "21-1029",
+      "11-9111",
+      "11-1011",
+      "11-3121",
+      "11-2033"
     ],
     "website": "https://www.hospiceofhumboldt.org",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Humboldt County Department of Health",
@@ -44350,46 +44570,58 @@
     "website": "https://humboldtgov.org",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "St Joseph Health Medical Group",
     "sector": "Healthcare",
-    "description": "St Joseph Health Medical Group is a network of physicians and healthcare providers.",
+    "description": "Providence is a not-for-profit health system providing world-class healthcare with a human connection across the Western U.S.. It offers comprehensive medical services, including cancer treatment, heart and vascular care, orthopedics, women's health, pediatrics, and primary and urgent care. Serving all, especially the poor and vulnerable, Providence operates hospitals, medical groups, and urgent care clinics, facilitating both in-person and virtual appointments. Key activities involve delivering high-quality, personalized care, managing appointments, and providing access to medical records through its integrated app.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-1011",
+      "29-1141",
+      "31-9092",
+      "29-2055",
+      "31-1131",
       "11-9111",
       "13-1071",
-      "29-1141",
-      "31-9092"
+      "29-2034",
+      "49-9062"
     ],
     "website": "https://www.providence.org",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "United Indian Health Services",
     "sector": "Healthcare",
-    "description": "United Indian Health Services provides healthcare services to Native American communities.",
+    "description": "United Indian Health Services (UIHS) is a healthcare organization dedicated to achieving wellness through health services that reflect the traditional values of the American Indian Community. Celebrating over 55 years of service, UIHS provides comprehensive medical, dental, pharmacy, vision, behavioral health, and tribal public health services. They operate multiple clinics across the Far North region of California, including locations in Arcata, Crescent City, Eureka, Klamath, Smith River, and Weitchpec. Key activities include preventative care, health promotion, and various community health programs, with Saturday appointments available at some locations.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-1011",
-      "11-9111",
-      "13-1071",
-      "21-1091",
       "29-1141",
-      "31-9092"
+      "31-9092",
+      "31-9091",
+      "29-1292",
+      "29-2072",
+      "21-1091",
+      "11-9111",
+      "15-1231"
     ],
     "website": "https://www.uihs.org",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Humboldt County Mental Health",
@@ -44408,27 +44640,33 @@
     "website": "https://humboldtgov.org",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Providence St Joseph Hospital",
     "sector": "Healthcare",
-    "description": "Providence St Joseph Hospital is a healthcare facility providing a range of medical services.",
+    "description": "Providence is a not-for-profit health system that provides world-class health care with a human connection, serving communities across the Western U.S.. The organization offers a comprehensive network of care, including hospitals, urgent care, same-day care, primary care, and medical groups. Key services encompass cancer treatment, heart and vascular care, orthopedics, women's health, pediatrics, maternity, neurosciences, and virtual care options. Providence is committed to serving all, especially the poor and vulnerable, and focuses on high-quality, personalized healthcare accessible through various channels, including a dedicated mobile app.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-1011",
-      "11-9111",
-      "13-1071",
       "29-1141",
       "31-1131",
-      "31-9092"
+      "31-9092",
+      "29-2034",
+      "29-2031",
+      "29-1126",
+      "29-2055",
+      "49-9062"
     ],
     "website": "https://www.providence.org",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Redwood Memorial Hospital",
@@ -44448,186 +44686,232 @@
     "website": "https://www.providence.org",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Fortuna Rehabilitation and Wellness",
     "sector": "Healthcare",
-    "description": "Fortuna Rehabilitation and Wellness provides physical therapy and wellness services.",
+    "description": "Fortuna Rehabilitation & Wellness Center, located in Eureka, California, provides comprehensive short-term and long-term care services. The center offers various rehabilitation therapies, including Physical and Speech Therapy, alongside 24-hour high-quality nursing care. Key services also encompass respite care, hospice support, and bereavement support for families. They are dedicated to helping patients achieve a better and longer life through sincere concern and compassion.",
     "regions": [
       "FN"
     ],
     "occupations": [
+      "29-1141",
+      "29-2061",
+      "31-1131",
+      "31-2021",
       "11-9111",
-      "13-1071",
-      "29-1128",
-      "31-2021"
+      "29-2072",
+      "31-9092"
     ],
     "website": "https://fortunarehabwc.com",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Granada Rehabilitation and Wellness",
     "sector": "Healthcare",
-    "description": "Granada Rehabilitation and Wellness offers rehabilitation and wellness programs.",
+    "description": "Granada Rehabilitation and Wellness Center provides high-quality nursing and rehabilitative care in Eureka, CA. The center offers a comprehensive range of services, including rehabilitation therapy, long-term care, respite care, hospice, and short-term care. Their team is dedicated to educating patients, parents, and guardians on their conditions, developing plans to achieve freedom from pain, and providing understanding on how to prevent re-injury. They serve individuals in the Far North region of California requiring specialized care and support for recovery and well-being.",
     "regions": [
       "FN"
     ],
     "occupations": [
+      "29-1141",
+      "29-2061",
+      "31-1131",
+      "29-1126",
+      "31-2021",
+      "31-2011",
       "11-9111",
-      "13-1071",
-      "29-1128",
-      "31-2021"
+      "29-2072"
     ],
     "website": "https://granadarehabwc.com",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Suddenlink",
     "sector": "Information & Media",
-    "description": "Suddenlink is a telecommunications company providing internet, cable TV, and phone services.",
+    "description": "Suddenlink, a former telecommunications subsidiary of Altice USA, provided cable television, high-speed internet, and phone services to residential and business customers. Operating in states including California, Suddenlink offered broadband internet, IP telephony, and home security solutions. In California's Far North region and other areas, it served schools, libraries, and non-residential clients with telecommunications and wholesale services. Prior to its rebranding to Optimum on August 1, 2022, Suddenlink was the seventh-largest cable operator in the U.S., serving over 1.5 million residential and 90,000 business subscribers with a focus on connectivity and entertainment demands.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-2021",
-      "11-3012",
-      "11-3021",
-      "15-1211",
+      "11-1021",
+      "11-2022",
+      "11-3121",
+      "13-1161",
+      "15-1244",
+      "15-1231",
+      "41-4011",
       "49-2022"
     ],
     "website": "https://www.suddenlink.com",
     "swp_sectors": [
       "Information and Communication Technologies - Digital Media"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Pierson Building Center",
     "sector": "Retail",
-    "description": "Pierson Building Center is a retail store selling building materials and home improvement supplies.",
+    "description": "Pierson Building Center, established in 1962 and locally owned, is the Redwood Empire's Largest Home Improvement Center, serving Humboldt County and surrounding communities in Northern California. It operates a vast retail building supply store, encompassing over 10 acres and 80,000 sq. ft. of space, stocking over 40,000 different items. Key activities include offering a full-service lumber yard, a large retail nursery and garden shop, and a wide array of products such as paint, hardware, electrical, plumbing, doors, and cabinets. The center caters to both DIY enthusiasts and professional landscapers, providing materials and services for home improvement and gardening projects.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-2021",
+      "11-1021",
+      "11-2022",
       "11-3012",
-      "11-3061",
-      "41-4011",
-      "43-4161",
-      "49-9062"
+      "11-3013",
+      "13-1071",
+      "13-2011",
+      "13-1051",
+      "53-3032"
     ],
     "website": "https://www.piersonbuildingcenter.com",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Healthsport",
     "sector": "Arts & Entertainment",
-    "description": "Healthsport is a fitness and wellness center offering gym facilities and classes.",
+    "description": "HealthSPORT operates multiple fitness clubs across Arcata, Eureka, McKinleyville, and Fortuna in California's Far North region, serving individuals of all ages and fitness levels. The organization empowers its community to prioritize health and wellness through a diverse range of services. Key offerings include group fitness classes, personal training, swim school, gymnastics, Pilates, Barre, yoga, and strength training. HealthSPORT also provides specialized programs like Forge Fitness and HSAlign, along with youth camps and parties, aiming to help members achieve their fitness goals and become their best selves.",
     "regions": [
       "FN"
     ],
     "occupations": [
+      "11-1021",
       "11-9072",
-      "11-3012",
-      "13-1121",
+      "13-1161",
       "27-2022",
       "29-1128",
-      "31-9011"
+      "25-3099"
     ],
     "website": "https://www.healthsport.com",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Red Lion Hotel Eureka",
     "sector": "Hospitality & Food Service",
-    "description": "Red Lion Hotel Eureka is a hospitality establishment providing lodging and related services.",
+    "description": "Sonesta Hotels and Resorts, which includes the Red Lion brand, operates over 1,100 hotels across 13 brands, providing diverse hospitality experiences in the U.S. and internationally. The organization serves both business and leisure travelers, offering accommodations, meeting and event facilities, and a loyalty program called Sonesta Travel Pass. Key business activities involve managing various hotel types, from extended stay to luxury resorts, and providing special offers and packages to cater to different travel needs and preferences.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-2021",
+      "11-1021",
+      "11-2022",
       "11-3012",
-      "11-9072",
-      "41-4011",
-      "43-4161"
+      "11-3013",
+      "13-1121",
+      "13-2011"
     ],
     "website": "https://www.redlion.com",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Calpine",
     "sector": "Utilities",
-    "description": "Calpine is a power generation company operating various types of power plants.",
+    "description": "Calpine is America's premier competitive power company, now a business unit of Constellation Energy Corporation, focused on clean and reliable power generation and retail services. The organization operates 78 facilities across North America, generating approximately 27,000 megawatts of electricity, enough to power about 27 million homes. Calpine serves over 224,000 residential retail customers and provides tailored energy products and services for both homes and businesses through its retail companies. Key activities include developing and operating a diverse fleet of energy facilities, including geothermal (like The Geysers in California), cogeneration, combined cycle, simple cycle, solar, and battery storage, with a focus on advancing carbon capture technologies for a clean energy future.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-1011",
-      "11-3013",
-      "11-3051",
       "17-2071",
+      "17-3023",
       "49-2095",
-      "53-5031"
+      "13-1082",
+      "15-1244",
+      "19-4042",
+      "13-1071"
     ],
     "website": "https://www.calpine.com",
     "swp_sectors": [
       "Energy, Construction and Utilities"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Scully Packing",
     "sector": "Wholesale",
-    "description": "Scully Packing is a company involved in the packing and processing of agricultural products.",
+    "description": "Scully Packing Company LLC is a wholesale organization specializing in California's best pears, serving as a single source for various pear varieties. The company's key business activities include packing, sales, and distribution of pears, offering popular varieties, diverse pack styles, and organic options. Scully Packing serves growers and customers interested in California pears, operating with a main office and packinghouse in Finley and cold storage facilities in Exeter. They provide current crop information, details on growing regions, and an availability calendar to support their operations and customer base.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-3051",
-      "11-3061",
+      "11-1021",
+      "11-2022",
+      "11-3012",
+      "13-1071",
       "13-1081",
-      "19-1012",
-      "49-9062",
-      "51-9162"
+      "13-2011",
+      "41-4011",
+      "53-3032"
     ],
     "website": "https://www.scullypacking.com",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Adventist Health Clear Lake",
     "sector": "Healthcare",
-    "description": "Adventist Health Clear Lake is a hospital providing healthcare services to the Clear Lake region.",
+    "description": "Adventist Health Clear Lake is a healthcare organization in the Far North region of California, providing comprehensive healthcare services to the community. With a team of over 1,400 caregivers, they offer a wide range of services including behavioral health, cancer care, emergency care, heart and vascular care, maternity, orthopedics, pediatrics, primary care, surgery, and women's health. The organization focuses on delivering high-quality, personalized, and whole-person care to help patients experience health, wholeness, and hope.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-1011",
-      "11-9111",
-      "13-1071",
       "29-1141",
       "31-1131",
-      "31-9092"
+      "31-9092",
+      "29-2034",
+      "31-2011",
+      "31-9091",
+      "29-1129",
+      "11-9111"
     ],
     "website": "https://www.adventisthealth.org/clear-lake/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Sutter Lakeside Hospital",
     "sector": "Healthcare",
-    "description": "Sutter Lakeside Hospital is a healthcare facility offering a range of medical services.",
+    "description": "Sutter Lakeside Hospital is a 25-bed critical access hospital located in Lakeport, California, serving residents of Lake County and surrounding communities. Accredited by The Joint Commission, this community-based hospital provides a broad range of inpatient and outpatient services. Key offerings include 24/7 emergency care, general surgery, labor and delivery, intensive care, family medicine, and physical therapy. The hospital also features comprehensive medical imaging services, an infusion center, and primary care for both children and adults through its community clinic. It is affiliated with 192 clinicians and is part of the larger Sutter Health system.",
     "regions": [
       "FN"
     ],
@@ -44635,54 +44919,68 @@
       "11-1011",
       "11-9111",
       "13-1071",
+      "13-2011",
       "29-1141",
-      "31-1131",
+      "29-2034",
+      "31-2021",
       "31-9092"
     ],
     "website": "https://www.sutterhealth.org/locations/sutter-lakeside-hospital",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Rancheria Grille",
     "sector": "Hospitality & Food Service",
-    "description": "Rancheria Grille is a restaurant.",
+    "description": "Robinson Rancheria Resort & Casino, located on the north shore of Clear Lake, operates as a comprehensive hospitality and entertainment complex, serving guests with gaming, dining, and lodging options. The establishment features the largest casino floor in the county, offering a variety of slot machines, table games, a high-stakes gaming room, and a 900-seat bingo facility. Dining options include The Grill, The Food Hall, and The Bingo Cafe, alongside a hotel with luxury rooms and suites. Key business activities encompass gaming, food and beverage service, accommodation, and live entertainment, catering to individuals seeking leisure and recreational experiences.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-2021",
+      "11-1021",
       "11-3012",
-      "35-2013",
-      "41-4011",
-      "43-4161"
+      "11-3121",
+      "13-1071",
+      "13-2011",
+      "11-3013",
+      "15-1244",
+      "13-1161"
     ],
-    "website": "https://www.jacksoncasino.com",
+    "website": "https://www.robinsonrancheria.com",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Forestry and Fire Protection",
     "sector": "Government",
-    "description": "Forestry and Fire Protection is a government agency responsible for forest management and firefighting.",
+    "description": "The California Department of Forestry and Fire Protection (CAL FIRE) serves and safeguards the people, property, and resources of California, managing over 31 million acres of privately-owned wildlands. Its key activities include fire protection, all-hazard emergency response, and natural resource management, with a focus on wildfire prevention through engineering, vegetation management, planning, education, and law enforcement. CAL FIRE also provides emergency services in 36 counties via contracts with local governments. The organization actively works on fuels reduction, forest health projects, and community risk reduction to improve safety and prevent incidents.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-1011",
-      "11-3013",
-      "11-9031",
-      "11-9161",
-      "19-1032",
+      "33-2011",
       "33-1021",
-      "33-2011"
+      "19-1032",
+      "19-4071",
+      "33-2021",
+      "11-9161",
+      "19-1031"
     ],
     "website": "https://www.fire.ca.gov",
     "swp_sectors": [
       "Public Safety"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Sierra Army Depot",
@@ -44702,66 +45000,85 @@
     "website": "https://home.army.mil/sierra/",
     "swp_sectors": [
       "Advanced Transportation and Logistics"
-    ]
+    ],
+    "identity_verified": true,
+    "_description": "Sierra Army Depot, located in California's Far North region, is the U.S. Army's Center for Industrial Technical Excellence for Petroleum and Water Distribution Systems. Established in 1942, this 36,000-acre facility serves the U.S. Army, Department of Defense, and other U.S. Government Agencies by providing rapid expeditionary logistics support and long-term sustainment solutions. Key activities include equipment retrograde, regeneration, reutilization, and redistribution, acting as an End-of-First Life Center for military vehicles and equipment. The depot receives, stores, maintains, and ships a wide range of Army material globally, including over 26,000 armored vehicles, and offers extensive maintenance capabilities.",
+    "_swp_sector": "Advanced Manufacturing",
+    "enrichment_attempted": true
   },
   {
     "name": "Northeastern Rural Health",
     "sector": "Healthcare",
-    "description": "Northeastern Rural Health is a healthcare provider serving rural communities.",
+    "description": "Northeastern Rural Health Clinics is the largest provider of outpatient care in Lassen County, California, offering comprehensive medical, dental, and behavioral health services. The organization provides primary care, obstetrics, urgent care, health/nutrition/childbirth education, and the Women, Infants and Children (WIC) program. Serving over 50,000 patient visits annually, Northeastern Rural Health Clinics accepts various insurance plans, including Medicare, Medi-Cal, and Partnership, and offers sliding fee discounts for uninsured patients.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-1011",
-      "11-9111",
-      "13-1071",
+      "31-9092",
+      "29-2061",
+      "31-1131",
+      "31-9091",
       "29-1141",
-      "31-9092"
+      "29-2072",
+      "21-1091",
+      "29-2055"
     ],
     "website": "https://www.northeasternhealth.org",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Banner Lassen Medical Center",
     "sector": "Healthcare",
-    "description": "Banner Lassen Medical Center is a hospital providing comprehensive healthcare services.",
+    "description": "Banner Lassen Medical Center, located in Susanville, California, is a 25-bed critical access hospital providing comprehensive clinical care and an excellent patient experience. The center offers a wide range of programs and services for the prevention, diagnosis, and treatment of illness, serving the local community. Key services include Emergency care, Endoscopy, Imaging, Infusion Therapy, Lab services, Maternity care, Rehabilitation, Sleep Medicine, and Surgery. Established in 1883 as Lassen County Hospital, it focuses on delivering outstanding care through advanced medical technology and a compassionate approach.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-1011",
-      "11-9111",
-      "13-1071",
       "29-1141",
+      "29-2034",
+      "29-2055",
+      "31-9097",
       "31-1131",
-      "31-9092"
+      "11-9111",
+      "29-2072",
+      "49-9062"
     ],
     "website": "https://www.bannerhealth.com/locations/susanville/banner-lassen-medical-center",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Caito Fisheries",
     "sector": "Manufacturing",
-    "description": "Caito Fisheries is a company involved in the fishing and seafood processing industry.",
+    "description": "Caito Fisheries operates as a wholesale seafood dealer across several key coastal locations in California, including Fort Bragg, San Francisco, Crescent City, Half Moon Bay, and Eureka. The company's primary business involves the distribution of seafood products, with a notable focus on Dungeness Crab. Serving other businesses within the seafood industry, Caito Fisheries plays a role in the supply chain by facilitating the movement of fresh catches throughout these regions.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-3051",
+      "11-1021",
+      "11-3012",
       "11-3061",
       "13-1081",
-      "49-9092",
-      "53-5021",
-      "53-5022"
+      "41-4011",
+      "53-3032",
+      "53-5021"
     ],
     "website": "https://www.caitofisheries.com",
     "swp_sectors": [
-      "Agriculture, Water and Environmental Technologies"
-    ]
+      "Global Trade"
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Constellation Brands",
@@ -44782,27 +45099,33 @@
     "website": "https://www.cbrands.com",
     "swp_sectors": [
       "Advanced Manufacturing"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Fetzer Vineyards",
     "sector": "Manufacturing",
-    "description": "Fetzer Vineyards is a winery producing and selling wine.",
+    "description": "Fetzer Vineyards is a California-based winery producing a variety of wines, including Gew\u00fcrztraminer, Chardonnay, Cabernet Sauvignon, Pinot Grigio, Riesling, Merlot, and Sauvignon Blanc. The organization emphasizes sustainability, aiming to benefit both people and the planet through its operations. As a Certified B Corp, Fetzer is committed to caring for its workers, communities, and the environment. They serve consumers seeking wines for various occasions and are dedicated to inspiring change through responsible business practices.",
     "regions": [
       "FN"
     ],
     "occupations": [
       "11-1021",
       "11-3051",
-      "11-3061",
-      "13-1081",
+      "11-2021",
+      "11-3121",
+      "13-2011",
       "19-1012",
+      "19-1013",
       "41-4011"
     ],
     "website": "https://www.fetzer.com",
     "swp_sectors": [
-      "Advanced Manufacturing"
-    ]
+      "Agriculture, Water and Environmental Technologies"
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Mendocino Community Health",
@@ -44821,208 +45144,252 @@
     "website": "https://www.mchinc.org",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Adventist Health Mendocino",
     "sector": "Healthcare",
-    "description": "Adventist Health Mendocino is a healthcare provider serving the Mendocino region.",
+    "description": "Adventist Health Mendocino Coast is a healthcare organization serving Fort Bragg and surrounding areas, offering a wide range of award-winning services. Key business activities include providing behavioral health, cancer care, critical care, emergency care, primary care, surgery, and various other specialized medical services. The organization focuses on personalized, whole-person care, aiming to inspire health, wholeness, and hope in its patients. They emphasize quality and patient experience, with a team of compassionate caregivers dedicated to helping individuals experience everything life has to offer.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-1011",
-      "11-9111",
-      "13-1071",
       "29-1141",
+      "29-2061",
       "31-1131",
-      "31-9092"
+      "29-2034",
+      "29-2055",
+      "31-9092",
+      "29-2042",
+      "11-9111"
     ],
     "website": "https://www.adventisthealth.org/mendocino-coast/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Pacific Medical Resources",
     "sector": "Healthcare",
-    "description": "Pacific Medical Resources is a company that provides medical equipment and supplies.",
+    "description": "Eternal Medical Resources and Eternal Homecare Solutions, also known as Pacific Medical Resources (PMR), provides home health care services, specializing in nursing and caregiving. For over 30 years, the organization has served the elderly, veterans, disabled, and vulnerable members of the community. PMR operates in the Far North region of California, with offices in Fort Bragg, Lakeport, Petaluma, Eureka, and Ukiah, serving Mendocino, Lake, Humboldt, Del Norte, and Sonoma Counties and beyond. Key activities include personalized care plans, 24/7 registered nurse availability, thorough employee screening, ongoing RN oversight, and advanced technology integration for monitoring and communication.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-3012",
-      "11-3061",
+      "29-1141",
+      "31-1131",
+      "11-9111",
+      "11-1021",
       "13-1071",
-      "15-1211",
-      "41-4011",
-      "49-9062"
+      "13-2011"
     ],
     "website": "https://www.pacificmedicalresources.com",
     "swp_sectors": [
-      "Global Trade"
-    ]
+      "Health"
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Adventist Health Ukiah Valley",
     "sector": "Healthcare",
-    "description": "Adventist Health Ukiah Valley is a hospital providing comprehensive healthcare services.",
+    "description": "Adventist Health Ukiah Valley is a faith-based healthcare organization serving Mendocino County, California, with a mission to inspire health, wholeness, and hope in the community. They offer a comprehensive range of services including addiction services, bariatric care, behavioral health, cancer care, emergency care, heart and vascular care, maternity, orthopedics, primary care, and women's health. The organization focuses on personalized, whole-person services to help individuals live their lives to their fullest potential.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-1011",
       "11-9111",
-      "13-1071",
+      "11-3013",
+      "13-1082",
+      "21-1099",
       "29-1141",
+      "29-2061",
       "31-1131",
       "31-9092"
     ],
     "website": "https://www.adventisthealth.org/ukiah-valley/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Thurston Toyota",
     "sector": "Retail",
-    "description": "Thurston Toyota is a car dealership selling and servicing Toyota vehicles.",
+    "description": "Thurston Toyota is a new and used Toyota dealership located in Ukiah, CA, serving customers in areas such as Willits, Fort Bragg, Lakeport, and Kelseyville. The organization specializes in the sale of new and pre-owned Toyota vehicles, offering a wide range of models including coupes, hatchbacks, SUVs, sedans, trucks, and vans. Key business activities include vehicle sales, financing options, trade-in appraisals, and comprehensive car service and repair work, along with the sale of auto parts. They also provide online purchasing options and home delivery for vehicles.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-2021",
-      "11-3012",
+      "11-2022",
       "41-4011",
-      "43-4161",
-      "49-3023"
+      "49-3023",
+      "11-1021",
+      "13-2072",
+      "13-1071",
+      "11-3012"
     ],
     "website": "https://www.thurstontoyota.com",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Ukiah City Civic Center",
     "sector": "Arts & Entertainment",
-    "description": "Ukiah City Civic Center is a municipal building housing government offices and services.",
+    "description": "The Ukiah City Civic Center functions as a central municipal and community hub for the City of Ukiah, providing essential services to residents and visitors. It houses city hall and the police department, overseeing public safety and administrative operations. Beyond governance, the Civic Center serves as a vibrant cultural venue, hosting diverse events from conferences to performing arts showcases, and is associated with the Grace Hudson Museum, which focuses on regional art and history. The organization also manages local parks for recreation, provides utility services, and guides sustainable urban development, demonstrating a broad scale of operations within the Far North region of California.",
     "regions": [
       "FN"
     ],
     "occupations": [
       "11-1011",
-      "11-3012",
-      "11-3013",
-      "13-1111",
-      "43-4161"
+      "11-1031",
+      "11-3031",
+      "11-3121",
+      "13-1071",
+      "11-9041",
+      "13-1199",
+      "15-1244"
     ],
     "website": "https://www.cityofukiah.com/",
     "swp_sectors": [
-      "Education and Human Development"
-    ]
+      "Energy, Construction and Utilities"
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Heritage House Resort & Spa",
     "sector": "Hospitality & Food Service",
-    "description": "Heritage House Resort & Spa is a hospitality establishment offering lodging, dining, and spa services.",
+    "description": "The Heritage House Resort & Spa is a cliffside retreat located on 37 unspoiled acres along the rugged Mendocino coast in Northern California. This organization provides luxury accommodations, including rooms, suites, and private houses, serving guests seeking a romantic and sophisticated escape. Key business activities encompass offering farm-to-fork dining with Pacific Ocean views, hosting weddings and meetings, and operating a spa that provides massage treatments and body rituals. The resort caters to individuals and groups looking for a serene natural environment and high-end hospitality services.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-2021",
+      "11-1021",
       "11-3012",
-      "11-9072",
-      "41-4011",
-      "43-4161",
-      "31-9011"
+      "11-3013",
+      "13-1121",
+      "31-9011",
+      "39-5094"
     ],
     "website": "https://www.heritagehouseresort.com",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Little River Inn",
     "sector": "Hospitality & Food Service",
-    "description": "Little River Inn is a hospitality establishment providing lodging and dining services.",
+    "description": "Little River Inn is a family-owned hospitality establishment with an 80-year legacy, located on the Mendocino Coast in Little River, California. It offers over sixty rooms with ocean views, dining options including a restaurant and Ole's Whale Watch bar, and an Audubon-certified golf course. The inn serves leisure travelers, families, and groups, providing accommodations, food and beverage services, and event spaces for weddings, elopements, and corporate events. Key business activities include lodging, dining, golf, and event hosting, catering to guests seeking a coastal retreat.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-2021",
+      "11-1021",
       "11-3012",
+      "11-3013",
+      "11-3121",
       "11-9072",
-      "41-4011",
-      "43-4161"
+      "13-1121",
+      "13-1161",
+      "13-2011"
     ],
     "website": "https://www.littleriverinn.com",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Modoc National Forest",
     "sector": "Government",
-    "description": "Modoc National Forest is a protected area managed by the U.S. Forest Service for conservation and recreation.",
+    "description": "The Modoc National Forest, located in California's northeastern corner, is a government organization under the U.S. Department of Agriculture's Forest Service. It manages diverse landscapes including volcanic Cascades, Warner Mountains, forests, and the unique Devils Garden, serving visitors with numerous recreational opportunities such as camping, hiking, fishing, and OHV use. Key activities include forest management, natural resource conservation, fire information and prevention, and the management of the Devil's Garden Wild Horse Territory, which spans 500 square miles. The forest also issues permits for obsidian collection and engages in timber sales, while actively seeking public feedback on trail development projects.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-1011",
-      "11-3013",
-      "11-9031",
-      "11-9121",
       "19-1032",
-      "19-4071"
+      "19-4071",
+      "19-1023",
+      "17-3022",
+      "33-2011",
+      "11-3012",
+      "11-9072"
     ],
     "website": "https://www.fs.usda.gov/modoc",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "US Forest Service - Modoc National Forest",
     "sector": "Government",
-    "description": "US Forest Service - Modoc National Forest manages the national forest for conservation and public use.",
+    "description": "The US Forest Service - Modoc National Forest manages diverse landscapes in California's northeastern corner, including volcanic areas, mountains, forests, and the 500-square-mile Devils Garden Wild Horse Territory. It serves the public by offering extensive recreational opportunities such as camping, hiking, fishing, and OHV use, alongside managing natural resources like timber and rangelands. Key activities include wild horse management, facilitating public obsidian collection, and engaging communities in planning for trail development and other forest initiatives. The organization is dedicated to preserving natural and cultural resources while providing outdoor adventures.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-1011",
-      "11-3013",
-      "11-9031",
-      "11-9121",
+      "19-1031",
       "19-1032",
       "19-4071",
-      "13-1081",
-      "17-1022",
-      "19-1031",
-      "45-2011"
+      "33-2011",
+      "11-9121",
+      "17-3022",
+      "13-1071",
+      "11-3012"
     ],
     "website": "https://www.fs.usda.gov/modoc",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Seneca Healthcare District",
     "sector": "Professional Services",
-    "description": "Seneca Healthcare District is a public healthcare entity providing medical services.",
+    "description": "Seneca Healthcare District is a community-oriented critical access hospital and clinic serving residents and visitors in California's rural Lake Almanor area. It provides a full range of inpatient and outpatient care, including a 10-bed acute floor, a 16-bed skilled nursing facility, and a 24/7 emergency room. Key services encompass diagnostic imaging, medical and outpatient surgical care, laboratory services, wound care, and respiratory therapy. The District also operates the Lake Almanor Walk-in Clinic, offering comprehensive health and wellness services as a non-profit governmental entity.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-1011",
-      "11-9111",
-      "13-1071",
       "29-1141",
+      "29-2061",
       "31-1131",
-      "31-9092"
+      "31-9092",
+      "29-1126",
+      "31-9097",
+      "11-9111",
+      "29-2072"
     ],
     "website": "https://www.senecahealthcare.org",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Forest Service",
@@ -45042,27 +45409,33 @@
     "website": "https://www.fs.usda.gov",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Shasta County Mental Health Services",
     "sector": "Healthcare",
-    "description": "Provides mental health services to the residents of Shasta County.",
+    "description": "Shasta County Mental Health Services, part of the Health and Human Services Agency, delivers comprehensive behavioral healthcare in California's Far North region. They provide outpatient counseling, assessment, case management, medication, social rehabilitation, and 24-hour crisis services for adults with severe mental illness and children. Key activities include alcohol and drug treatment, urgent outpatient care through the CARE Center for those experiencing emotional distress, and specialized services for CalWORKs participants. They serve individuals meeting \"medical necessity\" criteria, as well as anyone in distress, regardless of insurance.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-9151",
-      "13-1071",
       "21-1021",
       "21-1099",
       "29-1129",
-      "29-2053"
+      "29-1141",
+      "29-2053",
+      "31-9092",
+      "11-9111",
+      "11-9151"
     ],
     "website": "https://www.shastacounty.gov/mental-health",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Vibra Hospital of Northern California",
@@ -45082,82 +45455,93 @@
     "website": "https://www.vibrahealthcare.com/locations/vibra-hospital-of-northern-california/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Mayers Memorial Hospital Burney",
     "sector": "Healthcare",
-    "description": "A hospital providing healthcare services to the Burney community.",
+    "description": "Mayers Memorial Healthcare District is a certified and accredited healthcare provider in Fall River Mills, CA, dedicated to offering exceptional, patient-focused care to the Intermountain Community. The district provides a comprehensive range of services, including Acute Care/Emergency, Rehabilitation, Hospice, Ambulance services, and a Rural Health Center. Key business activities encompass outpatient services like Cardiac Rehab, Imaging, Laboratory, Physical Therapy, and a Retail Pharmacy, alongside Skilled Nursing, Surgical Services, and Telemedicine. They are committed to strengthening rural healthcare and ensuring quality, compassionate care for their neighbors.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-9111",
-      "13-1071",
       "29-1141",
-      "29-2034",
+      "29-2061",
       "31-1131",
-      "31-9092"
+      "29-1126",
+      "31-9092",
+      "29-2072",
+      "29-2034",
+      "11-9111"
     ],
     "website": "https://www.mayersmemorial.com/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Mayers Memorial Hospital District",
     "sector": "Professional Services",
-    "description": "A hospital district providing healthcare services.",
+    "description": "Mayers Memorial Healthcare District provides comprehensive, patient-focused healthcare services to the Intermountain Community in Fall River Mills, CA. The district offers a wide range of services including acute care, emergency services, rehabilitation, hospice, ambulance services, and a rural health center. Outpatient services encompass cardiac rehab, imaging, laboratory, wound care, physical therapy, respiratory therapy, and a retail pharmacy. Mayers Memorial is dedicated to strengthening rural healthcare and has earned ACHC Accreditation, reinforcing its commitment to excellence.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-1011",
-      "11-9111",
-      "13-1071",
       "29-1141",
-      "29-2034",
+      "29-2061",
       "31-1131",
+      "29-1126",
+      "29-2034",
+      "29-2043",
+      "31-2021",
       "31-9092"
     ],
     "website": "https://www.mayersmemorial.com",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Klamath National Forest",
     "sector": "Government",
-    "description": "Manages and protects the Klamath National Forest.",
+    "description": "The Klamath National Forest, encompassing 1.7 million acres across Northern California and Southern Oregon, is managed by the U.S. Forest Service. It serves a diverse public, including campers, hikers, wildlife watchers, hunters, fishermen, mountain bikers, and white water enthusiasts, offering extensive opportunities for recreation and exploration. Key activities include forest management, fire prevention and information, timber sales, and the protection of natural resources, wilderness areas, and cultural sites. The forest also issues permits for activities like firewood cutting and hosts educational programs and partnerships for reforestation efforts.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-9121",
-      "13-1081",
-      "17-1022",
-      "19-1031",
-      "19-1032",
       "19-4071",
-      "45-2011"
+      "33-2011",
+      "19-1031",
+      "11-9121",
+      "19-4021",
+      "13-1082"
     ],
     "website": "https://www.fs.usda.gov/klamath",
     "swp_sectors": [
-      "Agriculture, Water and Environmental Technologies"
-    ]
+      "Retail, Hospitality and Tourism"
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Siskiyou County Public Works",
     "sector": "Construction",
-    "description": "Manages and maintains public infrastructure for Siskiyou County.",
+    "description": "Siskiyou County Public Works is responsible for the construction and maintenance of 1,361 miles of maintained roadways and 175 bridges within unincorporated Siskiyou County. The department also handles the purchasing, maintenance, and fueling of the County's fleet system, alongside providing engineering and surveying services for the County. Key activities include snow removal, managing road concerns, and overseeing public works projects. They serve the residents and infrastructure needs of Siskiyou County, California.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-3013",
-      "11-9199",
-      "13-1081",
-      "17-2071",
+      "11-9021",
+      "11-9041",
+      "17-1022",
       "17-3022",
       "49-3023",
       "53-3032"
@@ -45165,127 +45549,156 @@
     "website": "https://www.co.siskiyou.ca.us/publicworks",
     "swp_sectors": [
       "Energy, Construction and Utilities"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Siskiyou County Coroner",
     "sector": "Healthcare",
-    "description": "Investigates deaths within Siskiyou County.",
-    "regions": [
-      "FN"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-9199",
-      "13-1041",
-      "19-4092",
-      "23-2011"
-    ],
-    "website": "https://www.co.siskiyou.ca.us/sheriff/page/coroner",
-    "swp_sectors": [
-      "Public Safety"
-    ]
-  },
-  {
-    "name": "Mercy Medical Center Mount Shasta",
-    "sector": "Healthcare",
-    "description": "A hospital providing medical services in the Mount Shasta area.",
-    "regions": [
-      "FN"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-9111",
-      "13-1071",
-      "29-1141",
-      "29-2034",
-      "31-1131",
-      "31-9092"
-    ],
-    "website": "https://www.dignityhealth.org/north-state/locations/mercy-mtshasta",
-    "swp_sectors": [
-      "Health"
-    ]
-  },
-  {
-    "name": "Roseburg Forest Products",
-    "sector": "Retail",
-    "description": "A company involved in the manufacturing of wood products.",
-    "regions": [
-      "FN"
-    ],
-    "occupations": [
-      "11-3051",
-      "11-3061",
-      "13-1051",
-      "17-3026",
-      "19-1032",
-      "51-4111"
-    ],
-    "website": "https://www.roseburg.com",
-    "swp_sectors": [
-      "Advanced Manufacturing"
-    ]
-  },
-  {
-    "name": "Mount Shasta Resort",
-    "sector": "Hospitality & Food Service",
-    "description": "A resort offering lodging and recreational activities in Mount Shasta.",
+    "description": "The Siskiyou County Coroner, an integral part of the Siskiyou County Sheriff's Office in California's Far North region, investigates sudden, violent, or unexpected deaths, as well as those without recent physician care or occurring shortly after hospital admission. This organization serves the citizens and families of Siskiyou County by determining the circumstances, manner, and cause of death, often through physical examinations or autopsies. Key activities include issuing death certificates, managing decedents' personal possessions, and providing information on organ donation. While administrative office hours are limited, dispatch services are available 24/7 to support its critical public safety functions.",
     "regions": [
       "FN"
     ],
     "occupations": [
       "11-1021",
+      "11-9161",
+      "19-4092",
+      "29-2072",
+      "29-9021"
+    ],
+    "website": "https://www.co.siskiyou.ca.us/sheriff/page/coroner",
+    "swp_sectors": [
+      "Public Safety"
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
+  },
+  {
+    "name": "Mercy Medical Center Mount Shasta",
+    "sector": "Healthcare",
+    "description": "Mercy Medical Center Mt. Shasta is a Dignity Health hospital dedicated to promoting healing and wellness in the Far North region of California. The center offers comprehensive medical services, including cancer care, emergency services, a family birth center, heart care, imaging, spine services, and orthopedics. Committed to treating the whole person, Mercy Medical Center Mt. Shasta also provides community classes and events to support healthy living for its patients and visitors. The facility has been recognized as an LGBTQ+ Healthcare Equality High Performer, reflecting its dedication to equitable treatment and inclusion.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "31-9092",
+      "31-9097",
+      "29-2034",
+      "29-1141",
+      "31-1131",
+      "11-9111",
+      "29-2055",
+      "29-2072"
+    ],
+    "website": "https://www.dignityhealth.org/north-state/locations/mercy-mtshasta",
+    "swp_sectors": [
+      "Health"
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
+  },
+  {
+    "name": "Roseburg Forest Products",
+    "sector": "Retail",
+    "description": "Roseburg Forest Products is a privately owned wood-products company, founded in 1936, operating across North America with over 4,000 employees. It manufactures a diverse range of products, including lumber, plywood, particleboard, medium-density fiberboard (MDF), and engineered wood products like joists and siding. These products serve construction and furnishing needs for homes, offices, and schools. The company manages approximately 750,000 acres of timberland in Oregon and northern California, focusing on sustainable forestry and utilizing advanced manufacturing technologies to produce essential wood products.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3051",
+      "11-3121",
+      "13-1071",
+      "15-1244",
+      "19-1032",
+      "19-4071",
+      "49-2094"
+    ],
+    "website": "https://www.roseburg.com",
+    "swp_sectors": [
+      "Advanced Manufacturing"
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
+  },
+  {
+    "name": "Mount Shasta Resort",
+    "sector": "Hospitality & Food Service",
+    "description": "Mount Shasta Resort is an all-season resort nestled at the base of Mount Shasta in Far Northern California, serving guests seeking outdoor recreation and leisure. The resort offers chalet accommodations with amenities like kitchens and gas fireplaces, an 18-hole golf course, and exceptional dining at the Highland House Restaurant. Key business activities include lodging, golf, dining, event hosting for weddings and banquets, and a day spa, catering to both amateurs and professionals in golf, and those interested in skiing, fishing, hiking, swimming, and climbing.",
+    "regions": [
+      "FN"
+    ],
+    "occupations": [
+      "11-1021",
+      "11-3012",
+      "11-3013",
       "11-9072",
       "13-1121",
-      "27-2022",
-      "39-5012",
-      "43-4161"
+      "31-9011",
+      "39-5094"
     ],
     "website": "https://www.mountshastaresort.com",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Crain Walnut Shelling",
     "sector": "Manufacturing",
-    "description": "A facility for shelling and processing walnuts.",
+    "description": "Crain Walnut Shelling, LP is a leading California-based, family-owned company specializing in the processing, packing, and shipping of English walnut meats. Operating from Los Molinos in Tehama County, they are one of the largest producers and processors in the state, sourcing from over 500 independent growers in addition to their own orchards. The organization serves as a key industrial ingredient supplier, providing a broad spectrum of shelled walnut products to retail grocery chains, bakers, ice cream manufacturers, and multi-national food companies across the U.S. and internationally. Key activities include advanced shelling, quality control, and distribution, with a strong commitment to food safety and sustainability.",
     "regions": [
       "FN"
     ],
     "occupations": [
+      "11-1021",
       "11-3051",
-      "11-3061",
+      "13-1071",
       "13-1081",
-      "19-1013",
-      "19-4013",
-      "51-9162"
+      "19-1012",
+      "41-4011",
+      "49-2094",
+      "53-3032"
     ],
     "website": "https://www.crainwalnut.com",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Bell-Carter Foods",
     "sector": "Wholesale",
-    "description": "A food processing company specializing in olives.",
+    "description": "Bell-Carter Foods, founded in 1912, is one of the largest table olive producers globally, employing nearly 300 people. The company focuses on providing innovative, best-in-class olive products and services to retailers and foodservice organizations. They are committed to sustainability, recycling 90% of waste products and investing in wastewater treatment, and engage in philanthropy by supporting local and global organizations. Bell-Carter Foods prides itself on creating perfect olives with ideal flavor, texture, and color, consistently meeting consumer preferences.",
     "regions": [
       "FN"
     ],
     "occupations": [
+      "11-1021",
       "11-3051",
-      "11-3061",
+      "13-1071",
       "13-1081",
+      "13-2011",
       "19-1012",
-      "19-4013",
-      "51-9162"
+      "41-4011",
+      "49-9021"
     ],
     "website": "https://www.bellcarter.com",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "St Elizabeth Community Hospital",
@@ -45306,48 +45719,57 @@
     "website": "https://www.dignityhealth.org",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Tehama County Health Services Agency",
     "sector": "Healthcare",
-    "description": "Provides public health services for Tehama County.",
+    "description": "Tehama County Health Services Agency (TCHSA) is an integrated agency dedicated to addressing the health and human service needs of Tehama County residents. The agency provides a wide array of services through its four centers: Behavioral Health, Medical Clinic, Public Health, and Substance Use Recovery. TCHSA offers health education, prevention, assessment, early intervention, and treatment, serving all age groups from children to seniors. Key activities include providing primary medical care, mental health services, substance use recovery programs, and public health initiatives like immunizations and healthy living programs.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-1011",
-      "11-3012",
-      "11-9151",
-      "13-1071",
-      "21-1091",
+      "11-9111",
       "29-1141",
-      "29-9021"
+      "29-2061",
+      "31-9092",
+      "21-1091",
+      "21-1021",
+      "11-3012",
+      "13-1071"
     ],
     "website": "https://www.tehamacohealthservices.net",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Corning Ford",
     "sector": "Retail",
-    "description": "A Ford dealership selling and servicing vehicles in Corning.",
+    "description": "Corning Ford is a Ford dealership located in Corning, CA, serving drivers across the Bay Area, Sacramento, San Jose, Napa, Tehama County, Red Bluff, and Chico, CA. The organization specializes in selling new and pre-owned Ford vehicles, including popular models like the F-150, Mustang, Explorer, and commercial vehicles. Beyond sales, Corning Ford offers comprehensive automotive services, including an on-site service center for maintenance, repairs, and genuine Ford parts, as well as auto financing and leasing options to assist customers with their purchases.",
     "regions": [
       "FN"
     ],
     "occupations": [
-      "11-2021",
+      "11-1021",
+      "11-2022",
       "11-3012",
-      "11-3061",
       "13-1071",
-      "43-4161",
+      "13-2011",
+      "13-2072",
       "49-3023"
     ],
     "website": "https://www.corningford.com",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Sierra Pacific Windows",
@@ -45368,27 +45790,33 @@
     "website": "https://www.sierrapacificwindows.com",
     "swp_sectors": [
       "Advanced Manufacturing"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Rolling Hills Casino RV Park",
     "sector": "Hospitality & Food Service",
-    "description": "An RV park associated with Rolling Hills Casino.",
+    "description": "Rolling Hills Casino and Resort operates as a comprehensive hospitality and entertainment destination located on Interstate 5 in Corning, California. It serves travelers and visitors to Northern California by offering a wide array of amenities, including a casino with over 800 slot machines and table games, multiple hotel accommodations, an RV Park, and diverse food and beverage options. Key business activities encompass gaming, lodging, dining, and entertainment, alongside operating a world-class equestrian center and The Links golf course, providing a multifaceted resort experience.",
     "regions": [
       "FN"
     ],
     "occupations": [
       "11-1021",
       "11-3012",
-      "11-9072",
-      "13-1121",
-      "39-5012",
-      "43-4161"
+      "11-3121",
+      "13-1071",
+      "13-2011",
+      "15-1244",
+      "49-9021",
+      "11-9072"
     ],
     "website": "https://www.rollinghillscasino.com",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   },
   {
     "name": "USDA Forest Service",
@@ -45409,26 +45837,31 @@
     "website": "https://www.fs.usda.gov",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Trinity River Lumber",
     "sector": "Manufacturing",
-    "description": "A company involved in lumber production and processing.",
+    "description": "Trinity River Lumber Company, a locally owned and operated full-scale softwood mill since 1983, specializes in producing 2\" and 4\" wane-free home center products, including Douglas Fir and White Fir, in lengths from 8' to 20'. Located in Weaverville, California, the company primarily serves the California housing market by selling green lumber products. Their operations include sawmilling random length 2x4, 4x4, and wider products, with capabilities increased after a modern rebuild in 2011. Key business activities encompass sales, shipping, and log procurement, supporting a consistent two-shift operation.",
     "regions": [
       "FN"
     ],
     "occupations": [
+      "11-1021",
       "11-3051",
-      "11-3061",
-      "13-1051",
-      "17-3026",
-      "19-1032",
-      "51-4111"
+      "13-1071",
+      "13-1081",
+      "13-2011",
+      "41-4011",
+      "53-3032"
     ],
     "website": "https://www.trinityriverlumbercompany.com",
     "swp_sectors": [
       "Advanced Manufacturing"
-    ]
+    ],
+    "identity_verified": true,
+    "enrichment_attempted": true,
+    "enrichment_promoted": true
   }
 ]
