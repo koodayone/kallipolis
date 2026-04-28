@@ -17,9 +17,9 @@ function deduplicateBySoc<T extends { soc_code: string }>(items: T[]): T[] {
 }
 
 const EXAMPLES = [
-  "High-paying occupations in healthcare",
-  "Roles that require skills our courses develop",
-  "Occupations that require an associate's degree",
+  "Occupations with the highest wages",
+  "Occupations with the most yearly openings",
+  "Occupations growing fastest in our region",
 ];
 
 const OCCUPATION_COLUMNS: Column[] = [

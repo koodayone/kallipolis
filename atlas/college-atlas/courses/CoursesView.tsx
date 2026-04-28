@@ -32,9 +32,9 @@ const COURSE_COLUMNS: Column[] = [
 ];
 
 const EXAMPLES = [
-  "Courses that develop skills for healthcare careers",
-  "Courses in our business department",
-  "Courses that develop accounting skills",
+  "Courses that develop manufacturing skills",
+  "Courses relevant to career and technical education",
+  "Courses that prepare for a healthcare career",
 ];
 
 type Props = { school: SchoolConfig; onBack: () => void };

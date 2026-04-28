@@ -32,11 +32,30 @@ const STUDENT_COLUMNS: Column[] = [
   { label: "GPA", width: "60px" },
 ];
 
-const EXAMPLES = [
-  "Students most ready for a healthcare internship",
-  "Students with skills in business and accounting",
-  "Who is best prepared for information technology roles?",
-];
+// Per-college "specializing in X" example: substitutes each featured
+// college's most-populous CTE-flavored primary_focus, so the user sees a
+// concrete program their school actually has. Map mirrors the eval's
+// PER_COLLEGE_OVERRIDES in backend/tests/integration/test_example_queries.py.
+const SPECIALIZING_BY_COLLEGE: Record<string, string> = {
+  "Shasta College": "Students specializing in 'early childhood education'",
+  "Foothill College": "Students specializing in 'accounting'",
+  "College of the Sequoias": "Students specializing in 'child development'",
+  "Oxnard College": "Students specializing in 'fire technology'",
+  "Compton College": "Students specializing in 'nursing'",
+  "Irvine Valley College": "Students specializing in 'accounting'",
+  "College of the Desert": "Students specializing in 'health sciences'",
+  "San Diego City College": "Students specializing in 'cybersecurity and data analytics'",
+};
+
+const SPECIALIZING_DEFAULT = "Students specializing in 'construction technology'";
+
+function buildExamples(schoolName: string): string[] {
+  return [
+    SPECIALIZING_BY_COLLEGE[schoolName] ?? SPECIALIZING_DEFAULT,
+    "Students with skills in business and accounting with GPA greater than 3.5",
+    "Students most ready for a healthcare internship",
+  ];
+}
 
 type Props = { school: SchoolConfig; onBack: () => void };
 
@@ -154,7 +173,7 @@ export default function StudentsView({ school, onBack }: Props) {
     <QueryShell<StudentSummary>
       school={school} formName="Students" onBack={onBack}
       placeholder={`Ask me a question about ${school.name} students.`}
-      examples={EXAMPLES} queryFn={queryFn} loadInitialData={loadInitialData}
+      examples={buildExamples(school.name)} queryFn={queryFn} loadInitialData={loadInitialData}
       renderInitialContent={renderInitialContent} renderResultsContent={renderResultsContent}
       renderSearchContent={renderSearchContent}
       onQueryStart={onQueryStart} onReset={onReset} rootRef={rootRef}
