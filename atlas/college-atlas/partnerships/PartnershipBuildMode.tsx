@@ -4,7 +4,6 @@ import { useCallback, type RefObject } from "react";
 import { motion } from "framer-motion";
 import type { SchoolConfig } from "@/config/schoolConfig";
 import type { ApiPartnershipOpportunity } from "@/college-atlas/partnerships/api";
-import RisingSun from "@/ui/RisingSun";
 import EntityScrollList from "@/ui/EntityScrollList";
 import type { Column } from "@/ui/EntityScrollList";
 import PartnershipRow from "./PartnershipRow";
@@ -18,7 +17,6 @@ const PARTNERSHIP_COLUMNS: Column[] = [
 
 type Props = {
   school: SchoolConfig;
-  loading: boolean;
   error: string | null;
   query: string;
   setQuery: (q: string) => void;
@@ -31,7 +29,6 @@ type Props = {
 
 export default function PartnershipBuildMode({
   school,
-  loading,
   error,
   query,
   setQuery,
@@ -62,14 +59,6 @@ export default function PartnershipBuildMode({
       <p style={{ fontFamily: FONT, fontSize: "14px", color: "#e55", textAlign: "center", paddingTop: "40px" }}>
         {error}
       </p>
-    );
-  }
-
-  if (loading) {
-    return (
-      <div style={{ display: "flex", justifyContent: "center", paddingTop: "80px" }}>
-        <RisingSun style={{ width: "90px", height: "auto", opacity: 0.4 }} />
-      </div>
     );
   }
 

@@ -11,6 +11,7 @@ import { getSavedProposals, type SavedProposal } from "@/college-atlas/partnersh
 import AtlasHeader from "@/ui/AtlasHeader";
 import KallipolisBrand from "@/ui/KallipolisBrand";
 import FormHeader from "@/ui/FormHeader";
+import RisingSun from "@/ui/RisingSun";
 import { findScrollParent } from "@/ui/QueryShell";
 import { PREVIEW_MODE } from "@/preview/mode";
 import { getSeededProposals } from "@/preview/seededPartnerships";
@@ -152,59 +153,68 @@ export default function PartnershipsView({ school, onBack }: Props) {
       {phase === "selection" && (
         <div>
           <div style={{ maxWidth: "760px", margin: "0 auto", padding: "32px 40px 80px" }}>
-            {/* Build / Manage segmented control */}
-            <div style={{ display: "flex", justifyContent: "center", marginBottom: "40px" }}>
-              <div style={{
-                display: "flex", borderRadius: "8px",
-                border: "1px solid rgba(255,255,255,0.10)",
-                background: "rgba(255,255,255,0.03)", overflow: "hidden",
-              }}>
-                {(["build", "manage"] as Mode[]).map((m, i) => (
-                  <button key={m} onClick={() => setMode(m)}
-                    style={{
-                      fontFamily: FONT, fontSize: "12px", fontWeight: 600, letterSpacing: "0.02em",
-                      padding: "8px 0", width: "90px", textAlign: "center", cursor: "pointer",
-                      border: "none",
-                      borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.10)" : "none",
-                      background: mode === m ? school.brandColorLight : "transparent",
-                      color: mode === m ? "#1a1a2e" : "rgba(255,255,255,0.4)",
-                      transition: "background 0.2s, color 0.2s",
-                      textTransform: "capitalize",
-                    }}
-                  >{m}</button>
-                ))}
+            {loading && (
+              <div style={{ display: "flex", justifyContent: "center", paddingTop: "80px" }}>
+                <RisingSun style={{ width: "90px", height: "auto", opacity: 0.4 }} />
               </div>
-            </div>
-
-            <div style={{ marginBottom: "40px" }}>
-              <FormHeader formName="Partnerships" />
-            </div>
-
-            {mode === "manage" && (
-              <PartnershipManageMode
-                school={school}
-                savedProposals={savedProposals}
-                setSavedProposals={setSavedProposals}
-                manageQuery={manageQuery}
-                setManageQuery={setManageQuery}
-                expandedSavedId={expandedSavedId}
-                toggleExpanded={toggleSavedExpanded}
-              />
             )}
 
-            {mode === "build" && (
-              <PartnershipBuildMode
-                school={school}
-                loading={loading}
-                error={error}
-                query={query}
-                setQuery={setQuery}
-                inputRef={inputRef}
-                filteredOpportunities={filteredOpportunities}
-                expandedNames={expandedNames}
-                onExpand={handleExpand}
-                onDraft={handleDraftCTA}
-              />
+            {!loading && (
+              <>
+                {/* Build / Manage segmented control */}
+                <div style={{ display: "flex", justifyContent: "center", marginBottom: "40px" }}>
+                  <div style={{
+                    display: "flex", borderRadius: "8px",
+                    border: "1px solid rgba(255,255,255,0.10)",
+                    background: "rgba(255,255,255,0.03)", overflow: "hidden",
+                  }}>
+                    {(["build", "manage"] as Mode[]).map((m, i) => (
+                      <button key={m} onClick={() => setMode(m)}
+                        style={{
+                          fontFamily: FONT, fontSize: "12px", fontWeight: 600, letterSpacing: "0.02em",
+                          padding: "8px 0", width: "90px", textAlign: "center", cursor: "pointer",
+                          border: "none",
+                          borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.10)" : "none",
+                          background: mode === m ? school.brandColorLight : "transparent",
+                          color: mode === m ? "#1a1a2e" : "rgba(255,255,255,0.4)",
+                          transition: "background 0.2s, color 0.2s",
+                          textTransform: "capitalize",
+                        }}
+                      >{m}</button>
+                    ))}
+                  </div>
+                </div>
+
+                <div style={{ marginBottom: "40px" }}>
+                  <FormHeader formName="Partnerships" />
+                </div>
+
+                {mode === "manage" && (
+                  <PartnershipManageMode
+                    school={school}
+                    savedProposals={savedProposals}
+                    setSavedProposals={setSavedProposals}
+                    manageQuery={manageQuery}
+                    setManageQuery={setManageQuery}
+                    expandedSavedId={expandedSavedId}
+                    toggleExpanded={toggleSavedExpanded}
+                  />
+                )}
+
+                {mode === "build" && (
+                  <PartnershipBuildMode
+                    school={school}
+                    error={error}
+                    query={query}
+                    setQuery={setQuery}
+                    inputRef={inputRef}
+                    filteredOpportunities={filteredOpportunities}
+                    expandedNames={expandedNames}
+                    onExpand={handleExpand}
+                    onDraft={handleDraftCTA}
+                  />
+                )}
+              </>
             )}
           </div>
         </div>
