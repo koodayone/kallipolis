@@ -48,6 +48,7 @@ LOADER_FILES = [
     "backend/occupations/load.py",
     "backend/employers/load.py",
     "backend/partnerships/compute.py",
+    "backend/ontology/prepares_for.py",
 ]
 
 # Edge types that are documented in graph-model.md as derived / precomputed

@@ -52,6 +52,7 @@ One additional edge type exists alongside the ten base relationships above. It i
 | Relationship | From → To | Properties | What it encodes |
 |---|---|---|---|
 | `PARTNERSHIP_ALIGNMENT` | College → Employer | alignment_score, gap_count, aligned_skills, gap_skills, top_occupation, top_wage, pipeline_size | Precomputed partnership opportunity metrics between a college and an employer in its region |
+| `PREPARES_FOR` | Course → Occupation | via_top | Materialized from `Course.top_code` via the TOP6→CIP→SOC crosswalk. The institutional pathway from a course's TOP code to the occupations its program prepares students for; replaces skills-overlap matching as the gate for partnership curriculum and student-pipeline queries. |
 
 `PARTNERSHIP_ALIGNMENT` is read by the partnership landscape endpoint (`backend/partnerships/api.py`) so that the landscape view can return 500+ employers in under a second rather than recomputing alignment traversals on each request. Unlike the ten base relationships, its properties are not sourced from an institutional authority — they are the output of a graph traversal materialized onto an edge.
 
