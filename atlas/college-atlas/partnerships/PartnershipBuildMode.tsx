@@ -18,7 +18,6 @@ const PARTNERSHIP_COLUMNS: Column[] = [
 
 type Props = {
   school: SchoolConfig;
-  userName: string;
   loading: boolean;
   error: string | null;
   query: string;
@@ -32,7 +31,6 @@ type Props = {
 
 export default function PartnershipBuildMode({
   school,
-  userName,
   loading,
   error,
   query,
