@@ -66,22 +66,48 @@ const PartnershipRow = memo(function PartnershipRow({
       <button
         onClick={() => onDraft(opp)}
         style={{
-          display: "inline-flex", alignItems: "center", gap: "6px",
+          display: "inline-flex", alignItems: "center", gap: "7px",
           padding: "8px 14px", borderRadius: "6px",
           fontFamily: FONT, fontSize: "12px", fontWeight: 600,
           letterSpacing: "0.01em",
           cursor: "pointer", border: "none",
           background: `${school.brandColorLight}20`,
           color: school.brandColorLight,
-          transition: "background 0.15s, opacity 0.15s",
+          transition: "background 0.15s, box-shadow 0.2s",
           whiteSpace: "nowrap",
         }}
-        onMouseEnter={(e) => { e.currentTarget.style.background = `${school.brandColorLight}30`; }}
-        onMouseLeave={(e) => { e.currentTarget.style.background = `${school.brandColorLight}20`; }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.background = `${school.brandColorLight}30`;
+          e.currentTarget.style.boxShadow = `0 0 14px ${school.brandColorLight}30`;
+          const s = e.currentTarget.querySelector("svg");
+          if (s) s.style.transform = "scale(1.18) rotate(18deg)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.background = `${school.brandColorLight}20`;
+          e.currentTarget.style.boxShadow = "none";
+          const s = e.currentTarget.querySelector("svg");
+          if (s) s.style.transform = "scale(1) rotate(0deg)";
+        }}
       >
         Draft Partnership
-        <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
-          <path d="M3 6h6m-2.5-2.5L9 6 6.5 8.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        {/* Sparkle (4-pointed star) — signals the LLM-generated nature of the
+            artifact and twinkles on hover. Replaces the prior right-arrow,
+            which read as "navigate next" rather than "synthesize". */}
+        <svg
+          width="12"
+          height="12"
+          viewBox="0 0 12 12"
+          fill="none"
+          style={{
+            transition: "transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)",
+            transformOrigin: "center",
+            flexShrink: 0,
+          }}
+        >
+          <path
+            d="M6 0.5L6.95 4.7L11.5 6L6.95 7.3L6 11.5L5.05 7.3L0.5 6L5.05 4.7L6 0.5Z"
+            fill="currentColor"
+          />
         </svg>
       </button>
     </motion.div>
