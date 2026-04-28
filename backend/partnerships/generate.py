@@ -16,6 +16,7 @@ import logging
 from ontology.schema import get_driver
 from partnerships.evals import evaluate_proposal
 from partnerships.filter import (
+    _select_core_skills_for,
     _select_occupation,
     _select_relevant_departments,
 )
@@ -144,19 +145,53 @@ def _assemble_swp_evidence(
 # ═══════════════════════════════════════════════════════════════════════════
 
 
-def _run_pipeline(employer: str, college: str, gathered: GatheredContext) -> NarrativeProposal:
+def _select_occupation_from_soc(gathered: GatheredContext, soc_code: str, college: str) -> dict:
+    """Build the selected-occupation dict for a coordinator-picked SOC.
+
+    Looks up the occupation in gathered.occupation_evidence by SOC code and
+    pairs it with deterministic core-skills selection. No LLM call.
+    """
+    for occ in gathered.occupation_evidence:
+        if occ.get("soc_code") == soc_code:
+            title = occ.get("title", "")
+            return {
+                "title": title,
+                "soc_code": soc_code,
+                "core_skills": _select_core_skills_for(college, title),
+            }
+    raise ValueError(
+        f"Selected SOC '{soc_code}' is not in {gathered.employer_name}'s "
+        f"hires_for set in the {gathered.college} graph"
+    )
+
+
+def _run_pipeline(
+    employer: str,
+    college: str,
+    gathered: GatheredContext,
+    selected_occupation_soc: str | None = None,
+) -> NarrativeProposal:
     """Single linear pipeline shared by sync and streaming entry points.
 
     Stages:
-      2. Occupation selection (LLM)
+      2. Occupation selection — when selected_occupation_soc is provided,
+         deterministic lookup by SOC plus deterministic core-skills selection;
+         otherwise the legacy LLM-based _select_occupation runs.
       3. Curriculum and student pipeline gathering (Neo4j)
       4. Department relevance filter (LLM, cap 3)
       5. Regional supply-demand evidence assembly (Neo4j + COE CSVs)
       6. Narrative generation (LLM, four sections)
       7. Final assembly
     """
-    selected_occ = _select_occupation(gathered)
-    logger.info(f"Stage 2 complete: selected '{selected_occ.get('title', '?')}' for {employer}")
+    if selected_occupation_soc:
+        selected_occ = _select_occupation_from_soc(gathered, selected_occupation_soc, college)
+        logger.info(
+            f"Stage 2 complete: coordinator-picked '{selected_occ['title']}' "
+            f"({selected_occupation_soc}) for {employer}"
+        )
+    else:
+        selected_occ = _select_occupation(gathered)
+        logger.info(f"Stage 2 complete: selected '{selected_occ.get('title', '?')}' for {employer}")
 
     core_skills = selected_occ.get("core_skills", [])
     _, curriculum_evidence = _gather_aligned_curriculum(college, core_skills)
@@ -206,15 +241,23 @@ def _run_pipeline(employer: str, college: str, gathered: GatheredContext) -> Nar
     return proposal
 
 
-async def run_targeted_proposal(employer: str, college: str) -> NarrativeProposal:
+async def run_targeted_proposal(
+    employer: str,
+    college: str,
+    selected_occupation_soc: str | None = None,
+) -> NarrativeProposal:
     """Generate a targeted partnership proposal for a specific employer."""
     gathered = _gather_targeted_context(employer, college)
     logger.info(f"Stage 1 complete: gathered context for {employer}")
-    return _run_pipeline(employer, college, gathered)
+    return _run_pipeline(employer, college, gathered, selected_occupation_soc)
 
 
-def stream_targeted_proposal(employer: str, college: str):
+def stream_targeted_proposal(
+    employer: str,
+    college: str,
+    selected_occupation_soc: str | None = None,
+):
     """Generator that yields a NarrativeProposal when the pipeline completes."""
     gathered = _gather_targeted_context(employer, college)
     logger.info(f"Stage 1 complete: gathered context for {employer}")
-    yield _run_pipeline(employer, college, gathered)
+    yield _run_pipeline(employer, college, gathered, selected_occupation_soc)

@@ -34,6 +34,12 @@ class PartnershipQueryResponse(BaseModel):
 class ProposalRequest(BaseModel):
     employer: str
     college: str
+    # Optional SOC code chosen by the coordinator in the occupation picker.
+    # When provided, the pipeline skips the LLM occupation-selection step
+    # and constructs the selected-occupation dict directly from this SOC.
+    # When absent, the legacy auto-selection path runs (preserved for
+    # backward compatibility).
+    selected_occupation_soc: Optional[str] = None
 
 
 class OccupationEvidence(BaseModel):

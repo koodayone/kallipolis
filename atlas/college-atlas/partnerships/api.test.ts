@@ -137,36 +137,56 @@ describe("partnerships api client", () => {
   });
 
   describe("getEmployerOccupations", () => {
-    it("hits /partnerships/employer-occupations with employer encoded", async () => {
+    it("hits /partnerships/employer-occupations with employer and college both encoded", async () => {
       const mockFetch = vi.fn().mockResolvedValue({
         ok: true,
-        json: async () => ({ occupations: [] }),
+        json: async () => ({ coe_region: "Bay", occupations: [] }),
       });
       vi.stubGlobal("fetch", mockFetch);
 
-      await getEmployerOccupations("Kaiser Permanente");
+      await getEmployerOccupations("Kaiser Permanente", "Foothill College");
 
       const url = mockFetch.mock.calls[0][0] as string;
-      expect(url).toContain("/partnerships/employer-occupations?employer=");
-      expect(url).toContain("Kaiser%20Permanente");
+      expect(url).toContain("/partnerships/employer-occupations");
+      expect(url).toContain("employer=Kaiser%20Permanente");
+      expect(url).toContain("college=Foothill%20College");
     });
 
-    it("returns the parsed body on success", async () => {
+    it("returns the parsed body on success including alignment fields and coe_region", async () => {
       const body = {
+        coe_region: "Bay",
         occupations: [
-          { title: "Registered Nurses", annual_wage: 130000 },
-          { title: "Medical Assistants", annual_wage: 55000 },
+          {
+            title: "Registered Nurses",
+            soc_code: "29-1141",
+            annual_wage: 130000,
+            annual_openings: 1200,
+            growth_rate: 0.05,
+            core_skills_developed_count: 5,
+            core_skills_total_count: 6,
+            course_count: 28,
+          },
+          {
+            title: "Medical Assistants",
+            soc_code: "31-9092",
+            annual_wage: 55000,
+            annual_openings: 800,
+            growth_rate: 0.07,
+            core_skills_developed_count: 3,
+            core_skills_total_count: 5,
+            course_count: 14,
+          },
         ],
       };
       vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: true, json: async () => body }));
 
-      const result = await getEmployerOccupations("Kaiser");
+      const result = await getEmployerOccupations("Kaiser", "Foothill College");
       expect(result).toEqual(body);
     });
 
     it("throws a descriptive error when the response is not ok", async () => {
       vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: false, status: 404, json: async () => ({}) }));
-      await expect(getEmployerOccupations("Nonexistent")).rejects.toThrow("Failed to fetch employer occupations");
+      await expect(getEmployerOccupations("Nonexistent", "Foothill College")).rejects.toThrow("Failed to fetch employer occupations");
     });
   });
 
@@ -211,7 +231,7 @@ describe("partnerships api client", () => {
   });
 
   describe("streamTargetedProposal", () => {
-    it("POSTs to /partnerships/targeted/stream with employer and college", async () => {
+    it("POSTs to /partnerships/targeted/stream with employer and college (no SOC by default)", async () => {
       const mockFetch = vi.fn().mockResolvedValue(sseResponse([]));
       vi.stubGlobal("fetch", mockFetch);
 
@@ -228,9 +248,34 @@ describe("partnerships api client", () => {
       expect(init.method).toBe("POST");
 
       const parsed = JSON.parse(init.body as string);
+      // selected_occupation_soc is intentionally absent — backend treats
+      // its absence as the trigger for legacy auto-selection.
       expect(parsed).toEqual({
         employer: "Kaiser",
         college: "foothill",
+      });
+      expect(parsed).not.toHaveProperty("selected_occupation_soc");
+    });
+
+    it("includes selected_occupation_soc in the body when the coordinator picked one", async () => {
+      const mockFetch = vi.fn().mockResolvedValue(sseResponse([]));
+      vi.stubGlobal("fetch", mockFetch);
+
+      await streamTargetedProposal(
+        "Kaiser",
+        "foothill",
+        () => {},
+        () => {},
+        () => {},
+        "29-1141",
+      );
+
+      const [, init] = mockFetch.mock.calls[0] as [string, RequestInit];
+      const parsed = JSON.parse(init.body as string);
+      expect(parsed).toEqual({
+        employer: "Kaiser",
+        college: "foothill",
+        selected_occupation_soc: "29-1141",
       });
     });
 

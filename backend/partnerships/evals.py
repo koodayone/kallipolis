@@ -445,8 +445,97 @@ def _check_occupational_demand(p: NarrativeProposal) -> list[EvalViolation]:
             )
         )
 
+    # Faithfulness: any wage/openings figures cited must match the selected
+    # occupation's specific values, not the aggregate demand or another
+    # occupation's data.
+    violations.extend(_check_demand_figure_faithfulness(p))
+
     # Voice
     violations.extend(_check_voice(section, text))
+
+    return violations
+
+
+def _check_demand_figure_faithfulness(p: NarrativeProposal) -> list[EvalViolation]:
+    """Verify wage and openings figures in OCCUPATIONAL DEMAND match the
+    selected occupation's actual data — not the aggregate, not another
+    occupation, not a fabricated round number.
+
+    The selected occupation's data lives in p.opportunity_evidence (filtered
+    in _assemble_proposal to just the selected role). Numbers cited in prose
+    are matched with formatting tolerance: "$194,960" / "194960" / "near
+    $195,000" all parse to 195000-ish, and a wage match is allowed within
+    a small rounding band (the model often writes "near $130,000" instead of
+    the exact figure).
+    """
+    text = p.occupational_demand
+    section = "occupational_demand"
+    violations: list[EvalViolation] = []
+
+    if not text or not p.opportunity_evidence:
+        return violations
+
+    # Find the selected occupation's actual values. opportunity_evidence is
+    # filtered to the selected occupation in _assemble_proposal, so the first
+    # entry is normally the right one; double-check by SOC if present.
+    selected = None
+    for occ in p.opportunity_evidence:
+        if p.selected_soc_code and occ.soc_code == p.selected_soc_code:
+            selected = occ
+            break
+    if selected is None and p.opportunity_evidence:
+        selected = p.opportunity_evidence[0]
+    if selected is None:
+        return violations
+
+    # ── Openings check ──────────────────────────────────────────────────
+    if selected.annual_openings is not None:
+        expected_openings = selected.annual_openings
+        # Match "<number> annual openings" or "<number> openings" patterns.
+        openings_pattern = re.compile(
+            r"\b(\d{1,3}(?:,\d{3})*|\d{3,})\s+(?:annual\s+|regional\s+|projected\s+)*openings\b",
+            re.IGNORECASE,
+        )
+        for m in openings_pattern.finditer(text):
+            cited = int(m.group(1).replace(",", ""))
+            if cited != expected_openings:
+                violations.append(
+                    EvalViolation(
+                        rule="occupational_demand_openings_mismatch",
+                        section=section,
+                        message=(
+                            f"Cited {cited:,} openings, but the selected occupation "
+                            f"({selected.title}, SOC {selected.soc_code}) has "
+                            f"{expected_openings:,} annual openings in this region. "
+                            f"Use the selected occupation's specific figure, not the "
+                            f"aggregate or another occupation's data."
+                        ),
+                    )
+                )
+
+    # ── Wage check ──────────────────────────────────────────────────────
+    if selected.annual_wage is not None:
+        expected_wage = selected.annual_wage
+        # Match dollar amounts. Tolerance: 5% rounding band, since narratives
+        # often write "near $130,000" or "around $190,000" rather than exact.
+        # Anything outside that band is flagged as a mismatch.
+        dollar_pattern = re.compile(r"\$\s*(\d{1,3}(?:,\d{3})*|\d+)(?:\.\d+)?")
+        tolerance = max(expected_wage * 0.05, 1000)
+        for m in dollar_pattern.finditer(text):
+            cited = int(m.group(1).replace(",", ""))
+            if abs(cited - expected_wage) > tolerance:
+                violations.append(
+                    EvalViolation(
+                        rule="occupational_demand_wage_mismatch",
+                        section=section,
+                        message=(
+                            f"Cited ${cited:,} as a wage figure, but the selected "
+                            f"occupation ({selected.title}) has an annual wage of "
+                            f"${expected_wage:,}. Use the selected occupation's "
+                            f"specific figure, not the aggregate or another role's wage."
+                        ),
+                    )
+                )
 
     return violations
 

@@ -66,7 +66,12 @@ def _make_minimal_good_proposal() -> NarrativeProposal:
             "department adds another concentration of students preparing for these roles."
         ),
         opportunity_evidence=[
-            OccupationEvidence(title="Software Developers", soc_code="15-1252", annual_openings=11000),
+            OccupationEvidence(
+                title="Software Developers",
+                soc_code="15-1252",
+                annual_openings=11000,
+                annual_wage=190000,
+            ),
         ],
         curriculum_evidence=[
             DepartmentEvidence(department="Computer Science", courses=[], aligned_skills=["Programming"]),
@@ -376,3 +381,50 @@ class TestEvaluateProposal:
         result = evaluate_proposal(p)
         rules = {v.rule for v in result.violations}
         assert "missing_department_reference" in rules
+
+    def test_aggregate_openings_in_occupational_demand_flagged(self):
+        """The model citing the aggregate-demand total instead of the selected
+        occupation's specific openings is a real failure mode the eval must catch."""
+        p = _make_minimal_good_proposal()
+        # opportunity_evidence has annual_openings=11000 for the selected occupation;
+        # the swp_evidence aggregate sums to 11000 as well in the fixture, so we
+        # need a different mismatch number — simulate the model citing a fabricated
+        # or aggregate figure that doesn't match.
+        p.occupational_demand = (
+            "Test Corp's Bay-region hiring centers on Software Developers (15-1252), with "
+            "median annual wages near $190,000 and 31,420 annual openings across the region. "
+            "The company's scope generates a diverse set of competencies new hires bring."
+        )
+        result = evaluate_proposal(p)
+        rules = {v.rule for v in result.violations}
+        assert "occupational_demand_openings_mismatch" in rules
+
+    def test_wrong_wage_in_occupational_demand_flagged(self):
+        p = _make_minimal_good_proposal()
+        # Cite a wage well outside the 5%/$1k tolerance from the expected $190,000.
+        p.occupational_demand = (
+            "Test Corp's Bay-region hiring centers on Software Developers (15-1252), with "
+            "median annual wages near $50,000 and 11,000 regional openings projected each year. "
+            "The company's scope generates a diverse set of competencies new hires bring."
+        )
+        result = evaluate_proposal(p)
+        rules = {v.rule for v in result.violations}
+        assert "occupational_demand_wage_mismatch" in rules
+
+    def test_wage_within_rounding_tolerance_passes(self):
+        """Rounded wage figures (e.g., 'near $190,000' for actual $190,500) should pass."""
+        p = _make_minimal_good_proposal()
+        # Tweak the actual wage slightly so the prose's $190,000 round is within 5%.
+        p.opportunity_evidence[0].annual_wage = 190500
+        # Prose still cites $190,000 — within tolerance.
+        result = evaluate_proposal(p)
+        rules = {v.rule for v in result.violations}
+        assert "occupational_demand_wage_mismatch" not in rules
+
+    def test_correct_specific_openings_passes(self):
+        """When the model cites the selected occupation's actual openings figure, no flag."""
+        p = _make_minimal_good_proposal()
+        # Default fixture cites 11,000 openings, expected_openings is 11000. Pass.
+        result = evaluate_proposal(p)
+        rules = {v.rule for v in result.violations}
+        assert "occupational_demand_openings_mismatch" not in rules

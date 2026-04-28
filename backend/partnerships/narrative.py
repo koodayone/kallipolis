@@ -79,34 +79,53 @@ def _build_narrative_context(
         f"College: {gathered.college}",
         f"COE region for regional labor market data: {swp_evidence.coe_region}" if swp_evidence.coe_region else None,
         "",
-        f"SELECTED OCCUPATION (the role this artifact is scoped to): {occ_title} ({occ_soc})",
-        f"CORE SKILLS for the selected occupation: {', '.join(core_skills)}",
-        "",
     ]
 
-    # All occupations the employer hires for, top 6 by annual openings.
-    # The model uses this to characterize the employer's hiring profile in the
-    # executive summary and to cite specific figures in occupational demand.
+    # SELECTED OCCUPATION block — the figures cited in the OCCUPATIONAL DEMAND
+    # section MUST come from here, not from the broader hiring profile below.
+    selected_occ_data = next(
+        (o for o in gathered.occupation_evidence if o.get("title") == occ_title),
+        None,
+    )
+    lines.append("SELECTED OCCUPATION (the role this artifact is scoped to — cite THESE figures in OCCUPATIONAL DEMAND):")
+    lines.append(f"  Title: {occ_title}")
+    lines.append(f"  SOC code: {occ_soc}")
+    if selected_occ_data:
+        if selected_occ_data.get("annual_wage"):
+            lines.append(f"  Median annual wage: ${selected_occ_data['annual_wage']:,}")
+        if selected_occ_data.get("annual_openings"):
+            lines.append(f"  Annual openings (regional): {selected_occ_data['annual_openings']:,}")
+        if selected_occ_data.get("growth_rate") is not None:
+            lines.append(f"  Projected growth: {selected_occ_data['growth_rate']:+.1%}")
+        if selected_occ_data.get("employment"):
+            lines.append(f"  Regional employment: {selected_occ_data['employment']:,}")
+    lines.append(f"  Core skills: {', '.join(core_skills)}")
+    lines.append("")
+
+    # Broader hiring profile — top 6 by annual openings. Used by the EXECUTIVE
+    # SUMMARY to characterize what the employer does (one or two roles that
+    # capture operational identity). The OCCUPATIONAL DEMAND section must
+    # NOT cite figures from this list — those figures belong only to roles
+    # that are not the selected one.
     occupations_sorted = sorted(
         gathered.occupation_evidence,
         key=lambda o: (o.get("annual_openings") or 0),
         reverse=True,
     )[:6]
 
-    lines.append("OCCUPATIONS THIS EMPLOYER HIRES FOR (regional data, top 6 by annual openings):")
+    lines.append("BROADER HIRING PROFILE (other occupations this employer hires for, top 6 by openings — use ONLY for executive summary context, do NOT cite these figures in OCCUPATIONAL DEMAND):")
     for occ_ev in occupations_sorted:
         is_selected = occ_ev.get("title") == occ_title
-        marker = " [SELECTED]" if is_selected else ""
+        marker = " ← this is the SELECTED OCCUPATION (figures listed in the block above)" if is_selected else ""
         parts = [f"  {occ_ev.get('soc_code', '?'):<10} {occ_ev.get('title', '?')}{marker}"]
         details = []
-        if occ_ev.get("annual_wage"):
-            details.append(f"${occ_ev['annual_wage']:,}/yr median")
-        if occ_ev.get("annual_openings"):
-            details.append(f"{occ_ev['annual_openings']:,} annual openings")
-        if occ_ev.get("growth_rate") is not None:
-            details.append(f"{occ_ev['growth_rate']:+.1%} growth")
-        if occ_ev.get("employment"):
-            details.append(f"{occ_ev['employment']:,} regional employment")
+        if not is_selected:
+            if occ_ev.get("annual_wage"):
+                details.append(f"${occ_ev['annual_wage']:,}/yr median")
+            if occ_ev.get("annual_openings"):
+                details.append(f"{occ_ev['annual_openings']:,} annual openings")
+            if occ_ev.get("growth_rate") is not None:
+                details.append(f"{occ_ev['growth_rate']:+.1%} growth")
         if details:
             parts.append(f"     {', '.join(details)}")
         lines.extend(parts)
@@ -164,9 +183,16 @@ Section claims:
   REQUIRED REFERENCES: Characterize the employer through one or two of the most identity-defining occupations they hire for. Name the COE region by name. Name at least one of the most relevant departments from the curriculum evidence. Reference the student pipeline qualitatively (e.g., "students across these programs are completing coursework").
   FORBIDDEN: Specific dollar amounts, specific growth percentages, specific openings counts, or specific student counts (those belong in their dedicated sections). Evaluative language ("compelling," "strong fit") and superlatives. Naming a partnership type or prescribing a collaboration shape.
 
-- OCCUPATIONAL DEMAND (2-3 sentences): The employer's hiring profile represents institutionally significant regional labor market demand.
-  REQUIRED REFERENCES: The selected occupation's title and SOC code. At least the median wage AND annual openings figures from the regional data. The COE region by name (so the geographic scope is explicit, not implied).
-  FORBIDDEN: Framing the figures as "national" or "across the country" — these are COE-region figures. Speculation about career ladders or advancement.
+- OCCUPATIONAL DEMAND (2-3 sentences): The employer's hiring profile represents institutionally significant regional labor market demand, scoped to the SELECTED OCCUPATION only.
+  REQUIRED REFERENCES:
+    - The selected occupation's title and SOC code from the SELECTED OCCUPATION block.
+    - The Median annual wage AND Annual openings figures listed in the SELECTED OCCUPATION block. These are the only wage/openings figures permitted in this section.
+    - The COE region by name (so the geographic scope is explicit, not implied).
+  FORBIDDEN:
+    - Citing wage/openings figures from any other occupation in the BROADER HIRING PROFILE list. Those figures belong to other roles the employer hires for; they describe the employer's overall hiring scale, not the demand for the selected role.
+    - Citing the aggregate demand total from the REGIONAL SUPPLY-DEMAND block. That total sums multiple occupations and belongs only in the SWP evidence table, not in this section's prose.
+    - Framing the figures as "national" or "across the country" — these are COE-region figures.
+    - Speculation about career ladders or advancement.
 
 - CURRICULUM ALIGNMENT (2-3 sentences): Specific departments at the college develop the skills these occupations require.
   REQUIRED REFERENCES: At least one specific department name from the curriculum evidence. At least one specific skill name from the core skills list. Course counts (e.g., "across 33 courses") are appropriate when they characterize the depth of preparation.

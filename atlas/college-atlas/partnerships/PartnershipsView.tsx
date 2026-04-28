@@ -3,10 +3,15 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { SchoolConfig } from "@/config/schoolConfig";
 import {
+  getEmployerOccupations,
   getPartnershipLandscape,
   streamTargetedProposal,
 } from "@/college-atlas/partnerships/api";
-import type { ApiPartnershipOpportunity, ApiTargetedProposal } from "@/college-atlas/partnerships/api";
+import type {
+  ApiEmployerOccupation,
+  ApiPartnershipOpportunity,
+  ApiTargetedProposal,
+} from "@/college-atlas/partnerships/api";
 import { getSavedProposals, type SavedProposal } from "@/college-atlas/partnerships/savedProposals";
 import AtlasHeader from "@/ui/AtlasHeader";
 import KallipolisBrand from "@/ui/KallipolisBrand";
@@ -21,7 +26,7 @@ import PartnershipManageMode from "./PartnershipManageMode";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
-type Phase = "selection" | "generating" | "complete";
+type Phase = "selection" | "draft" | "generating" | "complete";
 type Mode = "build" | "manage";
 
 type Props = { school: SchoolConfig; onBack: () => void };
@@ -29,12 +34,22 @@ type Props = { school: SchoolConfig; onBack: () => void };
 export default function PartnershipsView({ school, onBack }: Props) {
   const rootRef = useRef<HTMLDivElement>(null);
 
-  // Phase state — drives the selection screen → ProposalFlow handoff.
+  // Phase state — drives the selection screen → occupation picker → ProposalFlow handoff.
   const [phase, setPhase] = useState<Phase>("selection");
   const [mode, setMode] = useState<Mode>("build");
   const [selectedEmployer, setSelectedEmployer] = useState<ApiPartnershipOpportunity | null>(null);
   const [proposal, setProposal] = useState<ApiTargetedProposal | null>(null);
   const [proposalError, setProposalError] = useState<string | null>(null);
+
+  // Occupation picker state — populated when an employer is selected.
+  // The first occupation is the deterministic suggested default (sorted by
+  // coverage ratio then annual openings on the backend); pre-selecting it
+  // means Generate is enabled by default.
+  const [occupations, setOccupations] = useState<ApiEmployerOccupation[]>([]);
+  const [coeRegion, setCoeRegion] = useState<string>("");
+  const [selectedSocCode, setSelectedSocCode] = useState<string | null>(null);
+  const [occupationsLoading, setOccupationsLoading] = useState(false);
+  const [occupationsError, setOccupationsError] = useState<string | null>(null);
 
   // Build mode state — landscape data + search query + row expansion.
   const [landscape, setLandscape] = useState<ApiPartnershipOpportunity[]>([]);
@@ -102,44 +117,81 @@ export default function PartnershipsView({ school, onBack }: Props) {
     requestAnimationFrame(() => { if (scrollEl) scrollEl.scrollTop = saved; });
   }, []);
 
-  // Generate immediately when an employer is selected — no engagement-type
-  // pre-classification step. The artifact is type-agnostic.
-  const runGeneration = useCallback((opp: ApiPartnershipOpportunity) => {
+  // Generate the partnership artifact for a (employer, SOC) pair. The SOC
+  // comes from the picker — either the suggested default the coordinator
+  // accepted, or one they overrode.
+  const runGeneration = useCallback((employerName: string, socCode: string) => {
     setPhase("generating");
     setProposal(null);
     setProposalError(null);
     streamTargetedProposal(
-      opp.name,
+      employerName,
       school.name,
       (p) => { setProposal(p); setPhase("complete"); },
       () => {},
       (err) => { setProposalError(err); setPhase("complete"); },
+      socCode,
     );
   }, [school.name]);
 
   // Phase transitions.
+  // Clicking an employer fetches its occupation set, pre-selects the
+  // suggested default (the first row), and shows the picker. Even when
+  // the employer has only one occupation we keep the picker — consistency
+  // beats saving one click, and the card carries informational value.
   const handleDraftCTA = useCallback((opp: ApiPartnershipOpportunity) => {
     setSelectedEmployer(opp);
-    runGeneration(opp);
-  }, [runGeneration]);
+    setProposal(null);
+    setProposalError(null);
+    setOccupations([]);
+    setSelectedSocCode(null);
+    setOccupationsError(null);
+    setOccupationsLoading(true);
+    setPhase("draft");
+    getEmployerOccupations(opp.name, school.name)
+      .then((data) => {
+        setOccupations(data.occupations);
+        setCoeRegion(data.coe_region);
+        // First row is the deterministic suggested default per the backend sort.
+        if (data.occupations.length > 0) {
+          setSelectedSocCode(data.occupations[0].soc_code);
+        }
+      })
+      .catch((e) => setOccupationsError(e.message))
+      .finally(() => setOccupationsLoading(false));
+  }, [school.name]);
+
+  const handleGenerate = useCallback(() => {
+    if (!selectedEmployer || !selectedSocCode) return;
+    runGeneration(selectedEmployer.name, selectedSocCode);
+  }, [selectedEmployer, selectedSocCode, runGeneration]);
 
   const handleRetry = useCallback(() => {
-    if (selectedEmployer) runGeneration(selectedEmployer);
-  }, [selectedEmployer, runGeneration]);
+    if (selectedEmployer && selectedSocCode) {
+      runGeneration(selectedEmployer.name, selectedSocCode);
+    }
+  }, [selectedEmployer, selectedSocCode, runGeneration]);
+
+  const resetToSelection = useCallback(() => {
+    setPhase("selection");
+    setSelectedEmployer(null);
+    setProposal(null);
+    setProposalError(null);
+    setOccupations([]);
+    setSelectedSocCode(null);
+    setOccupationsError(null);
+    setCoeRegion("");
+  }, []);
 
   const handleReject = useCallback(() => {
-    setPhase("selection");
-    setSelectedEmployer(null);
+    // After viewing/rejecting a generated artifact, return to the picker
+    // for the same employer so the coordinator can try a different occupation.
+    setPhase("draft");
     setProposal(null);
     setProposalError(null);
   }, []);
 
-  const handleBackFromSplit = useCallback(() => {
-    setPhase("selection");
-    setSelectedEmployer(null);
-    setProposal(null);
-    setProposalError(null);
-  }, []);
+  const handleBackFromSplit = resetToSelection;
 
   return (
     <div ref={rootRef}>
@@ -225,7 +277,14 @@ export default function PartnershipsView({ school, onBack }: Props) {
           <ProposalFlow
             school={school}
             employer={selectedEmployer}
-            phase={phase as "generating" | "complete"}
+            phase={phase as "draft" | "generating" | "complete"}
+            occupations={occupations}
+            coeRegion={coeRegion}
+            selectedSocCode={selectedSocCode}
+            occupationsLoading={occupationsLoading}
+            occupationsError={occupationsError}
+            onSelectSoc={setSelectedSocCode}
+            onGenerate={handleGenerate}
             onRetry={handleRetry}
             onReject={handleReject}
             proposal={proposal}

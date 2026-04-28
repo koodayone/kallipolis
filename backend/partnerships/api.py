@@ -89,18 +89,70 @@ def get_employer_pipeline(employer: str, college: str):
 
 
 @router.get("/employer-occupations")
-def get_employer_occupations(employer: str):
-    """Returns occupations an employer hires for — lightweight, no skill joins."""
+def get_employer_occupations(employer: str, college: str):
+    """Returns occupations the employer hires for in the college's region, with
+    regional demand fields and per-occupation curriculum-alignment signal.
+
+    The atlas's occupation picker uses this response to render one card per
+    occupation. The alignment fields (`core_skills_developed_count` /
+    `core_skills_total_count` / `course_count`) let the coordinator see how
+    well the college's curriculum already covers each occupation's required
+    skills, before deciding which role to scope the partnership artifact to.
+
+    The response is sorted by (coverage_ratio DESC, annual_openings DESC),
+    so the first row is the deterministic "suggested" default the picker
+    pre-selects. `coe_region` is attached at the top level so the atlas can
+    surface the geographic scope alongside the demand figures.
+    """
+    from ontology.regions import COLLEGE_COE_REGION
+
     driver = get_driver()
     try:
         with driver.session() as session:
-            result = session.run("""
-                MATCH (emp:Employer {name: $employer})-[:IN_MARKET]->(r:Region),
-                      (emp)-[:HIRES_FOR]->(occ:Occupation)<-[d:DEMANDS]-(r)
-                RETURN occ.title AS title, d.annual_wage AS annual_wage
-                ORDER BY d.annual_wage DESC
-            """, employer=employer).data()
-        return {"occupations": result}
+            rows = session.run("""
+                MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region),
+                      (emp:Employer {name: $employer})-[:HIRES_FOR]->(occ:Occupation),
+                      (r)-[d:DEMANDS]->(occ)
+                CALL {
+                    WITH occ
+                    MATCH (occ)-[:REQUIRES_SKILL]->(sk:Skill)
+                    RETURN count(DISTINCT sk) AS core_skills_total_count,
+                           collect(DISTINCT sk) AS required_skills
+                }
+                CALL {
+                    WITH occ, required_skills
+                    UNWIND required_skills AS sk
+                    OPTIONAL MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk)
+                    WITH sk, count(DISTINCT c) AS course_count_for_skill
+                    RETURN
+                        sum(CASE WHEN course_count_for_skill > 0 THEN 1 ELSE 0 END)
+                            AS core_skills_developed_count
+                }
+                CALL {
+                    WITH required_skills
+                    UNWIND required_skills AS sk
+                    MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk)
+                    RETURN count(DISTINCT c) AS course_count
+                }
+                RETURN occ.title AS title,
+                       occ.soc_code AS soc_code,
+                       d.annual_wage AS annual_wage,
+                       d.annual_openings AS annual_openings,
+                       d.growth_rate AS growth_rate,
+                       core_skills_developed_count,
+                       core_skills_total_count,
+                       course_count
+                ORDER BY (1.0 * core_skills_developed_count /
+                          CASE WHEN core_skills_total_count > 0
+                               THEN core_skills_total_count
+                               ELSE 1 END) DESC,
+                         coalesce(d.annual_openings, 0) DESC
+            """, employer=employer, college=college).data()
+
+        return {
+            "coe_region": COLLEGE_COE_REGION.get(college, ""),
+            "occupations": rows,
+        }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -119,7 +171,9 @@ async def query_partnerships(req: PartnershipQueryRequest):
 @router.post("/targeted", response_model=NarrativeProposal)
 async def targeted_partnership(req: ProposalRequest):
     try:
-        return await run_targeted_proposal(req.employer, req.college)
+        return await run_targeted_proposal(
+            req.employer, req.college, req.selected_occupation_soc
+        )
     except ValueError as e:
         raise HTTPException(status_code=422, detail=str(e))
     except Exception as e:
@@ -130,7 +184,9 @@ async def targeted_partnership(req: ProposalRequest):
 async def targeted_partnership_stream(req: ProposalRequest):
     def event_generator():
         try:
-            for proposal in stream_targeted_proposal(req.employer, req.college):
+            for proposal in stream_targeted_proposal(
+                req.employer, req.college, req.selected_occupation_soc
+            ):
                 data = proposal.model_dump_json()
                 yield f"data: {data}\n\n"
             yield f'data: {{"done": true}}\n\n'

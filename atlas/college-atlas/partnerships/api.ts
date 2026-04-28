@@ -128,8 +128,32 @@ export async function getEmployerPipeline(employer: string, college: string): Pr
   return res.json();
 }
 
-export async function getEmployerOccupations(employer: string): Promise<{ occupations: Array<{ title: string; annual_wage: number | null }> }> {
-  const res = await fetch(`${API_BASE}/partnerships/employer-occupations?employer=${encodeURIComponent(employer)}`);
+// Occupation card in the picker: title, SOC, regional demand fields, plus
+// the curriculum-alignment signal so the coordinator can see at-a-glance how
+// well the college's curriculum already covers each role's required skills.
+export type ApiEmployerOccupation = {
+  title: string;
+  soc_code: string;
+  annual_wage: number | null;
+  annual_openings: number | null;
+  growth_rate: number | null;
+  core_skills_developed_count: number;
+  core_skills_total_count: number;
+  course_count: number;
+};
+
+export type ApiEmployerOccupationsResponse = {
+  coe_region: string;
+  occupations: ApiEmployerOccupation[];
+};
+
+export async function getEmployerOccupations(
+  employer: string,
+  college: string,
+): Promise<ApiEmployerOccupationsResponse> {
+  const res = await fetch(
+    `${API_BASE}/partnerships/employer-occupations?employer=${encodeURIComponent(employer)}&college=${encodeURIComponent(college)}`,
+  );
   if (!res.ok) throw new Error("Failed to fetch employer occupations");
   return res.json();
 }
@@ -155,11 +179,20 @@ export async function streamTargetedProposal(
   onProposal: (proposal: ApiTargetedProposal) => void,
   onDone: () => void,
   onError: (error: string) => void,
+  selectedOccupationSoc?: string,
 ): Promise<void> {
+  // Only include the SOC field when the coordinator has chosen one. Sending
+  // `selected_occupation_soc: null` would defeat the optional-Pydantic
+  // pattern; omitting the field is what triggers the legacy auto-selection
+  // path on the backend.
+  const body: Record<string, string> = { employer, college };
+  if (selectedOccupationSoc) {
+    body.selected_occupation_soc = selectedOccupationSoc;
+  }
   const res = await fetch(`${API_BASE}/partnerships/targeted/stream`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ employer, college }),
+    body: JSON.stringify(body),
   });
   if (!res.ok) {
     onError(await res.text());

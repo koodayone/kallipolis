@@ -117,6 +117,28 @@ def _build_occupation_selection_context(gathered: GatheredContext) -> str:
     return "\n".join(line for line in lines if line is not None)
 
 
+def _select_core_skills_for(college: str, occupation_title: str, k: int = 3) -> list[str]:
+    """Deterministic core-skills selection for an occupation already chosen by the coordinator.
+
+    Used when a SOC code arrives from the picker, so the LLM occupation-selection
+    step is skipped. Returns up to k skills the occupation requires, ranked by
+    (course_count DESC, skill_name) — preferring skills the college develops
+    most thoroughly. Falls back to the highest-required skills if the college
+    develops fewer than k of them, so the resulting list always has up to k entries.
+    """
+    driver = get_driver()
+    with driver.session() as session:
+        result = session.run("""
+            MATCH (occ:Occupation {title: $title})-[:REQUIRES_SKILL]->(sk:Skill)
+            OPTIONAL MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk)
+            RETURN sk.name AS skill, count(DISTINCT c) AS course_count
+            ORDER BY course_count DESC, skill ASC
+        """, title=occupation_title, college=college).data()
+    if not result:
+        return []
+    return [r["skill"] for r in result[:k]]
+
+
 def _select_occupation(gathered: GatheredContext) -> dict:
     """Select the primary occupation for this employer. Returns {title, soc_code, core_skills}."""
     context = _build_occupation_selection_context(gathered)
