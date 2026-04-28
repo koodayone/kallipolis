@@ -100,15 +100,23 @@ RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
 ORDER BY matching_skills DESC
 
 Question: "Employers hiring for high-demand occupations"
-MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college}),
-       (r)-[d:DEMANDS]->(occ)
+// "High-demand" is defined institutionally as the top 50 occupations by
+// annual openings in the college's COE region. First select that subset,
+// then filter the standard employer base traversal to employers hiring
+// for any occupation in it. This produces a strict subset of skill-aligned
+// employers — the ones whose hire-for set intersects regional demand.
+MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)
+WITH col, r, occ, d.annual_openings AS demand
+ORDER BY demand DESC LIMIT 50
+WITH col, r, collect(occ) AS top_occupations
+MATCH (col)-[:IN_MARKET]->(r)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})
+WHERE occ IN top_occupations
 RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
        emp.website AS website,
        collect(DISTINCT occ.title) AS occupations,
        count(DISTINCT sk) AS matching_skills,
-       collect(DISTINCT sk.name) AS skills,
-       max(d.annual_openings) AS top_demand
-ORDER BY top_demand DESC
+       collect(DISTINCT sk.name) AS skills
+ORDER BY matching_skills DESC
 
 Respond with a JSON object containing two fields:
 1. "cypher": the Cypher query as a string

@@ -122,8 +122,14 @@ QUERY_SPECS: dict[str, tuple[str, list[tuple[str, str]]]] = {
     "Employers hiring for high-demand occupations": (
         EMPLOYER_QUERY_PROMPT,
         _patterns(EMPLOYER_BASE, [
-            ("references annual_openings as demand signal",
-             r"annual_openings"),
+            # The query must define "high-demand" via a top-N subset
+            # (ORDER BY annual_openings DESC + LIMIT), not merely sort
+            # the full employer set by demand. Without LIMIT the result
+            # collapses to skill-alignment with a different sort order,
+            # which produces semantically identical sets.
+            ("filters via top-N high-demand occupations",
+             r"order\s+by\s+(d\.)?annual_openings\s+desc\s+limit\s+\d+|"
+             r"order\s+by\s+demand\s+desc\s+limit\s+\d+"),
         ]),
     ),
     "Employers in regional priority sectors": (
