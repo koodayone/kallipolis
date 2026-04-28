@@ -13,9 +13,18 @@ Coverage:
     teacher titles
   - "All other" titles get a specialized-duties description
   - Unknown titles still return a non-empty description
+  - Compound BLS titles (comma-separated role-noun lists) do not produce
+    stranded commas — _clean_field normalizes the residue, and prominent
+    compound SOCs ship hand-crafted overrides
 """
 
-from occupations.descriptions import SPECIFIC_DESCRIPTIONS, generate_description
+import re
+
+from occupations.descriptions import (
+    SPECIFIC_DESCRIPTIONS,
+    _clean_field,
+    generate_description,
+)
 
 
 class TestSpecificDescriptions:
@@ -62,3 +71,64 @@ class TestFallbackNeverReturnsEmpty:
         assert isinstance(desc, str)
         assert len(desc) > 0
         assert desc.endswith(".")
+
+
+class TestCleanField:
+    """Pin the comma-residue normalization helper that backstops the
+    pattern-based generator on compound BLS titles."""
+
+    def test_collapses_consecutive_commas_left_after_role_noun_strip(self):
+        # The shape produced by stripping each role-noun out of
+        # "Inspectors, Testers, Sorters, Samplers, and Weighers".
+        assert _clean_field(", , , samplers, and weighers") == "samplers, and weighers"
+
+    def test_collapses_double_commas_with_intervening_whitespace(self):
+        assert _clean_field("foo,  ,  ,  bar") == "foo, bar"
+
+    def test_strips_leading_orphan_commas_and_whitespace(self):
+        assert _clean_field("  ,  bar") == "bar"
+
+    def test_strips_trailing_orphan_commas(self):
+        assert _clean_field("bar, , ,") == "bar"
+
+    def test_returns_empty_when_input_is_only_commas_and_spaces(self):
+        assert _clean_field("  ,  ,  ") == ""
+
+    def test_preserves_well_formed_input(self):
+        assert _clean_field("metal and plastic") == "metal and plastic"
+
+
+class TestCompoundTitleResilience:
+    """Regression coverage for the stranded-comma bug in pattern-based
+    generation. The bug shipped 16 malformed descriptions to occupations.json
+    before P5; these tests ensure neither the helper nor the prominent
+    overrides regress."""
+
+    _STRANDED_COMMA = re.compile(r",\s*,|\bin\s*,|\bin\s+and\b")
+
+    def test_inspectors_testers_sorters_samplers_and_weighers_is_clean(self):
+        desc = generate_description("51-9061", "Inspectors, Testers, Sorters, Samplers, and Weighers")
+        assert not self._STRANDED_COMMA.search(desc), (
+            f"Compound title for SOC 51-9061 produced stranded commas: {desc!r}"
+        )
+        # Hand-crafted override should describe what the role actually does.
+        assert "inspect" in desc.lower() or "quality" in desc.lower()
+
+    def test_machine_operators_compound_title_does_not_strand_commas(self):
+        # Title with the "Setters, Operators, and Tenders" pattern used to
+        # produce ", , and tenders, metal and plastic" residue.
+        desc = generate_description(
+            "99-9998",
+            "Cutting, Punching, and Press Machine Setters, Operators, and Tenders, Metal and Plastic",
+        )
+        assert not self._STRANDED_COMMA.search(desc), (
+            f"Compound machine-operator title produced stranded commas: {desc!r}"
+        )
+
+    def test_compound_title_overrides_present_for_known_offenders(self):
+        # The four SOCs that ship hand-crafted compound-title overrides.
+        for soc in ("51-9061", "51-4122", "51-9012", "51-9124"):
+            assert soc in SPECIFIC_DESCRIPTIONS, (
+                f"SOC {soc} should ship a hand-crafted override; without it, "
+                f"the pattern generator produces stranded commas."
+            )

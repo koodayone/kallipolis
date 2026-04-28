@@ -3,7 +3,20 @@ Generate meaningful occupation descriptions based on SOC codes and titles.
 
 Each description is 1-2 sentences explaining what the occupation does,
 written for a workforce development audience.
+
+Compound-title quirk: BLS standard titles for some SOCs are
+comma-separated lists of role-nouns ("Inspectors, Testers, Sorters,
+Samplers, and Weighers"; "Cutting, Punching, and Press Machine
+Setters, Operators, and Tenders, Metal and Plastic"). The
+pattern-based generator below extracts a "field" from the title by
+stripping role-nouns; on compound titles the strip leaves orphan
+commas. _clean_field() normalizes that residue into readable prose;
+SPECIFIC_DESCRIPTIONS overrides cover the most prominent compound
+SOCs with hand-crafted strings so the result is faithful, not just
+syntactically clean.
 """
+
+import re
 
 # Hand-written descriptions for common/important occupations.
 # Anything not listed falls through to SOC-group-based generation.
@@ -326,7 +339,45 @@ SPECIFIC_DESCRIPTIONS = {
     "43-6013": "Provides administrative support to medical staff, scheduling appointments, managing records, and processing insurance.",
     "43-6014": "Performs administrative tasks including answering phones, filing records, managing correspondence, and scheduling meetings.",
     "43-9061": "Verifies and maintains records and files, reviewing data for accuracy and completeness.",
+    # Compound-title overrides — BLS standard titles for these SOCs are
+    # comma-separated role-noun lists, which the pattern-based generator
+    # below cannot meaningfully decompose into "field". Hand-written
+    # entries below produce faithful copy without leaning on _clean_field
+    # to paper over awkwardness.
+    "51-9061": "Inspects, tests, sorts, samples, and weighs products and materials in manufacturing settings to verify they meet quality standards and customer specifications.",
+    "51-4122": "Operates welding, soldering, and brazing machines to join metal components in manufacturing operations.",
+    "51-9012": "Operates equipment that separates, filters, clarifies, and precipitates materials in chemical and industrial processes.",
+    "51-9124": "Operates coating, painting, and spraying machines that apply finishes to manufactured products.",
 }
+
+
+def _clean_field(field: str) -> str:
+    """Normalize the residue left after stripping role-nouns from a title.
+
+    The pattern-based generator below extracts a "field" by removing
+    role-noun substrings via repeated `.replace()` calls. On compound
+    titles ("Inspectors, Testers, Sorters, Samplers, and Weighers";
+    "Cutting, Punching, and Press Machine Setters, Operators, and
+    Tenders, Metal and Plastic") that strip leaves orphan commas,
+    double commas, and dangling "and"s. This helper collapses those
+    artifacts into readable prose without inventing any new content.
+
+    Examples:
+      ", , , samplers, and weighers"        -> "samplers and weighers"
+      "..., , and tenders, metal and plastic" -> "and tenders, metal and plastic"
+      "  ,  ,  "                            -> ""
+    """
+    # Collapse multiple commas (with optional whitespace) into one.
+    field = re.sub(r"(?:\s*,\s*){2,}", ", ", field)
+    # Strip leading commas + whitespace.
+    field = re.sub(r"^[,\s]+", "", field)
+    # Strip trailing commas + whitespace.
+    field = re.sub(r"[,\s]+$", "", field)
+    # Smooth ", and" when "," was preceded by an empty token.
+    field = re.sub(r"^,\s*and\s+", "", field)
+    # Collapse runs of whitespace.
+    field = re.sub(r"\s+", " ", field).strip()
+    return field
 
 
 def generate_description(soc_code: str, title: str) -> str:
@@ -345,7 +396,7 @@ def generate_description(soc_code: str, title: str) -> str:
 
     # Pattern-based generation for unmatched occupations
     if "managers" in t or "manager" in t:
-        field = t.replace("managers", "").replace("manager", "").strip().rstrip(",").strip()
+        field = _clean_field(t.replace("managers", "").replace("manager", "").strip())
         return f"Plans, directs, and coordinates operations in {field}, managing staff, budgets, and organizational goals."
 
     if "first-line supervisors" in t or "first-line supervisor" in t:
@@ -353,67 +404,67 @@ def generate_description(soc_code: str, title: str) -> str:
         return f"Directly supervises and coordinates the daily activities of {field}."
 
     if "technologists" in t or "technologist" in t:
-        field = t.replace("technologists", "").replace("technologist", "").strip().rstrip(",").strip()
+        field = _clean_field(t.replace("technologists", "").replace("technologist", "").strip())
         return f"Applies technical expertise to perform diagnostic, analytical, or production tasks in {field}."
 
     if "technicians" in t or "technician" in t:
-        field = t.replace("technicians", "").replace("technician", "").strip().rstrip(",").strip()
+        field = _clean_field(t.replace("technicians", "").replace("technician", "").strip())
         return f"Performs technical tasks including equipment operation, testing, and maintenance in {field}."
 
     if "engineers" in t or "engineer" in t:
-        field = t.replace("engineers", "").replace("engineer", "").strip().rstrip(",").strip()
+        field = _clean_field(t.replace("engineers", "").replace("engineer", "").strip())
         return f"Applies engineering principles to design, develop, and evaluate systems and processes in {field}."
 
     if "teachers" in t and "postsecondary" in t:
-        field = t.replace("teachers, postsecondary", "").strip().rstrip(",").strip()
+        field = _clean_field(t.replace("teachers, postsecondary", "").strip())
         return f"Teaches {field} courses at the college or university level, developing curriculum and assessing student learning."
 
     if "teachers" in t or "teacher" in t or "instructor" in t:
-        field = t.replace("teachers", "").replace("teacher", "").replace("instructors", "").replace("instructor", "").strip().rstrip(",").strip()
+        field = _clean_field(t.replace("teachers", "").replace("teacher", "").replace("instructors", "").replace("instructor", "").strip())
         return f"Teaches and instructs students in {field}, developing lesson plans and assessing progress."
 
     if "clerks" in t or "clerk" in t:
-        field = t.replace("clerks", "").replace("clerk", "").strip().rstrip(",").strip()
+        field = _clean_field(t.replace("clerks", "").replace("clerk", "").strip())
         return f"Performs clerical and administrative tasks related to {field}, organizing records and processing information."
 
     if "analysts" in t or "analyst" in t:
-        field = t.replace("analysts", "").replace("analyst", "").strip().rstrip(",").strip()
+        field = _clean_field(t.replace("analysts", "").replace("analyst", "").strip())
         return f"Analyzes data and information to support decision-making in {field}."
 
     if "specialists" in t or "specialist" in t:
-        field = t.replace("specialists", "").replace("specialist", "").strip().rstrip(",").strip()
+        field = _clean_field(t.replace("specialists", "").replace("specialist", "").strip())
         return f"Provides specialized knowledge and support in {field}."
 
     if "aides" in t or "aide" in t:
-        field = t.replace("aides", "").replace("aide", "").strip().rstrip(",").strip()
+        field = _clean_field(t.replace("aides", "").replace("aide", "").strip())
         return f"Provides support and assistance in {field}, performing routine tasks under supervision."
 
     if "helpers" in t:
-        field = t.replace("helpers--", "").replace("helpers-", "").replace("helpers", "").strip()
+        field = _clean_field(t.replace("helpers--", "").replace("helpers-", "").replace("helpers", "").strip())
         return f"Assists skilled workers in {field} by performing support tasks and handling materials."
 
     if "assemblers" in t or "fabricators" in t:
-        field = t.replace("assemblers and fabricators", "").replace("assemblers", "").replace("fabricators", "").strip().rstrip(",").strip()
+        field = _clean_field(t.replace("assemblers and fabricators", "").replace("assemblers", "").replace("fabricators", "").strip())
         return f"Assembles and fabricates components and finished products in {field} manufacturing."
 
     if "operators" in t or "operator" in t:
-        field = t.replace("operators", "").replace("operator", "").strip().rstrip(",").strip()
+        field = _clean_field(t.replace("operators", "").replace("operator", "").strip())
         return f"Operates and monitors equipment and machinery used in {field}."
 
     if "inspectors" in t or "inspector" in t or "testers" in t or "sorters" in t:
-        field = t.replace("inspectors", "").replace("inspector", "").replace("testers", "").replace("sorters", "").strip().rstrip(",").strip()
+        field = _clean_field(t.replace("inspectors", "").replace("inspector", "").replace("testers", "").replace("sorters", "").strip())
         return f"Inspects and tests products, materials, or processes to ensure quality standards in {field}."
 
     if "installers" in t or "repairers" in t or "repairer" in t:
-        field = t.replace("installers and repairers", "").replace("installers", "").replace("repairers", "").replace("repairer", "").strip().rstrip(",").strip()
+        field = _clean_field(t.replace("installers and repairers", "").replace("installers", "").replace("repairers", "").replace("repairer", "").strip())
         return f"Installs, maintains, and repairs equipment and systems in {field}."
 
     if "workers" in t or "worker" in t:
-        field = t.replace("workers", "").replace("worker", "").strip().rstrip(",").strip()
+        field = _clean_field(t.replace("workers", "").replace("worker", "").strip())
         return f"Performs tasks and duties in {field}."
 
     if "assistants" in t or "assistant" in t:
-        field = t.replace("assistants", "").replace("assistant", "").strip().rstrip(",").strip()
+        field = _clean_field(t.replace("assistants", "").replace("assistant", "").strip())
         return f"Supports professionals in {field} by performing administrative and technical tasks."
 
     # Default

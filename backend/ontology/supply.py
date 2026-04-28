@@ -57,6 +57,7 @@ _NEO4J_TO_SUPPLY: dict[str, str] = {
     "Coastline College": "Coastline",
     "Cypress College": "Cypress",
     "Golden West College": "Golden West",
+    "Irvine Valley College": "Irvine",
     "Orange Coast College": "Orange Coast",
     # Sacramento
     "American River College": "American River",
