@@ -40,6 +40,10 @@ export type ApiOccupationEvidence = {
   employment: number | null;
   annual_openings: number | null;
   growth_rate: number | null;
+  // CIP codes the BLS/NCES CIP-SOC crosswalk maps to this SOC. Surfaces
+  // the second link in the empirical chain (SOC ↔ CIP) so the atlas
+  // rendering can attribute the institutional pathway visibly.
+  cip_codes?: string[];
 };
 
 export type ApiCourseEvidence = {
@@ -48,12 +52,22 @@ export type ApiCourseEvidence = {
   description: string;
   learning_outcomes: string[];
   skills: string[];
+  // The TOP6 code this course is institutionally tagged with in the
+  // Master Course File. Used by the atlas to render per-course
+  // institutional attribution alongside the course code.
+  top_code?: string | null;
 };
 
 export type ApiDepartmentEvidence = {
   department: string;
   courses: ApiCourseEvidence[];
   aligned_skills: string[];
+  // The TOP6 codes this department's PREPARES_FOR-aligned courses
+  // route through (typically one TOP6 per department; some span
+  // several). Drives the per-department source attribution caption.
+  via_top?: string[];
+  // The CIPs that mediate the chain Course → TOP6 → CIP → SOC.
+  via_cip?: string[];
 };
 
 export type ApiStudentEnrollmentEvidence = {
@@ -92,6 +106,15 @@ export type ApiDepartmentEnrollment = {
   student_count: number;
 };
 
+export type ApiInstitutionalSources = {
+  coe_region: string;
+  coe_region_display: string;
+  coe_demand_publication: string;
+  coe_supply_publication: string;
+  top_cip_crosswalk_source: string;
+  cip_soc_crosswalk_source: string;
+};
+
 export type ApiSwpEvidence = {
   occupations: ApiOccupationEvidence[];
   supply_estimates: ApiSupplyEstimate[];
@@ -100,6 +123,10 @@ export type ApiSwpEvidence = {
   total_supply: number;
   gap: number;
   coe_region: string;
+  // Institutional attribution: named external publications and
+  // crosswalks that author every categorical claim in the artifact.
+  // Drives the source caption in the atlas SWP Evidence section.
+  sources?: ApiInstitutionalSources;
 };
 
 export type ApiTargetedProposal = {

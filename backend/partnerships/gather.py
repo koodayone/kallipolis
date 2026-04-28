@@ -121,58 +121,90 @@ def _gather_aligned_curriculum(
     """
     driver = get_driver()
     with driver.session() as session:
+        # The PREPARES_FOR edge carries `via_top` as an audit-trail
+        # property — the TOP6 the institutional crosswalk used to
+        # mediate this Course→Occupation alignment. Returning it on
+        # each row lets the curriculum_evidence carry the source
+        # attribution forward to the narrative prompt and atlas
+        # rendering, where the institutional pathway can be made
+        # visible (TOP6 → CIP → SOC) per principle 2.
         result = session.run("""
             MATCH (col:College {name: $college})-[:OFFERS]->(dept:Department)
                   -[:CONTAINS]->(c:Course {college: $college})
-                  -[:PREPARES_FOR]->(:Occupation {soc_code: $soc_code})
+                  -[r:PREPARES_FOR]->(:Occupation {soc_code: $soc_code})
             OPTIONAL MATCH (c)-[:DEVELOPS]->(sk:Skill)
             WHERE sk.name IN $core_skills
-            WITH dept, c, collect(DISTINCT sk.name) AS aligned_skills
+            WITH dept, c, r.via_top AS via_top, collect(DISTINCT sk.name) AS aligned_skills
             RETURN dept.name AS department, c.code AS code, c.name AS name,
                    c.description AS description,
                    c.learning_outcomes AS learning_outcomes,
                    c.course_objectives AS course_objectives,
                    c.skill_mappings AS skill_mappings,
+                   c.top_code AS top_code,
+                   via_top,
                    aligned_skills
             ORDER BY dept.name, c.code
         """, college=college, soc_code=soc_code, core_skills=core_skills).data()
 
-    # Group by department
-    dept_agg: dict[str, dict] = defaultdict(lambda: {"courses": [], "skills": set()})
+    # Compose CIP codes for each TOP6 surfaced in the result set.
+    # Imports here to avoid hoisting external-data load to module
+    # import time; crosswalks are cached after first call.
+    from ontology.crosswalks import _load_top_to_cip
+    top_cip_map = _load_top_to_cip()
+
+    # Group by department, accumulating via_top + via_cip + courses.
+    dept_agg: dict[str, dict] = defaultdict(
+        lambda: {"courses": [], "skills": set(), "via_top": set(), "via_cip": set()}
+    )
     for r in result:
         dept = r["department"]
+        course_top = r.get("top_code")
+        course_via_top = r.get("via_top")
+        course_cips = list(top_cip_map.get(course_via_top, set())) if course_via_top else []
         dept_agg[dept]["courses"].append({
             "code": r["code"],
             "name": r["name"],
             "description": r["description"] or "",
             "learning_outcomes": r["learning_outcomes"] or [],
             "skills": r["aligned_skills"],
+            "top_code": course_top,
         })
         dept_agg[dept]["skills"].update(r["aligned_skills"])
+        if course_via_top:
+            dept_agg[dept]["via_top"].add(course_via_top)
+        dept_agg[dept]["via_cip"].update(course_cips)
 
-    # Build text block for narrative prompt. Skills coverage is now
-    # decoration on top of the TOP-aligned set, not the gating signal,
-    # so the "Missing" line communicates which core skills none of
-    # this department's PREPARES_FOR courses develop — useful context
-    # for the narrative's curriculum-alignment section.
+    # Build text block for narrative prompt. Skills coverage is
+    # characterization on top of the TOP-aligned set — not the gating
+    # signal — so the "Missing" line communicates which core skills
+    # none of this department's PREPARES_FOR courses develop. The
+    # institutional pathway is named explicitly per principle 2:
+    # each department's TOP6 set is rendered alongside the dept name
+    # so the LLM has the structure to attribute correctly.
     core_set = set(core_skills)
-    lines = ["DEPARTMENT-LEVEL CURRICULUM ALIGNMENT (gated by TOP-SOC crosswalk):"]
+    lines = ["DEPARTMENT-LEVEL CURRICULUM ALIGNMENT (gated by TOP-SOC institutional crosswalk):"]
     for dept, data in sorted(dept_agg.items(), key=lambda x: len(x[1]["courses"]), reverse=True):
         skills_str = ", ".join(sorted(data["skills"])) if data["skills"] else "(none of the core skills)"
         missing = core_set - data["skills"]
         missing_str = f". Missing: {', '.join(sorted(missing))}" if missing else ""
-        lines.append(f"  {dept}: develops {skills_str} (across {len(data['courses'])} courses){missing_str}")
+        via_tops = sorted(data["via_top"])
+        via_top_str = f" [TOP {', '.join(via_tops)}]" if via_tops else ""
+        lines.append(
+            f"  {dept}{via_top_str}: develops {skills_str} (across {len(data['courses'])} courses){missing_str}"
+        )
     dept_text = "\n".join(lines) if dept_agg else ""
 
-    # Sort by course count (largest department first) — with skills as
-    # ranker, "more aligned skills" is no longer a meaningful sort key
-    # since the gate already passed. Course count is a faithful proxy
-    # for the depth of curricular coverage on the SOC's pathway.
+    # Sort by course count (largest department first). Skills no longer
+    # rank — the gate already passed institutionally. Course count is a
+    # faithful proxy for depth of curricular coverage on the SOC's
+    # pathway.
     curriculum_evidence = [
         {
             "department": dept,
             "courses": data["courses"],
             "aligned_skills": sorted(data["skills"]),
+            "via_top": sorted(data["via_top"]),
+            "via_cip": sorted(data["via_cip"]),
         }
         for dept, data in sorted(dept_agg.items(), key=lambda x: len(x[1]["courses"]), reverse=True)
     ]

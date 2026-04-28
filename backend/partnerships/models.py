@@ -61,6 +61,10 @@ class OccupationEvidence(BaseModel):
     employment: Optional[int] = None
     annual_openings: Optional[int] = None
     growth_rate: Optional[float] = None
+    # CIP codes the BLS/NCES CIP-SOC crosswalk maps to this SOC. Surfaces
+    # the second link in the empirical chain (SOC ↔ CIP) so the artifact
+    # can attribute the institutional pathway to its external source.
+    cip_codes: list[str] = []
 
 
 class CourseEvidence(BaseModel):
@@ -69,12 +73,25 @@ class CourseEvidence(BaseModel):
     description: str = ""
     learning_outcomes: list[str] = []
     skills: list[str] = []
+    # The TOP6 code this course is institutionally tagged with in the
+    # Master Course File. Surfacing it on each course evidence row makes
+    # the empirical chain visible at the finest grain (Course →
+    # PREPARES_FOR(via_top) → Occupation).
+    top_code: Optional[str] = None
 
 
 class DepartmentEvidence(BaseModel):
     department: str
     courses: list[CourseEvidence]
     aligned_skills: list[str]
+    # The set of TOP6 codes this department's PREPARES_FOR-aligned
+    # courses route through. Most departments concentrate around a
+    # single TOP6 (the apprenticeship pattern at Foothill, e.g.,
+    # Apprenticeship: Aerospace = TOP 095680); some span several.
+    via_top: list[str] = []
+    # The CIP codes that mediate the chain Course → TOP6 → CIP → SOC.
+    # Composed by gather.py from `top6_to_cip` over the via_top set.
+    via_cip: list[str] = []
 
 
 class StudentEnrollmentEvidence(BaseModel):
@@ -115,6 +132,34 @@ class DepartmentEnrollment(BaseModel):
     student_count: int
 
 
+class InstitutionalSources(BaseModel):
+    """Named publications and crosswalks that author the categorical
+    claims in the partnership artifact.
+
+    The artifact's authority is borrowed entirely from these external,
+    institutionally-authored sources. Surfacing them as a structured
+    block lets the atlas rendering attribute claims visibly without
+    forcing every prose sentence to carry source codes inline. Per the
+    institutional-deference principle: the user (a community college
+    WFD officer) should be able to verify any categorical claim against
+    one of these sources without trusting Kallipolis itself."""
+
+    coe_region: str = ""
+    coe_region_display: str = ""
+    coe_demand_publication: str = (
+        "California Centers of Excellence — Regional Occupational Demand"
+    )
+    coe_supply_publication: str = (
+        "California Centers of Excellence — Annual Program Supply by TOP6"
+    )
+    top_cip_crosswalk_source: str = (
+        "California Community Colleges Chancellor's Office TOP-CIP Crosswalk"
+    )
+    cip_soc_crosswalk_source: str = (
+        "BLS / NCES CIP-SOC Crosswalk"
+    )
+
+
 class SwpEvidence(BaseModel):
     """Tabular regional supply-demand evidence appended to the partnership artifact.
 
@@ -133,6 +178,11 @@ class SwpEvidence(BaseModel):
     total_supply: float = 0.0   # annual projected supply (flow)
     gap: float = 0.0            # demand - supply
     coe_region: str = ""        # the COE region this supply is scoped to
+    # Institutional sources block — externally-authored attribution for
+    # every categorical claim in the artifact. Defaults populate the
+    # publication names; the gather/assembly stage fills coe_region and
+    # its display form.
+    sources: InstitutionalSources = InstitutionalSources()
 
 
 class NarrativeProposal(BaseModel):

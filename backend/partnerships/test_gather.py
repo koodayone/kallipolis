@@ -105,7 +105,9 @@ class TestGatherAlignedCurriculum:
 
     def test_groups_courses_by_department_with_aligned_skills(self):
         """The result groups courses under their department and decorates
-        each with which of the core_skills it develops."""
+        each with which of the core_skills it develops. Each row also
+        carries the via_top audit-trail property from the PREPARES_FOR
+        edge so the artifact can attribute the institutional pathway."""
         from partnerships import gather
 
         rows = [
@@ -117,6 +119,8 @@ class TestGatherAlignedCurriculum:
                 "learning_outcomes": ["Apply QC standards"],
                 "course_objectives": [],
                 "skill_mappings": [],
+                "top_code": "095680",
+                "via_top": "095680",
                 "aligned_skills": ["Quality Control", "Inspection"],
             },
             {
@@ -127,6 +131,8 @@ class TestGatherAlignedCurriculum:
                 "learning_outcomes": [],
                 "course_objectives": [],
                 "skill_mappings": [],
+                "top_code": "095680",
+                "via_top": "095680",
                 "aligned_skills": ["Inspection"],
             },
         ]
@@ -141,10 +147,21 @@ class TestGatherAlignedCurriculum:
         assert dept["department"] == "Apprenticeship: Aerospace"
         assert len(dept["courses"]) == 2
         assert set(dept["aligned_skills"]) == {"Quality Control", "Inspection"}
-        # Missing-skill commentary still surfaces in dept_text — useful
-        # signal for the curriculum-alignment narrative section.
+        # Institutional source carry-through: via_top is composed from
+        # the PREPARES_FOR edge; via_cip is composed from the in-memory
+        # crosswalk over via_top.
+        assert dept["via_top"] == ["095680"]
+        # via_cip is computed against the live crosswalk, so we just
+        # assert it is populated rather than pinning specific CIPs.
+        assert isinstance(dept["via_cip"], list)
+        # Each course carries its own top_code for fine-grained attribution.
+        assert dept["courses"][0]["top_code"] == "095680"
+        # Missing-skill commentary still surfaces in dept_text.
         assert "Missing: Documentation" in dept_text
-        assert "TOP-SOC crosswalk" in dept_text
+        # Source attribution is named in the dept_text rendering so the
+        # narrative LLM has the structure to attribute correctly.
+        assert "TOP-SOC institutional crosswalk" in dept_text
+        assert "TOP 095680" in dept_text
 
     def test_sorts_departments_by_course_count(self):
         """With skills-overlap no longer the gate, ranking by skill count
@@ -155,16 +172,16 @@ class TestGatherAlignedCurriculum:
         rows = [
             {"department": "Math", "code": "MATH1", "name": "x", "description": "",
              "learning_outcomes": [], "course_objectives": [], "skill_mappings": [],
-             "aligned_skills": []},
+             "top_code": None, "via_top": None, "aligned_skills": []},
             {"department": "Aerospace", "code": "AERO1", "name": "x", "description": "",
              "learning_outcomes": [], "course_objectives": [], "skill_mappings": [],
-             "aligned_skills": []},
+             "top_code": None, "via_top": None, "aligned_skills": []},
             {"department": "Aerospace", "code": "AERO2", "name": "x", "description": "",
              "learning_outcomes": [], "course_objectives": [], "skill_mappings": [],
-             "aligned_skills": []},
+             "top_code": None, "via_top": None, "aligned_skills": []},
             {"department": "Aerospace", "code": "AERO3", "name": "x", "description": "",
              "learning_outcomes": [], "course_objectives": [], "skill_mappings": [],
-             "aligned_skills": []},
+             "top_code": None, "via_top": None, "aligned_skills": []},
         ]
         driver, _ = _mock_driver([{"data": rows}])
         with patch.object(gather, "get_driver", return_value=driver):

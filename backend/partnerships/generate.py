@@ -28,6 +28,7 @@ from partnerships.gather import (
 )
 from partnerships.models import (
     DepartmentEnrollment,
+    InstitutionalSources,
     NarrativeProposal,
     OccupationEvidence,
     SupplyEstimate,
@@ -81,17 +82,24 @@ def _assemble_swp_evidence(
         selected_occ: dict with at least "soc_code"; used to locate the
             corresponding row in gathered.occupation_evidence.
     """
+    from ontology.crosswalks import _load_cip_to_soc, _load_top_to_cip
     from ontology.mcf_lookup import lookup_top6
-    from ontology.regions import COLLEGE_COE_REGION
+    from ontology.regions import COE_REGION_DISPLAY, COLLEGE_COE_REGION
     from ontology.supply import get_coe_supply
 
     coe_region = COLLEGE_COE_REGION.get(college, "")
+
+    # Reverse-walk the CIP-SOC crosswalk so the artifact can attribute
+    # the chain SOC ↔ CIP for the selected occupation. This surfaces
+    # the second link in the empirical chain on every artifact.
+    selected_soc = selected_occ.get("soc_code")
+    cip_soc = _load_cip_to_soc()
+    cips_for_soc = sorted([cip for cip, socs in cip_soc.items() if selected_soc in socs])
 
     # Demand: scoped to the selected occupation. The full list of
     # employer-hires occupations remains in gathered.occupation_evidence
     # for any caller that wants the broader view (e.g., the picker), but
     # the artifact's evidence table is single-row by design.
-    selected_soc = selected_occ.get("soc_code")
     selected_row = next(
         (o for o in gathered.occupation_evidence if o.get("soc_code") == selected_soc),
         None,
@@ -105,6 +113,7 @@ def _assemble_swp_evidence(
                 employment=selected_row.get("employment"),
                 annual_openings=selected_row.get("annual_openings"),
                 growth_rate=selected_row.get("growth_rate"),
+                cip_codes=cips_for_soc,
             )
         ]
     else:
@@ -153,6 +162,17 @@ def _assemble_swp_evidence(
                 for r in result
             ]
 
+    # Institutional sources block — externally-authored attribution for
+    # every categorical claim in the artifact. The publication-name
+    # defaults live on the InstitutionalSources model; we override the
+    # COE region fields here from the regions metadata so the atlas can
+    # display "Bay Area" rather than "Bay" when rendering the source
+    # caption.
+    sources = InstitutionalSources(
+        coe_region=coe_region,
+        coe_region_display=COE_REGION_DISPLAY.get(coe_region, coe_region),
+    )
+
     return SwpEvidence(
         occupations=occupations,
         supply_estimates=supply_estimates,
@@ -161,6 +181,7 @@ def _assemble_swp_evidence(
         total_supply=total_supply,
         gap=gap,
         coe_region=coe_region,
+        sources=sources,
     )
 
 

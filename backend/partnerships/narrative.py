@@ -294,10 +294,32 @@ def _assemble_proposal(
     core_skills: list[str] | None = None,
 ) -> NarrativeProposal:
     """Merge LLM-generated narrative with deterministic evidence blocks."""
+    # Enrich each occupation row from gathered context with the CIP
+    # codes the BLS/NCES CIP-SOC crosswalk maps to its SOC. The SwpEvidence
+    # already carries this on its single selected-SOC row; opportunity_evidence
+    # mirrors the same enrichment so any caller reading directly from
+    # the proposal's opportunity_evidence sees the institutional chain
+    # without needing to cross-reference swp_evidence.
+    from ontology.crosswalks import _load_cip_to_soc
+    cip_soc = _load_cip_to_soc()
+
+    def _build_occ_evidence(occ_dict: dict) -> OccupationEvidence:
+        soc = occ_dict.get("soc_code")
+        cips = sorted([cip for cip, socs in cip_soc.items() if soc in socs]) if soc else []
+        return OccupationEvidence(
+            title=occ_dict.get("title", ""),
+            soc_code=soc,
+            annual_wage=occ_dict.get("annual_wage"),
+            employment=occ_dict.get("employment"),
+            annual_openings=occ_dict.get("annual_openings"),
+            growth_rate=occ_dict.get("growth_rate"),
+            cip_codes=cips,
+        )
+
     occ_evidence = [
-        OccupationEvidence(**o) for o in gathered.occupation_evidence
+        _build_occ_evidence(o) for o in gathered.occupation_evidence
         if o.get("title") == selected_occ.get("title")
-    ] or [OccupationEvidence(**o) for o in gathered.occupation_evidence[:1]]
+    ] or [_build_occ_evidence(o) for o in gathered.occupation_evidence[:1]]
 
     return NarrativeProposal(
         employer=employer,
