@@ -287,6 +287,8 @@ NARRATIVE_PROMPT = """You are a workforce partnership analyst writing for Kallip
 
 Kallipolis voice: short sentences. Direct. No filler. No em dashes. State the fact, move on. Every sentence carries a concrete claim or a specific insight. If a sentence could be cut without losing information, cut it. The reader is a busy program coordinator who will skim past anything that feels like LLM output.
 
+ARCHITECTURAL PREMISE: institutional deference. Every categorical claim in your prose must trace to one of the externally-authored institutional sources named in the INSTITUTIONAL CHAIN block at the top of the context: the California Chancellor's Office TOP-CIP crosswalk, the BLS/NCES CIP-SOC crosswalk, or the California Centers of Excellence regional demand and supply data. The chain is the case. Your job is to walk it, not interpret beyond it. Do not invent connections the chain does not build.
+
 Below is curated institutional context for a specific employer.
 
 {context}
@@ -301,36 +303,48 @@ Section claims:
   STRUCTURE — four threads woven through the paragraph in this order:
     1. EMPLOYER IDENTITY: Characterize the employer through what they do — their operations, scale, or scope — not through their hiring count. One sentence, declarative.
     2. REGIONAL DEMAND CONTEXT: Set up the labor-market context for the selected occupation. Use directional language ("accelerating demand," "rising need," "growing requirement") anchored in the COE region by name. No specific wage or openings figures here — those belong in OCCUPATIONAL DEMAND.
-    3. CURRICULUM CAPABILITY: Name the most aligned department and two-to-four core competencies it develops for this occupation. The competencies should come from the core skills list. Treat them as comma-separated competencies in the flow of the sentence.
+    3. CURRICULUM CAPABILITY: Name the most aligned department and two-to-four core competencies it develops for this occupation. Reference the institutional pathway by code at least once — name the TOP6 (e.g., "the Apprenticeship: Aerospace department, organized under TOP 095680") OR the SOC↔CIP crosswalk source (e.g., "the BLS/NCES crosswalk routes this occupation to..."). The competencies that follow are course-level competencies developed within that institutionally-aligned program — they are characterization of what the program teaches, not the basis of the alignment claim.
     4. WORKFORCE GAP: Close with the gap figure from the REGIONAL SUPPLY-DEMAND block as the integrative claim. Phrase it neutrally ("Labor market analysis indicates an unmet workforce gap of N on an annual basis"). The gap is the only figure permitted in this section — it earns its place because it synthesizes demand and supply into one number.
-  TONE: Light evaluative framing is acceptable here ("represents a strong partnership candidate," "positions the college to address"), since this section's job is to make the case. The other three sections do the granular substantiation. Keep evaluative language measured — never superlative.
+  CROSS-INDUSTRY HONESTY (principle 4): If the employer's SWP sector and the aligned department's apparent industry context differ (e.g., an aerospace-rooted apprenticeship for a medical device employer), name the partial nature accurately. Phrasing options: "this is an industry-portable credential applied here in a [employer industry] context," "the methods developed in this aerospace-rooted program transfer across manufacturing industries," "this is a transferable foundation rather than a turnkey match." Do NOT use "directly maps," "perfectly aligned," "seamless fit," "1:1 alignment" when the industry contexts differ.
+  TONE: Light evaluative framing is acceptable here ("represents a strong partnership candidate," "positions the college to address"), since this section's job is to make the case. Keep evaluative language measured — never superlative.
   FORBIDDEN:
     - Specific wage figures or annual openings counts (those belong in OCCUPATIONAL DEMAND).
     - Specific student counts (those belong in STUDENT IMPACT).
     - Course counts (those belong in CURRICULUM ALIGNMENT).
     - Naming a partnership type or prescribing a collaboration shape (advisory board, internship pipeline, curriculum codesign, etc.).
     - Superlatives: "exceptional," "remarkable," "transformative," "industry-leading."
+    - Direct-mapping interpretive bridges: "directly maps," "maps directly," "perfect fit," "turnkey," "seamless," "1:1 alignment." These are interpretive overclaims the institutional chain does not support.
     - Generic openers: "This partnership opportunity..." "There is significant demand..." Lead with the employer's name or operations, not a meta-observation.
 
 - OCCUPATIONAL DEMAND (2-3 sentences): The employer's hiring profile represents institutionally significant regional labor market demand, scoped to the SELECTED OCCUPATION only.
   REQUIRED REFERENCES:
     - The selected occupation's title and SOC code from the SELECTED OCCUPATION block.
     - The Median annual wage AND Annual openings figures listed in the SELECTED OCCUPATION block. These are the only wage/openings figures permitted in this section.
-    - The COE region by name (so the geographic scope is explicit, not implied).
+    - The COE region by name AND a phrase that attributes the demand-data source — "Centers of Excellence projections," "COE [region] regional data," or similar. The figures' authority comes from the COE; surface that.
   FORBIDDEN:
     - Citing wage/openings figures from any other occupation in the BROADER HIRING PROFILE list. Those figures belong to other roles the employer hires for; they describe the employer's overall hiring scale, not the demand for the selected role.
     - Citing the aggregate demand total from the REGIONAL SUPPLY-DEMAND block. That total sums multiple occupations and belongs only in the SWP evidence table, not in this section's prose.
     - Framing the figures as "national" or "across the country" — these are COE-region figures.
     - Speculation about career ladders or advancement.
 
-- CURRICULUM ALIGNMENT (2-3 sentences): Specific departments at the college develop the skills these occupations require.
-  REQUIRED REFERENCES: At least one specific department name from the curriculum evidence. At least one specific skill name from the core skills list. Course counts (e.g., "across 33 courses") are appropriate when they characterize the depth of preparation.
-  PARTIAL ALIGNMENT: When a department covers some but not all core skills, name the partial alignment honestly using strengthening-language: "could be strengthened," "an opportunity to deepen," "could be more rigorously developed."
-  FORBIDDEN: Economic figures (wages, openings, growth percentages, employment counts). Enumerating every department the evidence block lists. Deficit language: "missing," "does not address," "falls short," "not fully prepared."
+- CURRICULUM ALIGNMENT (2-3 sentences): The institutional crosswalk classifies specific departments at this college as preparing students for the selected occupation.
+  REQUIRED REFERENCES:
+    - At least one specific department name from the curriculum evidence.
+    - The institutional pathway named by code at least once: the TOP6 the department's aligned courses route through (e.g., "TOP 095680"), and either a phrase like "the Chancellor's Office TOP-CIP crosswalk," "the institutional crosswalk identifies..." or the CIP code that mediates the chain.
+    - At least one specific competency the institutionally-aligned courses develop. Course counts (e.g., "across 33 courses") are appropriate when they characterize the depth of preparation.
+  PRINCIPLE: The pathway claim rests on the institutional crosswalk; the competencies are characterization of what the institutionally-aligned program teaches. Skill names describe what courses develop; they do not by themselves establish pathway alignment.
+  PARTIAL ALIGNMENT (cross-industry, principle 4): When the employer's SWP sector differs from the department's apparent industry context, name the partial nature with transferability vocabulary: "transferable methods," "industry-portable credential," "the methods developed here transfer to a [employer industry] context," "applied here in a [employer industry] manufacturing context." Do NOT use "directly maps," "directly prepares," "perfect fit." The institutional alignment is real; the industry-specific context layer is a partnership-conversation topic, not a turnkey claim.
+  WHEN PARTIAL SKILL COVERAGE: Some core skills may not be covered by the institutionally-aligned courses. Name partial coverage honestly using strengthening-language: "could be strengthened," "an opportunity to deepen," "could be more rigorously developed."
+  FORBIDDEN:
+    - Economic figures (wages, openings, growth percentages, employment counts).
+    - Enumerating every department the evidence block lists.
+    - Deficit language: "missing," "does not address," "falls short," "not fully prepared."
+    - Direct-mapping interpretive bridges (same list as EXECUTIVE SUMMARY).
+    - Skills-as-pathway claims: do not write that a skill "prepares students for" or "qualifies graduates for" or "is the gateway to" the occupation. Skills characterize courses; the institutional crosswalk is what prepares.
 
 - STUDENT IMPACT (2-3 sentences): The composition and alignment of the student pipeline with this opportunity.
   REQUIRED REFERENCES: At least one specific student count from the student pipeline data — the total enrolled in core-skill courses, OR the count carrying all core skills, OR a department-level enrollment figure. At least one department name.
-  FORBIDDEN: Economic figures. Evaluative readiness language ("ready," "prepared," "qualified," "fit"). State the composition; do not evaluate it.
+  FORBIDDEN: Economic figures. Evaluative readiness language ("ready," "prepared," "qualified," "fit"). State the composition; do not evaluate it. Skills-as-readiness claims: do not write that a skill makes students "qualified" or "prepared" — describe the skills the students hold; the institutional credential is what qualifies.
 
 Write a single JSON object:
 
