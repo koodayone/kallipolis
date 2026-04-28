@@ -227,10 +227,17 @@ def _run_pipeline(
     logger.info(f"Stage 5 complete: Claude narrative response received for {employer}")
 
     narrative = _parse_narrative_fields(raw)
+    # Coordinator-facing sector uses the institutional Doing-What-Matters /
+    # Strong Workforce taxonomy ("Advanced Manufacturing"), not the
+    # employer's BLS classification ("Manufacturing"). The artifact is
+    # built on CTE programs, regional priority sectors, and SWP funding
+    # categories — its surface vocabulary should match. Falls back to
+    # BLS when the employer has no SWP classification.
+    proposal_sector = gathered.swp_sectors[0] if gathered.swp_sectors else gathered.sector
     proposal = _assemble_proposal(
         narrative=narrative,
         employer=employer,
-        sector=gathered.sector,
+        sector=proposal_sector,
         gathered=gathered,
         curriculum_evidence=curriculum_evidence,
         selected_occ=selected_occ,

@@ -10,9 +10,20 @@ from ontology.schema import get_driver
 
 @dataclass
 class GatheredContext:
-    """Structured output from Neo4j context gathering."""
+    """Structured output from Neo4j context gathering.
+
+    Two sector fields coexist deliberately. `sector` is the employer's
+    BLS/general industry classification ("Manufacturing"); `swp_sectors`
+    is the institutional Doing-What-Matters / Strong Workforce taxonomy
+    ("Advanced Manufacturing"). Coordinator-facing surfaces should
+    speak SWP vocabulary — it's the language the partnership artifact
+    is grounded in (CTE programs, regional priority sectors, SWP
+    funding categories). The BLS sector is kept as backend metadata
+    for downstream tooling that needs it.
+    """
     employer_name: str = ""
     sector: str = ""
+    swp_sectors: list[str] = field(default_factory=list)
     description: str = ""
     regions: list[str] = field(default_factory=list)
     college: str = ""
@@ -28,7 +39,9 @@ def _gather_targeted_context(employer: str, college: str) -> GatheredContext:
         emp_result = session.run("""
             MATCH (emp:Employer {name: $employer})
             OPTIONAL MATCH (emp)-[:IN_MARKET]->(r:Region)
-            RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
+            RETURN emp.name AS name, emp.sector AS sector,
+                   COALESCE(emp.swp_sectors, []) AS swp_sectors,
+                   emp.description AS description,
                    collect(COALESCE(r.display_name, r.name)) AS regions
         """, employer=employer).single()
 
@@ -49,6 +62,7 @@ def _gather_targeted_context(employer: str, college: str) -> GatheredContext:
     return GatheredContext(
         employer_name=emp_result["name"],
         sector=emp_result["sector"] or "",
+        swp_sectors=list(emp_result["swp_sectors"]) if emp_result["swp_sectors"] else [],
         description=emp_result["description"] or "",
         regions=emp_result["regions"],
         college=college,

@@ -43,11 +43,12 @@ def _make_minimal_good_proposal() -> NarrativeProposal:
         core_skills=["Programming", "Software Development", "Algorithms"],
         regions=["Bay"],
         executive_summary=(
-            "Test Corp operates across the Bay COE region, with a hiring profile centered "
-            "on software developer and engineering roles. The Computer Science department "
-            "develops the programming and algorithms skills those roles require, and the "
-            "Mathematics department reinforces the quantitative foundation. Students across "
-            "these programs are completing coursework aligned with what Test Corp hires for."
+            "Test Corp's software development operations position it as a strong partnership "
+            "candidate for the college. The Bay COE region has sustained demand for software "
+            "developers driven by California's tech-sector concentration. The Computer Science "
+            "department develops programming, software development, and algorithms, the core "
+            "competencies this occupation requires. Labor market analysis indicates an unmet "
+            "workforce gap of 10,972 on an annual basis."
         ),
         occupational_demand=(
             "Test Corp's Bay-region hiring centers on Software Developers (15-1252), with "
@@ -260,8 +261,8 @@ class TestEvaluateProposal:
     def test_evaluative_superlative_flagged(self):
         p = _make_minimal_good_proposal()
         p.executive_summary = p.executive_summary.replace(
-            "with a hiring profile centered",
-            "compelling and uniquely positioned, with a hiring profile centered",
+            "strong partnership candidate",
+            "remarkable and exceptional partnership candidate",
         )
         result = evaluate_proposal(p)
         rules = {v.rule for v in result.violations}
@@ -270,12 +271,38 @@ class TestEvaluateProposal:
     def test_partnership_type_prescription_flagged(self):
         p = _make_minimal_good_proposal()
         p.executive_summary = p.executive_summary.replace(
-            "Students across these programs are completing coursework aligned with what Test Corp hires for.",
+            "Labor market analysis indicates an unmet workforce gap of 10,972 on an annual basis.",
             "An advisory board with Test Corp would formalize this alignment.",
         )
         result = evaluate_proposal(p)
         rules = {v.rule for v in result.violations}
         assert "no_type_prescription" in rules
+
+    def test_executive_summary_missing_gap_figure_flagged(self):
+        """Under the docs-page Partnership Narrative voice, the workforce
+        gap is the executive summary's required integrative figure. An
+        exec summary that omits it must trip missing_gap_figure."""
+        p = _make_minimal_good_proposal()
+        p.executive_summary = p.executive_summary.replace(
+            "Labor market analysis indicates an unmet workforce gap of 10,972 on an annual basis.",
+            "Together these conditions support a partnership conversation.",
+        )
+        result = evaluate_proposal(p)
+        rules = {v.rule for v in result.violations}
+        assert "missing_gap_figure" in rules
+
+    def test_executive_summary_with_rounded_gap_passes(self):
+        """The gap-citation rule allows ±5% rounding tolerance — citing
+        '11,000' for a gap of 10,972 should not trip the rule (the
+        coordinator rounds naturally)."""
+        p = _make_minimal_good_proposal()
+        p.executive_summary = p.executive_summary.replace(
+            "10,972",
+            "11,000",
+        )
+        result = evaluate_proposal(p)
+        rules = {v.rule for v in result.violations}
+        assert "missing_gap_figure" not in rules
 
     def test_economic_figure_in_executive_summary_flagged(self):
         p = _make_minimal_good_proposal()
@@ -285,8 +312,9 @@ class TestEvaluateProposal:
         )
         result = evaluate_proposal(p)
         rules = {v.rule for v in result.violations}
-        # Both "no_econ_in_wrong_sections" (the $190,000) and
-        # "no_specific_counts_in_exec" (the digits) should fire.
+        # The wage figure should fire no_econ_in_wrong_sections — the
+        # gap remains valid since this section's required figure is the
+        # workforce gap, not raw wage/openings.
         assert "no_econ_in_wrong_sections" in rules
 
     def test_economic_figure_in_curriculum_alignment_flagged(self):

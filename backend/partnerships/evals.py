@@ -349,31 +349,60 @@ def _check_executive_summary(p: NarrativeProposal) -> list[EvalViolation]:
             )
         )
 
-    # Forbidden: economic figures
+    # Forbidden: wage / openings / growth / employment figures. The gap
+    # figure (workforce gap of N) is structurally different — it's a
+    # supply-vs-demand synthesis, not a raw economic figure — so it
+    # passes this check naturally and is mandated by the gap-citation
+    # rule below.
     violations.extend(_check_no_economic_figures_in(section, text))
 
-    # Forbidden: specific student counts (those belong in student_impact).
-    # Heuristic: 4+ digit numbers or comma-separated thousand-formatted numbers
-    # indicate specific counts. Word-counts 50-120 don't trigger because "80
-    # words" pattern is unlikely.
-    digit_hits = _digit_sequences(text)
-    if digit_hits:
-        violations.append(
-            EvalViolation(
-                rule="no_specific_counts_in_exec",
-                section=section,
-                message=(
-                    f"Executive summary contains specific numerical reference(s): "
-                    f"{', '.join(digit_hits[:3])}. Reference student pipeline qualitatively; "
-                    f"specific counts belong in student_impact."
-                ),
+    # Required: the workforce gap is the executive summary's signature
+    # figure under the new prompt — the only number the LLM is supposed
+    # to cite, since it integrates demand and supply into one synthetic
+    # claim. Verify the gap value (with ±5% rounding tolerance and
+    # comma-formatted fallback) appears in the prose.
+    gap = p.swp_evidence.gap if p.swp_evidence else 0
+    if gap and abs(gap) >= 1:
+        if not _text_contains_gap_value(text, gap):
+            violations.append(
+                EvalViolation(
+                    rule="missing_gap_figure",
+                    section=section,
+                    message=(
+                        f"Executive summary does not cite the workforce gap value ({gap:,.0f}). "
+                        f"The gap is the section's required integrative figure under the "
+                        f"docs-page Partnership Narrative voice."
+                    ),
+                )
             )
-        )
 
     # Voice
     violations.extend(_check_voice(section, text))
 
     return violations
+
+
+def _text_contains_gap_value(text: str, gap: float) -> bool:
+    """Return True iff `text` cites a number matching the gap within a
+    5% rounding tolerance. Accepts plain integers, comma-formatted
+    integers, and "N annual" / "N on an annual basis" framings.
+    """
+    target = round(abs(gap))
+    if target == 0:
+        return False
+    # 5% tolerance window matching the demand-figure-faithfulness rule's
+    # tolerance posture elsewhere in this module — coordinators round
+    # naturally; the eval should not fail on rounding.
+    lo = round(target * 0.95)
+    hi = round(target * 1.05)
+    for m in re.finditer(r"\b\d[\d,]*\b", text):
+        try:
+            n = int(m.group(0).replace(",", ""))
+        except ValueError:
+            continue
+        if lo <= n <= hi:
+            return True
+    return False
 
 
 def _check_occupational_demand(p: NarrativeProposal) -> list[EvalViolation]:

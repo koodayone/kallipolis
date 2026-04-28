@@ -71,9 +71,16 @@ def _build_narrative_context(
     occ_soc = selected_occ.get("soc_code", "")
     core_skills = selected_occ.get("core_skills", [])
 
+    # Surface the SWP-canonical sector to the LLM context, falling back
+    # to BLS only when the employer has no Doing-What-Matters
+    # classification. This keeps the narrative voice institutionally
+    # aligned with the rest of the artifact (CTE program references,
+    # regional priority sectors, SWP funding language).
+    primary_sector = gathered.swp_sectors[0] if gathered.swp_sectors else gathered.sector
+
     lines = [
         f"EMPLOYER: {gathered.employer_name}",
-        f"Sector: {gathered.sector}" if gathered.sector else None,
+        f"Sector: {primary_sector}" if primary_sector else None,
         f"Description: {gathered.description}" if gathered.description else None,
         f"Regions employer operates in: {', '.join(gathered.regions)}" if gathered.regions else None,
         f"College: {gathered.college}",
@@ -179,9 +186,20 @@ Argument structure: You are writing one continuous argument across four sections
 
 Section claims:
 
-- EXECUTIVE SUMMARY (1 paragraph, ~80 words): The institutional case that this employer represents a partnership opportunity for the college.
-  REQUIRED REFERENCES: Characterize the employer through one or two of the most identity-defining occupations they hire for. Name the COE region by name. Name at least one of the most relevant departments from the curriculum evidence. Reference the student pipeline qualitatively (e.g., "students across these programs are completing coursework").
-  FORBIDDEN: Specific dollar amounts, specific growth percentages, specific openings counts, or specific student counts (those belong in their dedicated sections). Evaluative language ("compelling," "strong fit") and superlatives. Naming a partnership type or prescribing a collaboration shape.
+- EXECUTIVE SUMMARY (1 paragraph, ~70-80 words): The institutional case for this partnership, integrating four threads into a single synthetic paragraph.
+  STRUCTURE — four threads woven through the paragraph in this order:
+    1. EMPLOYER IDENTITY: Characterize the employer through what they do — their operations, scale, or scope — not through their hiring count. One sentence, declarative.
+    2. REGIONAL DEMAND CONTEXT: Set up the labor-market context for the selected occupation. Use directional language ("accelerating demand," "rising need," "growing requirement") anchored in the COE region by name. No specific wage or openings figures here — those belong in OCCUPATIONAL DEMAND.
+    3. CURRICULUM CAPABILITY: Name the most aligned department and two-to-four core competencies it develops for this occupation. The competencies should come from the core skills list. Treat them as comma-separated competencies in the flow of the sentence.
+    4. WORKFORCE GAP: Close with the gap figure from the REGIONAL SUPPLY-DEMAND block as the integrative claim. Phrase it neutrally ("Labor market analysis indicates an unmet workforce gap of N on an annual basis"). The gap is the only figure permitted in this section — it earns its place because it synthesizes demand and supply into one number.
+  TONE: Light evaluative framing is acceptable here ("represents a strong partnership candidate," "positions the college to address"), since this section's job is to make the case. The other three sections do the granular substantiation. Keep evaluative language measured — never superlative.
+  FORBIDDEN:
+    - Specific wage figures or annual openings counts (those belong in OCCUPATIONAL DEMAND).
+    - Specific student counts (those belong in STUDENT IMPACT).
+    - Course counts (those belong in CURRICULUM ALIGNMENT).
+    - Naming a partnership type or prescribing a collaboration shape (advisory board, internship pipeline, curriculum codesign, etc.).
+    - Superlatives: "exceptional," "remarkable," "transformative," "industry-leading."
+    - Generic openers: "This partnership opportunity..." "There is significant demand..." Lead with the employer's name or operations, not a meta-observation.
 
 - OCCUPATIONAL DEMAND (2-3 sentences): The employer's hiring profile represents institutionally significant regional labor market demand, scoped to the SELECTED OCCUPATION only.
   REQUIRED REFERENCES:

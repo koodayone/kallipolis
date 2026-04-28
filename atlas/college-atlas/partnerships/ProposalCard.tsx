@@ -71,6 +71,158 @@ function FlagIcon() {
   );
 }
 
+// Workforce-gap bar visualization. Visual idiom is the partnership-narrative
+// example on the marketing site (app/components/PartnershipAnatomyCard.tsx,
+// SupplyDemandBridgeBand). We re-implement here rather than import because
+// the marketing component is locked to its demo data and per-school brand
+// theming threads through the atlas, not the marketing site.
+//
+// Layout: two equal-length horizontal "lanes" — the Openings lane is
+// rendered at full width (the demand reference); the Supply lane fills
+// proportionally within the same lane width. The gap callout overlays the
+// supply terminus, using the brand color and a soft drop-shadow glow to
+// pull the eye to the integrative figure.
+//
+// Surplus case (gap < 0): the supply bar visually exceeds the demand bar's
+// implied capacity. We clamp the supply width to 100% so layout stays
+// stable, drop the gap overlay, and still surface the negative gap as a
+// neutral text callout — the artifact still answers "what's the gap?"
+// honestly without misleading visualization.
+function GapVisualization({
+  totalDemand,
+  totalSupply,
+  gap,
+  brandColor,
+}: {
+  totalDemand: number;
+  totalSupply: number;
+  gap: number;
+  brandColor: string;
+}) {
+  const supplyPct = Math.min(100, (totalSupply / totalDemand) * 100);
+  const isSurplus = gap < 0;
+  const gapDisplay = `${gap >= 0 ? "+" : ""}${Math.round(gap).toLocaleString()}`;
+
+  return (
+    <div style={{ padding: "20px 16px 16px" }}>
+      {/* Openings bar — full-width neutral, the demand reference. */}
+      <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 5 }}>
+        <span style={{
+          fontFamily: FONT, fontSize: 9, fontWeight: 600, textTransform: "uppercase",
+          letterSpacing: "0.1em", color: "rgba(255,255,255,0.35)",
+          width: 70, flexShrink: 0,
+        }}>
+          Openings
+        </span>
+        <div style={{
+          flex: 1, height: 24, background: "rgba(255,255,255,0.06)",
+          borderRadius: 4, position: "relative", overflow: "hidden",
+        }}>
+          <div style={{
+            width: "100%", height: "100%",
+            background: "rgba(255,255,255,0.12)", borderRadius: 4,
+          }} />
+        </div>
+        <span style={{
+          fontFamily: FONT, fontSize: 13, fontWeight: 700,
+          color: "rgba(255,255,255,0.75)", fontVariantNumeric: "tabular-nums",
+          minWidth: 56, textAlign: "right", flexShrink: 0,
+        }}>
+          {totalDemand.toLocaleString()}
+        </span>
+      </div>
+
+      {/* Supply bar — proportional, brand-tinted, with soft glow. */}
+      <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 5 }}>
+        <span style={{
+          fontFamily: FONT, fontSize: 9, fontWeight: 600, textTransform: "uppercase",
+          letterSpacing: "0.1em", color: `${brandColor}90`,
+          width: 70, flexShrink: 0,
+        }}>
+          Supply
+        </span>
+        <div style={{
+          flex: 1, height: 24, background: "rgba(255,255,255,0.06)",
+          borderRadius: 4, position: "relative", overflow: "hidden",
+        }}>
+          <div style={{
+            width: `${supplyPct}%`, height: "100%",
+            background: brandColor,
+            borderRadius: supplyPct >= 100 ? 4 : "4px 0 0 4px",
+            boxShadow: `0 0 12px ${brandColor}30`,
+            transition: "width 0.4s ease-out",
+          }} />
+        </div>
+        <span style={{
+          fontFamily: FONT, fontSize: 13, fontWeight: 700,
+          color: brandColor, fontVariantNumeric: "tabular-nums",
+          minWidth: 56, textAlign: "right", flexShrink: 0,
+        }}>
+          {Math.round(totalSupply).toLocaleString()}
+        </span>
+      </div>
+
+      {/* Gap callout — overlays the supply terminus when there is a deficit;
+          falls back to a neutral text row when supply meets or exceeds demand
+          (the visualization is misleading there; honest text is better). */}
+      {!isSurplus && supplyPct < 100 && (
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <span style={{ width: 70, flexShrink: 0 }} />
+          <div style={{ flex: 1, position: "relative" }}>
+            <div style={{
+              position: "absolute",
+              left: `${supplyPct}%`,
+              right: 0,
+              top: 0,
+              display: "flex", flexDirection: "column", alignItems: "center",
+            }}>
+              <div style={{ width: "100%", height: 2, background: `${brandColor}40`, borderRadius: 1 }} />
+              <div style={{ marginTop: 4, textAlign: "center" }}>
+                <span style={{
+                  fontFamily: FONT, fontSize: 9, fontWeight: 600, textTransform: "uppercase",
+                  letterSpacing: "0.1em", color: `${brandColor}cc`,
+                  display: "block", marginBottom: 1,
+                }}>
+                  Workforce Gap
+                </span>
+                <span style={{
+                  fontFamily: FONT, fontSize: 20, fontWeight: 700, color: brandColor,
+                  filter: `drop-shadow(0 0 10px ${brandColor}50)`,
+                  lineHeight: 1, fontVariantNumeric: "tabular-nums",
+                }}>
+                  {gapDisplay}
+                </span>
+              </div>
+            </div>
+          </div>
+          <span style={{ minWidth: 56, flexShrink: 0 }} />
+        </div>
+      )}
+
+      {(isSurplus || supplyPct >= 100) && (
+        <div style={{
+          marginTop: 14, paddingTop: 10,
+          borderTop: "1px solid rgba(255,255,255,0.06)",
+          fontFamily: FONT, fontSize: 12,
+          color: "rgba(255,255,255,0.55)",
+          textAlign: "center", fontVariantNumeric: "tabular-nums",
+        }}>
+          Workforce gap: <span style={{ fontWeight: 600, color: "rgba(255,255,255,0.75)" }}>{gapDisplay}</span>
+          {isSurplus && (
+            <span style={{ marginLeft: 8, color: "rgba(255,255,255,0.4)", fontStyle: "italic" }}>
+              (supply exceeds demand)
+            </span>
+          )}
+        </div>
+      )}
+
+      {/* Bottom spacer keeps the gap callout from clipping when it sits at
+          the visual baseline. Mirrors the docs-page band's tail spacing. */}
+      <div style={{ height: 24 }} />
+    </div>
+  );
+}
+
 export default function ProposalCard({ proposal, brandColor, onDismiss, onReject, onRefine, collegeId, onSaved, isPreviewMode = PREVIEW_MODE }: Props) {
   const [state, setState] = useState<CardState>("default");
   const [savedId, setSavedId] = useState<string | null>(null);
@@ -272,7 +424,10 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
               {swp.coe_region ? ` Scoped to the ${swp.coe_region} COE region.` : ""}
             </SectionDescription>
 
-            {/* Demand sub-table */}
+            {/* Demand sub-table — column shape mirrors the partnership-narrative
+                example on the docs site: SOC Code, Occupation, Region, Wage,
+                Annual Openings. The region is identical per row (the block is
+                scoped to one COE region) but reads naturally on each row. */}
             {swp.occupations.length > 0 && (
               <div style={{ marginBottom: "16px" }}>
                 <span style={{
@@ -286,15 +441,17 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
                   columns={[
                     { label: "SOC", width: "90px" },
                     { label: "Occupation", width: "1fr" },
+                    { label: "Region", width: "70px" },
+                    { label: "Wage", width: "100px", align: "right" },
                     { label: "Annual openings", width: "130px", align: "right" },
                   ]}
-                  gridTemplateColumns="24px 90px 1fr 130px"
+                  gridTemplateColumns="24px 90px 1fr 70px 100px 130px"
                   brandColor={brandColor}
                 />
                 {swp.occupations.map((occ, i) => (
                   <div key={`${occ.soc_code ?? occ.title}-${i}`} style={{
                     display: "grid",
-                    gridTemplateColumns: "24px 90px 1fr 130px",
+                    gridTemplateColumns: "24px 90px 1fr 70px 100px 130px",
                     alignItems: "center",
                     padding: "10px 0",
                     borderBottom: i < swp.occupations.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none",
@@ -303,6 +460,10 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
                     <span />
                     <span style={{ fontVariantNumeric: "tabular-nums", color: "rgba(255,255,255,0.5)" }}>{occ.soc_code ?? "—"}</span>
                     <span>{occ.title}</span>
+                    <span style={{ color: "rgba(255,255,255,0.55)" }}>{swp.coe_region || "—"}</span>
+                    <span style={{ textAlign: "right", fontVariantNumeric: "tabular-nums" }}>
+                      {occ.annual_wage != null ? `$${occ.annual_wage.toLocaleString()}` : "—"}
+                    </span>
                     <span style={{ textAlign: "right", fontVariantNumeric: "tabular-nums" }}>
                       {occ.annual_openings != null ? occ.annual_openings.toLocaleString() : "—"}
                     </span>
@@ -352,31 +513,21 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
               </div>
             )}
 
-            {/* Gap row */}
-            <div style={{
-              marginTop: "12px",
-              padding: "12px 16px", borderRadius: "6px",
-              background: "rgba(255,255,255,0.025)",
-              border: "1px solid rgba(255,255,255,0.06)",
-              display: "grid", gridTemplateColumns: "1fr auto auto auto",
-              alignItems: "center", gap: "16px",
-              fontFamily: FONT, fontSize: "12px",
-            }}>
-              <span style={{ color: "rgba(255,255,255,0.5)", letterSpacing: "0.04em" }}>
-                Annual demand
-              </span>
-              <span style={{ color: "rgba(255,255,255,0.85)", fontVariantNumeric: "tabular-nums", fontWeight: 600 }}>
-                {swp.total_demand.toLocaleString()}
-              </span>
-              <span style={{ color: "rgba(255,255,255,0.35)", padding: "0 4px" }}>−</span>
-              <span style={{ color: "rgba(255,255,255,0.85)", fontVariantNumeric: "tabular-nums", fontWeight: 600 }}>
-                {Math.round(swp.total_supply).toLocaleString()} supply ={" "}
-                <span style={{ color: swp.gap > 0 ? brandColor : "rgba(255,255,255,0.55)" }}>
-                  {Math.round(swp.gap).toLocaleString()}
-                </span>
-                <span style={{ color: "rgba(255,255,255,0.35)", marginLeft: "6px", fontWeight: 400 }}>gap</span>
-              </span>
-            </div>
+            {/* Workforce-gap visualization — mirrors the partnership-narrative
+                example on the docs site. Two horizontal bars (Openings and
+                Supply) with the gap visualized as a brand-tinted overlay
+                anchored at the supply-bar terminus, captioned "Workforce
+                Gap" with the integer gap value. The visualization only
+                renders when total_demand > 0; otherwise the data is too
+                degenerate to bar-chart honestly. */}
+            {swp.total_demand > 0 && (
+              <GapVisualization
+                totalDemand={swp.total_demand}
+                totalSupply={swp.total_supply}
+                gap={swp.gap}
+                brandColor={brandColor}
+              />
+            )}
           </div>
         )}
 

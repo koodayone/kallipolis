@@ -92,9 +92,13 @@ def _build_occupation_selection_context(gathered: GatheredContext) -> str:
             """, title=title, college=gathered.college).data()
             occ_skills[title] = result
 
+    # Use SWP-canonical sector when available, BLS fallback otherwise —
+    # consistent with the narrative prompt's vocabulary so the
+    # occupation-selection LLM sees the same institutional framing.
+    primary_sector = gathered.swp_sectors[0] if gathered.swp_sectors else gathered.sector
     lines = [
         f"EMPLOYER: {gathered.employer_name}",
-        f"Sector: {gathered.sector}" if gathered.sector else None,
+        f"Sector: {primary_sector}" if primary_sector else None,
         f"Description: {gathered.description}" if gathered.description else None,
         "",
         "OCCUPATIONS THIS EMPLOYER HIRES FOR:",
