@@ -2455,7 +2455,7 @@
       "37-1012",
       "39-9031"
     ],
-    "website": "https://www.eldoradocountryclub.com/",
+    "website": "https://www.eldoradocc.org/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
     ],
@@ -3420,7 +3420,7 @@
       "29-2061",
       "15-1211"
     ],
-    "website": "https://www.ycjusd.us/",
+    "website": "https://www.yucaipaschools.com",
     "swp_sectors": [
       "Education and Human Development"
     ],
@@ -5422,28 +5422,6 @@
     "enrichment_promoted": true
   },
   {
-    "name": "Land Rover Santa Barbara",
-    "sector": "Retail",
-    "description": "Land Rover Santa Barbara is a premier dealership offering new and pre-owned Range Rover, Defender, and Discovery vehicles. It serves customers in Santa Barbara, Santa Ynez, and Carpinteria, California, providing sales, financing, trade-ins, and a full-service center with OEM parts for maintenance and repairs.",
-    "regions": [
-      "SCC"
-    ],
-    "occupations": [
-      "11-2022",
-      "41-1011",
-      "49-3023",
-      "49-1011",
-      "13-2072"
-    ],
-    "website": "https://www.landroversantabarbara.com",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
     "name": "Santa Barbara Auto Group",
     "sector": "Retail",
     "description": "Santa Barbara Auto Group is a luxury automotive dealership in Santa Barbara, CA, serving Ventura, Santa Barbara, and San Luis Obispo counties. They sell and service new and pre-owned vehicles from 7 premium brands, including Audi, BMW, and Mercedes-Benz, offering sales, service, and financing.",
@@ -6760,27 +6738,6 @@
     "enrichment_promoted": true
   },
   {
-    "name": "Lompoc Police Department",
-    "sector": "Government",
-    "description": "The Lompoc Police Department provides law enforcement services to the City of Lompoc, California, operating 24/7 for emergencies and non-emergencies. Key activities include responding to calls, traffic enforcement, crime investigation, and community engagement programs like the Community Academy and Coffee with a Cop.",
-    "regions": [
-      "SCC"
-    ],
-    "occupations": [
-      "33-1012",
-      "33-3021",
-      "33-3051",
-      "19-4092"
-    ],
-    "website": "https://www.cityoflompoc.com/government/departments/police",
-    "swp_sectors": [
-      "Public Safety"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
     "name": "Santa Barbara Police Department",
     "sector": "Government",
     "description": "The Santa Barbara Police Department provides public safety and law enforcement services to the City of Santa Barbara, California. They protect and serve the community through community-oriented policing, handling emergencies, investigations, and offering programs like Animal Control and online reporting.",
@@ -7597,28 +7554,6 @@
       "Retail, Hospitality and Tourism"
     ],
     "enrichment_attempted": true
-  },
-  {
-    "name": "Harbor Freight Tools",
-    "sector": "Retail",
-    "description": "Harbor Freight Tools is a retailer offering a wide selection of tools and equipment, including automotive, power tools, hand tools, and safety gear. They serve consumers and businesses, providing products for various needs from home improvement to construction, with a focus on value and deals.",
-    "regions": [
-      "SCC"
-    ],
-    "occupations": [
-      "41-1011",
-      "49-9071",
-      "11-3071",
-      "13-1081",
-      "51-1011"
-    ],
-    "website": "https://www.harborfreight.com",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
   },
   {
     "name": "Riviera Bronze",
@@ -9453,28 +9388,6 @@
     "enrichment_promoted": true
   },
   {
-    "name": "Vista Cove Care Center at Santa Paula",
-    "sector": "Hospitality & Food Service",
-    "description": "Vista Cove Care Center at Santa Paula is a large skilled nursing and rehabilitation facility in Santa Paula, California, offering 99 beds. It provides comprehensive long-term care, memory care for seniors with dementia, and rehabilitation services, including daily living assistance, medication management, and specialized therapies.",
-    "regions": [
-      "SCC"
-    ],
-    "occupations": [
-      "31-1131",
-      "29-2061",
-      "29-1141",
-      "11-9111",
-      "31-2021"
-    ],
-    "website": "https://www.vistacove.net",
-    "swp_sectors": [
-      "Health"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
     "name": "Wood Ranch Barbecue & Grill",
     "sector": "Hospitality & Food Service",
     "description": "Wood Ranch BBQ & Grill operates multiple Southern California barbecue restaurants, offering dine-in, take-out, curbside pick-up, and catering services for events ranging from 30 to 10,000 guests. They serve customers seeking barbecue dishes and a casual dining experience.",
@@ -9962,28 +9875,6 @@
     ]
   },
   {
-    "name": "Parsec",
-    "sector": "Construction",
-    "description": "A company providing specialized services, potentially in construction or engineering.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-3013",
-      "11-9021",
-      "13-1051",
-      "13-1082",
-      "17-2051",
-      "17-3022",
-      "49-2022"
-    ],
-    "website": "https://parsecinc.com",
-    "swp_sectors": [
-      "Energy, Construction and Utilities"
-    ]
-  },
-  {
     "name": "Best Contracting Services",
     "sector": "Construction",
     "description": "A general contracting company offering various construction services.",
@@ -10001,28 +9892,6 @@
       "43-4161"
     ],
     "website": "https://bestcontracting.com",
-    "swp_sectors": [
-      "Energy, Construction and Utilities"
-    ]
-  },
-  {
-    "name": "Pyramid Builders",
-    "sector": "Construction",
-    "description": "A construction firm specializing in building projects.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-3013",
-      "11-9021",
-      "13-1051",
-      "13-1082",
-      "17-2051",
-      "17-3022",
-      "51-4111"
-    ],
-    "website": "http://pyramidbuilders.com",
     "swp_sectors": [
       "Energy, Construction and Utilities"
     ]
@@ -12402,27 +12271,6 @@
     ]
   },
   {
-    "name": "Universal City Nissan",
-    "sector": "Retail",
-    "description": "Universal City Nissan is a franchised automobile dealership selling Nissan vehicles.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-2021",
-      "11-3012",
-      "13-2011",
-      "41-4011",
-      "43-4161",
-      "49-3023"
-    ],
-    "website": "https://www.universalcitynissan.com",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
     "name": "Lowe's Outlet Store",
     "sector": "Retail",
     "description": "Lowe's Outlet Store sells discounted home improvement and construction products.",
@@ -14605,7 +14453,7 @@
       "25-3031",
       "25-9044"
     ],
-    "website": "https://highlandhs.avhsd.org",
+    "website": "https://www.highlandhs.org",
     "swp_sectors": [
       "Education and Human Development"
     ]
@@ -15348,28 +15196,6 @@
       "29-1129"
     ],
     "website": "https://www.movinglivesforward.org",
-    "swp_sectors": [
-      "Health"
-    ]
-  },
-  {
-    "name": "Tenet Healthcare Corporation",
-    "sector": "Healthcare",
-    "description": "Tenet Healthcare Corporation is a large healthcare services company that owns and operates hospitals and other facilities.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-3012",
-      "11-3031",
-      "11-9111",
-      "13-1071",
-      "13-2011",
-      "29-1141"
-    ],
-    "website": "https://www.tenethealth.com",
     "swp_sectors": [
       "Health"
     ]
@@ -16429,44 +16255,6 @@
     ]
   },
   {
-    "name": "Hilton Los Angeles North",
-    "sector": "Hospitality & Food Service",
-    "description": "This is a hotel providing accommodation, dining, and event services.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3013",
-      "11-9179",
-      "13-1121",
-      "41-4011"
-    ],
-    "website": "https://www.hilton.com/en/hotels/burchhh-hilton-los-angeles-north-glendale/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
-    "name": "Hilton Los Angeles/San Gabriel",
-    "sector": "Hospitality & Food Service",
-    "description": "This is a hotel offering lodging, dining, and event services.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3013",
-      "11-9179",
-      "13-1121",
-      "41-4011"
-    ],
-    "website": "https://www.hilton.com/en/hotels/sgbcahh-hilton-los-angeles-san-gabriel/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
     "name": "Hilton Los Angeles",
     "sector": "Hospitality & Food Service",
     "description": "A hotel providing lodging and hospitality services.",
@@ -16488,27 +16276,6 @@
     ]
   },
   {
-    "name": "Hotel Bel-Air",
-    "sector": "Hospitality & Food Service",
-    "description": "A luxury hotel offering accommodation and amenities.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3013",
-      "11-9179",
-      "13-1121",
-      "27-1029",
-      "43-4161",
-      "49-9062"
-    ],
-    "website": "https://www.dorchestercollection.com/los-angeles/hotel-bel-air/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
     "name": "Hyatt Regency Long Beach",
     "sector": "Hospitality & Food Service",
     "description": "A hotel offering lodging, event spaces, and dining.",
@@ -16525,69 +16292,6 @@
       "49-9062"
     ],
     "website": "https://www.hyatt.com/en-US/hotel/california/hyatt-regency-long-beach/lgbrl",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
-    "name": "Hyatt Regency Los Angeles International",
-    "sector": "Hospitality & Food Service",
-    "description": "A hotel located near the international airport, providing lodging and services.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3013",
-      "11-9179",
-      "13-1121",
-      "27-1029",
-      "43-4161",
-      "49-9062"
-    ],
-    "website": "https://www.hyatt.com/en-US/hotel/california/hyatt-regency-los-angeles-international-airport/laxrl",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
-    "name": "Hyatt Regency Valencia",
-    "sector": "Hospitality & Food Service",
-    "description": "A hotel offering accommodation and event facilities.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3013",
-      "11-9179",
-      "13-1121",
-      "27-1029",
-      "43-4161",
-      "49-9062"
-    ],
-    "website": "https://www.hyatt.com/en-US/hotel/california/hyatt-regency-valencia/vncrv",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
-    "name": "Intercontinental Los Angeles",
-    "sector": "Hospitality & Food Service",
-    "description": "A luxury hotel providing accommodation and amenities.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3013",
-      "11-9179",
-      "13-1121",
-      "27-1029",
-      "43-4161",
-      "49-9062"
-    ],
-    "website": "https://www.ihg.com/intercontinental/hotels/us/en/los-angeles/laxha/hoteldetail",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
     ]
@@ -16651,27 +16355,6 @@
       "49-9062"
     ],
     "website": "https://www.marriott.com/en-us/hotels/lgblb-long-beach-marriott/overview/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
-    "name": "Millennium Biltmore Hotel Los Angeles",
-    "sector": "Hospitality & Food Service",
-    "description": "A historic hotel in Los Angeles offering lodging and event spaces.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3013",
-      "11-9179",
-      "13-1121",
-      "27-1029",
-      "43-4161",
-      "49-9062"
-    ],
-    "website": "https://www.millenniumhotels.com/en/los-angeles/the-biltmore-los-angeles/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
     ]
@@ -17192,26 +16875,6 @@
       "43-4161"
     ],
     "website": "https://lasd.org",
-    "swp_sectors": [
-      "Public Safety"
-    ]
-  },
-  {
-    "name": "Commerce City Public Safety",
-    "sector": "Government",
-    "description": "A department responsible for public safety services in the city of Commerce.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1041",
-      "33-1021",
-      "33-2011",
-      "43-4161"
-    ],
-    "website": "https://www.commerceca.gov/city-hall/police-department",
     "swp_sectors": [
       "Public Safety"
     ]
@@ -18531,28 +18194,6 @@
       "11-9111"
     ],
     "website": "https://www.ibhcare.com/",
-    "swp_sectors": [
-      "Health"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
-    "name": "Health and Human Services",
-    "sector": "Healthcare",
-    "description": "Tulare County Health and Human Services Agency (TCHHSA) provides comprehensive health and social services to Tulare County residents. It operates healthcare centers, offers public health programs like WIC, mental health support, and various disease prevention, testing, and treatment services, serving diverse populations including low-income individuals and families.",
-    "regions": [
-      "CVML"
-    ],
-    "occupations": [
-      "21-1023",
-      "29-1141",
-      "31-9092",
-      "21-1093",
-      "11-9151"
-    ],
-    "website": "https://tchhsa.org/",
     "swp_sectors": [
       "Health"
     ],
@@ -19906,7 +19547,7 @@
       "47-2073",
       "53-3032"
     ],
-    "website": "https://www.ogradypaving.com/",
+    "website": "https://www.ogradypavinginc.com/",
     "swp_sectors": [
       "Energy, Construction and Utilities"
     ],
@@ -21152,28 +20793,6 @@
     "enrichment_promoted": true
   },
   {
-    "name": "Diodes",
-    "sector": "Manufacturing",
-    "description": "Diodes Incorporated is a global manufacturer of discrete, analog, and mixed-signal semiconductors, serving consumer, computing, communications, industrial, and automotive markets. With a presence in Milpitas, CA, the company supplies over 4,000 products, including diodes and power management devices, to electronic device manufacturers worldwide.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "51-9141",
-      "49-9041",
-      "11-3013",
-      "51-1011",
-      "17-3023"
-    ],
-    "website": "https://www.diodes.com/",
-    "swp_sectors": [
-      "Advanced Manufacturing"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
     "name": "Flex",
     "sector": "Manufacturing",
     "description": "Flex is an advanced manufacturing company providing end-to-end solutions across industries like Automotive, Healthcare, and Data Centers. With over 140,000 employees globally, Flex offers design, supply chain, and manufacturing services, enabling customers to bring critical technologies to market.",
@@ -21343,28 +20962,6 @@
       "51-4121"
     ],
     "website": "https://www.baesystems.com/",
-    "swp_sectors": [
-      "Advanced Manufacturing"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
-    "name": "Corwil Technology Corporation",
-    "sector": "Manufacturing",
-    "description": "Corwil Technology Corporation, located in Milpitas, CA, provides outsourced semiconductor assembly and test services. They specialize in wafer thinning, dicing, and IC assembly for military, aerospace, medical, and OEM electronics industries, handling high-volume production.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "51-9141",
-      "51-1011",
-      "51-9061",
-      "49-9041",
-      "11-3051"
-    ],
-    "website": "https://corwil.com/",
     "swp_sectors": [
       "Advanced Manufacturing"
     ],
@@ -22580,28 +22177,6 @@
     "enrichment_promoted": true
   },
   {
-    "name": "Spartan Moving Systems",
-    "sector": "Transportation",
-    "description": "Spartan Moving Systems is a licensed and insured moving company serving the San Francisco Bay Area since 2007. It provides local, long-distance, and commercial moving, packing, and climate-controlled storage solutions for residential and business clients, having completed over 10,000 successful moves.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "11-3071",
-      "53-3032",
-      "53-3033",
-      "49-3031",
-      "49-9071"
-    ],
-    "website": "https://spartan-moving.com/",
-    "swp_sectors": [
-      "Advanced Transportation and Logistics"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
     "name": "Durham School Services",
     "sector": "Transportation",
     "description": "Durham School Services provides safe and reliable student transportation, including specialized services for special needs students, across 32 states and over 340 school districts in the U.S. They transport more than 1,000,000 students daily, utilizing safety technologies and maintaining a fleet of over 14,400 vehicles.",
@@ -23225,7 +22800,7 @@
       "11-9041",
       "17-3023"
     ],
-    "website": "https://en.horizon.cc/",
+    "website": "https://www.horizon.auto/",
     "swp_sectors": [
       "Information and Communication Technologies - Digital Media"
     ],
@@ -24369,28 +23944,6 @@
     "enrichment_promoted": true
   },
   {
-    "name": "Branham High School",
-    "sector": "Education",
-    "description": "Branham High School is a public high school in San Jose, California, serving approximately 1,900 students in grades 9-12. It provides rigorous academic instruction, including AP and CTE courses, alongside extensive athletic and extracurricular programs, preparing students for college and careers.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "11-9032",
-      "25-2031",
-      "27-2022",
-      "49-9071",
-      "11-3013"
-    ],
-    "website": "https://www.cuhsd.org/branham",
-    "swp_sectors": [
-      "Education and Human Development"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
     "name": "Cabrillo Middle School",
     "sector": "Education",
     "description": "Cabrillo Middle School, part of the Santa Clara Unified School District, provides academic programs including STEM Leadership and AVID, along with various clubs and athletics like volleyball and basketball. It serves students in Santa Clara, CA, focusing on middle school education and community engagement.",
@@ -24471,28 +24024,6 @@
       "49-9071"
     ],
     "website": "https://www.arts4all.org/",
-    "swp_sectors": [
-      "Education and Human Development"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
-    "name": "Cupertino High School",
-    "sector": "Education",
-    "description": "Cupertino High School is a public high school in Cupertino, California, serving approximately 1,800-2,100 students in grades 9-12 from surrounding suburban areas. It provides a comprehensive, rigorous curriculum with a strong STEM focus, complemented by diverse arts, athletics, and clubs, preparing students for college and careers.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "15-1231",
-      "25-9031",
-      "27-2022",
-      "37-1011",
-      "49-9071"
-    ],
-    "website": "https://www.chs.fuhsd.org",
     "swp_sectors": [
       "Education and Human Development"
     ],
@@ -24625,28 +24156,6 @@
       "49-9071"
     ],
     "website": "https://www.harker.org/",
-    "swp_sectors": [
-      "Education and Human Development"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
-    "name": "De Anza College",
-    "sector": "Education",
-    "description": "De Anza College is a public community college in Cupertino, California, serving approximately 16,396-17,425 undergraduate students. It offers associate degrees, certificates, and strong transfer programs to four-year universities, alongside career technical education and community enrichment courses. Key activities include academic instruction in diverse fields like Business and Liberal Arts.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "11-9033",
-      "15-1244",
-      "21-1019",
-      "25-3099",
-      "37-1011"
-    ],
-    "website": "https://www.deanza.edu/",
     "swp_sectors": [
       "Education and Human Development"
     ],
@@ -25123,28 +24632,6 @@
       "29-2034"
     ],
     "website": "https://www.goodsamsanjose.com/",
-    "swp_sectors": [
-      "Health"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
-    "name": "Kaiser Permanente Milpitas Medical",
-    "sector": "Healthcare",
-    "description": "Kaiser Permanente Milpitas Medical Offices provides comprehensive healthcare services in the Bay Area, including internal medicine, pharmacy, laboratory, and optical services. It serves adults, Medicare, and Medi-Cal members, focusing on personalized care and health education.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "31-9092",
-      "29-2057",
-      "29-2052",
-      "31-9097",
-      "11-9111"
-    ],
-    "website": "https://healthy.kaiserpermanente.org/northern-california/facilities/milpitas-medical-offices-100296",
     "swp_sectors": [
       "Health"
     ],
@@ -25721,50 +25208,6 @@
     "enrichment_promoted": true
   },
   {
-    "name": "Crowne Plaza Palo Alto",
-    "sector": "Hospitality & Food Service",
-    "description": "Crowne Plaza Palo Alto is a full-service hotel in Silicon Valley with 195 rooms and over 17,000 sq ft of event space. It provides accommodation, dining, and recreational amenities like an outdoor pool, serving business and leisure travelers, and event guests.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "11-9081",
-      "11-9051",
-      "35-1012",
-      "37-1011",
-      "13-1121"
-    ],
-    "website": "https://www.ihg.com/crowneplaza/hotels/us/en/palo-alto/paocp/hoteldetail",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
-    "name": "Doubletree By Hilton Hotel San Jose",
-    "sector": "Hospitality & Food Service",
-    "description": "The Doubletree By Hilton Hotel San Jose is a 4-star hospitality provider in the Bay Area, offering 505 rooms, over 56,000 sq. ft. of meeting space, and multiple dining options. It serves business and leisure travelers, particularly those utilizing San Jose International Airport, with key activities including lodging, events, and food service.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "11-9081",
-      "11-9051",
-      "35-1011",
-      "37-1011",
-      "49-9071"
-    ],
-    "website": "https://www.hilton.com/en/hotels/sjcdtdt-doubletree-san-jose/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
     "name": "Embassy Suites By Hilton",
     "sector": "Hospitality & Food Service",
     "description": "Embassy Suites by Hilton provides spacious two-room suite accommodations for leisure and business travelers across the US, Canada, Middle East, Caribbean, and South America. Key offerings include complimentary made-to-order breakfast, evening receptions, fitness centers, and meeting/event spaces, serving guests seeking comfortable stays with added amenities.",
@@ -25788,94 +25231,6 @@
     "enrichment_promoted": true
   },
   {
-    "name": "Hilton Garden Inn San Jose",
-    "sector": "Hospitality & Food Service",
-    "description": "Hilton Garden Inn San Jose/Milpitas provides hospitality services, offering 150 guest rooms, an on-site restaurant, and meeting facilities, serving business and leisure travelers visiting Silicon Valley, local companies, and attractions through lodging, dining, and event hosting.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "49-9071",
-      "37-1011",
-      "11-9081",
-      "35-1012",
-      "11-2022"
-    ],
-    "website": "https://www.hilton.com/en/hotels/sjcmhgi-hilton-garden-inn-milpitas/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
-    "name": "Hilton San Jose",
-    "sector": "Hospitality & Food Service",
-    "description": "The Hilton San Jose is a downtown hotel offering 353 guestrooms, dining at Secco Restaurant, and event spaces. It serves business and leisure travelers, including convention attendees and sports fans, with amenities like an outdoor pool and fitness center.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "11-9081",
-      "11-9051",
-      "35-1011",
-      "37-1011",
-      "49-9071"
-    ],
-    "website": "https://www.hilton.com/en/hotels/sjchhhf-hilton-san-jose/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
-    "name": "Hilton Santa Clara",
-    "sector": "Hospitality & Food Service",
-    "description": "Hilton Santa Clara is a 280-room hotel serving business and leisure travelers in Silicon Valley. It offers accommodation, California-inspired dining at La Fontana, and over 7,000 sq. ft. of event space for meetings and weddings, located near Levi's Stadium and the Convention Center.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "11-9081",
-      "13-1121",
-      "35-1011",
-      "37-1011",
-      "49-9071"
-    ],
-    "website": "https://www.hilton.com/en/hotels/sjcsdhf-hilton-santa-clara/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
-    "name": "Holiday Inn San Jose-Silicon Valley",
-    "sector": "Hospitality & Food Service",
-    "description": "Holiday Inn San Jose-Silicon Valley is a 354-room hotel offering lodging, two on-site restaurants, and meeting facilities in the Bay Area. It serves business and leisure travelers, including those needing airport access, with amenities like a complimentary shuttle, fitness center, and pool.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "11-9081",
-      "11-9051",
-      "35-1011",
-      "37-1011",
-      "49-9071"
-    ],
-    "website": "https://www.ihg.com/holidayinn/hotels/us/en/san-jose/sjcnn/hoteldetail",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
     "name": "Hotel Valencia Santana Row",
     "sector": "Hospitality & Food Service",
     "description": "Hotel Valencia Santana Row is a luxury boutique hotel in San Jose, California, offering sophisticated accommodations, dining at Oveja Negra, Vbar, and Cielo, and event spaces for meetings and weddings. It serves leisure and business travelers seeking a high-end experience in the Santana Row entertainment district.",
@@ -25890,50 +25245,6 @@
       "49-9071"
     ],
     "website": "https://www.hotelvalencia-santanarow.com/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
-    "name": "Hyatt Place San Jose/Downtown",
-    "sector": "Hospitality & Food Service",
-    "description": "Hyatt Place San Jose/Downtown is a hotel offering 239-240 guest rooms, 24/7 dining, and a fitness center. It serves business and leisure travelers, including convention attendees, with over 6,000 sq ft of meeting space in downtown San Jose.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "11-9081",
-      "11-9051",
-      "13-1121",
-      "37-1011",
-      "49-9071"
-    ],
-    "website": "https://www.hyatt.com/hyatt-place/en-US/sjczd-hyatt-place-san-jose-downtown",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
-    "name": "Hyatt Regency Santa Clara",
-    "sector": "Hospitality & Food Service",
-    "description": "Hyatt Regency Santa Clara is a 4-star hotel in Silicon Valley, offering 505 rooms, 60,000 sq ft of event space, and multiple restaurants. It serves business and leisure travelers, providing lodging, dining, and conference facilities, connected to the Santa Clara Convention Center.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "11-9081",
-      "11-9051",
-      "13-1121",
-      "35-1011",
-      "49-9071"
-    ],
-    "website": "https://www.hyatt.com/hyatt-regency/en-US/sjcrs-hyatt-regency-santa-clara",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
     ],
@@ -25997,7 +25308,7 @@
       "13-1121",
       "49-9071"
     ],
-    "website": "https://www.hilton.com/en/hotels/sjcsshh-signia-san-jose/",
+    "website": "https://www.hilton.com/en/hotels/sjcsmsa-signia-san-jose/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
     ],
@@ -26414,28 +25725,6 @@
     "enrichment_promoted": true
   },
   {
-    "name": "Santa Clara County Information Services",
-    "sector": "Professional Services",
-    "description": "Santa Clara County Information Services (ISD), including its Technology Service and Solutions (TSS) division, provides innovative IT solutions and cybersecurity for County departments, local governments, and residents across Santa Clara County. It manages extensive IT infrastructure, including networks connecting 60 external law enforcement agencies, and develops essential digital services.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "11-3021",
-      "15-1212",
-      "15-1231",
-      "15-1244",
-      "15-1252"
-    ],
-    "website": "https://isd.sccgov.org/",
-    "swp_sectors": [
-      "Information and Communication Technologies - Digital Media"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
     "name": "Santa Clara County Public Defender",
     "sector": "Government",
     "description": "The Santa Clara County Public Defender provides legal representation for indigent clients in criminal defense cases, including misdemeanors, adult felonies, juvenile justice, and mental health cases. They also offer record clearance and post-conviction services, operating across multiple offices in Santa Clara County.",
@@ -26449,28 +25738,6 @@
       "49-9071"
     ],
     "website": "https://publicdefender.sccgov.org/",
-    "swp_sectors": [
-      "Public Safety"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
-    "name": "Mountain View Police Department",
-    "sector": "Government",
-    "description": "The Mountain View Police Department is a local police agency in Mountain View, California, serving a population of 70,708 with 97 officers. It focuses on public safety, crime prevention, and emergency response, offering services like police reports, animal services, and traffic management, while fostering community trust.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "33-3051",
-      "33-1012",
-      "33-3021",
-      "19-4092",
-      "39-2021"
-    ],
-    "website": "https://www.mountainview.gov/departments/police",
     "swp_sectors": [
       "Public Safety"
     ],
@@ -26517,94 +25784,6 @@
     "website": "https://countyda.sccgov.org/",
     "swp_sectors": [
       "Public Safety"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
-    "name": "Santa Clara County Juvenile Services",
-    "sector": "Government",
-    "description": "Santa Clara County Juvenile Services, a division of the Probation Department, promotes community safety by providing assessments, supervision, and rehabilitation for youth and young adults involved in the justice system. It operates facilities like Juvenile Hall and William F. James Ranch, offering treatment, diversion, and reentry programs across Santa Clara County.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "21-1092",
-      "21-1093",
-      "11-9151",
-      "33-1011",
-      "49-9071"
-    ],
-    "website": "https://probation.sccgov.org/about-us/juvenile-services",
-    "swp_sectors": [
-      "Public Safety"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
-    "name": "Santa Clara Police Department",
-    "sector": "Government",
-    "description": "The Santa Clara Police Department provides law enforcement and policing services to the City of Santa Clara, a Bay Area community. It serves residents by responding to emergencies, investigating crimes, and offering community programs. The department operates with a command staff and divisions, including a 24-hour dispatch center for police, fire, and medical calls.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "33-3051",
-      "33-3021",
-      "33-1012",
-      "43-2099",
-      "11-9161"
-    ],
-    "website": "https://www.santaclaraca.gov/our-city/departments-a-f/police-department",
-    "swp_sectors": [
-      "Public Safety"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
-    "name": "Sunnyvale Public Safety Services",
-    "sector": "Government",
-    "description": "Sunnyvale Public Safety Services provides integrated police, fire, and emergency medical services to the Sunnyvale community. Its 293 cross-trained personnel deliver emergency response, crime prevention, fire prevention, and animal control, contributing to one of the safest cities in the region.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "33-3051",
-      "33-2011",
-      "29-2042",
-      "43-2099",
-      "33-1012"
-    ],
-    "website": "https://www.sunnyvale.ca.gov/government/departments/department-of-public-safety",
-    "swp_sectors": [
-      "Public Safety"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
-    "name": "Palo Alto Wastewater Treatment Plant",
-    "sector": "Government",
-    "description": "The Palo Alto Wastewater Treatment Plant treats 20 million gallons of sewage daily for 236,000 residents and businesses across six Bay Area communities. It protects San Francisco Bay by cleaning wastewater, producing recycled water, and processing sludge into biosolids, supported by ongoing capital improvements.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "51-8031",
-      "49-9041",
-      "49-9071",
-      "19-4042",
-      "51-1011"
-    ],
-    "website": "https://www.cityofpaloalto.org/Departments/Public-Works/Regional-Water-Quality-Control-Plant",
-    "swp_sectors": [
-      "Energy, Construction and Utilities"
     ],
     "enrichment_attempted": true,
     "identity_verified": true,
@@ -27443,28 +26622,6 @@
     ]
   },
   {
-    "name": "Glanbia Nutritionals",
-    "sector": "Manufacturing",
-    "description": "Glanbia Nutritionals is a global provider of nutritional ingredients and solutions for the food and beverage industry.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-3051",
-      "11-3061",
-      "13-1028",
-      "15-2031",
-      "19-1012",
-      "19-2031",
-      "51-5111"
-    ],
-    "website": "https://www.glanbianutritionals.com/",
-    "swp_sectors": [
-      "Agriculture, Water and Environmental Technologies"
-    ]
-  },
-  {
     "name": "Tarantino Wholesale Foods",
     "sector": "Manufacturing",
     "description": "Tarantino Wholesale Foods is a distributor of food products to restaurants and other food service businesses.",
@@ -28109,7 +27266,7 @@
       "15-1252",
       "49-2022"
     ],
-    "website": "https://www.niceforyou.com/us-en",
+    "website": "https://na.niceforyou.com",
     "swp_sectors": [
       "Information and Communication Technologies - Digital Media"
     ]
@@ -28481,7 +27638,7 @@
       "17-2112",
       "53-5031"
     ],
-    "website": "https://www.tridentmaritimesystems.com/",
+    "website": "https://www.tridentllc.com/",
     "swp_sectors": [
       "Business and Entrepreneurship"
     ]
@@ -28649,47 +27806,6 @@
       "29-1141"
     ],
     "website": "https://www.hologic.com/",
-    "swp_sectors": [
-      "Advanced Manufacturing"
-    ]
-  },
-  {
-    "name": "Howard Leight Industries",
-    "sector": "Manufacturing",
-    "description": "Howard Leight Industries manufactures hearing protection and safety equipment.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3051",
-      "13-1081",
-      "15-1252",
-      "19-5011",
-      "49-9062"
-    ],
-    "website": "https://www.howardleight.com/",
-    "swp_sectors": [
-      "Advanced Manufacturing"
-    ]
-  },
-  {
-    "name": "Instrumentation Laboratory",
-    "sector": "Manufacturing",
-    "description": "Instrumentation Laboratory develops and manufactures diagnostic instruments and reagents.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3021",
-      "11-9111",
-      "13-1081",
-      "15-1252",
-      "17-2031",
-      "29-2018"
-    ],
-    "website": "https://www.instrumentationlaboratory.com/",
     "swp_sectors": [
       "Advanced Manufacturing"
     ]
@@ -28937,25 +28053,6 @@
     ]
   },
   {
-    "name": "California Splendor",
-    "sector": "Wholesale",
-    "description": "California Splendor is a wholesale distributor of flowers and floral products.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1028",
-      "13-1081",
-      "41-4011"
-    ],
-    "website": "https://www.californiasplendor.com/",
-    "swp_sectors": [
-      "Global Trade"
-    ]
-  },
-  {
     "name": "Coast Citrus Distributors",
     "sector": "Wholesale",
     "description": "Coast Citrus Distributors is a wholesale distributor of citrus fruits.",
@@ -29112,7 +28209,7 @@
       "43-4161",
       "49-3023"
     ],
-    "website": "https://www.ballautomotivegroup.com/",
+    "website": "https://www.ballautogroup.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
     ]
@@ -29370,26 +28467,6 @@
     ]
   },
   {
-    "name": "Kearny Mesa Chrysler Dodge",
-    "sector": "Retail",
-    "description": "A dealership selling and servicing Chrysler and Dodge vehicles.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-2021",
-      "11-3061",
-      "13-1081",
-      "41-4011",
-      "43-4161",
-      "49-3023"
-    ],
-    "website": "https://www.kmcdjr.com/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
     "name": "Kearny Mesa Ford",
     "sector": "Retail",
     "description": "A dealership selling and servicing Ford vehicles.",
@@ -29485,26 +28562,6 @@
       "49-3023"
     ],
     "website": "https://www.lexuselcajon.com/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
-    "name": "Lexus Escondido",
-    "sector": "Retail",
-    "description": "A dealership selling and servicing Lexus vehicles.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-2021",
-      "11-3061",
-      "13-1081",
-      "41-4011",
-      "43-4161",
-      "49-3023"
-    ],
-    "website": "https://www.lexusescondido.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
     ]
@@ -32460,7 +31517,7 @@
       "13-1071",
       "13-2011"
     ],
-    "website": "https://www.paradisevalleyhospital.net/",
+    "website": "https://www.paradisevalleyhospital.com/",
     "swp_sectors": [
       "Health"
     ]
@@ -32623,25 +31680,6 @@
       "43-4161"
     ],
     "website": "https://www.covenantcare.com/",
-    "swp_sectors": [
-      "Health"
-    ]
-  },
-  {
-    "name": "Covenant Living at Mount Miguel",
-    "sector": "Healthcare",
-    "description": "A senior living community located at Mount Miguel.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-9111",
-      "29-1141",
-      "29-2061",
-      "31-1131",
-      "13-1071"
-    ],
-    "website": "https://www.covenantliving.org/locations/mount-miguel",
     "swp_sectors": [
       "Health"
     ]
@@ -32881,24 +31919,6 @@
     ]
   },
   {
-    "name": "Dan McKinney Family YMCA",
-    "sector": "Healthcare",
-    "description": "This is a YMCA branch focused on family services.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-9072",
-      "11-3012",
-      "13-1121",
-      "25-9099"
-    ],
-    "website": "https://www.ymcasd.org/dan-mckinney-family-ymca",
-    "swp_sectors": [
-      "Education and Human Development"
-    ]
-  },
-  {
     "name": "Info Line of San Diego County",
     "sector": "Healthcare",
     "description": "This organization provides an information line for San Diego County residents.",
@@ -32930,24 +31950,6 @@
       "43-4161"
     ],
     "website": "https://interfaithservices.org/",
-    "swp_sectors": [
-      "Education and Human Development"
-    ]
-  },
-  {
-    "name": "Jackie Robinson Family YMCA",
-    "sector": "Healthcare",
-    "description": "This is a YMCA branch named after Jackie Robinson, focusing on family services.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-9072",
-      "11-3012",
-      "13-1121",
-      "25-9099"
-    ],
-    "website": "https://www.ymcasd.org/jackie-robinson-family-ymca",
     "swp_sectors": [
       "Education and Human Development"
     ]
@@ -32985,42 +31987,6 @@
       "25-9099"
     ],
     "website": "https://www.lfjcc.org/",
-    "swp_sectors": [
-      "Education and Human Development"
-    ]
-  },
-  {
-    "name": "Magdalena Ecke Family YMCA",
-    "sector": "Healthcare",
-    "description": "This is a YMCA branch named after Magdalena Ecke, focusing on family services.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-9072",
-      "11-3012",
-      "13-1121",
-      "25-9099"
-    ],
-    "website": "https://www.ymcasd.org/magdalena-ecke-family-ymca",
-    "swp_sectors": [
-      "Education and Human Development"
-    ]
-  },
-  {
-    "name": "Mission Valley YMCA",
-    "sector": "Healthcare",
-    "description": "This is a YMCA branch located in Mission Valley.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-9072",
-      "11-3012",
-      "13-1121",
-      "25-9099"
-    ],
-    "website": "https://www.ymcasd.org/mission-valley-ymca",
     "swp_sectors": [
       "Education and Human Development"
     ]
@@ -33083,24 +32049,6 @@
     ]
   },
   {
-    "name": "Rancho Family YMCA",
-    "sector": "Healthcare",
-    "description": "This is a YMCA branch focused on family services in the Rancho area.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-9072",
-      "11-3012",
-      "13-1121",
-      "25-9099"
-    ],
-    "website": "https://www.ymcasd.org/rancho-family-ymca",
-    "swp_sectors": [
-      "Education and Human Development"
-    ]
-  },
-  {
     "name": "Salvation Army Kroc Corps",
     "sector": "Healthcare",
     "description": "This is a Salvation Army center offering various community programs.",
@@ -33133,24 +32081,6 @@
       "21-1099"
     ],
     "website": "https://sayfsd.org/",
-    "swp_sectors": [
-      "Education and Human Development"
-    ]
-  },
-  {
-    "name": "South Bay Family YMCA",
-    "sector": "Healthcare",
-    "description": "This is a YMCA branch in the South Bay area, focusing on family services.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-9072",
-      "11-3012",
-      "13-1121",
-      "25-9099"
-    ],
-    "website": "https://www.ymcasd.org/south-bay-family-ymca",
     "swp_sectors": [
       "Education and Human Development"
     ]
@@ -33436,25 +32366,6 @@
     ]
   },
   {
-    "name": "San Diego Yacht Club",
-    "sector": "Arts & Entertainment",
-    "description": "This is a yacht club located in San Diego.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-9072",
-      "11-3012",
-      "13-1121",
-      "53-5021",
-      "53-5022"
-    ],
-    "website": "https://www.sdyc.org/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
     "name": "Andaz San Diego",
     "sector": "Hospitality & Food Service",
     "description": "This is a hotel.",
@@ -33517,7 +32428,7 @@
       "11-3012",
       "13-1121"
     ],
-    "website": "https://www.hilton.com/en/hotels/sancrcy-cape-rey-carlsbad-a-hilton-resort/",
+    "website": "https://www.caperey.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
     ]
@@ -33591,23 +32502,6 @@
     ]
   },
   {
-    "name": "Crowne Plaza San Diego-Mission Valley",
-    "sector": "Hospitality & Food Service",
-    "description": "This is a hotel located in Mission Valley.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1121"
-    ],
-    "website": "https://www.ihg.com/crowneplaza/hotels/us/en/san-diego/sanmv/hoteldetail",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
     "name": "Dana on Mission Bay",
     "sector": "Hospitality & Food Service",
     "description": "This is a hotel located on Mission Bay.",
@@ -33620,23 +32514,6 @@
       "13-1121"
     ],
     "website": "https://www.thedana.com/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
-    "name": "Doubletree by Hilton Hotel San Diego",
-    "sector": "Hospitality & Food Service",
-    "description": "This is a hotel.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1121"
-    ],
-    "website": "https://www.hilton.com/en/hotels/sanmvdt-doubletree-san-diego-mission-valley/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
     ]
@@ -33794,40 +32671,6 @@
       "13-1121"
     ],
     "website": "https://www.thegrandecolonial.com/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
-    "name": "Hilton La Jolla Torrey Pines",
-    "sector": "Hospitality & Food Service",
-    "description": "This is a hotel located in La Jolla near Torrey Pines.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1121"
-    ],
-    "website": "https://www.hilton.com/en/hotels/sandhhh-hilton-la-jolla-torrey-pines/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
-    "name": "Hilton San Diego Airport",
-    "sector": "Hospitality & Food Service",
-    "description": "This is a hotel located at the San Diego airport.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1121"
-    ],
-    "website": "https://www.hilton.com/en/hotels/sanabhf-hilton-san-diego-airport-harbor-island/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
     ]
@@ -34520,26 +33363,6 @@
     ]
   },
   {
-    "name": "Costa Mesa Public Services",
-    "sector": "Construction",
-    "description": "Costa Mesa Public Services is a municipal department overseeing various public works and services.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-3013",
-      "11-9199",
-      "13-1081",
-      "17-2051",
-      "49-9092"
-    ],
-    "website": "https://www.costamesaca.gov/city-hall/city-departments/public-services",
-    "swp_sectors": [
-      "Energy, Construction and Utilities"
-    ]
-  },
-  {
     "name": "Largo Concrete",
     "sector": "Construction",
     "description": "Largo Concrete is a company specializing in concrete installation and finishing.",
@@ -34555,26 +33378,6 @@
       "49-3023"
     ],
     "website": "https://www.largoconcrete.com/",
-    "swp_sectors": [
-      "Energy, Construction and Utilities"
-    ]
-  },
-  {
-    "name": "Letner Roofing",
-    "sector": "Construction",
-    "description": "Letner Roofing provides professional roofing services for commercial and residential properties.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-3012",
-      "11-9199",
-      "13-1081",
-      "17-3029",
-      "49-3023",
-      "49-9062"
-    ],
-    "website": "https://letnerroofing.com/",
     "swp_sectors": [
       "Energy, Construction and Utilities"
     ]
@@ -35206,7 +34009,7 @@
       "41-4011",
       "51-4111"
     ],
-    "website": "https://www.airtech.lnpgroup.com/",
+    "website": "https://www.airtechintl.com",
     "swp_sectors": [
       "Advanced Manufacturing"
     ]
@@ -35889,7 +34692,7 @@
       "41-4011",
       "49-2093"
     ],
-    "website": "https://www.esterline.com/",
+    "website": "https://www.leachcorp.com/",
     "swp_sectors": [
       "Advanced Manufacturing"
     ]
@@ -37640,27 +36443,6 @@
     ]
   },
   {
-    "name": "Audi Mission Viejo",
-    "sector": "Retail",
-    "description": "Audi Mission Viejo is a dealership selling and servicing Audi vehicles.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-2021",
-      "11-3012",
-      "11-3061",
-      "13-1082",
-      "41-4011",
-      "49-3023"
-    ],
-    "website": "https://www.audimissionviejo.com/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
     "name": "Autonation Ford Tustin",
     "sector": "Retail",
     "description": "Autonation Ford Tustin is a dealership selling and servicing Ford vehicles.",
@@ -38408,7 +37190,7 @@
       "13-2011",
       "13-2081"
     ],
-    "website": "https://www.baker.com/",
+    "website": "https://www.bakertilly.com/",
     "swp_sectors": [
       "Business and Entrepreneurship"
     ]
@@ -39157,7 +37939,7 @@
       "15-1244",
       "49-2097"
     ],
-    "website": "https://www.bdsconnected.com/",
+    "website": "https://www.BDSsolutions.com",
     "swp_sectors": [
       "Business and Entrepreneurship"
     ]
@@ -39495,24 +38277,6 @@
       "43-4161"
     ],
     "website": "https://bolsagrande.ggusd.us/",
-    "swp_sectors": [
-      "Education and Human Development"
-    ]
-  },
-  {
-    "name": "Brea-Olinda High School",
-    "sector": "Education",
-    "description": "Brea-Olinda High School is a public secondary school.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-9039",
-      "25-2031",
-      "25-9044",
-      "43-4161"
-    ],
-    "website": "https://www.bousd.us/brea-olinda-high-school",
     "swp_sectors": [
       "Education and Human Development"
     ]
@@ -40616,27 +39380,6 @@
     ]
   },
   {
-    "name": "Orange County Global Medical Center",
-    "sector": "Healthcare",
-    "description": "A hospital providing comprehensive medical and emergency services.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-9111",
-      "13-1071",
-      "15-1211",
-      "29-1141",
-      "31-1131",
-      "43-4161"
-    ],
-    "website": "https://ocgmc.com/",
-    "swp_sectors": [
-      "Health"
-    ]
-  },
-  {
     "name": "Providence Mission Hospital Laguna Beach",
     "sector": "Healthcare",
     "description": "A hospital offering a wide array of medical and surgical services, including emergency care.",
@@ -41130,7 +39873,7 @@
       "25-9099",
       "27-1029"
     ],
-    "website": "https://www.cityoforange.org/departments/community-services/william-woollett-jr-aquatics-center",
+    "website": "https://www.cityofirvine.org/aquatics-centers",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
     ]
@@ -41151,26 +39894,6 @@
       "43-4161"
     ],
     "website": "https://www.xponential.com/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
-    "name": "Anaheim Marriott",
-    "sector": "Hospitality & Food Service",
-    "description": "A large hotel in Anaheim offering accommodation and event services.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3013",
-      "11-9179",
-      "13-1121",
-      "43-4161"
-    ],
-    "website": "https://www.marriott.com/en-us/hotels/snaah-anaheim-marriott/overview/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
     ]
@@ -41212,26 +39935,6 @@
       "43-4161"
     ],
     "website": "https://www.balboabayresort.com/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
-    "name": "Crowne Plaza Costa Mesa",
-    "sector": "Hospitality & Food Service",
-    "description": "A Crowne Plaza hotel serving Costa Mesa and the Orange area.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3013",
-      "11-9179",
-      "13-1121",
-      "43-4161"
-    ],
-    "website": "https://www.ihg.com/crowneplaza/hotels/us/en/costa-mesa/snacm/hoteldetail",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
     ]
@@ -41299,46 +40002,6 @@
     ]
   },
   {
-    "name": "Fairfield Anaheim Resort",
-    "sector": "Hospitality & Food Service",
-    "description": "A resort hotel in Anaheim offering lodging and amenities.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3013",
-      "11-9179",
-      "13-1121",
-      "43-4161"
-    ],
-    "website": "https://www.marriott.com/en-us/hotels/snafi-fairfield-inn-anaheim-resort/overview/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
-    "name": "Four Points By Sheraton Anaheim",
-    "sector": "Hospitality & Food Service",
-    "description": "A Sheraton hotel located in Anaheim.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3013",
-      "11-9179",
-      "13-1121",
-      "43-4161"
-    ],
-    "website": "https://www.marriott.com/en-us/hotels/snayc-four-points-anaheim/overview/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
     "name": "Great Wolf Lodge",
     "sector": "Hospitality & Food Service",
     "description": "A family resort featuring an indoor waterpark and entertainment.",
@@ -41355,86 +40018,6 @@
       "43-4161"
     ],
     "website": "https://www.greatwolf.com/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
-    "name": "Hilton Anaheim",
-    "sector": "Hospitality & Food Service",
-    "description": "A large hotel in Anaheim offering extensive amenities and event spaces.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3013",
-      "11-9179",
-      "13-1121",
-      "43-4161"
-    ],
-    "website": "https://www.hilton.com/en/hotels/anahihh-hilton-anaheim/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
-    "name": "Hilton Irvine/Orange County",
-    "sector": "Hospitality & Food Service",
-    "description": "A Hilton hotel serving Irvine and the Orange County area.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3013",
-      "11-9179",
-      "13-1121",
-      "43-4161"
-    ],
-    "website": "https://www.hilton.com/en/hotels/snaihhf-hilton-irvine-orange-county-airport/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
-    "name": "Hilton Orange County/Costa Mesa",
-    "sector": "Hospitality & Food Service",
-    "description": "A Hilton hotel located in Costa Mesa, serving Orange County.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3013",
-      "11-9179",
-      "13-1121",
-      "43-4161"
-    ],
-    "website": "https://www.hilton.com/en/hotels/snacmhf-hilton-orange-county-costa-mesa/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
-    "name": "Holiday Inn Suites Anaheim",
-    "sector": "Hospitality & Food Service",
-    "description": "A Holiday Inn hotel in Anaheim offering suite accommodations.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3013",
-      "11-9179",
-      "13-1121",
-      "43-4161"
-    ],
-    "website": "https://www.ihg.com/holidayinn/hotels/us/en/anaheim/anadt/hoteldetail",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
     ]
@@ -41825,45 +40408,6 @@
     ]
   },
   {
-    "name": "Laguna Beach Lifeguard Services",
-    "sector": "Government",
-    "description": "Laguna Beach Lifeguard Services provides beach safety and emergency response.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9161",
-      "13-1199",
-      "29-2042",
-      "43-4161"
-    ],
-    "website": "https://www.lagunabeachcity.net/city-hall/marine-safety",
-    "swp_sectors": [
-      "Public Safety"
-    ]
-  },
-  {
-    "name": "Fullerton Public Works Maintenance",
-    "sector": "Government",
-    "description": "Fullerton Public Works Maintenance is responsible for maintaining city infrastructure and facilities.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3013",
-      "11-9041",
-      "17-2051",
-      "43-4161",
-      "49-9062"
-    ],
-    "website": "https://www.cityoffullerton.com/gov/departments/public_works/",
-    "swp_sectors": [
-      "Energy, Construction and Utilities"
-    ]
-  },
-  {
     "name": "Brea Police Department",
     "sector": "Government",
     "description": "Brea Police Department provides law enforcement services and maintains public safety in Brea.",
@@ -41883,25 +40427,6 @@
     ]
   },
   {
-    "name": "Costa Mesa Fire and Rescue Administration",
-    "sector": "Government",
-    "description": "Costa Mesa Fire and Rescue Administration manages the operations and administrative functions of the fire department.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9161",
-      "13-1199",
-      "33-1021",
-      "43-4161"
-    ],
-    "website": "https://www.costamesaca.gov/city-hall/city-departments/fire-rescue",
-    "swp_sectors": [
-      "Public Safety"
-    ]
-  },
-  {
     "name": "Orange County Sheriff's Department",
     "sector": "Government",
     "description": "Orange County Sheriff's Department is responsible for law enforcement, corrections, and court services.",
@@ -41916,25 +40441,6 @@
       "43-4161"
     ],
     "website": "https://www.ocsheriff.gov/",
-    "swp_sectors": [
-      "Public Safety"
-    ]
-  },
-  {
-    "name": "Orange Police Department",
-    "sector": "Government",
-    "description": "Orange Police Department provides law enforcement services and ensures public safety in the city of Orange.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9161",
-      "13-1041",
-      "33-1021",
-      "43-4161"
-    ],
-    "website": "https://www.cityoforange.org/departments/police",
     "swp_sectors": [
       "Public Safety"
     ]
@@ -43149,28 +41655,6 @@
       "29-2034"
     ],
     "website": "https://www.senecahealthcare.org",
-    "swp_sectors": [
-      "Health"
-    ],
-    "identity_verified": true,
-    "enrichment_attempted": true,
-    "enrichment_promoted": true
-  },
-  {
-    "name": "Shasta County Mental Health Services",
-    "sector": "Healthcare",
-    "description": "Shasta County Mental Health Services, part of the Health and Human Services Agency, provides comprehensive mental health, crisis, and substance use recovery services to adults, children, and families across Shasta County. Key activities include outpatient counseling, medication support, case management, and 24-hour crisis response.",
-    "regions": [
-      "FN"
-    ],
-    "occupations": [
-      "21-1013",
-      "21-1023",
-      "21-1093",
-      "29-2053",
-      "11-9111"
-    ],
-    "website": "https://www.shastacounty.gov/mental-health",
     "swp_sectors": [
       "Health"
     ],

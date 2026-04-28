@@ -196,6 +196,46 @@ def _check_url(url: str) -> tuple[str, str | None, int | str | None]:
         return ("unknown", None, f"err:{type(e).__name__}")
 
 
+async def _gemini_verify(client, types, url: str, employer_name: str) -> str:
+    """Ask Gemini whether the URL serves real, public-accessible business
+    content. Returns 'ok', 'broken', or 'unknown'.
+
+    Used as escalation when CLI HTTP probing returns 'unknown' (connection
+    error, timeout, SSL — could be anti-bot blocking us specifically OR
+    a genuinely-dead site; CLI can't tell). Gemini's url_context fetches
+    via Google's whitelisted infrastructure, which most anti-bot
+    fronts permit. So Gemini's success/failure is a stronger signal of
+    'is this URL real?' than our CLI probe's failure alone.
+    """
+    prompt = (
+        f"Read the page at {url} and report what you find. "
+        "If the page is dead, parked, empty, or only shows an error or "
+        "challenge with no real content, respond exactly: BROKEN\n"
+        "If the page serves real public business content, respond exactly: OK\n"
+        "If you cannot determine either way, respond exactly: UNKNOWN\n"
+        "Output only one of those three tokens. No prose, no JSON."
+    )
+    config = types.GenerateContentConfig(
+        tools=[types.Tool(url_context=types.UrlContext())],
+        temperature=0.0,
+    )
+    try:
+        r = await client.aio.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=prompt,
+            config=config,
+        )
+        text = (r.text or "").strip().upper()
+        if "OK" in text and "BROKEN" not in text:
+            return "ok"
+        if "BROKEN" in text:
+            return "broken"
+        return "unknown"
+    except Exception as e:
+        logger.warning(f"  gemini_verify({employer_name}) failed: {e}")
+        return "unknown"
+
+
 async def _try_find_replacement(client, types, employer: dict) -> str | None:
     """Try to find a live replacement URL for an employer with a broken URL.
 
@@ -255,7 +295,7 @@ async def audit(
 
     broken: list[tuple[dict, str | None, int | str | None]] = []
     ok_count = 0
-    unknown_count = 0
+    unknown: list[tuple[dict, str | int | None]] = []
     with ThreadPoolExecutor(max_workers=_CHECK_CONCURRENCY) as ex:
         for emp, status, final, code in ex.map(check, targets):
             if status == "ok":
@@ -263,19 +303,64 @@ async def audit(
             elif status == "broken":
                 broken.append((emp, final, code))
             else:
-                unknown_count += 1
+                unknown.append((emp, code))
 
     logger.info(
-        f"Liveness: {ok_count} ok, {len(broken)} broken (404/410), "
-        f"{unknown_count} unknown"
+        f"Liveness (CLI probe): {ok_count} ok, {len(broken)} broken, "
+        f"{len(unknown)} unknown"
     )
+
+    # Need a Gemini client for both the unknown-escalation and the
+    # broken-URL research path. Set up once.
+    client = None
+    types = None
+    if research:
+        api_key = os.environ.get("GEMINI_API_KEY")
+        if api_key:
+            from google import genai
+            from google.genai import types as _types
+            client = genai.Client(api_key=api_key)
+            types = _types
+        else:
+            logger.warning("No GEMINI_API_KEY — skipping verify+research")
+
+    # ── Stage 1.5: Gemini-verify the unknown set ─────────────────────────
+    # CLI 'unknown' (connection error, timeout, SSL) is ambiguous: could
+    # be anti-bot blocking us specifically (real site, browser users see
+    # it fine) OR a genuinely-dead site. Gemini's url_context fetches via
+    # Google's whitelisted infrastructure, which most anti-bot fronts
+    # permit. So Gemini's verdict converts ambiguity into 'ok' or
+    # 'broken'. Without this step, dead sites like Spartan Moving stay
+    # in production because our CLI can't tell them apart from
+    # bot-fronted real sites like Foster Farms.
+    unknown_ok = 0
+    unknown_still_unclear = 0
+    if client is not None and unknown:
+        logger.info(f"Gemini-verifying {len(unknown)} CLI-unknown URLs")
+        for emp, code in unknown:
+            verdict = await _gemini_verify(client, types, emp["website"], emp["name"])
+            if verdict == "ok":
+                unknown_ok += 1
+            elif verdict == "broken":
+                broken.append((emp, emp["website"], "gemini_verify_broken"))
+                logger.info(f"  Gemini-verify: {emp['name']} → broken (CLI was {code})")
+            else:
+                unknown_still_unclear += 1
+        logger.info(
+            f"Gemini-verify: {unknown_ok} confirmed ok, "
+            f"{len(broken) - (len(broken) - sum(1 for _,_,c in broken if c == 'gemini_verify_broken'))} "
+            f"escalated to broken, {unknown_still_unclear} still unclear"
+        )
+    else:
+        # No Gemini available; treat all unknowns as keep (current behavior).
+        unknown_still_unclear = len(unknown)
 
     if not broken:
         return {
             "targets": len(targets),
-            "ok": ok_count,
+            "ok": ok_count + unknown_ok,
             "broken": 0,
-            "unknown": unknown_count,
+            "unknown": unknown_still_unclear,
             "rotated": 0,
             "dropped": 0,
         }
@@ -283,19 +368,6 @@ async def audit(
     # ── Stage 2: research replacements for broken URLs ───────────────────
     rotated = 0
     drop_set: set[str] = set()
-
-    if research:
-        api_key = os.environ.get("GEMINI_API_KEY")
-        if not api_key:
-            logger.warning("No GEMINI_API_KEY — skipping research, will drop all broken")
-            client = None
-        else:
-            from google import genai
-            from google.genai import types
-            client = genai.Client(api_key=api_key)
-    else:
-        client = None
-        types = None
 
     for emp, final, code in broken:
         prior_url = emp["website"]
@@ -338,9 +410,9 @@ async def audit(
 
     return {
         "targets": len(targets),
-        "ok": ok_count,
+        "ok": ok_count + unknown_ok,
         "broken": len(broken),
-        "unknown": unknown_count,
+        "unknown": unknown_still_unclear,
         "rotated": rotated,
         "dropped": len(drop_set),
     }
