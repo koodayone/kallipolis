@@ -57,6 +57,32 @@ _CHECK_CONCURRENCY = 20
 # positives from bot-fronting and don't reliably indicate broken pages.
 _BROKEN_STATUSES = frozenset({404, 410})
 
+# Auth-wall hosts: when an employer URL redirects to one of these, the
+# real public page is gated behind employee SSO and the user clicking the
+# atlas link sees a sign-in form, not the company's site. These employers
+# don't have a public-accessible web presence and should be dropped.
+_AUTH_WALL_HOSTS = frozenset({
+    "login.microsoftonline.com",
+    "login.salesforce.com",
+    "accounts.google.com",
+    "auth.okta.com",
+    "okta.com",  # subdomain matching handled separately
+    "login.adp.com",
+    "workday.com",
+    "myworkday.com",
+    "signin.aws.amazon.com",
+    "auth0.com",
+    "auth.pingone.com",
+    "login.live.com",
+    "secureauth.com",
+})
+
+# Body length below this threshold (in bytes) signals a dead/parked page.
+# Real corporate homepages are typically tens of kilobytes minimum once
+# you account for boilerplate <head>, navigation, and meta tags. A 200
+# OK with < 500 bytes is essentially an empty response.
+_MIN_BODY_BYTES = 500
+
 
 def _is_loadable(emp: dict) -> bool:
     """Mirror of load.py's filter — only audit URLs that would actually load."""
@@ -67,12 +93,40 @@ def _is_loadable(emp: dict) -> bool:
     return emp.get("enrichment_promoted") is True
 
 
+def _final_host_is_auth_wall(final_url: str) -> bool:
+    """Check whether the redirect terminus is a known SSO/auth provider."""
+    try:
+        from urllib.parse import urlparse
+        host = (urlparse(final_url).hostname or "").lower()
+    except Exception:
+        return False
+    if not host:
+        return False
+    # Direct host match
+    if host in _AUTH_WALL_HOSTS:
+        return True
+    # Suffix match for subdomains (e.g., something.okta.com)
+    for auth_host in _AUTH_WALL_HOSTS:
+        if host.endswith("." + auth_host) or host == auth_host:
+            return True
+    return False
+
+
 def _check_url(url: str) -> tuple[str, str | None, int | str | None]:
     """Returns (status, final_url, http_code).
 
     status: 'ok' | 'broken' | 'unknown'
     final_url: terminal URL after redirects, or None
-    http_code: integer status code, or string label like 'timeout'/'ssl'
+    http_code: integer status code; or label like 'timeout'/'ssl'/'auth_wall'/'empty_body'
+
+    A URL is broken if any of:
+      - Final HTTP status is 404 or 410 (page gone)
+      - Final URL after redirects lands on a known SSO/auth host
+        (the public can't access the employer's site without login)
+      - GET response body is empty or below _MIN_BODY_BYTES (dead/parked)
+
+    The body-length check fires only when status is 2xx/3xx — if HEAD
+    already gave 4xx/5xx, that's reported on its own.
     """
     headers = {"User-Agent": _BROWSER_UA}
     try:
@@ -81,10 +135,43 @@ def _check_url(url: str) -> tuple[str, str | None, int | str | None]:
             headers=headers,
         )
         code = r.status_code
+        final_url = r.url
+
+        # Early-exit on hard 404/410 from HEAD.
         if code in _BROKEN_STATUSES:
-            return ("broken", r.url, code)
+            return ("broken", final_url, code)
+
+        # Auth-wall detection: if redirects land on an SSO host, the
+        # employer's public site is gated behind login.
+        if code < 400 and _final_host_is_auth_wall(final_url):
+            return ("broken", final_url, "auth_wall")
+
         if code < 400:
-            return ("ok", r.url, code)
+            # Body-length sanity check: a 200 OK with empty/tiny body is
+            # a parked or dead site. Gated on status 200 specifically
+            # because:
+            #   - 202 Accepted = bot-challenge response (Cloudflare,
+            #     etc.) where the body is a small JS payload that a
+            #     real browser executes to get the real page
+            #   - 204 No Content / 205 Reset = expected-empty by spec
+            #   - 3xx is already handled by allow_redirects
+            try:
+                r2 = requests.get(
+                    url, timeout=_TIMEOUT, allow_redirects=True, verify=False,
+                    headers={**headers, "Range": "bytes=0-2047"},
+                )
+                # Re-check auth-wall after GET (HEAD-only redirects may differ from GET).
+                if _final_host_is_auth_wall(r2.url):
+                    return ("broken", r2.url, "auth_wall")
+                body_len = len(r2.content or b"")
+                if r2.status_code == 200 and body_len < _MIN_BODY_BYTES:
+                    return ("broken", r2.url, "empty_body")
+            except Exception:
+                # If GET fails when HEAD succeeded, fall through to ok
+                # (don't flap on transient GET issues).
+                pass
+            return ("ok", final_url, code)
+
         # 4xx/5xx that isn't 404/410 — many servers reject HEAD but accept
         # GET. Confirm with GET before declaring unknown.
         r2 = requests.get(
@@ -95,6 +182,8 @@ def _check_url(url: str) -> tuple[str, str | None, int | str | None]:
         if r2.status_code in _BROKEN_STATUSES:
             return ("broken", r2.url, r2.status_code)
         if r2.status_code < 400:
+            if _final_host_is_auth_wall(r2.url):
+                return ("broken", r2.url, "auth_wall")
             return ("ok", r2.url, r2.status_code)
         return ("unknown", None, r2.status_code)
     except requests.exceptions.SSLError:

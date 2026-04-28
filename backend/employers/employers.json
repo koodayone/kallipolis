@@ -5577,29 +5577,6 @@
     "enrichment_promoted": true
   },
   {
-    "name": "Student Transportation of America",
-    "sector": "Transportation",
-    "description": "Student Transportation of America (STA) provides safe, reliable, and environmentally-conscious transportation services, including contracted, charter, and special needs transportation. Serving communities and families across North America since 1997, STA operates over 1,000 vehicles and maintains a 100% contract renewal rate.",
-    "regions": [
-      "SCC",
-      "Bay"
-    ],
-    "occupations": [
-      "53-3052",
-      "49-3031",
-      "11-3071",
-      "49-1011",
-      "53-6041"
-    ],
-    "website": "https://www.ridesta.com",
-    "swp_sectors": [
-      "Advanced Transportation and Logistics"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
     "name": "Santa Barbara Metropolitan Transit District",
     "sector": "Transportation",
     "description": "Santa Barbara MTD is the public transit system for Santa Barbara's South Coast, providing safe, reliable, and comfortable bus transportation. It serves the community by enhancing mobility through various routes and services, and is a member of the California Transit Association.",
@@ -7904,29 +7881,6 @@
     "enrichment_promoted": true
   },
   {
-    "name": "Technicolor",
-    "sector": "Information & Media",
-    "description": "Technicolor Group, historically a global leader in visual effects and animation for film, TV, and advertising, ceased its California operations, including its Culver City studio, in early 2025 due to financial challenges. Its former subsidiaries provided VFX and animation services worldwide, with many assets now acquired by other entities.",
-    "regions": [
-      "SCC",
-      "LA"
-    ],
-    "occupations": [
-      "27-1014",
-      "15-1252",
-      "27-2012",
-      "15-1244",
-      "13-1082"
-    ],
-    "website": "https://www.technicolor.com/",
-    "swp_sectors": [
-      "Information and Communication Technologies - Digital Media"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
     "name": "Olde Thompson",
     "sector": "Professional Services",
     "description": "Olde Thompson manufactures and distributes spices, seasonings, grinders, refills, and housewares like spice racks and mills. Their primary industry is food products and kitchenware.",
@@ -9449,29 +9403,6 @@
       "49-9071"
     ],
     "website": "https://www.chilis.com",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
-    "name": "In-N-Out Burger",
-    "sector": "Hospitality & Food Service",
-    "description": "In-N-Out Burger is a regional fast-food chain, founded in California in 1948, serving high-quality burgers, fresh-cut fries, and shakes. With over 400 locations across 10 states, primarily in the West Coast and Southwest, it serves a loyal customer base through dine-in and drive-thru experiences, emphasizing fresh ingredients and in-person service.",
-    "regions": [
-      "SCC",
-      "Bay"
-    ],
-    "occupations": [
-      "11-9051",
-      "35-1012",
-      "49-9071",
-      "49-9021",
-      "53-3032"
-    ],
-    "website": "https://www.in-n-out.com",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
     ],
@@ -11893,27 +11824,6 @@
     ]
   },
   {
-    "name": "Ricon Corporation",
-    "sector": "Wholesale",
-    "description": "Ricon Corporation is a manufacturer of wheelchair lifts and related accessibility products.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3051",
-      "13-1081",
-      "17-2141",
-      "43-4161",
-      "49-3023",
-      "51-4111"
-    ],
-    "website": "https://www.riconcorp.com",
-    "swp_sectors": [
-      "Advanced Manufacturing"
-    ]
-  },
-  {
     "name": "Shield CA Health Care Center",
     "sector": "Wholesale",
     "description": "Shield CA Health Care Center is a healthcare facility providing medical services.",
@@ -12108,27 +12018,6 @@
       "53-3032"
     ],
     "website": "https://www.sysco.com/contact/our-locations/los-angeles",
-    "swp_sectors": [
-      "Global Trade"
-    ]
-  },
-  {
-    "name": "UNFI Distribution Center",
-    "sector": "Wholesale",
-    "description": "UNFI Distribution Center is a wholesale distributor of natural and organic foods.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1081",
-      "13-2011",
-      "41-4011",
-      "43-4161",
-      "53-3032"
-    ],
-    "website": "https://www.unfi.com",
     "swp_sectors": [
       "Global Trade"
     ]
@@ -12977,26 +12866,6 @@
     ]
   },
   {
-    "name": "TForce Freight",
-    "sector": "Transportation",
-    "description": "TForce Freight is a less-than-truckload (LTL) freight carrier.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1081",
-      "13-2011",
-      "43-4161",
-      "53-3032"
-    ],
-    "website": "https://www.tforcefreight.com",
-    "swp_sectors": [
-      "Advanced Transportation and Logistics"
-    ]
-  },
-  {
     "name": "Amtrak",
     "sector": "Transportation",
     "description": "Amtrak is the national passenger railroad company of the United States.",
@@ -13616,23 +13485,6 @@
     ]
   },
   {
-    "name": "Apollo Embroidery",
-    "sector": "Professional Services",
-    "description": "Apollo Embroidery is a company that provides custom embroidery services.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-3012",
-      "43-9031",
-      "51-9162"
-    ],
-    "website": "https://www.apolloemb.com",
-    "swp_sectors": [
-      "Advanced Manufacturing"
-    ]
-  },
-  {
     "name": "Jay Buchbinder Industries",
     "sector": "Professional Services",
     "description": "Jay Buchbinder Industries is a manufacturing or industrial company.",
@@ -14028,25 +13880,6 @@
     "website": "https://classicdist.com",
     "swp_sectors": [
       "Global Trade"
-    ]
-  },
-  {
-    "name": "Initiative Los Angeles",
-    "sector": "Professional Services",
-    "description": "A media planning and buying agency.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-2011",
-      "11-2021",
-      "13-1161",
-      "13-1199",
-      "27-3031"
-    ],
-    "website": "https://initiative.com/city/los-angeles/",
-    "swp_sectors": [
-      "Business and Entrepreneurship"
     ]
   },
   {
@@ -15687,48 +15520,6 @@
     ]
   },
   {
-    "name": "Dignity Health Glendale Memorial Hospital",
-    "sector": "Healthcare",
-    "description": "This is a hospital operated by Dignity Health, offering comprehensive medical and surgical care.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-9111",
-      "11-3012",
-      "13-1071",
-      "29-1141",
-      "29-2061",
-      "31-1131",
-      "31-9092"
-    ],
-    "website": "https://www.dignityhealth.org/socal/locations/glendalememorial",
-    "swp_sectors": [
-      "Health"
-    ]
-  },
-  {
-    "name": "Dignity Health Northridge Hospital",
-    "sector": "Healthcare",
-    "description": "This is a hospital operated by Dignity Health, providing a wide range of medical services.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-9111",
-      "11-3012",
-      "13-1071",
-      "29-1141",
-      "29-2061",
-      "31-1131",
-      "31-9092"
-    ],
-    "website": "https://www.dignityhealth.org/socal/locations/northridgehospital",
-    "swp_sectors": [
-      "Health"
-    ]
-  },
-  {
     "name": "East Los Angeles Doctors Hospital",
     "sector": "Healthcare",
     "description": "This hospital provides medical and surgical services to the East Los Angeles community.",
@@ -16619,25 +16410,6 @@
     ]
   },
   {
-    "name": "Four Points by Sheraton Los Angeles",
-    "sector": "Hospitality & Food Service",
-    "description": "This is a hotel providing lodging, dining, and event services.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3013",
-      "11-9179",
-      "13-1121",
-      "41-4011"
-    ],
-    "website": "https://www.marriott.com/en-us/hotels/laxfp-four-points-los-angeles-international-airport/overview/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
     "name": "Four Seasons Hotel Los Angeles",
     "sector": "Hospitality & Food Service",
     "description": "This is a luxury hotel offering premium accommodation, dining, and hospitality services.",
@@ -16905,27 +16677,6 @@
     ]
   },
   {
-    "name": "Mondrian Los Angeles",
-    "sector": "Hospitality & Food Service",
-    "description": "A stylish hotel in Los Angeles known for its design and amenities.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3013",
-      "11-9179",
-      "13-1121",
-      "27-1029",
-      "43-4161",
-      "49-9062"
-    ],
-    "website": "https://www.sbe.com/hotels/originals/mondrian-la",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
     "name": "Pacific Palms Resort",
     "sector": "Hospitality & Food Service",
     "description": "A resort offering lodging, recreation, and dining.",
@@ -17115,46 +16866,6 @@
       "43-4161"
     ],
     "website": "https://www.flyingfood.com",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
-    "name": "Gate Gourmet",
-    "sector": "Transportation",
-    "description": "A global airline catering and provisioning company.",
-    "regions": [
-      "LA",
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3051",
-      "13-1081",
-      "35-2013",
-      "43-4161"
-    ],
-    "website": "https://www.gategroup.com/gate-gourmet/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
-    "name": "Kitchen For Exploring Foods",
-    "sector": "Hospitality & Food Service",
-    "description": "A catering company specializing in unique culinary experiences.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1121",
-      "35-2013",
-      "43-4161"
-    ],
-    "website": "https://www.thekitchen.net",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
     ]
@@ -17754,26 +17465,6 @@
     ]
   },
   {
-    "name": "Los Angeles County Department of Adoptions",
-    "sector": "Government",
-    "description": "A county department facilitating adoptions for children.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-9039",
-      "11-9151",
-      "13-1041",
-      "21-1021",
-      "21-1099",
-      "29-9099"
-    ],
-    "website": "https://dcfs.lacounty.gov/parents/adoption/",
-    "swp_sectors": [
-      "Education and Human Development"
-    ]
-  },
-  {
     "name": "Long Beach Department of Health and Human Services",
     "sector": "Government",
     "description": "A city department providing health and human services to Long Beach residents.",
@@ -17832,47 +17523,6 @@
     "website": "https://www.va.gov/careers-employment/vocational-rehabilitation/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
-  },
-  {
-    "name": "Hyperion Treatment Plant",
-    "sector": "Government",
-    "description": "A wastewater treatment facility operated by the City of Los Angeles.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3051",
-      "17-2081",
-      "19-2041",
-      "19-4042",
-      "43-4161"
-    ],
-    "website": "https://sanitation.lacity.gov/cwp/resources/hyperion.htm",
-    "swp_sectors": [
-      "Agriculture, Water and Environmental Technologies"
-    ]
-  },
-  {
-    "name": "Long Beach Refuse Collection",
-    "sector": "Government",
-    "description": "A municipal service responsible for waste collection in Long Beach.",
-    "regions": [
-      "LA"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3013",
-      "13-1081",
-      "43-4161",
-      "53-3032"
-    ],
-    "website": "https://www.longbeach.gov/pw/environmental-services/",
-    "swp_sectors": [
-      "Agriculture, Water and Environmental Technologies"
     ]
   },
   {
@@ -17963,28 +17613,6 @@
       "Health"
     ],
     "enrichment_attempted": true
-  },
-  {
-    "name": "First American Card Services",
-    "sector": "Manufacturing",
-    "description": "First American Payment Systems, now part of Deluxe Merchant Services, offers trusted payment expertise and secure services. It provides reliable support and payment solutions, leveraging the innovation and scale of Deluxe to serve its customers.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "43-4051",
-      "15-1231",
-      "15-1212",
-      "43-1011",
-      "11-3061"
-    ],
-    "website": "https://www.first-american.net/",
-    "swp_sectors": [
-      "Business and Entrepreneurship"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
   },
   {
     "name": "US Foods Distribution Center",
@@ -22077,28 +21705,6 @@
     "enrichment_promoted": true
   },
   {
-    "name": "Stryker Endoscopy",
-    "sector": "Manufacturing",
-    "description": "Stryker Endoscopy is a manufacturing organization specializing in minimally invasive surgery, providing surgical visualization products and connected OR solutions. They serve medical professionals with advanced platforms like the 1788 Platform, enhancing surgical imaging and integration for various specialties. Key activities include developing high-definition cameras, fluorescence imaging, and insufflation systems to improve surgical safety and outcomes.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "15-1252",
-      "17-2071",
-      "17-3023",
-      "49-9062",
-      "51-1011"
-    ],
-    "website": "https://www.stryker.com/us/en/endoscopy.html",
-    "swp_sectors": [
-      "Advanced Manufacturing"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
     "name": "Tecan Systems",
     "sector": "Manufacturing",
     "description": "Tecan Systems develops and manufactures automated liquid handling, microplate readers, and diagnostic solutions for life science research and clinical diagnostics globally. They serve academic, pharmaceutical, and diagnostic laboratories, offering instruments, software, and OEM services.",
@@ -25019,28 +24625,6 @@
       "49-9071"
     ],
     "website": "https://www.harker.org/",
-    "swp_sectors": [
-      "Education and Human Development"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
-    "name": "Herbert Hoover Middle School",
-    "sector": "Education",
-    "description": "Herbert Hoover Middle School, part of the San Jose Unified School District, provides educational services to students. It focuses on academic instruction, student support, and fostering family engagement through portals, volunteering, and school visits, operating as a key part of the district's educational offerings.",
-    "regions": [
-      "Bay"
-    ],
-    "occupations": [
-      "11-9032",
-      "25-2022",
-      "25-2057",
-      "21-1019",
-      "49-9071"
-    ],
-    "website": "https://www.sjusd.org/hoover",
     "swp_sectors": [
       "Education and Human Development"
     ],
@@ -28883,27 +28467,6 @@
     ]
   },
   {
-    "name": "Pacific Ship Repair & Fabrication",
-    "sector": "Manufacturing",
-    "description": "Pacific Ship Repair & Fabrication provides ship repair and metal fabrication services.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3013",
-      "13-1081",
-      "17-2112",
-      "49-3011",
-      "51-4111",
-      "53-5031"
-    ],
-    "website": "https://www.pacship.com/",
-    "swp_sectors": [
-      "Energy, Construction and Utilities"
-    ]
-  },
-  {
     "name": "Trident Maritime Systems",
     "sector": "Manufacturing",
     "description": "Trident Maritime Systems provides engineering and technical services for the maritime industry.",
@@ -29044,27 +28607,6 @@
       "29-1141"
     ],
     "website": "https://www.dexcom.com/",
-    "swp_sectors": [
-      "Advanced Manufacturing"
-    ]
-  },
-  {
-    "name": "DJO Global",
-    "sector": "Manufacturing",
-    "description": "DJO Global is a leading global provider of medical device solutions.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3021",
-      "11-9111",
-      "13-1081",
-      "15-1252",
-      "17-2031",
-      "29-1141"
-    ],
-    "website": "https://www.enovis.com/",
     "swp_sectors": [
       "Advanced Manufacturing"
     ]
@@ -30678,28 +30220,6 @@
     ]
   },
   {
-    "name": "Kontron America",
-    "sector": "Professional Services",
-    "description": "A company providing embedded computing technology and solutions.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-3021",
-      "11-3051",
-      "13-1081",
-      "15-1211",
-      "15-1252",
-      "17-2061",
-      "17-2072"
-    ],
-    "website": "https://www.kontron.com/en-us",
-    "swp_sectors": [
-      "Advanced Manufacturing"
-    ]
-  },
-  {
     "name": "Linewize",
     "sector": "Professional Services",
     "description": "A company providing network security and content filtering solutions.",
@@ -30930,28 +30450,6 @@
     "website": "https://energycenter.org/",
     "swp_sectors": [
       "Energy, Construction and Utilities"
-    ]
-  },
-  {
-    "name": "Cubic Corporation",
-    "sector": "Professional Services",
-    "description": "A company providing transportation and defense systems and services.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-3012",
-      "11-3021",
-      "11-3051",
-      "13-1081",
-      "15-1252",
-      "17-2071",
-      "17-2141"
-    ],
-    "website": "https://www.cubic.com/",
-    "swp_sectors": [
-      "Advanced Transportation and Logistics"
     ]
   },
   {
@@ -31511,25 +31009,6 @@
     ]
   },
   {
-    "name": "Promo Shop",
-    "sector": "Professional Services",
-    "description": "A company selling promotional products.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-2021",
-      "11-3012",
-      "13-1161",
-      "41-4011"
-    ],
-    "website": "https://www.promoshop.com/",
-    "swp_sectors": [
-      "Global Trade"
-    ]
-  },
-  {
     "name": "EDCO",
     "sector": "Administrative Services",
     "description": "EDCO is a waste management and recycling company.",
@@ -31735,7 +31214,7 @@
       "13-1071",
       "13-2011"
     ],
-    "website": "https://www.sandiegounified.org/balboa",
+    "website": "https://www.sandiegounified.org/schools/balboa",
     "swp_sectors": [
       "Education and Human Development"
     ]
@@ -31849,7 +31328,7 @@
       "13-1071",
       "13-2011"
     ],
-    "website": "https://sites.google.com/sweetwaterschools.org/bvh/home",
+    "website": "https://bvh.sweetwaterschools.org/",
     "swp_sectors": [
       "Education and Human Development"
     ]
@@ -31868,7 +31347,7 @@
       "13-1071",
       "13-2011"
     ],
-    "website": "https://sites.google.com/sweetwaterschools.org/bonitavistamiddle/home",
+    "website": "https://bvm.sweetwaterschools.org/",
     "swp_sectors": [
       "Education and Human Development"
     ]
@@ -31909,25 +31388,6 @@
       "13-2011"
     ],
     "website": "https://www.borregospringsschools.com/",
-    "swp_sectors": [
-      "Education and Human Development"
-    ]
-  },
-  {
-    "name": "Cajon Valley Middle School",
-    "sector": "Education",
-    "description": "Cajon Valley Middle School offers education for middle school students.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-9039",
-      "25-2022",
-      "25-2057",
-      "13-1071",
-      "13-2011"
-    ],
-    "website": "https://www.cajonvalley.net/cvm",
     "swp_sectors": [
       "Education and Human Development"
     ]
@@ -32043,7 +31503,7 @@
       "13-1071",
       "13-2011"
     ],
-    "website": "https://sites.google.com/sweetwaterschools.org/cph/home",
+    "website": "https://cph.sweetwaterschools.org/",
     "swp_sectors": [
       "Education and Human Development"
     ]
@@ -32062,7 +31522,7 @@
       "13-1071",
       "13-2011"
     ],
-    "website": "https://sites.google.com/sweetwaterschools.org/castleparkmiddle/home",
+    "website": "https://cpm.sweetwaterschools.org/",
     "swp_sectors": [
       "Education and Human Development"
     ]
@@ -32591,26 +32051,7 @@
       "13-1071",
       "13-2011"
     ],
-    "website": "https://www.scripps.org/locations/doctors-offices-92/scripps-clinic-torrey-pines",
-    "swp_sectors": [
-      "Health"
-    ]
-  },
-  {
-    "name": "Scripps Coastal Medical Center",
-    "sector": "Healthcare",
-    "description": "Scripps Coastal Medical Center offers primary and specialty care services.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-9111",
-      "29-1141",
-      "31-9092",
-      "13-1071",
-      "13-2011"
-    ],
-    "website": "https://www.scripps.org/locations/groups-1/scripps-coastal-medical-center",
+    "website": "https://www.scripps.org",
     "swp_sectors": [
       "Health"
     ]
@@ -32649,26 +32090,6 @@
       "13-2011"
     ],
     "website": "https://shileyeye.ucsd.edu/",
-    "swp_sectors": [
-      "Health"
-    ]
-  },
-  {
-    "name": "Tri-City Wellness Center",
-    "sector": "Healthcare",
-    "description": "A center focused on promoting health and wellness for the community.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-9111",
-      "21-1091",
-      "29-1128",
-      "29-1141",
-      "31-9011",
-      "13-1199"
-    ],
-    "website": "https://www.tricitymed.org/service/wellness-center/",
     "swp_sectors": [
       "Health"
     ]
@@ -32749,24 +32170,6 @@
       "13-2011"
     ],
     "website": "https://www.radiologydoctors.com/",
-    "swp_sectors": [
-      "Health"
-    ]
-  },
-  {
-    "name": "Sharp Rees-Stealy San Diego Lab",
-    "sector": "Healthcare",
-    "description": "A laboratory operated by Sharp Rees-Stealy in San Diego.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-9111",
-      "15-1211",
-      "29-2018",
-      "13-2011"
-    ],
-    "website": "https://www.sharp.com/locations/sharp-rees-stealy-san-diego-downtown",
     "swp_sectors": [
       "Health"
     ]
@@ -33023,26 +32426,6 @@
     ]
   },
   {
-    "name": "Kaiser Permanente San Diego Medical",
-    "sector": "Healthcare",
-    "description": "A medical facility of Kaiser Permanente in San Diego.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9111",
-      "15-1211",
-      "29-1141",
-      "13-1071",
-      "13-2011"
-    ],
-    "website": "https://healthy.kaiserpermanente.org/southern-california/facilities/san-diego-medical-center-100055",
-    "swp_sectors": [
-      "Health"
-    ]
-  },
-  {
     "name": "Kindred Hospital San Diego",
     "sector": "Healthcare",
     "description": "A hospital providing specialized long-term acute care.",
@@ -33083,26 +32466,6 @@
     ]
   },
   {
-    "name": "San Diego County Psychiatric Hospital",
-    "sector": "Healthcare",
-    "description": "A psychiatric hospital operated by San Diego County.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-9111",
-      "15-1211",
-      "21-1018",
-      "29-2053",
-      "13-1071",
-      "13-2011"
-    ],
-    "website": "https://www.sandiegocounty.gov/hhsa/programs/bhs/sdcphf/",
-    "swp_sectors": [
-      "Health"
-    ]
-  },
-  {
     "name": "Scripps Green Hospital",
     "sector": "Healthcare",
     "description": "A hospital affiliated with the Scripps health system.",
@@ -33117,27 +32480,7 @@
       "13-1071",
       "13-2011"
     ],
-    "website": "https://www.scripps.org/locations/hospitals-5/scripps-green-hospital",
-    "swp_sectors": [
-      "Health"
-    ]
-  },
-  {
-    "name": "Scripps Memorial Hospital Encinitas",
-    "sector": "Healthcare",
-    "description": "A memorial hospital in Encinitas operated by Scripps.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9111",
-      "15-1211",
-      "29-1141",
-      "13-1071",
-      "13-2011"
-    ],
-    "website": "https://www.scripps.org/locations/hospitals-5/scripps-memorial-hospital-encinitas",
+    "website": "https://www.scripps.org",
     "swp_sectors": [
       "Health"
     ]
@@ -33157,7 +32500,7 @@
       "13-1071",
       "13-2011"
     ],
-    "website": "https://www.scripps.org/locations/hospitals-5/scripps-memorial-hospital-la-jolla",
+    "website": "https://www.scripps.org",
     "swp_sectors": [
       "Health"
     ]
@@ -33177,27 +32520,7 @@
       "13-1071",
       "13-2011"
     ],
-    "website": "https://www.scripps.org/locations/hospitals-5/scripps-mercy-hospital-chula-vista",
-    "swp_sectors": [
-      "Health"
-    ]
-  },
-  {
-    "name": "Scripps Mercy Hospital San Diego",
-    "sector": "Healthcare",
-    "description": "A mercy hospital in San Diego operated by Scripps.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9111",
-      "15-1211",
-      "29-1141",
-      "13-1071",
-      "13-2011"
-    ],
-    "website": "https://www.scripps.org/locations/hospitals-5/scripps-mercy-hospital-san-diego",
+    "website": "https://www.scripps.org",
     "swp_sectors": [
       "Health"
     ]
@@ -33223,46 +32546,6 @@
     ]
   },
   {
-    "name": "Sharp Chula Vista Medical Center",
-    "sector": "Healthcare",
-    "description": "A medical center in Chula Vista operated by Sharp HealthCare.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9111",
-      "15-1211",
-      "29-1141",
-      "13-1071",
-      "13-2011"
-    ],
-    "website": "https://www.sharp.com/locations/sharp-chula-vista-medical-center",
-    "swp_sectors": [
-      "Health"
-    ]
-  },
-  {
-    "name": "Sharp Coronado Hospital",
-    "sector": "Healthcare",
-    "description": "A hospital in Coronado operated by Sharp HealthCare.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9111",
-      "15-1211",
-      "29-1141",
-      "13-1071",
-      "13-2011"
-    ],
-    "website": "https://www.sharp.com/locations/sharp-coronado-hospital",
-    "swp_sectors": [
-      "Health"
-    ]
-  },
-  {
     "name": "Sharp Grossmont Hospital",
     "sector": "Healthcare",
     "description": "A hospital operated by Sharp HealthCare.",
@@ -33277,27 +32560,7 @@
       "13-1071",
       "13-2011"
     ],
-    "website": "https://www.sharp.com/locations/sharp-grossmont-hospital",
-    "swp_sectors": [
-      "Health"
-    ]
-  },
-  {
-    "name": "Sharp Mesa Vista Hospital",
-    "sector": "Healthcare",
-    "description": "A psychiatric hospital operated by Sharp HealthCare.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-9111",
-      "15-1211",
-      "21-1018",
-      "29-2053",
-      "13-1071",
-      "13-2011"
-    ],
-    "website": "https://www.sharp.com/locations/sharp-mesa-vista-hospital",
+    "website": "https://www.sharp.com/",
     "swp_sectors": [
       "Health"
     ]
@@ -33423,44 +32686,6 @@
     ]
   },
   {
-    "name": "Life Care Center of Escondido",
-    "sector": "Healthcare",
-    "description": "A healthcare facility providing life care services in Escondido.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-9111",
-      "29-1141",
-      "29-2061",
-      "31-1131",
-      "13-1071"
-    ],
-    "website": "https://lifecarecenterofescondido.com/",
-    "swp_sectors": [
-      "Health"
-    ]
-  },
-  {
-    "name": "Life Care Center of Vista",
-    "sector": "Healthcare",
-    "description": "A healthcare facility providing life care services in Vista.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-9111",
-      "29-1141",
-      "29-2061",
-      "31-1131",
-      "13-1071"
-    ],
-    "website": "https://lifecarecenterofvista.com/",
-    "swp_sectors": [
-      "Health"
-    ]
-  },
-  {
     "name": "Nazareth House",
     "sector": "Healthcare",
     "description": "A charitable organization providing care and housing.",
@@ -33475,7 +32700,7 @@
       "31-1131",
       "13-1071"
     ],
-    "website": "https://www.nazarethhouse.com/",
+    "website": "https://www.sistersofnazareth.com/",
     "swp_sectors": [
       "Health"
     ]
@@ -34043,26 +33268,6 @@
     ]
   },
   {
-    "name": "Sharp Grossmont Rehabilitation Center",
-    "sector": "Healthcare",
-    "description": "This is a rehabilitation center affiliated with Sharp Grossmont Hospital.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-9111",
-      "13-1071",
-      "29-1129",
-      "31-2011",
-      "31-2021",
-      "49-9062"
-    ],
-    "website": "https://www.sharp.com/locations/sharp-grossmont-rehabilitation-center",
-    "swp_sectors": [
-      "Health"
-    ]
-  },
-  {
     "name": "Sharp Rehabilitation Services",
     "sector": "Healthcare",
     "description": "This entity provides rehabilitation services under the Sharp brand.",
@@ -34245,24 +33450,6 @@
       "53-5022"
     ],
     "website": "https://www.sdyc.org/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
-    "name": "Vista City Recreation Department",
-    "sector": "Arts & Entertainment",
-    "description": "This is the recreation department for the city of Vista.",
-    "regions": [
-      "SD/I"
-    ],
-    "occupations": [
-      "11-9072",
-      "11-3012",
-      "13-1121",
-      "25-9099"
-    ],
-    "website": "https://www.cityofvista.com/city-hall/departments-services/recreation-community-services",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
     ]
@@ -34974,26 +34161,6 @@
     ]
   },
   {
-    "name": "Garden Grove Water Services",
-    "sector": "Utilities",
-    "description": "Garden Grove Water Services is a municipal department responsible for water management and distribution.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-3013",
-      "11-9199",
-      "13-1081",
-      "17-2051",
-      "49-9092"
-    ],
-    "website": "https://ggcity.org/publicworks/water",
-    "swp_sectors": [
-      "Agriculture, Water and Environmental Technologies"
-    ]
-  },
-  {
     "name": "Irvine Ranch Water District",
     "sector": "Utilities",
     "description": "Irvine Ranch Water District is a public utility focused on water supply and management.",
@@ -35029,26 +34196,6 @@
       "19-2043"
     ],
     "website": "https://www.ocwd.com/",
-    "swp_sectors": [
-      "Agriculture, Water and Environmental Technologies"
-    ]
-  },
-  {
-    "name": "San Clemente Water Department",
-    "sector": "Utilities",
-    "description": "San Clemente Water Department is responsible for providing and maintaining water services for the city.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-3013",
-      "11-9199",
-      "13-1081",
-      "17-2051",
-      "49-9092"
-    ],
-    "website": "https://www.san-clemente.org/departments/public-works",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
     ]
@@ -35347,7 +34494,7 @@
       "17-2051",
       "17-3022"
     ],
-    "website": "https://www.saundersci.com/",
+    "website": "https://www.saundersseismic.com/",
     "swp_sectors": [
       "Energy, Construction and Utilities"
     ]
@@ -35942,24 +35089,6 @@
     ]
   },
   {
-    "name": "Nor-Cal Beverage",
-    "sector": "Manufacturing",
-    "description": "Nor-Cal Beverage is a beverage company involved in manufacturing and distribution.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-3051",
-      "11-2021",
-      "13-1028",
-      "19-1012"
-    ],
-    "website": "https://www.norcalbeverage.com/",
-    "swp_sectors": [
-      "Advanced Manufacturing"
-    ]
-  },
-  {
     "name": "Bioduro-Sundia",
     "sector": "Manufacturing",
     "description": "This company provides pharmaceutical development and manufacturing services.",
@@ -36413,26 +35542,6 @@
     ]
   },
   {
-    "name": "Cherry Aerospace",
-    "sector": "Manufacturing",
-    "description": "This company manufactures aerospace fasteners and related products.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-3051",
-      "11-3061",
-      "13-1081",
-      "17-2071",
-      "41-4011",
-      "51-4111"
-    ],
-    "website": "https://cherryaerospace.com/",
-    "swp_sectors": [
-      "Advanced Manufacturing"
-    ]
-  },
-  {
     "name": "Performance Machine",
     "sector": "Manufacturing",
     "description": "This company manufactures precision machined parts.",
@@ -36718,27 +35827,6 @@
       "49-2093"
     ],
     "website": "https://www.astronics.com/",
-    "swp_sectors": [
-      "Advanced Manufacturing"
-    ]
-  },
-  {
-    "name": "B I Technologies Corporation",
-    "sector": "Manufacturing",
-    "description": "This company manufactures electronic components, including thick film circuits.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-3051",
-      "11-3061",
-      "13-1081",
-      "15-1241",
-      "17-2072",
-      "41-4011",
-      "49-2093"
-    ],
-    "website": "https://www.bitechnologies.com/",
     "swp_sectors": [
       "Advanced Manufacturing"
     ]
@@ -37407,7 +36495,7 @@
       "49-3023",
       "51-4111"
     ],
-    "website": "https://www.trdusa.com/",
+    "website": "https://www.toyotaracing.com/",
     "swp_sectors": [
       "Advanced Manufacturing"
     ]
@@ -38552,27 +37640,6 @@
     ]
   },
   {
-    "name": "Harbor Distributing",
-    "sector": "Wholesale",
-    "description": "Harbor Distributing is a wholesale distributor, likely of beverages or food products.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3061",
-      "13-1082",
-      "15-1252",
-      "41-4011",
-      "53-3032"
-    ],
-    "website": "https://www.reyesbeerdivision.com/harbor",
-    "swp_sectors": [
-      "Global Trade"
-    ]
-  },
-  {
     "name": "Audi Mission Viejo",
     "sector": "Retail",
     "description": "Audi Mission Viejo is a dealership selling and servicing Audi vehicles.",
@@ -39584,27 +38651,6 @@
     ]
   },
   {
-    "name": "Stantec",
-    "sector": "Professional Services",
-    "description": "A global provider of professional services in design, engineering, and consulting.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9041",
-      "13-1081",
-      "13-1111",
-      "17-1011",
-      "17-2051",
-      "17-2112"
-    ],
-    "website": "https://www.stantec.com/",
-    "swp_sectors": [
-      "Business and Entrepreneurship"
-    ]
-  },
-  {
     "name": "Verdantas",
     "sector": "Professional Services",
     "description": "Provides environmental and engineering consulting services.",
@@ -40076,25 +39122,6 @@
     "website": "https://www.neogenomics.com/",
     "swp_sectors": [
       "Life Sciences - Biotechnology"
-    ]
-  },
-  {
-    "name": "Orange County Crime Lab",
-    "sector": "Professional Services",
-    "description": "Orange County Crime Lab provides forensic science services for law enforcement.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-9199",
-      "13-1041",
-      "15-1211",
-      "19-4092",
-      "29-2018"
-    ],
-    "website": "https://www.ocsheriff.gov/divisions/coroner-crime-laboratory",
-    "swp_sectors": [
-      "Public Safety"
     ]
   },
   {
@@ -40900,26 +39927,6 @@
     ]
   },
   {
-    "name": "Marshall B. Ketchum University Eye Center",
-    "sector": "Education",
-    "description": "A vision care center affiliated with Marshall B. Ketchum University, providing optometric services.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-9111",
-      "13-1071",
-      "29-1129",
-      "29-1141",
-      "31-9092",
-      "43-4161"
-    ],
-    "website": "https://www.ketchum.edu/university-eye-center",
-    "swp_sectors": [
-      "Health"
-    ]
-  },
-  {
     "name": "Orange County School of the Arts",
     "sector": "Education",
     "description": "A public charter school providing arts-focused education for K-12 students.",
@@ -41048,7 +40055,7 @@
       "29-1141",
       "43-4161"
     ],
-    "website": "https://www.dhcs.ca.gov/services/ccs/Pages/default.aspx",
+    "website": "https://www.ochealthinfo.com",
     "swp_sectors": [
       "Health"
     ]
@@ -41068,7 +40075,7 @@
       "31-9092",
       "43-4161"
     ],
-    "website": "https://healthy.kaiserpermanente.org/southern-california/facilities/yorba-linda-medical-offices-100128",
+    "website": "https://healthy.kaiserpermanente.org/southern-california",
     "swp_sectors": [
       "Health"
     ]
@@ -41265,25 +40272,6 @@
     ]
   },
   {
-    "name": "St. Joseph Hospital Renal Center",
-    "sector": "Healthcare",
-    "description": "A specialized unit within St. Joseph Hospital focused on kidney care and dialysis.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-9111",
-      "13-1071",
-      "29-1141",
-      "29-2033",
-      "43-4161"
-    ],
-    "website": "https://www.providence.org/locations/sjo",
-    "swp_sectors": [
-      "Health"
-    ]
-  },
-  {
     "name": "Primal Elements",
     "sector": "Healthcare",
     "description": "A company manufacturing and distributing personal care products.",
@@ -41399,48 +40387,6 @@
     "website": "https://www.multiplan.com/",
     "swp_sectors": [
       "Business and Entrepreneurship"
-    ]
-  },
-  {
-    "name": "AHMC Anaheim Regional Medical Center",
-    "sector": "Healthcare",
-    "description": "A hospital providing a wide range of medical and surgical services to the community.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-9111",
-      "13-1071",
-      "15-1211",
-      "29-1141",
-      "31-1131",
-      "43-4161"
-    ],
-    "website": "https://www.ahmchealth.com/AnaheimRegional",
-    "swp_sectors": [
-      "Health"
-    ]
-  },
-  {
-    "name": "Anaheim Global Medical Center",
-    "sector": "Healthcare",
-    "description": "A hospital offering comprehensive medical services and emergency care.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-9111",
-      "13-1071",
-      "15-1211",
-      "29-1141",
-      "31-1131",
-      "43-4161"
-    ],
-    "website": "https://anaheimgmc.com/",
-    "swp_sectors": [
-      "Health"
     ]
   },
   {
@@ -41603,7 +40549,7 @@
       "31-1131",
       "43-4161"
     ],
-    "website": "https://healthy.kaiserpermanente.org/southern-california/facilities/orange-county-anaheim-medical-center-100096",
+    "website": "https://healthy.kaiserpermanente.org/southern-california",
     "swp_sectors": [
       "Health"
     ]
@@ -41727,7 +40673,7 @@
       "31-1131",
       "43-4161"
     ],
-    "website": "https://www.providence.org/locations/mission-hospital",
+    "website": "https://www.providence.org/locations/mission-hospital-mission-viejo",
     "swp_sectors": [
       "Health"
     ]
@@ -41748,7 +40694,7 @@
       "31-1131",
       "43-4161"
     ],
-    "website": "https://www.providence.org/locations/sjo",
+    "website": "https://www.providence.org/locations/st-joseph-hospital-orange",
     "swp_sectors": [
       "Health"
     ]
@@ -42230,26 +41176,6 @@
     ]
   },
   {
-    "name": "Anaheim Marriott Suites",
-    "sector": "Hospitality & Food Service",
-    "description": "A hotel in Anaheim offering suite accommodations and amenities.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3013",
-      "11-9179",
-      "13-1121",
-      "43-4161"
-    ],
-    "website": "https://www.marriott.com/en-us/hotels/lgbam-anaheim-marriott-suites/overview/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
     "name": "Ayres Hotel Costa Mesa/Newport",
     "sector": "Hospitality & Food Service",
     "description": "A hotel serving the Costa Mesa and Newport Beach areas.",
@@ -42286,26 +41212,6 @@
       "43-4161"
     ],
     "website": "https://www.balboabayresort.com/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
-    "name": "Costa Mesa Marriott",
-    "sector": "Hospitality & Food Service",
-    "description": "A Marriott hotel located in Costa Mesa.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3013",
-      "11-9179",
-      "13-1121",
-      "43-4161"
-    ],
-    "website": "https://www.marriott.com/en-us/hotels/snacm-costa-mesa-marriott/overview/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
     ]
@@ -42958,25 +41864,6 @@
     ]
   },
   {
-    "name": "Anaheim Police Department",
-    "sector": "Government",
-    "description": "Anaheim Police Department is responsible for law enforcement and public safety in Anaheim.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9161",
-      "13-1041",
-      "33-1021",
-      "43-4161"
-    ],
-    "website": "https://www.anaheim.net/3/Police",
-    "swp_sectors": [
-      "Public Safety"
-    ]
-  },
-  {
     "name": "Brea Police Department",
     "sector": "Government",
     "description": "Brea Police Department provides law enforcement services and maintains public safety in Brea.",
@@ -42996,24 +41883,6 @@
     ]
   },
   {
-    "name": "Buena Park Detention Center",
-    "sector": "Government",
-    "description": "Buena Park Detention Center is a facility for holding individuals in custody.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9199",
-      "13-1041",
-      "43-4161"
-    ],
-    "website": "https://www.buenapark.com/departments/police-department",
-    "swp_sectors": [
-      "Public Safety"
-    ]
-  },
-  {
     "name": "Costa Mesa Fire and Rescue Administration",
     "sector": "Government",
     "description": "Costa Mesa Fire and Rescue Administration manages the operations and administrative functions of the fire department.",
@@ -43028,120 +41897,6 @@
       "43-4161"
     ],
     "website": "https://www.costamesaca.gov/city-hall/city-departments/fire-rescue",
-    "swp_sectors": [
-      "Public Safety"
-    ]
-  },
-  {
-    "name": "Fountain Valley Police Department",
-    "sector": "Government",
-    "description": "Fountain Valley Police Department is responsible for law enforcement and public safety in Fountain Valley.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9161",
-      "13-1041",
-      "33-1021",
-      "43-4161"
-    ],
-    "website": "https://www.fountainvalley.org/departments/police",
-    "swp_sectors": [
-      "Public Safety"
-    ]
-  },
-  {
-    "name": "Fullerton Police Department",
-    "sector": "Government",
-    "description": "Fullerton Police Department provides law enforcement services and ensures public safety in Fullerton.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9161",
-      "13-1041",
-      "33-1021",
-      "43-4161"
-    ],
-    "website": "https://www.fullertonpd.org/",
-    "swp_sectors": [
-      "Public Safety"
-    ]
-  },
-  {
-    "name": "Huntington Beach Police Department",
-    "sector": "Government",
-    "description": "Huntington Beach Police Department is responsible for law enforcement and public safety in Huntington Beach.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9161",
-      "13-1041",
-      "33-1021",
-      "43-4161"
-    ],
-    "website": "https://www.huntingtonbeachca.gov/police/",
-    "swp_sectors": [
-      "Public Safety"
-    ]
-  },
-  {
-    "name": "La Habra Police Department",
-    "sector": "Government",
-    "description": "La Habra Police Department provides law enforcement services and ensures public safety in La Habra.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9161",
-      "13-1041",
-      "33-1021",
-      "43-4161"
-    ],
-    "website": "https://www.lahabraca.gov/128/Police-Department",
-    "swp_sectors": [
-      "Public Safety"
-    ]
-  },
-  {
-    "name": "Newport Beach Lifeguard Division",
-    "sector": "Government",
-    "description": "Newport Beach Lifeguard Division ensures beach safety and provides emergency services along the coastline.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9161",
-      "13-1199",
-      "29-2042",
-      "43-4161"
-    ],
-    "website": "https://www.newportbeachca.gov/government/departments/fire-department/lifeguard-division",
-    "swp_sectors": [
-      "Public Safety"
-    ]
-  },
-  {
-    "name": "Orange County Probation Department",
-    "sector": "Government",
-    "description": "Orange County Probation Department supervises individuals on probation and provides related services.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9151",
-      "13-1041",
-      "21-1092",
-      "43-4161"
-    ],
-    "website": "https://www.ocgov.com/ocgov/Probation",
     "swp_sectors": [
       "Public Safety"
     ]
@@ -43203,24 +41958,6 @@
     ]
   },
   {
-    "name": "Theo Lacy Facility",
-    "sector": "Government",
-    "description": "Theo Lacy Facility is a correctional institution operated by the Orange County Sheriff's Department.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9199",
-      "13-1041",
-      "43-4161"
-    ],
-    "website": "https://www.ocsheriff.gov/divisions/custody-operations/theo-lacy-facility",
-    "swp_sectors": [
-      "Public Safety"
-    ]
-  },
-  {
     "name": "Brea Community Services",
     "sector": "Professional Services",
     "description": "Brea Community Services provides recreational programs and community engagement activities.",
@@ -43238,26 +41975,6 @@
     "website": "https://www.cityofbrea.net/community-services",
     "swp_sectors": [
       "Education and Human Development"
-    ]
-  },
-  {
-    "name": "Orange County Environmental Health",
-    "sector": "Government",
-    "description": "Orange County Environmental Health ensures public health and safety through environmental regulations and inspections.",
-    "regions": [
-      "OC"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9121",
-      "13-1041",
-      "17-2081",
-      "19-4042",
-      "43-4161"
-    ],
-    "website": "https://www.ochealthinfo.com/about-hca/environmental-health",
-    "swp_sectors": [
-      "Agriculture, Water and Environmental Technologies"
     ]
   },
   {
