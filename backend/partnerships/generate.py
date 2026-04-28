@@ -194,18 +194,26 @@ def _run_pipeline(
         logger.info(f"Stage 2 complete: selected '{selected_occ.get('title', '?')}' for {employer}")
 
     core_skills = selected_occ.get("core_skills", [])
-    _, curriculum_evidence = _gather_aligned_curriculum(college, core_skills)
+    selected_soc = selected_occ.get("soc_code") or ""
+    _, curriculum_evidence = _gather_aligned_curriculum(college, selected_soc, core_skills)
 
-    # Cap to top 3 most relevant departments
-    all_dept_names = [d["department"] for d in curriculum_evidence]
-    selected_depts = _select_relevant_departments(
-        gathered.employer_name, selected_occ.get("title", ""), all_dept_names
-    )
-    curriculum_evidence = [d for d in curriculum_evidence if d["department"] in selected_depts]
+    # Cap to top 3 most relevant departments. With PREPARES_FOR-gating
+    # the inbound set is already TOP-aligned, so the LLM filter operates
+    # on a much smaller and more honest candidate pool. When the
+    # inbound set is empty (no aligned curriculum at this college), we
+    # skip the filter call — there is nothing for it to choose from.
+    if curriculum_evidence:
+        all_dept_names = [d["department"] for d in curriculum_evidence]
+        selected_depts = _select_relevant_departments(
+            gathered.employer_name, selected_occ.get("title", ""), all_dept_names
+        )
+        curriculum_evidence = [d for d in curriculum_evidence if d["department"] in selected_depts]
 
     dept_text = _build_dept_text(curriculum_evidence, core_skills)
     aligned_depts = [d["department"] for d in curriculum_evidence]
-    student_stats, top_students = _gather_student_pipeline(college, aligned_depts, core_skills)
+    student_stats, top_students = _gather_student_pipeline(
+        college, aligned_depts, selected_soc, core_skills
+    )
     logger.info(f"Stage 3 complete: gathered curriculum and student pipeline for {employer}")
 
     swp_evidence = _assemble_swp_evidence(college, gathered, curriculum_evidence)
