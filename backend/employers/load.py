@@ -153,8 +153,27 @@ def load_employers(driver: Driver, employers: list[dict]) -> dict:
         logger.info(f"Created {stats['in_market']} IN_MARKET edges")
 
         # Create Employer -[:HIRES_FOR]-> Occupation
+        # Symmetric semantics: prune stale edges before MERGEing new ones,
+        # so that what's in the graph matches the current `occupations`
+        # list exactly. Without the prune step, MERGE only adds — the
+        # cumulative union of every prior load's occupation list persists,
+        # and shrinking the list (e.g., from old 8-cap to new 5-cap)
+        # leaves stale edges behind.
+        pruned_hires_for = 0
         for emp in employers:
-            for soc in emp["occupations"]:
+            valid_socs = list(emp["occupations"])
+            result = session.run(
+                """
+                MATCH (e:Employer {name: $name})-[r:HIRES_FOR]->(o:Occupation)
+                WHERE NOT o.soc_code IN $valid_socs
+                DELETE r
+                RETURN count(r) AS cnt
+                """,
+                name=emp["name"],
+                valid_socs=valid_socs,
+            )
+            pruned_hires_for += result.single()["cnt"]
+            for soc in valid_socs:
                 result = session.run(
                     """
                     MATCH (e:Employer {name: $name})
@@ -167,7 +186,10 @@ def load_employers(driver: Driver, employers: list[dict]) -> dict:
                 )
                 stats["hires_for"] += result.single()["cnt"]
 
-        logger.info(f"Created {stats['hires_for']} HIRES_FOR edges")
+        if pruned_hires_for:
+            logger.info(f"Pruned {pruned_hires_for} stale HIRES_FOR edges")
+        stats["hires_for_pruned"] = pruned_hires_for
+        logger.info(f"Created/refreshed {stats['hires_for']} HIRES_FOR edges")
 
     return stats
 

@@ -59,11 +59,18 @@ STATE_FILE = _THIS_DIR / ".enrich_state.json"
 # the LLM. Matches the filter in generate.py — career-track CTE roles
 # only. Imported here too so the constraint is local and the module
 # doesn't depend on generate.py at import time.
+# Education levels excluded from the regional occupation candidate pool.
+# Refined for CTE-relevance: HS-diploma roles ARE CTE-trainable via
+# certificates (welding, CDL, certified nursing assistant), and Master's
+# roles are legitimate for academic-employer faculty hiring (community
+# colleges feed those via transfer programs). The remaining exclusions
+# are roles where CTE has no plausible training pathway:
+#   - "No formal educational credential" — no credentialing happens
+#   - "Some college, no degree" — non-credentialing endpoint
+#   - "Doctoral or professional degree" — out of CTE scope (MD, JD, PhD)
 _EXCLUDE_EDUCATION = frozenset({
     "No formal educational credential",
-    "High school diploma or equivalent",
     "Some college, no degree",
-    "Master's degree",
     "Doctoral or professional degree",
 })
 
@@ -82,11 +89,22 @@ _TRANSIENT_RETRY_SLEEP = 30.0
 # Description floor in characters. ~60 words ≈ 350 chars. Validated
 # post-parse, not via response_schema minLength (Gemini's schema
 # support for minLength is uneven across model versions).
-_DESCRIPTION_MIN_CHARS = 350
-_DESCRIPTION_TARGET_WORDS = (60, 120)
+# Description bounds tuned for discovery-stage scanning. ~30-50 words is
+# enough to capture core activity + scale + customer type without bloating
+# the atlas card view. The 175-char floor still rejects vapid 12-word
+# fallback descriptions ("A bakery operation.").
+_DESCRIPTION_MIN_CHARS = 175
+_DESCRIPTION_TARGET_WORDS = (30, 50)
 
-_OCC_MIN = 3
-_OCC_MAX = 8
+# Occupations bounds tuned for signal density. 1 minimum honors employers
+# whose CTE-relevant hiring profile is genuinely a single role (a
+# specialty welding shop, a sole-electrician contractor, a hyper-narrow
+# practice). Forcing a 2-floor would pad those records with marginal
+# secondary roles that dilute signal. 5 maximum still forces the model
+# to concentrate on the most representative roles for diversified
+# employers.
+_OCC_MIN = 1
+_OCC_MAX = 5
 
 # Phrases that signal "the model couldn't read the URL" leaking into
 # fields. Same set as populate_description.py uses.
@@ -694,11 +712,19 @@ def _build_describe_prompt(
         "retrieved. Do not invent facts. The description is the canonical "
         "text shown in the atlas; it should be specific and informative, "
         "not generic.\n\n"
-        "Output a single JSON object and nothing else (no prose, no "
-        "markdown fences):\n"
-        "{\"description\": \"...\"}\n\n"
-        "If you cannot retrieve any usable content, return "
-        "{\"description\": \"\"}."
+        "═══ CRITICAL: OUTPUT FORMAT ═══\n"
+        "Your response MUST be a single JSON object — nothing else. No "
+        "prose. No markdown fences. No narrative. Even if you used "
+        "google_search and have rich research findings, do not narrate "
+        "them — only emit the JSON with the description as the value.\n\n"
+        "Begin your response with `{` and end with `}`.\n\n"
+        "Example correct response:\n"
+        "{\"description\": \"Land O'Lakes is a farmer-owned cooperative \"\n"
+        " \"that produces dairy products including butter, cheese, and \"\n"
+        " \"plant-based alternatives, serving consumers across the U.S.\"}\n\n"
+        "If you cannot retrieve any usable content, return:\n"
+        "{\"description\": \"\"}\n\n"
+        "Now respond — JSON only:"
     )
 
 
@@ -740,11 +766,10 @@ def _build_occupations_prompt(
             "will retry via search.\n\n"
         )
     return (
-        "You are picking occupational role codes (SOC codes) for an employer "
-        "in a California community college workforce-development partnership "
-        "database. The goal is to capture WHAT THIS EMPLOYER HIRES FOR — not "
-        "what they sell or produce, but what kinds of jobs they have on "
-        "their own payroll.\n\n"
+        "You are picking SOC codes representing CTE-pathway roles this "
+        "employer hires for in California. These codes drive partnership "
+        "matching: the college's CTE programs train for them, and we need "
+        "to know which apply to this employer.\n\n"
         + tool_block +
         f"URL: {employer['website']}\n\n"
         "EMPLOYER CONTEXT:\n"
@@ -752,21 +777,75 @@ def _build_occupations_prompt(
         f"- Sector hint (from EDD/NAICS): {employer.get('sector', 'unknown')}\n"
         f"- Region: {region_display}\n"
         f"- Description (just generated, for context): {description}\n\n"
-        "TASK:\n"
-        f"Select {_OCC_MIN}–{_OCC_MAX} SOC codes from the constrained list "
-        "below. Choose roles this employer would have ON ITS OWN PAYROLL "
-        "as direct employees. Exclude services performed by external "
-        "agencies — a hospital does not employ police officers, a hotel "
-        "does not employ firefighters, a school district does not employ "
-        "road construction workers. Bias toward roles community college "
-        "CTE programs train for.\n\n"
-        f"CONSTRAINED OCCUPATION LIST ({len(occ_list)} entries — choose "
-        "ONLY from these; codes outside the list will be rejected):\n"
+        f"TASK: select {_OCC_MIN}–{_OCC_MAX} SOC codes from the "
+        "constrained list below.\n\n"
+        "THE CONSTRAINED LIST IS THE UNIVERSE.\n"
+        "You MUST select codes from the list — codes outside it will be "
+        "rejected. Every code in the list represents a role California "
+        "community college CTE programs train for; your job is to "
+        "identify which apply to this employer. Do NOT search for or "
+        "reference roles outside this list, even if they are this "
+        "employer's most numerous workforce category.\n\n"
+        "Apply ALL of these criteria:\n\n"
+        "  (1) PLAUSIBLE FOR THIS EMPLOYER — pick roles this employer "
+        "would have employees in. For diversified employers (a large "
+        "retailer, a multi-line manufacturer, a school district), this "
+        "means focusing on the CTE-pathway slices of their workforce — "
+        "not their dominant retail/admin roles which may not be in the "
+        "list at all. Examples:\n"
+        "    - Big-box retailer (e.g., Home Depot): First-Line Retail "
+        "Supervisors, HVAC mechanics (installation services), "
+        "Maintenance/Repair Workers, Construction Managers — NOT cashiers "
+        "(not in CTE pool).\n"
+        "    - Hospital: RN, LPN, Medical Assistants, Health Services "
+        "Manager.\n"
+        "    - Cement/Concrete manufacturer: Truck Drivers, Excavating "
+        "Operators, Industrial Machinery Mechanics, Plant Operators.\n"
+        "    - School district: K-12 Teachers (excluded if Master's-only "
+        "and not in pool), Bus Drivers, Janitorial Supervisors, Office "
+        "Administrators.\n\n"
+        "  (2) ON ITS OWN PAYROLL — exclude services performed by "
+        "external agencies. A hospital does not employ police officers; a "
+        "hotel does not employ firefighters; a school district does not "
+        "employ road construction workers.\n\n"
+        "  (3) OPERATIONAL OVER ADMIN — prefer roles tied to the "
+        "employer's distinctive activities over generic business-support "
+        "roles. HR Specialists (13-1071), Accountants (13-2011), General "
+        "and Operations Managers (11-1021), Customer Service Reps, IT "
+        "Support: these are CTE-relevant in principle but they "
+        "characterize 'any business at scale' rather than this specific "
+        "employer. Pick them ONLY if no operational alternative exists "
+        "for this employer's CTE-pathway hiring profile.\n\n"
+        "  (4) ALWAYS PICK AT LEAST 1 — every legitimate employer has at "
+        "least one CTE-pathway role in their hiring profile. If your "
+        "first pass yields zero, you are being too restrictive — look "
+        "harder at the constrained list. Supervisor-track codes "
+        "(First-Line Supervisors of *) and equipment/maintenance codes "
+        "are nearly always applicable for any 100+ employee employer. "
+        "Genuinely-narrow employers (a specialty welding shop, a "
+        "single-doctor practice) honestly have 1–2 codes; diversified "
+        "employers honestly have 3–5. Match the count to the employer.\n\n"
+        f"CONSTRAINED OCCUPATION LIST ({len(occ_list)} entries — codes "
+        "outside this list will be rejected):\n"
         f"{occ_lines}\n\n"
-        "Output a single JSON object and nothing else:\n"
-        "{\"occupations\": [\"##-####\", \"##-####\", ...]}\n\n"
-        "If you cannot determine occupations, return "
-        "{\"occupations\": []}."
+        "═══ CRITICAL: OUTPUT FORMAT ═══\n"
+        "Your response MUST be a single JSON object — nothing else. No "
+        "prose. No markdown fences. No explanatory narrative. Even if "
+        "you used google_search and have rich research findings, do not "
+        "narrate them — only emit the JSON.\n\n"
+        "Begin your response with `{` and end with `}`.\n\n"
+        "Example correct response:\n"
+        "{\"occupations\": [\"41-1011\", \"49-9021\", \"49-9071\"]}\n\n"
+        "Example INCORRECT response (prose narrative — will be rejected):\n"
+        "I researched this employer and found that they hire for various "
+        "roles including retail supervisors and HVAC technicians. The "
+        "relevant SOC codes are 41-1011, 49-9021...\n\n"
+        "If after looking carefully you cannot find any plausible "
+        "matches in the constrained list, return:\n"
+        "{\"occupations\": []}\n"
+        "But this should be rare — almost all real employers have at "
+        "least one matching code.\n\n"
+        "Now respond — JSON only:"
     )
 
 
