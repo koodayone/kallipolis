@@ -71,6 +71,110 @@ function FlagIcon() {
   );
 }
 
+// Small TOP6-prefix → industry-context heuristic. The PCAH TOP6 sector
+// map lives server-side; reproducing it client-side would duplicate ~400
+// rows. The first two digits of a TOP code encode its broad family
+// (09 = engineering/industrial, 12 = health, 30 = business,
+// 10 = arts/media, 02 = agriculture, etc.), which is enough to detect
+// cross-family alignment for the principle 4 caption.
+//
+// When the heuristic is uncertain (the rare case where the prefix
+// doesn't map cleanly to a sector family), the caption is silent —
+// principle 4 is about visible honesty, not aggressive labeling.
+const TOP_PREFIX_TO_SECTOR_FAMILY: Record<string, string> = {
+  "01": "Agriculture, Water and Environmental Technologies",
+  "02": "Agriculture, Water and Environmental Technologies",
+  "03": "Energy, Construction and Utilities",
+  "04": "Life Sciences",
+  "05": "Information and Communication Technologies",
+  "06": "Information and Communication Technologies",
+  "07": "Information and Communication Technologies",
+  "09": "Advanced Manufacturing",
+  "10": "Retail, Hospitality, and Tourism",
+  "12": "Health",
+  "13": "Education",
+  "21": "Energy, Construction and Utilities",
+  "30": "Business and Entrepreneurship",
+  "32": "Public Safety",
+};
+
+function topToSectorFamily(top: string | undefined): string | null {
+  if (!top || top.length < 2) return null;
+  return TOP_PREFIX_TO_SECTOR_FAMILY[top.slice(0, 2)] ?? null;
+}
+
+function inferIndustryContext(top: string | undefined): string | null {
+  // Some TOPs have well-known industry-context flavors that the broad
+  // sector family doesn't capture. AATA = aerospace QC apprenticeship.
+  // Returning null when no specific flavor is known so the caption
+  // falls back to the sector-family comparison.
+  if (top === "095680") return "aerospace quality-control apprenticeship";
+  return null;
+}
+
+function CrossIndustryCaption({
+  proposal, brandColor,
+}: {
+  proposal: ApiTargetedProposal;
+  brandColor: string;
+}) {
+  const dominantTop = (() => {
+    const counts: Record<string, number> = {};
+    for (const dept of proposal.curriculum_evidence ?? []) {
+      for (const t of dept.via_top ?? []) {
+        counts[t] = (counts[t] ?? 0) + (dept.courses?.length ?? 1);
+      }
+    }
+    const entries = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+    return entries[0]?.[0];
+  })();
+
+  if (!dominantTop) return null;
+
+  const employerSector = (proposal.sector ?? "").trim();
+  const dominantFamily = topToSectorFamily(dominantTop);
+  if (!employerSector || !dominantFamily) return null;
+
+  // Substring match in either direction = same family. The PCAH sector
+  // names include things like "Health" and "Advanced Manufacturing"
+  // which substring-match cleanly against employer SWP sector names.
+  const lower = employerSector.toLowerCase();
+  const dlower = dominantFamily.toLowerCase();
+  const sameFamily = lower.includes(dlower) || dlower.includes(lower);
+  if (sameFamily) return null;
+
+  // Industry contexts differ. Render the partial-alignment caption.
+  const programFlavor = inferIndustryContext(dominantTop);
+  const programDescriptor = programFlavor
+    ? `${programFlavor} (${dominantFamily})`
+    : `${dominantFamily}-rooted program`;
+
+  return (
+    <div style={{
+      display: "flex", alignItems: "flex-start", gap: "8px",
+      padding: "10px 14px", borderRadius: "6px",
+      background: `${brandColor}10`,
+      border: `1px solid ${brandColor}30`,
+      marginBottom: "20px",
+      fontFamily: FONT, fontSize: "12px", lineHeight: 1.5,
+      color: "rgba(255,255,255,0.7)",
+    }}>
+      <span style={{
+        flexShrink: 0, fontWeight: 700, letterSpacing: "0.06em",
+        textTransform: "uppercase", fontSize: "10px",
+        color: brandColor, marginTop: "1px",
+      }}>
+        Cross-industry pathway
+      </span>
+      <span>
+        The institutional crosswalk routes this employer&apos;s occupation through a {programDescriptor}.
+        The methods are transferable across industries; the {employerSector.toLowerCase()} context is
+        a partnership-conversation topic, not a turnkey claim.
+      </span>
+    </div>
+  );
+}
+
 // Workforce-gap bar visualization. Visual idiom is the partnership-narrative
 // example on the marketing site (app/components/PartnershipAnatomyCard.tsx,
 // SupplyDemandBridgeBand). We re-implement here rather than import because
@@ -273,6 +377,16 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
           )}
         </div>
 
+        {/* Cross-industry caption — visible expression of principle 4
+            (name partial alignment honestly when industry contexts differ).
+            Renders only when the institutional crosswalk routes the
+            employer's selected occupation through a TOP whose
+            apparent industry context differs from the employer's SWP
+            sector. The reader sees the partial-alignment fact before
+            reading the prose — visually unmissable, but small enough
+            that it doesn't dominate the artifact. */}
+        <CrossIndustryCaption proposal={proposal} brandColor={brandColor} />
+
         {/* ── Executive Summary ── */}
         <div style={{ marginBottom: "24px" }}>
           <SectionHeader>Executive Summary</SectionHeader>
@@ -423,6 +537,23 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
               Regional supply-demand foundation any funding justification requires.
               {swp.coe_region ? ` Scoped to the ${swp.coe_region} COE region.` : ""}
             </SectionDescription>
+            {/* Institutional source caption — borrows the artifact's authority
+                from the named external publications. Per the institutional-
+                deference architectural commitment (principle 2), the reader
+                should be able to verify any categorical claim against one of
+                these publications without trusting Kallipolis itself. The
+                caption is visible but not overwhelming — small, italic, low
+                opacity. The caption disappears when sources are absent
+                (legacy proposals predating C1). */}
+            {swp.sources && (
+              <div style={{
+                fontFamily: FONT, fontSize: "10px", fontStyle: "italic",
+                color: "rgba(255,255,255,0.32)", lineHeight: 1.5,
+                margin: "-4px 0 12px", paddingLeft: "16px", paddingRight: "8px",
+              }}>
+                Sources: {swp.sources.coe_demand_publication}; {swp.sources.coe_supply_publication}; {swp.sources.top_cip_crosswalk_source}; {swp.sources.cip_soc_crosswalk_source}.
+              </div>
+            )}
 
             {/* Demand sub-table — column shape mirrors the partnership-narrative
                 example on the docs site: SOC Code, Occupation, Region, Wage,
@@ -458,7 +589,25 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
                     fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.7)",
                   }}>
                     <span />
-                    <span style={{ fontVariantNumeric: "tabular-nums", color: "rgba(255,255,255,0.5)" }}>{occ.soc_code ?? "—"}</span>
+                    <span style={{ fontVariantNumeric: "tabular-nums", color: "rgba(255,255,255,0.5)" }}>
+                      {occ.soc_code ?? "—"}
+                      {/* CIP chip — surfaces the SOC↔CIP institutional link
+                          (BLS/NCES crosswalk) inline next to the SOC code.
+                          Truncates to first CIP with +N indicator when the
+                          SOC maps to multiple CIPs. */}
+                      {occ.cip_codes && occ.cip_codes.length > 0 && (
+                        <span style={{
+                          marginLeft: "6px", fontSize: "9px",
+                          padding: "1px 5px", borderRadius: "3px",
+                          background: "rgba(255,255,255,0.06)",
+                          color: "rgba(255,255,255,0.45)",
+                          fontFamily: FONT, fontWeight: 500,
+                          fontVariantNumeric: "normal",
+                        }}>
+                          CIP {occ.cip_codes[0]}{occ.cip_codes.length > 1 ? ` +${occ.cip_codes.length - 1}` : ""}
+                        </span>
+                      )}
+                    </span>
                     <span>{occ.title}</span>
                     <span style={{ color: "rgba(255,255,255,0.55)" }}>{swp.coe_region || "—"}</span>
                     <span style={{ textAlign: "right", fontVariantNumeric: "tabular-nums" }}>
