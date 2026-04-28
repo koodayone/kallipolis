@@ -138,20 +138,14 @@ export default function ProposalFlow({
 
                       {/* SOC line */}
                       <div style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.35)", letterSpacing: "0.04em", marginBottom: "10px" }}>
-                        {occ.soc_code}
+                        SOC {occ.soc_code}
                       </div>
 
                       {/* Demand signal */}
-                      <div style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.55)", lineHeight: 1.5, marginBottom: "6px" }}>
+                      <div style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.55)", lineHeight: 1.5 }}>
                         {formatNumber(occ.annual_openings)} annual openings
                         {" · "}{formatWage(occ.annual_wage)} median
-                        {" · "}{formatGrowth(occ.growth_rate)} growth
-                        {coeRegion && <>{" · "}{coeRegion}</>}
-                      </div>
-
-                      {/* Alignment signal */}
-                      <div style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.45)", lineHeight: 1.5 }}>
-                        {school.name} develops {occ.core_skills_developed_count} of {occ.core_skills_total_count} core skills across {occ.course_count} courses
+                        {" · "}{formatGrowth(occ.growth_rate)} employment growth
                       </div>
                     </button>
                   );

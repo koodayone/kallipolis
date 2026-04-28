@@ -96,7 +96,7 @@ def _build_narrative_context(
         if selected_occ_data.get("annual_openings"):
             lines.append(f"  Annual openings (regional): {selected_occ_data['annual_openings']:,}")
         if selected_occ_data.get("growth_rate") is not None:
-            lines.append(f"  Projected growth: {selected_occ_data['growth_rate']:+.1%}")
+            lines.append(f"  Projected employment growth: {selected_occ_data['growth_rate']:+.1%}")
         if selected_occ_data.get("employment"):
             lines.append(f"  Regional employment: {selected_occ_data['employment']:,}")
     lines.append(f"  Core skills: {', '.join(core_skills)}")
@@ -125,7 +125,7 @@ def _build_narrative_context(
             if occ_ev.get("annual_openings"):
                 details.append(f"{occ_ev['annual_openings']:,} annual openings")
             if occ_ev.get("growth_rate") is not None:
-                details.append(f"{occ_ev['growth_rate']:+.1%} growth")
+                details.append(f"{occ_ev['growth_rate']:+.1%} employment growth")
         if details:
             parts.append(f"     {', '.join(details)}")
         lines.extend(parts)

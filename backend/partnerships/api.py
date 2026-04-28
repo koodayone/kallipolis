@@ -99,10 +99,16 @@ def get_employer_occupations(employer: str, college: str):
     well the college's curriculum already covers each occupation's required
     skills, before deciding which role to scope the partnership artifact to.
 
-    The response is sorted by (coverage_ratio DESC, annual_openings DESC),
-    so the first row is the deterministic "suggested" default the picker
-    pre-selects. `coe_region` is attached at the top level so the atlas can
-    surface the geographic scope alongside the demand figures.
+    The response is sorted by annual_openings DESC, so the first row is the
+    deterministic "suggested" default the picker pre-selects — the highest-
+    volume occupation in the regional data, matching the most common framing
+    of "where does this employer hire most?" The alignment fields are
+    returned for future use but do not drive the sort, since the underlying
+    skills-extraction methodology is not yet robust enough to be a load-
+    bearing default-selection signal.
+
+    `coe_region` is attached at the top level so callers can surface the
+    geographic scope alongside the demand figures when needed.
     """
     from ontology.regions import COLLEGE_COE_REGION
 
@@ -142,11 +148,7 @@ def get_employer_occupations(employer: str, college: str):
                        core_skills_developed_count,
                        core_skills_total_count,
                        course_count
-                ORDER BY (1.0 * core_skills_developed_count /
-                          CASE WHEN core_skills_total_count > 0
-                               THEN core_skills_total_count
-                               ELSE 1 END) DESC,
-                         coalesce(d.annual_openings, 0) DESC
+                ORDER BY coalesce(d.annual_openings, 0) DESC
             """, employer=employer, college=college).data()
 
         return {
