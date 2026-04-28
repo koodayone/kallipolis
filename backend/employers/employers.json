@@ -20747,31 +20747,6 @@
     "enrichment_promoted": true
   },
   {
-    "name": "Mercy Medical Center Redding",
-    "sector": "Healthcare",
-    "description": "Mercy Medical Center Redding is a Dignity Health facility dedicated to keeping individuals happy, healthy, and whole in Redding, CA. The center offers a comprehensive range of services including cancer care, emergency and trauma services, heart care, maternity services, neurology, spine services, and orthopedics. Recognized as an LGBTQ+ Healthcare Equality High Performer, Mercy Medical Center Redding is committed to equitable treatment and inclusion for its patients, visitors, and employees. The organization also actively engages in community health initiatives, providing grants to local non-profits and promoting health awareness.",
-    "regions": [
-      "FN"
-    ],
-    "occupations": [
-      "11-9111",
-      "29-1141",
-      "29-2034",
-      "29-2061",
-      "31-1131",
-      "31-9092",
-      "31-9097",
-      "49-9062"
-    ],
-    "website": "https://www.dignityhealth.org/north-state/locations/mercy-redding",
-    "swp_sectors": [
-      "Health"
-    ],
-    "identity_verified": true,
-    "enrichment_attempted": true,
-    "enrichment_promoted": true
-  },
-  {
     "name": "Vibra Hospital of Northern CA",
     "sector": "Healthcare",
     "description": "Vibra Hospital of Northern California is a critical care hospital in Redding, California, specializing in extended hospitalization for patients with complex medical issues. They serve individuals requiring longer-term hospital services due to critical and chronic medical conditions, offering specialized care in areas such as cardiac, medically complex, neuro, respiratory, sepsis & infectious disease, post-trauma, skilled nursing, and wound care. The hospital focuses on developing individualized treatment plans to help patients overcome obstacles and achieve recovery goals, emphasizing high standards of performance, quality, and patient safety, as evidenced by their Joint Commission's Gold Seal of Approval\u00ae for Hospital Accreditation.",
@@ -44909,31 +44884,6 @@
     "enrichment_promoted": true
   },
   {
-    "name": "Sutter Lakeside Hospital",
-    "sector": "Healthcare",
-    "description": "Sutter Lakeside Hospital is a 25-bed critical access hospital located in Lakeport, California, serving residents of Lake County and surrounding communities. Accredited by The Joint Commission, this community-based hospital provides a broad range of inpatient and outpatient services. Key offerings include 24/7 emergency care, general surgery, labor and delivery, intensive care, family medicine, and physical therapy. The hospital also features comprehensive medical imaging services, an infusion center, and primary care for both children and adults through its community clinic. It is affiliated with 192 clinicians and is part of the larger Sutter Health system.",
-    "regions": [
-      "FN"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-9111",
-      "13-1071",
-      "13-2011",
-      "29-1141",
-      "29-2034",
-      "31-2021",
-      "31-9092"
-    ],
-    "website": "https://www.sutterhealth.org/locations/sutter-lakeside-hospital",
-    "swp_sectors": [
-      "Health"
-    ],
-    "identity_verified": true,
-    "enrichment_attempted": true,
-    "enrichment_promoted": true
-  },
-  {
     "name": "Rancheria Grille",
     "sector": "Hospitality & Food Service",
     "description": "Robinson Rancheria Resort & Casino, located on the north shore of Clear Lake, operates as a comprehensive hospitality and entertainment complex, serving guests with gaming, dining, and lodging options. The establishment features the largest casino floor in the county, offering a variety of slot machines, table games, a high-stakes gaming room, and a 900-seat bingo facility. Dining options include The Grill, The Food Hall, and The Bingo Cafe, alongside a hotel with luxury rooms and suites. Key business activities encompass gaming, food and beverage service, accommodation, and live entertainment, catering to individuals seeking leisure and recreational experiences.",
@@ -45549,53 +45499,6 @@
     "website": "https://www.co.siskiyou.ca.us/publicworks",
     "swp_sectors": [
       "Energy, Construction and Utilities"
-    ],
-    "identity_verified": true,
-    "enrichment_attempted": true,
-    "enrichment_promoted": true
-  },
-  {
-    "name": "Siskiyou County Coroner",
-    "sector": "Healthcare",
-    "description": "The Siskiyou County Coroner, an integral part of the Siskiyou County Sheriff's Office in California's Far North region, investigates sudden, violent, or unexpected deaths, as well as those without recent physician care or occurring shortly after hospital admission. This organization serves the citizens and families of Siskiyou County by determining the circumstances, manner, and cause of death, often through physical examinations or autopsies. Key activities include issuing death certificates, managing decedents' personal possessions, and providing information on organ donation. While administrative office hours are limited, dispatch services are available 24/7 to support its critical public safety functions.",
-    "regions": [
-      "FN"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-9161",
-      "19-4092",
-      "29-2072",
-      "29-9021"
-    ],
-    "website": "https://www.co.siskiyou.ca.us/sheriff/page/coroner",
-    "swp_sectors": [
-      "Public Safety"
-    ],
-    "identity_verified": true,
-    "enrichment_attempted": true,
-    "enrichment_promoted": true
-  },
-  {
-    "name": "Mercy Medical Center Mount Shasta",
-    "sector": "Healthcare",
-    "description": "Mercy Medical Center Mt. Shasta is a Dignity Health hospital dedicated to promoting healing and wellness in the Far North region of California. The center offers comprehensive medical services, including cancer care, emergency services, a family birth center, heart care, imaging, spine services, and orthopedics. Committed to treating the whole person, Mercy Medical Center Mt. Shasta also provides community classes and events to support healthy living for its patients and visitors. The facility has been recognized as an LGBTQ+ Healthcare Equality High Performer, reflecting its dedication to equitable treatment and inclusion.",
-    "regions": [
-      "FN"
-    ],
-    "occupations": [
-      "31-9092",
-      "31-9097",
-      "29-2034",
-      "29-1141",
-      "31-1131",
-      "11-9111",
-      "29-2055",
-      "29-2072"
-    ],
-    "website": "https://www.dignityhealth.org/north-state/locations/mercy-mtshasta",
-    "swp_sectors": [
-      "Health"
     ],
     "identity_verified": true,
     "enrichment_attempted": true,
