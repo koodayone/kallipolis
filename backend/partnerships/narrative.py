@@ -156,14 +156,18 @@ def _build_narrative_context(
         lines.append(f"  Department-level total enrollment: {dept_enrollment_str}")
     lines.append("")
 
-    # Regional supply-demand summary for the executive summary's regional anchor.
+    # Regional supply-demand summary, scoped to the selected occupation
+    # (the same SOC the rest of the artifact is built around). The gap is
+    # the integrative figure cited at the close of the executive summary;
+    # it must be a meaningful one-occupation reading, not an
+    # asymmetric cross-occupation aggregate.
     if swp_evidence.coe_region:
-        lines.append(f"REGIONAL SUPPLY-DEMAND ({swp_evidence.coe_region} COE region):")
-        lines.append(f"  Annual demand across {len(swp_evidence.occupations)} occupations the employer hires for: {swp_evidence.total_demand:,} openings")
+        lines.append(f"REGIONAL SUPPLY-DEMAND ({swp_evidence.coe_region} COE region, scoped to the SELECTED occupation):")
+        lines.append(f"  Annual regional demand for {occ_title}: {swp_evidence.total_demand:,} openings")
         lines.append(f"  Annual projected supply across {len(swp_evidence.supply_estimates)} aligned TOP codes: {swp_evidence.total_supply:.0f} completions")
-        lines.append(f"  Gap (demand minus supply): {swp_evidence.gap:,.0f}")
-        lines.append("  Note: the gap compares total employer-hires demand against curriculum-aligned supply.")
-        lines.append("  It characterizes the regional landscape; it is not a point-in-time prediction.")
+        lines.append(f"  Workforce gap (demand minus supply, both scoped to this occupation): {swp_evidence.gap:,.0f}")
+        lines.append("  Note: the gap is the integrative figure for the executive summary's closing line.")
+        lines.append("  It compares this region's demand for this occupation against the supply produced by the curriculum that prepares for it.")
 
     return "\n".join(line for line in lines if line is not None)
 

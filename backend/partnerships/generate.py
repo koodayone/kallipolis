@@ -54,21 +54,32 @@ def _assemble_swp_evidence(
     college: str,
     gathered: GatheredContext,
     curriculum_evidence: list[dict],
+    selected_occ: dict,
 ) -> SwpEvidence:
-    """Assemble the tabular regional supply-demand evidence block.
+    """Assemble the tabular regional supply-demand evidence block, scoped
+    to the selected occupation.
 
-    Demand: occupations the employer hires for, with regional annual openings
-    (read from the partnership-flow GatheredContext, which already populated
-    annual_openings from the Neo4j graph's COE-grounded DEMANDS edges).
+    The artifact is built around one specific occupation choice (the SOC
+    the coordinator picked or the LLM auto-selected). Every other section
+    — narrative, curriculum, students — is scoped to that SOC; the SWP
+    evidence block is too. Demand is the annual regional openings for
+    the selected occupation only; supply is the projected annual
+    completions of programs whose TOP6 the institutional crosswalk maps
+    to that SOC; the gap is the meaningful one-occupation reading,
+    matching the docs-page Partnership Narrative example
+    ("workforce gap of 232" for one Solar Photovoltaic Installers row).
 
-    Supply: TOP6 codes mapped from the aligned curriculum's course codes,
-    looked up against the COE-published projected annual completions CSV.
+    Earlier the demand totaled across every occupation the employer
+    hired for, while supply was already curriculum-aligned and therefore
+    selected-SOC-scoped. The gap was that asymmetric subtraction: a
+    cross-occupation demand minus a single-pathway supply. The
+    integrative figure cited at the bottom of the executive summary
+    inherited that asymmetry. Scoping demand to the selected SOC
+    restores the meaning.
 
-    Department enrollments: total enrolled students per aligned department,
-    for the student-impact dimension of the table.
-
-    Both demand and supply are annual flow metrics (openings vs. completions).
-    The gap is total demand minus total supply.
+    Args:
+        selected_occ: dict with at least "soc_code"; used to locate the
+            corresponding row in gathered.occupation_evidence.
     """
     from ontology.mcf_lookup import lookup_top6
     from ontology.regions import COLLEGE_COE_REGION
@@ -76,18 +87,31 @@ def _assemble_swp_evidence(
 
     coe_region = COLLEGE_COE_REGION.get(college, "")
 
-    # Demand: all occupations the employer hires for in this region.
-    occupations = [
-        OccupationEvidence(
-            title=o["title"],
-            soc_code=o.get("soc_code"),
-            annual_wage=o.get("annual_wage"),
-            employment=o.get("employment"),
-            annual_openings=o.get("annual_openings"),
-            growth_rate=o.get("growth_rate"),
-        )
-        for o in gathered.occupation_evidence
-    ]
+    # Demand: scoped to the selected occupation. The full list of
+    # employer-hires occupations remains in gathered.occupation_evidence
+    # for any caller that wants the broader view (e.g., the picker), but
+    # the artifact's evidence table is single-row by design.
+    selected_soc = selected_occ.get("soc_code")
+    selected_row = next(
+        (o for o in gathered.occupation_evidence if o.get("soc_code") == selected_soc),
+        None,
+    )
+    if selected_row:
+        occupations = [
+            OccupationEvidence(
+                title=selected_row["title"],
+                soc_code=selected_row.get("soc_code"),
+                annual_wage=selected_row.get("annual_wage"),
+                employment=selected_row.get("employment"),
+                annual_openings=selected_row.get("annual_openings"),
+                growth_rate=selected_row.get("growth_rate"),
+            )
+        ]
+    else:
+        # Defensive fallback: if the selected SOC isn't in the employer's
+        # hires set (shouldn't happen — picker validates upstream), emit
+        # an empty list and a zero gap rather than crash.
+        occupations = []
     total_demand = sum(o.annual_openings or 0 for o in occupations)
 
     # Supply: lookup TOP6 codes for the aligned courses, then COE supply CSV.
@@ -216,7 +240,7 @@ def _run_pipeline(
     )
     logger.info(f"Stage 3 complete: gathered curriculum and student pipeline for {employer}")
 
-    swp_evidence = _assemble_swp_evidence(college, gathered, curriculum_evidence)
+    swp_evidence = _assemble_swp_evidence(college, gathered, curriculum_evidence, selected_occ)
     logger.info(f"Stage 4 complete: assembled regional supply-demand evidence (gap={swp_evidence.gap:,.0f})")
 
     narrative_context = _build_narrative_context(
