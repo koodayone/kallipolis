@@ -24,129 +24,107 @@
   {
     "name": "Land O'Lakes Industrial Cheese",
     "sector": "Manufacturing",
-    "description": "Land O'Lakes is a farmer-owned cooperative that produces and markets a wide range of dairy products, including butter, cheese, and spreads, serving both consumer and industrial markets within the food and agriculture industry.",
+    "description": "Land O'Lakes is a farmer-owned cooperative, established in 1921, that produces a variety of dairy products including butter, cheese, eggs, and whipping cream. They serve consumers by offering products and recipes, emphasizing their farmer-owners and the quality of their dairy items.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3051",
-      "11-3121",
-      "13-1071",
-      "13-2011",
-      "17-2112",
-      "19-1012",
-      "19-4013",
-      "11-3012",
-      "13-1051",
-      "49-9062",
-      "51-4111"
+      "51-1011",
+      "49-9041",
+      "51-3092",
+      "51-9061",
+      "19-1012"
     ],
     "website": "https://www.landolakes.com",
     "swp_sectors": [
-      "Advanced Manufacturing"
-    ]
+      "Agriculture, Water and Environmental Technologies"
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Saputo Cheese USA",
     "sector": "Manufacturing",
-    "description": "Saputo Cheese USA manufactures and markets a diverse portfolio of high-quality cheese and dairy products, including mozzarella, cheddar, and ricotta, primarily serving the food processing and consumer markets.",
+    "description": "Saputo Cheese USA transforms milk into high-quality, safe, and nutritious cheese and dairy products, serving consumers across the U.S. They offer a vast array of award-winning products and well-known brands, including mozzarella, provolone, blue cheese, cheddar, Monterey Jack, goat, hard Italian cheeses, feta, string, snacking, and ricotta.",
     "regions": [
       "CVML",
       "LA"
     ],
     "occupations": [
-      "11-1021",
-      "11-3051",
-      "11-3121",
-      "13-1071",
-      "13-2011",
-      "17-2112",
-      "19-1012",
-      "19-4013",
-      "11-1011",
-      "13-1028",
-      "13-1199",
-      "35-2013",
-      "41-4011",
-      "11-3012",
-      "13-1051",
-      "49-9062",
-      "51-4111"
+      "51-1011",
+      "51-3092",
+      "51-9061",
+      "49-9041",
+      "53-3032"
     ],
     "website": "https://www.saputocheeseusa.com",
     "swp_sectors": [
-      "Advanced Manufacturing"
-    ]
+      "Agriculture, Water and Environmental Technologies"
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Sun Pacific",
     "sector": "Wholesale",
-    "description": "Sun Pacific is a leading grower, packer, and marketer of fresh produce, specializing in popular fruit varieties such as Cuties mandarins, Mighties kiwi, oranges, grapes, and lemons, operating within the agriculture industry.",
+    "description": "Sun Pacific is a California-based agricultural company that grows, packs, and ships fresh produce, including Cuties\u00ae mandarins, Mighties\u00ae kiwi, oranges, Air Chief\u00ae grapes, and lemons. They serve consumers by providing a variety of fruits, focusing on quality from farm to table.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3051",
-      "11-3061",
-      "13-1081",
-      "13-2011",
-      "19-1013",
-      "19-4012",
-      "11-3012",
-      "13-1071",
-      "13-1199",
-      "43-4161",
-      "53-3032"
+      "11-9013",
+      "45-1011",
+      "51-1011",
+      "53-3032",
+      "49-9071"
     ],
     "website": "https://sunpacific.com",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Monrovia Nursery",
     "sector": "Wholesale",
-    "description": "Monrovia Nursery is a horticultural company that grows and supplies a wide selection of high-quality plants, including trees, shrubs, perennials, and edibles, for home gardeners and landscape professionals across North America.",
+    "description": "Monrovia Nursery grows and sells a wide variety of plants, including shrubs, perennials, trees, and edibles. Serving both home gardeners and landscape professionals, the company offers distinctive selections and resources, operating for over 100 years with a focus on developing strong root systems.",
     "regions": [
       "CVML",
       "LA"
     ],
     "occupations": [
-      "11-1021",
-      "11-3051",
-      "11-3121",
-      "13-1071",
-      "13-2011",
-      "19-1013",
-      "19-4012",
-      "11-3012",
-      "13-1011",
-      "43-4161",
-      "45-2011",
-      "11-9121",
-      "13-1199"
+      "11-9013",
+      "45-1011",
+      "53-3032",
+      "49-9071",
+      "41-4012"
     ],
     "website": "https://www.monrovia.com",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Winco Foods",
     "sector": "Retail",
-    "description": "WinCo Foods is an employee-owned grocery chain operating across multiple regions, including California. It offers a wide range of products such as produce, meat, deli, seafood, and bakery items, focusing on providing low prices and extra savings to its customers.",
+    "description": "WinCo Foods is an employee-owned supermarket chain operating across multiple states, including California. It offers a wide range of groceries, including produce, meat, deli, seafood, and bakery items, focusing on providing low prices and extra savings to its customers.",
     "regions": [
       "CVML",
       "FN"
     ],
     "occupations": [
       "41-1011",
-      "35-1012",
+      "49-9071",
       "49-9021",
       "53-3032",
-      "11-9021"
+      "11-9051"
     ],
     "website": "https://www.wincofoods.com",
     "swp_sectors": [
@@ -159,417 +137,376 @@
   {
     "name": "Tulare Local Healthcare District",
     "sector": "Professional Services",
-    "description": "Tulare Local Healthcare District provides governance, oversight, and stewardship of healthcare assets and capital projects, supporting community wellness and public accountability within the healthcare industry.",
+    "description": "The Tulare Local Healthcare District manages and utilizes District resources to address the health needs of its population. It provides governance, oversight, and stewardship of healthcare assets and capital projects, supporting community wellness and public accountability, including the construction of the Tulare Tower.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3031",
-      "11-3121",
       "11-9111",
-      "13-1071",
-      "13-2011",
-      "29-1141",
-      "29-2061",
-      "11-3012",
-      "15-1244",
-      "31-9092"
+      "11-3013",
+      "11-9021",
+      "49-9071",
+      "43-6013"
     ],
     "website": "https://www.tularelocalhealthcaredistrict.org",
     "swp_sectors": [
-      "Business and Entrepreneurship"
-    ]
+      "Health"
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Tulare Joint Union High School District",
     "sector": "Education",
-    "description": "Tulare Joint Union High School District operates multiple high schools, a continuation high school, a community day school, charter high schools, and an adult school, providing public education services.",
+    "description": "The Tulare Joint Union High School District operates three comprehensive high schools, one continuation high school, one community day school, two charter high schools, and an adult school in Tulare, CA. It focuses on fostering student success and preparing students for future possibilities, with a high graduation rate and strong academic progress.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3031",
-      "11-3121",
-      "11-9039",
-      "13-1071",
-      "13-2011",
-      "25-2031",
-      "25-9099"
+      "11-9032",
+      "37-1011",
+      "49-9071",
+      "53-3052",
+      "35-1012"
     ],
     "website": "https://www.tjuhsd.org",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Porterville College",
     "sector": "Education",
-    "description": "Porterville College is a community college offering academic and career pathways, student services, and resources to help students achieve their educational and career goals in the higher education sector.",
+    "description": "Porterville College is an educational institution that provides academic and career pathways in fields like Business, Health, Arts, and Public Safety. It serves new students, athletes, international students, high school students, and military veterans, offering support services such as counseling, health & wellness, and tutoring.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3031",
-      "11-3121",
-      "11-9039",
-      "13-1071",
-      "13-2011",
+      "11-9033",
       "25-3099",
-      "25-9044",
-      "11-3012",
-      "25-2031",
-      "43-4161"
+      "21-1019",
+      "49-9071",
+      "11-3013"
     ],
     "website": "https://www.portervillecollege.edu",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Visalia Medical Clinic",
     "sector": "Healthcare",
-    "description": "Visalia Medical Clinic, part of Adventist Health, offers comprehensive primary and specialty medical care, including pediatrics, imaging, and urgent care, serving the healthcare needs of the Visalia community.",
+    "description": "Visalia Medical Clinic, part of Adventist Health, has served the Visalia community for over 80 years, offering primary care, pediatrics, and over 18 specialties. They provide comprehensive healthcare services for patients from birth through adulthood at their main and surrounding locations, including quick care and various specialty clinics.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3031",
-      "11-3121",
-      "11-9111",
-      "13-1071",
-      "13-2011",
       "29-1141",
       "31-9092",
-      "11-3012",
-      "15-1244"
+      "11-9111",
+      "49-9071",
+      "29-2034"
     ],
     "website": "https://www.adventisthealth.org/visaliamedicalclinic",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "BASS Medical Group",
     "sector": "Healthcare",
-    "description": "BASS Medical Group is a network of healthcare professionals providing primary care, specialty medical services, advanced imaging, and cancer treatment across numerous locations in the San Francisco Bay Area.",
+    "description": "BASS Medical Group is a healthcare provider offering compassionate primary care and specialty services, including cancer and imaging centers, to communities across the San Francisco Bay Area. With over 200 locations and hundreds of doctors, they serve a wide range of patients with advanced technology and diverse medical expertise.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3031",
-      "11-3121",
-      "11-9111",
-      "13-1071",
-      "13-2011",
       "29-1141",
       "31-9092",
-      "11-3012",
-      "15-1244"
+      "29-1071",
+      "29-2034",
+      "11-9111"
     ],
     "website": "https://www.bassmedicalgroup.com",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Adventist Health Tulare",
     "sector": "Healthcare",
-    "description": "Adventist Health is a faith-based healthcare organization providing comprehensive medical services, including primary care, specialty care, urgent care, and hospital services, across the West Coast and Hawaii, focusing on whole-person wellness.",
+    "description": "Adventist Health provides faith-based, comprehensive healthcare services across the West Coast and Hawaii. It offers primary, urgent, and specialty care, including cancer, women's health, and emergency services, focusing on mental, physical, and spiritual wellness to help communities live to their fullest potential.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3031",
-      "11-3121",
-      "11-9111",
-      "13-1071",
-      "13-2011",
       "29-1141",
-      "31-1131",
-      "11-3012",
-      "15-1244",
-      "31-9092"
+      "29-2061",
+      "31-9092",
+      "11-9111",
+      "49-9071"
     ],
     "website": "https://www.adventisthealth.org",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Kaweah Health Rehabilitation Hospital",
     "sector": "Healthcare",
-    "description": "Kaweah Health is a healthcare provider offering a wide range of medical services, including emergency, cardiovascular, cancer care, orthopedics, and rehabilitation, across 52 locations in Tulare County, California.",
+    "description": "Kaweah Health is a healthcare organization in Tulare County, California, offering a wide range of services including emergency, cardiovascular, cancer care, orthopedics, and rehabilitation. With 52 locations, it serves the community by providing comprehensive medical care and promoting healthiness.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3031",
-      "11-3121",
-      "11-9111",
-      "13-1071",
-      "13-2011",
       "29-1141",
-      "29-1125",
-      "11-3012",
-      "15-1244",
-      "31-2021"
+      "31-1131",
+      "29-1127",
+      "31-2022",
+      "31-2012"
     ],
     "website": "https://www.kaweahhealth.org",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Porterville Developmental Center",
     "sector": "Healthcare",
-    "description": "Porterville Developmental Center is a state-operated facility in California providing personalized support and secure treatment programs for individuals with mild to moderate intellectual disabilities who have legal system involvement or are a danger to themselves or others.",
+    "description": "Porterville Developmental Center is California's only state-operated facility serving individuals with mild to moderate intellectual disabilities who have legal system contact, are a danger to themselves or others, or are incompetent to stand trial. It provides personalized support, treatment, and training programs, including healthcare, education, and independent living skills, to maximize independence.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3031",
-      "11-3121",
-      "11-9111",
-      "13-1071",
-      "13-2011",
-      "21-1018",
       "29-1141",
-      "11-3012",
-      "11-9151",
-      "15-1244",
-      "31-1131"
+      "29-2053",
+      "31-1131",
+      "21-1093",
+      "33-3012"
     ],
     "website": "https://www.dds.ca.gov/services/state-facilities/porterville-dc/",
     "swp_sectors": [
-      "Education and Human Development"
-    ]
+      "Health"
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Sierra View Medical Center",
     "sector": "Healthcare",
-    "description": "Sierra View Medical Center is a 167-bed acute care facility in Porterville, California, offering comprehensive hospital services such as emergency, critical care, cancer treatment, and maternal child health to the Southern Sequoia region of Tulare County.",
+    "description": "Sierra View Medical Center is a 167-bed, full-service acute care facility in Porterville, California, serving the Southern Sequoia region of Tulare County. It provides comprehensive healthcare services, including an Advanced Primary Stroke Center, cancer treatment, and a Urology Clinic in alliance with Keck Medicine of USC.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3031",
-      "11-3121",
-      "11-9111",
-      "13-1071",
-      "13-2011",
       "29-1141",
       "31-1131",
-      "11-3012",
-      "15-1244",
-      "31-9092"
+      "29-2034",
+      "29-1126",
+      "11-9111"
     ],
     "website": "https://www.sierra-view.com",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Tulare County Office of Education",
     "sector": "Government",
-    "description": "The Tulare County Office of Education provides leadership, resources, and services to support schools, students, and educators in Tulare County, including programs for early childhood education, career development, special education, and professional learning.",
+    "description": "The Tulare County Office of Education provides comprehensive educational programs and services, including early childhood, special education, and college and career readiness, to students and school districts across Tulare County. Key activities involve instructional support, professional learning, and operating various educational sites and student events.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3031",
-      "11-3121",
-      "11-9039",
-      "13-1071",
-      "13-2011",
-      "25-3099",
-      "25-9099"
+      "11-9032",
+      "25-2059",
+      "25-9031",
+      "21-1021",
+      "49-9071"
     ],
     "website": "https://www.tcoe.org",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Foster Farms",
     "sector": "Agriculture",
-    "description": "Foster Farms is a poultry company that produces and sells premium chicken and turkey products, ranging from fresh whole chickens to ready-to-eat meals, operating within the food and agriculture industry.",
+    "description": "Foster Farms is a West Coast poultry producer offering premium chicken and turkey products, ranging from fresh whole chickens to ready-to-eat meals like wings and nuggets. They serve consumers and food service operations, focusing on responsibly raised poultry with no added hormones or steroids.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-2021",
       "11-3051",
-      "13-1071",
-      "13-2011",
-      "19-1011",
-      "19-1012",
-      "19-4012",
-      "11-3012",
-      "13-1199",
-      "43-4161"
+      "11-9013",
+      "49-9041",
+      "51-1011",
+      "53-3032"
     ],
     "website": "https://www.fosterfarms.com",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Woolf Farming Company of California",
     "sector": "Agriculture",
-    "description": "Woolf Farming and Processing operates in California's Central Valley, sustainably growing, processing, and delivering healthy natural products to the food chain, primarily in the agriculture and food processing industry.",
+    "description": "Woolf Farming and Processing operates in California's Central Valley, sustainably growing, processing, and delivering healthy natural products to the food chain. As a certified B Corp, they adhere to high standards of social commitment and environmental performance.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "13-1071",
-      "13-2011",
-      "19-1013",
-      "19-4012",
-      "45-2011",
-      "11-3012",
-      "13-1199",
-      "43-4161",
+      "11-9013",
+      "45-1011",
+      "49-3041",
+      "49-9041",
       "53-3032"
     ],
     "website": "https://www.woolffarming.com",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Clark Brothers Construction",
     "sector": "Construction",
-    "description": "Clark Bros. Inc. and CBI Power, Inc. are full-service EPC contractors specializing in heavy civil and high-voltage electrical infrastructure, including renewable energy projects, across the western United States, operating in the construction and renewable energy industry.",
+    "description": "Clark Bros. Inc. and CBI Power, Inc. are full-service EPC contractors specializing in heavy civil and high-voltage electrical infrastructure across the western United States. They deliver turnkey solutions for complex projects in water, power, and renewables sectors, including wind, solar, hydro, and battery energy storage systems, serving developers and owners.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
       "11-9021",
-      "13-1051",
-      "13-1082",
-      "13-2011",
-      "17-1011",
-      "17-2051",
-      "17-3011",
-      "11-3012",
-      "15-1244",
-      "43-4161"
+      "47-1011",
+      "47-2073",
+      "47-2111",
+      "49-9051"
     ],
     "website": "https://www.clarkbrosinc.com",
     "swp_sectors": [
       "Energy, Construction and Utilities"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Fresno Plumbing and Heating",
     "sector": "Construction",
-    "description": "Fresno Plumbing and Heating Inc. provides comprehensive plumbing and heating services for residential, commercial, and new construction projects, including emergency services, leak detection, and water heater maintenance, primarily in the plumbing and HVAC industry.",
+    "description": "Fresno Plumbing and Heating Inc. has provided plumbing services in California's Central Valley since 1945, serving residential and commercial clients, including housing developments, schools, and medical facilities. They offer new construction, service, leak detection, re-piping, water heater services, sewer inspection, and backflow testing, supported by over 260 employees.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1051",
-      "13-2011",
+      "47-2152",
       "49-9021",
-      "11-3051",
-      "13-1082",
-      "43-4161",
-      "49-9062"
+      "47-1011",
+      "11-9021",
+      "13-1051"
     ],
     "website": "https://www.fresnoplumbinginc.com",
     "swp_sectors": [
       "Energy, Construction and Utilities"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Anlin Industries",
     "sector": "Construction",
-    "description": "Anlin Industries manufactures high-quality, energy-efficient vinyl replacement windows and doors, offering products with advanced technology, noise reduction, and a strong warranty for residential applications in the building materials industry.",
+    "description": "Anlin Windows & Doors is a top replacement window and door manufacturer based in Clovis, CA, serving homeowners with energy-efficient vinyl products. They offer a range of windows and patio doors, including options with in-glass pet doors, backed by a Limited Double Lifetime Warranty and 5-star customer service.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-2021",
-      "11-3051",
-      "13-1082",
-      "13-2011",
-      "17-2112",
-      "51-4111",
-      "11-3012",
-      "13-1051",
-      "43-4161"
+      "51-1011",
+      "51-7011",
+      "51-4081",
+      "49-9041",
+      "47-2121"
     ],
     "website": "https://www.anlin.com",
     "swp_sectors": [
       "Advanced Manufacturing"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Sun-Maid Growers of California",
     "sector": "Manufacturing",
-    "description": "Sun-Maid Growers of California is a cooperative that processes and markets a variety of dried fruit products, primarily raisins, for snacking, baking, and other food applications within the food processing and agriculture industry.",
+    "description": "Sun-Maid Growers of California produces and markets a variety of dried fruit products, including sun-dried raisins, yogurt-covered raisins, dried mango, apricots, prunes, and figs. They serve consumers with snacks and ingredients for baking, emphasizing whole fruit goodness.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-2021",
-      "11-3051",
-      "13-1071",
-      "13-2011",
-      "19-1012",
-      "19-4013",
-      "45-2011",
-      "11-3012",
-      "13-1199",
-      "19-1013",
-      "43-4161"
+      "51-3092",
+      "51-9012",
+      "49-9041",
+      "51-1011",
+      "19-5011"
     ],
     "website": "https://www.sunmaid.com",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Lion Raisins",
     "sector": "Manufacturing",
-    "description": "Lion Raisins cultivates, processes, and supplies premium raisins and raisin-based products, including Golden Raisins and Dried-On-the-Vine varieties, to customers worldwide, operating within the agricultural and food processing industry.",
+    "description": "Lion Raisins, a five-generation family business since 1903, cultivates and supplies premium raisins and raisin-based products, including Golden and Dried-On-the-Vine varieties. They offer industrial solutions, distribution, and packaging services to customers worldwide, utilizing a state-of-the-art facility in California.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
       "11-3051",
-      "13-1071",
-      "13-2011",
-      "19-1012",
-      "19-4013",
-      "45-2011",
-      "11-3012",
-      "13-1199",
-      "19-1013",
-      "43-4161"
+      "11-9013",
+      "49-9041",
+      "51-1011",
+      "53-3032"
     ],
     "website": "https://www.lionraisins.com",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Cargill",
@@ -595,108 +532,101 @@
     "website": "https://www.cargill.com",
     "swp_sectors": [
       "Global Trade"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Harris Ranch Beef Company",
     "sector": "Manufacturing",
-    "description": "Harris Ranch Beef Company is a leading producer of high-quality branded beef products, committed to animal welfare, sustainability, and stringent food safety, serving retail, foodservice, and export markets in the meat processing industry.",
+    "description": "Harris Ranch Beef Company is a beef producer that pioneered a branded beef program in 1982, serving retail, e-commerce, export, and foodservice customers. They process high volumes for large U.S. distributors and customized orders, focusing on animal welfare, sustainability, and stringent food safety standards to produce high-quality beef.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-2021",
       "11-3051",
-      "13-1071",
-      "13-2011",
-      "19-1011",
       "19-1012",
-      "19-4013"
+      "39-2021",
+      "49-9041",
+      "51-9061"
     ],
     "website": "https://www.harrisranchbeef.com",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Olam Spices and Vegetables",
     "sector": "Manufacturing",
-    "description": "Olam Spices and Vegetables, part of ofi (olam food ingredients), is a global food and beverage ingredient supplier, offering sustainable and innovative solutions across cocoa, coffee, dairy, nuts, and spices to various industries.",
+    "description": "ofi (Olam Food Ingredients) is a global food and beverage ingredient supplier, offering cocoa, coffee, dairy, nuts, and spices. They serve over 11,000 customers, including CPG, foodservice, and retail, with solutions for bakery, beverages, and snacks, supported by over 120 manufacturing facilities and an integrated global supply chain.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-2021",
-      "11-3051",
-      "13-1071",
-      "13-2011",
-      "19-1012",
-      "19-4013",
-      "45-2011",
-      "11-3012",
-      "13-1199",
-      "19-1013",
-      "43-4161"
+      "51-1011",
+      "49-9041",
+      "51-9061",
+      "51-3092",
+      "19-4013"
     ],
     "website": "https://www.ofi.com",
     "swp_sectors": [
-      "Global Trade"
-    ]
+      "Agriculture, Water and Environmental Technologies"
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Lyons Magnus",
     "sector": "Manufacturing",
-    "description": "Lyons Magnus is a leader in the foodservice industry, committed to developing and marketing high-quality products with innovative packaging, including beverage syrups, sauces, and fruit ingredients, for foodservice, healthcare, and co-manufacturing customers.",
+    "description": "Lyons Magnus is a leader in the foodservice industry, developing and marketing high-quality products with innovative packaging since 1852. They serve foodservice operators, healthcare providers, and other businesses with ingredients, custom solutions, and co-manufacturing services, including beverage syrups, sauces, and fruit-based products.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-2021",
-      "11-3051",
-      "13-1071",
-      "13-2011",
-      "19-1012",
-      "19-4013",
-      "11-3012",
-      "13-1051",
-      "43-4161",
-      "51-4111"
+      "51-1011",
+      "51-3092",
+      "49-9071",
+      "49-9041",
+      "51-9061"
     ],
     "website": "https://www.lyonsmagnus.com",
     "swp_sectors": [
-      "Advanced Manufacturing"
-    ]
+      "Agriculture, Water and Environmental Technologies"
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Selma Kia",
     "sector": "Retail",
-    "description": "Selma Kia is an authorized Kia dealership in Selma, CA, selling new and pre-owned Kia vehicles, offering financing, parts, and service, and serving the Central Valley with a focus on customer service.",
+    "description": "Selma Kia is a car dealership in Selma, CA, serving the Central Valley by selling new and pre-owned Kia vehicles, including EV/hybrid models. They also offer financing, parts, and a service department for vehicle maintenance and repairs.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
       "11-2022",
-      "11-3012",
-      "13-2011",
-      "41-4011",
-      "49-3023",
-      "11-2021",
-      "13-1071",
-      "43-4161"
+      "41-1011",
+      "41-3091",
+      "49-1011",
+      "49-3023"
     ],
     "website": "https://www.selmakia.com",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Home Depot",
     "sector": "Retail",
-    "description": "Home Depot is a retail organization offering a vast selection of products for home improvement, including appliances, building materials, tools, and garden supplies. It serves both individual consumers and professional contractors, providing services like installation, tool rental, and DIY project support.",
+    "description": "The Home Depot is a retail company offering a wide range of products for home improvement, including appliances, building materials, tools, and garden supplies. It serves both DIY customers and professionals, providing installation services and truck/tool rental.",
     "regions": [
       "CVML",
       "IE/D",
@@ -710,9 +640,9 @@
     "occupations": [
       "41-1011",
       "49-9071",
-      "49-9021",
-      "27-1025",
-      "53-3033"
+      "11-9021",
+      "53-3032",
+      "49-9021"
     ],
     "website": "https://www.homedepot.com",
     "swp_sectors": [
@@ -725,7 +655,7 @@
   {
     "name": "Lowe's Home Improvement",
     "sector": "Retail",
-    "description": "Lowe's Home Improvement is a retail organization offering a wide range of products and services for home improvement, serving consumers with appliances, building supplies, tools, lawn and garden items, and installation services. They provide solutions for various home projects, from renovations to everyday maintenance.",
+    "description": "Lowe's Home Improvement is a retailer offering a wide range of products for home improvement, maintenance, and outdoor living, including appliances, tools, building supplies, and garden products. It serves homeowners and professionals, providing items for various projects and everyday needs.",
     "regions": [
       "CVML",
       "IE/D",
@@ -739,8 +669,8 @@
       "41-1011",
       "49-9071",
       "49-9021",
-      "53-3032",
-      "11-9021"
+      "47-2111",
+      "53-3032"
     ],
     "website": "https://www.lowes.com",
     "swp_sectors": [
@@ -753,95 +683,90 @@
   {
     "name": "Mission Foods",
     "sector": "Retail",
-    "description": "Mission Foods is a global food manufacturer specializing in Mexican food products, including tortillas, wraps, flatbreads, and tortilla chips, serving the food manufacturing industry.",
+    "description": "Mission Foods produces a variety of Mexican food products, including flour and corn tortillas, tostadas, wraps, flatbreads, tortilla chips, and salsa. They offer options like low carb, whole wheat, organic, and gluten-free products, serving consumers seeking versatile meal components and snacks.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-2021",
-      "11-3051",
-      "13-1071",
-      "13-2011",
-      "19-1012",
-      "19-4013",
-      "11-3012",
-      "43-4161",
-      "51-4111"
+      "51-1011",
+      "51-3092",
+      "49-9041",
+      "51-9061",
+      "53-3032"
     ],
     "website": "https://www.missionfoods.com",
     "swp_sectors": [
-      "Advanced Manufacturing"
-    ]
+      "Agriculture, Water and Environmental Technologies"
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Stamoules Produce Company",
     "sector": "Retail",
-    "description": "Stamoules Produce Company is a family-operated agricultural business in Central California, farming over 17,000 acres to grow, pack, and sell fresh produce like cantaloupes, honey dews, sweet corn, broccoli, and bell peppers for distribution across North America.",
+    "description": "Stamoules Produce Company is a family-operated business farming over 17,000 acres in California's San Joaquin Valley. For over 80 years, they have grown, packed, and sold fresh produce, including cantaloupes, sweet corn, and bell peppers, for distribution across the United States, Canada, and Mexico.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3051",
-      "13-1071",
-      "13-2011",
-      "19-1013",
-      "19-4012",
-      "45-2011"
+      "11-9013",
+      "45-1011",
+      "53-3032",
+      "49-3041",
+      "51-1011"
     ],
     "website": "http://www.stamoules.com",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Community Medical Center",
     "sector": "Professional Services",
-    "description": "Community Medical Centers is a healthcare system in Central California, providing comprehensive medical services through its hospitals, outpatient centers, and skilled nursing facilities, including a Level I Trauma Center.",
+    "description": "Community Medical Centers, part of Community Health System, is the fifth-largest healthcare system in California and the largest employer in the Central Valley, operating four inpatient hospitals and various other facilities. It provides comprehensive medical services, including a Level I Trauma Center, cancer care, heart and lung care, and behavioral health services, serving the central San Joaquin Valley.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3121",
-      "11-9111",
-      "13-1071",
-      "13-2011",
       "29-1141",
-      "29-2061",
-      "15-1244",
-      "31-9092"
+      "11-9111",
+      "31-1131",
+      "29-2034",
+      "49-9071"
     ],
     "website": "https://www.communitymedical.org",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "ULTA Beauty Distribution Center",
     "sector": "Professional Services",
-    "description": "ULTA Beauty is a beauty retailer offering a wide range of makeup, skin care, fragrance, hair care, and beauty products, operating in the retail and beauty industry.",
+    "description": "ULTA Beauty operates a 670,000 sq ft distribution and e-commerce fulfillment center in Fresno, California. It manages receiving, storing, and shipping over 25,000 beauty products to serve 400 Western US stores and online customers, employing hundreds.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3061",
-      "13-1071",
+      "11-3071",
       "13-1081",
-      "13-2011",
-      "15-1244",
-      "11-3051",
-      "43-4161",
-      "53-3032"
+      "51-1011",
+      "49-9041",
+      "49-9071"
     ],
     "website": "https://www.ulta.com",
     "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
+      "Advanced Transportation and Logistics"
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Clovis East High School",
@@ -866,7 +791,8 @@
     "website": "https://www.cusd.com",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Clovis High School",
@@ -891,32 +817,30 @@
     "website": "https://www.cusd.com",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Roosevelt High School",
     "sector": "Education",
-    "description": "Roosevelt High School, within Fresno Unified School District, delivers comprehensive secondary education, cultivating an inspiring environment where students explore academic, career, and personal strengths to achieve their fullest potential in the education industry.",
+    "description": "Roosevelt High School, part of Fresno Unified School District, educates approximately 2,200 students in grades 9-12 in southeast Fresno, California. It offers academic programs, including AP courses, and diverse Career Technical Education pathways like medicine, public service, and arts, preparing students for college and careers.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-9039",
-      "11-3012",
-      "13-1071",
+      "11-9032",
       "25-2031",
-      "25-2032",
-      "25-2058",
+      "25-3099",
       "27-2022",
-      "25-9099",
-      "11-1021",
-      "25-9044",
-      "43-4161"
+      "29-9091"
     ],
     "website": "https://www.fresnounified.org",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Sanger High School",
@@ -941,30 +865,30 @@
     "website": "https://www.sanger.k12.ca.us",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Clovis Adult Education",
     "sector": "Education",
-    "description": "Clovis Adult Education, a program of Clovis Unified School District, provides diverse educational opportunities for adults, including career technical education, high school diploma programs, and community enrichment courses, operating in the education industry.",
+    "description": "Clovis Adult Education, part of the Clovis Unified School District, provides educational programs and career technical education pathways. The district serves a large student population across 47 comprehensive and 9 specialty schools in California, focusing on academic, physical, and social-emotional development.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-9039",
-      "11-3012",
-      "13-1071",
-      "13-1151",
+      "11-9032",
       "25-3011",
       "25-3099",
-      "25-9099",
-      "11-1021",
-      "43-4161"
+      "29-2061",
+      "31-9092"
     ],
     "website": "https://www.cusd.com",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Reedley College",
@@ -988,29 +912,30 @@
     "website": "https://www.reedleycollege.edu",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "California State University Fresno",
     "sector": "Education",
-    "description": "California State University Fresno is a public university providing a wide range of undergraduate, post-baccalaureate, and doctoral degree programs across eight schools and colleges, emphasizing hands-on learning in higher education.",
+    "description": "California State University Fresno is a public university serving nearly 24,000 students with undergraduate, post-baccalaureate, and doctoral degree programs across eight schools and colleges. It emphasizes hands-on learning, research, and athletic achievements, preparing students for success and contributing to the Central Valley community.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-3012",
-      "11-3031",
-      "11-3121",
-      "13-1071",
-      "13-2011",
-      "25-9044"
+      "11-9033",
+      "15-1244",
+      "29-9091",
+      "33-3051",
+      "49-9071"
     ],
     "website": "https://www.fresnostate.edu",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Elm Community Health Center",
@@ -1034,393 +959,338 @@
     "website": "https://www.clinicasierravista.org",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Horizon Health and Subacute Center",
     "sector": "Healthcare",
-    "description": "Horizon Health and Subacute Center is a skilled nursing facility and special treatment program offering post-acute care, rehabilitation services, and subacute care for medically complex patients, operating within the long-term healthcare industry.",
+    "description": "Horizon Health & Sub-Acute Center in Fresno, CA, provides post-acute and subacute care, including skilled nursing and rehabilitation services. It serves medically complex patients, such as those requiring ventilator care, and offers a 44-bed special treatment program for individuals managing mental illness, focusing on restoring health and well-being.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-9111",
-      "11-3012",
-      "13-1071",
       "29-1141",
       "29-2061",
       "31-1131",
-      "29-1031",
       "29-1126",
-      "11-1021",
-      "13-2011",
-      "15-1244"
+      "21-1022"
     ],
     "website": "https://lifegen.net/locations/horizon-health-and-sub-acute/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "American Ambulance",
     "sector": "Healthcare",
-    "description": "American Ambulance is the exclusive 9-1-1 emergency medical services provider for Fresno and Kings Counties, offering paramedic and EMT responses, critical care transport, and community training programs in the healthcare sector.",
+    "description": "American Ambulance is the sole 9-1-1 provider for Fresno and Kings Counties in Central California, responding to over 175,000 calls annually across 6,500 square miles. They employ over 700 individuals and maintain nearly 100 ground ambulances, offering emergency medical services and community training programs.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1071",
       "29-2042",
       "29-2043",
-      "29-1141",
-      "49-3023",
-      "13-1199",
-      "15-1244",
-      "43-4161"
+      "33-1099",
+      "11-9111",
+      "49-3031"
     ],
     "website": "https://www.americanambulance.com",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Adventist Health Reedley",
     "sector": "Healthcare",
-    "description": "Adventist Health is a faith-based healthcare system operating across the West Coast and Hawaii, providing comprehensive medical services including primary care, specialty care, urgent care, and hospital services, focused on whole-person health and community well-being.",
+    "description": "Adventist Health is a faith-based healthcare provider offering comprehensive medical services, including primary, urgent, and specialty care, to communities across the West Coast and Hawaii. They focus on whole-person care, supporting mental, physical, and spiritual wellness to help individuals achieve their fullest potential.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-9111",
-      "11-3012",
-      "13-1071",
       "29-1141",
       "29-2061",
-      "31-1131",
+      "31-9092",
       "29-2034",
-      "29-2018",
-      "11-1021",
-      "13-2011",
-      "15-1244",
-      "31-9092"
+      "49-9071"
     ],
     "website": "https://www.adventisthealth.org",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Adventist Health Selma",
     "sector": "Healthcare",
-    "description": "Adventist Health is a faith-based healthcare system operating across the West Coast and Hawaii, providing comprehensive medical services including primary care, specialty care, urgent care, and hospital services, focused on whole-person health and community well-being.",
+    "description": "Adventist Health is a faith-based healthcare provider offering comprehensive services, including primary, urgent, and specialty care, across the West Coast and Hawaii. They focus on mental, physical, and spiritual wellness, serving communities with a network of dedicated specialists.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-9111",
-      "11-3012",
-      "13-1071",
       "29-1141",
-      "29-2061",
-      "31-1131",
+      "31-9092",
+      "29-1071",
       "29-2034",
-      "29-2018",
-      "11-1021",
-      "13-2011",
-      "15-1244",
-      "31-9092"
+      "11-9111"
     ],
     "website": "https://www.adventisthealth.org",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Fresno Heart and Surgical Hospital",
     "sector": "Healthcare",
-    "description": "Fresno Heart and Surgical Hospital is part of Community Medical Centers, a healthcare system in the Central Valley, offering specialized medical and surgical services, including heart and lung care, neurosciences, orthopedics, and trauma care.",
+    "description": "Fresno Heart & Surgical Hospital is a hotel-like specialty hospital in north Fresno, part of Community Medical Centers. It offers a range of services including heart and lung care, neurosciences, and orthopedics, serving the Central Valley region of California.",
     "regions": [
       "CVML"
     ],
     "occupations": [
       "11-9111",
-      "11-3012",
-      "13-1071",
       "29-1141",
+      "29-2034",
       "29-2055",
-      "29-2031",
-      "29-9093",
-      "31-1131",
-      "11-1021",
-      "13-2011",
-      "15-1244"
+      "31-1131"
     ],
     "website": "https://www.communitymedical.org",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Fresno VA Hospital Medical Center",
     "sector": "Healthcare",
-    "description": "Fresno VA Hospital Medical Center, part of VA Central California Health Care, provides comprehensive healthcare services to Veterans, their families, and caregivers, including medical appointments, mental health care, and prescription services.",
+    "description": "VA Central California Health Care System provides health care services to Veterans, their families, and caregivers in the Central Valley. Key activities include managing health appointments, refilling prescriptions, and offering mental health care, with facilities like the Fresno VA Medical Center and new clinics such as the one in Visalia.",
     "regions": [
       "CVML"
     ],
     "occupations": [
       "11-9111",
-      "11-3012",
-      "13-1071",
+      "21-1023",
       "29-1141",
-      "29-2061",
-      "31-1131",
-      "29-2034",
-      "29-2018",
-      "11-1021",
-      "13-2011",
-      "15-1244",
-      "31-9092"
+      "29-2052",
+      "31-1131"
     ],
     "website": "https://www.va.gov/central-california-health-care/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Kaiser Permanente Fresno Medical Center",
     "sector": "Healthcare",
-    "description": "Kaiser Permanente is an integrated managed care consortium that provides custom care and coverage, offering a wide range of medical services, including doctor visits, hospital care, pharmacies, and health and wellness resources, with a focus on preventive care.",
+    "description": "Kaiser Permanente provides custom care and coverage, integrating doctors, hospitals, and health plans to offer convenient access to care across various regions, including Northern and Southern California. They focus on preventive care, offering services like telehealth, pharmacy, and health and wellness resources.",
     "regions": [
       "CVML"
     ],
     "occupations": [
       "11-9111",
-      "11-3012",
-      "13-1071",
       "29-1141",
       "29-2061",
-      "31-1131",
-      "29-2034",
-      "29-2018"
+      "31-9092",
+      "29-2052"
     ],
     "website": "https://healthy.kaiserpermanente.org",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Saint Agnes Medical Center",
     "sector": "Healthcare",
-    "description": "Saint Agnes Medical Center is a healthcare provider offering a comprehensive range of medical services, including heart and vascular care, maternity, bariatrics, orthopaedics, and various other specialties, operating within the hospital and healthcare industry.",
+    "description": "Saint Agnes Medical Center is a healthcare provider in California's Central Valley, offering a wide array of services including heart and vascular care, maternity, bariatrics, orthopaedics, and cancer screenings. It serves the community with advanced technology and personalized care, including a Graduate Medical Education program.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-9111",
-      "11-3012",
-      "13-1071",
       "29-1141",
-      "29-2061",
-      "31-1131",
+      "11-9111",
       "29-2034",
-      "29-2018"
+      "29-2055",
+      "31-9092"
     ],
     "website": "https://www.samc.com",
     "swp_sectors": [
       "Health"
-    ]
-  },
-  {
-    "name": "Dycora Transitional Health",
-    "sector": "Healthcare",
-    "description": "Generations Healthcare, operating as Dycora Transitional Health, provides skilled nursing facilities, rehabilitation services, assisted living, memory care, and behavioral health programs, focusing on long-term care and post-acute services within the healthcare industry.",
-    "regions": [
-      "CVML"
     ],
-    "occupations": [
-      "11-9111",
-      "11-3012",
-      "13-1071",
-      "29-1141",
-      "29-2061",
-      "31-1131",
-      "29-1125",
-      "31-2021",
-      "11-1021",
-      "13-2011",
-      "15-1244"
-    ],
-    "website": "https://lifegen.net",
-    "swp_sectors": [
-      "Health"
-    ]
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Palm Village Retirement Community",
     "sector": "Healthcare",
-    "description": "Palm Village Retirement Community is a non-profit Continuing Care Retirement Community (CCRC) offering independent living, assisted living, skilled nursing, and memory care options, enabling seniors to age in place within the elder care and housing industry.",
+    "description": "Palm Village Retirement Community is a tax-exempt non-profit 501(c)(3) organization and licensed Continuing Care Retirement Community (CCRC) in California. It offers five levels of care, including Independent Living, Assisted Living, Skilled Nursing, Assisted Living Memory Care, and Alzheimer's and Dementia Care, serving seniors on its 17-acre campus.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-9111",
-      "11-3012",
-      "13-1071",
       "29-1141",
-      "29-2061",
       "31-1131",
-      "11-9179"
+      "11-9111",
+      "49-9071",
+      "35-1012"
     ],
     "website": "https://www.palmvillage.com",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "John's Incredible Pizza Company",
     "sector": "Arts & Entertainment",
-    "description": "John's Incredible Pizza Company is an entertainment and restaurant business offering an all-you-can-eat buffet with pizza, pasta, and desserts, combined with a large game room featuring rides and attractions, primarily in the family entertainment and casual dining industry.",
+    "description": "John's Incredible Pizza Company offers an all-you-can-eat buffet featuring pizza, pasta, and more, combined with games, indoor rides, and attractions. They serve families and groups, specializing in birthday parties and events. With multiple locations, including several in California, they provide food and entertainment under one roof.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
+      "11-9051",
       "11-9072",
-      "11-3012",
-      "11-3121",
-      "13-1071",
       "13-1121",
-      "11-2021",
-      "11-2032"
+      "35-1012",
+      "49-9071"
     ],
     "website": "https://johnspizza.com",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "China Peak Mountain Resort",
     "sector": "Hospitality & Food Service",
-    "description": "China Peak Mountain Resort is a California ski resort offering skiing, snowboarding, lessons, rentals, lodging, and summer activities like mountain biking and concerts, operating within the recreation and hospitality industry.",
+    "description": "China Peak Mountain Resort operates a California ski resort, offering winter activities like skiing, snowboarding, lessons, and rentals. It also provides lodging at The Inn, dining, and summer activities such as mountain biking and concerts, serving guests seeking mountain recreation.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
+      "11-9051",
       "11-9072",
-      "11-3012",
-      "11-3121",
-      "13-1071",
-      "13-1121",
-      "11-2021",
-      "11-2032",
-      "13-1161",
-      "41-4011",
-      "43-4161"
+      "11-9081",
+      "35-1012",
+      "49-9071"
     ],
     "website": "https://www.skichinapeak.com",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Fresno County District Attorney",
     "sector": "Government",
-    "description": "The Fresno County District Attorney's office, part of the government administration industry, is responsible for prosecuting criminal offenses, providing victim resources, and maintaining public safety within Fresno County.",
+    "description": "The Fresno County District Attorney's office, part of the County of Fresno government, investigates and prosecutes criminal cases, serving the community by upholding justice. Key activities include operating a Bureau of Investigations, providing victim resources, and offering career opportunities.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1011",
-      "11-1021",
-      "13-1041",
-      "13-1071",
-      "13-2011",
       "23-2011",
-      "15-1211",
-      "27-3031",
-      "11-3012",
-      "13-1111",
-      "43-4161"
+      "33-3021",
+      "27-3092",
+      "21-1092",
+      "49-9071"
     ],
     "website": "https://www.fresnocountyca.gov",
     "swp_sectors": [
       "Public Safety"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Fresno County Sheriff's Office",
     "sector": "Government",
-    "description": "The Fresno County Sheriff's Office is a law enforcement agency dedicated to providing law enforcement and correctional services, including patrol, investigations, jail operations, and coroner services, within the public safety sector.",
+    "description": "The Fresno County Sheriff-Coroner's Office provides law enforcement and correctional services to Fresno County, California. Key activities include patrol, investigations, operating the county jail, and coroner services. They serve the public by maintaining safety and providing community resources.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3121",
-      "13-1071",
-      "13-1041",
-      "13-2011",
-      "15-1211",
-      "29-1141",
-      "29-2061"
+      "33-3051",
+      "33-3012",
+      "33-3021",
+      "33-1012",
+      "33-1011"
     ],
     "website": "https://www.fresnosheriff.org",
     "swp_sectors": [
       "Public Safety"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Fresno County Superior Court",
     "sector": "Government",
-    "description": "The Superior Court of California, County of Fresno, operates within the judicial branch of government, administering justice through impartial and timely resolution of disputes, ensuring legal compliance, and fostering public trust.",
+    "description": "The Superior Court of California, County of Fresno, serves the community by impartially and timely resolving disputes and ensuring compliance with the law. It handles various divisions including Civil, Family Law, Criminal, Juvenile, and Probate, operating across multiple courthouse locations in Fresno.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1041",
-      "13-1071",
-      "13-2011",
-      "15-1211",
-      "23-2011",
       "27-3092",
-      "13-1111",
-      "43-4161"
+      "27-3091",
+      "23-2011",
+      "49-9071",
+      "43-1011"
     ],
     "website": "https://www.fresno.courts.ca.gov",
     "swp_sectors": [
       "Public Safety"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Fresno Police Department",
     "sector": "Government",
-    "description": "The Fresno Police Department is a public safety organization committed to enhancing community safety, service, and trust by preventing crime, responding to incidents, and fostering community partnerships in the law enforcement industry.",
+    "description": "The Fresno Police Department serves the City of Fresno, California, with 926 employees, including 811 officers. It ensures public safety by preventing crime, responding to emergencies, and investigating incidents, utilizing specialized units like SWAT and K9.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3121",
-      "13-1071",
-      "13-1041",
-      "13-2011",
-      "15-1211",
-      "27-3031",
-      "29-2042",
-      "11-3012",
-      "13-1199",
-      "33-3031",
-      "43-4161"
+      "33-3051",
+      "33-3021",
+      "33-1012",
+      "49-9071",
+      "49-3023"
     ],
     "website": "https://www.fresno.gov/police",
     "swp_sectors": [
       "Public Safety"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Fresno County Department of Public Health",
@@ -1447,180 +1317,162 @@
     "website": "https://www.fresnocountyca.gov",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Warmerdam Packing",
     "sector": "Agriculture",
-    "description": "Warmerdam Packing is a family-founded agricultural business specializing in growing, packing, and shipping fresh produce like cherries, plums, and kiwis to local grocery stores and international markets.",
+    "description": "Warmerdam Packing is a packing and shipping business that grows and packs cherries, plums, and kiwis. Founded in 1965, their produce is distributed to local grocery stores and shipped globally, demonstrating a significant scale of agricultural operations.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3051",
-      "11-3061",
-      "13-1081",
-      "13-1028",
-      "13-2011",
-      "19-1013",
-      "45-2011",
-      "17-2021",
-      "19-4012",
-      "43-9111",
+      "11-9013",
+      "45-1011",
+      "51-1011",
+      "49-9041",
       "53-3032"
     ],
     "website": "https://warmerdampacking.com",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Leprino Foods",
     "sector": "Manufacturing",
-    "description": "Leprino Foods is the world's largest producer of mozzarella cheese and a leading manufacturer of high-quality dairy ingredients such as whey protein and lactose, serving families globally.",
+    "description": "Leprino Foods, established in 1950, is the world's largest producer of mozzarella cheese and a leading manufacturer of whey protein, lactose, and other high-quality dairy ingredients. They sustainably feed and nourish families globally, serving customers as a trusted supplier and business partner.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3051",
-      "11-3061",
-      "13-1081",
-      "13-1028",
-      "13-2011",
-      "19-1012",
-      "17-2112",
-      "17-2041",
-      "43-9111"
+      "51-1011",
+      "49-9041",
+      "51-3092",
+      "51-9061",
+      "53-3032"
     ],
     "website": "https://leprino.com",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Central Valley Meat Company",
     "sector": "Manufacturing",
-    "description": "Central Valley Meat Company is a family-owned and operated meat processing business committed to providing high-quality, safe meat products while upholding strong values in food safety, humane livestock handling, and sustainability.",
+    "description": "Central Valley Meat Company is a family-owned and operated manufacturing organization dedicated to providing high-quality meat products. They prioritize food safety, humane livestock handling, and sustainability, serving customers with a commitment to continuous improvement and social responsibility.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
       "11-3051",
-      "11-3061",
-      "13-1081",
-      "13-1028",
-      "13-2011",
-      "19-1012",
-      "19-5011"
+      "49-9041",
+      "51-1011",
+      "51-3092",
+      "51-9061"
     ],
     "website": "https://www.centralvalleymeat.com",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Marquez Brothers International",
     "sector": "Wholesale",
-    "description": "Marquez Brothers International, operating as El Mexicano, delivers premium authentic Hispanic food products, including cheeses, creams, yogurts, and meats, maintaining high standards of quality and freshness since 1981.",
+    "description": "Marquez Brothers International, operating as El Mexicano, is a wholesale food company established in 1981. They deliver premium authentic products, including cheeses, creams, yogurts, meats, and desserts, maintaining high standards of quality and freshness. The company serves consumers with products certified by Real Milk Seal, Real California Milk, Halal, and Kosher standards.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-2021",
       "11-3051",
-      "13-1081",
-      "13-1028",
-      "13-2011",
-      "13-1161",
-      "41-4011",
-      "11-3012",
-      "11-3061"
+      "11-3071",
+      "19-1012",
+      "51-3092",
+      "53-3032"
     ],
     "website": "https://elmexicano.net",
     "swp_sectors": [
       "Global Trade"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Lemoore High School",
     "sector": "Education",
-    "description": "Lemoore High School is a comprehensive public high school providing academic, athletic, and career technical education programs to students in the Lemoore Union High School District, aiming for college entrance or career paths within the education industry.",
+    "description": "Lemoore High School, part of the Lemoore Union High School District, provides comprehensive academic, athletic, and career technical education to students in Lemoore, California. It offers various programs, including college preparatory and career paths, aiming for academic achievement and economic independence for its students.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-9039",
-      "11-3121",
-      "13-1071",
-      "13-2011",
+      "11-9032",
       "25-2031",
-      "25-2032",
       "25-2058",
-      "27-2022",
-      "13-1111",
-      "21-1091",
-      "25-9044"
+      "49-9071",
+      "53-3052"
     ],
     "website": "https://lemoorehigh.luhsd.k12.ca.us",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Naval Health Clinic Lemoore",
     "sector": "Healthcare",
-    "description": "Naval Health Clinic Lemoore, part of Navy Medicine, provides healthcare services and medical readiness support to U.S. Navy and Marine Corps personnel and their families, operating within the military healthcare and defense industry.",
+    "description": "Naval Health Clinic Lemoore, part of Naval Medical Forces Pacific, provides comprehensive healthcare services. It serves U.S. Navy and Marine Corps personnel, their families, and Navy civilians, offering medical and dental care, and supporting military readiness within the broader Navy Medicine enterprise.",
     "regions": [
       "CVML"
     ],
     "occupations": [
       "11-9111",
-      "11-3121",
-      "13-1071",
       "29-1141",
       "29-2061",
-      "29-2034",
-      "29-2018",
-      "31-1131",
-      "11-3012",
-      "15-1244",
-      "29-2053",
-      "31-9092"
+      "31-9092",
+      "49-9071"
     ],
     "website": "https://www.med.navy.mil",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Adventist Health Hanford",
     "sector": "Healthcare",
-    "description": "Adventist Health is a faith-based, non-profit integrated health system offering comprehensive medical services, including hospitals and clinics, focused on whole-person care across the West Coast and Hawaii within the healthcare industry.",
+    "description": "Adventist Health provides faith-based healthcare services, including primary care, specialty care, urgent care, and hospital services. It serves communities across the West Coast and Hawaii, focusing on whole-person care for mental, physical, and spiritual wellness. Key activities include patient care, community benefit programs, and health equity initiatives.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-9111",
-      "11-3121",
-      "13-1071",
       "29-1141",
       "29-2061",
-      "29-2034",
-      "29-2018",
       "31-1131",
-      "11-3012",
-      "11-3013",
-      "15-1244",
-      "31-9092"
+      "11-9111",
+      "29-2034"
     ],
     "website": "https://www.adventisthealth.org",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Oasis Date Gardens",
@@ -15810,28 +15662,25 @@
   {
     "name": "California State University, Northridge",
     "sector": "Education",
-    "description": "A public university offering a comprehensive range of undergraduate and graduate programs.",
+    "description": "California State University, Northridge (CSUN) is a public university offering undergraduate and graduate programs across various colleges. It serves a diverse student body, fostering academic and personal growth through student life activities, research opportunities, and community engagement. CSUN focuses on preparing students to lead, innovate, and advance the public good.",
     "regions": [
       "LA",
       "CVML"
     ],
     "occupations": [
-      "11-1011",
-      "11-9039",
-      "11-3012",
-      "13-1071",
-      "15-1211",
-      "25-4031",
-      "11-1021",
-      "13-2011",
+      "11-9033",
       "15-1244",
-      "25-9044",
-      "43-4161"
+      "25-4022",
+      "29-1141",
+      "49-9071"
     ],
     "website": "https://www.csun.edu",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Fuller Theological Seminary",
@@ -19777,131 +19626,134 @@
   {
     "name": "Tulare Joint Union High School",
     "sector": "Education",
-    "description": "A public high school serving the Tulare joint union area.",
+    "description": "The Tulare Joint Union High School District operates three comprehensive high schools, one continuation high school, one community day school, two charter high schools, and an adult school. It serves students by providing quality education and preparing them for future success, with a focus on academic progress and college/career readiness.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-9039",
-      "13-1071",
-      "25-2031",
-      "25-9044",
-      "43-4161"
+      "11-9032",
+      "21-1021",
+      "25-3011",
+      "49-9071",
+      "53-3052"
     ],
     "website": "https://www.tjuhsd.org/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Health and Human Services",
     "sector": "Healthcare",
-    "description": "A department providing health and human services.",
+    "description": "Tulare County Health and Human Services Agency (TCHHSA) provides comprehensive health and social services to Tulare County residents. It operates healthcare centers, offers public health programs like WIC, mental health support, and various disease prevention, testing, and treatment services, serving diverse populations including low-income individuals and families.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-9151",
-      "13-1071",
-      "13-2011",
-      "15-1244",
-      "21-1018",
-      "21-1029"
+      "21-1023",
+      "29-1141",
+      "31-9092",
+      "21-1093",
+      "11-9151"
     ],
     "website": "https://tchhsa.org/",
     "swp_sectors": [
-      "Education and Human Development"
-    ]
+      "Health"
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Cen Cal Builders and Development",
     "sector": "Construction",
-    "description": "A construction and development company in Central California.",
+    "description": "Cen Cal Builders and Development is a licensed construction company specializing in framing, concrete, and underground wet utilities for new and existing projects. Serving Central and Northern California, including the Bay Area, they employ over 400 individuals and have completed over 220 multifamily, commercial, and custom home projects.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
       "11-9021",
-      "13-1051",
-      "13-1082",
-      "15-1244",
-      "17-2051",
-      "43-4161"
+      "47-1011",
+      "47-2031",
+      "47-2073",
+      "47-4011"
     ],
     "website": "https://www.cencal-builders.com/",
     "swp_sectors": [
       "Energy, Construction and Utilities"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Lion Dehydrators",
     "sector": "Manufacturing",
-    "description": "A company involved in dehydrating agricultural products.",
+    "description": "Lion Raisins, a veteran worldwide supplier with 120 years of experience, cultivates and supplies premium raisins and raisin-based products, including Golden Raisins, using advanced farming techniques. Operating from Selma, CA, they offer industrial solutions, distribution, and packaging services to customers globally.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3051",
-      "13-1071",
-      "13-1199",
-      "19-1013",
-      "43-4161"
+      "11-9013",
+      "51-1011",
+      "49-9041",
+      "51-3092",
+      "53-3032"
     ],
     "website": "https://www.lionraisins.com/",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Harris Ranch Beef",
     "sector": "Manufacturing",
-    "description": "A producer of beef products.",
+    "description": "Harris Ranch Beef Company processes high volumes of beef, serving retail, e-commerce, export, and foodservice customers, including some of the largest distributors in the U.S. They are committed to animal welfare, sustainability, and stringent food safety and quality assurance in their beef products.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
       "11-3051",
-      "13-1071",
-      "13-1199",
-      "19-1011",
-      "43-4161"
+      "19-1012",
+      "49-9041",
+      "51-1011",
+      "51-9061"
     ],
     "website": "https://www.harrisranchbeef.com/",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Community Medical Imaging",
     "sector": "Healthcare",
-    "description": "Provides medical imaging services to the community.",
+    "description": "Community Medical Imaging provides digital medical imaging services, including MRI, CT, nuclear medicine, and ultrasound, across multiple facilities in Fresno and Clovis, California. They specialize in breast care at the Marjorie E. Radin Breast Care Center, serving patients with advanced screening and diagnostic needs.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-9111",
-      "13-1071",
-      "13-2011",
-      "15-1244",
       "29-2034",
-      "29-9021"
+      "29-2035",
+      "29-2032",
+      "29-2033",
+      "11-9111"
     ],
     "website": "https://www.communitymedical.org/specialties-and-departments/imaging-radiology",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Kaiser Permanente Fresno Medical",
@@ -19923,134 +19775,140 @@
     "website": "https://healthy.kaiserpermanente.org/northern-california/facilities/fresno-medical-center-100363",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "St. Agnes Medical Center",
     "sector": "Healthcare",
-    "description": "A non-profit hospital providing medical services.",
+    "description": "Saint Agnes Medical Center is a healthcare provider in California's Central Valley, offering a wide array of services including heart and vascular care, maternity, bariatrics, orthopaedics, and cancer screenings. They serve the community with advanced technology and personalized care, focusing on healing body, mind, and spirit.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-9111",
-      "13-1071",
-      "13-2011",
-      "15-1244",
       "29-1141",
-      "31-9092"
+      "11-9111",
+      "29-2055",
+      "31-9092",
+      "49-9071"
     ],
     "website": "https://www.samc.com/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Palm Village",
     "sector": "Healthcare",
-    "description": "A retirement community or assisted living facility.",
+    "description": "Palm Village is a tax-exempt non-profit 501(c)(3) organization and a licensed Continuing Care Retirement Community (CCRC) in California. It offers five levels of care, including independent living, assisted living, skilled nursing, and memory care, serving seniors by providing a secure and healthy living environment, meals, and various activities on its 17-acre campus.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-9111",
-      "13-1071",
-      "13-2011",
-      "15-1244",
       "29-1141",
-      "31-1131"
+      "29-2061",
+      "31-1131",
+      "11-9111",
+      "49-9071"
     ],
     "website": "https://www.palmvillage.com/",
     "swp_sectors": [
-      "Education and Human Development"
-    ]
+      "Health"
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "John's Incredible Pizza",
     "sector": "Arts & Entertainment",
-    "description": "An entertainment venue offering pizza and games.",
+    "description": "John's Incredible Pizza Company operates family entertainment centers offering all-you-can-eat buffets with pizza, pasta, and salads, alongside over 100 games, indoor rides, and attractions. They specialize in birthday parties and group events, serving families and communities across multiple California locations and Las Vegas.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-2021",
-      "11-3012",
+      "11-9051",
       "11-9072",
-      "13-1121",
-      "13-1161",
-      "41-4011",
-      "43-4161"
+      "35-1012",
+      "49-9071",
+      "49-9041"
     ],
     "website": "https://johnspizza.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Fresno County Sheriff",
     "sector": "Government",
-    "description": "The sheriff's office for Fresno County.",
+    "description": "The Fresno County Sheriff-Coroner's Office provides law enforcement and correctional services to Fresno County, California. Key activities include patrol, investigations, operating the county jail, coroner services, and various community programs aimed at crime prevention and public safety.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1071",
-      "13-1199",
-      "33-3031",
-      "43-4161"
+      "33-3051",
+      "33-3012",
+      "33-3021",
+      "19-4092",
+      "49-9071"
     ],
     "website": "https://www.fresnosheriff.org/",
     "swp_sectors": [
       "Public Safety"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Superior Court Executive Office",
     "sector": "Government",
-    "description": "The administrative office of the Superior Court.",
+    "description": "The Superior Court of California, County of Tulare, provides fair and timely justice by resolving disputes, upholding laws, and protecting rights for over 471,013 people in Tulare County. Key activities include managing various divisions like Civil, Criminal, Family, Juvenile, and Traffic, and offering online services such as eFiling and virtual public counters.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1071",
-      "13-1111",
-      "13-2011",
-      "43-4161"
+      "23-2011",
+      "27-3092",
+      "33-3011",
+      "21-1092",
+      "49-9071"
     ],
     "website": "https://www.tulare.courts.ca.gov/",
     "swp_sectors": [
       "Public Safety"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Central Valley Meat",
     "sector": "Manufacturing",
-    "description": "Central Valley Meat is a company operating in the meat processing and distribution sector.",
+    "description": "Central Valley Meat is a family-owned and operated company dedicated to providing high-quality, safe meat products. They prioritize continuous improvement, best-in-class food safety, and humane livestock handling, serving customers with BRC Certified products. The company emphasizes responsibility and sustainability in its operations.",
     "regions": [
       "CVML"
     ],
     "occupations": [
-      "11-3051",
-      "11-3061",
-      "13-1081",
-      "13-2011",
-      "17-2041",
-      "19-1012",
-      "43-9111"
+      "51-1011",
+      "51-3092",
+      "49-9041",
+      "51-9061",
+      "19-1012"
     ],
     "website": "https://www.centralvalleymeat.com/",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Hatchet Ridge Wind",
