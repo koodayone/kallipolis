@@ -154,6 +154,100 @@ _NATIONAL_CLAIM_PATTERNS = [
     r"\bnationwide\b",
 ]
 
+# C8 — Institutional-deference rule patterns
+#
+# Direct-mapping interpretive bridges. The institutional crosswalk
+# establishes pathway alignment; the prose should not embellish that
+# into a turnkey-fit claim. These bridges fire most often when the
+# employer's industry context differs from the aligned department's
+# typical industry context — exactly the case where the partial
+# nature of the alignment matters most.
+_DIRECT_MAPPING_PATTERNS = [
+    r"\bdirectly maps?\b",
+    r"\bmaps? directly\b",
+    r"\bdirect(?:ly)? align(?:ed|s|ment)\b",
+    r"\bdirect(?:ly)? prepar(?:e|es|ing)\b",
+    r"\bperfect(?:ly)? (?:fit|align(?:ed|ment)?|match(?:ed)?)\b",
+    r"\bturn[- ]?key\b",
+    r"\bseamless(?:ly)?\b",
+    r"\b1[: ]1 alignment\b",
+    r"\bideal (?:fit|match|partner)\b",
+    r"\bnatural (?:fit|partner)\b",
+]
+
+# Skills-as-pathway claims. Skills describe what courses develop; they
+# do not by themselves establish pathway alignment. Pathway claims come
+# only from the institutional crosswalk. Detect prose that uses a skill
+# as the connector to a pathway verb.
+_SKILLS_AS_PATHWAY_PATTERNS = [
+    # "Quality control prepares students for..." or "...prepares graduates for..."
+    r"\b(?:skills?|competen(?:cy|cies))\s+(?:that\s+|which\s+)?prepar(?:e|es|ing)\s+(?:students|graduates|the pipeline)\b",
+    r"\b(?:skills?|competen(?:cy|cies))\s+(?:that\s+|which\s+)?qualif(?:y|ies|ying)\s+(?:students|graduates)\b",
+    # "Quality control is the gateway/pathway/bridge to..."
+    r"\b(?:skill|competency)\s+is\s+(?:the\s+)?(?:gateway|pathway|bridge)\s+to\b",
+    # "develops the skills that prepare students" — same anti-pattern
+    r"\bdevelops?\s+the\s+skills?\s+(?:that|which)\s+prepar(?:e|es|ing)\b",
+]
+
+
+def _employer_sector_matches_top_sector(proposal: NarrativeProposal) -> bool | None:
+    """Heuristic for whether the employer's SWP sector matches the dominant
+    industry context of the institutionally-aligned departments. Returns
+    True/False when both sides are determinable; None when not.
+
+    Used by the cross_industry_honesty rule: when sectors differ, the
+    curriculum_alignment prose must use transferability vocabulary
+    rather than direct-mapping claims.
+    """
+    employer_sector = (proposal.sector or "").strip().lower()
+    if not employer_sector:
+        return None
+
+    # Collect via_top codes across the curriculum_evidence and look up
+    # their PCAH sectors. If the dominant sector matches the employer's
+    # sector (substring containment in either direction), we treat the
+    # alignment as same-industry.
+    via_tops: list[str] = []
+    for d in proposal.curriculum_evidence:
+        via_tops.extend(getattr(d, "via_top", None) or [])
+
+    if not via_tops:
+        return None
+
+    try:
+        from ontology.crosswalks import _load_pcah_cte_top6
+
+        pcah = _load_pcah_cte_top6()
+    except Exception:
+        return None
+
+    sectors = [pcah.get(t) for t in via_tops if pcah.get(t)]
+    if not sectors:
+        return None
+
+    # Most-common sector across the via_top set.
+    from collections import Counter
+
+    dominant_sector = Counter(sectors).most_common(1)[0][0].lower()
+
+    # Sector-name-match heuristic: substring containment in either
+    # direction. Examples:
+    # employer="Advanced Manufacturing" / dominant="Advanced Manufacturing" → match
+    # employer="Health" / dominant="Health" → match
+    # employer="Advanced Manufacturing" / dominant="Energy, Construction and Utilities" → no match
+    return employer_sector in dominant_sector or dominant_sector in employer_sector
+
+
+_TRANSFERABILITY_PATTERNS = [
+    r"\btransferable\b",
+    r"\bindustry[- ]portable\b",
+    r"\bapplied here\b",
+    r"\bmethods translate\b",
+    r"\bcross[- ]industry\b",
+    r"\btransfer(?:s)? across\b",
+    r"\bindustry[- ]agnostic\b",
+]
+
 
 # ═══════════════════════════════════════════════════════════════════════════
 # Helpers
@@ -376,10 +470,175 @@ def _check_executive_summary(p: NarrativeProposal) -> list[EvalViolation]:
                 )
             )
 
+    # C8 — institutional-deference rules applied to executive_summary.
+    # The cross-industry honesty rule is applied here too because the
+    # exec summary's curriculum-capability thread is the most common
+    # site of direct-mapping overclaim when industry contexts differ.
+    violations.extend(_check_no_direct_mapping_overclaims(section, text))
+    violations.extend(_check_no_skills_as_pathway(section, text))
+    violations.extend(_check_cross_industry_honesty(p, section, text))
+    violations.extend(_check_missing_institutional_attribution(p, section, text))
+
     # Voice
     violations.extend(_check_voice(section, text))
 
     return violations
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# C8 — Institutional-deference checks
+# ═══════════════════════════════════════════════════════════════════════════
+
+
+def _check_no_direct_mapping_overclaims(
+    section_name: str, text: str
+) -> list[EvalViolation]:
+    """Flag interpretive bridges that overclaim the directness of the
+    institutional alignment. The crosswalk establishes pathway alignment;
+    the prose should not embellish that into a turnkey-fit claim."""
+    findings = _find_any_pattern(text, _DIRECT_MAPPING_PATTERNS)
+    if findings:
+        return [
+            EvalViolation(
+                rule="no_direct_mapping_overclaim",
+                section=section_name,
+                message=(
+                    f"Direct-mapping interpretive bridge in {section_name}: "
+                    f"{', '.join(repr(f) for f in findings[:3])}. The "
+                    f"institutional crosswalk establishes the pathway; the prose "
+                    f"should walk it, not embellish it. Use transferability "
+                    f"vocabulary when industry contexts differ."
+                ),
+            )
+        ]
+    return []
+
+
+def _check_no_skills_as_pathway(
+    section_name: str, text: str
+) -> list[EvalViolation]:
+    """Flag prose where a skill is used as the connector to a pathway
+    verb. Skills characterize what courses develop; they do not by
+    themselves establish pathway alignment."""
+    findings = _find_any_pattern(text, _SKILLS_AS_PATHWAY_PATTERNS)
+    if findings:
+        return [
+            EvalViolation(
+                rule="no_skills_as_pathway",
+                section=section_name,
+                message=(
+                    f"Skill used as pathway connector in {section_name}: "
+                    f"{', '.join(repr(f) for f in findings[:3])}. Skills "
+                    f"characterize courses; the institutional crosswalk is "
+                    f"what prepares students for an occupation."
+                ),
+            )
+        ]
+    return []
+
+
+def _check_missing_institutional_attribution(
+    proposal: NarrativeProposal, section_name: str, text: str
+) -> list[EvalViolation]:
+    """The artifact's authority is borrowed from external institutional
+    sources. Each artifact must contain at least one source anchor —
+    a TOP6 code, a CIP code, or a named publication ('Chancellor's
+    Office,' 'Centers of Excellence,' 'BLS', 'NCES') — somewhere in
+    the union of executive_summary + curriculum_alignment. Without a
+    source anchor the prose has no traceable institutional voice.
+
+    Applied per-section but with a global escape: if any of the four
+    narrative sections together contain at least one anchor, the
+    section under review is satisfied. Run once per artifact via the
+    executive_summary check (the canonical caller) so we don't emit
+    duplicate violations across sections.
+    """
+    if section_name != "executive_summary":
+        return []
+
+    union = " ".join([
+        proposal.executive_summary or "",
+        proposal.occupational_demand or "",
+        proposal.curriculum_alignment or "",
+        proposal.student_impact or "",
+    ])
+    anchors = [
+        r"\bTOP\s*\d{4}\.?\d{0,2}\b",
+        r"\b\d{6}\b",  # bare 6-digit TOP6
+        r"\bCIP\s*\d{2}\.\d{4}\b",
+        r"Chancellor['']?s Office",
+        r"Centers of Excellence",
+        r"\bCOE\b",
+        r"\bBLS\b",
+        r"\bNCES\b",
+        r"institutional crosswalk",
+        r"TOP[- ]CIP crosswalk",
+        r"CIP[- ]SOC crosswalk",
+    ]
+    for pat in anchors:
+        if re.search(pat, union, re.IGNORECASE):
+            return []
+
+    return [
+        EvalViolation(
+            rule="missing_institutional_attribution",
+            section=section_name,
+            message=(
+                "No institutional source anchor (TOP/CIP code, Chancellor's "
+                "Office, Centers of Excellence, COE, BLS, NCES, "
+                "institutional crosswalk) in any narrative section. The "
+                "artifact's authority must be borrowed from a named "
+                "external publication; without that, the prose has no "
+                "traceable institutional voice."
+            ),
+        )
+    ]
+
+
+def _check_cross_industry_honesty(
+    proposal: NarrativeProposal, section_name: str, text: str
+) -> list[EvalViolation]:
+    """When the employer's SWP sector and the dominant industry context
+    of the institutionally-aligned departments differ, the prose must
+    use transferability vocabulary somewhere in the section. Naming
+    the partial nature of the alignment is principle 4: don't conflate
+    categorical alignment with turnkey applicability.
+
+    When sectors match (or the comparison is indeterminable), this
+    rule is dormant. The detection runs through the in-repo PCAH TOP6
+    sector mapping; missing data fails open.
+    """
+    if section_name not in ("executive_summary", "curriculum_alignment"):
+        return []
+
+    matches = _employer_sector_matches_top_sector(proposal)
+    if matches is None or matches is True:
+        # Either we can't determine sector match (no via_top, no
+        # employer sector), or the sectors match. Dormant.
+        return []
+
+    # Sectors differ. Look for transferability vocabulary in the
+    # section's text. A single match satisfies the rule.
+    for pat in _TRANSFERABILITY_PATTERNS:
+        if re.search(pat, text, re.IGNORECASE):
+            return []
+
+    return [
+        EvalViolation(
+            rule="cross_industry_honesty",
+            section=section_name,
+            message=(
+                f"Sector mismatch between employer (SWP: {proposal.sector!r}) "
+                f"and aligned department's industry context, but the prose "
+                f"contains no transferability vocabulary "
+                f"('transferable,' 'industry-portable,' 'applied here,' "
+                f"'cross-industry,' 'methods translate'). Per principle 4, "
+                f"name the partial nature of the alignment when industry "
+                f"contexts differ; do not paper it over with same-industry "
+                f"phrasing."
+            ),
+        )
+    ]
 
 
 def _text_contains_gap_value(text: str, gap: float) -> bool:
@@ -609,6 +868,11 @@ def _check_curriculum_alignment(p: NarrativeProposal) -> list[EvalViolation]:
 
     # Forbidden: economic figures
     violations.extend(_check_no_economic_figures_in(section, text))
+
+    # C8 — institutional-deference rules applied to curriculum_alignment.
+    violations.extend(_check_no_direct_mapping_overclaims(section, text))
+    violations.extend(_check_no_skills_as_pathway(section, text))
+    violations.extend(_check_cross_industry_honesty(p, section, text))
 
     # Voice
     violations.extend(_check_voice(section, text))

@@ -411,6 +411,91 @@ class TestEvaluateProposal:
         rules = {v.rule for v in result.violations}
         assert "no_econ_in_wrong_sections" in rules
 
+    # ── C8 — institutional-deference rule tests ─────────────────────────────
+
+    def test_no_direct_mapping_overclaim_in_curriculum_alignment(self):
+        """Direct-mapping interpretive bridges in curriculum_alignment must
+        be flagged. The institutional crosswalk establishes the pathway;
+        the prose should not embellish that into a turnkey-fit claim."""
+        p = _make_minimal_good_proposal()
+        p.curriculum_alignment = (
+            "The Computer Science department develops programming, software development, and "
+            "algorithms across 33 courses, competencies that map directly to Test Corp's "
+            "workforce requirements."
+        )
+        result = evaluate_proposal(p)
+        rules = {v.rule for v in result.violations}
+        assert "no_direct_mapping_overclaim" in rules
+
+    def test_no_direct_mapping_overclaim_in_executive_summary(self):
+        """Same rule applied to executive_summary — the same overclaim
+        pattern shows up most often in the curriculum-capability thread
+        of the four-thread structure."""
+        p = _make_minimal_good_proposal()
+        p.executive_summary = p.executive_summary.replace(
+            "competencies this occupation requires",
+            "competencies that map directly to this occupation",
+        )
+        result = evaluate_proposal(p)
+        rules = {v.rule for v in result.violations}
+        assert "no_direct_mapping_overclaim" in rules
+
+    def test_no_skills_as_pathway_claim(self):
+        """Skills should characterize what courses develop; they should
+        not be the connector verbed into a pathway claim. The pathway
+        claim must rest on the institutional crosswalk."""
+        p = _make_minimal_good_proposal()
+        p.curriculum_alignment = (
+            "The Computer Science department develops programming, software development, and algorithms. "
+            "These are skills that prepare students for software engineering roles across 33 courses."
+        )
+        result = evaluate_proposal(p)
+        rules = {v.rule for v in result.violations}
+        assert "no_skills_as_pathway" in rules
+
+    def test_missing_institutional_attribution_when_no_anchor(self):
+        """At least one institutional source anchor must appear across
+        the union of narrative sections. Strip every anchor and the
+        rule fires."""
+        p = _make_minimal_good_proposal()
+        # Replace every COE / source mention with neutral substitutes.
+        for field_name in [
+            "executive_summary",
+            "occupational_demand",
+            "curriculum_alignment",
+            "student_impact",
+        ]:
+            current = getattr(p, field_name)
+            current = current.replace("COE", "regional")
+            current = current.replace("Bay", "regional")
+            setattr(p, field_name, current)
+        result = evaluate_proposal(p)
+        rules = {v.rule for v in result.violations}
+        assert "missing_institutional_attribution" in rules
+
+    def test_institutional_attribution_satisfied_by_top_code(self):
+        """A bare 6-digit TOP code in any narrative section satisfies the
+        attribution rule — the codes are direct references to the
+        Chancellor's Office classification."""
+        p = _make_minimal_good_proposal()
+        p.executive_summary = p.executive_summary.replace(
+            "the core competencies this occupation requires",
+            "core competencies developed under TOP 070700 — the core competencies this occupation requires",
+        )
+        result = evaluate_proposal(p)
+        rules = {v.rule for v in result.violations}
+        assert "missing_institutional_attribution" not in rules
+
+    def test_cross_industry_honesty_dormant_when_via_top_absent(self):
+        """The cross_industry_honesty rule depends on via_top being
+        populated on curriculum_evidence — when it's absent, the rule
+        cannot determine whether industries differ and falls dormant."""
+        p = _make_minimal_good_proposal()
+        # The fixture's curriculum_evidence has no via_top by default.
+        result = evaluate_proposal(p)
+        rules = {v.rule for v in result.violations}
+        assert "cross_industry_honesty" not in rules
+
     def test_missing_economic_figure_in_occupational_demand_flagged(self):
         p = _make_minimal_good_proposal()
         p.occupational_demand = (
