@@ -11,16 +11,75 @@ Coverage:
   - _extract_json: plain objects, markdown code fences (with and without
     json hint), leading and trailing text, nested objects, braces in
     string literals, malformed input, empty strings
-  - _parse_narrative_fields: well-formed responses, missing opportunity,
-    missing justification block, fence-wrapped responses
+  - _parse_narrative_fields: well-formed four-section responses, missing
+    sections (default to empty string), fence-wrapped responses
   - _build_dept_text: empty evidence, single and multiple departments,
     missing-skill reporting, alphabetical sorting of missing skills
 """
 
 import pytest
 
+from partnerships.evals import evaluate_proposal
 from partnerships.filter import _extract_json
+from partnerships.models import (
+    DepartmentEnrollment,
+    DepartmentEvidence,
+    NarrativeProposal,
+    OccupationEvidence,
+    StudentEvidence,
+    SupplyEstimate,
+    SwpEvidence,
+)
 from partnerships.narrative import _build_dept_text, _parse_narrative_fields
+
+
+def _make_minimal_good_proposal() -> NarrativeProposal:
+    """A proposal that should pass every deterministic eval rule."""
+    return NarrativeProposal(
+        employer="Test Corp",
+        sector="Tech",
+        selected_occupation="Software Developers",
+        selected_soc_code="15-1252",
+        core_skills=["Programming", "Software Development", "Algorithms"],
+        regions=["Bay"],
+        executive_summary=(
+            "Test Corp operates across the Bay COE region, with a hiring profile centered "
+            "on software developer and engineering roles. The Computer Science department "
+            "develops the programming and algorithms skills those roles require, and the "
+            "Mathematics department reinforces the quantitative foundation. Students across "
+            "these programs are completing coursework aligned with what Test Corp hires for."
+        ),
+        occupational_demand=(
+            "Test Corp's Bay-region hiring centers on Software Developers (15-1252), with "
+            "median annual wages near $190,000 and roughly 11,000 regional openings projected "
+            "each year. The company's software scope generates a diverse set of competencies "
+            "new hires are expected to bring on day one."
+        ),
+        curriculum_alignment=(
+            "The Computer Science department develops programming, software development, and "
+            "algorithms across 33 courses. The Mathematics department reinforces algorithmic "
+            "thinking across 20 courses, deepening preparation in applied development."
+        ),
+        student_impact=(
+            "The Computer Science department has 5,137 students enrolled in courses developing "
+            "the relevant competencies, with 386 carrying all three core skills. The Mathematics "
+            "department adds another concentration of students preparing for these roles."
+        ),
+        opportunity_evidence=[
+            OccupationEvidence(title="Software Developers", soc_code="15-1252", annual_openings=11000),
+        ],
+        curriculum_evidence=[
+            DepartmentEvidence(department="Computer Science", courses=[], aligned_skills=["Programming"]),
+            DepartmentEvidence(department="Mathematics", courses=[], aligned_skills=["Algorithms"]),
+        ],
+        student_evidence=StudentEvidence(total_in_program=5137, with_all_core_skills=386, top_students=[]),
+        swp_evidence=SwpEvidence(
+            occupations=[OccupationEvidence(title="Software Developers", soc_code="15-1252", annual_openings=11000)],
+            supply_estimates=[SupplyEstimate(top_code="070700", top_title="CS", award_level="Cert", annual_projected_supply=28.0)],
+            department_enrollments=[DepartmentEnrollment(department="Computer Science", student_count=5137)],
+            total_demand=11000, total_supply=28.0, gap=10972.0, coe_region="Bay",
+        ),
+    )
 
 
 class TestExtractJson:
@@ -67,37 +126,43 @@ class TestExtractJson:
 
 
 class TestParseNarrativeFields:
-    def test_well_formed_response(self):
+    def test_well_formed_four_section_response(self):
         raw = """{
-            "opportunity": "An opportunity sentence.",
-            "justification": {
-                "curriculum_composition": "Curriculum claim.",
-                "student_composition": "Student claim."
-            },
-            "roadmap": "Roadmap steps."
+            "executive_summary": "An integrative paragraph.",
+            "occupational_demand": "A demand claim.",
+            "curriculum_alignment": "An alignment claim.",
+            "student_impact": "A pipeline claim."
         }"""
         result = _parse_narrative_fields(raw)
-        assert result["opportunity"] == "An opportunity sentence."
-        assert result["justification"]["curriculum_composition"] == "Curriculum claim."
-        assert result["justification"]["student_composition"] == "Student claim."
-        assert result["roadmap"] == "Roadmap steps."
+        assert result["executive_summary"] == "An integrative paragraph."
+        assert result["occupational_demand"] == "A demand claim."
+        assert result["curriculum_alignment"] == "An alignment claim."
+        assert result["student_impact"] == "A pipeline claim."
 
-    def test_missing_opportunity_defaults_to_empty(self):
-        raw = '{"justification": {"curriculum_composition": "x", "student_composition": "y"}, "roadmap": "z"}'
+    def test_missing_executive_summary_defaults_to_empty(self):
+        raw = '{"occupational_demand": "d", "curriculum_alignment": "c", "student_impact": "s"}'
         result = _parse_narrative_fields(raw)
-        assert result["opportunity"] == ""
+        assert result["executive_summary"] == ""
+        assert result["occupational_demand"] == "d"
 
-    def test_missing_justification_block_defaults_to_empty_strings(self):
-        raw = '{"opportunity": "o", "roadmap": "r"}'
+    def test_missing_all_sections_default_to_empty_strings(self):
+        raw = '{}'
         result = _parse_narrative_fields(raw)
-        assert result["justification"]["curriculum_composition"] == ""
-        assert result["justification"]["student_composition"] == ""
+        assert result["executive_summary"] == ""
+        assert result["occupational_demand"] == ""
+        assert result["curriculum_alignment"] == ""
+        assert result["student_impact"] == ""
 
     def test_wrapped_in_markdown_fence(self):
-        raw = '```json\n{"opportunity": "o", "justification": {}, "roadmap": "r"}\n```'
+        raw = (
+            '```json\n'
+            '{"executive_summary": "e", "occupational_demand": "o", '
+            '"curriculum_alignment": "c", "student_impact": "s"}\n'
+            '```'
+        )
         result = _parse_narrative_fields(raw)
-        assert result["opportunity"] == "o"
-        assert result["roadmap"] == "r"
+        assert result["executive_summary"] == "e"
+        assert result["student_impact"] == "s"
 
 
 class TestBuildDeptText:
@@ -154,3 +219,160 @@ class TestBuildDeptText:
         result = _build_dept_text(evidence, ["python", "linear algebra"])
         assert "CS" in result
         assert "Math" in result
+
+
+class TestEvaluateProposal:
+    """Coverage of the deterministic quality evals.
+
+    Each test holds the rest of the proposal valid and mutates one section
+    or field to trigger a single rule, so a failure points to the rule.
+    """
+
+    def test_clean_proposal_passes(self):
+        result = evaluate_proposal(_make_minimal_good_proposal())
+        assert result.passed, f"clean proposal raised: {[v.message for v in result.violations]}"
+
+    def test_em_dash_in_any_section_flagged(self):
+        p = _make_minimal_good_proposal()
+        p.curriculum_alignment = (
+            "The Computer Science department develops programming — algorithms, software development — "
+            "across 33 courses. The Mathematics department reinforces algorithmic thinking."
+        )
+        result = evaluate_proposal(p)
+        rules = {v.rule for v in result.violations}
+        assert "no_em_dashes" in rules
+
+    def test_deficit_language_flagged(self):
+        p = _make_minimal_good_proposal()
+        p.curriculum_alignment = (
+            "The Computer Science department develops programming and algorithms but the curriculum "
+            "is missing software development. The Mathematics department reinforces algorithmic thinking."
+        )
+        result = evaluate_proposal(p)
+        rules = {v.rule for v in result.violations}
+        assert "no_deficit_language" in rules
+
+    def test_evaluative_superlative_flagged(self):
+        p = _make_minimal_good_proposal()
+        p.executive_summary = p.executive_summary.replace(
+            "with a hiring profile centered",
+            "compelling and uniquely positioned, with a hiring profile centered",
+        )
+        result = evaluate_proposal(p)
+        rules = {v.rule for v in result.violations}
+        assert "no_evaluative_superlatives" in rules
+
+    def test_partnership_type_prescription_flagged(self):
+        p = _make_minimal_good_proposal()
+        p.executive_summary = p.executive_summary.replace(
+            "Students across these programs are completing coursework aligned with what Test Corp hires for.",
+            "An advisory board with Test Corp would formalize this alignment.",
+        )
+        result = evaluate_proposal(p)
+        rules = {v.rule for v in result.violations}
+        assert "no_type_prescription" in rules
+
+    def test_economic_figure_in_executive_summary_flagged(self):
+        p = _make_minimal_good_proposal()
+        p.executive_summary = p.executive_summary.replace(
+            "The Computer Science department",
+            "Software Developers earn $190,000 annually. The Computer Science department",
+        )
+        result = evaluate_proposal(p)
+        rules = {v.rule for v in result.violations}
+        # Both "no_econ_in_wrong_sections" (the $190,000) and
+        # "no_specific_counts_in_exec" (the digits) should fire.
+        assert "no_econ_in_wrong_sections" in rules
+
+    def test_economic_figure_in_curriculum_alignment_flagged(self):
+        p = _make_minimal_good_proposal()
+        p.curriculum_alignment = (
+            "The Computer Science department develops programming and algorithms across 33 courses, "
+            "with graduates earning $190,000. The Mathematics department reinforces algorithmic thinking."
+        )
+        result = evaluate_proposal(p)
+        rules = {v.rule for v in result.violations}
+        assert "no_econ_in_wrong_sections" in rules
+
+    def test_missing_economic_figure_in_occupational_demand_flagged(self):
+        p = _make_minimal_good_proposal()
+        p.occupational_demand = (
+            "Test Corp's Bay-region hiring centers on Software Developers (15-1252). "
+            "The company's software scope generates a diverse set of competencies."
+        )
+        result = evaluate_proposal(p)
+        rules = {v.rule for v in result.violations}
+        assert "missing_economic_figure" in rules
+
+    def test_missing_coe_region_in_occupational_demand_flagged(self):
+        p = _make_minimal_good_proposal()
+        p.occupational_demand = (
+            "Test Corp's hiring centers on Software Developers (15-1252), with median annual wages "
+            "near $190,000 and roughly 11,000 regional openings projected each year. "
+            "The company's software scope generates a diverse set of competencies."
+        )
+        result = evaluate_proposal(p)
+        rules = {v.rule for v in result.violations}
+        assert "missing_coe_region" in rules
+
+    def test_national_claim_in_occupational_demand_flagged(self):
+        p = _make_minimal_good_proposal()
+        p.occupational_demand = (
+            "Test Corp's hiring in the Bay COE region centers on Software Developers (15-1252), "
+            "with median annual wages near $190,000 and 11,000 openings projected each year nationally. "
+            "The company's software scope generates a diverse set of competencies."
+        )
+        result = evaluate_proposal(p)
+        rules = {v.rule for v in result.violations}
+        assert "no_national_claims" in rules
+
+    def test_missing_student_count_in_student_impact_flagged(self):
+        p = _make_minimal_good_proposal()
+        p.student_impact = (
+            "Students in the Computer Science department are building programming, software "
+            "development, and algorithmic skills aligned with Test Corp's hiring profile."
+        )
+        result = evaluate_proposal(p)
+        rules = {v.rule for v in result.violations}
+        assert "missing_student_count" in rules
+
+    def test_readiness_evaluation_in_student_impact_flagged(self):
+        p = _make_minimal_good_proposal()
+        p.student_impact = (
+            "5,137 students in the Computer Science department are well-prepared for Test Corp's "
+            "software developer roles, ready to contribute on day one."
+        )
+        result = evaluate_proposal(p)
+        rules = {v.rule for v in result.violations}
+        assert "no_readiness_evaluation" in rules
+
+    def test_swp_demand_math_mismatch_flagged(self):
+        p = _make_minimal_good_proposal()
+        p.swp_evidence.total_demand = 99999  # doesn't match sum of occupations
+        result = evaluate_proposal(p)
+        rules = {v.rule for v in result.violations}
+        assert "swp_demand_math" in rules
+
+    def test_swp_gap_math_mismatch_flagged(self):
+        p = _make_minimal_good_proposal()
+        p.swp_evidence.gap = 0  # should be 11000 - 28 = 10972
+        result = evaluate_proposal(p)
+        rules = {v.rule for v in result.violations}
+        assert "swp_gap_math" in rules
+
+    def test_executive_summary_too_short_flagged(self):
+        p = _make_minimal_good_proposal()
+        p.executive_summary = "Test Corp is in the Bay COE region with the Computer Science department aligned with what Test Corp hires for."
+        result = evaluate_proposal(p)
+        rules = {v.rule for v in result.violations}
+        assert "executive_summary_length" in rules
+
+    def test_missing_department_in_curriculum_alignment_flagged(self):
+        p = _make_minimal_good_proposal()
+        p.curriculum_alignment = (
+            "Several departments at the college develop the relevant skills, supporting the "
+            "competencies Test Corp's roles require across multiple courses."
+        )
+        result = evaluate_proposal(p)
+        rules = {v.rule for v in result.violations}
+        assert "missing_department_reference" in rules

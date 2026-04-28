@@ -4,7 +4,7 @@ The Kallipolis backend exposes one router per ontology unit, plus a single `/hea
 
 All endpoints require a `college` query parameter (for GET routes) or a `college` field in the request body (for POST routes). College scoping is the only access boundary the backend enforces — authentication happens in the atlas, not here. See [System Overview](./system-overview.md#authentication-and-scoping) for the trust model.
 
-Two endpoints stream their output via server-sent events: `POST /partnerships/targeted/stream` and `POST /strong-workforce/project/stream`. Both use FastAPI's `StreamingResponse` with `text/event-stream`.
+One endpoint streams its output via server-sent events: `POST /partnerships/targeted/stream`. It uses FastAPI's `StreamingResponse` with `text/event-stream`.
 
 A liveness probe at `/health` is defined directly in `backend/main.py` and returns `{"status": "ok"}`. It is not mounted on any feature router and is not part of the feature API surface.
 
@@ -78,25 +78,7 @@ On error: `data: {"error": "<message>"}\n\n`.
 
 `GET /partnerships/landscape` reads the precomputed `PARTNERSHIP_ALIGNMENT` edge, which is materialized by `backend/partnerships/compute.py` during ingestion. `GET /partnerships/employer-pipeline` computes its result with a live traversal and does not depend on precomputed data. For the edge schema, see [Graph Model → Precomputed analytical edge](./graph-model.md#the-precomputed-analytical-edge).
 
-## Strong Workforce
-
-Defined in `backend/strong_workforce/api.py`, mounted at `/strong-workforce`. Both endpoints are AI-backed; the project generator streams its output.
-
-| Method | Path | Purpose | Response model |
-|---|---|---|---|
-| `POST /strong-workforce/lmi-context` | Pre-fetch LMI demand/supply data for the SWP context panel (COE-grounded, non-streaming) | `LmiContext` |
-| `POST /strong-workforce/project/stream` | Generate a full SWP project with sections streamed individually | text/event-stream |
-
-**Request body** for both endpoints: `SwpProjectRequest` — carries the partnership proposal fields plus SWP-specific framing (`goal`, `metrics`, `apprenticeship`, `work_based_learning`). See `backend/strong_workforce/models.py` for the complete schema.
-
-**Streaming format** for `POST /strong-workforce/project/stream`:
-```
-data: {"type": "lmi", "lmi_context": <LmiContext JSON>}\n\n
-data: {"type": "section", "section": <SwpSection JSON>}\n\n
-...
-data: {"done": true}\n\n
-```
-The LMI context arrives first so the frontend can render the data panel immediately; subsequent `section` events arrive progressively as Claude finishes each section. On error: `data: {"error": "<message>"}\n\n`.
+The targeted partnership artifact carries a `swp_evidence` block at the bottom — TOP codes, SOC codes, regional supply and demand totals, and the gap. It is assembled deterministically by `_assemble_swp_evidence` in `backend/partnerships/generate.py` (no LLM), so any subsequent funding justification has the empirical foundation it needs without a second flow.
 
 ## How to regenerate this reference
 

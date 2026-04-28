@@ -8,9 +8,7 @@
  * college-atlas/students/api.test.ts. The streaming test builds a
  * ReadableStream-like mock whose body yields pre-encoded SSE frames,
  * so assertions can verify that the SSE parser correctly dispatches
- * onProposal / onDone / onError callbacks. The streamSwpProject
- * function in strong-workforce uses the same SSE format; its tests
- * can follow this pattern.
+ * onProposal / onDone / onError callbacks.
  *
  * Coverage:
  *   - getPartnershipLandscape: URL encoding, body parsing, error branch
@@ -195,17 +193,17 @@ describe("partnerships api client", () => {
       vi.stubGlobal("fetch", vi.fn().mockResolvedValue({
         ok: false,
         status: 422,
-        text: async () => "Query failed: no alignment found",
+        json: async () => ({ detail: "Query failed: no alignment found" }),
       }));
 
       await expect(queryPartnerships("bad", "foothill")).rejects.toThrow("Query failed: no alignment found");
     });
 
-    it("falls back to a generic 'Query failed' message when the body text is empty", async () => {
+    it("falls back to a generic 'Query failed' message when the body has no detail", async () => {
       vi.stubGlobal("fetch", vi.fn().mockResolvedValue({
         ok: false,
         status: 500,
-        text: async () => "",
+        json: async () => null,
       }));
 
       await expect(queryPartnerships("bad", "foothill")).rejects.toThrow("Query failed");
@@ -213,7 +211,7 @@ describe("partnerships api client", () => {
   });
 
   describe("streamTargetedProposal", () => {
-    it("POSTs to /partnerships/targeted/stream with employer, college, and engagement_type", async () => {
+    it("POSTs to /partnerships/targeted/stream with employer and college", async () => {
       const mockFetch = vi.fn().mockResolvedValue(sseResponse([]));
       vi.stubGlobal("fetch", mockFetch);
 
@@ -223,7 +221,6 @@ describe("partnerships api client", () => {
         () => {},
         () => {},
         () => {},
-        "internship",
       );
 
       const [url, init] = mockFetch.mock.calls[0] as [string, RequestInit];
@@ -234,7 +231,6 @@ describe("partnerships api client", () => {
       expect(parsed).toEqual({
         employer: "Kaiser",
         college: "foothill",
-        engagement_type: "internship",
       });
     });
 
@@ -248,7 +244,7 @@ describe("partnerships api client", () => {
       const onDone = vi.fn();
       const onError = vi.fn();
 
-      await streamTargetedProposal("Kaiser", "foothill", onProposal, onDone, onError, "internship");
+      await streamTargetedProposal("Kaiser", "foothill", onProposal, onDone, onError);
 
       expect(onProposal).not.toHaveBeenCalled();
       expect(onDone).not.toHaveBeenCalled();
@@ -256,7 +252,7 @@ describe("partnerships api client", () => {
     });
 
     it("dispatches onProposal for data frames and onDone when the stream reports done", async () => {
-      const proposal = { employer: "Kaiser", partnership_type: "Internship Pipeline" } as unknown as ApiTargetedProposal;
+      const proposal = { employer: "Kaiser", executive_summary: "..." } as unknown as ApiTargetedProposal;
       vi.stubGlobal("fetch", vi.fn().mockResolvedValue(sseResponse([
         `data: ${JSON.stringify(proposal)}\n\n`,
         `data: {"done": true}\n\n`,
@@ -266,7 +262,7 @@ describe("partnerships api client", () => {
       const onDone = vi.fn();
       const onError = vi.fn();
 
-      await streamTargetedProposal("Kaiser", "foothill", onProposal, onDone, onError, "internship");
+      await streamTargetedProposal("Kaiser", "foothill", onProposal, onDone, onError);
 
       expect(onProposal).toHaveBeenCalledTimes(1);
       expect(onProposal).toHaveBeenCalledWith(proposal);
@@ -283,7 +279,7 @@ describe("partnerships api client", () => {
       const onDone = vi.fn();
       const onError = vi.fn();
 
-      await streamTargetedProposal("Kaiser", "foothill", onProposal, onDone, onError, "internship");
+      await streamTargetedProposal("Kaiser", "foothill", onProposal, onDone, onError);
 
       expect(onError).toHaveBeenCalledWith("generation failed");
       expect(onProposal).not.toHaveBeenCalled();

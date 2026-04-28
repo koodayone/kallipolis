@@ -19,7 +19,7 @@ class GatheredContext:
     occupation_evidence: list[dict] = field(default_factory=list)
 
 
-def _gather_targeted_context(employer: str, college: str, engagement_type: str = "") -> GatheredContext:
+def _gather_targeted_context(employer: str, college: str) -> GatheredContext:
     """Gather employer metadata and occupation evidence from the graph."""
     driver = get_driver()
 

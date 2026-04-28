@@ -24,7 +24,7 @@ export type PartnershipQueryResponse = {
   cypher: string | null;
 };
 
-// ── Proposal evidence types (also consumed by strong-workforce) ─────────────
+// ── Proposal evidence types ────────────────────────────────────────────────
 
 export type ApiOccupationEvidence = {
   title: string;
@@ -73,34 +73,45 @@ export type ApiStudentEvidence = {
   top_students: ApiStudentSummaryEvidence[];
 };
 
-export type ApiProposalJustification = {
-  curriculum_composition: string;
-  curriculum_evidence: ApiDepartmentEvidence[];
-  student_composition: string;
-  student_evidence: ApiStudentEvidence;
+export type ApiSupplyEstimate = {
+  top_code: string;
+  top_title: string;
+  award_level: string;
+  annual_projected_supply: number;
 };
 
-export type ApiAgendaTopic = {
-  topic: string;
-  rationale: string;
+export type ApiDepartmentEnrollment = {
+  department: string;
+  student_count: number;
+};
+
+export type ApiSwpEvidence = {
+  occupations: ApiOccupationEvidence[];
+  supply_estimates: ApiSupplyEstimate[];
+  department_enrollments: ApiDepartmentEnrollment[];
+  total_demand: number;
+  total_supply: number;
+  gap: number;
+  coe_region: string;
 };
 
 export type ApiTargetedProposal = {
   employer: string;
   sector: string | null;
-  partnership_type: string;
   selected_occupation: string;
   selected_soc_code: string | null;
   core_skills: string[];
-  gap_skill: string;
   regions: string[];
-  opportunity: string;
+  // Four narrative sections
+  executive_summary: string;
+  occupational_demand: string;
+  curriculum_alignment: string;
+  student_impact: string;
+  // Evidence blocks
   opportunity_evidence: ApiOccupationEvidence[];
-  justification: ApiProposalJustification;
-  roadmap: string;
-  selected_occupations?: string[];
-  advisory_thesis?: string;
-  agenda_topics?: ApiAgendaTopic[];
+  curriculum_evidence: ApiDepartmentEvidence[];
+  student_evidence: ApiStudentEvidence;
+  swp_evidence: ApiSwpEvidence;
 };
 
 // ── Landscape endpoints ────────────────────────────────────────────────────
@@ -144,12 +155,11 @@ export async function streamTargetedProposal(
   onProposal: (proposal: ApiTargetedProposal) => void,
   onDone: () => void,
   onError: (error: string) => void,
-  engagementType: string,
 ): Promise<void> {
   const res = await fetch(`${API_BASE}/partnerships/targeted/stream`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ employer, college, engagement_type: engagementType }),
+    body: JSON.stringify({ employer, college }),
   });
   if (!res.ok) {
     onError(await res.text());

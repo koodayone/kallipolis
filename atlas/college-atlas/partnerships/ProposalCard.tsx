@@ -26,7 +26,6 @@ type Props = {
   onReject?: () => void;
   onRefine?: () => void;
   collegeId?: string;
-  engagementType?: string;
   onSaved?: (saved: SavedProposal) => void;
   // Override preview detection for tests or special-case rendering. Defaults
   // to the build-time PREVIEW_MODE flag.
@@ -42,6 +41,17 @@ function SectionHeader({ children, color }: { children: React.ReactNode; color?:
     }}>
       {children}
     </span>
+  );
+}
+
+function SectionDescription({ children }: { children: React.ReactNode }) {
+  return (
+    <p style={{
+      fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)",
+      lineHeight: 1.5, margin: "0 0 12px 0", fontStyle: "italic",
+    }}>
+      {children}
+    </p>
   );
 }
 
@@ -61,7 +71,7 @@ function FlagIcon() {
   );
 }
 
-export default function ProposalCard({ proposal, brandColor, onDismiss, onReject, onRefine, collegeId, engagementType, onSaved, isPreviewMode = PREVIEW_MODE }: Props) {
+export default function ProposalCard({ proposal, brandColor, onDismiss, onReject, onRefine, collegeId, onSaved, isPreviewMode = PREVIEW_MODE }: Props) {
   const [state, setState] = useState<CardState>("default");
   const [savedId, setSavedId] = useState<string | null>(null);
 
@@ -85,6 +95,7 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
 
   const isSaved = state === "saved";
   const isFlagged = state === "flagged";
+  const swp = proposal.swp_evidence;
 
   return (
     <motion.div layout initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}>
@@ -98,20 +109,31 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
           <h3 style={{ fontFamily: FONT, fontSize: "17px", fontWeight: 600, color: "rgba(255,255,255,0.9)", letterSpacing: "-0.01em", lineHeight: 1.3, margin: 0 }}>
             {proposal.employer}
           </h3>
-          <span style={{
-            flexShrink: 0, marginLeft: "16px", padding: "4px 12px", borderRadius: "100px",
-            fontFamily: FONT, fontSize: "11px", fontWeight: 600, letterSpacing: "0.05em",
-            background: `${brandColor}20`, color: brandColor, border: `1px solid ${brandColor}40`,
-          }}>
-            {proposal.partnership_type}
-          </span>
+          {proposal.sector && (
+            <span style={{
+              flexShrink: 0, marginLeft: "16px", padding: "4px 12px", borderRadius: "100px",
+              fontFamily: FONT, fontSize: "11px", fontWeight: 500, letterSpacing: "0.02em",
+              background: "rgba(255,255,255,0.04)", color: "rgba(255,255,255,0.55)",
+              border: "1px solid rgba(255,255,255,0.08)",
+            }}>
+              {proposal.sector}
+            </span>
+          )}
         </div>
 
-        {/* ── Opportunity ── */}
+        {/* ── Executive Summary ── */}
         <div style={{ marginBottom: "24px" }}>
-          <SectionHeader>Opportunity</SectionHeader>
+          <SectionHeader>Executive Summary</SectionHeader>
+          <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.75)", lineHeight: 1.65, margin: 0 }}>
+            {proposal.executive_summary}
+          </p>
+        </div>
+
+        {/* ── Occupational Demand ── */}
+        <div style={{ marginBottom: "24px" }}>
+          <SectionHeader>Occupational Demand</SectionHeader>
           <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.7)", lineHeight: 1.65, margin: 0 }}>
-            {proposal.opportunity}
+            {proposal.occupational_demand}
           </p>
           <div style={{ marginTop: "12px" }}>
             <ColumnHeaders
@@ -145,7 +167,7 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
         <div style={{ marginBottom: "24px" }}>
           <SectionHeader>Curriculum Alignment</SectionHeader>
           <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.65)", lineHeight: 1.65, margin: 0 }}>
-            {proposal.justification.curriculum_composition}
+            {proposal.curriculum_alignment}
           </p>
           <div style={{ marginTop: "12px" }}>
             <ColumnHeaders
@@ -156,7 +178,7 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
               gridTemplateColumns="24px 1fr auto"
               brandColor={brandColor}
             />
-            {proposal.justification.curriculum_evidence.map((dept, i) => (
+            {proposal.curriculum_evidence.map((dept, i) => (
               <DepartmentRow
                 key={dept.department}
                 department={dept.department}
@@ -173,11 +195,11 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
           </div>
         </div>
 
-        {/* ── Student Pipeline ── */}
+        {/* ── Student Impact ── */}
         <div style={{ marginBottom: "24px" }}>
-          <SectionHeader>Student Pipeline</SectionHeader>
+          <SectionHeader>Student Impact</SectionHeader>
           <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.65)", lineHeight: 1.65, margin: 0 }}>
-            {proposal.justification.student_composition}
+            {proposal.student_impact}
           </p>
           {/* Stats bar */}
           <div style={{
@@ -186,7 +208,7 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
           }}>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px", padding: "16px 0" }}>
               <span style={{ fontFamily: FONT, fontSize: "20px", fontWeight: 600, color: "rgba(255,255,255,0.85)" }}>
-                {proposal.justification.student_evidence.total_in_program.toLocaleString()}
+                {proposal.student_evidence.total_in_program.toLocaleString()}
               </span>
               <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>
                 Students in Aligned Programs
@@ -194,7 +216,7 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
             </div>
           </div>
           {/* Top compatible students */}
-          {proposal.justification.student_evidence.top_students.length > 0 && (
+          {proposal.student_evidence.top_students.length > 0 && (
             <div style={{ marginTop: "12px" }}>
               <span style={{
                 fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em",
@@ -213,7 +235,7 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
                 gridTemplateColumns="24px 110px 1fr 90px 60px"
                 brandColor={brandColor}
               />
-              {proposal.justification.student_evidence.top_students.map((s, i) => (
+              {proposal.student_evidence.top_students.map((s, i) => (
                 <StudentRow
                   key={s.uuid}
                   totalCoreSkills={proposal.core_skills.length}
@@ -241,13 +263,122 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
           )}
         </div>
 
-        {/* ── Roadmap ── */}
-        <div style={{ marginBottom: "24px" }}>
-          <SectionHeader>Roadmap</SectionHeader>
-          <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.7)", lineHeight: 1.65, margin: 0 }}>
-            {proposal.roadmap}
-          </p>
-        </div>
+        {/* ── Strong Workforce Evidence (tabular) ── */}
+        {swp && (swp.occupations.length > 0 || swp.supply_estimates.length > 0) && (
+          <div style={{ marginBottom: "24px" }}>
+            <SectionHeader>Strong Workforce Evidence</SectionHeader>
+            <SectionDescription>
+              Regional supply-demand foundation any funding justification requires.
+              {swp.coe_region ? ` Scoped to the ${swp.coe_region} COE region.` : ""}
+            </SectionDescription>
+
+            {/* Demand sub-table */}
+            {swp.occupations.length > 0 && (
+              <div style={{ marginBottom: "16px" }}>
+                <span style={{
+                  fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.08em",
+                  textTransform: "uppercase", color: "rgba(255,255,255,0.35)",
+                  display: "block", marginBottom: "8px", paddingLeft: "16px",
+                }}>
+                  Demand: regional annual openings by SOC
+                </span>
+                <ColumnHeaders
+                  columns={[
+                    { label: "SOC", width: "90px" },
+                    { label: "Occupation", width: "1fr" },
+                    { label: "Annual openings", width: "130px", align: "right" },
+                  ]}
+                  gridTemplateColumns="24px 90px 1fr 130px"
+                  brandColor={brandColor}
+                />
+                {swp.occupations.map((occ, i) => (
+                  <div key={`${occ.soc_code ?? occ.title}-${i}`} style={{
+                    display: "grid",
+                    gridTemplateColumns: "24px 90px 1fr 130px",
+                    alignItems: "center",
+                    padding: "10px 0",
+                    borderBottom: i < swp.occupations.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none",
+                    fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.7)",
+                  }}>
+                    <span />
+                    <span style={{ fontVariantNumeric: "tabular-nums", color: "rgba(255,255,255,0.5)" }}>{occ.soc_code ?? "—"}</span>
+                    <span>{occ.title}</span>
+                    <span style={{ textAlign: "right", fontVariantNumeric: "tabular-nums" }}>
+                      {occ.annual_openings != null ? occ.annual_openings.toLocaleString() : "—"}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Supply sub-table */}
+            {swp.supply_estimates.length > 0 && (
+              <div style={{ marginBottom: "16px" }}>
+                <span style={{
+                  fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.08em",
+                  textTransform: "uppercase", color: "rgba(255,255,255,0.35)",
+                  display: "block", marginBottom: "8px", paddingLeft: "16px",
+                }}>
+                  Supply: projected annual program completions by TOP
+                </span>
+                <ColumnHeaders
+                  columns={[
+                    { label: "TOP", width: "90px" },
+                    { label: "Program", width: "1fr" },
+                    { label: "Award", width: "100px" },
+                    { label: "Annual supply", width: "110px", align: "right" },
+                  ]}
+                  gridTemplateColumns="24px 90px 1fr 100px 110px"
+                  brandColor={brandColor}
+                />
+                {swp.supply_estimates.map((s, i) => (
+                  <div key={`${s.top_code}-${s.award_level}-${i}`} style={{
+                    display: "grid",
+                    gridTemplateColumns: "24px 90px 1fr 100px 110px",
+                    alignItems: "center",
+                    padding: "10px 0",
+                    borderBottom: i < swp.supply_estimates.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none",
+                    fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.7)",
+                  }}>
+                    <span />
+                    <span style={{ fontVariantNumeric: "tabular-nums", color: "rgba(255,255,255,0.5)" }}>{s.top_code}</span>
+                    <span>{s.top_title}</span>
+                    <span style={{ color: "rgba(255,255,255,0.55)" }}>{s.award_level}</span>
+                    <span style={{ textAlign: "right", fontVariantNumeric: "tabular-nums" }}>
+                      {s.annual_projected_supply.toFixed(1)}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Gap row */}
+            <div style={{
+              marginTop: "12px",
+              padding: "12px 16px", borderRadius: "6px",
+              background: "rgba(255,255,255,0.025)",
+              border: "1px solid rgba(255,255,255,0.06)",
+              display: "grid", gridTemplateColumns: "1fr auto auto auto",
+              alignItems: "center", gap: "16px",
+              fontFamily: FONT, fontSize: "12px",
+            }}>
+              <span style={{ color: "rgba(255,255,255,0.5)", letterSpacing: "0.04em" }}>
+                Annual demand
+              </span>
+              <span style={{ color: "rgba(255,255,255,0.85)", fontVariantNumeric: "tabular-nums", fontWeight: 600 }}>
+                {swp.total_demand.toLocaleString()}
+              </span>
+              <span style={{ color: "rgba(255,255,255,0.35)", padding: "0 4px" }}>−</span>
+              <span style={{ color: "rgba(255,255,255,0.85)", fontVariantNumeric: "tabular-nums", fontWeight: 600 }}>
+                {Math.round(swp.total_supply).toLocaleString()} supply ={" "}
+                <span style={{ color: swp.gap > 0 ? brandColor : "rgba(255,255,255,0.55)" }}>
+                  {Math.round(swp.gap).toLocaleString()}
+                </span>
+                <span style={{ color: "rgba(255,255,255,0.35)", marginLeft: "6px", fontWeight: 400 }}>gap</span>
+              </span>
+            </div>
+          </div>
+        )}
 
         {/* Actions */}
         <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "16px" }}>
@@ -261,7 +392,7 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
                   setState("default");
                 } else {
                   if (collegeId) {
-                    const saved = saveProposal(collegeId, proposal, engagementType ?? "", "saved");
+                    const saved = saveProposal(collegeId, proposal, "saved");
                     setSavedId(saved.id);
                     onSaved?.(saved);
                   }
@@ -316,7 +447,7 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
                     if (savedId) {
                       updateProposalStatus(collegeId, savedId, "flagged");
                     } else {
-                      const saved = saveProposal(collegeId, proposal, engagementType ?? "", "flagged");
+                      const saved = saveProposal(collegeId, proposal, "flagged");
                       setSavedId(saved.id);
                     }
                   }

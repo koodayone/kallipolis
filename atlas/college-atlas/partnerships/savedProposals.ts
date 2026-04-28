@@ -1,11 +1,10 @@
 import type { ApiTargetedProposal } from "@/college-atlas/partnerships/api";
 
-export const PROPOSAL_SCHEMA_VERSION = 8;
+export const PROPOSAL_SCHEMA_VERSION = 9;
 
 export type SavedProposal = {
   id: string;
   proposal: ApiTargetedProposal;
-  engagementType: string;
   collegeId: string;
   savedAt: string;
   status: "saved" | "flagged";
@@ -30,13 +29,11 @@ export function getSavedProposals(collegeId: string): SavedProposal[] {
 export function saveProposal(
   collegeId: string,
   proposal: ApiTargetedProposal,
-  engagementType: string,
   status: "saved" | "flagged" = "saved",
 ): SavedProposal {
   const saved: SavedProposal = {
     id: crypto.randomUUID(),
     proposal,
-    engagementType,
     collegeId,
     savedAt: new Date().toISOString(),
     status,

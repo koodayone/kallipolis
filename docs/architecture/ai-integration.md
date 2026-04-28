@@ -29,17 +29,13 @@ The query engine also handles JSON parsing fallback: Claude is asked to return a
 
 The partnership opportunity flow is split across three modules — `backend/partnerships/filter.py`, `backend/partnerships/narrative.py`, and the orchestrator at `backend/partnerships/generate.py` — and makes between three and seven Claude calls per opportunity depending on the engagement type.
 
-`backend/partnerships/filter.py` owns the sequence of selection decisions. For an internship pipeline, Claude picks the primary hiring occupation for the employer and a small set of core skills from the college's curriculum. For a curriculum co-design partnership, Claude additionally identifies a specific gap skill — a capability the occupation needs that the college does not currently teach — and selects the primary department that should host the partnership. For an advisory board, Claude instead picks several identity-defining occupations, synthesizes a one-sentence thesis about the employer's operational focus, and proposes two to three inaugural agenda topics. All three engagement types run a department relevance filter to narrow the curriculum evidence down to the departments that matter most for this partnership. Every call in the filter module is a constrained selection from existing graph data, not free generation.
+`backend/partnerships/filter.py` owns the sequence of selection decisions. Claude picks the primary hiring occupation for the employer and a small set of core skills, then runs a department relevance filter to narrow the curriculum evidence down to the departments that matter most for this partnership. Every call in the filter module is a constrained selection from existing graph data, not free generation.
 
-`backend/partnerships/narrative.py` then takes the filtered context and produces the four-section narrative — opportunity, curriculum composition, student composition, roadmap — in a single Claude call, followed by a proposal evaluation pass that scores the output against faithfulness and no-data-in-narrative rules.
-
-### Strong workforce project generation
-
-The strong workforce project flow (`backend/strong_workforce/generate.py`) also uses Claude, producing each section of a NOVA-shaped SWP project as a separate streamed output. The flow uses Claude's streaming API (`client.messages.stream`) and the implementation does brace-depth JSON parsing on the stream so that each section becomes available as soon as Claude finishes generating it, rather than waiting for the entire response to complete. This is what makes the streaming experience in the [strong workforce form](../product/strong-workforce.md) feel responsive rather than batched.
+`backend/partnerships/narrative.py` then takes the filtered context and produces the four-section narrative — executive summary, occupational demand, curriculum alignment, student impact — in a single Claude call.
 
 ### Shared constraint
 
-Both flows are constrained the same way: Claude operates against a tightly bounded context window that contains only the empirical material assembled in the previous step. The model cannot invent evidence, cannot generalize beyond the specific occupations, courses, students, and employers in the assembled context, and cannot reach outside the prompt for additional information. The narrative is grounded by construction, not by post-hoc validation.
+The narrative flow is constrained: Claude operates against a tightly bounded context window that contains only the empirical material assembled in the previous step. The model cannot invent evidence, cannot generalize beyond the specific occupations, courses, students, and employers in the assembled context, and cannot reach outside the prompt for additional information. The narrative is grounded by construction, not by post-hoc validation.
 
 ## Where Gemini is called
 

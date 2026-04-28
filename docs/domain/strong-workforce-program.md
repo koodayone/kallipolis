@@ -35,7 +35,7 @@ For Kallipolis, NOVA is the institutional consumer of the strong workforce form'
 
 ## How this shapes Kallipolis
 
-The Strong Workforce Program is the institutional structure that the [strong workforce form](../product/strong-workforce.md) in Kallipolis is built to participate in. Three commitments in the program shape what the product looks like at the system level.
+The Strong Workforce Program is the institutional structure that the [partnership artifact](../product/partnerships.md) in Kallipolis is built to be legible to. The artifact's regional supply-demand evidence block — TOP codes, SOC codes, supply-demand gap — provides the empirical foundation any subsequent SWP funding application requires. Three commitments in the program shape what the product looks like at the system level.
 
 **The empirical justification requirement shapes the data assembly.** SWP-funded work has to be justified by labor market data, curriculum alignment, and student pipeline evidence. The product's emphasis on grounding partnership opportunities in authoritative data sources is a direct response to this requirement. Without the empirical foundation, an SWP application is not defensible. With it, the application has the substance the program expects.
 

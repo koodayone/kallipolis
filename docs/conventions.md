@@ -92,7 +92,7 @@ Always relative markdown links: `[The Atlas](./product/the-atlas.md)`. Never abs
 
 ## Feature-primary layout and vocabulary alignment
 
-The backend and the atlas are organized around **ontology units**, not around engineering layers. Each unit (students, courses, occupations, employers, partnerships, strong-workforce) owns a directory containing all of its code, and the name of that unit is the same across every layer of conversation about it — product doc, backend directory, URL prefix, atlas directory. This is what keeps product language and engineering language in sync, and what keeps multi-agent work composable: two agents working on two features touch non-overlapping files.
+The backend and the atlas are organized around **ontology units**, not around engineering layers. Each unit (students, courses, occupations, employers, partnerships) owns a directory containing all of its code, and the name of that unit is the same across every layer of conversation about it — product doc, backend directory, URL prefix, atlas directory. This is what keeps product language and engineering language in sync, and what keeps multi-agent work composable: two agents working on two features touch non-overlapping files.
 
 This section is the contract. Two audit checks — `backend_layout` and `vocabulary_alignment` — enforce it mechanically on every push.
 
@@ -111,7 +111,7 @@ Each ontology unit currently has four load-bearing surface forms, enforced by th
 | Atlas feature | *atlas/college-atlas/CANONICAL/* | Canonical (identity) |
 | URL prefix | */CANONICAL* in `backend/main.py` | Prepend `/` |
 
-For example, `strong-workforce` (the canonical form, matching `docs/product/strong-workforce.md`) derives `backend/strong_workforce/`, `atlas/college-atlas/strong-workforce/`, and `/strong-workforce` respectively. The hyphen-to-underscore transform exists because Python packages cannot contain hyphens; the other three surfaces preserve the canonical form.
+For example, `partnerships` (the canonical form, matching `docs/product/partnerships.md`) derives `backend/partnerships/`, `atlas/college-atlas/partnerships/`, and `/partnerships` respectively. The hyphen-to-underscore transform applies when a canonical form contains a hyphen; single-word canonicals like `partnerships` round-trip identically across all four surfaces.
 
 Three further surface forms exist but are **not yet enforced** by the audit: Neo4j node labels (`Student`, `Course`, etc.), Pydantic model prefixes (`StudentSummary`, `EmployerMatch`), and test file names (`test_student_helpers.py`). These involve PascalCase and singular/plural rules that need more design before mechanical enforcement.
 

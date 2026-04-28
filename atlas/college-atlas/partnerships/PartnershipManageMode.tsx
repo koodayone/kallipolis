@@ -74,12 +74,12 @@ export default function PartnershipManageMode({
 
       {/* Column headers */}
       <div style={{
-        display: "grid", gridTemplateColumns: "24px 1fr 160px",
+        display: "grid", gridTemplateColumns: "24px 1fr 200px",
         padding: "12px 16px", gap: "10px", alignItems: "center",
       }}>
         <span />
         <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Employer</span>
-        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, textAlign: "right" }}>Partnership Type</span>
+        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, textAlign: "right" }}>Sector</span>
       </div>
 
       {/* Rows */}
@@ -92,7 +92,7 @@ export default function PartnershipManageMode({
               onClick={() => toggleExpanded(saved.id)}
               style={{
                 width: "100%", textAlign: "left", cursor: "pointer",
-                display: "grid", gridTemplateColumns: "24px 1fr 160px",
+                display: "grid", gridTemplateColumns: "24px 1fr 200px",
                 padding: "12px 16px", gap: "10px", alignItems: "center",
                 background: isExpanded ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
                 border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
@@ -109,10 +109,10 @@ export default function PartnershipManageMode({
                 {p.employer}
               </span>
               <span style={{
-                textAlign: "right", fontFamily: FONT, fontSize: "11px", fontWeight: 600,
-                color: school.brandColorLight,
+                textAlign: "right", fontFamily: FONT, fontSize: "12px", fontWeight: 500,
+                color: "rgba(255,255,255,0.55)",
               }}>
-                {p.partnership_type}
+                {p.sector ?? "—"}
               </span>
             </button>
             {isExpanded && (

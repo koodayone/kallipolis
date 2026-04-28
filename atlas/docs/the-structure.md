@@ -20,7 +20,7 @@ The layout mirrors the backend's feature-primary layout (see [`backend/docs/stru
 
 5. **Orchestrators stay thin.** `app/` contains Next.js routes only. Route files import from feature folders and compose them; they do not own feature logic.
 
-6. **URL surface matches feature names.** Atlas scales map to top-level routes (`/[collegeId]`, `/state`). Backend URL prefixes match feature names (`/students`, `/courses`, `/occupations`, `/employers`, `/partnerships`, `/strong-workforce`), so API calls from any feature's `api.ts` speak the same vocabulary as the folder it lives in.
+6. **URL surface matches feature names.** Atlas scales map to top-level routes (`/[collegeId]`, `/state`). Backend URL prefixes match feature names (`/students`, `/courses`, `/occupations`, `/employers`, `/partnerships`), so API calls from any feature's `api.ts` speak the same vocabulary as the folder it lives in.
 
 ## Folder contract
 
@@ -32,17 +32,17 @@ Next.js App Router routes. The only layer-primary folder at the top level of `at
 
 The College Atlas scale. Top-level files:
 
-- `CollegeAtlasCanvas.tsx` — the six-form home scene canvas component.
-- `scene.ts` — the scene configuration: `FormKey`, `FORM_NAMES`, `ALL_FORM_KEYS`, and the six forms' positions in 3D space. This file enumerates every form because the home scene assembles all six; it is the only place the six-form set is declared.
+- `CollegeAtlasCanvas.tsx` — the five-form home scene canvas component.
+- `scene.ts` — the scene configuration: `FormKey`, `FORM_NAMES`, `ALL_FORM_KEYS`, and the five forms' positions in 3D space. This file enumerates every form because the home scene assembles all five; it is the only place the five-form set is declared.
 
-Each of the six forms has its own subfolder with the same internal layout:
+Each of the five forms has its own subfolder with the same internal layout:
 
 - `<Form>View.tsx` — the main view component rendered when a user focuses on the form.
 - Supporting components specific to the form (`StudentRow.tsx`, `ProposalCard.tsx`, etc.).
 - `types.ts` — TypeScript types for the feature's domain.
 - `api.ts` — API client functions and response types for the feature's backend endpoints.
 
-The six form folders map to product docs:
+The five form folders map to product docs:
 
 | Folder | Product doc |
 |---|---|
@@ -51,7 +51,6 @@ The six form folders map to product docs:
 | `college-atlas/occupations/` | [`docs/product/occupations.md`](../../docs/product/occupations.md) |
 | `college-atlas/employers/` | [`docs/product/employers.md`](../../docs/product/employers.md) |
 | `college-atlas/partnerships/` | [`docs/product/partnerships.md`](../../docs/product/partnerships.md) |
-| `college-atlas/strong-workforce/` | [`docs/product/strong-workforce.md`](../../docs/product/strong-workforce.md) |
 
 ### `state-atlas/`
 
@@ -68,7 +67,7 @@ The State Atlas is smaller than the College Atlas today because it has no per-fe
 3D infrastructure. Contains:
 
 - `engine.ts` — the generic `buildScene` function and Three.js helpers. Not specific to any scene.
-- `forms/` — the six platonic geometric primitives (`mortarboard.ts`, `book.ts`, `chainlink.ts`, `hardhat.ts`, `skyscraper.ts`, `dumbbell.ts`). Each exports a factory that returns a Three.js group.
+- `forms/` — the five platonic geometric primitives (`mortarboard.ts`, `book.ts`, `chainlink.ts`, `hardhat.ts`, `skyscraper.ts`). Each exports a factory that returns a Three.js group.
 
 The `scene/` folder is 3D-only. Nothing in it knows about Kallipolis features, backends, or product concerns. It is reusable infrastructure that happens to be used by the College Atlas today.
 
@@ -96,15 +95,7 @@ The root `api.ts` holds one export: the `API_BASE` constant resolved from `NEXT_
 
 ## Cross-feature dependencies
 
-The only allowed cross-feature dependency is **`strong-workforce/` → `partnerships/`**, one-way, at two touch points:
-
-1. **Shared proposal evidence types.** `strong-workforce/api.ts` type-imports `ApiOccupationEvidence`, `ApiCourseEvidence`, `ApiDepartmentEvidence`, `ApiStudentEvidence`, and `ApiProposalJustification` from `partnerships/api.ts`. A SWP project application is the *fund* stage of a discovered partnership; it consumes the evidence that `partnerships/` produces.
-
-2. **Reading saved partnership proposals.** `strong-workforce/StrongWorkforceView.tsx` reads `getSavedProposals` and `SavedProposal` from `partnerships/savedProposals.ts` so that the SWP builder can pick up a previously saved partnership and turn it into a funding application.
-
-Both touch points are read-only from the strong-workforce side — `partnerships/` is never a consumer of `strong-workforce/`. This mirrors the backend's `strong_workforce.generate` → `partnerships.generate` direction.
-
-Saved SWP projects live in their own module at `strong-workforce/savedSwpProjects.ts` alongside their feature, so `partnerships/` has no reason to know about `ApiSwpProject` or any SWP-specific persistence.
+There are no allowed cross-feature dependencies between sibling form folders. Each form owns its own types, persistence, and view components. If a piece of code becomes legitimately shared across features, it is moved to the appropriate cross-cutting folder rather than reached for via a sibling import.
 
 All features can freely import from `ui/`, `config/`, `auth/`, and `scene/`. These are cross-cutting infrastructure folders; importing from them is the normal case.
 

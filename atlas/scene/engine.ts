@@ -86,6 +86,11 @@ const DISSOLVE_DURATION = 0.7;
 const PULSE_AMPLITUDE = 0.18;
 const DISSOLVE_Z_OFFSET = 1.8;
 const DISSOLVE_Z_SPEED = 0.05;
+// Connectors inset their endpoints from each form's center by this distance
+// so the line terminates just outside the form's geometry rather than piercing
+// through it. Forms in the College Atlas have outer bounds of ~0.7-1.0 from
+// center; an inset of 1.0 leaves clean visual separation at both endpoints.
+const CONNECTOR_INSET = 1.0;
 
 // ── Helpers ────────────────────────────────────────────────────────────────────
 
@@ -299,8 +304,15 @@ export function buildScene<K extends string>(
       const fromForm = forms.find((f) => f.id === cc.fromId);
       const toForm = forms.find((f) => f.id === cc.toId);
       if (fromForm && toForm) {
+        // Inset each endpoint toward its form's center so the line stops
+        // cleanly outside the form geometry instead of piercing through it.
+        const dir = new THREE.Vector3()
+          .subVectors(toForm.basePos, fromForm.basePos)
+          .normalize();
+        const a = fromForm.basePos.clone().addScaledVector(dir, CONNECTOR_INSET);
+        const b = toForm.basePos.clone().addScaledVector(dir, -CONNECTOR_INSET);
         connectors.push({
-          line: makeConnector(fromForm.basePos, toForm.basePos),
+          line: makeConnector(a, b),
           triggerKey: cc.triggerKey,
           targetOpacity: 0.3,
           currentOpacity: 0.3,

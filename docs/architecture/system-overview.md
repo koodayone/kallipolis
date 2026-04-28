@@ -56,7 +56,7 @@ For the full schema, see [Graph Model](./graph-model.md).
 
 Kallipolis calls two LLM providers, each for a distinct role.
 
-**Claude** handles linguistic operations against existing data. Five system prompts translate natural language questions into validated Cypher (`backend/llm/query_engine.py`). Two narrative generators write partnership proposals and SWP project sections (`backend/partnerships/generate.py`, `backend/strong_workforce/generate.py`). Both use server-sent events for streaming output.
+**Claude** handles linguistic operations against existing data. Five system prompts translate natural language questions into validated Cypher (`backend/llm/query_engine.py`). One narrative generator writes partnership proposals (`backend/partnerships/generate.py`). The proposal endpoint uses server-sent events for streaming output.
 
 **Gemini** handles data extraction during the ETL pipeline. Course extraction from PDF catalogs, skill taxonomy mapping, occupation-skill assignment, and employer name cleanup all run on Gemini.
 
@@ -64,9 +64,9 @@ The split is deliberate. Claude is asked to reason about institutional context �
 
 For the full treatment of where each model is called and why, see [AI Integration](./ai-integration.md).
 
-## The six API surfaces
+## The five API surfaces
 
-The backend exposes one router per ontology unit, each scoped to a single conceptual noun. The four units of analysis each have a router that exposes both deterministic retrieval and Claude-generated Cypher retrieval. The two units of action each have a router that exposes LLM-backed proposal generation, streamed via server-sent events.
+The backend exposes one router per ontology unit, each scoped to a single conceptual noun. The four units of analysis each have a router that exposes both deterministic retrieval and Claude-generated Cypher retrieval. The unit of action has a router that exposes LLM-backed proposal generation, streamed via server-sent events.
 
 | Router | Path prefix | Purpose |
 |---|---|---|
@@ -75,15 +75,14 @@ The backend exposes one router per ontology unit, each scoped to a single concep
 | `occupations` | `/occupations/*` | Labor market overview, occupation detail, NL occupation query |
 | `employers` | `/employers/*` | Employer listing and detail, NL employer query |
 | `partnerships` | `/partnerships/*` | Partnership landscape (read), NL partnership query, targeted proposal generation (streaming) |
-| `strong_workforce` | `/strong-workforce/*` | LMI context, SWP project generation (streaming) |
 
-The four analysis-unit routers (`students`, `courses`, `occupations`, `employers`) expose both direct query endpoints (deterministic Cypher) and an NL `/query` endpoint (Claude-generated Cypher with a safety gate). The two action-unit routers (`partnerships`, `strong_workforce`) are AI-driven and stream their output.
+The four analysis-unit routers (`students`, `courses`, `occupations`, `employers`) expose both direct query endpoints (deterministic Cypher) and an NL `/query` endpoint (Claude-generated Cypher with a safety gate). The action-unit router (`partnerships`) is AI-driven and streams its output.
 
 For the full endpoint catalog — methods, paths, request shapes, response shapes — see [API Reference](./api-reference.md).
 
 ## Streaming
 
-Two endpoints stream their output to the atlas using server-sent events: the partnership proposal generator and the SWP project builder. Both use FastAPI's `StreamingResponse` with `text/event-stream`. The atlas reads them via the Fetch API's `ReadableStream` reader. The SWP stream uses brace-depth JSON parsing to extract complete section objects mid-stream, so each section can be displayed as soon as the model finishes generating it rather than waiting for the entire response. This is why a coordinator using the strong workforce flow sees sections appear progressively rather than all at once.
+One endpoint streams its output to the atlas using server-sent events: the partnership proposal generator. It uses FastAPI's `StreamingResponse` with `text/event-stream`. The atlas reads it via the Fetch API's `ReadableStream` reader. The streamed response carries the four narrative sections plus the deterministic regional supply-demand evidence block assembled at the bottom of the artifact.
 
 ## Authentication and scoping
 
@@ -111,7 +110,6 @@ kallipolis/
 │   ├── occupations/             # ↔ docs/product/occupations.md
 │   ├── employers/               # ↔ docs/product/employers.md
 │   ├── partnerships/            # ↔ docs/product/partnerships.md (unit of action)
-│   ├── strong_workforce/        # ↔ docs/product/strong-workforce.md (unit of action)
 │   ├── pipeline/                # Ingestion orchestration + calibration prep
 │   ├── tests/unit/              # Fast, no I/O unit suite (CI-gated)
 │   └── tests/integration/       # Neo4j + LLM-coupled scripts (local only)

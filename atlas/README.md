@@ -19,27 +19,25 @@ atlas/
 ├── app/                        Next.js App Router entry points
 │   ├── [collegeId]/
 │   │   ├── layout.tsx          Persistent 3D canvas + scene pause logic
-│   │   ├── page.tsx            Home: six-form scene + labels + header
-│   │   ├── students/page.tsx   Thin route wrappers for the six form views
+│   │   ├── page.tsx            Home: five-form scene + labels + header
+│   │   ├── students/page.tsx   Thin route wrappers for the five form views
 │   │   ├── courses/page.tsx
 │   │   ├── occupations/page.tsx
 │   │   ├── employers/page.tsx
-│   │   ├── partnerships/page.tsx
-│   │   └── strong-workforce/page.tsx
+│   │   └── partnerships/page.tsx
 │   ├── state/page.tsx          State Atlas route
 │   ├── (auth)/                 Login / register route group
 │   └── api/auth/               Next.js API routes for session cookies
 │
 ├── college-atlas/              ↔ docs/product/the-atlas.md (College Atlas)
 │   ├── CollegeAtlasCanvas.tsx  The Three.js canvas component
-│   ├── scene.ts                FormKey, FORM_NAMES, six-form scene config
+│   ├── scene.ts                FormKey, FORM_NAMES, five-form scene config
 │   ├── homeSceneContext.ts     Shared projected positions + hover state
 │   ├── students/               ↔ docs/product/students.md
 │   ├── courses/                ↔ docs/product/courses.md
 │   ├── occupations/            ↔ docs/product/occupations.md
 │   ├── employers/              ↔ docs/product/employers.md
-│   ├── partnerships/           ↔ docs/product/partnerships.md
-│   └── strong-workforce/       ↔ docs/product/strong-workforce.md
+│   └── partnerships/           ↔ docs/product/partnerships.md
 │
 ├── state-atlas/                ↔ docs/product/the-atlas.md (State Atlas)
 │   ├── StateAtlas.tsx
@@ -48,7 +46,7 @@ atlas/
 │
 ├── scene/                      3D infrastructure (cross-feature, 3D only)
 │   ├── engine.ts               Generic buildScene + Three.js helpers
-│   └── forms/                  Six platonic geometric primitives
+│   └── forms/                  Five platonic geometric primitives
 │
 ├── ui/                         UI primitives (feature-agnostic)
 ├── auth/                       JWT + session storage + auth UI forms
@@ -73,25 +71,18 @@ college-atlas/<form>/
 └── api.ts             Feature's API client + response types
 ```
 
-Supporting components specific to one feature (e.g. `ProposalCard.tsx`,
-`SwpArtifact.tsx`) live in that feature's folder, not in `ui/`.
+Supporting components specific to one feature (e.g. `ProposalCard.tsx`)
+live in that feature's folder, not in `ui/`.
 
 ## Cross-feature dependencies
 
 ```
 scene/, ui/, auth/, config/  →  features  →  app/
-                                    ↑
-                              partnerships (evidence types)
-                                    ↓
-                              strong-workforce
 ```
 
 Features may freely import from `scene/`, `ui/`, `auth/`, and `config/`.
-The only allowed cross-feature import is `strong-workforce/` → `partnerships/`,
-one-way, for shared proposal evidence types and for reading saved partnership
-proposals. A SWP project is the *fund* stage of a discovered partnership, so
-it consumes partnership output. This mirrors the backend's
-`strong_workforce.generate` → `partnerships.generate` direction.
+Cross-feature imports between sibling form folders are not allowed; each
+feature owns its types and persistence.
 
 See [`atlas/docs/the-structure.md`](./docs/the-structure.md) for the full
 dependency contract and the anti-patterns the layout exists to prevent.

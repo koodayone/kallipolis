@@ -140,21 +140,21 @@ describe("occupations api client", () => {
       expect(result).toEqual(body);
     });
 
-    it("surfaces the server's error text when the response is not ok", async () => {
+    it("surfaces the server's error detail when the response is not ok", async () => {
       vi.stubGlobal("fetch", vi.fn().mockResolvedValue({
         ok: false,
         status: 422,
-        text: async () => "Query failed: invalid SOC code format",
+        json: async () => ({ detail: "Query failed: invalid SOC code format" }),
       }));
 
       await expect(queryOccupations("bad", "foothill")).rejects.toThrow("Query failed: invalid SOC code format");
     });
 
-    it("falls back to a generic 'Query failed' message when the body text is empty", async () => {
+    it("falls back to a generic 'Query failed' message when the body has no detail", async () => {
       vi.stubGlobal("fetch", vi.fn().mockResolvedValue({
         ok: false,
         status: 500,
-        text: async () => "",
+        json: async () => null,
       }));
 
       await expect(queryOccupations("bad", "foothill")).rejects.toThrow("Query failed");

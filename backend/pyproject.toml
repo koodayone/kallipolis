@@ -13,7 +13,6 @@ testpaths = [
     "occupations",
     "employers",
     "partnerships",
-    "strong_workforce",
     "ontology",
     "llm",
 ]

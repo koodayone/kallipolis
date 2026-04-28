@@ -20,7 +20,7 @@ import PartnershipManageMode from "./PartnershipManageMode";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
-type Phase = "selection" | "draft" | "generating" | "complete";
+type Phase = "selection" | "generating" | "complete";
 type Mode = "build" | "manage";
 
 type Props = { school: SchoolConfig; onBack: () => void };
@@ -32,7 +32,6 @@ export default function PartnershipsView({ school, onBack }: Props) {
   const [phase, setPhase] = useState<Phase>("selection");
   const [mode, setMode] = useState<Mode>("build");
   const [selectedEmployer, setSelectedEmployer] = useState<ApiPartnershipOpportunity | null>(null);
-  const [engagementType, setEngagementType] = useState("");
   const [proposal, setProposal] = useState<ApiTargetedProposal | null>(null);
   const [proposalError, setProposalError] = useState<string | null>(null);
 
@@ -103,33 +102,34 @@ export default function PartnershipsView({ school, onBack }: Props) {
     requestAnimationFrame(() => { if (scrollEl) scrollEl.scrollTop = saved; });
   }, []);
 
-  // Phase transitions.
-  const handleDraftCTA = useCallback((opp: ApiPartnershipOpportunity) => {
-    setSelectedEmployer(opp);
-    setPhase("draft");
-    setEngagementType("");
-    setProposal(null);
-    setProposalError(null);
-  }, []);
-
-  const handleGenerate = useCallback(() => {
-    if (!selectedEmployer || !engagementType) return;
+  // Generate immediately when an employer is selected — no engagement-type
+  // pre-classification step. The artifact is type-agnostic.
+  const runGeneration = useCallback((opp: ApiPartnershipOpportunity) => {
     setPhase("generating");
     setProposal(null);
     setProposalError(null);
     streamTargetedProposal(
-      selectedEmployer.name,
+      opp.name,
       school.name,
       (p) => { setProposal(p); setPhase("complete"); },
       () => {},
       (err) => { setProposalError(err); setPhase("complete"); },
-      engagementType,
     );
-  }, [selectedEmployer, engagementType, school.name]);
+  }, [school.name]);
+
+  // Phase transitions.
+  const handleDraftCTA = useCallback((opp: ApiPartnershipOpportunity) => {
+    setSelectedEmployer(opp);
+    runGeneration(opp);
+  }, [runGeneration]);
+
+  const handleRetry = useCallback(() => {
+    if (selectedEmployer) runGeneration(selectedEmployer);
+  }, [selectedEmployer, runGeneration]);
 
   const handleReject = useCallback(() => {
-    setPhase("draft");
-    setEngagementType("");
+    setPhase("selection");
+    setSelectedEmployer(null);
     setProposal(null);
     setProposalError(null);
   }, []);
@@ -137,7 +137,6 @@ export default function PartnershipsView({ school, onBack }: Props) {
   const handleBackFromSplit = useCallback(() => {
     setPhase("selection");
     setSelectedEmployer(null);
-    setEngagementType("");
     setProposal(null);
     setProposalError(null);
   }, []);
@@ -218,10 +217,8 @@ export default function PartnershipsView({ school, onBack }: Props) {
           <ProposalFlow
             school={school}
             employer={selectedEmployer}
-            phase={phase as "draft" | "generating" | "complete"}
-            engagementType={engagementType}
-            onEngagementTypeChange={setEngagementType}
-            onGenerate={handleGenerate}
+            phase={phase as "generating" | "complete"}
+            onRetry={handleRetry}
             onReject={handleReject}
             proposal={proposal}
             proposalError={proposalError}

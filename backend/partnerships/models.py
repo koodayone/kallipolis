@@ -2,24 +2,6 @@ from pydantic import BaseModel
 from typing import Optional
 
 
-class CurriculumAlignment(BaseModel):
-    department_name: str
-    curriculum_name: str
-    relevance_note: str
-
-
-class PartnershipProposal(BaseModel):
-    employer_or_sector: str
-    curriculum_alignment: list[CurriculumAlignment]
-    student_population_relevance: str
-    partnership_type: str
-    rationale: str
-
-
-class ProposalList(BaseModel):
-    proposals: list[PartnershipProposal]
-
-
 class PartnershipOpportunity(BaseModel):
     name: str
     sector: Optional[str] = None
@@ -52,7 +34,6 @@ class PartnershipQueryResponse(BaseModel):
 class ProposalRequest(BaseModel):
     employer: str
     college: str
-    engagement_type: str = ""
 
 
 class OccupationEvidence(BaseModel):
@@ -102,32 +83,62 @@ class StudentEvidence(BaseModel):
     top_students: list[StudentSummaryEvidence]
 
 
-class ProposalJustification(BaseModel):
-    curriculum_composition: str
-    curriculum_evidence: list[DepartmentEvidence]
-    student_composition: str
-    student_evidence: StudentEvidence
+class SupplyEstimate(BaseModel):
+    """Annual projected program supply for a TOP6 program code, from COE data."""
+    top_code: str
+    top_title: str
+    award_level: str
+    annual_projected_supply: float
 
 
-class AgendaTopic(BaseModel):
-    topic: str
-    rationale: str
+class DepartmentEnrollment(BaseModel):
+    """Total enrolled students for a department at this college."""
+    department: str
+    student_count: int
+
+
+class SwpEvidence(BaseModel):
+    """Tabular regional supply-demand evidence appended to the partnership artifact.
+
+    Demand: occupations the employer hires for, with regional annual openings (SOC-coded).
+    Supply: program completions per TOP6 code, projected from Centers of Excellence data.
+    Gap: total annual demand minus total annual projected supply.
+
+    Tabular only — no narrative. The four narrative sections argue the case;
+    this block is the empirical foundation any subsequent funding justification
+    requires.
+    """
+    occupations: list[OccupationEvidence] = []
+    supply_estimates: list[SupplyEstimate] = []
+    department_enrollments: list[DepartmentEnrollment] = []
+    total_demand: int = 0       # annual openings (flow)
+    total_supply: float = 0.0   # annual projected supply (flow)
+    gap: float = 0.0            # demand - supply
+    coe_region: str = ""        # the COE region this supply is scoped to
 
 
 class NarrativeProposal(BaseModel):
+    """A partnership opportunity surfaced for a coordinator's review.
+
+    Four narrative sections present the institutional case; structured
+    evidence blocks ground each claim. The narrative does meaning;
+    the evidence does completeness.
+    """
     employer: str
     sector: Optional[str] = None
-    partnership_type: str
     selected_occupation: str
     selected_soc_code: Optional[str] = None
     core_skills: list[str] = []
-    gap_skill: str = ""
     regions: list[str] = []
-    opportunity: str
+
+    # Four narrative sections (LLM-generated)
+    executive_summary: str
+    occupational_demand: str
+    curriculum_alignment: str
+    student_impact: str
+
+    # Evidence blocks (deterministic, populated from the graph and COE data)
     opportunity_evidence: list[OccupationEvidence]
-    justification: ProposalJustification
-    roadmap: str
-    # Advisory board specific
-    selected_occupations: list[str] = []
-    advisory_thesis: str = ""
-    agenda_topics: list[AgendaTopic] = []
+    curriculum_evidence: list[DepartmentEvidence]
+    student_evidence: StudentEvidence
+    swp_evidence: SwpEvidence

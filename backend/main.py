@@ -11,7 +11,6 @@ from courses.api import router as courses_router
 from occupations.api import router as occupations_router
 from employers.api import router as employers_router
 from partnerships.api import router as partnerships_router
-from strong_workforce.api import router as strong_workforce_router
 from ontology.schema import init_schema, close_driver
 
 logging.basicConfig(level=logging.INFO)
@@ -54,7 +53,6 @@ app.include_router(courses_router, prefix="/courses", tags=["Courses"])
 app.include_router(occupations_router, prefix="/occupations", tags=["Occupations"])
 app.include_router(employers_router, prefix="/employers", tags=["Employers"])
 app.include_router(partnerships_router, prefix="/partnerships", tags=["Partnerships"])
-app.include_router(strong_workforce_router, prefix="/strong-workforce", tags=["Strong Workforce"])
 
 
 @app.get("/health")

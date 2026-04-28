@@ -5,7 +5,6 @@ import { createBookForm } from "@/scene/forms/book";
 import { createChainlinkForm } from "@/scene/forms/chainlink";
 import { createHardhatForm } from "@/scene/forms/hardhat";
 import { createSkyscraperForm } from "@/scene/forms/skyscraper";
-import { createDumbbellForm } from "@/scene/forms/dumbbell";
 import type { SceneConfig } from "@/scene/engine";
 
 export type FormKey =
@@ -13,8 +12,7 @@ export type FormKey =
   | "courses"
   | "partnerships"
   | "occupations"
-  | "employers"
-  | "strong_workforce";
+  | "employers";
 
 export type SceneCallbacks = {
   onFormClick: (form: FormKey) => void;
@@ -28,29 +26,40 @@ export const FORM_NAMES: Record<FormKey, string> = {
   partnerships: "Partnerships",
   occupations: "Occupations",
   employers: "Employers",
-  strong_workforce: "Strong Workforce",
 };
 
 export const ALL_FORM_KEYS: FormKey[] = [
-  "students", "partnerships", "employers",
-  "courses", "strong_workforce", "occupations",
+  "students", "courses", "partnerships", "occupations", "employers",
 ];
 
 // URL slugs for each form. Kebab-case to match backend conventions
-// and the docs. The only one that differs from its FormKey is
-// strong_workforce → strong-workforce; the rest round-trip.
+// and the docs. All five slugs round-trip with their FormKey.
 export const FORM_URL_SLUGS: Record<FormKey, string> = {
   students: "students",
   courses: "courses",
   partnerships: "partnerships",
   occupations: "occupations",
   employers: "employers",
-  strong_workforce: "strong-workforce",
 };
 
+// Layout: three forms on the top row, two on the bottom row.
+//
+// Top row (y=+1.9): students — partnerships — employers
+//   Partnerships sits at the horizontal center, between the supply-side
+//   (students) and demand-side (employers) people, as the unit of action
+//   that connects them.
+//
+// Bottom row (y=-2.1): courses — occupations
+//   Tightened to x=±2.1 (vs. the ±4.2 of the top row) so the bottom forms
+//   sit centered under the gaps in the top row, producing a slight pyramid
+//   distribution rather than two stranded corner forms.
+//
+// Reading bottom-up: courses + occupations are the curricular and labor-
+// market substrates feeding into students + employers, which feed into
+// partnerships at the apex.
 const config: SceneConfig<FormKey> = {
   forms: [
-    // Top row
+    // Top row — supply-side person | unit of action | demand-side person
     {
       key: "students",
       factory: createMortarboardForm,
@@ -69,23 +78,17 @@ const config: SceneConfig<FormKey> = {
       position: new THREE.Vector3(4.2, 1.9, 0),
       rotSpeed: new THREE.Vector3(0.0015, 0.002, 0.0018),
     },
-    // Bottom row
+    // Bottom row — curricular substrate | labor-market substrate
     {
       key: "courses",
       factory: createBookForm,
-      position: new THREE.Vector3(-4.2, -2.1, 0),
+      position: new THREE.Vector3(-2.1, -2.1, 0),
       rotSpeed: new THREE.Vector3(0.0015, 0.002, 0.001),
-    },
-    {
-      key: "strong_workforce",
-      factory: createDumbbellForm,
-      position: new THREE.Vector3(0, -2.1, 0),
-      rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001),
     },
     {
       key: "occupations",
       factory: createHardhatForm,
-      position: new THREE.Vector3(4.2, -2.1, 0),
+      position: new THREE.Vector3(2.1, -2.1, 0),
       rotSpeed: new THREE.Vector3(0.002, 0.0028, 0.0012),
     },
   ],

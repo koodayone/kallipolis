@@ -131,21 +131,21 @@ describe("employers api client", () => {
       expect(result).toEqual(body);
     });
 
-    it("surfaces the server's error text when the response is not ok", async () => {
+    it("surfaces the server's error detail when the response is not ok", async () => {
       vi.stubGlobal("fetch", vi.fn().mockResolvedValue({
         ok: false,
         status: 422,
-        text: async () => "Query failed: unknown sector",
+        json: async () => ({ detail: "Query failed: unknown sector" }),
       }));
 
       await expect(queryEmployers("bad", "foothill")).rejects.toThrow("Query failed: unknown sector");
     });
 
-    it("falls back to a generic 'Query failed' message when the body text is empty", async () => {
+    it("falls back to a generic 'Query failed' message when the body has no detail", async () => {
       vi.stubGlobal("fetch", vi.fn().mockResolvedValue({
         ok: false,
         status: 500,
-        text: async () => "",
+        json: async () => null,
       }));
 
       await expect(queryEmployers("bad", "foothill")).rejects.toThrow("Query failed");

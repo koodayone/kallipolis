@@ -23,9 +23,8 @@ Each form in the ontology receives its own dedicated treatment, describing the p
 - [Occupations](./product/occupations.md) — Categories of regional labor market demand, grounded in Centers of Excellence research, with skill gap identification as the unique improvement vector
 - [Employers](./product/employers.md) — Real organizations grounded in EDD records, restrictively scoped to actors the workforce development ecosystem can coordinate with, the operational target the other three foundationals direct work toward
 
-**Units of action:**
-- [Partnerships](./product/partnerships.md) — Data-driven partnership opportunities formulated from the four units of analysis, presented as drafts a coordinator can use; the discovery stage of the partnership lifecycle and the core value proposition of Kallipolis
-- [Strong Workforce](./product/strong-workforce.md) — The justification stage of the partnership lifecycle, where a discovered partnership is translated into a NOVA-compatible SWP project application; the form through which Kallipolis becomes institutionally legible at state scale
+**Unit of action:**
+- [Partnerships](./product/partnerships.md) — Data-driven partnership opportunities formulated from the four units of analysis, presented as drafts a coordinator can use; the core value proposition of Kallipolis
 
 ### [Domain](./domain/)
 Documents how the workforce development worldview manifests in the context of California Community Colleges, and the components of that manifestation that most directly shape Kallipolis. Same audience as the product section: written for mental model first, with the option of becoming broader-audience material later.

@@ -119,7 +119,7 @@ async def query_partnerships(req: PartnershipQueryRequest):
 @router.post("/targeted", response_model=NarrativeProposal)
 async def targeted_partnership(req: ProposalRequest):
     try:
-        return await run_targeted_proposal(req.employer, req.college, req.engagement_type)
+        return await run_targeted_proposal(req.employer, req.college)
     except ValueError as e:
         raise HTTPException(status_code=422, detail=str(e))
     except Exception as e:
@@ -130,7 +130,7 @@ async def targeted_partnership(req: ProposalRequest):
 async def targeted_partnership_stream(req: ProposalRequest):
     def event_generator():
         try:
-            for proposal in stream_targeted_proposal(req.employer, req.college, req.engagement_type):
+            for proposal in stream_targeted_proposal(req.employer, req.college):
                 data = proposal.model_dump_json()
                 yield f"data: {data}\n\n"
             yield f'data: {{"done": true}}\n\n'

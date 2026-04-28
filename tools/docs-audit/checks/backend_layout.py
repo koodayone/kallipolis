@@ -45,7 +45,6 @@ _ALLOWED_TOP_LEVEL_DIRS = frozenset({
     "occupations",
     "employers",
     "partnerships",
-    "strong_workforce",
     # Shared infrastructure
     "ontology",
     "llm",
@@ -73,14 +72,13 @@ _IGNORED_DIRS = frozenset({
     ".mypy_cache",
 })
 
-# The six feature directories — each must have the core file shape.
+# The five feature directories — each must have the core file shape.
 _FEATURE_DIRS = frozenset({
     "students",
     "courses",
     "occupations",
     "employers",
     "partnerships",
-    "strong_workforce",
 })
 
 # Minimum files every feature directory must contain.

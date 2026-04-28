@@ -1,6 +1,6 @@
 /**
  * Tests for the College Atlas scene vocabulary — the FormKey set and
- * the FORM_URL_SLUGS map that connect the six-form layout to the
+ * the FORM_URL_SLUGS map that connect the five-form layout to the
  * route URLs under /[collegeId]/<form-slug>.
  *
  * These tests guard the one-hop mapping between FormKey, FORM_NAMES,
@@ -8,10 +8,10 @@
  * generation for any form.
  *
  * Coverage:
- *   - ALL_FORM_KEYS and FORM_NAMES cover the same six forms
+ *   - ALL_FORM_KEYS and FORM_NAMES cover the same five forms
  *   - Every FormKey in ALL_FORM_KEYS has a FORM_URL_SLUGS entry
  *   - All slugs are kebab-case (no underscores, no uppercase)
- *   - strong_workforce specifically maps to strong-workforce
+ *   - All slugs round-trip with their FormKey (identity mapping)
  *   - Every slug is unique so every form produces a distinct route
  */
 
@@ -19,11 +19,11 @@ import { describe, it, expect } from "vitest";
 import { ALL_FORM_KEYS, FORM_NAMES, FORM_URL_SLUGS, type FormKey } from "./scene";
 
 describe("college-atlas scene vocabulary", () => {
-  it("ALL_FORM_KEYS and FORM_NAMES cover the same six forms", () => {
+  it("ALL_FORM_KEYS and FORM_NAMES cover the same five forms", () => {
     const keysFromAll = new Set(ALL_FORM_KEYS);
     const keysFromNames = new Set(Object.keys(FORM_NAMES) as FormKey[]);
     expect(keysFromAll).toEqual(keysFromNames);
-    expect(keysFromAll.size).toBe(6);
+    expect(keysFromAll.size).toBe(5);
   });
 
   it("FORM_URL_SLUGS has an entry for every FormKey in ALL_FORM_KEYS", () => {
@@ -39,8 +39,8 @@ describe("college-atlas scene vocabulary", () => {
 
   it("all URL slugs are kebab-case (no underscores, no uppercase)", () => {
     // Kebab-case is the convention that keeps the URL aligned with backend
-    // route prefixes and the docs. strong_workforce is the one FormKey that
-    // requires a non-identity slug; the rest round-trip.
+    // route prefixes and the docs. All five FormKeys are single words, so
+    // every slug is the identity transform.
     for (const key of ALL_FORM_KEYS) {
       const slug = FORM_URL_SLUGS[key];
       expect(slug).not.toMatch(/[_A-Z]/);
@@ -48,8 +48,10 @@ describe("college-atlas scene vocabulary", () => {
     }
   });
 
-  it("the strong_workforce key maps to the kebab-case slug strong-workforce", () => {
-    expect(FORM_URL_SLUGS.strong_workforce).toBe("strong-workforce");
+  it("every slug equals its FormKey (no transformation needed for single-word keys)", () => {
+    for (const key of ALL_FORM_KEYS) {
+      expect(FORM_URL_SLUGS[key]).toBe(key);
+    }
   });
 
   it("all slugs are unique so every form produces a distinct route", () => {

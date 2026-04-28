@@ -125,21 +125,21 @@ describe("courses api client", () => {
       expect(result).toEqual(body);
     });
 
-    it("surfaces the server's error text when the response is not ok", async () => {
+    it("surfaces the server's error detail when the response is not ok", async () => {
       vi.stubGlobal("fetch", vi.fn().mockResolvedValue({
         ok: false,
         status: 422,
-        text: async () => "Query failed: ambiguous skill match",
+        json: async () => ({ detail: "Query failed: ambiguous skill match" }),
       }));
 
       await expect(queryCourses("bad", "foothill")).rejects.toThrow("Query failed: ambiguous skill match");
     });
 
-    it("falls back to a generic 'Query failed' message when the body text is empty", async () => {
+    it("falls back to a generic 'Query failed' message when the body has no detail", async () => {
       vi.stubGlobal("fetch", vi.fn().mockResolvedValue({
         ok: false,
         status: 500,
-        text: async () => "",
+        json: async () => null,
       }));
 
       await expect(queryCourses("bad", "foothill")).rejects.toThrow("Query failed");
