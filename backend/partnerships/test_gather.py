@@ -7,8 +7,9 @@ partnership artifact. A.1 swapped them from skills-overlap matching
 under manufacturing partnerships) to TOP-SOC alignment via the
 PREPARES_FOR edges materialized in A.0.
 
-These tests pin down the architectural shape of the swap:
+These tests pin down the architectural shape of the swap.
 
+Coverage:
   - Curriculum query uses the PREPARES_FOR pattern with the selected
     SOC as the gate; skills are within-set decoration only.
   - Empty department set is honored — no aligned curriculum at this

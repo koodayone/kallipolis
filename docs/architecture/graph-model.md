@@ -12,7 +12,7 @@ Five node types live on the curriculum side, three on the industry side. Each on
 |---|---|---|---|
 | **College** | name, city, state, region | `name UNIQUE` | A California community college |
 | **Department** | name | `name UNIQUE` | A department within a college (e.g., Welding, Nursing) |
-| **Course** | code, college, name, department, units, description, prerequisites, learning_outcomes, course_objectives, skill_mappings, transfer_status, url | `(code, college) UNIQUE` | A course actually taught at a college |
+| **Course** | code, college, name, department, units, description, prerequisites, learning_outcomes, course_objectives, skill_mappings, transfer_status, url, top_code, is_cte | `(code, college) UNIQUE` | A course actually taught at a college. `top_code` is the per-college 6-digit TOP6 from the Chancellor's Office Master Course File. `is_cte` is true iff `top_code` appears in the PCAH "TOP Codes to Sectors" file — the institutional definition of CTE scope. |
 | **Skill** | name | `name UNIQUE` | A workforce-relevant competency from the unified taxonomy |
 | **Student** | uuid, gpa, primary_focus, primary_top6, courses_completed | `uuid UNIQUE` | A student enrolled at a college (synthetic). The derived fields are materialized after enrollment generation; `primary_top6` is the 6-digit TOP code the student concentrates in, authoritatively keying the `primary_focus` department label. |
 

@@ -177,6 +177,21 @@ def _load_pcah_cte_top6() -> dict[str, str]:
     return mapping
 
 
+def is_cte_top6(top6: str | None) -> bool:
+    """Return True iff a TOP6 code is CTE per the PCAH TOP Codes to Sectors file.
+
+    The PCAH file is the authoritative institutional definition of CTE
+    scope for the California community college system: a TOP6 is CTE
+    if and only if it appears in this file. The classification is set
+    membership, not a contiguous range — there are CTE codes scattered
+    across the TOP namespace (e.g. 1602 Library Technician, 0850.30
+    Educational Aide) and non-CTE codes in otherwise CTE-heavy clusters.
+    """
+    if not top6:
+        return False
+    return top6 in _load_pcah_cte_top6()
+
+
 def cte_reachable_socs() -> set[str]:
     """Return the set of SOC codes reachable from any PCAH-classified CTE TOP6.
 

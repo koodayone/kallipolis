@@ -19,6 +19,7 @@ from neo4j import Driver
 
 from ontology.mcf_lookup import lookup_top6_per_course
 from ontology.prepares_for import materialize_prepares_for
+from ontology.crosswalks import is_cte_top6
 from ontology.regions import ensure_college_region_link
 from ontology.skills import UNIFIED_TAXONOMY
 
@@ -211,21 +212,40 @@ def load_college(
         [c.get("code", "").strip() for c in courses if c.get("code")],
         config.name,
     )
-    top_code_batch = [
-        {"code": code, "top_code": top6}
+    # Build a single batch with both top_code (where MCF has a value) and
+    # is_cte (computed for every course). is_cte uses set membership in the
+    # PCAH "TOP Codes to Sectors" file — the authoritative institutional
+    # definition of CTE scope; see ontology.crosswalks.is_cte_top6.
+    course_meta_batch = [
+        {
+            "code": code,
+            "top_code": top6 or "",
+            "is_cte": is_cte_top6(top6),
+        }
         for code, top6 in code_to_top6.items()
-        if top6
     ]
-    stats.courses_with_top_code = len(top_code_batch)
-    if top_code_batch:
+    stats.courses_with_top_code = sum(1 for r in course_meta_batch if r["top_code"])
+    if course_meta_batch:
         with driver.session() as session:
+            # Two SET operations so courses without a TOP6 still get is_cte=false
+            # (set unconditionally) without overwriting top_code with empty string.
             session.run(
                 """
                 UNWIND $batch AS row
                 MATCH (c:Course {code: row.code, college: $college})
+                SET c.is_cte = row.is_cte
+                """,
+                batch=course_meta_batch,
+                college=config.name,
+            )
+            session.run(
+                """
+                UNWIND $batch AS row
+                MATCH (c:Course {code: row.code, college: $college})
+                WHERE row.top_code <> ''
                 SET c.top_code = row.top_code
                 """,
-                batch=top_code_batch,
+                batch=course_meta_batch,
                 college=config.name,
             )
 
