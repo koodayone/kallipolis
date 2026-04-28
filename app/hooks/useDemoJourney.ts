@@ -33,13 +33,13 @@ export type DemoJourneyConfig = {
 };
 
 const DEFAULTS = {
-  idlePause: 1000,
-  typeSpeed: 42,
-  postTypePause: 600,
-  loadingDuration: 700,
-  rowsPause: 1500,
-  highlightSettle: 300,
-  stepDuration: 3500,
+  idlePause: 300,
+  typeSpeed: 22,
+  postTypePause: 200,
+  loadingDuration: 300,
+  rowsPause: 600,
+  highlightSettle: 150,
+  stepDuration: 3000,
   finalHold: 0,
   fadeDuration: 400,
 };
