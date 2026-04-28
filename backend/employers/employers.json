@@ -626,7 +626,7 @@
   {
     "name": "Home Depot",
     "sector": "Retail",
-    "description": "The Home Depot is a retail company offering a wide range of products for home improvement, including appliances, building materials, tools, and garden supplies. It serves both DIY customers and professionals, providing installation services and truck/tool rental.",
+    "description": "Home Depot is a retail company offering a wide range of products for home improvement, building materials, and garden supplies. It serves consumers and professionals with items like appliances, tools, paint, and outdoor equipment. The company also provides various services, including truck and tool rental and installation services.",
     "regions": [
       "CVML",
       "IE/D",
@@ -640,9 +640,9 @@
     "occupations": [
       "41-1011",
       "49-9071",
-      "11-9021",
+      "49-9021",
       "53-3032",
-      "49-9021"
+      "11-9021"
     ],
     "website": "https://www.homedepot.com",
     "swp_sectors": [
@@ -655,7 +655,7 @@
   {
     "name": "Lowe's Home Improvement",
     "sector": "Retail",
-    "description": "Lowe's Home Improvement is a retailer offering a wide range of products for home improvement, maintenance, and outdoor living, including appliances, tools, building supplies, and garden products. It serves homeowners and professionals, providing items for various projects and everyday needs.",
+    "description": "Lowe's Home Improvement is a retail organization offering a wide range of products and services for home improvement, serving consumers with appliances, building supplies, tools, lawn and garden items, and various home d\u00e9cor. They provide installations, DIY workshops, and resources for professionals.",
     "regions": [
       "CVML",
       "IE/D",
@@ -670,7 +670,7 @@
       "49-9071",
       "49-9021",
       "47-2111",
-      "53-3032"
+      "47-2152"
     ],
     "website": "https://www.lowes.com",
     "swp_sectors": [
@@ -1477,104 +1477,90 @@
   {
     "name": "Oasis Date Gardens",
     "sector": "Agriculture",
-    "description": "Oasis Date Gardens is North America's largest grower and processor of Medjool dates, specializing in regenerative organic farming, processing, and supplying various date products within the agriculture and food production industry.",
+    "description": "Oasis Date Gardens is North America's largest date grower and processor, farming over 5,000 acres and harvesting approximately 1 billion dates annually. They are the majority supplier to North America's leading date brand, Natural Delights\u00ae, and offer various date products including whole, pitted, pieces, paste, rolls, syrup, powder, and flour.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1071",
-      "13-1161",
-      "13-2011",
-      "17-2021",
-      "19-1013",
-      "19-4012",
-      "11-9199",
-      "13-1081",
-      "15-1299",
-      "17-2112",
-      "41-4011",
+      "11-9013",
+      "45-1011",
+      "51-1011",
+      "49-9071",
       "53-3032"
     ],
     "website": "https://oasisdate.com/",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Coachella Valley Water District",
     "sector": "Utilities",
-    "description": "The Coachella Valley Water District provides domestic water, irrigation water, wastewater treatment, and storm water management services to communities in the Coachella Valley, operating within the utilities and water management industry.",
+    "description": "The Coachella Valley Water District provides domestic water service and manages water resources for the Coachella Valley. It undertakes infrastructure projects like pipeline construction, ensures water quality, and offers customer assistance programs. The District collaborates with other local water agencies and the Agua Caliente Band of Cahuilla Indians.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-3012",
-      "11-3031",
-      "13-1041",
-      "13-1071",
-      "13-2011",
-      "17-2051",
-      "11-3013",
-      "11-9179",
-      "13-2081",
-      "15-1244"
+      "51-8031",
+      "47-2152",
+      "47-2073",
+      "49-9071",
+      "47-1011"
     ],
     "website": "https://www.cvwd.org/",
     "swp_sectors": [
       "Agriculture, Water and Environmental Technologies"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Pacific Hydrotech Corporation",
     "sector": "Construction",
-    "description": "Pacific Hydrotech Corporation is an experienced water engineering professional company serving municipal water districts and oil refining companies in California, Hawaii, Arizona, Nevada, Utah, Alaska, and Washington since 1987, specializing in concrete tanks, pumping projects, and water/wastewater solutions.",
+    "description": "Pacific Hydrotech Corporation is an experienced water engineering professional firm serving municipal water districts and oil refining companies across California, Hawaii, Arizona, Nevada, Utah, Alaska, and Washington since 1987. They specialize in concrete tanks, pumping projects, and water/wastewater infrastructure.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-3012",
-      "11-9041",
-      "13-1051",
-      "17-2051",
-      "17-2081",
-      "17-3022",
-      "13-1081",
-      "15-1252",
-      "49-9092"
+      "11-9021",
+      "47-1011",
+      "47-2073",
+      "47-2111",
+      "47-2152"
     ],
     "website": "https://pachydro.com/",
     "swp_sectors": [
       "Energy, Construction and Utilities"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "J Ginger Masonry",
     "sector": "Construction",
-    "description": "J Ginger Masonry is a multi-generational company that has been a leader in delivering high-quality commercial and residential masonry craftsmanship across the Western United States for over 45 years, combining traditional techniques with modern construction practices.",
+    "description": "J Ginger Masonry is a multi-generational firm providing high-quality commercial and residential masonry craftsmanship across the Western United States, including California and Arizona. As one of the largest masonry firms in the West, they combine traditional techniques with modern practices to deliver durable and precise projects.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
       "11-9021",
       "13-1051",
-      "13-1071",
-      "13-2011",
-      "17-3011",
-      "41-9031",
-      "51-4111"
+      "47-1011",
+      "47-2021",
+      "47-2022"
     ],
     "website": "https://www.jgingermasonry.com/",
     "swp_sectors": [
       "Energy, Construction and Utilities"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Renova Energy",
@@ -1603,737 +1589,567 @@
     "website": "https://renovaenergy.com/",
     "swp_sectors": [
       "Energy, Construction and Utilities"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Galasso's Bakery",
     "sector": "Manufacturing",
-    "description": "Galasso's Bakery, a family-owned business founded in 1968 in Southern California, supplies premium baked goods, specializing in top-tier specialty breads, rolls, and buns for businesses of any scale.",
+    "description": "Galasso's Bakery, founded in 1968 and located in Southern California, manufactures premium baked goods, specializing in top-tier specialty breads, rolls, and buns. The company serves businesses of any scale, operating from an approximately 115,000 square foot bakery.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-2021",
-      "11-2022",
-      "11-3012",
-      "11-3051",
-      "13-1071",
-      "13-1161",
-      "13-2011",
-      "11-9179",
-      "13-1199",
-      "27-1021",
-      "35-2013",
-      "41-3031"
+      "51-3092",
+      "51-1011",
+      "49-9041",
+      "49-9071",
+      "53-3032"
     ],
     "website": "https://galassos.com/",
     "swp_sectors": [
-      "Advanced Manufacturing"
-    ]
+      "Agriculture, Water and Environmental Technologies"
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Monster Beverage Corporation",
     "sector": "Manufacturing",
-    "description": "Monster Beverage Corporation is a holding company based in Corona, California, whose subsidiaries develop and market a wide range of energy drinks, including Monster Energy, NOS, and Reign, as well as craft beers and hard seltzers.",
+    "description": "Monster Beverage Corporation, based in Corona, California, is a holding company whose subsidiaries develop and market a wide range of energy drinks, craft beers, hard seltzers, and flavored malt beverages under numerous brands, serving consumers globally.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-2011",
-      "11-2021",
-      "11-2022",
-      "11-3012",
-      "11-3031",
-      "13-1161",
-      "11-3051",
-      "13-2011",
-      "41-4011"
+      "51-3092",
+      "51-1011",
+      "19-1012",
+      "49-9071",
+      "53-3032"
     ],
     "website": "https://www.monsterbevcorp.com/",
     "swp_sectors": [
-      "Advanced Manufacturing"
-    ]
+      "Agriculture, Water and Environmental Technologies"
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Pepsi Beverages",
     "sector": "Manufacturing",
-    "description": "PepsiCo is a global food and beverage company that manufactures, markets, distributes, and sells a wide variety of snacks, foods, and beverages, operating primarily in the consumer goods industry.",
+    "description": "PepsiCo is a global food and beverage company that produces a wide range of snacks and drinks, including brands like Lay's, Pepsi, and Gatorade. It focuses on creating a more resilient and sustainable business, serving consumers worldwide with its diverse product portfolio.",
     "regions": [
       "IE/D",
       "OC"
     ],
     "occupations": [
-      "11-1021",
-      "11-2022",
-      "11-3012",
       "11-3051",
-      "13-1071",
-      "13-1081",
-      "13-2011",
-      "41-4011",
-      "11-1011",
-      "53-3032",
-      "11-3061"
+      "11-3071",
+      "49-9041",
+      "51-1011",
+      "53-3032"
     ],
     "website": "https://www.pepsico.com/",
     "swp_sectors": [
-      "Advanced Manufacturing"
-    ]
+      "Agriculture, Water and Environmental Technologies"
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Dart Container Corporation",
     "sector": "Manufacturing",
-    "description": "Dart Container Corporation is a leading manufacturer of food and beverage packaging solutions, including containers, cups, and dinnerware made from various materials like foam, paper, and plastic, serving the packaging industry.",
+    "description": "Dart Container Corporation manufactures and supplies beverage and food packaging solutions, including containers, dinnerware, cups, lids, and cutlery made from materials like fiber, paper, and foam. They serve businesses with a focus on sustainable practices and recycling programs.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3051",
-      "11-3061",
-      "13-1028",
-      "13-1071",
-      "13-1081",
-      "13-2011",
-      "11-1011",
-      "13-1051",
-      "17-2112",
-      "41-4011"
+      "51-4081",
+      "49-9041",
+      "47-2111",
+      "51-1011",
+      "53-3032"
     ],
     "website": "https://www.dartcontainer.com/",
     "swp_sectors": [
       "Advanced Manufacturing"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Highland Plastics",
     "sector": "Manufacturing",
-    "description": "Highland Plastics specializes in custom compounds and extrusion, providing plastic sheet and extrusion solutions, including flame retardants and acoustic barriers, primarily for the plastics manufacturing and automotive industries.",
+    "description": "Highland Plastics specializes in custom compounds and extrusion, producing plastic sheets and solutions. They offer services like lamination, prototyping, and custom compounding, serving automotive suppliers and other industries with materials such as flame retardants, acoustic barriers, and high-temperature plastics.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
       "11-3051",
-      "11-3061",
-      "13-1028",
-      "13-1071",
-      "13-2011",
-      "17-2131",
-      "13-1051",
-      "17-2112",
-      "41-4011",
-      "51-9162"
+      "51-1011",
+      "51-4021",
+      "51-9011",
+      "49-9041"
     ],
     "website": "https://highlandplastics.com/",
     "swp_sectors": [
       "Advanced Manufacturing"
-    ]
-  },
-  {
-    "name": "Merrick Engineering",
-    "sector": "Manufacturing",
-    "description": "Merrick Engineering designs and manufactures American-made home organization products, including hangers, tableware, and storage solutions, serving the consumer goods and home organization industry.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-1021",
-      "11-9041",
-      "13-1051",
-      "13-1082",
-      "17-2051",
-      "17-2141",
-      "17-3011",
-      "17-3022",
-      "13-1081",
-      "15-1252"
-    ],
-    "website": "https://www.merrickengineering.com/",
-    "swp_sectors": [
-      "Advanced Manufacturing"
-    ]
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "CIRCOR Aerospace",
     "sector": "Manufacturing",
-    "description": "CIRCOR is a global company providing highly engineered products and service solutions for critical flow control applications, including pumps and valves for aerospace, defense, industrial, and oil & gas industries.",
+    "description": "CIRCOR delivers highly engineered flow control products and services, including pump and valve systems, for mission-critical applications in aerospace and defense. With approximately 3100 employees, they serve customers in over 100 countries across five continents.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3051",
-      "11-9041",
-      "13-1071",
       "17-2011",
-      "17-2141",
-      "49-2091",
-      "11-1011",
-      "13-1081",
-      "17-2112",
-      "49-3011"
+      "17-3021",
+      "51-4041",
+      "51-2011",
+      "51-9061"
     ],
     "website": "https://www.circor.com/",
     "swp_sectors": [
       "Advanced Manufacturing"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Collins Aerospace",
     "sector": "Manufacturing",
-    "description": "Collins Aerospace designs, manufactures, and services advanced technological solutions for the global aerospace and defense industry, serving commercial, business, military, space, and airport sectors.",
+    "description": "Collins Aerospace, an RTX business, redefines aerospace by designing and delivering advanced solutions for commercial, business, military, and space sectors. They offer a vast portfolio of products and services, including aerostructures, avionics, interiors, power and controls, and air traffic management, serving customers globally.",
     "regions": [
       "IE/D",
       "SD/I",
       "OC"
     ],
     "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-3021",
-      "11-3051",
-      "11-9041",
-      "13-1071",
       "17-2011",
-      "17-2071",
-      "13-1081",
-      "17-2112",
-      "49-2091",
+      "51-2011",
       "49-3011",
-      "11-3012",
-      "15-1252",
-      "17-2141",
-      "13-1082",
-      "51-4111"
+      "51-1011",
+      "17-3021"
     ],
     "website": "https://www.collinsaerospace.com/",
     "swp_sectors": [
       "Advanced Manufacturing"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Abbott Vascular",
     "sector": "Manufacturing",
-    "description": "Abbott Vascular develops and provides life-changing medical device technologies and solutions focused on treating various cardiovascular conditions for healthcare professionals and patients.",
+    "description": "Abbott Cardiovascular develops life-changing medical device technologies and solutions for cardiovascular conditions, serving healthcare professionals and patients. They offer products, therapies, education, and support for managing heart health, including electrophysiology and remote hemodynamic monitoring.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
       "11-3051",
       "11-9041",
-      "13-1071",
-      "17-2031",
-      "17-2141",
-      "19-1029",
-      "11-1011",
-      "11-3031",
-      "11-9111",
-      "13-1081",
-      "15-1252",
-      "29-1141",
-      "49-9062"
+      "17-3024",
+      "49-9041",
+      "51-9061"
     ],
     "website": "https://www.cardiovascular.abbott/",
     "swp_sectors": [
       "Advanced Manufacturing"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Sun World International",
     "sector": "Wholesale",
-    "description": "Sun World International is a global agricultural company specializing in fruit variety development and licensing, particularly known for pioneering seedless grape varieties and offering citrus, mango, and stone fruit genetics.",
+    "description": "Sun World International is a global fruit variety development and licensing company, specializing in table grape, citrus, mango, and stone fruit varieties. They serve growers by offering industry-leading fruit genetics and managing variety rights, with a focus on sustainability and emerging technologies.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-2021",
-      "11-3012",
-      "13-1071",
+      "11-9013",
       "19-1013",
       "19-4012",
-      "45-2011",
-      "13-1081",
-      "41-4011",
-      "53-3032"
+      "49-3041",
+      "49-9071"
     ],
     "website": "https://www.sun-world.com/",
     "swp_sectors": [
-      "Agriculture, Water and Environmental Technologies"
-    ]
-  },
-  {
-    "name": "US Foods",
-    "sector": "Wholesale",
-    "description": "US Foods is a leading foodservice distributor providing a wide range of food products, supplies, and business solutions to restaurants, healthcare facilities, hotels, and other foodservice operations.",
-    "regions": [
-      "IE/D"
+      "Life Sciences - Biotechnology"
     ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3061",
-      "13-1028",
-      "13-1071",
-      "13-1081",
-      "13-2011",
-      "53-3032"
-    ],
-    "website": "https://www.usfoods.com/",
-    "swp_sectors": [
-      "Global Trade"
-    ]
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Gosch Toyota",
     "sector": "Retail",
-    "description": "The provided URL for Gosch Toyota leads to a casino website and does not describe a Toyota dealership.",
+    "description": "Gosch Toyota, an automotive dealership in Hemet, California, serves the Inland Empire region by selling new and used Toyota vehicles. It provides financing options, genuine parts, and comprehensive after-sale services including maintenance, repairs, and a certified collision center.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-2022",
-      "11-3012",
-      "13-1071",
-      "13-2011",
-      "41-4011",
       "49-3023",
-      "11-2021",
-      "13-1199",
-      "53-3032"
+      "49-3021",
+      "41-3091",
+      "11-2022",
+      "11-3031"
     ],
-    "website": "https://www.goschtoyota.com/",
+    "website": "https://www.toyotaofhemet.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Moss Brothers Auto Group",
     "sector": "Retail",
-    "description": "Moss Bros. Auto Group is a family-owned automotive dealership group operating multiple franchises across Riverside, San Bernardino, and Moreno Valley, offering new and used vehicle sales, service, parts, and collision repair. Its primary industry is automotive sales and service.",
+    "description": "Moss Bros. Auto Group is a family-owned automotive dealership group operating in Riverside, San Bernardino, and Moreno Valley, California. They offer new and used car sales, vehicle service, parts, and collision repair across multiple brands like Chrysler, Dodge, Jeep, Ram, Volkswagen, Honda, Toyota, Chevrolet, and GMC.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-2022",
-      "11-3012",
-      "13-1071",
-      "13-2011",
-      "41-4011",
       "49-3023",
-      "11-2021",
-      "13-1199"
+      "49-3021",
+      "49-1011",
+      "11-2022",
+      "49-9071"
     ],
     "website": "https://www.mossbrosautogroup.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Paradise Chevrolet",
     "sector": "Retail",
-    "description": "Paradise Chevrolet Cadillac is a family-owned automotive dealership in Temecula, California, providing new and used Chevrolet and Cadillac vehicles, alongside comprehensive service, parts, and financing options. Its primary industry is automotive sales and service.",
+    "description": "Paradise Chevrolet Cadillac is a family-owned dealership in Temecula, CA, offering new and used Chevrolet and Cadillac vehicles, along with financing, parts, and certified service. They serve customers in Temecula, Murrieta, Menifee, and Lake Elsinore, providing sales and maintenance for various car, truck, and SUV models.",
     "regions": [
       "IE/D",
       "SCC"
     ],
     "occupations": [
-      "11-1021",
-      "11-2022",
-      "11-3012",
-      "13-1071",
-      "13-2011",
-      "41-4011",
       "49-3023",
-      "11-3031",
-      "13-1161",
-      "11-2021",
-      "13-1199",
-      "53-3032"
+      "49-1011",
+      "41-1011",
+      "11-2022",
+      "49-9071"
     ],
     "website": "https://www.paradiseautos.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Pedder Auto Group",
     "sector": "Retail",
-    "description": "Pedder Auto Group is a family-owned automotive dealership group in Southern California, offering new, used, and certified pre-owned vehicles from brands like Nissan, Hyundai, Chrysler, Dodge, Jeep, and Ram, alongside service and parts. Its primary industry is automotive sales and service.",
+    "description": "Pedder Auto Group is a family-owned and operated automotive retailer serving Southern California since 2008. They offer new, used, and certified pre-owned vehicles from brands like Nissan, Hyundai, Chrysler, Dodge, Jeep, and Ram across 8 locations. Key activities include vehicle sales, service, parts, and financing.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-2022",
-      "11-3012",
-      "13-1071",
-      "13-2011",
-      "41-4011",
       "49-3023",
-      "11-2021",
-      "13-1199"
+      "49-1011",
+      "11-2022",
+      "41-1011",
+      "49-9071"
     ],
     "website": "https://pedderautogroup.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "California TrusFrame",
     "sector": "Retail",
-    "description": "California TrusFrame, now part of Builders FirstSource, is a leading supplier and manufacturer of structural building products, value-added components, and services for residential and multi-family construction, including trusses, windows, and doors. Its primary industry is building materials manufacturing and supply.",
+    "description": "Builders FirstSource, which California TrusFrame is part of, is the nation's largest supplier of structural building products, value-added components, and services. They serve the professional market for single-family and multi-family construction, as well as repair and remodeling, operating across 43 states with approximately 570 locations.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3051",
-      "11-9041",
-      "13-1051",
-      "13-1071",
-      "17-2051",
-      "17-3011"
+      "51-7042",
+      "51-1011",
+      "53-3032",
+      "49-9071",
+      "11-9021"
     ],
     "website": "https://www.caltrusframe.com/",
     "swp_sectors": [
       "Advanced Manufacturing"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Milgard Windows & Doors",
     "sector": "Retail",
-    "description": "Milgard Windows & Doors manufactures and supplies custom, quality, and energy-efficient windows and patio doors in vinyl, fiberglass, and aluminum for new construction and replacement projects, focusing on durability and design. Its primary industry is building materials manufacturing.",
+    "description": "Milgard Windows & Doors manufactures custom, quality, and energy-efficient windows and patio doors, including vinyl, fiberglass, and aluminum options. They serve homeowners, architects, contractors, and builders for both new construction and replacement projects, aiming for trouble-free orders.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-2022",
-      "11-3012",
       "11-3051",
-      "13-1071",
-      "13-2011",
-      "17-2141",
-      "41-4011",
-      "11-1011",
-      "13-1051",
-      "17-2112",
-      "51-9162"
+      "49-9041",
+      "49-9071",
+      "51-1011",
+      "51-9061"
     ],
     "website": "https://www.milgard.com/",
     "swp_sectors": [
       "Advanced Manufacturing"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Vons",
     "sector": "Retail",
-    "description": "Vons operates as a grocery retail chain, providing customers with a diverse selection of fresh produce, meats, dairy, pantry items, and household essentials, available for in-store shopping, delivery, or convenient pickup services.",
+    "description": "Vons is a grocery retailer offering a wide array of products including fresh produce, meat, seafood, dairy, pantry staples, and household goods, along with pharmacy services. It serves individual consumers and businesses through in-store shopping, delivery, and pickup options. Vons operates as part of Albertsons Companies, Inc..",
     "regions": [
       "IE/D",
       "SCC"
     ],
     "occupations": [
-      "11-1021",
-      "11-2022",
-      "11-3012",
-      "11-3061",
-      "13-1028",
-      "13-1071",
-      "13-2011",
-      "13-1161",
-      "29-1031",
-      "11-1011",
-      "13-1199",
-      "53-3032"
+      "29-2052",
+      "41-1011",
+      "11-9051",
+      "49-9071",
+      "51-9061"
     ],
     "website": "https://www.vons.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Walmart Neighborhood Market",
     "sector": "Retail",
-    "description": "Walmart Neighborhood Market, part of the larger Walmart corporation, functions as a retail grocery store providing a broad assortment of food, household essentials, and general merchandise to local communities.",
+    "description": "Walmart Neighborhood Market operates smaller-format grocery and pharmacy stores, typically 31,000-40,000 sq ft, serving local California communities with fresh produce, pantry staples, and health services. It focuses on convenient, one-stop shopping for everyday needs.",
     "regions": [
       "IE/D",
       "SCC",
       "LA"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3061",
-      "13-1028",
-      "13-1071",
-      "13-2011",
-      "11-2022",
-      "13-1161",
-      "15-1244",
-      "43-4161",
-      "11-3031",
-      "15-1211",
-      "13-1081",
-      "29-1031",
-      "31-9092",
-      "41-4011",
-      "11-2021",
-      "31-9097",
-      "11-1011",
-      "13-1199",
-      "53-3032"
+      "41-1011",
+      "29-2052",
+      "49-9071",
+      "11-9051"
     ],
     "website": "https://www.walmart.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "FedEx Freight",
     "sector": "Transportation",
-    "description": "FedEx Freight, a division of FedEx, provides less-than-truckload (LTL) freight transportation services, specializing in the movement of larger, palletized shipments for commercial customers across North America.",
+    "description": "FedEx Freight is North America's largest less-than-truckload (LTL) carrier, providing diverse freight transportation services across the U.S., including California's Inland Empire, Los Angeles, and Bay Area. It serves businesses with LTL shipping needs, offering reliable, expedited, and specialized solutions.",
     "regions": [
       "IE/D",
       "LA",
       "Bay"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3061",
-      "13-1071",
-      "13-1081",
-      "13-2011",
-      "53-3032",
-      "43-4161",
-      "11-1011",
-      "41-4011",
-      "11-3013"
+      "11-3071",
+      "49-3031",
+      "49-9071",
+      "51-1011",
+      "53-3032"
     ],
     "website": "https://www.fedex.com/",
     "swp_sectors": [
       "Advanced Transportation and Logistics"
-    ]
-  },
-  {
-    "name": "McLane Foodservice",
-    "sector": "Transportation",
-    "description": "McLane Foodservice, part of McLane Company, Inc., is a leading wholesale distributor and supply chain solutions provider, delivering groceries and foodservice products to convenience stores, mass merchants, and chain restaurants nationwide.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3061",
-      "13-1028",
-      "13-1071",
-      "13-1081",
-      "13-2011",
-      "53-3032"
-    ],
-    "website": "https://www.mclaneco.com/",
-    "swp_sectors": [
-      "Global Trade"
-    ]
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Sunline Transit Agency",
     "sector": "Transportation",
-    "description": "SunLine Transit Agency offers public transportation services in the Coachella Valley, including fixed-route bus lines (SunBus), paratransit, and taxi services, emphasizing sustainable and reliable mobility solutions for the community.",
+    "description": "SunLine Transit Agency provides safe, innovative, and reliable public transportation, including SunBus, SunRide, and SunDial Paratransit services, to the Coachella Valley. The agency drives the region's future of sustainable mobility and offers programs for seniors, persons with disabilities, and employers.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-3012",
-      "11-3031",
-      "13-1041",
-      "13-1071",
-      "13-2011",
-      "49-3023",
-      "11-9199",
-      "13-1199",
-      "53-5022"
+      "53-3052",
+      "49-3031",
+      "49-9071",
+      "11-3071",
+      "49-1011"
     ],
     "website": "https://www.sunline.org/",
     "swp_sectors": [
       "Advanced Transportation and Logistics"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "American Integrated Services",
     "sector": "Professional Services",
-    "description": "American Integrated Services specializes in environmental remediation, industrial demolition, waste management, and emergency response, offering comprehensive solutions for complex industrial and environmental challenges across various sectors.",
+    "description": "American Integrated Services, Inc. provides environmental remediation, industrial demolition, specialty transportation, and waste management services. They serve various industries with solutions including emergency response, oilfield support, and containment, operating across multiple regions including the Gulf Coast and California.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-9021",
-      "13-1051",
-      "13-1071",
-      "13-2011",
-      "17-2081",
-      "19-5011",
-      "11-1011",
-      "13-1081",
-      "17-2051",
-      "49-2022",
-      "53-3032"
+      "53-3032",
+      "47-2073",
+      "47-1011",
+      "47-4041",
+      "19-5011"
     ],
     "website": "https://www.americanintegrated.com/",
     "swp_sectors": [
-      "Agriculture, Water and Environmental Technologies"
-    ]
+      "Energy, Construction and Utilities"
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Securitas",
     "sector": "Administrative Services",
-    "description": "Securitas is a global provider of intelligent security solutions, offering services such as on-site guarding, mobile and electronic security, fire and safety, and corporate risk management, aiming to create a safer world through technology and expertise.",
+    "description": "Securitas is a global provider of intelligent security solutions, offering services from guarding to technology, fire and safety, and corporate risk management. They serve various industries including aviation, construction, retail, and critical infrastructure, operating in 44 markets worldwide.",
     "regions": [
       "IE/D",
       "LA"
     ],
     "occupations": [
-      "11-1021",
-      "11-2022",
-      "11-3012",
-      "13-1071",
-      "13-1151",
-      "13-2011",
-      "13-1041",
-      "49-2022",
-      "11-1011",
-      "13-1199"
+      "33-9032",
+      "33-1091",
+      "49-2098",
+      "19-5012"
     ],
     "website": "https://www.securitas.com/",
     "swp_sectors": [
-      "Business and Entrepreneurship"
-    ]
+      "Public Safety"
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Lloyd Pest & Termite Control",
     "sector": "Administrative Services",
-    "description": "Lloyd Pest & Termite Control offers comprehensive residential and commercial pest management services across Southern California, specializing in the elimination and prevention of common pests like termites, ants, roaches, and rodents, ensuring guaranteed protection.",
+    "description": "Lloyd Pest Control provides residential and commercial pest and termite control services, including treatments for ants, roaches, rodents, and termites. Serving homes and businesses across Southern California, including San Diego, Orange, Riverside, San Bernardino, and Los Angeles counties, the company has been operating since 1931.",
     "regions": [
       "IE/D",
       "OC"
     ],
     "occupations": [
+      "37-3012",
       "11-1021",
-      "11-2022",
-      "11-3012",
-      "13-1071",
-      "13-1161",
-      "13-2011",
-      "11-1011",
-      "13-1199",
-      "19-5011",
-      "11-9179",
-      "43-4161"
+      "41-3091",
+      "43-4051",
+      "49-9071"
     ],
     "website": "https://www.lloydpest.com/",
     "swp_sectors": [
       "Energy, Construction and Utilities"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Coachella Valley Unified School District",
     "sector": "Education",
-    "description": "Coachella Valley Unified School District delivers public education to over 15,000 students across 23 schools, from elementary to adult education, fostering academic success and community champions through diverse programs and student support services.",
+    "description": "Coachella Valley Unified School District serves 15,817 students across 23 schools, including high schools, middle schools, elementary schools, and an adult education school. It offers 25 high school career pathway programs and 14 schools with Headstart and Preschool Programs, aiming to empower students in their communities.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-3012",
-      "11-3031",
-      "11-3121",
-      "11-9039",
-      "13-1071",
-      "13-2011",
-      "25-2011",
-      "25-2021",
-      "25-2031",
-      "25-9044"
+      "11-9032",
+      "53-3052",
+      "11-3013",
+      "49-9071",
+      "29-1127"
     ],
     "website": "https://www.cvusd.us/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Corona-Norco Unified School District",
     "sector": "Education",
-    "description": "Corona-Norco Unified School District is a large educational institution in California, serving nearly 50,000 students across 53 schools with K-12 programs, career technical education, and comprehensive student support services, aiming for academic excellence.",
+    "description": "The Corona-Norco Unified School District is the 8th largest district in California, operating 53 schools and serving 49,487 students. It provides K-12 education, career technical education, and various student programs, aiming for a 96.4% graduation rate.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-3012",
-      "11-3031",
-      "11-3121",
-      "11-9039",
-      "13-1071",
-      "13-2011",
-      "25-2011",
-      "25-2021",
+      "11-9032",
       "25-2031",
-      "25-9044"
+      "25-9099",
+      "49-9071",
+      "53-3052"
     ],
     "website": "https://www.cnusd.k12.ca.us/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Hemet Unified School District",
     "sector": "Education",
-    "description": "Hemet Unified School District provides public education services for students across various grade levels, focusing on academic achievement and student well-being within the education industry.",
+    "description": "Hemet Unified School District provides educational services, enrolling students across all grade levels, including preschool. The district offers nutrition services, after-school programs, and wellness centers, serving the community in Hemet, CA.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-3012",
-      "11-3031",
-      "11-3121",
-      "11-9039",
-      "13-1071",
-      "13-2011",
-      "25-2011",
+      "11-9032",
       "25-2021",
-      "25-2031",
-      "25-9044"
+      "35-1012",
+      "49-9071",
+      "53-3052"
     ],
     "website": "https://www.hemetusd.org/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Riverside City College",
@@ -2357,111 +2173,97 @@
     "website": "https://www.rcc.edu/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Supercare Health",
     "sector": "Healthcare",
-    "description": "SuperCare Health is a healthcare provider specializing in respiratory and sleep care, offering equipment, supplies, and personalized treatment plans for patients with chronic diseases.",
+    "description": "SuperCare Health provides respiratory and sleep care solutions for patients with chronic diseases, serving over 140,000 patients annually. They partner with healthcare professionals and insurance providers, offering equipment, supplies, prescriptions with home delivery, and individualized care programs across 28 service locations nationwide.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-9111",
-      "13-1071",
-      "13-2011",
       "29-1126",
-      "29-1141",
-      "29-2099",
+      "31-9093",
       "49-9062",
-      "21-1091",
-      "29-1031",
-      "31-1131",
-      "43-9081"
+      "29-2052",
+      "11-9111"
     ],
     "website": "https://www.supercarehealth.com/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "American Medical Response",
     "sector": "Healthcare",
-    "description": "American Medical Response (AMR) is a leading provider of emergency medical services, offering 911 emergency, advanced and basic life support, interfacility transportation, and event medical services across various states, operating within the healthcare industry.",
+    "description": "American Medical Response (AMR) provides emergency and patient relocation services, including 911 emergency, advanced and basic life support, specialty care, and interfacility transportation. As part of Global Medical Response, AMR serves communities across multiple states, working with cities, counties, fire departments, and government agencies.",
     "regions": [
       "IE/D",
       "SD/I"
     ],
     "occupations": [
-      "11-1021",
-      "11-9111",
-      "13-1071",
-      "13-2011",
       "29-2042",
       "29-2043",
-      "29-2061",
       "29-1141",
-      "11-1011",
-      "11-9161",
-      "11-9199",
-      "13-1081",
-      "15-1211"
+      "49-3031",
+      "33-1099"
     ],
     "website": "https://www.amr.net/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Corona Regional Medical Center",
     "sector": "Healthcare",
-    "description": "Corona Regional Medical Center is an acute care hospital providing comprehensive healthcare services including emergency, cardiology, orthopedics, behavioral health, and surgical care, serving the healthcare industry in Corona, CA.",
+    "description": "Corona Regional Medical Center is a healthcare provider in Corona, CA, offering a wide range of services including emergency, cardiology, orthopedics, and behavioral health. It serves the community with 69 physicians and 250 employees, focusing on patient safety and comprehensive medical care.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-9111",
-      "13-1071",
-      "13-2011",
       "29-1141",
-      "29-2018",
-      "29-2034",
       "29-2061",
       "31-1131",
-      "11-1011",
-      "11-3031",
-      "15-1211"
+      "29-2034",
+      "11-9111"
     ],
     "website": "https://www.coronaregional.com/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Desert Regional Medical Center",
     "sector": "Healthcare",
-    "description": "Desert Regional Medical Center, part of Desert Care Network, is an acute care hospital offering a wide range of services such as emergency, cardiovascular, oncology, orthopedics, and women's health, operating within the healthcare industry in Palm Springs, CA.",
+    "description": "Desert Care Network is a healthcare resource in the Coachella Valley and Morongo Basin regions of Southern California, comprising three hospitals: Desert Regional Medical Center, JFK Memorial Hospital, and Hi-Desert Medical Center. They provide advanced healthcare services including cardiovascular, emergency room, oncology, orthopedics, women and infants, and wound care.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-9111",
-      "13-1071",
-      "13-2011",
       "29-1141",
-      "29-2018",
+      "11-9111",
       "29-2034",
-      "29-2061",
       "31-1131",
-      "11-1011",
-      "11-3031",
-      "15-1211"
+      "49-9071"
     ],
     "website": "https://www.desertcarenetwork.com/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Eisenhower Medical Center",
@@ -2486,7 +2288,8 @@
     "website": "https://www.eisenhowerhealth.org/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "JFK Memorial Hospital",
@@ -2511,7 +2314,8 @@
     "website": "https://www.jfkmemorialhosp.com/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Kaiser Permanente Riverside Medical Center",
@@ -2533,7 +2337,8 @@
     "website": "https://healthy.kaiserpermanente.org/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Menifee Valley Medical Center",
@@ -2558,33 +2363,30 @@
     "website": "https://www.menifeeglobalmedicalcenter.com/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Riverside University Health System",
     "sector": "Healthcare",
-    "description": "Riverside University Health System (RUHS) is the safety net provider for Riverside County, comprising a Medical Center, 14 Community Health Centers, and departments for Behavioral Health and Public Health, dedicated to improving healthcare access and quality.",
+    "description": "Riverside University Health System (RUHS) is the safety net provider for Riverside County, comprising a Medical Center, 14 Community Health Centers, and departments for Behavioral Health and Public Health. RUHS offers comprehensive medical, behavioral, and public health services, including emergency care, specialty medicine, mental health support, and preventive programs, serving residents across the county.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
       "11-9111",
-      "13-1071",
-      "13-2011",
       "29-1141",
-      "29-2018",
-      "29-2034",
-      "29-2061",
+      "29-2052",
       "31-1131",
-      "11-1011",
-      "11-3031",
-      "11-9039",
-      "15-1211"
+      "31-9092"
     ],
     "website": "https://www.ruhealth.org/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "ProMedica Skilled Nursing and Rehabilitation",
@@ -2606,126 +2408,127 @@
     "website": "https://www.promedica.org/",
     "swp_sectors": [
       "Health"
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "_occupations": [
+      "29-1141",
+      "29-2061",
+      "31-1131",
+      "11-9111",
+      "31-2021"
     ]
   },
   {
     "name": "Castle Park",
     "sector": "Arts & Entertainment",
-    "description": "Castle Park is a family-fun entertainment center in Riverside, California, offering over 20 rides, four mini-golf courses, an arcade, and a seasonal water playground, primarily operating in the amusement and recreation industry.",
+    "description": "Castle Park is a family-fun entertainment center in Riverside, California, offering over 20 rides, four mini-golf courses, an arcade, and a seasonal water playground called Buccaneer Cove. It serves guests of all ages with attractions and hosts special events and group gatherings.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
       "11-9072",
-      "13-1071",
-      "13-1121",
-      "13-2011",
-      "11-1011",
-      "13-1199",
-      "27-2022"
+      "33-9032",
+      "35-1012",
+      "39-1022",
+      "49-9071"
     ],
     "website": "https://www.castlepark.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Eldorado Country Club",
     "sector": "Arts & Entertainment",
-    "description": "Eldorado Country Club is a private country club offering golf, dining, and social activities to its members, operating within the hospitality and recreation industry.",
+    "description": "Eldorado Country Club, a private member-owned club in Indian Wells, California, offers premier golf on an 18-hole course, fine dining, and extensive recreational amenities including a new spa and fitness complex. Serving a discerning, invitation-only membership, it operates with 51-100 employees, providing luxury and social experiences.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
+      "11-9051",
       "11-9072",
-      "13-1071",
-      "13-2011",
-      "11-1011",
-      "13-1199",
-      "27-2022",
-      "45-2011"
+      "35-1011",
+      "37-1012",
+      "39-9031"
     ],
     "website": "https://www.eldoradocountryclub.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Mission Hills Country Club",
     "sector": "Arts & Entertainment",
-    "description": "Mission Hills Country Club is a premier private club offering golf, tennis, fitness, and dining experiences, catering to members in the hospitality and recreation industry.",
+    "description": "Mission Hills Country Club in Rancho Mirage, California, offers championship golf on three courses, racquet sports, a fitness center, and spa services. It provides private dining, club life activities, and hosts events like weddings and corporate meetings, serving members and guests in the Inland Empire/Desert region.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
+      "11-9051",
       "11-9072",
-      "13-1071",
-      "13-2011",
-      "11-1011",
-      "13-1199",
-      "27-2022",
-      "45-2011"
+      "37-1012",
+      "39-9031",
+      "49-9071"
     ],
     "website": "https://www.invitedclubs.com/clubs/mission-hills-country-club/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Oak Grove Center",
     "sector": "Arts & Entertainment",
-    "description": "Oak Grove Center is a nonprofit organization supporting at-risk and special-needs youth and families through education, residential care, mental health treatment, and arts programs, operating in the social services and education industry.",
+    "description": "Oak Grove Center is a nonprofit organization supporting at-risk children and families through education, healing, and community-based care. They offer residential treatment, day programs, special education, and mental health services for ages 5-22, including an Arts Program.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-9039",
-      "11-9151",
-      "13-1071",
-      "21-1018",
       "21-1021",
+      "21-1023",
       "25-2059",
-      "29-1141",
-      "31-1131",
-      "25-2021",
-      "25-9044"
+      "29-1125",
+      "39-9011"
     ],
     "website": "https://oakgrovecenter.org/",
     "swp_sectors": [
-      "Education and Human Development"
-    ]
+      "Health"
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "DoubleTree by Hilton Hotel",
     "sector": "Hospitality & Food Service",
-    "description": "DoubleTree by Hilton Hotel is a global hotel brand providing upscale accommodations, dining, and event services, operating within the hospitality industry as part of Hilton's portfolio.",
+    "description": "Hilton operates a global portfolio of hotels and resorts, including the DoubleTree by Hilton brand, offering diverse accommodations for leisure and business travelers. They provide various stay experiences, from beach getaways to city adventures, across destinations like the United States, Mexico, Japan, and China.",
     "regions": [
       "IE/D",
       "OC"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-9179",
-      "13-1071",
-      "13-1121",
-      "13-2011",
-      "11-1011",
-      "13-1199",
-      "53-5022",
-      "11-3013",
-      "43-4161"
+      "11-9081",
+      "11-9051",
+      "35-1012",
+      "37-1011",
+      "49-9071"
     ],
     "website": "https://www.hilton.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Hyatt Regency Indian Wells Resort & Spa",
@@ -2747,272 +2550,255 @@
     "website": "https://www.hyatt.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Marriott's Shadow Ridge II",
     "sector": "Hospitality & Food Service",
-    "description": "Marriott International operates a vast global portfolio of hotels and resorts under various brands, including vacation ownership properties like Marriott's Shadow Ridge II, providing accommodations, event services, and vacation rentals within the hospitality industry.",
+    "description": "Marriott International, Inc. is a global hospitality company offering a diverse portfolio of hotel brands, vacation home rentals, and all-inclusive resorts. It serves travelers worldwide with accommodations, dining, fitness, and meeting experiences, catering to various stay types from luxury to extended stays.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-9072",
-      "11-9179",
-      "13-1071",
-      "13-2011",
-      "11-1011",
-      "13-1199",
-      "53-5022"
+      "11-9081",
+      "11-9051",
+      "35-1012",
+      "37-1011",
+      "49-9071"
     ],
     "website": "https://www.marriott.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Mission Inn Hotel & Spa",
     "sector": "Hospitality & Food Service",
-    "description": "The Mission Inn Hotel & Spa is a historic luxury hotel in Riverside, California, offering distinctive accommodations, award-winning dining, a Tuscan-inspired spa, and versatile venues for weddings and events within the hospitality industry.",
+    "description": "The Mission Inn Hotel & Spa is a historic landmark in Riverside, CA, offering 238 luxurious rooms and suites. It provides hospitality services including accommodations, fine dining, a Tuscan-inspired spa, and venues for weddings, meetings, and social gatherings, serving leisure and business travelers.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-9072",
-      "11-9179",
-      "13-1071",
-      "13-1121",
-      "13-2011",
+      "11-9081",
+      "11-9051",
+      "35-1011",
       "31-9011",
-      "11-1011",
-      "13-1199",
-      "53-5022"
+      "49-9071"
     ],
     "website": "https://www.missioninn.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Omni Rancho Las Palmas Resort & Spa",
     "sector": "Hospitality & Food Service",
-    "description": "Omni Hotels & Resorts manages a collection of luxury hotels and resorts, including Omni Rancho Las Palmas Resort & Spa, providing upscale accommodations, golf, spa services, and event facilities across over 50 destinations in the hospitality industry.",
+    "description": "Omni Rancho Las Palmas Resort & Spa is part of Omni Hotels & Resorts, a hospitality company with over 50 destinations across the U.S. and Canada. It provides lodging, golf courses, spas, and restaurants, serving travelers seeking getaways, family vacations, and special events.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-9072",
-      "11-9179",
-      "13-1071",
-      "13-1121",
-      "13-2011",
-      "31-9011"
+      "11-9081",
+      "11-9051",
+      "35-1011",
+      "31-9011",
+      "49-9071"
     ],
     "website": "https://www.omnihotels.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Renaissance Esmeralda Resort & Spa",
     "sector": "Hospitality & Food Service",
-    "description": "Renaissance Esmeralda Resort & Spa is part of Marriott International's premium hotel collection, offering thoughtfully designed accommodations, elevated dining, fitness, and meeting experiences within the global hospitality and resort industry.",
+    "description": "Renaissance Esmeralda Resort & Spa, part of Marriott Bonvoy Hotels, provides luxury hospitality services, including accommodations, dining, and event spaces. It serves leisure and business travelers seeking elevated experiences and bespoke programming, operating within Marriott's global network of hotels.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-9072",
-      "11-9179",
-      "13-1071",
-      "13-1121",
-      "13-2011",
-      "31-9011"
+      "11-9081",
+      "11-9051",
+      "37-1011",
+      "49-9071",
+      "13-1121"
     ],
     "website": "https://www.marriott.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Ritz-Carlton Rancho Mirage",
     "sector": "Hospitality & Food Service",
-    "description": "The Ritz-Carlton is a global luxury hotel and resort company providing high-end accommodations, fine dining, spa services, and event facilities, setting the standard for luxury experiences within the hospitality industry.",
+    "description": "The Ritz-Carlton is a global luxury hospitality company, including The Ritz-Carlton, Rancho Mirage in California. It provides premium accommodations, dining, spa, and event services, serving guests seeking luxury experiences across diverse destinations. The brand emphasizes unwavering commitment to service.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-9072",
-      "11-9179",
-      "13-1071",
-      "13-1121",
-      "13-2011",
-      "31-9011",
-      "11-1011",
-      "13-1199",
-      "53-5022"
+      "11-9081",
+      "11-9051",
+      "35-1011",
+      "37-1011",
+      "49-9071"
     ],
     "website": "https://www.ritzcarlton.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "South Coast Winery Resort & Spa",
     "sector": "Hospitality & Food Service",
-    "description": "South Coast Winery Resort & Spa provides a comprehensive winery experience, including resort accommodations, fine dining, and spa services, primarily operating within the hospitality and wine production industries.",
+    "description": "South Coast Winery Resort & Spa is an award-winning winery and full-service resort in Temecula Valley, California. It offers wine production, tasting, luxury accommodations, a spa, and fine dining, serving guests seeking wine country experiences, romantic getaways, and event venues.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-9072",
-      "11-9179",
-      "13-1071",
-      "13-1121",
-      "13-2011",
+      "11-9081",
+      "11-9051",
+      "35-1011",
       "31-9011",
-      "11-1011",
-      "13-1199",
-      "53-5022"
+      "49-9071"
     ],
     "website": "https://www.wineresort.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Riverside County Superior Court",
     "sector": "Government",
-    "description": "The Superior Court of California, County of Riverside, functions as an independent governmental branch, providing access to justice, resolving legal disputes, and safeguarding individual rights within the judicial and public administration sector.",
+    "description": "The Superior Court of California, County of Riverside, serves the public by ensuring access to justice and resolving legal matters across Riverside County. It handles various case types including civil, criminal, family, juvenile, and traffic, operating through multiple courthouses and offering self-help services to protect individual rights.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1041",
-      "23-2011",
-      "23-2099",
+      "27-3091",
       "27-3092",
-      "13-1071",
-      "13-2011",
-      "11-1011",
-      "11-9199"
+      "23-2011",
+      "49-9071",
+      "43-1011"
     ],
     "website": "https://www.riverside.courts.ca.gov/",
     "swp_sectors": [
       "Public Safety"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Coachella City Police Department",
     "sector": "Government",
-    "description": "The Coachella City Police Department, operated by the Riverside County Sheriff's Department, delivers comprehensive law enforcement services, focusing on enhancing public safety, reducing crime, and implementing proactive patrol strategies for the City of Coachella.",
+    "description": "The Coachella City Police Department, through a contract with the Riverside County Sheriff's Department, provides comprehensive law enforcement services to the City of Coachella. It focuses on increasing the quality of life, reducing the fear of crime through community-oriented policing, and implementing proactive patrol strategies to deter criminal activity.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
+      "19-4092",
+      "21-1093",
+      "43-6014",
       "11-3012",
-      "13-1041",
-      "13-1071",
-      "13-2011",
-      "15-1244",
-      "11-9161",
-      "13-1199"
+      "49-9071"
     ],
     "website": "https://www.coachella.org/departments/police-department",
     "swp_sectors": [
       "Public Safety"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Corona Police Department",
     "sector": "Government",
-    "description": "The Corona Police Department is a municipal law enforcement agency dedicated to achieving policing excellence through integrity, respect, and innovation, fostering community engagement, and ensuring public safety for the City of Corona.",
+    "description": "The Corona Police Department provides law enforcement and public safety services to the City of Corona, California. It operates through divisions like Field Services, Investigative Services, and Support Services, engaging in crime prevention, community outreach, and emergency response to ensure the safety and well-being of residents and businesses.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1041",
-      "13-1071",
-      "13-2011",
-      "15-1244",
-      "11-9161",
-      "13-1199",
-      "11-1011"
+      "33-3051",
+      "33-3021",
+      "33-1012",
+      "43-2099",
+      "39-2021"
     ],
     "website": "https://www.coronaca.gov/government/departments-divisions/police",
     "swp_sectors": [
       "Public Safety"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Department of Corrections and Rehabilitation",
     "sector": "Government",
-    "description": "The California Department of Corrections and Rehabilitation (CDCR) is a government agency responsible for enhancing public safety through safe and secure incarceration, rehabilitation, and successful reintegration of individuals into California communities.",
+    "description": "The California Department of Corrections and Rehabilitation (CDCR) ensures public safety and provides rehabilitation, restorative justice, and reentry services. It manages health care for California's incarcerated population, offers victim services, and supports families and friends. CDCR operates facilities and employs peace officers to uphold its mission.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3121",
-      "13-1071",
-      "13-2011",
-      "15-1244",
+      "33-3012",
+      "33-1011",
       "21-1092",
       "29-1141",
-      "11-1011",
-      "11-9151"
+      "49-9071"
     ],
     "website": "https://www.cdcr.ca.gov/",
     "swp_sectors": [
       "Public Safety"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Micromist Systems",
     "sector": "Construction",
-    "description": "Micromist Systems, a division of Sorenson Engineering, Inc., specializes in high-performance, multifunctional fog and mist systems for various applications including cooling, humidity control, and biosecurity in industries like poultry, power generation, dairy, and greenhouses.",
+    "description": "Micromist Systems, a division of Sorenson Engineering, Inc. in Yucaipa, CA, provides high-performance fog and mist systems. These systems offer cooling, humidity control, and biosecurity solutions for diverse environments, including poultry, dairy, greenhouses, and power generation inlet applications.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-2021",
-      "11-3051",
-      "17-2141",
-      "17-3013",
-      "13-1028",
-      "13-1161",
-      "13-2011",
-      "17-2112",
+      "47-2152",
       "49-9021",
-      "41-4011"
+      "49-9071",
+      "51-4121",
+      "11-9021"
     ],
     "website": "http://micromist.com/",
     "swp_sectors": [
       "Advanced Manufacturing"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Reyes Coca-Cola Bottling",
     "sector": "Manufacturing",
-    "description": "Reyes Coca-Cola Bottling is part of Reyes Holdings, a global leader in the production and distribution of food and beverage products, specifically operating as a West Coast and Midwest beverage bottler and distributor for Coca-Cola products.",
+    "description": "Reyes Coca-Cola Bottling is a West Coast and Midwest beverage bottler and distributor, handling over 331 million annual cases and employing over 11,600 people. It manufactures and distributes Coca-Cola beverages to various customers, including grocery, convenience, bars, and restaurants.",
     "regions": [
       "IE/D",
       "LA",
@@ -3021,194 +2807,156 @@
       "OC"
     ],
     "occupations": [
-      "11-1021",
-      "11-2022",
-      "11-3051",
-      "13-1028",
-      "13-1081",
-      "13-2011",
-      "41-4011",
       "53-3032",
-      "11-1011",
-      "13-1199",
-      "19-1012",
-      "35-2013",
-      "11-3061",
-      "15-2031"
+      "49-9041",
+      "51-1011",
+      "11-3071",
+      "51-9061"
     ],
     "website": "https://www.reyesholdings.com/",
     "swp_sectors": [
-      "Advanced Manufacturing"
-    ]
+      "Agriculture, Water and Environmental Technologies"
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Repet",
     "sector": "Manufacturing",
-    "description": "Repet is a PET recycler and processor of post-consumer and post-industrial food and beverage PET container packaging, aiming to reduce carbon footprint by turning plastic waste into FDA LNO flake for food-grade resin.",
+    "description": "Repet is a PET recycler and processor of post-consumer and post-industrial food and beverage PET container packaging, serving West Coast manufacturers. The company recycles over 2 billion plastic bottles annually, converting them into FDA LNO flake for food-grade resin, aiming to double its volume.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
       "11-3051",
-      "13-1028",
-      "13-1081",
-      "13-2011",
-      "17-2112",
-      "19-2031",
-      "19-4031"
+      "51-1011",
+      "49-9041",
+      "51-9061",
+      "51-4021"
     ],
     "website": "https://www.repetinc.com/",
     "swp_sectors": [
       "Advanced Manufacturing"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Cargo Solution Express",
     "sector": "Manufacturing",
-    "description": "The provided website for Cargo Solution Express appears to be an e-commerce site in Japanese, selling various imported goods, including anime merchandise, rather than offering cargo or logistics solutions.",
+    "description": "Cargo Solution Express is a logistics express company offering extensive transportation services, including FTL, LTL, intermodal, ocean, and air freight. They serve shippers with fast and reliable cargo transportation across local, long-haul, and regional routes, providing solutions like warehousing and customs compliance.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1081",
-      "13-1199",
-      "13-2011",
-      "15-1211",
       "53-3032",
-      "13-1071",
-      "11-3051"
+      "49-3031",
+      "13-1081",
+      "11-3071",
+      "43-5011"
     ],
     "website": "https://cargosolutionexpress.com/",
     "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ]
+      "Advanced Transportation and Logistics"
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "American Security Products",
     "sector": "Manufacturing",
-    "description": "American Security Products, founded in 1946, manufactures high-security safes for residential and business use, including gun safes, smart safes, and drop safes, primarily serving the security and manufacturing industry.",
+    "description": "American Security Products, founded in 1946 and located in Fontana, CA, manufactures high-security safes for residential and business use. They provide customized end-to-end prevention and protection solutions, including gun safes, smart safes, and high-security safes, serving customers seeking to protect valuables and assets.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-2022",
-      "11-3051",
-      "13-1028",
-      "13-2011",
-      "17-2141",
-      "17-3013",
-      "41-4011",
-      "17-2061",
-      "49-2094"
+      "51-4121",
+      "51-4041",
+      "51-1011",
+      "49-9041",
+      "51-9061"
     ],
     "website": "https://americansecuritysafes.com/",
     "swp_sectors": [
       "Advanced Manufacturing"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Hussmann Corporation",
     "sector": "Manufacturing",
-    "description": "Hussmann Corporation is a global leader providing display merchandisers, refrigeration systems, installation, and services to food retailers, focusing on the commercial refrigeration and food retail equipment industry.",
+    "description": "Hussmann Corporation is a global leader providing display merchandisers, refrigeration systems, installation, and services to food retailers. They offer innovative products and solutions for preserving and merchandising fresh foods, serving supermarkets, mass merchants, convenience stores, and other food retail segments worldwide.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3051",
-      "13-1028",
-      "13-2011",
-      "17-2141",
-      "17-3013",
       "49-9021",
-      "13-1071",
-      "49-9062",
-      "41-4011"
+      "51-4121",
+      "51-1011",
+      "49-1011",
+      "49-9071"
     ],
     "website": "https://www.hussmann.com/",
     "swp_sectors": [
       "Advanced Manufacturing"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Jensen Precast",
     "sector": "Manufacturing",
-    "description": "Jensen Precast, now Jensen Infrastructure, manufactures precast concrete, fiberglass, and metal infrastructure solutions for utilities, stormwater management, and transportation, serving the construction and infrastructure industry.",
+    "description": "Jensen Infrastructure, formerly Jensen Precast, is a precast concrete manufacturer serving California, Nevada, Arizona, Washington, and Hawaii. They provide expert engineering and solutions in concrete, fiberglass, and metal for utilities, sewer and storm drains, transportation, and agricultural infrastructure, helping clients build smarter, faster, and stronger.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
       "11-3051",
-      "13-1028",
-      "13-2011",
-      "17-2051",
-      "17-3011",
-      "17-3022",
-      "13-1071",
-      "41-4011"
+      "49-9041",
+      "51-1011",
+      "51-4121",
+      "53-3032"
     ],
     "website": "https://www.jensenprecast.com/",
     "swp_sectors": [
       "Advanced Manufacturing"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Classic Containers",
     "sector": "Wholesale",
-    "description": "Classic Containers Inc. specializes in the wholesale manufacturing of plastic bottles (HDPE, LDPE, ST, HG) and closures, rings, and caps, primarily serving the packaging and plastics manufacturing industry.",
+    "description": "Classic Containers Inc. is a wholesale supplier of plastic bottles, including HDPE, LDPE, and PETE materials, along with closures, rings, and caps. They offer a variety of bottle types in small quantities and low pricing, serving customers with bottle capacities ranging from 1/4oz to 32oz.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3051",
-      "13-1028",
-      "13-2011",
-      "17-2141",
-      "17-3013",
-      "13-1071",
-      "11-2022",
-      "13-1081",
-      "41-4011"
+      "51-4021",
+      "51-1011",
+      "49-9041",
+      "27-1024",
+      "51-5112"
     ],
     "website": "https://classiccontainers.com/",
     "swp_sectors": [
-      "Advanced Manufacturing"
-    ]
-  },
-  {
-    "name": "McLane Foodservice Distribution",
-    "sector": "Wholesale",
-    "description": "McLane Foodservice Distribution is one of the largest and most stable distribution leaders in the United States, delivering restaurant and retail solutions for convenience stores, mass merchants, drug stores, and chain restaurants, operating within the wholesale distribution and logistics industry.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1021",
-      "11-2022",
-      "11-3012",
-      "13-1028",
-      "13-1081",
-      "13-2011",
-      "53-3032",
-      "13-1071",
-      "11-3051",
-      "11-3061"
-    ],
-    "website": "https://www.mclaneco.com/",
-    "swp_sectors": [
       "Global Trade"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Carmax",
     "sector": "Retail",
-    "description": "Carmax is a leading retailer of used cars, offering a wide selection of vehicles for sale online and in-store, along with services for selling and trading in cars, and financing options, operating within the automotive retail industry.",
+    "description": "CarMax is a retailer that facilitates buying and selling used cars, serving individual consumers. They offer a wide selection of vehicles, financing options, and services like online shopping, in-store purchases, and vehicle appraisals. CarMax operates with a focus on customer experience, including 10-day returns and a 30-day limited warranty.",
     "regions": [
       "IE/D",
       "SCC",
@@ -3217,260 +2965,240 @@
       "OC"
     ],
     "occupations": [
-      "11-1021",
-      "11-2022",
-      "11-3012",
-      "13-1071",
-      "13-2011",
-      "41-9031",
       "49-3023",
-      "13-2072",
-      "11-3031",
-      "13-1161",
-      "11-2021",
-      "13-1081",
-      "43-4161",
-      "11-3061",
-      "13-1082",
-      "41-4011"
+      "49-3021",
+      "41-1011",
+      "49-1011",
+      "53-3033"
     ],
     "website": "https://www.carmax.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Crown Toyota",
     "sector": "Retail",
-    "description": "Crown Toyota is an authorized Toyota dealership in Ontario, CA, specializing in the sale of new and used Toyota vehicles, providing financing solutions, and offering comprehensive automotive service and parts, operating in the automotive retail and service industry.",
+    "description": "Crown Toyota is a new and used Toyota dealership in Ontario, CA, serving the Inland Empire region including Rancho Cucamonga, Fontana, Chino, Riverside, and Eastvale. They offer vehicle sales, financing, and a service center with Toyota-trained technicians and genuine parts.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
       "11-2022",
-      "11-3012",
-      "13-1071",
-      "13-2011",
-      "41-9031",
-      "49-3023",
-      "13-2072",
-      "11-2021"
+      "41-1011",
+      "41-4012",
+      "49-1011",
+      "49-3023"
     ],
     "website": "https://www.crowntoyota.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Valley Hi Automotive Group",
     "sector": "Retail",
-    "description": "Valley Hi Automotive Group is a multi-brand car dealership in Victorville, CA, selling new and used vehicles from Honda, Kia, Nissan, and Toyota, and providing automotive service, parts, and financing, primarily in the automotive retail sector.",
+    "description": "Valley Hi Auto Group is a car dealership in Victorville, CA, offering new Honda, Kia, Nissan, and Toyota vehicles, as well as pre-owned and certified pre-owned cars. They provide sales, service, parts, and financing, serving customers in the Inland Empire region.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-2022",
-      "11-3012",
-      "13-1071",
-      "13-2011",
-      "41-9031",
       "49-3023",
-      "13-2072",
-      "11-2021"
+      "49-1011",
+      "41-4012",
+      "41-1011",
+      "13-2072"
     ],
     "website": "https://www.valleyhi.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Coronado Stone Products",
     "sector": "Retail",
-    "description": "Coronado Stone Products manufactures and supplies a wide variety of manufactured stone veneer, thin brick, and precast products, replicating natural stone for commercial and residential architectural projects, operating in the building materials industry.",
+    "description": "Coronado Stone Products manufactures and supplies a wide selection of manufactured stone veneer, thin brick, and precast products. With over 65 years of experience and five manufacturing facilities across the U.S., they serve both commercial and residential projects, offering diverse profiles and colors.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-2022",
-      "11-3051",
-      "13-1028",
-      "13-2011",
-      "17-1011",
-      "17-3011",
-      "13-1071",
-      "41-4011"
+      "51-1011",
+      "49-9041",
+      "49-9071",
+      "53-3032",
+      "11-3051"
     ],
     "website": "https://coronado.com/",
     "swp_sectors": [
       "Advanced Manufacturing"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Prime-Line Products",
     "sector": "Retail",
-    "description": "Prime-Line Products is a manufacturer and supplier of replacement hardware and repair parts for homes, specializing in window, door, and general household hardware, serving the home improvement and building materials industry.",
+    "description": "Prime-Line Products, headquartered in Redlands, CA, manufactures and distributes a wide variety of residential and commercial window, door, and home hardware and repair parts. Serving national distributors, commercial entities, and homeowners, they provide solutions for home improvement and security.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-2022",
       "11-3051",
-      "13-1028",
-      "13-2011",
-      "17-2141",
-      "17-3013",
-      "13-1071",
-      "13-1081",
-      "41-4011"
+      "11-3071",
+      "49-9041",
+      "49-9071",
+      "51-1011"
     ],
     "website": "https://www.prime-line.com/",
     "swp_sectors": [
       "Advanced Manufacturing"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Cardenas Market",
     "sector": "Retail",
-    "description": "Cardenas Markets is a leading Hispanic grocery store chain offering fresh produce, meat, seafood, bakery items, and authentic Latin American products, along with money transfer services, primarily operating in the retail grocery industry.",
+    "description": "Cardenas Markets is a grocery retailer operating Cardenas and Ranch Market locations, offering fresh produce, meat, seafood, bakery items, and authentic Latin American products. They provide in-store shopping, online ordering with delivery partners, and money transfer services through Ria Money Transfer across their 65 locations.",
     "regions": [
       "IE/D",
       "Bay"
     ],
     "occupations": [
-      "11-1021",
-      "11-2022",
-      "11-3012",
-      "13-1028",
-      "13-1071",
-      "13-2011",
-      "13-1161",
-      "15-1244",
+      "41-1011",
+      "11-9051",
+      "51-3092",
+      "49-9071",
       "53-3032"
     ],
     "website": "https://www.cardenasmarkets.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Dalton Trucking",
     "sector": "Transportation",
-    "description": "Dalton Trucking Inc. provides specialized transportation services across the US, including heavy haul oversized loads, low bed, and general freight on flatbeds, operating primarily in the trucking and logistics industry.",
+    "description": "Dalton Trucking Inc., established in 1963 and based in Southern California, provides specialized transportation services across the Western US and nationwide. They offer heavy haul for oversized loads, low bed, and general freight on flatbeds, operating 24 power units and 200 trailer types, including crane truck services.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1081",
-      "13-2011",
-      "49-3023",
       "53-3032",
-      "13-1071",
-      "15-1244",
-      "11-3051"
+      "11-3071",
+      "49-3031",
+      "53-7021",
+      "49-9071"
     ],
     "website": "https://daltontrucking.com/",
     "swp_sectors": [
       "Advanced Transportation and Logistics"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "FedEx Ground",
     "sector": "Transportation",
-    "description": "FedEx Ground is a major North American small-package ground shipping service, part of the broader FedEx corporation, specializing in cost-effective, day-definite delivery for businesses and residential customers within the logistics and transportation industry.",
+    "description": "FedEx Ground provides cost-effective ground package delivery services for businesses and residents across all 50 U.S. states and Canada, including the Inland Empire/Desert region of California. Key activities involve domestic and international ground shipping, with deliveries up to seven days a week.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1081",
-      "13-2011",
-      "15-1244",
       "53-3032",
-      "13-1071",
-      "13-1199",
-      "11-3051"
+      "53-3033",
+      "49-3031",
+      "49-9071",
+      "51-1011"
     ],
     "website": "https://www.fedex.com/",
     "swp_sectors": [
       "Advanced Transportation and Logistics"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Estes Express Lines",
     "sector": "Transportation",
-    "description": "Estes Express Lines is America's largest privately held less-than-truckload (LTL) freight carrier, offering a wide range of shipping solutions including LTL, guaranteed delivery, and logistics services across North America within the transportation industry.",
+    "description": "Estes Express Lines is America's top private freight carrier, specializing in Less-Than-Truckload (LTL) shipping across North America with over 300 terminals. They offer services like guaranteed delivery, final mile, and logistics solutions for various sectors, including grocery and food and beverage, focusing on efficiency and sustainability.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1081",
-      "13-2011",
-      "15-1244",
       "53-3032",
-      "13-1071",
-      "13-1199",
-      "11-3051"
+      "49-3031",
+      "11-3071",
+      "13-1081",
+      "49-9071"
     ],
     "website": "https://www.estes-express.com/",
     "swp_sectors": [
       "Advanced Transportation and Logistics"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Omnitrans",
     "sector": "Transportation",
-    "description": "Omnitrans is a public transit agency serving the San Bernardino Valley, providing bus services, ADA services, and on-demand transit options to connect communities, operating within the public transportation industry.",
+    "description": "Omnitrans is a public transit agency serving the San Bernardino Valley in California, providing bus services, ADA services like OmniAccess, and specialized shuttles such as ONT Connect. It offers various fare options, including college and reduced fares, and operates numerous routes to connect communities within the Inland Empire region.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1071",
-      "13-2011",
-      "15-1244",
-      "49-3023",
-      "13-1081",
-      "13-1199",
-      "11-3013",
-      "53-3032",
-      "11-9199"
+      "53-3052",
+      "49-3031",
+      "49-9071",
+      "11-3071",
+      "11-3013"
     ],
     "website": "https://www.omnitrans.org/",
     "swp_sectors": [
       "Advanced Transportation and Logistics"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Environmental Systems Research Institute",
     "sector": "Professional Services",
-    "description": "Environmental Systems Research Institute (Esri) is a leading GIS software company that develops ArcGIS, a comprehensive geospatial platform for mapping, spatial analytics, and data management, serving various industries globally.",
+    "description": "Esri builds ArcGIS, a leading GIS software for mapping and spatial analytics, serving diverse industries like architecture, business, conservation, and government. The company provides an enterprise geospatial platform, SaaS mapping, and desktop GIS software, enabling users to understand data spatially, perform analytics, and manage spatial data.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-3021",
       "15-1252",
       "17-1021",
-      "19-2041",
       "15-2051",
-      "15-1254"
+      "41-4011",
+      "13-1082"
     ],
     "website": "https://www.esri.com/",
     "swp_sectors": [
       "Information and Communication Technologies - Digital Media"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "LEGACY Supply Chain Services",
@@ -3494,83 +3222,79 @@
     "website": "https://legacyscs.com/",
     "swp_sectors": [
       "Advanced Transportation and Logistics"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Motivational Fulfillment",
     "sector": "Professional Services",
-    "description": "Motivational Fulfillment provides comprehensive omnichannel third-party logistics (3PL) services, including retail, D2C, and e-commerce fulfillment, Amazon services, and reverse logistics, tailored to client needs since 1977.",
+    "description": "Motivational Fulfillment & Logistics provides omnichannel 3PL services, including retail, D2C, eCommerce drop ship, and Amazon fulfillment, along with reverse logistics and value-added services. Operating from a Southern California campus with over 2.5 million square feet of storage, they serve various businesses by managing order fulfillment and shipping to major retailers and end customers.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
+      "11-3071",
       "13-1081",
-      "13-1199",
-      "13-2011",
-      "15-1244",
-      "13-1071",
-      "53-3032",
-      "11-3051"
+      "51-1011",
+      "49-9071",
+      "15-1231"
     ],
     "website": "https://mfals.com/",
     "swp_sectors": [
       "Advanced Transportation and Logistics"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Radial",
     "sector": "Professional Services",
-    "description": "Radial offers scalable e-commerce fulfillment, transportation management, and omnichannel solutions, enabling brands to streamline operations and deliver exceptional customer experiences from online click to final delivery.",
+    "description": "Radial provides scalable eCommerce fulfillment, transportation management, and commerce solutions for modern brands. They offer DTC order fulfillment, returns management, and fraud prevention across various retail sectors, leveraging over 40 years of experience to deliver seamless customer experiences from click to delivery. Radial is becoming Paxon.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3021",
+      "11-3071",
       "13-1081",
-      "13-2011",
-      "15-1252",
-      "15-1254",
-      "13-1071",
-      "11-3051",
-      "11-2021"
+      "51-1011",
+      "53-3032",
+      "49-9071"
     ],
     "website": "https://www.radial.com/",
     "swp_sectors": [
       "Advanced Transportation and Logistics"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Searles Valley Minerals",
     "sector": "Professional Services",
-    "description": "Information for Searles Valley Minerals could not be retrieved as the provided URL failed to load.",
+    "description": "Searles Valley Minerals processes brine from Searles Lake using an eco-friendly solution mining method to produce Boric Acid, Borax, Sodium Sulfate, Soda Ash, and Salt. With over 100 years of experience and three facilities, they serve industrial and agricultural customers globally, providing essential materials for diverse consumer products.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3051",
-      "13-1028",
-      "13-2011",
-      "17-2151",
-      "19-2031",
-      "19-4031",
-      "13-1071",
-      "11-1011",
-      "17-2041"
+      "51-8091",
+      "51-9011",
+      "49-9041",
+      "51-1011",
+      "11-3051"
     ],
-    "website": "https://www.svm.com/",
+    "website": "https://www.svminerals.com",
     "swp_sectors": [
       "Advanced Manufacturing"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "FedEx Ship Center",
     "sector": "Professional Services",
-    "description": "FedEx Ship Center is a global logistics and shipping company that provides comprehensive transportation, e-commerce, and business services, facilitating the delivery of packages and freight worldwide.",
+    "description": "FedEx Ship Centers in California provide comprehensive shipping solutions for individuals and businesses. They offer expedited, standard, and international package and freight services, including packing supplies and hold-for-pickup options, facilitating global transportation and logistics across multiple California regions.",
     "regions": [
       "IE/D",
       "Bay",
@@ -3578,348 +3302,263 @@
       "OC"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1081",
-      "13-2011",
-      "15-1244",
-      "13-1071",
-      "13-1199",
+      "11-3071",
+      "49-9071",
+      "51-1011",
       "53-3032",
-      "15-1211",
-      "15-1212",
-      "15-1231",
-      "15-1241",
-      "15-1242",
-      "15-1243",
-      "15-1251",
-      "15-1252",
-      "15-1253",
-      "11-1011",
-      "41-4011",
-      "43-4161"
+      "53-3033"
     ],
     "website": "https://www.fedex.com/",
     "swp_sectors": [
       "Advanced Transportation and Logistics"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Brightview Landscape Services",
     "sector": "Administrative Services",
-    "description": "BrightView Landscape Services is the nation's leading commercial landscaping company, providing comprehensive services including design, development, maintenance, and specialized care for outdoor spaces across diverse markets.",
+    "description": "BrightView is the nation's leading commercial landscape company, offering comprehensive services from design and development to maintenance, snow removal, and water management. It serves diverse markets including commercial, education, healthcare, hospitality, and residential sectors across the country.",
     "regions": [
       "IE/D",
       "SD/I",
       "OC"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "13-1051",
-      "13-1071",
-      "13-2011",
-      "17-1012",
-      "13-1199",
       "11-9021",
-      "11-3013",
-      "11-9199",
-      "11-9041",
-      "13-1081",
-      "19-1032",
-      "19-4071"
+      "17-1012",
+      "37-1012",
+      "47-2073",
+      "53-3032"
     ],
     "website": "https://www.brightview.com/",
     "swp_sectors": [
       "Energy, Construction and Utilities"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Ontario-Montclair School District",
     "sector": "Education",
-    "description": "Information for Ontario-Montclair School District could not be retrieved as the provided URL was not accessible.",
+    "description": "The Ontario-Montclair School District provides world-class K-8 education to over 18,500 students across 33 schools in San Bernardino County, California. It offers inclusive academic programs, early learning, language development, and special education services, preparing students for college and careers.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-9039",
-      "13-1071",
-      "13-2011",
-      "25-2021",
-      "25-2022",
-      "25-2031",
-      "11-3121",
-      "25-2011",
-      "25-9044"
+      "11-9032",
+      "25-2059",
+      "29-1141",
+      "49-9071",
+      "21-1093"
     ],
     "website": "https://www.omsd.k12.ca.us/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "San Bernardino City Unified School District",
     "sector": "Education",
-    "description": "San Bernardino City Unified School District is an educational institution serving over 44,000 students across 74 schools, committed to educating, inspiring, and preparing all students for success in school, career, and life.",
+    "description": "The San Bernardino City Unified School District provides educational services to 44,712 enrolled students across 74 schools. It offers programs from transitional kindergarten to high school, including advanced learners, career technical education, and special education, with a focus on student success and community engagement.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-9039",
-      "13-1071",
-      "13-2011",
+      "11-9032",
       "25-2021",
-      "25-2022",
       "25-2031",
-      "11-3121",
-      "25-2011",
-      "25-9044"
+      "37-1011",
+      "49-9071"
     ],
     "website": "https://sbcusd.com/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Snowline Joint Unified School District",
     "sector": "Education",
-    "description": "Snowline Joint Unified School District is an educational institution dedicated to educating, inspiring, and preparing all students for their future by providing a world-class learning experience and fostering academic, career, and life skills.",
+    "description": "Snowline Joint Unified School District is an educational organization dedicated to educating, inspiring, and preparing students. It serves the Snowline learning community, operating multiple elementary, middle, and high schools, along with an adult school, across various locations like Baldy Mesa, Phelan, Pinon Hills, and Wrightwood.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-9039",
-      "13-1071",
-      "13-2011",
-      "25-2021",
-      "25-2022",
-      "25-2031",
-      "11-3121",
-      "25-2011",
-      "25-9044"
+      "11-9032",
+      "37-1011",
+      "49-9071",
+      "53-3052",
+      "21-1021"
     ],
     "website": "https://www.snowlineschools.com/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Yucaipa-Calimesa Joint Unified School District",
     "sector": "Education",
-    "description": "Information for Yucaipa-Calimesa Joint Unified School District could not be retrieved as the provided URL failed to load.",
+    "description": "The Yucaipa-Calimesa Joint Unified School District provides public K-12 and adult education to approximately 8,500-9,500 students in Yucaipa and Calimesa, California. It operates multiple schools, focusing on standards-based teaching, college/career preparation, and fostering a safe learning environment.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-9039",
-      "13-1071",
-      "13-2011",
-      "25-2021",
-      "25-2022",
-      "25-2031",
-      "11-3121",
-      "25-2011",
-      "25-9044"
+      "25-2059",
+      "25-9099",
+      "49-9071",
+      "29-2061",
+      "15-1211"
     ],
     "website": "https://www.ycjusd.us/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Barstow Community College",
     "sector": "Education",
-    "description": "Barstow Community College empowers students through comprehensive education, offering associate degrees, career and technical education, and student support services to foster personal and academic achievement in the higher education sector.",
+    "description": "Barstow Community College provides comprehensive education, offering associate degrees, certificates, and career and technical education programs. It serves students in the Inland Empire/Desert region of California, including military personnel at Fort Irwin, with a focus on empowering students through academic and student support services.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-9039",
-      "13-1071",
-      "13-2011",
-      "25-3099",
-      "25-9044",
-      "25-9099",
-      "11-3121"
+      "11-9033",
+      "25-9031",
+      "21-1019",
+      "49-9071",
+      "43-1011"
     ],
     "website": "https://www.barstow.edu/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Crafton Hills College",
     "sector": "Education",
-    "description": "Crafton Hills College provides diverse academic programs, including liberal arts, sciences, vocational, and technical studies, organized into career pathways, serving as a public community college in the higher education industry.",
+    "description": "Crafton Hills College offers over 50 majors in liberal arts, sciences, vocations, and technical studies, serving students through various academic and career pathways. It provides educational programs and student support services, including financial aid, counseling, and transfer assistance, located in Yucaipa, CA.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-9039",
-      "13-1071",
-      "13-2011",
-      "25-3099",
-      "25-9044",
-      "25-9099",
-      "11-3121"
+      "11-9033",
+      "25-9031",
+      "49-9071",
+      "15-1244",
+      "43-1011"
     ],
     "website": "https://www.craftonhills.edu/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "California State University San Bernardino",
     "sector": "Education",
-    "description": "California State University, San Bernardino is a public university empowering bold futures by offering over 70 majors and concentrations, fostering student potential, and making a meaningful impact in the higher education sector.",
+    "description": "California State University, San Bernardino (CSUSB) is a nationally recognized institution empowering students to achieve their goals and transform their futures. It offers over 70 majors and concentrations, serving a diverse student body with nearly 80% being first-generation college students, and is recognized for social mobility and value.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-9039",
-      "13-1071",
-      "13-2011",
-      "25-3099",
+      "11-9033",
       "25-9044",
-      "25-9099",
-      "11-3121",
-      "11-3031"
+      "29-9091",
+      "33-9032",
+      "49-9071"
     ],
     "website": "https://www.csusb.edu/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Loma Linda University School of Dentistry",
     "sector": "Education",
-    "description": "Loma Linda University School of Dentistry provides faith-based dental education, offering DDS, dental hygiene, and advanced dental degrees, alongside comprehensive patient care services, operating within the higher education and healthcare industries.",
+    "description": "Loma Linda University School of Dentistry, founded in 1953, provides dental education and patient care in Loma Linda, CA. It offers Doctor of Dental Surgery, Dental Hygiene, and advanced dental education programs, serving students and patients with general and specialty dental services. The institution is guided by Christian values and focuses on innovative learning and holistic care.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-9039",
-      "13-1071",
-      "13-2011",
-      "25-3099",
       "29-1292",
       "31-9091",
-      "29-1141",
-      "11-3121"
+      "25-3099",
+      "11-9033",
+      "49-9062"
     ],
     "website": "https://dentistry.llu.edu/",
     "swp_sectors": [
-      "Education and Human Development"
-    ]
+      "Health"
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Optum California",
     "sector": "Healthcare",
-    "description": "Optum California, part of Optum, is a leading health solution and care delivery organization providing affordable and personalized healthcare services, including primary, specialty, urgent, and virtual care, along with financial and pharmacy services, primarily in the healthcare industry.",
+    "description": "Optum California delivers comprehensive healthcare services, including primary, specialty, and urgent care, to over 3 million patients across California, notably in the Inland Empire. It connects care, manages pharmacy services, and utilizes data to enhance health outcomes and affordability for individuals and health plans.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
-      "11-1021",
       "11-9111",
-      "13-1071",
-      "13-2011",
-      "15-1211",
       "29-1141",
-      "29-2072",
-      "11-9179",
-      "11-3121",
-      "29-9021"
+      "29-2061",
+      "29-2052",
+      "31-9092"
     ],
     "website": "https://www.optum.com/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Beaver Medical Group",
     "sector": "Healthcare",
-    "description": "Beaver Medical Group is now Optum, a healthcare provider offering a full range of health care services, including primary care and specialties, serving over 3 million patients across Northern and Southern California.",
+    "description": "Beaver Medical Group, now Optum, provides a full range of healthcare services, including primary and specialty care. They serve over 3 million patients across Northern and Southern California through more than 5,000 primary care doctors, 12,000 specialty doctors, and nearly 200 locations, including urgent care centers and hospitals.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
       "11-9111",
-      "13-1071",
-      "13-2011",
       "29-1141",
-      "29-2061",
       "31-9092",
-      "29-2072",
-      "11-9179",
-      "11-3121"
+      "29-2061",
+      "49-9071"
     ],
     "website": "https://www.beavermedicalgroup.com/",
     "swp_sectors": [
       "Health"
-    ]
-  },
-  {
-    "name": "LifeStream",
-    "sector": "Healthcare",
-    "description": "LifeStream is a nonprofit blood bank that collects blood products and provides transfusion services to over 80 Southern California hospitals and medical facilities, aiming to collect 500 blood donations daily to meet patient needs.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-9111",
-      "13-1071",
-      "13-1131",
-      "13-2011",
-      "29-1141",
-      "31-9097"
-    ],
-    "website": "https://www.lstream.org/",
-    "swp_sectors": [
-      "Health"
-    ]
-  },
-  {
-    "name": "OneLegacy",
-    "sector": "Healthcare",
-    "description": "OneLegacy is a non-profit organization dedicated to saving and healing lives through organ, eye, and tissue donation, providing support to donor families, and inspiring communities to register as donors in the healthcare and organ donation industry.",
-    "regions": [
-      "IE/D"
-    ],
-    "occupations": [
-      "11-1011",
-      "11-1021",
-      "11-9111",
-      "13-1071",
-      "13-1131",
-      "13-2011",
-      "29-1141",
-      "29-9099"
-    ],
-    "website": "https://www.onelegacy.org/",
-    "swp_sectors": [
-      "Health"
-    ]
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Arrowhead Regional Medical Center",
@@ -3946,186 +3585,162 @@
     "website": "https://arrowheadmedcenter.org/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Barstow Community Hospital",
     "sector": "Healthcare",
-    "description": "Barstow Community Hospital is a healthcare provider in Barstow, California, offering emergency services, inpatient care, and various medical treatments to the High Desert community, focusing on local health needs. Its primary industry is healthcare.",
+    "description": "Barstow Community Hospital is a healthcare provider in the High Desert of San Bernardino County, offering various services including emergency care, and utilizing technology like AI-powered robots to support nursing staff. The hospital serves the community with a focus on health equity and patient care.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-9111",
-      "13-1071",
-      "13-2011",
       "29-1141",
-      "29-2042",
       "29-2061",
       "31-1131",
-      "11-9179",
-      "11-3012",
-      "29-2018",
-      "11-3131"
+      "29-2034",
+      "11-9111"
     ],
     "website": "https://www.barstowhospital.com/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Canyon Ridge Hospital",
     "sector": "Healthcare",
-    "description": "Canyon Ridge Hospital is a freestanding mental health facility in Chino, California, providing inpatient and outpatient behavioral health services, including treatment for mental health, addiction, and substance use disorders, to adolescents, adults, and older adults. Its primary industry is behavioral healthcare.",
+    "description": "Canyon Ridge Hospital is a 157-bed acute psychiatric facility in Chino, California, serving adolescents, adults, and older adults in the Greater Inland Empire. It offers inpatient and outpatient mental health and substance use disorder treatments, including detoxification, partial hospitalization, and intensive outpatient programs.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-9111",
-      "13-1071",
-      "13-2011",
-      "21-1018",
       "29-1141",
       "29-2053",
-      "31-1131",
-      "11-9179",
-      "11-3121"
+      "21-1023",
+      "11-9111",
+      "49-9071"
     ],
     "website": "https://canyonridgehospital.com/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Chino Valley Medical Center",
     "sector": "Healthcare",
-    "description": "Chino Valley Medical Center, part of Prime Healthcare, is a hospital in Chino, California, offering comprehensive medical services as part of a large, for-profit health system dedicated to providing high-quality, value-based healthcare. Its primary industry is healthcare.",
+    "description": "Prime Healthcare is a leading U.S. hospital network operating 54 hospitals in 15 states, including Chino Valley Medical Center in California. It provides high-quality, value-based healthcare with over 60,000 staff and affiliated physicians, serving communities across America.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-9111",
-      "13-1071",
-      "13-2011",
       "29-1141",
-      "29-2042",
       "29-2061",
       "31-1131",
-      "11-9179",
-      "11-3012",
-      "29-2018",
-      "11-3131"
+      "29-2034",
+      "49-9071"
     ],
     "website": "https://www.primehealthcare.com/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Desert Valley Hospital",
     "sector": "Healthcare",
-    "description": "Desert Valley Hospital, part of Prime Healthcare, is a hospital in Victorville, California, providing comprehensive medical services as part of a large, for-profit health system dedicated to delivering high-quality, value-based healthcare. Its primary industry is healthcare.",
+    "description": "Desert Valley Hospital is part of Prime Healthcare, the fourth largest for-profit health system in the U.S., operating 54 hospitals across 15 states. It provides high-quality, value-based healthcare services to communities, supported by over 60,000 staff and affiliated physicians.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
       "11-9111",
-      "13-1071",
-      "13-2011",
       "29-1141",
-      "29-2042",
       "29-2061",
       "31-1131",
-      "11-9179",
-      "11-3012",
-      "29-2018",
-      "11-3131"
+      "49-9062"
     ],
     "website": "https://www.primehealthcare.com/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Dignity Health Community Hospital San Bernardino",
     "sector": "Healthcare",
-    "description": "Dignity Health Community Hospital San Bernardino is a healthcare facility operating as part of Dignity Health, a large nonprofit health system providing a wide range of medical services with a focus on compassionate, high-quality, and affordable care. Its primary industry is healthcare.",
+    "description": "Dignity Health Community Hospital San Bernardino is a 343-bed, not-for-profit acute care hospital serving the Inland Empire. It provides comprehensive inpatient and outpatient services, including emergency, maternity, pediatrics, and behavioral health, supported by over 1,500 employees.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-9111",
-      "13-1071",
-      "13-2011",
       "29-1141",
-      "29-2042",
       "29-2061",
       "31-1131",
-      "11-9179",
-      "11-3012",
-      "29-2018",
-      "11-3131"
+      "11-9111",
+      "49-9062"
     ],
     "website": "https://www.dignityhealth.org/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Patton State Hospital",
     "sector": "Healthcare",
-    "description": "Patton State Hospital is a forensic psychiatric hospital in Patton, CA, providing treatment to forensically and civilly committed patients within a secure treatment area, focusing on mental health and rehabilitation services.",
+    "description": "Patton State Hospital is a forensic psychiatric hospital in Patton, CA, established in 1890, providing treatment to approximately 1,500 forensically and civilly committed patients within a secure environment. It employs around 2,380 staff, focusing on trial competency and rehabilitation for offenders with mental health disorders.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-9111",
-      "13-1071",
-      "13-2011",
-      "21-1018",
       "29-1141",
       "29-2053",
-      "31-1131",
-      "11-9179",
-      "11-3121",
-      "11-3131"
+      "21-1023",
+      "33-3012",
+      "49-9071"
     ],
     "website": "https://www.dsh.ca.gov/patton/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Redlands Community Hospital",
     "sector": "Healthcare",
-    "description": "Redlands Community Hospital is a not-for-profit medical facility in Southern California offering comprehensive acute care services, including emergency, surgical, cancer treatment, cardiology, and women's health, dedicated to providing quality, compassionate medical care.",
+    "description": "Redlands Community Hospital is a not-for-profit facility in Southern California that has provided quality, compassionate medical care for over 100 years. It offers a wide range of services, including cancer treatment, cardiology, emergency services, orthopedics, and pregnancy care, serving the community with over 300 physicians and 1,800 employees.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
       "11-9111",
-      "13-1071",
-      "13-2011",
       "29-1141",
-      "29-2042",
-      "29-2061",
+      "29-2034",
       "31-1131",
-      "11-9179",
-      "11-3012",
-      "29-2018",
-      "11-3131"
+      "49-9071"
     ],
     "website": "https://www.redlandshospital.org/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Inland Regional Center",
@@ -4149,36 +3764,32 @@
     "website": "https://www.inlandrc.org/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Chuze Fitness",
     "sector": "Arts & Entertainment",
-    "description": "Chuze Fitness operates health clubs and fitness centers, offering a wide range of amenities like group fitness classes, personal training, pools, and childcare, aiming to provide an affordable and welcoming gym experience in the fitness industry.",
+    "description": "Chuze Fitness operates health clubs and fitness centers across multiple California regions, offering affordable memberships. They provide a wide range of amenities, including diverse fitness equipment, group classes like yoga and Zumba, team training, and childcare, serving individuals seeking a welcoming and well-equipped gym experience.",
     "regions": [
       "IE/D",
       "SD/I",
       "OC"
     ],
     "occupations": [
-      "11-1021",
-      "11-2021",
-      "11-3012",
-      "11-9072",
-      "13-1071",
-      "13-2011",
-      "29-1128",
-      "27-2022",
-      "13-1121",
-      "31-9011",
-      "11-9179",
-      "13-1199",
-      "43-4161"
+      "39-9031",
+      "39-9011",
+      "49-9071",
+      "39-1022",
+      "11-9072"
     ],
     "website": "https://www.chuzefitness.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Bear Mountain",
@@ -4201,77 +3812,74 @@
     "website": "https://www.bigbearmountainresort.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Mountain High Ski Resort",
     "sector": "Hospitality & Food Service",
-    "description": "Mountain High Ski Resort is Southern California's closest winter resort, providing skiing, snowboarding, and various summer activities like camping and disc golf, operating within the recreation and tourism industry.",
+    "description": "Mountain High Ski Resort is Southern California's closest winter resort, offering skiing, snowboarding, and lessons. It also provides year-round activities like camping, disc golf, and weddings, serving visitors from Los Angeles and Orange County.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-2021",
-      "11-3012",
       "11-9072",
-      "13-1071",
-      "13-2011",
-      "27-2022",
-      "13-1161",
-      "11-3013"
+      "11-9051",
+      "39-9031",
+      "49-9071",
+      "37-1012"
     ],
     "website": "https://www.mthigh.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Snow Valley Mountain Resort",
     "sector": "Hospitality & Food Service",
-    "description": "Information for Snow Valley Mountain Resort could not be retrieved as the provided URL was not accessible.",
+    "description": "Snow Valley Mountain Resort is Southern California's longest continually operating ski and snowboard resort, offering 240 acres of terrain for skiing, snowboarding, and snow tubing. It serves families and regional visitors with lessons, rentals, dining, and a sport shop. In summer, it provides mountain biking and scenic sky chair rides.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-2021",
-      "11-3012",
-      "11-9072",
-      "13-1071",
-      "13-2011",
-      "27-2022",
-      "13-1161",
-      "11-3013"
+      "49-9041",
+      "49-9071",
+      "39-9031",
+      "35-1012",
+      "11-9072"
     ],
     "website": "https://www.snow-valley.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Biscomerica Corporation",
     "sector": "Hospitality & Food Service",
-    "description": "Information for Biscomerica Corporation could not be retrieved as the provided URL was not accessible.",
+    "description": "Biscomerica Corporation, located in Rialto, California, operates a 250,000 sq ft facility producing cookies and candy. They serve diverse channels including retail, food service, and wholesale, offering branded and private-label products like Knott's Berry Farm and Sun-Maid cookies.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-2021",
-      "11-3051",
-      "13-1028",
-      "13-1071",
-      "13-2011",
-      "19-1012",
-      "13-1161",
-      "11-3121",
-      "11-3111"
+      "51-3092",
+      "51-1011",
+      "49-9071",
+      "11-3071",
+      "13-1081"
     ],
     "website": "https://www.biscomerica.com/",
     "swp_sectors": [
-      "Advanced Manufacturing"
-    ]
+      "Agriculture, Water and Environmental Technologies"
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Dave & Buster's",
@@ -4300,7 +3908,8 @@
     "website": "https://www.daveandbusters.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Fontana Police Department",
@@ -4328,35 +3937,30 @@
     "website": "https://www.fontana.org/162/Police-Department",
     "swp_sectors": [
       "Public Safety"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Redlands Police Department",
     "sector": "Government",
-    "description": "The Redlands Police Department is a municipal law enforcement agency dedicated to ensuring public safety, enforcing laws, and providing community services within the City of Redlands, California.",
+    "description": "The Redlands Police Department provides public safety services, including patrol, traffic safety, investigations, and community services. It serves the City of Redlands by responding to emergencies, enforcing laws, and engaging in crime prevention efforts to ensure the well-being of its residents.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1021",
-      "11-3012",
-      "11-3121",
-      "13-1071",
-      "13-2011",
-      "15-1211",
-      "27-3031",
-      "43-4161",
-      "11-1011",
+      "33-3051",
+      "33-1012",
+      "33-3021",
       "11-9161",
-      "13-1041",
-      "15-1244",
-      "33-1021",
-      "33-2021"
+      "43-2099"
     ],
     "website": "https://www.cityofredlands.org/police",
     "swp_sectors": [
       "Public Safety"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Greenheart Farms",
@@ -18732,144 +18336,133 @@
   {
     "name": "First American Card Services",
     "sector": "Manufacturing",
-    "description": "A company providing credit and payment card services.",
+    "description": "First American Payment Systems, now part of Deluxe Merchant Services, offers trusted payment expertise and secure services. It provides reliable support and payment solutions, leveraging the innovation and scale of Deluxe to serve its customers.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
-      "11-3031",
-      "13-2011",
-      "13-2041",
-      "13-2072",
-      "41-3031"
+      "43-4051",
+      "15-1231",
+      "15-1212",
+      "43-1011",
+      "11-3061"
     ],
     "website": "https://www.first-american.net/",
     "swp_sectors": [
       "Business and Entrepreneurship"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "US Foods Distribution Center",
     "sector": "Wholesale",
-    "description": "A distribution center for a major food service provider.",
+    "description": "US Foods is a leading foodservice distributor providing a wide range of food products, supplies, and business solutions to restaurants, healthcare facilities, hotels, and other foodservice operations.",
     "regions": [
       "IE/D",
       "SD/I"
     ],
     "occupations": [
-      "11-1011",
-      "11-3012",
-      "11-3051",
-      "13-1081",
-      "41-4011",
-      "53-3032",
       "11-1021",
+      "11-3012",
+      "11-3061",
       "13-1028",
-      "35-2013"
+      "13-1071"
     ],
     "website": "https://www.usfoods.com/",
     "swp_sectors": [
       "Global Trade"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Moss Brothers Honda",
     "sector": "Retail",
-    "description": "A dealership selling and servicing Honda vehicles.",
+    "description": "Moss Bros. Honda of Moreno Valley is a Honda dealership serving Riverside, San Bernardino, and Fontana, California. They sell new and used Honda cars, trucks, and SUVs, offer financing options, and provide parts and service, including collision repair and routine maintenance.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-2021",
-      "11-3012",
-      "13-1199",
+      "11-2022",
+      "41-1011",
       "49-3023",
-      "53-3032"
+      "49-3021",
+      "49-9071"
     ],
     "website": "https://www.mossbroshondamorenovalley.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
-    "name": "California Truss",
-    "sector": "Retail",
-    "description": "A company manufacturing roof and floor trusses for construction.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-9021",
-      "13-1051",
-      "17-3011",
-      "41-4011",
-      "51-4111"
-    ],
-    "website": "https://caltrusframe.com/",
-    "swp_sectors": [
-      "Advanced Manufacturing"
-    ]
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "McLane Foodservice Distribution Center",
     "sector": "Transportation",
-    "description": "A distribution center for a foodservice supply chain company.",
+    "description": "McLane Company, Inc. is a leading US distribution leader, providing supply chain solutions to convenience stores, mass merchants, drug stores, and chain restaurants. With over 80 distribution centers and 25,000 teammates, they deliver over 50,000 consumer products to 110,000 locations nationwide, handling over 10 billion pounds of merchandise annually.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
-      "11-3012",
-      "11-3051",
-      "13-1081",
-      "41-4011",
-      "53-3032"
+      "53-3032",
+      "11-3071",
+      "49-3031",
+      "49-9071",
+      "51-1011"
     ],
     "website": "https://www.mclaneco.com/",
     "swp_sectors": [
       "Global Trade"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Golden Era Productions",
     "sector": "Information & Media",
-    "description": "A company involved in film and video production.",
+    "description": "Golden Era Productions is the Church of Scientology's film and audio production studio, located on a 500-acre property in Riverside, California. It produces Dianetics and Scientology films, lectures, and audiovisual materials for social betterment programs, aiming to communicate the religion and its services to a global audience.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
-      "11-2032",
-      "13-1121",
-      "27-1014",
       "27-2012",
+      "27-4031",
       "27-4011",
-      "27-4031"
+      "27-4032",
+      "27-1014"
     ],
     "website": "https://www.scientology.org/churches/bringing-scientology-world/golden-era-productions/",
     "swp_sectors": [
       "Information and Communication Technologies - Digital Media"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Canyon Lake Middle School",
     "sector": "Education",
-    "description": "A public middle school serving students in Canyon Lake.",
+    "description": "Canyon Lake Middle School is an educational institution in Lake Elsinore, CA, serving middle school students. It provides academic programs, including AVID and state assessments like CAASPP, along with activities such as science camp, East Coast trips, and athletics like cheer, dance, and PE.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-9039",
-      "13-1071",
+      "11-9032",
       "25-2022",
       "25-2057",
-      "25-9044"
+      "21-1019",
+      "49-9071"
     ],
     "website": "https://clm.leusd.k12.ca.us/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Chaparral High School",
@@ -18888,189 +18481,213 @@
     "website": "https://chs.tvusd.k12.ca.us/",
     "swp_sectors": [
       "Education and Human Development"
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "_description": "Chaparral High School, located in Temecula, CA, is a public high school serving students within the Temecula Valley Unified School District. It provides academic programs, including AP and CTE pathways, and offers various activities and athletics, aiming to prepare students for college and careers.",
+    "_occupations": [
+      "11-9032",
+      "25-2031",
+      "21-1021",
+      "49-9071",
+      "37-1011"
     ]
   },
   {
     "name": "Coachella Valley High School",
     "sector": "Education",
-    "description": "A public high school serving students in the Coachella Valley.",
+    "description": "Coachella Valley High School, part of the Coachella Valley Unified School District, provides education to students in Thermal, CA. It offers various programs including academics, athletics, and counseling, aiming to empower students with knowledge and skills for a diverse world.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-9039",
-      "13-1071",
+      "11-9032",
       "25-2031",
-      "25-2058",
-      "25-9044"
+      "21-1019",
+      "49-9071",
+      "53-3052"
     ],
     "website": "https://cvhs.cvusd.us/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Jurupa School District",
     "sector": "Education",
-    "description": "A school district serving the Jurupa area.",
+    "description": "Jurupa Unified School District is an educational institution in Jurupa Valley, CA, serving students from early childhood through high school across numerous elementary, middle, and high schools. It focuses on academic and personal growth, offering programs like 1:1 Chromebooks and promoting college and career readiness.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
-      "11-9039",
-      "13-1071",
-      "25-2011",
-      "25-2021",
-      "25-2031",
-      "25-9044"
+      "53-3052",
+      "49-9071",
+      "37-1011",
+      "35-1012",
+      "21-1021"
     ],
     "website": "https://jurupausd.org/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Valley View High School",
     "sector": "Education",
-    "description": "A public high school serving students in the Valley View area.",
+    "description": "Valley View High School, located in Moreno Valley, CA, is a California Distinguished School that provides equitable education to prepare students for college and careers. It offers various academic programs, including AP Capstone and Career Technical Education, serving students within the Moreno Valley Unified School District.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-9039",
-      "13-1071",
       "25-2031",
-      "25-2058",
-      "25-9044"
+      "11-9032",
+      "25-9031",
+      "49-9071",
+      "37-1011"
     ],
     "website": "https://valleyview.mvusd.net/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Inland Respite",
     "sector": "Healthcare",
-    "description": "A service providing temporary relief care for individuals and families.",
+    "description": "Inland Respite provides respite care services, offering support to families and caregivers of individuals with disabilities. They operate in locations such as Corona and Palm Desert, utilizing technology like WellSky software to streamline operations and enhance service delivery.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-9151",
-      "13-1071",
-      "21-1021",
-      "21-1099",
-      "25-9044",
-      "31-1131"
+      "31-9099",
+      "21-1093",
+      "11-9151"
     ],
     "website": "https://inlandrespite.com/",
     "swp_sectors": [
-      "Education and Human Development"
-    ]
+      "Health"
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Kaiser Permanente Riverside",
     "sector": "Healthcare",
-    "description": "A healthcare provider offering integrated medical services.",
+    "description": "Kaiser Permanente Riverside Medical Center is a hospital providing comprehensive healthcare services, including 24/7 emergency care, urgent care, and pharmacy services. It offers numerous medical specialties, serving patients in the Southern California region with various health plans.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
-      "11-3031",
       "11-9111",
-      "13-1071",
-      "15-1211",
       "29-1141",
-      "29-2018",
-      "31-1131"
+      "29-2052",
+      "31-9092",
+      "49-9071"
     ],
     "website": "https://healthy.kaiserpermanente.org/southern-california/facilities/riverside-medical-center-100062",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Southwest Healthcare Rancho",
     "sector": "Healthcare",
-    "description": "A healthcare provider offering a range of medical services.",
+    "description": "Southwest Healthcare Rancho Springs Hospital in Murrieta, CA, provides comprehensive healthcare services including emergency, maternity, heart and vascular, and stroke care. With 111 physicians, it serves over 10,000 emergency visits and delivers hundreds of babies annually, recognized for high-quality maternity and stroke care.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
-      "11-3031",
-      "11-9111",
-      "13-1071",
-      "15-1211",
       "29-1141",
-      "31-1131"
+      "11-9111",
+      "31-1131",
+      "29-2034",
+      "49-9071"
     ],
     "website": "https://swhranchosprings.com/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Murrieta Health & Rehab",
     "sector": "Healthcare",
-    "description": "A facility providing health and rehabilitation services.",
+    "description": "Murrieta Health and Rehabilitation Center is a 145-bed skilled nursing facility in Murrieta, California, providing 24-hour personal skilled care since 1999. They specialize in post-acute rehabilitation and orthopedic care, offering physical, occupational, and speech therapy to help residents regain independence.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-9111",
-      "13-1071",
-      "21-1091",
-      "29-1129",
-      "29-1141",
-      "31-2021"
+      "31-1131",
+      "29-2061",
+      "29-1127",
+      "31-2021",
+      "31-2011"
     ],
     "website": "https://murrietahcc.com/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Promedica Skilled Nursing & Rehab",
     "sector": "Healthcare",
-    "description": "A facility offering skilled nursing and rehabilitation services.",
+    "description": "ProMedica Skilled Nursing & Rehab provides short-term and long-term skilled nursing care, rehabilitation, and memory care services. It serves residents needing post-acute recovery, therapy, and comprehensive medical support. Operating facilities with 51-100 employees each, it is part of a larger healthcare system.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-9111",
-      "13-1071",
-      "21-1091",
-      "29-1129",
       "29-1141",
+      "29-2061",
       "31-1131",
-      "31-2021"
+      "31-2021",
+      "11-9111"
     ],
     "website": "https://promedicaskillednursing.org/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "BIGHORN Mountains Course",
     "sector": "Arts & Entertainment",
-    "description": "A golf course, likely part of a resort or club.",
+    "description": "BIGHORN Golf Club is a luxury club in Palm Desert, CA, offering world-class golf, fine dining, spa & wellness, and various amenities. It serves members seeking an exclusive lifestyle, with key activities including golf, hospitality, and property sales.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
+      "37-1012",
+      "35-1011",
       "11-9072",
-      "13-1199",
-      "27-2022",
-      "45-2011"
+      "49-9071",
+      "41-9022"
     ],
     "website": "https://www.bighorngolf.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Hyatt Regency Indian Wells",
@@ -19089,95 +18706,96 @@
     "website": "https://www.hyattindianwells.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Omni Rancho Las Palmas Resort",
     "sector": "Hospitality & Food Service",
-    "description": "A resort offering accommodation, golf, and spa services.",
+    "description": "Omni Rancho Las Palmas Resort & Spa is a resort in Rancho Mirage, California, offering accommodations, dining, golf on three courses, a full-service spa, and a family-friendly waterpark. It serves families, couples, and business travelers seeking leisure and event facilities in the Coachella Valley.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
-      "11-3012",
-      "11-9072",
-      "11-9179",
-      "13-1199"
+      "11-9081",
+      "11-9051",
+      "35-1011",
+      "31-9011",
+      "49-9071"
     ],
     "website": "https://www.omnihotels.com/hotels/palm-springs-rancho-las-palmas",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Renaissance Esmeralda Resort",
     "sector": "Hospitality & Food Service",
-    "description": "A resort hotel providing lodging, dining, and event facilities.",
+    "description": "The Renaissance Esmeralda Resort & Spa, Indian Wells is a hospitality organization in California's Coachella Valley, offering modern guest rooms, a sandy beach pool, a spa, and a 24/7 fitness center. It serves leisure travelers, including families and groups, with seven dining outlets and 213,000 square feet of event space.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
-      "11-3012",
-      "11-9179",
-      "13-1199",
-      "53-5022"
+      "11-9081",
+      "11-9051",
+      "35-1011",
+      "37-1011",
+      "49-9071"
     ],
     "website": "https://www.marriott.com/en-us/hotels/pspsr-renaissance-esmeralda-resort-and-spa-indian-wells/overview/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Savoury's",
     "sector": "Hospitality & Food Service",
-    "description": "A restaurant or catering service known for its savory dishes.",
+    "description": "Savoury's is a full-service catering company based in Palm Springs, California, led by Chef Brad Toles. They specialize in creating exceptional, customized menus and innovative food presentations for events, supported by quality food and caring service staff.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-1011",
-      "11-9179",
-      "13-1199",
-      "35-2013"
+      "11-9051",
+      "13-1121",
+      "35-1011",
+      "35-1012",
+      "49-9071"
     ],
     "website": "https://savourys.com/",
     "swp_sectors": [
       "Retail, Hospitality and Tourism"
-    ]
-  },
-  {
-    "name": "Coachella Police Department",
-    "sector": "Government",
-    "description": "Provides law enforcement and public safety services for the city of Coachella.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-1011",
-      "11-3012"
-    ],
-    "website": "https://www.coachella.org/departments/police-department",
-    "swp_sectors": [
-      "Public Safety"
-    ]
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Robert Presley Detention Center",
     "sector": "Government",
-    "description": "A correctional facility operated by the county for the detention of individuals awaiting trial or serving sentences.",
+    "description": "The Robert Presley Detention Center, part of the Riverside County Sheriff's Corrections Division, is a correctional facility in Riverside, CA. It primarily serves to house inmates, managing their visits and ensuring security for the community.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-3012",
-      "11-9151"
+      "33-3012",
+      "33-1011",
+      "21-1092",
+      "29-1141",
+      "49-9071"
     ],
     "website": "https://www.riversidesheriff.org/678/Robert-Presley-Detention-Center",
     "swp_sectors": [
       "Public Safety"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Marine Corps Base",
@@ -19196,328 +18814,359 @@
     "website": "https://www.29palms.marines.mil/",
     "swp_sectors": [
       "Public Safety"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Superior Electrical Mechanical",
     "sector": "Construction",
-    "description": "Offers integrated electrical and mechanical contracting services for commercial and industrial clients.",
+    "description": "Superior Electrical, Mechanical & Plumbing, Inc. is a commercial construction and service contractor specializing in electrical, mechanical, and plumbing. They serve grocery, convenience retailers, and specialty commercial projects, offering new construction, tenant improvements, remodels, design, and 24/7 emergency services across multiple states.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-9041",
-      "17-2071",
-      "17-2141",
-      "49-2094",
+      "11-9021",
+      "47-1011",
+      "47-2111",
+      "47-2152",
       "49-9021"
     ],
     "website": "https://www.superioremp.com/",
     "swp_sectors": [
       "Energy, Construction and Utilities"
-    ]
-  },
-  {
-    "name": "Environmental Systems Research",
-    "sector": "Professional Services",
-    "description": "A company focused on research and development of environmental systems or technologies.",
-    "regions": [
-      "IE/D"
     ],
-    "occupations": [
-      "11-9121",
-      "17-2081",
-      "19-2041",
-      "15-2051",
-      "15-1211"
-    ],
-    "website": "https://www.esri.com/",
-    "swp_sectors": [
-      "Agriculture, Water and Environmental Technologies"
-    ]
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Guard Systems",
     "sector": "Administrative Services",
-    "description": "A company providing security system installation, monitoring, and related services.",
+    "description": "Guard-Systems, Inc. provides customized contract security services, including residential, commercial, and campus security, fire/life/safety, and emergency response. As one of the largest privately held contract security providers in the Southwest, they serve various sectors like banking, retail, and industrial clients.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
+      "33-9032",
+      "33-1091",
+      "13-1151",
       "11-3012",
-      "49-2022",
-      "11-3013"
+      "49-9071"
     ],
     "website": "https://guardsystemsinc.com/",
     "swp_sectors": [
-      "Energy, Construction and Utilities"
-    ]
+      "Public Safety"
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Mr Clean Maintenance Systems",
     "sector": "Administrative Services",
-    "description": "Provides commercial cleaning and maintenance services for buildings and facilities.",
+    "description": "Mr. Clean Maintenance Systems, an employee-owned company in the Inland Empire, provides comprehensive commercial and retail cleaning services, including specialized floor maintenance, construction cleanup, and food service sanitation. Established in 1980, it serves businesses, offices, and educational facilities with hundreds of employees.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-3013",
-      "11-9179"
+      "37-1011",
+      "49-9071",
+      "11-3012",
+      "11-3013"
     ],
     "website": "https://www.mrcleansystems.com/",
     "swp_sectors": [
       "Energy, Construction and Utilities"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Arroyo Valley High School",
     "sector": "Education",
-    "description": "A public high school serving students in the Arroyo Valley area.",
+    "description": "Arroyo Valley High School is a public high school in San Bernardino, CA, serving grades 9-12 with a total enrollment of 2,884 students. It offers various academies like Anivation Tech and Digital Media Arts, along with departments in subjects such as English, Math, and Science. The school provides a comprehensive educational experience, including special programs like AVID and JROTC, and dual enrollment opportunities through Arroyo Valley University (AVU).",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-9039",
+      "11-9032",
       "25-2031",
       "25-2058",
-      "25-9044",
-      "11-3121"
+      "49-9071",
+      "15-1231"
     ],
     "website": "https://arroyovalley.sbcusd.com/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Bloomington High School",
     "sector": "Education",
-    "description": "A public high school located in Bloomington, providing secondary education.",
+    "description": "Bloomington High School, part of the Colton Joint Unified School District, provides academic, athletic, and career technical education (CTE) programs, including ROP, Dual Immersion, and NJROTC. It serves high school students in Bloomington, California, preparing them for graduation and future endeavors.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-9039",
+      "11-9032",
       "25-2031",
-      "25-2058",
-      "25-9044",
-      "11-3121"
+      "25-3099",
+      "21-1019",
+      "49-9071"
     ],
     "website": "https://bloomingtonhighschool.cjusd.net/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Cajon High School",
     "sector": "Education",
-    "description": "A public high school in San Bernardino, offering educational programs for secondary students.",
+    "description": "Cajon High School, located in San Bernardino, CA, serves grades 9-12 with a total enrollment of 2,790 students. It provides academic departments, career and technical education, and an International Baccalaureate Program, aiming to develop college and career-ready students.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-9039",
       "25-2031",
-      "25-2058",
-      "25-9044",
-      "11-3121"
+      "25-3099",
+      "35-1012",
+      "37-1011",
+      "49-9071"
     ],
     "website": "https://cajon.sbcusd.com/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Etiwanda High School",
     "sector": "Education",
-    "description": "A public high school in Rancho Cucamonga, serving the Etiwanda community.",
+    "description": "Etiwanda High School, part of the Chaffey Joint Union High School District, provides a quality education to high school students in the Inland Empire region of California. It offers academic programs including AP/Honors and CTE, serving over 25,000 students across the district with a focus on college and career readiness.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-9039",
+      "11-9032",
       "25-2031",
-      "25-2058",
-      "25-9044",
-      "11-3121"
+      "21-1019",
+      "49-9071",
+      "29-9091"
     ],
     "website": "https://ehs.cjuhsd.net/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Fontana High School",
     "sector": "Education",
-    "description": "A public high school in Fontana, providing educational services to the local student population.",
+    "description": "Fontana High School is a California public high school serving 2,547 students with a 96% graduation rate. It offers 13 Career Technical Pathways, Advanced Placement, AVID, and MCJROTC programs, alongside 55 sports teams and various clubs, preparing students for college and careers.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-9039",
+      "11-9032",
       "25-2031",
-      "25-2058",
-      "25-9044",
-      "11-3121"
+      "25-3011",
+      "21-1093",
+      "49-9071"
     ],
     "website": "https://fohi.fusd.net/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Rialto High School",
     "sector": "Education",
-    "description": "A public high school in Rialto, offering educational programs for grades 9-12.",
+    "description": "Rialto High School, part of the Rialto Unified School District, provides comprehensive education and fosters personal growth for high school students in Rialto, Colton, Fontana, and San Bernardino. It offers diverse academic departments, Advanced Placement courses, career technical education, and extracurricular activities, preparing students for college, career, and life.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-9039",
+      "11-9032",
       "25-2031",
-      "25-2058",
-      "25-9044",
-      "11-3121"
+      "21-1019",
+      "49-9071",
+      "37-1011"
     ],
     "website": "https://rialtohigh.rialto.k12.ca.us/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Upland High School",
     "sector": "Education",
-    "description": "A public high school in Upland, providing secondary education to its students.",
+    "description": "Upland High School is an educational institution in Upland, CA, providing academic programs, career technical education, and athletic opportunities to students. It offers various departments including English, Math, Science, and World Languages, alongside activities like ASB and clubs, serving the local community.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-9039",
-      "25-2031",
-      "25-2058",
-      "25-9044",
-      "11-3121"
+      "11-9032",
+      "25-3099",
+      "49-9071",
+      "49-3023",
+      "47-2031"
     ],
     "website": "https://uhs.upland.k12.ca.us/",
     "swp_sectors": [
       "Education and Human Development"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Hospital of California Institute for Men",
     "sector": "Healthcare",
-    "description": "A correctional facility hospital providing medical care to inmates at the California Institute for Men.",
+    "description": "The California Institution for Men (CIM) is a large correctional facility in Chino, California, housing approximately 4,697 inmates across four facilities. It provides academic, vocational, and substance abuse programs, alongside health care services, to support inmate rehabilitation and re-entry into society.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-9179",
       "29-1141",
-      "29-2018",
-      "31-1131",
-      "11-3012",
-      "11-3131"
+      "31-9092",
+      "29-2053",
+      "33-3012",
+      "49-9071"
     ],
     "website": "https://www.cdcr.ca.gov/facility-locator/cim/",
     "swp_sectors": [
-      "Health"
-    ]
+      "Public Safety"
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Primary Care Association Medical Group",
     "sector": "Healthcare",
-    "description": "A group of healthcare providers focused on delivering primary medical care services.",
+    "description": "Primary Care Associates of California (PCAC) is a medical group specializing in managed care for Medicare-eligible beneficiaries. Since 2007, PCAC has built a comprehensive network of over 400 primary care and 2,600 specialty physicians across Los Angeles, Orange, San Bernardino, San Diego, Riverside, and Ventura Counties, focusing on improving senior health.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-9179",
-      "29-1141",
+      "11-9111",
+      "29-2072",
+      "29-9021",
       "31-9092",
-      "11-3121",
-      "13-2011"
+      "43-6013"
     ],
     "website": "https://www.pcacipa.com/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Hi-Desert Medical Outpatient Rehabilitation",
     "sector": "Healthcare",
-    "description": "Provides outpatient rehabilitation services for patients recovering from injuries or illnesses.",
+    "description": "Hi-Desert Medical Center is a 59-bed acute primary care facility in Joshua Tree, CA, offering a wide range of inpatient and outpatient diagnostic, treatment, and rehabilitation services. It serves the community with a Level IV Trauma Center and a Stroke Ready Receiving Center, along with home health and hospice services.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-9179",
-      "29-1129",
+      "11-9111",
       "29-1141",
-      "31-2021",
-      "31-2011",
-      "29-2099"
+      "29-2061",
+      "31-9092",
+      "49-9071"
     ],
     "website": "https://www.desertcarenetwork.com/locations/detail/hi-desert-medical-center",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Life Stream",
     "sector": "Healthcare",
-    "description": "A blood bank and transfusion service provider, collecting and distributing blood products.",
+    "description": "LifeStream Blood Bank is a nonprofit organization that collects, processes, stores, and distributes blood products and services. It serves over 80 Southern California hospitals and medical facilities across six counties, requiring 500 daily donations to meet patient needs.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-9179",
-      "29-1141",
-      "29-2018",
       "31-9097",
-      "11-3121"
+      "29-1141",
+      "29-2099",
+      "11-9111",
+      "49-9071"
     ],
     "website": "https://www.lstream.org/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "One Legacy",
     "sector": "Healthcare",
-    "description": "An organ, eye, and tissue recovery organization dedicated to saving and healing lives through donation.",
+    "description": "OneLegacy is a non-profit organization dedicated to saving and healing lives through organ, eye, and tissue donation, primarily serving Southern California. They facilitate donations, support donor families, and inspire communities to 'Donate Life.' In 2025, they facilitated 748 organ donors, saving 1,949 lives through transplants, and restored sight for 1,585 individuals.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-9179",
       "29-1141",
-      "29-2018",
-      "11-9151",
-      "11-3121"
+      "21-1022",
+      "11-9111",
+      "31-9093",
+      "49-9071"
     ],
     "website": "https://www.onelegacy.org/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Public Health Department",
     "sector": "Healthcare",
-    "description": "A government agency responsible for promoting and protecting the health of the community.",
+    "description": "The San Bernardino County Department of Public Health promotes, improves, and protects the health, wellness, safety, and quality of life for residents across San Bernardino County. They prevent disease, protect against environmental hazards, promote healthy behaviors, and assure accessible health services.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-9179",
+      "11-9111",
+      "19-4042",
       "21-1091",
-      "29-1141",
-      "11-3012",
-      "13-1041",
-      "11-3121"
+      "21-1094",
+      "29-1141"
     ],
     "website": "https://dph.sbcounty.gov/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Dignity Health-St. Bernardine Medical Center",
@@ -19538,7 +19187,11 @@
     "website": "https://www.dignityhealth.org/socal/locations/stbernardinemedical",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "_description": "Dignity Health-St. Bernardine Medical Center is a Southern California hospital providing comprehensive healthcare services to San Bernardino and surrounding communities. Key offerings include emergency services, heart care, orthopedics, stroke care, and surgical weight loss, demonstrating a commitment to patient well-being and community health.",
+    "_swp_sector": "Health"
   },
   {
     "name": "Kindred Hospital Rancho Cucamonga",
@@ -19557,71 +19210,74 @@
     "website": "https://www.kindredhospitals.com/locations/california/rancho",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true
   },
   {
     "name": "Naval Hospital Twentynine Plms",
     "sector": "Healthcare",
-    "description": "Naval Hospital Twentynine Plms, in 29 Palms Mcb, (San Bernardino County). General Medical and Surgical Hospitals. 500-999 employees.",
+    "description": "Naval Hospital Twentynine Palms is a U.S. Department of Defense organization providing comprehensive healthcare services, including primary care, surgery, emergency care, mental health, and dental services. It serves military personnel and their families, operating within the Military Health System. The hospital also focuses on promoting healthy lifestyles, as evidenced by its nine consecutive Blue H Awards.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "29-1031",
-      "29-1124",
-      "29-1125",
-      "29-1126",
-      "29-1128",
-      "29-1129",
       "29-1141",
-      "29-1292",
-      "29-2018",
-      "29-2031"
+      "29-2061",
+      "31-1131",
+      "11-9111",
+      "49-9071"
     ],
     "website": "https://twentynine-palms.tricare.mil/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Totally Kids Rehab Hospital",
     "sector": "Healthcare",
-    "description": "A specialized hospital providing rehabilitation services for children with complex medical needs.",
+    "description": "Totally Kids Rehabilitation Hospital provides safe, effective, and compassionate rehabilitation and habilitation services for children, including pediatric acute rehabilitation, subacute care, and a program for medically complex newborns. Located in Loma Linda, CA, it serves children with various medical needs.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-9179",
       "29-1141",
-      "29-2018",
-      "31-2021",
-      "31-2011",
-      "29-2099",
-      "11-3131"
+      "29-2061",
+      "31-1131",
+      "29-1126",
+      "31-2011"
     ],
     "website": "https://totallykids.com/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Institute for Behavioral Health",
     "sector": "Healthcare",
-    "description": "Provides specialized treatment and support for individuals with behavioral and mental health conditions.",
+    "description": "Institute for Behavioral Health (IBH) provides contemporary ABA therapy and other evidence-based practices for children with autism and special needs. They offer in-home, in-school, and teleABA services, parent support, and social skills groups, serving San Bernardino and Riverside Counties with a team of over 200 staff.",
     "regions": [
       "IE/D"
     ],
     "occupations": [
-      "11-9179",
-      "21-1018",
-      "29-1141",
-      "29-2053",
-      "11-3121"
+      "29-1129",
+      "29-1127",
+      "31-2011",
+      "21-1093",
+      "11-9111"
     ],
     "website": "https://www.ibhcare.com/",
     "swp_sectors": [
       "Health"
-    ]
+    ],
+    "enrichment_attempted": true,
+    "identity_verified": true,
+    "enrichment_promoted": true
   },
   {
     "name": "Health and Human Services",
