@@ -1415,6 +1415,14 @@ def enrich(
             return False
         if force:
             return True
+        # Already-promoted employers are done — their canonical fields are
+        # populated and shadow fields were intentionally cleared by
+        # cutover. Without this check, every default re-run after a
+        # cutover would reprocess the entire promoted set (the
+        # missing-shadow-fields check below incorrectly flags them as
+        # incomplete). To re-enrich a promoted employer, use --force.
+        if e.get("enrichment_promoted") is True:
+            return False
         if not skip_probe and e.get("identity_verified") is not True:
             return True
         if not skip_enrich and not (
