@@ -1141,7 +1141,7 @@
   {
     "name": "Palm Village Retirement Community",
     "sector": "Healthcare",
-    "description": "Palm Village Retirement Community is a tax-exempt non-profit 501(c)(3) organization and licensed Continuing Care Retirement Community (CCRC) in California. It offers five levels of care, including Independent Living, Assisted Living, Skilled Nursing, Assisted Living Memory Care, and Alzheimer's and Dementia Care, serving seniors on its 17-acre campus.",
+    "description": "Palm Village is a tax-exempt non-profit 501(c)(3) organization and a licensed Continuing Care Retirement Community (CCRC) in California. It offers five levels of care, including independent living, assisted living, skilled nursing, and memory care, serving seniors by providing a secure and healthy living environment, meals, and various activities on its 17-acre campus.",
     "regions": [
       "CVML"
     ],
@@ -1367,7 +1367,7 @@
   {
     "name": "Central Valley Meat Company",
     "sector": "Manufacturing",
-    "description": "Central Valley Meat Company is a family-owned and operated manufacturing organization dedicated to providing high-quality meat products. They prioritize food safety, humane livestock handling, and sustainability, serving customers with a commitment to continuous improvement and social responsibility.",
+    "description": "Central Valley Meat is a family-owned and operated company dedicated to providing high-quality, safe meat products. They prioritize continuous improvement, best-in-class food safety, and humane livestock handling, serving customers with BRC Certified products. The company emphasizes responsibility and sustainability in its operations.",
     "regions": [
       "CVML"
     ],
@@ -19624,28 +19624,6 @@
     ]
   },
   {
-    "name": "Tulare Joint Union High School",
-    "sector": "Education",
-    "description": "The Tulare Joint Union High School District operates three comprehensive high schools, one continuation high school, one community day school, two charter high schools, and an adult school. It serves students by providing quality education and preparing them for future success, with a focus on academic progress and college/career readiness.",
-    "regions": [
-      "CVML"
-    ],
-    "occupations": [
-      "11-9032",
-      "21-1021",
-      "25-3011",
-      "49-9071",
-      "53-3052"
-    ],
-    "website": "https://www.tjuhsd.org/",
-    "swp_sectors": [
-      "Education and Human Development"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
     "name": "Health and Human Services",
     "sector": "Healthcare",
     "description": "Tulare County Health and Human Services Agency (TCHHSA) provides comprehensive health and social services to Tulare County residents. It operates healthcare centers, offers public health programs like WIC, mental health support, and various disease prevention, testing, and treatment services, serving diverse populations including low-income individuals and families.",
@@ -19712,28 +19690,6 @@
     "enrichment_promoted": true
   },
   {
-    "name": "Harris Ranch Beef",
-    "sector": "Manufacturing",
-    "description": "Harris Ranch Beef Company processes high volumes of beef, serving retail, e-commerce, export, and foodservice customers, including some of the largest distributors in the U.S. They are committed to animal welfare, sustainability, and stringent food safety and quality assurance in their beef products.",
-    "regions": [
-      "CVML"
-    ],
-    "occupations": [
-      "11-3051",
-      "19-1012",
-      "49-9041",
-      "51-1011",
-      "51-9061"
-    ],
-    "website": "https://www.harrisranchbeef.com/",
-    "swp_sectors": [
-      "Agriculture, Water and Environmental Technologies"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
     "name": "Community Medical Imaging",
     "sector": "Healthcare",
     "description": "Community Medical Imaging provides digital medical imaging services, including MRI, CT, nuclear medicine, and ultrasound, across multiple facilities in Fresno and Clovis, California. They specialize in breast care at the Marjorie E. Radin Breast Care Center, serving patients with advanced screening and diagnostic needs.",
@@ -19779,94 +19735,6 @@
     "enrichment_attempted": true
   },
   {
-    "name": "St. Agnes Medical Center",
-    "sector": "Healthcare",
-    "description": "Saint Agnes Medical Center is a healthcare provider in California's Central Valley, offering a wide array of services including heart and vascular care, maternity, bariatrics, orthopaedics, and cancer screenings. They serve the community with advanced technology and personalized care, focusing on healing body, mind, and spirit.",
-    "regions": [
-      "CVML"
-    ],
-    "occupations": [
-      "29-1141",
-      "11-9111",
-      "29-2055",
-      "31-9092",
-      "49-9071"
-    ],
-    "website": "https://www.samc.com/",
-    "swp_sectors": [
-      "Health"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
-    "name": "Palm Village",
-    "sector": "Healthcare",
-    "description": "Palm Village is a tax-exempt non-profit 501(c)(3) organization and a licensed Continuing Care Retirement Community (CCRC) in California. It offers five levels of care, including independent living, assisted living, skilled nursing, and memory care, serving seniors by providing a secure and healthy living environment, meals, and various activities on its 17-acre campus.",
-    "regions": [
-      "CVML"
-    ],
-    "occupations": [
-      "29-1141",
-      "29-2061",
-      "31-1131",
-      "11-9111",
-      "49-9071"
-    ],
-    "website": "https://www.palmvillage.com/",
-    "swp_sectors": [
-      "Health"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
-    "name": "John's Incredible Pizza",
-    "sector": "Arts & Entertainment",
-    "description": "John's Incredible Pizza Company operates family entertainment centers offering all-you-can-eat buffets with pizza, pasta, and salads, alongside over 100 games, indoor rides, and attractions. They specialize in birthday parties and group events, serving families and communities across multiple California locations and Las Vegas.",
-    "regions": [
-      "CVML"
-    ],
-    "occupations": [
-      "11-9051",
-      "11-9072",
-      "35-1012",
-      "49-9071",
-      "49-9041"
-    ],
-    "website": "https://johnspizza.com/",
-    "swp_sectors": [
-      "Retail, Hospitality and Tourism"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
-    "name": "Fresno County Sheriff",
-    "sector": "Government",
-    "description": "The Fresno County Sheriff-Coroner's Office provides law enforcement and correctional services to Fresno County, California. Key activities include patrol, investigations, operating the county jail, coroner services, and various community programs aimed at crime prevention and public safety.",
-    "regions": [
-      "CVML"
-    ],
-    "occupations": [
-      "33-3051",
-      "33-3012",
-      "33-3021",
-      "19-4092",
-      "49-9071"
-    ],
-    "website": "https://www.fresnosheriff.org/",
-    "swp_sectors": [
-      "Public Safety"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
     "name": "Superior Court Executive Office",
     "sector": "Government",
     "description": "The Superior Court of California, County of Tulare, provides fair and timely justice by resolving disputes, upholding laws, and protecting rights for over 471,013 people in Tulare County. Key activities include managing various divisions like Civil, Criminal, Family, Juvenile, and Traffic, and offering online services such as eFiling and virtual public counters.",
@@ -19883,28 +19751,6 @@
     "website": "https://www.tulare.courts.ca.gov/",
     "swp_sectors": [
       "Public Safety"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
-    "enrichment_promoted": true
-  },
-  {
-    "name": "Central Valley Meat",
-    "sector": "Manufacturing",
-    "description": "Central Valley Meat is a family-owned and operated company dedicated to providing high-quality, safe meat products. They prioritize continuous improvement, best-in-class food safety, and humane livestock handling, serving customers with BRC Certified products. The company emphasizes responsibility and sustainability in its operations.",
-    "regions": [
-      "CVML"
-    ],
-    "occupations": [
-      "51-1011",
-      "51-3092",
-      "49-9041",
-      "51-9061",
-      "19-1012"
-    ],
-    "website": "https://www.centralvalleymeat.com/",
-    "swp_sectors": [
-      "Agriculture, Water and Environmental Technologies"
     ],
     "enrichment_attempted": true,
     "identity_verified": true,
@@ -43880,28 +43726,6 @@
     "enrichment_promoted": true
   },
   {
-    "name": "Enloe Health",
-    "sector": "Healthcare",
-    "description": "Enloe Health is a proudly independent, nonprofit health system in Chico, CA, offering an array of medical services. It operates a 264-bed hospital, a Level II Trauma Center, and an air ambulance service, providing comprehensive care including cancer, heart, and orthopedic services to the community.",
-    "regions": [
-      "FN"
-    ],
-    "occupations": [
-      "29-1141",
-      "31-1131",
-      "31-9092",
-      "11-9111",
-      "29-2034"
-    ],
-    "website": "https://www.enloe.org",
-    "swp_sectors": [
-      "Health"
-    ],
-    "identity_verified": true,
-    "enrichment_attempted": true,
-    "enrichment_promoted": true
-  },
-  {
     "name": "Enloe Homecare",
     "sector": "Healthcare",
     "description": "Enloe Health is a proudly independent, nonprofit health system in Chico, CA, offering a wide array of medical services, including a 264-bed hospital, a Level II Trauma Center, and an air ambulance service. They provide comprehensive care in areas like cancer, heart, orthopedics, and maternity, serving patients across the region.",
@@ -44885,7 +44709,7 @@
     "enrichment_promoted": true
   },
   {
-    "name": "Modoc National Forest",
+    "name": "US Forest Service - Modoc National Forest",
     "sector": "Government",
     "description": "Modoc National Forest, located in California's northeastern corner, is a U.S. government organization managing diverse landscapes including volcanic Cascades, Warner Mountains, and the Devil's Garden Wild Horse Territory. It serves the public by offering recreational opportunities like hiking, fishing, and OHV use, managing natural resources, and overseeing wild horse adoption programs.",
     "regions": [
@@ -44896,28 +44720,6 @@
       "19-1032",
       "19-4071",
       "33-2022",
-      "49-9071"
-    ],
-    "website": "https://www.fs.usda.gov/modoc",
-    "swp_sectors": [
-      "Agriculture, Water and Environmental Technologies"
-    ],
-    "identity_verified": true,
-    "enrichment_attempted": true,
-    "enrichment_promoted": true
-  },
-  {
-    "name": "US Forest Service - Modoc National Forest",
-    "sector": "Government",
-    "description": "The Modoc National Forest, managed by the U.S. Forest Service, oversees diverse landscapes in California's northeastern corner. It provides recreational opportunities, manages natural resources, fire information, and the Devil's Garden Wild Horse Territory, serving the public through permits, timber sales, and trail development.",
-    "regions": [
-      "FN"
-    ],
-    "occupations": [
-      "19-1032",
-      "19-4071",
-      "33-2022",
-      "47-2073",
       "49-9071"
     ],
     "website": "https://www.fs.usda.gov/modoc",
@@ -44948,28 +44750,6 @@
     ],
     "identity_verified": true,
     "enrichment_attempted": true,
-    "enrichment_promoted": true
-  },
-  {
-    "name": "Forest Service",
-    "sector": "Government",
-    "description": "The U.S. Forest Service manages 193 million acres of national forests and grasslands across 43 states, including California's Far North region. It sustains natural resources, provides recreation, and offers technical assistance to communities and landowners, ensuring healthy ecosystems for future generations.",
-    "regions": [
-      "FN"
-    ],
-    "occupations": [
-      "19-1032",
-      "45-4011",
-      "33-2011",
-      "19-4071",
-      "49-9071"
-    ],
-    "website": "https://www.fs.usda.gov",
-    "swp_sectors": [
-      "Agriculture, Water and Environmental Technologies"
-    ],
-    "enrichment_attempted": true,
-    "identity_verified": true,
     "enrichment_promoted": true
   },
   {
@@ -45289,14 +45069,14 @@
     ],
     "occupations": [
       "19-1032",
-      "19-4071",
+      "45-4011",
       "33-2011",
-      "49-9071",
-      "11-9121"
+      "19-4071",
+      "49-9071"
     ],
     "website": "https://www.fs.usda.gov",
     "swp_sectors": [
-      "Energy, Construction and Utilities"
+      "Agriculture, Water and Environmental Technologies"
     ],
     "enrichment_attempted": true,
     "identity_verified": true,
