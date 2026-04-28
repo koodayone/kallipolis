@@ -90,30 +90,77 @@ def precompute_partnership_alignment(driver, college_names: list[str] | None = N
 
 
 def _build_alignment_rows(session, college: str) -> list[dict]:
-    """Gather the per-employer alignment data for one college.
+    """Gather the per-employer alignment data for one college, ranked
+    on institutional curriculum-depth at the (college × employer's
+    hires SOCs) intersection.
 
-    Uses three focused queries rather than one monolithic traversal so
-    each piece is independently readable and the row assembly happens in
-    Python. Returns a list of dicts ready to UNWIND into a batched MERGE.
+    Per the institutional-deference architectural commitment:
+      - alignment_score is the count of this college's courses with a
+        PREPARES_FOR edge to ANY of this employer's hires SOCs. The
+        PREPARES_FOR edge is materialized from the Chancellor's Office
+        TOP-CIP crosswalk and the BLS/NCES CIP-SOC crosswalk; the
+        ranking is institutional, not skills-derived.
+      - gap_count is the count of this employer's hires SOCs that the
+        college has zero institutionally-aligned curriculum for. A
+        higher gap_count signals an institutional curriculum gap, not
+        a skill gap.
+      - aligned_skills and gap_skills remain on the edge as
+        characterization (which competencies the institutionally-
+        aligned course set develops, and which competencies the
+        employer's required-skill universe still asks for that the
+        aligned set does not develop). They no longer drive the rank.
+
+    Three focused queries; row assembly in Python. Returns a list of
+    dicts ready to UNWIND into a batched MERGE.
     """
-    # Aligned and gap skill sets per employer.
+    # Institutional alignment per employer: count courses at this
+    # college whose PREPARES_FOR edge points at any of this employer's
+    # hires SOCs in shared regions, and the SOCs the college has no
+    # aligned curriculum for.
     alignment_data = session.run("""
         MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)
-        MATCH (emp)-[:HIRES_FOR]->(:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)
-        OPTIONAL MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk)
-        WITH emp, sk, count(DISTINCT c) AS dev_count
+        MATCH (emp)-[:HIRES_FOR]->(occ:Occupation)
+        OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)
+        WITH emp, occ, count(DISTINCT course) AS course_count, collect(DISTINCT course) AS courses
         WITH emp,
-             collect(DISTINCT CASE WHEN dev_count > 0 THEN sk.name END) AS aligned_raw,
-             collect(DISTINCT CASE WHEN dev_count = 0 THEN sk.name END) AS gap_raw
+             sum(course_count) AS alignment_score,
+             sum(CASE WHEN course_count = 0 THEN 1 ELSE 0 END) AS gap_count,
+             apoc.coll.toSet(apoc.coll.flatten(collect(courses))) AS aligned_courses_raw
         RETURN emp.name AS employer,
-               [s IN aligned_raw WHERE s IS NOT NULL] AS aligned_skills,
-               [s IN gap_raw WHERE s IS NOT NULL] AS gap_skills
-    """, college=college).data()
+               alignment_score,
+               gap_count,
+               aligned_courses_raw
+    """, college=college).data() if _has_apoc(session) else _build_alignment_rows_no_apoc(session, college)
 
     if not alignment_data:
         return []
 
-    # Top-wage occupation per employer in shared regions.
+    # Characterization: aligned_skills (skills the
+    # institutionally-aligned courses develop) and gap_skills (skills
+    # the employer's hires require that the aligned course set does
+    # not develop). These are no longer the basis of ranking; they
+    # describe what the institutionally-aligned curriculum teaches
+    # and where the competency profile leaves a residual gap.
+    skills_data = session.run("""
+        MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)
+        OPTIONAL MATCH (emp)-[:HIRES_FOR]->(occ:Occupation)
+        OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)
+        OPTIONAL MATCH (course)-[:DEVELOPS]->(asg:Skill)
+        OPTIONAL MATCH (occ)-[:REQUIRES_SKILL]->(req:Skill)
+        WITH emp,
+             collect(DISTINCT asg.name) AS aligned_raw,
+             collect(DISTINCT req.name) AS required_raw
+        RETURN emp.name AS employer,
+               [s IN aligned_raw WHERE s IS NOT NULL] AS aligned_skills,
+               [s IN required_raw WHERE s IS NOT NULL AND NOT s IN aligned_raw] AS gap_skills
+    """, college=college).data()
+    skills_map = {
+        r["employer"]: (r["aligned_skills"] or [], r["gap_skills"] or [])
+        for r in skills_data
+    }
+
+    # Top-wage occupation per employer in shared regions (unchanged —
+    # institutional COE wage data, already deterministic).
     top_occ_data = session.run("""
         MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer),
               (emp)-[:HIRES_FOR]->(occ:Occupation)<-[d:DEMANDS]-(r)
@@ -128,14 +175,20 @@ def _build_alignment_rows(session, college: str) -> list[dict]:
         for r in top_occ_data
     }
 
-    # Pipeline size per employer (students with ≥3 matching core skills).
+    # Pipeline size per employer: students whose primary_focus is in a
+    # department that has institutionally-aligned curriculum for any of
+    # this employer's hires SOCs. Mirrors the per-proposal student-
+    # pipeline gate (gather.py::_gather_student_pipeline) which is
+    # department-membership-based, not skill-overlap-based.
     pipeline_data = session.run("""
         MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)
-              -[:HIRES_FOR]->(:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)
-              <-[:HAS_SKILL]-(st:Student)
-        WHERE EXISTS { (st)-[:ENROLLED_IN]->(:Course {college: $college}) }
-        WITH emp, st, count(DISTINCT sk) AS matching_skills
-        WHERE matching_skills >= 3
+              -[:HIRES_FOR]->(occ:Occupation)
+        MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)
+        MATCH (course)<-[:CONTAINS]-(dept:Department)
+        WITH emp, collect(DISTINCT dept.name) AS aligned_depts
+        OPTIONAL MATCH (st:Student)
+        WHERE st.primary_focus IN aligned_depts
+          AND EXISTS { (st)-[:ENROLLED_IN]->(:Course {college: $college}) }
         RETURN emp.name AS employer, count(DISTINCT st) AS pipeline_size
     """, college=college).data()
     pipeline_map = {r["employer"]: r["pipeline_size"] for r in pipeline_data}
@@ -143,18 +196,50 @@ def _build_alignment_rows(session, college: str) -> list[dict]:
     rows: list[dict] = []
     for row in alignment_data:
         emp = row["employer"]
-        aligned = row["aligned_skills"] or []
-        gap = row["gap_skills"] or []
+        aligned, gap = skills_map.get(emp, ([], []))
         top_title, top_wage = top_map.get(emp, (None, None))
         rows.append({
             "employer": emp,
             "aligned_skills": aligned,
             "gap_skills": gap,
-            "alignment_score": len(aligned),
-            "gap_count": len(gap),
+            "alignment_score": row["alignment_score"] or 0,
+            "gap_count": row["gap_count"] or 0,
             "top_occupation": top_title,
             "top_wage": top_wage,
             "pipeline_size": pipeline_map.get(emp, 0),
         })
 
     return rows
+
+
+def _has_apoc(session) -> bool:
+    """Detect whether APOC is available; fall back to a no-APOC path
+    if not. APOC is bundled with neo4j 5.x community edition by default
+    but is occasionally absent in custom builds; guarding the fallback
+    means this surface degrades gracefully without a hard dependency."""
+    try:
+        session.run("RETURN apoc.version() AS v").single()
+        return True
+    except Exception:
+        return False
+
+
+def _build_alignment_rows_no_apoc(session, college: str) -> list[dict]:
+    """APOC-free fallback for the alignment query. Same semantics as the
+    APOC-enabled path, just without the flatten/toSet helpers — the
+    aligned_courses_raw column is dropped (downstream code doesn't use
+    it; it was a debug aid in early development). The institutional
+    ranking signals (alignment_score, gap_count) are unaffected."""
+    return session.run("""
+        MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)
+        MATCH (emp)-[:HIRES_FOR]->(occ:Occupation)
+        OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)
+        WITH emp, occ, count(DISTINCT course) AS course_count
+        WITH emp,
+             sum(course_count) AS alignment_score,
+             sum(CASE WHEN course_count = 0 THEN 1 ELSE 0 END) AS gap_count
+        RETURN emp.name AS employer,
+               alignment_score,
+               gap_count,
+               [] AS aligned_courses_raw
+    """, college=college).data()
