@@ -67,6 +67,13 @@ WHERE toLower(s.primary_focus) CONTAINS 'biology'
 RETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed
 ORDER BY s.courses_completed DESC
 
+Question: "Students specializing in 'construction technology'"
+MATCH (s:Student)-[:ENROLLED_IN]->(:Course {college: $college})
+WITH DISTINCT s
+WHERE toLower(s.primary_focus) CONTAINS 'construction'
+RETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed
+ORDER BY s.courses_completed DESC
+
 Question: "Students who completed more than 15 courses"
 MATCH (s:Student)-[:ENROLLED_IN]->(:Course {college: $college})
 WITH DISTINCT s
