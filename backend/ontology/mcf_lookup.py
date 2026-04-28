@@ -21,26 +21,67 @@ logger = logging.getLogger(__name__)
 _MCF_DIR = Path(__file__).parent / "mastercoursefiles"
 
 
-def _normalize_course_code(code: str) -> str:
-    """Normalize a course code by stripping spaces between prefix and number.
+def _strip_numeric_padding(code: str) -> str:
+    """Strip leading zeros from the numeric portion that follows the
+    alphabetic prefix.
+
+    The Master Course File submissions use per-college conventions for
+    course-id padding. Foothill's MCF zero-pads the numeric portion to
+    three digits ("ATHL004", "ART003L", "PHED010A", "C S 001A"), while
+    most peer colleges and the catalog scrapers use the un-padded
+    integer form ("ATHL 4", "ART 3L", "PHED 10A", "C S 1A"). Without
+    canonicalizing this difference, two-thirds of Foothill's catalog
+    courses fail to match their MCF entries — the gap that surfaced as
+    32% TOP6 coverage versus peers' 95-99%.
+
+    Strategy: identify the boundary between the alphabetic prefix and
+    the first numeric block, strip leading zeros from that block, and
+    leave any trailing alpha suffix intact. Codes without an alpha
+    prefix (pure numeric, hyphenated, etc.) pass through unchanged so
+    the function is safe to apply to every college's lookup keys.
 
     Examples:
-        "CT 221"    → "CT221"
-        "ARCH 100"  → "ARCH100"
-        "ACCT 101A" → "ACCT101A"
-        "D H 063A"  → "DH063A"
+        "ATHL004"     → "ATHL4"
+        "ATHL004A"    → "ATHL4A"
+        "CS001A"      → "CS1A"
+        "ART003"      → "ART3"
+        "PHED010A"    → "PHED10A"
+        "ATHL4"       → "ATHL4"      (no zeros to strip)
+        "ART3L"       → "ART3L"      (no zeros to strip)
+        "055"         → "055"        (no alpha prefix; pass through)
+        "ACR-20"      → "ACR-20"     (hyphenated; pass through)
+    """
+    m = re.match(r"^([A-Z]+)0+(\d+[A-Z]*)$", code)
+    return m.group(1) + m.group(2) if m else code
+
+
+def _normalize_course_code(code: str) -> str:
+    """Normalize a course code by stripping internal whitespace, uppercasing,
+    and canonicalizing the numeric-padding convention so the catalog scrape
+    and the MCF index agree on a single key shape.
+
+    Examples:
+        "CT 221"     → "CT221"
+        "ARCH 100"   → "ARCH100"
+        "ACCT 101A"  → "ACCT101A"
+        "D H 063A"   → "DH63A"   (zero-padding stripped)
+        "ATHL 4"     → "ATHL4"
+        "ATHL 004"   → "ATHL4"   (zero-padding stripped)
     """
     code = code.strip().upper()
-    # Remove spaces between alphabetic and numeric/alphanumeric portions
     code = re.sub(r"\s+", "", code)
-    return code
+    return _strip_numeric_padding(code)
 
 
 def _normalize_mcf_course_id(course_id: str) -> str:
-    """Normalize an MCF course ID by stripping trailing dots, whitespace, and spaces."""
+    """Normalize an MCF course ID into the same canonical key shape
+    `_normalize_course_code` produces, so a graph lookup hits the
+    indexed MCF row regardless of which college's padding convention
+    the row was filed under.
+    """
     course_id = course_id.strip().rstrip(".").strip().upper()
     course_id = re.sub(r"\s+", "", course_id)
-    return course_id
+    return _strip_numeric_padding(course_id)
 
 
 @lru_cache(maxsize=1)
