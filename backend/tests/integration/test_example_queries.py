@@ -98,8 +98,10 @@ COURSE_BASE = [
 ]
 
 STUDENT_BASE = [
+    # Anchor accepts either parameterized ($college) or literal ('Foothill College')
+    # college scoping in the ENROLLED_IN base, OR a HAS_SKILL traversal opener.
     ("student anchor pattern",
-     r"student.*(enrolled_in.*course.*\$college|has_skill.*skill)"),
+     r"student.*(enrolled_in.*course.*(\$college|college:\s*')|has_skill.*skill)"),
     ("returns uuid", r"s\.uuid\s+as\s+uuid"),
     ("returns gpa", r"s\.gpa\s+as\s+gpa"),
     ("college scoped", r"(\$college|college:\s*')"),
@@ -110,13 +112,6 @@ STUDENT_BASE = [
 
 QUERY_SPECS: dict[str, tuple[str, list[tuple[str, str]]]] = {
     # ── Employers ──
-    "Which employers need skills in healthcare?": (
-        EMPLOYER_QUERY_PROMPT,
-        _patterns(EMPLOYER_BASE, [
-            ("filters on health skill",
-             r"tolower\(sk\.name\).*contains\s+'health"),
-        ]),
-    ),
     "Employers whose skill needs align with our curriculum": (
         EMPLOYER_QUERY_PROMPT,
         _patterns(EMPLOYER_BASE, [
@@ -124,90 +119,102 @@ QUERY_SPECS: dict[str, tuple[str, list[tuple[str, str]]]] = {
              r"order\s+by\s+matching_skills\s+desc"),
         ]),
     ),
-    "Employers in the manufacturing sector": (
+    "Employers hiring for high-demand occupations": (
         EMPLOYER_QUERY_PROMPT,
         _patterns(EMPLOYER_BASE, [
-            ("filters on manufacturing sector",
-             r"tolower\(emp\.sector\)\s+contains\s+'manufactur"),
+            ("references annual_openings as demand signal",
+             r"annual_openings"),
+        ]),
+    ),
+    "Employers in regional priority sectors": (
+        EMPLOYER_QUERY_PROMPT,
+        _patterns(EMPLOYER_BASE, [
+            ("filters on priority_sectors via swp_sectors intersection",
+             r"swp_sectors.*priority_sectors|priority_sectors.*swp_sectors"),
         ]),
     ),
 
     # ── Occupations ──
-    "High-paying occupations in healthcare": (
+    "Occupations with the highest wages": (
         OCCUPATION_QUERY_PROMPT,
         _patterns(OCCUPATION_BASE, [
-            ("filters on health title",
-             r"tolower\(occ\.title\)\s+contains\s+'health"),
-            ("sorts by wage",
+            ("sorts by annual_wage",
              r"order\s+by\s+d\.annual_wage\s+desc"),
         ]),
     ),
-    "Roles that require skills our courses develop": (
+    "Occupations with the most yearly openings": (
         OCCUPATION_QUERY_PROMPT,
         _patterns(OCCUPATION_BASE, [
-            ("sorts by matching_skills",
-             r"order\s+by\s+matching_skills\s+desc"),
+            ("sorts by annual_openings",
+             r"order\s+by\s+d\.annual_openings\s+desc"),
         ]),
     ),
-    "Occupations that require an associate's degree": (
+    "Occupations growing fastest in our region": (
         OCCUPATION_QUERY_PROMPT,
         _patterns(OCCUPATION_BASE, [
-            ("filters on education level",
-             r"education_level.*associate"),
+            ("sorts by growth_rate",
+             r"order\s+by\s+d\.growth_rate\s+desc"),
         ]),
     ),
 
     # ── Courses ──
-    "Courses that develop skills for healthcare careers": (
+    "Courses that develop manufacturing skills": (
         COURSE_QUERY_PROMPT,
         _patterns(COURSE_BASE, [
             ("traverses DEVELOPS->Skill",
              r"develops.*skill"),
-            ("filters on health skill",
-             r"tolower\(sk\.name\)\s+contains\s+'health"),
+            ("filters on manufacturing skill",
+             r"tolower\(sk\.name\)\s+contains\s+'manufactur"),
         ]),
     ),
-    "Courses in our business department": (
+    "Courses relevant to career and technical education": (
         COURSE_QUERY_PROMPT,
         _patterns(COURSE_BASE, [
-            ("filters on business department",
-             r"tolower\(c\.department\)\s+contains\s+'business"),
+            ("filters on is_cte = true",
+             r"c\.is_cte\s*=\s*true"),
         ]),
     ),
-    "Courses that develop accounting skills": (
+    "Courses that prepare for a healthcare career": (
         COURSE_QUERY_PROMPT,
         _patterns(COURSE_BASE, [
-            ("traverses DEVELOPS->Skill",
-             r"develops.*skill"),
-            ("filters on accounting skill",
-             r"tolower\(sk\.name\)\s+contains\s+'account"),
+            # "Career" queries can route through skill-traversal OR
+            # department-name filtering — both are semantically valid.
+            ("filters on healthcare (skill, department, or course name)",
+             r"contains\s+'(health|medical|nursing|patient|clinical)"),
         ]),
     ),
 
     # ── Students ──
+    "Students specializing in 'construction technology'": (
+        STUDENT_QUERY_PROMPT,
+        _patterns(STUDENT_BASE, [
+            # Pattern accepts any primary_focus filter — the rendered
+            # question is per-college-overridden (PER_COLLEGE_OVERRIDES)
+            # to ensure each school has a concrete program with student
+            # population. The eval verifies the LLM correctly compiles
+            # "specializing in X" → primary_focus filter regardless of X.
+            ("filters on primary_focus",
+             r"tolower\(s\.primary_focus\).*contains"),
+        ]),
+    ),
+    "Students with skills in business and accounting with GPA greater than 3.5": (
+        STUDENT_QUERY_PROMPT,
+        _patterns(STUDENT_BASE, [
+            ("traverses HAS_SKILL",
+             r"has_skill"),
+            ("filters on business skill",
+             r"contains\s+'business"),
+            ("filters on accounting skill",
+             r"contains\s+'account"),
+            ("GPA threshold > 3.5",
+             r"s\.gpa\s*>\s*3\.5"),
+        ]),
+    ),
     "Students most ready for a healthcare internship": (
         STUDENT_QUERY_PROMPT,
         _patterns(STUDENT_BASE, [
             ("uses health filter (skill or focus)",
              r"(tolower\(sk\.name\).*contains\s+'health|tolower\(s\.primary_focus\).*contains\s+'health)"),
-        ]),
-    ),
-    "Students with skills in business and accounting": (
-        STUDENT_QUERY_PROMPT,
-        _patterns(STUDENT_BASE, [
-            ("traverses HAS_SKILL",
-             r"has_skill"),
-            ("filters on business",
-             r"contains\s+'business"),
-            ("filters on accounting",
-             r"contains\s+'account"),
-        ]),
-    ),
-    "Who is best prepared for information technology roles?": (
-        STUDENT_QUERY_PROMPT,
-        _patterns(STUDENT_BASE, [
-            ("uses IT filter (skill or focus)",
-             r"(contains\s+'(information.technology|technology|computer|it|software))"),
         ]),
     ),
 }
@@ -246,24 +253,24 @@ class EvalResult:
 
 CATEGORIES = {
     "employers": [
-        "Which employers need skills in healthcare?",
         "Employers whose skill needs align with our curriculum",
-        "Employers in the manufacturing sector",
+        "Employers hiring for high-demand occupations",
+        "Employers in regional priority sectors",
     ],
     "occupations": [
-        "High-paying occupations in healthcare",
-        "Roles that require skills our courses develop",
-        "Occupations that require an associate's degree",
+        "Occupations with the highest wages",
+        "Occupations with the most yearly openings",
+        "Occupations growing fastest in our region",
     ],
     "courses": [
-        "Courses that develop skills for healthcare careers",
-        "Courses in our business department",
-        "Courses that develop accounting skills",
+        "Courses that develop manufacturing skills",
+        "Courses relevant to career and technical education",
+        "Courses that prepare for a healthcare career",
     ],
     "students": [
+        "Students specializing in 'construction technology'",
+        "Students with skills in business and accounting with GPA greater than 3.5",
         "Students most ready for a healthcare internship",
-        "Students with skills in business and accounting",
-        "Who is best prepared for information technology roles?",
     ],
 }
 
@@ -274,6 +281,40 @@ PROMPT_TO_VIEW = {
     id(COURSE_QUERY_PROMPT): "course",
     id(STUDENT_QUERY_PROMPT): "student",
 }
+
+
+# Per-college rendering for parameterized example questions. The eval keys
+# results by the canonical question (so per-question reporting aggregates
+# correctly), but the LLM is asked the school-appropriate variant.
+#
+# For "Students specializing in X", X is each school's most-populous CTE-
+# flavored primary_focus among students who took at least one CTE course.
+# Values curated from a one-time graph query; they should be re-curated
+# whenever the synthetic-student generation methodology changes the
+# primary_focus distribution.
+PER_COLLEGE_OVERRIDES: dict[tuple[str, str], str] = {
+    ("Students specializing in 'construction technology'", "Shasta College"):
+        "Students specializing in 'early childhood education'",
+    ("Students specializing in 'construction technology'", "Foothill College"):
+        "Students specializing in 'accounting'",
+    ("Students specializing in 'construction technology'", "College of the Sequoias"):
+        "Students specializing in 'child development'",
+    ("Students specializing in 'construction technology'", "Oxnard College"):
+        "Students specializing in 'fire technology'",
+    ("Students specializing in 'construction technology'", "Compton College"):
+        "Students specializing in 'nursing'",
+    ("Students specializing in 'construction technology'", "Irvine Valley College"):
+        "Students specializing in 'accounting'",
+    ("Students specializing in 'construction technology'", "College of the Desert"):
+        "Students specializing in 'health sciences'",
+    ("Students specializing in 'construction technology'", "San Diego City College"):
+        "Students specializing in 'cybersecurity and data analytics'",
+}
+
+
+def render_question(question: str, college: str) -> str:
+    """Apply per-college override if one is registered, else return as-is."""
+    return PER_COLLEGE_OVERRIDES.get((question, college), question)
 
 
 def get_all_colleges() -> list[str]:
@@ -315,7 +356,8 @@ def run_single_eval(
 
     try:
         view = PROMPT_TO_VIEW.get(id(prompt), "")
-        cypher, interpretation = generate_query(question, college, prompt, view=view)
+        rendered = render_question(question, college)
+        cypher, interpretation = generate_query(rendered, college, prompt, view=view)
         result.cypher = cypher
         result.interpretation = interpretation
         result.cypher_generated = True

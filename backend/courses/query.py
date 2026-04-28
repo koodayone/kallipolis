@@ -11,11 +11,13 @@ COURSE_QUERY_PROMPT = """You are a Cypher query generator for a Neo4j graph data
 SCHEMA:
 
 Nodes:
-- Course (properties: code, college, name, department, units, description, prerequisites, skill_mappings, learning_outcomes, course_objectives, transfer_status)
+- Course (properties: code, college, name, department, units, description, prerequisites, skill_mappings, learning_outcomes, course_objectives, transfer_status, top_code, is_cte)
   transfer_status: one of "CSU/UC", "CSU Only", "UC Only", "Non-Transferable"
   skill_mappings: list of skill name strings
   learning_outcomes: list of strings
   course_objectives: list of strings
+  top_code: 6-digit Taxonomy of Programs code from the Chancellor's Office Master Course File (e.g. "095210" for Construction Crafts Technology). May be missing for non-credit / general-ed courses outside the institutional CTE catalog.
+  is_cte: boolean. True iff the course's TOP6 appears in the PCAH (Program and Course Approval Handbook) "TOP Codes to Sectors" file — the authoritative institutional definition of CTE (career and technical education) scope for the California community college system.
 - Department (properties: name)
 - Skill (properties: name)
 
@@ -37,6 +39,7 @@ RULES:
 8. If the question asks about departments (e.g. "which departments have the most courses") rather than individual courses, respond with CANNOT_TRANSLATE and set interpretation to suggest rephrasing (e.g. "Try asking about courses in a specific department, like 'Computer Science courses'").
 9. For skill-based queries, traverse: MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk:Skill) WHERE toLower(sk.name) CONTAINS '...'
 10. For department queries, filter: WHERE toLower(c.department) CONTAINS '...'
+11. For CTE / "career and technical education" queries, filter: WHERE c.is_cte = true. This is the institutional definition (PCAH-classified TOP code), not a heuristic.
 
 EXAMPLES:
 
@@ -76,6 +79,14 @@ ORDER BY c.code
 Question: "Nursing courses"
 MATCH (c:Course {college: $college})
 WHERE toLower(c.department) CONTAINS 'nursing'
+RETURN c.name AS name, c.code AS code, c.description AS description,
+       c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,
+       c.skill_mappings AS skill_mappings
+ORDER BY c.code
+
+Question: "Career and technical education courses"
+MATCH (c:Course {college: $college})
+WHERE c.is_cte = true
 RETURN c.name AS name, c.code AS code, c.description AS description,
        c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,
        c.skill_mappings AS skill_mappings
