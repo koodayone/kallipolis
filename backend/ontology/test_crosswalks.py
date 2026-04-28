@@ -18,10 +18,25 @@ Coverage:
   - cte_reachable_socs is cached and returns the same object across calls
 """
 
+import pytest
+
 from ontology.crosswalks import (
+    CIP_SOC_PATH,
+    TOP_CIP_PATH,
     _load_pcah_cte_top6,
     _load_top_to_cip,
     cte_reachable_socs,
+)
+
+# The TOP→CIP crosswalk and CIP→SOC crosswalk ship outside the repo
+# (BLS/Census reference data on a different update cadence). Tests that
+# load them are skipped on machines that don't carry the cc_dataset
+# directory — most importantly, CI runners. PCAH-only tests still run
+# everywhere because the PCAH file ships in-repo.
+_HAS_EXTERNAL_DATASET = TOP_CIP_PATH.exists() and CIP_SOC_PATH.exists()
+_skip_external = pytest.mark.skipif(
+    not _HAS_EXTERNAL_DATASET,
+    reason="requires external cc_dataset (TOP→CIP, CIP→SOC crosswalks)",
 )
 
 
@@ -64,6 +79,7 @@ class TestTop6Keys:
         # PCAH TOP6 300700 (Cosmetology and Barbering)
         assert mapping.get("300700") == "Business and Entrepreneurship"
 
+    @_skip_external
     def test_pcah_top6_keys_exist_in_top_cip_crosswalk(self):
         """PCAH TOP6 keys should substantially overlap the crosswalk's TOP6 keys."""
         pcah_keys = set(_load_pcah_cte_top6().keys())
@@ -75,6 +91,7 @@ class TestTop6Keys:
         )
 
 
+@_skip_external
 class TestCteReachableSocs:
     def test_returns_nonempty_set(self):
         socs = cte_reachable_socs()

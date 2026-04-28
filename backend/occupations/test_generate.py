@@ -15,11 +15,23 @@ Coverage:
 import csv
 from pathlib import Path
 
+import pytest
+
 from occupations.generate import (
     _parse_float,
     _parse_int,
     _parse_row,
     generate_from_coe,
+)
+from ontology.crosswalks import CIP_SOC_PATH, TOP_CIP_PATH
+
+# generate_from_coe applies the CTE scope filter, which composes the
+# external TOP→CIP and CIP→SOC crosswalks (see ontology/crosswalks.py).
+# Skip the end-to-end class on machines that don't have those files.
+_HAS_EXTERNAL_DATASET = TOP_CIP_PATH.exists() and CIP_SOC_PATH.exists()
+_skip_external = pytest.mark.skipif(
+    not _HAS_EXTERNAL_DATASET,
+    reason="requires external cc_dataset (TOP→CIP, CIP→SOC crosswalks)",
 )
 
 
@@ -124,6 +136,7 @@ class TestParseRow:
         }
 
 
+@_skip_external
 class TestGenerateFromCoe:
     """End-to-end test that the CTE scope filter admits trades and excludes pre-engineering.
 
