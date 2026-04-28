@@ -1,16 +1,25 @@
-"""LLM-based selection: occupation pick + department relevance filter.
+"""Deterministic selection helpers for the partnership pipeline.
 
-Also houses the shared `_extract_json` utility used by this module and
-narrative.py."""
+Per the institutional-deference architectural commitment, all selection
+in the partnership flow is deterministic and rooted in the institutional
+crosswalk. The legacy LLM-driven occupation picker was retired in C2;
+the LLM department-relevance cap-to-3 was retired in C3 because the
+inbound department set is already PREPARES_FOR-gated (institutionally
+aligned), so applying LLM judgment on top would dilute the institutional
+purity that the gating layer establishes.
+
+Surviving helpers:
+  - _select_occupation: deterministic crosswalk-depth ranker
+  - _select_core_skills_for: deterministic core-skills characterization
+  - _extract_json: shared JSON-parsing utility used by narrative.py
+"""
 
 from __future__ import annotations
 
 import json
 import logging
-import os
 import re
 
-import anthropic
 from ontology.schema import get_driver
 
 from partnerships.gather import GatheredContext
@@ -60,75 +69,39 @@ def _extract_json(raw: str) -> dict:
 
 
 # ═══════════════════════════════════════════════════════════════════════════
-# Occupation Selection
+# Occupation Selection — deterministic, crosswalk-rooted
 # ═══════════════════════════════════════════════════════════════════════════
-
-_OCCUPATION_SELECTION_PROMPT = """Select the primary hiring occupation for this employer. Return ONLY the JSON below — no reasoning, no explanation, no other text.
-
-{context}
-
-Rules:
-- Pick the ONE occupation this employer would hire in volume. A plumbing company hires plumbers. A hospital hires nurses. Not generic management or admin roles.
-- Pick 3 skills most central to the daily work of that role. Choose ONLY from the skills listed under that occupation. Not generic skills like Record Keeping or Professional Ethics.
-- Prefer skills the college develops (course count > 0). You may include one skill with 0 courses if it is genuinely central to the occupation — this represents a curriculum gap worth noting.
-
-{{"selected_occupation": {{"title": "...", "soc_code": "...", "core_skills": ["...", "...", "..."]}}}}"""
-
-
-def _build_occupation_selection_context(gathered: GatheredContext) -> str:
-    """Build context string for the occupation selection LLM call, including skills per occupation."""
-    driver = get_driver()
-
-    # Fetch skills for each occupation with college course coverage
-    occ_skills: dict[str, list[dict]] = {}
-    with driver.session() as session:
-        for occ in gathered.occupation_evidence:
-            title = occ["title"]
-            result = session.run("""
-                MATCH (occ:Occupation {title: $title})-[:REQUIRES_SKILL]->(sk:Skill)
-                OPTIONAL MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk)
-                RETURN sk.name AS skill, count(DISTINCT c) AS course_count
-                ORDER BY skill
-            """, title=title, college=gathered.college).data()
-            occ_skills[title] = result
-
-    # Use SWP-canonical sector when available, BLS fallback otherwise —
-    # consistent with the narrative prompt's vocabulary so the
-    # occupation-selection LLM sees the same institutional framing.
-    primary_sector = gathered.swp_sectors[0] if gathered.swp_sectors else gathered.sector
-    lines = [
-        f"EMPLOYER: {gathered.employer_name}",
-        f"Sector: {primary_sector}" if primary_sector else None,
-        f"Description: {gathered.description}" if gathered.description else None,
-        "",
-        "OCCUPATIONS THIS EMPLOYER HIRES FOR:",
-    ]
-    for occ in gathered.occupation_evidence:
-        parts = [f"  {occ['title']}"]
-        if occ.get("annual_wage"):
-            parts.append(f"${occ['annual_wage']:,}/yr")
-        if occ.get("annual_openings"):
-            parts.append(f"{occ['annual_openings']:,} openings/yr")
-        lines.append(", ".join(parts))
-        skills = occ_skills.get(occ["title"], [])
-        if skills:
-            skill_parts = []
-            for s in skills:
-                cnt = s["course_count"]
-                gap = " — gap" if cnt == 0 else ""
-                skill_parts.append(f"{s['skill']} ({cnt} courses{gap})")
-            lines.append(f"    Skills: {', '.join(skill_parts)}")
-    return "\n".join(line for line in lines if line is not None)
+#
+# When the coordinator has not chosen a SOC explicitly (e.g., the legacy
+# auto-pick path), the system selects one. Per the institutional-deference
+# commitment, this selection is itself an institutional question: of the
+# occupations the employer hires for, which one is most institutionally
+# aligned with the college's curriculum?
+#
+# Prior implementation: an LLM-driven "pick the volume role" prompt that
+# reasoned over skill-set summaries. That introduced LLM judgment into
+# what should be a deterministic ranking and could pick occupations that
+# the college's catalog has zero institutionally-aligned coverage for.
+#
+# Current implementation: rank the employer's hires SOCs by
+# (aligned_course_count DESC, annual_openings DESC, soc_code ASC).
+# - aligned_course_count reflects institutional pathway alignment AT
+#   THIS COLLEGE — counted via the same PREPARES_FOR edges that gate
+#   curriculum_evidence downstream.
+# - annual_openings reflects regional demand scale (tiebreaker).
+# - soc_code is a deterministic final tiebreaker.
 
 
 def _select_core_skills_for(college: str, occupation_title: str, k: int = 3) -> list[str]:
-    """Deterministic core-skills selection for an occupation already chosen by the coordinator.
+    """Deterministic core-skills selection for an occupation already chosen.
 
-    Used when a SOC code arrives from the picker, so the LLM occupation-selection
-    step is skipped. Returns up to k skills the occupation requires, ranked by
-    (course_count DESC, skill_name) — preferring skills the college develops
-    most thoroughly. Falls back to the highest-required skills if the college
-    develops fewer than k of them, so the resulting list always has up to k entries.
+    Used when a SOC arrives from the picker (skipping the auto-pick) and
+    when the auto-pick path completes. Returns up to k skills the
+    occupation requires, ranked by (course_count DESC, skill_name) —
+    preferring skills the college develops most thoroughly. Skills here
+    are characterization for the narrative prompt, not the gating
+    signal: per the institutional-deference commitment, pathway claims
+    come only from the TOP-SOC crosswalk.
     """
     driver = get_driver()
     with driver.session() as session:
@@ -144,69 +117,62 @@ def _select_core_skills_for(college: str, occupation_title: str, k: int = 3) -> 
 
 
 def _select_occupation(gathered: GatheredContext) -> dict:
-    """Select the primary occupation for this employer. Returns {title, soc_code, core_skills}."""
-    context = _build_occupation_selection_context(gathered)
-    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
-    message = client.messages.create(
-        model="claude-sonnet-4-6",
-        max_tokens=512,
-        messages=[{"role": "user", "content": _OCCUPATION_SELECTION_PROMPT.format(context=context)}],
-    )
-    raw_response = message.content[0].text
+    """Pick the most institutionally-aligned SOC the employer hires for.
 
-    try:
-        result = _extract_json(raw_response)
-        selected = result.get("selected_occupation", {})
-        logger.info(f"Occupation selected: {selected.get('title', '?')} ({selected.get('soc_code', '?')})")
-        return selected
-    except (json.JSONDecodeError, ValueError) as e:
-        logger.warning(f"Occupation selection returned invalid JSON ({e})")
+    Deterministic ranking by:
+      1. aligned_course_count DESC — number of this college's courses
+         whose PREPARES_FOR edge points at this SOC
+      2. annual_openings DESC — regional labor-market demand
+      3. soc_code ASC — final tiebreaker
+
+    Returns the top-ranked occupation paired with its core-skills
+    characterization. When no occupation in the employer's hires set
+    has any aligned curriculum at this college, the highest-openings
+    SOC wins by tiebreaker — the artifact will then honestly surface
+    an empty curriculum_evidence and the prose will name the partial
+    nature.
+
+    No LLM call. The selection is itself an institutional question
+    (which pathway is most aligned at this college?), and answering it
+    deterministically against the crosswalk is what principle 3
+    requires.
+    """
+    if not gathered.occupation_evidence:
         return {}
 
+    socs = [o.get("soc_code") for o in gathered.occupation_evidence if o.get("soc_code")]
+    driver = get_driver()
+    with driver.session() as session:
+        rows = session.run("""
+            UNWIND $socs AS soc
+            OPTIONAL MATCH (c:Course {college: $college})-[:PREPARES_FOR]->(:Occupation {soc_code: soc})
+            RETURN soc, count(DISTINCT c) AS aligned_course_count
+        """, socs=socs, college=gathered.college).data()
+    aligned_by_soc = {r["soc"]: r["aligned_course_count"] for r in rows}
 
-# ═══════════════════════════════════════════════════════════════════════════
-# Department Relevance Filter
-# ═══════════════════════════════════════════════════════════════════════════
+    def sort_key(occ: dict) -> tuple:
+        soc = occ.get("soc_code") or ""
+        return (
+            -aligned_by_soc.get(soc, 0),
+            -(occ.get("annual_openings") or 0),
+            soc,
+        )
 
-_DEPT_SELECTION_PROMPT = """Select up to {max_departments} departments most relevant to this partnership. Return ONLY the JSON — no reasoning.
-
-Employer: {employer}
-Occupation(s): {occupation}
-Departments: {department_list}
-
-Select the departments whose programs most directly prepare students for the work this employer does. Prefer workforce-oriented departments over foundational or general education departments. If fewer than {max_departments} departments are genuinely relevant, return fewer.
-
-{{"selected_departments": ["...", "..."]}}"""
-
-
-def _select_relevant_departments(employer: str, occupation: str, departments: list[str], max_departments: int = 3) -> list[str]:
-    """Select the most relevant departments for this partnership, capped at max_departments."""
-    if not departments:
-        return departments
-    if len(departments) <= max_departments:
-        return departments
-
-    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
-    message = client.messages.create(
-        model="claude-sonnet-4-6",
-        max_tokens=256,
-        messages=[{"role": "user", "content": _DEPT_SELECTION_PROMPT.format(
-            employer=employer,
-            occupation=occupation,
-            department_list=", ".join(departments),
-            max_departments=max_departments,
-        )}],
+    ranked = sorted(gathered.occupation_evidence, key=sort_key)
+    selected = ranked[0]
+    title = selected.get("title", "")
+    soc = selected.get("soc_code")
+    aligned_count = aligned_by_soc.get(soc, 0) if soc else 0
+    logger.info(
+        f"Occupation auto-selected: '{title}' ({soc}) — "
+        f"{aligned_count} aligned course(s) at {gathered.college}, "
+        f"{selected.get('annual_openings') or 0} regional openings"
     )
-    raw = message.content[0].text
 
-    try:
-        result = _extract_json(raw)
-        selected = result.get("selected_departments", [])
-        # Ensure only valid department names are returned
-        selected = [d for d in selected if d in departments][:max_departments]
-        logger.info(f"Department selection: {len(selected)}/{len(departments)} departments selected")
-        return selected
-    except (json.JSONDecodeError, ValueError) as e:
-        logger.warning(f"Department selection returned invalid JSON ({e}), falling back to first {max_departments}")
-        # Deterministic fallback: can't sort here since we don't have skill counts, return first N
-        return departments[:max_departments]
+    return {
+        "title": title,
+        "soc_code": soc,
+        "core_skills": _select_core_skills_for(gathered.college, title) if title else [],
+    }
+
+

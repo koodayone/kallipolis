@@ -227,6 +227,90 @@ class TestBuildDeptText:
         assert "Math" in result
 
 
+class TestBuildInstitutionalChainBlock:
+    """The INSTITUTIONAL CHAIN block surfaces the empirical chain
+    (Employer → SOC → CIP → TOP6 → Department) to the LLM in
+    code-named form so the prose can walk it. Every link must name
+    its institutional source so the artifact's authority is borrowed
+    visibly from external publications."""
+
+    def _make_swp(self, soc, cips=None, coe="Bay", demand=1680, supply=12, gap=1668):
+        from partnerships.models import InstitutionalSources, OccupationEvidence, SwpEvidence
+        return SwpEvidence(
+            occupations=[OccupationEvidence(
+                title="Inspectors, Testers, Sorters, Samplers, and Weighers",
+                soc_code=soc, cip_codes=cips or [],
+            )],
+            supply_estimates=[],
+            department_enrollments=[],
+            total_demand=demand, total_supply=supply, gap=gap,
+            coe_region=coe,
+            sources=InstitutionalSources(coe_region=coe, coe_region_display="Bay Area"),
+        )
+
+    def _gathered(self, college="Foothill College"):
+        from partnerships.gather import GatheredContext
+        return GatheredContext(
+            employer_name="Abbott Vascular",
+            sector="Manufacturing",
+            swp_sectors=["Advanced Manufacturing"],
+            college=college,
+            occupation_evidence=[{
+                "title": "Inspectors, Testers, Sorters, Samplers, and Weighers",
+                "soc_code": "51-9061",
+                "annual_openings": 1680,
+            }],
+        )
+
+    def test_renders_full_chain_with_sources(self):
+        from partnerships.narrative import _build_institutional_chain_block
+
+        gathered = self._gathered()
+        curriculum_evidence = [{
+            "department": "Apprenticeship: Aerospace",
+            "courses": [{"code": "AATA101A"}, {"code": "AATA101B"}],
+            "aligned_skills": ["Quality Control"],
+            "via_top": ["095680"],
+            "via_cip": ["15.0702"],
+        }]
+        selected_occ = {"title": "Inspectors, Testers, Sorters, Samplers, and Weighers", "soc_code": "51-9061"}
+        swp = self._make_swp("51-9061", cips=["15.0702"])
+
+        block = _build_institutional_chain_block(gathered, curriculum_evidence, selected_occ, swp)
+        text = "\n".join(block)
+        assert "INSTITUTIONAL CHAIN" in text
+        assert "SOC 51-9061" in text
+        assert "BLS/NCES CIP-SOC crosswalk" in text
+        assert "CIP 15.0702" in text
+        assert "Chancellor's Office TOP-CIP crosswalk" in text
+        assert "TOP 095680" in text
+        assert "Apprenticeship: Aerospace" in text
+        assert "Bay" in text
+        # The closing source-attribution sentence must name all three
+        # institutional source publications.
+        assert "Centers of Excellence" in text
+        assert "WALKS this chain" in text
+
+    def test_returns_empty_when_soc_absent(self):
+        from partnerships.narrative import _build_institutional_chain_block
+
+        gathered = self._gathered()
+        selected_occ = {"title": "", "soc_code": ""}
+        swp = self._make_swp("")
+        block = _build_institutional_chain_block(gathered, [], selected_occ, swp)
+        assert block == []
+
+    def test_renders_empty_set_honestly_when_no_aligned_departments(self):
+        from partnerships.narrative import _build_institutional_chain_block
+
+        gathered = self._gathered()
+        selected_occ = {"title": "Inspectors", "soc_code": "51-9061"}
+        swp = self._make_swp("51-9061", cips=["15.0702"])
+        block = _build_institutional_chain_block(gathered, [], selected_occ, swp)
+        text = "\n".join(block)
+        assert "No college departments" in text
+
+
 class TestEvaluateProposal:
     """Coverage of the deterministic quality evals.
 
