@@ -55,6 +55,7 @@ backend/employers/.enrich_progress.log
 backend/employers/.enrich_state.json
 backend/employers/.fn_diff_report.json
 backend/employers/dropped.jsonl
+backend/employers/merges.jsonl
 backend/employers/.populate_progress.log
 backend/employers/.populate_state.json
 backend/employers/.classify_progress.log
