@@ -46,12 +46,98 @@ def _build_dept_text(curriculum_evidence: list[dict], core_skills: list[str]) ->
     return "\n".join(lines)
 
 
+def _build_institutional_chain_block(
+    gathered: GatheredContext,
+    curriculum_evidence: list[dict],
+    selected_occ: dict,
+    swp_evidence: SwpEvidence,
+) -> list[str]:
+    """Render the empirical chain that grounds every claim in the
+    artifact: Employer → SOC → CIP → TOP6 → College Department →
+    Pipeline → Region. Each link names its institutional source so the
+    narrative LLM has structure to walk rather than interpret beyond.
+
+    The chain is the artifact's epistemic foundation — every categorical
+    claim made by the prose can be traced back to one of these links,
+    each authored by an external institution: the BLS/NCES CIP-SOC
+    crosswalk, the California Chancellor's Office TOP-CIP crosswalk,
+    the Centers of Excellence regional demand and supply publications.
+    Returns an empty list when the chain has insufficient data
+    (no SOC, no aligned departments) — caller decides whether to
+    skip it or render an honest empty-set block.
+    """
+    occ_title = selected_occ.get("title", "")
+    occ_soc = selected_occ.get("soc_code", "")
+    if not occ_soc or not occ_title:
+        return []
+
+    # Selected occupation's CIP set (BLS/NCES CIP-SOC crosswalk side).
+    selected_swp_occ = next(
+        (o for o in swp_evidence.occupations if o.soc_code == occ_soc),
+        None,
+    )
+    cip_codes = (selected_swp_occ.cip_codes if selected_swp_occ else []) or []
+
+    # Department-level via_top / via_cip aggregation.
+    aligned_depts = []
+    all_via_top: set[str] = set()
+    for d in curriculum_evidence:
+        dept_name = d.get("department", "")
+        d_via_top = d.get("via_top") or []
+        course_count = len(d.get("courses") or [])
+        aligned_depts.append((dept_name, d_via_top, course_count))
+        all_via_top.update(d_via_top)
+
+    coe_region = swp_evidence.coe_region or ""
+    coe_region_display = (
+        swp_evidence.sources.coe_region_display
+        if swp_evidence.sources else coe_region
+    )
+
+    lines = ["INSTITUTIONAL CHAIN (the empirical foundation of this artifact — every categorical claim below traces to one of these external sources):"]
+    lines.append(f"  Employer hires for SOC {occ_soc} ({occ_title})")
+    if cip_codes:
+        lines.append(
+            f"  → BLS/NCES CIP-SOC crosswalk: SOC {occ_soc} ↔ "
+            f"CIP {', '.join(cip_codes[:3])}{' …' if len(cip_codes) > 3 else ''}"
+        )
+    if aligned_depts:
+        lines.append(
+            "  → Chancellor's Office TOP-CIP crosswalk routes those CIPs to "
+            f"TOP {', '.join(sorted(all_via_top)) if all_via_top else '(unknown)'}"
+        )
+        lines.append("  → College departments operating courses in those TOP codes:")
+        for dept_name, d_via_top, course_count in aligned_depts:
+            via_str = f" [TOP {', '.join(d_via_top)}]" if d_via_top else ""
+            lines.append(f"      {dept_name}{via_str}: {course_count} aligned courses")
+    else:
+        lines.append("  → No college departments at this college operate courses in any TOP that crosswalks to this SOC.")
+    if coe_region:
+        lines.append(
+            f"  → COE Bay region demand: {swp_evidence.total_demand:,} annual openings"
+            if coe_region == "Bay"
+            else f"  → COE {coe_region_display or coe_region} region demand: {swp_evidence.total_demand:,} annual openings"
+        )
+        lines.append(
+            f"  → COE supply: {swp_evidence.total_supply:.0f} annual completions; "
+            f"workforce gap: {swp_evidence.gap:,.0f}"
+        )
+    lines.append(
+        "  Source attributions: Chancellor's Office TOP-CIP Crosswalk; "
+        "BLS/NCES CIP-SOC Crosswalk; California Centers of Excellence "
+        "regional demand and supply data."
+    )
+    lines.append("The narrative below WALKS this chain. It does not invent connections beyond it.")
+    return lines
+
+
 def _build_narrative_context(
     gathered: GatheredContext,
     dept_text: str,
     selected_occ: dict,
     student_stats: dict,
     swp_evidence: SwpEvidence,
+    curriculum_evidence: list[dict] | None = None,
 ) -> str:
     """Build the curated context for the unified narrative prompt.
 
@@ -78,7 +164,28 @@ def _build_narrative_context(
     # regional priority sectors, SWP funding language).
     primary_sector = gathered.swp_sectors[0] if gathered.swp_sectors else gathered.sector
 
-    lines = [
+    lines = []
+
+    # INSTITUTIONAL CHAIN block — surfaces the empirical chain to the
+    # LLM in code-named form so the prose has a structure to walk
+    # rather than interpret beyond. Each link names its institutional
+    # source: the Chancellor's Office TOP-CIP crosswalk, the BLS/NCES
+    # CIP-SOC crosswalk, the COE regional demand and supply data.
+    # The narrative prompt asks the LLM to walk this chain; the eval
+    # rules verify that the prose attributes correctly. When the
+    # curriculum_evidence list is not passed (legacy callers, mocks),
+    # the chain block silently falls through to the rest of the
+    # context — the chain is additive, not load-bearing on existing
+    # call paths.
+    if curriculum_evidence is not None:
+        chain_block = _build_institutional_chain_block(
+            gathered, curriculum_evidence, selected_occ, swp_evidence
+        )
+        if chain_block:
+            lines.extend(chain_block)
+            lines.append("")
+
+    lines.extend([
         f"EMPLOYER: {gathered.employer_name}",
         f"Sector: {primary_sector}" if primary_sector else None,
         f"Description: {gathered.description}" if gathered.description else None,
@@ -86,7 +193,7 @@ def _build_narrative_context(
         f"College: {gathered.college}",
         f"COE region for regional labor market data: {swp_evidence.coe_region}" if swp_evidence.coe_region else None,
         "",
-    ]
+    ])
 
     # SELECTED OCCUPATION block — the figures cited in the OCCUPATIONAL DEMAND
     # section MUST come from here, not from the broader hiring profile below.

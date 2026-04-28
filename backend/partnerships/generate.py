@@ -262,7 +262,8 @@ def _run_pipeline(
     logger.info(f"Stage 4 complete: assembled regional supply-demand evidence (gap={swp_evidence.gap:,.0f})")
 
     narrative_context = _build_narrative_context(
-        gathered, dept_text, selected_occ, student_stats, swp_evidence
+        gathered, dept_text, selected_occ, student_stats, swp_evidence,
+        curriculum_evidence=curriculum_evidence,
     )
     prompt_text = NARRATIVE_PROMPT.format(context=narrative_context)
     raw = _call_claude(prompt_text)
