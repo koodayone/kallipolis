@@ -92,6 +92,48 @@ RETURN c.name AS name, c.code AS code, c.description AS description,
        c.skill_mappings AS skill_mappings
 ORDER BY c.code
 
+Question: "CTE courses in our health department"
+MATCH (c:Course {college: $college})
+WHERE c.is_cte = true AND toLower(c.department) CONTAINS 'health'
+RETURN c.name AS name, c.code AS code, c.description AS description,
+       c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,
+       c.skill_mappings AS skill_mappings
+ORDER BY c.code
+
+Question: "Courses transferable to UC"
+MATCH (c:Course {college: $college})
+WHERE c.transfer_status IN ['CSU/UC', 'UC Only']
+RETURN c.name AS name, c.code AS code, c.description AS description,
+       c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,
+       c.skill_mappings AS skill_mappings
+ORDER BY c.code
+
+Question: "CTE courses that develop welding skills"
+MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk:Skill)
+WHERE c.is_cte = true AND toLower(sk.name) CONTAINS 'welding'
+WITH DISTINCT c
+RETURN c.name AS name, c.code AS code, c.description AS description,
+       c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,
+       c.skill_mappings AS skill_mappings
+ORDER BY c.code
+
+Question: "Courses with at least 4 units"
+MATCH (c:Course {college: $college})
+WHERE c.units >= 4
+RETURN c.name AS name, c.code AS code, c.description AS description,
+       c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,
+       c.skill_mappings AS skill_mappings
+ORDER BY c.code
+
+Question: "Manufacturing department courses with no prerequisites"
+MATCH (c:Course {college: $college})
+WHERE toLower(c.department) CONTAINS 'manufactur'
+  AND (c.prerequisites IS NULL OR c.prerequisites = '')
+RETURN c.name AS name, c.code AS code, c.description AS description,
+       c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,
+       c.skill_mappings AS skill_mappings
+ORDER BY c.code
+
 Respond with a JSON object containing two fields:
 1. "cypher": the Cypher query as a string
 2. "interpretation": a single sentence explaining what this query does in plain English, written for a non-technical workforce development coordinator. Be specific about the filtering criteria.
