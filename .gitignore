@@ -62,3 +62,5 @@ backend/employers/.classify_progress.log
 backend/employers/.classify_state.json
 backend/employers/.audit_report.json
 backend/employers/.audit_verify_cache.json
+backend/employers/.audit_occupations_sample.md
+backend/employers/.audit_occupations_judge.json
