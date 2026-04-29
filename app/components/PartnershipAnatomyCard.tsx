@@ -31,16 +31,23 @@ function SkillCheckmark() {
   );
 }
 
-function GridHeaders({ labels, template }: { labels: { text: string; primary?: boolean; align?: string }[]; template: string }) {
+function GridHeaders({ labels, template, gridClassName }: { labels: { text: string; primary?: boolean; align?: string; hideOnMobile?: boolean }[]; template?: string; gridClassName?: string }) {
   return (
-    <div style={{ display: "grid", gridTemplateColumns: template, padding: "8px 12px", borderBottom: `1px solid ${BRAND}20` }}>
+    <div
+      className={gridClassName ? `grid ${gridClassName}` : undefined}
+      style={gridClassName ? { padding: "8px 12px", borderBottom: `1px solid ${BRAND}20` } : { display: "grid", gridTemplateColumns: template, padding: "8px 12px", borderBottom: `1px solid ${BRAND}20` }}
+    >
       {labels.map((l) => (
-        <span key={l.text || "spacer"} style={{
-          fontSize: 9, fontWeight: 600, textTransform: "uppercase",
-          letterSpacing: "0.1em",
-          color: l.primary ? BRAND : `${BRAND}90`,
-          textAlign: (l.align as "left" | "right" | "center") || "left",
-        }}>
+        <span
+          key={l.text || "spacer"}
+          className={l.hideOnMobile ? "max-md:hidden" : undefined}
+          style={{
+            fontSize: 9, fontWeight: 600, textTransform: "uppercase",
+            letterSpacing: "0.1em",
+            color: l.primary ? BRAND : `${BRAND}90`,
+            textAlign: (l.align as "left" | "right" | "center") || "left",
+          }}
+        >
           {l.text}
         </span>
       ))}
@@ -103,16 +110,16 @@ const EXPANDED_EMPLOYER = {
 
 export function EmployerLandscapeBand({ expandProgress = 0 }: { expandProgress?: number }) {
   const { expanded, opacity: accordionOpacity } = expandState(expandProgress);
-  const GRID = "24px 1.2fr 1fr 50px 85px";
+  const gridCls = "md:grid-cols-[24px_1.2fr_1fr_50px_85px] max-md:grid-cols-[24px_1.2fr_1fr]";
 
   return (
     <Card>
-      <GridHeaders template={GRID} labels={[
+      <GridHeaders gridClassName={gridCls} labels={[
         { text: "", primary: false },
         { text: "Employer", primary: true },
         { text: "Sector" },
-        { text: "Roles", align: "center" },
-        { text: "Skills", align: "right" },
+        { text: "Roles", align: "center", hideOnMobile: true },
+        { text: "Skills", align: "right", hideOnMobile: true },
       ]} />
 
       {EMPLOYERS.map((e, i) => {
@@ -120,8 +127,8 @@ export function EmployerLandscapeBand({ expandProgress = 0 }: { expandProgress?:
         const isDimmed = expanded && !isTarget;
         return (
           <div key={e.name} style={{ opacity: isDimmed ? 0.35 : 1, transition: "opacity 0.4s ease" }}>
-            <div style={{
-              display: "grid", gridTemplateColumns: GRID, alignItems: "center",
+            <div className={`grid ${gridCls}`} style={{
+              alignItems: "center",
               padding: "10px 12px",
               background: expanded && isTarget ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.03)",
               boxShadow: expanded && isTarget ? `0 0 12px 2px ${BRAND}30, inset 0 0 0 1px ${BRAND}25` : "none",
@@ -132,8 +139,8 @@ export function EmployerLandscapeBand({ expandProgress = 0 }: { expandProgress?:
               <Chevron open={isTarget && expanded} />
               <span style={{ fontSize: 12, fontWeight: 500, color: "rgba(255,255,255,0.85)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{e.name}</span>
               <span style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{e.sector}</span>
-              <span style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", textAlign: "center" }}>{e.roles}</span>
-              <SkillPill count={e.skills} />
+              <span className="max-md:hidden" style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", textAlign: "center" }}>{e.roles}</span>
+              <span className="max-md:hidden"><SkillPill count={e.skills} /></span>
             </div>
 
             {isTarget && (
@@ -194,16 +201,16 @@ const EXPANDED_OCCUPATION = {
 
 export function OccupationalDemandBand({ expandProgress = 0 }: { expandProgress?: number }) {
   const { expanded, opacity: accordionOpacity } = expandState(expandProgress);
-  const GRID = "24px 1fr 80px 60px 70px";
+  const gridCls = "md:grid-cols-[24px_1fr_80px_60px_70px] max-md:grid-cols-[24px_1fr_70px]";
 
   return (
     <Card>
-      <GridHeaders template={GRID} labels={[
+      <GridHeaders gridClassName={gridCls} labels={[
         { text: "", primary: false },
         { text: "Occupation", primary: true },
         { text: "Wage", align: "right" },
-        { text: "Openings", align: "right" },
-        { text: "Growth", align: "right" },
+        { text: "Openings", align: "right", hideOnMobile: true },
+        { text: "Growth", align: "right", hideOnMobile: true },
       ]} />
 
       {OCCUPATIONS.map((o, i) => {
@@ -211,8 +218,8 @@ export function OccupationalDemandBand({ expandProgress = 0 }: { expandProgress?
         const isDimmed = expanded && !isTarget;
         return (
           <div key={o.title} style={{ opacity: isDimmed ? 0.35 : 1, transition: "opacity 0.4s ease" }}>
-            <div style={{
-              display: "grid", gridTemplateColumns: GRID, alignItems: "center",
+            <div className={`grid ${gridCls}`} style={{
+              alignItems: "center",
               padding: "10px 12px",
               background: expanded && isTarget ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.03)",
               boxShadow: expanded && isTarget ? `0 0 12px 2px ${BRAND}30, inset 0 0 0 1px ${BRAND}25` : "none",
@@ -223,8 +230,8 @@ export function OccupationalDemandBand({ expandProgress = 0 }: { expandProgress?
               <Chevron open={isTarget && expanded} />
               <span style={{ fontSize: 12, fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>{o.title}</span>
               <span style={{ fontSize: 11, color: "rgba(255,255,255,0.5)", textAlign: "right" }}>{o.wage}</span>
-              <span style={{ fontSize: 11, color: "rgba(255,255,255,0.45)", textAlign: "right" }}>{o.openings}</span>
-              <span style={{ fontSize: 11, fontWeight: 600, color: "#4ade80", textAlign: "right" }}>{o.growth}</span>
+              <span className="max-md:hidden" style={{ fontSize: 11, color: "rgba(255,255,255,0.45)", textAlign: "right" }}>{o.openings}</span>
+              <span className="max-md:hidden" style={{ fontSize: 11, fontWeight: 600, color: "#4ade80", textAlign: "right" }}>{o.growth}</span>
             </div>
 
             {isTarget && (
@@ -371,16 +378,16 @@ function gpaColor(gpa: number) {
 
 export function StudentImpactBand({ expandProgress = 0 }: { expandProgress?: number }) {
   const { expanded, opacity: accordionOpacity } = expandState(expandProgress);
-  const GRID = "24px 60px 1fr 60px 44px";
+  const gridCls = "md:grid-cols-[24px_60px_1fr_60px_44px] max-md:grid-cols-[24px_60px_1fr]";
 
   return (
     <Card>
-      <GridHeaders template={GRID} labels={[
+      <GridHeaders gridClassName={gridCls} labels={[
         { text: "", primary: false },
         { text: "Student", primary: true },
         { text: "Primary Focus" },
-        { text: "Courses", align: "right" },
-        { text: "GPA", align: "right" },
+        { text: "Courses", align: "right", hideOnMobile: true },
+        { text: "GPA", align: "right", hideOnMobile: true },
       ]} />
 
       {STUDENTS.map((s, i) => {
@@ -388,8 +395,8 @@ export function StudentImpactBand({ expandProgress = 0 }: { expandProgress?: num
         const isDimmed = expanded && !isTarget;
         return (
           <div key={s.id} style={{ opacity: isDimmed ? 0.35 : 1, transition: "opacity 0.4s ease" }}>
-            <div style={{
-              display: "grid", gridTemplateColumns: GRID, alignItems: "center",
+            <div className={`grid ${gridCls}`} style={{
+              alignItems: "center",
               padding: "10px 12px",
               background: expanded && isTarget ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.03)",
               boxShadow: expanded && isTarget ? `0 0 12px 2px ${BRAND}30, inset 0 0 0 1px ${BRAND}25` : "none",
@@ -400,8 +407,8 @@ export function StudentImpactBand({ expandProgress = 0 }: { expandProgress?: num
               <Chevron open={isTarget && expanded} />
               <span style={{ fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.8)" }}>{s.id}</span>
               <span style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{s.focus}</span>
-              <span style={{ fontSize: 11, fontWeight: 500, color: "rgba(255,255,255,0.6)", textAlign: "right" }}>{s.courses}</span>
-              <span style={{ fontSize: 12, fontWeight: 700, color: gpaColor(s.gpa), textAlign: "right" }}>{s.gpa.toFixed(2)}</span>
+              <span className="max-md:hidden" style={{ fontSize: 11, fontWeight: 500, color: "rgba(255,255,255,0.6)", textAlign: "right" }}>{s.courses}</span>
+              <span className="max-md:hidden" style={{ fontSize: 12, fontWeight: 700, color: gpaColor(s.gpa), textAlign: "right" }}>{s.gpa.toFixed(2)}</span>
             </div>
 
             {isTarget && (
@@ -469,42 +476,40 @@ export function SupplyDemandBridgeBand({ expandProgress = 0 }: { expandProgress?
         overflow: "hidden",
         transition: "opacity 0.3s ease, max-height 0.3s ease",
       }}>
-        <GridHeaders template="90px 1fr 80px 100px 120px" labels={[
+        <GridHeaders gridClassName="md:grid-cols-[90px_1fr_80px_100px_120px] max-md:grid-cols-[80px_1fr_60px]" labels={[
           { text: "SOC Code", primary: true },
           { text: "Occupation", primary: true },
           { text: "Region" },
-          { text: "Wage", align: "right" },
-          { text: "Annual Openings", align: "right" },
+          { text: "Wage", align: "right", hideOnMobile: true },
+          { text: "Annual Openings", align: "right", hideOnMobile: true },
         ]} />
-        <div style={{
-          display: "grid", gridTemplateColumns: "90px 1fr 80px 100px 120px",
+        <div className="grid md:grid-cols-[90px_1fr_80px_100px_120px] max-md:grid-cols-[80px_1fr_60px]" style={{
           padding: "10px 12px", background: "rgba(255,255,255,0.02)",
           borderBottom: "1px solid rgba(255,255,255,0.04)", fontSize: 13,
         }}>
           <span style={{ color: "rgba(255,255,255,0.65)", fontFamily: "monospace", fontSize: 12 }}>47-2231</span>
           <span style={{ color: "rgba(255,255,255,0.85)" }}>Solar Photovoltaic Installers</span>
           <span style={{ color: "rgba(255,255,255,0.55)" }}>CVML</span>
-          <span style={{ color: "rgba(255,255,255,0.65)", textAlign: "right" }}>$47,670</span>
-          <span style={{ color: "rgba(255,255,255,0.65)", textAlign: "right" }}>280</span>
+          <span className="max-md:hidden" style={{ color: "rgba(255,255,255,0.65)", textAlign: "right" }}>$47,670</span>
+          <span className="max-md:hidden" style={{ color: "rgba(255,255,255,0.65)", textAlign: "right" }}>280</span>
         </div>
 
         <div style={{ height: 12 }} />
 
-        <GridHeaders template="90px 1fr 1fr 110px" labels={[
+        <GridHeaders gridClassName="md:grid-cols-[90px_1fr_1fr_110px] max-md:grid-cols-[80px_1fr_1fr]" labels={[
           { text: "TOP Code", primary: true },
           { text: "Program", primary: true },
           { text: "Award Level" },
-          { text: "Annual Supply", align: "right" },
+          { text: "Annual Supply", align: "right", hideOnMobile: true },
         ]} />
-        <div style={{
-          display: "grid", gridTemplateColumns: "90px 1fr 1fr 110px",
+        <div className="grid md:grid-cols-[90px_1fr_1fr_110px] max-md:grid-cols-[80px_1fr_1fr]" style={{
           padding: "10px 12px", background: "rgba(255,255,255,0.02)",
           borderBottom: "1px solid rgba(255,255,255,0.04)", fontSize: 13,
         }}>
           <span style={{ color: "rgba(255,255,255,0.55)", fontFamily: "monospace", fontSize: 12 }}>094500</span>
           <span style={{ color: "rgba(255,255,255,0.75)" }}>Energy Systems Technology</span>
           <span style={{ color: "rgba(255,255,255,0.5)", fontSize: 12 }}>Associate Degree</span>
-          <span style={{ color: "rgba(255,255,255,0.65)", textAlign: "right" }}>48</span>
+          <span className="max-md:hidden" style={{ color: "rgba(255,255,255,0.65)", textAlign: "right" }}>48</span>
         </div>
 
         <div style={{ padding: "20px 16px 16px" }}>
