@@ -52,26 +52,26 @@ type LayoutConfig = {
 //   bottom-right: Occupations (labor-market substrate)
 const desktopLayout: LayoutConfig = {
   formDefs: [
-    { label: "Students",     factory: createMortarboardForm, position: new THREE.Vector3(-5.6, 3.0, 0),   scale: 0.85, color: BLUE },
-    { label: "Employers",    factory: createSkyscraperForm,  position: new THREE.Vector3(5.6, 3.0, 0),    scale: 0.85, color: BLUE },
-    { label: "Courses",      factory: createBookForm,        position: new THREE.Vector3(-5.6, -3.0, 0),  scale: 0.85, color: BLUE },
-    { label: "Occupations",  factory: createHardhatForm,     position: new THREE.Vector3(5.6, -3.0, 0),   scale: 0.85, color: BLUE },
-    { label: "Partnerships", factory: createChainlinkForm,   position: new THREE.Vector3(0, 0, 0),        scale: 1.5,  color: BLUE },
+    { label: "Students",     factory: createMortarboardForm, position: new THREE.Vector3(-4.0, 2.4, 0),   scale: 1.2, color: BLUE },
+    { label: "Employers",    factory: createSkyscraperForm,  position: new THREE.Vector3(4.0, 2.4, 0),    scale: 1.2, color: BLUE },
+    { label: "Courses",      factory: createBookForm,        position: new THREE.Vector3(-4.0, -2.4, 0),  scale: 1.2, color: BLUE },
+    { label: "Occupations",  factory: createHardhatForm,     position: new THREE.Vector3(4.0, -2.4, 0),   scale: 1.2, color: BLUE },
+    { label: "Partnerships", factory: createChainlinkForm,   position: new THREE.Vector3(0, 0, 0),        scale: 2.0, color: BLUE },
   ],
-  cornerEdgeOffset: 0.8,
-  centerEdgeOffset: 1.0,
+  cornerEdgeOffset: 1.4,
+  centerEdgeOffset: 1.6,
 };
 
 const mobileLayout: LayoutConfig = {
   formDefs: [
-    { label: "Students",     factory: createMortarboardForm, position: new THREE.Vector3(-3.0, 2.4, 0),   scale: 0.65, color: BLUE },
-    { label: "Employers",    factory: createSkyscraperForm,  position: new THREE.Vector3(3.0, 2.4, 0),    scale: 0.65, color: BLUE },
-    { label: "Courses",      factory: createBookForm,        position: new THREE.Vector3(-3.0, -2.4, 0),  scale: 0.65, color: BLUE },
-    { label: "Occupations",  factory: createHardhatForm,     position: new THREE.Vector3(3.0, -2.4, 0),   scale: 0.65, color: BLUE },
-    { label: "Partnerships", factory: createChainlinkForm,   position: new THREE.Vector3(0, 0, 0),        scale: 1.15, color: BLUE },
+    { label: "Students",     factory: createMortarboardForm, position: new THREE.Vector3(-2.4, 1.8, 0),   scale: 0.95, color: BLUE },
+    { label: "Employers",    factory: createSkyscraperForm,  position: new THREE.Vector3(2.4, 1.8, 0),    scale: 0.95, color: BLUE },
+    { label: "Courses",      factory: createBookForm,        position: new THREE.Vector3(-2.4, -1.8, 0),  scale: 0.95, color: BLUE },
+    { label: "Occupations",  factory: createHardhatForm,     position: new THREE.Vector3(2.4, -1.8, 0),   scale: 0.95, color: BLUE },
+    { label: "Partnerships", factory: createChainlinkForm,   position: new THREE.Vector3(0, 0, 0),        scale: 1.55, color: BLUE },
   ],
-  cornerEdgeOffset: 0.6,
-  centerEdgeOffset: 0.8,
+  cornerEdgeOffset: 1.0,
+  centerEdgeOffset: 1.2,
 };
 
 export const CONVERGENCE_LABELS = desktopLayout.formDefs.map((f) => f.label);
