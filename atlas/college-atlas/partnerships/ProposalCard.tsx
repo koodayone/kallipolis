@@ -33,22 +33,41 @@ type Props = {
 };
 
 function SectionHeader({ children, color }: { children: React.ReactNode; color?: string }) {
+  // Section headers are the proposal's primary landmarks. They sit
+  // above body prose and well above the column-label register the
+  // tables use (10px uppercase brand-pink labels). To keep the
+  // hierarchy legible:
+  //   - bright white title-cased text (a heading idiom, not a label)
+  //   - a brand-colored vertical bar to the left (brand presence
+  //     without painting the heading text pink and competing with
+  //     the column-label register)
+  //   - 15px / weight 600 — clearly larger than column labels (10px)
+  //     and body prose (14px), but smaller than the artifact title.
+  const accent = color || "currentColor";
   return (
-    <span style={{
-      fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em",
-      textTransform: "uppercase", color: color || "rgba(255,255,255,0.3)",
-      display: "block", marginBottom: "10px",
+    <div style={{
+      display: "flex", alignItems: "center", gap: "12px", marginBottom: "14px",
     }}>
-      {children}
-    </span>
+      <div style={{
+        width: "3px", height: "16px", background: accent, borderRadius: "2px",
+        flexShrink: 0,
+      }} />
+      <h3 style={{
+        fontFamily: FONT, fontSize: "15px", fontWeight: 600,
+        color: "rgba(255,255,255,0.95)", letterSpacing: "-0.005em",
+        margin: 0, lineHeight: 1.2,
+      }}>
+        {children}
+      </h3>
+    </div>
   );
 }
 
 function SectionDescription({ children }: { children: React.ReactNode }) {
   return (
     <p style={{
-      fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)",
-      lineHeight: 1.5, margin: "0 0 12px 0", fontStyle: "italic",
+      fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.65)",
+      lineHeight: 1.65, margin: "0 0 12px 0",
     }}>
       {children}
     </p>
@@ -274,16 +293,16 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
         </div>
 
         {/* ── Executive Summary ── */}
-        <div style={{ marginBottom: "24px" }}>
-          <SectionHeader>Executive Summary</SectionHeader>
+        <div style={{ marginBottom: "36px" }}>
+          <SectionHeader color={brandColor}>Executive Summary</SectionHeader>
           <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.75)", lineHeight: 1.65, margin: 0 }}>
             {proposal.executive_summary}
           </p>
         </div>
 
         {/* ── Occupational Demand ── */}
-        <div style={{ marginBottom: "24px" }}>
-          <SectionHeader>Occupational Demand</SectionHeader>
+        <div style={{ marginBottom: "36px" }}>
+          <SectionHeader color={brandColor}>Occupational Demand</SectionHeader>
           <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.7)", lineHeight: 1.65, margin: 0 }}>
             {proposal.occupational_demand}
           </p>
@@ -316,8 +335,8 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
         </div>
 
         {/* ── Curriculum Alignment ── */}
-        <div style={{ marginBottom: "24px" }}>
-          <SectionHeader>Curriculum Alignment</SectionHeader>
+        <div style={{ marginBottom: "36px" }}>
+          <SectionHeader color={brandColor}>Curriculum Alignment</SectionHeader>
           <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.65)", lineHeight: 1.65, margin: 0 }}>
             {proposal.curriculum_alignment}
           </p>
@@ -349,8 +368,8 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
         </div>
 
         {/* ── Student Impact ── */}
-        <div style={{ marginBottom: "24px" }}>
-          <SectionHeader>Student Impact</SectionHeader>
+        <div style={{ marginBottom: "36px" }}>
+          <SectionHeader color={brandColor}>Student Impact</SectionHeader>
           <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.65)", lineHeight: 1.65, margin: 0 }}>
             {proposal.student_impact}
           </p>
@@ -371,13 +390,6 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
           {/* Top compatible students */}
           {proposal.student_evidence.top_students.length > 0 && (
             <div style={{ marginTop: "12px" }}>
-              <span style={{
-                fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em",
-                textTransform: "uppercase", color: "rgba(255,255,255,0.25)",
-                display: "block", marginBottom: "8px", paddingLeft: "16px",
-              }}>
-                Top 10 Candidates
-              </span>
               <ColumnHeaders
                 columns={[
                   { label: "Student", width: "110px" },
@@ -417,76 +429,94 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
 
         {/* ── Strong Workforce Evidence (tabular) ── */}
         {swp && (swp.occupations.length > 0 || swp.supply_estimates.length > 0) && (
-          <div style={{ marginBottom: "24px" }}>
-            <SectionHeader>Strong Workforce Evidence</SectionHeader>
-            <SectionDescription>
-              Regional supply-demand foundation any funding justification requires.
-              {swp.coe_region ? ` Scoped to the ${swp.coe_region} COE region.` : ""}
-            </SectionDescription>
-            {/* Institutional source caption — borrows the artifact's authority
-                from the named external publications. Per the institutional-
-                deference architectural commitment (principle 2), the reader
-                should be able to verify any categorical claim against one of
-                these publications without trusting Kallipolis itself. The
-                caption is visible but not overwhelming — small, italic, low
-                opacity. The caption disappears when sources are absent
-                (legacy proposals predating C1). */}
-            {swp.sources && (
-              <div style={{
-                fontFamily: FONT, fontSize: "10px", fontStyle: "italic",
-                color: "rgba(255,255,255,0.32)", lineHeight: 1.5,
-                margin: "-4px 0 12px", paddingLeft: "16px", paddingRight: "8px",
-              }}>
-                Sources: {swp.sources.coe_demand_publication}; {swp.sources.coe_supply_publication}; {swp.sources.top_cip_crosswalk_source}; {swp.sources.cip_soc_crosswalk_source}.
-              </div>
-            )}
+          <div style={{ marginBottom: "36px" }}>
+            <SectionHeader color={brandColor}>Strong Workforce Evidence</SectionHeader>
+            {(() => {
+              // Templated thesis prose. Every value here is a structured
+              // field — no LLM call is needed to compose this. The
+              // sentence triplet (demand fact → supply fact → gap as
+              // partnership opportunity) generalizes across every
+              // (employer, college, SOC) combination.
+              const occ = swp.occupations[0];
+              const regionName = swp.sources?.coe_region_display || swp.coe_region;
+              const hasFullData = (
+                occ != null &&
+                occ.annual_openings != null &&
+                swp.total_supply != null &&
+                swp.gap > 0
+              );
+              if (hasFullData && occ) {
+                const openings = occ.annual_openings!.toLocaleString();
+                const supply = swp.total_supply.toLocaleString();
+                const gap = Math.round(swp.gap).toLocaleString();
+                return (
+                  <SectionDescription>
+                    According to the Centers of Excellence, the SOC {occ.soc_code} occupation demands {openings} annual openings in the {regionName} region.
+                    On the supply side, {collegeId ?? "the college"} projects {supply} annual program completions for all related TOP codes.
+                    This presents a partnership opportunity with {proposal.employer} that addresses a workforce gap of {gap} for {occ.title}.
+                  </SectionDescription>
+                );
+              }
+              return (
+                <SectionDescription>
+                  Regional supply-demand foundation any funding justification requires.
+                  {swp.coe_region ? ` Scoped to the ${swp.coe_region} COE region.` : ""}
+                </SectionDescription>
+              );
+            })()}
 
-            {/* Demand sub-table — column shape mirrors the partnership-narrative
-                example on the docs site: SOC Code, Occupation, Region, Wage,
-                Annual Openings. The region is identical per row (the block is
-                scoped to one COE region) but reads naturally on each row. */}
+            {/* Demand sub-table — SWP tables don't have expandable rows, so
+                no chevron column. Headers are inlined here (rather than via
+                ColumnHeaders) so the grid has no leading empty slot and the
+                section captions, column labels, and row data all share the
+                same 16px left edge. */}
             {swp.occupations.length > 0 && (
               <div style={{ marginBottom: "16px" }}>
                 <span style={{
-                  fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.08em",
-                  textTransform: "uppercase", color: "rgba(255,255,255,0.35)",
-                  display: "block", marginBottom: "8px", paddingLeft: "16px",
+                  fontFamily: FONT, fontSize: "12px", fontWeight: 600,
+                  color: "rgba(255,255,255,0.7)",
+                  display: "block", marginBottom: "10px",
                 }}>
                   Demand: regional annual openings by SOC
                 </span>
-                <ColumnHeaders
-                  columns={[
-                    { label: "SOC", width: "90px" },
-                    { label: "Occupation", width: "1fr" },
-                    { label: "Wage", width: "100px", align: "right" },
-                    { label: "Annual openings", width: "130px", align: "right" },
-                  ]}
-                  gridTemplateColumns="24px 90px 1fr 100px 130px"
-                  brandColor={brandColor}
-                />
-                {swp.occupations.map((occ, i) => (
-                  <div key={`${occ.soc_code ?? occ.title}-${i}`} style={{
-                    display: "grid",
-                    gridTemplateColumns: "24px 90px 1fr 100px 130px",
-                    alignItems: "center",
-                    gap: "10px",
-                    padding: "12px 16px",
-                    borderBottom: i < swp.occupations.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none",
-                    fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.7)",
-                  }}>
-                    <span />
-                    <span style={{ fontVariantNumeric: "tabular-nums", color: "rgba(255,255,255,0.5)" }}>
-                      {occ.soc_code ?? "—"}
-                    </span>
-                    <span>{occ.title}</span>
-                    <span style={{ textAlign: "right", fontVariantNumeric: "tabular-nums" }}>
-                      {occ.annual_wage != null ? `$${occ.annual_wage.toLocaleString()}` : "—"}
-                    </span>
-                    <span style={{ textAlign: "right", fontVariantNumeric: "tabular-nums" }}>
-                      {occ.annual_openings != null ? occ.annual_openings.toLocaleString() : "—"}
-                    </span>
-                  </div>
-                ))}
+                {(() => {
+                  const grid = "90px 1fr 100px 130px";
+                  const rowPadding = "12px 20px";
+                  return (
+                    <>
+                      <div style={{
+                        display: "grid", gridTemplateColumns: grid,
+                        gap: "10px", padding: rowPadding, alignItems: "center",
+                      }}>
+                        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: brandColor, opacity: 0.6 }}>SOC</span>
+                        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: brandColor, opacity: 0.6 }}>Occupation</span>
+                        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: brandColor, opacity: 0.6, textAlign: "right" }}>Wage</span>
+                        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: brandColor, opacity: 0.6, textAlign: "right" }}>Annual openings</span>
+                      </div>
+                      {swp.occupations.map((occ, i) => (
+                        <div key={`${occ.soc_code ?? occ.title}-${i}`} style={{
+                          display: "grid", gridTemplateColumns: grid,
+                          gap: "10px", padding: rowPadding, alignItems: "center",
+                          background: "rgba(255,255,255,0.035)",
+                          borderRadius: "4px",
+                          marginBottom: i < swp.occupations.length - 1 ? "2px" : "0",
+                          fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.7)",
+                        }}>
+                          <span style={{ fontVariantNumeric: "tabular-nums", color: "rgba(255,255,255,0.5)" }}>
+                            {occ.soc_code ?? "—"}
+                          </span>
+                          <span>{occ.title}</span>
+                          <span style={{ textAlign: "right", fontVariantNumeric: "tabular-nums" }}>
+                            {occ.annual_wage != null ? `$${occ.annual_wage.toLocaleString()}` : "—"}
+                          </span>
+                          <span style={{ textAlign: "right", fontVariantNumeric: "tabular-nums" }}>
+                            {occ.annual_openings != null ? occ.annual_openings.toLocaleString() : "—"}
+                          </span>
+                        </div>
+                      ))}
+                    </>
+                  );
+                })()}
               </div>
             )}
 
@@ -494,41 +524,46 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
             {swp.supply_estimates.length > 0 && (
               <div style={{ marginBottom: "16px" }}>
                 <span style={{
-                  fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.08em",
-                  textTransform: "uppercase", color: "rgba(255,255,255,0.35)",
-                  display: "block", marginBottom: "8px", paddingLeft: "16px",
+                  fontFamily: FONT, fontSize: "12px", fontWeight: 600,
+                  color: "rgba(255,255,255,0.7)",
+                  display: "block", marginBottom: "10px",
                 }}>
                   Supply: projected annual program completions by TOP
                 </span>
-                <ColumnHeaders
-                  columns={[
-                    { label: "TOP", width: "80px" },
-                    { label: "Program", width: "1fr" },
-                    { label: "Award", width: "220px" },
-                    { label: "Annual supply", width: "110px", align: "right" },
-                  ]}
-                  gridTemplateColumns="24px 80px 1fr 220px 110px"
-                  brandColor={brandColor}
-                />
-                {swp.supply_estimates.map((s, i) => (
-                  <div key={`${s.top_code}-${s.award_level}-${i}`} style={{
-                    display: "grid",
-                    gridTemplateColumns: "24px 80px 1fr 220px 110px",
-                    alignItems: "center",
-                    gap: "10px",
-                    padding: "12px 16px",
-                    borderBottom: i < swp.supply_estimates.length - 1 ? "1px solid rgba(255,255,255,0.04)" : "none",
-                    fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.7)",
-                  }}>
-                    <span />
-                    <span style={{ fontVariantNumeric: "tabular-nums", color: "rgba(255,255,255,0.5)" }}>{s.top_code}</span>
-                    <span>{s.top_title}</span>
-                    <span style={{ color: "rgba(255,255,255,0.55)" }}>{s.award_level}</span>
-                    <span style={{ textAlign: "right", fontVariantNumeric: "tabular-nums" }}>
-                      {s.annual_projected_supply.toFixed(1)}
-                    </span>
-                  </div>
-                ))}
+                {(() => {
+                  const grid = "80px 1fr 220px 110px";
+                  const rowPadding = "12px 20px";
+                  return (
+                    <>
+                      <div style={{
+                        display: "grid", gridTemplateColumns: grid,
+                        gap: "10px", padding: rowPadding, alignItems: "center",
+                      }}>
+                        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: brandColor, opacity: 0.6 }}>TOP</span>
+                        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: brandColor, opacity: 0.6 }}>Program</span>
+                        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: brandColor, opacity: 0.6 }}>Award</span>
+                        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: brandColor, opacity: 0.6, textAlign: "right" }}>Annual supply</span>
+                      </div>
+                      {swp.supply_estimates.map((s, i) => (
+                        <div key={`${s.top_code}-${s.award_level}-${i}`} style={{
+                          display: "grid", gridTemplateColumns: grid,
+                          gap: "10px", padding: rowPadding, alignItems: "center",
+                          background: "rgba(255,255,255,0.035)",
+                          borderRadius: "4px",
+                          marginBottom: i < swp.supply_estimates.length - 1 ? "2px" : "0",
+                          fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.7)",
+                        }}>
+                          <span style={{ fontVariantNumeric: "tabular-nums", color: "rgba(255,255,255,0.5)" }}>{s.top_code}</span>
+                          <span>{s.top_title}</span>
+                          <span style={{ color: "rgba(255,255,255,0.55)" }}>{s.award_level}</span>
+                          <span style={{ textAlign: "right", fontVariantNumeric: "tabular-nums" }}>
+                            {s.annual_projected_supply.toFixed(1)}
+                          </span>
+                        </div>
+                      ))}
+                    </>
+                  );
+                })()}
               </div>
             )}
 
@@ -546,6 +581,20 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
                 gap={swp.gap}
                 brandColor={brandColor}
               />
+            )}
+
+            {/* Institutional source caption — placed at the bottom of the
+                section so the data reads first. The reader should be able to
+                verify any categorical claim against one of these publications
+                without trusting Kallipolis itself. */}
+            {swp.sources && (
+              <div style={{
+                fontFamily: FONT, fontSize: "10px", fontStyle: "italic",
+                color: "rgba(255,255,255,0.32)", lineHeight: 1.5,
+                marginTop: "16px", paddingRight: "24px",
+              }}>
+                Sources: {swp.sources.coe_demand_publication}; {swp.sources.coe_supply_publication}; {swp.sources.top_cip_crosswalk_source}; {swp.sources.cip_soc_crosswalk_source}.
+              </div>
             )}
           </div>
         )}
