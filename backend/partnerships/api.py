@@ -22,6 +22,17 @@ router = APIRouter()
 def get_partnership_landscape(college: str):
     """Returns employers ranked by partnership opportunity — skill alignment, gaps, and top occupation.
 
+    Filtered to employers with at least one institutionally-aligned hires
+    SOC at this college (`pa.alignment_score > 0`). Per the
+    institutional-deference architectural commitment, the partnerships
+    surface only shows opportunities where the institutional crosswalk
+    establishes a real pathway: at least one of the employer's HIRES_FOR
+    occupations has a Course-[:PREPARES_FOR]->Occupation edge from this
+    college's catalog. Employers whose hires are entirely uncovered at
+    this college (about 1.8% in the seed) are omitted from the landscape
+    view; the underlying Employer node remains in the graph for
+    cross-college visibility.
+
     Reads the precomputed `PARTNERSHIP_ALIGNMENT` edge, materialized at
     ingestion time by `partnerships/compute.py`. If the edge set is
     empty, either ingestion hasn't run for this college or the compute
@@ -33,6 +44,7 @@ def get_partnership_landscape(college: str):
             result = session.run("""
                 MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region),
                       (col)-[pa:PARTNERSHIP_ALIGNMENT]->(emp:Employer)
+                WHERE pa.alignment_score > 0
                 RETURN emp.name AS name, emp.sector AS sector,
                        COALESCE(emp.swp_sectors, []) AS swp_sectors,
                        [s IN COALESCE(emp.swp_sectors, []) WHERE s IN COALESCE(r.priority_sectors, [])] AS priority_sectors_matched,
@@ -97,25 +109,36 @@ def get_employer_pipeline(employer: str, college: str):
 
 @router.get("/employer-occupations")
 def get_employer_occupations(employer: str, college: str):
-    """Returns occupations the employer hires for in the college's region, with
-    regional demand fields and per-occupation curriculum-alignment signal.
+    """Returns occupations the employer hires for in the college's region.
 
-    The atlas's occupation picker uses this response to render one card per
-    occupation. The alignment fields (`core_skills_developed_count` /
-    `core_skills_total_count` / `course_count`) let the coordinator see how
-    well the college's curriculum already covers each occupation's required
-    skills, before deciding which role to scope the partnership artifact to.
+    Filtered to occupations with at least one institutionally-aligned
+    course at this college (`aligned_course_count > 0`). Per the
+    institutional-deference architectural commitment, the picker is a
+    guided experience: it only surfaces occupations where the
+    Chancellor's Office TOP-CIP and BLS/NCES CIP-SOC crosswalks
+    together establish a real pathway from this college's curriculum
+    to that SOC. Coordinators cannot accidentally select an occupation
+    for which no aligned curriculum exists and end up with an empty
+    artifact; the picker quietly drops those choices.
 
-    The response is sorted by annual_openings DESC, so the first row is the
-    deterministic "suggested" default the picker pre-selects — the highest-
-    volume occupation in the regional data, matching the most common framing
-    of "where does this employer hire most?" The alignment fields are
-    returned for future use but do not drive the sort, since the underlying
-    skills-extraction methodology is not yet robust enough to be a load-
-    bearing default-selection signal.
+    The dropped occupations remain in the employer's HIRES_FOR set in
+    the graph (cross-college visibility) — the filter is presentation-
+    layer only.
 
-    `coe_region` is attached at the top level so callers can surface the
-    geographic scope alongside the demand figures when needed.
+    The response is sorted by aligned_course_count DESC, then by
+    annual_openings DESC. Coordinators see the deepest institutional
+    pathway first; openings tiebreak when alignment depth is equal.
+    The first row is the deterministic suggested default the picker
+    pre-selects.
+
+    Skills-coverage fields (core_skills_developed_count /
+    core_skills_total_count / course_count) remain on the response as
+    characterization data, but they no longer drive the surface — the
+    PREPARES_FOR-rooted aligned_course_count is the institutional
+    signal coordinators see.
+
+    `coe_region` is attached at the top level so callers can surface
+    the geographic scope alongside the demand figures when needed.
     """
     from ontology.regions import COLLEGE_COE_REGION
 
@@ -147,6 +170,14 @@ def get_employer_occupations(employer: str, college: str):
                     MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk)
                     RETURN count(DISTINCT c) AS course_count
                 }
+                CALL {
+                    WITH occ
+                    OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)
+                    RETURN count(DISTINCT course) AS aligned_course_count
+                }
+                WITH occ, d, core_skills_total_count, core_skills_developed_count,
+                     course_count, aligned_course_count
+                WHERE aligned_course_count > 0
                 RETURN occ.title AS title,
                        occ.soc_code AS soc_code,
                        d.annual_wage AS annual_wage,
@@ -154,8 +185,9 @@ def get_employer_occupations(employer: str, college: str):
                        d.growth_rate AS growth_rate,
                        core_skills_developed_count,
                        core_skills_total_count,
-                       course_count
-                ORDER BY coalesce(d.annual_openings, 0) DESC
+                       course_count,
+                       aligned_course_count
+                ORDER BY aligned_course_count DESC, coalesce(d.annual_openings, 0) DESC
             """, employer=employer, college=college).data()
 
         return {

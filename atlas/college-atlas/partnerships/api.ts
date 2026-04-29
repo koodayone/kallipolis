@@ -163,8 +163,17 @@ export async function getEmployerPipeline(employer: string, college: string): Pr
 }
 
 // Occupation card in the picker: title, SOC, regional demand fields, plus
-// the curriculum-alignment signal so the coordinator can see at-a-glance how
-// well the college's curriculum already covers each role's required skills.
+// the institutional curriculum-alignment depth so the coordinator can see
+// at-a-glance how strongly the college's curriculum is aligned with each
+// role's institutional pathway.
+//
+// Per the institutional-deference architectural commitment, the picker
+// is filtered server-side to occupations with `aligned_course_count > 0`
+// — coordinators only see SOCs where the Chancellor's Office TOP-CIP
+// and BLS/NCES CIP-SOC crosswalks establish a real pathway to this
+// college's curriculum. The skills-coverage fields
+// (`core_skills_developed_count`, etc.) remain as characterization
+// data but no longer drive the surface.
 export type ApiEmployerOccupation = {
   title: string;
   soc_code: string;
@@ -174,6 +183,10 @@ export type ApiEmployerOccupation = {
   core_skills_developed_count: number;
   core_skills_total_count: number;
   course_count: number;
+  // Count of this college's courses with PREPARES_FOR edges to this SOC.
+  // The institutional alignment depth — this drives the picker's sort
+  // and is visible in the UI alongside the demand fields.
+  aligned_course_count?: number;
 };
 
 export type ApiEmployerOccupationsResponse = {

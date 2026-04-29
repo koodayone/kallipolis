@@ -196,6 +196,23 @@ export default function ProposalFlow({
                         {" · "}{formatWage(occ.annual_wage)} median
                         {" · "}{formatGrowth(occ.growth_rate)} employment growth
                       </div>
+
+                      {/* Institutional alignment depth — surfaces the
+                          PREPARES_FOR-rooted course count that drives
+                          the picker's sort. The picker is filtered
+                          server-side to occupations with
+                          aligned_course_count > 0; this line tells
+                          the coordinator the depth at a glance.
+                          Hidden when the field is missing (older
+                          API responses or the gather hasn't run). */}
+                      {typeof occ.aligned_course_count === "number" && occ.aligned_course_count > 0 && (
+                        <div style={{
+                          fontFamily: FONT, fontSize: "11px", color: brandColor, opacity: 0.85,
+                          marginTop: "8px", letterSpacing: "0.02em",
+                        }}>
+                          {occ.aligned_course_count} institutionally-aligned course{occ.aligned_course_count === 1 ? "" : "s"} at {school.name}
+                        </div>
+                      )}
                     </button>
                   );
                 })}
