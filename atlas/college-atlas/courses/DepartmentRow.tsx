@@ -135,6 +135,15 @@ export default function DepartmentRow({ department, courseCount, index, brandCol
                       <span style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.75)", flex: 1 }}>
                         {course.name}
                       </span>
+                      {topCodeDisplay && (
+                        <span style={{
+                          fontFamily: "var(--font-mono), ui-monospace, SFMono-Regular, monospace",
+                          fontSize: "11px", color: "rgba(255,255,255,0.4)",
+                          letterSpacing: "0.02em", flexShrink: 0,
+                        }}>
+                          TOP {topCodeDisplay}
+                        </span>
+                      )}
                       <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
                         style={{ transform: isCourseOpen ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s", flexShrink: 0 }}>
                         <path d="M3 4.5l3 3 3-3" stroke="rgba(255,255,255,0.3)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
@@ -156,16 +165,6 @@ export default function DepartmentRow({ department, courseCount, index, brandCol
                             borderRadius: "0 0 6px 6px",
                             display: "flex", flexDirection: "column", gap: "16px",
                           }}>
-                            {topCodeDisplay && (
-                              <div>
-                                <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: brandColor, opacity: 0.6, display: "block", marginBottom: "8px" }}>
-                                  TOP Code
-                                </span>
-                                <span style={{ fontFamily: "var(--font-mono), ui-monospace, SFMono-Regular, monospace", fontSize: "12px", color: "rgba(255,255,255,0.6)" }}>
-                                  {topCodeDisplay}
-                                </span>
-                              </div>
-                            )}
                             {course.description && (
                               <div>
                                 <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: brandColor, opacity: 0.6, display: "block", marginBottom: "8px" }}>

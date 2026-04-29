@@ -210,7 +210,7 @@ export default function ProposalFlow({
                           fontFamily: FONT, fontSize: "11px", color: brandColor, opacity: 0.85,
                           marginTop: "8px", letterSpacing: "0.02em",
                         }}>
-                          {occ.aligned_course_count} institutionally-aligned course{occ.aligned_course_count === 1 ? "" : "s"} at {school.name}
+                          {occ.aligned_course_count} related course{occ.aligned_course_count === 1 ? "" : "s"} offered at {school.name}
                         </div>
                       )}
                     </button>
@@ -251,7 +251,7 @@ export default function ProposalFlow({
             }} />
             <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
             <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.4)" }}>
-              Generating {employer.name} partnership opportunity...
+              Generating {employer.name} partnership proposal...
             </p>
             <p style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.25)" }}>
               This may take 15-30 seconds

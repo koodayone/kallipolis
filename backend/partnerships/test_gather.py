@@ -208,21 +208,26 @@ class TestGatherStudentPipeline:
                 "Foothill College", [], "47-2231", ["Solar Installation"]
             )
 
-        assert stats == {"total_in_program": 0, "with_all_core_skills": 0}
+        assert stats == {
+            "total_in_program": 0,
+            "with_all_core_skills": 0,
+            "total_in_aligned_departments": 0,
+        }
         assert top == []
         # Critical: no Cypher should have run. Honest empty set, not a
         # fallback that bleeds in skills-soup data.
         session.run.assert_not_called()
 
     def test_query_gates_students_on_primary_focus_in_departments(self):
-        """The headline count is every student whose primary_focus is one
-        of the aligned departments. STARTS WITH bidirectional fragility
-        from the prior version must be gone."""
+        """The secondary primary-focus count uses equality on department
+        names, not the fragile STARTS WITH prefix matching from the
+        prior version."""
         from partnerships import gather
 
+        broad_response = {"single": {"total_in_aligned_departments": 89}}
         stats_response = {"single": {"total_in_program": 47, "with_all_core_skills": 12}}
         top_response = {"data": []}
-        driver, session = _mock_driver([stats_response, top_response])
+        driver, session = _mock_driver([broad_response, stats_response, top_response])
 
         with patch.object(gather, "get_driver", return_value=driver):
             stats, _ = gather._gather_student_pipeline(
@@ -232,10 +237,15 @@ class TestGatherStudentPipeline:
                 ["Quality Control"],
             )
 
-        cypher = session.run.call_args_list[0].args[0]
+        # The second query is the primary_focus-gated count.
+        cypher = session.run.call_args_list[1].args[0]
         assert "st.primary_focus IN $departments" in cypher
         assert "STARTS WITH" not in cypher, "fragile prefix matching must be gone"
-        assert stats == {"total_in_program": 47, "with_all_core_skills": 12}
+        assert stats == {
+            "total_in_program": 47,
+            "with_all_core_skills": 12,
+            "total_in_aligned_departments": 89,
+        }
 
     def test_top_students_query_uses_prepares_for_for_enrollments(self):
         """Top-student exemplars surface their PREPARES_FOR-aligned
@@ -243,6 +253,7 @@ class TestGatherStudentPipeline:
         every course they happen to be in."""
         from partnerships import gather
 
+        broad_response = {"single": {"total_in_aligned_departments": 12}}
         stats_response = {"single": {"total_in_program": 5, "with_all_core_skills": 1}}
         top_data = [
             {
@@ -254,7 +265,7 @@ class TestGatherStudentPipeline:
                 ],
             },
         ]
-        driver, session = _mock_driver([stats_response, {"data": top_data}])
+        driver, session = _mock_driver([broad_response, stats_response, {"data": top_data}])
 
         with patch.object(gather, "get_driver", return_value=driver):
             _, top = gather._gather_student_pipeline(
@@ -264,8 +275,8 @@ class TestGatherStudentPipeline:
                 ["Quality Control", "Inspection"],
             )
 
-        top_cypher = session.run.call_args_list[1].args[0]
-        params = session.run.call_args_list[1].kwargs
+        top_cypher = session.run.call_args_list[2].args[0]
+        params = session.run.call_args_list[2].kwargs
 
         assert "PREPARES_FOR" in top_cypher
         assert ":Occupation {soc_code: $soc_code}" in top_cypher
@@ -284,6 +295,7 @@ class TestGatherStudentPipeline:
         those so the artifact never displays empty-shell enrollments."""
         from partnerships import gather
 
+        broad_response = {"single": {"total_in_aligned_departments": 6}}
         stats_response = {"single": {"total_in_program": 3, "with_all_core_skills": 0}}
         # Student with one real enrollment and one null shell.
         top_data = [
@@ -297,7 +309,7 @@ class TestGatherStudentPipeline:
                 ],
             },
         ]
-        driver, _ = _mock_driver([stats_response, {"data": top_data}])
+        driver, _ = _mock_driver([broad_response, stats_response, {"data": top_data}])
 
         with patch.object(gather, "get_driver", return_value=driver):
             _, top = gather._gather_student_pipeline(
@@ -319,8 +331,9 @@ class TestGatherStudentPipeline:
         # return: 47 students in aligned departments total, of whom only
         # 12 demonstrate all the core skills. The other 35 are still in
         # total_in_program — they are potential beneficiaries.
+        broad_response = {"single": {"total_in_aligned_departments": 89}}
         stats_response = {"single": {"total_in_program": 47, "with_all_core_skills": 12}}
-        driver, _ = _mock_driver([stats_response, {"data": []}])
+        driver, _ = _mock_driver([broad_response, stats_response, {"data": []}])
 
         with patch.object(gather, "get_driver", return_value=driver):
             stats, _ = gather._gather_student_pipeline(

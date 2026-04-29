@@ -172,7 +172,7 @@ export default function StudentRow({ student, index, brandColor, isOpen: control
                   {tab === "skills" && (
                     <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
                       {detail.skills.length === 0 ? (
-                        <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>No skills derived yet.</p>
+                        <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>No skills developed yet.</p>
                       ) : detail.skills.map((skill) => (
                         <span key={skill} style={{
                           padding: "5px 12px", background: "rgba(255,255,255,0.03)",

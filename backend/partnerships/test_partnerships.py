@@ -362,32 +362,6 @@ class TestEvaluateProposal:
         rules = {v.rule for v in result.violations}
         assert "no_type_prescription" in rules
 
-    def test_executive_summary_missing_gap_figure_flagged(self):
-        """Under the docs-page Partnership Narrative voice, the workforce
-        gap is the executive summary's required integrative figure. An
-        exec summary that omits it must trip missing_gap_figure."""
-        p = _make_minimal_good_proposal()
-        p.executive_summary = p.executive_summary.replace(
-            "Labor market analysis indicates an unmet workforce gap of 10,972 on an annual basis.",
-            "Together these conditions support a partnership conversation.",
-        )
-        result = evaluate_proposal(p)
-        rules = {v.rule for v in result.violations}
-        assert "missing_gap_figure" in rules
-
-    def test_executive_summary_with_rounded_gap_passes(self):
-        """The gap-citation rule allows ±5% rounding tolerance — citing
-        '11,000' for a gap of 10,972 should not trip the rule (the
-        coordinator rounds naturally)."""
-        p = _make_minimal_good_proposal()
-        p.executive_summary = p.executive_summary.replace(
-            "10,972",
-            "11,000",
-        )
-        result = evaluate_proposal(p)
-        rules = {v.rule for v in result.violations}
-        assert "missing_gap_figure" not in rules
-
     def test_economic_figure_in_executive_summary_flagged(self):
         p = _make_minimal_good_proposal()
         p.executive_summary = p.executive_summary.replace(
@@ -485,16 +459,6 @@ class TestEvaluateProposal:
         result = evaluate_proposal(p)
         rules = {v.rule for v in result.violations}
         assert "missing_institutional_attribution" not in rules
-
-    def test_cross_industry_honesty_dormant_when_via_top_absent(self):
-        """The cross_industry_honesty rule depends on via_top being
-        populated on curriculum_evidence — when it's absent, the rule
-        cannot determine whether industries differ and falls dormant."""
-        p = _make_minimal_good_proposal()
-        # The fixture's curriculum_evidence has no via_top by default.
-        result = evaluate_proposal(p)
-        rules = {v.rule for v in result.violations}
-        assert "cross_industry_honesty" not in rules
 
     def test_missing_economic_figure_in_occupational_demand_flagged(self):
         p = _make_minimal_good_proposal()

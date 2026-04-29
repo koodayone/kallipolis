@@ -249,12 +249,20 @@ def _build_narrative_context(
     lines.append(dept_text)
     lines.append("")
 
-    # Student pipeline counts for the student impact section.
+    # Student pipeline counts.
+    total_in_aligned = student_stats.get("total_in_aligned_departments", 0)
     total_in_program = student_stats.get("total_in_program", 0)
     with_all_core = student_stats.get("with_all_core_skills", 0)
-    lines.append("STUDENT PIPELINE (scoped to the selected occupation's core skills):")
-    lines.append(f"  Students enrolled in courses that develop one or more core skills: {total_in_program:,}")
-    lines.append(f"  Students enrolled in courses developing all {len(core_skills)} core skills: {with_all_core:,}")
+    lines.append("STUDENT PIPELINE:")
+    lines.append(
+        f"  HEADLINE — Students enrolled in courses across the aligned departments (deduplicated): {total_in_aligned:,}"
+    )
+    lines.append(
+        f"  Students whose declared primary focus is one of the aligned departments: {total_in_program:,}"
+    )
+    lines.append(
+        f"  Students enrolled in courses developing all {len(core_skills)} core skills: {with_all_core:,}"
+    )
     if swp_evidence.department_enrollments:
         dept_enrollment_str = ", ".join(
             f"{d.department} ({d.student_count:,})"
@@ -299,22 +307,22 @@ Argument structure: You are writing one continuous argument across four sections
 
 Section claims:
 
-- EXECUTIVE SUMMARY (1 paragraph, ~70-80 words): The institutional case for this partnership, integrating four threads into a single synthetic paragraph.
-  STRUCTURE — four threads woven through the paragraph in this order:
-    1. EMPLOYER IDENTITY: Characterize the employer through what they do — their operations, scale, or scope — not through their hiring count. One sentence, declarative.
-    2. REGIONAL DEMAND CONTEXT: Set up the labor-market context for the selected occupation. Use directional language ("accelerating demand," "rising need," "growing requirement") anchored in the COE region by name. No specific wage or openings figures here — those belong in OCCUPATIONAL DEMAND.
-    3. CURRICULUM CAPABILITY: Name the most aligned department and two-to-four core competencies it develops for this occupation. Reference the institutional pathway by code at least once — name the TOP6 (e.g., "the Apprenticeship: Aerospace department, organized under TOP 095680") OR the SOC↔CIP crosswalk source (e.g., "the BLS/NCES crosswalk routes this occupation to..."). The competencies that follow are course-level competencies developed within that institutionally-aligned program — they are characterization of what the program teaches, not the basis of the alignment claim.
-    4. WORKFORCE GAP: Close with the gap figure from the REGIONAL SUPPLY-DEMAND block as the integrative claim. Phrase it neutrally ("Labor market analysis indicates an unmet workforce gap of N on an annual basis"). The gap is the only figure permitted in this section — it earns its place because it synthesizes demand and supply into one number.
-  CROSS-INDUSTRY HONESTY (principle 4): If the employer's SWP sector and the aligned department's apparent industry context differ (e.g., an aerospace-rooted apprenticeship for a medical device employer), name the partial nature accurately. Phrasing options: "this is an industry-portable credential applied here in a [employer industry] context," "the methods developed in this aerospace-rooted program transfer across manufacturing industries," "this is a transferable foundation rather than a turnkey match." Do NOT use "directly maps," "perfectly aligned," "seamless fit," "1:1 alignment" when the industry contexts differ.
-  TONE: Light evaluative framing is acceptable here ("represents a strong partnership candidate," "positions the college to address"), since this section's job is to make the case. Keep evaluative language measured — never superlative.
+- EXECUTIVE SUMMARY (1 paragraph, ~70-90 words, four sentences): The partnership thesis. State the case for why this college and this employer should partner, anchored in three concrete facts: the employer in regional context, the count of college courses whose TOP code maps to the selected occupation's SOC, and the count of students enrolled in those departments' courses. Plain agent-subject grammar throughout — the employer, the college, and the students act; codes are anchors named on nouns, never subjects.
+  STRUCTURE — four sentences, in order, each carrying one idea:
+    1. EMPLOYER IN REGIONAL CONTEXT: Characterize the employer through what they do — operations, scale, or scope — and place them in the COE region by name. The employer is the subject. One sentence, declarative.
+    2. PARTNERSHIP THESIS: State that the college can partner with the employer to fulfill their hiring needs by leveraging the college's institutional assets. The college is the subject. This sentence frames the rest of the paragraph; it is the only place the partnership is explicitly proposed.
+    3. CURRICULUM PROOF: State the count of courses at this college whose TOP code maps to the selected occupation's SOC. Sum the per-department aligned course counts from the INSTITUTIONAL CHAIN block. Name the SOC code as a property of the occupation, not as a subject. Example shape: "The college offers 15 courses with TOP codes that map to SOC 49-1011, the target occupation for this partnership." The college is the subject.
+    4. STUDENT PIPELINE PROOF: State the count of students enrolled in courses across the aligned departments — use the HEADLINE figure from the STUDENT PIPELINE block (the deduplicated count of students enrolled in any course in any aligned department at this college). Frame it as a sourceable talent pool. Example shape: "5,000 students have taken courses in the departments offering these courses, indicating a talent pool that can be sourced to fulfill labor market demand." Students are the subject.
+  TONE: Each sentence advances one idea. Light evaluative framing is acceptable in sentences 2 and 4 ("by leveraging its institutional assets," "indicating a talent pool that can be sourced") since this section makes the case. Keep evaluative language measured — never superlative.
   FORBIDDEN:
     - Specific wage figures or annual openings counts (those belong in OCCUPATIONAL DEMAND).
-    - Specific student counts (those belong in STUDENT IMPACT).
-    - Course counts (those belong in CURRICULUM ALIGNMENT).
+    - The workforce gap figure (the proposal's gap visualization shows it; prose does not need to repeat).
     - Naming a partnership type or prescribing a collaboration shape (advisory board, internship pipeline, curriculum codesign, etc.).
     - Superlatives: "exceptional," "remarkable," "transformative," "industry-leading."
-    - Direct-mapping interpretive bridges: "directly maps," "maps directly," "perfect fit," "turnkey," "seamless," "1:1 alignment." These are interpretive overclaims the institutional chain does not support.
+    - Direct-mapping interpretive bridges: "directly maps," "maps directly," "perfect fit," "turnkey," "seamless," "1:1 alignment." Always use "map to," "aligns with," or "prepares students for" — never the directness adverbs.
     - Generic openers: "This partnership opportunity..." "There is significant demand..." Lead with the employer's name or operations, not a meta-observation.
+    - Crosswalk mechanism vocabulary: "BLS/NCES crosswalk," "CIP code," "Chancellor's Office crosswalk," "the institutional crosswalk routes...". The crosswalk is the *source* of the alignment claim and belongs in CURRICULUM ALIGNMENT where the institutional pathway is named explicitly. The executive summary uses the result, not the mechanism.
+    - Industry-fit hedging: "industry-portable," "transferable foundation," "turnkey match," "transfer across manufacturing industries," "partnership-conversation topic." The detail sections show the departments involved; the coordinator can read the fit themselves. The exec summary does not pre-apologize.
 
 - OCCUPATIONAL DEMAND (2-3 sentences): The employer's hiring profile represents institutionally significant regional labor market demand, scoped to the SELECTED OCCUPATION only.
   REQUIRED REFERENCES:
@@ -327,32 +335,41 @@ Section claims:
     - Framing the figures as "national" or "across the country" — these are COE-region figures.
     - Speculation about career ladders or advancement.
 
-- CURRICULUM ALIGNMENT (2-3 sentences): The institutional crosswalk classifies specific departments at this college as preparing students for the selected occupation.
-  REQUIRED REFERENCES:
-    - At least one specific department name from the curriculum evidence.
-    - The institutional pathway named by code at least once: the TOP6 the department's aligned courses route through (e.g., "TOP 095680"), and either a phrase like "the Chancellor's Office TOP-CIP crosswalk," "the institutional crosswalk identifies..." or the CIP code that mediates the chain.
-    - At least one specific competency the institutionally-aligned courses develop. Course counts (e.g., "across 33 courses") are appropriate when they characterize the depth of preparation.
-  PRINCIPLE: The pathway claim rests on the institutional crosswalk; the competencies are characterization of what the institutionally-aligned program teaches. Skill names describe what courses develop; they do not by themselves establish pathway alignment.
-  PARTIAL ALIGNMENT (cross-industry, principle 4): When the employer's SWP sector differs from the department's apparent industry context, name the partial nature with transferability vocabulary: "transferable methods," "industry-portable credential," "the methods developed here transfer to a [employer industry] context," "applied here in a [employer industry] manufacturing context." Do NOT use "directly maps," "directly prepares," "perfect fit." The institutional alignment is real; the industry-specific context layer is a partnership-conversation topic, not a turnkey claim.
-  WHEN PARTIAL SKILL COVERAGE: Some core skills may not be covered by the institutionally-aligned courses. Name partial coverage honestly using strengthening-language: "could be strengthened," "an opportunity to deepen," "could be more rigorously developed."
+- CURRICULUM ALIGNMENT (exactly 2 sentences): The table caption for the department evidence rendered immediately below. The prose frames what the table shows; it does not enumerate or rank the departments.
+  STRUCTURE — two sentences, in order:
+    1. SOURCE + PATHWAY FRAMING: Attribute the pathway claim to the institutional source by plain name, and state that the departments below prepare students for the selected occupation by SOC code. Use this exact source phrasing: "the SOC-to-TOP institutional crosswalk maintained by the California Chancellor's Office." Example shape: "According to the SOC-to-TOP institutional crosswalk maintained by the California Chancellor's Office, the departments below prepare students for SOC 49-1011."
+    2. COMPETENCY FRAMING: State that these departments develop the core competencies required to perform the selected occupation, named by its official SOC title, at this employer. Example shape: "These departments develop the core competencies required to perform the role of First-Line Supervisors of Mechanics, Installers, and Repairers at Amtrak."
+  PRINCIPLE: The pathway claim rests on the institutional crosswalk; the prose names the source, points at the table, and frames what the table represents. Specificity (which departments, which TOP codes, which courses, which skills) is in the table — the prose is the caption above it.
+  WHEN PARTIAL SKILL COVERAGE: If the prose ever needs to flag that a core skill is not covered by the institutionally-aligned courses, use strengthening-language only: "could be strengthened," "an opportunity to deepen," "could be more rigorously developed." Default behavior is silence — let the table speak.
   FORBIDDEN:
+    - Naming any specific department, TOP6 code, CIP code, course count, or competency name in the prose. Those belong in the table.
+    - Ranking departments ("the most aligned department is…," "the strongest preparation comes from…"). The system's department ranking is noisy; the prose must not over-claim it.
     - Economic figures (wages, openings, growth percentages, employment counts).
-    - Enumerating every department the evidence block lists.
     - Deficit language: "missing," "does not address," "falls short," "not fully prepared."
     - Direct-mapping interpretive bridges (same list as EXECUTIVE SUMMARY).
     - Skills-as-pathway claims: do not write that a skill "prepares students for" or "qualifies graduates for" or "is the gateway to" the occupation. Skills characterize courses; the institutional crosswalk is what prepares.
+    - Departing from the prescribed source phrasing in sentence 1. The exact phrase "the SOC-to-TOP institutional crosswalk maintained by the California Chancellor's Office" is the authoritative attribution; do not paraphrase it into "the BLS/NCES crosswalk," "the Centers of Excellence crosswalk," or any other variant.
 
-- STUDENT IMPACT (2-3 sentences): The composition and alignment of the student pipeline with this opportunity.
-  REQUIRED REFERENCES: At least one specific student count from the student pipeline data — the total enrolled in core-skill courses, OR the count carrying all core skills, OR a department-level enrollment figure. At least one department name.
-  FORBIDDEN: Economic figures. Evaluative readiness language ("ready," "prepared," "qualified," "fit"). State the composition; do not evaluate it. Skills-as-readiness claims: do not write that a skill makes students "qualified" or "prepared" — describe the skills the students hold; the institutional credential is what qualifies.
+- STUDENT IMPACT (exactly 2 sentences): The table caption for the candidate table rendered immediately below. The prose frames the headline pipeline count and points at the table; it does not name individual students or departments.
+  STRUCTURE — two sentences, in order:
+    1. PIPELINE COUNT + INSTITUTIONAL ANCHOR: State the headline count from the STUDENT PIPELINE block (the deduplicated total enrolled in courses across the aligned departments). Anchor to the institutional pathway by referring to "the TOP-SOC crosswalk" and naming the SOC by code. Example shape: "3,000 students are enrolled in the departments containing TOP codes that align with SOC 49-1011."
+    2. TABLE POINTER + PREPARATION FRAMING: Point at the candidate table that follows ("Shown below are…") and frame the candidates as students whose coursework on the TOP-SOC crosswalk gives them the strongest pathway preparation. Example shape: "Shown below are students that are most strongly prepared with the coursework included in the TOP-SOC crosswalk."
+  PRINCIPLE: This section is a caption for the candidate table. The headline count is the institutional pipeline figure; the table itself shows the ranked candidates. The word "prepared" is OK in this section ONLY when its grammatical object is coursework or the institutional pathway ("prepared with the coursework," "prepared by the TOP-SOC pathway"). Never claim students are prepared FOR the role, the work, the job, or the employer — that's a readiness over-claim the data cannot support.
+  FORBIDDEN:
+    - Naming individual students or specific departments in the prose. Those belong in the table.
+    - Specific student-count figures other than the HEADLINE pipeline count (the with-all-core-skills figure and the primary-focus figure may exist in the data block but do not appear in this section's prose).
+    - Economic figures.
+    - Readiness over-claims: "students are ready," "students are qualified," "students are a fit," "well-qualified." These claim graduate readiness the data cannot support.
+    - Skills-as-readiness claims: do not write that a skill makes students "qualified" or "ready" for the role.
+    - Departing from the prescribed source phrasing for the institutional pathway: use the short form "the TOP-SOC crosswalk" in this section (the full attribution lives in CURRICULUM ALIGNMENT).
 
 Write a single JSON object:
 
 {{
   "executive_summary": "<single paragraph, ~80 words>",
   "occupational_demand": "<2-3 sentences>",
-  "curriculum_alignment": "<2-3 sentences>",
-  "student_impact": "<2-3 sentences>"
+  "curriculum_alignment": "<exactly 2 sentences>",
+  "student_impact": "<exactly 2 sentences>"
 }}
 
 Tone:
@@ -372,13 +389,13 @@ Epistemic standard: Be persuasive and epistemically rigorous. Persuade through s
 
 REFERENCE EXAMPLE (match this prose quality — do not copy its content):
 
-Executive Summary: Kaiser Permanente operates inpatient and outpatient clinical facilities across the Far North COE region, with a hiring profile centered on registered nurses and allied health roles. The college's Nursing department develops the clinical reasoning and documentation workflows central to Kaiser's roles, and the Health Sciences program extends that preparation into supervised practice. Students across these programs are completing coursework aligned with the competencies Kaiser hires for.
+Executive Summary: Kaiser Permanente operates inpatient and outpatient clinical facilities across the Far North COE region. Shasta College can partner with Kaiser to fulfill its clinical hiring needs by leveraging the college's institutional assets. The college offers 28 courses with TOP codes that map to SOC 29-1141, the target occupation for this partnership. 1,140 students have taken courses in the departments offering these courses, indicating a talent pool that can be sourced to fulfill labor market demand.
 
 Occupational Demand: Kaiser Permanente's Far North hiring centers on Registered Nurses (29-1141), with roughly 1,200 regional annual openings and median annual wages near $130,000. The company's clinical scope spans inpatient and outpatient settings, generating a diverse set of nursing competencies new hires are expected to bring on day one.
 
-Curriculum Alignment: The Nursing department provides the most direct preparation for Kaiser's clinical roles, developing patient care, clinical documentation, and assessment across 28 courses. The Health Sciences program extends this into supervised practice settings, deepening preparation in clinical assessment.
+Curriculum Alignment: According to the SOC-to-TOP institutional crosswalk maintained by the California Chancellor's Office, the departments below prepare students for SOC 29-1141. These departments develop the core competencies required to perform the role of Registered Nurses at Kaiser Permanente.
 
-Student Impact: The Nursing department has 1,140 students enrolled in courses developing the relevant clinical competencies, with 240 carrying all three core skills. The Health Sciences program adds another concentration of students preparing for clinical roles.
+Student Impact: 1,140 students are enrolled in the departments containing TOP codes that align with SOC 29-1141. Shown below are students that are most strongly prepared with the coursework included in the TOP-SOC crosswalk.
 
 Return ONLY valid JSON with no text before or after."""
 
@@ -458,6 +475,7 @@ def _assemble_proposal(
         student_evidence=StudentEvidence(
             total_in_program=student_stats.get("total_in_program", 0),
             with_all_core_skills=student_stats.get("with_all_core_skills", 0),
+            total_in_aligned_departments=student_stats.get("total_in_aligned_departments", 0),
             top_students=[StudentSummaryEvidence(**s) for s in top_students],
         ),
         swp_evidence=swp_evidence,

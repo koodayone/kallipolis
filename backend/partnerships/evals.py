@@ -121,15 +121,22 @@ _PRESCRIPTION_VERB_PATTERNS = [
     r"\brecommend(?:ed|s)?\s+(?:establishing|forming|pursuing|implementing|launching|creating)\b",
 ]
 
-# Readiness evaluation phrases banned in Student Impact (the prompt says
-# "state composition; do not evaluate readiness").
+# Readiness over-claims banned in Student Impact. The rule is anchored
+# to the *target* of the readiness claim, not to the bare verb. "Prepared
+# with the coursework" is honest — preparation operationalized via what
+# the data measures (course enrollment). "Prepared for the role" is an
+# over-claim — the data cannot support graduate-readiness assertions.
 _READINESS_PATTERNS = [
     r"\bare ready\b",
-    r"\bare prepared\b",
     r"\bare qualified\b",
     r"\bare a (?:strong|good|great) fit\b",
-    r"\bwell[- ]prepared\b",
     r"\bwell[- ]qualified\b",
+    # "prepared/qualified/ready" pointing at a job-side noun within ~60
+    # chars is a readiness over-claim. Negative lookahead exempts the
+    # honest "prepared with/by/via/through [coursework]" form. The
+    # role-noun list catches the over-claim targets coordinators see in
+    # boilerplate prose.
+    r"\b(?:prepared|qualified|ready)\b(?!\s+(?:with|by|via|through))[^.]{0,60}?\b(?:roles?|works?|jobs?|employment|occupation|positions?|hire|hiring|workforce|day one)\b",
 ]
 
 # Economic-figure patterns. Match dollar amounts, percentages of growth,
@@ -191,65 +198,6 @@ _SKILLS_AS_PATHWAY_PATTERNS = [
     r"\b(?:skill|competency)\s+is\s+(?:the\s+)?(?:gateway|pathway|bridge)\s+to\b",
     # "develops the skills that prepare students" — same anti-pattern
     r"\bdevelops?\s+the\s+skills?\s+(?:that|which)\s+prepar(?:e|es|ing)\b",
-]
-
-
-def _employer_sector_matches_top_sector(proposal: NarrativeProposal) -> bool | None:
-    """Heuristic for whether the employer's SWP sector matches the dominant
-    industry context of the institutionally-aligned departments. Returns
-    True/False when both sides are determinable; None when not.
-
-    Used by the cross_industry_honesty rule: when sectors differ, the
-    curriculum_alignment prose must use transferability vocabulary
-    rather than direct-mapping claims.
-    """
-    employer_sector = (proposal.sector or "").strip().lower()
-    if not employer_sector:
-        return None
-
-    # Collect via_top codes across the curriculum_evidence and look up
-    # their PCAH sectors. If the dominant sector matches the employer's
-    # sector (substring containment in either direction), we treat the
-    # alignment as same-industry.
-    via_tops: list[str] = []
-    for d in proposal.curriculum_evidence:
-        via_tops.extend(getattr(d, "via_top", None) or [])
-
-    if not via_tops:
-        return None
-
-    try:
-        from ontology.crosswalks import _load_pcah_cte_top6
-
-        pcah = _load_pcah_cte_top6()
-    except Exception:
-        return None
-
-    sectors = [pcah.get(t) for t in via_tops if pcah.get(t)]
-    if not sectors:
-        return None
-
-    # Most-common sector across the via_top set.
-    from collections import Counter
-
-    dominant_sector = Counter(sectors).most_common(1)[0][0].lower()
-
-    # Sector-name-match heuristic: substring containment in either
-    # direction. Examples:
-    # employer="Advanced Manufacturing" / dominant="Advanced Manufacturing" → match
-    # employer="Health" / dominant="Health" → match
-    # employer="Advanced Manufacturing" / dominant="Energy, Construction and Utilities" → no match
-    return employer_sector in dominant_sector or dominant_sector in employer_sector
-
-
-_TRANSFERABILITY_PATTERNS = [
-    r"\btransferable\b",
-    r"\bindustry[- ]portable\b",
-    r"\bapplied here\b",
-    r"\bmethods translate\b",
-    r"\bcross[- ]industry\b",
-    r"\btransfer(?:s)? across\b",
-    r"\bindustry[- ]agnostic\b",
 ]
 
 
@@ -447,40 +395,16 @@ def _check_executive_summary(p: NarrativeProposal) -> list[EvalViolation]:
             )
         )
 
-    # Forbidden: wage / openings / growth / employment figures. The gap
-    # figure (workforce gap of N) is structurally different — it's a
-    # supply-vs-demand synthesis, not a raw economic figure — so it
-    # passes this check naturally and is mandated by the gap-citation
-    # rule below.
+    # Forbidden: wage / openings / growth / employment / gap figures.
+    # Under the partnership-thesis exec summary, only course count and
+    # student count are permitted — those land in the curriculum-proof
+    # and student-pipeline-proof sentences respectively. The gap is
+    # carried by the proposal's gap visualization, not the prose.
     violations.extend(_check_no_economic_figures_in(section, text))
 
-    # Required: the workforce gap is the executive summary's signature
-    # figure under the new prompt — the only number the LLM is supposed
-    # to cite, since it integrates demand and supply into one synthetic
-    # claim. Verify the gap value (with ±5% rounding tolerance and
-    # comma-formatted fallback) appears in the prose.
-    gap = p.swp_evidence.gap if p.swp_evidence else 0
-    if gap and abs(gap) >= 1:
-        if not _text_contains_gap_value(text, gap):
-            violations.append(
-                EvalViolation(
-                    rule="missing_gap_figure",
-                    section=section,
-                    message=(
-                        f"Executive summary does not cite the workforce gap value ({gap:,.0f}). "
-                        f"The gap is the section's required integrative figure under the "
-                        f"docs-page Partnership Narrative voice."
-                    ),
-                )
-            )
-
     # C8 — institutional-deference rules applied to executive_summary.
-    # The cross-industry honesty rule is applied here too because the
-    # exec summary's curriculum-capability thread is the most common
-    # site of direct-mapping overclaim when industry contexts differ.
     violations.extend(_check_no_direct_mapping_overclaims(section, text))
     violations.extend(_check_no_skills_as_pathway(section, text))
-    violations.extend(_check_cross_industry_honesty(p, section, text))
     violations.extend(_check_missing_institutional_attribution(p, section, text))
 
     # Voice
@@ -597,75 +521,6 @@ def _check_missing_institutional_attribution(
             ),
         )
     ]
-
-
-def _check_cross_industry_honesty(
-    proposal: NarrativeProposal, section_name: str, text: str
-) -> list[EvalViolation]:
-    """When the employer's SWP sector and the dominant industry context
-    of the institutionally-aligned departments differ, the prose must
-    use transferability vocabulary somewhere in the section. Naming
-    the partial nature of the alignment is principle 4: don't conflate
-    categorical alignment with turnkey applicability.
-
-    When sectors match (or the comparison is indeterminable), this
-    rule is dormant. The detection runs through the in-repo PCAH TOP6
-    sector mapping; missing data fails open.
-    """
-    if section_name not in ("executive_summary", "curriculum_alignment"):
-        return []
-
-    matches = _employer_sector_matches_top_sector(proposal)
-    if matches is None or matches is True:
-        # Either we can't determine sector match (no via_top, no
-        # employer sector), or the sectors match. Dormant.
-        return []
-
-    # Sectors differ. Look for transferability vocabulary in the
-    # section's text. A single match satisfies the rule.
-    for pat in _TRANSFERABILITY_PATTERNS:
-        if re.search(pat, text, re.IGNORECASE):
-            return []
-
-    return [
-        EvalViolation(
-            rule="cross_industry_honesty",
-            section=section_name,
-            message=(
-                f"Sector mismatch between employer (SWP: {proposal.sector!r}) "
-                f"and aligned department's industry context, but the prose "
-                f"contains no transferability vocabulary "
-                f"('transferable,' 'industry-portable,' 'applied here,' "
-                f"'cross-industry,' 'methods translate'). Per principle 4, "
-                f"name the partial nature of the alignment when industry "
-                f"contexts differ; do not paper it over with same-industry "
-                f"phrasing."
-            ),
-        )
-    ]
-
-
-def _text_contains_gap_value(text: str, gap: float) -> bool:
-    """Return True iff `text` cites a number matching the gap within a
-    5% rounding tolerance. Accepts plain integers, comma-formatted
-    integers, and "N annual" / "N on an annual basis" framings.
-    """
-    target = round(abs(gap))
-    if target == 0:
-        return False
-    # 5% tolerance window matching the demand-figure-faithfulness rule's
-    # tolerance posture elsewhere in this module — coordinators round
-    # naturally; the eval should not fail on rounding.
-    lo = round(target * 0.95)
-    hi = round(target * 1.05)
-    for m in re.finditer(r"\b\d[\d,]*\b", text):
-        try:
-            n = int(m.group(0).replace(",", ""))
-        except ValueError:
-            continue
-        if lo <= n <= hi:
-            return True
-    return False
 
 
 def _check_occupational_demand(p: NarrativeProposal) -> list[EvalViolation]:
@@ -876,7 +731,6 @@ def _check_curriculum_alignment(p: NarrativeProposal) -> list[EvalViolation]:
     # C8 — institutional-deference rules applied to curriculum_alignment.
     violations.extend(_check_no_direct_mapping_overclaims(section, text))
     violations.extend(_check_no_skills_as_pathway(section, text))
-    violations.extend(_check_cross_industry_honesty(p, section, text))
 
     # Voice
     violations.extend(_check_voice(section, text))
@@ -896,8 +750,12 @@ def _check_student_impact(p: NarrativeProposal) -> list[EvalViolation]:
         return violations
 
     # Required: at least one specific student count.
-    # Acceptable counts: total_in_program, with_all_core_skills, dept_enrollment values.
+    # Acceptable counts: total_in_aligned_departments (the headline figure
+    # under the table-caption prompt), total_in_program, with_all_core_skills,
+    # or any department-level enrollment value.
     expected_counts: list[int] = []
+    if p.student_evidence.total_in_aligned_departments > 0:
+        expected_counts.append(p.student_evidence.total_in_aligned_departments)
     if p.student_evidence.total_in_program > 0:
         expected_counts.append(p.student_evidence.total_in_program)
     if p.student_evidence.with_all_core_skills > 0:

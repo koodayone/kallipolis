@@ -115,6 +115,7 @@ class StudentSummaryEvidence(BaseModel):
 class StudentEvidence(BaseModel):
     total_in_program: int
     with_all_core_skills: int
+    total_in_aligned_departments: int = 0
     top_students: list[StudentSummaryEvidence]
 
 
