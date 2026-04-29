@@ -19,24 +19,36 @@ type FormDef = {
   rotSpeed: THREE.Vector3;
 };
 
-const formDefs: FormDef[] = [
+// Desktop composition: forms left-of-center so HTML labels render to their right.
+// Mobile composition: forms centered horizontally so HTML labels render below them.
+const desktopFormDefs: FormDef[] = [
   { label: "Partnerships",     factory: createChainlinkForm, position: new THREE.Vector3(-2.4, 1.2, 0),  rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
   { label: "Strong Workforce", factory: createDumbbellForm,  position: new THREE.Vector3(-2.4, -3.2, 0), rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
 ];
 
-export const FORM_LABELS = formDefs.map((f) => f.label);
+const mobileFormDefs: FormDef[] = [
+  { label: "Partnerships",     factory: createChainlinkForm, position: new THREE.Vector3(0, 1.6, 0),  rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
+  { label: "Strong Workforce", factory: createDumbbellForm,  position: new THREE.Vector3(0, -3.2, 0), rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
+];
+
+export const FORM_LABELS = desktopFormDefs.map((f) => f.label);
+
+const MOBILE_BREAKPOINT_PX = 768;
 
 export type TwoFormsResult = {
   cleanup: () => void;
   getProjectedPositions: () => Record<string, { x: number; y: number }>;
   onHoverChange: (cb: (label: string | null) => void) => void;
   setExternalHover: (label: string | null) => void;
+  layoutMode: "mobile" | "desktop";
 };
 
 export function buildTwoFormsScene(canvas: HTMLCanvasElement): TwoFormsResult {
   const rect = canvas.getBoundingClientRect();
   const width = rect.width || canvas.clientWidth || 800;
   const height = rect.height || canvas.clientHeight || 600;
+  const layoutMode: "mobile" | "desktop" = width > 0 && width < MOBILE_BREAKPOINT_PX ? "mobile" : "desktop";
+  const formDefs = layoutMode === "mobile" ? mobileFormDefs : desktopFormDefs;
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -158,5 +170,6 @@ export function buildTwoFormsScene(canvas: HTMLCanvasElement): TwoFormsResult {
       externalHover = label !== null ? formDefs.findIndex((f) => f.label === label) : null;
       if (externalHover === -1) externalHover = null;
     },
+    layoutMode,
   };
 }

@@ -36,12 +36,24 @@ type RowDef = {
 // Forms at -1.5 (with ~0.5 unit geometry radius at scale 0.55 → edge at ~-2.0, safe)
 // Endpoints at 1.5 (logo overlay sits outside canvas to the right via HTML)
 // Rows evenly spaced across ±2.7 vertical
-const rows: RowDef[] = [
+//
+// Mobile: aspect ratio collapses toward 1:1, so the same world X range covers
+// less of the canvas horizontally. Wider X spread fills the screen edge-to-edge.
+const desktopRows: RowDef[] = [
   { label: "Students",    authority: "Chancellor's Office", factory: createMortarboardForm, formX: -1.5, endX: 1.5, y: 2.7 },
   { label: "Courses",     authority: "Colleges",             factory: createBookForm,        formX: -1.5, endX: 1.5, y: 0.9 },
   { label: "Occupations", authority: "COE",                  factory: createHardhatForm,     formX: -1.5, endX: 1.5, y: -0.9 },
   { label: "Employers",   authority: "EDD",                 factory: createSkyscraperForm,  formX: -1.5, endX: 1.5, y: -2.7 },
 ];
+
+const mobileRows: RowDef[] = [
+  { label: "Students",    authority: "Chancellor's Office", factory: createMortarboardForm, formX: -2.0, endX: 2.0, y: 2.7 },
+  { label: "Courses",     authority: "Colleges",             factory: createBookForm,        formX: -2.0, endX: 2.0, y: 0.9 },
+  { label: "Occupations", authority: "COE",                  factory: createHardhatForm,     formX: -2.0, endX: 2.0, y: -0.9 },
+  { label: "Employers",   authority: "EDD",                 factory: createSkyscraperForm,  formX: -2.0, endX: 2.0, y: -2.7 },
+];
+
+const MOBILE_BREAKPOINT_PX = 768;
 
 export type EpistemologyResult = {
   cleanup: () => void;
@@ -50,12 +62,14 @@ export type EpistemologyResult = {
   onHoverChange: (cb: (label: string | null) => void) => void;
 };
 
-export const ROW_DATA = rows.map((r) => ({ label: r.label, authority: r.authority }));
+export const ROW_DATA = desktopRows.map((r) => ({ label: r.label, authority: r.authority }));
 
 export function buildEpistemologyScene(canvas: HTMLCanvasElement): EpistemologyResult {
   const rect = canvas.getBoundingClientRect();
   const width = rect.width || canvas.clientWidth || 800;
   const height = rect.height || canvas.clientHeight || 600;
+  const layoutMode: "mobile" | "desktop" = width > 0 && width < MOBILE_BREAKPOINT_PX ? "mobile" : "desktop";
+  const rows = layoutMode === "mobile" ? mobileRows : desktopRows;
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
