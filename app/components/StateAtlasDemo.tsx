@@ -211,17 +211,17 @@ export default function StateAtlasDemo() {
                         setPhase("college");
 
                         // Cycle back to atlas
-                        schedule(runCycle, 5000);
+                        schedule(runCycle, 2200);
                       }, 600);
-                    }, 1200);
-                  }, 1500);
-                }, 2000);
-              }, 1500);
+                    }, 500);
+                  }, 600);
+                }, 800);
+              }, 600);
             }
-          }, 95);
+          }, 55);
           intervalsRef.current.push(typeInterval);
-        }, 3000);
-      }, 2500);
+        }, 1200);
+      }, 1000);
     }
 
     runCycle();
