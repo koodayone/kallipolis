@@ -41,7 +41,7 @@ export default function ConvergenceFlowDiagram() {
       {CONVERGENCE_LABELS.map((label) => {
         const pos = labelPositions[label];
         if (!pos) return null;
-        const isCenterForm = label === "Partnerships" || label === "Strong Workforce";
+        const isCenterForm = label === "Partnerships";
         const isHovered = hoveredLabel === label;
         const isDimmed = hoveredLabel !== null && !isHovered;
         return (

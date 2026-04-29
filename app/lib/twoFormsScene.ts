@@ -1,16 +1,22 @@
 /**
- * Renders the two units of action — partnerships (chainlink) and
- * strong workforce (dumbbell) — stacked vertically with ambient rotation.
+ * Renders the partnership chainlink — the unit of action that integrates
+ * the four foundational forms — as a single ambient-rotating object on
+ * the home page's PartnershipsSection.
+ *
+ * Previously rendered both partnerships and "strong workforce" stacked
+ * vertically; the latter was removed when the ontology dropped Strong
+ * Workforce as a node. Strong Workforce remains the policy program the
+ * partnership unit of action serves, but it is no longer a separate form.
  */
 
 import * as THREE from "three";
-import { createChainlinkForm, createDumbbellForm } from "./formFactories";
+import { createChainlinkForm } from "./formFactories";
 
 // ── Scene ─────────────────────────────────────────────────────────────────────
 
 const SOLID_COLOR = 0x4fd1fd;
 const BG_COLOR = 0x060d1f;
-const FORM_SCALE = 1.4;
+const FORM_SCALE = 1.8;
 
 type FormDef = {
   label: string;
@@ -19,16 +25,15 @@ type FormDef = {
   rotSpeed: THREE.Vector3;
 };
 
-// Desktop composition: forms left-of-center so HTML labels render to their right.
-// Mobile composition: forms centered horizontally so HTML labels render below them.
+// Single chainlink centered in the scene. Desktop and mobile both center
+// horizontally; mobile shifts the form slightly to leave room for the
+// label below (HTML overlay positioning is branched in TwoFormsDiagram).
 const desktopFormDefs: FormDef[] = [
-  { label: "Partnerships",     factory: createChainlinkForm, position: new THREE.Vector3(-2.4, 1.2, 0),  rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
-  { label: "Strong Workforce", factory: createDumbbellForm,  position: new THREE.Vector3(-2.4, -3.2, 0), rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
+  { label: "Partnerships", factory: createChainlinkForm, position: new THREE.Vector3(-2.4, -0.6, 0), rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
 ];
 
 const mobileFormDefs: FormDef[] = [
-  { label: "Partnerships",     factory: createChainlinkForm, position: new THREE.Vector3(0, 1.6, 0),  rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
-  { label: "Strong Workforce", factory: createDumbbellForm,  position: new THREE.Vector3(0, -3.2, 0), rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
+  { label: "Partnerships", factory: createChainlinkForm, position: new THREE.Vector3(0, -0.4, 0), rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
 ];
 
 export const FORM_LABELS = desktopFormDefs.map((f) => f.label);

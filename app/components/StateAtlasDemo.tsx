@@ -9,7 +9,6 @@ import {
   createChainlinkForm,
   createHardhatForm,
   createSkyscraperForm,
-  createDumbbellForm,
 } from "../lib/formFactories";
 
 const StateMap = dynamic(() => import("./StateMap"), { ssr: false });
@@ -102,12 +101,14 @@ const DEMO_COLLEGES: DemoCollege[] = [
 const TARGET_COLLEGE = DEMO_COLLEGES.find((c) => c.id === "foothill")!;
 const TARGET_QUERY = "foothill college";
 
+// Five forms mirroring the actual college atlas (atlas/college-atlas/scene.ts).
 const COLLEGE_FORMS = [
+  // Top row: active layer
   { factory: createMortarboardForm, label: "Students" },
   { factory: createChainlinkForm,   label: "Partnerships" },
   { factory: createSkyscraperForm,  label: "Employers" },
+  // Bottom row: substrates
   { factory: createBookForm,        label: "Courses" },
-  { factory: createDumbbellForm,    label: "Strong Workforce" },
   { factory: createHardhatForm,     label: "Occupations" },
 ];
 
@@ -437,20 +438,30 @@ export default function StateAtlasDemo() {
           }} />
           <div style={{
             display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
+            // 6-col grid with each form spanning 2 cols. Top row fills cols
+            // 1-6 (3 forms × 2). Bottom row offsets by 1 so the 2 forms span
+            // cols 2-5 — centered under the gaps in the top row, producing
+            // the same pyramid shape as the actual atlas.
+            gridTemplateColumns: "repeat(6, 1fr)",
             gap: 16,
             flex: 1,
             alignContent: "center",
             padding: "8px 12px",
           }}>
-            {COLLEGE_FORMS.map((form) => (
-              <MiniFormCell
+            {COLLEGE_FORMS.map((form, i) => (
+              <div
                 key={form.label}
-                factory={form.factory}
-                label={form.label}
-                color={collegeColor}
-                active={phase === "college"}
-              />
+                style={{
+                  gridColumn: i < 3 ? `${i * 2 + 1} / span 2` : `${(i - 3) * 2 + 2} / span 2`,
+                }}
+              >
+                <MiniFormCell
+                  factory={form.factory}
+                  label={form.label}
+                  color={collegeColor}
+                  active={phase === "college"}
+                />
+              </div>
             ))}
           </div>
         </div>

@@ -14,7 +14,6 @@ import {
   createChainlinkForm,
   createHardhatForm,
   createSkyscraperForm,
-  createDumbbellForm,
 } from "./formFactories";
 
 // ── Scene configuration ───────────────────────────────────────────────────────
@@ -29,31 +28,33 @@ type FormDef = {
   rotSpeed: THREE.Vector3;
 };
 
-const DESKTOP_FORM_SCALE = 2.1;
+const DESKTOP_FORM_SCALE = 2.0;
 const MOBILE_FORM_SCALE = 1.5;
 const MOBILE_BREAKPOINT_PX = 768;
 
-// Desktop renders a 3-col × 2-row grid (x=±9, y=4.2/-3.4) at 16:10 aspect.
-// Mobile keeps the 3×2 grid but compresses horizontal spread (x=±5) and
-// vertical band (y=3.5/-2.8) so forms stay visible on a square-ish canvas.
+// Mirrors the actual atlas pyramid (atlas/college-atlas/scene.ts):
+//   Top row (active layer):     Students | Partnerships | Employers
+//   Bottom row (substrate):     Courses             Occupations
+// Bottom forms tighten to half the top spread so they sit centered under
+// the gaps in the top row, producing a slight pyramid distribution rather
+// than a 3×2 grid. Strong Workforce is no longer a node in the ontology;
+// it remains the policy program the partnerships unit of action serves.
 const desktopFormDefs: FormDef[] = [
-  // Top row
-  { label: "Students",         factory: createMortarboardForm, position: new THREE.Vector3(-9.0, 4.2, 0),  rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
-  { label: "Partnerships",     factory: createChainlinkForm,   position: new THREE.Vector3(0, 4.2, 0),     rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
-  { label: "Employers",        factory: createSkyscraperForm,  position: new THREE.Vector3(9.0, 4.2, 0),   rotSpeed: new THREE.Vector3(0.0015, 0.002, 0.0018) },
-  // Bottom row
-  { label: "Courses",          factory: createBookForm,        position: new THREE.Vector3(-9.0, -3.4, 0), rotSpeed: new THREE.Vector3(0.0015, 0.002, 0.001) },
-  { label: "Strong Workforce", factory: createDumbbellForm,    position: new THREE.Vector3(0, -3.4, 0),    rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
-  { label: "Occupations",      factory: createHardhatForm,     position: new THREE.Vector3(9.0, -3.4, 0),  rotSpeed: new THREE.Vector3(0.002, 0.0028, 0.0012) },
+  // Top row — supply-side person | unit of action | demand-side person
+  { label: "Students",     factory: createMortarboardForm, position: new THREE.Vector3(-8.4, 3.8, 0),  rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
+  { label: "Partnerships", factory: createChainlinkForm,   position: new THREE.Vector3(0, 3.8, 0),      rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
+  { label: "Employers",    factory: createSkyscraperForm,  position: new THREE.Vector3(8.4, 3.8, 0),    rotSpeed: new THREE.Vector3(0.0015, 0.002, 0.0018) },
+  // Bottom row — curricular substrate | labor-market substrate (tightened)
+  { label: "Courses",      factory: createBookForm,        position: new THREE.Vector3(-4.2, -3.4, 0),  rotSpeed: new THREE.Vector3(0.0015, 0.002, 0.001) },
+  { label: "Occupations",  factory: createHardhatForm,     position: new THREE.Vector3(4.2, -3.4, 0),   rotSpeed: new THREE.Vector3(0.002, 0.0028, 0.0012) },
 ];
 
 const mobileFormDefs: FormDef[] = [
-  { label: "Students",         factory: createMortarboardForm, position: new THREE.Vector3(-5.0, 3.5, 0),  rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
-  { label: "Partnerships",     factory: createChainlinkForm,   position: new THREE.Vector3(0, 3.5, 0),     rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
-  { label: "Employers",        factory: createSkyscraperForm,  position: new THREE.Vector3(5.0, 3.5, 0),   rotSpeed: new THREE.Vector3(0.0015, 0.002, 0.0018) },
-  { label: "Courses",          factory: createBookForm,        position: new THREE.Vector3(-5.0, -2.8, 0), rotSpeed: new THREE.Vector3(0.0015, 0.002, 0.001) },
-  { label: "Strong Workforce", factory: createDumbbellForm,    position: new THREE.Vector3(0, -2.8, 0),    rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
-  { label: "Occupations",      factory: createHardhatForm,     position: new THREE.Vector3(5.0, -2.8, 0),  rotSpeed: new THREE.Vector3(0.002, 0.0028, 0.0012) },
+  { label: "Students",     factory: createMortarboardForm, position: new THREE.Vector3(-4.6, 3.0, 0),   rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
+  { label: "Partnerships", factory: createChainlinkForm,   position: new THREE.Vector3(0, 3.0, 0),      rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
+  { label: "Employers",    factory: createSkyscraperForm,  position: new THREE.Vector3(4.6, 3.0, 0),    rotSpeed: new THREE.Vector3(0.0015, 0.002, 0.0018) },
+  { label: "Courses",      factory: createBookForm,        position: new THREE.Vector3(-2.3, -2.6, 0),  rotSpeed: new THREE.Vector3(0.0015, 0.002, 0.001) },
+  { label: "Occupations",  factory: createHardhatForm,     position: new THREE.Vector3(2.3, -2.6, 0),   rotSpeed: new THREE.Vector3(0.002, 0.0028, 0.0012) },
 ];
 
 // ── Build scene ───────────────────────────────────────────────────────────────
