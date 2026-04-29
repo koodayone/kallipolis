@@ -89,6 +89,18 @@ export default function PartnershipsView({ school, onBack }: Props) {
     return counts;
   }, [savedProposals]);
 
+  // Set of regional-priority sector names, computed from the landscape's
+  // priority_sectors_matched. Used by both Build mode (already) and Manage
+  // mode (to surface the priority dot on saved-proposal rows whose sector
+  // is in the set, mirroring Build mode's per-sector indicator).
+  const prioritySet = useMemo(() => {
+    const set = new Set<string>();
+    for (const opp of landscape) {
+      for (const p of opp.priority_sectors_matched) set.add(p);
+    }
+    return set;
+  }, [landscape]);
+
   // Load landscape on mount.
   useEffect(() => {
     getPartnershipLandscape(school.name)
@@ -252,6 +264,7 @@ export default function PartnershipsView({ school, onBack }: Props) {
                     setManageQuery={setManageQuery}
                     expandedSavedId={expandedSavedId}
                     toggleExpanded={toggleSavedExpanded}
+                    prioritySet={prioritySet}
                   />
                 )}
 

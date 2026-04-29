@@ -19,6 +19,11 @@ type Props = {
   setManageQuery: (q: string) => void;
   expandedSavedId: string | null;
   toggleExpanded: (id: string) => void;
+  // Set of regional-priority sector names. Saved-proposal rows whose
+  // sector is in this set render the small priority dot, mirroring the
+  // Build mode per-sector priority indicator. Optional so legacy callers
+  // still work; absent → no dots ever rendered.
+  prioritySet?: Set<string>;
 };
 
 export default function PartnershipManageMode({
@@ -29,6 +34,7 @@ export default function PartnershipManageMode({
   setManageQuery,
   expandedSavedId,
   toggleExpanded,
+  prioritySet,
 }: Props) {
   if (savedProposals.length === 0) {
     return (
@@ -72,14 +78,37 @@ export default function PartnershipManageMode({
         />
       </div>
 
-      {/* Column headers */}
+      {/* Column headers — Sector header carries the same regional-priority
+          legend Build mode uses, so the per-row dot has the same on-page
+          explanation in both modes. */}
       <div style={{
-        display: "grid", gridTemplateColumns: "24px 1fr 200px",
+        display: "grid", gridTemplateColumns: "24px 1fr 240px",
         padding: "12px 16px", gap: "10px", alignItems: "center",
       }}>
         <span />
         <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Employer</span>
-        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, textAlign: "right" }}>Sector</span>
+        <span style={{
+          display: "inline-flex", alignItems: "baseline", gap: "8px",
+          justifyContent: "flex-end",
+        }}>
+          <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Sector</span>
+          {prioritySet && prioritySet.size > 0 && (
+            <span style={{ display: "inline-flex", alignItems: "baseline", gap: "5px" }}>
+              <span style={{
+                width: "5px", height: "5px", borderRadius: "50%",
+                background: school.brandColorLight, opacity: 0.7,
+                position: "relative", top: "-1px",
+              }} />
+              <span style={{
+                fontFamily: FONT, fontSize: "10px", fontWeight: 500,
+                letterSpacing: "0.1em", textTransform: "uppercase",
+                color: school.brandColorLight, opacity: 0.4,
+              }}>
+                Regional priority
+              </span>
+            </span>
+          )}
+        </span>
       </div>
 
       {/* Rows */}
@@ -92,7 +121,7 @@ export default function PartnershipManageMode({
               onClick={() => toggleExpanded(saved.id)}
               style={{
                 width: "100%", textAlign: "left", cursor: "pointer",
-                display: "grid", gridTemplateColumns: "24px 1fr 200px",
+                display: "grid", gridTemplateColumns: "24px 1fr 240px",
                 padding: "12px 16px", gap: "10px", alignItems: "center",
                 background: isExpanded ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
                 border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
@@ -108,11 +137,33 @@ export default function PartnershipManageMode({
               <span style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>
                 {p.employer}
               </span>
+              {/* Sector designation — rhymes with Build mode's per-sector
+                  treatment: uppercase letter-spaced sector label with the
+                  regional-priority dot placed AFTER the label when the
+                  sector is in the priority set. White text (matches the
+                  employer-name color register) so it reads as a
+                  designation rather than a brand accent; quieter than
+                  Build mode's bigger section-header treatment. */}
               <span style={{
-                textAlign: "right", fontFamily: FONT, fontSize: "12px", fontWeight: 500,
-                color: "rgba(255,255,255,0.55)",
+                display: "flex", alignItems: "center", justifyContent: "flex-end", gap: "8px",
               }}>
-                {p.sector ?? "—"}
+                <span style={{
+                  fontFamily: FONT, fontSize: "10px", fontWeight: 600,
+                  letterSpacing: "0.08em", textTransform: "uppercase",
+                  color: "rgba(255,255,255,0.85)",
+                  textAlign: "right",
+                }}>
+                  {p.sector ?? "—"}
+                </span>
+                {p.sector && prioritySet?.has(p.sector) && (
+                  <span
+                    title="Regional priority sector"
+                    style={{
+                      display: "inline-block", width: "6px", height: "6px",
+                      borderRadius: "50%", background: school.brandColorLight, flexShrink: 0,
+                    }}
+                  />
+                )}
               </span>
             </button>
             {isExpanded && (
