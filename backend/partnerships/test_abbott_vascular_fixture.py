@@ -25,6 +25,16 @@ The prose mirrors the live deployed output verified during C7/C8
 (post-prompt-rewrite, post-eval-rule). It is not an LLM transcript;
 it is a pinned reference whose every sentence has been checked against
 the eval rules.
+
+Coverage:
+  - The pinned Abbott Vascular × Foothill × SOC 51-9061 proposal
+    passes evaluate_proposal with every rule green.
+  - All four institutional-deference rules introduced in C8
+    (no_direct_mapping_overclaim, no_skills_as_pathway,
+    missing_institutional_attribution, cross_industry_honesty)
+    are exercised against canonical-pass prose.
+  - Regression gate for any future eval-rule or prompt change that
+    would break the reference shape.
 """
 
 from __future__ import annotations

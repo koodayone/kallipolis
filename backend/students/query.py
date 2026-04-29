@@ -113,6 +113,31 @@ WITH DISTINCT s
 RETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed
 ORDER BY s.courses_completed DESC
 
+Question: "Honor-roll Engineering students who took Calculus"
+MATCH (s:Student)-[:ENROLLED_IN]->(c:Course {college: $college})
+WITH DISTINCT s, c
+WHERE toLower(s.primary_focus) CONTAINS 'engineering'
+  AND s.gpa >= 3.5
+  AND (toLower(c.name) CONTAINS 'calculus' OR c.code CONTAINS 'MATH 1')
+WITH DISTINCT s
+RETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed
+ORDER BY s.gpa DESC, s.courses_completed DESC
+
+Question: "Students who completed at least 20 courses with GPA above 3.0"
+MATCH (s:Student)-[:ENROLLED_IN]->(:Course {college: $college})
+WITH DISTINCT s
+WHERE s.courses_completed >= 20 AND s.gpa > 3.0
+RETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed
+ORDER BY s.gpa DESC, s.courses_completed DESC
+
+Question: "Top 10 students by GPA in the Nursing program"
+MATCH (s:Student)-[:ENROLLED_IN]->(:Course {college: $college})
+WITH DISTINCT s
+WHERE toLower(s.primary_focus) CONTAINS 'nursing'
+RETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed
+ORDER BY s.gpa DESC
+LIMIT 10
+
 Respond with a JSON object containing two fields:
 1. "cypher": the Cypher query as a string
 2. "interpretation": a single sentence explaining what this query does in plain English, written for a non-technical workforce development coordinator. Clarify the specific filtering logic — e.g., "students whose primary academic focus is Computer Science" or "students who have completed at least one course that develops Programming skills". Be specific about what criteria define the result set.
