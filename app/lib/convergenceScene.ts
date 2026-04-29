@@ -52,26 +52,30 @@ type LayoutConfig = {
 //   bottom-right: Occupations (labor-market substrate)
 const desktopLayout: LayoutConfig = {
   formDefs: [
-    { label: "Students",     factory: createMortarboardForm, position: new THREE.Vector3(-4.0, 2.4, 0),   scale: 1.2, color: BLUE },
-    { label: "Employers",    factory: createSkyscraperForm,  position: new THREE.Vector3(4.0, 2.4, 0),    scale: 1.2, color: BLUE },
-    { label: "Courses",      factory: createBookForm,        position: new THREE.Vector3(-4.0, -2.4, 0),  scale: 1.2, color: BLUE },
-    { label: "Occupations",  factory: createHardhatForm,     position: new THREE.Vector3(4.0, -2.4, 0),   scale: 1.2, color: BLUE },
-    { label: "Partnerships", factory: createChainlinkForm,   position: new THREE.Vector3(0, 0, 0),        scale: 2.0, color: BLUE },
+    { label: "Students",     factory: createMortarboardForm, position: new THREE.Vector3(-5.5, 3.4, 0),   scale: 1.1, color: BLUE },
+    { label: "Employers",    factory: createSkyscraperForm,  position: new THREE.Vector3(5.5, 3.4, 0),    scale: 1.1, color: BLUE },
+    { label: "Courses",      factory: createBookForm,        position: new THREE.Vector3(-5.5, -3.4, 0),  scale: 1.1, color: BLUE },
+    { label: "Occupations",  factory: createHardhatForm,     position: new THREE.Vector3(5.5, -3.4, 0),   scale: 1.1, color: BLUE },
+    { label: "Partnerships", factory: createChainlinkForm,   position: new THREE.Vector3(0, 0, 0),        scale: 1.8, color: BLUE },
   ],
-  cornerEdgeOffset: 1.4,
-  centerEdgeOffset: 1.6,
+  // Edge offsets pushed well past each form's visual radius so the
+  // connector cylinders terminate clearly outside the form geometry,
+  // not inside it. (Forms have non-spherical visual extent; offsets are
+  // tuned for the longest visible axis under rotation.)
+  cornerEdgeOffset: 1.9,
+  centerEdgeOffset: 2.4,
 };
 
 const mobileLayout: LayoutConfig = {
   formDefs: [
-    { label: "Students",     factory: createMortarboardForm, position: new THREE.Vector3(-2.4, 1.8, 0),   scale: 0.95, color: BLUE },
-    { label: "Employers",    factory: createSkyscraperForm,  position: new THREE.Vector3(2.4, 1.8, 0),    scale: 0.95, color: BLUE },
-    { label: "Courses",      factory: createBookForm,        position: new THREE.Vector3(-2.4, -1.8, 0),  scale: 0.95, color: BLUE },
-    { label: "Occupations",  factory: createHardhatForm,     position: new THREE.Vector3(2.4, -1.8, 0),   scale: 0.95, color: BLUE },
-    { label: "Partnerships", factory: createChainlinkForm,   position: new THREE.Vector3(0, 0, 0),        scale: 1.55, color: BLUE },
+    { label: "Students",     factory: createMortarboardForm, position: new THREE.Vector3(-3.4, 2.4, 0),   scale: 0.85, color: BLUE },
+    { label: "Employers",    factory: createSkyscraperForm,  position: new THREE.Vector3(3.4, 2.4, 0),    scale: 0.85, color: BLUE },
+    { label: "Courses",      factory: createBookForm,        position: new THREE.Vector3(-3.4, -2.4, 0),  scale: 0.85, color: BLUE },
+    { label: "Occupations",  factory: createHardhatForm,     position: new THREE.Vector3(3.4, -2.4, 0),   scale: 0.85, color: BLUE },
+    { label: "Partnerships", factory: createChainlinkForm,   position: new THREE.Vector3(0, 0, 0),        scale: 1.4,  color: BLUE },
   ],
-  cornerEdgeOffset: 1.0,
-  centerEdgeOffset: 1.2,
+  cornerEdgeOffset: 1.45,
+  centerEdgeOffset: 1.85,
 };
 
 export const CONVERGENCE_LABELS = desktopLayout.formDefs.map((f) => f.label);
@@ -121,7 +125,7 @@ export function buildConvergenceScene(canvas: HTMLCanvasElement): ConvergenceRes
   const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 100);
   // Camera centered on the chainlink at origin so the four-corner radial
   // composition is visually symmetric. Mobile pulls slightly closer.
-  camera.position.set(0, 0, layoutMode === "mobile" ? 11 : 13);
+  camera.position.set(0, 0, layoutMode === "mobile" ? 13 : 15);
 
   // Lighting
   scene.add(new THREE.AmbientLight(0xffffff, 0.08));
@@ -220,7 +224,7 @@ export function buildConvergenceScene(canvas: HTMLCanvasElement): ConvergenceRes
     return m;
   }
 
-  const junctionGeo = new THREE.SphereGeometry(0.07, 8, 8);
+  const junctionGeo = new THREE.SphereGeometry(0.09, 8, 8);
 
   type ConnectorRefs = {
     length: number;
@@ -242,13 +246,13 @@ export function buildConvergenceScene(canvas: HTMLCanvasElement): ConvergenceRes
     });
 
     // Core cylinder
-    const coreGeo = new THREE.CylinderGeometry(0.035, 0.035, 1, 8);
+    const coreGeo = new THREE.CylinderGeometry(0.045, 0.045, 1, 8);
     const core = new THREE.Mesh(coreGeo, newConnectorMat(color));
     positionCylinderBetween(core, start, end, length);
     scene.add(core);
 
     // Glow halo
-    const glowGeo = new THREE.CylinderGeometry(0.10, 0.10, 1, 8);
+    const glowGeo = new THREE.CylinderGeometry(0.13, 0.13, 1, 8);
     const glow = new THREE.Mesh(glowGeo, newGlowMat(color));
     positionCylinderBetween(glow, start, end, length);
     scene.add(glow);
