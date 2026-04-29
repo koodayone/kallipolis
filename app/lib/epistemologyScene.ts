@@ -68,7 +68,9 @@ export function buildEpistemologyScene(canvas: HTMLCanvasElement): EpistemologyR
   const rect = canvas.getBoundingClientRect();
   const width = rect.width || canvas.clientWidth || 800;
   const height = rect.height || canvas.clientHeight || 600;
-  const layoutMode: "mobile" | "desktop" = width > 0 && width < MOBILE_BREAKPOINT_PX ? "mobile" : "desktop";
+  // Use viewport width (not canvas width) so a max-w-* container can't
+  // false-trigger mobile mode on desktop.
+  const layoutMode: "mobile" | "desktop" = typeof window !== "undefined" && window.innerWidth < MOBILE_BREAKPOINT_PX ? "mobile" : "desktop";
   const rows = layoutMode === "mobile" ? mobileRows : desktopRows;
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });

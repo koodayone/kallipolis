@@ -41,7 +41,9 @@ export function buildAuthorityRowScene(
   const rect = canvas.getBoundingClientRect();
   const width = rect.width || canvas.clientWidth || 600;
   const height = rect.height || canvas.clientHeight || 120;
-  const isMobile = width > 0 && width < MOBILE_BREAKPOINT_PX;
+  // Use viewport width (not canvas width) for the mobile check — robust
+  // against scenes whose canvas is wrapped in a max-w-* container.
+  const isMobile = typeof window !== "undefined" && window.innerWidth < MOBILE_BREAKPOINT_PX;
   const FORM_X = isMobile ? MOBILE_FORM_X : DESKTOP_FORM_X;
   const END_X = isMobile ? MOBILE_END_X : DESKTOP_END_X;
   const FORM_SCALE = isMobile ? MOBILE_FORM_SCALE : DESKTOP_FORM_SCALE;

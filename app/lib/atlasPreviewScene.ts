@@ -71,7 +71,10 @@ export function buildAtlasPreviewScene(canvas: HTMLCanvasElement): AtlasPreviewR
   const rect = canvas.getBoundingClientRect();
   const width = rect.width || canvas.clientWidth || 800;
   const height = rect.height || canvas.clientHeight || 600;
-  const isMobile = width > 0 && width < MOBILE_BREAKPOINT_PX;
+  // Use viewport width (not canvas width) for the mobile check — this canvas
+  // is wrapped in a max-w-[720px] container, so canvas-width detection would
+  // false-trigger mobile mode at desktop because 720 < 768.
+  const isMobile = typeof window !== "undefined" && window.innerWidth < MOBILE_BREAKPOINT_PX;
   const formDefs = isMobile ? mobileFormDefs : desktopFormDefs;
   const FORM_SCALE = isMobile ? MOBILE_FORM_SCALE : DESKTOP_FORM_SCALE;
 
