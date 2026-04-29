@@ -40,6 +40,7 @@ How the system is built. The technical choices are downstream of the product fra
 
 - [System Overview](./architecture/system-overview.md) — Three apps, one graph, the AI surface, the streaming and authentication patterns
 - [Graph Model](./architecture/graph-model.md) — The Neo4j schema: eight node types, eleven relationships, and the bridge logic that connects curriculum to labor market through skills
+- [Institutional Deference Evolution](./architecture/institutional-deference-evolution.md) — The architectural commitment to ground every analytical claim in a named institutional source, and the C-series of commits that progressively realized it
 - [AI Integration](./architecture/ai-integration.md) — Where Claude and Gemini are called, what each model is asked to do, and the constraints that make the integration principled and improvable
 - [Deployment](./architecture/deployment.md) — The preview deployment shape: static atlas on Cloudflare Pages, backend + Neo4j on a GCP VM behind Caddy, secrets in Secret Manager, nightly backups to Cloud Storage
 

@@ -243,3 +243,34 @@ def _build_alignment_rows_no_apoc(session, college: str) -> list[dict]:
                gap_count,
                [] AS aligned_courses_raw
     """, college=college).data()
+
+
+# ── CLI entry point ──────────────────────────────────────────────────────
+
+def main() -> None:
+    """Recompute PARTNERSHIP_ALIGNMENT for every College node in the graph.
+
+    Standalone invocation:
+        python -m partnerships.compute
+
+    The pipeline reload entrypoint (`pipeline.reload`) calls
+    `precompute_partnership_alignment` directly with a list of college
+    display names; this CLI is the manual companion when you want to
+    re-materialize PA edges without re-running the full reload (e.g.,
+    after a layer 1 migration that rewrote HIRES_FOR edges).
+    """
+    import logging
+    from ontology.schema import close_driver, get_driver
+
+    logging.basicConfig(level=logging.INFO, format="%(message)s")
+    driver = get_driver()
+    try:
+        stats = precompute_partnership_alignment(driver)
+        logger.info(f"PARTNERSHIP_ALIGNMENT: {stats['edges']} edges across "
+                    f"{stats['colleges']} colleges")
+    finally:
+        close_driver()
+
+
+if __name__ == "__main__":
+    main()

@@ -125,12 +125,14 @@ def load_employers(driver: Driver, employers: list[dict]) -> dict:
             session.run(
                 "MERGE (e:Employer {name: $name}) "
                 "SET e.sector = $sector, e.description = $description, "
-                "    e.website = $website, e.swp_sectors = $swp_sectors",
+                "    e.website = $website, e.swp_sectors = $swp_sectors, "
+                "    e.naics4 = $naics4",
                 name=emp["name"],
                 sector=emp["sector"],
                 description=emp.get("description"),
                 website=emp.get("website"),
                 swp_sectors=emp.get("swp_sectors", []),
+                naics4=emp.get("naics4"),
             )
             stats["employers"] += 1
 
