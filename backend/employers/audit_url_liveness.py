@@ -44,6 +44,12 @@ logger = logging.getLogger(__name__)
 _THIS_DIR = Path(__file__).parent
 EMPLOYERS_PATH = _THIS_DIR / "employers.json"
 DROPPED_LOG = _THIS_DIR / "dropped.jsonl"
+VERIFY_CACHE_PATH = _THIS_DIR / ".audit_verify_cache.json"
+
+# Verdicts older than this are re-verified. Three weeks balances "save
+# Gemini calls on rerun" with "catch sites that decayed since last audit."
+_VERIFY_TTL_DAYS = 21
+_VERIFY_BATCH = 10  # parallel Gemini-verify calls
 
 _BROWSER_UA = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
@@ -264,6 +270,33 @@ def _now_iso() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
 
 
+def _load_verify_cache() -> dict[str, dict]:
+    if not VERIFY_CACHE_PATH.exists():
+        return {}
+    try:
+        with open(VERIFY_CACHE_PATH) as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+
+def _save_verify_cache(cache: dict[str, dict]) -> None:
+    with open(VERIFY_CACHE_PATH, "w") as f:
+        json.dump(cache, f, indent=2, sort_keys=True)
+
+
+def _cache_fresh(entry: dict) -> bool:
+    ts = entry.get("verified_at")
+    if not ts:
+        return False
+    try:
+        when = datetime.fromisoformat(ts.replace("Z", "+00:00"))
+    except Exception:
+        return False
+    age = datetime.now(timezone.utc) - when
+    return age.days < _VERIFY_TTL_DAYS
+
+
 def _append_dropped(entry: dict, dry_run: bool) -> None:
     """Append to dropped.jsonl. No-op under dry-run so audit logs stay
     authoritative — only real runs leave a paper trail."""
@@ -333,24 +366,67 @@ async def audit(
     # 'broken'. Without this step, dead sites like Spartan Moving stay
     # in production because our CLI can't tell them apart from
     # bot-fronted real sites like Foster Farms.
+    #
+    # Verdicts are cached on disk with a 21-day TTL — repeat audit runs
+    # only burn Gemini calls on net-new URLs. Verification is batched in
+    # groups of _VERIFY_BATCH for ~10x wall-clock improvement.
     unknown_ok = 0
     unknown_still_unclear = 0
+    cache = _load_verify_cache()
+    cache_dirty = False
     if client is not None and unknown:
-        logger.info(f"Gemini-verifying {len(unknown)} CLI-unknown URLs")
+        cached_hits: list[tuple[dict, str | int | None, str]] = []
+        to_verify: list[tuple[dict, str | int | None]] = []
         for emp, code in unknown:
+            entry = cache.get(emp["website"])
+            if entry and _cache_fresh(entry):
+                cached_hits.append((emp, code, entry["verdict"]))
+            else:
+                to_verify.append((emp, code))
+        if cached_hits:
+            logger.info(f"Verify cache hit: {len(cached_hits)} URLs")
+        if to_verify:
+            logger.info(
+                f"Gemini-verifying {len(to_verify)} CLI-unknown URLs "
+                f"(batch={_VERIFY_BATCH})"
+            )
+
+        async def _verify_one(emp: dict, code) -> tuple[dict, object, str]:
             verdict = await _gemini_verify(client, types, emp["website"], emp["name"])
+            return emp, code, verdict
+
+        verdicts: list[tuple[dict, object, str]] = list(cached_hits)
+        for i in range(0, len(to_verify), _VERIFY_BATCH):
+            batch = to_verify[i:i + _VERIFY_BATCH]
+            results = await asyncio.gather(
+                *(_verify_one(emp, code) for emp, code in batch)
+            )
+            verdicts.extend(results)
+            for emp, _code, verdict in results:
+                if verdict in ("ok", "broken"):
+                    cache[emp["website"]] = {
+                        "verdict": verdict,
+                        "verified_at": _now_iso(),
+                    }
+                    cache_dirty = True
+
+        escalated = 0
+        for emp, code, verdict in verdicts:
             if verdict == "ok":
                 unknown_ok += 1
             elif verdict == "broken":
                 broken.append((emp, emp["website"], "gemini_verify_broken"))
+                escalated += 1
                 logger.info(f"  Gemini-verify: {emp['name']} → broken (CLI was {code})")
             else:
                 unknown_still_unclear += 1
         logger.info(
             f"Gemini-verify: {unknown_ok} confirmed ok, "
-            f"{len(broken) - (len(broken) - sum(1 for _,_,c in broken if c == 'gemini_verify_broken'))} "
-            f"escalated to broken, {unknown_still_unclear} still unclear"
+            f"{escalated} escalated to broken, "
+            f"{unknown_still_unclear} still unclear"
         )
+        if cache_dirty and not dry_run:
+            _save_verify_cache(cache)
     else:
         # No Gemini available; treat all unknowns as keep (current behavior).
         unknown_still_unclear = len(unknown)
