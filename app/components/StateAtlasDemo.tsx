@@ -211,11 +211,11 @@ export default function StateAtlasDemo() {
                         setPhase("college");
 
                         // Cycle back to atlas
-                        schedule(runCycle, 2200);
+                        schedule(runCycle, 3000);
                       }, 600);
                     }, 500);
-                  }, 600);
-                }, 800);
+                  }, 800);
+                }, 1000);
               }, 600);
             }
           }, 55);
