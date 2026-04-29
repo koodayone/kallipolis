@@ -65,10 +65,10 @@ export default function ExploreAtlasPage() {
           <GoldDivider />
           <SectionHeading>Each college is a world</SectionHeading>
           <p style={{ fontSize: 17, lineHeight: 1.6, color: "rgba(255,255,255,0.65)", marginTop: 24 }}>
-            Selecting a college opens a three-dimensional space of six rotating forms. Each form is an entry point into a dimension of institutional reality — click to explore, and the atlas dissolves into a natural language interface native to the form.
+            Selecting a college opens a three-dimensional space of five rotating forms. Each form is an entry point into a dimension of institutional reality — click to explore, and the atlas dissolves into a natural language interface native to the form.
           </p>
           <p style={{ fontSize: 17, lineHeight: 1.6, color: "rgba(255,255,255,0.65)", marginTop: 16 }}>
-            Four of these forms are analytical — students, courses, occupations, and employers — each grounded in a public data authority. The remaining two are action-driven: partnerships and strong workforce proposals formulated from the four analytical forms.
+            Four of these forms are analytical — students, courses, occupations, and employers — each grounded in a public data authority. The fifth is the unit of action that integrates them: partnership proposals formulated from the four analytical forms.
           </p>
         </div>
       </section>

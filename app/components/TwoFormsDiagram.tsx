@@ -37,7 +37,7 @@ export default function TwoFormsDiagram() {
   }, []);
 
   return (
-    <div className="md:h-[500px] max-md:h-[360px]" style={{ position: "relative", width: "100%", overflow: "hidden" }}>
+    <div className="md:h-[360px] max-md:h-[280px]" style={{ position: "relative", width: "100%", overflow: "hidden" }}>
       <canvas ref={canvasRef} style={{ width: "100%", height: "100%", display: "block" }} />
 
       {FORM_LABELS.map((label) => {
@@ -58,9 +58,9 @@ export default function TwoFormsDiagram() {
             }}
             style={{
               position: "absolute",
-              left: layoutMode === "mobile" ? `${pos.x}%` : `${pos.x + 22}%`,
-              top: layoutMode === "mobile" ? `${pos.y + 14}%` : `${pos.y}%`,
-              transform: layoutMode === "mobile" ? "translate(-50%, 0)" : "translate(0, -50%)",
+              left: `${pos.x}%`,
+              top: `${pos.y + 18}%`,
+              transform: "translate(-50%, 0)",
               fontSize: 15,
               fontWeight: 700,
               letterSpacing: "0.12em",

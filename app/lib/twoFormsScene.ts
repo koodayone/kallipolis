@@ -16,7 +16,7 @@ import { createChainlinkForm } from "./formFactories";
 
 const SOLID_COLOR = 0x4fd1fd;
 const BG_COLOR = 0x060d1f;
-const FORM_SCALE = 1.8;
+const FORM_SCALE = 2.4;
 
 type FormDef = {
   label: string;
@@ -25,15 +25,15 @@ type FormDef = {
   rotSpeed: THREE.Vector3;
 };
 
-// Single chainlink centered in the scene. Desktop and mobile both center
-// horizontally; mobile shifts the form slightly to leave room for the
-// label below (HTML overlay positioning is branched in TwoFormsDiagram).
+// Single chainlink centered in the scene at the origin. Same composition
+// for both desktop and mobile — form centered horizontally and vertically,
+// label rendered below it via TwoFormsDiagram.
 const desktopFormDefs: FormDef[] = [
-  { label: "Partnerships", factory: createChainlinkForm, position: new THREE.Vector3(-2.4, -0.6, 0), rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
+  { label: "Partnerships", factory: createChainlinkForm, position: new THREE.Vector3(0, 0, 0), rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
 ];
 
 const mobileFormDefs: FormDef[] = [
-  { label: "Partnerships", factory: createChainlinkForm, position: new THREE.Vector3(0, -0.4, 0), rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
+  { label: "Partnerships", factory: createChainlinkForm, position: new THREE.Vector3(0, 0, 0), rotSpeed: new THREE.Vector3(0.0018, 0.0025, 0.001) },
 ];
 
 export const FORM_LABELS = desktopFormDefs.map((f) => f.label);
@@ -66,7 +66,7 @@ export function buildTwoFormsScene(canvas: HTMLCanvasElement): TwoFormsResult {
   scene.fog = new THREE.FogExp2(BG_COLOR, 0.015);
 
   const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 100);
-  camera.position.set(0, -1.8, 12);
+  camera.position.set(0, 0, 12);
 
   scene.add(new THREE.AmbientLight(0xffffff, 0.08));
   const keyLight = new THREE.DirectionalLight(SOLID_COLOR, 0.5);

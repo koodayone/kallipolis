@@ -409,7 +409,7 @@ export default function StateAtlasDemo() {
           )}
         </div>
 
-        {/* College phase — six forms grid */}
+        {/* College phase — five forms pyramid */}
         <div style={{
           position: "absolute",
           inset: 0,
@@ -496,7 +496,7 @@ export default function StateAtlasDemo() {
               College Atlas
             </span>
             <p style={{ fontSize: 17, lineHeight: 1.6, color: "rgba(255,255,255,0.65)", margin: 0 }}>
-              A college atlas opens into six forms, each representing an element of a workforce development worldview.
+              A college atlas opens into five forms, each representing an element of a workforce development worldview.
             </p>
           </div>
         </div>
