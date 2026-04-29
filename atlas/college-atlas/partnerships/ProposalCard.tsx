@@ -67,7 +67,7 @@ function SectionDescription({ children }: { children: React.ReactNode }) {
   return (
     <p style={{
       fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.65)",
-      lineHeight: 1.65, margin: "0 0 12px 0",
+      lineHeight: 1.65, margin: "0 0 20px 0",
     }}>
       {children}
     </p>
@@ -306,7 +306,7 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
           <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.7)", lineHeight: 1.65, margin: 0 }}>
             {proposal.occupational_demand}
           </p>
-          <div style={{ marginTop: "12px" }}>
+          <div style={{ marginTop: "20px" }}>
             <ColumnHeaders
               columns={[
                 { label: "Occupation", width: "1fr" },
@@ -340,7 +340,7 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
           <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.65)", lineHeight: 1.65, margin: 0 }}>
             {proposal.curriculum_alignment}
           </p>
-          <div style={{ marginTop: "12px" }}>
+          <div style={{ marginTop: "20px" }}>
             <ColumnHeaders
               columns={[
                 { label: "Department", width: "1fr" },
@@ -375,7 +375,7 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
           </p>
           {/* Stats bar */}
           <div style={{
-            marginTop: "12px",
+            marginTop: "20px",
             background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.05)",
           }}>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px", padding: "16px 0" }}>
@@ -427,10 +427,10 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
           )}
         </div>
 
-        {/* ── Strong Workforce Evidence (tabular) ── */}
+        {/* ── Labor Market Information (tabular) ── */}
         {swp && (swp.occupations.length > 0 || swp.supply_estimates.length > 0) && (
           <div style={{ marginBottom: "36px" }}>
-            <SectionHeader color={brandColor}>Strong Workforce Evidence</SectionHeader>
+            <SectionHeader color={brandColor}>Labor Market Information</SectionHeader>
             {(() => {
               // Templated thesis prose. Every value here is a structured
               // field — no LLM call is needed to compose this. The
@@ -583,17 +583,27 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
               />
             )}
 
-            {/* Institutional source caption — placed at the bottom of the
-                section so the data reads first. The reader should be able to
-                verify any categorical claim against one of these publications
-                without trusting Kallipolis itself. */}
+            {/* Institutional source attribution — placed at the bottom of
+                the section as a quiet trailer. The small uppercase SOURCES
+                label anchors the eye; the regular-weight list reads as
+                attribution rather than emphasis. No divider above — the
+                gap visualization and the actions row both have their own
+                horizontal rules nearby; another line here would crowd. */}
             {swp.sources && (
               <div style={{
-                fontFamily: FONT, fontSize: "10px", fontStyle: "italic",
-                color: "rgba(255,255,255,0.32)", lineHeight: 1.5,
-                marginTop: "16px", paddingRight: "24px",
+                marginTop: "28px",
+                display: "flex", alignItems: "baseline", gap: "12px",
+                fontFamily: FONT, fontSize: "11px",
+                color: "rgba(255,255,255,0.45)", lineHeight: 1.6,
               }}>
-                Sources: {swp.sources.coe_demand_publication}; {swp.sources.coe_supply_publication}; {swp.sources.top_cip_crosswalk_source}; {swp.sources.cip_soc_crosswalk_source}.
+                <span style={{
+                  fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em",
+                  textTransform: "uppercase", color: "rgba(255,255,255,0.5)",
+                  flexShrink: 0,
+                }}>
+                  Sources
+                </span>
+                <span>Centers of Excellence for Labor Market Research, California Community Colleges Chancellor's Office, Bureau of Labor Statistics, National Center for Education Statistics.</span>
               </div>
             )}
           </div>
