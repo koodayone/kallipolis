@@ -603,7 +603,7 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
                 }}>
                   Sources
                 </span>
-                <span>Centers of Excellence for Labor Market Research, California Community Colleges Chancellor's Office, Bureau of Labor Statistics, National Center for Education Statistics.</span>
+                <span>Centers of Excellence for Labor Market Research, California Community Colleges Chancellor&apos;s Office, Bureau of Labor Statistics, National Center for Education Statistics.</span>
               </div>
             )}
           </div>
