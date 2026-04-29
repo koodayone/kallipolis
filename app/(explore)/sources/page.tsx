@@ -92,7 +92,7 @@ export default function ExploreSourcesPage() {
   return (
     <>
       {/* ── Section 1: Hero (prose-led) ── */}
-      <section style={{ paddingTop: 120, paddingBottom: 48, paddingLeft: 64, paddingRight: 64 }}>
+      <section className="md:pt-[120px] md:pb-12 md:px-16 max-md:pt-24 max-md:pb-8 max-md:px-6">
         <div className="max-w-3xl mx-auto text-center">
           <Eyebrow>The Methodology</Eyebrow>
           <GoldDivider />
@@ -106,7 +106,7 @@ export default function ExploreSourcesPage() {
       </section>
 
       {/* ── Section 2: Authority deep dives — each with its graph row ── */}
-      <section style={{ paddingTop: 32, paddingBottom: 32, paddingLeft: 64, paddingRight: 64 }}>
+      <section className="md:pt-8 md:pb-8 md:px-16 max-md:pt-6 max-md:pb-6 max-md:px-6">
         <div>
           {AUTHORITIES.map((auth) => (
             <AuthorityCard key={auth.unitName} {...auth} />
@@ -115,7 +115,7 @@ export default function ExploreSourcesPage() {
       </section>
 
       {/* ── Section 3: Pipeline (component-led) ── */}
-      <section style={{ paddingTop: 48, paddingBottom: 0, paddingLeft: 64, paddingRight: 64 }}>
+      <section className="md:pt-12 md:pb-0 md:px-16 max-md:pt-10 max-md:pb-0 max-md:px-6">
         <div className="max-w-3xl mx-auto text-center" style={{ marginBottom: 48 }}>
           <Eyebrow>Unified Knowledge</Eyebrow>
           <GoldDivider />
@@ -131,7 +131,7 @@ export default function ExploreSourcesPage() {
       </section>
 
       {/* ── Section 4: Forward Deployment (prose-led) ── */}
-      <section style={{ paddingTop: 48, paddingBottom: 48, paddingLeft: 64, paddingRight: 64, marginTop: -260 }}>
+      <section className="md:pt-12 md:pb-12 md:px-16 md:-mt-[260px] max-md:pt-10 max-md:pb-10 max-md:px-6 max-md:mt-0">
         <div className="max-w-2xl mx-auto text-center">
           <Eyebrow>Forward Deployment</Eyebrow>
           <GoldDivider />
@@ -146,7 +146,7 @@ export default function ExploreSourcesPage() {
       </section>
 
       {/* ── Section 5: Cross-links ── */}
-      <section style={{ background: "#060d1f", padding: "24px 64px 48px", display: "flex", justifyContent: "center", gap: 16 }}>
+      <section className="bg-[#060d1f] flex justify-center md:pt-6 md:pb-12 md:px-16 md:gap-4 max-md:pt-6 max-md:pb-10 max-md:px-4 max-md:gap-3 max-md:flex-wrap">
         <ActionBadge label="Home" neonColor="#f5e6c8" opacity={1} icon="sun" inline href="/#methodology" invertHover />
         <ActionBadge label="Explore Atlas" neonColor="#f0425e" opacity={1} icon="cube" inline href="/atlas" invertHover />
         <ActionBadge label="Explore Partnerships" neonColor="#4fd1fd" opacity={1} icon="chainlink" inline href="/partnerships" invertHover />

@@ -84,7 +84,7 @@ export default function AuthorityCard({
   return (
     <div ref={containerRef} style={{ marginBottom: 80 }}>
       {/* Scene row — form → connector → logo, with heading overlaid */}
-      <div style={{ position: "relative", width: "100%", height: 340 }}>
+      <div className="md:h-[340px] max-md:h-[300px]" style={{ position: "relative", width: "100%" }}>
         {/* Form name overlaid at top, tracking scene center */}
         {(
           <div style={{ position: "absolute", top: 24, left: "50%", transform: "translateX(-50%)", zIndex: 1, textAlign: "center", pointerEvents: "none" }}>
@@ -154,10 +154,10 @@ export default function AuthorityCard({
         )}
       </div>
 
-      {/* Two-column layout: narrative left, demo right */}
-      <div style={{ margin: "24px 0 0", display: "flex", gap: 40 }}>
+      {/* Two-column layout: narrative left, demo right (stacks vertically on mobile) */}
+      <div className="mt-6 flex md:flex-row md:gap-10 max-md:flex-col max-md:gap-8">
         {/* Left — authority name + narrative */}
-        <div style={{ flex: "0 0 38%", display: "flex", flexDirection: "column", gap: 20 }}>
+        <div className="flex flex-col gap-5 md:basis-[38%] md:grow-0 md:shrink-0 max-md:w-full">
           <h3 style={{
             fontFamily: "var(--font-days-one)", fontWeight: 400,
             fontSize: 18, color: "rgba(255,255,255,0.9)", margin: 0,
@@ -195,14 +195,12 @@ export default function AuthorityCard({
 
         {/* Right — demo scene */}
         {demoScene && (
-          <div style={{
-            flex: 1,
+          <div className="md:flex-1 md:self-start max-md:w-full" style={{
             background: "rgba(255,255,255,0.04)",
             border: "1px solid rgba(255,255,255,0.08)",
             borderRadius: 8,
             overflow: "hidden",
             padding: 16,
-            alignSelf: "flex-start",
           }}>
             {demoScene}
           </div>
