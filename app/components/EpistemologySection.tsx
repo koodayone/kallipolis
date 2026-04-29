@@ -67,16 +67,21 @@ export default function EpistemologySection({ activeIndex = 0, opacity = 1 }: { 
             ))}
           </div>
 
-          <div style={{ marginTop: 8, textAlign: "center" }}>
+          <div className="text-center max-md:hidden" style={{ marginTop: 8 }}>
             <ActionBadge label="Explore Sources" neonColor="#c9a84c" opacity={1} icon="lightbulb" inline href="/sources" />
           </div>
 
         </div>
 
         {/* Right column — Four forms diagram */}
-        <div className="md:flex-1 md:min-h-[360px] max-md:w-full max-md:min-h-[420px]">
+        <div className="md:flex-1 md:min-h-[360px] max-md:w-full max-md:min-h-[420px] max-md:-mx-6">
           <EpistemologyGraph activeIndex={activeIndex} opacity={opacity} />
         </div>
+      </div>
+
+      {/* Mobile-only badge after the scene */}
+      <div className="md:hidden text-center mt-2">
+        <ActionBadge label="Explore Sources" neonColor="#c9a84c" opacity={1} icon="lightbulb" inline href="/sources" />
       </div>
     </section>
   );

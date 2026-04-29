@@ -21,11 +21,9 @@ export default function StateAtlas({ activeIndex, opacity }: Props) {
 
         {/* Left column — map with college info overlaid in Nevada space */}
         <div className="relative md:basis-1/2 md:grow-0 md:shrink-0 md:min-h-[500px] max-md:w-full">
-          <StateMap activeCollegeId={college.id} />
-
-          {/* College info card — overlaid in the Nevada/empty space on desktop, stacked under the map on mobile */}
+          {/* College info card — overlaid in the Nevada/empty space on desktop, stacked above the map on mobile */}
           <div
-            className="md:absolute md:right-[13%] md:top-[12%] md:w-[42%] max-md:static max-md:mt-4 max-md:w-full"
+            className="md:absolute md:right-[13%] md:top-[12%] md:w-[42%] max-md:static max-md:mb-4 max-md:w-full"
             style={{
               opacity,
               transition: `opacity ${FADE_DURATION}ms ease`,
@@ -73,6 +71,8 @@ export default function StateAtlas({ activeIndex, opacity }: Props) {
               <path d="M12 2L3 7.5v9L12 22l9-5.5v-9L12 2z M12 13L3 7.5 M12 13l9-5.5 M12 13v9" stroke="rgba(255,255,255,0.55)" strokeWidth="0.7" />
             </svg>
           </div>
+
+          <StateMap activeCollegeId={college.id} />
         </div>
 
         {/* Right column — text */}

@@ -47,7 +47,7 @@ export default function PartnershipsSection() {
 
         {/* Right column — Three.js diagram + badge */}
         <div className="flex flex-col gap-2 md:flex-1 max-md:w-full">
-          <div className="rounded-[10px] overflow-hidden md:min-h-[280px] max-md:min-h-[360px]">
+          <div className="overflow-hidden md:rounded-[10px] md:min-h-[280px] max-md:min-h-[360px] max-md:-mx-6">
             <TwoFormsDiagram />
           </div>
           <div className="text-center md:-mt-10 max-md:mt-2">
