@@ -104,7 +104,9 @@ export function buildConvergenceScene(canvas: HTMLCanvasElement): ConvergenceRes
   const rect = canvas.getBoundingClientRect();
   const width = rect.width || canvas.clientWidth || 900;
   const height = rect.height || canvas.clientHeight || 500;
-  const layoutMode: "mobile" | "desktop" = width > 0 && width < MOBILE_BREAKPOINT_PX ? "mobile" : "desktop";
+  // Use viewport width (not canvas width) so a max-w-* container can't
+  // false-trigger mobile mode on desktop.
+  const layoutMode: "mobile" | "desktop" = typeof window !== "undefined" && window.innerWidth < MOBILE_BREAKPOINT_PX ? "mobile" : "desktop";
   const layout = layoutMode === "mobile" ? mobileLayout : desktopLayout;
   const formDefs = layout.formDefs;
 
