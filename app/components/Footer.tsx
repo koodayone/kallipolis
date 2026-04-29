@@ -18,7 +18,7 @@ export default function Footer() {
   const bottomLinkClass = isLightPage ? "hover:text-[#1a1a2e] transition-colors" : "hover:text-white transition-colors";
 
   return (
-    <footer className={textClass} style={{ backgroundColor: bg }}>
+    <footer className={textClass} style={{ backgroundColor: bg, paddingBottom: "env(safe-area-inset-bottom)" }}>
       <div className="max-w-7xl mx-auto px-6 py-10">
         <div className="flex items-start mb-8">
           {/* Brand */}
