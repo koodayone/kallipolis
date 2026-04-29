@@ -105,18 +105,17 @@ export default function AuthorityCard({
         {/* Logo overlay at connector endpoint */}
         {whiteLogo && logoPos && (
           <div
+            className="md:translate-x-0 max-md:-translate-x-1/2 -translate-y-1/2"
             style={{
               position: "absolute",
               left: `${logoPos.x}%`,
               top: `${logoPos.y}%`,
-              transform: "translate(0, -50%)",
               pointerEvents: "none",
             }}
           >
             <div
+              className="md:w-[240px] md:h-[90px] max-md:w-[140px] max-md:h-[55px]"
               style={{
-                width: 240,
-                height: 90,
                 backgroundColor: "rgba(255,255,255,0.85)",
                 WebkitMaskImage: `url(${whiteLogo})`,
                 WebkitMaskSize: "contain",

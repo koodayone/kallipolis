@@ -8,7 +8,25 @@ import * as THREE from "three";
 
 const GOLD = 0xc9a84c;
 const BG_COLOR = 0x060d1f;
-const FORM_SCALE = 2.0;
+
+// Desktop renders forms at far-left (x=-8) connecting to a far-right endpoint
+// (x=5) — a long horizontal beam that fits a wide aspect canvas. On mobile
+// (canvas aspect ~1.15) the same world coordinates project off-screen, so
+// the form is invisible and the logo at endpoint sits at the far right edge.
+// Mobile config compresses the spread to fit a square-ish canvas.
+const DESKTOP_FORM_X = -8.0;
+const DESKTOP_END_X = 5.0;
+const DESKTOP_FORM_SCALE = 2.0;
+const DESKTOP_CONNECTOR_START_OFFSET = 2.9; // formX + this = connector start
+const DESKTOP_CONNECTOR_END_OFFSET = 0.5;   // endX - this = connector end
+
+const MOBILE_FORM_X = -3.5;
+const MOBILE_END_X = 3.0;
+const MOBILE_FORM_SCALE = 1.4;
+const MOBILE_CONNECTOR_START_OFFSET = 1.5;
+const MOBILE_CONNECTOR_END_OFFSET = 0.4;
+
+const MOBILE_BREAKPOINT_PX = 768;
 
 export type AuthorityRowResult = {
   cleanup: () => void;
@@ -23,6 +41,12 @@ export function buildAuthorityRowScene(
   const rect = canvas.getBoundingClientRect();
   const width = rect.width || canvas.clientWidth || 600;
   const height = rect.height || canvas.clientHeight || 120;
+  const isMobile = width > 0 && width < MOBILE_BREAKPOINT_PX;
+  const FORM_X = isMobile ? MOBILE_FORM_X : DESKTOP_FORM_X;
+  const END_X = isMobile ? MOBILE_END_X : DESKTOP_END_X;
+  const FORM_SCALE = isMobile ? MOBILE_FORM_SCALE : DESKTOP_FORM_SCALE;
+  const CONN_START_OFFSET = isMobile ? MOBILE_CONNECTOR_START_OFFSET : DESKTOP_CONNECTOR_START_OFFSET;
+  const CONN_END_OFFSET = isMobile ? MOBILE_CONNECTOR_END_OFFSET : DESKTOP_CONNECTOR_END_OFFSET;
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -47,8 +71,8 @@ export function buildAuthorityRowScene(
   scene.add(fillLight);
 
   // Form — left side
-  const formX = -8.0;
-  const endX = 5.0;
+  const formX = FORM_X;
+  const endX = END_X;
   const group = factory(GOLD);
   group.position.set(formX, 0, 0);
   group.scale.setScalar(FORM_SCALE);
@@ -69,8 +93,8 @@ export function buildAuthorityRowScene(
   });
 
   // Connector
-  const startX = formX + 2.9;
-  const connEndX = endX - 0.5;
+  const startX = formX + CONN_START_OFFSET;
+  const connEndX = endX - CONN_END_OFFSET;
   const length = connEndX - startX;
   const midX = startX + length / 2;
 

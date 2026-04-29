@@ -77,10 +77,10 @@ function AtlasScene({ activeIndex, opacity }: Props) {
 
       {/* Scene */}
       <div
+        className="md:aspect-[16/10] max-md:aspect-[4/5]"
         style={{
           position: "relative",
           width: "100%",
-          aspectRatio: "16 / 10",
           opacity,
           transition: `opacity ${FADE_DURATION}ms ease`,
         }}
