@@ -10,12 +10,11 @@ apprenticeship sequence (Apprenticeship: Aerospace under TOP 095680).
 
 The fixture builds a fully-specified `NarrativeProposal` using
 hand-crafted prose that satisfies every existing eval rule plus the
-four institutional-deference rules added in C8:
+institutional-deference rules added in C8:
 
   - no_direct_mapping_overclaim
   - no_skills_as_pathway
   - missing_institutional_attribution
-  - cross_industry_honesty
 
 If a future change breaks any of these contracts, this fixture fails
 loudly and surfaces the regression before it ships. The expected pass
@@ -29,10 +28,10 @@ the eval rules.
 Coverage:
   - The pinned Abbott Vascular × Foothill × SOC 51-9061 proposal
     passes evaluate_proposal with every rule green.
-  - All four institutional-deference rules introduced in C8
+  - The three institutional-deference rules introduced in C8
     (no_direct_mapping_overclaim, no_skills_as_pathway,
-    missing_institutional_attribution, cross_industry_honesty)
-    are exercised against canonical-pass prose.
+    missing_institutional_attribution) are exercised against
+    canonical-pass prose.
   - Regression gate for any future eval-rule or prompt change that
     would break the reference shape.
 """
@@ -60,25 +59,12 @@ def _make_abbott_vascular_proposal() -> NarrativeProposal:
 
     Every link of the empirical chain is named: SOC 51-9061, CIP 15.0702,
     TOP 095680, Apprenticeship: Aerospace department, COE Bay region,
-    workforce gap of 1,680. The prose uses transferability vocabulary
-    ('transferable foundation,' 'methods transfer across manufacturing
-    industries,' 'applied here in a medical device context') because
-    the employer's SWP sector ('Advanced Manufacturing') and the
-    department's PCAH sector context (the same — both manufacturing-
-    family, but different sub-flavor: aerospace QC vs medical device
-    QC) generate the partial-alignment case principle 4 names.
-
-    Note on cross_industry_honesty rule activation: The eval rule
-    activates only when the in-repo PCAH TOP6 sector for via_top
-    differs from proposal.sector. TOP 095680's PCAH sector is
-    'Advanced Manufacturing' — same as Abbott Vascular's. The rule
-    is therefore dormant for this fixture, which is correct: the
-    institutional taxonomy treats both as Advanced Manufacturing.
-    The fixture's prose still uses transferability vocabulary
-    because the lived-experience industry contexts (aerospace
-    apprenticeship vs medical device manufacturing) differ; the eval
-    rule is conservative — it only fires when the institutional
-    taxonomy itself flags a sector mismatch.
+    workforce gap of 1,680. The prose pre-dates the partnership-thesis
+    rewrite of the executive summary, so it still carries some legacy
+    phrasing (workforce-gap closer, transferability vocabulary). The
+    fixture's role is eval-rule coverage, not prose-style enforcement —
+    it passes the current eval suite, which is what regression-gates
+    against C8 institutional-deference rules.
     """
     return NarrativeProposal(
         employer="Abbott Vascular",

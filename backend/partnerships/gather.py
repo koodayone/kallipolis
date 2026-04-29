@@ -277,14 +277,31 @@ def _gather_student_pipeline(
         # No aligned curriculum at this college → no eligible students.
         # Honest empty set; callers surface this as the "no aligned
         # programs" case in the artifact rather than falling back.
-        return {"total_in_program": 0, "with_all_core_skills": 0}, []
+        return {
+            "total_in_program": 0,
+            "with_all_core_skills": 0,
+            "total_in_aligned_departments": 0,
+        }, []
 
     with driver.session() as session:
-        # Headline count: every student whose primary_focus is one of
-        # the aligned departments. Restricted to students with at
-        # least one enrollment at this college so cross-college
-        # Student nodes (synthetic data is per-college today, but the
-        # constraint future-proofs the query) don't bleed in.
+        # Primary headline count: distinct students with at least one
+        # ENROLLED_IN edge to any course in any aligned department.
+        # This is the broadest honest count — anyone who has taken a
+        # course in one of the institutionally-aligned departments at
+        # this college, deduplicated across departments. The narrower
+        # primary_focus-gated count below is kept as a secondary
+        # measure for prompts that want it.
+        broad = session.run("""
+            MATCH (dept:Department)-[:CONTAINS]->(c:Course {college: $college})
+                  <-[:ENROLLED_IN]-(s:Student)
+            WHERE dept.name IN $departments
+            RETURN count(DISTINCT s) AS total_in_aligned_departments
+        """, college=college, departments=departments).single()
+
+        # Secondary count: students whose primary_focus is one of the
+        # aligned departments AND who have at least one enrollment at
+        # this college. Narrower (declared focus, not just course
+        # enrollment) but useful as a "majors/declared-track" figure.
         stats = session.run("""
             MATCH (st:Student)
             WHERE st.primary_focus IN $departments
@@ -299,26 +316,39 @@ def _gather_student_pipeline(
         student_stats = {
             "total_in_program": stats["total_in_program"] if stats else 0,
             "with_all_core_skills": stats["with_all_core_skills"] if stats else 0,
+            "total_in_aligned_departments": broad["total_in_aligned_departments"] if broad else 0,
         }
 
-        # Top-10 exemplars: same eligibility gate, ranked by skill-match
-        # count then GPA. Per-student enrollments shown are the
-        # PREPARES_FOR-aligned courses (the concrete curricular evidence
-        # for this SOC). A student may rank into the top-10 with zero
-        # PREPARES_FOR enrollments if they're early in their pathway —
-        # that's faithful to the "potential beneficiary" framing.
+        # Top-10 exemplars: same eligibility gate as the secondary
+        # count, ranked by SOC-aligned course count, then GPA, then
+        # core-skill count. The primary sort is the direct
+        # institutional-pathway measure: how many courses this student
+        # has taken whose TOP routes to the selected SOC. GPA is the
+        # secondary signal (institutional academic performance);
+        # core-skill count is a final deterministic tiebreaker.
+        #
+        # `relevant_skills` is the set of skill names DEVELOPS-mapped
+        # by this student's SOC-aligned courses — auditable to the
+        # course curriculum, not derived from a HAS_SKILL profile that
+        # the coordinator can't see. If a student has zero
+        # SOC-aligned enrollments, the skill set is empty.
         result = session.run("""
             MATCH (st:Student)
             WHERE st.primary_focus IN $departments
               AND EXISTS { (st)-[:ENROLLED_IN]->(:Course {college: $college}) }
             OPTIONAL MATCH (st)-[:HAS_SKILL]->(sk:Skill)
             WHERE sk.name IN $core_skills
-            WITH st, count(DISTINCT sk) AS core_count, collect(DISTINCT sk.name) AS relevant_skills
+            WITH st, count(DISTINCT sk) AS core_count
             OPTIONAL MATCH (st)-[e:ENROLLED_IN]->(c:Course {college: $college})
                   -[:PREPARES_FOR]->(:Occupation {soc_code: $soc_code})
-            WITH st, core_count, relevant_skills,
-                 collect(DISTINCT {code: c.code, name: c.name, grade: e.grade, term: e.term}) AS enrollments
-            ORDER BY core_count DESC, st.gpa DESC
+            OPTIONAL MATCH (c)-[:DEVELOPS]->(course_sk:Skill)
+            WITH st, core_count,
+                 collect(DISTINCT {
+                     code: c.code, name: c.name,
+                     grade: e.grade, term: e.term
+                 }) AS enrollments,
+                 collect(DISTINCT course_sk.name) AS relevant_skills
+            ORDER BY size(enrollments) DESC, COALESCE(st.gpa, 0.0) DESC, core_count DESC
             LIMIT 10
             RETURN st.uuid AS uuid, st.primary_focus AS primary_focus,
                    size(enrollments) AS courses_completed,
@@ -342,7 +372,10 @@ def _gather_student_pipeline(
                 for e in r["enrollments"]
                 if e.get("code")
             ],
-            "relevant_skills": r["relevant_skills"],
+            # Same null-shell concern as enrollments: if a student has
+            # zero SOC-aligned courses, the OPTIONAL MATCH on DEVELOPS
+            # collects [null] rather than []. Strip nulls.
+            "relevant_skills": [s for s in (r["relevant_skills"] or []) if s],
         }
         for i, r in enumerate(result)
     ]
