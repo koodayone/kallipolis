@@ -35,7 +35,7 @@ export default function TwoFormsDiagram() {
   }, []);
 
   return (
-    <div style={{ position: "relative", width: "100%", height: 500, overflow: "hidden" }}>
+    <div className="md:h-[500px] max-md:h-[360px]" style={{ position: "relative", width: "100%", overflow: "hidden" }}>
       <canvas ref={canvasRef} style={{ width: "100%", height: "100%", display: "block" }} />
 
       {FORM_LABELS.map((label) => {

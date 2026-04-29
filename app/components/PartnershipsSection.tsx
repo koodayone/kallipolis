@@ -9,12 +9,12 @@ const points = [
 
 export default function PartnershipsSection() {
   return (
-    <section style={{ backgroundColor: "#060d1f", paddingTop: 40, paddingLeft: 64, paddingRight: 64, paddingBottom: 0 }}>
+    <section className="md:pt-10 md:px-16 md:pb-0 max-md:pt-8 max-md:px-6 max-md:pb-0" style={{ backgroundColor: "#060d1f" }}>
 
-      <div style={{ display: "flex", gap: 48, alignItems: "stretch", paddingBottom: 64 }}>
+      <div className="flex md:flex-row md:gap-12 md:items-stretch md:pb-16 max-md:flex-col max-md:gap-8 max-md:pb-12">
 
         {/* Left column — header + points */}
-        <div style={{ flex: "0 0 42%", display: "flex", flexDirection: "column", gap: 24, justifyContent: "center", alignSelf: "center" }}>
+        <div className="flex flex-col justify-center md:basis-[42%] md:grow-0 md:shrink-0 md:gap-6 md:self-center max-md:gap-5 max-md:self-stretch">
 
           {/* Header */}
           <div style={{ textAlign: "center", marginBottom: 24 }}>
@@ -46,11 +46,11 @@ export default function PartnershipsSection() {
         </div>
 
         {/* Right column — Three.js diagram + badge */}
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 8 }}>
-          <div style={{ minHeight: 280, borderRadius: 10, overflow: "hidden" }}>
+        <div className="flex flex-col gap-2 md:flex-1 max-md:w-full">
+          <div className="rounded-[10px] overflow-hidden md:min-h-[280px] max-md:min-h-[360px]">
             <TwoFormsDiagram />
           </div>
-          <div style={{ textAlign: "center", marginTop: -40 }}>
+          <div className="text-center md:-mt-10 max-md:mt-2">
             <ActionBadge label="Explore Partnerships" neonColor="#4fd1fd" opacity={1} icon="chainlink" inline href="/partnerships" />
           </div>
         </div>

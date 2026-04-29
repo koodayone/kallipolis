@@ -16,20 +16,17 @@ export default function StateAtlas({ activeIndex, opacity }: Props) {
   const neonColor = NEON_COLORS[college.id] ?? college.neonHex;
 
   return (
-    <section style={{ backgroundColor: "#060d1f", paddingTop: 64, paddingLeft: 64, paddingRight: 64, paddingBottom: 64 }}>
-      <div style={{ display: "flex", gap: 48, alignItems: "stretch" }}>
+    <section className="md:py-16 md:px-16 max-md:py-10 max-md:px-6" style={{ backgroundColor: "#060d1f" }}>
+      <div className="flex md:flex-row md:gap-12 md:items-stretch max-md:flex-col max-md:gap-8">
 
         {/* Left column — map with college info overlaid in Nevada space */}
-        <div style={{ flex: "0 0 50%", minHeight: 500, position: "relative" }}>
+        <div className="relative md:basis-1/2 md:grow-0 md:shrink-0 md:min-h-[500px] max-md:w-full">
           <StateMap activeCollegeId={college.id} />
 
-          {/* College info card — overlaid in the Nevada/empty space */}
+          {/* College info card — overlaid in the Nevada/empty space on desktop, stacked under the map on mobile */}
           <div
+            className="md:absolute md:right-[13%] md:top-[12%] md:w-[42%] max-md:static max-md:mt-4 max-md:w-full"
             style={{
-              position: "absolute",
-              right: "13%",
-              top: "12%",
-              width: "42%",
               opacity,
               transition: `opacity ${FADE_DURATION}ms ease`,
               border: `1px solid ${neonColor}`,
@@ -79,7 +76,7 @@ export default function StateAtlas({ activeIndex, opacity }: Props) {
         </div>
 
         {/* Right column — text */}
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "flex-start", gap: 48 }}>
+        <div className="flex flex-col justify-start md:flex-1 md:gap-12 max-md:gap-8">
 
           {/* Header block */}
           <div style={{ textAlign: "center" }}>

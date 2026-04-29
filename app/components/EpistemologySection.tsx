@@ -3,11 +3,11 @@ import ActionBadge from "./ActionBadge";
 
 export default function EpistemologySection({ activeIndex = 0, opacity = 1 }: { activeIndex?: number; opacity?: number }) {
   return (
-    <section style={{ backgroundColor: "#060d1f", paddingTop: 64, paddingLeft: 64, paddingRight: 64, paddingBottom: 48 }}>
-      <div style={{ display: "flex", gap: 40, alignItems: "flex-start" }}>
+    <section className="md:pt-16 md:px-16 md:pb-12 max-md:pt-10 max-md:px-6 max-md:pb-8" style={{ backgroundColor: "#060d1f" }}>
+      <div className="flex md:flex-row md:gap-10 md:items-start max-md:flex-col max-md:gap-8">
 
         {/* Left column — header + points */}
-        <div style={{ flex: "0 0 40%", display: "flex", flexDirection: "column", justifyContent: "flex-start", gap: 40, marginTop: -24 }}>
+        <div className="flex flex-col justify-start md:basis-[40%] md:grow-0 md:shrink-0 md:gap-10 md:-mt-6 max-md:gap-8 max-md:mt-0">
 
           {/* Header */}
           <div style={{ textAlign: "center" }}>
@@ -74,7 +74,7 @@ export default function EpistemologySection({ activeIndex = 0, opacity = 1 }: { 
         </div>
 
         {/* Right column — Four forms diagram */}
-        <div style={{ flex: 1, minHeight: 360 }}>
+        <div className="md:flex-1 md:min-h-[360px] max-md:w-full max-md:min-h-[420px]">
           <EpistemologyGraph activeIndex={activeIndex} opacity={opacity} />
         </div>
       </div>
