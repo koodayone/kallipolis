@@ -5,7 +5,7 @@ export default function ExploreLayout({ children }: { children: React.ReactNode 
   return (
     <>
       <Nav />
-      <div style={{ background: "#060d1f", minHeight: "100vh" }}>
+      <div className="md:min-h-screen max-md:min-h-[100dvh]" style={{ background: "#060d1f" }}>
         {children}
       </div>
       <Footer />
