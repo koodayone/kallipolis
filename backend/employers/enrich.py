@@ -55,24 +55,18 @@ DROPPED_LOG = _THIS_DIR / "dropped.jsonl"
 PROGRESS_LOG = _THIS_DIR / ".enrich_progress.log"
 STATE_FILE = _THIS_DIR / ".enrich_state.json"
 
-# Education levels excluded from the regional occupation pool fed to
-# the LLM. Matches the filter in generate.py — career-track CTE roles
-# only. Imported here too so the constraint is local and the module
-# doesn't depend on generate.py at import time.
-# Education levels excluded from the regional occupation candidate pool.
-# Refined for CTE-relevance: HS-diploma roles ARE CTE-trainable via
-# certificates (welding, CDL, certified nursing assistant), and Master's
-# roles are legitimate for academic-employer faculty hiring (community
-# colleges feed those via transfer programs). The remaining exclusions
-# are roles where CTE has no plausible training pathway:
+# Education levels excluded from the candidate occupation pool. The
+# canonical definition lives in `backend/ontology/oes.py` so it has one
+# home shared between Pass 3 (here) and the OES loader. Refined for
+# CTE-relevance: HS-diploma roles ARE CTE-trainable via certificates
+# (welding, CDL, CNA), and Master's roles are legitimate for academic-
+# employer faculty hiring (community colleges feed those via transfer
+# programs). The exclusions are roles where CTE has no plausible
+# training pathway:
 #   - "No formal educational credential" — no credentialing happens
 #   - "Some college, no degree" — non-credentialing endpoint
 #   - "Doctoral or professional degree" — out of CTE scope (MD, JD, PhD)
-_EXCLUDE_EDUCATION = frozenset({
-    "No formal educational credential",
-    "Some college, no degree",
-    "Doctoral or professional degree",
-})
+from ontology.oes import EXCLUDE_EDUCATION as _EXCLUDE_EDUCATION  # noqa: E402
 
 # One employer per Gemini call. Gives the model the full prompt budget
 # for one URL fetch + structured extraction; concurrency does the
@@ -334,32 +328,81 @@ def _region_display(regions: list[str]) -> str:
     return f"multiple California regions ({', '.join(names)})"
 
 
-def _build_regional_occ_index() -> dict[str, list[dict]]:
-    """region_code → list of career-track occupation dicts."""
-    with open(OCCUPATIONS_PATH) as f:
-        occupations = json.load(f)
-    index: dict[str, list[dict]] = {}
-    for occ in occupations:
-        if occ.get("education_level") in _EXCLUDE_EDUCATION:
-            continue
-        for region in occ.get("regions", {}):
-            index.setdefault(region, []).append(occ)
-    return index
+# ── OES NAICS-bounded occupation pool (C13) ──────────────────────────────
+#
+# Pre-C13: Pass 3 selected SOCs from a region-wide CTE-pathway pool (~700
+# SOCs unioned across the employer's regions, filtered by
+# `_EXCLUDE_EDUCATION`). The pool was institutionally sourced as a list
+# of California career-track occupations, but it was not industry-
+# anchored — a water utility and a software company in the same region
+# saw the same candidate set, leading to documented domain-signature
+# failures (Otay Water without water/wastewater operators, Cisco
+# without software developers).
+#
+# Post-C13: Pass 3 selects from the BLS OEWS National Industry-
+# Occupation Matrix at the deepest NAICS resolution BLS publishes for
+# the employer's industry (descent rule: NAICS-4 → NAICS-3 → NAICS-2),
+# intersected with `_EXCLUDE_EDUCATION` to preserve the CCC-scope
+# constraint. The institutional anchor for layer 1 is now the BLS
+# industry-occupation matrix; the only LLM judgment is which of the
+# institutionally-published, industry-relevant SOCs apply to this
+# specific employer.
+
+_OES_MAX_CANDIDATES = 200
 
 
-def _employer_occ_list(
-    employer: dict,
-    occ_index: dict[str, list[dict]],
-) -> list[dict]:
-    """Union of regional occupation lists for the employer's regions, deduped."""
-    seen: set[str] = set()
-    out: list[dict] = []
-    for region in employer.get("regions", []):
-        for occ in occ_index.get(region, []):
-            if occ["soc_code"] not in seen:
-                seen.add(occ["soc_code"])
-                out.append(occ)
-    return out
+def _education_filter() -> set[str]:
+    """SOCs whose education_level is NOT in `_EXCLUDE_EDUCATION`. Loaded
+    once per process and cached as a function attribute. Returns the
+    set of CTE-eligible SOC codes used to filter the OES industry pool.
+    """
+    if not hasattr(_education_filter, "_cache"):
+        with open(OCCUPATIONS_PATH) as f:
+            occs = json.load(f)
+        _education_filter._cache = {
+            o["soc_code"] for o in occs
+            if o.get("education_level") not in _EXCLUDE_EDUCATION
+        }
+    return _education_filter._cache
+
+
+def _employer_occ_list(employer: dict) -> list[dict]:
+    """OES industry-occupation pool for one employer. Returns dicts
+    shaped for `_build_occupations_prompt` (`{soc_code, title, ...}`).
+
+    Returns [] if the employer has no `naics4` (the C13 historical
+    backfill couldn't classify) or if BLS doesn't publish data at any
+    NAICS resolution for that industry (e.g., NAICS 92 / Public
+    Administration is genuinely uncovered by the OEWS national matrix).
+    Empty pool ⇒ Pass 3 produces empty occupations ⇒ no HIRES_FOR
+    edges ⇒ employer doesn't appear in partnerships landscape (C12-
+    aligned exclusion mechanism, no special-case code).
+
+    Sort: descending by `pct_total` so the most-characteristic
+    occupations for the industry appear first in the prompt's
+    constrained list. Capped at `_OES_MAX_CANDIDATES` rows; this
+    mainly affects NAICS-2 fallbacks where the industry pool can
+    exceed 200 entries.
+    """
+    from ontology.oes import oes_socs_for_naics4
+    naics4 = employer.get("naics4")
+    if not naics4:
+        return []
+    rows = oes_socs_for_naics4(naics4)
+    if not rows:
+        return []
+    edu_socs = _education_filter()
+    filtered = [
+        {
+            "soc_code": r["soc"],
+            "title": r["title"],
+            "pct_total": r["pct_total"],
+        }
+        for r in rows
+        if r["soc"] in edu_socs
+    ]
+    filtered.sort(key=lambda r: -(r["pct_total"] or 0))
+    return filtered[:_OES_MAX_CANDIDATES]
 
 
 # ── PASS 1: Identity probe ────────────────────────────────────────────────
@@ -1275,7 +1318,6 @@ async def _run_all(
     types,
     targets: list[dict],
     employers_full: list[dict],
-    occ_index: dict[str, list[dict]],
     sectors: dict[str, str],
     concurrency: int,
     dry_run: bool,
@@ -1306,7 +1348,7 @@ async def _run_all(
         async with sem:
             label = f"emp {idx + 1}/{n} {emp['name'][:40]}"
             t0 = time.monotonic()
-            occ_list = _employer_occ_list(emp, occ_index)
+            occ_list = _employer_occ_list(emp)
             res = await _process_employer(
                 client, types, emp, occ_list, sectors, label,
                 skip_probe, skip_enrich,
@@ -1407,7 +1449,6 @@ def enrich(
         employers = json.load(f)
 
     sectors = _load_sector_definitions()
-    occ_index = _build_regional_occ_index()
 
     # Build target set.
     def _needs_work(e: dict) -> bool:
@@ -1476,7 +1517,7 @@ def enrich(
     from google.genai import types
 
     totals = asyncio.run(_run_all(
-        client, types, targets, employers, occ_index, sectors,
+        client, types, targets, employers, sectors,
         concurrency, dry_run, skip_probe, skip_enrich, state,
     ))
 

@@ -3,13 +3,12 @@
 Targets the name-cleaning regex chain, the unified canonical dedup key,
 the ordering key used to sort EDD records by employer size, the branch
 deduplication that collapses multiple records for the same employer
-down to the entry with the largest size class, the NAICS-to-SOC
-fallback assigner, the employers.json formatter, and the cross-college
-merge that unions regions and occupations. Drift in any of these
-routines silently corrupts the employer index feeding partnership
-proposals — partners with the wrong names, wrong sector tags, two
-entries where there should be one, or employers tagged to the wrong
-region after a merge.
+down to the entry with the largest size class, the employers.json
+formatter, and the cross-college merge that unions regions and
+occupations. Drift in any of these routines silently corrupts the
+employer index feeding partnership proposals — partners with the wrong
+names, wrong sector tags, two entries where there should be one, or
+employers tagged to the wrong region after a merge.
 
 Coverage:
   - _clean_employer_name: abbreviation expansion (Ctr, Hosp, Med, Assn, Sys, etc.)
@@ -24,16 +23,19 @@ Coverage:
   - _deduplicate_branches: single-entry pass-through, collapse to
     largest size, branch preservation (e.g. UCLA vs UCSD), name
     cleanup on the surviving entry
-  - _assign_soc_codes: NAICS 4-to-2 digit prefix fallback, 10-code cap,
-    empty regional group handling, missing NAICS
   - _format_for_json: COE region resolution, LLM description
-    pass-through, fallback description construction
+    pass-through, fallback description construction, naics4 round-trip
   - _merge_employers: new insert, region union on collision, SOC union
     on collision, added/updated counts
+
+The pre-C13 NAICS-2 → SOC-major-group seed (`_assign_soc_codes` /
+`NAICS_TO_SOC_GROUPS`) was retired in C13 — `enrich.py:Pass 3` now
+owns SOC selection against the BLS OEWS NAICS-bounded industry pool
+(a higher-resolution institutional source). The corresponding test
+class was removed.
 """
 
 from employers.generate import (
-    _assign_soc_codes,
     _canonical_key,
     _clean_employer_name,
     _deduplicate_branches,
@@ -182,57 +184,51 @@ class TestShouldDropName:
         assert _should_drop_name("dept of health") is True
 
 
-class TestAssignSocCodes:
-    def test_naics4_to_naics2_fallback(self):
-        # NAICS4 "3341" has no 3-digit entry in NAICS_TO_SOC_GROUPS, so
-        # the function falls back to the 2-digit prefix "33" which maps
-        # to SOC major groups ["51", "17", "15"].
-        occ_by_group = {
-            "51": ["51-1011", "51-2011"],
-            "17": ["17-2112"],
-            "15": ["15-1252"],
-        }
-        emp = {"naics4": "3341"}
-        result = _assign_soc_codes(emp, occ_by_group)
-        assert "51-1011" in result
-        assert "17-2112" in result
-        assert "15-1252" in result
-
-    def test_caps_at_ten(self):
-        occ_by_group = {
-            "51": [f"51-{i:04d}" for i in range(20)],
-            "17": [f"17-{i:04d}" for i in range(20)],
-        }
-        emp = {"naics4": "3341"}
-        result = _assign_soc_codes(emp, occ_by_group)
-        assert len(result) == 10
-
-    def test_missing_naics_returns_empty(self):
-        assert _assign_soc_codes({}, {"51": ["51-1011"]}) == []
-
-    def test_unknown_naics_returns_empty(self):
-        # NAICS prefix "99" is not in NAICS_TO_SOC_GROUPS.
-        assert _assign_soc_codes({"naics4": "9900"}, {"51": ["51-1011"]}) == []
-
-    def test_empty_regional_group(self):
-        # NAICS4 "6221" → prefix "62" → SOC groups ["29", "31", "21", "11"].
-        # No codes in any of those groups means empty result.
-        assert _assign_soc_codes({"naics4": "6221"}, {}) == []
-
-
 class TestFormatForJson:
     def test_llm_description_passed_through(self):
         # An LLM-provided description that differs from the name should
         # survive into the formatted output unchanged.
         result = _format_for_json(
-            [{"name": "Acme", "sector": "Manufacturing",
-              "description": "Acme makes cogs.", "soc_codes": ["51-1011"]}],
+            [{"name": "Acme", "sector": "Manufacturing", "naics4": "3327",
+              "description": "Acme makes cogs."}],
             region_code="LA",
         )
         assert len(result) == 1
         assert result[0]["description"] == "Acme makes cogs."
-        assert result[0]["occupations"] == ["51-1011"]
         assert result[0]["sector"] == "Manufacturing"
+
+    def test_occupations_skeleton_empty(self):
+        # Post-C13: generate.py emits records with empty `occupations`.
+        # `enrich.py:Pass 3` populates the canonical occupations field
+        # downstream via the shadow → cutover lifecycle.
+        result = _format_for_json(
+            [{"name": "Acme", "sector": "Manufacturing", "naics4": "3327",
+              "description": "Acme makes cogs."}],
+            region_code="LA",
+        )
+        assert result[0]["occupations"] == []
+
+    def test_naics4_written_to_output(self):
+        # naics4 is the institutional anchor for layer 1 — the BLS OEWS
+        # industry-occupation pool key. It must round-trip from the
+        # scraper through the formatted record.
+        result = _format_for_json(
+            [{"name": "Acme", "sector": "Manufacturing", "naics4": "3327",
+              "description": "Acme makes cogs."}],
+            region_code="LA",
+        )
+        assert result[0]["naics4"] == "3327"
+
+    def test_naics4_absent_yields_none(self):
+        # If the upstream scrape didn't carry naics4 (legacy data path),
+        # the formatted record carries None — distinguishable from the
+        # empty-string default that older code returned.
+        result = _format_for_json(
+            [{"name": "Acme", "sector": "Manufacturing",
+              "description": "d"}],
+            region_code="LA",
+        )
+        assert result[0]["naics4"] is None
 
     def test_fallback_description_built_from_edd_fields(self):
         # With no LLM description (or description identical to name),
@@ -241,11 +237,11 @@ class TestFormatForJson:
             [{
                 "name": "Acme",
                 "sector": "Manufacturing",
+                "naics4": "3327",
                 "city": "Fresno",
                 "county": "Fresno",
                 "industry": "Machine Shops",
                 "size_class": "500-999 employees",
-                "soc_codes": [],
             }],
             region_code="CVML",
         )
@@ -260,7 +256,8 @@ class TestFormatForJson:
         # code the caller passed in. No metro lookup anymore — the
         # generator operates strictly in region-code units.
         result = _format_for_json(
-            [{"name": "A", "sector": "X", "description": "d", "soc_codes": []}],
+            [{"name": "A", "sector": "X", "naics4": "3327",
+              "description": "d"}],
             region_code="LA",
         )
         assert result[0]["regions"] == ["LA"]

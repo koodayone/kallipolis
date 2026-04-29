@@ -42,18 +42,6 @@ class LLMCleanupError(RuntimeError):
     """Raised when a Gemini cleanup batch fails after all retries."""
 
 
-# Career-track education levels excluded from the regional occupation
-# pool fed to the LLM. "No formal credential" and "HS diploma" exclude
-# roles that don't represent meaningful CTE outcomes; graduate-degree
-# levels exclude roles out of scope for community college pathways.
-_EXCLUDE_EDUCATION = frozenset({
-    "No formal educational credential",
-    "High school diploma or equivalent",
-    "Some college, no degree",
-    "Master's degree",
-    "Doctoral or professional degree",
-})
-
 # NAICS 4-digit codes whose members are structurally not partnership
 # targets. Staffing agencies (5613) and business-support services
 # (5614) place workers at other employers; listing them as employers
@@ -108,33 +96,6 @@ _INTER_BATCH_DELAY_SECONDS = 20.0
 _GEMINI_503_BACKOFF_SECONDS = 65.0
 
 EMPLOYERS_PATH = Path(__file__).parent / "employers.json"
-OCCUPATIONS_PATH = Path(__file__).parent.parent / "occupations" / "occupations.json"
-
-# ── NAICS → SOC major groups ─────────────────────────────────────────────
-# Maps NAICS 2-digit sector to SOC major groups employed in that industry.
-# Used to assign SOC codes to employers for HIRES_FOR edges.
-NAICS_TO_SOC_GROUPS: dict[str, list[str]] = {
-    "11": ["45", "19"],
-    "21": ["47", "51", "53"],
-    "22": ["47", "49", "51"],
-    "23": ["47", "49", "11", "17"],
-    "31": ["51", "17", "49"], "32": ["51", "17", "19"], "33": ["51", "17", "15"],
-    "42": ["41", "43", "53"],
-    "44": ["41", "43", "35"], "45": ["41", "43"],
-    "48": ["53", "43", "49"], "49": ["53", "43"],
-    "51": ["15", "27", "13"],
-    "52": ["13", "43", "11"],
-    "53": ["41", "43", "37"],
-    "54": ["15", "17", "13", "19", "23", "27"],
-    "55": ["11", "13"],
-    "56": ["43", "37", "33"],
-    "61": ["25", "21", "11"],
-    "62": ["29", "31", "21", "11"],
-    "71": ["27", "39", "35"],
-    "72": ["35", "11", "39"],
-    "81": ["49", "39", "43"],
-    "92": ["33", "21", "11", "23"],
-}
 
 # ── NAICS 2-digit → readable sector ──────────────────────────────────────
 _NAICS_SECTORS = {
@@ -279,49 +240,27 @@ def _deduplicate_branches(employers: list[dict]) -> list[dict]:
     return deduped
 
 
-# ── SOC code assignment ───────────────────────────────────────────────────
-
-def _assign_soc_codes(
-    employer: dict,
-    occupations_by_group: dict[str, list[str]],
-) -> list[str]:
-    """Assign SOC codes to an employer based on NAICS→SOC mapping.
-
-    Args:
-        employer: Dict with naics4 or naics_code field
-        occupations_by_group: {soc_major_group: [soc_codes]} pre-filtered
-            to occupations with employment in the region
-
-    Returns: list of SOC codes (up to 10)
-    """
-    naics = employer.get("naics4", employer.get("naics_code", ""))
-    if not naics:
-        return []
-
-    soc_groups = []
-    for length in (3, 2):
-        prefix = naics[:length]
-        if prefix in NAICS_TO_SOC_GROUPS:
-            soc_groups = NAICS_TO_SOC_GROUPS[prefix]
-            break
-
-    soc_codes = []
-    for group in soc_groups:
-        soc_codes.extend(occupations_by_group.get(group, []))
-
-    return soc_codes[:10]
-
-
 # ── Formatting ────────────────────────────────────────────────────────────
+#
+# C13 retired the deterministic NAICS-2 → SOC major-group seed
+# (`NAICS_TO_SOC_GROUPS` / `_assign_soc_codes`). That seed predated
+# `enrich.py:Pass 3`, which now bounds SOC selection on the BLS OEWS
+# NAICS-4 industry-occupation matrix — a much higher-resolution
+# institutional source than NAICS-2 → SOC-major-group buckets. The
+# scrape pipeline emits records with empty `occupations`; enrich.py
+# fills them via the shadow → cutover lifecycle.
 
 def _format_for_json(employers: list[dict], region_code: str) -> list[dict]:
     """Convert to employers.json schema.
 
-    Also tags each output row with canonical PCAH `swp_sectors` from
-    `CTE_NAICS_CODES[naics4][2]`. This keeps scraped output
-    self-consistent — a future generate_for_region run produces
-    records with `swp_sectors` already populated, so the retag script
-    only needs to run when re-baselining historical data.
+    Each output row is tagged with canonical PCAH `swp_sectors` from
+    `CTE_NAICS_CODES[naics4][2]` and the originating `naics4` itself.
+    NAICS-4 is the institutional anchor for layer 1 (the BLS OEWS
+    industry-occupation pool that bounds Pass 3's SOC selection); it
+    must persist on every record. The original ingest scraper already
+    attaches `naics4` upstream (edd_scrape.py:582-584); writing it
+    here keeps the canonical record self-contained for downstream
+    consumers (Neo4j ingest, the Pass 3 OES lookup).
     """
     from employers.edd_scrape import CTE_NAICS_CODES
 
@@ -353,9 +292,13 @@ def _format_for_json(employers: list[dict], region_code: str) -> list[dict]:
             "name": emp["name"],
             "sector": emp.get("sector", "Other"),
             "swp_sectors": swp_sectors,
+            "naics4": naics4 or None,
             "description": desc,
             "regions": [region_code],
-            "occupations": emp.get("soc_codes", []),
+            # Skeleton — `enrich.py:Pass 3` populates `occupations`
+            # later from the OES NAICS-bounded industry pool, then
+            # cutover.py promotes shadow → canonical.
+            "occupations": [],
         })
     return formatted
 
@@ -396,75 +339,38 @@ def _merge_employers(
 
 # ── LLM cleanup ───────────────────────────────────────────────────────────
 
-def _build_occupation_prefix(metro: str, filtered_occupations: list[dict]) -> str:
-    """Build the shared prefix that's cacheable across batches in a run.
+def _build_name_cleanup_prefix(metro: str) -> str:
+    """Build the shared prefix for name-cleanup batches.
 
-    Contains the task framing and the full regional occupation list —
-    i.e., everything that's identical from one batch to the next.
-    Separating it out lets Gemini context caching eliminate re-sending
-    the occupation list with every batch.
+    C13 simplification: the prompt no longer assigns occupations.
+    Layer 1 occupational classification is owned by `enrich.py:Pass 3`
+    against the BLS OEWS NAICS-bounded industry pool — a higher-
+    resolution institutional source than this batched LLM was using
+    (a 700-SOC regional pool sliced into NAICS-2-major-group buckets).
+    Generate.py now produces clean name + description; enrich.py
+    handles SOC selection downstream.
     """
-    occ_lines = [f"- {o['soc_code']}: {o['title']}" for o in filtered_occupations]
-    occ_list = "\n".join(occ_lines)
     return (
         f"You are cleaning employer records for the {metro} metro area.\n\n"
-        "For each employer name you receive, perform TWO tasks:\n\n"
-        "TASK 1 — CLEAN: clean the name and write a one-sentence description.\n"
+        "For each employer name you receive: clean the name and write a "
+        "one-sentence description.\n"
         "- Expand abbreviations (Hosp→Hospital, Clg→College, Dist→District)\n"
         "- Remove branch qualifiers, location suffixes, department names\n"
         "- Keep the name recognizable\n"
-        '- Return "REMOVE" for branch duplicates, internal departments, foundations when parent is listed, staffing agencies\n\n'
-        "TASK 2 — ASSIGN OCCUPATIONS: select 3-8 SOC codes from the list below "
-        "that this employer would have ON ITS OWN PAYROLL as direct employees.\n"
-        "Only include roles the employer itself employs — not roles performed by "
-        "external agencies, contractors, or government services. For example, a "
-        "resort does not employ firefighters, and a hospital does not employ police officers.\n"
-        "This is REQUIRED for every employer that is not removed.\n\n"
-        f"AVAILABLE OCCUPATIONS:\n{occ_list}\n"
+        '- Return "REMOVE" for branch duplicates, internal departments, '
+        "foundations when parent is listed, staffing agencies.\n"
     )
 
 
-def _create_occupation_cache(
-    client,
-    types_module,
-    prefix: str,
-) -> str | None:
-    """Create a Gemini CachedContent for the shared prefix. Returns its
-    resource name, or None if caching is unavailable or fails (e.g., the
-    prefix is below the model's minimum cache size).
-    """
-    try:
-        cache = client.caches.create(
-            model=_gemini_model(),
-            config=types_module.CreateCachedContentConfig(
-                contents=[
-                    types_module.Content(
-                        role="user",
-                        parts=[types_module.Part(text=prefix)],
-                    )
-                ],
-                ttl="3600s",
-            ),
-        )
-        logger.info(f"  Gemini context cache created: {cache.name}")
-        return cache.name
-    except Exception as e:
-        logger.info(f"  Gemini context caching unavailable ({e}) — using inline prefix")
-        return None
+def _llm_cleanup(employers: list[dict], metro: str) -> list[dict]:
+    """Clean employer names + descriptions via Gemini Flash.
 
-
-def _llm_cleanup(
-    employers: list[dict],
-    metro: str,
-    filtered_occupations: list[dict] | None = None,
-    cached_prefix_name: str | None = None,
-) -> list[dict]:
-    """Clean employer names, generate descriptions, and assign occupations via Gemini Flash.
-
-    When cached_prefix_name is provided, the per-batch request is
-    minimized to the employer names + response-shape directive, and the
-    cached prefix (occupation list + task framing) is attached via
-    GenerateContentConfig.cached_content.
+    Pre-C13 this function also assigned 3–8 SOC codes from a regional
+    pool; that path is retired (see `_build_name_cleanup_prefix`
+    docstring). Post-C13 the function emits records with empty
+    `soc_codes` (downstream `_format_for_json` writes empty
+    `occupations`); `enrich.py:Pass 3` populates the canonical
+    occupations field via the shadow → cutover lifecycle.
     """
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
@@ -475,66 +381,30 @@ def _llm_cleanup(
     from google.genai import types
 
     client = genai.Client(api_key=api_key)
-
     names = [e["name"] for e in employers]
+    names_block = "\n".join(f"- {n}" for n in names)
 
-    # Build prompt
-    valid_soc_codes: set[str] = set()
-
-    if filtered_occupations:
-        valid_soc_codes = {o["soc_code"] for o in filtered_occupations}
-        names_block = "\n".join(f"- {n}" for n in names)
-        response_shape = (
-            'Return JSON: {"Original Name": {"name": "Clean Name", "description": "...", "occupations": ["SOC-CODE", ...]} '
-            'or "Original Name": "REMOVE"}\n\n'
-            'IMPORTANT: Every non-removed employer MUST have an "occupations" array with 3-8 SOC codes.\n\n'
-        )
-        if cached_prefix_name:
-            # Cached prefix carries the task framing + occupation list;
-            # per-batch payload is minimal.
-            prompt = (
-                f"Here are {len(names)} employer names to process for the "
-                f"{metro} metro area.\n\n"
-                f"{response_shape}"
-                f"Names:\n{names_block}"
-            )
-        else:
-            prefix = _build_occupation_prefix(metro, filtered_occupations)
-            prompt = (
-                f"{prefix}\n"
-                f"Process these {len(names)} employer names:\n\n"
-                f"{response_shape}"
-                f"Names:\n{names_block}"
-            )
-    else:
-        prompt = (
-            f"Here are {len(names)} employer names from the EDD database for the "
-            f"{metro} metro area. For each, return either:\n"
-            "- The cleaned canonical employer name + a one-sentence description\n"
-            '- "REMOVE" if it should be dropped (branch duplicate, internal dept, foundation, staffing agency)\n\n'
-            "Clean up: abbreviations, branch qualifiers, location suffixes.\n"
-            "Keep the name recognizable.\n\n"
-            'Return JSON: {"Original Name": {"name": "Clean Name", "description": "..."} '
-            'or "Original Name": "REMOVE"}\n\n'
-            "Names:\n" + "\n".join(f"- {n}" for n in names)
-        )
+    prompt = (
+        f"{_build_name_cleanup_prefix(metro)}\n"
+        f"Process these {len(names)} employer names:\n\n"
+        'Return JSON: {"Original Name": {"name": "Clean Name", '
+        '"description": "..."} or "Original Name": "REMOVE"}\n\n'
+        f"Names:\n{names_block}"
+    )
 
     last_error: Exception | None = None
     cleanup: dict | None = None
     for attempt in range(1, _GEMINI_MAX_ATTEMPTS + 1):
         try:
-            config_kwargs = dict(
-                max_output_tokens=65536,
-                temperature=0.1,
-                response_mime_type="application/json",
-                thinking_config=types.ThinkingConfig(thinking_budget=0),
-            )
-            if cached_prefix_name:
-                config_kwargs["cached_content"] = cached_prefix_name
             response = client.models.generate_content(
                 model=_gemini_model(),
                 contents=prompt,
-                config=types.GenerateContentConfig(**config_kwargs),
+                config=types.GenerateContentConfig(
+                    max_output_tokens=65536,
+                    temperature=0.1,
+                    response_mime_type="application/json",
+                    thinking_config=types.ThinkingConfig(thinking_budget=0),
+                ),
             )
             cleanup = json.loads(response.text)
             break
@@ -565,7 +435,6 @@ def _llm_cleanup(
     kept = []
     removed = 0
     renamed = 0
-    occ_assigned = 0
     for emp in employers:
         action = cleanup.get(emp["name"])
         if action == "REMOVE":
@@ -577,21 +446,7 @@ def _llm_cleanup(
                 renamed += 1
             if action.get("description"):
                 emp["description"] = action["description"]
-            if action.get("occupations") and valid_soc_codes:
-                # Extract SOC codes with a regex — tolerates any wrapping
-                # format ("11-3121", "11-3121: Title", "11-3121 - Title").
-                raw_socs: list[str] = []
-                for s in action["occupations"]:
-                    m = _SOC_RE.search(str(s))
-                    if m:
-                        raw_socs.append(m.group(1))
-                valid = [s for s in raw_socs if s in valid_soc_codes]
-                if valid:
-                    emp["soc_codes"] = valid
-                    occ_assigned += 1
         kept.append(emp)
-    if filtered_occupations:
-        logger.info(f"  LLM occupation assignment: {occ_assigned}/{len(kept)} employers")
 
     # Post-rename dedup — uses the unified canonical key, not ad-hoc lowercase.
     seen: dict[str, dict] = {}
@@ -599,11 +454,6 @@ def _llm_cleanup(
     for emp in kept:
         key = _canonical_key(emp["name"])
         if key in seen:
-            # Merge SOC codes
-            existing = seen[key]
-            for soc in emp.get("soc_codes", []):
-                if soc not in existing.get("soc_codes", []):
-                    existing.setdefault("soc_codes", []).append(soc)
             removed += 1
         else:
             seen[key] = emp
@@ -685,26 +535,12 @@ def generate_for_region(
     deduped = _deduplicate_branches(edd_employers)
     logger.info(f"  After dedup: {len(deduped)} (from {len(edd_employers)})")
 
-    # ── Stage 3: Assign sector and SOC codes ──────────────────────────
-    with open(OCCUPATIONS_PATH) as f:
-        occupations = json.load(f)
-
-    regional_occupations = [
-        occ for occ in occupations
-        if region_code in occ.get("regions", {})
-        and occ.get("education_level") not in _EXCLUDE_EDUCATION
-    ]
-    logger.info(f"  Career-track occupations ({region_code}): {len(regional_occupations)}")
-
-    occ_by_group: dict[str, list[str]] = defaultdict(list)
-    for occ in regional_occupations:
-        group = occ["soc_code"].split("-")[0]
-        occ_by_group[group].append(occ["soc_code"])
-
+    # ── Stage 3: Assign sector ────────────────────────────────────────
+    # Layer 1 SOC assignment retired in C13 — `enrich.py:Pass 3` owns
+    # occupations downstream via the OES NAICS-bounded industry pool.
     for emp in deduped:
         naics = emp.get("naics4", emp.get("naics_code", ""))[:2]
         emp["sector"] = _NAICS_SECTORS.get(naics, emp.get("industry", "Other"))
-        emp["soc_codes"] = _assign_soc_codes(emp, occ_by_group)
 
     sector_counts: dict[str, int] = {}
     for emp in deduped:
@@ -712,20 +548,7 @@ def generate_for_region(
     for sector, count in sorted(sector_counts.items(), key=lambda x: -x[1]):
         logger.info(f"    {sector}: {count}")
 
-    # ── Stage 4: LLM cleanup ─────────────────────────────────────────
-    cached_prefix_name: str | None = None
-    if regional_occupations and os.environ.get("GEMINI_API_KEY"):
-        try:
-            from google import genai
-            from google.genai import types as _gtypes
-            _client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
-            _prefix = _build_occupation_prefix(
-                f"{region_display} region of California", regional_occupations
-            )
-            cached_prefix_name = _create_occupation_cache(_client, _gtypes, _prefix)
-        except Exception as e:
-            logger.info(f"  Gemini cache setup skipped: {e}")
-
+    # ── Stage 4: LLM name + description cleanup ──────────────────────
     selected = []
     failed_batches = 0
     total_batches = (len(deduped) + BATCH_SIZE - 1) // BATCH_SIZE
@@ -741,8 +564,6 @@ def generate_for_region(
             cleaned = _llm_cleanup(
                 batch,
                 f"{region_display} region of California",
-                filtered_occupations=regional_occupations,
-                cached_prefix_name=cached_prefix_name,
             )
             selected.extend(cleaned)
         except LLMCleanupError as e:
