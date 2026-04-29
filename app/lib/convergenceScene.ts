@@ -34,43 +34,44 @@ type FormDef = {
 
 type LayoutConfig = {
   formDefs: FormDef[];
-  chainlinkLeft: THREE.Vector3;
-  chainlinkRight: THREE.Vector3;
-  dumbbellLeft: THREE.Vector3;
-  formRightOffset: number; // x offset from each left-form center to its right edge (connector start)
+  // Edge offsets used to compute connector start/end so the cylinders end
+  // AT the form edges rather than burying inside them.
+  cornerEdgeOffset: number; // distance from corner-form center along the toward-center direction
+  centerEdgeOffset: number; // distance from chainlink center along the toward-corner direction
 };
 
-// Desktop spreads forms across x=[-7, 5.5] for a wide canvas.
+// Layout: four foundational forms in the four corners, partnerships
+// (chainlink) at the radial center. Four gold connectors fan out from
+// the center toward each corner — the visual instantiation of the
+// chainlink as the unit of action where the four foundationals converge.
+//
+// Corner ordering matches the actual atlas (atlas/college-atlas/scene.ts):
+//   top-left:    Students (supply-side person)
+//   top-right:   Employers (demand-side person)
+//   bottom-left: Courses (curricular substrate)
+//   bottom-right: Occupations (labor-market substrate)
 const desktopLayout: LayoutConfig = {
   formDefs: [
-    { label: "Students",         factory: createMortarboardForm, position: new THREE.Vector3(-7, 3.5, 0),  scale: 0.7,  color: BLUE },
-    { label: "Courses",          factory: createBookForm,        position: new THREE.Vector3(-7, 1.2, 0),  scale: 0.7,  color: BLUE },
-    { label: "Occupations",      factory: createHardhatForm,     position: new THREE.Vector3(-7, -1.2, 0), scale: 0.7,  color: BLUE },
-    { label: "Employers",        factory: createSkyscraperForm,  position: new THREE.Vector3(-7, -3.5, 0), scale: 0.65, color: BLUE },
-    { label: "Partnerships",     factory: createChainlinkForm,   position: new THREE.Vector3(-0.5, 0, 0),  scale: 1.2,  color: BLUE },
-    { label: "Strong Workforce", factory: createDumbbellForm,    position: new THREE.Vector3(5.5, 0, 0),   scale: 1.2,  color: BLUE },
+    { label: "Students",     factory: createMortarboardForm, position: new THREE.Vector3(-5.6, 3.0, 0),   scale: 0.85, color: BLUE },
+    { label: "Employers",    factory: createSkyscraperForm,  position: new THREE.Vector3(5.6, 3.0, 0),    scale: 0.85, color: BLUE },
+    { label: "Courses",      factory: createBookForm,        position: new THREE.Vector3(-5.6, -3.0, 0),  scale: 0.85, color: BLUE },
+    { label: "Occupations",  factory: createHardhatForm,     position: new THREE.Vector3(5.6, -3.0, 0),   scale: 0.85, color: BLUE },
+    { label: "Partnerships", factory: createChainlinkForm,   position: new THREE.Vector3(0, 0, 0),        scale: 1.5,  color: BLUE },
   ],
-  chainlinkLeft: new THREE.Vector3(-2.2, 0, 0),
-  chainlinkRight: new THREE.Vector3(1.2, 0, 0),
-  dumbbellLeft: new THREE.Vector3(3.8, 0, 0),
-  formRightOffset: 1.2,
+  cornerEdgeOffset: 0.8,
+  centerEdgeOffset: 1.0,
 };
 
-// Mobile widens spread to x=[-4.0, 3.4] so the convergence reads edge-to-edge
-// on a portrait phone (aspect ~0.85).
 const mobileLayout: LayoutConfig = {
   formDefs: [
-    { label: "Students",         factory: createMortarboardForm, position: new THREE.Vector3(-4.0, 3.5, 0),  scale: 0.65, color: BLUE },
-    { label: "Courses",          factory: createBookForm,        position: new THREE.Vector3(-4.0, 1.2, 0),  scale: 0.65, color: BLUE },
-    { label: "Occupations",      factory: createHardhatForm,     position: new THREE.Vector3(-4.0, -1.2, 0), scale: 0.65, color: BLUE },
-    { label: "Employers",        factory: createSkyscraperForm,  position: new THREE.Vector3(-4.0, -3.5, 0), scale: 0.6,  color: BLUE },
-    { label: "Partnerships",     factory: createChainlinkForm,   position: new THREE.Vector3(-0.4, 0, 0),    scale: 1.05, color: BLUE },
-    { label: "Strong Workforce", factory: createDumbbellForm,    position: new THREE.Vector3(3.4, 0, 0),     scale: 1.05, color: BLUE },
+    { label: "Students",     factory: createMortarboardForm, position: new THREE.Vector3(-3.0, 2.4, 0),   scale: 0.65, color: BLUE },
+    { label: "Employers",    factory: createSkyscraperForm,  position: new THREE.Vector3(3.0, 2.4, 0),    scale: 0.65, color: BLUE },
+    { label: "Courses",      factory: createBookForm,        position: new THREE.Vector3(-3.0, -2.4, 0),  scale: 0.65, color: BLUE },
+    { label: "Occupations",  factory: createHardhatForm,     position: new THREE.Vector3(3.0, -2.4, 0),   scale: 0.65, color: BLUE },
+    { label: "Partnerships", factory: createChainlinkForm,   position: new THREE.Vector3(0, 0, 0),        scale: 1.15, color: BLUE },
   ],
-  chainlinkLeft: new THREE.Vector3(-1.4, 0, 0),
-  chainlinkRight: new THREE.Vector3(0.6, 0, 0),
-  dumbbellLeft: new THREE.Vector3(2.6, 0, 0),
-  formRightOffset: 0.8,
+  cornerEdgeOffset: 0.6,
+  centerEdgeOffset: 0.8,
 };
 
 export const CONVERGENCE_LABELS = desktopLayout.formDefs.map((f) => f.label);
@@ -118,7 +119,9 @@ export function buildConvergenceScene(canvas: HTMLCanvasElement): ConvergenceRes
   const scene = new THREE.Scene();
 
   const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 100);
-  camera.position.set(-0.5, -0.8, 13);
+  // Camera centered on the chainlink at origin so the four-corner radial
+  // composition is visually symmetric. Mobile pulls slightly closer.
+  camera.position.set(0, 0, layoutMode === "mobile" ? 11 : 13);
 
   // Lighting
   scene.add(new THREE.AmbientLight(0xffffff, 0.08));
@@ -266,14 +269,18 @@ export function buildConvergenceScene(canvas: HTMLCanvasElement): ConvergenceRes
     connectors.push({ length, direction, start, pulseLight, color });
   }
 
-  // Connectors: left forms → partnerships chainlink
+  // Connectors: four corner forms → partnerships chainlink at center.
+  // Each connector runs along the direct line from corner to center,
+  // shortened on both ends so the cylinder terminates AT each form's edge
+  // rather than burying inside it.
+  const centerPos = new THREE.Vector3(0, 0, 0);
   for (let i = 0; i < 4; i++) {
-    const formRight = new THREE.Vector3(formDefs[i].position.x + layout.formRightOffset, formDefs[i].position.y, 0);
-    buildConnector(formRight, layout.chainlinkLeft, GOLD);
+    const cornerPos = formDefs[i].position;
+    const toCenter = new THREE.Vector3().subVectors(centerPos, cornerPos).normalize();
+    const start = cornerPos.clone().addScaledVector(toCenter, layout.cornerEdgeOffset);
+    const end = centerPos.clone().addScaledVector(toCenter, -layout.centerEdgeOffset);
+    buildConnector(start, end, GOLD);
   }
-
-  // Connector: partnerships → strong workforce
-  buildConnector(layout.chainlinkRight, layout.dumbbellLeft, GOLD);
 
   // Resize
   const resizeObserver = new ResizeObserver((obs) => {

@@ -9,7 +9,6 @@ import {
   createChainlinkForm,
   createHardhatForm,
   createSkyscraperForm,
-  createDumbbellForm,
 } from "../../lib/formFactories";
 
 
@@ -40,15 +39,18 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 
 // ── Form definitions ─────────────────────────────────────────────────────────
 
+// Five forms in a pyramid: top row carries the active layer
+// (people + the partnership unit of action), bottom row carries the
+// curricular and labor-market substrates that feed them. Mirrors the
+// atlas product (atlas/college-atlas/scene.ts).
 const FORMS = [
-  // Top row
-  { factory: createMortarboardForm, label: "Students",         source: "Chancellor's Office DataMart",   description: "The people the college system serves. Simulated academic journeys calibrated to state data." },
-  { factory: createChainlinkForm,   label: "Partnerships",     source: "Generated Through Analysis", description: "Data-driven partnership proposals that connect institutional capacity to employer need." },
-  { factory: createSkyscraperForm,  label: "Employers",        source: "Employment Development Dept.",    description: "Real organizations from state labor records, scoped to those community colleges can meaningfully engage." },
-  // Bottom row
-  { factory: createBookForm,        label: "Courses",          source: "College Curriculum Catalogs",     description: "The institution's curricular commitment. The courses that are taught, and the skills they teach." },
-  { factory: createDumbbellForm,    label: "Strong Workforce", source: "Derived from partnerships",      description: "Partnership proposals translated into NOVA-compatible Strong Workforce Program applications." },
-  { factory: createHardhatForm,     label: "Occupations",      source: "Centers of Excellence",          description: "Regional labor demand signals of relevant occupations grounded in workforce-oriented research." },
+  // Top row — supply-side person | unit of action | demand-side person
+  { factory: createMortarboardForm, label: "Students",     source: "Chancellor's Office DataMart", description: "The people the college system serves. Simulated academic journeys calibrated to state data." },
+  { factory: createChainlinkForm,   label: "Partnerships", source: "Generated Through Analysis",   description: "Data-driven partnership proposals that connect institutional capacity to employer need." },
+  { factory: createSkyscraperForm,  label: "Employers",    source: "Employment Development Dept.", description: "Real organizations from state labor records, scoped to those community colleges can meaningfully engage." },
+  // Bottom row — curricular substrate | labor-market substrate
+  { factory: createBookForm,        label: "Courses",      source: "College Curriculum Catalogs",  description: "The institution's curricular commitment. The courses that are taught, and the skills they teach." },
+  { factory: createHardhatForm,     label: "Occupations",  source: "Centers of Excellence",        description: "Regional labor demand signals of relevant occupations grounded in workforce-oriented research." },
 ];
 
 // ── Page ─────────────────────────────────────────────────────────────────────
@@ -71,18 +73,36 @@ export default function ExploreAtlasPage() {
         </div>
       </section>
 
-      {/* ── Section 2: The Six Forms ── */}
+      {/* ── Section 2: The Five Forms (pyramid) ── */}
       <section className="md:pt-4 md:pb-16 md:px-16 max-md:pt-4 max-md:pb-10 max-md:px-6">
-        <div className="grid md:grid-cols-3 md:gap-5 max-md:grid-cols-1 max-md:gap-4 max-w-[960px] mx-auto">
-          {FORMS.map((form) => (
-            <FormCard
-              key={form.label}
-              factory={form.factory}
-              label={form.label}
-              source={form.source}
-              description={form.description}
-            />
-          ))}
+        {/* Desktop: top row of 3 cards, bottom row of 2 cards centered
+            under the gaps — same pyramid shape as the atlas product.
+            Mobile: single-column stack. */}
+        <div className="flex flex-col gap-5 max-w-[960px] mx-auto">
+          <div className="flex md:flex-row md:gap-5 max-md:flex-col max-md:gap-4">
+            {FORMS.slice(0, 3).map((form) => (
+              <div key={form.label} className="md:flex-1 max-md:w-full">
+                <FormCard
+                  factory={form.factory}
+                  label={form.label}
+                  source={form.source}
+                  description={form.description}
+                />
+              </div>
+            ))}
+          </div>
+          <div className="flex md:flex-row md:gap-5 md:justify-center max-md:flex-col max-md:gap-4">
+            {FORMS.slice(3).map((form) => (
+              <div key={form.label} className="md:basis-[calc((100%-2.5rem)/3)] md:grow-0 md:shrink-0 max-md:w-full">
+                <FormCard
+                  factory={form.factory}
+                  label={form.label}
+                  source={form.source}
+                  description={form.description}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
