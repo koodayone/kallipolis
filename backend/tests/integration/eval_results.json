@@ -39,9 +39,9 @@
     "result_count": 134,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN emp.name AS name, emp.sector AS sector, emp.description AS description,\n       emp.website AS website,\n       collect(DISTINCT occ.title) AS occupations,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY matching_skills DESC",
-    "interpretation": "This query finds all employers in College of the Desert's labor market region whose hiring needs align with skills taught in College of the Desert's courses, ranked from highest to lowest number of matching skills.",
+    "interpretation": "This query finds all employers in College of the Desert's labor market region whose skill requirements overlap with the skills developed by College of the Desert's courses, ranked from highest to lowest curriculum alignment.",
     "error": "",
-    "latency_ms": 5043
+    "latency_ms": 5318
   },
   {
     "college": "College of the Sequoias",
@@ -83,9 +83,9 @@
     "result_count": 62,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN emp.name AS name, emp.sector AS sector, emp.description AS description,\n       emp.website AS website,\n       collect(DISTINCT occ.title) AS occupations,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY matching_skills DESC",
-    "interpretation": "This query finds all employers in College of the Sequoias' labor market region whose skill requirements are covered by courses offered at College of the Sequoias, ranked from highest to lowest number of matching skills so you can quickly identify the strongest curriculum-to-employer alignment opportunities.",
+    "interpretation": "This query finds all employers in College of the Sequoias' regional labor market and ranks them by how many skills their job openings require that are also taught in College of the Sequoias' courses, giving you a prioritized list of partnership opportunities where your curriculum is most aligned with employer needs.",
     "error": "",
-    "latency_ms": 4647
+    "latency_ms": 4660
   },
   {
     "college": "Compton College",
@@ -127,9 +127,9 @@
     "result_count": 351,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN emp.name AS name, emp.sector AS sector, emp.description AS description,\n       emp.website AS website,\n       collect(DISTINCT occ.title) AS occupations,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY matching_skills DESC",
-    "interpretation": "This query finds all employers in Compton College's regional labor market whose required skills overlap with skills developed in Compton College's courses, ranked from highest to lowest skill alignment.",
+    "interpretation": "This query finds all employers in Compton College's labor market region whose skill requirements are covered by Compton College's courses, ranked from highest to lowest number of matching skills so you can see which employers are the best fit for your curriculum.",
     "error": "",
-    "latency_ms": 4138
+    "latency_ms": 6622
   },
   {
     "college": "Foothill College",
@@ -171,9 +171,9 @@
     "result_count": 311,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN emp.name AS name, emp.sector AS sector, emp.description AS description,\n       emp.website AS website,\n       collect(DISTINCT occ.title) AS occupations,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY matching_skills DESC",
-    "interpretation": "This query finds all employers in Foothill College's labor market region whose occupational skill requirements overlap with skills developed in Foothill College's own courses, ranked from highest to lowest curriculum alignment.",
+    "interpretation": "This query finds all employers in Foothill College's labor market region whose hiring needs align with skills taught in Foothill College courses, ranked from highest to lowest number of matching skills.",
     "error": "",
-    "latency_ms": 4291
+    "latency_ms": 4517
   },
   {
     "college": "Irvine Valley College",
@@ -215,9 +215,9 @@
     "result_count": 419,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN emp.name AS name, emp.sector AS sector, emp.description AS description,\n       emp.website AS website,\n       collect(DISTINCT occ.title) AS occupations,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY matching_skills DESC",
-    "interpretation": "This query finds all employers in Irvine Valley College's labor market region whose skill requirements overlap with skills developed in IVC's courses, ranking them from highest to lowest number of matching skills to highlight the strongest curriculum alignment opportunities.",
+    "interpretation": "This query finds all employers in Irvine Valley College's labor market region whose skill requirements overlap with the skills developed by IVC's courses, ranked from highest to lowest number of matching skills to highlight the strongest curriculum alignment opportunities.",
     "error": "",
-    "latency_ms": 4769
+    "latency_ms": 5030
   },
   {
     "college": "Oxnard College",
@@ -259,9 +259,9 @@
     "result_count": 232,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN emp.name AS name, emp.sector AS sector, emp.description AS description,\n       emp.website AS website,\n       collect(DISTINCT occ.title) AS occupations,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY matching_skills DESC",
-    "interpretation": "This query finds all employers in Oxnard College's labor market region whose skill requirements overlap with skills developed by Oxnard College courses, ranked from highest to lowest number of matching skills to highlight the strongest curriculum alignment opportunities.",
+    "interpretation": "This query finds all employers in Oxnard College's regional labor market whose skill needs overlap with skills developed by Oxnard College courses, ranked from highest to lowest curriculum alignment.",
     "error": "",
-    "latency_ms": 4856
+    "latency_ms": 4334
   },
   {
     "college": "San Diego City College",
@@ -303,9 +303,9 @@
     "result_count": 388,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN emp.name AS name, emp.sector AS sector, emp.description AS description,\n       emp.website AS website,\n       collect(DISTINCT occ.title) AS occupations,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY matching_skills DESC",
-    "interpretation": "This query finds all employers in San Diego City College's labor market region whose skill requirements overlap with the skills developed by San Diego City College's courses, ranked from highest to lowest curriculum alignment.",
+    "interpretation": "This query finds all employers in San Diego City College's regional labor market whose hiring skill requirements overlap with the skills developed by San Diego City College's own courses, ranked from highest to lowest curriculum alignment.",
     "error": "",
-    "latency_ms": 4079
+    "latency_ms": 5311
   },
   {
     "college": "Shasta College",
@@ -347,9 +347,9 @@
     "result_count": 115,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN emp.name AS name, emp.sector AS sector, emp.description AS description,\n       emp.website AS website,\n       collect(DISTINCT occ.title) AS occupations,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY matching_skills DESC",
-    "interpretation": "This query finds all employers in Shasta College's labor market region whose required skills match what Shasta College's courses teach, ranked from highest to lowest skill alignment so you can easily identify the strongest curriculum-to-employer matches.",
+    "interpretation": "This query finds all employers in Shasta College's regional labor market whose skill requirements overlap with skills developed in Shasta College courses, ranked from highest to lowest skill alignment.",
     "error": "",
-    "latency_ms": 3906
+    "latency_ms": 4187
   },
   {
     "college": "College of the Desert",
@@ -391,9 +391,9 @@
     "result_count": 134,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college}),\n       (r)-[d:DEMANDS]->(occ)\nRETURN emp.name AS name, emp.sector AS sector, emp.description AS description,\n       emp.website AS website,\n       collect(DISTINCT occ.title) AS occupations,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills,\n       max(d.annual_openings) AS top_demand\nORDER BY top_demand DESC",
-    "interpretation": "This query finds employers in College of the Desert's region who hire for occupations with high annual demand, ranked by the number of annual job openings, while also highlighting how many skills from College of the Desert's courses align with those employers' hiring needs.",
+    "interpretation": "This query finds employers in College of the Desert's labor market region who are hiring for occupations with high regional demand, ranked by the number of annual job openings, while also surfacing how many skills from College of the Desert's courses align with each employer's hiring needs.",
     "error": "",
-    "latency_ms": 4624
+    "latency_ms": 5441
   },
   {
     "college": "College of the Sequoias",
@@ -435,9 +435,9 @@
     "result_count": 62,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college}),\n       (r)-[d:DEMANDS]->(occ)\nRETURN emp.name AS name, emp.sector AS sector, emp.description AS description,\n       emp.website AS website,\n       collect(DISTINCT occ.title) AS occupations,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills,\n       max(d.annual_openings) AS top_demand\nORDER BY top_demand DESC",
-    "interpretation": "This query finds employers in College of the Sequoias' regional labor market who are hiring for high-demand occupations, ranked by the highest annual job openings, while also surfacing how many skills from the college's courses align with those employers' hiring needs.",
+    "interpretation": "This query finds employers in College of the Sequoias' labor market region who are hiring for occupations with high regional demand, ranked by the number of annual job openings, and shows how well each employer's skill needs align with courses offered at College of the Sequoias.",
     "error": "",
-    "latency_ms": 4430
+    "latency_ms": 9936
   },
   {
     "college": "Compton College",
@@ -479,9 +479,9 @@
     "result_count": 351,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college}),\n       (r)-[d:DEMANDS]->(occ)\nRETURN emp.name AS name, emp.sector AS sector, emp.description AS description,\n       emp.website AS website,\n       collect(DISTINCT occ.title) AS occupations,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills,\n       max(d.annual_openings) AS top_demand\nORDER BY top_demand DESC",
-    "interpretation": "This query identifies employers in Compton College's labor market region who are hiring for high-demand occupations, ranked by the number of annual job openings, while also showing how well each employer's skill needs align with the courses Compton College offers.",
+    "interpretation": "This query finds employers in Compton College's regional labor market who are hiring for occupations in high demand, ranked by the number of annual job openings, while also showing how many skills those employers need are already taught through Compton College's courses.",
     "error": "",
-    "latency_ms": 4690
+    "latency_ms": 4707
   },
   {
     "college": "Foothill College",
@@ -523,9 +523,9 @@
     "result_count": 311,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college}),\n       (r)-[d:DEMANDS]->(occ)\nRETURN emp.name AS name, emp.sector AS sector, emp.description AS description,\n       emp.website AS website,\n       collect(DISTINCT occ.title) AS occupations,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills,\n       max(d.annual_openings) AS top_demand\nORDER BY top_demand DESC",
-    "interpretation": "This query finds employers in Foothill College's labor market region that hire for high-demand occupations, ranked by the highest number of annual job openings, while also showing how many skills those employers need that Foothill College's courses already teach.",
+    "interpretation": "This query finds employers in Foothill College's regional labor market who are hiring for high-demand occupations, ranked by the highest number of annual job openings, while also showing how many skills those employers need are already taught through Foothill College's courses.",
     "error": "",
-    "latency_ms": 4779
+    "latency_ms": 4792
   },
   {
     "college": "Irvine Valley College",
@@ -567,9 +567,9 @@
     "result_count": 419,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college}),\n       (r)-[d:DEMANDS]->(occ)\nRETURN emp.name AS name, emp.sector AS sector, emp.description AS description,\n       emp.website AS website,\n       collect(DISTINCT occ.title) AS occupations,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills,\n       max(d.annual_openings) AS top_demand\nORDER BY top_demand DESC",
-    "interpretation": "This query finds employers in Irvine Valley College's labor market region who are hiring for occupations with high regional demand, ranked by the highest number of annual job openings, while also showing how well each employer's skill needs align with Irvine Valley College's current course offerings.",
+    "interpretation": "This query finds employers in Irvine Valley College's labor market region who hire for high-demand occupations, ranked by the number of annual job openings, while also showing how many skills from IVC's course offerings align with each employer's hiring needs.",
     "error": "",
-    "latency_ms": 4823
+    "latency_ms": 5185
   },
   {
     "college": "Oxnard College",
@@ -611,9 +611,9 @@
     "result_count": 232,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college}),\n       (r)-[d:DEMANDS]->(occ)\nRETURN emp.name AS name, emp.sector AS sector, emp.description AS description,\n       emp.website AS website,\n       collect(DISTINCT occ.title) AS occupations,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills,\n       max(d.annual_openings) AS top_demand\nORDER BY top_demand DESC",
-    "interpretation": "This query finds employers in Oxnard College's labor market region who are hiring for high-demand occupations, ranked by the highest number of annual job openings, while also showing how many skills those employers need are already covered by Oxnard College's courses.",
+    "interpretation": "This query finds employers in Oxnard College's labor market region who are hiring for occupations with high regional demand, ranked by the highest number of annual job openings, while also showing how many skills those employers need that Oxnard College's courses already teach.",
     "error": "",
-    "latency_ms": 4472
+    "latency_ms": 4776
   },
   {
     "college": "San Diego City College",
@@ -655,9 +655,9 @@
     "result_count": 388,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college}),\n       (r)-[d:DEMANDS]->(occ)\nRETURN emp.name AS name, emp.sector AS sector, emp.description AS description,\n       emp.website AS website,\n       collect(DISTINCT occ.title) AS occupations,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills,\n       max(d.annual_openings) AS top_demand\nORDER BY top_demand DESC",
-    "interpretation": "This query finds employers in San Diego City College's labor market region who are hiring for high-demand occupations, ranked by the highest number of annual job openings, while also showing how well each employer's required skills align with courses taught at San Diego City College.",
+    "interpretation": "This query finds employers in San Diego City College's regional labor market who are hiring for high-demand occupations, ranked by the number of annual job openings, while also showing how many skills from the college's courses align with what those employers need.",
     "error": "",
-    "latency_ms": 4445
+    "latency_ms": 5204
   },
   {
     "college": "Shasta College",
@@ -699,9 +699,9 @@
     "result_count": 115,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college}),\n       (r)-[d:DEMANDS]->(occ)\nRETURN emp.name AS name, emp.sector AS sector, emp.description AS description,\n       emp.website AS website,\n       collect(DISTINCT occ.title) AS occupations,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills,\n       max(d.annual_openings) AS top_demand\nORDER BY top_demand DESC",
-    "interpretation": "This query finds employers in Shasta College's regional labor market who hire for high-demand occupations, ranked by the number of annual job openings, while also showing how many skills those employers need that align with Shasta College's current course offerings.",
+    "interpretation": "This query finds employers in Shasta College's labor market region who hire for high-demand occupations, ranked by the number of annual job openings, while also showing how many skills those employers need that are already taught in Shasta College courses.",
     "error": "",
-    "latency_ms": 4546
+    "latency_ms": 4764
   },
   {
     "college": "College of the Desert",
@@ -743,9 +743,9 @@
     "result_count": 94,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nWHERE ANY(s IN emp.swp_sectors WHERE s IN r.priority_sectors)\nRETURN emp.name AS name, emp.sector AS sector, emp.description AS description,\n       emp.website AS website,\n       collect(DISTINCT occ.title) AS occupations,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY matching_skills DESC",
-    "interpretation": "This query finds all employers in College of the Desert's labor market region whose industry classifications fall within the region's formally adopted Strong Workforce Program priority sectors, ranked by how many skills those employers need that College of the Desert's courses already teach.",
+    "interpretation": "This query finds all employers in College of the Desert's labor market region whose industry classifications fall within the region's formally adopted Strong Workforce Program priority sectors, ranked by how many skills those employers need that College of the Desert's courses already develop.",
     "error": "",
-    "latency_ms": 4424
+    "latency_ms": 5711
   },
   {
     "college": "College of the Sequoias",
@@ -787,9 +787,9 @@
     "result_count": 44,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nWHERE ANY(s IN emp.swp_sectors WHERE s IN r.priority_sectors)\nRETURN emp.name AS name, emp.sector AS sector, emp.description AS description,\n       emp.website AS website,\n       collect(DISTINCT occ.title) AS occupations,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY matching_skills DESC",
-    "interpretation": "This query finds employers in College of the Sequoias' labor market region whose industry classifications fall within the region's formally adopted Strong Workforce Program priority sectors, ranked by how many skills those employers need that are already taught in College of the Sequoias' courses.",
+    "interpretation": "This query finds employers in College of the Sequoias' regional labor market whose industry classifications fall within the Strong Workforce Program priority sectors formally adopted by the region's consortium, ranked by how many skills those employers need that are already taught in College of the Sequoias' courses.",
     "error": "",
-    "latency_ms": 4554
+    "latency_ms": 4996
   },
   {
     "college": "Compton College",
@@ -831,9 +831,9 @@
     "result_count": 251,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nWHERE ANY(s IN emp.swp_sectors WHERE s IN r.priority_sectors)\nRETURN emp.name AS name, emp.sector AS sector, emp.description AS description,\n       emp.website AS website,\n       collect(DISTINCT occ.title) AS occupations,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY matching_skills DESC",
-    "interpretation": "This query finds all employers in Compton College's regional labor market whose industry classifications fall within the region's formally adopted Strong Workforce Program priority sectors, ranked by how many skills those employers require that Compton College's courses actually teach.",
+    "interpretation": "This query finds all employers in Compton College's labor market region whose industry classifications fall within the region's formally adopted Strong Workforce Program priority sectors, ranked by how many of their required skills align with courses offered at Compton College.",
     "error": "",
-    "latency_ms": 4359
+    "latency_ms": 5112
   },
   {
     "college": "Foothill College",
@@ -875,9 +875,9 @@
     "result_count": 163,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nWHERE ANY(s IN emp.swp_sectors WHERE s IN r.priority_sectors)\nRETURN emp.name AS name, emp.sector AS sector, emp.description AS description,\n       emp.website AS website,\n       collect(DISTINCT occ.title) AS occupations,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY matching_skills DESC",
-    "interpretation": "This query finds all employers in Foothill College's labor market region whose industry falls within the region's formally adopted Strong Workforce Program priority sectors, ranked by how many skills those employers need that Foothill College's courses already teach.",
+    "interpretation": "This query finds all employers in Foothill College's labor market region whose industry sectors align with the region's formally adopted Strong Workforce Program priority sectors, ranked by how many skills those employers need that Foothill College's courses already teach.",
     "error": "",
-    "latency_ms": 4917
+    "latency_ms": 12077
   },
   {
     "college": "Irvine Valley College",
@@ -919,9 +919,9 @@
     "result_count": 182,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nWHERE ANY(s IN emp.swp_sectors WHERE s IN r.priority_sectors)\nRETURN emp.name AS name, emp.sector AS sector, emp.description AS description,\n       emp.website AS website,\n       collect(DISTINCT occ.title) AS occupations,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY matching_skills DESC",
-    "interpretation": "This query finds all employers in Irvine Valley College's regional labor market whose industries align with the Strong Workforce Program priority sectors formally adopted by the region's consortium, ranked by how many of their required skills are already developed through Irvine Valley College's courses.",
+    "interpretation": "This query finds all employers in Irvine Valley College's labor market region whose industry classifications fall within the region's formally adopted Strong Workforce Program priority sectors, ranked by how many of their required job skills align with courses offered at Irvine Valley College.",
     "error": "",
-    "latency_ms": 5392
+    "latency_ms": 4887
   },
   {
     "college": "Oxnard College",
@@ -963,9 +963,9 @@
     "result_count": 228,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nWHERE ANY(s IN emp.swp_sectors WHERE s IN r.priority_sectors)\nRETURN emp.name AS name, emp.sector AS sector, emp.description AS description,\n       emp.website AS website,\n       collect(DISTINCT occ.title) AS occupations,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY matching_skills DESC",
-    "interpretation": "This query finds all employers in Oxnard College's labor market region whose industry classifications fall within the region's formally adopted Strong Workforce Program priority sectors, ranked by how many skills those employers need that Oxnard College's courses already develop.",
+    "interpretation": "This query finds all employers in Oxnard College's regional labor market whose industry sector aligns with the region's formally adopted Strong Workforce Program priority sectors, ranked by how many skills those employers need that Oxnard College's courses already develop.",
     "error": "",
-    "latency_ms": 4521
+    "latency_ms": 4324
   },
   {
     "college": "San Diego City College",
@@ -1007,9 +1007,9 @@
     "result_count": 141,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nWHERE ANY(s IN emp.swp_sectors WHERE s IN r.priority_sectors)\nRETURN emp.name AS name, emp.sector AS sector, emp.description AS description,\n       emp.website AS website,\n       collect(DISTINCT occ.title) AS occupations,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY matching_skills DESC",
-    "interpretation": "This query finds all employers in San Diego City College's labor market region whose industries fall within the region's formally adopted Strong Workforce Program priority sectors, ranked by how many skills those employers need that San Diego City College's courses already teach.",
+    "interpretation": "This query finds all employers in San Diego City College's labor market region whose industry classifications fall within the region's formally designated Strong Workforce Program priority sectors, ranked by how many skills those employers need that San Diego City College's courses already teach.",
     "error": "",
-    "latency_ms": 4319
+    "latency_ms": 4647
   },
   {
     "college": "Shasta College",
@@ -1051,9 +1051,9 @@
     "result_count": 57,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nWHERE ANY(s IN emp.swp_sectors WHERE s IN r.priority_sectors)\nRETURN emp.name AS name, emp.sector AS sector, emp.description AS description,\n       emp.website AS website,\n       collect(DISTINCT occ.title) AS occupations,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY matching_skills DESC",
-    "interpretation": "This query finds all employers in Shasta College's regional labor market whose industry falls within the Strong Workforce Program priority sectors formally adopted by the regional consortium, ranked by how many skills those employers need that Shasta College courses already teach.",
+    "interpretation": "This query finds employers in Shasta College's labor market region whose industry sectors align with the region's formally adopted Strong Workforce Program priority sectors, ranked by how many skills those employers need that Shasta College's courses already develop.",
     "error": "",
-    "latency_ms": 4693
+    "latency_ms": 5109
   },
   {
     "college": "College of the Desert",
@@ -1095,9 +1095,9 @@
     "result_count": 506,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN occ.soc_code AS soc_code, occ.title AS title,\n       occ.description AS description, d.annual_wage AS annual_wage,\n       d.employment AS employment, d.growth_rate AS growth_rate,\n       d.annual_openings AS annual_openings, occ.education_level AS education_level,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY d.annual_wage DESC",
-    "interpretation": "This query retrieves all occupations in College of the Desert's regional labor market, ranked by highest median annual wage, showing only those that align with at least one skill taught through the college's courses.",
+    "interpretation": "This query retrieves all occupations in demand within College of the Desert's regional labor market, ranked by highest median annual wage, showing only those that align with skills developed by the college's courses.",
     "error": "",
-    "latency_ms": 4645
+    "latency_ms": 4788
   },
   {
     "college": "College of the Sequoias",
@@ -1139,9 +1139,9 @@
     "result_count": 506,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN occ.soc_code AS soc_code, occ.title AS title,\n       occ.description AS description, d.annual_wage AS annual_wage,\n       d.employment AS employment, d.growth_rate AS growth_rate,\n       d.annual_openings AS annual_openings, occ.education_level AS education_level,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY d.annual_wage DESC",
-    "interpretation": "This query retrieves all occupations in College of the Sequoias' regional labor market, ranked from highest to lowest median annual wage, showing only those with at least one skill that aligns with the college's course offerings.",
+    "interpretation": "This query retrieves all occupations in College of the Sequoias' regional labor market, ranked by highest median annual wage, showing only those that align with skills developed through the college's courses.",
     "error": "",
-    "latency_ms": 4161
+    "latency_ms": 4341
   },
   {
     "college": "Compton College",
@@ -1185,7 +1185,7 @@
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN occ.soc_code AS soc_code, occ.title AS title,\n       occ.description AS description, d.annual_wage AS annual_wage,\n       d.employment AS employment, d.growth_rate AS growth_rate,\n       d.annual_openings AS annual_openings, occ.education_level AS education_level,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY d.annual_wage DESC",
     "interpretation": "This query retrieves all occupations in Compton College's regional labor market that align with skills taught in Compton College courses, ranked from highest to lowest median annual wage so workforce coordinators can identify the most lucrative career pathways for students.",
     "error": "",
-    "latency_ms": 5004
+    "latency_ms": 5213
   },
   {
     "college": "Foothill College",
@@ -1227,9 +1227,9 @@
     "result_count": 506,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN occ.soc_code AS soc_code, occ.title AS title,\n       occ.description AS description, d.annual_wage AS annual_wage,\n       d.employment AS employment, d.growth_rate AS growth_rate,\n       d.annual_openings AS annual_openings, occ.education_level AS education_level,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY d.annual_wage DESC",
-    "interpretation": "This query retrieves all occupations in Foothill College's regional labor market, ranked from highest to lowest median annual wage, showing only those that have at least one skill alignment with Foothill College's course offerings.",
+    "interpretation": "This query retrieves all occupations in Foothill College's regional labor market, ranked from highest to lowest annual wage, showing only those that have at least one skill alignment with courses offered at Foothill College.",
     "error": "",
-    "latency_ms": 4313
+    "latency_ms": 4721
   },
   {
     "college": "Irvine Valley College",
@@ -1271,9 +1271,9 @@
     "result_count": 506,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN occ.soc_code AS soc_code, occ.title AS title,\n       occ.description AS description, d.annual_wage AS annual_wage,\n       d.employment AS employment, d.growth_rate AS growth_rate,\n       d.annual_openings AS annual_openings, occ.education_level AS education_level,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY d.annual_wage DESC",
-    "interpretation": "This query retrieves all occupations in Irvine Valley College's regional labor market that align with its course offerings, ranked from highest to lowest median annual wage, so coordinators can identify the most lucrative career pathways supported by the college's curriculum.",
+    "interpretation": "This query finds all occupations in Irvine Valley College's regional labor market that align with skills taught in its courses, ranked from highest to lowest annual median wage so workforce coordinators can identify the most lucrative career pathways for students.",
     "error": "",
-    "latency_ms": 4745
+    "latency_ms": 5209
   },
   {
     "college": "Oxnard College",
@@ -1315,9 +1315,9 @@
     "result_count": 506,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN occ.soc_code AS soc_code, occ.title AS title,\n       occ.description AS description, d.annual_wage AS annual_wage,\n       d.employment AS employment, d.growth_rate AS growth_rate,\n       d.annual_openings AS annual_openings, occ.education_level AS education_level,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY d.annual_wage DESC",
-    "interpretation": "This query identifies all occupations in Oxnard College's regional labor market, ranked from highest to lowest annual wage, showing only those that have at least some skill alignment with Oxnard College's current course offerings.",
+    "interpretation": "This query retrieves all occupations in Oxnard College's regional labor market, ranked from highest to lowest median annual wage, showing only those that align with skills developed through Oxnard College's courses.",
     "error": "",
-    "latency_ms": 4454
+    "latency_ms": 4587
   },
   {
     "college": "San Diego City College",
@@ -1359,9 +1359,9 @@
     "result_count": 506,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN occ.soc_code AS soc_code, occ.title AS title,\n       occ.description AS description, d.annual_wage AS annual_wage,\n       d.employment AS employment, d.growth_rate AS growth_rate,\n       d.annual_openings AS annual_openings, occ.education_level AS education_level,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY d.annual_wage DESC",
-    "interpretation": "This query retrieves all occupations in San Diego City College's regional labor market, ranked by highest median annual wage, showing only those that align with skills developed by the college's courses.",
+    "interpretation": "This query retrieves all occupations in San Diego City College's regional labor market, ranked from highest to lowest annual wage, showing only those with at least one skill that aligns with courses offered at the college.",
     "error": "",
-    "latency_ms": 4444
+    "latency_ms": 4430
   },
   {
     "college": "Shasta College",
@@ -1403,9 +1403,9 @@
     "result_count": 506,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN occ.soc_code AS soc_code, occ.title AS title,\n       occ.description AS description, d.annual_wage AS annual_wage,\n       d.employment AS employment, d.growth_rate AS growth_rate,\n       d.annual_openings AS annual_openings, occ.education_level AS education_level,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY d.annual_wage DESC",
-    "interpretation": "This query retrieves all occupations in Shasta College's regional labor market that align with skills taught in Shasta College courses, ranked from highest to lowest median annual wage so workforce coordinators can identify the most lucrative career pathways supported by the college's curriculum.",
+    "interpretation": "This query identifies occupations in Shasta College's regional labor market ranked by highest median annual wage, showing only those that align with skills developed through Shasta College's course offerings.",
     "error": "",
-    "latency_ms": 4390
+    "latency_ms": 4906
   },
   {
     "college": "College of the Desert",
@@ -1447,9 +1447,9 @@
     "result_count": 506,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN occ.soc_code AS soc_code, occ.title AS title,\n       occ.description AS description, d.annual_wage AS annual_wage,\n       d.employment AS employment, d.growth_rate AS growth_rate,\n       d.annual_openings AS annual_openings, occ.education_level AS education_level,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY d.annual_openings DESC",
-    "interpretation": "This query finds all occupations in College of the Desert's regional labor market that align with its curriculum, ranked by the highest number of average annual job openings, helping identify where students have the most frequent opportunities to enter the workforce each year.",
+    "interpretation": "This query finds all occupations in College of the Desert's regional labor market that align with its course offerings, ranked by the number of average annual job openings (new and replacement positions combined), highlighting where students have the best ongoing opportunities to find work.",
     "error": "",
-    "latency_ms": 5160
+    "latency_ms": 6851
   },
   {
     "college": "College of the Sequoias",
@@ -1491,9 +1491,9 @@
     "result_count": 506,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN occ.soc_code AS soc_code, occ.title AS title,\n       occ.description AS description, d.annual_wage AS annual_wage,\n       d.employment AS employment, d.growth_rate AS growth_rate,\n       d.annual_openings AS annual_openings, occ.education_level AS education_level,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY d.annual_openings DESC",
-    "interpretation": "This query retrieves all occupations in College of the Sequoias' regional labor market, ranked by the highest number of average annual job openings, while also showing how many of each occupation's required skills align with courses offered at the college.",
+    "interpretation": "This query finds all occupations in College of the Sequoias' regional labor market that align with its course offerings, ranked by the highest number of average annual job openings (new and replacement positions combined).",
     "error": "",
-    "latency_ms": 4410
+    "latency_ms": 4512
   },
   {
     "college": "Compton College",
@@ -1535,9 +1535,9 @@
     "result_count": 506,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN occ.soc_code AS soc_code, occ.title AS title,\n       occ.description AS description, d.annual_wage AS annual_wage,\n       d.employment AS employment, d.growth_rate AS growth_rate,\n       d.annual_openings AS annual_openings, occ.education_level AS education_level,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY d.annual_openings DESC",
-    "interpretation": "This query finds all occupations in Compton College's regional labor market that align with its course offerings, ranked by the highest number of average annual job openings, helping identify where students have the most frequent opportunities to enter the workforce.",
+    "interpretation": "This query finds all occupations in Compton College's regional labor market that align with skills taught in Compton College courses, ranked by the highest number of average annual job openings (new and replacement positions combined).",
     "error": "",
-    "latency_ms": 4421
+    "latency_ms": 4769
   },
   {
     "college": "Foothill College",
@@ -1579,9 +1579,9 @@
     "result_count": 506,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN occ.soc_code AS soc_code, occ.title AS title,\n       occ.description AS description, d.annual_wage AS annual_wage,\n       d.employment AS employment, d.growth_rate AS growth_rate,\n       d.annual_openings AS annual_openings, occ.education_level AS education_level,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY d.annual_openings DESC",
-    "interpretation": "This query identifies occupations in Foothill College's regional labor market with the highest average annual job openings, ranked from most to fewest, while also showing how many of each occupation's required skills align with courses offered at Foothill College.",
+    "interpretation": "This query finds all occupations in Foothill College's regional labor market that align with its course offerings, ranked by the number of average annual job openings (new and replacement positions combined) from highest to lowest.",
     "error": "",
-    "latency_ms": 5188
+    "latency_ms": 5360
   },
   {
     "college": "Irvine Valley College",
@@ -1623,9 +1623,9 @@
     "result_count": 506,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN occ.soc_code AS soc_code, occ.title AS title,\n       occ.description AS description, d.annual_wage AS annual_wage,\n       d.employment AS employment, d.growth_rate AS growth_rate,\n       d.annual_openings AS annual_openings, occ.education_level AS education_level,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY d.annual_openings DESC",
-    "interpretation": "This query finds all occupations in Irvine Valley College's regional labor market that align with its course offerings, ranked by the highest number of average annual job openings \u2014 helping identify where hiring demand is greatest year over year.",
+    "interpretation": "This query finds all occupations in Irvine Valley College's regional labor market that align with the college's curriculum, ranked by the highest number of average annual job openings, helping identify where students have the most frequent hiring opportunities.",
     "error": "",
-    "latency_ms": 4211
+    "latency_ms": 4574
   },
   {
     "college": "Oxnard College",
@@ -1667,9 +1667,9 @@
     "result_count": 506,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN occ.soc_code AS soc_code, occ.title AS title,\n       occ.description AS description, d.annual_wage AS annual_wage,\n       d.employment AS employment, d.growth_rate AS growth_rate,\n       d.annual_openings AS annual_openings, occ.education_level AS education_level,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY d.annual_openings DESC",
-    "interpretation": "This query finds all occupations in Oxnard College's regional labor market that align with its course offerings, ranked by the highest number of average annual job openings, helping identify where students will have the most frequent hiring opportunities each year.",
+    "interpretation": "This query retrieves occupations in Oxnard College's regional labor market ranked by the highest number of average annual job openings, showing only those with skill alignment to courses offered at Oxnard College.",
     "error": "",
-    "latency_ms": 5887
+    "latency_ms": 4155
   },
   {
     "college": "San Diego City College",
@@ -1711,9 +1711,9 @@
     "result_count": 506,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN occ.soc_code AS soc_code, occ.title AS title,\n       occ.description AS description, d.annual_wage AS annual_wage,\n       d.employment AS employment, d.growth_rate AS growth_rate,\n       d.annual_openings AS annual_openings, occ.education_level AS education_level,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY d.annual_openings DESC",
-    "interpretation": "This query finds all occupations in San Diego City College's regional labor market ranked by the highest number of average annual job openings, showing only those that align with skills developed in the college's course offerings.",
+    "interpretation": "This query finds all occupations in San Diego City College's regional labor market that align with its course curriculum, ranked by the highest average number of annual job openings \u2014 helping identify where students are most likely to find new or replacement job opportunities each year.",
     "error": "",
-    "latency_ms": 4188
+    "latency_ms": 9883
   },
   {
     "college": "Shasta College",
@@ -1757,7 +1757,7 @@
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN occ.soc_code AS soc_code, occ.title AS title,\n       occ.description AS description, d.annual_wage AS annual_wage,\n       d.employment AS employment, d.growth_rate AS growth_rate,\n       d.annual_openings AS annual_openings, occ.education_level AS education_level,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY d.annual_openings DESC",
     "interpretation": "This query finds all occupations in Shasta College's regional labor market that align with skills taught in Shasta College courses, ranked by the highest number of average annual job openings (new and replacement positions combined).",
     "error": "",
-    "latency_ms": 4998
+    "latency_ms": 4915
   },
   {
     "college": "College of the Desert",
@@ -1799,9 +1799,9 @@
     "result_count": 506,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN occ.soc_code AS soc_code, occ.title AS title,\n       occ.description AS description, d.annual_wage AS annual_wage,\n       d.employment AS employment, d.growth_rate AS growth_rate,\n       d.annual_openings AS annual_openings, occ.education_level AS education_level,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY d.growth_rate DESC",
-    "interpretation": "This query identifies the fastest-growing occupations in College of the Desert's regional labor market, ranked by projected 5-year growth rate (2024\u20132029), and includes only those occupations where at least one required skill is developed by a College of the Desert course.",
+    "interpretation": "This query identifies occupations in College of the Desert's regional labor market with the highest projected 5-year growth rates (2024\u20132029), ranked by fastest growth first, and shows how well each occupation aligns with skills developed through the college's courses.",
     "error": "",
-    "latency_ms": 4366
+    "latency_ms": 4725
   },
   {
     "college": "College of the Sequoias",
@@ -1843,9 +1843,9 @@
     "result_count": 506,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN occ.soc_code AS soc_code, occ.title AS title,\n       occ.description AS description, d.annual_wage AS annual_wage,\n       d.employment AS employment, d.growth_rate AS growth_rate,\n       d.annual_openings AS annual_openings, occ.education_level AS education_level,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY d.growth_rate DESC",
-    "interpretation": "This query identifies occupations in College of the Sequoias' regional labor market with the highest projected 5-year growth rates (2024\u20132029), ranked from fastest to slowest growing, and includes only those where the college's current courses develop at least one required skill.",
+    "interpretation": "This query retrieves occupations in College of the Sequoias' regional labor market ranked by their projected 5-year growth rate (2024\u20132029), highlighting which fast-growing careers also align with skills developed through the college's courses.",
     "error": "",
-    "latency_ms": 5022
+    "latency_ms": 4653
   },
   {
     "college": "Compton College",
@@ -1887,9 +1887,9 @@
     "result_count": 506,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN occ.soc_code AS soc_code, occ.title AS title,\n       occ.description AS description, d.annual_wage AS annual_wage,\n       d.employment AS employment, d.growth_rate AS growth_rate,\n       d.annual_openings AS annual_openings, occ.education_level AS education_level,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY d.growth_rate DESC",
-    "interpretation": "This query identifies occupations in Compton College's regional labor market that are projected to grow the fastest between 2024 and 2029, ranked by growth rate, and shows how well each occupation aligns with skills developed through Compton College's courses.",
+    "interpretation": "This query retrieves occupations in Compton College's regional labor market ranked by their projected 5-year growth rate (2024\u20132029), showing only those that align with skills developed through Compton College's course offerings.",
     "error": "",
-    "latency_ms": 4753
+    "latency_ms": 5259
   },
   {
     "college": "Foothill College",
@@ -1931,9 +1931,9 @@
     "result_count": 506,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN occ.soc_code AS soc_code, occ.title AS title,\n       occ.description AS description, d.annual_wage AS annual_wage,\n       d.employment AS employment, d.growth_rate AS growth_rate,\n       d.annual_openings AS annual_openings, occ.education_level AS education_level,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY d.growth_rate DESC",
-    "interpretation": "This query identifies occupations in Foothill College's regional labor market with the highest projected 5-year growth rates (2024\u20132029), ranked from fastest to slowest growing, and shows how well Foothill College's courses align with the skills each occupation demands.",
+    "interpretation": "This query retrieves all occupations in Foothill College's regional labor market ranked by their projected 5-year growth rate (fastest growing first), showing only occupations that align with at least one skill taught through Foothill College's courses.",
     "error": "",
-    "latency_ms": 4561
+    "latency_ms": 4549
   },
   {
     "college": "Irvine Valley College",
@@ -1975,9 +1975,9 @@
     "result_count": 506,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN occ.soc_code AS soc_code, occ.title AS title,\n       occ.description AS description, d.annual_wage AS annual_wage,\n       d.employment AS employment, d.growth_rate AS growth_rate,\n       d.annual_openings AS annual_openings, occ.education_level AS education_level,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY d.growth_rate DESC",
-    "interpretation": "This query identifies occupations in Irvine Valley College's regional labor market ranked by their projected 5-year growth rate (2024\u20132029), showing only those that align with skills taught through Irvine Valley College's courses.",
+    "interpretation": "This query finds occupations in Irvine Valley College's regional labor market ranked by their projected 5-year growth rate (2024\u20132029), highlighting those with the strongest demand trajectory that also align with skills taught in Irvine Valley College courses.",
     "error": "",
-    "latency_ms": 4708
+    "latency_ms": 4655
   },
   {
     "college": "Oxnard College",
@@ -2019,9 +2019,9 @@
     "result_count": 506,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN occ.soc_code AS soc_code, occ.title AS title,\n       occ.description AS description, d.annual_wage AS annual_wage,\n       d.employment AS employment, d.growth_rate AS growth_rate,\n       d.annual_openings AS annual_openings, occ.education_level AS education_level,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY d.growth_rate DESC",
-    "interpretation": "This query finds occupations in Oxnard College's regional labor market ranked by their projected 5-year growth rate (2024\u20132029), showing only those that align with skills developed through Oxnard College courses.",
+    "interpretation": "This query finds occupations in Oxnard College's regional labor market ranked by their projected 5-year growth rate (2024\u20132029), showing only those that align with skills taught in Oxnard College courses, so workforce coordinators can see which fast-growing careers the college's curriculum is already preparing students for.",
     "error": "",
-    "latency_ms": 11811
+    "latency_ms": 8834
   },
   {
     "college": "San Diego City College",
@@ -2063,9 +2063,9 @@
     "result_count": 506,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN occ.soc_code AS soc_code, occ.title AS title,\n       occ.description AS description, d.annual_wage AS annual_wage,\n       d.employment AS employment, d.growth_rate AS growth_rate,\n       d.annual_openings AS annual_openings, occ.education_level AS education_level,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY d.growth_rate DESC",
-    "interpretation": "This query finds all occupations in San Diego City College's regional labor market that are projected to grow the fastest over the next five years (2024\u20132029), ranked by growth rate, and shows how well each occupation aligns with skills taught in the college's courses.",
+    "interpretation": "This query identifies occupations in San Diego City College's regional labor market with the highest projected 5-year growth rates (2024\u20132029), ranked by fastest growth first, and shows how well each occupation aligns with skills taught in the college's courses.",
     "error": "",
-    "latency_ms": 4955
+    "latency_ms": 5003
   },
   {
     "college": "Shasta College",
@@ -2107,9 +2107,9 @@
     "result_count": 506,
     "has_interpretation": true,
     "cypher": "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})\nRETURN occ.soc_code AS soc_code, occ.title AS title,\n       occ.description AS description, d.annual_wage AS annual_wage,\n       d.employment AS employment, d.growth_rate AS growth_rate,\n       d.annual_openings AS annual_openings, occ.education_level AS education_level,\n       count(DISTINCT sk) AS matching_skills,\n       collect(DISTINCT sk.name) AS skills\nORDER BY d.growth_rate DESC",
-    "interpretation": "This query identifies occupations in Shasta College's regional labor market with the highest projected 5-year growth rates (2024\u20132029), ranked by fastest growth first, while also showing how many skills from each occupation are already covered by Shasta College's current course offerings.",
+    "interpretation": "This query identifies occupations in Shasta College's regional labor market with the highest projected 5-year growth rates (2024\u20132029), ranked by fastest growth, and shows how well each occupation aligns with skills taught in Shasta College courses.",
     "error": "",
-    "latency_ms": 5085
+    "latency_ms": 4858
   },
   {
     "college": "College of the Desert",
@@ -2155,10 +2155,10 @@
     "execution_success": true,
     "result_count": 3,
     "has_interpretation": true,
-    "cypher": "MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk:Skill)\nWHERE toLower(sk.name) CONTAINS 'manufacturing'\nWITH DISTINCT c\nRETURN c.name AS name, c.code AS code, c.description AS description,\n       c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,\n       c.skill_mappings AS skill_mappings\nORDER BY c.code",
+    "cypher": "MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk:Skill) WHERE toLower(sk.name) CONTAINS 'manufacturing' WITH DISTINCT c RETURN c.name AS name, c.code AS code, c.description AS description, c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives, c.skill_mappings AS skill_mappings ORDER BY c.code",
     "interpretation": "This query finds all courses at College of the Desert that develop skills related to manufacturing, including both general Manufacturing and Lean Manufacturing skills.",
     "error": "",
-    "latency_ms": 3569
+    "latency_ms": 3065
   },
   {
     "college": "College of the Sequoias",
@@ -2204,10 +2204,10 @@
     "execution_success": true,
     "result_count": 14,
     "has_interpretation": true,
-    "cypher": "MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk:Skill) WHERE toLower(sk.name) CONTAINS 'manufacturing' WITH DISTINCT c RETURN c.name AS name, c.code AS code, c.description AS description, c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives, c.skill_mappings AS skill_mappings ORDER BY c.code",
-    "interpretation": "This query finds all courses at College of the Sequoias that develop manufacturing-related skills, including general Manufacturing and Lean Manufacturing skills, returning each course only once even if it develops multiple matching skills.",
+    "cypher": "MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk:Skill)\nWHERE toLower(sk.name) CONTAINS 'manufacturing'\nWITH DISTINCT c\nRETURN c.name AS name, c.code AS code, c.description AS description,\n       c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,\n       c.skill_mappings AS skill_mappings\nORDER BY c.code",
+    "interpretation": "This query finds all courses at College of the Sequoias that develop Manufacturing or Lean Manufacturing skills, returning each course's details sorted by course code.",
     "error": "",
-    "latency_ms": 3762
+    "latency_ms": 3914
   },
   {
     "college": "Compton College",
@@ -2254,9 +2254,9 @@
     "result_count": 24,
     "has_interpretation": true,
     "cypher": "MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk:Skill)\nWHERE toLower(sk.name) CONTAINS 'manufacturing'\nWITH DISTINCT c\nRETURN c.name AS name, c.code AS code, c.description AS description,\n       c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,\n       c.skill_mappings AS skill_mappings\nORDER BY c.code",
-    "interpretation": "This query finds all Compton College courses that develop Manufacturing or Lean Manufacturing skills, returning each unique course with its description, learning outcomes, objectives, and skill mappings.",
+    "interpretation": "This query finds all courses at Compton College that develop skills related to manufacturing, including both general Manufacturing and Lean Manufacturing skills.",
     "error": "",
-    "latency_ms": 3323
+    "latency_ms": 3461
   },
   {
     "college": "Foothill College",
@@ -2305,7 +2305,7 @@
     "cypher": "MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk:Skill)\nWHERE toLower(sk.name) CONTAINS 'manufacturing'\nWITH DISTINCT c\nRETURN c.name AS name, c.code AS code, c.description AS description,\n       c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,\n       c.skill_mappings AS skill_mappings\nORDER BY c.code",
     "interpretation": "This query finds all courses at Foothill College that develop skills related to manufacturing, including both general Manufacturing and Lean Manufacturing skills.",
     "error": "",
-    "latency_ms": 3063
+    "latency_ms": 3306
   },
   {
     "college": "Irvine Valley College",
@@ -2352,9 +2352,9 @@
     "result_count": 4,
     "has_interpretation": true,
     "cypher": "MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk:Skill)\nWHERE toLower(sk.name) CONTAINS 'manufacturing'\nWITH DISTINCT c\nRETURN c.name AS name, c.code AS code, c.description AS description,\n       c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,\n       c.skill_mappings AS skill_mappings\nORDER BY c.code",
-    "interpretation": "This query retrieves all courses at Irvine Valley College that develop Manufacturing or Lean Manufacturing skills, returning each unique course with its description, learning outcomes, objectives, and skill mappings.",
+    "interpretation": "This query finds all courses at Irvine Valley College that develop skills related to manufacturing, including both general Manufacturing and Lean Manufacturing skills.",
     "error": "",
-    "latency_ms": 3305
+    "latency_ms": 3716
   },
   {
     "college": "Oxnard College",
@@ -2401,9 +2401,9 @@
     "result_count": 3,
     "has_interpretation": true,
     "cypher": "MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk:Skill)\nWHERE toLower(sk.name) CONTAINS 'manufacturing'\nWITH DISTINCT c\nRETURN c.name AS name, c.code AS code, c.description AS description,\n       c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,\n       c.skill_mappings AS skill_mappings\nORDER BY c.code",
-    "interpretation": "This query finds all courses at Oxnard College that develop manufacturing-related skills, including both general Manufacturing and Lean Manufacturing competencies.",
+    "interpretation": "This query finds all courses at Oxnard College that develop skills related to manufacturing, including both general Manufacturing and Lean Manufacturing skills.",
     "error": "",
-    "latency_ms": 5909
+    "latency_ms": 3231
   },
   {
     "college": "San Diego City College",
@@ -2449,10 +2449,10 @@
     "execution_success": true,
     "result_count": 22,
     "has_interpretation": true,
-    "cypher": "MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk:Skill) WHERE toLower(sk.name) CONTAINS 'manufacturing' WITH DISTINCT c RETURN c.name AS name, c.code AS code, c.description AS description, c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives, c.skill_mappings AS skill_mappings ORDER BY c.code",
-    "interpretation": "This query finds all San Diego City College courses that develop Manufacturing or Lean Manufacturing skills, returning each unique course with its description, learning outcomes, objectives, and skill mappings.",
+    "cypher": "MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk:Skill)\nWHERE toLower(sk.name) CONTAINS 'manufacturing'\nWITH DISTINCT c\nRETURN c.name AS name, c.code AS code, c.description AS description,\n       c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,\n       c.skill_mappings AS skill_mappings\nORDER BY c.code",
+    "interpretation": "This query finds all courses at San Diego City College that develop skills related to manufacturing, including both general Manufacturing and Lean Manufacturing skills.",
     "error": "",
-    "latency_ms": 3574
+    "latency_ms": 3453
   },
   {
     "college": "Shasta College",
@@ -2498,10 +2498,10 @@
     "execution_success": true,
     "result_count": 7,
     "has_interpretation": true,
-    "cypher": "MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk:Skill) WHERE toLower(sk.name) CONTAINS 'manufacturing' WITH DISTINCT c RETURN c.name AS name, c.code AS code, c.description AS description, c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives, c.skill_mappings AS skill_mappings ORDER BY c.code",
-    "interpretation": "This query finds all Shasta College courses that develop skills related to manufacturing, by traversing the skills each course builds.",
+    "cypher": "MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk:Skill)\nWHERE toLower(sk.name) CONTAINS 'manufacturing'\nWITH DISTINCT c\nRETURN c.name AS name, c.code AS code, c.description AS description,\n       c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,\n       c.skill_mappings AS skill_mappings\nORDER BY c.code",
+    "interpretation": "This query finds all courses at Shasta College that develop skills related to manufacturing, including both general Manufacturing and Lean Manufacturing skills.",
     "error": "",
-    "latency_ms": 3356
+    "latency_ms": 3482
   },
   {
     "college": "College of the Desert",
@@ -2543,9 +2543,9 @@
     "result_count": 836,
     "has_interpretation": true,
     "cypher": "MATCH (c:Course {college: $college})\nWHERE c.is_cte = true\nRETURN c.name AS name, c.code AS code, c.description AS description,\n       c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,\n       c.skill_mappings AS skill_mappings\nORDER BY c.code",
-    "interpretation": "This query retrieves all courses at College of the Desert that are officially classified as Career and Technical Education (CTE) based on the California Community Colleges' PCAH-approved TOP codes \u2014 giving you the full, institutionally recognized CTE course catalog.",
+    "interpretation": "This query retrieves all Career and Technical Education (CTE) courses at College of the Desert, as officially classified by the California Community Colleges' PCAH-designated TOP codes \u2014 covering workforce-focused programs across sectors like health, construction, manufacturing, business, and more.",
     "error": "",
-    "latency_ms": 3939
+    "latency_ms": 3862
   },
   {
     "college": "College of the Sequoias",
@@ -2587,9 +2587,9 @@
     "result_count": 503,
     "has_interpretation": true,
     "cypher": "MATCH (c:Course {college: $college})\nWHERE c.is_cte = true\nRETURN c.name AS name, c.code AS code, c.description AS description,\n       c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,\n       c.skill_mappings AS skill_mappings\nORDER BY c.code",
-    "interpretation": "This query retrieves all courses at College of the Sequoias that are officially classified as Career and Technical Education (CTE) based on the California Community Colleges' PCAH-approved TOP codes \u2014 the authoritative institutional standard for CTE scope.",
+    "interpretation": "This query retrieves all officially classified Career and Technical Education (CTE) courses at College of the Sequoias, as defined by the California Community Colleges' Program and Course Approval Handbook (PCAH) TOP code classifications.",
     "error": "",
-    "latency_ms": 3440
+    "latency_ms": 4383
   },
   {
     "college": "Compton College",
@@ -2631,9 +2631,9 @@
     "result_count": 313,
     "has_interpretation": true,
     "cypher": "MATCH (c:Course {college: $college})\nWHERE c.is_cte = true\nRETURN c.name AS name, c.code AS code, c.description AS description,\n       c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,\n       c.skill_mappings AS skill_mappings\nORDER BY c.code",
-    "interpretation": "This query retrieves all Career and Technical Education (CTE) courses at Compton College, as officially classified by the California Community Colleges' Program and Course Approval Handbook (PCAH) TOP code designations.",
+    "interpretation": "This query retrieves all officially designated Career and Technical Education (CTE) courses at Compton College, as defined by the California Community Colleges Chancellor's Office PCAH-classified TOP codes.",
     "error": "",
-    "latency_ms": 3851
+    "latency_ms": 3566
   },
   {
     "college": "Foothill College",
@@ -2675,9 +2675,9 @@
     "result_count": 949,
     "has_interpretation": true,
     "cypher": "MATCH (c:Course {college: $college})\nWHERE c.is_cte = true\nRETURN c.name AS name, c.code AS code, c.description AS description,\n       c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,\n       c.skill_mappings AS skill_mappings\nORDER BY c.code",
-    "interpretation": "This query retrieves all courses at Foothill College that are officially classified as Career and Technical Education (CTE) based on their TOP code appearing in the California Chancellor's Office PCAH-approved list of CTE program areas.",
+    "interpretation": "This query retrieves all courses at Foothill College that are formally classified as Career and Technical Education (CTE) based on their TOP code appearing in the California community college system's official PCAH classification.",
     "error": "",
-    "latency_ms": 3849
+    "latency_ms": 3777
   },
   {
     "college": "Irvine Valley College",
@@ -2718,10 +2718,10 @@
     "execution_success": true,
     "result_count": 423,
     "has_interpretation": true,
-    "cypher": "MATCH (c:Course {college: $college})\nWHERE c.is_cte = true\nRETURN c.name AS name, c.code AS code, c.description AS description,\n       c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,\n       c.skill_mappings AS skill_mappings\nORDER BY c.code",
-    "interpretation": "This query retrieves all courses at Irvine Valley College that are officially classified as Career and Technical Education (CTE) based on the California Community Colleges Chancellor's Office PCAH-designated TOP codes.",
+    "cypher": "MATCH (c:Course {college: $college}) WHERE c.is_cte = true RETURN c.name AS name, c.code AS code, c.description AS description, c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives, c.skill_mappings AS skill_mappings ORDER BY c.code",
+    "interpretation": "This query retrieves all Career and Technical Education (CTE) courses at Irvine Valley College, as officially classified by the California Community Colleges Chancellor's Office PCAH TOP code designations.",
     "error": "",
-    "latency_ms": 3442
+    "latency_ms": 3357
   },
   {
     "college": "Oxnard College",
@@ -2763,9 +2763,9 @@
     "result_count": 321,
     "has_interpretation": true,
     "cypher": "MATCH (c:Course {college: $college})\nWHERE c.is_cte = true\nRETURN c.name AS name, c.code AS code, c.description AS description,\n       c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,\n       c.skill_mappings AS skill_mappings\nORDER BY c.code",
-    "interpretation": "This query retrieves all Career and Technical Education (CTE) courses at Oxnard College, as officially classified by the California Community Colleges' Program and Course Approval Handbook (PCAH) TOP code designations.",
+    "interpretation": "This query retrieves all courses at Oxnard College that are officially classified as Career and Technical Education (CTE) based on the California Community Colleges Chancellor's Office PCAH-approved TOP codes.",
     "error": "",
-    "latency_ms": 4004
+    "latency_ms": 4034
   },
   {
     "college": "San Diego City College",
@@ -2807,9 +2807,9 @@
     "result_count": 394,
     "has_interpretation": true,
     "cypher": "MATCH (c:Course {college: $college}) WHERE c.is_cte = true RETURN c.name AS name, c.code AS code, c.description AS description, c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives, c.skill_mappings AS skill_mappings ORDER BY c.code",
-    "interpretation": "This query retrieves all Career and Technical Education (CTE) courses at San Diego City College, as officially classified by the California Community Colleges Chancellor's Office PCAH TOP code designations.",
+    "interpretation": "This query retrieves all officially classified Career and Technical Education (CTE) courses at San Diego City College, based on the California Community Colleges Chancellor's Office PCAH-designated TOP codes.",
     "error": "",
-    "latency_ms": 3585
+    "latency_ms": 4585
   },
   {
     "college": "Shasta College",
@@ -2851,9 +2851,9 @@
     "result_count": 554,
     "has_interpretation": true,
     "cypher": "MATCH (c:Course {college: $college})\nWHERE c.is_cte = true\nRETURN c.name AS name, c.code AS code, c.description AS description,\n       c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,\n       c.skill_mappings AS skill_mappings\nORDER BY c.code",
-    "interpretation": "This query retrieves all courses at Shasta College that are officially classified as Career and Technical Education (CTE) based on the California Community Colleges Chancellor's Office PCAH-designated TOP codes.",
+    "interpretation": "This query retrieves all courses at Shasta College that are officially classified as Career and Technical Education (CTE) based on their TOP code appearing in the California Community Colleges PCAH-approved list of CTE program areas.",
     "error": "",
-    "latency_ms": 3167
+    "latency_ms": 10577
   },
   {
     "college": "College of the Desert",
@@ -2892,12 +2892,12 @@
       }
     ],
     "execution_success": true,
-    "result_count": 52,
+    "result_count": 101,
     "has_interpretation": true,
-    "cypher": "MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk:Skill) WHERE toLower(sk.name) CONTAINS 'health' WITH DISTINCT c RETURN c.name AS name, c.code AS code, c.description AS description, c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives, c.skill_mappings AS skill_mappings ORDER BY c.code",
-    "interpretation": "This query finds all courses at College of the Desert that develop health-related skills (including Public Health, Mental Health, Health Education, and Health Information Systems), making them relevant preparation for a healthcare career.",
+    "cypher": "MATCH (c:Course {college: $college}) WHERE c.is_cte = true AND (toLower(c.department) CONTAINS 'health' OR toLower(c.department) CONTAINS 'medical' OR toLower(c.department) CONTAINS 'nursing' OR toLower(c.department) CONTAINS 'dental' OR toLower(c.department) CONTAINS 'pharmacy' OR toLower(c.department) CONTAINS 'allied' OR toLower(c.department) CONTAINS 'clinical' OR toLower(c.department) CONTAINS 'emt' OR toLower(c.department) CONTAINS 'emergency medical' OR toLower(c.department) CONTAINS 'radiol' OR toLower(c.department) CONTAINS 'surgical') WITH DISTINCT c RETURN c.name AS name, c.code AS code, c.description AS description, c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives, c.skill_mappings AS skill_mappings ORDER BY c.code UNION MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk:Skill) WHERE sk.name IN ['Public Health', 'Mental Health', 'Health Education', 'Health Information Systems'] WITH DISTINCT c RETURN c.name AS name, c.code AS code, c.description AS description, c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives, c.skill_mappings AS skill_mappings ORDER BY c.code",
+    "interpretation": "This query finds College of the Desert courses that prepare students for healthcare careers \u2014 combining CTE-classified courses in health-related departments (such as nursing, medical, dental, allied health, EMT, and radiology) with any courses that develop key healthcare skills like Public Health, Mental Health, Health Education, or Health Information Systems.",
     "error": "",
-    "latency_ms": 3241
+    "latency_ms": 6828
   },
   {
     "college": "College of the Sequoias",
@@ -2938,10 +2938,10 @@
     "execution_success": true,
     "result_count": 45,
     "has_interpretation": true,
-    "cypher": "MATCH (c:Course {college: $college}) WHERE c.is_cte = true AND (toLower(c.department) CONTAINS 'health' OR toLower(c.department) CONTAINS 'nursing' OR toLower(c.department) CONTAINS 'medical' OR toLower(c.department) CONTAINS 'dental' OR toLower(c.department) CONTAINS 'pharmacy' OR toLower(c.department) CONTAINS 'allied health' OR toLower(c.department) CONTAINS 'emergency' OR toLower(c.department) CONTAINS 'radiology' OR toLower(c.department) CONTAINS 'surgical' OR toLower(c.department) CONTAINS 'clinical') RETURN c.name AS name, c.code AS code, c.description AS description, c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives, c.skill_mappings AS skill_mappings ORDER BY c.code",
-    "interpretation": "This query finds all officially classified Career and Technical Education (CTE) courses at College of the Sequoias that belong to health-related departments \u2014 including nursing, medical, dental, allied health, emergency, radiology, surgical, and clinical fields \u2014 representing programs designed to prepare students for careers in healthcare.",
+    "cypher": "MATCH (c:Course {college: $college}) WHERE c.is_cte = true AND (toLower(c.department) CONTAINS 'health' OR toLower(c.department) CONTAINS 'medical' OR toLower(c.department) CONTAINS 'nursing' OR toLower(c.department) CONTAINS 'dental' OR toLower(c.department) CONTAINS 'pharmacy' OR toLower(c.department) CONTAINS 'radiolog' OR toLower(c.department) CONTAINS 'clinical' OR toLower(c.department) CONTAINS 'allied') RETURN c.name AS name, c.code AS code, c.description AS description, c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives, c.skill_mappings AS skill_mappings ORDER BY c.code",
+    "interpretation": "This query returns all CTE-classified courses at College of the Sequoias whose department relates to healthcare fields (such as health, medical, nursing, dental, pharmacy, radiology, clinical, or allied health), giving workforce coordinators a full picture of career-pathway courses in the healthcare sector.",
     "error": "",
-    "latency_ms": 4621
+    "latency_ms": 4808
   },
   {
     "college": "Compton College",
@@ -2983,9 +2983,9 @@
     "result_count": 33,
     "has_interpretation": true,
     "cypher": "MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk:Skill) WHERE toLower(sk.name) CONTAINS 'health' WITH DISTINCT c RETURN c.name AS name, c.code AS code, c.description AS description, c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives, c.skill_mappings AS skill_mappings ORDER BY c.code",
-    "interpretation": "This query finds all Compton College courses that develop health-related skills \u2014 including Public Health, Mental Health, Health Education, and Health Information Systems \u2014 to surface courses that prepare students for a healthcare career.",
+    "interpretation": "This query finds all Compton College courses that develop health-related skills (such as Public Health, Mental Health, Health Education, or Health Information Systems), which are likely to prepare students for a healthcare career.",
     "error": "",
-    "latency_ms": 3141
+    "latency_ms": 3937
   },
   {
     "college": "Foothill College",
@@ -3024,12 +3024,12 @@
       }
     ],
     "execution_success": true,
-    "result_count": 200,
+    "result_count": 183,
     "has_interpretation": true,
-    "cypher": "MATCH (c:Course {college: $college}) WHERE c.is_cte = true AND (toLower(c.department) CONTAINS 'health' OR toLower(c.name) CONTAINS 'health' OR toLower(c.description) CONTAINS 'health' OR toLower(c.department) CONTAINS 'medical' OR toLower(c.name) CONTAINS 'medical' OR toLower(c.department) CONTAINS 'nursing' OR toLower(c.name) CONTAINS 'nursing' OR toLower(c.department) CONTAINS 'dental' OR toLower(c.name) CONTAINS 'dental' OR toLower(c.department) CONTAINS 'clinical' OR toLower(c.name) CONTAINS 'clinical' OR toLower(c.department) CONTAINS 'pharmacy' OR toLower(c.name) CONTAINS 'pharmacy') RETURN c.name AS name, c.code AS code, c.description AS description, c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives, c.skill_mappings AS skill_mappings ORDER BY c.code",
-    "interpretation": "This query finds all officially designated career and technical education (CTE) courses at Foothill College that are related to healthcare fields \u2014 including health, medical, nursing, dental, clinical, and pharmacy \u2014 based on their department name or course title.",
+    "cypher": "MATCH (c:Course {college: $college}) WHERE c.is_cte = true AND (toLower(c.department) CONTAINS 'health' OR toLower(c.department) CONTAINS 'medical' OR toLower(c.department) CONTAINS 'nursing' OR toLower(c.department) CONTAINS 'dental' OR toLower(c.department) CONTAINS 'pharmacy' OR toLower(c.department) CONTAINS 'radiolog' OR toLower(c.department) CONTAINS 'clinical' OR toLower(c.department) CONTAINS 'allied') RETURN c.name AS name, c.code AS code, c.description AS description, c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives, c.skill_mappings AS skill_mappings ORDER BY c.code",
+    "interpretation": "This query finds all officially classified CTE (career and technical education) courses at Foothill College in departments related to healthcare fields \u2014 including health, medical, nursing, dental, pharmacy, radiology, clinical, and allied health \u2014 to identify courses designed to prepare students for healthcare careers.",
     "error": "",
-    "latency_ms": 5848
+    "latency_ms": 5231
   },
   {
     "college": "Irvine Valley College",
@@ -3068,12 +3068,12 @@
       }
     ],
     "execution_success": true,
-    "result_count": 16,
+    "result_count": 19,
     "has_interpretation": true,
-    "cypher": "MATCH (c:Course {college: $college}) WHERE c.is_cte = true AND (toLower(c.department) CONTAINS 'health' OR toLower(c.name) CONTAINS 'health' OR toLower(c.description) CONTAINS 'health' OR toLower(c.department) CONTAINS 'nursing' OR toLower(c.department) CONTAINS 'medical' OR toLower(c.department) CONTAINS 'pharmacy' OR toLower(c.department) CONTAINS 'dental' OR toLower(c.department) CONTAINS 'clinical') RETURN c.name AS name, c.code AS code, c.description AS description, c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives, c.skill_mappings AS skill_mappings ORDER BY c.code",
-    "interpretation": "This query returns all officially classified Career and Technical Education (CTE) courses at Irvine Valley College that are related to healthcare, by filtering for courses in health, nursing, medical, pharmacy, dental, or clinical departments or with health-related content in their name or description.",
+    "cypher": "MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk:Skill) WHERE toLower(sk.name) CONTAINS 'health' WITH DISTINCT c RETURN c.name AS name, c.code AS code, c.description AS description, c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives, c.skill_mappings AS skill_mappings ORDER BY c.code",
+    "interpretation": "This query finds all Irvine Valley College courses that develop health-related skills \u2014 including Public Health, Mental Health, Health Education, and Health Information Systems \u2014 making them relevant for students pursuing a healthcare career.",
     "error": "",
-    "latency_ms": 5192
+    "latency_ms": 3377
   },
   {
     "college": "Oxnard College",
@@ -3115,9 +3115,9 @@
     "result_count": 39,
     "has_interpretation": true,
     "cypher": "MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk:Skill) WHERE toLower(sk.name) CONTAINS 'health' WITH DISTINCT c RETURN c.name AS name, c.code AS code, c.description AS description, c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives, c.skill_mappings AS skill_mappings ORDER BY c.code",
-    "interpretation": "This query finds all Oxnard College courses that develop health-related skills (such as Public Health, Mental Health, Health Education, or Health Information Systems), which are relevant to preparing students for a healthcare career.",
+    "interpretation": "This query finds all Oxnard College courses that develop health-related skills \u2014 including Public Health, Mental Health, Health Education, and Health Information Systems \u2014 to surface courses that can prepare students for a healthcare career.",
     "error": "",
-    "latency_ms": 3346
+    "latency_ms": 3570
   },
   {
     "college": "San Diego City College",
@@ -3156,12 +3156,12 @@
       }
     ],
     "execution_success": true,
-    "result_count": 15,
+    "result_count": 17,
     "has_interpretation": true,
-    "cypher": "MATCH (c:Course {college: $college}) WHERE c.is_cte = true AND (toLower(c.department) CONTAINS 'health' OR toLower(c.department) CONTAINS 'nursing' OR toLower(c.department) CONTAINS 'medical' OR toLower(c.department) CONTAINS 'dental' OR toLower(c.department) CONTAINS 'pharmacy' OR toLower(c.department) CONTAINS 'allied health' OR toLower(c.department) CONTAINS 'radiolog' OR toLower(c.department) CONTAINS 'respiratory' OR toLower(c.department) CONTAINS 'surgical' OR toLower(c.department) CONTAINS 'clinical' OR toLower(c.department) CONTAINS 'patient' OR toLower(c.name) CONTAINS 'health' OR toLower(c.name) CONTAINS 'nursing' OR toLower(c.name) CONTAINS 'medical' OR toLower(c.name) CONTAINS 'clinical' OR toLower(c.name) CONTAINS 'dental' OR toLower(c.name) CONTAINS 'patient care') RETURN c.name AS name, c.code AS code, c.description AS description, c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives, c.skill_mappings AS skill_mappings ORDER BY c.code",
-    "interpretation": "This query finds all officially classified Career and Technical Education (CTE) courses at San Diego City College that are offered in healthcare-related departments or have healthcare-related titles \u2014 including health, nursing, medical, dental, clinical, and patient care fields \u2014 making them directly relevant to students pursuing a healthcare career.",
+    "cypher": "MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk:Skill) WHERE toLower(sk.name) CONTAINS 'health' WITH DISTINCT c RETURN c.name AS name, c.code AS code, c.description AS description, c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives, c.skill_mappings AS skill_mappings ORDER BY c.code",
+    "interpretation": "This query finds all San Diego City College courses that develop health-related skills (such as Public Health, Mental Health, Health Education, or Health Information Systems), which are relevant to students pursuing a healthcare career.",
     "error": "",
-    "latency_ms": 6599
+    "latency_ms": 3407
   },
   {
     "college": "Shasta College",
@@ -3202,10 +3202,10 @@
     "execution_success": true,
     "result_count": 95,
     "has_interpretation": true,
-    "cypher": "MATCH (c:Course {college: $college}) WHERE c.is_cte = true AND (toLower(c.department) CONTAINS 'health' OR toLower(c.department) CONTAINS 'nursing' OR toLower(c.department) CONTAINS 'medical' OR toLower(c.department) CONTAINS 'dental' OR toLower(c.department) CONTAINS 'pharmacy' OR toLower(c.department) CONTAINS 'emergency' OR toLower(c.department) CONTAINS 'clinical' OR toLower(c.department) CONTAINS 'patient') RETURN c.name AS name, c.code AS code, c.description AS description, c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives, c.skill_mappings AS skill_mappings ORDER BY c.code",
-    "interpretation": "This query finds all officially classified Career and Technical Education (CTE) courses at Shasta College offered in health-related departments \u2014 including health, nursing, medical, dental, pharmacy, emergency, clinical, and patient care fields \u2014 to surface programs that directly prepare students for healthcare careers.",
+    "cypher": "MATCH (c:Course {college: $college}) WHERE c.is_cte = true AND (toLower(c.department) CONTAINS 'health' OR toLower(c.department) CONTAINS 'nursing' OR toLower(c.department) CONTAINS 'medical' OR toLower(c.department) CONTAINS 'dental' OR toLower(c.department) CONTAINS 'pharmacy' OR toLower(c.department) CONTAINS 'emergency' OR toLower(c.department) CONTAINS 'allied') WITH c OPTIONAL MATCH (c)-[:DEVELOPS]->(sk:Skill) WHERE sk.name IN ['Public Health', 'Mental Health', 'Health Education', 'Health Information Systems'] WITH c, collect(sk.name) AS matched_skills RETURN c.name AS name, c.code AS code, c.description AS description, c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives, c.skill_mappings AS skill_mappings ORDER BY c.code",
+    "interpretation": "This query finds all CTE-classified courses at Shasta College in health-related departments (such as health, nursing, medical, dental, pharmacy, emergency, or allied health) that are designed to prepare students for careers in healthcare fields.",
     "error": "",
-    "latency_ms": 4895
+    "latency_ms": 4613
   },
   {
     "college": "College of the Desert",
@@ -3249,7 +3249,7 @@
     "cypher": "MATCH (s:Student)-[:ENROLLED_IN]->(:Course {college: $college})\nWITH DISTINCT s\nWHERE toLower(s.primary_focus) CONTAINS 'health sciences'\nRETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed\nORDER BY s.courses_completed DESC",
     "interpretation": "This query returns all students at College of the Desert whose primary academic focus is Health Sciences, ordered by the number of courses they have completed.",
     "error": "",
-    "latency_ms": 3515
+    "latency_ms": 3662
   },
   {
     "college": "College of the Sequoias",
@@ -3293,7 +3293,7 @@
     "cypher": "MATCH (s:Student)-[:ENROLLED_IN]->(:Course {college: $college})\nWITH DISTINCT s\nWHERE toLower(s.primary_focus) CONTAINS 'child development'\nRETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed\nORDER BY s.courses_completed DESC",
     "interpretation": "This query returns all students at College of the Sequoias whose primary academic focus is Child Development, ordered by the number of courses they have completed.",
     "error": "",
-    "latency_ms": 3793
+    "latency_ms": 3591
   },
   {
     "college": "Compton College",
@@ -3335,9 +3335,9 @@
     "result_count": 254,
     "has_interpretation": true,
     "cypher": "MATCH (s:Student)-[:ENROLLED_IN]->(:Course {college: $college})\nWITH DISTINCT s\nWHERE toLower(s.primary_focus) CONTAINS 'nursing'\nRETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed\nORDER BY s.courses_completed DESC",
-    "interpretation": "This query returns all Compton College students whose primary academic focus is Nursing, ordered by the number of courses they have completed.",
+    "interpretation": "This query returns all students at Compton College whose primary academic focus is Nursing, ordered by the number of courses they have completed.",
     "error": "",
-    "latency_ms": 3682
+    "latency_ms": 3234
   },
   {
     "college": "Foothill College",
@@ -3381,7 +3381,7 @@
     "cypher": "MATCH (s:Student)-[:ENROLLED_IN]->(:Course {college: $college})\nWITH DISTINCT s\nWHERE toLower(s.primary_focus) CONTAINS 'accounting'\nRETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed\nORDER BY s.courses_completed DESC",
     "interpretation": "This query returns all students at Foothill College whose primary academic focus is Accounting, ordered by the number of courses they have completed.",
     "error": "",
-    "latency_ms": 4146
+    "latency_ms": 3296
   },
   {
     "college": "Irvine Valley College",
@@ -3425,7 +3425,7 @@
     "cypher": "MATCH (s:Student)-[:ENROLLED_IN]->(:Course {college: 'Irvine Valley College'})\nWITH DISTINCT s\nWHERE toLower(s.primary_focus) CONTAINS 'accounting'\nRETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed\nORDER BY s.courses_completed DESC",
     "interpretation": "This query returns all students at Irvine Valley College whose primary academic focus is Accounting, ordered by the number of courses they have completed.",
     "error": "",
-    "latency_ms": 3543
+    "latency_ms": 3352
   },
   {
     "college": "Oxnard College",
@@ -3469,7 +3469,7 @@
     "cypher": "MATCH (s:Student)-[:ENROLLED_IN]->(:Course {college: $college})\nWITH DISTINCT s\nWHERE toLower(s.primary_focus) CONTAINS 'fire technology'\nRETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed\nORDER BY s.courses_completed DESC",
     "interpretation": "This query returns all students at Oxnard College whose primary academic focus is Fire Technology, ordered by the number of courses they have completed.",
     "error": "",
-    "latency_ms": 3591
+    "latency_ms": 3908
   },
   {
     "college": "San Diego City College",
@@ -3511,9 +3511,9 @@
     "result_count": 411,
     "has_interpretation": true,
     "cypher": "MATCH (s:Student)-[:ENROLLED_IN]->(:Course {college: $college})\nWITH DISTINCT s\nWHERE toLower(s.primary_focus) CONTAINS 'cybersecurity and data analytics'\nRETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed\nORDER BY s.courses_completed DESC",
-    "interpretation": "This query retrieves all students at San Diego City College whose primary academic focus is Cybersecurity and Data Analytics, ordered by the number of courses they have completed.",
+    "interpretation": "This query returns all students at San Diego City College whose primary academic focus is Cybersecurity and Data Analytics, ordered by the number of courses they have completed.",
     "error": "",
-    "latency_ms": 3821
+    "latency_ms": 3255
   },
   {
     "college": "Shasta College",
@@ -3557,7 +3557,7 @@
     "cypher": "MATCH (s:Student)-[:ENROLLED_IN]->(:Course {college: $college})\nWITH DISTINCT s\nWHERE toLower(s.primary_focus) CONTAINS 'early childhood education'\nRETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed\nORDER BY s.courses_completed DESC",
     "interpretation": "This query returns all students at Shasta College whose primary academic focus is Early Childhood Education, ordered by the number of courses they have completed.",
     "error": "",
-    "latency_ms": 3685
+    "latency_ms": 3270
   },
   {
     "college": "College of the Desert",
@@ -3614,9 +3614,9 @@
     "result_count": 183,
     "has_interpretation": true,
     "cypher": "MATCH (s:Student)-[:HAS_SKILL]->(sk:Skill) WHERE toLower(sk.name) CONTAINS 'business' OR toLower(sk.name) CONTAINS 'accounting' WITH DISTINCT s MATCH (s)-[:ENROLLED_IN]->(:Course {college: $college}) WITH DISTINCT s WHERE s.gpa > 3.5 RETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed ORDER BY s.gpa DESC",
-    "interpretation": "This query finds students at College of the Desert who have at least one skill related to business or accounting (such as Economics & Accounting, Small Business Management, Business Intelligence, or Accounting) and who have a GPA greater than 3.5, ordered from highest to lowest GPA.",
+    "interpretation": "This query finds students at College of the Desert who have skills in any business or accounting area (such as Economics & Accounting, Small Business Management, Business Intelligence, or Accounting) and who have a GPA greater than 3.5, ordered from highest to lowest GPA.",
     "error": "",
-    "latency_ms": 4339
+    "latency_ms": 4449
   },
   {
     "college": "College of the Sequoias",
@@ -3673,9 +3673,9 @@
     "result_count": 130,
     "has_interpretation": true,
     "cypher": "MATCH (s:Student)-[:HAS_SKILL]->(sk:Skill) WHERE toLower(sk.name) CONTAINS 'business' OR toLower(sk.name) CONTAINS 'accounting' WITH DISTINCT s MATCH (s)-[:ENROLLED_IN]->(:Course {college: 'College of the Sequoias'}) WITH DISTINCT s WHERE s.gpa > 3.5 RETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed ORDER BY s.gpa DESC",
-    "interpretation": "This query returns students at College of the Sequoias who have at least one skill related to business or accounting (such as Economics & Accounting, Small Business Management, Business Intelligence, or Accounting) and who have a GPA greater than 3.5, ordered from highest to lowest GPA.",
+    "interpretation": "This query finds students at College of the Sequoias who have at least one skill related to business or accounting (such as Accounting, Small Business Management, Business Intelligence, or Economics & Accounting) and who have a GPA greater than 3.5, ordered from highest to lowest GPA.",
     "error": "",
-    "latency_ms": 4370
+    "latency_ms": 4485
   },
   {
     "college": "Compton College",
@@ -3731,10 +3731,10 @@
     "execution_success": true,
     "result_count": 88,
     "has_interpretation": true,
-    "cypher": "MATCH (s:Student)-[:HAS_SKILL]->(sk:Skill) WHERE toLower(sk.name) CONTAINS 'business' OR toLower(sk.name) CONTAINS 'accounting' WITH DISTINCT s MATCH (s)-[:ENROLLED_IN]->(:Course {college: $college}) WITH DISTINCT s WHERE s.gpa > 3.5 RETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed ORDER BY s.gpa DESC",
-    "interpretation": "This query finds students at Compton College who have at least one skill related to business or accounting (such as Economics & Accounting, Small Business Management, Business Intelligence, or Accounting) and who have a GPA greater than 3.5, ordered from highest to lowest GPA.",
+    "cypher": "MATCH (s:Student)-[:HAS_SKILL]->(sk:Skill)\nWHERE toLower(sk.name) CONTAINS 'business' OR toLower(sk.name) CONTAINS 'accounting'\nWITH DISTINCT s\nMATCH (s)-[:ENROLLED_IN]->(:Course {college: $college})\nWITH DISTINCT s\nWHERE s.gpa > 3.5\nRETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed\nORDER BY s.gpa DESC, s.courses_completed DESC",
+    "interpretation": "This query returns Compton College students who have at least one skill related to business or accounting (such as Economics & Accounting, Small Business Management, Business Intelligence, or Accounting) and have a GPA greater than 3.5.",
     "error": "",
-    "latency_ms": 4196
+    "latency_ms": 3975
   },
   {
     "college": "Foothill College",
@@ -3790,10 +3790,10 @@
     "execution_success": true,
     "result_count": 1790,
     "has_interpretation": true,
-    "cypher": "MATCH (s:Student)-[:HAS_SKILL]->(sk:Skill)\nWHERE toLower(sk.name) CONTAINS 'business' OR toLower(sk.name) CONTAINS 'accounting'\nWITH DISTINCT s\nMATCH (s)-[:ENROLLED_IN]->(:Course {college: $college})\nWITH DISTINCT s\nWHERE s.gpa > 3.5\nRETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed\nORDER BY s.gpa DESC",
-    "interpretation": "This query finds Foothill College students who have at least one skill related to business or accounting (such as Economics & Accounting, Small Business Management, Business Intelligence, or Accounting) and have a GPA greater than 3.5.",
+    "cypher": "MATCH (s:Student)-[:HAS_SKILL]->(sk:Skill)\nWHERE toLower(sk.name) CONTAINS 'business' OR toLower(sk.name) CONTAINS 'accounting'\nWITH DISTINCT s\nMATCH (s)-[:ENROLLED_IN]->(:Course {college: $college})\nWITH DISTINCT s\nWHERE s.gpa > 3.5\nRETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed\nORDER BY s.gpa DESC, s.courses_completed DESC",
+    "interpretation": "This query returns Foothill College students who have developed at least one skill related to business or accounting (such as Economics & Accounting, Small Business Management, Business Intelligence, or Accounting) and who have a GPA greater than 3.5, ordered by GPA from highest to lowest.",
     "error": "",
-    "latency_ms": 4912
+    "latency_ms": 4805
   },
   {
     "college": "Irvine Valley College",
@@ -3849,10 +3849,10 @@
     "execution_success": true,
     "result_count": 390,
     "has_interpretation": true,
-    "cypher": "MATCH (s:Student)-[:HAS_SKILL]->(sk:Skill)\nWHERE toLower(sk.name) CONTAINS 'business' OR toLower(sk.name) CONTAINS 'accounting'\nWITH DISTINCT s\nMATCH (s)-[:ENROLLED_IN]->(:Course {college: $college})\nWITH DISTINCT s\nWHERE s.gpa > 3.5\nRETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed\nORDER BY s.gpa DESC",
-    "interpretation": "This query finds Irvine Valley College students who have at least one skill related to business or accounting (such as Economics & Accounting, Small Business Management, Business Intelligence, or Accounting) and have a GPA greater than 3.5.",
+    "cypher": "MATCH (s:Student)-[:HAS_SKILL]->(sk:Skill)\nWHERE toLower(sk.name) CONTAINS 'business' OR toLower(sk.name) CONTAINS 'accounting'\nWITH DISTINCT s\nMATCH (s)-[:ENROLLED_IN]->(:Course {college: $college})\nWITH DISTINCT s\nWHERE s.gpa > 3.5\nRETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed\nORDER BY s.gpa DESC, s.courses_completed DESC",
+    "interpretation": "This query finds Irvine Valley College students who have at least one skill related to business or accounting (such as Business Intelligence, Small Business Management, Economics & Accounting, or Accounting) and who have a GPA greater than 3.5, ordered by highest GPA first.",
     "error": "",
-    "latency_ms": 4321
+    "latency_ms": 5164
   },
   {
     "college": "Oxnard College",
@@ -3908,10 +3908,10 @@
     "execution_success": true,
     "result_count": 84,
     "has_interpretation": true,
-    "cypher": "MATCH (s:Student)-[:HAS_SKILL]->(sk:Skill)\nWHERE toLower(sk.name) CONTAINS 'business' OR toLower(sk.name) CONTAINS 'accounting'\nWITH DISTINCT s\nMATCH (s)-[:ENROLLED_IN]->(:Course {college: 'Oxnard College'})\nWITH DISTINCT s\nWHERE s.gpa > 3.5\nRETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed\nORDER BY s.gpa DESC",
-    "interpretation": "This query returns Oxnard College students who have at least one skill related to business or accounting (such as Economics & Accounting, Small Business Management, Business Intelligence, or Accounting) and who have a GPA greater than 3.5, sorted from highest to lowest GPA.",
+    "cypher": "MATCH (s:Student)-[:HAS_SKILL]->(sk:Skill)\nWHERE toLower(sk.name) CONTAINS 'business' OR toLower(sk.name) CONTAINS 'accounting'\nWITH DISTINCT s\nMATCH (s)-[:ENROLLED_IN]->(:Course {college: 'Oxnard College'})\nWITH DISTINCT s\nWHERE s.gpa > 3.5\nRETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed\nORDER BY s.gpa DESC, s.courses_completed DESC",
+    "interpretation": "This query finds students at Oxnard College who have at least one skill related to business or accounting (such as Economics & Accounting, Small Business Management, Business Intelligence, or Accounting) and have a GPA greater than 3.5, ordered by GPA and courses completed.",
     "error": "",
-    "latency_ms": 4761
+    "latency_ms": 4183
   },
   {
     "college": "San Diego City College",
@@ -3967,10 +3967,10 @@
     "execution_success": true,
     "result_count": 225,
     "has_interpretation": true,
-    "cypher": "MATCH (s:Student)-[:HAS_SKILL]->(sk:Skill) WHERE toLower(sk.name) CONTAINS 'business' OR toLower(sk.name) CONTAINS 'accounting' WITH DISTINCT s MATCH (s)-[:ENROLLED_IN]->(:Course {college: $college}) WITH DISTINCT s WHERE s.gpa > 3.5 RETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed ORDER BY s.gpa DESC",
-    "interpretation": "This query finds students at San Diego City College who have at least one skill related to business or accounting (such as Economics & Accounting, Small Business Management, Business Intelligence, or Accounting) and have a GPA greater than 3.5, ordered from highest to lowest GPA.",
+    "cypher": "MATCH (s:Student)-[:HAS_SKILL]->(sk:Skill)\nWHERE toLower(sk.name) CONTAINS 'business' OR toLower(sk.name) CONTAINS 'accounting'\nWITH DISTINCT s\nMATCH (s)-[:ENROLLED_IN]->(:Course {college: $college})\nWITH DISTINCT s\nWHERE s.gpa > 3.5\nRETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed\nORDER BY s.gpa DESC, s.courses_completed DESC",
+    "interpretation": "This query finds students at San Diego City College who have at least one skill related to business or accounting (such as Economics & Accounting, Small Business Management, Business Intelligence, or Accounting) and have a GPA greater than 3.5, ordered by GPA from highest to lowest.",
     "error": "",
-    "latency_ms": 4037
+    "latency_ms": 4114
   },
   {
     "college": "Shasta College",
@@ -4026,10 +4026,10 @@
     "execution_success": true,
     "result_count": 151,
     "has_interpretation": true,
-    "cypher": "MATCH (s:Student)-[:HAS_SKILL]->(sk:Skill) WHERE toLower(sk.name) CONTAINS 'business' OR toLower(sk.name) CONTAINS 'accounting' WITH DISTINCT s MATCH (s)-[:ENROLLED_IN]->(:Course {college: $college}) WITH DISTINCT s WHERE s.gpa > 3.5 RETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed ORDER BY s.gpa DESC",
-    "interpretation": "This query finds students at Shasta College who have at least one skill related to business or accounting (such as Economics & Accounting, Small Business Management, Business Intelligence, or Accounting) and whose GPA is greater than 3.5, ordered from highest to lowest GPA.",
+    "cypher": "MATCH (s:Student)-[:HAS_SKILL]->(sk:Skill)\nWHERE toLower(sk.name) CONTAINS 'business' OR toLower(sk.name) CONTAINS 'accounting'\nWITH DISTINCT s\nMATCH (s)-[:ENROLLED_IN]->(:Course {college: $college})\nWITH DISTINCT s\nWHERE s.gpa > 3.5\nRETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed\nORDER BY s.gpa DESC, s.courses_completed DESC",
+    "interpretation": "This query returns Shasta College students who have developed at least one skill related to business or accounting (including Economics & Accounting, Small Business Management, Business Intelligence, or Accounting) and who have a GPA above 3.5, ordered by GPA from highest to lowest.",
     "error": "",
-    "latency_ms": 3972
+    "latency_ms": 4848
   },
   {
     "college": "College of the Desert",
@@ -4070,10 +4070,10 @@
     "execution_success": true,
     "result_count": 5287,
     "has_interpretation": true,
-    "cypher": "MATCH (s:Student)-[:HAS_SKILL]->(sk:Skill) WHERE toLower(sk.name) CONTAINS 'health' WITH DISTINCT s MATCH (s)-[:ENROLLED_IN]->(:Course {college: $college}) WITH DISTINCT s RETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed ORDER BY s.gpa DESC, s.courses_completed DESC",
-    "interpretation": "This query finds College of the Desert students who have developed at least one health-related skill (such as Public Health, Mental Health, Health Education, or Health Information Systems), ranked by GPA and number of courses completed \u2014 surfacing those who are academically strongest and most experienced for a healthcare internship.",
+    "cypher": "MATCH (s:Student)-[:HAS_SKILL]->(sk:Skill) WHERE toLower(sk.name) CONTAINS 'health' WITH DISTINCT s MATCH (s)-[:ENROLLED_IN]->(:Course {college: 'College of the Desert'}) WITH DISTINCT s RETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed ORDER BY s.gpa DESC, s.courses_completed DESC",
+    "interpretation": "This query finds students at College of the Desert who have developed health-related skills (such as Public Health, Mental Health, Health Education, or Health Information Systems), ordered by GPA and number of courses completed \u2014 highlighting those most academically prepared for a healthcare internship.",
     "error": "",
-    "latency_ms": 4413
+    "latency_ms": 4674
   },
   {
     "college": "College of the Sequoias",
@@ -4114,10 +4114,10 @@
     "execution_success": true,
     "result_count": 7395,
     "has_interpretation": true,
-    "cypher": "MATCH (s:Student)-[:HAS_SKILL]->(sk:Skill) WHERE toLower(sk.name) CONTAINS 'health' WITH DISTINCT s MATCH (s)-[:ENROLLED_IN]->(:Course {college: 'College of the Sequoias'}) WITH DISTINCT s RETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed ORDER BY s.gpa DESC",
-    "interpretation": "This query finds students at College of the Sequoias who have developed health-related skills (such as Public Health, Mental Health, Health Education, or Health Information Systems), ordered by GPA descending to surface those most academically prepared for a healthcare internship.",
+    "cypher": "MATCH (s:Student)-[:HAS_SKILL]->(sk:Skill) WHERE toLower(sk.name) CONTAINS 'health' WITH DISTINCT s MATCH (s)-[:ENROLLED_IN]->(:Course {college: 'College of the Sequoias'}) WITH DISTINCT s RETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed ORDER BY s.gpa DESC, s.courses_completed DESC",
+    "interpretation": "This query returns students at College of the Sequoias who have developed at least one health-related skill (such as Public Health, Mental Health, Health Education, or Health Information Systems), ordered by GPA and number of courses completed to surface the most academically prepared candidates for a healthcare internship.",
     "error": "",
-    "latency_ms": 4697
+    "latency_ms": 4350
   },
   {
     "college": "Compton College",
@@ -4158,10 +4158,10 @@
     "execution_success": true,
     "result_count": 2724,
     "has_interpretation": true,
-    "cypher": "MATCH (s:Student)-[:HAS_SKILL]->(sk:Skill)\nWHERE toLower(sk.name) CONTAINS 'public health'\n   OR toLower(sk.name) CONTAINS 'mental health'\n   OR toLower(sk.name) CONTAINS 'health education'\n   OR toLower(sk.name) CONTAINS 'health information'\nWITH DISTINCT s\nMATCH (s)-[:ENROLLED_IN]->(:Course {college: $college})\nWITH DISTINCT s,\n     size([(s)-[:HAS_SKILL]->(sk2:Skill) WHERE toLower(sk2.name) CONTAINS 'public health'\n        OR toLower(sk2.name) CONTAINS 'mental health'\n        OR toLower(sk2.name) CONTAINS 'health education'\n        OR toLower(sk2.name) CONTAINS 'health information' | sk2]) AS healthSkillCount\nRETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed\nORDER BY healthSkillCount DESC, s.gpa DESC",
-    "interpretation": "This query identifies Compton College students who are most ready for a healthcare internship by finding those who have acquired the greatest number of health-related skills \u2014 including Public Health, Mental Health, Health Education, and Health Information Systems \u2014 and then ranking them by the number of those skills they hold, with GPA as a tiebreaker.",
+    "cypher": "MATCH (s:Student)-[:HAS_SKILL]->(sk:Skill) WHERE toLower(sk.name) CONTAINS 'health' OR toLower(sk.name) CONTAINS 'mental health' OR toLower(sk.name) CONTAINS 'public health' OR toLower(sk.name) CONTAINS 'health education' OR toLower(sk.name) CONTAINS 'health information' WITH s, count(DISTINCT sk) AS healthSkillCount WHERE healthSkillCount >= 1 WITH s, healthSkillCount MATCH (s)-[:ENROLLED_IN]->(:Course {college: 'Compton College'}) WITH DISTINCT s, healthSkillCount RETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed ORDER BY healthSkillCount DESC, s.gpa DESC",
+    "interpretation": "This query identifies Compton College students who have acquired the most health-related skills (such as Public Health, Mental Health, Health Education, or Health Information Systems), ranking them first by the number of those skills they possess and then by GPA \u2014 surfacing the students most prepared for a healthcare internship.",
     "error": "",
-    "latency_ms": 7606
+    "latency_ms": 5555
   },
   {
     "college": "Foothill College",
@@ -4202,10 +4202,10 @@
     "execution_success": true,
     "result_count": 4663,
     "has_interpretation": true,
-    "cypher": "MATCH (s:Student)-[:HAS_SKILL]->(sk:Skill) WHERE toLower(sk.name) CONTAINS 'health' WITH DISTINCT s MATCH (s)-[:ENROLLED_IN]->(:Course {college: $college}) WITH DISTINCT s RETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed ORDER BY s.gpa DESC, s.courses_completed DESC",
-    "interpretation": "This query finds students at Foothill College who have developed at least one health-related skill (such as Public Health, Mental Health, Health Education, or Health Information Systems) and ranks them by GPA and number of courses completed \u2014 surfacing the most academically prepared candidates for a healthcare internship.",
+    "cypher": "MATCH (s:Student)-[:HAS_SKILL]->(sk:Skill)\nWHERE toLower(sk.name) CONTAINS 'health'\nWITH DISTINCT s\nMATCH (s)-[:ENROLLED_IN]->(:Course {college: 'Foothill College'})\nWITH DISTINCT s\nRETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed\nORDER BY s.gpa DESC, s.courses_completed DESC",
+    "interpretation": "This query finds students at Foothill College who have developed at least one health-related skill (such as Public Health, Mental Health, Health Education, or Health Information Systems), ordered by GPA and number of courses completed \u2014 surfacing the most academically prepared candidates for a healthcare internship.",
     "error": "",
-    "latency_ms": 4702
+    "latency_ms": 4348
   },
   {
     "college": "Irvine Valley College",
@@ -4247,9 +4247,9 @@
     "result_count": 2727,
     "has_interpretation": true,
     "cypher": "MATCH (s:Student)-[:HAS_SKILL]->(sk:Skill) WHERE toLower(sk.name) CONTAINS 'health' WITH DISTINCT s MATCH (s)-[:ENROLLED_IN]->(:Course {college: 'Irvine Valley College'}) WITH DISTINCT s RETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed ORDER BY s.gpa DESC, s.courses_completed DESC",
-    "interpretation": "This query returns students at Irvine Valley College who have developed at least one health-related skill (such as Public Health, Mental Health, Health Education, or Health Information Systems), ranked by GPA and number of courses completed as indicators of internship readiness.",
+    "interpretation": "This query finds students at Irvine Valley College who have developed at least one health-related skill (such as Public Health, Mental Health, Health Education, or Health Information Systems), ordered by GPA and number of courses completed \u2014 surfacing those most academically prepared and experienced for a healthcare internship.",
     "error": "",
-    "latency_ms": 4175
+    "latency_ms": 4184
   },
   {
     "college": "Oxnard College",
@@ -4291,9 +4291,9 @@
     "result_count": 2626,
     "has_interpretation": true,
     "cypher": "MATCH (s:Student)-[:HAS_SKILL]->(sk:Skill) WHERE toLower(sk.name) CONTAINS 'health' WITH DISTINCT s MATCH (s)-[:ENROLLED_IN]->(:Course {college: $college}) WITH DISTINCT s RETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed ORDER BY s.gpa DESC, s.courses_completed DESC",
-    "interpretation": "This query returns students at Oxnard College who have acquired at least one health-related skill (such as Public Health, Mental Health, Health Education, or Health Information Systems), ordered by GPA and number of courses completed to surface those most academically prepared for a healthcare internship.",
+    "interpretation": "This query finds Oxnard College students who have developed at least one health-related skill (such as Public Health, Mental Health, Health Education, or Health Information Systems), ranked by GPA and number of courses completed \u2014 surfacing those most academically prepared for a healthcare internship.",
     "error": "",
-    "latency_ms": 4623
+    "latency_ms": 4338
   },
   {
     "college": "San Diego City College",
@@ -4335,9 +4335,9 @@
     "result_count": 2855,
     "has_interpretation": true,
     "cypher": "MATCH (s:Student)-[:HAS_SKILL]->(sk:Skill) WHERE toLower(sk.name) CONTAINS 'health' WITH DISTINCT s MATCH (s)-[:ENROLLED_IN]->(:Course {college: $college}) WITH DISTINCT s RETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed ORDER BY s.gpa DESC, s.courses_completed DESC",
-    "interpretation": "This query returns students at San Diego City College who have at least one health-related skill (such as Public Health, Mental Health, Health Education, or Health Information Systems), ordered by GPA and number of courses completed \u2014 giving a ranked view of students most academically prepared for a healthcare internship.",
+    "interpretation": "This query finds students at San Diego City College who have developed at least one health-related skill (such as Public Health, Mental Health, Health Education, or Health Information Systems), ordered by GPA and number of courses completed to surface those most academically prepared for a healthcare internship.",
     "error": "",
-    "latency_ms": 8185
+    "latency_ms": 4578
   },
   {
     "college": "Shasta College",
@@ -4378,9 +4378,9 @@
     "execution_success": true,
     "result_count": 2255,
     "has_interpretation": true,
-    "cypher": "MATCH (s:Student)-[:HAS_SKILL]->(sk:Skill) WHERE toLower(sk.name) CONTAINS 'health' WITH DISTINCT s MATCH (s)-[:ENROLLED_IN]->(:Course {college: $college}) WITH DISTINCT s RETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed ORDER BY s.gpa DESC, s.courses_completed DESC",
-    "interpretation": "This query returns Shasta College students who have developed at least one health-related skill (such as Public Health, Mental Health, Health Education, or Health Information Systems), ordered by GPA and number of courses completed \u2014 highlighting those most academically prepared for a healthcare internship.",
+    "cypher": "MATCH (s:Student)-[:HAS_SKILL]->(sk:Skill) WHERE toLower(sk.name) CONTAINS 'health' WITH DISTINCT s MATCH (s)-[:ENROLLED_IN]->(:Course {college: 'Shasta College'}) WITH DISTINCT s RETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed ORDER BY s.gpa DESC, s.courses_completed DESC",
+    "interpretation": "This query returns Shasta College students who have developed at least one health-related skill (such as Public Health, Mental Health, Health Education, or Health Information Systems), ordered by GPA and number of courses completed \u2014 surfacing those most academically prepared for a healthcare internship.",
     "error": "",
-    "latency_ms": 5924
+    "latency_ms": 4258
   }
 ]
