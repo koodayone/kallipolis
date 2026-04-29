@@ -50,7 +50,7 @@ export default function ConvergenceFlowDiagram() {
             style={{
               position: "absolute",
               left: `${pos.x}%`,
-              top: `${pos.y + (isCenterForm ? 16 : 8)}%`,
+              top: `${pos.y + (isCenterForm ? 22 : 14)}%`,
               transform: "translate(-50%, 0)",
               fontSize: 10,
               fontWeight: 600,
