@@ -1,6 +1,6 @@
 export default function Vision() {
   return (
-    <section className="relative overflow-hidden py-24 px-6" style={{ minHeight: 780 }}>
+    <section className="relative overflow-hidden py-24 px-6 md:min-h-[780px] max-md:min-h-[600px]">
 
       {/* 1. Background image */}
       <img

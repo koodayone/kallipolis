@@ -18,9 +18,9 @@ export default function Footer() {
   const bottomLinkClass = isLightPage ? "hover:text-[#1a1a2e] transition-colors" : "hover:text-white transition-colors";
 
   return (
-    <footer className={textClass} style={{ backgroundColor: bg }}>
+    <footer className={textClass} style={{ backgroundColor: bg, paddingBottom: "env(safe-area-inset-bottom)" }}>
       <div className="max-w-7xl mx-auto px-6 py-10">
-        <div className="flex items-start mb-8">
+        <div className="flex items-start mb-8 max-md:flex-col max-md:gap-8">
           {/* Brand */}
           <div className="flex items-center gap-2">
             <img
@@ -38,8 +38,8 @@ export default function Footer() {
           </div>
 
           {/* Link columns */}
-          <div className="flex flex-1" style={{ paddingTop: 5, position: "relative" }}>
-            <div className="flex flex-col gap-3" style={{ position: "absolute", left: "44%", transform: "translateX(-50%)" }}>
+          <div className="flex md:flex-1 max-md:justify-between max-md:items-start max-md:w-full md:relative" style={{ paddingTop: 5 }}>
+            <div className="flex flex-col gap-3 md:absolute md:left-[44%] md:-translate-x-1/2">
               <h4 className={headingClass} style={{ fontFamily: "var(--font-days-one)" }}>About</h4>
               <Link href="/mission" className={linkClass} style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", fontSize: 12, display: "inline-flex", alignItems: "center", gap: 5 }}>
                 Mission
@@ -51,7 +51,7 @@ export default function Footer() {
                 </svg>
               </Link>
             </div>
-            <div className="flex flex-col gap-3" style={{ marginLeft: "auto", marginRight: "3%" }}>
+            <div className="flex flex-col gap-3 md:ml-auto md:mr-[3%]">
               <h4 className={headingClass} style={{ fontFamily: "var(--font-days-one)" }}>Documentation</h4>
               <Link href="/atlas" className={linkClass} style={{ textDecoration: "none", fontFamily: "var(--font-days-one)", fontSize: 12, display: "inline-flex", alignItems: "center", gap: 6 }}>
                 Atlas

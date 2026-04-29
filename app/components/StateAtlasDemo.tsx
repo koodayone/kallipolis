@@ -231,12 +231,10 @@ export default function StateAtlasDemo() {
   const collegeColor = 0xf0425e;
 
   return (
-    <div ref={containerRef} style={{ display: "flex", gap: 0, alignItems: "stretch" }}>
+    <div ref={containerRef} className="flex md:flex-row md:items-stretch md:gap-0 max-md:flex-col-reverse max-md:gap-8">
 
       {/* Left — Map / College forms panel */}
-      <div style={{
-        flex: "0 0 55%", position: "relative", minHeight: 530,
-        borderRadius: 10, overflow: "hidden",
+      <div className="relative md:basis-[55%] md:grow-0 md:shrink-0 md:min-h-[530px] max-md:w-full max-md:min-h-[480px] rounded-[10px] overflow-hidden" style={{
         border: "1px solid rgba(255,255,255,0.06)",
       }}>
 
@@ -459,7 +457,7 @@ export default function StateAtlasDemo() {
       </div>
 
       {/* Right — text */}
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "flex-start", gap: 40, paddingLeft: 48, paddingTop: 16 }}>
+      <div className="flex flex-col justify-start md:flex-1 md:gap-10 md:pl-12 md:pt-4 max-md:gap-8 max-md:pl-0 max-md:pt-2 max-md:w-full">
         <div style={{ textAlign: "center" }}>
           <p style={{ fontSize: 13, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.15em", color: "rgba(255,255,255,0.4)", marginBottom: 16 }}>
             Two Scales

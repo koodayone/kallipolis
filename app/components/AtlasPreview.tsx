@@ -127,14 +127,14 @@ export default function AtlasPreview({ activeIndex, opacity }: Props) {
   const college = ROTATION_COLLEGES[activeIndex];
 
   return (
-    <section style={{ background: "#060d1f", padding: "64px 64px" }}>
+    <section className="md:py-16 md:px-16 max-md:py-10 max-md:px-6" style={{ background: "#060d1f" }}>
       {/* Section header */}
-      <div style={{ textAlign: "center", marginBottom: 48 }}>
+      <div className="text-center md:mb-12 max-md:mb-8">
         <p style={{ fontSize: 13, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.15em", color: "rgba(255,255,255,0.45)", marginBottom: 16 }}>
           The Vision
         </p>
         <div style={{ width: 64, height: 2, background: college.neonHex, borderRadius: 1, opacity: 0.9, transition: `background ${FADE_DURATION}ms ease`, margin: "0 auto 24px" }} />
-        <h2 style={{ fontFamily: "var(--font-days-one)", fontSize: 36, fontWeight: 400, lineHeight: 1.15, letterSpacing: "-0.02em", color: "white", margin: "0 auto", maxWidth: 750 }}>
+        <h2 className="md:text-[36px] max-md:text-[26px]" style={{ fontFamily: "var(--font-days-one)", fontWeight: 400, lineHeight: 1.15, letterSpacing: "-0.02em", color: "white", margin: "0 auto", maxWidth: 750 }}>
           Kallipolis powers workforce development partnerships for California Community Colleges.
         </h2>
       </div>

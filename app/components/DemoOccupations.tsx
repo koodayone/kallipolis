@@ -128,12 +128,12 @@ export default function DemoOccupations() {
         </div>
 
         {/* Column headers */}
-        <div style={{ display: "grid", gridTemplateColumns: GRID, padding: "8px 12px", borderBottom: `1px solid ${ACCENT}20` }}>
+        <div className="grid md:grid-cols-[24px_1fr_80px_60px_70px] max-md:grid-cols-[24px_1fr]" style={{ padding: "8px 12px", borderBottom: `1px solid ${ACCENT}20` }}>
           <span />
           <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${ACCENT}90` }}>Occupation</span>
-          <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${ACCENT}60`, textAlign: "right" }}>Wage</span>
-          <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${ACCENT}60`, textAlign: "right" }}>Openings</span>
-          <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${ACCENT}60`, textAlign: "right" }}>Growth</span>
+          <span className="max-md:hidden" style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${ACCENT}60`, textAlign: "right" }}>Wage</span>
+          <span className="max-md:hidden" style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${ACCENT}60`, textAlign: "right" }}>Openings</span>
+          <span className="max-md:hidden" style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${ACCENT}60`, textAlign: "right" }}>Growth</span>
         </div>
 
         {OCCUPATIONS.map((o, i) => {
@@ -141,8 +141,8 @@ export default function DemoOccupations() {
           const isDimmed = dimOtherRows && !isTarget;
           return (
             <div key={o.title} style={{ opacity: isDimmed ? 0.35 : 1, transition: "opacity 0.4s ease" }}>
-              <div style={{
-                display: "grid", gridTemplateColumns: GRID, alignItems: "center",
+              <div className="grid md:grid-cols-[24px_1fr_80px_60px_70px] max-md:grid-cols-[24px_1fr]" style={{
+                alignItems: "center",
                 padding: "10px 12px",
                 background: highlightedRow && isTarget ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.03)",
                 boxShadow: highlightedRow && isTarget ? `0 0 12px 2px ${ACCENT}30, inset 0 0 0 1px ${ACCENT}25` : "none",
@@ -152,9 +152,9 @@ export default function DemoOccupations() {
               }}>
                 <Chevron open={isTarget && isRowExpanded} />
                 <span style={{ fontSize: 12, fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>{o.title}</span>
-                <span style={{ fontSize: 11, color: "rgba(255,255,255,0.5)", textAlign: "right" }}>${o.wage.toLocaleString()}</span>
-                <span style={{ fontSize: 11, color: "rgba(255,255,255,0.45)", textAlign: "right" }}>{o.openings.toLocaleString()}/yr</span>
-                <span style={{ fontSize: 11, fontWeight: 500, color: "#4ade80", textAlign: "right" }}>+{o.growth}%</span>
+                <span className="max-md:hidden" style={{ fontSize: 11, color: "rgba(255,255,255,0.5)", textAlign: "right" }}>${o.wage.toLocaleString()}</span>
+                <span className="max-md:hidden" style={{ fontSize: 11, color: "rgba(255,255,255,0.45)", textAlign: "right" }}>{o.openings.toLocaleString()}/yr</span>
+                <span className="max-md:hidden" style={{ fontSize: 11, fontWeight: 500, color: "#4ade80", textAlign: "right" }}>+{o.growth}%</span>
               </div>
 
               {isTarget && (

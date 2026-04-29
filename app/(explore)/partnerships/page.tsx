@@ -46,7 +46,7 @@ export default function ExplorePartnershipsPage() {
   return (
     <>
       {/* ── Section 1: Convergence ── */}
-      <section style={{ paddingTop: 120, paddingBottom: 0, paddingLeft: 64, paddingRight: 64 }}>
+      <section className="md:pt-[120px] md:pb-0 md:px-16 max-md:pt-24 max-md:pb-0 max-md:px-6">
         <div className="max-w-3xl mx-auto text-center">
           <Eyebrow>Intelligent Partnerships</Eyebrow>
           <BlueDivider />
@@ -64,7 +64,7 @@ export default function ExplorePartnershipsPage() {
       </section>
 
       {/* ── Section 2: Anatomy ── */}
-      <section style={{ paddingTop: 32, paddingBottom: 0, paddingLeft: 64, paddingRight: 64 }}>
+      <section className="md:pt-8 md:pb-0 md:px-16 max-md:pt-6 max-md:pb-0 max-md:px-6">
         <div className="max-w-3xl mx-auto text-center" style={{ marginBottom: 0 }}>
           <Eyebrow>Anatomy of a Partnership</Eyebrow>
           <BlueDivider />
@@ -79,16 +79,16 @@ export default function ExplorePartnershipsPage() {
       </section>
 
       {/* ── Section 3: Regional Alignment ── */}
-      <section style={{ paddingTop: 0, paddingBottom: 64, paddingLeft: 64, paddingRight: 64, marginTop: -24 }}>
-        <div style={{ display: "flex", gap: 48, alignItems: "flex-start", maxWidth: 1100, margin: "0 auto" }}>
+      <section className="md:pt-0 md:pb-16 md:px-16 md:-mt-6 max-md:pt-0 max-md:pb-12 max-md:px-6 max-md:mt-0">
+        <div className="flex md:flex-row md:gap-12 md:items-start max-md:flex-col-reverse max-md:gap-8 max-w-[1100px] mx-auto">
 
           {/* Left — Map */}
-          <div style={{ flex: "0 0 55%", minHeight: 400, paddingRight: 24 }}>
+          <div className="md:basis-[55%] md:grow-0 md:shrink-0 md:min-h-[400px] md:pr-6 max-md:w-full max-md:min-h-[360px] max-md:pr-0">
             <RegionalUnificationMap />
           </div>
 
           {/* Right — Prose */}
-          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 36, paddingTop: 0 }}>
+          <div className="flex flex-col md:flex-1 md:gap-9 max-md:gap-6 pt-0 max-md:w-full">
             <div style={{ textAlign: "center" }}>
               <Eyebrow>Regional Alignment</Eyebrow>
               <BlueDivider />
@@ -117,7 +117,7 @@ export default function ExplorePartnershipsPage() {
       </section>
 
       {/* ── Section 4: Cross-links ── */}
-      <section style={{ background: "#060d1f", padding: "0 64px 48px", display: "flex", justifyContent: "center", gap: 16 }}>
+      <section className="bg-[#060d1f] flex justify-center md:pt-0 md:pb-12 md:px-16 md:gap-4 max-md:pt-2 max-md:pb-10 max-md:px-4 max-md:gap-3 max-md:flex-wrap">
         <ActionBadge label="Home" neonColor="#f5e6c8" opacity={1} icon="sun" inline href="/#partnerships" invertHover />
         <ActionBadge label="Explore Atlas" neonColor="#f0425e" opacity={1} icon="cube" inline href="/atlas" invertHover />
         <ActionBadge label="Explore Sources" neonColor="#c9a84c" opacity={1} icon="lightbulb" inline href="/sources" invertHover />

@@ -107,18 +107,16 @@ const STEPS = [
   },
 ];
 
-// Fixed layout positions (px from top of sticky frame)
-const SUN_TOP = 55;
-const TEXT_TOP = 135;
-const BAND_TOP = 285;
+// Layout positions are gated md:/max-md: directly on the absolute children below
+// (sun, text area, band). Mobile tightens SUN top 55→40, TEXT 135→110, BAND 285→230
+// so the three zones fit a shorter mobile viewport without overlap.
 
 // ── Progress Indicator ───────────────────────────────────────────────────
 
 function ProgressIndicator({ activeStep, stepProgress, visible }: { activeStep: number; stepProgress: number; visible: boolean }) {
   return (
-    <div style={{
+    <div className="md:right-10 max-md:right-3" style={{
       position: "fixed",
-      right: 40,
       top: "50%",
       transform: "translateY(-50%)",
       display: "flex",
@@ -210,9 +208,8 @@ export default function PartnershipJourney() {
         transition: "opacity 0.8s ease",
       }}>
         {/* Sun — fixed position */}
-        <div style={{
+        <div className="md:top-[55px] max-md:top-[88px]" style={{
           position: "absolute",
-          top: SUN_TOP,
           left: "50%",
           transform: "translateX(-50%)",
           zIndex: 10,
@@ -221,9 +218,8 @@ export default function PartnershipJourney() {
         </div>
 
         {/* Text area — fixed position, content fades */}
-        <div style={{
+        <div className="md:top-[135px] md:px-16 max-md:top-[160px] max-md:px-6" style={{
           position: "absolute",
-          top: TEXT_TOP,
           left: "50%",
           transform: "translateX(-50%)",
           width: "100%",
@@ -232,7 +228,6 @@ export default function PartnershipJourney() {
           flexDirection: "column",
           alignItems: "center",
           gap: 12,
-          padding: "0 64px",
           opacity: contentOpacity,
         }}>
           {/* Number + Question */}
@@ -243,6 +238,7 @@ export default function PartnershipJourney() {
             opacity: 1,
           }}>
             <span
+              className="max-md:hidden"
               style={{
                 position: "absolute",
                 right: "calc(100% + 24px)",
@@ -292,9 +288,8 @@ export default function PartnershipJourney() {
         </div>
 
         {/* Band area — fixed position, content fades */}
-        <div style={{
+        <div className="md:top-[285px] max-md:top-[300px]" style={{
           position: "absolute",
-          top: BAND_TOP,
           left: "50%",
           transform: "translateX(-50%)",
           width: "100%",

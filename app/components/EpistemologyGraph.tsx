@@ -45,10 +45,10 @@ export default function EpistemologyGraph({ activeIndex = 0, opacity = 1 }: Prop
 
   return (
     <div
+      className="md:h-[620px] max-md:h-[420px]"
       style={{
         position: "relative",
         width: "100%",
-        height: 620,
       }}
     >
       <canvas ref={canvasRef} style={{ width: "100%", height: "100%", display: "block" }} />

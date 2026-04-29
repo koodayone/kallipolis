@@ -9,6 +9,7 @@ export default function TwoFormsDiagram() {
   const sceneRef = useRef<TwoFormsResult | null>(null);
   const [labelPositions, setLabelPositions] = useState<Record<string, { x: number; y: number }>>({});
   const [hoveredLabel, setHoveredLabel] = useState<string | null>(null);
+  const [layoutMode, setLayoutMode] = useState<"mobile" | "desktop">("desktop");
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -16,6 +17,7 @@ export default function TwoFormsDiagram() {
 
     const result = buildTwoFormsScene(canvas);
     sceneRef.current = result;
+    setLayoutMode(result.layoutMode);
     result.onHoverChange(setHoveredLabel);
 
     let rafId: number;
@@ -35,7 +37,7 @@ export default function TwoFormsDiagram() {
   }, []);
 
   return (
-    <div style={{ position: "relative", width: "100%", height: 500, overflow: "hidden" }}>
+    <div className="md:h-[500px] max-md:h-[360px]" style={{ position: "relative", width: "100%", overflow: "hidden" }}>
       <canvas ref={canvasRef} style={{ width: "100%", height: "100%", display: "block" }} />
 
       {FORM_LABELS.map((label) => {
@@ -56,9 +58,9 @@ export default function TwoFormsDiagram() {
             }}
             style={{
               position: "absolute",
-              left: `${pos.x + 22}%`,
-              top: `${pos.y}%`,
-              transform: "translate(0, -50%)",
+              left: layoutMode === "mobile" ? `${pos.x}%` : `${pos.x + 22}%`,
+              top: layoutMode === "mobile" ? `${pos.y + 14}%` : `${pos.y}%`,
+              transform: layoutMode === "mobile" ? "translate(-50%, 0)" : "translate(0, -50%)",
               fontSize: 15,
               fontWeight: 700,
               letterSpacing: "0.12em",

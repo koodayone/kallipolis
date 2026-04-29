@@ -72,7 +72,7 @@ export default function RegionalUnificationMap() {
   const projectedMap = Object.fromEntries(projected.map((p) => [p.key, p]));
 
   return (
-    <div style={{ position: "relative", width: "100%", minHeight: 480 }}>
+    <div className="md:min-h-[480px] max-md:min-h-[360px]" style={{ position: "relative", width: "100%" }}>
       <ComposableMap
         width={MAP_WIDTH}
         height={MAP_HEIGHT}

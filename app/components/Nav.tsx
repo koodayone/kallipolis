@@ -34,7 +34,13 @@ export default function Nav() {
   return (
     <nav
       className="fixed top-0 z-50 w-full"
-      style={{ ...bgStyle, transition: "background-color 0.3s ease" }}
+      style={{
+        ...bgStyle,
+        transition: "background-color 0.3s ease",
+        paddingTop: "env(safe-area-inset-top)",
+        paddingLeft: "env(safe-area-inset-left)",
+        paddingRight: "env(safe-area-inset-right)",
+      }}
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
 

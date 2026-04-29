@@ -60,7 +60,8 @@ export default function FormCard({ factory, label, source, description }: Props)
     >
       <canvas
         ref={canvasRef}
-        style={{ width: "100%", height: 180, display: "block" }}
+        className="md:h-[180px] max-md:h-[200px]"
+        style={{ width: "100%", display: "block" }}
       />
       <h3
         style={{

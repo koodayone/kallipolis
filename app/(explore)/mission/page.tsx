@@ -29,19 +29,22 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 }
 
 function LandscapeImage({ src, alt, position = "center 15%", height = 480 }: { src: string; alt: string; position?: string; height?: number }) {
+  const mobileHeight = Math.round(height * 0.7);
   return (
-    <div style={{ padding: "0 64px" }}>
+    <div className="md:px-16 max-md:px-6">
       <img
         src={src}
         alt={alt}
+        className="md:h-[var(--ld-h)] max-md:h-[var(--ld-mh)]"
         style={{
+          "--ld-h": `${height}px`,
+          "--ld-mh": `${mobileHeight}px`,
           width: "100%",
-          height,
           objectFit: "cover",
           objectPosition: position,
           borderRadius: 10,
           display: "block",
-        }}
+        } as React.CSSProperties}
       />
     </div>
   );
@@ -51,7 +54,7 @@ function LandscapeImage({ src, alt, position = "center 15%", height = 480 }: { s
 
 export default function MissionPage() {
   return (
-    <div style={{ background: "#F5F2EB", minHeight: "100vh" }}>
+    <div className="md:min-h-screen max-md:min-h-[100dvh]" style={{ background: "#F5F2EB" }}>
 
       {/* ── 1. Hero Image — Tahoe ── */}
       <div style={{ paddingTop: 80 }}>
@@ -59,7 +62,7 @@ export default function MissionPage() {
       </div>
 
       {/* ── 2. Mission Statement ── */}
-      <section style={{ padding: "120px 64px", textAlign: "center" }}>
+      <section className="text-center md:py-[120px] md:px-16 max-md:py-16 max-md:px-6">
         <div style={{ maxWidth: 640, margin: "0 auto" }}>
           <Eyebrow>Mission</Eyebrow>
           <GreenDivider />
@@ -76,16 +79,15 @@ export default function MissionPage() {
       <LandscapeImage src="/yosemite_art.png" alt="Yosemite" position="center 58%" />
 
       {/* ── 4. About the Founder ── */}
-      <section style={{ padding: "120px 64px" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto", display: "flex", gap: 48, alignItems: "center" }}>
+      <section className="md:py-[120px] md:px-16 max-md:py-16 max-md:px-6">
+        <div className="max-w-[900px] mx-auto flex md:flex-row md:gap-12 md:items-center max-md:flex-col max-md:gap-8 max-md:items-stretch">
           {/* Portrait */}
-          <div style={{ flex: "0 0 240px", borderRadius: 10, overflow: "hidden" }}>
+          <div className="rounded-[10px] overflow-hidden md:basis-[240px] md:grow-0 md:shrink-0 max-md:max-w-[280px] max-md:mx-auto max-md:w-full">
             <img
               src="/portrait.png"
               alt="Dayone Koo"
+              className="md:w-[240px] md:h-[340px] max-md:w-full max-md:aspect-[240/340]"
               style={{
-                width: 240,
-                height: 340,
                 objectFit: "cover",
                 display: "block",
               }}
@@ -93,7 +95,7 @@ export default function MissionPage() {
           </div>
 
           {/* Bio */}
-          <div style={{ flex: 1 }}>
+          <div className="md:flex-1 max-md:w-full">
             <div style={{ textAlign: "center" }}>
               <Eyebrow>About the Founder</Eyebrow>
               <GreenDivider />
@@ -112,7 +114,7 @@ export default function MissionPage() {
       <LandscapeImage src="/tenaya_art.png" alt="Tenaya Lake" position="center 28%" height={520} />
 
       {/* ── 6. Cross-links ── */}
-      <section style={{ background: "#F5F2EB", padding: "48px 64px", display: "flex", justifyContent: "center" }}>
+      <section className="flex justify-center md:py-12 md:px-16 max-md:py-10 max-md:px-6" style={{ background: "#F5F2EB" }}>
         <div style={{ transform: "scale(1.04)", transformOrigin: "center" }}>
           <ActionBadge label="Home" neonColor="#2D5016" opacity={1} icon="sun" inline href="/" />
         </div>

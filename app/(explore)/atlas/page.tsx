@@ -57,7 +57,7 @@ export default function ExploreAtlasPage() {
   return (
     <>
       {/* ── Section 1: Hero ── */}
-      <section style={{ paddingTop: 120, paddingBottom: 48, paddingLeft: 64, paddingRight: 64 }}>
+      <section className="md:pt-[120px] md:pb-12 md:px-16 max-md:pt-24 max-md:pb-8 max-md:px-6">
         <div className="max-w-3xl mx-auto text-center">
           <Eyebrow>The Atlas</Eyebrow>
           <GoldDivider />
@@ -72,16 +72,8 @@ export default function ExploreAtlasPage() {
       </section>
 
       {/* ── Section 2: The Six Forms ── */}
-      <section style={{ paddingTop: 16, paddingBottom: 64, paddingLeft: 64, paddingRight: 64 }}>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: 20,
-            maxWidth: 960,
-            margin: "0 auto",
-          }}
-        >
+      <section className="md:pt-4 md:pb-16 md:px-16 max-md:pt-4 max-md:pb-10 max-md:px-6">
+        <div className="grid md:grid-cols-3 md:gap-5 max-md:grid-cols-1 max-md:gap-4 max-w-[960px] mx-auto">
           {FORMS.map((form) => (
             <FormCard
               key={form.label}
@@ -95,12 +87,12 @@ export default function ExploreAtlasPage() {
       </section>
 
       {/* ── Section 3: Two Scales ── */}
-      <section style={{ paddingTop: 48, paddingBottom: 64, paddingLeft: 64, paddingRight: 64 }}>
+      <section className="md:pt-12 md:pb-16 md:px-16 max-md:pt-10 max-md:pb-10 max-md:px-6">
         <StateAtlasDemo />
       </section>
 
       {/* ── Section 4: Cross-links ── */}
-      <section style={{ background: "#060d1f", padding: "24px 64px 48px", display: "flex", justifyContent: "center", gap: 16 }}>
+      <section className="bg-[#060d1f] flex justify-center md:pt-6 md:pb-12 md:px-16 md:gap-4 max-md:pt-6 max-md:pb-10 max-md:px-4 max-md:gap-3 max-md:flex-wrap">
         <ActionBadge label="Home" neonColor="#f5e6c8" opacity={1} icon="sun" inline href="/#atlas" invertHover />
         <ActionBadge label="Explore Partnerships" neonColor="#4fd1fd" opacity={1} icon="chainlink" inline href="/partnerships" invertHover />
         <ActionBadge label="Explore Sources" neonColor="#c9a84c" opacity={1} icon="lightbulb" inline href="/sources" invertHover />

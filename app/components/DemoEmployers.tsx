@@ -149,12 +149,12 @@ export default function DemoEmployers() {
         </div>
 
         {/* Column headers */}
-        <div style={{ display: "grid", gridTemplateColumns: GRID, padding: "8px 12px", borderBottom: `1px solid ${ACCENT}20` }}>
+        <div className="grid md:grid-cols-[24px_1.2fr_1fr_50px_85px] max-md:grid-cols-[24px_1.2fr_1fr]" style={{ padding: "8px 12px", borderBottom: `1px solid ${ACCENT}20` }}>
           <span />
           <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${ACCENT}90` }}>Employer</span>
           <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${ACCENT}60` }}>Sector</span>
-          <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${ACCENT}60`, textAlign: "center" }}>Roles</span>
-          <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${ACCENT}60`, textAlign: "right" }}>Skills</span>
+          <span className="max-md:hidden" style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${ACCENT}60`, textAlign: "center" }}>Roles</span>
+          <span className="max-md:hidden" style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: `${ACCENT}60`, textAlign: "right" }}>Skills</span>
         </div>
 
         {EMPLOYERS.map((e, i) => {
@@ -162,8 +162,8 @@ export default function DemoEmployers() {
           const isDimmed = dimOtherRows && !isTarget;
           return (
             <div key={e.name} style={{ opacity: isDimmed ? 0.35 : 1, transition: "opacity 0.4s ease" }}>
-              <div style={{
-                display: "grid", gridTemplateColumns: GRID, alignItems: "center",
+              <div className="grid md:grid-cols-[24px_1.2fr_1fr_50px_85px] max-md:grid-cols-[24px_1.2fr_1fr]" style={{
+                alignItems: "center",
                 padding: "10px 12px",
                 background: highlightedRow && isTarget ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.03)",
                 boxShadow: highlightedRow && isTarget ? `0 0 12px 2px ${ACCENT}30, inset 0 0 0 1px ${ACCENT}25` : "none",
@@ -174,8 +174,8 @@ export default function DemoEmployers() {
                 <Chevron open={isTarget && isRowExpanded} />
                 <span style={{ fontSize: 12, fontWeight: 500, color: "rgba(255,255,255,0.85)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{e.name}</span>
                 <span style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{e.sector}</span>
-                <span style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", textAlign: "center" }}>{e.roles}</span>
-                <span style={{ fontSize: 10, color: ACCENT, background: `${ACCENT}20`, border: `1px solid ${ACCENT}30`, borderRadius: 100, padding: "3px 8px", textAlign: "center", whiteSpace: "nowrap", textTransform: "uppercase", letterSpacing: "0.05em" }}>{e.skills} Skills</span>
+                <span className="max-md:hidden" style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", textAlign: "center" }}>{e.roles}</span>
+                <span className="max-md:hidden" style={{ fontSize: 10, color: ACCENT, background: `${ACCENT}20`, border: `1px solid ${ACCENT}30`, borderRadius: 100, padding: "3px 8px", textAlign: "center", whiteSpace: "nowrap", textTransform: "uppercase", letterSpacing: "0.05em" }}>{e.skills} Skills</span>
               </div>
 
               {isTarget && (
