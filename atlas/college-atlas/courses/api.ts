@@ -12,6 +12,7 @@ export type ApiCourseSummary = {
   learning_outcomes: string[];
   course_objectives: string[];
   skill_mappings: string[];
+  top_code?: string | null;
 };
 
 export type CourseQueryResponse = {

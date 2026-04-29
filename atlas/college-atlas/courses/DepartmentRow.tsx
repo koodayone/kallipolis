@@ -13,6 +13,7 @@ export type CourseItem = {
   learningOutcomes?: string[];
   courseObjectives?: string[];
   skillMappings?: string[];
+  topCode?: string | null;
   // Proposal evidence format (subset)
   skills?: string[];
 };
@@ -110,6 +111,10 @@ export default function DepartmentRow({ department, courseCount, index, brandCol
                 const skills = course.skillMappings ?? course.skills ?? [];
                 const outcomes = course.learningOutcomes ?? [];
                 const objectives = course.courseObjectives ?? [];
+                const topCode = course.topCode ?? null;
+                const topCodeDisplay = topCode && /^\d{6}$/.test(topCode)
+                  ? `${topCode.slice(0, 4)}.${topCode.slice(4, 6)}`
+                  : topCode;
                 return (
                   <div key={course.code} style={{ marginBottom: "2px" }}>
                     <button
@@ -151,6 +156,37 @@ export default function DepartmentRow({ department, courseCount, index, brandCol
                             borderRadius: "0 0 6px 6px",
                             display: "flex", flexDirection: "column", gap: "16px",
                           }}>
+                            {topCodeDisplay && (
+                              <div>
+                                <span
+                                  style={{ display: "inline-flex", alignItems: "center", gap: "6px", marginBottom: "8px", position: "relative" }}
+                                  onMouseEnter={(e) => { const tip = e.currentTarget.querySelector("[data-tooltip]") as HTMLElement; if (tip) tip.style.opacity = "1"; }}
+                                  onMouseLeave={(e) => { const tip = e.currentTarget.querySelector("[data-tooltip]") as HTMLElement; if (tip) tip.style.opacity = "0"; }}
+                                >
+                                  <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: brandColor, opacity: 0.6 }}>
+                                    TOP Code
+                                  </span>
+                                  <svg width="13" height="13" viewBox="0 0 16 16" fill="none" style={{ cursor: "help", opacity: 0.4, transition: "opacity 0.15s" }}>
+                                    <circle cx="8" cy="8" r="7" stroke={brandColor} strokeWidth="1" />
+                                    <circle cx="8" cy="4.5" r="0.8" fill={brandColor} />
+                                    <rect x="7.2" y="6.5" width="1.6" height="5" rx="0.8" fill={brandColor} />
+                                  </svg>
+                                  <span data-tooltip style={{
+                                    position: "absolute", left: 0, top: "calc(100% + 6px)", zIndex: 10,
+                                    background: "rgba(20,18,28,0.95)", border: `1px solid ${brandColor}20`,
+                                    borderRadius: "8px", padding: "10px 14px", width: "280px",
+                                    fontFamily: FONT, fontSize: "11px", fontWeight: 400, letterSpacing: "0",
+                                    textTransform: "none", color: "rgba(255,255,255,0.55)", lineHeight: 1.5,
+                                    opacity: 0, pointerEvents: "none", transition: "opacity 0.15s",
+                                  }}>
+                                    Taxonomy of Programs — California Chancellor&apos;s Office classification. The 4-digit prefix names the program area; the 2-digit suffix names the specialty within it.
+                                  </span>
+                                </span>
+                                <span style={{ fontFamily: "var(--font-mono), ui-monospace, SFMono-Regular, monospace", fontSize: "12px", color: "rgba(255,255,255,0.6)", display: "block" }}>
+                                  {topCodeDisplay}
+                                </span>
+                              </div>
+                            )}
                             {course.description && (
                               <div>
                                 <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: brandColor, opacity: 0.6, display: "block", marginBottom: "8px" }}>
@@ -188,7 +224,7 @@ export default function DepartmentRow({ department, courseCount, index, brandCol
                             {skills.length > 0 && (
                               <div>
                                 <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: brandColor, opacity: 0.6, display: "block", marginBottom: "8px" }}>
-                                  Derived Skills
+                                  Developed Skills
                                 </span>
                                 <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
                                   {skills.map((skill) => (

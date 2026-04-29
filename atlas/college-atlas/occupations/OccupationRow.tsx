@@ -121,8 +121,29 @@ export default function OccupationRow({ occ, index, brandColor, isOpen: controll
               {detail && (
                 <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
                   {detail.soc_code && (
-                    <span style={{ fontFamily: "var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace", fontSize: "11px", fontWeight: 500, letterSpacing: "0.05em", color: "rgba(255,255,255,0.4)", fontVariantNumeric: "tabular-nums" }}>
-                      SOC {detail.soc_code}
+                    <span
+                      style={{ display: "inline-flex", alignItems: "center", gap: "6px", position: "relative", alignSelf: "flex-start" }}
+                      onMouseEnter={(e) => { const tip = e.currentTarget.querySelector("[data-tooltip]") as HTMLElement; if (tip) tip.style.opacity = "1"; }}
+                      onMouseLeave={(e) => { const tip = e.currentTarget.querySelector("[data-tooltip]") as HTMLElement; if (tip) tip.style.opacity = "0"; }}
+                    >
+                      <span style={{ fontFamily: "var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace", fontSize: "11px", fontWeight: 500, letterSpacing: "0.05em", color: "rgba(255,255,255,0.4)", fontVariantNumeric: "tabular-nums" }}>
+                        SOC {detail.soc_code}
+                      </span>
+                      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" style={{ cursor: "help", opacity: 0.4, transition: "opacity 0.15s" }}>
+                        <circle cx="8" cy="8" r="7" stroke={brandColor} strokeWidth="1" />
+                        <circle cx="8" cy="4.5" r="0.8" fill={brandColor} />
+                        <rect x="7.2" y="6.5" width="1.6" height="5" rx="0.8" fill={brandColor} />
+                      </svg>
+                      <span data-tooltip style={{
+                        position: "absolute", left: 0, top: "calc(100% + 6px)", zIndex: 10,
+                        background: "rgba(20,18,28,0.95)", border: `1px solid ${brandColor}20`,
+                        borderRadius: "8px", padding: "10px 14px", width: "280px",
+                        fontFamily: FONT, fontSize: "11px", fontWeight: 400, letterSpacing: "0",
+                        textTransform: "none", color: "rgba(255,255,255,0.55)", lineHeight: 1.5,
+                        opacity: 0, pointerEvents: "none", transition: "opacity 0.15s",
+                      }}>
+                        Standard Occupational Classification — federal Bureau of Labor Statistics taxonomy. The first two digits name the major group; the remaining four name the detailed occupation.
+                      </span>
                     </span>
                   )}
                   {detail.description && (

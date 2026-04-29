@@ -32,7 +32,8 @@ RULES:
 4. Always return results in this exact shape:
      RETURN c.name AS name, c.code AS code, c.description AS description,
             c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,
-            c.skill_mappings AS skill_mappings
+            c.skill_mappings AS skill_mappings,
+            c.top_code AS top_code
 5. Do NOT add a LIMIT clause unless the user asks for a specific number.
 6. If the question cannot be answered with the schema above, respond with: {"cypher": "CANNOT_TRANSLATE", "interpretation": ""}
 7. The current college is provided in the user message. The $college parameter is always set to that college. If the user references a DIFFERENT college by name, respond with CANNOT_TRANSLATE.
@@ -48,7 +49,7 @@ MATCH (c:Course {college: $college})
 WHERE toLower(c.department) CONTAINS 'computer science'
 RETURN c.name AS name, c.code AS code, c.description AS description,
        c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,
-       c.skill_mappings AS skill_mappings
+       c.skill_mappings AS skill_mappings, c.top_code AS top_code
 ORDER BY c.code
 
 Question: "Courses that develop Programming skills"
@@ -57,7 +58,7 @@ WHERE toLower(sk.name) CONTAINS 'programming'
 WITH DISTINCT c
 RETURN c.name AS name, c.code AS code, c.description AS description,
        c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,
-       c.skill_mappings AS skill_mappings
+       c.skill_mappings AS skill_mappings, c.top_code AS top_code
 ORDER BY c.code
 
 Question: "Transfer-eligible courses"
@@ -65,7 +66,7 @@ MATCH (c:Course {college: $college})
 WHERE c.transfer_status IN ['CSU/UC', 'CSU Only', 'UC Only']
 RETURN c.name AS name, c.code AS code, c.description AS description,
        c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,
-       c.skill_mappings AS skill_mappings
+       c.skill_mappings AS skill_mappings, c.top_code AS top_code
 ORDER BY c.code
 
 Question: "Courses with more than 3 units"
@@ -73,7 +74,7 @@ MATCH (c:Course {college: $college})
 WHERE c.units > 3
 RETURN c.name AS name, c.code AS code, c.description AS description,
        c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,
-       c.skill_mappings AS skill_mappings
+       c.skill_mappings AS skill_mappings, c.top_code AS top_code
 ORDER BY c.code
 
 Question: "Nursing courses"
@@ -81,7 +82,7 @@ MATCH (c:Course {college: $college})
 WHERE toLower(c.department) CONTAINS 'nursing'
 RETURN c.name AS name, c.code AS code, c.description AS description,
        c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,
-       c.skill_mappings AS skill_mappings
+       c.skill_mappings AS skill_mappings, c.top_code AS top_code
 ORDER BY c.code
 
 Question: "Career and technical education courses"
@@ -89,7 +90,7 @@ MATCH (c:Course {college: $college})
 WHERE c.is_cte = true
 RETURN c.name AS name, c.code AS code, c.description AS description,
        c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,
-       c.skill_mappings AS skill_mappings
+       c.skill_mappings AS skill_mappings, c.top_code AS top_code
 ORDER BY c.code
 
 Question: "CTE courses in our health department"
@@ -158,6 +159,7 @@ async def run_course_query(question: str, college: str) -> tuple[list[CourseSumm
             learning_outcomes=r.get("learning_outcomes") or [],
             course_objectives=r.get("course_objectives") or [],
             skill_mappings=r.get("skill_mappings") or [],
+            top_code=r.get("top_code") or None,
         )
         for r in records
     ]

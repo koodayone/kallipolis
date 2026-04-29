@@ -10,4 +10,5 @@ export type CourseSummary = {
   learningOutcomes: string[];
   courseObjectives: string[];
   skillMappings: string[];
+  topCode: string | null;
 };

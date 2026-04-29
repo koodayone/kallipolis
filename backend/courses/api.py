@@ -96,7 +96,8 @@ def get_courses(department: str, college: str):
                        c.description AS description,
                        c.learning_outcomes AS learning_outcomes,
                        c.course_objectives AS course_objectives,
-                       c.skill_mappings AS skill_mappings
+                       c.skill_mappings AS skill_mappings,
+                       c.top_code AS top_code
                 ORDER BY c.name
             """, department=department, college=college)
             return [
@@ -107,6 +108,7 @@ def get_courses(department: str, college: str):
                     learning_outcomes=r["learning_outcomes"] or [],
                     course_objectives=r["course_objectives"] or [],
                     skill_mappings=r["skill_mappings"] or [],
+                    top_code=r["top_code"] or None,
                 )
                 for r in result.data()
             ]
