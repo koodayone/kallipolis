@@ -231,7 +231,7 @@ export default function StateAtlasDemo() {
   const collegeColor = 0xf0425e;
 
   return (
-    <div ref={containerRef} className="flex md:flex-row md:items-stretch md:gap-0 max-md:flex-col max-md:gap-8">
+    <div ref={containerRef} className="flex md:flex-row md:items-stretch md:gap-0 max-md:flex-col-reverse max-md:gap-8">
 
       {/* Left — Map / College forms panel */}
       <div className="relative md:basis-[55%] md:grow-0 md:shrink-0 md:min-h-[530px] max-md:w-full max-md:min-h-[480px] rounded-[10px] overflow-hidden" style={{

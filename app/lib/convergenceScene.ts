@@ -56,19 +56,20 @@ const desktopLayout: LayoutConfig = {
   formRightOffset: 1.2,
 };
 
-// Mobile compresses to x=[-3.2, 2.6] for a square-ish canvas (aspect ~1.0).
+// Mobile widens spread to x=[-4.0, 3.4] so the convergence reads edge-to-edge
+// on a portrait phone (aspect ~0.85).
 const mobileLayout: LayoutConfig = {
   formDefs: [
-    { label: "Students",         factory: createMortarboardForm, position: new THREE.Vector3(-3.2, 3.5, 0),  scale: 0.6,  color: BLUE },
-    { label: "Courses",          factory: createBookForm,        position: new THREE.Vector3(-3.2, 1.2, 0),  scale: 0.6,  color: BLUE },
-    { label: "Occupations",      factory: createHardhatForm,     position: new THREE.Vector3(-3.2, -1.2, 0), scale: 0.6,  color: BLUE },
-    { label: "Employers",        factory: createSkyscraperForm,  position: new THREE.Vector3(-3.2, -3.5, 0), scale: 0.55, color: BLUE },
-    { label: "Partnerships",     factory: createChainlinkForm,   position: new THREE.Vector3(-0.4, 0, 0),    scale: 1.0,  color: BLUE },
-    { label: "Strong Workforce", factory: createDumbbellForm,    position: new THREE.Vector3(2.6, 0, 0),     scale: 1.0,  color: BLUE },
+    { label: "Students",         factory: createMortarboardForm, position: new THREE.Vector3(-4.0, 3.5, 0),  scale: 0.65, color: BLUE },
+    { label: "Courses",          factory: createBookForm,        position: new THREE.Vector3(-4.0, 1.2, 0),  scale: 0.65, color: BLUE },
+    { label: "Occupations",      factory: createHardhatForm,     position: new THREE.Vector3(-4.0, -1.2, 0), scale: 0.65, color: BLUE },
+    { label: "Employers",        factory: createSkyscraperForm,  position: new THREE.Vector3(-4.0, -3.5, 0), scale: 0.6,  color: BLUE },
+    { label: "Partnerships",     factory: createChainlinkForm,   position: new THREE.Vector3(-0.4, 0, 0),    scale: 1.05, color: BLUE },
+    { label: "Strong Workforce", factory: createDumbbellForm,    position: new THREE.Vector3(3.4, 0, 0),     scale: 1.05, color: BLUE },
   ],
-  chainlinkLeft: new THREE.Vector3(-1.3, 0, 0),
-  chainlinkRight: new THREE.Vector3(0.5, 0, 0),
-  dumbbellLeft: new THREE.Vector3(1.8, 0, 0),
+  chainlinkLeft: new THREE.Vector3(-1.4, 0, 0),
+  chainlinkRight: new THREE.Vector3(0.6, 0, 0),
+  dumbbellLeft: new THREE.Vector3(2.6, 0, 0),
   formRightOffset: 0.8,
 };
 

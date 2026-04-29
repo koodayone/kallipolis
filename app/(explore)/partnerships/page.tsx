@@ -80,7 +80,7 @@ export default function ExplorePartnershipsPage() {
 
       {/* ── Section 3: Regional Alignment ── */}
       <section className="md:pt-0 md:pb-16 md:px-16 md:-mt-6 max-md:pt-0 max-md:pb-12 max-md:px-6 max-md:mt-0">
-        <div className="flex md:flex-row md:gap-12 md:items-start max-md:flex-col max-md:gap-8 max-w-[1100px] mx-auto">
+        <div className="flex md:flex-row md:gap-12 md:items-start max-md:flex-col-reverse max-md:gap-8 max-w-[1100px] mx-auto">
 
           {/* Left — Map */}
           <div className="md:basis-[55%] md:grow-0 md:shrink-0 md:min-h-[400px] md:pr-6 max-md:w-full max-md:min-h-[360px] max-md:pr-0">

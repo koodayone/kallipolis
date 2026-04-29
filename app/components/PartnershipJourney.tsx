@@ -208,7 +208,7 @@ export default function PartnershipJourney() {
         transition: "opacity 0.8s ease",
       }}>
         {/* Sun — fixed position */}
-        <div className="md:top-[55px] max-md:top-[40px]" style={{
+        <div className="md:top-[55px] max-md:top-[88px]" style={{
           position: "absolute",
           left: "50%",
           transform: "translateX(-50%)",
@@ -218,7 +218,7 @@ export default function PartnershipJourney() {
         </div>
 
         {/* Text area — fixed position, content fades */}
-        <div className="md:top-[135px] md:px-16 max-md:top-[110px] max-md:px-6" style={{
+        <div className="md:top-[135px] md:px-16 max-md:top-[160px] max-md:px-6" style={{
           position: "absolute",
           left: "50%",
           transform: "translateX(-50%)",
@@ -288,7 +288,7 @@ export default function PartnershipJourney() {
         </div>
 
         {/* Band area — fixed position, content fades */}
-        <div className="md:top-[285px] max-md:top-[230px]" style={{
+        <div className="md:top-[285px] max-md:top-[300px]" style={{
           position: "absolute",
           left: "50%",
           transform: "translateX(-50%)",

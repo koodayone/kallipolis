@@ -131,7 +131,7 @@ export default function ExploreSourcesPage() {
       </section>
 
       {/* ── Section 4: Forward Deployment (prose-led) ── */}
-      <section className="md:pt-12 md:pb-12 md:px-16 md:-mt-[260px] max-md:pt-10 max-md:pb-10 max-md:px-6 max-md:mt-0">
+      <section className="md:pt-12 md:pb-12 md:px-16 md:-mt-[260px] max-md:pt-2 max-md:pb-10 max-md:px-6 max-md:-mt-[80px]">
         <div className="max-w-2xl mx-auto text-center">
           <Eyebrow>Forward Deployment</Eyebrow>
           <GoldDivider />
