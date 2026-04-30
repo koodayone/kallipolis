@@ -396,24 +396,26 @@ export default function QueryShell<T>({
 
             <div ref={helpRef}>
               <div style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
-                <div style={{ flex: 1, position: "relative" }}>
-                  <input ref={inputRef} type="text" value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                    onKeyDown={(e) => { if (e.key === "Enter") handleSubmit(); }}
-                    placeholder={placeholder}
-                    style={{
-                      width: "100%",
-                      padding: mode === "ask" ? "14px 44px 14px 20px" : "14px 20px",
-                      fontFamily: FONT, fontSize: "14px",
-                      color: "#f0eef4", background: "rgba(255,255,255,0.04)",
-                      border: "1px solid rgba(255,255,255,0.10)",
-                      borderRadius: helpOpen && mode === "ask" ? "12px 12px 0 0" : "12px",
-                      outline: "none", transition: "border-color 0.2s, box-shadow 0.2s, border-radius 0.15s",
-                    }}
-                    onFocus={onInputFocus}
-                    onBlur={onInputBlur}
-                  />
-                  {mode === "ask" && renderHelpChevron()}
+                <div style={{ flex: 1 }}>
+                  <div style={{ position: "relative" }}>
+                    <input ref={inputRef} type="text" value={query}
+                      onChange={(e) => setQuery(e.target.value)}
+                      onKeyDown={(e) => { if (e.key === "Enter") handleSubmit(); }}
+                      placeholder={placeholder}
+                      style={{
+                        width: "100%",
+                        padding: mode === "ask" ? "14px 44px 14px 20px" : "14px 20px",
+                        fontFamily: FONT, fontSize: "14px",
+                        color: "#f0eef4", background: "rgba(255,255,255,0.04)",
+                        border: "1px solid rgba(255,255,255,0.10)",
+                        borderRadius: helpOpen && mode === "ask" ? "12px 12px 0 0" : "12px",
+                        outline: "none", transition: "border-color 0.2s, box-shadow 0.2s, border-radius 0.15s",
+                      }}
+                      onFocus={onInputFocus}
+                      onBlur={onInputBlur}
+                    />
+                    {mode === "ask" && renderHelpChevron()}
+                  </div>
                   {renderHelpPanel()}
                 </div>
                 <button onClick={handleReset}
