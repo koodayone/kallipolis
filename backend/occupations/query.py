@@ -2,6 +2,7 @@
 
 import logging
 from llm.query_engine import validate_cypher, generate_query, execute_query
+from llm.spec_engine import execute_spec, is_enabled_for, run_spec
 from occupations.models import OccupationMatch
 
 logger = logging.getLogger(__name__)
@@ -119,14 +120,42 @@ No markdown code fences. Just the raw JSON object."""
 
 
 async def run_occupation_query(question: str, college: str) -> tuple[list[OccupationMatch], str, str]:
-    """Translate a natural language question into a Cypher query and return occupation results."""
+    """Translate a natural language question into a Cypher query and return occupation results.
+
+    When the spec-engine feature flag is enabled for this view (default
+    on for occupations), the question is classified by Gemini Flash
+    into a structured spec and rendered into Cypher by a deterministic
+    template. Otherwise the legacy Sonnet path generates Cypher
+    directly. Both paths produce equivalent OccupationMatch rows.
+    """
     logger.info(f"Occupation query: {question!r} for college: {college!r}")
 
-    cypher, interpretation = generate_query(question, college, OCCUPATION_QUERY_PROMPT, view="occupation")
-    cypher = validate_cypher(cypher)
-    logger.info(f"Validated Cypher: {cypher!r}")
-
-    records = execute_query(cypher, college)
+    if is_enabled_for("occupation"):
+        result = run_spec(question, college, "occupation")
+        if result.unsupported:
+            # Log the LLM-generated reason for debugging / prompt tuning,
+            # but keep the user-visible message generic. The reason from
+            # Flash is brittle (different runs can phrase it differently)
+            # and the example queries (accessible from the help icon) are the actual
+            # recovery path regardless of the specific failure mode.
+            logger.info(
+                f"Unsupported occupation query: question={question!r} "
+                f"reason={result.unsupported_reason!r}"
+            )
+            raise ValueError(
+                "Sorry, I couldn't translate that question. "
+                "Try one of the example queries, or rephrase your question."
+            )
+        records = execute_spec(result)
+        cypher = result.cypher
+        interpretation = result.interpretation
+    else:
+        cypher, interpretation = generate_query(
+            question, college, OCCUPATION_QUERY_PROMPT, view="occupation",
+        )
+        cypher = validate_cypher(cypher)
+        records = execute_query(cypher, college)
+    logger.info(f"Cypher: {cypher!r}")
     occupations = [
         OccupationMatch(
             soc_code=r["soc_code"],
