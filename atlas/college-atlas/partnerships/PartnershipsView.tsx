@@ -197,14 +197,6 @@ export default function PartnershipsView({ school, onBack }: Props) {
     setCoeRegion("");
   }, []);
 
-  const handleReject = useCallback(() => {
-    // After viewing/rejecting a generated artifact, return to the picker
-    // for the same employer so the coordinator can try a different occupation.
-    setPhase("draft");
-    setProposal(null);
-    setProposalError(null);
-  }, []);
-
   const handleBackFromSplit = resetToSelection;
 
   return (
@@ -259,7 +251,6 @@ export default function PartnershipsView({ school, onBack }: Props) {
                   <PartnershipManageMode
                     school={school}
                     savedProposals={savedProposals}
-                    setSavedProposals={setSavedProposals}
                     manageQuery={manageQuery}
                     setManageQuery={setManageQuery}
                     expandedSavedId={expandedSavedId}
@@ -301,7 +292,6 @@ export default function PartnershipsView({ school, onBack }: Props) {
             onSelectSoc={setSelectedSocCode}
             onGenerate={handleGenerate}
             onRetry={handleRetry}
-            onReject={handleReject}
             proposal={proposal}
             proposalError={proposalError}
           />

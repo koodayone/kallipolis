@@ -26,7 +26,6 @@ type Props = {
   onGenerate: () => void;
   // Generation result handling
   onRetry: () => void;
-  onReject: () => void;
   proposal: ApiTargetedProposal | null;
   proposalError: string | null;
 };
@@ -52,7 +51,7 @@ export default function ProposalFlow({
   school, employer, phase,
   occupations, coeRegion, selectedSocCode, occupationsLoading, occupationsError,
   onSelectSoc, onGenerate,
-  onRetry, onReject, proposal, proposalError,
+  onRetry, proposal, proposalError,
 }: Props) {
   const brandColor = school.brandColorLight;
   return (
@@ -248,8 +247,6 @@ export default function ProposalFlow({
             <ProposalCard
               proposal={proposal}
               brandColor={brandColor}
-              onDismiss={onReject}
-              onReject={onReject}
               collegeId={school.name}
             />
           </motion.div>
