@@ -135,7 +135,27 @@ def load_industry(
             stats["demands"] += len(demand_batch)
         logger.info(f"Created {stats['demands']} DEMANDS edges")
 
-        # 5. Create Occupation -[:REQUIRES_SKILL]-> Skill
+        # 5. Drop stale REQUIRES_SKILL edges before re-creating from the
+        # current mapping. MERGE in `_create_requires_skill` is idempotent
+        # for additions but does not remove edges that no longer correspond
+        # to the new skill list. Without this clear, a re-run of
+        # assign_skills.py followed by load.py layers new skills on top of
+        # stale ones (e.g., Millwrights' historical "Music History" edge
+        # would survive even after the corrected mapping replaces it). The
+        # blanket DELETE is safe because the create batch below
+        # re-establishes every (occupation, skill) pair the current
+        # occupations.json names. Skill nodes themselves are left alone —
+        # they may still be referenced by Course-[:DEVELOPS]->Skill edges
+        # and are shared across the graph.
+        result = session.run(
+            "MATCH (:Occupation)-[r:REQUIRES_SKILL]->() DELETE r RETURN count(r) AS n"
+        ).single()
+        stats["requires_skill_dropped"] = result["n"] if result else 0
+        logger.info(
+            f"Cleared {stats['requires_skill_dropped']} stale REQUIRES_SKILL edges"
+        )
+
+        # 6. Create Occupation -[:REQUIRES_SKILL]-> Skill
         skill_batch = []
         for occ in occupations:
             for skill_name in occ.get("skills", []):
