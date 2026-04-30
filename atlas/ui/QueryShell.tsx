@@ -48,16 +48,32 @@ export default function QueryShell<T>({
   const [queryMessage, setQueryMessage] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  // Auto-expand the example-queries panel on Ask mode so the supported
-  // grammar is visible without requiring a discovery click. The panel
-  // remains user-dismissable (chevron, click-outside, picking an
-  // example, typing into the input). For views that default into Ask
-  // mode (no search renderer), this means the panel is open on mount;
-  // for views that default into Search, it opens when the user
-  // toggles to Ask. See the design discussion in the spec-engine
-  // session for the rationale (the example queries are the grammar
-  // documentation; hiding them was costing discoverability).
-  const [helpOpen, setHelpOpen] = useState(!hasSearch);
+  // Auto-expand the example-queries panel on first entry into Ask
+  // mode for this view in this browser session. After the first auto-
+  // expand, subsequent transitions to Ask mode don't re-open the
+  // panel — the user can still re-open manually via the chevron
+  // button. Closing the tab resets the flag.
+  //
+  // The first-time-per-session limit reduces noise for users who've
+  // already learned the supported grammar while preserving the
+  // teach-by-default behavior for new users. The example queries ARE
+  // the grammar documentation under the spec-engine architecture, so
+  // the auto-expand is genuinely educational; once the user has
+  // seen it, the help icon is enough.
+  const sessionKey = `kallipolis-help-shown-${formName}`;
+  const [helpOpen, setHelpOpen] = useState(false);
+
+  // First-mount auto-open for ask-default views. Deferred to
+  // useEffect so SSR and client hydration don't disagree about
+  // sessionStorage availability.
+  useEffect(() => {
+    if (hasSearch) return; // search-default views don't auto-open on mount
+    if (typeof window === "undefined") return;
+    if (sessionStorage.getItem(sessionKey)) return;
+    setHelpOpen(true);
+    sessionStorage.setItem(sessionKey, "1");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const [helpClicked, setHelpClicked] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const helpRef = useRef<HTMLDivElement>(null);
@@ -147,12 +163,22 @@ export default function QueryShell<T>({
       setQueryMessage(null);
       onReset?.();
     }
-    // Open the help panel on transitions INTO ask mode so the
-    // supported grammar is visible without a discovery click. Close
-    // it on transitions to search.
-    setHelpOpen(m === "ask");
+    // Open the help panel on the first transition INTO ask mode per
+    // browser session (per view), so the supported grammar is visible
+    // without a discovery click. Subsequent toggles back to ask don't
+    // re-open the panel — the user has already seen the grammar and
+    // can re-open manually via the chevron. Close on transitions to
+    // search.
+    if (m === "ask") {
+      if (typeof window !== "undefined" && !sessionStorage.getItem(sessionKey)) {
+        setHelpOpen(true);
+        sessionStorage.setItem(sessionKey, "1");
+      }
+    } else {
+      setHelpOpen(false);
+    }
     setMode(m);
-  }, [mode, submitted, onReset]);
+  }, [mode, submitted, onReset, sessionKey]);
 
   const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
