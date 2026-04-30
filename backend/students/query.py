@@ -2,6 +2,7 @@
 
 import logging
 from llm.query_engine import validate_cypher, generate_query, execute_query
+from llm.spec_engine import execute_spec, is_enabled_for, run_spec
 from students.models import StudentSummary
 
 logger = logging.getLogger(__name__)
@@ -146,14 +147,34 @@ No markdown code fences. Just the raw JSON object."""
 
 
 async def run_student_query(question: str, college: str) -> tuple[list[StudentSummary], str, str]:
-    """Translate a natural language question into a Cypher query, execute it, and return results."""
+    """Translate a natural language question into a Cypher query, execute it, and return results.
+
+    Spec-engine path is off by default for students (feature-flagged
+    via `SPEC_ENGINE_STUDENT=1`). When the flag is off, the legacy
+    Sonnet path generates Cypher directly. Students has the most
+    architecturally complex spec (three valid base traversals), so it
+    rolls out after the other features have validated in production.
+    """
     logger.info(f"Student query: {question!r} for college: {college!r}")
 
-    cypher, interpretation = generate_query(question, college, STUDENT_QUERY_PROMPT, view="student")
-    cypher = validate_cypher(cypher)
-    logger.info(f"Validated Cypher: {cypher!r}")
-
-    records = execute_query(cypher, college)
+    if is_enabled_for("student"):
+        result = run_spec(question, college, "student")
+        if result.unsupported:
+            reason = result.unsupported_reason or ""
+            raise ValueError(
+                "This question doesn't fit our student query patterns. "
+                f"{reason} Try one of the example queries shown above the search box."
+            )
+        records = execute_spec(result)
+        cypher = result.cypher
+        interpretation = result.interpretation
+    else:
+        cypher, interpretation = generate_query(
+            question, college, STUDENT_QUERY_PROMPT, view="student",
+        )
+        cypher = validate_cypher(cypher)
+        records = execute_query(cypher, college)
+    logger.info(f"Cypher: {cypher!r}")
     students = [
         StudentSummary(
             uuid=r["uuid"],

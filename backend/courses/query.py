@@ -2,6 +2,7 @@
 
 import logging
 from llm.query_engine import validate_cypher, generate_query, execute_query
+from llm.spec_engine import execute_spec, is_enabled_for, run_spec
 from courses.models import CourseSummary
 
 logger = logging.getLogger(__name__)
@@ -143,14 +144,33 @@ No markdown code fences. Just the raw JSON object."""
 
 
 async def run_course_query(question: str, college: str) -> tuple[list[CourseSummary], str, str]:
-    """Translate a natural language question into a Cypher query and return course results."""
+    """Translate a natural language question into a Cypher query and return course results.
+
+    Spec-engine path is off by default for courses (feature-flagged via
+    `SPEC_ENGINE_COURSE=1`). When the flag is off, the legacy Sonnet
+    path generates Cypher directly. See `llm/spec_engine.py` for the
+    rollout rationale.
+    """
     logger.info(f"Course query: {question!r} for college: {college!r}")
 
-    cypher, interpretation = generate_query(question, college, COURSE_QUERY_PROMPT, view="course")
-    cypher = validate_cypher(cypher)
-    logger.info(f"Validated Cypher: {cypher!r}")
-
-    records = execute_query(cypher, college)
+    if is_enabled_for("course"):
+        result = run_spec(question, college, "course")
+        if result.unsupported:
+            reason = result.unsupported_reason or ""
+            raise ValueError(
+                "This question doesn't fit our course query patterns. "
+                f"{reason} Try one of the example queries shown above the search box."
+            )
+        records = execute_spec(result)
+        cypher = result.cypher
+        interpretation = result.interpretation
+    else:
+        cypher, interpretation = generate_query(
+            question, college, COURSE_QUERY_PROMPT, view="course",
+        )
+        cypher = validate_cypher(cypher)
+        records = execute_query(cypher, college)
+    logger.info(f"Cypher: {cypher!r}")
     courses = [
         CourseSummary(
             name=r["name"],

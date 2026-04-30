@@ -32,10 +32,16 @@ const COURSE_COLUMNS: Column[] = [
   { label: "Name", width: "1fr" },
 ];
 
+// Example queries shown as suggestions. Each demonstrates one supported
+// query shape — substitution-on-department, substitution-on-skill,
+// numeric threshold, fixed-keyword flag — so a coordinator scanning
+// them learns the grammar by example. Quoted slots are substitutable;
+// unquoted phrases are fixed institutional categories.
 const EXAMPLES = [
-  "Courses that develop manufacturing skills",
-  "Courses relevant to career and technical education",
-  "Courses that prepare for a healthcare career",
+  "Courses in 'computer science'",
+  "Courses that develop 'manufacturing' skills",
+  "Courses with at least 4 units",
+  "Career and technical education courses",
 ];
 
 type Props = { school: SchoolConfig; onBack: () => void };

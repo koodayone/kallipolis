@@ -12,10 +12,15 @@ import RequiredSkillsList from "@/ui/RequiredSkillsList";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
+// Example queries shown as suggestions. Each demonstrates one supported
+// query shape — substitution-on-sector, substitution-on-role, fixed
+// flag, default-sort — teaching the grammar by example. Quoted slots
+// are substitutable; unquoted phrases are fixed institutional concepts.
 const EXAMPLES = [
-  "Employers whose skill needs align with our curriculum",
-  "Employers hiring for high-demand occupations",
+  "Employers in 'healthcare'",
+  "Employers hiring for 'software developers'",
   "Employers in regional priority sectors",
+  "Employers whose skill needs align with our curriculum",
 ];
 
 const UNCLASSIFIED = "Unclassified";

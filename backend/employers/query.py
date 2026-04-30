@@ -2,6 +2,7 @@
 
 import logging
 from llm.query_engine import validate_cypher, generate_query, execute_query
+from llm.spec_engine import execute_spec, is_enabled_for, run_spec
 from employers.models import EmployerMatch
 
 logger = logging.getLogger(__name__)
@@ -126,14 +127,31 @@ No markdown code fences. Just the raw JSON object."""
 
 
 async def run_employer_query(question: str, college: str) -> tuple[list[EmployerMatch], str, str]:
-    """Translate a natural language question into a Cypher query and return employer results."""
+    """Translate a natural language question into a Cypher query and return employer results.
+
+    Spec-engine path is on by default for employers. See
+    `llm/spec_engine.py` for the rationale and feature flag.
+    """
     logger.info(f"Employer query: {question!r} for college: {college!r}")
 
-    cypher, interpretation = generate_query(question, college, EMPLOYER_QUERY_PROMPT, view="employer")
-    cypher = validate_cypher(cypher)
-    logger.info(f"Validated Cypher: {cypher!r}")
-
-    records = execute_query(cypher, college)
+    if is_enabled_for("employer"):
+        result = run_spec(question, college, "employer")
+        if result.unsupported:
+            reason = result.unsupported_reason or ""
+            raise ValueError(
+                "This question doesn't fit our employer query patterns. "
+                f"{reason} Try one of the example queries shown above the search box."
+            )
+        records = execute_spec(result)
+        cypher = result.cypher
+        interpretation = result.interpretation
+    else:
+        cypher, interpretation = generate_query(
+            question, college, EMPLOYER_QUERY_PROMPT, view="employer",
+        )
+        cypher = validate_cypher(cypher)
+        records = execute_query(cypher, college)
+    logger.info(f"Cypher: {cypher!r}")
     employers = [
         EmployerMatch(
             name=r["name"],

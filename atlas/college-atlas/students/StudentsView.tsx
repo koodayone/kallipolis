@@ -49,11 +49,18 @@ const SPECIALIZING_BY_COLLEGE: Record<string, string> = {
 
 const SPECIALIZING_DEFAULT = "Students specializing in 'construction technology'";
 
+// Example queries shown as suggestions. The first is per-college
+// (substitutes the most-relevant program for that school via
+// SPECIALIZING_BY_COLLEGE) so the substitution slot is maximally
+// inviting. The remaining three demonstrate skill-substitution,
+// numeric threshold, and compound (skill + numeric). Quoted slots
+// are substitutable.
 function buildExamples(schoolName: string): string[] {
   return [
     SPECIALIZING_BY_COLLEGE[schoolName] ?? SPECIALIZING_DEFAULT,
-    "Students with skills in business and accounting with GPA greater than 3.5",
-    "Students most ready for a healthcare internship",
+    "Students with 'critical thinking' skills",
+    "Students with GPA above 3.5",
+    "Students with 'healthcare' skills and GPA above 3.5",
   ];
 }
 
