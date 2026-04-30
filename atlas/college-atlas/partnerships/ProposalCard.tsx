@@ -531,7 +531,19 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
                   Supply: projected annual program completions by TOP
                 </span>
                 {(() => {
-                  const grid = "80px 1fr 220px 110px";
+                  // Grid totals match the demand sub-table's fixed cost
+                  // (320px fixed + 30px gaps + 40px row padding) so the
+                  // Program column gets the same flexible budget as
+                  // Demand's Occupation column. Award was previously
+                  // 220px — wider than the longest award string needs
+                  // (35 chars wraps comfortably in 140px) — which left
+                  // Program with so little room that its min-content
+                  // ("combined", "Television") forced the whole grid to
+                  // overflow the card's right edge. `minmax(0, 1fr)`
+                  // lets Program shrink and word-wrap rather than push
+                  // siblings off-screen if a future row is unusually
+                  // wide.
+                  const grid = "80px minmax(0, 1fr) 140px 100px";
                   const rowPadding = "12px 20px";
                   return (
                     <>
