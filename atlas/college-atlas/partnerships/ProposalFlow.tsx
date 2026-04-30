@@ -7,6 +7,7 @@ import type {
   ApiPartnershipOpportunity,
   ApiTargetedProposal,
 } from "@/college-atlas/partnerships/api";
+import RisingSun from "@/ui/RisingSun";
 import ProposalCard from "./ProposalCard";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
@@ -227,21 +228,16 @@ export default function ProposalFlow({
           </motion.div>
         )}
 
-        {/* ── Generating ── */}
+        {/* ── Generating ── Loading affordance reuses the rising-sun
+            idiom from QueryShell so the partnership flow speaks the same
+            visual vocabulary as the analytical natural-language query
+            views (students, courses, occupations, employers). */}
         {phase === "generating" && (
           <motion.div key="generating" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}
-            style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "400px", gap: "16px" }}>
-            <div style={{
-              width: "32px", height: "32px",
-              border: "3px solid rgba(255,255,255,0.08)", borderTopColor: brandColor,
-              borderRadius: "50%", animation: "spin 1s linear infinite",
-            }} />
-            <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
-            <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.4)" }}>
+            style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "400px", gap: "20px" }}>
+            <RisingSun style={{ width: "90px", height: "auto", opacity: 0.4 }} />
+            <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.4)", margin: 0 }}>
               Generating {employer.name} partnership proposal...
-            </p>
-            <p style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.25)" }}>
-              This may take 15-30 seconds
             </p>
           </motion.div>
         )}
