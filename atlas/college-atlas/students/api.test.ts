@@ -9,9 +9,8 @@
  * api.test.ts files will follow when they are added.
  *
  * Coverage:
- *   - getStudents: URL encoding of the college parameter, default
- *     limit/offset query params, successful body parsing of the page
- *     shape, error branch on non-ok response
+ *   - getStudents: URL encoding of the college parameter, successful
+ *     body parsing, error branch on non-ok response
  *   - getStudent: URL includes both uuid and college, error branch
  *   - queryStudents: POST body shape, Content-Type header, successful
  *     body parsing, server error text surfaced in thrown error,
@@ -35,10 +34,10 @@ describe("students api client", () => {
   });
 
   describe("getStudents", () => {
-    it("hits /students with college, default limit, and default offset URL-encoded", async () => {
+    it("hits /students with the college query parameter URL-encoded", async () => {
       const mockFetch = vi.fn().mockResolvedValue({
         ok: true,
-        json: async () => ({ students: [], total_count: 0, has_more: false }),
+        json: async () => [],
       });
       vi.stubGlobal("fetch", mockFetch);
 
@@ -48,33 +47,13 @@ describe("students api client", () => {
       const url = mockFetch.mock.calls[0][0] as string;
       expect(url).toContain("/students/?college=");
       expect(url).toContain("Foothill%20College");
-      expect(url).toContain("limit=500");
-      expect(url).toContain("offset=0");
     });
 
-    it("forwards explicit limit and offset values", async () => {
-      const mockFetch = vi.fn().mockResolvedValue({
-        ok: true,
-        json: async () => ({ students: [], total_count: 0, has_more: false }),
-      });
-      vi.stubGlobal("fetch", mockFetch);
-
-      await getStudents("foothill", 100, 200);
-
-      const url = mockFetch.mock.calls[0][0] as string;
-      expect(url).toContain("limit=100");
-      expect(url).toContain("offset=200");
-    });
-
-    it("returns the parsed page shape on success", async () => {
-      const body = {
-        students: [
-          { uuid: "u1", primary_focus: "Business", courses_completed: 12, gpa: 3.4 },
-          { uuid: "u2", primary_focus: "Nursing", courses_completed: 18, gpa: 3.8 },
-        ],
-        total_count: 14135,
-        has_more: true,
-      };
+    it("returns the parsed JSON body on success", async () => {
+      const body = [
+        { uuid: "u1", primary_focus: "Business", courses_completed: 12, gpa: 3.4 },
+        { uuid: "u2", primary_focus: "Nursing", courses_completed: 18, gpa: 3.8 },
+      ];
       vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: true, json: async () => body }));
 
       const result = await getStudents("foothill");

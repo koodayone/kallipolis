@@ -31,25 +31,8 @@ export type StudentQueryResponse = {
   cypher: string | null;
 };
 
-export type StudentSummaryPage = {
-  students: ApiStudentSummary[];
-  total_count: number;
-  has_more: boolean;
-};
-
-// Default page size the atlas requests on initial load. Generous enough
-// that the browse and search views see most of the population without
-// pagination controls; small enough to keep the JSON payload under 100KB
-// even for the largest colleges (~14K students at Foothill).
-export const STUDENTS_DEFAULT_LIMIT = 500;
-
-export async function getStudents(
-  college: string,
-  limit: number = STUDENTS_DEFAULT_LIMIT,
-  offset: number = 0,
-): Promise<StudentSummaryPage> {
-  const url = `${API_BASE}/students/?college=${encodeURIComponent(college)}&limit=${limit}&offset=${offset}`;
-  const res = await fetch(url);
+export async function getStudents(college: string): Promise<ApiStudentSummary[]> {
+  const res = await fetch(`${API_BASE}/students/?college=${encodeURIComponent(college)}`);
   if (!res.ok) throw new Error("Failed to fetch students");
   return res.json();
 }

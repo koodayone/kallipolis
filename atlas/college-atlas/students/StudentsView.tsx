@@ -62,7 +62,6 @@ type Props = { school: SchoolConfig; onBack: () => void };
 export default function StudentsView({ school, onBack }: Props) {
   const rootRef = useRef<HTMLDivElement>(null);
   const [students, setStudents] = useState<StudentSummary[]>([]);
-  const [totalCount, setTotalCount] = useState<number>(0);
   const [expandedUuids, setExpandedUuids] = useState<Set<string>>(new Set());
   const [studentDetails, setStudentDetails] = useState<Record<string, StudentDetail>>({});
   const [loadingUuids, setLoadingUuids] = useState<Set<string>>(new Set());
@@ -73,9 +72,8 @@ export default function StudentsView({ school, onBack }: Props) {
   );
 
   const loadInitialData = useCallback(async () => {
-    const page = await getStudents(school.name);
-    setStudents(page.students.map(mapSummary));
-    setTotalCount(page.total_count);
+    const data = await getStudents(school.name);
+    setStudents(data.map(mapSummary));
   }, [school.name]);
 
   const queryFn = useCallback(async (query: string, college: string) => {
@@ -124,24 +122,18 @@ export default function StudentsView({ school, onBack }: Props) {
 
   const studentKeyExtractor = useCallback((s: StudentSummary) => s.uuid, []);
 
-  const renderInitialContent = useCallback(() => {
-    const showingPartial = totalCount > students.length;
-    const countText = showingPartial
-      ? `Showing top ${students.length.toLocaleString()} of ${totalCount.toLocaleString()} students by courses completed`
-      : `${totalCount.toLocaleString()} students`;
-    return (
-      <div style={{ marginTop: "16px" }}>
-        <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.35)", marginBottom: "12px" }}>
-          {countText}
-        </p>
-        <EntityScrollList
-          items={defaultStudents} initialCap={100} batchSize={100}
-          columns={STUDENT_COLUMNS} renderRow={renderStudentRow}
-          keyExtractor={studentKeyExtractor} entityName="students" school={school}
-        />
-      </div>
-    );
-  }, [students.length, totalCount, defaultStudents, renderStudentRow, studentKeyExtractor, school]);
+  const renderInitialContent = useCallback(() => (
+    <div style={{ marginTop: "16px" }}>
+      <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.35)", marginBottom: "12px" }}>
+        {students.length.toLocaleString()} students
+      </p>
+      <EntityScrollList
+        items={defaultStudents} initialCap={100} batchSize={100}
+        columns={STUDENT_COLUMNS} renderRow={renderStudentRow}
+        keyExtractor={studentKeyExtractor} entityName="students" school={school}
+      />
+    </div>
+  ), [students.length, defaultStudents, renderStudentRow, studentKeyExtractor, school]);
 
   const renderSearchContent = useCallback((q: string) => {
     const lower = q.toLowerCase();

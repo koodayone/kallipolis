@@ -1,8 +1,7 @@
-from fastapi import APIRouter, HTTPException, Query
+from fastapi import APIRouter, HTTPException
 from ontology.schema import get_driver
 from students.models import (
     StudentSummary,
-    StudentSummaryPage,
     StudentDetail,
     StudentEnrollment,
     StudentQueryRequest,
@@ -13,53 +12,23 @@ from students.query import run_student_query
 
 router = APIRouter()
 
-DEFAULT_LIMIT = 100
-MAX_LIMIT = 5000
 
-
-@router.get("/", response_model=StudentSummaryPage)
-def get_students(
-    college: str,
-    limit: int = Query(DEFAULT_LIMIT, ge=1, le=MAX_LIMIT),
-    offset: int = Query(0, ge=0),
-):
-    """Paginated bulk student list for a college, ordered by courses_completed DESC.
-
-    The earlier shape returned every student at a college as a flat list;
-    at 14K students for Foothill that produced a ~3 MB payload and 153 ms
-    first-paint TTFB. The endpoint now returns a page slice plus
-    `total_count` so callers can render "showing N of M" and request
-    further pages by offset.
-    """
+@router.get("/", response_model=list[StudentSummary])
+def get_students(college: str):
     driver = get_driver()
     try:
         with driver.session() as session:
-            count_record = session.run(
-                """
-                MATCH (s:Student)-[:ENROLLED_IN]->(:Course {college: $college})
-                RETURN count(DISTINCT s) AS total
-                """,
-                college=college,
-            ).single()
-            total_count = count_record["total"] if count_record else 0
-
-            result = session.run(
-                """
+            result = session.run("""
                 MATCH (s:Student)-[:ENROLLED_IN]->(:Course {college: $college})
                 WITH DISTINCT s
                 RETURN s.uuid AS uuid, s.gpa AS gpa,
                        s.primary_focus AS primary_focus,
                        s.courses_completed AS courses_completed
                 ORDER BY s.courses_completed DESC
-                SKIP $offset LIMIT $limit
-                """,
-                college=college,
-                offset=offset,
-                limit=limit,
-            )
+            """, college=college)
             records = result.data()
 
-        students = [
+        return [
             StudentSummary(
                 uuid=r["uuid"],
                 primary_focus=r.get("primary_focus", "Undeclared"),
@@ -68,11 +37,6 @@ def get_students(
             )
             for r in records
         ]
-        return StudentSummaryPage(
-            students=students,
-            total_count=total_count,
-            has_more=offset + len(students) < total_count,
-        )
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
