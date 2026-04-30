@@ -25,6 +25,13 @@ class GatheredContext:
     sector: str = ""
     swp_sectors: list[str] = field(default_factory=list)
     description: str = ""
+    # Pre-computed verb phrase characterizing the employer's operations,
+    # populated at ingestion by ``employers.characterize``. Drives the
+    # opening sentence of the partnership proposal's executive summary
+    # via ``f"{employer_name} {operations_summary}."``. The single
+    # LLM-derived field in the partnership proposal narrative; every
+    # other sentence is templated deterministically over graph data.
+    operations_summary: str = ""
     regions: list[str] = field(default_factory=list)
     college: str = ""
     occupation_evidence: list[dict] = field(default_factory=list)
@@ -42,6 +49,7 @@ def _gather_targeted_context(employer: str, college: str) -> GatheredContext:
             RETURN emp.name AS name, emp.sector AS sector,
                    COALESCE(emp.swp_sectors, []) AS swp_sectors,
                    emp.description AS description,
+                   emp.operations_summary AS operations_summary,
                    collect(COALESCE(r.display_name, r.name)) AS regions
         """, employer=employer).single()
 
@@ -64,6 +72,7 @@ def _gather_targeted_context(employer: str, college: str) -> GatheredContext:
         sector=emp_result["sector"] or "",
         swp_sectors=list(emp_result["swp_sectors"]) if emp_result["swp_sectors"] else [],
         description=emp_result["description"] or "",
+        operations_summary=emp_result["operations_summary"] or "",
         regions=emp_result["regions"],
         college=college,
         occupation_evidence=[

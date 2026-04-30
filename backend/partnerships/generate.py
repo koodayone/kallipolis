@@ -33,14 +33,8 @@ from partnerships.models import (
     SupplyEstimate,
     SwpEvidence,
 )
-from partnerships.narrative import (
-    NARRATIVE_PROMPT,
-    _assemble_proposal,
-    _build_dept_text,
-    _build_narrative_context,
-    _call_claude,
-    _parse_narrative_fields,
-)
+from partnerships.narrative import _assemble_proposal
+from partnerships.narrative_templates import build_narrative
 
 logger = logging.getLogger(__name__)
 
@@ -217,15 +211,15 @@ def _run_pipeline(
 ) -> NarrativeProposal:
     """Single linear pipeline shared by sync and streaming entry points.
 
-    Stages:
+    Stages (all deterministic; no LLM call at runtime):
       2. Occupation selection — when selected_occupation_soc is provided,
          deterministic lookup by SOC plus deterministic core-skills selection;
-         otherwise the legacy LLM-based _select_occupation runs.
+         otherwise the legacy crosswalk-rooted _select_occupation runs.
       3. Curriculum and student pipeline gathering (Neo4j)
-      4. Department relevance filter (LLM, cap 3)
-      5. Regional supply-demand evidence assembly (Neo4j + COE CSVs)
-      6. Narrative generation (LLM, four sections)
-      7. Final assembly
+      4. Regional supply-demand evidence assembly (Neo4j + COE CSVs)
+      5. Narrative composition from deterministic templates over the
+         gathered data + the employer's pre-computed operations_summary.
+      6. Final assembly
     """
     if selected_occupation_soc:
         selected_occ = _select_occupation_from_soc(gathered, selected_occupation_soc, college)
@@ -245,13 +239,10 @@ def _run_pipeline(
     # set passes through downstream. The prior LLM cap-to-3 was retired in
     # C3 because the inbound set is already institutionally legitimate —
     # every department is there because the Chancellor's-Office crosswalk
-    # places it there. Adding LLM judgment over a curated set is precisely
-    # the skills-as-connective-tissue anti-pattern in a different guise.
-    # Visual sprawl at the rendering layer is bounded by ProposalCard's
-    # collapsible department rows; that is a rendering concern, not a
-    # gating concern.
+    # places it there. Visual sprawl at the rendering layer is bounded by
+    # ProposalCard's collapsible department rows; that is a rendering
+    # concern, not a gating concern.
 
-    dept_text = _build_dept_text(curriculum_evidence, core_skills)
     aligned_depts = [d["department"] for d in curriculum_evidence]
     student_stats, top_students = _gather_student_pipeline(
         college, aligned_depts, selected_soc, core_skills
@@ -261,15 +252,6 @@ def _run_pipeline(
     swp_evidence = _assemble_swp_evidence(college, gathered, curriculum_evidence, selected_occ)
     logger.info(f"Stage 4 complete: assembled regional supply-demand evidence (gap={swp_evidence.gap:,.0f})")
 
-    narrative_context = _build_narrative_context(
-        gathered, dept_text, selected_occ, student_stats, swp_evidence,
-        curriculum_evidence=curriculum_evidence,
-    )
-    prompt_text = NARRATIVE_PROMPT.format(context=narrative_context)
-    raw = _call_claude(prompt_text)
-    logger.info(f"Stage 5 complete: Claude narrative response received for {employer}")
-
-    narrative = _parse_narrative_fields(raw)
     # Coordinator-facing sector uses the institutional Doing-What-Matters /
     # Strong Workforce taxonomy ("Advanced Manufacturing"), not the
     # employer's BLS classification ("Manufacturing"). The artifact is
@@ -277,6 +259,36 @@ def _run_pipeline(
     # categories — its surface vocabulary should match. Falls back to
     # BLS when the employer has no SWP classification.
     proposal_sector = gathered.swp_sectors[0] if gathered.swp_sectors else gathered.sector
+
+    # Stage 5: deterministic narrative. Pull the regional demand figures
+    # from the SWP evidence's selected-SOC row (single-row by design)
+    # and the COE region display name from the institutional sources
+    # block. Total aligned courses is the sum across the curriculum
+    # evidence; n_departments drives singular/plural agreement in CA.
+    selected_demand_row = swp_evidence.occupations[0] if swp_evidence.occupations else None
+    annual_wage = selected_demand_row.annual_wage if selected_demand_row else None
+    annual_openings = selected_demand_row.annual_openings if selected_demand_row else None
+    coe_region_display = (
+        swp_evidence.sources.coe_region_display
+        if swp_evidence.sources else swp_evidence.coe_region
+    )
+    total_aligned_courses = sum(len(d.get("courses", [])) for d in curriculum_evidence)
+    narrative = build_narrative(
+        employer_name=employer,
+        operations_summary=gathered.operations_summary,
+        sector_display=proposal_sector or "",
+        college=college,
+        soc_code=selected_occ.get("soc_code") or "",
+        soc_title=selected_occ.get("title") or "",
+        annual_wage=annual_wage,
+        annual_openings=annual_openings,
+        coe_region_display=coe_region_display or "",
+        core_skills=core_skills,
+        total_aligned_courses=total_aligned_courses,
+        total_in_aligned_departments=student_stats.get("total_in_aligned_departments", 0),
+        n_departments=len(curriculum_evidence),
+    )
+    logger.info(f"Stage 5 complete: deterministic narrative composed for {employer}")
     proposal = _assemble_proposal(
         narrative=narrative,
         employer=employer,
