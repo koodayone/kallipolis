@@ -1,20 +1,16 @@
 name: Backend unit tests
 
-# pytest runs the backend's pure-logic unit tests. Fast (under half a second
-# on a clean checkout) and pure Python — no database, no LLM calls, no
-# network. Gated on PRs and pushes to main so backend regressions can't
-# land silently.
+# pytest runs the backend's pure-logic unit tests. Fast (under half a
+# second on a clean checkout) and pure Python — no database, no LLM
+# calls, no network. Always runs on every PR (and pushes to main) so
+# branch protection's required-check rule is satisfied even on UI-only
+# PRs that don't touch backend/. With uv-driven installs and a cached
+# uv resolution directory the workflow completes in ~10s on warm cache.
 
 on:
   pull_request:
-    paths:
-      - 'backend/**'
-      - '.github/workflows/unit-tests.yml'
   push:
     branches: [main]
-    paths:
-      - 'backend/**'
-      - '.github/workflows/unit-tests.yml'
 
 jobs:
   unit-tests:
@@ -23,18 +19,26 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
         with:
-          python-version: "3.11"
-          cache: pip
-          cache-dependency-path: backend/requirements.txt
+          enable-cache: true
+          cache-dependency-glob: 'backend/requirements.txt'
+
+      - name: Set up Python 3.11
+        # Prod runs on 3.11; we test against the same major version.
+        # uv venv below pins the venv to this interpreter.
+        run: uv python install 3.11
 
       - name: Install dependencies
+        # Use a uv-managed venv rather than --system: Ubuntu runners
+        # mark /usr as externally-managed (PEP 668), and the venv is
+        # the idiomatic uv pattern anyway. uv resolves and installs
+        # an order of magnitude faster than pip.
         run: |
-          pip install --upgrade pip
-          pip install -r backend/requirements.txt
-          pip install pytest
+          uv venv --python 3.11
+          uv pip install -r backend/requirements.txt pytest
 
       - name: Run unit tests
         working-directory: backend
-        run: python -m pytest -v
+        run: ../.venv/bin/python -m pytest -v
