@@ -2,70 +2,27 @@
 
 Per the institutional-deference architectural commitment, all selection
 in the partnership flow is deterministic and rooted in the institutional
-crosswalk. The legacy LLM-driven occupation picker was retired in C2;
-the LLM department-relevance cap-to-3 was retired in C3 because the
-inbound department set is already PREPARES_FOR-gated (institutionally
-aligned), so applying LLM judgment on top would dilute the institutional
-purity that the gating layer establishes.
+crosswalk. The LLM-driven occupation picker was retired in C2; the LLM
+department-relevance cap-to-3 was retired in C3 because the inbound
+department set is already PREPARES_FOR-gated; the LLM narrative writer
+was retired with the move to deterministic templates (see
+``narrative_templates.py``). Once that retirement removed the only
+caller of ``_extract_json``, the JSON parser was removed too.
 
 Surviving helpers:
   - _select_occupation: deterministic crosswalk-depth ranker
   - _select_core_skills_for: deterministic core-skills characterization
-  - _extract_json: shared JSON-parsing utility used by narrative.py
 """
 
 from __future__ import annotations
 
-import json
 import logging
-import re
 
 from ontology.schema import get_driver
 
 from partnerships.gather import GatheredContext
 
 logger = logging.getLogger(__name__)
-
-
-# ═══════════════════════════════════════════════════════════════════════════
-# JSON parsing utility (shared)
-# ═══════════════════════════════════════════════════════════════════════════
-
-
-def _extract_json(raw: str) -> dict:
-    """Extract the first valid JSON object from a string."""
-    stripped = raw.strip()
-
-    fence_match = re.search(r"```(?:json)?\s*([\s\S]*?)\s*```", stripped)
-    if fence_match:
-        stripped = fence_match.group(1).strip()
-
-    try:
-        return json.loads(stripped)
-    except json.JSONDecodeError:
-        pass
-
-    start = stripped.find("{")
-    if start == -1:
-        raise ValueError("No JSON object found")
-
-    depth = 0
-    for i in range(start, len(stripped)):
-        if stripped[i] == "{":
-            depth += 1
-        elif stripped[i] == "}":
-            depth -= 1
-            if depth == 0:
-                try:
-                    return json.loads(stripped[start:i + 1])
-                except json.JSONDecodeError:
-                    break
-
-    match = re.search(r"\{[\s\S]*\}", stripped)
-    if match:
-        return json.loads(match.group(0))
-
-    raise ValueError("Could not extract valid JSON from response")
 
 
 # ═══════════════════════════════════════════════════════════════════════════
