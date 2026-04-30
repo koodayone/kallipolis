@@ -32,35 +32,42 @@ const STUDENT_COLUMNS: Column[] = [
   { label: "GPA", width: "60px" },
 ];
 
-// Per-college "specializing in X" example: substitutes each featured
-// college's most-populous CTE-flavored primary_focus, so the user sees a
-// concrete program their school actually has. Map mirrors the eval's
-// PER_COLLEGE_OVERRIDES in backend/tests/integration/test_example_queries.py.
-const SPECIALIZING_BY_COLLEGE: Record<string, string> = {
-  "Shasta College": "Students specializing in 'early childhood education'",
-  "Foothill College": "Students specializing in 'accounting'",
-  "College of the Sequoias": "Students specializing in 'child development'",
-  "Oxnard College": "Students specializing in 'fire technology'",
-  "Compton College": "Students specializing in 'nursing'",
-  "Irvine Valley College": "Students specializing in 'accounting'",
-  "College of the Desert": "Students specializing in 'health sciences'",
-  "San Diego City College": "Students specializing in 'cybersecurity and data analytics'",
+// Per-college CTE-leaning primary_focus value substituted into the
+// "specializing in X" examples. The student table's most prominent
+// column IS Primary Focus, so anchoring example queries on it gives the
+// user a query whose subject they can already see in the result set.
+// Each value is a real, populated program at that school — guaranteeing
+// non-zero results. Map mirrors the eval's PER_COLLEGE_OVERRIDES in
+// backend/tests/integration/test_example_queries.py.
+const FOCUS_BY_COLLEGE: Record<string, string> = {
+  "Shasta College": "early childhood education",
+  "Foothill College": "accounting",
+  "College of the Sequoias": "child development",
+  "Oxnard College": "fire technology",
+  "Compton College": "nursing",
+  "Irvine Valley College": "accounting",
+  "College of the Desert": "health sciences",
+  "San Diego City College": "cybersecurity and data analytics",
 };
 
-const SPECIALIZING_DEFAULT = "Students specializing in 'construction technology'";
+const FOCUS_DEFAULT = "construction technology";
 
-// Example queries shown as suggestions. The first is per-college
-// (substitutes the most-relevant program for that school via
-// SPECIALIZING_BY_COLLEGE) so the substitution slot is maximally
-// inviting. The remaining three demonstrate skill-substitution,
-// numeric threshold, and compound (skill + numeric). Quoted slots
-// are substitutable.
+// Example queries shown as suggestions. All four lean on the visible
+// columns of the student table (Primary Focus, GPA, Courses) and avoid
+// skill filters, which are detail-pane-only and have sparser per-school
+// coverage that produced empty results in earlier iterations. Slots 1
+// and 3 substitute a per-college CTE-flavored primary_focus value, but
+// use different surface phrasings ("specializing in X" vs "with primary
+// focus X") to teach users two synonyms — the column-name form nudges
+// toward referencing the actual table header. Slots 2 and 4 are numeric
+// thresholds, universal across schools. Quoted slots are substitutable.
 function buildExamples(schoolName: string): string[] {
+  const focus = FOCUS_BY_COLLEGE[schoolName] ?? FOCUS_DEFAULT;
   return [
-    SPECIALIZING_BY_COLLEGE[schoolName] ?? SPECIALIZING_DEFAULT,
-    "Students with 'critical thinking' skills",
+    `Students specializing in '${focus}'`,
     "Students with GPA above 3.5",
-    "Students with 'healthcare' skills and GPA above 3.5",
+    `Students with primary focus '${focus}' and GPA above 3.5`,
+    "Students who completed more than 20 courses",
   ];
 }
 
