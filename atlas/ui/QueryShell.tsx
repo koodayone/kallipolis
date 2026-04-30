@@ -399,7 +399,7 @@ export default function QueryShell<T>({
                 <div style={{ flex: 1 }}>
                   <div style={{ position: "relative" }}>
                     <input ref={inputRef} type="text" value={query}
-                      onChange={(e) => setQuery(e.target.value)}
+                      onChange={handleInputChange}
                       onKeyDown={(e) => { if (e.key === "Enter") handleSubmit(); }}
                       placeholder={placeholder}
                       style={{

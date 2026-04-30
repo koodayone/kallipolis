@@ -147,16 +147,11 @@ export default function OccupationsView({ school, onBack }: Props) {
   }, [allOccupations, renderOccupationRow, occKeyExtractor, school]);
 
   const renderResultsContent = useCallback((results: ApiOccupationMatch[]) => (
-    <>
-      <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.5)" }}>
-        {results.length.toLocaleString()} occupation{results.length !== 1 ? "s" : ""} found
-      </p>
-      <EntityScrollList
-        items={results} initialCap={200} batchSize={100}
-        columns={OCCUPATION_COLUMNS} renderRow={renderOccupationRow}
-        keyExtractor={occKeyExtractor} entityName="occupations" school={school}
-      />
-    </>
+    <EntityScrollList
+      items={results} initialCap={200} batchSize={100}
+      columns={OCCUPATION_COLUMNS} renderRow={renderOccupationRow}
+      keyExtractor={occKeyExtractor} entityName="occupations" school={school}
+    />
   ), [renderOccupationRow, occKeyExtractor, school]);
 
   return (
