@@ -5,26 +5,13 @@ The ``operations_summary`` is a verb phrase that follows the employer's
 name in the executive summary's opening sentence:
 
     f"{employer.name} {employer.operations_summary}."
-    → "Bellarmine College Preparatory serves approximately 1,600 students
-       at its all-boys Jesuit private high school in San Jose."
+    -> "Bellarmine College Preparatory operates an all-boys Jesuit private
+       high school in San Jose, serving approximately 1,600 students."
 
 The phrase is computed once per employer and stored on the Employer node;
 proposal generation at runtime uses it directly with no LLM call. This
 is the single LLM-driven characterization needed to make the rest of the
 partnership-proposal narrative deterministic.
-
-Design constraints (so the resulting prose composes well downstream):
-  * No geographic territory larger than a city — regional scope is added
-    by other parts of the proposal (Occupational Demand cites the COE
-    region with its labor-market figures). Including the COE region in
-    this sentence would either duplicate or contradict that.
-  * No mention of the partnership, students-as-pipeline, the college, or
-    workforce development — those are the *next* sentences' job.
-  * No superlatives or subjective adjectives ("largest", "leading",
-    "innovative") — the institutional voice persuades through specificity,
-    not boosterism.
-  * Verb phrase only: starts with a third-person-singular verb, does not
-    repeat the employer's name (the template prepends it).
 
 Mirrors ``populate_description.py``'s observability pattern: progress
 log, state file, incremental writes, fail-fast on deterministic errors,
@@ -35,7 +22,9 @@ Usage:
     python3 -m employers.characterize --limit 20            # test on 20
     python3 -m employers.characterize                       # incremental: only fills empties
     python3 -m employers.characterize --regenerate          # rewrite all
-    python3 -m employers.characterize --concurrency 10      # dial up
+    python3 -m employers.characterize --region FN           # scope to one COE region
+    python3 -m employers.characterize --region BA --regenerate
+    python3 -m employers.characterize --concurrency 10
 """
 
 from __future__ import annotations
@@ -58,95 +47,192 @@ PROGRESS_LOG = _THIS_DIR / ".characterize_progress.log"
 STATE_FILE = _THIS_DIR / ".characterize_state.json"
 
 # 10 employers per call: calibrated at ~4s/batch, 576 input tokens, 425 output.
-# Larger batches risk the model losing the per-input rule discipline; smaller
-# batches waste shared-prompt overhead. 10 is the empirically validated point.
 _BATCH_SIZE = 10
 
 # 5 concurrent batches in flight = 50 employers being characterized at once.
-# Conservative starting point; bump to 10 if API headroom permits.
 _DEFAULT_CONCURRENCY = 5
 
-# Incremental write cadence: every 5 batches = 50 employers, so a crash loses
-# at most ~50 characterizations.
+# Incremental write cadence: every 5 batches = 50 employers.
 _INCREMENTAL_WRITE_EVERY = 5
 
 # Single retry with 30 s back-off on 5xx/429.
 _TRANSIENT_RETRY_SLEEP = 30.0
 
 
-PROMPT_HEADER = """You characterize employers for an institutional workforce-development artifact. For each employer, write ONE verb phrase (10-22 words) that follows their name in a sentence. The output must obey these rules without exception.
+PROMPT_HEADER = """You write a single one-line characterization of each employer for an institutional workforce-development artifact. The output for each employer is a verb phrase that follows the employer's name in a present-tense sentence:
 
-REQUIRED:
-- Start with a third-person-singular verb (operates, provides, manufactures, serves, produces, runs, etc.)
-- Name what the employer does and any concrete scale figures from the description (employee count, store/hospital/location count, member count, bed count, etc.)
-- Mention a specific city ONLY if the employer is meaningfully tied to one (single-campus school, headquartered manufacturer); otherwise omit geography entirely
-- End without a period (the template adds the final period)
+    {employer_name} {operations_summary}.
+    -> "Bellarmine College Preparatory operates an all-boys Jesuit private high school in San Jose, serving approximately 1,600 students."
 
-DO NOT include any of the following — strip them even if the description contains them:
+The audience is a community-college coordinator drafting a partnership proposal. They need a clean, factual line about what the employer actually does. They do not need marketing prose, scope inflation, or any content beyond the operational facts.
 
-GEOGRAPHIC TERRITORIES LARGER THAN A CITY (any of these are forbidden):
-- counties or "[county name] County"
-- regions like "Central Valley", "Bay Area", "Inland Empire", "Southern California", "Northern California"
-- US state names ("California", "Massachusetts", etc.) and abbreviations ("CA", "MA")
-- "U.S.", "United States", "America", "American", "North America", "nationwide", "across the country"
+================================================================================
+SHAPE
+================================================================================
 
-SUBJECTIVE OR EVALUATIVE ADJECTIVES (any of these are forbidden, plus their synonyms):
-- premium, high-quality, top-quality, world-class, world-renowned, leading, premier
-- innovative, cutting-edge, state-of-the-art, advanced (when used as an adjective for the employer's offering)
-- comprehensive, full-service, full-suite, end-to-end (when used to inflate the offering)
-- diverse, wide-range, wide variety, broad portfolio, extensive (when used as filler before a noun)
-- responsibly, sustainably, ethically (when used as adverbs to modify produce/raise/grow)
-- trusted, beloved, renowned, prestigious, esteemed, certified-B-Corp positioning, faith-based positioning
-- "[N]+" used to inflate ("over 200+ locations" → say "more than 200 locations" or just "200 locations")
-- "only" / "sole" / "exclusive" superlative framings ("California's only state-operated facility" → "a state-operated facility")
+- 10-22 words.
+- Starts with a present-tense, third-person-singular verb (operates, provides, manufactures, serves, produces, distributes, sells, runs, designs, develops, builds, grows, etc.).
+- States what the employer does and any concrete scale figure from the description (employee count, store / hospital / location count, member count, bed count, square footage, fleet size, etc.).
+- Includes a specific CITY only when the employer is meaningfully tied to one (single-campus school, single-site manufacturer, headquartered firm). Otherwise omit geography entirely.
+- Does NOT repeat the employer's name (the template prepends it).
+- Does NOT end with a period (the template adds the final period).
 
-OTHER FORBIDDEN CONTENT:
-- The employer's name (the template prepends it; do not repeat)
-- The partnership concept, students-as-talent-pipeline, colleges, workforce development, or "the partnership"
-- Founding year ("founded in 1972") unless it conveys substantive operational character
+================================================================================
+FORBIDDEN: GEOGRAPHIC SCOPE LARGER THAN A CITY
+================================================================================
 
-EXAMPLES of correctly characterized employers (these are the target style):
+Strip all of these even when the description contains them. Regional scope is supplied downstream by Centers-of-Excellence figures; including it here either duplicates or contradicts that.
+
+- Counties: "[county name] County", "across the county", "the county", "to county residents", "the county fleet" — even when the entity is a county-government agency whose name already contains the county. The entity name preserves the jurisdiction; the verb phrase describes what the agency actually does.
+- Multi-county regions: "Central Valley", "Bay Area", "Inland Empire", "South Central Coast", "Far North", "the Bay", "the West Coast", "the East Coast", "the South", "the Midwest", "the Pacific Northwest".
+- US state names ("California", "Oregon", "Massachusetts", etc.) and postal abbreviations ("CA", "OR", "MA").
+- National scope: "U.S.", "United States", "America", "American", "the country", "across the country", "nationwide", "national".
+- Multi-state: "across all states", "across multiple states", "across [N] states".
+- Continental: "North America", "North American", "across the continent".
+- Global: "globally", "global", "worldwide", "international", "internationally", "across the world", "around the world".
+
+The entity's own name may contain a state or country (e.g., "Saputo Cheese USA", "Woolf Farming Company of California"). The verb phrase itself must not — the name is preserved by the template; the verb phrase strips its own geography.
+
+================================================================================
+FORBIDDEN: SUBJECTIVE, EVALUATIVE, OR PROMOTIONAL LANGUAGE
+================================================================================
+
+Strip these and their close synonyms even when the description uses them. Description text is often marketing copy; the operations_summary is not.
+
+- Quality boasting: premium, high-quality, top-quality, world-class, world-renowned, best, finest, finest-in-class, top-tier, leading, premier, market-leading.
+- Novelty boasting: innovative, cutting-edge, state-of-the-art, advanced (as an offering adjective), revolutionary, transformative, next-generation, pioneering, breakthrough, life-changing.
+- Scope inflation: comprehensive, full-service, full-suite, end-to-end, one-stop, integrated (as inflation), turnkey, holistic, all-in-one.
+- Filler quantifiers: diverse, wide variety, broad portfolio, extensive, vast, robust, exhaustive.
+- Values positioning: sustainable, sustainably, responsibly, ethically, authentic, genuine, real, mission-driven, purpose-driven, faith-based, community-focused (when used as identity language).
+- Reputation positioning: trusted, beloved, renowned, prestigious, esteemed, recognized, established (as evaluation), respected.
+- Branding registers: enterprise-grade, industry-leading, industry-standard, business-grade, professional-grade.
+- Mission-statement verbs: inspires, empowers, transforms, revolutionizes, facilitates [abstract noun], champions, fosters, cultivates.
+- Inflation marks: "200+", "5,000+" — use plain "more than 200" or just "200".
+- Superlative framings: "only", "sole", "exclusive" qualifiers ("California's only state-operated facility" -> "a state-operated facility").
+- Forward-looking copy: "investing in X through 2026", "will expand", "plans to", "set to launch" — strip all forward-looking content; the summary describes present operations only.
+
+================================================================================
+FORBIDDEN: OFF-TOPIC CONTENT
+================================================================================
+
+- The employer's name (the template prepends it; do not repeat).
+- Partnerships, partnership concepts, "partner with".
+- Students as a talent pipeline, hiring, workforce development.
+- Colleges, universities, education-as-pipeline.
+- Founding year unless it conveys substantive operational character (a 1972 family farm vs. a 2023 startup is informative; a 1985 software company is not).
+- Past-tense verbs unless the entity has demonstrably ceased operations. Default to present tense even when the description uses past tense. ("Suddenlink provided cable television" -> "operates as a cable and internet service provider".)
+
+================================================================================
+WORKED EXAMPLES (study these — they are the target style)
+================================================================================
 
 INPUT name: Bellarmine College Preparatory
 INPUT description: Bellarmine College Preparatory is an all-boys Jesuit private high school in San Jose, California, serving approximately 1,600 students from across the Bay Area.
-GOOD operations_summary: operates an all-boys Jesuit college-preparatory high school in San Jose, serving approximately 1,600 students
-(Notes: city kept; "California" stripped; "across the Bay Area" stripped.)
+GOOD operations_summary: operates an all-boys Jesuit private high school in San Jose, serving approximately 1,600 students
+NOTES: city kept; "California" stripped; "across the Bay Area" stripped.
 
 INPUT name: Saputo Cheese USA
 INPUT description: Saputo Cheese USA transforms milk into high-quality, safe, and nutritious cheese and dairy products serving consumers across the U.S.
 GOOD operations_summary: produces cheese and dairy products from milk for retail and food-service consumers
-(Notes: "high-quality, safe, and nutritious" stripped as subjective; "across the U.S." stripped.)
+NOTES: "high-quality, safe, and nutritious" stripped (subjective); "across the U.S." stripped.
 
 INPUT name: Adventist Health Tulare
-INPUT description: Adventist Health Tulare is a faith-based health system providing primary, urgent, and specialty care across the West Coast and Hawaii.
+INPUT description: Adventist Health Tulare is a faith-based health system providing comprehensive primary, urgent, and specialty care across the West Coast and Hawaii.
 GOOD operations_summary: operates a hospital in Tulare providing primary, urgent, and specialty care
-(Notes: "faith-based" stripped as positioning; "across the West Coast and Hawaii" stripped — region/state forbidden; the city Tulare is in the entity name and stays.)
+NOTES: "faith-based" stripped (values positioning); "comprehensive" stripped (scope inflation); "across the West Coast and Hawaii" stripped (region/state forbidden).
 
 INPUT name: Porterville Developmental Center
 INPUT description: Porterville Developmental Center is California's only state-operated facility serving individuals with intellectual disabilities who have legal system contact.
 GOOD operations_summary: operates a state-run residential facility in Porterville serving individuals with intellectual disabilities and legal-system involvement
-(Notes: "California's only" stripped — state name AND superlative framing; city Porterville kept from the entity name.)
+NOTES: "California's only" stripped (state name AND superlative framing); city kept.
 
 INPUT name: Woolf Farming Company of California
 INPUT description: Woolf Farming Company of California grows, processes, and delivers natural products to the food chain as a certified B Corp in California.
 GOOD operations_summary: grows, processes, and delivers agricultural products to the food chain
-(Notes: "California" stripped from BOTH the trailing "in California" AND any tail-references; "certified B Corp" stripped as positioning. The state name in the company's own name is fine because the template doesn't repeat the company name in the verb phrase.)
+NOTES: "California" stripped; "certified B Corp" stripped (values positioning).
+
+INPUT name: Roseburg Forest Products
+INPUT description: Roseburg Forest Products manufactures diverse wood products like lumber, plywood, and engineered wood for North American construction and furniture markets.
+GOOD operations_summary: manufactures wood products including lumber, plywood, and engineered wood for construction and furniture markets
+NOTES: "diverse" stripped (filler quantifier); "North American" stripped (continent forbidden).
+
+INPUT name: Hussmann Corporation
+INPUT description: Hussmann is a manufacturer of refrigerated display merchandisers and refrigeration systems, providing installation and service to food retailers worldwide.
+GOOD operations_summary: manufactures refrigerated display merchandisers and refrigeration systems for food retailers, with installation and service
+NOTES: "worldwide" stripped (global scope forbidden).
+
+INPUT name: KARL STORZ Endoscopy-America
+INPUT description: KARL STORZ Endoscopy-America sells endoscopes, instruments, imaging systems, electromechanical devices, and OR1 integration solutions in El Segundo to customers across all states.
+GOOD operations_summary: sells endoscopes, imaging systems, and OR1 integration solutions to medical customers from El Segundo
+NOTES: city El Segundo kept; "across all states" stripped (multi-state scope forbidden).
+
+INPUT name: Universal Music Group
+INPUT description: Universal Music Group specializes in music-based entertainment serving artists and fans globally, leveraging insights for brand opportunities.
+GOOD operations_summary: produces and distributes recorded music and music-publishing services for artists and consumers
+NOTES: "globally" stripped; "leveraging insights for brand opportunities" stripped (corporate puffery).
+
+INPUT name: Suddenlink Communications
+INPUT description: Suddenlink provided cable television, high-speed internet, and phone services to residential and business customers.
+GOOD operations_summary: operates as a cable, internet, and phone service provider for residential and business customers
+NOTES: past-tense "provided" rewritten to present-tense.
+
+INPUT name: Marquez Brothers International
+INPUT description: Marquez Brothers International delivers authentic food products including cheeses, creams, yogurts, meats, and desserts maintaining high standards of quality.
+GOOD operations_summary: produces and distributes cheeses, yogurts, creams, meats, and desserts for retail and food-service customers
+NOTES: "authentic" stripped (values positioning); "maintaining high standards of quality" stripped (quality boasting).
+
+INPUT name: P2S
+INPUT description: P2S designs sustainable mechanical, electrical, plumbing, and technology solutions for educational, healthcare, and government sectors.
+GOOD operations_summary: designs mechanical, electrical, plumbing, and technology systems for educational, healthcare, and government facilities
+NOTES: "sustainable" stripped (values positioning).
+
+INPUT name: Alcon Research
+INPUT description: Alcon Research develops and manufactures innovative life-changing vision products including Clareon TruPlus IOLs.
+GOOD operations_summary: develops and manufactures vision products including intraocular lenses
+NOTES: "innovative" and "life-changing" stripped (novelty boasting).
 
 INPUT name: Sun Pacific
 INPUT description: Sun Pacific grows, packs, and ships fresh produce including mandarins, kiwi, oranges, grapes, and lemons.
 GOOD operations_summary: grows, packs, and ships fresh produce including mandarins, oranges, grapes, and lemons
 
-INPUT name: WNA
+INPUT name: WNA Inc.
 INPUT description: WNA Inc. is a manufacturer of disposable plastic tableware and food service products based in Chicopee, Massachusetts.
 GOOD operations_summary: manufactures disposable plastic tableware and food-service products in Chicopee
-(Notes: city kept; "Massachusetts" stripped.)
+NOTES: city Chicopee kept; "Massachusetts" stripped.
 
-INPUT name: Roseburg Forest Products
-INPUT description: Roseburg Forest Products manufactures diverse wood products like lumber, plywood, and engineered wood for North American construction and furniture markets.
-GOOD operations_summary: manufactures wood products including lumber, plywood, and engineered wood for construction and furniture markets
-(Notes: "diverse" stripped as subjective filler; "North American" stripped — continent forbidden.)
+INPUT name: Holiday Market
+INPUT description: Holiday Market is a grocery store chain providing fresh produce, meats, and deli items across Northern California and Southern Oregon.
+GOOD operations_summary: operates a grocery store chain providing fresh produce, meats, and deli items
+NOTES: "across Northern California and Southern Oregon" stripped — multi-state scope is forbidden even when it is the description's central scope claim. The chain still has a clear identity ("a grocery store chain") without geographic scope.
 
-Return ONLY a JSON array of objects, one per input, in the same order: [{"name": "...", "operations_summary": "..."}]
+INPUT name: Shasta County Road Department
+INPUT description: The Shasta County Road Department manages county infrastructure including roads, bridges, traffic signals, and signs, and oversees garbage services for Shasta County residents.
+GOOD operations_summary: manages public infrastructure including roads, bridges, traffic signals, and signs, and oversees garbage services
+NOTES: "for Shasta County residents" stripped; "county" within "county fleet" / "to county residents" is forbidden even though the entity is a county agency. The entity name "Shasta County Road Department" already conveys the jurisdiction; the verb phrase describes the work.
+
+INPUT name: Providence St Joseph Hospital
+INPUT description: Providence St Joseph Hospital provides comprehensive medical services through hospitals, urgent care, and virtual appointments.
+GOOD operations_summary: provides medical services through hospitals, urgent care, and virtual appointments
+NOTES: "comprehensive" stripped (scope inflation). Especially common in hospital descriptions; never carry it through.
+
+INPUT name: Klamath National Forest
+INPUT description: Klamath National Forest manages national forest and grassland lands, offering diverse recreation and focusing on forest health.
+GOOD operations_summary: manages national forest and grassland lands, offering recreation and managing forest health
+NOTES: "diverse" stripped (filler quantifier). The phrase "offering diverse X" is almost always inflation; just say "offering X".
+
+INPUT name: Sierra Pacific Industries
+INPUT description: Sierra Pacific Industries produces wood products including lumber, millwork, windows, doors, and fencing from sustainably managed forests.
+GOOD operations_summary: produces wood products including lumber, millwork, windows, doors, and fencing
+NOTES: "from sustainably managed forests" stripped (values positioning). Strip the entire trailing values clause; the verb phrase describes the products, not the supply chain virtue.
+
+================================================================================
+OUTPUT FORMAT
+================================================================================
+
+Return ONLY a JSON array of objects, one per input, in the same order:
+[{"name": "...", "operations_summary": "..."}]
+
+No prose before or after. No markdown fences. No explanation.
 
 EMPLOYERS:"""
 
@@ -182,9 +268,7 @@ def _build_prompt(batch: list[dict]) -> str:
 
 def _normalize(summary: str) -> str:
     """Trim and strip a trailing period — the template adds the final period
-    when assembling ``f"{name} {summary}."``. The LLM occasionally emits
-    one anyway despite the prompt rule; rather than re-prompt, we just
-    drop it."""
+    when assembling ``f"{name} {summary}."``."""
     s = (summary or "").strip()
     while s.endswith("."):
         s = s[:-1].rstrip()
@@ -194,12 +278,7 @@ def _normalize(summary: str) -> str:
 async def _generate_batch_async(
     client, batch: list[dict], label: str
 ) -> dict[str, str] | None:
-    """Async Gemini call. Returns {name: operations_summary} or None on failure.
-
-    Same fail-fast shape as populate_description._generate_batch_async:
-      * Transient (5xx/429/rate) → one retry after _TRANSIENT_RETRY_SLEEP
-      * Anything else → immediate None; caller flags the batch's employers
-    """
+    """Async Gemini call. Returns {name: operations_summary} or None on failure."""
     prompt = _build_prompt(batch)
 
     response = None
@@ -325,16 +404,22 @@ def characterize(
     limit: int | None = None,
     regenerate: bool = False,
     concurrency: int = _DEFAULT_CONCURRENCY,
+    region: str | None = None,
 ) -> dict:
     """Populate ``operations_summary`` on every employer with a description.
 
     Append-only by default (only fills employers without one). Pass
-    ``regenerate=True`` to overwrite existing summaries.
+    ``regenerate=True`` to overwrite existing summaries. Pass
+    ``region`` to scope to employers whose ``regions`` list contains
+    the given COE region code (e.g., "FN", "Bay", "OC").
     """
     with open(EMPLOYERS_PATH) as f:
         employers = json.load(f)
 
-    has_description = [e for e in employers if e.get("description")]
+    pool = employers
+    if region:
+        pool = [e for e in pool if region in (e.get("regions") or [])]
+    has_description = [e for e in pool if e.get("description")]
     if regenerate:
         targets = has_description
     else:
@@ -345,9 +430,10 @@ def characterize(
     batches = [targets[i:i + _BATCH_SIZE] for i in range(0, len(targets), _BATCH_SIZE)]
     n_batches = len(batches)
 
-    PROGRESS_LOG.write_text("")  # truncate
+    PROGRESS_LOG.write_text("")
     state = {
         "started_at": _now_iso(),
+        "region_filter": region,
         "targets": len(targets),
         "batches_total": n_batches,
         "batches_done": 0,
@@ -360,7 +446,7 @@ def characterize(
     _progress(
         f"Started characterize: {len(targets)} targets in {n_batches} batches "
         f"of {_BATCH_SIZE}, concurrency={concurrency} "
-        f"(regenerate={regenerate}, limit={limit})"
+        f"(regenerate={regenerate}, region={region}, limit={limit})"
     )
 
     if not targets:
@@ -397,6 +483,11 @@ def main() -> None:
         help="Overwrite existing operations_summary values; default is append-only.",
     )
     parser.add_argument(
+        "--region", type=str, default=None,
+        help="Scope to employers whose regions list contains this COE region code "
+             "(FN, CVML, Bay, SCC, LA, IE/D, OC, SD/I).",
+    )
+    parser.add_argument(
         "--concurrency", type=int, default=_DEFAULT_CONCURRENCY,
         help=f"Concurrent batches in flight (default {_DEFAULT_CONCURRENCY})",
     )
@@ -408,6 +499,7 @@ def main() -> None:
         limit=args.limit,
         regenerate=args.regenerate,
         concurrency=args.concurrency,
+        region=args.region,
     )
 
     print("=" * 60)
