@@ -5,7 +5,7 @@ name: Backend unit tests
 # calls, no network. Always runs on every PR (and pushes to main) so
 # branch protection's required-check rule is satisfied even on UI-only
 # PRs that don't touch backend/. With uv-driven installs and a cached
-# uv resolution directory the workflow completes in ~10s.
+# uv resolution directory the workflow completes in ~10s on warm cache.
 
 on:
   pull_request:
@@ -25,16 +25,20 @@ jobs:
           enable-cache: true
           cache-dependency-glob: 'backend/requirements.txt'
 
-      - name: Set up Python
+      - name: Set up Python 3.11
+        # Prod runs on 3.11; we test against the same major version.
+        # uv venv below pins the venv to this interpreter.
         run: uv python install 3.11
 
       - name: Install dependencies
-        # uv resolves and installs an order of magnitude faster than pip
-        # (~3-5s vs 30-45s on this requirements set). --system installs
-        # against the runner's Python rather than creating a venv we
-        # don't need for a single test invocation.
-        run: uv pip install --system -r backend/requirements.txt pytest
+        # Use a uv-managed venv rather than --system: Ubuntu runners
+        # mark /usr as externally-managed (PEP 668), and the venv is
+        # the idiomatic uv pattern anyway. uv resolves and installs
+        # an order of magnitude faster than pip.
+        run: |
+          uv venv --python 3.11
+          uv pip install -r backend/requirements.txt pytest
 
       - name: Run unit tests
         working-directory: backend
-        run: python -m pytest -v
+        run: ../.venv/bin/python -m pytest -v
