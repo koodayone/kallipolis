@@ -157,12 +157,6 @@ export async function getPartnershipLandscape(college: string): Promise<ApiPartn
   return res.json();
 }
 
-export async function getEmployerPipeline(employer: string, college: string): Promise<{ pipeline_size: number }> {
-  const res = await fetch(`${API_BASE}/partnerships/employer-pipeline?employer=${encodeURIComponent(employer)}&college=${encodeURIComponent(college)}`);
-  if (!res.ok) throw new Error("Failed to fetch pipeline data");
-  return res.json();
-}
-
 // Occupation card in the picker: title, SOC, regional demand fields, plus
 // the institutional curriculum-alignment depth so the coordinator can see
 // at-a-glance how strongly the college's curriculum is aligned with each
