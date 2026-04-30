@@ -162,7 +162,7 @@ async def run_course_query(question: str, college: str) -> tuple[list[CourseSumm
             )
             raise ValueError(
                 "Sorry, I couldn't translate that question. "
-                "Try one of the example queries above, or rephrase your question."
+                "Try one of the example queries, or rephrase your question."
             )
         records = execute_spec(result)
         cypher = result.cypher

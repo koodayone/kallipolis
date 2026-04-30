@@ -166,7 +166,7 @@ async def run_student_query(question: str, college: str) -> tuple[list[StudentSu
             )
             raise ValueError(
                 "Sorry, I couldn't translate that question. "
-                "Try one of the example queries above, or rephrase your question."
+                "Try one of the example queries, or rephrase your question."
             )
         records = execute_spec(result)
         cypher = result.cypher
