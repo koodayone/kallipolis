@@ -196,6 +196,113 @@ export default function QueryShell<T>({
     e.currentTarget.style.boxShadow = "none";
   }, []);
 
+  // Help chevron + expandable example panel are rendered next to BOTH
+  // the initial-state input and the results-state input, so the user
+  // can re-summon the example queries after submitting (without first
+  // clearing the result set). Extracted as render fns so the markup
+  // doesn't drift between the two call sites.
+  const renderHelpChevron = () => (
+    <motion.button
+      onClick={() => { setHelpOpen((prev) => !prev); setHelpClicked(true); }}
+      style={{
+        position: "absolute", right: "16px", top: "50%", transform: "translateY(-50%)",
+        background: "none", border: "none", cursor: "pointer", padding: "4px",
+        display: "flex", alignItems: "center", justifyContent: "center",
+        animation: !helpClicked && !helpOpen ? "helpGlow 2.5s ease-in-out infinite" : "none",
+      }}
+      aria-label="Show example queries"
+    >
+      {!helpClicked && (
+        <style>{`
+          @keyframes helpGlow {
+            0%, 100% { filter: drop-shadow(0 0 2px ${school.brandColorLight}30); }
+            50% { filter: drop-shadow(0 0 6px ${school.brandColorLight}70); }
+          }
+        `}</style>
+      )}
+      <motion.svg width="20" height="20" viewBox="0 0 16 16" fill="none"
+        initial={{ opacity: 0.4 }}
+        animate={{ opacity: helpClicked ? 0.55 : 1 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        whileHover={{ opacity: 0.85 }}
+      >
+        <circle cx="8" cy="8" r="7" strokeWidth="1.2"
+          stroke={helpOpen ? school.brandColorLight : "rgba(255,255,255,0.55)"}
+          style={{ transition: "stroke 1.8s ease-in-out" }}
+        />
+        <text x="8" y="11.5" textAnchor="middle"
+          fontSize="10" fontWeight="600" fontFamily={FONT}
+          fill={helpOpen ? school.brandColorLight : "rgba(255,255,255,0.55)"}
+          style={{ transition: "fill 1.8s ease-in-out" }}
+        >?</text>
+        {!helpOpen && (
+          <>
+            <motion.circle cx="8" cy="8" r="7" strokeWidth="1.2" fill="none"
+              stroke={school.brandColorLight}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: [0, 0.6, 0] }}
+              transition={{ duration: 2.5, ease: "easeInOut", times: [0, 0.4, 1] }}
+            />
+            <motion.text x="8" y="11.5" textAnchor="middle"
+              fontSize="10" fontWeight="600" fontFamily={FONT}
+              fill={school.brandColorLight}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: [0, 0.6, 0] }}
+              transition={{ duration: 2.5, ease: "easeInOut", times: [0, 0.4, 1] }}
+            >?</motion.text>
+          </>
+        )}
+      </motion.svg>
+    </motion.button>
+  );
+
+  const renderHelpPanel = () => (
+    <AnimatePresence>
+      {helpOpen && mode === "ask" && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          exit={{ opacity: 0, height: 0 }}
+          transition={{ duration: 0.2 }}
+          style={{ overflow: "hidden" }}
+        >
+          <div style={{
+            background: "rgba(255,255,255,0.04)",
+            border: "1px solid rgba(255,255,255,0.10)",
+            borderTop: "none",
+            borderRadius: "0 0 16px 16px",
+          }}>
+            <div style={{
+              padding: "12px 24px 4px",
+              fontFamily: FONT, fontSize: "10px", fontWeight: 600,
+              letterSpacing: "0.1em", textTransform: "uppercase",
+              color: school.brandColorLight, opacity: 0.5,
+            }}>
+              Try asking...
+            </div>
+            {examples.map((example, idx) => (
+              <button key={example}
+                onClick={() => handleExample(example)}
+                style={{
+                  display: "block", width: "100%", textAlign: "left",
+                  padding: "12px 24px", fontFamily: FONT, fontSize: "13px",
+                  color: "rgba(255,255,255,0.45)", background: "transparent",
+                  border: "none",
+                  borderBottom: idx < examples.length - 1 ? "1px solid rgba(255,255,255,0.06)" : "none",
+                  cursor: "pointer", transition: "color 0.15s, background 0.15s",
+                }}
+                onMouseEnter={(e) => { const el = e.currentTarget; el.style.color = "rgba(255,255,255,0.7)"; el.style.background = "rgba(255,255,255,0.03)"; }}
+                onMouseLeave={(e) => { const el = e.currentTarget; el.style.color = "rgba(255,255,255,0.45)"; el.style.background = "transparent"; }}
+              >
+                {example}
+              </button>
+            ))}
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+
   return (
     <div ref={rootRef}>
       <AtlasHeader
@@ -236,106 +343,10 @@ export default function QueryShell<T>({
                     onFocus={onInputFocus}
                     onBlur={onInputBlur}
                   />
-                  {mode === "ask" && (
-                    <motion.button
-                      onClick={() => { setHelpOpen((prev) => !prev); setHelpClicked(true); }}
-                      style={{
-                        position: "absolute", right: "16px", top: "50%", transform: "translateY(-50%)",
-                        background: "none", border: "none", cursor: "pointer", padding: "4px",
-                        display: "flex", alignItems: "center", justifyContent: "center",
-                        animation: !helpClicked && !helpOpen ? "helpGlow 2.5s ease-in-out infinite" : "none",
-                      }}
-                      aria-label="Show example queries"
-                    >
-                      {!helpClicked && (
-                        <style>{`
-                          @keyframes helpGlow {
-                            0%, 100% { filter: drop-shadow(0 0 2px ${school.brandColorLight}30); }
-                            50% { filter: drop-shadow(0 0 6px ${school.brandColorLight}70); }
-                          }
-                        `}</style>
-                      )}
-                      <motion.svg width="20" height="20" viewBox="0 0 16 16" fill="none"
-                        initial={{ opacity: 0.4 }}
-                        animate={{ opacity: helpClicked ? 0.55 : 1 }}
-                        transition={{ duration: 1.5, ease: "easeOut" }}
-                        whileHover={{ opacity: 0.85 }}
-                      >
-                        <circle cx="8" cy="8" r="7" strokeWidth="1.2"
-                          stroke={helpOpen ? school.brandColorLight : "rgba(255,255,255,0.55)"}
-                          style={{ transition: "stroke 1.8s ease-in-out" }}
-                        />
-                        <text x="8" y="11.5" textAnchor="middle"
-                          fontSize="10" fontWeight="600" fontFamily={FONT}
-                          fill={helpOpen ? school.brandColorLight : "rgba(255,255,255,0.55)"}
-                          style={{ transition: "fill 1.8s ease-in-out" }}
-                        >?</text>
-                        {!helpOpen && (
-                          <>
-                            <motion.circle cx="8" cy="8" r="7" strokeWidth="1.2" fill="none"
-                              stroke={school.brandColorLight}
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: [0, 0.6, 0] }}
-                              transition={{ duration: 2.5, ease: "easeInOut", times: [0, 0.4, 1] }}
-                            />
-                            <motion.text x="8" y="11.5" textAnchor="middle"
-                              fontSize="10" fontWeight="600" fontFamily={FONT}
-                              fill={school.brandColorLight}
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: [0, 0.6, 0] }}
-                              transition={{ duration: 2.5, ease: "easeInOut", times: [0, 0.4, 1] }}
-                            >?</motion.text>
-                          </>
-                        )}
-                      </motion.svg>
-                    </motion.button>
-                  )}
+                  {mode === "ask" && renderHelpChevron()}
                 </div>
 
-                <AnimatePresence>
-                  {helpOpen && mode === "ask" && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.2 }}
-                      style={{ overflow: "hidden" }}
-                    >
-                      <div style={{
-                        background: "rgba(255,255,255,0.04)",
-                        border: "1px solid rgba(255,255,255,0.10)",
-                        borderTop: "none",
-                        borderRadius: "0 0 16px 16px",
-                      }}>
-                        <div style={{
-                          padding: "12px 24px 4px",
-                          fontFamily: FONT, fontSize: "10px", fontWeight: 600,
-                          letterSpacing: "0.1em", textTransform: "uppercase",
-                          color: school.brandColorLight, opacity: 0.5,
-                        }}>
-                          Try asking...
-                        </div>
-                        {examples.map((example, idx) => (
-                          <button key={example}
-                            onClick={() => handleExample(example)}
-                            style={{
-                              display: "block", width: "100%", textAlign: "left",
-                              padding: "12px 24px", fontFamily: FONT, fontSize: "13px",
-                              color: "rgba(255,255,255,0.45)", background: "transparent",
-                              border: "none",
-                              borderBottom: idx < examples.length - 1 ? "1px solid rgba(255,255,255,0.06)" : "none",
-                              cursor: "pointer", transition: "color 0.15s, background 0.15s",
-                            }}
-                            onMouseEnter={(e) => { const el = e.currentTarget; el.style.color = "rgba(255,255,255,0.7)"; el.style.background = "rgba(255,255,255,0.03)"; }}
-                            onMouseLeave={(e) => { const el = e.currentTarget; el.style.color = "rgba(255,255,255,0.45)"; el.style.background = "transparent"; }}
-                          >
-                            {example}
-                          </button>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {renderHelpPanel()}
               </div>
 
               {hasSearch && (
@@ -383,23 +394,30 @@ export default function QueryShell<T>({
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}
             style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
 
-            <div>
-              <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-                <input ref={inputRef} type="text" value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  onKeyDown={(e) => { if (e.key === "Enter") handleSubmit(); }}
-                  placeholder={placeholder}
-                  style={{
-                    flex: 1, padding: "14px 20px", fontFamily: FONT, fontSize: "14px",
-                    color: "#f0eef4", background: "rgba(255,255,255,0.04)",
-                    border: "1px solid rgba(255,255,255,0.10)", borderRadius: "12px",
-                    outline: "none", transition: "border-color 0.2s, box-shadow 0.2s",
-                  }}
-                  onFocus={onInputFocus}
-                  onBlur={onInputBlur}
-                />
+            <div ref={helpRef}>
+              <div style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
+                <div style={{ flex: 1, position: "relative" }}>
+                  <input ref={inputRef} type="text" value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    onKeyDown={(e) => { if (e.key === "Enter") handleSubmit(); }}
+                    placeholder={placeholder}
+                    style={{
+                      width: "100%",
+                      padding: mode === "ask" ? "14px 44px 14px 20px" : "14px 20px",
+                      fontFamily: FONT, fontSize: "14px",
+                      color: "#f0eef4", background: "rgba(255,255,255,0.04)",
+                      border: "1px solid rgba(255,255,255,0.10)",
+                      borderRadius: helpOpen && mode === "ask" ? "12px 12px 0 0" : "12px",
+                      outline: "none", transition: "border-color 0.2s, box-shadow 0.2s, border-radius 0.15s",
+                    }}
+                    onFocus={onInputFocus}
+                    onBlur={onInputBlur}
+                  />
+                  {mode === "ask" && renderHelpChevron()}
+                  {renderHelpPanel()}
+                </div>
                 <button onClick={handleReset}
-                  style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)", background: "none", border: "none", cursor: "pointer", padding: "8px", transition: "color 0.15s" }}
+                  style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.4)", background: "none", border: "none", cursor: "pointer", padding: "16px 8px", transition: "color 0.15s" }}
                   onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.8)"; }}
                   onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.4)"; }}
                 >Clear</button>

@@ -32,17 +32,40 @@ const COURSE_COLUMNS: Column[] = [
   { label: "Name", width: "1fr" },
 ];
 
+// Per-college CTE-leaning department substituted into the
+// "in the 'X' department" example. Each value is a department name
+// that exists at the school, so the example returns real records
+// rather than the empty set the previous numeric example produced for
+// some colleges. Mirrors the students FOCUS_BY_COLLEGE pattern.
+const DEPT_BY_COLLEGE: Record<string, string> = {
+  "Shasta College": "early childhood education",
+  "Foothill College": "accounting",
+  "College of the Sequoias": "child development",
+  "Oxnard College": "fire technology",
+  "Compton College": "nursing",
+  "Irvine Valley College": "accounting",
+  "College of the Desert": "nursing",
+  "San Diego City College": "business",
+};
+
+const DEPT_DEFAULT = "business";
+
 // Example queries shown as suggestions. Each demonstrates one supported
-// query shape — substitution-on-department, substitution-on-skill,
-// numeric threshold, fixed-keyword flag — so a coordinator scanning
-// them learns the grammar by example. Quoted slots are substitutable;
-// unquoted phrases are fixed institutional categories.
-const EXAMPLES = [
-  "Courses in 'computer science'",
-  "Courses that develop 'manufacturing' skills",
-  "Courses with at least 4 units",
-  "Career and technical education courses",
-];
+// query shape — bare-noun department search, skill substitution, the
+// column-name "in the 'X' department" form, and a fixed-keyword flag.
+// Slot 3 substitutes a per-college CTE-flavored department to guarantee
+// non-zero results across schools and to teach the column-name
+// vocabulary explicitly. Quoted slots are substitutable; unquoted
+// phrases are fixed institutional categories.
+function buildExamples(schoolName: string): string[] {
+  const dept = DEPT_BY_COLLEGE[schoolName] ?? DEPT_DEFAULT;
+  return [
+    "Courses in 'computer science'",
+    "Courses that develop 'manufacturing' skills",
+    `Courses in the '${dept}' department`,
+    "Career and technical education courses",
+  ];
+}
 
 type Props = { school: SchoolConfig; onBack: () => void };
 
@@ -191,7 +214,7 @@ export default function CoursesView({ school, onBack }: Props) {
     <QueryShell<CourseSummary>
       school={school} formName="Courses" onBack={onBack}
       placeholder={`Ask me a question about ${school.name} courses.`}
-      examples={EXAMPLES} queryFn={queryFn} loadInitialData={loadInitialData}
+      examples={buildExamples(school.name)} queryFn={queryFn} loadInitialData={loadInitialData}
       renderInitialContent={renderInitialContent} renderResultsContent={renderResultsContent}
       renderSearchContent={renderSearchContent}
       onQueryStart={onQueryStart} onReset={onReset} rootRef={rootRef}
