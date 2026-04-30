@@ -4,9 +4,19 @@ The narrative is now produced by deterministic templates (see
 ``narrative_templates.py``); the LLM-drift checks that used to live
 here have been retired along with the LLM. The only remaining
 runtime eval is a structural check on the SwpEvidence row's totals.
-This module covers that check.
 
 Per-template behavior is tested in ``test_narrative_templates.py``.
+
+Coverage:
+  - evaluate_proposal: a clean proposal passes with zero violations
+  - swp_demand_math: total_demand drift from sum of occupation
+    annual_openings is flagged
+  - swp_supply_math: total_supply drift from sum of supply_estimates
+    annual_projected_supply is flagged
+  - swp_gap_math: gap drift from (total_demand - total_supply) is
+    flagged
+  - tolerance: floating-point drift below 0.01 in supply totals does
+    not fire the supply-math rule
 """
 
 from partnerships.evals import evaluate_proposal

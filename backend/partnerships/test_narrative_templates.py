@@ -2,15 +2,33 @@
 
 These tests are the contract on every formatting decision the
 institutional voice depends on. Each test pins down a specific
-behavior: pluralization, verb agreement, skill-name casing with the
-acronym carve-out, defensive fallbacks for missing data, the single-
-department singular form in Curriculum Alignment, the empty-skills
-fallback in Occupational Demand, and the un-characterized-employer
-fallback in the Executive Summary.
+behavior. A failing test means a stylistic decision changed. The PR
+diff is the explicit consent to that change — these are not flaky
+like the LLM versions; deterministic output means a regression is a
+real regression.
 
-A failing test means a stylistic decision changed. The PR diff is the
-explicit consent to that change — these are not flaky like the LLM
-versions; deterministic output means a regression is a real regression.
+Coverage:
+  - fmt_count: zero/one/many pluralization, thousands separator, custom
+    irregular plurals
+  - fmt_have / fmt_are: verb-agreement helpers for singular vs plural
+    count subjects
+  - fmt_wage: dollar-sign formatting and the unreported-fallback string
+  - fmt_openings: singular/plural openings with the unreported fallback
+  - fmt_demand_clause: composes the wage + openings noun phrase, with
+    each missing-figure case
+  - _normalize_skill: lowercases skills with the all-caps acronym
+    carve-out (HVAC, OSHA, HACCP, EHR, BLS)
+  - fmt_skills_list: empty / one / two / three+ items with Oxford comma
+    and acronym preservation
+  - build_executive_summary: full happy-path snapshot, singular-student
+    pipeline verb agreement, sector and workforce fallbacks for
+    un-characterized employers
+  - build_occupational_demand: full happy-path snapshot, missing-wage
+    case, no-core-skills honest fallback
+  - build_curriculum_alignment: plural and singular department forms
+  - build_student_impact: plural and singular student forms
+  - build_narrative: composes all four sections, deterministic across
+    repeated calls
 """
 
 import pytest
