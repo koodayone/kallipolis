@@ -14,7 +14,7 @@ Defined in `backend/students/api.py`, mounted at `/students`.
 
 | Method | Path | Purpose | Response model |
 |---|---|---|---|
-| `GET /students` | List all students enrolled at the college, ordered by courses completed | `list[StudentSummary]` |
+| `GET /students` | Paginated list of students enrolled at the college, ordered by courses completed. Query params: `college` (required), `limit` (default 100, max 5000), `offset` (default 0) | `StudentSummaryPage` |
 | `GET /students/{student_uuid}` | Full enrollment history and derived skill set for one student | `StudentDetail` |
 | `POST /students/query` | Natural-language query translated to Cypher with safety gate | `StudentQueryResponse` |
 
