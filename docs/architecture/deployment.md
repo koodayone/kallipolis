@@ -43,12 +43,6 @@ The VM's service account (`kallipolis-vm@kallipolis-preview.iam.gserviceaccount.
 
 Secret rotation is a two-step: add a new version in Secret Manager, then `systemctl restart kallipolis-env.service kallipolis.service` on the VM.
 
-## Backups
-
-A cron job on the VM fires a backup script nightly at 09:15 UTC (02:15 Pacific). The script stops the Neo4j container, runs `neo4j-admin database dump` against the stopped volume via a throwaway helper container, copies the dump to a tmpfs path, restarts Neo4j, and uploads the file to `gs://kallipolis-backups-preview/neo4j-<timestamp>.dump`. The bucket has a lifecycle policy that moves objects to Nearline storage after 30 days and deletes them after 90, so backup storage cost stays bounded.
-
-Backend downtime during a backup is approximately 30 seconds (the Neo4j stop/dump/start window). The backend container stays up but returns errors on queries during that window; in the preview's low-traffic reality, this is acceptable. For higher-availability operation, the backup would shift to an online dump via the enterprise Neo4j feature, or the deployment would move to managed Neo4j Aura.
-
 ## Deploy loop
 
 Changes flow through `git push` to `main`. Two different paths from there:
@@ -59,16 +53,205 @@ Changes flow through `git push` to `main`. Two different paths from there:
 
 This asymmetry is intentional. The atlas is a static bundle — safe to auto-deploy on every push. The backend carries session state in Docker volumes and memory-resident Neo4j driver pools; a manual step ensures no unintended restart mid-request.
 
-## Data refresh
+## Data lifecycle
 
-The Neo4j graph on the VM is a snapshot of the local development graph. When the local graph evolves — new colleges onboarded, pipeline methodology updated, employer data re-validated — the production graph is refreshed via dump/load, not by re-running the pipeline against production:
+The graph is the most expensive artifact this project produces. Pipeline runs cost real LLM dollars and produce hand-curated state that cannot be cheaply re-derived. This section is the operator handbook for that artifact: where it lives, how to snapshot it, how to restore it, how to migrate it to prod, and what to do when something is wrong. Designed to be readable end-to-end by a fresh operator (or another Claude session) and used as a copy-pasteable runbook.
 
-1. Local: `docker compose stop neo4j && docker run --rm -v kallipolis_neo4j_data:/data neo4j:5.18-community neo4j-admin database dump neo4j --to-path=/data/dumps --overwrite-destination=true`, then extract the dump file from the volume.
-2. Transfer: `gcloud compute scp --zone=us-central1-a --tunnel-through-iap neo4j.dump kallipolis-api:/tmp/`.
-3. VM: `docker compose stop neo4j`, copy the dump into the volume via a helper container, `neo4j-admin database load neo4j --from-path=/data/dumps --overwrite-destination=true`, `docker compose up -d`.
-4. Verify node and relationship counts match the local source.
+### Persistence model
 
-Preview carries no user-generated data, so any time is a valid maintenance window.
+| Layer | Data location | Survives | Does NOT survive |
+|---|---|---|---|
+| Local Docker volume | Named volume `kallipolis_neo4j_data` at `/var/lib/docker/volumes/kallipolis_neo4j_data/_data` | Container restarts, `docker compose down`, daemon restarts | `docker compose down -v`, `docker volume rm`, Docker Desktop reset, disk failure |
+| Local snapshots | Files under `backups/` in the repo (gitignored) | Anything that doesn't `rm` the directory | `rm -rf backups/`, `git clean -fdx` from repo root, disk failure |
+| Local snapshots offsite | `gs://kallipolis-backups-preview/local/` (uploaded ad-hoc) | Anything that doesn't delete the GCS object | Manual deletion, lifecycle expiry (30d nearline / 90d delete) |
+| Prod Docker volume | Named volume `kallipolis_neo4j_data` on the VM | VM reboots, container restarts, `docker compose down` | `docker compose down -v`, VM destroy |
+| Prod snapshots offsite | `gs://kallipolis-backups-preview/neo4j-<timestamp>.dump` from the nightly cron | Anything that doesn't delete the GCS object | Manual deletion, lifecycle expiry (30d nearline / 90d delete) |
+
+Two important asymmetries:
+
+1. **Local has no automated backup.** Prod has the nightly cron uploading to GCS. Local depends on operator discipline — every meaningful pipeline run should produce a fresh snapshot via the procedure below.
+2. **Snapshots are versioned by git SHA.** The dump file alone is opaque; the manifest written alongside it captures the git SHA of the code that produced the graph, the node/relationship counts at snapshot time, the dump SHA-256 checksum, and the neo4j version. A snapshot without its manifest is significantly less useful — always keep the pair together.
+
+### Nightly prod cron
+
+A cron job on the VM fires at 09:15 UTC (02:15 Pacific). The script stops the Neo4j container, runs `neo4j-admin database dump` against the stopped volume via a throwaway helper container, copies the dump to a tmpfs path, restarts Neo4j, and uploads the file to `gs://kallipolis-backups-preview/neo4j-<timestamp>.dump`. The bucket has a 30-day nearline / 90-day delete lifecycle policy. Backend downtime during a backup is approximately 30 seconds — acceptable in the preview's low-traffic reality. For higher-availability operation, the backup would shift to an online dump via the enterprise Neo4j feature, or the deployment would move to managed Neo4j Aura.
+
+### Take a local snapshot
+
+When to run this: after any pipeline run that meaningfully changes the graph; before any prod migration; before any risky local operation that might corrupt data; on any cadence that matches "I cannot afford to lose this" — at minimum weekly during active development.
+
+Downtime: ~5–10 seconds (neo4j stop + dump + restart). Backend on `localhost:8000` returns errors during that window.
+
+```bash
+cd /Users/dayonekoo/Desktop/code/kallipolis
+
+# 1. Establish the snapshot identity
+TS=$(date -u +%Y-%m-%dT%H-%MZ)
+SHA=$(git rev-parse --short HEAD)
+DUMP_NAME="neo4j-${TS}--${SHA}.dump"
+MANIFEST_NAME="neo4j-${TS}--${SHA}.manifest.json"
+mkdir -p backups
+
+# 2. Stop neo4j (downtime starts here)
+docker compose stop neo4j
+
+# 3. Offline dump via helper container, writing directly to the host backups dir
+docker run --rm \
+  -v kallipolis_neo4j_data:/data \
+  -v "$(pwd)/backups":/out \
+  neo4j:5.18-community \
+  neo4j-admin database dump neo4j --to-path=/out --overwrite-destination=true
+
+# 4. Rename to the versioned filename
+mv backups/neo4j.dump "backups/${DUMP_NAME}"
+
+# 5. Restart neo4j (downtime ends)
+docker compose up -d neo4j
+```
+
+The dump file is now in `backups/`. Next, write the manifest. The manifest format is JSON with these fields (see `backups/neo4j-2026-04-30T02-20Z--b8b509f.manifest.json` for a working example):
+
+| Field | Source | Why it matters |
+|---|---|---|
+| `schema_version` | Literal `1` for now | Lets future format changes be detected |
+| `snapshot_timestamp_utc` | `date -u +%Y-%m-%dT%H:%MZ` | Identifies when this state existed |
+| `dump_file` | The `.dump` filename | Pairs the manifest to its dump |
+| `dump_size_bytes` | `stat -f%z <dump>` | Sanity check on file integrity |
+| `dump_sha256` | `shasum -a 256 <dump>` | Detects bit-rot or transfer corruption |
+| `neo4j_version` | Image tag (`5.18-community` → `5.18.x`) | Restoring requires same major version |
+| `neo4j_image` | Literal `neo4j:5.18-community` | Pin for restore |
+| `git_sha` | `git rev-parse HEAD` | Code that produced this graph |
+| `git_branch` | `git branch --show-current` | Branch context |
+| `node_counts` | Cypher: `MATCH (n) UNWIND labels(n) AS l RETURN l, count(*)` | Lets a restore be verified by re-running the same query |
+| `relationship_counts` | Cypher: `MATCH ()-[r]->() RETURN type(r), count(*)` | Same |
+| `known_data_realities` | Hand-noted | Pre-existing data quirks worth flagging (e.g. courses missing top_code) |
+| `created_by` | Operator name or session description | Provenance |
+| `notes` | Free text | Why this snapshot exists |
+
+After the dump completes, populate the manifest by running the queries in the table against the (just-restarted) neo4j and assembling the JSON. Verify both files are present and the dump size is plausible (graphs around the current shape produce ~500 MB dumps):
+
+```bash
+ls -lh backups/
+# Expect: ~500MB *.dump file + a small *.manifest.json file
+```
+
+Optionally, push the snapshot pair to GCS for offsite redundancy:
+
+```bash
+gsutil cp "backups/${DUMP_NAME}" "backups/${MANIFEST_NAME}" \
+  gs://kallipolis-backups-preview/local/
+```
+
+### Restore from a local snapshot
+
+When to run this: local Docker volume corrupted, schema regression to investigate, want to roll back to a known-good earlier state.
+
+The restore replaces the contents of the local `kallipolis_neo4j_data` volume with the dump's contents. Any local changes since the snapshot are lost — verify you have a fresh snapshot of current state first if you might want to recover anything.
+
+```bash
+cd /Users/dayonekoo/Desktop/code/kallipolis
+DUMP_NAME=neo4j-2026-04-30T02-20Z--b8b509f.dump  # adjust to the snapshot you're restoring
+
+# 1. Verify the dump's checksum against its manifest before loading
+shasum -a 256 "backups/${DUMP_NAME}"
+# Compare to dump_sha256 in the matching manifest
+
+# 2. Stop neo4j and the backend (the load wipes the volume contents)
+docker compose stop neo4j backend
+
+# 3. Load via helper container — overwrite-destination=true wipes the existing graph
+docker run --rm \
+  -v kallipolis_neo4j_data:/data \
+  -v "$(pwd)/backups":/in \
+  neo4j:5.18-community \
+  bash -c "cp /in/${DUMP_NAME} /tmp/neo4j.dump && neo4j-admin database load neo4j --from-path=/tmp --overwrite-destination=true"
+
+# 4. Restart
+docker compose up -d
+
+# 5. Verify counts match the manifest
+NEO4J_PW=$(grep '^NEO4J_PASSWORD=' .env | cut -d'=' -f2-)
+docker exec kallipolis-neo4j-1 cypher-shell -u neo4j -p "$NEO4J_PW" --format plain \
+  "MATCH (n) UNWIND labels(n) AS l RETURN l, count(*) AS c ORDER BY c DESC"
+# Compare to node_counts in the manifest
+```
+
+### Push local → prod
+
+When to run this: the local graph has evolved (new colleges onboarded, pipeline methodology updated, employer data re-validated) and prod should mirror it. Preview carries no user-generated data, so any time is a valid maintenance window.
+
+Prod downtime: ~30 seconds during the load step. The backend container stays up but returns errors on queries.
+
+The flow has six steps. Steps 1–2 are local-only and reversible. Steps 3–4 are prod read-only. Step 5 is the destructive prod write — this is the boundary where an operator should pause and confirm intent before executing.
+
+**Step 1 — Take a fresh local snapshot.** Per the procedure above. This is both your migration source AND your local rollback point. Do not skip even if you took one yesterday.
+
+**Step 2 — Optional: push the snapshot pair to GCS.** Per the GCS upload step in the snapshot procedure. Gives you an offsite copy of local state that does not depend on the prod migration succeeding.
+
+**Step 3 — Verify the prod backup cron has fired recently.** Lists the GCS objects sorted by time:
+
+```bash
+gsutil ls -l gs://kallipolis-backups-preview/ | tail -10
+```
+
+If the most recent prod backup is fresh enough (within 24h), it serves as your prod rollback point. If not, take a defensive prod backup explicitly:
+
+```bash
+gcloud compute ssh kallipolis-api --zone=us-central1-a --tunnel-through-iap \
+  --command='sudo /opt/kallipolis/scripts/neo4j-backup.sh'
+```
+
+(Adjust the script path if it differs on the VM. The cron's script is the source of truth for the right command.)
+
+**Step 4 — SCP the local dump to the VM.** Note: `/tmp` on the VM is ephemeral (tmpfs). Move the dump into the data volume promptly after upload — don't let it sit in `/tmp` across a VM reboot or you'll lose it.
+
+```bash
+DUMP_NAME=neo4j-2026-04-30T02-20Z--b8b509f.dump  # adjust
+gcloud compute scp --zone=us-central1-a --tunnel-through-iap \
+  "backups/${DUMP_NAME}" \
+  "kallipolis-api:/tmp/${DUMP_NAME}"
+```
+
+**Step 5 — Load the dump on prod.** This is the destructive step. The `--overwrite-destination=true` flag wipes the existing prod graph contents.
+
+```bash
+gcloud compute ssh kallipolis-api --zone=us-central1-a --tunnel-through-iap
+# Once on the VM:
+DUMP_NAME=neo4j-2026-04-30T02-20Z--b8b509f.dump
+cd /opt/kallipolis
+docker compose stop neo4j
+sudo cp "/tmp/${DUMP_NAME}" /var/lib/docker/volumes/kallipolis_neo4j_data/_data/
+docker run --rm -v kallipolis_neo4j_data:/data neo4j:5.18-community \
+  bash -c "neo4j-admin database load neo4j --from-path=/data --overwrite-destination=true"
+docker compose up -d
+```
+
+The dump format leaves auth alone — prod's `NEO4J_PASSWORD` survives the load, so no credential reset is needed.
+
+**Step 6 — Verify prod counts match local.** SSH stays open; run from the VM:
+
+```bash
+NEO4J_PW=$(grep '^NEO4J_AUTH=' /opt/kallipolis/.env | cut -d'=' -f2- | cut -d'/' -f2-)
+docker exec kallipolis-neo4j-1 cypher-shell -u neo4j -p "$NEO4J_PW" --format plain \
+  "MATCH (n) UNWIND labels(n) AS l RETURN l, count(*) AS c ORDER BY c DESC"
+```
+
+Compare to the `node_counts` field in the local manifest. They should match exactly. Then hit `https://api.kallipolis.us/health` from your laptop — should return `{"status":"ok"}`. If both pass, the migration is complete; close the SSH session.
+
+### Recovery scenarios
+
+| Scenario | Symptoms | Playbook |
+|---|---|---|
+| Local Docker volume corrupted or accidentally `down -v`'d | `docker compose up -d` brings up an empty neo4j; backend logs show "Neo4j is empty"; API returns no data | Restore from the most recent local snapshot per § Restore. If no local snapshot exists, pull the most recent prod backup from GCS (`gsutil cp gs://kallipolis-backups-preview/neo4j-<latest>.dump backups/`) and treat it as a local snapshot to restore — note this is prod state, not necessarily your latest local state |
+| Prod neo4j wedged or returning errors | `https://api.kallipolis.us/health` returns 5xx; SSH to VM shows backend in restart loop | SSH to VM. `docker compose ps` to see container state. `docker logs kallipolis-backend-1 --tail 50` and `docker logs kallipolis-neo4j-1 --tail 50` for diagnosis. If neo4j data is intact: `docker compose restart`. If neo4j data is corrupted: `gsutil ls -l gs://kallipolis-backups-preview/` to find latest backup, then run § Push local → prod steps 4–6 with the GCS dump as the source |
+| Prod migration partially completed (load failed mid-flight) | Prod neo4j won't start; cypher-shell errors on connect | The `--overwrite-destination=true` flag means the prior prod state is gone. Re-run § Push local → prod step 5 with the same dump (idempotent). If that also fails, fall back to the prod-backup recovery flow in the row above |
+| Snapshot file present but manifest missing | A `.dump` file in `backups/` with no matching `.manifest.json` | The dump is still loadable, but its provenance is unknown. Check `git log` for the period it was likely produced. Restore in a sandbox volume first (don't overwrite working state) and inspect counts before promoting |
+
+### Notes
+
+- The `backups/` directory is gitignored. Snapshots and manifests live there but never reach the repo. Push to GCS for offsite.
+- `git clean -fdx` from the repo root will delete `backups/` because the `-x` flag removes ignored files. Be cautious with that command.
+- The manifest format is versioned (`schema_version: 1`). If the format ever changes incompatibly, bump the version and document the migration in this section.
 
 ## Preview-mode posture
 
