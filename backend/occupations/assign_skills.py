@@ -37,7 +37,7 @@ MAX_RETRY_PASSES = 2
 
 SYSTEM_INSTRUCTION = """You are a workforce analyst assigning standardized skills to occupations.
 
-For each occupation, select at least 6 skills from the vocabulary below that the occupation requires or regularly uses. Include every additional skill that applies. Be thorough — include both primary technical skills and secondary professional skills.
+For each occupation, select 6–10 skills from the vocabulary below that the occupation directly requires or regularly uses. Prioritize primary technical skills and core professional competencies. Do NOT include skills that are merely adjacent, thematically related, or tangential — only skills the occupation actually exercises in its day-to-day work.
 Use EXACT names from the vocabulary. Do NOT invent new skill names.
 
 Return a JSON object mapping each SOC code to its skill array.
@@ -55,7 +55,7 @@ For each occupation below, the user message lists:
   - the currently accepted skills (already in the vocabulary)
   - the terms you proposed that were rejected because they are not in the vocabulary
 
-Select replacement skills from the vocabulary so that the total accepted skill count for each occupation is AT LEAST 6. Include the currently accepted skills in your response — return the full final list, not just the additions.
+Select replacement skills from the vocabulary so that the total accepted skill count for each occupation is between 6 and 10, prioritizing primary technical skills and core professional competencies. Include the currently accepted skills in your response — return the full final list, not just the additions.
 
 Use EXACT names from the vocabulary. Do NOT invent new skill names.
 
