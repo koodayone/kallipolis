@@ -74,7 +74,24 @@ Two important asymmetries:
 
 ### Nightly prod cron
 
-A cron job on the VM fires at 09:15 UTC (02:15 Pacific). The script stops the Neo4j container, runs `neo4j-admin database dump` against the stopped volume via a throwaway helper container, copies the dump to a tmpfs path, restarts Neo4j, and uploads the file to `gs://kallipolis-backups-preview/neo4j-<timestamp>.dump`. The bucket has a 30-day nearline / 90-day delete lifecycle policy. Backend downtime during a backup is approximately 30 seconds — acceptable in the preview's low-traffic reality. For higher-availability operation, the backup would shift to an online dump via the enterprise Neo4j feature, or the deployment would move to managed Neo4j Aura.
+A root crontab entry on the VM fires the backup script at 09:15 UTC nightly. The script — `scripts/neo4j-backup.sh` in this repo, deployed to /opt/kallipolis/scripts/ via the standard git pull on the VM — stops the Neo4j container, dumps via a throwaway helper container into /opt/kallipolis/backups/, restarts Neo4j, and uploads the dump to `gs://kallipolis-backups-preview/neo4j-<UTC-timestamp>.dump`. The local copy is removed after a successful upload to keep the VM's 40 GB disk from filling. The GCS bucket has a 30-day nearline / 90-day delete lifecycle policy.
+
+Logs land in `/var/log/kallipolis/neo4j-backup-<YYYY-MM>.log`. Failure handling: an EXIT trap in the script ensures Neo4j is brought back up even on dump failure, and writes a `FAILED` line to the log so non-success is obvious on next inspection.
+
+Backend downtime per run is approximately 30 seconds — acceptable in the preview's low-traffic reality. For higher-availability operation, the backup would shift to an online dump via the enterprise Neo4j feature, or the deployment would move to managed Neo4j Aura.
+
+To install or rotate the cron entry on the VM:
+
+```bash
+gcloud compute ssh kallipolis-api --zone=us-central1-a --tunnel-through-iap
+# On the VM:
+cd /opt/kallipolis && git pull --rebase   # ensures scripts/neo4j-backup.sh is current
+sudo chmod +x /opt/kallipolis/scripts/neo4j-backup.sh
+echo '15 9 * * * /opt/kallipolis/scripts/neo4j-backup.sh' | sudo crontab -
+sudo crontab -l    # verify
+sudo /opt/kallipolis/scripts/neo4j-backup.sh    # manual test run; verifies end-to-end
+gsutil ls -l gs://kallipolis-backups-preview/ | tail -5    # confirm a fresh object landed
+```
 
 ### Take a local snapshot
 
@@ -92,20 +109,25 @@ DUMP_NAME="neo4j-${TS}--${SHA}.dump"
 MANIFEST_NAME="neo4j-${TS}--${SHA}.manifest.json"
 mkdir -p backups
 
-# 2. Stop neo4j (downtime starts here)
+# 2. Ensure the destination is writable by the helper container's
+#    process. The neo4j image's process maps to UID 7474 on the host;
+#    without this chown the dump fails with AccessDeniedException.
+sudo chown 7474:7474 backups 2>/dev/null || chown 7474:7474 backups
+
+# 3. Stop neo4j (downtime starts here)
 docker compose stop neo4j
 
-# 3. Offline dump via helper container, writing directly to the host backups dir
+# 4. Offline dump via helper container, writing directly to the host backups dir
 docker run --rm \
   -v kallipolis_neo4j_data:/data \
   -v "$(pwd)/backups":/out \
   neo4j:5.18-community \
   neo4j-admin database dump neo4j --to-path=/out --overwrite-destination=true
 
-# 4. Rename to the versioned filename
+# 5. Rename to the versioned filename
 mv backups/neo4j.dump "backups/${DUMP_NAME}"
 
-# 5. Restart neo4j (downtime ends)
+# 6. Restart neo4j (downtime ends)
 docker compose up -d neo4j
 ```
 
@@ -214,16 +236,31 @@ gcloud compute scp --zone=us-central1-a --tunnel-through-iap \
 
 **Step 5 — Load the dump on prod.** This is the destructive step. The `--overwrite-destination=true` flag wipes the existing prod graph contents.
 
+The load command requires the file to be named exactly `<dbname>.dump` (i.e. `neo4j.dump`), not the versioned filename — staging it in a fresh dir under that fixed name is the cleanest pattern. The destination dir also needs the neo4j-container UID (7474) as owner, same as the snapshot procedure.
+
 ```bash
 gcloud compute ssh kallipolis-api --zone=us-central1-a --tunnel-through-iap
 # Once on the VM:
 DUMP_NAME=neo4j-2026-04-30T02-20Z--b8b509f.dump
 cd /opt/kallipolis
-docker compose stop neo4j
-sudo cp "/tmp/${DUMP_NAME}" /var/lib/docker/volumes/kallipolis_neo4j_data/_data/
-docker run --rm -v kallipolis_neo4j_data:/data neo4j:5.18-community \
-  bash -c "neo4j-admin database load neo4j --from-path=/data --overwrite-destination=true"
-docker compose up -d
+
+# Stage the dump as neo4j.dump in a fresh dir owned by the container UID
+sudo rm -rf /opt/kallipolis/load-staging
+sudo mkdir -p /opt/kallipolis/load-staging
+sudo cp "/tmp/${DUMP_NAME}" /opt/kallipolis/load-staging/neo4j.dump
+sudo chown -R 7474:7474 /opt/kallipolis/load-staging
+
+# Stop neo4j and load
+sudo docker compose stop neo4j
+sudo docker run --rm \
+  -v kallipolis_neo4j_data:/data \
+  -v /opt/kallipolis/load-staging:/in \
+  neo4j:5.18-community \
+  neo4j-admin database load neo4j --from-path=/in --overwrite-destination=true
+
+# Restart and clean up staging
+sudo docker compose up -d neo4j
+sudo rm -rf /opt/kallipolis/load-staging
 ```
 
 The dump format leaves auth alone — prod's `NEO4J_PASSWORD` survives the load, so no credential reset is needed.
