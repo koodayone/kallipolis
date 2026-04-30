@@ -160,10 +160,13 @@ async def run_student_query(question: str, college: str) -> tuple[list[StudentSu
     if is_enabled_for("student"):
         result = run_spec(question, college, "student")
         if result.unsupported:
-            reason = result.unsupported_reason or ""
+            logger.info(
+                f"Unsupported student query: question={question!r} "
+                f"reason={result.unsupported_reason!r}"
+            )
             raise ValueError(
-                "This question doesn't fit our student query patterns. "
-                f"{reason} Try one of the example queries shown above the search box."
+                "Sorry, I couldn't translate that question. "
+                "Try one of the example queries above, or rephrase your question."
             )
         records = execute_spec(result)
         cypher = result.cypher

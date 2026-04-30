@@ -166,7 +166,10 @@ def validate_cypher(cypher: str) -> str:
     stripped = cypher.strip()
 
     if "CANNOT_TRANSLATE" in stripped:
-        raise ValueError("I couldn't translate that question into a query. Try rephrasing your question.")
+        raise ValueError(
+            "Sorry, I couldn't translate that question. "
+            "Try one of the example queries above, or rephrase your question."
+        )
 
     # Strip markdown code fences if present
     stripped = re.sub(r"^```(?:cypher)?\s*", "", stripped)

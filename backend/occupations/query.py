@@ -133,10 +133,18 @@ async def run_occupation_query(question: str, college: str) -> tuple[list[Occupa
     if is_enabled_for("occupation"):
         result = run_spec(question, college, "occupation")
         if result.unsupported:
-            reason = result.unsupported_reason or ""
+            # Log the LLM-generated reason for debugging / prompt tuning,
+            # but keep the user-visible message generic. The reason from
+            # Flash is brittle (different runs can phrase it differently)
+            # and the example queries above the search box are the actual
+            # recovery path regardless of the specific failure mode.
+            logger.info(
+                f"Unsupported occupation query: question={question!r} "
+                f"reason={result.unsupported_reason!r}"
+            )
             raise ValueError(
-                "This question doesn't fit our occupation query patterns. "
-                f"{reason} Try one of the example queries shown above the search box."
+                "Sorry, I couldn't translate that question. "
+                "Try one of the example queries above, or rephrase your question."
             )
         records = execute_spec(result)
         cypher = result.cypher

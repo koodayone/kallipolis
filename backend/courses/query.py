@@ -156,10 +156,13 @@ async def run_course_query(question: str, college: str) -> tuple[list[CourseSumm
     if is_enabled_for("course"):
         result = run_spec(question, college, "course")
         if result.unsupported:
-            reason = result.unsupported_reason or ""
+            logger.info(
+                f"Unsupported course query: question={question!r} "
+                f"reason={result.unsupported_reason!r}"
+            )
             raise ValueError(
-                "This question doesn't fit our course query patterns. "
-                f"{reason} Try one of the example queries shown above the search box."
+                "Sorry, I couldn't translate that question. "
+                "Try one of the example queries above, or rephrase your question."
             )
         records = execute_spec(result)
         cypher = result.cypher

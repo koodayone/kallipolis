@@ -73,9 +73,9 @@ class TestFormattingCleanup:
 
 class TestCannotTranslateSignal:
     def test_cannot_translate_raises_user_facing_error(self):
-        with pytest.raises(ValueError, match="rephrasing"):
+        with pytest.raises(ValueError, match="couldn't translate"):
             validate_cypher("CANNOT_TRANSLATE")
 
     def test_cannot_translate_embedded_still_raises(self):
-        with pytest.raises(ValueError, match="rephrasing"):
+        with pytest.raises(ValueError, match="couldn't translate"):
             validate_cypher("// CANNOT_TRANSLATE — query ambiguous")

@@ -137,10 +137,13 @@ async def run_employer_query(question: str, college: str) -> tuple[list[Employer
     if is_enabled_for("employer"):
         result = run_spec(question, college, "employer")
         if result.unsupported:
-            reason = result.unsupported_reason or ""
+            logger.info(
+                f"Unsupported employer query: question={question!r} "
+                f"reason={result.unsupported_reason!r}"
+            )
             raise ValueError(
-                "This question doesn't fit our employer query patterns. "
-                f"{reason} Try one of the example queries shown above the search box."
+                "Sorry, I couldn't translate that question. "
+                "Try one of the example queries above, or rephrase your question."
             )
         records = execute_spec(result)
         cypher = result.cypher
