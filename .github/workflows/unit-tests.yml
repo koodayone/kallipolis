@@ -1,20 +1,16 @@
 name: Backend unit tests
 
-# pytest runs the backend's pure-logic unit tests. Fast (under half a second
-# on a clean checkout) and pure Python — no database, no LLM calls, no
-# network. Gated on PRs and pushes to main so backend regressions can't
-# land silently.
+# pytest runs the backend's pure-logic unit tests. Fast (under half a
+# second on a clean checkout) and pure Python — no database, no LLM
+# calls, no network. Always runs on every PR (and pushes to main) so
+# branch protection's required-check rule is satisfied even on UI-only
+# PRs that don't touch backend/. With uv-driven installs and a cached
+# uv resolution directory the workflow completes in ~10s.
 
 on:
   pull_request:
-    paths:
-      - 'backend/**'
-      - '.github/workflows/unit-tests.yml'
   push:
     branches: [main]
-    paths:
-      - 'backend/**'
-      - '.github/workflows/unit-tests.yml'
 
 jobs:
   unit-tests:
@@ -23,17 +19,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
         with:
-          python-version: "3.11"
-          cache: pip
-          cache-dependency-path: backend/requirements.txt
+          enable-cache: true
+          cache-dependency-glob: 'backend/requirements.txt'
+
+      - name: Set up Python
+        run: uv python install 3.11
 
       - name: Install dependencies
-        run: |
-          pip install --upgrade pip
-          pip install -r backend/requirements.txt
-          pip install pytest
+        # uv resolves and installs an order of magnitude faster than pip
+        # (~3-5s vs 30-45s on this requirements set). --system installs
+        # against the runner's Python rather than creating a venv we
+        # don't need for a single test invocation.
+        run: uv pip install --system -r backend/requirements.txt pytest
 
       - name: Run unit tests
         working-directory: backend
