@@ -1,4 +1,5 @@
 # Snapshot artifacts of the local Neo4j graph.
-# These are large binary files; do not commit. Push to GCS for offsite.
+# These are large binary files and operational metadata; do not
+# commit. Push to GCS for offsite redundancy.
 *.dump
 *.manifest.json

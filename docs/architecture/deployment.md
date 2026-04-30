@@ -109,7 +109,7 @@ mv backups/neo4j.dump "backups/${DUMP_NAME}"
 docker compose up -d neo4j
 ```
 
-The dump file is now in `backups/`. Next, write the manifest. The manifest format is JSON with these fields (see `backups/neo4j-2026-04-30T02-20Z--b8b509f.manifest.json` for a working example):
+The dump file is now in `backups/`. Next, write the manifest. The manifest format is JSON with these fields:
 
 | Field | Source | Why it matters |
 |---|---|---|
