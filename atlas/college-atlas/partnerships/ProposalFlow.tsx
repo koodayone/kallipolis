@@ -152,9 +152,8 @@ export default function ProposalFlow({
 
             {!occupationsLoading && !occupationsError && occupations.length > 0 && (
               <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginTop: "20px", marginBottom: "20px" }}>
-                {occupations.map((occ, i) => {
+                {occupations.map((occ) => {
                   const selected = selectedSocCode === occ.soc_code;
-                  const suggested = i === 0;
                   return (
                     <button
                       key={occ.soc_code}
@@ -169,20 +168,8 @@ export default function ProposalFlow({
                       onMouseLeave={(e) => { if (!selected) { e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)"; e.currentTarget.style.background = "rgba(255,255,255,0.02)"; } }}
                     >
                       {/* Identity row */}
-                      <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: "12px", marginBottom: "4px" }}>
-                        <div style={{ fontFamily: FONT, fontSize: "14px", fontWeight: 600, color: selected ? brandColor : "rgba(255,255,255,0.85)" }}>
-                          {occ.title}
-                        </div>
-                        {suggested && (
-                          <span style={{
-                            flexShrink: 0,
-                            fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase",
-                            color: brandColor, padding: "2px 8px", borderRadius: "100px",
-                            background: `${brandColor}15`, border: `1px solid ${brandColor}30`,
-                          }}>
-                            Suggested
-                          </span>
-                        )}
+                      <div style={{ fontFamily: FONT, fontSize: "14px", fontWeight: 600, color: selected ? brandColor : "rgba(255,255,255,0.85)", marginBottom: "4px" }}>
+                        {occ.title}
                       </div>
 
                       {/* SOC line */}
