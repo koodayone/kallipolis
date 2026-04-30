@@ -2,11 +2,7 @@
 
 import { motion } from "framer-motion";
 import type { SchoolConfig } from "@/config/schoolConfig";
-import {
-  getSavedProposals,
-  removeProposal,
-  type SavedProposal,
-} from "@/college-atlas/partnerships/savedProposals";
+import type { SavedProposal } from "@/college-atlas/partnerships/savedProposals";
 import ProposalCard from "./ProposalCard";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
@@ -14,22 +10,21 @@ const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 type Props = {
   school: SchoolConfig;
   savedProposals: SavedProposal[];
-  setSavedProposals: (proposals: SavedProposal[]) => void;
   manageQuery: string;
   setManageQuery: (q: string) => void;
   expandedSavedId: string | null;
   toggleExpanded: (id: string) => void;
   // Set of regional-priority sector names. Saved-proposal rows whose
-  // sector is in this set render the small priority dot, mirroring the
-  // Build mode per-sector priority indicator. Optional so legacy callers
-  // still work; absent → no dots ever rendered.
+  // sector is in this set render the small priority dot to the right of
+  // the employer name — the dot tags the employer's regional relevance,
+  // not the sector text (which is no longer surfaced in the row).
+  // Optional so legacy callers still work; absent → no dots ever rendered.
   prioritySet?: Set<string>;
 };
 
 export default function PartnershipManageMode({
   school,
   savedProposals,
-  setSavedProposals,
   manageQuery,
   setManageQuery,
   expandedSavedId,
@@ -78,20 +73,19 @@ export default function PartnershipManageMode({
         />
       </div>
 
-      {/* Column headers — Sector header carries the same regional-priority
-          legend Build mode uses, so the per-row dot has the same on-page
-          explanation in both modes. */}
+      {/* Column headers — the regional-priority legend hangs off the
+          Employer header now, since the per-row dot is positioned next
+          to the employer name (it tags the employer's regional
+          relevance). The right column is the SOC the partnership
+          targets — full official title, no transformation, single line
+          where it fits and a 2-line wrap on the rare long ones. */}
       <div style={{
-        display: "grid", gridTemplateColumns: "24px 1fr 240px",
+        display: "grid", gridTemplateColumns: "24px 1fr 280px",
         padding: "12px 16px", gap: "10px", alignItems: "center",
       }}>
         <span />
-        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Employer</span>
-        <span style={{
-          display: "inline-flex", alignItems: "baseline", gap: "8px",
-          justifyContent: "flex-end",
-        }}>
-          <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Sector</span>
+        <span style={{ display: "inline-flex", alignItems: "baseline", gap: "8px" }}>
+          <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>Employer</span>
           {prioritySet && prioritySet.size > 0 && (
             <span style={{ display: "inline-flex", alignItems: "baseline", gap: "5px" }}>
               <span style={{
@@ -104,10 +98,18 @@ export default function PartnershipManageMode({
                 letterSpacing: "0.1em", textTransform: "uppercase",
                 color: school.brandColorLight, opacity: 0.4,
               }}>
-                Regional priority
+                Regional priority sector
               </span>
             </span>
           )}
+        </span>
+        <span style={{
+          fontFamily: FONT, fontSize: "10px", fontWeight: 600,
+          letterSpacing: "0.1em", textTransform: "uppercase",
+          color: school.brandColorLight, opacity: 0.6,
+          textAlign: "right",
+        }}>
+          Target occupation
         </span>
       </div>
 
@@ -121,7 +123,7 @@ export default function PartnershipManageMode({
               onClick={() => toggleExpanded(saved.id)}
               style={{
                 width: "100%", textAlign: "left", cursor: "pointer",
-                display: "grid", gridTemplateColumns: "24px 1fr 240px",
+                display: "grid", gridTemplateColumns: "24px 1fr 280px",
                 padding: "12px 16px", gap: "10px", alignItems: "center",
                 background: isExpanded ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
                 border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
@@ -134,36 +136,42 @@ export default function PartnershipManageMode({
                 style={{ transform: isExpanded ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>
                 <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-              <span style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>
-                {p.employer}
-              </span>
-              {/* Sector designation — rhymes with Build mode's per-sector
-                  treatment: uppercase letter-spaced sector label with the
-                  regional-priority dot placed AFTER the label when the
-                  sector is in the priority set. White text (matches the
-                  employer-name color register) so it reads as a
-                  designation rather than a brand accent; quieter than
-                  Build mode's bigger section-header treatment. */}
-              <span style={{
-                display: "flex", alignItems: "center", justifyContent: "flex-end", gap: "8px",
-              }}>
+              {/* Employer name + regional-priority dot. The dot tags
+                  whether the employer's sector falls inside the COE
+                  region's priority set; placing it right of the name
+                  reads as "this employer is regionally relevant" rather
+                  than as a sector annotation. */}
+              <span style={{ display: "inline-flex", alignItems: "center", gap: "8px", minWidth: 0 }}>
                 <span style={{
-                  fontFamily: FONT, fontSize: "10px", fontWeight: 600,
-                  letterSpacing: "0.08em", textTransform: "uppercase",
+                  fontFamily: FONT, fontSize: "13px", fontWeight: 500,
                   color: "rgba(255,255,255,0.85)",
-                  textAlign: "right",
+                  whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
                 }}>
-                  {p.sector ?? "—"}
+                  {p.employer}
                 </span>
                 {p.sector && prioritySet?.has(p.sector) && (
                   <span
-                    title="Regional priority sector"
+                    title={`${p.sector} is a regional priority sector for this college's COE region`}
                     style={{
                       display: "inline-block", width: "6px", height: "6px",
                       borderRadius: "50%", background: school.brandColorLight, flexShrink: 0,
                     }}
                   />
                 )}
+              </span>
+              {/* Target occupation — the full SOC title verbatim. Single
+                  line on most rows; a few of the genuinely long titles
+                  (e.g., "Heating, Air Conditioning, and Refrigeration
+                  Mechanics and Installers") wrap to two lines. We don't
+                  truncate or transform: the title is what the proposal
+                  artifact, BLS, and COE all surface, and a coordinator
+                  cross-referencing those should see the same string. */}
+              <span style={{
+                fontFamily: FONT, fontSize: "13px", fontWeight: 400,
+                color: "rgba(255,255,255,0.85)",
+                textAlign: "right", lineHeight: 1.35,
+              }}>
+                {p.selected_occupation || "—"}
               </span>
             </button>
             {isExpanded && (
@@ -177,10 +185,6 @@ export default function PartnershipManageMode({
                     proposal={p}
                     brandColor={school.brandColorLight}
                     collegeId={school.name}
-                    onDismiss={() => {
-                      removeProposal(school.name, saved.id);
-                      setSavedProposals(getSavedProposals(school.name));
-                    }}
                   />
                 </div>
               </motion.div>

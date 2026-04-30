@@ -4,27 +4,23 @@ import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import type { ApiTargetedProposal } from "@/college-atlas/partnerships/api";
 import { getOccupationDetail, type ApiOccupationDetail } from "@/college-atlas/occupations/api";
-import { saveProposal, removeProposal, updateProposalStatus, type SavedProposal } from "@/college-atlas/partnerships/savedProposals";
+import { saveProposal, removeProposal, type SavedProposal } from "@/college-atlas/partnerships/savedProposals";
 import OccupationRow from "@/college-atlas/occupations/OccupationRow";
 import DepartmentRow from "@/college-atlas/courses/DepartmentRow";
 import StudentRow from "@/college-atlas/students/StudentRow";
 import ColumnHeaders from "@/ui/ColumnHeaders";
 import { PREVIEW_MODE } from "@/preview/mode";
-import { reportFlag } from "@/preview/reportFlag";
 
 const SAVE_PREVIEW_TOOLTIP =
   "Saving is available to pilot partners — contact us to activate for your college.";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
-type CardState = "default" | "saved" | "dismissed" | "flagged";
+type CardState = "default" | "saved";
 
 type Props = {
   proposal: ApiTargetedProposal;
   brandColor: string;
-  onDismiss: () => void;
-  onReject?: () => void;
-  onRefine?: () => void;
   collegeId?: string;
   onSaved?: (saved: SavedProposal) => void;
   // Override preview detection for tests or special-case rendering. Defaults
@@ -78,14 +74,6 @@ function CheckIcon() {
   return (
     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ flexShrink: 0 }}>
       <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function FlagIcon() {
-  return (
-    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ flexShrink: 0 }}>
-      <path d="M2 1v10M2 1h7.5L8 4.5 9.5 8H2" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -242,7 +230,7 @@ function GapVisualization({
   );
 }
 
-export default function ProposalCard({ proposal, brandColor, onDismiss, onReject, onRefine, collegeId, onSaved, isPreviewMode = PREVIEW_MODE }: Props) {
+export default function ProposalCard({ proposal, brandColor, collegeId, onSaved, isPreviewMode = PREVIEW_MODE }: Props) {
   const [state, setState] = useState<CardState>("default");
   const [savedId, setSavedId] = useState<string | null>(null);
 
@@ -260,12 +248,7 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
     finally { setLoadingOccs(prev => { const next = new Set(prev); next.delete(socCode); return next; }); }
   }, [occDetails, collegeId]);
 
-
-
-  if (state === "dismissed") return null;
-
   const isSaved = state === "saved";
-  const isFlagged = state === "flagged";
   const swp = proposal.swp_evidence;
 
   return (
@@ -621,131 +604,48 @@ export default function ProposalCard({ proposal, brandColor, onDismiss, onReject
           </div>
         )}
 
-        {/* Actions */}
+        {/* Action — only Save remains. In preview mode the button is
+            disabled and surfaces the pilot-contact tooltip; in the
+            authenticated product the same button persists the proposal
+            to the user's collection. Other CTAs (Dismiss, Flag, Reject
+            & Revise, Refine, Export to Docs) were removed because
+            either: (a) they implied a write capability preview mode
+            doesn't expose, (b) they invited a feedback channel without
+            the GTM bandwidth to honor it, or (c) they promised a
+            regenerate-with-feedback loop the deterministic narrative
+            architecture cannot offer. The header back-button is the
+            universal way to close a proposal. */}
         <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "16px" }}>
-          <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-            <button
-              onClick={() => {
-                if (isPreviewMode) return;
-                if (isSaved) {
-                  if (collegeId && savedId) removeProposal(collegeId, savedId);
-                  setSavedId(null);
-                  setState("default");
-                } else {
-                  if (collegeId) {
-                    const saved = saveProposal(collegeId, proposal, "saved");
-                    setSavedId(saved.id);
-                    onSaved?.(saved);
-                  }
-                  setState("saved");
+          <button
+            onClick={() => {
+              if (isPreviewMode) return;
+              if (isSaved) {
+                if (collegeId && savedId) removeProposal(collegeId, savedId);
+                setSavedId(null);
+                setState("default");
+              } else {
+                if (collegeId) {
+                  const saved = saveProposal(collegeId, proposal, "saved");
+                  setSavedId(saved.id);
+                  onSaved?.(saved);
                 }
-              }}
-              disabled={isPreviewMode}
-              title={isPreviewMode ? SAVE_PREVIEW_TOOLTIP : undefined}
-              style={{
-                display: "flex", alignItems: "center", gap: "6px",
-                padding: "6px 14px", borderRadius: "6px", fontFamily: FONT, fontSize: "12px", fontWeight: 600,
-                cursor: isPreviewMode ? "not-allowed" : "pointer", border: "none",
-                opacity: isPreviewMode ? 0.45 : 1,
-                background: isSaved ? "rgba(74,222,128,0.15)" : `${brandColor}20`,
-                color: isSaved ? "rgba(74,222,128,0.9)" : brandColor,
-              }}
-            >
-              <CheckIcon />
-              {isSaved ? "Saved" : "Save"}
-            </button>
-            <button
-              onClick={() => { onDismiss(); setState("dismissed"); }}
-              style={{
-                padding: "6px 14px", borderRadius: "6px", fontFamily: FONT, fontSize: "12px", fontWeight: 500,
-                cursor: "pointer", border: "1px solid rgba(255,255,255,0.12)",
-                background: "transparent", color: "rgba(255,255,255,0.5)",
-              }}
-            >
-              Dismiss
-            </button>
-            <button
-              onClick={() => {
-                if (isPreviewMode) {
-                  if (isFlagged) {
-                    setState("default");
-                  } else {
-                    void reportFlag({
-                      collegeId: collegeId ?? "",
-                      artifactKind: "partnership",
-                      artifactId: proposal.employer,
-                      snapshot: proposal,
-                    });
-                    setState("flagged");
-                  }
-                  return;
-                }
-                if (isFlagged) {
-                  if (collegeId && savedId) updateProposalStatus(collegeId, savedId, "saved");
-                  setState("default");
-                } else {
-                  if (collegeId) {
-                    if (savedId) {
-                      updateProposalStatus(collegeId, savedId, "flagged");
-                    } else {
-                      const saved = saveProposal(collegeId, proposal, "flagged");
-                      setSavedId(saved.id);
-                    }
-                  }
-                  setState("flagged");
-                }
-              }}
-              style={{
-                display: "flex", alignItems: "center", gap: "6px",
-                padding: "6px 14px", borderRadius: "6px", fontFamily: FONT, fontSize: "12px", fontWeight: 500,
-                cursor: "pointer",
-                border: `1px solid ${isFlagged ? "rgba(251,191,36,0.4)" : "rgba(255,255,255,0.12)"}`,
-                background: isFlagged ? "rgba(251,191,36,0.1)" : "transparent",
-                color: isFlagged ? "rgba(251,191,36,0.9)" : "rgba(255,255,255,0.5)",
-              }}
-            >
-              <FlagIcon />
-              Flag
-            </button>
-          </div>
-
-          {onReject && (
-            <div style={{ display: "flex", gap: "10px", marginTop: "12px" }}>
-              <button
-                onClick={onReject}
-                style={{
-                  padding: "6px 14px", borderRadius: "6px", fontFamily: FONT, fontSize: "12px", fontWeight: 500,
-                  cursor: "pointer", border: "1px solid rgba(248,113,113,0.3)",
-                  background: "rgba(248,113,113,0.06)", color: "rgba(248,113,113,0.8)",
-                }}
-              >
-                Reject &amp; Revise
-              </button>
-              <button
-                onClick={onRefine}
-                disabled={!onRefine}
-                style={{
-                  padding: "6px 14px", borderRadius: "6px", fontFamily: FONT, fontSize: "12px", fontWeight: 500,
-                  cursor: onRefine ? "pointer" : "default",
-                  border: "1px solid rgba(255,255,255,0.08)", background: "transparent",
-                  color: "rgba(255,255,255,0.2)",
-                }}
-              >
-                Refine
-              </button>
-              <button
-                disabled
-                title="Coming soon — Google Docs export via MCP"
-                style={{
-                  padding: "6px 14px", borderRadius: "6px", fontFamily: FONT, fontSize: "12px", fontWeight: 500,
-                  cursor: "default", border: "1px solid rgba(255,255,255,0.08)", background: "transparent",
-                  color: "rgba(255,255,255,0.2)",
-                }}
-              >
-                Export to Docs
-              </button>
-            </div>
-          )}
+                setState("saved");
+              }
+            }}
+            disabled={isPreviewMode}
+            title={isPreviewMode ? SAVE_PREVIEW_TOOLTIP : undefined}
+            style={{
+              display: "flex", alignItems: "center", gap: "6px",
+              padding: "6px 14px", borderRadius: "6px", fontFamily: FONT, fontSize: "12px", fontWeight: 600,
+              cursor: isPreviewMode ? "not-allowed" : "pointer", border: "none",
+              opacity: isPreviewMode ? 0.45 : 1,
+              background: isSaved ? "rgba(74,222,128,0.15)" : `${brandColor}20`,
+              color: isSaved ? "rgba(74,222,128,0.9)" : brandColor,
+            }}
+          >
+            <CheckIcon />
+            {isSaved ? "Saved" : "Save"}
+          </button>
         </div>
       </div>
     </motion.div>
