@@ -48,7 +48,16 @@ export default function QueryShell<T>({
   const [queryMessage, setQueryMessage] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [helpOpen, setHelpOpen] = useState(false);
+  // Auto-expand the example-queries panel on Ask mode so the supported
+  // grammar is visible without requiring a discovery click. The panel
+  // remains user-dismissable (chevron, click-outside, picking an
+  // example, typing into the input). For views that default into Ask
+  // mode (no search renderer), this means the panel is open on mount;
+  // for views that default into Search, it opens when the user
+  // toggles to Ask. See the design discussion in the spec-engine
+  // session for the rationale (the example queries are the grammar
+  // documentation; hiding them was costing discoverability).
+  const [helpOpen, setHelpOpen] = useState(!hasSearch);
   const [helpClicked, setHelpClicked] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const helpRef = useRef<HTMLDivElement>(null);
@@ -138,7 +147,10 @@ export default function QueryShell<T>({
       setQueryMessage(null);
       onReset?.();
     }
-    setHelpOpen(false);
+    // Open the help panel on transitions INTO ask mode so the
+    // supported grammar is visible without a discovery click. Close
+    // it on transitions to search.
+    setHelpOpen(m === "ask");
     setMode(m);
   }, [mode, submitted, onReset]);
 
