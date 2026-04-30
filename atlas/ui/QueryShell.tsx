@@ -114,6 +114,22 @@ export default function QueryShell<T>({
     setTimeout(() => inputRef.current?.focus(), 100);
   }, [onReset]);
 
+  // Back-button behavior is two-state. When a query is currently
+  // submitted, the back button clears the query first (returning the
+  // user to the default view of this form) rather than navigating up
+  // to the college root. This matches the standard pattern in apps
+  // with hierarchical navigation + in-page filtering: the back gesture
+  // undoes the most recent action before leaving the page. The
+  // explicit Clear button still works for users who prefer it; the
+  // back button is now the universal escape.
+  const handleBack = useCallback(() => {
+    if (submitted) {
+      handleReset();
+      return;
+    }
+    onBack();
+  }, [submitted, handleReset, onBack]);
+
   const switchMode = useCallback((m: "search" | "ask") => {
     if (m === mode) return;
     if (m === "search" && submitted) {
@@ -146,7 +162,7 @@ export default function QueryShell<T>({
     <div ref={rootRef}>
       <AtlasHeader
         school={school}
-        onBack={onBack}
+        onBack={handleBack}
         title={school.name}
         rightSlot={<KallipolisBrand />}
       />
