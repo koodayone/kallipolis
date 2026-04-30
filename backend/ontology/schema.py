@@ -116,6 +116,30 @@ def _create_constraints(session):
     for constraint in constraints:
         session.run(constraint)
 
+    # Range indexes for non-unique properties used as predicate filters in
+    # hot-path queries. Uniqueness constraints already auto-create indexes
+    # for their target properties; this list is the additional non-unique
+    # set.
+    #
+    # student_primary_focus: speeds equality / IN-list filters on
+    # Student.primary_focus, used by compute.py's pipeline_size
+    # precompute (per-college, runs during ingestion) and by the
+    # proposal-flow student-pipeline queries in partnerships/gather.py.
+    # Without it, those reads do a NodeByLabelScan over all Student
+    # nodes plus a property filter; with it they're a NodeIndexSeek.
+    # Measured impact on a 99K-student graph:
+    #   - compute.py pipeline_size: 15.6s -> 7.4s (2.1x)
+    #   - gather.py student stats: 71ms -> 25ms (2.8x)
+    # The LLM vocabulary-resolution query for primary_focus does
+    # `toLower(...) CONTAINS '...'` and so cannot use a RANGE index;
+    # it would benefit from a TEXT index instead, which we have not
+    # added here.
+    indexes = [
+        "CREATE INDEX student_primary_focus IF NOT EXISTS FOR (n:Student) ON (n.primary_focus)",
+    ]
+    for index in indexes:
+        session.run(index)
+
 
 def _is_empty(session) -> bool:
     result = session.run("MATCH (n:College) RETURN count(n) AS cnt")
