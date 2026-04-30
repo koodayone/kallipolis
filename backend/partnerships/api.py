@@ -85,28 +85,6 @@ def get_partnership_landscape(college: str):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/employer-pipeline")
-def get_employer_pipeline(employer: str, college: str):
-    """Returns the student pipeline size for a specific employer — count of students with relevant skills."""
-    driver = get_driver()
-    try:
-        with driver.session() as session:
-            result = session.run("""
-                MATCH (:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer {name: $employer})
-                      -[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)
-                      <-[:HAS_SKILL]-(st:Student)
-                WHERE EXISTS { (st)-[:ENROLLED_IN]->(:Course {college: $college}) }
-                WITH st, count(DISTINCT sk) AS matching_skills
-                WHERE matching_skills >= 3
-                RETURN count(st) AS pipeline_size
-            """, college=college, employer=employer)
-            record = result.single()
-
-        return {"pipeline_size": record["pipeline_size"] if record else 0}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-
 @router.get("/employer-occupations")
 def get_employer_occupations(employer: str, college: str):
     """Returns occupations the employer hires for in the college's region.

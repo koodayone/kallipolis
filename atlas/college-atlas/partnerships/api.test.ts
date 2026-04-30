@@ -12,8 +12,6 @@
  *
  * Coverage:
  *   - getPartnershipLandscape: URL encoding, body parsing, error branch
- *   - getEmployerPipeline: URL includes both employer and college
- *     encoded, body parsing, error branch
  *   - getEmployerOccupations: URL encoding of employer parameter,
  *     body parsing, error branch
  *   - queryPartnerships: POST body shape, error text surfaced, fallback
@@ -27,7 +25,6 @@
 import { describe, it, expect, afterEach, vi } from "vitest";
 import {
   getPartnershipLandscape,
-  getEmployerPipeline,
   getEmployerOccupations,
   queryPartnerships,
   streamTargetedProposal,
@@ -105,37 +102,6 @@ describe("partnerships api client", () => {
     it("throws a descriptive error when the response is not ok", async () => {
       vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: false, status: 500, json: async () => ({}) }));
       await expect(getPartnershipLandscape("foothill")).rejects.toThrow("Failed to fetch partnership landscape");
-    });
-  });
-
-  describe("getEmployerPipeline", () => {
-    it("hits /partnerships/employer-pipeline with employer and college both encoded", async () => {
-      const mockFetch = vi.fn().mockResolvedValue({
-        ok: true,
-        json: async () => ({ pipeline_size: 42 }),
-      });
-      vi.stubGlobal("fetch", mockFetch);
-
-      await getEmployerPipeline("AT&T Services", "Foothill College");
-
-      const url = mockFetch.mock.calls[0][0] as string;
-      expect(url).toContain("/partnerships/employer-pipeline");
-      expect(url).toContain("employer=AT%26T%20Services");
-      expect(url).toContain("college=Foothill%20College");
-    });
-
-    it("returns the parsed body on success", async () => {
-      vi.stubGlobal("fetch", vi.fn().mockResolvedValue({
-        ok: true,
-        json: async () => ({ pipeline_size: 17 }),
-      }));
-      const result = await getEmployerPipeline("Kaiser", "foothill");
-      expect(result).toEqual({ pipeline_size: 17 });
-    });
-
-    it("throws a descriptive error when the response is not ok", async () => {
-      vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: false, status: 500, json: async () => ({}) }));
-      await expect(getEmployerPipeline("Kaiser", "foothill")).rejects.toThrow("Failed to fetch pipeline data");
     });
   });
 

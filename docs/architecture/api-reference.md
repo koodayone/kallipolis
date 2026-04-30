@@ -61,7 +61,6 @@ Defined in `backend/partnerships/api.py`, mounted at `/partnerships`. This route
 | Method | Path | Purpose | Response model |
 |---|---|---|---|
 | `GET /partnerships/landscape` | Employers ranked by partnership opportunity, reading the precomputed `PARTNERSHIP_ALIGNMENT` edge | `PartnershipLandscape` |
-| `GET /partnerships/employer-pipeline` | Student pipeline size (count of students with ≥3 matching skills) for one employer | `{"pipeline_size": int}` |
 | `GET /partnerships/employer-occupations` | Lightweight list of occupations an employer hires for, with annual wage | `{"occupations": [...]}` |
 | `POST /partnerships/query` | Natural-language query translated to Cypher with safety gate | `PartnershipQueryResponse` |
 | `POST /partnerships/targeted` | Generate a targeted partnership proposal for a specific employer (non-streaming) | `NarrativeProposal` |
@@ -76,7 +75,7 @@ data: {"done": true}\n\n
 ```
 On error: `data: {"error": "<message>"}\n\n`.
 
-`GET /partnerships/landscape` reads the precomputed `PARTNERSHIP_ALIGNMENT` edge, which is materialized by `backend/partnerships/compute.py` during ingestion. `GET /partnerships/employer-pipeline` computes its result with a live traversal and does not depend on precomputed data. For the edge schema, see [Graph Model → Precomputed analytical edge](./graph-model.md#the-precomputed-analytical-edge).
+`GET /partnerships/landscape` reads the precomputed `PARTNERSHIP_ALIGNMENT` edge, which is materialized by `backend/partnerships/compute.py` during ingestion. The edge carries a `pipeline_size` property (department-membership count of students aligned to the employer's hires SOCs at this college) that the landscape view surfaces directly — no live traversal at request time. For the edge schema, see [Graph Model → Precomputed analytical edge](./graph-model.md#the-precomputed-analytical-edge).
 
 The targeted partnership artifact carries a `swp_evidence` block at the bottom — TOP codes, SOC codes, regional supply and demand totals, and the gap. It is assembled deterministically by `_assemble_swp_evidence` in `backend/partnerships/generate.py` (no LLM), so any subsequent funding justification has the empirical foundation it needs without a second flow.
 
