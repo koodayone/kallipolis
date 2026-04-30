@@ -198,6 +198,41 @@ docker exec kallipolis-neo4j-1 cypher-shell -u neo4j -p "$NEO4J_PW" --format pla
 # Compare to node_counts in the manifest
 ```
 
+### Restore drill (verify a backup is restorable)
+
+The principle: an untested backup is no backup. The cron in the previous section produces dumps daily, but until you restore one end-to-end you have no proof the dumps are loadable, the bucket's IAM is right, the load command syntax still matches the schema, or the disk hasn't been silently corrupting GCS objects.
+
+When to run: any time you change the backup mechanism, after any neo4j version change, and on a slow cadence (monthly is plenty) regardless. Costs nothing in real terms — the drill runs in a sandbox volume and tears itself down.
+
+The drill script is `scripts/neo4j-restore-drill.sh` in this repo. It is sandbox-isolated by design: it never touches the live `kallipolis_neo4j_data` volume or the live `kallipolis-neo4j-1` container. The sandbox container runs on alternate ports (HTTP 7475, Bolt 7688) so even if the live container is up there is no port collision. A safety guard at the top of the script aborts before any destructive step if `SANDBOX_VOLUME` ever fails to contain the `_drill` suffix — defending against operator error in future edits.
+
+What it does:
+
+1. Picks a GCS dump (defaults to the most recent top-level `neo4j-*.dump` in the bucket; can be overridden by passing the object name as an argument)
+2. Pulls it to a temp dir under `backups/.drill-<pid>-<ts>/`
+3. Loads it into a fresh sandbox Docker volume (`kallipolis_neo4j_data_drill`)
+4. Starts a sandbox neo4j container on alternate ports
+5. Runs verification queries (node counts, relationship counts, constraint count) and prints them
+6. Tears down sandbox container + volume + temp dir on exit (unless `--keep` was passed)
+
+Usage:
+
+```bash
+# Most recent backup
+./scripts/neo4j-restore-drill.sh
+
+# Specific backup
+./scripts/neo4j-restore-drill.sh neo4j-20260430T031851Z.dump
+
+# Keep the sandbox running so you can poke at it
+./scripts/neo4j-restore-drill.sh --keep
+# Then connect: docker exec -it kallipolis-neo4j-drill cypher-shell -u neo4j -p drilltest_throwaway
+# Or via Bolt: bolt://localhost:7688
+# Manual cleanup later: docker stop kallipolis-neo4j-drill && docker rm kallipolis-neo4j-drill && docker volume rm kallipolis_neo4j_data_drill
+```
+
+What "good" looks like: the script prints `drill PASSED` at the end, the node/relationship counts match what you expected for that dump's source state (compare to the matching `.manifest.json` if you have it, or to your live db, or to memory).
+
 ### Push local → prod
 
 When to run this: the local graph has evolved (new colleges onboarded, pipeline methodology updated, employer data re-validated) and prod should mirror it. Preview carries no user-generated data, so any time is a valid maintenance window.
