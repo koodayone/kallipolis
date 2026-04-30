@@ -193,9 +193,15 @@ def build_executive_summary(
         sector_phrase = f"{sector_display} sector" if sector_display else "workforce"
         s1 = f"{employer_name} operates in the {sector_phrase}."
 
-    # ES.2 — partnership thesis (purely template; same shape every time)
+    # ES.2 — partnership thesis (purely template; same shape every time).
+    # "the employer's hiring needs" rather than "the college's hiring needs":
+    # the partnership thesis is that the *college* helps fill the *employer's*
+    # workforce demand, not the other way around. The original LLM-authored
+    # prose used the pronoun "its" with the most recent noun (the employer)
+    # as antecedent, but pronoun reference is fragile in templates — we name
+    # the role explicitly here.
     s2 = (
-        f"{college} can partner with {employer_name} to fulfill the college's "
+        f"{college} can partner with {employer_name} to fulfill the employer's "
         "hiring needs for this role by leveraging the college's institutional assets."
     )
 

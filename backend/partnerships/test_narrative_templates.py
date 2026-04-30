@@ -181,7 +181,7 @@ class TestBuildExecutiveSummary:
             "college-preparatory high school in San Jose serving "
             "approximately 1,600 students. "
             "Foothill College can partner with Bellarmine College Preparatory "
-            "to fulfill the college's hiring needs for this role by leveraging "
+            "to fulfill the employer's hiring needs for this role by leveraging "
             "the college's institutional assets. "
             "The college offers 354 courses with TOP codes that map to "
             "SOC 25-2031, the target occupation for this partnership. "
