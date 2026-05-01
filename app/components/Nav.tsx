@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ActionBadge from "./ActionBadge";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
@@ -62,6 +63,22 @@ export default function Nav() {
 
         {/* Right controls */}
         <div className="flex items-center gap-4">
+          {/* Preview CTA — primary entry point into the atlas. Color
+              swaps for the light /mission theme so contrast holds.
+              Hidden below md: the atlas is not yet mobile-optimized, so
+              we don't surface entry points on touch viewports. */}
+          <div className="max-md:hidden">
+            <ActionBadge
+              label="Preview"
+              neonColor={isLightPage ? "#1a1a2e" : "#f5e6c8"}
+              opacity={1}
+              icon="play"
+              inline
+              compact
+              href="https://app.kallipolis.us"
+              newTab
+            />
+          </div>
           {/* Hamburger */}
           <button
           onClick={() => setOpen((o) => !o)}
