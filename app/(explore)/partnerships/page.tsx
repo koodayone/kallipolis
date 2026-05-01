@@ -75,9 +75,7 @@ export default function ExplorePartnershipsPage() {
           </p>
         </FadeUp>
 
-        <FadeUp delay={0.1}>
-          <PartnershipJourney />
-        </FadeUp>
+        <PartnershipJourney />
 
       </section>
 
