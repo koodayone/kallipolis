@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 export default function Promise() {
   return (
     <section
@@ -9,7 +13,13 @@ export default function Promise() {
         minHeight: 620,
       }}
     >
-      <div className="max-w-3xl mx-auto text-center">
+      <motion.div
+        className="max-w-3xl mx-auto text-center"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
         <p className="text-sm font-medium uppercase tracking-[0.15em] text-pacific-navy mb-4">
           The Promise
         </p>
@@ -20,7 +30,7 @@ export default function Promise() {
         >
           Activating human potential, with California leading the way.
         </h2>
-      </div>
+      </motion.div>
     </section>
   );
 }

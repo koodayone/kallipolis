@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import TwoFormsDiagram from "./TwoFormsDiagram";
 import ActionBadge from "./ActionBadge";
 
@@ -9,20 +12,22 @@ const points = [
 
 export default function PartnershipsSection() {
   return (
-    <section className="md:pt-10 md:px-16 md:pb-0 max-md:pt-8 max-md:px-6 max-md:pb-0" style={{ backgroundColor: "#060d1f" }}>
+    <section className="md:pt-16 md:px-16 md:pb-0 max-md:pt-12 max-md:px-6 max-md:pb-0" style={{ backgroundColor: "#060d1f" }}>
 
-      <div className="flex md:flex-row md:gap-12 md:items-stretch md:pb-16 max-md:flex-col max-md:gap-8 max-md:pb-12">
+      <motion.div
+        className="flex md:flex-row md:gap-12 md:items-stretch md:pb-16 max-md:flex-col max-md:gap-8 max-md:pb-12"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
 
         {/* Left column — header + points */}
         <div className="flex flex-col justify-center md:basis-[42%] md:grow-0 md:shrink-0 md:gap-6 md:self-center max-md:gap-5 max-md:self-stretch">
 
           {/* Header */}
           <div style={{ textAlign: "center", marginBottom: 24 }}>
-            <p style={{ fontSize: 13, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.15em", color: "rgba(255,255,255,0.45)", marginBottom: 16 }}>
-              Intelligent Partnerships
-            </p>
-            <div style={{ width: 64, height: 2, background: "#4fd1fd", borderRadius: 1, opacity: 0.9, margin: "0 auto 24px" }} />
-            <h2 className="text-[22px] md:text-[28px] leading-[1.15] tracking-[-0.02em] text-white" style={{ fontFamily: "var(--font-days-one)", fontWeight: 400 }}>
+            <h2 className="text-[22px] md:text-[26px] leading-[1.15] tracking-[-0.02em] text-white" style={{ fontFamily: "var(--font-days-one)", fontWeight: 400 }}>
               Drive partnerships that advance a Strong Workforce.
             </h2>
           </div>
@@ -46,7 +51,7 @@ export default function PartnershipsSection() {
         </div>
 
         {/* Right column — Three.js diagram + badge */}
-        <div className="flex flex-col gap-2 md:flex-1 max-md:w-full">
+        <div className="flex flex-col gap-2 md:flex-1 md:justify-center md:-mt-24 max-md:w-full">
           <div className="overflow-hidden md:rounded-[10px] md:min-h-[280px] max-md:min-h-[360px] max-md:-mx-6">
             <TwoFormsDiagram />
           </div>
@@ -54,7 +59,7 @@ export default function PartnershipsSection() {
             <ActionBadge label="Explore Partnerships" neonColor="#4fd1fd" opacity={1} icon="chainlink" inline href="/partnerships" />
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
