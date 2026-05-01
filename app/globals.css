@@ -78,3 +78,30 @@ html, body {
   stroke-linecap: round;
   animation: ray-shimmer 2.2s ease-in-out infinite;
 }
+
+/* Ambient glow — used on the Preview CTA in the home hero. The button is
+   always slightly luminous; the glow itself breathes on a 3.5s loop. The
+   inline hover boxShadow on ActionBadge overrides this keyframe when the
+   pointer is over the button. */
+@keyframes ambient-glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(245, 230, 200, 0.06); }
+  50%      { box-shadow: 0 0 18px rgba(245, 230, 200, 0.18); }
+}
+.ambient-glow {
+  animation: ambient-glow 3.5s ease-in-out infinite;
+}
+
+/* Ambient halo — soft outward halo (sonar-like) breathing on a 3.5s loop.
+   Uses the box-shadow spread radius rather than blur. Same hover-override
+   contract as .ambient-glow. */
+@keyframes ambient-halo {
+  0%, 100% { box-shadow: 0 0 0 0px rgba(245, 230, 200, 0); }
+  50%      { box-shadow: 0 0 0 8px rgba(245, 230, 200, 0.08); }
+}
+.ambient-halo {
+  animation: ambient-halo 3.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-glow, .ambient-halo { animation: none; }
+}
