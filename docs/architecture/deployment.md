@@ -11,7 +11,8 @@ The deployment is an intentional minimum. Three hosts, one graph, one VM. The at
 | Host | Purpose | Where it runs |
 |---|---|---|
 | `https://kallipolis.us` | Landing page | Cloudflare Pages |
-| `https://app.kallipolis.us` | Atlas preview (static Next.js export) | Cloudflare Pages |
+| `https://preview.kallipolis.us` | Atlas preview (static Next.js export) — primary URL during the pre-pilot GTM motion | Cloudflare Pages |
+| `https://app.kallipolis.us` | Atlas preview (alias of the above) — kept resolvable so any inbound link from prior outreach still works; reserved as the post-pilot canonical | Cloudflare Pages |
 | `https://api.kallipolis.us` | FastAPI backend + Neo4j | GCP Compute Engine VM |
 
 The atlas is built via `NEXT_STATIC_EXPORT=true npm run build` — a flag read by `atlas/next.config.ts` that enables `output: "export"` for production while keeping `next dev` in the standard server-rendered mode for local work. The build emits a pure static bundle to an `out/` directory under `atlas/` that Cloudflare Pages serves directly from its edge network.
@@ -37,7 +38,7 @@ Four secrets live in GCP Secret Manager, scoped to the `kallipolis-preview` proj
 | `NEO4J_PASSWORD` | Neo4j bolt credentials |
 | `ANTHROPIC_API_KEY` | Claude access for NL→Cypher and narrative generation |
 | `GEMINI_API_KEY` | Gemini access for ETL pipeline extractions |
-| `CORS_ORIGINS` | Comma-separated origins the FastAPI CORS middleware allows; production value is `https://app.kallipolis.us` |
+| `CORS_ORIGINS` | Comma-separated origins the FastAPI CORS middleware allows; production value is `https://preview.kallipolis.us,https://app.kallipolis.us` so both the primary preview URL and the legacy alias resolve cleanly |
 
 The VM's service account (`kallipolis-vm@kallipolis-preview.iam.gserviceaccount.com`) has `roles/secretmanager.secretAccessor` scoped to these four secrets only. On boot, the `kallipolis-env.service` systemd unit runs a secrets-loader script on the VM that calls `gcloud secrets versions access latest` for each secret and writes the values to a local `.env` file with mode 600. The backend's Docker Compose reads that `.env` via Compose's standard environment-variable interpolation — no secret values are baked into the image or committed to the repository.
 
