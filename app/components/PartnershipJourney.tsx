@@ -73,35 +73,30 @@ const STEPS = [
   {
     num: "01",
     question: "Which employers in my region are top candidates for a partnership?",
-    prose: "Identify partnership opportunities from a landscape of organizations whose hiring needs align with your curriculum.",
     Band: EmployerLandscapeBand,
     hasAccordion: true,
   },
   {
     num: "02",
     question: "What occupations does this employer hire for?",
-    prose: "Every employer is connected to the occupations it hires for — with regional wages, growth rates, and annual openings.",
     Band: OccupationalDemandBand,
     hasAccordion: true,
   },
   {
     num: "03",
     question: "Which of our academic departments have most synergy with this employer?",
-    prose: "Determine the specific departments whose coursework develops the skills this employer's occupations require.",
     Band: CurriculumAlignmentBand,
     hasAccordion: true,
   },
   {
     num: "04",
     question: "Which students will benefit from this partnership?",
-    prose: "Know which students can benefit the most from a partnership — by coursework, by skills, and by academic performance.",
     Band: StudentImpactBand,
     hasAccordion: true,
   },
   {
     num: "05",
     question: "What unmet regional labor market demand will this partnership address?",
-    prose: "Instantaneously bridge TOP to SOC codes. Precisely quantify how your school supplies unmet labor demand.",
     Band: SupplyDemandBridgeBand,
     hasAccordion: true,
   },
@@ -269,26 +264,10 @@ export default function PartnershipJourney() {
               {active.question}
             </p>
           </div>
-
-          {/* Prose */}
-          <p
-            key={`p-${activeStep}`}
-            style={{
-              fontSize: 14,
-              lineHeight: 1.6,
-              color: "rgba(255,255,255,0.4)",
-              margin: 0,
-              textAlign: "center",
-              maxWidth: 460,
-              animation: "fade-in-quick 0.25s ease",
-            }}
-          >
-            {active.prose}
-          </p>
         </div>
 
         {/* Band area — fixed position, content fades */}
-        <div className="md:top-[285px] max-md:top-[300px]" style={{
+        <div className="md:top-[235px] max-md:top-[250px]" style={{
           position: "absolute",
           left: "50%",
           transform: "translateX(-50%)",

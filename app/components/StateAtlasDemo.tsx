@@ -468,12 +468,8 @@ export default function StateAtlasDemo() {
       </div>
 
       {/* Right — text */}
-      <div className="flex flex-col justify-start md:flex-1 md:gap-10 md:pl-12 md:pt-4 max-md:gap-8 max-md:pl-0 max-md:pt-2 max-md:w-full">
+      <div className="flex flex-col justify-center md:flex-1 md:gap-16 md:pl-12 md:pt-4 max-md:gap-10 max-md:pl-0 max-md:pt-2 max-md:w-full">
         <div style={{ textAlign: "center" }}>
-          <p style={{ fontSize: 13, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.15em", color: "rgba(255,255,255,0.4)", marginBottom: 16 }}>
-            Two Scales
-          </p>
-          <div style={{ width: 64, height: 2, background: "#f0425e", borderRadius: 1, opacity: 0.9, margin: "0 auto 24px" }} />
           <h2
             className="text-[26px] md:text-[30px] leading-[1.12] tracking-[-0.02em] text-white"
             style={{ fontFamily: "var(--font-days-one)", fontWeight: 400 }}
@@ -482,9 +478,9 @@ export default function StateAtlasDemo() {
           </h2>
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: 36 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 44 }}>
           <div>
-            <span style={{ fontSize: 12, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "#f0425e", display: "block", marginBottom: 6 }}>
+            <span style={{ fontSize: 14, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "#f0425e", display: "block", marginBottom: 6 }}>
               State Atlas
             </span>
             <p style={{ fontSize: 17, lineHeight: 1.6, color: "rgba(255,255,255,0.65)", margin: 0 }}>
@@ -492,7 +488,7 @@ export default function StateAtlasDemo() {
             </p>
           </div>
           <div>
-            <span style={{ fontSize: 12, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "#f0425e", display: "block", marginBottom: 6 }}>
+            <span style={{ fontSize: 14, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "#f0425e", display: "block", marginBottom: 6 }}>
               College Atlas
             </span>
             <p style={{ fontSize: 17, lineHeight: 1.6, color: "rgba(255,255,255,0.65)", margin: 0 }}>
