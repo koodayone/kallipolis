@@ -63,14 +63,16 @@ export default function Nav() {
 
         {/* Right controls */}
         <div className="flex items-center gap-4">
-          {/* Preview CTA — primary entry point into the atlas. Color
-              swaps for the light /mission theme so contrast holds.
-              Hidden below md: the atlas is not yet mobile-optimized, so
-              we don't surface entry points on touch viewports. */}
+          {/* Preview CTA — primary entry point into the atlas. On /mission
+              the page's accent color is forest green (#2D5016, used for
+              eyebrows, dividers, and the bottom HOME CTA), so the Preview
+              pill takes that color too — same accent-layer role as the
+              other primary CTA on the page. Hidden below md: the atlas
+              is not yet mobile-optimized. */}
           <div className="max-md:hidden">
             <ActionBadge
               label="Preview"
-              neonColor={isLightPage ? "#1a1a2e" : "#f5e6c8"}
+              neonColor={isLightPage ? "#2D5016" : "#f5e6c8"}
               opacity={1}
               icon="play"
               inline
