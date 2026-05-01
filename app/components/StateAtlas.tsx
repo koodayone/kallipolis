@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { motion } from "framer-motion";
 import { NEON_COLORS } from "./StateMap";
 import { ROTATION_COLLEGES, FADE_DURATION } from "../lib/collegeRotation";
 
@@ -16,8 +17,14 @@ export default function StateAtlas({ activeIndex, opacity }: Props) {
   const neonColor = NEON_COLORS[college.id] ?? college.neonHex;
 
   return (
-    <section className="md:py-16 md:px-16 max-md:py-10 max-md:px-6" style={{ backgroundColor: "#060d1f" }}>
-      <div className="flex md:flex-row md:gap-12 md:items-stretch max-md:flex-col max-md:gap-8">
+    <section className="md:pt-0 md:pb-16 md:px-16 max-md:pt-0 max-md:pb-10 max-md:px-6" style={{ backgroundColor: "#060d1f" }}>
+      <motion.div
+        className="flex md:flex-row md:gap-12 md:items-stretch max-md:flex-col max-md:gap-8"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
 
         {/* Left column — map with college info overlaid in Nevada space */}
         <div className="relative md:basis-1/2 md:grow-0 md:shrink-0 md:min-h-[500px] max-md:w-full">
@@ -76,15 +83,11 @@ export default function StateAtlas({ activeIndex, opacity }: Props) {
         </div>
 
         {/* Right column — text */}
-        <div className="flex flex-col justify-start md:flex-1 md:gap-12 max-md:gap-8">
+        <div className="flex flex-col justify-start md:flex-1 md:gap-12 md:pt-8 max-md:gap-8">
 
           {/* Header block */}
           <div style={{ textAlign: "center" }}>
-            <p className="text-sm font-medium uppercase tracking-[0.15em] text-white/40" style={{ marginBottom: 16 }}>
-              The Atlas
-            </p>
-            <div style={{ width: 64, height: 2, background: neonColor, borderRadius: 1, opacity: 0.9, transition: `background ${FADE_DURATION}ms ease`, margin: "0 auto 24px" }} />
-            <h2 className="text-[24px] md:text-[30px] leading-[1.12] tracking-[-0.02em] text-white" style={{ fontFamily: "var(--font-days-one)", fontWeight: 400 }}>
+            <h2 className="text-[22px] md:text-[26px] leading-[1.15] tracking-[-0.02em] text-white" style={{ fontFamily: "var(--font-days-one)", fontWeight: 400 }}>
               116 schools. 73 districts. One intelligent network.
             </h2>
           </div>
@@ -118,7 +121,7 @@ export default function StateAtlas({ activeIndex, opacity }: Props) {
           </div>
 
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

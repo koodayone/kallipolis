@@ -1,20 +1,25 @@
+"use client";
+
+import { motion } from "framer-motion";
 import EpistemologyGraph from "./EpistemologyGraph";
 import ActionBadge from "./ActionBadge";
 
 export default function EpistemologySection({ activeIndex = 0, opacity = 1 }: { activeIndex?: number; opacity?: number }) {
   return (
-    <section className="md:pt-16 md:px-16 md:pb-12 max-md:pt-10 max-md:px-6 max-md:pb-8" style={{ backgroundColor: "#060d1f" }}>
-      <div className="flex md:flex-row md:gap-10 md:items-start max-md:flex-col max-md:gap-8">
+    <section className="md:pt-6 md:px-16 md:pb-12 max-md:pt-4 max-md:px-6 max-md:pb-8" style={{ backgroundColor: "#060d1f" }}>
+      <motion.div
+        className="flex md:flex-row md:gap-10 md:items-start max-md:flex-col max-md:gap-8"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
 
         {/* Left column — header + points */}
-        <div className="flex flex-col justify-start md:basis-[40%] md:grow-0 md:shrink-0 md:gap-10 md:-mt-6 max-md:gap-8 max-md:mt-0">
+        <div className="flex flex-col justify-start md:basis-[40%] md:grow-0 md:shrink-0 md:gap-10 md:mt-8 max-md:gap-8 max-md:mt-0">
 
           {/* Header */}
           <div style={{ textAlign: "center" }}>
-            <p style={{ fontSize: 13, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.15em", color: "rgba(255,255,255,0.45)", marginBottom: 16 }}>
-              The Methodology
-            </p>
-            <div style={{ width: 64, height: 2, background: "#FFCC33", borderRadius: 1, opacity: 0.9, margin: "0 auto 24px" }} />
             <h2 className="text-[22px] md:text-[26px] leading-[1.12] tracking-[-0.02em] text-white" style={{ fontFamily: "var(--font-days-one)", fontWeight: 400 }}>
               Insights grounded in<br />public datasets verified by public institutions.
             </h2>
@@ -74,10 +79,10 @@ export default function EpistemologySection({ activeIndex = 0, opacity = 1 }: { 
         </div>
 
         {/* Right column — Four forms diagram */}
-        <div className="md:flex-1 md:min-h-[360px] max-md:w-full max-md:min-h-[420px] max-md:-mx-6">
+        <div className="md:flex-1 md:min-h-[360px] md:mt-6 max-md:w-full max-md:min-h-[420px] max-md:-mx-6">
           <EpistemologyGraph activeIndex={activeIndex} opacity={opacity} />
         </div>
-      </div>
+      </motion.div>
 
       {/* Mobile-only badge after the scene */}
       <div className="md:hidden text-center mt-2">

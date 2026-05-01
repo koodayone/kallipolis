@@ -48,7 +48,9 @@ export default function SyncedShowcase() {
       <div id="atlas">
         <StateAtlas activeIndex={displayIndex} opacity={opacity} />
       </div>
-      <ActionBadge label="Explore Atlas" neonColor={ROTATION_COLLEGES[displayIndex].neonHex} opacity={1} href="/atlas" />
+      <div style={{ background: "#060d1f", padding: "0 64px 16px", textAlign: "center" }}>
+        <ActionBadge label="Explore Atlas" neonColor={ROTATION_COLLEGES[displayIndex].neonHex} opacity={1} href="/atlas" inline />
+      </div>
     </>
   );
 }
