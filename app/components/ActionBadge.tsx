@@ -15,6 +15,11 @@ type Props = {
   newTab?: boolean;
   compact?: boolean;
   prominent?: boolean;
+  /** Ambient idle motion. "glow" runs a subtle box-shadow breath; "halo"
+   *  runs a soft outward sonar-like halo. Both loop on 3.5s ease-in-out.
+   *  The keyframes in globals.css are tuned to the cream-gold preview
+   *  color; other neonColors may not pop. */
+  ambient?: "glow" | "halo";
 };
 
 function CubeIcon({ color }: { color: string }) {
@@ -102,13 +107,26 @@ function MailIcon({ color }: { color: string }) {
   );
 }
 
-export default function ActionBadge({ label = "Action", neonColor, opacity, icon = "cube", inline = false, href, invertHover = false, newTab = false, compact = false, prominent = false }: Props) {
+export default function ActionBadge({ label = "Action", neonColor, opacity, icon = "cube", inline = false, href, invertHover = false, newTab = false, compact = false, prominent = false, ambient }: Props) {
   const [hovered, setHovered] = useState(false);
+
+  // When an ambient effect is set and the pointer is NOT over the button,
+  // omit the inline boxShadow entirely so the keyframe (in globals.css)
+  // drives it. On hover, the inline hover shadow takes precedence and
+  // overrides the keyframe; on mouseleave the keyframe resumes from
+  // wherever it is in its cycle, keeping transitions smooth.
+  const ambientClass = ambient ? `ambient-${ambient}` : undefined;
+  const inlineBoxShadow = hovered
+    ? `0 0 12px ${neonColor}30`
+    : ambient
+      ? undefined
+      : "none";
 
   const badgeInner = (
       <div
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
+        className={ambientClass}
         style={{
           display: "inline-flex",
           alignItems: "center",
@@ -120,7 +138,7 @@ export default function ActionBadge({ label = "Action", neonColor, opacity, icon
           opacity,
           transform: hovered ? "scale(1.05)" : "scale(1)",
           background: hovered ? `${neonColor}15` : prominent ? `${neonColor}0a` : "transparent",
-          boxShadow: hovered ? `0 0 12px ${neonColor}30` : "none",
+          ...(inlineBoxShadow !== undefined ? { boxShadow: inlineBoxShadow } : {}),
           transition: `opacity ${FADE_DURATION}ms ease, border-color ${FADE_DURATION}ms ease, transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease`,
         }}
       >

@@ -66,7 +66,7 @@ export default function Vision() {
             className="max-md:hidden"
             style={{ marginTop: 32 }}
           >
-            <ActionBadge label="Preview" neonColor="#f5e6c8" opacity={1} icon="play" inline prominent href="https://preview.kallipolis.us" newTab />
+            <ActionBadge label="Preview" neonColor="#f5e6c8" opacity={1} icon="play" inline prominent ambient="glow" href="https://preview.kallipolis.us" newTab />
           </motion.div>
         </div>
       </div>
