@@ -1,3 +1,5 @@
+import ActionBadge from "./ActionBadge";
+
 export default function Vision() {
   return (
     <section className="relative overflow-hidden py-24 px-6 md:min-h-[780px] max-md:min-h-[600px]">
@@ -31,6 +33,24 @@ export default function Vision() {
           <h1 className="text-[40px] md:text-[56px] leading-[1.08] tracking-[-0.03em] text-white mb-6" style={{ fontFamily: "var(--font-days-one)", fontWeight: 400 }}>
             California&apos;s<br />intelligence layer for<br />workforce development
           </h1>
+
+          {/* Primary call to action — same Preview destination as the
+              persistent nav CTA. Sized full (not compact) so it reads
+              as the primary action surface; the nav CTA defers visually.
+              Hidden below md: the atlas is not yet mobile-optimized, so
+              we don't surface entry points on touch viewports. */}
+          <div className="max-md:hidden" style={{ marginTop: 32 }}>
+            <ActionBadge
+              label="Preview"
+              neonColor="#f5e6c8"
+              opacity={1}
+              icon="play"
+              inline
+              prominent
+              href="https://app.kallipolis.us"
+              newTab
+            />
+          </div>
         </div>
       </div>
 

@@ -12,6 +12,9 @@ type Props = {
   inline?: boolean;
   href?: string;
   invertHover?: boolean;
+  newTab?: boolean;
+  compact?: boolean;
+  prominent?: boolean;
 };
 
 function CubeIcon({ color }: { color: string }) {
@@ -99,7 +102,7 @@ function MailIcon({ color }: { color: string }) {
   );
 }
 
-export default function ActionBadge({ label = "Action", neonColor, opacity, icon = "cube", inline = false, href, invertHover = false }: Props) {
+export default function ActionBadge({ label = "Action", neonColor, opacity, icon = "cube", inline = false, href, invertHover = false, newTab = false, compact = false, prominent = false }: Props) {
   const [hovered, setHovered] = useState(false);
 
   const badgeInner = (
@@ -109,21 +112,21 @@ export default function ActionBadge({ label = "Action", neonColor, opacity, icon
         style={{
           display: "inline-flex",
           alignItems: "center",
-          gap: 10,
-          padding: "10px 18px",
+          gap: compact ? 7 : 10,
+          padding: compact ? "5px 12px" : "10px 18px",
           border: `1px solid ${invertHover ? "rgba(255,255,255,0.5)" : neonColor}`,
           borderRadius: 6,
           cursor: "pointer",
           opacity,
           transform: hovered ? "scale(1.05)" : "scale(1)",
-          background: hovered ? `${neonColor}15` : "transparent",
+          background: hovered ? `${neonColor}15` : prominent ? `${neonColor}0a` : "transparent",
           boxShadow: hovered ? `0 0 12px ${neonColor}30` : "none",
           transition: `opacity ${FADE_DURATION}ms ease, border-color ${FADE_DURATION}ms ease, transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease`,
         }}
       >
         <span
           style={{
-            fontSize: 12,
+            fontSize: compact ? 11 : 12,
             fontWeight: 600,
             letterSpacing: "0.14em",
             textTransform: "uppercase",
@@ -155,7 +158,11 @@ export default function ActionBadge({ label = "Action", neonColor, opacity, icon
   );
 
   const badge = href ? (
-    <Link href={href} style={{ textDecoration: "none" }}>
+    <Link
+      href={href}
+      style={{ textDecoration: "none" }}
+      {...(newTab ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+    >
       {badgeInner}
     </Link>
   ) : (
