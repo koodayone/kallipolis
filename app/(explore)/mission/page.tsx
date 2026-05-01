@@ -1,4 +1,5 @@
 import ActionBadge from "../../components/ActionBadge";
+import FadeUp from "../../components/FadeUp";
 
 // ── Section primitives (light theme) ─────────────────────────────────────
 
@@ -57,13 +58,13 @@ export default function MissionPage() {
     <div className="md:min-h-screen max-md:min-h-[100dvh]" style={{ background: "#F5F2EB" }}>
 
       {/* ── 1. Hero Image — Tahoe ── */}
-      <div style={{ paddingTop: 80 }}>
+      <FadeUp style={{ paddingTop: 80 }}>
         <LandscapeImage src="/tahoe_art.png" alt="Lake Tahoe" />
-      </div>
+      </FadeUp>
 
       {/* ── 2. Mission Statement ── */}
       <section className="text-center md:py-[120px] md:px-16 max-md:py-16 max-md:px-6">
-        <div style={{ maxWidth: 640, margin: "0 auto" }}>
+        <FadeUp style={{ maxWidth: 640, margin: "0 auto" }}>
           <Eyebrow>Mission</Eyebrow>
           <GreenDivider />
           <SectionHeading>
@@ -72,15 +73,17 @@ export default function MissionPage() {
           <p style={{ fontSize: 17, lineHeight: 1.7, color: "#3d3a36", marginTop: 28 }}>
             Kallipolis is an ode to the State of California and the spirit of reinvention. We believe that there is no institution that more faithfully represents this spirit than California Community Colleges. In the face of historic technological and social change, it is imperative that we reinvent what it means to build the future. Developing a vibrant workforce is central to that cause, and it is here that Kallipolis aims to make its contribution.
           </p>
-        </div>
+        </FadeUp>
       </section>
 
       {/* ── 4. Middle Image — Yosemite ── */}
-      <LandscapeImage src="/yosemite_art.png" alt="Yosemite" position="center 58%" />
+      <FadeUp>
+        <LandscapeImage src="/yosemite_art.png" alt="Yosemite" position="center 58%" />
+      </FadeUp>
 
       {/* ── 4. About the Founder ── */}
       <section className="md:py-[120px] md:px-16 max-md:py-16 max-md:px-6">
-        <div className="max-w-[900px] mx-auto flex md:flex-row md:gap-12 md:items-center max-md:flex-col max-md:gap-8 max-md:items-stretch">
+        <FadeUp className="max-w-[900px] mx-auto flex md:flex-row md:gap-12 md:items-center max-md:flex-col max-md:gap-8 max-md:items-stretch">
           {/* Portrait */}
           <div className="rounded-[10px] overflow-hidden md:basis-[240px] md:grow-0 md:shrink-0 max-md:max-w-[280px] max-md:mx-auto max-md:w-full">
             <img
@@ -107,18 +110,20 @@ export default function MissionPage() {
               After Foothill, Dayone transferred to and graduated from UC Berkeley with a Bachelor of Arts in Computer Science. Upon graduation he gathered experience as a software engineer building global scale enterprise systems at Walmart and Salesforce. Founding Kallipolis is an attempt at pursuing his original motivation to build technology.
             </p>
           </div>
-        </div>
+        </FadeUp>
       </section>
 
       {/* ── 5. Closing Image — Tenaya ── */}
-      <LandscapeImage src="/tenaya_art.png" alt="Tenaya Lake" position="center 28%" height={520} />
+      <FadeUp>
+        <LandscapeImage src="/tenaya_art.png" alt="Tenaya Lake" position="center 28%" height={520} />
+      </FadeUp>
 
       {/* ── 6. Cross-links ── */}
-      <section className="flex justify-center md:py-12 md:px-16 max-md:py-10 max-md:px-6" style={{ background: "#F5F2EB" }}>
+      <FadeUp className="flex justify-center md:py-12 md:px-16 max-md:py-10 max-md:px-6" style={{ background: "#F5F2EB" }}>
         <div style={{ transform: "scale(1.04)", transformOrigin: "center" }}>
           <ActionBadge label="Home" neonColor="#2D5016" opacity={1} icon="sun" inline href="/" />
         </div>
-      </section>
+      </FadeUp>
     </div>
   );
 }

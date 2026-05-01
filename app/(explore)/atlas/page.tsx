@@ -3,6 +3,7 @@
 import FormCard from "../../components/FormCard";
 import StateAtlasDemo from "../../components/StateAtlasDemo";
 import ActionBadge from "../../components/ActionBadge";
+import FadeUp from "../../components/FadeUp";
 import {
   createMortarboardForm,
   createBookForm,
@@ -60,7 +61,7 @@ export default function ExploreAtlasPage() {
     <>
       {/* ── Section 1: Hero ── */}
       <section className="md:pt-[120px] md:pb-12 md:px-16 max-md:pt-24 max-md:pb-8 max-md:px-6">
-        <div className="max-w-3xl mx-auto text-center">
+        <FadeUp className="max-w-3xl mx-auto text-center">
           <Eyebrow>The Atlas</Eyebrow>
           <GoldDivider />
           <SectionHeading>Each college is a world</SectionHeading>
@@ -70,7 +71,7 @@ export default function ExploreAtlasPage() {
           <p style={{ fontSize: 17, lineHeight: 1.6, color: "rgba(255,255,255,0.65)", marginTop: 16 }}>
             Four of these forms are analytical — students, courses, occupations, and employers — each grounded in a public data authority. The fifth is the unit of action that integrates them: partnership proposals formulated from the four analytical forms.
           </p>
-        </div>
+        </FadeUp>
       </section>
 
       {/* ── Section 2: The Five Forms (pyramid) ── */}
@@ -78,7 +79,7 @@ export default function ExploreAtlasPage() {
         {/* Desktop: top row of 3 cards, bottom row of 2 cards centered
             under the gaps — same pyramid shape as the atlas product.
             Mobile: single-column stack. */}
-        <div className="flex flex-col gap-5 max-w-[960px] mx-auto">
+        <FadeUp className="flex flex-col gap-5 max-w-[960px] mx-auto">
           <div className="flex md:flex-row md:gap-5 max-md:flex-col max-md:gap-4">
             {FORMS.slice(0, 3).map((form) => (
               <div key={form.label} className="md:flex-1 max-md:w-full">
@@ -103,20 +104,22 @@ export default function ExploreAtlasPage() {
               </div>
             ))}
           </div>
-        </div>
+        </FadeUp>
       </section>
 
       {/* ── Section 3: Two Scales ── */}
       <section className="md:pt-12 md:pb-16 md:px-16 max-md:pt-10 max-md:pb-10 max-md:px-6">
-        <StateAtlasDemo />
+        <FadeUp>
+          <StateAtlasDemo />
+        </FadeUp>
       </section>
 
       {/* ── Section 4: Cross-links ── */}
-      <section className="bg-[#060d1f] flex justify-center md:pt-6 md:pb-12 md:px-16 md:gap-4 max-md:pt-6 max-md:pb-10 max-md:px-4 max-md:gap-3 max-md:flex-wrap">
+      <FadeUp className="bg-[#060d1f] flex justify-center md:pt-6 md:pb-12 md:px-16 md:gap-4 max-md:pt-6 max-md:pb-10 max-md:px-4 max-md:gap-3 max-md:flex-wrap">
         <ActionBadge label="Home" neonColor="#f5e6c8" opacity={1} icon="sun" inline href="/#atlas" invertHover />
         <ActionBadge label="Explore Partnerships" neonColor="#4fd1fd" opacity={1} icon="chainlink" inline href="/partnerships" invertHover />
         <ActionBadge label="Explore Sources" neonColor="#c9a84c" opacity={1} icon="lightbulb" inline href="/sources" invertHover />
-      </section>
+      </FadeUp>
     </>
   );
 }

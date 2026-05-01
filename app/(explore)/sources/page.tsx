@@ -1,6 +1,7 @@
 "use client";
 
 import AuthorityCard from "../../components/AuthorityCard";
+import FadeUp from "../../components/FadeUp";
 import DemoStudents from "../../components/DemoStudents";
 import DemoCourses from "../../components/DemoCourses";
 import DemoOccupations from "../../components/DemoOccupations";
@@ -93,7 +94,7 @@ export default function ExploreSourcesPage() {
     <>
       {/* ── Section 1: Hero (prose-led) ── */}
       <section className="md:pt-[120px] md:pb-12 md:px-16 max-md:pt-24 max-md:pb-8 max-md:px-6">
-        <div className="max-w-3xl mx-auto text-center">
+        <FadeUp className="max-w-3xl mx-auto text-center">
           <Eyebrow>The Methodology</Eyebrow>
           <GoldDivider />
           <SectionHeading>
@@ -102,37 +103,39 @@ export default function ExploreSourcesPage() {
           <p style={{ fontSize: 18, lineHeight: 1.6, color: "rgba(255,255,255,0.65)", marginTop: 24, maxWidth: 600, marginLeft: "auto", marginRight: "auto" }}>
             Students. Courses. Occupations. Employers.<br />Each unit of analysis traces to one authoritative institution.<br />Query each domain via natural language.
           </p>
-        </div>
+        </FadeUp>
       </section>
 
       {/* ── Section 2: Authority deep dives — each with its graph row ── */}
       <section className="md:pt-8 md:pb-8 md:px-16 max-md:pt-6 max-md:pb-6 max-md:px-6">
         <div>
           {AUTHORITIES.map((auth) => (
-            <AuthorityCard key={auth.unitName} {...auth} />
+            <FadeUp key={auth.unitName}>
+              <AuthorityCard {...auth} />
+            </FadeUp>
           ))}
         </div>
       </section>
 
       {/* ── Section 3: Pipeline (component-led) ── */}
       <section className="md:pt-12 md:pb-0 md:px-16 max-md:pt-10 max-md:pb-0 max-md:px-6">
-        <div className="max-w-3xl mx-auto text-center" style={{ marginBottom: 48 }}>
+        <FadeUp className="max-w-3xl mx-auto text-center" style={{ marginBottom: 48 }}>
           <Eyebrow>Unified Knowledge</Eyebrow>
           <GoldDivider />
           <SectionHeading>Uniting fragmented institutional data<br />into a single knowledge graph</SectionHeading>
           <p style={{ fontSize: 16, lineHeight: 1.6, color: "rgba(255,255,255,0.55)", marginTop: 20 }}>
             Students, courses, occupations, and employers exist in separate data sources across the ecosystem. Kallipolis connects them in a single graph — making relationships visible that no individual source can surface alone.
           </p>
-        </div>
+        </FadeUp>
 
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <FadeUp delay={0.1} style={{ maxWidth: 1200, margin: "0 auto" }}>
           <UnifiedKnowledgeDiagram />
-        </div>
+        </FadeUp>
       </section>
 
       {/* ── Section 4: Forward Deployment (prose-led) ── */}
       <section className="md:pt-12 md:pb-12 md:px-16 md:-mt-[260px] max-md:pt-2 max-md:pb-10 max-md:px-6 max-md:-mt-[80px]">
-        <div className="max-w-2xl mx-auto text-center">
+        <FadeUp className="max-w-2xl mx-auto text-center">
           <Eyebrow>Forward Deployment</Eyebrow>
           <GoldDivider />
           <SectionHeading>Limitations become invitations</SectionHeading>
@@ -142,15 +145,15 @@ export default function ExploreSourcesPage() {
           <p style={{ fontSize: 16, lineHeight: 1.65, color: "rgba(255,255,255,0.55)", marginTop: 16 }}>
             Each of these limitations is an invitation to collaborate. The system is architected for institutional partnership. Direct MIS feeds replace synthetic students. Curriculum API access makes courses real-time. Local industry contacts validate employer readiness. Forward-deployment into the institution closes the gaps that distance creates.
           </p>
-        </div>
+        </FadeUp>
       </section>
 
       {/* ── Section 5: Cross-links ── */}
-      <section className="bg-[#060d1f] flex justify-center md:pt-6 md:pb-12 md:px-16 md:gap-4 max-md:pt-6 max-md:pb-10 max-md:px-4 max-md:gap-3 max-md:flex-wrap">
+      <FadeUp className="bg-[#060d1f] flex justify-center md:pt-6 md:pb-12 md:px-16 md:gap-4 max-md:pt-6 max-md:pb-10 max-md:px-4 max-md:gap-3 max-md:flex-wrap">
         <ActionBadge label="Home" neonColor="#f5e6c8" opacity={1} icon="sun" inline href="/#methodology" invertHover />
         <ActionBadge label="Explore Atlas" neonColor="#f0425e" opacity={1} icon="cube" inline href="/atlas" invertHover />
         <ActionBadge label="Explore Partnerships" neonColor="#4fd1fd" opacity={1} icon="chainlink" inline href="/partnerships" invertHover />
-      </section>
+      </FadeUp>
     </>
   );
 }
