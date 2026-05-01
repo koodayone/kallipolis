@@ -49,11 +49,10 @@ export default function ExplorePartnershipsPage() {
       {/* ── Section 1: Convergence ── */}
       <section className="md:pt-[120px] md:pb-0 md:px-16 max-md:pt-24 max-md:pb-0 max-md:px-6">
         <FadeUp className="max-w-3xl mx-auto text-center">
-          <Eyebrow>Intelligent Partnerships</Eyebrow>
-          <BlueDivider />
           <SectionHeading>
-            Build a Strong Workforce<br />by building strong partnerships.
+            Build a Strong Workforce<br />by building strong partnerships
           </SectionHeading>
+          <div style={{ width: 64, height: 2, background: BRAND, borderRadius: 1, opacity: 0.9, margin: "24px auto 0" }} />
           <p style={{ fontSize: 17, lineHeight: 1.6, color: "rgba(255,255,255,0.6)", marginTop: 24, maxWidth: 640, marginLeft: "auto", marginRight: "auto" }}>
             Students, courses, occupations, and employers converge into a single partnership proposal. Every claim is grounded in evidence, and every partnership is positioned to advance a Strong Workforce.
           </p>
@@ -71,7 +70,7 @@ export default function ExplorePartnershipsPage() {
           <BlueDivider />
           <SectionHeading>Data-driven partnerships<br />that supply regional demand</SectionHeading>
           <p style={{ fontSize: 16, lineHeight: 1.6, color: "rgba(255,255,255,0.55)", marginTop: 24, maxWidth: 460, marginLeft: "auto", marginRight: "auto" }}>
-            Craft partnership proposals that answer the questions workforce development demands. Let&apos;s journey through the layers of a partnership proposal for Golden State Solar, an imaginary company in the renewable energy sector.
+            Craft partnership proposals that answer the questions workforce development demands. Journey through the layers of a partnership proposal for Golden State Solar.
           </p>
         </FadeUp>
 
@@ -89,14 +88,12 @@ export default function ExplorePartnershipsPage() {
           </div>
 
           {/* Right — Prose */}
-          <div className="flex flex-col md:flex-1 md:gap-9 max-md:gap-6 pt-0 max-md:w-full">
+          <div className="flex flex-col md:flex-1 md:gap-9 md:pt-8 max-md:gap-6 max-md:pt-4 max-md:w-full">
             <div style={{ textAlign: "center" }}>
-              <Eyebrow>Regional Alignment</Eyebrow>
-              <BlueDivider />
               <SectionHeading>Coordinate across<br />Regional Consortia</SectionHeading>
             </div>
 
-            <div>
+            <div style={{ marginTop: 10 }}>
               <span style={{ fontSize: 12, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: BRAND, display: "block", marginBottom: 8 }}>
                 Eight Regional Consortia
               </span>

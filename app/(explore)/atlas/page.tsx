@@ -62,9 +62,8 @@ export default function ExploreAtlasPage() {
       {/* ── Section 1: Hero ── */}
       <section className="md:pt-[120px] md:pb-12 md:px-16 max-md:pt-24 max-md:pb-8 max-md:px-6">
         <FadeUp className="max-w-3xl mx-auto text-center">
-          <Eyebrow>The Atlas</Eyebrow>
-          <GoldDivider />
           <SectionHeading>Each college is a world</SectionHeading>
+          <div style={{ width: 64, height: 2, background: "#f0425e", borderRadius: 1, opacity: 0.9, margin: "24px auto 0" }} />
           <p style={{ fontSize: 17, lineHeight: 1.6, color: "rgba(255,255,255,0.65)", marginTop: 24 }}>
             Selecting a college opens a three-dimensional space of five rotating forms. Each form is an entry point into a dimension of institutional reality — click to explore, and the atlas dissolves into a natural language interface native to the form.
           </p>
