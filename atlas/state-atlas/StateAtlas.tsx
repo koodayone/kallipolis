@@ -319,7 +319,12 @@ function SearchResults({
 
   if (results.length === 0) {
     return (
-      <div style={{ display: "flex", flexDirection: "column", gap: "16px", paddingTop: "8px" }}>
+      // Align with where the college NAME appears in a result row, not
+      // just the row's outer padding. A row's college-name text sits at
+      // 16px (button padding) + 3px (accent bar) + 16px (gap) = 35px from
+      // the container's inside edge. The empty state takes that column so
+      // the visual rhythm holds whether results exist or not.
+      <div style={{ display: "flex", flexDirection: "column", gap: "16px", padding: "14px 16px 14px 35px" }}>
         <span style={{
           fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
           fontSize: "13px",
