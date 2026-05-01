@@ -15,10 +15,10 @@ const EXPANDED = {
   soc: "51-4041",
   description: "Set up and operate machine tools to produce precision metal parts, instruments, and tools.",
   skills: [
-    { skill: "CNC Operation", course: "MFGT 210" },
-    { skill: "Blueprint Reading", course: "MFGT 145" },
-    { skill: "Quality Control", course: "MFGT 145" },
-    { skill: "Precision Measurement", course: "MFGT 110" },
+    { skill: "CNC Operation" },
+    { skill: "Blueprint Reading" },
+    { skill: "Quality Control" },
+    { skill: "Precision Measurement" },
   ],
   region: "Bay Area / Peninsula",
   employed: 2340,
@@ -179,7 +179,6 @@ export default function DemoOccupations() {
                           <div key={s.skill} style={{ display: "flex", alignItems: "center", gap: 7 }}>
                             <Checkmark />
                             <span style={{ fontSize: 12, color: ACCENT }}>{s.skill}</span>
-                            <span style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", marginLeft: "auto" }}>{s.course}</span>
                           </div>
                         ))}
                       </div>

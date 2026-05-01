@@ -18,9 +18,9 @@ const EXPANDED = {
     wage: 58400,
     description: "Precision metal parts production for aerospace applications.",
     skills: [
-      { skill: "CNC Operation", course: "MFGT 210" },
-      { skill: "Blueprint Reading", course: "MFGT 145" },
-      { skill: "Quality Control", course: "MFGT 145" },
+      { skill: "CNC Operation" },
+      { skill: "Blueprint Reading" },
+      { skill: "Quality Control" },
     ],
   },
 };
@@ -224,7 +224,6 @@ export default function DemoEmployers() {
                               <div key={s.skill} style={{ display: "flex", alignItems: "center", gap: 7 }}>
                                 <Checkmark />
                                 <span style={{ fontSize: 12, color: ACCENT }}>{s.skill}</span>
-                                <span style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", marginLeft: "auto" }}>{s.course}</span>
                               </div>
                             ))}
                           </div>

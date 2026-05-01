@@ -101,9 +101,9 @@ const EXPANDED_EMPLOYER = {
     wage: 47670,
     description: "Assemble, install, and maintain solar photovoltaic systems on rooftops and other structures.",
     skills: [
-      { skill: "Solar Installation", course: "ENRG 201, ENRG 210" },
-      { skill: "Photovoltaic Systems", course: "ENRG 145, ENRG 150" },
-      { skill: "Electrical Safety", course: "ELEC 101, CNST 110" },
+      { skill: "Solar Installation" },
+      { skill: "Photovoltaic Systems" },
+      { skill: "Electrical Safety" },
     ],
   },
 };
@@ -140,7 +140,7 @@ export function EmployerLandscapeBand({ expandProgress = 0 }: { expandProgress?:
               <span style={{ fontSize: 12, fontWeight: 500, color: "rgba(255,255,255,0.85)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{e.name}</span>
               <span style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{e.sector}</span>
               <span className="max-md:hidden" style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", textAlign: "center" }}>{e.roles}</span>
-              <span className="max-md:hidden"><SkillPill count={e.skills} /></span>
+              <span className="max-md:hidden" style={{ display: "flex", justifyContent: "flex-end" }}><SkillPill count={e.skills} /></span>
             </div>
 
             {isTarget && (
@@ -164,7 +164,6 @@ export function EmployerLandscapeBand({ expandProgress = 0 }: { expandProgress?:
                         <div key={s.skill} style={{ display: "flex", alignItems: "center", gap: 7 }}>
                           <SkillCheckmark />
                           <span style={{ fontSize: 12, color: BRAND }}>{s.skill}</span>
-                          <span style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", marginLeft: "auto" }}>{s.course}</span>
                         </div>
                       ))}
                     </div>
@@ -191,9 +190,9 @@ const EXPANDED_OCCUPATION = {
   soc: "47-2231",
   description: "Assemble, install, and maintain solar photovoltaic systems on rooftops and other structures.",
   skills: [
-    { skill: "Solar Installation", course: "ENRG 201, ENRG 210" },
-    { skill: "Photovoltaic Systems", course: "ENRG 145, ENRG 150" },
-    { skill: "Electrical Safety", course: "ELEC 101, CNST 110" },
+    { skill: "Solar Installation" },
+    { skill: "Photovoltaic Systems" },
+    { skill: "Electrical Safety" },
   ],
   region: "Central Valley / Mother Lode",
   employed: "1,840",
@@ -245,7 +244,6 @@ export function OccupationalDemandBand({ expandProgress = 0 }: { expandProgress?
                       <div key={s.skill} style={{ display: "flex", alignItems: "center", gap: 7 }}>
                         <SkillCheckmark />
                         <span style={{ fontSize: 12, color: BRAND }}>{s.skill}</span>
-                        <span style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", marginLeft: "auto" }}>{s.course}</span>
                       </div>
                     ))}
                   </div>
@@ -272,14 +270,19 @@ const DEPARTMENTS = [
 
 const EXPANDED_COURSES = [
   {
-    code: "ENRG 201", name: "Solar System Design & Installation",
+    code: "ENRG 201", name: "Solar System Design & Installation", topCode: "093420",
     description: "Design, size, and install residential and commercial photovoltaic systems including panel layout, inverter selection, and grid interconnection. Emphasis on NEC Article 690 compliance and Cal/OSHA safety requirements.",
     skills: ["Solar Installation", "Photovoltaic Systems", "Electrical Safety"],
   },
-  { code: "ENRG 145", name: "Photovoltaic Fundamentals", description: "Principles of photovoltaic energy conversion, solar cell technology, and system components.", skills: ["Photovoltaic Systems"] },
-  { code: "ENRG 150", name: "Energy Storage & Grid Integration", description: "Battery storage systems, grid-tie inverters, and utility interconnection standards.", skills: ["Photovoltaic Systems"] },
-  { code: "ENRG 101", name: "Introduction to Renewable Energy", description: "Survey of renewable energy technologies including solar, wind, and geothermal applications.", skills: ["Solar Installation"] },
+  { code: "ENRG 145", name: "Photovoltaic Fundamentals", topCode: "093420", description: "Principles of photovoltaic energy conversion, solar cell technology, and system components.", skills: ["Photovoltaic Systems"] },
+  { code: "ENRG 150", name: "Energy Storage & Grid Integration", topCode: "093420", description: "Battery storage systems, grid-tie inverters, and utility interconnection standards.", skills: ["Photovoltaic Systems"] },
+  { code: "ENRG 101", name: "Introduction to Renewable Energy", topCode: "093400", description: "Survey of renewable energy technologies including solar, wind, and geothermal applications.", skills: ["Solar Installation"] },
 ];
+
+function formatTopCode(raw: string | null | undefined): string | null {
+  if (!raw) return null;
+  return /^\d{6}$/.test(raw) ? `${raw.slice(0, 4)}.${raw.slice(4, 6)}` : raw;
+}
 
 export function CurriculumAlignmentBand({ expandProgress = 0 }: { expandProgress?: number }) {
   const { expanded, opacity: accordionOpacity } = expandState(expandProgress);
@@ -324,7 +327,18 @@ export function CurriculumAlignmentBand({ expandProgress = 0 }: { expandProgress
                     }}>
                       <Chevron open={ci === 0 && expanded} />
                       <span style={{ fontSize: 11, fontWeight: 600, color: BRAND, flexShrink: 0 }}>{c.code}</span>
-                      <span style={{ fontSize: 12, color: "rgba(255,255,255,0.75)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{c.name}</span>
+                      <span style={{ flex: 1, minWidth: 0, fontSize: 12, color: "rgba(255,255,255,0.75)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{c.name}</span>
+                      {formatTopCode(c.topCode) && (
+                        <span style={{
+                          fontFamily: "var(--font-mono), ui-monospace, SFMono-Regular, monospace",
+                          fontSize: 11,
+                          color: "rgba(255,255,255,0.4)",
+                          letterSpacing: "0.02em",
+                          flexShrink: 0,
+                        }}>
+                          TOP {formatTopCode(c.topCode)}
+                        </span>
+                      )}
                     </div>
 
                     {ci === 0 && expanded && (

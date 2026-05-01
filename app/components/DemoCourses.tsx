@@ -6,10 +6,15 @@ const FONT = "var(--font-geist), system-ui, sans-serif";
 const ACCENT = "#c9a84c";
 
 const COURSES = [
-  { code: "MFGT 110", name: "Introduction to Manufacturing Processes" },
-  { code: "MFGT 145", name: "Industrial Safety and Quality Control" },
-  { code: "MFGT 210", name: "Computer-Aided Manufacturing" },
+  { code: "MFGT 110", name: "Introduction to Manufacturing Processes", topCode: "095630" },
+  { code: "MFGT 145", name: "Industrial Safety and Quality Control", topCode: "095630" },
+  { code: "MFGT 210", name: "Computer-Aided Manufacturing", topCode: "095630" },
 ];
+
+function formatTopCode(raw: string | null | undefined): string | null {
+  if (!raw) return null;
+  return /^\d{6}$/.test(raw) ? `${raw.slice(0, 4)}.${raw.slice(4, 6)}` : raw;
+}
 
 const EXPANDED_COURSE = {
   description: "Advanced computer-aided manufacturing techniques including CNC programming, toolpath optimization, and production workflow design.",
@@ -150,7 +155,18 @@ export default function DemoCourses() {
               }}>
                 <Chevron open={isTarget && isRowExpanded} />
                 <span style={{ fontSize: 11, fontWeight: 600, color: ACCENT, flexShrink: 0 }}>{c.code}</span>
-                <span style={{ fontSize: 12, color: "rgba(255,255,255,0.75)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{c.name}</span>
+                <span style={{ flex: 1, minWidth: 0, fontSize: 12, color: "rgba(255,255,255,0.75)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{c.name}</span>
+                {formatTopCode(c.topCode) && (
+                  <span style={{
+                    fontFamily: "var(--font-mono), ui-monospace, SFMono-Regular, monospace",
+                    fontSize: 11,
+                    color: "rgba(255,255,255,0.4)",
+                    letterSpacing: "0.02em",
+                    flexShrink: 0,
+                  }}>
+                    TOP {formatTopCode(c.topCode)}
+                  </span>
+                )}
               </div>
 
               {isTarget && (
