@@ -75,7 +75,7 @@ export default function Nav() {
               icon="play"
               inline
               compact
-              href="https://app.kallipolis.us"
+              href="https://preview.kallipolis.us"
               newTab
             />
           </div>

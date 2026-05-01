@@ -47,7 +47,7 @@ export default function Vision() {
               icon="play"
               inline
               prominent
-              href="https://app.kallipolis.us"
+              href="https://preview.kallipolis.us"
               newTab
             />
           </div>
