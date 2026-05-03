@@ -31,13 +31,28 @@ def get_students(
     `total_count` so callers can render "showing N of M" and request
     further pages by offset.
     """
+    # Both queries use `MATCH (s:Student) WHERE EXISTS { (s)-[:ENROLLED_IN]->(:Course {college: $college}) }`
+    # rather than the previous `MATCH (s:Student)-[:ENROLLED_IN]->(:Course {college})` join.
+    # The join shape returned one row per (student, enrollment) pair and
+    # required a DISTINCT + ORDER BY over the materialized cartesian
+    # before paging — measured at ~2.6s warm / 21s cold for Foothill on
+    # 2026-05-03.
+    #
+    # The EXISTS shape lets the planner scan the Student.courses_completed
+    # index in DESC order, evaluate the EXISTS subquery per row using
+    # the Course.college index, and stream rows directly into SKIP/LIMIT
+    # without materializing all matching students. The model stays the
+    # same — students are still located via their ENROLLED_IN edges, so
+    # cross-college enrollment (a student with courses at both Foothill
+    # and De Anza) remains naturally representable.
     driver = get_driver()
     try:
         with driver.session() as session:
             count_record = session.run(
                 """
-                MATCH (s:Student)-[:ENROLLED_IN]->(:Course {college: $college})
-                RETURN count(DISTINCT s) AS total
+                MATCH (s:Student)
+                WHERE EXISTS { (s)-[:ENROLLED_IN]->(:Course {college: $college}) }
+                RETURN count(s) AS total
                 """,
                 college=college,
             ).single()
@@ -45,8 +60,8 @@ def get_students(
 
             result = session.run(
                 """
-                MATCH (s:Student)-[:ENROLLED_IN]->(:Course {college: $college})
-                WITH DISTINCT s
+                MATCH (s:Student)
+                WHERE EXISTS { (s)-[:ENROLLED_IN]->(:Course {college: $college}) }
                 RETURN s.uuid AS uuid, s.gpa AS gpa,
                        s.primary_focus AS primary_focus,
                        s.courses_completed AS courses_completed
