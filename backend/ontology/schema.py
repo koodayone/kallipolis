@@ -2,6 +2,8 @@ import os
 import logging
 from neo4j import GraphDatabase
 
+from ontology.timing import TimedDriver
+
 logger = logging.getLogger(__name__)
 
 _driver = None
@@ -10,10 +12,11 @@ _driver = None
 def get_driver():
     global _driver
     if _driver is None:
-        _driver = GraphDatabase.driver(
+        raw = GraphDatabase.driver(
             os.environ["NEO4J_URI"],
             auth=(os.environ["NEO4J_USERNAME"], os.environ["NEO4J_PASSWORD"]),
         )
+        _driver = TimedDriver(raw) if os.environ.get("NEO4J_QUERY_TIMING", "1") != "0" else raw
     return _driver
 
 
@@ -134,8 +137,22 @@ def _create_constraints(session):
     # `toLower(...) CONTAINS '...'` and so cannot use a RANGE index;
     # it would benefit from a TEXT index instead, which we have not
     # added here.
+    #
+    # course_college: speeds the `MATCH (c:Course {college: $college})`
+    # filter that appears in essentially every read endpoint and in
+    # most LLM-generated queries (students, courses, employers,
+    # occupations, partnerships, vocab resolver). The existing
+    # `course_code_college` uniqueness constraint creates a composite
+    # index keyed on (code, college); that index is only usable when
+    # `code` is also bound. Filtering by college alone falls back to
+    # NodeByLabelScan + property filter over all Course nodes
+    # (~thousands per college × ~125 colleges in the full graph).
+    # Adding a standalone RANGE index turns the per-college filter
+    # into a NodeIndexSeek. Impact not yet measured; will be once the
+    # neo4j_queries.jsonl instrumentation is deployed.
     indexes = [
         "CREATE INDEX student_primary_focus IF NOT EXISTS FOR (n:Student) ON (n.primary_focus)",
+        "CREATE INDEX course_college IF NOT EXISTS FOR (n:Course) ON (n.college)",
     ]
     for index in indexes:
         session.run(index)
