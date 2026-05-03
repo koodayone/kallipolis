@@ -31,28 +31,24 @@ def get_students(
     `total_count` so callers can render "showing N of M" and request
     further pages by offset.
     """
-    # Both queries use `MATCH (s:Student) WHERE EXISTS { (s)-[:ENROLLED_IN]->(:Course {college: $college}) }`
-    # rather than the previous `MATCH (s:Student)-[:ENROLLED_IN]->(:Course {college})` join.
-    # The join shape returned one row per (student, enrollment) pair and
-    # required a DISTINCT + ORDER BY over the materialized cartesian
-    # before paging — measured at ~2.6s warm / 21s cold for Foothill on
-    # 2026-05-03.
-    #
-    # The EXISTS shape lets the planner scan the Student.courses_completed
-    # index in DESC order, evaluate the EXISTS subquery per row using
-    # the Course.college index, and stream rows directly into SKIP/LIMIT
-    # without materializing all matching students. The model stays the
-    # same — students are still located via their ENROLLED_IN edges, so
-    # cross-college enrollment (a student with courses at both Foothill
-    # and De Anza) remains naturally representable.
+    # Query shape: `MATCH (s:Student)-[:ENROLLED_IN]->(:Course {college})`
+    # with DISTINCT then ORDER BY then SKIP/LIMIT. An EXISTS-subquery
+    # rewrite was attempted (see commit history); PROFILE on the
+    # 99K-student / 14K-foothill graph showed it was 5.4x slower
+    # (1706ms vs 314ms) and used 17x more DbHits — the planner did a
+    # NodeByLabelScan + per-row EXISTS check instead of using the
+    # `student_courses_completed` index for the ORDER BY. The join
+    # shape lets the planner index-seek into Course via `course_college`,
+    # walk ENROLLED_IN backward to gather ~14K candidate students,
+    # then DISTINCT + sort + page. 13MB transient memory for the
+    # DISTINCT materialization is acceptable at this scale.
     driver = get_driver()
     try:
         with driver.session() as session:
             count_record = session.run(
                 """
-                MATCH (s:Student)
-                WHERE EXISTS { (s)-[:ENROLLED_IN]->(:Course {college: $college}) }
-                RETURN count(s) AS total
+                MATCH (s:Student)-[:ENROLLED_IN]->(:Course {college: $college})
+                RETURN count(DISTINCT s) AS total
                 """,
                 college=college,
             ).single()
@@ -60,8 +56,8 @@ def get_students(
 
             result = session.run(
                 """
-                MATCH (s:Student)
-                WHERE EXISTS { (s)-[:ENROLLED_IN]->(:Course {college: $college}) }
+                MATCH (s:Student)-[:ENROLLED_IN]->(:Course {college: $college})
+                WITH DISTINCT s
                 RETURN s.uuid AS uuid, s.gpa AS gpa,
                        s.primary_focus AS primary_focus,
                        s.courses_completed AS courses_completed
