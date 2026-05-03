@@ -150,14 +150,14 @@ def _create_constraints(session):
     # Adding a standalone RANGE index turns the per-college filter
     # into a NodeIndexSeek. Impact not yet measured; will be once the
     # neo4j_queries.jsonl instrumentation is deployed.
-    # student_courses_completed: enables the /students/ pagination
-    # query (students/api.py) to scan a sorted index in DESC order
-    # and stream rows directly into SKIP/LIMIT, instead of
-    # materializing all matching students before sorting. Paired with
-    # the EXISTS-rewrite of the query (which uses course_college
-    # for the per-student college check), this turned the warm-cache
-    # time from ~2.6s to <TBD> on Foothill (~14K students with
-    # ENROLLED_IN edges).
+    # student_courses_completed: added speculatively to enable an
+    # EXISTS-subquery rewrite of the /students/ pagination query that
+    # would scan this index in DESC order. PROFILE showed the planner
+    # didn't use it that way (NodeByLabelScan + per-row EXISTS won
+    # the cost estimate), so the rewrite was reverted. The index is
+    # kept because it's cheap, may be picked by future queries that
+    # sort or range-filter on courses_completed, and incurs only
+    # marginal write overhead at student generation time.
     indexes = [
         "CREATE INDEX student_primary_focus IF NOT EXISTS FOR (n:Student) ON (n.primary_focus)",
         "CREATE INDEX course_college IF NOT EXISTS FOR (n:Course) ON (n.college)",
