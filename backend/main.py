@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from students.api import router as students_router
 from courses.api import router as courses_router
@@ -12,6 +12,7 @@ from occupations.api import router as occupations_router
 from employers.api import router as employers_router
 from partnerships.api import router as partnerships_router
 from ontology.schema import init_schema, close_driver
+from ontology.timing import set_request_context
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -34,6 +35,19 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.middleware("http")
+async def attribute_neo4j_queries(request: Request, call_next):
+    # Tag every Neo4j query with its triggering route so the JSONL log
+    # can be aggregated per-endpoint. The route template isn't resolved
+    # at middleware entry (that happens during call_next), so we record
+    # the raw path here and the aggregator normalizes UUIDs/numerics.
+    set_request_context(f"{request.method} {request.url.path}")
+    try:
+        return await call_next(request)
+    finally:
+        set_request_context("")
 
 
 @app.on_event("startup")

@@ -64,3 +64,6 @@ backend/employers/.audit_report.json
 backend/employers/.audit_verify_cache.json
 backend/employers/.audit_occupations_sample.md
 backend/employers/.audit_occupations_judge.json
+
+# Neo4j query timing logs (JSONL written by ontology/timing.py)
+backend/logs/
