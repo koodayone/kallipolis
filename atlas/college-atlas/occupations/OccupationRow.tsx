@@ -135,7 +135,7 @@ export default function OccupationRow({ occ, index, brandColor, isOpen: controll
             transition={{ duration: 0.2 }}
             style={{ overflow: "hidden", background: "rgba(255,255,255,0.02)" }}
           >
-            <div style={{ padding: "16px 20px 24px" }}>
+            <div style={{ padding: "16px 20px 24px 50px" }}>
               {isLoading && <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Loading...</p>}
 
               {/* Full detail view (analytical view mode) */}
