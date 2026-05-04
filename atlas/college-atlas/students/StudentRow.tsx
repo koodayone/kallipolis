@@ -211,13 +211,13 @@ export default function StudentRow({ student, index, brandColor, isOpen: control
                                 style={{ transform: occOpen ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s", flexShrink: 0, alignSelf: "center" }}>
                                 <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                               </svg>
-                              <span style={{ fontFamily: MONO, fontSize: "11px", color: "rgba(255,255,255,0.4)", flexShrink: 0, whiteSpace: "nowrap" }}>
+                              <span style={{ fontFamily: MONO, fontSize: "11px", color: brandColor, opacity: 0.7, flexShrink: 0, whiteSpace: "nowrap" }}>
                                 SOC {occ.socCode}
                               </span>
                               <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.75)", flex: 1 }}>
                                 {occ.title}
                               </span>
-                              <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.35)", flexShrink: 0, whiteSpace: "nowrap", textAlign: "right" }}>
+                              <span style={{ fontFamily: FONT, fontSize: "11px", color: brandColor, opacity: 0.7, flexShrink: 0, whiteSpace: "nowrap", textAlign: "right" }}>
                                 {occ.matchedCourseCount} course{occ.matchedCourseCount === 1 ? "" : "s"}
                               </span>
                             </button>

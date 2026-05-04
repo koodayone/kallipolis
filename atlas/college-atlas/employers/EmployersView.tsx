@@ -607,9 +607,14 @@ function EmployerOccupationRow({ occ, brandColor }: { occ: ApiEmployerOccupation
                 </div>
               )}
               {occ.description && (
-                <p style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.55)", lineHeight: 1.55, margin: "0 0 14px" }}>
-                  {occ.description}
-                </p>
+                <div style={{ marginBottom: "14px" }}>
+                  <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: brandColor, opacity: 0.7, display: "block", marginBottom: "10px" }}>
+                    Description
+                  </span>
+                  <p style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.55)", lineHeight: 1.55, margin: 0 }}>
+                    {occ.description}
+                  </p>
+                </div>
               )}
               {groups.length > 0 ? (
                 <div>
