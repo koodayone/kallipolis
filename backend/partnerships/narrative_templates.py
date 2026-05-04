@@ -122,39 +122,6 @@ def fmt_demand_clause(wage: int | float | None, openings: int | None) -> str:
     return "an occupation with " + " and ".join(parts)
 
 
-def _normalize_skill(skill: str) -> str:
-    """Render a skill name in the institutional voice: lowercase except
-    for all-caps acronyms (HVAC, HACCP, EPA, OSHA, EHR, BLS, etc.).
-
-    Per ``docs/conventions.md`` and the prior narrative prompt: skill
-    names are not proper nouns ("food safety", "operations management",
-    "clinical documentation"), so they should not be Title Case in
-    prose even when the graph stores them that way. The acronym
-    carve-out preserves established institutional capitalizations
-    that *are* proper.
-    """
-    return " ".join(
-        w if (len(w) > 1 and w.isupper()) else w.lower()
-        for w in skill.split()
-    )
-
-
-def fmt_skills_list(skills: list[str]) -> str:
-    """Render skills as ``"a, b, and c"`` with the Oxford comma,
-    normalized to the institutional lowercase-with-acronym-carve-out
-    style. Empty list returns an empty string — the caller decides
-    whether to render the sentence at all.
-    """
-    if not skills:
-        return ""
-    items = [_normalize_skill(s) for s in skills]
-    if len(items) == 1:
-        return items[0]
-    if len(items) == 2:
-        return f"{items[0]} and {items[1]}"
-    return ", ".join(items[:-1]) + f", and {items[-1]}"
-
-
 # ═══════════════════════════════════════════════════════════════════════════
 # Section builders
 # ═══════════════════════════════════════════════════════════════════════════
@@ -231,33 +198,19 @@ def build_occupational_demand(
     annual_wage: int | float | None,
     annual_openings: int | None,
     coe_region_display: str,
-    core_skills: list[str],
 ) -> str:
-    """The two-sentence regional-demand framing for the SELECTED
+    """Single-sentence regional-demand framing for the SELECTED
     occupation only. Cites COE-region figures (never national,
-    cross-occupation, or aggregate)."""
+    cross-occupation, or aggregate). The Curriculum Alignment section
+    that follows is the dedicated place for naming aligned courses
+    and departments; this section stays focused on demand."""
 
-    # OD.1 — regional demand
     demand_clause = fmt_demand_clause(annual_wage, annual_openings)
-    s1 = (
+    return (
         f"{employer_name}'s core hiring centers on {soc_title} (SOC {soc_code}), "
         f"{demand_clause} in the {coe_region_display} region according to "
         "Centers of Excellence projections."
     )
-
-    # OD.2 — core skills (no decorative closing; the institutional voice
-    # lists what the skills are and stops)
-    if core_skills:
-        s2 = f"Core skills for this role include {fmt_skills_list(core_skills)}."
-    else:
-        # Fallback: occupation has no surfaced core skills. Honest and
-        # short rather than padded.
-        s2 = (
-            "Core skills for this role are not surfaced by the institutional "
-            "skills index for this occupation."
-        )
-
-    return f"{s1} {s2}"
 
 
 def build_curriculum_alignment(
@@ -333,7 +286,6 @@ def build_narrative(
     annual_wage: int | float | None,
     annual_openings: int | None,
     coe_region_display: str,
-    core_skills: list[str],
     total_aligned_courses: int,
     total_in_aligned_departments: int,
     n_departments: int,
@@ -357,7 +309,6 @@ def build_narrative(
             annual_wage=annual_wage,
             annual_openings=annual_openings,
             coe_region_display=coe_region_display,
-            core_skills=core_skills,
         ),
         "curriculum_alignment": build_curriculum_alignment(
             employer_name=employer_name,

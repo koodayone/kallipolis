@@ -17,15 +17,13 @@ function deduplicateBySoc<T extends { soc_code: string }>(items: T[]): T[] {
 }
 
 // Example queries shown as suggestions. The first three demonstrate
-// the sort family ("Occupations [superlative] [metric]"); the last two
-// demonstrate substitution-on-title and substitution-on-skill. Quoted
-// slots are substitutable.
+// the sort family ("Occupations [superlative] [metric]"); the last
+// demonstrates substitution-on-title. Quoted slots are substitutable.
 const EXAMPLES = [
   "Occupations with the highest wages",
   "Occupations with the most yearly openings",
   "Occupations growing fastest in our region",
   "'Software' occupations",
-  "Occupations requiring 'data analysis' skills",
 ];
 
 const OCCUPATION_COLUMNS: Column[] = [

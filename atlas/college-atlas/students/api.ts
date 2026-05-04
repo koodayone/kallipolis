@@ -16,13 +16,31 @@ export type ApiStudentEnrollment = {
   status: string;
 };
 
+export type ApiCourseRef = {
+  code: string;
+  name: string;
+};
+
+export type ApiTopGroup = {
+  top_code: string;
+  top_title: string;
+  courses: ApiCourseRef[];
+};
+
+export type ApiOccupationAlignment = {
+  soc_code: string;
+  title: string;
+  matched_course_count: number;
+  matched_top_groups: ApiTopGroup[];
+};
+
 export type ApiStudentDetail = {
   uuid: string;
   primary_focus: string;
   courses_completed: number;
   gpa: number;
   enrollments: ApiStudentEnrollment[];
-  skills: string[];
+  occupation_alignment: ApiOccupationAlignment[];
 };
 
 export type StudentQueryResponse = {

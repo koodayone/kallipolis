@@ -1,7 +1,7 @@
 """
 Full graph reload for a region.
 
-Clears existing data, loads courses + skills + occupations + employers + students
+Clears existing data, loads courses + occupations + employers + students
 from cached enriched files and calibration data.
 
 Usage:
@@ -80,7 +80,7 @@ def clear_graph(driver) -> None:
 
         # Departments
         s.run("MATCH (d:Department) DETACH DELETE d")
-        # Skills
+        # Skills (legacy — drop any leftover nodes from pre-crosswalk graphs)
         s.run("MATCH (s:Skill) DETACH DELETE s")
         # Occupations
         s.run("MATCH (o:Occupation) DETACH DELETE o")
@@ -95,7 +95,7 @@ def clear_graph(driver) -> None:
 
 
 def load_courses(driver, college_keys: list[str], configs: dict[str, dict]) -> int:
-    """Load courses + skills for all colleges."""
+    """Load courses for all colleges."""
     logger.info(f"Loading courses for {len(college_keys)} colleges...")
     total_courses = 0
 
@@ -142,7 +142,7 @@ def load_industry_data(driver) -> None:
     stats = load_industry(driver, occupations, coe_data)
     logger.info(f"  Occupations: {stats.get('occupations', 0)}, "
                 f"Regions: {stats.get('regions', 0)}, "
-                f"REQUIRES_SKILL: {stats.get('requires_skill', 0)}")
+                f"DEMANDS: {stats.get('demands', 0)}")
 
     # Employers
     emp_path = EMPLOYERS_DIR / "employers.json"
@@ -169,9 +169,10 @@ def generate_students(driver, college_keys: list[str], configs: dict[str, dict])
         with open(enriched_path) as f:
             courses = json.load(f)
 
-        # Skip if no courses with skills (MCF-only colleges)
-        if not any(c.get("skill_mappings") for c in courses):
-            logger.info(f"  {key}: no skills, skipping students")
+        # Skip if no extractable course set (MCF-only colleges where the
+        # PDF scraper never produced course descriptions).
+        if not courses:
+            logger.info(f"  {key}: no courses, skipping students")
             continue
 
         info = configs.get(key, {"name": key})
@@ -197,7 +198,6 @@ def verify(driver) -> None:
     logger.info("Verifying graph...")
     with driver.session() as s:
         queries = [
-            ("Skills", "MATCH (s:Skill) RETURN count(s) AS cnt"),
             ("Courses", "MATCH (c:Course) RETURN count(c) AS cnt"),
             ("Departments", "MATCH (d:Department) RETURN count(d) AS cnt"),
             ("Students", "MATCH (s:Student) RETURN count(s) AS cnt"),
@@ -205,10 +205,8 @@ def verify(driver) -> None:
             ("Occupations", "MATCH (o:Occupation) RETURN count(o) AS cnt"),
             ("Employers", "MATCH (e:Employer) RETURN count(e) AS cnt"),
             ("Regions", "MATCH (r:Region) RETURN count(r) AS cnt"),
-            ("DEVELOPS", "MATCH ()-[d:DEVELOPS]->() RETURN count(d) AS cnt"),
-            ("REQUIRES_SKILL", "MATCH ()-[r:REQUIRES_SKILL]->() RETURN count(r) AS cnt"),
             ("ENROLLED_IN", "MATCH ()-[e:ENROLLED_IN]->() RETURN count(e) AS cnt"),
-            ("HAS_SKILL", "MATCH ()-[h:HAS_SKILL]->() RETURN count(h) AS cnt"),
+            ("PREPARES_FOR", "MATCH ()-[p:PREPARES_FOR]->() RETURN count(p) AS cnt"),
             ("HIRES_FOR", "MATCH ()-[h:HIRES_FOR]->() RETURN count(h) AS cnt"),
             ("PARTNERSHIP_ALIGNMENT", "MATCH ()-[p:PARTNERSHIP_ALIGNMENT]->() RETURN count(p) AS cnt"),
         ]
@@ -216,16 +214,6 @@ def verify(driver) -> None:
             result = s.run(query)
             cnt = result.single()["cnt"]
             logger.info(f"  {label}: {cnt:,}")
-
-        # Bridge skills
-        result = s.run("""
-            MATCH (s:Skill)
-            WHERE EXISTS { MATCH (:Course)-[:DEVELOPS]->(s) }
-              AND EXISTS { MATCH (:Occupation)-[:REQUIRES_SKILL]->(s) }
-            RETURN count(s) AS cnt
-        """)
-        bridge = result.single()["cnt"]
-        logger.info(f"  Bridge skills (in both DEVELOPS and REQUIRES_SKILL): {bridge}")
 
 
 def reload_region(region_key: str) -> None:

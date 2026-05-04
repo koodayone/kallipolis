@@ -14,6 +14,24 @@ export type StudentEnrollment = {
   status: string;
 };
 
+export type CourseRef = {
+  code: string;
+  name: string;
+};
+
+export type TopGroup = {
+  topCode: string;
+  topTitle: string;
+  courses: CourseRef[];
+};
+
+export type OccupationAlignment = {
+  socCode: string;
+  title: string;
+  matchedCourseCount: number;
+  matchedTopGroups: TopGroup[];
+};
+
 export type StudentDetail = {
   uuid: string;
   displayNumber: number;
@@ -21,5 +39,5 @@ export type StudentDetail = {
   coursesCompleted: number;
   gpa: number;
   enrollments: StudentEnrollment[];
-  skills: string[];
+  occupationAlignment: OccupationAlignment[];
 };

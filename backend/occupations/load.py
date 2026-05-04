@@ -30,11 +30,11 @@ BATCH_SIZE = 500
 def cleanup_stale_occupations(driver: Driver, valid_soc_codes: list[str]) -> int:
     """DETACH DELETE Occupation nodes not in the valid set. Returns count deleted.
 
-    DETACH removes attached edges automatically, so DEMANDS (from Region) and
-    REQUIRES_SKILL (to Skill) edges on stale Occupation nodes are cleaned up
-    in the same step. HIRES_FOR edges from Employer nodes are likewise removed;
-    the Employer nodes themselves remain (their own cleanup lives in
-    employers/load.py).
+    DETACH removes attached edges automatically, so DEMANDS (from Region) edges
+    on stale Occupation nodes are cleaned up in the same step. HIRES_FOR edges
+    from Employer nodes and PREPARES_FOR edges from Course nodes are likewise
+    removed; the Employer and Course nodes themselves remain (their own cleanup
+    lives in employers/load.py and courses/load.py).
     """
     with driver.session() as session:
         result = session.run(
@@ -68,7 +68,7 @@ def load_industry(
         before = len(occupations)
         occupations = [o for o in occupations if o["soc_code"] in filtered_soc_codes]
         logger.info(f"Filtered to {len(occupations)} occupations (from {before})")
-    stats = {"regions": 0, "occupations": 0, "demands": 0, "requires_skill": 0, "college_links": 0}
+    stats = {"regions": 0, "occupations": 0, "demands": 0, "college_links": 0}
 
     with driver.session() as session:
         # 1. Create Region nodes from COE region codes
@@ -135,43 +135,6 @@ def load_industry(
             stats["demands"] += len(demand_batch)
         logger.info(f"Created {stats['demands']} DEMANDS edges")
 
-        # 5. Drop stale REQUIRES_SKILL edges before re-creating from the
-        # current mapping. MERGE in `_create_requires_skill` is idempotent
-        # for additions but does not remove edges that no longer correspond
-        # to the new skill list. Without this clear, a re-run of
-        # assign_skills.py followed by load.py layers new skills on top of
-        # stale ones (e.g., Millwrights' historical "Music History" edge
-        # would survive even after the corrected mapping replaces it). The
-        # blanket DELETE is safe because the create batch below
-        # re-establishes every (occupation, skill) pair the current
-        # occupations.json names. Skill nodes themselves are left alone —
-        # they may still be referenced by Course-[:DEVELOPS]->Skill edges
-        # and are shared across the graph.
-        result = session.run(
-            "MATCH (:Occupation)-[r:REQUIRES_SKILL]->() DELETE r RETURN count(r) AS n"
-        ).single()
-        stats["requires_skill_dropped"] = result["n"] if result else 0
-        logger.info(
-            f"Cleared {stats['requires_skill_dropped']} stale REQUIRES_SKILL edges"
-        )
-
-        # 6. Create Occupation -[:REQUIRES_SKILL]-> Skill
-        skill_batch = []
-        for occ in occupations:
-            for skill_name in occ.get("skills", []):
-                skill_batch.append({
-                    "soc_code": occ["soc_code"],
-                    "skill": skill_name,
-                })
-                if len(skill_batch) >= BATCH_SIZE:
-                    cnt = _create_requires_skill(session, skill_batch)
-                    stats["requires_skill"] += cnt
-                    skill_batch = []
-        if skill_batch:
-            cnt = _create_requires_skill(session, skill_batch)
-            stats["requires_skill"] += cnt
-        logger.info(f"Created {stats['requires_skill']} REQUIRES_SKILL edges")
-
     return stats
 
 
@@ -202,21 +165,6 @@ def _create_demands(session, batch: list[dict]):
         """,
         batch=batch,
     )
-
-
-def _create_requires_skill(session, batch: list[dict]) -> int:
-    result = session.run(
-        """
-        UNWIND $batch AS row
-        MATCH (o:Occupation {soc_code: row.soc_code})
-        MERGE (s:Skill {name: row.skill})
-        WITH o, s
-        MERGE (o)-[:REQUIRES_SKILL]->(s)
-        RETURN count(*) AS cnt
-        """,
-        batch=batch,
-    )
-    return result.single()["cnt"]
 
 
 if __name__ == "__main__":

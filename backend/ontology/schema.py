@@ -106,11 +106,18 @@ def _create_constraints(session):
         except Exception:
             pass
 
+    # Drop the legacy Skill constraint (the Skill abstraction was retired
+    # when the TOP-SOC institutional crosswalk replaced it as the bridge
+    # between curriculum and labor market).
+    try:
+        session.run("DROP CONSTRAINT skill_name IF EXISTS")
+    except Exception:
+        pass
+
     constraints = [
         "CREATE CONSTRAINT college_name IF NOT EXISTS FOR (n:College) REQUIRE n.name IS UNIQUE",
         "CREATE CONSTRAINT course_code_college IF NOT EXISTS FOR (n:Course) REQUIRE (n.code, n.college) IS UNIQUE",
         "CREATE CONSTRAINT department_name IF NOT EXISTS FOR (n:Department) REQUIRE n.name IS UNIQUE",
-        "CREATE CONSTRAINT skill_name IF NOT EXISTS FOR (n:Skill) REQUIRE n.name IS UNIQUE",
         "CREATE CONSTRAINT student_uuid IF NOT EXISTS FOR (n:Student) REQUIRE n.uuid IS UNIQUE",
         "CREATE CONSTRAINT region_name IF NOT EXISTS FOR (n:Region) REQUIRE n.name IS UNIQUE",
         "CREATE CONSTRAINT occupation_soc IF NOT EXISTS FOR (n:Occupation) REQUIRE n.soc_code IS UNIQUE",

@@ -8,7 +8,7 @@ from pydantic import BaseModel
 from .base import NumericFilter, render_op_label
 
 OrderField = Literal[
-    "matching_skills", "annual_wage", "employment",
+    "aligned_course_count", "annual_wage", "employment",
     "growth_rate", "annual_openings",
 ]
 
@@ -16,19 +16,24 @@ OrderField = Literal[
 class OccupationSpec(BaseModel):
     """Structured intent of an occupation NL query."""
     title_contains: list[str] | None = None
-    skill_contains: list[str] | None = None
     education_level: str | None = None
-    order_by: OrderField = "matching_skills"
+    order_by: OrderField = "aligned_course_count"
     order_dir: Literal["asc", "desc"] = "desc"
     limit: int | None = None
 
 
 # ── Cypher template ─────────────────────────────────────────────────
+#
+# The occupation list is grounded in PREPARES_FOR — the institutional
+# Course→Occupation crosswalk — rather than the retired skill-overlap
+# bridge. count(DISTINCT course) measures institutional curriculum
+# depth at this college for each SOC.
 
 _BASE_TRAVERSAL = (
     "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)"
-    "-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)"
-    "<-[:DEVELOPS]-(course:Course {college: $college})"
+    "-[d:DEMANDS]->(occ:Occupation)"
+    "<-[:PREPARES_FOR]-(course:Course {college: $college})"
+    "<-[:CONTAINS]-(dept:Department)"
 )
 
 _RETURN_CLAUSE = (
@@ -37,12 +42,12 @@ _RETURN_CLAUSE = (
     "       d.employment AS employment, d.growth_rate AS growth_rate,\n"
     "       d.annual_openings AS annual_openings,\n"
     "       occ.education_level AS education_level,\n"
-    "       count(DISTINCT sk) AS matching_skills,\n"
-    "       collect(DISTINCT sk.name) AS skills"
+    "       count(DISTINCT course) AS aligned_course_count,\n"
+    "       count(DISTINCT dept) AS aligned_department_count"
 )
 
 _ORDER_FIELD_TO_CYPHER = {
-    "matching_skills": "matching_skills",
+    "aligned_course_count": "aligned_course_count",
     "annual_wage": "d.annual_wage",
     "employment": "d.employment",
     "growth_rate": "d.growth_rate",
@@ -67,8 +72,6 @@ def render_cypher(spec: OccupationSpec) -> tuple[str, dict]:
 
     if spec.title_contains:
         where_clauses.append(_ors("occ.title", spec.title_contains, "title_q", params))
-    if spec.skill_contains:
-        where_clauses.append(_ors("sk.name", spec.skill_contains, "skill_q", params))
     if spec.education_level:
         where_clauses.append("occ.education_level = $education_level")
         params["education_level"] = spec.education_level
@@ -91,13 +94,11 @@ def interpret_spec(spec: OccupationSpec) -> str:
     parts = []
     if spec.title_contains:
         parts.append(f"with title containing {_quote_list(spec.title_contains)}")
-    if spec.skill_contains:
-        parts.append(f"requiring skills containing {_quote_list(spec.skill_contains)}")
     if spec.education_level:
         parts.append(f"with entry education {spec.education_level!r}")
 
     sort_descriptions = {
-        "matching_skills": "ranked by skill alignment with the college's curriculum",
+        "aligned_course_count": "ranked by institutional curriculum alignment with the college (TOP-SOC crosswalk)",
         "annual_wage": "ranked by regional median annual wage",
         "employment": "ranked by regional employment count",
         "growth_rate": "ranked by projected 5-year growth rate",
@@ -126,7 +127,7 @@ def _quote_list(terms: list[str]) -> str:
 EXTRACTOR_PROMPT = """\
 You extract structured filter parameters from a user's question about labor-market occupations at a California community college.
 
-The user is asking about occupations: their wages, employment counts, growth rates, regional openings, education requirements, or skill requirements. Translate the question into a JSON spec.
+The user is asking about occupations: their wages, employment counts, growth rates, regional openings, education requirements, or institutional curriculum alignment with the college. Translate the question into a JSON spec.
 
 Spec fields (all optional unless noted):
 
@@ -135,16 +136,14 @@ title_contains: list of substrings to match against occupation titles. Routing r
 - A FUZZY CONCEPT (e.g., "healthcare jobs") -> a small list of 2-4 root substrings: ["health", "medical", "nurs"].
 - Always prefer SHORT ROOT SUBSTRINGS (3-8 chars) — "soft" beats "software development", "manufactur" beats "manufacturing".
 
-skill_contains: list of root substrings to match against skill names. Same routing as title_contains. Use only when the question explicitly asks about a SKILL requirement.
-
 education_level: exact match for entry-level education. Allowed values: "Bachelor's degree", "Associate's degree", "High school diploma or equivalent", "Postsecondary nondegree award", "Some college, no degree", "Master's degree", "Doctoral or professional degree". Use only when education is explicitly mentioned.
 
-order_by: one of "matching_skills", "annual_wage", "employment", "growth_rate", "annual_openings". Default "matching_skills". Routing:
+order_by: one of "aligned_course_count", "annual_wage", "employment", "growth_rate", "annual_openings". Default "aligned_course_count". Routing:
 - "highest wages" / "highest paying" / "best paying" -> annual_wage
 - "most jobs" / "biggest employer" -> employment
 - "fastest growing" / "growing the most" -> growth_rate
 - "most openings" / "most yearly openings" -> annual_openings
-- "skill alignment" / "best aligned with curriculum" / no explicit sort -> matching_skills
+- "best aligned with curriculum" / "best institutional fit" / no explicit sort -> aligned_course_count
 
 order_dir: "asc" or "desc". Default "desc". For "lowest" use "asc".
 
@@ -154,6 +153,7 @@ Rules:
 - Always use SHORT root substrings to maximize matches.
 - Don't invent constraints not in the question.
 - If the question can't be expressed in this schema, set unsupported=true and provide a short unsupported_reason. Specifically unsupported:
+    - Skill-based filters ("occupations requiring X skill") — the bridge to occupations is now via the institutional TOP-SOC crosswalk, not a skill index. Suggest the user filter by title or order by curriculum alignment instead.
     - Cross-occupation comparisons ("which occupations match each other most")
     - Aggregations or rankings not expressible by order_by alone ("the top 10% by something")
     - References to properties not in the schema (region intersections, time-series questions, etc.)
@@ -165,10 +165,9 @@ SPEC_SCHEMA = {
     "type": "OBJECT",
     "properties": {
         "title_contains": {"type": "ARRAY", "nullable": True, "items": {"type": "STRING"}},
-        "skill_contains": {"type": "ARRAY", "nullable": True, "items": {"type": "STRING"}},
         "education_level": {"type": "STRING", "nullable": True},
         "order_by": {"type": "STRING", "enum": [
-            "matching_skills", "annual_wage", "employment",
+            "aligned_course_count", "annual_wage", "employment",
             "growth_rate", "annual_openings",
         ]},
         "order_dir": {"type": "STRING", "enum": ["asc", "desc"]},

@@ -1,9 +1,8 @@
 """
-Pipeline runner — orchestrates scrape → enrich → load for a college.
+Pipeline runner — orchestrates scrape → load for a college.
 
 Usage:
     python -m pipeline.run --college foothill
-    python -m pipeline.run --college foothill --skip-skills  # scrape only, no LLM
     python -m pipeline.run --college foothill --from-cache    # load from cached JSON
     python -m pipeline.run --college foothill --generate-students --from-cache
     python -m pipeline.run --college foothill --generate-students --num-students 5000
@@ -26,7 +25,6 @@ from dotenv import load_dotenv
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from courses.scrape import RawCourse
-from ontology.skills import derive_skills
 from courses.load import load_college, CollegeConfig, LoadStats
 from courses.department_mapping import (
     OVERLAY_DIR as DEPT_OVERLAY_DIR,
@@ -166,7 +164,6 @@ def _canonicalize_departments(
 
 async def run_pipeline(
     college_key: str,
-    skip_skills: bool = False,
     from_cache: bool = False,
     scrape_only: bool = False,
     generate_students: bool = False,
@@ -216,15 +213,14 @@ async def run_pipeline(
         logger.info("Scrape-only mode. Stopping here.")
         return None
 
-    # ── Stage 2: Skill derivation ────────────────────────────────────────
-    # The PDF scraper now extracts courses + skills in a single pass,
-    # caching the result as {college_key}_enriched.json. If that cache
-    # exists, Stage 2 is already done. Otherwise, fall back to the
-    # separate skill derivation pipeline.
+    # ── Stage 2: Load enriched data ──────────────────────────────────────
+    # The PDF scraper caches its output as {college_key}_enriched.json.
+    # When that cache exists, load from it; otherwise serialize the
+    # freshly-scraped raw courses to the same cache for the loader.
     enriched_cache = _cache_path(college_key, "enriched")
 
-    # If only generating students (with --from-cache), skip stages 2-3
-    # and jump directly to student generation
+    # If only generating students (with --from-cache), skip the load
+    # stage and jump directly to student generation.
     if generate_students and from_cache and enriched_cache.exists():
         logger.info(f"Loading cached enriched data from {enriched_cache}")
         with open(enriched_cache) as f:
@@ -259,26 +255,15 @@ async def run_pipeline(
         return None
 
     if enriched_cache.exists():
-        # Combined extraction already produced enriched data
         logger.info(f"Loading enriched data from {enriched_cache}")
         with open(enriched_cache) as f:
             enriched_courses = json.load(f)
-        logger.info(f"Stage 2 skipped — skills already derived during extraction")
-    elif skip_skills:
-        logger.info("Skipping skill derivation — using raw data with empty skill_mappings")
-        enriched_courses = [c.to_dict() for c in raw_courses]
-        for c in enriched_courses:
-            c["skill_mappings"] = []
     else:
-        # Fallback: separate skill derivation (for non-PDF scrapers)
-        logger.info(f"Deriving skills for {len(raw_courses)} courses...")
-        enriched_courses = await derive_skills(raw_courses)
-
+        # Non-PDF scraper path: serialize the raw scrape directly.
+        enriched_courses = [c.to_dict() for c in raw_courses]
         with open(enriched_cache, "w") as f:
             json.dump(enriched_courses, f, indent=2)
         logger.info(f"Cached enriched courses to {enriched_cache}")
-
-    logger.info(f"Stage 2 complete: {len(enriched_courses)} courses enriched")
 
     # ── Stage 2.5: Canonicalize department field ─────────────────────────
     # Rewrite each course's `department` to the human-readable name derived
@@ -300,12 +285,6 @@ async def run_pipeline(
         close_driver()
 
     logger.info(f"Stage 3 complete: {stats}")
-
-    # ── Summary ──────────────────────────────────────────────────────────
-    all_skills: set[str] = set()
-    for c in enriched_courses:
-        all_skills.update(c.get("skill_mappings", []))
-    logger.info(f"Unique skills in taxonomy: {len(all_skills)}")
 
     # ── Stage 4: Generate synthetic students (optional) ─────────────────
     if generate_students:
@@ -337,13 +316,10 @@ def main():
         "--college", required=True, help=f"College key. Available: {list(COLLEGES.keys())}"
     )
     parser.add_argument(
-        "--skip-skills", action="store_true", help="Skip Claude skill derivation"
-    )
-    parser.add_argument(
         "--from-cache", action="store_true", help="Load from cached scrape results"
     )
     parser.add_argument(
-        "--scrape-only", action="store_true", help="Only scrape, don't derive skills or load"
+        "--scrape-only", action="store_true", help="Only scrape, don't load into Neo4j"
     )
     parser.add_argument(
         "--generate-students", action="store_true", help="Generate synthetic student data"
@@ -370,7 +346,6 @@ def main():
 
     asyncio.run(run_pipeline(
         college_key=args.college,
-        skip_skills=args.skip_skills,
         from_cache=args.from_cache,
         scrape_only=args.scrape_only,
         generate_students=args.generate_students,

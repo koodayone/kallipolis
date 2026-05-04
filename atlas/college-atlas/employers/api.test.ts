@@ -53,8 +53,8 @@ describe("employers api client", () => {
           description: "Integrated managed care consortium",
           website: "https://about.kaiserpermanente.org",
           occupations: ["Registered Nurses", "Medical Assistants"],
-          matching_skills: 8,
-          skills: ["Patient Care", "Medical Records"],
+          aligned_course_count: 14,
+          aligned_department_count: 3,
         },
       ];
       vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: true, json: async () => body }));

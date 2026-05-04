@@ -1,6 +1,6 @@
 # AI Integration
 
-Kallipolis calls two LLM providers, each for a distinct role. Claude handles linguistic operations against existing data — translating natural language questions into Cypher and generating partnership and strong workforce narratives. Gemini handles high-volume structured extraction during the ETL pipeline — reading course catalogs, deriving skill mappings, assigning occupations to employers. The split is deliberate, and the constraints on each call are what make the AI integration safe enough to underpin a product whose value depends on being trustworthy.
+Kallipolis calls two LLM providers, each for a distinct role. Claude handles linguistic operations against existing data — translating natural language questions into Cypher. Gemini handles high-volume structured extraction during the ETL pipeline — reading course catalogs and assigning occupations to employers. The split is deliberate, and the constraints on each call are what make the AI integration safe enough to underpin a product whose value depends on being trustworthy.
 
 ## The split
 
@@ -25,21 +25,15 @@ Every translated query is validated before execution. The validator strips markd
 
 The query engine also handles JSON parsing fallback: Claude is asked to return a JSON object with `cypher` and `interpretation` fields, but the engine tolerates several response shapes (direct JSON, markdown-fenced JSON, or raw Cypher) so that minor formatting variation does not break the query path.
 
-### Partnership proposal generation
+### Partnership proposal generation (composition is now deterministic)
 
-The partnership opportunity flow is split across three modules — `backend/partnerships/filter.py`, `backend/partnerships/narrative.py`, and the orchestrator at `backend/partnerships/generate.py` — and makes between three and seven Claude calls per opportunity depending on the engagement type.
+The partnership opportunity flow runs through three modules — `backend/partnerships/filter.py`, `backend/partnerships/gather.py`, and the orchestrator at `backend/partnerships/generate.py` — and is fully deterministic at composition time. The occupation picker ranks the employer's hires SOCs by institutional crosswalk depth at this college; the gather step pulls curriculum evidence from `Course-[:PREPARES_FOR]->Occupation` edges and student evidence from enrollments in the aligned departments; and the four-section narrative is composed by templates in `backend/partnerships/narrative_templates.py` over the gathered structured evidence. The only LLM-derived input is each employer's pre-computed `operations_summary`, populated at ingestion by `backend/employers/characterize.py` and stored on the Employer node.
 
-`backend/partnerships/filter.py` owns the sequence of selection decisions. Claude picks the primary hiring occupation for the employer and a small set of core skills, then runs a department relevance filter to narrow the curriculum evidence down to the departments that matter most for this partnership. Every call in the filter module is a constrained selection from existing graph data, not free generation.
-
-`backend/partnerships/narrative.py` then takes the filtered context and produces the four-section narrative — executive summary, occupational demand, curriculum alignment, student impact — in a single Claude call.
-
-### Shared constraint
-
-The narrative flow is constrained: Claude operates against a tightly bounded context window that contains only the empirical material assembled in the previous step. The model cannot invent evidence, cannot generalize beyond the specific occupations, courses, students, and employers in the assembled context, and cannot reach outside the prompt for additional information. The narrative is grounded by construction, not by post-hoc validation.
+There is no Claude call at request time in the partnership flow today.
 
 ## Where Gemini is called
 
-Gemini is called in the ETL pipeline at four points, all of which are high-volume structured extraction.
+Gemini is called in the ETL pipeline at two points, both of which are high-volume structured extraction or interpretation against an institutional reference set.
 
 ### Course extraction from catalogs
 
@@ -47,23 +41,13 @@ Gemini is called in the ETL pipeline at four points, all of which are high-volum
 
 This is high-volume work: hundreds of pages per college catalog, dozens of catalogs across the system. Doing it with Claude would be prohibitively expensive and Gemini's structured extraction is fit for purpose.
 
-### Skill enrichment
-
-`backend/ontology/skills.py` takes the extracted course data and enriches each course with 3-6 workforce-relevant skills drawn from the unified taxonomy. Gemini is constrained to prefer skill names from the seed taxonomy and may introduce novel skill names only when the course teaches something genuinely not covered by existing terms. The output is the `skill_mappings` field on each course, which becomes the `Course → DEVELOPS → Skill` edges in the graph.
-
-This is the methodological pressure point we discussed in [the skills taxonomy product document](../product/the-skills-taxonomy.md): the controlled vocabulary acts as a guardrail against the worst LLM failure modes (skill invention, drift across instances, inconsistency between similar courses). The model is selecting from a fixed set, not generating freely.
-
-### Occupation-to-skill assignment
-
-`backend/occupations/assign_skills.py` performs the same kind of constrained selection for occupations: each SOC-coded occupation is assigned 5-8 skills from the existing skill vocabulary. The constraint is the same — only existing taxonomy terms are valid — and the result is the `Occupation → REQUIRES_SKILL → Skill` edges that complete the demand side of the bridge.
-
-Together, the skill enrichment for courses and the skill assignment for occupations are what make the bridge between curriculum and labor market computable. Both sides of the bridge use the same vocabulary because both are produced by Gemini calls constrained to the same controlled set.
-
 ### Employer cleanup and occupation mapping
 
-`backend/employers/generate.py` uses Gemini to clean employer names from the raw EDD data, generate descriptive sector classifications, and assign relevant occupations from the regional occupation set. This is the lowest-volume of the four Gemini call sites but the most interpretive — the model is being asked to make judgment calls about which occupations a given employer would plausibly hire for, given the employer's name, sector, and the regional occupation set.
+`backend/employers/generate.py` uses Gemini to clean employer names from the raw EDD data, generate descriptive sector classifications, and assign relevant occupations from the regional occupation set. This is the lowest-volume of the Gemini call sites but the most interpretive — the model is being asked to make judgment calls about which occupations a given employer would plausibly hire for, given the employer's name, sector, and the regional occupation set.
 
-The constraint here is the same controlled-set discipline: the model cannot invent new occupations; it can only select from the set already in the graph for that region. This prevents the employer-occupation edges from drifting outside the labor market data the ontology has authoritative grounding for.
+The constraint here is institutional reference grounding: the model cannot invent new occupations; it can only select from the set already in the graph for that region, bounded by the BLS OEWS National Industry-Occupation Matrix that links the employer's NAICS-4 to the SOCs that industry actually staffs. This prevents the employer-occupation edges from drifting outside the labor market data the ontology has authoritative grounding for.
+
+The pipeline previously carried two additional Gemini call sites — skill enrichment for courses and skill assignment for occupations. Both have been retired with the move to the institutional TOP-CIP-SOC crosswalk as the bridge between curriculum and labor market.
 
 ## What makes the AI calls safe
 

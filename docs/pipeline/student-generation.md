@@ -1,6 +1,6 @@
 # Student Generation
 
-The student generation stage produces a synthetic student population for each college, calibrated against real institutional data. The output is a `Student` node per generated person, with `ENROLLED_IN` edges to the courses they have taken and `HAS_SKILL` edges to the skills they have acquired through completed enrollments. This document describes what the generation does, what data it is calibrated against, and what the output represents.
+The student generation stage produces a synthetic student population for each college, calibrated against real institutional data. The output is a `Student` node per generated person, with `ENROLLED_IN` edges to the courses they have taken (carrying grade, term, and status properties). The institutional TOP-CIP-SOC crosswalk applied to those completed courses is what gives each student a workforce-pathway alignment profile at read time. This document describes what the generation does, what data it is calibrated against, and what the output represents.
 
 ## Why the data is synthetic
 
@@ -22,7 +22,7 @@ All three sources are publicly available, aggregated, and institutionally valida
 
 ## How the methodology works
 
-The generation runs in six conceptual steps for each college.
+The generation runs in five conceptual steps for each college.
 
 **1. Course pooling.** Each enriched course in the college catalog is assigned a 4-digit TOP code via its prefix, using the prefix-to-TOP4 mapping. Courses are grouped into pools by TOP code so that the generation can draw enrollments from a specific program area when it needs to.
 
@@ -34,7 +34,7 @@ The generation runs in six conceptual steps for each college.
 
 **5. Grade assignment.** Each enrollment receives a grade sampled directly from the 4-digit TOP code's grade distribution as published by DataMart. A course in Accounting uses Accounting's grade distribution; a course in Mathematics uses Mathematics'. There is no college-wide averaging — every course's grade is sampled from the empirical distribution for that course's TOP code. This is what makes the aggregate success rates of the synthetic population match the college's actual aggregate success rates.
 
-**6. Skill materialization.** Only completed enrollments (grades A, B, C, P) produce `HAS_SKILL` edges. The skills come from the `Course → DEVELOPS → Skill` edges of the completed course. A student who completes a welding course inherits the skills the welding course is designed to develop. This is what makes students the empirical carriers of skill from the supply side, in the language of the [students product document](../product/students.md).
+A student's workforce-pathway alignment is not materialized as a separate edge type at generation time. Instead, the alignment is computed at read time from the student's completed enrollments by traversing `ENROLLED_IN` to courses, then `PREPARES_FOR` to occupations through the institutional TOP-CIP-SOC crosswalk that the curriculum loader materializes. This keeps the student layer of the graph small and avoids storing derived data that the institutional bridge already encodes.
 
 ## What the parameters control
 
@@ -52,12 +52,12 @@ Within these parameters, the algorithm is deterministic for a given seed. The sa
 
 After generation, the synthetic population's aggregate success rate is compared against the DataMart target and the difference is logged. The mechanism is in `backend/students/generate.py` and runs after every generation. In practice, observed deviations have been small — typically within a percentage point or so — though the algorithm does not enforce a hard threshold and the exact magnitude depends on the calibration data for the specific college.
 
-The validation matters because it is what gives the synthetic population its claim to structural fidelity. The students are not real, but the population behaves the way the real population does at the aggregate level. A coordinator analyzing the synthetic population will see the same patterns of concentration, completion, and skill acquisition that the real population would produce.
+The validation matters because it is what gives the synthetic population its claim to structural fidelity. The students are not real, but the population behaves the way the real population does at the aggregate level. A coordinator analyzing the synthetic population will see the same patterns of concentration, completion, and workforce-pathway preparation that the real population would produce.
 
 ## What the output represents
 
-The output of this stage is `Student` nodes connected to courses (via `ENROLLED_IN` with grade, term, and status properties) and to skills (via `HAS_SKILL`, materialized only from completed enrollments).
+The output of this stage is `Student` nodes connected to courses via `ENROLLED_IN` edges with grade, term, and status properties. A student's workforce-pathway alignment is not stored as a separate edge type; it is computed at read time by traversing `ENROLLED_IN`-to-`PREPARES_FOR` against the institutional TOP-CIP-SOC crosswalk the curriculum loader materializes.
 
-Each generated student is an empirically faithful representative figure, not a de-identified real student. The structural patterns of the population — concentration, performance, skill acquisition — match the patterns the real population produces, which is what allows the analytical work the [partnership generation flow](../product/partnerships.md) does to surface meaningful student-pipeline evidence. A coordinator looking at the student layer of the [graph](../architecture/graph-model.md) is looking at a structurally accurate model populated by representative figures, not at an extracted view of identified individuals.
+Each generated student is an empirically faithful representative figure, not a de-identified real student. The structural patterns of the population — concentration, performance, workforce-pathway distribution — match the patterns the real population produces, which is what allows the analytical work the [partnership generation flow](../product/partnerships.md) does to surface meaningful student-pipeline evidence. A coordinator looking at the student layer of the [graph](../architecture/graph-model.md) is looking at a structurally accurate model populated by representative figures, not at an extracted view of identified individuals.
 
 The honesty of the approach depends on the methodology being legible. A user who does not understand that the students are synthetic could overinterpret the population as a literal headcount; a user who does understand can read the analysis in the right register. This document, alongside the [students product document](../product/students.md), is part of what makes the methodology legible.

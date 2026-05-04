@@ -11,8 +11,18 @@ export type ApiCourseSummary = {
   description: string;
   learning_outcomes: string[];
   course_objectives: string[];
-  skill_mappings: string[];
   top_code?: string | null;
+};
+
+export type ApiOccupationLink = {
+  soc_code: string;
+  title: string;
+};
+
+export type ApiCourseOccupations = {
+  top_code: string | null;
+  top_title: string;
+  occupations: ApiOccupationLink[];
 };
 
 export type CourseQueryResponse = {
@@ -30,6 +40,14 @@ export async function getDepartments(college: string): Promise<ApiDepartmentSumm
 export async function getCourses(department: string, college: string): Promise<ApiCourseSummary[]> {
   const res = await fetch(`${API_BASE}/courses/?department=${encodeURIComponent(department)}&college=${encodeURIComponent(college)}`);
   if (!res.ok) throw new Error("Failed to fetch courses");
+  return res.json();
+}
+
+export async function getCourseOccupations(courseCode: string, college: string): Promise<ApiCourseOccupations> {
+  const res = await fetch(
+    `${API_BASE}/courses/${encodeURIComponent(courseCode)}/occupations?college=${encodeURIComponent(college)}`
+  );
+  if (!res.ok) throw new Error("Failed to fetch course occupations");
   return res.json();
 }
 

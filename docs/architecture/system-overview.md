@@ -42,13 +42,13 @@ The landing page and atlas are independent Next.js apps. They share no code and 
 
 ## The graph at the center
 
-Everything in Kallipolis revolves around a single Neo4j graph. The graph holds eight node types and ten directional relationship pairings (built from nine unique relationship type names, with `IN_MARKET` overloaded across College→Region and Employer→Region), encoding the curriculum side and the industry side of the workforce development equation, bridged through skills.
+Everything in Kallipolis revolves around a single Neo4j graph. The graph holds seven node types and nine directional relationship pairings (built from eight unique relationship type names, with `IN_MARKET` overloaded across College→Region and Employer→Region), encoding the curriculum side and the industry side of the workforce development equation, bridged through the institutional TOP-CIP-SOC crosswalk.
 
-**Curriculum side.** `College → Department → Course → Skill ← Student`. A college offers departments, which contain courses, which develop skills. Students enroll in courses and inherit the skills those courses develop.
+**Curriculum side.** `College → Department → Course ← Student`. A college offers departments, which contain courses. Students enroll in courses.
 
-**Industry side.** `Region ← College/Employer, Region → Occupation → Skill, Employer → Occupation`. Regions demand occupations with wage and employment metadata. Occupations require skills. Employers hire for occupations.
+**Industry side.** `Region ← College/Employer, Region → Occupation, Employer → Occupation`. Regions demand occupations with wage and employment metadata. Employers hire for occupations.
 
-**The bridge.** `Skill` is the same node type on both sides. A skill that appears in `(:Course)-[:DEVELOPS]->(:Skill)` and `(:Occupation)-[:REQUIRES_SKILL]->(:Skill)` is a bridge skill. It connects what colleges teach to what regional employers need, and partnership opportunities are computed by traversing these bridges.
+**The bridge.** `Course → PREPARES_FOR → Occupation` is the institutional bridge edge. It is materialized at curriculum-load time from each course's TOP code via the Chancellor's Office TOP-CIP and BLS/NCES CIP-SOC crosswalks, and it carries `via_top` as an audit-trail property. Partnership opportunities are computed by traversing this bridge between an employer's hires occupations and the college's PREPARES_FOR-aligned courses.
 
 For the full schema, see [Graph Model](./graph-model.md).
 
@@ -56,11 +56,11 @@ For the full schema, see [Graph Model](./graph-model.md).
 
 Kallipolis calls two LLM providers, each for a distinct role.
 
-**Claude** handles linguistic operations against existing data. Five system prompts translate natural language questions into validated Cypher (`backend/llm/query_engine.py`). One narrative generator writes partnership proposals (`backend/partnerships/generate.py`). The proposal endpoint uses server-sent events for streaming output.
+**Claude** handles linguistic operations against existing data. Five system prompts translate natural language questions into validated Cypher (`backend/llm/query_engine.py`). The proposal endpoint uses server-sent events for streaming output, but the proposal narrative itself is composed deterministically from templates over structured graph evidence — no Claude call at composition time.
 
-**Gemini** handles data extraction during the ETL pipeline. Course extraction from PDF catalogs, skill taxonomy mapping, occupation-skill assignment, and employer name cleanup all run on Gemini.
+**Gemini** handles data extraction during the ETL pipeline. Course extraction from PDF catalogs and employer name cleanup with occupation assignment both run on Gemini.
 
-The split is deliberate. Claude is asked to reason about institutional context — gaps, alignments, narratives, voice. Gemini is asked to do high-volume structured extraction from documents. Neither model crosses into the other's role.
+The split is deliberate. Claude is asked to reason about institutional context — translating questions into Cypher against the graph schema. Gemini is asked to do high-volume structured extraction from documents. Neither model crosses into the other's role.
 
 For the full treatment of where each model is called and why, see [AI Integration](./ai-integration.md).
 
@@ -102,8 +102,8 @@ kallipolis/
 ├── atlas/                       # Atlas (port 3001) — full app
 ├── backend/
 │   ├── main.py                  # FastAPI entry point; mounts per-feature routers
-│   ├── ontology/                # Neo4j schema, driver, unified skills taxonomy,
-│   │                            #   regions, supply/demand, crosswalks, calibrations
+│   ├── ontology/                # Neo4j schema, driver, regions, supply/demand,
+│   │                            #   institutional TOP-CIP-SOC crosswalks, calibrations
 │   ├── llm/                     # Shared NL-to-Cypher engine with safety gate
 │   ├── students/                # ↔ docs/product/students.md
 │   ├── courses/                 # ↔ docs/product/courses.md

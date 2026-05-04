@@ -6,6 +6,7 @@ import { SchoolConfig } from "@/config/schoolConfig";
 import { getDepartments, getCourses, queryCourses } from "@/college-atlas/courses/api";
 import type { ApiDepartmentSummary, ApiCourseSummary } from "@/college-atlas/courses/api";
 import type { DepartmentSummary, CourseSummary } from "@/college-atlas/courses/types";
+import CourseOccupationsCallout from "@/college-atlas/courses/CourseOccupationsCallout";
 import EntityScrollList from "@/ui/EntityScrollList";
 import type { Column } from "@/ui/EntityScrollList";
 import QueryShell, { findScrollParent } from "@/ui/QueryShell";
@@ -22,7 +23,6 @@ function mapCourse(api: ApiCourseSummary): CourseSummary {
   return {
     name: api.name, code: api.code, description: api.description,
     learningOutcomes: api.learning_outcomes, courseObjectives: api.course_objectives,
-    skillMappings: api.skill_mappings,
     topCode: api.top_code ?? null,
   };
 }
@@ -51,17 +51,15 @@ const DEPT_BY_COLLEGE: Record<string, string> = {
 const DEPT_DEFAULT = "business";
 
 // Example queries shown as suggestions. Each demonstrates one supported
-// query shape — bare-noun department search, skill substitution, the
-// column-name "in the 'X' department" form, and a fixed-keyword flag.
-// Slot 3 substitutes a per-college CTE-flavored department to guarantee
-// non-zero results across schools and to teach the column-name
-// vocabulary explicitly. Quoted slots are substitutable; unquoted
-// phrases are fixed institutional categories.
+// query shape — bare-noun department search, the column-name "in the
+// 'X' department" form, the institutional TOP-SOC bridge, and a fixed-
+// keyword flag. Slot 3 substitutes a per-college CTE-flavored department
+// to guarantee non-zero results across schools.
 function buildExamples(schoolName: string): string[] {
   const dept = DEPT_BY_COLLEGE[schoolName] ?? DEPT_DEFAULT;
   return [
     "Courses in 'computer science'",
-    "Courses that develop 'manufacturing' skills",
+    "Courses that prepare for 'nursing' occupations",
     `Courses in the '${dept}' department`,
     "Career and technical education courses",
   ];
@@ -323,22 +321,11 @@ const CourseResultRow = memo(function CourseResultRow({ course, i, school, expan
                   </ul>
                 </div>
               )}
-              {course.skillMappings.length > 0 && (
-                <div>
-                  <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, display: "block", marginBottom: "8px" }}>
-                    Developed Skills
-                  </span>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-                    {course.skillMappings.map((skill) => (
-                      <span key={skill} style={{
-                        padding: "5px 12px", background: "rgba(255,255,255,0.02)",
-                        border: `1px solid ${school.brandColorLight}60`, borderRadius: "6px",
-                        fontFamily: FONT, fontSize: "12px", fontWeight: 500, color: school.brandColorLight,
-                      }}>{skill}</span>
-                    ))}
-                  </div>
-                </div>
-              )}
+              <CourseOccupationsCallout
+                courseCode={course.code}
+                collegeName={school.name}
+                brandColor={school.brandColorLight}
+              />
             </div>
           </motion.div>
         )}

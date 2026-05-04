@@ -1,11 +1,11 @@
 """
-Stage 1+2 (PDF): Extract course data AND skill mappings from a college catalog
-PDF using Gemini Flash.
+Stage 1 (PDF): Extract course data from a college catalog PDF using
+Gemini Flash.
 
 Optimized pipeline:
   1. Split PDF into small page-range chunks (not send full PDF every call)
   2. Pre-filter pages using text heuristics to skip non-course content
-  3. Extract courses + derive skills in a single LLM call
+  3. Extract courses in a single LLM call per chunk
 
 Usage:
     from courses.scrape_pdf import scrape_pdf_catalog
@@ -18,7 +18,6 @@ Usage:
 from __future__ import annotations
 
 import asyncio
-import hashlib
 import json
 import logging
 import os
@@ -35,7 +34,6 @@ from google.genai import types
 from pypdf import PdfReader, PdfWriter
 
 from courses.scrape import RawCourse
-from ontology.skills import UNIFIED_TAXONOMY
 
 logger = logging.getLogger(__name__)
 
@@ -66,11 +64,9 @@ COURSE_CODE_PATTERN = re.compile(
 # Minimum course code matches on a page to consider it a course description page
 MIN_CODES_PER_PAGE = 2
 
-TAXONOMY_LIST = sorted(UNIFIED_TAXONOMY)
+SYSTEM_INSTRUCTION = """You are a structured data extraction specialist for community college course catalogs.
 
-SYSTEM_INSTRUCTION = """You are a structured data extraction and workforce skills specialist for community college course catalogs.
-
-You will receive pages from a college course catalog PDF. Extract EVERY course you find and derive workforce skill mappings for each.
+You will receive pages from a college course catalog PDF. Extract EVERY course you find.
 
 For each course, extract:
 - code: The course code/number (e.g., "ENGL 1A", "CIS 1", "BIOL 10A"). Include the department prefix and number.
@@ -85,7 +81,6 @@ For each course, extract:
 - ge_area: General education area if listed, otherwise empty string
 - grading: Grading method if listed (e.g., "Letter Grade", "Pass/No Pass"), otherwise empty string
 - hours: Lecture/lab hours if listed, otherwise empty string
-- skill_mappings: Array of canonical workforce skills derived from the course description, SLOs, and objectives. Typically 3–8 skills per course; may be fewer for narrow technical content or more for broad content. No minimum. Do not pad to hit a target count.
 
 COURSE EXTRACTION RULES:
 1. ONLY extract courses from COURSE DESCRIPTION sections — where you see a course code, title, units, and a prose description paragraph. Do NOT extract from program requirement tables, degree/certificate requirement lists, or curriculum guides that only list course codes, titles, and units in a tabular format without descriptions.
@@ -96,31 +91,12 @@ COURSE EXTRACTION RULES:
 6. If no course descriptions are found on these pages, return an empty array [].
 7. Department should be the broad discipline name, not the full program title.
 
-SKILL MAPPING RULES
-
-1. Canonical-only. Every skill you emit must appear as an EXACT string in the canonical taxonomy below. Do not invent, compound, pluralize, rephrase, or add modifiers. "Equipment Operation & Maintenance" is wrong — emit "Equipment Operation". "Clinical Patient Care" is wrong — emit "Patient Care". "Quality Control Analysis" is wrong — emit "Quality Control". "Sociology & Anthropology" is wrong — emit "Sociology" and "Anthropology" as two separate entries.
-
-Canonical taxonomy: {taxonomy}
-
-2. Competencies, not topics or traits. A skill is a demonstrable, transferable competency a student can perform after completing the course. It is not a topic the course covers, not a method used to teach the course, and not a generic trait every job requires.
-
-Explicitly exclude:
-- Pedagogical descriptors: "active learning", "collaborative learning", "project-based learning"
-- Generic soft skills every job requires: "professionalism", "time management", "active listening", "social perceptiveness"
-- Broad umbrellas when a specific canonical term applies: "critical thinking", "complex problem solving", "oral communication", "reading comprehension", "science", "computers & electronics", "personnel & human resources"
-
-When a catalog description uses an umbrella phrase, pick the specific canonical term that describes what the course actually develops. A course teaching critical thinking in a scientific context should emit "Scientific Methodology" or "Research Methods". A course teaching complex problem solving in manufacturing should emit "Troubleshooting" or "Quality Control". A course teaching oral communication in a counseling program should emit "Counseling" or "Customer Service".
-
-3. Specific over generic. When multiple canonical terms could apply, pick the most specific one that the course actually develops. A course teaching Python programming should emit "Programming", not the broader "Digital Literacy". A course teaching biology research design should emit "Research Methods" or "Scientific Methodology", not the broader "Biology" unless the course is a general biology survey.
-
-4. No minimum count, no padding. A typical course develops 3–8 canonical skills; emit as many or as few as genuinely apply. Four precise canonical skills are better than eight loose ones. If no canonical term carries a given competency, omit it rather than substituting something looser. An empty skill_mappings array is valid if the course description describes no canonical competencies.
-
 Return ONLY a JSON array of course objects. No explanations or markdown."""
 
-USER_PROMPT = """Extract all courses from these pages with skill mappings.
+USER_PROMPT = """Extract all courses from these pages.
 
 Return a JSON array where each element has these fields:
-{{"code": "...", "name": "...", "department": "...", "units": "...", "description": "...", "prerequisites": "...", "learning_outcomes": [...], "course_objectives": [...], "transfer_status": "...", "ge_area": "...", "grading": "...", "hours": "", "skill_mappings": ["Skill A", "Skill B", ...]}}
+{"code": "...", "name": "...", "department": "...", "units": "...", "description": "...", "prerequisites": "...", "learning_outcomes": [...], "course_objectives": [...], "transfer_status": "...", "ge_area": "...", "grading": "...", "hours": ""}
 
 Remember: return ONLY the JSON array, no other text."""
 
@@ -242,9 +218,7 @@ async def _extract_batch(
                         USER_PROMPT,
                     ],
                     config=types.GenerateContentConfig(
-                        system_instruction=SYSTEM_INSTRUCTION.format(
-                            taxonomy=", ".join(TAXONOMY_LIST)
-                        ),
+                        system_instruction=SYSTEM_INSTRUCTION,
                         max_output_tokens=65536,
                         temperature=0.1,
                         response_mime_type="application/json",
@@ -365,17 +339,9 @@ def _ensure_str_list(val) -> list[str]:
 
 
 def _to_enriched_dict(course_dict: dict) -> dict:
-    """Convert extracted dict to enriched format (RawCourse fields + skill_mappings)."""
+    """Convert extracted dict to enriched format (RawCourse fields)."""
     raw = _to_raw_course(course_dict)
-    d = raw.to_dict()
-    d["skill_mappings"] = _ensure_str_list(course_dict.get("skill_mappings", []))
-    return d
-
-
-def _taxonomy_hash() -> str:
-    """Stable short hash of the current unified skill taxonomy."""
-    payload = "\n".join(sorted(UNIFIED_TAXONOMY)).encode("utf-8")
-    return hashlib.sha256(payload).hexdigest()[:12]
+    return raw.to_dict()
 
 
 def _write_extraction_meta(
@@ -388,38 +354,16 @@ def _write_extraction_meta(
     Write a sidecar `{college}_extraction_meta.json` next to the enriched
     cache. Sidecar rather than wrapping the enriched JSON itself, to avoid
     breaking the list-shaped contract that `pipeline/run.py` reads.
-
-    The sidecar captures:
-      - Provenance: which extractor, when, against which PDF URL, against
-        which taxonomy version.
-      - Coverage: page and chunk counts, extraction success rate.
-      - Quality: taxonomy conformance, skill-count distribution, empty
-        fields.
     """
-    total = len(enriched) or 1
-    skill_counts = [len(c.get("skill_mappings") or []) for c in enriched]
-    skills_total = sum(skill_counts)
-    skills_min = min(skill_counts) if skill_counts else 0
-    skills_max = max(skill_counts) if skill_counts else 0
-    under_four = sum(1 for n in skill_counts if n < 4)
-    at_least_six = sum(1 for n in skill_counts if n >= 6)
-
-    unique_skills: set[str] = set()
-    for c in enriched:
-        for s in c.get("skill_mappings") or []:
-            unique_skills.add(s)
-
     missing_description = sum(1 for c in enriched if not (c.get("description") or "").strip())
     missing_department = sum(1 for c in enriched if not (c.get("department") or "").strip())
 
     meta = {
         "_meta": {
             "extractor": "scrape_pdf",
-            "extractor_version": 2,
+            "extractor_version": 3,
             "extracted_at": datetime.now(timezone.utc).isoformat(),
             "pdf_url": pdf_url,
-            "taxonomy_hash": _taxonomy_hash(),
-            "taxonomy_size": len(UNIFIED_TAXONOMY),
         },
         "coverage": {
             "pdf_pages_total": stats.get("pdf_pages_total", 0),
@@ -437,13 +381,6 @@ def _write_extraction_meta(
         "quality": {
             "courses_extracted": len(enriched),
             "raw_courses_before_dedup": stats.get("raw_course_count", len(enriched)),
-            "courses_with_skills": sum(1 for n in skill_counts if n > 0),
-            "avg_skills_per_course": round(skills_total / total, 2),
-            "min_skills_per_course": skills_min,
-            "max_skills_per_course": skills_max,
-            "courses_with_fewer_than_four_skills": under_four,
-            "courses_meeting_six_skill_target": at_least_six,
-            "unique_taxonomy_skills": len(unique_skills),
             "missing_description": missing_description,
             "missing_department": missing_department,
         },
@@ -453,7 +390,6 @@ def _write_extraction_meta(
     path.write_text(json.dumps(meta, indent=2))
     logger.info(
         f"Coverage: {meta['quality']['courses_extracted']} courses, "
-        f"avg {meta['quality']['avg_skills_per_course']} skills, "
         f"{meta['coverage']['batches_truncated']} truncated / "
         f"{meta['coverage']['batches_rate_limited']} rate-limited batches"
     )
@@ -467,17 +403,17 @@ async def scrape_pdf_catalog(
     pages_per_batch: int = PAGES_PER_BATCH,
 ) -> list[RawCourse]:
     """
-    Download a college catalog PDF, extract courses + skills using Gemini Flash.
+    Download a college catalog PDF, extract courses using Gemini Flash.
 
     Optimized flow:
       1. Download PDF (cached)
       2. Pre-filter pages to identify course description content
       3. Split into small PDF chunks (only course pages)
-      4. Send each chunk to Gemini for combined extraction + skill derivation
+      4. Send each chunk to Gemini for course extraction
       5. Deduplicate and return
 
     Returns:
-        List of RawCourse objects (skill_mappings stored in enriched cache)
+        List of RawCourse objects.
     """
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
@@ -586,17 +522,13 @@ async def scrape_pdf_catalog(
     unique_courses = _deduplicate_courses(all_courses_raw)
     logger.info(f"After deduplication: {len(unique_courses)} unique courses")
 
-    # Step 5: Cache enriched data (with skill_mappings) directly
+    # Step 5: Cache enriched data directly
     enriched = [_to_enriched_dict(c) for c in unique_courses]
-
-    # Validate skills against taxonomy before caching
-    for course in enriched:
-        course["skill_mappings"] = [s for s in course.get("skill_mappings", []) if s in UNIFIED_TAXONOMY]
 
     enriched_cache = CACHE_DIR / f"{college_key}_enriched.json"
     with open(enriched_cache, "w") as f:
         json.dump(enriched, f, indent=2)
-    logger.info(f"Cached enriched courses (with skills) to {enriched_cache}")
+    logger.info(f"Cached enriched courses to {enriched_cache}")
 
     _write_extraction_meta(
         college_key=college_key,
@@ -616,14 +548,6 @@ async def scrape_pdf_catalog(
     # Convert to RawCourse for the pipeline interface
     courses = [_to_raw_course(c) for c in unique_courses]
 
-    # Log stats
-    skills_count = sum(1 for c in enriched if c.get("skill_mappings"))
-    novel_skills: set[str] = set()
-    for c in enriched:
-        for s in c.get("skill_mappings", []):
-            if s not in UNIFIED_TAXONOMY:
-                novel_skills.add(s)
-
     depts: dict[str, int] = {}
     for c in courses:
         dept = c.department or "Unknown"
@@ -632,8 +556,5 @@ async def scrape_pdf_catalog(
     logger.info(f"Departments: {len(depts)}")
     for dept, count in sorted(depts.items(), key=lambda x: -x[1])[:10]:
         logger.info(f"  {dept}: {count} courses")
-    logger.info(f"Courses with skills: {skills_count}/{len(enriched)}")
-    if novel_skills:
-        logger.info(f"Novel skills ({len(novel_skills)}): {', '.join(sorted(novel_skills)[:20])}...")
 
     return courses

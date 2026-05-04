@@ -98,7 +98,7 @@ describe("students api client", () => {
           courses_completed: 10,
           gpa: 3.2,
           enrollments: [],
-          skills: [],
+          occupation_alignment: [],
         }),
       });
       vi.stubGlobal("fetch", mockFetch);

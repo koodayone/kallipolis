@@ -14,114 +14,95 @@ SCHEMA:
 Nodes:
 - College (properties: name)
 - Region (properties: name, priority_sectors)
-  priority_sectors: list of strings. The 5 Strong Workforce Program (SWP) priority sector names this region has selected from the 12 Doing-What-MATTERS sector clusters. Authoritative per the Chancellor's Office regional consortia. Sector strings exactly match the canonical PCAH names (e.g. "Health", "Advanced Manufacturing", "Information and Communication Technologies").
+  priority_sectors: list of strings. The 5 Strong Workforce Program (SWP) priority sector names this region has selected from the 12 Doing-What-MATTERS sector clusters. Authoritative per the Chancellor's Office regional consortia.
 - Employer (properties: name, sector, description, website, swp_sectors)
-  swp_sectors: list of strings. The SWP sector(s) the employer's NAICS classification maps to under the PCAH NAICS-to-Sector composition. Same canonical naming as Region.priority_sectors. Empty for employers whose NAICS doesn't fall in any SWP sector.
+  swp_sectors: list of strings. The SWP sector(s) the employer's NAICS classification maps to under the PCAH NAICS-to-Sector composition.
 - Occupation (properties: soc_code, title, description, annual_wage)
-- Skill (properties: name)
-- Course (properties: code, college, name)
+- Course (properties: code, college, name, top_code)
+- Department (properties: name)
 
 Relationships:
 - (College)-[:IN_MARKET]->(Region)
 - (Employer)-[:IN_MARKET]->(Region)
 - (Employer)-[:HIRES_FOR]->(Occupation)
-- (Occupation)-[:REQUIRES_SKILL]->(Skill)
-- (Course)-[:DEVELOPS]->(Skill)
+- (Course)-[:PREPARES_FOR {via_top}]->(Occupation)  // institutional Chancellor's Office TOP-CIP-SOC crosswalk
+- (Department)-[:CONTAINS]->(Course)
 
 RULES:
-1. Every query MUST use this full traversal as the base MATCH to compute skill alignment between the employer and the college's curriculum:
-     MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})
-   Add WHERE clauses after this MATCH to filter further.
+1. Every query MUST use this full traversal as the base MATCH to compute institutional curriculum alignment between the employer and the college:
+     MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)
+     OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)
+     OPTIONAL MATCH (dept:Department)-[:CONTAINS]->(course)
+   Add WHERE clauses after these MATCHes to filter further.
 2. ONLY use MATCH, OPTIONAL MATCH, WITH, WHERE, RETURN, ORDER BY, LIMIT, UNWIND, count, collect, DISTINCT, AND, OR, NOT, IN, CONTAINS, STARTS WITH, ENDS WITH, size, toLower, toUpper.
 3. NEVER use CREATE, DELETE, SET, MERGE, REMOVE, DROP, DETACH, CALL, FOREACH, LOAD, or any write/mutation clause.
 4. Always return results in this exact shape:
      RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
             emp.website AS website,
             collect(DISTINCT occ.title) AS occupations,
-            count(DISTINCT sk) AS matching_skills,
-            collect(DISTINCT sk.name) AS skills
-     ORDER BY matching_skills DESC
+            count(DISTINCT course) AS aligned_course_count,
+            count(DISTINCT dept) AS aligned_department_count
+     ORDER BY aligned_course_count DESC
 5. Do NOT add a LIMIT clause unless the user asks for a specific number.
 6. If the question cannot be answered with the schema above, respond with: {"cypher": "CANNOT_TRANSLATE", "interpretation": ""}
 7. The current college is provided in the user message. The $college parameter is always set to that college. If the user references a DIFFERENT college by name, respond with CANNOT_TRANSLATE.
 8. For sector-based queries: add WHERE toLower(emp.sector) CONTAINS '...'
 9. For employer name queries: add WHERE toLower(emp.name) CONTAINS '...'
-10. For skill-based queries ("who hires for X"): add WHERE toLower(sk.name) CONTAINS '...'
-11. For "regional priority sectors" / "SWP priority sectors" queries: filter to employers whose swp_sectors intersect the region's priority_sectors. Use: WHERE ANY(s IN emp.swp_sectors WHERE s IN r.priority_sectors). This is the institutional definition of "regional priority" — the SWP sectors the region's consortium has formally adopted.
+10. Skill-based queries are NO LONGER supported — the bridge from courses to occupations is now via the institutional TOP-SOC crosswalk (PREPARES_FOR), not a skill index. Respond with CANNOT_TRANSLATE for "employers requiring X skills"-style questions.
+11. For "regional priority sectors" / "SWP priority sectors" queries: filter to employers whose swp_sectors intersect the region's priority_sectors. Use: WHERE ANY(s IN emp.swp_sectors WHERE s IN r.priority_sectors).
 
 EXAMPLES:
 
 Question: "Healthcare employers"
-MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})
+MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)
+OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)
+OPTIONAL MATCH (dept:Department)-[:CONTAINS]->(course)
 WHERE toLower(emp.sector) CONTAINS 'health'
 RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
        emp.website AS website,
        collect(DISTINCT occ.title) AS occupations,
-       count(DISTINCT sk) AS matching_skills,
-       collect(DISTINCT sk.name) AS skills
-ORDER BY matching_skills DESC
+       count(DISTINCT course) AS aligned_course_count,
+       count(DISTINCT dept) AS aligned_department_count
+ORDER BY aligned_course_count DESC
 
 Question: "Technology companies"
-MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})
+MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)
+OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)
+OPTIONAL MATCH (dept:Department)-[:CONTAINS]->(course)
 WHERE toLower(emp.sector) CONTAINS 'technology'
 RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
        emp.website AS website,
        collect(DISTINCT occ.title) AS occupations,
-       count(DISTINCT sk) AS matching_skills,
-       collect(DISTINCT sk.name) AS skills
-ORDER BY matching_skills DESC
+       count(DISTINCT course) AS aligned_course_count,
+       count(DISTINCT dept) AS aligned_department_count
+ORDER BY aligned_course_count DESC
 
-Question: "Who hires for Programming?"
-MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})
-WHERE toLower(sk.name) CONTAINS 'programming'
+Question: "Employers with the most curriculum alignment"
+MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)
+OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)
+OPTIONAL MATCH (dept:Department)-[:CONTAINS]->(course)
 RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
        emp.website AS website,
        collect(DISTINCT occ.title) AS occupations,
-       count(DISTINCT sk) AS matching_skills,
-       collect(DISTINCT sk.name) AS skills
-ORDER BY matching_skills DESC
-
-Question: "Employers with the most skill alignment"
-MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})
-RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
-       emp.website AS website,
-       collect(DISTINCT occ.title) AS occupations,
-       count(DISTINCT sk) AS matching_skills,
-       collect(DISTINCT sk.name) AS skills
-ORDER BY matching_skills DESC
+       count(DISTINCT course) AS aligned_course_count,
+       count(DISTINCT dept) AS aligned_department_count
+ORDER BY aligned_course_count DESC
 
 Question: "Employers in regional priority sectors"
-MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})
+MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)
+OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)
+OPTIONAL MATCH (dept:Department)-[:CONTAINS]->(course)
 WHERE ANY(s IN emp.swp_sectors WHERE s IN r.priority_sectors)
 RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
        emp.website AS website,
        collect(DISTINCT occ.title) AS occupations,
-       count(DISTINCT sk) AS matching_skills,
-       collect(DISTINCT sk.name) AS skills
-ORDER BY matching_skills DESC
-
-Question: "Employers hiring for high-demand occupations"
-// "High-demand" is defined institutionally as the top 50 occupations by
-// annual openings in the college's COE region. First select that subset,
-// then filter the standard employer base traversal to employers hiring
-// for any occupation in it. This produces a strict subset of skill-aligned
-// employers — the ones whose hire-for set intersects regional demand.
-MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)
-WITH col, r, occ, d.annual_openings AS demand
-ORDER BY demand DESC LIMIT 50
-WITH col, r, collect(occ) AS top_occupations
-MATCH (col)-[:IN_MARKET]->(r)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})
-WHERE occ IN top_occupations
-RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
-       emp.website AS website,
-       collect(DISTINCT occ.title) AS occupations,
-       count(DISTINCT sk) AS matching_skills,
-       collect(DISTINCT sk.name) AS skills
-ORDER BY matching_skills DESC
+       count(DISTINCT course) AS aligned_course_count,
+       count(DISTINCT dept) AS aligned_department_count
+ORDER BY aligned_course_count DESC
 
 Respond with a JSON object containing two fields:
 1. "cypher": the Cypher query as a string
-2. "interpretation": a single sentence explaining what this query does in plain English, written for a non-technical workforce development coordinator. Be specific about the filtering criteria and mention skill alignment where relevant.
+2. "interpretation": a single sentence explaining what this query does in plain English, written for a non-technical workforce development coordinator. Be specific about the filtering criteria and mention curriculum alignment where relevant.
 
 No markdown code fences. Just the raw JSON object."""
 
@@ -162,8 +143,8 @@ async def run_employer_query(question: str, college: str) -> tuple[list[Employer
             description=r.get("description"),
             website=r.get("website"),
             occupations=r.get("occupations", []),
-            matching_skills=r.get("matching_skills", 0),
-            skills=r.get("skills", []),
+            aligned_course_count=r.get("aligned_course_count", 0),
+            aligned_department_count=r.get("aligned_department_count", 0),
         )
         for r in records
     ]

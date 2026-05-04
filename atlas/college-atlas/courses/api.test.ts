@@ -94,7 +94,7 @@ describe("courses api client", () => {
       });
       vi.stubGlobal("fetch", mockFetch);
 
-      await queryCourses("courses developing machine learning skills", "foothill");
+      await queryCourses("courses preparing for machine learning occupations", "foothill");
 
       expect(mockFetch).toHaveBeenCalledTimes(1);
       const [url, init] = mockFetch.mock.calls[0] as [string, RequestInit];
@@ -103,7 +103,7 @@ describe("courses api client", () => {
       expect((init.headers as Record<string, string>)["Content-Type"]).toBe("application/json");
 
       const parsed = JSON.parse(init.body as string);
-      expect(parsed).toEqual({ query: "courses developing machine learning skills", college: "foothill" });
+      expect(parsed).toEqual({ query: "courses preparing for machine learning occupations", college: "foothill" });
     });
 
     it("returns the parsed response body on success", async () => {
@@ -114,7 +114,7 @@ describe("courses api client", () => {
           description: "Fundamentals of machine learning",
           learning_outcomes: [],
           course_objectives: [],
-          skill_mappings: ["Machine Learning"],
+          top_code: "070100",
         }],
         message: "1 result",
         cypher: "MATCH (c:Course) RETURN c LIMIT 1",

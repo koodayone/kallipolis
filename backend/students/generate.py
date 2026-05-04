@@ -770,43 +770,6 @@ def load_students(
 
         logger.info(f"Loaded {loaded} enrollments for {len(students)} students")
 
-        # Materialize Student -[HAS_SKILL]-> Skill from completed enrollments.
-        _PASS_GRADES = {"A", "B", "C", "P"}
-
-        course_skills_result = session.run(
-            "MATCH (c:Course {college: $inst})-[:DEVELOPS]->(s:Skill) "
-            "RETURN c.code AS code, collect(s.name) AS skills",
-            inst=institution,
-        ).data()
-        course_skill_map: Dict[str, List[str]] = {
-            r["code"]: r["skills"] for r in course_skills_result
-        }
-
-        skill_pairs: List[dict] = []
-        for student in students:
-            student_skills: set = set()
-            for enrollment in student.enrollments:
-                if enrollment.grade in _PASS_GRADES:
-                    for skill in course_skill_map.get(enrollment.course_code, []):
-                        student_skills.add(skill)
-            for skill in student_skills:
-                skill_pairs.append({"uuid": student.uuid, "skill": skill})
-
-        skills_created = 0
-        for i in range(0, len(skill_pairs), BATCH_SIZE):
-            chunk = skill_pairs[i:i + BATCH_SIZE]
-            session.run(
-                """
-                UNWIND $batch AS row
-                MATCH (st:Student {uuid: row.uuid})
-                MATCH (sk:Skill {name: row.skill})
-                MERGE (st)-[:HAS_SKILL]->(sk)
-                """,
-                batch=chunk,
-            )
-            skills_created += len(chunk)
-        logger.info(f"Materialized {skills_created} HAS_SKILL relationships")
-
         return loaded
 
 

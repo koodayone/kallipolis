@@ -20,7 +20,8 @@ router = APIRouter()
 
 @router.get("/landscape", response_model=PartnershipLandscape)
 def get_partnership_landscape(college: str):
-    """Returns employers ranked by partnership opportunity — skill alignment, gaps, and top occupation.
+    """Returns employers ranked by partnership opportunity — institutional
+    curriculum alignment via the TOP-SOC crosswalk, gaps, and top occupation.
 
     Filtered to employers with at least one institutionally-aligned hires
     SOC at this college (`pa.alignment_score > 0`). Per the
@@ -29,9 +30,8 @@ def get_partnership_landscape(college: str):
     establishes a real pathway: at least one of the employer's HIRES_FOR
     occupations has a Course-[:PREPARES_FOR]->Occupation edge from this
     college's catalog. Employers whose hires are entirely uncovered at
-    this college (about 1.8% in the seed) are omitted from the landscape
-    view; the underlying Employer node remains in the graph for
-    cross-college visibility.
+    this college are omitted from the landscape view; the underlying
+    Employer node remains in the graph for cross-college visibility.
 
     Reads the precomputed `PARTNERSHIP_ALIGNMENT` edge, materialized at
     ingestion time by `partnerships/compute.py`. If the edge set is
@@ -51,8 +51,6 @@ def get_partnership_landscape(college: str):
                        emp.description AS description, emp.website AS website,
                        pa.alignment_score AS alignment_score,
                        pa.gap_count AS gap_count,
-                       pa.aligned_skills AS aligned_skills,
-                       pa.gap_skills AS gap_skills,
                        pa.top_occupation AS top_occupation,
                        pa.top_wage AS top_wage,
                        pa.pipeline_size AS pipeline_size
@@ -72,8 +70,6 @@ def get_partnership_landscape(college: str):
                     website=r.get("website"),
                     alignment_score=r["alignment_score"],
                     gap_count=r["gap_count"],
-                    aligned_skills=r["aligned_skills"],
-                    gap_skills=r["gap_skills"],
                     top_occupation=r.get("top_occupation"),
                     top_wage=r.get("top_wage"),
                     pipeline_size=r.get("pipeline_size"),
@@ -109,12 +105,6 @@ def get_employer_occupations(employer: str, college: str):
     The first row is the deterministic suggested default the picker
     pre-selects.
 
-    Skills-coverage fields (core_skills_developed_count /
-    core_skills_total_count / course_count) remain on the response as
-    characterization data, but they no longer drive the surface — the
-    PREPARES_FOR-rooted aligned_course_count is the institutional
-    signal coordinators see.
-
     `coe_region` is attached at the top level so callers can surface
     the geographic scope alongside the demand figures when needed.
     """
@@ -127,44 +117,19 @@ def get_employer_occupations(employer: str, college: str):
                 MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region),
                       (emp:Employer {name: $employer})-[:HIRES_FOR]->(occ:Occupation),
                       (r)-[d:DEMANDS]->(occ)
-                CALL {
-                    WITH occ
-                    MATCH (occ)-[:REQUIRES_SKILL]->(sk:Skill)
-                    RETURN count(DISTINCT sk) AS core_skills_total_count,
-                           collect(DISTINCT sk) AS required_skills
-                }
-                CALL {
-                    WITH occ, required_skills
-                    UNWIND required_skills AS sk
-                    OPTIONAL MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk)
-                    WITH sk, count(DISTINCT c) AS course_count_for_skill
-                    RETURN
-                        sum(CASE WHEN course_count_for_skill > 0 THEN 1 ELSE 0 END)
-                            AS core_skills_developed_count
-                }
-                CALL {
-                    WITH required_skills
-                    UNWIND required_skills AS sk
-                    MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk)
-                    RETURN count(DISTINCT c) AS course_count
-                }
-                CALL {
-                    WITH occ
-                    OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)
-                    RETURN count(DISTINCT course) AS aligned_course_count
-                }
-                WITH occ, d, core_skills_total_count, core_skills_developed_count,
-                     course_count, aligned_course_count
+                OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)
+                OPTIONAL MATCH (dept:Department)-[:CONTAINS]->(course)
+                WITH occ, d,
+                     count(DISTINCT course) AS aligned_course_count,
+                     count(DISTINCT dept) AS aligned_department_count
                 WHERE aligned_course_count > 0
                 RETURN occ.title AS title,
                        occ.soc_code AS soc_code,
                        d.annual_wage AS annual_wage,
                        d.annual_openings AS annual_openings,
                        d.growth_rate AS growth_rate,
-                       core_skills_developed_count,
-                       core_skills_total_count,
-                       course_count,
-                       aligned_course_count
+                       aligned_course_count,
+                       aligned_department_count
                 ORDER BY aligned_course_count DESC, coalesce(d.annual_openings, 0) DESC
             """, employer=employer, college=college).data()
 

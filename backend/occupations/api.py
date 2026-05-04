@@ -3,12 +3,14 @@
 from collections import defaultdict
 from fastapi import APIRouter, HTTPException
 from ontology.schema import get_driver
+from ontology.crosswalks import load_top_titles
 from occupations.models import (
     LaborMarketOverview,
     RegionOverview,
     OccupationMatch,
     OccupationDetail,
-    SkillDetail,
+    CourseAlignment,
+    TopAlignmentGroup,
     OccupationQueryRequest,
     OccupationQueryResponse,
 )
@@ -19,12 +21,14 @@ router = APIRouter()
 
 @router.get("/overview", response_model=LaborMarketOverview)
 def get_labor_market_overview(college: str):
-    """Returns regions and top occupations ranked by skill alignment with the college's curriculum."""
+    """Returns regions and occupations ranked by curriculum alignment via
+    the institutional TOP-SOC crosswalk (PREPARES_FOR edges)."""
     driver = get_driver()
     try:
         with driver.session() as session:
             result = session.run("""
-                MATCH (c:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})
+                MATCH (c:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)
+                      <-[:PREPARES_FOR]-(course:Course {college: $college})<-[:CONTAINS]-(dept:Department)
                 RETURN COALESCE(r.display_name, r.name) AS region,
                        occ.soc_code AS soc_code, occ.title AS title,
                        occ.description AS description, d.annual_wage AS annual_wage,
@@ -32,9 +36,9 @@ def get_labor_market_overview(college: str):
                        d.growth_rate AS growth_rate,
                        d.annual_openings AS annual_openings,
                        occ.education_level AS education_level,
-                       count(DISTINCT sk) AS matching_skills,
-                       collect(DISTINCT sk.name) AS skills
-                ORDER BY matching_skills DESC
+                       count(DISTINCT course) AS aligned_course_count,
+                       count(DISTINCT dept) AS aligned_department_count
+                ORDER BY aligned_course_count DESC
             """, college=college)
             records = result.data()
 
@@ -52,8 +56,8 @@ def get_labor_market_overview(college: str):
                 growth_rate=r.get("growth_rate"),
                 annual_openings=r.get("annual_openings"),
                 education_level=r.get("education_level"),
-                matching_skills=r["matching_skills"],
-                skills=r["skills"],
+                aligned_course_count=r["aligned_course_count"],
+                aligned_department_count=r["aligned_department_count"],
             ))
 
         return LaborMarketOverview(
@@ -71,7 +75,9 @@ def get_labor_market_overview(college: str):
 
 @router.get("/{soc_code}", response_model=OccupationDetail)
 def get_occupation_detail(soc_code: str, college: str):
-    """Returns full detail for an occupation including skill alignment with a specific college."""
+    """Returns full detail for an occupation including the courses and
+    departments at this college whose TOP code institutionally aligns
+    with the SOC via the Chancellor's Office TOP-CIP-SOC crosswalk."""
     driver = get_driver()
     try:
         with driver.session() as session:
@@ -84,22 +90,22 @@ def get_occupation_detail(soc_code: str, college: str):
             if not occ_result:
                 raise HTTPException(status_code=404, detail=f"Occupation {soc_code} not found")
 
-            skill_result = session.run("""
-                MATCH (occ:Occupation {soc_code: $soc})-[:REQUIRES_SKILL]->(sk:Skill)
-                OPTIONAL MATCH (course:Course {college: $college})-[:DEVELOPS]->(sk)
-                RETURN sk.name AS skill,
-                       collect(DISTINCT CASE WHEN course IS NOT NULL THEN {code: course.code, name: course.name} END) AS courses
+            course_result = session.run("""
+                MATCH (occ:Occupation {soc_code: $soc})<-[r:PREPARES_FOR]-(c:Course {college: $college})
+                RETURN c.code AS code, c.name AS name, c.department AS department,
+                       r.via_top AS via_top
+                ORDER BY c.department, c.code
             """, soc=soc_code, college=college).data()
 
-            skills = []
-            for r in skill_result:
-                courses = [c for c in r["courses"] if c is not None]
-                skills.append(SkillDetail(
-                    skill=r["skill"],
-                    developed=len(courses) > 0,
-                    courses=courses,
-                ))
-            skills.sort(key=lambda s: (not s.developed, s.skill))
+            aligned_courses = [
+                CourseAlignment(
+                    code=r["code"],
+                    name=r["name"],
+                    department=r["department"] or "Unknown",
+                    via_top=r["via_top"],
+                )
+                for r in course_result
+            ]
 
             region_result = session.run("""
                 MATCH (r:Region)-[d:DEMANDS]->(occ:Occupation {soc_code: $soc})
@@ -109,12 +115,32 @@ def get_occupation_detail(soc_code: str, college: str):
                 ORDER BY d.employment DESC
             """, soc=soc_code).data()
 
+        # Group aligned courses by their TOP6 — the institutional pivot
+        # that mediates each course→occupation pathway.
+        top_titles = load_top_titles()
+        by_top: dict[str, list[CourseAlignment]] = defaultdict(list)
+        for c in aligned_courses:
+            by_top[c.via_top or ""].append(c)
+
+        aligned_top_groups = [
+            TopAlignmentGroup(
+                top_code=tc,
+                top_title=top_titles.get(tc, ""),
+                courses=sorted(courses, key=lambda c: c.code),
+            )
+            for tc, courses in by_top.items()
+        ]
+        # Strongest program-area concentration first; alphabetical tie-break.
+        aligned_top_groups.sort(key=lambda g: (-len(g.courses), g.top_code))
+
         return OccupationDetail(
             soc_code=soc_code,
             title=occ_result["title"],
             description=occ_result["description"],
             education_level=occ_result["education_level"],
-            skills=skills,
+            aligned_top_groups=aligned_top_groups,
+            aligned_course_count=len(aligned_courses),
+            aligned_program_area_count=len(aligned_top_groups),
             regions=[{
                 "region": r["region"],
                 "employment": r["employment"],

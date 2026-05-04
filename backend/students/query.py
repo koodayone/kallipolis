@@ -16,18 +16,17 @@ Nodes:
   gpa: float, grade point average (4.0 scale)
   primary_focus: string, the department where the student completed the most courses (e.g. "Computer Science", "Biology")
   courses_completed: integer, total number of completed courses
-- Course (properties: code, college, name, department, units, description, prerequisites, skill_mappings, transfer_status)
+- Course (properties: code, college, name, department, units, description, prerequisites, transfer_status, top_code)
 - Department (properties: name)
-- Skill (properties: name)
+- Occupation (properties: soc_code, title)
 
 Relationships:
 - (Student)-[ENROLLED_IN {grade, term, status}]->(Course)
   grade: one of "A", "B", "C", "D", "F", "W", "P", "NP"
   term: string like "Fall 2023", "Spring 2024"
   status: "Completed" or "Withdrawn"
-- (Student)-[HAS_SKILL]->(Skill)
 - (Department)-[CONTAINS]->(Course)
-- (Course)-[DEVELOPS]->(Skill)
+- (Course)-[PREPARES_FOR]->(Occupation)  // institutional Chancellor's Office TOP-CIP-SOC crosswalk
 
 RULES:
 1. Every query MUST scope to the college. Use this anchor pattern to establish college scope:
@@ -41,10 +40,11 @@ RULES:
 5. Do NOT add a LIMIT clause unless the user asks for a specific number (e.g. "top 10").
 6. If the question cannot be answered with the schema above, respond with: {"cypher": "CANNOT_TRANSLATE", "interpretation": ""}
 7. The current college is provided in the user message. The $college parameter is always set to that college. If the user references a DIFFERENT college by name, respond with CANNOT_TRANSLATE and set interpretation to explain that queries are scoped to the current college.
-8. For skill-based queries, use case-insensitive matching with toLower() or CONTAINS on Skill.name.
+8. Skill-based queries are NO LONGER supported — student preparation is now expressed via completed courses and the institutional TOP-SOC crosswalk that maps those courses to occupations. Respond with CANNOT_TRANSLATE for skill-style questions.
 9. For department-based queries on courses, use case-insensitive matching with toLower() or CONTAINS on c.department.
 10. For queries about specific courses, match on c.code or c.name using CONTAINS.
 11. For primary_focus queries, use case-insensitive matching: toLower(s.primary_focus) CONTAINS toLower('...').
+12. For "students prepared for X occupation", traverse: MATCH (s:Student)-[e:ENROLLED_IN]->(c:Course {college: $college})-[:PREPARES_FOR]->(occ:Occupation) WHERE e.status = 'Completed' AND toLower(occ.title) CONTAINS '...'
 
 EXAMPLES:
 
@@ -82,11 +82,9 @@ WHERE s.courses_completed > 15
 RETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed
 ORDER BY s.courses_completed DESC
 
-Question: "Students who have Programming skills"
-MATCH (s:Student)-[:HAS_SKILL]->(sk:Skill)
-WHERE toLower(sk.name) CONTAINS 'programming'
-WITH DISTINCT s
-MATCH (s)-[:ENROLLED_IN]->(:Course {college: $college})
+Question: "Students prepared for software development occupations"
+MATCH (s:Student)-[e:ENROLLED_IN]->(c:Course {college: $college})-[:PREPARES_FOR]->(occ:Occupation)
+WHERE e.status = 'Completed' AND toLower(occ.title) CONTAINS 'software'
 WITH DISTINCT s
 RETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed
 ORDER BY s.courses_completed DESC
@@ -101,15 +99,6 @@ ORDER BY s.courses_completed DESC
 Question: "Show me students enrolled in MATH 1A"
 MATCH (s:Student)-[e:ENROLLED_IN]->(c:Course {college: $college})
 WHERE c.code CONTAINS 'MATH 1A' OR toLower(c.name) CONTAINS 'math 1a'
-WITH DISTINCT s
-RETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed
-ORDER BY s.courses_completed DESC
-
-Question: "Which students have both Critical Thinking and Mathematics skills?"
-MATCH (s:Student)-[:HAS_SKILL]->(sk1:Skill), (s)-[:HAS_SKILL]->(sk2:Skill)
-WHERE toLower(sk1.name) CONTAINS 'critical thinking' AND toLower(sk2.name) CONTAINS 'mathematics'
-WITH DISTINCT s
-MATCH (s)-[:ENROLLED_IN]->(:Course {college: $college})
 WITH DISTINCT s
 RETURN s.uuid AS uuid, s.gpa AS gpa, s.primary_focus AS primary_focus, s.courses_completed AS courses_completed
 ORDER BY s.courses_completed DESC
@@ -141,7 +130,7 @@ LIMIT 10
 
 Respond with a JSON object containing two fields:
 1. "cypher": the Cypher query as a string
-2. "interpretation": a single sentence explaining what this query does in plain English, written for a non-technical workforce development coordinator. Clarify the specific filtering logic — e.g., "students whose primary academic focus is Computer Science" or "students who have completed at least one course that develops Programming skills". Be specific about what criteria define the result set.
+2. "interpretation": a single sentence explaining what this query does in plain English, written for a non-technical workforce development coordinator. Clarify the specific filtering logic — e.g., "students whose primary academic focus is Computer Science" or "students who have completed coursework that institutionally crosswalks to software development occupations". Be specific about what criteria define the result set.
 
 No markdown code fences. Just the raw JSON object."""
 

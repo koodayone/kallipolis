@@ -10,8 +10,8 @@ class EmployerMatch(BaseModel):
     description: Optional[str] = None
     website: Optional[str] = None
     occupations: list[str]
-    matching_skills: int
-    skills: list[str]
+    aligned_course_count: int = 0
+    aligned_department_count: int = 0
 
 
 class EmployerDetail(BaseModel):
@@ -21,6 +21,12 @@ class EmployerDetail(BaseModel):
     priority_sectors_matched: list[str] = []
     description: Optional[str] = None
     website: Optional[str] = None
+    # NAICS-4 industry classification — the institutional pivot that
+    # bounds this employer's HIRES_FOR set via the BLS OEWS Industry-
+    # Occupation Matrix. `naics_title` is the human-readable industry
+    # name from the same OES publication.
+    naics4: Optional[str] = None
+    naics_title: Optional[str] = None
     regions: list[str]
     occupations: list[dict]
 

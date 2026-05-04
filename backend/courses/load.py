@@ -21,7 +21,6 @@ from ontology.mcf_lookup import lookup_top6_per_course
 from ontology.prepares_for import materialize_prepares_for
 from ontology.crosswalks import is_cte_top6
 from ontology.regions import ensure_college_region_link
-from ontology.skills import UNIFIED_TAXONOMY
 
 logger = logging.getLogger(__name__)
 
@@ -135,7 +134,6 @@ def load_college(
                     c.transfer_status = $transfer_status,
                     c.learning_outcomes = $learning_outcomes,
                     c.course_objectives = $course_objectives,
-                    c.skill_mappings = $skill_mappings,
                     c.url = $url
                 ON MATCH SET
                     c.name = $name,
@@ -146,7 +144,6 @@ def load_college(
                     c.transfer_status = $transfer_status,
                     c.learning_outcomes = $learning_outcomes,
                     c.course_objectives = $course_objectives,
-                    c.skill_mappings = $skill_mappings,
                     c.url = $url
                 RETURN c
                 """,
@@ -159,7 +156,6 @@ def load_college(
                 transfer_status=course.get("transfer_status", ""),
                 learning_outcomes=course.get("learning_outcomes", []),
                 course_objectives=course.get("course_objectives", []),
-                skill_mappings=course.get("skill_mappings", []),
                 college=config.name,
                 url=course.get("url", ""),
             )
@@ -174,24 +170,6 @@ def load_college(
                     MERGE (d)-[:CONTAINS]->(c)
                     """,
                     dept=dept,
-                    code=code,
-                    inst=config.name,
-                )
-                stats.relationships_created += 1
-
-            # Link Course → Skill
-            for skill_name in course.get("skill_mappings", []):
-                if skill_name not in UNIFIED_TAXONOMY:
-                    logger.warning(f"Off-taxonomy skill skipped: '{skill_name}' on {code}")
-                    continue
-                session.run(
-                    """
-                    MERGE (s:Skill {name: $skill_name})
-                    WITH s
-                    MATCH (c:Course {code: $code, college: $inst})
-                    MERGE (c)-[:DEVELOPS]->(s)
-                    """,
-                    skill_name=skill_name,
                     code=code,
                     inst=config.name,
                 )

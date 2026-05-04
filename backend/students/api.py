@@ -1,10 +1,16 @@
+from collections import defaultdict
+
 from fastapi import APIRouter, HTTPException, Query
 from ontology.schema import get_driver
+from ontology.crosswalks import load_top_titles
 from students.models import (
     StudentSummary,
     StudentSummaryPage,
     StudentDetail,
     StudentEnrollment,
+    OccupationAlignment,
+    TopGroup,
+    CourseRef,
     StudentQueryRequest,
     StudentQueryResponse,
 )
@@ -99,7 +105,6 @@ def get_student(student_uuid: str, college: str):
                        c.code AS course_code,
                        c.name AS course_name,
                        c.department AS department,
-                       c.skill_mappings AS skill_mappings,
                        e.grade AS grade,
                        e.term AS term,
                        e.status AS status
@@ -107,12 +112,39 @@ def get_student(student_uuid: str, college: str):
             """, uuid=student_uuid, college=college)
             records = result.data()
 
-        if not records:
-            raise HTTPException(status_code=404, detail="Student not found")
+            if not records:
+                raise HTTPException(status_code=404, detail="Student not found")
+
+            # Competency profile grounded in the institutional TOP-SOC
+            # crosswalk (PREPARES_FOR edges). Top 10 SOCs by matched-
+            # course count. No depth threshold: a student early in
+            # their academic career has shallow alignment everywhere,
+            # and rendering "no profile" for them when the truth is
+            # "still building" was dishonest. The cap keeps the surface
+            # scannable; the rank tells the truth at every stage.
+            # Matched courses are grouped by TOP6 in Python after the
+            # query so the rendering layer can visualize the program-
+            # area structure of each alignment.
+            alignment_records = session.run("""
+                MATCH (s:Student {uuid: $uuid})-[e:ENROLLED_IN]->(c:Course {college: $college})
+                WHERE e.status = 'Completed'
+                WITH collect(DISTINCT c) AS completed_courses
+                UNWIND completed_courses AS sc
+                MATCH (sc)-[:PREPARES_FOR]->(occ:Occupation)
+                WITH occ, collect(DISTINCT sc) AS matched_courses
+                RETURN occ.soc_code AS soc_code,
+                       occ.title AS title,
+                       [m IN matched_courses | {
+                           code: m.code,
+                           name: m.name,
+                           top_code: m.top_code
+                       }] AS matched_courses
+                ORDER BY size(matched_courses) DESC, occ.title ASC
+                LIMIT 10
+            """, uuid=student_uuid, college=college).data()
 
         enrollments = []
         all_grades = []
-        all_skills: set[str] = set()
         dept_counts: dict[str, int] = {}
 
         for r in records:
@@ -128,10 +160,41 @@ def get_student(student_uuid: str, college: str):
                 all_grades.append(r["grade"])
                 dept = r["department"] or "Unknown"
                 dept_counts[dept] = dept_counts.get(dept, 0) + 1
-                if r["skill_mappings"]:
-                    all_skills.update(r["skill_mappings"])
 
         primary_focus = max(dept_counts, key=dept_counts.get) if dept_counts else "Undeclared"
+
+        top_titles = load_top_titles()
+
+        def build_alignment(a: dict) -> OccupationAlignment:
+            # Group matched courses by their institutional TOP6 — the
+            # program-area pivot the crosswalk used to mediate each
+            # course→occupation pathway.
+            by_top: dict[str, list[dict]] = defaultdict(list)
+            for c in a["matched_courses"]:
+                by_top[c.get("top_code") or ""].append(c)
+
+            groups = [
+                TopGroup(
+                    top_code=top_code,
+                    top_title=top_titles.get(top_code, ""),
+                    courses=sorted(
+                        [CourseRef(code=c["code"], name=c["name"]) for c in courses],
+                        key=lambda cr: cr.code,
+                    ),
+                )
+                for top_code, courses in by_top.items()
+            ]
+            # Strongest program-area concentration first within each SOC.
+            groups.sort(key=lambda g: (-len(g.courses), g.top_code))
+
+            return OccupationAlignment(
+                soc_code=a["soc_code"],
+                title=a["title"],
+                matched_course_count=len(a["matched_courses"]),
+                matched_top_groups=groups,
+            )
+
+        occupation_alignment = [build_alignment(a) for a in alignment_records]
 
         return StudentDetail(
             uuid=student_uuid,
@@ -139,7 +202,7 @@ def get_student(student_uuid: str, college: str):
             courses_completed=len(all_grades),
             gpa=compute_gpa(all_grades),
             enrollments=enrollments,
-            skills=sorted(all_skills),
+            occupation_alignment=occupation_alignment,
         )
     except HTTPException:
         raise

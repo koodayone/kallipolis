@@ -9,8 +9,8 @@ export type ApiOccupationMatch = {
   growth_rate: number | null;
   annual_openings: number | null;
   education_level: string | null;
-  matching_skills: number;
-  skills: string[];
+  aligned_course_count: number;
+  aligned_department_count: number;
 };
 
 export type ApiRegionOverview = {
@@ -23,17 +23,27 @@ export type ApiLaborMarketOverview = {
   regions: ApiRegionOverview[];
 };
 
-export type ApiSkillDetail = {
-  skill: string;
-  developed: boolean;
-  courses: Array<{ code: string; name: string }>;
+export type ApiCourseAlignment = {
+  code: string;
+  name: string;
+  department: string;
+  via_top: string | null;
+};
+
+export type ApiTopAlignmentGroup = {
+  top_code: string;
+  top_title: string;
+  courses: ApiCourseAlignment[];
 };
 
 export type ApiOccupationDetail = {
   soc_code: string;
   title: string;
   description: string | null;
-  skills: ApiSkillDetail[];
+  education_level: string | null;
+  aligned_top_groups: ApiTopAlignmentGroup[];
+  aligned_course_count: number;
+  aligned_program_area_count: number;
   regions: Array<{
     region: string;
     employment: number;

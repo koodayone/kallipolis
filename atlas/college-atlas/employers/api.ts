@@ -8,8 +8,21 @@ export type ApiEmployerMatch = {
   description: string | null;
   website: string | null;
   occupations: string[];
-  matching_skills: number;
-  skills: string[];
+  aligned_course_count: number;
+  aligned_department_count: number;
+};
+
+export type ApiAlignedCourse = {
+  code: string;
+  name: string;
+  department: string;
+  via_top: string | null;
+};
+
+export type ApiTopAlignmentGroup = {
+  top_code: string;
+  top_title: string;
+  courses: ApiAlignedCourse[];
 };
 
 export type ApiEmployerDetail = {
@@ -19,17 +32,18 @@ export type ApiEmployerDetail = {
   priority_sectors_matched: string[];
   description: string | null;
   website: string | null;
+  naics4: string | null;
+  naics_title: string | null;
   regions: string[];
   occupations: Array<{
     title: string;
     soc_code: string;
     description: string | null;
     annual_wage: number | null;
-    skills: Array<{
-      skill: string;
-      developed: boolean;
-      courses: Array<{ code: string; name: string }>;
-    }>;
+    aligned_top_groups: ApiTopAlignmentGroup[];
+    aligned_course_count: number;
+    aligned_program_area_count: number;
+    industry_share: number | null;
   }>;
 };
 

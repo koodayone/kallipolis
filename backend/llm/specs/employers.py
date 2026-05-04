@@ -11,24 +11,29 @@ class EmployerSpec(BaseModel):
     sector_contains: list[str] | None = None
     name_contains: str | None = None
     hires_for_title_contains: list[str] | None = None
-    skill_contains: list[str] | None = None
     swp_priority_only: bool = False
     limit: int | None = None
 
 
+# The base traversal joins (college, region, employer, occupation) and
+# joins each occupation against the college's institutionally-aligned
+# courses through the PREPARES_FOR edge — the Chancellor's Office
+# TOP-CIP-SOC crosswalk. Ranking is by aligned_course_count: the count
+# of distinct courses the college offers that prepare students for any
+# of this employer's hires occupations.
 _BASE_TRAVERSAL = (
     "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)"
-    "<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)"
-    "-[:REQUIRES_SKILL]->(sk:Skill)"
-    "<-[:DEVELOPS]-(course:Course {college: $college})"
+    "<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)\n"
+    "OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)\n"
+    "OPTIONAL MATCH (dept:Department)-[:CONTAINS]->(course)"
 )
 
 _RETURN_CLAUSE = (
     "RETURN emp.name AS name, emp.sector AS sector,\n"
     "       emp.description AS description, emp.website AS website,\n"
     "       collect(DISTINCT occ.title) AS occupations,\n"
-    "       count(DISTINCT sk) AS matching_skills,\n"
-    "       collect(DISTINCT sk.name) AS skills"
+    "       count(DISTINCT course) AS aligned_course_count,\n"
+    "       count(DISTINCT dept) AS aligned_department_count"
 )
 
 
@@ -52,8 +57,6 @@ def render_cypher(spec: EmployerSpec) -> tuple[str, dict]:
         params["name_q"] = spec.name_contains.lower()
     if spec.hires_for_title_contains:
         where_clauses.append(_ors("occ.title", spec.hires_for_title_contains, "title_q", params))
-    if spec.skill_contains:
-        where_clauses.append(_ors("sk.name", spec.skill_contains, "skill_q", params))
     if spec.swp_priority_only:
         where_clauses.append("ANY(s IN emp.swp_sectors WHERE s IN r.priority_sectors)")
 
@@ -61,7 +64,7 @@ def render_cypher(spec: EmployerSpec) -> tuple[str, dict]:
     if where_clauses:
         where_clause = "WHERE " + " AND ".join(where_clauses) + "\n"
 
-    cypher = f"{_BASE_TRAVERSAL}\n{where_clause}{_RETURN_CLAUSE}\nORDER BY matching_skills DESC"
+    cypher = f"{_BASE_TRAVERSAL}\n{where_clause}{_RETURN_CLAUSE}\nORDER BY aligned_course_count DESC"
     if spec.limit:
         cypher += f"\nLIMIT {spec.limit}"
     return cypher, params
@@ -75,16 +78,14 @@ def interpret_spec(spec: EmployerSpec) -> str:
         parts.append(f"with name containing '{spec.name_contains}'")
     if spec.hires_for_title_contains:
         parts.append(f"hiring for roles containing {_quote_list(spec.hires_for_title_contains)}")
-    if spec.skill_contains:
-        parts.append(f"hiring for occupations requiring skills containing {_quote_list(spec.skill_contains)}")
     if spec.swp_priority_only:
         parts.append("in regional Strong Workforce priority sectors")
 
     filter_clause = " " + " and ".join(parts) if parts else ""
     limit_clause = f", showing top {spec.limit}" if spec.limit else ""
     return (
-        f"Showing employers{filter_clause}, ranked by skill alignment with the "
-        f"college's curriculum{limit_clause}."
+        f"Showing employers{filter_clause}, ranked by institutional curriculum "
+        f"alignment with the college (TOP-SOC crosswalk){limit_clause}."
     )
 
 
@@ -100,7 +101,7 @@ def _quote_list(terms: list[str]) -> str:
 EXTRACTOR_PROMPT = """\
 You extract structured filter parameters from a user's question about employers in a California community college's regional labor market.
 
-The base query joins (college, region, employer, occupation, skill, course) and ranks employers by skill alignment (count of distinct skills the college's curriculum develops that this employer's hiring requires). The user's question filters this base query.
+The base query joins (college, region, employer, occupation, course) and ranks employers by the count of college courses that PREPARES_FOR (institutionally crosswalks to) any of the employer's hires occupations.
 
 Spec fields (all optional):
 
@@ -113,8 +114,6 @@ name_contains: substring of the employer's name (lowercased). Use when the user 
 
 hires_for_title_contains: list of substrings to match against occupation titles. Use when user asks "Employers hiring for [role]" or "[role] employers". Same routing as sector_contains: specific role -> single substring; fuzzy concept -> list.
 
-skill_contains: list of substrings to match against required skill names. Use ONLY when the user explicitly asks about a SKILL requirement (not when they name a sector or role). "Who hires for programming" -> ["program"]. "Employers needing data analysis skills" -> ["data analy"].
-
 swp_priority_only: true when user mentions Strong Workforce Program priority sectors / regional priority sectors.
 
 limit: integer for "top N".
@@ -122,11 +121,11 @@ limit: integer for "top N".
 Routing rules:
 - "Employers in X" / "X companies" -> sector_contains
 - "Employers hiring for X" / "X employers" (X is a role) -> hires_for_title_contains
-- "Employers requiring X skills" / "Who hires for X" (X is a skill) -> skill_contains
-- "Top N employers by alignment" / no filter, just sort -> empty filters; default sort by matching_skills DESC handles it
+- "Top N employers by alignment" / no filter, just sort -> empty filters; default sort by aligned_course_count DESC handles it
 - "Employers in regional priority sectors" -> swp_priority_only: true
 
 UNSUPPORTED — set unsupported=true when the question cannot be expressed as a single base traversal with WHERE/ORDER BY/LIMIT. Specifically:
+- Skill-based filters ("employers requiring X skills") — the bridge to occupations is now via the institutional TOP-SOC crosswalk, not a skill index. Suggest filtering by sector or hiring role instead.
 - "Employers hiring for high-demand occupations" -> unsupported. ("high-demand" is not a literal title substring; it requires first ranking occupations by demand and then filtering.) unsupported_reason: "Identifying high-demand occupations requires a separate ranking step."
 - "Employers hiring for fast-growing roles" -> unsupported. Same shape.
 - "Employers most likely to partner with us" -> unsupported. Subjective ranking.
@@ -143,7 +142,6 @@ SPEC_SCHEMA = {
         "sector_contains": {"type": "ARRAY", "nullable": True, "items": {"type": "STRING"}},
         "name_contains": {"type": "STRING", "nullable": True},
         "hires_for_title_contains": {"type": "ARRAY", "nullable": True, "items": {"type": "STRING"}},
-        "skill_contains": {"type": "ARRAY", "nullable": True, "items": {"type": "STRING"}},
         "swp_priority_only": {"type": "BOOLEAN"},
         "limit": {"type": "INTEGER", "nullable": True},
         "unsupported": {"type": "BOOLEAN", "nullable": True},

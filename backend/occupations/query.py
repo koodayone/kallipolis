@@ -16,8 +16,8 @@ Nodes:
 - Region (properties: name)
 - Occupation (properties: soc_code, title, description, education_level)
   education_level: string, typical entry-level education (e.g. "Bachelor's degree", "Associate's degree"). This is a property on the Occupation NODE, not on the DEMANDS edge.
-- Skill (properties: name)
-- Course (properties: code, college, name)
+- Course (properties: code, college, name, department, top_code)
+- Department (properties: name)
 
 Relationships:
 - (College)-[:IN_MARKET]->(Region)
@@ -26,14 +26,14 @@ Relationships:
   annual_wage: integer, regional median annual salary in dollars
   growth_rate: float, projected 5-year growth rate 2024-2029 (e.g. 0.05 = 5% growth)
   annual_openings: integer, average annual job openings (new + replacement)
-- (Occupation)-[:REQUIRES_SKILL]->(Skill)
-- (Course)-[:DEVELOPS]->(Skill)
+- (Course)-[:PREPARES_FOR {via_top}]->(Occupation)  // institutional Chancellor's Office TOP-CIP-SOC crosswalk
+- (Department)-[:CONTAINS]->(Course)
 
 IMPORTANT: employment, annual_wage, growth_rate, and annual_openings are properties on the DEMANDS relationship (d.employment, d.annual_wage, etc.), NOT on the Occupation node. Conversely, education_level is a property on the Occupation NODE (occ.education_level), NOT on the DEMANDS edge.
 
 RULES:
-1. Every query MUST use this full traversal as the base MATCH to compute skill alignment between occupations and the college's curriculum:
-     MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})
+1. Every query MUST use this full traversal as the base MATCH to count institutional curriculum alignment between occupations and the college's catalog:
+     MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)<-[:PREPARES_FOR]-(course:Course {college: $college})<-[:CONTAINS]-(dept:Department)
    Add WHERE clauses after this MATCH to filter further.
 2. ONLY use MATCH, OPTIONAL MATCH, WITH, WHERE, RETURN, ORDER BY, LIMIT, UNWIND, count, collect, DISTINCT, AND, OR, NOT, IN, CONTAINS, STARTS WITH, ENDS WITH, size, toLower, toUpper.
 3. NEVER use CREATE, DELETE, SET, MERGE, REMOVE, DROP, DETACH, CALL, FOREACH, LOAD, or any write/mutation clause.
@@ -43,9 +43,9 @@ RULES:
             d.employment AS employment,
             d.growth_rate AS growth_rate, d.annual_openings AS annual_openings,
             occ.education_level AS education_level,
-            count(DISTINCT sk) AS matching_skills,
-            collect(DISTINCT sk.name) AS skills
-     ORDER BY matching_skills DESC
+            count(DISTINCT course) AS aligned_course_count,
+            count(DISTINCT dept) AS aligned_department_count
+     ORDER BY aligned_course_count DESC
 5. Do NOT add a LIMIT clause unless the user asks for a specific number.
 6. If the question cannot be answered with the schema above, respond with: {"cypher": "CANNOT_TRANSLATE", "interpretation": ""}
 7. The current college is provided in the user message. The $college parameter is always set to that college. If the user references a DIFFERENT college by name, respond with CANNOT_TRANSLATE.
@@ -55,66 +55,55 @@ RULES:
 11. For openings sorting ("most openings"): use ORDER BY d.annual_openings DESC
 12. For education filtering ("associate's degree jobs"): add WHERE occ.education_level = "Associate's degree"
 13. For title/role queries: add WHERE toLower(occ.title) CONTAINS '...'
-14. For skill queries: add WHERE toLower(sk.name) CONTAINS '...'
+14. Skill-based queries are NO LONGER supported — the bridge from courses to occupations is now via the institutional TOP-SOC crosswalk (PREPARES_FOR), not a skill index. Respond with CANNOT_TRANSLATE for "occupations requiring X skills"-style questions.
 
 EXAMPLES:
 
 Question: "Highest paying occupations"
-MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})
+MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)<-[:PREPARES_FOR]-(course:Course {college: $college})<-[:CONTAINS]-(dept:Department)
 RETURN occ.soc_code AS soc_code, occ.title AS title,
        occ.description AS description, d.annual_wage AS annual_wage,
        d.employment AS employment, d.growth_rate AS growth_rate,
        d.annual_openings AS annual_openings, occ.education_level AS education_level,
-       count(DISTINCT sk) AS matching_skills,
-       collect(DISTINCT sk.name) AS skills
+       count(DISTINCT course) AS aligned_course_count,
+       count(DISTINCT dept) AS aligned_department_count
 ORDER BY d.annual_wage DESC
 
 Question: "Software development roles"
-MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})
+MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)<-[:PREPARES_FOR]-(course:Course {college: $college})<-[:CONTAINS]-(dept:Department)
 WHERE toLower(occ.title) CONTAINS 'software'
 RETURN occ.soc_code AS soc_code, occ.title AS title,
        occ.description AS description, d.annual_wage AS annual_wage,
        d.employment AS employment, d.growth_rate AS growth_rate,
        d.annual_openings AS annual_openings, occ.education_level AS education_level,
-       count(DISTINCT sk) AS matching_skills,
-       collect(DISTINCT sk.name) AS skills
-ORDER BY matching_skills DESC
+       count(DISTINCT course) AS aligned_course_count,
+       count(DISTINCT dept) AS aligned_department_count
+ORDER BY aligned_course_count DESC
 
 Question: "Most jobs available"
-MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})
+MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)<-[:PREPARES_FOR]-(course:Course {college: $college})<-[:CONTAINS]-(dept:Department)
 RETURN occ.soc_code AS soc_code, occ.title AS title,
        occ.description AS description, d.annual_wage AS annual_wage,
        d.employment AS employment, d.growth_rate AS growth_rate,
        d.annual_openings AS annual_openings, occ.education_level AS education_level,
-       count(DISTINCT sk) AS matching_skills,
-       collect(DISTINCT sk.name) AS skills
+       count(DISTINCT course) AS aligned_course_count,
+       count(DISTINCT dept) AS aligned_department_count
 ORDER BY d.employment DESC
 
-Question: "Occupations that require Data Analysis"
-MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})
-WHERE toLower(sk.name) CONTAINS 'data analysis'
-RETURN occ.soc_code AS soc_code, occ.title AS title,
-       occ.description AS description, d.annual_wage AS annual_wage,
-       d.employment AS employment, d.growth_rate AS growth_rate,
-       d.annual_openings AS annual_openings, occ.education_level AS education_level,
-       count(DISTINCT sk) AS matching_skills,
-       collect(DISTINCT sk.name) AS skills
-ORDER BY matching_skills DESC
-
 Question: "Healthcare occupations"
-MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)-[:REQUIRES_SKILL]->(sk:Skill)<-[:DEVELOPS]-(course:Course {college: $college})
+MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)<-[:PREPARES_FOR]-(course:Course {college: $college})<-[:CONTAINS]-(dept:Department)
 WHERE toLower(occ.title) CONTAINS 'health' OR toLower(occ.title) CONTAINS 'nurse' OR toLower(occ.title) CONTAINS 'medical'
 RETURN occ.soc_code AS soc_code, occ.title AS title,
        occ.description AS description, d.annual_wage AS annual_wage,
        d.employment AS employment, d.growth_rate AS growth_rate,
        d.annual_openings AS annual_openings, occ.education_level AS education_level,
-       count(DISTINCT sk) AS matching_skills,
-       collect(DISTINCT sk.name) AS skills
-ORDER BY matching_skills DESC
+       count(DISTINCT course) AS aligned_course_count,
+       count(DISTINCT dept) AS aligned_department_count
+ORDER BY aligned_course_count DESC
 
 Respond with a JSON object containing two fields:
 1. "cypher": the Cypher query as a string
-2. "interpretation": a single sentence explaining what this query does in plain English, written for a non-technical workforce development coordinator. Be specific about the filtering criteria and mention skill alignment or regional demand where relevant.
+2. "interpretation": a single sentence explaining what this query does in plain English, written for a non-technical workforce development coordinator. Be specific about the filtering criteria and mention curriculum alignment or regional demand where relevant.
 
 No markdown code fences. Just the raw JSON object."""
 
@@ -133,11 +122,6 @@ async def run_occupation_query(question: str, college: str) -> tuple[list[Occupa
     if is_enabled_for("occupation"):
         result = run_spec(question, college, "occupation")
         if result.unsupported:
-            # Log the LLM-generated reason for debugging / prompt tuning,
-            # but keep the user-visible message generic. The reason from
-            # Flash is brittle (different runs can phrase it differently)
-            # and the example queries (accessible from the help icon) are the actual
-            # recovery path regardless of the specific failure mode.
             logger.info(
                 f"Unsupported occupation query: question={question!r} "
                 f"reason={result.unsupported_reason!r}"
@@ -166,8 +150,8 @@ async def run_occupation_query(question: str, college: str) -> tuple[list[Occupa
             growth_rate=r.get("growth_rate"),
             annual_openings=r.get("annual_openings"),
             education_level=r.get("education_level"),
-            matching_skills=r.get("matching_skills", 0),
-            skills=r.get("skills", []),
+            aligned_course_count=r.get("aligned_course_count", 0),
+            aligned_department_count=r.get("aligned_department_count", 0),
         )
         for r in records
     ]

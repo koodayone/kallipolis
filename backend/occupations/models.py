@@ -2,6 +2,15 @@ from pydantic import BaseModel
 from typing import Optional
 
 
+class CourseAlignment(BaseModel):
+    """A single college course that PREPARES_FOR an occupation, via the
+    Chancellor's Office TOP-CIP-SOC institutional crosswalk."""
+    code: str
+    name: str
+    department: str
+    via_top: Optional[str] = None
+
+
 class OccupationMatch(BaseModel):
     soc_code: str
     title: str
@@ -11,8 +20,8 @@ class OccupationMatch(BaseModel):
     growth_rate: Optional[float] = None
     annual_openings: Optional[int] = None
     education_level: Optional[str] = None
-    matching_skills: int
-    skills: list[str]
+    aligned_course_count: int = 0
+    aligned_department_count: int = 0
 
 
 class RegionOverview(BaseModel):
@@ -25,10 +34,14 @@ class LaborMarketOverview(BaseModel):
     regions: list[RegionOverview]
 
 
-class SkillDetail(BaseModel):
-    skill: str
-    developed: bool
-    courses: list[dict]
+class TopAlignmentGroup(BaseModel):
+    """A TOP6 program area that institutionally feeds the queried
+    occupation, with the courses at the queried college that map
+    through it. The course code prefix carries the department
+    affiliation — no separate department field needed at this grain."""
+    top_code: str
+    top_title: str = ""
+    courses: list[CourseAlignment]
 
 
 class OccupationDetail(BaseModel):
@@ -36,7 +49,9 @@ class OccupationDetail(BaseModel):
     title: str
     description: Optional[str] = None
     education_level: Optional[str] = None
-    skills: list[SkillDetail]
+    aligned_top_groups: list[TopAlignmentGroup]
+    aligned_course_count: int
+    aligned_program_area_count: int
     regions: list[dict]
 
 

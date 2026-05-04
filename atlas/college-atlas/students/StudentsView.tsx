@@ -21,7 +21,16 @@ function mapDetail(api: ApiStudentDetail, displayNumber: number): StudentDetail 
     uuid: api.uuid, displayNumber, primaryFocus: api.primary_focus,
     coursesCompleted: api.courses_completed, gpa: api.gpa,
     enrollments: api.enrollments.map((e) => ({ courseCode: e.course_code || "", courseName: e.course_name, department: e.department, grade: e.grade, term: e.term, status: e.status })),
-    skills: api.skills,
+    occupationAlignment: api.occupation_alignment.map((a) => ({
+      socCode: a.soc_code,
+      title: a.title,
+      matchedCourseCount: a.matched_course_count,
+      matchedTopGroups: a.matched_top_groups.map((g) => ({
+        topCode: g.top_code,
+        topTitle: g.top_title,
+        courses: g.courses.map((c) => ({ code: c.code, name: c.name })),
+      })),
+    })),
   };
 }
 

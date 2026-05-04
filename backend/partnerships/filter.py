@@ -9,9 +9,8 @@ was retired with the move to deterministic templates (see
 ``narrative_templates.py``). Once that retirement removed the only
 caller of ``_extract_json``, the JSON parser was removed too.
 
-Surviving helpers:
+Surviving helper:
   - _select_occupation: deterministic crosswalk-depth ranker
-  - _select_core_skills_for: deterministic core-skills characterization
 """
 
 from __future__ import annotations
@@ -28,49 +27,6 @@ logger = logging.getLogger(__name__)
 # ═══════════════════════════════════════════════════════════════════════════
 # Occupation Selection — deterministic, crosswalk-rooted
 # ═══════════════════════════════════════════════════════════════════════════
-#
-# When the coordinator has not chosen a SOC explicitly (e.g., the legacy
-# auto-pick path), the system selects one. Per the institutional-deference
-# commitment, this selection is itself an institutional question: of the
-# occupations the employer hires for, which one is most institutionally
-# aligned with the college's curriculum?
-#
-# Prior implementation: an LLM-driven "pick the volume role" prompt that
-# reasoned over skill-set summaries. That introduced LLM judgment into
-# what should be a deterministic ranking and could pick occupations that
-# the college's catalog has zero institutionally-aligned coverage for.
-#
-# Current implementation: rank the employer's hires SOCs by
-# (aligned_course_count DESC, annual_openings DESC, soc_code ASC).
-# - aligned_course_count reflects institutional pathway alignment AT
-#   THIS COLLEGE — counted via the same PREPARES_FOR edges that gate
-#   curriculum_evidence downstream.
-# - annual_openings reflects regional demand scale (tiebreaker).
-# - soc_code is a deterministic final tiebreaker.
-
-
-def _select_core_skills_for(college: str, occupation_title: str, k: int = 3) -> list[str]:
-    """Deterministic core-skills selection for an occupation already chosen.
-
-    Used when a SOC arrives from the picker (skipping the auto-pick) and
-    when the auto-pick path completes. Returns up to k skills the
-    occupation requires, ranked by (course_count DESC, skill_name) —
-    preferring skills the college develops most thoroughly. Skills here
-    are characterization for the narrative prompt, not the gating
-    signal: per the institutional-deference commitment, pathway claims
-    come only from the TOP-SOC crosswalk.
-    """
-    driver = get_driver()
-    with driver.session() as session:
-        result = session.run("""
-            MATCH (occ:Occupation {title: $title})-[:REQUIRES_SKILL]->(sk:Skill)
-            OPTIONAL MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk)
-            RETURN sk.name AS skill, count(DISTINCT c) AS course_count
-            ORDER BY course_count DESC, skill ASC
-        """, title=occupation_title, college=college).data()
-    if not result:
-        return []
-    return [r["skill"] for r in result[:k]]
 
 
 def _select_occupation(gathered: GatheredContext) -> dict:
@@ -82,17 +38,10 @@ def _select_occupation(gathered: GatheredContext) -> dict:
       2. annual_openings DESC — regional labor-market demand
       3. soc_code ASC — final tiebreaker
 
-    Returns the top-ranked occupation paired with its core-skills
-    characterization. When no occupation in the employer's hires set
-    has any aligned curriculum at this college, the highest-openings
-    SOC wins by tiebreaker — the artifact will then honestly surface
-    an empty curriculum_evidence and the prose will name the partial
-    nature.
-
-    No LLM call. The selection is itself an institutional question
-    (which pathway is most aligned at this college?), and answering it
-    deterministically against the crosswalk is what principle 3
-    requires.
+    When no occupation in the employer's hires set has any aligned
+    curriculum at this college, the highest-openings SOC wins by
+    tiebreaker — the artifact will then honestly surface an empty
+    curriculum_evidence and the prose will name the partial nature.
     """
     if not gathered.occupation_evidence:
         return {}
@@ -129,7 +78,6 @@ def _select_occupation(gathered: GatheredContext) -> dict:
     return {
         "title": title,
         "soc_code": soc,
-        "core_skills": _select_core_skills_for(gathered.college, title) if title else [],
     }
 
 

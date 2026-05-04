@@ -76,15 +76,15 @@ def _patterns(
 
 EMPLOYER_BASE = [
     ("employer base traversal",
-     r"college.*in_market.*region.*in_market.*employer.*hires_for.*occupation.*requires_skill.*skill.*develops.*course"),
+     r"college.*in_market.*region.*in_market.*employer.*hires_for.*occupation.*prepares_for.*course"),
     ("returns emp.name", r"emp\.name\s+as\s+name"),
-    ("returns matching_skills", r"matching_skills"),
+    ("returns aligned_course_count", r"aligned_course_count"),
     ("college scoped", r"\$college"),
 ]
 
 OCCUPATION_BASE = [
     ("occupation base traversal",
-     r"college.*in_market.*region.*demands.*occupation.*requires_skill.*skill.*develops.*course"),
+     r"college.*in_market.*region.*demands.*occupation.*prepares_for.*course"),
     ("returns soc_code", r"soc_code"),
     ("returns annual_wage", r"annual_wage"),
     ("college scoped", r"\$college"),
@@ -99,9 +99,9 @@ COURSE_BASE = [
 
 STUDENT_BASE = [
     # Anchor accepts either parameterized ($college) or literal ('Foothill College')
-    # college scoping in the ENROLLED_IN base, OR a HAS_SKILL traversal opener.
+    # college scoping in the ENROLLED_IN base.
     ("student anchor pattern",
-     r"student.*(enrolled_in.*course.*(\$college|college:\s*')|has_skill.*skill)"),
+     r"student.*enrolled_in.*course.*(\$college|college:\s*')"),
     ("returns uuid", r"s\.uuid\s+as\s+uuid"),
     ("returns gpa", r"s\.gpa\s+as\s+gpa"),
     ("college scoped", r"(\$college|college:\s*')"),
@@ -112,24 +112,11 @@ STUDENT_BASE = [
 
 QUERY_SPECS: dict[str, tuple[str, list[tuple[str, str]]]] = {
     # ── Employers ──
-    "Employers whose skill needs align with our curriculum": (
+    "Employers with the strongest curriculum alignment": (
         EMPLOYER_QUERY_PROMPT,
         _patterns(EMPLOYER_BASE, [
-            ("sorts by matching_skills",
-             r"order\s+by\s+matching_skills\s+desc"),
-        ]),
-    ),
-    "Employers hiring for high-demand occupations": (
-        EMPLOYER_QUERY_PROMPT,
-        _patterns(EMPLOYER_BASE, [
-            # The query must define "high-demand" via a top-N subset
-            # (ORDER BY annual_openings DESC + LIMIT), not merely sort
-            # the full employer set by demand. Without LIMIT the result
-            # collapses to skill-alignment with a different sort order,
-            # which produces semantically identical sets.
-            ("filters via top-N high-demand occupations",
-             r"order\s+by\s+(d\.)?annual_openings\s+desc\s+limit\s+\d+|"
-             r"order\s+by\s+demand\s+desc\s+limit\s+\d+"),
+            ("sorts by aligned_course_count",
+             r"order\s+by\s+aligned_course_count\s+desc"),
         ]),
     ),
     "Employers in regional priority sectors": (
@@ -164,13 +151,13 @@ QUERY_SPECS: dict[str, tuple[str, list[tuple[str, str]]]] = {
     ),
 
     # ── Courses ──
-    "Courses that develop manufacturing skills": (
+    "Courses that prepare for nursing occupations": (
         COURSE_QUERY_PROMPT,
         _patterns(COURSE_BASE, [
-            ("traverses DEVELOPS->Skill",
-             r"develops.*skill"),
-            ("filters on manufacturing skill",
-             r"tolower\(sk\.name\)\s+contains\s+'manufactur"),
+            ("traverses PREPARES_FOR->Occupation",
+             r"prepares_for.*occupation"),
+            ("filters on nursing occupation title",
+             r"tolower\(occ\.title\)\s+contains\s+'nurs"),
         ]),
     ),
     "Courses relevant to career and technical education": (
@@ -180,13 +167,13 @@ QUERY_SPECS: dict[str, tuple[str, list[tuple[str, str]]]] = {
              r"c\.is_cte\s*=\s*true"),
         ]),
     ),
-    "Courses that prepare for a healthcare career": (
+    "Manufacturing department courses with no prerequisites": (
         COURSE_QUERY_PROMPT,
         _patterns(COURSE_BASE, [
-            # "Career" queries can route through skill-traversal OR
-            # department-name filtering — both are semantically valid.
-            ("filters on healthcare (skill, department, or course name)",
-             r"contains\s+'(health|medical|nursing|patient|clinical)"),
+            ("filters on manufacturing department",
+             r"tolower\(c\.department\)\s+contains\s+'manufactur"),
+            ("filters on no prerequisites",
+             r"prerequisites\s+is\s+null|prerequisites\s*=\s*''"),
         ]),
     ),
 
@@ -197,30 +184,27 @@ QUERY_SPECS: dict[str, tuple[str, list[tuple[str, str]]]] = {
             # Pattern accepts any primary_focus filter — the rendered
             # question is per-college-overridden (PER_COLLEGE_OVERRIDES)
             # to ensure each school has a concrete program with student
-            # population. The eval verifies the LLM correctly compiles
-            # "specializing in X" → primary_focus filter regardless of X.
+            # population.
             ("filters on primary_focus",
              r"tolower\(s\.primary_focus\).*contains"),
         ]),
     ),
-    "Students with skills in business and accounting with GPA greater than 3.5": (
+    "Honor-roll Engineering students who took Calculus": (
         STUDENT_QUERY_PROMPT,
         _patterns(STUDENT_BASE, [
-            ("traverses HAS_SKILL",
-             r"has_skill"),
-            ("filters on business skill",
-             r"contains\s+'business"),
-            ("filters on accounting skill",
-             r"contains\s+'account"),
-            ("GPA threshold > 3.5",
-             r"s\.gpa\s*>\s*3\.5"),
+            ("filters on engineering primary_focus",
+             r"tolower\(s\.primary_focus\)\s+contains\s+'engineer"),
+            ("GPA threshold >= 3.5",
+             r"s\.gpa\s*>=\s*3\.5"),
+            ("filters on calculus by name or code",
+             r"calculus|math 1"),
         ]),
     ),
-    "Students most ready for a healthcare internship": (
+    "Students prepared for healthcare occupations": (
         STUDENT_QUERY_PROMPT,
         _patterns(STUDENT_BASE, [
-            ("uses health filter (skill or focus)",
-             r"(tolower\(sk\.name\).*contains\s+'health|tolower\(s\.primary_focus\).*contains\s+'health)"),
+            ("uses health filter (occupation title or focus)",
+             r"(tolower\(occ\.title\).*contains\s+'(health|medical|nurs)|tolower\(s\.primary_focus\).*contains\s+'health)"),
         ]),
     ),
 }
@@ -259,8 +243,7 @@ class EvalResult:
 
 CATEGORIES = {
     "employers": [
-        "Employers whose skill needs align with our curriculum",
-        "Employers hiring for high-demand occupations",
+        "Employers with the strongest curriculum alignment",
         "Employers in regional priority sectors",
     ],
     "occupations": [
@@ -269,14 +252,14 @@ CATEGORIES = {
         "Occupations growing fastest in our region",
     ],
     "courses": [
-        "Courses that develop manufacturing skills",
+        "Courses that prepare for nursing occupations",
         "Courses relevant to career and technical education",
-        "Courses that prepare for a healthcare career",
+        "Manufacturing department courses with no prerequisites",
     ],
     "students": [
         "Students specializing in 'construction technology'",
-        "Students with skills in business and accounting with GPA greater than 3.5",
-        "Students most ready for a healthcare internship",
+        "Honor-roll Engineering students who took Calculus",
+        "Students prepared for healthcare occupations",
     ],
 }
 

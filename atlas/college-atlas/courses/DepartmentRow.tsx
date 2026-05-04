@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import DataCitation from "@/ui/DataCitation";
+import CourseOccupationsCallout from "@/college-atlas/courses/CourseOccupationsCallout";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 
@@ -12,10 +13,7 @@ export type CourseItem = {
   description?: string;
   learningOutcomes?: string[];
   courseObjectives?: string[];
-  skillMappings?: string[];
   topCode?: string | null;
-  // Proposal evidence format (subset)
-  skills?: string[];
 };
 
 type Props = {
@@ -108,7 +106,6 @@ export default function DepartmentRow({ department, courseCount, index, brandCol
               )}
               {!isLoading && (courses || []).map((course) => {
                 const isCourseOpen = expandedCourses.has(course.code);
-                const skills = course.skillMappings ?? course.skills ?? [];
                 const outcomes = course.learningOutcomes ?? [];
                 const objectives = course.courseObjectives ?? [];
                 const topCode = course.topCode ?? null;
@@ -199,21 +196,12 @@ export default function DepartmentRow({ department, courseCount, index, brandCol
                                 </ul>
                               </div>
                             )}
-                            {skills.length > 0 && (
-                              <div>
-                                <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: brandColor, opacity: 0.6, display: "block", marginBottom: "8px" }}>
-                                  Developed Skills
-                                </span>
-                                <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-                                  {skills.map((skill) => (
-                                    <span key={skill} style={{
-                                      padding: "5px 12px", background: "rgba(255,255,255,0.02)",
-                                      border: `1px solid ${brandColor}60`, borderRadius: "6px",
-                                      fontFamily: FONT, fontSize: "12px", fontWeight: 500, color: brandColor,
-                                    }}>{skill}</span>
-                                  ))}
-                                </div>
-                              </div>
+                            {schoolName && (
+                              <CourseOccupationsCallout
+                                courseCode={course.code}
+                                collegeName={schoolName}
+                                brandColor={brandColor}
+                              />
                             )}
                           </div>
                         </motion.div>

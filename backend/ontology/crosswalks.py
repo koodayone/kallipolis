@@ -46,6 +46,7 @@ _DATA_DIR = Path(__file__).parent / "data"
 TOP_CIP_PATH = _DATA_DIR / "top_cip_crosswalk.csv"
 CIP_SOC_PATH = _DATA_DIR / "CIP2020_SOC2018_Crosswalk.xlsx"
 PCAH_SECTORS_PATH = _DATA_DIR / "TOP Codes to Sectors.xlsx"
+NAICS4_DESCRIPTIONS_PATH = _DATA_DIR / "2022_NAICS_Descriptions.xlsx"
 COE_DEMAND_PATH = Path(__file__).parent / "occupational_demand_coe.csv"
 
 CALIBRATIONS_DIR = Path(__file__).parent / "calibrations"
@@ -58,6 +59,8 @@ _cip_to_soc: dict[str, set[str]] | None = None
 _coe_demand: dict[str, dict[str, dict]] | None = None
 _top6_to_sector: dict[str, str] | None = None
 _cte_reachable_socs_cache: set[str] | None = None
+_top_titles: dict[str, str] | None = None
+_naics4_titles: dict[str, str] | None = None
 
 
 def _load_top_to_cip() -> dict[str, set[str]]:
@@ -87,6 +90,88 @@ def _load_top_to_cip() -> dict[str, set[str]]:
     _top_to_cip = mapping
     logger.info(f"Loaded TOP→CIP crosswalk: {len(mapping)} TOP6 codes")
     return mapping
+
+
+def load_naics4_titles() -> dict[str, str]:
+    """Load NAICS-4 → industry title mapping from the Census 2022 NAICS
+    Descriptions file — the canonical source for the federal industry
+    classification, with one row per code at every hierarchy level.
+
+    The OES Industry-Occupation matrix uses ad-hoc rollups (e.g.
+    `3330A1` bundling 3331/3332/3334/3339) rather than a clean 4-digit
+    breakout, so it covered only ~77% of the NAICS-4 codes our scraped
+    employers carry. Census publishes a flat code-title table that
+    covers every 4-digit industry, so we read titles from there and
+    keep the OES sheet for what it does best (the HIRES_FOR set).
+
+    Title cells carry a trailing "T" marker for trilateral NAFTA-
+    harmonized industries; strip it for display.
+    """
+    global _naics4_titles
+    if _naics4_titles is not None:
+        return _naics4_titles
+
+    titles: dict[str, str] = {}
+    wb = openpyxl.load_workbook(NAICS4_DESCRIPTIONS_PATH, read_only=True)
+    ws = wb.active
+    if ws is None:
+        _naics4_titles = titles
+        return titles
+
+    rows = ws.iter_rows(values_only=True)
+    next(rows, None)  # header: Code, Title, Description
+    for row in rows:
+        if not row or len(row) < 2:
+            continue
+        code = str(row[0] or "").strip()
+        title = (row[1] or "").strip() if row[1] is not None else ""
+        if not (len(code) == 4 and code.isdigit() and title):
+            continue
+        if title.endswith("T"):
+            title = title[:-1].rstrip()
+        titles[code] = title
+
+    wb.close()
+    _naics4_titles = titles
+    logger.info(f"Loaded NAICS-4 titles: {len(titles)} codes")
+    return titles
+
+
+def load_top_titles() -> dict[str, str]:
+    """Load TOP6 → title mapping from the Chancellor's Office TOP-CIP
+    crosswalk file. The first column has the form
+    `"0101.00 - Agriculture and Natural Resources"`; we already strip
+    the dotted code in `_load_top_to_cip`, here we keep the title side.
+
+    Used by surfaces that render TOP codes alongside their human-readable
+    program-area names (the student competency profile, the partnership
+    artifact's curriculum-alignment section). Falls back to bare code at
+    the call site when a TOP6 has no entry.
+    """
+    global _top_titles
+    if _top_titles is not None:
+        return _top_titles
+
+    titles: dict[str, str] = {}
+    with open(TOP_CIP_PATH, newline="") as f:
+        reader = csv.reader(f)
+        next(reader)  # skip header
+        for row in reader:
+            cell = row[0].strip().strip('"')
+            if " - " not in cell:
+                continue
+            code_part, _, title_part = cell.partition(" - ")
+            top6 = code_part.strip().replace(".", "")
+            title = title_part.strip()
+            if len(top6) == 6 and top6.isdigit() and title:
+                # First write wins; the file may carry duplicate TOP rows
+                # (one per CIP it maps to) and the title is identical
+                # across them.
+                titles.setdefault(top6, title)
+
+    _top_titles = titles
+    logger.info(f"Loaded TOP titles: {len(titles)} TOP6 codes")
+    return titles
 
 
 def _load_cip_to_soc() -> dict[str, set[str]]:

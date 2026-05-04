@@ -29,15 +29,15 @@ You extract search terms from a user's question about a college workforce databa
 
 The database has these views, each with TEXT properties that support substring matching:
 
-employer: sector, employer_name, skill
-occupation: title, skill
-course: department, skill
-student: primary_focus, skill, course_code, course_name
-partnership: sector, employer_name, skill
+employer: sector, employer_name
+occupation: title
+course: department, course_name
+student: primary_focus, course_code, course_name
+partnership: sector, employer_name
 
 Given the view and question, identify which TEXT properties (if any) the user is filtering on. For each, produce 1-4 SHORT ROOT SUBSTRINGS (3-8 chars) that maximize case-insensitive CONTAINS matches. Use roots, not full words: "health" not "healthcare", "manufactur" not "manufacturing", "nurs" not "nursing".
 
-Apply semantic bridging: "draw blood" -> "phlebotom", "clinical", "patient". "fix cars" -> "automot", "mechanic", "vehicle".
+Apply semantic bridging by name/title: "draw blood" -> "phlebotom", "clinical", "patient". "fix cars" -> "automot", "mechanic", "vehicle".
 
 If the question has NO text filters (e.g. "show me all employers", "highest paying occupations"), return empty filters.
 
@@ -62,7 +62,6 @@ RESOLUTION_SCHEMA = {
 }
 
 _RESOLUTION_QUERIES = {
-    "skill":         "MATCH (n:Skill) WHERE {where} RETURN DISTINCT n.name AS val LIMIT 30",
     "sector":        "MATCH (n:Employer) WHERE {where} RETURN DISTINCT n.sector AS val LIMIT 30",
     "employer_name": "MATCH (n:Employer) WHERE {where} RETURN DISTINCT n.name AS val LIMIT 30",
     "title":         "MATCH (n:Occupation) WHERE {where} RETURN DISTINCT n.title AS val LIMIT 30",
@@ -73,7 +72,7 @@ _RESOLUTION_QUERIES = {
 }
 
 _PROPERTY_ACCESS = {
-    "skill": "n.name", "sector": "n.sector", "employer_name": "n.name",
+    "sector": "n.sector", "employer_name": "n.name",
     "title": "n.title", "department": "n.department",
     "primary_focus": "n.primary_focus", "course_code": "n.code",
     "course_name": "n.name",

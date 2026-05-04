@@ -15,10 +15,7 @@ import logging
 
 from ontology.schema import get_driver
 from partnerships.evals import evaluate_proposal
-from partnerships.filter import (
-    _select_core_skills_for,
-    _select_occupation,
-)
+from partnerships.filter import _select_occupation
 from partnerships.gather import (
     GatheredContext,
     _gather_aligned_curriculum,
@@ -183,19 +180,13 @@ def _assemble_swp_evidence(
 # ═══════════════════════════════════════════════════════════════════════════
 
 
-def _select_occupation_from_soc(gathered: GatheredContext, soc_code: str, college: str) -> dict:
-    """Build the selected-occupation dict for a coordinator-picked SOC.
-
-    Looks up the occupation in gathered.occupation_evidence by SOC code and
-    pairs it with deterministic core-skills selection. No LLM call.
-    """
+def _select_occupation_from_soc(gathered: GatheredContext, soc_code: str) -> dict:
+    """Build the selected-occupation dict for a coordinator-picked SOC."""
     for occ in gathered.occupation_evidence:
         if occ.get("soc_code") == soc_code:
-            title = occ.get("title", "")
             return {
-                "title": title,
+                "title": occ.get("title", ""),
                 "soc_code": soc_code,
-                "core_skills": _select_core_skills_for(college, title),
             }
     raise ValueError(
         f"Selected SOC '{soc_code}' is not in {gathered.employer_name}'s "
@@ -213,16 +204,16 @@ def _run_pipeline(
 
     Stages (all deterministic; no LLM call at runtime):
       2. Occupation selection — when selected_occupation_soc is provided,
-         deterministic lookup by SOC plus deterministic core-skills selection;
-         otherwise the legacy crosswalk-rooted _select_occupation runs.
-      3. Curriculum and student pipeline gathering (Neo4j)
+         deterministic lookup by SOC; otherwise the crosswalk-rooted
+         _select_occupation runs.
+      3. Curriculum and student pipeline gathering (Neo4j, PREPARES_FOR-gated)
       4. Regional supply-demand evidence assembly (Neo4j + COE CSVs)
       5. Narrative composition from deterministic templates over the
          gathered data + the employer's pre-computed operations_summary.
       6. Final assembly
     """
     if selected_occupation_soc:
-        selected_occ = _select_occupation_from_soc(gathered, selected_occupation_soc, college)
+        selected_occ = _select_occupation_from_soc(gathered, selected_occupation_soc)
         logger.info(
             f"Stage 2 complete: coordinator-picked '{selected_occ['title']}' "
             f"({selected_occupation_soc}) for {employer}"
@@ -231,21 +222,12 @@ def _run_pipeline(
         selected_occ = _select_occupation(gathered)
         logger.info(f"Stage 2 complete: selected '{selected_occ.get('title', '?')}' for {employer}")
 
-    core_skills = selected_occ.get("core_skills", [])
     selected_soc = selected_occ.get("soc_code") or ""
-    _, curriculum_evidence = _gather_aligned_curriculum(college, selected_soc, core_skills)
-
-    # Per the institutional-deference commitment, the full PREPARES_FOR-gated
-    # set passes through downstream. The prior LLM cap-to-3 was retired in
-    # C3 because the inbound set is already institutionally legitimate —
-    # every department is there because the Chancellor's-Office crosswalk
-    # places it there. Visual sprawl at the rendering layer is bounded by
-    # ProposalCard's collapsible department rows; that is a rendering
-    # concern, not a gating concern.
+    curriculum_evidence = _gather_aligned_curriculum(college, selected_soc)
 
     aligned_depts = [d["department"] for d in curriculum_evidence]
     student_stats, top_students = _gather_student_pipeline(
-        college, aligned_depts, selected_soc, core_skills
+        college, aligned_depts, selected_soc
     )
     logger.info(f"Stage 3 complete: gathered curriculum and student pipeline for {employer}")
 
@@ -254,17 +236,9 @@ def _run_pipeline(
 
     # Coordinator-facing sector uses the institutional Doing-What-Matters /
     # Strong Workforce taxonomy ("Advanced Manufacturing"), not the
-    # employer's BLS classification ("Manufacturing"). The artifact is
-    # built on CTE programs, regional priority sectors, and SWP funding
-    # categories — its surface vocabulary should match. Falls back to
-    # BLS when the employer has no SWP classification.
+    # employer's BLS classification.
     proposal_sector = gathered.swp_sectors[0] if gathered.swp_sectors else gathered.sector
 
-    # Stage 5: deterministic narrative. Pull the regional demand figures
-    # from the SWP evidence's selected-SOC row (single-row by design)
-    # and the COE region display name from the institutional sources
-    # block. Total aligned courses is the sum across the curriculum
-    # evidence; n_departments drives singular/plural agreement in CA.
     selected_demand_row = swp_evidence.occupations[0] if swp_evidence.occupations else None
     annual_wage = selected_demand_row.annual_wage if selected_demand_row else None
     annual_openings = selected_demand_row.annual_openings if selected_demand_row else None
@@ -283,7 +257,6 @@ def _run_pipeline(
         annual_wage=annual_wage,
         annual_openings=annual_openings,
         coe_region_display=coe_region_display or "",
-        core_skills=core_skills,
         total_aligned_courses=total_aligned_courses,
         total_in_aligned_departments=student_stats.get("total_in_aligned_departments", 0),
         n_departments=len(curriculum_evidence),
@@ -299,7 +272,6 @@ def _run_pipeline(
         student_stats=student_stats,
         top_students=top_students,
         swp_evidence=swp_evidence,
-        core_skills=core_skills,
     )
 
     # Non-blocking quality eval. The proposal ships regardless; violations

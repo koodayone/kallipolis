@@ -5,12 +5,24 @@ import { AnimatePresence, motion } from "framer-motion";
 import { SchoolConfig } from "@/config/schoolConfig";
 import { getEmployers, getEmployerDetail, queryEmployers } from "@/college-atlas/employers/api";
 import type { ApiEmployerMatch, ApiEmployerDetail } from "@/college-atlas/employers/api";
-import Badge from "@/ui/Badge";
+import { TopGroupBlock } from "@/college-atlas/occupations/OccupationRow";
 import QueryShell, { findScrollParent } from "@/ui/QueryShell";
 import DataCitation from "@/ui/DataCitation";
-import RequiredSkillsList from "@/ui/RequiredSkillsList";
+
+// Visible cap on TOP-groups within a single occupation's curriculum
+// alignment block. Mirrors the OccupationRow cap so the surfaces share
+// the same show-all triggering behavior.
+const GROUP_CAP = 4;
+
+// Visible cap on the per-employer occupation list. Occupations are
+// sorted by industry-share (BLS OEWS PCT_TOTAL for the employer's
+// NAICS-4) so the top N captures the roles that matter most to the
+// industry. The long tail — including unaligned roles that signal
+// program-development opportunities — is one click away.
+const OCCUPATION_CAP = 5;
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
+const MONO = "var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace";
 
 // Example queries shown as suggestions. Each demonstrates one supported
 // query shape — substitution-on-sector, substitution-on-role, fixed
@@ -20,7 +32,7 @@ const EXAMPLES = [
   "Employers in 'healthcare'",
   "Employers hiring for 'software developers'",
   "Employers in regional priority sectors",
-  "Employers whose skill needs align with our curriculum",
+  "Employers with the strongest curriculum alignment",
 ];
 
 const UNCLASSIFIED = "Unclassified";
@@ -133,7 +145,7 @@ export default function EmployersView({ school, onBack }: Props) {
   const renderResultsContent = useCallback((results: ApiEmployerMatch[]) => (
     <div>
       <div style={{
-        display: "grid", gridTemplateColumns: "20px 1fr 70px 85px",
+        display: "grid", gridTemplateColumns: "20px 1fr 56px 56px",
         padding: "10px 16px 10px 44px", gap: "10px", alignItems: "center",
         borderBottom: "1px solid rgba(255,255,255,0.04)",
       }}>
@@ -144,8 +156,8 @@ export default function EmployersView({ school, onBack }: Props) {
         <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, textAlign: "center" }}>
           Roles
         </span>
-        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6 }}>
-          Skills
+        <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.6, textAlign: "center" }}>
+          Courses
         </span>
       </div>
       {results.map((emp, i) => renderEmployerRow(emp, i))}
@@ -191,7 +203,7 @@ function SectorGroupedList({
       for (const p of emp.priority_sectors_matched) prioritySet.add(p);
     }
     for (const k of Object.keys(groups)) {
-      groups[k].sort((a, b) => b.matching_skills - a.matching_skills);
+      groups[k].sort((a, b) => b.aligned_course_count - a.aligned_course_count);
     }
     const sectors = Object.keys(groups).sort((a, b) => {
       if (a === UNCLASSIFIED) return 1;
@@ -347,7 +359,7 @@ function SectorGroup({
           >
             <div>
               <div style={{
-                display: "grid", gridTemplateColumns: "20px 1fr 70px 85px",
+                display: "grid", gridTemplateColumns: "20px 1fr 56px 56px",
                 padding: "10px 16px 10px 44px", gap: "10px", alignItems: "center",
                 borderBottom: "1px solid rgba(255,255,255,0.04)",
               }}>
@@ -358,8 +370,8 @@ function SectorGroup({
                 <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: brandColor, opacity: 0.6, textAlign: "center" }}>
                   Roles
                 </span>
-                <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: brandColor, opacity: 0.6 }}>
-                  Skills
+                <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: brandColor, opacity: 0.6, textAlign: "center" }}>
+                  Courses
                 </span>
               </div>
               {employers.map((emp, i) => (
@@ -394,7 +406,7 @@ const EmployerRow = memo(function EmployerRow({ emp, i, school, expandedNames, e
         onClick={() => onExpand(emp)}
         style={{
           width: "100%", textAlign: "left",
-          display: "grid", gridTemplateColumns: "20px 1fr 70px 85px",
+          display: "grid", gridTemplateColumns: "20px 1fr 56px 56px",
           padding: "10px 16px 10px 44px", gap: "10px", alignItems: "center",
           background: isOpen ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
           border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)",
@@ -413,14 +425,9 @@ const EmployerRow = memo(function EmployerRow({ emp, i, school, expandedNames, e
         <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.35)", display: "flex", justifyContent: "center" }}>
           {emp.occupations.length}
         </span>
-        <Badge style={{
-          color: school.brandColorLight,
-          background: `${school.brandColorLight}20`,
-          border: `1px solid ${school.brandColorLight}30`,
-          fontSize: "11px", whiteSpace: "nowrap",
-        }}>
-          {emp.matching_skills} skills
-        </Badge>
+        <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.45)", textAlign: "center" }}>
+          {emp.aligned_course_count}
+        </span>
       </motion.button>
 
       <AnimatePresence>
@@ -430,16 +437,36 @@ const EmployerRow = memo(function EmployerRow({ emp, i, school, expandedNames, e
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25 }}
-            style={{ overflow: "hidden", background: "rgba(255,255,255,0.02)" }}
+            style={{ overflow: "hidden", background: "rgba(255,255,255,0.045)", borderBottom: "1px solid rgba(255,255,255,0.08)" }}
           >
             <div style={{ padding: "16px 20px 24px" }}>
               {isLoading && <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.3)" }}>Loading...</p>}
               {detail && (
                 <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+                  {detail.naics4 && (
+                    <div style={{ display: "flex", alignItems: "baseline", gap: "10px", flexWrap: "wrap" }}>
+                      <span style={{ fontFamily: MONO, fontSize: "11px", fontWeight: 500, letterSpacing: "0.05em", color: "rgba(255,255,255,0.4)", fontVariantNumeric: "tabular-nums" }}>
+                        NAICS {detail.naics4}
+                      </span>
+                      {detail.naics_title && (
+                        <>
+                          <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.3)" }}>·</span>
+                          <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.7)" }}>
+                            {detail.naics_title}
+                          </span>
+                        </>
+                      )}
+                    </div>
+                  )}
                   {detail.description && (
-                    <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.7)", lineHeight: 1.55, margin: 0 }}>
-                      {detail.description}
-                    </p>
+                    <div>
+                      <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: school.brandColorLight, opacity: 0.7, display: "block", marginBottom: "10px" }}>
+                        Description
+                      </span>
+                      <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.7)", lineHeight: 1.55, margin: 0 }}>
+                        {detail.description}
+                      </p>
+                    </div>
                   )}
                   {detail.website && (
                     <a
@@ -457,45 +484,12 @@ const EmployerRow = memo(function EmployerRow({ emp, i, school, expandedNames, e
                     </a>
                   )}
                   {detail.occupations.length > 0 && (
-                    <div style={{ fontFamily: FONT, fontSize: "11px", fontWeight: 600, letterSpacing: "0.07em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)", marginTop: "4px" }}>
-                      Employer Occupations ({detail.occupations.length})
-                    </div>
+                    <EmployerOccupationsList
+                      occupations={detail.occupations}
+                      naics4={detail.naics4}
+                      brandColor={school.brandColorLight}
+                    />
                   )}
-                  {detail.occupations.map((occ) => {
-                    const aligned = (occ.skills || []).filter((s) => s.developed);
-                    return (
-                      <div key={occ.soc_code} style={{
-                        background: "rgba(255,255,255,0.03)", borderRadius: "8px", padding: "16px 18px",
-                      }}>
-                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-                          <div style={{ fontFamily: FONT, fontSize: "14px", fontWeight: 500, color: "#f0eef4" }}>
-                            {occ.title}
-                          </div>
-                          {occ.annual_wage && (
-                            <span style={{ fontFamily: FONT, fontSize: "12px", fontWeight: 500, color: "rgba(255,255,255,0.55)", whiteSpace: "nowrap", marginLeft: "12px" }}>
-                              ${occ.annual_wage.toLocaleString()} annual
-                            </span>
-                          )}
-                        </div>
-
-                        {occ.description && (
-                          <p style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.45)", lineHeight: 1.5, margin: "8px 0 0" }}>
-                            {occ.description}
-                          </p>
-                        )}
-
-                        {aligned.length > 0 && (
-                          <div style={{ marginTop: "12px" }}>
-                            <RequiredSkillsList
-                              skills={aligned}
-                              brandColor={school.brandColorLight}
-                              collegeName={school.name}
-                            />
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
                   <DataCitation source="California Employment Development Department" />
                 </div>
               )}
@@ -506,3 +500,164 @@ const EmployerRow = memo(function EmployerRow({ emp, i, school, expandedNames, e
     </div>
   );
 });
+
+/* ── Employer Occupations List ────────────────────────────────────────── */
+
+type ApiEmployerOccupation = ApiEmployerDetail["occupations"][number];
+
+function EmployerOccupationsList({ occupations, naics4, brandColor }: {
+  occupations: ApiEmployerOccupation[]; naics4: string | null; brandColor: string;
+}) {
+  const visible = occupations.slice(0, OCCUPATION_CAP);
+  const isCapped = occupations.length > OCCUPATION_CAP;
+  const shownCount = visible.length;
+
+  return (
+    <div style={{ marginTop: "4px" }}>
+      <div style={{ marginBottom: "12px" }}>
+        <div style={{
+          fontFamily: FONT, fontSize: "10px", fontWeight: 600,
+          letterSpacing: "0.1em", textTransform: "uppercase",
+          color: brandColor, opacity: 0.7,
+        }}>
+          Employer Occupations ({occupations.length})
+        </div>
+        {naics4 && (
+          <div style={{
+            fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.4)",
+            marginTop: "4px", lineHeight: 1.5,
+          }}>
+            {isCapped ? `Top ${shownCount} occupations` : `${shownCount} occupation${shownCount === 1 ? "" : "s"}`} sorted by share of employment in NAICS sector {naics4}.
+          </div>
+        )}
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        {visible.map((occ) => (
+          <EmployerOccupationRow key={occ.soc_code} occ={occ} brandColor={brandColor} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ── Employer Occupation Row (collapsible, editorial) ─────────────────── */
+
+function EmployerOccupationRow({ occ, brandColor }: { occ: ApiEmployerOccupation; brandColor: string }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [showAllGroups, setShowAllGroups] = useState(false);
+  const groups = occ.aligned_top_groups ?? [];
+  const visibleGroups = showAllGroups ? groups : groups.slice(0, GROUP_CAP);
+  const hiddenGroups = showAllGroups ? [] : groups.slice(GROUP_CAP);
+  const isCapped = hiddenGroups.length > 0;
+  const courseCount = occ.aligned_course_count;
+
+  return (
+    <div>
+      <button
+        onClick={() => setIsOpen(o => !o)}
+        style={{
+          width: "100%", textAlign: "left",
+          display: "flex", alignItems: "baseline", gap: "12px",
+          padding: "11px 4px 11px 4px",
+          background: isOpen ? "rgba(255,255,255,0.04)" : "transparent",
+          border: "none",
+          cursor: "pointer", transition: "background 0.15s",
+          borderRadius: "4px",
+        }}
+        onMouseEnter={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.025)"; }}
+        onMouseLeave={(e) => { if (!isOpen) (e.currentTarget as HTMLElement).style.background = "transparent"; }}
+      >
+        <svg width="10" height="10" viewBox="0 0 12 12" fill="none"
+          style={{
+            transform: isOpen ? "rotate(90deg)" : "rotate(0deg)",
+            transition: "transform 0.2s",
+            flexShrink: 0, marginLeft: "4px",
+            position: "relative", top: "1px",
+          }}>
+          <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+        <span style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.82)", flex: 1, lineHeight: 1.45 }}>
+          {occ.title}
+        </span>
+        <span style={{ display: "inline-flex", alignItems: "baseline", gap: "8px", flexShrink: 0, paddingRight: "4px" }}>
+          <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.5)", whiteSpace: "nowrap", minWidth: "84px", textAlign: "right" }}>
+            {occ.annual_wage ? `$${occ.annual_wage.toLocaleString()}/yr` : "—"}
+          </span>
+          <span style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.25)" }}>·</span>
+          <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.55)", whiteSpace: "nowrap", minWidth: "68px", textAlign: "right" }}>
+            {courseCount} course{courseCount === 1 ? "" : "s"}
+          </span>
+        </span>
+      </button>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.22 }}
+            style={{ overflow: "hidden", background: "rgba(255,255,255,0.02)" }}
+          >
+            <div style={{ padding: "14px 20px 18px 38px" }}>
+              {occ.soc_code && (
+                <div style={{ fontFamily: MONO, fontSize: "11px", fontWeight: 500, letterSpacing: "0.05em", color: "rgba(255,255,255,0.4)", fontVariantNumeric: "tabular-nums", marginBottom: "10px" }}>
+                  SOC {occ.soc_code}
+                </div>
+              )}
+              {occ.description && (
+                <p style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.55)", lineHeight: 1.55, margin: "0 0 14px" }}>
+                  {occ.description}
+                </p>
+              )}
+              {groups.length > 0 ? (
+                <div>
+                  <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: brandColor, opacity: 0.7, display: "block", marginBottom: "10px" }}>
+                    Curriculum Alignment
+                  </span>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                    {visibleGroups.map((group) => (
+                      <TopGroupBlock key={group.top_code || "unknown"} group={group} brandColor={brandColor} />
+                    ))}
+                    {showAllGroups && hiddenGroups.map((group, i) => (
+                      <motion.div
+                        key={group.top_code || `hidden-${i}`}
+                        initial={{ opacity: 0, y: -4 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.18, delay: Math.min(i * 0.04, 0.2) }}
+                      >
+                        <TopGroupBlock group={group} brandColor={brandColor} />
+                      </motion.div>
+                    ))}
+                  </div>
+                  {isCapped && (
+                    <button
+                      onClick={() => setShowAllGroups(true)}
+                      style={{
+                        fontFamily: FONT, fontSize: "11px", fontWeight: 500,
+                        color: brandColor, opacity: 0.65,
+                        background: "transparent", border: "none",
+                        padding: "10px 8px 0 0",
+                        cursor: "pointer", textAlign: "left",
+                        transition: "opacity 0.15s",
+                      }}
+                      onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = "1"; }}
+                      onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = "0.65"; }}
+                    >
+                      Show all {occ.aligned_program_area_count} program areas
+                    </button>
+                  )}
+                </div>
+              ) : (
+                <div style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.35)", fontStyle: "italic" }}>
+                  No curriculum alignment at this college.
+                </div>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}

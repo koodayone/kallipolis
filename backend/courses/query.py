@@ -12,19 +12,18 @@ COURSE_QUERY_PROMPT = """You are a Cypher query generator for a Neo4j graph data
 SCHEMA:
 
 Nodes:
-- Course (properties: code, college, name, department, units, description, prerequisites, skill_mappings, learning_outcomes, course_objectives, transfer_status, top_code, is_cte)
+- Course (properties: code, college, name, department, units, description, prerequisites, learning_outcomes, course_objectives, transfer_status, top_code, is_cte)
   transfer_status: one of "CSU/UC", "CSU Only", "UC Only", "Non-Transferable"
-  skill_mappings: list of skill name strings
   learning_outcomes: list of strings
   course_objectives: list of strings
   top_code: 6-digit Taxonomy of Programs code from the Chancellor's Office Master Course File (e.g. "095210" for Construction Crafts Technology). May be missing for non-credit / general-ed courses outside the institutional CTE catalog.
   is_cte: boolean. True iff the course's TOP6 appears in the PCAH (Program and Course Approval Handbook) "TOP Codes to Sectors" file — the authoritative institutional definition of CTE (career and technical education) scope for the California community college system.
 - Department (properties: name)
-- Skill (properties: name)
+- Occupation (properties: soc_code, title)
 
 Relationships:
 - (Department)-[CONTAINS]->(Course)
-- (Course)-[DEVELOPS]->(Skill)
+- (Course)-[PREPARES_FOR]->(Occupation)  // institutional TOP-CIP-SOC crosswalk
 
 RULES:
 1. Every query MUST scope to the college: use {college: $college} on Course nodes.
@@ -33,15 +32,15 @@ RULES:
 4. Always return results in this exact shape:
      RETURN c.name AS name, c.code AS code, c.description AS description,
             c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,
-            c.skill_mappings AS skill_mappings,
             c.top_code AS top_code
 5. Do NOT add a LIMIT clause unless the user asks for a specific number.
 6. If the question cannot be answered with the schema above, respond with: {"cypher": "CANNOT_TRANSLATE", "interpretation": ""}
 7. The current college is provided in the user message. The $college parameter is always set to that college. If the user references a DIFFERENT college by name, respond with CANNOT_TRANSLATE.
-8. If the question asks about departments (e.g. "which departments have the most courses") rather than individual courses, respond with CANNOT_TRANSLATE and set interpretation to suggest rephrasing (e.g. "Try asking about courses in a specific department, like 'Computer Science courses'").
-9. For skill-based queries, traverse: MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk:Skill) WHERE toLower(sk.name) CONTAINS '...'
+8. If the question asks about departments (e.g. "which departments have the most courses") rather than individual courses, respond with CANNOT_TRANSLATE and set interpretation to suggest rephrasing.
+9. Skill-based queries are NO LONGER supported — the bridge from courses to occupations is now via the institutional TOP-SOC crosswalk (PREPARES_FOR), not a skill index. For "courses that develop X skills"-style queries, respond with CANNOT_TRANSLATE and suggest filtering by department or course name.
 10. For department queries, filter: WHERE toLower(c.department) CONTAINS '...'
 11. For CTE / "career and technical education" queries, filter: WHERE c.is_cte = true. This is the institutional definition (PCAH-classified TOP code), not a heuristic.
+12. For "courses that prepare for X occupation", traverse: MATCH (c:Course {college: $college})-[:PREPARES_FOR]->(occ:Occupation) WHERE toLower(occ.title) CONTAINS '...'
 
 EXAMPLES:
 
@@ -50,16 +49,7 @@ MATCH (c:Course {college: $college})
 WHERE toLower(c.department) CONTAINS 'computer science'
 RETURN c.name AS name, c.code AS code, c.description AS description,
        c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,
-       c.skill_mappings AS skill_mappings, c.top_code AS top_code
-ORDER BY c.code
-
-Question: "Courses that develop Programming skills"
-MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk:Skill)
-WHERE toLower(sk.name) CONTAINS 'programming'
-WITH DISTINCT c
-RETURN c.name AS name, c.code AS code, c.description AS description,
-       c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,
-       c.skill_mappings AS skill_mappings, c.top_code AS top_code
+       c.top_code AS top_code
 ORDER BY c.code
 
 Question: "Transfer-eligible courses"
@@ -67,7 +57,16 @@ MATCH (c:Course {college: $college})
 WHERE c.transfer_status IN ['CSU/UC', 'CSU Only', 'UC Only']
 RETURN c.name AS name, c.code AS code, c.description AS description,
        c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,
-       c.skill_mappings AS skill_mappings, c.top_code AS top_code
+       c.top_code AS top_code
+ORDER BY c.code
+
+Question: "Courses that prepare for nursing occupations"
+MATCH (c:Course {college: $college})-[:PREPARES_FOR]->(occ:Occupation)
+WHERE toLower(occ.title) CONTAINS 'nurs'
+WITH DISTINCT c
+RETURN c.name AS name, c.code AS code, c.description AS description,
+       c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,
+       c.top_code AS top_code
 ORDER BY c.code
 
 Question: "Courses with more than 3 units"
@@ -75,7 +74,7 @@ MATCH (c:Course {college: $college})
 WHERE c.units > 3
 RETURN c.name AS name, c.code AS code, c.description AS description,
        c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,
-       c.skill_mappings AS skill_mappings, c.top_code AS top_code
+       c.top_code AS top_code
 ORDER BY c.code
 
 Question: "Nursing courses"
@@ -83,7 +82,7 @@ MATCH (c:Course {college: $college})
 WHERE toLower(c.department) CONTAINS 'nursing'
 RETURN c.name AS name, c.code AS code, c.description AS description,
        c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,
-       c.skill_mappings AS skill_mappings, c.top_code AS top_code
+       c.top_code AS top_code
 ORDER BY c.code
 
 Question: "Career and technical education courses"
@@ -91,7 +90,7 @@ MATCH (c:Course {college: $college})
 WHERE c.is_cte = true
 RETURN c.name AS name, c.code AS code, c.description AS description,
        c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,
-       c.skill_mappings AS skill_mappings, c.top_code AS top_code
+       c.top_code AS top_code
 ORDER BY c.code
 
 Question: "CTE courses in our health department"
@@ -99,32 +98,7 @@ MATCH (c:Course {college: $college})
 WHERE c.is_cte = true AND toLower(c.department) CONTAINS 'health'
 RETURN c.name AS name, c.code AS code, c.description AS description,
        c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,
-       c.skill_mappings AS skill_mappings, c.top_code AS top_code
-ORDER BY c.code
-
-Question: "Courses transferable to UC"
-MATCH (c:Course {college: $college})
-WHERE c.transfer_status IN ['CSU/UC', 'UC Only']
-RETURN c.name AS name, c.code AS code, c.description AS description,
-       c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,
-       c.skill_mappings AS skill_mappings, c.top_code AS top_code
-ORDER BY c.code
-
-Question: "CTE courses that develop welding skills"
-MATCH (c:Course {college: $college})-[:DEVELOPS]->(sk:Skill)
-WHERE c.is_cte = true AND toLower(sk.name) CONTAINS 'welding'
-WITH DISTINCT c
-RETURN c.name AS name, c.code AS code, c.description AS description,
-       c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,
-       c.skill_mappings AS skill_mappings, c.top_code AS top_code
-ORDER BY c.code
-
-Question: "Courses with at least 4 units"
-MATCH (c:Course {college: $college})
-WHERE c.units >= 4
-RETURN c.name AS name, c.code AS code, c.description AS description,
-       c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,
-       c.skill_mappings AS skill_mappings, c.top_code AS top_code
+       c.top_code AS top_code
 ORDER BY c.code
 
 Question: "Manufacturing department courses with no prerequisites"
@@ -133,7 +107,7 @@ WHERE toLower(c.department) CONTAINS 'manufactur'
   AND (c.prerequisites IS NULL OR c.prerequisites = '')
 RETURN c.name AS name, c.code AS code, c.description AS description,
        c.learning_outcomes AS learning_outcomes, c.course_objectives AS course_objectives,
-       c.skill_mappings AS skill_mappings, c.top_code AS top_code
+       c.top_code AS top_code
 ORDER BY c.code
 
 Respond with a JSON object containing two fields:
@@ -181,7 +155,6 @@ async def run_course_query(question: str, college: str) -> tuple[list[CourseSumm
             description=r.get("description", ""),
             learning_outcomes=r.get("learning_outcomes") or [],
             course_objectives=r.get("course_objectives") or [],
-            skill_mappings=r.get("skill_mappings") or [],
             top_code=r.get("top_code") or None,
         )
         for r in records

@@ -53,8 +53,8 @@ class TestOccupationsRender:
         spec = occupations.OccupationSpec()
         cypher, params = occupations.render_cypher(spec)
         assert "MATCH (col:College {name: $college})" in cypher
-        assert "DEMANDS" in cypher and "REQUIRES_SKILL" in cypher and "DEVELOPS" in cypher
-        assert "ORDER BY matching_skills DESC" in cypher
+        assert "DEMANDS" in cypher and "PREPARES_FOR" in cypher
+        assert "ORDER BY aligned_course_count DESC" in cypher
         assert params == {}
         _assert_params_consistent(cypher, params)
 
@@ -84,9 +84,9 @@ class TestOccupationsRender:
 
 
 class TestOccupationsInterpret:
-    def test_default_spec_returns_skill_alignment_phrasing(self):
+    def test_default_spec_returns_alignment_phrasing(self):
         text = occupations.interpret_spec(occupations.OccupationSpec())
-        assert "skill alignment" in text.lower()
+        assert "alignment" in text.lower() or "crosswalk" in text.lower()
 
     def test_title_filter_surfaces_in_interpretation(self):
         spec = occupations.OccupationSpec(title_contains=["soft"])
@@ -107,8 +107,8 @@ class TestEmployersRender:
         spec = employers.EmployerSpec()
         cypher, params = employers.render_cypher(spec)
         assert "IN_MARKET" in cypher and "HIRES_FOR" in cypher
-        assert "REQUIRES_SKILL" in cypher and "DEVELOPS" in cypher
-        assert "ORDER BY matching_skills DESC" in cypher
+        assert "PREPARES_FOR" in cypher
+        assert "ORDER BY aligned_course_count DESC" in cypher
         assert params == {}
 
     def test_swp_priority_only_renders_intersection_check(self):
@@ -128,7 +128,7 @@ class TestEmployersRender:
 class TestEmployersInterpret:
     def test_default_spec_phrasing(self):
         text = employers.interpret_spec(employers.EmployerSpec())
-        assert "skill alignment" in text.lower()
+        assert "alignment" in text.lower() or "crosswalk" in text.lower()
 
     def test_swp_phrasing(self):
         text = employers.interpret_spec(employers.EmployerSpec(swp_priority_only=True))
@@ -143,20 +143,17 @@ class TestCoursesRender:
         spec = courses.CourseSpec()
         cypher, params = courses.render_cypher(spec)
         assert "MATCH (c:Course {college: $college})" in cypher
-        assert "DEVELOPS" not in cypher  # no skill filter -> no join
+        assert "DEVELOPS" not in cypher  # Skill abstraction is gone
+        assert "PREPARES_FOR" not in cypher  # not the default join either
         assert "ORDER BY c.code" in cypher
         assert params == {}
 
-    def test_skill_filter_triggers_develops_join(self):
-        spec = courses.CourseSpec(skill_contains=["weld"])
-        cypher, _ = courses.render_cypher(spec)
-        assert "(c:Course {college: $college})-[:DEVELOPS]->(sk:Skill)" in cypher
-
-    def test_topic_contains_searches_three_properties(self):
+    def test_topic_contains_searches_two_properties(self):
         spec = courses.CourseSpec(topic_contains=["weld"])
         cypher, params = courses.render_cypher(spec)
-        # Topic search OR's across skill, department, and course name
-        assert "sk.name" in cypher and "c.department" in cypher and "c.name" in cypher
+        # Topic search OR's across department and course name (no skill index any more)
+        assert "c.department" in cypher and "c.name" in cypher
+        assert "sk.name" not in cypher
         assert params["topic_q_0"] == "weld"
 
     def test_units_numeric_filter(self):
@@ -195,7 +192,7 @@ class TestStudentsRender:
         spec = students.StudentSpec()
         cypher, _ = students.render_cypher(spec)
         assert "MATCH (s:Student)-[:ENROLLED_IN]->(:Course {college: $college})" in cypher
-        assert "HAS_SKILL" not in cypher
+        assert "HAS_SKILL" not in cypher  # Skill abstraction is gone
 
     def test_primary_focus_single_substring(self):
         spec = students.StudentSpec(primary_focus_contains=["construction technology"])
@@ -209,18 +206,6 @@ class TestStudentsRender:
         cypher, params = students.render_cypher(spec)
         assert " OR " in cypher
         assert params["pf_q_0"] == "health"
-
-    def test_skill_filter_any_uses_or(self):
-        spec = students.StudentSpec(skill_contains=["program", "design"])
-        cypher, _ = students.render_cypher(spec)
-        # "any" mode -> single MATCH with OR
-        assert "MATCH (s:Student)-[:HAS_SKILL]->(sk:Skill)" in cypher
-        assert " OR " in cypher
-
-    def test_skill_filter_all_uses_separate_matches(self):
-        spec = students.StudentSpec(skill_contains=["program", "design"], skill_filter_mode="all")
-        cypher, _ = students.render_cypher(spec)
-        assert cypher.count("MATCH (s)-[:HAS_SKILL]->") == 2
 
     def test_course_anchored_traversal_when_course_filter_set(self):
         spec = students.StudentSpec(course_code_contains="MATH 1A")

@@ -11,16 +11,15 @@ What Kallipolis is, what it does today, and what it is aiming toward. Operates a
 
 **Foundational elements:**
 - [Overview](./product/overview.md) — Mission, what the product does today, the thesis, and the gap it fills
-- [The Ontology](./product/the-ontology.md) — The two arenas: four units of analysis grounded in institutional authority, and two units of action formulated from them
+- [The Ontology](./product/the-ontology.md) — The two arenas: four units of analysis grounded in institutional authority, and one unit of action formulated from them
 - [The Atlas](./product/the-atlas.md) — The navigational layer at two scales: the College Atlas surfaces a single institution through six iconic entry points, the State Atlas surfaces the entire California community college system for cross-institution navigation
-- [The Unified Skills Taxonomy](./product/the-skills-taxonomy.md) — The controlled vocabulary through which the ontology semantically reasons about relationships between the four foundational forms; the semantic center of the ontology's analytical capability
 
-Each form in the ontology receives its own dedicated treatment, describing the product experience in relation to that form.
+The ontology bridges curriculum to labor market through the institutional TOP-CIP-SOC crosswalk maintained by the California Community Colleges Chancellor's Office and BLS/NCES — a single externally-authored mapping, not an internally-derived skills index. Each form in the ontology receives its own dedicated treatment, describing the product experience in relation to that form.
 
 **Units of analysis:**
 - [Students](./product/students.md) — Represented people whose competency portrait makes the supply side of workforce development empirical
-- [Courses](./product/courses.md) — The institution's commitment to teach, interpreted through a unified taxonomy to produce the skills that bridge curriculum to labor market
-- [Occupations](./product/occupations.md) — Categories of regional labor market demand, grounded in Centers of Excellence research, with skill gap identification as the unique improvement vector
+- [Courses](./product/courses.md) — The institution's commitment to teach, tagged with the institutional TOP code that bridges each course to the occupations its program prepares students for
+- [Occupations](./product/occupations.md) — Categories of regional labor market demand, grounded in Centers of Excellence research, with curriculum gap identification as the unique improvement vector
 - [Employers](./product/employers.md) — Real organizations grounded in EDD records, restrictively scoped to actors the workforce development ecosystem can coordinate with, the operational target the other three foundationals direct work toward
 
 **Unit of action:**
@@ -39,7 +38,7 @@ Documents how the workforce development worldview manifests in the context of Ca
 How the system is built. The technical choices are downstream of the product framing rather than upstream of it. Same audience as the product and domain sections: written for mental model first, with the option of becoming engineering-onboarding material later.
 
 - [System Overview](./architecture/system-overview.md) — Three apps, one graph, the AI surface, the streaming and authentication patterns
-- [Graph Model](./architecture/graph-model.md) — The Neo4j schema: eight node types, eleven relationships, and the bridge logic that connects curriculum to labor market through skills
+- [Graph Model](./architecture/graph-model.md) — The Neo4j schema: seven node types, nine relationships, and the institutional `PREPARES_FOR` edge that bridges curriculum to labor market through the TOP-CIP-SOC crosswalk
 - [Institutional Deference Evolution](./architecture/institutional-deference-evolution.md) — The architectural commitment to ground every analytical claim in a named institutional source, and the C-series of commits that progressively realized it
 - [AI Integration](./architecture/ai-integration.md) — Where Claude and Gemini are called, what each model is asked to do, and the constraints that make the integration principled and improvable
 - [Deployment](./architecture/deployment.md) — The preview deployment shape: static atlas on Cloudflare Pages, backend + Neo4j on a GCP VM behind Caddy, secrets in Secret Manager, nightly backups to Cloud Storage
@@ -51,7 +50,7 @@ How institutional data enters the graph. The mechanism by which the ontology com
 - [Student Generation](./pipeline/student-generation.md) — The synthetic methodology, the DataMart calibration, and what the generated population is and is not
 - [Employer Generation](./pipeline/employer-generation.md) — EDD scraping at the COE region unit, sector scoping, Gemini cleanup, merge semantics
 - [SWP Sector NAICS Composition](./pipeline/swp-sector-naics.md) — The authoritative mapping from NAICS 4-digit codes to Strong Workforce priority sectors, with the full inclusion/exclusion trail
-- [Occupation Generation](./pipeline/occupation-generation.md) — COE demand feed, institutional CTE scope filter (PCAH TOP→CIP→SOC), skill-assignment retry loop, and the `education_level`-on-node design choice
+- [Occupation Generation](./pipeline/occupation-generation.md) — COE demand feed, institutional CTE scope filter (PCAH TOP→CIP→SOC), and the `education_level`-on-node design choice
 
 ## Conventions
 

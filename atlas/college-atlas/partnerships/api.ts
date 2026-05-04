@@ -11,13 +11,15 @@ export type ApiPartnershipOpportunity = {
   description: string | null;
   // Employer homepage URL — surfaced in the partnership picker.
   website: string | null;
+  // alignment_score = number of this college's courses with PREPARES_FOR
+  // edges to any of the employer's hires SOCs (institutional crosswalk
+  // depth). gap_count = number of hires SOCs the college has zero
+  // institutionally-aligned curriculum for.
   alignment_score: number;
   gap_count: number;
   pipeline_size: number | null;
   top_occupation: string | null;
   top_wage: number | null;
-  aligned_skills: string[];
-  gap_skills: string[];
 };
 
 export type ApiPartnershipLandscape = {
@@ -51,7 +53,6 @@ export type ApiCourseEvidence = {
   name: string;
   description: string;
   learning_outcomes: string[];
-  skills: string[];
   // The TOP6 code this course is institutionally tagged with in the
   // Master Course File. Used by the atlas to render per-course
   // institutional attribution alongside the course code.
@@ -61,7 +62,6 @@ export type ApiCourseEvidence = {
 export type ApiDepartmentEvidence = {
   department: string;
   courses: ApiCourseEvidence[];
-  aligned_skills: string[];
   // The TOP6 codes this department's PREPARES_FOR-aligned courses
   // route through (typically one TOP6 per department; some span
   // several). Drives the per-department source attribution caption.
@@ -83,14 +83,11 @@ export type ApiStudentSummaryEvidence = {
   primary_focus: string;
   courses_completed: number;
   gpa: number;
-  matching_skills: number;
   enrollments: ApiStudentEnrollmentEvidence[];
-  relevant_skills: string[];
 };
 
 export type ApiStudentEvidence = {
   total_in_program: number;
-  with_all_core_skills: number;
   total_in_aligned_departments?: number;
   top_students: ApiStudentSummaryEvidence[];
 };
@@ -135,7 +132,6 @@ export type ApiTargetedProposal = {
   sector: string | null;
   selected_occupation: string;
   selected_soc_code: string | null;
-  core_skills: string[];
   regions: string[];
   // Four narrative sections
   executive_summary: string;
@@ -158,30 +154,19 @@ export async function getPartnershipLandscape(college: string): Promise<ApiPartn
 }
 
 // Occupation card in the picker: title, SOC, regional demand fields, plus
-// the institutional curriculum-alignment depth so the coordinator can see
-// at-a-glance how strongly the college's curriculum is aligned with each
-// role's institutional pathway.
-//
-// Per the institutional-deference architectural commitment, the picker
-// is filtered server-side to occupations with `aligned_course_count > 0`
-// — coordinators only see SOCs where the Chancellor's Office TOP-CIP
-// and BLS/NCES CIP-SOC crosswalks establish a real pathway to this
-// college's curriculum. The skills-coverage fields
-// (`core_skills_developed_count`, etc.) remain as characterization
-// data but no longer drive the surface.
+// the institutional curriculum-alignment depth (course count + department
+// count). The picker is filtered server-side to occupations with
+// `aligned_course_count > 0` — coordinators only see SOCs where the
+// Chancellor's Office TOP-CIP-SOC crosswalk establishes a real pathway
+// to this college's curriculum.
 export type ApiEmployerOccupation = {
   title: string;
   soc_code: string;
   annual_wage: number | null;
   annual_openings: number | null;
   growth_rate: number | null;
-  core_skills_developed_count: number;
-  core_skills_total_count: number;
-  course_count: number;
-  // Count of this college's courses with PREPARES_FOR edges to this SOC.
-  // The institutional alignment depth — this drives the picker's sort
-  // and is visible in the UI alongside the demand fields.
-  aligned_course_count?: number;
+  aligned_course_count: number;
+  aligned_department_count: number;
 };
 
 export type ApiEmployerOccupationsResponse = {

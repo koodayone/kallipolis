@@ -26,18 +26,14 @@ Coverage:
     trimmed strings.
   - _to_raw_course strips the trailing catalog-year stamp from descriptions
     and coerces all fields to strings with default empties.
-  - _taxonomy_hash is stable, short, and changes with the taxonomy.
 """
 
 from __future__ import annotations
-
-from unittest.mock import patch
 
 from courses.scrape_pdf import (
     COURSE_CODE_PATTERN,
     _deduplicate_courses,
     _ensure_str_list,
-    _taxonomy_hash,
     _to_raw_course,
     normalize_course_code,
 )
@@ -187,17 +183,3 @@ class TestToRawCourse:
         assert raw.url == ""
 
 
-class TestTaxonomyHash:
-    def test_returns_twelve_character_hex_digest(self):
-        h = _taxonomy_hash()
-        assert len(h) == 12
-        int(h, 16)  # must be valid hex
-
-    def test_is_stable_across_calls(self):
-        assert _taxonomy_hash() == _taxonomy_hash()
-
-    def test_changes_when_taxonomy_changes(self):
-        baseline = _taxonomy_hash()
-        with patch("courses.scrape_pdf.UNIFIED_TAXONOMY", frozenset({"Skill A", "Skill B"})):
-            changed = _taxonomy_hash()
-        assert baseline != changed

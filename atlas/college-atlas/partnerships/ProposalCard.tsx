@@ -309,7 +309,6 @@ export default function ProposalCard({ proposal, brandColor, collegeId, onSaved,
                 detail={occ.soc_code ? occDetails[occ.soc_code] ?? null : null}
                 isLoading={occ.soc_code ? loadingOccs.has(occ.soc_code) : false}
                 onExpand={occ.soc_code ? () => handleOccExpand(occ.soc_code!) : undefined}
-                filterSkills={proposal.core_skills}
                 regionNames={proposal.regions}
                 collegeName={collegeId}
               />
@@ -342,7 +341,7 @@ export default function ProposalCard({ proposal, brandColor, collegeId, onSaved,
                 schoolName={collegeId}
                 courses={dept.courses.map(c => ({
                   code: c.code, name: c.name, description: c.description,
-                  learningOutcomes: c.learning_outcomes, skillMappings: c.skills,
+                  learningOutcomes: c.learning_outcomes,
                   topCode: c.top_code ?? null,
                 }))}
               />
@@ -392,7 +391,6 @@ export default function ProposalCard({ proposal, brandColor, collegeId, onSaved,
                     primaryFocus: s.primary_focus,
                     coursesCompleted: s.courses_completed,
                     gpa: s.gpa,
-                    matchingSkills: s.matching_skills,
                   }}
                   index={i}
                   brandColor={brandColor}
@@ -402,7 +400,7 @@ export default function ProposalCard({ proposal, brandColor, collegeId, onSaved,
                       grade: e.grade, term: e.term,
                       department: "", status: "",
                     })),
-                    skills: s.relevant_skills || [],
+                    occupationAlignment: [],
                   }}
                 />
               ))}

@@ -18,13 +18,15 @@ class PartnershipOpportunity(BaseModel):
     # Employer homepage URL — surfaced in the partnership picker view as the
     # "Employer Home Page" link, matching the employers view's affordance.
     website: Optional[str] = None
+    # alignment_score is the count of this college's courses with a
+    # PREPARES_FOR edge to any of the employer's hires SOCs. gap_count
+    # is the count of hires SOCs the college has zero institutionally-
+    # aligned curriculum for.
     alignment_score: int
     gap_count: int
     pipeline_size: Optional[int] = None
     top_occupation: Optional[str] = None
     top_wage: Optional[int] = None
-    aligned_skills: list[str]
-    gap_skills: list[str]
 
 
 class PartnershipLandscape(BaseModel):
@@ -72,7 +74,6 @@ class CourseEvidence(BaseModel):
     name: str
     description: str = ""
     learning_outcomes: list[str] = []
-    skills: list[str] = []
     # The TOP6 code this course is institutionally tagged with in the
     # Master Course File. Surfacing it on each course evidence row makes
     # the empirical chain visible at the finest grain (Course →
@@ -83,7 +84,6 @@ class CourseEvidence(BaseModel):
 class DepartmentEvidence(BaseModel):
     department: str
     courses: list[CourseEvidence]
-    aligned_skills: list[str]
     # The set of TOP6 codes this department's PREPARES_FOR-aligned
     # courses route through. Most departments concentrate around a
     # single TOP6 (the apprenticeship pattern at Foothill, e.g.,
@@ -107,14 +107,11 @@ class StudentSummaryEvidence(BaseModel):
     primary_focus: str
     courses_completed: int
     gpa: float
-    matching_skills: int
     enrollments: list[StudentEnrollmentEvidence] = []
-    relevant_skills: list[str] = []
 
 
 class StudentEvidence(BaseModel):
     total_in_program: int
-    with_all_core_skills: int
     total_in_aligned_departments: int = 0
     top_students: list[StudentSummaryEvidence]
 
@@ -197,10 +194,9 @@ class NarrativeProposal(BaseModel):
     sector: Optional[str] = None
     selected_occupation: str
     selected_soc_code: Optional[str] = None
-    core_skills: list[str] = []
     regions: list[str] = []
 
-    # Four narrative sections (LLM-generated)
+    # Four narrative sections (deterministic templates over graph data)
     executive_summary: str
     occupational_demand: str
     curriculum_alignment: str
