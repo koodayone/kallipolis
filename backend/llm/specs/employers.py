@@ -24,16 +24,14 @@ class EmployerSpec(BaseModel):
 _BASE_TRAVERSAL = (
     "MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)"
     "<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)\n"
-    "OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)\n"
-    "OPTIONAL MATCH (dept:Department)-[:CONTAINS]->(course)"
+    "OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)"
 )
 
 _RETURN_CLAUSE = (
     "RETURN emp.name AS name, emp.sector AS sector,\n"
     "       emp.description AS description, emp.website AS website,\n"
     "       collect(DISTINCT occ.title) AS occupations,\n"
-    "       count(DISTINCT course) AS aligned_course_count,\n"
-    "       count(DISTINCT dept) AS aligned_department_count"
+    "       count(DISTINCT course) AS aligned_course_count"
 )
 
 

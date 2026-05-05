@@ -32,7 +32,6 @@ RULES:
 1. Every query MUST use this full traversal as the base MATCH to compute institutional curriculum alignment between the employer and the college:
      MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)
      OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)
-     OPTIONAL MATCH (dept:Department)-[:CONTAINS]->(course)
    Add WHERE clauses after these MATCHes to filter further.
 2. ONLY use MATCH, OPTIONAL MATCH, WITH, WHERE, RETURN, ORDER BY, LIMIT, UNWIND, count, collect, DISTINCT, AND, OR, NOT, IN, CONTAINS, STARTS WITH, ENDS WITH, size, toLower, toUpper.
 3. NEVER use CREATE, DELETE, SET, MERGE, REMOVE, DROP, DETACH, CALL, FOREACH, LOAD, or any write/mutation clause.
@@ -40,8 +39,7 @@ RULES:
      RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
             emp.website AS website,
             collect(DISTINCT occ.title) AS occupations,
-            count(DISTINCT course) AS aligned_course_count,
-            count(DISTINCT dept) AS aligned_department_count
+            count(DISTINCT course) AS aligned_course_count
      ORDER BY aligned_course_count DESC
 5. Do NOT add a LIMIT clause unless the user asks for a specific number.
 6. If the question cannot be answered with the schema above, respond with: {"cypher": "CANNOT_TRANSLATE", "interpretation": ""}
@@ -56,48 +54,40 @@ EXAMPLES:
 Question: "Healthcare employers"
 MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)
 OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)
-OPTIONAL MATCH (dept:Department)-[:CONTAINS]->(course)
 WHERE toLower(emp.sector) CONTAINS 'health'
 RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
        emp.website AS website,
        collect(DISTINCT occ.title) AS occupations,
-       count(DISTINCT course) AS aligned_course_count,
-       count(DISTINCT dept) AS aligned_department_count
+       count(DISTINCT course) AS aligned_course_count
 ORDER BY aligned_course_count DESC
 
 Question: "Technology companies"
 MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)
 OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)
-OPTIONAL MATCH (dept:Department)-[:CONTAINS]->(course)
 WHERE toLower(emp.sector) CONTAINS 'technology'
 RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
        emp.website AS website,
        collect(DISTINCT occ.title) AS occupations,
-       count(DISTINCT course) AS aligned_course_count,
-       count(DISTINCT dept) AS aligned_department_count
+       count(DISTINCT course) AS aligned_course_count
 ORDER BY aligned_course_count DESC
 
 Question: "Employers with the most curriculum alignment"
 MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)
 OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)
-OPTIONAL MATCH (dept:Department)-[:CONTAINS]->(course)
 RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
        emp.website AS website,
        collect(DISTINCT occ.title) AS occupations,
-       count(DISTINCT course) AS aligned_course_count,
-       count(DISTINCT dept) AS aligned_department_count
+       count(DISTINCT course) AS aligned_course_count
 ORDER BY aligned_course_count DESC
 
 Question: "Employers in regional priority sectors"
 MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)
 OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)
-OPTIONAL MATCH (dept:Department)-[:CONTAINS]->(course)
 WHERE ANY(s IN emp.swp_sectors WHERE s IN r.priority_sectors)
 RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
        emp.website AS website,
        collect(DISTINCT occ.title) AS occupations,
-       count(DISTINCT course) AS aligned_course_count,
-       count(DISTINCT dept) AS aligned_department_count
+       count(DISTINCT course) AS aligned_course_count
 ORDER BY aligned_course_count DESC
 
 Respond with a JSON object containing two fields:
@@ -144,7 +134,6 @@ async def run_employer_query(question: str, college: str) -> tuple[list[Employer
             website=r.get("website"),
             occupations=r.get("occupations", []),
             aligned_course_count=r.get("aligned_course_count", 0),
-            aligned_department_count=r.get("aligned_department_count", 0),
         )
         for r in records
     ]

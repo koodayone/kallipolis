@@ -11,7 +11,6 @@ class EmployerMatch(BaseModel):
     website: Optional[str] = None
     occupations: list[str]
     aligned_course_count: int = 0
-    aligned_department_count: int = 0
 
 
 class EmployerDetail(BaseModel):

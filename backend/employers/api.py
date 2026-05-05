@@ -18,30 +18,40 @@ def get_employers(college: str):
     """Returns employers in the college's region ranked by curriculum
     alignment via the institutional TOP-SOC crosswalk.
 
-    Alignment counts are scoped to the employer's hires occupations: for
-    each employer, count the courses (and departments) at this college
-    that PREPARES_FOR an occupation the employer hires for. Each row also
-    carries the intersection of its swp_sectors with the college's region
-    priority sectors (priority_sectors_matched), computed live so
-    COE_REGION_PRIORITY_SECTORS edits stay visible without a graph reload.
+    Reads the precomputed `PARTNERSHIP_ALIGNMENT` edge (materialized at
+    pipeline reload by `partnerships/compute.py`). Each edge carries
+    the employer's occupation set, the count of courses at this college
+    that PREPARES_FOR any of those occupations, and the count of
+    distinct departments containing those courses.
+
+    The request-time computation this replaces was a College → Region →
+    Employer → Occupation × PREPARES_FOR × CONTAINS traversal that
+    materialized a multi-million-row cartesian per request — measured
+    at 26s for Foothill (Bay region, 311 employers) and timeouts
+    (>300s) for LA/OC/SD-region colleges (350+ employers) on the
+    e2-medium prod VM.
+
+    `priority_sectors_matched` stays a request-time intersection
+    rather than a stored property: COE_REGION_PRIORITY_SECTORS strings
+    can be edited without a graph reload, and a query-time computation
+    keeps the surface correct without re-materializing the edges.
+
+    No ORDER BY: EmployersView re-sorts the response alphabetically
+    by name on the client (see EmployersView.tsx). A backend sort
+    would be wasted compute.
     """
     driver = get_driver()
     try:
         with driver.session() as session:
             result = session.run("""
-                MATCH (c:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)
-                OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)
-                OPTIONAL MATCH (dept:Department)-[:CONTAINS]->(course)
-                WITH c, r, emp,
-                     collect(DISTINCT occ.title) AS occupations,
-                     count(DISTINCT course) AS aligned_course_count,
-                     count(DISTINCT dept) AS aligned_department_count
+                MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region),
+                      (col)-[pa:PARTNERSHIP_ALIGNMENT]->(emp:Employer)
                 RETURN emp.name AS name, emp.sector AS sector,
                        COALESCE(emp.swp_sectors, []) AS swp_sectors,
                        [s IN COALESCE(emp.swp_sectors, []) WHERE s IN COALESCE(r.priority_sectors, [])] AS priority_sectors_matched,
                        emp.description AS description, emp.website AS website,
-                       occupations, aligned_course_count, aligned_department_count
-                ORDER BY aligned_course_count DESC, name
+                       pa.occupations AS occupations,
+                       pa.aligned_course_count AS aligned_course_count
             """, college=college)
             records = result.data()
 
@@ -55,7 +65,6 @@ def get_employers(college: str):
                 website=r["website"],
                 occupations=r["occupations"],
                 aligned_course_count=r["aligned_course_count"],
-                aligned_department_count=r["aligned_department_count"],
             )
             for r in records
         ]
