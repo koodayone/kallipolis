@@ -106,24 +106,15 @@ The checks, in order:
    via a small Python one-liner through the Bash tool. If the driver cannot connect, stop
    and tell the operator that Neo4j needs to be running before the skill can proceed.
 
-6. **Department mapping overlay exists for this college.** Verify
-   `backend/courses/department_mapping/overlays/{key}.json` exists. This file assigns
-   human-readable names (e.g., "Dance", "Statistics") to each course-code prefix that
-   appears in the college's catalog. Without it, Stage 1's Stage 2.5 canonicalization step
-   will fail loudly rather than propagate fragmented Gemini department strings into the
-   graph.
-
-   If the file does not exist, run the seeder to propose one, then stop and tell the
-   operator what to review:
-   ```
-   cd backend && python3 ../tools/courses-audit/seed_department_mapping.py --college {key}
-   ```
-   This scans the catalog PDF for `Subject Name (PREFIX)` section headers and writes
-   `overlays/{key}.proposed.json`. The operator must review (especially any `WARNING`
-   lines about prefixes not found in PDF headers — those require manual entries), fill in
-   gaps, rename to `overlays/{key}.json`, and commit. Then re-invoke this skill.
-
-   On re-runs where the file exists, this check is a fast no-op.
+6. **TOP4 manual table is present.** Verify
+   `backend/ontology/data/top4_names.json` exists. This is the parsed
+   Chancellor's Office Taxonomy of Programs Manual (TOP4 → name) that
+   the loader uses to derive `Course.department` from each course's
+   TOP6 code. It ships in-repo and is rarely updated, so this check is
+   normally a fast no-op; flag it only if the file is missing or
+   appears truncated (it should have ~223 TOP4 entries and ~24 TOP2
+   entries). No per-college work is needed — the table is shared
+   across all colleges.
 
 Only after all six checks pass, proceed to Stage 1.
 
@@ -135,13 +126,19 @@ the prior Gemini extraction; otherwise run a fresh extraction against the PDF ca
 - **Fresh**: `cd backend && python3 -m pipeline.run --college {key}`
 - **Cached**: `cd backend && python3 -m pipeline.run --college {key} --from-cache`
 
-Between skill derivation and Neo4j load, the pipeline runs Stage 2.5 to canonicalize the
-`department` field on every course using the prefix→name mapping in
-`backend/courses/department_mapping/` (the overlay was verified in Stage 0 preflight). The
-log should show `Stage 2.5 complete: rewrote department on N/M course(s); K unique
-department names after canonicalization`. If Stage 2.5 raises `UnknownPrefixError`, the
-catalog contains a course-code prefix that isn't in the mapping — stop, re-run the seeder,
-and ask the operator to add the missing entry.
+After extraction, the loader writes Course nodes with `top_code` from
+the per-college MCF lookup AND `department` derived from `top_code`
+via the TOP4 manual table (`backend/ontology/data/top4_names.json`).
+There is no separate canonicalization step and no per-college overlay —
+the program name is sourced from one institutional document and is
+uniform across colleges. A deterministic extraction filter
+(`backend/courses/extraction_filter.py`) runs at scrape time AND on
+the cached load path; it drops degree listings, page fragments, C-IDs,
+non-CCC prefixes, and Greek-letter visual-duplicate codes before they
+become Course nodes. The log line to watch for is
+`Extraction filter dropped N/M cached course row(s)` — high drop
+counts on a cached re-run can indicate the cache pre-dates the
+filter and is being cleaned up.
 
 Run the command via the `Bash` tool in the background (wall time can be ~17 min fresh).
 When the command completes, confirm the log contains `Stage 3 complete: LoadStats(...)`
