@@ -120,28 +120,36 @@ def _gather_student_pipeline(
         }, []
 
     with driver.session() as session:
-        # Primary headline count: distinct students with at least one
-        # ENROLLED_IN edge to any course in any aligned department.
-        broad = session.run("""
-            MATCH (dept:Department)-[:CONTAINS]->(c:Course {college: $college})
-                  <-[:ENROLLED_IN]-(s:Student)
-            WHERE dept.name IN $departments
-            RETURN count(DISTINCT s) AS total_in_aligned_departments
-        """, college=college, departments=departments).single()
-
-        # Secondary count: students whose primary_focus is one of the
-        # aligned departments AND who have at least one enrollment at
-        # this college.
-        stats = session.run("""
-            MATCH (st:Student)
-            WHERE st.primary_focus IN $departments
-              AND EXISTS { (st)-[:ENROLLED_IN]->(:Course {college: $college}) }
-            RETURN count(st) AS total_in_program
-        """, college=college, departments=departments).single()
+        # Headline counts — both metrics are precomputed onto the
+        # OCCUPATION_PIPELINE edge by partnerships.compute. Two queries
+        # that previously dominated /partnerships/opportunity/{soc}
+        # (broad student count: 42ms p50; primary-focus-gated
+        # `total_in_program` count: 2.2s p50, 7.4s p95) collapse into
+        # one edge read.
+        #
+        # student_count                — total_in_aligned_departments
+        # student_count_in_program     — total_in_program
+        #
+        # The OCCUPATION_PIPELINE edge is sparse: it exists only where
+        # the college has at least one PREPARES_FOR-aligned course for
+        # the SOC. Callers reach this gather only after
+        # _gather_aligned_curriculum returned non-empty `departments`,
+        # which mirrors that same gating, so the edge should always
+        # exist. If it doesn't (e.g., after a code change but before
+        # `python -m partnerships.compute --all` runs on prod), both
+        # counts default to 0 — the report renders the section but
+        # without meaningful student data, surfacing the staleness
+        # rather than crashing.
+        edge = session.run("""
+            MATCH (col:College {name: $college})-[op:OCCUPATION_PIPELINE]
+                  ->(:Occupation {soc_code: $soc_code})
+            RETURN op.student_count AS total_in_aligned_departments,
+                   op.student_count_in_program AS total_in_program
+        """, college=college, soc_code=soc_code).single()
 
         student_stats = {
-            "total_in_program": stats["total_in_program"] if stats else 0,
-            "total_in_aligned_departments": broad["total_in_aligned_departments"] if broad else 0,
+            "total_in_program": (edge["total_in_program"] if edge else 0) or 0,
+            "total_in_aligned_departments": (edge["total_in_aligned_departments"] if edge else 0) or 0,
         }
 
         # Top-10 exemplars from the aligned-department student pool, ranked
