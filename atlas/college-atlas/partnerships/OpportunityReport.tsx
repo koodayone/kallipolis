@@ -867,7 +867,7 @@ function PartnerEmployerRow({
             color: brandColor, opacity: 0.85,
             whiteSpace: "nowrap", minWidth: "110px", textAlign: "right",
           }}>
-            {emp.industry_share != null ? `${emp.industry_share.toFixed(1)}% of industry` : "—"}
+            {emp.industry_share != null ? `${emp.industry_share.toFixed(2)}% of industry` : "—"}
           </span>
         </span>
       </button>

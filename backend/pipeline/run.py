@@ -57,7 +57,17 @@ def _load_colleges() -> dict:
 
     for college_id, info in data.get("colleges", {}).items():
         if not info.get("catalog_pdf_url"):
-            continue  # Skip colleges with no PDF
+            # Some catalogs are online-only (no public PDF URL). If we
+            # already have a cached PDF on disk for this college, allow
+            # the entry through with the cache path as the URL — the
+            # downloader checks the cache first and never fetches when
+            # the cache is present.
+            cached_pdf = (
+                Path(__file__).resolve().parent / "cache" / f"{college_id}_catalog.pdf"
+            )
+            if not cached_pdf.exists():
+                continue  # No URL and no cached PDF — skip
+            info = dict(info, catalog_pdf_url=str(cached_pdf))
         # Prefer per-college region override so the registry can hold
         # colleges from multiple regions without the top-level region
         # field silently mislabeling them.
