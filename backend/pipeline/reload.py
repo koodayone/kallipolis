@@ -21,7 +21,10 @@ from students.generate import generate_and_load_students
 from occupations.load import load_industry
 from employers.load import load_employers, cleanup_stale_employers
 from ontology.schema import get_driver, close_driver, init_schema
-from partnerships.compute import materialize_partnership_alignment
+from partnerships.compute import (
+    materialize_partnership_alignment,
+    materialize_occupation_pipeline,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -209,6 +212,7 @@ def verify(driver) -> None:
             ("PREPARES_FOR", "MATCH ()-[p:PREPARES_FOR]->() RETURN count(p) AS cnt"),
             ("HIRES_FOR", "MATCH ()-[h:HIRES_FOR]->() RETURN count(h) AS cnt"),
             ("PARTNERSHIP_ALIGNMENT", "MATCH ()-[p:PARTNERSHIP_ALIGNMENT]->() RETURN count(p) AS cnt"),
+            ("OCCUPATION_PIPELINE", "MATCH ()-[p:OCCUPATION_PIPELINE]->() RETURN count(p) AS cnt"),
         ]
         for label, query in queries:
             result = s.run(query)
@@ -254,6 +258,14 @@ def reload_region(region_key: str) -> None:
                 logger.error(
                     f"materialize_partnership_alignment failed for {college_name}: {e}; "
                     f"/employers/ will return empty until rerun"
+                )
+            try:
+                materialize_occupation_pipeline(driver, college_name)
+            except Exception as e:
+                logger.error(
+                    f"materialize_occupation_pipeline failed for {college_name}: {e}; "
+                    f"/partnerships/sectors will fall back to live computation "
+                    f"(slow) until rerun"
                 )
 
         # Step 7: Verify
