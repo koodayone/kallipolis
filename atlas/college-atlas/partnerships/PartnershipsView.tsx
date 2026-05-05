@@ -325,8 +325,18 @@ function OccupationOpportunityRow({
   hrefForSoc: (socCode: string) => string;
 }) {
   const [isOpen, setIsOpen] = useState(false);
+  // Per-row triage signal: regional demand minus this college's TOP-
+  // program supply. Negative values indicate the college's pipeline
+  // already outpaces demand for the SOC, so the row dims to recede in
+  // scan order without disappearing.
+  const gap = occ.gap;
+  const hasGap = gap !== null && gap !== undefined;
+  const isOversupplied = hasGap && gap < 0;
+  const gapColor = !hasGap
+    ? "rgba(255,255,255,0.4)"
+    : gap >= 0 ? "#4ade80" : "#f87171";
   return (
-    <div>
+    <div style={{ opacity: isOversupplied ? 0.55 : 1 }}>
       <button
         onClick={() => setIsOpen((o) => !o)}
         style={{
@@ -358,6 +368,26 @@ function OccupationOpportunityRow({
             SOC {occ.soc_code}
           </span>
         </span>
+        {hasGap && (
+          <span
+            title={
+              gap >= 0
+                ? "Regional demand exceeds this college's projected pipeline by this many positions per year"
+                : "This college's projected pipeline exceeds regional demand for this occupation"
+            }
+            style={{
+              fontFamily: MONO, fontSize: "11px", fontWeight: 500,
+              letterSpacing: "0.04em",
+              color: gapColor,
+              fontVariantNumeric: "tabular-nums",
+              whiteSpace: "nowrap",
+              flexShrink: 0,
+              marginLeft: "8px",
+            }}
+          >
+            {gap >= 0 ? "+" : ""}{gap.toLocaleString()} / yr
+          </span>
+        )}
         <a
           href={hrefForSoc(occ.soc_code)}
           target="_blank"

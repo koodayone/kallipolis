@@ -105,6 +105,11 @@ export type ApiOpportunityRow = {
   course_count: number;
   student_count: number;
   employer_count: number;
+  // Regional annual openings minus the college's TOP-program projected
+  // supply. Drives the per-row gap chip and the within-sector sort.
+  // Negative values indicate the college's pipeline outpaces regional
+  // demand for the SOC.
+  gap: number | null;
 };
 
 export type ApiSectorEntry = {

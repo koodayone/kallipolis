@@ -24,7 +24,6 @@ from __future__ import annotations
 
 import logging
 from collections import defaultdict
-from functools import lru_cache
 
 from ontology.crosswalks import (
     _load_cip_to_soc,
@@ -110,24 +109,6 @@ def _sector_socs(sector: str) -> set[str]:
     return socs
 
 
-@lru_cache(maxsize=1)
-def _soc_to_top6_map() -> dict[str, frozenset[str]]:
-    """Reverse of TOP6 -> CIP -> SOC: SOC -> {TOP6, ...}.
-
-    Used by build_sector_index's strict filter to look up the related
-    TOP codes for a SOC and check whether the COE publishes any supply
-    estimate for them at the college. Cached for the process lifetime.
-    """
-    top_cip = _load_top_to_cip()
-    cip_soc = _load_cip_to_soc()
-    out: dict[str, set[str]] = {}
-    for top6, cips in top_cip.items():
-        for cip in cips:
-            for soc in cip_soc.get(cip, set()):
-                out.setdefault(soc, set()).add(top6)
-    return {soc: frozenset(tops) for soc, tops in out.items()}
-
-
 # ── Sector index ────────────────────────────────────────────────────────
 
 
@@ -163,15 +144,29 @@ def build_sector_index(college: str) -> SectorIndex:
                    d.growth_rate AS growth_rate
         """, college=college).data()
 
-        # Per-occupation course count at this college.
+        # Per-occupation course count at this college, plus the distinct
+        # TOP6 codes those courses are MCF-tagged with. The TOP set drives
+        # the per-row `gap` calculation downstream — using the
+        # course-derived TOP set (rather than the global TOP→CIP→SOC
+        # crosswalk) keeps the index gap consistent with the per-SOC
+        # report's "Workforce Gap" figure, which sums supply only over
+        # the TOPs reachable from the college's PREPARES_FOR-tagged
+        # courses. The Course.top_code property is set at ingest from
+        # ontology.mcf_lookup.lookup_top6_per_course — same canonical
+        # source `_build_swp_evidence` uses.
         course_counts = session.run("""
             MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)
                   -[:DEMANDS]->(occ:Occupation)
             OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)
             RETURN occ.soc_code AS soc_code,
-                   count(DISTINCT course) AS course_count
+                   count(DISTINCT course) AS course_count,
+                   collect(DISTINCT course.top_code) AS top_codes
         """, college=college).data()
         course_count_by_soc = {r["soc_code"]: r["course_count"] for r in course_counts}
+        top_codes_by_soc: dict[str, set[str]] = {
+            r["soc_code"]: {t for t in (r["top_codes"] or []) if t}
+            for r in course_counts
+        }
 
         # Per-occupation employer count in the college's region.
         employer_counts = session.run("""
@@ -202,39 +197,42 @@ def build_sector_index(college: str) -> SectorIndex:
         """, college=college).data()
         student_count_by_soc = {r["soc_code"]: r["student_count"] for r in student_counts}
 
-    # Per-SOC supply availability — does the COE publish a projected
-    # program-completion estimate for any TOP6 the SOC is reachable from
-    # at this college? Mirrors the LMI section's `supply_estimates.length
-    # > 0` discriminator. Computed once per SOC since the supply CSV is
-    # immutable per request.
-    soc_to_top6 = _soc_to_top6_map()
+    # Per-SOC supply estimates — projected program-completions the COE
+    # publishes for the TOP6 codes the college's PREPARES_FOR-tagged
+    # courses route through. Keyed off the course-derived TOP set rather
+    # than the global TOP→CIP→SOC crosswalk so the index gap matches the
+    # per-SOC report's "Workforce Gap" figure exactly. (The crosswalk
+    # would over-attribute supply by including TOPs the college offers
+    # in unrelated programs whose courses are not tagged for SOC prep.)
     has_supply_by_soc: dict[str, bool] = {}
+    total_supply_by_soc: dict[str, float] = {}
     for r in regional_socs:
         soc = r["soc_code"]
         if soc in has_supply_by_soc:
             continue
-        related_tops = soc_to_top6.get(soc, frozenset())
+        related_tops = top_codes_by_soc.get(soc, set())
         if not related_tops:
             has_supply_by_soc[soc] = False
+            total_supply_by_soc[soc] = 0.0
             continue
-        # get_coe_supply takes a set of TOP6 codes and returns published
-        # estimates; we only care whether any exist.
-        estimates, _ = get_coe_supply(set(related_tops), college)
+        estimates, total_supply = get_coe_supply(related_tops, college)
         has_supply_by_soc[soc] = len(estimates) > 0
+        total_supply_by_soc[soc] = total_supply
 
     # Build per-soc OpportunityRow once; same row instance can be reused
     # under multiple sectors.
     #
-    # Preview-mode strict filter: surface only SOCs with all four
-    # institutional signals present (course_count, student_count,
-    # employer_count, has_supply). The Partnerships node is a synthesis
-    # surface for actioning partnerships — a row missing any signal
-    # would render a partially-empty Opportunity Report (the LMI's
-    # honest-absence branches kick in for missing supply, the curriculum
-    # table is empty if course_count=0, etc.). In preview/pilot context
-    # the value proposition is strongest when every clickable row
-    # produces a fully-populated report. Surfacing partial-signal rows
-    # belongs in a separate gap-analysis domain space.
+    # Strict filter: surface only SOCs with all five institutional
+    # signals present (course_count, student_count, employer_count,
+    # has_supply, positive workforce gap). The first four ensure every
+    # clickable row produces a fully-populated Opportunity Report
+    # (no honest-absence branches in the LMI / curriculum / employer
+    # sections). The gap > 0 requirement is the SWP fundability cut:
+    # Strong Workforce RFAs require demonstrated regional unmet demand
+    # as the proposal anchor, so a row where the college's projected
+    # supply already meets or exceeds regional demand can't lead to a
+    # fundable partnership. Surfacing those rows would frame
+    # non-fundable opportunities as fundable ones.
     rows_by_soc: dict[str, OpportunityRow] = {}
     for r in regional_socs:
         soc = r["soc_code"]
@@ -246,19 +244,29 @@ def build_sector_index(college: str) -> SectorIndex:
         has_supply = has_supply_by_soc.get(soc, False)
         if course_count == 0 or student_count == 0 or employer_count == 0 or not has_supply:
             continue
+        annual_openings = r["annual_openings"]
+        total_supply = total_supply_by_soc.get(soc, 0.0)
+        gap = int(round((annual_openings or 0) - total_supply))
+        if gap <= 0:
+            continue
         rows_by_soc[soc] = OpportunityRow(
             soc_code=soc,
             title=r["title"] or soc,
-            annual_openings=r["annual_openings"],
+            annual_openings=annual_openings,
             annual_wage=r["annual_wage"],
             growth_rate=r.get("growth_rate"),
             course_count=course_count,
             student_count=student_count,
             employer_count=employer_count,
+            gap=gap,
         )
 
     # Build sector entries. Sectors are alphabetical; occupations within
-    # each are alphabetical by title (case-insensitive).
+    # each are sorted by gap descending (largest unmet regional pipeline
+    # first) with title as the deterministic tiebreaker. Negative-gap
+    # SOCs (college supply outpaces regional demand) sort to the bottom
+    # of the sector — surfaced rather than hidden, so the user can see
+    # them as low-pressure opportunities.
     sectors: list[SectorEntry] = []
     for sector in sorted(sector_to_top6.keys()):
         sector_soc_set = _sector_socs(sector)
@@ -268,7 +276,7 @@ def build_sector_index(college: str) -> SectorIndex:
         ]
         if not occupations:
             continue
-        occupations.sort(key=lambda o: o.title.lower())
+        occupations.sort(key=lambda o: (-(o.gap or 0), o.title.lower()))
         sectors.append(SectorEntry(
             sector=sector,
             is_priority=sector in priority_sectors,

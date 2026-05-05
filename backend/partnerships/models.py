@@ -154,7 +154,9 @@ class OpportunityRow(BaseModel):
     the user needing to drill in: count metrics signal alignment depth
     at this college (students, courses, employers); demand metrics
     signal regional market context (annual wage, annual openings, 5-yr
-    growth rate from the COE projections).
+    growth rate from the COE projections); `gap` is the per-row
+    triage signal — regional annual openings minus the college's TOP-
+    program supply.
     """
     soc_code: str
     title: str
@@ -164,6 +166,7 @@ class OpportunityRow(BaseModel):
     course_count: int = 0
     student_count: int = 0
     employer_count: int = 0
+    gap: Optional[int] = None
 
 
 class SectorEntry(BaseModel):
