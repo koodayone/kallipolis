@@ -218,7 +218,7 @@ const EmployerRow = memo(function EmployerRow({ emp, i, school, expandedNames, e
           {emp.name}
         </span>
         <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.5)", textAlign: "right", fontVariantNumeric: "tabular-nums" }}>
-          {emp.occupations.length.toLocaleString()}
+          {emp.roles_count.toLocaleString()}
         </span>
         <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.45)", textAlign: "right", fontVariantNumeric: "tabular-nums" }}>
           {emp.aligned_course_count.toLocaleString()}

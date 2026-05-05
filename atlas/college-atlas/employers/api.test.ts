@@ -52,7 +52,7 @@ describe("employers api client", () => {
           sector: "Healthcare",
           description: "Integrated managed care consortium",
           website: "https://about.kaiserpermanente.org",
-          occupations: ["Registered Nurses", "Medical Assistants"],
+          roles_count: 2,
           aligned_course_count: 14,
         },
       ];
