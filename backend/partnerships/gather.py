@@ -120,36 +120,39 @@ def _gather_student_pipeline(
         }, []
 
     with driver.session() as session:
-        # Headline counts — both metrics are precomputed onto the
-        # OCCUPATION_PIPELINE edge by partnerships.compute. Two queries
-        # that previously dominated /partnerships/opportunity/{soc}
-        # (broad student count: 42ms p50; primary-focus-gated
-        # `total_in_program` count: 2.2s p50, 7.4s p95) collapse into
-        # one edge read.
-        #
-        # student_count                — total_in_aligned_departments
-        # student_count_in_program     — total_in_program
-        #
-        # The OCCUPATION_PIPELINE edge is sparse: it exists only where
-        # the college has at least one PREPARES_FOR-aligned course for
-        # the SOC. Callers reach this gather only after
-        # _gather_aligned_curriculum returned non-empty `departments`,
-        # which mirrors that same gating, so the edge should always
-        # exist. If it doesn't (e.g., after a code change but before
-        # `python -m partnerships.compute --all` runs on prod), both
-        # counts default to 0 — the report renders the section but
-        # without meaningful student data, surfacing the staleness
-        # rather than crashing.
-        edge = session.run("""
+        # Broad headline (`total_in_aligned_departments`) reads off the
+        # OCCUPATION_PIPELINE edge — it's precomputed by
+        # partnerships.compute as `student_count` with the same
+        # semantics. Saves ~42ms p50; mostly a consistency win (one
+        # source of truth for the aggregate).
+        broad = session.run("""
             MATCH (col:College {name: $college})-[op:OCCUPATION_PIPELINE]
                   ->(:Occupation {soc_code: $soc_code})
-            RETURN op.student_count AS total_in_aligned_departments,
-                   op.student_count_in_program AS total_in_program
+            RETURN op.student_count AS total_in_aligned_departments
         """, college=college, soc_code=soc_code).single()
 
+        # Secondary count (`total_in_program`) stays a live query.
+        # Attempted to precompute it as `student_count_in_program` on
+        # the edge, but the natural compute query (
+        #   OPTIONAL MATCH (Student) WHERE primary_focus IN aligned_dept_names
+        # ) per-row OOM'd Neo4j on the e2-medium because the planner
+        # couldn't use the student_primary_focus index when the IN-list
+        # varies per occ. The live query at request time CAN use the
+        # index (the IN-list is bound to a single $departments param)
+        # and runs at 2.2s p50 / 7.4s p95 — slow but stable. Revisit
+        # by either looping per-soc in the compute (small targeted
+        # queries that each hit the index) or batching by unique
+        # dept-set hash. Out of scope for this pass.
+        stats = session.run("""
+            MATCH (st:Student)
+            WHERE st.primary_focus IN $departments
+              AND EXISTS { (st)-[:ENROLLED_IN]->(:Course {college: $college}) }
+            RETURN count(st) AS total_in_program
+        """, college=college, departments=departments).single()
+
         student_stats = {
-            "total_in_program": (edge["total_in_program"] if edge else 0) or 0,
-            "total_in_aligned_departments": (edge["total_in_aligned_departments"] if edge else 0) or 0,
+            "total_in_program": stats["total_in_program"] if stats else 0,
+            "total_in_aligned_departments": (broad["total_in_aligned_departments"] if broad else 0) or 0,
         }
 
         # Top-10 exemplars from the aligned-department student pool, ranked
