@@ -18,14 +18,18 @@ O(employers in region) — sub-100ms regardless of region size.
 
 Edge properties:
   roles_count             count of distinct occupations the employer
-                          hires for in this college's region. Drives
-                          the "Roles" column in the EmployersView list.
-                          Stored as an int rather than the full title
-                          list because the list shape is only ever
-                          accessed via `.length` in the list view; the
-                          full per-occupation detail (titles, wages,
-                          alignment groups) lives on the detail
-                          endpoint where it's actually rendered.
+                          hires for in this college's region — the full
+                          BLS OEWS NAICS-4 occupation set. Reported for
+                          completeness; not currently rendered.
+  aligned_roles_count     count of those occupations the college
+                          institutionally connects to via the TOP-CIP-SOC
+                          crosswalk (i.e. the college has at least one
+                          course that PREPARES_FOR the occupation). This
+                          is what the "Roles" column in EmployersView
+                          renders so it stays consistent with the
+                          "Employer Occupations (N)" header in the
+                          expanded panel, which already filters by
+                          aligned_course_count > 0.
   aligned_course_count    number of distinct courses at this college
                           that PREPARES_FOR any of the employer's
                           hire occupations. The institutional alignment
@@ -118,12 +122,24 @@ def materialize_partnership_alignment(driver: Driver, college: str) -> dict:
             """
             MATCH (c:College {name: $college})-[:IN_MARKET]->(r:Region)
                   <-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)
-            OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)
-            WITH c, emp,
-                 count(DISTINCT occ) AS roles_count,
+            WITH c, emp, collect(DISTINCT occ) AS occs
+            // aligned_roles_count: of the employer's HIRES_FOR roles, how many
+            // does this college institutionally connect to via the TOP-CIP-SOC
+            // crosswalk? This is the count the EmployersView ROLES column
+            // displays — same filter the expanded panel header uses. Without
+            // it, the column shows the full HIRES_FOR count (which post-C13
+            // is the BLS OEWS NAICS-4 occupation set, often 100+ entries) and
+            // is inconsistent with the panel header that filters by
+            // aligned_course_count > 0.
+            WITH c, emp, occs,
+                 size([o IN occs WHERE EXISTS { (course:Course {college: c.name})-[:PREPARES_FOR]->(o) }]) AS aligned_roles_count
+            OPTIONAL MATCH (course:Course {college: c.name})-[:PREPARES_FOR]->(o:Occupation)
+            WHERE o IN occs
+            WITH c, emp, occs, aligned_roles_count,
                  count(DISTINCT course) AS aligned_course_count
             CREATE (c)-[pa:PARTNERSHIP_ALIGNMENT {
-                roles_count: roles_count,
+                roles_count: size(occs),
+                aligned_roles_count: aligned_roles_count,
                 aligned_course_count: aligned_course_count
             }]->(emp)
             RETURN count(pa) AS n,

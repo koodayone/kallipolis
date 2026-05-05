@@ -53,6 +53,7 @@ def get_employers(college: str):
                        [s IN COALESCE(emp.swp_sectors, []) WHERE s IN COALESCE(r.priority_sectors, [])] AS priority_sectors_matched,
                        emp.description AS description, emp.website AS website,
                        pa.roles_count AS roles_count,
+                       pa.aligned_roles_count AS aligned_roles_count,
                        pa.aligned_course_count AS aligned_course_count
             """, college=college)
             records = result.data()
@@ -66,6 +67,7 @@ def get_employers(college: str):
                 description=r["description"],
                 website=r["website"],
                 roles_count=r["roles_count"],
+                aligned_roles_count=r["aligned_roles_count"],
                 aligned_course_count=r["aligned_course_count"],
             )
             for r in records
