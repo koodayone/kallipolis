@@ -164,17 +164,24 @@ function ReportBody({
         }}>
           {report.soc_title}
         </h1>
+        {/* Per-child alpha rather than a parent opacity:0.55 — a parent
+            opacity composites the whole subtree, so child colors with
+            their own alpha get multiplied down (a 0.55 child under a
+            0.55 parent renders at ~0.30 effective). Setting alpha on
+            each span keeps the relative brightnesses intentional. */}
         <div style={{
           fontFamily: MONO, fontSize: "11px", fontWeight: 500,
-          letterSpacing: "0.05em", color: brandColor, opacity: 0.55,
+          letterSpacing: "0.05em",
           fontVariantNumeric: "tabular-nums", marginTop: "12px",
           textTransform: "uppercase",
         }}>
-          SOC {report.soc_code}
+          <span style={{ color: brandColor, opacity: 0.55 }}>
+            SOC {report.soc_code}
+          </span>
           {report.sector && (
             <>
               <span style={{ color: "rgba(255,255,255,0.25)", margin: "0 8px" }}>·</span>
-              <span style={{ color: "rgba(255,255,255,0.55)", letterSpacing: "0.08em" }}>
+              <span style={{ color: "rgba(255,255,255,0.80)", letterSpacing: "0.08em" }}>
                 {report.sector}
               </span>
             </>
@@ -183,7 +190,7 @@ function ReportBody({
             <>
               <span style={{ color: "rgba(255,255,255,0.25)", margin: "0 8px" }}>·</span>
               <span style={{
-                color: brandColor, opacity: 1,
+                color: brandColor,
                 letterSpacing: "0.1em", fontWeight: 600,
               }}>
                 Regional Priority Sector
