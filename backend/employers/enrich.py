@@ -162,17 +162,6 @@ def _get_gemini_client():
     return genai.Client(api_key=api_key)
 
 
-def _enrich_model() -> str:
-    """Model for enrich-stage Gemini calls.
-
-    Override via GEMINI_ENRICH_MODEL — useful for routing around 2.5-flash
-    capacity windows (e.g., GEMINI_ENRICH_MODEL=gemini-2.5-flash-lite has
-    a separate capacity pool and is ~4-5x cheaper, with comparable quality
-    on these structured-extraction tasks per scripts/gs_calibration.py).
-    """
-    return os.environ.get("GEMINI_ENRICH_MODEL", "gemini-2.5-flash")
-
-
 # ── Tool selection ───────────────────────────────────────────────────────
 
 def _pick_tools(types_module, search_only: bool) -> list:
@@ -544,14 +533,13 @@ async def _probe_call(client, types, employer: dict, label: str, search_only: bo
     config = types.GenerateContentConfig(
         tools=tools,
         temperature=0.0,
-        thinking_config=types.ThinkingConfig(thinking_budget=0),
     )
 
     response = None
     for attempt in (1, 2):
         try:
             response = await client.aio.models.generate_content(
-                model=_enrich_model(),
+                model="gemini-2.5-flash",
                 contents=prompt,
                 config=config,
             )
@@ -664,14 +652,13 @@ async def _research_url_async(
     config = types.GenerateContentConfig(
         tools=[types.Tool(google_search=types.GoogleSearch())],
         temperature=0.0,
-        thinking_config=types.ThinkingConfig(thinking_budget=0),
     )
 
     response = None
     for attempt in (1, 2):
         try:
             response = await client.aio.models.generate_content(
-                model=_enrich_model(),
+                model="gemini-2.5-flash",
                 contents=prompt,
                 config=config,
             )
@@ -966,16 +953,12 @@ async def _gemini_text_call(
     the parsed dict or None on transient/parse failure. Single-tool config
     (no multi-tool) — caller decides whether url_context or search."""
     tools = _pick_tools(types, search_only=search_only)
-    config = types.GenerateContentConfig(
-        tools=tools,
-        temperature=0.0,
-        thinking_config=types.ThinkingConfig(thinking_budget=0),
-    )
+    config = types.GenerateContentConfig(tools=tools, temperature=0.0)
     response = None
     for attempt in (1, 2):
         try:
             response = await client.aio.models.generate_content(
-                model=_enrich_model(),
+                model="gemini-2.5-flash",
                 contents=prompt,
                 config=config,
             )
@@ -1102,13 +1085,12 @@ async def _classify_async(client, types, employer, description, sectors, label) 
         response_mime_type="application/json",
         response_schema=schema,
         temperature=0.0,
-        thinking_config=types.ThinkingConfig(thinking_budget=0),
     )
     response = None
     for attempt in (1, 2):
         try:
             response = await client.aio.models.generate_content(
-                model=_enrich_model(),
+                model="gemini-2.5-flash",
                 contents=prompt,
                 config=config,
             )

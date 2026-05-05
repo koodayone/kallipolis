@@ -225,7 +225,6 @@ def _gemini_search_call(
                 contents=prompt,
                 config=types.GenerateContentConfig(
                     tools=[types.Tool(google_search=types.GoogleSearch())],
-                    thinking_config=types.ThinkingConfig(thinking_budget=0),
                 ),
             )
 
