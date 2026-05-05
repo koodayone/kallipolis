@@ -32,7 +32,6 @@ function OpportunityRouteInner() {
     >
       <OpportunityReport
         school={config}
-        collegeId={collegeId}
         socCode={socCode}
         onBack={() => router.push(`/${collegeId}/partnerships`)}
       />
