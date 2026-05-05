@@ -157,19 +157,29 @@ def _gather_student_pipeline(
         # The expansion shows the student's full aligned-department course
         # history — not just SOC-prep courses — so the body is always
         # informative even when the SOC-prep count is zero.
-        result = session.run("""
-            MATCH (dept:Department)-[:CONTAINS]->(:Course {college: $college})
-                  <-[:ENROLLED_IN]-(st:Student)
-            WHERE dept.name IN $departments
-            WITH DISTINCT st
-
-            // Count SOC-aligned course enrollments for ranking.
+        # Two-pass top-10 to keep the dominant Cypher off the
+        # 2,664-student × ~12-enrollments expansion that scales with the
+        # college's eligibility-set size. Pass 1 anchors on the
+        # Student.primary_focus index — the same set the original
+        # query's outer ORDER BY focus_match=1 always ranks first — so
+        # whenever ≥10 focus-match students exist (the common case at
+        # Oxnard / Foothill / similar), one query produces the
+        # canonical top-10. Pass 2 only fires when the focus-match pool
+        # is too small to fill 10 slots (rare niche-department case),
+        # falling back to the broader eligibility set with the
+        # already-returned uuids excluded so the result preserves the
+        # original semantics exactly.
+        focus_query = """
+            MATCH (st:Student) WHERE st.primary_focus IN $departments
+            WITH st
+            WHERE EXISTS {
+                MATCH (st)-[:ENROLLED_IN]->(:Course {college: $college})
+                      <-[:CONTAINS]-(d:Department)
+                WHERE d.name IN $departments
+            }
             OPTIONAL MATCH (st)-[:ENROLLED_IN]->(prep:Course {college: $college})
                   -[:PREPARES_FOR]->(:Occupation {soc_code: $soc_code})
             WITH st, count(DISTINCT prep) AS soc_aligned_count
-
-            // Collect the student's full aligned-department enrollment list
-            // for the expansion body.
             OPTIONAL MATCH (st)-[e:ENROLLED_IN]->(c:Course {college: $college})
                   <-[:CONTAINS]-(d:Department)
             WHERE d.name IN $departments
@@ -179,17 +189,56 @@ def _gather_student_pipeline(
                      grade: e.grade, term: e.term
                  } END) AS raw_enrollments
             WITH st, soc_aligned_count,
-                 [x IN raw_enrollments WHERE x IS NOT NULL] AS enrollments,
-                 CASE WHEN st.primary_focus IN $departments
-                      THEN 1 ELSE 0 END AS focus_match
-            ORDER BY focus_match DESC, soc_aligned_count DESC,
+                 [x IN raw_enrollments WHERE x IS NOT NULL] AS enrollments
+            ORDER BY soc_aligned_count DESC,
                      size(enrollments) DESC, COALESCE(st.gpa, 0.0) DESC
             LIMIT 10
             RETURN st.uuid AS uuid, st.primary_focus AS primary_focus,
                    size(enrollments) AS courses_completed,
                    COALESCE(st.gpa, 0.0) AS gpa,
                    enrollments
-        """, college=college, departments=departments, soc_code=soc_code).data()
+        """
+        result = session.run(
+            focus_query,
+            college=college, departments=departments, soc_code=soc_code,
+        ).data()
+
+        if len(result) < 10:
+            fallback_query = """
+                MATCH (dept:Department)-[:CONTAINS]->(:Course {college: $college})
+                      <-[:ENROLLED_IN]-(st:Student)
+                WHERE dept.name IN $departments
+                  AND NOT (st.primary_focus IN $departments)
+                  AND NOT (st.uuid IN $exclude_uuids)
+                WITH DISTINCT st
+                OPTIONAL MATCH (st)-[:ENROLLED_IN]->(prep:Course {college: $college})
+                      -[:PREPARES_FOR]->(:Occupation {soc_code: $soc_code})
+                WITH st, count(DISTINCT prep) AS soc_aligned_count
+                OPTIONAL MATCH (st)-[e:ENROLLED_IN]->(c:Course {college: $college})
+                      <-[:CONTAINS]-(d:Department)
+                WHERE d.name IN $departments
+                WITH st, soc_aligned_count,
+                     collect(DISTINCT CASE WHEN c IS NOT NULL THEN {
+                         code: c.code, name: c.name,
+                         grade: e.grade, term: e.term
+                     } END) AS raw_enrollments
+                WITH st, soc_aligned_count,
+                     [x IN raw_enrollments WHERE x IS NOT NULL] AS enrollments
+                ORDER BY soc_aligned_count DESC,
+                         size(enrollments) DESC, COALESCE(st.gpa, 0.0) DESC
+                LIMIT $limit
+                RETURN st.uuid AS uuid, st.primary_focus AS primary_focus,
+                       size(enrollments) AS courses_completed,
+                       COALESCE(st.gpa, 0.0) AS gpa,
+                       enrollments
+            """
+            fallback = session.run(
+                fallback_query,
+                college=college, departments=departments, soc_code=soc_code,
+                exclude_uuids=[r["uuid"] for r in result],
+                limit=10 - len(result),
+            ).data()
+            result = result + fallback
 
     top_students = [
         {
