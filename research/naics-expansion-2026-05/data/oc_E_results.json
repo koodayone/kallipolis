@@ -1,0 +1,988 @@
+{
+  "1133": {
+    "count": 0,
+    "sample": []
+  },
+  "2121": {
+    "count": 0,
+    "sample": []
+  },
+  "2122": {
+    "count": 0,
+    "sample": []
+  },
+  "2123": {
+    "count": 1,
+    "sample": [
+      "Gramar Stone Ctr Inc"
+    ]
+  },
+  "2131": {
+    "count": 1,
+    "sample": [
+      "BC2 Environmental"
+    ]
+  },
+  "2372": {
+    "count": 7,
+    "sample": [
+      "C J Segerstrom & Sons LLC",
+      "Craig Realty Group",
+      "CREDE",
+      "Olson Co",
+      "Red Mountain Group",
+      "Suncal",
+      "Warmington Group of Co"
+    ]
+  },
+  "3112": {
+    "count": 1,
+    "sample": [
+      "Quaker Oats Co"
+    ]
+  },
+  "3113": {
+    "count": 1,
+    "sample": [
+      "Oc Sugaring"
+    ]
+  },
+  "3122": {
+    "count": 0,
+    "sample": []
+  },
+  "3132": {
+    "count": 0,
+    "sample": []
+  },
+  "3133": {
+    "count": 4,
+    "sample": [
+      "Axiom Materials",
+      "Dae Shin USA Inc",
+      "Prima-Tex Industries",
+      "Venus Group Inc"
+    ]
+  },
+  "3141": {
+    "count": 1,
+    "sample": [
+      "Shaw Industries Inc"
+    ]
+  },
+  "3149": {
+    "count": 1,
+    "sample": [
+      "Guardian Parachute"
+    ]
+  },
+  "3151": {
+    "count": 0,
+    "sample": []
+  },
+  "3152": {
+    "count": 4,
+    "sample": [
+      "7 Diamonds Clothing",
+      "Boardriders Inc",
+      "Customfab USA",
+      "Pacific Athletic Wear"
+    ]
+  },
+  "3159": {
+    "count": 7,
+    "sample": [
+      "Diamond Glove Indl",
+      "Independent Trading Co",
+      "Lydc One LLC",
+      "Manhattan Beachwear Inc",
+      "Raj Swim",
+      "Tiny Turnip LLC",
+      "Tyr Sport Inc"
+    ]
+  },
+  "3161": {
+    "count": 0,
+    "sample": []
+  },
+  "3162": {
+    "count": 1,
+    "sample": [
+      "Asics America Corp"
+    ]
+  },
+  "3221": {
+    "count": 5,
+    "sample": [
+      "Blue Sky",
+      "International Paper",
+      "International Paper Co",
+      "International Paper Co",
+      "International Paper Co"
+    ]
+  },
+  "3222": {
+    "count": 9,
+    "sample": [
+      "Amcor",
+      "Bunzl Distribution",
+      "Durabag Co",
+      "Express Packaging",
+      "Hollinger Metal Edge Inc",
+      "Labeltronix LLC",
+      "Pacific Quality Packaging Corp",
+      "Ricoh Development of CA Inc"
+    ]
+  },
+  "3270": {
+    "count": 0,
+    "sample": []
+  },
+  "3311": {
+    "count": 1,
+    "sample": [
+      "Custom Stainless"
+    ]
+  },
+  "3312": {
+    "count": 1,
+    "sample": [
+      "3-V Fastener Co Inc"
+    ]
+  },
+  "3313": {
+    "count": 3,
+    "sample": [
+      "Anaheim Extrusion Co",
+      "Universal Alloy Corp",
+      "Universal Molding Co"
+    ]
+  },
+  "3314": {
+    "count": 0,
+    "sample": []
+  },
+  "3315": {
+    "count": 3,
+    "sample": [
+      "Alloy Die Casting",
+      "Dameron Alloy Foundries Inc",
+      "Griswold Industries"
+    ]
+  },
+  "3333": {
+    "count": 8,
+    "sample": [
+      "ACD LLC",
+      "Aquatec Inc",
+      "Autocrib Inc",
+      "JL Wingert Co",
+      "Lambda Research Optic Inc",
+      "Medennium Inc",
+      "Noritsu America Corp",
+      "West Bond Inc"
+    ]
+  },
+  "3336": {
+    "count": 1,
+    "sample": [
+      "Insultech Inc"
+    ]
+  },
+  "3342": {
+    "count": 5,
+    "sample": [
+      "Boeing Co Coml Airlines Spprt",
+      "Coast To Coast Bus Eqpt Inc",
+      "Econolite Group",
+      "Ocean Technology Systems",
+      "Palomar Products Inc"
+    ]
+  },
+  "3343": {
+    "count": 4,
+    "sample": [
+      "Altinex",
+      "Intermed Video Tech Inc",
+      "Sonance",
+      "VIZIO Inc"
+    ]
+  },
+  "3346": {
+    "count": 3,
+    "sample": [
+      "Advantage GPS LLC",
+      "FUJIFILM USA",
+      "Kajabi Inc"
+    ]
+  },
+  "3352": {
+    "count": 2,
+    "sample": [
+      "Dcs-Fisher & Paykel Appl Ltd",
+      "Navien America Inc"
+    ]
+  },
+  "3353": {
+    "count": 3,
+    "sample": [
+      "L3Harris",
+      "Leoch Battery Corp",
+      "Pacific Transformer"
+    ]
+  },
+  "3359": {
+    "count": 8,
+    "sample": [
+      "Continental Optronics Inc",
+      "D-Link Systems Inc",
+      "Eaton Corp",
+      "El-Com Systems Solutions",
+      "Interconnect Solutions Co",
+      "Min-E-Con LLC",
+      "Shaxon Industries Inc",
+      "Technical Cable Concepts Inc"
+    ]
+  },
+  "3362": {
+    "count": 1,
+    "sample": [
+      "Van Mart Inc"
+    ]
+  },
+  "3365": {
+    "count": 0,
+    "sample": []
+  },
+  "3369": {
+    "count": 3,
+    "sample": [
+      "Cobra Engineering",
+      "JNC Air Inc",
+      "Millenworks"
+    ]
+  },
+  "3379": {
+    "count": 0,
+    "sample": []
+  },
+  "3399": {
+    "count": 25,
+    "sample": [
+      "Accelerated Memory Production",
+      "Action Bag & Cover Inc",
+      "AMINCO INTERNATIONAL INC",
+      "Avid Bioservices Inc",
+      "CD Video Mfg Inc",
+      "Coast Sign Inc",
+      "Custom Industries",
+      "De Vries Intl"
+    ]
+  },
+  "4238": {
+    "count": 18,
+    "sample": [
+      "ASAP Semiconductor",
+      "Ccdi Composites Inc",
+      "Cummins Pacific",
+      "Daisy Nail Inc",
+      "General Monitors",
+      "Imperial Sprinkler Supply",
+      "Label-Aire Inc",
+      "O C Lifeguards"
+    ]
+  },
+  "4243": {
+    "count": 3,
+    "sample": [
+      "Becca",
+      "Pleaser USA",
+      "Stussy"
+    ]
+  },
+  "4251": {
+    "count": 11,
+    "sample": [
+      "Ford Motor Co",
+      "Golden State Foods",
+      "Hyundai America Technical Ctr",
+      "Hyundai Motor America",
+      "Lexus Division",
+      "Nasser Co",
+      "News Group",
+      "Refrigeration Supplies Distr"
+    ]
+  },
+  "4412": {
+    "count": 14,
+    "sample": [
+      "Adams Rite Aerospace Inc",
+      "Arrowhead Products",
+      "Aviation Equipment Structures",
+      "D G Performance Specialties",
+      "Encore Aerospace LLC",
+      "Hunting Beach Harley Donson",
+      "Huntington Beach Harley-Dvdsn",
+      "Lightworks Optics"
+    ]
+  },
+  "4413": {
+    "count": 12,
+    "sample": [
+      "AER Technologies Inc",
+      "Allied Wheel Components",
+      "Cal-State Auto Parts Inc",
+      "Carrillo Industries Inc",
+      "Classic Industries",
+      "Jaguar Mission Viejo Parts Ctr",
+      "JE Pistons Inc",
+      "Original Part Group"
+    ]
+  },
+  "4442": {
+    "count": 7,
+    "sample": [
+      "Green Thumb Nursery",
+      "Imperial Sprinkler Supply",
+      "Instant Jungle Intl",
+      "Moon Valley Nurseries",
+      "Roger's Gardens",
+      "Silver Creek Nurseries",
+      "T-Y Nursery"
+    ]
+  },
+  "4453": {
+    "count": 1,
+    "sample": [
+      "Pacific Ranch Market"
+    ]
+  },
+  "4491": {
+    "count": 25,
+    "sample": [
+      "3 Blind Mice Window Coverings",
+      "3 Day Blinds",
+      "3 Day Blinds",
+      "Ambiance Home Collection",
+      "Arcadia",
+      "Cham-Cal Engineering",
+      "Container Store",
+      "Crate & Barrel"
+    ]
+  },
+  "4492": {
+    "count": 24,
+    "sample": [
+      "Allen & Sons Appliance Repair",
+      "Apple Store",
+      "Apple Store",
+      "ATEN Technology Inc",
+      "Autologue Computer Systems",
+      "Avidex",
+      "Best Buy",
+      "Best Buy"
+    ]
+  },
+  "4550": {
+    "count": 0,
+    "sample": []
+  },
+  "4561": {
+    "count": 25,
+    "sample": [
+      "Albertsons Sav-On Pharmacy",
+      "Ameripharma Long Term Care",
+      "Arbonne International LLC",
+      "Bath & Body Works",
+      "CVS Pharmacy",
+      "CVS Pharmacy",
+      "CVS Pharmacy",
+      "Glen Beverly Laboratories"
+    ]
+  },
+  "4571": {
+    "count": 4,
+    "sample": [
+      "76",
+      "Chevron Car Wash",
+      "Laguna Niguel Car Wash",
+      "Newport-Mesa Unified Sch Dist"
+    ]
+  },
+  "4572": {
+    "count": 0,
+    "sample": []
+  },
+  "4581": {
+    "count": 25,
+    "sample": [
+      "A/X Armani Exchange",
+      "Abercrombie & Fitch",
+      "Abercrombie & Fitch",
+      "Abercrombie Kids",
+      "Abercrombie Kids",
+      "Affliction Inc",
+      "Anthropologie",
+      "Ast Sportswear Inc"
+    ]
+  },
+  "4582": {
+    "count": 2,
+    "sample": [
+      "Vans",
+      "Vans Inc"
+    ]
+  },
+  "4583": {
+    "count": 1,
+    "sample": [
+      "Don Roberto Jewelers Inc"
+    ]
+  },
+  "4591": {
+    "count": 14,
+    "sample": [
+      "Build-A-Bear Workshop",
+      "DICK'S Sporting Goods",
+      "DICK'S Sporting Goods",
+      "DICK'S Sporting Goods",
+      "Inx Prints Inc",
+      "Jack's Surf & Sport LLC",
+      "Jack's Surfboards-Huntington",
+      "La Paz Intermediate School"
+    ]
+  },
+  "4592": {
+    "count": 5,
+    "sample": [
+      "Barnes & Noble",
+      "Barnes & Noble",
+      "Barnes & Noble",
+      "Jefferson School of Philosophy",
+      "University CA Irvine-Book Str"
+    ]
+  },
+  "4593": {
+    "count": 1,
+    "sample": [
+      "Visser's Florist & Greenhouses"
+    ]
+  },
+  "4599": {
+    "count": 6,
+    "sample": [
+      "Art Concepts",
+      "Farmacy",
+      "Petsmart",
+      "Seven-Degrees",
+      "Showcase Gallery",
+      "Wyland Worldwide LLC"
+    ]
+  },
+  "4812": {
+    "count": 0,
+    "sample": []
+  },
+  "4821": {
+    "count": 0,
+    "sample": []
+  },
+  "4831": {
+    "count": 0,
+    "sample": []
+  },
+  "4832": {
+    "count": 1,
+    "sample": [
+      "Apl America LLC"
+    ]
+  },
+  "4840": {
+    "count": 0,
+    "sample": []
+  },
+  "4852": {
+    "count": 1,
+    "sample": [
+      "Laguna Beach Transit"
+    ]
+  },
+  "4855": {
+    "count": 3,
+    "sample": [
+      "Anaheim Union High School Dist",
+      "Pacific Coachways Charter Svc",
+      "TCS"
+    ]
+  },
+  "4861": {
+    "count": 0,
+    "sample": []
+  },
+  "4862": {
+    "count": 0,
+    "sample": []
+  },
+  "4869": {
+    "count": 0,
+    "sample": []
+  },
+  "4871": {
+    "count": 0,
+    "sample": []
+  },
+  "4872": {
+    "count": 0,
+    "sample": []
+  },
+  "4879": {
+    "count": 0,
+    "sample": []
+  },
+  "4882": {
+    "count": 5,
+    "sample": [
+      "Advantage Ground Trnsprtn",
+      "Certified Transportation Svc",
+      "First Student Inc",
+      "First Student Inc",
+      "King Drivers Trnsprtn Svc"
+    ]
+  },
+  "4883": {
+    "count": 1,
+    "sample": [
+      "NXGN Data"
+    ]
+  },
+  "4884": {
+    "count": 1,
+    "sample": [
+      "Roadside Telematics Corp"
+    ]
+  },
+  "4885": {
+    "count": 8,
+    "sample": [
+      "ABC Auto Shipping Inc",
+      "Cargo Express Freight Corp",
+      "MDX Logistics",
+      "Motr Transportation Inc",
+      "NGN Logistics Inc",
+      "Primary Freight Svc",
+      "Van Buren Courier & Logistics",
+      "XPO Logistics Inc"
+    ]
+  },
+  "4889": {
+    "count": 0,
+    "sample": []
+  },
+  "4911": {
+    "count": 22,
+    "sample": [
+      "United States Postal Svc",
+      "United States Postal Svc",
+      "United States Postal Svc",
+      "United States Postal Svc",
+      "United States Postal Svc",
+      "United States Postal Svc",
+      "United States Postal Svc",
+      "United States Postal Svc"
+    ]
+  },
+  "4922": {
+    "count": 0,
+    "sample": []
+  },
+  "5131": {
+    "count": 10,
+    "sample": [
+      "California Business Journal",
+      "Creative Teaching Press",
+      "Dana Point Times",
+      "El Aviso Magazine",
+      "Kagan Publishing",
+      "Kelley Blue Book Co Inc",
+      "Orange County Business Journal",
+      "Orange County Register"
+    ]
+  },
+  "5132": {
+    "count": 24,
+    "sample": [
+      "Aatco Platforms Inc",
+      "Arciem LLC",
+      "ATTOM Data Solutions",
+      "AVEVA",
+      "Azarc Io",
+      "Batchmaster Software Inc",
+      "Blytheco",
+      "Branch Startup Studio"
+    ]
+  },
+  "5161": {
+    "count": 5,
+    "sample": [
+      "Cox Communications",
+      "Culture In Sports",
+      "DISH Network",
+      "Huntington Beach Living",
+      "Trinity Broadcasting Network"
+    ]
+  },
+  "5162": {
+    "count": 1,
+    "sample": [
+      "Buddy Group"
+    ]
+  },
+  "5170": {
+    "count": 0,
+    "sample": []
+  },
+  "5192": {
+    "count": 9,
+    "sample": [
+      "Accelerant Software Inc",
+      "Alentus Corp",
+      "Appliederp",
+      "Cloudify Inc",
+      "Data Trace Information Svc LLC",
+      "Informationlogix Inc",
+      "Orange Public Library",
+      "Premium Credit Bureau"
+    ]
+  },
+  "5211": {
+    "count": 0,
+    "sample": []
+  },
+  "5222": {
+    "count": 24,
+    "sample": [
+      "AAA Mortgage Team",
+      "American Advisors Group",
+      "American Home Bank Corp",
+      "Balboa Capital Corp",
+      "Bancorp Capital",
+      "Bluepoint Mortgage Inc",
+      "Commerce Home Mortgage LLC",
+      "Consumer Portfolio Svc Inc"
+    ]
+  },
+  "5230": {
+    "count": 0,
+    "sample": []
+  },
+  "5241": {
+    "count": 8,
+    "sample": [
+      "Best Home & Auto",
+      "Burke Law",
+      "Calchoice",
+      "Cascade Corp",
+      "Humana Inc",
+      "Qwickey",
+      "Safe Guard Health Plans Inc",
+      "Thakkar"
+    ]
+  },
+  "5242": {
+    "count": 25,
+    "sample": [
+      "Alignment Health Care",
+      "Alliant Insurance Svc Inc",
+      "Applied General Agency LLC",
+      "Auto Insurance Specialists LLC",
+      "Bowermaster & Assoc",
+      "Brakke-Schafnitz Ins Brokers",
+      "Brown & Brown Insurance",
+      "Brown W & Assoc Insur Svc"
+    ]
+  },
+  "5251": {
+    "count": 0,
+    "sample": []
+  },
+  "5259": {
+    "count": 3,
+    "sample": [
+      "Donahue Schriber Realty Group",
+      "KBS Capital Advisors LLC",
+      "Smartstop Self Stge REIT Inc"
+    ]
+  },
+  "5310": {
+    "count": 0,
+    "sample": []
+  },
+  "5321": {
+    "count": 2,
+    "sample": [
+      "Mckinney Trailer Rentals",
+      "Penske Truck Rental"
+    ]
+  },
+  "5331": {
+    "count": 0,
+    "sample": []
+  },
+  "5411": {
+    "count": 24,
+    "sample": [
+      "Aleshire & Wynder LLP",
+      "Allen Matkins Leck Gamble",
+      "Ameriestate Legal Plan",
+      "Avrek Law Firm",
+      "BMS",
+      "Brown & Streza LLP",
+      "Bryan Cave Leighton Paisner",
+      "Buchalter"
+    ]
+  },
+  "5419": {
+    "count": 21,
+    "sample": [
+      "Alacarte Images",
+      "American Funds",
+      "ANTECH Diagnostics",
+      "Barrios & Assoc LLC",
+      "Compassion-First Pet Hospitals",
+      "Contemporary Services",
+      "IDEXX Veterinary Svc Inc",
+      "Intellisurvey Inc"
+    ]
+  },
+  "5511": {
+    "count": 3,
+    "sample": [
+      "CBC Bancorp",
+      "Madaluxe Group",
+      "PCB Financial Inc"
+    ]
+  },
+  "5611": {
+    "count": 12,
+    "sample": [
+      "Beachside Nursing Ctr",
+      "Franchise Services Inc",
+      "G & M Oil Co Inc",
+      "Keystone Pacific Property Mgmt",
+      "Lewis Innovative Solutions LLC",
+      "Management Association Inc",
+      "Mesa Management Inc",
+      "Paragon Partners Ltd"
+    ]
+  },
+  "5612": {
+    "count": 3,
+    "sample": [
+      "Dependable Solutions So Cal",
+      "Runascan",
+      "Wolfhouse LLC"
+    ]
+  },
+  "5613": {
+    "count": 12,
+    "sample": [
+      "Aerotek",
+      "American Correctional Sltns",
+      "Cybercoders Inc",
+      "Dawson & Dawson",
+      "Equus Workforce Solutions",
+      "Jwilliams Staffing",
+      "Kimco Staffing Svc",
+      "People Ready"
+    ]
+  },
+  "5614": {
+    "count": 17,
+    "sample": [
+      "Alorica Inc",
+      "Alta Resources",
+      "American Reprographics Inc",
+      "Ansafone Contact Ctr",
+      "ARC Document Solutions",
+      "Bankers Reporting Svc",
+      "Cmre Financial Svc",
+      "Entrepreneur Media Inc"
+    ]
+  },
+  "5615": {
+    "count": 10,
+    "sample": [
+      "AAA",
+      "AAA Automobile Club-Southern",
+      "AAA Insurance",
+      "City Cruises",
+      "Contiki",
+      "JNR Inc",
+      "TICKETS.COM Inc",
+      "Trafalgar Travel"
+    ]
+  },
+  "5619": {
+    "count": 23,
+    "sample": [
+      "Aaron Thomas Co Inc",
+      "Anaheim Convention Ctr",
+      "Azzur of Ca LLC",
+      "Cintas Fire Protctn Svc Anhm",
+      "Corrukraft",
+      "Critton Service",
+      "Dale Cheema Elite Group",
+      "Deco-Pac"
+    ]
+  },
+  "5629": {
+    "count": 3,
+    "sample": [
+      "Lido Property Management",
+      "Nature's Image Inc",
+      "Shapiro & Shapiro"
+    ]
+  },
+  "6239": {
+    "count": 1,
+    "sample": [
+      "Activcare Orange"
+    ]
+  },
+  "7111": {
+    "count": 10,
+    "sample": [
+      "Hill's Family Corp",
+      "Medieval Times Dinner-Trnmnt",
+      "Orange County Fairgrounds",
+      "Sawdust Art & Craft Festival",
+      "Segerstrom Center For the Arts",
+      "Sleepy Giant",
+      "South Coast Repertory Inc",
+      "Spectra Food Svc & Hospitality"
+    ]
+  },
+  "7112": {
+    "count": 1,
+    "sample": [
+      "Los Amigos High School"
+    ]
+  },
+  "7113": {
+    "count": 9,
+    "sample": [
+      "Angel Stadium of Anaheim",
+      "Dance Club D J's",
+      "Freeman",
+      "Freeman Co",
+      "Honda Center",
+      "House of Blues Rstrnt & Bar",
+      "Shop @ Showready",
+      "University-Ca Irvine Anteater"
+    ]
+  },
+  "7114": {
+    "count": 0,
+    "sample": []
+  },
+  "7115": {
+    "count": 5,
+    "sample": [
+      "Audiovisions",
+      "AVI-SPL",
+      "Observatory Oc",
+      "Quilts On the Wall",
+      "Source"
+    ]
+  },
+  "7121": {
+    "count": 11,
+    "sample": [
+      "Bowers Museum-Cultural Art-Ca",
+      "Central Bark Dog Park",
+      "City of Anaheim Park Div",
+      "Discovery Cube",
+      "Lake Forest Parks Dept",
+      "Mission San Juan Capistrano",
+      "Orange City Parks & Recreation",
+      "Parks & Recreation Dept"
+    ]
+  },
+  "7132": {
+    "count": 3,
+    "sample": [
+      "All-In Productions Casino",
+      "Gander Group",
+      "Golden West Casino At Maison"
+    ]
+  },
+  "7213": {
+    "count": 1,
+    "sample": [
+      "University-Ca-Irvine Housing"
+    ]
+  },
+  "8112": {
+    "count": 5,
+    "sample": [
+      "ABM",
+      "All Green Elctro Recycling LLC",
+      "Associate Micro Systems",
+      "Maintech A Div-Volt Delta",
+      "Quest International"
+    ]
+  },
+  "8113": {
+    "count": 6,
+    "sample": [
+      "Aire Rite AC & Refrigeration",
+      "Can-Do Machine Tools LLC",
+      "Miracle Machanical",
+      "Tri-Pacific Heating & Air-Cond",
+      "Vertiv Co",
+      "Vertiv Liebert"
+    ]
+  },
+  "8114": {
+    "count": 5,
+    "sample": [
+      "ACCO Engineered Systems",
+      "Amtrend Corp",
+      "Bend-Tek Inc",
+      "California Bath Restoration",
+      "Duke Service"
+    ]
+  },
+  "8122": {
+    "count": 3,
+    "sample": [
+      "Fairhaven Memorial Park-Mrtry",
+      "Forest Lawn-Cypress",
+      "Westminster Memorial Park"
+    ]
+  },
+  "8129": {
+    "count": 6,
+    "sample": [
+      "Bone Adventure Home",
+      "Parking Concepts Inc",
+      "PMC Services Inc",
+      "Rancho Mission Viejo",
+      "Wags & Wiggles Dog Day Care",
+      "Wags & Wiggles-Tustin"
+    ]
+  },
+  "8131": {
+    "count": 22,
+    "sample": [
+      "Church of Scientology",
+      "Cong Bnai Israel Child Dev Ctr",
+      "E V Free",
+      "Eastside Christian Church",
+      "Faithful Friends",
+      "Friends Church-Yorba Linda",
+      "Jesus Film Project",
+      "Korean American Christian"
+    ]
+  }
+}

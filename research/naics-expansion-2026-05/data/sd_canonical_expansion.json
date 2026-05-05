@@ -1,0 +1,968 @@
+{
+  "canonical_naics_count": 94,
+  "existing_naics_in_list": 47,
+  "missing_naics": 47,
+  "by_sector": {
+    "Energy, Construction and Utilities": {
+      "in_graph_count": 7,
+      "size_gain_count": 118,
+      "naics_gain_count": 0,
+      "size_gain_sample": [
+        {
+          "name": "Helix Water District",
+          "naics": "2213",
+          "naics_title": "Water, Sewage and Other Systems"
+        },
+        {
+          "name": "Ramona Municipal Water Dist",
+          "naics": "2213",
+          "naics_title": "Water, Sewage and Other Systems"
+        },
+        {
+          "name": "Sweetwater Authority Div Shops",
+          "naics": "2213",
+          "naics_title": "Water, Sewage and Other Systems"
+        },
+        {
+          "name": "Valley Center Municipal Water",
+          "naics": "2213",
+          "naics_title": "Water, Sewage and Other Systems"
+        },
+        {
+          "name": "Archibald Inc",
+          "naics": "2361",
+          "naics_title": "Residential Building Construction"
+        },
+        {
+          "name": "Balfour Beatty Construction",
+          "naics": "2361",
+          "naics_title": "Residential Building Construction"
+        },
+        {
+          "name": "Basile Construction Inc",
+          "naics": "2361",
+          "naics_title": "Residential Building Construction"
+        },
+        {
+          "name": "Brady Co",
+          "naics": "2361",
+          "naics_title": "Residential Building Construction"
+        },
+        {
+          "name": "Brandsafway Services",
+          "naics": "2361",
+          "naics_title": "Residential Building Construction"
+        },
+        {
+          "name": "Brehm Communities",
+          "naics": "2361",
+          "naics_title": "Residential Building Construction"
+        },
+        {
+          "name": "Burger Construction",
+          "naics": "2361",
+          "naics_title": "Residential Building Construction"
+        },
+        {
+          "name": "D & S Construction",
+          "naics": "2361",
+          "naics_title": "Residential Building Construction"
+        },
+        {
+          "name": "Davis/Reed Construction Inc",
+          "naics": "2361",
+          "naics_title": "Residential Building Construction"
+        },
+        {
+          "name": "DPR Construction",
+          "naics": "2361",
+          "naics_title": "Residential Building Construction"
+        },
+        {
+          "name": "Emmerson Construction Inc",
+          "naics": "2361",
+          "naics_title": "Residential Building Construction"
+        }
+      ],
+      "naics_gain_sample": []
+    },
+    "Advanced Manufacturing": {
+      "in_graph_count": 10,
+      "size_gain_count": 60,
+      "naics_gain_count": 17,
+      "size_gain_sample": [
+        {
+          "name": "Hunter Custom Mfg",
+          "naics": "3261",
+          "naics_title": "Plastics Product Manufacturing"
+        },
+        {
+          "name": "Plasmetex Industries Inc",
+          "naics": "3261",
+          "naics_title": "Plastics Product Manufacturing"
+        },
+        {
+          "name": "Siga Plastics LLC",
+          "naics": "3261",
+          "naics_title": "Plastics Product Manufacturing"
+        },
+        {
+          "name": "Survival Systems Intl Inc",
+          "naics": "3261",
+          "naics_title": "Plastics Product Manufacturing"
+        },
+        {
+          "name": "Validation Technologies Inc",
+          "naics": "3261",
+          "naics_title": "Plastics Product Manufacturing"
+        },
+        {
+          "name": "C & H Machine & EDM Svc",
+          "naics": "3327",
+          "naics_title": "Machine Shops; Turned Product; and Screw, Nut, and Bolt Manufacturing"
+        },
+        {
+          "name": "Darmark Inc",
+          "naics": "3327",
+          "naics_title": "Machine Shops; Turned Product; and Screw, Nut, and Bolt Manufacturing"
+        },
+        {
+          "name": "Data Line Slivnik Machining",
+          "naics": "3327",
+          "naics_title": "Machine Shops; Turned Product; and Screw, Nut, and Bolt Manufacturing"
+        },
+        {
+          "name": "Dye Precision Inc",
+          "naics": "3327",
+          "naics_title": "Machine Shops; Turned Product; and Screw, Nut, and Bolt Manufacturing"
+        },
+        {
+          "name": "Harcon Precision Metals Inc",
+          "naics": "3327",
+          "naics_title": "Machine Shops; Turned Product; and Screw, Nut, and Bolt Manufacturing"
+        },
+        {
+          "name": "K-Tech Machine",
+          "naics": "3327",
+          "naics_title": "Machine Shops; Turned Product; and Screw, Nut, and Bolt Manufacturing"
+        },
+        {
+          "name": "Pyramid Precision Machine Inc",
+          "naics": "3327",
+          "naics_title": "Machine Shops; Turned Product; and Screw, Nut, and Bolt Manufacturing"
+        },
+        {
+          "name": "Quality Controlled Mfg",
+          "naics": "3327",
+          "naics_title": "Machine Shops; Turned Product; and Screw, Nut, and Bolt Manufacturing"
+        },
+        {
+          "name": "Western CNC Inc",
+          "naics": "3327",
+          "naics_title": "Machine Shops; Turned Product; and Screw, Nut, and Bolt Manufacturing"
+        },
+        {
+          "name": "Distinctive Plastics",
+          "naics": "3335",
+          "naics_title": "Metalworking Machinery Manufacturing"
+        }
+      ],
+      "naics_gain_sample": [
+        {
+          "name": "Protec Arisawa America Inc",
+          "naics": "3312",
+          "naics_title": "Steel Product Manufacturing from Purchased Steel"
+        },
+        {
+          "name": "Valley Metals LLC",
+          "naics": "3312",
+          "naics_title": "Steel Product Manufacturing from Purchased Steel"
+        },
+        {
+          "name": "Reflex Industries Inc",
+          "naics": "3313",
+          "naics_title": "Alumina and Aluminum Production and Processing"
+        },
+        {
+          "name": "Vision Systems",
+          "naics": "3313",
+          "naics_title": "Alumina and Aluminum Production and Processing"
+        },
+        {
+          "name": "Decco Castings Inc",
+          "naics": "3315",
+          "naics_title": "Foundries"
+        },
+        {
+          "name": "Propulsion Controls Engrng",
+          "naics": "3336",
+          "naics_title": "Engine, Turbine, and Power Transmission Equipment Manufacturing"
+        },
+        {
+          "name": "Solar Turbines Inc",
+          "naics": "3336",
+          "naics_title": "Engine, Turbine, and Power Transmission Equipment Manufacturing"
+        },
+        {
+          "name": "Balboa Water Group",
+          "naics": "3353",
+          "naics_title": "Electrical Equipment Manufacturing"
+        },
+        {
+          "name": "Teal Electronics Corp",
+          "naics": "3353",
+          "naics_title": "Electrical Equipment Manufacturing"
+        },
+        {
+          "name": "C Enterprises",
+          "naics": "3359",
+          "naics_title": "Other Electrical Equipment and Component Manufacturing"
+        },
+        {
+          "name": "Calamp Corp",
+          "naics": "3359",
+          "naics_title": "Other Electrical Equipment and Component Manufacturing"
+        },
+        {
+          "name": "DDH Enterprise Inc",
+          "naics": "3359",
+          "naics_title": "Other Electrical Equipment and Component Manufacturing"
+        },
+        {
+          "name": "Falmat Inc",
+          "naics": "3359",
+          "naics_title": "Other Electrical Equipment and Component Manufacturing"
+        },
+        {
+          "name": "Neo Tech",
+          "naics": "3359",
+          "naics_title": "Other Electrical Equipment and Component Manufacturing"
+        },
+        {
+          "name": "Weldpro Inc",
+          "naics": "3359",
+          "naics_title": "Other Electrical Equipment and Component Manufacturing"
+        }
+      ]
+    },
+    "Information and Communication Technologies - Digital Media": {
+      "in_graph_count": 7,
+      "size_gain_count": 42,
+      "naics_gain_count": 60,
+      "size_gain_sample": [
+        {
+          "name": "AMC Fashion Valley 18",
+          "naics": "5121",
+          "naics_title": "Motion Picture and Video Industries"
+        },
+        {
+          "name": "AMC Palm Promenade 24",
+          "naics": "5121",
+          "naics_title": "Motion Picture and Video Industries"
+        },
+        {
+          "name": "AMC Plaza Bonita 14",
+          "naics": "5121",
+          "naics_title": "Motion Picture and Video Industries"
+        },
+        {
+          "name": "Reading Cinemas Grossmont With",
+          "naics": "5121",
+          "naics_title": "Motion Picture and Video Industries"
+        },
+        {
+          "name": "Sound Image Inc",
+          "naics": "5121",
+          "naics_title": "Motion Picture and Video Industries"
+        },
+        {
+          "name": "ADP",
+          "naics": "5182",
+          "naics_title": "Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services"
+        },
+        {
+          "name": "ADP",
+          "naics": "5182",
+          "naics_title": "Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services"
+        },
+        {
+          "name": "Chirotouch",
+          "naics": "5182",
+          "naics_title": "Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services"
+        },
+        {
+          "name": "Immigration Finder",
+          "naics": "5182",
+          "naics_title": "Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services"
+        },
+        {
+          "name": "Invivo Cloud Inc",
+          "naics": "5182",
+          "naics_title": "Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services"
+        },
+        {
+          "name": "La Touraine Inc",
+          "naics": "5182",
+          "naics_title": "Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services"
+        },
+        {
+          "name": "Lenslock Inc",
+          "naics": "5182",
+          "naics_title": "Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services"
+        },
+        {
+          "name": "Skyriver Communications",
+          "naics": "5182",
+          "naics_title": "Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services"
+        },
+        {
+          "name": "Tachyon Networks Inc",
+          "naics": "5182",
+          "naics_title": "Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services"
+        },
+        {
+          "name": "Telisimo International",
+          "naics": "5182",
+          "naics_title": "Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services"
+        }
+      ],
+      "naics_gain_sample": [
+        {
+          "name": "Adobe Bluffs Elementary School",
+          "naics": "5131",
+          "naics_title": "Newspaper, Periodical, Book, and Directory Publishers"
+        },
+        {
+          "name": "Cognella",
+          "naics": "5131",
+          "naics_title": "Newspaper, Periodical, Book, and Directory Publishers"
+        },
+        {
+          "name": "Escondido Times-Advocate",
+          "naics": "5131",
+          "naics_title": "Newspaper, Periodical, Book, and Directory Publishers"
+        },
+        {
+          "name": "Hay House",
+          "naics": "5131",
+          "naics_title": "Newspaper, Periodical, Book, and Directory Publishers"
+        },
+        {
+          "name": "Hispanos Unidos",
+          "naics": "5131",
+          "naics_title": "Newspaper, Periodical, Book, and Directory Publishers"
+        },
+        {
+          "name": "San Diego Magazine",
+          "naics": "5131",
+          "naics_title": "Newspaper, Periodical, Book, and Directory Publishers"
+        },
+        {
+          "name": "San Diego Magazine LLC",
+          "naics": "5131",
+          "naics_title": "Newspaper, Periodical, Book, and Directory Publishers"
+        },
+        {
+          "name": "San Diego Reader",
+          "naics": "5131",
+          "naics_title": "Newspaper, Periodical, Book, and Directory Publishers"
+        },
+        {
+          "name": "University Reader's",
+          "naics": "5131",
+          "naics_title": "Newspaper, Periodical, Book, and Directory Publishers"
+        },
+        {
+          "name": "Accelrys",
+          "naics": "5132",
+          "naics_title": "Software Publishers"
+        },
+        {
+          "name": "Adicio Inc",
+          "naics": "5132",
+          "naics_title": "Software Publishers"
+        },
+        {
+          "name": "Altium LLC",
+          "naics": "5132",
+          "naics_title": "Software Publishers"
+        },
+        {
+          "name": "Autovitals Inc",
+          "naics": "5132",
+          "naics_title": "Software Publishers"
+        },
+        {
+          "name": "Beehive Software LLC",
+          "naics": "5132",
+          "naics_title": "Software Publishers"
+        },
+        {
+          "name": "Carestitch",
+          "naics": "5132",
+          "naics_title": "Software Publishers"
+        }
+      ]
+    },
+    "Public Safety": {
+      "in_graph_count": 2,
+      "size_gain_count": 23,
+      "naics_gain_count": 0,
+      "size_gain_sample": [
+        {
+          "name": "A T Systems Inc",
+          "naics": "5616",
+          "naics_title": "Investigation and Security Services"
+        },
+        {
+          "name": "A1 Security SVC",
+          "naics": "5616",
+          "naics_title": "Investigation and Security Services"
+        },
+        {
+          "name": "Allied Universal Event Svc",
+          "naics": "5616",
+          "naics_title": "Investigation and Security Services"
+        },
+        {
+          "name": "American Commercial Security",
+          "naics": "5616",
+          "naics_title": "Investigation and Security Services"
+        },
+        {
+          "name": "Asset Management TR Svc LLC",
+          "naics": "5616",
+          "naics_title": "Investigation and Security Services"
+        },
+        {
+          "name": "BAE Systems Applied Tech",
+          "naics": "5616",
+          "naics_title": "Investigation and Security Services"
+        },
+        {
+          "name": "Bald Eagle Security Svc Inc",
+          "naics": "5616",
+          "naics_title": "Investigation and Security Services"
+        },
+        {
+          "name": "Brink's Inc",
+          "naics": "5616",
+          "naics_title": "Investigation and Security Services"
+        },
+        {
+          "name": "Command Security Corp",
+          "naics": "5616",
+          "naics_title": "Investigation and Security Services"
+        },
+        {
+          "name": "CSC Security Svc",
+          "naics": "5616",
+          "naics_title": "Investigation and Security Services"
+        },
+        {
+          "name": "Ed's Lock & Security Inc",
+          "naics": "5616",
+          "naics_title": "Investigation and Security Services"
+        },
+        {
+          "name": "Gabriel Pulido Cyber Security",
+          "naics": "5616",
+          "naics_title": "Investigation and Security Services"
+        },
+        {
+          "name": "Guardian Integrated Security",
+          "naics": "5616",
+          "naics_title": "Investigation and Security Services"
+        },
+        {
+          "name": "Heritage Security",
+          "naics": "5616",
+          "naics_title": "Investigation and Security Services"
+        },
+        {
+          "name": "Imperial Beach Sheriff",
+          "naics": "5616",
+          "naics_title": "Investigation and Security Services"
+        }
+      ],
+      "naics_gain_sample": []
+    },
+    "Agriculture, Water and Environmental Technologies": {
+      "in_graph_count": 0,
+      "size_gain_count": 26,
+      "naics_gain_count": 24,
+      "size_gain_sample": [
+        {
+          "name": "Moody Creek Farms",
+          "naics": "1152",
+          "naics_title": "Support Activities for Animal Production"
+        },
+        {
+          "name": "Aztec Landscaping Inc",
+          "naics": "5617",
+          "naics_title": "Services to Buildings and Dwellings"
+        },
+        {
+          "name": "Benchmark Landscaping Co",
+          "naics": "5617",
+          "naics_title": "Services to Buildings and Dwellings"
+        },
+        {
+          "name": "Beneficial Exterminating",
+          "naics": "5617",
+          "naics_title": "Services to Buildings and Dwellings"
+        },
+        {
+          "name": "Blue Skies Landscape Mntnc",
+          "naics": "5617",
+          "naics_title": "Services to Buildings and Dwellings"
+        },
+        {
+          "name": "Bonded Carpet Cleaning Sales",
+          "naics": "5617",
+          "naics_title": "Services to Buildings and Dwellings"
+        },
+        {
+          "name": "Brightview Landscape Svc",
+          "naics": "5617",
+          "naics_title": "Services to Buildings and Dwellings"
+        },
+        {
+          "name": "Brightview Landscape Svc",
+          "naics": "5617",
+          "naics_title": "Services to Buildings and Dwellings"
+        },
+        {
+          "name": "Brightview Landscape Svc",
+          "naics": "5617",
+          "naics_title": "Services to Buildings and Dwellings"
+        },
+        {
+          "name": "Business Cleaning Co",
+          "naics": "5617",
+          "naics_title": "Services to Buildings and Dwellings"
+        },
+        {
+          "name": "Calderon Services",
+          "naics": "5617",
+          "naics_title": "Services to Buildings and Dwellings"
+        },
+        {
+          "name": "California Office Maintenance",
+          "naics": "5617",
+          "naics_title": "Services to Buildings and Dwellings"
+        },
+        {
+          "name": "California Tree Svc Inc",
+          "naics": "5617",
+          "naics_title": "Services to Buildings and Dwellings"
+        },
+        {
+          "name": "Ciro's Landscaping Inc",
+          "naics": "5617",
+          "naics_title": "Services to Buildings and Dwellings"
+        },
+        {
+          "name": "Crossman Landscape Inc",
+          "naics": "5617",
+          "naics_title": "Services to Buildings and Dwellings"
+        }
+      ],
+      "naics_gain_sample": [
+        {
+          "name": "Oppenheimer Group",
+          "naics": "3113",
+          "naics_title": "Sugar and Confectionery Product Manufacturing"
+        },
+        {
+          "name": "American Access Care",
+          "naics": "5419",
+          "naics_title": "Other Professional, Scientific, and Technical Services"
+        },
+        {
+          "name": "American Society of Appraisers",
+          "naics": "5419",
+          "naics_title": "Other Professional, Scientific, and Technical Services"
+        },
+        {
+          "name": "Arrk Product Devmnt Group Ltd",
+          "naics": "5419",
+          "naics_title": "Other Professional, Scientific, and Technical Services"
+        },
+        {
+          "name": "Community Research",
+          "naics": "5419",
+          "naics_title": "Other Professional, Scientific, and Technical Services"
+        },
+        {
+          "name": "Dowfin LLC",
+          "naics": "5419",
+          "naics_title": "Other Professional, Scientific, and Technical Services"
+        },
+        {
+          "name": "Governor Animal Clinic",
+          "naics": "5419",
+          "naics_title": "Other Professional, Scientific, and Technical Services"
+        },
+        {
+          "name": "IQVIA",
+          "naics": "5419",
+          "naics_title": "Other Professional, Scientific, and Technical Services"
+        },
+        {
+          "name": "Maximum Impact LLC",
+          "naics": "5419",
+          "naics_title": "Other Professional, Scientific, and Technical Services"
+        },
+        {
+          "name": "Medical Minds Inc",
+          "naics": "5419",
+          "naics_title": "Other Professional, Scientific, and Technical Services"
+        },
+        {
+          "name": "National Oceanic & Atmospheric",
+          "naics": "5419",
+          "naics_title": "Other Professional, Scientific, and Technical Services"
+        },
+        {
+          "name": "Navy Region Sw-Public Affairs",
+          "naics": "5419",
+          "naics_title": "Other Professional, Scientific, and Technical Services"
+        },
+        {
+          "name": "Nexbio Inc",
+          "naics": "5419",
+          "naics_title": "Other Professional, Scientific, and Technical Services"
+        },
+        {
+          "name": "Pet Emergency-Spec Ctr-Chula",
+          "naics": "5419",
+          "naics_title": "Other Professional, Scientific, and Technical Services"
+        },
+        {
+          "name": "Pet Emergency-Spec Ctr-La Mesa",
+          "naics": "5419",
+          "naics_title": "Other Professional, Scientific, and Technical Services"
+        }
+      ]
+    },
+    "Advanced Transportation and Logistics": {
+      "in_graph_count": 7,
+      "size_gain_count": 53,
+      "naics_gain_count": 15,
+      "size_gain_sample": [
+        {
+          "name": "Acme Safety & Supply Corp",
+          "naics": "2373",
+          "naics_title": "Highway, Street, and Bridge Construction"
+        },
+        {
+          "name": "Carlsbad Street Maintenance",
+          "naics": "2373",
+          "naics_title": "Highway, Street, and Bridge Construction"
+        },
+        {
+          "name": "Coffman Specialties Inc",
+          "naics": "2373",
+          "naics_title": "Highway, Street, and Bridge Construction"
+        },
+        {
+          "name": "San Diego Street Dept",
+          "naics": "2373",
+          "naics_title": "Highway, Street, and Bridge Construction"
+        },
+        {
+          "name": "T-N-T Grading Inc",
+          "naics": "2373",
+          "naics_title": "Highway, Street, and Bridge Construction"
+        },
+        {
+          "name": "Caldwell Specialties Inc",
+          "naics": "2389",
+          "naics_title": "Other Specialty Trade Contractors"
+        },
+        {
+          "name": "Casper Co",
+          "naics": "2389",
+          "naics_title": "Other Specialty Trade Contractors"
+        },
+        {
+          "name": "C-Ray Inc",
+          "naics": "2389",
+          "naics_title": "Other Specialty Trade Contractors"
+        },
+        {
+          "name": "European American Ent Council",
+          "naics": "2389",
+          "naics_title": "Other Specialty Trade Contractors"
+        },
+        {
+          "name": "Greenfield Fence",
+          "naics": "2389",
+          "naics_title": "Other Specialty Trade Contractors"
+        },
+        {
+          "name": "International Iron Product",
+          "naics": "2389",
+          "naics_title": "Other Specialty Trade Contractors"
+        },
+        {
+          "name": "M C Contracting",
+          "naics": "2389",
+          "naics_title": "Other Specialty Trade Contractors"
+        },
+        {
+          "name": "Mission Pools Inc",
+          "naics": "2389",
+          "naics_title": "Other Specialty Trade Contractors"
+        },
+        {
+          "name": "Nielsen Contracting Inc",
+          "naics": "2389",
+          "naics_title": "Other Specialty Trade Contractors"
+        },
+        {
+          "name": "Property Services Plus",
+          "naics": "2389",
+          "naics_title": "Other Specialty Trade Contractors"
+        }
+      ],
+      "naics_gain_sample": [
+        {
+          "name": "Medallion Outlet",
+          "naics": "2123",
+          "naics_title": "Nonmetallic Mineral Mining and Quarrying"
+        },
+        {
+          "name": "Poway Midland Railroad",
+          "naics": "4821",
+          "naics_title": "Rail Transportation"
+        },
+        {
+          "name": "Estrella De Oro",
+          "naics": "4852",
+          "naics_title": "Interurban and Rural Bus Transportation"
+        },
+        {
+          "name": "MTS",
+          "naics": "4852",
+          "naics_title": "Interurban and Rural Bus Transportation"
+        },
+        {
+          "name": "Sun Diego Charter Co",
+          "naics": "4855",
+          "naics_title": "Charter Bus Industry"
+        },
+        {
+          "name": "Genesis Logistics Inc",
+          "naics": "4882",
+          "naics_title": "Support Activities for Rail Transportation"
+        },
+        {
+          "name": "Paramount Transportation Systs",
+          "naics": "4882",
+          "naics_title": "Support Activities for Rail Transportation"
+        },
+        {
+          "name": "Pilot Freight",
+          "naics": "4882",
+          "naics_title": "Support Activities for Rail Transportation"
+        },
+        {
+          "name": "BMT Scientific Marine Svc Inc",
+          "naics": "4883",
+          "naics_title": "Support Activities for Water Transportation"
+        },
+        {
+          "name": "A To Z Enterprises",
+          "naics": "4884",
+          "naics_title": "Support Activities for Road Transportation"
+        },
+        {
+          "name": "A To Z Metro Towing",
+          "naics": "4884",
+          "naics_title": "Support Activities for Road Transportation"
+        },
+        {
+          "name": "Western Towing",
+          "naics": "4884",
+          "naics_title": "Support Activities for Road Transportation"
+        },
+        {
+          "name": "Alamo",
+          "naics": "5321",
+          "naics_title": "Automotive Equipment Rental and Leasing"
+        },
+        {
+          "name": "Avis",
+          "naics": "5321",
+          "naics_title": "Automotive Equipment Rental and Leasing"
+        },
+        {
+          "name": "Hertz",
+          "naics": "5321",
+          "naics_title": "Automotive Equipment Rental and Leasing"
+        }
+      ]
+    },
+    "Health": {
+      "in_graph_count": 12,
+      "size_gain_count": 201,
+      "naics_gain_count": 18,
+      "size_gain_sample": [
+        {
+          "name": "Balboa Nephrology Med Group",
+          "naics": "6211",
+          "naics_title": "Offices of Physicians"
+        },
+        {
+          "name": "California Orthopaedic Inst",
+          "naics": "6211",
+          "naics_title": "Offices of Physicians"
+        },
+        {
+          "name": "Cassidy Medical Group Inc",
+          "naics": "6211",
+          "naics_title": "Offices of Physicians"
+        },
+        {
+          "name": "Childrens Primary Care Med GRP",
+          "naics": "6211",
+          "naics_title": "Offices of Physicians"
+        },
+        {
+          "name": "Core Orthopaedic Medical Ctr",
+          "naics": "6211",
+          "naics_title": "Offices of Physicians"
+        },
+        {
+          "name": "Department of Anesthesiology",
+          "naics": "6211",
+          "naics_title": "Offices of Physicians"
+        },
+        {
+          "name": "Dermatology Specialists Inc",
+          "naics": "6211",
+          "naics_title": "Offices of Physicians"
+        },
+        {
+          "name": "Developmentally Disabled S D",
+          "naics": "6211",
+          "naics_title": "Offices of Physicians"
+        },
+        {
+          "name": "Dr Mark Labeau Osteopathic",
+          "naics": "6211",
+          "naics_title": "Offices of Physicians"
+        },
+        {
+          "name": "Emergency-Acute Care Med Corp",
+          "naics": "6211",
+          "naics_title": "Offices of Physicians"
+        },
+        {
+          "name": "Escondido Community Clinic",
+          "naics": "6211",
+          "naics_title": "Offices of Physicians"
+        },
+        {
+          "name": "Family Health Ctr of San Diego",
+          "naics": "6211",
+          "naics_title": "Offices of Physicians"
+        },
+        {
+          "name": "Gen 5 Fertility Ctr",
+          "naics": "6211",
+          "naics_title": "Offices of Physicians"
+        },
+        {
+          "name": "Graybill Medical Group Inc",
+          "naics": "6211",
+          "naics_title": "Offices of Physicians"
+        },
+        {
+          "name": "Hosalkar Injury Inst-Sn Diego",
+          "naics": "6211",
+          "naics_title": "Offices of Physicians"
+        }
+      ],
+      "naics_gain_sample": [
+        {
+          "name": "Albertsons Sav-On Pharmacy",
+          "naics": "4561",
+          "naics_title": "Health and Personal Care Retailers"
+        },
+        {
+          "name": "Alpida Pharmacy",
+          "naics": "4561",
+          "naics_title": "Health and Personal Care Retailers"
+        },
+        {
+          "name": "Boney's Bayside Market",
+          "naics": "4561",
+          "naics_title": "Health and Personal Care Retailers"
+        },
+        {
+          "name": "CVS Pharmacy",
+          "naics": "4561",
+          "naics_title": "Health and Personal Care Retailers"
+        },
+        {
+          "name": "CVS Pharmacy",
+          "naics": "4561",
+          "naics_title": "Health and Personal Care Retailers"
+        },
+        {
+          "name": "Daw Industries Inc",
+          "naics": "4561",
+          "naics_title": "Health and Personal Care Retailers"
+        },
+        {
+          "name": "Elitra Pharmaceuticals",
+          "naics": "4561",
+          "naics_title": "Health and Personal Care Retailers"
+        },
+        {
+          "name": "Jimbo's",
+          "naics": "4561",
+          "naics_title": "Health and Personal Care Retailers"
+        },
+        {
+          "name": "Jimbo's",
+          "naics": "4561",
+          "naics_title": "Health and Personal Care Retailers"
+        },
+        {
+          "name": "Medimpact Healthcare Systs Inc",
+          "naics": "4561",
+          "naics_title": "Health and Personal Care Retailers"
+        },
+        {
+          "name": "Ocean Beach People's Organic",
+          "naics": "4561",
+          "naics_title": "Health and Personal Care Retailers"
+        },
+        {
+          "name": "Pryor Products",
+          "naics": "4561",
+          "naics_title": "Health and Personal Care Retailers"
+        },
+        {
+          "name": "Pure NSM",
+          "naics": "4561",
+          "naics_title": "Health and Personal Care Retailers"
+        },
+        {
+          "name": "Ron's Pharmacy Svc",
+          "naics": "4561",
+          "naics_title": "Health and Personal Care Retailers"
+        },
+        {
+          "name": "Sephora",
+          "naics": "4561",
+          "naics_title": "Health and Personal Care Retailers"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,608 @@
+{
+  "1133": {
+    "count": 0,
+    "sample": []
+  },
+  "2121": {
+    "count": 0,
+    "sample": []
+  },
+  "2122": {
+    "count": 0,
+    "sample": []
+  },
+  "2123": {
+    "count": 0,
+    "sample": []
+  },
+  "2131": {
+    "count": 0,
+    "sample": []
+  },
+  "2372": {
+    "count": 0,
+    "sample": []
+  },
+  "3112": {
+    "count": 0,
+    "sample": []
+  },
+  "3113": {
+    "count": 0,
+    "sample": []
+  },
+  "3122": {
+    "count": 0,
+    "sample": []
+  },
+  "3132": {
+    "count": 0,
+    "sample": []
+  },
+  "3133": {
+    "count": 0,
+    "sample": []
+  },
+  "3141": {
+    "count": 0,
+    "sample": []
+  },
+  "3149": {
+    "count": 0,
+    "sample": []
+  },
+  "3151": {
+    "count": 0,
+    "sample": []
+  },
+  "3152": {
+    "count": 0,
+    "sample": []
+  },
+  "3159": {
+    "count": 0,
+    "sample": []
+  },
+  "3161": {
+    "count": 0,
+    "sample": []
+  },
+  "3162": {
+    "count": 0,
+    "sample": []
+  },
+  "3221": {
+    "count": 1,
+    "sample": [
+      "International Paper Co"
+    ]
+  },
+  "3222": {
+    "count": 1,
+    "sample": [
+      "Pactiv Evergreen"
+    ]
+  },
+  "3270": {
+    "count": 0,
+    "sample": []
+  },
+  "3311": {
+    "count": 0,
+    "sample": []
+  },
+  "3312": {
+    "count": 0,
+    "sample": []
+  },
+  "3313": {
+    "count": 0,
+    "sample": []
+  },
+  "3314": {
+    "count": 0,
+    "sample": []
+  },
+  "3315": {
+    "count": 0,
+    "sample": []
+  },
+  "3333": {
+    "count": 1,
+    "sample": [
+      "SWF Co"
+    ]
+  },
+  "3336": {
+    "count": 0,
+    "sample": []
+  },
+  "3342": {
+    "count": 1,
+    "sample": [
+      "Pelco Inc"
+    ]
+  },
+  "3343": {
+    "count": 0,
+    "sample": []
+  },
+  "3346": {
+    "count": 0,
+    "sample": []
+  },
+  "3352": {
+    "count": 0,
+    "sample": []
+  },
+  "3353": {
+    "count": 0,
+    "sample": []
+  },
+  "3359": {
+    "count": 0,
+    "sample": []
+  },
+  "3362": {
+    "count": 0,
+    "sample": []
+  },
+  "3365": {
+    "count": 0,
+    "sample": []
+  },
+  "3369": {
+    "count": 0,
+    "sample": []
+  },
+  "3379": {
+    "count": 0,
+    "sample": []
+  },
+  "3399": {
+    "count": 1,
+    "sample": [
+      "Pana Pacific Div"
+    ]
+  },
+  "4238": {
+    "count": 4,
+    "sample": [
+      "Charlie's Enterprises Inc",
+      "Fresno Valves & Castings Inc",
+      "Moonlight Co",
+      "Towlift"
+    ]
+  },
+  "4243": {
+    "count": 0,
+    "sample": []
+  },
+  "4251": {
+    "count": 0,
+    "sample": []
+  },
+  "4412": {
+    "count": 2,
+    "sample": [
+      "Clawson Motorsports",
+      "RV Country Inc"
+    ]
+  },
+  "4413": {
+    "count": 0,
+    "sample": []
+  },
+  "4442": {
+    "count": 0,
+    "sample": []
+  },
+  "4453": {
+    "count": 0,
+    "sample": []
+  },
+  "4491": {
+    "count": 1,
+    "sample": [
+      "Northwest Exteriors"
+    ]
+  },
+  "4492": {
+    "count": 3,
+    "sample": [
+      "Arecont Vision/Costar",
+      "Best Buy",
+      "Best Buy"
+    ]
+  },
+  "4550": {
+    "count": 0,
+    "sample": []
+  },
+  "4561": {
+    "count": 0,
+    "sample": []
+  },
+  "4571": {
+    "count": 0,
+    "sample": []
+  },
+  "4572": {
+    "count": 0,
+    "sample": []
+  },
+  "4581": {
+    "count": 2,
+    "sample": [
+      "Ariat",
+      "Cintas"
+    ]
+  },
+  "4582": {
+    "count": 0,
+    "sample": []
+  },
+  "4583": {
+    "count": 0,
+    "sample": []
+  },
+  "4591": {
+    "count": 0,
+    "sample": []
+  },
+  "4592": {
+    "count": 0,
+    "sample": []
+  },
+  "4593": {
+    "count": 0,
+    "sample": []
+  },
+  "4599": {
+    "count": 1,
+    "sample": [
+      "Phebe Conley Art Gallery"
+    ]
+  },
+  "4812": {
+    "count": 1,
+    "sample": [
+      "MEC Aerial Platform Sales Corp"
+    ]
+  },
+  "4821": {
+    "count": 0,
+    "sample": []
+  },
+  "4831": {
+    "count": 0,
+    "sample": []
+  },
+  "4832": {
+    "count": 0,
+    "sample": []
+  },
+  "4840": {
+    "count": 0,
+    "sample": []
+  },
+  "4852": {
+    "count": 0,
+    "sample": []
+  },
+  "4855": {
+    "count": 1,
+    "sample": [
+      "Best Tours & Travel"
+    ]
+  },
+  "4861": {
+    "count": 0,
+    "sample": []
+  },
+  "4862": {
+    "count": 0,
+    "sample": []
+  },
+  "4869": {
+    "count": 0,
+    "sample": []
+  },
+  "4871": {
+    "count": 0,
+    "sample": []
+  },
+  "4872": {
+    "count": 0,
+    "sample": []
+  },
+  "4879": {
+    "count": 0,
+    "sample": []
+  },
+  "4882": {
+    "count": 2,
+    "sample": [
+      "Californina State",
+      "First Student Inc"
+    ]
+  },
+  "4883": {
+    "count": 0,
+    "sample": []
+  },
+  "4884": {
+    "count": 0,
+    "sample": []
+  },
+  "4885": {
+    "count": 2,
+    "sample": [
+      "John R Lawson Rock & Oil Inc",
+      "XPO Logistics"
+    ]
+  },
+  "4889": {
+    "count": 0,
+    "sample": []
+  },
+  "4911": {
+    "count": 1,
+    "sample": [
+      "United States Postal Svc"
+    ]
+  },
+  "4922": {
+    "count": 0,
+    "sample": []
+  },
+  "5131": {
+    "count": 1,
+    "sample": [
+      "Merced Sun-Star"
+    ]
+  },
+  "5132": {
+    "count": 0,
+    "sample": []
+  },
+  "5161": {
+    "count": 5,
+    "sample": [
+      "Kalz-Alice 96 7",
+      "KFSN",
+      "KMPH",
+      "KRZR 103 7 Fm-Request Line",
+      "Kwye"
+    ]
+  },
+  "5162": {
+    "count": 0,
+    "sample": []
+  },
+  "5170": {
+    "count": 0,
+    "sample": []
+  },
+  "5192": {
+    "count": 1,
+    "sample": [
+      "Henry Madden Library"
+    ]
+  },
+  "5211": {
+    "count": 0,
+    "sample": []
+  },
+  "5222": {
+    "count": 0,
+    "sample": []
+  },
+  "5230": {
+    "count": 0,
+    "sample": []
+  },
+  "5241": {
+    "count": 1,
+    "sample": [
+      "Healthcomp LLC"
+    ]
+  },
+  "5242": {
+    "count": 4,
+    "sample": [
+      "Dibuduo & Defendis Insurance",
+      "James G Parker Insurance",
+      "New York Life Insurance",
+      "Prestige Life Ins Solutions"
+    ]
+  },
+  "5251": {
+    "count": 0,
+    "sample": []
+  },
+  "5259": {
+    "count": 0,
+    "sample": []
+  },
+  "5310": {
+    "count": 0,
+    "sample": []
+  },
+  "5321": {
+    "count": 0,
+    "sample": []
+  },
+  "5331": {
+    "count": 0,
+    "sample": []
+  },
+  "5411": {
+    "count": 1,
+    "sample": [
+      "Mccormick Barstow LLP Atty"
+    ]
+  },
+  "5419": {
+    "count": 1,
+    "sample": [
+      "Coast To Coast Reg Svc"
+    ]
+  },
+  "5511": {
+    "count": 1,
+    "sample": [
+      "Community West Bancshares"
+    ]
+  },
+  "5611": {
+    "count": 1,
+    "sample": [
+      "University Dining Hall-Fresno"
+    ]
+  },
+  "5612": {
+    "count": 0,
+    "sample": []
+  },
+  "5613": {
+    "count": 2,
+    "sample": [
+      "Rodriguez AG Enterprises Inc",
+      "Teaching Fellows"
+    ]
+  },
+  "5614": {
+    "count": 1,
+    "sample": [
+      "Rainsoft"
+    ]
+  },
+  "5615": {
+    "count": 0,
+    "sample": []
+  },
+  "5619": {
+    "count": 2,
+    "sample": [
+      "Cal West Packing Co Inc",
+      "T Brooks & Assoc Inc"
+    ]
+  },
+  "5629": {
+    "count": 0,
+    "sample": []
+  },
+  "6239": {
+    "count": 0,
+    "sample": []
+  },
+  "7111": {
+    "count": 0,
+    "sample": []
+  },
+  "7112": {
+    "count": 0,
+    "sample": []
+  },
+  "7113": {
+    "count": 2,
+    "sample": [
+      "Chukchansi Park",
+      "Save Mart Ctr"
+    ]
+  },
+  "7114": {
+    "count": 0,
+    "sample": []
+  },
+  "7115": {
+    "count": 0,
+    "sample": []
+  },
+  "7121": {
+    "count": 1,
+    "sample": [
+      "Sanger Recreation & Community"
+    ]
+  },
+  "7132": {
+    "count": 3,
+    "sample": [
+      "Club One Casino",
+      "Mono Wind Casino",
+      "Table Mountain Casino"
+    ]
+  },
+  "7213": {
+    "count": 0,
+    "sample": []
+  },
+  "8112": {
+    "count": 0,
+    "sample": []
+  },
+  "8113": {
+    "count": 2,
+    "sample": [
+      "Donald P Dick Air Conditioning",
+      "Quality Home Svc"
+    ]
+  },
+  "8114": {
+    "count": 0,
+    "sample": []
+  },
+  "8122": {
+    "count": 0,
+    "sample": []
+  },
+  "8129": {
+    "count": 1,
+    "sample": [
+      "Roeding Park"
+    ]
+  },
+  "8131": {
+    "count": 1,
+    "sample": [
+      "First Union Mssnry Bapt Chr"
+    ]
+  },
+  "8132": {
+    "count": 0,
+    "sample": []
+  },
+  "8133": {
+    "count": 3,
+    "sample": [
+      "Alzheimer's Living Ctr",
+      "Community Integrated Work Prgm",
+      "Fresno Mission"
+    ]
+  },
+  "8134": {
+    "count": 3,
+    "sample": [
+      "Air National Guard",
+      "Sequoia & Kings Canyon Guest",
+      "Sunnyside Country Club"
+    ]
+  },
+  "8139": {
+    "count": 0,
+    "sample": []
+  },
+  "9991": {
+    "count": 0,
+    "sample": []
+  },
+  "9992": {
+    "count": 0,
+    "sample": []
+  },
+  "9993": {
+    "count": 0,
+    "sample": []
+  }
+}
