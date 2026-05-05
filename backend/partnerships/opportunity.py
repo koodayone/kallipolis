@@ -24,6 +24,7 @@ from __future__ import annotations
 
 import logging
 from collections import defaultdict
+from functools import lru_cache
 
 from ontology.crosswalks import (
     _load_cip_to_soc,
@@ -40,6 +41,7 @@ from ontology.regions import (
     COLLEGE_COE_REGION,
 )
 from ontology.schema import get_driver
+from ontology.supply import get_coe_supply
 from partnerships.gather import _gather_aligned_curriculum, _gather_student_pipeline
 from partnerships.models import (
     DepartmentEvidence,
@@ -106,6 +108,24 @@ def _sector_socs(sector: str) -> set[str]:
         for cip in top_to_cip.get(top6, set()):
             socs.update(cip_to_soc.get(cip, set()))
     return socs
+
+
+@lru_cache(maxsize=1)
+def _soc_to_top6_map() -> dict[str, frozenset[str]]:
+    """Reverse of TOP6 -> CIP -> SOC: SOC -> {TOP6, ...}.
+
+    Used by build_sector_index's strict filter to look up the related
+    TOP codes for a SOC and check whether the COE publishes any supply
+    estimate for them at the college. Cached for the process lifetime.
+    """
+    top_cip = _load_top_to_cip()
+    cip_soc = _load_cip_to_soc()
+    out: dict[str, set[str]] = {}
+    for top6, cips in top_cip.items():
+        for cip in cips:
+            for soc in cip_soc.get(cip, set()):
+                out.setdefault(soc, set()).add(top6)
+    return {soc: frozenset(tops) for soc, tops in out.items()}
 
 
 # ── Sector index ────────────────────────────────────────────────────────
@@ -182,12 +202,49 @@ def build_sector_index(college: str) -> SectorIndex:
         """, college=college).data()
         student_count_by_soc = {r["soc_code"]: r["student_count"] for r in student_counts}
 
+    # Per-SOC supply availability — does the COE publish a projected
+    # program-completion estimate for any TOP6 the SOC is reachable from
+    # at this college? Mirrors the LMI section's `supply_estimates.length
+    # > 0` discriminator. Computed once per SOC since the supply CSV is
+    # immutable per request.
+    soc_to_top6 = _soc_to_top6_map()
+    has_supply_by_soc: dict[str, bool] = {}
+    for r in regional_socs:
+        soc = r["soc_code"]
+        if soc in has_supply_by_soc:
+            continue
+        related_tops = soc_to_top6.get(soc, frozenset())
+        if not related_tops:
+            has_supply_by_soc[soc] = False
+            continue
+        # get_coe_supply takes a set of TOP6 codes and returns published
+        # estimates; we only care whether any exist.
+        estimates, _ = get_coe_supply(set(related_tops), college)
+        has_supply_by_soc[soc] = len(estimates) > 0
+
     # Build per-soc OpportunityRow once; same row instance can be reused
     # under multiple sectors.
+    #
+    # Preview-mode strict filter: surface only SOCs with all four
+    # institutional signals present (course_count, student_count,
+    # employer_count, has_supply). The Partnerships node is a synthesis
+    # surface for actioning partnerships — a row missing any signal
+    # would render a partially-empty Opportunity Report (the LMI's
+    # honest-absence branches kick in for missing supply, the curriculum
+    # table is empty if course_count=0, etc.). In preview/pilot context
+    # the value proposition is strongest when every clickable row
+    # produces a fully-populated report. Surfacing partial-signal rows
+    # belongs in a separate gap-analysis domain space.
     rows_by_soc: dict[str, OpportunityRow] = {}
     for r in regional_socs:
         soc = r["soc_code"]
         if soc not in cte_socs:
+            continue
+        course_count = course_count_by_soc.get(soc, 0)
+        student_count = student_count_by_soc.get(soc, 0)
+        employer_count = employer_count_by_soc.get(soc, 0)
+        has_supply = has_supply_by_soc.get(soc, False)
+        if course_count == 0 or student_count == 0 or employer_count == 0 or not has_supply:
             continue
         rows_by_soc[soc] = OpportunityRow(
             soc_code=soc,
@@ -195,9 +252,9 @@ def build_sector_index(college: str) -> SectorIndex:
             annual_openings=r["annual_openings"],
             annual_wage=r["annual_wage"],
             growth_rate=r.get("growth_rate"),
-            course_count=course_count_by_soc.get(soc, 0),
-            student_count=student_count_by_soc.get(soc, 0),
-            employer_count=employer_count_by_soc.get(soc, 0),
+            course_count=course_count,
+            student_count=student_count,
+            employer_count=employer_count,
         )
 
     # Build sector entries. Sectors are alphabetical; occupations within

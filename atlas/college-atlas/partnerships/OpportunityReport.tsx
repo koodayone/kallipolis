@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
 import { SchoolConfig } from "@/config/schoolConfig";
 import {
   getPartnershipOpportunity,
@@ -27,13 +26,11 @@ const MONO = "var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace";
 
 type Props = {
   school: SchoolConfig;
-  collegeId: string;
   socCode: string;
   onBack: () => void;
 };
 
-export default function OpportunityReport({ school, collegeId, socCode, onBack }: Props) {
-  const router = useRouter();
+export default function OpportunityReport({ school, socCode, onBack }: Props) {
   const [report, setReport] = useState<ApiOpportunityReport | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -71,7 +68,7 @@ export default function OpportunityReport({ school, collegeId, socCode, onBack }
         )}
 
         {!loading && !error && report && (
-          <ReportBody report={report} school={school} collegeId={collegeId} router={router} />
+          <ReportBody report={report} school={school} />
         )}
       </div>
     </div>
@@ -81,12 +78,10 @@ export default function OpportunityReport({ school, collegeId, socCode, onBack }
 /* ── Report Body ───────────────────────────────────────────────────────── */
 
 function ReportBody({
-  report, school, collegeId, router,
+  report, school,
 }: {
   report: ApiOpportunityReport;
   school: SchoolConfig;
-  collegeId: string;
-  router: ReturnType<typeof useRouter>;
 }) {
   const brandColor = school.brandColorLight;
 
@@ -370,8 +365,6 @@ function ReportBody({
                 emp={emp}
                 index={i}
                 brandColor={brandColor}
-                collegeId={collegeId}
-                router={router}
               />
             ))}
           </div>
@@ -824,18 +817,13 @@ function WorkforceGapVisualization({
 /* ── Partnership Opportunity employer row ─────────────────────────────── */
 
 function PartnerEmployerRow({
-  emp, index: _index, brandColor, collegeId, router,
+  emp, index: _index, brandColor,
 }: {
   emp: ApiPartnershipOpportunityEmployer;
   index: number;
   brandColor: string;
-  collegeId: string;
-  router: ReturnType<typeof useRouter>;
 }) {
   const [isOpen, setIsOpen] = useState(false);
-  const goToEmployer = useCallback(() => {
-    router.push(`/${collegeId}/employers?focus=${encodeURIComponent(emp.name)}`);
-  }, [router, collegeId, emp.name]);
 
   return (
     <div>
@@ -952,22 +940,6 @@ function PartnerEmployerRow({
             </a>
           )}
 
-          <button
-            onClick={(e) => { e.stopPropagation(); goToEmployer(); }}
-            style={{
-              fontFamily: FONT, fontSize: "11px", fontWeight: 500,
-              color: brandColor, opacity: 0.7,
-              background: "transparent", border: "none",
-              padding: 0,
-              cursor: "pointer", textAlign: "left",
-              transition: "opacity 0.15s",
-              width: "fit-content",
-            }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = "1"; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = "0.7"; }}
-          >
-            Open employer detail →
-          </button>
         </div>
       )}
     </div>
