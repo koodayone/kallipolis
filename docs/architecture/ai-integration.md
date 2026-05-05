@@ -25,11 +25,11 @@ Every translated query is validated before execution. The validator strips markd
 
 The query engine also handles JSON parsing fallback: Claude is asked to return a JSON object with `cypher` and `interpretation` fields, but the engine tolerates several response shapes (direct JSON, markdown-fenced JSON, or raw Cypher) so that minor formatting variation does not break the query path.
 
-### Partnership proposal generation (composition is now deterministic)
+### Partnership opportunity reports (fully deterministic)
 
-The partnership opportunity flow runs through three modules — `backend/partnerships/filter.py`, `backend/partnerships/gather.py`, and the orchestrator at `backend/partnerships/generate.py` — and is fully deterministic at composition time. The occupation picker ranks the employer's hires SOCs by institutional crosswalk depth at this college; the gather step pulls curriculum evidence from `Course-[:PREPARES_FOR]->Occupation` edges and student evidence from enrollments in the aligned departments; and the four-section narrative is composed by templates in `backend/partnerships/narrative_templates.py` over the gathered structured evidence. The only LLM-derived input is each employer's pre-computed `operations_summary`, populated at ingestion by `backend/employers/characterize.py` and stored on the Employer node.
+The Partnerships flow is occupation-centric and fully deterministic. The orchestrator at `backend/partnerships/opportunity.py` composes the per-(college, SOC) report from the institutional graph: regional demand from COE, TOP-grouped curriculum coverage via `_gather_aligned_curriculum` in `backend/partnerships/gather.py`, student impact via `_gather_student_pipeline` in the same module, and the candidate regional employer set sorted by NAICS-4 industry-share. The five-section narrative is composed by templates in `backend/partnerships/opportunity_narrative.py` (employer-agnostic prose) over the gathered structured evidence.
 
-There is no Claude call at request time in the partnership flow today.
+There is no LLM call at request time in the Partnerships flow today.
 
 ## Where Gemini is called
 

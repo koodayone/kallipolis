@@ -29,9 +29,15 @@ type Props = {
   isLoading?: boolean;
   onExpand?: () => void;
   schoolName?: string;
+  // Context-mode flag — when this row is rendered inside a partnership
+  // opportunity report scoped to a specific SOC, suppress the per-course
+  // "Occupational Pathways" callout (the report's anchoring occupation
+  // is implicit at this level and the callout would surface redundant
+  // SOC information).
+  hideOccupationPathways?: boolean;
 };
 
-export default function DepartmentRow({ department, courseCount, index, brandColor, isOpen: controlledOpen, onToggle, courses, isLoading, onExpand, schoolName }: Props) {
+export default function DepartmentRow({ department, courseCount, index, brandColor, isOpen: controlledOpen, onToggle, courses, isLoading, onExpand, schoolName, hideOccupationPathways }: Props) {
   const [internalOpen, setInternalOpen] = useState(false);
   const [expandedCourses, setExpandedCourses] = useState<Set<string>>(new Set());
   const isOpen = controlledOpen ?? internalOpen;
@@ -196,7 +202,7 @@ export default function DepartmentRow({ department, courseCount, index, brandCol
                                 </ul>
                               </div>
                             )}
-                            {schoolName && (
+                            {schoolName && !hideOccupationPathways && (
                               <CourseOccupationsCallout
                                 courseCode={course.code}
                                 collegeName={schoolName}

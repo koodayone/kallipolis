@@ -20,7 +20,6 @@ from courses.load import load_college, CollegeConfig
 from students.generate import generate_and_load_students
 from occupations.load import load_industry
 from employers.load import load_employers, cleanup_stale_employers
-from partnerships.compute import precompute_partnership_alignment
 from ontology.schema import get_driver, close_driver, init_schema
 
 logger = logging.getLogger(__name__)
@@ -208,7 +207,6 @@ def verify(driver) -> None:
             ("ENROLLED_IN", "MATCH ()-[e:ENROLLED_IN]->() RETURN count(e) AS cnt"),
             ("PREPARES_FOR", "MATCH ()-[p:PREPARES_FOR]->() RETURN count(p) AS cnt"),
             ("HIRES_FOR", "MATCH ()-[h:HIRES_FOR]->() RETURN count(h) AS cnt"),
-            ("PARTNERSHIP_ALIGNMENT", "MATCH ()-[p:PARTNERSHIP_ALIGNMENT]->() RETURN count(p) AS cnt"),
         ]
         for label, query in queries:
             result = s.run(query)
@@ -241,18 +239,7 @@ def reload_region(region_key: str) -> None:
         # Step 5: Generate students
         total_students = generate_students(driver, college_keys, configs)
 
-        # Step 6: Precompute partnership alignment edges
-        logger.info("Precomputing PARTNERSHIP_ALIGNMENT edges...")
-        college_display_names = [
-            configs.get(k, {"name": k})["name"] for k in college_keys
-        ]
-        align_stats = precompute_partnership_alignment(driver, college_display_names)
-        logger.info(
-            f"  PARTNERSHIP_ALIGNMENT: {align_stats['edges']} edges "
-            f"across {align_stats['colleges']} colleges"
-        )
-
-        # Step 7: Verify
+        # Step 6: Verify
         verify(driver)
 
     finally:

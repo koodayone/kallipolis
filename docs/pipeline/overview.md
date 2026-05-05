@@ -50,12 +50,6 @@ The industry-side pipeline runs once per region and populates Region, Occupation
 
 For the industry side overall, occupations and employers together populate the demand layer of the graph. The bridge to the curriculum side runs through the `PREPARES_FOR` edges materialized in stage 2.
 
-### Partnership alignment precompute
-
-After both sides of the graph are loaded, stage 5 traverses the (college, region, employer, occupation, course) chain through `PREPARES_FOR` to derive per-employer alignment counts and gap counts for each college, and writes them onto a `PARTNERSHIP_ALIGNMENT` edge from the College node to each relevant Employer node. The edge carries five properties (`alignment_score`, `gap_count`, `top_occupation`, `top_wage`, `pipeline_size`) and exists so that the partnership landscape endpoint can return 500+ employers in under a second by reading precomputed properties rather than re-traversing the graph on each request.
-
-The logic lives in `backend/partnerships/compute.py` and is deterministic — no LLM involvement. Stale edges are cleared per-college before recomputation so that employers removed from a region do not leave dangling alignments. For the edge schema, see [Graph Model → The precomputed analytical edge](../architecture/graph-model.md#the-precomputed-analytical-edge).
-
 ## Orchestration
 
 The operator-facing entry point for running the full pipeline end-to-end for a new college is the `onboard-college` Claude Code skill at `.claude/skills/onboard-college/SKILL.md`. The skill wraps the scripts described below into a five-stage sequence — curriculum extraction + load, student generation, employer generation, employer validation (via the `validate-employers` skill), employer load, and partnership alignment precompute — with a preflight verification pass and a final graph-state check. Running "onboard College X" inside Claude Code executes the full sequence with cache-aware re-run detection and no operator knowledge of the intermediate commands. The raw Python scripts below remain supported for testing and partial re-runs.

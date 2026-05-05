@@ -4,8 +4,6 @@ The Kallipolis backend exposes one router per ontology unit, plus a single `/hea
 
 All endpoints require a `college` query parameter (for GET routes) or a `college` field in the request body (for POST routes). College scoping is the only access boundary the backend enforces — authentication happens in the atlas, not here. See [System Overview](./system-overview.md#authentication-and-scoping) for the trust model.
 
-One endpoint streams its output via server-sent events: `POST /partnerships/targeted/stream`. It uses FastAPI's `StreamingResponse` with `text/event-stream`.
-
 A liveness probe at `/health` is defined directly in `backend/main.py` and returns `{"status": "ok"}`. It is not mounted on any feature router and is not part of the feature API surface.
 
 ## Students
@@ -56,28 +54,18 @@ Defined in `backend/employers/api.py`, mounted at `/employers`. These endpoints 
 
 ## Partnerships
 
-Defined in `backend/partnerships/api.py`, mounted at `/partnerships`. This router mixes retrieval (the landscape view, which reads precomputed alignment data) with AI-backed generation (targeted proposals).
+Defined in `backend/partnerships/api.py`, mounted at `/partnerships`. The Partnerships surface is occupation-centric: a sector accordion lists every PCAH-classified Strong Workforce sector with the CTE-reachable, regionally-demanded occupations within it; clicking one generates a deterministic per-(college, SOC) opportunity report.
 
 | Method | Path | Purpose | Response model |
 |---|---|---|---|
-| `GET /partnerships/landscape` | Employers ranked by partnership opportunity, reading the precomputed `PARTNERSHIP_ALIGNMENT` edge | `PartnershipLandscape` |
-| `GET /partnerships/employer-occupations` | Lightweight list of occupations an employer hires for, with annual wage | `{"occupations": [...]}` |
-| `POST /partnerships/query` | Natural-language query translated to Cypher with safety gate | `PartnershipQueryResponse` |
-| `POST /partnerships/targeted` | Generate a targeted partnership proposal for a specific employer (non-streaming) | `NarrativeProposal` |
-| `POST /partnerships/targeted/stream` | Generate a targeted partnership proposal with SSE streaming | text/event-stream |
+| `GET /partnerships/sectors` | Sector accordion: every Strong Workforce sector with its CTE-reachable, regionally-demanded occupations | `SectorIndex` |
+| `GET /partnerships/opportunity/{soc_code}` | Per-(college, SOC) partnership opportunity report — five narrative sections plus evidence blocks plus the candidate employer set | `OpportunityReport` |
 
-**Request body** for `POST /partnerships/targeted` and `/partnerships/targeted/stream`: `ProposalRequest` — fields `employer`, `college`, `engagement_type` (one of `internship`, `curriculum_codesign`, `advisory_board`).
+Both endpoints take `college` as a query parameter. Both are deterministic and idempotent — same inputs always yield byte-identical responses, so they are safe to cache and to deep-link.
 
-**Streaming format** for `POST /partnerships/targeted/stream`:
-```
-data: <NarrativeProposal JSON>\n\n
-data: {"done": true}\n\n
-```
-On error: `data: {"error": "<message>"}\n\n`.
+The opportunity report carries a `swp_evidence` block — the regional supply (projected program completions per TOP6) and demand (regional annual openings) totals plus the gap, scoped to the selected SOC. It is assembled deterministically by `_build_swp_evidence` in `backend/partnerships/opportunity.py` so any subsequent SWP funding justification has the empirical foundation it needs.
 
-`GET /partnerships/landscape` reads the precomputed `PARTNERSHIP_ALIGNMENT` edge, which is materialized by `backend/partnerships/compute.py` during ingestion. The edge carries a `pipeline_size` property (department-membership count of students aligned to the employer's hires SOCs at this college) that the landscape view surfaces directly — no live traversal at request time. For the edge schema, see [Graph Model → Precomputed analytical edge](./graph-model.md#the-precomputed-analytical-edge).
-
-The targeted partnership artifact carries a `swp_evidence` block at the bottom — TOP codes, SOC codes, regional supply and demand totals, and the gap. It is assembled deterministically by `_assemble_swp_evidence` in `backend/partnerships/generate.py` (no LLM), so any subsequent funding justification has the empirical foundation it needs without a second flow.
+The report's `partnership_opportunities` block lists the regional employers hiring for the SOC, sorted by NAICS-4 industry-share (BLS OEWS PCT_TOTAL — the institutional measure of how prominent the role is within each employer's industry). This is the candidate target set the report directs the workforce development officer toward.
 
 ## How to regenerate this reference
 

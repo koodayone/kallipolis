@@ -50,11 +50,10 @@ from .base import Check, CheckResult, Status
 LOADER_FILES = [
     "backend/courses/load.py",
     "backend/students/generate.py",
-    "backend/pipeline/load_skills.py",
     "backend/occupations/load.py",
     "backend/employers/load.py",
-    "backend/partnerships/compute.py",
     "backend/ontology/prepares_for.py",
+    "backend/ontology/regions.py",
 ]
 
 # Edges that are documented in graph-model.md as derived / precomputed and

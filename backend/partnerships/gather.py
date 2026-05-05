@@ -1,92 +1,26 @@
-"""Neo4j data retrieval for partnership proposals — no LLM calls."""
+"""Neo4j data retrieval for partnership opportunity reports — no LLM calls.
+
+Two helpers used by ``opportunity.py``:
+
+    _gather_aligned_curriculum(college, soc_code) -> list[dict]
+        Departments and courses at the college that PREPARES_FOR the SOC.
+
+    _gather_student_pipeline(college, departments, soc_code)
+        -> tuple[dict, list[dict]]
+        Student pipeline counts and the top exemplar students.
+
+Both are scoped to a (college, SOC) pair and gated by the institutional
+PREPARES_FOR edge — same pattern the employer-centric proposal flow used
+historically. Per the institutional-deference principle: every claim is
+derived from edges materialized via the Chancellor's Office TOP-CIP and
+BLS/NCES CIP-SOC crosswalks; nothing here is LLM-mediated.
+"""
 
 from __future__ import annotations
 
 from collections import defaultdict
-from dataclasses import dataclass, field
 
 from ontology.schema import get_driver
-
-
-@dataclass
-class GatheredContext:
-    """Structured output from Neo4j context gathering.
-
-    Two sector fields coexist deliberately. `sector` is the employer's
-    BLS/general industry classification ("Manufacturing"); `swp_sectors`
-    is the institutional Doing-What-Matters / Strong Workforce taxonomy
-    ("Advanced Manufacturing"). Coordinator-facing surfaces should
-    speak SWP vocabulary — it's the language the partnership artifact
-    is grounded in (CTE programs, regional priority sectors, SWP
-    funding categories). The BLS sector is kept as backend metadata
-    for downstream tooling that needs it.
-    """
-    employer_name: str = ""
-    sector: str = ""
-    swp_sectors: list[str] = field(default_factory=list)
-    description: str = ""
-    # Pre-computed verb phrase characterizing the employer's operations,
-    # populated at ingestion by ``employers.characterize``. Drives the
-    # opening sentence of the partnership proposal's executive summary
-    # via ``f"{employer_name} {operations_summary}."``. The single
-    # LLM-derived field in the partnership proposal narrative; every
-    # other sentence is templated deterministically over graph data.
-    operations_summary: str = ""
-    regions: list[str] = field(default_factory=list)
-    college: str = ""
-    occupation_evidence: list[dict] = field(default_factory=list)
-
-
-def _gather_targeted_context(employer: str, college: str) -> GatheredContext:
-    """Gather employer metadata and occupation evidence from the graph."""
-    driver = get_driver()
-
-    with driver.session() as session:
-        # Employer overview
-        emp_result = session.run("""
-            MATCH (emp:Employer {name: $employer})
-            OPTIONAL MATCH (emp)-[:IN_MARKET]->(r:Region)
-            RETURN emp.name AS name, emp.sector AS sector,
-                   COALESCE(emp.swp_sectors, []) AS swp_sectors,
-                   emp.description AS description,
-                   emp.operations_summary AS operations_summary,
-                   collect(COALESCE(r.display_name, r.name)) AS regions
-        """, employer=employer).single()
-
-        if not emp_result:
-            raise ValueError(f"Employer '{employer}' not found in the graph.")
-
-        # Regional employment data
-        econ_result = session.run("""
-            MATCH (:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)
-                  <-[:HIRES_FOR]-(emp:Employer {name: $employer})
-            RETURN occ.title AS title, occ.soc_code AS soc_code,
-                   d.annual_wage AS annual_wage,
-                   d.employment AS employment, d.growth_rate AS growth_rate,
-                   d.annual_openings AS annual_openings,
-                   COALESCE(r.display_name, r.name) AS region
-        """, employer=employer, college=college).data()
-
-    return GatheredContext(
-        employer_name=emp_result["name"],
-        sector=emp_result["sector"] or "",
-        swp_sectors=list(emp_result["swp_sectors"]) if emp_result["swp_sectors"] else [],
-        description=emp_result["description"] or "",
-        operations_summary=emp_result["operations_summary"] or "",
-        regions=emp_result["regions"],
-        college=college,
-        occupation_evidence=[
-            {
-                "title": r["title"],
-                "soc_code": r.get("soc_code"),
-                "annual_wage": r["annual_wage"],
-                "employment": r["employment"],
-                "annual_openings": r.get("annual_openings"),
-                "growth_rate": r.get("growth_rate"),
-            }
-            for r in econ_result
-        ],
-    )
 
 
 def _gather_aligned_curriculum(
@@ -159,13 +93,12 @@ def _gather_student_pipeline(
 ) -> tuple[dict, list[dict]]:
     """Find students whose academic pathway aligns with the partnership.
 
-    The eligibility gate is department membership (per principle 3 of
-    the institutional-deference commitment): a student is eligible if
-    their `primary_focus` matches one of the aligned departments
-    returned by _gather_aligned_curriculum (themselves PREPARES_FOR-
-    gated by the institutional crosswalk). Top-N ranking within that
-    eligible set is by SOC-aligned course count then GPA — both direct
-    institutional-pathway measures.
+    The eligibility gate is department membership: a student is
+    eligible if their `primary_focus` matches one of the aligned
+    departments returned by _gather_aligned_curriculum (themselves
+    PREPARES_FOR-gated by the institutional crosswalk). Top-N ranking
+    within that eligible set is by SOC-aligned course count then GPA
+    — both direct institutional-pathway measures.
 
     Concretely:
       - Eligibility gate (institutional): student.primary_focus IN
@@ -211,19 +144,46 @@ def _gather_student_pipeline(
             "total_in_aligned_departments": broad["total_in_aligned_departments"] if broad else 0,
         }
 
-        # Top-10 exemplars ranked by SOC-aligned course count, then GPA.
+        # Top-10 exemplars from the aligned-department student pool, ranked
+        # by SOC-aligned course count (primary) then GPA (secondary). The
+        # eligibility gate matches the headline `total_in_aligned_departments`
+        # figure: any student enrolled in any course in an aligned
+        # department. When SOC-prep enrollments exist, the strongest
+        # pipeline candidates surface first; when they don't (some TOP6s
+        # have no published MIS enrollment data at some colleges), the
+        # ordering falls back to GPA so the table still shows real
+        # candidates instead of being empty alongside a non-zero headline.
+        #
+        # The expansion shows the student's full aligned-department course
+        # history — not just SOC-prep courses — so the body is always
+        # informative even when the SOC-prep count is zero.
         result = session.run("""
-            MATCH (st:Student)
-            WHERE st.primary_focus IN $departments
-              AND EXISTS { (st)-[:ENROLLED_IN]->(:Course {college: $college}) }
-            OPTIONAL MATCH (st)-[e:ENROLLED_IN]->(c:Course {college: $college})
+            MATCH (dept:Department)-[:CONTAINS]->(:Course {college: $college})
+                  <-[:ENROLLED_IN]-(st:Student)
+            WHERE dept.name IN $departments
+            WITH DISTINCT st
+
+            // Count SOC-aligned course enrollments for ranking.
+            OPTIONAL MATCH (st)-[:ENROLLED_IN]->(prep:Course {college: $college})
                   -[:PREPARES_FOR]->(:Occupation {soc_code: $soc_code})
-            WITH st,
-                 collect(DISTINCT {
+            WITH st, count(DISTINCT prep) AS soc_aligned_count
+
+            // Collect the student's full aligned-department enrollment list
+            // for the expansion body.
+            OPTIONAL MATCH (st)-[e:ENROLLED_IN]->(c:Course {college: $college})
+                  <-[:CONTAINS]-(d:Department)
+            WHERE d.name IN $departments
+            WITH st, soc_aligned_count,
+                 collect(DISTINCT CASE WHEN c IS NOT NULL THEN {
                      code: c.code, name: c.name,
                      grade: e.grade, term: e.term
-                 }) AS enrollments
-            ORDER BY size(enrollments) DESC, COALESCE(st.gpa, 0.0) DESC
+                 } END) AS raw_enrollments
+            WITH st, soc_aligned_count,
+                 [x IN raw_enrollments WHERE x IS NOT NULL] AS enrollments,
+                 CASE WHEN st.primary_focus IN $departments
+                      THEN 1 ELSE 0 END AS focus_match
+            ORDER BY focus_match DESC, soc_aligned_count DESC,
+                     size(enrollments) DESC, COALESCE(st.gpa, 0.0) DESC
             LIMIT 10
             RETURN st.uuid AS uuid, st.primary_focus AS primary_focus,
                    size(enrollments) AS courses_completed,
