@@ -206,6 +206,14 @@ def load_employers(driver: Driver, employers: list[dict]) -> dict:
         # Symmetric semantics: prune stale edges of both types before
         # MERGEing new ones, so the graph matches the current state
         # exactly without legacy residue.
+        # UNWIND-batched edge writes — one Cypher per employer per edge type
+        # rather than per-edge MERGE in a Python loop. The naive per-edge
+        # pattern issued ~283K Cypher round trips for a full reload (~136 OEWS
+        # SOCs × ~2,085 employers), which OOM-killed the load on the prod
+        # e2-medium VM (4GB RAM, ~1.5GB to neo4j, the rest exhausted by
+        # accumulated transaction state). UNWIND collapses each employer's
+        # edges into a single transaction (~2,085 Cyphers per edge type),
+        # cutting both round-trip overhead and per-edge transaction memory.
         pruned_hires_for = 0
         pruned_identity = 0
         for emp in employers:
@@ -224,17 +232,19 @@ def load_employers(driver: Driver, employers: list[dict]) -> dict:
             )
             pruned_hires_for += result.single()["cnt"]
 
-            # Write HIRES_FOR with pct_total property
-            for soc, pct in oes_pairs:
+            # Write HIRES_FOR with pct_total property — UNWIND-batched
+            if oes_pairs:
                 result = session.run(
                     """
                     MATCH (e:Employer {name: $name})
-                    MATCH (o:Occupation {soc_code: $soc})
+                    UNWIND $pairs AS pair
+                    MATCH (o:Occupation {soc_code: pair.soc})
                     MERGE (e)-[r:HIRES_FOR]->(o)
-                    SET r.pct_total = $pct
-                    RETURN count(*) AS cnt
+                    SET r.pct_total = pair.pct
+                    RETURN count(r) AS cnt
                     """,
-                    name=emp["name"], soc=soc, pct=pct,
+                    name=emp["name"],
+                    pairs=[{"soc": s, "pct": p} for s, p in oes_pairs],
                 )
                 stats["hires_for"] += result.single()["cnt"]
 
@@ -249,15 +259,16 @@ def load_employers(driver: Driver, employers: list[dict]) -> dict:
                 name=emp["name"], valid_socs=identity_socs,
             )
             pruned_identity += result.single()["cnt"]
-            for soc in identity_socs:
+            if identity_socs:
                 result = session.run(
                     """
                     MATCH (e:Employer {name: $name})
-                    MATCH (o:Occupation {soc_code: $soc})
+                    UNWIND $socs AS soc
+                    MATCH (o:Occupation {soc_code: soc})
                     MERGE (e)-[:IDENTITY_HIRES_FOR]->(o)
                     RETURN count(*) AS cnt
                     """,
-                    name=emp["name"], soc=soc,
+                    name=emp["name"], socs=identity_socs,
                 )
                 stats["identity_hires_for"] += result.single()["cnt"]
 
