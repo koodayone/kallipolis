@@ -181,13 +181,6 @@ def materialize_occupation_pipeline(driver: Driver, college: str) -> dict:
                       PREPARES_FOR-aligned course for this occupation.
                       The same aggregation `_gather_student_pipeline`
                       reports as `total_in_aligned_departments`.
-      student_count_in_program
-                      distinct students whose primary_focus matches one
-                      of the aligned departments AND who have at least
-                      one enrollment at the college. The eligibility-
-                      gated count `_gather_student_pipeline` reports
-                      as `total_in_program` — a tighter pool than
-                      student_count.
       top_codes       distinct TOP6 codes the aligned courses are
                       MCF-tagged with. Used downstream by
                       build_sector_index's supply-side calc to look up
@@ -296,35 +289,16 @@ def materialize_occupation_pipeline(driver: Driver, college: str) -> dict:
         ).data()
         student_by_soc = {r["soc"]: r["student_count"] for r in student_rows}
 
-        # Step 4b: students whose primary_focus matches one of the SOC's
-        # aligned departments AND who have at least one enrollment at
-        # this college. This is the eligibility-gated count
-        # _gather_student_pipeline reports as `total_in_program` — a
-        # tighter pool than student_count above (which counts anyone
-        # enrolled in any course in an aligned department, regardless
-        # of declared focus). Both metrics surface in the Opportunity
-        # Report's Student Impact section.
-        #
-        # The query was the second-slowest in /partnerships/opportunity/{soc}
-        # before precompute (2.2s p50, 7.4s p95) — same `Student WHERE
-        # primary_focus IN $depts` scan pattern, evaluated per-request.
-        # Stored on OCCUPATION_PIPELINE so the gather pass becomes a
-        # single-property edge read.
-        focus_rows = session.run(
-            """
-            MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)
-                  -[:DEMANDS]->(occ:Occupation)
-            OPTIONAL MATCH (dept:Department)-[:CONTAINS]->(:Course {college: $college})-[:PREPARES_FOR]->(occ)
-            WITH occ, collect(DISTINCT dept.name) AS aligned_dept_names
-            OPTIONAL MATCH (st:Student)
-            WHERE st.primary_focus IN aligned_dept_names
-              AND EXISTS { (st)-[:ENROLLED_IN]->(:Course {college: $college}) }
-            RETURN occ.soc_code AS soc,
-                   count(DISTINCT st) AS student_count_in_program
-            """,
-            college=college,
-        ).data()
-        focus_by_soc = {r["soc"]: r["student_count_in_program"] for r in focus_rows}
+        # `total_in_program` (primary-focus-gated student count) was
+        # attempted as a 4th precomputed property but the natural
+        # compute query — OPTIONAL MATCH (Student) WHERE primary_focus
+        # IN aligned_dept_names per (college, soc) — OOM'd Neo4j on
+        # the e2-medium VM because the planner can't use the
+        # student_primary_focus index when the IN-list varies per row.
+        # gather.py keeps that count live for now (uses the index
+        # because $departments is bound). See gather.py:
+        # `_gather_student_pipeline` for the deferred precompute
+        # design notes.
 
         # Step 5: assemble UNWIND rows from course_rows (the gating set —
         # only SOCs with course_count > 0). Other counts default to 0
@@ -335,7 +309,6 @@ def materialize_occupation_pipeline(driver: Driver, college: str) -> dict:
                 "course_count": r["course_count"],
                 "employer_count": emp_by_soc.get(r["soc"], 0),
                 "student_count": student_by_soc.get(r["soc"], 0),
-                "student_count_in_program": focus_by_soc.get(r["soc"], 0),
                 "top_codes": r["top_codes"],
             }
             for r in course_rows
@@ -357,7 +330,6 @@ def materialize_occupation_pipeline(driver: Driver, college: str) -> dict:
                 course_count: row.course_count,
                 employer_count: row.employer_count,
                 student_count: row.student_count,
-                student_count_in_program: row.student_count_in_program,
                 top_codes: row.top_codes
             }]->(occ)
             RETURN count(op) AS n
