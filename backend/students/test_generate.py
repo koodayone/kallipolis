@@ -170,7 +170,7 @@ def injected_calibration(monkeypatch):
     )
     monkeypatch.setattr(
         gen,
-        "_load_calibration",
+        "_load_college_metrics",
         lambda college_key: {"ft_ratio": 0.5, "retention_rate": 0.8, "enrollment": 50},
     )
     monkeypatch.setattr(

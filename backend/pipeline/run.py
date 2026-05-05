@@ -156,35 +156,17 @@ async def run_pipeline(
     # The PDF scraper caches its output as {college_key}_enriched.json.
     # When that cache exists, load from it; otherwise serialize the
     # freshly-scraped raw courses to the same cache for the loader.
+    #
+    # We always run the curriculum load below — load_college is idempotent
+    # (MERGE on College/Department/Course nodes), so re-running on a
+    # college that's already loaded is a fast no-op. This keeps a single
+    # code path for both fresh onboards (--from-cache --generate-students
+    # for a college that has cache but no graph nodes yet) and
+    # student-only re-generations (same flags for a college that's
+    # already loaded). Previously a separate early-return path skipped
+    # the load entirely on the latter intent and silently created
+    # orphan Student nodes for the former.
     enriched_cache = _cache_path(college_key, "enriched")
-
-    # If only generating students (with --from-cache), skip the load
-    # stage and jump directly to student generation.
-    if generate_students and from_cache and enriched_cache.exists():
-        logger.info(f"Loading cached enriched data from {enriched_cache}")
-        with open(enriched_cache) as f:
-            enriched_courses = json.load(f)
-        logger.info(f"Loaded {len(enriched_courses)} courses from cache")
-
-        from students.generate import generate_and_load_students
-        logger.info(f"Generating synthetic students (seed={seed})...")
-        driver = get_driver()
-        try:
-            gen_stats = generate_and_load_students(
-                college_key=college_key,
-                courses=enriched_courses,
-                institution_name=config.name,
-                driver=driver,
-                num_students=num_students,
-                seed=seed,
-                config=college.get("student_config"),
-            )
-            logger.info(f"Complete: {gen_stats.students_generated} students, "
-                        f"{gen_stats.enrollments_created} enrollments, "
-                        f"success rate: {gen_stats.success_rate:.1%}")
-        finally:
-            close_driver()
-        return None
 
     if enriched_cache.exists():
         logger.info(f"Loading enriched data from {enriched_cache}")

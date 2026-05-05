@@ -34,6 +34,7 @@ from typing import List, Dict, Tuple, Optional
 from neo4j import Driver
 
 from students.helpers import compute_gpa, compute_primary_focus, course_order_key
+from ontology.crosswalks import top_to_department_name
 from ontology.mcf_lookup import _normalize_course_code
 from pipeline.mcf_key_map import pdf_to_mcf_key
 
@@ -134,12 +135,16 @@ class GenerationStats:
 # ── Calibration loading ──────────────────────────────────────────────────────
 
 
-def _load_calibration(college_key: str) -> Optional[dict]:
-    """Load the older 2-digit calibration for ft_ratio, retention_rate,
-    enrollment. This file is independent of the TOP4/TOP6 grade
-    calibrations and predates them.
+_METRICS_DIR = Path(__file__).parent.parent / "ontology" / "college_metrics"
+
+
+def _load_college_metrics(college_key: str) -> Optional[dict]:
+    """Load DataMart-sourced institutional metrics for the college:
+    enrollment, ft_ratio, retention_rate. Built from
+    StudentHeadcount, UnitLoadSumm, and CourseRetSuccessSumm by
+    `pipeline.build_college_metrics`.
     """
-    path = Path(__file__).parent.parent / "ontology" / "calibrations" / f"{college_key}.json"
+    path = _METRICS_DIR / f"{college_key}.json"
     if path.exists():
         with open(path) as f:
             return json.load(f)
@@ -151,7 +156,7 @@ def _load_top6_calibration(college_key: str) -> Optional[dict]:
     distributions plus parent-TOP4 rollup used by the grade sampler's
     fallback tier.
     """
-    path = Path(__file__).parent.parent / "ontology" / "calibrations" / "top6" / f"{college_key}.json"
+    path = _METRICS_DIR / "top6" / f"{college_key}.json"
     if path.exists():
         with open(path) as f:
             cal = json.load(f)
@@ -406,14 +411,14 @@ def generate_students(
 
     # Load calibrations
     top6_cal = _load_top6_calibration(college_key)
-    old_cal = _load_calibration(college_key)
+    metrics = _load_college_metrics(college_key)
 
-    ft_ratio = cfg.get("ft_ratio", (old_cal or {}).get("ft_ratio", FT_RATIO))
-    retention = cfg.get("retention_rate", (old_cal or {}).get("retention_rate", RETENTION_RATE))
+    ft_ratio = cfg.get("ft_ratio", (metrics or {}).get("ft_ratio", FT_RATIO))
+    retention = cfg.get("retention_rate", (metrics or {}).get("retention_rate", RETENTION_RATE))
 
     if num_students is None:
-        if old_cal and "enrollment" in old_cal:
-            num_students = old_cal["enrollment"]
+        if metrics and "enrollment" in metrics:
+            num_students = metrics["enrollment"]
         else:
             num_students = DEFAULT_STUDENT_COUNT
     logger.info(f"Generating {num_students} students for {college_key}")
@@ -438,16 +443,19 @@ def generate_students(
         valid_codes = [code for code in top6_data if top6_courses.get(code)]
         top6_weights = [top6_data[code]["enrollment"] for code in valid_codes]
 
-        # Build TOP6 -> department mapping from course pools.
-        for code, pool in top6_courses.items():
-            if pool:
-                dept_counter: Dict[str, int] = {}
-                for c in pool:
-                    d = c.get("department", "")
-                    if d:
-                        dept_counter[d] = dept_counter.get(d, 0) + 1
-                if dept_counter:
-                    top6_to_dept[code] = max(dept_counter, key=dept_counter.get)
+        # Build TOP6 -> department mapping from the Chancellor's Office
+        # Taxonomy of Programs Manual via top_to_department_name. This
+        # gives Student.primary_focus the canonical TOP4 program name
+        # (e.g., "English", "Mathematics, General") that the courses
+        # loader uses for Course.department, keeping the two consistent
+        # by construction. Earlier versions tallied the modal Gemini-
+        # extracted department string from enriched.json, which carried
+        # pre-canonicalization noise like "ENGLISH" or "BIOLOGICAL
+        # SCIENCE" and required a post-load rederive pass to clean up.
+        for code in valid_codes:
+            name = top_to_department_name(code)
+            if name:
+                top6_to_dept[code] = name
 
         if not valid_codes:
             logger.warning("No valid TOP6 codes with courses — falling back to flat generation")
