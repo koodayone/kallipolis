@@ -34,6 +34,7 @@ from typing import List, Dict, Tuple, Optional
 from neo4j import Driver
 
 from students.helpers import compute_gpa, compute_primary_focus, course_order_key
+from ontology.crosswalks import top_to_department_name
 from ontology.mcf_lookup import _normalize_course_code
 from pipeline.mcf_key_map import pdf_to_mcf_key
 
@@ -442,16 +443,19 @@ def generate_students(
         valid_codes = [code for code in top6_data if top6_courses.get(code)]
         top6_weights = [top6_data[code]["enrollment"] for code in valid_codes]
 
-        # Build TOP6 -> department mapping from course pools.
-        for code, pool in top6_courses.items():
-            if pool:
-                dept_counter: Dict[str, int] = {}
-                for c in pool:
-                    d = c.get("department", "")
-                    if d:
-                        dept_counter[d] = dept_counter.get(d, 0) + 1
-                if dept_counter:
-                    top6_to_dept[code] = max(dept_counter, key=dept_counter.get)
+        # Build TOP6 -> department mapping from the Chancellor's Office
+        # Taxonomy of Programs Manual via top_to_department_name. This
+        # gives Student.primary_focus the canonical TOP4 program name
+        # (e.g., "English", "Mathematics, General") that the courses
+        # loader uses for Course.department, keeping the two consistent
+        # by construction. Earlier versions tallied the modal Gemini-
+        # extracted department string from enriched.json, which carried
+        # pre-canonicalization noise like "ENGLISH" or "BIOLOGICAL
+        # SCIENCE" and required a post-load rederive pass to clean up.
+        for code in valid_codes:
+            name = top_to_department_name(code)
+            if name:
+                top6_to_dept[code] = name
 
         if not valid_codes:
             logger.warning("No valid TOP6 codes with courses — falling back to flat generation")
