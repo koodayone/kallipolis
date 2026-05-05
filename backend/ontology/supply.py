@@ -51,8 +51,11 @@ _NEO4J_TO_SUPPLY: dict[str, str] = {
     "College of Marin": "Marin",
     # Los Angeles
     "Los Angeles City College": "LA City",
+    "Los Angeles Valley College": "LA Valley",
     "Citrus College": "Citrus",
     "Compton College": "Compton",
+    # San Diego / Imperial
+    "Imperial Valley College": "Imperial",
     # Orange County
     "Coastline College": "Coastline",
     "Cypress College": "Cypress",

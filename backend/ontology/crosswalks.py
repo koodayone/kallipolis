@@ -47,6 +47,7 @@ TOP_CIP_PATH = _DATA_DIR / "top_cip_crosswalk.csv"
 CIP_SOC_PATH = _DATA_DIR / "CIP2020_SOC2018_Crosswalk.xlsx"
 PCAH_SECTORS_PATH = _DATA_DIR / "TOP Codes to Sectors.xlsx"
 NAICS4_DESCRIPTIONS_PATH = _DATA_DIR / "2022_NAICS_Descriptions.xlsx"
+TOP4_NAMES_PATH = _DATA_DIR / "top4_names.json"
 COE_DEMAND_PATH = Path(__file__).parent / "occupational_demand_coe.csv"
 
 CALIBRATIONS_DIR = Path(__file__).parent / "calibrations"
@@ -135,6 +136,61 @@ def load_naics4_titles() -> dict[str, str]:
     _naics4_titles = titles
     logger.info(f"Loaded NAICS-4 titles: {len(titles)} codes")
     return titles
+
+
+# Cache for the TOP4/TOP2 department-name table parsed from the
+# Chancellor's Office Taxonomy of Programs Manual (7th edition, May 2023).
+# Populated lazily by `_load_top4_names`.
+_top4_names: dict[str, dict[str, str]] | None = None
+
+
+def _load_top4_names() -> dict[str, dict[str, str]]:
+    """Load the TOP4 → name and TOP2 → name tables, both extracted from
+    `cc-top-code-manual.pdf` and committed to `data/top4_names.json`.
+
+    Returns `{"top4": {...}, "top2": {...}}`. The TOP4 table is the
+    primary lookup; TOP2 is the fallback for TOP4 codes (like 4930)
+    that don't have a standalone manual entry.
+    """
+    global _top4_names
+    if _top4_names is not None:
+        return _top4_names
+    with open(TOP4_NAMES_PATH) as f:
+        d = json.load(f)
+    _top4_names = {"top4": d["top4"], "top2": d["top2"]}
+    logger.info(
+        f"Loaded TOP4 department names: {len(_top4_names['top4'])} TOP4, "
+        f"{len(_top4_names['top2'])} TOP2"
+    )
+    return _top4_names
+
+
+def top_to_department_name(top6: str | None) -> str | None:
+    """Return the department display name for a course's TOP6 code,
+    derived from the Chancellor's Office Taxonomy of Programs manual.
+
+    Resolution order:
+      1. The TOP4 entry in the manual (e.g., 0835 → "Physical Education").
+      2. The TOP2 entry as a fallback for TOP4 codes that have no
+         standalone entry (e.g., 4930 → use TOP2=49 → "Interdisciplinary
+         Studies"; though `top4_names.json` overrides 4930 itself with
+         the manual subheading "General Studies").
+      3. None when `top6` is missing or doesn't resolve.
+
+    This replaces the prior per-college overlay system. Every course's
+    department name is sourced from a single authoritative document and
+    is uniform across colleges. See
+    `backend/ontology/data/top4_names.json` for the parsed table.
+    """
+    if not top6 or len(top6) < 4 or not top6.isdigit():
+        return None
+    table = _load_top4_names()
+    top4 = top6[:4]
+    name = table["top4"].get(top4)
+    if name:
+        return name
+    # Fall back to TOP2 for codes without a standalone TOP4 entry.
+    return table["top2"].get(top4[:2])
 
 
 def load_top_titles() -> dict[str, str]:

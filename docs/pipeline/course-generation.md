@@ -36,48 +36,36 @@ Every Course→Occupation pathway claim therefore points back to two named exter
 
 ## Department canonicalization
 
-Gemini's per-course `department` field has a structural failure mode. Because the PDF is chunked into 25-page batches and each batch is extracted independently, the same subject surfaces as multiple department strings depending on what subject-header context the chunk happened to include. Foothill's catalog produces all of "Dance", "Dance (DANC)", and "DANC" for the same subject; STAT courses surface under "Mathematics (MATH)"; several colleges' English, Political Science, and Psychology courses pick up unrelated GE-category labels. The atlas UI groups by the raw string, so one real subject fragments into two or three adjacent buckets.
+Gemini's per-course `department` field has a structural failure mode. Because the PDF is chunked into 25-page batches and each batch is extracted independently, the same subject surfaces as multiple department strings depending on what subject-header context the chunk happened to include — Foothill's catalog produces "Dance", "Dance (DANC)", and "DANC" for the same subject; SBCC's noncredit programs surface under shorter labels than their credit twins. The atlas UI groups by the raw string, so one real subject fragments into multiple adjacent buckets.
 
-The pipeline resolves this by making `department` a derived, deterministic, human-readable value computed from the course code's prefix rather than trusted from Gemini. The course code is reliable (Gemini produces clean codes, validated in the course-extraction audit), the prefix identifies the subject, and a committed prefix-to-name mapping supplies the canonical display name. Gemini's `department` output is ignored at load time.
+The pipeline resolves this by making `department` a derived, deterministic value computed from each course's TOP6 code via the official Chancellor's Office Taxonomy of Programs Manual. The TOP6 lookup is already authoritative (`backend/ontology/mcf_lookup.py` matches each course code against the per-college MIS Master Course File); rolling the TOP6 up to its TOP4 program area and labeling it with the manual's canonical name makes department names institutional, uniform across colleges, and immune to per-college overlay drift. Gemini's `department` field is preserved on the Course node as `catalog_section` for traceability but is not used for grouping.
 
-### The mapping
+### The TOP4 name table
 
-The mapping lives at `backend/courses/department_mapping/` and has two layers that merge at resolve time:
+The lookup table lives at `backend/ontology/data/top4_names.json` and is parsed once from `cc-top-code-manual.pdf` (7th ed., May 2023). It contains:
 
-- `backend/courses/department_mapping/base.json` holds prefixes with stable names across California community college catalogs (`MATH → Mathematics`, `ENGL → English`, `BIOL → Biology`). This file is lean — only prefixes whose naming convention is genuinely universal.
-- `backend/courses/department_mapping/overlays/foothill.json` and its siblings hold per-college additions and overrides. College-specific programs (Foothill's `APSM → Apprenticeship: Sheet Metal`) and local naming variants live in each college's overlay file. Resolution is base ∪ overlay with overlay winning on conflict.
+- 223 TOP4 → name entries (`"0502"` → `"Accounting"`, `"1004"` → `"Music"`, `"4930"` → `"General Studies"`)
+- 24 TOP2 → name entries (`"05"` → `"Business and Management"`) for fallback when a TOP4 has no standalone manual entry
 
-Mapping files are validated at load time by `backend/courses/department_mapping/__init__.py`. Invariants the resolver enforces:
+The helper `top_to_department_name(top6)` in `backend/ontology/crosswalks.py` resolves any 6-digit TOP code through this table in two steps: first attempt the TOP4 entry from `top6[:4]`, falling back to the TOP2 entry from `top6[:2]` for the rare TOP4 ranges (like `4930.x`) that the manual treats as a holding bucket without a standalone TOP4 row.
 
-| Invariant | Rationale |
-|---|---|
-| Every value is a non-empty string | Rejects malformed entries |
-| No value equals its key | A bare code like `"STAT"` as a display label is a UI failure |
-| No value ends with a parenthesized all-caps code | Rejects the `"Dance (DANC)"` fragmentation pattern at the source |
-| No value is shorter than three characters | Guards against accidental truncation to initials |
-| Two prefixes mapping to the same name must be whitelisted in `_meta.allowed_collisions` | Intentional shared names (e.g., `POLI` and `POLS` both resolving to `"Political Science"` for old and new CCCN numbering) are explicit; accidental collisions fail loudly |
-
-### Seeding and promotion
-
-`tools/courses-audit/seed_department_mapping.py` produces a candidate overlay for a college that does not yet have one. The seeder scans the catalog PDF with pypdf for every parenthesized-prefix occurrence (`(DANC)`, `(V T)`, and so on), collects a short context snippet around each match, and sends the aggregated evidence to `claude-sonnet-4-6` with a prompt that asks for the canonical California community college department name per prefix. One API call per college, typically under 15k input tokens, bounded at roughly $0.01 per college. The output is written to a sibling `.proposed.json` file next to the eventual overlay location, meant for operator review before promotion.
-
-The division of labor is deliberate: pypdf gathers raw evidence without committing to any single catalog layout, and the LLM distills the messy observations into canonical names using the catalog's own wording. Course titles are a secondary backup signal used only when PDF text is sparse; they are never the primary source, because names inferred from titles would be derived rather than authoritative.
-
-`tools/courses-audit/promote_overlays.py` promotes reviewed proposals to committed overlays. It re-validates the proposal against the resolver's invariants, detects any legitimate shared-name collisions and auto-adds them to `_meta.allowed_collisions`, stamps `_meta.last_reviewed`, and renames the proposal file to its final committed form. Proposals that fail invariants are reported and not promoted — those are the ones that need human inspection.
+The table is the single authoritative source. There is no per-college curation, no overlay file, and no "Unmapped: X" escape hatch. Courses without a MCF TOP6 — about 5% of catalog-extracted rows, typically real MCF lag for new GE codes — get an empty department and are filtered out of the courses API by the `WHERE c.top_code IS NOT NULL` clause in `backend/courses/api.py`.
 
 ### Stage integration
 
-Canonicalization runs between course extraction and the Neo4j load. `backend/pipeline/run.py` calls `_canonicalize_departments` on the enriched course list: each course's prefix is extracted from its code, looked up in the resolved mapping, and the `department` field is rewritten to the canonical value. Courses whose codes are malformed and unparseable pass through with a surface cleanup — any trailing parenthesized-code suffix on the Gemini-emitted department string is stripped so a single unparseable course does not create a singleton UI bucket with a fragmented label.
+The Neo4j loader at `backend/courses/load.py` reads each enriched course's TOP6 from `lookup_top6_per_course`, resolves the department name through `top_to_department_name`, and writes both `Course.top_code` and `Course.department` in a single MERGE. Department nodes are MERGEd on the resolved name and linked via `College -[:OFFERS]→ Department -[:CONTAINS]→ Course`. The same load-tail cleanup that previously protected against overlay drift remains in place: `CONTAINS` edges whose Department name disagrees with the Course's current `department` are deleted, `OFFERS` edges to empty Departments are deleted, and orphan Department nodes are detach-deleted after each load.
 
-The Neo4j loader at `backend/courses/load.py` then creates Department nodes MERGEd on the canonical name and runs three cleanup Cypher queries after the load: `CONTAINS` edges where the Department name disagrees with the Course's current `department` property are deleted, `OFFERS` edges from the College to Departments that no longer hold any of its courses are deleted, and orphan Department nodes with no outbound `CONTAINS` edges are detached and deleted. This makes the canonicalization converge cleanly even when a college was previously loaded under fragmented labels.
+### Catalog-extraction artifact filter
 
-The onboarding workflow at `.claude/skills/onboard-college/SKILL.md` adds a preflight check that requires the overlay file to exist before the pipeline can progress past Stage 2, preventing accidental loads that would propagate fragmented department data into the graph.
+A separate problem the prior overlay system absorbed silently: Gemini's catalog scrape sometimes emits "courses" that are actually credential listings ("Accounting, Associate in Science"), table-of-contents fragments ("10: Welcome"), C-IDs ("C1000"), or Greek-letter visual-duplicate codes ("ΑΝΤΗ 102"). The TOP4 pivot exposed these because they consistently fail to resolve to a TOP6 and thus to a department.
+
+`backend/courses/extraction_filter.py::is_artifact(code, name)` is the deterministic rejection rule. It runs at extraction time inside `backend/courses/scrape_pdf.py` and again as a safety net in `backend/pipeline/run.py` on the cached enriched.json. Categories it rejects: pure-numeric codes (`"104"`), prefix-only codes (`"THEA"`), question-mark fragments, non-ASCII alpha (Greek-letter twins), names containing degree-program markers (`"Associate in Arts"`, `"Skills Competency Award"`, `"Certificate of Achievement"`), C-ID patterns (`"C1000"`, `"Communication C1000"`), and non-CCC institutional prefixes (`"UNR ENG"` for Lassen's Univ. of Nevada-Reno cross-enrollment).
+
+The filter and the audit at `tools/courses-audit/classify_unmapped.py` share the same predicates so what's filtered at load time matches what the audit would report later.
 
 ### What this produces
 
-After canonicalization, the atlas UI renders a single clean department bucket per subject. Across the eight featured colleges, the graph holds 611 canonical Department nodes down from roughly 700 fragmented strings Gemini originally emitted. Soft-failure coverage is high: approximately 0.2% of courses across the featured colleges have codes that extract-prefix cannot parse (catalog-specific annotation markers, slash-alternate numberings, upstream Gemini glitches), and those courses pass through with their lightly-cleaned Gemini labels rather than being dropped from the graph.
-
-The CI test `test_every_prefix_resolves` in `backend/courses/test_department_mapping.py` enforces the human-readable invariant across every onboarded college on every run, so a prefix introduced by a catalog update without a mapping entry fails CI rather than silently producing a `"Unmapped: PREFIX"` placeholder in production.
+After the pivot, every visible Course at every onboarded college has a department name traceable to a specific row in `cc-top-code-manual.pdf`. The 22 featured colleges have between 47 and 120 distinct TOP4 program names each (SBCC at the high end, Berkeley City at the low end), zero `Unmapped: X` placeholders, and zero off-manual department names in the graph. Cross-college, the same TOP4 code resolves to the same name everywhere — Music at Foothill is the same Department node as Music at SBCC, structurally enforced.
 
 ## Provenance and quality signals
 
