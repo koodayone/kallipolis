@@ -94,7 +94,7 @@ def build_executive_summary(
     s2 = (
         f"Partnerships for this occupation would be supported by "
         f"{college}'s {course_phrase} that prepare for it, "
-        f"{student_phrase} enrolled in departments that offer those courses, "
+        f"{student_phrase} enrolled in programs that offer those courses, "
         f"and the {employer_phrase} that hire for this role."
     )
 
@@ -191,21 +191,21 @@ def build_curriculum_alignment(
     if n_departments == 1:
         s1 = (
             "According to the SOC-to-TOP institutional crosswalk maintained by "
-            "the California Chancellor's Office, the department below prepares "
+            "the California Chancellor's Office, the program below prepares "
             f"students for SOC {soc_code}."
         )
         s2 = (
-            "This department develops the core competencies required to perform "
+            "This program develops the core competencies required to perform "
             f"the role of {soc_title}."
         )
     else:
         s1 = (
             "According to the SOC-to-TOP institutional crosswalk maintained by "
-            "the California Chancellor's Office, the departments below prepare "
+            "the California Chancellor's Office, the programs below prepare "
             f"students for SOC {soc_code}."
         )
         s2 = (
-            "These departments develop the core competencies required to perform "
+            "These programs develop the core competencies required to perform "
             f"the role of {soc_title}."
         )
     return f"{s1} {s2}"
@@ -220,7 +220,7 @@ def build_student_impact(
     student_phrase = fmt_count(total_in_aligned_departments, "student")
     s1 = (
         f"{student_phrase} {fmt_are(total_in_aligned_departments)} enrolled in "
-        f"the departments whose courses align with SOC {soc_code}."
+        f"the programs whose courses align with SOC {soc_code}."
     )
     s2 = (
         "Shown below are students that are most strongly prepared with the "

@@ -80,6 +80,20 @@ export default function CoursesView({ school, onBack }: Props) {
     setDepartments(data.map(mapDept).sort((a, b) => a.department.localeCompare(b.department)));
   }, [school.name]);
 
+  // Eager-load every subdiscipline's courses after the initial dept-summary
+  // load lands. Powers client-side substring search on `course.name` /
+  // `course.code` without a backend round-trip per keystroke. Browser
+  // concurrency limits naturally throttle the parallel `getCourses` fan-out
+  // (~6-10 in flight at a time); for our largest college (SBCC, ~120 depts)
+  // the full preload completes in seconds. `ensureCoursesLoaded` dedupes so
+  // re-firing is harmless.
+  useEffect(() => {
+    if (departments.length === 0) return;
+    departments.forEach((d) => { ensureCoursesLoaded(d.department); });
+    // ensureCoursesLoaded is stable per school; effect re-runs on dept-list change.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [departments]);
+
   const queryFn = useCallback(async (query: string, college: string) => {
     const resp = await queryCourses(query, college);
     return { items: resp.courses.map(mapCourse), message: resp.message };
@@ -160,7 +174,7 @@ export default function CoursesView({ school, onBack }: Props) {
   const renderInitialContent = useCallback(() => (
     <div style={{ marginTop: "16px" }}>
       <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.35)", marginBottom: "12px" }}>
-        {departments.length} departments · {totalCourses.toLocaleString()} courses
+        {departments.length} programs · {totalCourses.toLocaleString()} courses
       </p>
       <DepartmentList
         departments={departments} school={school}
@@ -173,24 +187,54 @@ export default function CoursesView({ school, onBack }: Props) {
 
   const renderSearchContent = useCallback((q: string) => {
     const lower = q.toLowerCase();
-    const filtered = departments.filter(d => d.department.toLowerCase().includes(lower));
-    if (filtered.length === 0) {
+    // Course-centric filter. A subdiscipline shows up in results when:
+    //   (a) its NAME contains the query — show all its courses, or
+    //   (b) any of its COURSES has a name or code containing the query —
+    //       show only those matching courses.
+    // The subdiscipline-name match is the secondary signal so that typing
+    // "math" surfaces the Mathematics subdiscipline and its courses, while
+    // typing "calculus" surfaces only the calculus courses (regardless of
+    // which subdiscipline they sit under).
+    const filteredDepts: DepartmentSummary[] = [];
+    const filteredCoursesMap: Record<string, CourseSummary[]> = {};
+    let totalMatchedCourses = 0;
+    for (const dept of departments) {
+      const deptMatches = dept.department.toLowerCase().includes(lower);
+      const deptCourses = deptCoursesMap[dept.department] ?? [];
+      const matchingCourses = deptMatches
+        ? deptCourses
+        : deptCourses.filter(c =>
+            c.name.toLowerCase().includes(lower) ||
+            c.code.toLowerCase().includes(lower)
+          );
+      // Skip subdisciplines that contribute nothing. If the subdiscipline
+      // name matches but its courses haven't loaded yet, we keep it so it
+      // surfaces under partial-load (count will fill in once courses arrive).
+      const courseCount = deptMatches && deptCourses.length === 0
+        ? dept.courseCount
+        : matchingCourses.length;
+      if (matchingCourses.length === 0 && !deptMatches) continue;
+      filteredDepts.push({ department: dept.department, courseCount });
+      filteredCoursesMap[dept.department] = matchingCourses;
+      totalMatchedCourses += matchingCourses.length;
+    }
+    if (filteredDepts.length === 0) {
       return (
         <p style={{ fontFamily: FONT, fontSize: "14px", color: "rgba(255,255,255,0.35)", padding: "40px 0", textAlign: "center" }}>
-          No results found.
+          No courses match &ldquo;{q}&rdquo;.
         </p>
       );
     }
-    const allExpanded = new Set(filtered.map(d => d.department));
+    const allExpanded = new Set(filteredDepts.map(d => d.department));
     return (
       <div style={{ marginTop: "16px" }}>
-        <SearchDepartmentLoader departments={filtered} ensureLoaded={ensureCoursesLoaded} />
+        <SearchDepartmentLoader departments={filteredDepts} ensureLoaded={ensureCoursesLoaded} />
         <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.35)", marginBottom: "12px" }}>
-          {filtered.length} department{filtered.length !== 1 ? "s" : ""} matching &ldquo;{q}&rdquo;
+          {totalMatchedCourses.toLocaleString()} course{totalMatchedCourses !== 1 ? "s" : ""} in {filteredDepts.length} program{filteredDepts.length !== 1 ? "s" : ""} matching &ldquo;{q}&rdquo;
         </p>
         <DepartmentList
-          departments={filtered} school={school}
-          expandedDepts={allExpanded} deptCoursesMap={deptCoursesMap}
+          departments={filteredDepts} school={school}
+          expandedDepts={allExpanded} deptCoursesMap={filteredCoursesMap}
           loadingDepts={loadingDepts}
           onDeptExpand={handleDeptExpand}
         />
@@ -364,7 +408,7 @@ function DepartmentList({
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
       <ColumnHeaders
-        columns={[{ label: "Department", width: "1fr" }, { label: "Courses", width: "auto", align: "right" }]}
+        columns={[{ label: "Program (TOP4)", width: "1fr" }, { label: "Courses", width: "auto", align: "right" }]}
         gridTemplateColumns="24px 1fr auto"
         brandColor={school.brandColorLight}
       />

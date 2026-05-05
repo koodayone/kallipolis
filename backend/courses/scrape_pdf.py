@@ -33,6 +33,7 @@ from google import genai
 from google.genai import types
 from pypdf import PdfReader, PdfWriter
 
+from courses.extraction_filter import filter_extracted
 from courses.scrape import RawCourse
 
 logger = logging.getLogger(__name__)
@@ -361,7 +362,7 @@ def _write_extraction_meta(
     meta = {
         "_meta": {
             "extractor": "scrape_pdf",
-            "extractor_version": 3,
+            "extractor_version": 4,
             "extracted_at": datetime.now(timezone.utc).isoformat(),
             "pdf_url": pdf_url,
         },
@@ -381,6 +382,8 @@ def _write_extraction_meta(
         "quality": {
             "courses_extracted": len(enriched),
             "raw_courses_before_dedup": stats.get("raw_course_count", len(enriched)),
+            "filter_dropped": stats.get("filter_dropped", 0),
+            "filter_drop_reasons": stats.get("filter_drop_reasons", {}),
             "missing_description": missing_description,
             "missing_department": missing_department,
         },
@@ -522,6 +525,26 @@ async def scrape_pdf_catalog(
     unique_courses = _deduplicate_courses(all_courses_raw)
     logger.info(f"After deduplication: {len(unique_courses)} unique courses")
 
+    # Step 4.5: Filter Gemini's output for catalog-extraction artifacts.
+    # Gemini's system prompt asks it to skip program-requirement tables,
+    # but it routinely violates that when a credentials section has
+    # prose descriptions. The deterministic filter in
+    # `courses.extraction_filter` rejects rows whose code/name shape
+    # matches a known artifact pattern (pure-numeric codes, degree-name
+    # markers, C-IDs, non-CCC prefixes). The same predicates back the
+    # `tools/courses-audit/classify_unmapped.py` audit, so what's
+    # filtered here matches what the audit would report later.
+    kept, dropped = filter_extracted(unique_courses)
+    drop_reason_counts: dict[str, int] = {}
+    for _, reason in dropped:
+        drop_reason_counts[reason] = drop_reason_counts.get(reason, 0) + 1
+    if dropped:
+        logger.info(
+            f"Extraction filter dropped {len(dropped)} artifact row(s): "
+            f"{drop_reason_counts}"
+        )
+    unique_courses = kept
+
     # Step 5: Cache enriched data directly
     enriched = [_to_enriched_dict(c) for c in unique_courses]
 
@@ -542,6 +565,8 @@ async def scrape_pdf_catalog(
             "batches_rate_limited": rate_limited_count,
             "extraction_seconds": round(time.monotonic() - started_at, 2),
             "raw_course_count": len(all_courses_raw),
+            "filter_dropped": len(dropped),
+            "filter_drop_reasons": drop_reason_counts,
         },
     )
 

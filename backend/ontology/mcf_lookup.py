@@ -25,7 +25,7 @@ def _strip_punctuation(code: str) -> str:
     """Strip punctuation that varies arbitrarily across MCF formats and
     catalog-scraper artifacts.
 
-    Two distinct phenomena collapse here:
+    Three distinct phenomena collapse here:
 
       1. MCF separator drift: some colleges' MCFs separate the alpha
          prefix from the numeric body with hyphens ("ACR-20", "ENGL-129"),
@@ -42,12 +42,26 @@ def _strip_punctuation(code: str) -> str:
          "*" and a few peers here closes the symmetric gap on the
          catalog side.
 
+      3. Cross-listing slashes: catalogs render multi-discipline
+         cross-listed courses with an inline slash ("M/LAT 030A",
+         "MM/AN 001A", "SOC/ETHS 107"). The corresponding MCF row
+         uses a fused prefix with no slash ("MLAT030A", "MMAN001A",
+         "SOC107" / "ETHS107"). Stripping the slash lets the catalog's
+         shape collapse to whichever fused/single-prefix variant the
+         MCF chose. This was 90% of berkeleycc's unmapped courses
+         and 31 at sbcc.
+
+      4. Articulation markers: some catalogs append `#` to flag
+         courses that articulate to the CSU/UC GE pattern (Shasta's
+         "ASL 2#", "ASL 3#"). The `#` is a display flag, not part
+         of the course code.
+
     The character set is intentionally narrow — only punctuation that
     has been observed as either an MCF separator or a scrape artifact.
     Periods are left to the caller's existing rstrip pass; alphanumerics
     and whitespace pass through.
     """
-    return re.sub(r"[\-*†§¶]", "", code)
+    return re.sub(r"[\-*†§¶/#]", "", code)
 
 
 def _strip_numeric_padding(code: str) -> str:
@@ -82,6 +96,67 @@ def _strip_numeric_padding(code: str) -> str:
     """
     m = re.match(r"^([A-Z]+)0+(\d+[A-Z]*)$", code)
     return m.group(1) + m.group(2) if m else code
+
+
+# English-name-prefix → MCF short-prefix candidates.
+#
+# Lassen's catalog renders course codes with the full English subject
+# name as the prefix ("Administration of Justice 12", "Biology 1",
+# "Music 6") while the MCF uses the short alpha prefix ("AJ12", "BIOL1",
+# "MUS6"). Without a translation step, every Lassen GE course misses
+# its TOP6.
+#
+# Each entry is a list of plausible short-prefix candidates because the
+# MCF convention varies across colleges: some use BIO, others BIOL;
+# some COMM, some COMMC for the C-ID-aligned variant. The lookup tries
+# each candidate in order and accepts the first MCF hit. If none match,
+# the original (whitespace-stripped) form is used and will fall through
+# to whatever the rest of the lookup chain produces.
+_FULLNAME_TO_SHORT_PREFIXES: dict[str, tuple[str, ...]] = {
+    "ADMINISTRATIONOFJUSTICE": ("AJ",),
+    "AGRICULTURE":              ("AGR", "AGRI"),
+    "ANTHROPOLOGY":             ("ANTH", "ANTHR"),
+    "ASTRONOMY":                ("ASTR",),
+    "BIOLOGY":                  ("BIOL", "BIO"),
+    "CHEMISTRY":                ("CHEM",),
+    "CHILDDEVELOPMENT":         ("CD", "CHDEV"),
+    "COMMUNICATION":            ("COMM", "COMMC", "SPCH"),
+    "ECONOMICS":                ("ECON", "ECONC"),
+    "ENGLISH":                  ("ENGL", "ENGLC", "ENG"),
+    "ETHNICSTUDIES":            ("ES", "ETHST", "ETHS"),
+    "GEOGRAPHY":                ("GEOG",),
+    "GEOLOGY":                  ("GEOL",),
+    "HISTORY":                  ("HIST", "HISTC"),
+    "HUMANITIES":               ("HUM", "HUMAN"),
+    "MATHEMATICS":              ("MATH",),
+    "MUSIC":                    ("MUS", "MUSIC"),
+    "PHILOSOPHY":               ("PHIL",),
+    "PHYSICALSCIENCE":          ("PHSC", "PHYSC"),
+    "PHYSICS":                  ("PHYS",),
+    "POLITICALSCIENCE":         ("POLSC", "PLSC", "POSCI", "POLS"),
+    "PSYCHOLOGY":               ("PSY", "PSYC", "PSYCC", "PSYCH"),
+    "SOCIOLOGY":                ("SOC", "SOCSC"),
+    "SPEECH":                   ("SPCH", "COMM", "COMMC"),
+    "STATISTICS":               ("MATH", "STATC"),
+}
+
+
+def _expand_fullname_prefix(code: str) -> tuple[str, ...]:
+    """Return short-prefix variants if the (whitespace-stripped) code starts
+    with an English subject name; an empty tuple otherwise.
+
+    The catalog form is "Biology 1"; after `re.sub(r"\\s+", "", code)`
+    that's "BIOLOGY1". For each known English prefix, build the candidate
+    code by replacing the English prefix with each short candidate and
+    return the list. The caller (mcf_lookup) tries each candidate against
+    its MCF index until one matches.
+    """
+    upper = code.upper()
+    for english, shorts in _FULLNAME_TO_SHORT_PREFIXES.items():
+        if upper.startswith(english):
+            tail = upper[len(english):]
+            return tuple(s + tail for s in shorts)
+    return ()
 
 
 def _normalize_course_code(code: str) -> str:
@@ -172,6 +247,85 @@ def _build_prefix_scan_index() -> dict[str, list[tuple[str, str]]]:
     return by_college
 
 
+# Alternate alpha-prefix variants: when the catalog uses one prefix
+# (PSY, COMM) but the MCF stores the same subject under a related
+# variant (PSYC/PSYCC, COMMC), the lookup should try the alternates
+# before giving up. Mapping is symmetric — the lookup attempts each
+# alternate in order and accepts the first MCF hit.
+_ALTERNATE_PREFIX_VARIANTS: dict[str, tuple[str, ...]] = {
+    "PSY":   ("PSYC", "PSYCC", "PSYCH"),
+    "PSYC":  ("PSY", "PSYCC", "PSYCH"),
+    "PSYCH": ("PSYCC", "PSYC", "PSY"),
+    "COMM":  ("COMMC", "SPCH"),
+    "COMMC": ("COMM", "SPCH"),
+    "SPCH":  ("COMM", "COMMC"),
+    "ECON":  ("ECONC",),
+    "ECONC": ("ECON",),
+    "ENGL":  ("ENGLC", "ENG"),
+    "ENGLC": ("ENGL", "ENG"),
+    "HIST":  ("HISTC",),
+    "HISTC": ("HIST",),
+    "MATH":  ("MATHC", "STATC"),
+    "STAT":  ("STATC", "MATH"),
+    "POLS":  ("POLSC", "POSCI", "PLSC"),
+    "POLSC": ("POLS", "POSCI", "PLSC"),
+    "BIO":   ("BIOL",),
+    "BIOL":  ("BIO",),
+    "CS":    ("COMSC", "CIS"),
+    "ART":   ("ARTHC", "ARTNC"),
+    "MUS":   ("MUSIC", "MUSNC"),
+}
+
+
+def _alternate_prefix_candidates(normalized: str) -> tuple[str, ...]:
+    """Build candidate codes by swapping the alpha prefix for each known
+    alternate. Returns empty if the prefix has no registered alternates."""
+    m = re.match(r"^([A-Z]+)(\d.*)$", normalized)
+    if not m:
+        return ()
+    prefix, rest = m.group(1), m.group(2)
+    alts = _ALTERNATE_PREFIX_VARIANTS.get(prefix, ())
+    return tuple(alt + rest for alt in alts)
+
+
+def _slash_split_candidates(raw_code: str) -> tuple[str, ...]:
+    """For an "X/Y N" cross-listed catalog code, return the per-prefix
+    candidates ("XN", "YN") in normalized form.
+
+    Two MCF conventions exist for cross-listings:
+
+      - Fused prefix: berkeley city files "M/LAT 030A" as "MLAT030A".
+        The slash-strip in `_strip_punctuation` produces this form
+        directly, so the exact-match lookup already handles it.
+      - Per-prefix: santa barbara files "SOC/ETHS 107" as TWO rows:
+        one under "SOC107" and one under "ETHS107", with the same
+        TOP code. The fused form "SOCETHS107" is absent. The
+        per-prefix candidates from this helper close that gap.
+
+    Returns an empty tuple if the raw code has no slash.
+    """
+    m = re.match(r"^([A-Z]+)/([A-Z]+)\s*(\d+[A-Z]*)$", raw_code.upper().strip())
+    if not m:
+        return ()
+    a, b, num = m.group(1), m.group(2), m.group(3)
+    return (
+        _strip_numeric_padding(a + num),
+        _strip_numeric_padding(b + num),
+    )
+
+
+def _decimal_suffix_parent(normalized: str) -> str | None:
+    """If the normalized code carries a decimal sub-numbering (Lassen's
+    "FS60.1" Cal Fire modules, "PEAC5A.02" athletic-team sections),
+    return the parent code without the decimal suffix; None otherwise.
+
+    The decimal in these catalogs marks a section/module of the parent
+    course, which is what carries the institutional TOP code in the MCF.
+    """
+    m = re.match(r"^([A-Z]+\d+[A-Z]*)\.\d+", normalized)
+    return m.group(1) if m else None
+
+
 def lookup_top6(course_codes: list[str], college: str) -> set[str]:
     """Look up exact TOP6 codes for a list of course codes at a specific college.
 
@@ -206,13 +360,64 @@ def lookup_top6_per_course(
             out[code] = None
             continue
 
-        # Exact match
+        # 1. Exact match
         top6 = mcf.get((normalized, college_norm))
         if top6:
             out[code] = top6
             continue
 
-        # Prefix fallback (handles catalog "CT100" matching MCF "CT100AB")
+        # 1b. Slash-split fallback for catalogs that file cross-listed
+        # courses under each prefix separately ("SOC/ETHS 107" → both
+        # "SOC107" and "ETHS107" are MCF rows; the slash-strip already
+        # handled the fused-form variant in step 1).
+        hit: str | None = None
+        for cand in _slash_split_candidates(code):
+            t = mcf.get((cand, college_norm))
+            if t:
+                hit = t
+                break
+        if hit:
+            out[code] = hit
+            continue
+
+        # 2. Fullname-prefix fallback. Lassen's catalog renders codes as
+        # "Biology 1"; whitespace-strip yields "BIOLOGY1". Translate the
+        # English subject prefix to MCF short-prefix candidates and try
+        # each. Each candidate is re-normalized (zero-padding pass) so
+        # "MUSIC6" → "MUS6" matches MCF entries.
+        hit = None
+        for cand in _expand_fullname_prefix(re.sub(r"\s+", "", code.upper())):
+            cand_norm = _strip_numeric_padding(_strip_punctuation(cand))
+            t = mcf.get((cand_norm, college_norm))
+            if t:
+                hit = t
+                break
+        if hit:
+            out[code] = hit
+            continue
+
+        # 3. Alternate-prefix fallback. Catalog has "PSY 18" but Lassen's
+        # MCF files it as "PSYC18"; swap the alpha prefix and retry.
+        hit = None
+        for cand in _alternate_prefix_candidates(normalized):
+            t = mcf.get((cand, college_norm))
+            if t:
+                hit = t
+                break
+        if hit:
+            out[code] = hit
+            continue
+
+        # 4. Decimal-suffix parent fallback. "FS 60.1" → look up "FS60";
+        # the parent course in the MCF carries the institutional TOP6.
+        parent = _decimal_suffix_parent(normalized)
+        if parent:
+            t = mcf.get((parent, college_norm))
+            if t:
+                out[code] = t
+                continue
+
+        # 5. Prefix-startswith fallback (catalog "CT100" → MCF "CT100AB").
         matched: str | None = None
         for mcf_id, mcf_top6 in college_courses:
             if mcf_id.startswith(normalized):

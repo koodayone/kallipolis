@@ -19,7 +19,7 @@ from neo4j import Driver
 
 from ontology.mcf_lookup import lookup_top6_per_course
 from ontology.prepares_for import materialize_prepares_for
-from ontology.crosswalks import is_cte_top6
+from ontology.crosswalks import is_cte_top6, top_to_department_name
 from ontology.regions import ensure_college_region_link
 
 logger = logging.getLogger(__name__)
@@ -91,15 +91,49 @@ def load_college(
             state=config.state,
         )
 
-        # ── Collect unique departments ────────────────────────────────────
-        departments: set[str] = set()
+        # ── Resolve TOP6 first so `department` can be derived from it ─────
+        # The Department a Course belongs to is sourced from the
+        # Chancellor's Office Taxonomy of Programs Manual (TOP4 → name),
+        # not from Gemini's catalog-section guess or a per-college
+        # overlay. See `ontology.crosswalks.top_to_department_name` and
+        # `ontology/data/top4_names.json` (parsed from the manual).
+        # Courses without a MCF TOP6 (real MCF lag, ~5%) get
+        # `department = ""` — the API layer filters them out of the
+        # visible course list.
+        code_to_top6 = lookup_top6_per_course(
+            [c.get("code", "").strip() for c in courses if c.get("code")],
+            config.name,
+        )
 
+        # The catalog-section header Gemini extracted is preserved on
+        # `Course.catalog_section` for traceability; it is NOT used for
+        # grouping or display.
+        course_records = []
         for course in courses:
-            dept = course.get("department", "").strip()
-            if dept:
-                departments.add(dept)
+            code = course.get("code", "").strip()
+            name = course.get("name", "").strip()
+            if not code or not name:
+                continue
+            top6 = code_to_top6.get(code) or ""
+            dept = top_to_department_name(top6) or ""
+            course_records.append({
+                "code": code,
+                "name": name,
+                "top_code": top6,
+                "department": dept,
+                "is_cte": is_cte_top6(top6) if top6 else False,
+                "catalog_section": course.get("department", "").strip(),
+                "units": course.get("units", ""),
+                "description": course.get("description", ""),
+                "prerequisites": course.get("prerequisites", ""),
+                "transfer_status": course.get("transfer_status", ""),
+                "learning_outcomes": course.get("learning_outcomes", []),
+                "course_objectives": course.get("course_objectives", []),
+                "url": course.get("url", ""),
+            })
 
         # ── Create Departments & link to College ──────────────────────────
+        departments = {r["department"] for r in course_records if r["department"]}
         for dept_name in departments:
             session.run(
                 """
@@ -112,22 +146,24 @@ def load_college(
             )
             stats.departments_created += 1
 
-        # ── Create/Update Courses ─────────────────────────────────────────
-        for course in courses:
-            code = course.get("code", "").strip()
-            name = course.get("name", "").strip()
-            dept = course.get("department", "").strip()
-
-            if not code or not name:
-                continue
-
-            # MERGE on (code, institution) — unique per college
+        # ── Create/Update Courses (single MERGE writes all properties) ────
+        # All Course properties — including the manual-grounded
+        # `department`, the `top_code` from MCF lookup, and the `is_cte`
+        # flag from the PCAH TOP-to-Sectors mapping — are written in one
+        # MERGE so the node is fully populated by the time the
+        # CONTAINS edge to its Department node is created. `top_code` is
+        # the empty string when MCF lookup returned None (real MCF lag);
+        # callers that filter on it should test for "" and NULL alike.
+        for r in course_records:
             session.run(
                 """
                 MERGE (c:Course {code: $code, college: $college})
-                ON CREATE SET
+                SET
                     c.name = $name,
                     c.department = $department,
+                    c.catalog_section = $catalog_section,
+                    c.top_code = $top_code,
+                    c.is_cte = $is_cte,
                     c.units = $units,
                     c.description = $description,
                     c.prerequisites = $prerequisites,
@@ -135,42 +171,37 @@ def load_college(
                     c.learning_outcomes = $learning_outcomes,
                     c.course_objectives = $course_objectives,
                     c.url = $url
-                ON MATCH SET
-                    c.name = $name,
-                    c.department = $department,
-                    c.units = $units,
-                    c.description = $description,
-                    c.prerequisites = $prerequisites,
-                    c.transfer_status = $transfer_status,
-                    c.learning_outcomes = $learning_outcomes,
-                    c.course_objectives = $course_objectives,
-                    c.url = $url
-                RETURN c
                 """,
-                name=name,
-                code=code,
-                department=dept,
-                units=course.get("units", ""),
-                description=course.get("description", ""),
-                prerequisites=course.get("prerequisites", ""),
-                transfer_status=course.get("transfer_status", ""),
-                learning_outcomes=course.get("learning_outcomes", []),
-                course_objectives=course.get("course_objectives", []),
+                name=r["name"],
+                code=r["code"],
+                department=r["department"],
+                catalog_section=r["catalog_section"],
+                top_code=r["top_code"],
+                is_cte=r["is_cte"],
+                units=r["units"],
+                description=r["description"],
+                prerequisites=r["prerequisites"],
+                transfer_status=r["transfer_status"],
+                learning_outcomes=r["learning_outcomes"],
+                course_objectives=r["course_objectives"],
                 college=config.name,
-                url=course.get("url", ""),
+                url=r["url"],
             )
             stats.courses_created += 1
+            if r["top_code"]:
+                stats.courses_with_top_code += 1
 
-            # Link Course → Department
-            if dept:
+            # Link Course → Department (only when the course has a TOP6
+            # and therefore a manual-grounded department).
+            if r["department"]:
                 session.run(
                     """
                     MATCH (d:Department {name: $dept})
                     MATCH (c:Course {code: $code, college: $inst})
                     MERGE (d)-[:CONTAINS]->(c)
                     """,
-                    dept=dept,
-                    code=code,
+                    dept=r["department"],
+                    code=r["code"],
                     inst=config.name,
                 )
                 stats.relationships_created += 1
@@ -180,62 +211,14 @@ def load_college(
     # running either loader produces the edge consistently.
     ensure_college_region_link(driver, config.name)
 
-    # ── Set Course.top_code from MCF (per-course TOP6) ────────────────────
-    # The Master Course File is the Chancellor's-Office authoritative
-    # course-to-TOP6 assignment (one TOP per course per college). Storing
-    # it as a property on Course nodes is the precondition for
-    # materialize_prepares_for, which derives Course→Occupation edges
-    # from this property + the TOP6→SOC crosswalk. Idempotent via SET.
-    code_to_top6 = lookup_top6_per_course(
-        [c.get("code", "").strip() for c in courses if c.get("code")],
-        config.name,
-    )
-    # Build a single batch with both top_code (where MCF has a value) and
-    # is_cte (computed for every course). is_cte uses set membership in the
-    # PCAH "TOP Codes to Sectors" file — the authoritative institutional
-    # definition of CTE scope; see ontology.crosswalks.is_cte_top6.
-    course_meta_batch = [
-        {
-            "code": code,
-            "top_code": top6 or "",
-            "is_cte": is_cte_top6(top6),
-        }
-        for code, top6 in code_to_top6.items()
-    ]
-    stats.courses_with_top_code = sum(1 for r in course_meta_batch if r["top_code"])
-    if course_meta_batch:
-        with driver.session() as session:
-            # Two SET operations so courses without a TOP6 still get is_cte=false
-            # (set unconditionally) without overwriting top_code with empty string.
-            session.run(
-                """
-                UNWIND $batch AS row
-                MATCH (c:Course {code: row.code, college: $college})
-                SET c.is_cte = row.is_cte
-                """,
-                batch=course_meta_batch,
-                college=config.name,
-            )
-            session.run(
-                """
-                UNWIND $batch AS row
-                MATCH (c:Course {code: row.code, college: $college})
-                WHERE row.top_code <> ''
-                SET c.top_code = row.top_code
-                """,
-                batch=course_meta_batch,
-                college=config.name,
-            )
-
     # ── Stale edge + orphan cleanup ───────────────────────────────────────
     # The loader MERGEs nodes but is additive on relationships — it never
-    # deletes old CONTAINS or OFFERS edges. When Stage 2.5 renames a
-    # department (e.g., "Dance (DANC)" → "Dance") the Course node's
-    # `department` property updates in place, but the old CONTAINS edge
-    # from the stale "Dance (DANC)" Department node to that Course is
-    # still there, which keeps the stale Department from being detected
-    # as an orphan. This three-step sweep repairs the drift on every
-    # load:
+    # deletes old CONTAINS or OFFERS edges. A course's `department`
+    # property can change between loads (e.g., when its TOP6 is updated
+    # by a fresh MCF, or when the Taxonomy of Programs Manual is
+    # reissued), leaving a stale CONTAINS edge from the old Department
+    # node to the Course. This three-step sweep repairs the drift on
+    # every load:
     #   1. Drop CONTAINS edges where Department.name disagrees with the
     #      Course's current `department` property (for this college's
     #      courses only — other colleges' edges are out of scope).
@@ -244,11 +227,6 @@ def load_college(
     #   3. DETACH DELETE any Department now left with no CONTAINS-out
     #      edges at all (globally — safe because step 1 was college-scoped
     #      but orphan status is a graph-wide property).
-    #
-    # The graph-state correctness this provides matters more than the
-    # per-load cost: the Department catalog displayed in the atlas UI is
-    # derived directly from these edges, and stale names are exactly the
-    # fragmentation bug Stage 2.5 exists to fix.
     with driver.session() as session:
         stale_contains = session.run(
             """
