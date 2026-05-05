@@ -71,7 +71,7 @@ type Props = {
   hideCurriculumAlignment?: boolean;
 };
 
-export default function OccupationRow({ occ, index, brandColor, isOpen: controlledOpen, onToggle, detail, isLoading, onExpand, regionNames, collegeName, hideCurriculumAlignment }: Props) {
+export default function OccupationRow({ occ, index, brandColor, isOpen: controlledOpen, onToggle, detail, isLoading, onExpand, regionNames, collegeName: _collegeName, hideCurriculumAlignment }: Props) {
   const [internalOpen, setInternalOpen] = useState(false);
   const [showAllGroups, setShowAllGroups] = useState(false);
   const isOpen = controlledOpen ?? internalOpen;

@@ -824,7 +824,7 @@ function WorkforceGapVisualization({
 /* ── Partnership Opportunity employer row ─────────────────────────────── */
 
 function PartnerEmployerRow({
-  emp, index, brandColor, collegeId, router,
+  emp, index: _index, brandColor, collegeId, router,
 }: {
   emp: ApiPartnershipOpportunityEmployer;
   index: number;
@@ -999,19 +999,6 @@ function Section({ title, brandColor, children }: {
           {title}
         </h3>
       </div>
-      {children}
-    </div>
-  );
-}
-
-function SubHeader({ brandColor, children }: { brandColor: string; children: React.ReactNode }) {
-  return (
-    <div style={{
-      fontFamily: FONT, fontSize: "10px", fontWeight: 600,
-      letterSpacing: "0.1em", textTransform: "uppercase",
-      color: brandColor, opacity: 0.7,
-      marginBottom: "10px",
-    }}>
       {children}
     </div>
   );

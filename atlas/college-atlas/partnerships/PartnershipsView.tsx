@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useRouter, useParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import { SchoolConfig } from "@/config/schoolConfig";
 import { getPartnershipSectors } from "@/college-atlas/partnerships/api";
 import type {
@@ -22,7 +22,6 @@ type Props = { school: SchoolConfig; onBack: () => void };
 
 export default function PartnershipsView({ school, onBack }: Props) {
   const rootRef = useRef<HTMLDivElement>(null);
-  const router = useRouter();
   const params = useParams<{ collegeId: string }>();
   const collegeId = params?.collegeId ?? "";
   const [index, setIndex] = useState<ApiSectorIndex | null>(null);
