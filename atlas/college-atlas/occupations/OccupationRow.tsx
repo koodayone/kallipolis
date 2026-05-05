@@ -64,9 +64,14 @@ type Props = {
   // Region context for detail view
   regionNames?: string[];
   collegeName?: string;
+  // Context-mode flag — when this row is rendered inside a partnership
+  // opportunity report that has its own dedicated Curriculum Alignment
+  // section, suppress the inner CA block to avoid surfacing the same
+  // material twice.
+  hideCurriculumAlignment?: boolean;
 };
 
-export default function OccupationRow({ occ, index, brandColor, isOpen: controlledOpen, onToggle, detail, isLoading, onExpand, regionNames, collegeName }: Props) {
+export default function OccupationRow({ occ, index, brandColor, isOpen: controlledOpen, onToggle, detail, isLoading, onExpand, regionNames, collegeName: _collegeName, hideCurriculumAlignment }: Props) {
   const [internalOpen, setInternalOpen] = useState(false);
   const [showAllGroups, setShowAllGroups] = useState(false);
   const isOpen = controlledOpen ?? internalOpen;
@@ -184,7 +189,7 @@ export default function OccupationRow({ occ, index, brandColor, isOpen: controll
                       </div>
                     )}
 
-                    {detail.aligned_top_groups.length > 0 && (
+                    {!hideCurriculumAlignment && detail.aligned_top_groups.length > 0 && (
                       <div>
                         <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: brandColor, opacity: 0.7, display: "block", marginBottom: "10px" }}>
                           Curriculum Alignment

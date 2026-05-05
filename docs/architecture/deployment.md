@@ -329,7 +329,7 @@ Compare to the `node_counts` field in the local manifest. They should match exac
 
 ## Preview-mode posture
 
-The atlas deploys with authentication disabled. The root route renders the State Atlas directly; no login page exists. Save actions on the partnership flow are disabled with a tooltip directing prospects to contact for pilot activation. Seeded partnerships — one curated partnership per featured college, committed as a typed TypeScript module at `atlas/preview/seededPartnerships.ts` — back the Manage Mode view so visitors can see the full artifact shape without generating anything themselves. Live generation flows still work: any visitor can invoke the streaming partnership proposal endpoint and watch a proposal materialize against real data.
+The atlas deploys with authentication disabled. The root route renders the State Atlas directly; no login page exists. Partnership opportunity reports are deterministic and free to generate, so no seeded preview content is required — every visitor sees the same per-(college, SOC) report the backend assembles live from the institutional graph. The Partnerships node ships in identification mode (opportunities surfaced from the data); managed-entity features (status tracking, history, follow-up) are intentionally deferred until the first pilot signs.
 
 This posture is appropriate for the current stage. Authentication, server-side persistence, and per-user state will return when the first pilot signs and the product takes on real institutional users. The code path for those features is intentionally present in skeleton form (the `SessionDraftsProvider` context, the `NEXT_PUBLIC_AUTH_ENABLED` flag) so activation is additive rather than a refactor.
 

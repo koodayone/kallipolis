@@ -71,9 +71,14 @@ type Props = {
   detail?: StudentDetailData | null;
   isLoading?: boolean;
   onExpand?: () => void;
+  // Context-mode flag — when this row is rendered inside a partnership
+  // opportunity report, suppress the "Competency Profile" tab and show
+  // only the course history. The report is already scoped to a single
+  // SOC, so the cross-occupation competency view would be off-topic.
+  hideCompetencyProfile?: boolean;
 };
 
-export default function StudentRow({ student, index, brandColor, isOpen: controlledOpen, onToggle, detail, isLoading, onExpand }: Props) {
+export default function StudentRow({ student, index, brandColor, isOpen: controlledOpen, onToggle, detail, isLoading, onExpand, hideCompetencyProfile }: Props) {
   const [internalOpen, setInternalOpen] = useState(false);
   const [tab, setTab] = useState<"history" | "competency">("history");
   const [expandedOccs, setExpandedOccs] = useState<Set<string>>(new Set());
@@ -149,12 +154,13 @@ export default function StudentRow({ student, index, brandColor, isOpen: control
               {detail && (
                 <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
                   <div style={{ display: "flex", gap: "0", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
-                    {(["history", "competency"] as const).map((t) => (
+                    {(hideCompetencyProfile ? (["history"] as const) : (["history", "competency"] as const)).map((t) => (
                       <button key={t} onClick={(e) => { e.stopPropagation(); setTab(t); }}
                         style={{
                           background: "none", border: "none",
                           borderBottom: tab === t ? `2px solid ${brandColor}` : "2px solid transparent",
-                          cursor: "pointer", padding: "8px 16px", fontFamily: FONT, fontSize: "11px",
+                          cursor: hideCompetencyProfile ? "default" : "pointer",
+                          padding: "8px 16px", fontFamily: FONT, fontSize: "11px",
                           fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase",
                           color: tab === t ? brandColor : "rgba(255,255,255,0.35)",
                           transition: "color 0.15s", marginBottom: "-1px",
@@ -163,7 +169,7 @@ export default function StudentRow({ student, index, brandColor, isOpen: control
                       </button>
                     ))}
                   </div>
-                  {tab === "history" && (
+                  {(hideCompetencyProfile || tab === "history") && (
                     <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
                       {detail.enrollments.map((e, ei) => (
                         <div key={ei} style={{
@@ -180,7 +186,7 @@ export default function StudentRow({ student, index, brandColor, isOpen: control
                       ))}
                     </div>
                   )}
-                  {tab === "competency" && (
+                  {!hideCompetencyProfile && tab === "competency" && (
                     <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
                       <p style={{ fontFamily: FONT, fontSize: "11px", color: "rgba(255,255,255,0.4)", margin: 0, lineHeight: 1.5 }}>
                         Deepest occupational pathways in this student&rsquo;s transcript, traced through TOP-SOC crosswalk.

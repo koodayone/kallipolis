@@ -39,7 +39,6 @@ Relationships encode the supply-demand logic of workforce development. Each one 
 | `DEMANDS` | Region → Occupation | employment, annual_wage, growth_rate, annual_openings | A region has demand for an occupation, with the regional employment, wage, growth, and openings metadata that varies by region |
 | `HIRES_FOR` | Employer → Occupation | — | An employer hires for an occupation |
 | `PREPARES_FOR` | Course → Occupation | via_top | The institutional Course→Occupation crosswalk: a course's TOP code maps through CIP to the occupations its program institutionally prepares students for. Materialized from `Course.top_code` via the Chancellor's Office TOP-CIP and BLS/NCES CIP-SOC crosswalks. The bridge edge between curriculum and labor market. |
-| `PARTNERSHIP_ALIGNMENT` | College → Employer | alignment_score, gap_count, top_occupation, top_wage, pipeline_size | Precomputed partnership opportunity metrics between a college and an employer in its region (see below). |
 
 The `IN_MARKET` relationship is overloaded: the same edge type connects both colleges and employers to their regional labor markets. This works because the semantics are the same in both cases — the entity operates within the region — even though the entities being connected are different node types.
 
@@ -53,12 +52,6 @@ The `IN_MARKET` relationship is overloaded: the same edge type connects both col
 The composed mapping is exposed to the loader as `top6_to_soc()` in [`backend/ontology/crosswalks.py`](../../backend/ontology/crosswalks.py). For each (college, course) pair, the loader writes one `PREPARES_FOR` edge per SOC the course's TOP6 maps to, with the TOP6 stored on the edge as `via_top` for audit-trail attribution. Edges to occupations not present in the graph (excluded by the institutional CTE filter at occupation load time) are skipped.
 
 The edge is institutional in two distinct senses. Its **existence** is institutional: a course points to an occupation only when the Chancellor's Office and BLS/NCES crosswalks both place the TOP→CIP→SOC chain. Its **provenance** is institutional too: every edge carries the TOP6 it traveled through, so any partnership artifact can attribute the pathway claim to its source publication.
-
-### The precomputed analytical edge
-
-`PARTNERSHIP_ALIGNMENT` is a derived analytical edge rather than a foundational one: it encodes the output of a computation over the base graph rather than a raw fact from an institutional authority. It is read by the partnership landscape endpoint (`backend/partnerships/api.py`) so that the landscape view can return 500+ employers in under a second rather than recomputing alignment traversals on each request.
-
-The materialization step lives in [`backend/partnerships/compute.py`](../../backend/partnerships/compute.py). It runs after industry and student data have been loaded, traverses the (college, region, employer, occupation, course) chain through `PREPARES_FOR` to derive alignment counts and gap counts, pairs each employer with its highest-wage occupation and the college's matching student pipeline, and writes the edge per (College, Employer) pair that shares a region. `backend/pipeline/reload.py` invokes it automatically after student generation.
 
 ## Schema diagram
 

@@ -1,67 +1,86 @@
 # Partnerships
 
-Partnerships are the form we document that is the unit of action of the ontology. The distinction matters at the most basic level. Students, courses, occupations, and employers are what the ontology represents — the analytical material a coordinator reasons over. Partnerships are what the ontology is for — the action the analytical material directs work toward. Partnerships are also the form the mission sentence names directly: the product exists *for community colleges to forge stronger workforce partnerships with industry*. Partnerships are not one of five forms in a neutral taxonomy. They are the named activity at the center of the product's purpose.
+Partnerships are the form Kallipolis is built to enable. The mission sentence names the activity directly: the product exists *for community colleges to forge stronger workforce partnerships with industry*. The other four units of analysis — students, courses, occupations, employers — are the analytical material; partnerships are what the analytical material directs work toward.
+
+The Partnerships surface is the place where that material is composed into something the workforce development office can act on: a deterministic, per-occupation labor market alignment report that identifies the regional employers whose hiring profile makes them candidate partners for development of that occupational pathway.
 
 ## The essence
 
-In Kallipolis, a partnership is a data-driven opportunity for a community college to engage with an industry employer. A partnership opportunity is formulated from the four units of analysis: it draws on occupations to show the regional labor market context, on courses to show curricular alignment, and on students to show the pipeline of people who would benefit. It is presented to a coordinator as a draft narrative the coordinator can use, with each claim immediately followed by the empirical evidence that grounds it. The shape of the eventual collaboration — advisory board, internship, co-designed curriculum, hiring agreement, or something else — emerges from the conversation the coordinator has with the employer after seeing the opportunity. Kallipolis surfaces the case for engaging; the coordinator's professional judgment determines the form.
+A Partnership Opportunity in Kallipolis is *occupation-centric*. The unit of analysis is a (college, SOC) pair, not a (college, employer) pair. The report frames an occupation in the regional labor market, characterizes the college's curricular coverage of it, and surfaces the regional employers hiring for it as candidate partners for a multi-employer engagement around the occupational pathway.
 
-The formulation of high-quality partnership opportunities is the core value proposition of Kallipolis, and the entire ontology is dedicated to making this formulation possible.
+The shape is opinionated and intentional. California's Strong Workforce Program funds regional consortium projects — multi-college, multi-employer, organized around occupational pathways within the 12 PCAH-classified Doing-What-MATTERS sectors. A single-employer-centric "partnership" was always a dilution of how SWP actually structures grants; reshaping around occupational opportunity, with employers as the candidate target *set*, matches both how SWP funding is written and how regional COE plans frame their priorities. The product becomes the epistemic foundation for workforce development officers to reason about partnerships in the way the institutional context already does.
 
-## What a partnership opportunity contains
+The formulation of high-quality occupation-centric partnership opportunities is the core value proposition of Kallipolis, and the entire ontology is dedicated to making this formulation possible.
 
-A partnership opportunity in Kallipolis has two layers: a narrative that argues for why the partnership is worth pursuing, and the empirical evidence that grounds each section of the narrative. Both layers are present together, not separated. The coordinator reads a claim and immediately sees the data the claim is based on.
+## Navigation: sector → occupation
 
-### The four sections of the narrative
+The Partnerships index is a sector accordion. Each row is one of the 12 Strong Workforce sectors classified by the Chancellor's Office Program and Course Approval Handbook (PCAH). Expanding a sector reveals the CTE-reachable occupations within it that the college's COE region demands, alphabetically ordered.
 
-The narrative is structured around four sections, each carrying a distinct claim.
+The mapping from sector to occupation is institutional: the PCAH file lists every TOP6 code classified as CTE under one of the 12 sectors; for each TOP6, the chain `TOP → CIP → SOC` (Chancellor's Office TOP-CIP crosswalk + BLS/NCES CIP-SOC crosswalk) yields the SOCs reachable from that program area. The intersection with the college's regional COE demand profile bounds each sector accordion to occupations the local labor market actually hires for.
 
-- **Executive summary.** The institutional case that this employer represents a partnership opportunity for the college. Characterizes what the employer does and integrates the strongest signals of alignment across regional demand, curriculum, and student pipeline in compressed form. The reader finishes this paragraph understanding why this opportunity merits their attention.
+A SOC reachable from multiple sectors' TOPs appears under each of them. This is honest to the institutional crosswalk — Welders is genuinely relevant to both Advanced Manufacturing and Energy/Construction/Utilities — and matches the multi-sector tagging the Employers surface uses.
 
-- **Occupational demand.** Establishes that the employer's hiring profile represents institutionally significant regional labor market demand. The evidence is the specific occupations the employer hires for, with regional wages, employment levels, growth rates, and annual openings drawn directly from the occupation data.
+Each occupation row carries enough metadata for the row to be self-describing: SOC code, title, the college's current course count for the SOC, and the count of regional employers hiring for it. Clicking the **Draft Partnerships** CTA navigates to the per-SOC opportunity report.
 
-- **Curriculum alignment.** Establishes that specific departments at the college institutionally prepare students for these occupations through the Chancellor's Office TOP-CIP-SOC crosswalk. The evidence is the actual departments and courses whose TOP code maps to the target SOC, with partial alignment named honestly using strengthening-language rather than deficit-language.
+## What an Opportunity Report contains
 
-- **Student impact.** Asserts the composition and alignment of the student pipeline with this opportunity. The evidence is the population of students at the college whose competency profiles align with the partnership's target occupations.
+The report is a deterministic per-(college, SOC) artifact. Five narrative sections argue the institutional case; structured evidence blocks ground each section. The narrative does meaning; the evidence does completeness.
 
-The four sections map to the executive summary plus three of the four units of analysis: occupations, courses, students. The fourth unit of analysis, employers, is not its own section because it is the *subject* of the narrative — the entity the partnership is being proposed with, not a piece of evidence in the case.
+### The five sections of the narrative
+
+- **Executive summary.** Frames the occupation in its sector context, names the multi-employer engagement opportunity the alignment data identifies, and integrates the strongest signals from regional demand, curriculum coverage, and student pipeline in compressed form. The reader finishes the paragraph understanding why this occupational pathway merits partnership development.
+
+- **Occupational demand.** Establishes the regional labor market for the SOC: median annual wage and annual openings in the COE region, drawn directly from the Centers of Excellence published demand profile. The evidence block carries the wage, openings, regional employment, and 5-year growth rate for inspection.
+
+- **Curriculum alignment.** Establishes the institutional pathway from the college's curriculum to the SOC via the Chancellor's Office TOP-CIP-SOC crosswalk. The evidence is the actual departments and courses whose `PREPARES_FOR` edge maps to the target SOC, grouped by department.
+
+- **Student impact.** Asserts the composition of the student pipeline whose academic focus aligns with the occupational pathway. The evidence is the headline count of students enrolled in the aligned departments plus the top exemplar students ranked by SOC-aligned course count and GPA.
+
+- **Partnership opportunities.** Names the regional employers hiring for the SOC as candidate partners for a multi-employer engagement around the occupational pathway. The evidence is the employer list, sorted by NAICS-4 industry-share — the BLS Occupational Employment Statistics measure of how prominent this role is within each employer's industry. The most "occupation-central" employers surface first.
+
+The five sections compose the four units of analysis (occupations, courses, students, employers) plus the synthesizing executive summary. Employers, formerly the *subject* of the artifact, are now the candidate set the artifact directs the coordinator toward — the multi-employer engagement opportunity the data identifies.
 
 ### Strong Workforce evidence
 
-The narrative closes with a tabular Strong Workforce evidence block — the regional supply-demand foundation any subsequent funding justification requires. The block has no narrative; it is data only. Three sub-tables: occupations the employer hires for with their SOC codes and regional annual openings (demand), program completions per TOP6 code projected from Centers of Excellence data (supply), and the gap between them.
+The report carries a tabular Strong Workforce evidence block — the regional supply-demand foundation any subsequent funding justification requires. Demand is the regional annual openings for the selected SOC; supply is the projected annual program completions for the TOPs the institutional crosswalk maps to that SOC; the gap is their difference. The block has no narrative; it is data only.
 
-This block is what makes the partnership artifact institutionally legible to the Strong Workforce Program without making the artifact itself an SWP application. NOVA submission remains a coordinator-led act; Kallipolis provides the empirical foundation that any submission depends on. The Strong Workforce Program is the institutional context the data is shaped to be legible to; it is not a separate form within the product.
+This is what makes the artifact institutionally legible to the Strong Workforce Program without making the artifact itself an SWP application. NOVA submission remains a coordinator-led act; Kallipolis provides the empirical foundation that any submission depends on.
 
-## How partnerships are generated
+## How Opportunity Reports are generated
 
-The methodology behind partnership opportunity generation has three components that work together: occupation selection, evidence assembly, and narrative generation. The pipeline is linear and type-agnostic — every opportunity moves through the same stages.
+The methodology is fully deterministic. Same college and same SOC always yield byte-identical prose. There is no LLM call at runtime; every claim is a function of the institutional graph plus the COE-published regional figures.
 
-**Occupation selection.** The first step picks the primary hiring occupation for the employer. The selection is deterministic and constrained: the system ranks the occupations the employer is recorded as hiring for by institutional curriculum-alignment depth at this college (count of `Course-[:PREPARES_FOR]->Occupation` edges), then by regional annual openings, then by SOC code. No LLM call. Coordinators can also choose a SOC explicitly through the picker; in either case, the picker is filtered server-side to occupations the institutional crosswalk says the college has at least one aligned course for.
+**Sector index assembly** ([`backend/partnerships/opportunity.py`](../../backend/partnerships/opportunity.py), `build_sector_index`). Composes PCAH TOP→Sector, the CTE-reachable SOC universe via `cte_reachable_socs`, the college's regional COE demand profile, and the college's `PREPARES_FOR` edge set into the sector accordion. Each occupation row's course count and employer count is derived from a single Cypher pass against the graph.
 
-**Evidence assembly.** With the occupation identified, the system assembles the empirical material that grounds the four sections. Curriculum evidence comes from the departments at the college whose courses have a `PREPARES_FOR` edge to the selected SOC, with the TOP6 the crosswalk used to mediate each pathway carried on every edge as audit-trail attribution. Student pipeline evidence comes from students enrolled in those departments. Regional supply-demand evidence comes from the COE-published projected program completions and the regional annual openings already in the graph.
+**Per-SOC report assembly** (same file, `build_opportunity_report`). For a given (college, SOC) pair, gathers occupation metadata from the graph, regional demand from COE, TOP-grouped curriculum coverage from the existing `_gather_aligned_curriculum` helper, student pipeline from `_gather_student_pipeline`, and the candidate employer set from the `oes_socs_for_naics4` industry-share pivot. The narrative is composed by deterministic templates in [`backend/partnerships/opportunity_narrative.py`](../../backend/partnerships/opportunity_narrative.py).
 
-**Narrative generation.** The four-section narrative is composed deterministically from templates over the assembled evidence. There is no LLM call at narrative-composition time; the only LLM-derived input is each employer's pre-computed `operations_summary`, populated at ingestion. The narrative templates interpolate the gathered course names, department names, and SOC-coded demand figures directly, so each sentence is verifiable against the structured evidence the section is paired with.
+**Endpoints**:
+
+| Method | Path | Returns |
+|---|---|---|
+| GET | `/partnerships/sectors` | `SectorIndex` (the accordion) |
+| GET | `/partnerships/opportunity/{soc_code}` | `OpportunityReport` (the per-SOC artifact) |
+
+Both are `GET`-shaped because they're idempotent and cacheable. The frontend fetches each on view mount; the deep-link URL `/{collegeId}/partnerships/opportunity?soc={soc}` makes any specific report shareable for grant applications and internal correspondence.
 
 ### Trust through visibility
 
-The presentation of the partnership opportunity is shaped by a deliberate design philosophy: the narrative is not asked to stand on its own. Each section is followed immediately by the empirical evidence that supports it. The coordinator reads the claim about occupational demand and then sees the actual occupations and their wages and growth rates. They read the claim about curriculum alignment and then see the actual courses whose TOP code institutionally crosswalks to the target SOC. They read the claim about student impact and then see the actual students enrolled in those departments.
+The report is composed deterministically because the audience needs to trust the institutional data, not the system. Each narrative section is followed immediately by the empirical material that supports it. The coordinator reads the claim about regional demand and then sees the wage, openings, employment, and growth figures. They read the curriculum alignment claim and then see the actual courses, with TOP code attribution. They read the partnership opportunities framing and then see the actual employer list with NAICS industry-share figures.
 
-This is a specific commitment about how generated content should be presented in a high-stakes institutional context. The narrative is not persuasive in the marketing sense — it is *grounded* by being composed deterministically from the empirical material that supports each claim and by being immediately followed by that material. The coordinator is not asked to trust the system. They are asked to trust the institutional data, which the templates surface verbatim. The visibility of the empirical foundation is what makes the narrative usable as a draft rather than as a black-box recommendation.
+This is the architectural commitment: the narrative is *grounded* by being composed deterministically from the empirical material it interpolates and by being immediately followed by that material. The coordinator is not asked to trust Kallipolis. They are asked to trust the Chancellor's Office TOP-CIP crosswalk, the BLS/NCES CIP-SOC crosswalk, the COE regional demand publication, the BLS OEWS Industry-Occupation Matrix, and the PCAH sector classification — all named external sources cited in the artifact.
 
-The methodology is principled and improvable. The occupation selection produces defensible primary occupations today, ranked by institutional alignment depth; closing remaining TOP-coverage gaps in the Master Course File would refine the ranking. The evidence assembly produces empirical material that passes inspection today; richer source data and validation feedback would make it more accurate.
+## How the partnerships flow will evolve
 
-## How the partnership flow will evolve
+The current implementation surfaces partnership *opportunities* — the data-driven foundation a workforce development officer reasons about partnership development from. The artifact is identification, not management.
 
-The partnership generation flow is the surface of Kallipolis where most product engagement with stakeholders is likely to happen. It is the place where coordinators first encounter what the ontology can do for them, and it is the natural site for feedback about what makes a partnership opportunity compelling, what makes a draft genuinely usable, and what the system is missing.
+The natural next vertical slice is partnership *as a managed entity*: each row in a report's Partnership Opportunities section becomes a candidate that, in a later product state, carries status (identified → contacted → engaged → MOU → active), history (last touchpoint, prior engagements), and provenance (which alignment report surfaced this candidate, when). That extends Kallipolis from labor market intelligence into the operational lifecycle of partnerships themselves.
 
-The North Star for the partnerships flow is straightforward: drive partnerships and strengthen the partnership creation process. The current implementation produces opportunities coordinators can use as drafts. Future iterations will refine the narrative quality, sharpen the evidence assembly logic, and incorporate stakeholder feedback into how the system formulates and presents opportunities.
+A second possible direction is productized SWP application generation — turning the regional supply-demand evidence block into a NOVA-shaped submission. The current report carries the empirical foundation any SWP project narrative requires; a templated NOVA-shaped output is one transformation away.
 
-One specific area of possible development is partnership *management* — supporting the work that comes after a partnership has been initiated, including tracking, status updates, ongoing collaboration, and outcome measurement. This would extend Kallipolis beyond opportunity identification into the operational lifecycle of partnerships themselves. Another is productized SWP application generation — turning the regional supply-demand evidence block into a NOVA-shaped submission. Both directions are real architectural possibilities. Neither is in the current scope; both will be informed by what coordinators actually request after working with the discovery artifact.
+Both directions are real architectural possibilities and both will be informed by what coordinators actually request after working with the identification artifact. The current shift establishes the ontological groundwork: partnerships are first-class entities born from occupation-anchored opportunities, not from employer-anchored asks. Future surfaces inherit the same data foundation and the same deterministic engine.
 
 ## The core value proposition
 
-Partnerships unify their angles around a single observation: the formulation of data-driven partnership opportunities is the core value proposition of Kallipolis, and the entire ontology is dedicated to enabling it. Partnerships are not one of five forms in a neutral taxonomy. They are the activity the rest of the ontology exists to enable.
+Partnerships unify their angles around a single observation: the formulation of data-driven, occupation-centric partnership opportunities is the core value proposition of Kallipolis, and the entire ontology is dedicated to enabling it. The four units of analysis provide the empirical material. The institutional TOP-CIP-SOC crosswalk provides the bridge that joins curriculum to labor market without an internally-derived interpretive layer in between. The PCAH sector classification provides the institutional vocabulary the workforce development office already speaks. The BLS OEWS industry-share pivot identifies the candidate employer set whose hiring profile makes them strategic partners for a given occupational pathway.
 
-The four units of analysis provide the empirical material. The institutional TOP-CIP-SOC crosswalk provides the bridge that joins curriculum to labor market without an internally-derived interpretive layer in between. The Atlas provides the surface where the user encounters all of this. And partnerships are where the analytical work pays off — the moment a coordinator sees a data-driven case for engaging with a specific employer, with the empirical foundation visible right next to the narrative and the regional supply-demand data ready to support any subsequent funding justification.
-
-Everything upstream of the partnership generation flow is preparation. The flow itself is the moment Kallipolis does its job.
+Everything upstream of the Partnerships node is preparation. The Partnerships node itself is the moment Kallipolis does its job — the moment a workforce development officer sees, deterministically and reproducibly, a data-driven case for convening regional employers around the development of a specific occupational pathway in their service area.

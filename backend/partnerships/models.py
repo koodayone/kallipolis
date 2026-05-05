@@ -1,59 +1,19 @@
+"""Pydantic shapes for the occupation-centric Partnerships surface.
+
+The Partnerships node is a sector→occupation navigation surface: the
+``SectorIndex`` powers the accordion; clicking an occupation generates
+an ``OpportunityReport`` framed around the multi-employer engagement
+opportunity the regional alignment data identifies. The supporting
+evidence shapes (occupation, course, department, student, supply,
+attribution) are composed into both the report and the tabular SWP
+evidence block within it.
+"""
+
 from pydantic import BaseModel
 from typing import Optional
 
 
-class PartnershipOpportunity(BaseModel):
-    name: str
-    sector: Optional[str] = None
-    # Multi-sector tagging (Doing-What-Matters / SWP framework). swp_sectors
-    # is the employer's full set; priority_sectors_matched is the intersection
-    # of that set with the college's region's priority sectors, computed
-    # live in Cypher so COE_REGION_PRIORITY_SECTORS edits stay visible
-    # without a graph reload. Same pattern as the employers landscape
-    # endpoint — both views need this for sector grouping with the
-    # regional-priority dot indicator.
-    swp_sectors: list[str] = []
-    priority_sectors_matched: list[str] = []
-    description: Optional[str] = None
-    # Employer homepage URL — surfaced in the partnership picker view as the
-    # "Employer Home Page" link, matching the employers view's affordance.
-    website: Optional[str] = None
-    # alignment_score is the count of this college's courses with a
-    # PREPARES_FOR edge to any of the employer's hires SOCs. gap_count
-    # is the count of hires SOCs the college has zero institutionally-
-    # aligned curriculum for.
-    alignment_score: int
-    gap_count: int
-    pipeline_size: Optional[int] = None
-    top_occupation: Optional[str] = None
-    top_wage: Optional[int] = None
-
-
-class PartnershipLandscape(BaseModel):
-    college: str
-    opportunities: list[PartnershipOpportunity]
-
-
-class PartnershipQueryRequest(BaseModel):
-    query: str
-    college: str
-
-
-class PartnershipQueryResponse(BaseModel):
-    opportunities: list[PartnershipOpportunity]
-    message: str
-    cypher: Optional[str] = None
-
-
-class ProposalRequest(BaseModel):
-    employer: str
-    college: str
-    # Optional SOC code chosen by the coordinator in the occupation picker.
-    # When provided, the pipeline skips the LLM occupation-selection step
-    # and constructs the selected-occupation dict directly from this SOC.
-    # When absent, the legacy auto-selection path runs (preserved for
-    # backward compatibility).
-    selected_occupation_soc: Optional[str] = None
+# ── Evidence primitives (composed into OpportunityReport) ─────────────────
 
 
 class OccupationEvidence(BaseModel):
@@ -86,11 +46,10 @@ class DepartmentEvidence(BaseModel):
     courses: list[CourseEvidence]
     # The set of TOP6 codes this department's PREPARES_FOR-aligned
     # courses route through. Most departments concentrate around a
-    # single TOP6 (the apprenticeship pattern at Foothill, e.g.,
-    # Apprenticeship: Aerospace = TOP 095680); some span several.
+    # single TOP6; some span several.
     via_top: list[str] = []
     # The CIP codes that mediate the chain Course → TOP6 → CIP → SOC.
-    # Composed by gather.py from `top6_to_cip` over the via_top set.
+    # Composed from `top6_to_cip` over the via_top set.
     via_cip: list[str] = []
 
 
@@ -159,15 +118,17 @@ class InstitutionalSources(BaseModel):
 
 
 class SwpEvidence(BaseModel):
-    """Tabular regional supply-demand evidence appended to the partnership artifact.
+    """Tabular regional supply-demand evidence appended to the report.
 
-    Demand: occupations the employer hires for, with regional annual openings (SOC-coded).
-    Supply: program completions per TOP6 code, projected from Centers of Excellence data.
+    Demand: regional annual openings for the SOC (single row).
+    Supply: program completions per TOP6 code, projected from Centers of
+    Excellence data, for the TOPs the institutional crosswalk maps to
+    the SOC.
     Gap: total annual demand minus total annual projected supply.
 
-    Tabular only — no narrative. The four narrative sections argue the case;
-    this block is the empirical foundation any subsequent funding justification
-    requires.
+    Tabular only — no narrative. The four+one narrative sections argue
+    the case; this block is the empirical foundation any subsequent
+    funding justification requires.
     """
     occupations: list[OccupationEvidence] = []
     supply_estimates: list[SupplyEstimate] = []
@@ -178,32 +139,114 @@ class SwpEvidence(BaseModel):
     coe_region: str = ""        # the COE region this supply is scoped to
     # Institutional sources block — externally-authored attribution for
     # every categorical claim in the artifact. Defaults populate the
-    # publication names; the gather/assembly stage fills coe_region and
-    # its display form.
+    # publication names; the assembly stage fills coe_region and its
+    # display form.
     sources: InstitutionalSources = InstitutionalSources()
 
 
-class NarrativeProposal(BaseModel):
-    """A partnership opportunity surfaced for a coordinator's review.
+# ── Sector index (Partnerships view navigation) ───────────────────────────
 
-    Four narrative sections present the institutional case; structured
-    evidence blocks ground each claim. The narrative does meaning;
-    the evidence does completeness.
+
+class OpportunityRow(BaseModel):
+    """A single occupation row inside a sector accordion.
+
+    Carries enough metadata for the row to be self-describing without
+    the user needing to drill in: count metrics signal alignment depth
+    at this college (students, courses, employers); demand metrics
+    signal regional market context (annual wage, annual openings, 5-yr
+    growth rate from the COE projections).
     """
-    employer: str
+    soc_code: str
+    title: str
+    annual_openings: Optional[int] = None
+    annual_wage: Optional[int] = None
+    growth_rate: Optional[float] = None
+    course_count: int = 0
+    student_count: int = 0
+    employer_count: int = 0
+
+
+class SectorEntry(BaseModel):
+    """A Strong Workforce sector and the CTE-reachable occupations
+    within it that the college's region demands.
+
+    Per the institutional-deference principle: the sector→occupation
+    mapping comes from the PCAH TOP-Codes-to-Sectors file walked
+    through the TOP-CIP-SOC chain. A SOC may appear under multiple
+    sectors when its TOPs are claimed by more than one — matching
+    institutional reality, not forcing a partition.
+    """
+    sector: str
+    is_priority: bool = False
+    occupations: list[OpportunityRow]
+
+
+class SectorIndex(BaseModel):
+    """The Partnerships view's top-level navigation: every PCAH-
+    classified Strong Workforce sector with at least one CTE-reachable,
+    regionally-demanded occupation, alphabetically ordered."""
+    college: str
+    sectors: list[SectorEntry]
+
+
+# ── Per-occupation Partnership Opportunity Report ─────────────────────────
+
+
+class PartnershipOpportunityEmployer(BaseModel):
+    """An employer in the regional market that hires for this
+    occupation, surfaced as a candidate partner in the report's
+    Partnership Opportunities section.
+
+    Sorted by the employer's NAICS-4 industry-share for this SOC
+    (BLS OEWS PCT_TOTAL) — the institutional measure of how
+    prominent this role is in the employer's industry.
+    """
+    name: str
     sector: Optional[str] = None
-    selected_occupation: str
-    selected_soc_code: Optional[str] = None
+    swp_sectors: list[str] = []
+    description: Optional[str] = None
+    website: Optional[str] = None
+    naics4: Optional[str] = None
+    naics_title: Optional[str] = None
+    industry_share: Optional[float] = None
+    aligned_course_count: int = 0
+
+
+class OpportunityReport(BaseModel):
+    """A per-(college, occupation) partnership opportunity report.
+
+    Composed deterministically from the institutional graph: regional
+    demand (COE), TOP-grouped curriculum coverage, student impact
+    (existing pipeline compute), and the candidate set of regional
+    employers hiring for this role.
+
+    Five narrative sections frame the data in employer-agnostic prose
+    that points to the multi-employer engagement opportunity the data
+    identifies.
+    """
+    college: str
+    sector: Optional[str] = None
+    # True when the sector is one of the college's COE region's
+    # Strong Workforce Program priority sectors (per the regional
+    # consortium designation in PCAH). Surfaced in the report header
+    # so coordinators can see at a glance whether SWP funding flows
+    # to this occupational area.
+    is_sector_priority: bool = False
+    soc_code: str
+    soc_title: str
+    description: Optional[str] = None
     regions: list[str] = []
 
-    # Four narrative sections (deterministic templates over graph data)
+    # Five narrative sections (deterministic templates, employer-agnostic)
     executive_summary: str
     occupational_demand: str
     curriculum_alignment: str
     student_impact: str
+    partnership_opportunities_narrative: str
 
-    # Evidence blocks (deterministic, populated from the graph and COE data)
+    # Evidence blocks
     opportunity_evidence: list[OccupationEvidence]
     curriculum_evidence: list[DepartmentEvidence]
     student_evidence: StudentEvidence
     swp_evidence: SwpEvidence
+    partnership_opportunities: list[PartnershipOpportunityEmployer]

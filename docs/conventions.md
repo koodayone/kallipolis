@@ -66,7 +66,7 @@ Inline code spans or markdown links: `` `backend/partnerships/api.py` `` or `[th
 
 ### API endpoints
 
-In markdown tables with `Method` and `Path` columns, or inline as `` `POST /partnerships/targeted/stream` ``. The audit prefers tables for systematic listings because they are more reliably parsed than prose.
+In markdown tables with `Method` and `Path` columns, or inline as `` `GET /partnerships/opportunity/{soc_code}` ``. The audit prefers tables for systematic listings because they are more reliably parsed than prose.
 
 ### Schema — node types, properties, constraints
 
