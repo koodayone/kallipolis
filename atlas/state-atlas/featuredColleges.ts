@@ -1,19 +1,28 @@
-// MVP scope: one anchor college per CCC regional consortium. The State Atlas
-// surfaces the eight consortia as first-class units; each consortium is
-// represented on the map by a single college whose College Atlas is
-// production-ready. The set will expand (and eventually dissolve into the
-// full college list) as additional institutions reach that bar.
+// Featured colleges loaded into prod Neo4j with full pipeline output:
+// catalog-extracted courses, TOP4-derived program names, synthetic
+// students, PREPARES_FOR edges to the regional employer/occupation
+// pool. The set is read by `generateStaticParams` for the /[collegeId]
+// routes — only colleges listed here get pre-built HTML in the static
+// export, so adding a college here without first loading its graph
+// data produces broken pages in production.
 //
-// Extracted from CaliforniaMap.tsx so server components (notably
-// generateStaticParams for /[collegeId] routes) can import it without
-// pulling in the client-only map component.
+// Extracted from CaliforniaMap.tsx so server components can import it
+// without pulling in the client-only map component.
 export const FEATURED_COLLEGES = new Set([
-  "shasta",        // North / Far North
-  "foothill",      // Bay Area
-  "sequoias",      // Central Valley / Mother Lode
-  "oxnard",        // South Central Coast
-  "compton",       // Los Angeles
-  "irvinevalley",  // Orange County
-  "desert",        // Inland Empire / Desert
-  "sandiegocity",  // San Diego / Imperial
+  // North / Far North
+  "shasta", "siskiyous", "lassen", "mendocino", "butte", "laketahoe",
+  // Bay Area
+  "foothill", "berkeleycc", "napavalley", "hartnell",
+  // Central Valley / Mother Lode
+  "saccc", "sequoias", "merced", "cerrocoso",
+  // South Central Coast
+  "sbcc", "oxnard",
+  // Los Angeles
+  "compton", "lavalley",
+  // Orange County
+  "irvinevalley",
+  // Inland Empire / Desert
+  "desert",
+  // San Diego / Imperial
+  "sandiegocity", "imperial",
 ]);
