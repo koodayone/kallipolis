@@ -55,7 +55,7 @@ export type ApiStudentSummaryEvidence = {
 
 export type ApiStudentEvidence = {
   total_in_program: number;
-  total_in_aligned_departments?: number;
+  total_in_aligned_departments: number;
   top_students: ApiStudentSummaryEvidence[];
 };
 
