@@ -24,6 +24,7 @@ from __future__ import annotations
 
 import argparse
 import logging
+import os
 import sys
 from pathlib import Path
 
@@ -38,9 +39,12 @@ from ontology.crosswalks import top_to_department_name  # noqa: E402
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger("rederive_pf")
 
-NEO4J_URI = "bolt://kallipolis-neo4j-1:7687"
-NEO4J_USER = "neo4j"
-NEO4J_PASSWORD = "kallipolis_dev"
+# Read connection from env so the same script works against dev (defaults
+# to kallipolis_dev) and prod (NEO4J_PASSWORD materialized into the
+# backend container's environment from Secret Manager at boot).
+NEO4J_URI = os.environ.get("NEO4J_URI", "bolt://kallipolis-neo4j-1:7687")
+NEO4J_USER = os.environ.get("NEO4J_USER", "neo4j")
+NEO4J_PASSWORD = os.environ.get("NEO4J_PASSWORD", "kallipolis_dev")
 
 
 def main() -> int:
