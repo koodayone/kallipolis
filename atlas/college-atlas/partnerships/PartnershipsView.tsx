@@ -158,7 +158,7 @@ export default function PartnershipsView({ school, onBack }: Props) {
             <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.45)", marginBottom: "16px" }}>
               {isSearching
                 ? `${totalOccupations} ${totalOccupations === 1 ? "occupation matches" : "occupations match"} "${query.trim()}"`
-                : `${totalOccupations} occupations with partnership opportunities`}
+                : `${totalOccupations} occupations with partnership opportunities · sorted by supply-demand workforce gap`}
             </p>
 
             {/* Header row matching EmployersView column language */}
