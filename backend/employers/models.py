@@ -9,7 +9,7 @@ class EmployerMatch(BaseModel):
     priority_sectors_matched: list[str] = []
     description: Optional[str] = None
     website: Optional[str] = None
-    occupations: list[str]
+    roles_count: int = 0
     aligned_course_count: int = 0
 
 

@@ -38,7 +38,7 @@ RULES:
 4. Always return results in this exact shape:
      RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
             emp.website AS website,
-            collect(DISTINCT occ.title) AS occupations,
+            count(DISTINCT occ) AS roles_count,
             count(DISTINCT course) AS aligned_course_count
      ORDER BY aligned_course_count DESC
 5. Do NOT add a LIMIT clause unless the user asks for a specific number.
@@ -57,7 +57,7 @@ OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)
 WHERE toLower(emp.sector) CONTAINS 'health'
 RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
        emp.website AS website,
-       collect(DISTINCT occ.title) AS occupations,
+       count(DISTINCT occ) AS roles_count,
        count(DISTINCT course) AS aligned_course_count
 ORDER BY aligned_course_count DESC
 
@@ -67,7 +67,7 @@ OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)
 WHERE toLower(emp.sector) CONTAINS 'technology'
 RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
        emp.website AS website,
-       collect(DISTINCT occ.title) AS occupations,
+       count(DISTINCT occ) AS roles_count,
        count(DISTINCT course) AS aligned_course_count
 ORDER BY aligned_course_count DESC
 
@@ -76,7 +76,7 @@ MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(emp
 OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)
 RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
        emp.website AS website,
-       collect(DISTINCT occ.title) AS occupations,
+       count(DISTINCT occ) AS roles_count,
        count(DISTINCT course) AS aligned_course_count
 ORDER BY aligned_course_count DESC
 
@@ -86,7 +86,7 @@ OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)
 WHERE ANY(s IN emp.swp_sectors WHERE s IN r.priority_sectors)
 RETURN emp.name AS name, emp.sector AS sector, emp.description AS description,
        emp.website AS website,
-       collect(DISTINCT occ.title) AS occupations,
+       count(DISTINCT occ) AS roles_count,
        count(DISTINCT course) AS aligned_course_count
 ORDER BY aligned_course_count DESC
 
@@ -132,7 +132,7 @@ async def run_employer_query(question: str, college: str) -> tuple[list[Employer
             sector=r.get("sector"),
             description=r.get("description"),
             website=r.get("website"),
-            occupations=r.get("occupations", []),
+            roles_count=r.get("roles_count", 0),
             aligned_course_count=r.get("aligned_course_count", 0),
         )
         for r in records

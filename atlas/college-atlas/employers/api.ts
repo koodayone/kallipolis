@@ -7,7 +7,7 @@ export type ApiEmployerMatch = {
   priority_sectors_matched: string[];
   description: string | null;
   website: string | null;
-  occupations: string[];
+  roles_count: number;
   aligned_course_count: number;
 };
 

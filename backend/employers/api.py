@@ -20,9 +20,11 @@ def get_employers(college: str):
 
     Reads the precomputed `PARTNERSHIP_ALIGNMENT` edge (materialized at
     pipeline reload by `partnerships/compute.py`). Each edge carries
-    the employer's occupation set, the count of courses at this college
-    that PREPARES_FOR any of those occupations, and the count of
-    distinct departments containing those courses.
+    the count of roles the employer hires for in this college's region
+    and the count of courses at this college that PREPARES_FOR any of
+    those roles. The full per-occupation detail (titles, wages, course
+    alignment groups) is on the detail endpoint, fetched only when a
+    user expands an employer row.
 
     The request-time computation this replaces was a College → Region →
     Employer → Occupation × PREPARES_FOR × CONTAINS traversal that
@@ -50,7 +52,7 @@ def get_employers(college: str):
                        COALESCE(emp.swp_sectors, []) AS swp_sectors,
                        [s IN COALESCE(emp.swp_sectors, []) WHERE s IN COALESCE(r.priority_sectors, [])] AS priority_sectors_matched,
                        emp.description AS description, emp.website AS website,
-                       pa.occupations AS occupations,
+                       pa.roles_count AS roles_count,
                        pa.aligned_course_count AS aligned_course_count
             """, college=college)
             records = result.data()
@@ -63,7 +65,7 @@ def get_employers(college: str):
                 priority_sectors_matched=r.get("priority_sectors_matched", []) or [],
                 description=r["description"],
                 website=r["website"],
-                occupations=r["occupations"],
+                roles_count=r["roles_count"],
                 aligned_course_count=r["aligned_course_count"],
             )
             for r in records

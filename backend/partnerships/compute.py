@@ -17,21 +17,29 @@ shifting the work to ingestion time. At request time the endpoint is
 O(employers in region) — sub-100ms regardless of region size.
 
 Edge properties:
-  occupations             list of distinct occupation titles the
-                          employer hires for in this college's region.
-                          Mirrors the request-time `collect(DISTINCT
-                          occ.title)` exactly.
+  roles_count             count of distinct occupations the employer
+                          hires for in this college's region. Drives
+                          the "Roles" column in the EmployersView list.
+                          Stored as an int rather than the full title
+                          list because the list shape is only ever
+                          accessed via `.length` in the list view; the
+                          full per-occupation detail (titles, wages,
+                          alignment groups) lives on the detail
+                          endpoint where it's actually rendered.
   aligned_course_count    number of distinct courses at this college
                           that PREPARES_FOR any of the employer's
                           hire occupations. The institutional alignment
                           depth — 0 means no curricular pathway exists
                           at this college; higher means deeper coverage.
 
-`aligned_department_count` is intentionally not stored: it appeared in
-the legacy edge shape but was never rendered anywhere in the atlas
-(checked across EmployersView and the rest of the surface). Materializing
-unrendered fields buys no user value and adds work to the compute and
-storage cost to the edge. Add it back if a surface starts using it.
+Stored fields are deliberately minimal. `aligned_department_count` was
+in the legacy shape but never rendered. The full `occupations: string[]`
+list (collect of titles) was previously sent on every list-page load but
+~1.7 MB of titles per request was streamed only to compute a single
+`.length` integer in the UI — replaced here with the precomputed count.
+Materializing unrendered or one-step-derivable fields buys no user value
+and adds compute + storage cost. Re-add either if a surface starts using
+the underlying data.
 
 Idempotent: re-running drops this college's existing
 PARTNERSHIP_ALIGNMENT edges and rebuilds from current state, so changes
@@ -112,10 +120,10 @@ def materialize_partnership_alignment(driver: Driver, college: str) -> dict:
                   <-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)
             OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)
             WITH c, emp,
-                 collect(DISTINCT occ.title) AS occupations,
+                 count(DISTINCT occ) AS roles_count,
                  count(DISTINCT course) AS aligned_course_count
             CREATE (c)-[pa:PARTNERSHIP_ALIGNMENT {
-                occupations: occupations,
+                roles_count: roles_count,
                 aligned_course_count: aligned_course_count
             }]->(emp)
             RETURN count(pa) AS n,

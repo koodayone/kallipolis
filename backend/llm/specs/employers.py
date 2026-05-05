@@ -30,7 +30,7 @@ _BASE_TRAVERSAL = (
 _RETURN_CLAUSE = (
     "RETURN emp.name AS name, emp.sector AS sector,\n"
     "       emp.description AS description, emp.website AS website,\n"
-    "       collect(DISTINCT occ.title) AS occupations,\n"
+    "       count(DISTINCT occ) AS roles_count,\n"
     "       count(DISTINCT course) AS aligned_course_count"
 )
 
