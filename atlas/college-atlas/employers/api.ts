@@ -9,7 +9,6 @@ export type ApiEmployerMatch = {
   website: string | null;
   occupations: string[];
   aligned_course_count: number;
-  aligned_department_count: number;
 };
 
 export type ApiAlignedCourse = {

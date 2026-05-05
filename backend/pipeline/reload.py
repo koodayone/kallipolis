@@ -21,6 +21,7 @@ from students.generate import generate_and_load_students
 from occupations.load import load_industry
 from employers.load import load_employers, cleanup_stale_employers
 from ontology.schema import get_driver, close_driver, init_schema
+from partnerships.compute import materialize_partnership_alignment
 
 logger = logging.getLogger(__name__)
 
@@ -207,6 +208,7 @@ def verify(driver) -> None:
             ("ENROLLED_IN", "MATCH ()-[e:ENROLLED_IN]->() RETURN count(e) AS cnt"),
             ("PREPARES_FOR", "MATCH ()-[p:PREPARES_FOR]->() RETURN count(p) AS cnt"),
             ("HIRES_FOR", "MATCH ()-[h:HIRES_FOR]->() RETURN count(h) AS cnt"),
+            ("PARTNERSHIP_ALIGNMENT", "MATCH ()-[p:PARTNERSHIP_ALIGNMENT]->() RETURN count(p) AS cnt"),
         ]
         for label, query in queries:
             result = s.run(query)
@@ -239,7 +241,22 @@ def reload_region(region_key: str) -> None:
         # Step 5: Generate students
         total_students = generate_students(driver, college_keys, configs)
 
-        # Step 6: Verify
+        # Step 6: Materialize PARTNERSHIP_ALIGNMENT edges. Must run
+        # after both load_courses (PREPARES_FOR exists) and
+        # load_industry_data (Employer / HIRES_FOR exist). Order with
+        # generate_students is independent — students don't enter the
+        # alignment compute. Placed after for naturalness only.
+        for key in college_keys:
+            college_name = configs.get(key, {"name": key})["name"]
+            try:
+                materialize_partnership_alignment(driver, college_name)
+            except Exception as e:
+                logger.error(
+                    f"materialize_partnership_alignment failed for {college_name}: {e}; "
+                    f"/employers/ will return empty until rerun"
+                )
+
+        # Step 7: Verify
         verify(driver)
 
     finally:
