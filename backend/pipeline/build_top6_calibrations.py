@@ -1,20 +1,26 @@
 """Build per-college TOP6 calibration files from DataMart grade distribution data.
 
-Parses top6_grades.csv (hierarchical format — same as the TOP4 file, but with
-6-digit TOP codes in the `{name}-{NNNNNN} Total` rows) and writes
-backend/ontology/calibrations/top6/{college_key}.json for each college.
+Parses `backend/ontology/datamart/top6_grades.csv` (hierarchical format —
+college Total rows, then per-TOP6 Total rows like
+"Accounting-050200 Total", then per-grade rows) and writes
+`backend/ontology/college_metrics/top6/{backend_key}.json` for each college.
 
-Alongside the per-TOP6 entries, each JSON also carries a top4_rollup section
-that aggregates the per-TOP6 grade distributions up to 4-digit parent codes.
-This gives the student generator a tier-ladder fallback at sample time
-without needing to load a separate TOP4 calibration:
-    exact TOP6 grades -> parent top4_rollup -> DEFAULT_GRADES.
+Each output file carries:
+- per-TOP6 grade distributions and enrollment counts
+- a `top4_rollup` section that aggregates the per-TOP6 grade
+  distributions up to 4-digit parent codes — gives the student
+  generator a tier-ladder fallback at sample time without needing a
+  separate TOP4 calibration:
+      exact TOP6 grades → parent top4_rollup → DEFAULT_GRADES.
+
+Backend keys flow through `pipeline.datamart_keys.csv_name_to_backend_key`,
+which sources catalog_sources.json. CSV display names that don't map to
+a catalog backend key (CalBright, Madera, continuing-ed entities) are
+skipped.
 
 Usage:
-    python -m pipeline.build_top6_calibrations /path/to/top6_grades.csv
-
-Output:
-    Overwrites backend/ontology/calibrations/top6/{college_key}.json
+    python -m pipeline.build_top6_calibrations
+    python -m pipeline.build_top6_calibrations /custom/path/top6_grades.csv
 """
 
 import csv
@@ -23,9 +29,11 @@ import re
 import sys
 from pathlib import Path
 
+from pipeline.datamart_keys import csv_name_to_backend_key
 
-# Grade label normalization. Mirrors build_calibrations.py exactly so the
-# TOP6 grade buckets sum the same way the TOP4 build does.
+
+# Grade label normalization. Maps CSV grade labels to the short codes
+# the student generator's grade sampler uses.
 GRADE_MAP = {
     "Grade A": "A",
     "Grade B": "B",
@@ -40,52 +48,18 @@ GRADE_MAP = {
 }
 
 
-# Override mapping for CSV college names whose snake_case form does not
-# match the backend college key convention. The existing TOP4 calibrations
-# and the rest of the backend key colleges like "Irvine" as "irvinevalley",
-# so TOP6 files need to land under the same names.
-CSV_NAME_OVERRIDES: dict[str, str] = {
-    "Irvine": "irvinevalley",
-    "San Diego City": "sandiegocity",
-    "San Diego Mesa": "sandiegomesa",
-    "San Diego Miramar": "sandiegomira",
-    "San Joaquin Delta": "sanjoquin",
-    "San Jose City": "sanjosecity",
-    "San Mateo": "csm",
-    "San Francisco": "ccsf",
-    "Berkeley City": "berkeleycc",
-    "Chabot Hayward": "chabot",
-    "Deanza": "deanza",
-    "Napa": "napavalley",
-    "Los Medanos": "losmedanos",
-    "Las Positas": "laspositas",
-    "Contra Costa": "contracosta",
-    "Evergreen Valley": "evergreen",
-    "Diablo Valley": "diablo",
-    "Santa Rosa": "santarosa",
-    "West Valley": "westvalley",
-}
-
-
-def college_key(name: str) -> str:
-    """Convert a CSV display name into a backend college key.
-
-    Prefers an explicit override when the snake_case conversion would
-    diverge from the backend convention. Otherwise: lowercase, spaces to
-    underscores, strip non-alphanumeric.
-    """
-    name = name.strip()
-    if name in CSV_NAME_OVERRIDES:
-        return CSV_NAME_OVERRIDES[name]
-    key = re.sub(r"\s+", "_", name.lower())
-    key = re.sub(r"[^a-z0-9_]", "", key)
-    return key
+DEFAULT_GRADES_CSV = (
+    Path(__file__).parent.parent / "ontology" / "datamart" / "top6_grades.csv"
+)
+OUTPUT_DIR = (
+    Path(__file__).parent.parent / "ontology" / "college_metrics" / "top6"
+)
 
 
 def parse_grades_file(filepath: str) -> dict:
     """Parse top6_grades.csv into per-college, per-TOP6 data.
 
-    Returns: {college_name: {"total_enrollments": int, "top6_codes": {...}}}
+    Returns: {college_display_name: {"total_enrollments": int, "top6_codes": {...}}}
     """
     colleges: dict = {}
     current_college = None
@@ -200,7 +174,6 @@ def _compute_top4_rollup(top6_codes: dict) -> dict:
                 bucket["_weighted"].get(grade, 0) + share * entry["enrollment"]
             )
 
-    # Normalize
     out = {}
     for top4, bucket in rollup.items():
         if bucket["enrollment"] <= 0:
@@ -218,42 +191,47 @@ def _compute_top4_rollup(top6_codes: dict) -> dict:
 
 
 def main():
-    if len(sys.argv) < 2:
-        print("Usage: python -m pipeline.build_top6_calibrations /path/to/top6_grades.csv")
-        sys.exit(1)
-
-    filepath = sys.argv[1]
+    filepath = sys.argv[1] if len(sys.argv) > 1 else str(DEFAULT_GRADES_CSV)
     print(f"Parsing {filepath}...")
     colleges = parse_grades_file(filepath)
-    print(f"Found {len(colleges)} colleges")
+    print(f"Found {len(colleges)} colleges in CSV")
 
-    output_dir = Path(__file__).parent.parent / "ontology" / "calibrations" / "top6"
-    output_dir.mkdir(parents=True, exist_ok=True)
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     written = 0
+    skipped_no_key = []
+    skipped_no_top6 = []
     for name, data in sorted(colleges.items()):
-        key = college_key(name)
-        top6_count = len(data["top6_codes"])
-        if top6_count == 0:
+        backend_key = csv_name_to_backend_key(name)
+        if not backend_key:
+            skipped_no_key.append(name)
+            continue
+        if not data["top6_codes"]:
+            skipped_no_top6.append(name)
             continue
 
         output = {
             "college_name": name,
-            "college_key": key,
+            "college_key": backend_key,
             "total_enrollments": data["total_enrollments"],
             "top6_codes": data["top6_codes"],
             "top4_rollup": _compute_top4_rollup(data["top6_codes"]),
         }
 
-        path = output_dir / f"{key}.json"
+        path = OUTPUT_DIR / f"{backend_key}.json"
         with open(path, "w") as f:
             json.dump(output, f, indent=2)
         written += 1
 
-    print(f"Written {written} calibration files to {output_dir}")
+    print(f"Wrote {written} calibration files to {OUTPUT_DIR}")
+    if skipped_no_key:
+        print(f"Skipped {len(skipped_no_key)} colleges absent from "
+              f"catalog_sources: {sorted(skipped_no_key)}")
+    if skipped_no_top6:
+        print(f"Skipped {len(skipped_no_top6)} colleges with no TOP6 codes")
 
     total_top6s = sum(len(d["top6_codes"]) for d in colleges.values())
-    print(f"Total TOP6 codes across all colleges: {total_top6s}")
+    print(f"Total TOP6 codes across all parsed colleges: {total_top6s}")
 
 
 if __name__ == "__main__":
