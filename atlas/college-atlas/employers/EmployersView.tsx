@@ -118,7 +118,7 @@ export default function EmployersView({ school, onBack }: Props) {
   const renderInitialContent = useCallback(() => (
     <div style={{ marginTop: "16px" }}>
       <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.35)", marginBottom: "12px" }}>
-        {employersAlpha.length.toLocaleString()} employers
+        {employersAlpha.length.toLocaleString()} regional employers
       </p>
       <EntityScrollList
         items={employersAlpha} initialCap={100} batchSize={100}
