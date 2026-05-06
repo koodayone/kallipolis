@@ -133,23 +133,24 @@ def _gather_student_pipeline(
 
         # `total_in_program` reads from the HAS_COMPETENCY edge
         # precomputed by partnerships.compute. Definition: students who
-        # both (a) have at least one prep-tagged course enrollment for
-        # this SOC, and (b) have declared their major in one of the
-        # aligned departments. A semantic tightening from the previous
-        # live query, which counted students-with-aligned-major +
-        # any-enrollment-at-college (a broader set that included
-        # declared-but-not-yet-engaged students). The new metric is
-        # closer to "actually-positioned-for-this-SOC" rather than
-        # "declared in this program area." Not currently rendered in
-        # the UI (only total_in_aligned_departments is shown), but
-        # available for narrative composition and downstream analysis.
+        # have at least one prep-tagged course enrollment for this SOC
+        # AND have declared their major in one of the aligned departments.
+        # Not currently rendered in the UI (only total_in_aligned_departments
+        # is shown), but available for narrative composition.
+        #
+        # No college-scoping filter: HAS_COMPETENCY is cross-college by
+        # design — a student is "positioned for this SOC" regardless of
+        # which college's coursework contributed. In current single-
+        # college student data, this is equivalent to college-scoped (a
+        # student's HAS_COMPETENCY edges only derive from their one
+        # college's courses). In a multi-college future, the broader
+        # interpretation is the correct one.
         stats = session.run("""
             MATCH (occ:Occupation {soc_code: $soc_code})
                   <-[:HAS_COMPETENCY]-(s:Student)
             WHERE s.primary_focus IN $departments
-              AND EXISTS { (s)-[:ENROLLED_IN]->(:Course {college: $college}) }
             RETURN count(DISTINCT s) AS total_in_program
-        """, college=college, departments=departments, soc_code=soc_code).single()
+        """, departments=departments, soc_code=soc_code).single()
 
         student_stats = {
             "total_in_program": stats["total_in_program"] if stats else 0,
@@ -161,31 +162,33 @@ def _gather_student_pipeline(
         #
         #   1. Index-seek into Occupation by soc_code, traverse incoming
         #      HAS_COMPETENCY edges to candidate students, filter by
-        #      primary_focus + at-this-college, sort by competency_depth
-        #      then GPA, LIMIT 10. This phase is bounded to the SOC's
-        #      candidate pool (typically a few hundred to few thousand
-        #      students), not the global Student × enrollments cartesian
-        #      the old shape walked.
+        #      primary_focus, sort by competency_depth then GPA, LIMIT 10.
+        #      Bounded to the SOC's HAS_COMPETENCY candidate pool —
+        #      typically 10K–15K students for normal SOCs, larger for
+        #      broad CTE-aligned SOCs.
         #
         #   2. For the 10 returned students, fetch their aligned-dept
         #      enrollment history at this college for the expansion
-        #      panel rendering.
+        #      panel rendering. This phase IS college-scoped — the
+        #      enrollment detail rendered in the report is the student's
+        #      coursework at this specific college.
         #
-        # Eligibility gate: HAS_COMPETENCY edge to this SOC + primary_focus
-        # in aligned departments + at least one enrollment at this college.
-        # The HAS_COMPETENCY filter is stricter than the old "enrolled in
-        # aligned dept" gate — it requires actual prep-tagged enrollments,
-        # not just program-area exposure. Students whose institutional
-        # data has aligned-dept enrollments but no prep-tagged courses
-        # (the "sparse MIS data" case the old code anticipated) now
-        # surface as empty top_students alongside non-zero
-        # total_in_aligned_departments — the frontend already renders
-        # explanatory text for this state.
+        # No college-scoping on phase 1's eligibility filter: HAS_COMPETENCY
+        # is cross-college by design. A student "positioned for this SOC"
+        # is positioned regardless of where the prep coursework happened.
+        # In current single-college student data, this is equivalent to
+        # college-scoped (every student has HAS_COMPETENCY edges only
+        # from their one college's courses). In a multi-college future,
+        # the broader interpretation is correct.
+        #
+        # Phase 2's college filter ensures the rendered enrollment detail
+        # reflects this college's records — a multi-college student in
+        # the future gets their cross-college competency ranking but only
+        # sees this-college coursework in the expansion panel.
         focus_query = """
             MATCH (occ:Occupation {soc_code: $soc_code})
                   <-[hc:HAS_COMPETENCY]-(s:Student)
             WHERE s.primary_focus IN $departments
-              AND EXISTS { (s)-[:ENROLLED_IN]->(:Course {college: $college}) }
             WITH s, hc.competency_depth AS competency_depth
             ORDER BY competency_depth DESC, COALESCE(s.gpa, 0.0) DESC
             LIMIT 10
@@ -220,7 +223,6 @@ def _gather_student_pipeline(
                       <-[hc:HAS_COMPETENCY]-(s:Student)
                 WHERE NOT (s.primary_focus IN $departments)
                   AND NOT (s.uuid IN $exclude_uuids)
-                  AND EXISTS { (s)-[:ENROLLED_IN]->(:Course {college: $college}) }
                 WITH s, hc.competency_depth AS competency_depth
                 ORDER BY competency_depth DESC, COALESCE(s.gpa, 0.0) DESC
                 LIMIT $limit
