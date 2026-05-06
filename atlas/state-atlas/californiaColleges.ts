@@ -11,6 +11,7 @@ export type College = {
 export type Region = {
   id: string;
   name: string;
+  acronym: string;      // institutional consortium acronym (e.g. "BACCC")
   counties: string[];   // must match GeoJSON properties.name exactly
   collegeCount: number;
 };
@@ -44,6 +45,7 @@ export const CALIFORNIA_REGIONS: Region[] = [
   {
     id: "north-far-north",
     name: "North / Far North",
+    acronym: "NFNRC",
     counties: [
       "Butte", "Colusa", "Del Norte", "El Dorado", "Glenn", "Humboldt",
       "Lake", "Lassen", "Mendocino", "Modoc", "Nevada", "Placer",
@@ -55,6 +57,7 @@ export const CALIFORNIA_REGIONS: Region[] = [
   {
     id: "bay-area",
     name: "Bay Area",
+    acronym: "BACCC",
     counties: [
       "Alameda", "Contra Costa", "Marin", "Monterey", "Napa", "San Benito",
       "San Francisco", "San Mateo", "Santa Clara", "Santa Cruz", "Solano", "Sonoma",
@@ -64,6 +67,7 @@ export const CALIFORNIA_REGIONS: Region[] = [
   {
     id: "central-valley-mother-lode",
     name: "Central Valley / Mother Lode",
+    acronym: "CVMLRC",
     counties: [
       "Alpine", "Amador", "Calaveras", "Fresno", "Inyo", "Kern", "Kings",
       "Madera", "Mariposa", "Merced", "Mono", "San Joaquin", "Stanislaus",
@@ -74,30 +78,35 @@ export const CALIFORNIA_REGIONS: Region[] = [
   {
     id: "south-central-coast",
     name: "South Central Coast",
+    acronym: "SCCRC",
     counties: ["San Luis Obispo", "Santa Barbara", "Ventura"],
     collegeCount: 8,
   },
   {
     id: "los-angeles",
     name: "Los Angeles",
+    acronym: "LARC",
     counties: ["Los Angeles"],
     collegeCount: 19,
   },
   {
     id: "orange-county",
     name: "Orange County",
+    acronym: "OCRC",
     counties: ["Orange"],
     collegeCount: 9,
   },
   {
     id: "inland-empire-desert",
     name: "Inland Empire / Desert",
+    acronym: "IEDRC",
     counties: ["Riverside", "San Bernardino"],
     collegeCount: 12,
   },
   {
     id: "san-diego-imperial",
     name: "San Diego / Imperial",
+    acronym: "SDIRC",
     counties: ["San Diego", "Imperial"],
     collegeCount: 10,
   },
@@ -125,7 +134,7 @@ export const CALIFORNIA_COLLEGES: College[] = [
   { id: "butte",          name: "Butte College",                   district: "Butte-Glenn CCD",               regionId: "north-far-north", lat: 39.52, lng: -121.65, logoStacked: "/butte-logo.svg" },
   { id: "sierra",         name: "Sierra College",                  district: "Sierra JCCD",                   regionId: "north-far-north",      lat: 38.79, lng: -121.20, logoStacked: "/sierra-logo.png" },
   { id: "saccc",          name: "Sacramento City College",         district: "Los Rios CCD",                  regionId: "north-far-north", lat: 38.56, lng: -121.49, logoStacked: "/saccc-logo.svg" },
-  { id: "arc",            name: "American River College",          district: "Los Rios CCD",                  regionId: "north-far-north", lat: 38.67, lng: -121.37, logoStacked: "/arc-logo.svg" },
+  { id: "americanriver",  name: "American River College",          district: "Los Rios CCD",                  regionId: "north-far-north", lat: 38.67, lng: -121.37, logoStacked: "/arc-logo.svg" },
   { id: "cosumnes",       name: "Cosumnes River College",          district: "Los Rios CCD",                  regionId: "north-far-north", lat: 38.44, lng: -121.42, logoStacked: "/cosumnes-logo.svg" },
   { id: "folsom",         name: "Folsom Lake College",             district: "Los Rios CCD",                  regionId: "north-far-north", lat: 38.67, lng: -121.17, logoStacked: "/folsom-logo.svg" },
   { id: "nevada",         name: "Nevada Union / Gold Hill",        district: "Nevada-Sierra CCD",             regionId: "north-far-north",      lat: 39.29, lng: -121.06 },
@@ -139,7 +148,7 @@ export const CALIFORNIA_COLLEGES: College[] = [
   { id: "deanza",      name: "De Anza College",               district: "Foothill-De Anza CCD",       regionId: "bay-area", lat: 37.31, lng: -122.04, logoStacked: "/deanza-logo.svg" },
   { id: "skyline",     name: "Skyline College",               district: "San Mateo CCD",              regionId: "bay-area", lat: 37.62, lng: -122.46, logoStacked: "/skyline-logo.png" },
   { id: "canada",      name: "Cañada College",                district: "San Mateo CCD",              regionId: "bay-area", lat: 37.49, lng: -122.23, logoStacked: "/canada-logo.png" },
-  { id: "cmc",         name: "College of San Mateo",          district: "San Mateo CCD",              regionId: "bay-area", lat: 37.54, lng: -122.32, logoStacked: "/cmc-logo.jpg" },
+  { id: "csm",         name: "College of San Mateo",          district: "San Mateo CCD",              regionId: "bay-area", lat: 37.54, lng: -122.32, logoStacked: "/cmc-logo.jpg" },
   { id: "laney",       name: "Laney College",                 district: "Peralta CCD",                regionId: "bay-area", lat: 37.80, lng: -122.27, logoStacked: "/laney-logo.svg" },
   { id: "merritt",     name: "Merritt College",               district: "Peralta CCD",                regionId: "bay-area", lat: 37.83, lng: -122.22, logoStacked: "/merritt-logo.png" },
   { id: "berkeleycc",  name: "Berkeley City College",         district: "Peralta CCD",                regionId: "bay-area", lat: 37.87, lng: -122.27, logoStacked: "/berkeleycc-logo.png" },
@@ -182,7 +191,7 @@ export const CALIFORNIA_COLLEGES: College[] = [
   // Central Coast
   { id: "cuesta",         name: "Cuesta College",                  district: "San Luis Obispo CCD",           regionId: "south-central-coast",      lat: 35.32, lng: -120.66, logoStacked: "/cuesta-logo.png" },
   { id: "sbcc",           name: "Santa Barbara City College",      district: "Santa Barbara CCD",             regionId: "south-central-coast",      lat: 34.43, lng: -119.72, logoStacked: "/sbcc-logo.png" },
-  { id: "hancock",        name: "Allan Hancock College",           district: "Allan Hancock JCCD",            regionId: "south-central-coast",      lat: 34.90, lng: -120.43, logoStacked: "/hancock-logo.png" },
+  { id: "allanhancock",   name: "Allan Hancock College",           district: "Allan Hancock JCCD",            regionId: "south-central-coast",      lat: 34.90, lng: -120.43, logoStacked: "/hancock-logo.png" },
   { id: "hartnell",       name: "Hartnell College",                district: "Hartnell CCD",                  regionId: "bay-area",                 lat: 36.67, lng: -121.63, logoStacked: "/hartnell-logo.svg" },
   { id: "montereypen",    name: "Monterey Peninsula College",      district: "Monterey Peninsula CCD",        regionId: "bay-area",                 lat: 36.60, lng: -121.87, logoStacked: "/montereypen-logo.png" },
   { id: "cabrillovc",     name: "Ventura College",                 district: "Ventura CCD",                   regionId: "south-central-coast",      lat: 34.28, lng: -119.22, logoStacked: "/cabrillovc-logo.png" },
@@ -204,7 +213,7 @@ export const CALIFORNIA_COLLEGES: College[] = [
   { id: "coppermtn",     name: "Copper Mountain College",         district: "Copper Mountain CCD",           regionId: "inland-empire-desert",      lat: 34.14, lng: -116.22, logoStacked: "/coppermtn-logo.svg" },
 
   // Los Angeles
-  { id: "lacc",           name: "Los Angeles City College",        district: "Los Angeles CCD",               regionId: "los-angeles",        lat: 34.08, lng: -118.31, logoStacked: "/lacc-logo.png" },
+  { id: "lacity",         name: "Los Angeles City College",        district: "Los Angeles CCD",               regionId: "los-angeles",        lat: 34.08, lng: -118.31, logoStacked: "/lacc-logo.png" },
   { id: "lavalley",       name: "Los Angeles Valley College",      district: "Los Angeles CCD",               regionId: "los-angeles",        lat: 34.18, lng: -118.40, logoStacked: "/lavalley-logo.png" },
   { id: "laharbor",       name: "Los Angeles Harbor College",      district: "Los Angeles CCD",               regionId: "los-angeles",        lat: 33.79, lng: -118.29, logoStacked: "/laharbor-logo.gif" },
   { id: "lamission",      name: "Los Angeles Mission College",     district: "Los Angeles CCD",               regionId: "los-angeles",        lat: 34.26, lng: -118.42, logoStacked: "/lamission-logo.png" },

@@ -83,16 +83,23 @@ def _normalize_college(college: str) -> str:
     """Map a Neo4j college name to the supply CSV short name."""
     if college in _NEO4J_TO_SUPPLY:
         return _NEO4J_TO_SUPPLY[college]
-    # Heuristic fallback: strip common suffixes
+    # Heuristic fallback: strip common suffixes + periods.
+    # Period stripping matters because catalog-side names sometimes
+    # carry a period after abbreviated words ("Mt. San Antonio College")
+    # while the MCF College column writes them without ("Mt San Antonio").
+    # Without this, _normalize_college's index-vs-lookup symmetry breaks
+    # for the affected colleges and Stage 2 aborts at 0% TOP6 coverage.
     stripped = (
         college
         .replace(" Community College", "")
         .replace(" College", "")
         .replace("College of the ", "")
         .replace("College of ", "")
+        .replace(".", "")
         .strip()
     )
-    return stripped
+    # Collapse any double-spaces left behind by punctuation stripping.
+    return " ".join(stripped.split())
 
 
 # ── Supply index (TOP-based, per college) ───────────────────────────────
@@ -135,7 +142,16 @@ def _load_supply_index() -> dict[tuple[str, str], list[dict]]:
             if annual_projected <= 0:
                 continue
 
-            key = (top6, college.lower())
+            # Normalize the CSV's college name through the same fallback the
+            # lookup uses, so e.g. "Reedley College" in the CSV becomes the
+            # short-name "reedley" the lookup will compose. Without this, the
+            # 3 colleges whose CSV entry carries a "College" / "Community
+            # College" suffix (Clovis, Norco, Reedley as of May 2026) silently
+            # produce no supply data — the lookup keys to the stripped name
+            # but the index keys to the suffixed name. Same class of bug as
+            # the MCF index/lookup asymmetry fixed in commit 0135860.
+            college_normalized = _normalize_college(college).lower()
+            key = (top6, college_normalized)
             if key not in index:
                 index[key] = []
             index[key].append({

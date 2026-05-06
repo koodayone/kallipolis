@@ -10,13 +10,30 @@ import { FEATURED_COLLEGES } from "@/state-atlas/CaliforniaMap";
 import KallipolisBrand from "@/ui/KallipolisBrand";
 import AtlasHeader from "@/ui/AtlasHeader";
 import RisingSun from "@/ui/RisingSun";
-import { College, CALIFORNIA_REGIONS, CALIFORNIA_COLLEGES } from "@/state-atlas/californiaColleges";
+import { College, Region, CALIFORNIA_REGIONS, CALIFORNIA_COLLEGES } from "@/state-atlas/californiaColleges";
 import { getCollegeAtlasConfig } from "@/config/collegeAtlasConfigs";
+import {
+  STATE_VIEW,
+  REGION_VIEWS,
+  ZOOM_TRANSITION_MS,
+  easeInOutCubic,
+  lerp,
+} from "@/state-atlas/regionViews";
+
+type ViewMode = "state" | "region";
+type Camera = { center: [number, number]; scale: number };
 
 export default function StateAtlas() {
-  // The State Atlas is the doorway into the product. With auth removed
-  // there is no concept of a user-specific "home college" — every visitor
-  // sees the system-level map and picks a college from it.
+  // The State Atlas is a two-zoom doorway: at state view the user picks
+  // a SWP region (the institutional unit at which the product reasons);
+  // at regional view they pick a college within it. The dimmed-diamonds-
+  // as-constellation aesthetic at state view exists because per-college
+  // click is ergonomically broken at that zoom (LA/Bay Area density),
+  // and forcing a region selection first lets the regional view do the
+  // college-selection job cleanly.
+
+  const [viewMode, setViewMode] = useState<ViewMode>("state");
+  const [activeRegionId, setActiveRegionId] = useState<string | null>(null);
 
   const [hoveredRegionId, setHoveredRegionId] = useState<string | null>(null);
   const [hoveredCollege, setHoveredCollege] = useState<College | null>(null);
@@ -27,10 +44,65 @@ export default function StateAtlas() {
   const [searchActiveIndex, setSearchActiveIndex] = useState(-1);
   const searchRef = useRef<HTMLInputElement>(null);
 
+  // Animated camera — tweens between state view and regional view over
+  // ZOOM_TRANSITION_MS. Driven by useEffect on viewMode / activeRegionId.
+  const [camera, setCamera] = useState<Camera>(STATE_VIEW.camera);
+  const cameraRef = useRef(camera);
+  cameraRef.current = camera;
+  const animationFrameRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    const target: Camera =
+      viewMode === "region" && activeRegionId && REGION_VIEWS[activeRegionId]
+        ? REGION_VIEWS[activeRegionId].camera
+        : STATE_VIEW.camera;
+
+    const start = performance.now();
+    const startCam: Camera = {
+      center: [...cameraRef.current.center] as [number, number],
+      scale: cameraRef.current.scale,
+    };
+
+    const step = (now: number) => {
+      const t = Math.min((now - start) / ZOOM_TRANSITION_MS, 1);
+      const eased = easeInOutCubic(t);
+      setCamera({
+        center: [
+          lerp(startCam.center[0], target.center[0], eased),
+          lerp(startCam.center[1], target.center[1], eased),
+        ],
+        scale: lerp(startCam.scale, target.scale, eased),
+      });
+      if (t < 1) {
+        animationFrameRef.current = requestAnimationFrame(step);
+      } else {
+        animationFrameRef.current = null;
+      }
+    };
+
+    if (animationFrameRef.current !== null) {
+      cancelAnimationFrame(animationFrameRef.current);
+    }
+    animationFrameRef.current = requestAnimationFrame(step);
+
+    return () => {
+      if (animationFrameRef.current !== null) {
+        cancelAnimationFrame(animationFrameRef.current);
+        animationFrameRef.current = null;
+      }
+    };
+  }, [viewMode, activeRegionId]);
+
   const featuredCollegesSorted = useMemo(() =>
     CALIFORNIA_COLLEGES.filter((c) => FEATURED_COLLEGES.has(c.id)).sort((a, b) => a.name.localeCompare(b.name)),
     []
   );
+
+  // At regional view, restrict the right-panel college list to the active region.
+  const regionalCollegesSorted = useMemo(() => {
+    if (viewMode !== "region" || !activeRegionId) return [];
+    return featuredCollegesSorted.filter((c) => c.regionId === activeRegionId);
+  }, [viewMode, activeRegionId, featuredCollegesSorted]);
 
   const searchResults = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
@@ -47,6 +119,20 @@ export default function StateAtlas() {
 
   const showSearchResults = searchFocused || searchQuery.trim().length > 0;
 
+  const handleRegionSelect = useCallback((regionId: string) => {
+    setActiveRegionId(regionId);
+    setViewMode("region");
+    setSelectedCollege(null);
+    setHoveredRegionId(null);
+  }, []);
+
+  const handleZoomOut = useCallback(() => {
+    setViewMode("state");
+    setActiveRegionId(null);
+    setSelectedCollege(null);
+    setHoveredCollege(null);
+  }, []);
+
   const handleCollegeSelect = useCallback((college: College) => {
     setSelectedCollege((prev) => (prev?.id === college.id ? null : college));
   }, []);
@@ -55,8 +141,27 @@ export default function StateAtlas() {
     setSearchQuery("");
     setSearchActiveIndex(-1);
     searchRef.current?.blur();
+    // Search is a fast path, but respects the region-as-destination model:
+    // selecting a college transitions the camera to its region and opens
+    // the SchoolPanel. The user lands looking at the college in context.
+    setActiveRegionId(college.regionId);
+    setViewMode("region");
     setSelectedCollege(college);
   }, []);
+
+  // ESC: pop one level — close college panel, then exit region zoom, then nothing.
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      if (selectedCollege) {
+        setSelectedCollege(null);
+      } else if (viewMode === "region") {
+        handleZoomOut();
+      }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [selectedCollege, viewMode, handleZoomOut]);
 
   const handleSearchKeyDown = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
     if (!showSearchResults || searchResults.length === 0) return;
@@ -79,6 +184,20 @@ export default function StateAtlas() {
   }, [showSearchResults, searchResults, searchActiveIndex, handleSearchSelect]);
 
   const activeCollege = selectedCollege ?? hoveredCollege;
+  const activeRegion = activeRegionId
+    ? CALIFORNIA_REGIONS.find((r) => r.id === activeRegionId) ?? null
+    : null;
+
+  const isQuerying = searchQuery.trim().length > 0;
+  // Right panel content rule:
+  //   - College selected/hovered → SchoolPanel
+  //   - Region view, no query → regional college list (with region header)
+  //   - Otherwise → flat college list (acts as both search results and
+  //     the default state-view list)
+  const rightPanelMode: "school" | "list" | "regional-list" =
+    activeCollege ? "school"
+    : viewMode === "region" && !isQuerying ? "regional-list"
+    : "list";
 
   return (
     <PageTransition>
@@ -113,6 +232,52 @@ export default function StateAtlas() {
               overflow: "hidden",
             }}
           >
+            {/* Back-to-California chip — visible only when zoomed in */}
+            <AnimatePresence>
+              {viewMode === "region" && (
+                <motion.button
+                  key="back-chip"
+                  initial={{ opacity: 0, x: -8 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -8 }}
+                  transition={{ duration: 0.18 }}
+                  onClick={(e) => { e.stopPropagation(); handleZoomOut(); }}
+                  style={{
+                    position: "absolute",
+                    top: 18,
+                    left: 24,
+                    zIndex: 10,
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 8,
+                    padding: "8px 14px",
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.10)",
+                    borderRadius: 999,
+                    color: "rgba(255,255,255,0.85)",
+                    fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+                    fontSize: 11,
+                    fontWeight: 600,
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                    cursor: "pointer",
+                    transition: "background 0.15s, border-color 0.15s",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.08)";
+                    (e.currentTarget as HTMLElement).style.borderColor = "rgba(201,168,76,0.35)";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.04)";
+                    (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.10)";
+                  }}
+                >
+                  <span style={{ fontSize: 14, lineHeight: 1 }}>←</span>
+                  All California
+                </motion.button>
+              )}
+            </AnimatePresence>
+
             {/* Map */}
             <div
               style={{
@@ -123,63 +288,77 @@ export default function StateAtlas() {
               }}
             >
               <CaliforniaMap
+                cameraCenter={camera.center}
+                cameraScale={camera.scale}
+                viewMode={viewMode}
+                activeRegionId={activeRegionId}
                 hoveredRegionId={hoveredRegionId}
                 hoveredCollegeId={hoveredCollege?.id ?? null}
                 selectedCollegeId={selectedCollege?.id ?? null}
                 dimMarkers={false}
                 onRegionHover={setHoveredRegionId}
+                onRegionSelect={handleRegionSelect}
                 onCollegeHover={setHoveredCollege}
                 onCollegeSelect={handleCollegeSelect}
               />
             </div>
 
-            {/* Sun prompt */}
+            {/* Sun prompt — the doorway motif. Visible only at state view;
+                once a region is selected the user has walked through, and
+                the right-panel header + back chip carry the context from
+                there. Returns when the user zooms back out. */}
             <AnimatePresence>
-              {(
-                <motion.div
-                  key="sun-prompt"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  style={{
+              {viewMode === "state" && (
+              <motion.div
+                key="sun-prompt"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                style={{
+                  position: "absolute",
+                  right: "18%",
+                  top: "15%",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  pointerEvents: "none",
+                }}
+              >
+                <div style={{
+                  opacity: activeCollege || hoveredRegionId || activeRegion ? 1 : 0.45,
+                  transition: "opacity 0.4s ease-in-out",
+                }}>
+                  <RisingSun />
+                </div>
+                <div style={{ position: "relative", height: "16px", width: "0", marginTop: "10px" }}>
+                  <span style={{
                     position: "absolute",
-                    right: "18%",
-                    top: "15%",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    pointerEvents: "none",
-                  }}
-                >
-                  <div style={{ opacity: activeCollege || hoveredRegionId ? 1 : 0.45, transition: "opacity 0.4s ease-in-out" }}>
-                    <RisingSun />
-                  </div>
-                  <div style={{ position: "relative", height: "16px", width: "0", marginTop: "10px" }}>
-                    <span style={{
-                      position: "absolute",
-                      left: "50%",
-                      transform: "translateX(-50%)",
-                      fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-                      fontSize: "11px",
-                      fontWeight: 500,
-                      letterSpacing: "0.14em",
-                      textTransform: "uppercase",
-                      color: activeCollege || hoveredRegionId ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.55)",
-                      whiteSpace: "nowrap",
-                      transition: "color 0.3s ease-in-out",
-                    }}>
-                      {activeCollege
-                        ? activeCollege.name
-                        : hoveredRegionId
-                        ? (CALIFORNIA_REGIONS.find((r) => r.id === hoveredRegionId)?.name ?? "Select a college")
-                        : "Select a college"}
-                    </span>
-                  </div>
-                </motion.div>
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+                    fontSize: "11px",
+                    fontWeight: 500,
+                    letterSpacing: "0.14em",
+                    textTransform: "uppercase",
+                    color: activeCollege || hoveredRegionId || activeRegion
+                      ? "rgba(255,255,255,0.9)"
+                      : "rgba(255,255,255,0.55)",
+                    whiteSpace: "nowrap",
+                    transition: "color 0.3s ease-in-out",
+                  }}>
+                    {activeCollege
+                      ? activeCollege.name
+                      : hoveredRegionId
+                      ? (CALIFORNIA_REGIONS.find((r) => r.id === hoveredRegionId)?.name ?? "Select a region")
+                      : activeRegion
+                      ? activeRegion.name
+                      : "Select a region"}
+                  </span>
+                </div>
+              </motion.div>
               )}
             </AnimatePresence>
-
           </div>
 
           {/* Right — search + info panel */}
@@ -194,7 +373,7 @@ export default function StateAtlas() {
               overflow: "hidden",
             }}
           >
-            {/* Search bar */}
+            {/* Search bar — global across both view modes. */}
             <div style={{ flexShrink: 0, padding: "24px 40px 0" }}>
               <div
                 style={{
@@ -258,7 +437,7 @@ export default function StateAtlas() {
               </div>
             </div>
 
-            {/* College list or school panel */}
+            {/* Content panel — mirrors the map's zoom level. */}
             <div
               onClick={(e) => e.stopPropagation()}
               style={{
@@ -268,9 +447,13 @@ export default function StateAtlas() {
               }}
             >
               <AnimatePresence mode="wait">
-                {activeCollege ? (
+                {rightPanelMode === "school" && activeCollege ? (
                   <motion.div key={`school-${activeCollege.id}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}>
                     <SchoolPanel college={activeCollege} />
+                  </motion.div>
+                ) : rightPanelMode === "regional-list" && activeRegion ? (
+                  <motion.div key={`regional-${activeRegion.id}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}>
+                    <RegionalCollegeList region={activeRegion} colleges={regionalCollegesSorted} onSelect={handleSearchSelect} />
                   </motion.div>
                 ) : (
                   <motion.div key="college-list" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}
@@ -418,6 +601,75 @@ function SearchResultRow({
   );
 }
 
+// ── Regional college list (used at region zoom) ──────────────────────────
+
+function RegionalCollegeList({
+  region,
+  colleges,
+  onSelect,
+}: {
+  region: Region;
+  colleges: College[];
+  onSelect: (college: College) => void;
+}) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+      {/* Regional header */}
+      <div style={{ display: "flex", flexDirection: "column", gap: "6px", padding: "8px 16px 0" }}>
+        <span style={{
+          fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+          fontSize: "11px",
+          fontWeight: 600,
+          letterSpacing: "0.18em",
+          textTransform: "uppercase",
+          color: "rgba(201,168,76,0.85)",
+        }}>
+          {region.acronym}
+        </span>
+        <h3 style={{
+          fontFamily: "var(--font-days-one), sans-serif",
+          fontSize: "22px",
+          lineHeight: 1.15,
+          color: "#ffffff",
+          margin: 0,
+        }}>
+          {region.name}
+        </h3>
+        <span style={{
+          fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+          fontSize: "12px",
+          color: "rgba(255,255,255,0.45)",
+        }}>
+          {colleges.length} featured {colleges.length === 1 ? "college" : "colleges"}
+        </span>
+      </div>
+
+      {/* Filtered college list */}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "2px",
+          borderRadius: "6px",
+          border: "1px solid rgba(255,255,255,0.06)",
+          background: "rgba(255,255,255,0.02)",
+          padding: "6px 0",
+        }}
+      >
+        {colleges.length === 0 ? (
+          <div style={{ padding: "14px 16px", color: "rgba(255,255,255,0.4)", fontSize: 13 }}>
+            No featured colleges in this region yet.
+          </div>
+        ) : (
+          colleges.map((college) => (
+            <SearchResultRow key={college.id} college={college} onSelect={onSelect} isActive={false} />
+          ))
+        )}
+      </div>
+    </div>
+  );
+}
+
 function SchoolPanel({ college }: { college: College }) {
   const config = getCollegeAtlasConfig(college.id);
   const accent = config?.brandColorNeon ?? "#c9a84c";
@@ -452,4 +704,3 @@ function SchoolPanel({ college }: { college: College }) {
     </div>
   );
 }
-

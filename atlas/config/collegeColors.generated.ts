@@ -3,6 +3,8 @@
 
 export const COLLEGE_COLORS: Record<string, string> = {
   "alameda": "#2069ab",
+  "allanhancock": "#00405e",
+  "americanriver": "#cc1f40",
   "antelopevalley": "#8db9ca",
   "arc": "#cc1f40",
   "bakersfield": "#bd4552",
@@ -28,6 +30,7 @@ export const COLLEGE_COLORS: Record<string, string> = {
   "coppermtn": "#1e3a5f",
   "cosumnes": "#03283f",
   "crafton": "#2f875e",
+  "csm": "#385e97",
   "cuesta": "#1b9554",
   "cuyamaca": "#1c4e90",
   "cypress": "#013877",
@@ -49,6 +52,7 @@ export const COLLEGE_COLORS: Record<string, string> = {
   "imperial": "#ae3237",
   "irvinevalley": "#4679a9",
   "lacc": "#296393",
+  "lacity": "#296393",
   "laharbor": "#0000ec",
   "laketahoe": "#013d51",
   "lamission": "#476e92",
