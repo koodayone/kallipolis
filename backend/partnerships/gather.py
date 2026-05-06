@@ -132,25 +132,32 @@ def _gather_student_pipeline(
         """, college=college, soc_code=soc_code).single()
 
         # `total_in_program` reads from the HAS_COMPETENCY edge
-        # precomputed by partnerships.compute. Definition: students who
-        # have at least one prep-tagged course enrollment for this SOC
-        # AND have declared their major in one of the aligned departments.
-        # Not currently rendered in the UI (only total_in_aligned_departments
-        # is shown), but available for narrative composition.
+        # precomputed by partnerships.compute. Definition: students at
+        # this college who have at least one prep-tagged course
+        # enrollment for this SOC AND have declared their major in one
+        # of the aligned departments. Not currently rendered in the UI
+        # (only total_in_aligned_departments is shown), but available
+        # for narrative composition.
         #
-        # No college-scoping filter: HAS_COMPETENCY is cross-college by
-        # design — a student is "positioned for this SOC" regardless of
-        # which college's coursework contributed. In current single-
-        # college student data, this is equivalent to college-scoped (a
-        # student's HAS_COMPETENCY edges only derive from their one
-        # college's courses). In a multi-college future, the broader
-        # interpretation is the correct one.
+        # College-scoping pivot via the `student_college` index: the
+        # query starts from `(s:Student {college: $college})` (~13K
+        # nodes/college), filters by primary_focus, then EXISTS-checks
+        # HAS_COMPETENCY. Without this pivot, broad CTE-aligned SOCs
+        # (e.g., 25-2031 Secondary Teachers with 372K HAS_COMPETENCY
+        # edges in prod) caused 30s+ timeouts because the planner
+        # scanned the full HAS_COMPETENCY pool and loaded primary_focus
+        # for every candidate. Multi-college future: convert
+        # `s.college` to a list and switch to `$college IN s.colleges`
+        # — the partnership-positioning question stays per-college (a
+        # college's pipeline is its own students).
         stats = session.run("""
-            MATCH (occ:Occupation {soc_code: $soc_code})
-                  <-[:HAS_COMPETENCY]-(s:Student)
+            MATCH (s:Student {college: $college})
             WHERE s.primary_focus IN $departments
+              AND EXISTS {
+                  (s)-[:HAS_COMPETENCY]->(:Occupation {soc_code: $soc_code})
+              }
             RETURN count(DISTINCT s) AS total_in_program
-        """, departments=departments, soc_code=soc_code).single()
+        """, college=college, departments=departments, soc_code=soc_code).single()
 
         student_stats = {
             "total_in_program": stats["total_in_program"] if stats else 0,
@@ -160,35 +167,29 @@ def _gather_student_pipeline(
         # Top-10 exemplars from the HAS_COMPETENCY edge set. Two-phase
         # query:
         #
-        #   1. Index-seek into Occupation by soc_code, traverse incoming
-        #      HAS_COMPETENCY edges to candidate students, filter by
-        #      primary_focus, sort by competency_depth then GPA, LIMIT 10.
-        #      Bounded to the SOC's HAS_COMPETENCY candidate pool —
-        #      typically 10K–15K students for normal SOCs, larger for
-        #      broad CTE-aligned SOCs.
+        #   1. Pivot from Student.college (~13K nodes/college via the
+        #      student_college index), filter by primary_focus, then
+        #      pull the HAS_COMPETENCY edge to the SOC for ranking.
+        #      Sort by competency_depth then GPA, LIMIT 10. The
+        #      college-pivot bound is what keeps broad CTE-aligned SOCs
+        #      tractable (e.g., 25-2031 has 372K HAS_COMPETENCY edges
+        #      in prod; without the pivot, the planner scanned that
+        #      whole pool and timed out at 30s+).
         #
         #   2. For the 10 returned students, fetch their aligned-dept
         #      enrollment history at this college for the expansion
-        #      panel rendering. This phase IS college-scoped — the
-        #      enrollment detail rendered in the report is the student's
-        #      coursework at this specific college.
+        #      panel rendering.
         #
-        # No college-scoping on phase 1's eligibility filter: HAS_COMPETENCY
-        # is cross-college by design. A student "positioned for this SOC"
-        # is positioned regardless of where the prep coursework happened.
-        # In current single-college student data, this is equivalent to
-        # college-scoped (every student has HAS_COMPETENCY edges only
-        # from their one college's courses). In a multi-college future,
-        # the broader interpretation is correct.
-        #
-        # Phase 2's college filter ensures the rendered enrollment detail
-        # reflects this college's records — a multi-college student in
-        # the future gets their cross-college competency ranking but only
-        # sees this-college coursework in the expansion panel.
+        # Multi-college future: convert `s.college` to a list and
+        # switch to `$college IN s.colleges`. The partnership question
+        # stays per-college — a college's pipeline is its own students,
+        # ranked by their HAS_COMPETENCY edge to the chosen SOC
+        # (regardless of which college's coursework contributed the
+        # competency).
         focus_query = """
-            MATCH (occ:Occupation {soc_code: $soc_code})
-                  <-[hc:HAS_COMPETENCY]-(s:Student)
+            MATCH (s:Student {college: $college})
             WHERE s.primary_focus IN $departments
+            MATCH (s)-[hc:HAS_COMPETENCY]->(:Occupation {soc_code: $soc_code})
             WITH s, hc.competency_depth AS competency_depth
             ORDER BY competency_depth DESC, COALESCE(s.gpa, 0.0) DESC
             LIMIT 10
@@ -213,16 +214,17 @@ def _gather_student_pipeline(
         ).data()
 
         if len(result) < 10:
-            # Fallback: students with HAS_COMPETENCY to this SOC who
-            # don't have primary_focus in aligned departments (e.g.,
-            # cross-disciplinary candidates whose major is elsewhere
-            # but who took prep coursework). Same shape as focus_query,
-            # different filter, excluding already-returned UUIDs.
+            # Fallback: students at this college with HAS_COMPETENCY to
+            # this SOC whose primary_focus is outside the aligned
+            # departments (e.g., cross-disciplinary candidates whose
+            # major is elsewhere but who took prep coursework). Same
+            # college-scoping pivot as focus_query, complementary
+            # filter, excluding already-returned UUIDs.
             fallback_query = """
-                MATCH (occ:Occupation {soc_code: $soc_code})
-                      <-[hc:HAS_COMPETENCY]-(s:Student)
+                MATCH (s:Student {college: $college})
                 WHERE NOT (s.primary_focus IN $departments)
                   AND NOT (s.uuid IN $exclude_uuids)
+                MATCH (s)-[hc:HAS_COMPETENCY]->(:Occupation {soc_code: $soc_code})
                 WITH s, hc.competency_depth AS competency_depth
                 ORDER BY competency_depth DESC, COALESCE(s.gpa, 0.0) DESC
                 LIMIT $limit
