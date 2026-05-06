@@ -20,7 +20,9 @@ import path from "node:path";
 import { CALIFORNIA_COLLEGES } from "@/state-atlas/californiaColleges";
 import { getCollegeAtlasConfig } from "@/config/collegeAtlasConfigs";
 
-export const dynamic = "force-dynamic";
+// Static-rendered: fs reads happen at build time, then the page is
+// shipped as a flat HTML artifact. Re-deploy after re-running the
+// brand-color extraction pipeline to refresh the audit data.
 
 type Capture = {
   id: string;
