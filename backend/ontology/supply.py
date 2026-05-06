@@ -83,16 +83,23 @@ def _normalize_college(college: str) -> str:
     """Map a Neo4j college name to the supply CSV short name."""
     if college in _NEO4J_TO_SUPPLY:
         return _NEO4J_TO_SUPPLY[college]
-    # Heuristic fallback: strip common suffixes
+    # Heuristic fallback: strip common suffixes + periods.
+    # Period stripping matters because catalog-side names sometimes
+    # carry a period after abbreviated words ("Mt. San Antonio College")
+    # while the MCF College column writes them without ("Mt San Antonio").
+    # Without this, _normalize_college's index-vs-lookup symmetry breaks
+    # for the affected colleges and Stage 2 aborts at 0% TOP6 coverage.
     stripped = (
         college
         .replace(" Community College", "")
         .replace(" College", "")
         .replace("College of the ", "")
         .replace("College of ", "")
+        .replace(".", "")
         .strip()
     )
-    return stripped
+    # Collapse any double-spaces left behind by punctuation stripping.
+    return " ".join(stripped.split())
 
 
 # ── Supply index (TOP-based, per college) ───────────────────────────────
