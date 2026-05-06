@@ -165,8 +165,20 @@ def _create_constraints(session):
     # kept because it's cheap, may be picked by future queries that
     # sort or range-filter on courses_completed, and incurs only
     # marginal write overhead at student generation time.
+    # student_college: speeds the per-college Student narrowing in
+    # partnerships/gather.py. The HAS_COMPETENCY traversal pool can be
+    # 100K+ students for broad CTE-aligned SOCs (e.g., 25-2031 Secondary
+    # Teachers materialized 372K HAS_COMPETENCY edges across 31 colleges
+    # in production). Without a college index on Student, the planner
+    # scans all candidate students and loads each one's primary_focus
+    # before filtering — pathological for broad SOCs (queries timed out
+    # at 30s+). With this index, the planner can pivot to start from
+    # `(s:Student {college: $college})` (~13K nodes/college), apply the
+    # primary_focus filter, then EXISTS-check HAS_COMPETENCY — turning
+    # the broad-SOC opportunity reads from 30s timeouts to sub-second.
     indexes = [
         "CREATE INDEX student_primary_focus IF NOT EXISTS FOR (n:Student) ON (n.primary_focus)",
+        "CREATE INDEX student_college IF NOT EXISTS FOR (n:Student) ON (n.college)",
         "CREATE INDEX course_college IF NOT EXISTS FOR (n:Course) ON (n.college)",
         "CREATE INDEX student_courses_completed IF NOT EXISTS FOR (n:Student) ON (n.courses_completed)",
     ]

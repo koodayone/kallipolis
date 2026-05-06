@@ -750,8 +750,10 @@ def load_students(
                 SET s.gpa = row.gpa,
                     s.primary_focus = row.primary_focus,
                     s.primary_top6 = row.primary_top6,
-                    s.courses_completed = row.courses_completed
+                    s.courses_completed = row.courses_completed,
+                    s.college = $inst
                 """,
+                inst=institution,
                 batch=chunk,
             )
         logger.info(f"Pre-created {len(student_rows)} Student nodes with derived fields")

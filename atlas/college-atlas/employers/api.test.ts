@@ -53,6 +53,7 @@ describe("employers api client", () => {
           description: "Integrated managed care consortium",
           website: "https://about.kaiserpermanente.org",
           roles_count: 2,
+          aligned_roles_count: 2,
           aligned_course_count: 14,
         },
       ];

@@ -8,6 +8,7 @@ export type ApiEmployerMatch = {
   description: string | null;
   website: string | null;
   roles_count: number;
+  aligned_roles_count: number;
   aligned_course_count: number;
 };
 

@@ -131,71 +131,49 @@ def build_sector_index(college: str) -> SectorIndex:
     cte_socs = cte_reachable_socs()
     sector_to_top6 = _load_sector_to_top6()
 
-    # All SOCs the college's region demands, with their occupation metadata.
+    # The per-(college, soc) aggregates (course_count, employer_count,
+    # student_count, top_codes) are precomputed onto OCCUPATION_PIPELINE
+    # edges by partnerships.compute.materialize_occupation_pipeline at
+    # pipeline reload time. Three queries that previously dominated this
+    # endpoint at request time (1.3s p50 / 11s p95 for the student count
+    # alone, on prod's e2-medium) collapse into a single edge read here.
+    #
+    # OCCUPATION_PIPELINE is sparse — edges exist only where the college
+    # has at least one PREPARES_FOR-aligned course for the SOC, mirroring
+    # the strict-filter gating below. SOCs the region demands but the
+    # college doesn't institutionally connect to are still surfaced via
+    # regional_socs (we want them in the dataset for diagnostics) but
+    # filtered out at row construction.
     driver = get_driver()
     with driver.session() as session:
-        regional_socs = session.run("""
+        # All SOCs the region demands, with metadata, plus the precomputed
+        # alignment aggregates joined via OPTIONAL MATCH (so unaligned
+        # SOCs still come through, with NULL aggregates that get filtered
+        # by the strict-filter step).
+        rows = session.run("""
             MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)
                   -[d:DEMANDS]->(occ:Occupation)
+            OPTIONAL MATCH (col)-[op:OCCUPATION_PIPELINE]->(occ)
             RETURN occ.soc_code AS soc_code,
                    occ.title AS title,
                    d.annual_openings AS annual_openings,
                    d.annual_wage AS annual_wage,
-                   d.growth_rate AS growth_rate
+                   d.growth_rate AS growth_rate,
+                   op.course_count AS course_count,
+                   op.employer_count AS employer_count,
+                   op.student_count AS student_count,
+                   op.top_codes AS top_codes
         """, college=college).data()
 
-        # Per-occupation course count at this college, plus the distinct
-        # TOP6 codes those courses are MCF-tagged with. The TOP set drives
-        # the per-row `gap` calculation downstream — using the
-        # course-derived TOP set (rather than the global TOP→CIP→SOC
-        # crosswalk) keeps the index gap consistent with the per-SOC
-        # report's "Workforce Gap" figure, which sums supply only over
-        # the TOPs reachable from the college's PREPARES_FOR-tagged
-        # courses. The Course.top_code property is set at ingest from
-        # ontology.mcf_lookup.lookup_top6_per_course — same canonical
-        # source `_build_swp_evidence` uses.
-        course_counts = session.run("""
-            MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)
-                  -[:DEMANDS]->(occ:Occupation)
-            OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)
-            RETURN occ.soc_code AS soc_code,
-                   count(DISTINCT course) AS course_count,
-                   collect(DISTINCT course.top_code) AS top_codes
-        """, college=college).data()
-        course_count_by_soc = {r["soc_code"]: r["course_count"] for r in course_counts}
-        top_codes_by_soc: dict[str, set[str]] = {
-            r["soc_code"]: {t for t in (r["top_codes"] or []) if t}
-            for r in course_counts
-        }
-
-        # Per-occupation employer count in the college's region.
-        employer_counts = session.run("""
-            MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)
-                  <-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation)
-            WHERE (r)-[:DEMANDS]->(occ)
-            RETURN occ.soc_code AS soc_code,
-                   count(DISTINCT emp) AS employer_count
-        """, college=college).data()
-        employer_count_by_soc = {r["soc_code"]: r["employer_count"] for r in employer_counts}
-
-        # Per-occupation student count: distinct students at this college
-        # enrolled in any course within a department that contains at
-        # least one PREPARES_FOR course for the SOC. Mirrors the
-        # `total_in_aligned_departments` figure the existing partnership
-        # pipeline reports in its Student Impact section
-        # (`_gather_student_pipeline` in partnerships/gather.py), so the
-        # row count and the report count stay coherent.
-        student_counts = session.run("""
-            MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)
-                  -[:DEMANDS]->(occ:Occupation)
-            OPTIONAL MATCH (dept:Department)-[:CONTAINS]->(:Course {college: $college})-[:PREPARES_FOR]->(occ)
-            WITH occ, collect(DISTINCT dept) AS aligned_depts
-            OPTIONAL MATCH (d2:Department)-[:CONTAINS]->(:Course {college: $college})<-[:ENROLLED_IN]-(s:Student)
-            WHERE d2 IN aligned_depts
-            RETURN occ.soc_code AS soc_code,
-                   count(DISTINCT s) AS student_count
-        """, college=college).data()
-        student_count_by_soc = {r["soc_code"]: r["student_count"] for r in student_counts}
+    regional_socs = rows  # name preserved for the loop below; same shape +
+                          # the four extra alignment fields
+    course_count_by_soc = {r["soc_code"]: r.get("course_count") or 0 for r in rows}
+    employer_count_by_soc = {r["soc_code"]: r.get("employer_count") or 0 for r in rows}
+    student_count_by_soc = {r["soc_code"]: r.get("student_count") or 0 for r in rows}
+    top_codes_by_soc: dict[str, set[str]] = {
+        r["soc_code"]: {t for t in (r.get("top_codes") or []) if t}
+        for r in rows
+    }
 
     # Per-SOC supply estimates — projected program-completions the COE
     # publishes for the TOP6 codes the college's PREPARES_FOR-tagged

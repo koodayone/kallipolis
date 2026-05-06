@@ -10,6 +10,7 @@ class EmployerMatch(BaseModel):
     description: Optional[str] = None
     website: Optional[str] = None
     roles_count: int = 0
+    aligned_roles_count: int = 0
     aligned_course_count: int = 0
 
 

@@ -29,10 +29,34 @@ from pathlib import Path
 
 from neo4j import Driver
 from ontology.schema import get_driver, close_driver
+from ontology.oes import oes_socs_for_naics4
+from employers.edd_scrape import CTE_NAICS_CODES
 
 logger = logging.getLogger(__name__)
 
 BATCH_SIZE = 500
+
+
+def _sector_tags_for_naics(naics4: str | None) -> list[str]:
+    """Deterministic NAICS-4 → SWP sector lookup. Returns [] if NAICS-4
+    is missing or not in CTE_NAICS_CODES (employer falls outside the
+    project's curated CTE search space)."""
+    if not naics4: return []
+    entry = CTE_NAICS_CODES.get(naics4)
+    if not entry: return []
+    return list(entry[2])
+
+
+def _oes_socs_with_pct(naics4: str | None) -> list[tuple[str, float]]:
+    """OEWS-derived (SOC, pct_total) pairs for an employer's NAICS-4.
+    Pre-filtered to pct_total > 0 since zero-pct entries don't carry
+    workforce-composition signal."""
+    if not naics4: return []
+    return [
+        (r["soc"], r.get("pct_total") or 0.0)
+        for r in oes_socs_for_naics4(naics4)
+        if (r.get("pct_total") or 0.0) > 0
+    ]
 
 
 def _is_loadable(emp: dict) -> bool:
@@ -117,11 +141,21 @@ def load_employers(driver: Driver, employers: list[dict]) -> dict:
     from Neo4j happens via `cleanup_stale_employers`.
     """
     employers = [e for e in employers if _is_loadable(e)]
-    stats = {"employers": 0, "in_market": 0, "hires_for": 0, "skipped_deferred": 0}
+    stats = {
+        "employers": 0, "in_market": 0,
+        "hires_for": 0, "identity_hires_for": 0,
+        "skipped_deferred": 0,
+    }
 
     with driver.session() as session:
         # Create Employer nodes
+        # swp_sectors is now derived deterministically from NAICS-4 via
+        # the project-curated CTE_NAICS_CODES lookup (replacing the
+        # prior LLM identity classification). Multi-sector membership is
+        # natural and preserved when a NAICS legitimately spans sectors.
         for emp in employers:
+            naics4 = emp.get("naics4")
+            sector_tags = _sector_tags_for_naics(naics4)
             session.run(
                 "MERGE (e:Employer {name: $name}) "
                 "SET e.sector = $sector, e.description = $description, "
@@ -132,8 +166,8 @@ def load_employers(driver: Driver, employers: list[dict]) -> dict:
                 sector=emp["sector"],
                 description=emp.get("description"),
                 website=emp.get("website"),
-                swp_sectors=emp.get("swp_sectors", []),
-                naics4=emp.get("naics4"),
+                swp_sectors=sector_tags,
+                naics4=naics4,
                 operations_summary=emp.get("operations_summary"),
             )
             stats["employers"] += 1
@@ -156,44 +190,99 @@ def load_employers(driver: Driver, employers: list[dict]) -> dict:
 
         logger.info(f"Created {stats['in_market']} IN_MARKET edges")
 
-        # Create Employer -[:HIRES_FOR]-> Occupation
-        # Symmetric semantics: prune stale edges before MERGEing new ones,
-        # so that what's in the graph matches the current `occupations`
-        # list exactly. Without the prune step, MERGE only adds — the
-        # cumulative union of every prior load's occupation list persists,
-        # and shrinking the list (e.g., from old 8-cap to new 5-cap)
-        # leaves stale edges behind.
+        # Create Employer -[:HIRES_FOR]-> Occupation (NAICS-OEWS-derived)
+        #
+        # The HIRES_FOR linkage is now derived deterministically from the
+        # BLS OEWS Industry-Occupation Matrix. For each employer, every
+        # SOC that BLS publishes at >0% pct_total in the employer's
+        # NAICS-4 becomes a HIRES_FOR edge. The pct_total is persisted
+        # as an edge property so per-SOC partnership-candidate lists can
+        # be sorted by industry-occupation workforce share.
+        #
+        # The prior LLM-curated 5-SOC-per-employer picks are preserved
+        # as IDENTITY_HIRES_FOR edges (overlay), keeping the identity
+        # signal available without making it the primary inclusion rule.
+        #
+        # Symmetric semantics: prune stale edges of both types before
+        # MERGEing new ones, so the graph matches the current state
+        # exactly without legacy residue.
+        # UNWIND-batched edge writes — one Cypher per employer per edge type
+        # rather than per-edge MERGE in a Python loop. The naive per-edge
+        # pattern issued ~283K Cypher round trips for a full reload (~136 OEWS
+        # SOCs × ~2,085 employers), which OOM-killed the load on the prod
+        # e2-medium VM (4GB RAM, ~1.5GB to neo4j, the rest exhausted by
+        # accumulated transaction state). UNWIND collapses each employer's
+        # edges into a single transaction (~2,085 Cyphers per edge type),
+        # cutting both round-trip overhead and per-edge transaction memory.
         pruned_hires_for = 0
+        pruned_identity = 0
         for emp in employers:
-            valid_socs = list(emp["occupations"])
+            naics4 = emp.get("naics4")
+            oes_pairs = _oes_socs_with_pct(naics4)
+            oes_socs = [s for s, _ in oes_pairs]
+
+            # Prune stale HIRES_FOR not in current OEWS-derived set
             result = session.run(
                 """
                 MATCH (e:Employer {name: $name})-[r:HIRES_FOR]->(o:Occupation)
                 WHERE NOT o.soc_code IN $valid_socs
-                DELETE r
-                RETURN count(r) AS cnt
+                DELETE r RETURN count(r) AS cnt
                 """,
-                name=emp["name"],
-                valid_socs=valid_socs,
+                name=emp["name"], valid_socs=oes_socs,
             )
             pruned_hires_for += result.single()["cnt"]
-            for soc in valid_socs:
+
+            # Write HIRES_FOR with pct_total property — UNWIND-batched
+            if oes_pairs:
                 result = session.run(
                     """
                     MATCH (e:Employer {name: $name})
-                    MATCH (o:Occupation {soc_code: $soc})
-                    MERGE (e)-[:HIRES_FOR]->(o)
-                    RETURN count(*) AS cnt
+                    UNWIND $pairs AS pair
+                    MATCH (o:Occupation {soc_code: pair.soc})
+                    MERGE (e)-[r:HIRES_FOR]->(o)
+                    SET r.pct_total = pair.pct
+                    RETURN count(r) AS cnt
                     """,
                     name=emp["name"],
-                    soc=soc,
+                    pairs=[{"soc": s, "pct": p} for s, p in oes_pairs],
                 )
                 stats["hires_for"] += result.single()["cnt"]
 
+            # IDENTITY_HIRES_FOR overlay (LLM-curated picks, ~5 per employer)
+            identity_socs = list(emp.get("occupations") or [])
+            result = session.run(
+                """
+                MATCH (e:Employer {name: $name})-[r:IDENTITY_HIRES_FOR]->(o:Occupation)
+                WHERE NOT o.soc_code IN $valid_socs
+                DELETE r RETURN count(r) AS cnt
+                """,
+                name=emp["name"], valid_socs=identity_socs,
+            )
+            pruned_identity += result.single()["cnt"]
+            if identity_socs:
+                result = session.run(
+                    """
+                    MATCH (e:Employer {name: $name})
+                    UNWIND $socs AS soc
+                    MATCH (o:Occupation {soc_code: soc})
+                    MERGE (e)-[:IDENTITY_HIRES_FOR]->(o)
+                    RETURN count(*) AS cnt
+                    """,
+                    name=emp["name"], socs=identity_socs,
+                )
+                stats["identity_hires_for"] += result.single()["cnt"]
+
         if pruned_hires_for:
             logger.info(f"Pruned {pruned_hires_for} stale HIRES_FOR edges")
+        if pruned_identity:
+            logger.info(f"Pruned {pruned_identity} stale IDENTITY_HIRES_FOR edges")
         stats["hires_for_pruned"] = pruned_hires_for
-        logger.info(f"Created/refreshed {stats['hires_for']} HIRES_FOR edges")
+        stats["identity_hires_for_pruned"] = pruned_identity
+        logger.info(
+            f"Created/refreshed {stats['hires_for']} HIRES_FOR edges "
+            f"(NAICS-OEWS-derived) and {stats['identity_hires_for']} "
+            f"IDENTITY_HIRES_FOR edges (LLM-curated overlay)"
+        )
 
     return stats
 
