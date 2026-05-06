@@ -196,6 +196,35 @@ class TestCollegeNameNormalization:
         assert _normalize_college("Foothill") == "Foothill"
         assert _normalize_college("Reedley") == "Reedley"
 
+    def test_normalize_college_strips_periods(self):
+        # Catalog-side names sometimes carry a period after abbreviated
+        # words ("Mt. San Antonio College") while the MCF College column
+        # writes them without ("Mt San Antonio"). Without period
+        # stripping, _normalize_college's index-vs-lookup symmetry
+        # breaks for those colleges and Stage 2 aborts at 0% TOP6
+        # coverage on the load gate.
+        assert _normalize_college("Mt. San Antonio College") == "Mt San Antonio"
+        assert _normalize_college("Mt. San Antonio") == "Mt San Antonio"
+        # Idempotent on already-stripped form.
+        assert _normalize_college("Mt San Antonio") == "Mt San Antonio"
+
+    def test_normalize_college_collapses_double_spaces(self):
+        # Period stripping can leave behind double spaces if the period
+        # was preceded and followed by spaces. The normalizer should
+        # collapse them to single spaces so the resulting key shape is
+        # consistent.
+        assert _normalize_college("Foo .  Bar College") == "Foo Bar"
+
+    def test_index_lookup_succeeds_for_period_college(self):
+        # Regression: lookup_top6_per_course("Mt. San Antonio College")
+        # returned None for every mtsac course because the index had
+        # keys like ("ACCS33", "mt san antonio") while the lookup
+        # queried ("ACCS33", "mt. san antonio"). ACCS33 is a real entry
+        # in MasterCourseFile_mt_san_antonio.csv with TOP6 493032; the
+        # assertion is that the lookup now finds it.
+        result = lookup_top6_per_course(["ACCS 33"], "Mt. San Antonio College")
+        assert result.get("ACCS 33") == "493032"
+
     def test_index_lookup_succeeds_for_suffixed_college(self):
         # Regression: the bug was that `lookup_top6_per_course("Reedley
         # College")` returned None for every Reedley course because the
