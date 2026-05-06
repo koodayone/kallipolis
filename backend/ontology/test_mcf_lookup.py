@@ -32,11 +32,14 @@ Coverage:
 """
 
 from ontology.mcf_lookup import (
+    _load_mcf_index,
     _normalize_course_code,
     _normalize_mcf_course_id,
     _strip_numeric_padding,
     _strip_punctuation,
+    lookup_top6_per_course,
 )
+from ontology.supply import _normalize_college
 
 
 class TestNormalizeCourseCode:
@@ -165,3 +168,57 @@ class TestStripPunctuation:
         # The catalog-scrape miss "ENGL-129" (Shasta MCF) and the
         # catalog form "ENGL 129" must converge.
         assert _normalize_course_code("ENGL 129") == _normalize_mcf_course_id("ENGL-129")
+
+
+class TestCollegeNameNormalization:
+    """Symmetry between the MCF index builder and the lookup path.
+
+    The lookup applies `_normalize_college` (which strips " College",
+    " Community College", and "College of [the] " from a Neo4j-style
+    display name) and lowercases the result. Before the fix that
+    landed alongside this test, the index builder kept the raw MCF
+    "College" column lowercased without applying the same suffix
+    stripping. Five of 125 MCF files carry the " College" suffix in
+    that column (Reedley, Allan Hancock, etc.), so for those colleges
+    every lookup queried "<key>" while the index held "<key> college"
+    — every match failed and Stage 2 aborted at the 80% TOP6 coverage
+    floor with 0/N courses tagged.
+    """
+
+    def test_normalize_college_strips_college_suffix(self):
+        # The contract that the MCF index builder relies on.
+        assert _normalize_college("Reedley College") == "Reedley"
+        assert _normalize_college("Foothill College") == "Foothill"
+
+    def test_normalize_college_idempotent_on_unsuffixed(self):
+        # Most MCF files use the bare form already; the normalizer must
+        # leave them unchanged so index keys agree across both shapes.
+        assert _normalize_college("Foothill") == "Foothill"
+        assert _normalize_college("Reedley") == "Reedley"
+
+    def test_index_lookup_succeeds_for_suffixed_college(self):
+        # Regression: the bug was that `lookup_top6_per_course("Reedley
+        # College")` returned None for every Reedley course because the
+        # index had keys like ("ACCTG19", "reedley college") while the
+        # lookup queried ("ACCTG19", "reedley"). ACCTG19 is a real entry
+        # in MasterCourseFile_reedley_college.csv with TOP6 050200
+        # (Accounting); the assertion is that the lookup now finds it.
+        result = lookup_top6_per_course(["ACCTG 19"], "Reedley College")
+        assert result.get("ACCTG 19") == "050200"
+
+    def test_index_uses_normalized_college_keys(self):
+        # Direct check on the index keys themselves: reedley entries
+        # must be under "reedley", not "reedley college". A non-zero
+        # count under the normalized key is the simplest invariant
+        # that prevents this bug from recurring.
+        idx = _load_mcf_index()
+        reedley_entries = sum(1 for (_, col) in idx if col == "reedley")
+        suffixed_entries = sum(1 for (_, col) in idx if col == "reedley college")
+        assert reedley_entries > 100, (
+            f"expected >100 reedley index entries under canonical key, "
+            f"got {reedley_entries}"
+        )
+        assert suffixed_entries == 0, (
+            f"index still has {suffixed_entries} entries under unstripped "
+            f"'reedley college' key — _load_mcf_index regressed"
+        )

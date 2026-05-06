@@ -209,7 +209,15 @@ def _load_mcf_index() -> dict[tuple[str, str], str]:
             with open(f, encoding="utf-8", errors="replace") as fh:
                 reader = csv.DictReader(fh)
                 for row in reader:
-                    college = row.get("College", "").strip().lower()
+                    # Apply the same _normalize_college that the lookup
+                    # path uses so colleges whose MCF College column
+                    # carries the " College" suffix (Reedley, etc.) get
+                    # the same key shape as ones without it (Foothill,
+                    # San Mateo). Without this, lookup queries the
+                    # stripped form ("reedley") but the index has the raw
+                    # form ("reedley college") and every match fails — 5
+                    # of 125 MCF files were affected, including reedley.
+                    college = _normalize_college(row.get("College", "")).lower()
                     course_id = row.get("Course ID", "")
                     top_code = row.get("TOP Code", "").strip()
 
