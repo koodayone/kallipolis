@@ -54,6 +54,8 @@ LOADER_FILES = [
     "backend/employers/load.py",
     "backend/ontology/prepares_for.py",
     "backend/ontology/regions.py",
+    # Derived analytical edges — materialized at pipeline-reload time.
+    "backend/partnerships/compute.py",
 ]
 
 # Edges that are documented in graph-model.md as derived / precomputed and
