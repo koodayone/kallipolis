@@ -9,6 +9,15 @@ services:
       - NEO4J_AUTH=neo4j/${NEO4J_PASSWORD}
       - NEO4J_server_memory_heap_initial__size=1G
       - NEO4J_server_memory_heap_max__size=2G
+      # Page cache holds the working set of nodes/edges read from disk.
+      # Default in 5.x without explicit setting is ~512 MB, which can't
+      # hold all 22+ colleges' working sets simultaneously — first hit
+      # of any college that's been evicted pays a cold disk read (5-15s
+      # observed for /partnerships/opportunity/{soc} on the prod VM
+      # before this setting was added). Sized at 4G for the 8 GB
+      # e2-standard-2 (heap 2G + pagecache 4G + native ~500M +
+      # backend ~400M + OS ~500M = ~7.4G of 8G; ~600 MB headroom).
+      - NEO4J_server_memory_pagecache_size=4G
       - NEO4J_dbms_memory_transaction_total_max=2G
     volumes:
       - neo4j_data:/data
