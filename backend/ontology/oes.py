@@ -311,3 +311,40 @@ def oes_match_resolution(naics4: str) -> int | str | None:
     if naics4[:2] == "92" and _socs_by_naics2.get(_OEWS_GOVERNMENT_CODE):
         return "government"
     return None
+
+
+# ── Eager load on module import ───────────────────────────────────────────
+#
+# Lazy-loading the OEWS files via _ensure_loaded() at first call created
+# a race condition under FastAPI's threaded sync handlers: when multiple
+# requests hit the API simultaneously after a backend restart (typical
+# during deploy or after OOM-recovery), each thread saw the module
+# globals as unset and started loading the same Excel files in parallel.
+# A single load is ~5-10s of openpyxl parsing per file (3 files); the
+# race multiplied the work, producing 60s+ cold-start timeouts on the
+# first batch of requests after every deploy.
+#
+# Eager-loading at module import resolves the race entirely: imports
+# block on the load, but module imports happen at process startup
+# before uvicorn accepts connections, so the cost is invisible to
+# users. Backend boot time goes from ~2s to ~12s; first request after
+# boot is fast.
+#
+# The try/except keeps this safe in environments where the OEWS data
+# files might not be staged (tests, fresh dev clones). Failure here
+# falls back to the original lazy-on-first-call behavior, with the
+# original race risk intact in those edge cases.
+#
+# This is a band-aid. The architectural fix is to materialize OEWS
+# data into the graph as NAICS nodes with HAS_INDUSTRY_PRESENCE edges
+# to Occupation, removing this module from the API request path
+# entirely. When that lands, this eager-load (and most of this file's
+# import-time impact) disappears.
+try:
+    _ensure_loaded()
+    logger.info("OEWS eager-load complete (NAICS-2/3/4 ready)")
+except Exception as e:
+    logger.warning(
+        f"OEWS eager-load failed at import: {e}. "
+        f"Falling back to lazy-load on first request."
+    )
