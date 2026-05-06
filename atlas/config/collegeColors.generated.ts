@@ -3,6 +3,8 @@
 
 export const COLLEGE_COLORS: Record<string, string> = {
   "alameda": "#2069ab",
+  "allanhancock": "#00405e",
+  "americanriver": "#cc1f40",
   "antelopevalley": "#8db9ca",
   "arc": "#cc1f40",
   "bakersfield": "#bd4552",

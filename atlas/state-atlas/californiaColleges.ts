@@ -11,6 +11,7 @@ export type College = {
 export type Region = {
   id: string;
   name: string;
+  acronym: string;      // institutional consortium acronym (e.g. "BACCC")
   counties: string[];   // must match GeoJSON properties.name exactly
   collegeCount: number;
 };
@@ -44,6 +45,7 @@ export const CALIFORNIA_REGIONS: Region[] = [
   {
     id: "north-far-north",
     name: "North / Far North",
+    acronym: "NFNRC",
     counties: [
       "Butte", "Colusa", "Del Norte", "El Dorado", "Glenn", "Humboldt",
       "Lake", "Lassen", "Mendocino", "Modoc", "Nevada", "Placer",
@@ -55,6 +57,7 @@ export const CALIFORNIA_REGIONS: Region[] = [
   {
     id: "bay-area",
     name: "Bay Area",
+    acronym: "BACCC",
     counties: [
       "Alameda", "Contra Costa", "Marin", "Monterey", "Napa", "San Benito",
       "San Francisco", "San Mateo", "Santa Clara", "Santa Cruz", "Solano", "Sonoma",
@@ -64,6 +67,7 @@ export const CALIFORNIA_REGIONS: Region[] = [
   {
     id: "central-valley-mother-lode",
     name: "Central Valley / Mother Lode",
+    acronym: "CVMLRC",
     counties: [
       "Alpine", "Amador", "Calaveras", "Fresno", "Inyo", "Kern", "Kings",
       "Madera", "Mariposa", "Merced", "Mono", "San Joaquin", "Stanislaus",
@@ -74,30 +78,35 @@ export const CALIFORNIA_REGIONS: Region[] = [
   {
     id: "south-central-coast",
     name: "South Central Coast",
+    acronym: "SCCRC",
     counties: ["San Luis Obispo", "Santa Barbara", "Ventura"],
     collegeCount: 8,
   },
   {
     id: "los-angeles",
     name: "Los Angeles",
+    acronym: "LARC",
     counties: ["Los Angeles"],
     collegeCount: 19,
   },
   {
     id: "orange-county",
     name: "Orange County",
+    acronym: "OCRC",
     counties: ["Orange"],
     collegeCount: 9,
   },
   {
     id: "inland-empire-desert",
     name: "Inland Empire / Desert",
+    acronym: "IEDRC",
     counties: ["Riverside", "San Bernardino"],
     collegeCount: 12,
   },
   {
     id: "san-diego-imperial",
     name: "San Diego / Imperial",
+    acronym: "SDIRC",
     counties: ["San Diego", "Imperial"],
     collegeCount: 10,
   },

@@ -1,0 +1,500 @@
+{
+  "method": "logo-crop-bucket-then-neon-transform",
+  "default_logo_crop": {
+    "left": 0,
+    "top": 0,
+    "width": 320,
+    "height": 120
+  },
+  "generated_at": "2026-05-06T22:27:51.152Z",
+  "entries": [
+    {
+      "id": "shasta",
+      "hex_raw": "#1b6e35",
+      "hex_neon": "#23b350",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(high)",
+      "crop": {
+        "left": 14,
+        "top": 22,
+        "width": 270,
+        "height": 56
+      },
+      "confidence": "high",
+      "dominance": 0.6,
+      "non_neutral_pixels": 3887
+    },
+    {
+      "id": "siskiyous",
+      "hex_raw": "#566933",
+      "hex_neon": "#85c115",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(medium)",
+      "crop": {
+        "left": 12,
+        "top": 8,
+        "width": 80,
+        "height": 62
+      },
+      "confidence": "high",
+      "dominance": 0.3,
+      "non_neutral_pixels": 1359
+    },
+    {
+      "id": "lassen",
+      "hex_raw": "#1d2e38",
+      "hex_neon": "#1482c3",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(medium)",
+      "crop": {
+        "left": 8,
+        "top": 0,
+        "width": 70,
+        "height": 116
+      },
+      "confidence": "high",
+      "dominance": 0.39,
+      "non_neutral_pixels": 5552
+    },
+    {
+      "id": "mendocino",
+      "hex_raw": "#121a47",
+      "hex_neon": "#2338b4",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(high)",
+      "crop": {
+        "left": 76,
+        "top": 4,
+        "width": 224,
+        "height": 56
+      },
+      "confidence": "high",
+      "dominance": 0.49,
+      "non_neutral_pixels": 1798
+    },
+    {
+      "id": "butte",
+      "hex_raw": "#dcc484",
+      "hex_neon": "#e2bd5b",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(high)",
+      "crop": {
+        "left": 16,
+        "top": 10,
+        "width": 144,
+        "height": 36
+      },
+      "confidence": "high",
+      "dominance": 0.32,
+      "non_neutral_pixels": 288
+    },
+    {
+      "id": "laketahoe",
+      "hex_raw": "#02263f",
+      "hex_neon": "#077dd0",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(high)",
+      "crop": {
+        "left": 8,
+        "top": 8,
+        "width": 280,
+        "height": 76
+      },
+      "confidence": "high",
+      "dominance": 0.88,
+      "non_neutral_pixels": 20181
+    },
+    {
+      "id": "saccc",
+      "hex_raw": "#840029",
+      "hex_neon": "#d60043",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(high)",
+      "crop": {
+        "left": 32,
+        "top": 18,
+        "width": 196,
+        "height": 44
+      },
+      "confidence": "high",
+      "dominance": 0.66,
+      "non_neutral_pixels": 1205
+    },
+    {
+      "id": "americanriver",
+      "hex_raw": "#cf2a4a",
+      "hex_neon": "#cf2a4a",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(high)",
+      "crop": {
+        "left": 32,
+        "top": 18,
+        "width": 200,
+        "height": 44
+      },
+      "confidence": "high",
+      "dominance": 0.26,
+      "non_neutral_pixels": 2099
+    },
+    {
+      "id": "foothill",
+      "hex_raw": "#a51e30",
+      "hex_neon": "#b52135",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(high)",
+      "crop": {
+        "left": 10,
+        "top": 20,
+        "width": 200,
+        "height": 80
+      },
+      "confidence": "high",
+      "dominance": 0.82,
+      "non_neutral_pixels": 416
+    },
+    {
+      "id": "berkeleycc",
+      "hex_raw": "#017088",
+      "hex_neon": "#02afd5",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(medium)",
+      "crop": {
+        "left": 28,
+        "top": 14,
+        "width": 156,
+        "height": 40
+      },
+      "confidence": "high",
+      "dominance": 0.33,
+      "non_neutral_pixels": 816
+    },
+    {
+      "id": "napavalley",
+      "hex_raw": "#87657a",
+      "hex_neon": "#da128e",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(high)",
+      "crop": {
+        "left": 10,
+        "top": 5,
+        "width": 200,
+        "height": 70
+      },
+      "confidence": "high",
+      "dominance": 0.33,
+      "non_neutral_pixels": 2050
+    },
+    {
+      "id": "hartnell",
+      "hex_raw": "#860038",
+      "hex_neon": "#d6005a",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(high)",
+      "crop": {
+        "left": 80,
+        "top": 44,
+        "width": 256,
+        "height": 78
+      },
+      "confidence": "high",
+      "dominance": 0.6,
+      "non_neutral_pixels": 2965
+    },
+    {
+      "id": "csm",
+      "hex_raw": "#233770",
+      "hex_neon": "#1f46b7",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(high)",
+      "crop": {
+        "left": 26,
+        "top": 50,
+        "width": 210,
+        "height": 36
+      },
+      "confidence": "high",
+      "dominance": 0.94,
+      "non_neutral_pixels": 7406
+    },
+    {
+      "id": "losmedanos",
+      "hex_raw": "#380604",
+      "hex_neon": "#c8150e",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(high)",
+      "crop": {
+        "left": 16,
+        "top": 6,
+        "width": 110,
+        "height": 60
+      },
+      "confidence": "high",
+      "dominance": 0.97,
+      "non_neutral_pixels": 6491
+    },
+    {
+      "id": "deanza",
+      "hex_raw": "#65030d",
+      "hex_neon": "#d0061b",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(high)",
+      "crop": {
+        "left": 10,
+        "top": 18,
+        "width": 78,
+        "height": 52
+      },
+      "confidence": "high",
+      "dominance": 0.98,
+      "non_neutral_pixels": 1949
+    },
+    {
+      "id": "sequoias",
+      "hex_raw": "#84c046",
+      "hex_neon": "#84dd29",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(high)",
+      "crop": {
+        "left": 76,
+        "top": 50,
+        "width": 234,
+        "height": 188
+      },
+      "confidence": "medium",
+      "dominance": 0.21,
+      "non_neutral_pixels": 10140
+    },
+    {
+      "id": "merced",
+      "hex_raw": "#011845",
+      "hex_neon": "#0349d3",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(high)",
+      "crop": {
+        "left": 10,
+        "top": 5,
+        "width": 240,
+        "height": 90
+      },
+      "confidence": "high",
+      "dominance": 0.8,
+      "non_neutral_pixels": 20383
+    },
+    {
+      "id": "cerrocoso",
+      "hex_raw": "#14274a",
+      "hex_neon": "#2155b5",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(high)",
+      "crop": {
+        "left": 26,
+        "top": 22,
+        "width": 192,
+        "height": 88
+      },
+      "confidence": "medium",
+      "dominance": 0.25,
+      "non_neutral_pixels": 7890
+    },
+    {
+      "id": "reedley",
+      "hex_raw": "#f89742",
+      "hex_neon": "#f89742",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(high)",
+      "crop": {
+        "left": 10,
+        "top": 25,
+        "width": 240,
+        "height": 90
+      },
+      "confidence": "high",
+      "dominance": 0.55,
+      "non_neutral_pixels": 778
+    },
+    {
+      "id": "sbcc",
+      "hex_raw": "#a4192e",
+      "hex_neon": "#ba1c34",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(high)",
+      "crop": {
+        "left": 14,
+        "top": 50,
+        "width": 60,
+        "height": 76
+      },
+      "confidence": "high",
+      "dominance": 0.79,
+      "non_neutral_pixels": 1707
+    },
+    {
+      "id": "oxnard",
+      "hex_raw": "#28ab60",
+      "hex_neon": "#24b261",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(high)",
+      "crop": {
+        "left": 14,
+        "top": 22,
+        "width": 130,
+        "height": 36
+      },
+      "confidence": "high",
+      "dominance": 0.57,
+      "non_neutral_pixels": 1123
+    },
+    {
+      "id": "allanhancock",
+      "hex_raw": "#ffcd00",
+      "hex_neon": "#ffcd00",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(high)",
+      "crop": {
+        "left": 552,
+        "top": 56,
+        "width": 176,
+        "height": 96
+      },
+      "confidence": "high",
+      "dominance": 0.35,
+      "non_neutral_pixels": 7122
+    },
+    {
+      "id": "compton",
+      "hex_raw": "#a4123f",
+      "hex_neon": "#c1154a",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(high)",
+      "crop": {
+        "left": 12,
+        "top": 30,
+        "width": 80,
+        "height": 60
+      },
+      "confidence": "high",
+      "dominance": 0.91,
+      "non_neutral_pixels": 2724
+    },
+    {
+      "id": "lavalley",
+      "hex_raw": "#00513f",
+      "hex_neon": "#00d6a7",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(high)",
+      "crop": {
+        "left": 32,
+        "top": 12,
+        "width": 168,
+        "height": 48
+      },
+      "confidence": "high",
+      "dominance": 0.64,
+      "non_neutral_pixels": 4868
+    },
+    {
+      "id": "lacity",
+      "hex_raw": "#122744",
+      "hex_neon": "#225fb4",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(high)",
+      "crop": {
+        "left": 32,
+        "top": 6,
+        "width": 156,
+        "height": 56
+      },
+      "confidence": "high",
+      "dominance": 0.44,
+      "non_neutral_pixels": 8617
+    },
+    {
+      "id": "mtsac",
+      "hex_raw": "#7d011d",
+      "hex_neon": "#d50231",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(high)",
+      "crop": {
+        "left": 12,
+        "top": 24,
+        "width": 188,
+        "height": 38
+      },
+      "confidence": "high",
+      "dominance": 0.82,
+      "non_neutral_pixels": 6495
+    },
+    {
+      "id": "irvinevalley",
+      "hex_raw": "#05284b",
+      "hex_neon": "#0d6bc9",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(high)",
+      "crop": {
+        "left": 24,
+        "top": 22,
+        "width": 130,
+        "height": 56
+      },
+      "confidence": "high",
+      "dominance": 0.62,
+      "non_neutral_pixels": 3854
+    },
+    {
+      "id": "desert",
+      "hex_raw": "#a30e22",
+      "hex_neon": "#c51129",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(high)",
+      "crop": {
+        "left": 38,
+        "top": 16,
+        "width": 200,
+        "height": 60
+      },
+      "confidence": "high",
+      "dominance": 0.9,
+      "non_neutral_pixels": 12000
+    },
+    {
+      "id": "chaffey",
+      "hex_raw": "#931430",
+      "hex_neon": "#bd1a3e",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(high)",
+      "crop": {
+        "left": 10,
+        "top": 30,
+        "width": 200,
+        "height": 70
+      },
+      "confidence": "high",
+      "dominance": 0.51,
+      "non_neutral_pixels": 541
+    },
+    {
+      "id": "sandiegocity",
+      "hex_raw": null,
+      "hex_neon": null,
+      "source": "no capture",
+      "confidence": "low",
+      "note": "HTTP 522"
+    },
+    {
+      "id": "imperial",
+      "hex_raw": "#d1232a",
+      "hex_neon": "#d1232a",
+      "source": "logo crop dominant cluster",
+      "crop_source": "bbox(medium)",
+      "crop": {
+        "left": 10,
+        "top": 60,
+        "width": 220,
+        "height": 130
+      },
+      "confidence": "high",
+      "dominance": 0.72,
+      "non_neutral_pixels": 11749
+    }
+  ]
+}

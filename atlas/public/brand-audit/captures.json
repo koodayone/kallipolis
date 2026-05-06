@@ -1,0 +1,252 @@
+{
+  "generated_at": "2026-05-06T21:54:17.984Z",
+  "captures": [
+    {
+      "id": "shasta",
+      "url": "https://www.shastacollege.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.shastacollege.edu/",
+      "thumb": "/brand-audit/thumbs/shasta.png"
+    },
+    {
+      "id": "siskiyous",
+      "url": "https://www.siskiyous.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.siskiyous.edu/",
+      "thumb": "/brand-audit/thumbs/siskiyous.png"
+    },
+    {
+      "id": "lassen",
+      "url": "https://www.lassencollege.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.lassencollege.edu/",
+      "thumb": "/brand-audit/thumbs/lassen.png"
+    },
+    {
+      "id": "mendocino",
+      "url": "https://www.mendocino.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.mendocino.edu/",
+      "thumb": "/brand-audit/thumbs/mendocino.png"
+    },
+    {
+      "id": "butte",
+      "url": "https://www.butte.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.butte.edu/",
+      "thumb": "/brand-audit/thumbs/butte.png"
+    },
+    {
+      "id": "laketahoe",
+      "url": "https://www.ltcc.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.ltcc.edu/",
+      "thumb": "/brand-audit/thumbs/laketahoe.png"
+    },
+    {
+      "id": "saccc",
+      "url": "https://scc.losrios.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://scc.losrios.edu/",
+      "thumb": "/brand-audit/thumbs/saccc.png"
+    },
+    {
+      "id": "americanriver",
+      "url": "https://arc.losrios.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://arc.losrios.edu/",
+      "thumb": "/brand-audit/thumbs/americanriver.png"
+    },
+    {
+      "id": "foothill",
+      "url": "https://foothill.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://foothill.edu/",
+      "thumb": "/brand-audit/thumbs/foothill.png"
+    },
+    {
+      "id": "berkeleycc",
+      "url": "https://www.berkeleycitycollege.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.berkeleycitycollege.edu/",
+      "thumb": "/brand-audit/thumbs/berkeleycc.png"
+    },
+    {
+      "id": "napavalley",
+      "url": "https://napavalley.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://napavalley.edu/",
+      "thumb": "/brand-audit/thumbs/napavalley.png"
+    },
+    {
+      "id": "hartnell",
+      "url": "https://www.hartnell.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.hartnell.edu/",
+      "thumb": "/brand-audit/thumbs/hartnell.png"
+    },
+    {
+      "id": "csm",
+      "url": "https://collegeofsanmateo.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://collegeofsanmateo.edu/",
+      "thumb": "/brand-audit/thumbs/csm.png"
+    },
+    {
+      "id": "losmedanos",
+      "url": "https://www.losmedanos.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.losmedanos.edu/",
+      "thumb": "/brand-audit/thumbs/losmedanos.png"
+    },
+    {
+      "id": "deanza",
+      "url": "https://www.deanza.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.deanza.edu/",
+      "thumb": "/brand-audit/thumbs/deanza.png"
+    },
+    {
+      "id": "sequoias",
+      "url": "https://www.cos.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.cos.edu/en-us",
+      "thumb": "/brand-audit/thumbs/sequoias.png"
+    },
+    {
+      "id": "merced",
+      "url": "https://www.mccd.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.mccd.edu/",
+      "thumb": "/brand-audit/thumbs/merced.png"
+    },
+    {
+      "id": "cerrocoso",
+      "url": "https://www.cerrocoso.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.cerrocoso.edu/",
+      "thumb": "/brand-audit/thumbs/cerrocoso.png"
+    },
+    {
+      "id": "reedley",
+      "url": "https://www.reedleycollege.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.reedleycollege.edu/",
+      "thumb": "/brand-audit/thumbs/reedley.png"
+    },
+    {
+      "id": "sbcc",
+      "url": "https://www.sbcc.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.sbcc.edu/",
+      "thumb": "/brand-audit/thumbs/sbcc.png"
+    },
+    {
+      "id": "oxnard",
+      "url": "https://www.oxnardcollege.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.oxnardcollege.edu/",
+      "thumb": "/brand-audit/thumbs/oxnard.png"
+    },
+    {
+      "id": "allanhancock",
+      "url": "https://www.hancockcollege.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.hancockcollege.edu/",
+      "thumb": "/brand-audit/thumbs/allanhancock.png"
+    },
+    {
+      "id": "compton",
+      "url": "https://www.compton.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.compton.edu/",
+      "thumb": "/brand-audit/thumbs/compton.png"
+    },
+    {
+      "id": "lavalley",
+      "url": "https://www.lavc.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.lavc.edu/",
+      "thumb": "/brand-audit/thumbs/lavalley.png"
+    },
+    {
+      "id": "lacity",
+      "url": "https://www.lacitycollege.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.lacc.edu/",
+      "thumb": "/brand-audit/thumbs/lacity.png"
+    },
+    {
+      "id": "mtsac",
+      "url": "https://www.mtsac.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.mtsac.edu/",
+      "thumb": "/brand-audit/thumbs/mtsac.png"
+    },
+    {
+      "id": "irvinevalley",
+      "url": "https://www.ivc.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.ivc.edu/",
+      "thumb": "/brand-audit/thumbs/irvinevalley.png"
+    },
+    {
+      "id": "desert",
+      "url": "https://www.collegeofthedesert.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.collegeofthedesert.edu/",
+      "thumb": "/brand-audit/thumbs/desert.png"
+    },
+    {
+      "id": "chaffey",
+      "url": "https://www.chaffey.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.chaffey.edu/",
+      "thumb": "/brand-audit/thumbs/chaffey.png"
+    },
+    {
+      "id": "sandiegocity",
+      "url": "https://www.sdcity.edu/",
+      "status": "http_error",
+      "error": "HTTP 522",
+      "finalUrl": "https://www.sdcity.edu/"
+    },
+    {
+      "id": "imperial",
+      "url": "https://www.imperial.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.imperial.edu/",
+      "thumb": "/brand-audit/thumbs/imperial.png"
+    }
+  ]
+}
