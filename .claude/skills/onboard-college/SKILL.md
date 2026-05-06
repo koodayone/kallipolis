@@ -22,7 +22,9 @@ not yet been loaded.
 
 ## Context
 
-The Kallipolis backend pipeline has six stages. Running them in order, with the correct
+The Kallipolis backend pipeline has six backend stages plus a final stage (8) that
+adds the college to the atlas frontend so it's reachable in the UI. Running them in
+order, with the correct
 arguments, with the right caching flags, and with the mandatory `validate-employers` step
 between employer generation and employer load, is tribal knowledge scattered across multiple
 Python entry points and a pipeline documentation tree. This skill centralizes that knowledge
@@ -317,6 +319,38 @@ driver.close()
 Present the results to the operator. All counts should be non-zero. If any are zero or
 missing, diagnose by comparing against the earlier stage outputs and report the
 discrepancy.
+
+## Stage 8 — Frontend visibility
+
+Loading the graph isn't sufficient — the operator should be able to navigate to the
+college's URL in the atlas and see real data. Static export uses
+`generateStaticParams` over `FEATURED_COLLEGES`, so a college can be in Neo4j but
+404 in production unless it's also in the featured set with a matching
+`CALIFORNIA_COLLEGES` entry.
+
+Run these checks:
+
+1. **`atlas/state-atlas/featuredColleges.ts`** — add `{key}` to the `FEATURED_COLLEGES`
+   set in the appropriate region cluster comment.
+2. **`atlas/state-atlas/californiaColleges.ts`** — verify a `{ id: "{key}", ... }`
+   entry exists with `lat`, `lng`, `regionId`, and `logoStacked`. If the entry uses
+   a divergent id (historic atlas-only abbreviation like `arc` or `hancock` while
+   the backend pipeline uses `americanriver` or `allanhancock`), rename the `id` to
+   match the backend key. The frontend filters by id (`FEATURED_COLLEGES.has(c.id)`)
+   so a mismatch silently hides the marker.
+3. **Logo files** — if you renamed an id, copy `atlas/public/{old_id}-logo.{ext}`
+   to `atlas/public/{key}-logo.{ext}` and `atlas/public/logos/{old_id}.png` to
+   `atlas/public/logos/{key}.png` so the auto-generator picks them up on
+   `npm run dev`.
+4. **Dev URL check** — `curl -sI -L http://localhost:3001/{key}` should return
+   HTTP 200. If it returns the redirect-to-`/` (which the layout fires when
+   `getCollegeAtlasConfig({key})` is null), the `CALIFORNIA_COLLEGES` entry is
+   missing or has the wrong id.
+
+Report to the operator with a concrete URL they can hit in their browser
+(`http://localhost:3001/{key}`) and the names of any files that needed editing.
+This is the only stage that produces source-tree changes the operator needs to
+commit; the prior stages all write only to caches or to Neo4j.
 
 ## Failure recovery
 

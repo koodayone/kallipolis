@@ -13,16 +13,19 @@ export const FEATURED_COLLEGES = new Set([
   "shasta", "siskiyous", "lassen", "mendocino", "butte", "laketahoe",
   // Bay Area
   "foothill", "berkeleycc", "napavalley", "hartnell",
+  "csm", "losmedanos", "deanza",
+  // Greater Sacramento
+  "saccc", "americanriver",
   // Central Valley / Mother Lode
-  "saccc", "sequoias", "merced", "cerrocoso",
+  "sequoias", "merced", "cerrocoso", "reedley",
   // South Central Coast
-  "sbcc", "oxnard",
+  "sbcc", "oxnard", "allanhancock",
   // Los Angeles
-  "compton", "lavalley",
+  "compton", "lavalley", "lacity", "mtsac",
   // Orange County
   "irvinevalley",
   // Inland Empire / Desert
-  "desert",
+  "desert", "chaffey",
   // San Diego / Imperial
   "sandiegocity", "imperial",
 ]);
