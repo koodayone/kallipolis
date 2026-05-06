@@ -1,5 +1,14 @@
 """
-Materialize College -[:PARTNERSHIP_ALIGNMENT]-> Employer edges.
+Materialize derived analytical edges for the partnerships surface.
+
+Three edge types live here:
+  - PARTNERSHIP_ALIGNMENT (College→Employer, per-college batched)
+  - OCCUPATION_PIPELINE (College→Occupation, per-college batched)
+  - HAS_COMPETENCY (Student→Occupation, per-student batched, cross-college)
+
+Each is a precomputed summarization of an expensive request-time
+traversal. Running them at pipeline-reload time shifts the work to
+ingestion and lets endpoints become bounded edge reads.
 
 The /employers/ endpoint ranks employers in a college's region by
 curriculum alignment via the institutional TOP-SOC crosswalk: for each
@@ -349,6 +358,153 @@ def materialize_occupation_pipeline(driver: Driver, college: str) -> dict:
     return stats
 
 
+# Chained-WITH cypher with no UNWIND. The earlier collect/UNWIND
+# pattern produced a cartesian explosion (rows × students = N²) that
+# hung Neo4j; the planner couldn't tell that students was the same list
+# across the inner UNWIND. Plain chained WITH preserves row-per-student
+# cardinality through the pipeline.
+_HAS_COMPETENCY_BATCH_CREATE = """
+MATCH (s:Student)
+WITH s ORDER BY s.uuid SKIP $offset LIMIT $batch_size
+OPTIONAL MATCH (s)-[:ENROLLED_IN]->(c:Course)-[pf:PREPARES_FOR]->(occ:Occupation)
+WITH s, occ,
+     count(DISTINCT c) AS competency_depth,
+     [t IN collect(DISTINCT pf.via_top) WHERE t IS NOT NULL] AS via_tops
+WHERE occ IS NOT NULL
+CREATE (s)-[:HAS_COMPETENCY {
+    competency_depth: competency_depth,
+    via_tops: via_tops
+}]->(occ)
+RETURN count(*) AS edges_created
+"""
+
+# Drop existing edges in chunks so a global wipe doesn't hold a single
+# multi-million-edge transaction in heap. 50K-edge batches keep each
+# DELETE transaction well within the 2 GB heap on e2-standard-2.
+_HAS_COMPETENCY_DELETE_CHUNK = """
+MATCH ()-[hc:HAS_COMPETENCY]->()
+WITH hc LIMIT $chunk_size
+DELETE hc
+RETURN count(hc) AS n
+"""
+
+
+def materialize_has_competency(driver: Driver, batch_size: int = 2_500) -> dict:
+    """Drop and rebuild HAS_COMPETENCY edges across all students.
+
+    Materializes (Student)-[:HAS_COMPETENCY {competency_depth, via_tops}]->(Occupation)
+    edges, one per (student, soc) pair where the student has at least one
+    ENROLLED_IN edge to a Course that PREPARES_FOR the Occupation.
+
+    Properties:
+      competency_depth  count of distinct PREPARES_FOR-tagged courses the
+                        student is enrolled in for this occupation.
+                        The "spectrum" measure: 1 = beginning to develop,
+                        N = substantial coursework completed.
+      via_tops          distinct TOP6 codes of the courses that route the
+                        student-occupation pathway. Mirrors the audit
+                        pattern on PREPARES_FOR.via_top; enables grouped
+                        rendering of competency by program area without
+                        re-traversing.
+
+    Cross-college by design: the edge aggregates over a student's full
+    enrollment history regardless of which colleges contributed which
+    courses. A student enrolled at Foothill and De Anza for the same SOC
+    gets one edge with combined depth.
+
+    Two-phase batching:
+
+      Phase 1 — drop existing HAS_COMPETENCY edges in chunks of 50K.
+      A single global DELETE of millions of edges would hold a giant
+      transaction in heap; chunking caps each DELETE transaction.
+
+      Phase 2 — per-batch CREATE. Iterate students by UUID order in
+      batches of `batch_size` (default 2500); each batch's transaction
+      walks ENROLLED_IN+PREPARES_FOR for those students, aggregates per
+      (student, occ) pair, and writes the edges. ~75K edges per CREATE
+      transaction at the default batch size.
+
+    Trade-off: phase 1 leaves a window where no HAS_COMPETENCY edges
+    exist before phase 2 starts. During that window any /partnerships/
+    opportunity request returns empty top_students. Acceptable for
+    pipeline reload (planned downtime); not acceptable for live ops.
+    Mitigation if needed: keep batches per-student-atomic by doing
+    drop+rebuild within each batch transaction instead of phasing —
+    but that requires care around the cartesian-explosion trap that
+    hung the first attempt. For now, planned-window is fine; the
+    materialize is a reload-time operation, not a live-ops one.
+
+    Pre-conditions: PREPARES_FOR materialized, students generated,
+    ENROLLED_IN edges present. Missing pre-conditions yield zero
+    edges; not an error.
+
+    Returns: {students_total, edges_dropped, batches, edges_created}
+    """
+    with driver.session() as session:
+        total_students = session.run(
+            "MATCH (s:Student) RETURN count(s) AS n"
+        ).single()["n"]
+
+    if total_students == 0:
+        logger.warning("materialize_has_competency: no Student nodes; zero edges written")
+        return {"students_total": 0, "edges_dropped": 0, "batches": 0, "edges_created": 0}
+
+    edges_dropped = 0
+    chunk_size = 50_000
+    logger.info("materialize_has_competency: phase 1 — drop existing HAS_COMPETENCY edges")
+    with driver.session() as session:
+        while True:
+            def delete_chunk(tx, chunk_size=chunk_size):
+                return tx.run(_HAS_COMPETENCY_DELETE_CHUNK, chunk_size=chunk_size).single()
+
+            result = session.execute_write(delete_chunk)
+            n = result["n"] if result else 0
+            edges_dropped += n
+            if n < chunk_size:
+                break
+            logger.info(f"  dropped {edges_dropped} so far …")
+    logger.info(f"  phase 1 complete: {edges_dropped} edges dropped")
+
+    batches = (total_students + batch_size - 1) // batch_size
+    total_edges = 0
+    logger.info(
+        f"materialize_has_competency: phase 2 — {total_students} students "
+        f"→ {batches} batches of {batch_size}"
+    )
+
+    with driver.session() as session:
+        for batch_idx in range(batches):
+            offset = batch_idx * batch_size
+
+            def run_batch(tx, offset=offset, batch_size=batch_size):
+                return tx.run(
+                    _HAS_COMPETENCY_BATCH_CREATE,
+                    offset=offset,
+                    batch_size=batch_size,
+                ).single()
+
+            result = session.execute_write(run_batch)
+            edges = result["edges_created"] if result else 0
+            total_edges += edges
+            logger.info(
+                f"  batch {batch_idx + 1}/{batches} "
+                f"(students {offset}–{offset + batch_size}): "
+                f"edges_created={edges}"
+            )
+
+    logger.info(
+        f"materialize_has_competency: complete — "
+        f"{total_edges} edges across {batches} batches "
+        f"({edges_dropped} stale edges cleared)"
+    )
+    return {
+        "students_total": total_students,
+        "edges_dropped": edges_dropped,
+        "batches": batches,
+        "edges_created": total_edges,
+    }
+
+
 def _all_colleges(driver: Driver) -> list[str]:
     with driver.session() as s:
         rows = s.run("MATCH (c:College) RETURN c.name AS name ORDER BY c.name").data()
@@ -359,23 +515,31 @@ def main():
     """CLI entrypoint for ad-hoc materialization (e.g., on prod after a
     code change that requires fresh edges without a full reload).
 
-    Both edge sets — PARTNERSHIP_ALIGNMENT (per College→Employer) and
-    OCCUPATION_PIPELINE (per College→Occupation) — are materialized
-    together by default. The two are independent but share the same
-    upstream pre-conditions (PREPARES_FOR + employers loaded), so
-    co-running them avoids partial-state windows where one is fresh
-    and the other stale. Pass --only=<edge> to run just one.
+    Three edge sets:
+      - PARTNERSHIP_ALIGNMENT (per College→Employer, per-college batched)
+      - OCCUPATION_PIPELINE (per College→Occupation, per-college batched)
+      - HAS_COMPETENCY (per Student→Occupation, per-student batched —
+        cross-college by nature, so not gated by --college)
+
+    All three run by default. The first two are gated by --college (or
+    --all); HAS_COMPETENCY is global and runs once regardless of the
+    --college flag. Use --only=<edge> to run just one.
     """
     parser = argparse.ArgumentParser(
-        description="Materialize partnership precomputed edges out of a "
-        "college (or all colleges).",
+        description="Materialize partnership precomputed edges.",
     )
-    parser.add_argument("--college", help="College name. Omit to process all.")
+    parser.add_argument("--college", help="College name (for per-college edges). Omit to process all.")
     parser.add_argument("--all", action="store_true", help="Process every College in graph.")
     parser.add_argument(
         "--only",
-        choices=("partnership_alignment", "occupation_pipeline"),
-        help="Only materialize one edge set (default: both).",
+        choices=("partnership_alignment", "occupation_pipeline", "has_competency"),
+        help="Only materialize one edge set (default: all three).",
+    )
+    parser.add_argument(
+        "--has-competency-batch-size",
+        type=int,
+        default=10_000,
+        help="Students per HAS_COMPETENCY batch transaction (default: 10000).",
     )
     args = parser.parse_args()
 
@@ -389,19 +553,29 @@ def main():
 
     driver = get_driver()
     try:
-        if args.all or not args.college:
-            colleges = _all_colleges(driver)
-            logger.info(f"Processing {len(colleges)} colleges")
-            for c in colleges:
-                if args.only != "occupation_pipeline":
-                    materialize_partnership_alignment(driver, c)
-                if args.only != "partnership_alignment":
-                    materialize_occupation_pipeline(driver, c)
-        else:
-            if args.only != "occupation_pipeline":
-                materialize_partnership_alignment(driver, args.college)
-            if args.only != "partnership_alignment":
-                materialize_occupation_pipeline(driver, args.college)
+        # Per-college edges
+        run_pa = args.only in (None, "partnership_alignment")
+        run_op = args.only in (None, "occupation_pipeline")
+        if run_pa or run_op:
+            if args.all or not args.college:
+                colleges = _all_colleges(driver)
+                logger.info(f"Processing {len(colleges)} colleges")
+                for c in colleges:
+                    if run_pa:
+                        materialize_partnership_alignment(driver, c)
+                    if run_op:
+                        materialize_occupation_pipeline(driver, c)
+            else:
+                if run_pa:
+                    materialize_partnership_alignment(driver, args.college)
+                if run_op:
+                    materialize_occupation_pipeline(driver, args.college)
+
+        # Cross-college edges (run once globally, not gated by --college)
+        if args.only in (None, "has_competency"):
+            materialize_has_competency(
+                driver, batch_size=args.has_competency_batch_size
+            )
     finally:
         close_driver()
 

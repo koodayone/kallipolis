@@ -24,6 +24,7 @@ from ontology.schema import get_driver, close_driver, init_schema
 from partnerships.compute import (
     materialize_partnership_alignment,
     materialize_occupation_pipeline,
+    materialize_has_competency,
 )
 
 logger = logging.getLogger(__name__)
@@ -213,6 +214,7 @@ def verify(driver) -> None:
             ("HIRES_FOR", "MATCH ()-[h:HIRES_FOR]->() RETURN count(h) AS cnt"),
             ("PARTNERSHIP_ALIGNMENT", "MATCH ()-[p:PARTNERSHIP_ALIGNMENT]->() RETURN count(p) AS cnt"),
             ("OCCUPATION_PIPELINE", "MATCH ()-[p:OCCUPATION_PIPELINE]->() RETURN count(p) AS cnt"),
+            ("HAS_COMPETENCY", "MATCH ()-[hc:HAS_COMPETENCY]->() RETURN count(hc) AS cnt"),
         ]
         for label, query in queries:
             result = s.run(query)
@@ -268,7 +270,22 @@ def reload_region(region_key: str) -> None:
                     f"(slow) until rerun"
                 )
 
-        # Step 7: Verify
+        # Step 7: Materialize HAS_COMPETENCY edges (Student → Occupation,
+        # cross-college). Runs once globally after the per-college loop
+        # because the edge aggregates over each student's enrollments
+        # regardless of college. Per-student batched internally; safe
+        # to run on any graph size that fits the per-batch transaction
+        # in memory.
+        try:
+            materialize_has_competency(driver)
+        except Exception as e:
+            logger.error(
+                f"materialize_has_competency failed: {e}; "
+                f"/partnerships/opportunity/{{soc}} will return empty "
+                f"top_students and zero total_in_program until rerun"
+            )
+
+        # Step 8: Verify
         verify(driver)
 
     finally:

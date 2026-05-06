@@ -120,93 +120,88 @@ def _gather_student_pipeline(
         }, []
 
     with driver.session() as session:
-        # Broad headline (`total_in_aligned_departments`) reads off the
-        # OCCUPATION_PIPELINE edge — it's precomputed by
-        # partnerships.compute as `student_count` with the same
-        # semantics. Saves ~42ms p50; mostly a consistency win (one
-        # source of truth for the aggregate).
+        # Broad headline (`total_in_aligned_departments`) reads from the
+        # OCCUPATION_PIPELINE edge precomputed by partnerships.compute
+        # as `student_count` — distinct students at this college
+        # enrolled in any course in any department containing a
+        # PREPARES_FOR-aligned course for the SOC.
         broad = session.run("""
             MATCH (col:College {name: $college})-[op:OCCUPATION_PIPELINE]
                   ->(:Occupation {soc_code: $soc_code})
             RETURN op.student_count AS total_in_aligned_departments
         """, college=college, soc_code=soc_code).single()
 
-        # Secondary count (`total_in_program`) stays a live query.
-        # Attempted to precompute it as `student_count_in_program` on
-        # the edge, but the natural compute query (
-        #   OPTIONAL MATCH (Student) WHERE primary_focus IN aligned_dept_names
-        # ) per-row OOM'd Neo4j on the e2-medium because the planner
-        # couldn't use the student_primary_focus index when the IN-list
-        # varies per occ. The live query at request time CAN use the
-        # index (the IN-list is bound to a single $departments param)
-        # and runs at 2.2s p50 / 7.4s p95 — slow but stable. Revisit
-        # by either looping per-soc in the compute (small targeted
-        # queries that each hit the index) or batching by unique
-        # dept-set hash. Out of scope for this pass.
+        # `total_in_program` reads from the HAS_COMPETENCY edge
+        # precomputed by partnerships.compute. Definition: students who
+        # both (a) have at least one prep-tagged course enrollment for
+        # this SOC, and (b) have declared their major in one of the
+        # aligned departments. A semantic tightening from the previous
+        # live query, which counted students-with-aligned-major +
+        # any-enrollment-at-college (a broader set that included
+        # declared-but-not-yet-engaged students). The new metric is
+        # closer to "actually-positioned-for-this-SOC" rather than
+        # "declared in this program area." Not currently rendered in
+        # the UI (only total_in_aligned_departments is shown), but
+        # available for narrative composition and downstream analysis.
         stats = session.run("""
-            MATCH (st:Student)
-            WHERE st.primary_focus IN $departments
-              AND EXISTS { (st)-[:ENROLLED_IN]->(:Course {college: $college}) }
-            RETURN count(st) AS total_in_program
-        """, college=college, departments=departments).single()
+            MATCH (occ:Occupation {soc_code: $soc_code})
+                  <-[:HAS_COMPETENCY]-(s:Student)
+            WHERE s.primary_focus IN $departments
+              AND EXISTS { (s)-[:ENROLLED_IN]->(:Course {college: $college}) }
+            RETURN count(DISTINCT s) AS total_in_program
+        """, college=college, departments=departments, soc_code=soc_code).single()
 
         student_stats = {
             "total_in_program": stats["total_in_program"] if stats else 0,
             "total_in_aligned_departments": (broad["total_in_aligned_departments"] if broad else 0) or 0,
         }
 
-        # Top-10 exemplars from the aligned-department student pool, ranked
-        # by SOC-aligned course count (primary) then GPA (secondary). The
-        # eligibility gate matches the headline `total_in_aligned_departments`
-        # figure: any student enrolled in any course in an aligned
-        # department. When SOC-prep enrollments exist, the strongest
-        # pipeline candidates surface first; when they don't (some TOP6s
-        # have no published MIS enrollment data at some colleges), the
-        # ordering falls back to GPA so the table still shows real
-        # candidates instead of being empty alongside a non-zero headline.
+        # Top-10 exemplars from the HAS_COMPETENCY edge set. Two-phase
+        # query:
         #
-        # The expansion shows the student's full aligned-department course
-        # history — not just SOC-prep courses — so the body is always
-        # informative even when the SOC-prep count is zero.
-        # Two-pass top-10 to keep the dominant Cypher off the
-        # 2,664-student × ~12-enrollments expansion that scales with the
-        # college's eligibility-set size. Pass 1 anchors on the
-        # Student.primary_focus index — the same set the original
-        # query's outer ORDER BY focus_match=1 always ranks first — so
-        # whenever ≥10 focus-match students exist (the common case at
-        # Oxnard / Foothill / similar), one query produces the
-        # canonical top-10. Pass 2 only fires when the focus-match pool
-        # is too small to fill 10 slots (rare niche-department case),
-        # falling back to the broader eligibility set with the
-        # already-returned uuids excluded so the result preserves the
-        # original semantics exactly.
+        #   1. Index-seek into Occupation by soc_code, traverse incoming
+        #      HAS_COMPETENCY edges to candidate students, filter by
+        #      primary_focus + at-this-college, sort by competency_depth
+        #      then GPA, LIMIT 10. This phase is bounded to the SOC's
+        #      candidate pool (typically a few hundred to few thousand
+        #      students), not the global Student × enrollments cartesian
+        #      the old shape walked.
+        #
+        #   2. For the 10 returned students, fetch their aligned-dept
+        #      enrollment history at this college for the expansion
+        #      panel rendering.
+        #
+        # Eligibility gate: HAS_COMPETENCY edge to this SOC + primary_focus
+        # in aligned departments + at least one enrollment at this college.
+        # The HAS_COMPETENCY filter is stricter than the old "enrolled in
+        # aligned dept" gate — it requires actual prep-tagged enrollments,
+        # not just program-area exposure. Students whose institutional
+        # data has aligned-dept enrollments but no prep-tagged courses
+        # (the "sparse MIS data" case the old code anticipated) now
+        # surface as empty top_students alongside non-zero
+        # total_in_aligned_departments — the frontend already renders
+        # explanatory text for this state.
         focus_query = """
-            MATCH (st:Student) WHERE st.primary_focus IN $departments
-            WITH st
-            WHERE EXISTS {
-                MATCH (st)-[:ENROLLED_IN]->(:Course {college: $college})
-                      <-[:CONTAINS]-(d:Department)
-                WHERE d.name IN $departments
-            }
-            OPTIONAL MATCH (st)-[:ENROLLED_IN]->(prep:Course {college: $college})
-                  -[:PREPARES_FOR]->(:Occupation {soc_code: $soc_code})
-            WITH st, count(DISTINCT prep) AS soc_aligned_count
-            OPTIONAL MATCH (st)-[e:ENROLLED_IN]->(c:Course {college: $college})
-                  <-[:CONTAINS]-(d:Department)
+            MATCH (occ:Occupation {soc_code: $soc_code})
+                  <-[hc:HAS_COMPETENCY]-(s:Student)
+            WHERE s.primary_focus IN $departments
+              AND EXISTS { (s)-[:ENROLLED_IN]->(:Course {college: $college}) }
+            WITH s, hc.competency_depth AS competency_depth
+            ORDER BY competency_depth DESC, COALESCE(s.gpa, 0.0) DESC
+            LIMIT 10
+            OPTIONAL MATCH (s)-[e:ENROLLED_IN]->(c:Course {college: $college})
+                          <-[:CONTAINS]-(d:Department)
             WHERE d.name IN $departments
-            WITH st, soc_aligned_count,
+            WITH s, competency_depth,
                  collect(DISTINCT CASE WHEN c IS NOT NULL THEN {
                      code: c.code, name: c.name,
                      grade: e.grade, term: e.term
                  } END) AS raw_enrollments
-            WITH st, soc_aligned_count,
+            WITH s, competency_depth,
                  [x IN raw_enrollments WHERE x IS NOT NULL] AS enrollments
-            ORDER BY soc_aligned_count DESC,
-                     size(enrollments) DESC, COALESCE(st.gpa, 0.0) DESC
-            LIMIT 10
-            RETURN st.uuid AS uuid, st.primary_focus AS primary_focus,
+            RETURN s.uuid AS uuid, s.primary_focus AS primary_focus,
                    size(enrollments) AS courses_completed,
-                   COALESCE(st.gpa, 0.0) AS gpa,
+                   COALESCE(s.gpa, 0.0) AS gpa,
                    enrollments
         """
         result = session.run(
@@ -215,32 +210,33 @@ def _gather_student_pipeline(
         ).data()
 
         if len(result) < 10:
+            # Fallback: students with HAS_COMPETENCY to this SOC who
+            # don't have primary_focus in aligned departments (e.g.,
+            # cross-disciplinary candidates whose major is elsewhere
+            # but who took prep coursework). Same shape as focus_query,
+            # different filter, excluding already-returned UUIDs.
             fallback_query = """
-                MATCH (dept:Department)-[:CONTAINS]->(:Course {college: $college})
-                      <-[:ENROLLED_IN]-(st:Student)
-                WHERE dept.name IN $departments
-                  AND NOT (st.primary_focus IN $departments)
-                  AND NOT (st.uuid IN $exclude_uuids)
-                WITH DISTINCT st
-                OPTIONAL MATCH (st)-[:ENROLLED_IN]->(prep:Course {college: $college})
-                      -[:PREPARES_FOR]->(:Occupation {soc_code: $soc_code})
-                WITH st, count(DISTINCT prep) AS soc_aligned_count
-                OPTIONAL MATCH (st)-[e:ENROLLED_IN]->(c:Course {college: $college})
-                      <-[:CONTAINS]-(d:Department)
+                MATCH (occ:Occupation {soc_code: $soc_code})
+                      <-[hc:HAS_COMPETENCY]-(s:Student)
+                WHERE NOT (s.primary_focus IN $departments)
+                  AND NOT (s.uuid IN $exclude_uuids)
+                  AND EXISTS { (s)-[:ENROLLED_IN]->(:Course {college: $college}) }
+                WITH s, hc.competency_depth AS competency_depth
+                ORDER BY competency_depth DESC, COALESCE(s.gpa, 0.0) DESC
+                LIMIT $limit
+                OPTIONAL MATCH (s)-[e:ENROLLED_IN]->(c:Course {college: $college})
+                              <-[:CONTAINS]-(d:Department)
                 WHERE d.name IN $departments
-                WITH st, soc_aligned_count,
+                WITH s, competency_depth,
                      collect(DISTINCT CASE WHEN c IS NOT NULL THEN {
                          code: c.code, name: c.name,
                          grade: e.grade, term: e.term
                      } END) AS raw_enrollments
-                WITH st, soc_aligned_count,
+                WITH s, competency_depth,
                      [x IN raw_enrollments WHERE x IS NOT NULL] AS enrollments
-                ORDER BY soc_aligned_count DESC,
-                         size(enrollments) DESC, COALESCE(st.gpa, 0.0) DESC
-                LIMIT $limit
-                RETURN st.uuid AS uuid, st.primary_focus AS primary_focus,
+                RETURN s.uuid AS uuid, s.primary_focus AS primary_focus,
                        size(enrollments) AS courses_completed,
-                       COALESCE(st.gpa, 0.0) AS gpa,
+                       COALESCE(s.gpa, 0.0) AS gpa,
                        enrollments
             """
             fallback = session.run(
