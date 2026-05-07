@@ -13,8 +13,16 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 import { NextResponse } from "next/server";
 
-export const dynamic = "force-dynamic";
+// Local-dev only. With `output: export`, Next.js requires every route to
+// declare a static-friendly mode at build time even if its handlers never
+// ship — `force-static` lets the build succeed; the handlers below short-
+// circuit when NEXT_STATIC_EXPORT is set so they never touch the
+// filesystem during the export pre-render pass. Cloudflare Pages serves
+// the static `out/` directory and never invokes these handlers in prod.
+export const dynamic = "force-static";
 export const runtime = "nodejs";
+
+const STATIC_EXPORT = process.env.NEXT_STATIC_EXPORT === "true";
 
 const PICKS_FILE = path.resolve(
   process.cwd(),
@@ -56,6 +64,9 @@ function normHex(s: string): string {
 }
 
 export async function GET() {
+  if (STATIC_EXPORT) {
+    return NextResponse.json({ version: 1, updated_at: "", picks: {} });
+  }
   const file = await readPicks();
   return NextResponse.json(file);
 }

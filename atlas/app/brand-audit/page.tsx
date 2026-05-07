@@ -25,11 +25,12 @@ import { getCollegeAtlasConfig } from "@/config/collegeAtlasConfigs";
 import { COLLEGE_COLORS } from "@/config/collegeColors.generated";
 import PickerCard, { type PickerRow } from "./PickerCard";
 
-// Force dynamic so the page reads picks.json on every request and the
-// picker reflects the latest state. The export-static deploy still works
-// because Cloudflare's Next adapter will fall back to runtime rendering
-// for routes that opt out of static.
-export const dynamic = "force-dynamic";
+// Static-rendered: the fs reads happen at build time, then the page is
+// shipped as a flat HTML artifact. The earlier `force-dynamic` directive
+// broke the Cloudflare Pages static export — the adapter does not fall
+// back to runtime rendering for routes that opt out of static, it fails
+// the build. Re-deploy after re-running the brand-color extraction
+// pipeline (or after picks.json changes locally) to refresh the audit.
 
 type Capture = {
   id: string;
