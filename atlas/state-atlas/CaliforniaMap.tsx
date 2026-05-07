@@ -106,8 +106,12 @@ export default function CaliforniaMap({
       const maxChars = Math.max(...parts.map((p) => p.length));
       const w = maxChars * 6.5;
       const h = parts.length === 2 ? 24 : 12;
-      const padX = 8;
-      const padY = 6;
+      // Asymmetric padding: text reads horizontally, so the eye needs
+      // more blank space at the line ends to separate the label from
+      // neighboring diamonds. Vertical padding is smaller — diamonds
+      // above and below the label affect readability less.
+      const padX = 14;
+      const padY = 10;
       return [{
         x1: cx - w / 2 - padX,
         y1: cy - h / 2 - padY,
@@ -166,6 +170,55 @@ export default function CaliforniaMap({
       if (dx * dx + dy * dy > 0.25) {  // skip ~null offsets
         nudgeOffsets.set(p.id, [dx, dy]);
       }
+    }
+  }
+
+  // When a marker is hovered or selected, its label renders above the
+  // diamond. In dense regions (Bay Area peninsula, LA basin) the label
+  // text overlaps neighboring diamonds, leaving a chaotic mix of label
+  // glyphs and half-occluded markers. Compute the label's projected
+  // bounding rect once here; in the marker render below, any *other*
+  // marker whose center falls inside this rect is hidden so the active
+  // college's label reads cleanly.
+  //
+  // Geometry must mirror the actual <text> element: y = -size - 10
+  // relative to marker center, font-size 12 / weight 600 (~7px avg
+  // per char), labelAnchor derived from longitude.
+  const activeLabelId = hoveredCollegeId ?? selectedCollegeId;
+  let activeLabelRect: { x1: number; y1: number; x2: number; y2: number } | null = null;
+  if (activeLabelId) {
+    const active = CALIFORNIA_COLLEGES.find((c) => c.id === activeLabelId);
+    if (active) {
+      const [px, py] = project(active.lng, active.lat);
+      const nudge = nudgeOffsets.get(active.id);
+      const cx = px + (nudge?.[0] ?? 0);
+      const cy = py + (nudge?.[1] ?? 0);
+      const size = DIAMOND * 1.4;
+      const charW = 7;
+      const w = active.name.length * charW;
+      const h = 14;
+      const lngRange = { min: -124.5, max: -114 };
+      const lngNorm = (active.lng - lngRange.min) / (lngRange.max - lngRange.min);
+      const anchor: "start" | "end" | "middle" =
+        lngNorm < 0.25 ? "start" : lngNorm > 0.75 ? "end" : "middle";
+      const baseY = cy - size - 10;
+      const x1 =
+        anchor === "start" ? cx :
+        anchor === "end"   ? cx - w :
+                             cx - w / 2;
+      // Asymmetric padding: more horizontally because text reads
+      // horizontally and the eye needs blank space at the line ends to
+      // separate the label from neighboring markers. Vertical padding
+      // is smaller — markers above and below the label affect
+      // readability less than ones at the line's edges.
+      const PAD_X = 12;
+      const PAD_Y = 8;
+      activeLabelRect = {
+        x1: x1 - PAD_X,
+        x2: x1 + w + PAD_X,
+        y1: baseY - h - PAD_Y,
+        y2: baseY + PAD_Y,
+      };
     }
   }
 
@@ -270,6 +323,22 @@ export default function CaliforniaMap({
             // most markers this is undefined — only clipping pairs move.
             const nudge = nudgeOffsets.get(college.id);
             const nudgeTransform = nudge ? `translate(${nudge[0]} ${nudge[1]})` : undefined;
+
+            // Hide non-active markers whose center falls under the
+            // active college's label rect. Without this the hover label
+            // text overlaps neighboring diamonds in dense regions and
+            // becomes hard to read.
+            if (activeLabelRect && !isActive) {
+              const [px, py] = project(college.lng, college.lat);
+              const cx = px + (nudge?.[0] ?? 0);
+              const cy = py + (nudge?.[1] ?? 0);
+              if (
+                cx >= activeLabelRect.x1 && cx <= activeLabelRect.x2 &&
+                cy >= activeLabelRect.y1 && cy <= activeLabelRect.y2
+              ) {
+                return null;
+              }
+            }
 
             return (
               <Marker

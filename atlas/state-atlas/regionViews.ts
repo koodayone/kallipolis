@@ -42,11 +42,11 @@ export const REGION_VIEWS: Record<string, RegionView> = {
   },
   "south-central-coast": {
     camera: { center: [-119.99, 34.51], scale: 5908 },
-    labelAnchor: [-120.20, 34.85],   // northwest, San Luis Obispo county
+    labelAnchor: [-120.55, 35.45],   // northern SLO county, clear of college clusters
   },
   "los-angeles": {
     camera: { center: [-118.30, 33.81], scale: 8250 },
-    labelAnchor: [-118.05, 34.30],   // north LA county / San Gabriel Mtns
+    labelAnchor: [-118.05, 34.55],   // north of San Gabriel Mtns, clear of college diamonds
   },
   "orange-county": {
     camera: { center: [-117.85, 33.70], scale: 12000 },

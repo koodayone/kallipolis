@@ -183,6 +183,14 @@ export default function StateAtlas() {
     }
   }, [showSearchResults, searchResults, searchActiveIndex, handleSearchSelect]);
 
+  // hoveredCollege still drives the sun-prompt label and on-map marker
+  // highlight, but it deliberately does NOT open the right-panel
+  // SchoolPanel. Hover-driven panel switching caused inadvertent
+  // selections in dense regions (LA, Bay Area): clicking a region
+  // started the camera zoom, markers re-projected under the stationary
+  // cursor mid-animation, and onMouseEnter on a drifting marker would
+  // pop the SchoolPanel without the user touching a college. Only an
+  // explicit click on a marker should open the panel.
   const activeCollege = selectedCollege ?? hoveredCollege;
   const activeRegion = activeRegionId
     ? CALIFORNIA_REGIONS.find((r) => r.id === activeRegionId) ?? null
@@ -190,12 +198,12 @@ export default function StateAtlas() {
 
   const isQuerying = searchQuery.trim().length > 0;
   // Right panel content rule:
-  //   - College selected/hovered → SchoolPanel
+  //   - College CLICKED (selectedCollege) → SchoolPanel
   //   - Region view, no query → regional college list (with region header)
   //   - Otherwise → flat college list (acts as both search results and
   //     the default state-view list)
   const rightPanelMode: "school" | "list" | "regional-list" =
-    activeCollege ? "school"
+    selectedCollege ? "school"
     : viewMode === "region" && !isQuerying ? "regional-list"
     : "list";
 
@@ -447,13 +455,13 @@ export default function StateAtlas() {
               }}
             >
               <AnimatePresence mode="wait">
-                {rightPanelMode === "school" && activeCollege ? (
-                  <motion.div key={`school-${activeCollege.id}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}>
-                    <SchoolPanel college={activeCollege} />
+                {rightPanelMode === "school" && selectedCollege ? (
+                  <motion.div key={`school-${selectedCollege.id}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}>
+                    <SchoolPanel college={selectedCollege} onClose={() => setSelectedCollege(null)} />
                   </motion.div>
                 ) : rightPanelMode === "regional-list" && activeRegion ? (
                   <motion.div key={`regional-${activeRegion.id}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}>
-                    <RegionalCollegeList region={activeRegion} colleges={regionalCollegesSorted} onSelect={handleSearchSelect} />
+                    <RegionalCollegeList region={activeRegion} colleges={regionalCollegesSorted} onSelect={handleSearchSelect} onHover={setHoveredCollege} />
                   </motion.div>
                 ) : (
                   <motion.div key="college-list" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}
@@ -607,10 +615,12 @@ function RegionalCollegeList({
   region,
   colleges,
   onSelect,
+  onHover,
 }: {
   region: Region;
   colleges: College[];
   onSelect: (college: College) => void;
+  onHover?: (college: College | null) => void;
 }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
@@ -662,7 +672,7 @@ function RegionalCollegeList({
           </div>
         ) : (
           colleges.map((college) => (
-            <SearchResultRow key={college.id} college={college} onSelect={onSelect} isActive={false} />
+            <SearchResultRow key={college.id} college={college} onSelect={onSelect} onHover={onHover} isActive={false} />
           ))
         )}
       </div>
@@ -670,12 +680,50 @@ function RegionalCollegeList({
   );
 }
 
-function SchoolPanel({ college }: { college: College }) {
+function SchoolPanel({ college, onClose }: { college: College; onClose: () => void }) {
   const config = getCollegeAtlasConfig(college.id);
   const accent = config?.brandColorNeon ?? "#c9a84c";
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "32px", paddingTop: "48px", paddingLeft: "16px" }}>
+    <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: "32px", paddingTop: "48px", paddingLeft: "16px", paddingRight: "44px" }}>
+      {/* Explicit close affordance — without this the only way out of a
+          school selection is ESC or clicking the narrow margin around
+          this panel, which is not discoverable. */}
+      <button
+        onClick={onClose}
+        aria-label="Close school panel"
+        style={{
+          position: "absolute",
+          top: 36,
+          right: 0,
+          width: 32,
+          height: 32,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "rgba(255,255,255,0.04)",
+          border: "1px solid rgba(255,255,255,0.10)",
+          borderRadius: 999,
+          color: "rgba(255,255,255,0.7)",
+          cursor: "pointer",
+          transition: "background 0.15s, border-color 0.15s, color 0.15s",
+        }}
+        onMouseEnter={(e) => {
+          (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.08)";
+          (e.currentTarget as HTMLElement).style.borderColor = "rgba(201,168,76,0.35)";
+          (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.95)";
+        }}
+        onMouseLeave={(e) => {
+          (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.04)";
+          (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.10)";
+          (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.7)";
+        }}
+      >
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M3.5 3.5l7 7M10.5 3.5l-7 7" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+        </svg>
+      </button>
+
       <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
         <h2 style={{ fontFamily: "var(--font-days-one), sans-serif", fontSize: "clamp(26px, 2.8vw, 40px)", lineHeight: 1.2, color: "#ffffff", margin: 0 }}>
           {college.name}
