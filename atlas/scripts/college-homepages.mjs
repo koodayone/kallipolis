@@ -1,57 +1,145 @@
 /**
- * Official homepage URL for each FEATURED California Community College.
+ * Official homepage URL for each California Community College in
+ * CALIFORNIA_COLLEGES. Maintained by hand because programmatic guesses
+ * (e.g. `${id}.edu`) miss district-style domains: Sacramento City sits
+ * under losrios.edu, Berkeley City under peralta.edu, Cuesta under
+ * its own domain, etc.
  *
- * Maintained by hand because a programmatic guess (e.g. `${id}.edu`) misses
- * district-style domains: Sacramento City sits under losrios.edu, American
- * River under losrios.edu, Berkeley City under peralta.edu, etc.
- *
- * When a college joins FEATURED, add its homepage here.
+ * Branch campuses (delnorte, nevada) point at the parent college's
+ * homepage since they share institutional branding.
  */
 export const HOMEPAGES = {
   // North / Far North
+  redwoods:      "https://www.redwoods.edu/",
+  delnorte:      "https://www.redwoods.edu/",
   shasta:        "https://www.shastacollege.edu/",
-  siskiyous:     "https://www.siskiyous.edu/",
   lassen:        "https://www.lassencollege.edu/",
-  mendocino:     "https://www.mendocino.edu/",
+  siskiyous:     "https://www.siskiyous.edu/",
+  featherriver:  "https://www.frc.edu/",
   butte:         "https://www.butte.edu/",
-  laketahoe:     "https://www.ltcc.edu/",
+  sierra:        "https://www.sierracollege.edu/",
   saccc:         "https://scc.losrios.edu/",
   americanriver: "https://arc.losrios.edu/",
+  cosumnes:      "https://crc.losrios.edu/",
+  folsom:        "https://flc.losrios.edu/",
+  nevada:        "https://www.sierracollege.edu/",
+  yuba:          "https://yc.yccd.edu/",
+  woodland:      "https://wcc.yccd.edu/",
+  laketahoe:     "https://www.ltcc.edu/",
+  mendocino:     "https://www.mendocino.edu/",
 
   // Bay Area
+  ccsf:        "https://www.ccsf.edu/",
   foothill:    "https://foothill.edu/",
-  berkeleycc:  "https://www.berkeleycitycollege.edu/",
-  napavalley:  "https://napavalley.edu/",
-  hartnell:    "https://www.hartnell.edu/",
-  csm:         "https://collegeofsanmateo.edu/",
-  losmedanos:  "https://www.losmedanos.edu/",
   deanza:      "https://www.deanza.edu/",
+  skyline:     "https://www.skylinecollege.edu/",
+  canada:      "https://www.canadacollege.edu/",
+  csm:         "https://collegeofsanmateo.edu/",
+  laney:       "https://laney.edu/",
+  merritt:     "https://www.merritt.edu/",
+  berkeleycc:  "https://www.berkeleycitycollege.edu/",
+  alameda:     "https://alameda.edu/",
+  diablo:      "https://www.dvc.edu/",
+  contracosta: "https://www.contracosta.edu/",
+  losmedanos:  "https://www.losmedanos.edu/",
+  cabrillo:    "https://www.cabrillo.edu/",
+  gavilan:     "https://www.gavilan.edu/",
+  evergreen:   "https://www.evc.edu/",
+  sanjosecity: "https://www.sjcc.edu/",
+  marin:       "https://www1.marin.edu/",
+  santarosa:   "https://www.santarosa.edu/",
+  napavalley:  "https://napavalley.edu/",
+  solano:      "https://welcome.solano.edu/",
+  mission:     "https://www.missioncollege.edu/",
+  westvalley:  "https://www.westvalley.edu/",
+  ohlone:      "https://www.ohlone.edu/",
+  chabot:      "https://www.chabotcollege.edu/",
+  laspositas:  "https://www.laspositascollege.edu/",
+  hartnell:    "https://www.hartnell.edu/",
+  montereypen: "https://www.mpc.edu/",
 
   // Central Valley / Mother Lode
-  sequoias:  "https://www.cos.edu/",
-  merced:    "https://www.mccd.edu/",
-  cerrocoso: "https://www.cerrocoso.edu/",
-  reedley:   "https://www.reedleycollege.edu/",
+  fresno:        "https://www.fresnocitycollege.edu/",
+  reedley:       "https://www.reedleycollege.edu/",
+  clovis:        "https://www.cloviscollege.edu/",
+  sequoias:      "https://www.cos.edu/",
+  merced:        "https://www.mccd.edu/",
+  modesto:       "https://www.mjc.edu/",
+  columbia:      "https://www.gocolumbia.edu/",
+  sanjoquin:     "https://www.deltacollege.edu/",
+  westhill:      "https://www.westhillscollege.com/coalinga/",
+  westhillslemo: "https://www.westhillscollege.com/lemoore/",
+  bakersfield:   "https://www.bakersfieldcollege.edu/",
+  cerrocoso:     "https://www.cerrocoso.edu/",
+  porterville:   "https://www.portervillecollege.edu/",
+  taft:          "https://www.taftcollege.edu/",
+  madera:        "https://www.maderacollege.edu/",
 
   // South Central Coast
-  sbcc:         "https://www.sbcc.edu/",
-  oxnard:       "https://www.oxnardcollege.edu/",
-  allanhancock: "https://www.hancockcollege.edu/",
+  cuesta:         "https://www.cuesta.edu/",
+  sbcc:           "https://www.sbcc.edu/",
+  allanhancock:   "https://www.hancockcollege.edu/",
+  cabrillovc:     "https://www.venturacollege.edu/",
+  oxnard:         "https://www.oxnardcollege.edu/",
+  moorpark:       "https://www.moorparkcollege.edu/",
+  antelopevalley: "https://www.avc.edu/",
+  canyons:        "https://www.canyons.edu/",
 
   // Los Angeles
-  compton:  "https://www.compton.edu/",
-  lavalley: "https://www.lavc.edu/",
-  lacity:   "https://www.lacitycollege.edu/",
-  mtsac:    "https://www.mtsac.edu/",
+  lacity:      "https://www.lacitycollege.edu/",
+  lavalley:    "https://www.lavc.edu/",
+  laharbor:    "https://www.lahc.edu/",
+  lamission:   "https://www.lamission.edu/",
+  lapuente:    "https://www.elac.edu/",
+  lasouthwest: "https://www.lasc.edu/",
+  latrade:     "https://www.lattc.edu/",
+  lawest:      "https://www.wlac.edu/",
+  pcc:         "https://pasadena.edu/",
+  mtsac:       "https://www.mtsac.edu/",
+  longbeach:   "https://www.lbcc.edu/",
+  elcamino:    "https://www.elcamino.edu/",
+  santamonica: "https://www.smc.edu/",
+  glendale:    "https://www.glendale.edu/",
+  citrus:      "https://www.citruscollege.edu/",
+  riohondo:    "https://www.riohondo.edu/",
+  cerritos:    "https://www.cerritos.edu/",
+  compton:     "https://www.compton.edu/",
+  lapierce:    "https://www.piercecollege.edu/",
 
   // Orange County
+  goldenwest:   "https://www.goldenwestcollege.edu/",
+  orangecoast:  "https://www.orangecoastcollege.edu/",
+  coastline:    "https://www.coastline.edu/",
+  fullerton:    "https://www.fullcoll.edu/",
+  cypress:      "https://www.cypresscollege.edu/",
+  santaana:     "https://www.sac.edu/",
+  santiagocyn:  "https://www.sccollege.edu/",
+  saddleback:   "https://www.saddleback.edu/",
   irvinevalley: "https://www.ivc.edu/",
 
   // Inland Empire / Desert
-  desert:  "https://www.collegeofthedesert.edu/",
-  chaffey: "https://www.chaffey.edu/",
+  desert:       "https://www.collegeofthedesert.edu/",
+  sbvalley:     "https://www.valleycollege.edu/",
+  crafton:      "https://www.craftonhills.edu/",
+  chaffey:      "https://www.chaffey.edu/",
+  riverside:    "https://www.rcc.edu/",
+  norco:        "https://www.norcocollege.edu/",
+  msjc:         "https://www.msjc.edu/",
+  victor:       "https://www.vvc.edu/",
+  barstow:      "https://www.barstow.edu/",
+  morenovalley: "https://www.mvc.edu/",
+  paloverde:    "https://www.paloverde.edu/",
+  coppermtn:    "https://www.cmccd.edu/",
 
   // San Diego / Imperial
+  sandiegomesa: "https://www.sdmesa.edu/",
   sandiegocity: "https://www.sdcity.edu/",
+  sandiegomira: "https://www.sdmiramar.edu/",
+  grossmont:    "https://www.grossmont.edu/",
+  cuyamaca:     "https://www.cuyamaca.edu/",
+  palomar:      "https://www.palomar.edu/",
+  miracostacc:  "https://www.miracosta.edu/",
   imperial:     "https://www.imperial.edu/",
+  southwestern: "https://www.swccd.edu/",
+  sdcce:        "https://www.sdcce.edu/",
 };
