@@ -1,5 +1,5 @@
 {
-  "description": "Catalog PDF sources for the PDF ingestion pipeline. Title 5 requires every CA community college to publish a catalog — these are the direct PDF URLs found via web search. URLs may change year-to-year as colleges publish new catalogs.",
+  "description": "Catalog PDF sources for the PDF ingestion pipeline. Title 5 requires every CA community college to publish a catalog \u2014 these are the direct PDF URLs found via web search. URLs may change year-to-year as colleges publish new catalogs.",
   "last_updated": "2026-03-24",
   "region": "San Francisco Bay Area",
   "colleges": {
@@ -59,7 +59,7 @@
       "catalog_pdf_url": "https://www.peralta.edu/hubfs/College%20of%20Alameda%202023-2024%20Course%20Catalog.pdf",
       "catalog_year": "2023-2024",
       "status": "pending",
-      "notes": "Older catalog — current year is flipbook only"
+      "notes": "Older catalog \u2014 current year is flipbook only"
     },
     "skyline": {
       "name": "Skyline College",
@@ -70,7 +70,7 @@
       "status": "pending"
     },
     "canada": {
-      "name": "Cañada College",
+      "name": "Ca\u00f1ada College",
       "district": "San Mateo CCD",
       "city": "Redwood City",
       "catalog_pdf_url": "https://catalog.canadacollege.edu/current/_pdf-books/can-catalog2025-26-catalog-rights.pdf",
@@ -101,7 +101,7 @@
       "catalog_pdf_url": "https://www.dvc.edu/sites/default/files/2025-01/college-catalog-2022-2023.pdf",
       "catalog_year": "2022-2023",
       "status": "pending",
-      "notes": "Older catalog — migrated to eLumen web-only starting 2023-2024"
+      "notes": "Older catalog \u2014 migrated to eLumen web-only starting 2023-2024"
     },
     "contracosta": {
       "name": "Contra Costa College",
@@ -143,7 +143,7 @@
       "catalog_pdf_url": "https://catalog2025-2026.santarosa.edu/sites/catalog2025-2026.santarosa.edu/files/documents/The%20Catalog%202025-2026.pdf",
       "catalog_year": "2025-2026",
       "status": "pending",
-      "notes": "73MB PDF — may exceed Gemini Files API limit; may need to split or compress"
+      "notes": "73MB PDF \u2014 may exceed Gemini Files API limit; may need to split or compress"
     },
     "napavalley": {
       "name": "Napa Valley College",
@@ -209,7 +209,7 @@
       "catalog_pdf_url": "https://www.cerritos.edu/mlewellen/Cabrillo_College/Cabrillo_Catalog.pdf",
       "catalog_year": "2019-2020",
       "status": "pending",
-      "notes": "Older catalog from mirror — migrated to eLumen starting 2022-2023"
+      "notes": "Older catalog from mirror \u2014 migrated to eLumen starting 2022-2023"
     },
     "gavilan": {
       "name": "Gavilan College",
@@ -218,7 +218,7 @@
       "catalog_pdf_url": "https://www.gavilan.edu/catalog/docs/GavilanCollegeCatalog2017_2019.pdf",
       "catalog_year": "2017-2019",
       "status": "pending",
-      "notes": "Older catalog — migrated to CurriQuNet web-only starting 2021-2022"
+      "notes": "Older catalog \u2014 migrated to CurriQuNet web-only starting 2021-2022"
     },
     "citrus": {
       "name": "Citrus College",
@@ -267,7 +267,7 @@
       "catalog_pdf_url": null,
       "catalog_year": "2025-2026",
       "status": "pending",
-      "notes": "JS-rendered catalog page at https://www.glendale.edu/academics/catalogs — manually extract PDF link"
+      "notes": "JS-rendered catalog page at https://www.glendale.edu/academics/catalogs \u2014 manually extract PDF link"
     },
     "longbeach": {
       "name": "Long Beach City College",
@@ -308,7 +308,7 @@
       "catalog_pdf_url": "https://www.lapc.edu/sites/lapc.edu/files/2024-08/LAPC%20General%20Catalog%202024-2025_FINAL-compressed.pdf",
       "catalog_year": "2024-2025",
       "status": "pending",
-      "notes": "2025-2026 PDF not yet found — using 2024-2025"
+      "notes": "2025-2026 PDF not yet found \u2014 using 2024-2025"
     },
     "lasouthwest": {
       "name": "Los Angeles Southwest College",
@@ -325,7 +325,7 @@
       "catalog_pdf_url": "https://www.lattc.edu/sites/lattc.edu/files/2024-09/2248%20LATTC%20College%20Catalog%202024-2025.pdf",
       "catalog_year": "2024-2025",
       "status": "pending",
-      "notes": "2025-2026 PDF not yet found — using 2024-2025"
+      "notes": "2025-2026 PDF not yet found \u2014 using 2024-2025"
     },
     "lavalley": {
       "name": "Los Angeles Valley College",
@@ -350,7 +350,7 @@
       "catalog_pdf_url": "https://curriculum.pasadena.edu/general-information/catalog/catalog.pdf",
       "catalog_year": "2025-2026",
       "status": "pending",
-      "notes": "CourseLeaf-generated PDF — may be partial"
+      "notes": "CourseLeaf-generated PDF \u2014 may be partial"
     },
     "riohondo": {
       "name": "Rio Hondo College",
@@ -399,7 +399,7 @@
       "catalog_pdf_url": null,
       "catalog_year": "2025-2026",
       "status": "pending",
-      "notes": "CourseLeaf /pdf/ page is 'Under Construction' — no full PDF available"
+      "notes": "CourseLeaf /pdf/ page is 'Under Construction' \u2014 no full PDF available"
     },
     "palomar": {
       "name": "Palomar College",
@@ -440,7 +440,7 @@
       "catalog_pdf_url": null,
       "catalog_year": "2025-2026",
       "status": "pending",
-      "notes": "CourseLeaf catalog — no full PDF endpoint found"
+      "notes": "CourseLeaf catalog \u2014 no full PDF endpoint found"
     },
     "coastline": {
       "name": "Coastline College",
@@ -481,7 +481,7 @@
       "catalog_pdf_url": "file:///Users/dayonekoo/Desktop/code/kallipolis/backend/pipeline/cache/irvinevalley_catalog.pdf",
       "catalog_year": "2025-2026",
       "status": "pending",
-      "notes": "Acalog online-only — using manually captured PDF cached at pipeline/cache/irvinevalley_catalog.pdf. file:// URL short-circuits download via cached-file check in _download_pdf."
+      "notes": "Acalog online-only \u2014 using manually captured PDF cached at pipeline/cache/irvinevalley_catalog.pdf. file:// URL short-circuits download via cached-file check in _download_pdf."
     },
     "orangecoast": {
       "name": "Orange Coast College",
@@ -522,7 +522,7 @@
       "catalog_pdf_url": null,
       "catalog_year": "2025-2026",
       "status": "pending",
-      "notes": "Uses CurriQunet — 2024-2025 PDF at https://catalog.hancockcollege.edu/_resources/archives/2024-2025-Catalog.pdf"
+      "notes": "Uses CurriQunet \u2014 2024-2025 PDF at https://catalog.hancockcollege.edu/_resources/archives/2024-2025-Catalog.pdf"
     },
     "antelopevalley": {
       "name": "Antelope Valley College",
@@ -571,7 +571,7 @@
       "catalog_pdf_url": null,
       "catalog_year": "2025-2026",
       "status": "pending",
-      "notes": "Online-only catalog since 2019 — no PDF available"
+      "notes": "Online-only catalog since 2019 \u2014 no PDF available"
     },
     "cerrocoso": {
       "name": "Cerro Coso Community College",
@@ -596,7 +596,7 @@
       "catalog_pdf_url": null,
       "catalog_year": "2025-2026",
       "status": "pending",
-      "notes": "Online-only catalog — only addendum PDF available"
+      "notes": "Online-only catalog \u2014 only addendum PDF available"
     },
     "merced": {
       "name": "Merced College",
@@ -605,7 +605,7 @@
       "catalog_pdf_url": null,
       "catalog_year": "2025-2026",
       "status": "pending",
-      "notes": "Online catalog at catalog.mccd.edu — no PDF found"
+      "notes": "Online catalog at catalog.mccd.edu \u2014 no PDF found"
     },
     "modesto": {
       "name": "Modesto Junior College",
@@ -614,7 +614,7 @@
       "catalog_pdf_url": null,
       "catalog_year": "2025-2026",
       "status": "pending",
-      "notes": "eLumen online catalog — no PDF found"
+      "notes": "eLumen online catalog \u2014 no PDF found"
     },
     "porterville": {
       "name": "Porterville College",
@@ -631,7 +631,7 @@
       "catalog_pdf_url": "https://www.reedleycollege.edu/admissions-aid/catalogs/2025_2026_rc_catalog.pdf",
       "catalog_year": "2025-2026",
       "status": "pending",
-      "notes": "URL inferred from naming pattern — verify link"
+      "notes": "URL inferred from naming pattern \u2014 verify link"
     },
     "delta": {
       "name": "San Joaquin Delta College",
@@ -648,7 +648,7 @@
       "catalog_pdf_url": null,
       "catalog_year": "2025-2026",
       "status": "pending",
-      "notes": "Catalog is .docx only — SmartCatalogIQ online at https://taftcollege.smartcatalogiq.com/"
+      "notes": "Catalog is .docx only \u2014 SmartCatalogIQ online at https://taftcollege.smartcatalogiq.com/"
     },
     "westhillscoalinga": {
       "name": "West Hills College Coalinga",
@@ -657,7 +657,7 @@
       "catalog_pdf_url": null,
       "catalog_year": "2025-2026",
       "status": "pending",
-      "notes": "Has 'View Full Catalog PDF' button at https://coalingacollege.edu/catalog/2025-2026/ — manually extract link"
+      "notes": "Has 'View Full Catalog PDF' button at https://coalingacollege.edu/catalog/2025-2026/ \u2014 manually extract link"
     },
     "westhillslemoore": {
       "name": "West Hills College Lemoore",
@@ -666,7 +666,7 @@
       "catalog_pdf_url": null,
       "catalog_year": "2024-2025",
       "status": "pending",
-      "notes": "eLumen online catalog — 2025-2026 not yet published"
+      "notes": "eLumen online catalog \u2014 2025-2026 not yet published"
     },
     "columbia": {
       "name": "Columbia College",
@@ -675,7 +675,7 @@
       "catalog_pdf_url": null,
       "catalog_year": "2025-2026",
       "status": "pending",
-      "notes": "eLumen online catalog — no PDF found"
+      "notes": "eLumen online catalog \u2014 no PDF found"
     },
     "yuba": {
       "name": "Yuba College",
@@ -708,7 +708,7 @@
       "catalog_pdf_url": null,
       "catalog_year": "2025-2026",
       "status": "pending",
-      "notes": "SmartCatalogIQ online at https://craftonhills.smartcatalogiq.com/ — no PDF found"
+      "notes": "SmartCatalogIQ online at https://craftonhills.smartcatalogiq.com/ \u2014 no PDF found"
     },
     "mtsanjacinto": {
       "name": "Mt. San Jacinto College",
@@ -725,7 +725,7 @@
       "catalog_pdf_url": null,
       "catalog_year": "2025-2026",
       "status": "pending",
-      "notes": "CurriQunet online catalog — no PDF since 2023-2024"
+      "notes": "CurriQunet online catalog \u2014 no PDF since 2023-2024"
     },
     "norco": {
       "name": "Norco College",
@@ -768,7 +768,7 @@
       "catalog_pdf_url": null,
       "catalog_year": "2025-2026",
       "status": "pending",
-      "notes": "PDF URL not confirmed — try https://www.paloverde.edu/current-students/pdf/catalog/25-26/25-26%20PVC%20Catalog.pdf"
+      "notes": "PDF URL not confirmed \u2014 try https://www.paloverde.edu/current-students/pdf/catalog/25-26/25-26%20PVC%20Catalog.pdf"
     },
     "coppermountain": {
       "name": "Copper Mountain College",
@@ -850,7 +850,7 @@
       "catalog_pdf_url": "https://www.butte.edu/departments/curriculum/catalog/documents/2024-25ButteCollegeCatalog.pdf",
       "catalog_year": "2024-2025",
       "status": "pending",
-      "notes": "2025-2026 is CurriQunet online-only — using 2024-2025 PDF"
+      "notes": "2025-2026 is CurriQunet online-only \u2014 using 2024-2025 PDF"
     },
     "redwoods": {
       "name": "College of the Redwoods",
@@ -859,7 +859,7 @@
       "catalog_pdf_url": "https://www.redwoods.edu/academics/catalog/2024-2025.pdf",
       "catalog_year": "2024-2025",
       "status": "pending",
-      "notes": "2025-2026 is eLumen online-only — using 2024-2025 PDF"
+      "notes": "2025-2026 is eLumen online-only \u2014 using 2024-2025 PDF"
     },
     "siskiyous": {
       "name": "College of the Siskiyous",
@@ -868,7 +868,7 @@
       "catalog_pdf_url": "https://www.siskiyous.edu/catalog/catalog2021.pdf",
       "catalog_year": "2020-2021",
       "status": "pending",
-      "notes": "Oldest fallback — migrated to eLumen starting 2021-2022"
+      "notes": "Oldest fallback \u2014 migrated to eLumen starting 2021-2022"
     },
     "featherriver": {
       "name": "Feather River College",
@@ -877,7 +877,7 @@
       "catalog_pdf_url": "https://www.frc.edu/instruction/files/Catalogs/Catalog%202024-25.pdf",
       "catalog_year": "2024-2025",
       "status": "pending",
-      "notes": "2025-2026 is CurriQunet online-only — using 2024-2025 PDF"
+      "notes": "2025-2026 is CurriQunet online-only \u2014 using 2024-2025 PDF"
     },
     "lassen": {
       "name": "Lassen College",
@@ -910,7 +910,7 @@
       "catalog_pdf_url": null,
       "catalog_year": "2025-2026",
       "status": "pending",
-      "notes": "eLumen online-only — older PDFs through 2020-2021 at https://ltcc.edu/academics/catalog.php"
+      "notes": "eLumen online-only \u2014 older PDFs through 2020-2021 at https://ltcc.edu/academics/catalog.php"
     },
     "cuesta": {
       "name": "Cuesta College",
@@ -919,7 +919,7 @@
       "catalog_pdf_url": "https://www.cuesta.edu/academics/documents/catalog/catalog-2023-2024/Cuesta-College-2023-2024-Catalog.pdf",
       "catalog_year": "2023-2024",
       "status": "pending",
-      "notes": "2025-2026 is CurriQunet online-only — using 2023-2024 PDF"
+      "notes": "2025-2026 is CurriQunet online-only \u2014 using 2023-2024 PDF"
     },
     "hartnell": {
       "name": "Hartnell College",
@@ -944,6 +944,22 @@
       "city": "Compton",
       "catalog_pdf_url": "https://www.compton.edu/academics/catalog",
       "catalog_year": "2025-2026",
+      "status": "pending"
+    },
+    "clovis": {
+      "name": "Clovis Community College",
+      "district": "State Center CCD",
+      "city": "Fresno",
+      "catalog_year": "2025-2026",
+      "catalog_pdf_url": "",
+      "status": "pending"
+    },
+    "madera": {
+      "name": "Madera Community College",
+      "district": "State Center CCD",
+      "city": "Madera",
+      "catalog_year": "2025-2026",
+      "catalog_pdf_url": "",
       "status": "pending"
     }
   }

@@ -17,10 +17,12 @@
 // paths 404 harmlessly, but the State Atlas marker is a diamond colored
 // by the override, not the logo image.
 //
-// Three CCC colleges aren't loaded in the graph at all: Calbright
-// (online-only, no Fall 2025 sections in the term-based Data Mart
-// export), Redwoods (no Fall 2025 sections in the export — likely a
-// reporting timing issue), and SF Centers (sub-entity of CCSF).
+// Two CCC colleges aren't loaded in the graph: Calbright (online-only,
+// not in PCF/MCF), and SF Centers (sub-entity of CCSF, not a separate
+// college). Redwoods IS loaded under the PCF∩MCF spine — the earlier
+// CourseDetails-only spine had to skip it because Redwoods had no
+// Fall 2025 sections in Data Mart's term-pinned export, but PCF and
+// MCF aren't term-pinned.
 //
 // Extracted from CaliforniaMap.tsx so server components can import it
 // without pulling in the client-only map component.
@@ -28,7 +30,7 @@ export const FEATURED_COLLEGES = new Set([
   // North / Far North
   "shasta", "siskiyous", "lassen", "mendocino", "butte", "laketahoe",
   "featherriver", "sierra", "saccc", "americanriver", "cosumnes",
-  "folsom", "yuba", "woodland", "columbia",
+  "folsom", "yuba", "woodland", "columbia", "redwoods",
   // Bay Area
   "foothill", "deanza", "ccsf", "laney", "merritt", "berkeleycc",
   "alameda", "skyline", "canada", "csm", "losmedanos", "diablo",

@@ -179,9 +179,17 @@ _MCF_DIR = Path(__file__).parent.parent / "ontology" / "mastercoursefiles"
 def _build_course_to_top6(courses: List[dict], college_key: str) -> Dict[str, str]:
     """Map each catalog course code to its 6-digit TOP code.
 
-    Reads the college's MCF file directly from the bundled MCF directory
-    rather than routing through `ontology.mcf_lookup._load_mcf_index`.
-    The bundled filenames use the backend college key
+    Fast path: courses loaded from CourseDetails (Data Mart) already
+    carry an authoritative 6-digit TOP code on every record. When a
+    course dict supplies `top_code`, we use it directly — the
+    Chancellor's Office is the institutional authority for TOP codes,
+    so no MCF cross-lookup adds value. This handles every course in
+    the new statewide load.
+
+    Slow path (legacy): for courses arriving from the older PDF
+    extraction flow without an inline `top_code`, fall back to reading
+    the bundled MCF file directly from the MCF directory. The bundled
+    filenames use the backend college key
     (`MasterCourseFile_sandiegocity.csv`, `MasterCourseFile_irvinevalley.csv`)
     but the `College` column inside those files uses the human-readable
     form ("San Diego City"), which is the mismatch that makes an
@@ -190,14 +198,27 @@ def _build_course_to_top6(courses: List[dict], college_key: str) -> Dict[str, st
 
     When the same course appears multiple times in the MCF (across
     Issue/Update Dates reflecting TOP-code reclassifications), the
-    latest-dated entry wins. This avoids the staleness seen on Foothill
-    where HLTH020 went 040100 -> 120100 -> 126000 over the years — the
-    most recent classification is the one the calibration expects.
+    latest-dated entry wins.
 
-    Courses without an MCF entry are mapped to UNMAPPED_TOP6 so they
-    remain visible in the generation summary rather than being silently
-    dropped.
+    Courses without an MCF entry AND no inline top_code are mapped to
+    UNMAPPED_TOP6 so they remain visible in the generation summary
+    rather than being silently dropped.
     """
+    # Fast path: every course in the new CourseDetails-based load
+    # arrives with `top_code` already set. Skip MCF entirely.
+    if courses and all(c.get("top_code") for c in courses if c.get("code")):
+        return {
+            c["code"]: c["top_code"]
+            for c in courses if c.get("code") and c.get("top_code")
+        }
+
+    # Mixed or legacy input: build a partial map from inline top_code,
+    # then fill the gaps from MCF.
+    direct: Dict[str, str] = {
+        c["code"]: c["top_code"]
+        for c in courses if c.get("code") and c.get("top_code")
+    }
+
     # Try backend-key filename first; fall back to pdf_to_mcf_key form.
     mcf_path = _MCF_DIR / f"MasterCourseFile_{college_key}.csv"
     if not mcf_path.exists():
@@ -727,6 +748,15 @@ def load_students(
     student_rows = _derive_student_fields(students, top6_to_dept or {})
 
     with driver.session() as session:
+        # Ensure the uuid index exists. Without it, the MATCH on
+        # row.uuid in _write_batch becomes a full label scan that gets
+        # slower as Student count grows (~30+ sec per 2K-row batch on
+        # large colleges). The constraint creates a backing index.
+        session.run(
+            "CREATE CONSTRAINT student_uuid IF NOT EXISTS "
+            "FOR (s:Student) REQUIRE s.uuid IS UNIQUE"
+        )
+
         total_deleted = 0
         while True:
             result = session.run(

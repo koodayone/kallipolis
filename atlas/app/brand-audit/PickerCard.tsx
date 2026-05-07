@@ -185,7 +185,7 @@ export default function PickerCard({
 
         {/* Click-to-pick swatches */}
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
-          {candidates.map(({ label, hex, source, sub }) => {
+          {candidates.map(({ label, hex, source }) => {
             const isPicked = pickedHex && hex && pickedHex.toLowerCase() === hex.toLowerCase();
             const disabled = !hex || busy;
             return (
