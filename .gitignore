@@ -67,3 +67,8 @@ backend/employers/.audit_occupations_judge.json
 
 # Neo4j query timing logs (JSONL written by ontology/timing.py)
 backend/logs/
+
+# Subgraph snapshots produced by scripts/snapshot_subgraph.py — these
+# are 30 MB JSON dumps of Employer/Occupation/Skill/Region for nuke+
+# restore migrations. Useful locally; not source-of-truth, not for repo.
+.claude/subgraph_snapshot*.json
