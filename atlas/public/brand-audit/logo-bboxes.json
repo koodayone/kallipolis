@@ -1,37 +1,516 @@
 {
   "method": "vision-pass-on-1280x600-thumbs",
-  "generated_at": "2026-05-06T22:30:00Z",
-  "viewport": { "width": 1280, "height": 600 },
+  "generated_at": "2026-04-29T00:00:00Z",
+  "viewport": {
+    "width": 1280,
+    "height": 600
+  },
   "entries": [
-    { "id": "shasta",        "bbox": { "x": 14,  "y": 22, "width": 270, "height": 56  }, "confidence": "high",   "note": "Green circular icon with mountains plus 'Shasta College' wordmark" },
-    { "id": "siskiyous",     "bbox": { "x": 12,  "y": 8,  "width": 80,  "height": 62  }, "confidence": "medium", "note": "Small seal-style logo top-left over photo background" },
-    { "id": "lassen",        "bbox": { "x": 8,   "y": 0,  "width": 70,  "height": 116 }, "confidence": "medium", "note": "100-year anniversary shield emblem; vertical orientation" },
-    { "id": "mendocino",     "bbox": { "x": 76,  "y": 4,  "width": 224, "height": 56  }, "confidence": "high",   "note": "Eagle icon plus 'Mendocino College' wordmark and tagline" },
-    { "id": "butte",         "bbox": { "x": 16,  "y": 10, "width": 144, "height": 36  }, "confidence": "high",   "note": "Stacked icon plus 'BUTTE COLLEGE' wordmark" },
-    { "id": "laketahoe",     "bbox": { "x": 8,   "y": 8,  "width": 280, "height": 76  }, "confidence": "high",   "note": "Mountain emblem plus 'Lake Tahoe Community College' wordmark with tagline" },
-    { "id": "saccc",         "bbox": { "x": 32,  "y": 18, "width": 196, "height": 44  }, "confidence": "high",   "note": "City-skyline icon plus 'Sacramento City College' wordmark" },
-    { "id": "americanriver", "bbox": { "x": 32,  "y": 18, "width": 200, "height": 44  }, "confidence": "high",   "note": "Beaver icon plus 'American River College' wordmark with district tagline" },
-    { "id": "foothill",      "bbox": { "x": 10,  "y": 20, "width": 200, "height": 80  }, "confidence": "high",   "note": "Hand-fixed: agent bbox landed on utility nav strip; widened to capture logo below it" },
-    { "id": "berkeleycc",    "bbox": { "x": 28,  "y": 14, "width": 156, "height": 40  }, "confidence": "medium", "note": "Small wordmark in corner" },
-    { "id": "napavalley",    "bbox": { "x": 10,  "y": 5,  "width": 200, "height": 70  }, "confidence": "high",   "note": "Hand-fixed: widened to ensure wordmark pixels are captured" },
-    { "id": "csm",           "bbox": { "x": 26,  "y": 50, "width": 210, "height": 36  }, "confidence": "high",   "note": "'College of San Mateo' wordmark on blue band; logo sits below thin top utility nav" },
-    { "id": "losmedanos",    "bbox": { "x": 16,  "y": 6,  "width": 110, "height": 60  }, "confidence": "high",   "note": "Stacked 'LOS MEDANOS COLLEGE' wordmark" },
-    { "id": "deanza",        "bbox": { "x": 10,  "y": 18, "width": 78,  "height": 52  }, "confidence": "high",   "note": "'De Anza College' stacked logo with shield icon" },
-    { "id": "sequoias",      "bbox": { "x": 76,  "y": 50, "width": 234, "height": 188 }, "confidence": "high",   "note": "Tall vertical 'COS / College of the Sequoias' logo with sequoia tree icon" },
-    { "id": "merced",        "bbox": { "x": 10,  "y": 5,  "width": 240, "height": 90  }, "confidence": "high",   "note": "Re-captured. Blue 'MERCED COLLEGE' wordmark + seal logo." },
-    { "id": "cerrocoso",     "bbox": { "x": 26,  "y": 22, "width": 192, "height": 88  }, "confidence": "high",   "note": "'Cerro Coso Community College' shield-style logo" },
-    { "id": "reedley",       "bbox": { "x": 10,  "y": 25, "width": 240, "height": 90  }, "confidence": "high",   "note": "Hand-fixed: widened to capture navy wordmark + orange accent under it" },
-    { "id": "sbcc",          "bbox": { "x": 14,  "y": 50, "width": 60,  "height": 76  }, "confidence": "high",   "note": "Stacked 'SB CC' block logo on white card" },
-    { "id": "oxnard",        "bbox": { "x": 14,  "y": 22, "width": 130, "height": 36  }, "confidence": "high",   "note": "Eagle icon plus 'Oxnard College' wordmark" },
-    { "id": "allanhancock",  "bbox": { "x": 552, "y": 56, "width": 176, "height": 96  }, "confidence": "high",   "note": "Centered 'Allan Hancock College' stacked logo with quill-shield icon" },
-    { "id": "compton",       "bbox": { "x": 12,  "y": 30, "width": 80,  "height": 60  }, "confidence": "high",   "note": "Stacked 'Compton College' logo" },
-    { "id": "lavalley",      "bbox": { "x": 32,  "y": 12, "width": 168, "height": 48  }, "confidence": "high",   "note": "LAVC monogram plus 'Los Angeles Valley College' wordmark" },
-    { "id": "lacity",        "bbox": { "x": 32,  "y": 6,  "width": 156, "height": 56  }, "confidence": "high",   "note": "LACC seal plus 'Los Angeles City College / The City's College' wordmark" },
-    { "id": "mtsac",         "bbox": { "x": 12,  "y": 24, "width": 188, "height": 38  }, "confidence": "high",   "note": "'Mt. San Antonio College' wordmark on dark red band" },
-    { "id": "irvinevalley",  "bbox": { "x": 24,  "y": 22, "width": 130, "height": 56  }, "confidence": "high",   "note": "Stacked 'Irvine Valley College' logo with leaf-flame icon" },
-    { "id": "desert",        "bbox": { "x": 38,  "y": 16, "width": 200, "height": 60  }, "confidence": "high",   "note": "Crest-style emblem plus 'COLLEGE of the DESERT' wordmark" },
-    { "id": "chaffey",       "bbox": { "x": 10,  "y": 30, "width": 200, "height": 70  }, "confidence": "high",   "note": "Hand-fixed: widened to capture red Chaffey heart icon + wordmark" },
-    { "id": "imperial",      "bbox": { "x": 10,  "y": 60, "width": 220, "height": 130 }, "confidence": "medium", "note": "Hand-fixed: WE ARE IVC red shield sits below the dark utility strip; widened bbox" },
-    { "id": "hartnell",      "bbox": { "x": 80,  "y": 44, "width": 256, "height": 78  }, "confidence": "high",   "note": "Panther shield icon plus 'HARTNELL COLLEGE' wordmark" }
+    {
+      "id": "shasta",
+      "bbox": {
+        "x": 14,
+        "y": 22,
+        "width": 270,
+        "height": 56
+      },
+      "confidence": "high",
+      "note": "Green circular icon with mountains plus 'Shasta College' wordmark"
+    },
+    {
+      "id": "siskiyous",
+      "bbox": {
+        "x": 12,
+        "y": 8,
+        "width": 80,
+        "height": 62
+      },
+      "confidence": "medium",
+      "note": "Small seal-style logo top-left over photo background"
+    },
+    {
+      "id": "lassen",
+      "bbox": {
+        "x": 8,
+        "y": 0,
+        "width": 70,
+        "height": 116
+      },
+      "confidence": "medium",
+      "note": "100-year anniversary shield emblem; vertical orientation"
+    },
+    {
+      "id": "mendocino",
+      "bbox": {
+        "x": 76,
+        "y": 4,
+        "width": 224,
+        "height": 56
+      },
+      "confidence": "high",
+      "note": "Eagle icon plus 'Mendocino College' wordmark and tagline"
+    },
+    {
+      "id": "butte",
+      "bbox": {
+        "x": 16,
+        "y": 10,
+        "width": 144,
+        "height": 36
+      },
+      "confidence": "high",
+      "note": "Stacked icon plus 'BUTTE COLLEGE' wordmark"
+    },
+    {
+      "id": "laketahoe",
+      "bbox": {
+        "x": 8,
+        "y": 8,
+        "width": 280,
+        "height": 76
+      },
+      "confidence": "high",
+      "note": "Mountain emblem plus 'Lake Tahoe Community College' wordmark with tagline"
+    },
+    {
+      "id": "saccc",
+      "bbox": {
+        "x": 32,
+        "y": 18,
+        "width": 196,
+        "height": 44
+      },
+      "confidence": "high",
+      "note": "City-skyline icon plus 'Sacramento City College' wordmark"
+    },
+    {
+      "id": "americanriver",
+      "bbox": {
+        "x": 32,
+        "y": 18,
+        "width": 200,
+        "height": 44
+      },
+      "confidence": "high",
+      "note": "Existing bbox; #cf2a4a (ARC red) is correct"
+    },
+    {
+      "id": "foothill",
+      "bbox": {
+        "x": 10,
+        "y": 20,
+        "width": 200,
+        "height": 80
+      },
+      "confidence": "high",
+      "note": "Hand-fixed: agent bbox landed on utility nav strip; widened to capture logo below it"
+    },
+    {
+      "id": "berkeleycc",
+      "bbox": {
+        "x": 28,
+        "y": 14,
+        "width": 156,
+        "height": 40
+      },
+      "confidence": "medium",
+      "note": "Small wordmark in corner"
+    },
+    {
+      "id": "napavalley",
+      "bbox": {
+        "x": 10,
+        "y": 5,
+        "width": 200,
+        "height": 70
+      },
+      "confidence": "high",
+      "note": "Hand-fixed: widened to ensure wordmark pixels are captured"
+    },
+    {
+      "id": "csm",
+      "bbox": {
+        "x": 26,
+        "y": 50,
+        "width": 210,
+        "height": 36
+      },
+      "confidence": "high",
+      "note": "'College of San Mateo' wordmark on blue band; logo sits below thin top utility nav"
+    },
+    {
+      "id": "losmedanos",
+      "bbox": {
+        "x": 16,
+        "y": 6,
+        "width": 110,
+        "height": 60
+      },
+      "confidence": "high",
+      "note": "Stacked 'LOS MEDANOS COLLEGE' wordmark"
+    },
+    {
+      "id": "deanza",
+      "bbox": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      },
+      "confidence": "low",
+      "note": "Thumb captured Social Media slide, not homepage hero. Manual color: De Anza institutional green #006A4D"
+    },
+    {
+      "id": "sequoias",
+      "bbox": {
+        "x": 8,
+        "y": 40,
+        "width": 140,
+        "height": 80
+      },
+      "confidence": "high",
+      "note": "'COS / College of the Sequoias' multi-color logo with sequoia tree icon"
+    },
+    {
+      "id": "merced",
+      "bbox": {
+        "x": 10,
+        "y": 5,
+        "width": 240,
+        "height": 90
+      },
+      "confidence": "high",
+      "note": "Re-captured. Blue 'MERCED COLLEGE' wordmark + seal logo."
+    },
+    {
+      "id": "cerrocoso",
+      "bbox": {
+        "x": 26,
+        "y": 22,
+        "width": 192,
+        "height": 88
+      },
+      "confidence": "high",
+      "note": "Existing bbox; navy is correct brand color"
+    },
+    {
+      "id": "reedley",
+      "bbox": {
+        "x": 10,
+        "y": 25,
+        "width": 240,
+        "height": 90
+      },
+      "confidence": "high",
+      "note": "Hand-fixed: widened to capture navy wordmark + orange accent under it"
+    },
+    {
+      "id": "sbcc",
+      "bbox": {
+        "x": 14,
+        "y": 50,
+        "width": 60,
+        "height": 76
+      },
+      "confidence": "high",
+      "note": "Stacked 'SB CC' block logo on white card"
+    },
+    {
+      "id": "oxnard",
+      "bbox": {
+        "x": 14,
+        "y": 22,
+        "width": 130,
+        "height": 36
+      },
+      "confidence": "high",
+      "note": "Eagle icon plus 'Oxnard College' wordmark"
+    },
+    {
+      "id": "allanhancock",
+      "bbox": {
+        "x": 552,
+        "y": 56,
+        "width": 176,
+        "height": 96
+      },
+      "confidence": "high",
+      "note": "Centered 'Allan Hancock College' stacked logo with quill-shield icon"
+    },
+    {
+      "id": "compton",
+      "bbox": {
+        "x": 12,
+        "y": 30,
+        "width": 80,
+        "height": 60
+      },
+      "confidence": "high",
+      "note": "Stacked 'Compton College' logo"
+    },
+    {
+      "id": "lavalley",
+      "bbox": {
+        "x": 32,
+        "y": 12,
+        "width": 168,
+        "height": 48
+      },
+      "confidence": "high",
+      "note": "LAVC monogram plus 'Los Angeles Valley College' wordmark"
+    },
+    {
+      "id": "lacity",
+      "bbox": {
+        "x": 32,
+        "y": 6,
+        "width": 156,
+        "height": 56
+      },
+      "confidence": "high",
+      "note": "LACC seal plus 'Los Angeles City College / The City's College' wordmark"
+    },
+    {
+      "id": "mtsac",
+      "bbox": {
+        "x": 12,
+        "y": 24,
+        "width": 188,
+        "height": 38
+      },
+      "confidence": "high",
+      "note": "'Mt. San Antonio College' wordmark on dark red band"
+    },
+    {
+      "id": "irvinevalley",
+      "bbox": {
+        "x": 24,
+        "y": 22,
+        "width": 130,
+        "height": 56
+      },
+      "confidence": "high",
+      "note": "Stacked 'Irvine Valley College' logo with leaf-flame icon"
+    },
+    {
+      "id": "desert",
+      "bbox": {
+        "x": 38,
+        "y": 16,
+        "width": 200,
+        "height": 60
+      },
+      "confidence": "high",
+      "note": "Crest-style emblem plus 'COLLEGE of the DESERT' wordmark"
+    },
+    {
+      "id": "chaffey",
+      "bbox": {
+        "x": 10,
+        "y": 30,
+        "width": 200,
+        "height": 70
+      },
+      "confidence": "high",
+      "note": "Hand-fixed: widened to capture red Chaffey heart icon + wordmark"
+    },
+    {
+      "id": "imperial",
+      "bbox": {
+        "x": 10,
+        "y": 60,
+        "width": 220,
+        "height": 130
+      },
+      "confidence": "medium",
+      "note": "Hand-fixed: WE ARE IVC red shield sits below the dark utility strip; widened bbox"
+    },
+    {
+      "id": "hartnell",
+      "bbox": {
+        "x": 80,
+        "y": 44,
+        "width": 256,
+        "height": 78
+      },
+      "confidence": "high",
+      "note": "Panther shield icon plus 'HARTNELL COLLEGE' wordmark"
+    },
+    {
+      "id": "ohlone",
+      "bbox": {
+        "x": 8,
+        "y": 0,
+        "width": 110,
+        "height": 30
+      },
+      "confidence": "high",
+      "note": "Small green 'OHLONE COLLEGE' wordmark top-left"
+    },
+    {
+      "id": "evergreen",
+      "bbox": {
+        "x": 8,
+        "y": 38,
+        "width": 150,
+        "height": 40
+      },
+      "confidence": "high",
+      "note": "'EVERGREEN VALLEY COLLEGE' green wordmark + 50th anniversary mark"
+    },
+    {
+      "id": "cuesta",
+      "bbox": {
+        "x": 28,
+        "y": 140,
+        "width": 180,
+        "height": 175
+      },
+      "confidence": "high",
+      "note": "Green circular 'Cuesta College' archway emblem; sits below white nav band"
+    },
+    {
+      "id": "canyons",
+      "bbox": {
+        "x": 8,
+        "y": 6,
+        "width": 80,
+        "height": 32
+      },
+      "confidence": "medium",
+      "note": "Small 'COLLEGE OF THE CANYONS' wordmark over hero photo"
+    },
+    {
+      "id": "lapuente",
+      "bbox": {
+        "x": 14,
+        "y": 14,
+        "width": 220,
+        "height": 28
+      },
+      "confidence": "high",
+      "note": "'EAST LOS ANGELES COLLEGE' green wordmark on white band; institutional green dominates"
+    },
+    {
+      "id": "lasouthwest",
+      "bbox": {
+        "x": 8,
+        "y": 8,
+        "width": 230,
+        "height": 38
+      },
+      "confidence": "high",
+      "note": "'LOS ANGELES SOUTHWEST COLLEGE' shield + wordmark, blue tones"
+    },
+    {
+      "id": "santamonica",
+      "bbox": {
+        "x": 14,
+        "y": 6,
+        "width": 70,
+        "height": 80
+      },
+      "confidence": "high",
+      "note": "Stacked navy 'SANTA MONICA COLLEGE' seal-style logo"
+    },
+    {
+      "id": "lapierce",
+      "bbox": {
+        "x": 10,
+        "y": 6,
+        "width": 220,
+        "height": 32
+      },
+      "confidence": "high",
+      "note": "'los angeles / pierce / college' wordmark; pierce in red, rest in navy"
+    },
+    {
+      "id": "saddleback",
+      "bbox": {
+        "x": 10,
+        "y": 6,
+        "width": 90,
+        "height": 42
+      },
+      "confidence": "high",
+      "note": "Maroon 'SADDLEBACK COLLEGE' stacked logo"
+    },
+    {
+      "id": "sbvalley",
+      "bbox": {
+        "x": 80,
+        "y": 56,
+        "width": 220,
+        "height": 48
+      },
+      "confidence": "high",
+      "note": "'San Bernardino Valley College' wordmark + 100-year navy shield"
+    },
+    {
+      "id": "crafton",
+      "bbox": {
+        "x": 80,
+        "y": 80,
+        "width": 250,
+        "height": 60
+      },
+      "confidence": "high",
+      "note": "Green/gold 'Crafton Hills College' wordmark with mountain icon"
+    },
+    {
+      "id": "riverside",
+      "bbox": {
+        "x": 10,
+        "y": 40,
+        "width": 110,
+        "height": 50
+      },
+      "confidence": "medium",
+      "note": "Small red 'RCC' shield-style logo at top-left of hero band"
+    },
+    {
+      "id": "norco",
+      "bbox": {
+        "x": 540,
+        "y": 70,
+        "width": 220,
+        "height": 60
+      },
+      "confidence": "high",
+      "note": "Centered 'NORCO COLLEGE' navy wordmark with red accent"
+    },
+    {
+      "id": "coppermtn",
+      "bbox": {
+        "x": 12,
+        "y": 8,
+        "width": 270,
+        "height": 36
+      },
+      "confidence": "high",
+      "note": "Stylized 'COPPER MOUNTAIN COLLEGE' wordmark on light gray nav band"
+    },
+    {
+      "id": "sandiegomira",
+      "bbox": {
+        "x": 8,
+        "y": 430,
+        "width": 110,
+        "height": 110
+      },
+      "confidence": "medium",
+      "note": "Teal/cyan San Diego Miramar Jets starburst icon at bottom-left over dark blue band"
+    },
+    {
+      "id": "morenovalley",
+      "bbox": {
+        "x": 10,
+        "y": 90,
+        "width": 100,
+        "height": 80
+      },
+      "confidence": "medium",
+      "note": "Logo not in default crop; teal hero color is close to actual brand teal"
+    }
   ]
 }
