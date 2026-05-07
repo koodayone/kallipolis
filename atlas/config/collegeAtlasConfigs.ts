@@ -168,13 +168,23 @@ const COLOR_OVERRIDES: Record<string, string> = {
 
 };
 
+// Build override-applied configs for every COLOR_OVERRIDES entry whose
+// id is also in CALIFORNIA_COLLEGES — regardless of whether the college
+// has `logoStacked`. Logo-less colleges (the 5 LA/OC entries:
+// glendale, lapierce, lasouthwest, latrade, santiagocyn) still get a
+// SchoolConfig so they render as colored diamonds on the State Atlas
+// and have working /[collegeId] routes; their logoPath points at the
+// same /logos/${id}.png URL which 404s harmlessly until proper logos
+// are added (the State Atlas marker is a colored diamond, not the
+// logo, so visual presence isn't blocked).
 const overrideConfigs = Object.fromEntries(
   Object.entries(COLOR_OVERRIDES)
-    .filter(([id]) => generatedConfigs[id])
     .map(([id]) => {
-      const college = CALIFORNIA_COLLEGES.find((c) => c.id === id)!;
+      const college = CALIFORNIA_COLLEGES.find((c) => c.id === id);
+      if (!college) return null;
       return [id, makeSchoolConfig(college.name, `/logos/${id}.png`, COLOR_OVERRIDES[id])];
     })
+    .filter((entry): entry is [string, SchoolConfig] => entry !== null)
 );
 
 export const COLLEGE_ATLAS_CONFIGS: Record<string, SchoolConfig> = {
