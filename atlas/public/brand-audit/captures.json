@@ -1,6 +1,22 @@
 {
-  "generated_at": "2026-05-06T21:54:17.984Z",
+  "generated_at": "2026-05-07T02:17:42.179Z",
   "captures": [
+    {
+      "id": "redwoods",
+      "url": "https://www.redwoods.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.redwoods.edu/",
+      "thumb": "/brand-audit/thumbs/redwoods.png"
+    },
+    {
+      "id": "delnorte",
+      "url": "https://www.redwoods.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.redwoods.edu/",
+      "thumb": "/brand-audit/thumbs/delnorte.png"
+    },
     {
       "id": "shasta",
       "url": "https://www.shastacollege.edu/",
@@ -8,14 +24,6 @@
       "error": null,
       "finalUrl": "https://www.shastacollege.edu/",
       "thumb": "/brand-audit/thumbs/shasta.png"
-    },
-    {
-      "id": "siskiyous",
-      "url": "https://www.siskiyous.edu/",
-      "status": "ok",
-      "error": null,
-      "finalUrl": "https://www.siskiyous.edu/",
-      "thumb": "/brand-audit/thumbs/siskiyous.png"
     },
     {
       "id": "lassen",
@@ -26,12 +34,20 @@
       "thumb": "/brand-audit/thumbs/lassen.png"
     },
     {
-      "id": "mendocino",
-      "url": "https://www.mendocino.edu/",
+      "id": "siskiyous",
+      "url": "https://www.siskiyous.edu/",
       "status": "ok",
       "error": null,
-      "finalUrl": "https://www.mendocino.edu/",
-      "thumb": "/brand-audit/thumbs/mendocino.png"
+      "finalUrl": "https://www.siskiyous.edu/",
+      "thumb": "/brand-audit/thumbs/siskiyous.png"
+    },
+    {
+      "id": "featherriver",
+      "url": "https://www.frc.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.frc.edu/",
+      "thumb": "/brand-audit/thumbs/featherriver.png"
     },
     {
       "id": "butte",
@@ -42,12 +58,12 @@
       "thumb": "/brand-audit/thumbs/butte.png"
     },
     {
-      "id": "laketahoe",
-      "url": "https://www.ltcc.edu/",
+      "id": "sierra",
+      "url": "https://www.sierracollege.edu/",
       "status": "ok",
       "error": null,
-      "finalUrl": "https://www.ltcc.edu/",
-      "thumb": "/brand-audit/thumbs/laketahoe.png"
+      "finalUrl": "https://www.sierracollege.edu/",
+      "thumb": "/brand-audit/thumbs/sierra.png"
     },
     {
       "id": "saccc",
@@ -66,6 +82,70 @@
       "thumb": "/brand-audit/thumbs/americanriver.png"
     },
     {
+      "id": "cosumnes",
+      "url": "https://crc.losrios.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://crc.losrios.edu/",
+      "thumb": "/brand-audit/thumbs/cosumnes.png"
+    },
+    {
+      "id": "folsom",
+      "url": "https://flc.losrios.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://flc.losrios.edu/",
+      "thumb": "/brand-audit/thumbs/folsom.png"
+    },
+    {
+      "id": "nevada",
+      "url": "https://www.sierracollege.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.sierracollege.edu/",
+      "thumb": "/brand-audit/thumbs/nevada.png"
+    },
+    {
+      "id": "yuba",
+      "url": "https://yc.yccd.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://yc.yccd.edu/",
+      "thumb": "/brand-audit/thumbs/yuba.png"
+    },
+    {
+      "id": "woodland",
+      "url": "https://wcc.yccd.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://wcc.yccd.edu/",
+      "thumb": "/brand-audit/thumbs/woodland.png"
+    },
+    {
+      "id": "laketahoe",
+      "url": "https://www.ltcc.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.ltcc.edu/",
+      "thumb": "/brand-audit/thumbs/laketahoe.png"
+    },
+    {
+      "id": "mendocino",
+      "url": "https://www.mendocino.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.mendocino.edu/",
+      "thumb": "/brand-audit/thumbs/mendocino.png"
+    },
+    {
+      "id": "ccsf",
+      "url": "https://www.ccsf.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.ccsf.edu/",
+      "thumb": "/brand-audit/thumbs/ccsf.png"
+    },
+    {
       "id": "foothill",
       "url": "https://foothill.edu/",
       "status": "ok",
@@ -74,28 +154,28 @@
       "thumb": "/brand-audit/thumbs/foothill.png"
     },
     {
-      "id": "berkeleycc",
-      "url": "https://www.berkeleycitycollege.edu/",
+      "id": "deanza",
+      "url": "https://www.deanza.edu/",
       "status": "ok",
       "error": null,
-      "finalUrl": "https://www.berkeleycitycollege.edu/",
-      "thumb": "/brand-audit/thumbs/berkeleycc.png"
+      "finalUrl": "https://www.deanza.edu/",
+      "thumb": "/brand-audit/thumbs/deanza.png"
     },
     {
-      "id": "napavalley",
-      "url": "https://napavalley.edu/",
+      "id": "skyline",
+      "url": "https://www.skylinecollege.edu/",
       "status": "ok",
       "error": null,
-      "finalUrl": "https://napavalley.edu/",
-      "thumb": "/brand-audit/thumbs/napavalley.png"
+      "finalUrl": "https://www.skylinecollege.edu/",
+      "thumb": "/brand-audit/thumbs/skyline.png"
     },
     {
-      "id": "hartnell",
-      "url": "https://www.hartnell.edu/",
+      "id": "canada",
+      "url": "https://www.canadacollege.edu/",
       "status": "ok",
       "error": null,
-      "finalUrl": "https://www.hartnell.edu/",
-      "thumb": "/brand-audit/thumbs/hartnell.png"
+      "finalUrl": "https://www.canadacollege.edu/",
+      "thumb": "/brand-audit/thumbs/canada.png"
     },
     {
       "id": "csm",
@@ -106,6 +186,54 @@
       "thumb": "/brand-audit/thumbs/csm.png"
     },
     {
+      "id": "laney",
+      "url": "https://laney.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://laney.edu/",
+      "thumb": "/brand-audit/thumbs/laney.png"
+    },
+    {
+      "id": "merritt",
+      "url": "https://www.merritt.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://merritt.edu/home",
+      "thumb": "/brand-audit/thumbs/merritt.png"
+    },
+    {
+      "id": "berkeleycc",
+      "url": "https://www.berkeleycitycollege.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.berkeleycitycollege.edu/",
+      "thumb": "/brand-audit/thumbs/berkeleycc.png"
+    },
+    {
+      "id": "alameda",
+      "url": "https://alameda.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://alameda.edu/home",
+      "thumb": "/brand-audit/thumbs/alameda.png"
+    },
+    {
+      "id": "diablo",
+      "url": "https://www.dvc.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.dvc.edu/",
+      "thumb": "/brand-audit/thumbs/diablo.png"
+    },
+    {
+      "id": "contracosta",
+      "url": "https://www.contracosta.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.contracosta.edu/",
+      "thumb": "/brand-audit/thumbs/contracosta.png"
+    },
+    {
       "id": "losmedanos",
       "url": "https://www.losmedanos.edu/",
       "status": "ok",
@@ -114,12 +242,148 @@
       "thumb": "/brand-audit/thumbs/losmedanos.png"
     },
     {
-      "id": "deanza",
-      "url": "https://www.deanza.edu/",
+      "id": "cabrillo",
+      "url": "https://www.cabrillo.edu/",
       "status": "ok",
       "error": null,
-      "finalUrl": "https://www.deanza.edu/",
-      "thumb": "/brand-audit/thumbs/deanza.png"
+      "finalUrl": "https://www.cabrillo.edu/",
+      "thumb": "/brand-audit/thumbs/cabrillo.png"
+    },
+    {
+      "id": "gavilan",
+      "url": "https://www.gavilan.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.gavilan.edu/",
+      "thumb": "/brand-audit/thumbs/gavilan.png"
+    },
+    {
+      "id": "evergreen",
+      "url": "https://www.evc.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.evc.edu/",
+      "thumb": "/brand-audit/thumbs/evergreen.png"
+    },
+    {
+      "id": "sanjosecity",
+      "url": "https://www.sjcc.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.sjcc.edu/",
+      "thumb": "/brand-audit/thumbs/sanjosecity.png"
+    },
+    {
+      "id": "marin",
+      "url": "https://www1.marin.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www1.marin.edu/",
+      "thumb": "/brand-audit/thumbs/marin.png"
+    },
+    {
+      "id": "santarosa",
+      "url": "https://www.santarosa.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.santarosa.edu/",
+      "thumb": "/brand-audit/thumbs/santarosa.png"
+    },
+    {
+      "id": "napavalley",
+      "url": "https://napavalley.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://napavalley.edu/",
+      "thumb": "/brand-audit/thumbs/napavalley.png"
+    },
+    {
+      "id": "solano",
+      "url": "https://welcome.solano.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.solano.edu/",
+      "thumb": "/brand-audit/thumbs/solano.png"
+    },
+    {
+      "id": "mission",
+      "url": "https://www.missioncollege.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://missioncollege.edu/",
+      "thumb": "/brand-audit/thumbs/mission.png"
+    },
+    {
+      "id": "westvalley",
+      "url": "https://www.westvalley.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.westvalley.edu/",
+      "thumb": "/brand-audit/thumbs/westvalley.png"
+    },
+    {
+      "id": "ohlone",
+      "url": "https://www.ohlone.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.ohlone.edu/",
+      "thumb": "/brand-audit/thumbs/ohlone.png"
+    },
+    {
+      "id": "chabot",
+      "url": "https://www.chabotcollege.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.chabotcollege.edu/",
+      "thumb": "/brand-audit/thumbs/chabot.png"
+    },
+    {
+      "id": "laspositas",
+      "url": "https://www.laspositascollege.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.laspositascollege.edu/",
+      "thumb": "/brand-audit/thumbs/laspositas.png"
+    },
+    {
+      "id": "hartnell",
+      "url": "https://www.hartnell.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.hartnell.edu/",
+      "thumb": "/brand-audit/thumbs/hartnell.png"
+    },
+    {
+      "id": "montereypen",
+      "url": "https://www.mpc.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.mpc.edu/",
+      "thumb": "/brand-audit/thumbs/montereypen.png"
+    },
+    {
+      "id": "fresno",
+      "url": "https://www.fresnocitycollege.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.fresnocitycollege.edu/",
+      "thumb": "/brand-audit/thumbs/fresno.png"
+    },
+    {
+      "id": "reedley",
+      "url": "https://www.reedleycollege.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.reedleycollege.edu/",
+      "thumb": "/brand-audit/thumbs/reedley.png"
+    },
+    {
+      "id": "clovis",
+      "url": "https://www.cloviscollege.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.cloviscollege.edu/",
+      "thumb": "/brand-audit/thumbs/clovis.png"
     },
     {
       "id": "sequoias",
@@ -138,6 +402,54 @@
       "thumb": "/brand-audit/thumbs/merced.png"
     },
     {
+      "id": "modesto",
+      "url": "https://www.mjc.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.mjc.edu/",
+      "thumb": "/brand-audit/thumbs/modesto.png"
+    },
+    {
+      "id": "columbia",
+      "url": "https://www.gocolumbia.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://gocolumbia.edu/",
+      "thumb": "/brand-audit/thumbs/columbia.png"
+    },
+    {
+      "id": "sanjoquin",
+      "url": "https://www.deltacollege.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.deltacollege.edu/",
+      "thumb": "/brand-audit/thumbs/sanjoquin.png"
+    },
+    {
+      "id": "westhill",
+      "url": "https://www.westhillscollege.com/coalinga/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://coalingacollege.edu/",
+      "thumb": "/brand-audit/thumbs/westhill.png"
+    },
+    {
+      "id": "westhillslemo",
+      "url": "https://www.westhillscollege.com/lemoore/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://lemoorecollege.edu/",
+      "thumb": "/brand-audit/thumbs/westhillslemo.png"
+    },
+    {
+      "id": "bakersfield",
+      "url": "https://www.bakersfieldcollege.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.bakersfieldcollege.edu/",
+      "thumb": "/brand-audit/thumbs/bakersfield.png"
+    },
+    {
       "id": "cerrocoso",
       "url": "https://www.cerrocoso.edu/",
       "status": "ok",
@@ -146,12 +458,36 @@
       "thumb": "/brand-audit/thumbs/cerrocoso.png"
     },
     {
-      "id": "reedley",
-      "url": "https://www.reedleycollege.edu/",
+      "id": "porterville",
+      "url": "https://www.portervillecollege.edu/",
       "status": "ok",
       "error": null,
-      "finalUrl": "https://www.reedleycollege.edu/",
-      "thumb": "/brand-audit/thumbs/reedley.png"
+      "finalUrl": "https://www.portervillecollege.edu/",
+      "thumb": "/brand-audit/thumbs/porterville.png"
+    },
+    {
+      "id": "taft",
+      "url": "https://www.taftcollege.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.taftcollege.edu/",
+      "thumb": "/brand-audit/thumbs/taft.png"
+    },
+    {
+      "id": "madera",
+      "url": "https://www.maderacollege.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.maderacollege.edu/",
+      "thumb": "/brand-audit/thumbs/madera.png"
+    },
+    {
+      "id": "cuesta",
+      "url": "https://www.cuesta.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.cuesta.edu/",
+      "thumb": "/brand-audit/thumbs/cuesta.png"
     },
     {
       "id": "sbcc",
@@ -162,14 +498,6 @@
       "thumb": "/brand-audit/thumbs/sbcc.png"
     },
     {
-      "id": "oxnard",
-      "url": "https://www.oxnardcollege.edu/",
-      "status": "ok",
-      "error": null,
-      "finalUrl": "https://www.oxnardcollege.edu/",
-      "thumb": "/brand-audit/thumbs/oxnard.png"
-    },
-    {
       "id": "allanhancock",
       "url": "https://www.hancockcollege.edu/",
       "status": "ok",
@@ -178,20 +506,44 @@
       "thumb": "/brand-audit/thumbs/allanhancock.png"
     },
     {
-      "id": "compton",
-      "url": "https://www.compton.edu/",
+      "id": "cabrillovc",
+      "url": "https://www.venturacollege.edu/",
       "status": "ok",
       "error": null,
-      "finalUrl": "https://www.compton.edu/",
-      "thumb": "/brand-audit/thumbs/compton.png"
+      "finalUrl": "https://www.venturacollege.edu/",
+      "thumb": "/brand-audit/thumbs/cabrillovc.png"
     },
     {
-      "id": "lavalley",
-      "url": "https://www.lavc.edu/",
+      "id": "oxnard",
+      "url": "https://www.oxnardcollege.edu/",
       "status": "ok",
       "error": null,
-      "finalUrl": "https://www.lavc.edu/",
-      "thumb": "/brand-audit/thumbs/lavalley.png"
+      "finalUrl": "https://www.oxnardcollege.edu/",
+      "thumb": "/brand-audit/thumbs/oxnard.png"
+    },
+    {
+      "id": "moorpark",
+      "url": "https://www.moorparkcollege.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.moorparkcollege.edu/",
+      "thumb": "/brand-audit/thumbs/moorpark.png"
+    },
+    {
+      "id": "antelopevalley",
+      "url": "https://www.avc.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.avc.edu/",
+      "thumb": "/brand-audit/thumbs/antelopevalley.png"
+    },
+    {
+      "id": "canyons",
+      "url": "https://www.canyons.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.canyons.edu/",
+      "thumb": "/brand-audit/thumbs/canyons.png"
     },
     {
       "id": "lacity",
@@ -202,12 +554,212 @@
       "thumb": "/brand-audit/thumbs/lacity.png"
     },
     {
+      "id": "lavalley",
+      "url": "https://www.lavc.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.lavc.edu/",
+      "thumb": "/brand-audit/thumbs/lavalley.png"
+    },
+    {
+      "id": "laharbor",
+      "url": "https://www.lahc.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.lahc.edu/",
+      "thumb": "/brand-audit/thumbs/laharbor.png"
+    },
+    {
+      "id": "lamission",
+      "url": "https://www.lamission.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.lamission.edu/",
+      "thumb": "/brand-audit/thumbs/lamission.png"
+    },
+    {
+      "id": "lapuente",
+      "url": "https://www.elac.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.elac.edu/",
+      "thumb": "/brand-audit/thumbs/lapuente.png"
+    },
+    {
+      "id": "lasouthwest",
+      "url": "https://www.lasc.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.lasc.edu/",
+      "thumb": "/brand-audit/thumbs/lasouthwest.png"
+    },
+    {
+      "id": "latrade",
+      "url": "https://www.lattc.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.lattc.edu/",
+      "thumb": "/brand-audit/thumbs/latrade.png"
+    },
+    {
+      "id": "lawest",
+      "url": "https://www.wlac.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.wlac.edu/",
+      "thumb": "/brand-audit/thumbs/lawest.png"
+    },
+    {
+      "id": "pcc",
+      "url": "https://pasadena.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://pasadena.edu/",
+      "thumb": "/brand-audit/thumbs/pcc.png"
+    },
+    {
       "id": "mtsac",
       "url": "https://www.mtsac.edu/",
       "status": "ok",
       "error": null,
       "finalUrl": "https://www.mtsac.edu/",
       "thumb": "/brand-audit/thumbs/mtsac.png"
+    },
+    {
+      "id": "longbeach",
+      "url": "https://www.lbcc.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.lbcc.edu/",
+      "thumb": "/brand-audit/thumbs/longbeach.png"
+    },
+    {
+      "id": "elcamino",
+      "url": "https://www.elcamino.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.elcamino.edu/",
+      "thumb": "/brand-audit/thumbs/elcamino.png"
+    },
+    {
+      "id": "santamonica",
+      "url": "https://www.smc.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.smc.edu/",
+      "thumb": "/brand-audit/thumbs/santamonica.png"
+    },
+    {
+      "id": "glendale",
+      "url": "https://www.glendale.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.glendale.edu/",
+      "note": "captured via Wayback fallback (origin Cloudflare 522 / 403)"
+    },
+    {
+      "id": "citrus",
+      "url": "https://www.citruscollege.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.citruscollege.edu/",
+      "thumb": "/brand-audit/thumbs/citrus.png"
+    },
+    {
+      "id": "riohondo",
+      "url": "https://www.riohondo.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.riohondo.edu/",
+      "thumb": "/brand-audit/thumbs/riohondo.png"
+    },
+    {
+      "id": "cerritos",
+      "url": "https://www.cerritos.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.cerritos.edu/",
+      "thumb": "/brand-audit/thumbs/cerritos.png"
+    },
+    {
+      "id": "compton",
+      "url": "https://www.compton.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.compton.edu/",
+      "thumb": "/brand-audit/thumbs/compton.png"
+    },
+    {
+      "id": "lapierce",
+      "url": "https://www.piercecollege.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.lapc.edu/",
+      "thumb": "/brand-audit/thumbs/lapierce.png"
+    },
+    {
+      "id": "goldenwest",
+      "url": "https://www.goldenwestcollege.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.goldenwestcollege.edu/index.html",
+      "thumb": "/brand-audit/thumbs/goldenwest.png"
+    },
+    {
+      "id": "orangecoast",
+      "url": "https://www.orangecoastcollege.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://orangecoastcollege.edu/",
+      "thumb": "/brand-audit/thumbs/orangecoast.png"
+    },
+    {
+      "id": "coastline",
+      "url": "https://www.coastline.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.coastline.edu/index.php",
+      "thumb": "/brand-audit/thumbs/coastline.png"
+    },
+    {
+      "id": "fullerton",
+      "url": "https://www.fullcoll.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.fullcoll.edu/",
+      "thumb": "/brand-audit/thumbs/fullerton.png"
+    },
+    {
+      "id": "cypress",
+      "url": "https://www.cypresscollege.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.cypresscollege.edu/",
+      "thumb": "/brand-audit/thumbs/cypress.png"
+    },
+    {
+      "id": "santaana",
+      "url": "https://www.sac.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.sac.edu/",
+      "thumb": "/brand-audit/thumbs/santaana.png"
+    },
+    {
+      "id": "santiagocyn",
+      "url": "https://www.sccollege.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.sccollege.edu/",
+      "thumb": "/brand-audit/thumbs/santiagocyn.png"
+    },
+    {
+      "id": "saddleback",
+      "url": "https://www.saddleback.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.saddleback.edu/",
+      "thumb": "/brand-audit/thumbs/saddleback.png"
     },
     {
       "id": "irvinevalley",
@@ -226,6 +778,22 @@
       "thumb": "/brand-audit/thumbs/desert.png"
     },
     {
+      "id": "sbvalley",
+      "url": "https://www.valleycollege.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.valleycollege.edu/",
+      "thumb": "/brand-audit/thumbs/sbvalley.png"
+    },
+    {
+      "id": "crafton",
+      "url": "https://www.craftonhills.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.craftonhills.edu/",
+      "thumb": "/brand-audit/thumbs/crafton.png"
+    },
+    {
       "id": "chaffey",
       "url": "https://www.chaffey.edu/",
       "status": "ok",
@@ -234,11 +802,124 @@
       "thumb": "/brand-audit/thumbs/chaffey.png"
     },
     {
+      "id": "riverside",
+      "url": "https://www.rcc.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.rcc.edu/",
+      "thumb": "/brand-audit/thumbs/riverside.png"
+    },
+    {
+      "id": "norco",
+      "url": "https://www.norcocollege.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.norcocollege.edu/",
+      "thumb": "/brand-audit/thumbs/norco.png"
+    },
+    {
+      "id": "msjc",
+      "url": "https://www.msjc.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.msjc.edu/",
+      "thumb": "/brand-audit/thumbs/msjc.png"
+    },
+    {
+      "id": "victor",
+      "url": "https://www.vvc.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.vvc.edu/",
+      "thumb": "/brand-audit/thumbs/victor.png"
+    },
+    {
+      "id": "barstow",
+      "url": "https://www.barstow.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.barstow.edu/",
+      "thumb": "/brand-audit/thumbs/barstow.png"
+    },
+    {
+      "id": "morenovalley",
+      "url": "https://www.mvc.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.mvc.edu/",
+      "thumb": "/brand-audit/thumbs/morenovalley.png"
+    },
+    {
+      "id": "paloverde",
+      "url": "https://www.paloverde.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.paloverde.edu/",
+      "thumb": "/brand-audit/thumbs/paloverde.png"
+    },
+    {
+      "id": "coppermtn",
+      "url": "https://www.cmccd.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.cmccd.edu/",
+      "thumb": "/brand-audit/thumbs/coppermtn.png"
+    },
+    {
+      "id": "sandiegomesa",
+      "url": "https://www.sdmesa.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.sdmesa.edu/",
+      "note": "captured via Wayback fallback (origin Cloudflare 522 / 403)"
+    },
+    {
       "id": "sandiegocity",
       "url": "https://www.sdcity.edu/",
-      "status": "http_error",
-      "error": "HTTP 522",
-      "finalUrl": "https://www.sdcity.edu/"
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.sdcity.edu/",
+      "note": "captured via Wayback fallback (origin Cloudflare 522 / 403)"
+    },
+    {
+      "id": "sandiegomira",
+      "url": "https://www.sdmiramar.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.sdmiramar.edu/",
+      "note": "captured via Wayback fallback (origin Cloudflare 522 / 403)"
+    },
+    {
+      "id": "grossmont",
+      "url": "https://www.grossmont.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.grossmont.edu/",
+      "thumb": "/brand-audit/thumbs/grossmont.png"
+    },
+    {
+      "id": "cuyamaca",
+      "url": "https://www.cuyamaca.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.cuyamaca.edu/",
+      "thumb": "/brand-audit/thumbs/cuyamaca.png"
+    },
+    {
+      "id": "palomar",
+      "url": "https://www.palomar.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.palomar.edu/",
+      "thumb": "/brand-audit/thumbs/palomar.png"
+    },
+    {
+      "id": "miracostacc",
+      "url": "https://www.miracosta.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.miracosta.edu/",
+      "thumb": "/brand-audit/thumbs/miracostacc.png"
     },
     {
       "id": "imperial",
@@ -247,6 +928,22 @@
       "error": null,
       "finalUrl": "https://www.imperial.edu/",
       "thumb": "/brand-audit/thumbs/imperial.png"
+    },
+    {
+      "id": "southwestern",
+      "url": "https://www.swccd.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.swccd.edu/",
+      "thumb": "/brand-audit/thumbs/southwestern.png"
+    },
+    {
+      "id": "sdcce",
+      "url": "https://www.sdcce.edu/",
+      "status": "ok",
+      "error": null,
+      "finalUrl": "https://www.sdcce.edu/",
+      "note": "captured via Wayback fallback (origin Cloudflare 522 / 403)"
     }
   ]
 }
