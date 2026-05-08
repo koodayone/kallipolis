@@ -27,10 +27,16 @@ const MONO = "var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace";
 type Props = {
   school: SchoolConfig;
   socCode: string;
+  // Click-context sector — the partnerships-listing tab the user
+  // navigated from. Forwarded to the backend so SOCs that belong to
+  // multiple PCAH sectors render under the user's chosen lens rather
+  // than the alphabetical default. Undefined for deep-links / back-
+  // navigation; backend falls back to the alphabetical sector then.
+  sector?: string;
   onBack: () => void;
 };
 
-export default function OpportunityReport({ school, socCode, onBack }: Props) {
+export default function OpportunityReport({ school, socCode, sector, onBack }: Props) {
   const [report, setReport] = useState<ApiOpportunityReport | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -39,11 +45,11 @@ export default function OpportunityReport({ school, socCode, onBack }: Props) {
     if (!socCode) return;
     setLoading(true);
     setError(null);
-    getPartnershipOpportunity(socCode, school.name)
+    getPartnershipOpportunity(socCode, school.name, sector)
       .then(setReport)
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
-  }, [socCode, school.name]);
+  }, [socCode, school.name, sector]);
 
   return (
     <div>

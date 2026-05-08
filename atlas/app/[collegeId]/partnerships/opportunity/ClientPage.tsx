@@ -12,6 +12,12 @@ function OpportunityRouteInner() {
   const router = useRouter();
   const config = getCollegeAtlasConfig(collegeId);
   const socCode = searchParams.get("soc") ?? "";
+  // `sector` carries the click-context sector from the partnerships
+  // listing. SOCs that belong to multiple PCAH sectors render under
+  // whichever sector the user navigated from. Undefined when not
+  // supplied (deep-linked or back-navigated reports fall back to the
+  // backend's alphabetical default).
+  const sector = searchParams.get("sector") ?? undefined;
 
   if (!config) return null;
 
@@ -33,6 +39,7 @@ function OpportunityRouteInner() {
       <OpportunityReport
         school={config}
         socCode={socCode}
+        sector={sector}
         onBack={() => router.push(`/${collegeId}/partnerships`)}
       />
     </motion.div>

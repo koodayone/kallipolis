@@ -32,16 +32,27 @@ def get_partnership_sectors(college: str):
 
 
 @router.get("/opportunity/{soc_code}", response_model=OpportunityReport)
-def get_partnership_opportunity(soc_code: str, college: str):
+def get_partnership_opportunity(
+    soc_code: str,
+    college: str,
+    sector: str | None = None,
+):
     """Returns the per-(college, occupation) partnership opportunity
     report. Composed deterministically from the institutional graph:
     regional demand (COE), TOP-grouped curriculum coverage, student
     impact, regional employer set sorted by NAICS industry share, and
     employer-agnostic narrative pointing to the multi-employer
     engagement opportunity the data identifies.
+
+    The optional `sector` query parameter preserves the user's click
+    context: SOCs that belong to multiple PCAH sectors render with
+    whichever sector they were navigated from, rather than being
+    re-resolved alphabetically. Invalid sectors (not actually one of
+    the SOC's PCAH sectors) are ignored — the report falls back to
+    the alphabetical default.
     """
     try:
-        return build_opportunity_report(college, soc_code)
+        return build_opportunity_report(college, soc_code, sector_hint=sector)
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))
     except Exception as e:
