@@ -216,15 +216,25 @@ def build_student_impact(
     soc_code: str,
     total_in_aligned_departments: int,
 ) -> str:
-    """The two-sentence caption above the candidate table."""
+    """The two-sentence caption above the candidate table.
+
+    The candidate set is TOP4-aligned: students with coursework in the
+    same 4-digit program family as the SOC's prep curriculum. Framed
+    as the partnership-impacted pipeline rather than as already-
+    prepared candidates — the partnership funds the routing through
+    specific prep courses; the table surfaces who is in position to be
+    routed.
+    """
     student_phrase = fmt_count(total_in_aligned_departments, "student")
     s1 = (
         f"{student_phrase} {fmt_are(total_in_aligned_departments)} enrolled in "
         f"the programs whose courses align with SOC {soc_code}."
     )
     s2 = (
-        "Shown below are students that are most strongly prepared with the "
-        "coursework included in the TOP-SOC crosswalk."
+        "Shown below are students whose coursework sits in the same "
+        "program family as the SOC's prep curriculum — the candidate "
+        "pipeline a partnership would route into specific prep courses, "
+        "ranked by depth of program-family enrollment then GPA."
     )
     return f"{s1} {s2}"
 

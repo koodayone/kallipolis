@@ -300,13 +300,13 @@ function ReportBody({
         </div>
 
         {/* Top students table — column header strip + StudentRow list.
-            The header strip mirrors the StudentRow's grid columns so
-            the labels sit over the right cells. The list is filtered
-            backend-side to students with ≥1 SOC-aligned course
-            enrollment; if empty, the report honestly says so. */}
+            Backend ranks students by count of TOP4-aligned course
+            enrollments at this college, then GPA. Edge case: if no
+            student at the college has any TOP4-aligned enrollment,
+            the list is empty and the report honestly says so. */}
         {report.student_evidence.top_students.length === 0 && report.student_evidence.total_in_aligned_departments > 0 && (
           <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.45)", marginTop: "16px", lineHeight: 1.55 }}>
-            No students at {school.name} have completed any of the aligned courses for SOC {report.soc_code} yet — the {report.student_evidence.total_in_aligned_departments.toLocaleString()} students above are enrolled in the broader aligned departments but have not taken the specific course(s) that prepare for this occupation.
+            No students at {school.name} are currently enrolled in coursework within the same program family as the prep curriculum for SOC {report.soc_code} — the {report.student_evidence.total_in_aligned_departments.toLocaleString()} students above are in aligned departments but their specific enrollments fall outside the TOP4 program-family window the table draws from.
           </p>
         )}
         {report.student_evidence.top_students.length > 0 && (
