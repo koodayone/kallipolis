@@ -167,9 +167,18 @@ export async function getPartnershipSectors(college: string): Promise<ApiSectorI
 export async function getPartnershipOpportunity(
   socCode: string,
   college: string,
+  sector?: string,
 ): Promise<ApiOpportunityReport> {
+  // `sector` is the click-context sector the user navigated from. When
+  // a SOC belongs to multiple PCAH sectors, this preserves the user's
+  // mental model — the report renders under the sector they clicked
+  // from rather than re-resolving alphabetically. The backend
+  // validates the value against the SOC's actual PCAH sectors and
+  // ignores it if invalid.
+  const params = new URLSearchParams({ college });
+  if (sector) params.set("sector", sector);
   const res = await fetch(
-    `${API_BASE}/partnerships/opportunity/${encodeURIComponent(socCode)}?college=${encodeURIComponent(college)}`,
+    `${API_BASE}/partnerships/opportunity/${encodeURIComponent(socCode)}?${params.toString()}`,
   );
   if (!res.ok) throw new Error("Failed to fetch partnership opportunity report");
   return res.json();

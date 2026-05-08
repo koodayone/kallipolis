@@ -46,8 +46,17 @@ export default function PartnershipsView({ school, onBack }: Props) {
     });
   }, []);
 
-  const opportunityHref = useCallback((socCode: string) => {
-    return `/${collegeId}/partnerships/opportunity?soc=${encodeURIComponent(socCode)}`;
+  // Build the opportunity URL with the click-context sector so the
+  // resulting report renders under the sector tab the user navigated
+  // from. SOCs that belong to multiple PCAH sectors will otherwise
+  // re-resolve alphabetically on the report side, which produces the
+  // jarring "click ICT, land on Agriculture" experience.
+  const opportunityHref = useCallback((socCode: string, sectorName: string) => {
+    const params = new URLSearchParams({
+      soc: socCode,
+      sector: sectorName,
+    });
+    return `/${collegeId}/partnerships/opportunity?${params.toString()}`;
   }, [collegeId]);
 
   // Filter sectors and occupations by the query (case-insensitive title
@@ -216,7 +225,10 @@ export default function PartnershipsView({ school, onBack }: Props) {
                   isOpen={effectiveExpandedSectors.has(sector.sector)}
                   brandColor={school.brandColorLight}
                   onToggle={() => handleSectorToggle(sector.sector)}
-                  hrefForSoc={opportunityHref}
+                  // Curry the sector context into hrefForSoc so each
+                  // accordion's child rows produce links that carry
+                  // their own sector, not the SOC-resolved default.
+                  hrefForSoc={(socCode) => opportunityHref(socCode, sector.sector)}
                 />
               ))}
             </div>

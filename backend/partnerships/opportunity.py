@@ -399,7 +399,11 @@ def _build_swp_evidence(
     )
 
 
-def build_opportunity_report(college: str, soc_code: str) -> OpportunityReport:
+def build_opportunity_report(
+    college: str,
+    soc_code: str,
+    sector_hint: str | None = None,
+) -> OpportunityReport:
     """Assemble the full per-(college, soc) partnership opportunity report.
 
     Composes:
@@ -409,6 +413,12 @@ def build_opportunity_report(college: str, soc_code: str) -> OpportunityReport:
       - regional employer set (Partnership Opportunities), sorted by
         NAICS industry share
       - deterministic narrative (employer-agnostic templates)
+
+    `sector_hint` preserves the user's click-context sector when a SOC
+    belongs to multiple PCAH sectors. If supplied and valid for this
+    SOC, the report header and narrative use it; otherwise the default
+    is the alphabetical first matching sector — same behavior as
+    before. Invalid sector hints are silently ignored.
     """
     driver = get_driver()
     with driver.session() as session:
@@ -493,13 +503,21 @@ def build_opportunity_report(college: str, soc_code: str) -> OpportunityReport:
     partnership_opportunities = _gather_partnership_opportunities(college, soc_code)
 
     # Sector this SOC primarily belongs to (for the report header).
-    # If the SOC reaches multiple sectors, pick the first alphabetically;
-    # the navigation-side surfaces the duplication explicitly.
+    # When a SOC belongs to multiple PCAH sectors, the caller's
+    # click-context sector wins (sector_hint), so a SOC viewed from
+    # the ICT tab renders as ICT even if it also appears under
+    # Agriculture. If no hint is supplied or the hint isn't actually
+    # one of this SOC's sectors, fall back to the first alphabetically
+    # — the legacy default the navigation surface still uses for
+    # listing.
     sector_to_top6 = _load_sector_to_top6()
     matching_sectors = sorted(
         [s for s in sector_to_top6 if soc_code in _sector_socs(s)]
     )
-    sector = matching_sectors[0] if matching_sectors else None
+    if sector_hint and sector_hint in matching_sectors:
+        sector = sector_hint
+    else:
+        sector = matching_sectors[0] if matching_sectors else None
 
     # Is this sector a Strong Workforce Program priority for the college's
     # COE region? Same lookup pattern build_sector_index uses.
