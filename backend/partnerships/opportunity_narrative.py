@@ -24,8 +24,8 @@ from __future__ import annotations
 # style-bearing details we want consistent across both narrative
 # surfaces during the transition.
 from partnerships.narrative_templates import (
-    fmt_are,
     fmt_count,
+    fmt_have,
 )
 
 
@@ -218,23 +218,20 @@ def build_student_impact(
 ) -> str:
     """The two-sentence caption above the candidate table.
 
-    The candidate set is TOP4-aligned: students with coursework in the
-    same 4-digit program family as the SOC's prep curriculum. Framed
-    as the partnership-impacted pipeline rather than as already-
-    prepared candidates — the partnership funds the routing through
-    specific prep courses; the table surfaces who is in position to be
-    routed.
+    The candidate set is TOP4-aligned: students with coursework in
+    TOP4 programs that crosswalk to the SOC. With the hero filter in
+    effect upstream, the set is further restricted to TOPs in the
+    occupationally-relevant universe — keeping this caption coherent
+    with the accordion and pathway visualization above.
     """
     student_phrase = fmt_count(total_in_aligned_departments, "student")
     s1 = (
-        f"{student_phrase} {fmt_are(total_in_aligned_departments)} enrolled in "
+        f"{student_phrase} {fmt_have(total_in_aligned_departments)} enrolled in "
         f"the programs whose courses align with SOC {soc_code}."
     )
     s2 = (
-        "Shown below are students whose coursework sits in the same "
-        "program family as the SOC's prep curriculum — the candidate "
-        "pipeline a partnership would route into specific prep courses, "
-        "ranked by depth of program-family enrollment then GPA."
+        "Shown below are students whose course history indicates "
+        "strongest preparation for the occupational pathway."
     )
     return f"{s1} {s2}"
 

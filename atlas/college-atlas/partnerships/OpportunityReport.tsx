@@ -243,7 +243,7 @@ function ReportBody({
           (2) Contextual zoom-out: the CurriculumPathway hero
               visualization, framing this college's specific coverage
               against the full TOP × CIP institutional prep set. The
-              headline metric ("N of M TOP families supporting SOC X")
+              headline metric ("N of M TOP groups supporting SOC X")
               naturally introduces the wider view.
           The reading order is specific → contextual, which is more
           credible than the reverse: a coordinator first sees the
@@ -337,10 +337,14 @@ function ReportBody({
             Backend ranks students by count of TOP4-aligned course
             enrollments at this college, then GPA. Edge case: if no
             student at the college has any TOP4-aligned enrollment,
-            the list is empty and the report honestly says so. */}
-        {report.student_evidence.top_students.length === 0 && report.student_evidence.total_in_aligned_departments > 0 && (
+            the list is empty and the report honestly says so. The
+            unified empty state covers both "no aligned departments at
+            all" and "aligned departments exist but no TOP4 student
+            enrollments" — same operational meaning from the reader's
+            perspective. */}
+        {report.student_evidence.top_students.length === 0 && (
           <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.45)", marginTop: "16px", lineHeight: 1.55 }}>
-            No students at {school.name} are currently enrolled in coursework within the same program family as the prep curriculum for SOC {report.soc_code} — the {report.student_evidence.total_in_aligned_departments.toLocaleString()} students above are in aligned departments but their specific enrollments fall outside the TOP4 program-family window the table draws from.
+            No students at {school.name} have coursework that aligns with SOC {report.soc_code}&rsquo;s preparation pathway.
           </p>
         )}
         {report.student_evidence.top_students.length > 0 && (
@@ -389,6 +393,26 @@ function ReportBody({
             </div>
           </div>
         )}
+
+        {/* Methodology footnote — synthetic-data attribution for the
+            entire Student Impact section. Always rendered (even in the
+            empty-state case) because the absence of aligned students is
+            itself a property of the synthetic layer. The wording
+            doubles as the upgrade conversation hook for partnership
+            data sharing — naming "anonymized" pre-empts the FERPA
+            objection coordinators surface first. */}
+        <p style={{
+          fontFamily: FONT,
+          fontSize: "11px",
+          color: "rgba(255,255,255,0.4)",
+          fontStyle: "italic",
+          marginTop: "20px",
+          paddingTop: "14px",
+          borderTop: "1px solid rgba(255,255,255,0.05)",
+          lineHeight: 1.55,
+        }}>
+          Profiles above are synthetic — calibrated to CCCCO DataMart Fall 2025 grade distributions. Live anonymized MIS data from your institution would render real student records.
+        </p>
       </Section>
 
       {/* Labor Market Information — narrative + demand table +

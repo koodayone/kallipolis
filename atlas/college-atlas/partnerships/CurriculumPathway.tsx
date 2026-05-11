@@ -276,18 +276,18 @@ export default function CurriculumPathway({
   const narrative =
     `${collegeName}'s curriculum prepares students for SOC ${socCode}` +
     ` (${socTitle}) through ${crosswalk.n_taught} TOP code` +
-    ` ${crosswalk.n_taught === 1 ? "family" : "families"},` +
+    ` ${crosswalk.n_taught === 1 ? "group" : "groups"},` +
     ` mapped via the Chancellor's Office TOP-CIP crosswalk and the NCES` +
     ` CIP-SOC crosswalk to the federal occupation classification.` +
     ` The complete preparation pathway encompasses ${crosswalk.n_total} TOP` +
-    ` ${crosswalk.n_total === 1 ? "family" : "families"} and` +
+    ` ${crosswalk.n_total === 1 ? "group" : "groups"} and` +
     ` ${crosswalk.cips.length} federal` +
     ` ${crosswalk.cips.length === 1 ? "CIP" : "CIPs"} in total` +
     (n_missing > 0
       ? ` — the remaining ${n_missing} TOP` +
         ` ${n_missing === 1
-            ? "family represents a potential curriculum-development surface"
-            : "families represent potential curriculum-development surfaces"}` +
+            ? "group represents a potential curriculum-development surface"
+            : "groups represent potential curriculum-development surfaces"}` +
         ` for partnership opportunities.`
       : `.`);
 
