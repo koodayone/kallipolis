@@ -287,6 +287,7 @@ function ReportBody({
               report.curriculum_crosswalk.tops.length > 0 && (
                 <CurriculumPathway
                   crosswalk={report.curriculum_crosswalk}
+                  collegeName={school.name}
                   socCode={report.soc_code}
                   socTitle={report.soc_title}
                   brandColor={brandColor}
