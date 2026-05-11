@@ -146,16 +146,28 @@ def _gather_aligned_curriculum(
 
 
 def _gather_student_pipeline(
-    college: str, departments: list[str], soc_code: str
+    college: str, departments: list[str], soc_code: str,
+    hero_top4s: set[str] | None = None,
 ) -> tuple[dict, list[dict]]:
     """Find students whose academic pathway aligns with the partnership.
 
-    The eligibility gate is TOP4 program-family alignment: a student is
+    The eligibility gate is TOP4 program alignment: a student is
     eligible if they have at least one ENROLLED_IN edge to a course at
     this college whose top_code shares its 4-digit prefix (TOP4) with
     any PREPARES_FOR course for this SOC. Top-N ranking within the
     eligible set is by count of TOP4-aligned courses then GPA — direct
     institutional-pathway measures.
+
+    `hero_top4s`: optional restriction to TOP4s in the hero pathway's
+    SAM-occupational universe. When provided, the prep TOP4 set is
+    intersected with this universe before student matching — keeps the
+    student section coherent with the accordion + hero (Butte's
+    Geography → Environmental Science Tech case). The broad headline
+    `total_in_aligned_departments` is also recomputed at request time
+    under the same filter, replacing the precomputed
+    OCCUPATION_PIPELINE.student_count which has no hero awareness.
+    Pass None for the unfiltered behavior used by the LLM-narrative
+    generator.
 
     Why TOP4, not the strict TOP6 / HAS_COMPETENCY edge: an upstream
     discrepancy between the MCF top_code on courses and the DataMart-
@@ -194,47 +206,80 @@ def _gather_student_pipeline(
         }, []
 
     with driver.session() as session:
-        # Broad headline (`total_in_aligned_departments`) reads from the
-        # OCCUPATION_PIPELINE edge precomputed by partnerships.compute
-        # as `student_count` — distinct students at this college
-        # enrolled in any course in any department containing a
-        # PREPARES_FOR-aligned course for the SOC.
-        broad = session.run("""
-            MATCH (col:College {name: $college})-[op:OCCUPATION_PIPELINE]
-                  ->(:Occupation {soc_code: $soc_code})
-            RETURN op.student_count AS total_in_aligned_departments
-        """, college=college, soc_code=soc_code).single()
+        # When the hero filter is in effect, the prep TOP4 set is
+        # intersected with the hero universe — keeps the student
+        # pipeline coherent with the accordion + hero. When None, the
+        # set is the unfiltered PREPARES_FOR cover (current behavior
+        # used by the LLM-narrative generator).
+        if hero_top4s is not None:
+            prep_filter = (
+                "WHERE substring(c.top_code, 0, 4) IN $hero_top4s"
+            )
+            hero_params = {"hero_top4s": list(hero_top4s)}
+        else:
+            prep_filter = ""
+            hero_params = {}
+
+        # Broad headline `total_in_aligned_departments`: distinct
+        # students at this college enrolled in any course in any
+        # department that contains a PREPARES_FOR-aligned course for
+        # the SOC. With the hero filter, the department set is
+        # restricted to those containing hero-universe PREPARES_FOR
+        # courses; recomputed at request time. Without the filter, the
+        # precomputed OCCUPATION_PIPELINE.student_count is the fast
+        # path.
+        if hero_top4s is not None:
+            broad = session.run(f"""
+                MATCH (c:Course {{college: $college}})-[:PREPARES_FOR]
+                      ->(:Occupation {{soc_code: $soc_code}})
+                {prep_filter}
+                MATCH (c)<-[:CONTAINS]-(dept:Department)
+                WITH collect(DISTINCT dept) AS aligned_depts
+                MATCH (s:Student {{college: $college}})-[:ENROLLED_IN]
+                      ->(:Course {{college: $college}})
+                      <-[:CONTAINS]-(d:Department)
+                WHERE d IN aligned_depts
+                RETURN count(DISTINCT s) AS total_in_aligned_departments
+            """, college=college, soc_code=soc_code, **hero_params).single()
+        else:
+            broad = session.run("""
+                MATCH (col:College {name: $college})-[op:OCCUPATION_PIPELINE]
+                      ->(:Occupation {soc_code: $soc_code})
+                RETURN op.student_count AS total_in_aligned_departments
+            """, college=college, soc_code=soc_code).single()
 
         # In-program count: distinct students with at least one TOP4-
         # aligned enrollment at this college. Strict subset of the
-        # OCCUPATION_PIPELINE.student_count headline (which is dept-
-        # aligned, broader). Available for narrative composition.
+        # broad headline above.
         #
         # College-scoping pivot via the `student_college` index keeps
         # the per-(college, SOC) cost bounded — ~13K students/college
         # with a constant-time top_code prefix check per ENROLLED_IN
         # edge.
-        stats = session.run("""
-            MATCH (c:Course {college: $college})-[:PREPARES_FOR]->(:Occupation {soc_code: $soc_code})
+        stats = session.run(f"""
+            MATCH (c:Course {{college: $college}})-[:PREPARES_FOR]
+                  ->(:Occupation {{soc_code: $soc_code}})
+            {prep_filter}
             WITH collect(DISTINCT substring(c.top_code, 0, 4)) AS prep_top4s
             WHERE size(prep_top4s) > 0
-            MATCH (s:Student {college: $college})-[:ENROLLED_IN]->(c2:Course {college: $college})
+            MATCH (s:Student {{college: $college}})-[:ENROLLED_IN]
+                  ->(c2:Course {{college: $college}})
             WHERE c2.top_code IS NOT NULL
               AND substring(c2.top_code, 0, 4) IN prep_top4s
             RETURN count(DISTINCT s) AS total_in_program
-        """, college=college, soc_code=soc_code).single()
+        """, college=college, soc_code=soc_code, **hero_params).single()
 
         student_stats = {
             "total_in_program": (stats["total_in_program"] if stats else 0) or 0,
             "total_in_aligned_departments": (broad["total_in_aligned_departments"] if broad else 0) or 0,
         }
 
-        # Top-10 exemplars from the TOP4-aligned student pool. Single-
-        # pass query:
+        # Top-10 exemplars from the (hero-filtered, if applicable)
+        # TOP4-aligned student pool. Single-pass query:
         #
         #   1. Compute the prep TOP4 set: distinct 4-digit prefixes of
         #      top_codes on this college's PREPARES_FOR-tagged courses
-        #      for the SOC.
+        #      for the SOC, optionally restricted to the hero universe.
         #   2. Pivot from Student.college (uses student_college
         #      index, ~13K nodes/college). For each student, count
         #      distinct ENROLLED_IN courses whose top_code shares a
@@ -243,7 +288,7 @@ def _gather_student_pipeline(
         #      enrollment detail (course code, name, grade, term) for
         #      the panel expansion. Only TOP4-aligned courses appear
         #      in the displayed enrollment list — the table represents
-        #      program-family affinity, not all coursework.
+        #      TOP4-program affinity, not all coursework.
         #
         # The query has no HAS_COMPETENCY dependency. It works even
         # when the synthetic student generator has not enrolled any
@@ -251,24 +296,27 @@ def _gather_student_pipeline(
         # gap that motivates this widening). Multi-college future:
         # convert `s.college` to a list and switch to
         # `$college IN s.colleges`.
-        top4_query = """
-            MATCH (c:Course {college: $college})-[:PREPARES_FOR]->(:Occupation {soc_code: $soc_code})
+        top4_query = f"""
+            MATCH (c:Course {{college: $college}})-[:PREPARES_FOR]
+                  ->(:Occupation {{soc_code: $soc_code}})
+            {prep_filter}
             WITH collect(DISTINCT substring(c.top_code, 0, 4)) AS prep_top4s
             WHERE size(prep_top4s) > 0
-            MATCH (s:Student {college: $college})-[:ENROLLED_IN]->(c2:Course {college: $college})
+            MATCH (s:Student {{college: $college}})-[:ENROLLED_IN]
+                  ->(c2:Course {{college: $college}})
             WHERE c2.top_code IS NOT NULL
               AND substring(c2.top_code, 0, 4) IN prep_top4s
             WITH prep_top4s, s, count(DISTINCT c2) AS top4_courses_completed
             ORDER BY top4_courses_completed DESC, COALESCE(s.gpa, 0.0) DESC
             LIMIT 10
-            OPTIONAL MATCH (s)-[e:ENROLLED_IN]->(c3:Course {college: $college})
+            OPTIONAL MATCH (s)-[e:ENROLLED_IN]->(c3:Course {{college: $college}})
             WHERE c3.top_code IS NOT NULL
               AND substring(c3.top_code, 0, 4) IN prep_top4s
             WITH s, top4_courses_completed,
-                 collect(DISTINCT CASE WHEN c3 IS NOT NULL THEN {
+                 collect(DISTINCT CASE WHEN c3 IS NOT NULL THEN {{
                      code: c3.code, name: c3.name,
                      grade: e.grade, term: e.term
-                 } END) AS raw_enrollments
+                 }} END) AS raw_enrollments
             WITH s, top4_courses_completed,
                  [x IN raw_enrollments WHERE x IS NOT NULL] AS enrollments
             RETURN s.uuid AS uuid, s.primary_focus AS primary_focus,
@@ -278,7 +326,7 @@ def _gather_student_pipeline(
         """
         result = session.run(
             top4_query,
-            college=college, soc_code=soc_code,
+            college=college, soc_code=soc_code, **hero_params,
         ).data()
 
     top_students = [

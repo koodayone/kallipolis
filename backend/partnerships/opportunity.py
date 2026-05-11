@@ -488,9 +488,14 @@ def build_opportunity_report(
     )
     aligned_depts = [d["department"] for d in curriculum_evidence]
 
-    # Student impact — existing pipeline compute, unchanged.
+    # Student impact — hero-filtered to match the accordion. The
+    # student pipeline computes its own prep TOP4 set from PREPARES_FOR
+    # courses; passing `hero_top4s` intersects that set with the hero
+    # universe so the headline count and top-N list never surface
+    # students whose only "alignment" is via out-of-universe TOPs
+    # (Butte/Geography → 19-4042 case).
     student_stats, top_students = _gather_student_pipeline(
-        college, aligned_depts, soc_code
+        college, aligned_depts, soc_code, hero_top4s=hero_top4s
     )
 
     # Regional supply-demand evidence (SWP block).
