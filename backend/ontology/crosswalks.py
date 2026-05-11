@@ -361,6 +361,40 @@ def cte_reachable_socs() -> set[str]:
     return socs
 
 
+# ── CIP titles cache ──────────────────────────────────────────────────────
+
+_cip_titles: dict[str, str] | None = None
+
+
+def load_cip_titles() -> dict[str, str]:
+    """Load CIP code → human-readable title from the NCES CIP-SOC crosswalk
+    workbook. Used by the Curriculum Alignment pathway visualization to
+    label CIP nodes with their federal taxonomy names (e.g., "15.0507 →
+    Environmental/Environmental Engineering Technology/Technician").
+
+    First-write wins: the crosswalk lists each CIP once per SOC it maps
+    to, but the title is identical across those rows.
+    """
+    global _cip_titles
+    if _cip_titles is not None:
+        return _cip_titles
+
+    titles: dict[str, str] = {}
+    wb = openpyxl.load_workbook(CIP_SOC_PATH, read_only=True)
+    ws = wb["CIP-SOC"]
+    for row in ws.iter_rows(min_row=2, values_only=True):
+        cip_code, cip_title, _soc_code, _soc_title = row
+        if cip_code and cip_title:
+            # Normalize: strip dotted form to no-dot to match downstream usage.
+            code_str = str(cip_code).strip()
+            titles.setdefault(code_str, str(cip_title).strip().rstrip("."))
+    wb.close()
+
+    _cip_titles = titles
+    logger.info(f"Loaded CIP titles: {len(titles)} CIPs")
+    return titles
+
+
 # ── Core functions ────────────────────────────────────────────────────────
 
 def top6_to_soc(top6_codes: list[str]) -> dict[str, set[str]]:
@@ -379,6 +413,68 @@ def top6_to_soc(top6_codes: list[str]) -> dict[str, set[str]]:
             socs.update(cip_soc.get(cip, set()))
         if socs:
             result[top6] = socs
+
+    return result
+
+
+def top6_to_cips(top6: str) -> list[str]:
+    """Map a single TOP6 code to its CIPs via the Chancellor's Office
+    TOP-CIP crosswalk. Returns a sorted list of CIP codes (empty if the
+    TOP6 has no mapping). Used by the course-detail view to render the
+    "Federal Curriculum Codes" section for a specific course.
+    """
+    top_cip = _load_top_to_cip()
+    return sorted(top_cip.get(top6, set()))
+
+
+def top6_to_cips_for_soc(top6: str, soc_code: str) -> list[str]:
+    """Map a single TOP6 to its CIPs that also bridge to the given SOC
+    via the NCES CIP-SOC crosswalk. Intersects the course's TOP6→CIP
+    set with CIPs that reach the target SOC, returning a sorted list.
+    Used by the course-detail view inside a partnership opportunity
+    report — restricts CIPs to those consistent with the report's
+    anchoring SOC, guaranteeing the course's CIP list is a subset of
+    what the Curriculum Pathway hero displays.
+    """
+    top_cip = _load_top_to_cip()
+    cip_soc = _load_cip_to_soc()
+    course_cips = top_cip.get(top6, set())
+    return sorted(cip for cip in course_cips if soc_code in cip_soc.get(cip, set()))
+
+
+def top4_to_cips_for_soc(soc_code: str) -> dict[str, set[str]]:
+    """Map each TOP4 to the CIPs that bridge it to the given SOC.
+
+    Composes the institutional chain TOP6 → CIP → SOC down to the TOP4
+    level: for each TOP4 family, the result includes the union of CIPs
+    that (a) any TOP6 in that family maps to AND (b) reach the target
+    SOC per the NCES CIP-SOC crosswalk. CIPs that map to the SOC but
+    are unreachable from any TOP6 in the family are excluded — only
+    "relevant" CIPs for this (TOP4, SOC) pair appear.
+
+    Used by the Curriculum Alignment pathway visualization to render
+    the TOP4 → CIP → SOC chain in a way that hides irrelevant CIPs
+    for the SOC the report is anchored to.
+
+    Returns: {top4: {cip_code, ...}} for every TOP4 with at least one
+    bridging CIP.
+    """
+    top_cip = _load_top_to_cip()
+    cip_soc = _load_cip_to_soc()
+
+    # CIPs that the NCES crosswalk maps to this SOC — the destination set.
+    target_cips = {cip for cip, socs in cip_soc.items() if soc_code in socs}
+
+    # Aggregate per TOP4: union over TOP6 children, intersect with target CIPs.
+    result: dict[str, set[str]] = {}
+    for top6, cips in top_cip.items():
+        if len(top6) < 4:
+            continue
+        relevant = cips & target_cips
+        if not relevant:
+            continue
+        top4 = top6[:4]
+        result.setdefault(top4, set()).update(relevant)
 
     return result
 

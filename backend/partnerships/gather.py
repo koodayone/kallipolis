@@ -1,6 +1,6 @@
 """Neo4j data retrieval for partnership opportunity reports — no LLM calls.
 
-Two helpers used by ``opportunity.py``:
+Three helpers used by ``opportunity.py``:
 
     _gather_aligned_curriculum(college, soc_code) -> list[dict]
         Departments and courses at the college that PREPARES_FOR the SOC.
@@ -9,7 +9,13 @@ Two helpers used by ``opportunity.py``:
         -> tuple[dict, list[dict]]
         Student pipeline counts and the top exemplar students.
 
-Both are scoped to a (college, SOC) pair and gated by the institutional
+    _gather_curriculum_crosswalk(college, soc_code) -> dict
+        TOP4 × CIP × SOC pathway structure for the report's hero
+        visualization. Marks each TOP4 as taught-at-college or missing,
+        and each CIP as active (reachable through a taught TOP4) or
+        inactive.
+
+All are scoped to a (college, SOC) pair and gated by the institutional
 PREPARES_FOR edge — same pattern the employer-centric proposal flow used
 historically. Per the institutional-deference principle: every claim is
 derived from edges materialized via the Chancellor's Office TOP-CIP and
@@ -21,6 +27,16 @@ from __future__ import annotations
 from collections import defaultdict
 
 from ontology.schema import get_driver
+
+
+# SAM codes considered "occupational" for partnership-evidence framing.
+# A: Apprenticeship, B: Advanced Occupational, C: Clearly Occupational,
+# D: Possibly Occupational. Excludes E (Non-Occupational) — gen-ed
+# feeders that bloat broad SOC prep sets without representing
+# workforce-development action surface. The boundary is CCCCO's own
+# (MIS Data Element Dictionary), so the filter is institutional, not a
+# vendor heuristic.
+SAM_OCCUPATIONAL = ["A", "B", "C", "D"]
 
 
 def _gather_aligned_curriculum(
@@ -43,6 +59,16 @@ def _gather_aligned_curriculum(
         # The PREPARES_FOR edge carries `via_top` as an audit-trail
         # property — the TOP6 the institutional crosswalk used to
         # mediate this Course→Occupation alignment.
+        #
+        # No SAM filter. The institutional prep universe (the hero's
+        # denominator) is SAM-filtered at the system level — that
+        # defines which TOPs are "occupationally relevant" for this
+        # SOC. But for the per-college accordion, what matters is
+        # whether this college teaches in those relevant TOPs at all,
+        # not how this particular college chose to classify their own
+        # courses (some colleges tag the same TOP-aligned course as
+        # SAM C, others as SAM E). The accordion shows every course
+        # at this college that institutionally prepares for this SOC.
         result = session.run("""
             MATCH (col:College {name: $college})-[:OFFERS]->(dept:Department)
                   -[:CONTAINS]->(c:Course {college: $college})
@@ -241,3 +267,122 @@ def _gather_student_pipeline(
     ]
 
     return student_stats, top_students
+
+
+def _gather_curriculum_crosswalk(college: str, soc_code: str) -> dict:
+    """Build the TOP4 × CIP × SOC pathway data for the report's hero
+    visualization. Renders the institutional crosswalk chain in three
+    columns:
+
+      • TOP4 column: every 4-digit TOP family whose courses
+        institutionally prepare for the SOC, marked taught-at-college
+        or missing.
+      • CIP column: every NCES CIP that bridges any of those TOPs to
+        the target SOC, marked active (reachable through a taught
+        TOP4) or inactive.
+      • SOC column: the report's anchor occupation.
+
+    SAM filter: courses are scoped to A/B/C/D (Apprenticeship through
+    Possibly Occupational, per CCCCO MIS Data Element Dictionary).
+    Non-occupational gen-ed feeders (SAM E) are excluded — they bloat
+    broad SOC prep sets without representing workforce-development
+    action surface. The filter is institutional, not a vendor
+    heuristic; the report attributes it to its CCCCO source.
+
+    Returns a dict shaped for the OpportunityReport `curriculum_crosswalk`
+    field — see partnerships.models.CurriculumCrosswalk.
+    """
+    driver = get_driver()
+    from ontology.crosswalks import (
+        _load_top4_names,
+        load_cip_titles,
+        top4_to_cips_for_soc,
+    )
+
+    top4_names = _load_top4_names()["top4"]
+    cip_titles = load_cip_titles()
+
+    # Asymmetric SAM filtering: SAM A/B/C/D on global only.
+    #
+    #   global_rows: the institutional prep set across ALL CCCs,
+    #     SAM-filtered to occupational. Defines which TOPs are
+    #     "occupationally relevant" for this SOC at the system level.
+    #     Bounded so noisy SOCs (e.g., Secondary Teachers' gen-ed
+    #     feeders) don't dominate the universe.
+    #
+    #   taught_rows: every TOP this specific college teaches for this
+    #     SOC, NO SAM filter. SAM classification varies by college —
+    #     the same TOP-aligned course can be SAM C at one college and
+    #     SAM E at another. For the per-(college, SOC) report, what
+    #     matters is whether the college has any course at all in
+    #     this TOP that institutionally prepares for the SOC; the
+    #     college's own SAM tagging shouldn't gate that answer. This
+    #     also matches _gather_aligned_curriculum (the accordion
+    #     above), which is unfiltered for the same reason.
+    with driver.session() as session:
+        global_rows = session.run(
+            """
+            MATCH (c:Course)-[r:PREPARES_FOR]->(:Occupation {soc_code: $soc_code})
+            WHERE c.sam_code IN $sam_codes
+            RETURN DISTINCT r.via_top AS top6
+            """,
+            soc_code=soc_code, sam_codes=SAM_OCCUPATIONAL,
+        ).data()
+        taught_rows = session.run(
+            """
+            MATCH (c:Course {college: $college})-[r:PREPARES_FOR]->(:Occupation {soc_code: $soc_code})
+            RETURN DISTINCT r.via_top AS top6
+            """,
+            college=college, soc_code=soc_code,
+        ).data()
+
+    global_top4 = {row["top6"][:4] for row in global_rows if row.get("top6")}
+    taught_top4 = {row["top6"][:4] for row in taught_rows if row.get("top6")}
+
+    # Bridge each TOP4 to its relevant CIPs for this SOC.
+    cips_by_top4 = top4_to_cips_for_soc(soc_code)
+
+    # Project: every TOP4 in the global prep set, plus its bridging CIPs.
+    tops = []
+    all_cips: set[str] = set()
+    for top4 in sorted(global_top4):
+        relevant_cips = sorted(cips_by_top4.get(top4, set()))
+        if not relevant_cips:
+            # TOP4 has no CIP that bridges to this SOC — shouldn't happen
+            # given the global query came from PREPARES_FOR edges, but
+            # guard against orphan TOPs nonetheless.
+            continue
+        tops.append({
+            "code": top4,
+            "name": top4_names.get(top4, ""),
+            "taught_at_college": top4 in taught_top4,
+            "cips": relevant_cips,
+        })
+        all_cips.update(relevant_cips)
+
+    # Active CIPs: those reachable through at least one taught TOP4.
+    active_cips: set[str] = set()
+    for t in tops:
+        if t["taught_at_college"]:
+            active_cips.update(t["cips"])
+
+    cips = [
+        {
+            "code": cip,
+            "title": cip_titles.get(cip, ""),
+            "active": cip in active_cips,
+        }
+        for cip in sorted(all_cips)
+    ]
+
+    n_total = len(tops)
+    n_taught = sum(1 for t in tops if t["taught_at_college"])
+    coverage_pct = round(100.0 * n_taught / n_total, 1) if n_total else 0.0
+
+    return {
+        "tops": tops,
+        "cips": cips,
+        "n_taught": n_taught,
+        "n_total": n_total,
+        "coverage_pct": coverage_pct,
+    }

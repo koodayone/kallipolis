@@ -41,8 +41,13 @@ from ontology.regions import (
 )
 from ontology.schema import get_driver
 from ontology.supply import get_coe_supply
-from partnerships.gather import _gather_aligned_curriculum, _gather_student_pipeline
+from partnerships.gather import (
+    _gather_aligned_curriculum,
+    _gather_curriculum_crosswalk,
+    _gather_student_pipeline,
+)
 from partnerships.models import (
+    CurriculumCrosswalk,
     DepartmentEvidence,
     InstitutionalSources,
     OccupationEvidence,
@@ -462,9 +467,19 @@ def build_opportunity_report(
             region = occ_row["region"]
 
     # Curriculum coverage — the existing gather function already groups
-    # by department and threads via_top through PREPARES_FOR.
+    # by department and threads via_top through PREPARES_FOR. Powers
+    # the section's first half: prose + per-department accordion of
+    # the courses at this college that institutionally prepare for the SOC.
     curriculum_evidence = _gather_aligned_curriculum(college, soc_code)
     aligned_depts = [d["department"] for d in curriculum_evidence]
+
+    # Curriculum crosswalk pathway — the section's second half: zoom
+    # out from this college's specific courses to the full TOP × CIP
+    # institutional prep set, with the college's coverage marked. The
+    # hero visualization renders from this structure. SAM-filtered to
+    # occupational (A/B/C/D) so the prep universe reflects workforce-
+    # development scope rather than gen-ed feeders.
+    curriculum_crosswalk = _gather_curriculum_crosswalk(college, soc_code)
 
     # Student impact — existing pipeline compute, unchanged.
     student_stats, top_students = _gather_student_pipeline(
@@ -569,6 +584,7 @@ def build_opportunity_report(
             )
         ],
         curriculum_evidence=[DepartmentEvidence(**d) for d in curriculum_evidence],
+        curriculum_crosswalk=CurriculumCrosswalk(**curriculum_crosswalk),
         student_evidence=StudentEvidence(
             total_in_program=student_stats.get("total_in_program", 0),
             total_in_aligned_departments=student_stats.get("total_in_aligned_departments", 0),

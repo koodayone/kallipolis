@@ -37,6 +37,36 @@ export type ApiDepartmentEvidence = {
   via_cip?: string[];
 };
 
+// ── Curriculum Crosswalk pathway (TOP4 × CIP × SOC) ────────────────────────
+//
+// Powers the hero visualization at the bottom of the Curriculum Alignment
+// section: a three-column flow showing the institutional pathway from
+// program (TOP) through federal taxonomy (CIP) to occupation (SOC),
+// with this college's coverage marked at the TOP layer and the active
+// (lit) pathway marked at the CIP layer. SAM-filtered to occupational
+// per CCCCO MIS Data Element Dictionary.
+
+export type ApiCrosswalkTop = {
+  code: string;                  // 4-digit TOP code, e.g., "0702"
+  name: string;                  // e.g., "Computer Information Systems"
+  taught_at_college: boolean;    // true when ≥ 1 course at this college teaches this TOP
+  cips: string[];                // CIP codes this TOP bridges to (filtered to those reaching the SOC)
+};
+
+export type ApiCrosswalkCip = {
+  code: string;                  // e.g., "15.0507"
+  title: string;                 // e.g., "Environmental/Environmental Engineering Technology"
+  active: boolean;               // true when ≥ 1 taught TOP4 bridges to this CIP
+};
+
+export type ApiCurriculumCrosswalk = {
+  tops: ApiCrosswalkTop[];
+  cips: ApiCrosswalkCip[];
+  n_taught: number;              // count of TOP4s the college teaches
+  n_total: number;               // count of TOP4s in the global prep set
+  coverage_pct: number;          // 100 * n_taught / n_total, rounded to 1 decimal
+};
+
 export type ApiStudentEnrollmentEvidence = {
   code: string;
   name: string;
@@ -153,6 +183,7 @@ export type ApiOpportunityReport = {
   partnership_opportunities_narrative: string;
   opportunity_evidence: ApiOccupationEvidence[];
   curriculum_evidence: ApiDepartmentEvidence[];
+  curriculum_crosswalk: ApiCurriculumCrosswalk;
   student_evidence: ApiStudentEvidence;
   swp_evidence: ApiSwpEvidence;
   partnership_opportunities: ApiPartnershipOpportunityEmployer[];
