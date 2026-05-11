@@ -466,20 +466,27 @@ def build_opportunity_report(
             employment = occ_row.get("employment")
             region = occ_row["region"]
 
-    # Curriculum coverage — the existing gather function already groups
-    # by department and threads via_top through PREPARES_FOR. Powers
-    # the section's first half: prose + per-department accordion of
-    # the courses at this college that institutionally prepare for the SOC.
-    curriculum_evidence = _gather_aligned_curriculum(college, soc_code)
-    aligned_depts = [d["department"] for d in curriculum_evidence]
-
-    # Curriculum crosswalk pathway — the section's second half: zoom
-    # out from this college's specific courses to the full TOP × CIP
-    # institutional prep set, with the college's coverage marked. The
-    # hero visualization renders from this structure. SAM-filtered to
-    # occupational (A/B/C/D) so the prep universe reflects workforce-
-    # development scope rather than gen-ed feeders.
+    # Curriculum crosswalk pathway — the section's hero visualization:
+    # the full TOP × CIP institutional prep set with the college's
+    # coverage marked. SAM-filtered to occupational (A/B/C/D) so the
+    # universe reflects workforce-development scope rather than gen-ed
+    # feeders. Computed first because its TOP4 universe is the
+    # canonical "what counts as occupationally relevant" set — the
+    # accordion below restricts to it for coherence.
     curriculum_crosswalk = _gather_curriculum_crosswalk(college, soc_code)
+    hero_top4s = {t["code"] for t in curriculum_crosswalk.get("tops", [])}
+
+    # Curriculum coverage — per-department accordion of the courses at
+    # this college that institutionally prepare for the SOC, restricted
+    # to TOPs in the hero universe. The restriction prevents the
+    # inverse case where a college teaches a TOP for this SOC but the
+    # TOP isn't in the system-wide SAM-occupational set (e.g. Butte's
+    # Geography → Environmental Science Tech): without the filter the
+    # accordion lists a department the hero can't represent.
+    curriculum_evidence = _gather_aligned_curriculum(
+        college, soc_code, hero_top4s=hero_top4s,
+    )
+    aligned_depts = [d["department"] for d in curriculum_evidence]
 
     # Student impact — existing pipeline compute, unchanged.
     student_stats, top_students = _gather_student_pipeline(

@@ -40,7 +40,7 @@ SAM_OCCUPATIONAL = ["A", "B", "C", "D"]
 
 
 def _gather_aligned_curriculum(
-    college: str, soc_code: str
+    college: str, soc_code: str, hero_top4s: set[str] | None = None,
 ) -> list[dict]:
     """Fetch departments and courses that PREPARES_FOR the selected occupation.
 
@@ -51,6 +51,15 @@ def _gather_aligned_curriculum(
     departments at this college prepare students for the SOC, returns
     [] — caller surfaces this honestly rather than falling back.
 
+    `hero_top4s`: optional restriction to TOP4 families in the hero's
+    SAM-occupational universe for this SOC. When provided, courses
+    whose `via_top[:4]` falls outside this set are dropped — keeps the
+    accordion and hero pathway visualization coherent (a TOP shown in
+    one is shown in the other). Pass `None` to surface every TOP this
+    college teaches for the SOC regardless of system-wide SAM
+    relevance — used by the LLM-narrative generator where the broader
+    pool is desirable.
+
     Returns curriculum_evidence_list, with `via_top` and `via_cip` per
     department for downstream institutional-source attribution.
     """
@@ -60,19 +69,41 @@ def _gather_aligned_curriculum(
         # property — the TOP6 the institutional crosswalk used to
         # mediate this Course→Occupation alignment.
         #
-        # No SAM filter. The institutional prep universe (the hero's
-        # denominator) is SAM-filtered at the system level — that
-        # defines which TOPs are "occupationally relevant" for this
-        # SOC. But for the per-college accordion, what matters is
-        # whether this college teaches in those relevant TOPs at all,
-        # not how this particular college chose to classify their own
-        # courses (some colleges tag the same TOP-aligned course as
-        # SAM C, others as SAM E). The accordion shows every course
-        # at this college that institutionally prepares for this SOC.
-        result = session.run("""
-            MATCH (col:College {name: $college})-[:OFFERS]->(dept:Department)
-                  -[:CONTAINS]->(c:Course {college: $college})
-                  -[r:PREPARES_FOR]->(:Occupation {soc_code: $soc_code})
+        # No SAM filter on the per-college side. The institutional prep
+        # universe (the hero's denominator) is SAM-filtered at the
+        # system level — that defines which TOPs are "occupationally
+        # relevant" for this SOC. But for the per-college accordion,
+        # what matters is whether this college teaches in those
+        # relevant TOPs at all, not how this particular college chose
+        # to classify their own courses (some colleges tag the same
+        # TOP-aligned course as SAM C, others as SAM E).
+        #
+        # When `hero_top4s` is provided, additionally restrict to TOPs
+        # in that universe — drops the inverse case (a college teaches
+        # a TOP for this SOC but the TOP is not in the system-wide
+        # SAM-occupational set, e.g. Butte's Geography → Environmental
+        # Science Tech). Without this restriction the accordion
+        # surfaces TOPs that the hero visualization can't represent,
+        # which reads as inconsistency.
+        if hero_top4s is not None:
+            where_clause = (
+                "WHERE r.via_top IS NOT NULL "
+                "AND substring(r.via_top, 0, 4) IN $hero_top4s"
+            )
+            params = {
+                "college": college,
+                "soc_code": soc_code,
+                "hero_top4s": list(hero_top4s),
+            }
+        else:
+            where_clause = ""
+            params = {"college": college, "soc_code": soc_code}
+
+        result = session.run(f"""
+            MATCH (col:College {{name: $college}})-[:OFFERS]->(dept:Department)
+                  -[:CONTAINS]->(c:Course {{college: $college}})
+                  -[r:PREPARES_FOR]->(:Occupation {{soc_code: $soc_code}})
+            {where_clause}
             RETURN dept.name AS department, c.code AS code, c.name AS name,
                    c.description AS description,
                    c.learning_outcomes AS learning_outcomes,
@@ -80,7 +111,7 @@ def _gather_aligned_curriculum(
                    c.top_code AS top_code,
                    r.via_top AS via_top
             ORDER BY dept.name, c.code
-        """, college=college, soc_code=soc_code).data()
+        """, **params).data()
 
     from ontology.crosswalks import _load_top_to_cip
     top_cip_map = _load_top_to_cip()

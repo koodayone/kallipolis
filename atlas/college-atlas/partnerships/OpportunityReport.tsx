@@ -243,7 +243,7 @@ function ReportBody({
           (2) Contextual zoom-out: the CurriculumPathway hero
               visualization, framing this college's specific coverage
               against the full TOP × CIP institutional prep set. The
-              headline metric ("N of M TOP families supporting SOC X")
+              headline metric ("N of M TOP groups supporting SOC X")
               naturally introduces the wider view.
           The reading order is specific → contextual, which is more
           credible than the reverse: a coordinator first sees the
