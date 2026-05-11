@@ -13,6 +13,7 @@ import OccupationRow, {
   type OccupationDetail,
 } from "@/college-atlas/occupations/OccupationRow";
 import DepartmentRow, { type CourseItem } from "@/college-atlas/courses/DepartmentRow";
+import CurriculumPathway from "@/college-atlas/partnerships/CurriculumPathway";
 import StudentRow, {
   type StudentData,
   type StudentDetailData,
@@ -235,9 +236,19 @@ function ReportBody({
         </div>
       </Section>
 
-      {/* Curriculum Alignment — reuses DepartmentRow, with the per-course
-          Occupational Pathways callout suppressed (the report's anchor
-          occupation is implicit at this level). */}
+      {/* Curriculum Alignment — two-part section:
+          (1) Specific evidence: per-department accordion of the actual
+              courses at this college that institutionally prepare for
+              the SOC. Builds trust with course-level concreteness.
+          (2) Contextual zoom-out: the CurriculumPathway hero
+              visualization, framing this college's specific coverage
+              against the full TOP × CIP institutional prep set. The
+              headline metric ("N of M TOP families supporting SOC X")
+              naturally introduces the wider view.
+          The reading order is specific → contextual, which is more
+          credible than the reverse: a coordinator first sees the
+          concrete courses they know exist, then sees where those sit
+          in the broader institutional crosswalk. */}
       <Section title="Curriculum Alignment" brandColor={brandColor}>
         {report.curriculum_evidence.length === 0 ? (
           <Prose>No departments at {school.name} have institutionally aligned curriculum for this occupation.</Prose>
@@ -266,6 +277,21 @@ function ReportBody({
                 );
               })}
             </div>
+
+            {/* Contextual zoom-out: TOP × CIP × SOC institutional pathway.
+                Renders only when the crosswalk has any TOP entries — the
+                empty case is already handled by the no-departments branch
+                above, but the guard is defensive against future SOC/TOP
+                shape drift. */}
+            {report.curriculum_crosswalk &&
+              report.curriculum_crosswalk.tops.length > 0 && (
+                <CurriculumPathway
+                  crosswalk={report.curriculum_crosswalk}
+                  socCode={report.soc_code}
+                  socTitle={report.soc_title}
+                  brandColor={brandColor}
+                />
+              )}
           </>
         )}
       </Section>

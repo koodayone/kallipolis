@@ -75,6 +75,53 @@ class StudentEvidence(BaseModel):
     top_students: list[StudentSummaryEvidence]
 
 
+class CrosswalkTop(BaseModel):
+    """A 4-digit TOP family in the Curriculum Alignment pathway view.
+
+    Renders as a pill-badge in the leftmost column of the hero
+    visualization. The `taught_at_college` flag drives the visual
+    distinction between TOPs the college actively teaches (filled,
+    brand-colored) and TOPs in the institutional prep set that the
+    college doesn't teach (outlined, dimmed) — the curriculum-
+    development surface.
+    """
+    code: str                   # 4-digit TOP code, e.g., "0702"
+    name: str                   # e.g., "Computer Information Systems"
+    taught_at_college: bool
+    cips: list[str]             # CIP codes this TOP bridges to (filtered to those reaching the SOC)
+
+
+class CrosswalkCip(BaseModel):
+    """A federal CIP code in the Curriculum Alignment pathway view.
+
+    Renders as a pill-badge in the middle column of the hero
+    visualization, with a locked institutional color (regardless of
+    college brand) signalling "this is the federal taxonomy bridge."
+    The `active` flag distinguishes CIPs reachable through at least
+    one taught TOP4 (full opacity, CIP→SOC line rendered) from CIPs
+    only reachable through missing TOPs (dimmed, no CIP→SOC line).
+    """
+    code: str                   # CIP code, e.g., "15.0507"
+    title: str                  # e.g., "Environmental/Environmental Engineering Technology"
+    active: bool                # reachable through ≥ 1 taught TOP4
+
+
+class CurriculumCrosswalk(BaseModel):
+    """The TOP4 × CIP × SOC pathway data for the Curriculum Alignment
+    section's hero visualization.
+
+    Composed deterministically from the institutional chain (CCCCO
+    TOP-CIP → NCES CIP-SOC) restricted to courses with SAM A/B/C/D
+    (occupational per CCCCO MIS Data Element Dictionary). Headline
+    metric: `n_taught` of `n_total` TOP families supporting this SOC.
+    """
+    tops: list[CrosswalkTop]
+    cips: list[CrosswalkCip]
+    n_taught: int               # TOP4s the college teaches
+    n_total: int                # TOP4s in the global prep set
+    coverage_pct: float         # 100 * n_taught / n_total, rounded
+
+
 class SupplyEstimate(BaseModel):
     """Annual projected program supply for a TOP6 program code, from COE data."""
     top_code: str
@@ -250,6 +297,11 @@ class OpportunityReport(BaseModel):
     # Evidence blocks
     opportunity_evidence: list[OccupationEvidence]
     curriculum_evidence: list[DepartmentEvidence]
+    # Hero visualization for the Curriculum Alignment section: the
+    # TOP4 × CIP × SOC institutional pathway, marked taught/missing at
+    # the TOP4 layer and active/inactive at the CIP layer. See
+    # CurriculumCrosswalk for the field semantics.
+    curriculum_crosswalk: CurriculumCrosswalk
     student_evidence: StudentEvidence
     swp_evidence: SwpEvidence
     partnership_opportunities: list[PartnershipOpportunityEmployer]
