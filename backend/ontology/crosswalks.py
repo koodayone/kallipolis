@@ -417,6 +417,31 @@ def top6_to_soc(top6_codes: list[str]) -> dict[str, set[str]]:
     return result
 
 
+def top6_to_cips(top6: str) -> list[str]:
+    """Map a single TOP6 code to its CIPs via the Chancellor's Office
+    TOP-CIP crosswalk. Returns a sorted list of CIP codes (empty if the
+    TOP6 has no mapping). Used by the course-detail view to render the
+    "Federal Curriculum Codes" section for a specific course.
+    """
+    top_cip = _load_top_to_cip()
+    return sorted(top_cip.get(top6, set()))
+
+
+def top6_to_cips_for_soc(top6: str, soc_code: str) -> list[str]:
+    """Map a single TOP6 to its CIPs that also bridge to the given SOC
+    via the NCES CIP-SOC crosswalk. Intersects the course's TOP6→CIP
+    set with CIPs that reach the target SOC, returning a sorted list.
+    Used by the course-detail view inside a partnership opportunity
+    report — restricts CIPs to those consistent with the report's
+    anchoring SOC, guaranteeing the course's CIP list is a subset of
+    what the Curriculum Pathway hero displays.
+    """
+    top_cip = _load_top_to_cip()
+    cip_soc = _load_cip_to_soc()
+    course_cips = top_cip.get(top6, set())
+    return sorted(cip for cip in course_cips if soc_code in cip_soc.get(cip, set()))
+
+
 def top4_to_cips_for_soc(soc_code: str) -> dict[str, set[str]]:
     """Map each TOP4 to the CIPs that bridge it to the given SOC.
 

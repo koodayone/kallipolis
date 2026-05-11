@@ -31,13 +31,20 @@ type Props = {
   schoolName?: string;
   // Context-mode flag — when this row is rendered inside a partnership
   // opportunity report scoped to a specific SOC, suppress the per-course
-  // "Occupational Pathways" callout (the report's anchoring occupation
-  // is implicit at this level and the callout would surface redundant
-  // SOC information).
+  // "Occupational Pathways" section (the report's anchoring occupation
+  // is implicit at this level and the section would surface redundant
+  // SOC information). The Federal Curriculum Codes section inside the
+  // same callout still renders — CIPs are the federal curriculum
+  // identity of the course, invariant of the report's SOC.
   hideOccupationPathways?: boolean;
+  // Optional SOC filter for the Federal Curriculum Codes section.
+  // When set (typically by the partnership report passing its anchoring
+  // SOC), the per-course CIP list is restricted to CIPs that bridge to
+  // that SOC, keeping it consistent with the Curriculum Pathway hero.
+  socFilter?: string;
 };
 
-export default function DepartmentRow({ department, courseCount, index, brandColor, isOpen: controlledOpen, onToggle, courses, isLoading, onExpand, schoolName, hideOccupationPathways }: Props) {
+export default function DepartmentRow({ department, courseCount, index, brandColor, isOpen: controlledOpen, onToggle, courses, isLoading, onExpand, schoolName, hideOccupationPathways, socFilter }: Props) {
   const [internalOpen, setInternalOpen] = useState(false);
   const [expandedCourses, setExpandedCourses] = useState<Set<string>>(new Set());
   const isOpen = controlledOpen ?? internalOpen;
@@ -202,11 +209,13 @@ export default function DepartmentRow({ department, courseCount, index, brandCol
                                 </ul>
                               </div>
                             )}
-                            {schoolName && !hideOccupationPathways && (
+                            {schoolName && (
                               <CourseOccupationsCallout
                                 courseCode={course.code}
                                 collegeName={schoolName}
                                 brandColor={brandColor}
+                                hideOccupationPathways={hideOccupationPathways}
+                                socFilter={socFilter}
                               />
                             )}
                           </div>
@@ -216,7 +225,11 @@ export default function DepartmentRow({ department, courseCount, index, brandCol
                   </div>
                 );
               })}
-              {schoolName && <DataCitation source={`${schoolName} Catalog`} />}
+              {schoolName && (
+                <DataCitation
+                  source={`${schoolName} Catalog & Chancellor's Office TOP-CIP crosswalk`}
+                />
+              )}
             </div>
           </motion.div>
         )}

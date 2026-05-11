@@ -19,10 +19,16 @@ export type ApiOccupationLink = {
   title: string;
 };
 
+export type ApiCipCode = {
+  code: string;
+  title: string;
+};
+
 export type ApiCourseOccupations = {
   top_code: string | null;
   top_title: string;
   occupations: ApiOccupationLink[];
+  cips: ApiCipCode[];
 };
 
 export type CourseQueryResponse = {
@@ -43,9 +49,20 @@ export async function getCourses(department: string, college: string): Promise<A
   return res.json();
 }
 
-export async function getCourseOccupations(courseCode: string, college: string): Promise<ApiCourseOccupations> {
+export async function getCourseOccupations(
+  courseCode: string,
+  college: string,
+  soc?: string,
+): Promise<ApiCourseOccupations> {
+  // When `soc` is provided, the server filters CIPs to those that
+  // bridge from this course's TOP6 to the given SOC — keeps the
+  // course's CIP list consistent with the Curriculum Pathway hero in
+  // a partnership opportunity report. Omit `soc` for unfiltered use
+  // (state atlas, public course pages).
+  const params = new URLSearchParams({ college });
+  if (soc) params.set("soc", soc);
   const res = await fetch(
-    `${API_BASE}/courses/${encodeURIComponent(courseCode)}/occupations?college=${encodeURIComponent(college)}`
+    `${API_BASE}/courses/${encodeURIComponent(courseCode)}/occupations?${params.toString()}`
   );
   if (!res.ok) throw new Error("Failed to fetch course occupations");
   return res.json();

@@ -59,6 +59,16 @@ def _gather_aligned_curriculum(
         # The PREPARES_FOR edge carries `via_top` as an audit-trail
         # property — the TOP6 the institutional crosswalk used to
         # mediate this Course→Occupation alignment.
+        #
+        # No SAM filter. The institutional prep universe (the hero's
+        # denominator) is SAM-filtered at the system level — that
+        # defines which TOPs are "occupationally relevant" for this
+        # SOC. But for the per-college accordion, what matters is
+        # whether this college teaches in those relevant TOPs at all,
+        # not how this particular college chose to classify their own
+        # courses (some colleges tag the same TOP-aligned course as
+        # SAM C, others as SAM E). The accordion shows every course
+        # at this college that institutionally prepares for this SOC.
         result = session.run("""
             MATCH (col:College {name: $college})-[:OFFERS]->(dept:Department)
                   -[:CONTAINS]->(c:Course {college: $college})
@@ -292,10 +302,23 @@ def _gather_curriculum_crosswalk(college: str, soc_code: str) -> dict:
     top4_names = _load_top4_names()["top4"]
     cip_titles = load_cip_titles()
 
-    # Which TOPs prep for this SOC globally? (SAM-filtered to occupational.)
-    # We aggregate at TOP6 then collapse to TOP4 prefix for the
-    # visualization — sub-TOP variation isn't surface-relevant for the
-    # partnership conversation.
+    # Asymmetric SAM filtering: SAM A/B/C/D on global only.
+    #
+    #   global_rows: the institutional prep set across ALL CCCs,
+    #     SAM-filtered to occupational. Defines which TOPs are
+    #     "occupationally relevant" for this SOC at the system level.
+    #     Bounded so noisy SOCs (e.g., Secondary Teachers' gen-ed
+    #     feeders) don't dominate the universe.
+    #
+    #   taught_rows: every TOP this specific college teaches for this
+    #     SOC, NO SAM filter. SAM classification varies by college —
+    #     the same TOP-aligned course can be SAM C at one college and
+    #     SAM E at another. For the per-(college, SOC) report, what
+    #     matters is whether the college has any course at all in
+    #     this TOP that institutionally prepares for the SOC; the
+    #     college's own SAM tagging shouldn't gate that answer. This
+    #     also matches _gather_aligned_curriculum (the accordion
+    #     above), which is unfiltered for the same reason.
     with driver.session() as session:
         global_rows = session.run(
             """
@@ -308,10 +331,9 @@ def _gather_curriculum_crosswalk(college: str, soc_code: str) -> dict:
         taught_rows = session.run(
             """
             MATCH (c:Course {college: $college})-[r:PREPARES_FOR]->(:Occupation {soc_code: $soc_code})
-            WHERE c.sam_code IN $sam_codes
             RETURN DISTINCT r.via_top AS top6
             """,
-            college=college, soc_code=soc_code, sam_codes=SAM_OCCUPATIONAL,
+            college=college, soc_code=soc_code,
         ).data()
 
     global_top4 = {row["top6"][:4] for row in global_rows if row.get("top6")}

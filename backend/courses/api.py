@@ -136,15 +136,28 @@ def get_courses(department: str, college: str):
 
 
 @router.get("/{course_code}/occupations")
-def get_course_occupations(course_code: str, college: str):
+def get_course_occupations(course_code: str, college: str, soc: str | None = None):
     """Returns the institutional pathway from a course to occupations:
     the course's TOP6 code with its program-area title, and the full
     set of SOC-coded occupations the course PREPARES_FOR via the
     Chancellor's Office TOP-CIP and BLS/NCES CIP-SOC crosswalks.
     Sorted alphabetically by occupation title for human scannability.
     Powers the Occupational Pathways section on the course detail view.
+
+    Optional `soc` query param: when provided, the CIPs returned are
+    filtered to those that bridge from this course's TOP6 to the given
+    SOC via the NCES CIP-SOC crosswalk. Used by the partnership
+    opportunity report to keep the per-course CIP list consistent with
+    the Curriculum Pathway hero (which is scoped to one SOC). When
+    omitted, the full TOP6→CIP set is returned — the course's federal
+    curriculum identity unfiltered.
     """
-    from ontology.crosswalks import load_top_titles
+    from ontology.crosswalks import (
+        load_top_titles,
+        top6_to_cips,
+        top6_to_cips_for_soc,
+        load_cip_titles,
+    )
 
     driver = get_driver()
     try:
@@ -163,11 +176,25 @@ def get_course_occupations(course_code: str, college: str):
             """, code=course_code, college=college).data()
 
         top_titles = load_top_titles()
+        # CIPs bridged from this course's TOP. With `soc` set, intersect
+        # against CIPs that reach that SOC via the NCES CIP-SOC
+        # crosswalk so the list aligns with the report's hero. Without
+        # `soc`, return the unfiltered TOP6→CIP set.
+        if not top_code:
+            cip_codes: list[str] = []
+        elif soc:
+            cip_codes = top6_to_cips_for_soc(top_code, soc)
+        else:
+            cip_codes = top6_to_cips(top_code)
+        cip_titles = load_cip_titles() if cip_codes else {}
         return {
             "top_code": top_code,
             "top_title": top_titles.get(top_code or "", ""),
             "occupations": [
                 {"soc_code": r["soc_code"], "title": r["title"]} for r in occupations
+            ],
+            "cips": [
+                {"code": cip, "title": cip_titles.get(cip, "")} for cip in cip_codes
             ],
         }
     except Exception as e:

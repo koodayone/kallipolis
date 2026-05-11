@@ -1,33 +1,30 @@
 /**
- * Hero visualization for the Curriculum Alignment section's second
- * half: a three-column institutional pathway from program (TOP) to
- * occupation (SOC), bridged by the federal CIP taxonomy.
+ * CurriculumPathway — institutional pathway hero for the partnership
+ * landscape report. Renders the TOP → CIP → SOC chain for a single
+ * (college, SOC) pair with click-to-isolate interactivity.
  *
- * Sits BELOW the existing per-department course accordions in the
- * Curriculum Alignment section. The accordions show specific courses
- * at this college that institutionally prepare for the SOC (the
- * concrete evidence layer); this component zooms out to the full TOP
- * prep set and marks where the college's coverage sits within it.
+ * Interaction model:
+ *   • Default state: full crosswalk rendered. Taught pathway lit in
+ *     per-college brand color; missing pathway dimmed. SOC destination
+ *     circle and taught-TOP badges carry the kallipolis sun-gold ring.
+ *   • Click a TOP or CIP badge: dim everything except the selected
+ *     pathway. For TOP-selected: highlight edges from that TOP to its
+ *     CIPs and from those CIPs onward to the SOC (even when the CIP is
+ *     inactive — exploratory view of what the pathway WOULD look like
+ *     if this TOP were taught). For CIP-selected: highlight all TOP
+ *     feeders and the CIP→SOC edge.
+ *   • Click outside the SVG (or click the same badge again): clear
+ *     selection, return to default state.
  *
- * Visual language:
- *   • TOP pill (left)       brand-filled when this college teaches the
- *                           TOP family; outlined-and-dim when it's in
- *                           the institutional prep set but missing
- *                           here. Lines terminate at the badge edge.
- *   • CIP pill (middle)     locked institutional color (steel blue)
- *                           regardless of college brand — visually
- *                           reinforces "this is the federal substrate."
- *                           Dim when inactive (no taught TOP reaches it).
- *   • SOC circle (right)    large brand-filled destination; only
- *                           reached by lines from ACTIVE CIPs.
- *
- * Data source: ApiCurriculumCrosswalk, composed deterministically by
- * backend/partnerships/gather.py:_gather_curriculum_crosswalk. SAM-
- * filtered to A/B/C/D (occupational) per CCCCO MIS Data Element
- * Dictionary.
+ * Data comes from the partnership opportunity report's
+ * curriculum_crosswalk field. Sort orders, sentence templates, and
+ * coordinate constants are deterministic — same input always renders
+ * byte-for-byte the same output.
  */
 
-import { useMemo } from "react";
+"use client";
+
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { ApiCurriculumCrosswalk } from "@/college-atlas/partnerships/api";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
@@ -36,8 +33,11 @@ const MONO = "var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace";
 // Locked institutional color — the CIP layer reads as "federal
 // substrate, constant" across all colleges regardless of brand.
 const CIP_COLOR = "#7ab8e6";
-// Taught-TOP glow ring color — a separate signal axis from brand.
-const TAUGHT_GLOW = "#7df080";
+// Taught-TOP glow ring color — kallipolis sun gold (matches the
+// queryshell RisingSun mark). A separate signal axis from per-college
+// brand: this ring identifies the institutional pathway as taught,
+// regardless of which college is in view.
+const TAUGHT_GLOW = "#c9a84c";
 // Visual color for missing-TOP edges and inactive-CIP treatment.
 const INK_FAINT = "#5a6378";
 const INK_DIM = "#9ba0b3";
@@ -53,6 +53,11 @@ type Props = {
   brandColor: string;
 };
 
+type Selection =
+  | { kind: "top"; code: string }
+  | { kind: "cip"; code: string }
+  | null;
+
 export default function CurriculumPathway({
   crosswalk,
   collegeName,
@@ -60,6 +65,85 @@ export default function CurriculumPathway({
   socTitle,
   brandColor,
 }: Props) {
+  const [selection, setSelection] = useState<Selection>(null);
+  const svgRef = useRef<SVGSVGElement>(null);
+
+  // Click-outside detection — clears selection when the user clicks
+  // anywhere outside the SVG. SVG-internal clicks (badges, whitespace)
+  // are handled by per-element handlers and stopPropagation where
+  // needed.
+  useEffect(() => {
+    function onDocClick(e: MouseEvent) {
+      if (svgRef.current && !svgRef.current.contains(e.target as Node)) {
+        setSelection(null);
+      }
+    }
+    document.addEventListener("mousedown", onDocClick);
+    return () => document.removeEventListener("mousedown", onDocClick);
+  }, []);
+
+  const isSelected = (kind: "top" | "cip", code: string) =>
+    selection?.kind === kind && selection.code === code;
+
+  // Look up which CIPs are bridged from a given TOP, and which TOPs
+  // feed into a given CIP. Used to determine which elements participate
+  // in the highlighted pathway when a selection is active.
+  const cipsByTop = useMemo(() => {
+    const m = new Map<string, Set<string>>();
+    for (const t of crosswalk.tops) {
+      m.set(t.code, new Set(t.cips));
+    }
+    return m;
+  }, [crosswalk.tops]);
+
+  const topsByCip = useMemo(() => {
+    const m = new Map<string, Set<string>>();
+    for (const t of crosswalk.tops) {
+      for (const c of t.cips) {
+        if (!m.has(c)) m.set(c, new Set());
+        m.get(c)!.add(t.code);
+      }
+    }
+    return m;
+  }, [crosswalk.tops]);
+
+  // Compute whether a given element (top, cip, or edge) is part of the
+  // currently-selected pathway. When nothing is selected, returns null
+  // (meaning "render in default state").
+  function highlightTop(topCode: string): boolean | null {
+    if (!selection) return null;
+    if (selection.kind === "top") return selection.code === topCode;
+    if (selection.kind === "cip") {
+      return topsByCip.get(selection.code)?.has(topCode) ?? false;
+    }
+    return null;
+  }
+  function highlightCip(cipCode: string): boolean | null {
+    if (!selection) return null;
+    if (selection.kind === "top") {
+      return cipsByTop.get(selection.code)?.has(cipCode) ?? false;
+    }
+    if (selection.kind === "cip") return selection.code === cipCode;
+    return null;
+  }
+  function highlightTopCipEdge(topCode: string, cipCode: string): boolean | null {
+    if (!selection) return null;
+    if (selection.kind === "top") {
+      return selection.code === topCode && (cipsByTop.get(topCode)?.has(cipCode) ?? false);
+    }
+    if (selection.kind === "cip") {
+      return selection.code === cipCode;
+    }
+    return null;
+  }
+  function highlightCipSocEdge(cipCode: string): boolean | null {
+    if (!selection) return null;
+    if (selection.kind === "top") {
+      return cipsByTop.get(selection.code)?.has(cipCode) ?? false;
+    }
+    if (selection.kind === "cip") return selection.code === cipCode;
+    return null;
+  }
   // ── Layout coordinates (all in SVG user units) ─────────────────────
   // Three-column layout with badge-bearing nodes. Bezier curves enter
   // the left edge of the right-column badge and exit the right edge of
@@ -137,30 +221,50 @@ export default function CurriculumPathway({
     sortedCips.map((c, i) => [c.code, cipYs[i]])
   );
 
-  // Build edge paths.
-  type Edge = { d: string; cls: "taught" | "missing" | "active" };
+  // Build edge paths. We retain enough metadata on each edge to
+  // determine its render state under any selection — which TOP it
+  // departs from, which CIP it terminates at, and whether the CIP is
+  // currently active.
+  type Edge = {
+    d: string;
+    kind: "top-cip" | "cip-soc";
+    topCode?: string;
+    cipCode: string;
+    cipActive: boolean;
+    topTaught: boolean;
+  };
   const edges: Edge[] = [];
 
-  // TOP → CIP edges (all of them, taught vs. missing as visual class).
+  // TOP → CIP edges.
   sortedTops.forEach((top, i) => {
     const ty = topYs[i];
     for (const cipCode of top.cips) {
       const cy = cipYByCode.get(cipCode);
       if (cy === undefined) continue;
+      const cip = sortedCips.find((c) => c.code === cipCode);
       edges.push({
         d: bezier(TOP_X_R, ty, CIP_X_L, cy),
-        cls: top.taught_at_college ? "taught" : "missing",
+        kind: "top-cip",
+        topCode: top.code,
+        cipCode,
+        cipActive: cip?.active ?? false,
+        topTaught: top.taught_at_college,
       });
     }
   });
 
-  // CIP → SOC edges (only for ACTIVE CIPs — the lit pathway).
+  // CIP → SOC edges. In the interactive view we draw ALL of them so
+  // that selecting a missing-TOP pathway can light up its CIP→SOC
+  // segment. The default render keeps inactive ones invisible (opacity
+  // 0) so the static appearance matches the production hero.
   sortedCips.forEach((cip, i) => {
-    if (!cip.active) return;
     const cy = cipYs[i];
     edges.push({
       d: bezier(CIP_X_R, cy, SOC_X - SOC_EDGE_RADIUS, socY),
-      cls: "active",
+      kind: "cip-soc",
+      cipCode: cip.code,
+      cipActive: cip.active,
+      topTaught: false, // unused for cip-soc edges
     });
   });
 
@@ -181,8 +285,10 @@ export default function CurriculumPathway({
     ` ${crosswalk.cips.length === 1 ? "CIP" : "CIPs"} in total` +
     (n_missing > 0
       ? ` — the remaining ${n_missing} TOP` +
-        ` ${n_missing === 1 ? "family" : "families"} represent the` +
-        ` curriculum-development surface for partnership opportunities.`
+        ` ${n_missing === 1
+            ? "family represents a potential curriculum-development surface"
+            : "families represent potential curriculum-development surfaces"}` +
+        ` for partnership opportunities.`
       : `.`);
 
   return (
@@ -245,10 +351,12 @@ export default function CurriculumPathway({
       </p>
 
       <svg
+        ref={svgRef}
         viewBox={`0 0 ${SVG_W} ${SVG_H}`}
         width="100%"
         style={{ display: "block", overflow: "visible" }}
         aria-label="TOP-CIP-SOC institutional pathway visualization"
+        onClick={() => setSelection(null)}
       >
         {/* Column headers — inside the SVG so they share the
             coordinate system with the content beneath. Centered over
@@ -295,26 +403,74 @@ export default function CurriculumPathway({
             brand color end-to-end (TOP→CIP and CIP→SOC both); missing
             pathways drop to gap_gray. One consistent color reads as
             "the chain that is active for this college." */}
-        {edges.map((e, i) => (
-          <path
-            key={`edge-${i}`}
-            d={e.d}
-            fill="none"
-            stroke={e.cls === "missing" ? GAP_GRAY : brandColor}
-            strokeWidth={e.cls === "missing" ? 0.8 : 1.6}
-            opacity={e.cls === "missing" ? 0.32 : 0.75}
-          />
-        ))}
+        {edges.map((e, i) => {
+          // Default render state mirrors the production component:
+          //   • TOP→CIP edges where the TOP is taught: brand color
+          //   • TOP→CIP edges where the TOP is missing: gap-gray
+          //   • CIP→SOC edges where the CIP is active: brand color
+          //   • CIP→SOC edges where the CIP is inactive: invisible
+          // Selected state overrides: highlighted edges full brand,
+          // non-highlighted edges drop to a faint dim.
+          let stroke: string;
+          let strokeWidth: number;
+          let opacity: number;
+          if (e.kind === "top-cip") {
+            const def_stroke = e.topTaught ? brandColor : GAP_GRAY;
+            const def_width = e.topTaught ? 1.6 : 0.8;
+            const def_opacity = e.topTaught ? 0.75 : 0.32;
+            const hl = e.topCode
+              ? highlightTopCipEdge(e.topCode, e.cipCode)
+              : null;
+            stroke = hl ? brandColor : def_stroke;
+            strokeWidth = hl ? 2.0 : def_width;
+            opacity = hl === null ? def_opacity : hl ? 0.95 : 0.08;
+          } else {
+            // cip-soc
+            const def_stroke = brandColor;
+            const def_width = 1.6;
+            const def_opacity = e.cipActive ? 0.75 : 0;
+            const hl = highlightCipSocEdge(e.cipCode);
+            stroke = def_stroke;
+            strokeWidth = hl ? 2.0 : def_width;
+            opacity = hl === null ? def_opacity : hl ? 0.95 : 0.08;
+          }
+          return (
+            <path
+              key={`edge-${i}`}
+              d={e.d}
+              fill="none"
+              stroke={stroke}
+              strokeWidth={strokeWidth}
+              opacity={opacity}
+              style={{ transition: "opacity 0.18s, stroke-width 0.18s" }}
+            />
+          );
+        })}
 
         {/* TOP pill badges. Name wraps to 2 lines if it exceeds the
-            single-line budget; single-line names center vertically. */}
+            single-line budget; single-line names center vertically.
+            Click to isolate the TOP's pathway through the chain. */}
         {sortedTops.map((top, i) => {
           const y = topYs[i];
           const taught = top.taught_at_college;
           const lines = wrapText(top.name, TOP_NAME_CHARS_PER_LINE);
           const isTwoLine = lines.length === 2;
+          const hl = highlightTop(top.code);
+          const sel = isSelected("top", top.code);
+          const groupOpacity = hl === null ? 1 : hl ? 1 : 0.25;
           return (
-            <g key={`top-${top.code}`}>
+            <g
+              key={`top-${top.code}`}
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelection(sel ? null : { kind: "top", code: top.code });
+              }}
+              style={{
+                cursor: "pointer",
+                opacity: groupOpacity,
+                transition: "opacity 0.18s",
+              }}
+            >
               <rect
                 x={TOP_X_L}
                 y={y - BADGE_H / 2}
@@ -323,8 +479,8 @@ export default function CurriculumPathway({
                 rx={BADGE_H / 2}
                 ry={BADGE_H / 2}
                 fill={taught ? brandColor : BG}
-                stroke={taught ? TAUGHT_GLOW : INK_FAINT}
-                strokeWidth={taught ? 1.5 : 0.8}
+                stroke={taught || sel ? TAUGHT_GLOW : INK_FAINT}
+                strokeWidth={sel ? 2.5 : taught ? 1.5 : 0.8}
                 opacity={taught ? 1 : 0.85}
               />
               <text
@@ -357,14 +513,29 @@ export default function CurriculumPathway({
         })}
 
         {/* CIP pill badges. Title wraps to 2 lines when it exceeds the
-            single-line budget. */}
+            single-line budget. Click to isolate the CIP's feeders and
+            its CIP→SOC edge. */}
         {sortedCips.map((cip, i) => {
           const y = cipYs[i];
-          const alpha = cip.active ? 1.0 : 0.55;
           const lines = wrapText(cip.title, CIP_TITLE_CHARS_PER_LINE);
           const isTwoLine = lines.length === 2;
+          const hl = highlightCip(cip.code);
+          const sel = isSelected("cip", cip.code);
+          // Group opacity composites with the standard active/inactive
+          // dimming. When nothing is selected: active=1.0, inactive=0.55.
+          // When a selection is active: highlighted=1.0, others=0.18.
+          const defOpacity = cip.active ? 1.0 : 0.55;
+          const opacity = hl === null ? defOpacity : hl ? 1.0 : 0.18;
           return (
-            <g key={`cip-${cip.code}`} opacity={alpha}>
+            <g
+              key={`cip-${cip.code}`}
+              opacity={opacity}
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelection(sel ? null : { kind: "cip", code: cip.code });
+              }}
+              style={{ cursor: "pointer", transition: "opacity 0.18s" }}
+            >
               <rect
                 x={CIP_X_L}
                 y={y - BADGE_H / 2}
@@ -374,7 +545,7 @@ export default function CurriculumPathway({
                 ry={BADGE_H / 2}
                 fill={BG}
                 stroke={CIP_COLOR}
-                strokeWidth={cip.active ? 1.0 : 0.6}
+                strokeWidth={sel ? 2.0 : cip.active ? 1.0 : 0.6}
               />
               {/* Left-edge color tick — federal-taxonomy identity marker. */}
               <rect
@@ -523,11 +694,6 @@ function bezier(x1: number, y1: number, x2: number, y2: number): string {
   const cx1 = x1 + (x2 - x1) * curvature;
   const cx2 = x2 - (x2 - x1) * curvature;
   return `M ${x1} ${y1} C ${cx1} ${y1}, ${cx2} ${y2}, ${x2} ${y2}`;
-}
-
-function truncate(s: string, maxLen: number): string {
-  if (s.length <= maxLen) return s;
-  return s.slice(0, maxLen - 1) + "…";
 }
 
 /**

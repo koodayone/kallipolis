@@ -273,6 +273,7 @@ function ReportBody({
                     brandColor={brandColor}
                     courses={courses}
                     schoolName={school.name}
+                    socFilter={report.soc_code}
                   />
                 );
               })}
@@ -444,7 +445,7 @@ function OccupationRowWrapper({
 /* ── DepartmentRow wrapper to manage local open state ─────────────────── */
 
 function DepartmentRowWrapper({
-  department, courseCount, index, brandColor, courses, schoolName,
+  department, courseCount, index, brandColor, courses, schoolName, socFilter,
 }: {
   department: string;
   courseCount: number;
@@ -452,6 +453,7 @@ function DepartmentRowWrapper({
   brandColor: string;
   courses: CourseItem[];
   schoolName: string;
+  socFilter: string;
 }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -465,6 +467,7 @@ function DepartmentRowWrapper({
       courses={courses}
       schoolName={schoolName}
       hideOccupationPathways
+      socFilter={socFilter}
     />
   );
 }
