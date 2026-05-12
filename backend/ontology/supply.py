@@ -76,6 +76,31 @@ _NEO4J_TO_SUPPLY: dict[str, str] = {
     "College of the Siskiyous": "Siskiyous",
     "Butte College": "Butte",
     "Lake Tahoe Community College": "Lake Tahoe",
+
+    # Los Angeles — supply CSV uses "LA" abbreviation and drops "City"
+    # suffix on several names. Without these explicit entries, the
+    # heuristic strip in _normalize_college produces names like "Los
+    # Angeles Harbor" (vs CSV's "LA Harbor") and "Pasadena City" (vs
+    # CSV's "Pasadena"), which fall through to zero supply hits and
+    # silently drop these 9 colleges from every (college, SOC) supply
+    # lookup.
+    "East Los Angeles College": "East LA",
+    "Long Beach City College": "Long Beach",
+    "Los Angeles Harbor College": "LA Harbor",
+    "Los Angeles Mission College": "LA Mission",
+    "Los Angeles Pierce College": "LA Pierce",
+    "Los Angeles Southwest College": "LA Swest",
+    "Los Angeles Trade-Technical College": "LA Trade",
+    "Pasadena City College": "Pasadena",
+    "West Los Angeles College": "West LA",
+
+    # Other colleges — the auto-strip heuristic produces a name that
+    # doesn't match the supply CSV's shorter variant. Same root cause
+    # as the LA block above.
+    "Modesto Junior College": "Modesto",
+    "Monterey Peninsula College": "Monterey",
+    "Riverside City College": "Riverside",
+    "San Bernardino Valley College": "San Bernardino",
 }
 
 

@@ -350,7 +350,6 @@ def _build_swp_evidence(
     Mirrors _assemble_swp_evidence in generate.py but keyed off (college,
     soc) directly rather than running through an employer's hires set.
     """
-    from ontology.mcf_lookup import lookup_top6
     from ontology.supply import get_coe_supply
 
     coe_region = COLLEGE_COE_REGION.get(college, "")
@@ -369,12 +368,22 @@ def _build_swp_evidence(
     ]
     total_demand = annual_openings or 0
 
-    course_codes = [
-        course["code"]
-        for dept_ev in curriculum_evidence
-        for course in dept_ev.get("courses", [])
-    ]
-    top6_codes = lookup_top6(course_codes, college)
+    # TOP6 codes for the supply lookup come directly from the curriculum
+    # evidence's `via_top` — already correctly computed by
+    # _gather_aligned_curriculum from the PREPARES_FOR edges' `via_top`
+    # property. Previously this code path went through
+    # `lookup_top6(course_codes, college)` (MCF lookup), which silently
+    # returned an empty set for any college using non-MCF course codes
+    # (apprenticeships, college-specific renumbering, noncredit). The
+    # silent empty drop was producing zero-supply renderings for SOCs
+    # at colleges that genuinely had supply data — e.g. West Hills
+    # Lemoore × 49-9041 had supply 3.83 in supply_by_top.csv but the
+    # MCF lookup couldn't translate course codes like MM051D to a TOP6,
+    # so the SWP block claimed zero. Using via_top directly bypasses
+    # MCF entirely; the value was already computed upstream.
+    top6_codes: set[str] = set()
+    for dept_ev in curriculum_evidence:
+        top6_codes.update(dept_ev.get("via_top", []))
     supply_data, total_supply = get_coe_supply(top6_codes, college)
     supply_estimates = [
         SupplyEstimate(
