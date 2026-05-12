@@ -320,18 +320,9 @@ export default function CurriculumPathway({
         >
           {crosswalk.n_taught} of {crosswalk.n_total}
         </span>{" "}
-        <span
-          style={{
-            color: brandColor,
-            fontFamily: MONO,
-            fontWeight: 700,
-          }}
-        >
-          TOP
-        </span>
         {crosswalk.n_total === 1
-          ? " group crosswalks to "
-          : " groups crosswalk to "}
+          ? "TOP group crosswalks to"
+          : "TOP groups crosswalk to"}{" "}
         <span
           style={{
             color: brandColor,
