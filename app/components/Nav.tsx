@@ -21,7 +21,7 @@ export default function Nav() {
   // Close the hamburger menu whenever the route changes.
   useEffect(() => { setOpen(false); }, [pathname]);
 
-  const isLightPage = pathname === "/mission";
+  const isLightPage = pathname === "/mission" || pathname === "/privacy";
   const menuLinkClass = isLightPage
     ? "text-sm uppercase tracking-widest text-[#1a1a2e] hover:text-[#1a1a2e]/60 transition-colors"
     : "text-sm uppercase tracking-widest text-white hover:text-white/60 transition-colors";

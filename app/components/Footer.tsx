@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 export default function Footer() {
   const pathname = usePathname();
-  const isLightPage = pathname === "/mission";
+  const isLightPage = pathname === "/mission" || pathname === "/privacy";
 
   const bg = isLightPage ? "#F5F2EB" : "#060d1f";
   const textClass = isLightPage ? "text-[#1a1a2e]/60" : "text-gray-400";
@@ -90,7 +90,7 @@ export default function Footer() {
         <div className={`${borderClass} pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs`}>
           <span>&copy; {new Date().getFullYear()} Kallipolis Technologies. All rights reserved.</span>
           <div className="flex gap-6">
-            <a href="#" className={bottomLinkClass}>Privacy</a>
+            <a href="/privacy" className={bottomLinkClass}>Privacy</a>
             <a href="#" className={bottomLinkClass}>Terms</a>
             <a href="mailto:dayonekoo@kallipolis.us" className={bottomLinkClass}>Contact</a>
           </div>
