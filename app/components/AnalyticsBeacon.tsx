@@ -1,17 +1,12 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 
 const BEACON_URL =
   process.env.NEXT_PUBLIC_API_URL ?? "https://api.kallipolis.us";
 
-/**
- * Fires a page-view beacon on every route change.
- * Captures path, query params, and referrer; the backend captures IP server-side.
- * Uses sendBeacon for reliability (fires even on tab close).
- */
-export default function AnalyticsBeacon({ site }: { site: "app" | "atlas" }) {
+function BeaconInner({ site }: { site: "app" | "atlas" }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const lastUrl = useRef("");
@@ -44,4 +39,20 @@ export default function AnalyticsBeacon({ site }: { site: "app" | "atlas" }) {
   }, [pathname, searchParams, site]);
 
   return null;
+}
+
+/**
+ * Fires a page-view beacon on every route change.
+ * Captures path, query params, and referrer; the backend captures IP server-side.
+ * Uses sendBeacon for reliability (fires even on tab close).
+ *
+ * Wrapped in Suspense because useSearchParams requires it during
+ * static prerendering (Next.js App Router).
+ */
+export default function AnalyticsBeacon({ site }: { site: "app" | "atlas" }) {
+  return (
+    <Suspense fallback={null}>
+      <BeaconInner site={site} />
+    </Suspense>
+  );
 }
