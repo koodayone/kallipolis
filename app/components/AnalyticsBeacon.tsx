@@ -1,19 +1,23 @@
 "use client";
 
-import { Suspense, useEffect, useRef } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 
 const BEACON_URL =
   process.env.NEXT_PUBLIC_API_URL ?? "https://api.kallipolis.us";
 
-function BeaconInner({ site }: { site: "app" | "atlas" }) {
+/**
+ * Fires a page-view beacon on every route change.
+ * Captures path, query params, and referrer; the backend captures IP server-side.
+ * Uses sendBeacon for reliability (fires even on tab close).
+ */
+export default function AnalyticsBeacon({ site }: { site: "app" | "atlas" }) {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const lastUrl = useRef("");
 
   useEffect(() => {
-    const search = searchParams.toString();
-    const fullPath = search ? `${pathname}?${search}` : pathname;
+    const search = window.location.search;
+    const fullPath = search ? `${pathname}${search}` : pathname;
     if (fullPath === lastUrl.current) return;
     lastUrl.current = fullPath;
 
@@ -36,23 +40,7 @@ function BeaconInner({ site }: { site: "app" | "atlas" }) {
         keepalive: true,
       }).catch(() => {});
     }
-  }, [pathname, searchParams, site]);
+  }, [pathname, site]);
 
   return null;
-}
-
-/**
- * Fires a page-view beacon on every route change.
- * Captures path, query params, and referrer; the backend captures IP server-side.
- * Uses sendBeacon for reliability (fires even on tab close).
- *
- * Wrapped in Suspense because useSearchParams requires it during
- * static prerendering (Next.js App Router).
- */
-export default function AnalyticsBeacon({ site }: { site: "app" | "atlas" }) {
-  return (
-    <Suspense fallback={null}>
-      <BeaconInner site={site} />
-    </Suspense>
-  );
 }
