@@ -1,24 +1,27 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { API_BASE } from "@/api";
 
 /**
  * Fires a page-view beacon on every route change.
- * Captures path and referrer; the backend captures IP server-side.
+ * Captures path, query params, and referrer; the backend captures IP server-side.
  * Uses sendBeacon for reliability (fires even on tab close).
  */
 export default function AnalyticsBeacon() {
   const pathname = usePathname();
-  const lastPath = useRef("");
+  const searchParams = useSearchParams();
+  const lastUrl = useRef("");
 
   useEffect(() => {
-    if (pathname === lastPath.current) return;
-    lastPath.current = pathname;
+    const search = searchParams.toString();
+    const fullPath = search ? `${pathname}?${search}` : pathname;
+    if (fullPath === lastUrl.current) return;
+    lastUrl.current = fullPath;
 
     const payload = JSON.stringify({
-      path: pathname,
+      path: fullPath,
       referrer: document.referrer,
       site: "atlas",
     });
@@ -36,7 +39,7 @@ export default function AnalyticsBeacon() {
         keepalive: true,
       }).catch(() => {});
     }
-  }, [pathname]);
+  }, [pathname, searchParams]);
 
   return null;
 }
