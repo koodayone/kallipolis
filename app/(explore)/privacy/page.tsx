@@ -54,8 +54,8 @@ export default function PrivacyPage() {
             Kallipolis Privacy Statement
           </SectionHeading>
           <Paragraph>
-            Kallipolis works with public institutions, and we think privacy
-            should be simple. We collect very little, we don't track you across
+            Kallipolis aims to serve public institutions, and we think privacy
+            is a right. We collect very little, we don't track you across
             the web, and we don't sell data. This page explains the specifics.
           </Paragraph>
 
