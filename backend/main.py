@@ -11,6 +11,7 @@ from courses.api import router as courses_router
 from occupations.api import router as occupations_router
 from employers.api import router as employers_router
 from partnerships.api import router as partnerships_router
+from analytics.api import router as analytics_router
 from ontology.schema import init_schema, close_driver
 from ontology.timing import set_request_context
 
@@ -67,6 +68,7 @@ app.include_router(courses_router, prefix="/courses", tags=["Courses"])
 app.include_router(occupations_router, prefix="/occupations", tags=["Occupations"])
 app.include_router(employers_router, prefix="/employers", tags=["Employers"])
 app.include_router(partnerships_router, prefix="/partnerships", tags=["Partnerships"])
+app.include_router(analytics_router, prefix="/analytics", tags=["Analytics"])
 
 
 @app.get("/health")

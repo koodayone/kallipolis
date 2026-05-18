@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Days_One, Geist } from "next/font/google";
+import AnalyticsBeacon from "./components/AnalyticsBeacon";
 import "./globals.css";
 
 const daysOne = Days_One({
@@ -32,7 +33,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${daysOne.variable} ${geist.variable}`}>
-      <body>{children}</body>
+      <body>
+        <AnalyticsBeacon site="app" />
+        {children}
+      </body>
     </html>
   );
 }

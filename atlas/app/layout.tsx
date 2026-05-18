@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Days_One } from "next/font/google";
+import AnalyticsBeacon from "./AnalyticsBeacon";
 import "./globals.css";
 
 const inter = Inter({
@@ -27,7 +28,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${daysOne.variable}`}>
-      <body style={{ background: "#060d1f" }}>{children}</body>
+      <body style={{ background: "#060d1f" }}>
+        <AnalyticsBeacon />
+        {children}
+      </body>
     </html>
   );
 }
