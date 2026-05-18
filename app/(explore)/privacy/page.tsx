@@ -110,7 +110,10 @@ export default function PrivacyPage() {
           <SectionHeading>
             Kallipolis Privacy Statement
           </SectionHeading>
-          <p style={{ fontSize: 16, lineHeight: 1.75, color: BODY, marginTop: 16, marginBottom: 48 }}>
+          <p style={{ fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase", color: BODY, opacity: 0.4, marginTop: -8, marginBottom: 24 }}>
+            Last updated May 2026
+          </p>
+          <p style={{ fontSize: 16, lineHeight: 1.75, color: BODY, marginTop: 0, marginBottom: 48 }}>
             Kallipolis aims to serve public institutions, and we think privacy
             is a right. We collect minimal information, we don&apos;t track you across
             the web, and we don&apos;t sell data. This page explains the specifics.
