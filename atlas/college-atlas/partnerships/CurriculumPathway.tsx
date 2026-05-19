@@ -177,8 +177,9 @@ export default function CurriculumPathway({
   // Max chars per line — empirically tuned to each column's badge
   // width after subtracting the code-prefix region. Two lines lets us
   // accommodate ~60-char TOP names and ~75-char CIP titles before
-  // any truncation kicks in.
-  const TOP_NAME_CHARS_PER_LINE = 28;
+  // any truncation kicks in. TOP at 24 (not 28) since the code area
+  // widened to accommodate 6-digit codes with breathing room.
+  const TOP_NAME_CHARS_PER_LINE = 24;
   const CIP_TITLE_CHARS_PER_LINE = 38;
 
   // Sort: taught TOPs first (visually weighty content lives at top),
@@ -494,16 +495,16 @@ export default function CurriculumPathway({
                 {top.code}
               </text>
               <text
-                x={TOP_X_L + 70}
+                x={TOP_X_L + 96}
                 y={isTwoLine ? y - 3 : y + 5}
                 fontFamily={FONT}
                 fontSize={11}
                 fontWeight={taught ? 600 : 400}
                 fill={taught ? BG : INK_DIM}
               >
-                <tspan x={TOP_X_L + 70}>{lines[0]}</tspan>
+                <tspan x={TOP_X_L + 96}>{lines[0]}</tspan>
                 {isTwoLine && (
-                  <tspan x={TOP_X_L + 70} dy={13}>
+                  <tspan x={TOP_X_L + 96} dy={13}>
                     {lines[1]}
                   </tspan>
                 )}

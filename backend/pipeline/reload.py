@@ -13,6 +13,7 @@ from __future__ import annotations
 import argparse
 import json
 import logging
+import os
 import time
 from pathlib import Path
 
@@ -26,6 +27,7 @@ from partnerships.compute import (
     materialize_occupation_pipeline,
     materialize_has_competency,
 )
+from partnerships.precompute import build_all as precompute_partnership_cache
 
 logger = logging.getLogger(__name__)
 
@@ -287,6 +289,26 @@ def reload_region(region_key: str) -> None:
 
         # Step 8: Verify
         verify(driver)
+
+        # Step 9: Precompute partnership reports. Materializes every
+        # /partnerships/sectors and /partnerships/opportunity/{soc}
+        # response to gzipped JSON on disk so the serving layer can
+        # return them with a single file read instead of running the
+        # 6–8 Cypher queries per request that produced the slow tail
+        # (p99=60s, max=469s on prod). Wrapped in try/except because
+        # a precompute failure should not fail the reload — the
+        # serving layer's fallback path remains operational.
+        try:
+            cache_dir = Path(os.environ.get(
+                "KALLIPOLIS_CACHE_DIR", "/var/lib/kallipolis/cache"
+            ))
+            precompute_partnership_cache(driver=driver, out_dir=cache_dir)
+        except Exception as e:
+            logger.error(
+                f"precompute_partnership_cache failed: {e}; "
+                f"/partnerships endpoints will fall back to live "
+                f"computation (slow) until rerun"
+            )
 
     finally:
         close_driver()

@@ -349,17 +349,24 @@ def _gather_student_pipeline(
 
 
 def _gather_curriculum_crosswalk(college: str, soc_code: str) -> dict:
-    """Build the TOP4 × CIP × SOC pathway data for the report's hero
+    """Build the TOP6 × CIP × SOC pathway data for the report's hero
     visualization. Renders the institutional crosswalk chain in three
     columns:
 
-      • TOP4 column: every 4-digit TOP family whose courses
+      • TOP6 column: every 6-digit TOP code whose courses
         institutionally prepare for the SOC, marked taught-at-college
         or missing.
       • CIP column: every NCES CIP that bridges any of those TOPs to
         the target SOC, marked active (reachable through a taught
-        TOP4) or inactive.
+        TOP6) or inactive.
       • SOC column: the report's anchor occupation.
+
+    Keyed at TOP6 (not TOP4) because that's the granularity the CCCCO
+    PCAH TOP→CIP crosswalk actually operates at — rolling up to TOP4
+    hid cases where a college teaches some 6-digit children of a 4-
+    digit family but not others, with each TOP6 having its own CIP
+    bridges. The frontend can still cluster visually by TOP4 prefix
+    (substring(code, 0, 4)) without losing the TOP6 fidelity here.
 
     SAM filter: courses are scoped to A/B/C/D (Apprenticeship through
     Possibly Occupational, per CCCCO MIS Data Element Dictionary).
@@ -373,12 +380,12 @@ def _gather_curriculum_crosswalk(college: str, soc_code: str) -> dict:
     """
     driver = get_driver()
     from ontology.crosswalks import (
-        _load_top4_names,
+        load_top_titles,
         load_cip_titles,
-        top4_to_cips_for_soc,
+        top6_to_cips_for_soc,
     )
 
-    top4_names = _load_top4_names()["top4"]
+    top_titles = load_top_titles()
     cip_titles = load_cip_titles()
 
     # Asymmetric SAM filtering: SAM A/B/C/D on global only.
@@ -415,31 +422,31 @@ def _gather_curriculum_crosswalk(college: str, soc_code: str) -> dict:
             college=college, soc_code=soc_code,
         ).data()
 
-    global_top4 = {row["top6"][:4] for row in global_rows if row.get("top6")}
-    taught_top4 = {row["top6"][:4] for row in taught_rows if row.get("top6")}
+    global_top6 = {row["top6"] for row in global_rows if row.get("top6")}
+    taught_top6 = {row["top6"] for row in taught_rows if row.get("top6")}
 
-    # Bridge each TOP4 to its relevant CIPs for this SOC.
-    cips_by_top4 = top4_to_cips_for_soc(soc_code)
-
-    # Project: every TOP4 in the global prep set, plus its bridging CIPs.
+    # Project: every TOP6 in the global prep set, plus its bridging CIPs
+    # for this SOC. CIPs that map to the SOC but are unreachable from
+    # this specific TOP6 are excluded — only "relevant" CIPs for the
+    # (TOP6, SOC) pair appear.
     tops = []
     all_cips: set[str] = set()
-    for top4 in sorted(global_top4):
-        relevant_cips = sorted(cips_by_top4.get(top4, set()))
+    for top6 in sorted(global_top6):
+        relevant_cips = top6_to_cips_for_soc(top6, soc_code)
         if not relevant_cips:
-            # TOP4 has no CIP that bridges to this SOC — shouldn't happen
+            # TOP6 has no CIP that bridges to this SOC — shouldn't happen
             # given the global query came from PREPARES_FOR edges, but
             # guard against orphan TOPs nonetheless.
             continue
         tops.append({
-            "code": top4,
-            "name": top4_names.get(top4, ""),
-            "taught_at_college": top4 in taught_top4,
+            "code": top6,
+            "name": top_titles.get(top6, ""),
+            "taught_at_college": top6 in taught_top6,
             "cips": relevant_cips,
         })
         all_cips.update(relevant_cips)
 
-    # Active CIPs: those reachable through at least one taught TOP4.
+    # Active CIPs: those reachable through at least one taught TOP6.
     active_cips: set[str] = set()
     for t in tops:
         if t["taught_at_college"]:

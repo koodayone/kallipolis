@@ -344,11 +344,18 @@ function OccupationOpportunityRow({
   const gap = occ.gap;
   const hasGap = gap !== null && gap !== undefined;
   const isOversupplied = hasGap && gap < 0;
+  // "gap" rows surface regionally-demanded SOCs the college has no
+  // institutional pathway for (course_count = 0). Dimmed and badged
+  // so users can scan past unless explicitly looking at consortia-
+  // level opportunities.
+  const isGap = occ.alignment_status === "gap";
   const gapColor = !hasGap
     ? "rgba(255,255,255,0.4)"
+    : isGap
+    ? "rgba(255,255,255,0.55)"      // muted for gap rows — not the "good signal" green
     : gap >= 0 ? "#4ade80" : "#f87171";
   return (
-    <div style={{ opacity: isOversupplied ? 0.55 : 1 }}>
+    <div style={{ opacity: (isOversupplied || isGap) ? 0.55 : 1 }}>
       <button
         onClick={() => setIsOpen((o) => !o)}
         style={{
@@ -379,11 +386,30 @@ function OccupationOpportunityRow({
           <span style={{ fontFamily: MONO, fontSize: "11px", fontWeight: 500, letterSpacing: "0.05em", color: "rgba(255,255,255,0.4)", fontVariantNumeric: "tabular-nums", whiteSpace: "nowrap" }}>
             SOC {occ.soc_code}
           </span>
+          {isGap && (
+            <span
+              title="This college has no aligned curriculum for this SOC; surfaced as a consortia-level workforce opportunity"
+              style={{
+                fontFamily: FONT, fontSize: "10px", fontWeight: 500,
+                letterSpacing: "0.06em", textTransform: "uppercase",
+                color: "rgba(255,255,255,0.5)",
+                background: "rgba(255,255,255,0.05)",
+                border: "1px solid rgba(255,255,255,0.1)",
+                borderRadius: "3px",
+                padding: "2px 6px",
+                whiteSpace: "nowrap",
+              }}
+            >
+              no current pathway
+            </span>
+          )}
         </span>
         {hasGap && (
           <span
             title={
-              gap >= 0
+              isGap
+                ? "Regional demand for this SOC; the college has no institutionally aligned curriculum (a consortia-level opportunity)"
+                : gap >= 0
                 ? "Regional demand exceeds this college's projected pipeline by this many positions per year"
                 : "This college's projected pipeline exceeds regional demand for this occupation"
             }

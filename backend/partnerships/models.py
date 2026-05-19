@@ -10,7 +10,7 @@ evidence block within it.
 """
 
 from pydantic import BaseModel
-from typing import Optional
+from typing import Literal, Optional
 
 
 # ── Evidence primitives (composed into OpportunityReport) ─────────────────
@@ -76,7 +76,7 @@ class StudentEvidence(BaseModel):
 
 
 class CrosswalkTop(BaseModel):
-    """A 4-digit TOP family in the Curriculum Alignment pathway view.
+    """A 6-digit TOP code in the Curriculum Alignment pathway view.
 
     Renders as a pill-badge in the leftmost column of the hero
     visualization. The `taught_at_college` flag drives the visual
@@ -84,9 +84,14 @@ class CrosswalkTop(BaseModel):
     brand-colored) and TOPs in the institutional prep set that the
     college doesn't teach (outlined, dimmed) — the curriculum-
     development surface.
+
+    Keyed at TOP6 (the granularity CCCCO PCAH's TOP→CIP crosswalk
+    actually operates at) rather than TOP4 (a display abbreviation).
+    The 4-digit family can still be derived in the frontend by
+    substring(code, 0, 4) for visual grouping if desired.
     """
-    code: str                   # 4-digit TOP code, e.g., "0702"
-    name: str                   # e.g., "Computer Information Systems"
+    code: str                   # 6-digit TOP code, e.g., "070200"
+    name: str                   # 6-digit title, e.g., "Computer Information Systems"
     taught_at_college: bool
     cips: list[str]             # CIP codes this TOP bridges to (filtered to those reaching the SOC)
 
@@ -107,18 +112,24 @@ class CrosswalkCip(BaseModel):
 
 
 class CurriculumCrosswalk(BaseModel):
-    """The TOP4 × CIP × SOC pathway data for the Curriculum Alignment
+    """The TOP6 × CIP × SOC pathway data for the Curriculum Alignment
     section's hero visualization.
 
     Composed deterministically from the institutional chain (CCCCO
     TOP-CIP → NCES CIP-SOC) restricted to courses with SAM A/B/C/D
     (occupational per CCCCO MIS Data Element Dictionary). Headline
-    metric: `n_taught` of `n_total` TOP families supporting this SOC.
+    metric: `n_taught` of `n_total` TOP6 codes supporting this SOC.
+
+    Keyed at TOP6 — the granularity CCCCO PCAH actually maps at.
+    Previously rolled up to TOP4 for display simplicity, which hid
+    cases where a college teaches some 6-digit children of a 4-digit
+    family but not others; the crosswalk linkage breaks at TOP6, so
+    that's the right unit of analysis.
     """
     tops: list[CrosswalkTop]
     cips: list[CrosswalkCip]
-    n_taught: int               # TOP4s the college teaches
-    n_total: int                # TOP4s in the global prep set
+    n_taught: int               # TOP6 codes the college teaches
+    n_total: int                # TOP6 codes in the global prep set
     coverage_pct: float         # 100 * n_taught / n_total, rounded
 
 
@@ -214,6 +225,17 @@ class OpportunityRow(BaseModel):
     student_count: int = 0
     employer_count: int = 0
     gap: Optional[int] = None
+    # Two-valued alignment status driving the row's visual treatment:
+    # - "aligned": college has at least one PREPARES_FOR-aligned course
+    #   (course_count > 0). Renders as a normal navigable opportunity.
+    # - "gap":     SOC is regionally demanded AND in the PCAH sector
+    #   AND CTE-reachable globally, but the college has NO institutionally
+    #   aligned curriculum for it (course_count = 0). Renders distinctly
+    #   to surface "no current pathway, regional demand exists" — a
+    #   consortia-level opportunity for the college to consider closing.
+    # Default "aligned" preserves backward-compat for any caller
+    # constructing rows without explicitly tagging.
+    alignment_status: Literal["aligned", "gap"] = "aligned"
 
 
 class SectorEntry(BaseModel):
