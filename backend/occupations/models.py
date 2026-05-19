@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Optional
+from typing import Literal, Optional
 
 
 class CourseAlignment(BaseModel):
@@ -22,6 +22,12 @@ class OccupationMatch(BaseModel):
     education_level: Optional[str] = None
     aligned_course_count: int = 0
     aligned_department_count: int = 0
+    # Mirrors the partnerships view's two-valued alignment tag:
+    # "aligned" — college has at least one PREPARES_FOR-aligned course
+    # "gap"     — SOC is regionally demanded and CTE-reachable, but the
+    #             college has no aligned curriculum. Surfaced honestly
+    #             rather than silently dropped from the view.
+    alignment_status: Literal["aligned", "gap"] = "aligned"
 
 
 class RegionOverview(BaseModel):

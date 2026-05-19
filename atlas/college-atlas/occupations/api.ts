@@ -11,6 +11,12 @@ export type ApiOccupationMatch = {
   education_level: string | null;
   aligned_course_count: number;
   aligned_department_count: number;
+  // "aligned" — college has at least one PREPARES_FOR-aligned course
+  // "gap"     — SOC is regionally demanded and CTE-reachable, but no
+  //             aligned curriculum at this college. Drives row dim +
+  //             "no curriculum at <college>" detail message. Optional
+  //             for backward-compat with older API responses.
+  alignment_status?: "aligned" | "gap";
 };
 
 export type ApiRegionOverview = {

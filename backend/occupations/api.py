@@ -3,7 +3,7 @@
 from collections import defaultdict
 from fastapi import APIRouter, HTTPException
 from ontology.schema import get_driver
-from ontology.crosswalks import load_top_titles
+from ontology.crosswalks import cte_reachable_socs, load_top_titles
 from occupations.models import (
     LaborMarketOverview,
     RegionOverview,
@@ -21,14 +21,30 @@ router = APIRouter()
 
 @router.get("/overview", response_model=LaborMarketOverview)
 def get_labor_market_overview(college: str):
-    """Returns regions and occupations ranked by curriculum alignment via
-    the institutional TOP-SOC crosswalk (PREPARES_FOR edges)."""
+    """Returns regions and the CTE-reachable, regionally-demanded
+    occupations for the college, tagged by curriculum-alignment status.
+
+    Surfaces both aligned occupations (college has at least one
+    PREPARES_FOR-aligned course) and gap occupations (regionally
+    demanded and CTE-reachable globally, but no aligned curriculum at
+    this college). Honest workforce-alignment surface — gaps are real
+    institutional signal, not noise to drop. Mirrors the relaxed
+    filter in partnerships.opportunity.build_sector_index.
+    """
     driver = get_driver()
+    cte_socs = list(cte_reachable_socs())
     try:
         with driver.session() as session:
+            # OPTIONAL MATCH on the PREPARES_FOR + CONTAINS chain so SOCs
+            # without aligned curriculum at this college still surface.
+            # CTE filter (`occ.soc_code IN $cte_socs`) preserves the
+            # workforce-development scope — non-CTE SOCs (gen-ed roles,
+            # etc.) would otherwise flood the list.
             result = session.run("""
                 MATCH (c:College {name: $college})-[:IN_MARKET]->(r:Region)-[d:DEMANDS]->(occ:Occupation)
-                      <-[:PREPARES_FOR]-(course:Course {college: $college})<-[:CONTAINS]-(dept:Department)
+                WHERE occ.soc_code IN $cte_socs
+                OPTIONAL MATCH (occ)<-[:PREPARES_FOR]-(course:Course {college: $college})
+                                <-[:CONTAINS]-(dept:Department)
                 RETURN COALESCE(r.display_name, r.name) AS region,
                        occ.soc_code AS soc_code, occ.title AS title,
                        occ.description AS description, d.annual_wage AS annual_wage,
@@ -38,8 +54,7 @@ def get_labor_market_overview(college: str):
                        occ.education_level AS education_level,
                        count(DISTINCT course) AS aligned_course_count,
                        count(DISTINCT dept) AS aligned_department_count
-                ORDER BY aligned_course_count DESC
-            """, college=college)
+            """, college=college, cte_socs=cte_socs)
             records = result.data()
 
         if not records:
@@ -47,6 +62,7 @@ def get_labor_market_overview(college: str):
 
         regions: dict[str, list] = defaultdict(list)
         for r in records:
+            course_count = r["aligned_course_count"]
             regions[r["region"]].append(OccupationMatch(
                 soc_code=r["soc_code"],
                 title=r["title"],
@@ -56,8 +72,9 @@ def get_labor_market_overview(college: str):
                 growth_rate=r.get("growth_rate"),
                 annual_openings=r.get("annual_openings"),
                 education_level=r.get("education_level"),
-                aligned_course_count=r["aligned_course_count"],
+                aligned_course_count=course_count,
                 aligned_department_count=r["aligned_department_count"],
+                alignment_status="aligned" if course_count > 0 else "gap",
             ))
 
         return LaborMarketOverview(

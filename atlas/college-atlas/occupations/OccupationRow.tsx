@@ -34,6 +34,10 @@ export type OccupationData = {
   description?: string | null;
   aligned_course_count?: number;
   aligned_department_count?: number;
+  // "aligned" (default) — college has aligned curriculum
+  // "gap"               — no curriculum at this college; surfaced
+  //                       honestly with dim row + minimal message
+  alignment_status?: "aligned" | "gap";
 };
 
 export type OccupationDetail = {
@@ -71,7 +75,7 @@ type Props = {
   hideCurriculumAlignment?: boolean;
 };
 
-export default function OccupationRow({ occ, index, brandColor, isOpen: controlledOpen, onToggle, detail, isLoading, onExpand, regionNames, collegeName: _collegeName, hideCurriculumAlignment }: Props) {
+export default function OccupationRow({ occ, index, brandColor, isOpen: controlledOpen, onToggle, detail, isLoading, onExpand, regionNames, collegeName, hideCurriculumAlignment }: Props) {
   const [internalOpen, setInternalOpen] = useState(false);
   const [showAllGroups, setShowAllGroups] = useState(false);
   const isOpen = controlledOpen ?? internalOpen;
@@ -92,8 +96,14 @@ export default function OccupationRow({ occ, index, brandColor, isOpen: controll
     onExpand?.();
   };
 
+  // Gap rows: regionally demanded, CTE-reachable, but no aligned
+  // curriculum at this college. Dimmed + badged so they sit in the
+  // honest list without dominating scan attention. Same visual story
+  // as the gap rows in the partnerships sector accordion.
+  const isGap = occ.alignment_status === "gap";
+
   return (
-    <div>
+    <div style={{ opacity: isGap ? 0.55 : 1 }}>
       <motion.button
         initial={hasMounted.current ? false : { opacity: 0, y: 6 }}
         animate={{ opacity: 1, y: 0 }}
@@ -114,8 +124,27 @@ export default function OccupationRow({ occ, index, brandColor, isOpen: controll
           style={{ transform: isOpen ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>
           <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-        <span style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)", lineHeight: 1.4 }}>
-          {occ.title}
+        <span style={{ display: "inline-flex", alignItems: "baseline", gap: "8px", flexWrap: "wrap", minWidth: 0 }}>
+          <span style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)", lineHeight: 1.4 }}>
+            {occ.title}
+          </span>
+          {isGap && (
+            <span
+              title="No aligned curriculum at this college"
+              style={{
+                fontFamily: FONT, fontSize: "10px", fontWeight: 500,
+                letterSpacing: "0.06em", textTransform: "uppercase",
+                color: "rgba(255,255,255,0.5)",
+                background: "rgba(255,255,255,0.05)",
+                border: "1px solid rgba(255,255,255,0.1)",
+                borderRadius: "3px",
+                padding: "2px 6px",
+                whiteSpace: "nowrap",
+              }}
+            >
+              no current pathway
+            </span>
+          )}
         </span>
         <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.5)", textAlign: "right" }}>
           {formatWage(occ.annual_wage ?? null)}
@@ -189,44 +218,55 @@ export default function OccupationRow({ occ, index, brandColor, isOpen: controll
                       </div>
                     )}
 
-                    {!hideCurriculumAlignment && detail.aligned_top_groups.length > 0 && (
+                    {!hideCurriculumAlignment && (
                       <div>
                         <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: brandColor, opacity: 0.7, display: "block", marginBottom: "10px" }}>
                           Curriculum Alignment
                         </span>
 
-                        <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-                          {visibleGroups.map((group) => (
-                            <TopGroupBlock key={group.top_code || "unknown"} group={group} brandColor={brandColor} />
-                          ))}
-                          {showAllGroups && hiddenGroups.map((group, i) => (
-                            <motion.div
-                              key={group.top_code || `hidden-${i}`}
-                              initial={{ opacity: 0, y: -4 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{ duration: 0.18, delay: Math.min(i * 0.04, 0.2) }}
-                            >
-                              <TopGroupBlock group={group} brandColor={brandColor} />
-                            </motion.div>
-                          ))}
-                        </div>
+                        {detail.aligned_top_groups.length === 0 ? (
+                          // Gap case — make the lack of alignment explicit and minimal.
+                          // No crosswalk visualization here (that lives in the
+                          // partnership opportunity report); just a one-liner.
+                          <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.5, margin: 0 }}>
+                            No curriculum at {collegeName || "this college"} aligned with this occupation.
+                          </p>
+                        ) : (
+                          <>
+                            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                              {visibleGroups.map((group) => (
+                                <TopGroupBlock key={group.top_code || "unknown"} group={group} brandColor={brandColor} />
+                              ))}
+                              {showAllGroups && hiddenGroups.map((group, i) => (
+                                <motion.div
+                                  key={group.top_code || `hidden-${i}`}
+                                  initial={{ opacity: 0, y: -4 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  transition={{ duration: 0.18, delay: Math.min(i * 0.04, 0.2) }}
+                                >
+                                  <TopGroupBlock group={group} brandColor={brandColor} />
+                                </motion.div>
+                              ))}
+                            </div>
 
-                        {isCapped && (
-                          <button
-                            onClick={() => setShowAllGroups(true)}
-                            style={{
-                              fontFamily: FONT, fontSize: "11px", fontWeight: 500,
-                              color: brandColor, opacity: 0.65,
-                              background: "transparent", border: "none",
-                              padding: "10px 8px 0 0",
-                              cursor: "pointer", textAlign: "left",
-                              transition: "opacity 0.15s",
-                            }}
-                            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = "1"; }}
-                            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = "0.65"; }}
-                          >
-                            Show all {detail.aligned_program_area_count} program areas
-                          </button>
+                            {isCapped && (
+                              <button
+                                onClick={() => setShowAllGroups(true)}
+                                style={{
+                                  fontFamily: FONT, fontSize: "11px", fontWeight: 500,
+                                  color: brandColor, opacity: 0.65,
+                                  background: "transparent", border: "none",
+                                  padding: "10px 8px 0 0",
+                                  cursor: "pointer", textAlign: "left",
+                                  transition: "opacity 0.15s",
+                                }}
+                                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = "1"; }}
+                                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = "0.65"; }}
+                              >
+                                Show all {detail.aligned_program_area_count} program areas
+                              </button>
+                            )}
+                          </>
                         )}
                       </div>
                     )}
