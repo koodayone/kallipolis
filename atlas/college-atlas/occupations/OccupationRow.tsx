@@ -6,6 +6,11 @@ import DataCitation from "@/ui/DataCitation";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 const MONO = "var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace";
+// Sun-gold institutional "taught" marker. Same value as
+// CurriculumPathway.tsx TAUGHT_GLOW and tailwind.config.ts atlas-gold;
+// duplicated as a literal because the surrounding tokens (FONT, MONO)
+// also live as file-local constants here.
+const TAUGHT_GLOW = "#c9a84c";
 
 // Visible cap on the TOP-group list within Curriculum Alignment. Above
 // this count, the surface shows the first GROUP_CAP groups + a "Show
@@ -354,15 +359,19 @@ export function TopGroupBlock({ group, brandColor, collegeName }: {
         display: "flex", alignItems: "baseline", gap: "8px",
         padding: "0 0 6px",
       }}>
-        {/* Bullet: filled disc for taught TOPs; hollow ring for untaught.
-            Hollow uses an inset box-shadow ring at the same 0.3 token
-            as the filled bullet, so the visual weight matches — the
-            difference reads as "could feed this SOC, doesn't here." */}
+        {/* Bullet: gold-filled disc for taught TOPs; hollow ring at low
+            opacity for untaught. The gold (TAUGHT_GLOW) mirrors the
+            "taught" marker on partnerships hero TOP badges and the SOC
+            destination ring, so both surfaces share one visual
+            vocabulary for "the college teaches this." Bullet is 6×6
+            (up from 4×4) because the gold-vs-dim-ring delta wants a
+            target the eye can land on without squinting; 6×6 still
+            sits comfortably with the 11px TOP code text. */}
         <span style={{
           display: "inline-block",
-          width: "4px", height: "4px", borderRadius: "50%",
-          background: isTaught ? "rgba(255,255,255,0.3)" : "transparent",
-          boxShadow: isTaught ? "none" : "inset 0 0 0 1px rgba(255,255,255,0.3)",
+          width: "6px", height: "6px", borderRadius: "50%",
+          background: isTaught ? TAUGHT_GLOW : "transparent",
+          boxShadow: isTaught ? "none" : "inset 0 0 0 1px rgba(255,255,255,0.28)",
           flexShrink: 0,
           alignSelf: "center",
         }} />
