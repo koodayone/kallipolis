@@ -355,7 +355,15 @@ function OccupationOpportunityRow({
     ? "rgba(255,255,255,0.55)"      // muted for gap rows — not the "good signal" green
     : gap >= 0 ? "#4ade80" : "#f87171";
   return (
-    <div style={{ opacity: (isOversupplied || isGap) ? 0.55 : 1 }}>
+    <div style={{
+      // Dim signals "deprioritize at a glance" — oversupplied
+      // (pipeline outpaces demand) or gap (no institutional pathway).
+      // Once the user expands the row they're actively examining it,
+      // so lift opacity back to 1 to remove friction. Smooth
+      // transition pairs with the accordion animation.
+      opacity: ((isOversupplied || isGap) && !isOpen) ? 0.55 : 1,
+      transition: "opacity 0.22s",
+    }}>
       <button
         onClick={() => setIsOpen((o) => !o)}
         style={{

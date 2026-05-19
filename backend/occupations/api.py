@@ -3,18 +3,31 @@
 from collections import defaultdict
 from fastapi import APIRouter, HTTPException
 from ontology.schema import get_driver
-from ontology.crosswalks import cte_reachable_socs, load_top_titles
+from ontology.crosswalks import (
+    cte_reachable_socs,
+    load_cip_titles,
+    load_top_titles,
+    top6_to_cips_for_soc,
+)
 from occupations.models import (
     LaborMarketOverview,
     RegionOverview,
     OccupationMatch,
     OccupationDetail,
+    CipMatch,
     CourseAlignment,
     TopAlignmentGroup,
     OccupationQueryRequest,
     OccupationQueryResponse,
 )
 from occupations.query import run_occupation_query
+
+# SAM A/B/C/D = occupational classification per CCCCO MIS Data Element
+# Dictionary. Filters out gen-ed feeders (SAM E) from the system-wide
+# pathway query so the universe of "TOPs that feed this SOC" stays
+# bounded to workforce-development action surface. Mirrors the asymmetric
+# filter in partnerships._gather_curriculum_crosswalk.
+SAM_OCCUPATIONAL = ["A", "B", "C", "D"]
 
 router = APIRouter()
 
@@ -124,6 +137,20 @@ def get_occupation_detail(soc_code: str, college: str):
                 for r in course_result
             ]
 
+            # System-wide TOP6 pathway: every TOP6 that ANY college has a
+            # SAM A/B/C/D PREPARES_FOR course under for this SOC. Defines
+            # the universe of TOPs that institutionally feed the SOC;
+            # whichever subset this college teaches becomes the taught
+            # set, the remainder surfaces as untaught (curriculum-
+            # development surface). Mirrors the global query in
+            # partnerships._gather_curriculum_crosswalk — same Cypher,
+            # same SAM filter, same source of truth.
+            global_top_rows = session.run("""
+                MATCH (c:Course)-[r:PREPARES_FOR]->(:Occupation {soc_code: $soc})
+                WHERE c.sam_code IN $sam_codes
+                RETURN DISTINCT r.via_top AS top6
+            """, soc=soc_code, sam_codes=SAM_OCCUPATIONAL).data()
+
             region_result = session.run("""
                 MATCH (r:Region)-[d:DEMANDS]->(occ:Occupation {soc_code: $soc})
                 RETURN COALESCE(r.display_name, r.name) AS region, d.employment AS employment,
@@ -135,20 +162,44 @@ def get_occupation_detail(soc_code: str, college: str):
         # Group aligned courses by their TOP6 — the institutional pivot
         # that mediates each course→occupation pathway.
         top_titles = load_top_titles()
+        cip_titles = load_cip_titles()
         by_top: dict[str, list[CourseAlignment]] = defaultdict(list)
         for c in aligned_courses:
             by_top[c.via_top or ""].append(c)
 
-        aligned_top_groups = [
-            TopAlignmentGroup(
-                top_code=tc,
-                top_title=top_titles.get(tc, ""),
-                courses=sorted(courses, key=lambda c: c.code),
-            )
-            for tc, courses in by_top.items()
-        ]
-        # Strongest program-area concentration first; alphabetical tie-break.
-        aligned_top_groups.sort(key=lambda g: (-len(g.courses), g.top_code))
+        taught_top6 = {tc for tc in by_top if tc}
+        global_top6 = {row["top6"] for row in global_top_rows if row.get("top6")}
+
+        # Universe = taught ∪ global. Drop blanks; we don't render
+        # courses-without-TOP as a standalone group (rare edge case).
+        all_top6 = (taught_top6 | global_top6)
+        all_top6.discard("")
+
+        aligned_top_groups: list[TopAlignmentGroup] = []
+        for top6 in all_top6:
+            courses = sorted(by_top.get(top6, []), key=lambda c: c.code)
+            taught = top6 in taught_top6
+            cip_codes = top6_to_cips_for_soc(top6, soc_code)
+            cips = [
+                CipMatch(code=cip, title=cip_titles.get(cip, ""))
+                for cip in cip_codes
+            ]
+            aligned_top_groups.append(TopAlignmentGroup(
+                top_code=top6,
+                top_title=top_titles.get(top6, ""),
+                taught=taught,
+                courses=courses,
+                cips=cips,
+            ))
+
+        # Sort: taught first (strongest concentration first within
+        # taught), then untaught (alphabetical by TOP code). Keeps "what
+        # we teach" front-loaded, with the system pathway visible below.
+        aligned_top_groups.sort(key=lambda g: (
+            0 if g.taught else 1,
+            -len(g.courses),
+            g.top_code,
+        ))
 
         return OccupationDetail(
             soc_code=soc_code,
@@ -157,6 +208,11 @@ def get_occupation_detail(soc_code: str, college: str):
             education_level=occ_result["education_level"],
             aligned_top_groups=aligned_top_groups,
             aligned_course_count=len(aligned_courses),
+            # Total TOP6 groups in the section (taught + untaught) so the
+            # "Show all N program areas" affordance reflects what's
+            # actually displayable. Previously counted only taught
+            # groups; the rename to drop "aligned_" would ripple across
+            # employers/api.ts and is deferred.
             aligned_program_area_count=len(aligned_top_groups),
             regions=[{
                 "region": r["region"],
