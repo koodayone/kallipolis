@@ -363,13 +363,12 @@ export function TopGroupBlock({ group, brandColor, collegeName }: {
             opacity for untaught. The gold (TAUGHT_GLOW) mirrors the
             "taught" marker on partnerships hero TOP badges and the SOC
             destination ring, so both surfaces share one visual
-            vocabulary for "the college teaches this." Bullet is 6×6
-            (up from 4×4) because the gold-vs-dim-ring delta wants a
-            target the eye can land on without squinting; 6×6 still
-            sits comfortably with the 11px TOP code text. */}
+            vocabulary for "the college teaches this." 5×5 — the color
+            contrast carries the emphasis, so size stays modest and
+            doesn't compete with the 11px TOP code text. */}
         <span style={{
           display: "inline-block",
-          width: "6px", height: "6px", borderRadius: "50%",
+          width: "5px", height: "5px", borderRadius: "50%",
           background: isTaught ? TAUGHT_GLOW : "transparent",
           boxShadow: isTaught ? "none" : "inset 0 0 0 1px rgba(255,255,255,0.28)",
           flexShrink: 0,
