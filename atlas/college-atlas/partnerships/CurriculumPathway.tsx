@@ -56,6 +56,12 @@ type Props = {
 type Selection =
   | { kind: "top"; code: string }
   | { kind: "cip"; code: string }
+  // SOC selection has no `code` — there's exactly one SOC in the view
+  // (the report's anchor). Selecting it means "highlight every edge in
+  // the pathway, including CIP→SOC edges that are normally invisible
+  // for inactive CIPs." Useful in the gap/exploratory case where no
+  // taught TOP is lighting up the right leg of the chain.
+  | { kind: "soc" }
   | null;
 
 export default function CurriculumPathway({
@@ -116,6 +122,9 @@ export default function CurriculumPathway({
     if (selection.kind === "cip") {
       return topsByCip.get(selection.code)?.has(topCode) ?? false;
     }
+    // SOC-selected: every TOP participates in the pathway by definition
+    // (the entire crosswalk feeds this one SOC), so all TOPs highlight.
+    if (selection.kind === "soc") return true;
     return null;
   }
   function highlightCip(cipCode: string): boolean | null {
@@ -124,6 +133,7 @@ export default function CurriculumPathway({
       return cipsByTop.get(selection.code)?.has(cipCode) ?? false;
     }
     if (selection.kind === "cip") return selection.code === cipCode;
+    if (selection.kind === "soc") return true;
     return null;
   }
   function highlightTopCipEdge(topCode: string, cipCode: string): boolean | null {
@@ -134,6 +144,8 @@ export default function CurriculumPathway({
     if (selection.kind === "cip") {
       return selection.code === cipCode;
     }
+    // SOC-selected: every real TOP→CIP edge participates.
+    if (selection.kind === "soc") return true;
     return null;
   }
   function highlightCipSocEdge(cipCode: string): boolean | null {
@@ -142,6 +154,10 @@ export default function CurriculumPathway({
       return cipsByTop.get(selection.code)?.has(cipCode) ?? false;
     }
     if (selection.kind === "cip") return selection.code === cipCode;
+    // SOC-selected: this is the *point* of clicking the SOC — reveal
+    // every CIP→SOC edge regardless of cipActive. The CIP→SOC edge
+    // renderer respects this and lifts opacity from 0 to highlighted.
+    if (selection.kind === "soc") return true;
     return null;
   }
   // ── Layout coordinates (all in SVG user units) ─────────────────────
@@ -177,8 +193,9 @@ export default function CurriculumPathway({
   // Max chars per line — empirically tuned to each column's badge
   // width after subtracting the code-prefix region. Two lines lets us
   // accommodate ~60-char TOP names and ~75-char CIP titles before
-  // any truncation kicks in.
-  const TOP_NAME_CHARS_PER_LINE = 28;
+  // any truncation kicks in. TOP at 24 (not 28) since the code area
+  // widened to accommodate 6-digit codes with breathing room.
+  const TOP_NAME_CHARS_PER_LINE = 24;
   const CIP_TITLE_CHARS_PER_LINE = 38;
 
   // Sort: taught TOPs first (visually weighty content lives at top),
@@ -494,16 +511,16 @@ export default function CurriculumPathway({
                 {top.code}
               </text>
               <text
-                x={TOP_X_L + 70}
+                x={TOP_X_L + 96}
                 y={isTwoLine ? y - 3 : y + 5}
                 fontFamily={FONT}
                 fontSize={11}
                 fontWeight={taught ? 600 : 400}
                 fill={taught ? BG : INK_DIM}
               >
-                <tspan x={TOP_X_L + 70}>{lines[0]}</tspan>
+                <tspan x={TOP_X_L + 96}>{lines[0]}</tspan>
                 {isTwoLine && (
-                  <tspan x={TOP_X_L + 70} dy={13}>
+                  <tspan x={TOP_X_L + 96} dy={13}>
                     {lines[1]}
                   </tspan>
                 )}
@@ -610,19 +627,29 @@ export default function CurriculumPathway({
           const blockTop = socY - blockH / 2;
           const codeY = blockTop + CODE_FONT - 2;
           const titleY0 = blockTop + CODE_FONT + 16;
+          const isSocSelected = selection?.kind === "soc";
           return (
-            <g>
+            <g
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelection(isSocSelected ? null : { kind: "soc" });
+              }}
+              style={{ cursor: "pointer" }}
+            >
               {/* Brand fill + taught-glow ring matches the visual
                   treatment on taught TOP badges. The SOC sits at the
                   end of the lit pathway, so it carries the same
-                  "active/reached" visual signal. */}
+                  "active/reached" visual signal. When selected, the
+                  ring widens to signal "you've activated the
+                  destination — every edge feeding here is now lit." */}
               <circle
                 cx={SOC_X}
                 cy={socY}
                 r={SOC_R}
                 fill={brandColor}
                 stroke={TAUGHT_GLOW}
-                strokeWidth={2}
+                strokeWidth={isSocSelected ? 4 : 2}
+                style={{ transition: "stroke-width 0.18s" }}
               />
               <text
                 x={SOC_X}

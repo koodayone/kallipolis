@@ -6,6 +6,11 @@ import DataCitation from "@/ui/DataCitation";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 const MONO = "var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace";
+// Sun-gold institutional "taught" marker. Same value as
+// CurriculumPathway.tsx TAUGHT_GLOW and tailwind.config.ts atlas-gold;
+// duplicated as a literal because the surrounding tokens (FONT, MONO)
+// also live as file-local constants here.
+const TAUGHT_GLOW = "#c9a84c";
 
 // Visible cap on the TOP-group list within Curriculum Alignment. Above
 // this count, the surface shows the first GROUP_CAP groups + a "Show
@@ -34,6 +39,10 @@ export type OccupationData = {
   description?: string | null;
   aligned_course_count?: number;
   aligned_department_count?: number;
+  // "aligned" (default) — college has aligned curriculum
+  // "gap"               — no curriculum at this college; surfaced
+  //                       honestly with dim row + minimal message
+  alignment_status?: "aligned" | "gap";
 };
 
 export type OccupationDetail = {
@@ -43,7 +52,14 @@ export type OccupationDetail = {
   aligned_top_groups: Array<{
     top_code: string;
     top_title: string;
+    // True if the college teaches a PREPARES_FOR course under this
+    // TOP6 for this SOC. Optional for backward-compat — older API
+    // responses omit it; the renderer defaults to taught.
+    taught?: boolean;
     courses: Array<{ code: string; name: string; department: string; via_top: string | null }>;
+    // Federal CIPs bridging this TOP6 to the SOC. Drives the per-TOP
+    // CIP rail. Optional for backward-compat.
+    cips?: Array<{ code: string; title: string }>;
   }>;
   aligned_course_count: number;
   aligned_program_area_count: number;
@@ -71,7 +87,7 @@ type Props = {
   hideCurriculumAlignment?: boolean;
 };
 
-export default function OccupationRow({ occ, index, brandColor, isOpen: controlledOpen, onToggle, detail, isLoading, onExpand, regionNames, collegeName: _collegeName, hideCurriculumAlignment }: Props) {
+export default function OccupationRow({ occ, index, brandColor, isOpen: controlledOpen, onToggle, detail, isLoading, onExpand, regionNames, collegeName, hideCurriculumAlignment }: Props) {
   const [internalOpen, setInternalOpen] = useState(false);
   const [showAllGroups, setShowAllGroups] = useState(false);
   const isOpen = controlledOpen ?? internalOpen;
@@ -92,8 +108,22 @@ export default function OccupationRow({ occ, index, brandColor, isOpen: controll
     onExpand?.();
   };
 
+  // Gap rows: regionally demanded, CTE-reachable, but no aligned
+  // curriculum at this college. Dimmed + badged so they sit in the
+  // honest list without dominating scan attention. Same visual story
+  // as the gap rows in the partnerships sector accordion.
+  const isGap = occ.alignment_status === "gap";
+
   return (
-    <div>
+    <div style={{
+      // Dim signals "gap row" at a glance in the collapsed list. When
+      // the user expands an accordion they're actively examining it —
+      // dimming the contents now is just friction, so lift the opacity
+      // back to 1 on open. Smooth transition so the brightening reads
+      // as continuous with the accordion animation.
+      opacity: (isGap && !isOpen) ? 0.55 : 1,
+      transition: "opacity 0.22s",
+    }}>
       <motion.button
         initial={hasMounted.current ? false : { opacity: 0, y: 6 }}
         animate={{ opacity: 1, y: 0 }}
@@ -114,8 +144,27 @@ export default function OccupationRow({ occ, index, brandColor, isOpen: controll
           style={{ transform: isOpen ? "rotate(90deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>
           <path d="M4 2l4 4-4 4" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-        <span style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)", lineHeight: 1.4 }}>
-          {occ.title}
+        <span style={{ display: "inline-flex", alignItems: "baseline", gap: "8px", flexWrap: "wrap", minWidth: 0 }}>
+          <span style={{ fontFamily: FONT, fontSize: "13px", fontWeight: 500, color: "rgba(255,255,255,0.85)", lineHeight: 1.4 }}>
+            {occ.title}
+          </span>
+          {isGap && (
+            <span
+              title="No aligned curriculum at this college"
+              style={{
+                fontFamily: FONT, fontSize: "10px", fontWeight: 500,
+                letterSpacing: "0.06em", textTransform: "uppercase",
+                color: "rgba(255,255,255,0.5)",
+                background: "rgba(255,255,255,0.05)",
+                border: "1px solid rgba(255,255,255,0.1)",
+                borderRadius: "3px",
+                padding: "2px 6px",
+                whiteSpace: "nowrap",
+              }}
+            >
+              no current pathway
+            </span>
+          )}
         </span>
         <span style={{ fontFamily: FONT, fontSize: "12px", color: "rgba(255,255,255,0.5)", textAlign: "right" }}>
           {formatWage(occ.annual_wage ?? null)}
@@ -189,44 +238,56 @@ export default function OccupationRow({ occ, index, brandColor, isOpen: controll
                       </div>
                     )}
 
-                    {!hideCurriculumAlignment && detail.aligned_top_groups.length > 0 && (
+                    {!hideCurriculumAlignment && (
                       <div>
                         <span style={{ fontFamily: FONT, fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: brandColor, opacity: 0.7, display: "block", marginBottom: "10px" }}>
                           Curriculum Alignment
                         </span>
 
-                        <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-                          {visibleGroups.map((group) => (
-                            <TopGroupBlock key={group.top_code || "unknown"} group={group} brandColor={brandColor} />
-                          ))}
-                          {showAllGroups && hiddenGroups.map((group, i) => (
-                            <motion.div
-                              key={group.top_code || `hidden-${i}`}
-                              initial={{ opacity: 0, y: -4 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{ duration: 0.18, delay: Math.min(i * 0.04, 0.2) }}
-                            >
-                              <TopGroupBlock group={group} brandColor={brandColor} />
-                            </motion.div>
-                          ))}
-                        </div>
+                        {detail.aligned_top_groups.length === 0 ? (
+                          // No system pathway data at all — fallback for
+                          // SOCs where neither the college nor the broader
+                          // CCC system has a PREPARES_FOR edge. Rare for
+                          // surfaced SOCs since they're CTE-reachable.
+                          <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: 1.5, margin: 0 }}>
+                            No curriculum at {collegeName || "this college"} aligned with this occupation.
+                          </p>
+                        ) : (
+                          <>
+                            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                              {visibleGroups.map((group) => (
+                                <TopGroupBlock key={group.top_code || "unknown"} group={group} brandColor={brandColor} collegeName={collegeName} />
+                              ))}
+                              {showAllGroups && hiddenGroups.map((group, i) => (
+                                <motion.div
+                                  key={group.top_code || `hidden-${i}`}
+                                  initial={{ opacity: 0, y: -4 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  transition={{ duration: 0.18, delay: Math.min(i * 0.04, 0.2) }}
+                                >
+                                  <TopGroupBlock group={group} brandColor={brandColor} collegeName={collegeName} />
+                                </motion.div>
+                              ))}
+                            </div>
 
-                        {isCapped && (
-                          <button
-                            onClick={() => setShowAllGroups(true)}
-                            style={{
-                              fontFamily: FONT, fontSize: "11px", fontWeight: 500,
-                              color: brandColor, opacity: 0.65,
-                              background: "transparent", border: "none",
-                              padding: "10px 8px 0 0",
-                              cursor: "pointer", textAlign: "left",
-                              transition: "opacity 0.15s",
-                            }}
-                            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = "1"; }}
-                            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = "0.65"; }}
-                          >
-                            Show all {detail.aligned_program_area_count} program areas
-                          </button>
+                            {isCapped && (
+                              <button
+                                onClick={() => setShowAllGroups(true)}
+                                style={{
+                                  fontFamily: FONT, fontSize: "11px", fontWeight: 500,
+                                  color: brandColor, opacity: 0.65,
+                                  background: "transparent", border: "none",
+                                  padding: "10px 8px 0 0",
+                                  cursor: "pointer", textAlign: "left",
+                                  transition: "opacity 0.15s",
+                                }}
+                                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = "1"; }}
+                                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = "0.65"; }}
+                              >
+                                Show all {detail.aligned_program_area_count} program areas
+                              </button>
+                            )}
+                          </>
                         )}
                       </div>
                     )}
@@ -259,18 +320,34 @@ export default function OccupationRow({ occ, index, brandColor, isOpen: controll
   );
 }
 
-export function TopGroupBlock({ group, brandColor }: {
+export function TopGroupBlock({ group, brandColor, collegeName }: {
   group: {
     top_code: string;
     top_title: string;
+    // Optional — backward-compat with consumers (Employers view) that
+    // don't surface the untaught distinction. Renders as filled bullet
+    // + course rail when omitted or true.
+    taught?: boolean;
     courses: Array<{ code: string; name: string }>;
+    // Optional — backward-compat with consumers that don't supply CIP
+    // codes. When present, renders a tiny labeled rail under the TOP
+    // header showing the federal CIPs that bridge TOP → SOC.
+    cips?: Array<{ code: string; title: string }>;
   };
   brandColor: string;
+  // Only used when `taught === false`, for the "no courses at <college>"
+  // placeholder. Falls back to "this college" when omitted.
+  collegeName?: string;
 }) {
   const [showAllCourses, setShowAllCourses] = useState(false);
   const topDisplay = group.top_code && /^\d{6}$/.test(group.top_code)
     ? `${group.top_code.slice(0, 4)}.${group.top_code.slice(4, 6)}`
     : group.top_code;
+
+  // Default to taught when the flag is absent — preserves the existing
+  // Employers-view rendering, which doesn't carry an untaught state.
+  const isTaught = group.taught !== false;
+  const cips = group.cips ?? [];
 
   const visible = group.courses.slice(0, COURSE_CAP);
   const hidden = group.courses.slice(COURSE_CAP);
@@ -282,10 +359,19 @@ export function TopGroupBlock({ group, brandColor }: {
         display: "flex", alignItems: "baseline", gap: "8px",
         padding: "0 0 6px",
       }}>
+        {/* Bullet: gold-filled disc for taught TOPs; hollow ring at low
+            opacity for untaught. The gold (TAUGHT_GLOW) mirrors the
+            "taught" marker on partnerships hero TOP badges and the SOC
+            destination ring, so both surfaces share one visual
+            vocabulary for "the college teaches this." 5×5 — the color
+            contrast carries the emphasis, so size stays modest and
+            doesn't compete with the 11px TOP code text. */}
         <span style={{
           display: "inline-block",
-          width: "4px", height: "4px", borderRadius: "50%",
-          background: "rgba(255,255,255,0.3)", flexShrink: 0,
+          width: "5px", height: "5px", borderRadius: "50%",
+          background: isTaught ? TAUGHT_GLOW : "transparent",
+          boxShadow: isTaught ? "none" : "inset 0 0 0 1px rgba(255,255,255,0.28)",
+          flexShrink: 0,
           alignSelf: "center",
         }} />
         <span style={{
@@ -304,41 +390,104 @@ export function TopGroupBlock({ group, brandColor }: {
           </>
         )}
       </div>
+
+      {/* CIP rail — federal bridge codes that justify why this TOP is in
+          the pathway. Same left-border + paddingLeft tokens as the
+          course rail below, so the two rails read as one continuous
+          chain. One small "CIP" caption + comma-separated code/title
+          pairs at slightly smaller, dimmer type than course rows. */}
+      {cips.length > 0 && (
+        <div style={{
+          display: "flex", flexDirection: "column", gap: "2px",
+          paddingLeft: "13px",
+          borderLeft: "1px solid rgba(255,255,255,0.08)",
+          marginLeft: "2px",
+          paddingBottom: "4px",
+        }}>
+          <div style={{
+            display: "flex", alignItems: "baseline", gap: "8px",
+            padding: "2px 8px",
+            fontSize: "10.5px", lineHeight: 1.4,
+            flexWrap: "wrap",
+          }}>
+            <span style={{
+              fontFamily: FONT, fontSize: "9px", fontWeight: 600,
+              letterSpacing: "0.1em", textTransform: "uppercase",
+              color: "rgba(255,255,255,0.3)", flexShrink: 0,
+            }}>
+              CIP
+            </span>
+            {cips.map((cip, i) => (
+              <span key={cip.code} style={{ display: "inline-flex", alignItems: "baseline", gap: "6px" }}>
+                {i > 0 && <span style={{ color: "rgba(255,255,255,0.2)" }}>·</span>}
+                <span style={{
+                  fontFamily: MONO, fontSize: "10.5px", fontWeight: 500,
+                  color: "rgba(255,255,255,0.5)",
+                }}>
+                  {cip.code}
+                </span>
+                {cip.title && (
+                  <span style={{ fontFamily: FONT, color: "rgba(255,255,255,0.5)" }}>
+                    {cip.title}
+                  </span>
+                )}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
       <div style={{
         display: "flex", flexDirection: "column", gap: "2px",
         paddingLeft: "13px",
         borderLeft: "1px solid rgba(255,255,255,0.08)",
         marginLeft: "2px",
       }}>
-        {visible.map((c) => (
-          <CourseRowEl key={c.code} course={c} />
-        ))}
-        {showAllCourses && hidden.map((c, i) => (
-          <motion.div
-            key={c.code}
-            initial={{ opacity: 0, y: -4 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.18, delay: Math.min(i * 0.02, 0.2) }}
-          >
-            <CourseRowEl course={c} />
-          </motion.div>
-        ))}
-        {isCapped && (
-          <button
-            onClick={() => setShowAllCourses(true)}
-            style={{
-              fontFamily: FONT, fontSize: "11px", fontWeight: 500,
-              color: brandColor, opacity: 0.65,
-              background: "transparent", border: "none",
-              padding: "6px 8px 0",
-              cursor: "pointer", textAlign: "left",
-              transition: "opacity 0.15s",
-            }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = "1"; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = "0.65"; }}
-          >
-            Show {hidden.length} more course{hidden.length === 1 ? "" : "s"}
-          </button>
+        {isTaught ? (
+          <>
+            {visible.map((c) => (
+              <CourseRowEl key={c.code} course={c} />
+            ))}
+            {showAllCourses && hidden.map((c, i) => (
+              <motion.div
+                key={c.code}
+                initial={{ opacity: 0, y: -4 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.18, delay: Math.min(i * 0.02, 0.2) }}
+              >
+                <CourseRowEl course={c} />
+              </motion.div>
+            ))}
+            {isCapped && (
+              <button
+                onClick={() => setShowAllCourses(true)}
+                style={{
+                  fontFamily: FONT, fontSize: "11px", fontWeight: 500,
+                  color: brandColor, opacity: 0.65,
+                  background: "transparent", border: "none",
+                  padding: "6px 8px 0",
+                  cursor: "pointer", textAlign: "left",
+                  transition: "opacity 0.15s",
+                }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = "1"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = "0.65"; }}
+              >
+                Show {hidden.length} more course{hidden.length === 1 ? "" : "s"}
+              </button>
+            )}
+          </>
+        ) : (
+          // Untaught — preserves the rail rhythm with a single
+          // placeholder line. Same padding as course rows.
+          <div style={{
+            display: "flex", alignItems: "baseline", gap: "10px",
+            padding: "3px 8px",
+            fontSize: "11px", lineHeight: 1.4,
+            color: "rgba(255,255,255,0.4)",
+            fontFamily: FONT,
+          }}>
+            no courses at {collegeName || "this college"}
+          </div>
         )}
       </div>
     </div>

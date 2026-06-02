@@ -47,8 +47,8 @@ export type ApiDepartmentEvidence = {
 // per CCCCO MIS Data Element Dictionary.
 
 export type ApiCrosswalkTop = {
-  code: string;                  // 4-digit TOP code, e.g., "0702"
-  name: string;                  // e.g., "Computer Information Systems"
+  code: string;                  // 6-digit TOP code, e.g., "070200"
+  name: string;                  // 6-digit title, e.g., "Computer Information Systems"
   taught_at_college: boolean;    // true when ≥ 1 course at this college teaches this TOP
   cips: string[];                // CIP codes this TOP bridges to (filtered to those reaching the SOC)
 };
@@ -56,14 +56,14 @@ export type ApiCrosswalkTop = {
 export type ApiCrosswalkCip = {
   code: string;                  // e.g., "15.0507"
   title: string;                 // e.g., "Environmental/Environmental Engineering Technology"
-  active: boolean;               // true when ≥ 1 taught TOP4 bridges to this CIP
+  active: boolean;               // true when ≥ 1 taught TOP6 bridges to this CIP
 };
 
 export type ApiCurriculumCrosswalk = {
   tops: ApiCrosswalkTop[];
   cips: ApiCrosswalkCip[];
-  n_taught: number;              // count of TOP4s the college teaches
-  n_total: number;               // count of TOP4s in the global prep set
+  n_taught: number;              // count of TOP6 codes the college teaches
+  n_total: number;               // count of TOP6 codes in the global prep set
   coverage_pct: number;          // 100 * n_taught / n_total, rounded to 1 decimal
 };
 
@@ -140,6 +140,15 @@ export type ApiOpportunityRow = {
   // Negative values indicate the college's pipeline outpaces regional
   // demand for the SOC.
   gap: number | null;
+  // Two-valued alignment tag driving the row's visual treatment:
+  //   "aligned": college has at least one PREPARES_FOR-aligned course
+  //              for this SOC. Renders as a normal navigable row.
+  //   "gap":     SOC is regionally demanded but the college has NO
+  //              aligned curriculum (course_count = 0). Renders dimmed
+  //              with a "no current pathway" label — surfaces a
+  //              consortia-level workforce opportunity to discuss.
+  // Default "aligned" when absent (backward-compat with older caches).
+  alignment_status?: "aligned" | "gap";
 };
 
 export type ApiSectorEntry = {

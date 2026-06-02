@@ -11,6 +11,12 @@ export type ApiOccupationMatch = {
   education_level: string | null;
   aligned_course_count: number;
   aligned_department_count: number;
+  // "aligned" — college has at least one PREPARES_FOR-aligned course
+  // "gap"     — SOC is regionally demanded and CTE-reachable, but no
+  //             aligned curriculum at this college. Drives row dim +
+  //             "no curriculum at <college>" detail message. Optional
+  //             for backward-compat with older API responses.
+  alignment_status?: "aligned" | "gap";
 };
 
 export type ApiRegionOverview = {
@@ -30,10 +36,24 @@ export type ApiCourseAlignment = {
   via_top: string | null;
 };
 
+export type ApiCipMatch = {
+  code: string;
+  title: string;
+};
+
 export type ApiTopAlignmentGroup = {
   top_code: string;
   top_title: string;
+  // True if the college teaches at least one PREPARES_FOR course under
+  // this TOP6 for this SOC. False = system pathway TOP, not currently
+  // taught at this college (untaught — curriculum-development surface).
+  // Optional for backward-compat with older API responses; defaults to
+  // taught in the renderer.
+  taught?: boolean;
   courses: ApiCourseAlignment[];
+  // Federal CIPs (NCES CIP-SOC) bridging this TOP6 to the SOC. Drives
+  // the per-TOP CIP rail. Optional for backward-compat.
+  cips?: ApiCipMatch[];
 };
 
 export type ApiOccupationDetail = {

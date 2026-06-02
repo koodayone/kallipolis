@@ -205,17 +205,25 @@ def build_sector_index(college: str) -> SectorIndex:
     # Build per-soc OpportunityRow once; same row instance can be reused
     # under multiple sectors.
     #
-    # Strict filter: surface only SOCs with all five institutional
-    # signals present (course_count, student_count, employer_count,
-    # has_supply, positive workforce gap). The first four ensure every
-    # clickable row produces a fully-populated Opportunity Report
-    # (no honest-absence branches in the LMI / curriculum / employer
-    # sections). The gap > 0 requirement is the SWP fundability cut:
-    # Strong Workforce RFAs require demonstrated regional unmet demand
-    # as the proposal anchor, so a row where the college's projected
-    # supply already meets or exceeds regional demand can't lead to a
-    # fundable partnership. Surfacing those rows would frame
-    # non-fundable opportunities as fundable ones.
+    # Two surface conditions, tagged via `alignment_status`:
+    #
+    # 1. "aligned" — the strict five-signal filter from before. Surfaces
+    #    only SOCs where every clickable row produces a fully-populated
+    #    Opportunity Report (no honest-absence branches in the LMI /
+    #    curriculum / employer / supply sections), AND there's a
+    #    positive workforce gap (regional demand > college supply). The
+    #    gap > 0 requirement is the SWP fundability cut: Strong
+    #    Workforce RFAs require demonstrated regional unmet demand as
+    #    the proposal anchor.
+    #
+    # 2. "gap" — the college has NO institutionally aligned curriculum
+    #    for this SOC (course_count = 0), but the SOC is regionally
+    #    demanded AND globally CTE-reachable AND in this sector's PCAH
+    #    classification. Surfaced so the college can see "no current
+    #    pathway, but regional demand exists" as a consortia-level
+    #    opportunity worth discussing. Per institutional-deference, the
+    #    gap is real institutional signal — papering over it with
+    #    silent omission misrepresents the workforce-alignment surface.
     rows_by_soc: dict[str, OpportunityRow] = {}
     for r in regional_socs:
         soc = r["soc_code"]
@@ -225,31 +233,46 @@ def build_sector_index(college: str) -> SectorIndex:
         student_count = student_count_by_soc.get(soc, 0)
         employer_count = employer_count_by_soc.get(soc, 0)
         has_supply = has_supply_by_soc.get(soc, False)
-        if course_count == 0 or student_count == 0 or employer_count == 0 or not has_supply:
-            continue
-        annual_openings = r["annual_openings"]
+        annual_openings = r["annual_openings"] or 0
         total_supply = total_supply_by_soc.get(soc, 0.0)
-        gap = int(round((annual_openings or 0) - total_supply))
-        if gap <= 0:
-            continue
+        gap = int(round(annual_openings - total_supply))
+
+        if course_count > 0:
+            # Aligned candidate — retain the original strict five-signal
+            # filter so every clickable aligned row populates fully.
+            if (student_count == 0 or employer_count == 0
+                    or not has_supply or gap <= 0):
+                continue
+            alignment_status = "aligned"
+        else:
+            # Gap candidate — surface when regional demand exists. The
+            # college's per-row supply is 0 (no aligned TOPs), so
+            # gap = annual_openings; we filter on annual_openings > 0
+            # to drop SOCs with no regional demand signal at all.
+            if annual_openings <= 0:
+                continue
+            alignment_status = "gap"
+
         rows_by_soc[soc] = OpportunityRow(
             soc_code=soc,
             title=r["title"] or soc,
-            annual_openings=annual_openings,
+            annual_openings=r["annual_openings"],
             annual_wage=r["annual_wage"],
             growth_rate=r.get("growth_rate"),
             course_count=course_count,
             student_count=student_count,
             employer_count=employer_count,
             gap=gap,
+            alignment_status=alignment_status,
         )
 
-    # Build sector entries. Sectors are alphabetical; occupations within
-    # each are sorted by gap descending (largest unmet regional pipeline
-    # first) with title as the deterministic tiebreaker. Negative-gap
-    # SOCs (college supply outpaces regional demand) sort to the bottom
-    # of the sector — surfaced rather than hidden, so the user can see
-    # them as low-pressure opportunities.
+    # Build sector entries. Sectors are alphabetical; within each
+    # sector, aligned rows come first (sorted by gap descending —
+    # largest unmet regional pipeline first), then gap rows (also
+    # sorted by gap descending). Title is the deterministic tiebreaker.
+    # The aligned-then-gap ordering surfaces the college's actionable
+    # pathways at the top and consortia-level opportunities below,
+    # without hiding either.
     sectors: list[SectorEntry] = []
     for sector in sorted(sector_to_top6.keys()):
         sector_soc_set = _sector_socs(sector)
@@ -259,7 +282,11 @@ def build_sector_index(college: str) -> SectorIndex:
         ]
         if not occupations:
             continue
-        occupations.sort(key=lambda o: (-(o.gap or 0), o.title.lower()))
+        occupations.sort(key=lambda o: (
+            0 if o.alignment_status == "aligned" else 1,
+            -(o.gap or 0),
+            o.title.lower(),
+        ))
         sectors.append(SectorEntry(
             sector=sector,
             is_priority=sector in priority_sectors,
@@ -479,11 +506,22 @@ def build_opportunity_report(
     # the full TOP × CIP institutional prep set with the college's
     # coverage marked. SAM-filtered to occupational (A/B/C/D) so the
     # universe reflects workforce-development scope rather than gen-ed
-    # feeders. Computed first because its TOP4 universe is the
-    # canonical "what counts as occupationally relevant" set — the
-    # accordion below restricts to it for coherence.
+    # feeders. Computed first because its TOP universe is the canonical
+    # "what counts as occupationally relevant" set — the accordion
+    # below restricts to it for coherence.
+    #
+    # The hero visualization is keyed at TOP6 (the granularity at
+    # which CCCCO PCAH actually maps to CIPs), but the accordion +
+    # student pipeline downstream still filter at TOP4 — deliberately,
+    # for two reasons: (1) accordion-hero coherence wants every TOP4
+    # family in the hero to also show its taught courses below, and
+    # (2) the synthetic student calibration carries an upstream MCF
+    # vs DataMart top_code mismatch documented in _gather_student_
+    # pipeline that the TOP4 widening absorbs. So we derive a TOP4
+    # set from the TOP6 hero universe by truncation — preserving the
+    # downstream filter semantics across the v3 hero shape change.
     curriculum_crosswalk = _gather_curriculum_crosswalk(college, soc_code)
-    hero_top4s = {t["code"] for t in curriculum_crosswalk.get("tops", [])}
+    hero_top4s = {t["code"][:4] for t in curriculum_crosswalk.get("tops", [])}
 
     # Curriculum coverage — per-department accordion of the courses at
     # this college that institutionally prepare for the SOC, restricted

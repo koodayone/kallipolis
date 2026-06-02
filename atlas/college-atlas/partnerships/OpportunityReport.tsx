@@ -243,7 +243,12 @@ function ReportBody({
           in the broader institutional crosswalk. */}
       <Section title="Curriculum Alignment" brandColor={brandColor}>
         {report.curriculum_evidence.length === 0 ? (
-          <Prose>No departments at {school.name} have institutionally aligned curriculum for this occupation.</Prose>
+          <Prose>
+            No departments at {school.name} have institutionally aligned curriculum for this
+            occupation. The crosswalk below shows the system-wide TOP × CIP pathway that
+            prepares students for this occupation — a workforce gap at this college that
+            consortia partners may already address.
+          </Prose>
         ) : (
           <>
             <Prose>{report.curriculum_alignment}</Prose>
@@ -270,24 +275,27 @@ function ReportBody({
                 );
               })}
             </div>
-
-            {/* Contextual zoom-out: TOP × CIP × SOC institutional pathway.
-                Renders only when the crosswalk has any TOP entries — the
-                empty case is already handled by the no-departments branch
-                above, but the guard is defensive against future SOC/TOP
-                shape drift. */}
-            {report.curriculum_crosswalk &&
-              report.curriculum_crosswalk.tops.length > 0 && (
-                <CurriculumPathway
-                  crosswalk={report.curriculum_crosswalk}
-                  collegeName={school.name}
-                  socCode={report.soc_code}
-                  socTitle={report.soc_title}
-                  brandColor={brandColor}
-                />
-              )}
           </>
         )}
+
+        {/* Contextual zoom-out: TOP × CIP × SOC institutional pathway.
+            Rendered regardless of whether the college has aligned
+            curriculum — for gap rows (curriculum_evidence empty),
+            the visualization shows the institutional pathway with all
+            TOPs dimmed, which is the workforce-gap signal worth
+            seeing. The guard against empty `tops` is defensive
+            against SOCs with no PREPARES_FOR materialization anywhere
+            in the system (rare but possible). */}
+        {report.curriculum_crosswalk &&
+          report.curriculum_crosswalk.tops.length > 0 && (
+            <CurriculumPathway
+              crosswalk={report.curriculum_crosswalk}
+              collegeName={school.name}
+              socCode={report.soc_code}
+              socTitle={report.soc_title}
+              brandColor={brandColor}
+            />
+          )}
       </Section>
 
       {/* Student Impact — narrative + headline metric callout +
