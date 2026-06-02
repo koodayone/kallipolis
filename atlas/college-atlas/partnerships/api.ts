@@ -195,6 +195,57 @@ export async function getPartnershipSectors(college: string): Promise<ApiSectorI
   return res.json();
 }
 
+// ── SVAMP aggregated landscape (Silicon Valley Advanced Manufacturing) ─────
+//
+// Bespoke consortium prototype. Aggregates the partnership machinery across
+// five member colleges × twelve advanced-manufacturing occupations. Demand
+// and the employer set are regional (shared / deduped); supply and students
+// are institutional (summed). Drilling a cell reuses getPartnershipOpportunity
+// unchanged.
+
+export type ApiSvampCell = {
+  soc_code: string;
+  title: string;
+  annual_openings: number | null;
+  annual_wage: number | null;
+  growth_rate: number | null;
+  course_count: number;
+  student_count: number;
+  supply: number;
+  gap: number;
+};
+
+export type ApiSvampCollege = {
+  name: string;            // backend college name, e.g. "De Anza College"
+  cells: ApiSvampCell[];   // one per SVAMP occupation, in scope order
+};
+
+export type ApiSvampAggregate = {
+  regional_demand_total: number;
+  combined_supply_total: number;
+  gap: number;
+  candidate_employers: number;
+  occupations_taught: number;
+  n_colleges: number;
+  n_occupations: number;
+};
+
+export type ApiSvampLandscape = {
+  region: string;
+  region_display: string;
+  sector: string;          // the leaf-report sector hint ("Advanced Manufacturing")
+  is_sector_priority: boolean;
+  executive_summary: string;
+  colleges: ApiSvampCollege[];
+  aggregate: ApiSvampAggregate;
+};
+
+export async function getSvampLandscape(): Promise<ApiSvampLandscape> {
+  const res = await fetch(`${API_BASE}/partnerships/svamp`);
+  if (!res.ok) throw new Error("Failed to fetch SVAMP landscape");
+  return res.json();
+}
+
 export async function getPartnershipOpportunity(
   socCode: string,
   college: string,

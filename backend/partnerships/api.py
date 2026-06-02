@@ -9,6 +9,7 @@ engagement around the occupational pathway.
 from fastapi import APIRouter, HTTPException
 from partnerships.models import OpportunityReport, SectorIndex
 from partnerships.opportunity import build_opportunity_report, build_sector_index
+from partnerships.svamp import SvampLandscape, build_svamp_landscape
 
 router = APIRouter()
 
@@ -55,5 +56,22 @@ def get_partnership_opportunity(
         return build_opportunity_report(college, soc_code, sector_hint=sector)
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/svamp", response_model=SvampLandscape)
+def get_svamp_landscape():
+    """Returns the aggregated partnership landscape for the Silicon Valley
+    Advanced Manufacturing consortium: five member colleges × twelve
+    advanced-manufacturing occupations over one shared COE region.
+
+    Bespoke, deterministic, read-only. Demand and the candidate employer set
+    are regional (read once / deduped); supply and students are institutional
+    (summed across colleges). The per-(college, occupation) leaf reuses the
+    existing /partnerships/opportunity/{soc} report unchanged.
+    """
+    try:
+        return build_svamp_landscape()
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

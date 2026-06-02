@@ -12,6 +12,14 @@ type Props = {
   school?: SchoolConfig;
   position?: "sticky" | "fixed" | "static";
   style?: CSSProperties;
+  // Override the back-cube tint (defaults to the school's neon, else gold).
+  cubeTint?: string;
+  // Force the gold "Preview Mode" label on regardless of PREVIEW_MODE — for
+  // surfaces that are always preview prototypes.
+  showPreview?: boolean;
+  // Override the centered title font size (defaults to 20px) — useful for
+  // longer titles that would otherwise crowd the header.
+  titleSize?: string;
 };
 
 export default function AtlasHeader({
@@ -22,8 +30,11 @@ export default function AtlasHeader({
   school,
   position = "sticky",
   style,
+  cubeTint,
+  showPreview = false,
+  titleSize = "20px",
 }: Props) {
-  const backTint = school?.brandColorNeon ?? "#c9a84c";
+  const backTint = cubeTint ?? school?.brandColorNeon ?? "#c9a84c";
   const backAriaLabel = school ? `Back to ${school.name}` : "Back to College Atlas";
 
   const resolvedLeft = leftSlot ?? (onBack ? (
@@ -84,7 +95,7 @@ export default function AtlasHeader({
           left: "50%",
           transform: "translate(-50%, -50%)",
           fontFamily: "var(--font-days-one), sans-serif",
-          fontSize: "20px",
+          fontSize: titleSize,
           letterSpacing: "0.08em",
           textTransform: "uppercase",
           color: "rgba(255,255,255,0.85)",
@@ -94,7 +105,7 @@ export default function AtlasHeader({
       >
         {title}
       </span>
-      {PREVIEW_MODE && (
+      {(PREVIEW_MODE || showPreview) && (
         <span
           style={{
             position: "absolute",

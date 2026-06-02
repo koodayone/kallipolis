@@ -21,9 +21,7 @@ import StudentRow, {
 import AtlasHeader from "@/ui/AtlasHeader";
 import KallipolisBrand from "@/ui/KallipolisBrand";
 import RisingSun from "@/ui/RisingSun";
-
-const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
-const MONO = "var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace";
+import { FONT, MONO, ReportHeader, Section, Prose } from "@/college-atlas/partnerships/reportChrome";
 
 type Props = {
   school: SchoolConfig;
@@ -38,6 +36,34 @@ type Props = {
 };
 
 export default function OpportunityReport({ school, socCode, sector, onBack }: Props) {
+  return (
+    <div>
+      <AtlasHeader
+        school={school}
+        onBack={onBack}
+        title={school.name}
+        rightSlot={<KallipolisBrand />}
+      />
+      <div style={{ maxWidth: "880px", margin: "0 auto", padding: "32px 40px 80px" }}>
+        <OpportunityReportBody school={school} socCode={socCode} sector={sector} />
+      </div>
+    </div>
+  );
+}
+
+/* ── Embeddable body — fetch + render, no header/overlay chrome ───────────
+   Used full (with Executive Summary) by the routed report above, and
+   embedded (executive summary suppressed, eyebrow dropped) inside the SVAMP
+   aggregated landscape so a selection renders inline without a page load. */
+export function OpportunityReportBody({
+  school, socCode, sector, hideExecutiveSummary = false, embedded = false,
+}: {
+  school: SchoolConfig;
+  socCode: string;
+  sector?: string;
+  hideExecutiveSummary?: boolean;
+  embedded?: boolean;
+}) {
   const [report, setReport] = useState<ApiOpportunityReport | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -52,43 +78,35 @@ export default function OpportunityReport({ school, socCode, sector, onBack }: P
       .finally(() => setLoading(false));
   }, [socCode, school.name, sector]);
 
-  return (
-    <div>
-      <AtlasHeader
-        school={school}
-        onBack={onBack}
-        title={school.name}
-        rightSlot={<KallipolisBrand />}
-      />
-
-      <div style={{ maxWidth: "880px", margin: "0 auto", padding: "32px 40px 80px" }}>
-        {loading && (
-          <div style={{ display: "flex", justifyContent: "center", paddingTop: "80px" }}>
-            <RisingSun style={{ width: "90px", height: "auto", opacity: 0.4 }} />
-          </div>
-        )}
-
-        {!loading && error && (
-          <p style={{ fontFamily: FONT, fontSize: "14px", color: "#f87171", padding: "40px 0", textAlign: "center" }}>
-            {error}
-          </p>
-        )}
-
-        {!loading && !error && report && (
-          <ReportBody report={report} school={school} />
-        )}
+  if (loading) {
+    return (
+      <div style={{ display: "flex", justifyContent: "center", paddingTop: "80px" }}>
+        <RisingSun style={{ width: "90px", height: "auto", opacity: 0.4 }} />
       </div>
-    </div>
+    );
+  }
+  if (error) {
+    return (
+      <p style={{ fontFamily: FONT, fontSize: "14px", color: "#f87171", padding: "40px 0", textAlign: "center" }}>
+        {error}
+      </p>
+    );
+  }
+  if (!report) return null;
+  return (
+    <ReportBody report={report} school={school} hideExecutiveSummary={hideExecutiveSummary} embedded={embedded} />
   );
 }
 
 /* ── Report Body ───────────────────────────────────────────────────────── */
 
 function ReportBody({
-  report, school,
+  report, school, hideExecutiveSummary = false, embedded = false,
 }: {
   report: ApiOpportunityReport;
   school: SchoolConfig;
+  hideExecutiveSummary?: boolean;
+  embedded?: boolean;
 }) {
   const brandColor = school.brandColorLight;
 
@@ -151,66 +169,40 @@ function ReportBody({
           (Region subtitle and standalone Description section removed
           per product feedback; the description now lives inside the
           OccupationRow expansion below.) */}
-      <div style={{ marginBottom: "32px" }}>
-        <div style={{
-          fontFamily: FONT, fontSize: "13px", fontWeight: 700,
-          letterSpacing: "0.22em", textTransform: "uppercase",
-          color: brandColor,
-          marginBottom: "14px",
-        }}>
-          Partnership Landscape Report
-        </div>
-        <div style={{
-          height: "1px", background: `${brandColor}40`,
-          marginBottom: "20px",
-        }} />
-        <h1 style={{
-          fontFamily: FONT, fontSize: "28px", fontWeight: 600,
-          color: "rgba(255,255,255,0.95)", letterSpacing: "-0.01em",
-          margin: 0, lineHeight: 1.2,
-        }}>
-          {report.soc_title}
-        </h1>
-        {/* Per-child alpha rather than a parent opacity:0.55 — a parent
-            opacity composites the whole subtree, so child colors with
-            their own alpha get multiplied down (a 0.55 child under a
-            0.55 parent renders at ~0.30 effective). Setting alpha on
-            each span keeps the relative brightnesses intentional. */}
-        <div style={{
-          fontFamily: MONO, fontSize: "11px", fontWeight: 500,
-          letterSpacing: "0.05em",
-          fontVariantNumeric: "tabular-nums", marginTop: "12px",
-          textTransform: "uppercase",
-        }}>
-          <span style={{ color: brandColor, opacity: 0.55 }}>
-            SOC {report.soc_code}
-          </span>
-          {report.sector && (
-            <>
-              <span style={{ color: "rgba(255,255,255,0.25)", margin: "0 8px" }}>·</span>
-              <span style={{ color: "rgba(255,255,255,0.80)", letterSpacing: "0.08em" }}>
-                {report.sector}
-              </span>
-            </>
-          )}
-          {report.is_sector_priority && (
-            <>
-              <span style={{ color: "rgba(255,255,255,0.25)", margin: "0 8px" }}>·</span>
-              <span style={{
-                color: brandColor,
-                letterSpacing: "0.1em", fontWeight: 600,
-              }}>
-                Regional Priority Sector
-              </span>
-            </>
-          )}
-        </div>
-      </div>
+      {/* Title block — Option C: magazine-style super-title. Document type
+          is dominant ("PARTNERSHIP LANDSCAPE REPORT"), then the SOC title,
+          then the SOC + sector eyebrow demoted to a footer classifier.
+          (Region subtitle and standalone Description removed per product
+          feedback; the description now lives in the OccupationRow expansion.) */}
+      <ReportHeader eyebrow={embedded ? school.name : "Partnership Landscape Report"} title={report.soc_title} accent={brandColor}>
+        <span style={{ color: brandColor, opacity: 0.55 }}>
+          SOC {report.soc_code}
+        </span>
+        {report.sector && (
+          <>
+            <span style={{ color: "rgba(255,255,255,0.25)", margin: "0 8px" }}>·</span>
+            <span style={{ color: "rgba(255,255,255,0.80)", letterSpacing: "0.08em" }}>
+              {report.sector}
+            </span>
+          </>
+        )}
+        {report.is_sector_priority && (
+          <>
+            <span style={{ color: "rgba(255,255,255,0.25)", margin: "0 8px" }}>·</span>
+            <span style={{ color: brandColor, letterSpacing: "0.1em", fontWeight: 600 }}>
+              Regional Priority Sector
+            </span>
+          </>
+        )}
+      </ReportHeader>
 
-      {/* Executive summary */}
-      <Section title="Executive Summary" brandColor={brandColor}>
-        <Prose>{report.executive_summary}</Prose>
-      </Section>
+      {/* Executive summary — suppressed when embedded (the SVAMP page's own
+          consortium summary already frames the document). */}
+      {!hideExecutiveSummary && (
+        <Section title="Executive Summary" brandColor={brandColor}>
+          <Prose>{report.executive_summary}</Prose>
+        </Section>
+      )}
 
       {/* Occupational Demand — Centers of Excellence narrative
           (wage, openings, current regional employment, 5-year
@@ -1015,34 +1007,6 @@ function PartnerEmployerRow({
 
 /* ── Section primitives ───────────────────────────────────────────────── */
 
-function Section({ title, brandColor, children }: {
-  title: string;
-  brandColor: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div style={{ marginTop: "32px" }}>
-      <div style={{
-        display: "flex", alignItems: "center", gap: "10px",
-        marginBottom: "12px",
-      }}>
-        <div style={{
-          width: "3px", height: "16px", background: brandColor,
-          borderRadius: "2px", flexShrink: 0, opacity: 0.85,
-        }} />
-        <h3 style={{
-          fontFamily: FONT, fontSize: "15px", fontWeight: 600,
-          color: "rgba(255,255,255,0.95)", letterSpacing: "-0.005em",
-          margin: 0, lineHeight: 1.2,
-        }}>
-          {title}
-        </h3>
-      </div>
-      {children}
-    </div>
-  );
-}
-
 function ColHead({ brandColor, align, children }: {
   brandColor: string;
   align?: "left" | "right";
@@ -1060,14 +1024,3 @@ function ColHead({ brandColor, align, children }: {
   );
 }
 
-function Prose({ children }: { children: React.ReactNode }) {
-  return (
-    <p style={{
-      fontFamily: FONT, fontSize: "14px",
-      color: "rgba(255,255,255,0.7)", lineHeight: 1.65,
-      margin: 0,
-    }}>
-      {children}
-    </p>
-  );
-}
