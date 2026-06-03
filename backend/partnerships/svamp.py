@@ -57,13 +57,22 @@ SVAMP_SOCS: list[str] = [
     "49-9041", "49-9043", "51-4041", "51-9141", "51-9161", "51-9162",
 ]
 
-# DataMart enrollment terms in chronological order — used to order the
-# per-program enrollment series the report renders as a trend.
-SVAMP_TERMS: list[str] = [
-    "Fall 2023", "Winter 2024", "Spring 2024", "Summer 2024",
-    "Fall 2024", "Winter 2025", "Spring 2025", "Summer 2025",
-    "Fall 2025", "Winter 2026",
-]
+# Enrollment terms are NOT a fixed list: the course-section exports span ~5
+# years and colleges run different calendars (quarter vs. semester), so the
+# term axis is the chronologically-sorted union of whatever Term nodes exist,
+# computed per landscape (mirroring award_years). This orders "Season YYYY"
+# labels: Winter < Spring < Summer < Fall within a year.
+_SEASON_ORDER = {"Winter": 0, "Spring": 1, "Summer": 2, "Fall": 3}
+
+
+def _term_sort_key(term: str) -> tuple[int, int]:
+    parts = term.split()
+    season = parts[0] if parts else ""
+    try:
+        year = int(parts[-1])
+    except (ValueError, IndexError):
+        year = 0
+    return (year, _SEASON_ORDER.get(season, 9))
 
 # Canonical PCAH Strong Workforce sector these occupations sit under. Passed
 # as the leaf report's sector hint so the drill-down renders in the same
@@ -93,7 +102,8 @@ class SvampProgram(BaseModel):
     top6: str
     name: str
     awards_recent: int = 0                 # actual completions, latest award year
-    enrollment: list[int | None] = []      # per SVAMP_TERMS, the enrollment trend
+    awards: list[int] = []                 # completions per landscape award_years
+    enrollment: list[int | None] = []      # per landscape enrollment_terms
     wages: list[SvampWage] = []
 
 
@@ -155,6 +165,13 @@ class SvampLandscape(BaseModel):
     # Deterministic two-sentence thesis establishing the aggregated report's
     # nature (composed server-side, mirroring opportunity_narrative.py).
     executive_summary: str = ""
+    # Sorted award-year axis (e.g. ["2015-2016", …, "2024-2025"]) shared by
+    # every program's `awards` series — the x-axis for the awards trend chart.
+    award_years: list[str] = []
+    # Chronologically-sorted enrollment-term axis (e.g. ["Winter 2021", …,
+    # "Fall 2025"]) shared by every program's `enrollment` series. The union
+    # across colleges; a chart for one college trims the terms it never runs.
+    enrollment_terms: list[str] = []
     colleges: list[SvampCollege]
     aggregate: SvampAggregate
 
@@ -264,20 +281,26 @@ def build_svamp_landscape() -> SvampLandscape:
         #    (college, top6). Additive enrichment; absent for colleges/TOP6s the
         #    DataMart exports don't cover (the overlay is sparser than the
         #    curriculum-alignment shading by design).
+        # Awards per (college, top6, year) — one row per reported AcademicYear
+        # so each program carries a full award-year series. Programs with no
+        # AWARDED edge still come through (OPTIONAL MATCH ⇒ null year, dropped).
         program_data: dict[tuple[str, str], dict] = {}
         for r in session.run(
             """
             MATCH (pr:Program) WHERE pr.college IN $colleges
-            OPTIONAL MATCH (pr)-[a:AWARDED]->(:AcademicYear)
+            OPTIONAL MATCH (pr)-[a:AWARDED]->(ay:AcademicYear)
             RETURN pr.college AS college, pr.top6 AS top6, pr.name AS name,
-                   toInteger(sum(coalesce(a.count, 0))) AS awards_recent
+                   ay.year AS year,
+                   toInteger(sum(coalesce(a.count, 0))) AS awards
             """,
             colleges=SVAMP_COLLEGES,
         ).data():
-            program_data[(r["college"], r["top6"])] = {
-                "name": r["name"], "awards_recent": r["awards_recent"],
-                "enroll": {},
-            }
+            entry = program_data.setdefault(
+                (r["college"], r["top6"]),
+                {"name": r["name"], "awards_by_year": {}, "enroll": {}},
+            )
+            if r["year"]:
+                entry["awards_by_year"][r["year"]] = r["awards"]
         for r in session.run(
             """
             MATCH (pr:Program)-[e:ENROLLED]->(t:Term) WHERE pr.college IN $colleges
@@ -300,15 +323,26 @@ def build_svamp_landscape() -> SvampLandscape:
     )
 
 
-def _build_program(college: str, top6: str, entry: dict, wage_fn) -> SvampProgram:
+def _build_program(
+    college: str, top6: str, entry: dict, award_years: list[str],
+    enrollment_terms: list[str], wage_fn,
+) -> SvampProgram:
     """Compose a SvampProgram from fetched program_data + the (pooled, TOP6-
-    grain) wage lookup. wage_fn is called only for real programs, so callers
-    that pass empty program_data (e.g. the unit test) incur no I/O."""
+    grain) wage lookup. `awards` aligns to the shared `award_years` axis (a year
+    with no AWARDED edge ⇒ 0 conferred); `enrollment` aligns to the shared
+    `enrollment_terms` axis (a term this program/college never runs ⇒ None, so
+    the chart can trim it); `awards_recent` is the latest year's total. wage_fn
+    is called only for real programs, so callers that pass empty program_data
+    (e.g. the unit test) incur no I/O."""
+    by_year = entry.get("awards_by_year", {})
+    enroll = entry.get("enroll", {})
+    latest = award_years[-1] if award_years else None
     return SvampProgram(
         top6=top6,
         name=entry.get("name") or top6,
-        awards_recent=int(entry.get("awards_recent") or 0),
-        enrollment=[entry.get("enroll", {}).get(term) for term in SVAMP_TERMS],
+        awards_recent=int(by_year.get(latest) or 0) if latest else 0,
+        awards=[int(by_year.get(y) or 0) for y in award_years],
+        enrollment=[enroll.get(term) for term in enrollment_terms],
         wages=[SvampWage(**w) for w in wage_fn(top6)],
     )
 
@@ -336,6 +370,19 @@ def _assemble_landscape(
       through as-is (never a sum of per-cell counts).
     """
     program_data = program_data or {}
+    # Shared award-year axis: the sorted union of every program's reported
+    # years (YYYY-YYYY sorts chronologically). Each program's `awards` series
+    # aligns to this; awards_recent / combined_awards are the LATEST year only.
+    award_years = sorted({
+        y for e in program_data.values() for y in e.get("awards_by_year", {})
+    })
+    latest_year = award_years[-1] if award_years else None
+    # Shared enrollment-term axis: the chronologically-sorted union of every
+    # program's reported terms. Each program's `enrollment` aligns to this.
+    enrollment_terms = sorted(
+        {t for e in program_data.values() for t in e.get("enroll", {})},
+        key=_term_sort_key,
+    )
     colleges: list[SvampCollege] = []
     combined_supply_total = 0.0
     socs_taught: set[str] = set()
@@ -368,7 +415,8 @@ def _assemble_landscape(
             for top6 in sorted(top_codes):
                 entry = program_data.get((college, top6))
                 if entry is not None:
-                    programs.append(_build_program(college, top6, entry, wage_fn))
+                    programs.append(_build_program(
+                        college, top6, entry, award_years, enrollment_terms, wage_fn))
                     scoped_programs.add((college, top6))
             awards_recent = sum(p.awards_recent for p in programs)
 
@@ -390,10 +438,11 @@ def _assemble_landscape(
         colleges.append(SvampCollege(name=college, cells=cells))
 
     # Consortium awards: each scoped program counted once (institutional, but
-    # de-duplicated across the SOCs a TOP6 serves).
+    # de-duplicated across the SOCs a TOP6 serves), latest reported year only.
     combined_awards = sum(
-        int(program_data[k].get("awards_recent") or 0) for k in scoped_programs
-    )
+        int(program_data[k].get("awards_by_year", {}).get(latest_year) or 0)
+        for k in scoped_programs
+    ) if latest_year else 0
 
     # Regional demand summed ONCE over the 12 SOCs (not per college).
     regional_demand_total = int(round(sum(
@@ -419,6 +468,8 @@ def _assemble_landscape(
         sector=SVAMP_SECTOR,
         is_sector_priority=is_sector_priority,
         executive_summary=_build_executive_summary(region_display, aggregate),
+        award_years=award_years,
+        enrollment_terms=enrollment_terms,
         colleges=colleges,
         aggregate=aggregate,
     )

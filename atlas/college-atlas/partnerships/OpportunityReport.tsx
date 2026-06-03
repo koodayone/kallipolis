@@ -57,6 +57,7 @@ export default function OpportunityReport({ school, socCode, sector, onBack }: P
    aggregated landscape so a selection renders inline without a page load. */
 export function OpportunityReportBody({
   school, socCode, sector, hideExecutiveSummary = false, hideStudentImpact = false, embedded = false, programOutcomes,
+  demandTitle = "Labor Market Information",
 }: {
   school: SchoolConfig;
   socCode: string;
@@ -72,6 +73,9 @@ export function OpportunityReportBody({
   // Default undefined → nothing renders, so the per-college report is
   // unchanged; the SVAMP landscape passes its Program Outcomes panel here.
   programOutcomes?: React.ReactNode;
+  // Title of the demand/supply section. Default keeps the per-college reports
+  // unchanged; SVAMP passes the more precise "Centers of Excellence Projections".
+  demandTitle?: string;
 }) {
   const [report, setReport] = useState<ApiOpportunityReport | null>(null);
   const [loading, setLoading] = useState(true);
@@ -103,7 +107,7 @@ export function OpportunityReportBody({
   }
   if (!report) return null;
   return (
-    <ReportBody report={report} school={school} hideExecutiveSummary={hideExecutiveSummary} hideStudentImpact={hideStudentImpact} embedded={embedded} programOutcomes={programOutcomes} />
+    <ReportBody report={report} school={school} hideExecutiveSummary={hideExecutiveSummary} hideStudentImpact={hideStudentImpact} embedded={embedded} programOutcomes={programOutcomes} demandTitle={demandTitle} />
   );
 }
 
@@ -111,6 +115,7 @@ export function OpportunityReportBody({
 
 function ReportBody({
   report, school, hideExecutiveSummary = false, hideStudentImpact = false, embedded = false, programOutcomes,
+  demandTitle = "Labor Market Information",
 }: {
   report: ApiOpportunityReport;
   school: SchoolConfig;
@@ -118,6 +123,7 @@ function ReportBody({
   hideStudentImpact?: boolean;
   embedded?: boolean;
   programOutcomes?: React.ReactNode;
+  demandTitle?: string;
 }) {
   const brandColor = school.brandColorLight;
 
@@ -436,7 +442,7 @@ function ReportBody({
 
       {/* Labor Market Information — narrative + demand table +
           openings/supply gap visualization + institutional sources. */}
-      <LaborMarketInformation report={report} brandColor={brandColor} />
+      <LaborMarketInformation report={report} brandColor={brandColor} title={demandTitle} />
 
       {/* Partnership Opportunities — candidate employer set */}
       <Section title="Partnership Opportunities" brandColor={brandColor}>
@@ -542,8 +548,8 @@ function StudentRowWrapper({
 /* ── Labor Market Information section ─────────────────────────────────── */
 
 function LaborMarketInformation({
-  report, brandColor,
-}: { report: ApiOpportunityReport; brandColor: string }) {
+  report, brandColor, title = "Labor Market Information",
+}: { report: ApiOpportunityReport; brandColor: string; title?: string }) {
   const swp = report.swp_evidence;
   const totalDemand = swp.total_demand;
   const totalSupply = swp.total_supply;
@@ -561,7 +567,7 @@ function LaborMarketInformation({
   const gapRounded = Math.round(gap);
 
   return (
-    <Section title="Labor Market Information" brandColor={brandColor}>
+    <Section title={title} brandColor={brandColor}>
       <Prose>
         According to the Centers of Excellence, SOC {report.soc_code} demands{" "}
         {totalDemand.toLocaleString()} annual{" "}

@@ -22,11 +22,14 @@ read-time reference data (mirroring supply.py / get_coe_supply over
 supply_by_top.csv) via `get_wage_outcomes`, NOT as per-college graph edges.
 Display-only, never summed (medians are non-additive).
 
-Data: three DataMart MIS exports (Chancellor's Office), scoped to the five
-SVAMP colleges, colocated with supply_by_top.csv in this directory. They are
-pivoted/hierarchical: hierarchy is encoded by indentation across leading
-columns, and TOP6 appears as a SUFFIX ("Name-NNNNNN") in awards/wages and a
-PREFIX ("NNNNNN - Name") in enrollments.
+Data: DataMart MIS exports (Chancellor's Office), scoped to the five SVAMP
+colleges, colocated with supply_by_top.csv in this directory — a pivoted awards
+summary, a pivoted wages summary, and one course-section file per college
+(5-year term series). They are pivoted/hierarchical: hierarchy is encoded by
+indentation across leading columns, and TOP6 appears as a SUFFIX
+("Name-NNNNNN") in awards/wages and a PREFIX ("NNNNNN - Name") in the
+course-section leaves. Term sets differ per college (quarter vs. semester
+calendars), so enrollment terms are the union across colleges, not a fixed list.
 
 Runs after Course/Department exist (depends on the TOP6 universe) and before
 the partnership precompute.
@@ -48,7 +51,12 @@ logger = logging.getLogger(__name__)
 
 _DATA_DIR = Path(__file__).parent
 _AWARDS_CSV = _DATA_DIR / "program_awards_summary.csv"
-_ENROLL_CSV = _DATA_DIR / "section_enrollments_summary.csv"
+# Per-college course-section exports (5-year term series). One file per
+# college; the term set differs by calendar (De Anza/Foothill/Mission run
+# quarters, Evergreen/Ohlone semesters), so enrollment terms are the union
+# across colleges, not a fixed list. Each is pivoted with THREE columns per
+# term (Sections Count, Sections FTES, Enrollment Count).
+_COURSE_SECTION_CSVS = sorted(_DATA_DIR.glob("course_sections_*.csv"))
 _WAGES_CSV = _DATA_DIR / "wage_outcomes_summary.csv"
 
 # Supply CSV short label ("Deanza") -> canonical Neo4j college name
@@ -98,16 +106,21 @@ def _canon(label: str) -> str | None:
 
 
 def parse_awards() -> list[dict]:
-    """Leaf award rows -> {college, top6, name, award_type, count, year}."""
+    """Leaf award rows -> {college, top6, name, award_type, count, year}, one
+    record per reported year. The export is pivoted like the enrollment one:
+    a column per 'Annual YYYY-YYYY' from index 3 onward (single- or multi-year),
+    so we read the value across every year column rather than a lone cell."""
     with open(_AWARDS_CSV, newline="") as f:
         rows = list(csv.reader(f))
-    year_m = _YEAR_RANGE.search(rows[0][3] if len(rows[0]) > 3 else "")
-    year = year_m.group(0) if year_m else "unknown"
+    years = [
+        (m.group(0) if (m := _YEAR_RANGE.search(h)) else h.strip())
+        for h in rows[0][3:]
+    ]
     out: list[dict] = []
     college = award_type = None
     for row in rows[1:]:
         c0, c1, c2 = (row + ["", "", ""])[:3]
-        val = row[3] if len(row) > 3 else ""
+        cells = row[3:3 + len(years)] if len(row) > 3 else []
         if c0.strip().endswith("Total") and c0.strip():
             college = _canon(c0.strip()[:-len("Total")].strip())
             continue
@@ -116,43 +129,64 @@ def parse_awards() -> list[dict]:
             continue
         if c2.strip() and college:
             top6 = _top6_suffix(c2)
-            cnt = _to_int(val)
-            if top6 and cnt is not None:
-                out.append({
-                    "college": college, "top6": top6, "name": _name_from_suffix(c2),
-                    "award_type": award_type or "Award", "count": cnt, "year": year,
-                })
-    return out
-
-
-def parse_enrollments() -> list[dict]:
-    """Non-empty term cells -> {college, top6, name, credit_type, term, count}."""
-    with open(_ENROLL_CSV, newline="") as f:
-        rows = list(csv.reader(f))
-    terms = [t.strip() for t in rows[0][3:]]
-    out: list[dict] = []
-    college = credit_type = None
-    for row in rows[1:]:
-        c0, c1, c2 = (row + ["", "", ""])[:3]
-        cells = row[3:3 + len(terms)] if len(row) > 3 else []
-        if c0.strip().endswith("Total") and c0.strip():
-            college = _canon(c0.strip()[:-len("Total")].strip())
-            continue
-        if c1.strip().endswith("Total") and c1.strip():
-            credit_type = re.sub(r"\s+Total$", "", c1.strip())
-            continue
-        if c2.strip() and college:
-            top6 = _top6_prefix(c2)
             if not top6:
                 continue
-            name = _name_from_prefix(c2)
-            for term, raw in zip(terms, cells):
+            name = _name_from_suffix(c2)
+            for year, raw in zip(years, cells):
                 cnt = _to_int(raw)
                 if cnt is not None:
                     out.append({
                         "college": college, "top6": top6, "name": name,
-                        "credit_type": credit_type or "Credit", "term": term, "count": cnt,
+                        "award_type": award_type or "Award", "count": cnt, "year": year,
                     })
+    return out
+
+
+def parse_course_sections() -> list[dict]:
+    """Per-college course-section exports -> {college, top6, name, credit_type,
+    term, count}, one record per (program, term) with a reported Enrollment
+    Count. Each file is pivoted with three columns per term (Sections Count /
+    Sections FTES / Enrollment Count); we read the Enrollment Count column,
+    located by the metric label rather than by fixed stride. Term columns
+    differ per file (calendars differ), so each file is read on its own terms.
+    Same hierarchy as the awards/enrollment summaries: College Total -> credit-
+    type Total -> TOP6-prefixed leaf ("NNNNNN - Name")."""
+    out: list[dict] = []
+    for path in _COURSE_SECTION_CSVS:
+        with open(path, newline="") as f:
+            rows = list(csv.reader(f))
+        if len(rows) < 2:
+            continue
+        terms_row, metric_row = rows[0], rows[1]
+        # (column index, term) for every "Enrollment Count" column.
+        enroll_cols = [
+            (i, terms_row[i].strip())
+            for i in range(3, len(metric_row))
+            if metric_row[i].strip() == "Enrollment Count"
+            and i < len(terms_row) and terms_row[i].strip()
+        ]
+        college = credit_type = None
+        for row in rows[2:]:
+            c0, c1, c2 = (row + ["", "", ""])[:3]
+            if c0.strip().endswith("Total") and c0.strip():
+                college = _canon(c0.strip()[:-len("Total")].strip())
+                continue
+            if c1.strip().endswith("Total") and c1.strip():
+                credit_type = re.sub(r"\s+Total$", "", c1.strip())
+                continue
+            if c2.strip() and college:
+                top6 = _top6_prefix(c2)
+                if not top6:
+                    continue
+                name = _name_from_prefix(c2)
+                for ci, term in enroll_cols:
+                    cnt = _to_int(row[ci]) if ci < len(row) else None
+                    if cnt is not None:
+                        out.append({
+                            "college": college, "top6": top6, "name": name,
+                            "credit_type": credit_type or "Credit",
+                            "term": term, "count": cnt,
+                        })
     return out
 
 
@@ -220,7 +254,7 @@ def load_programs(driver: Driver) -> dict:
     AcademicYear / Term dimension nodes. Wages stay out of the graph (see
     get_wage_outcomes)."""
     awards = parse_awards()
-    enroll = parse_enrollments()
+    enroll = parse_course_sections()
 
     with driver.session() as session:
         existing = {r["name"] for r in session.run(

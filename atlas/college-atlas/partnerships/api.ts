@@ -228,6 +228,7 @@ export type ApiSvampProgram = {
   top6: string;
   name: string;
   awards_recent: number;             // actual completions, latest award year
+  awards: number[];                  // completions per landscape award_years
   enrollment: (number | null)[];     // per SVAMP term, the enrollment trend
   wages: ApiSvampWage[];
 };
@@ -268,6 +269,8 @@ export type ApiSvampLandscape = {
   sector: string;          // the leaf-report sector hint ("Advanced Manufacturing")
   is_sector_priority: boolean;
   executive_summary: string;
+  award_years: string[];        // sorted YYYY-YYYY axis for every program's awards series
+  enrollment_terms: string[];   // chronologically-sorted term axis for every program's enrollment series
   colleges: ApiSvampCollege[];
   aggregate: ApiSvampAggregate;
 };
