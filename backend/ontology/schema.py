@@ -122,6 +122,12 @@ def _create_constraints(session):
         "CREATE CONSTRAINT region_name IF NOT EXISTS FOR (n:Region) REQUIRE n.name IS UNIQUE",
         "CREATE CONSTRAINT occupation_soc IF NOT EXISTS FOR (n:Occupation) REQUIRE n.soc_code IS UNIQUE",
         "CREATE CONSTRAINT employer_name IF NOT EXISTS FOR (n:Employer) REQUIRE n.name IS UNIQUE",
+        # Program: the TOP6 program, per-college (mirrors Course's (code, college)
+        # compound key). AcademicYear / Term are shared time-dimension nodes that
+        # award / enrollment measures hang off of (measure-on-edge, like DEMANDS).
+        "CREATE CONSTRAINT program_college_top6 IF NOT EXISTS FOR (n:Program) REQUIRE (n.college, n.top6) IS UNIQUE",
+        "CREATE CONSTRAINT academic_year IF NOT EXISTS FOR (n:AcademicYear) REQUIRE n.year IS UNIQUE",
+        "CREATE CONSTRAINT term_label IF NOT EXISTS FOR (n:Term) REQUIRE n.term IS UNIQUE",
     ]
     for constraint in constraints:
         session.run(constraint)

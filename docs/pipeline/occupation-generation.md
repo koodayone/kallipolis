@@ -56,7 +56,7 @@ A previous version of this stage ran a Gemini Flash skill-assignment step betwee
 
 ## Loading into the graph
 
-The node and edge shape produced by `load.py` is the canonical occupation surface of the graph. It matches the schema defined in [Graph Model → The seven node types](../architecture/graph-model.md#the-seven-node-types) and [Graph Model → The nine relationship pairings](../architecture/graph-model.md#the-nine-relationship-pairings).
+The node and edge shape produced by `load.py` is the canonical occupation surface of the graph. It matches the schema defined in [Graph Model → The node types](../architecture/graph-model.md#the-node-types) and [Graph Model → The relationships](../architecture/graph-model.md#the-relationships).
 
 | Structure | Properties | Source |
 |---|---|---|

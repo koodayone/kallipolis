@@ -39,6 +39,7 @@ from ontology.regions import (
 )
 from ontology.schema import get_driver
 from ontology.supply import get_coe_supply
+from ontology.programs import get_wage_outcomes
 
 # ── Scope (fixed for this consortium prototype) ───────────────────────────
 
@@ -56,6 +57,14 @@ SVAMP_SOCS: list[str] = [
     "49-9041", "49-9043", "51-4041", "51-9141", "51-9161", "51-9162",
 ]
 
+# DataMart enrollment terms in chronological order — used to order the
+# per-program enrollment series the report renders as a trend.
+SVAMP_TERMS: list[str] = [
+    "Fall 2023", "Winter 2024", "Spring 2024", "Summer 2024",
+    "Fall 2024", "Winter 2025", "Spring 2025", "Summer 2025",
+    "Fall 2025", "Winter 2026",
+]
+
 # Canonical PCAH Strong Workforce sector these occupations sit under. Passed
 # as the leaf report's sector hint so the drill-down renders in the same
 # sector framing as the consortium. (Matches the label in regions.py /
@@ -66,14 +75,40 @@ SVAMP_SECTOR: str = "Advanced Manufacturing"
 # ── Response shapes ───────────────────────────────────────────────────────
 
 
+class SvampWage(BaseModel):
+    """Pooled statewide award-cohort wage outcome for a TOP6 program, by
+    recipient type. Display-only; medians are non-additive — never summed."""
+    recipient_type: str
+    wage_before: int | None = None
+    wage_after_2: int | None = None
+    wage_after_5: int | None = None
+    n: int | None = None
+    window: str = ""
+
+
+class SvampProgram(BaseModel):
+    """A TOP6 program (DataMart actuals) that prepares for this cell's SOC at
+    this college. Awards/enrollment are institutional ground truth; wages are
+    pooled statewide at the TOP6 grain."""
+    top6: str
+    name: str
+    awards_recent: int = 0                 # actual completions, latest award year
+    enrollment: list[int | None] = []      # per SVAMP_TERMS, the enrollment trend
+    wages: list[SvampWage] = []
+
+
 class SvampCell(BaseModel):
     """One (college, occupation) cell of the landscape.
 
     `annual_openings` is the REGIONAL demand for the SOC — identical across
     all member colleges by construction (they share one COE region). Alignment
     depth (none/partial/strong) is left to the frontend to derive from
-    `course_count`. `supply` is this college's projected program completions
-    for the SOC; `gap` = regional openings − this college's supply.
+    `course_count`. `supply` is this college's COE-projected program
+    completions for the SOC; `gap` = regional openings − this college's supply.
+
+    `awards_recent` and `programs` are the additive DataMart enrichment:
+    actual completions (a ground-truth complement to projected `supply`) and
+    the per-program award/enrollment/wage detail for the cell's TOP6 programs.
     """
     soc_code: str
     title: str
@@ -84,6 +119,8 @@ class SvampCell(BaseModel):
     student_count: int = 0
     supply: float = 0.0
     gap: int = 0
+    awards_recent: int = 0                 # Σ actual awards over this cell's programs
+    programs: list[SvampProgram] = []
 
 
 class SvampCollege(BaseModel):
@@ -99,6 +136,10 @@ class SvampAggregate(BaseModel):
     gap: int                        # regional_demand_total − combined_supply_total
     candidate_employers: int        # DISTINCT regional employers hiring any SOC
     occupations_taught: int         # # of the 12 SOCs ≥1 college aligns to
+    # Σ actual awards (DataMart) over DISTINCT (college, TOP6) programs in scope
+    # — counted once per program, NOT summed per cell (a TOP6 serves multiple
+    # SOCs, so per-cell summing would double-count).
+    combined_awards: int = 0
     n_colleges: int
     n_occupations: int
 
@@ -137,8 +178,17 @@ def _build_executive_summary(region_display: str, agg: "SvampAggregate") -> str:
         f"Regional demand for these occupations totals "
         f"{agg.regional_demand_total:,} openings per year; the consortium's "
         f"colleges collectively supply ~{round(agg.combined_supply_total):,} "
-        f"completions against that shared demand."
+        f"projected completions against that shared demand."
     )
+    # S3 — actual awards (DataMart ground truth), complementing the projected
+    # supply figure. Only when the program data is present.
+    if agg.combined_awards:
+        s3 = (
+            f"In the latest reported year the member colleges awarded "
+            f"{agg.combined_awards:,} credentials across these programs "
+            f"(DataMart actuals)."
+        )
+        return f"{s1} {s2} {s3}"
     return f"{s1} {s2}"
 
 
@@ -210,12 +260,56 @@ def build_svamp_landscape() -> SvampLandscape:
         ).single()
         candidate_employers = (emp_row["n"] if emp_row else 0) or 0
 
+        # 4) Program (TOP6) actuals — DataMart awards + enrollment series, per
+        #    (college, top6). Additive enrichment; absent for colleges/TOP6s the
+        #    DataMart exports don't cover (the overlay is sparser than the
+        #    curriculum-alignment shading by design).
+        program_data: dict[tuple[str, str], dict] = {}
+        for r in session.run(
+            """
+            MATCH (pr:Program) WHERE pr.college IN $colleges
+            OPTIONAL MATCH (pr)-[a:AWARDED]->(:AcademicYear)
+            RETURN pr.college AS college, pr.top6 AS top6, pr.name AS name,
+                   toInteger(sum(coalesce(a.count, 0))) AS awards_recent
+            """,
+            colleges=SVAMP_COLLEGES,
+        ).data():
+            program_data[(r["college"], r["top6"])] = {
+                "name": r["name"], "awards_recent": r["awards_recent"],
+                "enroll": {},
+            }
+        for r in session.run(
+            """
+            MATCH (pr:Program)-[e:ENROLLED]->(t:Term) WHERE pr.college IN $colleges
+            RETURN pr.college AS college, pr.top6 AS top6, t.term AS term,
+                   toInteger(sum(e.count)) AS count
+            """,
+            colleges=SVAMP_COLLEGES,
+        ).data():
+            entry = program_data.get((r["college"], r["top6"]))
+            if entry is not None:
+                entry["enroll"][r["term"]] = r["count"]
+
     return _assemble_landscape(
         region=region,
         region_display=COE_REGION_DISPLAY.get(region, region),
         demand_by_soc=demand_by_soc,
         align_by_college=align_by_college,
         candidate_employers=candidate_employers,
+        program_data=program_data,
+    )
+
+
+def _build_program(college: str, top6: str, entry: dict, wage_fn) -> SvampProgram:
+    """Compose a SvampProgram from fetched program_data + the (pooled, TOP6-
+    grain) wage lookup. wage_fn is called only for real programs, so callers
+    that pass empty program_data (e.g. the unit test) incur no I/O."""
+    return SvampProgram(
+        top6=top6,
+        name=entry.get("name") or top6,
+        awards_recent=int(entry.get("awards_recent") or 0),
+        enrollment=[entry.get("enroll", {}).get(term) for term in SVAMP_TERMS],
+        wages=[SvampWage(**w) for w in wage_fn(top6)],
     )
 
 
@@ -226,6 +320,8 @@ def _assemble_landscape(
     align_by_college: dict[str, dict[str, dict]],
     candidate_employers: int,
     supply_fn: Callable[[set[str], str], tuple[list, float]] = get_coe_supply,
+    program_data: dict[tuple[str, str], dict] | None = None,
+    wage_fn: Callable[[str], list] = get_wage_outcomes,
 ) -> SvampLandscape:
     """Pure assembly of the landscape from already-fetched graph data.
 
@@ -239,9 +335,13 @@ def _assemble_landscape(
     - `candidate_employers` is the pre-deduplicated regional union, passed
       through as-is (never a sum of per-cell counts).
     """
+    program_data = program_data or {}
     colleges: list[SvampCollege] = []
     combined_supply_total = 0.0
     socs_taught: set[str] = set()
+    # DISTINCT (college, top6) programs in scope — combined_awards sums over
+    # these once, never per-cell (a TOP6 serves multiple SOCs).
+    scoped_programs: set[tuple[str, str]] = set()
 
     for college in SVAMP_COLLEGES:
         align = align_by_college.get(college, {})
@@ -260,6 +360,18 @@ def _assemble_landscape(
             if course_count > 0:
                 socs_taught.add(soc)
 
+            # DataMart program actuals for this cell's TOP6 programs (where the
+            # exports cover them). Per-cell awards display = sum over the cell's
+            # programs; the consortium total dedups across cells via
+            # scoped_programs.
+            programs: list[SvampProgram] = []
+            for top6 in sorted(top_codes):
+                entry = program_data.get((college, top6))
+                if entry is not None:
+                    programs.append(_build_program(college, top6, entry, wage_fn))
+                    scoped_programs.add((college, top6))
+            awards_recent = sum(p.awards_recent for p in programs)
+
             annual_openings = demand.get("annual_openings")
             gap = int(round((annual_openings or 0) - supply))
             cells.append(SvampCell(
@@ -272,8 +384,16 @@ def _assemble_landscape(
                 student_count=student_count,
                 supply=round(supply, 2),
                 gap=gap,
+                awards_recent=awards_recent,
+                programs=programs,
             ))
         colleges.append(SvampCollege(name=college, cells=cells))
+
+    # Consortium awards: each scoped program counted once (institutional, but
+    # de-duplicated across the SOCs a TOP6 serves).
+    combined_awards = sum(
+        int(program_data[k].get("awards_recent") or 0) for k in scoped_programs
+    )
 
     # Regional demand summed ONCE over the 12 SOCs (not per college).
     regional_demand_total = int(round(sum(
@@ -286,6 +406,7 @@ def _assemble_landscape(
         gap=int(round(regional_demand_total - combined_supply_total)),
         candidate_employers=candidate_employers,
         occupations_taught=len(socs_taught),
+        combined_awards=combined_awards,
         n_colleges=len(SVAMP_COLLEGES),
         n_occupations=len(SVAMP_SOCS),
     )

@@ -1,10 +1,10 @@
 # Graph Model
 
-The Kallipolis ontology is implemented as a Neo4j property graph with seven node types and nine relationship pairings. This document describes the schema — what each node type represents, what each relationship encodes, and how the supply-demand chain is realized in actual graph structure.
+The Kallipolis ontology is implemented as a Neo4j property graph with eight node types — the seven analytical and structural types plus the **Program** node — two shared time-dimension nodes (AcademicYear, Term), and the relationship set described below. This document describes the schema — what each node type represents, what each relationship encodes, and how the supply-demand chain is realized in actual graph structure.
 
-## The seven node types
+## The node types
 
-Four node types live on the curriculum side, three on the industry side. Each one corresponds to a concept in the product section.
+Five node types live on the curriculum side, three on the industry side, plus two shared time-dimension nodes. Each substantive type corresponds to a concept in the product section.
 
 ### Curriculum side
 
@@ -14,6 +14,7 @@ Four node types live on the curriculum side, three on the industry side. Each on
 | **Department** | name | `name UNIQUE` | A department within a college (e.g., Welding, Nursing) |
 | **Course** | code, college, name, department, catalog_section, units, description, prerequisites, learning_outcomes, course_objectives, transfer_status, url, top_code, is_cte | `(code, college) UNIQUE` | A course actually taught at a college. `top_code` is the per-college 6-digit TOP6 from the Chancellor's Office Master Course File. `department` is derived from `top_code` via the Chancellor's Office Taxonomy of Programs Manual (TOP4 → name). `catalog_section` preserves the section header Gemini extracted from the source PDF for traceability. `is_cte` is true iff `top_code` appears in the PCAH "TOP Codes to Sectors" file — the institutional definition of CTE scope. |
 | **Student** | uuid, gpa, primary_focus, primary_top6, courses_completed, college | `uuid UNIQUE` | A student enrolled at a college (synthetic). The derived fields are materialized after enrollment generation; `primary_top6` is the 6-digit TOP code the student concentrates in, authoritatively keying the `primary_focus` department label. `college` records the institution the student attends — the partnership-positioning question (a college's pipeline for a SOC) is per-college, so this property scopes the HAS_COMPETENCY-pivoted reads in `backend/partnerships/gather.py` to one college's ~13K students rather than the system-wide pool of 400K+. Multi-college future: convert to a list. |
+| **Program** | college, top6, name, top4, is_cte | `(college, top6) UNIQUE` | A TOP6 program at a college — the unit the Strong Workforce Program funds and reports on, instantiated as a first-class node (previously smeared across `Course.top_code`, `Student.primary_top6`, and the TOP4-derived Department). Keyed per-college, mirroring Course's compound key. Loaded from Chancellor's Office DataMart MIS exports by [`backend/ontology/programs.py`](../../backend/ontology/programs.py); award and enrollment measures hang off it as edges to shared time-dimension nodes (measure-on-edge, mirroring `DEMANDS`). Introduced additively — `PREPARES_FOR` stays on Course. |
 
 ### Industry side
 
@@ -23,9 +24,18 @@ Four node types live on the curriculum side, three on the industry side. Each on
 | **Occupation** | soc_code, title, description, education_level | `soc_code UNIQUE` | A SOC-coded occupation in regional demand. Wage and employment data live on the `DEMANDS` edge, not on the node, because the same occupation has different demand profiles in different regions. |
 | **Employer** | name, sector, swp_sectors, naics4, description, website, operations_summary | `name UNIQUE` | A real organization that hires in California. `sector` is the NAICS-2 display label; `swp_sectors` is the canonical PCAH sector list (see [SWP Sector NAICS Composition](../pipeline/swp-sector-naics.md)), loaded from the same xlsx the occupation side uses. `naics4` is the BLS-published 4-digit NAICS industry code; it keys the BLS OEWS National Industry-Occupation Matrix that bounds the `HIRES_FOR` SOC pool (see [Institutional Deference Evolution](./institutional-deference-evolution.md)). The `website` property is the verified official URL produced by the validation step in the [employer generation pipeline](../pipeline/employer-generation.md). The `operations_summary` property is a verb phrase characterizing the employer's operations (e.g., "operates an all-boys Jesuit private high school in San Jose, serving approximately 1,600 students"), pre-computed once per employer at ingestion by [`backend/employers/characterize.py`](../../backend/employers/characterize.py) and consumed by the deterministic partnership-proposal narrative templates so the executive-summary opening sentence is institutionally consistent across runs. |
 
-The seven node types map cleanly to the conceptual structure documented in the product section. The four units of analysis — students, courses, occupations, employers — each have a node type. The structural elements — colleges and departments on the curriculum side, regions on the industry side — are containers. The bridge between curriculum and labor market is encoded directly as an edge between Course and Occupation, derived from the institutional TOP-CIP-SOC crosswalk; no internally-derived skill index sits between them.
+### Time-dimension nodes
 
-## The nine relationship pairings
+Shared, uniquely-indexed nodes that program measures attach to (measure-on-edge, mirroring how `DEMANDS` carries wage/employment on the Region edge). A handful of nodes each, so the loader `MERGE` is an index seek, not a scan.
+
+| Node | Key properties | Constraint | What it represents |
+|---|---|---|---|
+| **AcademicYear** | year | `year UNIQUE` | An award year (e.g., `2024-2025`); the shared target of `AWARDED` edges. |
+| **Term** | term | `term UNIQUE` | An enrollment term (e.g., `Fall 2024`); the shared target of `ENROLLED` edges. |
+
+The eight substantive node types map to the conceptual structure documented in the product section. The four units of analysis — students, courses, occupations, employers — each have a node type; `Program` instantiates the TOP6 program that the curriculum side reports and funds on. The structural elements — colleges and departments on the curriculum side, regions on the industry side, and the AcademicYear/Term time dimensions — are containers. The bridge between curriculum and labor market is encoded directly as an edge between Course and Occupation, derived from the institutional TOP-CIP-SOC crosswalk; no internally-derived skill index sits between them.
+
+## The relationships
 
 Relationships encode the supply-demand logic of workforce development. Each one is directional and most carry no properties.
 
@@ -43,6 +53,9 @@ Relationships encode the supply-demand logic of workforce development. Each one 
 | `HAS_COMPETENCY` | Student → Occupation | competency_depth, via_tops | A derived analytical edge: a student has demonstrated some level of competency development for an occupation iff at least one course they have ENROLLED_IN PREPARES_FOR that occupation. `competency_depth` is the count of distinct prep-tagged courses (the spectrum measure: 1 = beginning, N = substantial coursework). `via_tops` is the distinct TOP6 codes that mediated the crosswalk pathway. Cross-college by design: aggregates over a student's full enrollment history regardless of which colleges contributed which courses. Materialized at pipeline reload by [`backend/partnerships/compute.py`](../../backend/partnerships/compute.py); replaces a request-time `Student × ENROLLED_IN × PREPARES_FOR` cartesian that dominated the cost of `/partnerships/opportunity/{soc}`. |
 | `PARTNERSHIP_ALIGNMENT` | College → Employer | roles_count, aligned_roles_count, aligned_course_count | A derived analytical edge: per-(college, employer) precomputed alignment summarizing how the college's curriculum prepares students for the employer's hire-occupation set. Powers `/employers/` ranking. Materialized at pipeline reload by [`backend/partnerships/compute.py`](../../backend/partnerships/compute.py). Replaces a request-time `College → Region → Employer × Occupation × PREPARES_FOR × CONTAINS` traversal. |
 | `OCCUPATION_PIPELINE` | College → Occupation | course_count, employer_count, student_count, top_codes | A derived analytical edge: per-(college, SOC) precomputed aggregates for the partnerships sector index — count of aligned courses at the college, employers in the region hiring for the SOC, students in aligned departments, and the TOP6 codes mediating the alignment. Powers `/partnerships/sectors`. Materialized at pipeline reload by [`backend/partnerships/compute.py`](../../backend/partnerships/compute.py). Replaces three per-SOC traversals at request time. |
+| `HAS_PROGRAM` | Department → Program | — | A department (TOP4) contains a TOP6 program. Additive alongside `CONTAINS`: the Program node was introduced without reparenting the existing Department→Course hierarchy. Materialized by [`backend/ontology/programs.py`](../../backend/ontology/programs.py) where the TOP4 Department exists. |
+| `AWARDED` | Program → AcademicYear | count, award_type | Actual credentials a program awarded in a year, from Chancellor's Office DataMart MIS — institutional ground truth complementing COE-projected supply. One edge per award type. Institutional and summable across colleges. |
+| `ENROLLED` | Program → Term | count, credit_type | Section enrollment for a program in a term, from DataMart MIS — the leading-indicator enrollment trend. One edge per credit type. Institutional and summable across colleges. |
 
 The `IN_MARKET` relationship is overloaded: the same edge type connects both colleges and employers to their regional labor markets. This works because the semantics are the same in both cases — the entity operates within the region — even though the entities being connected are different node types.
 
@@ -74,6 +87,21 @@ College ──OFFERS──▶ Department ──CONTAINS──▶ Course ──PR
 ```
 
 The diagram shows the two halves of the graph meeting at `Occupation`. Read left to right, the diagram traces the supply chain: a college offers departments, departments contain courses, courses prepare students for occupations through the institutional crosswalk, students enroll in courses. Read right to left from the occupation layer, it traces the demand chain: regions demand occupations, employers hire for occupations. The two chains meet at the occupation node, with `PREPARES_FOR` carrying the institutional bridge that makes the supply-demand alignment computable.
+
+## The Program layer
+
+The Program node attaches under Department, parallel to Course — additively, without disturbing the existing curriculum hierarchy or the `PREPARES_FOR` bridge:
+
+```
+Department ──HAS_PROGRAM──▶ Program ──AWARDED──▶ AcademicYear
+                                   └──ENROLLED──▶ Term
+```
+
+`Program` instantiates the TOP6 program (the unit SWP funds and reports on), keyed per-college. Its measures are dimensioned time-series at different grains — annual awards, per-term enrollment — so they live on edges to shared `AcademicYear`/`Term` nodes rather than as scalar properties, mirroring how `DEMANDS` carries region-varying wage/employment on its edge. Awards are actual completions (DataMart ground truth, a complement to the COE-projected supply the partnership artifact already carries); enrollment is the leading-indicator trend.
+
+**Wage outcomes are deliberately not in the graph.** The DataMart wage export has no college dimension and per-college cohorts are small-n suppressed, so wages are modeled at the TOP6 grain as read-time reference data (`get_wage_outcomes` over `wage_outcomes_summary.csv`, mirroring `supply.py` / `get_coe_supply`), displayed per program and never summed (medians are non-additive). Moving wages into the graph is a documented future step (see the `get_wage_outcomes` docstring).
+
+The Program layer is consumed by the `/svamp` aggregated landscape ([`backend/partnerships/svamp.py`](../../backend/partnerships/svamp.py)); the per-(college, occupation) partnership reports do not read it.
 
 ## The bridge logic
 

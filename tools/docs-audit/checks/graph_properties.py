@@ -54,6 +54,8 @@ LOADER_FILES = [
     "backend/employers/load.py",
     "backend/ontology/prepares_for.py",
     "backend/ontology/regions.py",
+    # Program (TOP6) nodes + award/enrollment measure edges, from DataMart.
+    "backend/ontology/programs.py",
     # Derived analytical edges — materialized at pipeline-reload time.
     "backend/partnerships/compute.py",
 ]

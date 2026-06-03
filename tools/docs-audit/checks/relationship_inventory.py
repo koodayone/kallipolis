@@ -48,6 +48,8 @@ LOADER_FILES = [
     "backend/employers/load.py",
     "backend/ontology/prepares_for.py",
     "backend/ontology/regions.py",
+    # Program (TOP6) nodes + award/enrollment measure edges, from DataMart.
+    "backend/ontology/programs.py",
     # Derived analytical edges — materialized at pipeline-reload time
     # from the base graph, not from external sources. Listed here so
     # the audit verifies the doc/loader contract for them too.

@@ -12,6 +12,7 @@ import type {
   ApiSvampLandscape,
   ApiSvampCell,
   ApiSvampCollege,
+  ApiSvampProgram,
 } from "@/college-atlas/partnerships/api";
 
 const GAP = "#e0654f";
@@ -69,6 +70,115 @@ function hexA(hex: string, a: number) {
 }
 const Dot = () => <span style={{ color: "rgba(255,255,255,0.25)", margin: "0 8px" }}>·</span>;
 
+// ── Enrollment trend chart ────────────────────────────────────────────────
+// The 10-term enrollment array (SVAMP_TERMS) drops its null boundary terms
+// (Fall 2023 / Winter 2026 — no data reported) to the 8 reported terms.
+// Labels for the full SVAMP_TERMS series (10 terms). We no longer assume the
+// boundary terms are empty — colleges differ by calendar (De Anza runs
+// quarters with no Fall-2023 report; Ohlone runs Fall/Spring/Summer with no
+// Winter), so leading/trailing empties are trimmed dynamically, not hardcoded.
+const ENROLL_ABBR = ["Fall 23", "Win 24", "Spr 24", "Sum 24", "Fall 24", "Win 25", "Spr 25", "Sum 25", "Fall 25", "Win 26"];
+// Distinct line colors per program (cycled). The enrollment overlay is a
+// multi-series chart, so each TOP program gets its own hue, keyed by the
+// legend; the section's brand accent stays the college's.
+const OVERLAY_COLORS = ["#e85d8a", "#5ab0c4", "#c9a84c", "#7bd88f", "#b483f0", "#f0915a", "#67c2c9", "#e0654f", "#9aa6bd"];
+
+// Edge-safe text anchor: the leftmost/rightmost slots anchor inward so their
+// value/term labels never spill past the chart's plot area.
+function edgeAnchor(i: number, n: number): "start" | "middle" | "end" {
+  if (i === 0) return "start";
+  if (i === n - 1) return "end";
+  return "middle";
+}
+
+// Interactive enrollment overlay: all feeder TOP programs for the SOC on one
+// shared y-axis. Gridlines give magnitude; relative size reads at a glance.
+// Hover a legend program to focus it — it brightens, the rest fade, and its
+// points get labeled with the actual term values; mouse out returns to the
+// overview. Leading/trailing empty terms are trimmed dynamically across the
+// whole set (colleges differ by calendar), with internal gaps spanned.
+function EnrollmentOverlay({ programs }: { programs: ApiSvampProgram[] }) {
+  const [hover, setHover] = useState<number | null>(null);
+  const anyAt = (i: number) => programs.some((p) => p.enrollment[i] != null);
+  let first = 0; while (first < 10 && !anyAt(first)) first++;
+  let lastT = 9; while (lastT >= 0 && !anyAt(lastT)) lastT--;
+  const allVals = programs.flatMap((p) => p.enrollment.filter((v): v is number => v != null));
+  if (lastT < first || !allVals.length) return null;
+  const slots: number[] = [];
+  for (let i = first; i <= lastT; i++) slots.push(i);
+  const n = slots.length;
+  const dataMax = Math.max(...allVals);
+  const step = dataMax > 300 ? 100 : 50;
+  // Round the axis up to the next gridline so the top line bounds the data
+  // (peak 197 -> axis 200) and the highest value is always labeled.
+  const axisMax = Math.ceil(dataMax / step) * step;
+  const W = 760, H = 256, padL = 34, padR = 14, padT = 18, padB = 26, base = H - padB, top = padT;
+  const X = (pos: number) => (n === 1 ? (padL + W - padR) / 2 : padL + (pos / (n - 1)) * (W - padL - padR));
+  const Y = (v: number) => base - (v / axisMax) * (base - top);
+  const posOf = (slot: number) => slots.indexOf(slot);
+  const ticks: number[] = [];
+  for (let t = step; t <= axisMax; t += step) ticks.push(t);
+
+  return (
+    <div style={{ marginTop: 16 }}>
+      <svg width="100%" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid meet" style={{ display: "block" }}>
+        <line x1={padL} x2={W - padR} y1={base} y2={base} stroke="rgba(255,255,255,.1)" />
+        {ticks.map((t) => (
+          <g key={t}>
+            <line x1={padL} x2={W - padR} y1={Y(t)} y2={Y(t)} stroke="rgba(255,255,255,.05)" />
+            <text x={padL - 6} y={Y(t) + 3} textAnchor="end" style={{ fontFamily: MONO, fontSize: 9, fill: "#5e6a83" }}>{t.toLocaleString("en-US")}</text>
+          </g>
+        ))}
+        {programs.map((p, pi) => {
+          const color = OVERLAY_COLORS[pi % OVERLAY_COLORS.length];
+          const on = hover === pi, faded = hover != null && !on;
+          const pts = slots.filter((i) => p.enrollment[i] != null)
+            .map((i) => ({ x: X(posOf(i)), y: Y(p.enrollment[i] as number), v: p.enrollment[i] as number, i }));
+          if (!pts.length) return null;
+          const path = pts.map((q, k) => (k ? "L" : "M") + q.x.toFixed(1) + " " + q.y.toFixed(1)).join(" ");
+          const lastPt = pts[pts.length - 1];
+          return (
+            <g key={p.top6}>
+              <path d={path} fill="none" stroke={color} strokeWidth={on ? 3 : 2} strokeLinejoin="round" strokeLinecap="round" opacity={faded ? 0.12 : on ? 1 : 0.82} />
+              {on
+                ? pts.map((q) => (
+                    <g key={q.i}>
+                      <circle cx={q.x} cy={q.y} r={3} fill={color} />
+                      <text x={q.x} y={q.y - 8} textAnchor={edgeAnchor(posOf(q.i), n)} style={{ fontFamily: MONO, fontSize: 9.5, fill: "#e8ecf4" }}>{q.v.toLocaleString("en-US")}</text>
+                    </g>
+                  ))
+                : hover == null && <circle cx={lastPt.x} cy={lastPt.y} r={2.4} fill={color} />}
+              {/* invisible wide hit area so the thin line itself is hoverable */}
+              <path d={path} fill="none" stroke="transparent" strokeWidth={14} style={{ pointerEvents: "stroke", cursor: "pointer" }} onMouseEnter={() => setHover(pi)} onMouseLeave={() => setHover(null)} />
+            </g>
+          );
+        })}
+        {slots.map((i, k) => (
+          <text key={i} x={X(k)} y={H - 8} textAnchor={edgeAnchor(k, n)} style={{ fontFamily: MONO, fontSize: 9.5, fill: "#5e6a83" }}>{ENROLL_ABBR[i]}</text>
+        ))}
+      </svg>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4px 16px", marginTop: 12 }}>
+        {programs.map((p, pi) => {
+          const color = OVERLAY_COLORS[pi % OVERLAY_COLORS.length];
+          const on = hover === pi, dim = hover != null && !on;
+          return (
+            <div
+              key={p.top6}
+              onMouseEnter={() => setHover(pi)}
+              onMouseLeave={() => setHover(null)}
+              style={{ display: "flex", alignItems: "center", gap: 9, fontSize: 12.5, padding: "6px 9px", borderRadius: 8, background: on ? "rgba(255,255,255,.07)" : "transparent", opacity: dim ? 0.45 : 1, transition: "background .12s, opacity .12s", minWidth: 0 }}
+            >
+              <span style={{ width: 16, height: 3, borderRadius: 2, background: color, flex: "none" }} />
+              <span style={{ flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", color: "#9aa6bd" }}>{p.name}</span>
+              <span style={{ fontFamily: MONO, fontSize: 10.5, color: "#5e6a83", flex: "none" }}>TOP {p.top6}</span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 export default function SvampView({ colleges, onBack }: Props) {
   const [data, setData] = useState<ApiSvampLandscape | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -116,6 +226,22 @@ export default function SvampView({ colleges, onBack }: Props) {
     data.colleges.find((c) => byName.get(c.name)?.id === selected) ?? data.colleges[0];
   const selRef = selCollege ? byName.get(selCollege.name) : undefined;
   const selBrand = selRef?.config.brandColorLight ?? ACCENT;
+  const selectedCell = selCollege?.cells.find((c) => c.soc_code === selectedSoc);
+
+  // SVAMP-owned Program Outcomes panel — injected into the embedded report
+  // between Curriculum Alignment and Student Impact via OpportunityReportBody's
+  // `programOutcomes` slot (so it reads as a peer report section without
+  // touching the shared per-college report). Null when the selection has no
+  // DataMart program data.
+  const programOutcomesPanel =
+    selectedCell && selectedCell.programs.length > 0 && selRef ? (
+      <Section title="Program Enrollment" brandColor={selBrand}>
+        <Prose>
+          Term-by-term enrollment (DataMart) for the {shortName(selRef.config.name)} programs that prepare students for this occupation. Hover a program to read its trend.
+        </Prose>
+        <EnrollmentOverlay programs={selectedCell.programs} />
+      </Section>
+    ) : null;
 
   // Columns = member colleges (with a soc→cell map); rows = the 12 roles.
   const columns = colleges.map((ref) => {
@@ -211,11 +337,13 @@ export default function SvampView({ colleges, onBack }: Props) {
       </Section>
 
       {/* Inline detail — the selected occupation's report, exec summary
-          suppressed so it opens on Occupational Demand. Uses the selected
-          college's own brand color, distinct from the red consortium chrome. */}
+          suppressed so it opens on Occupational Demand. The Program Outcomes
+          panel is injected between Curriculum Alignment and Student Impact via
+          the programOutcomes slot. Uses the selected college's own brand color,
+          distinct from the red consortium chrome. */}
       {selectedSoc && selRef && (
         <div style={{ marginTop: 36 }}>
-          <OpportunityReportBody school={selRef.config} socCode={selectedSoc} sector={data.sector} hideExecutiveSummary embedded />
+          <OpportunityReportBody school={selRef.config} socCode={selectedSoc} sector={data.sector} hideExecutiveSummary hideStudentImpact embedded programOutcomes={programOutcomesPanel} />
         </div>
       )}
     </>,

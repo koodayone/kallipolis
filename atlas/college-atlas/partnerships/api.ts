@@ -212,6 +212,26 @@ export async function getPartnershipSectors(college: string): Promise<ApiSectorI
 // are institutional (summed). Drilling a cell reuses getPartnershipOpportunity
 // unchanged.
 
+// Pooled statewide award-cohort wage outcome for a TOP6 program (display-only;
+// medians are non-additive — never summed).
+export type ApiSvampWage = {
+  recipient_type: string;
+  wage_before: number | null;
+  wage_after_2: number | null;
+  wage_after_5: number | null;
+  n: number | null;
+  window: string;
+};
+
+// A TOP6 program (DataMart actuals) preparing for a cell's SOC at a college.
+export type ApiSvampProgram = {
+  top6: string;
+  name: string;
+  awards_recent: number;             // actual completions, latest award year
+  enrollment: (number | null)[];     // per SVAMP term, the enrollment trend
+  wages: ApiSvampWage[];
+};
+
 export type ApiSvampCell = {
   soc_code: string;
   title: string;
@@ -222,6 +242,8 @@ export type ApiSvampCell = {
   student_count: number;
   supply: number;
   gap: number;
+  awards_recent: number;             // Σ actual awards over this cell's programs
+  programs: ApiSvampProgram[];
 };
 
 export type ApiSvampCollege = {
@@ -235,6 +257,7 @@ export type ApiSvampAggregate = {
   gap: number;
   candidate_employers: number;
   occupations_taught: number;
+  combined_awards: number;           // Σ actual awards over distinct scoped programs
   n_colleges: number;
   n_occupations: number;
 };

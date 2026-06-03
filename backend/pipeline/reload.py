@@ -22,6 +22,7 @@ from students.generate import generate_and_load_students
 from occupations.load import load_industry
 from employers.load import load_employers, cleanup_stale_employers
 from ontology.schema import get_driver, close_driver, init_schema
+from ontology.programs import load_programs
 from partnerships.compute import (
     materialize_partnership_alignment,
     materialize_occupation_pipeline,
@@ -84,6 +85,10 @@ def clear_graph(driver) -> None:
             logger.info(f"  Deleting {cnt} courses...")
             s.run("CALL { MATCH (c:Course) DETACH DELETE c } IN TRANSACTIONS OF 1000 ROWS")
 
+        # Programs (TOP6) + their shared time-dimension nodes
+        s.run("MATCH (p:Program) DETACH DELETE p")
+        s.run("MATCH (n:AcademicYear) DETACH DELETE n")
+        s.run("MATCH (n:Term) DETACH DELETE n")
         # Departments
         s.run("MATCH (d:Department) DETACH DELETE d")
         # Skills (legacy — drop any leftover nodes from pre-crosswalk graphs)
@@ -248,6 +253,17 @@ def reload_region(region_key: str) -> None:
 
         # Step 5: Generate students
         total_students = generate_students(driver, college_keys, configs)
+
+        # Step 5b: Load Program (TOP6) nodes + award/enrollment measures.
+        # Must run after load_courses (Course/Department/TOP6 universe exist)
+        # and before the partnership precompute. Additive and self-scoping:
+        # only creates Programs for colleges present in the graph, so it is a
+        # no-op for regions the DataMart exports don't cover. Failure is
+        # non-fatal — the rest of the graph is unaffected.
+        try:
+            load_programs(driver)
+        except Exception as e:
+            logger.error(f"load_programs failed: {e}; Program layer absent until rerun")
 
         # Step 6: Materialize PARTNERSHIP_ALIGNMENT edges. Must run
         # after both load_courses (PREPARES_FOR exists) and

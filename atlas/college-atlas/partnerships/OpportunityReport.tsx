@@ -56,13 +56,22 @@ export default function OpportunityReport({ school, socCode, sector, onBack }: P
    embedded (executive summary suppressed, eyebrow dropped) inside the SVAMP
    aggregated landscape so a selection renders inline without a page load. */
 export function OpportunityReportBody({
-  school, socCode, sector, hideExecutiveSummary = false, embedded = false,
+  school, socCode, sector, hideExecutiveSummary = false, hideStudentImpact = false, embedded = false, programOutcomes,
 }: {
   school: SchoolConfig;
   socCode: string;
   sector?: string;
   hideExecutiveSummary?: boolean;
+  // Suppress the Student Impact section. Default false → per-college reports
+  // unchanged; SVAMP sets it true (the student layer is synthetic and
+  // individual-level, so it's omitted from the customer-facing consortium
+  // report to avoid implying real PII / FERPA-scoped data).
+  hideStudentImpact?: boolean;
   embedded?: boolean;
+  // Optional slot rendered between Curriculum Alignment and Student Impact.
+  // Default undefined → nothing renders, so the per-college report is
+  // unchanged; the SVAMP landscape passes its Program Outcomes panel here.
+  programOutcomes?: React.ReactNode;
 }) {
   const [report, setReport] = useState<ApiOpportunityReport | null>(null);
   const [loading, setLoading] = useState(true);
@@ -94,19 +103,21 @@ export function OpportunityReportBody({
   }
   if (!report) return null;
   return (
-    <ReportBody report={report} school={school} hideExecutiveSummary={hideExecutiveSummary} embedded={embedded} />
+    <ReportBody report={report} school={school} hideExecutiveSummary={hideExecutiveSummary} hideStudentImpact={hideStudentImpact} embedded={embedded} programOutcomes={programOutcomes} />
   );
 }
 
 /* ── Report Body ───────────────────────────────────────────────────────── */
 
 function ReportBody({
-  report, school, hideExecutiveSummary = false, embedded = false,
+  report, school, hideExecutiveSummary = false, hideStudentImpact = false, embedded = false, programOutcomes,
 }: {
   report: ApiOpportunityReport;
   school: SchoolConfig;
   hideExecutiveSummary?: boolean;
+  hideStudentImpact?: boolean;
   embedded?: boolean;
+  programOutcomes?: React.ReactNode;
 }) {
   const brandColor = school.brandColorLight;
 
@@ -298,9 +309,16 @@ function ReportBody({
           )}
       </Section>
 
+      {/* Optional injected section (SVAMP Program Outcomes); nothing for the
+          per-college report. */}
+      {programOutcomes}
+
       {/* Student Impact — narrative + headline metric callout +
           top students rendered via StudentRow with the Competency
-          Profile tab suppressed. */}
+          Profile tab suppressed. Suppressed when hideStudentImpact (SVAMP):
+          the synthetic, individual-level student layer is omitted from the
+          customer-facing consortium report. */}
+      {!hideStudentImpact && (
       <Section title="Student Impact" brandColor={brandColor}>
         <Prose>{report.student_impact}</Prose>
 
@@ -414,6 +432,7 @@ function ReportBody({
           Profiles above are synthetic — calibrated to CCCCO DataMart Fall 2025 grade distributions. Live anonymized MIS data from your institution would render real student records.
         </p>
       </Section>
+      )}
 
       {/* Labor Market Information — narrative + demand table +
           openings/supply gap visualization + institutional sources. */}
