@@ -64,6 +64,12 @@ SVAMP_SOCS: list[str] = [
 # labels: Winter < Spring < Summer < Fall within a year.
 _SEASON_ORDER = {"Winter": 0, "Spring": 1, "Summer": 2, "Fall": 3}
 
+# Seasons excluded from the enrollment trend. Summer enrollment is
+# structurally low (fewer offerings, shorter term), so it reads as noise on the
+# trend rather than signal; the data stays in the graph and can be re-included
+# by clearing this set.
+_ENROLLMENT_EXCLUDE_SEASONS = {"Summer"}
+
 
 def _term_sort_key(term: str) -> tuple[int, int]:
     parts = term.split()
@@ -79,6 +85,10 @@ def _term_sort_key(term: str) -> tuple[int, int]:
 # sector framing as the consortium. (Matches the label in regions.py /
 # the PCAH TOP-Codes-to-Sectors mapping.)
 SVAMP_SECTOR: str = "Advanced Manufacturing"
+
+# Award trend window: show the most recent N award years, matching the ~5-year
+# span of the enrollment chart. The full history remains in the graph.
+AWARD_YEARS_SHOWN: int = 5
 
 
 # ── Response shapes ───────────────────────────────────────────────────────
@@ -176,16 +186,17 @@ class SvampLandscape(BaseModel):
     aggregate: SvampAggregate
 
 
-def _build_executive_summary(region_display: str, agg: "SvampAggregate") -> str:
-    """The aggregated report's two-sentence thesis, employer-agnostic.
+def _build_executive_summary(region_display: str, agg: "SvampAggregate", latest_year: str | None = None) -> str:
+    """The report's thesis, employer-agnostic.
 
     S1 names what the report examines (consortium + occupations + region).
-    S2 carries the regional-vs-institutional aggregation thesis: shared
-    regional demand, summed institutional supply, the combined gap, and the
-    regional employer set — the basis for a multi-college partnership strategy.
+    S2 states the shared regional demand. S3 (when program data is present)
+    grounds the latest-year credential count in the institutional linkage —
+    awards from programs that prepare for these occupations via the
+    TOP-CIP-SOC crosswalk — so the number reads as evidence, not trivia.
     """
     s1 = (
-        f"This report examines the aggregated partnership landscape across the "
+        f"This report examines the partnership landscape across the "
         f"{agg.n_colleges} member colleges of the Silicon Valley Advanced "
         f"Manufacturing Partnership consortium for {agg.n_occupations} "
         f"advanced-manufacturing occupations in the {region_display} regional "
@@ -193,17 +204,14 @@ def _build_executive_summary(region_display: str, agg: "SvampAggregate") -> str:
     )
     s2 = (
         f"Regional demand for these occupations totals "
-        f"{agg.regional_demand_total:,} openings per year; the consortium's "
-        f"colleges collectively supply ~{round(agg.combined_supply_total):,} "
-        f"projected completions against that shared demand."
+        f"{agg.regional_demand_total:,} openings per year."
     )
-    # S3 — actual awards (DataMart ground truth), complementing the projected
-    # supply figure. Only when the program data is present.
     if agg.combined_awards:
+        yr = f" ({latest_year})" if latest_year else ""
         s3 = (
-            f"In the latest reported year the member colleges awarded "
-            f"{agg.combined_awards:,} credentials across these programs "
-            f"(DataMart actuals)."
+            f"In the latest reported year{yr}, SVAMP member colleges awarded "
+            f"{agg.combined_awards:,} credentials from programs that prepare "
+            f"for these occupations according to the TOP-CIP-SOC crosswalk."
         )
         return f"{s1} {s2} {s3}"
     return f"{s1} {s2}"
@@ -371,16 +379,21 @@ def _assemble_landscape(
     """
     program_data = program_data or {}
     # Shared award-year axis: the sorted union of every program's reported
-    # years (YYYY-YYYY sorts chronologically). Each program's `awards` series
-    # aligns to this; awards_recent / combined_awards are the LATEST year only.
+    # years (YYYY-YYYY sorts chronologically), windowed to the most recent
+    # AWARD_YEARS_SHOWN so the awards trend spans the same ~5 years as the
+    # enrollment chart (the full history stays in the graph). Each program's
+    # `awards` series aligns to this; awards_recent / combined_awards are the
+    # LATEST year only.
     award_years = sorted({
         y for e in program_data.values() for y in e.get("awards_by_year", {})
-    })
+    })[-AWARD_YEARS_SHOWN:]
     latest_year = award_years[-1] if award_years else None
     # Shared enrollment-term axis: the chronologically-sorted union of every
-    # program's reported terms. Each program's `enrollment` aligns to this.
+    # program's reported terms, excluding the structurally-low summer terms.
+    # Each program's `enrollment` aligns to this.
     enrollment_terms = sorted(
-        {t for e in program_data.values() for t in e.get("enroll", {})},
+        {t for e in program_data.values() for t in e.get("enroll", {})
+         if t.split()[0] not in _ENROLLMENT_EXCLUDE_SEASONS},
         key=_term_sort_key,
     )
     colleges: list[SvampCollege] = []
@@ -467,7 +480,7 @@ def _assemble_landscape(
         region_display=region_display,
         sector=SVAMP_SECTOR,
         is_sector_priority=is_sector_priority,
-        executive_summary=_build_executive_summary(region_display, aggregate),
+        executive_summary=_build_executive_summary(region_display, aggregate, latest_year),
         award_years=award_years,
         enrollment_terms=enrollment_terms,
         colleges=colleges,

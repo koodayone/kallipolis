@@ -57,7 +57,7 @@ export default function OpportunityReport({ school, socCode, sector, onBack }: P
    aggregated landscape so a selection renders inline without a page load. */
 export function OpportunityReportBody({
   school, socCode, sector, hideExecutiveSummary = false, hideStudentImpact = false, embedded = false, programOutcomes,
-  demandTitle = "Labor Market Information",
+  demandTitle = "Labor Market Information", hideLaborMarket = false, suppressEmptySupplyGap = false,
 }: {
   school: SchoolConfig;
   socCode: string;
@@ -76,6 +76,17 @@ export function OpportunityReportBody({
   // Title of the demand/supply section. Default keeps the per-college reports
   // unchanged; SVAMP passes the more precise "Centers of Excellence Projections".
   demandTitle?: string;
+  // SVAMP gap view (an empty cell — the college teaches none of the SOC's
+  // crosswalk): hide the supply/demand projections (hollow at zero supply).
+  // Partnership Opportunities still surface — regional employers hiring for the
+  // SOC are candidate partners for developing the pathway, curriculum or not.
+  // Default false → per-college reports and covered SVAMP cells are unchanged.
+  hideLaborMarket?: boolean;
+  // Suppress the workforce-gap bar when no supply projection is published
+  // (openings − 0 would dress data absence as a quantified gap, contradicting
+  // the prose). Default false → per-college reports unchanged; SVAMP opts in
+  // and the section uses its own hasPublishedSupply to decide per cell.
+  suppressEmptySupplyGap?: boolean;
 }) {
   const [report, setReport] = useState<ApiOpportunityReport | null>(null);
   const [loading, setLoading] = useState(true);
@@ -107,7 +118,7 @@ export function OpportunityReportBody({
   }
   if (!report) return null;
   return (
-    <ReportBody report={report} school={school} hideExecutiveSummary={hideExecutiveSummary} hideStudentImpact={hideStudentImpact} embedded={embedded} programOutcomes={programOutcomes} demandTitle={demandTitle} />
+    <ReportBody report={report} school={school} hideExecutiveSummary={hideExecutiveSummary} hideStudentImpact={hideStudentImpact} embedded={embedded} programOutcomes={programOutcomes} demandTitle={demandTitle} hideLaborMarket={hideLaborMarket} suppressEmptySupplyGap={suppressEmptySupplyGap} />
   );
 }
 
@@ -115,7 +126,7 @@ export function OpportunityReportBody({
 
 function ReportBody({
   report, school, hideExecutiveSummary = false, hideStudentImpact = false, embedded = false, programOutcomes,
-  demandTitle = "Labor Market Information",
+  demandTitle = "Labor Market Information", hideLaborMarket = false, suppressEmptySupplyGap = false,
 }: {
   report: ApiOpportunityReport;
   school: SchoolConfig;
@@ -124,6 +135,8 @@ function ReportBody({
   embedded?: boolean;
   programOutcomes?: React.ReactNode;
   demandTitle?: string;
+  hideLaborMarket?: boolean;
+  suppressEmptySupplyGap?: boolean;
 }) {
   const brandColor = school.brandColorLight;
 
@@ -311,6 +324,7 @@ function ReportBody({
               socCode={report.soc_code}
               socTitle={report.soc_title}
               brandColor={brandColor}
+              embedded={embedded}
             />
           )}
       </Section>
@@ -442,9 +456,13 @@ function ReportBody({
 
       {/* Labor Market Information — narrative + demand table +
           openings/supply gap visualization + institutional sources. */}
-      <LaborMarketInformation report={report} brandColor={brandColor} title={demandTitle} />
+      {!hideLaborMarket && (
+        <LaborMarketInformation report={report} brandColor={brandColor} title={demandTitle} suppressEmptySupplyGap={suppressEmptySupplyGap} />
+      )}
 
-      {/* Partnership Opportunities — candidate employer set */}
+      {/* Partnership Opportunities — candidate employer set. Always shown,
+          including for gap cells: regional employers hiring for the SOC are
+          candidate partners for developing the pathway, curriculum or not. */}
       <Section title="Partnership Opportunities" brandColor={brandColor}>
         <Prose>{report.partnership_opportunities_narrative}</Prose>
         {report.partnership_opportunities.length > 0 && (
@@ -548,8 +566,8 @@ function StudentRowWrapper({
 /* ── Labor Market Information section ─────────────────────────────────── */
 
 function LaborMarketInformation({
-  report, brandColor, title = "Labor Market Information",
-}: { report: ApiOpportunityReport; brandColor: string; title?: string }) {
+  report, brandColor, title = "Labor Market Information", suppressEmptySupplyGap = false,
+}: { report: ApiOpportunityReport; brandColor: string; title?: string; suppressEmptySupplyGap?: boolean }) {
   const swp = report.swp_evidence;
   const totalDemand = swp.total_demand;
   const totalSupply = swp.total_supply;
@@ -706,13 +724,18 @@ function LaborMarketInformation({
         </div>
       )}
 
-      {/* Workforce gap visualization */}
-      <WorkforceGapVisualization
-        totalDemand={totalDemand}
-        totalSupply={totalSupply}
-        gap={gap}
-        brandColor={brandColor}
-      />
+      {/* Workforce gap visualization — suppressed (SVAMP) when no supply
+          projection is published: openings − 0 would render data absence as a
+          quantified "+N gap", contradicting the prose above. The demand table
+          still carries the openings. */}
+      {(hasPublishedSupply || !suppressEmptySupplyGap) && (
+        <WorkforceGapVisualization
+          totalDemand={totalDemand}
+          totalSupply={totalSupply}
+          gap={gap}
+          brandColor={brandColor}
+        />
+      )}
 
       {/* Sources — quiet trailer, four institutional authorities,
           read as attribution rather than emphasis. */}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import { SchoolConfig } from "@/config/schoolConfig";
 import AtlasHeader from "@/ui/AtlasHeader";
 import KallipolisBrand from "@/ui/KallipolisBrand";
@@ -44,13 +45,15 @@ const ROLE_LABEL: Record<string, string> = {
   "51-9162": "CNC Tool Programmers",
 };
 
-// Alignment level, grounded in the data: teaches it AND has projected
-// completions = strong; teaches it only = partial; no curriculum = gap.
+// Alignment level, grounded in the data: teaches it AND shows output evidence —
+// a CoE supply projection OR actual conferred awards = strong; teaches it but no
+// output signal of either kind = partial; no aligned curriculum = gap.
+const hasOutput = (c: ApiSvampCell) => c.supply > 0 || c.awards_recent > 0;
 function level(cell: ApiSvampCell | undefined): "none" | "partial" | "strong" {
   if (!cell || cell.course_count === 0) return "none";
-  return cell.supply > 0 ? "strong" : "partial";
+  return hasOutput(cell) ? "strong" : "partial";
 }
-const rank = (c: ApiSvampCell) => (c.course_count === 0 ? 0 : c.supply > 0 ? 2 : 1);
+const rank = (c: ApiSvampCell) => (c.course_count === 0 ? 0 : hasOutput(c) ? 2 : 1);
 function sortCells(cells: ApiSvampCell[]): ApiSvampCell[] {
   return [...cells].sort((a, b) => {
     if (rank(b) !== rank(a)) return rank(b) - rank(a);
@@ -118,18 +121,45 @@ const PLOT = { W: 760, H: 256, padL: 34, padR: 14, padT: 18, padB: 26 };
 // border, bold mono) so the number reads clearly and never sits on a trend
 // line. Clamped to the plot so edge chips don't spill past the axes. Shared by
 // both charts; draw it in a final pass so it lands on top of every series.
-function valueChip(cx: number, topY: number, v: number, color: string, key: number) {
-  const { W, padL, padR, padT } = PLOT;
+// A value chip centered at (cx, cy) — its own dark pill so the number reads
+// clearly. The caller decides cy (it staggers chips across two rows to fit a
+// number on every term without overlap); cx is clamped to the plot.
+function valueChip(cx: number, cy: number, v: number, color: string, key: number) {
+  const { W, padL, padR } = PLOT;
   const txt = v.toLocaleString("en-US");
   const w = 13 + txt.length * 6.8, h = 17;
   const x = Math.min(Math.max(cx, padL + w / 2), W - padR - w / 2);
-  const y = Math.max(topY - 15, padT + h / 2);
   return (
     <g key={key} style={{ pointerEvents: "none" }}>
-      <rect x={x - w / 2} y={y - h / 2} width={w} height={h} rx={4} fill="#0b1530" stroke={color} strokeWidth={1} />
-      <text x={x} y={y + 4} textAnchor="middle" style={{ fontFamily: MONO, fontSize: 11.5, fontWeight: 600, fill: "#ffffff" }}>{txt}</text>
+      <rect x={x - w / 2} y={cy - h / 2} width={w} height={h} rx={4} fill="#0b1530" stroke={color} strokeWidth={1} />
+      <text x={x} y={cy + 4} textAnchor="middle" style={{ fontFamily: MONO, fontSize: 11.5, fontWeight: 600, fill: "#ffffff" }}>{txt}</text>
     </g>
   );
+}
+
+function chipWidth(v: number): number { return 13 + v.toLocaleString("en-US").length * 6.8; }
+
+// Collision-aware chip placement: a value on every point, each defaulting just
+// above its point and bumped to the opposite side only if it would overlap the
+// previous chip — robust to the line's slope (a fixed above/below stagger isn't,
+// since a rising line can re-align the two rows). Returns a center-y per point,
+// clamped to [minY, maxY].
+function placeChipYs(pts: { x: number; y: number; v: number }[], minY: number, maxY: number): number[] {
+  const ys: number[] = [];
+  const gapV = 19;
+  let prev: { x: number; y: number; w: number } | null = null;
+  for (const p of pts) {
+    const w = chipWidth(p.v);
+    let cy = p.y - 16;
+    if (prev && Math.abs(p.x - prev.x) < (w + prev.w) / 2 + 4 && Math.abs(cy - prev.y) < gapV) {
+      cy = p.y + 16;
+      if (Math.abs(cy - prev.y) < gapV) cy = prev.y + gapV;
+    }
+    cy = Math.min(Math.max(cy, minY), maxY);
+    ys.push(cy);
+    prev = { x: p.x, y: cy, w };
+  }
+  return ys;
 }
 
 function awardYearLabel(y: string): string {
@@ -297,19 +327,26 @@ function TrendChart({ series, labels, defaultMode, colorOf, axisStyle = "thinned
             fill="none" stroke="#e8ecf4" strokeWidth={2.5} strokeLinejoin="round" strokeLinecap="round"
           />
         )}
-        {mode === "stacked" && hover === TOTAL_FOCUS && (
-          <g>{totals.map((tv, k) => (tv > 0 ? valueChip(X(k), Y(tv), tv, "#e8ecf4", k) : null))}</g>
-        )}
-        {/* Focused program: per-slot values as chips, drawn last so they sit on
-            top of every series and never on a line. */}
+        {mode === "stacked" && hover === TOTAL_FOCUS && (() => {
+          const pts = totals.map((tv, k) => ({ x: X(k), y: Y(tv), v: tv })).filter((p) => p.v > 0);
+          const ys = placeChipYs(pts, top + 9, base - 9);
+          return <g>{pts.map((p, i) => valueChip(p.x, ys[i], p.v, "#e8ecf4", i))}</g>;
+        })()}
+        {/* Focused program: a value on every term, placed just above its point
+            and bumped to the other side only if it would overlap its neighbor,
+            so all show without colliding. Drawn last, on top of every series. */}
         {focused && (() => {
           const color = colorOf(focused.s.top6);
+          const pts: { x: number; y: number; v: number }[] = [];
           if (mode === "lines") {
-            return <g>{focused.vals.map((v, k) => (v != null ? valueChip(X(k), Y(v), v, color, k) : null))}</g>;
+            focused.vals.forEach((v, k) => { if (v != null) pts.push({ x: X(k), y: Y(v), v }); });
+          } else {
+            const b = bands.find((x) => x.it.idx === focused.idx);
+            if (!b) return null;
+            b.hiY.forEach((hv, k) => { if ((b.it.vals[k] ?? 0) > 0) pts.push({ x: X(k), y: Y(hv), v: b.it.vals[k] as number }); });
           }
-          const b = bands.find((x) => x.it.idx === focused.idx);
-          if (!b) return null;
-          return <g>{b.hiY.map((hv, k) => ((b.it.vals[k] ?? 0) > 0 ? valueChip(X(k), Y(hv), b.it.vals[k] as number, color, k) : null))}</g>;
+          const ys = placeChipYs(pts, top + 9, base - 9);
+          return <g>{pts.map((p, i) => valueChip(p.x, ys[i], p.v, color, i))}</g>;
         })()}
 
         {twoTier ? (() => {
@@ -334,7 +371,7 @@ function TrendChart({ series, labels, defaultMode, colorOf, axisStyle = "thinned
             const lx = Math.min(Math.max(cx, padL + 16), W - padR - 16);
             return (
               <g key={`y${gi}`}>
-                {gi > 0 && <line x1={(X(g.ks[0]) + X(g.ks[0] - 1)) / 2} x2={(X(g.ks[0]) + X(g.ks[0] - 1)) / 2} y1={base + 5} y2={base + 34} stroke="rgba(255,255,255,.07)" />}
+                {gi > 0 && <line x1={(X(g.ks[0]) + X(g.ks[0] - 1)) / 2} x2={(X(g.ks[0]) + X(g.ks[0] - 1)) / 2} y1={top} y2={base + 34} stroke="rgba(255,255,255,.13)" />}
                 <text x={lx} y={base + 33} textAnchor="middle" style={{ fontFamily: MONO, fontSize: 10.5, fill: "#9aa6bd" }}>{g.year}</text>
               </g>
             );
@@ -515,6 +552,96 @@ function WageOutcomes({ programs, brandColor }: { programs: ApiSvampProgram[]; b
   );
 }
 
+// ── Demand composition hero (treemap) ─────────────────────────────────────
+// Squarified treemap: area = annual openings, so the rectangle is the regional
+// total. Cells label the SOC code + openings (the full title is surfaced in the
+// readout on hover) — compact and visual rather than prose-in-cell.
+function squarify(values: number[], X: number, Y: number, W: number, H: number): { x: number; y: number; w: number; h: number }[] {
+  const sum = values.reduce((a, b) => a + b, 0) || 1;
+  const areas = values.map((v) => (v * W * H) / sum);
+  const rects: { x: number; y: number; w: number; h: number }[] = new Array(values.length);
+  let x = X, y = Y, w = W, h = H, i = 0;
+  while (i < areas.length) {
+    const side = Math.min(w, h), start = i;
+    const row = [areas[i]]; i++;
+    const worst = (r: number[]) => {
+      const s = r.reduce((a, b) => a + b, 0), mx = Math.max(...r), mn = Math.min(...r), s2 = s * s, d2 = side * side;
+      return Math.max((d2 * mx) / s2, s2 / (d2 * mn));
+    };
+    while (i < areas.length && worst([...row, areas[i]]) <= worst(row)) { row.push(areas[i]); i++; }
+    const rs = row.reduce((a, b) => a + b, 0), thick = rs / side;
+    if (w >= h) { let yy = y; row.forEach((a, k) => { const ch = a / thick; rects[start + k] = { x, y: yy, w: thick, h: ch }; yy += ch; }); x += thick; w -= thick; }
+    else { let xx = x; row.forEach((a, k) => { const cw = a / thick; rects[start + k] = { x: xx, y, w: cw, h: thick }; xx += cw; }); y += thick; h -= thick; }
+  }
+  return rects;
+}
+
+function DemandTreemap({ cells, total }: { cells: ApiSvampCell[]; total: number }) {
+  const [hover, setHover] = useState<{ i: number; x: number; y: number } | null>(null);
+  const data = cells
+    .filter((c) => (c.annual_openings ?? 0) > 0)
+    .map((c) => ({ soc: c.soc_code, title: c.title, op: c.annual_openings as number }))
+    .sort((a, b) => b.op - a.op);
+  if (!data.length) return null;
+  const W = 860, H = 300, g = 2;
+  const rects = squarify(data.map((d) => d.op), 0, 0, W, H);
+  const color = (i: number) => hexA(ACCENT, 1 - (i / Math.max(data.length - 1, 1)) * 0.62);
+  const hd = hover != null ? data[hover.i] : null;
+  const top3 = data.slice(0, 3);
+  const top3sh = Math.round((top3.reduce((s, d) => s + d.op, 0) / total) * 100);
+  return (
+    <div style={{ marginTop: 16 }}>
+      <svg width="100%" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" style={{ display: "block", height: H }} onMouseLeave={() => setHover(null)}>
+        {data.map((d, i) => {
+          const r = rects[i];
+          return (
+            <g key={d.soc} onMouseMove={(e) => setHover({ i, x: e.clientX, y: e.clientY })} style={{ cursor: "default" }}>
+              <rect x={r.x + g / 2} y={r.y + g / 2} width={Math.max(r.w - g, 0)} height={Math.max(r.h - g, 0)} rx={3} fill={color(i)} opacity={hover != null && hover.i !== i ? 0.4 : 1} />
+              {(() => {
+                // Adaptive label: font scales to the cell so every cell can carry
+                // "SOC <code>" + "<openings>/yr" without enlarging the whole chart.
+                // The widest line ("SOC 49-9041") sets the size; very narrow cells
+                // drop the "SOC " prefix before the font hits its floor.
+                const pad = 8, cw = 0.6; // cw ≈ mono char-width / em
+                const availW = r.w - 2 * pad;
+                if (availW < 22 || r.h < 18) return null;
+                const full = `SOC ${d.soc}`;
+                const label = availW / (full.length * cw) >= 7 ? full : d.soc;
+                const fs = Math.max(7, Math.min(11.5, availW / (label.length * cw)));
+                const lh = fs + 3;
+                const two = r.h >= 2 * lh + 4;
+                return (
+                  <g style={{ pointerEvents: "none" }}>
+                    <text x={r.x + pad} y={r.y + pad + fs - 1} style={{ fontFamily: MONO, fontSize: fs, fontWeight: 500, fill: "#fff" }}>{label}</text>
+                    {two && <text x={r.x + pad} y={r.y + pad + fs - 1 + lh} style={{ fontFamily: MONO, fontSize: Math.max(fs - 1, 6.5), fill: "rgba(255,255,255,.82)" }}>{d.op}/yr</text>}
+                  </g>
+                );
+              })()}
+            </g>
+          );
+        })}
+      </svg>
+      <div style={{ fontFamily: FONT, fontSize: 12.5, color: "#9aa6bd", marginTop: 10 }}>
+        Area is annual openings. The top three occupations account for <span style={{ color: "#e8ecf4", fontWeight: 600 }}>{top3sh}%</span> of regional demand — hover a cell for the occupation.
+      </div>
+      {/* Floating tooltip, portaled to <body> so position:fixed escapes the
+          transformed overlay ancestor and tracks the cursor in viewport space. */}
+      {hd && hover && typeof document !== "undefined" && createPortal(
+        <div style={{
+          position: "fixed", left: Math.min(hover.x + 14, window.innerWidth - 356), top: hover.y + 14,
+          pointerEvents: "none", zIndex: 1000, maxWidth: 340,
+          background: "#0b1530", border: "1px solid rgba(255,255,255,.09)", borderRadius: 8,
+          padding: "8px 11px", boxShadow: "0 6px 24px rgba(0,0,0,.4)", fontFamily: FONT,
+        }}>
+          <div style={{ fontSize: 12.5, fontWeight: 600, color: "#e8ecf4", marginBottom: 2 }}>{hd.title}</div>
+          <div style={{ fontFamily: MONO, fontSize: 11, color: ACCENT, whiteSpace: "nowrap" }}>SOC {hd.soc} · {hd.op.toLocaleString()} openings/yr · {Math.round((hd.op / total) * 100)}% of demand</div>
+        </div>,
+        document.body,
+      )}
+    </div>
+  );
+}
+
 export default function SvampView({ colleges, onBack }: Props) {
   const [data, setData] = useState<ApiSvampLandscape | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -579,6 +706,11 @@ export default function SvampView({ colleges, onBack }: Props) {
   const selRef = selCollege ? byName.get(selCollege.name) : undefined;
   const selBrand = selRef?.config.brandColorLight ?? ACCENT;
   const selectedCell = selCollege?.cells.find((c) => c.soc_code === selectedSoc);
+  // Gap selection: the college teaches none of this SOC's crosswalk. The detail
+  // collapses to the Curriculum Alignment crosswalk — supply/demand projections
+  // (hollow at zero supply) and Partnership Opportunities (no program to anchor)
+  // are suppressed.
+  const isGapSel = level(selectedCell) === "none";
 
   // SVAMP-owned Program Outcomes panel — injected into the embedded report
   // between Curriculum Alignment and Student Impact via OpportunityReportBody's
@@ -594,6 +726,9 @@ export default function SvampView({ colleges, onBack }: Props) {
     selectedCell.programs.some((p) => (p.wages ?? []).some((w) => w.wage_before != null && w.wage_after_5 != null));
   const wageWindow =
     selectedCell?.programs.flatMap((p) => p.wages ?? []).find((w) => w.window)?.window ?? "";
+  const awardsWindow = data.award_years.length
+    ? `${data.award_years[0]} to ${data.award_years[data.award_years.length - 1]}`
+    : "";
 
   // One shared color per program for the whole cell, so a program reads as the
   // same color in BOTH the enrollment and award charts. One program is the
@@ -629,7 +764,7 @@ export default function SvampView({ colleges, onBack }: Props) {
       <>
         <Section title="Program Enrollments" brandColor={selBrand}>
           <Prose>
-            Term-by-term enrollment for the {selRef.config.name} programs that prepare students for this occupation. Toggle between per-program trends and the combined total; hover a program to focus it.
+            Term-by-term enrollment for the {selRef.config.name} programs that prepare students for this occupation, excluding the structurally-low summer terms. Toggle between per-program trends and the combined total; hover a program to focus it.
           </Prose>
           <TrendChart
             series={selectedCell.programs.map((p) => ({ top6: p.top6, name: p.name, vals: p.enrollment }))}
@@ -639,7 +774,7 @@ export default function SvampView({ colleges, onBack }: Props) {
             axisStyle="twoTier"
           />
         </Section>
-        {hasAwards && (
+        {hasAwards ? (
           <Section title="Program Awards" brandColor={selBrand}>
             <Prose>
               Credentials conferred per year by those same programs. Toggle between the stacked total and per-program trends; hover a program to focus it.
@@ -650,6 +785,15 @@ export default function SvampView({ colleges, onBack }: Props) {
               defaultMode="stacked"
               colorOf={colorOf}
             />
+          </Section>
+        ) : (
+          // No award rows exist for these (college, TOP) programs in the DataMart
+          // export — the series would zero-fill, so we state the data absence
+          // explicitly rather than render an empty chart or silently drop it.
+          <Section title="Program Awards" brandColor={selBrand}>
+            <Prose>
+              No awards data is reported for these programs{awardsWindow ? ` over ${awardsWindow}` : ""} via CCCCO DataMart.
+            </Prose>
           </Section>
         )}
         {hasWages && (
@@ -668,12 +812,17 @@ export default function SvampView({ colleges, onBack }: Props) {
     const c = data.colleges.find((x) => x.name === ref.config.name);
     return { ref, cellMap: new Map((c?.cells ?? []).map((cell) => [cell.soc_code, cell])) };
   });
-  const socRows = data.colleges[0]?.cells ?? [];
+  // Rows ranked by regional demand (descending) — one well-defined order since
+  // demand is regional, and it matches the demand-sorted treemap above so the
+  // highest-opportunity roles surface at the top of both views.
+  const socRows = [...(data.colleges[0]?.cells ?? [])].sort(
+    (a, b) => (b.annual_openings ?? 0) - (a.annual_openings ?? 0),
+  );
 
   // Build the transposed coverage grid: roles (rows, English) × colleges (cols).
   const grid: React.ReactNode[] = [];
   grid.push(
-    <div key="corner" style={{ fontFamily: MONO, fontSize: 9.5, letterSpacing: ".1em", textTransform: "uppercase", color: "#5e6a83", alignSelf: "end", paddingBottom: 6 }}>↓ role · → college</div>,
+    <div key="corner" style={{ fontFamily: MONO, fontSize: 9.5, letterSpacing: ".1em", textTransform: "uppercase", color: "#5e6a83", alignSelf: "end", paddingBottom: 6, whiteSpace: "nowrap" }}>↓ role (by demand) · → college</div>,
   );
   columns.forEach(({ ref }) => {
     const on = ref.id === selRef?.id;
@@ -699,28 +848,31 @@ export default function SvampView({ colleges, onBack }: Props) {
       const cell = cellMap.get(soc.soc_code);
       const lv = level(cell);
       const key = ref.id + "-" + soc.soc_code;
-      if (lv === "none") {
-        grid.push(<div key={key} style={{ height: 32, borderRadius: 7, background: "rgba(255,255,255,.035)" }} />);
-        return;
-      }
       const brand = ref.config.brandColorLight;
       const isSel = ref.id === selRef?.id && soc.soc_code === selectedSoc;
+      const isGap = lv === "none";
+      // Gap cells are selectable too — they open the crosswalk-only view
+      // ("0 of M TOP groups…"), useful for spotting build/partner opportunities.
+      // They keep their faint resting look; brand fill is reserved for coverage.
+      const gapBg = "rgba(255,255,255,.035)";
       const base: React.CSSProperties = {
         height: 32, borderRadius: 7, cursor: "pointer",
-        background: lv === "strong" ? hexA(brand, 0.9) : hexA(brand, 0.3),
-        boxShadow: `inset 0 0 0 1px ${hexA(brand, 0.5)}`,
-        transition: "transform .12s, box-shadow .12s",
+        background: isGap ? gapBg : lv === "strong" ? hexA(brand, 0.9) : hexA(brand, 0.3),
+        boxShadow: isGap ? "none" : `inset 0 0 0 1px ${hexA(brand, 0.5)}`,
+        transition: "transform .12s, box-shadow .12s, background .12s",
       };
       const sel: React.CSSProperties = isSel
-        ? { boxShadow: `0 0 0 2px rgba(255,255,255,.92), 0 0 12px ${hexA(brand, 0.6)}, 0 6px 16px rgba(0,0,0,.5)`, transform: "scale(1.08)", zIndex: 2 }
+        ? isGap
+          ? { boxShadow: "0 0 0 2px rgba(255,255,255,.85), 0 6px 16px rgba(0,0,0,.5)", transform: "scale(1.08)", zIndex: 2 }
+          : { boxShadow: `0 0 0 2px rgba(255,255,255,.92), 0 0 12px ${hexA(brand, 0.6)}, 0 6px 16px rgba(0,0,0,.5)`, transform: "scale(1.08)", zIndex: 2 }
         : {};
       grid.push(
         <div
           key={key}
-          title={`${shortName(ref.config.name)} · ${soc.title}`}
+          title={isGap ? `${shortName(ref.config.name)} · ${soc.title} — no aligned curriculum (view crosswalk)` : `${shortName(ref.config.name)} · ${soc.title}`}
           onClick={() => { setSelected(ref.id); setSelectedSoc(soc.soc_code); }}
-          onMouseEnter={(e) => { if (!isSel) (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)"; }}
-          onMouseLeave={(e) => { if (!isSel) (e.currentTarget as HTMLElement).style.transform = "none"; }}
+          onMouseEnter={(e) => { if (isSel) return; const el = e.currentTarget as HTMLElement; el.style.transform = "translateY(-2px)"; if (isGap) el.style.background = "rgba(255,255,255,.08)"; }}
+          onMouseLeave={(e) => { const el = e.currentTarget as HTMLElement; if (isGap) el.style.background = gapBg; if (!isSel) el.style.transform = "none"; }}
           style={{ ...base, ...sel }}
         />,
       );
@@ -775,14 +927,38 @@ export default function SvampView({ colleges, onBack }: Props) {
           that selects what renders inline below it. */}
       <Section title="Executive Summary" brandColor={ACCENT}>
         <Prose>{data.executive_summary}</Prose>
-        <div style={{ marginTop: 14 }}>
-          <Prose>Select a college and role in the coverage grid below to examine how that institution aligns with the occupational pathway.</Prose>
+        <DemandTreemap cells={data.colleges[0]?.cells ?? []} total={agg.regional_demand_total} />
+        <div style={{ marginTop: 18 }}>
+          <Prose>Select a college and occupation in the coverage grid below to examine how each college aligns with a particular SOC.</Prose>
         </div>
 
         {/* coverage grid */}
         <div style={{ marginTop: 20, border: "1px solid rgba(255,255,255,.09)", borderRadius: 12, background: "rgba(0,0,0,.18)", padding: "16px 18px", overflowX: "auto" }}>
           <div style={{ display: "grid", gridTemplateColumns: `230px repeat(${columns.length}, minmax(58px,1fr))`, gap: 4, alignItems: "center", minWidth: 540 }}>
             {grid}
+          </div>
+          {/* Coverage key — aligned to the data columns: it reuses the grid's
+              column template and spans column 2 → end, so the left edge of
+              "Covered" sits exactly at the De Anza column's left edge, clear of
+              the role-label column. Neutral swatches read as fill depth (the
+              intensity axis), not any one college's hue. */}
+          <div style={{ marginTop: 16, paddingTop: 13, borderTop: "1px solid rgba(255,255,255,.06)", display: "grid", gridTemplateColumns: `230px repeat(${columns.length}, minmax(58px,1fr))`, gap: 4, minWidth: 540 }}>
+            <div />
+            <div style={{ gridColumn: "2 / -1", display: "flex", alignItems: "center", gap: 48, flexWrap: "wrap" }}>
+              {[
+                { k: "Covered", sub: "teaches it · has supply", bg: "rgba(148,168,201,.92)", ring: true },
+                { k: "Partial", sub: "teaches it · no supply", bg: "rgba(148,168,201,.3)", ring: true },
+                { k: "Gap", sub: "no curriculum", bg: "rgba(255,255,255,.035)", ring: false },
+              ].map((it) => (
+                <div key={it.k} style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <span style={{ width: 40, height: 20, borderRadius: 6, background: it.bg, boxShadow: it.ring ? "inset 0 0 0 1px rgba(148,168,201,.5)" : "none", flex: "none" }} />
+                  <span style={{ fontSize: 12.5, fontWeight: 500, color: "rgba(255,255,255,.9)", lineHeight: 1.2 }}>
+                    {it.k}
+                    <span style={{ display: "block", fontSize: 11, color: "#5e6a83", fontWeight: 400 }}>{it.sub}</span>
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </Section>
@@ -795,7 +971,7 @@ export default function SvampView({ colleges, onBack }: Props) {
       {selectedSoc && selRef && (
         <div style={{ marginTop: 36 }}>
           <div ref={ctxSentinel} style={{ height: 1 }} />
-          <OpportunityReportBody school={selRef.config} socCode={selectedSoc} sector={data.sector} hideExecutiveSummary hideStudentImpact embedded programOutcomes={programOutcomesPanel} demandTitle="Centers of Excellence Projections (Supply / Demand)" />
+          <OpportunityReportBody school={selRef.config} socCode={selectedSoc} sector={data.sector} hideExecutiveSummary hideStudentImpact embedded programOutcomes={programOutcomesPanel} demandTitle="Centers of Excellence Projections (Supply / Demand)" hideLaborMarket={isGapSel} suppressEmptySupplyGap />
         </div>
       )}
     </>,

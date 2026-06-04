@@ -51,6 +51,11 @@ type Props = {
   socCode: string;
   socTitle: string;
   brandColor: string;
+  // Embedded (SVAMP) context. When set and nothing is taught (the 0-of-N gap
+  // view), the pathway narrative is trimmed to the coverage + crosswalk
+  // attribution; the "remaining N TOP groups" framing is degenerate at zero
+  // coverage and its opportunity context already lives in the section intro.
+  embedded?: boolean;
 };
 
 type Selection =
@@ -70,6 +75,7 @@ export default function CurriculumPathway({
   socCode,
   socTitle,
   brandColor,
+  embedded = false,
 }: Props) {
   const [selection, setSelection] = useState<Selection>(null);
   const svgRef = useRef<SVGSVGElement>(null);
@@ -217,7 +223,17 @@ export default function CurriculumPathway({
   }, [crosswalk.cips]);
 
   const nRows = Math.max(sortedTops.length, sortedCips.length, 1);
-  const SVG_H = PADDING_TOP + PADDING_BOTTOM + nRows * ROW_H;
+  const bandH = nRows * ROW_H;
+  // Reserve enough bottom space for the fixed-radius SOC circle. The SVG is
+  // overflow:visible and the circle is centered on the row band, so when the
+  // band is shorter than the circle (few rows) the circle spills past the SVG
+  // box and the footnote's top rule would cut across it. Grow the bottom pad
+  // only when needed; socY (below) is unchanged, so TOP/CIP/SOC alignment is
+  // preserved. Scoped to embedded (SVAMP) so per-college reports stay identical.
+  const bottomPad = embedded
+    ? Math.max(PADDING_BOTTOM, SOC_EDGE_RADIUS - bandH / 2 + 12)
+    : PADDING_BOTTOM;
+  const SVG_H = PADDING_TOP + bottomPad + bandH;
 
   // Per-column Y positions, evenly distributed across the viz height.
   const distribute = (count: number, totalH: number, pad: number) => {
@@ -227,7 +243,7 @@ export default function CurriculumPathway({
       pad + (i * usable) / (count - 1)
     );
   };
-  const innerH = SVG_H - PADDING_TOP - PADDING_BOTTOM;
+  const innerH = bandH;
 
   const topYs = distribute(sortedTops.length, innerH, PADDING_TOP);
   const cipYs = distribute(sortedCips.length, innerH, PADDING_TOP);
@@ -290,23 +306,32 @@ export default function CurriculumPathway({
   // visualization renders. Same college + SOC always yields the same
   // sentence, byte-for-byte — institutional-deference principle.
   const n_missing = crosswalk.n_total - crosswalk.n_taught;
+  // Embedded (SVAMP) 0-of-N gap view: stop after the coverage + crosswalk
+  // attribution. The "complete pathway … remaining N" clause assumes a
+  // taught-vs-remaining split that's degenerate when nothing is taught, and
+  // the opportunity framing already lives in the section intro. The crosswalk
+  // attribution is kept — it's the only provenance left in the gap view.
   const narrative =
-    `${collegeName}'s curriculum prepares students for SOC ${socCode}` +
-    ` (${socTitle}) through ${crosswalk.n_taught} TOP code` +
-    ` ${crosswalk.n_taught === 1 ? "group" : "groups"},` +
-    ` mapped via the Chancellor's Office TOP-CIP crosswalk and the NCES` +
-    ` CIP-SOC crosswalk to the federal occupation classification.` +
-    ` The complete preparation pathway encompasses ${crosswalk.n_total} TOP` +
-    ` ${crosswalk.n_total === 1 ? "group" : "groups"} and` +
-    ` ${crosswalk.cips.length} federal` +
-    ` ${crosswalk.cips.length === 1 ? "CIP" : "CIPs"} in total` +
-    (n_missing > 0
-      ? ` — the remaining ${n_missing} TOP` +
-        ` ${n_missing === 1
-            ? "group represents a potential curriculum-development surface"
-            : "groups represent potential curriculum-development surfaces"}` +
-        ` for partnership opportunities.`
-      : `.`);
+    embedded && crosswalk.n_taught === 0
+      ? `${collegeName}'s curriculum prepares students for SOC ${socCode}` +
+        ` (${socTitle}) through ${crosswalk.n_taught} TOP code groups,` +
+        ` mapped via the Chancellor's Office TOP-CIP and NCES CIP-SOC crosswalks.`
+      : `${collegeName}'s curriculum prepares students for SOC ${socCode}` +
+        ` (${socTitle}) through ${crosswalk.n_taught} TOP code` +
+        ` ${crosswalk.n_taught === 1 ? "group" : "groups"},` +
+        ` mapped via the Chancellor's Office TOP-CIP crosswalk and the NCES` +
+        ` CIP-SOC crosswalk to the federal occupation classification.` +
+        ` The complete preparation pathway encompasses ${crosswalk.n_total} TOP` +
+        ` ${crosswalk.n_total === 1 ? "group" : "groups"} and` +
+        ` ${crosswalk.cips.length} federal` +
+        ` ${crosswalk.cips.length === 1 ? "CIP" : "CIPs"} in total` +
+        (n_missing > 0
+          ? ` — the remaining ${n_missing} TOP` +
+            ` ${n_missing === 1
+                ? "group represents a potential curriculum-development surface"
+                : "groups represent potential curriculum-development surfaces"}` +
+            ` for partnership opportunities.`
+          : `.`);
 
   return (
     <div style={{ marginTop: 32 }}>
@@ -687,7 +712,11 @@ export default function CurriculumPathway({
       </svg>
 
       {/* Filter caption — names the SAM filter and the active-CIP
-          render rule, attributing both to their institutional source. */}
+          render rule, attributing both to their institutional source.
+          Shown in every case, including the 0-of-N gap view: it describes a
+          methodology, and when nothing is taught it simply yields an empty
+          result (no courses shown, no active CIP→SOC lines), so nothing it
+          states is false. It also supplies the spacing below the diagram. */}
       <p
         style={{
           fontFamily: FONT,
