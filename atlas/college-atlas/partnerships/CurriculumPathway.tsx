@@ -731,8 +731,9 @@ export default function CurriculumPathway({
       >
         Showing courses classified SAM A/B/C/D (Apprenticeship → Possibly
         Occupational) per the CCCCO MIS Data Element Dictionary. CIP→SOC
-        paths shown only for CIPs reached through TOPs actively taught at this
-        college.
+        paths shown only for CIPs reached through TOPs{embedded
+          ? " taught, enrolled, or awarded by member colleges"
+          : " actively taught at this college"}.
       </p>
     </div>
   );

@@ -59,6 +59,7 @@ _top_to_cip: dict[str, set[str]] | None = None
 _cip_to_soc: dict[str, set[str]] | None = None
 _coe_demand: dict[str, dict[str, dict]] | None = None
 _top6_to_sector: dict[str, str] | None = None
+_cte_top4_cache: set[str] | None = None
 _cte_reachable_socs_cache: set[str] | None = None
 _top_titles: dict[str, str] | None = None
 _naics4_titles: dict[str, str] | None = None
@@ -331,6 +332,22 @@ def is_cte_top6(top6: str | None) -> bool:
     if not top6:
         return False
     return top6 in _load_pcah_cte_top6()
+
+
+def is_cte_top4_family(top6: str | None) -> bool:
+    """True iff a TOP6's 4-digit family contains any CTE TOP6 per PCAH.
+
+    A family-level CTE test, looser than is_cte_top6: it treats a whole TOP4
+    program area as CTE when any of its TOP6 children are CTE-classified. This
+    bridges TOP6-granularity gaps in the periodically-updated PCAH file — e.g.
+    095690 Digital Fabrication Technician is a newer code absent from the file,
+    but its 0956 Manufacturing family is unambiguously CTE, so it should count.
+    Transfer/academic families with no CTE children (e.g. 0901 Engineering,
+    General) are still excluded."""
+    global _cte_top4_cache
+    if _cte_top4_cache is None:
+        _cte_top4_cache = {t[:4] for t in _load_pcah_cte_top6()}
+    return bool(top6) and top6[:4] in _cte_top4_cache
 
 
 def cte_reachable_socs() -> set[str]:

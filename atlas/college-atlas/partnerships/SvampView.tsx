@@ -2,23 +2,41 @@
 
 import { useMemo, useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import { squarify } from "@/college-atlas/partnerships/treemap";
 import { SchoolConfig } from "@/config/schoolConfig";
 import AtlasHeader from "@/ui/AtlasHeader";
 import KallipolisBrand from "@/ui/KallipolisBrand";
 import RisingSun from "@/ui/RisingSun";
 import { FONT, MONO, ReportHeader, Section, Prose } from "@/college-atlas/partnerships/reportChrome";
 import { OpportunityReportBody } from "@/college-atlas/partnerships/OpportunityReport";
-import { getSvampLandscape } from "@/college-atlas/partnerships/api";
+import OccupationDemandTable from "@/college-atlas/partnerships/OccupationDemandTable";
+import SupplyTreemap from "@/college-atlas/partnerships/SupplyTreemap";
+import DepartmentRow from "@/college-atlas/courses/DepartmentRow";
+import ProgramPathway from "@/college-atlas/partnerships/ProgramPathway";
+import CoverageMatrix from "@/college-atlas/partnerships/CoverageMatrix";
+import CurriculumPathway from "@/college-atlas/partnerships/CurriculumPathway";
+import OccupationRow, { type OccupationData, type OccupationDetail } from "@/college-atlas/occupations/OccupationRow";
+import { getSvampLandscape, getSvampPrograms, getSvampProgram, getSvampOccupation } from "@/college-atlas/partnerships/api";
 import type {
   ApiSvampLandscape,
   ApiSvampCell,
   ApiSvampCollege,
   ApiSvampProgram,
+  ApiSvampProgramsLandscape,
+  ApiSvampProgramReport,
+  ApiSvampOccupationReport,
 } from "@/college-atlas/partnerships/api";
 
 const GAP = "#e0654f";
 // SVAMP consortium accent (red) — cube, eyebrow, hairline, section bars.
 const ACCENT = "#ff5a5a";
+const PROGRAM_ACCENT = "#50c878"; // Programs lens primary — green (vs occupations red)
+const EMPLOYER_ACCENT = "#5a9bd4"; // Employers lens primary — blue
+// SVAMP scopes its program/supply universe to TOP division 09 (Engineering &
+// Industrial Technologies) — the consortium's domain. The backend enforces it
+// for the grid + Programs lens; this scopes the occupation drill report's
+// curriculum pathway to match (mirrors backend svamp.SVAMP_TOP_DIVISION).
+const SVAMP_TOP_DIVISION = "09";
 
 type CollegeRef = { id: string; config: SchoolConfig };
 
@@ -45,26 +63,18 @@ const ROLE_LABEL: Record<string, string> = {
   "51-9162": "CNC Tool Programmers",
 };
 
-// Alignment level, grounded in the data: teaches it AND shows output evidence —
-// a CoE supply projection OR actual conferred awards = strong; teaches it but no
-// output signal of either kind = partial; no aligned curriculum = gap.
-const hasOutput = (c: ApiSvampCell) => c.supply > 0 || c.awards_recent > 0;
+// Coverage keys on activity over the crosswalking programs — the identical
+// predicate to the Programs grid, just aggregated over the feeding set: covered
+// = enrolled & awarded; partial = one signal but not both; gap = neither.
+// course_count (catalog) no longer gates — a SOC fed by a program that awards
+// credentials without a tagged course (095630 → Machinists) reads partial, not
+// gap, so the missing-enrollment seam stays visible rather than masked covered.
 function level(cell: ApiSvampCell | undefined): "none" | "partial" | "strong" {
-  if (!cell || cell.course_count === 0) return "none";
-  return hasOutput(cell) ? "strong" : "partial";
-}
-const rank = (c: ApiSvampCell) => (c.course_count === 0 ? 0 : hasOutput(c) ? 2 : 1);
-function sortCells(cells: ApiSvampCell[]): ApiSvampCell[] {
-  return [...cells].sort((a, b) => {
-    if (rank(b) !== rank(a)) return rank(b) - rank(a);
-    if ((b.supply || 0) !== (a.supply || 0)) return (b.supply || 0) - (a.supply || 0);
-    return (b.gap || 0) - (a.gap || 0);
-  });
-}
-function topTaughtSoc(c: ApiSvampCollege | undefined): string | null {
-  if (!c) return null;
-  const first = sortCells(c.cells).find((x) => x.course_count > 0);
-  return first ? first.soc_code : null;
+  if (!cell) return "none";
+  const enrolled = cell.enrolled;
+  const awarded = cell.feeding_awards > 0;
+  if (enrolled && awarded) return "strong";
+  return enrolled || awarded ? "partial" : "none";
 }
 const shortName = (name: string) => name.replace(/ Valley College$/, "").replace(/ College$/, "");
 function hexA(hex: string, a: number) {
@@ -197,7 +207,7 @@ type TrendSeries = { top6: string; name: string; vals: (number | null)[] };
 // distinct from any program's index.
 const TOTAL_FOCUS = -1;
 
-function TrendChart({ series, labels, defaultMode, colorOf, axisStyle = "thinned" }: { series: TrendSeries[]; labels: string[]; defaultMode: "lines" | "stacked"; colorOf: (top6: string) => string; axisStyle?: "thinned" | "twoTier" }) {
+function TrendChart({ series, labels, defaultMode, colorOf, axisStyle = "thinned", modeLabels = { lines: "Per program", stacked: "Stacked" }, hideSeriesTag = false, empty = false }: { series: TrendSeries[]; labels: string[]; defaultMode: "lines" | "stacked"; colorOf: (top6: string) => string; axisStyle?: "thinned" | "twoTier"; modeLabels?: { lines: string; stacked: string }; hideSeriesTag?: boolean; empty?: boolean }) {
   const [mode, setMode] = useState<"lines" | "stacked">(defaultMode);
   const [hover, setHover] = useState<number | null>(null);
   const { W, padL, padR, padT } = PLOT;
@@ -207,6 +217,78 @@ function TrendChart({ series, labels, defaultMode, colorOf, axisStyle = "thinned
   const H = PLOT.H + (twoTier ? 20 : 0);
   const padB = PLOT.padB + (twoTier ? 20 : 0);
   const base = H - padB, top = padT;
+
+  // Shared x-axis renderer — the SINGLE source for both the populated chart and
+  // the no-data ghost, so the empty state gets the identical two-tier season/year
+  // axis (compact "Wi/Sp/Fa" + grouped years) rather than a parallel rendering
+  // that overlaps full-term labels. Takes the column set + its X scale.
+  const axisEls = (cols: number[], X: (k: number) => number) => {
+    const n = cols.length;
+    if (twoTier) {
+      // A compact season label under every term, the year grouped beneath with
+      // faint dividers — names every term without crowding.
+      const parsed = cols.map((c) => parseTerm(labels[c]));
+      const seasonEls = parsed.map((p, k) => (
+        <g key={`s${k}`}>
+          <line x1={X(k)} x2={X(k)} y1={base} y2={base + 3} stroke="rgba(255,255,255,.12)" />
+          <text x={X(k)} y={base + 14} textAnchor="middle" style={{ fontFamily: MONO, fontSize: 8.5, fill: "#5e6a83" }}>{p.season}</text>
+        </g>
+      ));
+      const groups: { year: string; ks: number[] }[] = [];
+      parsed.forEach((p, k) => {
+        const last = groups[groups.length - 1];
+        if (last && last.year === p.year) last.ks.push(k);
+        else groups.push({ year: p.year, ks: [k] });
+      });
+      const yearEls = groups.map((g, gi) => {
+        const cx = g.ks.reduce((a, b) => a + X(b), 0) / g.ks.length;
+        const lx = Math.min(Math.max(cx, padL + 16), W - padR - 16);
+        return (
+          <g key={`y${gi}`}>
+            {gi > 0 && <line x1={(X(g.ks[0]) + X(g.ks[0] - 1)) / 2} x2={(X(g.ks[0]) + X(g.ks[0] - 1)) / 2} y1={top} y2={base + 34} stroke="rgba(255,255,255,.13)" />}
+            <text x={lx} y={base + 33} textAnchor="middle" style={{ fontFamily: MONO, fontSize: 10.5, fill: "#9aa6bd" }}>{g.year}</text>
+          </g>
+        );
+      });
+      return <>{seasonEls}{yearEls}</>;
+    }
+    // Thin labels so a long axis never crowds: at most ~12, always the last.
+    const stride = Math.ceil(n / 12);
+    return cols.map((c, k) => ((k % stride === 0 || k === n - 1) ? (
+      <text key={c} x={X(k)} y={H - 8} textAnchor={n === 1 ? "middle" : edgeAnchor(k, n)} style={{ fontFamily: MONO, fontSize: 9.5, fill: "#5e6a83" }}>{labels[c]}</text>
+    ) : null));
+  };
+
+  // No-data "ghost scaffold": the real chart frame — baseline + faint gridlines +
+  // the SAME axis (via axisEls) — with no series and a calm centered label, so an
+  // empty panel holds its exact footprint and reads in the chart's own design
+  // language. No y-axis numbers — there's no measured scale, so it never reads
+  // as a zero.
+  if (empty) {
+    // One uniform no-data state across every view (awards/enrollment ·
+    // programs/occupations), independent of the populated chart's axis style:
+    //   • single-tier height (PLOT.H) — twoTier's extra room is for an axis we
+    //     don't draw, so dropping it keeps awards + enrollment ghosts identical;
+    //   • no x-axis — term/year ticks are meaningless with no series, and a stray
+    //     consortium-wide axis (which the occupation cell view happens to pass)
+    //     is exactly what made this look different from the programs view;
+    //   • gridlines flush to the left edge (no y-number gutter needed), label
+    //     centered within that left-extended area so it reads balanced.
+    const eH = PLOT.H;
+    const gx0 = 0, gx1 = W - padR, gcx = (gx0 + gx1) / 2, gcy = (top + base) / 2;
+    return (
+      <div style={{ marginTop: 14 }}>
+        <svg width="100%" viewBox={`0 0 ${W} ${eH}`} preserveAspectRatio="xMidYMid meet" style={{ display: "block" }}>
+          {[0.25, 0.5, 0.75].map((f, i) => (
+            <line key={i} x1={gx0} x2={gx1} y1={base - f * (base - top)} y2={base - f * (base - top)} stroke="rgba(255,255,255,.05)" />
+          ))}
+          <line x1={gx0} x2={gx1} y1={base} y2={base} stroke="rgba(255,255,255,.1)" />
+          <text x={gcx} y={gcy - 3} textAnchor="middle" style={{ fontFamily: FONT, fontSize: 14, fontWeight: 500, fill: "#9aa6bd" }}>No data reported</text>
+          <text x={gcx} y={gcy + 16} textAnchor="middle" style={{ fontFamily: MONO, fontSize: 10, fill: "#5e6a83" }}>via CCCCO DataMart</text>
+        </svg>
+      </div>
+    );
+  }
 
   const L = labels.length;
   // Programs with any data, carrying original index (→ stable color).
@@ -262,7 +344,7 @@ function TrendChart({ series, labels, defaultMode, colorOf, axisStyle = "thinned
               onClick={() => setMode(m)}
               style={{ appearance: "none", border: "none", cursor: "pointer", background: mode === m ? "rgba(255,255,255,.1)" : "transparent", color: mode === m ? "#e8ecf4" : "#9aa6bd", fontFamily: FONT, fontSize: 11.5, fontWeight: 500, padding: "5px 12px", transition: "background .12s, color .12s" }}
             >
-              {m === "lines" ? "Per program" : "Stacked"}
+              {m === "lines" ? modeLabels.lines : modeLabels.stacked}
             </button>
           ))}
         </div>
@@ -349,42 +431,7 @@ function TrendChart({ series, labels, defaultMode, colorOf, axisStyle = "thinned
           return <g>{pts.map((p, i) => valueChip(p.x, ys[i], p.v, color, i))}</g>;
         })()}
 
-        {twoTier ? (() => {
-          // Two-tier axis: a compact season label under every term, the year
-          // grouped beneath with faint dividers — names every term without
-          // crowding, so a focused program's per-term numbers all read off it.
-          const parsed = cols.map((c) => parseTerm(labels[c]));
-          const seasonEls = parsed.map((p, k) => (
-            <g key={`s${k}`}>
-              <line x1={X(k)} x2={X(k)} y1={base} y2={base + 3} stroke="rgba(255,255,255,.12)" />
-              <text x={X(k)} y={base + 14} textAnchor="middle" style={{ fontFamily: MONO, fontSize: 8.5, fill: "#5e6a83" }}>{p.season}</text>
-            </g>
-          ));
-          const groups: { year: string; ks: number[] }[] = [];
-          parsed.forEach((p, k) => {
-            const last = groups[groups.length - 1];
-            if (last && last.year === p.year) last.ks.push(k);
-            else groups.push({ year: p.year, ks: [k] });
-          });
-          const yearEls = groups.map((g, gi) => {
-            const cx = g.ks.reduce((a, b) => a + X(b), 0) / g.ks.length;
-            const lx = Math.min(Math.max(cx, padL + 16), W - padR - 16);
-            return (
-              <g key={`y${gi}`}>
-                {gi > 0 && <line x1={(X(g.ks[0]) + X(g.ks[0] - 1)) / 2} x2={(X(g.ks[0]) + X(g.ks[0] - 1)) / 2} y1={top} y2={base + 34} stroke="rgba(255,255,255,.13)" />}
-                <text x={lx} y={base + 33} textAnchor="middle" style={{ fontFamily: MONO, fontSize: 10.5, fill: "#9aa6bd" }}>{g.year}</text>
-              </g>
-            );
-          });
-          return <>{seasonEls}{yearEls}</>;
-        })() : (() => {
-          // Thin labels so a long axis never crowds: show at most ~12, always
-          // including the last term.
-          const stride = Math.ceil(n / 12);
-          return cols.map((c, k) => ((k % stride === 0 || k === n - 1) ? (
-            <text key={c} x={X(k)} y={H - 8} textAnchor={n === 1 ? "middle" : edgeAnchor(k, n)} style={{ fontFamily: MONO, fontSize: 9.5, fill: "#5e6a83" }}>{labels[c]}</text>
-          ) : null));
-        })()}
+        {axisEls(cols, X)}
       </svg>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4px 16px", marginTop: 12 }}>
         {mode === "stacked" && (() => {
@@ -406,7 +453,7 @@ function TrendChart({ series, labels, defaultMode, colorOf, axisStyle = "thinned
               style={{ display: "flex", alignItems: "center", gap: 9, fontSize: 12.5, padding: "6px 9px", borderRadius: 8, background: on ? "rgba(255,255,255,.07)" : "transparent", opacity: dim ? 0.45 : 1, transition: "background .12s, opacity .12s", minWidth: 0 }}>
               <span style={{ width: 16, height: mode === "stacked" ? 10 : 3, borderRadius: mode === "stacked" ? 3 : 2, background: color, opacity: mode === "stacked" ? 0.62 : 1, flex: "none" }} />
               <span style={{ flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", color: "#9aa6bd" }}>{it.s.name}</span>
-              <span style={{ fontFamily: MONO, fontSize: 10.5, color: "#5e6a83", flex: "none" }}>TOP {it.s.top6}</span>
+              {!hideSeriesTag && <span style={{ fontFamily: MONO, fontSize: 10.5, color: "#5e6a83", flex: "none" }}>TOP {it.s.top6}</span>}
             </div>
           );
         })}
@@ -556,27 +603,7 @@ function WageOutcomes({ programs, brandColor }: { programs: ApiSvampProgram[]; b
 // Squarified treemap: area = annual openings, so the rectangle is the regional
 // total. Cells label the SOC code + openings (the full title is surfaced in the
 // readout on hover) — compact and visual rather than prose-in-cell.
-function squarify(values: number[], X: number, Y: number, W: number, H: number): { x: number; y: number; w: number; h: number }[] {
-  const sum = values.reduce((a, b) => a + b, 0) || 1;
-  const areas = values.map((v) => (v * W * H) / sum);
-  const rects: { x: number; y: number; w: number; h: number }[] = new Array(values.length);
-  let x = X, y = Y, w = W, h = H, i = 0;
-  while (i < areas.length) {
-    const side = Math.min(w, h), start = i;
-    const row = [areas[i]]; i++;
-    const worst = (r: number[]) => {
-      const s = r.reduce((a, b) => a + b, 0), mx = Math.max(...r), mn = Math.min(...r), s2 = s * s, d2 = side * side;
-      return Math.max((d2 * mx) / s2, s2 / (d2 * mn));
-    };
-    while (i < areas.length && worst([...row, areas[i]]) <= worst(row)) { row.push(areas[i]); i++; }
-    const rs = row.reduce((a, b) => a + b, 0), thick = rs / side;
-    if (w >= h) { let yy = y; row.forEach((a, k) => { const ch = a / thick; rects[start + k] = { x, y: yy, w: thick, h: ch }; yy += ch; }); x += thick; w -= thick; }
-    else { let xx = x; row.forEach((a, k) => { const cw = a / thick; rects[start + k] = { x: xx, y, w: cw, h: thick }; xx += cw; }); y += thick; h -= thick; }
-  }
-  return rects;
-}
-
-function DemandTreemap({ cells, total }: { cells: ApiSvampCell[]; total: number }) {
+function DemandTreemap({ cells, total, selected, onSelect }: { cells: ApiSvampCell[]; total: number; selected?: string | null; onSelect?: (soc: string) => void }) {
   const [hover, setHover] = useState<{ i: number; x: number; y: number } | null>(null);
   const data = cells
     .filter((c) => (c.annual_openings ?? 0) > 0)
@@ -595,8 +622,8 @@ function DemandTreemap({ cells, total }: { cells: ApiSvampCell[]; total: number 
         {data.map((d, i) => {
           const r = rects[i];
           return (
-            <g key={d.soc} onMouseMove={(e) => setHover({ i, x: e.clientX, y: e.clientY })} style={{ cursor: "default" }}>
-              <rect x={r.x + g / 2} y={r.y + g / 2} width={Math.max(r.w - g, 0)} height={Math.max(r.h - g, 0)} rx={3} fill={color(i)} opacity={hover != null && hover.i !== i ? 0.4 : 1} />
+            <g key={d.soc} onMouseMove={(e) => setHover({ i, x: e.clientX, y: e.clientY })} onClick={() => onSelect?.(d.soc)} style={{ cursor: onSelect ? "pointer" : "default" }}>
+              <rect x={r.x + g / 2} y={r.y + g / 2} width={Math.max(r.w - g, 0)} height={Math.max(r.h - g, 0)} rx={3} fill={color(i)} opacity={hover != null && hover.i !== i ? 0.4 : 1} stroke={d.soc === selected ? "#fff" : "none"} strokeWidth={d.soc === selected ? 2.5 : 0} />
               {(() => {
                 // Adaptive label: font scales to the cell so every cell can carry
                 // "SOC <code>" + "<openings>/yr" without enlarging the whole chart.
@@ -622,7 +649,7 @@ function DemandTreemap({ cells, total }: { cells: ApiSvampCell[]; total: number 
         })}
       </svg>
       <div style={{ fontFamily: FONT, fontSize: 12.5, color: "#9aa6bd", marginTop: 10 }}>
-        Area is annual openings. The top three occupations account for <span style={{ color: "#e8ecf4", fontWeight: 600 }}>{top3sh}%</span> of regional demand — hover a cell for the occupation.
+        Area is annual openings. The top three occupations account for <span style={{ color: "#e8ecf4", fontWeight: 600 }}>{top3sh}%</span> of regional demand — click an occupation for the consortium view.
       </div>
       {/* Floating tooltip, portaled to <body> so position:fixed escapes the
           transformed overlay ancestor and tracks the cursor in viewport space. */}
@@ -642,11 +669,475 @@ function DemandTreemap({ cells, total }: { cells: ApiSvampCell[]; total: number 
   );
 }
 
+// ── Lens navigation ────────────────────────────────────────────────────────
+// Three Platonic forms of the partnership landscape: the worker (occupations ·
+// hard hat), the curriculum (programs · book), the firm (employers · skyscraper).
+// One geometric family of reduced archetypes; the per-lens accent doubles as
+// wayfinding once the Programs/Employers views ship. Eyebrow-tab treatment —
+// active underline echoes the coverage grid's selected-column underline.
+type Lens = "occupations" | "programs" | "employers";
+const FormHardHat: React.FC = () => (
+  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{ width: "100%", height: "100%" }}>
+    <path d="M6 18a10 10 0 0 1 20 0" /><path d="M11.4 18C11.4 12.4 13 9.4 16 8" /><path d="M20.6 18C20.6 12.4 19 9.4 16 8" /><path d="M3 18h26" /><path d="M5.4 18c2.4 3.1 18.8 3.1 21.2 0" />
+  </svg>
+);
+const FormBook: React.FC = () => (
+  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{ width: "100%", height: "100%" }}>
+    <path d="M16 9.6C12.4 7.8 7.6 8.1 4.6 9.6V22.6C7.6 21.1 12.4 20.8 16 22.6" /><path d="M16 9.6C19.6 7.8 24.4 8.1 27.4 9.6V22.6C24.4 21.1 19.6 20.8 16 22.6" /><path d="M16 9.6V22.6" />
+  </svg>
+);
+const FormTower: React.FC = () => (
+  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{ width: "100%", height: "100%" }}>
+    <path d="M10.5 28V11h11v17" /><path d="M13.6 11V6h4.8v5" /><path d="M16 6V3" /><path d="M13.2 15.5h5.6M13.2 19.5h5.6M13.2 23.5h5.6" /><path d="M7.5 28h17" />
+  </svg>
+);
+const LENS_DEFS: { key: Lens; label: string; accent: string; Icon: React.FC }[] = [
+  { key: "occupations", label: "Occupations", accent: "#ff5a5a", Icon: FormHardHat },
+  { key: "programs", label: "Programs", accent: PROGRAM_ACCENT, Icon: FormBook },
+  { key: "employers", label: "Employers", accent: EMPLOYER_ACCENT, Icon: FormTower },
+];
+function LensTabs({ lens, setLens }: { lens: Lens; setLens: (l: Lens) => void }) {
+  return (
+    <div style={{ display: "flex", gap: 38, borderBottom: "1px solid rgba(255,255,255,.08)", marginBottom: 4 }}>
+      {LENS_DEFS.map(({ key, label, accent, Icon }) => {
+        const on = lens === key;
+        return (
+          <button
+            key={key}
+            onClick={() => setLens(key)}
+            onMouseEnter={(e) => { if (!on) (e.currentTarget as HTMLElement).style.color = "#e8ecf4"; }}
+            onMouseLeave={(e) => { if (!on) (e.currentTarget as HTMLElement).style.color = "#9aa6bd"; }}
+            style={{ display: "flex", alignItems: "center", gap: 9, border: 0, background: "transparent", cursor: "pointer", padding: "6px 0 13px", color: on ? "#e8ecf4" : "#9aa6bd", fontFamily: MONO, fontSize: 11.5, fontWeight: 500, letterSpacing: ".12em", textTransform: "uppercase", position: "relative", transition: "color .16s" }}
+          >
+            <span style={{ width: 17, height: 17, display: "flex", color: on ? accent : "#5e6a83", transition: "color .16s" }}><Icon /></span>
+            {label}
+            {on && <span style={{ position: "absolute", left: 0, right: 0, bottom: -1, height: 2, background: accent, borderRadius: 2 }} />}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+function LensComingSoon({ lens }: { lens: Lens }) {
+  const meta: Partial<Record<Lens, { label: string; desc: string; accent: string; Icon: React.FC }>> = {
+    programs: { label: "Program lens", accent: "#ff5a5a", Icon: FormBook, desc: "A TOP6-centric view of the curriculum that prepares for these occupations — programs, awards, and enrollment across the consortium." },
+    employers: { label: "Employer lens", accent: EMPLOYER_ACCENT, Icon: FormTower, desc: "A regional map of the advanced-manufacturing employers hiring for these occupations — the candidate partners across the Bay Area." },
+  };
+  const m = meta[lens];
+  if (!m) return null;
+  return (
+    <div style={{ textAlign: "center", padding: "96px 20px 80px", fontFamily: FONT }}>
+      <div style={{ width: 46, height: 46, margin: "0 auto 18px", color: m.accent, opacity: 0.75 }}><m.Icon /></div>
+      <div style={{ fontSize: 15.5, fontWeight: 600, color: "#e8ecf4", letterSpacing: ".01em" }}>{m.label} — coming soon</div>
+      <div style={{ fontSize: 13.5, color: "#9aa6bd", maxWidth: 460, margin: "11px auto 0", lineHeight: 1.55 }}>{m.desc}</div>
+    </div>
+  );
+}
+
+// ── Programs lens — supply-side, TOP6-centric (the dual of the occupation
+// lens). Supply treemap (picker) → TOP report. Lives here so it can reuse the
+// in-module TrendChart / WageOutcomes; series are keyed on colleges (brand-
+// colored) rather than programs. Demand is shown per SOC, never summed.
+function ProgramsLens({ colleges }: { colleges: CollegeRef[] }) {
+  // Programs lens is green; shadow the module red within this view so every
+  // section bar / header / treemap usage flips at once.
+  const ACCENT = PROGRAM_ACCENT;
+  const [land, setLand] = useState<ApiSvampProgramsLandscape | null>(null);
+  const [top, setTop] = useState<string | null>(null);
+  // null ⇒ aggregated (consortium) view; a college id ⇒ targeted (college, TOP).
+  const [matrixCollegeId, setMatrixCollegeId] = useState<string | null>(null);
+  const [report, setReport] = useState<ApiSvampProgramReport | null>(null);
+  const [err, setErr] = useState<string | null>(null);
+
+  const nameById = useMemo(() => new Map(colleges.map((c) => [c.id, c.config.name])), [colleges]);
+  const matrixCollegeName = matrixCollegeId ? nameById.get(matrixCollegeId) : undefined;
+
+  useEffect(() => {
+    getSvampPrograms()
+      .then((d) => { setLand(d); setTop((cur) => cur ?? d.tops[0]?.top6 ?? null); })
+      .catch((e) => setErr(e.message));
+  }, []);
+  useEffect(() => {
+    if (!top) return;
+    let alive = true;
+    getSvampProgram(top, matrixCollegeName).then((r) => { if (alive) setReport(r); }).catch((e) => setErr(e.message));
+    return () => { alive = false; };
+  }, [top, matrixCollegeName]);
+
+  const brandByName = useMemo(
+    () => new Map(colleges.map((c) => [c.config.name, c.config.brandColorLight])),
+    [colleges],
+  );
+  const colorOf = (name: string) => brandByName.get(name) ?? ACCENT;
+
+  // Sticky context banner — pinned under the nav once the program report scrolls
+  // away (mirrors the occupations lens). Observer keyed on `report` so it
+  // re-attaches to the sentinel whenever a new program loads.
+  const [ctxShow, setCtxShow] = useState(false);
+  const ctxSentinel = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    const el = ctxSentinel.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => setCtxShow(e.boundingClientRect.top < 72),
+      { rootMargin: "-72px 0px 0px 0px", threshold: 0 },
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [report]);
+
+  if (err) return <div style={{ padding: "60px 0", color: GAP, fontFamily: MONO, fontSize: 13 }}>Failed to load programs: {err}</div>;
+  if (!land) return <div style={{ display: "flex", justifyContent: "center", paddingTop: 80 }}><RisingSun style={{ width: 90, height: "auto", opacity: 0.4 }} /></div>;
+
+  const awardingPrograms = land.tops.filter((t) => t.awards_total > 0).length;
+  const totalAwards = land.tops.reduce((s, t) => s + t.awards_total, 0);
+  const wageWindow = report?.wages.find((w) => w.window)?.window ?? "";
+
+  // Coverage-matrix inputs (dual of the occupations grid): cols = member
+  // colleges, rows = the active programs (enrollment OR awards somewhere),
+  // ranked by awards. A program earns a row by activity, not by having a course
+  // tagged to its own code — so 095630 (confers, parent-code courses) and 095200
+  // (enrolls, no awards yet) appear. level() reads the coverage payload.
+  const progCols = colleges.map((c) => ({ id: c.id, label: shortName(c.config.name), brand: c.config.brandColorLight }));
+  const matrixCellByKey = new Map((land.matrix?.cells ?? []).map((c) => [c.college + "|" + c.top6, c]));
+  const progRows = land.tops
+    .filter((t) => t.enrollment_total > 0 || t.awards_total > 0)
+    .map((t) => ({ id: t.top6, label: t.name, sublabel: `TOP ${t.top6}`, title: t.name }));
+  // Coverage keys on activity: covered = enrolled & awarded (full pipeline);
+  // partial = one signal but not both; gap = this college does neither here.
+  const progLevel = (rowId: string, colId: string): "none" | "partial" | "strong" => {
+    const name = nameById.get(colId);
+    const cell = name ? matrixCellByKey.get(name + "|" + rowId) : undefined;
+    if (!cell) return "none";
+    const enrolled = cell.enrolled;
+    const awarded = cell.awards > 0;
+    if (enrolled && awarded) return "strong";
+    return enrolled || awarded ? "partial" : "none";
+  };
+  const targetedCollege = report?.college ?? null;
+  // Option A: the per-program report re-brands to the targeted college; the
+  // aggregate (consortium) view keeps the green lens accent.
+  const reportBrand = targetedCollege ? colorOf(targetedCollege) : ACCENT;
+
+  return (
+    <>
+      {/* Sticky context banner — scope · program name · TOP code, pinned under
+          the nav once the report scrolls away. Mirrors the occupations banner:
+          scope leads (Consortium, or the targeted college in its brand). */}
+      {report && (
+        <div
+          style={{
+            position: "fixed", top: 72, left: 0, right: 0, zIndex: 25, height: 46,
+            background: "rgba(6,13,31,0.92)", backdropFilter: "blur(8px)",
+            borderBottom: "1px solid rgba(255,255,255,0.07)",
+            display: "flex", alignItems: "center",
+            opacity: ctxShow ? 1 : 0,
+            transform: ctxShow ? "translateY(0)" : "translateY(-8px)",
+            pointerEvents: ctxShow ? "auto" : "none",
+            transition: "opacity .22s ease, transform .22s ease",
+          }}
+        >
+          <div style={{ maxWidth: 900, width: "100%", margin: "0 auto", padding: "0 28px", display: "flex", alignItems: "baseline", gap: 10, minWidth: 0 }}>
+            <span style={{ fontFamily: FONT, fontSize: 11.5, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: reportBrand, flex: "none", whiteSpace: "nowrap" }}>
+              {targetedCollege ?? "Consortium"}
+            </span>
+            <span style={{ color: "rgba(255,255,255,0.2)", flex: "none" }}>·</span>
+            <span style={{ fontFamily: FONT, fontSize: 13, color: "rgba(255,255,255,0.9)", flex: 1, minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+              {report.name}
+            </span>
+            <span style={{ fontFamily: MONO, fontSize: 11, fontWeight: 500, letterSpacing: "0.05em", color: hexA(reportBrand, 0.65), flex: "none", whiteSpace: "nowrap" }}>
+              TOP {report.top6}
+            </span>
+          </div>
+        </div>
+      )}
+      <Section title="Consortium Program Supply" brandColor={ACCENT}>
+        <Prose>
+          This view examines the consortium supply landscape across the advanced-manufacturing TOP code programs (TOP division 09) supporting the Silicon Valley Advanced Manufacturing Partnership. In the latest reported year{land.latest_award_year ? ` (${land.latest_award_year})` : ""}, {awardingPrograms} of them awarded {totalAwards.toLocaleString()} credentials, preparing students for the 12 advanced-manufacturing occupations via the TOP-CIP-SOC crosswalk.
+        </Prose>
+        <SupplyTreemap tops={land.tops} selectedTop={matrixCollegeId ? null : top} onSelect={(t) => { setTop(t); setMatrixCollegeId(null); }} accent={ACCENT} caption="Area is latest-year credentials awarded — click a program for the consortium view." />
+        <CoverageMatrix
+          cols={progCols}
+          rows={progRows}
+          level={progLevel}
+          selectedRow={top}
+          selectedCol={matrixCollegeId}
+          cornerLabel="↓ program (by awards) · → college"
+          gapCellHint="no enrollment or awards here"
+          legend={[
+            { k: "Covered", sub: "enrollment & awards", bg: "rgba(148,168,201,.92)", ring: true },
+            { k: "Partial", sub: "enrollment or awards", bg: "rgba(148,168,201,.3)", ring: true },
+            { k: "Gap", sub: "neither", bg: "rgba(255,255,255,.035)", ring: false },
+          ]}
+          caption="Each cell is one college’s coverage — click for that college’s report."
+          onSelect={(t, collegeId) => { setTop(t); setMatrixCollegeId(collegeId); }}
+          onSelectRow={(t) => { setTop(t); setMatrixCollegeId(null); }}
+        />
+      </Section>
+
+      {report && (
+        <div style={{ marginTop: 30 }}>
+          <div ref={ctxSentinel} style={{ height: 1 }} />
+          <ReportHeader eyebrow={targetedCollege ?? "Consortium"} title={report.name} accent={reportBrand}>
+            <span style={{ color: reportBrand, opacity: 0.7 }}>TOP {report.top6}</span>
+            <Dot /><span style={{ color: "rgba(255,255,255,0.80)" }}>{report.occupations.length} Occupations</span>
+            <Dot /><span style={{ color: reportBrand, opacity: 0.7, letterSpacing: "0.08em" }}>{report.sector}</span>
+          </ReportHeader>
+
+          <Section title="Occupations Served" brandColor={reportBrand}>
+            <Prose>
+              The occupations this program prepares for, with their regional demand. A program can support several occupations through the crosswalk; demand is shown per occupation.
+            </Prose>
+            {report.crosswalk && report.crosswalk.socs.length > 0 && (
+              <ProgramPathway crosswalk={report.crosswalk} accent={reportBrand} />
+            )}
+            <div style={{ marginTop: 28 }}>
+              <OccupationDemandTable rows={report.occupations} brandColor={reportBrand} label="Occupations this program supports · regional annual openings" />
+            </div>
+          </Section>
+
+          <Section title="Program Awards" brandColor={reportBrand}>
+            <Prose>
+              {report.awards_by_college.length > 0
+                ? "Credentials awarded per year across the member colleges. Toggle between the stacked consortium total and per-school trends."
+                : "No awards are reported for this program via CCCCO DataMart."}
+            </Prose>
+            <TrendChart
+              series={report.awards_by_college.map((s) => ({ top6: s.college, name: shortName(s.college), vals: s.vals }))}
+              labels={report.award_years.map(awardYearLabel)}
+              defaultMode="stacked"
+              colorOf={colorOf}
+              modeLabels={{ lines: "Per school", stacked: "Stacked" }}
+              hideSeriesTag
+              empty={report.awards_by_college.length === 0}
+            />
+          </Section>
+
+          <Section title="Program Enrollments" brandColor={reportBrand}>
+            <Prose>
+              {report.enrollment_by_college.length > 0
+                ? "Term-by-term enrollment across the member colleges that run this program, excluding the structurally-low summer terms. Toggle between per-school trends and the combined consortium total; hover a school to focus it."
+                : "No enrollment is reported for this program via CCCCO DataMart."}
+            </Prose>
+            <TrendChart
+              series={report.enrollment_by_college.map((s) => ({ top6: s.college, name: shortName(s.college), vals: s.vals }))}
+              labels={report.enrollment_terms}
+              defaultMode="lines"
+              colorOf={colorOf}
+              axisStyle="twoTier"
+              modeLabels={{ lines: "Per school", stacked: "Stacked" }}
+              hideSeriesTag
+              empty={report.enrollment_by_college.length === 0}
+            />
+          </Section>
+
+          {report.wages.length > 0 && (
+            <Section title="Program Wage Outcomes" brandColor={reportBrand}>
+              <Prose>
+                Median annual earnings for completers of this program at three points relative to award completion — 2 years before, 2 years after, and 5 years after. Derived from statewide data at the program (TOP6) level by credential type{wageWindow ? ` for award years ${wageWindow}` : ""}.
+              </Prose>
+              <WageOutcomes
+                programs={[{ top6: report.top6, name: report.name, awards_recent: 0, awards: [], enrollment: [], wages: report.wages }]}
+                brandColor={reportBrand}
+              />
+            </Section>
+          )}
+
+          <Section title="Curriculum Alignment" brandColor={reportBrand}>
+            <Prose>
+              Explore the courses each member college teaches under TOP {report.top6} · {report.name}.
+            </Prose>
+            <div style={{ marginTop: 16, display: "flex", flexDirection: "column", gap: 2 }}>
+              {report.curriculum_by_college.filter((cc) => cc.courses.length > 0).map((cc, i) => (
+                <DepartmentRow
+                  key={cc.college}
+                  department={shortName(cc.college)}
+                  courseCount={cc.courses.length}
+                  index={i}
+                  brandColor={colorOf(cc.college)}
+                  courses={cc.courses.map((c) => ({ code: c.code, name: c.name, description: c.description, learningOutcomes: c.learning_outcomes, topCode: c.top_code }))}
+                  schoolName={cc.college}
+                  hideOccupationPathways
+                  socFilter=""
+                />
+              ))}
+            </div>
+          </Section>
+        </div>
+      )}
+    </>
+  );
+}
+
+// ── Occupations lens — aggregated SOC view (the dual of ProgramsLens). One
+// occupation read consortium-wide: demand + supply + gap, the SOC-anchored
+// crosswalk (taught by any member college), the feeding programs sized by
+// awards, and per-college award/enrollment series + curriculum.
+function OccupationAggregateReport({ soc, colleges, isSectorPriority }: { soc: string; colleges: CollegeRef[]; isSectorPriority: boolean }) {
+  const [report, setReport] = useState<ApiSvampOccupationReport | null>(null);
+  const [err, setErr] = useState<string | null>(null);
+  const [demandOpen, setDemandOpen] = useState(true);
+  useEffect(() => {
+    let alive = true;
+    setReport(null);
+    getSvampOccupation(soc).then((r) => { if (alive) setReport(r); }).catch((e) => setErr(e.message));
+    return () => { alive = false; };
+  }, [soc]);
+
+  const brandByName = useMemo(() => new Map(colleges.map((c) => [c.config.name, c.config.brandColorLight])), [colleges]);
+  const colorOf = (name: string) => brandByName.get(name) ?? ACCENT;
+
+  if (err) return <div style={{ padding: "60px 0", color: GAP, fontFamily: MONO, fontSize: 13 }}>Failed to load occupation: {err}</div>;
+  if (!report) return <div style={{ display: "flex", justifyContent: "center", paddingTop: 80 }}><RisingSun style={{ width: 90, height: "auto", opacity: 0.4 }} /></div>;
+
+  const r = report;
+  const cw = r.crosswalk;
+  const curriculumColleges = r.curriculum_by_college.filter((c) => c.courses.length > 0);
+
+  // Project the consortium demand into the shared OccupationRow shape — demand
+  // is regional, so this is the same occupation record the school-specific view
+  // shows. employment/description aren't carried at the consortium grain.
+  const occData: OccupationData = {
+    title: r.title,
+    soc_code: r.soc_code,
+    annual_wage: r.annual_wage,
+    employment: r.employment,
+    growth_rate: r.growth_rate,
+    annual_openings: r.annual_openings,
+    description: r.description,
+  };
+  const occDetail: OccupationDetail = {
+    soc_code: r.soc_code,
+    title: r.title,
+    description: r.description,
+    aligned_top_groups: [],
+    aligned_course_count: 0,
+    aligned_program_area_count: 0,
+    regions: [{
+      region: r.region_display,
+      employment: r.employment ?? 0,
+      annual_wage: r.annual_wage,
+      growth_rate: r.growth_rate,
+      annual_openings: r.annual_openings,
+    }],
+  };
+
+  return (
+    <>
+      {/* Report header — mirrors the per-college occupation report's idiom, but
+          scoped to the consortium (eyebrow "Consortium" rather than a college). */}
+      <ReportHeader eyebrow="Consortium" title={r.title} accent={ACCENT}>
+        <span style={{ color: ACCENT, opacity: 0.7, fontFamily: MONO }}>SOC {r.soc_code}</span>
+        <Dot /><span style={{ color: "rgba(255,255,255,0.80)", letterSpacing: "0.08em" }}>{r.sector}</span>
+        {isSectorPriority && (
+          <><Dot /><span style={{ color: ACCENT, letterSpacing: "0.1em", fontWeight: 600 }}>Regional Priority Sector</span></>
+        )}
+      </ReportHeader>
+      {/* Occupation Summary — mirrors the school-specific view: framing prose,
+          the open occupation demand accordion (the same OccupationRow), then the
+          consortium crosswalk pathway. */}
+      <Section title="Occupation Summary" brandColor={ACCENT}>
+        <Prose>{r.occupational_demand}</Prose>
+        <div style={{ marginTop: 16 }}>
+          <OccupationRow
+            occ={occData}
+            index={0}
+            brandColor={ACCENT}
+            isOpen={demandOpen}
+            onToggle={() => setDemandOpen((o) => !o)}
+            detail={occDetail}
+            regionNames={[r.region_display]}
+            collegeName="SVAMP member colleges"
+            hideCurriculumAlignment
+          />
+        </div>
+        {cw && cw.tops.length > 0 && (
+          <CurriculumPathway crosswalk={cw} collegeName="SVAMP member colleges" socCode={r.soc_code} socTitle={r.title} brandColor={ACCENT} embedded />
+        )}
+      </Section>
+
+      {r.feeding_tops.some((t) => t.awards_total > 0) && (
+        <Section title="Supporting Programs" brandColor={ACCENT}>
+          <Prose>The programs supplying this occupation, sized by latest-year credentials awarded across the consortium.</Prose>
+          <SupplyTreemap tops={r.feeding_tops} selectedTop={null} accent={ACCENT} caption="Area is latest-year credentials awarded across the consortium by the programs supporting this occupation." />
+        </Section>
+      )}
+
+      {/* Awards + enrollment hold a chart panel whenever the occupation has
+          supporting programs — populated trend, or the ghost scaffold when a
+          metric is unreported (e.g. machining: awards but no enrollment). */}
+      {r.feeding_tops.length > 0 && (
+        <Section title="Program Awards" brandColor={ACCENT}>
+          <Prose>
+            {r.awards_by_college.length > 0
+              ? "Credentials awarded per year by the supporting programs, across the member colleges."
+              : "No awards are reported for the supporting programs via CCCCO DataMart."}
+          </Prose>
+          <TrendChart
+            series={r.awards_by_college.map((s) => ({ top6: s.college, name: shortName(s.college), vals: s.vals }))}
+            labels={r.award_years.map(awardYearLabel)}
+            defaultMode="stacked"
+            colorOf={colorOf}
+            modeLabels={{ lines: "Per school", stacked: "Stacked" }}
+            hideSeriesTag
+            empty={r.awards_by_college.length === 0}
+          />
+        </Section>
+      )}
+
+      {r.feeding_tops.length > 0 && (
+        <Section title="Program Enrollments" brandColor={ACCENT}>
+          <Prose>
+            {r.enrollment_by_college.length > 0
+              ? "Term-by-term enrollment in the supporting programs across the member colleges, excluding the structurally-low summer terms."
+              : "No enrollment is reported for the supporting programs via CCCCO DataMart."}
+          </Prose>
+          <TrendChart
+            series={r.enrollment_by_college.map((s) => ({ top6: s.college, name: shortName(s.college), vals: s.vals }))}
+            labels={r.enrollment_terms}
+            defaultMode="lines"
+            colorOf={colorOf}
+            axisStyle="twoTier"
+            modeLabels={{ lines: "Per school", stacked: "Stacked" }}
+            hideSeriesTag
+            empty={r.enrollment_by_college.length === 0}
+          />
+        </Section>
+      )}
+
+      {curriculumColleges.length > 0 && (
+        <Section title="Curriculum" brandColor={ACCENT}>
+          <Prose>The courses supporting this occupation at each member college that teaches them.</Prose>
+          <div style={{ marginTop: 16, display: "flex", flexDirection: "column", gap: 2 }}>
+            {curriculumColleges.map((cc, i) => (
+              <DepartmentRow
+                key={cc.college}
+                department={shortName(cc.college)}
+                courseCount={cc.courses.length}
+                index={i}
+                brandColor={colorOf(cc.college)}
+                courses={cc.courses.map((c) => ({ code: c.code, name: c.name, description: c.description, learningOutcomes: c.learning_outcomes, topCode: c.top_code }))}
+                schoolName={cc.college}
+                hideOccupationPathways
+                socFilter=""
+              />
+            ))}
+          </div>
+        </Section>
+      )}
+    </>
+  );
+}
+
 export default function SvampView({ colleges, onBack }: Props) {
   const [data, setData] = useState<ApiSvampLandscape | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [selected, setSelected] = useState<string>(colleges[0]?.id ?? "");
   const [selectedSoc, setSelectedSoc] = useState<string | null>(null);
+  // Occupations lens drill mode: "aggregated" (treemap → consortium SOC view)
+  // vs "targeted" (matrix cell → per-college OpportunityReport).
+  const [occView, setOccView] = useState<"aggregated" | "targeted">("aggregated");
+  const [lens, setLens] = useState<Lens>("occupations");
   // Sticky context banner: shown once the report header scrolls under the nav.
   const [ctxShow, setCtxShow] = useState(false);
   const ctxSentinel = useRef<HTMLDivElement | null>(null);
@@ -666,7 +1157,10 @@ export default function SvampView({ colleges, onBack }: Props) {
     );
     obs.observe(el);
     return () => obs.disconnect();
-  }, [selectedSoc]);
+    // `lens` is a dep: the sentinel lives only inside the occupations block, so
+    // toggling lenses unmounts/remounts it — re-run to observe the live node
+    // rather than a detached one (otherwise the banner never reappears).
+  }, [selectedSoc, lens]);
 
   const byName = useMemo(() => {
     const m = new Map<string, CollegeRef>();
@@ -674,12 +1168,13 @@ export default function SvampView({ colleges, onBack }: Props) {
     return m;
   }, [colleges]);
 
-  // Auto-select the default college's strongest occupation once data lands.
+  // Land on the aggregated consortium view of the highest-demand occupation.
   useEffect(() => {
     if (!data) return;
-    const def = data.colleges.find((c) => byName.get(c.name)?.id === selected) ?? data.colleges[0];
-    setSelectedSoc(topTaughtSoc(def));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const cells = data.colleges[0]?.cells ?? [];
+    const top = [...cells].sort((a, b) => (b.annual_openings ?? 0) - (a.annual_openings ?? 0))[0];
+    setSelectedSoc(top?.soc_code ?? null);
+    setOccView("aggregated");
   }, [data]);
 
   const wrap = (children: React.ReactNode) => (
@@ -721,6 +1216,10 @@ export default function SvampView({ colleges, onBack }: Props) {
     !!selectedCell &&
     data.award_years.length > 0 &&
     selectedCell.programs.some((p) => (p.awards ?? []).some((v) => v > 0));
+  const hasEnrollment =
+    !!selectedCell &&
+    data.enrollment_terms.length > 0 &&
+    selectedCell.programs.some((p) => (p.enrollment ?? []).some((v) => v != null && v > 0));
   const hasWages =
     !!selectedCell &&
     selectedCell.programs.some((p) => (p.wages ?? []).some((w) => w.wage_before != null && w.wage_after_5 != null));
@@ -762,9 +1261,28 @@ export default function SvampView({ colleges, onBack }: Props) {
   const programOutcomesPanel =
     selectedCell && selectedCell.programs.length > 0 && selRef ? (
       <>
+        {/* Awards + enrollment always hold a chart-shaped panel — the populated
+            trend, or the ghost scaffold (no-data state) keyed off has* — so the
+            footprint never collapses and a no-data panel reads as a known state. */}
+        <Section title="Program Awards" brandColor={selBrand}>
+          <Prose>
+            {hasAwards
+              ? "Credentials awarded per year by those same programs. Toggle between the stacked total and per-program trends; hover a program to focus it."
+              : `No awards are reported for these programs${awardsWindow ? ` over ${awardsWindow}` : ""} via CCCCO DataMart.`}
+          </Prose>
+          <TrendChart
+            series={selectedCell.programs.map((p) => ({ top6: p.top6, name: p.name, vals: p.awards ?? [] }))}
+            labels={data.award_years.map(awardYearLabel)}
+            defaultMode="stacked"
+            colorOf={colorOf}
+            empty={!hasAwards}
+          />
+        </Section>
         <Section title="Program Enrollments" brandColor={selBrand}>
           <Prose>
-            Term-by-term enrollment for the {selRef.config.name} programs that prepare students for this occupation, excluding the structurally-low summer terms. Toggle between per-program trends and the combined total; hover a program to focus it.
+            {hasEnrollment
+              ? `Term-by-term enrollment for the ${selRef.config.name} programs that prepare students for this occupation, excluding the structurally-low summer terms. Toggle between per-program trends and the combined total; hover a program to focus it.`
+              : "No enrollment is reported for these programs via CCCCO DataMart."}
           </Prose>
           <TrendChart
             series={selectedCell.programs.map((p) => ({ top6: p.top6, name: p.name, vals: p.enrollment }))}
@@ -772,30 +1290,9 @@ export default function SvampView({ colleges, onBack }: Props) {
             defaultMode="lines"
             colorOf={colorOf}
             axisStyle="twoTier"
+            empty={!hasEnrollment}
           />
         </Section>
-        {hasAwards ? (
-          <Section title="Program Awards" brandColor={selBrand}>
-            <Prose>
-              Credentials conferred per year by those same programs. Toggle between the stacked total and per-program trends; hover a program to focus it.
-            </Prose>
-            <TrendChart
-              series={selectedCell.programs.map((p) => ({ top6: p.top6, name: p.name, vals: p.awards ?? [] }))}
-              labels={data.award_years.map(awardYearLabel)}
-              defaultMode="stacked"
-              colorOf={colorOf}
-            />
-          </Section>
-        ) : (
-          // No award rows exist for these (college, TOP) programs in the DataMart
-          // export — the series would zero-fill, so we state the data absence
-          // explicitly rather than render an empty chart or silently drop it.
-          <Section title="Program Awards" brandColor={selBrand}>
-            <Prose>
-              No awards data is reported for these programs{awardsWindow ? ` over ${awardsWindow}` : ""} via CCCCO DataMart.
-            </Prose>
-          </Section>
-        )}
         {hasWages && (
           <Section title="Program Wage Outcomes" brandColor={selBrand}>
             <Prose>
@@ -819,73 +1316,29 @@ export default function SvampView({ colleges, onBack }: Props) {
     (a, b) => (b.annual_openings ?? 0) - (a.annual_openings ?? 0),
   );
 
-  // Build the transposed coverage grid: roles (rows, English) × colleges (cols).
-  const grid: React.ReactNode[] = [];
-  grid.push(
-    <div key="corner" style={{ fontFamily: MONO, fontSize: 9.5, letterSpacing: ".1em", textTransform: "uppercase", color: "#5e6a83", alignSelf: "end", paddingBottom: 6, whiteSpace: "nowrap" }}>↓ role (by demand) · → college</div>,
-  );
-  columns.forEach(({ ref }) => {
-    const on = ref.id === selRef?.id;
-    const cb = ref.config.brandColorLight;
-    grid.push(
-      <div key={"h-" + ref.id} style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6, fontSize: 11.5, fontWeight: 600, paddingBottom: 11, color: on ? cb : "#9aa6bd", boxShadow: on ? `inset 0 -2px 0 ${cb}` : "none", transition: "color .15s" }}>
-        <span style={{ width: 7, height: 7, borderRadius: "50%", background: ref.config.brandColorLight, flex: "none" }} />
-        {shortName(ref.config.name)}
-      </div>,
-    );
-  });
-  socRows.forEach((soc) => {
-    const short = ROLE_LABEL[soc.soc_code] ?? soc.title;
-    const rowSel = soc.soc_code === selectedSoc;
-    // Stacked label: role name leads, SOC code rides beneath as provenance.
-    grid.push(
-      <div key={"r-" + soc.soc_code} title={soc.title} style={{ paddingRight: 14, minWidth: 0 }}>
-        <div style={{ fontSize: 12.5, fontWeight: rowSel ? 600 : 500, color: rowSel ? selBrand : "rgba(255,255,255,.82)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{rowSel ? "▸ " : ""}{short}</div>
-        <div style={{ fontFamily: MONO, fontSize: 10, color: rowSel ? selBrand : "#5e6a83", letterSpacing: ".02em", marginTop: 1, opacity: rowSel ? 0.85 : 1, transition: "color .15s" }}>SOC {soc.soc_code}</div>
-      </div>,
-    );
-    columns.forEach(({ ref, cellMap }) => {
-      const cell = cellMap.get(soc.soc_code);
-      const lv = level(cell);
-      const key = ref.id + "-" + soc.soc_code;
-      const brand = ref.config.brandColorLight;
-      const isSel = ref.id === selRef?.id && soc.soc_code === selectedSoc;
-      const isGap = lv === "none";
-      // Gap cells are selectable too — they open the crosswalk-only view
-      // ("0 of M TOP groups…"), useful for spotting build/partner opportunities.
-      // They keep their faint resting look; brand fill is reserved for coverage.
-      const gapBg = "rgba(255,255,255,.035)";
-      const base: React.CSSProperties = {
-        height: 32, borderRadius: 7, cursor: "pointer",
-        background: isGap ? gapBg : lv === "strong" ? hexA(brand, 0.9) : hexA(brand, 0.3),
-        boxShadow: isGap ? "none" : `inset 0 0 0 1px ${hexA(brand, 0.5)}`,
-        transition: "transform .12s, box-shadow .12s, background .12s",
-      };
-      const sel: React.CSSProperties = isSel
-        ? isGap
-          ? { boxShadow: "0 0 0 2px rgba(255,255,255,.85), 0 6px 16px rgba(0,0,0,.5)", transform: "scale(1.08)", zIndex: 2 }
-          : { boxShadow: `0 0 0 2px rgba(255,255,255,.92), 0 0 12px ${hexA(brand, 0.6)}, 0 6px 16px rgba(0,0,0,.5)`, transform: "scale(1.08)", zIndex: 2 }
-        : {};
-      grid.push(
-        <div
-          key={key}
-          title={isGap ? `${shortName(ref.config.name)} · ${soc.title} — no aligned curriculum (view crosswalk)` : `${shortName(ref.config.name)} · ${soc.title}`}
-          onClick={() => { setSelected(ref.id); setSelectedSoc(soc.soc_code); }}
-          onMouseEnter={(e) => { if (isSel) return; const el = e.currentTarget as HTMLElement; el.style.transform = "translateY(-2px)"; if (isGap) el.style.background = "rgba(255,255,255,.08)"; }}
-          onMouseLeave={(e) => { const el = e.currentTarget as HTMLElement; if (isGap) el.style.background = gapBg; if (!isSel) el.style.transform = "none"; }}
-          style={{ ...base, ...sel }}
-        />,
-      );
-    });
-  });
+  // Shared CoverageMatrix inputs: cols = member colleges, rows = roles ranked by
+  // regional demand. level() reads the OCCUPATION_PIPELINE-backed cell — gap
+  // cells stay selectable (they open the crosswalk-only view).
+  const occCols = columns.map(({ ref }) => ({ id: ref.id, label: shortName(ref.config.name), brand: ref.config.brandColorLight }));
+  const occCellByKey = new Map<string, ApiSvampCell | undefined>();
+  columns.forEach(({ ref, cellMap }) => socRows.forEach((soc) => occCellByKey.set(ref.id + "|" + soc.soc_code, cellMap.get(soc.soc_code))));
+  const occRows = socRows.map((soc) => ({ id: soc.soc_code, label: ROLE_LABEL[soc.soc_code] ?? soc.title, sublabel: `SOC ${soc.soc_code}`, title: soc.title }));
+  const occLevel = (rowId: string, colId: string) => level(occCellByKey.get(colId + "|" + rowId));
 
+  // Report chrome adopts the active lens's color (occupations red / programs
+  // green), so the whole report wears the selected mode.
+  const lensAccent = lens === "programs" ? PROGRAM_ACCENT : lens === "employers" ? EMPLOYER_ACCENT : ACCENT;
   return wrap(
     <>
       {/* Sticky context banner — College · Occupation · SOC, pinned under the
           nav once the report header scrolls away, so the (college, occupation)
           identity stays visible deep in the report. Echoes the report eyebrow
           (accent college name) and meta (mono SOC code). */}
-      {selectedCell && selRef && (
+      {lens === "occupations" && selectedSoc && selectedCell && (() => {
+        const targeted = occView === "targeted";
+        const lead = targeted ? (selRef?.config.name ?? "") : "Consortium";
+        const leadColor = targeted ? selBrand : ACCENT;
+        return (
         <div
           style={{
             position: "fixed", top: 72, left: 0, right: 0, zIndex: 25, height: 46,
@@ -899,68 +1352,61 @@ export default function SvampView({ colleges, onBack }: Props) {
           }}
         >
           <div style={{ maxWidth: 900, width: "100%", margin: "0 auto", padding: "0 28px", display: "flex", alignItems: "baseline", gap: 10, minWidth: 0 }}>
-            <span style={{ fontFamily: FONT, fontSize: 11.5, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: selBrand, flex: "none", whiteSpace: "nowrap" }}>
-              {selRef.config.name}
+            <span style={{ fontFamily: FONT, fontSize: 11.5, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: leadColor, flex: "none", whiteSpace: "nowrap" }}>
+              {lead}
             </span>
             <span style={{ color: "rgba(255,255,255,0.2)", flex: "none" }}>·</span>
             <span style={{ fontFamily: FONT, fontSize: 13, color: "rgba(255,255,255,0.9)", flex: 1, minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
               {selectedCell.title}
             </span>
-            <span style={{ fontFamily: MONO, fontSize: 11, fontWeight: 500, letterSpacing: "0.05em", color: hexA(selBrand, 0.65), flex: "none", whiteSpace: "nowrap" }}>
+            <span style={{ fontFamily: MONO, fontSize: 11, fontWeight: 500, letterSpacing: "0.05em", color: hexA(leadColor, 0.65), flex: "none", whiteSpace: "nowrap" }}>
               SOC {selectedSoc}
             </span>
           </div>
         </div>
-      )}
+        );
+      })()}
       {/* Report header — same magazine idiom as the per-occupation report */}
-      <ReportHeader eyebrow="Partnership Landscape Report" title="Silicon Valley Advanced Manufacturing Partnership" accent={ACCENT}>
-        <span style={{ color: ACCENT, opacity: 0.7 }}>{agg.n_colleges} Member Colleges</span>
+      <ReportHeader eyebrow="Partnership Landscape Report" title="Silicon Valley Advanced Manufacturing Partnership" accent={lensAccent}>
+        <span style={{ color: lensAccent, opacity: 0.7 }}>{agg.n_colleges} Member Colleges</span>
         <Dot /><span style={{ color: "rgba(255,255,255,0.80)" }}>{agg.n_occupations} Occupations</span>
         <Dot /><span style={{ color: "rgba(255,255,255,0.80)", letterSpacing: "0.08em" }}>{data.sector}</span>
         <Dot /><span style={{ color: "rgba(255,255,255,0.80)" }}>{data.region_display}</span>
         {data.is_sector_priority && (
-          <><Dot /><span style={{ color: ACCENT, letterSpacing: "0.1em", fontWeight: 600 }}>Regional Priority Sector</span></>
+          <><Dot /><span style={{ color: lensAccent, letterSpacing: "0.1em", fontWeight: 600 }}>Regional Priority Sector</span></>
         )}
       </ReportHeader>
 
+      {/* Lens switcher — Occupations (built) · Programs (built) · Employers
+          (placeholder until that view ships). Three Platonic forms. */}
+      <LensTabs lens={lens} setLens={setLens} />
+
+      {lens === "occupations" ? (
+      <>
       {/* Executive summary — backend-composed thesis, then the coverage grid
           that selects what renders inline below it. */}
-      <Section title="Executive Summary" brandColor={ACCENT}>
+      <Section title="Regional Labor Demand" brandColor={ACCENT}>
         <Prose>{data.executive_summary}</Prose>
-        <DemandTreemap cells={data.colleges[0]?.cells ?? []} total={agg.regional_demand_total} />
-        <div style={{ marginTop: 18 }}>
-          <Prose>Select a college and occupation in the coverage grid below to examine how each college aligns with a particular SOC.</Prose>
-        </div>
+        <DemandTreemap cells={data.colleges[0]?.cells ?? []} total={agg.regional_demand_total} selected={occView === "aggregated" ? selectedSoc : null} onSelect={(soc) => { setSelectedSoc(soc); setOccView("aggregated"); }} />
 
-        {/* coverage grid */}
-        <div style={{ marginTop: 20, border: "1px solid rgba(255,255,255,.09)", borderRadius: 12, background: "rgba(0,0,0,.18)", padding: "16px 18px", overflowX: "auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: `230px repeat(${columns.length}, minmax(58px,1fr))`, gap: 4, alignItems: "center", minWidth: 540 }}>
-            {grid}
-          </div>
-          {/* Coverage key — aligned to the data columns: it reuses the grid's
-              column template and spans column 2 → end, so the left edge of
-              "Covered" sits exactly at the De Anza column's left edge, clear of
-              the role-label column. Neutral swatches read as fill depth (the
-              intensity axis), not any one college's hue. */}
-          <div style={{ marginTop: 16, paddingTop: 13, borderTop: "1px solid rgba(255,255,255,.06)", display: "grid", gridTemplateColumns: `230px repeat(${columns.length}, minmax(58px,1fr))`, gap: 4, minWidth: 540 }}>
-            <div />
-            <div style={{ gridColumn: "2 / -1", display: "flex", alignItems: "center", gap: 48, flexWrap: "wrap" }}>
-              {[
-                { k: "Covered", sub: "teaches it · has supply", bg: "rgba(148,168,201,.92)", ring: true },
-                { k: "Partial", sub: "teaches it · no supply", bg: "rgba(148,168,201,.3)", ring: true },
-                { k: "Gap", sub: "no curriculum", bg: "rgba(255,255,255,.035)", ring: false },
-              ].map((it) => (
-                <div key={it.k} style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                  <span style={{ width: 40, height: 20, borderRadius: 6, background: it.bg, boxShadow: it.ring ? "inset 0 0 0 1px rgba(148,168,201,.5)" : "none", flex: "none" }} />
-                  <span style={{ fontSize: 12.5, fontWeight: 500, color: "rgba(255,255,255,.9)", lineHeight: 1.2 }}>
-                    {it.k}
-                    <span style={{ display: "block", fontSize: 11, color: "#5e6a83", fontWeight: 400 }}>{it.sub}</span>
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        {/* coverage grid (shared CoverageMatrix) */}
+        <CoverageMatrix
+          cols={occCols}
+          rows={occRows}
+          level={occLevel}
+          selectedRow={selectedSoc}
+          selectedCol={occView === "targeted" ? (selRef?.id ?? null) : null}
+          cornerLabel="↓ role (by demand) · → college"
+          gapCellHint="no enrollment or awards (view crosswalk)"
+          legend={[
+            { k: "Covered", sub: "enrollment & awards", bg: "rgba(148,168,201,.92)", ring: true },
+            { k: "Partial", sub: "enrollment or awards", bg: "rgba(148,168,201,.3)", ring: true },
+            { k: "Gap", sub: "neither", bg: "rgba(255,255,255,.035)", ring: false },
+          ]}
+          caption="Each cell is one college’s coverage — click for that college’s report."
+          onSelect={(soc, collegeId) => { setSelected(collegeId); setSelectedSoc(soc); setOccView("targeted"); }}
+          onSelectRow={(soc) => { setSelectedSoc(soc); setOccView("aggregated"); }}
+        />
       </Section>
 
       {/* Inline detail — the selected occupation's report, exec summary
@@ -968,11 +1414,21 @@ export default function SvampView({ colleges, onBack }: Props) {
           panel is injected between Curriculum Alignment and Student Impact via
           the programOutcomes slot. Uses the selected college's own brand color,
           distinct from the red consortium chrome. */}
-      {selectedSoc && selRef && (
+      {selectedSoc && (
         <div style={{ marginTop: 36 }}>
           <div ref={ctxSentinel} style={{ height: 1 }} />
-          <OpportunityReportBody school={selRef.config} socCode={selectedSoc} sector={data.sector} hideExecutiveSummary hideStudentImpact embedded programOutcomes={programOutcomesPanel} demandTitle="Centers of Excellence Projections (Supply / Demand)" hideLaborMarket={isGapSel} suppressEmptySupplyGap />
+          {occView === "aggregated" ? (
+            <OccupationAggregateReport soc={selectedSoc} colleges={colleges} isSectorPriority={data.is_sector_priority} />
+          ) : selRef ? (
+            <OpportunityReportBody school={selRef.config} socCode={selectedSoc} sector={data.sector} hideExecutiveSummary hideStudentImpact embedded programOutcomes={programOutcomesPanel} demandTitle="Centers of Excellence Projections (Supply / Demand)" hideLaborMarket={isGapSel} suppressEmptySupplyGap topPrefix={SVAMP_TOP_DIVISION} cteOnly />
+          ) : null}
         </div>
+      )}
+      </>
+      ) : lens === "programs" ? (
+        <ProgramsLens colleges={colleges} />
+      ) : (
+        <LensComingSoon lens={lens} />
       )}
     </>,
   );

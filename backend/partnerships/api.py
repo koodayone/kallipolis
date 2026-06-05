@@ -36,6 +36,14 @@ from fastapi import APIRouter, HTTPException, Response
 from partnerships.models import OpportunityReport, SectorIndex
 from partnerships.opportunity import build_opportunity_report, build_sector_index
 from partnerships.svamp import SvampLandscape, build_svamp_landscape
+from partnerships.svamp_programs import (
+    ProgramReport,
+    ProgramsLandscape,
+    SvampOccupationReport,
+    build_program_report,
+    build_programs_landscape,
+    build_svamp_occupation,
+)
 from partnerships.precompute import (
     CACHE_SCHEMA_VERSION,
     manifest_path,
@@ -259,6 +267,8 @@ def get_partnership_opportunity(
     soc_code: str,
     college: str,
     sector: str | None = None,
+    top_prefix: str | None = None,
+    cte_only: bool = False,
 ):
     """Returns the per-(college, occupation) partnership opportunity
     report. Composed deterministically from the institutional graph:
@@ -273,13 +283,22 @@ def get_partnership_opportunity(
     re-resolved alphabetically. Invalid sectors (not actually one of
     the SOC's PCAH sectors) are ignored — the report falls back to
     the alphabetical default.
+
+    The optional `top_prefix` and `cte_only` query parameters scope the
+    curriculum pathway to a TOP division and/or to CTE programs (the SVAMP
+    09-only, career-technical lens). The precomputed cache is built unscoped,
+    so a scoped request bypasses it and composes live; unscoped requests
+    (every per-college report) keep the cache fast-path unchanged.
     """
-    cached = _try_serve_opportunity(college, soc_code, sector)
-    if cached is not None:
-        return cached
+    if not top_prefix and not cte_only:
+        cached = _try_serve_opportunity(college, soc_code, sector)
+        if cached is not None:
+            return cached
 
     try:
-        return build_opportunity_report(college, soc_code, sector_hint=sector)
+        return build_opportunity_report(
+            college, soc_code, sector_hint=sector, top_prefix=top_prefix, cte_only=cte_only,
+        )
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))
     except Exception as e:
@@ -299,5 +318,43 @@ def get_svamp_landscape():
     """
     try:
         return build_svamp_landscape()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/svamp/programs", response_model=ProgramsLandscape)
+def get_svamp_programs():
+    """The SVAMP Programs lens — the supply-side TOP6 universe (every TOP that
+    crosswalks to the twelve SVAMP SOCs), each sized by latest-period supply
+    summed across the member colleges. Powers the supply treemap + picker."""
+    try:
+        return build_programs_landscape()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/svamp/program/{top6}", response_model=ProgramReport)
+def get_svamp_program(top6: str, college: str | None = None):
+    """A single TOP6 program report: the SOCs it feeds (regional demand, never
+    summed), per-college award/enrollment series, statewide wage outcomes, and
+    the per-school course curriculum for the TOP.
+
+    Optional `college` scopes the report to one member college (the targeted
+    college × program view); omitted ⇒ the consortium-aggregated view."""
+    try:
+        return build_program_report(top6, college=college)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/svamp/occupation/{soc}", response_model=SvampOccupationReport)
+def get_svamp_occupation(soc: str):
+    """The SVAMP aggregated-occupation report — the dual of the program report.
+    One SOC read consortium-wide: regional demand, consortium supply and the
+    resulting gap, the 09 programs feeding it (sized by awards), per-college
+    award/enrollment series + curriculum, and the SOC-anchored crosswalk marked
+    taught-by-any-member-college."""
+    try:
+        return build_svamp_occupation(soc)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

@@ -14,6 +14,7 @@ import OccupationRow, {
 } from "@/college-atlas/occupations/OccupationRow";
 import DepartmentRow, { type CourseItem } from "@/college-atlas/courses/DepartmentRow";
 import CurriculumPathway from "@/college-atlas/partnerships/CurriculumPathway";
+import OccupationDemandTable from "@/college-atlas/partnerships/OccupationDemandTable";
 import StudentRow, {
   type StudentData,
   type StudentDetailData,
@@ -57,11 +58,18 @@ export default function OpportunityReport({ school, socCode, sector, onBack }: P
    aggregated landscape so a selection renders inline without a page load. */
 export function OpportunityReportBody({
   school, socCode, sector, hideExecutiveSummary = false, hideStudentImpact = false, embedded = false, programOutcomes,
-  demandTitle = "Labor Market Information", hideLaborMarket = false, suppressEmptySupplyGap = false,
+  demandTitle = "Labor Market Information", hideLaborMarket = false, suppressEmptySupplyGap = false, topPrefix, cteOnly,
 }: {
   school: SchoolConfig;
   socCode: string;
   sector?: string;
+  // Scope the curriculum pathway (and the accordion + student pipeline it
+  // gates) to a TOP division — the SVAMP 09-only lens passes "09". Default
+  // undefined ⇒ per-college reports fetch the unscoped report unchanged.
+  topPrefix?: string;
+  // Restrict that crosswalk to CTE programs (drop transfer/academic) — the
+  // SVAMP workforce lens passes true. Default undefined ⇒ unchanged.
+  cteOnly?: boolean;
   hideExecutiveSummary?: boolean;
   // Suppress the Student Impact section. Default false → per-college reports
   // unchanged; SVAMP sets it true (the student layer is synthetic and
@@ -96,11 +104,11 @@ export function OpportunityReportBody({
     if (!socCode) return;
     setLoading(true);
     setError(null);
-    getPartnershipOpportunity(socCode, school.name, sector)
+    getPartnershipOpportunity(socCode, school.name, sector, topPrefix, cteOnly)
       .then(setReport)
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
-  }, [socCode, school.name, sector]);
+  }, [socCode, school.name, sector, topPrefix, cteOnly]);
 
   if (loading) {
     return (
@@ -234,45 +242,40 @@ function ReportBody({
         </Section>
       )}
 
-      {/* Occupational Demand — Centers of Excellence narrative
-          (wage, openings, current regional employment, 5-year
-          projected growth) followed by the OccupationRow accordion
-          as its supporting evidence. The inner Curriculum Alignment
-          block is suppressed because the report has its own dedicated
-          section for that below. The structural supply/demand evidence
-          (table, workforce gap viz, sources) appears further down in
-          the Labor Market Information section. The row defaults to
-          collapsed for visual consistency with the other accordion
-          rows in the report (Curriculum Alignment, Student Impact,
-          Partnership Opportunities all start collapsed). */}
-      <Section title="Occupational Demand" brandColor={brandColor}>
-        <Prose>{report.occupational_demand}</Prose>
-        <div style={{ marginTop: "16px" }}>
-          <OccupationRowWrapper
-            occData={occData}
-            occDetail={occDetail}
-            brandColor={brandColor}
-            regions={report.regions}
+      {/* Occupation detail. Per-college: two sections — "Occupational Demand"
+          (CoE narrative + OccupationRow accordion) then "Curriculum Alignment"
+          (aligned-course accordion → TOP×CIP×SOC pathway hero, specific →
+          contextual). SVAMP (embedded): ONE "Occupation Summary" section —
+          demand accordion → pathway hero → aligned courses. Gap rows keep the
+          explanatory prose before the pathway so its "crosswalk below" holds. */}
+      {(() => {
+        const demandBlock = (
+          <>
+            <Prose>{report.occupational_demand}</Prose>
+            <div style={{ marginTop: "16px" }}>
+              <OccupationRowWrapper
+                occData={occData}
+                occDetail={occDetail}
+                brandColor={brandColor}
+                regions={report.regions}
+                collegeName={school.name}
+                defaultOpen={embedded}
+              />
+            </div>
+          </>
+        );
+        const pathwayBlock = report.curriculum_crosswalk && report.curriculum_crosswalk.tops.length > 0 ? (
+          <CurriculumPathway
+            crosswalk={report.curriculum_crosswalk}
             collegeName={school.name}
+            socCode={report.soc_code}
+            socTitle={report.soc_title}
+            brandColor={brandColor}
+            embedded={embedded}
           />
-        </div>
-      </Section>
-
-      {/* Curriculum Alignment — two-part section:
-          (1) Specific evidence: per-department accordion of the actual
-              courses at this college that institutionally prepare for
-              the SOC. Builds trust with course-level concreteness.
-          (2) Contextual zoom-out: the CurriculumPathway hero
-              visualization, framing this college's specific coverage
-              against the full TOP × CIP institutional prep set. The
-              headline metric ("N of M TOP groups supporting SOC X")
-              naturally introduces the wider view.
-          The reading order is specific → contextual, which is more
-          credible than the reverse: a coordinator first sees the
-          concrete courses they know exist, then sees where those sit
-          in the broader institutional crosswalk. */}
-      <Section title="Curriculum Alignment" brandColor={brandColor}>
-        {report.curriculum_evidence.length === 0 ? (
+        ) : null;
+        const isGap = report.curriculum_evidence.length === 0;
+        const coursesBlock = isGap ? (
           <Prose>
             No departments at {school.name} have institutionally aligned curriculum for this
             occupation. The crosswalk below shows the system-wide TOP × CIP pathway that
@@ -306,28 +309,26 @@ function ReportBody({
               })}
             </div>
           </>
-        )}
+        );
 
-        {/* Contextual zoom-out: TOP × CIP × SOC institutional pathway.
-            Rendered regardless of whether the college has aligned
-            curriculum — for gap rows (curriculum_evidence empty),
-            the visualization shows the institutional pathway with all
-            TOPs dimmed, which is the workforce-gap signal worth
-            seeing. The guard against empty `tops` is defensive
-            against SOCs with no PREPARES_FOR materialization anywhere
-            in the system (rare but possible). */}
-        {report.curriculum_crosswalk &&
-          report.curriculum_crosswalk.tops.length > 0 && (
-            <CurriculumPathway
-              crosswalk={report.curriculum_crosswalk}
-              collegeName={school.name}
-              socCode={report.soc_code}
-              socTitle={report.soc_title}
-              brandColor={brandColor}
-              embedded={embedded}
-            />
-          )}
-      </Section>
+        if (!embedded) {
+          return (
+            <>
+              <Section title="Occupational Demand" brandColor={brandColor}>{demandBlock}</Section>
+              <Section title="Curriculum Alignment" brandColor={brandColor}>
+                {coursesBlock}
+                {pathwayBlock}
+              </Section>
+            </>
+          );
+        }
+        return (
+          <Section title="Occupation Summary" brandColor={brandColor}>
+            {demandBlock}
+            {isGap ? (<>{coursesBlock}{pathwayBlock}</>) : (<>{pathwayBlock}<div style={{ marginTop: "28px" }}>{coursesBlock}</div></>)}
+          </Section>
+        );
+      })()}
 
       {/* Optional injected section (SVAMP Program Outcomes); nothing for the
           per-college report. */}
@@ -485,15 +486,16 @@ function ReportBody({
 /* ── OccupationRow wrapper to manage local open state ─────────────────── */
 
 function OccupationRowWrapper({
-  occData, occDetail, brandColor, regions, collegeName,
+  occData, occDetail, brandColor, regions, collegeName, defaultOpen = false,
 }: {
   occData: OccupationData;
   occDetail: OccupationDetail;
   brandColor: string;
   regions: string[];
   collegeName: string;
+  defaultOpen?: boolean;
 }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(defaultOpen);
   return (
     <OccupationRow
       occ={occData}
@@ -615,57 +617,10 @@ function LaborMarketInformation({
         )}
       </Prose>
 
-      {/* Demand table */}
+      {/* Demand table (extracted to OccupationDemandTable, reused by the SVAMP
+          Programs lens; default label keeps this caller byte-identical). */}
       {swp.occupations.length > 0 && (
-        <div style={{ marginTop: "20px" }}>
-          <span style={{
-            fontFamily: FONT, fontSize: "12px", fontWeight: 600,
-            color: "rgba(255,255,255,0.7)",
-            display: "block", marginBottom: "10px",
-          }}>
-            Demand: regional annual openings by SOC
-          </span>
-          <div style={{
-            background: "rgba(255,255,255,0.025)",
-            border: "1px solid rgba(255,255,255,0.06)",
-            borderRadius: "8px",
-            padding: "10px 16px",
-          }}>
-            <div style={{
-              display: "grid", gridTemplateColumns: "90px 1fr 110px 130px",
-              gap: "12px", padding: "6px 0",
-              borderBottom: "1px solid rgba(255,255,255,0.05)",
-            }}>
-              <ColHead brandColor={brandColor}>SOC</ColHead>
-              <ColHead brandColor={brandColor}>Occupation</ColHead>
-              <ColHead brandColor={brandColor} align="right">Wage</ColHead>
-              <ColHead brandColor={brandColor} align="right">Annual openings</ColHead>
-            </div>
-            {swp.occupations.map((o) => (
-              <div
-                key={o.soc_code ?? o.title}
-                style={{
-                  display: "grid", gridTemplateColumns: "90px 1fr 110px 130px",
-                  gap: "12px", padding: "10px 0",
-                  alignItems: "baseline",
-                }}
-              >
-                <span style={{ fontFamily: MONO, fontSize: "12px", color: "rgba(255,255,255,0.55)" }}>
-                  {o.soc_code ?? "—"}
-                </span>
-                <span style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.78)" }}>
-                  {o.title}
-                </span>
-                <span style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.7)", textAlign: "right", fontVariantNumeric: "tabular-nums" }}>
-                  {o.annual_wage != null ? `$${o.annual_wage.toLocaleString()}` : "—"}
-                </span>
-                <span style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.7)", textAlign: "right", fontVariantNumeric: "tabular-nums" }}>
-                  {o.annual_openings != null ? o.annual_openings.toLocaleString() : "—"}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
+        <OccupationDemandTable rows={swp.occupations} brandColor={brandColor} />
       )}
 
       {/* Supply sub-table — only renders when COE publishes at least one

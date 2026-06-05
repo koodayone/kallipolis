@@ -1,0 +1,61 @@
+/**
+ * Tests for the partnerships SVAMP program API client — URL construction for
+ * getSvampProgram, which gained an optional `college` parameter for the
+ * targeted (college × TOP) view (Phase 1 of the lens-grammar synthesis).
+ *
+ * Follows the fetch-mocking pattern from college-atlas/occupations/api.test.ts.
+ *
+ * Coverage:
+ *   - getSvampProgram(top6): hits /partnerships/svamp/program/{top6} with no
+ *     query string (the consortium-aggregated view)
+ *   - getSvampProgram(top6, college): appends ?college=<value> (the targeted
+ *     slice), with the college name carried into the query
+ *   - error branch throws on a non-ok response
+ */
+
+import { describe, it, expect, afterEach, vi } from "vitest";
+import { getSvampProgram, getSvampOccupation } from "./api";
+
+describe("partnerships svamp program api client", () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  it("aggregated view: no college query string", async () => {
+    const mockFetch = vi.fn().mockResolvedValue({ ok: true, json: async () => ({}) });
+    vi.stubGlobal("fetch", mockFetch);
+
+    await getSvampProgram("094800");
+
+    const url = mockFetch.mock.calls[0][0] as string;
+    expect(url).toContain("/partnerships/svamp/program/094800");
+    expect(url).not.toContain("?");
+  });
+
+  it("targeted view: appends the college query parameter", async () => {
+    const mockFetch = vi.fn().mockResolvedValue({ ok: true, json: async () => ({}) });
+    vi.stubGlobal("fetch", mockFetch);
+
+    await getSvampProgram("094800", "De Anza College");
+
+    const url = mockFetch.mock.calls[0][0] as string;
+    expect(url).toContain("/partnerships/svamp/program/094800?");
+    expect(url).toContain("college=De");
+    expect(url).toContain("Anza");
+  });
+
+  it("throws on a non-ok response", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: false }));
+    await expect(getSvampProgram("094800")).rejects.toThrow();
+  });
+
+  it("getSvampOccupation hits /svamp/occupation/{soc} with the SOC encoded", async () => {
+    const mockFetch = vi.fn().mockResolvedValue({ ok: true, json: async () => ({}) });
+    vi.stubGlobal("fetch", mockFetch);
+
+    await getSvampOccupation("17-3027");
+
+    const url = mockFetch.mock.calls[0][0] as string;
+    expect(url).toContain("/partnerships/svamp/occupation/17-3027");
+  });
+});

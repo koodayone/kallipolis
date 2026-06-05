@@ -244,6 +244,10 @@ export type ApiSvampCell = {
   supply: number;
   gap: number;
   awards_recent: number;             // Σ actual awards over this cell's programs
+  // Activity coverage over the crosswalking programs (the dual of the Programs
+  // cell): covered = enrolled && feeding_awards>0; partial = one; gap = neither.
+  enrolled: boolean;
+  feeding_awards: number;            // latest-year awards over the SOC's feeding set
   programs: ApiSvampProgram[];
 };
 
@@ -281,10 +285,163 @@ export async function getSvampLandscape(): Promise<ApiSvampLandscape> {
   return res.json();
 }
 
+// ── SVAMP Programs lens (supply-side, TOP6-centric) ───────────────────────
+// One TOP6 in the supply-treemap universe. awards_total / enrollment_total are
+// latest-period magnitudes summed across colleges (additive supply); soc_count
+// is the crosswalk cardinality (relationship, never demand).
+export type ApiSvampTopSummary = {
+  top6: string;
+  name: string;
+  awards_total: number;
+  enrollment_total: number;
+  n_colleges_offering: number;
+  soc_count: number;
+};
+
+// Per-(college, TOP) supply coverage — the dual of the occupations grid cell.
+// Keyed on activity, not catalog presence: covered = enrolled && awards>0 (full
+// pipeline); partial = one signal but not the other; gap = neither. `teaches`
+// (≥1 tagged course) is retained as context but no longer gates the cell.
+export type ApiProgramCoverageCell = {
+  college: string;
+  top6: string;
+  teaches: boolean;
+  enrolled: boolean;
+  awards: number;
+};
+export type ApiProgramCoverageMatrix = {
+  colleges: string[];                  // SVAMP college order — matrix columns
+  cells: ApiProgramCoverageCell[];     // flat (college × TOP) coverage
+};
+export type ApiSvampProgramsLandscape = {
+  region: string;
+  region_display: string;
+  sector: string;
+  latest_award_year: string | null;
+  n_colleges: number;
+  tops: ApiSvampTopSummary[];
+  matrix: ApiProgramCoverageMatrix | null;   // per-(college, TOP) coverage grid
+};
+
+// A SOC the TOP feeds; openings are the single regional value (never summed).
+export type ApiSvampOccupationDemand = {
+  soc_code: string;
+  title: string;
+  annual_wage: number | null;
+  annual_openings: number | null;
+};
+
+// One college's supply series for the focused TOP, aligned to the report axes.
+export type ApiSvampCollegeSeries = {
+  college: string;
+  vals: (number | null)[];
+};
+
+export type ApiSvampProgramCourse = {
+  code: string;
+  name: string;
+  description: string;
+  learning_outcomes: string[];
+  top_code: string | null;
+};
+
+export type ApiSvampCollegeCourses = {
+  college: string;
+  courses: ApiSvampProgramCourse[];
+};
+
+// TOP-anchored TOP-CIP-SOC pathway (the dual of ApiCurriculumCrosswalk): one
+// focused TOP → its bridging CIPs → the SVAMP SOCs it feeds.
+export type ApiProgramCrosswalkCip = { code: string; title: string };
+export type ApiProgramCrosswalkSoc = {
+  code: string;
+  title: string;
+  cips: string[];           // CIPs (of this TOP) that bridge to this SOC
+};
+export type ApiProgramCrosswalk = {
+  top6: string;
+  top_name: string;
+  cips: ApiProgramCrosswalkCip[];   // union of bridging CIPs (middle column)
+  socs: ApiProgramCrosswalkSoc[];   // relevant SVAMP SOCs (right column)
+};
+
+export type ApiSvampProgramReport = {
+  top6: string;
+  name: string;
+  region: string;
+  region_display: string;
+  sector: string;
+  award_years: string[];
+  enrollment_terms: string[];
+  occupations: ApiSvampOccupationDemand[];      // demand only, per SOC
+  enrollment_by_college: ApiSvampCollegeSeries[];
+  awards_by_college: ApiSvampCollegeSeries[];
+  wages: ApiSvampWage[];
+  curriculum_by_college: ApiSvampCollegeCourses[];
+  crosswalk: ApiProgramCrosswalk | null;        // TOP-anchored TOP-CIP-SOC pathway
+  college: string | null;                       // set ⇒ targeted (college, TOP) slice
+};
+
+// The aggregated-occupation report — the dual of ApiSvampProgramReport. One SOC
+// read consortium-wide: demand + consortium supply + gap, the 09 feeding
+// programs, per-college series + curriculum, and the SOC-anchored crosswalk.
+export type ApiSvampOccupationReport = {
+  soc_code: string;
+  title: string;
+  description: string | null;
+  occupational_demand: string;
+  sector: string;
+  region: string;
+  region_display: string;
+  annual_openings: number | null;
+  annual_wage: number | null;
+  growth_rate: number | null;
+  employment: number | null;
+  consortium_supply: number;
+  gap: number;
+  award_years: string[];
+  enrollment_terms: string[];
+  feeding_tops: ApiSvampTopSummary[];
+  awards_by_college: ApiSvampCollegeSeries[];
+  enrollment_by_college: ApiSvampCollegeSeries[];
+  curriculum_by_college: ApiSvampCollegeCourses[];
+  crosswalk: ApiCurriculumCrosswalk | null;     // SOC-anchored, consortium-union taught
+};
+
+export async function getSvampPrograms(): Promise<ApiSvampProgramsLandscape> {
+  const res = await fetch(`${API_BASE}/partnerships/svamp/programs`);
+  if (!res.ok) throw new Error("Failed to fetch SVAMP programs landscape");
+  return res.json();
+}
+
+export async function getSvampProgram(top6: string, college?: string): Promise<ApiSvampProgramReport> {
+  // `college` omitted ⇒ the consortium-aggregated program report; set ⇒ the
+  // targeted (college, TOP) slice (single-college series + that college's
+  // curriculum; demand, pathway, wage unchanged).
+  const params = new URLSearchParams();
+  if (college) params.set("college", college);
+  const qs = params.toString();
+  const res = await fetch(
+    `${API_BASE}/partnerships/svamp/program/${encodeURIComponent(top6)}${qs ? `?${qs}` : ""}`,
+  );
+  if (!res.ok) throw new Error("Failed to fetch SVAMP program report");
+  return res.json();
+}
+
+export async function getSvampOccupation(soc: string): Promise<ApiSvampOccupationReport> {
+  // The aggregated (consortium) view of one occupation — demand, consortium
+  // supply + gap, the feeding programs, and per-college series + curriculum.
+  const res = await fetch(`${API_BASE}/partnerships/svamp/occupation/${encodeURIComponent(soc)}`);
+  if (!res.ok) throw new Error("Failed to fetch SVAMP occupation report");
+  return res.json();
+}
+
 export async function getPartnershipOpportunity(
   socCode: string,
   college: string,
   sector?: string,
+  topPrefix?: string,
+  cteOnly?: boolean,
 ): Promise<ApiOpportunityReport> {
   // `sector` is the click-context sector the user navigated from. When
   // a SOC belongs to multiple PCAH sectors, this preserves the user's
@@ -292,8 +449,14 @@ export async function getPartnershipOpportunity(
   // from rather than re-resolving alphabetically. The backend
   // validates the value against the SOC's actual PCAH sectors and
   // ignores it if invalid.
+  //
+  // `topPrefix` scopes the curriculum pathway to a TOP division (the SVAMP
+  // 09-only lens). Omitted for per-college reports ⇒ the backend serves the
+  // unscoped cached report unchanged.
   const params = new URLSearchParams({ college });
   if (sector) params.set("sector", sector);
+  if (topPrefix) params.set("top_prefix", topPrefix);
+  if (cteOnly) params.set("cte_only", "true");
   const res = await fetch(
     `${API_BASE}/partnerships/opportunity/${encodeURIComponent(socCode)}?${params.toString()}`,
   );

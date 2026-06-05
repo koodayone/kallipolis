@@ -37,6 +37,7 @@ from ontology.regions import (
     COE_REGION_PRIORITY_SECTORS,
     COLLEGE_COE_REGION,
 )
+from ontology.crosswalks import is_cte_top4_family, top6_to_soc, _load_top_to_cip
 from ontology.schema import get_driver
 from ontology.supply import get_coe_supply
 from ontology.programs import get_wage_outcomes
@@ -90,6 +91,36 @@ SVAMP_SECTOR: str = "Advanced Manufacturing"
 # span of the enrollment chart. The full history remains in the graph.
 AWARD_YEARS_SHOWN: int = 5
 
+# SVAMP scopes its program / supply universe to TOP division 09 — "Engineering
+# and Industrial Technologies" in the Chancellor's Office TOP taxonomy, the
+# consortium's programmatic domain per the SVAMP director — AND to CTE (career-
+# technical) programs only, excluding transfer/academic ones (e.g. 090100
+# Engineering, General (Transfer)), per the CCCCO PCAH CTE designation. Both are
+# categorical, institutional scopes applied on top of the faithful TOP-CIP-SOC
+# crosswalk — the crosswalk is never edited (no per-edge curation), so
+# non-engineering feeders it legitimately links (e.g. Commercial Music →
+# 17-3029, CIS → 17-3023) and transfer majors simply fall out of the
+# consortium's workforce view. Enforced consortium-wide: the Programs lens
+# universe (svamp_programs.relevant_tops), this landscape's per-cell supply /
+# awards / coverage, and the occupation drill report's curriculum pathway
+# (build_opportunity_report's top_prefix + cte_only) all restrict to 09xx CTE
+# TOPs. DEMAND and the candidate-employer set are NOT scoped — they are
+# occupation- and region-owned, not program-owned.
+SVAMP_TOP_DIVISION: str = "09"
+
+
+def is_svamp_top(top6: str | None) -> bool:
+    """True iff a TOP6 is in SVAMP's scoped program universe: TOP division 09
+    AND a career-technical (CTE) workforce program, not a transfer/academic one
+    (e.g. 090100 Engineering, General (Transfer) is excluded).
+
+    Uses the FAMILY-level CTE test (is_cte_top4_family) rather than exact TOP6
+    membership: the PCAH file is periodically updated and misses newer TOP6
+    codes (e.g. 095690 Digital Fabrication Technician) whose 4-digit family is
+    plainly CTE. Family-level keeps those while still excluding all-transfer
+    families like 0901."""
+    return bool(top6) and top6.startswith(SVAMP_TOP_DIVISION) and is_cte_top4_family(top6)
+
 
 # ── Response shapes ───────────────────────────────────────────────────────
 
@@ -140,6 +171,15 @@ class SvampCell(BaseModel):
     supply: float = 0.0
     gap: int = 0
     awards_recent: int = 0                 # Σ actual awards over this cell's programs
+    # Activity-based coverage (the dual of the Programs grid cell), routed off
+    # the crosswalking programs rather than the course pipeline so credentials
+    # that confer without a tagged course (095630 → Machinists) still count:
+    # `enrolled` = any feeding 09∩CTE program has enrollment at this college;
+    # `feeding_awards` = latest-year awards summed over the feeding set. The
+    # frontend derives covered = enrolled & feeding_awards>0; partial = one;
+    # gap = neither — identical predicate to the Programs lens.
+    enrolled: bool = False
+    feeding_awards: int = 0
     programs: list[SvampProgram] = []
 
 
@@ -186,34 +226,21 @@ class SvampLandscape(BaseModel):
     aggregate: SvampAggregate
 
 
-def _build_executive_summary(region_display: str, agg: "SvampAggregate", latest_year: str | None = None) -> str:
-    """The report's thesis, employer-agnostic.
-
-    S1 names what the report examines (consortium + occupations + region).
-    S2 states the shared regional demand. S3 (when program data is present)
-    grounds the latest-year credential count in the institutional linkage —
-    awards from programs that prepare for these occupations via the
-    TOP-CIP-SOC crosswalk — so the number reads as evidence, not trivia.
-    """
+def _build_executive_summary(region_display: str, agg: "SvampAggregate") -> str:
+    """The occupations (demand) lens thesis: what the report examines and the
+    shared regional demand total. Supply framing — the credentials member
+    colleges award — belongs on the Programs lens, not here, so the occupations
+    view reads unambiguously as the demand side of the landscape."""
     s1 = (
-        f"This report examines the partnership landscape across the "
-        f"{agg.n_colleges} member colleges of the Silicon Valley Advanced "
-        f"Manufacturing Partnership consortium for {agg.n_occupations} "
-        f"advanced-manufacturing occupations in the {region_display} regional "
-        f"labor market."
+        f"This view examines the regional demand landscape across the "
+        f"{agg.n_occupations} advanced-manufacturing occupations the Silicon "
+        f"Valley Advanced Manufacturing Partnership targets in the "
+        f"{region_display} regional labor market."
     )
     s2 = (
         f"Regional demand for these occupations totals "
         f"{agg.regional_demand_total:,} openings per year."
     )
-    if agg.combined_awards:
-        yr = f" ({latest_year})" if latest_year else ""
-        s3 = (
-            f"In the latest reported year{yr}, SVAMP member colleges awarded "
-            f"{agg.combined_awards:,} credentials from programs that prepare "
-            f"for these occupations according to the TOP-CIP-SOC crosswalk."
-        )
-        return f"{s1} {s2} {s3}"
     return f"{s1} {s2}"
 
 
@@ -231,6 +258,24 @@ def _resolve_region() -> str:
             f"SVAMP member colleges must share one COE region; got {regions or 'none'}"
         )
     return next(iter(regions))
+
+
+def _soc_feeding_tops() -> dict[str, set[str]]:
+    """{SVAMP SOC -> the 09∩CTE TOP6 programs that crosswalk to it}. The inverse
+    of svamp_programs.relevant_tops (kept local to avoid a svamp ↔ svamp_programs
+    import cycle; both apply the same 09 + CTE-family scope to the faithful
+    TOP-CIP-SOC crosswalk, which is never edited). Drives the per-cell activity
+    coverage: a SOC is fed by these programs regardless of whether any course is
+    tagged to their code (the 095630 parent-code seam)."""
+    all_top6 = list(_load_top_to_cip().keys())
+    svamp = set(SVAMP_SOCS)
+    feed: dict[str, set[str]] = {soc: set() for soc in SVAMP_SOCS}
+    for top6, socs in top6_to_soc(all_top6).items():
+        inter = socs & svamp
+        if inter and is_svamp_top(top6):
+            for soc in inter:
+                feed[soc].add(top6)
+    return feed
 
 
 def build_svamp_landscape() -> SvampLandscape:
@@ -256,6 +301,13 @@ def build_svamp_landscape() -> SvampLandscape:
         # 2) Per-college alignment (precomputed OCCUPATION_PIPELINE edge),
         #    joined onto the regional demand so every demanded SOC comes
         #    through even where the college has no aligned curriculum.
+        #    SVAMP-scoped to TOP division 09 (see SVAMP_TOP_DIVISION):
+        #    course_count_09 recounts the aligned courses under 09, and
+        #    top_codes is filtered to 09 below — so the grid's supply / awards
+        #    and gap shading reflect the consortium's Engineering & Industrial
+        #    Technology program domain (the full faithful crosswalk still backs
+        #    the unchanged per-college report). The edge's own course_count /
+        #    top_codes are deliberately not used here.
         align_by_college: dict[str, dict[str, dict]] = {}
         for college in SVAMP_COLLEGES:
             rows = session.run(
@@ -264,14 +316,25 @@ def build_svamp_landscape() -> SvampLandscape:
                       -[:DEMANDS]->(occ:Occupation)
                 WHERE occ.soc_code IN $socs
                 OPTIONAL MATCH (col)-[op:OCCUPATION_PIPELINE]->(occ)
+                OPTIONAL MATCH (c09:Course {college: $college})-[:PREPARES_FOR]->(occ)
+                      WHERE c09.top_code STARTS WITH $top_division
+                WITH occ, op, count(DISTINCT c09) AS course_count_09
                 RETURN occ.soc_code AS soc_code,
-                       op.course_count AS course_count,
+                       course_count_09 AS course_count,
                        op.student_count AS student_count,
                        op.top_codes AS top_codes
                 """,
                 college=college, socs=SVAMP_SOCS,
+                top_division=SVAMP_TOP_DIVISION,
             ).data()
-            align_by_college[college] = {r["soc_code"]: r for r in rows}
+            align_by_college[college] = {
+                r["soc_code"]: {
+                    "course_count": r["course_count"] or 0,
+                    "student_count": r["student_count"],
+                    "top_codes": [t for t in (r["top_codes"] or []) if is_svamp_top(t)],
+                }
+                for r in rows
+            }
 
         # 3) DISTINCT regional employers hiring for ANY of the SOCs (union).
         emp_row = session.run(
@@ -328,6 +391,7 @@ def build_svamp_landscape() -> SvampLandscape:
         align_by_college=align_by_college,
         candidate_employers=candidate_employers,
         program_data=program_data,
+        soc_feeding=_soc_feeding_tops(),
     )
 
 
@@ -364,6 +428,7 @@ def _assemble_landscape(
     supply_fn: Callable[[set[str], str], tuple[list, float]] = get_coe_supply,
     program_data: dict[tuple[str, str], dict] | None = None,
     wage_fn: Callable[[str], list] = get_wage_outcomes,
+    soc_feeding: dict[str, set[str]] | None = None,
 ) -> SvampLandscape:
     """Pure assembly of the landscape from already-fetched graph data.
 
@@ -378,6 +443,7 @@ def _assemble_landscape(
       through as-is (never a sum of per-cell counts).
     """
     program_data = program_data or {}
+    soc_feeding = soc_feeding or {}
     # Shared award-year axis: the sorted union of every program's reported
     # years (YYYY-YYYY sorts chronologically), windowed to the most recent
     # AWARD_YEARS_SHOWN so the awards trend spans the same ~5 years as the
@@ -412,6 +478,11 @@ def _assemble_landscape(
             course_count = (a.get("course_count") or 0)
             student_count = (a.get("student_count") or 0)
             top_codes = {t for t in (a.get("top_codes") or []) if t}
+            # The SOC's full crosswalking program set (09∩CTE), independent of
+            # whether a course is tagged to each program's own code — the supply
+            # basis for both this cell's coverage and its program detail. A
+            # superset of the course-routed top_codes.
+            feeding = soc_feeding.get(soc, set())
 
             supply = 0.0
             if top_codes:
@@ -420,18 +491,35 @@ def _assemble_landscape(
             if course_count > 0:
                 socs_taught.add(soc)
 
-            # DataMart program actuals for this cell's TOP6 programs (where the
-            # exports cover them). Per-cell awards display = sum over the cell's
-            # programs; the consortium total dedups across cells via
+            # DataMart program actuals for the programs SUPPLYING this occupation
+            # — routed off the feeding set (unioned with the course-routed
+            # top_codes so nothing previously shown is dropped), so a program that
+            # confers without a tagged course (095630 → Machinists) still appears
+            # in the cell's program detail. Per-cell awards display = sum over
+            # these programs; the consortium total dedups across cells via
             # scoped_programs.
             programs: list[SvampProgram] = []
-            for top6 in sorted(top_codes):
+            for top6 in sorted(feeding | top_codes):
                 entry = program_data.get((college, top6))
                 if entry is not None:
                     programs.append(_build_program(
                         college, top6, entry, award_years, enrollment_terms, wage_fn))
                     scoped_programs.add((college, top6))
             awards_recent = sum(p.awards_recent for p in programs)
+
+            # Activity coverage over the feeding set, routed off the Program
+            # nodes. enrolled = any feeding program has non-summer enrollment
+            # here; feeding_awards = latest-year awards summed over the feeding set.
+            enrolled = any(
+                count > 0
+                for t in feeding
+                for term, count in program_data.get((college, t), {}).get("enroll", {}).items()
+                if term.split()[0] not in _ENROLLMENT_EXCLUDE_SEASONS
+            )
+            feeding_awards = sum(
+                int(program_data.get((college, t), {}).get("awards_by_year", {}).get(latest_year) or 0)
+                for t in feeding
+            ) if latest_year else 0
 
             annual_openings = demand.get("annual_openings")
             gap = int(round((annual_openings or 0) - supply))
@@ -446,6 +534,8 @@ def _assemble_landscape(
                 supply=round(supply, 2),
                 gap=gap,
                 awards_recent=awards_recent,
+                enrolled=enrolled,
+                feeding_awards=feeding_awards,
                 programs=programs,
             ))
         colleges.append(SvampCollege(name=college, cells=cells))
@@ -480,7 +570,7 @@ def _assemble_landscape(
         region_display=region_display,
         sector=SVAMP_SECTOR,
         is_sector_priority=is_sector_priority,
-        executive_summary=_build_executive_summary(region_display, aggregate, latest_year),
+        executive_summary=_build_executive_summary(region_display, aggregate),
         award_years=award_years,
         enrollment_terms=enrollment_terms,
         colleges=colleges,

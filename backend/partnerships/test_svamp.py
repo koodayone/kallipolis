@@ -14,6 +14,9 @@ Coverage:
   - Every college lists all SVAMP SOCs, including gap (untaught) rows
   - Per-SOC regional demand identical across all colleges
   - occupations_taught counts distinct SOCs with ≥1 aligned college
+  - Cell coverage keys on feeding-program activity (enrolled + feeding_awards),
+    not the course pipeline — an awards-only feeding program (the 095630 →
+    Machinists seam) reads partial, not gap
 """
 
 from partnerships.svamp import (
@@ -102,3 +105,46 @@ def test_occupations_taught_counts_distinct_aligned_socs():
     land = _build()
     # Only the first SOC is taught (by all colleges) -> 1 distinct taught occ.
     assert land.aggregate.occupations_taught == 1
+
+
+def test_cell_coverage_keys_on_feeding_activity_not_courses():
+    # A SOC fed by a 09 program that CONFERS but has no enrollment (the 095630 →
+    # Machinists seam) reads partial, not gap — coverage rides feeding-program
+    # activity, not the course pipeline. With NO course-routed alignment at all,
+    # De Anza still surfaces (awards only → partial); a college with both
+    # enrollment and awards on a feeding program reads covered.
+    soc = SVAMP_SOCS[0]
+    program_data = {
+        ("De Anza College", "095630"): {
+            "name": "Machining", "awards_by_year": {"2024-2025": 49}, "enroll": {},
+        },
+        ("Ohlone College", "095630"): {
+            "name": "Machining", "awards_by_year": {"2024-2025": 12},
+            "enroll": {"Fall 2024": 30},
+        },
+    }
+    land = _assemble_landscape(
+        region="Bay", region_display="Bay Area",
+        demand_by_soc=_demand_by_soc(),
+        align_by_college={c: {} for c in SVAMP_COLLEGES},   # no course-routed alignment
+        candidate_employers=0,
+        supply_fn=_fake_supply,
+        program_data=program_data,
+        wage_fn=lambda top6: [],   # routing now builds programs → stub out wage I/O
+        soc_feeding={soc: {"095630"}},
+    )
+
+    def cell(college):
+        col = next(c for c in land.colleges if c.name == college)
+        return next(x for x in col.cells if x.soc_code == soc)
+
+    de = cell("De Anza College")
+    assert (de.enrolled, de.feeding_awards > 0) == (False, True)   # partial — awards only
+    # The cell carries the conferring program even with no tagged course, so the
+    # targeted view's program-outcomes panel can surface its awards (the seam fix).
+    assert len(de.programs) == 1 and de.awards_recent == 49
+    oh = cell("Ohlone College")
+    assert (oh.enrolled, oh.feeding_awards > 0) == (True, True)    # covered — both
+    fo = cell("Foothill College")
+    assert (fo.enrolled, fo.feeding_awards > 0) == (False, False)  # gap — neither
+    assert fo.programs == []                                        # nothing to show
