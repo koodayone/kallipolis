@@ -337,6 +337,27 @@ export type ApiSvampCollegeSeries = {
   vals: (number | null)[];
 };
 
+// One (college, credential-type) awards series — the per-type decomposition of
+// awards_by_college (a college's types sum to its flat series each year).
+// `award_type` is the DataMart credential-type name verbatim; series arrive in
+// credential-weight order (degrees → certificates → noncredit, larger first).
+export type ApiSvampAwardTypeSeries = {
+  college: string;
+  award_type: string;
+  vals: (number | null)[];
+};
+
+// One (college, credit-family) enrollment series — the per-family decomposition
+// of enrollment_by_college (a college's families sum to its flat series each
+// term; the flat line is ALL instructional activity, credit + noncredit).
+// `credit_type` is the DataMart family verbatim, in fixed order: "Credit -
+// Degree Applicable" → "Credit - Not Degree Applicable" → "Non-Credit".
+export type ApiSvampEnrollmentCreditSeries = {
+  college: string;
+  credit_type: string;
+  vals: (number | null)[];
+};
+
 export type ApiSvampProgramCourse = {
   code: string;
   name: string;
@@ -376,6 +397,8 @@ export type ApiSvampProgramReport = {
   occupations: ApiSvampOccupationDemand[];      // demand only, per SOC
   enrollment_by_college: ApiSvampCollegeSeries[];
   awards_by_college: ApiSvampCollegeSeries[];
+  awards_by_type: ApiSvampAwardTypeSeries[];    // per-(college, credential-type) decomposition
+  enrollment_by_credit: ApiSvampEnrollmentCreditSeries[];  // per-(college, credit-family) decomposition
   wages: ApiSvampWage[];
   curriculum_by_college: ApiSvampCollegeCourses[];
   crosswalk: ApiProgramCrosswalk | null;        // TOP-anchored TOP-CIP-SOC pathway

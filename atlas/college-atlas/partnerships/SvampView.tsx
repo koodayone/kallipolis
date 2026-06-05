@@ -107,6 +107,25 @@ const Dot = () => <span style={{ color: "rgba(255,255,255,0.25)", margin: "0 8px
 // a non-lead program never reads as the brand.
 const OVERLAY_COLORS = ["#c9a84c", "#5ab0c4", "#7bd88f", "#b483f0", "#f0915a", "#67c2c9", "#e85d8a", "#e0654f", "#9aa6bd"];
 
+// Lead/overlay color assignment (the targeted-cell idiom): the dominant series
+// — largest total over the window — takes the school brand; every other series
+// keeps a stable palette hue (filtered to stay hue-distinct from the brand) by
+// its position, so adjacent bands/lines contrast by hue rather than alpha.
+function leadOverlayColors(series: { key: string; vals: (number | null)[] }[], brand: string): (k: string) => string {
+  const total = (s: { vals: (number | null)[] }) => s.vals.reduce((t: number, v) => t + (v ?? 0), 0);
+  const lead = series.reduce<{ key: string; vals: (number | null)[] } | null>(
+    (best, s) => (best && total(best) >= total(s) ? best : s), null);
+  const [bh, bs] = hexToHsl(brand);
+  const distinct = bs < 25
+    ? OVERLAY_COLORS
+    : OVERLAY_COLORS.filter((c) => { const [ch, cs] = hexToHsl(c); return cs < 25 || hueDist(ch, bh) >= 40; });
+  const palette = distinct.length ? distinct : OVERLAY_COLORS;
+  const map = new Map<string, string>();
+  let i = 0;
+  series.forEach((s) => map.set(s.key, s.key === lead?.key ? brand : palette[i++ % palette.length]));
+  return (k: string) => map.get(k) ?? palette[0];
+}
+
 // "Winter 2021" -> { season: "Wi", year: "2021" } for the two-tier enrollment
 // axis: a compact season label under every term, the year grouped beneath.
 const SEASON_ABBR: Record<string, string> = { Winter: "Wi", Spring: "Sp", Summer: "Su", Fall: "Fa" };
@@ -176,6 +195,28 @@ function awardYearLabel(y: string): string {
   const m = y.match(/(\d{4})\D+(\d{4})/);
   return m ? `${m[1].slice(2)}–${m[2].slice(2)}` : y;
 }
+
+// Compact legend labels for DataMart credential-type names — "Certificate
+// requiring 16 to fewer than 30 semester units" → "Certificate · 16–30 units",
+// "Associate of Science (A.S.) degree" → "A.S. degree". Verbatim fallback for
+// any shape the parser doesn't know.
+function shortAwardType(t: string): string {
+  const paren = t.match(/\(([^)]+)\)/);
+  if (/associate/i.test(t) && paren) return `${paren[1]} degree`;
+  const nums = t.match(/\d+/g);
+  if (/^certificate/i.test(t) && nums?.length === 2) return `Certificate · ${nums[0]}–${nums[1]} units`;
+  if (/^noncredit/i.test(t) && nums?.length === 2) return `Noncredit · ${nums[0]}–${nums[1]} hrs`;
+  if (/^noncredit/i.test(t) && nums?.length === 1) return `Noncredit · <${nums[0]} hrs`;
+  return t;
+}
+
+// Compact legend labels for DataMart credit families.
+const CREDIT_FAMILY_LABELS: Record<string, string> = {
+  "Credit - Degree Applicable": "Credit · degree-applicable",
+  "Credit - Not Degree Applicable": "Credit · not degree-applicable",
+  "Non-Credit": "Noncredit",
+};
+const shortCreditType = (t: string) => CREDIT_FAMILY_LABELS[t] ?? t;
 
 // Gridline step that reads cleanly across both magnitudes — enrollment volume
 // (hundreds–thousands, esp. stacked) and award counts (tens–hundreds).
@@ -821,6 +862,23 @@ function ProgramsLens({ colleges }: { colleges: CollegeRef[] }) {
   // Option A: the per-program report re-brands to the targeted college; the
   // aggregate (consortium) view keeps the green lens accent.
   const reportBrand = targetedCollege ? colorOf(targetedCollege) : ACCENT;
+  // Targeted view: decompose that college's awards by credential type (the
+  // "what kind of credential does this school confer" read). The consortium
+  // view keeps the by-college stack — five schools × N types is too many bands.
+  const typeSeries = targetedCollege
+    ? (report?.awards_by_type ?? []).filter((s) => s.college === targetedCollege)
+    : [];
+  // Both decompositions color by the lead/overlay idiom: dominant series takes
+  // the school brand, the rest stay hue-distinct (leadOverlayColors).
+  const typeColor = leadOverlayColors(typeSeries.map((s) => ({ key: s.award_type, vals: s.vals })), reportBrand);
+  // Targeted view: decompose that college's enrollment by credit family — the
+  // flat line is ALL instructional activity (credit + noncredit), so the split
+  // is the integrity guarantee that the blend is always one click from its
+  // parts (credit and noncredit headcounts are different kinds of number).
+  const creditSeries = targetedCollege
+    ? (report?.enrollment_by_credit ?? []).filter((s) => s.college === targetedCollege)
+    : [];
+  const creditColor = leadOverlayColors(creditSeries.map((s) => ({ key: s.credit_type, vals: s.vals })), reportBrand);
 
   return (
     <>
@@ -901,16 +959,20 @@ function ProgramsLens({ colleges }: { colleges: CollegeRef[] }) {
 
           <Section title="Program Awards" brandColor={reportBrand}>
             <Prose>
-              {report.awards_by_college.length > 0
-                ? "Credentials awarded per year across the member colleges. Toggle between the stacked consortium total and per-school trends."
-                : "No awards are reported for this program via CCCCO DataMart."}
+              {report.awards_by_college.length === 0
+                ? "No awards are reported for this program via CCCCO DataMart."
+                : typeSeries.length > 0
+                  ? `Credentials awarded per year at ${shortName(targetedCollege ?? "")}, broken out by credential type. Toggle between the stacked total and per-credential trends.`
+                  : "Credentials awarded per year across the member colleges. Toggle between the stacked consortium total and per-school trends."}
             </Prose>
             <TrendChart
-              series={report.awards_by_college.map((s) => ({ top6: s.college, name: shortName(s.college), vals: s.vals }))}
+              series={typeSeries.length > 0
+                ? typeSeries.map((s) => ({ top6: s.award_type, name: shortAwardType(s.award_type), vals: s.vals }))
+                : report.awards_by_college.map((s) => ({ top6: s.college, name: shortName(s.college), vals: s.vals }))}
               labels={report.award_years.map(awardYearLabel)}
               defaultMode="stacked"
-              colorOf={colorOf}
-              modeLabels={{ lines: "Per school", stacked: "Stacked" }}
+              colorOf={typeSeries.length > 0 ? typeColor : colorOf}
+              modeLabels={typeSeries.length > 0 ? { lines: "Per credential", stacked: "Stacked" } : { lines: "Per school", stacked: "Stacked" }}
               hideSeriesTag
               empty={report.awards_by_college.length === 0}
             />
@@ -918,17 +980,21 @@ function ProgramsLens({ colleges }: { colleges: CollegeRef[] }) {
 
           <Section title="Program Enrollments" brandColor={reportBrand}>
             <Prose>
-              {report.enrollment_by_college.length > 0
-                ? "Term-by-term enrollment across the member colleges that run this program, excluding the structurally-low summer terms. Toggle between per-school trends and the combined consortium total; hover a school to focus it."
-                : "No enrollment is reported for this program via CCCCO DataMart."}
+              {report.enrollment_by_college.length === 0
+                ? "No enrollment is reported for this program via CCCCO DataMart."
+                : creditSeries.length > 0
+                  ? `Term-by-term enrollment at ${shortName(targetedCollege ?? "")}, broken out by credit family — credit vs. noncredit instruction — excluding the structurally-low summer terms. Toggle between per-family trends and the stacked total; hover a family to focus it.`
+                  : "Term-by-term enrollment across the member colleges that run this program, excluding the structurally-low summer terms. Toggle between per-school trends and the combined consortium total; hover a school to focus it."}
             </Prose>
             <TrendChart
-              series={report.enrollment_by_college.map((s) => ({ top6: s.college, name: shortName(s.college), vals: s.vals }))}
+              series={creditSeries.length > 0
+                ? creditSeries.map((s) => ({ top6: s.credit_type, name: shortCreditType(s.credit_type), vals: s.vals }))
+                : report.enrollment_by_college.map((s) => ({ top6: s.college, name: shortName(s.college), vals: s.vals }))}
               labels={report.enrollment_terms}
               defaultMode="lines"
-              colorOf={colorOf}
+              colorOf={creditSeries.length > 0 ? creditColor : colorOf}
               axisStyle="twoTier"
-              modeLabels={{ lines: "Per school", stacked: "Stacked" }}
+              modeLabels={creditSeries.length > 0 ? { lines: "Per credit family", stacked: "Stacked" } : { lines: "Per school", stacked: "Stacked" }}
               hideSeriesTag
               empty={report.enrollment_by_college.length === 0}
             />

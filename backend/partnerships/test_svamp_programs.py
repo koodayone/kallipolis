@@ -14,11 +14,23 @@ Coverage:
   - Report: each crosswalk SOC's demand taken once (not summed across SOCs, not
     multiplied by college count)
   - Report: awards series are per-college and additive to the consortium total
+  - Report: awards_by_type decomposes each college's flat series by credential
+    type (types sum back to the college total per year), ordered by credential
+    weight (degrees → certificates large-to-small → noncredit); rows without an
+    award_type yield no decomposition (pre-split callers)
+  - Report: enrollment_by_credit decomposes each college's flat enrollment by
+    credit family (families sum back to the college total per term — the flat
+    line is ALL instructional activity, credit + noncredit), in fixed family
+    order (degree-applicable → not-degree-applicable → Non-Credit), with None
+    where a family doesn't report a term; rows without a credit_type yield no
+    decomposition
   - Report: targeted (college, TOP) slice yields one series + sets `college`,
     and stays gap-less (program axis owns no gap)
   - Report: no gap / per-program demand field exists
   - Report: all five colleges present in curriculum (dimmed-empty handled client-side)
   - Enrollment terms exclude summer
+  - Enrollment terms exclude the export-boundary terms (Fall 2020 / Winter
+    2026) that only one of the two course-section exports covers
   - Occupation (aggregated dual): gap = openings − consortium supply (occupation
     axis owns the gap); occupation-grain wage; feeding TOPs summed per college;
     a multi-SOC feeding TOP counts in full (never split across SOCs)
@@ -124,6 +136,85 @@ def test_report_awards_series_are_per_college_and_additive():
     assert totals == {"De Anza College": 10, "Ohlone College": 5}  # sums to consortium total 15
 
 
+def test_report_awards_by_type_decomposes_college_series():
+    # Per-(college, year, award_type) rows: the flat per-college series sums the
+    # types back out, and awards_by_type carries the decomposition aligned to
+    # the same award_years axis, in credential-weight order (degree first, then
+    # certificates largest band first).
+    rep = _assemble_program_report(
+        top6="095630", name="Machining", region="Bay", region_display="Bay Area",
+        demand_rows=[],
+        awards_rows=[
+            {"college": "De Anza College", "year": "2023-2024",
+             "award_type": "Certificate requiring 8 to fewer than 16 semester units", "awards": 24},
+            {"college": "De Anza College", "year": "2024-2025",
+             "award_type": "Certificate requiring 8 to fewer than 16 semester units", "awards": 35},
+            {"college": "De Anza College", "year": "2024-2025",
+             "award_type": "Certificate requiring 30 to < 60 semester units", "awards": 6},
+            {"college": "De Anza College", "year": "2024-2025",
+             "award_type": "Associate of Science (A.S.) degree", "awards": 8},
+        ],
+        enroll_rows=[],
+        course_rows=[],
+        wage_fn=lambda t: [],
+    )
+    assert rep.award_years == ["2023-2024", "2024-2025"]
+    # Flat series sums the types: 2023-24 = 24, 2024-25 = 35 + 6 + 8 = 49.
+    assert [s.vals for s in rep.awards_by_college] == [[24, 49]]
+    # Decomposition in credential-weight order, aligned to award_years (a type
+    # absent in a year ⇒ 0).
+    assert [(s.award_type, s.vals) for s in rep.awards_by_type] == [
+        ("Associate of Science (A.S.) degree", [0, 8]),
+        ("Certificate requiring 30 to < 60 semester units", [0, 6]),
+        ("Certificate requiring 8 to fewer than 16 semester units", [24, 35]),
+    ]
+    # Every type series carries its college (single-college fixture).
+    assert {s.college for s in rep.awards_by_type} == {"De Anza College"}
+
+
+def test_report_awards_rows_without_type_yield_no_decomposition():
+    # Pre-split rows (no award_type / credit_type keys) still produce the flat
+    # per-college series; the decompositions are simply empty.
+    rep = _report()
+    assert rep.awards_by_type == []
+    assert rep.enrollment_by_credit == []
+    assert {s.college: sum(v or 0 for v in s.vals) for s in rep.awards_by_college} == {
+        "De Anza College": 10, "Ohlone College": 5}
+
+
+def test_report_enrollment_by_credit_decomposes_college_series():
+    # The Ohlone 095600 crossover shape: per-(college, term, credit_type) rows.
+    # The flat series sums the families (credit + noncredit = all instructional
+    # activity); the decomposition aligns to enrollment_terms in fixed family
+    # order, None where a family doesn't report a term; summer stays excluded.
+    rep = _assemble_program_report(
+        top6="095600", name="Manufacturing", region="Bay", region_display="Bay Area",
+        demand_rows=[],
+        awards_rows=[],
+        enroll_rows=[
+            {"college": "Ohlone College", "term": "Spring 2025",
+             "credit_type": "Credit - Degree Applicable", "count": 223},
+            {"college": "Ohlone College", "term": "Fall 2025",
+             "credit_type": "Credit - Degree Applicable", "count": 195},
+            {"college": "Ohlone College", "term": "Fall 2025",
+             "credit_type": "Non-Credit", "count": 200},
+            {"college": "Ohlone College", "term": "Summer 2025",
+             "credit_type": "Non-Credit", "count": 60},
+        ],
+        course_rows=[],
+        wage_fn=lambda t: [],
+    )
+    assert rep.enrollment_terms == ["Spring 2025", "Fall 2025"]   # summer excluded
+    # Flat = families summed: Spring 223, Fall 195 + 200 = 395.
+    assert [s.vals for s in rep.enrollment_by_college] == [[223, 395]]
+    # Decomposition in fixed family order, None where a family has no term.
+    assert [(s.credit_type, s.vals) for s in rep.enrollment_by_credit] == [
+        ("Credit - Degree Applicable", [223, 195]),
+        ("Non-Credit", [None, 200]),
+    ]
+    assert {s.college for s in rep.enrollment_by_credit} == {"Ohlone College"}
+
+
 def test_report_has_no_gap_or_demand_aggregate_field():
     rep = _report()
     assert not hasattr(rep, "gap")
@@ -139,6 +230,29 @@ def test_report_enrollment_terms_exclude_summer():
     rep = _report()
     assert "Fall 2024" in rep.enrollment_terms
     assert "Summer 2024" not in rep.enrollment_terms
+
+
+def test_report_enrollment_terms_exclude_export_boundary_terms():
+    # Fall 2020 / Winter 2026 are covered by only ONE of the two DataMart
+    # course-section exports (the noncredit pull runs wider than the credit
+    # one), so the blended total is structurally incomplete there — those
+    # terms stay off the axis until the narrower export is re-pulled.
+    rep = _assemble_program_report(
+        top6="095600", name="Manufacturing", region="Bay", region_display="Bay Area",
+        demand_rows=[], awards_rows=[],
+        enroll_rows=[
+            {"college": "De Anza College", "term": "Fall 2020",
+             "credit_type": "Non-Credit", "count": 107},
+            {"college": "De Anza College", "term": "Fall 2021",
+             "credit_type": "Non-Credit", "count": 323},
+            {"college": "De Anza College", "term": "Winter 2026",
+             "credit_type": "Non-Credit", "count": 50},
+        ],
+        course_rows=[], wage_fn=lambda t: [],
+    )
+    assert rep.enrollment_terms == ["Fall 2021"]
+    assert [s.vals for s in rep.enrollment_by_college] == [[323]]
+    assert [s.vals for s in rep.enrollment_by_credit] == [[323]]
 
 
 def test_targeted_report_single_college_slice():

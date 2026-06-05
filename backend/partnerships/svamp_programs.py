@@ -25,6 +25,7 @@ ontology.crosswalks.
 
 from __future__ import annotations
 
+import re
 from typing import Callable
 
 from pydantic import BaseModel
@@ -49,7 +50,7 @@ from partnerships.svamp import (
     SVAMP_SECTOR,
     SVAMP_TOP_DIVISION,
     AWARD_YEARS_SHOWN,
-    _ENROLLMENT_EXCLUDE_SEASONS,
+    _term_excluded,
     _term_sort_key,
     _resolve_region,
     is_svamp_top,
@@ -150,6 +151,34 @@ class CollegeSeries(BaseModel):
     vals: list[int | None] = []
 
 
+class AwardTypeSeries(BaseModel):
+    """One (college, credential-type) awards series for the focused TOP, aligned
+    to the report's award_years axis — the per-type decomposition of
+    awards_by_college (a college's types sum to its flat series each year).
+    `award_type` is the DataMart credential-type name verbatim (e.g.
+    "Certificate requiring 16 to fewer than 30 semester units"); series are
+    ordered by credential weight — degrees, then certificates, then noncredit
+    awards, larger bands first within each class (_award_type_sort_key)."""
+    college: str
+    award_type: str
+    vals: list[int] = []
+
+
+class EnrollmentCreditSeries(BaseModel):
+    """One (college, credit-family) enrollment series for the focused TOP,
+    aligned to enrollment_terms — the per-family decomposition of
+    enrollment_by_college (a college's families sum to its flat series each
+    term). `credit_type` is the DataMart family verbatim ("Credit - Degree
+    Applicable" / "Credit - Not Degree Applicable" / "Non-Credit"), in that
+    order (_credit_type_sort_key). The decomposition is the integrity guarantee
+    for mixing families in the flat series: credit and noncredit headcounts are
+    not the same kind of number (noncredit sections are open-entry/repeatable),
+    so the blend must always be one click from its parts."""
+    college: str
+    credit_type: str
+    vals: list[int | None] = []
+
+
 class ProgramCourse(BaseModel):
     code: str
     name: str
@@ -178,6 +207,8 @@ class ProgramReport(BaseModel):
     occupations: list[OccupationDemand] = []         # demand only, per SOC, never summed
     enrollment_by_college: list[CollegeSeries] = []  # aligned to enrollment_terms
     awards_by_college: list[CollegeSeries] = []       # aligned to award_years
+    awards_by_type: list[AwardTypeSeries] = []        # per-(college, credential-type) decomposition
+    enrollment_by_credit: list[EnrollmentCreditSeries] = []  # per-(college, credit-family) decomposition
     wages: list[SvampWage] = []
     curriculum_by_college: list[CollegeCourses] = []
     crosswalk: ProgramCrosswalk | None = None  # TOP-anchored TOP-CIP-SOC pathway
@@ -313,20 +344,28 @@ def build_program_report(top6: str, college: str | None = None) -> ProgramReport
             """,
             region=region, socs=socs,
         ).data()
+        # Grouped by credential type (the AWARDED edge key) — the assembly
+        # derives both the flat per-college series (summing types back out)
+        # and the per-(college, type) decomposition from these rows.
         awards_rows = session.run(
             """
             MATCH (pr:Program {top6: $top6})-[a:AWARDED]->(ay:AcademicYear)
             WHERE pr.college IN $colleges
             RETURN pr.college AS college, ay.year AS year,
+                   a.award_type AS award_type,
                    toInteger(sum(coalesce(a.count, 0))) AS awards
             """,
             top6=top6, colleges=colleges_filter,
         ).data()
+        # Grouped by credit family (the ENROLLED edge key) — the assembly
+        # derives both the flat per-college series (summing families back out)
+        # and the per-(college, family) decomposition from these rows.
         enroll_rows = session.run(
             """
             MATCH (pr:Program {top6: $top6})-[e:ENROLLED]->(t:Term)
             WHERE pr.college IN $colleges
             RETURN pr.college AS college, t.term AS term,
+                   e.credit_type AS credit_type,
                    toInteger(sum(e.count)) AS count
             """,
             top6=top6, colleges=colleges_filter,
@@ -490,11 +529,39 @@ def _award_years_axis(years: set[str]) -> list[str]:
 
 def _enroll_terms_axis(terms: set[str]) -> list[str]:
     """Chronologically-sorted enrollment terms, excluding structurally-low
-    summer terms (mirrors svamp.py)."""
-    return sorted(
-        {t for t in terms if t.split()[0] not in _ENROLLMENT_EXCLUDE_SEASONS},
-        key=_term_sort_key,
-    )
+    summer terms and the export-boundary terms (svamp._term_excluded)."""
+    return sorted({t for t in terms if not _term_excluded(t)}, key=_term_sort_key)
+
+
+# Credential classes in display order: degrees, then certificates, then
+# noncredit awards (matched as substrings of the DataMart name).
+_AWARD_TYPE_CLASSES = ("associate", "certificate", "noncredit")
+
+
+def _award_type_sort_key(award_type: str) -> tuple[int, int, str]:
+    """Credential-weight ordering for the per-type award series: degrees first,
+    then certificates, then noncredit awards; within a class, larger bands first
+    (the first number in the DataMart name is the band's lower bound — degrees
+    carry none and tie-break by name)."""
+    low = award_type.lower()
+    rank = next((i for i, k in enumerate(_AWARD_TYPE_CLASSES) if k in low),
+                len(_AWARD_TYPE_CLASSES))
+    m = re.search(r"\d+", award_type)
+    return (rank, -int(m.group()) if m else 0, award_type)
+
+
+# Credit families in display order: degree-applicable credit leads (the
+# traditional pipeline), then non-degree-applicable credit, then noncredit.
+_CREDIT_FAMILY_ORDER = ("Credit - Degree Applicable", "Credit - Not Degree Applicable", "Non-Credit")
+
+
+def _credit_type_sort_key(credit_type: str) -> tuple[int, str]:
+    """Fixed family ordering for the per-family enrollment series; unknown
+    families sort last by name."""
+    try:
+        return (_CREDIT_FAMILY_ORDER.index(credit_type), credit_type)
+    except ValueError:
+        return (len(_CREDIT_FAMILY_ORDER), credit_type)
 
 
 def _assemble_landscape(
@@ -527,7 +594,7 @@ def _assemble_landscape(
     per_top_term: dict[tuple[str, str], int] = {}
     for r in enroll_rows:
         term = r["term"]
-        if not term or term.split()[0] in _ENROLLMENT_EXCLUDE_SEASONS:
+        if not term or _term_excluded(term):
             continue
         per_top_term[(r["top6"], term)] = per_top_term.get((r["top6"], term), 0) + (r["count"] or 0)
     enroll_total: dict[str, int] = {}
@@ -548,14 +615,14 @@ def _assemble_landscape(
         if r["year"] == latest_year:
             awards_cell[(r["college"], r["top6"])] = r["awards"] or 0
     # Per-(college, TOP) enrollment presence — any non-excluded term with a
-    # positive count. Drives the cell's "active pipeline" signal (same season
+    # positive count. Drives the cell's "active pipeline" signal (same term
     # exclusion as enroll_total above, for consistency).
     enrolled_cell: set[tuple[str, str]] = {
         (r["college"], r["top6"])
         for r in enroll_rows
         if (r["count"] or 0) > 0
         and r["term"]
-        and r["term"].split()[0] not in _ENROLLMENT_EXCLUDE_SEASONS
+        and not _term_excluded(r["term"])
     }
 
     tops = [
@@ -619,7 +686,17 @@ def _assemble_program_report(
     - awards_by_college / enrollment_by_college: one series per college that has
       data, aligned to the shared axes (a college without a given year/term ⇒ 0
       awards / None enrollment). Summing across colleges (client-side) gives the
-      aggregated consortium line.
+      aggregated consortium line. awards_rows may carry one row per (college,
+      year, award_type); the flat per-college series sums the types back out.
+    - awards_by_type: the per-(college, credential-type) decomposition of the
+      flat series, in credential-weight order (_award_type_sort_key). Rows
+      without an award_type (pre-split callers) simply yield no decomposition.
+    - enrollment_by_credit: the per-(college, credit-family) decomposition of
+      the flat enrollment series, in fixed family order (_credit_type_sort_key).
+      enroll_rows may carry one row per (college, term, credit_type); the flat
+      series sums the families back out — so the flat line is ALL instructional
+      activity (credit + noncredit), with the decomposition as the integrity
+      guarantee. Rows without a credit_type yield no decomposition.
     - curriculum_by_college: all five colleges, empty where untaught.
     - NO gap or per-program demand field by construction.
     """
@@ -636,21 +713,59 @@ def _assemble_program_report(
     award_years = _award_years_axis({r["year"] for r in awards_rows if r["year"]})
     enrollment_terms = _enroll_terms_axis({r["term"] for r in enroll_rows if r["term"]})
 
+    # Flat per-college totals (summing the credential types back out) and the
+    # per-(college, type) decomposition from the same rows.
     awards_by: dict[str, dict[str, int]] = {}
+    by_type: dict[tuple[str, str], dict[str, int]] = {}
     for r in awards_rows:
-        awards_by.setdefault(r["college"], {})[r["year"]] = r["awards"] or 0
+        year, n = r["year"], r["awards"] or 0
+        cby = awards_by.setdefault(r["college"], {})
+        cby[year] = cby.get(year, 0) + n
+        if r.get("award_type"):
+            tby = by_type.setdefault((r["college"], r["award_type"]), {})
+            tby[year] = tby.get(year, 0) + n
+    # Flat per-college enrollment (summing the credit families back out) and
+    # the per-(college, family) decomposition from the same rows.
     enroll_by: dict[str, dict[str, int]] = {}
+    by_credit: dict[tuple[str, str], dict[str, int]] = {}
     for r in enroll_rows:
-        enroll_by.setdefault(r["college"], {})[r["term"]] = r["count"] or 0
+        term, n = r["term"], r["count"] or 0
+        eby = enroll_by.setdefault(r["college"], {})
+        eby[term] = eby.get(term, 0) + n
+        if r.get("credit_type"):
+            fby = by_credit.setdefault((r["college"], r["credit_type"]), {})
+            fby[term] = fby.get(term, 0) + n
 
     # Series ordered by SVAMP_COLLEGES, only for colleges that have data.
     awards_by_college = [
         CollegeSeries(college=c, vals=[awards_by[c].get(y, 0) for y in award_years])
         for c in SVAMP_COLLEGES if c in awards_by
     ]
+    types_of: dict[str, list[str]] = {}
+    for c, at in by_type:
+        types_of.setdefault(c, []).append(at)
+    awards_by_type = [
+        AwardTypeSeries(
+            college=c, award_type=at,
+            vals=[by_type[(c, at)].get(y, 0) for y in award_years],
+        )
+        for c in SVAMP_COLLEGES
+        for at in sorted(types_of.get(c, []), key=_award_type_sort_key)
+    ]
     enrollment_by_college = [
         CollegeSeries(college=c, vals=[enroll_by[c].get(t) for t in enrollment_terms])
         for c in SVAMP_COLLEGES if c in enroll_by
+    ]
+    families_of: dict[str, list[str]] = {}
+    for c, ct in by_credit:
+        families_of.setdefault(c, []).append(ct)
+    enrollment_by_credit = [
+        EnrollmentCreditSeries(
+            college=c, credit_type=ct,
+            vals=[by_credit[(c, ct)].get(t) for t in enrollment_terms],
+        )
+        for c in SVAMP_COLLEGES
+        for ct in sorted(families_of.get(c, []), key=_credit_type_sort_key)
     ]
 
     courses_by: dict[str, list[ProgramCourse]] = {}
@@ -677,6 +792,8 @@ def _assemble_program_report(
         occupations=occupations,
         enrollment_by_college=enrollment_by_college,
         awards_by_college=awards_by_college,
+        awards_by_type=awards_by_type,
+        enrollment_by_credit=enrollment_by_credit,
         wages=[SvampWage(**w) for w in wage_fn(top6)],
         curriculum_by_college=curriculum_by_college,
         crosswalk=crosswalk,
@@ -722,7 +839,7 @@ def _assemble_occupation(
     per_top_term: dict[tuple[str, str], int] = {}
     for r in enroll_rows:
         term = r["term"]
-        if not term or term.split()[0] in _ENROLLMENT_EXCLUDE_SEASONS:
+        if not term or _term_excluded(term):
             continue
         per_top_term[(r["top6"], term)] = per_top_term.get((r["top6"], term), 0) + (r["count"] or 0)
     enroll_peak: dict[str, int] = {}

@@ -71,6 +71,20 @@ _SEASON_ORDER = {"Winter": 0, "Spring": 1, "Summer": 2, "Fall": 3}
 # by clearing this set.
 _ENROLLMENT_EXCLUDE_SEASONS = {"Summer"}
 
+# Specific terms excluded from the enrollment trend. The two DataMart
+# course-section exports cover different windows — credit runs Winter 2021 →
+# Fall 2025, noncredit runs Fall 2020 → Winter 2026 — so these boundary terms
+# carry only ONE family and the blended total is structurally incomplete
+# there. The data stays in the graph; drop a term from this set when the
+# narrower export is re-pulled to cover it.
+_ENROLLMENT_EXCLUDE_TERMS = {"Fall 2020", "Winter 2026"}
+
+
+def _term_excluded(term: str) -> bool:
+    """True for terms the enrollment trend omits — excluded seasons (Summer)
+    and the export-boundary terms only one credit family covers."""
+    return term in _ENROLLMENT_EXCLUDE_TERMS or term.split()[0] in _ENROLLMENT_EXCLUDE_SEASONS
+
 
 def _term_sort_key(term: str) -> tuple[int, int]:
     parts = term.split()
@@ -455,11 +469,12 @@ def _assemble_landscape(
     })[-AWARD_YEARS_SHOWN:]
     latest_year = award_years[-1] if award_years else None
     # Shared enrollment-term axis: the chronologically-sorted union of every
-    # program's reported terms, excluding the structurally-low summer terms.
-    # Each program's `enrollment` aligns to this.
+    # program's reported terms, excluding the structurally-low summer terms
+    # and the export-boundary terms (_term_excluded). Each program's
+    # `enrollment` aligns to this.
     enrollment_terms = sorted(
         {t for e in program_data.values() for t in e.get("enroll", {})
-         if t.split()[0] not in _ENROLLMENT_EXCLUDE_SEASONS},
+         if not _term_excluded(t)},
         key=_term_sort_key,
     )
     colleges: list[SvampCollege] = []
@@ -514,7 +529,7 @@ def _assemble_landscape(
                 count > 0
                 for t in feeding
                 for term, count in program_data.get((college, t), {}).get("enroll", {}).items()
-                if term.split()[0] not in _ENROLLMENT_EXCLUDE_SEASONS
+                if not _term_excluded(term)
             )
             feeding_awards = sum(
                 int(program_data.get((college, t), {}).get("awards_by_year", {}).get(latest_year) or 0)
