@@ -691,9 +691,12 @@ const FormTower: React.FC = () => (
     <path d="M10.5 28V11h11v17" /><path d="M13.6 11V6h4.8v5" /><path d="M16 6V3" /><path d="M13.2 15.5h5.6M13.2 19.5h5.6M13.2 23.5h5.6" /><path d="M7.5 28h17" />
   </svg>
 );
+// Programs first — workforce practitioners own and act on programs (supply is
+// their lever; SWP funds programs), and it matches the institution-primary atlas.
+// Occupations (regional demand) follows as the justification; employers, the map.
 const LENS_DEFS: { key: Lens; label: string; accent: string; Icon: React.FC }[] = [
-  { key: "occupations", label: "Occupations", accent: "#ff5a5a", Icon: FormHardHat },
   { key: "programs", label: "Programs", accent: PROGRAM_ACCENT, Icon: FormBook },
+  { key: "occupations", label: "Occupations", accent: "#ff5a5a", Icon: FormHardHat },
   { key: "employers", label: "Employers", accent: EMPLOYER_ACCENT, Icon: FormTower },
 ];
 function LensTabs({ lens, setLens }: { lens: Lens; setLens: (l: Lens) => void }) {
@@ -1137,7 +1140,7 @@ export default function SvampView({ colleges, onBack }: Props) {
   // Occupations lens drill mode: "aggregated" (treemap → consortium SOC view)
   // vs "targeted" (matrix cell → per-college OpportunityReport).
   const [occView, setOccView] = useState<"aggregated" | "targeted">("aggregated");
-  const [lens, setLens] = useState<Lens>("occupations");
+  const [lens, setLens] = useState<Lens>("programs");
   // Sticky context banner: shown once the report header scrolls under the nav.
   const [ctxShow, setCtxShow] = useState(false);
   const ctxSentinel = useRef<HTMLDivElement | null>(null);
