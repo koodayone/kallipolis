@@ -58,7 +58,7 @@ export default function OpportunityReport({ school, socCode, sector, onBack }: P
    aggregated landscape so a selection renders inline without a page load. */
 export function OpportunityReportBody({
   school, socCode, sector, hideExecutiveSummary = false, hideStudentImpact = false, embedded = false, programOutcomes,
-  demandTitle = "Labor Market Information", hideLaborMarket = false, suppressEmptySupplyGap = false, topPrefix, cteOnly,
+  demandTitle = "Labor Market Information", hideLaborMarket = false, suppressEmptySupplyGap = false, topPrefix, cteOnly, excludeTops,
 }: {
   school: SchoolConfig;
   socCode: string;
@@ -70,6 +70,10 @@ export function OpportunityReportBody({
   // Restrict that crosswalk to CTE programs (drop transfer/academic) — the
   // SVAMP workforce lens passes true. Default undefined ⇒ unchanged.
   cteOnly?: boolean;
+  // Drop named TOP6 codes from that crosswalk — the SVAMP director's-mandate
+  // exclusions (employment flows outside the consortium's industry vertical).
+  // Default undefined ⇒ per-college reports unchanged.
+  excludeTops?: string[];
   hideExecutiveSummary?: boolean;
   // Suppress the Student Impact section. Default false → per-college reports
   // unchanged; SVAMP sets it true (the student layer is synthetic and
@@ -104,11 +108,13 @@ export function OpportunityReportBody({
     if (!socCode) return;
     setLoading(true);
     setError(null);
-    getPartnershipOpportunity(socCode, school.name, sector, topPrefix, cteOnly)
+    getPartnershipOpportunity(socCode, school.name, sector, topPrefix, cteOnly, excludeTops)
       .then(setReport)
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
-  }, [socCode, school.name, sector, topPrefix, cteOnly]);
+    // excludeTops is a stable module-level constant at its call sites; joined
+    // here so an inline array literal wouldn't refetch every render either.
+  }, [socCode, school.name, sector, topPrefix, cteOnly, (excludeTops ?? []).join(",")]);
 
   if (loading) {
     return (

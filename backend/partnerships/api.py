@@ -269,6 +269,7 @@ def get_partnership_opportunity(
     sector: str | None = None,
     top_prefix: str | None = None,
     cte_only: bool = False,
+    exclude_tops: str | None = None,
 ):
     """Returns the per-(college, occupation) partnership opportunity
     report. Composed deterministically from the institutional graph:
@@ -284,13 +285,14 @@ def get_partnership_opportunity(
     the SOC's PCAH sectors) are ignored — the report falls back to
     the alphabetical default.
 
-    The optional `top_prefix` and `cte_only` query parameters scope the
-    curriculum pathway to a TOP division and/or to CTE programs (the SVAMP
-    09-only, career-technical lens). The precomputed cache is built unscoped,
-    so a scoped request bypasses it and composes live; unscoped requests
-    (every per-college report) keep the cache fast-path unchanged.
+    The optional `top_prefix`, `cte_only`, and `exclude_tops` (comma-separated
+    TOP6 codes — the SVAMP director's-mandate exclusions) query parameters
+    scope the curriculum pathway (the SVAMP 09-only, career-technical lens).
+    The precomputed cache is built unscoped, so a scoped request bypasses it
+    and composes live; unscoped requests (every per-college report) keep the
+    cache fast-path unchanged.
     """
-    if not top_prefix and not cte_only:
+    if not top_prefix and not cte_only and not exclude_tops:
         cached = _try_serve_opportunity(college, soc_code, sector)
         if cached is not None:
             return cached
@@ -298,6 +300,7 @@ def get_partnership_opportunity(
     try:
         return build_opportunity_report(
             college, soc_code, sector_hint=sector, top_prefix=top_prefix, cte_only=cte_only,
+            exclude_tops=frozenset(t.strip() for t in exclude_tops.split(",") if t.strip()) if exclude_tops else None,
         )
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))

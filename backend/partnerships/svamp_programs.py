@@ -13,11 +13,15 @@ THE anchoring invariant — supply and demand are owned by different axes:
 
 Scope = the SVAMP program universe: every TOP6 in DIVISION 09 (Engineering &
 Industrial Technologies — see svamp.SVAMP_TOP_DIVISION) whose TOP-CIP-SOC
-crosswalk intersects the twelve SVAMP SOCs. The 09 scope is the consortium's
-programmatic domain per the SVAMP director — a categorical division filter
-applied on top of the faithful crosswalk (the crosswalk itself is never edited),
-so non-engineering feeders it legitimately links (e.g. Commercial Music →
-17-3029) fall out of scope rather than being hand-curated away. Reuses svamp.py's
+crosswalk intersects the twelve SVAMP SOCs, minus the director's-mandate
+exclusions (svamp.SVAMP_MANDATE_EXCLUDED_TOPS — division-09 programs whose
+employment flows run to other industry verticals). The 09 scope is the
+consortium's programmatic domain per the SVAMP director — a categorical
+division filter applied on top of the faithful crosswalk (the crosswalk itself
+is never edited), so non-engineering feeders it legitimately links (e.g.
+Commercial Music → 17-3029) fall out of scope rather than being hand-curated
+away; the mandate exclusions are the same authority refining its own scope
+where the division proxy over-includes. Reuses svamp.py's
 scope constants/helpers, the Program (TOP6) AWARDED/ENROLLED graph reads,
 get_wage_outcomes (TOP6-grain statewide), and the TOP-CIP-SOC crosswalk in
 ontology.crosswalks.
@@ -49,6 +53,7 @@ from partnerships.svamp import (
     SVAMP_SOCS,
     SVAMP_SECTOR,
     SVAMP_TOP_DIVISION,
+    SVAMP_MANDATE_EXCLUDED_TOPS,
     AWARD_YEARS_SHOWN,
     _term_excluded,
     _term_sort_key,
@@ -255,9 +260,10 @@ def relevant_tops() -> dict[str, set[str]]:
     """The SVAMP program universe: {top6 -> the SVAMP SOCs it feeds} for every
     TOP6 in DIVISION 09 (Engineering & Industrial Technologies — see
     svamp.SVAMP_TOP_DIVISION) whose TOP-CIP-SOC crosswalk intersects the twelve
-    SVAMP SOCs. The 09 filter is a categorical, division-level scope on the
-    faithful crosswalk (the crosswalk is never edited), reflecting the
-    consortium's programmatic domain per the SVAMP director."""
+    SVAMP SOCs, minus the director's-mandate exclusions (both applied via
+    is_svamp_top). The filters are scope on the faithful crosswalk (the
+    crosswalk is never edited), reflecting the consortium's programmatic
+    domain per the SVAMP director."""
     all_top6 = list(_load_top_to_cip().keys())
     svamp = set(SVAMP_SOCS)
     return {
@@ -493,9 +499,11 @@ def build_svamp_occupation(soc: str) -> SvampOccupationReport:
             _, total = get_coe_supply(feeding_set, college)
             consortium_supply += total
 
-    # SOC-anchored crosswalk, consortium-union taught, 09 + CTE-scoped (college unused).
+    # SOC-anchored crosswalk, consortium-union taught, 09 + CTE-scoped minus
+    # the director's-mandate exclusions (college unused).
     crosswalk = _gather_curriculum_crosswalk(
         "", soc, top_prefix=SVAMP_TOP_DIVISION, union_colleges=SVAMP_COLLEGES, cte_only=True,
+        exclude_tops=SVAMP_MANDATE_EXCLUDED_TOPS,
     )
 
     return _assemble_occupation(

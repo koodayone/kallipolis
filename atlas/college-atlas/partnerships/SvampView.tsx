@@ -41,6 +41,12 @@ const EMPLOYER_ACCENT = "#5a9bd4"; // Employers lens primary — blue
 // for the grid + Programs lens; this scopes the occupation drill report's
 // curriculum pathway to match (mirrors backend svamp.SVAMP_TOP_DIVISION).
 const SVAMP_TOP_DIVISION = "09";
+// Programs the SVAMP director's AM mandate excludes despite sitting in
+// division 09 — their employment flows run to other industry verticals
+// (automotive → dealerships/fleets; HVAC → building trades). Mirrors backend
+// svamp.SVAMP_MANDATE_EXCLUDED_TOPS; threaded to the embedded cell report so
+// its curriculum pathway scopes identically to the rest of the lens.
+const SVAMP_MANDATE_EXCLUDED_TOPS = ["094600", "094800"];
 
 type CollegeRef = { id: string; config: SchoolConfig };
 
@@ -1540,7 +1546,7 @@ export default function SvampView({ colleges, onBack }: Props) {
             // mismatch; the market-scale comparison lives at the consortium
             // grain (occupation summary, Programs-lens Demand toggle).
             // Per-college standalone reports keep the section.
-            <OpportunityReportBody school={selRef.config} socCode={selectedSoc} sector={data.sector} hideExecutiveSummary hideStudentImpact embedded programOutcomes={programOutcomesPanel} hideLaborMarket topPrefix={SVAMP_TOP_DIVISION} cteOnly />
+            <OpportunityReportBody school={selRef.config} socCode={selectedSoc} sector={data.sector} hideExecutiveSummary hideStudentImpact embedded programOutcomes={programOutcomesPanel} hideLaborMarket topPrefix={SVAMP_TOP_DIVISION} cteOnly excludeTops={SVAMP_MANDATE_EXCLUDED_TOPS} />
           ) : null}
         </div>
       )}

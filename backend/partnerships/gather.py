@@ -354,6 +354,7 @@ def _gather_curriculum_crosswalk(
     top_prefix: str | None = None,
     union_colleges: list[str] | None = None,
     cte_only: bool = False,
+    exclude_tops: frozenset[str] | set[str] | None = None,
 ) -> dict:
     """Build the TOP6 × CIP × SOC pathway data for the report's hero
     visualization. Renders the institutional crosswalk chain in three
@@ -393,6 +394,12 @@ def _gather_curriculum_crosswalk(
     `cte_only` optionally restricts the prep universe to CTE (career-technical)
     TOPs per the CCCCO PCAH, dropping transfer/academic ones (the SVAMP
     workforce scope). Default False ⇒ per-college reports are byte-identical.
+
+    `exclude_tops` optionally drops named TOP6 codes from the prep universe —
+    the SVAMP director's-mandate exclusions (svamp.SVAMP_MANDATE_EXCLUDED_TOPS),
+    programs whose crosswalk link is category-true but whose employment flows
+    run to other industry verticals. Default None ⇒ per-college reports are
+    byte-identical.
 
     Returns a dict shaped for the OpportunityReport `curriculum_crosswalk`
     field — see partnerships.models.CurriculumCrosswalk.
@@ -491,6 +498,11 @@ def _gather_curriculum_crosswalk(
     if top_prefix:
         global_top6 = {t for t in global_top6 if t.startswith(top_prefix)}
         taught_top6 = {t for t in taught_top6 if t.startswith(top_prefix)}
+    if exclude_tops:
+        # Director's-mandate exclusions (see docstring) — same injection point
+        # as top_prefix, so the whole report scopes consistently.
+        global_top6 -= set(exclude_tops)
+        taught_top6 -= set(exclude_tops)
     if cte_only:
         # Restrict to CTE (career-technical) TOP families per the CCCCO PCAH,
         # dropping transfer/academic ones (the SVAMP workforce scope). Uses the

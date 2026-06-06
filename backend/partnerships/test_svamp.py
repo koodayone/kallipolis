@@ -17,12 +17,17 @@ Coverage:
   - Cell coverage keys on feeding-program activity (enrolled + feeding_awards),
     not the course pipeline — an awards-only feeding program (the 095630 →
     Machinists seam) reads partial, not gap
+  - Director's-mandate TOP exclusions (automotive, HVAC) fail is_svamp_top —
+    out of the program universe everywhere it gates — while core AM programs
+    and Industrial Systems (094500, not to be confused with HVAC 094600) stay in
 """
 
 from partnerships.svamp import (
     SVAMP_COLLEGES,
     SVAMP_SOCS,
+    SVAMP_MANDATE_EXCLUDED_TOPS,
     _assemble_landscape,
+    is_svamp_top,
 )
 
 
@@ -148,3 +153,16 @@ def test_cell_coverage_keys_on_feeding_activity_not_courses():
     fo = cell("Foothill College")
     assert (fo.enrolled, fo.feeding_awards > 0) == (False, False)  # gap — neither
     assert fo.programs == []                                        # nothing to show
+
+
+def test_mandate_excluded_tops_fail_is_svamp_top():
+    # Director's-mandate exclusions: division-09, crosswalk-linked, but their
+    # employment flows run to other industry verticals (automotive →
+    # dealerships/fleets; HVAC → building trades). is_svamp_top is the single
+    # predicate every program-universe surface gates on, so failing here keeps
+    # them out of the treemap, coverage, feeding sets, and demand views alike.
+    assert SVAMP_MANDATE_EXCLUDED_TOPS == {"094600", "094800"}
+    for t in SVAMP_MANDATE_EXCLUDED_TOPS:
+        assert not is_svamp_top(t)
+    assert is_svamp_top("095630")   # core AM (Machining) stays in
+    assert is_svamp_top("094500")   # Industrial Systems — NOT HVAC (094600) — stays in

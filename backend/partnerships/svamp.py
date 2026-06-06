@@ -122,18 +122,40 @@ AWARD_YEARS_SHOWN: int = 5
 # occupation- and region-owned, not program-owned.
 SVAMP_TOP_DIVISION: str = "09"
 
+# Programs the SVAMP director's advanced-manufacturing mandate excludes, even
+# though they sit in division 09 and the crosswalk legitimately links them to
+# SVAMP SOCs. The SOC link is occupation-category truth, but the employment
+# flows run to other industry verticals — automotive completers to dealerships,
+# shops, and fleet operations; HVAC completers to commercial/residential
+# building trades — none of which are in the AM-scoped employer set this report
+# pairs supply with. Scope decision per the SVAMP director (the same authority
+# behind SVAMP_SOCS and the 09 domain); the crosswalk itself is never edited.
+# Boundary programs the director has NOT ruled on stay in (e.g. 094840
+# Alternative Fuels & Advanced Transportation, 094610 Energy Systems) — add
+# them here if the mandate later excludes them.
+SVAMP_MANDATE_EXCLUDED_TOPS: frozenset[str] = frozenset({
+    "094600",  # Environmental Control Technology (HVAC)
+    "094800",  # Automotive Technology
+})
+
 
 def is_svamp_top(top6: str | None) -> bool:
     """True iff a TOP6 is in SVAMP's scoped program universe: TOP division 09
     AND a career-technical (CTE) workforce program, not a transfer/academic one
-    (e.g. 090100 Engineering, General (Transfer) is excluded).
+    (e.g. 090100 Engineering, General (Transfer) is excluded), AND not excluded
+    by the director's mandate (SVAMP_MANDATE_EXCLUDED_TOPS).
 
     Uses the FAMILY-level CTE test (is_cte_top4_family) rather than exact TOP6
     membership: the PCAH file is periodically updated and misses newer TOP6
     codes (e.g. 095690 Digital Fabrication Technician) whose 4-digit family is
     plainly CTE. Family-level keeps those while still excluding all-transfer
     families like 0901."""
-    return bool(top6) and top6.startswith(SVAMP_TOP_DIVISION) and is_cte_top4_family(top6)
+    return (
+        bool(top6)
+        and top6.startswith(SVAMP_TOP_DIVISION)
+        and top6 not in SVAMP_MANDATE_EXCLUDED_TOPS
+        and is_cte_top4_family(top6)
+    )
 
 
 # ── Response shapes ───────────────────────────────────────────────────────
@@ -332,6 +354,7 @@ def build_svamp_landscape() -> SvampLandscape:
                 OPTIONAL MATCH (col)-[op:OCCUPATION_PIPELINE]->(occ)
                 OPTIONAL MATCH (c09:Course {college: $college})-[:PREPARES_FOR]->(occ)
                       WHERE c09.top_code STARTS WITH $top_division
+                        AND NOT c09.top_code IN $excluded
                 WITH occ, op, count(DISTINCT c09) AS course_count_09
                 RETURN occ.soc_code AS soc_code,
                        course_count_09 AS course_count,
@@ -340,6 +363,7 @@ def build_svamp_landscape() -> SvampLandscape:
                 """,
                 college=college, socs=SVAMP_SOCS,
                 top_division=SVAMP_TOP_DIVISION,
+                excluded=sorted(SVAMP_MANDATE_EXCLUDED_TOPS),
             ).data()
             align_by_college[college] = {
                 r["soc_code"]: {

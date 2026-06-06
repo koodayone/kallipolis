@@ -446,6 +446,7 @@ def build_opportunity_report(
     sector_hint: str | None = None,
     top_prefix: str | None = None,
     cte_only: bool = False,
+    exclude_tops: frozenset[str] | set[str] | None = None,
 ) -> OpportunityReport:
     """Assemble the full per-(college, soc) partnership opportunity report.
 
@@ -471,6 +472,10 @@ def build_opportunity_report(
     `cte_only` optionally restricts that same crosswalk to CTE (career-
     technical) TOPs, dropping transfer/academic ones — the SVAMP workforce
     scope. Default False ⇒ the per-college report is unchanged.
+
+    `exclude_tops` optionally drops named TOP6 codes from that same crosswalk
+    (and everything the hero TOP set derives) — the SVAMP director's-mandate
+    exclusions. Default None ⇒ the per-college report is unchanged.
     """
     driver = get_driver()
     with driver.session() as session:
@@ -531,7 +536,7 @@ def build_opportunity_report(
     # pipeline that the TOP4 widening absorbs. So we derive a TOP4
     # set from the TOP6 hero universe by truncation — preserving the
     # downstream filter semantics across the v3 hero shape change.
-    curriculum_crosswalk = _gather_curriculum_crosswalk(college, soc_code, top_prefix=top_prefix, cte_only=cte_only)
+    curriculum_crosswalk = _gather_curriculum_crosswalk(college, soc_code, top_prefix=top_prefix, cte_only=cte_only, exclude_tops=exclude_tops)
     hero_top4s = {t["code"][:4] for t in curriculum_crosswalk.get("tops", [])}
 
     # Curriculum coverage — per-department accordion of the courses at

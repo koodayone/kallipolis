@@ -465,6 +465,7 @@ export async function getPartnershipOpportunity(
   sector?: string,
   topPrefix?: string,
   cteOnly?: boolean,
+  excludeTops?: string[],
 ): Promise<ApiOpportunityReport> {
   // `sector` is the click-context sector the user navigated from. When
   // a SOC belongs to multiple PCAH sectors, this preserves the user's
@@ -480,6 +481,8 @@ export async function getPartnershipOpportunity(
   if (sector) params.set("sector", sector);
   if (topPrefix) params.set("top_prefix", topPrefix);
   if (cteOnly) params.set("cte_only", "true");
+  // Director's-mandate TOP exclusions (the SVAMP lens) — comma-separated.
+  if (excludeTops?.length) params.set("exclude_tops", excludeTops.join(","));
   const res = await fetch(
     `${API_BASE}/partnerships/opportunity/${encodeURIComponent(socCode)}?${params.toString()}`,
   );
