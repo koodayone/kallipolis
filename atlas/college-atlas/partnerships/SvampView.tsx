@@ -9,6 +9,7 @@ import KallipolisBrand from "@/ui/KallipolisBrand";
 import RisingSun from "@/ui/RisingSun";
 import { FONT, MONO, ReportHeader, Section, Prose } from "@/college-atlas/partnerships/reportChrome";
 import { OpportunityReportBody, PartnerEmployerRow } from "@/college-atlas/partnerships/OpportunityReport";
+import { readSvampParams, writeSvampParams } from "@/college-atlas/partnerships/svampUrl";
 import OccupationDemandTable from "@/college-atlas/partnerships/OccupationDemandTable";
 import SupplyTreemap from "@/college-atlas/partnerships/SupplyTreemap";
 import DepartmentRow from "@/college-atlas/courses/DepartmentRow";
@@ -824,6 +825,8 @@ function EmployersLens({ colleges }: { colleges: CollegeRef[] }) {
   const [hover, setHover] = useState<string | null>(null);   // synced map ↔ list
   const [query, setQuery] = useState("");
   const [narrow, setNarrow] = useState(false);
+  // URL anchoring (employers slice: emp); eReady gates writes until restore.
+  const [eReady, setEReady] = useState(false);
   const rowRefs = useRef<Map<string, HTMLButtonElement | null>>(new Map());
 
   useEffect(() => {
@@ -831,6 +834,18 @@ function EmployersLens({ colleges }: { colleges: CollegeRef[] }) {
     getSvampEmployers().then((d) => { if (alive) setData(d); }).catch((e) => setErr(e.message));
     return () => { alive = false; };
   }, []);
+
+  // Restore the employers slice from the URL on mount, then sync emp → URL.
+  useEffect(() => {
+    const p = readSvampParams();
+    if (p.emp) setSelected(p.emp);
+    setEReady(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  useEffect(() => {
+    if (!eReady) return;
+    writeSvampParams({ emp: selected ?? null });
+  }, [eReady, selected]);
   useEffect(() => {
     const f = () => setNarrow(window.innerWidth < 760);
     f(); window.addEventListener("resize", f);
@@ -964,6 +979,8 @@ function ProgramsLens({ colleges }: { colleges: CollegeRef[] }) {
   const [matrixCollegeId, setMatrixCollegeId] = useState<string | null>(null);
   const [report, setReport] = useState<ApiSvampProgramReport | null>(null);
   const [err, setErr] = useState<string | null>(null);
+  // URL anchoring (programs slice: top + pc); pReady gates writes until restore.
+  const [pReady, setPReady] = useState(false);
 
   const nameById = useMemo(() => new Map(colleges.map((c) => [c.id, c.config.name])), [colleges]);
   const matrixCollegeName = matrixCollegeId ? nameById.get(matrixCollegeId) : undefined;
@@ -979,6 +996,22 @@ function ProgramsLens({ colleges }: { colleges: CollegeRef[] }) {
     getSvampProgram(top, matrixCollegeName).then((r) => { if (alive) setReport(r); }).catch((e) => setErr(e.message));
     return () => { alive = false; };
   }, [top, matrixCollegeName]);
+
+  // Restore the programs slice from the URL on mount; the data-load default
+  // (setTop's `cur ?? …`) defers to a URL-pinned TOP. Then sync top + college →
+  // URL. `college` is shared with the occupations lens but only ever written by
+  // the active lens, so there's no cross-lens clobber (see svampUrl.ts).
+  useEffect(() => {
+    const p = readSvampParams();
+    if (p.top) setTop(p.top);
+    if (p.college) setMatrixCollegeId(p.college);
+    setPReady(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  useEffect(() => {
+    if (!pReady) return;
+    writeSvampParams({ top: top ?? null, college: matrixCollegeId ?? null });
+  }, [pReady, top, matrixCollegeId]);
 
   const brandByName = useMemo(
     () => new Map(colleges.map((c) => [c.config.name, c.config.brandColorLight])),
@@ -1422,6 +1455,12 @@ export default function SvampView({ colleges, onBack }: Props) {
   // vs "targeted" (matrix cell → per-college OpportunityReport).
   const [occView, setOccView] = useState<"aggregated" | "targeted">("aggregated");
   const [lens, setLens] = useState<Lens>("programs");
+  // URL anchoring: `ready` gates view→URL writes until the initial restore from
+  // the URL has run (so a shared/refreshed link isn't clobbered by default
+  // state); `urlHadSoc` suppresses the highest-demand default when the URL
+  // pinned a SOC. Contract in svampUrl.ts.
+  const [ready, setReady] = useState(false);
+  const urlHadSoc = useRef(false);
   // Sticky context banner: shown once the report header scrolls under the nav.
   const [ctxShow, setCtxShow] = useState(false);
   const ctxSentinel = useRef<HTMLDivElement | null>(null);
@@ -1430,6 +1469,35 @@ export default function SvampView({ colleges, onBack }: Props) {
     getSvampLandscape().then(setData).catch((e) => setError(e.message));
     getSvampPrograms().then(setPrograms).catch(() => {});  // header count only — a failure just omits the facet
   }, []);
+
+  // Restore the view from the URL once on mount (client-only). The child lenses
+  // (ProgramsLens, EmployersLens) restore their own slice on their own mount.
+  useEffect(() => {
+    const p = readSvampParams();
+    if (p.lens === "programs" || p.lens === "occupations" || p.lens === "employers") setLens(p.lens);
+    if (p.soc) {
+      setSelectedSoc(p.soc);
+      setOccView(p.college ? "targeted" : "aggregated");
+      if (p.college) setSelected(p.college);
+    }
+    urlHadSoc.current = !!p.soc;
+    setReady(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Switch lens (user action) — clear every selection param; the now-active
+  // lens's own sync re-adds what it owns. `lens` omitted for the programs default.
+  const switchLens = (l: Lens) => {
+    setLens(l);
+    writeSvampParams({ lens: l === "programs" ? null : l, soc: null, college: null, top: null, emp: null });
+  };
+
+  // Sync the occupations selection → URL (parent owns soc + the occupations
+  // college). Gated on `ready` and the active lens.
+  useEffect(() => {
+    if (!ready || lens !== "occupations") return;
+    writeSvampParams({ soc: selectedSoc, college: occView === "targeted" ? selected : null });
+  }, [ready, lens, selectedSoc, occView, selected]);
 
   // Reveal the context banner when the sentinel (at the report's top) passes
   // under the 72px nav, hide it again on scroll back up.
@@ -1453,9 +1521,10 @@ export default function SvampView({ colleges, onBack }: Props) {
     return m;
   }, [colleges]);
 
-  // Land on the aggregated consortium view of the highest-demand occupation.
+  // Land on the aggregated consortium view of the highest-demand occupation —
+  // unless the URL pinned a SOC (shared/refreshed link), which takes precedence.
   useEffect(() => {
-    if (!data) return;
+    if (!data || urlHadSoc.current) return;
     const cells = data.colleges[0]?.cells ?? [];
     const top = [...cells].sort((a, b) => (b.annual_openings ?? 0) - (a.annual_openings ?? 0))[0];
     setSelectedSoc(top?.soc_code ?? null);
@@ -1656,7 +1725,7 @@ export default function SvampView({ colleges, onBack }: Props) {
 
       {/* Lens switcher — Occupations (built) · Programs (built) · Employers
           (placeholder until that view ships). Three Platonic forms. */}
-      <LensTabs lens={lens} setLens={setLens} />
+      <LensTabs lens={lens} setLens={switchLens} />
 
       {lens === "occupations" ? (
       <>
