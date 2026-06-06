@@ -1396,6 +1396,10 @@ function OccupationAggregateReport({ soc, colleges, isSectorPriority }: { soc: s
 
 export default function SvampView({ colleges, onBack }: Props) {
   const [data, setData] = useState<ApiSvampLandscape | null>(null);
+  // Programs landscape fetched here too, only so the header can show the
+  // active-program count from the SAME source the Programs lens uses — keeping
+  // the subhead count and the coverage-matrix rows in lockstep.
+  const [programs, setPrograms] = useState<ApiSvampProgramsLandscape | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [selected, setSelected] = useState<string>(colleges[0]?.id ?? "");
   const [selectedSoc, setSelectedSoc] = useState<string | null>(null);
@@ -1409,6 +1413,7 @@ export default function SvampView({ colleges, onBack }: Props) {
 
   useEffect(() => {
     getSvampLandscape().then(setData).catch((e) => setError(e.message));
+    getSvampPrograms().then(setPrograms).catch(() => {});  // header count only — a failure just omits the facet
   }, []);
 
   // Reveal the context banner when the sentinel (at the report's top) passes
@@ -1461,6 +1466,12 @@ export default function SvampView({ colleges, onBack }: Props) {
   }
 
   const agg = data.aggregate;
+  // Active programs = SVAMP TOPs with enrollment or awards — the exact filter the
+  // Programs lens applies to its coverage-matrix rows, so this count matches what
+  // that lens shows. null until the programs landscape resolves.
+  const activePrograms = programs
+    ? programs.tops.filter((t) => t.enrollment_total > 0 || t.awards_total > 0).length
+    : null;
   const selCollege: ApiSvampCollege | undefined =
     data.colleges.find((c) => byName.get(c.name)?.id === selected) ?? data.colleges[0];
   const selRef = selCollege ? byName.get(selCollege.name) : undefined;
@@ -1620,13 +1631,12 @@ export default function SvampView({ colleges, onBack }: Props) {
       })()}
       {/* Report header — same magazine idiom as the per-occupation report */}
       <ReportHeader eyebrow="Partnership Landscape Report" title="Silicon Valley Advanced Manufacturing Partnership" accent={lensAccent}>
+        {/* Colored bookends — the consortium (who) and the region (where) take
+            the lens accent; the supply/demand counts sit neutral between them. */}
         <span style={{ color: lensAccent, opacity: 0.7 }}>{agg.n_colleges} Member Colleges</span>
+        <Dot /><span style={{ color: "rgba(255,255,255,0.80)" }}>{activePrograms ?? "—"} Programs</span>
         <Dot /><span style={{ color: "rgba(255,255,255,0.80)" }}>{agg.n_occupations} Occupations</span>
-        <Dot /><span style={{ color: "rgba(255,255,255,0.80)", letterSpacing: "0.08em" }}>{data.sector}</span>
-        <Dot /><span style={{ color: "rgba(255,255,255,0.80)" }}>{data.region_display}</span>
-        {data.is_sector_priority && (
-          <><Dot /><span style={{ color: lensAccent, letterSpacing: "0.1em", fontWeight: 600 }}>Regional Priority Sector</span></>
-        )}
+        <Dot /><span style={{ color: lensAccent, opacity: 0.7 }}>{data.region_display}</span>
       </ReportHeader>
 
       {/* Lens switcher — Occupations (built) · Programs (built) · Employers
