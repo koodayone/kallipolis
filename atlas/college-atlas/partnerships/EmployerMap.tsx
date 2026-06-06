@@ -166,7 +166,6 @@ export default function EmployerMap({
               onMouseEnter={() => setColHover(c.name)}
               onMouseLeave={() => setColHover(null)}
               onClick={(ev) => ev?.stopPropagation?.()}
-              style={{ default: { cursor: "default" }, hover: { cursor: "default" }, pressed: { cursor: "default" } }}
             >
               {on && <circle r={10} fill="none" stroke={c.brand} strokeOpacity={0.45} strokeWidth={1} />}
               <rect x={-5.4} y={-5.4} width={10.8} height={10.8} transform="rotate(45)" fill={c.brand} stroke="rgba(255,255,255,0.7)" strokeWidth={0.8} opacity={on ? 1 : 0.9} />
@@ -191,9 +190,8 @@ export default function EmployerMap({
               onMouseEnter={() => onHover(e.name)}
               onMouseLeave={() => onHover(null)}
               onClick={(ev) => { ev?.stopPropagation?.(); onSelect(e.name); }}
-              style={{ default: { cursor: "pointer" }, hover: { cursor: "pointer" }, pressed: { cursor: "pointer" } }}
             >
-              <g transform={`translate(${dx}, ${dy})`}>
+              <g transform={`translate(${dx}, ${dy})`} style={{ cursor: "pointer" }}>
                 {on && <circle r={9} fill="none" stroke={EMPLOYER_BRIGHT} strokeOpacity={0.6} strokeWidth={1} />}
                 <rect x={-4.6} y={-4.6} width={9.2} height={9.2} rx={1.9}
                   fill={on ? EMPLOYER_BRIGHT : EMPLOYER}

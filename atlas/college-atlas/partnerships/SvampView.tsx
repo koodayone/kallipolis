@@ -860,7 +860,7 @@ function EmployersLens({ colleges }: { colleges: CollegeRef[] }) {
   const filtered = (q ? data.employers.filter((e) => e.name.toLowerCase().includes(q)) : data.employers)
     .slice()
     .sort((a, b) => a.name.localeCompare(b.name));
-  const toggle = (n: string) => setSelected((cur) => (cur === n ? null : n));
+  const toggle = (n: string | null) => setSelected((cur) => (n === null ? null : cur === n ? null : n));
 
   return (
     <Section title="Regional Employer Map" brandColor={EMPLOYER_ACCENT}>
