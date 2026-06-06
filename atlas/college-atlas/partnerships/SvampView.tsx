@@ -30,6 +30,10 @@ import type {
 const GAP = "#e0654f";
 // SVAMP consortium accent (red) — cube, eyebrow, hairline, section bars.
 const ACCENT = "#ff5a5a";
+// Demand reference-line hue — gold (OVERLAY_COLORS' lead hue), distinct from
+// every member-college brand and calmer than the occupations-lens red, which
+// read as an alarm rather than a benchmark on the awards chart.
+const DEMAND_ACCENT = "#c9a84c";
 const PROGRAM_ACCENT = "#50c878"; // Programs lens primary — green (vs occupations red)
 const EMPLOYER_ACCENT = "#5a9bd4"; // Employers lens primary — blue
 // SVAMP scopes its program/supply universe to TOP division 09 (Engineering &
@@ -248,8 +252,14 @@ type TrendSeries = { top6: string; name: string; vals: (number | null)[] };
 // distinct from any program's index.
 const TOTAL_FOCUS = -1;
 
-function TrendChart({ series, labels, defaultMode, colorOf, axisStyle = "thinned", modeLabels = { lines: "Per program", stacked: "Stacked" }, hideSeriesTag = false, empty = false }: { series: TrendSeries[]; labels: string[]; defaultMode: "lines" | "stacked"; colorOf: (top6: string) => string; axisStyle?: "thinned" | "twoTier"; modeLabels?: { lines: string; stacked: string }; hideSeriesTag?: boolean; empty?: boolean }) {
-  const [mode, setMode] = useState<"lines" | "stacked">(defaultMode);
+function TrendChart({ series, labels, defaultMode, colorOf, axisStyle = "thinned", modeLabels = { lines: "Per program", stacked: "Stacked" }, hideSeriesTag = false, empty = false, demandLine }: { series: TrendSeries[]; labels: string[]; defaultMode: "lines" | "stacked" | "demand"; colorOf: (top6: string) => string; axisStyle?: "thinned" | "twoTier"; modeLabels?: { lines: string; stacked: string; demand?: string }; hideSeriesTag?: boolean; empty?: boolean; demandLine?: { value: number; label: string; color: string } }) {
+  // "demand" is the third mode the demandLine prop unlocks: the stacked view
+  // re-scaled so the reference line fits — supply read at market scale. When
+  // the prop is absent (e.g. the targeted college view), a carried-over
+  // "demand" mode falls back to stacked rather than rendering a missing line.
+  const [mode, setMode] = useState<"lines" | "stacked" | "demand">(defaultMode);
+  const effMode = mode === "demand" && !demandLine ? "stacked" : mode;
+  const stackedBasis = effMode !== "lines";
   const [hover, setHover] = useState<number | null>(null);
   const { W, padL, padR, padT } = PLOT;
   // The two-tier axis (season row + year row) needs extra room below the plot;
@@ -351,7 +361,11 @@ function TrendChart({ series, labels, defaultMode, colorOf, axisStyle = "thinned
   const lineMax = Math.max(...shown.flatMap((it) => it.vals.filter((v): v is number => v != null)));
   const totals = cols.map((_, k) => shown.reduce((sum, it) => sum + (it.vals[k] ?? 0), 0));
   const stackMax = Math.max(...totals, 1);
-  const dataMax = mode === "stacked" ? stackMax : lineMax;
+  // vs. demand: the axis stretches to include the reference line — the stack
+  // compressing against it IS the supply/demand read.
+  const dataMax = effMode === "lines" ? lineMax
+    : effMode === "demand" && demandLine ? Math.max(stackMax, demandLine.value)
+    : stackMax;
   const step = niceStep(dataMax);
   const axisMax = Math.ceil(dataMax / step) * step;
   const Y = (v: number) => base - (v / axisMax) * (base - top);
@@ -359,7 +373,7 @@ function TrendChart({ series, labels, defaultMode, colorOf, axisStyle = "thinned
   for (let t = step; t <= axisMax; t += step) ticks.push(t);
 
   // Stacked geometry (largest-total at the base for a stable footing).
-  const ordered = mode === "stacked"
+  const ordered = stackedBasis
     ? [...shown].sort((a, b) =>
         b.vals.reduce((s: number, v) => s + (v ?? 0), 0) - a.vals.reduce((s: number, v) => s + (v ?? 0), 0))
     : shown;
@@ -379,13 +393,13 @@ function TrendChart({ series, labels, defaultMode, colorOf, axisStyle = "thinned
     <div style={{ marginTop: 14 }}>
       <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 8 }}>
         <div style={{ display: "inline-flex", border: "1px solid rgba(255,255,255,.12)", borderRadius: 8, overflow: "hidden" }}>
-          {(["lines", "stacked"] as const).map((m) => (
+          {([...(["lines", "stacked"] as const), ...(demandLine ? (["demand"] as const) : [])]).map((m) => (
             <button
               key={m}
               onClick={() => setMode(m)}
-              style={{ appearance: "none", border: "none", cursor: "pointer", background: mode === m ? "rgba(255,255,255,.1)" : "transparent", color: mode === m ? "#e8ecf4" : "#9aa6bd", fontFamily: FONT, fontSize: 11.5, fontWeight: 500, padding: "5px 12px", transition: "background .12s, color .12s" }}
+              style={{ appearance: "none", border: "none", cursor: "pointer", background: effMode === m ? "rgba(255,255,255,.1)" : "transparent", color: effMode === m ? "#e8ecf4" : "#9aa6bd", fontFamily: FONT, fontSize: 11.5, fontWeight: 500, padding: "5px 12px", transition: "background .12s, color .12s" }}
             >
-              {m === "lines" ? modeLabels.lines : modeLabels.stacked}
+              {m === "lines" ? modeLabels.lines : m === "stacked" ? modeLabels.stacked : (modeLabels.demand ?? "Demand")}
             </button>
           ))}
         </div>
@@ -399,7 +413,7 @@ function TrendChart({ series, labels, defaultMode, colorOf, axisStyle = "thinned
           </g>
         ))}
 
-        {mode === "lines"
+        {effMode === "lines"
           ? shown.map((it) => {
               const color = colorOf(it.s.top6);
               const on = hover === it.idx, faded = hover != null && !on;
@@ -444,13 +458,13 @@ function TrendChart({ series, labels, defaultMode, colorOf, axisStyle = "thinned
 
         {/* Stacked "Total": the summed trend along the top edge with its own
             value chips — focusable from the legend's Total row. */}
-        {mode === "stacked" && hover === TOTAL_FOCUS && !single && (
+        {stackedBasis && hover === TOTAL_FOCUS && !single && (
           <path
             d={cols.map((_, k) => `${k ? "L" : "M"}${X(k).toFixed(1)} ${Y(totals[k]).toFixed(1)}`).join(" ")}
             fill="none" stroke="#e8ecf4" strokeWidth={2.5} strokeLinejoin="round" strokeLinecap="round"
           />
         )}
-        {mode === "stacked" && hover === TOTAL_FOCUS && (() => {
+        {stackedBasis && hover === TOTAL_FOCUS && (() => {
           const pts = totals.map((tv, k) => ({ x: X(k), y: Y(tv), v: tv })).filter((p) => p.v > 0);
           const ys = placeChipYs(pts, top + 9, base - 9);
           return <g>{pts.map((p, i) => valueChip(p.x, ys[i], p.v, "#e8ecf4", i))}</g>;
@@ -461,7 +475,7 @@ function TrendChart({ series, labels, defaultMode, colorOf, axisStyle = "thinned
         {focused && (() => {
           const color = colorOf(focused.s.top6);
           const pts: { x: number; y: number; v: number }[] = [];
-          if (mode === "lines") {
+          if (effMode === "lines") {
             focused.vals.forEach((v, k) => { if (v != null) pts.push({ x: X(k), y: Y(v), v }); });
           } else {
             const b = bands.find((x) => x.it.idx === focused.idx);
@@ -472,10 +486,29 @@ function TrendChart({ series, labels, defaultMode, colorOf, axisStyle = "thinned
           return <g>{pts.map((p, i) => valueChip(p.x, ys[i], p.v, color, i))}</g>;
         })()}
 
+        {/* Regional addressable demand — the reference line the vs. demand
+            mode exists for. Drawn last (over the bands), value pinned at its
+            right end; the legend row carries the full grounding. */}
+        {effMode === "demand" && demandLine && (
+          <g>
+            <line x1={padL} x2={W - padR} y1={Y(demandLine.value)} y2={Y(demandLine.value)} stroke={demandLine.color} strokeWidth={2} />
+            <text x={W - padR} y={Y(demandLine.value) - 7} textAnchor="end" style={{ fontFamily: MONO, fontSize: 10.5, fontWeight: 600, fill: demandLine.color }}>
+              {demandLine.value.toLocaleString("en-US")}/yr
+            </text>
+          </g>
+        )}
+
         {axisEls(cols, X)}
       </svg>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4px 16px", marginTop: 12 }}>
-        {mode === "stacked" && (() => {
+        {effMode === "demand" && demandLine && (
+          <div style={{ gridColumn: "1 / -1", display: "flex", alignItems: "center", gap: 9, fontSize: 12.5, padding: "6px 9px", borderRadius: 8, minWidth: 0 }}>
+            <span style={{ width: 16, height: 3, borderRadius: 2, background: demandLine.color, flex: "none" }} />
+            <span style={{ flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", color: hexA(demandLine.color, 0.9), fontWeight: 500 }}>{demandLine.label}</span>
+            <span style={{ fontFamily: MONO, fontSize: 10.5, color: hexA(demandLine.color, 0.75), flex: "none" }}>{demandLine.value.toLocaleString("en-US")}/yr</span>
+          </div>
+        )}
+        {stackedBasis && (() => {
           const ton = hover === TOTAL_FOCUS, tdim = hover != null && hover !== TOTAL_FOCUS;
           return (
             <div onMouseEnter={() => setHover(TOTAL_FOCUS)} onMouseLeave={() => setHover(null)}
@@ -492,7 +525,7 @@ function TrendChart({ series, labels, defaultMode, colorOf, axisStyle = "thinned
           return (
             <div key={it.s.top6} onMouseEnter={() => setHover(it.idx)} onMouseLeave={() => setHover(null)}
               style={{ display: "flex", alignItems: "center", gap: 9, fontSize: 12.5, padding: "6px 9px", borderRadius: 8, background: on ? "rgba(255,255,255,.07)" : "transparent", opacity: dim ? 0.45 : 1, transition: "background .12s, opacity .12s", minWidth: 0 }}>
-              <span style={{ width: 16, height: mode === "stacked" ? 10 : 3, borderRadius: mode === "stacked" ? 3 : 2, background: color, opacity: mode === "stacked" ? 0.62 : 1, flex: "none" }} />
+              <span style={{ width: 16, height: stackedBasis ? 10 : 3, borderRadius: stackedBasis ? 3 : 2, background: color, opacity: stackedBasis ? 0.62 : 1, flex: "none" }} />
               <span style={{ flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", color: "#9aa6bd" }}>{it.s.name}</span>
               {!hideSeriesTag && <span style={{ fontFamily: MONO, fontSize: 10.5, color: "#5e6a83", flex: "none" }}>TOP {it.s.top6}</span>}
             </div>
@@ -879,6 +912,14 @@ function ProgramsLens({ colleges }: { colleges: CollegeRef[] }) {
     ? (report?.enrollment_by_credit ?? []).filter((s) => s.college === targetedCollege)
     : [];
   const creditColor = leadOverlayColors(creditSeries.map((s) => ({ key: s.credit_type, vals: s.vals })), reportBrand);
+  // Regional addressable demand — Σ annual openings across the SOCs this
+  // program feeds (COE), the per-completer opportunity set. A clean sum
+  // WITHIN a program (its fed SOCs are distinct); NEVER summed across
+  // programs (SOCs are shared — that would double-count). Consortium view
+  // only: one college's awards against the whole regional pool would be a
+  // partial-vs-whole mismatch, and no label survives that misreading. The
+  // "Occupations Served" table above the chart is this number's decomposition.
+  const addressableDemand = (report?.occupations ?? []).reduce((t, o) => t + (o.annual_openings ?? 0), 0);
 
   return (
     <>
@@ -963,18 +1004,27 @@ function ProgramsLens({ colleges }: { colleges: CollegeRef[] }) {
                 ? "No awards are reported for this program via CCCCO DataMart."
                 : typeSeries.length > 0
                   ? `Credentials awarded per year at ${shortName(targetedCollege ?? "")}, broken out by credential type. Toggle between the stacked total and per-credential trends.`
-                  : "Credentials awarded per year across the member colleges. Toggle between the stacked consortium total and per-school trends."}
+                  : "Credentials awarded per year across the member colleges. Toggle between the stacked consortium total, per-school trends, or set consortium total against regional addressable demand — the sum of annual openings across occupations this program prepares students for."}
             </Prose>
             <TrendChart
+              // Keyed by scope: crossing targeted <-> consortium remounts the
+              // chart at its default. Stacked leads (the schools stay the
+              // subject; some programs' demand scale flattens the stack to
+              // illegibility) — the visible Demand toggle is the invitation
+              // to the market-scale read, not the landing.
+              key={targetedCollege ?? "consortium"}
               series={typeSeries.length > 0
                 ? typeSeries.map((s) => ({ top6: s.award_type, name: shortAwardType(s.award_type), vals: s.vals }))
                 : report.awards_by_college.map((s) => ({ top6: s.college, name: shortName(s.college), vals: s.vals }))}
               labels={report.award_years.map(awardYearLabel)}
               defaultMode="stacked"
               colorOf={typeSeries.length > 0 ? typeColor : colorOf}
-              modeLabels={typeSeries.length > 0 ? { lines: "Per credential", stacked: "Stacked" } : { lines: "Per school", stacked: "Stacked" }}
+              modeLabels={typeSeries.length > 0 ? { lines: "Per credential", stacked: "Stacked" } : { lines: "Per school", stacked: "Stacked", demand: "Demand" }}
               hideSeriesTag
               empty={report.awards_by_college.length === 0}
+              demandLine={!targetedCollege && addressableDemand > 0
+                ? { value: addressableDemand, label: "Regional Demand · COE", color: DEMAND_ACCENT }
+                : undefined}
             />
           </Section>
 
@@ -1125,12 +1175,10 @@ function OccupationAggregateReport({ soc, colleges, isSectorPriority }: { soc: s
         )}
       </Section>
 
-      {r.feeding_tops.some((t) => t.awards_total > 0) && (
-        <Section title="Supporting Programs" brandColor={ACCENT}>
-          <Prose>The programs supplying this occupation, sized by latest-year credentials awarded across the consortium.</Prose>
-          <SupplyTreemap tops={r.feeding_tops} selectedTop={null} accent={ACCENT} caption="Area is latest-year credentials awarded across the consortium by the programs supporting this occupation." />
-        </Section>
-      )}
+      {/* No supply treemap here by design — one treemap per lens, as its hero
+          (demand heads this lens; supply heads the Programs lens). The feeding
+          TOPs are named by the crosswalk pathway above; their combined supply
+          trend is the charts below. */}
 
       {/* Awards + enrollment hold a chart panel whenever the occupation has
           supporting programs — populated trend, or the ghost scaffold when a
@@ -1139,17 +1187,26 @@ function OccupationAggregateReport({ soc, colleges, isSectorPriority }: { soc: s
         <Section title="Program Awards" brandColor={ACCENT}>
           <Prose>
             {r.awards_by_college.length > 0
-              ? "Credentials awarded per year by the supporting programs, across the member colleges."
+              ? "Credentials awarded per year by the supporting programs, each counted in full, across the member colleges. Toggle between the stacked consortium total, per-school trends, or set consortium total against regional demand — the annual openings for this occupation."
               : "No awards are reported for the supporting programs via CCCCO DataMart."}
           </Prose>
+          {/* Demand here is the dual of the Programs-lens demand view: there,
+              honest supply (one program) vs aggregated (addressable) demand —
+              the opportunity ceiling; here, aggregated supply (every feeding
+              program counted in full toward this SOC) vs the single occupation's
+              counted-once openings — the shortage floor. A gap that survives
+              this most generous supply accounting is a fortiori. */}
           <TrendChart
             series={r.awards_by_college.map((s) => ({ top6: s.college, name: shortName(s.college), vals: s.vals }))}
             labels={r.award_years.map(awardYearLabel)}
             defaultMode="stacked"
             colorOf={colorOf}
-            modeLabels={{ lines: "Per school", stacked: "Stacked" }}
+            modeLabels={{ lines: "Per school", stacked: "Stacked", demand: "Demand" }}
             hideSeriesTag
             empty={r.awards_by_college.length === 0}
+            demandLine={(r.annual_openings ?? 0) > 0
+              ? { value: r.annual_openings as number, label: "Regional Demand · COE", color: DEMAND_ACCENT }
+              : undefined}
           />
         </Section>
       )}
@@ -1270,11 +1327,6 @@ export default function SvampView({ colleges, onBack }: Props) {
   const selRef = selCollege ? byName.get(selCollege.name) : undefined;
   const selBrand = selRef?.config.brandColorLight ?? ACCENT;
   const selectedCell = selCollege?.cells.find((c) => c.soc_code === selectedSoc);
-  // Gap selection: the college teaches none of this SOC's crosswalk. The detail
-  // collapses to the Curriculum Alignment crosswalk — supply/demand projections
-  // (hollow at zero supply) and Partnership Opportunities (no program to anchor)
-  // are suppressed.
-  const isGapSel = level(selectedCell) === "none";
 
   // SVAMP-owned Program Outcomes panel — injected into the embedded report
   // between Curriculum Alignment and Student Impact via OpportunityReportBody's
@@ -1289,11 +1341,6 @@ export default function SvampView({ colleges, onBack }: Props) {
     !!selectedCell &&
     data.enrollment_terms.length > 0 &&
     selectedCell.programs.some((p) => (p.enrollment ?? []).some((v) => v != null && v > 0));
-  const hasWages =
-    !!selectedCell &&
-    selectedCell.programs.some((p) => (p.wages ?? []).some((w) => w.wage_before != null && w.wage_after_5 != null));
-  const wageWindow =
-    selectedCell?.programs.flatMap((p) => p.wages ?? []).find((w) => w.window)?.window ?? "";
   const awardsWindow = data.award_years.length
     ? `${data.award_years[0]} to ${data.award_years[data.award_years.length - 1]}`
     : "";
@@ -1362,14 +1409,11 @@ export default function SvampView({ colleges, onBack }: Props) {
             empty={!hasEnrollment}
           />
         </Section>
-        {hasWages && (
-          <Section title="Program Wage Outcomes" brandColor={selBrand}>
-            <Prose>
-              Median annual earnings for completers of these programs at three points relative to award completion — 2 years before, 2 years after, and 5 years after. Derived from statewide data at the program (TOP6) level by credential type{wageWindow ? ` for award years ${wageWindow}` : ""}.
-            </Prose>
-            <WageOutcomes programs={selectedCell.programs} brandColor={selBrand} />
-          </Section>
-        )}
+        {/* No wage outcomes in the (college, SOC) cell by design: the wage
+            data is statewide pooled TOP6-grain (no college dimension), and
+            rendering it under a single college's brand asserts a per-college
+            outcome the data cannot support. Wages live at their home axis —
+            the Programs lens program report. */}
       </>
     ) : null;
 
@@ -1489,7 +1533,14 @@ export default function SvampView({ colleges, onBack }: Props) {
           {occView === "aggregated" ? (
             <OccupationAggregateReport soc={selectedSoc} colleges={colleges} isSectorPriority={data.is_sector_priority} />
           ) : selRef ? (
-            <OpportunityReportBody school={selRef.config} socCode={selectedSoc} sector={data.sector} hideExecutiveSummary hideStudentImpact embedded programOutcomes={programOutcomesPanel} demandTitle="Centers of Excellence Projections (Supply / Demand)" hideLaborMarket={isGapSel} suppressEmptySupplyGap topPrefix={SVAMP_TOP_DIVISION} cteOnly />
+            // hideLaborMarket: the COE supply/demand projections are hidden by
+            // design in the SVAMP embedding — supply's authority here is
+            // DataMart actuals (the Program Outcomes panel), and one college's
+            // supply against full regional demand is a partial-vs-whole
+            // mismatch; the market-scale comparison lives at the consortium
+            // grain (occupation summary, Programs-lens Demand toggle).
+            // Per-college standalone reports keep the section.
+            <OpportunityReportBody school={selRef.config} socCode={selectedSoc} sector={data.sector} hideExecutiveSummary hideStudentImpact embedded programOutcomes={programOutcomesPanel} hideLaborMarket topPrefix={SVAMP_TOP_DIVISION} cteOnly />
           ) : null}
         </div>
       )}
