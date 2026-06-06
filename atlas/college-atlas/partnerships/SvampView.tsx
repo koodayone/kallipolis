@@ -8,7 +8,7 @@ import AtlasHeader from "@/ui/AtlasHeader";
 import KallipolisBrand from "@/ui/KallipolisBrand";
 import RisingSun from "@/ui/RisingSun";
 import { FONT, MONO, ReportHeader, Section, Prose } from "@/college-atlas/partnerships/reportChrome";
-import { OpportunityReportBody } from "@/college-atlas/partnerships/OpportunityReport";
+import { OpportunityReportBody, PartnerEmployerRow } from "@/college-atlas/partnerships/OpportunityReport";
 import OccupationDemandTable from "@/college-atlas/partnerships/OccupationDemandTable";
 import SupplyTreemap from "@/college-atlas/partnerships/SupplyTreemap";
 import DepartmentRow from "@/college-atlas/courses/DepartmentRow";
@@ -1371,7 +1371,7 @@ function OccupationAggregateReport({ soc, colleges, isSectorPriority }: { soc: s
       )}
 
       {curriculumColleges.length > 0 && (
-        <Section title="Curriculum" brandColor={ACCENT}>
+        <Section title="Curriculum Alignment" brandColor={ACCENT}>
           <Prose>The courses supporting this occupation at each member college that teaches them.</Prose>
           <div style={{ marginTop: 16, display: "flex", flexDirection: "column", gap: 2 }}>
             {curriculumColleges.map((cc, i) => (
@@ -1386,6 +1386,21 @@ function OccupationAggregateReport({ soc, colleges, isSectorPriority }: { soc: s
                 hideOccupationPathways
                 socFilter=""
               />
+            ))}
+          </div>
+        </Section>
+      )}
+
+      {/* Partnership Opportunities — regional employers hiring for this SOC at
+          the consortium grain. Same employer set + row rendering as the
+          per-college targeted report (employers are regional, so the set is
+          identical regardless of college). */}
+      {r.partnership_opportunities.length > 0 && (
+        <Section title="Partnership Opportunities" brandColor={ACCENT}>
+          <Prose>{r.partnership_opportunities_narrative}</Prose>
+          <div style={{ marginTop: 16, display: "flex", flexDirection: "column", gap: 2 }}>
+            {r.partnership_opportunities.map((emp, i) => (
+              <PartnerEmployerRow key={emp.name} emp={emp} index={i} brandColor={ACCENT} />
             ))}
           </div>
         </Section>

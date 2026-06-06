@@ -196,6 +196,47 @@ function ReportBody({
     };
   }, [report]);
 
+  // Hoisted to component scope so the SVAMP (embedded) layout can render the
+  // aligned-course accordion as its own "Curriculum Alignment" section after the
+  // Program Outcomes panel. The standalone per-college report keeps it inside its
+  // own Curriculum Alignment section below (unchanged).
+  const isGap = report.curriculum_evidence.length === 0;
+  const coursesBlock = isGap ? (
+    <Prose>
+      No departments at {school.name} have institutionally aligned curriculum for this
+      occupation. The crosswalk below shows the system-wide TOP × CIP pathway that
+      prepares students for this occupation — a workforce gap at this college that
+      consortia partners may already address.
+    </Prose>
+  ) : (
+    <>
+      <Prose>{report.curriculum_alignment}</Prose>
+      <div style={{ marginTop: "16px", display: "flex", flexDirection: "column", gap: "2px" }}>
+        {report.curriculum_evidence.map((dept, i) => {
+          const courses: CourseItem[] = dept.courses.map((c) => ({
+            code: c.code,
+            name: c.name,
+            description: c.description,
+            learningOutcomes: c.learning_outcomes,
+            topCode: c.top_code ?? null,
+          }));
+          return (
+            <DepartmentRowWrapper
+              key={dept.department}
+              department={dept.department}
+              courseCount={dept.courses.length}
+              index={i}
+              brandColor={brandColor}
+              courses={courses}
+              schoolName={school.name}
+              socFilter={report.soc_code}
+            />
+          );
+        })}
+      </div>
+    </>
+  );
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
@@ -280,42 +321,6 @@ function ReportBody({
             embedded={embedded}
           />
         ) : null;
-        const isGap = report.curriculum_evidence.length === 0;
-        const coursesBlock = isGap ? (
-          <Prose>
-            No departments at {school.name} have institutionally aligned curriculum for this
-            occupation. The crosswalk below shows the system-wide TOP × CIP pathway that
-            prepares students for this occupation — a workforce gap at this college that
-            consortia partners may already address.
-          </Prose>
-        ) : (
-          <>
-            <Prose>{report.curriculum_alignment}</Prose>
-            <div style={{ marginTop: "16px", display: "flex", flexDirection: "column", gap: "2px" }}>
-              {report.curriculum_evidence.map((dept, i) => {
-                const courses: CourseItem[] = dept.courses.map((c) => ({
-                  code: c.code,
-                  name: c.name,
-                  description: c.description,
-                  learningOutcomes: c.learning_outcomes,
-                  topCode: c.top_code ?? null,
-                }));
-                return (
-                  <DepartmentRowWrapper
-                    key={dept.department}
-                    department={dept.department}
-                    courseCount={dept.courses.length}
-                    index={i}
-                    brandColor={brandColor}
-                    courses={courses}
-                    schoolName={school.name}
-                    socFilter={report.soc_code}
-                  />
-                );
-              })}
-            </div>
-          </>
-        );
 
         if (!embedded) {
           return (
@@ -331,7 +336,10 @@ function ReportBody({
         return (
           <Section title="Occupation Summary" brandColor={brandColor}>
             {demandBlock}
-            {isGap ? (<>{coursesBlock}{pathwayBlock}</>) : (<>{pathwayBlock}<div style={{ marginTop: "28px" }}>{coursesBlock}</div></>)}
+            {/* Non-gap: courses move to their own Curriculum Alignment section
+                below (after Program Outcomes). Gap: keep the explanatory note
+                before the pathway so its "crosswalk below" still holds. */}
+            {isGap ? (<>{coursesBlock}{pathwayBlock}</>) : pathwayBlock}
           </Section>
         );
       })()}
@@ -339,6 +347,16 @@ function ReportBody({
       {/* Optional injected section (SVAMP Program Outcomes); nothing for the
           per-college report. */}
       {programOutcomes}
+
+      {/* SVAMP (embedded): the aligned-course accordion is split into its own
+          "Curriculum Alignment" section here — after the Program Outcomes panel
+          (awards/enrollments), before Partnership Opportunities — so Occupation
+          Summary stays the demand + crosswalk overview, parallel to the
+          standalone per-college report's section. Gap colleges keep their note
+          in Occupation Summary, so no empty section appears for them. */}
+      {embedded && !isGap && (
+        <Section title="Curriculum Alignment" brandColor={brandColor}>{coursesBlock}</Section>
+      )}
 
       {/* Student Impact — narrative + headline metric callout +
           top students rendered via StudentRow with the Competency
@@ -892,7 +910,7 @@ function WorkforceGapVisualization({
 
 /* ── Partnership Opportunity employer row ─────────────────────────────── */
 
-function PartnerEmployerRow({
+export function PartnerEmployerRow({
   emp, index: _index, brandColor,
 }: {
   emp: ApiPartnershipOpportunityEmployer;

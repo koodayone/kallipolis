@@ -46,7 +46,8 @@ from ontology.schema import get_driver
 from ontology.programs import get_wage_outcomes
 from ontology.supply import get_coe_supply
 from partnerships.gather import _gather_curriculum_crosswalk
-from partnerships.models import CurriculumCrosswalk
+from partnerships.models import CurriculumCrosswalk, PartnershipOpportunityEmployer
+from partnerships.opportunity import _gather_partnership_opportunities
 from partnerships.opportunity_narrative import build_occupational_demand
 from partnerships.svamp import (
     SVAMP_COLLEGES,
@@ -251,6 +252,12 @@ class SvampOccupationReport(BaseModel):
     enrollment_by_college: list[CollegeSeries] = []
     curriculum_by_college: list[CollegeCourses] = []
     crosswalk: CurriculumCrosswalk | None = None     # SOC-anchored, consortium-union taught
+    # Regional employers hiring for this SOC (HIRES_FOR, region-scoped) — the
+    # same candidate-partner set the per-college targeted report surfaces,
+    # viewed at the consortium grain. Employers are regional, so the set is
+    # identical regardless of which member college is the lens.
+    partnership_opportunities: list[PartnershipOpportunityEmployer] = []
+    partnership_opportunities_narrative: str = ""
 
 
 # ── Scope ─────────────────────────────────────────────────────────────────
@@ -506,7 +513,7 @@ def build_svamp_occupation(soc: str) -> SvampOccupationReport:
         exclude_tops=SVAMP_MANDATE_EXCLUDED_TOPS,
     )
 
-    return _assemble_occupation(
+    report = _assemble_occupation(
         soc=soc,
         title=(demand["title"] if demand else None) or soc,
         description=demand["description"] if demand else None,
@@ -525,6 +532,18 @@ def build_svamp_occupation(soc: str) -> SvampOccupationReport:
         course_rows=course_rows,
         crosswalk=crosswalk,
     )
+    # Partnership Opportunities — regional employers hiring for this SOC. The
+    # gather is region-scoped (any member college resolves to the same Bay
+    # market), so this is the consortium-grain view of the same candidate set
+    # the per-college targeted report surfaces. aligned_course_count (the only
+    # college-specific field) is not rendered, so the passed college is moot.
+    report.partnership_opportunities = _gather_partnership_opportunities(SVAMP_COLLEGES[0], soc)
+    report.partnership_opportunities_narrative = (
+        f"Regional employers hiring for {report.title}, ranked by how central the role "
+        f"is to each firm's industry — candidate partners for the consortium's colleges "
+        f"to build or deepen this pathway."
+    )
+    return report
 
 
 # ── Assembly (pure — no I/O, so the invariants are unit-testable) ────────────

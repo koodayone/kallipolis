@@ -429,6 +429,8 @@ export type ApiSvampOccupationReport = {
   enrollment_by_college: ApiSvampCollegeSeries[];
   curriculum_by_college: ApiSvampCollegeCourses[];
   crosswalk: ApiCurriculumCrosswalk | null;     // SOC-anchored, consortium-union taught
+  partnership_opportunities: ApiPartnershipOpportunityEmployer[];
+  partnership_opportunities_narrative: string;
 };
 
 export async function getSvampPrograms(): Promise<ApiSvampProgramsLandscape> {
