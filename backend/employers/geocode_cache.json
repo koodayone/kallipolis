@@ -1,0 +1,268 @@
+{
+  "517534723": {
+    "lat": 37.323133359253,
+    "lng": -122.00127794829,
+    "matched": "5301 STEVENS CREEK BLVD, SANTA CLARA, CA, 95051",
+    "name": "Agilent Technologies",
+    "source": "census"
+  },
+  "830505079": {
+    "lat": 37.12029670265,
+    "lng": -121.643532941503,
+    "matched": "155 MAST ST, MORGAN HILL, CA, 95037",
+    "name": "Milgard Manufacturing",
+    "source": "census"
+  },
+  "259105617": {
+    "lat": 37.313038422082,
+    "lng": -121.852983563752,
+    "matched": "1980 SENTER RD, SAN JOSE, CA, 95112",
+    "name": "All FAB Precision Sheetmetal",
+    "source": "census"
+  },
+  "409535168": {
+    "lat": 37.395104886616,
+    "lng": -121.901745662201,
+    "matched": "2110 OAKLAND RD, SAN JOSE, CA, 95131",
+    "name": "MASS Precision",
+    "source": "census"
+  },
+  "404726770": {
+    "lat": 37.370658321643,
+    "lng": -121.922806048147,
+    "matched": "2033 GATEWAY PL, SAN JOSE, CA, 95110",
+    "name": "Creative Labs",
+    "source": "census"
+  },
+  "007518194": {
+    "lat": 37.413842857373,
+    "lng": -122.149693370247,
+    "matched": "1501 PAGE MILL RD, PALO ALTO, CA, 94304",
+    "name": "HP",
+    "source": "census"
+  },
+  "834439077": {
+    "lat": 37.412794627678,
+    "lng": -121.950034123119,
+    "matched": "3930 N 1ST ST, SAN JOSE, CA, 95134",
+    "name": "Logitech",
+    "source": "census"
+  },
+  "386870893": {
+    "lat": 37.391854741809,
+    "lng": -121.905387220548,
+    "matched": "980 ROCK AVE, SAN JOSE, CA, 95131",
+    "name": "Super Micro Computer",
+    "source": "census"
+  },
+  "003539285": {
+    "lat": 37.382308045798,
+    "lng": -121.971776464229,
+    "matched": "2485 AUGUSTINE DR, SANTA CLARA, CA, 95054",
+    "name": "Advanced Micro Devices",
+    "source": "census"
+  },
+  "205287717": {
+    "lat": 37.398319575572,
+    "lng": -121.931688781653,
+    "matched": "3061 ZANKER RD, SAN JOSE, CA, 95134",
+    "name": "Advantest America",
+    "source": "census"
+  },
+  "469338842": {
+    "lat": 37.379412277936,
+    "lng": -121.961588408207,
+    "matched": "3151 JAY ST, SANTA CLARA, CA, 95054",
+    "name": "Alps Electric North America",
+    "source": "census"
+  },
+  "755267300": {
+    "lat": 37.382140604903,
+    "lng": -121.948544373512,
+    "matched": "3391 KELLER ST, SANTA CLARA, CA, 95054",
+    "name": "Cirexx International",
+    "source": "census"
+  },
+  "409493285": {
+    "lat": 37.144882185396,
+    "lng": -121.652952910153,
+    "matched": "18225 SERENE DR, MORGAN HILL, CA, 95037",
+    "name": "Infineon Technologies",
+    "source": "census"
+  },
+  "103589792": {
+    "lat": 37.407012884957,
+    "lng": -121.914411540037,
+    "matched": "1590 BUCKEYE DR, MILPITAS, CA, 95035",
+    "name": "IXYS",
+    "source": "census"
+  },
+  "301378964": {
+    "lat": 37.237001978386,
+    "lng": -121.775985862984,
+    "matched": "30 GREAT OAKS BLVD, SAN JOSE, CA, 95119",
+    "name": "Jabil Circuit",
+    "source": "census"
+  },
+  "441384674": {
+    "lat": 37.237469099321,
+    "lng": -121.78165187441,
+    "matched": "6331 SAN IGNACIO AVE, SAN JOSE, CA, 95119",
+    "name": "BAE Systems",
+    "source": "census"
+  },
+  "498208370": {
+    "lat": 32.990539527928,
+    "lng": -117.076485189145,
+    "matched": "15120 INNOVATION DR, SAN DIEGO, CA, 92128",
+    "name": "Northrop Grumman",
+    "source": "census"
+  },
+  "780983244": {
+    "lat": 37.452807938687,
+    "lng": -122.114536108413,
+    "matched": "1880 EMBARCADERO RD, PALO ALTO, CA, 94303",
+    "name": "Archer Aviation",
+    "source": "census"
+  },
+  "705448930": {
+    "lat": 37.40408595394,
+    "lng": -121.901707257999,
+    "matched": "1554 W MONTAGUE EXPY, SAN JOSE, CA, 95131",
+    "name": "Becton Dickinson",
+    "source": "census"
+  },
+  "217448471": {
+    "lat": 37.390063509239,
+    "lng": -121.956977129729,
+    "matched": "1615 WYATT DR, SANTA CLARA, CA, 95054",
+    "name": "Cardiva Medical",
+    "source": "census"
+  },
+  "540851946": {
+    "lat": 37.373861832252,
+    "lng": -122.003635540844,
+    "matched": "1020 KIFER RD, SUNNYVALE, CA, 94086",
+    "name": "Intuitive Surgical",
+    "source": "census"
+  },
+  "896895067": {
+    "lat": 37.371543512078,
+    "lng": -121.924317771331,
+    "matched": "2077 GATEWAY PL, SAN JOSE, CA, 95110",
+    "name": "Lumenis",
+    "source": "census"
+  },
+  "618137335": {
+    "lat": 37.389951042411,
+    "lng": -122.048608602832,
+    "matched": "455 BERNARDO AVE, MOUNTAIN VIEW, CA, 94043",
+    "name": "Neuropace",
+    "source": "census"
+  },
+  "959532185": {
+    "lat": 37.42400637555,
+    "lng": -122.100043830167,
+    "matched": "925 COMMERCIAL ST, PALO ALTO, CA, 94303",
+    "name": "Sciton Technologies",
+    "source": "census"
+  },
+  "707124562": {
+    "lat": 37.409009698648,
+    "lng": -121.981927761049,
+    "matched": "5403 BETSY ROSS DR, SANTA CLARA, CA, 95054",
+    "name": "Shockwave Medical",
+    "source": "census"
+  },
+  "684676679": {
+    "lat": 37.393436834102,
+    "lng": -122.051073603285,
+    "matched": "685 E MIDDLEFIELD RD, MOUNTAIN VIEW, CA, 94043",
+    "name": "Siemens Ultrasound",
+    "source": "census"
+  },
+  "597849991": {
+    "lat": 37.386515939778,
+    "lng": -121.922236198773,
+    "matched": "2450 ZANKER RD, SAN JOSE, CA, 95131",
+    "name": "Tecan Systems",
+    "source": "census"
+  },
+  "007508286": {
+    "lat": 37.40454308641,
+    "lng": -121.984326818974,
+    "matched": "5100 PATRICK HENRY DR, SANTA CLARA, CA, 95054",
+    "name": "Coherent",
+    "source": "census"
+  },
+  "314953019": {
+    "lat": 37.426458732636,
+    "lng": -121.898005418321,
+    "matched": "311 TURQUOISE ST, MILPITAS, CA, 95035",
+    "name": "Lenthor Engineering",
+    "source": "census"
+  },
+  "830704755": {
+    "lat": 37.409767005157,
+    "lng": -121.991946353702,
+    "matched": "1284 FORGEWOOD AVE, SUNNYVALE, CA, 94089",
+    "name": "Unisem",
+    "source": "census"
+  },
+  "734003014": {
+    "lat": 37.2400176914,
+    "lng": -121.973767194399,
+    "matched": "103 COOPER CT, LOS GATOS, CA, 95032",
+    "name": "Superior Sensor Technology",
+    "source": "census"
+  },
+  "784191803": {
+    "lat": 36.890957072976,
+    "lng": -121.39683625885,
+    "matched": "2290 BERT DR, HOLLISTER, CA, 95023",
+    "name": "Alpha Teknova",
+    "source": "census"
+  },
+  "410149994": {
+    "lat": 37.3783132,
+    "lng": -121.9625211,
+    "matched": "Applied Materials Building 91, 3101, Scott Boulevard, Santa Clara, Santa Clara County, California, 95054, United States",
+    "name": "Applied Materials",
+    "source": "nominatim"
+  },
+  "008886194": {
+    "lat": 37.4057302,
+    "lng": -121.977909,
+    "matched": "5201, Great America Parkway, Santa Clara, Santa Clara County, California, 95054, United States",
+    "name": "California Eastern Lab",
+    "source": "nominatim"
+  },
+  "952680577": {
+    "lat": 37.4180433,
+    "lng": -121.9791873,
+    "matched": "Flextronics, 6201, America Center Drive, America Center, Alviso, San Jose, Santa Clara County, California, 95002, United States",
+    "name": "Flex",
+    "source": "nominatim"
+  },
+  "441395274": {
+    "lat": 37.4174613,
+    "lng": -122.1430738,
+    "matched": "3100 Hansen Way, Hansen Way, Palo Alto, Santa Clara County, California, 94306, United States",
+    "name": "Varian Medical Systems",
+    "source": "nominatim"
+  },
+  "550229496": {
+    "lat": 37.3915023,
+    "lng": -121.8958577,
+    "matched": "2000, Ringwood Avenue, Wayne, San Jose, Santa Clara County, California, 95131, United States",
+    "name": "ZOLL Circulation",
+    "source": "nominatim"
+  },
+  "401366934": {
+    "lat": 36.8527435,
+    "lng": -121.3903234,
+    "matched": "Pinnacles National Park Highway, Hollister, San Benito County, California, 95023, United States",
+    "name": "Trical Inc.",
+    "source": "nominatim"
+  }
+}

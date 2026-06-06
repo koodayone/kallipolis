@@ -36,6 +36,7 @@ from fastapi import APIRouter, HTTPException, Response
 from partnerships.models import OpportunityReport, SectorIndex
 from partnerships.opportunity import build_opportunity_report, build_sector_index
 from partnerships.svamp import SvampLandscape, build_svamp_landscape
+from partnerships.svamp_employers import SvampEmployersResult, build_svamp_employers
 from partnerships.svamp_programs import (
     ProgramReport,
     ProgramsLandscape,
@@ -359,5 +360,17 @@ def get_svamp_occupation(soc: str):
     taught-by-any-member-college."""
     try:
         return build_svamp_occupation(soc)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/svamp/employers", response_model=SvampEmployersResult)
+def get_svamp_employers():
+    """The SVAMP Employers lens — geocoded Bay-Area advanced-manufacturing
+    employers hiring for the 12 SVAMP occupations, for the regional employer
+    map. Curated to the AM sector + SVAMP-SOC relevance; reports shown-of-total
+    so an ungeocoded remainder is never hidden."""
+    try:
+        return build_svamp_employers()
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

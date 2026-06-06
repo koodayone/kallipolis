@@ -459,6 +459,34 @@ export async function getSvampOccupation(soc: string): Promise<ApiSvampOccupatio
   return res.json();
 }
 
+// SVAMP Employers lens — geocoded Bay-Area advanced-manufacturing employers
+// hiring for the SVAMP occupations, for the regional employer map.
+export type ApiSvampEmployer = {
+  name: string;
+  lat: number;
+  lng: number;
+  sector: string | null;
+  naics4: string | null;
+  naics_title: string | null;   // authoritative NAICS-4 industry title (matches naics4)
+  website: string | null;
+  description: string | null;
+  socs: string[];          // SVAMP SOCs this employer hires for (curated)
+  soc_count: number;
+};
+export type ApiSvampEmployersResult = {
+  region: string;
+  region_display: string;
+  sector: string;
+  employers: ApiSvampEmployer[];
+  shown: number;           // plotted (geocoded + in-frame)
+  total: number;           // curated candidates (incl. not-yet-geocoded)
+};
+export async function getSvampEmployers(): Promise<ApiSvampEmployersResult> {
+  const res = await fetch(`${API_BASE}/partnerships/svamp/employers`);
+  if (!res.ok) throw new Error("Failed to fetch SVAMP employers");
+  return res.json();
+}
+
 export async function getPartnershipOpportunity(
   socCode: string,
   college: string,

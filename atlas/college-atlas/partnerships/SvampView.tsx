@@ -16,7 +16,8 @@ import ProgramPathway from "@/college-atlas/partnerships/ProgramPathway";
 import CoverageMatrix from "@/college-atlas/partnerships/CoverageMatrix";
 import CurriculumPathway from "@/college-atlas/partnerships/CurriculumPathway";
 import OccupationRow, { type OccupationData, type OccupationDetail } from "@/college-atlas/occupations/OccupationRow";
-import { getSvampLandscape, getSvampPrograms, getSvampProgram, getSvampOccupation } from "@/college-atlas/partnerships/api";
+import EmployerMap, { type MapCollege } from "@/college-atlas/partnerships/EmployerMap";
+import { getSvampLandscape, getSvampPrograms, getSvampProgram, getSvampOccupation, getSvampEmployers } from "@/college-atlas/partnerships/api";
 import type {
   ApiSvampLandscape,
   ApiSvampCell,
@@ -25,6 +26,7 @@ import type {
   ApiSvampProgramsLandscape,
   ApiSvampProgramReport,
   ApiSvampOccupationReport,
+  ApiSvampEmployersResult,
 } from "@/college-atlas/partnerships/api";
 
 const GAP = "#e0654f";
@@ -801,19 +803,150 @@ function LensTabs({ lens, setLens }: { lens: Lens; setLens: (l: Lens) => void })
     </div>
   );
 }
-function LensComingSoon({ lens }: { lens: Lens }) {
-  const meta: Partial<Record<Lens, { label: string; desc: string; accent: string; Icon: React.FC }>> = {
-    programs: { label: "Program lens", accent: "#ff5a5a", Icon: FormBook, desc: "A TOP6-centric view of the curriculum that prepares for these occupations — programs, awards, and enrollment across the consortium." },
-    employers: { label: "Employer lens", accent: EMPLOYER_ACCENT, Icon: FormTower, desc: "A regional map of the advanced-manufacturing employers hiring for these occupations — the candidate partners across the Bay Area." },
-  };
-  const m = meta[lens];
-  if (!m) return null;
+// Member-college coordinates (fixed; the five SVAMP colleges) for the map's
+// context anchors. Hardcoded rather than imported from the State Atlas to keep
+// college-atlas free of a cross-feature dependency on state-atlas.
+const SVAMP_COLLEGE_GEO: Record<string, [number, number]> = {
+  "De Anza College": [37.31, -122.04],
+  "Foothill College": [37.36, -122.05],
+  "Evergreen Valley College": [37.34, -121.80],
+  "Mission College": [37.39, -121.98],
+  "Ohlone College": [37.53, -121.91],
+};
+
+// ── Employers lens — the regional employer map: Bay-Area advanced-manufacturing
+// employers hiring for the SVAMP occupations, in the State Atlas's map language,
+// with the member colleges anchored for context. Click an employer for detail.
+function EmployersLens({ colleges }: { colleges: CollegeRef[] }) {
+  const [data, setData] = useState<ApiSvampEmployersResult | null>(null);
+  const [err, setErr] = useState<string | null>(null);
+  const [selected, setSelected] = useState<string | null>(null);
+  const [hover, setHover] = useState<string | null>(null);   // synced map ↔ list
+  const [query, setQuery] = useState("");
+  const [narrow, setNarrow] = useState(false);
+  const rowRefs = useRef<Map<string, HTMLButtonElement | null>>(new Map());
+
+  useEffect(() => {
+    let alive = true;
+    getSvampEmployers().then((d) => { if (alive) setData(d); }).catch((e) => setErr(e.message));
+    return () => { alive = false; };
+  }, []);
+  useEffect(() => {
+    const f = () => setNarrow(window.innerWidth < 760);
+    f(); window.addEventListener("resize", f);
+    return () => window.removeEventListener("resize", f);
+  }, []);
+  // Scroll the selected row into view — matters when the selection arrives from
+  // a map-marker click (the row may be off the list's current scroll).
+  useEffect(() => {
+    if (selected) rowRefs.current.get(selected)?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  }, [selected]);
+
+  const anchors: MapCollege[] = useMemo(
+    () => colleges.flatMap((c) => {
+      const geo = SVAMP_COLLEGE_GEO[c.config.name];
+      // Full "… College" name on the map label, matching the State Atlas.
+      return geo ? [{ name: c.config.name, lat: geo[0], lng: geo[1], brand: c.config.brandColorLight }] : [];
+    }),
+    [colleges],
+  );
+
+  if (err) return <div style={{ padding: "60px 0", color: GAP, fontFamily: MONO, fontSize: 13 }}>Failed to load employers: {err}</div>;
+  if (!data) return <div style={{ display: "flex", justifyContent: "center", paddingTop: 80 }}><RisingSun style={{ width: 90, height: "auto", opacity: 0.4 }} /></div>;
+
+  const q = query.trim().toLowerCase();
+  // Display the list alphabetically — a searchable directory reads A→Z; the
+  // backend's breadth ranking ("top employer") drives the map, not list order.
+  const filtered = (q ? data.employers.filter((e) => e.name.toLowerCase().includes(q)) : data.employers)
+    .slice()
+    .sort((a, b) => a.name.localeCompare(b.name));
+  const toggle = (n: string) => setSelected((cur) => (cur === n ? null : n));
+
   return (
-    <div style={{ textAlign: "center", padding: "96px 20px 80px", fontFamily: FONT }}>
-      <div style={{ width: 46, height: 46, margin: "0 auto 18px", color: m.accent, opacity: 0.75 }}><m.Icon /></div>
-      <div style={{ fontSize: 15.5, fontWeight: 600, color: "#e8ecf4", letterSpacing: ".01em" }}>{m.label} — coming soon</div>
-      <div style={{ fontSize: 13.5, color: "#9aa6bd", maxWidth: 460, margin: "11px auto 0", lineHeight: 1.55 }}>{m.desc}</div>
-    </div>
+    <Section title="Regional Employer Map" brandColor={EMPLOYER_ACCENT}>
+      <Prose>
+        Top {data.region_display} advanced-manufacturing employers hiring for the twelve SVAMP target occupations. Member colleges are marked to show geographic context; select an employer for detail.
+      </Prose>
+      <div style={{ display: "flex", flexDirection: narrow ? "column" : "row", gap: 16, marginTop: 16, height: narrow ? "auto" : 560 }}>
+        {/* LEFT — map */}
+        <div style={{ flex: "1 1 0", minWidth: 0, minHeight: 0, height: narrow ? 420 : "100%" }}>
+          <EmployerMap
+            employers={data.employers}
+            colleges={anchors}
+            selected={selected}
+            hover={hover}
+            onSelect={toggle}
+            onHover={setHover}
+          />
+        </div>
+
+        {/* RIGHT — search + employer list (inline-expand detail) */}
+        <div style={{ flex: "1 1 0", minWidth: 0, minHeight: 0, height: narrow ? 420 : "100%", display: "flex", flexDirection: "column", border: "1px solid rgba(255,255,255,0.09)", borderRadius: 12, background: "rgba(0,0,0,0.18)", overflow: "hidden" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "12px 14px", borderBottom: "1px solid rgba(255,255,255,0.07)", flexShrink: 0 }}>
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0, opacity: 0.5 }}>
+              <circle cx="7" cy="7" r="5" stroke="rgba(255,255,255,0.8)" strokeWidth="1.3" />
+              <path d="M11 11l3.5 3.5" stroke="rgba(255,255,255,0.8)" strokeWidth="1.3" strokeLinecap="round" />
+            </svg>
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search employers…"
+              style={{ flex: 1, background: "none", border: "none", outline: "none", color: "#e8ecf4", fontFamily: FONT, fontSize: 13.5 }}
+            />
+          </div>
+          <div style={{ overflowY: "auto", flex: 1, minHeight: 0 }}>
+            {filtered.map((e) => {
+              const isSel = selected === e.name, isHov = hover === e.name;
+              return (
+                <button
+                  key={e.name}
+                  ref={(el) => { rowRefs.current.set(e.name, el); }}
+                  onClick={() => toggle(e.name)}
+                  onMouseEnter={() => setHover(e.name)}
+                  onMouseLeave={() => setHover(null)}
+                  style={{ display: "flex", alignItems: "stretch", gap: 12, width: "100%", textAlign: "left", padding: "12px 14px", border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)", cursor: "pointer", background: isSel ? hexA(EMPLOYER_ACCENT, 0.1) : isHov ? "rgba(255,255,255,0.04)" : "transparent", transition: "background .12s" }}
+                >
+                  <div style={{ width: 3, borderRadius: 2, background: EMPLOYER_ACCENT, opacity: isSel ? 1 : 0.7, flexShrink: 0 }} />
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontFamily: FONT, fontSize: 13.5, fontWeight: 600, color: "#ffffff", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{e.name}</div>
+                    {/* NAICS code (formal identifier, mono) → industry title
+                        (the concept, brighter sans). The pairing teaches the
+                        crosswalk; truncates collapsed, wraps full when selected. */}
+                    <div style={{ fontSize: 11, marginTop: 3, lineHeight: 1.45, whiteSpace: isSel ? "normal" : "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                      {e.naics4 && <span style={{ fontFamily: MONO, color: "rgba(255,255,255,0.4)" }}>NAICS {e.naics4}</span>}
+                      {e.naics4 && e.naics_title && <span style={{ color: "rgba(255,255,255,0.28)" }}> · </span>}
+                      {e.naics_title && <span style={{ fontFamily: FONT, color: "rgba(255,255,255,0.62)" }}>{e.naics_title}</span>}
+                    </div>
+                    {isSel && (
+                      <div style={{ marginTop: 10 }}>
+                        {e.website && (
+                          <a href={e.website} target="_blank" rel="noreferrer" onClick={(ev) => ev.stopPropagation()} style={{ fontFamily: MONO, fontSize: 11, color: EMPLOYER_ACCENT }}>
+                            {e.website.replace(/^https?:\/\//, "").replace(/\/$/, "")} ↗
+                          </a>
+                        )}
+                        {e.description && (
+                          <div style={{ fontFamily: FONT, fontSize: 12.5, color: "rgba(255,255,255,0.7)", lineHeight: 1.55, marginTop: e.website ? 7 : 0, whiteSpace: "normal" }}>{e.description}</div>
+                        )}
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 9 }}>
+                          {e.socs.map((s) => (
+                            <span key={s} style={{ fontFamily: FONT, fontSize: 11, color: "#cfe0f0", background: hexA(EMPLOYER_ACCENT, 0.14), border: `1px solid ${hexA(EMPLOYER_ACCENT, 0.3)}`, borderRadius: 6, padding: "2px 8px" }}>
+                              {ROLE_LABEL[s] ?? s}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </button>
+              );
+            })}
+            {filtered.length === 0 && (
+              <div style={{ padding: "24px 16px", fontFamily: FONT, fontSize: 13, color: "#9aa6bd" }}>No employers match “{query}”.</div>
+            )}
+          </div>
+        </div>
+      </div>
+    </Section>
   );
 }
 
@@ -1554,7 +1687,7 @@ export default function SvampView({ colleges, onBack }: Props) {
       ) : lens === "programs" ? (
         <ProgramsLens colleges={colleges} />
       ) : (
-        <LensComingSoon lens={lens} />
+        <EmployersLens colleges={colleges} />
       )}
     </>,
   );

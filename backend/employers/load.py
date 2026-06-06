@@ -37,6 +37,16 @@ logger = logging.getLogger(__name__)
 BATCH_SIZE = 500
 
 
+def _load_geocode_cache() -> dict:
+    """emp_id -> geocoded {lat, lng} from the decoupled cache
+    (employers/geocode_cache.json, produced by geocode.py). Kept separate from
+    employers.json so it survives pipeline regeneration; joined back here by the
+    stable EDD emp_id. Absent ⇒ employers load without coords and simply don't
+    appear on the employer map."""
+    path = Path(__file__).resolve().parent / "geocode_cache.json"
+    return json.loads(path.read_text()) if path.exists() else {}
+
+
 def _sector_tags_for_naics(naics4: str | None) -> list[str]:
     """Deterministic NAICS-4 → SWP sector lookup. Returns [] if NAICS-4
     is missing or not in CTE_NAICS_CODES (employer falls outside the
@@ -141,6 +151,7 @@ def load_employers(driver: Driver, employers: list[dict]) -> dict:
     from Neo4j happens via `cleanup_stale_employers`.
     """
     employers = [e for e in employers if _is_loadable(e)]
+    geo_cache = _load_geocode_cache()
     stats = {
         "employers": 0, "in_market": 0,
         "hires_for": 0, "identity_hires_for": 0,
@@ -156,12 +167,14 @@ def load_employers(driver: Driver, employers: list[dict]) -> dict:
         for emp in employers:
             naics4 = emp.get("naics4")
             sector_tags = _sector_tags_for_naics(naics4)
+            geo = geo_cache.get((emp.get("address") or {}).get("emp_id") or "") or {}
             session.run(
                 "MERGE (e:Employer {name: $name}) "
                 "SET e.sector = $sector, e.description = $description, "
                 "    e.website = $website, e.swp_sectors = $swp_sectors, "
                 "    e.naics4 = $naics4, "
-                "    e.operations_summary = $operations_summary",
+                "    e.operations_summary = $operations_summary, "
+                "    e.lat = $lat, e.lng = $lng",
                 name=emp["name"],
                 sector=emp["sector"],
                 description=emp.get("description"),
@@ -169,6 +182,8 @@ def load_employers(driver: Driver, employers: list[dict]) -> dict:
                 swp_sectors=sector_tags,
                 naics4=naics4,
                 operations_summary=emp.get("operations_summary"),
+                lat=geo.get("lat"),
+                lng=geo.get("lng"),
             )
             stats["employers"] += 1
 

@@ -24,6 +24,36 @@ body {
   height: 100vh;
 }
 
+/* Subtle dark scrollbars — one treatment across every scroll surface (State
+   Atlas panels, the SVAMP employer list, domain views) so the OS default light
+   bar never breaks the navy/translucent-white design language. */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.14);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.26);
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
 /* Rising sun holographic glow */
 @keyframes sun-glow {
   0%, 100% { filter: drop-shadow(0 0 4px rgba(201, 168, 76, 0.3)); }
