@@ -187,7 +187,7 @@ export default function ProgramPathway({ crosswalk, accent }: Props) {
         <span style={{ color: accent, fontFamily: MONO, fontWeight: 700, fontVariantNumeric: "tabular-nums" }}>
           {nSoc}
         </span>{" "}
-        {nSoc === 1 ? "advanced-manufacturing occupation" : "advanced-manufacturing occupations"}
+        {nSoc === 1 ? "advanced manufacturing occupation" : "advanced manufacturing occupations"}
       </div>
 
       <p

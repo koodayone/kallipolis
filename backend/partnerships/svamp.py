@@ -3,7 +3,7 @@ Advanced Manufacturing consortium.
 
 Bespoke prototype surface (not a general framework, not an ontology unit).
 It aggregates the existing per-(college, occupation) partnership machinery
-across a fixed set of five member colleges and twelve advanced-manufacturing
+across a fixed set of five member colleges and twelve advanced manufacturing
 occupations into one landscape, then drills back into the unchanged
 OpportunityReport.
 
@@ -52,7 +52,7 @@ SVAMP_COLLEGES: list[str] = [
     "Ohlone College",
 ]
 
-# The twelve advanced-manufacturing occupations the consortium targets.
+# The twelve advanced manufacturing occupations the consortium targets.
 SVAMP_SOCS: list[str] = [
     "17-3023", "17-3024", "17-3026", "17-3027", "17-3028", "17-3029",
     "49-9041", "49-9043", "51-4041", "51-9141", "51-9161", "51-9162",
@@ -122,7 +122,7 @@ AWARD_YEARS_SHOWN: int = 5
 # occupation- and region-owned, not program-owned.
 SVAMP_TOP_DIVISION: str = "09"
 
-# Programs the SVAMP director's advanced-manufacturing mandate excludes, even
+# Programs the SVAMP director's advanced manufacturing mandate excludes, even
 # though they sit in division 09 and the crosswalk legitimately links them to
 # SVAMP SOCs. The SOC link is occupation-category truth, but the employment
 # flows run to other industry verticals — automotive completers to dealerships,
@@ -269,7 +269,7 @@ def _build_executive_summary(region_display: str, agg: "SvampAggregate") -> str:
     view reads unambiguously as the demand side of the landscape."""
     s1 = (
         f"This view examines the regional demand landscape across the "
-        f"{agg.n_occupations} advanced-manufacturing occupations the Silicon "
+        f"{agg.n_occupations} advanced manufacturing occupations the Silicon "
         f"Valley Advanced Manufacturing Partnership targets in the "
         f"{region_display} regional labor market."
     )

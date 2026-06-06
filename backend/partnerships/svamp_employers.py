@@ -1,4 +1,4 @@
-"""SVAMP Employers lens — the advanced-manufacturing employers of the Bay Area,
+"""SVAMP Employers lens — the advanced manufacturing employers of the Bay Area,
 geocoded, for the regional employer map (the demand-side dual of the State
 Atlas's college map).
 
@@ -7,7 +7,7 @@ Curation (v1, to iterate): a Bay-region employer appears when it
   • hires (curated `IDENTITY_HIRES_FOR`) for ≥1 of the 12 SVAMP SOCs, and
   • has geocoded coordinates inside the Bay frame.
 Ranked by SVAMP-SOC breadth. We have no employee headcount, so "top" means
-most advanced-manufacturing-relevant, not largest (see the lens conversation).
+most advanced manufacturing-relevant, not largest (see the lens conversation).
 `shown` vs `total` is reported so a partly-ungeocoded set never reads as
 complete (no silent truncation).
 """

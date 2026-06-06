@@ -814,7 +814,7 @@ const SVAMP_COLLEGE_GEO: Record<string, [number, number]> = {
   "Ohlone College": [37.53, -121.91],
 };
 
-// ── Employers lens — the regional employer map: Bay-Area advanced-manufacturing
+// ── Employers lens — the regional employer map: Bay-Area advanced manufacturing
 // employers hiring for the SVAMP occupations, in the State Atlas's map language,
 // with the member colleges anchored for context. Click an employer for detail.
 function EmployersLens({ colleges }: { colleges: CollegeRef[] }) {
@@ -865,7 +865,7 @@ function EmployersLens({ colleges }: { colleges: CollegeRef[] }) {
   return (
     <Section title="Regional Employer Map" brandColor={EMPLOYER_ACCENT}>
       <Prose>
-        Top {data.region_display} advanced-manufacturing employers hiring for the twelve SVAMP target occupations. Member colleges are marked to show geographic context; select an employer for detail.
+        Top {data.region_display} advanced manufacturing employers hiring for the twelve SVAMP target occupations. Member colleges are marked to show geographic context; select an employer for detail.
       </Prose>
       <div style={{ display: "flex", flexDirection: narrow ? "column" : "row", gap: 16, marginTop: 16, height: narrow ? "auto" : 560 }}>
         {/* LEFT — map */}
@@ -1094,7 +1094,7 @@ function ProgramsLens({ colleges }: { colleges: CollegeRef[] }) {
       )}
       <Section title="Consortium Program Supply" brandColor={ACCENT}>
         <Prose>
-          This view examines the consortium supply landscape across the advanced-manufacturing TOP code programs (TOP division 09) supporting the Silicon Valley Advanced Manufacturing Partnership. In the latest reported year{land.latest_award_year ? ` (${land.latest_award_year})` : ""}, {awardingPrograms} of them awarded {totalAwards.toLocaleString()} credentials, preparing students for the 12 advanced-manufacturing occupations via the TOP-CIP-SOC crosswalk.
+          This view examines the consortium supply landscape across advanced manufacturing programs in TOP division 09 supporting the Silicon Valley Advanced Manufacturing Partnership. In the latest reported year{land.latest_award_year ? ` (${land.latest_award_year})` : ""}, {awardingPrograms} of them awarded {totalAwards.toLocaleString()} credentials, preparing students for the 12 advanced manufacturing occupations via the TOP-CIP-SOC crosswalk.
         </Prose>
         <SupplyTreemap tops={land.tops} selectedTop={matrixCollegeId ? null : top} onSelect={(t) => { setTop(t); setMatrixCollegeId(null); }} accent={ACCENT} caption="Area is latest-year credentials awarded — click a program for the consortium view." />
         <CoverageMatrix

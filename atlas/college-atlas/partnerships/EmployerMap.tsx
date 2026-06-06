@@ -1,5 +1,5 @@
 /**
- * EmployerMap — the SVAMP Employers lens: advanced-manufacturing employers of
+ * EmployerMap — the SVAMP Employers lens: advanced manufacturing employers of
  * the Bay Area plotted on the same map base + design language as the State
  * Atlas (react-simple-maps / geoMercator over the California counties GeoJSON),
  * but plotting employers instead of schools, framed to the Silicon Valley core,

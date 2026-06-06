@@ -313,7 +313,7 @@ def get_partnership_opportunity(
 def get_svamp_landscape():
     """Returns the aggregated partnership landscape for the Silicon Valley
     Advanced Manufacturing consortium: five member colleges × twelve
-    advanced-manufacturing occupations over one shared COE region.
+    advanced manufacturing occupations over one shared COE region.
 
     Bespoke, deterministic, read-only. Demand and the candidate employer set
     are regional (read once / deduped); supply and students are institutional
@@ -366,7 +366,7 @@ def get_svamp_occupation(soc: str):
 
 @router.get("/svamp/employers", response_model=SvampEmployersResult)
 def get_svamp_employers():
-    """The SVAMP Employers lens — geocoded Bay-Area advanced-manufacturing
+    """The SVAMP Employers lens — geocoded Bay-Area advanced manufacturing
     employers hiring for the 12 SVAMP occupations, for the regional employer
     map. Curated to the AM sector + SVAMP-SOC relevance; reports shown-of-total
     so an ungeocoded remainder is never hidden."""

@@ -7,7 +7,7 @@ DECOUPLED cache keyed by the stable EDD `emp_id` so it survives regeneration of
 employers.json (the loader joins it back by emp_id). Re-running skips anything
 already cached.
 
-Scope defaults to the in-region advanced-manufacturing set (the SVAMP employer
+Scope defaults to the in-region advanced manufacturing set (the SVAMP employer
 universe) but `--region` / `--sector` generalize it. The Census geocoder is
 free and needs no key; we use the single-address endpoint (a few dozen calls),
 built from the structured address fields rather than the loose `full` string.

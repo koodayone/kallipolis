@@ -207,7 +207,7 @@ export async function getPartnershipSectors(college: string): Promise<ApiSectorI
 // ── SVAMP aggregated landscape (Silicon Valley Advanced Manufacturing) ─────
 //
 // Bespoke consortium prototype. Aggregates the partnership machinery across
-// five member colleges × twelve advanced-manufacturing occupations. Demand
+// five member colleges × twelve advanced manufacturing occupations. Demand
 // and the employer set are regional (shared / deduped); supply and students
 // are institutional (summed). Drilling a cell reuses getPartnershipOpportunity
 // unchanged.
@@ -459,7 +459,7 @@ export async function getSvampOccupation(soc: string): Promise<ApiSvampOccupatio
   return res.json();
 }
 
-// SVAMP Employers lens — geocoded Bay-Area advanced-manufacturing employers
+// SVAMP Employers lens — geocoded Bay-Area advanced manufacturing employers
 // hiring for the SVAMP occupations, for the regional employer map.
 export type ApiSvampEmployer = {
   name: string;
