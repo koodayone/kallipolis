@@ -13,10 +13,15 @@
  *   - error branch throws on a non-ok response
  */
 
-import { describe, it, expect, afterEach, vi } from "vitest";
-import { getSvampProgram, getSvampOccupation } from "./api";
+import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
+import { getSvampProgram, getSvampOccupation, _resetSvampCacheForTests } from "./api";
 
 describe("partnerships svamp program api client", () => {
+  beforeEach(() => {
+    // The SVAMP getters session-cache their promises; reset per test so each
+    // test's fetch mock is actually exercised.
+    _resetSvampCacheForTests();
+  });
   afterEach(() => {
     vi.unstubAllGlobals();
   });

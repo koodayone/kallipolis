@@ -293,6 +293,12 @@ function svampCached<T>(key: string, make: () => Promise<T>): Promise<T> {
   return _svampCache.get(key) as Promise<T>;
 }
 
+/** Test-only: clear the SVAMP session cache so per-test fetch mocks stay
+ *  isolated (a success cached by one test must not satisfy the next). */
+export function _resetSvampCacheForTests(): void {
+  _svampCache.clear();
+}
+
 export async function getSvampLandscape(): Promise<ApiSvampLandscape> {
   return svampCached("landscape", async () => {
     const res = await fetch(`${API_BASE}/partnerships/svamp`);
