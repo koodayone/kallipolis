@@ -1,8 +1,9 @@
 /**
  * SVAMP report view ⇄ URL anchoring.
  *
- * Each surface lives at one route (the report at /svamp, the dashboard at
- * /svamp/dashboard); its view (lens + selection) is client-side state.
+ * Each surface lives at one route (the dashboard at /svamp — the root —
+ * and the report at /svamp/report); its view (lens + selection) is
+ * client-side state.
  * Encoding that state in the URL query makes any view shareable and
  * refresh-stable, and — since each change re-stamps the URL and fires the
  * analytics beacon — makes the analytics record *be* the shareable URL.
