@@ -53,6 +53,12 @@ _ALLOWED_TOP_LEVEL_DIRS = frozenset({
     "tests",
     "scripts",
     "docs",
+    # Operational infrastructure — the page-view beacon (analytics/api.py)
+    # and the rotating log directory it creates at runtime. Not ontology
+    # units: no product doc altitude exists for them. Kept in sync with
+    # vocabulary_alignment's non_feature set.
+    "analytics",
+    "logs",
 })
 
 _ALLOWED_TOP_LEVEL_FILES = frozenset({

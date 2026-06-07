@@ -131,8 +131,12 @@ def _list_backend_feature_dirs(repo_root: Path) -> set[str]:
     if not backend_dir.exists():
         return set()
     # Shared / infrastructure directories that are not features.
+    # (analytics = the page-view beacon; logs = its runtime log dir —
+    # operational infrastructure, not ontology units. Kept in sync with
+    # backend_layout._ALLOWED_TOP_LEVEL_DIRS.)
     non_feature = {
         "ontology", "llm", "pipeline", "tests", "scripts", "docs",
+        "analytics", "logs",
         "__pycache__",
     }
     result: set[str] = set()
