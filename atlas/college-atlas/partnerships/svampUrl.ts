@@ -1,15 +1,16 @@
 /**
  * SVAMP report view ⇄ URL anchoring.
  *
- * The report lives at one route (/svamp); its view (lens + selection) is
- * client-side state. Encoding that state in the URL query makes any view
- * shareable and refresh-stable, and — since each change re-stamps the URL and
- * fires the analytics beacon — makes the analytics record *be* the shareable
- * URL. Deliberately uses window.location + history.replaceState rather than
+ * Each surface lives at one route (the report at /svamp, the dashboard at
+ * /svamp/dashboard); its view (lens + selection) is client-side state.
+ * Encoding that state in the URL query makes any view shareable and
+ * refresh-stable, and — since each change re-stamps the URL and fires the
+ * analytics beacon — makes the analytics record *be* the shareable URL.
+ * Deliberately uses window.location + history.replaceState rather than
  * reactive useSearchParams, which avoids the static-export (output: "export")
  * Suspense/prerender pitfalls.
  *
- * Contract (query params on /svamp):
+ * Contract (query params, both surfaces):
  *   lens    = programs | occupations | employers   (absent ⇒ programs default)
  *   soc     = SOC code            (occupations lens)
  *   top     = TOP6 code           (programs lens)
