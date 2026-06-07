@@ -24,9 +24,14 @@
    and the analytics record is the URL — and a view can hop between
    /svamp and /svamp/dashboard with its selection intact. */
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { FONT, MONO } from "@/college-atlas/partnerships/reportChrome";
 import { readSvampParams, writeSvampParams } from "@/college-atlas/partnerships/svampUrl";
+import { getCollegeAtlasConfig } from "@/config/collegeAtlasConfigs";
+import SvampDashboardPrograms, { type CollegeRef } from "@/college-atlas/partnerships/SvampDashboardPrograms";
+
+// The five member colleges, in display order (mirrors /svamp's ClientPage).
+const SVAMP_COLLEGE_IDS = ["deanza", "evergreen", "foothill", "mission", "ohlone"];
 
 const BG = "#060d1f";
 const HAIR = "rgba(255,255,255,0.09)";
@@ -127,6 +132,12 @@ function LensPlaceholder({ lens }: { lens: DashLens }) {
 export default function SvampDashboard() {
   const [lens, setLens] = useState<DashLens>("programs");
   const wide = useWideViewport();
+  const colleges = useMemo(
+    () => SVAMP_COLLEGE_IDS
+      .map((id) => ({ id, config: getCollegeAtlasConfig(id) }))
+      .filter((c): c is CollegeRef => c.config !== null),
+    [],
+  );
 
   // Adopt the URL's lens after mount (post-hydration, mirroring the report's
   // static-export-safe pattern — no reactive useSearchParams).
@@ -180,7 +191,7 @@ export default function SvampDashboard() {
       {/* Lens body — Programs and Occupations share the dashboard grammar;
           Employers is its own state. */}
       <div style={{ minHeight: 0, display: "flex", flexDirection: "column" }}>
-        <LensPlaceholder lens={lens} />
+        {lens === "programs" ? <SvampDashboardPrograms colleges={colleges} /> : <LensPlaceholder lens={lens} />}
       </div>
     </div>
   );
