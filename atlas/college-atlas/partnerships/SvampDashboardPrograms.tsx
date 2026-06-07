@@ -159,7 +159,7 @@ export default function SvampDashboardPrograms({ colleges }: { colleges: College
           selection rings mark the named scope below. */}
       <ScopeBanner
         brand={scopeBrand}
-        scope={collegeName ? shortName(collegeName) : "Consortium"}
+        scope={collegeName ?? "Consortium"}
         name={topName}
         code={`TOP ${top}`}
       />

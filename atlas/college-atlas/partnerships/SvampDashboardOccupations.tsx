@@ -225,7 +225,7 @@ export default function SvampDashboardOccupations({ colleges }: { colleges: Coll
           selection rings mark the named scope below. */}
       <ScopeBanner
         brand={scopeBrand}
-        scope={collegeName ? shortName(collegeName) : "Consortium"}
+        scope={collegeName ?? "Consortium"}
         name={socTitle}
         code={soc ? `SOC ${soc}` : ""}
       />
