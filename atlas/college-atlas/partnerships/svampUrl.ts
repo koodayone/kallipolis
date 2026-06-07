@@ -19,12 +19,15 @@
  *             on lens; ProgramsLens only exists while the programs lens is
  *             active), and switchLens clears it on every lens change.
  *   emp     = employer name       (employers lens; URL-encoded)
+ *   panel   = expanded panel id   (dashboard only; e.g. programs.coverage —
+ *             a Grafana-style full-viewport panel view, shareable like any
+ *             other view state. The report ignores it.)
  */
 
 import { trackView } from "@/analytics";
 
-export type SvampParamKey = "lens" | "soc" | "college" | "top" | "emp";
-const KEYS: SvampParamKey[] = ["lens", "soc", "college", "top", "emp"];
+export type SvampParamKey = "lens" | "soc" | "college" | "top" | "emp" | "panel";
+const KEYS: SvampParamKey[] = ["lens", "soc", "college", "top", "emp", "panel"];
 
 export type SvampParams = Partial<Record<SvampParamKey, string>>;
 

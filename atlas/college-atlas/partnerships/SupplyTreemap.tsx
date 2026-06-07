@@ -103,9 +103,12 @@ export default function SupplyTreemap({
           {renderCells()}
         </svg>
       )}
-      <div style={{ fontFamily: FONT, fontSize: 12.5, color: "#9aa6bd", marginTop: 10 }}>
-        {caption ?? "Area is latest-year credentials awarded across the consortium — click a program to open its report."}
-      </div>
+      {/* Caption is report-only — the dashboard visualizes without prose. */}
+      {!fill && (
+        <div style={{ fontFamily: FONT, fontSize: 12.5, color: "#9aa6bd", marginTop: 10 }}>
+          {caption ?? "Area is latest-year credentials awarded across the consortium — click a program to open its report."}
+        </div>
+      )}
       {hd && hover && typeof document !== "undefined" && createPortal(
         <div style={{
           position: "fixed", left: Math.min(hover.x + 14, window.innerWidth - 356), top: hover.y + 14,

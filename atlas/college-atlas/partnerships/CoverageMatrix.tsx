@@ -50,6 +50,10 @@ type Props = {
   // Clicking the unit label selects the whole row (the aggregate view), the
   // same entry the treemap provides. Omitted ⇒ labels aren't clickable.
   onSelectRow?: (rowId: string) => void;
+  // flush: drop the standalone figure chrome (top margin + bordered card) —
+  // for the dashboard, where the DashPanel is the card and the matrix should
+  // sit flush in it. Default false ⇒ the report's figure, unchanged.
+  flush?: boolean;
 };
 
 // Selection reads as white-glow everywhere — the whole-row bracket (aggregate)
@@ -60,7 +64,7 @@ const SEL_TEXT = "rgba(255,255,255,.98)";
 const SEL_GLOW = "0 0 8px rgba(255,255,255,.35)";
 
 export default function CoverageMatrix({
-  cols, rows, level, selectedRow, selectedCol, cornerLabel, gapCellHint, legend, caption, onSelect, onSelectRow,
+  cols, rows, level, selectedRow, selectedCol, cornerLabel, gapCellHint, legend, caption, onSelect, onSelectRow, flush = false,
 }: Props) {
   // ROW mode = a row is selected with no specific column (aggregate / treemap)
   // → neutral white glow. CELL mode (a specific college) → that college's brand.
@@ -70,10 +74,15 @@ export default function CoverageMatrix({
   // unit column self-evidently reads as a row selector.
   const [hoverRow, setHoverRow] = useState<string | null>(null);
 
+  // flush also makes the matrix HEIGHT-RESPONSIVE: rows flex-grow over their
+  // natural sizes (never shrink — in auto bands the matrix still defines its
+  // row height), so an expanded panel's surplus distributes into the rows
+  // and the swatches stretch with them (cell size encodes nothing, so
+  // stretching is semantically free — unlike value-encoding marks).
   return (
     <>
-    <div style={{ marginTop: 20, border: "1px solid rgba(255,255,255,.09)", borderRadius: 12, background: "rgba(0,0,0,.18)", padding: "16px 18px", overflowX: "auto" }}>
-      <div style={{ minWidth: LABEL_W + cols.length * (CELL_MIN + 4) }}>
+    <div style={flush ? { overflowX: "auto", padding: "4px 2px 0", flex: 1, minHeight: 0, display: "flex", flexDirection: "column" } : { marginTop: 20, border: "1px solid rgba(255,255,255,.09)", borderRadius: 12, background: "rgba(0,0,0,.18)", padding: "16px 18px", overflowX: "auto" }}>
+      <div style={{ minWidth: LABEL_W + cols.length * (CELL_MIN + 4), ...(flush ? { flex: 1, minHeight: 0, display: "flex", flexDirection: "column" } : {}) }}>
         {/* header row */}
         <div style={{ display: "flex", gap: 4, alignItems: "flex-end", padding: "0 6px" }}>
           <div style={{ flex: `0 0 ${LABEL_W}px`, fontFamily: MONO, fontSize: 9.5, letterSpacing: ".1em", textTransform: "uppercase", color: "#5e6a83", whiteSpace: "nowrap", paddingBottom: 11 }}>
@@ -101,7 +110,8 @@ export default function CoverageMatrix({
             <div
               key={"r-" + row.id}
               style={{
-                display: "flex", gap: 4, alignItems: "center", padding: ROW_PAD, borderRadius: 8,
+                display: "flex", gap: 4, alignItems: flush ? "stretch" : "center", padding: ROW_PAD, borderRadius: 8,
+                ...(flush ? { flex: "1 0 auto" } : {}),
                 boxShadow: rowHalo
                   ? `inset 0 0 0 1.5px ${SEL_RING}, 0 0 14px rgba(255,255,255,.12)`
                   : rowPreview ? "inset 0 0 0 1.5px rgba(255,255,255,.28)" : "none",
@@ -113,7 +123,7 @@ export default function CoverageMatrix({
                 onClick={() => onSelectRow?.(row.id)}
                 onMouseEnter={() => setHoverRow(row.id)}
                 onMouseLeave={() => setHoverRow(null)}
-                style={{ flex: `0 0 ${LABEL_W}px`, minWidth: 0, paddingRight: 14, cursor: onSelectRow ? "pointer" : "default" }}
+                style={{ flex: `0 0 ${LABEL_W}px`, minWidth: 0, paddingRight: 14, cursor: onSelectRow ? "pointer" : "default", ...(flush ? { display: "flex", flexDirection: "column", justifyContent: "center" } : {}) }}
               >
                 <div style={{ fontSize: 12.5, fontWeight: rowSel ? 600 : 500, color: rowSel ? (rowMode ? SEL_TEXT : selColBrand) : "rgba(255,255,255,.82)", textShadow: rowMode && rowSel ? SEL_GLOW : "none", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{row.label}</div>
                 <div style={{ fontFamily: MONO, fontSize: 10, color: rowSel ? (rowMode ? "rgba(255,255,255,.6)" : selColBrand) : "#5e6a83", letterSpacing: ".02em", marginTop: 1, transition: "color .15s" }}>{row.sublabel}</div>
@@ -125,7 +135,8 @@ export default function CoverageMatrix({
                 const isGap = lv === "none";
                 const gapBg = "rgba(255,255,255,.035)";
                 const base: CSSProperties = {
-                  flex: "1 1 0", minWidth: CELL_MIN, height: 32, borderRadius: 7, cursor: "pointer",
+                  flex: "1 1 0", minWidth: CELL_MIN, borderRadius: 7, cursor: "pointer",
+                  ...(flush ? { minHeight: 32 } : { height: 32 }),
                   background: isGap ? gapBg : lv === "strong" ? hexA(brand, 0.9) : hexA(brand, 0.3),
                   boxShadow: isGap ? "none" : `inset 0 0 0 1px ${hexA(brand, 0.5)}`,
                   transition: "transform .12s, box-shadow .12s, background .12s",

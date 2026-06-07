@@ -74,9 +74,12 @@ function DemandTreemap({ cells, total, selected, onSelect, fill = false }: { cel
         {data.map(renderCell)}
       </svg>
       )}
-      <div style={{ fontFamily: FONT, fontSize: 12.5, color: "#9aa6bd", marginTop: 10 }}>
-        Area is annual openings. The top three occupations account for <span style={{ color: "#e8ecf4", fontWeight: 600 }}>{top3sh}%</span> of regional demand — click an occupation for the consortium view.
-      </div>
+      {/* Caption is report-only — the dashboard visualizes without prose. */}
+      {!fill && (
+        <div style={{ fontFamily: FONT, fontSize: 12.5, color: "#9aa6bd", marginTop: 10 }}>
+          Area is annual openings. The top three occupations account for <span style={{ color: "#e8ecf4", fontWeight: 600 }}>{top3sh}%</span> of regional demand — click an occupation for the consortium view.
+        </div>
+      )}
       {/* Floating tooltip, portaled to <body> so position:fixed escapes the
           transformed overlay ancestor and tracks the cursor in viewport space. */}
       {hd && hover && typeof document !== "undefined" && createPortal(
