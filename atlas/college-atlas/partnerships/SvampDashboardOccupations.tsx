@@ -1,15 +1,18 @@
 "use client";
 
 /* ── Dashboard · Occupations lens (Phase 4) ─────────────────────────────────
-   The dashboard grammar over the SOC axis: demand treemap + coverage matrix
-   across the top, the single-scope band below (decided B2).
+   The dashboard grammar over the SOC axis: coverage matrix (lead, 2:1) +
+   demand treemap across the top, the single-scope band below (decided B2;
+   proportions decided in the layout lab 2026-06-06).
 
    Scope semantics mirror the Programs lens with the axis flipped:
-   - Consortium scope (treemap rect / matrix row): demand summary (openings,
-     wage, growth, employment, COE-projected supply and the GAP — the
-     occupation axis owns the gap), awards summed over feeding programs with
-     the shortage-floor demand line (every feeding program counted in full vs
-     the SOC's counted-once openings), enrollments, and the feeding programs.
+   - Consortium scope (treemap rect / matrix row): awards summed over feeding
+     programs with the shortage-floor demand line (every feeding program
+     counted in full vs the SOC's counted-once openings — the supply-vs-demand
+     read lives there), enrollments, the crosswalk (which carries the TOP→SOC
+     structure — no flat feeding-programs list), and the Occupation Summary
+     glyph quartet (the four observed COE figures; the modeled supply/gap
+     rows died with the old Demand & Gap panel).
    - College scope (matrix cell): that college's feeding programs' own series.
      Deliberately NO wage panel (statewide TOP6 data under a college brand
      asserts an outcome the data cannot support — same curation as the report)
@@ -24,7 +27,8 @@ import { SchoolConfig } from "@/config/schoolConfig";
 import DemandTreemap from "@/college-atlas/partnerships/DemandTreemap";
 import CoverageMatrix from "@/college-atlas/partnerships/CoverageMatrix";
 import TrendChart from "@/college-atlas/partnerships/TrendChart";
-import { DashPanel } from "@/college-atlas/partnerships/SvampDashboard";
+import CurriculumPathway from "@/college-atlas/partnerships/CurriculumPathway";
+import { DashPanel, DashBandSet, ScopeBanner, type DashBandDef } from "@/college-atlas/partnerships/SvampDashboard";
 import { shortName, hexA, leadOverlayColors, awardYearLabel } from "@/college-atlas/partnerships/chartKit";
 import { getSvampLandscape, getSvampOccupation } from "@/college-atlas/partnerships/api";
 import type { ApiSvampLandscape, ApiSvampCell, ApiSvampOccupationReport } from "@/college-atlas/partnerships/api";
@@ -43,11 +47,56 @@ function level(cell: ApiSvampCell | undefined): "none" | "partial" | "strong" {
   return enrolled || awarded ? "partial" : "none";
 }
 
-function StatRow({ k, v, accent }: { k: string; v: string; accent?: string }) {
+/* ── Occupation Summary — the four observed COE figures as a glyph quartet
+   (decided S1a at /svamp/concepts/stats, 2026-06-06). The modeled rows
+   (consortium supply, gap) died with the old "Demand & Gap" panel — the
+   supply-vs-demand read lives in the Awards chart's demand line. The glyphs
+   are new members of the platonic-form family (32×32, stroke 1.8, reduced
+   archetypes): doorway = an opening, banknote = the wage, rising line =
+   growth, crew = the employed base. */
+const FormDoorway: React.FC = () => (
+  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{ width: "100%", height: "100%" }}>
+    <path d="M9 27V6h14v21" /><path d="M5 27h22" /><path d="M13 27V9.5l7 2.2V27" /><path d="M17.4 18.6v.01" />
+  </svg>
+);
+const FormBanknote: React.FC = () => (
+  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{ width: "100%", height: "100%" }}>
+    <rect x="4" y="9" width="24" height="14" rx="2" /><circle cx="16" cy="16" r="3.6" /><path d="M8 13v6M24 13v6" />
+  </svg>
+);
+const FormRise: React.FC = () => (
+  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{ width: "100%", height: "100%" }}>
+    <path d="M5 24l8-8 4 4 9-9" /><path d="M20.5 11H26v5.5" /><path d="M5 27.5h22" />
+  </svg>
+);
+const FormCrew: React.FC = () => (
+  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{ width: "100%", height: "100%" }}>
+    <circle cx="12" cy="11.5" r="3.8" /><path d="M5 25.5c0-4.2 3.1-6.8 7-6.8s7 2.6 7 6.8" />
+    <circle cx="21.5" cy="13" r="3" /><path d="M21.5 19.4c3.2 0 5.4 2.1 5.7 5.4" />
+  </svg>
+);
+
+function OccupationSummary({ report }: { report: ApiSvampOccupationReport | null }) {
+  // All four figures render as peers — no accent (revised in build,
+  // 2026-06-06): pre-ranking one number is editorial, and which figure
+  // matters most is the reader's call (a negative growth projection can
+  // outrank openings). The panel's header tick carries the lens color.
+  const cells: { k: string; v: string; sub: string; Icon: React.FC }[] = [
+    { k: "Annual Openings", v: report?.annual_openings != null ? report.annual_openings.toLocaleString("en-US") : "—", sub: "/yr · projected", Icon: FormDoorway },
+    { k: "Median Wage", v: report?.annual_wage != null ? "$" + report.annual_wage.toLocaleString("en-US") : "—", sub: "annual", Icon: FormBanknote },
+    { k: "Growth", v: report?.growth_rate != null ? (report.growth_rate * 100).toFixed(1) + "%" : "—", sub: "projection period", Icon: FormRise },
+    { k: "Employment", v: report?.employment != null ? report.employment.toLocaleString("en-US") : "—", sub: "regional jobs", Icon: FormCrew },
+  ];
   return (
-    <div style={{ display: "flex", alignItems: "baseline", gap: 8, padding: "5px 0", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
-      <span style={{ fontFamily: MONO, fontSize: 9.5, letterSpacing: "0.08em", color: "#5e6a83", flex: 1, textTransform: "uppercase" }}>{k}</span>
-      <span style={{ fontFamily: MONO, fontSize: 12.5, fontWeight: 600, color: accent ?? "rgba(255,255,255,0.88)" }}>{v}</span>
+    <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1fr 1fr", gridTemplateRows: "1fr 1fr" }}>
+      {cells.map((s, i) => (
+        <div key={s.k} style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", gap: 5, borderRight: i % 2 === 0 ? "1px solid rgba(255,255,255,0.05)" : "none", borderBottom: i < 2 ? "1px solid rgba(255,255,255,0.05)" : "none" }}>
+          <span style={{ width: 22, height: 22, color: "#5e6a83", display: "flex" }}><s.Icon /></span>
+          <div style={{ fontFamily: MONO, fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", color: "#5e6a83" }}>{s.k}</div>
+          <div style={{ fontFamily: MONO, fontSize: 31, fontWeight: 600, color: "#e8ecf4", lineHeight: 1 }}>{s.v}</div>
+          <div style={{ fontFamily: FONT, fontSize: 11, color: "#5e6a83" }}>{s.sub}</div>
+        </div>
+      ))}
     </div>
   );
 }
@@ -123,84 +172,106 @@ export default function SvampDashboardOccupations({ colleges }: { colleges: Coll
     scopeBrand,
   );
 
-  const fmt = (v: number | null | undefined, suffix = "") => (v == null ? "—" : v.toLocaleString("en-US") + suffix);
+  // Panels as manifest entries — author-qualified ids are the layout lab's
+  // weight keys (a panel keeps its weight across scope recomposition).
+  const demandPanel = {
+    id: "occupations.demand",
+    node: (
+      <DashPanel title="Regional Demand" authority="COE" accent={ACCENT}>
+        <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
+          <DemandTreemap cells={refCells} total={land.aggregate.regional_demand_total} selected={collegeId ? null : soc} onSelect={selectConsortium} fill />
+        </div>
+      </DashPanel>
+    ),
+  };
+  const coveragePanel = {
+    id: "occupations.coverage",
+    // Coverage leads the top band at 2:1 over the demand treemap — decided in
+    // the layout lab (2026-06-06), mirroring the Programs lens.
+    weight: 2,
+    node: (
+      <DashPanel title="Occupation Coverage" authority="DataMart" accent={ACCENT}>
+        <div>
+          <CoverageMatrix
+            cols={cols}
+            rows={rows}
+            level={(r, c) => level(cellOf(r, c))}
+            selectedRow={soc}
+            selectedCol={collegeId}
+            cornerLabel="↓ occupation · → college"
+            gapCellHint="no enrollment or awards here"
+            legend={[
+              { k: "Covered", sub: "enrollment & awards", bg: "rgba(148,168,201,.92)", ring: true },
+              { k: "Partial", sub: "enrollment or awards", bg: "rgba(148,168,201,.3)", ring: true },
+              { k: "Gap", sub: "neither", bg: "rgba(255,255,255,.035)", ring: false },
+            ]}
+            caption="A row is the consortium scope — a cell is that college's scope."
+            onSelect={selectCell}
+            onSelectRow={selectConsortium}
+          />
+        </div>
+      </DashPanel>
+    ),
+  };
 
   return (
-    <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column", gap: 8 }}>
-      {/* Top band — regional demand hero + coverage. */}
-      <div style={{ flex: 5, minHeight: 0, display: "flex", gap: 8 }}>
-        <DashPanel title="Regional demand" authority="COE" accent={ACCENT}>
-          <div style={{ flex: 1, minHeight: 0, overflow: "hidden" }}>
-            <DemandTreemap cells={refCells} total={land.aggregate.regional_demand_total} selected={collegeId ? null : soc} onSelect={selectConsortium} />
+    <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+      {/* One band set per lens: top band (demand hero + coverage), then the
+          scope bands — consortium: summary+gap · awards vs demand, then
+          enrollments · crosswalk; college: awards · enrollments (no wages,
+          no demand line — see header). The set is the layout lab's swap
+          boundary. */}
+      <DashBandSet bands={[
+        { id: "occupations.top", panels: [coveragePanel, demandPanel] },
+        ...buildScopeBands(),
+      ]} />
+    </div>
+  );
+
+  // Hoisted so the return stays a readable manifest; closes over the scope
+  // state above.
+  function buildScopeBands(): DashBandDef[] {
+    // Scope banner — who the bands below are about. Interstitial chrome on
+    // the first scope band, outside the swap system; pins under the lens rail
+    // on scroll (see ScopeBanner).
+    const scopeStrip = (
+      <ScopeBanner
+        brand={scopeBrand}
+        scope={collegeName ? shortName(collegeName) : "Consortium"}
+        name={socTitle}
+        code={soc ? `SOC ${soc}` : ""}
+      />
+    );
+    const summaryPanel = {
+      id: "occupations.summary",
+      node: (
+        // Scope-keyed chrome (the report's reportBrand behavior): lens red at
+        // consortium, the college's brand in college scope.
+        <DashPanel title="Occupation Summary" authority="COE" accent={scopeBrand}>
+          <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
+            <OccupationSummary report={report} />
           </div>
         </DashPanel>
-        <DashPanel title="Coverage — college × occupation" authority="DataMart" accent={ACCENT}>
-          <div style={{ flex: 1, minHeight: 0, overflowY: "auto" }}>
-            <CoverageMatrix
-              cols={cols}
-              rows={rows}
-              level={(r, c) => level(cellOf(r, c))}
-              selectedRow={soc}
-              selectedCol={collegeId}
-              cornerLabel="↓ occupation · → college"
-              gapCellHint="no feeding-program activity here"
-              legend={[
-                { k: "Covered", sub: "enrollment & awards", bg: "rgba(148,168,201,.92)", ring: true },
-                { k: "Partial", sub: "enrollment or awards", bg: "rgba(148,168,201,.3)", ring: true },
-                { k: "Gap", sub: "neither", bg: "rgba(255,255,255,.035)", ring: false },
-              ]}
-              caption="A row is the consortium scope — a cell is that college's scope."
-              onSelect={selectCell}
-              onSelectRow={selectConsortium}
-            />
-          </div>
-        </DashPanel>
-      </div>
-
-      {/* Scope row. */}
-      <div style={{ display: "flex", alignItems: "baseline", gap: 10, flex: "none" }}>
-        <span style={{ fontFamily: FONT, fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", color: scopeBrand, whiteSpace: "nowrap" }}>
-          {collegeName ? shortName(collegeName).toUpperCase() : "CONSORTIUM"}
-        </span>
-        <span style={{ fontFamily: FONT, fontSize: 12.5, color: "rgba(255,255,255,0.85)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{socTitle}</span>
-        <span style={{ fontFamily: MONO, fontSize: 10, color: hexA(scopeBrand, 0.65), whiteSpace: "nowrap" }}>{soc}</span>
-        {collegeName && (
-          <button onClick={() => soc && selectConsortium(soc)} style={{ appearance: "none", border: "1px solid rgba(255,255,255,0.12)", background: "transparent", color: "#9aa6bd", fontFamily: MONO, fontSize: 9.5, borderRadius: 6, padding: "2px 8px", cursor: "pointer" }}>
-            ← consortium
-          </button>
-        )}
-      </div>
-
-      {/* Scope band. Consortium: summary+gap · awards vs demand · enrollments ·
-          feeding programs. College: that college's per-program series + its
-          feeding-program facts (no wages, no demand line — see header). */}
-      <div style={{ flex: 4, minHeight: 0, display: "flex", gap: 8 }}>
-        {!collegeName && (
-          <DashPanel title="Demand & gap" authority="COE" accent={ACCENT} grow={0.7}>
-            <div style={{ flex: 1, minHeight: 0, overflowY: "auto" }}>
-              <StatRow k="Annual openings" v={fmt(report?.annual_openings)} />
-              <StatRow k="Median wage" v={report?.annual_wage != null ? "$" + report.annual_wage.toLocaleString("en-US") : "—"} />
-              <StatRow k="Growth" v={report?.growth_rate != null ? (report.growth_rate * 100).toFixed(1) + "%" : "—"} />
-              <StatRow k="Employment" v={fmt(report?.employment)} />
-              <StatRow k="Consortium supply · projected" v={fmt(report?.consortium_supply)} />
-              <StatRow k="Gap" v={fmt(report?.gap, "/yr")} accent={DEMAND_ACCENT} />
-            </div>
-          </DashPanel>
-        )}
-        <DashPanel title="Awards · feeding programs" authority={collegeName ? "DataMart" : "DataMart · COE"} accent={scopeBrand}>
-          <div style={{ flex: 1, minHeight: 0, overflowY: "auto" }}>
+      ),
+    };
+    const awardsPanel = {
+      id: "occupations.awards",
+      node: (
+        <DashPanel title="Awards" authority={collegeName ? "DataMart" : "DataMart · COE"} accent={scopeBrand}>
+          <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
             {collegeName ? (
               cellPrograms.length > 0 ? (
                 <TrendChart
                   key={collegeId + ":awards"}
                   series={cellPrograms.map((p) => ({ top6: p.top6, name: p.name, vals: p.awards ?? [] }))}
-                  labels={land.award_years.map(awardYearLabel)}
+                  labels={land!.award_years.map(awardYearLabel)}
                   defaultMode="stacked"
                   colorOf={programColor}
                   empty={!cellPrograms.some((p) => (p.awards ?? []).some((v) => v > 0))}
+                  fill
                 />
               ) : (
-                <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", color: "#5e6a83", fontFamily: MONO, fontSize: 10.5 }}>no feeding-program activity here</div>
+                <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", color: "#5e6a83", fontFamily: MONO, fontSize: 10.5 }}>no program activity here</div>
               )
             ) : (
               report && (
@@ -216,26 +287,33 @@ export default function SvampDashboardOccupations({ colleges }: { colleges: Coll
                   demandLine={(report.annual_openings ?? 0) > 0
                     ? { value: report.annual_openings as number, label: "Regional Demand · COE", color: DEMAND_ACCENT }
                     : undefined}
+                  fill
                 />
               )
             )}
           </div>
         </DashPanel>
-        <DashPanel title="Enrollments · feeding programs" authority="DataMart" accent={scopeBrand}>
-          <div style={{ flex: 1, minHeight: 0, overflowY: "auto" }}>
+      ),
+    };
+    const enrollPanel = {
+      id: "occupations.enrollments",
+      node: (
+        <DashPanel title="Enrollments" authority="DataMart" accent={scopeBrand}>
+          <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
             {collegeName ? (
               cellPrograms.length > 0 ? (
                 <TrendChart
                   key={collegeId + ":enroll"}
                   series={cellPrograms.map((p) => ({ top6: p.top6, name: p.name, vals: p.enrollment ?? [] }))}
-                  labels={land.enrollment_terms}
+                  labels={land!.enrollment_terms}
                   defaultMode="lines"
                   colorOf={programColor}
                   axisStyle="twoTier"
                   empty={!cellPrograms.some((p) => (p.enrollment ?? []).some((v) => v != null && v > 0))}
+                  fill
                 />
               ) : (
-                <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", color: "#5e6a83", fontFamily: MONO, fontSize: 10.5 }}>no feeding-program activity here</div>
+                <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", color: "#5e6a83", fontFamily: MONO, fontSize: 10.5 }}>no program activity here</div>
               )
             ) : (
               report && (
@@ -249,27 +327,66 @@ export default function SvampDashboardOccupations({ colleges }: { colleges: Coll
                   modeLabels={{ lines: "Per school", stacked: "Stacked" }}
                   hideSeriesTag
                   empty={report.enrollment_by_college.length === 0}
+                  fill
                 />
               )
             )}
           </div>
         </DashPanel>
-        <DashPanel title="Feeding programs" authority="DataMart" accent="#50c878" grow={0.8}>
-          <div style={{ flex: 1, minHeight: 0, overflowY: "auto" }}>
-            {(collegeName ? cellPrograms.map((p) => ({ top6: p.top6, name: p.name, n: p.awards_recent })) : (report?.feeding_tops ?? []).map((t) => ({ top6: t.top6, name: t.name, n: t.awards_total })))
-              .map((p) => (
-                <div key={p.top6} style={{ display: "flex", alignItems: "baseline", gap: 8, padding: "5px 0", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
-                  <span style={{ fontFamily: MONO, fontSize: 9.5, color: "#5e6a83", flex: "none" }}>{p.top6}</span>
-                  <span style={{ fontFamily: FONT, fontSize: 11.5, color: "rgba(255,255,255,0.82)", flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{p.name}</span>
-                  <span style={{ fontFamily: MONO, fontSize: 10.5, color: "#9aa6bd", flex: "none" }}>{p.n.toLocaleString("en-US")}</span>
-                </div>
-              ))}
-            <div style={{ fontFamily: MONO, fontSize: 8.5, color: "#5e6a83", paddingTop: 6 }}>
-              {collegeName ? "latest-year awards at this college" : "latest-year awards · consortium · counted in full per SOC"}
-            </div>
-          </div>
-        </DashPanel>
-      </div>
-    </div>
-  );
+      ),
+    };
+    // Coverage drives the band set: with no feeding-program activity in
+    // scope, the trend band would be two empty ghosts — the gap view IS the
+    // content (summary + unlit crosswalk), mirroring the report's 0-of-N gap
+    // view. While the report loads, hold the full layout steady.
+    const hasActivity = report == null
+      ? true
+      : collegeName
+        ? cellPrograms.length > 0
+        : report.awards_by_college.length > 0 || report.enrollment_by_college.length > 0;
+    const hasCrosswalk = !!(report?.crosswalk && report.crosswalk.tops.length > 0);
+    // In the gap view the consortium-taught highlighting would mislead (a lit
+    // TOP says "taught" — but not in this scope), so the pathway renders
+    // unlit: the structural map of how curriculum COULD reach this SOC.
+    const displayCrosswalk = !report?.crosswalk || hasActivity
+      ? report?.crosswalk
+      : {
+          ...report.crosswalk,
+          n_taught: 0,
+          coverage_pct: 0,
+          tops: report.crosswalk.tops.map((t) => ({ ...t, taught_at_college: false })),
+          cips: report.crosswalk.cips.map((c) => ({ ...c, active: false })),
+        };
+    const crosswalkPanel = hasCrosswalk && report && displayCrosswalk
+      ? {
+          id: "occupations.crosswalk",
+          node: (
+            <DashPanel title="Crosswalk" authority="CCCCO · NCES" accent={scopeBrand}>
+              {/* Centered: the diagram's height is width-driven, so in a fixed
+                  row it floats — centering splits the slack symmetrically.
+                  Scope-keyed brand, like the per-college report's pathway. */}
+              <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                <CurriculumPathway crosswalk={displayCrosswalk} collegeName="SVAMP member colleges" socCode={report.soc_code} socTitle={report.title} brandColor={scopeBrand} embedded prose={false} />
+              </div>
+            </DashPanel>
+          ),
+        }
+      : null;
+    // No flat "Feeding Programs" list (removed 2026-06-06): the crosswalk
+    // carries the TOP→SOC structure visually, and college scope decomposes
+    // awards per feeding program — the list restated both, uglier.
+    //
+    // Rows decided in the layout lab (2026-06-06, rev 2) and IDENTICAL in
+    // both scopes (decided rev 3): the summary quartet leads with the
+    // crosswalk beside it at 445px — SOC-level regional facts that don't
+    // change with scope — then the two trend charts pair beneath at 508px
+    // (minmax clamps up if content runs tall). All panel chrome is
+    // scope-keyed (scopeBrand), matching the report.
+    const rows: DashBandDef[] = [
+      { id: "occupations.scopeA", before: scopeStrip, height: 445, panels: [summaryPanel, crosswalkPanel] },
+    ];
+    // The trend band exists only where there is activity to chart.
+    if (hasActivity) rows.push({ id: "occupations.scopeB", height: 508, panels: [awardsPanel, enrollPanel] });
+    return rows;
+  }
 }

@@ -13,10 +13,10 @@ import { FONT, MONO } from "@/college-atlas/partnerships/reportChrome";
 import { SchoolConfig } from "@/config/schoolConfig";
 import EmployerMap, { type MapCollege } from "@/college-atlas/partnerships/EmployerMap";
 import { DashPanel } from "@/college-atlas/partnerships/SvampDashboard";
-import { hexA } from "@/college-atlas/partnerships/chartKit";
 import { getSvampEmployers } from "@/college-atlas/partnerships/api";
 import type { ApiSvampEmployersResult } from "@/college-atlas/partnerships/api";
 import { readSvampParams, writeSvampParams } from "@/college-atlas/partnerships/svampUrl";
+import EmployerListRow from "@/college-atlas/partnerships/EmployerListRow";
 
 const ACCENT = "#5a9bd4"; // Employers lens blue (mirrors the report)
 
@@ -82,7 +82,7 @@ export default function SvampDashboardEmployers({ colleges }: { colleges: Colleg
   return (
     <div style={{ flex: 1, minHeight: 0, display: "flex", gap: 8 }}>
       {/* Full-bleed map — the surface-area parity the fork decided. */}
-      <DashPanel title="Regional employer map — advanced manufacturing" authority="EDD" accent={ACCENT} grow={3}>
+      <DashPanel title="Regional Employer Map" authority="EDD" accent={ACCENT} grow={3}>
         <div style={{ flex: 1, minHeight: 0, overflow: "hidden", display: "flex", flexDirection: "column" }}>
           <EmployerMap
             employers={data.employers}
@@ -92,14 +92,6 @@ export default function SvampDashboardEmployers({ colleges }: { colleges: Colleg
             onSelect={toggle}
             onHover={setHover}
           />
-          <div style={{ display: "flex", gap: 8, paddingTop: 8, flex: "none" }}>
-            <span style={{ fontFamily: MONO, fontSize: 9.5, color: "rgba(255,255,255,0.5)", border: "1px solid rgba(154,166,189,0.25)", borderRadius: 5, padding: "2px 8px" }}>
-              shown {data.shown} / total {data.total}
-            </span>
-            <span style={{ fontFamily: MONO, fontSize: 9.5, color: hexA(ACCENT, 0.75), border: `1px solid ${hexA(ACCENT, 0.3)}`, borderRadius: 5, padding: "2px 8px" }}>
-              hiring for the 12 SVAMP occupations
-            </span>
-          </div>
         </div>
       </DashPanel>
 
@@ -112,22 +104,18 @@ export default function SvampDashboardEmployers({ colleges }: { colleges: Colleg
           style={{ flex: "none", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 7, color: "#e8ecf4", fontFamily: FONT, fontSize: 12, padding: "6px 10px", outline: "none", marginBottom: 8 }}
         />
         <div style={{ flex: 1, minHeight: 0, overflowY: "auto", display: "flex", flexDirection: "column" }}>
-          {filtered.map((e) => {
-            const on = selected === e.name;
-            return (
-              <button
-                key={e.name}
-                ref={(el) => { rowRefs.current.set(e.name, el); }}
-                onClick={() => toggle(e.name)}
-                onMouseEnter={() => setHover(e.name)}
-                onMouseLeave={() => setHover(null)}
-                style={{ appearance: "none", textAlign: "left", cursor: "pointer", display: "flex", alignItems: "baseline", gap: 8, padding: "6px 8px", borderRadius: 6, border: "none", background: on ? hexA(ACCENT, 0.14) : "transparent", flex: "none" }}
-              >
-                <span style={{ fontFamily: FONT, fontSize: 11.5, color: on ? "#e8ecf4" : "rgba(255,255,255,0.78)", flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{e.name}</span>
-                <span style={{ fontFamily: MONO, fontSize: 9, color: "#5e6a83", flex: "none" }}>{e.soc_count} SOC{e.soc_count === 1 ? "" : "s"}</span>
-              </button>
-            );
-          })}
+          {filtered.map((e) => (
+            <EmployerListRow
+              key={e.name}
+              emp={e}
+              selected={selected === e.name}
+              hovered={hover === e.name}
+              onSelect={() => toggle(e.name)}
+              onHover={(on) => setHover(on ? e.name : null)}
+              accent={ACCENT}
+              rowRef={(el) => { rowRefs.current.set(e.name, el); }}
+            />
+          ))}
         </div>
       </DashPanel>
     </div>

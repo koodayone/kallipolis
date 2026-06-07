@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { FONT, MONO } from "@/college-atlas/partnerships/reportChrome";
 import {
-  hexA, parseTerm, edgeAnchor, PLOT, valueChip, placeChipYs, niceStep,
+  hexA, parseTerm, edgeAnchor, PLOT, valueChip, placeChipYs, niceStep, useMeasuredBox,
 } from "@/college-atlas/partnerships/chartKit";
 
 // ── Shared trend chart: per-program lines ↔ stacked area ───────────────────
@@ -24,7 +24,11 @@ type TrendSeries = { top6: string; name: string; vals: (number | null)[] };
 // distinct from any program's index.
 const TOTAL_FOCUS = -1;
 
-function TrendChart({ series, labels, defaultMode, colorOf, axisStyle = "thinned", modeLabels = { lines: "Per program", stacked: "Stacked" }, hideSeriesTag = false, empty = false, demandLine }: { series: TrendSeries[]; labels: string[]; defaultMode: "lines" | "stacked" | "demand"; colorOf: (top6: string) => string; axisStyle?: "thinned" | "twoTier"; modeLabels?: { lines: string; stacked: string; demand?: string }; hideSeriesTag?: boolean; empty?: boolean; demandLine?: { value: number; label: string; color: string } }) {
+function TrendChart({ series, labels, defaultMode, colorOf, axisStyle = "thinned", modeLabels = { lines: "Per program", stacked: "Stacked" }, hideSeriesTag = false, empty = false, demandLine, fill = false }: { series: TrendSeries[]; labels: string[]; defaultMode: "lines" | "stacked" | "demand"; colorOf: (top6: string) => string; axisStyle?: "thinned" | "twoTier"; modeLabels?: { lines: string; stacked: string; demand?: string }; hideSeriesTag?: boolean; empty?: boolean; demandLine?: { value: number; label: string; color: string };
+  // fill: plot width follows the container's measured width (svg px == layout
+  // units, so axis/label text holds its size at any panel width). Default
+  // false ⇒ the report's fixed PLOT.W figure, unchanged.
+  fill?: boolean }) {
   // "demand" is the third mode the demandLine prop unlocks: the stacked view
   // re-scaled so the reference line fits — supply read at market scale. When
   // the prop is absent (e.g. the targeted college view), a carried-over
@@ -33,11 +37,19 @@ function TrendChart({ series, labels, defaultMode, colorOf, axisStyle = "thinned
   const effMode = mode === "demand" && !demandLine ? "stacked" : mode;
   const stackedBasis = effMode !== "lines";
   const [hover, setHover] = useState<number | null>(null);
-  const { W, padL, padR, padT } = PLOT;
+  const { ref: boxRef, box } = useMeasuredBox(fill);
+  const { padL, padR, padT } = PLOT;
+  // Measured plot ⇒ viewBox px == container px ⇒ scale 1, fonts constant.
+  // In fill mode the ref sits on the chart area between the mode toggle and
+  // the legend, and BOTH dimensions follow it: the plot stretches into
+  // whatever height the panel grants (PLOT.H stays the intrinsic minimum so
+  // auto-height bands don't collapse). Until the first measurement lands,
+  // PLOT geometry renders one report-proportioned frame rather than nothing.
+  const W = fill && box ? Math.max(box.w, 320) : PLOT.W;
   // The two-tier axis (season row + year row) needs extra room below the plot;
   // adding it to both H and padB keeps the plot height identical to single-tier.
   const twoTier = axisStyle === "twoTier";
-  const H = PLOT.H + (twoTier ? 20 : 0);
+  const H = fill && box ? Math.max(box.h, PLOT.H) : PLOT.H + (twoTier ? 20 : 0);
   const padB = PLOT.padB + (twoTier ? 20 : 0);
   const base = H - padB, top = padT;
 
@@ -97,18 +109,29 @@ function TrendChart({ series, labels, defaultMode, colorOf, axisStyle = "thinned
     //     is exactly what made this look different from the programs view;
     //   • gridlines flush to the left edge (no y-number gutter needed), label
     //     centered within that left-extended area so it reads balanced.
-    const eH = PLOT.H;
-    const gx0 = 0, gx1 = W - padR, gcx = (gx0 + gx1) / 2, gcy = (top + base) / 2;
+    const eH = fill && box ? Math.max(box.h, 150) : PLOT.H;
+    const gBase = eH - PLOT.padB, gTop = padT;
+    const gx0 = 0, gx1 = W - padR, gcx = (gx0 + gx1) / 2, gcy = (gTop + gBase) / 2;
+    const ghost = (svgProps: React.SVGProps<SVGSVGElement>) => (
+      <svg {...svgProps} viewBox={`0 0 ${W} ${eH}`}>
+        {[0.25, 0.5, 0.75].map((f, i) => (
+          <line key={i} x1={gx0} x2={gx1} y1={gBase - f * (gBase - gTop)} y2={gBase - f * (gBase - gTop)} stroke="rgba(255,255,255,.05)" />
+        ))}
+        <line x1={gx0} x2={gx1} y1={gBase} y2={gBase} stroke="rgba(255,255,255,.1)" />
+        <text x={gcx} y={gcy - 3} textAnchor="middle" style={{ fontFamily: FONT, fontSize: 14, fontWeight: 500, fill: "#9aa6bd" }}>No data reported</text>
+        <text x={gcx} y={gcy + 16} textAnchor="middle" style={{ fontFamily: MONO, fontSize: 10, fill: "#5e6a83" }}>via CCCCO DataMart</text>
+      </svg>
+    );
+    if (fill) {
+      return (
+        <div ref={boxRef} style={{ marginTop: 14, flex: 1, minHeight: PLOT.H, position: "relative", overflow: "hidden" }}>
+          {box && ghost({ width: W, height: eH, style: { position: "absolute", inset: 0 } })}
+        </div>
+      );
+    }
     return (
       <div style={{ marginTop: 14 }}>
-        <svg width="100%" viewBox={`0 0 ${W} ${eH}`} preserveAspectRatio="xMidYMid meet" style={{ display: "block" }}>
-          {[0.25, 0.5, 0.75].map((f, i) => (
-            <line key={i} x1={gx0} x2={gx1} y1={base - f * (base - top)} y2={base - f * (base - top)} stroke="rgba(255,255,255,.05)" />
-          ))}
-          <line x1={gx0} x2={gx1} y1={base} y2={base} stroke="rgba(255,255,255,.1)" />
-          <text x={gcx} y={gcy - 3} textAnchor="middle" style={{ fontFamily: FONT, fontSize: 14, fontWeight: 500, fill: "#9aa6bd" }}>No data reported</text>
-          <text x={gcx} y={gcy + 16} textAnchor="middle" style={{ fontFamily: MONO, fontSize: 10, fill: "#5e6a83" }}>via CCCCO DataMart</text>
-        </svg>
+        {ghost({ width: "100%", preserveAspectRatio: "xMidYMid meet", style: { display: "block" } })}
       </div>
     );
   }
@@ -162,8 +185,8 @@ function TrendChart({ series, labels, defaultMode, colorOf, axisStyle = "thinned
   const focused = hover != null ? shown.find((it) => it.idx === hover) : undefined;
 
   return (
-    <div style={{ marginTop: 14 }}>
-      <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 8 }}>
+    <div style={fill ? { marginTop: 14, display: "flex", flexDirection: "column", flex: 1, minHeight: 0 } : { marginTop: 14 }}>
+      <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 8, flex: "none" }}>
         <div style={{ display: "inline-flex", border: "1px solid rgba(255,255,255,.12)", borderRadius: 8, overflow: "hidden" }}>
           {([...(["lines", "stacked"] as const), ...(demandLine ? (["demand"] as const) : [])]).map((m) => (
             <button
@@ -176,7 +199,17 @@ function TrendChart({ series, labels, defaultMode, colorOf, axisStyle = "thinned
           ))}
         </div>
       </div>
-      <svg width="100%" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid meet" style={{ display: "block" }}>
+      {/* In fill mode the svg is absolutely positioned inside the measured
+          area so its rendered size never feeds the row's min-content (which
+          would ratchet the band's height clamp); PLOT.H is the floor. */}
+      <div ref={fill ? boxRef : undefined} style={fill ? { flex: 1, minHeight: PLOT.H, position: "relative", overflow: "hidden" } : undefined}>
+      <svg
+        width={fill ? W : "100%"}
+        height={fill ? H : undefined}
+        viewBox={`0 0 ${W} ${H}`}
+        preserveAspectRatio={fill ? undefined : "xMidYMid meet"}
+        style={fill ? { position: "absolute", inset: 0 } : { display: "block" }}
+      >
         <line x1={padL} x2={W - padR} y1={base} y2={base} stroke="rgba(255,255,255,.1)" />
         {ticks.map((t) => (
           <g key={t}>
@@ -239,7 +272,7 @@ function TrendChart({ series, labels, defaultMode, colorOf, axisStyle = "thinned
         {stackedBasis && hover === TOTAL_FOCUS && (() => {
           const pts = totals.map((tv, k) => ({ x: X(k), y: Y(tv), v: tv })).filter((p) => p.v > 0);
           const ys = placeChipYs(pts, top + 9, base - 9);
-          return <g>{pts.map((p, i) => valueChip(p.x, ys[i], p.v, "#e8ecf4", i))}</g>;
+          return <g>{pts.map((p, i) => valueChip(p.x, ys[i], p.v, "#e8ecf4", i, W))}</g>;
         })()}
         {/* Focused program: a value on every term, placed just above its point
             and bumped to the other side only if it would overlap its neighbor,
@@ -255,7 +288,7 @@ function TrendChart({ series, labels, defaultMode, colorOf, axisStyle = "thinned
             b.hiY.forEach((hv, k) => { if ((b.it.vals[k] ?? 0) > 0) pts.push({ x: X(k), y: Y(hv), v: b.it.vals[k] as number }); });
           }
           const ys = placeChipYs(pts, top + 9, base - 9);
-          return <g>{pts.map((p, i) => valueChip(p.x, ys[i], p.v, color, i))}</g>;
+          return <g>{pts.map((p, i) => valueChip(p.x, ys[i], p.v, color, i, W))}</g>;
         })()}
 
         {/* Regional addressable demand — the reference line the vs. demand
@@ -272,7 +305,8 @@ function TrendChart({ series, labels, defaultMode, colorOf, axisStyle = "thinned
 
         {axisEls(cols, X)}
       </svg>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4px 16px", marginTop: 12 }}>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4px 16px", marginTop: 12, flex: "none" }}>
         {effMode === "demand" && demandLine && (
           <div style={{ gridColumn: "1 / -1", display: "flex", alignItems: "center", gap: 9, fontSize: 12.5, padding: "6px 9px", borderRadius: 8, minWidth: 0 }}>
             <span style={{ width: 16, height: 3, borderRadius: 2, background: demandLine.color, flex: "none" }} />

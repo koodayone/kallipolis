@@ -56,6 +56,10 @@ type Props = {
   // attribution; the "remaining N TOP groups" framing is degenerate at zero
   // coverage and its opportunity context already lives in the section intro.
   embedded?: boolean;
+  // The headline + narrative paragraph above the diagram. True in the report
+  // (the narrative surface); false in the dashboard, where prose dies and the
+  // panel title + authority chip carry the same content as chrome.
+  prose?: boolean;
 };
 
 type Selection =
@@ -76,6 +80,7 @@ export default function CurriculumPathway({
   socTitle,
   brandColor,
   embedded = false,
+  prose = true,
 }: Props) {
   const [selection, setSelection] = useState<Selection>(null);
   const svgRef = useRef<SVGSVGElement>(null);
@@ -230,9 +235,14 @@ export default function CurriculumPathway({
   // box and the footnote's top rule would cut across it. Grow the bottom pad
   // only when needed; socY (below) is unchanged, so TOP/CIP/SOC alignment is
   // preserved. Scoped to embedded (SVAMP) so per-college reports stay identical.
-  const bottomPad = embedded
+  // Without prose (the dashboard) the caption that used to supply the spacing
+  // below the diagram is gone, and the last row's badge half (rows are
+  // centered on distribute()'s points) would sit flush on the panel edge —
+  // grow the pad by the badge half plus breathing room. Prose surfaces
+  // (including per-college reports) keep their exact geometry.
+  const bottomPad = (embedded
     ? Math.max(PADDING_BOTTOM, SOC_EDGE_RADIUS - bandH / 2 + 12)
-    : PADDING_BOTTOM;
+    : PADDING_BOTTOM) + (prose ? 0 : BADGE_H / 2 + 12);
   const SVG_H = PADDING_TOP + bottomPad + bandH;
 
   // Per-column Y positions, evenly distributed across the viz height.
@@ -334,63 +344,67 @@ export default function CurriculumPathway({
           : `.`);
 
   return (
-    <div style={{ marginTop: 32 }}>
-      {/* Headline metric — sub-section header. Reads as one sentence:
-          "N of M TOP groups supporting SOC X". Numbers and SOC code in
-          brand color so the data points pop visually; the connective
-          tissue between them stays plain so the headline is a compact
-          declarative statement. The college name is implicit (the
-          report is already scoped to one college) and lives in the
-          narrative paragraph below for full attribution. */}
-      <div
-        style={{
-          fontFamily: FONT,
-          fontSize: 18,
-          fontWeight: 600,
-          color: "rgba(255,255,255,0.95)",
-          letterSpacing: "-0.005em",
-          marginBottom: 14,
-        }}
-      >
-        <span
-          style={{
-            color: brandColor,
-            fontFamily: MONO,
-            fontWeight: 700,
-            fontVariantNumeric: "tabular-nums",
-          }}
-        >
-          {crosswalk.n_taught} of {crosswalk.n_total}
-        </span>{" "}
-        {crosswalk.n_total === 1
-          ? "TOP group crosswalks to"
-          : "TOP groups crosswalk to"}{" "}
-        <span
-          style={{
-            color: brandColor,
-            fontFamily: MONO,
-            fontWeight: 700,
-          }}
-        >
-          SOC {socCode}
-        </span>
-      </div>
+    <div style={{ marginTop: prose ? 32 : 8 }}>
+      {prose && (
+        <>
+          {/* Headline metric — sub-section header. Reads as one sentence:
+              "N of M TOP groups supporting SOC X". Numbers and SOC code in
+              brand color so the data points pop visually; the connective
+              tissue between them stays plain so the headline is a compact
+              declarative statement. The college name is implicit (the
+              report is already scoped to one college) and lives in the
+              narrative paragraph below for full attribution. */}
+          <div
+            style={{
+              fontFamily: FONT,
+              fontSize: 18,
+              fontWeight: 600,
+              color: "rgba(255,255,255,0.95)",
+              letterSpacing: "-0.005em",
+              marginBottom: 14,
+            }}
+          >
+            <span
+              style={{
+                color: brandColor,
+                fontFamily: MONO,
+                fontWeight: 700,
+                fontVariantNumeric: "tabular-nums",
+              }}
+            >
+              {crosswalk.n_taught} of {crosswalk.n_total}
+            </span>{" "}
+            {crosswalk.n_total === 1
+              ? "TOP group crosswalks to"
+              : "TOP groups crosswalk to"}{" "}
+            <span
+              style={{
+                color: brandColor,
+                fontFamily: MONO,
+                fontWeight: 700,
+              }}
+            >
+              SOC {socCode}
+            </span>
+          </div>
 
-      {/* Deterministic prose — supporting explanation that unpacks the
-          headline metric and names the institutional sources. */}
-      <p
-        style={{
-          fontFamily: FONT,
-          fontSize: 14,
-          lineHeight: 1.65,
-          color: INK_BODY,
-          marginTop: 0,
-          marginBottom: 24,
-          maxWidth: 920,
-        }}
-      >
-        {narrative}
-      </p>
+          {/* Deterministic prose — supporting explanation that unpacks the
+              headline metric and names the institutional sources. */}
+          <p
+            style={{
+              fontFamily: FONT,
+              fontSize: 14,
+              lineHeight: 1.65,
+              color: INK_BODY,
+              marginTop: 0,
+              marginBottom: 24,
+              maxWidth: 920,
+            }}
+          >
+            {narrative}
+          </p>
+        </>
+      )}
 
       <svg
         ref={svgRef}
@@ -716,25 +730,29 @@ export default function CurriculumPathway({
           Shown in every case, including the 0-of-N gap view: it describes a
           methodology, and when nothing is taught it simply yields an empty
           result (no courses shown, no active CIP→SOC lines), so nothing it
-          states is false. It also supplies the spacing below the diagram. */}
-      <p
-        style={{
-          fontFamily: FONT,
-          fontSize: 11,
-          color: INK_FAINT,
-          fontStyle: "italic",
-          marginTop: 20,
-          paddingTop: 14,
-          borderTop: "1px solid rgba(255,255,255,0.05)",
-          lineHeight: 1.5,
-        }}
-      >
-        Showing courses classified SAM A/B/C/D (Apprenticeship → Possibly
-        Occupational) per the CCCCO MIS Data Element Dictionary. CIP→SOC
-        paths shown only for CIPs reached through TOPs{embedded
-          ? " taught, enrolled, or awarded by member colleges"
-          : " actively taught at this college"}.
-      </p>
+          states is false. It also supplies the spacing below the diagram.
+          Prose-gated: the dashboard visualizes only; method citations live
+          in the report. */}
+      {prose && (
+        <p
+          style={{
+            fontFamily: FONT,
+            fontSize: 11,
+            color: INK_FAINT,
+            fontStyle: "italic",
+            marginTop: 20,
+            paddingTop: 14,
+            borderTop: "1px solid rgba(255,255,255,0.05)",
+            lineHeight: 1.5,
+          }}
+        >
+          Showing courses classified SAM A/B/C/D (Apprenticeship → Possibly
+          Occupational) per the CCCCO MIS Data Element Dictionary. CIP→SOC
+          paths shown only for CIPs reached through TOPs{embedded
+            ? " taught, enrolled, or awarded by member colleges"
+            : " actively taught at this college"}.
+        </p>
+      )}
     </div>
   );
 }

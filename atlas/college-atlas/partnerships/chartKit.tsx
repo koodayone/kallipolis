@@ -5,8 +5,35 @@
    dashboard (and any future surface) composes the same vocabulary; SvampView
    remains the reference composition. */
 
-import React from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { MONO } from "@/college-atlas/partnerships/reportChrome";
+
+// Measured-container layout: charts that take a `fill` prop lay themselves out
+// in the container's pixel space (svg px == layout units), so blocks
+// re-proportion to whatever size the panel manifests at and labels stay crisp
+// at any panel shape. Render nothing until the first measurement lands (box
+// starts null) — the static-export-safe pattern.
+//
+// The ref is a CALLBACK ref, not an object ref: a chart may attach it to
+// different DOM nodes across renders (e.g. TrendChart's ghost wrapper vs its
+// chart area as `empty` flips with the selection), and an observer bound once
+// at mount would keep watching the detached node — freezing `box` at a stale
+// measurement (clipped axes, quarter-size charts after selection changes).
+// The callback re-observes on every element change; the observer's initial
+// fire on observe() delivers the fresh measurement.
+function useMeasuredBox(enabled: boolean) {
+  const [box, setBox] = useState<{ w: number; h: number } | null>(null);
+  const roRef = useRef<ResizeObserver | null>(null);
+  const ref = useCallback((el: HTMLDivElement | null) => {
+    roRef.current?.disconnect();
+    roRef.current = null;
+    if (!enabled || !el) return;
+    const ro = new ResizeObserver(() => setBox({ w: el.clientWidth, h: el.clientHeight }));
+    ro.observe(el);
+    roRef.current = ro;
+  }, [enabled]);
+  return { ref, box };
+}
 
 const shortName = (name: string) => name.replace(/ Valley College$/, "").replace(/ College$/, "");
 function hexA(hex: string, a: number) {
@@ -85,11 +112,11 @@ const PLOT = { W: 760, H: 256, padL: 34, padR: 14, padT: 18, padB: 26 };
 // A value chip centered at (cx, cy) — its own dark pill so the number reads
 // clearly. The caller decides cy (it staggers chips across two rows to fit a
 // number on every term without overlap); cx is clamped to the plot.
-function valueChip(cx: number, cy: number, v: number, color: string, key: number) {
-  const { W, padL, padR } = PLOT;
+function valueChip(cx: number, cy: number, v: number, color: string, key: number, plotW: number = PLOT.W) {
+  const { padL, padR } = PLOT;
   const txt = v.toLocaleString("en-US");
   const w = 13 + txt.length * 6.8, h = 17;
-  const x = Math.min(Math.max(cx, padL + w / 2), W - padR - w / 2);
+  const x = Math.min(Math.max(cx, padL + w / 2), plotW - padR - w / 2);
   return (
     <g key={key} style={{ pointerEvents: "none" }}>
       <rect x={x - w / 2} y={cy - h / 2} width={w} height={h} rx={4} fill="#0b1530" stroke={color} strokeWidth={1} />
@@ -167,4 +194,5 @@ export {
   shortName, hexA, hexToHsl, hueDist, OVERLAY_COLORS, leadOverlayColors,
   parseTerm, edgeAnchor, PLOT, valueChip, placeChipYs,
   awardYearLabel, shortAwardType, shortCreditType, niceStep,
+  useMeasuredBox,
 };

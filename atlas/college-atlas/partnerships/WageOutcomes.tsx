@@ -1,8 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import { FONT, MONO } from "@/college-atlas/partnerships/reportChrome";
-import { hexA } from "@/college-atlas/partnerships/chartKit";
+import { hexA, useMeasuredBox } from "@/college-atlas/partnerships/chartKit";
 import type { ApiSvampProgram } from "@/college-atlas/partnerships/api";
 
 // ── Program wage outcomes (dumbbell) ──────────────────────────────────────
@@ -29,7 +28,12 @@ const WAGE_RT_RANK: Record<string, number> = { "Degree": 0, "CO Cert": 1, "Local
 type WageCohort = { rt: string; before: number; after2: number | null; after5: number; n: number | null };
 type WageGroup = { name: string; top6: string; cohorts: WageCohort[] };
 
-function WageOutcomes({ programs, brandColor }: { programs: ApiSvampProgram[]; brandColor: string }) {
+function WageOutcomes({ programs, brandColor, fill = false }: { programs: ApiSvampProgram[]; brandColor: string;
+  // fill: plot width follows the container's measured width (svg px == layout
+  // units, so text holds its size at any panel width). Default false ⇒ the
+  // report's fixed 760-wide figure, unchanged.
+  fill?: boolean }) {
+  const { ref: boxRef, box } = useMeasuredBox(fill);
   // Group by program; each program heads a block, its credential cohorts beneath
   // (ranked by 5-year wage). Programs ordered by their best 5-year outcome.
   const groups: WageGroup[] = programs
@@ -50,17 +54,49 @@ function WageOutcomes({ programs, brandColor }: { programs: ApiSvampProgram[]; b
     .filter((g) => g.cohorts.length > 0)
     .sort((a, b) =>
       Math.max(...b.cohorts.map((c) => c.after5)) - Math.max(...a.cohorts.map((c) => c.after5)));
-  if (!groups.length) return null;
+  if (!groups.length) {
+    // Report mode keeps its no-render behavior (prose carries the absence).
+    // Fill mode (the dashboard) renders the shared ghost scaffold — the
+    // chart frame with no series, TrendChart's empty-state grammar.
+    if (!fill) return null;
+    const gW = box?.w ?? 760, gH = box?.h ?? 200;
+    const gTop = 18, gBase = gH - 26, gx1 = gW - 16, gcx = gx1 / 2, gcy = (gTop + gBase) / 2;
+    return (
+      <div ref={boxRef} style={{ marginTop: 14, flex: 1, minHeight: 150, position: "relative", overflow: "hidden" }}>
+        {box && (
+          <svg width={gW} height={gH} viewBox={`0 0 ${gW} ${gH}`} style={{ position: "absolute", inset: 0 }}>
+            {[0.25, 0.5, 0.75].map((f, i) => (
+              <line key={i} x1={0} x2={gx1} y1={gBase - f * (gBase - gTop)} y2={gBase - f * (gBase - gTop)} stroke="rgba(255,255,255,.05)" />
+            ))}
+            <line x1={0} x2={gx1} y1={gBase} y2={gBase} stroke="rgba(255,255,255,.1)" />
+            <text x={gcx} y={gcy - 3} textAnchor="middle" style={{ fontFamily: FONT, fontSize: 14, fontWeight: 500, fill: "#9aa6bd" }}>No data reported</text>
+            <text x={gcx} y={gcy + 16} textAnchor="middle" style={{ fontFamily: MONO, fontSize: 10, fill: "#5e6a83" }}>via CCCCO DataMart</text>
+          </svg>
+        )}
+      </div>
+    );
+  }
 
   const fmtK = (v: number) => "$" + Math.round(v / 1000) + "k";
   const wageWindow = programs.flatMap((p) => p.wages ?? []).find((w) => w.window)?.window ?? "";
   const maxVal = Math.max(...groups.flatMap((g) => g.cohorts.flatMap((c) => [c.before, c.after2 ?? 0, c.after5])));
   const step = 20000;
   const axisMax = Math.max(step, Math.ceil(maxVal / step) * step);
-  const W = 760, plotL = 126, padR = 16, padT = 10, headerH = 38, rowH = 34, gap = 20, axisH = 30;
-  let H = padT;
-  groups.forEach((g) => { H += headerH + g.cohorts.length * rowH + gap; });
-  H += axisH;
+  const W = fill && box ? Math.max(box.w, 320) : 760;
+  const plotL = 126, padR = 16, padT = 10, headerH = 38, axisH = 30;
+  // Base row metrics. In fill mode the rows STRETCH to occupy the panel's
+  // measured height — fonts and dots hold their size, the dumbbells spread,
+  // and the axis pins to the bottom — so a tall panel reads as a chart, not
+  // as a small figure floating in dead space.
+  let rowH = 34, gap = 20;
+  const nRows = groups.reduce((s, g) => s + g.cohorts.length, 0);
+  let H = padT + groups.length * (headerH + gap) + nRows * rowH + axisH;
+  if (fill && box && box.h > H) {
+    const fixed = padT + groups.length * headerH + axisH;
+    const s = (box.h - fixed) / (nRows * rowH + groups.length * gap);
+    rowH *= s; gap *= s;
+    H = box.h;
+  }
   const axisY = H - axisH + 6;
   const X = (w: number) => plotL + (w / axisMax) * (W - plotL - padR);
   const ticks: number[] = [];
@@ -113,31 +149,64 @@ function WageOutcomes({ programs, brandColor }: { programs: ApiSvampProgram[]; b
     y += gap;
   });
 
+  const legendEl = (
+    <div style={{ display: "flex", gap: 18, flexWrap: "wrap", justifyContent: "flex-end", paddingRight: `${(padR / W) * 100}%`, fontSize: 12, color: "#9aa6bd", marginBottom: 12, flex: "none" }}>
+      {stageKey.map(([lbl, col, sz]) => (
+        <span key={lbl} style={{ display: "inline-flex", alignItems: "center", gap: 7 }}>
+          <span style={{ width: sz, height: sz, borderRadius: "50%", background: col, display: "inline-block" }} />
+          {lbl}
+        </span>
+      ))}
+    </div>
+  );
+  const axisEls = (
+    <>
+      {/* Clean bottom axis — baseline + short ticks, no full-height gridlines
+          (which used to strike through the program headers). */}
+      <line x1={plotL} x2={W - padR} y1={axisY} y2={axisY} stroke="rgba(255,255,255,.1)" />
+      {ticks.map((t) => (
+        <g key={t}>
+          <line x1={X(t)} x2={X(t)} y1={axisY} y2={axisY + 4} stroke="rgba(255,255,255,.18)" />
+          <text x={X(t)} y={axisY + 16} textAnchor={t === 0 ? "start" : t === axisMax ? "end" : "middle"} style={{ fontFamily: MONO, fontSize: 9, fill: "#5e6a83" }}>{fmtK(t)}</text>
+        </g>
+      ))}
+    </>
+  );
+  const footnoteEl = (
+    <div style={{ fontSize: 11, color: "#5e6a83", marginTop: 12, lineHeight: 1.6, flex: "none" }}>
+      Earnings pooled statewide at the TOP6 grain by credential type — not college-specific.
+      Degree = Associate or Baccalaureate Degree; CO Cert = Chancellor&apos;s Office Approved Certificate; Local Cert = Locally Approved Certificate; n = Total Awards{wageWindow ? ` ${wageWindow}` : ""}.
+    </div>
+  );
+
+  if (fill) {
+    // Measured-height layout: the svg is absolutely positioned inside the
+    // measured area so its rendered height never feeds back into the row's
+    // min-content (which would ratchet the band's height clamp upward).
+    // No footnote — the dashboard visualizes only; the definitional and
+    // statewide-grain caveats live in the report's footnote.
+    return (
+      <div style={{ display: "flex", flexDirection: "column", flex: 1, minHeight: 0, marginTop: 14 }}>
+        {legendEl}
+        <div ref={boxRef} style={{ flex: 1, minHeight: 0, position: "relative", overflow: "hidden" }}>
+          {box && (
+            <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: "absolute", inset: 0 }}>
+              {els}
+              {axisEls}
+            </svg>
+          )}
+        </div>
+      </div>
+    );
+  }
   return (
     <div style={{ marginTop: 14 }}>
-      <div style={{ display: "flex", gap: 18, flexWrap: "wrap", justifyContent: "flex-end", paddingRight: `${(padR / W) * 100}%`, fontSize: 12, color: "#9aa6bd", marginBottom: 12 }}>
-        {stageKey.map(([lbl, col, sz]) => (
-          <span key={lbl} style={{ display: "inline-flex", alignItems: "center", gap: 7 }}>
-            <span style={{ width: sz, height: sz, borderRadius: "50%", background: col, display: "inline-block" }} />
-            {lbl}
-          </span>
-        ))}
-      </div>
+      {legendEl}
       <svg width="100%" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid meet" style={{ display: "block" }}>
         {els}
-        {/* Clean bottom axis — baseline + short ticks, no full-height gridlines
-            (which used to strike through the program headers). */}
-        <line x1={plotL} x2={W - padR} y1={axisY} y2={axisY} stroke="rgba(255,255,255,.1)" />
-        {ticks.map((t) => (
-          <g key={t}>
-            <line x1={X(t)} x2={X(t)} y1={axisY} y2={axisY + 4} stroke="rgba(255,255,255,.18)" />
-            <text x={X(t)} y={axisY + 16} textAnchor={t === 0 ? "start" : t === axisMax ? "end" : "middle"} style={{ fontFamily: MONO, fontSize: 9, fill: "#5e6a83" }}>{fmtK(t)}</text>
-          </g>
-        ))}
+        {axisEls}
       </svg>
-      <div style={{ fontSize: 11, color: "#5e6a83", marginTop: 12, lineHeight: 1.6 }}>
-        Degree = Associate or Baccalaureate Degree; CO Cert = Chancellor&apos;s Office Approved Certificate; Local Cert = Locally Approved Certificate; n = Total Awards{wageWindow ? ` ${wageWindow}` : ""}.
-      </div>
+      {footnoteEl}
     </div>
   );
 }

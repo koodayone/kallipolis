@@ -1,8 +1,9 @@
 "use client";
 
 /* ── Dashboard · Programs lens (Phase 3) ────────────────────────────────────
-   The dashboard grammar's first instantiation: supply treemap + coverage
-   matrix across the top, the single-scope four-panel band below (decided B2).
+   The dashboard grammar's first instantiation: coverage matrix (lead, 2:1) +
+   supply treemap across the top, the single-scope four-panel band below
+   (decided B2; proportions decided in the layout lab 2026-06-06).
    Selection: treemap rect / matrix row ⇒ consortium scope; matrix cell ⇒ that
    college's scope, where the decompositions (credential types, credit
    families) live — the same semantics as the report's ProgramsLens, with the
@@ -18,7 +19,8 @@ import CoverageMatrix from "@/college-atlas/partnerships/CoverageMatrix";
 import TrendChart from "@/college-atlas/partnerships/TrendChart";
 import WageOutcomes from "@/college-atlas/partnerships/WageOutcomes";
 import OccupationDemandTable from "@/college-atlas/partnerships/OccupationDemandTable";
-import { DashPanel } from "@/college-atlas/partnerships/SvampDashboard";
+import ProgramPathway from "@/college-atlas/partnerships/ProgramPathway";
+import { DashPanel, DashBandSet, ScopeBanner, type DashBandDef } from "@/college-atlas/partnerships/SvampDashboard";
 import {
   shortName, hexA, leadOverlayColors, awardYearLabel, shortAwardType, shortCreditType,
 } from "@/college-atlas/partnerships/chartKit";
@@ -108,118 +110,183 @@ export default function SvampDashboardPrograms({ colleges }: { colleges: College
   // "Occupations served" panel is this number's decomposition. Consortium only.
   const addressableDemand = (report?.occupations ?? []).reduce((t, o) => t + (o.annual_openings ?? 0), 0);
 
+  // Panels as manifest entries — DashBand lays each row out as an fr-grid
+  // driven by these author-qualified ids (the layout lab's weight keys).
+  const supplyPanel = {
+    id: "programs.supply",
+    node: (
+      <DashPanel title="Program Supply" authority="DataMart" accent={ACCENT}>
+        <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
+          <SupplyTreemap tops={land.tops} selectedTop={collegeId ? null : top} onSelect={selectConsortium} accent={ACCENT} caption="Area is latest-year credentials awarded — click a program for the consortium scope." fill />
+        </div>
+      </DashPanel>
+    ),
+  };
+  const coveragePanel = {
+    id: "programs.coverage",
+    // Coverage leads the top band at 2:1 over the supply treemap — decided in
+    // the layout lab (2026-06-06): the matrix is the read, the treemap the picker.
+    weight: 2,
+    node: (
+      <DashPanel title="Program Coverage" authority="DataMart" accent={ACCENT}>
+        <div>
+          <CoverageMatrix
+            cols={cols}
+            rows={rows}
+            level={level}
+            selectedRow={top}
+            selectedCol={collegeId}
+            cornerLabel="↓ program · → college"
+            gapCellHint="no enrollment or awards here"
+            legend={[
+              { k: "Covered", sub: "enrollment & awards", bg: "rgba(148,168,201,.92)", ring: true },
+              { k: "Partial", sub: "enrollment or awards", bg: "rgba(148,168,201,.3)", ring: true },
+              { k: "Gap", sub: "neither", bg: "rgba(255,255,255,.035)", ring: false },
+            ]}
+            caption="A row is the consortium scope — a cell is that college's scope."
+            onSelect={selectCell}
+            onSelectRow={selectConsortium}
+          />
+        </div>
+      </DashPanel>
+    ),
+  };
+
   return (
-    <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column", gap: 8 }}>
-      {/* Top band — the lens's two aggregates. The matrix may scroll inside
-          its panel (the one unboundable element); the page never scrolls. */}
-      <div style={{ flex: 5, minHeight: 0, display: "flex", gap: 8 }}>
-        <DashPanel title="Program supply" authority="DataMart" accent={ACCENT}>
-          <div style={{ flex: 1, minHeight: 0, overflow: "hidden" }}>
-            <SupplyTreemap tops={land.tops} selectedTop={collegeId ? null : top} onSelect={selectConsortium} accent={ACCENT} caption="Area is latest-year credentials awarded — click a program for the consortium scope." />
-          </div>
-        </DashPanel>
-        <DashPanel title="Coverage — college × program" authority="DataMart" accent={ACCENT}>
-          <div style={{ flex: 1, minHeight: 0, overflowY: "auto" }}>
-            <CoverageMatrix
-              cols={cols}
-              rows={rows}
-              level={level}
-              selectedRow={top}
-              selectedCol={collegeId}
-              cornerLabel="↓ program · → college"
-              gapCellHint="no enrollment or awards here"
-              legend={[
-                { k: "Covered", sub: "enrollment & awards", bg: "rgba(148,168,201,.92)", ring: true },
-                { k: "Partial", sub: "enrollment or awards", bg: "rgba(148,168,201,.3)", ring: true },
-                { k: "Gap", sub: "neither", bg: "rgba(255,255,255,.035)", ring: false },
-              ]}
-              caption="A row is the consortium scope — a cell is that college's scope."
-              onSelect={selectCell}
-              onSelectRow={selectConsortium}
-            />
-          </div>
-        </DashPanel>
-      </div>
-
-      {/* Scope row — who the band below is about. */}
-      <div style={{ display: "flex", alignItems: "baseline", gap: 10, flex: "none" }}>
-        <span style={{ fontFamily: FONT, fontSize: 11, fontWeight: 700, letterSpacing: "0.16em", color: scopeBrand, whiteSpace: "nowrap" }}>
-          {collegeName ? shortName(collegeName).toUpperCase() : "CONSORTIUM"}
-        </span>
-        <span style={{ fontFamily: FONT, fontSize: 12.5, color: "rgba(255,255,255,0.85)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{topName}</span>
-        <span style={{ fontFamily: MONO, fontSize: 10, color: hexA(scopeBrand, 0.65), whiteSpace: "nowrap" }}>TOP {top}</span>
-        {collegeName && (
-          <button onClick={() => top && selectConsortium(top)} style={{ appearance: "none", border: "1px solid rgba(255,255,255,0.12)", background: "transparent", color: "#9aa6bd", fontFamily: MONO, fontSize: 9.5, borderRadius: 6, padding: "2px 8px", cursor: "pointer" }}>
-            ← consortium
-          </button>
-        )}
-      </div>
-
-      {/* Scope band — four panels, one scope (decided B2). Charts are scope-
-          keyed so each scope entry lands on its default mode. */}
-      <div style={{ flex: 4, minHeight: 0, display: "flex", gap: 8 }}>
-        <DashPanel title="Awards" authority={collegeName ? "DataMart" : "DataMart · COE"} accent={scopeBrand}>
-          <div style={{ flex: 1, minHeight: 0, overflowY: "auto" }}>
-            {report && (
-              <TrendChart
-                key={(collegeId ?? "consortium") + ":awards"}
-                series={typeSeries.length > 0
-                  ? typeSeries.map((s) => ({ top6: s.award_type, name: shortAwardType(s.award_type), vals: s.vals }))
-                  : report.awards_by_college.map((s) => ({ top6: s.college, name: shortName(s.college), vals: s.vals }))}
-                labels={report.award_years.map(awardYearLabel)}
-                defaultMode="stacked"
-                colorOf={typeSeries.length > 0 ? typeColor : collegeColor}
-                modeLabels={typeSeries.length > 0 ? { lines: "Per credential", stacked: "Stacked" } : { lines: "Per school", stacked: "Stacked", demand: "Demand" }}
-                hideSeriesTag
-                empty={report.awards_by_college.length === 0}
-                demandLine={!collegeName && addressableDemand > 0
-                  ? { value: addressableDemand, label: "Regional Demand · COE", color: DEMAND_ACCENT }
-                  : undefined}
-              />
-            )}
-          </div>
-        </DashPanel>
-        <DashPanel title="Enrollments" authority="DataMart" accent={scopeBrand}>
-          <div style={{ flex: 1, minHeight: 0, overflowY: "auto" }}>
-            {report && (
-              <TrendChart
-                key={(collegeId ?? "consortium") + ":enroll"}
-                series={creditSeries.length > 0
-                  ? creditSeries.map((s) => ({ top6: s.credit_type, name: shortCreditType(s.credit_type), vals: s.vals }))
-                  : report.enrollment_by_college.map((s) => ({ top6: s.college, name: shortName(s.college), vals: s.vals }))}
-                labels={report.enrollment_terms}
-                defaultMode="lines"
-                colorOf={creditSeries.length > 0 ? creditColor : collegeColor}
-                axisStyle="twoTier"
-                modeLabels={creditSeries.length > 0 ? { lines: "Per credit family", stacked: "Stacked" } : { lines: "Per school", stacked: "Stacked" }}
-                hideSeriesTag
-                empty={report.enrollment_by_college.length === 0}
-              />
-            )}
-          </div>
-        </DashPanel>
-        <DashPanel title="Wage outcomes · statewide TOP6" authority="DataMart" accent={scopeBrand}>
-          <div style={{ flex: 1, minHeight: 0, overflowY: "auto" }}>
-            {report && report.wages.length > 0 ? (
-              <WageOutcomes
-                programs={[{ top6: report.top6, name: report.name, awards_recent: 0, awards: [], enrollment: [], wages: report.wages }]}
-                brandColor={scopeBrand}
-              />
-            ) : (
-              <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", color: "#5e6a83", fontFamily: MONO, fontSize: 10.5 }}>no wage cohorts reported</div>
-            )}
-          </div>
-        </DashPanel>
-        <DashPanel title="Occupations served" authority="COE" accent="#ff5a5a">
-          <div style={{ flex: 1, minHeight: 0, overflowY: "auto" }}>
-            {report && report.occupations.length > 0 ? (
-              <OccupationDemandTable rows={report.occupations} brandColor="#ff5a5a" label="Regional annual openings by SOC" />
-            ) : (
-              <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", color: "#5e6a83", fontFamily: MONO, fontSize: 10.5 }}>no demanded occupations in scope</div>
-            )}
-          </div>
-        </DashPanel>
-      </div>
+    <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+      {/* One band set per lens: top band (the lens's two aggregates), then the
+          scope bands (four panels, one scope — decided B2), two per row at
+          width-driven proportions, content-driven heights. The set is the
+          layout lab's swap boundary — any panel can trade places with any
+          other. Charts are scope-keyed so each scope entry lands on its
+          default mode. */}
+      <DashBandSet bands={[
+        { id: "programs.top", panels: [coveragePanel, supplyPanel] },
+        ...buildScopeBands(),
+      ]} />
     </div>
   );
+
+  // Hoisted so the return stays a readable manifest; closes over the scope
+  // state above. Crosswalk present ⇒ it pairs with wages and occupations takes
+  // its own full-width row; absent ⇒ occupations pairs with wages.
+  function buildScopeBands(): DashBandDef[] {
+    // Scope banner — who the bands below are about. Interstitial chrome on
+    // the first scope band, outside the swap system; pins under the lens rail
+    // on scroll (see ScopeBanner).
+    const scopeStrip = (
+      <ScopeBanner
+        brand={scopeBrand}
+        scope={collegeName ? shortName(collegeName) : "Consortium"}
+        name={topName}
+        code={`TOP ${top}`}
+      />
+    );
+        const awardsPanel = {
+          id: "programs.awards",
+          node: (
+            <DashPanel title="Awards" authority={collegeName ? "DataMart" : "DataMart · COE"} accent={scopeBrand}>
+              <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
+                {report && (
+                  <TrendChart
+                    key={(collegeId ?? "consortium") + ":awards"}
+                    series={typeSeries.length > 0
+                      ? typeSeries.map((s) => ({ top6: s.award_type, name: shortAwardType(s.award_type), vals: s.vals }))
+                      : report.awards_by_college.map((s) => ({ top6: s.college, name: shortName(s.college), vals: s.vals }))}
+                    labels={report.award_years.map(awardYearLabel)}
+                    defaultMode="stacked"
+                    colorOf={typeSeries.length > 0 ? typeColor : collegeColor}
+                    modeLabels={typeSeries.length > 0 ? { lines: "Per credential", stacked: "Stacked" } : { lines: "Per school", stacked: "Stacked", demand: "Demand" }}
+                    hideSeriesTag
+                    empty={report.awards_by_college.length === 0}
+                    demandLine={!collegeName && addressableDemand > 0
+                      ? { value: addressableDemand, label: "Regional Demand · COE", color: DEMAND_ACCENT }
+                      : undefined}
+                    fill
+                  />
+                )}
+              </div>
+            </DashPanel>
+          ),
+        };
+        const enrollPanel = {
+          id: "programs.enrollments",
+          node: (
+            <DashPanel title="Enrollments" authority="DataMart" accent={scopeBrand}>
+              <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
+                {report && (
+                  <TrendChart
+                    key={(collegeId ?? "consortium") + ":enroll"}
+                    series={creditSeries.length > 0
+                      ? creditSeries.map((s) => ({ top6: s.credit_type, name: shortCreditType(s.credit_type), vals: s.vals }))
+                      : report.enrollment_by_college.map((s) => ({ top6: s.college, name: shortName(s.college), vals: s.vals }))}
+                    labels={report.enrollment_terms}
+                    defaultMode="lines"
+                    colorOf={creditSeries.length > 0 ? creditColor : collegeColor}
+                    axisStyle="twoTier"
+                    modeLabels={creditSeries.length > 0 ? { lines: "Per credit family", stacked: "Stacked" } : { lines: "Per school", stacked: "Stacked" }}
+                    hideSeriesTag
+                    empty={report.enrollment_by_college.length === 0}
+                    fill
+                  />
+                )}
+              </div>
+            </DashPanel>
+          ),
+        };
+        const wagesPanel = {
+          id: "programs.wages",
+          node: (
+            <DashPanel title="Wage Outcomes" authority="DataMart" accent={scopeBrand}>
+              <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
+                {/* Empty wages render WageOutcomes' own ghost scaffold (the
+                    shared "No data reported" chart-frame grammar). */}
+                {report && (
+                  <WageOutcomes
+                    programs={[{ top6: report.top6, name: report.name, awards_recent: 0, awards: [], enrollment: [], wages: report.wages }]}
+                    brandColor={scopeBrand}
+                    fill
+                  />
+                )}
+              </div>
+            </DashPanel>
+          ),
+        };
+        const hasCrosswalk = !!(report?.crosswalk && report.crosswalk.socs.length > 0);
+        const crosswalkPanel = hasCrosswalk && report?.crosswalk
+          ? {
+              id: "programs.crosswalk",
+              node: (
+                <DashPanel title="Crosswalk" authority="CCCCO · NCES" accent={scopeBrand}>
+                  {/* Centered: the diagram's height is width-driven, so in a
+                      taller row it floats — centering splits the slack. */}
+                  <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                    <ProgramPathway crosswalk={report.crosswalk} accent={scopeBrand} prose={false} />
+                  </div>
+                </DashPanel>
+              ),
+            }
+          : null;
+        const occupationsPanel = {
+          id: "programs.occupations",
+          // Scope-keyed like the report's table (reportBrand): programs green
+          // at consortium, the college's brand in college scope.
+          node: (
+            <DashPanel title="Occupations Served" authority="COE" accent={scopeBrand}>
+              <div>
+                {report && report.occupations.length > 0 ? (
+                  <OccupationDemandTable rows={report.occupations} brandColor={scopeBrand} label={null} />
+                ) : (
+                  <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", color: "#5e6a83", fontFamily: MONO, fontSize: 10.5 }}>no demanded occupations in scope</div>
+                )}
+              </div>
+            </DashPanel>
+          ),
+        };
+        return [
+          { id: "programs.scopeA", before: scopeStrip, panels: [awardsPanel, enrollPanel] },
+          { id: "programs.scopeB", panels: [wagesPanel, crosswalkPanel ?? occupationsPanel] },
+          ...(crosswalkPanel ? [{ id: "programs.scopeC", panels: [occupationsPanel] }] : []),
+        ];
+  }
 }

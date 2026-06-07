@@ -5,10 +5,13 @@ import { squarify } from "@/college-atlas/partnerships/treemap";
 import { SchoolConfig } from "@/config/schoolConfig";
 import AtlasHeader from "@/ui/AtlasHeader";
 import KallipolisBrand from "@/ui/KallipolisBrand";
+import SurfaceNav from "@/college-atlas/partnerships/SurfaceNav";
 import RisingSun from "@/ui/RisingSun";
 import { FONT, MONO, ReportHeader, Section, Prose } from "@/college-atlas/partnerships/reportChrome";
 import { OpportunityReportBody, PartnerEmployerRow } from "@/college-atlas/partnerships/OpportunityReport";
 import { readSvampParams, writeSvampParams } from "@/college-atlas/partnerships/svampUrl";
+import EmployerListRow from "@/college-atlas/partnerships/EmployerListRow";
+import { ROLE_LABEL } from "@/college-atlas/partnerships/svampLabels";
 import OccupationDemandTable from "@/college-atlas/partnerships/OccupationDemandTable";
 import SupplyTreemap from "@/college-atlas/partnerships/SupplyTreemap";
 import DepartmentRow from "@/college-atlas/courses/DepartmentRow";
@@ -35,6 +38,7 @@ import {
   Dot, shortName, hexA, hexToHsl, hueDist, OVERLAY_COLORS, leadOverlayColors,
   awardYearLabel, shortAwardType, shortCreditType,
 } from "@/college-atlas/partnerships/chartKit";
+import LensTabs, { type Lens } from "@/college-atlas/partnerships/LensTabs";
 
 const GAP = "#e0654f";
 // SVAMP consortium accent (red) — cube, eyebrow, hairline, section bars.
@@ -61,26 +65,10 @@ type CollegeRef = { id: string; config: SchoolConfig };
 
 type Props = {
   colleges: CollegeRef[]; // member colleges, in display order
-  onBack: () => void;
 };
 
-// Plain-English role labels for the 12 SVAMP occupations. The role name leads;
-// the SOC code rides beneath as provenance. No invented grouping — the twelve
-// roles list in SOC order.
-const ROLE_LABEL: Record<string, string> = {
-  "17-3023": "Electrical & Electronic Eng. Techs",
-  "17-3024": "Electro-Mech. & Mechatronics Techs",
-  "17-3026": "Industrial Eng. Techs",
-  "17-3027": "Mechanical Eng. Techs",
-  "17-3028": "Calibration Techs",
-  "17-3029": "Eng. Technologists, other",
-  "49-9041": "Industrial Machinery Mechanics",
-  "49-9043": "Machinery Maintenance Workers",
-  "51-4041": "Machinists",
-  "51-9141": "Semiconductor Processing",
-  "51-9161": "CNC Tool Operators",
-  "51-9162": "CNC Tool Programmers",
-};
+// ROLE_LABEL (the 12 SVAMP SOC → role labels) now lives in ./svampLabels,
+// shared with the dashboard and the employer-detail SOC chips.
 
 // Coverage keys on activity over the crosswalking programs — the identical
 // predicate to the Programs grid, just aggregated over the feeding set: covered
@@ -96,58 +84,6 @@ function level(cell: ApiSvampCell | undefined): "none" | "partial" | "strong" {
   return enrolled || awarded ? "partial" : "none";
 }
 
-// ── Lens navigation ────────────────────────────────────────────────────────
-// Three Platonic forms of the partnership landscape: the worker (occupations ·
-// hard hat), the curriculum (programs · book), the firm (employers · skyscraper).
-// One geometric family of reduced archetypes; the per-lens accent doubles as
-// wayfinding once the Programs/Employers views ship. Eyebrow-tab treatment —
-// active underline echoes the coverage grid's selected-column underline.
-type Lens = "occupations" | "programs" | "employers";
-const FormHardHat: React.FC = () => (
-  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{ width: "100%", height: "100%" }}>
-    <path d="M6 18a10 10 0 0 1 20 0" /><path d="M11.4 18C11.4 12.4 13 9.4 16 8" /><path d="M20.6 18C20.6 12.4 19 9.4 16 8" /><path d="M3 18h26" /><path d="M5.4 18c2.4 3.1 18.8 3.1 21.2 0" />
-  </svg>
-);
-const FormBook: React.FC = () => (
-  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{ width: "100%", height: "100%" }}>
-    <path d="M16 9.6C12.4 7.8 7.6 8.1 4.6 9.6V22.6C7.6 21.1 12.4 20.8 16 22.6" /><path d="M16 9.6C19.6 7.8 24.4 8.1 27.4 9.6V22.6C24.4 21.1 19.6 20.8 16 22.6" /><path d="M16 9.6V22.6" />
-  </svg>
-);
-const FormTower: React.FC = () => (
-  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" style={{ width: "100%", height: "100%" }}>
-    <path d="M10.5 28V11h11v17" /><path d="M13.6 11V6h4.8v5" /><path d="M16 6V3" /><path d="M13.2 15.5h5.6M13.2 19.5h5.6M13.2 23.5h5.6" /><path d="M7.5 28h17" />
-  </svg>
-);
-// Programs first — workforce practitioners own and act on programs (supply is
-// their lever; SWP funds programs), and it matches the institution-primary atlas.
-// Occupations (regional demand) follows as the justification; employers, the map.
-const LENS_DEFS: { key: Lens; label: string; accent: string; Icon: React.FC }[] = [
-  { key: "programs", label: "Programs", accent: PROGRAM_ACCENT, Icon: FormBook },
-  { key: "occupations", label: "Occupations", accent: "#ff5a5a", Icon: FormHardHat },
-  { key: "employers", label: "Employers", accent: EMPLOYER_ACCENT, Icon: FormTower },
-];
-function LensTabs({ lens, setLens }: { lens: Lens; setLens: (l: Lens) => void }) {
-  return (
-    <div style={{ display: "flex", gap: 38, borderBottom: "1px solid rgba(255,255,255,.08)", marginBottom: 4 }}>
-      {LENS_DEFS.map(({ key, label, accent, Icon }) => {
-        const on = lens === key;
-        return (
-          <button
-            key={key}
-            onClick={() => setLens(key)}
-            onMouseEnter={(e) => { if (!on) (e.currentTarget as HTMLElement).style.color = "#e8ecf4"; }}
-            onMouseLeave={(e) => { if (!on) (e.currentTarget as HTMLElement).style.color = "#9aa6bd"; }}
-            style={{ display: "flex", alignItems: "center", gap: 9, border: 0, background: "transparent", cursor: "pointer", padding: "6px 0 13px", color: on ? "#e8ecf4" : "#9aa6bd", fontFamily: MONO, fontSize: 11.5, fontWeight: 500, letterSpacing: ".12em", textTransform: "uppercase", position: "relative", transition: "color .16s" }}
-          >
-            <span style={{ width: 17, height: 17, display: "flex", color: on ? accent : "#5e6a83", transition: "color .16s" }}><Icon /></span>
-            {label}
-            {on && <span style={{ position: "absolute", left: 0, right: 0, bottom: -1, height: 2, background: accent, borderRadius: 2 }} />}
-          </button>
-        );
-      })}
-    </div>
-  );
-}
 // Member-college coordinates (fixed; the five SVAMP colleges) for the map's
 // context anchors. Hardcoded rather than imported from the State Atlas to keep
 // college-atlas free of a cross-feature dependency on state-atlas.
@@ -254,51 +190,18 @@ function EmployersLens({ colleges }: { colleges: CollegeRef[] }) {
             />
           </div>
           <div style={{ overflowY: "auto", flex: 1, minHeight: 0 }}>
-            {filtered.map((e) => {
-              const isSel = selected === e.name, isHov = hover === e.name;
-              return (
-                <button
-                  key={e.name}
-                  ref={(el) => { rowRefs.current.set(e.name, el); }}
-                  onClick={() => toggle(e.name)}
-                  onMouseEnter={() => setHover(e.name)}
-                  onMouseLeave={() => setHover(null)}
-                  style={{ display: "flex", alignItems: "stretch", gap: 12, width: "100%", textAlign: "left", padding: "12px 14px", border: "none", borderBottom: "1px solid rgba(255,255,255,0.05)", cursor: "pointer", background: isSel ? hexA(EMPLOYER_ACCENT, 0.1) : isHov ? "rgba(255,255,255,0.04)" : "transparent", transition: "background .12s" }}
-                >
-                  <div style={{ width: 3, borderRadius: 2, background: EMPLOYER_ACCENT, opacity: isSel ? 1 : 0.7, flexShrink: 0 }} />
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontFamily: FONT, fontSize: 13.5, fontWeight: 600, color: "#ffffff", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{e.name}</div>
-                    {/* NAICS code (formal identifier, mono) → industry title
-                        (the concept, brighter sans). The pairing teaches the
-                        crosswalk; truncates collapsed, wraps full when selected. */}
-                    <div style={{ fontSize: 11, marginTop: 3, lineHeight: 1.45, whiteSpace: isSel ? "normal" : "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                      {e.naics4 && <span style={{ fontFamily: MONO, color: "rgba(255,255,255,0.4)" }}>NAICS {e.naics4}</span>}
-                      {e.naics4 && e.naics_title && <span style={{ color: "rgba(255,255,255,0.28)" }}> · </span>}
-                      {e.naics_title && <span style={{ fontFamily: FONT, color: "rgba(255,255,255,0.62)" }}>{e.naics_title}</span>}
-                    </div>
-                    {isSel && (
-                      <div style={{ marginTop: 10 }}>
-                        {e.website && (
-                          <a href={e.website} target="_blank" rel="noreferrer" onClick={(ev) => ev.stopPropagation()} style={{ fontFamily: MONO, fontSize: 11, color: EMPLOYER_ACCENT }}>
-                            {e.website.replace(/^https?:\/\//, "").replace(/\/$/, "")} ↗
-                          </a>
-                        )}
-                        {e.description && (
-                          <div style={{ fontFamily: FONT, fontSize: 12.5, color: "rgba(255,255,255,0.7)", lineHeight: 1.55, marginTop: e.website ? 7 : 0, whiteSpace: "normal" }}>{e.description}</div>
-                        )}
-                        <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 9 }}>
-                          {e.socs.map((s) => (
-                            <span key={s} style={{ fontFamily: FONT, fontSize: 11, color: "#cfe0f0", background: hexA(EMPLOYER_ACCENT, 0.14), border: `1px solid ${hexA(EMPLOYER_ACCENT, 0.3)}`, borderRadius: 6, padding: "2px 8px" }}>
-                              {ROLE_LABEL[s] ?? s}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </button>
-              );
-            })}
+            {filtered.map((e) => (
+              <EmployerListRow
+                key={e.name}
+                emp={e}
+                selected={selected === e.name}
+                hovered={hover === e.name}
+                onSelect={() => toggle(e.name)}
+                onHover={(on) => setHover(on ? e.name : null)}
+                accent={EMPLOYER_ACCENT}
+                rowRef={(el) => { rowRefs.current.set(e.name, el); }}
+              />
+            ))}
             {filtered.length === 0 && (
               <div style={{ padding: "24px 16px", fontFamily: FONT, fontSize: 13, color: "#9aa6bd" }}>No employers match “{query}”.</div>
             )}
@@ -786,7 +689,7 @@ function OccupationAggregateReport({ soc, colleges, isSectorPriority }: { soc: s
   );
 }
 
-export default function SvampView({ colleges, onBack }: Props) {
+export default function SvampView({ colleges }: Props) {
   const [data, setData] = useState<ApiSvampLandscape | null>(null);
   // Programs landscape fetched here too, only so the header can show the
   // active-program count from the SAME source the Programs lens uses — keeping
@@ -877,7 +780,11 @@ export default function SvampView({ colleges, onBack }: Props) {
 
   const wrap = (children: React.ReactNode) => (
     <div style={{ minHeight: "100vh", background: "#060d1f", color: "#e8ecf4", fontFamily: FONT }}>
-      <AtlasHeader title="Silicon Valley Advanced Manufacturing Partnership" onBack={onBack} rightSlot={<KallipolisBrand />} position="sticky" cubeTint={ACCENT} showPreview titleSize="15px" />
+      {/* Nav — the dashboard's H1 grammar, unified across both surfaces
+          (2026-06-06): Kallipolis brand left (no cube, no back chevron — the
+          preview surface stands alone), consortium title + PREVIEW MODE
+          center, the surface forms right. */}
+      <AtlasHeader title="Silicon Valley Advanced Manufacturing Partnership" leftSlot={<KallipolisBrand />} rightSlot={<SurfaceNav active="report" />} position="sticky" showPreview titleSize="15px" />
       <div style={{ maxWidth: 900, margin: "0 auto", padding: "40px 28px 90px" }}>{children}</div>
     </div>
   );

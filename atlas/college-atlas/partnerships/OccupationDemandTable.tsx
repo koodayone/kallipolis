@@ -30,24 +30,27 @@ function ColHead({ brandColor, align, children }: {
  * verbatim from the Labor Market Information section of OpportunityReport so the
  * per-college occupation report and the SVAMP Programs lens render the same
  * table from one source. `label` defaults to the occupation report's heading
- * (so that caller is byte-identical); the Programs lens overrides it.
+ * (so that caller is byte-identical); the Programs lens overrides it, and the
+ * dashboard passes null to drop it — the column headers are the chrome there.
  */
 export default function OccupationDemandTable({
   rows, brandColor, label = "Demand: regional annual openings by SOC",
 }: {
   rows: DemandRow[];
   brandColor: string;
-  label?: string;
+  label?: string | null;
 }) {
   return (
-    <div style={{ marginTop: "20px" }}>
-      <span style={{
-        fontFamily: FONT, fontSize: "12px", fontWeight: 600,
-        color: "rgba(255,255,255,0.7)",
-        display: "block", marginBottom: "10px",
-      }}>
-        {label}
-      </span>
+    <div style={{ marginTop: label ? "20px" : "10px" }}>
+      {label && (
+        <span style={{
+          fontFamily: FONT, fontSize: "12px", fontWeight: 600,
+          color: "rgba(255,255,255,0.7)",
+          display: "block", marginBottom: "10px",
+        }}>
+          {label}
+        </span>
+      )}
       <div style={{
         background: "rgba(255,255,255,0.025)",
         border: "1px solid rgba(255,255,255,0.06)",
