@@ -28,7 +28,7 @@ import DemandTreemap from "@/college-atlas/partnerships/DemandTreemap";
 import CoverageMatrix from "@/college-atlas/partnerships/CoverageMatrix";
 import TrendChart from "@/college-atlas/partnerships/TrendChart";
 import CurriculumPathway from "@/college-atlas/partnerships/CurriculumPathway";
-import { DashPanel, DashBandSet, ScopeBanner, type DashBandDef } from "@/college-atlas/partnerships/SvampDashboard";
+import { DashPanel, DashBandSet, ScopeBanner, SvampLoading, type DashBandDef } from "@/college-atlas/partnerships/SvampDashboard";
 import { shortName, leadOverlayColors, awardYearLabel } from "@/college-atlas/partnerships/chartKit";
 import { getSvampLandscape, getSvampOccupation } from "@/college-atlas/partnerships/api";
 import type { ApiSvampLandscape, ApiSvampCell, ApiSvampOccupationReport } from "@/college-atlas/partnerships/api";
@@ -148,7 +148,7 @@ export default function SvampDashboardOccupations({ colleges }: { colleges: Coll
   };
 
   if (err) return <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", color: "#e0654f", fontFamily: MONO, fontSize: 12 }}>Failed to load: {err}</div>;
-  if (!land) return <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", color: "#5e6a83", fontFamily: MONO, fontSize: 11 }}>loading…</div>;
+  if (!land) return <SvampLoading />;
 
   const refCells = land.colleges[0]?.cells ?? [];
   const cols = colleges.map((c) => ({ id: c.id, label: shortName(c.config.name), brand: c.config.brandColorLight }));
