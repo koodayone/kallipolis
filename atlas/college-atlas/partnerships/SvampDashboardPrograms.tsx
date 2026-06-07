@@ -123,7 +123,11 @@ export default function SvampDashboardPrograms({ colleges }: { colleges: College
     node: (
       <DashPanel title="Program Supply" authority="DataMart" accent={scopeBrand}>
         <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
-          <SupplyTreemap tops={land.tops} selectedTop={collegeId ? null : top} onSelect={selectConsortium} accent={scopeBrand} fill />
+          {/* Ring tracks the entity in BOTH scopes — the selected program's
+              place in the supply distribution is scope-invariant. Scope is
+              carried by hue (the ramp wears scopeBrand) and the banner, so the
+              ring is free to answer "where does this TOP sit?" */}
+          <SupplyTreemap tops={land.tops} selectedTop={top} onSelect={selectConsortium} accent={scopeBrand} fill />
         </div>
       </DashPanel>
     ),

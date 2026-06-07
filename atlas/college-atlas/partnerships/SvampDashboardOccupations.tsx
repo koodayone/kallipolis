@@ -189,7 +189,10 @@ export default function SvampDashboardOccupations({ colleges }: { colleges: Coll
     node: (
       <DashPanel title="Regional Demand" authority="COE" accent={scopeBrand}>
         <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
-          <DemandTreemap cells={refCells} total={land.aggregate.regional_demand_total} selected={collegeId ? null : soc} onSelect={selectConsortium} accent={scopeBrand} fill />
+          {/* Ring tracks the entity in BOTH scopes — the SOC's share of
+              regional demand is scope-invariant (demand is regional). Scope is
+              carried by hue (the ramp wears scopeBrand) and the banner. */}
+          <DemandTreemap cells={refCells} total={land.aggregate.regional_demand_total} selected={soc} onSelect={selectConsortium} accent={scopeBrand} fill />
         </div>
       </DashPanel>
     ),
