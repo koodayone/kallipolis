@@ -29,6 +29,7 @@ import { FONT, MONO } from "@/college-atlas/partnerships/reportChrome";
 import { readSvampParams, writeSvampParams } from "@/college-atlas/partnerships/svampUrl";
 import { getCollegeAtlasConfig } from "@/config/collegeAtlasConfigs";
 import SvampDashboardPrograms, { type CollegeRef } from "@/college-atlas/partnerships/SvampDashboardPrograms";
+import SvampDashboardOccupations from "@/college-atlas/partnerships/SvampDashboardOccupations";
 
 // The five member colleges, in display order (mirrors /svamp's ClientPage).
 const SVAMP_COLLEGE_IDS = ["deanza", "evergreen", "foothill", "mission", "ohlone"];
@@ -191,7 +192,9 @@ export default function SvampDashboard() {
       {/* Lens body — Programs and Occupations share the dashboard grammar;
           Employers is its own state. */}
       <div style={{ minHeight: 0, display: "flex", flexDirection: "column" }}>
-        {lens === "programs" ? <SvampDashboardPrograms colleges={colleges} /> : <LensPlaceholder lens={lens} />}
+        {lens === "programs" ? <SvampDashboardPrograms colleges={colleges} />
+          : lens === "occupations" ? <SvampDashboardOccupations colleges={colleges} />
+          : <LensPlaceholder lens={lens} />}
       </div>
     </div>
   );
