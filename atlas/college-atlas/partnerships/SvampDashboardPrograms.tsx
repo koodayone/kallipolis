@@ -11,7 +11,7 @@
    via svampUrl (shared vocabulary with the report, so views hop surfaces with
    selection intact). */
 
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { MONO } from "@/college-atlas/partnerships/reportChrome";
 import { SchoolConfig } from "@/config/schoolConfig";
 import SupplyTreemap from "@/college-atlas/partnerships/SupplyTreemap";
@@ -20,7 +20,7 @@ import TrendChart from "@/college-atlas/partnerships/TrendChart";
 import WageOutcomes from "@/college-atlas/partnerships/WageOutcomes";
 import OccupationDemandTable from "@/college-atlas/partnerships/OccupationDemandTable";
 import ProgramPathway from "@/college-atlas/partnerships/ProgramPathway";
-import { DashPanel, DashBandSet, ScopeBanner, SvampLoading, type DashBandDef } from "@/college-atlas/partnerships/SvampDashboard";
+import { DashPanel, DashBandSet, ScopeBanner, SvampLoading, ScopeAccentContext, type DashBandDef } from "@/college-atlas/partnerships/SvampDashboard";
 import {
   shortName, leadOverlayColors, awardYearLabel, shortAwardType, shortCreditType,
 } from "@/college-atlas/partnerships/chartKit";
@@ -46,6 +46,12 @@ export default function SvampDashboardPrograms({ colleges }: { colleges: College
   const nameById = useMemo(() => new Map(colleges.map((c) => [c.id, c.config.name])), [colleges]);
   const brandByName = useMemo(() => new Map(colleges.map((c) => [c.config.name, c.config.brandColorLight])), [colleges]);
   const collegeName = collegeId ? nameById.get(collegeId) : undefined;
+  // Report the scope accent to the shell (rail + tabs wear it); null at
+  // consortium scope restores the lens hue.
+  const scopeAccentCtx = useContext(ScopeAccentContext);
+  useEffect(() => {
+    scopeAccentCtx?.set(collegeName ? (brandByName.get(collegeName) ?? null) : null);
+  }, [collegeName, brandByName, scopeAccentCtx]);
 
   useEffect(() => {
     getSvampPrograms()
@@ -115,9 +121,9 @@ export default function SvampDashboardPrograms({ colleges }: { colleges: College
   const supplyPanel = {
     id: "programs.supply",
     node: (
-      <DashPanel title="Program Supply" authority="DataMart" accent={ACCENT}>
+      <DashPanel title="Program Supply" authority="DataMart" accent={scopeBrand}>
         <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
-          <SupplyTreemap tops={land.tops} selectedTop={collegeId ? null : top} onSelect={selectConsortium} accent={ACCENT} fill />
+          <SupplyTreemap tops={land.tops} selectedTop={collegeId ? null : top} onSelect={selectConsortium} accent={scopeBrand} fill />
         </div>
       </DashPanel>
     ),
@@ -128,7 +134,7 @@ export default function SvampDashboardPrograms({ colleges }: { colleges: College
     // the layout lab (2026-06-06): the matrix is the read, the treemap the picker.
     weight: 2,
     node: (
-      <DashPanel title="Program Coverage" authority="DataMart" accent={ACCENT}>
+      <DashPanel title="Program Coverage" authority="DataMart" accent={scopeBrand}>
         <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
           <CoverageMatrix
             flush

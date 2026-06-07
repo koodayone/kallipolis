@@ -21,14 +21,14 @@
    URL: `soc` / `college` params via svampUrl — shared vocabulary with the
    report, so views hop surfaces with selection intact. */
 
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { FONT, MONO } from "@/college-atlas/partnerships/reportChrome";
 import { SchoolConfig } from "@/config/schoolConfig";
 import DemandTreemap from "@/college-atlas/partnerships/DemandTreemap";
 import CoverageMatrix from "@/college-atlas/partnerships/CoverageMatrix";
 import TrendChart from "@/college-atlas/partnerships/TrendChart";
 import CurriculumPathway from "@/college-atlas/partnerships/CurriculumPathway";
-import { DashPanel, DashBandSet, ScopeBanner, SvampLoading, type DashBandDef } from "@/college-atlas/partnerships/SvampDashboard";
+import { DashPanel, DashBandSet, ScopeBanner, SvampLoading, ScopeAccentContext, type DashBandDef } from "@/college-atlas/partnerships/SvampDashboard";
 import { shortName, leadOverlayColors, awardYearLabel } from "@/college-atlas/partnerships/chartKit";
 import { getSvampLandscape, getSvampOccupation } from "@/college-atlas/partnerships/api";
 import type { ApiSvampLandscape, ApiSvampCell, ApiSvampOccupationReport } from "@/college-atlas/partnerships/api";
@@ -114,6 +114,12 @@ export default function SvampDashboardOccupations({ colleges }: { colleges: Coll
   const nameById = useMemo(() => new Map(colleges.map((c) => [c.id, c.config.name])), [colleges]);
   const brandByName = useMemo(() => new Map(colleges.map((c) => [c.config.name, c.config.brandColorLight])), [colleges]);
   const collegeName = collegeId ? nameById.get(collegeId) : undefined;
+  // Report the scope accent to the shell (rail + tabs wear it); null at
+  // consortium scope restores the lens hue.
+  const scopeAccentCtx = useContext(ScopeAccentContext);
+  useEffect(() => {
+    scopeAccentCtx?.set(collegeName ? (brandByName.get(collegeName) ?? null) : null);
+  }, [collegeName, brandByName, scopeAccentCtx]);
 
   useEffect(() => {
     getSvampLandscape()
@@ -181,9 +187,9 @@ export default function SvampDashboardOccupations({ colleges }: { colleges: Coll
   const demandPanel = {
     id: "occupations.demand",
     node: (
-      <DashPanel title="Regional Demand" authority="COE" accent={ACCENT}>
+      <DashPanel title="Regional Demand" authority="COE" accent={scopeBrand}>
         <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
-          <DemandTreemap cells={refCells} total={land.aggregate.regional_demand_total} selected={collegeId ? null : soc} onSelect={selectConsortium} fill />
+          <DemandTreemap cells={refCells} total={land.aggregate.regional_demand_total} selected={collegeId ? null : soc} onSelect={selectConsortium} accent={scopeBrand} fill />
         </div>
       </DashPanel>
     ),
@@ -194,7 +200,7 @@ export default function SvampDashboardOccupations({ colleges }: { colleges: Coll
     // the layout lab (2026-06-06), mirroring the Programs lens.
     weight: 2,
     node: (
-      <DashPanel title="Occupation Coverage" authority="DataMart" accent={ACCENT}>
+      <DashPanel title="Occupation Coverage" authority="DataMart" accent={scopeBrand}>
         <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
           <CoverageMatrix
             flush

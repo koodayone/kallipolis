@@ -15,11 +15,14 @@ const ACCENT = "#ff5a5a";
 // Squarified treemap: area = annual openings, so the rectangle is the regional
 // total. Cells label the SOC code + openings (the full title is surfaced in the
 // readout on hover) — compact and visual rather than prose-in-cell.
-function DemandTreemap({ cells, total, selected, onSelect, fill = false }: { cells: ApiSvampCell[]; total: number; selected?: string | null; onSelect?: (soc: string) => void;
+function DemandTreemap({ cells, total, selected, onSelect, fill = false, accent = ACCENT }: { cells: ApiSvampCell[]; total: number; selected?: string | null; onSelect?: (soc: string) => void;
   // fill: lay the treemap out in the CONTAINER's measured pixel space so the
   // blocks re-proportion to the panel (the dashboard). Default false ⇒ the
   // report's fixed 860×300 figure, unchanged.
-  fill?: boolean }) {
+  fill?: boolean;
+  // accent: cell ramp + tooltip hue. Default = occupations red (the report);
+  // the dashboard passes scopeBrand so college scope wears the college color.
+  accent?: string }) {
   const [hover, setHover] = useState<{ i: number; x: number; y: number } | null>(null);
   const { ref: boxRef, box } = useMeasuredBox(fill);
   const data = cells
@@ -31,7 +34,7 @@ function DemandTreemap({ cells, total, selected, onSelect, fill = false }: { cel
   const H = fill ? Math.max(box?.h ?? 0, 1) : 300;
   const g = 2;
   const rects = squarify(data.map((d) => d.op), 0, 0, W, H);
-  const color = (i: number) => hexA(ACCENT, 1 - (i / Math.max(data.length - 1, 1)) * 0.62);
+  const color = (i: number) => hexA(accent, 1 - (i / Math.max(data.length - 1, 1)) * 0.62);
   const hd = hover != null ? data[hover.i] : null;
   const top3 = data.slice(0, 3);
   const top3sh = Math.round((top3.reduce((s, d) => s + d.op, 0) / total) * 100);
@@ -90,7 +93,7 @@ function DemandTreemap({ cells, total, selected, onSelect, fill = false }: { cel
           padding: "8px 11px", boxShadow: "0 6px 24px rgba(0,0,0,.4)", fontFamily: FONT,
         }}>
           <div style={{ fontSize: 12.5, fontWeight: 600, color: "#e8ecf4", marginBottom: 2 }}>{hd.title}</div>
-          <div style={{ fontFamily: MONO, fontSize: 11, color: ACCENT, whiteSpace: "nowrap" }}>SOC {hd.soc} · {hd.op.toLocaleString()} openings/yr · {Math.round((hd.op / total) * 100)}% of demand</div>
+          <div style={{ fontFamily: MONO, fontSize: 11, color: accent, whiteSpace: "nowrap" }}>SOC {hd.soc} · {hd.op.toLocaleString()} openings/yr · {Math.round((hd.op / total) * 100)}% of demand</div>
         </div>,
         document.body,
       )}
