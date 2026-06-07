@@ -10,7 +10,7 @@ import { FONT, MONO, ReportHeader, Section, Prose } from "@/college-atlas/partne
 import { OpportunityReportBody, PartnerEmployerRow } from "@/college-atlas/partnerships/OpportunityReport";
 import { readSvampParams, writeSvampParams } from "@/college-atlas/partnerships/svampUrl";
 import EmployerListRow from "@/college-atlas/partnerships/EmployerListRow";
-import { ROLE_LABEL } from "@/college-atlas/partnerships/svampLabels";
+import { ROLE_LABEL, OCC_MATRIX_CORNER, occupationMatrixRows } from "@/college-atlas/partnerships/svampLabels";
 import OccupationDemandTable from "@/college-atlas/partnerships/OccupationDemandTable";
 import SupplyTreemap from "@/college-atlas/partnerships/SupplyTreemap";
 import DepartmentRow from "@/college-atlas/courses/DepartmentRow";
@@ -916,7 +916,10 @@ export default function SvampView({ colleges }: Props) {
   const occCols = columns.map(({ ref }) => ({ id: ref.id, label: shortName(ref.config.name), brand: ref.config.brandColorLight }));
   const occCellByKey = new Map<string, ApiSvampCell | undefined>();
   columns.forEach(({ ref, cellMap }) => socRows.forEach((soc) => occCellByKey.set(ref.id + "|" + soc.soc_code, cellMap.get(soc.soc_code))));
-  const occRows = socRows.map((soc) => ({ id: soc.soc_code, label: ROLE_LABEL[soc.soc_code] ?? soc.title, sublabel: `SOC ${soc.soc_code}`, title: soc.title }));
+  // Row set via the shared adapter (svampLabels.occupationMatrixRows) — the
+  // demand sort + role vocabulary live there, consumed identically by the
+  // dashboard so the two surfaces cannot drift.
+  const occRows = occupationMatrixRows(socRows);
   const occLevel = (rowId: string, colId: string) => level(occCellByKey.get(colId + "|" + rowId));
 
   // Report chrome adopts the active lens's color (occupations red / programs
@@ -989,7 +992,7 @@ export default function SvampView({ colleges }: Props) {
           level={occLevel}
           selectedRow={selectedSoc}
           selectedCol={occView === "targeted" ? (selRef?.id ?? null) : null}
-          cornerLabel="↓ role (by demand) · → college"
+          cornerLabel={OCC_MATRIX_CORNER}
           gapCellHint="no enrollment or awards (view crosswalk)"
           legend={[
             { k: "Covered", sub: "enrollment & awards", bg: "rgba(148,168,201,.92)", ring: true },

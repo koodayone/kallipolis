@@ -33,6 +33,7 @@ import { shortName, leadOverlayColors, awardYearLabel } from "@/college-atlas/pa
 import { getSvampLandscape, getSvampOccupation } from "@/college-atlas/partnerships/api";
 import type { ApiSvampLandscape, ApiSvampCell, ApiSvampOccupationReport } from "@/college-atlas/partnerships/api";
 import { readSvampParams, writeSvampParams } from "@/college-atlas/partnerships/svampUrl";
+import { OCC_MATRIX_CORNER, occupationMatrixRows } from "@/college-atlas/partnerships/svampLabels";
 
 const ACCENT = "#ff5a5a";        // Occupations lens red (mirrors the report)
 const DEMAND_ACCENT = "#c9a84c"; // demand reference gold
@@ -151,7 +152,10 @@ export default function SvampDashboardOccupations({ colleges }: { colleges: Coll
 
   const refCells = land.colleges[0]?.cells ?? [];
   const cols = colleges.map((c) => ({ id: c.id, label: shortName(c.config.name), brand: c.config.brandColorLight }));
-  const rows = refCells.map((c) => ({ id: c.soc_code, label: c.title, sublabel: c.soc_code, title: c.title }));
+  // Row set via the shared adapter (svampLabels.occupationMatrixRows): demand
+  // sort + role vocabulary + SOC provenance sublabel, identical to the report
+  // by construction.
+  const rows = occupationMatrixRows(refCells);
   const cellOf = (rowId: string, colId: string): ApiSvampCell | undefined => {
     const name = nameById.get(colId);
     return land.colleges.find((c) => c.name === name)?.cells.find((c) => c.soc_code === rowId);
@@ -198,7 +202,7 @@ export default function SvampDashboardOccupations({ colleges }: { colleges: Coll
             level={(r, c) => level(cellOf(r, c))}
             selectedRow={soc}
             selectedCol={collegeId}
-            cornerLabel="↓ occupation · → college"
+            cornerLabel={OCC_MATRIX_CORNER}
             gapCellHint="no enrollment or awards here"
             legend={[
               { k: "Covered", sub: "enrollment & awards", bg: "rgba(148,168,201,.92)", ring: true },
