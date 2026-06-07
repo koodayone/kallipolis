@@ -38,11 +38,19 @@ const LENS_DEFS: { key: Lens; label: string; accent: string; Icon: React.FC }[] 
   { key: "occupations", label: "Occupations", accent: "#ff5a5a", Icon: FormHardHat },
   { key: "employers", label: "Employers", accent: EMPLOYER_ACCENT, Icon: FormTower },
 ];
-function LensTabs({ lens, setLens }: { lens: Lens; setLens: (l: Lens) => void }) {
+function LensTabs({ lens, setLens, activeAccent }: {
+  lens: Lens;
+  setLens: (l: Lens) => void;
+  // Overrides the ACTIVE tab's accent (icon + underline) — the dashboard
+  // passes the selected college's brand in college scope, so the whole
+  // instrument wears the scope color. Inactive tabs keep lens identity.
+  activeAccent?: string;
+}) {
   return (
     <div style={{ display: "flex", gap: 38, borderBottom: "1px solid rgba(255,255,255,.08)", marginBottom: 4 }}>
-      {LENS_DEFS.map(({ key, label, accent, Icon }) => {
+      {LENS_DEFS.map(({ key, label, accent: lensAccent, Icon }) => {
         const on = lens === key;
+        const accent = on && activeAccent ? activeAccent : lensAccent;
         return (
           <button
             key={key}

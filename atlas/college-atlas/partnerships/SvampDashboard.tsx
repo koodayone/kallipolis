@@ -71,6 +71,17 @@ export const DashExpandContext = React.createContext<null | {
   setExpanded: (id: string | null) => void;
 }>(null);
 
+/* ── Scope accent — the whole instrument wears the scope color ─────────────
+   In college scope, every accent in the shell (active lens tab, rail stats)
+   follows the college's brand instead of the lens hue — completing the rule
+   that color answers exactly one question: whose scope am I looking at?
+   Lenses report their scope brand upward through this context (null at
+   consortium scope ⇒ the lens accent applies). Data semantics stay protected
+   where they always have: panel titles and authority chips, not hue. */
+export const ScopeAccentContext = React.createContext<null | {
+  set: (accent: string | null) => void;
+}>(null);
+
 const GlyphExpand: React.FC = () => (
   <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" style={{ width: "100%", height: "100%" }}>
     <path d="M19 5h8v8" /><path d="M27 5 18.5 13.5" /><path d="M13 27H5v-8" /><path d="M5 27l8.5-8.5" />
@@ -568,10 +579,15 @@ export default function SvampDashboard() {
     // every cross-lens selection key on any switch (panel ids are
     // lens-qualified, so the expanded panel clears with the rest).
     setExpandedId(null);
+    setScopeAccent(null);
     writeSvampParams({ lens: l === "programs" ? null : l, soc: null, top: null, college: null, emp: null, panel: null });
   };
 
-  const lensAccent = LENS_ACCENTS[lens];
+  // Scope accent reported by the mounted lens (college scope only); the
+  // shell's accents fall back to the lens hue at consortium scope.
+  const [scopeAccent, setScopeAccent] = useState<string | null>(null);
+  const scopeAccentCtx = useMemo(() => ({ set: setScopeAccent }), []);
+  const lensAccent = scopeAccent ?? LENS_ACCENTS[lens];
 
   if (wide === false) return <NarrowGate />;
 
@@ -598,7 +614,7 @@ export default function SvampDashboard() {
             the spacing lives inside the stats block instead. */}
         <div style={{ display: "flex", alignItems: "flex-end", gap: 0 }}>
           <div style={{ flex: 1, minWidth: 0 }}>
-            <LensTabs lens={lens} setLens={switchLens} />
+            <LensTabs lens={lens} setLens={switchLens} activeAccent={scopeAccent ?? undefined} />
           </div>
           <div style={{ display: "flex", alignItems: "baseline", gap: 8, paddingLeft: 24, paddingBottom: 14, borderBottom: `1px solid rgba(255,255,255,.08)`, marginBottom: 4, fontFamily: FONT, fontSize: 11, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", whiteSpace: "nowrap" }}>
             <span style={{ color: lensAccent, opacity: 0.8 }}>{agg ? agg.colleges : "—"} Member Colleges</span>
@@ -615,11 +631,13 @@ export default function SvampDashboard() {
           child, and zero inset makes its natural position coincide with its
           sticky offset — pinned from the first pixel, no slide. */}
       <div style={{ display: "flex", flexDirection: "column", ...(employersFull ? { flex: 1, minHeight: 0, overflow: "hidden", padding: "12px 16px 16px" } : { padding: "0 16px 24px" }) }}>
+        <ScopeAccentContext.Provider value={scopeAccentCtx}>
         <DashExpandContext.Provider value={expandCtx}>
           {lens === "programs" ? <SvampDashboardPrograms colleges={colleges} />
             : lens === "occupations" ? <SvampDashboardOccupations colleges={colleges} />
             : <SvampDashboardEmployers colleges={colleges} />}
         </DashExpandContext.Provider>
+        </ScopeAccentContext.Provider>
       </div>
     </div>
   );
