@@ -195,8 +195,9 @@ export default function SvampDashboardOccupations({ colleges }: { colleges: Coll
     weight: 2,
     node: (
       <DashPanel title="Occupation Coverage" authority="DataMart" accent={ACCENT}>
-        <div>
+        <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
           <CoverageMatrix
+            flush
             cols={cols}
             rows={rows}
             level={(r, c) => level(cellOf(r, c))}
@@ -209,7 +210,6 @@ export default function SvampDashboardOccupations({ colleges }: { colleges: Coll
               { k: "Partial", sub: "enrollment or awards", bg: "rgba(148,168,201,.3)", ring: true },
               { k: "Gap", sub: "neither", bg: "rgba(255,255,255,.035)", ring: false },
             ]}
-            caption="A row is the consortium scope — a cell is that college's scope."
             onSelect={selectCell}
             onSelectRow={selectConsortium}
           />
@@ -220,6 +220,15 @@ export default function SvampDashboardOccupations({ colleges }: { colleges: Coll
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+      {/* Scope banner leads the lens (revised 2026-06-07): the sticky stack
+          reads nav → rail → banner from the first pixel, and the aggregates'
+          selection rings mark the named scope below. */}
+      <ScopeBanner
+        brand={scopeBrand}
+        scope={collegeName ? shortName(collegeName) : "Consortium"}
+        name={socTitle}
+        code={soc ? `SOC ${soc}` : ""}
+      />
       {/* One band set per lens: top band (demand hero + coverage), then the
           scope bands — consortium: summary+gap · awards vs demand, then
           enrollments · crosswalk; college: awards · enrollments (no wages,
@@ -235,17 +244,6 @@ export default function SvampDashboardOccupations({ colleges }: { colleges: Coll
   // Hoisted so the return stays a readable manifest; closes over the scope
   // state above.
   function buildScopeBands(): DashBandDef[] {
-    // Scope banner — who the bands below are about. Interstitial chrome on
-    // the first scope band, outside the swap system; pins under the lens rail
-    // on scroll (see ScopeBanner).
-    const scopeStrip = (
-      <ScopeBanner
-        brand={scopeBrand}
-        scope={collegeName ? shortName(collegeName) : "Consortium"}
-        name={socTitle}
-        code={soc ? `SOC ${soc}` : ""}
-      />
-    );
     const summaryPanel = {
       id: "occupations.summary",
       node: (
@@ -387,7 +385,7 @@ export default function SvampDashboardOccupations({ colleges }: { colleges: Coll
     // (minmax clamps up if content runs tall). All panel chrome is
     // scope-keyed (scopeBrand), matching the report.
     const rows: DashBandDef[] = [
-      { id: "occupations.scopeA", before: scopeStrip, height: 445, panels: [summaryPanel, crosswalkPanel] },
+      { id: "occupations.scopeA", height: 445, panels: [summaryPanel, crosswalkPanel] },
     ];
     // The trend band exists only where there is activity to chart.
     if (hasActivity) rows.push({ id: "occupations.scopeB", height: 508, panels: [awardsPanel, enrollPanel] });

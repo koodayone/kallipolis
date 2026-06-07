@@ -33,6 +33,7 @@
    /svamp and /svamp/dashboard with its selection intact. */
 
 import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { FONT, MONO } from "@/college-atlas/partnerships/reportChrome";
 import { LayoutLabContext } from "@/college-atlas/partnerships/LayoutLab";
 import KallipolisBrand from "@/ui/KallipolisBrand";
@@ -55,22 +56,71 @@ const HAIR = "rgba(255,255,255,0.09)";
 
 type DashLens = Lens;
 
+/* ── Panel expand — Grafana's full-viewport panel view, transposed ─────────
+   Any band panel can expand to fill the viewport under the nav: the same
+   panel node handed viewport dimensions (the fill machinery re-lays every
+   chart), with the selection model still live behind it. Expanded state is
+   shareable — `panel=<id>` rides the svampUrl vocabulary like every other
+   view param. The context is provided by the dashboard shell; the affordance
+   lives in DashPanel chrome and is injected per-panel by DashBand, so every
+   present and future band panel inherits it. The employers map is exempt by
+   construction (it doesn't render through bands). */
+export const DashExpandContext = React.createContext<null | {
+  expandedId: string | null;
+  setExpanded: (id: string | null) => void;
+}>(null);
+
+const GlyphExpand: React.FC = () => (
+  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" style={{ width: "100%", height: "100%" }}>
+    <path d="M19 5h8v8" /><path d="M27 5 18.5 13.5" /><path d="M13 27H5v-8" /><path d="M5 27l8.5-8.5" />
+  </svg>
+);
+const GlyphCollapse: React.FC = () => (
+  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" style={{ width: "100%", height: "100%" }}>
+    <path d="M26 14h-8V6" /><path d="M18 14l9-9" /><path d="M6 18h8v8" /><path d="M14 18l-9 9" />
+  </svg>
+);
+
 /* ── Panel chrome — the dashboard's signature element ─────────────────────
    Every panel header carries its authority chip (· DataMart, · COE, · EDD):
    the report's prose attributions, transposed into chrome. */
-export function DashPanel({ title, authority, accent, children, grow = 1 }: {
+export function DashPanel({ title, authority, accent, children, grow = 1, expandId }: {
   title: string;
   authority: string;
   accent: string;
   children: React.ReactNode;
   grow?: number;
+  // Injected by DashBand (the panel's manifest id) — presence wires the
+  // hover-revealed expand affordance. Hidden inside the layout lab, whose
+  // grip overlay owns the header strip.
+  expandId?: string;
 }) {
+  const expand = useContext(DashExpandContext);
+  const lab = useContext(LayoutLabContext);
+  const expandable = !!(expand && expandId && !lab);
+  const isExpanded = expandable && expand!.expandedId === expandId;
   return (
-    <div style={{ flex: grow, minWidth: 0, minHeight: 0, display: "flex", flexDirection: "column", border: `1px solid ${HAIR}`, borderRadius: 10, background: "rgba(255,255,255,0.022)", overflow: "hidden" }}>
+    <div style={{ flex: grow, minWidth: 0, minHeight: 0, display: "flex", flexDirection: "column", border: `1px solid ${HAIR}`, borderRadius: 10, background: isExpanded ? "#0a1228" : "rgba(255,255,255,0.022)", overflow: "hidden" }}>
       <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "7px 12px", borderBottom: "1px solid rgba(255,255,255,0.05)", flex: "none" }}>
         <span style={{ width: 3, height: 12, borderRadius: 2, background: accent, flex: "none" }} />
         <span style={{ fontFamily: FONT, fontSize: 12, fontWeight: 600, letterSpacing: "0.04em", color: "rgba(255,255,255,0.88)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{title}</span>
         <span style={{ marginLeft: "auto", fontFamily: MONO, fontSize: 9.5, color: "rgba(255,255,255,0.4)", whiteSpace: "nowrap", flex: "none" }}>· {authority}</span>
+        {expandable && (
+          // Always visible at chip quietness (hover affordances don't exist
+          // when projecting or on touch); brightens under its own pointer.
+          <button
+            onClick={() => expand!.setExpanded(isExpanded ? null : expandId!)}
+            title={isExpanded ? "Collapse (Esc)" : "Expand panel"}
+            onMouseEnter={(e) => { e.currentTarget.style.opacity = "0.95"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.opacity = isExpanded ? "0.9" : "0.4"; }}
+            // translateY: optical correction — the authority chip has no
+            // descenders, so its ink rides ~0.7px above its box center; the
+            // geometrically-symmetric glyph must follow the ink, not the box.
+            style={{ appearance: "none", border: 0, background: "transparent", cursor: "pointer", width: 15, height: 15, padding: 0, color: "#9aa6bd", opacity: isExpanded ? 0.9 : 0.4, transition: "opacity .15s", flex: "none", display: "flex", transform: "translateY(-0.75px)" }}
+          >
+            {isExpanded ? <GlyphCollapse /> : <GlyphExpand />}
+          </button>
+        )}
       </div>
       <div style={{ flex: 1, minHeight: 0, padding: 10, display: "flex", flexDirection: "column" }}>{children}</div>
     </div>
@@ -108,6 +158,7 @@ export type DashBandDef = { id: string; height?: number | "auto"; before?: React
 
 export function DashBandSet({ bands }: { bands: DashBandDef[] }) {
   const lab = useContext(LayoutLabContext);
+  const expand = useContext(DashExpandContext);
   const reg = new Map<string, ConcretePanel>(
     bands.flatMap((b) => b.panels.filter(Boolean) as ConcretePanel[]).map((p) => [p.id, p]),
   );
@@ -122,6 +173,18 @@ export function DashBandSet({ bands }: { bands: DashBandDef[] }) {
   rows.forEach((r) => r.declared.forEach((id) => {
     if (!placed.has(id)) { r.ids.push(id); placed.add(id); }
   }));
+
+  // Expanded panel — the same node at viewport size, portaled over the page
+  // (under the nav, so identity stays visible). A stale or cross-lens id
+  // simply misses the registry and nothing renders. Esc closes.
+  const expandedPanel = expand?.expandedId ? reg.get(expand.expandedId) : undefined;
+  useEffect(() => {
+    if (!expandedPanel || !expand) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") expand.setExpanded(null); };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [expandedPanel, expand]);
+
   return (
     <>
       {rows.filter((r) => r.ids.length > 0 || r.b.before).map((r) => (
@@ -130,6 +193,19 @@ export function DashBandSet({ bands }: { bands: DashBandDef[] }) {
           {r.ids.length > 0 && <DashBand id={r.b.id} height={r.b.height} panels={r.ids.map((id) => reg.get(id)!)} />}
         </React.Fragment>
       ))}
+      {expandedPanel && typeof document !== "undefined" && createPortal(
+        <div
+          onClick={() => expand!.setExpanded(null)}
+          style={{ position: "fixed", left: 0, right: 0, top: EXPAND_OVERLAY_TOP, bottom: 0, zIndex: 25, background: "rgba(4,9,22,0.82)", backdropFilter: "blur(4px)", padding: 16, display: "flex" }}
+        >
+          <div onClick={(e) => e.stopPropagation()} style={{ flex: 1, minWidth: 0, minHeight: 0, display: "flex", flexDirection: "column" }}>
+            {React.isValidElement(expandedPanel.node)
+              ? React.cloneElement(expandedPanel.node as React.ReactElement<{ expandId?: string }>, { expandId: expandedPanel.id })
+              : expandedPanel.node}
+          </div>
+        </div>,
+        document.body,
+      )}
     </>
   );
 }
@@ -324,7 +400,11 @@ export function DashBand({ id, height = "auto", panels }: {
                   onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; }}
                 />
               )}
-              {p.node}
+              {/* Inject the manifest id into the panel chrome so DashPanel can
+                  wire its expand affordance — every band panel inherits it. */}
+              {React.isValidElement(p.node)
+                ? React.cloneElement(p.node as React.ReactElement<{ expandId?: string }>, { expandId: p.id })
+                : p.node}
             </div>
           </React.Fragment>
         ))}
@@ -353,6 +433,10 @@ export function DashBand({ id, height = "auto", panels }: {
    scope bands, and pins under the lens rail once scrolled past, so the scope
    is never off-screen while its panels are. */
 const SCOPE_BANNER_TOP = 127; // AtlasHeader (72) + lens rail (55) — measured
+// The expand overlay starts below the banner (height 48), so the full sticky
+// stack — nav · rail · scope banner — stays visible over an expanded panel:
+// selecting a cell in an expanded matrix updates the banner live.
+const EXPAND_OVERLAY_TOP = SCOPE_BANNER_TOP + 48;
 export function ScopeBanner({ brand, scope, name, code }: {
   brand: string;
   scope: string;        // "Consortium" or the college's short name
@@ -446,18 +530,29 @@ export default function SvampDashboard() {
       .catch(() => {});
   }, []);
 
-  // Adopt the URL's lens after mount (post-hydration, mirroring the report's
-  // static-export-safe pattern — no reactive useSearchParams).
+  // Expanded panel (Grafana-style) — shareable via the `panel` URL param.
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+  const expandCtx = useMemo(() => ({
+    expandedId,
+    setExpanded: (id: string | null) => { setExpandedId(id); writeSvampParams({ panel: id }); },
+  }), [expandedId]);
+
+  // Adopt the URL's lens + expanded panel after mount (post-hydration,
+  // mirroring the report's static-export-safe pattern — no reactive
+  // useSearchParams).
   useEffect(() => {
     const p = readSvampParams();
     if (p.lens === "occupations" || p.lens === "employers") setLens(p.lens);
+    if (p.panel) setExpandedId(p.panel);
   }, []);
 
   const switchLens = (l: DashLens) => {
     setLens(l);
     // Absent lens param ⇒ programs default (the report's convention); clear
-    // every cross-lens selection key on any switch.
-    writeSvampParams({ lens: l === "programs" ? null : l, soc: null, top: null, college: null, emp: null });
+    // every cross-lens selection key on any switch (panel ids are
+    // lens-qualified, so the expanded panel clears with the rest).
+    setExpandedId(null);
+    writeSvampParams({ lens: l === "programs" ? null : l, soc: null, top: null, college: null, emp: null, panel: null });
   };
 
   const lensAccent = LENS_ACCENTS[lens];
@@ -482,11 +577,14 @@ export default function SvampDashboard() {
           stats right on the same rail (the masthead's surviving content),
           pinned together on scroll. */}
       <div style={{ position: "sticky", top: 72, zIndex: 15, background: BG, padding: "14px 16px 0" }}>
-        <div style={{ display: "flex", alignItems: "flex-end", gap: 24 }}>
+        {/* No flex gap between the tabs and the stats: their two borderBottom
+            segments sit on one axis, and a gap would break the rail's line —
+            the spacing lives inside the stats block instead. */}
+        <div style={{ display: "flex", alignItems: "flex-end", gap: 0 }}>
           <div style={{ flex: 1, minWidth: 0 }}>
             <LensTabs lens={lens} setLens={switchLens} />
           </div>
-          <div style={{ display: "flex", alignItems: "baseline", gap: 8, paddingBottom: 14, borderBottom: `1px solid rgba(255,255,255,.08)`, marginBottom: 4, fontFamily: FONT, fontSize: 11, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", whiteSpace: "nowrap" }}>
+          <div style={{ display: "flex", alignItems: "baseline", gap: 8, paddingLeft: 24, paddingBottom: 14, borderBottom: `1px solid rgba(255,255,255,.08)`, marginBottom: 4, fontFamily: FONT, fontSize: 11, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", whiteSpace: "nowrap" }}>
             <span style={{ color: lensAccent, opacity: 0.8 }}>{agg ? agg.colleges : "—"} Member Colleges</span>
             <Dot /><span style={{ color: "rgba(255,255,255,0.80)" }}>{activePrograms ?? "—"} Programs</span>
             <Dot /><span style={{ color: "rgba(255,255,255,0.80)" }}>{agg ? agg.occupations : "—"} Occupations</span>
@@ -497,10 +595,15 @@ export default function SvampDashboard() {
 
       {/* Lens body — Programs and Occupations share the dashboard grammar;
           Employers is its own state. */}
-      <div style={{ display: "flex", flexDirection: "column", ...(employersFull ? { flex: 1, minHeight: 0, overflow: "hidden", padding: "12px 16px 16px" } : { padding: "12px 16px 24px" }) }}>
-        {lens === "programs" ? <SvampDashboardPrograms colleges={colleges} />
-          : lens === "occupations" ? <SvampDashboardOccupations colleges={colleges} />
-          : <SvampDashboardEmployers colleges={colleges} />}
+      {/* No top padding on the banded lenses: the scope banner is their first
+          child, and zero inset makes its natural position coincide with its
+          sticky offset — pinned from the first pixel, no slide. */}
+      <div style={{ display: "flex", flexDirection: "column", ...(employersFull ? { flex: 1, minHeight: 0, overflow: "hidden", padding: "12px 16px 16px" } : { padding: "0 16px 24px" }) }}>
+        <DashExpandContext.Provider value={expandCtx}>
+          {lens === "programs" ? <SvampDashboardPrograms colleges={colleges} />
+            : lens === "occupations" ? <SvampDashboardOccupations colleges={colleges} />
+            : <SvampDashboardEmployers colleges={colleges} />}
+        </DashExpandContext.Provider>
       </div>
     </div>
   );

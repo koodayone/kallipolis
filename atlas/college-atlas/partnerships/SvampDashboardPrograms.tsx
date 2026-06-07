@@ -117,7 +117,7 @@ export default function SvampDashboardPrograms({ colleges }: { colleges: College
     node: (
       <DashPanel title="Program Supply" authority="DataMart" accent={ACCENT}>
         <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
-          <SupplyTreemap tops={land.tops} selectedTop={collegeId ? null : top} onSelect={selectConsortium} accent={ACCENT} caption="Area is latest-year credentials awarded — click a program for the consortium scope." fill />
+          <SupplyTreemap tops={land.tops} selectedTop={collegeId ? null : top} onSelect={selectConsortium} accent={ACCENT} fill />
         </div>
       </DashPanel>
     ),
@@ -129,8 +129,9 @@ export default function SvampDashboardPrograms({ colleges }: { colleges: College
     weight: 2,
     node: (
       <DashPanel title="Program Coverage" authority="DataMart" accent={ACCENT}>
-        <div>
+        <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
           <CoverageMatrix
+            flush
             cols={cols}
             rows={rows}
             level={level}
@@ -143,7 +144,6 @@ export default function SvampDashboardPrograms({ colleges }: { colleges: College
               { k: "Partial", sub: "enrollment or awards", bg: "rgba(148,168,201,.3)", ring: true },
               { k: "Gap", sub: "neither", bg: "rgba(255,255,255,.035)", ring: false },
             ]}
-            caption="A row is the consortium scope — a cell is that college's scope."
             onSelect={selectCell}
             onSelectRow={selectConsortium}
           />
@@ -154,6 +154,15 @@ export default function SvampDashboardPrograms({ colleges }: { colleges: College
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+      {/* Scope banner leads the lens (revised 2026-06-07): the sticky stack
+          reads nav → rail → banner from the first pixel, and the aggregates'
+          selection rings mark the named scope below. */}
+      <ScopeBanner
+        brand={scopeBrand}
+        scope={collegeName ? shortName(collegeName) : "Consortium"}
+        name={topName}
+        code={`TOP ${top}`}
+      />
       {/* One band set per lens: top band (the lens's two aggregates), then the
           scope bands (four panels, one scope — decided B2), two per row at
           width-driven proportions, content-driven heights. The set is the
@@ -171,17 +180,6 @@ export default function SvampDashboardPrograms({ colleges }: { colleges: College
   // state above. Crosswalk present ⇒ it pairs with wages and occupations takes
   // its own full-width row; absent ⇒ occupations pairs with wages.
   function buildScopeBands(): DashBandDef[] {
-    // Scope banner — who the bands below are about. Interstitial chrome on
-    // the first scope band, outside the swap system; pins under the lens rail
-    // on scroll (see ScopeBanner).
-    const scopeStrip = (
-      <ScopeBanner
-        brand={scopeBrand}
-        scope={collegeName ? shortName(collegeName) : "Consortium"}
-        name={topName}
-        code={`TOP ${top}`}
-      />
-    );
         const awardsPanel = {
           id: "programs.awards",
           node: (
@@ -283,9 +281,12 @@ export default function SvampDashboardPrograms({ colleges }: { colleges: College
             </DashPanel>
           ),
         };
+        // scopeB carries an explicit height: both wages (height-fill) and the
+        // crosswalk (fit-to-container) size to their row rather than prop it
+        // up. 445 matches the occupations lens's crosswalk row.
         return [
-          { id: "programs.scopeA", before: scopeStrip, panels: [awardsPanel, enrollPanel] },
-          { id: "programs.scopeB", panels: [wagesPanel, crosswalkPanel ?? occupationsPanel] },
+          { id: "programs.scopeA", panels: [awardsPanel, enrollPanel] },
+          { id: "programs.scopeB", height: 445, panels: [wagesPanel, crosswalkPanel ?? occupationsPanel] },
           ...(crosswalkPanel ? [{ id: "programs.scopeC", panels: [occupationsPanel] }] : []),
         ];
   }

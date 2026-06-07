@@ -175,7 +175,10 @@ export default function ProgramPathway({ crosswalk, accent, prose = true }: Prop
   const topSelected = selection?.kind === "top";
 
   return (
-    <div style={{ marginTop: prose ? 24 : 8 }}>
+    // Prose-less (dashboard): the diagram FITS its container (both axes, see
+    // the svg's meet) inside guaranteed padding, so it can never sit flush
+    // against the panel chrome — at band size or expanded to the viewport.
+    <div style={prose ? { marginTop: 24 } : { flex: 1, minHeight: 0, display: "flex", padding: "14px 0" }}>
       {prose && (
         <>
           {/* Headline — "TOP X crosswalks to N occupations", mirroring the
@@ -224,6 +227,7 @@ export default function ProgramPathway({ crosswalk, accent, prose = true }: Prop
         ref={svgRef}
         viewBox={`0 0 ${SVG_W} ${SVG_H}`}
         width="100%"
+        {...(prose ? {} : { height: "100%", preserveAspectRatio: "xMidYMid meet" })}
         style={{ display: "block", overflow: "visible" }}
         aria-label="TOP-CIP-SOC program pathway visualization"
         onClick={() => setSelection(null)}
