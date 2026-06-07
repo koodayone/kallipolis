@@ -279,10 +279,26 @@ export type ApiSvampLandscape = {
   aggregate: ApiSvampAggregate;
 };
 
+// ── Session cache for the SVAMP getters ─────────────────────────────────────
+// The SVAMP payloads are static for a session (the graph changes by deploy,
+// not by interaction), but every lens mount refetched them — so each tab
+// switch replayed a loading state. Memoizing the in-flight promise makes the
+// first visit fetch once and every later transition render instantly; a
+// rejected promise is evicted so errors stay retryable.
+const _svampCache = new Map<string, Promise<unknown>>();
+function svampCached<T>(key: string, make: () => Promise<T>): Promise<T> {
+  if (!_svampCache.has(key)) {
+    _svampCache.set(key, make().catch((e) => { _svampCache.delete(key); throw e; }));
+  }
+  return _svampCache.get(key) as Promise<T>;
+}
+
 export async function getSvampLandscape(): Promise<ApiSvampLandscape> {
-  const res = await fetch(`${API_BASE}/partnerships/svamp`);
-  if (!res.ok) throw new Error("Failed to fetch SVAMP landscape");
-  return res.json();
+  return svampCached("landscape", async () => {
+    const res = await fetch(`${API_BASE}/partnerships/svamp`);
+    if (!res.ok) throw new Error("Failed to fetch SVAMP landscape");
+    return res.json();
+  });
 }
 
 // ── SVAMP Programs lens (supply-side, TOP6-centric) ───────────────────────
@@ -434,31 +450,37 @@ export type ApiSvampOccupationReport = {
 };
 
 export async function getSvampPrograms(): Promise<ApiSvampProgramsLandscape> {
-  const res = await fetch(`${API_BASE}/partnerships/svamp/programs`);
-  if (!res.ok) throw new Error("Failed to fetch SVAMP programs landscape");
-  return res.json();
+  return svampCached("programs", async () => {
+    const res = await fetch(`${API_BASE}/partnerships/svamp/programs`);
+    if (!res.ok) throw new Error("Failed to fetch SVAMP programs landscape");
+    return res.json();
+  });
 }
 
 export async function getSvampProgram(top6: string, college?: string): Promise<ApiSvampProgramReport> {
   // `college` omitted ⇒ the consortium-aggregated program report; set ⇒ the
   // targeted (college, TOP) slice (single-college series + that college's
   // curriculum; demand, pathway, wage unchanged).
-  const params = new URLSearchParams();
-  if (college) params.set("college", college);
-  const qs = params.toString();
-  const res = await fetch(
-    `${API_BASE}/partnerships/svamp/program/${encodeURIComponent(top6)}${qs ? `?${qs}` : ""}`,
-  );
-  if (!res.ok) throw new Error("Failed to fetch SVAMP program report");
-  return res.json();
+  return svampCached(`program:${top6}:${college ?? ""}`, async () => {
+    const params = new URLSearchParams();
+    if (college) params.set("college", college);
+    const qs = params.toString();
+    const res = await fetch(
+      `${API_BASE}/partnerships/svamp/program/${encodeURIComponent(top6)}${qs ? `?${qs}` : ""}`,
+    );
+    if (!res.ok) throw new Error("Failed to fetch SVAMP program report");
+    return res.json();
+  });
 }
 
 export async function getSvampOccupation(soc: string): Promise<ApiSvampOccupationReport> {
   // The aggregated (consortium) view of one occupation — demand, consortium
   // supply + gap, the feeding programs, and per-college series + curriculum.
-  const res = await fetch(`${API_BASE}/partnerships/svamp/occupation/${encodeURIComponent(soc)}`);
-  if (!res.ok) throw new Error("Failed to fetch SVAMP occupation report");
-  return res.json();
+  return svampCached(`occupation:${soc}`, async () => {
+    const res = await fetch(`${API_BASE}/partnerships/svamp/occupation/${encodeURIComponent(soc)}`);
+    if (!res.ok) throw new Error("Failed to fetch SVAMP occupation report");
+    return res.json();
+  });
 }
 
 // SVAMP Employers lens — geocoded Bay-Area advanced manufacturing employers
@@ -484,9 +506,11 @@ export type ApiSvampEmployersResult = {
   total: number;           // curated candidates (incl. not-yet-geocoded)
 };
 export async function getSvampEmployers(): Promise<ApiSvampEmployersResult> {
-  const res = await fetch(`${API_BASE}/partnerships/svamp/employers`);
-  if (!res.ok) throw new Error("Failed to fetch SVAMP employers");
-  return res.json();
+  return svampCached("employers", async () => {
+    const res = await fetch(`${API_BASE}/partnerships/svamp/employers`);
+    if (!res.ok) throw new Error("Failed to fetch SVAMP employers");
+    return res.json();
+  });
 }
 
 export async function getPartnershipOpportunity(

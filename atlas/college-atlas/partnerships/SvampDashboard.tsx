@@ -37,6 +37,7 @@ import { createPortal } from "react-dom";
 import { FONT, MONO } from "@/college-atlas/partnerships/reportChrome";
 import { LayoutLabContext } from "@/college-atlas/partnerships/LayoutLab";
 import KallipolisBrand from "@/ui/KallipolisBrand";
+import RisingSun from "@/ui/RisingSun";
 import { readSvampParams, writeSvampParams } from "@/college-atlas/partnerships/svampUrl";
 import { getCollegeAtlasConfig } from "@/config/collegeAtlasConfigs";
 import AtlasHeader from "@/ui/AtlasHeader";
@@ -465,6 +466,21 @@ export function ScopeBanner({ brand, scope, name, code }: {
           {code}
         </span>
       </div>
+    </div>
+  );
+}
+
+/* ── Loading — the Kallipolis rising sun, centered ─────────────────────────
+   ONE loading language for every major state transition in the SVAMP
+   experience (the report's idiom, transposed): the sun at low opacity,
+   centered in the viewport space below the sticky stack. Lenses show it on
+   their first data fetch only — the SVAMP getters are session-cached
+   (api.svampCached), so every later lens switch renders instantly and this
+   loader never replays. */
+export function SvampLoading() {
+  return (
+    <div style={{ minHeight: "calc(100vh - 280px)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <RisingSun style={{ width: 90, height: "auto", opacity: 0.4 }} />
     </div>
   );
 }

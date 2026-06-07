@@ -12,7 +12,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { FONT, MONO } from "@/college-atlas/partnerships/reportChrome";
 import { SchoolConfig } from "@/config/schoolConfig";
 import EmployerMap, { type MapCollege } from "@/college-atlas/partnerships/EmployerMap";
-import { DashPanel } from "@/college-atlas/partnerships/SvampDashboard";
+import { DashPanel, SvampLoading } from "@/college-atlas/partnerships/SvampDashboard";
 import { getSvampEmployers } from "@/college-atlas/partnerships/api";
 import type { ApiSvampEmployersResult } from "@/college-atlas/partnerships/api";
 import { readSvampParams, writeSvampParams } from "@/college-atlas/partnerships/svampUrl";
@@ -71,7 +71,7 @@ export default function SvampDashboardEmployers({ colleges }: { colleges: Colleg
   );
 
   if (err) return <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", color: "#e0654f", fontFamily: MONO, fontSize: 12 }}>Failed to load employers: {err}</div>;
-  if (!data) return <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", color: "#5e6a83", fontFamily: MONO, fontSize: 11 }}>loading…</div>;
+  if (!data) return <SvampLoading />;
 
   const q = query.trim().toLowerCase();
   const filtered = (q ? data.employers.filter((e) => e.name.toLowerCase().includes(q)) : data.employers)
