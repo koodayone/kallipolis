@@ -10,7 +10,7 @@ import { FONT, MONO, ReportHeader, Section, Prose } from "@/college-atlas/partne
 import { OpportunityReportBody, PartnerEmployerRow } from "@/college-atlas/partnerships/OpportunityReport";
 import { readSvampParams, writeSvampParams } from "@/college-atlas/partnerships/svampUrl";
 import EmployerListRow from "@/college-atlas/partnerships/EmployerListRow";
-import { ROLE_LABEL, OCC_MATRIX_CORNER, occupationMatrixRows } from "@/college-atlas/partnerships/svampLabels";
+import { OCC_MATRIX_CORNER, occupationMatrixRows } from "@/college-atlas/partnerships/svampLabels";
 import OccupationDemandTable from "@/college-atlas/partnerships/OccupationDemandTable";
 import SupplyTreemap from "@/college-atlas/partnerships/SupplyTreemap";
 import DepartmentRow from "@/college-atlas/courses/DepartmentRow";
