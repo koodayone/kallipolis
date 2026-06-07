@@ -35,6 +35,29 @@ function useMeasuredBox(enabled: boolean) {
   return { ref, box };
 }
 
+// Width-only sibling of useMeasuredBox (same callback-ref rationale above) for
+// consumers whose layout depends only on horizontal space — the dashboard's
+// band row computation and the lens tabs' compression. Updating state only
+// when clientWidth CHANGES (functional set with an equality bail) means
+// height-only observer fires — charts loading, rows rewrapping — cause no
+// re-render, which also breaks the height half of any measure feedback loop.
+function useMeasuredWidth(enabled: boolean) {
+  const [width, setWidth] = useState<number | null>(null);
+  const roRef = useRef<ResizeObserver | null>(null);
+  const ref = useCallback((el: HTMLDivElement | null) => {
+    roRef.current?.disconnect();
+    roRef.current = null;
+    if (!enabled || !el) return;
+    const ro = new ResizeObserver(() => {
+      const w = el.clientWidth;
+      setWidth((prev) => (prev === w ? prev : w));
+    });
+    ro.observe(el);
+    roRef.current = ro;
+  }, [enabled]);
+  return { ref, width };
+}
+
 const shortName = (name: string) => name.replace(/ Valley College$/, "").replace(/ College$/, "");
 function hexA(hex: string, a: number) {
   const h = hex.replace("#", "");
@@ -194,5 +217,5 @@ export {
   shortName, hexA, hexToHsl, hueDist, OVERLAY_COLORS, leadOverlayColors,
   parseTerm, edgeAnchor, PLOT, valueChip, placeChipYs,
   awardYearLabel, shortAwardType, shortCreditType, niceStep,
-  useMeasuredBox,
+  useMeasuredBox, useMeasuredWidth,
 };

@@ -120,6 +120,10 @@ export default function SvampDashboardPrograms({ colleges }: { colleges: College
   // driven by these author-qualified ids (the layout lab's weight keys).
   const supplyPanel = {
     id: "programs.supply",
+    minWidth: 340,
+    // The treemap is a fill chart with no intrinsic height — a solo row
+    // would collapse without a declared target.
+    height: 400,
     node: (
       <DashPanel title="Program Supply" authority="DataMart" accent={scopeBrand}>
         <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
@@ -137,6 +141,7 @@ export default function SvampDashboardPrograms({ colleges }: { colleges: College
     // Coverage leads the top band at 2:1 over the supply treemap — decided in
     // the layout lab (2026-06-06): the matrix is the read, the treemap the picker.
     weight: 2,
+    minWidth: 560, // matrix inner min (230 label + 5×62 cells) + panel chrome
     node: (
       <DashPanel title="Program Coverage" authority="DataMart" accent={scopeBrand}>
         <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
@@ -192,6 +197,7 @@ export default function SvampDashboardPrograms({ colleges }: { colleges: College
   function buildScopeBands(): DashBandDef[] {
         const awardsPanel = {
           id: "programs.awards",
+          minWidth: 360,
           node: (
             <DashPanel title="Awards" authority={collegeName ? "DataMart" : "DataMart · COE"} accent={scopeBrand}>
               <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
@@ -219,6 +225,7 @@ export default function SvampDashboardPrograms({ colleges }: { colleges: College
         };
         const enrollPanel = {
           id: "programs.enrollments",
+          minWidth: 360,
           node: (
             <DashPanel title="Enrollments" authority="DataMart" accent={scopeBrand}>
               <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
@@ -244,6 +251,10 @@ export default function SvampDashboardPrograms({ colleges }: { colleges: College
         };
         const wagesPanel = {
           id: "programs.wages",
+          minWidth: 360,
+          // Carries the old scopeB band height; WageOutcomes' populated
+          // branch has no intrinsic floor, so a solo row needs the target.
+          height: 445,
           node: (
             <DashPanel title="Wage Outcomes" authority="DataMart" accent={scopeBrand}>
               <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
@@ -264,6 +275,8 @@ export default function SvampDashboardPrograms({ colleges }: { colleges: College
         const crosswalkPanel = hasCrosswalk && report?.crosswalk
           ? {
               id: "programs.crosswalk",
+              minWidth: 520, // pathway diagram pans below dashLayout.PATHWAY_MIN_RENDER_W
+              height: 445,
               node: (
                 <DashPanel title="Crosswalk" authority="CCCCO · NCES" accent={scopeBrand}>
                   {/* Centered: the diagram's height is width-driven, so in a
@@ -277,6 +290,7 @@ export default function SvampDashboardPrograms({ colleges }: { colleges: College
           : null;
         const occupationsPanel = {
           id: "programs.occupations",
+          minWidth: 360,
           // Scope-keyed like the report's table (reportBrand): programs green
           // at consortium, the college's brand in college scope.
           node: (
@@ -291,12 +305,13 @@ export default function SvampDashboardPrograms({ colleges }: { colleges: College
             </DashPanel>
           ),
         };
-        // scopeB carries an explicit height: both wages (height-fill) and the
-        // crosswalk (fit-to-container) size to their row rather than prop it
-        // up. 445 matches the occupations lens's crosswalk row.
+        // Row heights live on the panels (445 on wages/crosswalk): both
+        // wages (height-fill) and the crosswalk (fit-to-container) size to
+        // their row rather than prop it up, and the target survives when a
+        // panel stacks into its own row at narrow widths.
         return [
           { id: "programs.scopeA", panels: [awardsPanel, enrollPanel] },
-          { id: "programs.scopeB", height: 445, panels: [wagesPanel, crosswalkPanel ?? occupationsPanel] },
+          { id: "programs.scopeB", panels: [wagesPanel, crosswalkPanel ?? occupationsPanel] },
           ...(crosswalkPanel ? [{ id: "programs.scopeC", panels: [occupationsPanel] }] : []),
         ];
   }

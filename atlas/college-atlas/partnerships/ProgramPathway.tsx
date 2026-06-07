@@ -16,6 +16,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { ApiProgramCrosswalk } from "@/college-atlas/partnerships/api";
+import { PATHWAY_MIN_RENDER_W } from "@/college-atlas/partnerships/dashLayout";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 const MONO = "var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace";
@@ -178,7 +179,10 @@ export default function ProgramPathway({ crosswalk, accent, prose = true }: Prop
     // Prose-less (dashboard): the diagram FITS its container (both axes, see
     // the svg's meet) inside guaranteed padding, so it can never sit flush
     // against the panel chrome — at band size or expanded to the viewport.
-    <div style={prose ? { marginTop: 24 } : { flex: 1, minHeight: 0, display: "flex", padding: "14px 0" }}>
+    // Below PATHWAY_MIN_RENDER_W the inner wrapper floors the rendered width
+    // and this wrapper PANS (overflowX) — the CoverageMatrix precedent: below
+    // intrinsic minimum, pan; never scale the text below legibility.
+    <div style={prose ? { marginTop: 24 } : { flex: 1, minHeight: 0, display: "flex", padding: "14px 0", overflowX: "auto" }}>
       {prose && (
         <>
           {/* Headline — "TOP X crosswalks to N occupations", mirroring the
@@ -223,6 +227,7 @@ export default function ProgramPathway({ crosswalk, accent, prose = true }: Prop
         </>
       )}
 
+      <div style={prose ? undefined : { flex: 1, minWidth: PATHWAY_MIN_RENDER_W, display: "flex" }}>
       <svg
         ref={svgRef}
         viewBox={`0 0 ${SVG_W} ${SVG_H}`}
@@ -370,6 +375,7 @@ export default function ProgramPathway({ crosswalk, accent, prose = true }: Prop
           );
         })}
       </svg>
+      </div>
 
       {prose && (
         <p

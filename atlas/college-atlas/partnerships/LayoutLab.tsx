@@ -10,7 +10,15 @@
    Deliberately NO persistence: plain state, refresh = reset. The destination
    of a good layout is the code (the declarative defaults), not storage.
    Sibling of the /svamp/concepts design records; delete together once the
-   defaults settle. */
+   defaults settle.
+
+   Responsive note (2026-06-07): production DashBandSet computes rows from
+   measured width + per-panel minWidths (dashLayout); inside this provider
+   that computation is BYPASSED — the declared one-row-per-band composition
+   renders exactly, because the weight/height/swap gestures assume one row
+   per band. The lab is a desktop authoring instrument: run it wide. Heights
+   now live on PANELS (DashBandPanel.height), so baking a tuned band height
+   back means writing it onto the row's panels in the lens file. */
 
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { FONT, MONO } from "@/college-atlas/partnerships/reportChrome";

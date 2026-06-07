@@ -186,6 +186,9 @@ export default function SvampDashboardOccupations({ colleges }: { colleges: Coll
   // weight keys (a panel keeps its weight across scope recomposition).
   const demandPanel = {
     id: "occupations.demand",
+    minWidth: 340,
+    // Fill treemap, no intrinsic height — a solo row needs the target.
+    height: 400,
     node: (
       <DashPanel title="Regional Demand" authority="COE" accent={scopeBrand}>
         <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
@@ -202,6 +205,7 @@ export default function SvampDashboardOccupations({ colleges }: { colleges: Coll
     // Coverage leads the top band at 2:1 over the demand treemap — decided in
     // the layout lab (2026-06-06), mirroring the Programs lens.
     weight: 2,
+    minWidth: 560, // matrix inner min (230 label + 5×62 cells) + panel chrome
     node: (
       <DashPanel title="Occupation Coverage" authority="DataMart" accent={scopeBrand}>
         <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
@@ -255,6 +259,9 @@ export default function SvampDashboardOccupations({ colleges }: { colleges: Coll
   function buildScopeBands(): DashBandDef[] {
     const summaryPanel = {
       id: "occupations.summary",
+      minWidth: 340,
+      // Carries the old scopeA band height (regional facts quartet).
+      height: 445,
       node: (
         // Scope-keyed chrome (the report's reportBrand behavior): lens red at
         // consortium, the college's brand in college scope.
@@ -267,6 +274,8 @@ export default function SvampDashboardOccupations({ colleges }: { colleges: Coll
     };
     const awardsPanel = {
       id: "occupations.awards",
+      minWidth: 360,
+      height: 508, // the old scopeB band height, kept when stacked solo
       node: (
         <DashPanel title="Awards" authority={collegeName ? "DataMart" : "DataMart · COE"} accent={scopeBrand}>
           <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
@@ -308,6 +317,8 @@ export default function SvampDashboardOccupations({ colleges }: { colleges: Coll
     };
     const enrollPanel = {
       id: "occupations.enrollments",
+      minWidth: 360,
+      height: 508,
       node: (
         <DashPanel title="Enrollments" authority="DataMart" accent={scopeBrand}>
           <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
@@ -371,6 +382,8 @@ export default function SvampDashboardOccupations({ colleges }: { colleges: Coll
     const crosswalkPanel = hasCrosswalk && report && displayCrosswalk
       ? {
           id: "occupations.crosswalk",
+          minWidth: 520, // pathway diagram pans below dashLayout.PATHWAY_MIN_RENDER_W
+          height: 445,
           node: (
             <DashPanel title="Crosswalk" authority="CCCCO · NCES" accent={scopeBrand}>
               {/* Centered: the diagram's height is width-driven, so in a fixed
@@ -394,10 +407,10 @@ export default function SvampDashboardOccupations({ colleges }: { colleges: Coll
     // (minmax clamps up if content runs tall). All panel chrome is
     // scope-keyed (scopeBrand), matching the report.
     const rows: DashBandDef[] = [
-      { id: "occupations.scopeA", height: 445, panels: [summaryPanel, crosswalkPanel] },
+      { id: "occupations.scopeA", panels: [summaryPanel, crosswalkPanel] },
     ];
     // The trend band exists only where there is activity to chart.
-    if (hasActivity) rows.push({ id: "occupations.scopeB", height: 508, panels: [awardsPanel, enrollPanel] });
+    if (hasActivity) rows.push({ id: "occupations.scopeB", panels: [awardsPanel, enrollPanel] });
     return rows;
   }
 }

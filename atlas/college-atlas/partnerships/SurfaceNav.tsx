@@ -25,15 +25,15 @@ export const FormReport: React.FC = () => (
   </svg>
 );
 
-// The report owns the root (decided 2026-06-07): it is the universal,
-// self-narrating surface — works on any device, carries its own prose — so
-// cold opens land there. The dashboard is the conditional enhancement
-// (≥1440px, prose-zero, presumes a narrator) and takes the far-right anchor:
-// the header bookends — brand on the hard left edge, the step-up-to-the-
-// instrument affordance on the hard right.
+// The dashboard owns the root AND the far-right anchor (decided 2026-06-07,
+// after the responsive re-architecture removed its viewport gate — it now
+// renders at every width, so the old "universal surface owns the root"
+// asymmetry dissolved). The header bookends: brand on the hard left edge,
+// the primary surface on the hard right; the report is the narrated,
+// citeable descent at /svamp/report, one click away with selection intact.
 const SURFACES = [
-  { key: "report" as const, label: "Report", path: "/svamp", Icon: FormReport },
-  { key: "dashboard" as const, label: "Dashboard", path: "/svamp/dashboard", Icon: FormDashboard },
+  { key: "report" as const, label: "Report", path: "/svamp/report", Icon: FormReport },
+  { key: "dashboard" as const, label: "Dashboard", path: "/svamp", Icon: FormDashboard },
 ];
 
 export default function SurfaceNav({ active, withBrand = false }: { active: "dashboard" | "report"; withBrand?: boolean }) {
