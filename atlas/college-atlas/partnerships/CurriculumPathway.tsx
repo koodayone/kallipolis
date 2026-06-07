@@ -26,6 +26,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { ApiCurriculumCrosswalk } from "@/college-atlas/partnerships/api";
+import { PATHWAY_MIN_RENDER_W } from "@/college-atlas/partnerships/dashLayout";
 
 const FONT = "var(--font-inter), Inter, system-ui, sans-serif";
 const MONO = "var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace";
@@ -347,7 +348,10 @@ export default function CurriculumPathway({
     // Prose-less (dashboard): the diagram FITS its container (both axes, see
     // the svg's meet) inside guaranteed padding, so it can never sit flush
     // against the panel chrome — at band size or expanded to the viewport.
-    <div style={prose ? { marginTop: 32 } : { flex: 1, minHeight: 0, display: "flex", padding: "14px 0" }}>
+    // Below PATHWAY_MIN_RENDER_W the inner wrapper floors the rendered width
+    // and this wrapper PANS (overflowX) — the CoverageMatrix precedent: below
+    // intrinsic minimum, pan; never scale the text below legibility.
+    <div style={prose ? { marginTop: 32 } : { flex: 1, minHeight: 0, display: "flex", padding: "14px 0", overflowX: "auto" }}>
       {prose && (
         <>
           {/* Headline metric — sub-section header. Reads as one sentence:
@@ -409,6 +413,7 @@ export default function CurriculumPathway({
         </>
       )}
 
+      <div style={prose ? undefined : { flex: 1, minWidth: PATHWAY_MIN_RENDER_W, display: "flex" }}>
       <svg
         ref={svgRef}
         viewBox={`0 0 ${SVG_W} ${SVG_H}`}
@@ -728,6 +733,7 @@ export default function CurriculumPathway({
           );
         })()}
       </svg>
+      </div>
 
       {/* Filter caption — names the SAM filter and the active-CIP
           render rule, attributing both to their institutional source.

@@ -6,7 +6,12 @@
    selection crosses the lens boundary (decided fork 4). Full-bleed regional
    employer map at State-Atlas parity, with the searchable directory as a
    rail. shown/total stays — an ungeocoded remainder never reads as complete.
-   URL: the `emp` param, same slice the report's employers lens writes. */
+   URL: the `emp` param, same slice the report's employers lens writes.
+
+   `stacked` (shell-decided, below ~760px viewport): the side-by-side row
+   becomes a column — map above at a viewport fraction, directory below with
+   its own internal scroll — and the page scrolls instead of the fixed
+   full-bleed shell. Same panels, same selection model, compressed. */
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { FONT, MONO } from "@/college-atlas/partnerships/reportChrome";
@@ -32,7 +37,7 @@ const COLLEGE_GEO: Record<string, [number, number]> = {
   "Ohlone College": [37.53, -121.91],
 };
 
-export default function SvampDashboardEmployers({ colleges }: { colleges: CollegeRef[] }) {
+export default function SvampDashboardEmployers({ colleges, stacked = false }: { colleges: CollegeRef[]; stacked?: boolean }) {
   const [data, setData] = useState<ApiSvampEmployersResult | null>(null);
   const [err, setErr] = useState<string | null>(null);
   const [selected, setSelected] = useState<string | null>(null);
@@ -80,9 +85,13 @@ export default function SvampDashboardEmployers({ colleges }: { colleges: Colleg
   const toggle = (n: string | null) => setSelected((cur) => (n === null ? null : cur === n ? null : n));
 
   return (
-    <div style={{ flex: 1, minHeight: 0, display: "flex", gap: 8 }}>
-      {/* Full-bleed map — the surface-area parity the fork decided. */}
-      <DashPanel title="Regional Employer Map" authority="EDD" accent={ACCENT} grow={3}>
+    <div style={stacked
+      ? { display: "flex", flexDirection: "column", gap: 8 }
+      : { flex: 1, minHeight: 0, display: "flex", gap: 8 }}>
+      {/* Full-bleed map — the surface-area parity the fork decided. Stacked:
+          explicit viewport-fraction heights (flex grow has no basis once the
+          page scrolls), directory keeps its internal list scroll. */}
+      <DashPanel title="Regional Employer Map" authority="EDD" accent={ACCENT} grow={3} style={stacked ? { height: "55vh", flex: "none" } : undefined}>
         <div style={{ flex: 1, minHeight: 0, overflow: "hidden", display: "flex", flexDirection: "column" }}>
           <EmployerMap
             employers={data.employers}
@@ -96,7 +105,7 @@ export default function SvampDashboardEmployers({ colleges }: { colleges: Colleg
       </DashPanel>
 
       {/* Directory rail — searchable, A→Z; map ↔ list selection synced. */}
-      <DashPanel title="Employers" authority="EDD" accent={ACCENT} grow={1}>
+      <DashPanel title="Employers" authority="EDD" accent={ACCENT} grow={1} style={stacked ? { height: "60vh", flex: "none" } : undefined}>
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}

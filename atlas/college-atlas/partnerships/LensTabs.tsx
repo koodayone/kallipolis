@@ -2,6 +2,7 @@
 
 import React from "react";
 import { MONO } from "@/college-atlas/partnerships/reportChrome";
+import { useMeasuredWidth } from "@/college-atlas/partnerships/chartKit";
 
 // Lens accents (mirror SvampView's module constants — programs green,
 // occupations red, employers blue).
@@ -46,8 +47,18 @@ function LensTabs({ lens, setLens, activeAccent }: {
   // instrument wears the scope color. Inactive tabs keep lens identity.
   activeAccent?: string;
 }) {
+  // Container-driven compression (the tabs' own measured width — parent-
+  // driven, so compressing can't feed back into the measurement): below 430
+  // the gap tightens; below 360 the labels drop and the icons carry the tabs
+  // (title/aria keep them named). The report's 900px measure never fires
+  // either threshold, so that surface renders byte-identically. First
+  // unmeasured frame renders uncompressed — progressive compression, not
+  // measure-gated.
+  const { ref, width } = useMeasuredWidth(true);
+  const tight = width != null && width < 430;
+  const iconOnly = width != null && width < 360;
   return (
-    <div style={{ display: "flex", gap: 38, borderBottom: "1px solid rgba(255,255,255,.08)", marginBottom: 4 }}>
+    <div ref={ref} style={{ display: "flex", gap: tight ? 20 : 38, borderBottom: "1px solid rgba(255,255,255,.08)", marginBottom: 4 }}>
       {LENS_DEFS.map(({ key, label, accent: lensAccent, Icon }) => {
         const on = lens === key;
         const accent = on && activeAccent ? activeAccent : lensAccent;
@@ -55,12 +66,14 @@ function LensTabs({ lens, setLens, activeAccent }: {
           <button
             key={key}
             onClick={() => setLens(key)}
+            title={iconOnly ? label : undefined}
+            aria-label={label}
             onMouseEnter={(e) => { if (!on) (e.currentTarget as HTMLElement).style.color = "#e8ecf4"; }}
             onMouseLeave={(e) => { if (!on) (e.currentTarget as HTMLElement).style.color = "#9aa6bd"; }}
             style={{ display: "flex", alignItems: "center", gap: 9, border: 0, background: "transparent", cursor: "pointer", padding: "6px 0 13px", color: on ? "#e8ecf4" : "#9aa6bd", fontFamily: MONO, fontSize: 11.5, fontWeight: 500, letterSpacing: ".12em", textTransform: "uppercase", position: "relative", transition: "color .16s" }}
           >
             <span style={{ width: 17, height: 17, display: "flex", color: on ? accent : "#5e6a83", transition: "color .16s" }}><Icon /></span>
-            {label}
+            {!iconOnly && label}
             {on && <span style={{ position: "absolute", left: 0, right: 0, bottom: -1, height: 2, background: accent, borderRadius: 2 }} />}
           </button>
         );

@@ -30,7 +30,7 @@
    URL anchoring reuses svampUrl verbatim (route-agnostic; same lens/top/
    soc/college vocabulary as the report), so dashboard views are shareable
    and the analytics record is the URL — and a view can hop between
-   /svamp and /svamp/dashboard with its selection intact. */
+   /svamp (dashboard, the root) and /svamp/report with its selection intact. */
 
 import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
@@ -46,7 +46,8 @@ import SvampDashboardOccupations from "@/college-atlas/partnerships/SvampDashboa
 import SvampDashboardEmployers from "@/college-atlas/partnerships/SvampDashboardEmployers";
 import LensTabs, { type Lens, LENS_ACCENTS } from "@/college-atlas/partnerships/LensTabs";
 import SurfaceNav from "@/college-atlas/partnerships/SurfaceNav";
-import { Dot } from "@/college-atlas/partnerships/chartKit";
+import { Dot, useMeasuredWidth } from "@/college-atlas/partnerships/chartKit";
+import { computeBandRows, rowHeight, DEFAULT_PANEL_MIN_WIDTH } from "@/college-atlas/partnerships/dashLayout";
 import { getSvampLandscape, getSvampPrograms } from "@/college-atlas/partnerships/api";
 
 // The five member colleges, in display order (mirrors /svamp's ClientPage).
@@ -96,7 +97,7 @@ const GlyphCollapse: React.FC = () => (
 /* ── Panel chrome — the dashboard's signature element ─────────────────────
    Every panel header carries its authority chip (· DataMart, · COE, · EDD):
    the report's prose attributions, transposed into chrome. */
-export function DashPanel({ title, authority, accent, children, grow = 1, expandId }: {
+export function DashPanel({ title, authority, accent, children, grow = 1, expandId, style }: {
   title: string;
   authority: string;
   accent: string;
@@ -106,13 +107,17 @@ export function DashPanel({ title, authority, accent, children, grow = 1, expand
   // hover-revealed expand affordance. Hidden inside the layout lab, whose
   // grip overlay owns the header strip.
   expandId?: string;
+  // Caller layout overrides (merged last) — the employers lens uses this to
+  // give its panels explicit heights in stacked mode, where flex grow no
+  // longer distributes the viewport.
+  style?: React.CSSProperties;
 }) {
   const expand = useContext(DashExpandContext);
   const lab = useContext(LayoutLabContext);
   const expandable = !!(expand && expandId && !lab);
   const isExpanded = expandable && expand!.expandedId === expandId;
   return (
-    <div style={{ flex: grow, minWidth: 0, minHeight: 0, display: "flex", flexDirection: "column", border: `1px solid ${HAIR}`, borderRadius: 10, background: isExpanded ? "#0a1228" : "rgba(255,255,255,0.022)", overflow: "hidden" }}>
+    <div style={{ flex: grow, minWidth: 0, minHeight: 0, display: "flex", flexDirection: "column", border: `1px solid ${HAIR}`, borderRadius: 10, background: isExpanded ? "#0a1228" : "rgba(255,255,255,0.022)", overflow: "hidden", ...style }}>
       <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "7px 12px", borderBottom: "1px solid rgba(255,255,255,0.05)", flex: "none" }}>
         <span style={{ width: 3, height: 12, borderRadius: 2, background: accent, flex: "none" }} />
         <span style={{ fontFamily: FONT, fontSize: 12, fontWeight: 600, letterSpacing: "0.04em", color: "rgba(255,255,255,0.88)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{title}</span>
@@ -151,7 +156,13 @@ export function DashPanel({ title, authority, accent, children, grow = 1, expand
    only by /svamp/concepts/layout), the inter-panel gaps become col-resize
    handles and the band's bottom edge a row-resize handle, and the band
    reports its effective manifest to the lab's readout. */
-export type DashBandPanel = { id: string; weight?: number; node: React.ReactNode } | false | null | undefined;
+export type DashBandPanel = {
+  id: string;
+  weight?: number;     // fr share when co-rowed (default 1)
+  minWidth?: number;   // intrinsic minimum px (default dashLayout's 320) — drives row packing
+  height?: number;     // target row height px (minmax(min-content, X)); absent ⇒ content-driven
+  node: React.ReactNode;
+} | false | null | undefined;
 type ConcretePanel = Exclude<DashBandPanel, false | null | undefined>;
 
 const BAND_GAP = 8;       // production gap == lab handle width, so the two modes align
@@ -159,32 +170,70 @@ const PANEL_MIN_PX = 200; // a panel can't be dragged below readability
 
 /* ── Band set — a lens's bands under one panel registry ────────────────────
    The set is what makes the lab's swap gesture lens-wide: every concrete
-   panel in the lens registers here, and each band renders the panel ids the
-   lab's arrangement assigns it (declared order when untouched), so a swap
-   can move a panel into any band. Resolution is defensive against stale
-   arrangements (a lab session outliving conditional panels): unknown ids
-   drop, displaced panels return to their declared band, duplicate placement
-   keeps the first. `before` renders interstitial chrome (the scope strip)
-   between bands, outside the swap system. */
-export type DashBandDef = { id: string; height?: number | "auto"; before?: React.ReactNode; panels: DashBandPanel[] };
+   panel in the lens registers here. RENDITION IS A FUNCTION OF MEASURED
+   SPACE: in production the set measures its own width once (all bands are
+   full-width siblings) and each band's panels pack into rows by their
+   intrinsic minimums (dashLayout.computeBandRows) — declared order, never
+   reordered, so the layout compresses without rearranging. Inside the
+   LayoutLab the responsive computation is BYPASSED: the lab renders the
+   declared one-row-per-band composition exactly, because its weight/height/
+   swap gestures assume one row per band; its arrangement resolution stays
+   defensive against stale state (unknown ids drop, displaced panels return
+   to their declared band, duplicate placement keeps the first). `before`
+   renders interstitial chrome before a band's first row, outside the swap
+   system. */
+export type DashBandDef = { id: string; before?: React.ReactNode; panels: DashBandPanel[] };
+
+type RenderRow = { key: string; before?: React.ReactNode; height: number | "auto"; panels: ConcretePanel[] };
 
 export function DashBandSet({ bands }: { bands: DashBandDef[] }) {
   const lab = useContext(LayoutLabContext);
   const expand = useContext(DashExpandContext);
+  // One width observer for the whole set; lab mode skips measurement.
+  const { ref: measureRef, width } = useMeasuredWidth(!lab);
   const reg = new Map<string, ConcretePanel>(
     bands.flatMap((b) => b.panels.filter(Boolean) as ConcretePanel[]).map((p) => [p.id, p]),
   );
-  const placed = new Set<string>();
-  const rows = bands.map((b) => {
-    const declared = (b.panels.filter(Boolean) as ConcretePanel[]).map((p) => p.id);
-    const ids = (lab?.arrangement[b.id] ?? declared).filter((id) => reg.has(id) && !placed.has(id));
-    ids.forEach((id) => placed.add(id));
-    return { b, declared, ids };
-  });
-  // Leftovers — declared panels a stale arrangement displaced — return home.
-  rows.forEach((r) => r.declared.forEach((id) => {
-    if (!placed.has(id)) { r.ids.push(id); placed.add(id); }
-  }));
+
+  const renderRows: RenderRow[] = [];
+  if (lab) {
+    // Lab branch — declared one-row-per-band, arrangement-resolved.
+    const placed = new Set<string>();
+    const rows = bands.map((b) => {
+      const declared = (b.panels.filter(Boolean) as ConcretePanel[]).map((p) => p.id);
+      const ids = (lab.arrangement[b.id] ?? declared).filter((id) => reg.has(id) && !placed.has(id));
+      ids.forEach((id) => placed.add(id));
+      return { b, declared, ids };
+    });
+    // Leftovers — declared panels a stale arrangement displaced — return home.
+    rows.forEach((r) => r.declared.forEach((id) => {
+      if (!placed.has(id)) { r.ids.push(id); placed.add(id); }
+    }));
+    rows.filter((r) => r.ids.length > 0 || r.b.before).forEach((r) => renderRows.push({
+      key: r.b.id,
+      before: r.b.before,
+      height: rowHeight(r.b.panels.filter(Boolean) as ConcretePanel[]),
+      panels: r.ids.map((id) => reg.get(id)!),
+    }));
+  } else if (width != null) {
+    // Production branch — rows computed from the measured width. Until the
+    // first measurement lands the wrapper renders empty: the lenses gate on
+    // data with SvampLoading, so this is ~one invisible frame, and the
+    // static export prerenders only the loading state (no hydration skew).
+    for (const b of bands) {
+      const rows = computeBandRows(b.panels.filter(Boolean) as ConcretePanel[], width, BAND_GAP);
+      if (!rows.length) {
+        if (b.before) renderRows.push({ key: b.id, before: b.before, height: "auto", panels: [] });
+        continue;
+      }
+      rows.forEach((row, i) => renderRows.push({
+        key: `${b.id}:${i}`,
+        before: i === 0 ? b.before : undefined,
+        height: row.height,
+        panels: row.ids.map((id) => reg.get(id)!),
+      }));
+    }
+  }
 
   // Expanded panel — the same node at viewport size, portaled over the page
   // (under the nav, so identity stays visible). A stale or cross-lens id
@@ -199,16 +248,21 @@ export function DashBandSet({ bands }: { bands: DashBandDef[] }) {
 
   return (
     <>
-      {rows.filter((r) => r.ids.length > 0 || r.b.before).map((r) => (
-        <React.Fragment key={r.b.id}>
-          {r.b.before}
-          {r.ids.length > 0 && <DashBand id={r.b.id} height={r.b.height} panels={r.ids.map((id) => reg.get(id)!)} />}
-        </React.Fragment>
-      ))}
+      {/* The measured wrapper owns the inter-row gap (identical to the old
+          sibling spacing); the ref must render in both modes so production's
+          first measurement can land. */}
+      <div ref={measureRef} style={{ display: "flex", flexDirection: "column", gap: BAND_GAP }}>
+        {renderRows.map((r) => (
+          <React.Fragment key={r.key}>
+            {r.before}
+            {r.panels.length > 0 && <DashBand id={r.key} height={r.height} panels={r.panels} />}
+          </React.Fragment>
+        ))}
+      </div>
       {expandedPanel && typeof document !== "undefined" && createPortal(
         <div
           onClick={() => expand!.setExpanded(null)}
-          style={{ position: "fixed", left: 0, right: 0, top: EXPAND_OVERLAY_TOP, bottom: 0, zIndex: 25, background: "rgba(4,9,22,0.82)", backdropFilter: "blur(4px)", padding: 16, display: "flex" }}
+          style={{ position: "fixed", left: 0, right: 0, top: `calc(${RAIL_BOTTOM_VAR} + 48px)`, bottom: 0, zIndex: 25, background: "rgba(4,9,22,0.82)", backdropFilter: "blur(4px)", padding: 16, display: "flex" }}
         >
           <div onClick={(e) => e.stopPropagation()} style={{ flex: 1, minWidth: 0, minHeight: 0, display: "flex", flexDirection: "column" }}>
             {React.isValidElement(expandedPanel.node)
@@ -230,7 +284,7 @@ export function DashBand({ id, height = "auto", panels }: {
   const lab = useContext(LayoutLabContext);
   const gridRef = useRef<HTMLDivElement | null>(null);
   const panelRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const present = panels.filter(Boolean) as { id: string; weight?: number; node: React.ReactNode }[];
+  const present = panels.filter(Boolean) as ConcretePanel[];
 
   const effWeights = present.map((p) => lab?.weights[p.id] ?? p.weight ?? 1);
   const effHeight = lab?.heights[id] ?? height;
@@ -375,9 +429,17 @@ export function DashBand({ id, height = "auto", panels }: {
   };
 
   // Lab mode interleaves explicit handle tracks where production has gap.
+  // Production columns: minmax(min, fr) per panel — computeBandRows already
+  // guaranteed the minimums fit, so grid just absorbs the continuum between
+  // comfortable and the wrap point. A SOLO panel uses minmax(0,1fr)
+  // deliberately: a min there would push the band wider than the scroller
+  // (page-level horizontal scrollbar); below its minimum the panel's own
+  // fallback governs — the matrix and pathways pan, the charts clamp.
   const cols = lab
     ? effWeights.map((w) => `${w}fr`).join(` ${BAND_GAP}px `)
-    : effWeights.map((w) => `${w}fr`).join(" ");
+    : present.length === 1
+      ? "minmax(0, 1fr)"
+      : present.map((p, i) => `minmax(${p.minWidth ?? DEFAULT_PANEL_MIN_WIDTH}px, ${effWeights[i]}fr)`).join(" ");
 
   return (
     <div>
@@ -444,11 +506,15 @@ export function DashBand({ id, height = "auto", panels }: {
    scope banner (entity): it sits in flow between the aggregate band and the
    scope bands, and pins under the lens rail once scrolled past, so the scope
    is never off-screen while its panels are. */
-const SCOPE_BANNER_TOP = 127; // AtlasHeader (72) + lens rail (55) — measured
-// The expand overlay starts below the banner (height 48), so the full sticky
-// stack — nav · rail · scope banner — stays visible over an expanded panel:
-// selecting a cell in an expanded matrix updates the banner live.
-const EXPAND_OVERLAY_TOP = SCOPE_BANNER_TOP + 48;
+// The sticky stack's geometry is DERIVED, not hand-measured: the shell
+// observes the lens rail's height (it wraps at narrow widths) and publishes
+// nav + rail as --dash-rail-bottom on documentElement — documentElement, not
+// the shell div, because the expand overlay portals into document.body and
+// would not inherit a shell-scoped var. The banner pins at the var; the
+// expand overlay starts 48px (the banner's height) below it, so the full
+// stack — nav · rail · scope banner — stays visible over an expanded panel.
+const NAV_H = 72; // AtlasHeader's fixed height
+const RAIL_BOTTOM_VAR = "var(--dash-rail-bottom, 127px)"; // fallback = nav 72 + one-line rail 55
 export function ScopeBanner({ brand, scope, name, code }: {
   brand: string;
   scope: string;        // "Consortium" or the college's short name
@@ -460,7 +526,7 @@ export function ScopeBanner({ brand, scope, name, code }: {
   // a notch and the content insets from the edges. No hairline — the blur
   // edge separates the pinned banner from panels sliding beneath it.
   return (
-    <div style={{ position: "sticky", top: SCOPE_BANNER_TOP, zIndex: 14, height: 48, background: "rgba(6,13,31,0.92)", backdropFilter: "blur(8px)", display: "flex", alignItems: "center", padding: "0 14px" }}>
+    <div style={{ position: "sticky", top: RAIL_BOTTOM_VAR, zIndex: 14, height: 48, background: "rgba(6,13,31,0.92)", backdropFilter: "blur(8px)", display: "flex", alignItems: "center", padding: "0 14px" }}>
       {/* Left-clustered: scope · name · code. The code is the selection — it
           rides with the name rather than hiding at the far edge, at visual
           parity with the scope label (same scale, full brand color). */}
@@ -496,47 +562,51 @@ export function SvampLoading() {
   );
 }
 
-/* ── Small-screen gate ──────────────────────────────────────────────────────
-   The dashboard targets ≥1440px (projection, large monitors). Below that, the
-   report is the better surface — route there with the selection intact. */
-function useWideViewport(): boolean | null {
-  const [wide, setWide] = useState<boolean | null>(null);
+/* ── Viewport-width hook ────────────────────────────────────────────────────
+   matchMedia is exact here because the dashboard scroller is fixed inset-0:
+   viewport width ≡ container width. Used only for the employers lens's
+   side-by-side vs stacked fit (a content-derived threshold, not a device
+   breakpoint); the band lenses are container-measured instead. There is no
+   gate — every width renders the dashboard, compressed by dashLayout. */
+function useMinViewportWidth(px: number): boolean | null {
+  const [fits, setFits] = useState<boolean | null>(null);
   useEffect(() => {
-    const mq = window.matchMedia("(min-width: 1440px)");
-    const update = () => setWide(mq.matches);
+    const mq = window.matchMedia(`(min-width: ${px}px)`);
+    const update = () => setFits(mq.matches);
     update();
     mq.addEventListener("change", update);
     return () => mq.removeEventListener("change", update);
-  }, []);
-  return wide;
-}
-
-function NarrowGate() {
-  // Preserve the view params across the hop — the report speaks the same URL
-  // vocabulary, so the selection survives. (Safe to read render-time here:
-  // the gate only renders post-mount, after the matchMedia effect.)
-  const qs = typeof window === "undefined" ? "" : window.location.search;
-  return (
-    <div style={{ position: "fixed", inset: 0, zIndex: 10, background: BG, display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
-      <div style={{ maxWidth: 420, border: `1px solid ${HAIR}`, borderRadius: 12, padding: "26px 28px", background: "rgba(255,255,255,0.02)" }}>
-        <div style={{ fontFamily: MONO, fontSize: 10, letterSpacing: "0.14em", color: "rgba(255,255,255,0.4)", marginBottom: 10 }}>SVAMP · DASHBOARD</div>
-        <div style={{ fontFamily: FONT, fontSize: 16, fontWeight: 650, color: "#e8ecf4", marginBottom: 8 }}>This dashboard needs a wider screen.</div>
-        <p style={{ fontFamily: FONT, fontSize: 13, lineHeight: 1.6, color: "#9aa6bd", margin: "0 0 18px" }}>
-          It targets screens 1440px and up. On this screen, the report carries the same data — with the full
-          narrative.
-        </p>
-        <a href={`/svamp${qs}`} style={{ fontFamily: FONT, fontSize: 13, fontWeight: 600, color: "#e8ecf4", textDecoration: "none", border: `1px solid ${HAIR}`, borderRadius: 8, padding: "8px 14px", display: "inline-block" }}>
-          Open the report →
-        </a>
-      </div>
-    </div>
-  );
+  }, [px]);
+  return fits;
 }
 
 /* ── Shell ────────────────────────────────────────────────────────────────── */
 export default function SvampDashboard() {
   const [lens, setLens] = useState<DashLens>("programs");
-  const wide = useWideViewport();
+  // Employers side-by-side (map + rail) needs ~760px (350 map + 280 rail +
+  // gaps/chrome); below it the lens stacks. The band lenses need no gate of
+  // any kind — dashLayout compresses them continuously.
+  const employersSideBySide = useMinViewportWidth(760);
+  // Rail stats need ~510px beside the ~390px tabs; below the fit they hide
+  // (masthead echo — ambient context sheds before anything else).
+  const statsFit = useMinViewportWidth(960);
+
+  // Publish the sticky stack's derived geometry (see RAIL_BOTTOM_VAR). The
+  // observer writes the var directly — rail wrap/unwrap updates both the
+  // banner and the expand overlay with zero React re-renders.
+  const railRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    const el = railRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver(() => {
+      document.documentElement.style.setProperty("--dash-rail-bottom", `${NAV_H + el.offsetHeight}px`);
+    });
+    ro.observe(el);
+    return () => {
+      ro.disconnect();
+      document.documentElement.style.removeProperty("--dash-rail-bottom");
+    };
+  }, []);
   const colleges = useMemo(
     () => SVAMP_COLLEGE_IDS
       .map((id) => ({ id, config: getCollegeAtlasConfig(id) }))
@@ -589,15 +659,15 @@ export default function SvampDashboard() {
   const scopeAccentCtx = useMemo(() => ({ set: setScopeAccent }), []);
   const lensAccent = scopeAccent ?? LENS_ACCENTS[lens];
 
-  if (wide === false) return <NarrowGate />;
-
-  // Employers is full-viewport (State-Atlas parity): the shell stops scrolling
-  // and becomes a fixed flex column so the map fills the screen and only the
-  // search rail scrolls. Programs/Occupations keep their stacked-band page scroll.
-  const employersFull = lens === "employers";
+  // Employers is full-viewport (State-Atlas parity) when the map + rail fit
+  // side by side: the shell stops scrolling and becomes a fixed flex column
+  // so the map fills the screen and only the search rail scrolls. Stacked
+  // employers (narrow) and the band lenses keep the page scroll.
+  // (null = first frame, before matchMedia lands ⇒ side-by-side default.)
+  const employersFull = lens === "employers" && employersSideBySide !== false;
 
   return (
-    <div data-dash-scroll style={{ position: "fixed", inset: 0, zIndex: 10, background: BG, overscrollBehavior: "none", ...(employersFull ? { display: "flex", flexDirection: "column", overflow: "hidden" } : { overflowY: "auto" }) }}>
+    <div data-dash-scroll style={{ position: "fixed", inset: 0, zIndex: 10, background: BG, overscrollBehavior: "none", scrollbarGutter: "stable", ...(employersFull ? { display: "flex", flexDirection: "column", overflow: "hidden" } : { overflowY: "auto" }) }}>
       {/* Nav (revised from H1): Kallipolis brand left (no cube — the
           dashboard's identity is the product's), consortium title + PREVIEW
           MODE center, the surface forms (dashboard · report) right in
@@ -608,20 +678,28 @@ export default function SvampDashboard() {
       {/* Lens rail — first row under the nav: tabs left, the consortium's
           stats right on the same rail (the masthead's surviving content),
           pinned together on scroll. */}
-      <div style={{ position: "sticky", top: 72, zIndex: 15, background: BG, padding: "14px 16px 0" }}>
+      <div ref={railRef} style={{ position: "sticky", top: NAV_H, zIndex: 15, background: BG, padding: "14px 16px 0" }}>
         {/* No flex gap between the tabs and the stats: their two borderBottom
             segments sit on one axis, and a gap would break the rail's line —
-            the spacing lives inside the stats block instead. */}
+            the spacing lives inside the stats block instead. Shedding policy
+            at narrow widths: the stats HIDE outright (below they'd have to
+            share the line) — they are a masthead echo of static consortium
+            facts, ambient context rather than view state, so they shed before
+            any content chrome. Tabs then own the full rail line; LensTabs
+            itself compresses further below 430/360. Viewport-keyed because
+            the shell is fixed inset-0 (viewport ≡ rail width). */}
         <div style={{ display: "flex", alignItems: "flex-end", gap: 0 }}>
           <div style={{ flex: 1, minWidth: 0 }}>
             <LensTabs lens={lens} setLens={switchLens} activeAccent={scopeAccent ?? undefined} />
           </div>
+          {statsFit !== false && (
           <div style={{ display: "flex", alignItems: "baseline", gap: 8, paddingLeft: 24, paddingBottom: 14, borderBottom: `1px solid rgba(255,255,255,.08)`, marginBottom: 4, fontFamily: FONT, fontSize: 11, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", whiteSpace: "nowrap" }}>
             <span style={{ color: lensAccent, opacity: 0.8 }}>{agg ? agg.colleges : "—"} Member Colleges</span>
             <Dot /><span style={{ color: "rgba(255,255,255,0.80)" }}>{activePrograms ?? "—"} Programs</span>
             <Dot /><span style={{ color: "rgba(255,255,255,0.80)" }}>{agg ? agg.occupations : "—"} Occupations</span>
             <Dot /><span style={{ color: lensAccent, opacity: 0.8 }}>{agg ? agg.region : "—"}</span>
           </div>
+          )}
         </div>
       </div>
 
@@ -635,7 +713,7 @@ export default function SvampDashboard() {
         <DashExpandContext.Provider value={expandCtx}>
           {lens === "programs" ? <SvampDashboardPrograms colleges={colleges} />
             : lens === "occupations" ? <SvampDashboardOccupations colleges={colleges} />
-            : <SvampDashboardEmployers colleges={colleges} />}
+            : <SvampDashboardEmployers colleges={colleges} stacked={employersSideBySide === false} />}
         </DashExpandContext.Provider>
         </ScopeAccentContext.Provider>
       </div>
