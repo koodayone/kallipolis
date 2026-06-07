@@ -1,0 +1,135 @@
+"use client";
+
+/* ── Dashboard · Employers state (Phase 5) ──────────────────────────────────
+   Its own state, entered by the tab — the dashboard grammar (treemap, matrix,
+   scope band, selection model) deliberately does not apply here, and no
+   selection crosses the lens boundary (decided fork 4). Full-bleed regional
+   employer map at State-Atlas parity, with the searchable directory as a
+   rail. shown/total stays — an ungeocoded remainder never reads as complete.
+   URL: the `emp` param, same slice the report's employers lens writes. */
+
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { FONT, MONO } from "@/college-atlas/partnerships/reportChrome";
+import { SchoolConfig } from "@/config/schoolConfig";
+import EmployerMap, { type MapCollege } from "@/college-atlas/partnerships/EmployerMap";
+import { DashPanel } from "@/college-atlas/partnerships/SvampDashboard";
+import { hexA } from "@/college-atlas/partnerships/chartKit";
+import { getSvampEmployers } from "@/college-atlas/partnerships/api";
+import type { ApiSvampEmployersResult } from "@/college-atlas/partnerships/api";
+import { readSvampParams, writeSvampParams } from "@/college-atlas/partnerships/svampUrl";
+
+const ACCENT = "#5a9bd4"; // Employers lens blue (mirrors the report)
+
+type CollegeRef = { id: string; config: SchoolConfig };
+
+// Member-college coordinates for the map's context anchors (mirrors the
+// report's SVAMP_COLLEGE_GEO — fixed, five colleges).
+const COLLEGE_GEO: Record<string, [number, number]> = {
+  "De Anza College": [37.31, -122.04],
+  "Foothill College": [37.36, -122.05],
+  "Evergreen Valley College": [37.34, -121.80],
+  "Mission College": [37.39, -121.98],
+  "Ohlone College": [37.53, -121.91],
+};
+
+export default function SvampDashboardEmployers({ colleges }: { colleges: CollegeRef[] }) {
+  const [data, setData] = useState<ApiSvampEmployersResult | null>(null);
+  const [err, setErr] = useState<string | null>(null);
+  const [selected, setSelected] = useState<string | null>(null);
+  const [hover, setHover] = useState<string | null>(null);
+  const [query, setQuery] = useState("");
+  const [ready, setReady] = useState(false);
+  const rowRefs = useRef<Map<string, HTMLButtonElement | null>>(new Map());
+
+  useEffect(() => {
+    let alive = true;
+    getSvampEmployers().then((d) => { if (alive) setData(d); }).catch((e) => setErr(e.message));
+    return () => { alive = false; };
+  }, []);
+
+  // Restore the emp slice from the URL on mount, then sync emp → URL (the
+  // report's pattern; `ready` gates writes until the restore has run).
+  useEffect(() => {
+    const p = readSvampParams();
+    if (p.emp) setSelected(p.emp);
+    setReady(true);
+  }, []);
+  useEffect(() => {
+    if (!ready) return;
+    writeSvampParams({ emp: selected ?? null });
+  }, [ready, selected]);
+  useEffect(() => {
+    if (selected) rowRefs.current.get(selected)?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  }, [selected]);
+
+  const anchors: MapCollege[] = useMemo(
+    () => colleges.flatMap((c) => {
+      const geo = COLLEGE_GEO[c.config.name];
+      return geo ? [{ name: c.config.name, lat: geo[0], lng: geo[1], brand: c.config.brandColorLight }] : [];
+    }),
+    [colleges],
+  );
+
+  if (err) return <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", color: "#e0654f", fontFamily: MONO, fontSize: 12 }}>Failed to load employers: {err}</div>;
+  if (!data) return <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", color: "#5e6a83", fontFamily: MONO, fontSize: 11 }}>loading…</div>;
+
+  const q = query.trim().toLowerCase();
+  const filtered = (q ? data.employers.filter((e) => e.name.toLowerCase().includes(q)) : data.employers)
+    .slice()
+    .sort((a, b) => a.name.localeCompare(b.name));
+  const toggle = (n: string | null) => setSelected((cur) => (n === null ? null : cur === n ? null : n));
+
+  return (
+    <div style={{ flex: 1, minHeight: 0, display: "flex", gap: 8 }}>
+      {/* Full-bleed map — the surface-area parity the fork decided. */}
+      <DashPanel title="Regional employer map — advanced manufacturing" authority="EDD" accent={ACCENT} grow={3}>
+        <div style={{ flex: 1, minHeight: 0, overflow: "hidden", display: "flex", flexDirection: "column" }}>
+          <EmployerMap
+            employers={data.employers}
+            colleges={anchors}
+            selected={selected}
+            hover={hover}
+            onSelect={toggle}
+            onHover={setHover}
+          />
+          <div style={{ display: "flex", gap: 8, paddingTop: 8, flex: "none" }}>
+            <span style={{ fontFamily: MONO, fontSize: 9.5, color: "rgba(255,255,255,0.5)", border: "1px solid rgba(154,166,189,0.25)", borderRadius: 5, padding: "2px 8px" }}>
+              shown {data.shown} / total {data.total}
+            </span>
+            <span style={{ fontFamily: MONO, fontSize: 9.5, color: hexA(ACCENT, 0.75), border: `1px solid ${hexA(ACCENT, 0.3)}`, borderRadius: 5, padding: "2px 8px" }}>
+              hiring for the 12 SVAMP occupations
+            </span>
+          </div>
+        </div>
+      </DashPanel>
+
+      {/* Directory rail — searchable, A→Z; map ↔ list selection synced. */}
+      <DashPanel title="Employers" authority="EDD" accent={ACCENT} grow={1}>
+        <input
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="search…"
+          style={{ flex: "none", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 7, color: "#e8ecf4", fontFamily: FONT, fontSize: 12, padding: "6px 10px", outline: "none", marginBottom: 8 }}
+        />
+        <div style={{ flex: 1, minHeight: 0, overflowY: "auto", display: "flex", flexDirection: "column" }}>
+          {filtered.map((e) => {
+            const on = selected === e.name;
+            return (
+              <button
+                key={e.name}
+                ref={(el) => { rowRefs.current.set(e.name, el); }}
+                onClick={() => toggle(e.name)}
+                onMouseEnter={() => setHover(e.name)}
+                onMouseLeave={() => setHover(null)}
+                style={{ appearance: "none", textAlign: "left", cursor: "pointer", display: "flex", alignItems: "baseline", gap: 8, padding: "6px 8px", borderRadius: 6, border: "none", background: on ? hexA(ACCENT, 0.14) : "transparent", flex: "none" }}
+              >
+                <span style={{ fontFamily: FONT, fontSize: 11.5, color: on ? "#e8ecf4" : "rgba(255,255,255,0.78)", flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{e.name}</span>
+                <span style={{ fontFamily: MONO, fontSize: 9, color: "#5e6a83", flex: "none" }}>{e.soc_count} SOC{e.soc_count === 1 ? "" : "s"}</span>
+              </button>
+            );
+          })}
+        </div>
+      </DashPanel>
+    </div>
+  );
+}

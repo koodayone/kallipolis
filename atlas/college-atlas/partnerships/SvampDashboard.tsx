@@ -30,6 +30,7 @@ import { readSvampParams, writeSvampParams } from "@/college-atlas/partnerships/
 import { getCollegeAtlasConfig } from "@/config/collegeAtlasConfigs";
 import SvampDashboardPrograms, { type CollegeRef } from "@/college-atlas/partnerships/SvampDashboardPrograms";
 import SvampDashboardOccupations from "@/college-atlas/partnerships/SvampDashboardOccupations";
+import SvampDashboardEmployers from "@/college-atlas/partnerships/SvampDashboardEmployers";
 
 // The five member colleges, in display order (mirrors /svamp's ClientPage).
 const SVAMP_COLLEGE_IDS = ["deanza", "evergreen", "foothill", "mission", "ohlone"];
@@ -110,25 +111,6 @@ function NarrowGate() {
   );
 }
 
-/* ── Placeholder lens bodies — filled by Phases 3 (Programs), 4
-   (Occupations), 5 (Employers). Each names its decided composition so the
-   shell is reviewable on its own. ── */
-function LensPlaceholder({ lens }: { lens: DashLens }) {
-  const accent = LENS_ACCENT[lens];
-  const detail: Record<DashLens, string> = {
-    programs: "supply treemap + coverage matrix · single-scope band (awards vs demand · enrollments · wages · occupations served)",
-    occupations: "demand treemap + coverage matrix · single-scope band (awards vs demand · enrollments · feeding programs)",
-    employers: "full-bleed regional employer map · State-Atlas parity · shown/total",
-  };
-  const phase: Record<DashLens, string> = { programs: "PHASE 3", occupations: "PHASE 4", employers: "PHASE 5" };
-  return (
-    <div style={{ flex: 1, minHeight: 0, border: `1px dashed ${HAIR}`, borderRadius: 12, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 10 }}>
-      <span style={{ fontFamily: MONO, fontSize: 11, letterSpacing: "0.16em", color: accent }}>{LENS_LABEL[lens].toUpperCase()} LENS · {phase[lens]}</span>
-      <span style={{ fontFamily: FONT, fontSize: 12.5, color: "#9aa6bd", maxWidth: 560, textAlign: "center", lineHeight: 1.6 }}>{detail[lens]}</span>
-    </div>
-  );
-}
-
 /* ── Shell ────────────────────────────────────────────────────────────────── */
 export default function SvampDashboard() {
   const [lens, setLens] = useState<DashLens>("programs");
@@ -194,7 +176,7 @@ export default function SvampDashboard() {
       <div style={{ minHeight: 0, display: "flex", flexDirection: "column" }}>
         {lens === "programs" ? <SvampDashboardPrograms colleges={colleges} />
           : lens === "occupations" ? <SvampDashboardOccupations colleges={colleges} />
-          : <LensPlaceholder lens={lens} />}
+          : <SvampDashboardEmployers colleges={colleges} />}
       </div>
     </div>
   );
