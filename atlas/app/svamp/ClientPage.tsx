@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import SvampView from "@/college-atlas/partnerships/SvampView";
 import { getCollegeAtlasConfig } from "@/config/collegeAtlasConfigs";
@@ -12,8 +11,6 @@ import { SchoolConfig } from "@/config/schoolConfig";
 const SVAMP_COLLEGE_IDS = ["deanza", "evergreen", "foothill", "mission", "ohlone"];
 
 export default function SvampRoute() {
-  const router = useRouter();
-
   const colleges = SVAMP_COLLEGE_IDS
     .map((id) => ({ id, config: getCollegeAtlasConfig(id) }))
     .filter((c): c is { id: string; config: SchoolConfig } => c.config !== null);
@@ -33,7 +30,9 @@ export default function SvampRoute() {
         overscrollBehavior: "none",
       }}
     >
-      <SvampView colleges={colleges} onBack={() => router.push("/state")} />
+      {/* No onBack — the report's header now carries the dashboard's unified
+          nav grammar (brand · title · surface forms), with no atlas chevron. */}
+      <SvampView colleges={colleges} />
     </motion.div>
   );
 }

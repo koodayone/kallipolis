@@ -33,6 +33,10 @@ const BG = "#060d1f";
 type Props = {
   crosswalk: ApiProgramCrosswalk;
   accent: string; // Programs-lens green
+  // The headline + narrative paragraph above the diagram. True in the report
+  // (the narrative surface); false in the dashboard, where prose dies and the
+  // panel title + authority chip carry the same content as chrome.
+  prose?: boolean;
 };
 
 type Selection =
@@ -42,7 +46,7 @@ type Selection =
   | { kind: "top" }
   | null;
 
-export default function ProgramPathway({ crosswalk, accent }: Props) {
+export default function ProgramPathway({ crosswalk, accent, prose = true }: Props) {
   const [selection, setSelection] = useState<Selection>(null);
   const svgRef = useRef<SVGSVGElement>(null);
 
@@ -124,8 +128,12 @@ export default function ProgramPathway({ crosswalk, accent }: Props) {
   const nRows = Math.max(sortedCips.length, socs.length, 1);
   const bandH = nRows * ROW_H;
   // Reserve bottom space for the fixed-radius TOP anchor circle (overflow is
-  // visible; with few rows the circle would spill past the SVG box).
-  const bottomPad = Math.max(PADDING_BOTTOM, TOP_R - bandH / 2 + 12);
+  // visible; with few rows the circle would spill past the SVG box). Rows are
+  // CENTERED on distribute()'s points, so half a badge hangs below the last
+  // center — in prose mode the caption's top margin absorbs it, but without
+  // prose (the dashboard) the badge would sit flush on the panel edge, so the
+  // pad grows by the badge half plus breathing room to balance the header gap.
+  const bottomPad = Math.max(PADDING_BOTTOM, TOP_R - bandH / 2 + 12) + (prose ? 0 : BADGE_H / 2 + 12);
   const SVG_H = PADDING_TOP + bottomPad + bandH;
 
   const distribute = (count: number, totalH: number, pad: number) => {
@@ -167,46 +175,50 @@ export default function ProgramPathway({ crosswalk, accent }: Props) {
   const topSelected = selection?.kind === "top";
 
   return (
-    <div style={{ marginTop: 24 }}>
-      {/* Headline — "TOP X crosswalks to N occupations", mirroring the
-          occupations view's "N of M TOP groups crosswalk to SOC X". */}
-      <div
-        style={{
-          fontFamily: FONT,
-          fontSize: 18,
-          fontWeight: 600,
-          color: "rgba(255,255,255,0.95)",
-          letterSpacing: "-0.005em",
-          marginBottom: 14,
-        }}
-      >
-        <span style={{ color: accent, fontFamily: MONO, fontWeight: 700 }}>
-          TOP {crosswalk.top6}
-        </span>{" "}
-        crosswalks to{" "}
-        <span style={{ color: accent, fontFamily: MONO, fontWeight: 700, fontVariantNumeric: "tabular-nums" }}>
-          {nSoc}
-        </span>{" "}
-        {nSoc === 1 ? "advanced manufacturing occupation" : "advanced manufacturing occupations"}
-      </div>
+    <div style={{ marginTop: prose ? 24 : 8 }}>
+      {prose && (
+        <>
+          {/* Headline — "TOP X crosswalks to N occupations", mirroring the
+              occupations view's "N of M TOP groups crosswalk to SOC X". */}
+          <div
+            style={{
+              fontFamily: FONT,
+              fontSize: 18,
+              fontWeight: 600,
+              color: "rgba(255,255,255,0.95)",
+              letterSpacing: "-0.005em",
+              marginBottom: 14,
+            }}
+          >
+            <span style={{ color: accent, fontFamily: MONO, fontWeight: 700 }}>
+              TOP {crosswalk.top6}
+            </span>{" "}
+            crosswalks to{" "}
+            <span style={{ color: accent, fontFamily: MONO, fontWeight: 700, fontVariantNumeric: "tabular-nums" }}>
+              {nSoc}
+            </span>{" "}
+            {nSoc === 1 ? "advanced manufacturing occupation" : "advanced manufacturing occupations"}
+          </div>
 
-      <p
-        style={{
-          fontFamily: FONT,
-          fontSize: 14,
-          lineHeight: 1.65,
-          color: INK_BODY,
-          marginTop: 0,
-          marginBottom: 24,
-          maxWidth: 920,
-        }}
-      >
-        {crosswalk.top_name} prepares students for {nSoc}{" "}
-        {nSoc === 1 ? "occupation" : "occupations"} through {nCip} federal{" "}
-        {nCip === 1 ? "CIP" : "CIPs"}, mapped via the Chancellor&rsquo;s Office TOP-CIP
-        crosswalk and the NCES CIP-SOC crosswalk to the federal occupation
-        classification.
-      </p>
+          <p
+            style={{
+              fontFamily: FONT,
+              fontSize: 14,
+              lineHeight: 1.65,
+              color: INK_BODY,
+              marginTop: 0,
+              marginBottom: 24,
+              maxWidth: 920,
+            }}
+          >
+            {crosswalk.top_name} prepares students for {nSoc}{" "}
+            {nSoc === 1 ? "occupation" : "occupations"} through {nCip} federal{" "}
+            {nCip === 1 ? "CIP" : "CIPs"}, mapped via the Chancellor&rsquo;s Office TOP-CIP
+            crosswalk and the NCES CIP-SOC crosswalk to the federal occupation
+            classification.
+          </p>
+        </>
+      )}
 
       <svg
         ref={svgRef}
@@ -355,21 +367,23 @@ export default function ProgramPathway({ crosswalk, accent }: Props) {
         })}
       </svg>
 
-      <p
-        style={{
-          fontFamily: FONT,
-          fontSize: 11,
-          color: INK_FAINT,
-          fontStyle: "italic",
-          marginTop: 20,
-          paddingTop: 14,
-          borderTop: "1px solid rgba(255,255,255,0.05)",
-          lineHeight: 1.5,
-        }}
-      >
-        Pathways via the CCCCO PCAH TOP-CIP crosswalk and the NCES CIP-SOC
-        crosswalk. Click a CIP or occupation to isolate its pathway.
-      </p>
+      {prose && (
+        <p
+          style={{
+            fontFamily: FONT,
+            fontSize: 11,
+            color: INK_FAINT,
+            fontStyle: "italic",
+            marginTop: 20,
+            paddingTop: 14,
+            borderTop: "1px solid rgba(255,255,255,0.05)",
+            lineHeight: 1.5,
+          }}
+        >
+          Pathways via the CCCCO PCAH TOP-CIP crosswalk and the NCES CIP-SOC
+          crosswalk. Click a CIP or occupation to isolate its pathway.
+        </p>
+      )}
     </div>
   );
 }

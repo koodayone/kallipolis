@@ -437,17 +437,18 @@ export default function DashboardConcepts() {
 
         <ForkHeading n={3} title="Viewport discipline" question="Strict one-viewport fit, or may the detail band scroll?" />
         <div style={{ display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center" }}>
-          <Chip color={GOLD}>✓ decided: strict fit · 100vh · no scroll</Chip>
+          <Chip color={GOLD}>✓ revised: page scrolls · each visualization at its ideal proportion</Chip>
           <Chip>curriculum accordion → course-count chips</Chip>
           <Chip>pathway diagram → selection interaction</Chip>
           <Chip>prose → authority chips + legend sublabels</Chip>
           <Chip>≥1440px target · small screens route to the report</Chip>
         </div>
         <Caption>
-          DECIDED: strict fit. Every panel earns its area; the dashboard is projectable at a consortium convening;
-          and with B2’s single-scope band the panel count is bounded, so the fit is cheap to hold. The chips above
-          are the cuts the discipline forces — each one’s content survives in the report, which remains the
-          scrolling surface (and the destination for small screens).
+          REVISED in build (2026-06-06): the strict 100vh fit shrank charts below readability — the wrong
+          invariant. The decided priority is the inverse: every visualization renders whole at its ideal,
+          report-like proportion (width-driven), and the dashboard page scrolls to hold them; the tab bar stays
+          sticky. The other chips stand — curriculum stays count-level, prose stays chrome, and small screens
+          still route to the report.
         </Caption>
 
         <ForkHeading n={4} title="Employers integration" question="Does the map join the selection model, or stand alone at full bleed?" />
