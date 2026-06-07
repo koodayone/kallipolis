@@ -12,7 +12,7 @@
    selection intact). */
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { FONT, MONO } from "@/college-atlas/partnerships/reportChrome";
+import { MONO } from "@/college-atlas/partnerships/reportChrome";
 import { SchoolConfig } from "@/config/schoolConfig";
 import SupplyTreemap from "@/college-atlas/partnerships/SupplyTreemap";
 import CoverageMatrix from "@/college-atlas/partnerships/CoverageMatrix";
@@ -22,7 +22,7 @@ import OccupationDemandTable from "@/college-atlas/partnerships/OccupationDemand
 import ProgramPathway from "@/college-atlas/partnerships/ProgramPathway";
 import { DashPanel, DashBandSet, ScopeBanner, type DashBandDef } from "@/college-atlas/partnerships/SvampDashboard";
 import {
-  shortName, hexA, leadOverlayColors, awardYearLabel, shortAwardType, shortCreditType,
+  shortName, leadOverlayColors, awardYearLabel, shortAwardType, shortCreditType,
 } from "@/college-atlas/partnerships/chartKit";
 import { getSvampPrograms, getSvampProgram } from "@/college-atlas/partnerships/api";
 import type { ApiSvampProgramsLandscape, ApiSvampProgramReport } from "@/college-atlas/partnerships/api";

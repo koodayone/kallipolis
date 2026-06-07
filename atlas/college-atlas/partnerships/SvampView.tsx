@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState, useEffect, useRef } from "react";
-import { squarify } from "@/college-atlas/partnerships/treemap";
 import { SchoolConfig } from "@/config/schoolConfig";
 import AtlasHeader from "@/ui/AtlasHeader";
 import KallipolisBrand from "@/ui/KallipolisBrand";
@@ -120,7 +119,6 @@ function EmployersLens({ colleges }: { colleges: CollegeRef[] }) {
     const p = readSvampParams();
     if (p.emp) setSelected(p.emp);
     setEReady(true);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     if (!eReady) return;
@@ -253,7 +251,6 @@ function ProgramsLens({ colleges }: { colleges: CollegeRef[] }) {
     if (p.top) setTop(p.top);
     if (p.college) setMatrixCollegeId(p.college);
     setPReady(true);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     if (!pReady) return;
@@ -729,7 +726,6 @@ export default function SvampView({ colleges }: Props) {
     }
     urlHadSoc.current = !!p.soc;
     setReady(true);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Switch lens (user action) — clear every selection param; the now-active

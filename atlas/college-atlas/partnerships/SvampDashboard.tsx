@@ -44,7 +44,7 @@ import SvampDashboardOccupations from "@/college-atlas/partnerships/SvampDashboa
 import SvampDashboardEmployers from "@/college-atlas/partnerships/SvampDashboardEmployers";
 import LensTabs, { type Lens, LENS_ACCENTS } from "@/college-atlas/partnerships/LensTabs";
 import SurfaceNav from "@/college-atlas/partnerships/SurfaceNav";
-import { Dot, hexA } from "@/college-atlas/partnerships/chartKit";
+import { Dot } from "@/college-atlas/partnerships/chartKit";
 import { getSvampLandscape, getSvampPrograms } from "@/college-atlas/partnerships/api";
 
 // The five member colleges, in display order (mirrors /svamp's ClientPage).

@@ -29,7 +29,7 @@ import CoverageMatrix from "@/college-atlas/partnerships/CoverageMatrix";
 import TrendChart from "@/college-atlas/partnerships/TrendChart";
 import CurriculumPathway from "@/college-atlas/partnerships/CurriculumPathway";
 import { DashPanel, DashBandSet, ScopeBanner, type DashBandDef } from "@/college-atlas/partnerships/SvampDashboard";
-import { shortName, hexA, leadOverlayColors, awardYearLabel } from "@/college-atlas/partnerships/chartKit";
+import { shortName, leadOverlayColors, awardYearLabel } from "@/college-atlas/partnerships/chartKit";
 import { getSvampLandscape, getSvampOccupation } from "@/college-atlas/partnerships/api";
 import type { ApiSvampLandscape, ApiSvampCell, ApiSvampOccupationReport } from "@/college-atlas/partnerships/api";
 import { readSvampParams, writeSvampParams } from "@/college-atlas/partnerships/svampUrl";
