@@ -25,6 +25,17 @@ field and the region is DERIVED from it (`resolve_region`) rather than
 specified — the members must collapse to a single COE region for the regional
 reads to be a single shared number. Both current instances (SVAMP, SMCCD) sit
 entirely within the "Bay" region, so each is single-region.
+
+Engine convention — `college` is the single-college scope argument.
+Because INSTITUTIONAL reads sum across `spec.colleges`, "iterate the members"
+is the engine's most common loop. A builder may ALSO take a `college` argument
+to scope one surface to a single member (the crosswalk's per-college taught
+marking is the first such case). To keep the two from colliding — a member
+loop named `for college in colleges` silently rebinds the scope argument to
+the last member — institutional sums are owned by named pure helpers
+(svamp_programs._consortium_supply is the model), and any inline member loop
+iterates `member`, never `college`. The name `college` is reserved for the
+scope argument alone.
 """
 
 from __future__ import annotations
@@ -41,8 +52,9 @@ class LandscapeSpec:
 
     Mirrors exactly the constants `build_svamp_landscape()` reads today; the
     SVAMP instance below reproduces them verbatim so the refactor that threads
-    `spec` through the builders is behavior-preserving (guarded by a byte-level
-    golden snapshot of the five /partnerships/svamp endpoints).
+    `spec` through the builders is behavior-preserving. The invariant is pinned
+    by the graph-free assembly tests (partnerships/test_svamp*.py), which
+    exercise the pure builders for both consortium and single-college scope.
     """
 
     # Stable instance key. Drives the API route prefix (/partnerships/<id>),

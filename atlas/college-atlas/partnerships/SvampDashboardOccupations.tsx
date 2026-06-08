@@ -137,12 +137,16 @@ export default function SvampDashboardOccupations({ colleges, instance = "svamp"
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Refetch on scope change so the SOC-anchored crosswalk lights only the
+  // selected college's feeding TOPs in college scope (consortium union when
+  // collegeName is undefined). Mirrors the Programs lens's per-college refetch;
+  // every other field is scope-invariant, so the rest of the report is stable.
   useEffect(() => {
     if (!soc) return;
     let alive = true;
-    getSvampOccupation(soc, instance).then((r) => { if (alive) setReport(r); }).catch((e) => setErr(e.message));
+    getSvampOccupation(soc, collegeName, instance).then((r) => { if (alive) setReport(r); }).catch((e) => setErr(e.message));
     return () => { alive = false; };
-  }, [soc, instance]);
+  }, [soc, collegeName, instance]);
 
   const selectConsortium = (s: string) => {
     setSoc(s); setCollegeId(null);

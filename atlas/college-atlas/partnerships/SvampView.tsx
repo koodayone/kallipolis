@@ -524,7 +524,7 @@ function OccupationAggregateReport({ soc, colleges, isSectorPriority, instance =
   useEffect(() => {
     let alive = true;
     setReport(null);
-    getSvampOccupation(soc, instance).then((r) => { if (alive) setReport(r); }).catch((e) => setErr(e.message));
+    getSvampOccupation(soc, undefined, instance).then((r) => { if (alive) setReport(r); }).catch((e) => setErr(e.message));
     return () => { alive = false; };
   }, [soc, instance]);
 

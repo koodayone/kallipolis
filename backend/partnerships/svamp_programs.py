@@ -442,12 +442,22 @@ def _build_program_crosswalk(
     )
 
 
-def build_svamp_occupation(soc: str, *, spec: LandscapeSpec = SVAMP_SPEC) -> SvampOccupationReport:
+def build_svamp_occupation(
+    soc: str, *, spec: LandscapeSpec = SVAMP_SPEC, college: str | None = None,
+) -> SvampOccupationReport:
     """Consortium aggregated-occupation report for one SOC — the dual of
     build_program_report. Reuses the program supply machinery (the SOC's 09
     feeding TOPs, their per-college awards/enrollment/courses), get_coe_supply
     for the consortium completions, and the SOC-anchored crosswalk in
-    consortium-union mode (taught by any member college)."""
+    consortium-union mode (taught by any member college).
+
+    `college` scopes ONLY the SOC-anchored crosswalk's taught/active marking to
+    that one member college — for the dashboard's college-scope occupation view,
+    where the pathway must light just the selected school's feeding TOPs, not the
+    consortium union. Every other field stays consortium-grain (the dashboard's
+    college scope reads the per-college landscape cell for its awards/enrollment
+    charts, and the regional-demand quartet is scope-invariant). Omitted ⇒ the
+    consortium-union crosswalk, unchanged."""
     colleges = list(spec.colleges)
     region = spec.resolve_region()
     universe = relevant_tops(spec)
@@ -496,19 +506,18 @@ def build_svamp_occupation(soc: str, *, spec: LandscapeSpec = SVAMP_SPEC) -> Sva
             colleges=colleges, tops=feeding,
         ).data()
 
-    # Consortium supply: COE-projected completions for the SOC's 09 feeding TOPs,
-    # summed across the member colleges (the per-SOC slice of combined_supply).
-    feeding_set = set(feeding)
-    consortium_supply = 0.0
-    if feeding_set:
-        for college in colleges:
-            _, total = get_coe_supply(feeding_set, college)
-            consortium_supply += total
+    # Consortium supply: Σ over members of COE-projected completions for the
+    # feeding TOPs (the per-SOC slice of combined_supply). Delegated so the
+    # member iteration lives in the helper, never shadowing `college` here.
+    consortium_supply = _consortium_supply(feeding, colleges)
 
-    # SOC-anchored crosswalk, consortium-union taught, 09 + CTE-scoped minus
-    # the director's-mandate exclusions (college unused).
+    # SOC-anchored crosswalk, 09 + CTE-scoped minus the director's-mandate
+    # exclusions. _crosswalk_taught_scope picks consortium-union vs single-
+    # college taught marking from `college`; everything else is regional.
+    taught_college, union_colleges = _crosswalk_taught_scope(college, colleges)
     crosswalk = _gather_curriculum_crosswalk(
-        "", soc, top_prefix=spec.top_division, union_colleges=colleges, cte_only=True,
+        taught_college, soc, top_prefix=spec.top_division,
+        union_colleges=union_colleges, cte_only=True,
         exclude_tops=spec.excluded_tops,
     )
 
@@ -547,6 +556,41 @@ def build_svamp_occupation(soc: str, *, spec: LandscapeSpec = SVAMP_SPEC) -> Sva
 
 
 # ── Assembly (pure — no I/O, so the invariants are unit-testable) ────────────
+
+
+def _consortium_supply(
+    feeding: list[str],
+    colleges: tuple[str, ...] | list[str],
+    supply_fn: Callable[[set[str], str], tuple[list, float]] = get_coe_supply,
+) -> float:
+    """Σ over member colleges of COE-projected completions for the SOC's
+    feeding TOPs — the per-SOC slice of the consortium supply (institutional,
+    additive). Pure (supply_fn injectable) so the institutional-sum invariant
+    is unit-testable without a graph, mirroring svamp._assemble_landscape.
+
+    Owning the member iteration HERE is the point: it keeps the loop variable
+    out of any builder that also carries a single-college `college` scope
+    argument, so the two can never collide (see the engine convention in
+    landscape.py — the `for college in colleges` shadow that this helper
+    retired)."""
+    feeding_set = set(feeding)
+    if not feeding_set:
+        return 0.0
+    return sum(supply_fn(feeding_set, member)[1] for member in colleges)
+
+
+def _crosswalk_taught_scope(
+    college: str | None, colleges: tuple[str, ...] | list[str],
+) -> tuple[str, list[str] | None]:
+    """The (taught-college, union-colleges) arguments for the SOC-anchored
+    crosswalk's taught/active marking. A single `college` lights only its own
+    feeding TOPs (the single-college branch, union_colleges=None); None ⇒ the
+    consortium union over every member. Pure and named so the consortium-vs-
+    college contract is one unit-testable decision, not an inline ternary at
+    the I/O call site."""
+    if college:
+        return (college, None)
+    return ("", list(colleges))
 
 
 def _award_years_axis(years: set[str]) -> list[str]:

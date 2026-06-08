@@ -338,9 +338,9 @@ def _register_landscape_routes(spec: LandscapeSpec) -> None:
         except Exception as e:
             raise HTTPException(status_code=500, detail=str(e))
 
-    def get_occupation(soc: str):
+    def get_occupation(soc: str, college: str | None = None):
         try:
-            return build_svamp_occupation(soc, spec=spec)
+            return build_svamp_occupation(soc, spec=spec, college=college)
         except Exception as e:
             raise HTTPException(status_code=500, detail=str(e))
 

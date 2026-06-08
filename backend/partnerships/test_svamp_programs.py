@@ -41,7 +41,44 @@ from partnerships.svamp_programs import (
     _assemble_landscape,
     _assemble_program_report,
     _assemble_occupation,
+    _consortium_supply,
+    _crosswalk_taught_scope,
 )
+
+
+# ── Institutional-sum + per-college scope helpers ───────────────────────────
+# These pin the two halves of the occupation report's college-scoping that an
+# earlier draft got wrong: the member-summed supply (whose hand-rolled loop
+# shadowed the `college` scope argument) and the consortium-vs-single-college
+# crosswalk decision. Pure, so they need no graph — the coverage the
+# generalized engine relies on in place of an end-to-end snapshot.
+
+def test_consortium_supply_sums_over_every_member():
+    # Injected supply_fn returns a per-college amount; the helper sums them.
+    supply = {"A": 4.0, "B": 1.5, "C": 2.5}
+    total = _consortium_supply(
+        ["095600"], ["A", "B", "C"],
+        supply_fn=lambda feeding, college: ([], supply[college]),
+    )
+    assert total == 8.0
+
+
+def test_consortium_supply_is_zero_when_no_feeding_tops():
+    # No feeding TOPs ⇒ no supply, and supply_fn is never called.
+    called = []
+    total = _consortium_supply(
+        [], ["A", "B"],
+        supply_fn=lambda feeding, college: called.append(college) or ([], 1.0),
+    )
+    assert total == 0.0 and called == []
+
+
+def test_crosswalk_taught_scope_consortium_union_vs_single_college():
+    colleges = ["De Anza College", "Ohlone College", "Mission College"]
+    # No college ⇒ consortium union over every member (taught-college empty).
+    assert _crosswalk_taught_scope(None, colleges) == ("", colleges)
+    # A college ⇒ that college's single-college branch (no union list).
+    assert _crosswalk_taught_scope("Ohlone College", colleges) == ("Ohlone College", None)
 
 
 def test_landscape_awards_total_summed_across_colleges_latest_year_only():

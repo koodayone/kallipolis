@@ -479,11 +479,16 @@ export async function getSvampProgram(top6: string, college?: string, instance: 
   });
 }
 
-export async function getSvampOccupation(soc: string, instance: string = "svamp"): Promise<ApiSvampOccupationReport> {
+export async function getSvampOccupation(soc: string, college?: string, instance: string = "svamp"): Promise<ApiSvampOccupationReport> {
   // The aggregated (consortium) view of one occupation — demand, consortium
   // supply + gap, the feeding programs, and per-college series + curriculum.
-  return svampCached(`${instance}:occupation:${soc}`, async () => {
-    const res = await fetch(`${API_BASE}/partnerships/${instance}/occupation/${encodeURIComponent(soc)}`);
+  // `college` scopes ONLY the SOC-anchored crosswalk's taught/active marking
+  // to that one member college (the dashboard's college scope — the pathway
+  // lights just that school's feeding TOPs); every other field stays
+  // consortium. Omitted ⇒ the consortium-union crosswalk.
+  const qs = college ? `?college=${encodeURIComponent(college)}` : "";
+  return svampCached(`${instance}:occupation:${soc}:${college ?? ""}`, async () => {
+    const res = await fetch(`${API_BASE}/partnerships/${instance}/occupation/${encodeURIComponent(soc)}${qs}`);
     if (!res.ok) throw new Error("Failed to fetch occupation report");
     return res.json();
   });
