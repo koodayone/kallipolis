@@ -191,13 +191,25 @@ REGISTRY: dict[str, LandscapeSpec] = {
 }
 
 
+_TRUTHY = frozenset({"1", "true", "yes", "on"})
+
+
+def _draft_landscapes_enabled() -> bool:
+    """Whether draft instances route in this environment. Parsed as an explicit
+    truthy value, NOT bool(str): the docker-compose passthrough materializes the
+    unset var as the STRING "0" (`${VAR:-0}`), and bool("0") is True in Python —
+    so a naive bool() would leave the gate OPEN at the default. Only 1/true/yes/
+    on (case-insensitive) enable it; "0"/""/anything else gate."""
+    return os.environ.get("KALLIPOLIS_DRAFT_LANDSCAPES", "").strip().lower() in _TRUTHY
+
+
 def routable_specs() -> list[LandscapeSpec]:
     """The instances whose API routes the app exposes in THIS environment:
-    published instances always, draft instances only when the
-    KALLIPOLIS_DRAFT_LANDSCAPES env var is set (local iteration). Prod leaves
-    it unset, so a draft landscape's routes never exist there — its frontend
-    surface is gated by the mirror flag (DRAFT_LANDSCAPES_ENABLED) and its
-    graph data isn't loaded anyway. The registry is the full catalogue;
-    this is the per-environment view of it."""
-    draft = bool(os.environ.get("KALLIPOLIS_DRAFT_LANDSCAPES"))
+    published instances always, draft instances only when
+    KALLIPOLIS_DRAFT_LANDSCAPES is truthy (local iteration). Prod leaves it at
+    the compose default "0", so a draft landscape's routes never exist there —
+    its frontend surface is gated by the mirror flag (DRAFT_LANDSCAPES_ENABLED)
+    and its graph data isn't loaded anyway. The registry is the full
+    catalogue; this is the per-environment view of it."""
+    draft = _draft_landscapes_enabled()
     return [spec for spec in REGISTRY.values() if spec.published or draft]
