@@ -40,6 +40,7 @@ scope argument alone.
 
 from __future__ import annotations
 
+import os
 from dataclasses import dataclass
 
 from ontology.crosswalks import is_cte_top4_family
@@ -81,6 +82,15 @@ class LandscapeSpec:
     name: str
     # Brand accent hex — the scope color the whole instrument wears.
     accent: str
+
+    # ── Lifecycle ─────────────────────────────────────────────────────────
+    # Published instances route everywhere; a DRAFT instance (published=False)
+    # routes only where KALLIPOLIS_DRAFT_LANDSCAPES is set — local iteration,
+    # never the public surface. The gate exists because an instance's surface
+    # ships as code but its DataMart graph data ships separately: a landscape
+    # whose data isn't yet in an environment must not render an empty
+    # consortium there. Flip to True once the data lands. See routable_specs.
+    published: bool = True
 
     def in_scope(self, top6: str | None) -> bool:
         """Whether a TOP6 is in this instance's scoped program universe: in the
@@ -163,15 +173,31 @@ SMCCD_SPEC = LandscapeSpec(
     socs=_AM_SOCS,
     top_division=_AM_TOP_DIVISION,
     excluded_tops=_AM_EXCLUDED_TOPS,
+    # DRAFT: SMCCD's DataMart awards/enrollment are loaded locally but not yet
+    # in prod Neo4j (confirmed 2026-06-07). Gated from the public surface until
+    # that data lands — then flip to published=True. See routable_specs.
+    published=False,
     sector="Advanced Manufacturing",
     name="SMCCD - Advanced Manufacturing",
     accent="#8b6fd0",  # placeholder — pending confirmation
 )
 
 
-# Registry: every mounted instance. Adding a third landscape = one entry here
+# Registry: every defined instance. Adding a third landscape = one entry here
 # (plus its frontend route); the engine and components are untouched.
 REGISTRY: dict[str, LandscapeSpec] = {
     SVAMP_SPEC.id: SVAMP_SPEC,
     SMCCD_SPEC.id: SMCCD_SPEC,
 }
+
+
+def routable_specs() -> list[LandscapeSpec]:
+    """The instances whose API routes the app exposes in THIS environment:
+    published instances always, draft instances only when the
+    KALLIPOLIS_DRAFT_LANDSCAPES env var is set (local iteration). Prod leaves
+    it unset, so a draft landscape's routes never exist there — its frontend
+    surface is gated by the mirror flag (DRAFT_LANDSCAPES_ENABLED) and its
+    graph data isn't loaded anyway. The registry is the full catalogue;
+    this is the per-environment view of it."""
+    draft = bool(os.environ.get("KALLIPOLIS_DRAFT_LANDSCAPES"))
+    return [spec for spec in REGISTRY.values() if spec.published or draft]

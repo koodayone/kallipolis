@@ -52,6 +52,11 @@ services:
       - CORS_ORIGINS=${CORS_ORIGINS:-http://localhost:3001}
       - GEMINI_MODEL=${GEMINI_MODEL:-gemini-2.5-flash}
       - GEMINI_CLEANUP_MODEL=${GEMINI_CLEANUP_MODEL:-gemini-2.5-flash}
+      # Expose DRAFT (unpublished) landscape instances' API routes. Set to 1 in
+      # the LOCAL .env only; prod's .env leaves it unset (default 0), so a draft
+      # landscape without prod graph data never routes there. See
+      # partnerships.landscape.routable_specs.
+      - KALLIPOLIS_DRAFT_LANDSCAPES=${KALLIPOLIS_DRAFT_LANDSCAPES:-0}
     depends_on:
       neo4j:
         condition: service_healthy

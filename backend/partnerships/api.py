@@ -36,7 +36,7 @@ from fastapi import APIRouter, HTTPException, Response
 from partnerships.models import OpportunityReport, SectorIndex
 from partnerships.opportunity import build_opportunity_report, build_sector_index
 from partnerships.svamp import SvampLandscape, build_landscape
-from partnerships.landscape import LandscapeSpec, REGISTRY
+from partnerships.landscape import LandscapeSpec, routable_specs
 from partnerships.svamp_employers import SvampEmployersResult, build_svamp_employers
 from partnerships.svamp_programs import (
     ProgramReport,
@@ -378,5 +378,8 @@ def _register_landscape_routes(spec: LandscapeSpec) -> None:
                     "target occupations; reports shown-of-total (no silent truncation).")
 
 
-for _landscape_spec in REGISTRY.values():
+# routable_specs() (not REGISTRY directly) so draft instances — defined but
+# without graph data in this environment — register only where
+# KALLIPOLIS_DRAFT_LANDSCAPES is set. Prod exposes published instances only.
+for _landscape_spec in routable_specs():
     _register_landscape_routes(_landscape_spec)
