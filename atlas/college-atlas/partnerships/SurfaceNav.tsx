@@ -11,6 +11,7 @@
 import React from "react";
 import { MONO } from "@/college-atlas/partnerships/reportChrome";
 import KallipolisBrand from "@/ui/KallipolisBrand";
+import { useMeasuredWidth } from "@/college-atlas/partnerships/chartKit";
 
 
 export const FormDashboard: React.FC = () => (
@@ -37,14 +38,23 @@ const SURFACES = [
 ];
 
 export default function SurfaceNav({ active, withBrand = false }: { active: "dashboard" | "report"; withBrand?: boolean }) {
+  // Container-driven shedding: below ~210px of available width the labels
+  // drop and the surface forms carry the nav alone (title/aria keep them
+  // named). Stretches into its cell (flex 1 1 auto, content right-aligned)
+  // so the measurement reads AVAILABLE width — content-sized measurement
+  // would lock the compact form in (it never re-measures wider).
+  const { ref, width } = useMeasuredWidth(true);
+  const iconOnly = width != null && width < 210;
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: 26 }}>
+    <div ref={ref} style={{ flex: "1 1 auto", minWidth: 0, display: "flex", alignItems: "center", justifyContent: "flex-end", gap: iconOnly ? 18 : 26 }}>
       {SURFACES.map(({ key, label, path, Icon }) => {
         const on = active === key;
         return (
           <a
             key={key}
             href={path}
+            title={iconOnly ? label : undefined}
+            aria-label={label}
             aria-current={on ? "page" : undefined}
             onClick={(e) => {
               e.preventDefault();
@@ -56,7 +66,7 @@ export default function SurfaceNav({ active, withBrand = false }: { active: "das
             style={{ display: "flex", alignItems: "center", gap: 8, color: on ? "#ffffff" : "#5e6a83", textDecoration: "none", cursor: on ? "default" : "pointer", transition: "color .16s", textShadow: on ? "0 0 14px rgba(255,255,255,0.55)" : "none" }}
           >
             <span style={{ width: 19, height: 19, display: "flex", color: "currentColor", filter: on ? "drop-shadow(0 0 6px rgba(255,255,255,0.6))" : "none" }}><Icon /></span>
-            <span style={{ fontFamily: MONO, fontSize: 10.5, fontWeight: 600, letterSpacing: "0.16em", textTransform: "uppercase" }}>{label}</span>
+            {!iconOnly && <span style={{ fontFamily: MONO, fontSize: 10.5, fontWeight: 600, letterSpacing: "0.16em", textTransform: "uppercase" }}>{label}</span>}
           </a>
         );
       })}

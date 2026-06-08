@@ -780,7 +780,7 @@ export default function SvampView({ colleges }: Props) {
           (2026-06-06): Kallipolis brand left (no cube, no back chevron — the
           preview surface stands alone), consortium title + PREVIEW MODE
           center, the surface forms right. */}
-      <AtlasHeader title="Silicon Valley Advanced Manufacturing Partnership" leftSlot={<KallipolisBrand />} rightSlot={<SurfaceNav active="report" />} position="sticky" showPreview titleSize="15px" />
+      <AtlasHeader title="Silicon Valley Advanced Manufacturing Partnership" shortTitle="SVAMP" leftSlot={<KallipolisBrand />} rightSlot={<SurfaceNav active="report" />} position="sticky" showPreview titleSize="15px" />
       <div style={{ maxWidth: 900, margin: "0 auto", padding: "40px 28px 90px" }}>{children}</div>
     </div>
   );

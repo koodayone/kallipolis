@@ -673,7 +673,7 @@ export default function SvampDashboard() {
           MODE center, the surface forms (dashboard · report) right in
           glowing white. No masthead below — the nav already carries the
           title, so the old eyebrow/title were pure duplication. */}
-      <AtlasHeader title="Silicon Valley Advanced Manufacturing Partnership" leftSlot={<KallipolisBrand />} rightSlot={<SurfaceNav active="dashboard" />} position="sticky" showPreview titleSize="15px" />
+      <AtlasHeader title="Silicon Valley Advanced Manufacturing Partnership" shortTitle="SVAMP" leftSlot={<KallipolisBrand />} rightSlot={<SurfaceNav active="dashboard" />} position="sticky" showPreview titleSize="15px" />
 
       {/* Lens rail — first row under the nav: tabs left, the consortium's
           stats right on the same rail (the masthead's surviving content),

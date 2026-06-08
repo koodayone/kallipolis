@@ -5,58 +5,16 @@
    dashboard (and any future surface) composes the same vocabulary; SvampView
    remains the reference composition. */
 
-import React, { useCallback, useRef, useState } from "react";
 import { MONO } from "@/college-atlas/partnerships/reportChrome";
 
 // Measured-container layout: charts that take a `fill` prop lay themselves out
 // in the container's pixel space (svg px == layout units), so blocks
 // re-proportion to whatever size the panel manifests at and labels stay crisp
 // at any panel shape. Render nothing until the first measurement lands (box
-// starts null) — the static-export-safe pattern.
-//
-// The ref is a CALLBACK ref, not an object ref: a chart may attach it to
-// different DOM nodes across renders (e.g. TrendChart's ghost wrapper vs its
-// chart area as `empty` flips with the selection), and an observer bound once
-// at mount would keep watching the detached node — freezing `box` at a stale
-// measurement (clipped axes, quarter-size charts after selection changes).
-// The callback re-observes on every element change; the observer's initial
-// fire on observe() delivers the fresh measurement.
-function useMeasuredBox(enabled: boolean) {
-  const [box, setBox] = useState<{ w: number; h: number } | null>(null);
-  const roRef = useRef<ResizeObserver | null>(null);
-  const ref = useCallback((el: HTMLDivElement | null) => {
-    roRef.current?.disconnect();
-    roRef.current = null;
-    if (!enabled || !el) return;
-    const ro = new ResizeObserver(() => setBox({ w: el.clientWidth, h: el.clientHeight }));
-    ro.observe(el);
-    roRef.current = ro;
-  }, [enabled]);
-  return { ref, box };
-}
-
-// Width-only sibling of useMeasuredBox (same callback-ref rationale above) for
-// consumers whose layout depends only on horizontal space — the dashboard's
-// band row computation and the lens tabs' compression. Updating state only
-// when clientWidth CHANGES (functional set with an equality bail) means
-// height-only observer fires — charts loading, rows rewrapping — cause no
-// re-render, which also breaks the height half of any measure feedback loop.
-function useMeasuredWidth(enabled: boolean) {
-  const [width, setWidth] = useState<number | null>(null);
-  const roRef = useRef<ResizeObserver | null>(null);
-  const ref = useCallback((el: HTMLDivElement | null) => {
-    roRef.current?.disconnect();
-    roRef.current = null;
-    if (!enabled || !el) return;
-    const ro = new ResizeObserver(() => {
-      const w = el.clientWidth;
-      setWidth((prev) => (prev === w ? prev : w));
-    });
-    ro.observe(el);
-    roRef.current = ro;
-  }, [enabled]);
-  return { ref, width };
-}
+// starts null) — the static-export-safe pattern. The hooks live in ui/measure
+// (header chrome shares them without a cross-feature dependency); re-exported
+// here so the chart vocabulary keeps one import surface.
+import { useMeasuredBox, useMeasuredWidth } from "@/ui/measure";
 
 const shortName = (name: string) => name.replace(/ Valley College$/, "").replace(/ College$/, "");
 function hexA(hex: string, a: number) {
