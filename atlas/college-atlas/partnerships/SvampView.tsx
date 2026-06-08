@@ -20,6 +20,7 @@ import CurriculumPathway from "@/college-atlas/partnerships/CurriculumPathway";
 import OccupationRow, { type OccupationData, type OccupationDetail } from "@/college-atlas/occupations/OccupationRow";
 import EmployerMap, { type MapCollege } from "@/college-atlas/partnerships/EmployerMap";
 import { getSvampLandscape, getSvampPrograms, getSvampProgram, getSvampOccupation, getSvampEmployers } from "@/college-atlas/partnerships/api";
+import { landscapeInstance } from "@/college-atlas/partnerships/landscapeInstances";
 import type {
   ApiSvampLandscape,
   ApiSvampCell,
@@ -64,6 +65,7 @@ type CollegeRef = { id: string; config: SchoolConfig };
 
 type Props = {
   colleges: CollegeRef[]; // member colleges, in display order
+  instance?: string;
 };
 
 // ROLE_LABEL (the 12 SVAMP SOC → role labels) now lives in ./svampLabels,
@@ -92,12 +94,17 @@ const SVAMP_COLLEGE_GEO: Record<string, [number, number]> = {
   "Evergreen Valley College": [37.34, -121.80],
   "Mission College": [37.39, -121.98],
   "Ohlone College": [37.53, -121.91],
+  // San Mateo CCD (smccd instance)
+  "College of San Mateo": [37.54, -122.32],
+  "Skyline College": [37.62, -122.46],
+  "Cañada College": [37.49, -122.23],
 };
 
 // ── Employers lens — the regional employer map: Bay-Area advanced manufacturing
 // employers hiring for the SVAMP occupations, in the State Atlas's map language,
 // with the member colleges anchored for context. Click an employer for detail.
-function EmployersLens({ colleges }: { colleges: CollegeRef[] }) {
+function EmployersLens({ colleges, instance = "svamp" }: { colleges: CollegeRef[]; instance?: string }) {
+  const inst = landscapeInstance(instance);
   const [data, setData] = useState<ApiSvampEmployersResult | null>(null);
   const [err, setErr] = useState<string | null>(null);
   const [selected, setSelected] = useState<string | null>(null);
@@ -110,9 +117,9 @@ function EmployersLens({ colleges }: { colleges: CollegeRef[] }) {
 
   useEffect(() => {
     let alive = true;
-    getSvampEmployers().then((d) => { if (alive) setData(d); }).catch((e) => setErr(e.message));
+    getSvampEmployers(instance).then((d) => { if (alive) setData(d); }).catch((e) => setErr(e.message));
     return () => { alive = false; };
-  }, []);
+  }, [instance]);
 
   // Restore the employers slice from the URL on mount, then sync emp → URL.
   useEffect(() => {
@@ -158,7 +165,7 @@ function EmployersLens({ colleges }: { colleges: CollegeRef[] }) {
   return (
     <Section title="Regional Employer Map" brandColor={EMPLOYER_ACCENT}>
       <Prose>
-        Top {data.region_display} advanced manufacturing employers hiring for the twelve SVAMP target occupations. Member colleges are marked to show geographic context; select an employer for detail.
+        Top {data.region_display} advanced manufacturing employers hiring for the twelve {inst.shortTitle} target occupations. Member colleges are marked to show geographic context; select an employer for detail.
       </Prose>
       <div style={{ display: "flex", flexDirection: narrow ? "column" : "row", gap: 16, marginTop: 16, height: narrow ? "auto" : 560 }}>
         {/* LEFT — map */}
@@ -214,7 +221,8 @@ function EmployersLens({ colleges }: { colleges: CollegeRef[] }) {
 // lens). Supply treemap (picker) → TOP report. Lives here so it can reuse the
 // in-module TrendChart / WageOutcomes; series are keyed on colleges (brand-
 // colored) rather than programs. Demand is shown per SOC, never summed.
-function ProgramsLens({ colleges }: { colleges: CollegeRef[] }) {
+function ProgramsLens({ colleges, instance = "svamp" }: { colleges: CollegeRef[]; instance?: string }) {
+  const inst = landscapeInstance(instance);
   // Programs lens is green; shadow the module red within this view so every
   // section bar / header / treemap usage flips at once.
   const ACCENT = PROGRAM_ACCENT;
@@ -231,16 +239,16 @@ function ProgramsLens({ colleges }: { colleges: CollegeRef[] }) {
   const matrixCollegeName = matrixCollegeId ? nameById.get(matrixCollegeId) : undefined;
 
   useEffect(() => {
-    getSvampPrograms()
+    getSvampPrograms(instance)
       .then((d) => { setLand(d); setTop((cur) => cur ?? d.tops[0]?.top6 ?? null); })
       .catch((e) => setErr(e.message));
-  }, []);
+  }, [instance]);
   useEffect(() => {
     if (!top) return;
     let alive = true;
-    getSvampProgram(top, matrixCollegeName).then((r) => { if (alive) setReport(r); }).catch((e) => setErr(e.message));
+    getSvampProgram(top, matrixCollegeName, instance).then((r) => { if (alive) setReport(r); }).catch((e) => setErr(e.message));
     return () => { alive = false; };
-  }, [top, matrixCollegeName]);
+  }, [top, matrixCollegeName, instance]);
 
   // Restore the programs slice from the URL on mount; the data-load default
   // (setTop's `cur ?? …`) defers to a URL-pinned TOP. Then sync top + college →
@@ -371,7 +379,7 @@ function ProgramsLens({ colleges }: { colleges: CollegeRef[] }) {
       )}
       <Section title="Consortium Program Supply" brandColor={ACCENT}>
         <Prose>
-          This view examines the consortium supply landscape across advanced manufacturing programs in TOP division 09 supporting the Silicon Valley Advanced Manufacturing Partnership. In the latest reported year{land.latest_award_year ? ` (${land.latest_award_year})` : ""}, {awardingPrograms} of them awarded {totalAwards.toLocaleString()} credentials, preparing students for the 12 advanced manufacturing occupations via the TOP-CIP-SOC crosswalk.
+          This view examines the consortium supply landscape across advanced manufacturing programs in TOP division 09 supporting the {inst.name}. In the latest reported year{land.latest_award_year ? ` (${land.latest_award_year})` : ""}, {awardingPrograms} of them awarded {totalAwards.toLocaleString()} credentials, preparing students for the 12 advanced manufacturing occupations via the TOP-CIP-SOC crosswalk.
         </Prose>
         <SupplyTreemap tops={land.tops} selectedTop={matrixCollegeId ? null : top} onSelect={(t) => { setTop(t); setMatrixCollegeId(null); }} accent={ACCENT} caption="Area is latest-year credentials awarded — click a program for the consortium view." />
         <CoverageMatrix
@@ -508,16 +516,17 @@ function ProgramsLens({ colleges }: { colleges: CollegeRef[] }) {
 // occupation read consortium-wide: demand + supply + gap, the SOC-anchored
 // crosswalk (taught by any member college), the feeding programs sized by
 // awards, and per-college award/enrollment series + curriculum.
-function OccupationAggregateReport({ soc, colleges, isSectorPriority }: { soc: string; colleges: CollegeRef[]; isSectorPriority: boolean }) {
+function OccupationAggregateReport({ soc, colleges, isSectorPriority, instance = "svamp" }: { soc: string; colleges: CollegeRef[]; isSectorPriority: boolean; instance?: string }) {
+  const inst = landscapeInstance(instance);
   const [report, setReport] = useState<ApiSvampOccupationReport | null>(null);
   const [err, setErr] = useState<string | null>(null);
   const [demandOpen, setDemandOpen] = useState(true);
   useEffect(() => {
     let alive = true;
     setReport(null);
-    getSvampOccupation(soc).then((r) => { if (alive) setReport(r); }).catch((e) => setErr(e.message));
+    getSvampOccupation(soc, undefined, instance).then((r) => { if (alive) setReport(r); }).catch((e) => setErr(e.message));
     return () => { alive = false; };
-  }, [soc]);
+  }, [soc, instance]);
 
   const brandByName = useMemo(() => new Map(colleges.map((c) => [c.config.name, c.config.brandColorLight])), [colleges]);
   const colorOf = (name: string) => brandByName.get(name) ?? ACCENT;
@@ -582,12 +591,12 @@ function OccupationAggregateReport({ soc, colleges, isSectorPriority }: { soc: s
             onToggle={() => setDemandOpen((o) => !o)}
             detail={occDetail}
             regionNames={[r.region_display]}
-            collegeName="SVAMP member colleges"
+            collegeName={`${inst.shortTitle} member colleges`}
             hideCurriculumAlignment
           />
         </div>
         {cw && cw.tops.length > 0 && (
-          <CurriculumPathway crosswalk={cw} collegeName="SVAMP member colleges" socCode={r.soc_code} socTitle={r.title} brandColor={ACCENT} embedded />
+          <CurriculumPathway crosswalk={cw} collegeName={`${inst.shortTitle} member colleges`} socCode={r.soc_code} socTitle={r.title} brandColor={ACCENT} embedded />
         )}
       </Section>
 
@@ -686,7 +695,8 @@ function OccupationAggregateReport({ soc, colleges, isSectorPriority }: { soc: s
   );
 }
 
-export default function SvampView({ colleges }: Props) {
+export default function SvampView({ colleges, instance = "svamp" }: Props) {
+  const inst = landscapeInstance(instance);
   const [data, setData] = useState<ApiSvampLandscape | null>(null);
   // Programs landscape fetched here too, only so the header can show the
   // active-program count from the SAME source the Programs lens uses — keeping
@@ -710,9 +720,9 @@ export default function SvampView({ colleges }: Props) {
   const ctxSentinel = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    getSvampLandscape().then(setData).catch((e) => setError(e.message));
-    getSvampPrograms().then(setPrograms).catch(() => {});  // header count only — a failure just omits the facet
-  }, []);
+    getSvampLandscape(instance).then(setData).catch((e) => setError(e.message));
+    getSvampPrograms(instance).then(setPrograms).catch(() => {});  // header count only — a failure just omits the facet
+  }, [instance]);
 
   // Restore the view from the URL once on mount (client-only). The child lenses
   // (ProgramsLens, EmployersLens) restore their own slice on their own mount.
@@ -780,7 +790,7 @@ export default function SvampView({ colleges }: Props) {
           (2026-06-06): Kallipolis brand left (no cube, no back chevron — the
           preview surface stands alone), consortium title + PREVIEW MODE
           center, the surface forms right. */}
-      <AtlasHeader title="Silicon Valley Advanced Manufacturing Partnership" shortTitle="SVAMP" leftSlot={<KallipolisBrand />} rightSlot={<SurfaceNav active="report" />} position="sticky" showPreview titleSize="15px" />
+      <AtlasHeader title={inst.name} shortTitle={inst.shortTitle} leftSlot={<KallipolisBrand />} rightSlot={<SurfaceNav active="report" instance={instance} />} position="sticky" showPreview titleSize="15px" />
       <div style={{ maxWidth: 900, margin: "0 auto", padding: "40px 28px 90px" }}>{children}</div>
     </div>
   );
@@ -1014,7 +1024,7 @@ export default function SvampView({ colleges }: Props) {
         <div style={{ marginTop: 36 }}>
           <div ref={ctxSentinel} style={{ height: 1 }} />
           {occView === "aggregated" ? (
-            <OccupationAggregateReport soc={selectedSoc} colleges={colleges} isSectorPriority={data.is_sector_priority} />
+            <OccupationAggregateReport soc={selectedSoc} colleges={colleges} isSectorPriority={data.is_sector_priority} instance={instance} />
           ) : selRef ? (
             // hideLaborMarket: the COE supply/demand projections are hidden by
             // design in the SVAMP embedding — supply's authority here is
@@ -1029,9 +1039,9 @@ export default function SvampView({ colleges }: Props) {
       )}
       </>
       ) : lens === "programs" ? (
-        <ProgramsLens colleges={colleges} />
+        <ProgramsLens colleges={colleges} instance={instance} />
       ) : (
-        <EmployersLens colleges={colleges} />
+        <EmployersLens colleges={colleges} instance={instance} />
       )}
     </>,
   );

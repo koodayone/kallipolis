@@ -35,28 +35,23 @@ from pydantic import BaseModel
 from ontology.regions import (
     COE_REGION_DISPLAY,
     COE_REGION_PRIORITY_SECTORS,
-    COLLEGE_COE_REGION,
 )
-from ontology.crosswalks import is_cte_top4_family, top6_to_soc, _load_top_to_cip
+from ontology.crosswalks import top6_to_soc, _load_top_to_cip
 from ontology.schema import get_driver
 from ontology.supply import get_coe_supply
 from ontology.programs import get_wage_outcomes
 
-# ── Scope (fixed for this consortium prototype) ───────────────────────────
+from partnerships.landscape import LandscapeSpec, SVAMP_SPEC
 
-SVAMP_COLLEGES: list[str] = [
-    "De Anza College",
-    "Evergreen Valley College",
-    "Foothill College",
-    "Mission College",
-    "Ohlone College",
-]
+# ── Scope ─────────────────────────────────────────────────────────────────
+# The SVAMP scope now lives as SVAMP_SPEC in landscape.py — the single source,
+# alongside the other landscape instances (SMCCD, …). The module-level names
+# below remain as back-compat aliases for the existing importers
+# (svamp_programs, svamp_employers, the tests); the builders in this file read
+# from `spec`, not from these names.
 
-# The twelve advanced manufacturing occupations the consortium targets.
-SVAMP_SOCS: list[str] = [
-    "17-3023", "17-3024", "17-3026", "17-3027", "17-3028", "17-3029",
-    "49-9041", "49-9043", "51-4041", "51-9141", "51-9161", "51-9162",
-]
+SVAMP_COLLEGES: list[str] = list(SVAMP_SPEC.colleges)
+SVAMP_SOCS: list[str] = list(SVAMP_SPEC.socs)
 
 # Enrollment terms are NOT a fixed list: the course-section exports span ~5
 # years and colleges run different calendars (quarter vs. semester), so the
@@ -99,7 +94,7 @@ def _term_sort_key(term: str) -> tuple[int, int]:
 # as the leaf report's sector hint so the drill-down renders in the same
 # sector framing as the consortium. (Matches the label in regions.py /
 # the PCAH TOP-Codes-to-Sectors mapping.)
-SVAMP_SECTOR: str = "Advanced Manufacturing"
+SVAMP_SECTOR: str = SVAMP_SPEC.sector
 
 # Award trend window: show the most recent N award years, matching the ~5-year
 # span of the enrollment chart. The full history remains in the graph.
@@ -120,7 +115,7 @@ AWARD_YEARS_SHOWN: int = 5
 # (build_opportunity_report's top_prefix + cte_only) all restrict to 09xx CTE
 # TOPs. DEMAND and the candidate-employer set are NOT scoped — they are
 # occupation- and region-owned, not program-owned.
-SVAMP_TOP_DIVISION: str = "09"
+SVAMP_TOP_DIVISION: str = SVAMP_SPEC.top_division
 
 # Programs the SVAMP director's advanced manufacturing mandate excludes, even
 # though they sit in division 09 and the crosswalk legitimately links them to
@@ -133,29 +128,15 @@ SVAMP_TOP_DIVISION: str = "09"
 # Boundary programs the director has NOT ruled on stay in (e.g. 094840
 # Alternative Fuels & Advanced Transportation, 094610 Energy Systems) — add
 # them here if the mandate later excludes them.
-SVAMP_MANDATE_EXCLUDED_TOPS: frozenset[str] = frozenset({
-    "094600",  # Environmental Control Technology (HVAC)
-    "094800",  # Automotive Technology
-})
+SVAMP_MANDATE_EXCLUDED_TOPS: frozenset[str] = SVAMP_SPEC.excluded_tops
 
 
 def is_svamp_top(top6: str | None) -> bool:
-    """True iff a TOP6 is in SVAMP's scoped program universe: TOP division 09
-    AND a career-technical (CTE) workforce program, not a transfer/academic one
-    (e.g. 090100 Engineering, General (Transfer) is excluded), AND not excluded
-    by the director's mandate (SVAMP_MANDATE_EXCLUDED_TOPS).
-
-    Uses the FAMILY-level CTE test (is_cte_top4_family) rather than exact TOP6
-    membership: the PCAH file is periodically updated and misses newer TOP6
-    codes (e.g. 095690 Digital Fabrication Technician) whose 4-digit family is
-    plainly CTE. Family-level keeps those while still excluding all-transfer
-    families like 0901."""
-    return (
-        bool(top6)
-        and top6.startswith(SVAMP_TOP_DIVISION)
-        and top6 not in SVAMP_MANDATE_EXCLUDED_TOPS
-        and is_cte_top4_family(top6)
-    )
+    """True iff a TOP6 is in SVAMP's scoped program universe. Back-compat alias
+    for SVAMP_SPEC.in_scope (svamp_programs and the tests import this name); see
+    LandscapeSpec.in_scope for the predicate — configured TOP division + CTE
+    family test, minus the director's mandate exclusions."""
+    return SVAMP_SPEC.in_scope(top6)
 
 
 # ── Response shapes ───────────────────────────────────────────────────────
@@ -262,15 +243,15 @@ class SvampLandscape(BaseModel):
     aggregate: SvampAggregate
 
 
-def _build_executive_summary(region_display: str, agg: "SvampAggregate") -> str:
+def _build_executive_summary(spec: LandscapeSpec, region_display: str, agg: "SvampAggregate") -> str:
     """The occupations (demand) lens thesis: what the report examines and the
     shared regional demand total. Supply framing — the credentials member
     colleges award — belongs on the Programs lens, not here, so the occupations
     view reads unambiguously as the demand side of the landscape."""
     s1 = (
         f"This view examines the regional demand landscape across the "
-        f"{agg.n_occupations} advanced manufacturing occupations the Silicon "
-        f"Valley Advanced Manufacturing Partnership targets in the "
+        f"{agg.n_occupations} {spec.sector.lower()} occupations the "
+        f"{spec.name} targets in the "
         f"{region_display} regional labor market."
     )
     s2 = (
@@ -284,38 +265,37 @@ def _build_executive_summary(region_display: str, agg: "SvampAggregate") -> str:
 
 
 def _resolve_region() -> str:
-    """The shared COE region for the consortium. Asserts all member colleges
-    map to the same region — the precondition that makes regional demand a
-    single shared number per SOC."""
-    regions = {COLLEGE_COE_REGION.get(c, "") for c in SVAMP_COLLEGES}
-    regions.discard("")
-    if len(regions) != 1:
-        raise ValueError(
-            f"SVAMP member colleges must share one COE region; got {regions or 'none'}"
-        )
-    return next(iter(regions))
+    """The shared COE region for the SVAMP consortium. Back-compat wrapper for
+    SVAMP_SPEC.resolve_region (svamp_employers imports this name); the
+    one-region assertion lives in LandscapeSpec.resolve_region."""
+    return SVAMP_SPEC.resolve_region()
 
 
-def _soc_feeding_tops() -> dict[str, set[str]]:
-    """{SVAMP SOC -> the 09∩CTE TOP6 programs that crosswalk to it}. The inverse
-    of svamp_programs.relevant_tops (kept local to avoid a svamp ↔ svamp_programs
-    import cycle; both apply the same 09 + CTE-family scope to the faithful
-    TOP-CIP-SOC crosswalk, which is never edited). Drives the per-cell activity
-    coverage: a SOC is fed by these programs regardless of whether any course is
-    tagged to their code (the 095630 parent-code seam)."""
+def _soc_feeding_tops(spec: LandscapeSpec) -> dict[str, set[str]]:
+    """{target SOC -> the in-scope TOP6 programs that crosswalk to it}. The
+    inverse of svamp_programs.relevant_tops (kept local to avoid a svamp ↔
+    svamp_programs import cycle; both apply the same division + CTE-family scope
+    to the faithful TOP-CIP-SOC crosswalk, which is never edited). Drives the
+    per-cell activity coverage: a SOC is fed by these programs regardless of
+    whether any course is tagged to their code (the 095630 parent-code seam)."""
     all_top6 = list(_load_top_to_cip().keys())
-    svamp = set(SVAMP_SOCS)
-    feed: dict[str, set[str]] = {soc: set() for soc in SVAMP_SOCS}
+    targets = set(spec.socs)
+    feed: dict[str, set[str]] = {soc: set() for soc in spec.socs}
     for top6, socs in top6_to_soc(all_top6).items():
-        inter = socs & svamp
-        if inter and is_svamp_top(top6):
+        inter = socs & targets
+        if inter and spec.in_scope(top6):
             for soc in inter:
                 feed[soc].add(top6)
     return feed
 
 
 def build_svamp_landscape() -> SvampLandscape:
-    region = _resolve_region()
+    """Back-compat 0-arg entry for the SVAMP instance (api.py imports this)."""
+    return build_landscape(SVAMP_SPEC)
+
+
+def build_landscape(spec: LandscapeSpec) -> SvampLandscape:
+    region = spec.resolve_region()
     driver = get_driver()
 
     with driver.session() as session:
@@ -330,7 +310,7 @@ def build_svamp_landscape() -> SvampLandscape:
                    d.annual_wage AS annual_wage,
                    d.growth_rate AS growth_rate
             """,
-            region=region, socs=SVAMP_SOCS,
+            region=region, socs=list(spec.socs),
         ).data()
         demand_by_soc = {r["soc_code"]: r for r in demand_rows}
 
@@ -345,7 +325,7 @@ def build_svamp_landscape() -> SvampLandscape:
         #    the unchanged per-college report). The edge's own course_count /
         #    top_codes are deliberately not used here.
         align_by_college: dict[str, dict[str, dict]] = {}
-        for college in SVAMP_COLLEGES:
+        for college in spec.colleges:
             rows = session.run(
                 """
                 MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)
@@ -361,15 +341,15 @@ def build_svamp_landscape() -> SvampLandscape:
                        op.student_count AS student_count,
                        op.top_codes AS top_codes
                 """,
-                college=college, socs=SVAMP_SOCS,
-                top_division=SVAMP_TOP_DIVISION,
-                excluded=sorted(SVAMP_MANDATE_EXCLUDED_TOPS),
+                college=college, socs=list(spec.socs),
+                top_division=spec.top_division,
+                excluded=sorted(spec.excluded_tops),
             ).data()
             align_by_college[college] = {
                 r["soc_code"]: {
                     "course_count": r["course_count"] or 0,
                     "student_count": r["student_count"],
-                    "top_codes": [t for t in (r["top_codes"] or []) if is_svamp_top(t)],
+                    "top_codes": [t for t in (r["top_codes"] or []) if spec.in_scope(t)],
                 }
                 for r in rows
             }
@@ -382,7 +362,7 @@ def build_svamp_landscape() -> SvampLandscape:
             WHERE occ.soc_code IN $socs
             RETURN count(DISTINCT emp) AS n
             """,
-            region=region, socs=SVAMP_SOCS,
+            region=region, socs=list(spec.socs),
         ).single()
         candidate_employers = (emp_row["n"] if emp_row else 0) or 0
 
@@ -402,7 +382,7 @@ def build_svamp_landscape() -> SvampLandscape:
                    ay.year AS year,
                    toInteger(sum(coalesce(a.count, 0))) AS awards
             """,
-            colleges=SVAMP_COLLEGES,
+            colleges=list(spec.colleges),
         ).data():
             entry = program_data.setdefault(
                 (r["college"], r["top6"]),
@@ -416,20 +396,21 @@ def build_svamp_landscape() -> SvampLandscape:
             RETURN pr.college AS college, pr.top6 AS top6, t.term AS term,
                    toInteger(sum(e.count)) AS count
             """,
-            colleges=SVAMP_COLLEGES,
+            colleges=list(spec.colleges),
         ).data():
             entry = program_data.get((r["college"], r["top6"]))
             if entry is not None:
                 entry["enroll"][r["term"]] = r["count"]
 
     return _assemble_landscape(
+        spec=spec,
         region=region,
         region_display=COE_REGION_DISPLAY.get(region, region),
         demand_by_soc=demand_by_soc,
         align_by_college=align_by_college,
         candidate_employers=candidate_employers,
         program_data=program_data,
-        soc_feeding=_soc_feeding_tops(),
+        soc_feeding=_soc_feeding_tops(spec),
     )
 
 
@@ -467,6 +448,8 @@ def _assemble_landscape(
     program_data: dict[tuple[str, str], dict] | None = None,
     wage_fn: Callable[[str], list] = get_wage_outcomes,
     soc_feeding: dict[str, set[str]] | None = None,
+    *,
+    spec: LandscapeSpec = SVAMP_SPEC,
 ) -> SvampLandscape:
     """Pure assembly of the landscape from already-fetched graph data.
 
@@ -508,10 +491,10 @@ def _assemble_landscape(
     # these once, never per-cell (a TOP6 serves multiple SOCs).
     scoped_programs: set[tuple[str, str]] = set()
 
-    for college in SVAMP_COLLEGES:
+    for college in spec.colleges:
         align = align_by_college.get(college, {})
         cells: list[SvampCell] = []
-        for soc in SVAMP_SOCS:
+        for soc in spec.socs:
             demand = demand_by_soc.get(soc, {})
             a = align.get(soc, {})
             course_count = (a.get("course_count") or 0)
@@ -588,7 +571,7 @@ def _assemble_landscape(
 
     # Regional demand summed ONCE over the 12 SOCs (not per college).
     regional_demand_total = int(round(sum(
-        (demand_by_soc.get(soc, {}).get("annual_openings") or 0) for soc in SVAMP_SOCS
+        (demand_by_soc.get(soc, {}).get("annual_openings") or 0) for soc in spec.socs
     )))
 
     aggregate = SvampAggregate(
@@ -598,18 +581,18 @@ def _assemble_landscape(
         candidate_employers=candidate_employers,
         occupations_taught=len(socs_taught),
         combined_awards=combined_awards,
-        n_colleges=len(SVAMP_COLLEGES),
-        n_occupations=len(SVAMP_SOCS),
+        n_colleges=len(spec.colleges),
+        n_occupations=len(spec.socs),
     )
 
-    is_sector_priority = SVAMP_SECTOR in set(COE_REGION_PRIORITY_SECTORS.get(region, []))
+    is_sector_priority = spec.sector in set(COE_REGION_PRIORITY_SECTORS.get(region, []))
 
     return SvampLandscape(
         region=region,
         region_display=region_display,
-        sector=SVAMP_SECTOR,
+        sector=spec.sector,
         is_sector_priority=is_sector_priority,
-        executive_summary=_build_executive_summary(region_display, aggregate),
+        executive_summary=_build_executive_summary(spec, region_display, aggregate),
         award_years=award_years,
         enrollment_terms=enrollment_terms,
         colleges=colleges,

@@ -33,7 +33,7 @@ const DEMAND_ACCENT = "#c9a84c"; // demand reference gold (mirrors the report)
 
 export type CollegeRef = { id: string; config: SchoolConfig };
 
-export default function SvampDashboardPrograms({ colleges }: { colleges: CollegeRef[] }) {
+export default function SvampDashboardPrograms({ colleges, instance = "svamp" }: { colleges: CollegeRef[]; instance?: string }) {
   const [land, setLand] = useState<ApiSvampProgramsLandscape | null>(null);
   const [top, setTop] = useState<string | null>(null);
   // null ⇒ consortium scope; a college id ⇒ that college's scope.
@@ -54,7 +54,7 @@ export default function SvampDashboardPrograms({ colleges }: { colleges: College
   }, [collegeName, brandByName, scopeAccentCtx]);
 
   useEffect(() => {
-    getSvampPrograms()
+    getSvampPrograms(instance)
       .then((d) => {
         setLand(d);
         const u = urlRef.current;
@@ -70,9 +70,9 @@ export default function SvampDashboardPrograms({ colleges }: { colleges: College
   useEffect(() => {
     if (!top) return;
     let alive = true;
-    getSvampProgram(top, collegeName).then((r) => { if (alive) setReport(r); }).catch((e) => setErr(e.message));
+    getSvampProgram(top, collegeName, instance).then((r) => { if (alive) setReport(r); }).catch((e) => setErr(e.message));
     return () => { alive = false; };
-  }, [top, collegeName]);
+  }, [top, collegeName, instance]);
 
   // User-driven selection → state + URL (shared vocabulary with the report).
   const selectConsortium = (t: string) => {
