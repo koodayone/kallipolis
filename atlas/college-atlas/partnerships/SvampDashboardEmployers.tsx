@@ -37,7 +37,7 @@ const COLLEGE_GEO: Record<string, [number, number]> = {
   "Ohlone College": [37.53, -121.91],
 };
 
-export default function SvampDashboardEmployers({ colleges, stacked = false }: { colleges: CollegeRef[]; stacked?: boolean }) {
+export default function SvampDashboardEmployers({ colleges, stacked = false, instance = "svamp" }: { colleges: CollegeRef[]; stacked?: boolean; instance?: string }) {
   const [data, setData] = useState<ApiSvampEmployersResult | null>(null);
   const [err, setErr] = useState<string | null>(null);
   const [selected, setSelected] = useState<string | null>(null);
@@ -48,9 +48,9 @@ export default function SvampDashboardEmployers({ colleges, stacked = false }: {
 
   useEffect(() => {
     let alive = true;
-    getSvampEmployers().then((d) => { if (alive) setData(d); }).catch((e) => setErr(e.message));
+    getSvampEmployers(instance).then((d) => { if (alive) setData(d); }).catch((e) => setErr(e.message));
     return () => { alive = false; };
-  }, []);
+  }, [instance]);
 
   // Restore the emp slice from the URL on mount, then sync emp → URL (the
   // report's pattern; `ready` gates writes until the restore has run).

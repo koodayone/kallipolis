@@ -102,7 +102,7 @@ function OccupationSummary({ report }: { report: ApiSvampOccupationReport | null
   );
 }
 
-export default function SvampDashboardOccupations({ colleges }: { colleges: CollegeRef[] }) {
+export default function SvampDashboardOccupations({ colleges, instance = "svamp" }: { colleges: CollegeRef[]; instance?: string }) {
   const [land, setLand] = useState<ApiSvampLandscape | null>(null);
   const [soc, setSoc] = useState<string | null>(null);
   // null ⇒ consortium scope; a college id ⇒ that college's scope.
@@ -122,7 +122,7 @@ export default function SvampDashboardOccupations({ colleges }: { colleges: Coll
   }, [collegeName, brandByName, scopeAccentCtx]);
 
   useEffect(() => {
-    getSvampLandscape()
+    getSvampLandscape(instance)
       .then((d) => {
         setLand(d);
         const cells = d.colleges[0]?.cells ?? [];
@@ -140,9 +140,9 @@ export default function SvampDashboardOccupations({ colleges }: { colleges: Coll
   useEffect(() => {
     if (!soc) return;
     let alive = true;
-    getSvampOccupation(soc).then((r) => { if (alive) setReport(r); }).catch((e) => setErr(e.message));
+    getSvampOccupation(soc, instance).then((r) => { if (alive) setReport(r); }).catch((e) => setErr(e.message));
     return () => { alive = false; };
-  }, [soc]);
+  }, [soc, instance]);
 
   const selectConsortium = (s: string) => {
     setSoc(s); setCollegeId(null);

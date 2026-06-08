@@ -33,11 +33,11 @@ export const FormReport: React.FC = () => (
 // the primary surface on the hard right; the report is the narrated,
 // citeable descent at /svamp/report, one click away with selection intact.
 const SURFACES = [
-  { key: "report" as const, label: "Report", path: "/svamp/report", Icon: FormReport },
-  { key: "dashboard" as const, label: "Dashboard", path: "/svamp", Icon: FormDashboard },
+  { key: "report" as const, label: "Report", sub: "/report", Icon: FormReport },
+  { key: "dashboard" as const, label: "Dashboard", sub: "", Icon: FormDashboard },
 ];
 
-export default function SurfaceNav({ active, withBrand = false }: { active: "dashboard" | "report"; withBrand?: boolean }) {
+export default function SurfaceNav({ active, withBrand = false, instance = "svamp" }: { active: "dashboard" | "report"; withBrand?: boolean; instance?: string }) {
   // Container-driven shedding: below ~210px of available width the labels
   // drop and the surface forms carry the nav alone (title/aria keep them
   // named). Stretches into its cell (flex 1 1 auto, content right-aligned)
@@ -47,7 +47,8 @@ export default function SurfaceNav({ active, withBrand = false }: { active: "das
   const iconOnly = width != null && width < 210;
   return (
     <div ref={ref} style={{ flex: "1 1 auto", minWidth: 0, display: "flex", alignItems: "center", justifyContent: "flex-end", gap: iconOnly ? 18 : 26 }}>
-      {SURFACES.map(({ key, label, path, Icon }) => {
+      {SURFACES.map(({ key, label, sub, Icon }) => {
+        const path = `/${instance}${sub}`;
         const on = active === key;
         return (
           <a

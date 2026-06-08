@@ -299,10 +299,10 @@ export function _resetSvampCacheForTests(): void {
   _svampCache.clear();
 }
 
-export async function getSvampLandscape(): Promise<ApiSvampLandscape> {
-  return svampCached("landscape", async () => {
-    const res = await fetch(`${API_BASE}/partnerships/svamp`);
-    if (!res.ok) throw new Error("Failed to fetch SVAMP landscape");
+export async function getSvampLandscape(instance: string = "svamp"): Promise<ApiSvampLandscape> {
+  return svampCached(`${instance}:landscape`, async () => {
+    const res = await fetch(`${API_BASE}/partnerships/${instance}`);
+    if (!res.ok) throw new Error("Failed to fetch landscape");
     return res.json();
   });
 }
@@ -455,36 +455,36 @@ export type ApiSvampOccupationReport = {
   partnership_opportunities_narrative: string;
 };
 
-export async function getSvampPrograms(): Promise<ApiSvampProgramsLandscape> {
-  return svampCached("programs", async () => {
-    const res = await fetch(`${API_BASE}/partnerships/svamp/programs`);
-    if (!res.ok) throw new Error("Failed to fetch SVAMP programs landscape");
+export async function getSvampPrograms(instance: string = "svamp"): Promise<ApiSvampProgramsLandscape> {
+  return svampCached(`${instance}:programs`, async () => {
+    const res = await fetch(`${API_BASE}/partnerships/${instance}/programs`);
+    if (!res.ok) throw new Error("Failed to fetch programs landscape");
     return res.json();
   });
 }
 
-export async function getSvampProgram(top6: string, college?: string): Promise<ApiSvampProgramReport> {
+export async function getSvampProgram(top6: string, college?: string, instance: string = "svamp"): Promise<ApiSvampProgramReport> {
   // `college` omitted ⇒ the consortium-aggregated program report; set ⇒ the
   // targeted (college, TOP) slice (single-college series + that college's
   // curriculum; demand, pathway, wage unchanged).
-  return svampCached(`program:${top6}:${college ?? ""}`, async () => {
+  return svampCached(`${instance}:program:${top6}:${college ?? ""}`, async () => {
     const params = new URLSearchParams();
     if (college) params.set("college", college);
     const qs = params.toString();
     const res = await fetch(
-      `${API_BASE}/partnerships/svamp/program/${encodeURIComponent(top6)}${qs ? `?${qs}` : ""}`,
+      `${API_BASE}/partnerships/${instance}/program/${encodeURIComponent(top6)}${qs ? `?${qs}` : ""}`,
     );
-    if (!res.ok) throw new Error("Failed to fetch SVAMP program report");
+    if (!res.ok) throw new Error("Failed to fetch program report");
     return res.json();
   });
 }
 
-export async function getSvampOccupation(soc: string): Promise<ApiSvampOccupationReport> {
+export async function getSvampOccupation(soc: string, instance: string = "svamp"): Promise<ApiSvampOccupationReport> {
   // The aggregated (consortium) view of one occupation — demand, consortium
   // supply + gap, the feeding programs, and per-college series + curriculum.
-  return svampCached(`occupation:${soc}`, async () => {
-    const res = await fetch(`${API_BASE}/partnerships/svamp/occupation/${encodeURIComponent(soc)}`);
-    if (!res.ok) throw new Error("Failed to fetch SVAMP occupation report");
+  return svampCached(`${instance}:occupation:${soc}`, async () => {
+    const res = await fetch(`${API_BASE}/partnerships/${instance}/occupation/${encodeURIComponent(soc)}`);
+    if (!res.ok) throw new Error("Failed to fetch occupation report");
     return res.json();
   });
 }
@@ -511,10 +511,10 @@ export type ApiSvampEmployersResult = {
   shown: number;           // plotted (geocoded + in-frame)
   total: number;           // curated candidates (incl. not-yet-geocoded)
 };
-export async function getSvampEmployers(): Promise<ApiSvampEmployersResult> {
-  return svampCached("employers", async () => {
-    const res = await fetch(`${API_BASE}/partnerships/svamp/employers`);
-    if (!res.ok) throw new Error("Failed to fetch SVAMP employers");
+export async function getSvampEmployers(instance: string = "svamp"): Promise<ApiSvampEmployersResult> {
+  return svampCached(`${instance}:employers`, async () => {
+    const res = await fetch(`${API_BASE}/partnerships/${instance}/employers`);
+    if (!res.ok) throw new Error("Failed to fetch employers");
     return res.json();
   });
 }

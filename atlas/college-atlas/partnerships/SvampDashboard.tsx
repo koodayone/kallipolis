@@ -49,9 +49,10 @@ import SurfaceNav from "@/college-atlas/partnerships/SurfaceNav";
 import { Dot, useMeasuredWidth } from "@/college-atlas/partnerships/chartKit";
 import { computeBandRows, rowHeight, DEFAULT_PANEL_MIN_WIDTH } from "@/college-atlas/partnerships/dashLayout";
 import { getSvampLandscape, getSvampPrograms } from "@/college-atlas/partnerships/api";
+import { landscapeInstance } from "@/college-atlas/partnerships/landscapeInstances";
 
 // The five member colleges, in display order (mirrors /svamp's ClientPage).
-const SVAMP_COLLEGE_IDS = ["deanza", "evergreen", "foothill", "mission", "ohlone"];
+// College ids now come from the landscape instance registry (keyed by `instance`).
 
 const BG = "#060d1f";
 const HAIR = "rgba(255,255,255,0.09)";
@@ -581,7 +582,8 @@ function useMinViewportWidth(px: number): boolean | null {
 }
 
 /* ── Shell ────────────────────────────────────────────────────────────────── */
-export default function SvampDashboard() {
+export default function SvampDashboard({ instance = "svamp" }: { instance?: string }) {
+  const inst = landscapeInstance(instance);
   const [lens, setLens] = useState<DashLens>("programs");
   // Employers side-by-side (map + rail) needs ~760px (350 map + 280 rail +
   // gaps/chrome); below it the lens stacks. The band lenses need no gate of
@@ -608,10 +610,10 @@ export default function SvampDashboard() {
     };
   }, []);
   const colleges = useMemo(
-    () => SVAMP_COLLEGE_IDS
+    () => inst.collegeIds
       .map((id) => ({ id, config: getCollegeAtlasConfig(id) }))
       .filter((c): c is CollegeRef => c.config !== null),
-    [],
+    [inst],
   );
 
   // Masthead stats — the same institutional counts the report's masthead
@@ -619,13 +621,13 @@ export default function SvampDashboard() {
   const [agg, setAgg] = useState<{ colleges: number; occupations: number; region: string } | null>(null);
   const [activePrograms, setActivePrograms] = useState<number | null>(null);
   useEffect(() => {
-    getSvampLandscape()
+    getSvampLandscape(instance)
       .then((x) => setAgg({ colleges: x.aggregate.n_colleges, occupations: x.aggregate.n_occupations, region: x.region_display }))
       .catch(() => {});
-    getSvampPrograms()
+    getSvampPrograms(instance)
       .then((x) => setActivePrograms(x.tops.filter((t) => t.enrollment_total > 0 || t.awards_total > 0).length))
       .catch(() => {});
-  }, []);
+  }, [instance]);
 
   // Expanded panel (Grafana-style) — shareable via the `panel` URL param.
   const [expandedId, setExpandedId] = useState<string | null>(null);
@@ -673,7 +675,7 @@ export default function SvampDashboard() {
           MODE center, the surface forms (dashboard · report) right in
           glowing white. No masthead below — the nav already carries the
           title, so the old eyebrow/title were pure duplication. */}
-      <AtlasHeader title="Silicon Valley Advanced Manufacturing Partnership" shortTitle="SVAMP" leftSlot={<KallipolisBrand />} rightSlot={<SurfaceNav active="dashboard" />} position="sticky" showPreview titleSize="15px" />
+      <AtlasHeader title={inst.name} shortTitle={inst.shortTitle} leftSlot={<KallipolisBrand />} rightSlot={<SurfaceNav active="dashboard" instance={instance} />} position="sticky" showPreview titleSize="15px" />
 
       {/* Lens rail — first row under the nav: tabs left, the consortium's
           stats right on the same rail (the masthead's surviving content),
@@ -711,9 +713,9 @@ export default function SvampDashboard() {
       <div style={{ display: "flex", flexDirection: "column", ...(employersFull ? { flex: 1, minHeight: 0, overflow: "hidden", padding: "12px 16px 16px" } : { padding: "0 16px 24px" }) }}>
         <ScopeAccentContext.Provider value={scopeAccentCtx}>
         <DashExpandContext.Provider value={expandCtx}>
-          {lens === "programs" ? <SvampDashboardPrograms colleges={colleges} />
-            : lens === "occupations" ? <SvampDashboardOccupations colleges={colleges} />
-            : <SvampDashboardEmployers colleges={colleges} stacked={employersSideBySide === false} />}
+          {lens === "programs" ? <SvampDashboardPrograms colleges={colleges} instance={instance} />
+            : lens === "occupations" ? <SvampDashboardOccupations colleges={colleges} instance={instance} />
+            : <SvampDashboardEmployers colleges={colleges} stacked={employersSideBySide === false} instance={instance} />}
         </DashExpandContext.Provider>
         </ScopeAccentContext.Provider>
       </div>
