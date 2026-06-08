@@ -35,7 +35,8 @@ from fastapi import APIRouter, HTTPException, Response
 
 from partnerships.models import OpportunityReport, SectorIndex
 from partnerships.opportunity import build_opportunity_report, build_sector_index
-from partnerships.svamp import SvampLandscape, build_svamp_landscape
+from partnerships.svamp import SvampLandscape, build_landscape
+from partnerships.landscape import LandscapeSpec, REGISTRY
 from partnerships.svamp_employers import SvampEmployersResult, build_svamp_employers
 from partnerships.svamp_programs import (
     ProgramReport,
@@ -309,68 +310,73 @@ def get_partnership_opportunity(
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/svamp", response_model=SvampLandscape)
-def get_svamp_landscape():
-    """Returns the aggregated partnership landscape for the Silicon Valley
-    Advanced Manufacturing consortium: five member colleges × twelve
-    advanced manufacturing occupations over one shared COE region.
+# ── Aggregated partnership landscapes (SVAMP, SMCCD, …) ────────────────────
+# One generic engine parameterized by LandscapeSpec; each registered instance
+# gets the same five routes under its own /<id> prefix. /svamp stays byte-
+# identical (it is SVAMP_SPEC); adding an instance is one REGISTRY entry — no
+# new route code. All paths stay nested under the /partnerships router, so the
+# vocabulary_alignment / backend_layout audits (which scope to top-level
+# surfaces) are unaffected.
+def _register_landscape_routes(spec: LandscapeSpec) -> None:
+    sid = spec.id
 
-    Bespoke, deterministic, read-only. Demand and the candidate employer set
-    are regional (read once / deduped); supply and students are institutional
-    (summed across colleges). The per-(college, occupation) leaf reuses the
-    existing /partnerships/opportunity/{soc} report unchanged.
-    """
-    try:
-        return build_svamp_landscape()
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    def get_landscape():
+        try:
+            return build_landscape(spec)
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=str(e))
+
+    def get_programs():
+        try:
+            return build_programs_landscape(spec)
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=str(e))
+
+    def get_program(top6: str, college: str | None = None):
+        try:
+            return build_program_report(top6, college=college, spec=spec)
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=str(e))
+
+    def get_occupation(soc: str):
+        try:
+            return build_svamp_occupation(soc, spec=spec)
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=str(e))
+
+    def get_employers():
+        try:
+            return build_svamp_employers(spec)
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=str(e))
+
+    router.add_api_route(
+        f"/{sid}", get_landscape, methods=["GET"],
+        response_model=SvampLandscape, name=f"get_{sid}_landscape",
+        description=f"Aggregated partnership landscape for {spec.name} — member "
+                    "colleges × target occupations over one shared COE region. "
+                    "Demand and employers regional; supply and students institutional.")
+    router.add_api_route(
+        f"/{sid}/programs", get_programs, methods=["GET"],
+        response_model=ProgramsLandscape, name=f"get_{sid}_programs",
+        description="Programs lens — the supply-side TOP6 universe, each sized by "
+                    "latest-period supply summed across the member colleges.")
+    router.add_api_route(
+        f"/{sid}/program/{{top6}}", get_program, methods=["GET"],
+        response_model=ProgramReport, name=f"get_{sid}_program",
+        description="A single TOP6 program report. Optional `college` scopes to one "
+                    "member college; omitted ⇒ the consortium-aggregated view.")
+    router.add_api_route(
+        f"/{sid}/occupation/{{soc}}", get_occupation, methods=["GET"],
+        response_model=SvampOccupationReport, name=f"get_{sid}_occupation",
+        description="Aggregated-occupation report — one SOC read consortium-wide: "
+                    "regional demand, consortium supply and the resulting gap.")
+    router.add_api_route(
+        f"/{sid}/employers", get_employers, methods=["GET"],
+        response_model=SvampEmployersResult, name=f"get_{sid}_employers",
+        description="Employers lens — geocoded regional employers hiring for the "
+                    "target occupations; reports shown-of-total (no silent truncation).")
 
 
-@router.get("/svamp/programs", response_model=ProgramsLandscape)
-def get_svamp_programs():
-    """The SVAMP Programs lens — the supply-side TOP6 universe (every TOP that
-    crosswalks to the twelve SVAMP SOCs), each sized by latest-period supply
-    summed across the member colleges. Powers the supply treemap + picker."""
-    try:
-        return build_programs_landscape()
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-
-@router.get("/svamp/program/{top6}", response_model=ProgramReport)
-def get_svamp_program(top6: str, college: str | None = None):
-    """A single TOP6 program report: the SOCs it feeds (regional demand, never
-    summed), per-college award/enrollment series, statewide wage outcomes, and
-    the per-school course curriculum for the TOP.
-
-    Optional `college` scopes the report to one member college (the targeted
-    college × program view); omitted ⇒ the consortium-aggregated view."""
-    try:
-        return build_program_report(top6, college=college)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-
-@router.get("/svamp/occupation/{soc}", response_model=SvampOccupationReport)
-def get_svamp_occupation(soc: str):
-    """The SVAMP aggregated-occupation report — the dual of the program report.
-    One SOC read consortium-wide: regional demand, consortium supply and the
-    resulting gap, the 09 programs feeding it (sized by awards), per-college
-    award/enrollment series + curriculum, and the SOC-anchored crosswalk marked
-    taught-by-any-member-college."""
-    try:
-        return build_svamp_occupation(soc)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-
-@router.get("/svamp/employers", response_model=SvampEmployersResult)
-def get_svamp_employers():
-    """The SVAMP Employers lens — geocoded Bay-Area advanced manufacturing
-    employers hiring for the 12 SVAMP occupations, for the regional employer
-    map. Curated to the AM sector + SVAMP-SOC relevance; reports shown-of-total
-    so an ungeocoded remainder is never hidden."""
-    try:
-        return build_svamp_employers()
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+for _landscape_spec in REGISTRY.values():
+    _register_landscape_routes(_landscape_spec)

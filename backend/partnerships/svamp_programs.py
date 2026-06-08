@@ -50,18 +50,12 @@ from partnerships.models import CurriculumCrosswalk, PartnershipOpportunityEmplo
 from partnerships.opportunity import _gather_partnership_opportunities
 from partnerships.opportunity_narrative import build_occupational_demand
 from partnerships.svamp import (
-    SVAMP_COLLEGES,
-    SVAMP_SOCS,
-    SVAMP_SECTOR,
-    SVAMP_TOP_DIVISION,
-    SVAMP_MANDATE_EXCLUDED_TOPS,
     AWARD_YEARS_SHOWN,
     _term_excluded,
     _term_sort_key,
-    _resolve_region,
-    is_svamp_top,
     SvampWage,
 )
+from partnerships.landscape import LandscapeSpec, SVAMP_SPEC
 
 
 # ── Response shapes ───────────────────────────────────────────────────────
@@ -100,7 +94,7 @@ class ProgramCoverageCell(BaseModel):
 
 
 class ProgramCoverageMatrix(BaseModel):
-    colleges: list[str]                 # SVAMP_COLLEGES order — matrix columns
+    colleges: list[str]                 # colleges order — matrix columns
     cells: list[ProgramCoverageCell]    # flat (college × TOP) coverage
 
 
@@ -263,7 +257,7 @@ class SvampOccupationReport(BaseModel):
 # ── Scope ─────────────────────────────────────────────────────────────────
 
 
-def relevant_tops() -> dict[str, set[str]]:
+def relevant_tops(spec: LandscapeSpec = SVAMP_SPEC) -> dict[str, set[str]]:
     """The SVAMP program universe: {top6 -> the SVAMP SOCs it feeds} for every
     TOP6 in DIVISION 09 (Engineering & Industrial Technologies — see
     svamp.SVAMP_TOP_DIVISION) whose TOP-CIP-SOC crosswalk intersects the twelve
@@ -272,20 +266,21 @@ def relevant_tops() -> dict[str, set[str]]:
     crosswalk is never edited), reflecting the consortium's programmatic
     domain per the SVAMP director."""
     all_top6 = list(_load_top_to_cip().keys())
-    svamp = set(SVAMP_SOCS)
+    targets = set(spec.socs)
     return {
-        top6: (socs & svamp)
+        top6: (socs & targets)
         for top6, socs in top6_to_soc(all_top6).items()
-        if (socs & svamp) and is_svamp_top(top6)
+        if (socs & targets) and spec.in_scope(top6)
     }
 
 
 # ── Builders (I/O) ──────────────────────────────────────────────────────────
 
 
-def build_programs_landscape() -> ProgramsLandscape:
-    region = _resolve_region()
-    universe = relevant_tops()
+def build_programs_landscape(spec: LandscapeSpec = SVAMP_SPEC) -> ProgramsLandscape:
+    colleges = list(spec.colleges)
+    region = spec.resolve_region()
+    universe = relevant_tops(spec)
     tops = list(universe.keys())
     titles = load_top_titles()
     driver = get_driver()
@@ -300,7 +295,7 @@ def build_programs_landscape() -> ProgramsLandscape:
             RETURN pr.college AS college, pr.top6 AS top6, ay.year AS year,
                    toInteger(sum(coalesce(a.count, 0))) AS awards
             """,
-            colleges=SVAMP_COLLEGES, tops=tops,
+            colleges=colleges, tops=tops,
         ).data()
         enroll_rows = session.run(
             """
@@ -309,7 +304,7 @@ def build_programs_landscape() -> ProgramsLandscape:
             RETURN pr.college AS college, pr.top6 AS top6, t.term AS term,
                    toInteger(sum(e.count)) AS count
             """,
-            colleges=SVAMP_COLLEGES, tops=tops,
+            colleges=colleges, tops=tops,
         ).data()
         # Per-(college, TOP) course counts — drives both n_colleges_offering
         # and the coverage matrix (teaches = n > 0). 09-scoped via `tops`.
@@ -320,7 +315,7 @@ def build_programs_landscape() -> ProgramsLandscape:
             RETURN c.college AS college, c.top_code AS top6,
                    count(DISTINCT c.code) AS n
             """,
-            colleges=SVAMP_COLLEGES, tops=tops,
+            colleges=colleges, tops=tops,
         ).data()
 
     return _assemble_landscape(
@@ -331,21 +326,23 @@ def build_programs_landscape() -> ProgramsLandscape:
         awards_rows=awards_rows,
         enroll_rows=enroll_rows,
         coverage_rows=course_rows,
+        spec=spec,
     )
 
 
-def build_program_report(top6: str, college: str | None = None) -> ProgramReport:
+def build_program_report(top6: str, college: str | None = None, *, spec: LandscapeSpec = SVAMP_SPEC) -> ProgramReport:
     """The TOP6 program report. `college=None` ⇒ the consortium-aggregated view
     (per-college series across all members). `college` set ⇒ the targeted
     (college, TOP) slice: award / enrollment / curriculum scoped to that one
     college, while demand (Occupations Served), the TOP-anchored crosswalk, and
     the statewide TOP6-grain wages are unchanged."""
-    region = _resolve_region()
-    universe = relevant_tops()
+    colleges = list(spec.colleges)
+    region = spec.resolve_region()
+    universe = relevant_tops(spec)
     socs = sorted(universe.get(top6, set()))
     titles = load_top_titles()
     driver = get_driver()
-    colleges_filter = [college] if college else SVAMP_COLLEGES
+    colleges_filter = [college] if college else colleges
 
     with driver.session() as session:
         demand_rows = session.run(
@@ -417,6 +414,7 @@ def build_program_report(top6: str, college: str | None = None) -> ProgramReport
         wage_fn=get_wage_outcomes,
         crosswalk=crosswalk,
         college=college,
+        spec=spec,
     )
 
 
@@ -444,14 +442,15 @@ def _build_program_crosswalk(
     )
 
 
-def build_svamp_occupation(soc: str) -> SvampOccupationReport:
+def build_svamp_occupation(soc: str, *, spec: LandscapeSpec = SVAMP_SPEC) -> SvampOccupationReport:
     """Consortium aggregated-occupation report for one SOC — the dual of
     build_program_report. Reuses the program supply machinery (the SOC's 09
     feeding TOPs, their per-college awards/enrollment/courses), get_coe_supply
     for the consortium completions, and the SOC-anchored crosswalk in
     consortium-union mode (taught by any member college)."""
-    region = _resolve_region()
-    universe = relevant_tops()
+    colleges = list(spec.colleges)
+    region = spec.resolve_region()
+    universe = relevant_tops(spec)
     feeding = sorted(t for t, socs in universe.items() if soc in socs)
     titles = load_top_titles()
     driver = get_driver()
@@ -474,7 +473,7 @@ def build_svamp_occupation(soc: str) -> SvampOccupationReport:
             RETURN pr.college AS college, pr.top6 AS top6, ay.year AS year,
                    toInteger(sum(coalesce(a.count, 0))) AS awards
             """,
-            colleges=SVAMP_COLLEGES, tops=feeding,
+            colleges=colleges, tops=feeding,
         ).data()
         enroll_rows = session.run(
             """
@@ -483,7 +482,7 @@ def build_svamp_occupation(soc: str) -> SvampOccupationReport:
             RETURN pr.college AS college, pr.top6 AS top6, t.term AS term,
                    toInteger(sum(e.count)) AS count
             """,
-            colleges=SVAMP_COLLEGES, tops=feeding,
+            colleges=colleges, tops=feeding,
         ).data()
         course_rows = session.run(
             """
@@ -494,7 +493,7 @@ def build_svamp_occupation(soc: str) -> SvampOccupationReport:
                    coalesce(c.learning_outcomes, []) AS learning_outcomes, c.top_code AS top_code
             ORDER BY c.college, c.code
             """,
-            colleges=SVAMP_COLLEGES, tops=feeding,
+            colleges=colleges, tops=feeding,
         ).data()
 
     # Consortium supply: COE-projected completions for the SOC's 09 feeding TOPs,
@@ -502,15 +501,15 @@ def build_svamp_occupation(soc: str) -> SvampOccupationReport:
     feeding_set = set(feeding)
     consortium_supply = 0.0
     if feeding_set:
-        for college in SVAMP_COLLEGES:
+        for college in colleges:
             _, total = get_coe_supply(feeding_set, college)
             consortium_supply += total
 
     # SOC-anchored crosswalk, consortium-union taught, 09 + CTE-scoped minus
     # the director's-mandate exclusions (college unused).
     crosswalk = _gather_curriculum_crosswalk(
-        "", soc, top_prefix=SVAMP_TOP_DIVISION, union_colleges=SVAMP_COLLEGES, cte_only=True,
-        exclude_tops=SVAMP_MANDATE_EXCLUDED_TOPS,
+        "", soc, top_prefix=spec.top_division, union_colleges=colleges, cte_only=True,
+        exclude_tops=spec.excluded_tops,
     )
 
     report = _assemble_occupation(
@@ -531,13 +530,14 @@ def build_svamp_occupation(soc: str) -> SvampOccupationReport:
         enroll_rows=enroll_rows,
         course_rows=course_rows,
         crosswalk=crosswalk,
+        spec=spec,
     )
     # Partnership Opportunities — regional employers hiring for this SOC. The
     # gather is region-scoped (any member college resolves to the same Bay
     # market), so this is the consortium-grain view of the same candidate set
     # the per-college targeted report surfaces. aligned_course_count (the only
     # college-specific field) is not rendered, so the passed college is moot.
-    report.partnership_opportunities = _gather_partnership_opportunities(SVAMP_COLLEGES[0], soc)
+    report.partnership_opportunities = _gather_partnership_opportunities(colleges[0], soc)
     report.partnership_opportunities_narrative = (
         f"Regional employers hiring for {report.title}, ranked by how central the role "
         f"is to each firm's industry — candidate partners for the consortium's colleges "
@@ -599,6 +599,8 @@ def _assemble_landscape(
     awards_rows: list[dict],
     enroll_rows: list[dict],
     coverage_rows: list[dict] | None = None,
+    *,
+    spec: LandscapeSpec = SVAMP_SPEC,
 ) -> ProgramsLandscape:
     """Size each relevant TOP by latest-period supply SUMMED across colleges.
 
@@ -610,6 +612,7 @@ def _assemble_landscape(
     reads as the program's enrollment scale. Both are additive (program-owned).
     soc_count is the crosswalk cardinality (a relationship, not demand).
     """
+    colleges = list(spec.colleges)
     latest_year = max((r["year"] for r in awards_rows if r["year"]), default=None)
 
     awards_total: dict[str, int] = {}
@@ -678,16 +681,16 @@ def _assemble_landscape(
             awards=awards_cell.get((college, top6), 0),
         )
         for top6 in universe
-        for college in SVAMP_COLLEGES
+        for college in colleges
     ]
-    matrix = ProgramCoverageMatrix(colleges=list(SVAMP_COLLEGES), cells=cells)
+    matrix = ProgramCoverageMatrix(colleges=list(colleges), cells=cells)
 
     return ProgramsLandscape(
         region=region,
         region_display=region_display,
-        sector=SVAMP_SECTOR,
+        sector=spec.sector,
         latest_award_year=latest_year,
-        n_colleges=len(SVAMP_COLLEGES),
+        n_colleges=len(colleges),
         tops=tops,
         matrix=matrix,
     )
@@ -705,6 +708,8 @@ def _assemble_program_report(
     wage_fn: Callable[[str], list],
     crosswalk: ProgramCrosswalk | None = None,
     college: str | None = None,
+    *,
+    spec: LandscapeSpec = SVAMP_SPEC,
 ) -> ProgramReport:
     """Pure assembly of a TOP report.
 
@@ -727,6 +732,7 @@ def _assemble_program_report(
     - curriculum_by_college: all five colleges, empty where untaught.
     - NO gap or per-program demand field by construction.
     """
+    colleges = list(spec.colleges)
     occupations = [
         OccupationDemand(
             soc_code=r["soc_code"],
@@ -763,10 +769,10 @@ def _assemble_program_report(
             fby = by_credit.setdefault((r["college"], r["credit_type"]), {})
             fby[term] = fby.get(term, 0) + n
 
-    # Series ordered by SVAMP_COLLEGES, only for colleges that have data.
+    # Series ordered by colleges, only for colleges that have data.
     awards_by_college = [
         CollegeSeries(college=c, vals=[awards_by[c].get(y, 0) for y in award_years])
-        for c in SVAMP_COLLEGES if c in awards_by
+        for c in colleges if c in awards_by
     ]
     types_of: dict[str, list[str]] = {}
     for c, at in by_type:
@@ -776,12 +782,12 @@ def _assemble_program_report(
             college=c, award_type=at,
             vals=[by_type[(c, at)].get(y, 0) for y in award_years],
         )
-        for c in SVAMP_COLLEGES
+        for c in colleges
         for at in sorted(types_of.get(c, []), key=_award_type_sort_key)
     ]
     enrollment_by_college = [
         CollegeSeries(college=c, vals=[enroll_by[c].get(t) for t in enrollment_terms])
-        for c in SVAMP_COLLEGES if c in enroll_by
+        for c in colleges if c in enroll_by
     ]
     families_of: dict[str, list[str]] = {}
     for c, ct in by_credit:
@@ -791,7 +797,7 @@ def _assemble_program_report(
             college=c, credit_type=ct,
             vals=[by_credit[(c, ct)].get(t) for t in enrollment_terms],
         )
-        for c in SVAMP_COLLEGES
+        for c in colleges
         for ct in sorted(families_of.get(c, []), key=_credit_type_sort_key)
     ]
 
@@ -805,7 +811,7 @@ def _assemble_program_report(
         ))
     curriculum_by_college = [
         CollegeCourses(college=c, courses=courses_by.get(c, []))
-        for c in SVAMP_COLLEGES
+        for c in colleges
     ]
 
     return ProgramReport(
@@ -813,7 +819,7 @@ def _assemble_program_report(
         name=name,
         region=region,
         region_display=region_display,
-        sector=SVAMP_SECTOR,
+        sector=spec.sector,
         award_years=award_years,
         enrollment_terms=enrollment_terms,
         occupations=occupations,
@@ -846,6 +852,8 @@ def _assemble_occupation(
     enroll_rows: list[dict],
     course_rows: list[dict],
     crosswalk: dict,
+    *,
+    spec: LandscapeSpec = SVAMP_SPEC,
 ) -> SvampOccupationReport:
     """Pure assembly of the aggregated-occupation report (no I/O — supply and
     the crosswalk are computed in build_svamp_occupation and passed in).
@@ -858,6 +866,7 @@ def _assemble_occupation(
       contributes here too — that is intentional and is never netted across SOCs.
     - gap = annual_openings − consortium_supply (occupation axis owns the gap).
     """
+    colleges = list(spec.colleges)
     latest_year = max((r["year"] for r in awards_rows if r["year"]), default=None)
     awards_total: dict[str, int] = {}
     for r in awards_rows:
@@ -902,11 +911,11 @@ def _assemble_occupation(
         enroll_by[r["college"]][r["term"]] = enroll_by[r["college"]].get(r["term"], 0) + (r["count"] or 0)
     awards_by_college = [
         CollegeSeries(college=c, vals=[awards_by[c].get(y, 0) for y in award_years])
-        for c in SVAMP_COLLEGES if c in awards_by
+        for c in colleges if c in awards_by
     ]
     enrollment_by_college = [
         CollegeSeries(college=c, vals=[enroll_by[c].get(t) for t in enrollment_terms])
-        for c in SVAMP_COLLEGES if c in enroll_by
+        for c in colleges if c in enroll_by
     ]
 
     courses_by: dict[str, list[ProgramCourse]] = {}
@@ -919,7 +928,7 @@ def _assemble_occupation(
         ))
     curriculum_by_college = [
         CollegeCourses(college=c, courses=courses_by.get(c, []))
-        for c in SVAMP_COLLEGES
+        for c in colleges
     ]
 
     occupational_demand = build_occupational_demand(
@@ -936,7 +945,7 @@ def _assemble_occupation(
         soc_code=soc,
         title=title,
         description=description,
-        sector=SVAMP_SECTOR,
+        sector=spec.sector,
         region=region,
         region_display=region_display,
         occupational_demand=occupational_demand,

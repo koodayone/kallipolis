@@ -19,7 +19,7 @@ from pydantic import BaseModel
 from ontology.crosswalks import load_naics4_titles
 from ontology.regions import COE_REGION_DISPLAY
 from ontology.schema import get_driver
-from partnerships.svamp import SVAMP_SOCS, SVAMP_SECTOR, _resolve_region
+from partnerships.landscape import LandscapeSpec, SVAMP_SPEC
 
 # Bay frame — coordinates outside it are dropped, so an employer region-tagged
 # "Bay" but carrying an out-of-region EDD address (e.g. a San Diego facility)
@@ -50,8 +50,8 @@ class SvampEmployersResult(BaseModel):
     total: int                    # curated candidates (incl. not-yet-geocoded)
 
 
-def build_svamp_employers() -> SvampEmployersResult:
-    region = _resolve_region()
+def build_svamp_employers(spec: LandscapeSpec = SVAMP_SPEC) -> SvampEmployersResult:
+    region = spec.resolve_region()
     driver = get_driver()
     with driver.session() as session:
         rows = session.run(
@@ -64,7 +64,7 @@ def build_svamp_employers() -> SvampEmployersResult:
                    e.sector AS sector, e.naics4 AS naics4,
                    e.website AS website, e.description AS description, socs
             """,
-            region=region, socs=list(SVAMP_SOCS), sector=SVAMP_SECTOR,
+            region=region, socs=list(spec.socs), sector=spec.sector,
         ).data()
 
     titles = load_naics4_titles()
@@ -89,7 +89,7 @@ def build_svamp_employers() -> SvampEmployersResult:
     return SvampEmployersResult(
         region=region,
         region_display=COE_REGION_DISPLAY.get(region, region),
-        sector=SVAMP_SECTOR,
+        sector=spec.sector,
         employers=employers,
         shown=len(employers),
         total=len(rows),
