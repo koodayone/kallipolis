@@ -1,11 +1,17 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import type { CSSProperties, ReactNode } from "react";
 import { SchoolConfig } from "@/config/schoolConfig";
 import { PREVIEW_MODE } from "@/preview/mode";
 
 type Props = {
   title: string;
+  // Compact identity for narrow widths (e.g. "SVAMP" for the consortium's
+  // full name). When the full title no longer fits its center track, the
+  // header swaps to this instead of ellipsizing a wordmark — shedding by
+  // identity, not mutilation. Absent ⇒ the full title ellipsizes.
+  shortTitle?: string;
   leftSlot?: ReactNode;
   rightSlot?: ReactNode;
   onBack?: () => void;
@@ -24,6 +30,7 @@ type Props = {
 
 export default function AtlasHeader({
   title,
+  shortTitle,
   leftSlot,
   rightSlot,
   onBack,
@@ -36,6 +43,26 @@ export default function AtlasHeader({
 }: Props) {
   const backTint = cubeTint ?? school?.brandColorNeon ?? "#c9a84c";
   const backAriaLabel = school ? `Back to ${school.name}` : "Back to College Atlas";
+
+  // Title-fit detection: a GHOST span carries the full title in flow
+  // (visibility hidden) and sizes the center track up to its natural width;
+  // when the track is squeezed below that (compared against the ghost's
+  // stable natural width, so the swap can't oscillate), the VISIBLE overlay
+  // shows shortTitle instead — or ellipsizes when no shortTitle exists.
+  // Defaults to the full title where ResizeObserver is unavailable (SSR,
+  // tests) — the wide-layout truth.
+  const cellRef = useRef<HTMLDivElement | null>(null);
+  const ghostRef = useRef<HTMLSpanElement | null>(null);
+  const [compact, setCompact] = useState(false);
+  useEffect(() => {
+    const cell = cellRef.current, ghost = ghostRef.current;
+    if (!cell || !ghost || typeof ResizeObserver === "undefined") return;
+    const ro = new ResizeObserver(() => {
+      setCompact(cell.clientWidth < ghost.offsetWidth - 1);
+    });
+    ro.observe(cell);
+    return () => ro.disconnect();
+  }, [title]);
 
   const resolvedLeft = leftSlot ?? (onBack ? (
     <button
@@ -66,7 +93,23 @@ export default function AtlasHeader({
     </button>
   ) : null);
 
+  const titleStyle: CSSProperties = {
+    fontFamily: "var(--font-days-one), sans-serif",
+    fontSize: titleSize,
+    letterSpacing: "0.08em",
+    textTransform: "uppercase",
+    color: "rgba(255,255,255,0.85)",
+    whiteSpace: "nowrap",
+  };
+
   return (
+    // Three-track grid: equal side tracks keep the title page-centered, but —
+    // unlike the old absolutely-positioned span — the title is IN FLOW, so it
+    // negotiates for space and can never overlap the slots. The sides carry a
+    // floor (minmax 88px — icon-only nav / the sun alone) because the auto
+    // center is sized BEFORE fr distribution and would otherwise starve them;
+    // the shedding ladder that falls out: nav labels first, then the brand
+    // wordmark, and the title compresses (shortTitle/ellipsis) last.
     <header
       style={{
         position,
@@ -78,9 +121,10 @@ export default function AtlasHeader({
         background: "rgba(6, 13, 31, 0.95)",
         backdropFilter: "blur(8px)",
         borderBottom: "1px solid rgba(255,255,255,0.07)",
-        display: "flex",
+        display: "grid",
+        gridTemplateColumns: "minmax(88px, 1fr) auto minmax(88px, 1fr)",
+        columnGap: "20px",
         alignItems: "center",
-        justifyContent: "space-between",
         ...style,
       }}
     >
@@ -88,42 +132,48 @@ export default function AtlasHeader({
         {resolvedLeft}
       </div>
 
-      <span
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          fontFamily: "var(--font-days-one), sans-serif",
-          fontSize: titleSize,
-          letterSpacing: "0.08em",
-          textTransform: "uppercase",
-          color: "rgba(255,255,255,0.85)",
-          whiteSpace: "nowrap",
-          pointerEvents: "none",
-        }}
-      >
-        {title}
-      </span>
-      {(PREVIEW_MODE || showPreview) && (
+      <div ref={cellRef} style={{ position: "relative", minWidth: 0, overflow: "hidden", height: "100%", pointerEvents: "none" }}>
+        {/* Ghost — sizes the track to the full title when space allows;
+            never displayed, never changes, so fit detection is stable. */}
+        <span ref={ghostRef} aria-hidden style={{ ...titleStyle, visibility: "hidden", display: "inline-block" }}>
+          {title}
+        </span>
+        {/* Visible title — centered in whatever width the track won. */}
         <span
           style={{
+            ...titleStyle,
             position: "absolute",
-            top: "calc(50% + 15px)",
-            left: "50%",
-            transform: "translateX(-50%)",
-            fontSize: "9px",
-            fontWeight: 500,
-            letterSpacing: "0.24em",
-            textTransform: "uppercase",
-            color: "rgba(201, 168, 76, 0.65)",
-            whiteSpace: "nowrap",
-            pointerEvents: "none",
+            left: 0,
+            right: 0,
+            top: "50%",
+            transform: "translateY(-50%)",
+            textAlign: "center",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
           }}
         >
-          Preview Mode
+          {compact && shortTitle ? shortTitle : title}
         </span>
-      )}
+        {(PREVIEW_MODE || showPreview) && (
+          <span
+            style={{
+              position: "absolute",
+              left: 0,
+              right: 0,
+              top: "calc(50% + 15px)",
+              textAlign: "center",
+              fontSize: "9px",
+              fontWeight: 500,
+              letterSpacing: "0.24em",
+              textTransform: "uppercase",
+              color: "rgba(201, 168, 76, 0.65)",
+              whiteSpace: "nowrap",
+            }}
+          >
+            Preview Mode
+          </span>
+        )}
+      </div>
 
       <div style={{ display: "flex", alignItems: "center", gap: "20px", minWidth: 0, justifyContent: "flex-end" }}>
         {rightSlot}

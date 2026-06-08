@@ -50,7 +50,11 @@ describe("AtlasHeader", () => {
 
   it("renders the title text", () => {
     render(<AtlasHeader title="COLLEGE ATLAS" />);
-    expect(screen.getByText("COLLEGE ATLAS")).toBeInTheDocument();
+    // The title renders twice by design: an aria-hidden ghost that sizes the
+    // center track for fit detection, and the visible span. Assert the
+    // visible (non-ghost) instance exists.
+    const instances = screen.getAllByText("COLLEGE ATLAS");
+    expect(instances.some((el) => el.getAttribute("aria-hidden") !== "true")).toBe(true);
   });
 
   it("renders a default back button with the generic aria-label when onBack is provided without a school", () => {
