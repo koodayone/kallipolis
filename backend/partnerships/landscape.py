@@ -173,12 +173,12 @@ SMCCD_SPEC = LandscapeSpec(
     socs=_AM_SOCS,
     top_division=_AM_TOP_DIVISION,
     excluded_tops=_AM_EXCLUDED_TOPS,
-    # DRAFT: SMCCD's DataMart awards/enrollment are loaded locally but not yet
-    # in prod Neo4j (confirmed 2026-06-07). Gated from the public surface until
-    # that data lands — then flip to published=True. See routable_specs.
-    published=False,
+    # PUBLISHED 2026-06-08: the 3-college subgraph is loaded + verified in prod
+    # Neo4j (scripts/migrate_landscape_colleges.py), so the surface routes
+    # everywhere. See routable_specs.
+    published=True,
     sector="Advanced Manufacturing",
-    name="SMCCD - Advanced Manufacturing",
+    name="SMCCD - Advanced Manufacturing",  # placeholder identity — pending confirmation
     accent="#8b6fd0",  # placeholder — pending confirmation
 )
 
