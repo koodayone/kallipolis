@@ -35,9 +35,9 @@ export const LANDSCAPE_INSTANCES: Record<string, LandscapeInstance> = {
     shortTitle: "SMCCD",
     accent: "#8b6fd0",
     collegeIds: ["csm", "skyline", "canada"],
-    // DRAFT: SMCCD's DataMart data isn't in prod Neo4j yet (confirmed
-    // 2026-06-07). Gated from the public build; flip to true once it lands.
-    published: false,
+    // PUBLISHED 2026-06-08: subgraph loaded + verified in prod Neo4j.
+    // (name/accent are placeholder identity — pending confirmation.)
+    published: true,
   },
 };
 
