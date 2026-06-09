@@ -29,10 +29,11 @@ logger = logging.getLogger(__name__)
 
 # ── Data paths ────────────────────────────────────────────────────────────
 #
-# All four artifacts now ship in-repo. The TOP→CIP crosswalk
+# All five artifacts now ship in-repo. The TOP→CIP crosswalk
 # (Chancellor's Office), CIP→SOC crosswalk (NCES/BLS), PCAH sector file
-# (Chancellor's Office), and COE demand file (California Centers of
-# Excellence) are public-domain federal/state datasets on slow update
+# (Chancellor's Office), COE demand file (California Centers of Excellence),
+# and the Taxonomy of Programs vocational/CTE flag (Chancellor's Office, 7th
+# Ed) are public-domain federal/state datasets on slow update
 # cadences (years between revisions). Bundling them removes a dev-machine
 # path dependency and lets ingestion-time code (occupations generation,
 # Course→Occupation edge materialization) run inside any environment
@@ -46,6 +47,7 @@ _DATA_DIR = Path(__file__).parent / "data"
 TOP_CIP_PATH = _DATA_DIR / "top_cip_crosswalk.csv"
 CIP_SOC_PATH = _DATA_DIR / "CIP2020_SOC2018_Crosswalk.xlsx"
 PCAH_SECTORS_PATH = _DATA_DIR / "TOP Codes to Sectors.xlsx"
+TOP_VOCATIONAL_PATH = _DATA_DIR / "top_vocational.csv"
 NAICS4_DESCRIPTIONS_PATH = _DATA_DIR / "2022_NAICS_Descriptions.xlsx"
 TOP4_NAMES_PATH = _DATA_DIR / "top4_names.json"
 COE_DEMAND_PATH = Path(__file__).parent / "occupational_demand_coe.csv"
@@ -61,6 +63,7 @@ _coe_demand: dict[str, dict[str, dict]] | None = None
 _top6_to_sector: dict[str, str] | None = None
 _cte_top4_cache: set[str] | None = None
 _cte_reachable_socs_cache: set[str] | None = None
+_vocational_top6: set[str] | None = None
 _top_titles: dict[str, str] | None = None
 _naics4_titles: dict[str, str] | None = None
 
@@ -332,6 +335,51 @@ def is_cte_top6(top6: str | None) -> bool:
     if not top6:
         return False
     return top6 in _load_pcah_cte_top6()
+
+
+def _load_vocational_top6() -> set[str]:
+    """Load the set of CTE (vocational) TOP6 codes from the Chancellor's Office
+    Taxonomy of Programs manual (7th Edition, May 2023).
+
+    The manual marks each program with a leading asterisk iff it is a
+    *vocational* program — the Perkins-rooted, per-TOP designation the SDCCD CTE
+    Definitions Guide equates with a "CTE TOP Code". This is the authoritative,
+    current, TOP6-exact definition of CTE scope.
+
+    Sourced from `top_vocational.csv` (derived from cc-top-code-manual.pdf;
+    columns: top6,title,vocational — vocational ∈ {0,1}). Returns the set of
+    vocational TOP6 codes (273 of 408 in the 7th Ed).
+    """
+    global _vocational_top6
+    if _vocational_top6 is not None:
+        return _vocational_top6
+
+    voc: set[str] = set()
+    with open(TOP_VOCATIONAL_PATH, newline="") as f:
+        reader = csv.reader(f)
+        next(reader)  # skip header
+        for row in reader:
+            if len(row) >= 3 and row[2].strip() == "1":
+                voc.add(row[0].strip())
+
+    _vocational_top6 = voc
+    logger.info(f"Loaded vocational (CTE) TOP6 codes: {len(voc)}")
+    return voc
+
+
+def is_vocational(top6: str | None) -> bool:
+    """True iff a TOP6 is a CTE (vocational) program per the CCCCO Taxonomy of
+    Programs manual (7th Ed) — the authoritative, TOP6-exact CTE gate.
+
+    Preferred over the two older tests for new CTE scoping:
+    - vs is_cte_top6 (PCAH sector file): ~99% the same set, but the manual is the
+      primary source and is current; the PCAH file lags and is really a
+      CTE→sector mapping rather than a CTE membership gate.
+    - vs is_cte_top4_family: exact, so it does NOT sweep in transfer siblings
+      (e.g. 083500 Physical Education, 220600 Geography, 061200 Film Studies),
+      which the TOP4-family heuristic over-includes.
+    """
+    return bool(top6) and top6 in _load_vocational_top6()
 
 
 def is_cte_top4_family(top6: str | None) -> bool:

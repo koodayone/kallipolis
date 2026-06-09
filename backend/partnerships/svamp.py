@@ -36,7 +36,7 @@ from ontology.regions import (
     COE_REGION_DISPLAY,
     COE_REGION_PRIORITY_SECTORS,
 )
-from ontology.crosswalks import top6_to_soc, _load_top_to_cip
+from ontology.crosswalks import top6_to_soc, _load_top_to_cip, _load_vocational_top6
 from ontology.schema import get_driver
 from ontology.supply import get_coe_supply
 from ontology.programs import get_wage_outcomes
@@ -115,7 +115,7 @@ AWARD_YEARS_SHOWN: int = 5
 # (build_opportunity_report's top_prefix + cte_only) all restrict to 09xx CTE
 # TOPs. DEMAND and the candidate-employer set are NOT scoped — they are
 # occupation- and region-owned, not program-owned.
-SVAMP_TOP_DIVISION: str = SVAMP_SPEC.top_division
+SVAMP_TOP_DIVISION: str = SVAMP_SPEC.top_divisions[0]
 
 # Programs the SVAMP director's advanced manufacturing mandate excludes, even
 # though they sit in division 09 and the crosswalk legitimately links them to
@@ -324,6 +324,12 @@ def build_landscape(spec: LandscapeSpec) -> SvampLandscape:
         #    Technology program domain (the full faithful crosswalk still backs
         #    the unchanged per-college report). The edge's own course_count /
         #    top_codes are deliberately not used here.
+        # Program-scope filter for the per-cell course count. Vocational
+        # instances (sector-derived) scope to the authoritative CTE TOP set;
+        # division instances (SVAMP, SMCCD-AM) keep the legacy division-prefix
+        # filter. The $vocational boolean short-circuits, so the division path
+        # is byte-identical to before (golden-snapshot invariant preserved).
+        scope_tops = sorted(_load_vocational_top6()) if spec.vocational else []
         align_by_college: dict[str, dict[str, dict]] = {}
         for college in spec.colleges:
             rows = session.run(
@@ -333,8 +339,10 @@ def build_landscape(spec: LandscapeSpec) -> SvampLandscape:
                 WHERE occ.soc_code IN $socs
                 OPTIONAL MATCH (col)-[op:OCCUPATION_PIPELINE]->(occ)
                 OPTIONAL MATCH (c09:Course {college: $college})-[:PREPARES_FOR]->(occ)
-                      WHERE c09.top_code STARTS WITH $top_division
-                        AND NOT c09.top_code IN $excluded
+                      WHERE ( $vocational AND c09.top_code IN $scope_tops )
+                         OR ( NOT $vocational
+                              AND any(d IN $top_divisions WHERE c09.top_code STARTS WITH d)
+                              AND NOT c09.top_code IN $excluded )
                 WITH occ, op, count(DISTINCT c09) AS course_count_09
                 RETURN occ.soc_code AS soc_code,
                        course_count_09 AS course_count,
@@ -342,7 +350,8 @@ def build_landscape(spec: LandscapeSpec) -> SvampLandscape:
                        op.top_codes AS top_codes
                 """,
                 college=college, socs=list(spec.socs),
-                top_division=spec.top_division,
+                vocational=spec.vocational, scope_tops=scope_tops,
+                top_divisions=list(spec.top_divisions),
                 excluded=sorted(spec.excluded_tops),
             ).data()
             align_by_college[college] = {

@@ -6,15 +6,12 @@ import { getCollegeAtlasConfig } from "@/config/collegeAtlasConfigs";
 import { SchoolConfig } from "@/config/schoolConfig";
 import { landscapeInstance } from "@/college-atlas/partnerships/landscapeInstances";
 
-// SMCCD member colleges from the landscape instance registry (College of San
-// Mateo, Skyline, Cañada). Each id resolves to a SchoolConfig whose `.name`
-// matches the backend college name the /partnerships/smccd endpoint returns.
-const SMCCD_COLLEGE_IDS = landscapeInstance("smccd").collegeIds;
+const COLLEGE_IDS = landscapeInstance("smccd-business").collegeIds;
 
-export default function SmccdReportRoute() {
-  const colleges = SMCCD_COLLEGE_IDS
+export default function SmccdBusinessReportRoute() {
+  const colleges = COLLEGE_IDS
     .map((id) => ({ id, config: getCollegeAtlasConfig(id) }))
-    .filter((c): c is { id: string; config: SchoolConfig } => c.config !== null);
+    .filter((cc): cc is { id: string; config: SchoolConfig } => cc.config !== null);
 
   return (
     <motion.div
@@ -31,7 +28,7 @@ export default function SmccdReportRoute() {
         overscrollBehavior: "none",
       }}
     >
-      <SvampView colleges={colleges} instance="smccd" />
+      <SvampView colleges={colleges} instance="smccd-business" />
     </motion.div>
   );
 }

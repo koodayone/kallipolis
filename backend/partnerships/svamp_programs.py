@@ -516,8 +516,11 @@ def build_svamp_occupation(
     # college taught marking from `college`; everything else is regional.
     taught_college, union_colleges = _crosswalk_taught_scope(college, colleges)
     crosswalk = _gather_curriculum_crosswalk(
-        taught_college, soc, top_prefix=spec.top_division,
-        union_colleges=union_colleges, cte_only=True,
+        # Vocational instances have no division prefix; "" matches all top_codes
+        # and cte_only (True for them) keeps the gather helper's CTE filter.
+        taught_college, soc,
+        top_prefix=(spec.top_divisions[0] if spec.top_divisions else ""),
+        union_colleges=union_colleges, cte_only=spec.cte_only,
         exclude_tops=spec.excluded_tops,
     )
 
