@@ -43,8 +43,9 @@ from __future__ import annotations
 import os
 from dataclasses import dataclass
 
-from ontology.crosswalks import is_cte_top4_family
+from ontology.crosswalks import is_cte_top4_family, is_vocational
 from ontology.regions import COLLEGE_COE_REGION
+from partnerships.sectors import SECTORS, Sector
 
 
 @dataclass(frozen=True)
@@ -68,9 +69,11 @@ class LandscapeSpec:
     colleges: tuple[str, ...]
     # Target occupations (demand axis). One SvampCell per SOC, in this order.
     socs: tuple[str, ...]
-    # Program/supply scope: TOP division + the mandate exclusions, applied on
+    # Program/supply scope: TOP divisions + the mandate exclusions, applied on
     # top of the faithful (never-edited) TOP-CIP-SOC crosswalk. See in_scope.
-    top_division: str
+    # A tuple so an instance may span more than one division — the AM instances
+    # pass a 1-tuple ("09",); a Life Sciences & Health frame spans 04/12/19/03.
+    top_divisions: tuple[str, ...]
     excluded_tops: frozenset[str]
 
     # ── Identity (presentation; surfaced to the frontend via the payload) ──
@@ -92,21 +95,39 @@ class LandscapeSpec:
     # consortium there. Flip to True once the data lands. See routable_specs.
     published: bool = True
 
-    def in_scope(self, top6: str | None) -> bool:
-        """Whether a TOP6 is in this instance's scoped program universe: in the
-        configured TOP division, a CTE (career-technical) workforce program —
-        not transfer/academic — and not excluded by the director's mandate.
+    # Whether a division-mode universe is restricted to CTE families (the
+    # looser family-level is_cte_top4_family test). True for the curated AM
+    # instances. Ignored when vocational=True.
+    cte_only: bool = True
 
-        Identical predicate to svamp.is_svamp_top (which becomes a thin alias
-        to SVAMP_SPEC.in_scope). Family-level CTE test, so newer TOP6 codes the
-        PCAH file misses (e.g. 095690 Digital Fabrication Technician) stay in
-        while all-transfer families (0901) fall out.
+    # Scope mode. True for the sector-derived instances: the program universe is
+    # the authoritative per-TOP CTE gate — is_vocational (TOP6-exact, CCCCO
+    # Taxonomy of Programs 7th Ed) — and top_divisions/cte_only are unused. False
+    # for the curated AM instances (the legacy division + family-CTE predicate).
+    vocational: bool = False
+
+    def in_scope(self, top6: str | None) -> bool:
+        """Whether a TOP6 is in this instance's scoped program universe.
+
+        Two modes:
+        - vocational=True (sector-derived instances): the authoritative
+          TOP6-exact CTE gate is_vocational (CCCCO Taxonomy of Programs 7th Ed
+          vocational asterisk), minus any mandate exclusions. No division
+          restriction — the sector's SOC set is the anchor and relevant_tops
+          intersects it with the crosswalk-reachable feeders.
+        - vocational=False (curated AM instances, e.g. SVAMP): the legacy
+          predicate — in a configured TOP division, CTE per the looser
+          family-level test when cte_only, minus mandate exclusions. Thin alias
+          for svamp.is_svamp_top.
         """
+        if not top6:
+            return False
+        if self.vocational:
+            return is_vocational(top6) and top6 not in self.excluded_tops
         return (
-            bool(top6)
-            and top6.startswith(self.top_division)
+            any(top6.startswith(d) for d in self.top_divisions)
             and top6 not in self.excluded_tops
-            and is_cte_top4_family(top6)
+            and (not self.cte_only or is_cte_top4_family(top6))
         )
 
     def resolve_region(self) -> str:
@@ -124,6 +145,60 @@ class LandscapeSpec:
         return next(iter(regions))
 
 
+# ── Member sets (the institutional axis) ──────────────────────────────────
+# A MemberSet is the school-side half of a `member × sector` landscape: the
+# colleges aggregated into one instance. Composed with a Sector (sectors.py)
+# by the spec factory. Members must share one COE region (resolve_region) so
+# regional demand stays one number per SOC. The curated AM instances (SVAMP,
+# SMCCD-AM) list their colleges inline and do NOT use this; it is for the
+# sector-derived instances (smccd-biotech, smccd-health, …).
+@dataclass(frozen=True)
+class MemberSet:
+    id: str                      # URL/id segment: "{id}-{sector}"
+    label: str                   # display label (masthead)
+    colleges: tuple[str, ...]
+
+
+MEMBERS: dict[str, MemberSet] = {
+    "smccd": MemberSet(
+        id="smccd",
+        label="San Mateo County CCD",
+        colleges=(
+            "College of San Mateo",
+            "Skyline College",
+            "Cañada College",
+        ),
+    ),
+}
+
+
+def landscape_for(
+    member: MemberSet, sector: Sector, *, published: bool = False
+) -> LandscapeSpec:
+    """Compose a `member × sector` landscape instance — the generic generator
+    behind smccd-biotech, smccd-health, and any future combination.
+
+    The sector supplies the demand anchor (its middle-skill SOCs) and identity
+    (label, accent); the member supplies the colleges. The feeding TOP universe
+    is DERIVED — vocational=True makes in_scope the authoritative is_vocational
+    gate, and relevant_tops intersects it with the crosswalk-reachable feeders —
+    so no division/CTE config is needed. Draft by default (data-readiness gated
+    by routable_specs); pass published=True once verified in an environment.
+    """
+    return LandscapeSpec(
+        id=f"{member.id}-{sector.id}",
+        colleges=member.colleges,
+        socs=sector.socs,
+        top_divisions=(),  # unused in vocational mode
+        excluded_tops=frozenset(),
+        vocational=True,
+        published=published,
+        sector=sector.label,
+        name=f"{member.label} — {sector.label}",
+        accent=sector.accent,
+    )
+
+
 # ── Shared advanced-manufacturing scope ───────────────────────────────────
 # SVAMP and SMCCD target the identical occupation + program scope; only the
 # member colleges (and identity) differ. Defined once so the two instances
@@ -132,7 +207,7 @@ _AM_SOCS: tuple[str, ...] = (
     "17-3023", "17-3024", "17-3026", "17-3027", "17-3028", "17-3029",
     "49-9041", "49-9043", "51-4041", "51-9141", "51-9161", "51-9162",
 )
-_AM_TOP_DIVISION = "09"  # Engineering & Industrial Technologies
+_AM_TOP_DIVISIONS: tuple[str, ...] = ("09",)  # Engineering & Industrial Technologies
 _AM_EXCLUDED_TOPS = frozenset({
     "094600",  # Environmental Control Technology (HVAC)
     "094800",  # Automotive Technology
@@ -153,41 +228,42 @@ SVAMP_SPEC = LandscapeSpec(
         "Ohlone College",
     ),
     socs=_AM_SOCS,
-    top_division=_AM_TOP_DIVISION,
+    top_divisions=_AM_TOP_DIVISIONS,
     excluded_tops=_AM_EXCLUDED_TOPS,
     sector="Advanced Manufacturing",
     name="Silicon Valley Advanced Manufacturing Partnership",
     accent="#ff5a5a",
 )
 
-# Instance #2: San Mateo County CCD — same advanced-manufacturing scope, the
-# three district colleges (all "Bay" region, so region resolves for free).
-# NOTE: name + accent are PLACEHOLDERS pending confirmation.
-SMCCD_SPEC = LandscapeSpec(
-    id="smccd",
-    colleges=(
-        "College of San Mateo",
-        "Skyline College",
-        "Cañada College",
-    ),
-    socs=_AM_SOCS,
-    top_division=_AM_TOP_DIVISION,
-    excluded_tops=_AM_EXCLUDED_TOPS,
-    # PUBLISHED 2026-06-08: the 3-college subgraph is loaded + verified in prod
-    # Neo4j (scripts/migrate_landscape_colleges.py), so the surface routes
-    # everywhere. See routable_specs.
-    published=True,
-    sector="Advanced Manufacturing",
-    name="SMCCD - Advanced Manufacturing",  # placeholder identity — pending confirmation
-    accent="#8b6fd0",  # placeholder — pending confirmation
+# Instance #2+: the SMCCD member set's sector views — a `member × sector` row,
+# one instance per Strong Workforce priority sector the district has CTE programs
+# in. SOCs come from the sector's middle-skill set (sectors.py); the feeding TOP
+# universe is derived (is_vocational ∩ crosswalk-reachable), so these need NO
+# scope config. SVAMP above stays hand-authored (a curated SOC subset +
+# director's-mandate exclusions, not a whole sector).
+#
+# `adm` (Advanced Manufacturing) is PUBLISHED — it is the canonical SMCCD AM
+# surface, replacing the earlier curated 12-SOC `smccd` instance (now retired;
+# /smccd redirects to /smccd-adm). Its 3-college subgraph is verified in prod
+# Neo4j. The rest are DRAFT pending data work (the crosswalk under-maps some
+# allied-health TOPs; CSM biotech courses aren't yet in the graph), so their
+# supply renders thin. `unassigned` is omitted (a residual catch-all).
+SMCCD_ADM_SPEC = landscape_for(MEMBERS["smccd"], SECTORS["adm"], published=True)
+_SMCCD_DRAFT_SECTOR_IDS: tuple[str, ...] = (
+    "biotech", "health", "business", "atl", "public_safety",
+    "retail", "ict", "agwet", "edhd", "ecu",
 )
+_SMCCD_SECTOR_SPECS = [SMCCD_ADM_SPEC] + [
+    landscape_for(MEMBERS["smccd"], SECTORS[sid]) for sid in _SMCCD_DRAFT_SECTOR_IDS
+]
 
 
-# Registry: every defined instance. Adding a third landscape = one entry here
-# (plus its frontend route); the engine and components are untouched.
+# Registry: every defined instance. Adding a landscape = one entry here (plus its
+# frontend route); the engine and components are untouched. The bare `smccd` id
+# is intentionally absent — /smccd redirects to /smccd-adm (the AM sector view).
 REGISTRY: dict[str, LandscapeSpec] = {
     SVAMP_SPEC.id: SVAMP_SPEC,
-    SMCCD_SPEC.id: SMCCD_SPEC,
+    **{s.id: s for s in _SMCCD_SECTOR_SPECS},
 }
 
 

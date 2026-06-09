@@ -1,9 +1,13 @@
-import SvampDashboard from "@/college-atlas/partnerships/SvampDashboard";
+"use client";
 
-// The SMCCD aggregated-landscape surface (San Mateo CCD — Advanced
-// Manufacturing): instance #2 of the same dashboard engine, parameterized by
-// the `smccd` landscape instance. Same components as /svamp; only the instance
-// differs (member colleges, identity, API id).
-export default function SmccdPage() {
-  return <SvampDashboard instance="smccd" />;
+import { useEffect } from "react";
+
+// /smccd is retired as a standalone surface. SMCCD Advanced Manufacturing now
+// lives at the sector-consistent /smccd-adm (the faithful 49-SOC sector view,
+// replacing the earlier curated 12-SOC instance). Redirect there.
+export default function SmccdRedirect() {
+  useEffect(() => {
+    window.location.replace("/smccd-adm");
+  }, []);
+  return null;
 }

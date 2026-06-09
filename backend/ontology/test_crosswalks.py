@@ -25,8 +25,40 @@ Coverage:
 from ontology.crosswalks import (
     _load_pcah_cte_top6,
     _load_top_to_cip,
+    _load_vocational_top6,
     cte_reachable_socs,
+    is_cte_top4_family,
+    is_vocational,
 )
+
+
+class TestIsVocational:
+    """is_vocational — the authoritative TOP6-exact CTE gate (CCCCO Taxonomy of
+    Programs 7th Ed vocational asterisk), distinct from the looser
+    is_cte_top4_family heuristic which over-includes transfer siblings."""
+
+    def test_loads_expected_count(self):
+        # 273 vocational of 408 codes in the 7th Edition.
+        assert 250 <= len(_load_vocational_top6()) <= 300
+
+    def test_known_vocational(self):
+        for top6 in ("043000", "120800", "300700", "083520", "123010"):
+            assert is_vocational(top6), top6
+
+    def test_known_non_vocational_transfer(self):
+        for top6 in ("040100", "190500", "083500", "220600", "061200"):
+            assert not is_vocational(top6), top6
+
+    def test_exact_excludes_family_false_positives(self):
+        # 083500 Physical Education (transfer) shares the 0835 family with the
+        # vocational 083520 Fitness Trainer: the family heuristic includes it,
+        # the authoritative exact gate does not.
+        assert is_cte_top4_family("083500") is True
+        assert is_vocational("083500") is False
+
+    def test_none_and_empty(self):
+        assert is_vocational(None) is False
+        assert is_vocational("") is False
 
 
 class TestLoadPcahCteTop6:

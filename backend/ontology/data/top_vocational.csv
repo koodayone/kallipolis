@@ -1,0 +1,409 @@
+top6,title,vocational
+010100,,1
+010200,Animal Science,1
+010210,Veterinary Technician (Licensed),1
+010220,Artificial Inseminator (Licensed),1
+010230,Dairy Science,1
+010240,Equine Science,1
+010300,Plant Science,1
+010310,Agricultural Pest Control Advisor and Operator (Licensed),1
+010400,"Viticulture, Enology, and Wine Business",1
+010900,Horticulture,1
+010910,Landscape Design and Maintenance,1
+010920,Floriculture/Floristry,1
+010930,Nursery Technology,1
+010940,Turfgrass Technology,1
+011200,"Agriculture Business, Sales, and Service",1
+011300,Food Processing and Related Technologies,1
+011400,Forestry,1
+011500,Natural Resources,1
+011510,Parks and Outdoor Recreation,1
+011520,Wildlife and Fisheries,1
+011600,Agricultural Power Equipment Technology,1
+019900,Other Agriculture and Natural Resources,1
+020100,Architecture and Architectural Technology,1
+020110,Landscape Architecture (transfer),0
+029900,Other Architecture and Environmental Design,1
+030100,Environmental Science,0
+030200,Environmental Studies,0
+030300,Environmental Technology,1
+039900,"Environmental Sciences and Technologies, Other",0
+040100,"Biology, General",0
+040200,"Botany, General",0
+040300,Microbiology,0
+040700,"Zoology, General",0
+040800,Natural History,0
+041000,Anatomy and Physiology,0
+043000,Biotechnology and Biomedical Technology,1
+049900,Other Biological Sciences Specify,0
+050100,"Business and Commerce, General",1
+050200,Accounting,1
+050210,Tax Studies,1
+050400,Banking and Finance,1
+050500,Business Administration,1
+050600,Business Management,1
+050630,Management Development and Supervision,1
+050640,,1
+050650,,1
+050800,,1
+050900,,1
+050910,Advertising,1
+050920,Purchasing,1
+050940,Sales and Salesmanship,1
+050960,Display,1
+050970,E-Commerce (business emphasis),1
+051000,Logistics and Materials Transportation,1
+051100,Real Estate,1
+051110,Escrow,1
+051200,Insurance,1
+051400,Office Technology/Office Computer Applications,1
+051410,Legal Office Technology,1
+051420,Medical Office Technology,1
+051430,Court Reporting,1
+051600,Labor and Industrial Relations,1
+051800,Customer Service,1
+059900,Other Business and Management,1
+060100,"Media and Communications, General",0
+060200,Journalism,1
+060400,Radio and Television,1
+060410,Radio,1
+060420,Television (including combined TV/film/video),1
+060430,Broadcast Journalism,1
+060600,Public Relations,1
+060700,Technical Communication,1
+061000,Mass Communications,1
+061200,Film Studies (including combined film/video),0
+061220,Film Production,1
+061400,Digital Media,1
+061410,Multimedia,1
+061420,Electronic Game Design,1
+061430,Website Design and Development,1
+061440,Animation,1
+061450,Desktop Publishing,1
+061460,Computer Graphics and Digital Imagery,1
+069900,Other Media and Communications,1
+070100,"Information Technology, General",1
+070200,Computer Information Systems,1
+070210,Software Applications,1
+070600,,0
+070700,Computer Software Development,1
+070710,Computer Programming,1
+070720,Database Design and Administration,1
+070730,Computer Systems Analysis,1
+070800,Computer Infrastructure and Support,1
+070810,Computer Networking,1
+070820,Computer Support,1
+070900,World Wide Web Administration,1
+070910,E-Commerce (technology emphasis),1
+079900,Other Information Technology,1
+080100,"Education, General (Pre-Professional) (Transfer)",0
+080200,Educational Aide (Teacher Assistant),1
+080210,"Educational Aide (Teacher Assistant), Bilingual",1
+080900,Special Education,1
+083500,Physical Education,0
+083510,Physical Fitness and Body Movement,0
+083520,Fitness Trainer,1
+083560,,1
+083570,Aquatics and Lifesaving,1
+083580,Adapted Physical Education,0
+083600,Recreation,0
+083610,Recreation Assistant,1
+083700,Health Education,0
+083900,,0
+085000,Sign Language,0
+085010,Sign Language Interpreting,1
+086000,Educational Technology,1
+089900,Other Education,1
+090100,"Engineering, General (requires Calculus) (Transfer)",0
+092400,"Engineering Technology, General (requires Trigonometry)",1
+093400,Electronics and Electric Technology,1
+093410,Computer Electronics,1
+093420,Industrial Electronics,1
+093430,Telecommunications Technology,1
+093440,Electrical Systems and Power Transmission,1
+093460,Biomedical Instrumentation,1
+093470,Electron Microscopy,1
+093480,Laser and Optical Technology,1
+093500,Electro-Mechanical Technology,1
+093510,Appliance Repair,1
+093600,Printing and Lithography,1
+094300,Instrumentation Technology,1
+094330,Vacuum Technology,1
+094500,Industrial Systems Technology and Maintenance,1
+094600,Environmental Control Technology (HVAC),1
+094610,Energy Systems Technology,1
+094700,Diesel Technology,1
+094720,Heavy Equipment Maintenance,1
+094730,Heavy Equipment Operation,1
+094740,Railroad and Light Rail Operations,1
+094750,Truck and Bus Driving,1
+094800,Automotive Technology,1
+094830,"Motorcycle, Outboard, and Small Engine Repair",1
+094840,,1
+094850,,1
+094900,Automotive Collision Repair,1
+094910,Upholstery Repair–Automotive,1
+095000,Aeronautical and Aviation Technology,1
+095010,Aviation Airframe Mechanics,1
+095020,Aviation Powerplant Mechanics,1
+095040,Aircraft Electronics (Avionics),1
+095050,Aircraft Fabrication,1
+095200,Construction Crafts Technology,1
+095210,Carpentry,1
+095220,Electrical,1
+095230,"Plumbing, Pipefitting, and Steamfitting",1
+095240,Glazing,1
+095250,Mill and Cabinet Work,1
+095260,"Masonry, Tile, Cement, and Lath and Plaster",1
+095270,"Painting, Decorating, and Flooring",1
+095280,Drywall and Insulation,1
+095290,Roofing,1
+095300,Drafting Technology,1
+095310,Architectural Drafting,1
+095320,Civil Drafting,1
+095330,,1
+095340,Mechanical Drafting,1
+095360,,1
+095400,Chemical Technology,1
+095420,Plastics and Composites,1
+095430,Petroleum Technology,1
+095500,Laboratory Science Technology,1
+095600,Manufacturing and Industrial Technology,1
+095630,Machining and Machine Tools,1
+095640,Sheet Metal and Structural Metal,1
+095650,Welding Technology,1
+095670,Industrial and Occupational Safety and Health,1
+095680,Industrial Quality Control,1
+095690,Digital Fabrication Technology,1
+095700,Civil and Construction Management Technology,1
+095720,Construction Inspection,1
+095730,Surveying,1
+095800,Water and Wastewater Technology,1
+095900,Marine Technology,1
+095910,Diving and Underwater Safety,1
+096100,Optics,1
+096200,Musical Instrument Repair,1
+099900,Other Engineering and Related Industrial Technologies,1
+100100,"Fine Arts, General",0
+100200,"Art (Painting, Drawing, and Sculpture)",0
+100210,,0
+100220,,0
+100230,,0
+100400,,0
+100500,Commercial Music,1
+100600,Technical Theater,1
+100700,Dramatic Arts,0
+100800,Dance,0
+100810,Commercial Dance,1
+100900,Applied Design,1
+100910,Jewelry,0
+101100,Photography,0
+101200,Applied Photography,1
+101300,Commercial Art,1
+103000,Graphic Art and Design,1
+109900,Other Fine and Applied Arts,1
+110100,"Foreign Languages, General",0
+110200,French,0
+110300,German,0
+110400,Italian,0
+110500,Spanish,0
+110600,Russian,0
+110700,Chinese,0
+110800,Japanese,0
+110900,Latin,0
+111000,Greek,0
+111100,Hebrew,0
+111200,Arabic,0
+111600,African Languages (Non-Semitic),0
+111700,"Asian, South Asian, and Pacific Islands (Chinese and Japanese excluded)",0
+111710,Filipino (Tagalog),0
+111720,,0
+111730,,0
+111900,,0
+119900,Other Foreign Languages,0
+120100,"Health Occupations, General",1
+120200,Hospital and Health Care Administration,1
+120500,Medical Laboratory Technology,1
+120510,Phlebotomy,1
+120600,Physicians Assistant,1
+120800,Medical Assisting,1
+120810,Clinical Medical Assisting,1
+120820,Administrative Medical Assisting,1
+120830,Health Facility Unit Coordinator,1
+120900,Hospital Central Service Technician,1
+121000,Respiratory Care/Therapy,1
+121100,Polysomnography,1
+121200,Electro-Neurodiagnostic Technology,1
+121300,Cardiovascular Technician,1
+121400,Orthopedic Assistant,1
+121500,Electrocardiography,1
+121700,Surgical Technician,1
+121800,Occupational Therapy Technology,1
+121900,Optical Technology,1
+122000,Speech-Language Pathology and Audiology,1
+122100,Pharmacy Technology,1
+122200,Physical Therapist Assistant,1
+122300,Health Information Technology,1
+122310,Health Information Coding,1
+122400,School Health Clerk,1
+122500,Radiologic Technology,1
+122600,Radiation Therapy Technician,1
+122700,Diagnostic Medical Sonography,1
+122800,Athletic Training and Sports Medicine,1
+123000,Nursing,1
+123010,Registered Nursing,1
+123020,Licensed Vocational Nursing,1
+123030,Certified Nurse Assistant,1
+123080,Home Health Aide,1
+123900,Psychiatric Technician,1
+124000,Dental Occupations,1
+124010,Dental Assistant,1
+124020,Dental Hygienist,1
+124030,Dental Laboratory Technician,1
+125000,Emergency Medical Services,1
+125100,Paramedic,1
+125500,Mortuary Science,1
+126000,"Health Professions, Transfer Core Curriculum",1
+126100,Community Health Care Worker,1
+126200,Massage Therapy,1
+127000,Kinesiology,0
+129900,Other Health Occupations,1
+130100,"Family and Consumer Sciences, General",0
+130110,Consumer Services,1
+130200,Interior Design and Merchandising,1
+130300,Fashion,1
+130310,Fashion Design,1
+130320,Fashion Merchandising,1
+130330,Fashion Production,1
+130500,Child Development/Early Care and Education,1
+130520,Children with Special Needs,1
+130540,Preschool Age Children,1
+130550,The School Age Child,1
+130560,Parenting and Family Education,1
+130570,Foster and Kinship Care,1
+130580,Child Development Administration and Management,1
+130590,Infants and Toddlers,1
+130600,"Nutrition, Foods, and Culinary Arts",1
+130620,Dietetic Services and Management,1
+130630,Culinary Arts,1
+130660,Dietetic Technology,1
+130700,Hospitality,1
+130710,Restaurant and Food Services and Management,1
+130720,Lodging Management,1
+130730,Resort and Club Management,1
+130800,Family Studies,1
+130900,Gerontology,1
+139900,,1
+140100,"Law, General",0
+140200,Paralegal,1
+149900,Other Law,0
+150100,English,0
+150110,Linguistics,0
+150200,Language Arts,0
+150300,Comparative Literature,0
+150400,Classics,0
+150600,Speech Communication,0
+150700,Creative Writing,0
+150900,Philosophy,0
+151000,Religious Studies (Theological professions excluded),0
+152000,,0
+159900,Other Humanities,0
+160100,"Library Science, General",0
+160200,Library Technician (Aide),1
+169900,Other Library Science,0
+170100,"Mathematics, General",0
+170200,Mathematics Skills,0
+179900,Other Mathematics,0
+180100,Military Science,0
+189900,Other Military Studies,0
+190100,"Physical Sciences, General",0
+190200,"Physics, General",0
+190500,"Chemistry, General",0
+191100,Astronomy,0
+191400,Geology,0
+191900,Oceanography,0
+192000,Ocean Technology,1
+193000,Earth Science,0
+199900,Other Physical Sciences,0
+200100,"Psychology, General",0
+200300,Behavioral Science,0
+209900,Other Psychology,0
+210200,Public Administration,1
+210210,Public Works,1
+210400,Human Services,1
+210440,Alcohol and Controlled Substances,1
+210450,Disability Services,1
+210500,Administration of Justice,1
+210510,Corrections,1
+210520,Probation and Parole,1
+210530,Industrial and Transportation Security,1
+210540,"Forensics, Evidence, and Investigation",1
+210550,Police Academy,1
+213300,Fire Technology,1
+213310,Wildland Fire Technology,1
+213350,Fire Academy,1
+214000,Legal and Community Interpretation,1
+219900,Other Public and Protective Services,1
+220100,"Social Sciences, General",0
+220110,Women's Studies,0
+220120,American Studies,0
+220130,Social Justice Studies: General,0
+220140,Social Justice Studies: LGTBQ,0
+220150,Social Justice Studies: Ethnic Studies,0
+220160,Social Justice Studies: Chicano Studies,0
+220170,Social Justice Studies: Gender Studies,0
+220180,Social Justice Studies: African American,0
+220190,Social Justice Studies: Asian American,0
+220191,Social Justice Studies: Native American,0
+220200,Anthropology,0
+220220,Archaeology,0
+220300,Ethnic Studies,0
+220400,Economics,0
+220500,History,0
+220600,Geography,0
+220610,Geographic Information Systems,1
+220700,Political Science,0
+220710,Student Government 2208.00 – Sociology,0
+221000,International Studies,0
+221010,Area Studies,0
+221020,Global Studies,0
+229900,Other Social Sciences,0
+300500,Custodial Services,1
+300700,Cosmetology and Barbering,1
+300800,Dry Cleaning,1
+300900,Travel Services and Tourism,1
+302000,Aviation and Airport Management and Services,1
+302010,Aviation and Airport Management,1
+302020,,1
+302030,,1
+302040,,1
+309900,Other Commercial Services,1
+490100,"Liberal Arts and Sciences, General (Program Only)",0
+490110,Transfer Studies (Program Only),0
+490120,,0
+490200,Biological and Physical Sciences (and Mathematics) (Program Only),0
+490300,Humanities (Program Only),0
+490310,Humanities and Fine Arts (Program Only),0
+490330,Humanities and Social Sciences (Program Only),0
+493000,,0
+493009,Supervised Tutoring,0
+493010,Career Guidance and Orientation,0
+493011,Interpersonal Skills,0
+493012,Job Seeking/Changing Skills,0
+493013,Academic Guidance,0
+493014,Study Skills,0
+493030,"Learning Skills, Disabled",0
+493031,"Living Skills, Disabled .",0
+493032,"Learning Skills, Learning Disabled",0
+493033,"Learning Skills, Speech Impaired",0
+493060,Elementary Education (Grades 1-8),0
+493062,Secondary Education (Grades 9-12) and G.E.D.,0
+493072,Leadership Skills Development,0
+493084,English as a Second Language–Writing,0
+493085,English as a Second Language–Reading,0
+493086,English as a Second Language–Speaking/Listening,0
+493087,English as a Second Language–Integrated2,0
+493090,Citizenship (and ESL Civics),0
+493100,Vocational ESL,1
+493200,,1
+499900,Other Interdisciplinary Studies,0

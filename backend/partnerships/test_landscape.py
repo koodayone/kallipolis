@@ -32,7 +32,7 @@ from partnerships.landscape import (
 def _draft_spec(id="__draft_test__"):
     return LandscapeSpec(
         id=id, colleges=("De Anza College",), socs=("17-3023",),
-        top_division="09", excluded_tops=frozenset(),
+        top_divisions=("09",), excluded_tops=frozenset(),
         sector="Advanced Manufacturing", name="Test", accent="#000000",
         published=False,
     )
@@ -73,7 +73,7 @@ def test_routable_filters_draft_when_disabled_includes_when_enabled(monkeypatch)
 def test_published_spec_routes_regardless_of_flag(monkeypatch):
     pub = LandscapeSpec(
         id="__pub_test__", colleges=("De Anza College",), socs=("17-3023",),
-        top_division="09", excluded_tops=frozenset(),
+        top_divisions=("09",), excluded_tops=frozenset(),
         sector="Advanced Manufacturing", name="Test", accent="#000000",
         published=True,
     )
