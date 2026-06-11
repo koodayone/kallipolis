@@ -2,8 +2,8 @@
   "/employers": {
     "employers": [
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Robert Barisone",
+        "contact_title": "Manager",
         "description": "The Central County Fire Department provides fire suppression and emergency response services.",
         "lat": 37.5865829,
         "lng": -122.3384383,
@@ -41,8 +41,8 @@
         "website": "https://www.ccfd.org/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Manuel Martinez",
+        "contact_title": "Manager",
         "description": "The Daly City Police Department is responsible for public safety and law enforcement in Daly City.",
         "lat": 37.6911085,
         "lng": -122.4739145,
@@ -80,8 +80,8 @@
         "website": "https://www.dalycity.org/1231/Police"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Harold Schapelhouman",
+        "contact_title": "Manager",
         "description": "The Menlo Park Fire Protection District provides fire and emergency medical services.",
         "lat": 37.4570961,
         "lng": -122.1690558,
@@ -119,8 +119,8 @@
         "website": "https://www.menlofire.gov/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Edward Conover",
+        "contact_title": "Director",
         "description": "The Redwood City Police Department is responsible for law enforcement and public safety.",
         "lat": 37.495044,
         "lng": -122.2204934,
@@ -197,8 +197,8 @@
         "website": "https://www.sanfranciscopolice.org/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Matt Turturici",
+        "contact_title": "Other",
         "description": "The San Mateo Consolidated Fire Department provides fire and emergency medical services.",
         "lat": 37.5219843,
         "lng": -122.2721324,
@@ -236,8 +236,8 @@
         "website": "https://www.smcfire.org/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Hugh Njemanze",
+        "contact_title": "CEO",
         "description": "Anomali is a threat intelligence company.",
         "lat": 37.4931239,
         "lng": -122.2357404,
@@ -257,8 +257,8 @@
         "website": "https://www.anomali.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Gil Shwed",
+        "contact_title": "CEO",
         "description": "Check Point Software Technologies is a global leader in network cybersecurity solutions.",
         "lat": 37.5073876,
         "lng": -122.248094,
@@ -278,8 +278,8 @@
         "website": "https://www.checkpoint.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Geoff Haydon",
+        "contact_title": "CEO",
         "description": "Ontinue is a cybersecurity company offering managed security services.",
         "lat": 37.495044,
         "lng": -122.2204934,
@@ -299,8 +299,8 @@
         "website": "https://www.ontinue.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Stan Teets",
+        "contact_title": "Owner",
         "description": "Personal Protective Services provides security and protection services.",
         "lat": 37.5883478,
         "lng": -122.3358474,
@@ -320,8 +320,8 @@
         "website": "https://personalprotective.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Sumedh S Thakar",
+        "contact_title": "CEO",
         "description": "Qualys is a provider of cloud-based security and compliance solutions.",
         "lat": 37.5511544,
         "lng": -122.281399,

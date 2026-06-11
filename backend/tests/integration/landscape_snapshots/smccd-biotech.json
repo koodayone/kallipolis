@@ -2,8 +2,8 @@
   "/employers": {
     "employers": [
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Ashley Magargee",
+        "contact_title": "CEO",
         "description": "Genentech is a biotechnology company focused on developing and commercializing medicines.",
         "lat": 37.6555686,
         "lng": -122.3849216,
@@ -31,8 +31,8 @@
         "website": "https://www.gene.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Alok Kulkarni",
+        "contact_title": "Board Member",
         "description": "Cyara is a customer experience testing company.",
         "lat": 37.496195,
         "lng": -122.2362998,
@@ -89,8 +89,8 @@
         "website": "https://www.cslvifor.us/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Fabian Gerlinghaus",
+        "contact_title": "CEO",
         "description": "Cellares Corporation is a biotechnology company.",
         "lat": 37.6555002,
         "lng": -122.389339,
@@ -147,8 +147,8 @@
         "website": "https://www.csbio.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Taylor C Harris",
+        "contact_title": "CEO",
         "description": "Cutera is a medical device company specializing in aesthetic and dermatology solutions.",
         "lat": 37.6732309,
         "lng": -122.3910941,
@@ -176,8 +176,37 @@
         "website": "https://cutera.com/us-en/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Bob Katter",
+        "contact_title": "President",
+        "description": "First Databank is a provider of healthcare data solutions.",
+        "lat": 37.6665608,
+        "lng": -122.3971498,
+        "naics4": "5417",
+        "naics_title": "Scientific Research and Development Services",
+        "name": "First Databank",
+        "sector": "Professional Services",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 5,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "19-4099": "Life, Physical, and Social Science Technicians, All Other",
+          "49-9062": "Medical Equipment Repairers",
+          "51-9011": "Chemical Equipment Operators and Tenders"
+        },
+        "socs": [
+          "19-4021",
+          "19-4099",
+          "19-4031",
+          "49-9062",
+          "51-9011"
+        ],
+        "website": "FDBHEALTH.COM"
+      },
+      {
+        "contact_name": "Jonathan Waldstreicher",
+        "contact_title": "Board Member",
         "description": "Galvanize Therapeutics is a biotechnology company.",
         "lat": 37.5076791,
         "lng": -122.2519693,
@@ -205,8 +234,8 @@
         "website": "https://galvanizetx.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Lynn Seely",
+        "contact_title": "CEO",
         "description": "Lyell Immunopharma is a biotechnology company developing cell therapies.",
         "lat": 37.6486582,
         "lng": -122.3872868,
@@ -234,8 +263,8 @@
         "website": "https://www.lyell.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Christopher Peetz",
+        "contact_title": "CEO",
         "description": "Mirum Pharmaceuticals is a biopharmaceutical company.",
         "lat": 37.55234,
         "lng": -122.2801854,
@@ -263,8 +292,8 @@
         "website": "https://mirumpharma.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Frank D Lee",
+        "contact_title": "Board Member",
         "description": "Pacira Biosciences is a biopharmaceutical company.",
         "lat": 37.6897794,
         "lng": -122.391832,
@@ -292,8 +321,37 @@
         "website": "https://www.pacira.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "John Reed",
+        "contact_title": "President",
+        "description": "Principia Biopharma is a biopharmaceutical company.",
+        "lat": 37.6545478,
+        "lng": -122.4006126,
+        "naics4": "3254",
+        "naics_title": "Pharmaceutical and Medicine Manufacturing",
+        "name": "Principia Biopharma",
+        "sector": "Manufacturing",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 5,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "19-4099": "Life, Physical, and Social Science Technicians, All Other",
+          "49-9062": "Medical Equipment Repairers",
+          "51-9011": "Chemical Equipment Operators and Tenders"
+        },
+        "socs": [
+          "51-9011",
+          "19-4021",
+          "19-4031",
+          "19-4099",
+          "49-9062"
+        ],
+        "website": "PRINCIPIABIO.COM"
+      },
+      {
+        "contact_name": "Omid Farokhzad",
+        "contact_title": "CEO",
         "description": "Seer is a company developing technology for biological insights.",
         "lat": 37.5381944,
         "lng": -122.2527094,
@@ -321,8 +379,8 @@
         "website": "https://seer.bio/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Marshall Fordyce",
+        "contact_title": "CEO",
         "description": "Vera Therapeutics is a biotechnology company.",
         "lat": 37.6897794,
         "lng": -122.391832,
@@ -350,8 +408,8 @@
         "website": "https://veratx.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Joe Selsavage",
+        "contact_title": "CEO",
         "description": "A genetic testing and health company.",
         "lat": 37.6624937,
         "lng": -122.3926385,
@@ -377,8 +435,8 @@
         "website": "https://www.23andme.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Steve Anderson",
+        "contact_title": "CEO",
         "description": "A company involved in biological research and development.",
         "lat": 37.6624937,
         "lng": -122.3926385,
@@ -663,64 +721,6 @@
           "51-9011"
         ],
         "website": "https://www.bighatbio.com/"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "Calico Life Sciences is a research and development company focused on aging.",
-        "lat": 37.6637872,
-        "lng": -122.3932305,
-        "naics4": "5417",
-        "naics_title": "Scientific Research and Development Services",
-        "name": "Calico Life Sciences",
-        "sector": "Professional Services",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 5,
-        "soc_titles": {
-          "19-4021": "Biological Technicians",
-          "19-4031": "Chemical Technicians",
-          "19-4099": "Life, Physical, and Social Science Technicians, All Other",
-          "49-9062": "Medical Equipment Repairers",
-          "51-9011": "Chemical Equipment Operators and Tenders"
-        },
-        "socs": [
-          "19-4021",
-          "19-4099",
-          "19-4031",
-          "49-9062",
-          "51-9011"
-        ],
-        "website": "https://www.calicolabs.com/"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "Celldom is a biotechnology company.",
-        "lat": 37.5076791,
-        "lng": -122.2519693,
-        "naics4": "3345",
-        "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
-        "name": "Celldom",
-        "sector": "Manufacturing",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 5,
-        "soc_titles": {
-          "19-4021": "Biological Technicians",
-          "19-4031": "Chemical Technicians",
-          "19-4099": "Life, Physical, and Social Science Technicians, All Other",
-          "49-9062": "Medical Equipment Repairers",
-          "51-9011": "Chemical Equipment Operators and Tenders"
-        },
-        "socs": [
-          "19-4031",
-          "19-4099",
-          "49-9062",
-          "51-9011",
-          "19-4021"
-        ],
-        "website": "https://www.celldom.com/"
       }
     ],
     "region": "Bay",
@@ -730,7 +730,7 @@
       "San Mateo"
     ],
     "shown": 25,
-    "total": 46
+    "total": 49
   },
   "/programs": {
     "latest_award_year": "2024-2025",

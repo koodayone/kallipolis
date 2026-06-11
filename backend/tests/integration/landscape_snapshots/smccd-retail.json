@@ -87,8 +87,8 @@
         "website": "https://www.marriott.com/en-us/hotels/sfobg-san-francisco-airport-marriott-waterfront/overview/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Pat Egan",
+        "contact_title": "CEO",
         "description": "See's Candy Shops is a manufacturer and retailer of chocolates and candies.",
         "lat": 37.6717362,
         "lng": -122.4537758,
@@ -143,8 +143,37 @@
         "website": "https://www.rosewoodhotels.com/en/sand-hill-menlo-park"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Scott Castel",
+        "contact_title": "General Mgr",
+        "description": "A hotel located in Foster City.",
+        "lat": 37.5622541,
+        "lng": -122.278803,
+        "naics4": "7211",
+        "naics_title": "Traveler Accommodation",
+        "name": "Crowne Plaza Foster City",
+        "sector": "Hospitality & Food Service",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 5,
+        "soc_titles": {
+          "11-9051": "Food Service Managers",
+          "11-9081": "Lodging Managers",
+          "35-1011": "Chefs and Head Cooks",
+          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
+          "41-1011": "First-Line Supervisors of Retail Sales Workers"
+        },
+        "socs": [
+          "11-9081",
+          "35-1012",
+          "35-1011",
+          "11-9051",
+          "41-1011"
+        ],
+        "website": "IHG.COM"
+      },
+      {
+        "contact_name": "Derek Byrd",
+        "contact_title": "Director",
         "description": "A hotel located in San Francisco.",
         "lat": 37.5893059,
         "lng": -122.342542,
@@ -174,6 +203,64 @@
       {
         "contact_name": null,
         "contact_title": null,
+        "description": "A hotel in the Doubletree by Hilton chain located in San Francisco.",
+        "lat": 37.6897794,
+        "lng": -122.391832,
+        "naics4": "7211",
+        "naics_title": "Traveler Accommodation",
+        "name": "Doubletree By Hilton San Francisco",
+        "sector": "Hospitality & Food Service",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 5,
+        "soc_titles": {
+          "11-9051": "Food Service Managers",
+          "11-9081": "Lodging Managers",
+          "35-1011": "Chefs and Head Cooks",
+          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
+          "41-1011": "First-Line Supervisors of Retail Sales Workers"
+        },
+        "socs": [
+          "11-9081",
+          "35-1012",
+          "35-1011",
+          "11-9051",
+          "41-1011"
+        ],
+        "website": "HILTON.COM"
+      },
+      {
+        "contact_name": "Jenny Wong",
+        "contact_title": "Director",
+        "description": "A hotel located near the San Francisco Airport.",
+        "lat": 37.5975816,
+        "lng": -122.3868334,
+        "naics4": "7211",
+        "naics_title": "Traveler Accommodation",
+        "name": "El Rancho Inn",
+        "sector": "Hospitality & Food Service",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 5,
+        "soc_titles": {
+          "11-9051": "Food Service Managers",
+          "11-9081": "Lodging Managers",
+          "35-1011": "Chefs and Head Cooks",
+          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
+          "41-1011": "First-Line Supervisors of Retail Sales Workers"
+        },
+        "socs": [
+          "11-9081",
+          "35-1012",
+          "35-1011",
+          "11-9051",
+          "41-1011"
+        ],
+        "website": "ELRANCHOINN.COM"
+      },
+      {
+        "contact_name": "Settah Aydin",
+        "contact_title": "Manager",
         "description": "A hotel in the Embassy Suites by Hilton chain located in San Francisco.",
         "lat": 37.5897358,
         "lng": -122.3509508,
@@ -201,8 +288,8 @@
         "website": "https://www.hilton.com/en/hotels/sfobges-embassy-suites-san-francisco-airport-waterfront/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Adora Manalo",
+        "contact_title": "Manager",
         "description": "A luxury hotel located in the Silicon Valley area.",
         "lat": 37.4694542,
         "lng": -122.1407933,
@@ -288,8 +375,8 @@
         "website": "https://hiltonsfo.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Epensa Polka",
+        "contact_title": "General Mgr",
         "description": "A hotel in the Holiday Inn Suites chain located in San Mateo.",
         "lat": 37.5792552,
         "lng": -122.3226965,
@@ -317,8 +404,8 @@
         "website": "https://www.ihg.com/holidayinn/hotels/us/en/san-mateo/sfosm/hoteldetail"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Scott Maltz",
+        "contact_title": "Vice President",
         "description": "A community center serving the Peninsula area.",
         "lat": 37.5696535,
         "lng": -122.2757343,
@@ -402,6 +489,33 @@
         "website": "https://www.hilton.com/en/hotels/sfoaodt-doubletree-san-francisco-airport/dining/"
       },
       {
+        "contact_name": "Steve Hurwitz",
+        "contact_title": "Owner",
+        "description": "Bay Area Herbs is a supplier of herbs.",
+        "lat": 37.6460964,
+        "lng": -122.4073148,
+        "naics4": "4452",
+        "naics_title": "Specialty Food Retailers",
+        "name": "Bay Area Herbs",
+        "sector": "Retail",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 4,
+        "soc_titles": {
+          "11-9051": "Food Service Managers",
+          "35-1011": "Chefs and Head Cooks",
+          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
+          "41-1011": "First-Line Supervisors of Retail Sales Workers"
+        },
+        "socs": [
+          "41-1011",
+          "35-1012",
+          "35-1011",
+          "11-9051"
+        ],
+        "website": "BAYAREAHERBS.COM"
+      },
+      {
         "contact_name": "Larry Ferguson",
         "contact_title": "Director",
         "description": "Draeger's Market is a gourmet grocery store.",
@@ -429,8 +543,8 @@
         "website": "https://www.draegers.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Andy Butera",
+        "contact_title": "Vice President",
         "description": "Draeger's Super Markets is a chain of grocery stores.",
         "lat": 37.6458035,
         "lng": -122.4027752,
@@ -483,8 +597,8 @@
         "website": "https://greenleafproduce.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Rosanne Cefalu",
+        "contact_title": "Director",
         "description": "A restaurant located in San Mateo.",
         "lat": 37.5403434,
         "lng": -122.3013013,
@@ -510,7 +624,7 @@
         "website": "https://www.ilovejacks.com/san-mateo"
       },
       {
-        "contact_name": "Sparrow Johnson",
+        "contact_name": "Juan Carlos",
         "contact_title": "General Mgr",
         "description": "New Leaf Community Markets is a chain of grocery stores focused on natural and organic foods.",
         "lat": 37.4677762,
@@ -537,8 +651,35 @@
         "website": "https://www.newleaf.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Arnel Ortiguerra",
+        "contact_title": "Purchase Exec",
+        "description": "REMOVE, in Burlingame, (San Mateo County). Caterers. 100-249 employees.",
+        "lat": 37.6002938,
+        "lng": -122.3789084,
+        "naics4": "7223",
+        "naics_title": "Special Food Services",
+        "name": "REMOVE",
+        "sector": "Hospitality & Food Service",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 4,
+        "soc_titles": {
+          "11-9051": "Food Service Managers",
+          "35-1011": "Chefs and Head Cooks",
+          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
+          "41-1011": "First-Line Supervisors of Retail Sales Workers"
+        },
+        "socs": [
+          "35-1012",
+          "35-1011",
+          "11-9051",
+          "41-1011"
+        ],
+        "website": "FLYINGFOOD.COM"
+      },
+      {
+        "contact_name": "Jennifer Ventura",
+        "contact_title": "Site Manager",
         "description": "A seafood restaurant and market.",
         "lat": 37.5590604,
         "lng": -122.2969242,
@@ -562,111 +703,6 @@
           "41-1011"
         ],
         "website": "https://www.thefishmarket.com/"
-      },
-      {
-        "contact_name": "Dave Nash",
-        "contact_title": "President",
-        "description": "Autobahn Motors is a car dealership.",
-        "lat": 37.5311829,
-        "lng": -122.2702155,
-        "naics4": "4411",
-        "naics_title": "Automobile Dealers",
-        "name": "Autobahn Motors",
-        "sector": "Retail",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 1,
-        "soc_titles": {
-          "41-1011": "First-Line Supervisors of Retail Sales Workers"
-        },
-        "socs": [
-          "41-1011"
-        ],
-        "website": "https://www.autobahnmotors.com/"
-      },
-      {
-        "contact_name": "Rick Arslanian",
-        "contact_title": "Manager",
-        "description": "Boardwalk Chevrolet is a dealership selling Chevrolet vehicles.",
-        "lat": 37.4971351,
-        "lng": -122.2241936,
-        "naics4": "4411",
-        "naics_title": "Automobile Dealers",
-        "name": "Boardwalk Chevrolet",
-        "sector": "Retail",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 1,
-        "soc_titles": {
-          "41-1011": "First-Line Supervisors of Retail Sales Workers"
-        },
-        "socs": [
-          "41-1011"
-        ],
-        "website": "https://www.boardwalkchevrolet.com/"
-      },
-      {
-        "contact_name": "Ray Chin",
-        "contact_title": "Owner",
-        "description": "Lexus of Serramonte is a dealership selling Lexus vehicles.",
-        "lat": 37.6720165,
-        "lng": -122.4640591,
-        "naics4": "4411",
-        "naics_title": "Automobile Dealers",
-        "name": "Lexus of Serramonte",
-        "sector": "Retail",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 1,
-        "soc_titles": {
-          "41-1011": "First-Line Supervisors of Retail Sales Workers"
-        },
-        "socs": [
-          "41-1011"
-        ],
-        "website": "https://www.lexusserramonte.com/"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "Putnam Automotive is a company involved in the automotive industry.",
-        "lat": 37.5783624,
-        "lng": -122.3424594,
-        "naics4": "4411",
-        "naics_title": "Automobile Dealers",
-        "name": "Putnam Automotive",
-        "sector": "Retail",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 1,
-        "soc_titles": {
-          "41-1011": "First-Line Supervisors of Retail Sales Workers"
-        },
-        "socs": [
-          "41-1011"
-        ],
-        "website": "https://www.putnamauto.com/"
-      },
-      {
-        "contact_name": "Bob Giarrusso",
-        "contact_title": "General Mgr",
-        "description": "Putnam Chevrolet is a dealership selling Chevrolet vehicles.",
-        "lat": 37.5783624,
-        "lng": -122.3424594,
-        "naics4": "4411",
-        "naics_title": "Automobile Dealers",
-        "name": "Putnam Chevrolet",
-        "sector": "Retail",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 1,
-        "soc_titles": {
-          "41-1011": "First-Line Supervisors of Retail Sales Workers"
-        },
-        "socs": [
-          "41-1011"
-        ],
-        "website": "https://www.putnamchevy.com/"
       }
     ],
     "region": "Bay",
@@ -676,7 +712,7 @@
       "San Mateo"
     ],
     "shown": 25,
-    "total": 72
+    "total": 78
   },
   "/programs": {
     "latest_award_year": "2024-2025",

@@ -2,8 +2,8 @@
   "/employers": {
     "employers": [
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Robin Lafever",
+        "contact_title": "Other",
         "description": "SLAC National Accelerator Laboratory is a research institution.",
         "lat": 37.4287473,
         "lng": -122.1898306,
@@ -228,6 +228,48 @@
         "website": "https://www.tutorworks.org/"
       },
       {
+        "contact_name": "Ralph Chavez",
+        "contact_title": "Administrator",
+        "description": "Community Gate Path Adult Care offers adult care services.",
+        "lat": 37.5900575,
+        "lng": -122.3848176,
+        "naics4": "6241",
+        "naics_title": "Individual and Family Services",
+        "name": "Community Gate Path Adult Care",
+        "sector": "Healthcare",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "ABILITYPATH.ORG"
+      },
+      {
+        "contact_name": "Amanda Freeman",
+        "contact_title": "Manager",
+        "description": "Crisis Intervention & Suicide Prevention offers support for individuals in crisis.",
+        "lat": 37.4959658,
+        "lng": -122.2517307,
+        "naics4": "6241",
+        "naics_title": "Individual and Family Services",
+        "name": "Crisis Intervention & Suicide Prevention",
+        "sector": "Healthcare",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "STAR-VISTA.ORG"
+      },
+      {
         "contact_name": "Michael Denatale",
         "contact_title": "Principal",
         "description": "Jefferson High School is an educational institution for high school students.",
@@ -247,6 +289,27 @@
           "39-9031"
         ],
         "website": "https://jhs.juhsd.net/"
+      },
+      {
+        "contact_name": "Joanne Sanchez",
+        "contact_title": "Manager",
+        "description": "Red Morton Community Center is a local community hub.",
+        "lat": 37.4678719,
+        "lng": -122.2397619,
+        "naics4": "6241",
+        "naics_title": "Individual and Family Services",
+        "name": "Red Morton Community Center",
+        "sector": "Healthcare",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "REDWOODCITY.ORG"
       },
       {
         "contact_name": "Guillermo Acavedo",
@@ -498,75 +561,6 @@
           "39-9031"
         ],
         "website": "https://bowditch.smfcsd.net/"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "Brewer Island Elementary School is an educational institution for elementary students.",
-        "lat": 37.5610694,
-        "lng": -122.2603444,
-        "naics4": "6111",
-        "naics_title": "Elementary and Secondary Schools",
-        "name": "Brewer Island Elementary School",
-        "sector": "Education",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 2,
-        "soc_titles": {
-          "25-2012": "Kindergarten Teachers, Except Special Education",
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "25-2012",
-          "39-9031"
-        ],
-        "website": "https://brewerisland.smfcsd.net/"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "Bright Horizon Chinese School offers Chinese language education.",
-        "lat": 37.5603248,
-        "lng": -122.2743221,
-        "naics4": "6111",
-        "naics_title": "Elementary and Secondary Schools",
-        "name": "Bright Horizon Chinese School",
-        "sector": "Education",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 2,
-        "soc_titles": {
-          "25-2012": "Kindergarten Teachers, Except Special Education",
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "25-2012",
-          "39-9031"
-        ],
-        "website": "https://brighthorizonchineseschool.com/"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "Burkard School is an educational institution.",
-        "lat": 37.5569477,
-        "lng": -122.3165401,
-        "naics4": "6111",
-        "naics_title": "Elementary and Secondary Schools",
-        "name": "Burkard School",
-        "sector": "Education",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 2,
-        "soc_titles": {
-          "25-2012": "Kindergarten Teachers, Except Special Education",
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "25-2012",
-          "39-9031"
-        ],
-        "website": "https://theburkardschool.org/"
       }
     ],
     "region": "Bay",
@@ -576,7 +570,7 @@
       "San Mateo"
     ],
     "shown": 25,
-    "total": 48
+    "total": 51
   },
   "/programs": {
     "latest_award_year": "2024-2025",

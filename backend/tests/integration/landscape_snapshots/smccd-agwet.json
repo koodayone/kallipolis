@@ -4,6 +4,29 @@
       {
         "contact_name": null,
         "contact_title": null,
+        "description": "A company focused on managing dairy operations.",
+        "lat": 37.6624937,
+        "lng": -122.3926385,
+        "naics4": "1121",
+        "naics_title": "Cattle Ranching and Farming",
+        "name": "Dairy Management",
+        "sector": "Agriculture",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 2,
+        "soc_titles": {
+          "19-4012": "Agricultural Technicians",
+          "19-4013": "Food Science Technicians"
+        },
+        "socs": [
+          "19-4012",
+          "19-4013"
+        ],
+        "website": "USDAIRY.COM"
+      },
+      {
+        "contact_name": "Georgette Guerra",
+        "contact_title": "President",
         "description": "A food company with Italian origins or focus.",
         "lat": 37.6406095,
         "lng": -122.4064293,
@@ -23,6 +46,29 @@
           "19-4013"
         ],
         "website": "https://www.italfoodsinc.com/"
+      },
+      {
+        "contact_name": "Domingo Garcia",
+        "contact_title": "General Mgr",
+        "description": "A brewery and restaurant.",
+        "lat": 37.5783624,
+        "lng": -122.3424594,
+        "naics4": "3121",
+        "naics_title": "Beverage Manufacturing",
+        "name": "Steelhead Brewing Co",
+        "sector": "Manufacturing",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 2,
+        "soc_titles": {
+          "19-4012": "Agricultural Technicians",
+          "19-4013": "Food Science Technicians"
+        },
+        "socs": [
+          "19-4013",
+          "19-4012"
+        ],
+        "website": "STEELHEADBREWERY.COM"
       },
       {
         "contact_name": null,
@@ -293,8 +339,8 @@
         "website": "https://cokefarm.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Dave Kawahara",
+        "contact_title": "President",
         "description": "Kawahara Nurseries is a wholesale provider of fresh and healthy plants, including annuals, perennials, succulents, vegetables, and herbs. They serve licensed landscapers, independent garden centers, and retailers throughout California and Northern Nevada, focusing on quality and sustainable growing practices.",
         "lat": 37.159528038366,
         "lng": -121.666839767525,
@@ -316,8 +362,8 @@
         "website": "https://www.kniplants.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Joseph J Stirlacci",
+        "contact_title": "Vice President",
         "description": "Monterey Gourmet Foods manufactures authentic, flavorful skillet meals, including various ravioli and seafood dishes, crafted from simple, all-natural ingredients. Rooted in Central California, the company focuses on quality, health, and nutrition, serving consumers with easily prepared gourmet food products.",
         "lat": 36.986398722429,
         "lng": -121.547817324743,
@@ -339,8 +385,8 @@
         "website": "https://www.montereygourmetfoods.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Jared Gill",
+        "contact_title": "Manager",
         "description": "Olam Group is a leading food and agri-business operating in over 50 countries, supplying food and ingredients to over 11,000 customers globally. It focuses on re-imagining global agriculture and food systems, offering sustainable, natural, value-added food products and ingredients through its Olam Food Ingredients and Olam Agri businesses.",
         "lat": 37.003122763141,
         "lng": -121.53936960408,
@@ -408,8 +454,8 @@
         "website": "https://pitcofoods.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Terry Hood",
+        "contact_title": "Vice President",
         "description": "Kellogg Company was a multinational food manufacturer and wholesaler, producing breakfast cereals, snacks, and convenience foods like Pringles and Eggo. It served global consumers and retailers and operated a manufacturing facility in San Jose, California.",
         "lat": 37.355995373875,
         "lng": -121.870819809228,
@@ -450,8 +496,8 @@
         "website": "https://www.neiljonesfoodcompany.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Tiffani Martin",
+        "contact_title": "Director",
         "description": "The Marzetti Company manufactures a variety of food products including sauces, dressings, dips, breads, and pastas. They serve both retail consumers with brands like Marzetti\u00ae and New York Bakery\u00ae, and foodservice partners such as Chick-fil-A\u00ae and Olive Garden\u00ae, bringing flavor and quality to kitchens.",
         "lat": 37.423369006101,
         "lng": -121.890756152436,
@@ -478,8 +524,8 @@
       "San Mateo",
       "Santa Clara"
     ],
-    "shown": 21,
-    "total": 28
+    "shown": 23,
+    "total": 30
   },
   "/programs": {
     "latest_award_year": "2024-2025",

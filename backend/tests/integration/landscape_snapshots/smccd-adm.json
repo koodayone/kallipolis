@@ -43,8 +43,8 @@
         "website": "https://www.sri.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Catherine Ford Corrigan",
+        "contact_title": "CEO",
         "description": "A scientific and engineering consulting firm.",
         "lat": 37.4812454,
         "lng": -122.1755113,
@@ -121,8 +121,8 @@
         "website": "https://www.cslvifor.us/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Jonathan Waldstreicher",
+        "contact_title": "Board Member",
         "description": "Galvanize Therapeutics is a biotechnology company.",
         "lat": 37.5076791,
         "lng": -122.2519693,
@@ -164,8 +164,8 @@
         "website": "https://galvanizetx.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Stephen D Mincey",
+        "contact_title": "CEO",
         "description": "An architectural and engineering firm.",
         "lat": 37.4877764,
         "lng": -122.2323105,
@@ -205,8 +205,8 @@
         "website": "https://des-ae.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Andrew Clare",
+        "contact_title": "CEO",
         "description": "A company developing aerial logistics and drone technology.",
         "lat": 37.6521534,
         "lng": -122.3928729,
@@ -244,6 +244,47 @@
           "17-3012"
         ],
         "website": "https://elroyair.com/"
+      },
+      {
+        "contact_name": "Andrew Degraca",
+        "contact_title": "Director",
+        "description": "A government agency responsible for monitoring and regulating water quality.",
+        "lat": 37.5865829,
+        "lng": -122.3384383,
+        "naics4": "5413",
+        "naics_title": "Architectural, Engineering, and Related Services",
+        "name": "Water Quality Bureau",
+        "sector": "Professional Services",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 11,
+        "soc_titles": {
+          "17-3012": "Electrical and Electronics Drafters",
+          "17-3013": "Mechanical Drafters",
+          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+          "17-3026": "Industrial Engineering Technologists and Technicians",
+          "17-3027": "Mechanical Engineering Technologists and Technicians",
+          "17-3029": "Engineering Technologists and Technicians, Except Drafters, All Other",
+          "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+          "49-9041": "Industrial Machinery Mechanics",
+          "49-9043": "Maintenance Workers, Machinery",
+          "49-9044": "Millwrights"
+        },
+        "socs": [
+          "17-3023",
+          "17-3029",
+          "17-3013",
+          "17-3027",
+          "17-3012",
+          "17-3026",
+          "49-9041",
+          "17-3024",
+          "49-2094",
+          "49-9043",
+          "49-9044"
+        ],
+        "website": "SFPUC.ORG"
       },
       {
         "contact_name": "James Farrey",
@@ -324,8 +365,8 @@
         "website": "https://www.leemah.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Fabian Gerlinghaus",
+        "contact_title": "CEO",
         "description": "Cellares Corporation is a biotechnology company.",
         "lat": 37.6555002,
         "lng": -122.389339,
@@ -361,8 +402,8 @@
         "website": "https://www.cellares.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Taylor C Harris",
+        "contact_title": "CEO",
         "description": "Cutera is a medical device company specializing in aesthetic and dermatology solutions.",
         "lat": 37.6732309,
         "lng": -122.3910941,
@@ -398,8 +439,8 @@
         "website": "https://cutera.com/us-en/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Lynn Seely",
+        "contact_title": "CEO",
         "description": "Lyell Immunopharma is a biotechnology company developing cell therapies.",
         "lat": 37.6486582,
         "lng": -122.3872868,
@@ -435,8 +476,8 @@
         "website": "https://www.lyell.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Christopher Peetz",
+        "contact_title": "CEO",
         "description": "Mirum Pharmaceuticals is a biopharmaceutical company.",
         "lat": 37.55234,
         "lng": -122.2801854,
@@ -472,8 +513,8 @@
         "website": "https://mirumpharma.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Frank D Lee",
+        "contact_title": "Board Member",
         "description": "Pacira Biosciences is a biopharmaceutical company.",
         "lat": 37.6897794,
         "lng": -122.391832,
@@ -509,8 +550,45 @@
         "website": "https://www.pacira.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "John Reed",
+        "contact_title": "President",
+        "description": "Principia Biopharma is a biopharmaceutical company.",
+        "lat": 37.6545478,
+        "lng": -122.4006126,
+        "naics4": "3254",
+        "naics_title": "Pharmaceutical and Medicine Manufacturing",
+        "name": "Principia Biopharma",
+        "sector": "Manufacturing",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 9,
+        "soc_titles": {
+          "17-3013": "Mechanical Drafters",
+          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+          "17-3026": "Industrial Engineering Technologists and Technicians",
+          "17-3027": "Mechanical Engineering Technologists and Technicians",
+          "17-3029": "Engineering Technologists and Technicians, Except Drafters, All Other",
+          "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+          "49-9041": "Industrial Machinery Mechanics",
+          "49-9043": "Maintenance Workers, Machinery"
+        },
+        "socs": [
+          "49-9041",
+          "17-3026",
+          "49-9043",
+          "17-3023",
+          "17-3029",
+          "49-2094",
+          "17-3027",
+          "17-3013",
+          "17-3024"
+        ],
+        "website": "PRINCIPIABIO.COM"
+      },
+      {
+        "contact_name": "Marshall Fordyce",
+        "contact_title": "CEO",
         "description": "Vera Therapeutics is a biotechnology company.",
         "lat": 37.6897794,
         "lng": -122.391832,
@@ -546,8 +624,8 @@
         "website": "https://veratx.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Philip Desimone",
+        "contact_title": "CEO",
         "description": "A company likely involved in materials, technology, or environmental services.",
         "lat": 37.4866904,
         "lng": -122.2087565,
@@ -577,8 +655,8 @@
         "website": "https://www.carbon3d.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Natasha Lahlouh",
+        "contact_title": "Partner",
         "description": "A business name, likely a restaurant or retail establishment.",
         "lat": 37.5946111,
         "lng": -122.3690256,
@@ -639,8 +717,8 @@
         "website": "https://www.moquinpress.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Mel Lew",
+        "contact_title": "Manager",
         "description": "American Window Film San Francisco provides window film installation services.",
         "lat": 37.6002938,
         "lng": -122.3789084,
@@ -881,90 +959,6 @@
           "49-2092"
         ],
         "website": "https://www.northstarphotonics.com/"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "Soleno Therapeutics is a biopharmaceutical company.",
-        "lat": 37.5355849,
-        "lng": -122.2541914,
-        "naics4": "3345",
-        "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
-        "name": "Soleno Therapeutics",
-        "sector": "Manufacturing",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 12,
-        "soc_titles": {
-          "17-3012": "Electrical and Electronics Drafters",
-          "17-3013": "Mechanical Drafters",
-          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
-          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
-          "17-3026": "Industrial Engineering Technologists and Technicians",
-          "17-3027": "Mechanical Engineering Technologists and Technicians",
-          "17-3029": "Engineering Technologists and Technicians, Except Drafters, All Other",
-          "49-2092": "Electric Motor, Power Tool, and Related Repairers",
-          "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-          "49-9012": "Control and Valve Installers and Repairers, Except Mechanical Door",
-          "49-9041": "Industrial Machinery Mechanics",
-          "49-9043": "Maintenance Workers, Machinery"
-        },
-        "socs": [
-          "17-3023",
-          "17-3026",
-          "17-3029",
-          "49-2094",
-          "49-9041",
-          "17-3027",
-          "17-3024",
-          "17-3012",
-          "17-3013",
-          "49-9012",
-          "49-9043",
-          "49-2092"
-        ],
-        "website": "https://soleno.life/"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "A company name, potentially in environmental consulting or engineering.",
-        "lat": 37.589071,
-        "lng": -122.3351167,
-        "naics4": "5413",
-        "naics_title": "Architectural, Engineering, and Related Services",
-        "name": "EKI",
-        "sector": "Professional Services",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 11,
-        "soc_titles": {
-          "17-3012": "Electrical and Electronics Drafters",
-          "17-3013": "Mechanical Drafters",
-          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
-          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
-          "17-3026": "Industrial Engineering Technologists and Technicians",
-          "17-3027": "Mechanical Engineering Technologists and Technicians",
-          "17-3029": "Engineering Technologists and Technicians, Except Drafters, All Other",
-          "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-          "49-9041": "Industrial Machinery Mechanics",
-          "49-9043": "Maintenance Workers, Machinery",
-          "49-9044": "Millwrights"
-        },
-        "socs": [
-          "17-3023",
-          "17-3029",
-          "17-3013",
-          "17-3027",
-          "17-3012",
-          "17-3026",
-          "49-9041",
-          "17-3024",
-          "49-2094",
-          "49-9043",
-          "49-9044"
-        ],
-        "website": "https://www.ekiconsult.com/"
       }
     ],
     "region": "Bay",
@@ -974,7 +968,7 @@
       "San Mateo"
     ],
     "shown": 25,
-    "total": 47
+    "total": 49
   },
   "/programs": {
     "latest_award_year": "2024-2025",

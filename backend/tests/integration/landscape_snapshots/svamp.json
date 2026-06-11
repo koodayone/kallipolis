@@ -2,8 +2,8 @@
   "/employers": {
     "employers": [
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Lisa T Su",
+        "contact_title": "CEO",
         "description": "Advanced Micro Devices (AMD), headquartered in Santa Clara, California, designs high-performance CPUs, GPUs, and adaptive computing solutions. Serving consumer, commercial, and data center markets, AMD's technology powers PCs, gaming, and AI applications globally, with over 25,000 employees.",
         "lat": 37.382308045798,
         "lng": -121.971776464229,
@@ -45,8 +45,8 @@
         "website": "https://www.amd.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Yoshiaki Yoshida",
+        "contact_title": "CEO",
         "description": "Advantest Corporation develops and manufactures automated test equipment for the semiconductor industry, including SoC and memory test systems, handlers, and metrology tools. They serve customers globally, enabling the development of advanced technologies for a sustainable future.",
         "lat": 37.398319575572,
         "lng": -121.931688781653,
@@ -88,8 +88,8 @@
         "website": "https://www.advantest.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Padraig Mcdonnell",
+        "contact_title": "CEO",
         "description": "Agilent Technologies provides laboratory instruments, software, services, and consumables for life sciences, diagnostics, and applied chemical markets. They serve over 285,000 laboratories across 110 countries, focusing on advancing scientific discovery and innovation, including solutions for cell analysis, spectroscopy, and PFAS testing.",
         "lat": 37.323133359253,
         "lng": -122.00127794829,
@@ -174,8 +174,8 @@
         "website": "https://www.alpsalpine.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Prasad Keshav",
+        "contact_title": "Vice President",
         "description": "Applied Materials delivers material innovation, specializing in modifying materials at atomic levels on an industrial scale. The company provides products and services for semiconductor, display, and automation software, serving customers globally to advance technology and enable next-gen AI chips.",
         "lat": 37.3783132,
         "lng": -121.9625211,
@@ -260,8 +260,8 @@
         "website": "https://www.archer.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Mike Luther",
+        "contact_title": "Owner",
         "description": "Arm is a global semiconductor and software design company that develops and licenses CPU, GPU, and NPU architectures and IP. It serves diverse markets including cloud and data centers, autonomous machines, mobile and PC, and embedded IoT devices, with over 350 billion Arm-based chips shipped to date.",
         "lat": 37.41546128537,
         "lng": -121.948294581824,
@@ -432,8 +432,8 @@
         "website": "https://www.cel.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Venkat Mattela",
+        "contact_title": "CEO",
         "description": "Ceremorphic develops energy-efficient AI supercomputing solutions leveraging proprietary quantum-inspired qubit-based processing and 3nm process technology. They serve markets including datacenters, AI training, life sciences, automotive, robotics, and metaverse processing, aiming to transform high-performance AI and drug discovery.",
         "lat": 37.376273554011,
         "lng": -121.920564311885,
@@ -475,8 +475,8 @@
         "website": "https://ceremorphic.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Phillip Menges",
+        "contact_title": "CEO",
         "description": "Cirexx International, founded in 1980, is a Silicon Valley-based electronic solutions company specializing in PCB layout, fabrication, and assembly. They provide quick-turn, high-reliability Flex, Rigid-Flex, RF/Microwave, HDI, and Rigid Circuit Boards for industries like military, aerospace, and medical, with all manufacturing in the USA.",
         "lat": 37.382140604903,
         "lng": -121.948544373512,
@@ -518,8 +518,8 @@
         "website": "https://www.cirexx.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Luis Spinelli",
+        "contact_title": "Executive VP",
         "description": "Coherent is a global leader in materials, networking, and lasers, harnessing photons to drive innovation. They provide advanced optical solutions, engineered materials, and high-precision laser technologies for datacenter, communications, and industrial markets, including manufacturing, research, and semiconductor equipment.",
         "lat": 37.40454308641,
         "lng": -121.984326818974,
@@ -604,8 +604,8 @@
         "website": "https://flex.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Terashi Taro",
+        "contact_title": "Senior VP",
         "description": "Horizon Robotics is a leading provider of smart driving solutions for passenger vehicles, developing AI chips and integrated software/hardware for ADAS and autonomous driving. Serving global automotive OEMs and Tier 1 suppliers, it has shipped over 10 million Journey series units, with a presence in the Bay Area for computer programming services.",
         "lat": 37.325525382027,
         "lng": -122.014260319184,
@@ -647,8 +647,8 @@
         "website": "https://www.horizon.auto/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Uzi Sasson",
+        "contact_title": "CEO",
         "description": "IXYS, as part of Littelfuse, manufactures and provides circuit protection, power control, and sensing solutions. They offer a unified portfolio of switching solutions, automotive fuse holders, and gate drivers, serving various industries globally with products for safe and efficient electrical energy transfer.",
         "lat": 37.407012884957,
         "lng": -121.914411540037,
@@ -733,8 +733,8 @@
         "website": "https://www.infineon.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Paul Lencioni",
+        "contact_title": "Owner",
         "description": "Lenthor Engineering, based in Milpitas, California, designs, manufactures, and assembles flexible and rigid-flex printed circuit boards. Serving defense, aerospace, medical, and semiconductor markets, they provide high-reliability solutions for mission-critical applications, operating from a 63,000 sq ft facility.",
         "lat": 37.426458732636,
         "lng": -121.898005418321,
@@ -776,8 +776,8 @@
         "website": "https://www.lenthor.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Joel Becker",
+        "contact_title": "Board Member",
         "description": "NeuroPace develops the RNS System, an FDA-approved epilepsy device that delivers personalized treatment by responding to abnormal brain activity. It serves adults with drug-resistant focal epilepsy, providing significant seizure reduction and quality of life improvements through personalized treatment and empowering insights from EEG data.",
         "lat": 37.389951042411,
         "lng": -122.048608602832,
@@ -819,8 +819,8 @@
         "website": "https://www.neuropace.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Shannyn Harrison",
+        "contact_title": "Partner",
         "description": "Sciton Technologies, based in Palo Alto, California, manufactures advanced medical and aesthetic laser and light source systems, including JOULE, mJOULE, and OMNI platforms. Serving medical practices globally, Sciton provides best-in-class treatments for various aesthetic applications, focusing on quality, versatility, and long-term profitability for providers.",
         "lat": 37.42400637555,
         "lng": -122.100043830167,
@@ -905,8 +905,8 @@
         "website": "https://superiorsensors.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Rahul Patel",
+        "contact_title": "CEO",
         "description": "Synaptics develops human interface technologies, combining IoT and AI to create power-efficient processors, wireless connectivity solutions, and advanced sensing products. They serve diverse markets like PC, automotive, mobile, and smart security, with over 2,600 patents and partnerships with 470+ OEMs, enabling intelligent IoT edge devices.",
         "lat": 37.388926935287,
         "lng": -121.893607287369,
@@ -948,8 +948,8 @@
         "website": "https://www.synaptics.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Heather Hong",
+        "contact_title": "Director",
         "description": "Tecan Systems develops and manufactures automated liquid handling, microplate readers, and diagnostic solutions for life science research and clinical diagnostics globally. They serve academic, pharmaceutical, and diagnostic laboratories, offering instruments, software, and OEM services.",
         "lat": 37.386515939778,
         "lng": -121.922236198773,
@@ -991,8 +991,8 @@
         "website": "https://www.tecan.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Dalia Flores",
+        "contact_title": "Manager",
         "description": "Alpha Teknova manufactures high-quality reagents, including buffers, media, and water, for the life sciences industry. They serve over 3,000 customers in academia, biotechnology, and biopharmaceuticals, offering both off-the-shelf and custom formulations from discovery through commercialization in their 180,000 sq ft ISO 13485 certified facilities.",
         "lat": 36.890957072976,
         "lng": -121.39683625885,
@@ -1073,8 +1073,8 @@
         "website": "https://www.astrazeneca.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Doug Stenholm",
+        "contact_title": "Operations",
         "description": "BD (Becton, Dickinson and Company) is a global medical technology company that develops, manufactures, and sells medical devices, instrument systems, and reagents. It serves clinicians, laboratories, pharmacies, and surgical suites, focusing on solutions for medication management, patient safety, and diagnostic accuracy to advance the world of health.",
         "lat": 37.40408595394,
         "lng": -121.901707257999,
@@ -1114,8 +1114,8 @@
         "website": "https://www.bd.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "John Russell",
+        "contact_title": "CEO",
         "description": "Haemonetics provides innovative medical technology solutions to hospitals, plasma centers, and blood centers. They focus on enhancing clinical outcomes, improving procedural effectiveness, optimizing operations for plasma collection, and ensuring blood safety and efficiency.",
         "lat": 37.390063509239,
         "lng": -121.956977129729,
@@ -1155,8 +1155,8 @@
         "website": "https://www.haemonetics.com"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Mia Duran",
+        "contact_title": "Administrator",
         "description": "Lumenis is a global manufacturer of medical equipment, specializing in innovative energy-based technologies for aesthetic and vision markets. They develop minimally invasive solutions for skin, body, and eye care treatments, serving customers in over 88 countries with over 90,000 devices installed worldwide.",
         "lat": 37.371543512078,
         "lng": -121.924317771331,
@@ -1196,8 +1196,8 @@
         "website": "https://lumenis.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Al Stucky Sr",
+        "contact_title": "CEO",
         "description": "MASS Precision is a Silicon Valley-based metal fabrication and EMS solution provider, established in 1984, serving top OEMs and Tier 1 contract manufacturers globally. They specialize in design, prototyping, and full-scale production of metal and electro-mechanical assemblies, supporting New Product Introduction and high mix/low volume production.",
         "lat": 37.395104886616,
         "lng": -121.901745662201,
@@ -1237,8 +1237,8 @@
         "website": "https://massprecision.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Lynn Butera",
+        "contact_title": "Marketing Exec",
         "description": "Milgard Manufacturing, LLC produces custom, quality replacement, and energy-efficient windows and patio doors, including vinyl, fiberglass, and aluminum options. They serve homeowners, architects, contractors, and builders for both new construction and home improvement projects.",
         "lat": 37.12029670265,
         "lng": -121.643532941503,
@@ -1278,8 +1278,8 @@
         "website": "https://www.milgard.com"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "David Woodworth",
+        "contact_title": "Vice President",
         "description": "Olympus Corporation of the Americas develops and delivers medical technology solutions, elevating healthcare standards throughout the patient pathway. The company focuses on medical systems, offering products and solutions for patient care, and provides educational programs through Olympus Continuum.",
         "lat": 37.270022075816,
         "lng": -121.790070905123,
@@ -1319,8 +1319,8 @@
         "website": "https://www.olympusamerica.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Isaac Zacharias",
+        "contact_title": "President",
         "description": "Shockwave Medical pioneers innovative technologies, specifically the Shockwave Intravascular Lithotripsy (IVL) system, to improve lives globally. They develop devices for coronary and peripheral artery disease, transforming care standards and driving better outcomes for underserved patients with cardiovascular calcium. The company focuses on medical device manufacturing and serves healthcare providers and patients worldwide.",
         "lat": 37.409009698648,
         "lng": -121.981927761049,
@@ -1401,8 +1401,8 @@
         "website": "https://www.siemens-healthineers.com/ultrasound"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Dean Storkan",
+        "contact_title": "Owner",
         "description": "TriCal Inc. provides soil fumigation products and solutions, including TriClor, to prevent soil-borne diseases and optimize harvest yields. They serve growers of various crops like strawberries, tree fruit, nuts, and grapes, focusing on healthy fields and sustainable practices.",
         "lat": 36.8527435,
         "lng": -121.3903234,
@@ -1442,8 +1442,8 @@
         "website": "https://www.trical.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Christopher Toth",
+        "contact_title": "CEO",
         "description": "Varian Medical Systems, a Siemens Healthineers Company, specializes in elevating cancer care across the entire patient journey. They provide advanced solutions for radiosurgery, radiotherapy, imaging, brachytherapy, adaptive therapy, interventional oncology, and software, serving healthcare providers and patients worldwide to improve outcomes.",
         "lat": 37.4174613,
         "lng": -122.1430738,
@@ -1483,8 +1483,8 @@
         "website": "https://www.varian.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "James Palazzolo",
+        "contact_title": "President",
         "description": "ZOLL Medical, an Asahi Kasei company, manufactures medical devices and related software solutions to empower healthcare professionals and lay rescuers in saving lives. They offer products for public access, non-acute care, EMS and fire, hospital, military, and cardiac patient management, focusing on emergency, critical, and sleep apnea care.",
         "lat": 37.3915023,
         "lng": -121.8958577,
@@ -1563,8 +1563,8 @@
         "website": "https://www.actiontec.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Pamila Leng",
+        "contact_title": "Sales Exec",
         "description": "Creative Labs is a global manufacturer of digital entertainment products, including Sound Blaster sound cards, speakers, headphones, and webcams. They serve consumers worldwide, offering audio solutions for gaming, movies, music, work, and on-the-move use.",
         "lat": 37.370658321643,
         "lng": -121.922806048147,
@@ -1641,8 +1641,8 @@
         "website": "https://www.dell.com/en-us/shop/dell-thin-clients/ar/4595"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Enrique Lores",
+        "contact_title": "CEO",
         "description": "HP Inc., headquartered in Palo Alto, California, is a global technology manufacturer. It develops and produces personal computers, printers, and 3D printing solutions, serving consumers, small businesses, and large enterprises worldwide. With over 58,000 employees, HP is a leading PC vendor.",
         "lat": 37.413842857373,
         "lng": -122.149693370247,
@@ -1719,8 +1719,8 @@
         "website": "https://www.huawei.com/en/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Michael Lauth",
+        "contact_title": "CEO",
         "description": "Ixsystems, now TrueNAS, develops an Open Enterprise Storage Platform, providing hardware appliances for business and mission-critical applications globally. Serving various industries, its TrueNAS Community Edition has over 15 million downloads across 170+ countries.",
         "lat": 37.394925261066,
         "lng": -121.916252106828,
@@ -1758,8 +1758,8 @@
         "website": "https://www.ixsystems.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Don Foldenauer",
+        "contact_title": "Vice President",
         "description": "Jabil is an engineering-led, supply chain-enabled manufacturing company that designs, builds, and delivers products for over 400 customers across diverse markets globally. With over 140,000 employees in 25+ countries, Jabil provides solutions in industries like healthcare, automotive, and data centers, generating $29.8 billion in revenue.",
         "lat": 37.237001978386,
         "lng": -121.775985862984,
@@ -1797,8 +1797,8 @@
         "website": "https://www.jabil.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Hanneke Faber",
+        "contact_title": "CEO",
         "description": "Logitech designs and manufactures personal peripherals for various uses, including mice, keyboards, webcams, and gaming accessories. They serve consumers, businesses, and educational institutions globally, offering products for productivity, gaming, and streaming. The company emphasizes sustainability in its product design and processes.",
         "lat": 37.412794627678,
         "lng": -121.950034123119,
@@ -1836,8 +1836,8 @@
         "website": "https://www.logitech.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Charles Prober",
+        "contact_title": "Board Member",
         "description": "NETGEAR provides advanced WiFi and networking solutions for small and medium enterprises, AV professionals, and millions of consumers globally. They deliver reliable, scalable, and affordable enterprise-grade networking, AV over IP, and home WiFi systems, focusing on performance, security, and connectivity for digital lives.",
         "lat": 37.39470622723,
         "lng": -121.926731732265,
@@ -1875,8 +1875,8 @@
         "website": "https://www.netgear.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "George Kurian",
+        "contact_title": "CEO",
         "description": "NetApp is an enterprise data storage leader providing unified data storage, data services, and solutions for hybrid cloud environments. They serve various industries, including manufacturing, financial services, and healthcare, helping organizations manage, protect, and optimize their data infrastructure and accelerate AI outcomes.",
         "lat": 37.31916634218,
         "lng": -121.94779139682,
@@ -1914,8 +1914,8 @@
         "website": "https://www.netapp.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Ren Carlo",
+        "contact_title": "Vice President",
         "description": "Panasas, now operating as VDURA, delivers high-performance scale-out NAS storage and PanFS parallel file systems. Serving global industries like manufacturing, life sciences, and AI/ML, their solutions manage petabytes of data, accelerating workflows and simplifying management for demanding, data-intensive applications.",
         "lat": 37.393141982403,
         "lng": -122.04075861208,
@@ -1992,8 +1992,8 @@
         "website": "https://www.ruckusnetworks.com"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Charles Liang",
+        "contact_title": "CEO",
         "description": "Super Micro Computer designs, develops, manufactures, and sells high-performance server and storage solutions, including rackmount servers, GPU systems, and blade servers. They serve data centers, cloud service providers, and enterprises, offering building block solutions for AI infrastructure, HPC, and 5G/Edge computing globally.",
         "lat": 37.391854741809,
         "lng": -121.905387220548,
@@ -2031,8 +2031,8 @@
         "website": "https://www.supermicro.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Douglas G Bergeron",
+        "contact_title": "CEO",
         "description": "Verifone is a global FinTech leader providing electronic payment solutions, including POS devices, software, and services. It serves financial institutions, retailers, and various industries worldwide, managing over 12 billion transactions annually across 165+ countries.",
         "lat": 37.384753072779,
         "lng": -121.926739028418,
@@ -2107,8 +2107,8 @@
         "website": "https://www.allfabprecision.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Rod Miller",
+        "contact_title": "Owner",
         "description": "Alliance Roofing Company, Inc. is a leading commercial roofing and waterproofing contractor established in 1986, serving Northern California. They offer services including low slope roofing, solar roofs, waterproofing, coatings, expansion joints, caulking, sealants, and 24-hour leak response.",
         "lat": 37.366380719144,
         "lng": -121.945757415661,
@@ -2194,8 +2194,8 @@
         "website": "https://cleanroofing.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Robert Laubach",
+        "contact_title": "President",
         "description": "Legacy Roofing, established in 2001, provides professional roofing and waterproofing services for new construction, replacement, solar installation, and repairs. Serving private, public-sector, and general contractors, they offer custom solutions from their San Jose and Salinas, California locations.",
         "lat": 37.372804377761,
         "lng": -121.907143924218,
@@ -2223,8 +2223,8 @@
         "website": "https://www.legacyroofing.net/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "contact_name": "Shone Freeman",
+        "contact_title": "Owner",
         "description": "S.R. Freeman, Inc. provides premium wood frame construction, rough carpentry, and finish carpentry services for high-end custom homes. Serving contractors and homeowners across the San Francisco Bay Area, they specialize in complex architectural designs, structural steel, and detailed trim work, emphasizing quality and collaboration.",
         "lat": 37.279680289573,
         "lng": -121.931631697981,
