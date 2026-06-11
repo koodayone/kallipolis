@@ -49,3 +49,26 @@ class TestSpecFor:
     def test_unknown_resolves_none(self):
         assert registry.spec_for("garbage-adm") is None      # unknown member
         assert registry.spec_for("foothill") is None         # no sector suffix
+
+
+class TestCatalogRollup:
+    def test_college_and_district_rollup(self):
+        # Pure rollup over synthetic supply: two AM feeders + one biotech feeder.
+        from partnerships import members
+        cofs, foothill, deanza = "College of San Mateo", "Foothill College", "De Anza College"
+        college_tops = {foothill: {"095000"}, deanza: {"095000"}, cofs: {"099999"}}
+        sector_candidates = {"adm": {"095000"}, "biotech": {"099999"}}
+        entries = registry._rollup_catalog(college_tops, sector_candidates)
+        ids = {e["id"] for e in entries}
+        # College members feed only the sectors their TOPs intersect.
+        assert {"foothill-adm", "deanza-adm"} <= ids
+        csm_key = members.college_member(cofs).id
+        assert f"{csm_key}-biotech" in ids
+        assert f"{csm_key}-adm" not in ids
+        # District rolls up: Foothill-De Anza CCD (foothill + deanza) is live for adm.
+        assert "foothill-de-anza-adm" in ids
+        # Entries carry display identity for the frontend.
+        e = next(x for x in entries if x["id"] == "foothill-adm")
+        assert e["member_kind"] == "college"
+        assert e["sector_label"] == "Advanced Manufacturing"
+        assert e["region"] == "Bay"

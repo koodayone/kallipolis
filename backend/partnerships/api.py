@@ -37,7 +37,7 @@ from partnerships.models import OpportunityReport, SectorIndex
 from partnerships.opportunity import build_opportunity_report, build_sector_index
 from partnerships.svamp import SvampLandscape, build_landscape
 from partnerships.landscape import REGISTRY, LandscapeSpec, routable_specs
-from partnerships.registry import has_supply, spec_for
+from partnerships.registry import has_supply, live_catalog, spec_for
 from partnerships.resolve import resolve
 from partnerships.svamp_employers import SvampEmployersResult, build_svamp_employers
 from partnerships.svamp_programs import (
@@ -388,6 +388,19 @@ def _register_landscape_routes(spec: LandscapeSpec) -> None:
 # KALLIPOLIS_DRAFT_LANDSCAPES is set. Prod exposes published instances only.
 for _landscape_spec in routable_specs():
     _register_landscape_routes(_landscape_spec)
+
+
+# ── Landscape index — the live (member, sector) catalog ──────────────────────
+# Every college/district member that runs >=1 feeding program per sector (the
+# publish predicate), for the frontend's instance list + generated-route params.
+# Registered BEFORE the dynamic /{instance_id} so "landscapes" isn't swallowed.
+@router.get("/landscapes", name="get_landscape_index")
+def get_landscape_index():
+    try:
+        instances = live_catalog()
+        return {"count": len(instances), "instances": instances}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 # ── Generated member×sector instances (any college / district / region) ──────
