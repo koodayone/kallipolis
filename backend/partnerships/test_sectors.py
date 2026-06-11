@@ -34,22 +34,26 @@ class TestSectorRegistry:
         assert len(SECTORS["biotech"].socs) == 7
         assert len(SECTORS["health"].socs) == 40
         assert len(SECTORS["adm"].socs) == 49
-        assert len(SECTORS["ecu"].socs) == 46  # full set; rule trims to 12 at build
+        assert len(SECTORS["ecu"].socs) == 46  # full set; the rule trims it at build
 
-    def test_ecu_curation_rule(self):
-        # The ECU curation lives as a declarative SectorRule (durable across a
-        # sector_socs.csv regeneration), not hand-deleted SOC rows.
+    def test_uniform_priority_job_rule(self):
+        # SOC curation is a declarative SectorRule applied UNIFORMLY to every
+        # sector — the BACCC/COE "priority job" definition (>=50 regional annual
+        # openings, reachable from a member program, >=$50k near-living-wage) —
+        # durable across a sector_socs.csv regeneration, not hand-deleted rows.
+        # Replaces the earlier ecu-only rule; now ecu and biotech share it.
         from partnerships.landscape import REGISTRY
-        rule = SECTORS["ecu"].rule
-        assert rule.active
-        assert rule.min_openings == 100
-        assert rule.reachable_only and rule.non_empty_only
-        # 070810 Computer Networking (IT/CIS) — crosswalk artifact, excluded feeder.
+        for sid in ("ecu", "biotech", "health", "adm"):
+            rule = SECTORS[sid].rule
+            assert rule.active
+            assert rule.min_openings == 49        # keep regional openings >= 50
+            assert rule.reachable_only
+            assert rule.min_wage == 50_000        # BACCC near-living-wage floor
+        # Per-sector excluded_tops drop crosswalk-noise feeders. 070810 Computer
+        # Networking (IT/CIS) is a noise feeder for ecu.
         assert "070810" in SECTORS["ecu"].excluded_tops
         assert REGISTRY["smccd-ecu"].in_scope("070810") is False
-        # the rule rides onto the instance spec; non-ecu sectors stay no-op.
         assert REGISTRY["smccd-ecu"].soc_rule.active
-        assert not SECTORS["biotech"].rule.active
 
     def test_target_socs_are_middle_skill_anchors(self):
         assert "19-4021" in SECTORS["biotech"].socs   # Biological Technicians
