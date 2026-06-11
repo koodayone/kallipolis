@@ -1,0 +1,1229 @@
+{
+  "/employers": {
+    "employers": [
+      {
+        "description": "SLAC National Accelerator Laboratory is a research institution.",
+        "lat": 37.4287473,
+        "lng": -122.1898306,
+        "naics4": "6117",
+        "naics_title": "Educational Support Services",
+        "name": "SLAC National Accelerator Laboratory",
+        "sector": "Education",
+        "size_class": "1,000-4,999 employees",
+        "size_rank": 9,
+        "soc_count": 2,
+        "soc_titles": {
+          "25-9044": "Teaching Assistants, Postsecondary",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031",
+          "25-9044"
+        ],
+        "website": "https://www6.slac.stanford.edu/"
+      },
+      {
+        "description": "Children & Family Services provides support for children and families.",
+        "lat": 37.5215839,
+        "lng": -122.2666806,
+        "naics4": "6241",
+        "naics_title": "Individual and Family Services",
+        "name": "Children & Family Services",
+        "sector": "Healthcare",
+        "size_class": "500-999 employees",
+        "size_rank": 8,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://www.smcgov.org/hsa/children-and-family-services"
+      },
+      {
+        "description": "Peninsula Family YMCA is a community organization offering various programs and services.",
+        "lat": 37.5685695,
+        "lng": -122.3168591,
+        "naics4": "6241",
+        "naics_title": "Individual and Family Services",
+        "name": "Peninsula Family YMCA",
+        "sector": "Healthcare",
+        "size_class": "250-499 employees",
+        "size_rank": 7,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://www.ymcasf.org/location/peninsula-family-ymca/"
+      },
+      {
+        "description": "Aragon High School is an educational institution for high school students.",
+        "lat": 37.5293696,
+        "lng": -122.306551,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Aragon High School",
+        "sector": "Education",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 2,
+        "soc_titles": {
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2012",
+          "39-9031"
+        ],
+        "website": "https://ahs.smuhsd.org/"
+      },
+      {
+        "description": "Brittan Acres School is an educational institution.",
+        "lat": 37.4962749,
+        "lng": -122.2637179,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Brittan Acres School",
+        "sector": "Education",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 2,
+        "soc_titles": {
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2012",
+          "39-9031"
+        ],
+        "website": "https://brittanacres.scsdk8.org/"
+      },
+      {
+        "description": "Burlingame High School is an educational institution for high school students.",
+        "lat": 37.5821922,
+        "lng": -122.3473676,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Burlingame High School",
+        "sector": "Education",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 2,
+        "soc_titles": {
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2012",
+          "39-9031"
+        ],
+        "website": "https://bhs.smuhsd.org/"
+      },
+      {
+        "description": "Capuchino High School is an educational institution for high school students.",
+        "lat": 37.6258739,
+        "lng": -122.4196884,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Capuchino High School",
+        "sector": "Education",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 2,
+        "soc_titles": {
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2012",
+          "39-9031"
+        ],
+        "website": "https://chs.smuhsd.org/"
+      },
+      {
+        "description": "Carlmont High School is an educational institution for high school students.",
+        "lat": 37.5188101,
+        "lng": -122.2968721,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Carlmont High School",
+        "sector": "Education",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 2,
+        "soc_titles": {
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2012",
+          "39-9031"
+        ],
+        "website": "https://www.carlmonths.org/"
+      },
+      {
+        "description": "San Mateo Adult School offers educational programs for adults.",
+        "lat": 37.5712817,
+        "lng": -122.333817,
+        "naics4": "6117",
+        "naics_title": "Educational Support Services",
+        "name": "San Mateo Adult School",
+        "sector": "Education",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 2,
+        "soc_titles": {
+          "25-9044": "Teaching Assistants, Postsecondary",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031",
+          "25-9044"
+        ],
+        "website": "https://sanmateoadulted.org/"
+      },
+      {
+        "description": "Tutor Works provides academic tutoring services.",
+        "lat": 37.5927497,
+        "lng": -122.3635651,
+        "naics4": "6117",
+        "naics_title": "Educational Support Services",
+        "name": "Tutor Works",
+        "sector": "Education",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 2,
+        "soc_titles": {
+          "25-9044": "Teaching Assistants, Postsecondary",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031",
+          "25-9044"
+        ],
+        "website": "https://www.tutorworks.org/"
+      },
+      {
+        "description": "Jefferson High School is an educational institution for high school students.",
+        "lat": 37.7078161,
+        "lng": -122.4556858,
+        "naics4": "6241",
+        "naics_title": "Individual and Family Services",
+        "name": "Jefferson High School",
+        "sector": "Healthcare",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://jhs.juhsd.net/"
+      },
+      {
+        "description": "Sequoia District Adult School offers educational programs for adults.",
+        "lat": 37.4570961,
+        "lng": -122.1690558,
+        "naics4": "6116",
+        "naics_title": "Other Schools and Instruction",
+        "name": "Sequoia District Adult School",
+        "sector": "Education",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "25-9044": "Teaching Assistants, Postsecondary"
+        },
+        "socs": [
+          "25-9044"
+        ],
+        "website": "https://www.seqsas.org/"
+      },
+      {
+        "description": "Abbott Middle School is an educational institution for middle school students.",
+        "lat": 37.5296066,
+        "lng": -122.3086591,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Abbott Middle School",
+        "sector": "Education",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2012",
+          "39-9031"
+        ],
+        "website": "https://abbott.smfcsd.net/"
+      },
+      {
+        "description": "Allen Elementary School is an educational institution for elementary students.",
+        "lat": 37.625392,
+        "lng": -122.413994,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Allen Elementary School",
+        "sector": "Education",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2012",
+          "39-9031"
+        ],
+        "website": "https://www.sbpsd.org/o/aes"
+      },
+      {
+        "description": "Alta Loma Middle School is an educational institution for middle school students.",
+        "lat": 37.6594383,
+        "lng": -122.4518117,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Alta Loma Middle School",
+        "sector": "Education",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2012",
+          "39-9031"
+        ],
+        "website": "https://altaloma.ssfusd.org/"
+      },
+      {
+        "description": "Audubon Elementary School is an educational institution for elementary students.",
+        "lat": 37.5664962,
+        "lng": -122.2581318,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Audubon Elementary School",
+        "sector": "Education",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2012",
+          "39-9031"
+        ],
+        "website": "https://audubon.smfcsd.net/"
+      },
+      {
+        "description": "Baden Therapeutic Day School provides therapeutic education.",
+        "lat": 37.652027,
+        "lng": -122.4338059,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Baden Therapeutic Day School",
+        "sector": "Education",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2012",
+          "39-9031"
+        ],
+        "website": "https://baden.ssfusd.org/"
+      },
+      {
+        "description": "Bayside Academy is an educational institution.",
+        "lat": 37.5654204,
+        "lng": -122.3005517,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Bayside Academy",
+        "sector": "Education",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2012",
+          "39-9031"
+        ],
+        "website": "https://bayside.smfcsd.net/"
+      },
+      {
+        "description": "Baywood Elementary School is an educational institution for elementary students.",
+        "lat": 37.5293696,
+        "lng": -122.306551,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Baywood Elementary School",
+        "sector": "Education",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2012",
+          "39-9031"
+        ],
+        "website": "https://baywood.smfcsd.net/"
+      },
+      {
+        "description": "Beach Park Elementary School is an educational institution for elementary students.",
+        "lat": 37.5580025,
+        "lng": -122.2704946,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Beach Park Elementary School",
+        "sector": "Education",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2012",
+          "39-9031"
+        ],
+        "website": "https://beachpark.smfcsd.net/"
+      },
+      {
+        "description": "Borel Middle School is an educational institution for middle school students.",
+        "lat": 37.5525255,
+        "lng": -122.3192481,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Borel Middle School",
+        "sector": "Education",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2012",
+          "39-9031"
+        ],
+        "website": "https://borel.smfcsd.net/"
+      },
+      {
+        "description": "Bowditch Middle School is an educational institution for middle school students.",
+        "lat": 37.5604187,
+        "lng": -122.2506881,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Bowditch Middle School",
+        "sector": "Education",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2012",
+          "39-9031"
+        ],
+        "website": "https://bowditch.smfcsd.net/"
+      },
+      {
+        "description": "Brewer Island Elementary School is an educational institution for elementary students.",
+        "lat": 37.5610694,
+        "lng": -122.2603444,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Brewer Island Elementary School",
+        "sector": "Education",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2012",
+          "39-9031"
+        ],
+        "website": "https://brewerisland.smfcsd.net/"
+      },
+      {
+        "description": "Bright Horizon Chinese School offers Chinese language education.",
+        "lat": 37.5603248,
+        "lng": -122.2743221,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Bright Horizon Chinese School",
+        "sector": "Education",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2012",
+          "39-9031"
+        ],
+        "website": "https://brighthorizonchineseschool.com/"
+      },
+      {
+        "description": "Burkard School is an educational institution.",
+        "lat": 37.5569477,
+        "lng": -122.3165401,
+        "naics4": "6111",
+        "naics_title": "Elementary and Secondary Schools",
+        "name": "Burkard School",
+        "sector": "Education",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "25-2012": "Kindergarten Teachers, Except Special Education",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-2012",
+          "39-9031"
+        ],
+        "website": "https://theburkardschool.org/"
+      }
+    ],
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "Education & Human Development",
+    "shown": 25,
+    "total": 48
+  },
+  "/programs": {
+    "latest_award_year": "2024-2025",
+    "matrix": {
+      "cells": [
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "080200"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "080200"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "080200"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "080210"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "080210"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "080210"
+        },
+        {
+          "awards": 23,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "083520"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083520"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083520"
+        },
+        {
+          "awards": 1,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": true,
+          "top6": "083560"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083560"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083560"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130500"
+        },
+        {
+          "awards": 51,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130500"
+        },
+        {
+          "awards": 38,
+          "college": "Ca\u00f1ada College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130500"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130540"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130540"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130540"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130550"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130550"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": true,
+          "top6": "130550"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130580"
+        },
+        {
+          "awards": 1,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "130580"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "130580"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130590"
+        },
+        {
+          "awards": 2,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130590"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "130590"
+        }
+      ],
+      "colleges": [
+        "College of San Mateo",
+        "Skyline College",
+        "Ca\u00f1ada College"
+      ]
+    },
+    "n_colleges": 3,
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "Education & Human Development",
+    "tops": [
+      {
+        "awards_total": 89,
+        "enrollment_total": 868,
+        "n_colleges_offering": 2,
+        "name": "Child Development/Early Care and Education",
+        "soc_count": 1,
+        "top6": "130500"
+      },
+      {
+        "awards_total": 23,
+        "enrollment_total": 99,
+        "n_colleges_offering": 1,
+        "name": "Fitness Trainer",
+        "soc_count": 1,
+        "top6": "083520"
+      },
+      {
+        "awards_total": 2,
+        "enrollment_total": 108,
+        "n_colleges_offering": 1,
+        "name": "Infants and Toddlers",
+        "soc_count": 1,
+        "top6": "130590"
+      },
+      {
+        "awards_total": 1,
+        "enrollment_total": 46,
+        "n_colleges_offering": 0,
+        "name": "Child Development Administration and Management",
+        "soc_count": 1,
+        "top6": "130580"
+      },
+      {
+        "awards_total": 1,
+        "enrollment_total": 0,
+        "n_colleges_offering": 1,
+        "name": "Coaching",
+        "soc_count": 1,
+        "top6": "083560"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Educational Aide (Teacher Assistant)",
+        "soc_count": 2,
+        "top6": "080200"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Educational Aide (Teacher Assistant), Bilingual",
+        "soc_count": 1,
+        "top6": "080210"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Preschool Age Children",
+        "soc_count": 1,
+        "top6": "130540"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 1,
+        "name": "The School Age Child",
+        "soc_count": 1,
+        "top6": "130550"
+      }
+    ]
+  },
+  "landscape": {
+    "aggregate": {
+      "candidate_employers": 247,
+      "combined_awards": 116,
+      "combined_supply_total": 106.17,
+      "gap": 4034,
+      "n_colleges": 3,
+      "n_occupations": 3,
+      "occupations_taught": 2,
+      "regional_demand_total": 4140
+    },
+    "award_years": [
+      "2020-2021",
+      "2021-2022",
+      "2022-2023",
+      "2023-2024",
+      "2024-2025"
+    ],
+    "colleges": [
+      {
+        "cells": [
+          {
+            "annual_openings": 210,
+            "annual_wage": 80260,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 210,
+            "growth_rate": 0.037281016,
+            "programs": [],
+            "soc_code": "25-2012",
+            "supply": 0.0,
+            "title": "Kindergarten Teachers, Except Special Education"
+          },
+          {
+            "annual_openings": 980,
+            "annual_wage": 59540,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 980,
+            "growth_rate": 0.009433937,
+            "programs": [],
+            "soc_code": "25-9044",
+            "supply": 0.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 2950,
+            "annual_wage": 58610,
+            "awards_recent": 24,
+            "course_count": 8,
+            "enrolled": true,
+            "feeding_awards": 24,
+            "gap": 2944,
+            "growth_rate": 0.100811709,
+            "programs": [
+              {
+                "awards": [
+                  1,
+                  7,
+                  2,
+                  17,
+                  23
+                ],
+                "awards_recent": 23,
+                "enrollment": [
+                  22,
+                  49,
+                  59,
+                  54,
+                  76,
+                  70,
+                  99,
+                  99,
+                  99
+                ],
+                "name": "Fitness Trainer",
+                "top6": "083520",
+                "wages": []
+              },
+              {
+                "awards": [
+                  1,
+                  2,
+                  1,
+                  1,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Coaching",
+                "top6": "083560",
+                "wages": []
+              }
+            ],
+            "soc_code": "39-9031",
+            "supply": 6.0,
+            "title": "Exercise Trainers and Group Fitness Instructors"
+          }
+        ],
+        "name": "College of San Mateo"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 210,
+            "annual_wage": 80260,
+            "awards_recent": 54,
+            "course_count": 12,
+            "enrolled": true,
+            "feeding_awards": 54,
+            "gap": 171,
+            "growth_rate": 0.037281016,
+            "programs": [
+              {
+                "awards": [
+                  42,
+                  36,
+                  29,
+                  26,
+                  51
+                ],
+                "awards_recent": 51,
+                "enrollment": [
+                  319,
+                  264,
+                  191,
+                  306,
+                  321,
+                  307,
+                  320,
+                  362,
+                  279
+                ],
+                "name": "Child Development/Early Care and Education",
+                "top6": "130500",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  1,
+                  9,
+                  9,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  37,
+                  null,
+                  27,
+                  null,
+                  31,
+                  null,
+                  32,
+                  null,
+                  25
+                ],
+                "name": "Child Development Administration and Management",
+                "top6": "130580",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  1,
+                  6,
+                  2,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  60,
+                  null,
+                  68,
+                  null,
+                  66,
+                  null,
+                  72,
+                  null,
+                  71
+                ],
+                "name": "Infants and Toddlers",
+                "top6": "130590",
+                "wages": []
+              }
+            ],
+            "soc_code": "25-2012",
+            "supply": 39.17,
+            "title": "Kindergarten Teachers, Except Special Education"
+          },
+          {
+            "annual_openings": 980,
+            "annual_wage": 59540,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 980,
+            "growth_rate": 0.009433937,
+            "programs": [],
+            "soc_code": "25-9044",
+            "supply": 0.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 2950,
+            "annual_wage": 58610,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 2950,
+            "growth_rate": 0.100811709,
+            "programs": [],
+            "soc_code": "39-9031",
+            "supply": 0.0,
+            "title": "Exercise Trainers and Group Fitness Instructors"
+          }
+        ],
+        "name": "Skyline College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 210,
+            "annual_wage": 80260,
+            "awards_recent": 38,
+            "course_count": 14,
+            "enrolled": true,
+            "feeding_awards": 38,
+            "gap": 149,
+            "growth_rate": 0.037281016,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  1,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Educational Aide (Teacher Assistant)",
+                "top6": "080200",
+                "wages": []
+              },
+              {
+                "awards": [
+                  75,
+                  64,
+                  44,
+                  30,
+                  38
+                ],
+                "awards_recent": 38,
+                "enrollment": [
+                  395,
+                  490,
+                  494,
+                  429,
+                  504,
+                  384,
+                  548,
+                  449,
+                  565
+                ],
+                "name": "Child Development/Early Care and Education",
+                "top6": "130500",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  6,
+                  32,
+                  12,
+                  37,
+                  15,
+                  28,
+                  11,
+                  35,
+                  19
+                ],
+                "name": "Child Development Administration and Management",
+                "top6": "130580",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  16,
+                  38,
+                  30,
+                  84,
+                  37,
+                  41,
+                  33,
+                  40,
+                  37
+                ],
+                "name": "Infants and Toddlers",
+                "top6": "130590",
+                "wages": []
+              }
+            ],
+            "soc_code": "25-2012",
+            "supply": 61.0,
+            "title": "Kindergarten Teachers, Except Special Education"
+          },
+          {
+            "annual_openings": 980,
+            "annual_wage": 59540,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 980,
+            "growth_rate": 0.009433937,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  1,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Educational Aide (Teacher Assistant)",
+                "top6": "080200",
+                "wages": []
+              }
+            ],
+            "soc_code": "25-9044",
+            "supply": 0.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 2950,
+            "annual_wage": 58610,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 2950,
+            "growth_rate": 0.100811709,
+            "programs": [],
+            "soc_code": "39-9031",
+            "supply": 0.0,
+            "title": "Exercise Trainers and Group Fitness Instructors"
+          }
+        ],
+        "name": "Ca\u00f1ada College"
+      }
+    ],
+    "enrollment_terms": [
+      "Fall 2021",
+      "Spring 2022",
+      "Fall 2022",
+      "Spring 2023",
+      "Fall 2023",
+      "Spring 2024",
+      "Fall 2024",
+      "Spring 2025",
+      "Fall 2025"
+    ],
+    "executive_summary": "This view examines the regional demand landscape across the 3 education & human development occupations the San Mateo County CCD \u2014 Education & Human Development targets in the Bay Area regional labor market. Regional demand for these occupations totals 4,140 openings per year.",
+    "is_sector_priority": false,
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "Education & Human Development"
+  }
+}

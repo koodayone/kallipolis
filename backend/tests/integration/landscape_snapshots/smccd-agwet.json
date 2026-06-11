@@ -1,0 +1,733 @@
+{
+  "/employers": {
+    "employers": [
+      {
+        "description": "A food company with Italian origins or focus.",
+        "lat": 37.6406095,
+        "lng": -122.4064293,
+        "naics4": "4244",
+        "naics_title": "Grocery and Related Product Merchant Wholesalers",
+        "name": "Italfoods",
+        "sector": "Wholesale",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 2,
+        "soc_titles": {
+          "19-4012": "Agricultural Technicians",
+          "19-4013": "Food Science Technicians"
+        },
+        "socs": [
+          "19-4012",
+          "19-4013"
+        ],
+        "website": "https://www.italfoodsinc.com/"
+      },
+      {
+        "description": "A bakery specializing in bread production.",
+        "lat": 37.6545478,
+        "lng": -122.4006126,
+        "naics4": "4244",
+        "naics_title": "Grocery and Related Product Merchant Wholesalers",
+        "name": "Acme Bread",
+        "sector": "Wholesale",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "19-4012": "Agricultural Technicians",
+          "19-4013": "Food Science Technicians"
+        },
+        "socs": [
+          "19-4012",
+          "19-4013"
+        ],
+        "website": "https://www.acmebread.com/"
+      },
+      {
+        "description": "A bakery operating within a city.",
+        "lat": 37.6458862,
+        "lng": -122.4110509,
+        "naics4": "4244",
+        "naics_title": "Grocery and Related Product Merchant Wholesalers",
+        "name": "City Baking",
+        "sector": "Wholesale",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "19-4012": "Agricultural Technicians",
+          "19-4013": "Food Science Technicians"
+        },
+        "socs": [
+          "19-4012",
+          "19-4013"
+        ],
+        "website": "https://www.citybaking.com/"
+      },
+      {
+        "description": "A food-related business with a western focus.",
+        "lat": 37.6453869,
+        "lng": -122.3992066,
+        "naics4": "4244",
+        "naics_title": "Grocery and Related Product Merchant Wholesalers",
+        "name": "Ifigourmet West",
+        "sector": "Wholesale",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "19-4012": "Agricultural Technicians",
+          "19-4013": "Food Science Technicians"
+        },
+        "socs": [
+          "19-4012",
+          "19-4013"
+        ],
+        "website": "https://ifigourmet.com/"
+      },
+      {
+        "description": "A farm or agricultural business.",
+        "lat": 37.650337,
+        "lng": -122.3892443,
+        "naics4": "4244",
+        "naics_title": "Grocery and Related Product Merchant Wholesalers",
+        "name": "Jacobs Farm Del Cabo",
+        "sector": "Wholesale",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "19-4012": "Agricultural Technicians",
+          "19-4013": "Food Science Technicians"
+        },
+        "socs": [
+          "19-4012",
+          "19-4013"
+        ],
+        "website": "https://www.jacobsfarmdelcabo.com/"
+      },
+      {
+        "description": "Moss Beach Distillery is a restaurant and bar known for its scenic location.",
+        "lat": 37.517766,
+        "lng": -122.5128432,
+        "naics4": "4248",
+        "naics_title": "Beer, Wine, and Distilled Alcoholic Beverage Merchant Wholesalers",
+        "name": "Moss Beach Distillery",
+        "sector": "Wholesale",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "19-4012": "Agricultural Technicians",
+          "19-4013": "Food Science Technicians"
+        },
+        "socs": [
+          "19-4012",
+          "19-4013"
+        ],
+        "website": "https://mossbeachdistillery.com/"
+      },
+      {
+        "description": "A bakery with a Chinese name.",
+        "lat": 37.6891281,
+        "lng": -122.4172806,
+        "naics4": "4244",
+        "naics_title": "Grocery and Related Product Merchant Wholesalers",
+        "name": "Sheng Kee Bakery",
+        "sector": "Wholesale",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "19-4012": "Agricultural Technicians",
+          "19-4013": "Food Science Technicians"
+        },
+        "socs": [
+          "19-4012",
+          "19-4013"
+        ],
+        "website": "https://www.shengkee.com/"
+      },
+      {
+        "description": "A company involved in producing sweet goods or events.",
+        "lat": 37.50723,
+        "lng": -122.255248,
+        "naics4": "4244",
+        "naics_title": "Grocery and Related Product Merchant Wholesalers",
+        "name": "Sweet Productions",
+        "sector": "Wholesale",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "19-4012": "Agricultural Technicians",
+          "19-4013": "Food Science Technicians"
+        },
+        "socs": [
+          "19-4012",
+          "19-4013"
+        ],
+        "website": "http://www.sweetpinc.com/"
+      },
+      {
+        "description": "The municipal department responsible for wastewater management in Daly City.",
+        "lat": 37.7076798,
+        "lng": -122.4858219,
+        "naics4": "9241",
+        "naics_title": "Administration of Environmental Quality Programs",
+        "name": "Daly City Wastewater",
+        "sector": "Government",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "19-4012": "Agricultural Technicians"
+        },
+        "socs": [
+          "19-4012"
+        ],
+        "website": "https://www.dalycity.org/1036/Wastewater"
+      },
+      {
+        "description": "A bakery or food business likely focused on dough-based products.",
+        "lat": 37.5573619,
+        "lng": -122.3163715,
+        "naics4": "3118",
+        "naics_title": "Bakeries and Tortilla Manufacturing",
+        "name": "Drops of Dough",
+        "sector": "Manufacturing",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "19-4013": "Food Science Technicians"
+        },
+        "socs": [
+          "19-4013"
+        ],
+        "website": "https://www.dropsofdough.com/"
+      },
+      {
+        "description": "A bakery that serves as the primary purpose or reason for being.",
+        "lat": 37.6492319,
+        "lng": -122.4168225,
+        "naics4": "3118",
+        "naics_title": "Bakeries and Tortilla Manufacturing",
+        "name": "Raison D'Etre Bakery",
+        "sector": "Manufacturing",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "19-4013": "Food Science Technicians"
+        },
+        "socs": [
+          "19-4013"
+        ],
+        "website": "https://www.raisondetrebakery.com/"
+      },
+      {
+        "description": "A local bakery serving the community.",
+        "lat": 37.4449656,
+        "lng": -122.2341702,
+        "naics4": "3118",
+        "naics_title": "Bakeries and Tortilla Manufacturing",
+        "name": "Village Bakery",
+        "sector": "Manufacturing",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "19-4013": "Food Science Technicians"
+        },
+        "socs": [
+          "19-4013"
+        ],
+        "website": "https://www.tvbwoodside.com/"
+      }
+    ],
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "Ag, Water & Environmental Technologies",
+    "shown": 12,
+    "total": 12
+  },
+  "/programs": {
+    "latest_award_year": "2024-2025",
+    "matrix": {
+      "cells": [
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010100"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010100"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010100"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010300"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010300"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010300"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010400"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010400"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010400"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "011300"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "011300"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "011300"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "019900"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "019900"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "019900"
+        },
+        {
+          "awards": 25,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "126000"
+        },
+        {
+          "awards": 99,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "126000"
+        },
+        {
+          "awards": 43,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "126000"
+        }
+      ],
+      "colleges": [
+        "College of San Mateo",
+        "Skyline College",
+        "Ca\u00f1ada College"
+      ]
+    },
+    "n_colleges": 3,
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "Ag, Water & Environmental Technologies",
+    "tops": [
+      {
+        "awards_total": 167,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Health Professions, Transfer Core Curriculum",
+        "soc_count": 2,
+        "top6": "126000"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Agriculture Technology and Sciences, General",
+        "soc_count": 1,
+        "top6": "010100"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Plant Science",
+        "soc_count": 1,
+        "top6": "010300"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Viticulture, Enology, and Wine Business",
+        "soc_count": 1,
+        "top6": "010400"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Food Processing and Related Technologies",
+        "soc_count": 1,
+        "top6": "011300"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Other Agriculture and Natural Resources",
+        "soc_count": 1,
+        "top6": "019900"
+      }
+    ]
+  },
+  "landscape": {
+    "aggregate": {
+      "candidate_employers": 154,
+      "combined_awards": 167,
+      "combined_supply_total": 0.0,
+      "gap": 300,
+      "n_colleges": 3,
+      "n_occupations": 2,
+      "occupations_taught": 0,
+      "regional_demand_total": 300
+    },
+    "award_years": [
+      "2020-2021",
+      "2021-2022",
+      "2022-2023",
+      "2023-2024",
+      "2024-2025"
+    ],
+    "colleges": [
+      {
+        "cells": [
+          {
+            "annual_openings": 150,
+            "annual_wage": 59140,
+            "awards_recent": 25,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 25,
+            "gap": 150,
+            "growth_rate": 0.032597536,
+            "programs": [
+              {
+                "awards": [
+                  8,
+                  22,
+                  15,
+                  20,
+                  25
+                ],
+                "awards_recent": 25,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Health Professions, Transfer Core Curriculum",
+                "top6": "126000",
+                "wages": []
+              }
+            ],
+            "soc_code": "19-4012",
+            "supply": 0.0,
+            "title": "Agricultural Technicians"
+          },
+          {
+            "annual_openings": 150,
+            "annual_wage": 54610,
+            "awards_recent": 25,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 25,
+            "gap": 150,
+            "growth_rate": 0.044883909,
+            "programs": [
+              {
+                "awards": [
+                  8,
+                  22,
+                  15,
+                  20,
+                  25
+                ],
+                "awards_recent": 25,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Health Professions, Transfer Core Curriculum",
+                "top6": "126000",
+                "wages": []
+              }
+            ],
+            "soc_code": "19-4013",
+            "supply": 0.0,
+            "title": "Food Science Technicians"
+          }
+        ],
+        "name": "College of San Mateo"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 150,
+            "annual_wage": 59140,
+            "awards_recent": 99,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 99,
+            "gap": 150,
+            "growth_rate": 0.032597536,
+            "programs": [
+              {
+                "awards": [
+                  155,
+                  102,
+                  70,
+                  79,
+                  99
+                ],
+                "awards_recent": 99,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Health Professions, Transfer Core Curriculum",
+                "top6": "126000",
+                "wages": []
+              }
+            ],
+            "soc_code": "19-4012",
+            "supply": 0.0,
+            "title": "Agricultural Technicians"
+          },
+          {
+            "annual_openings": 150,
+            "annual_wage": 54610,
+            "awards_recent": 99,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 99,
+            "gap": 150,
+            "growth_rate": 0.044883909,
+            "programs": [
+              {
+                "awards": [
+                  155,
+                  102,
+                  70,
+                  79,
+                  99
+                ],
+                "awards_recent": 99,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Health Professions, Transfer Core Curriculum",
+                "top6": "126000",
+                "wages": []
+              }
+            ],
+            "soc_code": "19-4013",
+            "supply": 0.0,
+            "title": "Food Science Technicians"
+          }
+        ],
+        "name": "Skyline College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 150,
+            "annual_wage": 59140,
+            "awards_recent": 43,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 43,
+            "gap": 150,
+            "growth_rate": 0.032597536,
+            "programs": [
+              {
+                "awards": [
+                  44,
+                  43,
+                  37,
+                  46,
+                  43
+                ],
+                "awards_recent": 43,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Health Professions, Transfer Core Curriculum",
+                "top6": "126000",
+                "wages": []
+              }
+            ],
+            "soc_code": "19-4012",
+            "supply": 0.0,
+            "title": "Agricultural Technicians"
+          },
+          {
+            "annual_openings": 150,
+            "annual_wage": 54610,
+            "awards_recent": 43,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 43,
+            "gap": 150,
+            "growth_rate": 0.044883909,
+            "programs": [
+              {
+                "awards": [
+                  44,
+                  43,
+                  37,
+                  46,
+                  43
+                ],
+                "awards_recent": 43,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Health Professions, Transfer Core Curriculum",
+                "top6": "126000",
+                "wages": []
+              }
+            ],
+            "soc_code": "19-4013",
+            "supply": 0.0,
+            "title": "Food Science Technicians"
+          }
+        ],
+        "name": "Ca\u00f1ada College"
+      }
+    ],
+    "enrollment_terms": [
+      "Fall 2021",
+      "Spring 2022",
+      "Fall 2022",
+      "Spring 2023",
+      "Fall 2023",
+      "Spring 2024",
+      "Fall 2024",
+      "Spring 2025",
+      "Fall 2025"
+    ],
+    "executive_summary": "This view examines the regional demand landscape across the 2 ag, water & environmental technologies occupations the San Mateo County CCD \u2014 Ag, Water & Environmental Technologies targets in the Bay Area regional labor market. Regional demand for these occupations totals 300 openings per year.",
+    "is_sector_priority": false,
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "Ag, Water & Environmental Technologies"
+  }
+}
