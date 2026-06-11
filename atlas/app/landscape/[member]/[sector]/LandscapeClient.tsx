@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 
 import SvampDashboard from "@/college-atlas/partnerships/SvampDashboard";
-import type { LandscapeInstance } from "@/college-atlas/partnerships/landscapeInstances";
+import { registerGeneratedInstance, type LandscapeInstance } from "@/college-atlas/partnerships/landscapeInstances";
 import { fetchLandscapeIndex, generatedInstance } from "@/college-atlas/partnerships/landscapeIndex";
 
 const FULL_CENTER: React.CSSProperties = {
@@ -40,7 +40,9 @@ export default function LandscapeClient() {
     fetchLandscapeIndex().then((idx) => {
       if (!alive) return;
       const entry = idx.find((e) => e.member_id === member && e.sector_id === sector);
-      setIdentity(entry ? generatedInstance(entry) : null);
+      const inst = entry ? generatedInstance(entry) : null;
+      if (inst) registerGeneratedInstance(inst);
+      setIdentity(inst);
     });
     return () => {
       alive = false;
