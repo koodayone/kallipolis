@@ -63,8 +63,11 @@ class Member:
 
 
 def _slug(text: str) -> str:
-    """URL-safe id slug: drop a standalone 'CCD', lowercase, non-alnum → hyphen."""
-    text = re.sub(r"\bCCD\b", "", text)
+    """URL-safe id slug: lowercase, non-alnum → hyphen. District names KEEP their
+    'CCD' so a district id (…-ccd) can never collide with a college backend key —
+    e.g. the college 'Riverside City College' (key 'riverside') vs the district
+    'Riverside CCD'. Without this the member-id namespace overlaps and the
+    /landscape/{member} URL is ambiguous."""
     return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
 
 

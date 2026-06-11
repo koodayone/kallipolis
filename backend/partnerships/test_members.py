@@ -49,7 +49,7 @@ class TestMemberCatalog:
         # "San Mateo County CCD". Same three colleges either way — the pinned
         # member keeps its id/label/URLs; the catalog is the generative source.
         d = members.district_member("San Mateo CCD")
-        assert d.id == "san-mateo"                          # slug (CCD dropped)
+        assert d.id == "san-mateo-ccd"                      # slug keeps CCD (no college-key collision)
         assert len(d.colleges) == 3
         assert {"College of San Mateo", "Skyline College"} <= set(d.colleges)
 
@@ -62,8 +62,9 @@ class TestMemberCatalog:
         assert len(bay.colleges) >= 20
 
     def test_slug(self):
-        assert members._slug("Foothill-De Anza CCD") == "foothill-de-anza"
-        assert members._slug("San Jose-Evergreen CCD") == "san-jose-evergreen"
+        # District slugs KEEP 'ccd' so they can't collide with a college key.
+        assert members._slug("Foothill-De Anza CCD") == "foothill-de-anza-ccd"
+        assert members._slug("San Jose-Evergreen CCD") == "san-jose-evergreen-ccd"
 
 
 class TestRegionResolution:
