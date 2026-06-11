@@ -10,7 +10,7 @@ Coverage:
   - sector_socs.csv <-> _SECTOR_META consistency (no orphan ids on either side)
   - SMCCD MemberSet membership (the three district colleges)
   - landscape_for() composition (id, vocational mode, sector SOCs, draft default)
-  - the full SMCCD sector row in REGISTRY (adm published, rest draft; curated smccd retired)
+  - the full SMCCD sector row in REGISTRY (all 11 sectors published; curated smccd retired)
   - in_scope vocational vs division behavior across the registry
 """
 
@@ -114,9 +114,9 @@ class TestLandscapeComposition:
         for sid in expected:
             assert REGISTRY[sid].vocational is True
             assert REGISTRY[sid].socs  # non-empty SOC set
-        # adm is the published canonical AM surface; the rest are draft.
+        # All 11 SMCCD sector instances are published (the full rail ships).
         assert REGISTRY["smccd-adm"].published is True
-        assert REGISTRY["smccd-biotech"].published is False
+        assert REGISTRY["smccd-biotech"].published is True
 
     def test_in_scope_vocational_vs_division(self):
         from partnerships.landscape import REGISTRY
