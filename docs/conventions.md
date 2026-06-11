@@ -119,7 +119,7 @@ Three further surface forms exist but are **not yet enforced** by the audit: Neo
 
 The `backend_layout` check (in `tools/docs-audit/checks/backend_layout.py`) enforces three structural invariants about `backend/`:
 
-1. Only known directories live at the top of `backend/`. The six feature directories plus the shared-infrastructure directories (`backend/ontology/`, `backend/llm/`, `backend/pipeline/`, `backend/tests/`, `backend/scripts/`, `backend/docs/`) are allowed. A new top-level directory under `backend/` — for example, a catchment named *shared/* or *utils/* — fails the check. New features go in their own feature directory; new shared code goes in `backend/ontology/` or `backend/llm/`.
+1. Only known directories live at the top of `backend/`. The six feature directories plus the shared-infrastructure directories (`backend/ontology/`, `backend/llm/`, `backend/pipeline/`, `backend/tests/`, `backend/docs/`) are allowed. A new top-level directory under `backend/` — for example, a catchment named *shared/* or *utils/* — fails the check. New features go in their own feature directory; new shared code goes in `backend/ontology/` or `backend/llm/`.
 
 2. Each feature directory contains at least `__init__.py`, `api.py`, and `models.py`. A feature missing one of those is either half-built or structurally broken.
 
@@ -159,7 +159,7 @@ If a unit legitimately skips one of the four surface forms — for example, an a
 
 ### Test file location
 
-Unit tests live next to the source files they verify, inside the feature directory. A source file at `backend/students/helpers.py` has its tests at `backend/students/test_helpers.py`. The atlas follows the same rule with colocated `*.test.ts` files under each feature directory in `atlas/college-atlas/`.
+Unit tests live next to the source files they verify, inside the feature directory. A source file at `backend/partnerships/svamp.py` has its tests at `backend/partnerships/test_svamp.py`. The atlas follows the same rule with colocated `*.test.ts` files under each feature directory in `atlas/college-atlas/`.
 
 Integration tests that span multiple features — typically those that require a live Neo4j instance or external APIs — live at `backend/tests/integration/` because they are *not feature-local by definition*. A test exercising partnerships, occupations, and students simultaneously doesn't belong to any single feature, so it goes in a category directory that names what it is (integration tests) rather than where in the feature tree it "attaches."
 

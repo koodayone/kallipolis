@@ -32,7 +32,6 @@ The database has these views, each with TEXT properties that support substring m
 employer: sector, employer_name
 occupation: title
 course: department, course_name
-student: primary_focus, course_code, course_name
 partnership: sector, employer_name
 
 Given the view and question, identify which TEXT properties (if any) the user is filtering on. For each, produce 1-4 SHORT ROOT SUBSTRINGS (3-8 chars) that maximize case-insensitive CONTAINS matches. Use roots, not full words: "health" not "healthcare", "manufactur" not "manufacturing", "nurs" not "nursing".
@@ -66,7 +65,6 @@ _RESOLUTION_QUERIES = {
     "employer_name": "MATCH (n:Employer) WHERE {where} RETURN DISTINCT n.name AS val LIMIT 30",
     "title":         "MATCH (n:Occupation) WHERE {where} RETURN DISTINCT n.title AS val LIMIT 30",
     "department":    "MATCH (n:Course {{college: $college}}) WHERE {where} RETURN DISTINCT n.department AS val LIMIT 30",
-    "primary_focus": "MATCH (n:Student)-[:ENROLLED_IN]->(:Course {{college: $college}}) WHERE {where} RETURN DISTINCT n.primary_focus AS val LIMIT 30",
     "course_code":   "MATCH (n:Course {{college: $college}}) WHERE {where} RETURN DISTINCT n.code AS val LIMIT 30",
     "course_name":   "MATCH (n:Course {{college: $college}}) WHERE {where} RETURN DISTINCT n.name AS val LIMIT 30",
 }
@@ -230,8 +228,8 @@ def generate_query(question: str, college: str, system_prompt: str, view: str = 
     input-token cost.
 
     Sonnet 4-6's caching minimum is empirically ~2000 tokens (higher than the
-    1024 documented for older Sonnet versions). All four prompts (Course,
-    Student, Employer, Occupation) are sized above that threshold; verified
+    1024 documented for older Sonnet versions). All three prompts (Course,
+    Employer, Occupation) are sized above that threshold; verified
     by direct cache_creation/cache_read measurement against the model. The
     5-minute default TTL fits an interactive atlas where a coordinator clicks
     through multiple queries on the same form.

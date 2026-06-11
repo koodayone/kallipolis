@@ -26,19 +26,17 @@ Each occupation row carries enough metadata for the row to be self-describing: S
 
 The report is a deterministic per-(college, SOC) artifact. Five narrative sections argue the institutional case; structured evidence blocks ground each section. The narrative does meaning; the evidence does completeness.
 
-### The five sections of the narrative
+### The four sections of the narrative
 
-- **Executive summary.** Frames the occupation in its sector context, names the multi-employer engagement opportunity the alignment data identifies, and integrates the strongest signals from regional demand, curriculum coverage, and student pipeline in compressed form. The reader finishes the paragraph understanding why this occupational pathway merits partnership development.
+- **Executive summary.** Frames the occupation in its sector context, names the multi-employer engagement opportunity the alignment data identifies, and integrates the strongest signals from regional demand and curriculum coverage in compressed form. The reader finishes the paragraph understanding why this occupational pathway merits partnership development.
 
 - **Occupational demand.** Establishes the regional labor market for the SOC: median annual wage and annual openings in the COE region, drawn directly from the Centers of Excellence published demand profile. The evidence block carries the wage, openings, regional employment, and 5-year growth rate for inspection.
 
 - **Curriculum alignment.** Establishes the institutional pathway from the college's curriculum to the SOC via the Chancellor's Office TOP-CIP-SOC crosswalk. The evidence is the actual departments and courses whose `PREPARES_FOR` edge maps to the target SOC, grouped by department.
 
-- **Student impact.** Asserts the composition of the student pipeline whose academic focus aligns with the occupational pathway. The evidence is the headline count of students enrolled in the aligned departments plus the top exemplar students ranked by SOC-aligned course count and GPA.
-
 - **Partnership opportunities.** Names the regional employers hiring for the SOC as candidate partners for a multi-employer engagement around the occupational pathway. The evidence is the employer list, sorted by NAICS-4 industry-share — the BLS Occupational Employment Statistics measure of how prominent this role is within each employer's industry. The most "occupation-central" employers surface first.
 
-The five sections compose the four units of analysis (occupations, courses, students, employers) plus the synthesizing executive summary. Employers, formerly the *subject* of the artifact, are now the candidate set the artifact directs the coordinator toward — the multi-employer engagement opportunity the data identifies.
+The four sections compose three of the units of analysis (occupations, courses, employers) plus the synthesizing executive summary; the student pipeline, formerly a fifth section, is omitted in the current non-PII configuration (see [students](./students.md)). Employers, formerly the *subject* of the artifact, are now the candidate set the artifact directs the coordinator toward — the multi-employer engagement opportunity the data identifies.
 
 ### Strong Workforce evidence
 
@@ -52,7 +50,7 @@ The methodology is fully deterministic. Same college and same SOC always yield b
 
 **Sector index assembly** ([`backend/partnerships/opportunity.py`](../../backend/partnerships/opportunity.py), `build_sector_index`). Composes PCAH TOP→Sector, the CTE-reachable SOC universe via `cte_reachable_socs`, the college's regional COE demand profile, and the college's `PREPARES_FOR` edge set into the sector accordion. Each occupation row's course count and employer count is derived from a single Cypher pass against the graph.
 
-**Per-SOC report assembly** (same file, `build_opportunity_report`). For a given (college, SOC) pair, gathers occupation metadata from the graph, regional demand from COE, TOP-grouped curriculum coverage from the existing `_gather_aligned_curriculum` helper, student pipeline from `_gather_student_pipeline`, and the candidate employer set from the `oes_socs_for_naics4` industry-share pivot. The narrative is composed by deterministic templates in [`backend/partnerships/opportunity_narrative.py`](../../backend/partnerships/opportunity_narrative.py).
+**Per-SOC report assembly** (same file, `build_opportunity_report`). For a given (college, SOC) pair, gathers occupation metadata from the graph, regional demand from COE, TOP-grouped curriculum coverage from the existing `_gather_aligned_curriculum` helper, and the candidate employer set from the `oes_socs_for_naics4` industry-share pivot. The narrative is composed by deterministic templates in [`backend/partnerships/opportunity_narrative.py`](../../backend/partnerships/opportunity_narrative.py).
 
 **Endpoints**:
 

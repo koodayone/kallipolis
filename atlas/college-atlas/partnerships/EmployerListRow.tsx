@@ -55,11 +55,18 @@ export default function EmployerListRow({
               <div style={{ fontFamily: FONT, fontSize: 12.5, color: "rgba(255,255,255,0.7)", lineHeight: 1.55, marginTop: emp.website ? 7 : 0, whiteSpace: "normal" }}>{emp.description}</div>
             )}
             <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 9 }}>
-              {emp.socs.map((s) => (
+              {/* Top 3 roles (backend orders by OES industry share) — kept short
+                  so the panel doesn't saturate; the rest are summarized as +N. */}
+              {emp.socs.slice(0, 3).map((s) => (
                 <span key={s} style={{ fontFamily: FONT, fontSize: 11, color: "#cfe0f0", background: hexA(accent, 0.14), border: `1px solid ${hexA(accent, 0.3)}`, borderRadius: 6, padding: "2px 8px" }}>
-                  {ROLE_LABEL[s] ?? s}
+                  {ROLE_LABEL[s] ?? emp.soc_titles?.[s] ?? s}
                 </span>
               ))}
+              {emp.socs.length > 3 && (
+                <span style={{ fontFamily: FONT, fontSize: 11, color: "rgba(255,255,255,0.4)", padding: "2px 4px" }}>
+                  +{emp.socs.length - 3} more
+                </span>
+              )}
             </div>
           </div>
         )}

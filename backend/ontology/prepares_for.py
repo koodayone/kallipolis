@@ -18,9 +18,7 @@ codes; for each (Course, Occupation) pair, a PREPARES_FOR edge is
 written with the mediating TOP6 stored as a `via_top` property for
 audit. Department→Occupation reachability falls out of the topology
 (Department-[:CONTAINS]->Course-[:PREPARES_FOR]->Occupation) without
-needing Department→TOP edges. Student gating uses the same path via
-Student-[:ENROLLED_IN]->Course or Student.primary_focus IN aligned
-departments.
+needing Department→TOP edges.
 
 Idempotent: re-running drops this college's existing PREPARES_FOR edges
 and re-derives them from the current top_code state, so changes in MCF

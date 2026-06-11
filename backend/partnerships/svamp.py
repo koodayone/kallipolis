@@ -7,7 +7,7 @@ across a fixed set of five member colleges and twelve advanced manufacturing
 occupations into one landscape, then drills back into the unchanged
 OpportunityReport.
 
-THE aggregation invariant — two pillars are regional, two are institutional:
+THE aggregation invariant — two pillars are regional, one is institutional:
   - DEMAND (annual openings/wages): REGIONAL. All five colleges sit in the
     same COE region ("Bay"), so the regional demand for a SOC is one shared
     number — read ONCE per SOC, summed across the twelve occupations. It is
@@ -15,8 +15,8 @@ THE aggregation invariant — two pillars are regional, two are institutional:
   - EMPLOYERS (candidate partners): REGIONAL. The consortium employer count is
     the DISTINCT set of regional employers hiring for any of the twelve SOCs
     (a union), never a sum of per-cell employer counts.
-  - SUPPLY (projected program completions) and STUDENTS: INSTITUTIONAL. They
-    are summed across the member colleges.
+  - SUPPLY (projected program completions): INSTITUTIONAL. Summed across the
+    member colleges.
   - Consortium gap = (Σ regional demand over the 12 SOCs) − (Σ supply over all
     college×SOC cells). NOT the sum of per-college gaps.
 
@@ -184,7 +184,6 @@ class SvampCell(BaseModel):
     annual_wage: int | None = None
     growth_rate: float | None = None
     course_count: int = 0
-    student_count: int = 0
     supply: float = 0.0
     gap: int = 0
     awards_recent: int = 0                 # Σ actual awards over this cell's programs
@@ -346,7 +345,6 @@ def build_landscape(spec: LandscapeSpec) -> SvampLandscape:
                 WITH occ, op, count(DISTINCT c09) AS course_count_09
                 RETURN occ.soc_code AS soc_code,
                        course_count_09 AS course_count,
-                       op.student_count AS student_count,
                        op.top_codes AS top_codes
                 """,
                 college=college, socs=list(spec.socs),
@@ -357,7 +355,6 @@ def build_landscape(spec: LandscapeSpec) -> SvampLandscape:
             align_by_college[college] = {
                 r["soc_code"]: {
                     "course_count": r["course_count"] or 0,
-                    "student_count": r["student_count"],
                     "top_codes": [t for t in (r["top_codes"] or []) if spec.in_scope(t)],
                 }
                 for r in rows
@@ -507,7 +504,6 @@ def _assemble_landscape(
             demand = demand_by_soc.get(soc, {})
             a = align.get(soc, {})
             course_count = (a.get("course_count") or 0)
-            student_count = (a.get("student_count") or 0)
             top_codes = {t for t in (a.get("top_codes") or []) if t}
             # The SOC's full crosswalking program set (09∩CTE), independent of
             # whether a course is tagged to each program's own code — the supply
@@ -561,7 +557,6 @@ def _assemble_landscape(
                 annual_wage=demand.get("annual_wage"),
                 growth_rate=demand.get("growth_rate"),
                 course_count=course_count,
-                student_count=student_count,
                 supply=round(supply, 2),
                 gap=gap,
                 awards_recent=awards_recent,

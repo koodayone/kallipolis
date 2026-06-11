@@ -37,6 +37,7 @@ from partnerships.models import OpportunityReport, SectorIndex
 from partnerships.opportunity import build_opportunity_report, build_sector_index
 from partnerships.svamp import SvampLandscape, build_landscape
 from partnerships.landscape import LandscapeSpec, routable_specs
+from partnerships.resolve import resolve
 from partnerships.svamp_employers import SvampEmployersResult, build_svamp_employers
 from partnerships.svamp_programs import (
     ProgramReport,
@@ -275,10 +276,10 @@ def get_partnership_opportunity(
 ):
     """Returns the per-(college, occupation) partnership opportunity
     report. Composed deterministically from the institutional graph:
-    regional demand (COE), TOP-grouped curriculum coverage, student
-    impact, regional employer set sorted by NAICS industry share, and
-    employer-agnostic narrative pointing to the multi-employer
-    engagement opportunity the data identifies.
+    regional demand (COE), TOP-grouped curriculum coverage, regional
+    employer set sorted by NAICS industry share, and employer-agnostic
+    narrative pointing to the multi-employer engagement opportunity the
+    data identifies.
 
     The optional `sector` query parameter preserves the user's click
     context: SOCs that belong to multiple PCAH sectors render with
@@ -320,33 +321,36 @@ def get_partnership_opportunity(
 def _register_landscape_routes(spec: LandscapeSpec) -> None:
     sid = spec.id
 
+    # resolve() narrows the spec's SOCs to its sector rule's effective set
+    # (demand floor / reachable / non-empty); identity for curated/no-rule specs.
+    # Applied here so every endpoint for the instance stays consistent.
     def get_landscape():
         try:
-            return build_landscape(spec)
+            return build_landscape(resolve(spec))
         except Exception as e:
             raise HTTPException(status_code=500, detail=str(e))
 
     def get_programs():
         try:
-            return build_programs_landscape(spec)
+            return build_programs_landscape(resolve(spec))
         except Exception as e:
             raise HTTPException(status_code=500, detail=str(e))
 
     def get_program(top6: str, college: str | None = None):
         try:
-            return build_program_report(top6, college=college, spec=spec)
+            return build_program_report(top6, college=college, spec=resolve(spec))
         except Exception as e:
             raise HTTPException(status_code=500, detail=str(e))
 
     def get_occupation(soc: str, college: str | None = None):
         try:
-            return build_svamp_occupation(soc, spec=spec, college=college)
+            return build_svamp_occupation(soc, spec=resolve(spec), college=college)
         except Exception as e:
             raise HTTPException(status_code=500, detail=str(e))
 
     def get_employers():
         try:
-            return build_svamp_employers(spec)
+            return build_svamp_employers(resolve(spec))
         except Exception as e:
             raise HTTPException(status_code=500, detail=str(e))
 
@@ -355,7 +359,7 @@ def _register_landscape_routes(spec: LandscapeSpec) -> None:
         response_model=SvampLandscape, name=f"get_{sid}_landscape",
         description=f"Aggregated partnership landscape for {spec.name} — member "
                     "colleges × target occupations over one shared COE region. "
-                    "Demand and employers regional; supply and students institutional.")
+                    "Demand and employers regional; supply institutional.")
     router.add_api_route(
         f"/{sid}/programs", get_programs, methods=["GET"],
         response_model=ProgramsLandscape, name=f"get_{sid}_programs",

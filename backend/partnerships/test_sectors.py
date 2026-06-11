@@ -28,9 +28,28 @@ class TestSectorRegistry:
             assert s.label and s.accent.startswith("#")
 
     def test_known_socs_per_sector(self):
+        # sector.socs is the FULL generated middle-skill set (the committed CSV);
+        # ecu's display set (12) is derived at build time by its SectorRule —
+        # see resolve.effective_socs, not enforced here (needs the graph).
         assert len(SECTORS["biotech"].socs) == 7
         assert len(SECTORS["health"].socs) == 40
         assert len(SECTORS["adm"].socs) == 49
+        assert len(SECTORS["ecu"].socs) == 46  # full set; rule trims to 12 at build
+
+    def test_ecu_curation_rule(self):
+        # The ECU curation lives as a declarative SectorRule (durable across a
+        # sector_socs.csv regeneration), not hand-deleted SOC rows.
+        from partnerships.landscape import REGISTRY
+        rule = SECTORS["ecu"].rule
+        assert rule.active
+        assert rule.min_openings == 100
+        assert rule.reachable_only and rule.non_empty_only
+        # 070810 Computer Networking (IT/CIS) — crosswalk artifact, excluded feeder.
+        assert "070810" in SECTORS["ecu"].excluded_tops
+        assert REGISTRY["smccd-ecu"].in_scope("070810") is False
+        # the rule rides onto the instance spec; non-ecu sectors stay no-op.
+        assert REGISTRY["smccd-ecu"].soc_rule.active
+        assert not SECTORS["biotech"].rule.active
 
     def test_target_socs_are_middle_skill_anchors(self):
         assert "19-4021" in SECTORS["biotech"].socs   # Biological Technicians
@@ -38,6 +57,8 @@ class TestSectorRegistry:
         assert "51-4041" in SECTORS["adm"].socs        # Machinists
 
     def test_total_soc_rows(self):
+        # The full generated middle-skill set (no hand-deletions — ecu curation is
+        # now a declarative SectorRule applied at build time, not CSV row removal).
         assert sum(len(v) for v in _load_sector_socs().values()) == 312
 
     def test_registry_and_data_agree(self):

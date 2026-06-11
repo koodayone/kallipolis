@@ -288,6 +288,23 @@ def _format_for_json(employers: list[dict], region_code: str) -> list[dict]:
         naics4 = emp.get("naics4", emp.get("naics_code", ""))
         swp_sectors = list(CTE_NAICS_CODES.get(naics4, ("", "", []))[2])
 
+        # Preserve the EDD address (the scrape's flat street/city + stable
+        # emp_id) as the structured `address` block downstream geocoding and
+        # the emp_id-keyed geocode-cache join require (geocode.py:_clean_address,
+        # load.py:_load_geocode_cache). Without it a freshly-generated employer
+        # can never be geocoded — it never reaches the map. EDD is California-only
+        # so state defaults to CA; the list view carries no zip (the detail
+        # empDetails fetch backfills it later).
+        emp_id = emp.get("emp_id")
+        address = {
+            "street": emp.get("address") or emp.get("street"),
+            "city": emp.get("city"),
+            "county": emp.get("county"),  # EDD scrape grain; the county-map filter key
+            "state": "CA",
+            "emp_id": emp_id,
+            "source": "edd_scrape_list",
+        } if emp_id else None
+
         formatted.append({
             "name": emp["name"],
             "sector": emp.get("sector", "Other"),
@@ -295,6 +312,9 @@ def _format_for_json(employers: list[dict], region_code: str) -> list[dict]:
             "naics4": naics4 or None,
             "description": desc,
             "regions": [region_code],
+            "address": address,
+            "size_class": emp.get("size_class"),  # EDD employee band → size ranking
+            "naics_label": emp.get("naics_label"),
             # Skeleton — `enrich.py:Pass 3` populates `occupations`
             # later from the OES NAICS-bounded industry pool, then
             # cutover.py promotes shadow → canonical.

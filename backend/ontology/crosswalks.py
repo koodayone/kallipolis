@@ -7,8 +7,7 @@ and employer-occupation alignment.
 
 All TOP codes are 6-digit throughout. The TOP-CIP crosswalk published by the
 Chancellor's Office is natively TOP6 (rows like "0101.00 - Agriculture..."
-strip to "010100"); the PCAH TOP Codes to Sectors file is also TOP6. Student
-calibrations are TOP6 after the student-generator refactor. No TOP4
+strip to "010100"); the PCAH TOP Codes to Sectors file is also TOP6. No TOP4
 truncation happens in this module.
 
 Usage:

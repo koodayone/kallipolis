@@ -15,10 +15,6 @@ import OccupationRow, {
 import DepartmentRow, { type CourseItem } from "@/college-atlas/courses/DepartmentRow";
 import CurriculumPathway from "@/college-atlas/partnerships/CurriculumPathway";
 import OccupationDemandTable from "@/college-atlas/partnerships/OccupationDemandTable";
-import StudentRow, {
-  type StudentData,
-  type StudentDetailData,
-} from "@/college-atlas/students/StudentRow";
 import AtlasHeader from "@/ui/AtlasHeader";
 import KallipolisBrand from "@/ui/KallipolisBrand";
 import RisingSun from "@/ui/RisingSun";
@@ -57,15 +53,15 @@ export default function OpportunityReport({ school, socCode, sector, onBack }: P
    embedded (executive summary suppressed, eyebrow dropped) inside the SVAMP
    aggregated landscape so a selection renders inline without a page load. */
 export function OpportunityReportBody({
-  school, socCode, sector, hideExecutiveSummary = false, hideStudentImpact = false, embedded = false, programOutcomes,
+  school, socCode, sector, hideExecutiveSummary = false, embedded = false, programOutcomes,
   demandTitle = "Labor Market Information", hideLaborMarket = false, suppressEmptySupplyGap = false, topPrefix, cteOnly, excludeTops,
 }: {
   school: SchoolConfig;
   socCode: string;
   sector?: string;
-  // Scope the curriculum pathway (and the accordion + student pipeline it
-  // gates) to a TOP division — the SVAMP 09-only lens passes "09". Default
-  // undefined ⇒ per-college reports fetch the unscoped report unchanged.
+  // Scope the curriculum pathway (and the accordion it gates) to a TOP
+  // division — the SVAMP 09-only lens passes "09". Default undefined ⇒
+  // per-college reports fetch the unscoped report unchanged.
   topPrefix?: string;
   // Restrict that crosswalk to CTE programs (drop transfer/academic) — the
   // SVAMP workforce lens passes true. Default undefined ⇒ unchanged.
@@ -75,13 +71,8 @@ export function OpportunityReportBody({
   // Default undefined ⇒ per-college reports unchanged.
   excludeTops?: string[];
   hideExecutiveSummary?: boolean;
-  // Suppress the Student Impact section. Default false → per-college reports
-  // unchanged; SVAMP sets it true (the student layer is synthetic and
-  // individual-level, so it's omitted from the customer-facing consortium
-  // report to avoid implying real PII / FERPA-scoped data).
-  hideStudentImpact?: boolean;
   embedded?: boolean;
-  // Optional slot rendered between Curriculum Alignment and Student Impact.
+  // Optional slot rendered between Curriculum Alignment and Labor Market.
   // Default undefined → nothing renders, so the per-college report is
   // unchanged; the SVAMP landscape passes its Program Outcomes panel here.
   programOutcomes?: React.ReactNode;
@@ -132,20 +123,19 @@ export function OpportunityReportBody({
   }
   if (!report) return null;
   return (
-    <ReportBody report={report} school={school} hideExecutiveSummary={hideExecutiveSummary} hideStudentImpact={hideStudentImpact} embedded={embedded} programOutcomes={programOutcomes} demandTitle={demandTitle} hideLaborMarket={hideLaborMarket} suppressEmptySupplyGap={suppressEmptySupplyGap} />
+    <ReportBody report={report} school={school} hideExecutiveSummary={hideExecutiveSummary} embedded={embedded} programOutcomes={programOutcomes} demandTitle={demandTitle} hideLaborMarket={hideLaborMarket} suppressEmptySupplyGap={suppressEmptySupplyGap} />
   );
 }
 
 /* ── Report Body ───────────────────────────────────────────────────────── */
 
 function ReportBody({
-  report, school, hideExecutiveSummary = false, hideStudentImpact = false, embedded = false, programOutcomes,
+  report, school, hideExecutiveSummary = false, embedded = false, programOutcomes,
   demandTitle = "Labor Market Information", hideLaborMarket = false, suppressEmptySupplyGap = false,
 }: {
   report: ApiOpportunityReport;
   school: SchoolConfig;
   hideExecutiveSummary?: boolean;
-  hideStudentImpact?: boolean;
   embedded?: boolean;
   programOutcomes?: React.ReactNode;
   demandTitle?: string;
@@ -155,11 +145,11 @@ function ReportBody({
   const brandColor = school.brandColorLight;
 
   // ── Synthesize component-shaped data from the report's evidence ───────
-  // Each reused feature-view component (OccupationRow, DepartmentRow,
-  // StudentRow) takes its own typed input. The OpportunityReport
-  // already carries the underlying material; here we project it into
-  // each component's expected shape so the visual idiom matches the
-  // rest of the product without duplicating component logic.
+  // Each reused feature-view component (OccupationRow, DepartmentRow)
+  // takes its own typed input. The OpportunityReport already carries
+  // the underlying material; here we project it into each component's
+  // expected shape so the visual idiom matches the rest of the product
+  // without duplicating component logic.
 
   const occData = useMemo<OccupationData>(() => {
     const ev = report.opportunity_evidence[0];
@@ -358,127 +348,6 @@ function ReportBody({
         <Section title="Curriculum Alignment" brandColor={brandColor}>{coursesBlock}</Section>
       )}
 
-      {/* Student Impact — narrative + headline metric callout +
-          top students rendered via StudentRow with the Competency
-          Profile tab suppressed. Suppressed when hideStudentImpact (SVAMP):
-          the synthetic, individual-level student layer is omitted from the
-          customer-facing consortium report. */}
-      {!hideStudentImpact && (
-      <Section title="Student Impact" brandColor={brandColor}>
-        <Prose>{report.student_impact}</Prose>
-
-        {/* Headline callout — the integrative figure for the section.
-            Mirrors the "STUDENTS IN ALIGNED PROGRAMS" callout the
-            previous artifact carried at the top of the student block. */}
-        <div style={{
-          marginTop: "16px",
-          background: "rgba(255,255,255,0.03)",
-          border: "1px solid rgba(255,255,255,0.06)",
-          borderRadius: "8px",
-          padding: "20px",
-          textAlign: "center",
-        }}>
-          <div style={{
-            fontFamily: FONT, fontSize: "28px", fontWeight: 700,
-            color: "rgba(255,255,255,0.95)",
-            letterSpacing: "-0.005em",
-            fontVariantNumeric: "tabular-nums",
-          }}>
-            {report.student_evidence.total_in_aligned_departments.toLocaleString()}
-          </div>
-          <div style={{
-            marginTop: "6px",
-            fontFamily: FONT, fontSize: "10px", fontWeight: 600,
-            letterSpacing: "0.12em", textTransform: "uppercase",
-            color: "rgba(255,255,255,0.45)",
-          }}>
-            Students in Aligned Programs
-          </div>
-        </div>
-
-        {/* Top students table — column header strip + StudentRow list.
-            Backend ranks students by count of TOP4-aligned course
-            enrollments at this college, then GPA. Edge case: if no
-            student at the college has any TOP4-aligned enrollment,
-            the list is empty and the report honestly says so. The
-            unified empty state covers both "no aligned departments at
-            all" and "aligned departments exist but no TOP4 student
-            enrollments" — same operational meaning from the reader's
-            perspective. */}
-        {report.student_evidence.top_students.length === 0 && (
-          <p style={{ fontFamily: FONT, fontSize: "13px", color: "rgba(255,255,255,0.45)", marginTop: "16px", lineHeight: 1.55 }}>
-            No students at {school.name} have coursework that aligns with SOC {report.soc_code}&rsquo;s preparation pathway.
-          </p>
-        )}
-        {report.student_evidence.top_students.length > 0 && (
-          <div style={{ marginTop: "20px" }}>
-            <div style={{
-              display: "grid", gridTemplateColumns: "24px 110px 1fr 90px 60px", minWidth: "500px",
-              padding: "10px 16px", gap: "10px", alignItems: "center",
-              borderBottom: "1px solid rgba(255,255,255,0.05)",
-            }}>
-              <span />
-              <ColHead brandColor={brandColor}>Student</ColHead>
-              <ColHead brandColor={brandColor}>Primary Focus</ColHead>
-              <ColHead brandColor={brandColor}>Courses</ColHead>
-              <ColHead brandColor={brandColor}>GPA</ColHead>
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-              {report.student_evidence.top_students.map((s, i) => {
-                const studentData: StudentData = {
-                  uuid: s.uuid,
-                  displayNumber: s.display_number,
-                  primaryFocus: s.primary_focus,
-                  coursesCompleted: s.courses_completed,
-                  gpa: s.gpa,
-                };
-                const detail: StudentDetailData = {
-                  enrollments: s.enrollments.map((e) => ({
-                    courseCode: e.code,
-                    courseName: e.name,
-                    department: "",
-                    grade: e.grade,
-                    term: e.term,
-                    status: "",
-                  })),
-                  occupationAlignment: [],
-                };
-                return (
-                  <StudentRowWrapper
-                    key={s.uuid}
-                    student={studentData}
-                    index={i}
-                    brandColor={brandColor}
-                    detail={detail}
-                  />
-                );
-              })}
-            </div>
-          </div>
-        )}
-
-        {/* Methodology footnote — synthetic-data attribution for the
-            entire Student Impact section. Always rendered (even in the
-            empty-state case) because the absence of aligned students is
-            itself a property of the synthetic layer. The wording
-            doubles as the upgrade conversation hook for partnership
-            data sharing — naming "anonymized" pre-empts the FERPA
-            objection coordinators surface first. */}
-        <p style={{
-          fontFamily: FONT,
-          fontSize: "11px",
-          color: "rgba(255,255,255,0.4)",
-          fontStyle: "italic",
-          marginTop: "20px",
-          paddingTop: "14px",
-          borderTop: "1px solid rgba(255,255,255,0.05)",
-          lineHeight: 1.55,
-        }}>
-          Profiles above are synthetic — calibrated to CCCCO DataMart Fall 2025 grade distributions. Live anonymized MIS data from your institution would render real student records.
-        </p>
-      </Section>
-      )}
-
       {/* Labor Market Information — narrative + demand table +
           openings/supply gap visualization + institutional sources. */}
       {!hideLaborMarket && (
@@ -561,30 +430,6 @@ function DepartmentRowWrapper({
       schoolName={schoolName}
       hideOccupationPathways
       socFilter={socFilter}
-    />
-  );
-}
-
-/* ── StudentRow wrapper to manage local open state ────────────────────── */
-
-function StudentRowWrapper({
-  student, index, brandColor, detail,
-}: {
-  student: StudentData;
-  index: number;
-  brandColor: string;
-  detail: StudentDetailData;
-}) {
-  const [isOpen, setIsOpen] = useState(false);
-  return (
-    <StudentRow
-      student={student}
-      index={index}
-      brandColor={brandColor}
-      isOpen={isOpen}
-      onToggle={() => setIsOpen((o) => !o)}
-      detail={detail}
-      hideCompetencyProfile
     />
   );
 }

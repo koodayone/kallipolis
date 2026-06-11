@@ -25,7 +25,6 @@ from __future__ import annotations
 # surfaces during the transition.
 from partnerships.narrative_templates import (
     fmt_count,
-    fmt_have,
 )
 
 
@@ -37,7 +36,6 @@ def build_executive_summary(
     sector_display: str,
     coe_region_display: str,
     total_aligned_courses: int,
-    total_in_aligned_departments: int,
     n_employer_opportunities: int,
 ) -> str:
     """The two-sentence opportunity thesis, employer-agnostic.
@@ -53,14 +51,14 @@ def build_executive_summary(
            (e.g. 50) that were arbitrary and region-blind. The
            Occupational Demand and LMI sections below carry the actual
            openings number.
-        2. three-pillar partnership thesis in conditional mood
+        2. two-pillar partnership thesis in conditional mood
            ("Partnerships ... would be supported by"). The conditional
            mood is deliberate: the pillars are the basis for
            prospective partnership development, not evidence that
            partnerships already exist. Indicative ("are supported")
-           would oversell. Pronoun variation across the three clauses
-           ("for this occupation" → "for it" → "for this role") avoids
-           the lazy thrice-repetition without sacrificing clarity.
+           would oversell. Pronoun variation across the clauses
+           ("for this occupation" → "this role") avoids lazy
+           repetition without sacrificing clarity.
     """
     # ES.1 — report-purpose opener with region + SOC + sector positioning.
     if sector_display and coe_region_display:
@@ -86,15 +84,13 @@ def build_executive_summary(
             f"{soc_title} (SOC {soc_code})."
         )
 
-    # ES.2 — three-pillar partnership thesis in conditional mood, with
-    # pronoun variation: "this occupation" → "for it" → "this role".
+    # ES.2 — two-pillar partnership thesis in conditional mood, with
+    # pronoun variation: "this occupation" → "this role".
     course_phrase = fmt_count(total_aligned_courses, "course")
-    student_phrase = fmt_count(total_in_aligned_departments, "student")
     employer_phrase = fmt_count(n_employer_opportunities, "regional employer")
     s2 = (
         f"Partnerships for this occupation would be supported by "
-        f"{college}'s {course_phrase} that prepare for it, "
-        f"{student_phrase} enrolled in programs that offer those courses, "
+        f"{college}'s {course_phrase} that prepare for it "
         f"and the {employer_phrase} that hire for this role."
     )
 
@@ -211,31 +207,6 @@ def build_curriculum_alignment(
     return f"{s1} {s2}"
 
 
-def build_student_impact(
-    *,
-    soc_code: str,
-    total_in_aligned_departments: int,
-) -> str:
-    """The two-sentence caption above the candidate table.
-
-    The candidate set is TOP4-aligned: students with coursework in
-    TOP4 programs that crosswalk to the SOC. With the hero filter in
-    effect upstream, the set is further restricted to TOPs in the
-    occupationally-relevant universe — keeping this caption coherent
-    with the accordion and pathway visualization above.
-    """
-    student_phrase = fmt_count(total_in_aligned_departments, "student")
-    s1 = (
-        f"{student_phrase} {fmt_have(total_in_aligned_departments)} enrolled in "
-        f"the programs whose courses align with SOC {soc_code}."
-    )
-    s2 = (
-        "Shown below are students whose course history indicates "
-        "strongest preparation for the occupational pathway."
-    )
-    return f"{s1} {s2}"
-
-
 def build_partnership_opportunities(
     *,
     soc_title: str,
@@ -258,8 +229,8 @@ def build_partnership_opportunities(
         return (
             "No regional employers in the college's market currently surface "
             f"as candidate partners hiring for {soc_title}. The curriculum "
-            "and student-pipeline evidence above remains a foundation for "
-            "outbound partnership development in this occupational area."
+            "evidence above remains a foundation for outbound partnership "
+            "development in this occupational area."
         )
     employer_phrase = fmt_count(n_employer_opportunities, "regional employer")
     return (
@@ -284,10 +255,9 @@ def build_opportunity_narrative(
     coe_region_display: str,
     total_aligned_courses: int,
     n_departments: int,
-    total_in_aligned_departments: int,
     n_employer_opportunities: int,
 ) -> dict:
-    """Assemble the five narrative sections as a dict keyed to the
+    """Assemble the four narrative sections as a dict keyed to the
     OpportunityReport field names."""
     return {
         "executive_summary": build_executive_summary(
@@ -297,7 +267,6 @@ def build_opportunity_narrative(
             sector_display=sector_display,
             coe_region_display=coe_region_display,
             total_aligned_courses=total_aligned_courses,
-            total_in_aligned_departments=total_in_aligned_departments,
             n_employer_opportunities=n_employer_opportunities,
         ),
         "occupational_demand": build_occupational_demand(
@@ -313,10 +282,6 @@ def build_opportunity_narrative(
             soc_code=soc_code,
             soc_title=soc_title,
             n_departments=n_departments,
-        ),
-        "student_impact": build_student_impact(
-            soc_code=soc_code,
-            total_in_aligned_departments=total_in_aligned_departments,
         ),
         "partnership_opportunities": build_partnership_opportunities(
             soc_title=soc_title,

@@ -67,38 +67,11 @@ export type ApiCurriculumCrosswalk = {
   coverage_pct: number;          // 100 * n_taught / n_total, rounded to 1 decimal
 };
 
-export type ApiStudentEnrollmentEvidence = {
-  code: string;
-  name: string;
-  grade: string;
-  term: string;
-};
-
-export type ApiStudentSummaryEvidence = {
-  uuid: string;
-  display_number: number;
-  primary_focus: string;
-  courses_completed: number;
-  gpa: number;
-  enrollments: ApiStudentEnrollmentEvidence[];
-};
-
-export type ApiStudentEvidence = {
-  total_in_program: number;
-  total_in_aligned_departments: number;
-  top_students: ApiStudentSummaryEvidence[];
-};
-
 export type ApiSupplyEstimate = {
   top_code: string;
   top_title: string;
   award_level: string;
   annual_projected_supply: number;
-};
-
-export type ApiDepartmentEnrollment = {
-  department: string;
-  student_count: number;
 };
 
 export type ApiInstitutionalSources = {
@@ -113,7 +86,6 @@ export type ApiInstitutionalSources = {
 export type ApiSwpEvidence = {
   occupations: ApiOccupationEvidence[];
   supply_estimates: ApiSupplyEstimate[];
-  department_enrollments: ApiDepartmentEnrollment[];
   total_demand: number;
   total_supply: number;
   gap: number;
@@ -133,7 +105,6 @@ export type ApiOpportunityRow = {
   annual_wage: number | null;
   growth_rate: number | null;
   course_count: number;
-  student_count: number;
   employer_count: number;
   // Regional annual openings minus the college's TOP-program projected
   // supply. Drives the per-row gap chip and the within-sector sort.
@@ -188,12 +159,10 @@ export type ApiOpportunityReport = {
   executive_summary: string;
   occupational_demand: string;
   curriculum_alignment: string;
-  student_impact: string;
   partnership_opportunities_narrative: string;
   opportunity_evidence: ApiOccupationEvidence[];
   curriculum_evidence: ApiDepartmentEvidence[];
   curriculum_crosswalk: ApiCurriculumCrosswalk;
-  student_evidence: ApiStudentEvidence;
   swp_evidence: ApiSwpEvidence;
   partnership_opportunities: ApiPartnershipOpportunityEmployer[];
 };
@@ -208,8 +177,8 @@ export async function getPartnershipSectors(college: string): Promise<ApiSectorI
 //
 // Bespoke consortium prototype. Aggregates the partnership machinery across
 // five member colleges × twelve advanced manufacturing occupations. Demand
-// and the employer set are regional (shared / deduped); supply and students
-// are institutional (summed). Drilling a cell reuses getPartnershipOpportunity
+// and the employer set are regional (shared / deduped); supply is
+// institutional (summed). Drilling a cell reuses getPartnershipOpportunity
 // unchanged.
 
 // Pooled statewide award-cohort wage outcome for a TOP6 program (display-only;
@@ -240,7 +209,6 @@ export type ApiSvampCell = {
   annual_wage: number | null;
   growth_rate: number | null;
   course_count: number;
-  student_count: number;
   supply: number;
   gap: number;
   awards_recent: number;             // Σ actual awards over this cell's programs
@@ -507,6 +475,7 @@ export type ApiSvampEmployer = {
   description: string | null;
   socs: string[];          // SVAMP SOCs this employer hires for (curated)
   soc_count: number;
+  soc_titles?: Record<string, string>;  // {soc_code: BLS title} for label display
 };
 export type ApiSvampEmployersResult = {
   region: string;

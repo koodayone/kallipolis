@@ -40,7 +40,7 @@ def _demand_by_soc():
 def _align_all_colleges_teach_first_soc():
     # Every college teaches only the first SOC, each routing through one TOP6.
     first = SVAMP_SOCS[0]
-    return {c: {first: {"course_count": 3, "student_count": 40, "top_codes": ["010100"]}}
+    return {c: {first: {"course_count": 3, "top_codes": ["010100"]}}
             for c in SVAMP_COLLEGES}
 
 

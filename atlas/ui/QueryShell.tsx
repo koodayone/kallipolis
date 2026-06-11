@@ -68,6 +68,7 @@ export default function QueryShell<T>({
   // sessionStorage availability.
   useEffect(() => {
     if (hasSearch) return; // search-default views don't auto-open on mount
+    if (examples.length === 0) return; // nothing to show — don't open an empty panel
     if (typeof window === "undefined") return;
     if (sessionStorage.getItem(sessionKey)) return;
     setHelpOpen(true);
@@ -169,7 +170,7 @@ export default function QueryShell<T>({
     // re-open the panel — the user has already seen the grammar and
     // can re-open manually via the chevron. Close on transitions to
     // search.
-    if (m === "ask") {
+    if (m === "ask" && examples.length > 0) {
       if (typeof window !== "undefined" && !sessionStorage.getItem(sessionKey)) {
         setHelpOpen(true);
         sessionStorage.setItem(sessionKey, "1");
@@ -343,7 +344,7 @@ export default function QueryShell<T>({
                     onFocus={onInputFocus}
                     onBlur={onInputBlur}
                   />
-                  {mode === "ask" && renderHelpChevron()}
+                  {mode === "ask" && examples.length > 0 && renderHelpChevron()}
                 </div>
 
                 {renderHelpPanel()}
@@ -414,7 +415,7 @@ export default function QueryShell<T>({
                       onFocus={onInputFocus}
                       onBlur={onInputBlur}
                     />
-                    {mode === "ask" && renderHelpChevron()}
+                    {mode === "ask" && examples.length > 0 && renderHelpChevron()}
                   </div>
                   {renderHelpPanel()}
                 </div>

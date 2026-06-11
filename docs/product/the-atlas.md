@@ -10,7 +10,7 @@ The Atlas is the navigational layer by which the user interfaces with the Kallip
 
 The user does not query the ontology directly. There is no command-line tool for traversing the graph, no SQL or Cypher console for the coordinator, no programmatic API the user calls from the side. The Atlas is the only path. Without it, the ontology exists as a structured representation that holds together in memory but cannot be experienced. With it, the ontology becomes something a coordinator can see, point at, walk through, and act on.
 
-This is a strong commitment. By making the Atlas the only interface, Kallipolis takes on the responsibility of presenting the ontology faithfully — surfacing what is there, surfacing it in categories the user can navigate, and refusing to expose the user to the underlying graph mechanics. The user does not need to know that students are nodes connected to courses by an enrollment relationship. They need to know that they can move from students to courses and back through the same surface. The Atlas does the translation.
+This is a strong commitment. By making the Atlas the only interface, Kallipolis takes on the responsibility of presenting the ontology faithfully — surfacing what is there, surfacing it in categories the user can navigate, and refusing to expose the user to the underlying graph mechanics. The user does not need to know that courses are nodes connected to occupations by an institutional crosswalk relationship. They need to know that they can move from courses to occupations and back through the same surface. The Atlas does the translation.
 
 ## Visualization and navigation as one act
 

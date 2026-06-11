@@ -1,8 +1,8 @@
 """
 Full graph reload for a region.
 
-Clears existing data, loads courses + occupations + employers + students
-from cached enriched files and calibration data.
+Clears existing data, loads courses + occupations + employers from
+cached enriched files and calibration data.
 
 Usage:
     python -m pipeline.reload --region bay_area
@@ -18,7 +18,6 @@ import time
 from pathlib import Path
 
 from courses.load import load_college, CollegeConfig
-from students.generate import generate_and_load_students
 from occupations.load import load_industry
 from employers.load import load_employers, cleanup_stale_employers
 from ontology.schema import get_driver, close_driver, init_schema
@@ -26,7 +25,6 @@ from ontology.programs import load_programs
 from partnerships.compute import (
     materialize_partnership_alignment,
     materialize_occupation_pipeline,
-    materialize_has_competency,
 )
 from partnerships.precompute import build_all as precompute_partnership_cache
 
@@ -71,11 +69,13 @@ def clear_graph(driver) -> None:
     """Clear all nodes and edges from the graph."""
     logger.info("Clearing graph...")
     with driver.session() as s:
-        # Students first (most nodes)
+        # Legacy Student nodes — no longer generated under the non-PII
+        # configuration, but cleared here so a reload drops any that
+        # remain from a pre-migration graph.
         result = s.run("MATCH (s:Student) RETURN count(s) AS cnt")
         cnt = result.single()["cnt"]
         if cnt > 0:
-            logger.info(f"  Deleting {cnt} students...")
+            logger.info(f"  Deleting {cnt} legacy students...")
             s.run("CALL { MATCH (s:Student) DETACH DELETE s } IN TRANSACTIONS OF 1000 ROWS")
 
         # Courses
@@ -166,44 +166,6 @@ def load_industry_data(driver) -> None:
                 f"HIRES_FOR: {emp_stats.get('hires_for', 0)}")
 
 
-def generate_students(driver, college_keys: list[str], configs: dict[str, dict]) -> int:
-    """Generate synthetic students for all colleges."""
-    logger.info(f"Generating students for {len(college_keys)} colleges...")
-    total_students = 0
-
-    for key in college_keys:
-        enriched_path = CACHE_DIR / f"{key}_enriched.json"
-        if not enriched_path.exists():
-            logger.warning(f"  {key}: no enriched file, skipping students")
-            continue
-
-        with open(enriched_path) as f:
-            courses = json.load(f)
-
-        # Skip if no extractable course set (MCF-only colleges where the
-        # PDF scraper never produced course descriptions).
-        if not courses:
-            logger.info(f"  {key}: no courses, skipping students")
-            continue
-
-        info = configs.get(key, {"name": key})
-        institution_name = info["name"]
-
-        try:
-            stats = generate_and_load_students(
-                college_key=key,
-                courses=courses,
-                institution_name=institution_name,
-                driver=driver,
-            )
-            total_students += stats.students
-            logger.info(f"  {key}: {stats.students} students, {stats.enrollments} enrollments")
-        except Exception as e:
-            logger.error(f"  {key}: student generation failed: {e}")
-
-    return total_students
-
-
 def verify(driver) -> None:
     """Run verification queries."""
     logger.info("Verifying graph...")
@@ -211,17 +173,14 @@ def verify(driver) -> None:
         queries = [
             ("Courses", "MATCH (c:Course) RETURN count(c) AS cnt"),
             ("Departments", "MATCH (d:Department) RETURN count(d) AS cnt"),
-            ("Students", "MATCH (s:Student) RETURN count(s) AS cnt"),
             ("Colleges", "MATCH (c:College) RETURN count(c) AS cnt"),
             ("Occupations", "MATCH (o:Occupation) RETURN count(o) AS cnt"),
             ("Employers", "MATCH (e:Employer) RETURN count(e) AS cnt"),
             ("Regions", "MATCH (r:Region) RETURN count(r) AS cnt"),
-            ("ENROLLED_IN", "MATCH ()-[e:ENROLLED_IN]->() RETURN count(e) AS cnt"),
             ("PREPARES_FOR", "MATCH ()-[p:PREPARES_FOR]->() RETURN count(p) AS cnt"),
             ("HIRES_FOR", "MATCH ()-[h:HIRES_FOR]->() RETURN count(h) AS cnt"),
             ("PARTNERSHIP_ALIGNMENT", "MATCH ()-[p:PARTNERSHIP_ALIGNMENT]->() RETURN count(p) AS cnt"),
             ("OCCUPATION_PIPELINE", "MATCH ()-[p:OCCUPATION_PIPELINE]->() RETURN count(p) AS cnt"),
-            ("HAS_COMPETENCY", "MATCH ()-[hc:HAS_COMPETENCY]->() RETURN count(hc) AS cnt"),
         ]
         for label, query in queries:
             result = s.run(query)
@@ -245,16 +204,13 @@ def reload_region(region_key: str) -> None:
         # Step 1: Initialize schema (fresh DB after docker compose down -v)
         init_schema()
 
-        # Step 3: Load courses + skills
+        # Step 2: Load courses + skills
         total_courses = load_courses(driver, college_keys, configs)
 
-        # Step 4: Load industry
+        # Step 3: Load industry
         load_industry_data(driver)
 
-        # Step 5: Generate students
-        total_students = generate_students(driver, college_keys, configs)
-
-        # Step 5b: Load Program (TOP6) nodes + award/enrollment measures.
+        # Step 4: Load Program (TOP6) nodes + award/enrollment measures.
         # Must run after load_courses (Course/Department/TOP6 universe exist)
         # and before the partnership precompute. Additive and self-scoping:
         # only creates Programs for colleges present in the graph, so it is a
@@ -265,11 +221,9 @@ def reload_region(region_key: str) -> None:
         except Exception as e:
             logger.error(f"load_programs failed: {e}; Program layer absent until rerun")
 
-        # Step 6: Materialize PARTNERSHIP_ALIGNMENT edges. Must run
-        # after both load_courses (PREPARES_FOR exists) and
-        # load_industry_data (Employer / HIRES_FOR exist). Order with
-        # generate_students is independent — students don't enter the
-        # alignment compute. Placed after for naturalness only.
+        # Step 5: Materialize PARTNERSHIP_ALIGNMENT and OCCUPATION_PIPELINE
+        # edges. Must run after both load_courses (PREPARES_FOR exists) and
+        # load_industry_data (Employer / HIRES_FOR exist).
         for key in college_keys:
             college_name = configs.get(key, {"name": key})["name"]
             try:
@@ -288,25 +242,10 @@ def reload_region(region_key: str) -> None:
                     f"(slow) until rerun"
                 )
 
-        # Step 7: Materialize HAS_COMPETENCY edges (Student → Occupation,
-        # cross-college). Runs once globally after the per-college loop
-        # because the edge aggregates over each student's enrollments
-        # regardless of college. Per-student batched internally; safe
-        # to run on any graph size that fits the per-batch transaction
-        # in memory.
-        try:
-            materialize_has_competency(driver)
-        except Exception as e:
-            logger.error(
-                f"materialize_has_competency failed: {e}; "
-                f"/partnerships/opportunity/{{soc}} will return empty "
-                f"top_students and zero total_in_program until rerun"
-            )
-
-        # Step 8: Verify
+        # Step 6: Verify
         verify(driver)
 
-        # Step 9: Precompute partnership reports. Materializes every
+        # Step 7: Precompute partnership reports. Materializes every
         # /partnerships/sectors and /partnerships/opportunity/{soc}
         # response to gzipped JSON on disk so the serving layer can
         # return them with a single file read instead of running the
@@ -333,7 +272,6 @@ def reload_region(region_key: str) -> None:
     logger.info(f"\n{'=' * 60}")
     logger.info(f"RELOAD COMPLETE in {elapsed / 60:.1f} min")
     logger.info(f"  Courses: {total_courses:,}")
-    logger.info(f"  Students: {total_students:,}")
 
 
 def main():
