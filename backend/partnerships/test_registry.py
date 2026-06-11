@@ -67,8 +67,14 @@ class TestCatalogRollup:
         assert f"{csm_key}-adm" not in ids
         # District rolls up: Foothill-De Anza CCD (foothill + deanza) is live for adm.
         assert "foothill-de-anza-adm" in ids
-        # Entries carry display identity for the frontend.
+        # Entries carry the full identity the frontend needs to render a
+        # generated instance with no landscapeInstances row.
         e = next(x for x in entries if x["id"] == "foothill-adm")
         assert e["member_kind"] == "college"
         assert e["sector_label"] == "Advanced Manufacturing"
         assert e["region"] == "Bay"
+        assert e["colleges"] == ["foothill"]          # college-config id (catalog key)
+        assert e["accent"].startswith("#")            # sector accent
+        # District entry aggregates its colleges' config ids.
+        d = next(x for x in entries if x["id"] == "foothill-de-anza-adm")
+        assert set(d["colleges"]) == {"foothill", "deanza"}

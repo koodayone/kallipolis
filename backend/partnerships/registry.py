@@ -98,13 +98,19 @@ def has_supply(spec: LandscapeSpec) -> bool:
 def _entry(member: members_mod.Member, sector_id: str) -> dict:
     sector = SECTORS[sector_id]
     regs = member.regions()
+    catalog = members_mod._catalog()
     return {
         "id": f"{member.id}-{sector_id}",
         "member_id": member.id,
         "member_label": member.label,
         "member_kind": member.kind.value,
+        # College-config ids (catalog backend keys) the member aggregates over —
+        # the frontend needs these to render the per-college configs without a
+        # registry entry (generated instances have no landscapeInstances row).
+        "colleges": [catalog[c]["key"] for c in member.colleges if c in catalog],
         "sector_id": sector_id,
         "sector_label": sector.label,
+        "accent": sector.accent,
         "region": regs[0] if regs else None,
     }
 
