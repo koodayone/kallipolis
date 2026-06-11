@@ -189,7 +189,6 @@ def load_employers(driver: Driver, employers: list[dict]) -> dict:
                 "    e.website = $website, e.swp_sectors = $swp_sectors, "
                 "    e.naics4 = $naics4, e.naics6 = $naics6, "
                 "    e.operations_summary = $operations_summary, "
-                "    e.contact_name = $contact_name, e.contact_title = $contact_title, "
                 "    e.lat = $lat, e.lng = $lng",
                 name=emp["name"],
                 sector=emp["sector"],
@@ -199,8 +198,6 @@ def load_employers(driver: Driver, employers: list[dict]) -> dict:
                 naics4=naics4,
                 naics6=detail.get("naics6"),
                 operations_summary=emp.get("operations_summary"),
-                contact_name=detail.get("contact_name"),
-                contact_title=detail.get("contact_title"),
                 lat=geo.get("lat"),
                 lng=geo.get("lng"),
             )
