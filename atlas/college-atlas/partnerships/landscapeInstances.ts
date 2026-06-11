@@ -94,7 +94,7 @@ export type SectorTab = { instanceId: string; sectorId: string; label: string; a
 // (Energy·Construction, Advanced Manufacturing, Biotech, Transportation) occupy
 // the visual CENTER of the switcher (the most prominent position); the rest
 // flank outward. Deliberate placement, NOT the canonical SMCCD_SECTORS order.
-const RAIL_ORDER = ["retail", "edhd", "health", "ecu", "adm", "biotech", "atl", "ict", "business", "public_safety", "agwet"];
+export const RAIL_ORDER = ["retail", "edhd", "health", "ecu", "adm", "biotech", "atl", "ict", "business", "public_safety", "agwet"];
 
 /** Sibling sector instances of a member-set landscape, in CURATORIAL rail order
  *  (priority industries centered) — the data behind the industry switcher.
