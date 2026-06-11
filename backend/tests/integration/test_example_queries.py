@@ -1,4 +1,4 @@
-"""Eval suite for the 12 proposed example queries across all colleges.
+"""Eval suite for the proposed example queries across all colleges.
 
 Runs each example question against every college in the graph and checks:
   1. Cypher generation succeeds (no CANNOT_TRANSLATE, no crash)
@@ -44,7 +44,6 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 from llm.query_engine import generate_query, validate_cypher, execute_query
 from ontology.schema import get_driver
-from students.query import STUDENT_QUERY_PROMPT
 from courses.query import COURSE_QUERY_PROMPT
 from employers.query import EMPLOYER_QUERY_PROMPT
 from occupations.query import OCCUPATION_QUERY_PROMPT
@@ -96,17 +95,6 @@ COURSE_BASE = [
     ("returns c.code", r"c\.code\s+as\s+code"),
     ("college scoped", r"\$college"),
 ]
-
-STUDENT_BASE = [
-    # Anchor accepts either parameterized ($college) or literal ('Foothill College')
-    # college scoping in the ENROLLED_IN base.
-    ("student anchor pattern",
-     r"student.*enrolled_in.*course.*(\$college|college:\s*')"),
-    ("returns uuid", r"s\.uuid\s+as\s+uuid"),
-    ("returns gpa", r"s\.gpa\s+as\s+gpa"),
-    ("college scoped", r"(\$college|college:\s*')"),
-]
-
 
 # ── Per-question pattern definitions ─────────────────────────────────
 
@@ -176,37 +164,6 @@ QUERY_SPECS: dict[str, tuple[str, list[tuple[str, str]]]] = {
              r"prerequisites\s+is\s+null|prerequisites\s*=\s*''"),
         ]),
     ),
-
-    # ── Students ──
-    "Students specializing in 'construction technology'": (
-        STUDENT_QUERY_PROMPT,
-        _patterns(STUDENT_BASE, [
-            # Pattern accepts any primary_focus filter — the rendered
-            # question is per-college-overridden (PER_COLLEGE_OVERRIDES)
-            # to ensure each school has a concrete program with student
-            # population.
-            ("filters on primary_focus",
-             r"tolower\(s\.primary_focus\).*contains"),
-        ]),
-    ),
-    "Honor-roll Engineering students who took Calculus": (
-        STUDENT_QUERY_PROMPT,
-        _patterns(STUDENT_BASE, [
-            ("filters on engineering primary_focus",
-             r"tolower\(s\.primary_focus\)\s+contains\s+'engineer"),
-            ("GPA threshold >= 3.5",
-             r"s\.gpa\s*>=\s*3\.5"),
-            ("filters on calculus by name or code",
-             r"calculus|math 1"),
-        ]),
-    ),
-    "Students prepared for healthcare occupations": (
-        STUDENT_QUERY_PROMPT,
-        _patterns(STUDENT_BASE, [
-            ("uses health filter (occupation title or focus)",
-             r"(tolower\(occ\.title\).*contains\s+'(health|medical|nurs)|tolower\(s\.primary_focus\).*contains\s+'health)"),
-        ]),
-    ),
 }
 
 
@@ -256,11 +213,6 @@ CATEGORIES = {
         "Courses relevant to career and technical education",
         "Manufacturing department courses with no prerequisites",
     ],
-    "students": [
-        "Students specializing in 'construction technology'",
-        "Honor-roll Engineering students who took Calculus",
-        "Students prepared for healthcare occupations",
-    ],
 }
 
 
@@ -268,37 +220,16 @@ PROMPT_TO_VIEW = {
     id(EMPLOYER_QUERY_PROMPT): "employer",
     id(OCCUPATION_QUERY_PROMPT): "occupation",
     id(COURSE_QUERY_PROMPT): "course",
-    id(STUDENT_QUERY_PROMPT): "student",
 }
 
 
 # Per-college rendering for parameterized example questions. The eval keys
 # results by the canonical question (so per-question reporting aggregates
-# correctly), but the LLM is asked the school-appropriate variant.
-#
-# For "Students specializing in X", X is each school's most-populous CTE-
-# flavored primary_focus among students who took at least one CTE course.
-# Values curated from a one-time graph query; they should be re-curated
-# whenever the synthetic-student generation methodology changes the
-# primary_focus distribution.
-PER_COLLEGE_OVERRIDES: dict[tuple[str, str], str] = {
-    ("Students specializing in 'construction technology'", "Shasta College"):
-        "Students specializing in 'early childhood education'",
-    ("Students specializing in 'construction technology'", "Foothill College"):
-        "Students specializing in 'accounting'",
-    ("Students specializing in 'construction technology'", "College of the Sequoias"):
-        "Students specializing in 'child development'",
-    ("Students specializing in 'construction technology'", "Oxnard College"):
-        "Students specializing in 'fire technology'",
-    ("Students specializing in 'construction technology'", "Compton College"):
-        "Students specializing in 'nursing'",
-    ("Students specializing in 'construction technology'", "Irvine Valley College"):
-        "Students specializing in 'accounting'",
-    ("Students specializing in 'construction technology'", "College of the Desert"):
-        "Students specializing in 'health sciences'",
-    ("Students specializing in 'construction technology'", "San Diego City College"):
-        "Students specializing in 'cybersecurity and data analytics'",
-}
+# correctly), but the LLM is asked the school-appropriate variant. No
+# parameterized questions remain after the student-query removal, so this
+# is currently empty; kept as the extension point for future per-college
+# question variants.
+PER_COLLEGE_OVERRIDES: dict[tuple[str, str], str] = {}
 
 
 def render_question(question: str, college: str) -> str:

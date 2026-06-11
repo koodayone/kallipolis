@@ -44,7 +44,6 @@ from ontology.supply import get_coe_supply
 from partnerships.gather import (
     _gather_aligned_curriculum,
     _gather_curriculum_crosswalk,
-    _gather_student_pipeline,
 )
 from partnerships.models import (
     CurriculumCrosswalk,
@@ -56,8 +55,6 @@ from partnerships.models import (
     PartnershipOpportunityEmployer,
     SectorEntry,
     SectorIndex,
-    StudentEvidence,
-    StudentSummaryEvidence,
     SupplyEstimate,
     SwpEvidence,
 )
@@ -127,9 +124,9 @@ def build_sector_index(college: str) -> SectorIndex:
       2. CTE-reachable union (filter by overall PCAH coverage)
       3. SOCs the college's COE region actually demands
 
-    Per-occupation metadata (course_count, student_count, employer_count,
-    demand figures) is gathered with three focused Cypher passes against
-    the graph — one per metric — keyed by SOC.
+    Per-occupation metadata (course_count, employer_count, demand
+    figures) is gathered with focused Cypher passes against the graph,
+    keyed by SOC.
     """
     coe_region = COLLEGE_COE_REGION.get(college, "")
     priority_sectors = set(COE_REGION_PRIORITY_SECTORS.get(coe_region, []))
@@ -137,11 +134,10 @@ def build_sector_index(college: str) -> SectorIndex:
     sector_to_top6 = _load_sector_to_top6()
 
     # The per-(college, soc) aggregates (course_count, employer_count,
-    # student_count, top_codes) are precomputed onto OCCUPATION_PIPELINE
-    # edges by partnerships.compute.materialize_occupation_pipeline at
-    # pipeline reload time. Three queries that previously dominated this
-    # endpoint at request time (1.3s p50 / 11s p95 for the student count
-    # alone, on prod's e2-medium) collapse into a single edge read here.
+    # top_codes) are precomputed onto OCCUPATION_PIPELINE edges by
+    # partnerships.compute.materialize_occupation_pipeline at pipeline
+    # reload time. Queries that previously dominated this endpoint at
+    # request time collapse into a single edge read here.
     #
     # OCCUPATION_PIPELINE is sparse — edges exist only where the college
     # has at least one PREPARES_FOR-aligned course for the SOC, mirroring
@@ -166,15 +162,13 @@ def build_sector_index(college: str) -> SectorIndex:
                    d.growth_rate AS growth_rate,
                    op.course_count AS course_count,
                    op.employer_count AS employer_count,
-                   op.student_count AS student_count,
                    op.top_codes AS top_codes
         """, college=college).data()
 
     regional_socs = rows  # name preserved for the loop below; same shape +
-                          # the four extra alignment fields
+                          # the extra alignment fields
     course_count_by_soc = {r["soc_code"]: r.get("course_count") or 0 for r in rows}
     employer_count_by_soc = {r["soc_code"]: r.get("employer_count") or 0 for r in rows}
-    student_count_by_soc = {r["soc_code"]: r.get("student_count") or 0 for r in rows}
     top_codes_by_soc: dict[str, set[str]] = {
         r["soc_code"]: {t for t in (r.get("top_codes") or []) if t}
         for r in rows
@@ -230,7 +224,6 @@ def build_sector_index(college: str) -> SectorIndex:
         if soc not in cte_socs:
             continue
         course_count = course_count_by_soc.get(soc, 0)
-        student_count = student_count_by_soc.get(soc, 0)
         employer_count = employer_count_by_soc.get(soc, 0)
         has_supply = has_supply_by_soc.get(soc, False)
         annual_openings = r["annual_openings"] or 0
@@ -238,9 +231,13 @@ def build_sector_index(college: str) -> SectorIndex:
         gap = int(round(annual_openings - total_supply))
 
         if course_count > 0:
-            # Aligned candidate — retain the original strict five-signal
-            # filter so every clickable aligned row populates fully.
-            if (student_count == 0 or employer_count == 0
+            # Aligned candidate — strict filter so every clickable aligned
+            # row populates fully. student_count was dropped from this gate
+            # with the non-PII migration: the real institutional signals —
+            # courses, employers, regional supply, and the demand gap —
+            # carry it, and a genuine pathway shouldn't be hidden just
+            # because no synthetic student happened to populate it.
+            if (employer_count == 0
                     or not has_supply or gap <= 0):
                 continue
             alignment_status = "aligned"
@@ -260,7 +257,6 @@ def build_sector_index(college: str) -> SectorIndex:
             annual_wage=r["annual_wage"],
             growth_rate=r.get("growth_rate"),
             course_count=course_count,
-            student_count=student_count,
             employer_count=employer_count,
             gap=gap,
             alignment_status=alignment_status,
@@ -431,7 +427,6 @@ def _build_swp_evidence(
     return SwpEvidence(
         occupations=occupations,
         supply_estimates=supply_estimates,
-        department_enrollments=[],  # populated below from gather.py output
         total_demand=total_demand,
         total_supply=total_supply,
         gap=gap,
@@ -453,7 +448,6 @@ def build_opportunity_report(
     Composes:
       - occupation metadata + regional demand (Neo4j + COE)
       - TOP-grouped curriculum coverage (existing _gather_aligned_curriculum)
-      - student impact (existing _gather_student_pipeline)
       - regional employer set (Partnership Opportunities), sorted by
         NAICS industry share
       - deterministic narrative (employer-agnostic templates)
@@ -465,9 +459,9 @@ def build_opportunity_report(
     before. Invalid sector hints are silently ignored.
 
     `top_prefix` optionally scopes the curriculum crosswalk (and, through the
-    hero TOP set it derives, the accordion + student pipeline) to a TOP
-    division — the SVAMP 09-only lens. Default None ⇒ unscoped, so the
-    per-college report is unchanged.
+    hero TOP set it derives, the accordion) to a TOP division — the SVAMP
+    09-only lens. Default None ⇒ unscoped, so the per-college report is
+    unchanged.
 
     `cte_only` optionally restricts that same crosswalk to CTE (career-
     technical) TOPs, dropping transfer/academic ones — the SVAMP workforce
@@ -527,15 +521,12 @@ def build_opportunity_report(
     # below restricts to it for coherence.
     #
     # The hero visualization is keyed at TOP6 (the granularity at
-    # which CCCCO PCAH actually maps to CIPs), but the accordion +
-    # student pipeline downstream still filter at TOP4 — deliberately,
-    # for two reasons: (1) accordion-hero coherence wants every TOP4
-    # family in the hero to also show its taught courses below, and
-    # (2) the synthetic student calibration carries an upstream MCF
-    # vs DataMart top_code mismatch documented in _gather_student_
-    # pipeline that the TOP4 widening absorbs. So we derive a TOP4
-    # set from the TOP6 hero universe by truncation — preserving the
-    # downstream filter semantics across the v3 hero shape change.
+    # which CCCCO PCAH actually maps to CIPs), but the accordion
+    # downstream still filters at TOP4 — deliberately, for accordion-
+    # hero coherence: every TOP4 family in the hero should also show
+    # its taught courses below. So we derive a TOP4 set from the TOP6
+    # hero universe by truncation — preserving the downstream filter
+    # semantics across the v3 hero shape change.
     curriculum_crosswalk = _gather_curriculum_crosswalk(college, soc_code, top_prefix=top_prefix, cte_only=cte_only, exclude_tops=exclude_tops)
     hero_top4s = {t["code"][:4] for t in curriculum_crosswalk.get("tops", [])}
 
@@ -551,16 +542,6 @@ def build_opportunity_report(
     )
     aligned_depts = [d["department"] for d in curriculum_evidence]
 
-    # Student impact — hero-filtered to match the accordion. The
-    # student pipeline computes its own prep TOP4 set from PREPARES_FOR
-    # courses; passing `hero_top4s` intersects that set with the hero
-    # universe so the headline count and top-N list never surface
-    # students whose only "alignment" is via out-of-universe TOPs
-    # (Butte/Geography → 19-4042 case).
-    student_stats, top_students = _gather_student_pipeline(
-        college, aligned_depts, soc_code, hero_top4s=hero_top4s
-    )
-
     # Regional supply-demand evidence (SWP block).
     swp_evidence = _build_swp_evidence(
         college=college,
@@ -571,23 +552,6 @@ def build_opportunity_report(
         growth_rate=growth_rate,
         curriculum_evidence=curriculum_evidence,
     )
-
-    # Department enrollments — same query the employer-centric pipeline
-    # ran inline; lifted here for the same evidence shape.
-    if aligned_depts:
-        from partnerships.models import DepartmentEnrollment
-        with driver.session() as session:
-            de_rows = session.run("""
-                MATCH (dept:Department)-[:CONTAINS]->(c:Course {college: $college})
-                      <-[:ENROLLED_IN]-(s:Student)
-                WHERE dept.name IN $departments
-                RETURN dept.name AS department, count(DISTINCT s) AS student_count
-                ORDER BY student_count DESC
-            """, college=college, departments=aligned_depts).data()
-            swp_evidence.department_enrollments = [
-                DepartmentEnrollment(department=r["department"], student_count=r["student_count"])
-                for r in de_rows
-            ]
 
     # Partnership opportunities — the new section.
     partnership_opportunities = _gather_partnership_opportunities(college, soc_code)
@@ -630,7 +594,6 @@ def build_opportunity_report(
         coe_region_display=coe_region_display,
         total_aligned_courses=total_aligned_courses,
         n_departments=len(curriculum_evidence),
-        total_in_aligned_departments=student_stats.get("total_in_aligned_departments", 0),
         n_employer_opportunities=len(partnership_opportunities),
     )
 
@@ -645,7 +608,6 @@ def build_opportunity_report(
         executive_summary=narrative["executive_summary"],
         occupational_demand=narrative["occupational_demand"],
         curriculum_alignment=narrative["curriculum_alignment"],
-        student_impact=narrative["student_impact"],
         partnership_opportunities_narrative=narrative["partnership_opportunities"],
         opportunity_evidence=[
             OccupationEvidence(
@@ -660,11 +622,6 @@ def build_opportunity_report(
         ],
         curriculum_evidence=[DepartmentEvidence(**d) for d in curriculum_evidence],
         curriculum_crosswalk=CurriculumCrosswalk(**curriculum_crosswalk),
-        student_evidence=StudentEvidence(
-            total_in_program=student_stats.get("total_in_program", 0),
-            total_in_aligned_departments=student_stats.get("total_in_aligned_departments", 0),
-            top_students=[StudentSummaryEvidence(**s) for s in top_students],
-        ),
         swp_evidence=swp_evidence,
         partnership_opportunities=partnership_opportunities,
     )

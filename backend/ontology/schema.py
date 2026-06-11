@@ -61,11 +61,11 @@ def _migrate_curriculum_to_course(session):
         MERGE (d)-[:CONTAINS]->(c)
     """)
 
-    # Verify student enrollments still resolve
-    student_count = session.run(
-        "MATCH (s:Student)-[:ENROLLED_IN]->(c:Course) RETURN count(c) AS cnt"
+    # Verify the migration produced Course nodes
+    course_count = session.run(
+        "MATCH (c:Course) RETURN count(c) AS cnt"
     ).single()["cnt"]
-    logger.info(f"Migration complete. Student enrollments verified: {student_count}")
+    logger.info(f"Migration complete. Courses: {course_count}")
 
 
 def init_schema():
@@ -118,7 +118,6 @@ def _create_constraints(session):
         "CREATE CONSTRAINT college_name IF NOT EXISTS FOR (n:College) REQUIRE n.name IS UNIQUE",
         "CREATE CONSTRAINT course_code_college IF NOT EXISTS FOR (n:Course) REQUIRE (n.code, n.college) IS UNIQUE",
         "CREATE CONSTRAINT department_name IF NOT EXISTS FOR (n:Department) REQUIRE n.name IS UNIQUE",
-        "CREATE CONSTRAINT student_uuid IF NOT EXISTS FOR (n:Student) REQUIRE n.uuid IS UNIQUE",
         "CREATE CONSTRAINT region_name IF NOT EXISTS FOR (n:Region) REQUIRE n.name IS UNIQUE",
         "CREATE CONSTRAINT occupation_soc IF NOT EXISTS FOR (n:Occupation) REQUIRE n.soc_code IS UNIQUE",
         "CREATE CONSTRAINT employer_name IF NOT EXISTS FOR (n:Employer) REQUIRE n.name IS UNIQUE",
@@ -137,24 +136,10 @@ def _create_constraints(session):
     # for their target properties; this list is the additional non-unique
     # set.
     #
-    # student_primary_focus: speeds equality / IN-list filters on
-    # Student.primary_focus, used by compute.py's pipeline_size
-    # precompute (per-college, runs during ingestion) and by the
-    # proposal-flow student-pipeline queries in partnerships/gather.py.
-    # Without it, those reads do a NodeByLabelScan over all Student
-    # nodes plus a property filter; with it they're a NodeIndexSeek.
-    # Measured impact on a 99K-student graph:
-    #   - compute.py pipeline_size: 15.6s -> 7.4s (2.1x)
-    #   - gather.py student stats: 71ms -> 25ms (2.8x)
-    # The LLM vocabulary-resolution query for primary_focus does
-    # `toLower(...) CONTAINS '...'` and so cannot use a RANGE index;
-    # it would benefit from a TEXT index instead, which we have not
-    # added here.
-    #
     # course_college: speeds the `MATCH (c:Course {college: $college})`
     # filter that appears in essentially every read endpoint and in
-    # most LLM-generated queries (students, courses, employers,
-    # occupations, partnerships, vocab resolver). The existing
+    # most LLM-generated queries (courses, employers, occupations,
+    # partnerships, vocab resolver). The existing
     # `course_code_college` uniqueness constraint creates a composite
     # index keyed on (code, college); that index is only usable when
     # `code` is also bound. Filtering by college alone falls back to
@@ -163,30 +148,8 @@ def _create_constraints(session):
     # Adding a standalone RANGE index turns the per-college filter
     # into a NodeIndexSeek. Impact not yet measured; will be once the
     # neo4j_queries.jsonl instrumentation is deployed.
-    # student_courses_completed: added speculatively to enable an
-    # EXISTS-subquery rewrite of the /students/ pagination query that
-    # would scan this index in DESC order. PROFILE showed the planner
-    # didn't use it that way (NodeByLabelScan + per-row EXISTS won
-    # the cost estimate), so the rewrite was reverted. The index is
-    # kept because it's cheap, may be picked by future queries that
-    # sort or range-filter on courses_completed, and incurs only
-    # marginal write overhead at student generation time.
-    # student_college: speeds the per-college Student narrowing in
-    # partnerships/gather.py. The HAS_COMPETENCY traversal pool can be
-    # 100K+ students for broad CTE-aligned SOCs (e.g., 25-2031 Secondary
-    # Teachers materialized 372K HAS_COMPETENCY edges across 31 colleges
-    # in production). Without a college index on Student, the planner
-    # scans all candidate students and loads each one's primary_focus
-    # before filtering — pathological for broad SOCs (queries timed out
-    # at 30s+). With this index, the planner can pivot to start from
-    # `(s:Student {college: $college})` (~13K nodes/college), apply the
-    # primary_focus filter, then EXISTS-check HAS_COMPETENCY — turning
-    # the broad-SOC opportunity reads from 30s timeouts to sub-second.
     indexes = [
-        "CREATE INDEX student_primary_focus IF NOT EXISTS FOR (n:Student) ON (n.primary_focus)",
-        "CREATE INDEX student_college IF NOT EXISTS FOR (n:Student) ON (n.college)",
         "CREATE INDEX course_college IF NOT EXISTS FOR (n:Course) ON (n.college)",
-        "CREATE INDEX student_courses_completed IF NOT EXISTS FOR (n:Student) ON (n.courses_completed)",
     ]
     for index in indexes:
         session.run(index)

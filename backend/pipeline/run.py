@@ -4,8 +4,6 @@ Pipeline runner — orchestrates scrape → load for a college.
 Usage:
     python -m pipeline.run --college foothill
     python -m pipeline.run --college foothill --from-cache    # load from cached JSON
-    python -m pipeline.run --college foothill --generate-students --from-cache
-    python -m pipeline.run --college foothill --generate-students --num-students 5000
 """
 
 from __future__ import annotations
@@ -17,7 +15,6 @@ import logging
 import os
 import sys
 from pathlib import Path
-from typing import Optional
 
 from dotenv import load_dotenv
 
@@ -106,9 +103,6 @@ async def run_pipeline(
     college_key: str,
     from_cache: bool = False,
     scrape_only: bool = False,
-    generate_students: bool = False,
-    num_students: Optional[int] = None,
-    seed: int = 42,
 ) -> LoadStats | None:
     """Run the full pipeline for a college."""
 
@@ -159,13 +153,7 @@ async def run_pipeline(
     #
     # We always run the curriculum load below — load_college is idempotent
     # (MERGE on College/Department/Course nodes), so re-running on a
-    # college that's already loaded is a fast no-op. This keeps a single
-    # code path for both fresh onboards (--from-cache --generate-students
-    # for a college that has cache but no graph nodes yet) and
-    # student-only re-generations (same flags for a college that's
-    # already loaded). Previously a separate early-return path skipped
-    # the load entirely on the latter intent and silently created
-    # orphan Student nodes for the former.
+    # college that's already loaded is a fast no-op.
     enriched_cache = _cache_path(college_key, "enriched")
 
     if enriched_cache.exists():
@@ -245,27 +233,6 @@ async def run_pipeline(
             f"TOP6 coverage healthy for {config.name}: {coverage:.1%}"
         )
 
-    # ── Stage 4: Generate synthetic students (optional) ─────────────────
-    if generate_students:
-        from students.generate import generate_and_load_students
-
-        logger.info(f"Generating synthetic students (seed={seed})...")
-        driver = get_driver()
-        try:
-            gen_stats = generate_and_load_students(
-                college_key=college_key,
-                courses=enriched_courses,
-                institution_name=config.name,
-                driver=driver,
-                num_students=num_students,
-                seed=seed,
-                config=college.get("student_config"),
-            )
-            logger.info(f"Stage 4 complete: {gen_stats.students_generated} students, "
-                        f"{gen_stats.enrollments_created} enrollments")
-        finally:
-            close_driver()
-
     return stats
 
 
@@ -280,15 +247,6 @@ def main():
     parser.add_argument(
         "--scrape-only", action="store_true", help="Only scrape, don't load into Neo4j"
     )
-    parser.add_argument(
-        "--generate-students", action="store_true", help="Generate synthetic student data"
-    )
-    parser.add_argument(
-        "--num-students", type=int, default=None, help="Number of students to generate (default: from calibration or 3000)"
-    )
-    parser.add_argument(
-        "--seed", type=int, default=42, help="Random seed for student generation (default: 42)"
-    )
     args = parser.parse_args()
 
     # Load env — .env is at repo root (two levels up from backend/)
@@ -299,9 +257,6 @@ def main():
         college_key=args.college,
         from_cache=args.from_cache,
         scrape_only=args.scrape_only,
-        generate_students=args.generate_students,
-        num_students=args.num_students,
-        seed=args.seed,
     ))
 
 

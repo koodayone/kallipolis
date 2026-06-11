@@ -43,7 +43,6 @@ from .base import Check, CheckResult, Status
 
 LOADER_FILES = [
     "backend/courses/load.py",
-    "backend/students/generate.py",
     "backend/occupations/load.py",
     "backend/employers/load.py",
     "backend/ontology/prepares_for.py",

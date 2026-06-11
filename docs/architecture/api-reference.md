@@ -10,13 +10,11 @@ A liveness probe at `/health` is defined directly in `backend/main.py` and retur
 
 Defined in `backend/students/api.py`, mounted at `/students`.
 
+The ontology no longer carries individual Student nodes (removed in the non-PII migration); the `students` unit is retained as a navigational surface. The list endpoint returns an empty page so the atlas Students view renders its placeholder.
+
 | Method | Path | Purpose | Response model |
 |---|---|---|---|
-| `GET /students` | Paginated list of students enrolled at the college, ordered by courses completed. Query params: `college` (required), `limit` (default 100, max 5000), `offset` (default 0) | `StudentSummaryPage` |
-| `GET /students/{student_uuid}` | Full enrollment history and derived skill set for one student | `StudentDetail` |
-| `POST /students/query` | Natural-language query translated to Cypher with safety gate | `StudentQueryResponse` |
-
-**Request model** for `POST /students/query`: `StudentQueryRequest` — fields `query` (the NL question) and `college`.
+| `GET /students` | Empty-page placeholder — no per-student data in the non-PII ontology. Query params: `college` (required), `limit` (default 100, max 5000), `offset` (default 0) | `StudentSummaryPage` |
 
 ## Courses
 

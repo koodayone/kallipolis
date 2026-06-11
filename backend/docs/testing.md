@@ -62,7 +62,7 @@ The goal is that `python -m pytest -v` produces output a non-author can read to 
 
 ## Mocking pattern
 
-Most backend pure-logic tests need no mocking — `compute_gpa`, `validate_cypher`, `_extract_json`, `_clean_employer_name` all take plain arguments and return plain values. When mocking is unavoidable (e.g., patching Neo4j driver calls in a future integration test), use `unittest.mock.patch` or `pytest-mock` conventions. Avoid module-scope patching when a narrower `with patch(...)` block will work — narrower scopes make tests more self-contained and easier to read.
+Most backend pure-logic tests need no mocking — `validate_cypher`, `_extract_json`, `_clean_employer_name` all take plain arguments and return plain values. When mocking is unavoidable (e.g., patching Neo4j driver calls in a future integration test), use `unittest.mock.patch` or `pytest-mock` conventions. Avoid module-scope patching when a narrower `with patch(...)` block will work — narrower scopes make tests more self-contained and easier to read.
 
 ## Out of scope (for now)
 

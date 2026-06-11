@@ -820,7 +820,7 @@ export default function SvampView({ colleges, instance = "svamp" }: Props) {
   const selectedCell = selCollege?.cells.find((c) => c.soc_code === selectedSoc);
 
   // SVAMP-owned Program Outcomes panel — injected into the embedded report
-  // between Curriculum Alignment and Student Impact via OpportunityReportBody's
+  // between Curriculum Alignment and Labor Market via OpportunityReportBody's
   // `programOutcomes` slot (so it reads as a peer report section without
   // touching the shared per-college report). Null when the selection has no
   // DataMart program data.
@@ -1033,7 +1033,7 @@ export default function SvampView({ colleges, instance = "svamp" }: Props) {
             // mismatch; the market-scale comparison lives at the consortium
             // grain (occupation summary, Programs-lens Demand toggle).
             // Per-college standalone reports keep the section.
-            <OpportunityReportBody school={selRef.config} socCode={selectedSoc} sector={data.sector} hideExecutiveSummary hideStudentImpact embedded programOutcomes={programOutcomesPanel} hideLaborMarket topPrefix={SVAMP_TOP_DIVISION} cteOnly excludeTops={SVAMP_MANDATE_EXCLUDED_TOPS} />
+            <OpportunityReportBody school={selRef.config} socCode={selectedSoc} sector={data.sector} hideExecutiveSummary embedded programOutcomes={programOutcomesPanel} hideLaborMarket topPrefix={SVAMP_TOP_DIVISION} cteOnly excludeTops={SVAMP_MANDATE_EXCLUDED_TOPS} />
           ) : null}
         </div>
       )}

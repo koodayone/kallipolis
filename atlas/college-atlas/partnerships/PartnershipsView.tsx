@@ -513,9 +513,6 @@ function OccupationOpportunityRow({
           </LabeledStat>
 
           {/* Row 2 — partnership impact at this college */}
-          <LabeledStat label={`${occ.student_count === 1 ? "student" : "students"} impacted`} value={occ.student_count.toLocaleString()}>
-            <PersonIcon />
-          </LabeledStat>
           <LabeledStat label={`aligned ${occ.course_count === 1 ? "course" : "courses"}`} value={occ.course_count.toLocaleString()}>
             <BookIcon />
           </LabeledStat>
@@ -554,15 +551,6 @@ function LabeledStat({
         {label}
       </span>
     </span>
-  );
-}
-
-function PersonIcon() {
-  return (
-    <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
-      <circle cx="8" cy="5" r="2.5" stroke="currentColor" strokeWidth="1.4" />
-      <path d="M3 13c0-2.5 2.2-4 5-4s5 1.5 5 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-    </svg>
   );
 }
 

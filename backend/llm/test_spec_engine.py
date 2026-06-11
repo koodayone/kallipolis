@@ -24,7 +24,7 @@ import re
 
 import pytest
 
-from llm.specs import courses, employers, occupations, students
+from llm.specs import courses, employers, occupations
 from llm.specs.base import NumericFilter
 from llm.spec_engine import is_enabled_for
 
@@ -184,56 +184,6 @@ class TestCoursesInterpret:
         assert "4" in text and ("at least" in text.lower() or ">" in text)
 
 
-# ── Students ─────────────────────────────────────────────────────────
-
-
-class TestStudentsRender:
-    def test_default_spec_uses_plain_anchor(self):
-        spec = students.StudentSpec()
-        cypher, _ = students.render_cypher(spec)
-        assert "MATCH (s:Student)-[:ENROLLED_IN]->(:Course {college: $college})" in cypher
-        assert "HAS_SKILL" not in cypher  # Skill abstraction is gone
-
-    def test_primary_focus_single_substring(self):
-        spec = students.StudentSpec(primary_focus_contains=["construction technology"])
-        cypher, params = students.render_cypher(spec)
-        assert params["pf_q_0"] == "construction technology"
-        # Single substring should NOT be wrapped in parens
-        assert " OR " not in cypher
-
-    def test_primary_focus_multi_substring_or(self):
-        spec = students.StudentSpec(primary_focus_contains=["health", "medical"])
-        cypher, params = students.render_cypher(spec)
-        assert " OR " in cypher
-        assert params["pf_q_0"] == "health"
-
-    def test_course_anchored_traversal_when_course_filter_set(self):
-        spec = students.StudentSpec(course_code_contains="MATH 1A")
-        cypher, params = students.render_cypher(spec)
-        assert "MATCH (s:Student)-[e:ENROLLED_IN]->(c:Course {college: $college})" in cypher
-        # OR fallback: code substring also matched against name
-        assert "c.code CONTAINS $code_q OR" in cypher
-        assert params["code_q"] == "MATH 1A"
-
-    def test_gpa_numeric_filter(self):
-        spec = students.StudentSpec(gpa=NumericFilter(op=">", value=3.5))
-        cypher, params = students.render_cypher(spec)
-        assert "s.gpa > $gpa_v" in cypher
-        assert params["gpa_v"] == 3.5
-
-
-class TestStudentsInterpret:
-    def test_primary_focus_surfaces_in_interpretation(self):
-        spec = students.StudentSpec(primary_focus_contains=["engineer"])
-        text = students.interpret_spec(spec)
-        assert "engineer" in text.lower()
-
-    def test_gpa_filter_surfaces(self):
-        spec = students.StudentSpec(gpa=NumericFilter(op=">=", value=3.5))
-        text = students.interpret_spec(spec)
-        assert "3.5" in text
-
-
 # ── Feature flag dispatch ─────────────────────────────────────────────
 
 
@@ -249,10 +199,6 @@ class TestFeatureFlag:
     def test_course_default_off(self, monkeypatch):
         monkeypatch.delenv("SPEC_ENGINE_COURSE", raising=False)
         assert is_enabled_for("course") is False
-
-    def test_student_default_off(self, monkeypatch):
-        monkeypatch.delenv("SPEC_ENGINE_STUDENT", raising=False)
-        assert is_enabled_for("student") is False
 
     def test_env_override_disables_default_on(self, monkeypatch):
         monkeypatch.setenv("SPEC_ENGINE_OCCUPATION", "0")

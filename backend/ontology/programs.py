@@ -1,7 +1,7 @@
 """Program node loader — the first-class TOP6 program the schema lacked.
 
 TOP6 is the unit SWP funds and reports on, but it was smeared across the graph
-as a property (Course.top_code, Student.primary_top6) and a TOP4-derived
+as a property (Course.top_code) and a TOP4-derived
 Department. This loader instantiates it: a per-college Program node keyed
 (college, top6), mirroring Course's (code, college) compound key.
 

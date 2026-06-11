@@ -4,9 +4,8 @@ The Partnerships node is a sector→occupation navigation surface: the
 ``SectorIndex`` powers the accordion; clicking an occupation generates
 an ``OpportunityReport`` framed around the multi-employer engagement
 opportunity the regional alignment data identifies. The supporting
-evidence shapes (occupation, course, department, student, supply,
-attribution) are composed into both the report and the tabular SWP
-evidence block within it.
+evidence shapes (occupation, course, supply, attribution) are composed
+into both the report and the tabular SWP evidence block within it.
 """
 
 from pydantic import BaseModel
@@ -51,28 +50,6 @@ class DepartmentEvidence(BaseModel):
     # The CIP codes that mediate the chain Course → TOP6 → CIP → SOC.
     # Composed from `top6_to_cip` over the via_top set.
     via_cip: list[str] = []
-
-
-class StudentEnrollmentEvidence(BaseModel):
-    code: str
-    name: str
-    grade: str
-    term: str
-
-
-class StudentSummaryEvidence(BaseModel):
-    uuid: str
-    display_number: int
-    primary_focus: str
-    courses_completed: int
-    gpa: float
-    enrollments: list[StudentEnrollmentEvidence] = []
-
-
-class StudentEvidence(BaseModel):
-    total_in_program: int
-    total_in_aligned_departments: int = 0
-    top_students: list[StudentSummaryEvidence]
 
 
 class CrosswalkTop(BaseModel):
@@ -141,12 +118,6 @@ class SupplyEstimate(BaseModel):
     annual_projected_supply: float
 
 
-class DepartmentEnrollment(BaseModel):
-    """Total enrolled students for a department at this college."""
-    department: str
-    student_count: int
-
-
 class InstitutionalSources(BaseModel):
     """Named publications and crosswalks that author the categorical
     claims in the partnership artifact.
@@ -190,7 +161,6 @@ class SwpEvidence(BaseModel):
     """
     occupations: list[OccupationEvidence] = []
     supply_estimates: list[SupplyEstimate] = []
-    department_enrollments: list[DepartmentEnrollment] = []
     total_demand: int = 0       # annual openings (flow)
     total_supply: float = 0.0   # annual projected supply (flow)
     gap: float = 0.0            # demand - supply
@@ -210,8 +180,8 @@ class OpportunityRow(BaseModel):
 
     Carries enough metadata for the row to be self-describing without
     the user needing to drill in: count metrics signal alignment depth
-    at this college (students, courses, employers); demand metrics
-    signal regional market context (annual wage, annual openings, 5-yr
+    at this college (courses, employers); demand metrics signal
+    regional market context (annual wage, annual openings, 5-yr
     growth rate from the COE projections); `gap` is the per-row
     triage signal — regional annual openings minus the college's TOP-
     program supply.
@@ -222,7 +192,6 @@ class OpportunityRow(BaseModel):
     annual_wage: Optional[int] = None
     growth_rate: Optional[float] = None
     course_count: int = 0
-    student_count: int = 0
     employer_count: int = 0
     gap: Optional[int] = None
     # Two-valued alignment status driving the row's visual treatment:
@@ -288,11 +257,10 @@ class OpportunityReport(BaseModel):
     """A per-(college, occupation) partnership opportunity report.
 
     Composed deterministically from the institutional graph: regional
-    demand (COE), TOP-grouped curriculum coverage, student impact
-    (existing pipeline compute), and the candidate set of regional
-    employers hiring for this role.
+    demand (COE), TOP-grouped curriculum coverage, and the candidate
+    set of regional employers hiring for this role.
 
-    Five narrative sections frame the data in employer-agnostic prose
+    Four narrative sections frame the data in employer-agnostic prose
     that points to the multi-employer engagement opportunity the data
     identifies.
     """
@@ -309,11 +277,10 @@ class OpportunityReport(BaseModel):
     description: Optional[str] = None
     regions: list[str] = []
 
-    # Five narrative sections (deterministic templates, employer-agnostic)
+    # Four narrative sections (deterministic templates, employer-agnostic)
     executive_summary: str
     occupational_demand: str
     curriculum_alignment: str
-    student_impact: str
     partnership_opportunities_narrative: str
 
     # Evidence blocks
@@ -324,6 +291,5 @@ class OpportunityReport(BaseModel):
     # the TOP4 layer and active/inactive at the CIP layer. See
     # CurriculumCrosswalk for the field semantics.
     curriculum_crosswalk: CurriculumCrosswalk
-    student_evidence: StudentEvidence
     swp_evidence: SwpEvidence
     partnership_opportunities: list[PartnershipOpportunityEmployer]

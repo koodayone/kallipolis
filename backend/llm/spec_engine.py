@@ -168,7 +168,7 @@ def execute_spec(result: SpecResult) -> list[dict]:
 def is_enabled_for(view: str) -> bool:
     """Feature-flag check.
 
-    Defaults: occupation + employer always on; course + student off
+    Defaults: occupation + employer always on; course off
     until further validation. Override via env vars
     SPEC_ENGINE_<VIEW>=1|0 (uppercased).
     """
@@ -176,7 +176,6 @@ def is_enabled_for(view: str) -> bool:
         "occupation": "1",
         "employer": "1",
         "course": "0",
-        "student": "0",
     }
     env_key = f"SPEC_ENGINE_{view.upper()}"
     return os.environ.get(env_key, defaults.get(view, "0")) == "1"

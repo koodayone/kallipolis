@@ -3,8 +3,8 @@ name: onboard-college
 description: >
   This skill should be used when the user asks to "onboard a college", "add a new college",
   "load College X into the graph", "run the pipeline for College X", or "set up College X in
-  Kallipolis". It orchestrates the full six-stage onboarding pipeline — curriculum extraction,
-  student generation, employer generation, employer validation, employer load, and partnership
+  Kallipolis". It orchestrates the full five-stage onboarding pipeline — curriculum extraction,
+  employer generation, employer validation, employer load, and partnership
   alignment precompute — for a single California community college identified by its college
   key in catalog_sources.json. The skill invokes the validate-employers skill automatically
   between employer generation and employer load, so the operator never has to remember the
@@ -15,14 +15,14 @@ description: >
 
 Bring a new California community college into the Kallipolis graph end-to-end. This skill
 owns the operator-facing workflow for new-college work: preflight verification, curriculum
-extraction and skill enrichment, synthetic student generation, employer scrape and cleanup,
+extraction and skill enrichment, employer scrape and cleanup,
 employer validation, employer load, partnership alignment precompute, and a final graph-state
 verification. It is the default entry point for running the pipeline for a college that has
 not yet been loaded.
 
 ## Context
 
-The Kallipolis backend pipeline has six backend stages plus a final stage (8) that
+The Kallipolis backend pipeline has five backend stages plus a final stage (7) that
 adds the college to the atlas frontend so it's reachable in the UI. Running them in
 order, with the correct
 arguments, with the right caching flags, and with the mandatory `validate-employers` step
@@ -31,7 +31,7 @@ Python entry points and a pipeline documentation tree. This skill centralizes th
 so the operator can say "onboard College X" and the sequence runs without any per-step
 decisions.
 
-The critical non-obvious step is stage 4 — `validate-employers`. When run directly via
+The critical non-obvious step is stage 3 — `validate-employers`. When run directly via
 `python3 -m employers.generate`, the employer pipeline writes records to `employers.json`
 with no `website` field. The `validate-employers` skill is what fetches and verifies each
 employer's web presence, applies the five viability criteria, and enriches the surviving
@@ -55,7 +55,7 @@ are available so the operator can disambiguate.
 
 Surface these to the operator at the start of the skill so they know what they are committing
 to. Employer work is regional: if another college in the same COE region has already been
-onboarded, stages 3–5 (employer generation, validation, load) short-circuit via the regional
+onboarded, stages 2–4 (employer generation, validation, load) short-circuit via the regional
 cache. Only the first college in a given region pays the full employer cost.
 
 - **First college in a region, no caches**: ~45–75 minutes total wall time. Dominated by PDF
@@ -64,7 +64,7 @@ cache. Only the first college in a given region pays the full employer cost.
   dollars in Gemini tokens.
 - **Subsequent college in an already-onboarded region**: ~5–10 minutes total wall time.
   The regional employer cache is reused as-is; no re-scrape, no re-validation, no re-load.
-  Only curriculum and students are college-specific.
+  Only curriculum is college-specific.
 - **Fully cached re-run (everything already generated)**: ~2–5 minutes total wall time. All
   stages short-circuit.
 - **Network dependencies**: live access to the EDD ALMIS database for the regional employer
@@ -90,25 +90,17 @@ The checks, in order:
    and confirm the human-readable college name is a key in `COLLEGE_COE_REGION` (maps to
    a COE region code: Bay, CVML, FN, GS, IE/D, LA, OC, SCC, or SD/I). If missing, stop
    and tell the operator the exact file and dict name to edit. Record the resolved COE
-   region code — stages 3–5 are keyed by it.
+   region code — stages 2–4 are keyed by it.
 
-3. **Student calibration files exist.** Verify these three paths, substituting `{key}`:
-   - `backend/ontology/calibrations/{key}.json` — 2-digit TOP code enrollment distribution
-   - `backend/ontology/calibrations/top4/{key}.json` — 4-digit TOP code calibration
-   - `backend/ontology/mastercoursefiles/MasterCourseFile_{key}.csv` — institutional MCF
-
-   All three are required for stage 2 (student generation). If any is missing, stop and
-   point the operator at the `backend/ontology/calibrations/` tree.
-
-4. **Environment variables are set.** Read `.env` at the repo root and confirm
+3. **Environment variables are set.** Read `.env` at the repo root and confirm
    `GEMINI_API_KEY`, `ANTHROPIC_API_KEY`, and `NEO4J_URI` are all present. If any are
    missing, stop and tell the operator to update `.env`.
 
-5. **Neo4j is reachable.** Run a minimal Cypher query (`MATCH (c:College) RETURN count(c)`)
+4. **Neo4j is reachable.** Run a minimal Cypher query (`MATCH (c:College) RETURN count(c)`)
    via a small Python one-liner through the Bash tool. If the driver cannot connect, stop
    and tell the operator that Neo4j needs to be running before the skill can proceed.
 
-6. **TOP4 manual table is present.** Verify
+5. **TOP4 manual table is present.** Verify
    `backend/ontology/data/top4_names.json` exists. This is the parsed
    Chancellor's Office Taxonomy of Programs Manual (TOP4 → name) that
    the loader uses to derive `Course.department` from each course's
@@ -118,7 +110,7 @@ The checks, in order:
    entries). No per-college work is needed — the table is shared
    across all colleges.
 
-Only after all six checks pass, proceed to Stage 1.
+Only after all five checks pass, proceed to Stage 1.
 
 ## Stage 1 — Curriculum extraction and Neo4j load
 
@@ -152,22 +144,7 @@ report the error and stop. The operator can re-invoke the skill after resolving 
 underlying issue; on retry, the `{key}_enriched.json` cache (if it was produced before
 the failure) will short-circuit this stage.
 
-## Stage 2 — Student generation
-
-Run the student generator. Always use `--from-cache` because Stage 1 just produced the
-enriched file.
-
-- `cd backend && python3 -m pipeline.run --college {key} --generate-students --from-cache`
-
-Wall time is ~90 seconds — run in the foreground with a generous timeout. Confirm the log
-shows `Complete: N students, M enrollments, success rate: P%`. The calibration-match line
-(`success rate: synthetic=P%, target=P%, diff=X%`) should show `diff` within ±0.5% of the
-target; if it deviates more than ±1%, flag it to the operator as a calibration drift
-signal (not a failure, but worth a manual check).
-
-Report student count, enrollment count, and top-5 TOP4 share deltas to the operator.
-
-## Stage 3 — Employer generation (regional)
+## Stage 2 — Employer generation (regional)
 
 Employers are generated at the COE region level. Every college in a region shares the same
 employer pool, so this stage is a **no-op** when another college in the same region has
@@ -177,9 +154,9 @@ Let `{code}` be the COE region code resolved in preflight (e.g., `Bay`, `SCC`, `
 
 First, check whether the region has already been generated. If both
 `backend/employers/cache/edd_region_{code_slug}_f.json` exists AND `employers.json` already
-contains entries tagged with `{code}`, skip this stage and Stage 4 (validate) — there are
+contains entries tagged with `{code}`, skip this stage and Stage 3 (validate) — there are
 no new employers to generate or validate. Report the count of employers currently tagged
-with `{code}` in `employers.json` to the operator, then proceed directly to Stage 5 (which
+with `{code}` in `employers.json` to the operator, then proceed directly to Stage 4 (which
 is idempotent) to ensure the graph reflects the file.
 
 If the region has not yet been generated, run the regional pipeline:
@@ -203,7 +180,7 @@ LLM cleanup`, the `.env` loading failed silently — stop and report the issue; 
 proceed to validation because the employer records will have no descriptions and only
 fallback SOC codes.
 
-## Stage 4 — Validate employers (via Skill tool)
+## Stage 3 — Validate employers (via Skill tool)
 
 This is the critical step that prior manual runs have silently skipped. Invoke the
 `validate-employers` skill via the Skill tool, passing the college's COE region code
@@ -232,7 +209,7 @@ for this region now have `website` fields populated. If the skill reports zero
 assessed or aborts early, stop and report the issue; do not proceed to load
 unvalidated data.
 
-## Stage 5 — Employer load
+## Stage 4 — Employer load
 
 Push the validated employer list into Neo4j:
 
@@ -242,7 +219,7 @@ Wall time: ~30 seconds for a typical college. Confirm the log shows `Created N E
 nodes`, `Created M IN_MARKET edges`, and `Created K HIRES_FOR edges` with all counts
 non-zero. Report the counts to the operator.
 
-## Stage 6 — Partnership alignment precompute
+## Stage 5 — Partnership alignment precompute
 
 Run the partnership precompute as a one-shot via Bash:
 
@@ -284,7 +261,7 @@ ensure_college_region_link(driver, '{college_name}')
 
 Then re-run the precompute.
 
-## Stage 7 — Final verification
+## Stage 6 — Final verification
 
 Run one Cypher query via Bash that reports the end-to-end graph state for the onboarded
 college, and present it to the operator as a summary table:
@@ -299,13 +276,11 @@ driver = get_driver()
 with driver.session() as s:
     name = '{college_name}'
     courses = s.run('MATCH (c:Course {college: \$name}) RETURN count(c) AS n', name=name).single()['n']
-    students = s.run('MATCH (st:Student)-[:ENROLLED_IN]->(c:Course {college: \$name}) RETURN count(DISTINCT st) AS n', name=name).single()['n']
     edge = s.run('MATCH (c:College {name: \$name})-[:IN_MARKET]->(r:Region) RETURN r.name AS region', name=name).single()
     employers = s.run('MATCH (c:College {name: \$name})-[:IN_MARKET]->(r:Region)<-[:IN_MARKET]-(e:Employer) RETURN count(DISTINCT e) AS n', name=name).single()['n']
     alignments = s.run('MATCH (c:College {name: \$name})-[pa:PARTNERSHIP_ALIGNMENT]->() RETURN count(pa) AS n, avg(pa.alignment_score) AS avg, max(pa.alignment_score) AS max', name=name).single()
     top = s.run('MATCH (c:College {name: \$name})-[pa:PARTNERSHIP_ALIGNMENT]->(e:Employer) RETURN e.name AS employer, e.sector AS sector, pa.alignment_score AS score ORDER BY pa.alignment_score DESC LIMIT 5', name=name).data()
     print(f'Courses: {courses}')
-    print(f'Students: {students}')
     print(f'Region: {edge[\"region\"] if edge else None}')
     print(f'Employers in region: {employers}')
     print(f'Alignment edges: {alignments[\"n\"]}, avg {alignments[\"avg\"]:.2f}, max {alignments[\"max\"]:.2f}')
@@ -320,7 +295,7 @@ Present the results to the operator. All counts should be non-zero. If any are z
 missing, diagnose by comparing against the earlier stage outputs and report the
 discrepancy.
 
-## Stage 8 — Frontend visibility
+## Stage 7 — Frontend visibility
 
 Loading the graph isn't sufficient — the operator should be able to navigate to the
 college's URL in the atlas and see real data. Static export uses
@@ -365,12 +340,12 @@ Specific failure classes:
 - **Stage 1 PDF unreachable**: operator verifies the URL in `catalog_sources.json`, or
   downloads the PDF manually to `backend/pipeline/cache/{key}_catalog.pdf` and re-runs
   with `--from-cache` behavior implicit via the cache detection.
-- **Stage 3 EDD scrape network failure**: operator retries — the partial cache file is
+- **Stage 2 EDD scrape network failure**: operator retries — the partial cache file is
   valid if it contains any rows, and the scraper's per-NAICS loop is resumable.
-- **Stage 4 (`validate-employers`) aborts mid-run**: operator re-invokes the skill; it
+- **Stage 3 (`validate-employers`) aborts mid-run**: operator re-invokes the skill; it
   will pick up from the unvalidated employers on the next pass.
-- **Stage 6 (`precompute_partnership_alignment`) writes zero edges**: check the
-  College → Region IN_MARKET edge (see the Stage 6 fallback one-shot). After commit
+- **Stage 5 (`precompute_partnership_alignment`) writes zero edges**: check the
+  College → Region IN_MARKET edge (see the Stage 5 fallback one-shot). After commit
   `69c4ba0` this should not occur for new colleges, but the fallback is present as a
   defensive measure.
 
@@ -398,6 +373,6 @@ the escape hatch.
 
 ## Related
 
-- `docs/pipeline/overview.md` — high-level description of the six pipeline stages.
+- `docs/pipeline/overview.md` — high-level description of the five pipeline stages.
 - `docs/pipeline/employer-generation.md` — detailed treatment of the employer stage.
 - `.claude/skills/validate-employers/SKILL.md` — the validation skill this skill invokes.

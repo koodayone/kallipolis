@@ -19,8 +19,8 @@ SURFACE, not a graph concept.
 
 The aggregation invariant (unchanged, see svamp.py module docstring) is what
 constrains the spec: DEMAND and EMPLOYERS are REGIONAL, read once per SOC /
-as a distinct union over the region; SUPPLY and STUDENTS are INSTITUTIONAL,
-summed across member colleges. That is why `colleges` is the only school-side
+as a distinct union over the region; SUPPLY is INSTITUTIONAL, summed across
+member colleges. That is why `colleges` is the only school-side
 field and the region is DERIVED from it (`resolve_region`) rather than
 specified — the members must collapse to a single COE region for the regional
 reads to be a single shared number. Both current instances (SVAMP, SMCCD) sit
@@ -45,7 +45,7 @@ from dataclasses import dataclass
 
 from ontology.crosswalks import is_cte_top4_family, is_vocational
 from ontology.regions import COLLEGE_COE_REGION
-from partnerships.sectors import SECTORS, Sector
+from partnerships.sectors import SECTORS, Sector, SectorRule
 
 
 @dataclass(frozen=True)
@@ -78,7 +78,7 @@ class LandscapeSpec:
 
     # ── Identity (presentation; surfaced to the frontend via the payload) ──
     # Canonical PCAH Strong Workforce sector label (drives the priority-sector
-    # tag and the leaf report's sector framing).
+    # tag and the leaf report's sector framing). This is the DISPLAY form.
     sector: str
     # Consortium display name — woven into the masthead, report headers, and
     # the server-composed executive summary.
@@ -105,6 +105,27 @@ class LandscapeSpec:
     # Taxonomy of Programs 7th Ed) — and top_divisions/cte_only are unused. False
     # for the curated AM instances (the legacy division + family-CTE predicate).
     vocational: bool = False
+
+    # SOC-selection curation for sector instances (demand floor / reachable /
+    # non-empty), applied at request time by partnerships.resolve.resolve().
+    # None for the curated AM instances (no SOC filtering). See landscape_for.
+    soc_rule: SectorRule | None = None
+
+    # The exact COE/EDD `swp_sectors` tag the Employer nodes carry (Sector.swp_tag).
+    # Diverges from the display `sector` ("&"/short form vs "and"/full COE name),
+    # so the regional employer query matches on this, falling back to `sector`
+    # when unset (SVAMP, whose display label already equals the COE tag).
+    swp_tag: str | None = None
+
+    # The county/ies of the member colleges — scopes the regional employer map to
+    # the district's geographic shed (the COE region is too coarse; see
+    # MemberSet.counties). Empty = no county scoping (whole region).
+    counties: tuple[str, ...] = ()
+
+    # Employer-map shortlist cap: keep only the top_n firms by size (the sizable,
+    # most partnership-viable employers) per industry. None = uncapped (SVAMP,
+    # which is a curated SOC-breadth set, not a size-ranked one).
+    top_n: int | None = None
 
     def in_scope(self, top6: str | None) -> bool:
         """Whether a TOP6 is in this instance's scoped program universe.
@@ -157,6 +178,13 @@ class MemberSet:
     id: str                      # URL/id segment: "{id}-{sector}"
     label: str                   # display label (masthead)
     colleges: tuple[str, ...]
+    # The county/ies the member colleges sit in — the geographic shed used to
+    # scope the regional employer map to firms the district can actually partner
+    # with. The COE region (e.g. "Bay") is too coarse: it spans Santa Clara
+    # (SVAMP) and San Mateo (SMCCD) alike, so without this an SMCCD map would
+    # show South-Bay employers and SVAMP would show peninsula ones. Empty = no
+    # county scoping (the whole region).
+    counties: tuple[str, ...] = ()
 
 
 MEMBERS: dict[str, MemberSet] = {
@@ -168,6 +196,7 @@ MEMBERS: dict[str, MemberSet] = {
             "Skyline College",
             "Cañada College",
         ),
+        counties=("San Mateo",),
     ),
 }
 
@@ -190,10 +219,14 @@ def landscape_for(
         colleges=member.colleges,
         socs=sector.socs,
         top_divisions=(),  # unused in vocational mode
-        excluded_tops=frozenset(),
+        excluded_tops=sector.excluded_tops,  # sector-level crosswalk-noise drops
+        soc_rule=sector.rule,                # sector-level SOC curation (resolve())
         vocational=True,
         published=published,
         sector=sector.label,
+        swp_tag=sector.swp_tag,              # COE employer-vocabulary tag (match key)
+        counties=member.counties,            # geographic shed for the employer map
+        top_n=25,                            # top-25-by-size shortlist per industry
         name=f"{member.label} — {sector.label}",
         accent=sector.accent,
     )
@@ -231,6 +264,7 @@ SVAMP_SPEC = LandscapeSpec(
     top_divisions=_AM_TOP_DIVISIONS,
     excluded_tops=_AM_EXCLUDED_TOPS,
     sector="Advanced Manufacturing",
+    counties=("Santa Clara",),  # SVAMP's shed — keeps the peninsula (SMCCD) out
     name="Silicon Valley Advanced Manufacturing Partnership",
     accent="#ff5a5a",
 )

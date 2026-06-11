@@ -28,13 +28,18 @@ const ACCENT = "#5a9bd4"; // Employers lens blue (mirrors the report)
 type CollegeRef = { id: string; config: SchoolConfig };
 
 // Member-college coordinates for the map's context anchors (mirrors the
-// report's SVAMP_COLLEGE_GEO — fixed, five colleges).
+// report's SvampView SVAMP_COLLEGE_GEO — keyed by every member set we render).
 const COLLEGE_GEO: Record<string, [number, number]> = {
+  // SVAMP — the five Silicon Valley colleges
   "De Anza College": [37.31, -122.04],
   "Foothill College": [37.36, -122.05],
   "Evergreen Valley College": [37.34, -121.80],
   "Mission College": [37.39, -121.98],
   "Ohlone College": [37.53, -121.91],
+  // San Mateo CCD — the three district colleges (smccd-* instances)
+  "College of San Mateo": [37.54, -122.32],
+  "Skyline College": [37.62, -122.46],
+  "Cañada College": [37.49, -122.23],
 };
 
 export default function SvampDashboardEmployers({ colleges, stacked = false, instance = "svamp" }: { colleges: CollegeRef[]; stacked?: boolean; instance?: string }) {

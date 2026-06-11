@@ -61,7 +61,10 @@ export default function EmployerMap({
   onHover: (name: string | null) => void;
 }) {
   const [colHover, setColHover] = useState<string | null>(null);
-  if (!employers.length) return null;
+  // Render whenever there's anything to plot. A landscape can have its member
+  // colleges anchored before any employers are matched to its sector (e.g. a
+  // draft instance) — show the schools framed on the base map regardless.
+  if (!employers.length && !colleges.length) return null;
 
   // Frame to fit EVERY employer + college, padded — so no marker is ever clipped
   // off the edge (the far-SE outliers in Morgan Hill/Gilroy used to fly off when
@@ -217,10 +220,12 @@ export default function EmployerMap({
         borderRadius: 9, background: "rgba(8,15,33,0.72)",
         border: "1px solid rgba(255,255,255,0.1)", backdropFilter: "blur(6px)",
       }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 7, fontSize: 11, color: "rgba(255,255,255,0.82)", whiteSpace: "nowrap" }}>
-          <span style={{ width: 9, height: 9, borderRadius: 2, background: EMPLOYER, border: "0.8px solid rgba(255,255,255,0.55)" }} />
-          Employer
-        </div>
+        {employers.length > 0 && (
+          <div style={{ display: "flex", alignItems: "center", gap: 7, fontSize: 11, color: "rgba(255,255,255,0.82)", whiteSpace: "nowrap" }}>
+            <span style={{ width: 9, height: 9, borderRadius: 2, background: EMPLOYER, border: "0.8px solid rgba(255,255,255,0.55)" }} />
+            Employer
+          </div>
+        )}
         <div style={{ display: "flex", alignItems: "center", gap: 7, fontSize: 11, color: "rgba(255,255,255,0.82)", whiteSpace: "nowrap" }}>
           <span style={{ width: 8, height: 8, transform: "rotate(45deg)", background: "#cdd6e6", border: "0.8px solid rgba(255,255,255,0.6)" }} />
           Member college

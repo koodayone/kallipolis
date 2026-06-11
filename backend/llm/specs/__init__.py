@@ -5,7 +5,7 @@ surface. They share a uniform shape (SpecClass / EXTRACTOR_PROMPT /
 SPEC_SCHEMA / render_cypher / interpret_spec) so the spec engine can
 dispatch by view name.
 """
-from . import courses, employers, occupations, students
+from . import courses, employers, occupations
 
 # Map view-name strings used elsewhere in the codebase (in the existing
 # `query_engine.resolve_vocabulary` view parameter) to the per-feature
@@ -14,7 +14,6 @@ VIEW_TO_MODULE = {
     "occupation": occupations,
     "course": courses,
     "employer": employers,
-    "student": students,
 }
 
 # View → SpecClass for callers that want to validate a spec dict
@@ -23,10 +22,9 @@ VIEW_TO_SPEC_CLASS = {
     "occupation": occupations.OccupationSpec,
     "course": courses.CourseSpec,
     "employer": employers.EmployerSpec,
-    "student": students.StudentSpec,
 }
 
 __all__ = [
-    "courses", "employers", "occupations", "students",
+    "courses", "employers", "occupations",
     "VIEW_TO_MODULE", "VIEW_TO_SPEC_CLASS",
 ]
