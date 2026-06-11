@@ -119,7 +119,7 @@ Three further surface forms exist but are **not yet enforced** by the audit: Neo
 
 The `backend_layout` check (in `tools/docs-audit/checks/backend_layout.py`) enforces three structural invariants about `backend/`:
 
-1. Only known directories live at the top of `backend/`. The six feature directories plus the shared-infrastructure directories (`backend/ontology/`, `backend/llm/`, `backend/pipeline/`, `backend/tests/`, `backend/scripts/`, `backend/docs/`) are allowed. A new top-level directory under `backend/` — for example, a catchment named *shared/* or *utils/* — fails the check. New features go in their own feature directory; new shared code goes in `backend/ontology/` or `backend/llm/`.
+1. Only known directories live at the top of `backend/`. The six feature directories plus the shared-infrastructure directories (`backend/ontology/`, `backend/llm/`, `backend/pipeline/`, `backend/tests/`, `backend/docs/`) are allowed. A new top-level directory under `backend/` — for example, a catchment named *shared/* or *utils/* — fails the check. New features go in their own feature directory; new shared code goes in `backend/ontology/` or `backend/llm/`.
 
 2. Each feature directory contains at least `__init__.py`, `api.py`, and `models.py`. A feature missing one of those is either half-built or structurally broken.
 

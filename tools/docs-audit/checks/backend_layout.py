@@ -51,7 +51,6 @@ _ALLOWED_TOP_LEVEL_DIRS = frozenset({
     # Orchestration and utilities
     "pipeline",
     "tests",
-    "scripts",
     "docs",
     # Operational infrastructure — the page-view beacon (analytics/api.py)
     # and the rotating log directory it creates at runtime. Not ontology
