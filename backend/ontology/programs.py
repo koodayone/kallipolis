@@ -22,18 +22,16 @@ read-time reference data (mirroring supply.py / get_coe_supply over
 supply_by_top.csv) via `get_wage_outcomes`, NOT as per-college graph edges.
 Display-only, never summed (medians are non-additive).
 
-Data: DataMart MIS exports (Chancellor's Office), scoped to the five SVAMP
-colleges, colocated with supply_by_top.csv in this directory — a pivoted awards
-summary, a pivoted wages summary, one CREDIT course-section file per college
-(5-year term series), and one NONCREDIT course-section file covering all five
-colleges (noncredit_course_sections.csv — DataMart scopes noncredit out of the
-credit export, so it is its own pull; deliberately named OUTSIDE the
-course_sections_*.csv glob because its hierarchy is one level shallower).
-They are pivoted/hierarchical: hierarchy is encoded by indentation across
-leading columns, and TOP6 appears as a SUFFIX ("Name-NNNNNN") in awards/wages
-and a PREFIX ("NNNNNN - Name") in the course-section leaves. Term sets differ
-per college (quarter vs. semester calendars), so enrollment terms are the
-union across colleges, not a fixed list.
+Data: DataMart MIS exports (Chancellor's Office) for ALL catalog colleges,
+produced per-college by pipeline/datamart_export.py into ontology/datamart/
+{program_awards,credit_course_summary,ncredit_course_summary}/<key>.csv (one
+file per college, wide — one time period per column, Enrollment Count / award
+count only). Wages remain a single pivoted summary (wage_outcomes_summary.csv)
+in this directory, read at TOP6 grain. The exports are pivoted/hierarchical:
+hierarchy is encoded by indentation across leading columns, and TOP6 appears as
+a SUFFIX ("Name-NNNNNN") in awards/wages and a PREFIX ("NNNNNN - Name") in the
+course leaves. Term sets differ per college (quarter vs. semester calendars),
+so enrollment terms are the union across colleges, not a fixed list.
 
 Runs after Course/Department exist (depends on the TOP6 universe) and before
 the partnership precompute.
@@ -41,6 +39,7 @@ the partnership precompute.
 from __future__ import annotations
 
 import csv
+import json
 import logging
 import re
 from functools import lru_cache
@@ -49,32 +48,27 @@ from pathlib import Path
 from neo4j import Driver
 
 from ontology.crosswalks import is_cte_top6, load_top_titles, top_to_department_name
-from ontology.supply import _NEO4J_TO_SUPPLY
 
 logger = logging.getLogger(__name__)
 
 _DATA_DIR = Path(__file__).parent
-_AWARDS_CSV = _DATA_DIR / "program_awards_summary.csv"
-# Per-college course-section exports (5-year term series). One file per
-# college; the term set differs by calendar (De Anza/Foothill/Mission run
-# quarters, Evergreen/Ohlone semesters), so enrollment terms are the union
-# across colleges, not a fixed list. Each is pivoted with THREE columns per
-# term (Sections Count, Sections FTES, Enrollment Count).
-_COURSE_SECTION_CSVS = sorted(_DATA_DIR.glob("course_sections_*.csv"))
-# Noncredit course sections: ONE file for all five colleges (DataMart's
-# noncredit pull), with a 2-level hierarchy — College Total -> TOP6 leaf —
-# because the whole file is a single credit family. Named outside the
-# course_sections_*.csv glob so the 3-level credit parser never sees it.
-_NONCREDIT_SECTIONS_CSV = _DATA_DIR / "noncredit_course_sections.csv"
-# The credit-family value noncredit ENROLLED edges carry — matches the
-# export's own column naming ("Non-Credit Sections Count").
+# Per-college DataMart exports (datamart_export.py), one file per college, wide
+# (one time period per column), all catalog colleges:
+#   program_awards/<key>.csv        College -> Award Type -> TOP6(suffix) x year
+#   credit_course_summary/<key>.csv  College -> Credit Status -> TOP6(prefix) x term
+#   ncredit_course_summary/<key>.csv College -> TOP6(prefix) x term (one family)
+# Only the Enrollment Count value is exported per term, so unlike the old
+# 3-metric pull there is no metric sub-header row.
+_AWARDS_DIR = _DATA_DIR / "datamart" / "program_awards"
+_CREDIT_DIR = _DATA_DIR / "datamart" / "credit_course_summary"
+_NCREDIT_DIR = _DATA_DIR / "datamart" / "ncredit_course_summary"
+# The credit-family value noncredit ENROLLED edges carry.
 NONCREDIT_TYPE = "Non-Credit"
 _WAGES_CSV = _DATA_DIR / "wage_outcomes_summary.csv"
 
-# Supply CSV short label ("Deanza") -> canonical Neo4j college name
-# ("De Anza College"). Reuse supply.py's authoritative map, reversed; the
-# DataMart exports use the same short labels.
-_SUPPLY_TO_NEO4J = {v: k for k, v in _NEO4J_TO_SUPPLY.items()}
+# The export files are named by backend college key (foothill.csv); the catalog
+# maps that key to the canonical Neo4j College.name.
+_CATALOG = _DATA_DIR.parent / "pipeline" / "catalog_sources.json"
 
 _TOP6_SUFFIX = re.compile(r"-(\d{6})\s*$")
 _TOP6_PREFIX = re.compile(r"^\s*(\d{6})\s*-")
@@ -109,43 +103,52 @@ def _to_int(s: str) -> int | None:
         return None
 
 
-def _canon(label: str) -> str | None:
-    """CSV college label -> canonical Neo4j name (None if unknown)."""
-    return _SUPPLY_TO_NEO4J.get(label.strip())
+@lru_cache(maxsize=1)
+def _college_names() -> dict[str, str]:
+    """Backend college key (export filename stem) -> Neo4j College.name."""
+    cat = json.loads(_CATALOG.read_text())["colleges"]
+    return {key: info["name"] for key, info in cat.items()}
 
 
 # ── Parsers (pivoted/hierarchical exports, indentation state machines) ────
 
 
 def parse_awards() -> list[dict]:
-    """Leaf award rows -> {college, top6, name, award_type, count, year}, one
-    record per reported year. The export is pivoted like the enrollment one:
-    a column per 'Annual YYYY-YYYY' from index 3 onward (single- or multi-year),
-    so we read the value across every year column rather than a lone cell."""
-    with open(_AWARDS_CSV, newline="") as f:
-        rows = list(csv.reader(f))
-    years = [
-        (m.group(0) if (m := _YEAR_RANGE.search(h)) else h.strip())
-        for h in rows[0][3:]
-    ]
+    """Per-college program-awards exports -> {college, top6, name, award_type,
+    count, year}. Each file: College Total -> Award Type Total -> TOP6-suffixed
+    leaf ("Name-NNNNNN"), one value column per academic year. College identity
+    comes from the filename (-> catalog Neo4j name), not the row label."""
+    names = _college_names()
     out: list[dict] = []
-    college = award_type = None
-    for row in rows[1:]:
-        c0, c1, c2 = (row + ["", "", ""])[:3]
-        cells = row[3:3 + len(years)] if len(row) > 3 else []
-        if c0.strip().endswith("Total") and c0.strip():
-            college = _canon(c0.strip()[:-len("Total")].strip())
+    for path in sorted(_AWARDS_DIR.glob("*.csv")):
+        college = names.get(path.stem)
+        if not college:
             continue
-        if c1.strip().endswith("Total") and c1.strip():
-            award_type = re.sub(r"\s+Total$", "", c1.strip())
+        with open(path, newline="") as f:
+            rows = list(csv.reader(f))
+        if len(rows) < 2:
             continue
-        if c2.strip() and college:
+        years = [
+            (m.group(0) if (m := _YEAR_RANGE.search(h)) else h.strip())
+            for h in rows[0][3:]
+        ]
+        award_type = None
+        for row in rows[1:]:
+            c0, c1, c2 = (row + ["", "", ""])[:3]
+            if c0.strip().endswith("Total") and c0.strip():
+                continue
+            if c1.strip().endswith("Total") and c1.strip():
+                award_type = re.sub(r"\s+Total$", "", c1.strip())
+                continue
+            if not c2.strip():
+                continue
             top6 = _top6_suffix(c2)
             if not top6:
                 continue
             name = _name_from_suffix(c2)
-            for year, raw in zip(years, cells):
-                cnt = _to_int(raw)
+            for i, year in enumerate(years):
+                ci = 3 + i
+                cnt = _to_int(row[ci]) if ci < len(row) else None
                 if cnt is not None:
                     out.append({
                         "college": college, "top6": top6, "name": name,
@@ -155,96 +158,85 @@ def parse_awards() -> list[dict]:
 
 
 def parse_course_sections() -> list[dict]:
-    """Per-college course-section exports -> {college, top6, name, credit_type,
-    term, count}, one record per (program, term) with a reported Enrollment
-    Count. Each file is pivoted with three columns per term (Sections Count /
-    Sections FTES / Enrollment Count); we read the Enrollment Count column,
-    located by the metric label rather than by fixed stride. Term columns
-    differ per file (calendars differ), so each file is read on its own terms.
-    Same hierarchy as the awards/enrollment summaries: College Total -> credit-
-    type Total -> TOP6-prefixed leaf ("NNNNNN - Name")."""
+    """Per-college credit course-enrollment exports -> {college, top6, name,
+    credit_type, term, count}. Each file: College Total -> Credit Status Total
+    -> TOP6-prefixed leaf ("NNNNNN - Name"), one Enrollment Count column per
+    term (calendars differ, so terms are read per file). credit_type carries the
+    DataMart family ("Credit - Degree Applicable" / "Credit - Not Degree
+    Applicable")."""
+    names = _college_names()
     out: list[dict] = []
-    for path in _COURSE_SECTION_CSVS:
+    for path in sorted(_CREDIT_DIR.glob("*.csv")):
+        college = names.get(path.stem)
+        if not college:
+            continue
         with open(path, newline="") as f:
             rows = list(csv.reader(f))
         if len(rows) < 2:
             continue
-        terms_row, metric_row = rows[0], rows[1]
-        # (column index, term) for every "Enrollment Count" column.
-        enroll_cols = [
-            (i, terms_row[i].strip())
-            for i in range(3, len(metric_row))
-            if metric_row[i].strip() == "Enrollment Count"
-            and i < len(terms_row) and terms_row[i].strip()
-        ]
-        college = credit_type = None
-        for row in rows[2:]:
+        terms = rows[0][3:]
+        credit_type = None
+        for row in rows[1:]:
             c0, c1, c2 = (row + ["", "", ""])[:3]
             if c0.strip().endswith("Total") and c0.strip():
-                college = _canon(c0.strip()[:-len("Total")].strip())
                 continue
             if c1.strip().endswith("Total") and c1.strip():
                 credit_type = re.sub(r"\s+Total$", "", c1.strip())
                 continue
-            if c2.strip() and college:
-                top6 = _top6_prefix(c2)
-                if not top6:
-                    continue
-                name = _name_from_prefix(c2)
-                for ci, term in enroll_cols:
-                    cnt = _to_int(row[ci]) if ci < len(row) else None
-                    if cnt is not None:
-                        out.append({
-                            "college": college, "top6": top6, "name": name,
-                            "credit_type": credit_type or "Credit",
-                            "term": term, "count": cnt,
-                        })
+            if not c2.strip():
+                continue
+            top6 = _top6_prefix(c2)
+            if not top6:
+                continue
+            name = _name_from_prefix(c2)
+            for i, term in enumerate(terms):
+                ci = 3 + i
+                cnt = _to_int(row[ci]) if ci < len(row) else None
+                if cnt is not None and term.strip():
+                    out.append({
+                        "college": college, "top6": top6, "name": name,
+                        "credit_type": credit_type or "Credit",
+                        "term": term.strip(), "count": cnt,
+                    })
     return out
 
 
 def parse_noncredit_sections() -> list[dict]:
-    """Noncredit course-section export -> the same record shape as
-    parse_course_sections, with credit_type fixed to NONCREDIT_TYPE.
-
-    The twin of parse_course_sections for the noncredit pull's shallower
-    shape: ALL five colleges in one file, and no credit-family tier (the file
-    IS one family), so the TOP6 leaf sits in column 1 and term data starts at
-    column 2 — College Total -> TOP6-prefixed leaf ("NNNNNN - Name").
-    Enrollment Count columns are located by metric label, as in the credit
-    parser. A missing file is an empty list, not an error (the noncredit pull
-    is newer than the credit ones)."""
-    if not _NONCREDIT_SECTIONS_CSV.exists():
-        return []
-    with open(_NONCREDIT_SECTIONS_CSV, newline="") as f:
-        rows = list(csv.reader(f))
-    if len(rows) < 2:
-        return []
-    terms_row, metric_row = rows[0], rows[1]
-    enroll_cols = [
-        (i, terms_row[i].strip())
-        for i in range(2, len(metric_row))
-        if metric_row[i].strip() == "Enrollment Count"
-        and i < len(terms_row) and terms_row[i].strip()
-    ]
+    """Per-college noncredit course-enrollment exports -> same shape as
+    parse_course_sections, credit_type fixed to NONCREDIT_TYPE. Each file:
+    College Total -> TOP6-prefixed leaf ("NNNNNN - Name") with no credit-family
+    tier (noncredit is one family), one Enrollment Count column per term. A
+    zero-noncredit college exports a header + blank Total row only (no leaves),
+    which yields no records."""
+    names = _college_names()
     out: list[dict] = []
-    college = None
-    for row in rows[2:]:
-        c0, c1 = (row + ["", ""])[:2]
-        if c0.strip().endswith("Total") and c0.strip():
-            college = _canon(c0.strip()[:-len("Total")].strip())
+    for path in sorted(_NCREDIT_DIR.glob("*.csv")):
+        college = names.get(path.stem)
+        if not college:
             continue
-        if c1.strip() and college:
+        with open(path, newline="") as f:
+            rows = list(csv.reader(f))
+        if len(rows) < 2:
+            continue
+        terms = rows[0][2:]
+        for row in rows[1:]:
+            c0, c1 = (row + ["", ""])[:2]
+            if c0.strip().endswith("Total") and c0.strip():
+                continue
+            if not c1.strip():
+                continue
             top6 = _top6_prefix(c1)
             if not top6:
                 continue
             name = _name_from_prefix(c1)
-            for ci, term in enroll_cols:
+            for i, term in enumerate(terms):
+                ci = 2 + i
                 cnt = _to_int(row[ci]) if ci < len(row) else None
-                if cnt is not None:
+                if cnt is not None and term.strip():
                     out.append({
                         "college": college, "top6": top6, "name": name,
                         "credit_type": NONCREDIT_TYPE,
-                        "term": term, "count": cnt,
+                        "term": term.strip(), "count": cnt,
                     })
     return out
 

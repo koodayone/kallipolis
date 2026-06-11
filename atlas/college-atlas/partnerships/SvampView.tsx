@@ -21,6 +21,7 @@ import OccupationRow, { type OccupationData, type OccupationDetail } from "@/col
 import EmployerMap, { type MapCollege } from "@/college-atlas/partnerships/EmployerMap";
 import { getSvampLandscape, getSvampPrograms, getSvampProgram, getSvampOccupation, getSvampEmployers } from "@/college-atlas/partnerships/api";
 import { landscapeInstance } from "@/college-atlas/partnerships/landscapeInstances";
+import IndustryRail from "@/college-atlas/partnerships/IndustryRail";
 import type {
   ApiSvampLandscape,
   ApiSvampCell,
@@ -974,7 +975,7 @@ export default function SvampView({ colleges, instance = "svamp" }: Props) {
         );
       })()}
       {/* Report header — same magazine idiom as the per-occupation report */}
-      <ReportHeader eyebrow="Partnership Landscape Report" title="Silicon Valley Advanced Manufacturing Partnership" accent={lensAccent}>
+      <ReportHeader eyebrow="Partnership Landscape Report" title={inst.name} accent={lensAccent}>
         {/* Colored bookends — the consortium (who) and the region (where) take
             the lens accent; the supply/demand counts sit neutral between them. */}
         <span style={{ color: lensAccent, opacity: 0.7 }}>{agg.n_colleges} Member Colleges</span>
@@ -983,6 +984,10 @@ export default function SvampView({ colleges, instance = "svamp" }: Props) {
         <Dot /><span style={{ color: lensAccent, opacity: 0.7 }}>{data.region_display}</span>
       </ReportHeader>
 
+      {/* Industry switcher — the SWP-sector channel, above the lens tabs (the
+          dashboard's rail, adapted to the report's narrower 900px measure so it
+          renders denser; renders only for member-set landscapes). */}
+      <IndustryRail instance={instance} activeAccent={lensAccent} />
       {/* Lens switcher — Occupations (built) · Programs (built) · Employers
           (placeholder until that view ships). Three Platonic forms. */}
       <LensTabs lens={lens} setLens={switchLens} />

@@ -52,10 +52,11 @@ class SectorRule:
     min_openings: int = 0          # keep SOCs with regional annual openings > this
     reachable_only: bool = False   # keep SOCs a member program reaches via the crosswalk
     non_empty_only: bool = False   # keep SOCs with >=1 member program that has activity
+    min_wage: int = 0              # keep SOCs whose regional annual median wage >= this
 
     @property
     def active(self) -> bool:
-        return self.min_openings > 0 or self.reachable_only or self.non_empty_only
+        return self.min_openings > 0 or self.reachable_only or self.non_empty_only or self.min_wage > 0
 
 
 @dataclass(frozen=True)
@@ -106,20 +107,35 @@ _SECTOR_META: list[tuple[str, str, str]] = [
 ]
 
 # Per-sector TOP exclusions — crosswalk-noise feeders dropped from the derived
-# universe. ecu: 070810 Computer Networking (an IT/CIS program the crosswalk maps
-# onto the catch-all 49-9099 "Installation, Maintenance & Repair Workers, All
-# Other" — not genuine Energy/Construction/Utilities supply).
+# universe: a member TOP that reaches the sector through a SINGLE incidental SOC
+# AND also feeds >=2 sectors (so its real home is elsewhere). Single-sector
+# 1-SOC feeders (e.g. Nursing -> Health) are deliberately NOT excluded — they're
+# narrow-but-real programs, not cross-domain artifacts. Derived from the supply-
+# noise audit; applied in LandscapeSpec.in_scope on top of the is_vocational gate.
 _SECTOR_EXCLUDED_TOPS: dict[str, frozenset[str]] = {
-    "ecu": frozenset({"070810"}),
+    "adm": frozenset({"020100", "050630", "061400", "061410", "061450", "061460", "070700", "070810", "070820", "095220", "100500"}),
+    "agwet": frozenset({"092400", "094610"}),
+    "atl": frozenset({"050200", "050650", "092400", "094610", "095220", "095600", "210200"}),
+    "biotech": frozenset({"126000", "129900", "210500", "210540"}),
+    "business": frozenset({"051420", "120820", "130700", "130720", "210200"}),
+    "ecu": frozenset({"070810", "095300", "220610"}),
+    "edhd": frozenset({"120100"}),
+    "health": frozenset({"050600", "126000", "130600"}),
+    "ict": frozenset({"050900", "061450"}),
+    "public_safety": frozenset({"070100", "126000"}),
+    "retail": frozenset({"050640", "050650", "130320", "300700"}),
 }
 
-# Per-sector selection-space curation. ecu: only occupations with >100 regional
-# annual openings, reachable from a member program via the crosswalk, with real
-# (non-empty) supply. Replaces the earlier hand-deletions in sector_socs.csv (now
-# restored to the full generated set) — durable + repeatable across regenerations.
-_SECTOR_RULES: dict[str, SectorRule] = {
-    "ecu": SectorRule(min_openings=100, reachable_only=True, non_empty_only=True),
-}
+# Uniform SOC-selection curation = the BACCC/COE "priority job" definition,
+# applied to every sector (the SECTORS default below): reachable from a member
+# program via the crosswalk, >=50 regional annual openings, and at/above the
+# $50k near-living-wage floor. (BACCC Bay living wage is $25.97/hr ~= $54,018;
+# the $50k floor deliberately keeps borderline-core CTE pathways — CNA $52.8k,
+# EMT $50.3k, welding $51.8k — while cutting the genuinely sub-living-wage.)
+# Per-sector overrides go in _SECTOR_RULES.
+_DEFAULT_RULE = SectorRule(min_openings=49, reachable_only=True, min_wage=50_000)
+
+_SECTOR_RULES: dict[str, SectorRule] = {}  # per-sector overrides (none currently)
 
 # Canonical COE/EDD swp_sectors tag per sector — the exact string the Employer
 # nodes carry (verified against the live graph). Diverges from the display
@@ -144,7 +160,7 @@ SECTORS: dict[str, Sector] = {
         id=sid, label=label, accent=accent,
         swp_tag=_SECTOR_SWP_TAG.get(sid, ""),
         excluded_tops=_SECTOR_EXCLUDED_TOPS.get(sid, frozenset()),
-        rule=_SECTOR_RULES.get(sid, SectorRule()),
+        rule=_SECTOR_RULES.get(sid, _DEFAULT_RULE),
     )
     for sid, label, accent in _SECTOR_META
 }

@@ -35,15 +35,14 @@ def effective_socs(spec: LandscapeSpec) -> tuple[str, ...]:
 
     region = spec.resolve_region()
     with get_driver().session() as session:
-        openings = {
-            r["soc"]: r["op"]
-            for r in session.run(
-                "MATCH (rg:Region {name: $rg})-[d:DEMANDS]->(o:Occupation) "
-                "WHERE o.soc_code IN $socs "
-                "RETURN o.soc_code AS soc, d.annual_openings AS op",
-                rg=region, socs=socs,
-            ).data()
-        }
+        demand_rows = session.run(
+            "MATCH (rg:Region {name: $rg})-[d:DEMANDS]->(o:Occupation) "
+            "WHERE o.soc_code IN $socs "
+            "RETURN o.soc_code AS soc, d.annual_openings AS op, d.annual_wage AS w",
+            rg=region, socs=socs,
+        ).data()
+        openings = {r["soc"]: r["op"] for r in demand_rows}
+        wages = {r["soc"]: r["w"] for r in demand_rows}
         progs = session.run(
             "MATCH (p:Program) WHERE p.college IN $colleges RETURN p.top6 AS top6, "
             "reduce(a=0, x IN [(p)-[r:AWARDED]->() | r.count] | a + coalesce(x, 0)) AS aw, "
@@ -67,6 +66,8 @@ def effective_socs(spec: LandscapeSpec) -> tuple[str, ...]:
     kept = []
     for soc in socs:
         if rule.min_openings and (openings.get(soc) or 0) <= rule.min_openings:
+            continue
+        if rule.min_wage and (wages.get(soc) or 0) < rule.min_wage:
             continue
         if rule.reachable_only and soc not in reachable:
             continue

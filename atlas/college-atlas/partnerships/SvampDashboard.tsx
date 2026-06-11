@@ -45,6 +45,7 @@ import SvampDashboardPrograms, { type CollegeRef } from "@/college-atlas/partner
 import SvampDashboardOccupations from "@/college-atlas/partnerships/SvampDashboardOccupations";
 import SvampDashboardEmployers from "@/college-atlas/partnerships/SvampDashboardEmployers";
 import LensTabs, { type Lens, LENS_ACCENTS } from "@/college-atlas/partnerships/LensTabs";
+import IndustryRail from "@/college-atlas/partnerships/IndustryRail";
 import SurfaceNav from "@/college-atlas/partnerships/SurfaceNav";
 import { Dot, useMeasuredWidth } from "@/college-atlas/partnerships/chartKit";
 import { computeBandRows, rowHeight, DEFAULT_PANEL_MIN_WIDTH } from "@/college-atlas/partnerships/dashLayout";
@@ -681,6 +682,11 @@ export default function SvampDashboard({ instance = "svamp" }: { instance?: stri
           stats right on the same rail (the masthead's surviving content),
           pinned together on scroll. */}
       <div ref={railRef} style={{ position: "sticky", top: NAV_H, zIndex: 15, background: BG, padding: "14px 16px 0" }}>
+        {/* Industry rail — the SWP-sector channel selector, above the lens
+            tabs. Renders only for member-set landscapes (SMCCD); SVAMP gets
+            none. Wears the active lens accent. Its height feeds the sticky
+            stack automatically (railRef's ResizeObserver → --dash-rail-bottom). */}
+        <IndustryRail instance={instance} activeAccent={lensAccent} />
         {/* No flex gap between the tabs and the stats: their two borderBottom
             segments sit on one axis, and a gap would break the rail's line —
             the spacing lives inside the stats block instead. Shedding policy
