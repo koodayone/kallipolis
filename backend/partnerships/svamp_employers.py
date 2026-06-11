@@ -49,6 +49,8 @@ class SvampEmployer(BaseModel):
     soc_titles: dict[str, str] = {}  # {soc_code: BLS title} for label display
     size_class: str | None = None  # EDD employee-count band (the viability proxy)
     size_rank: int = 0             # ordinal of size_class (9=largest); drives ranking
+    contact_name: str | None = None   # EDD/Data Axle exec contact — free from the detail scrape
+    contact_title: str | None = None  # …and their title (CEO/Owner/GM) — the outreach hook
 
 
 class SvampEmployersResult(BaseModel):
@@ -81,7 +83,8 @@ def build_svamp_employers(spec: LandscapeSpec = SVAMP_SPEC) -> SvampEmployersRes
             RETURN e.name AS name, e.county AS county, e.lat AS lat, e.lng AS lng,
                    e.sector AS sector, e.naics4 AS naics4,
                    e.website AS website, e.description AS description, soc_meta,
-                   e.size_class AS size_class, e.size_rank AS size_rank
+                   e.size_class AS size_class, e.size_rank AS size_rank,
+                   e.contact_name AS contact_name, e.contact_title AS contact_title
             """,
             region=region, socs=list(spec.socs),
             sector=spec.swp_tag or spec.sector,  # COE employer-tag vocabulary
@@ -113,6 +116,7 @@ def build_svamp_employers(spec: LandscapeSpec = SVAMP_SPEC) -> SvampEmployersRes
             socs=[m["code"] for m in meta], soc_count=len(meta),
             soc_titles={m["code"]: m["title"] for m in meta if m.get("title")},
             size_class=r.get("size_class"), size_rank=r.get("size_rank") or 0,
+            contact_name=r.get("contact_name"), contact_title=r.get("contact_title"),
         )
         by_county.setdefault(r["county"], []).append(emp)
 
