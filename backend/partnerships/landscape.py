@@ -151,19 +151,31 @@ class LandscapeSpec:
             and (not self.cte_only or is_cte_top4_family(top6))
         )
 
+    def resolve_regions(self) -> tuple[str, ...]:
+        """The COE region(s) the member colleges span, sorted and de-duplicated.
+
+        Single-element for a college or a district member (and for every
+        instance that exists today); multi-element for a region/state member or
+        a cross-region consortium. The aggregation invariant generalizes over
+        this set: demand and employers are read PER REGION across it, supply
+        sums over the member colleges. `resolve_region()` is the |regions| == 1
+        special case the current builders rely on."""
+        regions = {COLLEGE_COE_REGION.get(c, "") for c in self.colleges}
+        regions.discard("")
+        return tuple(sorted(regions))
+
     def resolve_region(self) -> str:
         """The single shared COE region for the member colleges — the
         precondition that makes regional demand one number per SOC. Asserts the
         members collapse to exactly one region (the same guard as
-        svamp._resolve_region)."""
-        regions = {COLLEGE_COE_REGION.get(c, "") for c in self.colleges}
-        regions.discard("")
+        svamp._resolve_region). Multi-region members use resolve_regions()."""
+        regions = self.resolve_regions()
         if len(regions) != 1:
             raise ValueError(
                 f"Landscape '{self.id}' member colleges must share one COE "
                 f"region; got {regions or 'none'}"
             )
-        return next(iter(regions))
+        return regions[0]
 
 
 # ── Member sets (the institutional axis) ──────────────────────────────────
