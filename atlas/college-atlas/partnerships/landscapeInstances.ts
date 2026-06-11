@@ -86,3 +86,29 @@ export function isLandscapeViewable(id: string): boolean {
 export function landscapeInstance(id: string): LandscapeInstance {
   return LANDSCAPE_INSTANCES[id] ?? LANDSCAPE_INSTANCES.svamp;
 }
+
+export type SectorTab = { instanceId: string; sectorId: string; label: string; accent: string; published: boolean };
+
+// Curatorial rail order — the district's priority / tech-forward industries
+// (Energy·Construction, Advanced Manufacturing, Biotech, Transportation) occupy
+// the visual CENTER of the switcher (the most prominent position); the rest
+// flank outward. Deliberate placement, NOT the canonical SMCCD_SECTORS order.
+const RAIL_ORDER = ["retail", "edhd", "health", "ecu", "adm", "biotech", "atl", "ict", "business", "public_safety", "agwet"];
+
+/** Sibling sector instances of a member-set landscape, in CURATORIAL rail order
+ *  (priority industries centered) — the data behind the industry switcher.
+ *  "smccd-*" → the 11 SMCCD sectors; any other instance → [] (no rail). */
+export function memberSectors(instanceId: string): SectorTab[] {
+  if (!instanceId.startsWith("smccd-")) return [];
+  const byId = new Map(SMCCD_SECTORS.map((s) => [s.id, s]));
+  return RAIL_ORDER
+    .map((id) => byId.get(id))
+    .filter((s): s is (typeof SMCCD_SECTORS)[number] => !!s)
+    .map((s) => ({
+      instanceId: `smccd-${s.id}`,
+      sectorId: s.id,
+      label: s.label,
+      accent: s.accent,
+      published: s.published,
+    }));
+}
