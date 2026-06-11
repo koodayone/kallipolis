@@ -2,6 +2,8 @@
   "/employers": {
     "employers": [
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A company providing global business and technology solutions.",
         "lat": 37.5193473,
         "lng": -122.253873,
@@ -67,6 +69,8 @@
         "website": "https://lsaglobal.com/"
       },
       {
+        "contact_name": "Sandie Arnott",
+        "contact_title": "Manager",
         "description": "The government office responsible for collecting taxes in San Mateo County.",
         "lat": 37.4945127,
         "lng": -122.220063,
@@ -128,6 +132,8 @@
         "website": "https://www.smcgov.org/tax"
       },
       {
+        "contact_name": "David Parekh",
+        "contact_title": "CEO",
         "description": "An independent, nonprofit research institute.",
         "lat": 37.4537253,
         "lng": -122.1807201,
@@ -187,6 +193,8 @@
         "website": "https://www.sri.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Ann's Nails Spa is a nail salon and spa.",
         "lat": 37.4532061,
         "lng": -122.1823518,
@@ -222,6 +230,8 @@
         "website": "https://annsnailsandspa.com/"
       },
       {
+        "contact_name": "Tony Gualtieri",
+        "contact_title": "Manager",
         "description": "A company specializing in consumer insights and research.",
         "lat": 37.5381944,
         "lng": -122.2527094,
@@ -287,6 +297,8 @@
         "website": "https://curioninsights.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A digital marketing company specializing in lead generation.",
         "lat": 37.5587894,
         "lng": -122.2761636,
@@ -352,6 +364,8 @@
         "website": "https://www.quinstreet.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A scientific and engineering consulting firm.",
         "lat": 37.4812454,
         "lng": -122.1755113,
@@ -411,6 +425,8 @@
         "website": "https://www.exponent.com/"
       },
       {
+        "contact_name": "Michael Boschetto",
+        "contact_title": "Owner",
         "description": "Trinity Building Maintenance provides building maintenance services.",
         "lat": 37.6350168,
         "lng": -122.4253921,
@@ -458,6 +474,8 @@
         "website": "https://www.trinityservices.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "The United States subsidiary of a video game developer and publisher.",
         "lat": 37.5552208,
         "lng": -122.300209,
@@ -523,6 +541,8 @@
         "website": "https://www.capcomusa.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "The municipal government of San Francisco.",
         "lat": 37.6111372,
         "lng": -122.4254087,
@@ -588,6 +608,8 @@
         "website": "https://www.sf.gov/"
       },
       {
+        "contact_name": "Mark Kendall",
+        "contact_title": "President",
         "description": "A real estate investment or development company.",
         "lat": 37.4635842,
         "lng": -122.4341072,
@@ -653,6 +675,8 @@
         "website": "https://www.halfmoonbaygolf.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A waste management and recycling service.",
         "lat": 37.6490627,
         "lng": -122.3845901,
@@ -718,6 +742,8 @@
         "website": "https://ssfscavenger.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "An architectural and engineering firm.",
         "lat": 37.4877764,
         "lng": -122.2323105,
@@ -777,6 +803,8 @@
         "website": "https://des-ae.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Loral Landscaping provides professional landscaping services.",
         "lat": 37.5569304,
         "lng": -122.3003286,
@@ -824,6 +852,8 @@
         "website": "https://lorallandscaping.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Stella & Dot is a company offering jewelry and accessories.",
         "lat": 37.6760919,
         "lng": -122.3845587,
@@ -859,6 +889,8 @@
         "website": "https://www.stelladot.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A sales and marketing company for the food industry.",
         "lat": 37.4957691,
         "lng": -122.2482575,
@@ -924,6 +956,8 @@
         "website": "https://www.acosta.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A transportation or logistics company.",
         "lat": 37.6717379,
         "lng": -122.3880416,
@@ -989,6 +1023,8 @@
         "website": "https://albawheelsup.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A company providing global business solutions or services.",
         "lat": 37.4856928,
         "lng": -122.1842148,
@@ -1054,6 +1090,8 @@
         "website": "https://www.continuumglobal.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A consulting firm focused on environmental and water resource management.",
         "lat": 37.7067276,
         "lng": -122.4715285,
@@ -1119,6 +1157,8 @@
         "website": "https://www.ekiconsult.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A marketing agency.",
         "lat": 37.4580337,
         "lng": -122.2555335,
@@ -1184,6 +1224,8 @@
         "website": "https://e-m-marketing.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A facility providing services for individuals with developmental disabilities.",
         "lat": 37.5439587,
         "lng": -122.2843062,
@@ -1249,6 +1291,8 @@
         "website": "https://www.ggrc.org/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A marketing and advertising agency.",
         "lat": 37.5096502,
         "lng": -122.2545126,
@@ -1314,6 +1358,8 @@
         "website": "https://www.klp.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A global transport and logistics company.",
         "lat": 37.692673,
         "lng": -122.4237212,
@@ -1379,6 +1425,8 @@
         "website": "https://www.kuehne-nagel.com/us"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A professional services firm, likely in consulting or law.",
         "lat": 37.566568,
         "lng": -122.2745248,
@@ -1444,6 +1492,8 @@
         "website": "https://mattsonco.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A company offering management and communication training.",
         "lat": 37.5889246,
         "lng": -122.4679281,
@@ -1512,6 +1562,9 @@
     "region": "Bay",
     "region_display": "Bay Area",
     "sector": "Business & Entrepreneurship",
+    "shed_counties": [
+      "San Mateo"
+    ],
     "shown": 25,
     "total": 52
   },

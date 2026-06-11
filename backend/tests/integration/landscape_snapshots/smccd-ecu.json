@@ -2,6 +2,8 @@
   "/employers": {
     "employers": [
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Rudolph & Sletten is a construction company.",
         "lat": 37.4823535,
         "lng": -122.1684638,
@@ -37,6 +39,8 @@
         "website": "https://www.rsconstruction.com/"
       },
       {
+        "contact_name": "Bayardo Chamorro",
+        "contact_title": "President",
         "description": "Pribuss Engineering offers engineering services.",
         "lat": 37.651817,
         "lng": -122.4218991,
@@ -76,6 +80,8 @@
         "website": "https://www.pribuss.com/"
       },
       {
+        "contact_name": "Lyndon R Rive",
+        "contact_title": "CEO",
         "description": "Tesla Energy provides energy solutions and products.",
         "lat": 37.530364,
         "lng": -122.3324749,
@@ -115,6 +121,8 @@
         "website": "https://www.tesla.com"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "American Window Film San Francisco provides window film installation services.",
         "lat": 37.6002938,
         "lng": -122.3789084,
@@ -148,6 +156,8 @@
         "website": "https://www.americanwindowfilm.com"
       },
       {
+        "contact_name": "Marge Vizcarra",
+        "contact_title": "Director",
         "description": "The municipal water provider for the city of San Francisco.",
         "lat": 37.5975816,
         "lng": -122.3868334,
@@ -179,6 +189,8 @@
         "website": "https://www.sfpuc.org/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Atlas/Pellizzari Electric provides electrical contracting services.",
         "lat": 37.4920007,
         "lng": -122.2366476,
@@ -218,6 +230,8 @@
         "website": "https://www.atlas-pellizzari.com"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Bay Area Systems & Solutions offers system and technology solutions.",
         "lat": 37.650337,
         "lng": -122.3892443,
@@ -257,6 +271,8 @@
         "website": "https://basselectric.com"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Decker Electric provides electrical services.",
         "lat": 37.6398546,
         "lng": -122.4038446,
@@ -296,6 +312,8 @@
         "website": "https://www.deckerelectric.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "JMB Construction is a construction company.",
         "lat": 37.6450645,
         "lng": -122.4161295,
@@ -331,6 +349,8 @@
         "website": "https://jmbconstruction.com"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "W L Butler Construction is a construction company.",
         "lat": 37.480609,
         "lng": -122.22446,
@@ -366,6 +386,8 @@
         "website": "https://www.wlbutler.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Mid Peninsula Roofing provides roofing services.",
         "lat": 37.5909815,
         "lng": -122.3648729,
@@ -399,6 +421,8 @@
         "website": "https://midpeninsularoofingandsolar.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "911 Remediation provides emergency remediation services.",
         "lat": 37.5147541,
         "lng": -122.2649583,
@@ -430,6 +454,8 @@
         "website": "https://reacticrestoration.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Allen Drywall provides drywall installation and repair services.",
         "lat": 37.5871474,
         "lng": -122.336069,
@@ -461,6 +487,8 @@
         "website": "https://www.allendrywall.com"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A residential cleaning service provider.",
         "lat": 37.481527,
         "lng": -122.1705133,
@@ -492,6 +520,8 @@
         "website": "https://americanhousecleaning.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "CertaPro Painters of San Mateo provides professional painting services.",
         "lat": 37.5569304,
         "lng": -122.3003286,
@@ -523,6 +553,8 @@
         "website": "https://certapro.com/san-mateo-ca"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "An individual professional or sole proprietorship.",
         "lat": 37.5652493,
         "lng": -122.3227798,
@@ -554,6 +586,8 @@
         "website": "https://kmisf.com"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Patrick J Ruane is an individual or business providing services.",
         "lat": 37.6464383,
         "lng": -122.4026932,
@@ -585,6 +619,8 @@
         "website": "https://www.pjruane.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A company involved in manufacturing products.",
         "lat": 37.4532061,
         "lng": -122.1823518,
@@ -616,6 +652,8 @@
         "website": "https://www.rheem.com"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Rountree Plumbing & Heating provides plumbing and heating services.",
         "lat": 37.5096502,
         "lng": -122.2545126,
@@ -647,6 +685,8 @@
         "website": "https://rountreeinc.com"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "SDI Insulation provides insulation services.",
         "lat": 37.5871474,
         "lng": -122.336069,
@@ -678,6 +718,8 @@
         "website": "https://sdiinsulation.com"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Truebeck Construction is a construction company.",
         "lat": 37.5362273,
         "lng": -122.3231813,
@@ -712,6 +754,9 @@
     "region": "Bay",
     "region_display": "Bay Area",
     "sector": "Energy, Construction & Utilities",
+    "shed_counties": [
+      "San Mateo"
+    ],
     "shown": 21,
     "total": 24
   },

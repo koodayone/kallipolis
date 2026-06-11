@@ -2,6 +2,8 @@
   "/employers": {
     "employers": [
       {
+        "contact_name": "Greg Farmer",
+        "contact_title": "Director",
         "description": "A bistro offering a dining experience.",
         "lat": 37.5927497,
         "lng": -122.3635651,
@@ -27,6 +29,8 @@
         "website": "https://www.hyatt.com/en-US/hotel/california/hyatt-regency-san-francisco-airport/sfobu/dining"
       },
       {
+        "contact_name": "Megann Spohn",
+        "contact_title": "Religious Dir",
         "description": "A luxury hotel located in Half Moon Bay.",
         "lat": 37.4332584,
         "lng": -122.4396679,
@@ -54,6 +58,8 @@
         "website": "https://www.ritzcarlton.com/en/hotels/hafrz-the-ritz-carlton-half-moon-bay/overview/"
       },
       {
+        "contact_name": "Lauren Cieslewicz",
+        "contact_title": "Director",
         "description": "A hotel located at the San Francisco Airport.",
         "lat": 37.5927497,
         "lng": -122.3635651,
@@ -81,6 +87,8 @@
         "website": "https://www.marriott.com/en-us/hotels/sfobg-san-francisco-airport-marriott-waterfront/overview/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "See's Candy Shops is a manufacturer and retailer of chocolates and candies.",
         "lat": 37.6717362,
         "lng": -122.4537758,
@@ -106,6 +114,8 @@
         "website": "https://www.sees.com/"
       },
       {
+        "contact_name": "Amelia Marquez",
+        "contact_title": "Director",
         "description": "A luxury hotel located on Sand Hill Road.",
         "lat": 37.4287473,
         "lng": -122.1898306,
@@ -133,6 +143,8 @@
         "website": "https://www.rosewoodhotels.com/en/sand-hill-menlo-park"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A hotel located in San Francisco.",
         "lat": 37.5893059,
         "lng": -122.342542,
@@ -160,6 +172,8 @@
         "website": "https://sfocp.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A hotel in the Embassy Suites by Hilton chain located in San Francisco.",
         "lat": 37.5897358,
         "lng": -122.3509508,
@@ -187,6 +201,8 @@
         "website": "https://www.hilton.com/en/hotels/sfobges-embassy-suites-san-francisco-airport-waterfront/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A luxury hotel located in the Silicon Valley area.",
         "lat": 37.4694542,
         "lng": -122.1407933,
@@ -214,6 +230,8 @@
         "website": "https://www.fourseasons.com/siliconvalley/"
       },
       {
+        "contact_name": "Bill Troyanoski",
+        "contact_title": "General Mgr",
         "description": "Half Moon Bay Golf Links is a golf course and resort.",
         "lat": 37.4332584,
         "lng": -122.4396679,
@@ -241,6 +259,8 @@
         "website": "https://halfmoonbaygolf.com/"
       },
       {
+        "contact_name": "Diana Ng",
+        "contact_title": "Director",
         "description": "A hotel located near the San Francisco Airport.",
         "lat": 37.5893059,
         "lng": -122.342542,
@@ -268,6 +288,8 @@
         "website": "https://hiltonsfo.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A hotel in the Holiday Inn Suites chain located in San Mateo.",
         "lat": 37.5792552,
         "lng": -122.3226965,
@@ -295,6 +317,8 @@
         "website": "https://www.ihg.com/holidayinn/hotels/us/en/san-mateo/sfosm/hoteldetail"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A community center serving the Peninsula area.",
         "lat": 37.5696535,
         "lng": -122.2757343,
@@ -322,6 +346,8 @@
         "website": "https://pjcc.org/"
       },
       {
+        "contact_name": "John Micheal",
+        "contact_title": "Owner",
         "description": "An athletic club offering fitness and recreational activities.",
         "lat": 37.5865829,
         "lng": -122.3384383,
@@ -349,6 +375,8 @@
         "website": "https://primetimeathleticclub.com/"
       },
       {
+        "contact_name": "Mike Mckee",
+        "contact_title": "Manager",
         "description": "A restaurant or establishment named 37 North.",
         "lat": 37.5893059,
         "lng": -122.342542,
@@ -374,6 +402,8 @@
         "website": "https://www.hilton.com/en/hotels/sfoaodt-doubletree-san-francisco-airport/dining/"
       },
       {
+        "contact_name": "Larry Ferguson",
+        "contact_title": "Director",
         "description": "Draeger's Market is a gourmet grocery store.",
         "lat": 37.5649777,
         "lng": -122.3212271,
@@ -399,6 +429,8 @@
         "website": "https://www.draegers.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Draeger's Super Markets is a chain of grocery stores.",
         "lat": 37.6458035,
         "lng": -122.4027752,
@@ -424,6 +456,8 @@
         "website": "https://www.draegers.com/"
       },
       {
+        "contact_name": "Frank Balentine",
+        "contact_title": "President",
         "description": "Greenleaf is a company focused on providing fresh produce.",
         "lat": 37.6873013,
         "lng": -122.4025867,
@@ -449,6 +483,8 @@
         "website": "https://greenleafproduce.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A restaurant located in San Mateo.",
         "lat": 37.5403434,
         "lng": -122.3013013,
@@ -474,6 +510,8 @@
         "website": "https://www.ilovejacks.com/san-mateo"
       },
       {
+        "contact_name": "Sparrow Johnson",
+        "contact_title": "General Mgr",
         "description": "New Leaf Community Markets is a chain of grocery stores focused on natural and organic foods.",
         "lat": 37.4677762,
         "lng": -122.4304551,
@@ -499,6 +537,8 @@
         "website": "https://www.newleaf.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A seafood restaurant and market.",
         "lat": 37.5590604,
         "lng": -122.2969242,
@@ -524,6 +564,8 @@
         "website": "https://www.thefishmarket.com/"
       },
       {
+        "contact_name": "Dave Nash",
+        "contact_title": "President",
         "description": "Autobahn Motors is a car dealership.",
         "lat": 37.5311829,
         "lng": -122.2702155,
@@ -543,6 +585,8 @@
         "website": "https://www.autobahnmotors.com/"
       },
       {
+        "contact_name": "Rick Arslanian",
+        "contact_title": "Manager",
         "description": "Boardwalk Chevrolet is a dealership selling Chevrolet vehicles.",
         "lat": 37.4971351,
         "lng": -122.2241936,
@@ -562,6 +606,8 @@
         "website": "https://www.boardwalkchevrolet.com/"
       },
       {
+        "contact_name": "Ray Chin",
+        "contact_title": "Owner",
         "description": "Lexus of Serramonte is a dealership selling Lexus vehicles.",
         "lat": 37.6720165,
         "lng": -122.4640591,
@@ -581,6 +627,8 @@
         "website": "https://www.lexusserramonte.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Putnam Automotive is a company involved in the automotive industry.",
         "lat": 37.5783624,
         "lng": -122.3424594,
@@ -600,6 +648,8 @@
         "website": "https://www.putnamauto.com/"
       },
       {
+        "contact_name": "Bob Giarrusso",
+        "contact_title": "General Mgr",
         "description": "Putnam Chevrolet is a dealership selling Chevrolet vehicles.",
         "lat": 37.5783624,
         "lng": -122.3424594,
@@ -622,6 +672,9 @@
     "region": "Bay",
     "region_display": "Bay Area",
     "sector": "Retail, Hospitality & Tourism",
+    "shed_counties": [
+      "San Mateo"
+    ],
     "shown": 25,
     "total": 72
   },

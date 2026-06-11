@@ -2,6 +2,8 @@
   "/employers": {
     "employers": [
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Box is a cloud content management and file sharing service.",
         "lat": 37.477681,
         "lng": -122.2363095,
@@ -33,6 +35,8 @@
         "website": "https://www.box.com/"
       },
       {
+        "contact_name": "Michael Hackett",
+        "contact_title": "Vice President",
         "description": "Logigear provides software testing and quality assurance services.",
         "lat": 37.5469632,
         "lng": -122.3120099,
@@ -64,6 +68,8 @@
         "website": "https://www.logigear.com/"
       },
       {
+        "contact_name": "Denyce Kehoe",
+        "contact_title": "Vice President",
         "description": "Simpplr is an AI-powered employee communications platform.",
         "lat": 37.5193473,
         "lng": -122.253873,
@@ -95,6 +101,8 @@
         "website": "https://www.simpplr.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Equinix is a global data center and interconnection provider.",
         "lat": 37.5275451,
         "lng": -122.2618297,
@@ -128,6 +136,8 @@
         "website": "https://www.equinix.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Evernote Corporation develops productivity and note-taking applications.",
         "lat": 37.4904691,
         "lng": -122.2241529,
@@ -161,6 +171,8 @@
         "website": "https://evernote.com/"
       },
       {
+        "contact_name": "Aaron Timm",
+        "contact_title": "Vice President",
         "description": "Clario is a cybersecurity and privacy company.",
         "lat": 37.565918906106,
         "lng": -122.284535112677,
@@ -192,6 +204,8 @@
         "website": "https://clario.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Instabase is a platform for building and deploying AI-powered applications.",
         "lat": 37.4512079,
         "lng": -122.1869488,
@@ -223,6 +237,8 @@
         "website": "https://www.instabase.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Cinemark Century is a movie theater chain.",
         "lat": 37.6206209,
         "lng": -122.4110521,
@@ -260,6 +276,8 @@
         "website": "https://www.cinemark.com/theatres/ca-san-bruno/cinemark-century-at-tanforan-and-xd"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Dark Bears is a technology company.",
         "lat": 37.5472275,
         "lng": -122.2790843,
@@ -291,6 +309,8 @@
         "website": "https://www.darkbears.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Maria DB Corporation is a database software company.",
         "lat": 37.496195,
         "lng": -122.2362998,
@@ -322,6 +342,8 @@
         "website": "https://mariadb.com/"
       },
       {
+        "contact_name": "James Farrey",
+        "contact_title": "CEO",
         "description": "Jameco Electronics is a supplier of electronic components.",
         "lat": 37.5210537,
         "lng": -122.2637729,
@@ -351,6 +373,8 @@
         "website": "https://www.jameco.com/"
       },
       {
+        "contact_name": "Bing Hong Mah",
+        "contact_title": "President",
         "description": "Leemah Electronics is a supplier of electronic components.",
         "lat": 37.6891281,
         "lng": -122.4172806,
@@ -380,6 +404,8 @@
         "website": "https://www.leemah.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Fox Theatre is a historic performing arts venue.",
         "lat": 37.4868202,
         "lng": -122.2239498,
@@ -417,6 +443,8 @@
         "website": "https://foxrwc.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Anchorfree is a cybersecurity company.",
         "lat": 37.5078719,
         "lng": -122.2087236,
@@ -450,6 +478,8 @@
         "website": "https://www.anchorfree.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Delphix Corporation provides data management solutions.",
         "lat": 37.480609,
         "lng": -122.22446,
@@ -483,6 +513,8 @@
         "website": "https://www.delphix.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Evmatch is an electric vehicle charging solutions company.",
         "lat": 37.464221,
         "lng": -122.2366013,
@@ -516,6 +548,8 @@
         "website": "https://evmatch.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Ringcentral is a cloud-based communications and collaboration solutions provider.",
         "lat": 37.5110254,
         "lng": -122.3084752,
@@ -549,6 +583,8 @@
         "website": "https://www.ringcentral.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Teradata Aster is a data analytics platform.",
         "lat": 37.5073876,
         "lng": -122.248094,
@@ -582,6 +618,8 @@
         "website": "https://www.teradata.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Actian Corporation provides data management and analytics solutions.",
         "lat": 37.4899082,
         "lng": -122.2366189,
@@ -613,6 +651,8 @@
         "website": "https://www.actian.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Aspen is a technology company.",
         "lat": 37.5740747,
         "lng": -122.3346877,
@@ -644,6 +684,8 @@
         "website": "https://www.aspeninc.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Collaborative Drug Discovery is a software company for pharmaceutical research.",
         "lat": 37.5927497,
         "lng": -122.3635651,
@@ -675,6 +717,8 @@
         "website": "https://www.collaborativedrug.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Learneo is an educational technology company.",
         "lat": 37.5078719,
         "lng": -122.2087236,
@@ -706,6 +750,8 @@
         "website": "https://www.learneo.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "PIFD Technologies is a technology consulting firm.",
         "lat": 37.6602989,
         "lng": -122.4321777,
@@ -737,6 +783,8 @@
         "website": "https://pifd-tech.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Secure Data Recovery Services provides data recovery solutions.",
         "lat": 37.5403434,
         "lng": -122.3013013,
@@ -768,6 +816,8 @@
         "website": "https://www.securedatarecovery.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Storii is a digital storytelling platform.",
         "lat": 37.5639859,
         "lng": -122.3220736,
@@ -802,6 +852,9 @@
     "region": "Bay",
     "region_display": "Bay Area",
     "sector": "ICT / Digital Media",
+    "shed_counties": [
+      "San Mateo"
+    ],
     "shown": 25,
     "total": 32
   },

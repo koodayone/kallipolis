@@ -2,6 +2,8 @@
   "/employers": {
     "employers": [
       {
+        "contact_name": "David Parekh",
+        "contact_title": "CEO",
         "description": "An independent, nonprofit research institute.",
         "lat": 37.4537253,
         "lng": -122.1807201,
@@ -41,6 +43,8 @@
         "website": "https://www.sri.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A scientific and engineering consulting firm.",
         "lat": 37.4812454,
         "lng": -122.1755113,
@@ -80,6 +84,8 @@
         "website": "https://www.exponent.com/"
       },
       {
+        "contact_name": "John A Orwin",
+        "contact_title": "CEO",
         "description": "Vifor Pharma is a global pharmaceutical company.",
         "lat": 37.5025157,
         "lng": -122.2178278,
@@ -115,6 +121,8 @@
         "website": "https://www.cslvifor.us/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Galvanize Therapeutics is a biotechnology company.",
         "lat": 37.5076791,
         "lng": -122.2519693,
@@ -156,6 +164,8 @@
         "website": "https://galvanizetx.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "An architectural and engineering firm.",
         "lat": 37.4877764,
         "lng": -122.2323105,
@@ -195,6 +205,8 @@
         "website": "https://des-ae.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A company developing aerial logistics and drone technology.",
         "lat": 37.6521534,
         "lng": -122.3928729,
@@ -234,6 +246,8 @@
         "website": "https://elroyair.com/"
       },
       {
+        "contact_name": "James Farrey",
+        "contact_title": "CEO",
         "description": "Jameco Electronics is a supplier of electronic components.",
         "lat": 37.5210537,
         "lng": -122.2637729,
@@ -271,6 +285,8 @@
         "website": "https://www.jameco.com/"
       },
       {
+        "contact_name": "Bing Hong Mah",
+        "contact_title": "President",
         "description": "Leemah Electronics is a supplier of electronic components.",
         "lat": 37.6891281,
         "lng": -122.4172806,
@@ -308,6 +324,8 @@
         "website": "https://www.leemah.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Cellares Corporation is a biotechnology company.",
         "lat": 37.6555002,
         "lng": -122.389339,
@@ -343,6 +361,8 @@
         "website": "https://www.cellares.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Cutera is a medical device company specializing in aesthetic and dermatology solutions.",
         "lat": 37.6732309,
         "lng": -122.3910941,
@@ -378,6 +398,8 @@
         "website": "https://cutera.com/us-en/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Lyell Immunopharma is a biotechnology company developing cell therapies.",
         "lat": 37.6486582,
         "lng": -122.3872868,
@@ -413,6 +435,8 @@
         "website": "https://www.lyell.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Mirum Pharmaceuticals is a biopharmaceutical company.",
         "lat": 37.55234,
         "lng": -122.2801854,
@@ -448,6 +472,8 @@
         "website": "https://mirumpharma.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Pacira Biosciences is a biopharmaceutical company.",
         "lat": 37.6897794,
         "lng": -122.391832,
@@ -483,6 +509,8 @@
         "website": "https://www.pacira.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Vera Therapeutics is a biotechnology company.",
         "lat": 37.6897794,
         "lng": -122.391832,
@@ -518,6 +546,8 @@
         "website": "https://veratx.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A company likely involved in materials, technology, or environmental services.",
         "lat": 37.4866904,
         "lng": -122.2087565,
@@ -547,6 +577,8 @@
         "website": "https://www.carbon3d.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A business name, likely a restaurant or retail establishment.",
         "lat": 37.5946111,
         "lng": -122.3690256,
@@ -576,6 +608,8 @@
         "website": "https://www.lahlouh.com/"
       },
       {
+        "contact_name": "Greg Moquin",
+        "contact_title": "Owner",
         "description": "A printing company.",
         "lat": 37.5215839,
         "lng": -122.2666806,
@@ -605,6 +639,8 @@
         "website": "https://www.moquinpress.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "American Window Film San Francisco provides window film installation services.",
         "lat": 37.6002938,
         "lng": -122.3789084,
@@ -630,6 +666,8 @@
         "website": "https://www.americanwindowfilm.com"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A company involved in manufacturing products.",
         "lat": 37.4532061,
         "lng": -122.1823518,
@@ -673,6 +711,8 @@
         "website": "https://www.rheem.com"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Bai is a beverage company.",
         "lat": 37.6618731,
         "lng": -122.4029201,
@@ -714,6 +754,8 @@
         "website": "https://www.bai-inc.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Celldom is a biotechnology company.",
         "lat": 37.5076791,
         "lng": -122.2519693,
@@ -755,6 +797,8 @@
         "website": "https://www.celldom.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "General Radar Corporation is a technology company.",
         "lat": 37.5278511,
         "lng": -122.2813324,
@@ -796,6 +840,8 @@
         "website": "https://www.genrad.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Northstar Photonics is a technology company.",
         "lat": 37.4671652,
         "lng": -122.2102545,
@@ -837,6 +883,8 @@
         "website": "https://www.northstarphotonics.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Soleno Therapeutics is a biopharmaceutical company.",
         "lat": 37.5355849,
         "lng": -122.2541914,
@@ -878,6 +926,8 @@
         "website": "https://soleno.life/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A company name, potentially in environmental consulting or engineering.",
         "lat": 37.589071,
         "lng": -122.3351167,
@@ -920,6 +970,9 @@
     "region": "Bay",
     "region_display": "Bay Area",
     "sector": "Advanced Manufacturing",
+    "shed_counties": [
+      "San Mateo"
+    ],
     "shown": 25,
     "total": 47
   },

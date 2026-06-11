@@ -2,6 +2,8 @@
   "/employers": {
     "employers": [
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A healthcare provider and insurer.",
         "lat": 37.496195,
         "lng": -122.2362998,
@@ -49,6 +51,8 @@
         "website": "https://healthy.kaiserpermanente.org/northern-california/facilities/redwood-city-medical-center-100337"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A medical center serving veterans in Menlo Park.",
         "lat": 37.4521971,
         "lng": -122.1677899,
@@ -96,6 +100,8 @@
         "website": "https://www.va.gov/palo-alto-health-care/locations/palo-alto-va-medical-center-menlo-park/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A medical center serving the Mills-Peninsula area.",
         "lat": 37.5912374,
         "lng": -122.387285,
@@ -143,6 +149,8 @@
         "website": "https://www.sutterhealth.org/mills"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A medical center serving San Mateo County.",
         "lat": 37.529548,
         "lng": -122.3007737,
@@ -190,6 +198,8 @@
         "website": "https://www.smchealth.org/san-mateo-medical-center"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A medical center providing healthcare services.",
         "lat": 37.6872565,
         "lng": -122.4722399,
@@ -237,6 +247,8 @@
         "website": "https://www.ahmchealth.com/smc/"
       },
       {
+        "contact_name": "Dee Bustos",
+        "contact_title": "CEO",
         "description": "A company providing care services.",
         "lat": 37.4488307,
         "lng": -122.1868671,
@@ -280,6 +292,8 @@
         "website": "https://careindeed.com/menlo-park"
       },
       {
+        "contact_name": "Maya Altman",
+        "contact_title": "CEO",
         "description": "A health insurance provider for San Mateo County.",
         "lat": 37.6501206,
         "lng": -122.4049634,
@@ -327,6 +341,8 @@
         "website": "https://www.hpsm.org/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A medical center serving the coastside region.",
         "lat": 37.5258812,
         "lng": -122.5081054,
@@ -374,6 +390,8 @@
         "website": "https://www.ahmchealth.com/smcc/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A group of physicians specializing in emergency medicine.",
         "lat": 37.5820802,
         "lng": -122.3965404,
@@ -421,6 +439,8 @@
         "website": "https://www.vituity.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A digital health and data analytics company.",
         "lat": 37.5504156,
         "lng": -122.3170698,
@@ -468,6 +488,8 @@
         "website": "https://evidation.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A company focused on genomic testing and analysis.",
         "lat": 37.5003168,
         "lng": -122.217505,
@@ -515,6 +537,8 @@
         "website": "https://precisiononcology.exactsciences.com/"
       },
       {
+        "contact_name": "Wouter Meuleman",
+        "contact_title": "Partner",
         "description": "A venture capital firm focused on life sciences.",
         "lat": 37.5699031,
         "lng": -122.2695899,
@@ -562,6 +586,8 @@
         "website": "https://www.illuminaventures.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A medical clinic located in Menlo.",
         "lat": 37.4527625,
         "lng": -122.1882093,
@@ -609,6 +635,8 @@
         "website": "https://stanfordhealthcare.org/medical-clinics/menlo-medical-clinic.html"
       },
       {
+        "contact_name": "Maranne Nannestad",
+        "contact_title": "Executive VP",
         "description": "A senior living or residential facility.",
         "lat": 37.5667843,
         "lng": -122.3259143,
@@ -656,6 +684,8 @@
         "website": "https://www.peninsularegent.org/"
       },
       {
+        "contact_name": "Bill Graham",
+        "contact_title": "President",
         "description": "A hospital providing health and wellness services.",
         "lat": 37.4873035,
         "lng": -122.2358874,
@@ -703,6 +733,8 @@
         "website": "https://www.dignityhealth.org/bayarea/locations/sequoia"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A professional medical care service provider.",
         "lat": 37.6717362,
         "lng": -122.4537758,
@@ -746,6 +778,8 @@
         "website": "https://www.medicalcareprofessionals.com/"
       },
       {
+        "contact_name": "Dwight Wilson",
+        "contact_title": "CEO",
         "description": "A provider of hospice and home care services.",
         "lat": 37.5504156,
         "lng": -122.3170698,
@@ -789,6 +823,8 @@
         "website": "https://www.missionhospice.org/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A genetic testing and health company.",
         "lat": 37.6624937,
         "lng": -122.3926385,
@@ -828,6 +864,8 @@
         "website": "https://www.23andme.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A facility providing skilled nursing care.",
         "lat": 37.5417763,
         "lng": -122.3059758,
@@ -867,6 +905,8 @@
         "website": "https://brooksidenursing.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A company involved in biological research and development.",
         "lat": 37.6624937,
         "lng": -122.3926385,
@@ -906,6 +946,8 @@
         "website": "https://monogrambio.labcorp.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A senior living community.",
         "lat": 37.3764858,
         "lng": -122.222985,
@@ -945,6 +987,8 @@
         "website": "https://sequoialiving.org/portola-valley/"
       },
       {
+        "contact_name": "Katherine Castro Tazawa",
+        "contact_title": "Exec Director",
         "description": "A senior living community.",
         "lat": 37.4903432,
         "lng": -122.2117774,
@@ -980,6 +1024,8 @@
         "website": "https://www.brookdale.com/en/communities/brookdale-redwood-city.html"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A home care service provider.",
         "lat": 37.5912374,
         "lng": -122.387285,
@@ -1015,6 +1061,8 @@
         "website": "https://www.eskaton.org/live-well-home"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "Magnolia is a senior living facility.",
         "lat": 37.5962532,
         "lng": -122.393844,
@@ -1050,6 +1098,8 @@
         "website": "https://www.themagnolia.com/"
       },
       {
+        "contact_name": "Sylvia Chu",
+        "contact_title": "Exec Director",
         "description": "Trousdale is a senior living community.",
         "lat": 37.5912374,
         "lng": -122.387285,
@@ -1088,6 +1138,9 @@
     "region": "Bay",
     "region_display": "Bay Area",
     "sector": "Health",
+    "shed_counties": [
+      "San Mateo"
+    ],
     "shown": 25,
     "total": 69
   },

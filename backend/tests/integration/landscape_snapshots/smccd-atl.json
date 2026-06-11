@@ -2,6 +2,8 @@
   "/employers": {
     "employers": [
       {
+        "contact_name": "Faith Ikeda",
+        "contact_title": "Director",
         "description": "One of the largest airlines in the world, offering domestic and international flights.",
         "lat": 37.6399509,
         "lng": -122.4017831,
@@ -29,6 +31,8 @@
         "website": "https://www.aa.com/"
       },
       {
+        "contact_name": "Gary Wolfe",
+        "contact_title": "Manager",
         "description": "A moving and storage company.",
         "lat": 37.6873013,
         "lng": -122.4025867,
@@ -58,6 +62,8 @@
         "website": "https://bekinsmovingservices.com/"
       },
       {
+        "contact_name": "Rick Noble",
+        "contact_title": "CEO",
         "description": "A publisher of technical documentation for aircraft.",
         "lat": 37.6897794,
         "lng": -122.391832,
@@ -87,6 +93,8 @@
         "website": "https://www.atp.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A major airline serving destinations across North America.",
         "lat": 37.5893059,
         "lng": -122.342542,
@@ -114,6 +122,8 @@
         "website": "https://www.alaskaair.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A company developing aerial logistics and drone technology.",
         "lat": 37.6521534,
         "lng": -122.3928729,
@@ -141,6 +151,8 @@
         "website": "https://elroyair.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A major international airline based in Dubai.",
         "lat": 37.6399509,
         "lng": -122.4017831,
@@ -168,6 +180,8 @@
         "website": "https://www.emirates.com/us/english/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "The flag carrier airline of Hawaii, serving inter-island and mainland routes.",
         "lat": 37.6158361,
         "lng": -122.395561,
@@ -195,6 +209,8 @@
         "website": "https://www.hawaiianairlines.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "The governing body for the Caltrain commuter rail line.",
         "lat": 37.5059999,
         "lng": -122.2618964,
@@ -220,6 +236,8 @@
         "website": "https://www.caltrain.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A transportation company likely operating on a Just-In-Time delivery model.",
         "lat": 37.655002381859,
         "lng": -122.380235210712,
@@ -249,6 +267,8 @@
         "website": "https://www.jittransportation.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A global provider of private aviation services.",
         "lat": 37.6391734,
         "lng": -122.3980222,
@@ -278,6 +298,8 @@
         "website": "https://www.signatureaviation.com/locations/SFO"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A company name, potentially in technology or logistics.",
         "lat": 37.6458862,
         "lng": -122.4110509,
@@ -307,6 +329,8 @@
         "website": "https://uovo.art/locations/art/california/san-francisco/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "An airline offering international flights with a focus on customer experience.",
         "lat": 37.6469959,
         "lng": -122.4056043,
@@ -334,6 +358,8 @@
         "website": "https://www.virginatlantic.com/en-US"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "An environmentally friendly car wash service.",
         "lat": 37.6938484,
         "lng": -122.4864797,
@@ -361,6 +387,8 @@
         "website": "https://www.ecosofttouch.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A global transportation and logistics company.",
         "lat": 37.5685576,
         "lng": -122.3110699,
@@ -386,6 +414,8 @@
         "website": "https://abctrans.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A service providing coach transportation, possibly related to airlines.",
         "lat": 37.599928,
         "lng": -122.3719583,
@@ -411,6 +441,8 @@
         "website": "https://www.airlinecoach.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A transportation company offering various transit solutions.",
         "lat": 37.5883478,
         "lng": -122.3358474,
@@ -436,6 +468,8 @@
         "website": "https://avalontrans.com/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A luxury transportation service offering limousine rentals.",
         "lat": 37.6474278,
         "lng": -122.4160641,
@@ -461,6 +495,8 @@
         "website": "https://www.carey.com/san-francisco/"
       },
       {
+        "contact_name": null,
+        "contact_title": null,
         "description": "A company involved in international trade and logistics.",
         "lat": 37.5980629,
         "lng": -122.3727054,
@@ -489,6 +525,9 @@
     "region": "Bay",
     "region_display": "Bay Area",
     "sector": "Advanced Transportation & Logistics",
+    "shed_counties": [
+      "San Mateo"
+    ],
     "shown": 18,
     "total": 20
   },
