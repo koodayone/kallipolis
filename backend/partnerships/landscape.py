@@ -276,19 +276,23 @@ SVAMP_SPEC = LandscapeSpec(
 # scope config. SVAMP above stays hand-authored (a curated SOC subset +
 # director's-mandate exclusions, not a whole sector).
 #
-# `adm` (Advanced Manufacturing) is PUBLISHED — it is the canonical SMCCD AM
-# surface, replacing the earlier curated 12-SOC `smccd` instance (now retired;
-# /smccd redirects to /smccd-adm). Its 3-college subgraph is verified in prod
-# Neo4j. The rest are DRAFT pending data work (the crosswalk under-maps some
-# allied-health TOPs; CSM biotech courses aren't yet in the graph), so their
-# supply renders thin. `unassigned` is omitted (a residual catch-all).
+# All SMCCD sector instances are PUBLISHED — the full member×sector rail ships
+# in preview. `adm` (Advanced Manufacturing) is the canonical AM surface,
+# replacing the earlier curated 12-SOC `smccd` instance (now retired; /smccd
+# redirects to /smccd-adm). Occupation coverage is thin on a few sectors (the
+# crosswalk under-maps some allied-health TOPs; a handful of programs aren't yet
+# in the graph), so their supply renders sparse — honest, not broken.
+# `unassigned` is omitted (a residual catch-all). Publishing rides on the prod
+# graph carrying the employer enrichment (websites + geocodes); see the
+# deployment doc's "Push local → prod" flow.
 SMCCD_ADM_SPEC = landscape_for(MEMBERS["smccd"], SECTORS["adm"], published=True)
-_SMCCD_DRAFT_SECTOR_IDS: tuple[str, ...] = (
+_SMCCD_SECTOR_IDS: tuple[str, ...] = (
     "biotech", "health", "business", "atl", "public_safety",
     "retail", "ict", "agwet", "edhd", "ecu",
 )
 _SMCCD_SECTOR_SPECS = [SMCCD_ADM_SPEC] + [
-    landscape_for(MEMBERS["smccd"], SECTORS[sid]) for sid in _SMCCD_DRAFT_SECTOR_IDS
+    landscape_for(MEMBERS["smccd"], SECTORS[sid], published=True)
+    for sid in _SMCCD_SECTOR_IDS
 ]
 
 

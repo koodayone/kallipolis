@@ -23,22 +23,23 @@ export type LandscapeInstance = {
 // The SMCCD member set's sector views — a `member × sector` row, one per priority
 // sector the district has CTE programs in (mirrors landscape.py). Generated from
 // this table so the row stays in sync; name/accent restate the backend sector
-// (sectors.py). `adm` is PUBLISHED — the canonical SMCCD Advanced Manufacturing
-// surface (/smccd redirects here, replacing the retired curated 12-SOC view); the
-// rest are DRAFT (local-only). `unassigned` is omitted (residual catch-all).
+// (sectors.py). All 11 sectors are PUBLISHED — the full member×sector rail ships
+// in preview; `adm` is the canonical Advanced Manufacturing surface (/smccd
+// redirects here, replacing the retired curated 12-SOC view). `unassigned` is
+// omitted (residual catch-all). Mirror the backend published flags (landscape.py).
 const SMCCD_COLLEGE_IDS = ["csm", "skyline", "canada"];
 const SMCCD_SECTORS: { id: string; label: string; short: string; accent: string; published: boolean }[] = [
   { id: "adm",           label: "Advanced Manufacturing",                 short: "SMCCD Mfg",           accent: "#d9544d", published: true },
-  { id: "biotech",       label: "Life Sciences / Biotech",                short: "SMCCD Biotech",       accent: "#2bb3a3", published: false },
-  { id: "health",        label: "Health",                                 short: "SMCCD Health",        accent: "#3fb27f", published: false },
-  { id: "business",      label: "Business & Entrepreneurship",            short: "SMCCD Business",      accent: "#c9a84c", published: false },
-  { id: "atl",           label: "Advanced Transportation & Logistics",    short: "SMCCD Transport",     accent: "#c98a3a", published: false },
-  { id: "public_safety", label: "Public Safety",                          short: "SMCCD Safety",        accent: "#5e6a9d", published: false },
-  { id: "retail",        label: "Retail, Hospitality & Tourism",          short: "SMCCD Retail",        accent: "#d06a9b", published: false },
-  { id: "ict",           label: "ICT / Digital Media",                    short: "SMCCD ICT",           accent: "#5a9bd4", published: false },
-  { id: "agwet",         label: "Ag, Water & Environmental Technologies", short: "SMCCD Ag/Env",        accent: "#6fae54", published: false },
-  { id: "edhd",          label: "Education & Human Development",          short: "SMCCD Education",     accent: "#b06fd0", published: false },
-  { id: "ecu",           label: "Energy, Construction & Utilities",       short: "SMCCD Energy",        accent: "#d08a3a", published: false },
+  { id: "biotech",       label: "Life Sciences / Biotech",                short: "SMCCD Biotech",       accent: "#2bb3a3", published: true },
+  { id: "health",        label: "Health",                                 short: "SMCCD Health",        accent: "#3fb27f", published: true },
+  { id: "business",      label: "Business & Entrepreneurship",            short: "SMCCD Business",      accent: "#c9a84c", published: true },
+  { id: "atl",           label: "Advanced Transportation & Logistics",    short: "SMCCD Transport",     accent: "#c98a3a", published: true },
+  { id: "public_safety", label: "Public Safety",                          short: "SMCCD Safety",        accent: "#5e6a9d", published: true },
+  { id: "retail",        label: "Retail, Hospitality & Tourism",          short: "SMCCD Retail",        accent: "#d06a9b", published: true },
+  { id: "ict",           label: "ICT / Digital Media",                    short: "SMCCD ICT",           accent: "#5a9bd4", published: true },
+  { id: "agwet",         label: "Ag, Water & Environmental Technologies", short: "SMCCD Ag/Env",        accent: "#6fae54", published: true },
+  { id: "edhd",          label: "Education & Human Development",          short: "SMCCD Education",     accent: "#b06fd0", published: true },
+  { id: "ecu",           label: "Energy, Construction & Utilities",       short: "SMCCD Energy",        accent: "#d08a3a", published: true },
 ];
 
 const smccdSectorInstances: Record<string, LandscapeInstance> = Object.fromEntries(
