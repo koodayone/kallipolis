@@ -2,18 +2,18 @@
 
 // Generated member×sector landscape — the client surface for any college /
 // district instance the backend catalog publishes (e.g. /landscape/foothill/adm).
-// Reads the route params (the atlas convention: server page does
-// generateStaticParams, the client reads the param), builds the instance
-// identity from the landscape index (generated instances have no
-// landscapeInstances row), and renders the same SvampDashboard the pinned
+// These routes are SPA-fallback-served (see public/_redirects + landscapeIndex):
+// one sentinel shell stands in for every instance, so the identity is resolved
+// from the LIVE URL (parseLandscapePath) — not useParams, which would read the
+// baked sentinel params. Built from the landscape index (generated instances have
+// no landscapeInstances row), and rendered with the same SvampDashboard the pinned
 // instances use. The 12 pinned instances keep their own flat routes untouched.
 
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
 
 import SvampDashboard from "@/college-atlas/partnerships/SvampDashboard";
 import { registerGeneratedInstance, type LandscapeInstance } from "@/college-atlas/partnerships/landscapeInstances";
-import { fetchLandscapeIndex, generatedInstance } from "@/college-atlas/partnerships/landscapeIndex";
+import { fetchLandscapeIndex, generatedInstance, parseLandscapePath } from "@/college-atlas/partnerships/landscapeIndex";
 
 const FULL_CENTER: React.CSSProperties = {
   position: "fixed",
@@ -28,28 +28,30 @@ const FULL_CENTER: React.CSSProperties = {
 };
 
 export default function LandscapeClient() {
-  const params = useParams<{ member: string; sector: string }>();
-  const member = (params?.member as string) ?? "";
-  const sector = (params?.sector as string) ?? "";
-  const id = `${member}-${sector}`;
+  // SPA fallback: the served HTML is the foothill·AM sentinel regardless of the
+  // requested instance, so resolve the identity from the LIVE URL post-mount.
+  // The URL only changes via a full navigation (the rail/surface nav
+  // hard-navigate), so a one-shot mount read is sufficient.
   // undefined = loading, null = not in the live catalog.
-  const [identity, setIdentity] = useState<LandscapeInstance | null | undefined>(undefined);
+  const [state, setState] = useState<{ id: string; identity: LandscapeInstance | null } | undefined>(undefined);
 
   useEffect(() => {
     let alive = true;
+    const { member, sector } = parseLandscapePath(window.location.pathname);
+    const id = `${member}-${sector}`;
     fetchLandscapeIndex().then((idx) => {
       if (!alive) return;
       const entry = idx.find((e) => e.member_id === member && e.sector_id === sector);
       const inst = entry ? generatedInstance(entry) : null;
       if (inst) registerGeneratedInstance(inst);
-      setIdentity(inst);
+      setState({ id, identity: inst });
     });
     return () => {
       alive = false;
     };
-  }, [member, sector]);
+  }, []);
 
-  if (identity === undefined) return <div style={FULL_CENTER}>Loading…</div>;
-  if (identity === null) return <div style={FULL_CENTER}>This landscape isn’t available.</div>;
-  return <SvampDashboard instance={id} identity={identity} />;
+  if (state === undefined) return <div style={FULL_CENTER}>Loading…</div>;
+  if (state.identity === null) return <div style={FULL_CENTER}>This landscape isn’t available.</div>;
+  return <SvampDashboard instance={state.id} identity={state.identity} />;
 }

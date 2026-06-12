@@ -80,7 +80,13 @@ export default function IndustryRail({ instance, activeAccent }: { instance: str
               if (it.active) return;
               // Preserve the current surface (dashboard vs /report) + selection.
               const isReport = window.location.pathname.endsWith("/report");
-              router.push(`${it.href}${isReport ? "/report" : ""}${window.location.search}`);
+              const href = `${it.href}${isReport ? "/report" : ""}${window.location.search}`;
+              // Pinned routes are pre-rendered → fast client nav. Generated
+              // /landscape/* routes are SPA-fallback-served (no per-instance RSC
+              // payload), so router.push would 404 the prefetch and stall;
+              // hard-navigate so the request re-enters through the _redirects shell.
+              if (isPinned) router.push(href);
+              else window.location.href = href;
             }}
             onMouseEnter={(e) => { if (!it.active) (e.currentTarget as HTMLElement).style.color = "#cdd5e4"; }}
             onMouseLeave={(e) => { if (!it.active) (e.currentTarget as HTMLElement).style.color = "#5e6a83"; }}
