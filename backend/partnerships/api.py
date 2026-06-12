@@ -36,7 +36,8 @@ from fastapi import APIRouter, HTTPException, Response
 from partnerships.models import OpportunityReport, SectorIndex
 from partnerships.opportunity import build_opportunity_report, build_sector_index
 from partnerships.svamp import SvampLandscape, build_landscape
-from partnerships.landscape import LandscapeSpec, routable_specs
+from partnerships.landscape import REGISTRY, LandscapeSpec, routable_specs
+from partnerships.registry import has_supply, live_catalog, spec_for
 from partnerships.resolve import resolve
 from partnerships.svamp_employers import SvampEmployersResult, build_svamp_employers
 from partnerships.svamp_programs import (
@@ -387,3 +388,103 @@ def _register_landscape_routes(spec: LandscapeSpec) -> None:
 # KALLIPOLIS_DRAFT_LANDSCAPES is set. Prod exposes published instances only.
 for _landscape_spec in routable_specs():
     _register_landscape_routes(_landscape_spec)
+
+
+# ── Landscape index — the live (member, sector) catalog ──────────────────────
+# Every college/district member that runs >=1 feeding program per sector (the
+# publish predicate), for the frontend's instance list + generated-route params.
+# Registered BEFORE the dynamic /{instance_id} so "landscapes" isn't swallowed.
+@router.get("/landscapes", name="get_landscape_index")
+def get_landscape_index():
+    try:
+        instances = live_catalog()
+        return {"count": len(instances), "instances": instances}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# ── Generated member×sector instances (any college / district / region) ──────
+# The pinned instances above keep their explicit literal routes (byte-identical).
+# This dynamic family resolves any OTHER "{member}-{sector}" id on demand from
+# the member catalog (registry.spec_for), gated by has_supply (live iff the
+# member offers a feeding program). It is registered LAST so the static routes
+# (/sectors, /opportunity) and the pinned literal routes win by match order; the
+# dynamic param route only catches what they don't.
+def _resolved_dynamic_spec(instance_id: str) -> LandscapeSpec:
+    spec = spec_for(instance_id)
+    if spec is None:
+        raise HTTPException(status_code=404, detail=f"Unknown landscape '{instance_id}'")
+    # Pinned instances are always live; a generated one must clear the supply gate.
+    if instance_id not in REGISTRY and not has_supply(spec):
+        raise HTTPException(
+            status_code=404, detail=f"No feeding program for '{instance_id}'"
+        )
+    return resolve(spec)
+
+
+def get_dynamic_landscape(instance_id: str):
+    try:
+        return build_landscape(_resolved_dynamic_spec(instance_id))
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+def get_dynamic_programs(instance_id: str):
+    try:
+        return build_programs_landscape(_resolved_dynamic_spec(instance_id))
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+def get_dynamic_program(instance_id: str, top6: str, college: str | None = None):
+    try:
+        return build_program_report(
+            top6, college=college, spec=_resolved_dynamic_spec(instance_id)
+        )
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+def get_dynamic_occupation(instance_id: str, soc: str, college: str | None = None):
+    try:
+        return build_svamp_occupation(
+            soc, spec=_resolved_dynamic_spec(instance_id), college=college
+        )
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+def get_dynamic_employers(instance_id: str):
+    try:
+        return build_svamp_employers(_resolved_dynamic_spec(instance_id))
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+router.add_api_route(
+    "/{instance_id}", get_dynamic_landscape, methods=["GET"],
+    response_model=SvampLandscape, name="get_dynamic_landscape",
+    description="Generated member×sector landscape — any college/district/region "
+                "the member catalog resolves, live iff it has a feeding program.")
+router.add_api_route(
+    "/{instance_id}/programs", get_dynamic_programs, methods=["GET"],
+    response_model=ProgramsLandscape, name="get_dynamic_programs")
+router.add_api_route(
+    "/{instance_id}/program/{top6}", get_dynamic_program, methods=["GET"],
+    response_model=ProgramReport, name="get_dynamic_program")
+router.add_api_route(
+    "/{instance_id}/occupation/{soc}", get_dynamic_occupation, methods=["GET"],
+    response_model=SvampOccupationReport, name="get_dynamic_occupation")
+router.add_api_route(
+    "/{instance_id}/employers", get_dynamic_employers, methods=["GET"],
+    response_model=SvampEmployersResult, name="get_dynamic_employers")

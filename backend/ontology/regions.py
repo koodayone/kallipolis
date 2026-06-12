@@ -153,6 +153,44 @@ COE_REGION_TO_COUNTIES: dict[str, list[str]] = {
 }
 
 
+# County centroids (approx lat/lng) for the Bay COE region — order the greedy
+# expansion of a district's employer shed (home county → nearest county within
+# the region) when the home county is too thin for a sector. Bay-only for now
+# (the loaded region); counties without a centroid sort last.
+_COUNTY_CENTROID: dict[str, tuple[float, float]] = {
+    "Santa Clara": (37.23, -121.70), "Alameda": (37.65, -121.92),
+    "San Francisco": (37.77, -122.45), "San Mateo": (37.43, -122.35),
+    "Contra Costa": (37.93, -121.95), "Sonoma": (38.53, -122.93),
+    "Monterey": (36.24, -121.31), "Solano": (38.27, -121.94),
+    "Santa Cruz": (37.05, -122.00), "Marin": (38.07, -122.75),
+    "Napa": (38.50, -122.33), "San Benito": (36.61, -121.08),
+}
+
+
+def counties_by_proximity(home: tuple[str, ...], region: str) -> list[str]:
+    """The region's counties ordered for greedy employer-shed expansion: the
+    home county/ies first (distance 0), then the rest by centroid distance to
+    the nearest home county. Counties without a centroid sort last (stable).
+    Used to widen a thin (district × sector) employer map to the nearest real
+    partners within the labor shed, capped at the COE region."""
+    import math
+
+    home_cens = [_COUNTY_CENTROID[h] for h in home if h in _COUNTY_CENTROID]
+
+    def dist(c: str) -> float:
+        if c in home:
+            return 0.0
+        cc = _COUNTY_CENTROID.get(c)
+        if cc is None or not home_cens:
+            return 9e9
+        return min(
+            math.hypot(cc[0] - h[0], (cc[1] - h[1]) * math.cos(math.radians(cc[0])))
+            for h in home_cens
+        )
+
+    return sorted(COE_REGION_TO_COUNTIES.get(region, []), key=lambda c: (dist(c), c))
+
+
 # College name → COE region for graph loading (occupation + employer region linking).
 # Single string — rural colleges that previously mapped to multiple OEWS metros
 # now map to one COE region (e.g. COS → "CVML" instead of ["Visalia", "Fresno"]).

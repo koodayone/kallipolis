@@ -1,0 +1,1439 @@
+{
+  "/employers": {
+    "employers": [
+      {
+        "contact_name": "Ashley Magargee",
+        "contact_title": "CEO",
+        "description": "Genentech is a biotechnology company focused on developing and commercializing medicines.",
+        "lat": 37.6555686,
+        "lng": -122.3849216,
+        "naics4": "5417",
+        "naics_title": "Scientific Research and Development Services",
+        "name": "Genentech",
+        "sector": "Professional Services",
+        "size_class": "1,000-4,999 employees",
+        "size_rank": 9,
+        "soc_count": 5,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "19-4099": "Life, Physical, and Social Science Technicians, All Other",
+          "49-9062": "Medical Equipment Repairers",
+          "51-9011": "Chemical Equipment Operators and Tenders"
+        },
+        "socs": [
+          "19-4021",
+          "19-4099",
+          "19-4031",
+          "49-9062",
+          "51-9011"
+        ],
+        "website": "https://www.gene.com/"
+      },
+      {
+        "contact_name": "Alok Kulkarni",
+        "contact_title": "Board Member",
+        "description": "Cyara is a customer experience testing company.",
+        "lat": 37.496195,
+        "lng": -122.2362998,
+        "naics4": "5417",
+        "naics_title": "Scientific Research and Development Services",
+        "name": "Cyara",
+        "sector": "Professional Services",
+        "size_class": "250-499 employees",
+        "size_rank": 7,
+        "soc_count": 5,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "19-4099": "Life, Physical, and Social Science Technicians, All Other",
+          "49-9062": "Medical Equipment Repairers",
+          "51-9011": "Chemical Equipment Operators and Tenders"
+        },
+        "socs": [
+          "19-4021",
+          "19-4099",
+          "19-4031",
+          "49-9062",
+          "51-9011"
+        ],
+        "website": "https://cyara.com/"
+      },
+      {
+        "contact_name": "John A Orwin",
+        "contact_title": "CEO",
+        "description": "Vifor Pharma is a global pharmaceutical company.",
+        "lat": 37.5025157,
+        "lng": -122.2178278,
+        "naics4": "3254",
+        "naics_title": "Pharmaceutical and Medicine Manufacturing",
+        "name": "Vifor Pharma",
+        "sector": "Manufacturing",
+        "size_class": "250-499 employees",
+        "size_rank": 7,
+        "soc_count": 5,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "19-4099": "Life, Physical, and Social Science Technicians, All Other",
+          "49-9062": "Medical Equipment Repairers",
+          "51-9011": "Chemical Equipment Operators and Tenders"
+        },
+        "socs": [
+          "51-9011",
+          "19-4021",
+          "19-4031",
+          "19-4099",
+          "49-9062"
+        ],
+        "website": "https://www.cslvifor.us/"
+      },
+      {
+        "contact_name": "Fabian Gerlinghaus",
+        "contact_title": "CEO",
+        "description": "Cellares Corporation is a biotechnology company.",
+        "lat": 37.6555002,
+        "lng": -122.389339,
+        "naics4": "3254",
+        "naics_title": "Pharmaceutical and Medicine Manufacturing",
+        "name": "Cellares Corporation",
+        "sector": "Manufacturing",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 5,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "19-4099": "Life, Physical, and Social Science Technicians, All Other",
+          "49-9062": "Medical Equipment Repairers",
+          "51-9011": "Chemical Equipment Operators and Tenders"
+        },
+        "socs": [
+          "51-9011",
+          "19-4021",
+          "19-4031",
+          "19-4099",
+          "49-9062"
+        ],
+        "website": "https://www.cellares.com/"
+      },
+      {
+        "contact_name": "Heng Wei Chang",
+        "contact_title": "Vice President",
+        "description": "Csbio is a biotechnology company.",
+        "lat": 37.4749985,
+        "lng": -122.149623,
+        "naics4": "5417",
+        "naics_title": "Scientific Research and Development Services",
+        "name": "Csbio",
+        "sector": "Professional Services",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 5,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "19-4099": "Life, Physical, and Social Science Technicians, All Other",
+          "49-9062": "Medical Equipment Repairers",
+          "51-9011": "Chemical Equipment Operators and Tenders"
+        },
+        "socs": [
+          "19-4021",
+          "19-4099",
+          "19-4031",
+          "49-9062",
+          "51-9011"
+        ],
+        "website": "https://www.csbio.com/"
+      },
+      {
+        "contact_name": "Taylor C Harris",
+        "contact_title": "CEO",
+        "description": "Cutera is a medical device company specializing in aesthetic and dermatology solutions.",
+        "lat": 37.6732309,
+        "lng": -122.3910941,
+        "naics4": "3391",
+        "naics_title": "Medical Equipment and Supplies Manufacturing",
+        "name": "Cutera",
+        "sector": "Manufacturing",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 5,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "19-4099": "Life, Physical, and Social Science Technicians, All Other",
+          "49-9062": "Medical Equipment Repairers",
+          "51-9011": "Chemical Equipment Operators and Tenders"
+        },
+        "socs": [
+          "49-9062",
+          "19-4031",
+          "19-4099",
+          "51-9011",
+          "19-4021"
+        ],
+        "website": "https://cutera.com/us-en/"
+      },
+      {
+        "contact_name": "Bob Katter",
+        "contact_title": "President",
+        "description": "First Databank is a provider of healthcare data solutions.",
+        "lat": 37.6665608,
+        "lng": -122.3971498,
+        "naics4": "5417",
+        "naics_title": "Scientific Research and Development Services",
+        "name": "First Databank",
+        "sector": "Professional Services",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 5,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "19-4099": "Life, Physical, and Social Science Technicians, All Other",
+          "49-9062": "Medical Equipment Repairers",
+          "51-9011": "Chemical Equipment Operators and Tenders"
+        },
+        "socs": [
+          "19-4021",
+          "19-4099",
+          "19-4031",
+          "49-9062",
+          "51-9011"
+        ],
+        "website": "FDBHEALTH.COM"
+      },
+      {
+        "contact_name": "Jonathan Waldstreicher",
+        "contact_title": "Board Member",
+        "description": "Galvanize Therapeutics is a biotechnology company.",
+        "lat": 37.5076791,
+        "lng": -122.2519693,
+        "naics4": "3345",
+        "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
+        "name": "Galvanize Therapeutics",
+        "sector": "Manufacturing",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 5,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "19-4099": "Life, Physical, and Social Science Technicians, All Other",
+          "49-9062": "Medical Equipment Repairers",
+          "51-9011": "Chemical Equipment Operators and Tenders"
+        },
+        "socs": [
+          "19-4031",
+          "19-4099",
+          "49-9062",
+          "51-9011",
+          "19-4021"
+        ],
+        "website": "https://galvanizetx.com/"
+      },
+      {
+        "contact_name": "Lynn Seely",
+        "contact_title": "CEO",
+        "description": "Lyell Immunopharma is a biotechnology company developing cell therapies.",
+        "lat": 37.6486582,
+        "lng": -122.3872868,
+        "naics4": "3254",
+        "naics_title": "Pharmaceutical and Medicine Manufacturing",
+        "name": "Lyell Immunopharma",
+        "sector": "Manufacturing",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 5,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "19-4099": "Life, Physical, and Social Science Technicians, All Other",
+          "49-9062": "Medical Equipment Repairers",
+          "51-9011": "Chemical Equipment Operators and Tenders"
+        },
+        "socs": [
+          "51-9011",
+          "19-4021",
+          "19-4031",
+          "19-4099",
+          "49-9062"
+        ],
+        "website": "https://www.lyell.com/"
+      },
+      {
+        "contact_name": "Christopher Peetz",
+        "contact_title": "CEO",
+        "description": "Mirum Pharmaceuticals is a biopharmaceutical company.",
+        "lat": 37.55234,
+        "lng": -122.2801854,
+        "naics4": "3254",
+        "naics_title": "Pharmaceutical and Medicine Manufacturing",
+        "name": "Mirum Pharmaceuticals",
+        "sector": "Manufacturing",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 5,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "19-4099": "Life, Physical, and Social Science Technicians, All Other",
+          "49-9062": "Medical Equipment Repairers",
+          "51-9011": "Chemical Equipment Operators and Tenders"
+        },
+        "socs": [
+          "51-9011",
+          "19-4021",
+          "19-4031",
+          "19-4099",
+          "49-9062"
+        ],
+        "website": "https://mirumpharma.com/"
+      },
+      {
+        "contact_name": "Frank D Lee",
+        "contact_title": "Board Member",
+        "description": "Pacira Biosciences is a biopharmaceutical company.",
+        "lat": 37.6897794,
+        "lng": -122.391832,
+        "naics4": "3254",
+        "naics_title": "Pharmaceutical and Medicine Manufacturing",
+        "name": "Pacira Biosciences",
+        "sector": "Manufacturing",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 5,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "19-4099": "Life, Physical, and Social Science Technicians, All Other",
+          "49-9062": "Medical Equipment Repairers",
+          "51-9011": "Chemical Equipment Operators and Tenders"
+        },
+        "socs": [
+          "51-9011",
+          "19-4021",
+          "19-4031",
+          "19-4099",
+          "49-9062"
+        ],
+        "website": "https://www.pacira.com/"
+      },
+      {
+        "contact_name": "John Reed",
+        "contact_title": "President",
+        "description": "Principia Biopharma is a biopharmaceutical company.",
+        "lat": 37.6545478,
+        "lng": -122.4006126,
+        "naics4": "3254",
+        "naics_title": "Pharmaceutical and Medicine Manufacturing",
+        "name": "Principia Biopharma",
+        "sector": "Manufacturing",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 5,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "19-4099": "Life, Physical, and Social Science Technicians, All Other",
+          "49-9062": "Medical Equipment Repairers",
+          "51-9011": "Chemical Equipment Operators and Tenders"
+        },
+        "socs": [
+          "51-9011",
+          "19-4021",
+          "19-4031",
+          "19-4099",
+          "49-9062"
+        ],
+        "website": "PRINCIPIABIO.COM"
+      },
+      {
+        "contact_name": "Omid Farokhzad",
+        "contact_title": "CEO",
+        "description": "Seer is a company developing technology for biological insights.",
+        "lat": 37.5381944,
+        "lng": -122.2527094,
+        "naics4": "5417",
+        "naics_title": "Scientific Research and Development Services",
+        "name": "Seer",
+        "sector": "Professional Services",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 5,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "19-4099": "Life, Physical, and Social Science Technicians, All Other",
+          "49-9062": "Medical Equipment Repairers",
+          "51-9011": "Chemical Equipment Operators and Tenders"
+        },
+        "socs": [
+          "19-4021",
+          "19-4099",
+          "19-4031",
+          "49-9062",
+          "51-9011"
+        ],
+        "website": "https://seer.bio/"
+      },
+      {
+        "contact_name": "Marshall Fordyce",
+        "contact_title": "CEO",
+        "description": "Vera Therapeutics is a biotechnology company.",
+        "lat": 37.6897794,
+        "lng": -122.391832,
+        "naics4": "3254",
+        "naics_title": "Pharmaceutical and Medicine Manufacturing",
+        "name": "Vera Therapeutics",
+        "sector": "Manufacturing",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 5,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "19-4099": "Life, Physical, and Social Science Technicians, All Other",
+          "49-9062": "Medical Equipment Repairers",
+          "51-9011": "Chemical Equipment Operators and Tenders"
+        },
+        "socs": [
+          "51-9011",
+          "19-4021",
+          "19-4031",
+          "19-4099",
+          "49-9062"
+        ],
+        "website": "https://veratx.com/"
+      },
+      {
+        "contact_name": "Joe Selsavage",
+        "contact_title": "CEO",
+        "description": "A genetic testing and health company.",
+        "lat": 37.6624937,
+        "lng": -122.3926385,
+        "naics4": "6215",
+        "naics_title": "Medical and Diagnostic Laboratories",
+        "name": "23ANDME",
+        "sector": "Healthcare",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 4,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "19-4099": "Life, Physical, and Social Science Technicians, All Other",
+          "49-9062": "Medical Equipment Repairers"
+        },
+        "socs": [
+          "19-4021",
+          "19-4031",
+          "19-4099",
+          "49-9062"
+        ],
+        "website": "https://www.23andme.com/"
+      },
+      {
+        "contact_name": "Steve Anderson",
+        "contact_title": "CEO",
+        "description": "A company involved in biological research and development.",
+        "lat": 37.6624937,
+        "lng": -122.3926385,
+        "naics4": "6215",
+        "naics_title": "Medical and Diagnostic Laboratories",
+        "name": "Monogram Biosciences",
+        "sector": "Healthcare",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 4,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "19-4099": "Life, Physical, and Social Science Technicians, All Other",
+          "49-9062": "Medical Equipment Repairers"
+        },
+        "socs": [
+          "19-4021",
+          "19-4031",
+          "19-4099",
+          "49-9062"
+        ],
+        "website": "https://monogrambio.labcorp.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "Adela is a biotechnology company.",
+        "lat": 37.566568,
+        "lng": -122.2745248,
+        "naics4": "5417",
+        "naics_title": "Scientific Research and Development Services",
+        "name": "Adela",
+        "sector": "Professional Services",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 5,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "19-4099": "Life, Physical, and Social Science Technicians, All Other",
+          "49-9062": "Medical Equipment Repairers",
+          "51-9011": "Chemical Equipment Operators and Tenders"
+        },
+        "socs": [
+          "19-4021",
+          "19-4099",
+          "19-4031",
+          "49-9062",
+          "51-9011"
+        ],
+        "website": "https://www.adelabio.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "Adicet Bio is a biotechnology company developing cell therapies.",
+        "lat": 37.5381944,
+        "lng": -122.2527094,
+        "naics4": "3254",
+        "naics_title": "Pharmaceutical and Medicine Manufacturing",
+        "name": "Adicet Bio",
+        "sector": "Manufacturing",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 5,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "19-4099": "Life, Physical, and Social Science Technicians, All Other",
+          "49-9062": "Medical Equipment Repairers",
+          "51-9011": "Chemical Equipment Operators and Tenders"
+        },
+        "socs": [
+          "51-9011",
+          "19-4021",
+          "19-4031",
+          "19-4099",
+          "49-9062"
+        ],
+        "website": "https://www.adicetbio.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "Alumis is a biotechnology company focused on autoimmune diseases.",
+        "lat": 37.6521534,
+        "lng": -122.3928729,
+        "naics4": "3254",
+        "naics_title": "Pharmaceutical and Medicine Manufacturing",
+        "name": "Alumis",
+        "sector": "Manufacturing",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 5,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "19-4099": "Life, Physical, and Social Science Technicians, All Other",
+          "49-9062": "Medical Equipment Repairers",
+          "51-9011": "Chemical Equipment Operators and Tenders"
+        },
+        "socs": [
+          "51-9011",
+          "19-4021",
+          "19-4031",
+          "19-4099",
+          "49-9062"
+        ],
+        "website": "https://www.alumis.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "Anwita Bioscience is a biotechnology company.",
+        "lat": 37.5140218,
+        "lng": -122.2636358,
+        "naics4": "3254",
+        "naics_title": "Pharmaceutical and Medicine Manufacturing",
+        "name": "Anwita Bioscience",
+        "sector": "Manufacturing",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 5,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "19-4099": "Life, Physical, and Social Science Technicians, All Other",
+          "49-9062": "Medical Equipment Repairers",
+          "51-9011": "Chemical Equipment Operators and Tenders"
+        },
+        "socs": [
+          "51-9011",
+          "19-4021",
+          "19-4031",
+          "19-4099",
+          "49-9062"
+        ],
+        "website": "https://www.anwitabio.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "Aperture Therapeutics is a biotechnology company.",
+        "lat": 37.5076791,
+        "lng": -122.2519693,
+        "naics4": "5417",
+        "naics_title": "Scientific Research and Development Services",
+        "name": "Aperture Therapeutics",
+        "sector": "Professional Services",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 5,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "19-4099": "Life, Physical, and Social Science Technicians, All Other",
+          "49-9062": "Medical Equipment Repairers",
+          "51-9011": "Chemical Equipment Operators and Tenders"
+        },
+        "socs": [
+          "19-4021",
+          "19-4099",
+          "19-4031",
+          "49-9062",
+          "51-9011"
+        ],
+        "website": "https://www.aperturetx.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "Arsenalbio is a biotechnology company.",
+        "lat": 37.6665608,
+        "lng": -122.3971498,
+        "naics4": "5417",
+        "naics_title": "Scientific Research and Development Services",
+        "name": "Arsenalbio",
+        "sector": "Professional Services",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 5,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "19-4099": "Life, Physical, and Social Science Technicians, All Other",
+          "49-9062": "Medical Equipment Repairers",
+          "51-9011": "Chemical Equipment Operators and Tenders"
+        },
+        "socs": [
+          "19-4021",
+          "19-4099",
+          "19-4031",
+          "49-9062",
+          "51-9011"
+        ],
+        "website": "https://arsenalbio.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "Artio Medical is a medical device company.",
+        "lat": 37.4833429,
+        "lng": -122.1775146,
+        "naics4": "3391",
+        "naics_title": "Medical Equipment and Supplies Manufacturing",
+        "name": "Artio Medical",
+        "sector": "Manufacturing",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 5,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "19-4099": "Life, Physical, and Social Science Technicians, All Other",
+          "49-9062": "Medical Equipment Repairers",
+          "51-9011": "Chemical Equipment Operators and Tenders"
+        },
+        "socs": [
+          "49-9062",
+          "19-4031",
+          "19-4099",
+          "51-9011",
+          "19-4021"
+        ],
+        "website": "https://www.artiomedical.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "Bai is a beverage company.",
+        "lat": 37.6618731,
+        "lng": -122.4029201,
+        "naics4": "3345",
+        "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
+        "name": "Bai",
+        "sector": "Manufacturing",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 5,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "19-4099": "Life, Physical, and Social Science Technicians, All Other",
+          "49-9062": "Medical Equipment Repairers",
+          "51-9011": "Chemical Equipment Operators and Tenders"
+        },
+        "socs": [
+          "19-4031",
+          "19-4099",
+          "49-9062",
+          "51-9011",
+          "19-4021"
+        ],
+        "website": "https://www.bai-inc.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "Bighat Biosciences is a biotechnology company.",
+        "lat": 37.5443133,
+        "lng": -122.3193137,
+        "naics4": "5417",
+        "naics_title": "Scientific Research and Development Services",
+        "name": "Bighat Biosciences",
+        "sector": "Professional Services",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 5,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "19-4099": "Life, Physical, and Social Science Technicians, All Other",
+          "49-9062": "Medical Equipment Repairers",
+          "51-9011": "Chemical Equipment Operators and Tenders"
+        },
+        "socs": [
+          "19-4021",
+          "19-4099",
+          "19-4031",
+          "49-9062",
+          "51-9011"
+        ],
+        "website": "https://www.bighatbio.com/"
+      }
+    ],
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "Life Sciences / Biotech",
+    "shed_counties": [
+      "San Mateo"
+    ],
+    "shown": 25,
+    "total": 49
+  },
+  "/programs": {
+    "latest_award_year": "2024-2025",
+    "matrix": {
+      "cells": [
+        {
+          "awards": 11,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "043000"
+        },
+        {
+          "awards": 3,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "043000"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "043000"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093460"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093460"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093460"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095400"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095400"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095400"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095500"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095500"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095500"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095600"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095600"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095600"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "192000"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "192000"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "192000"
+        }
+      ],
+      "colleges": [
+        "College of San Mateo",
+        "Skyline College",
+        "Ca\u00f1ada College"
+      ]
+    },
+    "n_colleges": 3,
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "Life Sciences / Biotech",
+    "tops": [
+      {
+        "awards_total": 14,
+        "enrollment_total": 1141,
+        "n_colleges_offering": 1,
+        "name": "Biotechnology and Biomedical Technology",
+        "soc_count": 2,
+        "top6": "043000"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Laboratory Science Technology",
+        "soc_count": 4,
+        "top6": "095500"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Chemical Technology",
+        "soc_count": 3,
+        "top6": "095400"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Manufacturing and Industrial Technology",
+        "soc_count": 3,
+        "top6": "095600"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Biomedical Instrumentation",
+        "soc_count": 1,
+        "top6": "093460"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Ocean Technology",
+        "soc_count": 1,
+        "top6": "192000"
+      }
+    ]
+  },
+  "landscape": {
+    "aggregate": {
+      "candidate_employers": 396,
+      "combined_awards": 14,
+      "combined_supply_total": 7.34,
+      "gap": 1563,
+      "n_colleges": 3,
+      "n_occupations": 5,
+      "occupations_taught": 3,
+      "regional_demand_total": 1570
+    },
+    "award_years": [
+      "2020-2021",
+      "2021-2022",
+      "2022-2023",
+      "2023-2024",
+      "2024-2025"
+    ],
+    "colleges": [
+      {
+        "cells": [
+          {
+            "annual_openings": 610,
+            "annual_wage": 77450,
+            "awards_recent": 11,
+            "course_count": 0,
+            "enrolled": true,
+            "feeding_awards": 11,
+            "gap": 610,
+            "growth_rate": 0.070100071,
+            "programs": [
+              {
+                "awards": [
+                  3,
+                  2,
+                  2,
+                  3,
+                  11
+                ],
+                "awards_recent": 11,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  14,
+                  18,
+                  null,
+                  32,
+                  21,
+                  28
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              }
+            ],
+            "soc_code": "19-4021",
+            "supply": 0.0,
+            "title": "Biological Technicians"
+          },
+          {
+            "annual_openings": 240,
+            "annual_wage": 63690,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 240,
+            "growth_rate": 0.019812217,
+            "programs": [],
+            "soc_code": "19-4031",
+            "supply": 0.0,
+            "title": "Chemical Technicians"
+          },
+          {
+            "annual_openings": 440,
+            "annual_wage": 77880,
+            "awards_recent": 0,
+            "course_count": 8,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 440,
+            "growth_rate": 0.048091635,
+            "programs": [],
+            "soc_code": "19-4099",
+            "supply": 0.0,
+            "title": "Life, Physical, and Social Science Technicians, All Other"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 82260,
+            "awards_recent": 11,
+            "course_count": 0,
+            "enrolled": true,
+            "feeding_awards": 11,
+            "gap": 130,
+            "growth_rate": 0.046982336,
+            "programs": [
+              {
+                "awards": [
+                  3,
+                  2,
+                  2,
+                  3,
+                  11
+                ],
+                "awards_recent": 11,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  14,
+                  18,
+                  null,
+                  32,
+                  21,
+                  28
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              }
+            ],
+            "soc_code": "49-9062",
+            "supply": 0.0,
+            "title": "Medical Equipment Repairers"
+          },
+          {
+            "annual_openings": 150,
+            "annual_wage": 62950,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 150,
+            "growth_rate": -0.081994758,
+            "programs": [],
+            "soc_code": "51-9011",
+            "supply": 0.0,
+            "title": "Chemical Equipment Operators and Tenders"
+          }
+        ],
+        "name": "College of San Mateo"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 610,
+            "annual_wage": 77450,
+            "awards_recent": 3,
+            "course_count": 8,
+            "enrolled": true,
+            "feeding_awards": 3,
+            "gap": 606,
+            "growth_rate": 0.070100071,
+            "programs": [
+              {
+                "awards": [
+                  3,
+                  5,
+                  2,
+                  4,
+                  3
+                ],
+                "awards_recent": 3,
+                "enrollment": [
+                  98,
+                  1069,
+                  74,
+                  945,
+                  96,
+                  1141,
+                  141,
+                  1106,
+                  117
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              }
+            ],
+            "soc_code": "19-4021",
+            "supply": 3.67,
+            "title": "Biological Technicians"
+          },
+          {
+            "annual_openings": 240,
+            "annual_wage": 63690,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 240,
+            "growth_rate": 0.019812217,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Manufacturing and Industrial Technology",
+                "top6": "095600",
+                "wages": [
+                  {
+                    "n": 54,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 54092,
+                    "wage_after_5": 73636,
+                    "wage_before": 26272,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 85,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60922,
+                    "wage_after_5": 72654,
+                    "wage_before": 36476,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 38,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64897,
+                    "wage_after_5": 75071,
+                    "wage_before": 54280,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "19-4031",
+            "supply": 0.0,
+            "title": "Chemical Technicians"
+          },
+          {
+            "annual_openings": 440,
+            "annual_wage": 77880,
+            "awards_recent": 0,
+            "course_count": 8,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 440,
+            "growth_rate": 0.048091635,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Manufacturing and Industrial Technology",
+                "top6": "095600",
+                "wages": [
+                  {
+                    "n": 54,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 54092,
+                    "wage_after_5": 73636,
+                    "wage_before": 26272,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 85,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60922,
+                    "wage_after_5": 72654,
+                    "wage_before": 36476,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 38,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64897,
+                    "wage_after_5": 75071,
+                    "wage_before": 54280,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "19-4099",
+            "supply": 0.0,
+            "title": "Life, Physical, and Social Science Technicians, All Other"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 82260,
+            "awards_recent": 3,
+            "course_count": 8,
+            "enrolled": true,
+            "feeding_awards": 3,
+            "gap": 126,
+            "growth_rate": 0.046982336,
+            "programs": [
+              {
+                "awards": [
+                  3,
+                  5,
+                  2,
+                  4,
+                  3
+                ],
+                "awards_recent": 3,
+                "enrollment": [
+                  98,
+                  1069,
+                  74,
+                  945,
+                  96,
+                  1141,
+                  141,
+                  1106,
+                  117
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              }
+            ],
+            "soc_code": "49-9062",
+            "supply": 3.67,
+            "title": "Medical Equipment Repairers"
+          },
+          {
+            "annual_openings": 150,
+            "annual_wage": 62950,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 150,
+            "growth_rate": -0.081994758,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Manufacturing and Industrial Technology",
+                "top6": "095600",
+                "wages": [
+                  {
+                    "n": 54,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 54092,
+                    "wage_after_5": 73636,
+                    "wage_before": 26272,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 85,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60922,
+                    "wage_after_5": 72654,
+                    "wage_before": 36476,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 38,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64897,
+                    "wage_after_5": 75071,
+                    "wage_before": 54280,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "51-9011",
+            "supply": 0.0,
+            "title": "Chemical Equipment Operators and Tenders"
+          }
+        ],
+        "name": "Skyline College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 610,
+            "annual_wage": 77450,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 610,
+            "growth_rate": 0.070100071,
+            "programs": [],
+            "soc_code": "19-4021",
+            "supply": 0.0,
+            "title": "Biological Technicians"
+          },
+          {
+            "annual_openings": 240,
+            "annual_wage": 63690,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 240,
+            "growth_rate": 0.019812217,
+            "programs": [],
+            "soc_code": "19-4031",
+            "supply": 0.0,
+            "title": "Chemical Technicians"
+          },
+          {
+            "annual_openings": 440,
+            "annual_wage": 77880,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 440,
+            "growth_rate": 0.048091635,
+            "programs": [],
+            "soc_code": "19-4099",
+            "supply": 0.0,
+            "title": "Life, Physical, and Social Science Technicians, All Other"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 82260,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 130,
+            "growth_rate": 0.046982336,
+            "programs": [],
+            "soc_code": "49-9062",
+            "supply": 0.0,
+            "title": "Medical Equipment Repairers"
+          },
+          {
+            "annual_openings": 150,
+            "annual_wage": 62950,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 150,
+            "growth_rate": -0.081994758,
+            "programs": [],
+            "soc_code": "51-9011",
+            "supply": 0.0,
+            "title": "Chemical Equipment Operators and Tenders"
+          }
+        ],
+        "name": "Ca\u00f1ada College"
+      }
+    ],
+    "enrollment_terms": [
+      "Fall 2021",
+      "Spring 2022",
+      "Fall 2022",
+      "Spring 2023",
+      "Fall 2023",
+      "Spring 2024",
+      "Fall 2024",
+      "Spring 2025",
+      "Fall 2025"
+    ],
+    "executive_summary": "This view examines the regional demand landscape across the 5 life sciences / biotech occupations the San Mateo County CCD \u2014 Life Sciences / Biotech targets in the Bay Area regional labor market. Regional demand for these occupations totals 1,570 openings per year.",
+    "is_sector_priority": false,
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "Life Sciences / Biotech"
+  }
+}

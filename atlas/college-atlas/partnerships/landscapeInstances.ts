@@ -83,9 +83,22 @@ export function isLandscapeViewable(id: string): boolean {
   return !!inst && (inst.published || DRAFT_LANDSCAPES_ENABLED);
 }
 
-/** The instance for an id, falling back to SVAMP for an unknown id. */
+// Generated instances (any college/district at /landscape/<member>/<sector>)
+// have no pinned row; a route client registers their identity (built from the
+// backend landscape index) before rendering, so the many landscapeInstance()
+// call sites in the dashboard + report resolve correctly instead of falling back
+// to SVAMP. Client-side only; pinned ids never touch it.
+const _generated = new Map<string, LandscapeInstance>();
+
+/** Register a generated instance's identity so landscapeInstance() resolves it. */
+export function registerGeneratedInstance(inst: LandscapeInstance): void {
+  _generated.set(inst.id, inst);
+}
+
+/** The instance for an id: a pinned row, a registered generated instance, else
+ *  the SVAMP fallback. */
 export function landscapeInstance(id: string): LandscapeInstance {
-  return LANDSCAPE_INSTANCES[id] ?? LANDSCAPE_INSTANCES.svamp;
+  return LANDSCAPE_INSTANCES[id] ?? _generated.get(id) ?? LANDSCAPE_INSTANCES.svamp;
 }
 
 export type SectorTab = { instanceId: string; sectorId: string; label: string; accent: string; published: boolean };
@@ -94,7 +107,7 @@ export type SectorTab = { instanceId: string; sectorId: string; label: string; a
 // (Energy·Construction, Advanced Manufacturing, Biotech, Transportation) occupy
 // the visual CENTER of the switcher (the most prominent position); the rest
 // flank outward. Deliberate placement, NOT the canonical SMCCD_SECTORS order.
-const RAIL_ORDER = ["retail", "edhd", "health", "ecu", "adm", "biotech", "atl", "ict", "business", "public_safety", "agwet"];
+export const RAIL_ORDER = ["retail", "edhd", "health", "ecu", "adm", "biotech", "atl", "ict", "business", "public_safety", "agwet"];
 
 /** Sibling sector instances of a member-set landscape, in CURATORIAL rail order
  *  (priority industries centered) — the data behind the industry switcher.

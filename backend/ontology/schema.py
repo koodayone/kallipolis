@@ -73,11 +73,18 @@ def init_schema():
     with driver.session() as session:
         _migrate_curriculum_to_course(session)
         _create_constraints(session)
-        if _is_empty(session):
-            logger.info("Neo4j is empty. Run the ingestion pipeline to load college data:")
-            logger.info("  python -m pipeline.run --college foothill")
-        else:
-            logger.info("Neo4j already contains data.")
+        empty = _is_empty(session)
+    if empty:
+        logger.info("Neo4j is empty. Run the ingestion pipeline to load college data:")
+        logger.info("  python -m pipeline.run --college foothill")
+        return
+    logger.info("Neo4j already contains data.")
+    # Ensure the institutional hierarchy (college → CCCCO district) that the
+    # member×sector landscape engine aggregates over. Idempotent and cheap;
+    # the region tier already rides on the IN_MARKET edge written at load time.
+    from ontology.districts import load_college_districts
+
+    load_college_districts(driver)
 
 
 def _create_constraints(session):
@@ -116,6 +123,7 @@ def _create_constraints(session):
 
     constraints = [
         "CREATE CONSTRAINT college_name IF NOT EXISTS FOR (n:College) REQUIRE n.name IS UNIQUE",
+        "CREATE CONSTRAINT district_name IF NOT EXISTS FOR (n:District) REQUIRE n.name IS UNIQUE",
         "CREATE CONSTRAINT course_code_college IF NOT EXISTS FOR (n:Course) REQUIRE (n.code, n.college) IS UNIQUE",
         "CREATE CONSTRAINT department_name IF NOT EXISTS FOR (n:Department) REQUIRE n.name IS UNIQUE",
         "CREATE CONSTRAINT region_name IF NOT EXISTS FOR (n:Region) REQUIRE n.name IS UNIQUE",

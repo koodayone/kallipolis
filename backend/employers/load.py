@@ -47,6 +47,18 @@ def _load_geocode_cache() -> dict:
     return json.loads(path.read_text()) if path.exists() else {}
 
 
+def _load_detail_pages() -> dict:
+    """emp_id -> EDD empDetails fields {website, naics6, contact_name,
+    contact_title} from the free detail scrape (employers/cache/detail_pages.json,
+    produced by scrape_detail_pages.py). Joined by the stable EDD emp_id — NOT
+    by name — so the canonical employer name the graph keys on always matches.
+    Supplies the exec contact (the partnership outreach hook) and 6-digit NAICS,
+    and backfills the website where employers.json lacks one. Absent ⇒ load
+    proceeds without these (they default null)."""
+    path = Path(__file__).resolve().parent / "cache" / "detail_pages.json"
+    return json.loads(path.read_text()) if path.exists() else {}
+
+
 def _sector_tags_for_naics(naics4: str | None) -> list[str]:
     """Deterministic NAICS-4 → SWP sector lookup. Returns [] if NAICS-4
     is missing or not in CTE_NAICS_CODES (employer falls outside the
@@ -152,6 +164,7 @@ def load_employers(driver: Driver, employers: list[dict]) -> dict:
     """
     employers = [e for e in employers if _is_loadable(e)]
     geo_cache = _load_geocode_cache()
+    detail_cache = _load_detail_pages()
     stats = {
         "employers": 0, "in_market": 0,
         "hires_for": 0, "identity_hires_for": 0,
@@ -167,20 +180,23 @@ def load_employers(driver: Driver, employers: list[dict]) -> dict:
         for emp in employers:
             naics4 = emp.get("naics4")
             sector_tags = _sector_tags_for_naics(naics4)
-            geo = geo_cache.get((emp.get("address") or {}).get("emp_id") or "") or {}
+            emp_id = (emp.get("address") or {}).get("emp_id") or ""
+            geo = geo_cache.get(emp_id) or {}
+            detail = detail_cache.get(emp_id) or {}
             session.run(
                 "MERGE (e:Employer {name: $name}) "
                 "SET e.sector = $sector, e.description = $description, "
                 "    e.website = $website, e.swp_sectors = $swp_sectors, "
-                "    e.naics4 = $naics4, "
+                "    e.naics4 = $naics4, e.naics6 = $naics6, "
                 "    e.operations_summary = $operations_summary, "
                 "    e.lat = $lat, e.lng = $lng",
                 name=emp["name"],
                 sector=emp["sector"],
                 description=emp.get("description"),
-                website=emp.get("website"),
+                website=emp.get("website") or detail.get("website"),  # EDD backfills the gap
                 swp_sectors=sector_tags,
                 naics4=naics4,
+                naics6=detail.get("naics6"),
                 operations_summary=emp.get("operations_summary"),
                 lat=geo.get("lat"),
                 lng=geo.get("lng"),

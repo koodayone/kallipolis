@@ -1,0 +1,2776 @@
+{
+  "/employers": {
+    "employers": [
+      {
+        "contact_name": "Clarissa Mamaril",
+        "contact_title": "Principal",
+        "description": "A major international airport serving the San Francisco Bay Area.",
+        "lat": 37.6399509,
+        "lng": -122.4017831,
+        "naics4": "4881",
+        "naics_title": "Support Activities for Air Transportation",
+        "name": "San Francisco International Airport",
+        "sector": "Transportation",
+        "size_class": "1,000-4,999 employees",
+        "size_rank": 9,
+        "soc_count": 6,
+        "soc_titles": {
+          "11-3071": "Transportation, Storage, and Distribution Managers",
+          "13-1081": "Logisticians",
+          "43-5011": "Cargo and Freight Agents",
+          "43-5061": "Production, Planning, and Expediting Clerks",
+          "49-1011": "First-Line Supervisors of Mechanics, Installers, and Repairers",
+          "49-3023": "Automotive Service Technicians and Mechanics"
+        },
+        "socs": [
+          "43-5011",
+          "49-1011",
+          "43-5061",
+          "11-3071",
+          "13-1081",
+          "49-3023"
+        ],
+        "website": "FLYSFO.COM"
+      },
+      {
+        "contact_name": "Faith Ikeda",
+        "contact_title": "Director",
+        "description": "One of the largest airlines in the world, offering domestic and international flights.",
+        "lat": 37.6399509,
+        "lng": -122.4017831,
+        "naics4": "4811",
+        "naics_title": "Scheduled Air Transportation",
+        "name": "American Airlines",
+        "sector": "Transportation",
+        "size_class": "250-499 employees",
+        "size_rank": 7,
+        "soc_count": 5,
+        "soc_titles": {
+          "11-3071": "Transportation, Storage, and Distribution Managers",
+          "13-1081": "Logisticians",
+          "43-5011": "Cargo and Freight Agents",
+          "43-5061": "Production, Planning, and Expediting Clerks",
+          "49-1011": "First-Line Supervisors of Mechanics, Installers, and Repairers"
+        },
+        "socs": [
+          "43-5011",
+          "49-1011",
+          "43-5061",
+          "11-3071",
+          "13-1081"
+        ],
+        "website": "https://www.aa.com/"
+      },
+      {
+        "contact_name": "Gary Wolfe",
+        "contact_title": "Manager",
+        "description": "A moving and storage company.",
+        "lat": 37.6873013,
+        "lng": -122.4025867,
+        "naics4": "4841",
+        "naics_title": "General Freight Trucking",
+        "name": "AMS Bekins",
+        "sector": "Transportation",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 6,
+        "soc_titles": {
+          "11-3071": "Transportation, Storage, and Distribution Managers",
+          "13-1081": "Logisticians",
+          "43-5011": "Cargo and Freight Agents",
+          "43-5061": "Production, Planning, and Expediting Clerks",
+          "49-1011": "First-Line Supervisors of Mechanics, Installers, and Repairers",
+          "49-3023": "Automotive Service Technicians and Mechanics"
+        },
+        "socs": [
+          "11-3071",
+          "13-1081",
+          "43-5011",
+          "49-1011",
+          "43-5061",
+          "49-3023"
+        ],
+        "website": "https://bekinsmovingservices.com/"
+      },
+      {
+        "contact_name": "Rick Noble",
+        "contact_title": "CEO",
+        "description": "A publisher of technical documentation for aircraft.",
+        "lat": 37.6897794,
+        "lng": -122.391832,
+        "naics4": "4881",
+        "naics_title": "Support Activities for Air Transportation",
+        "name": "Aircraft Technical Publishers",
+        "sector": "Transportation",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 6,
+        "soc_titles": {
+          "11-3071": "Transportation, Storage, and Distribution Managers",
+          "13-1081": "Logisticians",
+          "43-5011": "Cargo and Freight Agents",
+          "43-5061": "Production, Planning, and Expediting Clerks",
+          "49-1011": "First-Line Supervisors of Mechanics, Installers, and Repairers",
+          "49-3023": "Automotive Service Technicians and Mechanics"
+        },
+        "socs": [
+          "43-5011",
+          "49-1011",
+          "43-5061",
+          "11-3071",
+          "13-1081",
+          "49-3023"
+        ],
+        "website": "https://www.atp.com/"
+      },
+      {
+        "contact_name": "Larry Chew",
+        "contact_title": "Owner",
+        "description": "A business that distributes parts from a warehouse.",
+        "lat": 37.6499936,
+        "lng": -122.3944448,
+        "naics4": "4231",
+        "naics_title": "Motor Vehicle and Motor Vehicle Parts and Supplies Merchant Wholesalers",
+        "name": "Parts Warehouse Distributor",
+        "sector": "Wholesale",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 6,
+        "soc_titles": {
+          "11-3071": "Transportation, Storage, and Distribution Managers",
+          "13-1081": "Logisticians",
+          "43-5011": "Cargo and Freight Agents",
+          "43-5061": "Production, Planning, and Expediting Clerks",
+          "49-1011": "First-Line Supervisors of Mechanics, Installers, and Repairers",
+          "49-3023": "Automotive Service Technicians and Mechanics"
+        },
+        "socs": [
+          "49-3023",
+          "49-1011",
+          "11-3071",
+          "43-5061",
+          "13-1081",
+          "43-5011"
+        ],
+        "website": "CITYAUTOSUPPLY.COM"
+      },
+      {
+        "contact_name": "Benito Minicucci",
+        "contact_title": "CEO",
+        "description": "A major airline serving destinations across North America.",
+        "lat": 37.5893059,
+        "lng": -122.342542,
+        "naics4": "4811",
+        "naics_title": "Scheduled Air Transportation",
+        "name": "Alaska Airlines",
+        "sector": "Transportation",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 5,
+        "soc_titles": {
+          "11-3071": "Transportation, Storage, and Distribution Managers",
+          "13-1081": "Logisticians",
+          "43-5011": "Cargo and Freight Agents",
+          "43-5061": "Production, Planning, and Expediting Clerks",
+          "49-1011": "First-Line Supervisors of Mechanics, Installers, and Repairers"
+        },
+        "socs": [
+          "43-5011",
+          "49-1011",
+          "43-5061",
+          "11-3071",
+          "13-1081"
+        ],
+        "website": "https://www.alaskaair.com/"
+      },
+      {
+        "contact_name": "Andrew Clare",
+        "contact_title": "CEO",
+        "description": "A company developing aerial logistics and drone technology.",
+        "lat": 37.6521534,
+        "lng": -122.3928729,
+        "naics4": "3364",
+        "naics_title": "Aerospace Product and Parts Manufacturing",
+        "name": "Elroy Air",
+        "sector": "Manufacturing",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 5,
+        "soc_titles": {
+          "11-3071": "Transportation, Storage, and Distribution Managers",
+          "13-1081": "Logisticians",
+          "43-5061": "Production, Planning, and Expediting Clerks",
+          "49-1011": "First-Line Supervisors of Mechanics, Installers, and Repairers",
+          "49-3023": "Automotive Service Technicians and Mechanics"
+        },
+        "socs": [
+          "13-1081",
+          "43-5061",
+          "49-1011",
+          "11-3071",
+          "49-3023"
+        ],
+        "website": "https://elroyair.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "A major international airline based in Dubai.",
+        "lat": 37.6399509,
+        "lng": -122.4017831,
+        "naics4": "4811",
+        "naics_title": "Scheduled Air Transportation",
+        "name": "Emirates Airlines",
+        "sector": "Transportation",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 5,
+        "soc_titles": {
+          "11-3071": "Transportation, Storage, and Distribution Managers",
+          "13-1081": "Logisticians",
+          "43-5011": "Cargo and Freight Agents",
+          "43-5061": "Production, Planning, and Expediting Clerks",
+          "49-1011": "First-Line Supervisors of Mechanics, Installers, and Repairers"
+        },
+        "socs": [
+          "43-5011",
+          "49-1011",
+          "43-5061",
+          "11-3071",
+          "13-1081"
+        ],
+        "website": "https://www.emirates.com/us/english/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "The flag carrier airline of Hawaii, serving inter-island and mainland routes.",
+        "lat": 37.6158361,
+        "lng": -122.395561,
+        "naics4": "4811",
+        "naics_title": "Scheduled Air Transportation",
+        "name": "Hawaiian Airlines",
+        "sector": "Transportation",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 5,
+        "soc_titles": {
+          "11-3071": "Transportation, Storage, and Distribution Managers",
+          "13-1081": "Logisticians",
+          "43-5011": "Cargo and Freight Agents",
+          "43-5061": "Production, Planning, and Expediting Clerks",
+          "49-1011": "First-Line Supervisors of Mechanics, Installers, and Repairers"
+        },
+        "socs": [
+          "43-5011",
+          "49-1011",
+          "43-5061",
+          "11-3071",
+          "13-1081"
+        ],
+        "website": "https://www.hawaiianairlines.com/"
+      },
+      {
+        "contact_name": "Mike Scanlon",
+        "contact_title": "CEO",
+        "description": "The governing body for the Caltrain commuter rail line.",
+        "lat": 37.5059999,
+        "lng": -122.2618964,
+        "naics4": "4851",
+        "naics_title": "Urban Transit Systems",
+        "name": "Peninsula Corridor Joint Powers Board",
+        "sector": "Transportation",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 4,
+        "soc_titles": {
+          "11-3071": "Transportation, Storage, and Distribution Managers",
+          "43-5061": "Production, Planning, and Expediting Clerks",
+          "49-1011": "First-Line Supervisors of Mechanics, Installers, and Repairers",
+          "49-3023": "Automotive Service Technicians and Mechanics"
+        },
+        "socs": [
+          "49-1011",
+          "11-3071",
+          "49-3023",
+          "43-5061"
+        ],
+        "website": "https://www.caltrain.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "A transportation company likely operating on a Just-In-Time delivery model.",
+        "lat": 37.655002381859,
+        "lng": -122.380235210712,
+        "naics4": "4842",
+        "naics_title": "Specialized Freight Trucking",
+        "name": "JIT Transportation",
+        "sector": "Transportation",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 6,
+        "soc_titles": {
+          "11-3071": "Transportation, Storage, and Distribution Managers",
+          "13-1081": "Logisticians",
+          "43-5011": "Cargo and Freight Agents",
+          "43-5061": "Production, Planning, and Expediting Clerks",
+          "49-1011": "First-Line Supervisors of Mechanics, Installers, and Repairers",
+          "49-3023": "Automotive Service Technicians and Mechanics"
+        },
+        "socs": [
+          "11-3071",
+          "13-1081",
+          "43-5011",
+          "49-1011",
+          "43-5061",
+          "49-3023"
+        ],
+        "website": "https://www.jittransportation.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "A global provider of private aviation services.",
+        "lat": 37.6391734,
+        "lng": -122.3980222,
+        "naics4": "4881",
+        "naics_title": "Support Activities for Air Transportation",
+        "name": "Signature Flight Support",
+        "sector": "Transportation",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 6,
+        "soc_titles": {
+          "11-3071": "Transportation, Storage, and Distribution Managers",
+          "13-1081": "Logisticians",
+          "43-5011": "Cargo and Freight Agents",
+          "43-5061": "Production, Planning, and Expediting Clerks",
+          "49-1011": "First-Line Supervisors of Mechanics, Installers, and Repairers",
+          "49-3023": "Automotive Service Technicians and Mechanics"
+        },
+        "socs": [
+          "43-5011",
+          "49-1011",
+          "43-5061",
+          "11-3071",
+          "13-1081",
+          "49-3023"
+        ],
+        "website": "https://www.signatureaviation.com/locations/SFO"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "A company name, potentially in technology or logistics.",
+        "lat": 37.6458862,
+        "lng": -122.4110509,
+        "naics4": "4931",
+        "naics_title": "Warehousing and Storage",
+        "name": "UOVO",
+        "sector": "Transportation",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 6,
+        "soc_titles": {
+          "11-3071": "Transportation, Storage, and Distribution Managers",
+          "13-1081": "Logisticians",
+          "43-5011": "Cargo and Freight Agents",
+          "43-5061": "Production, Planning, and Expediting Clerks",
+          "49-1011": "First-Line Supervisors of Mechanics, Installers, and Repairers",
+          "49-3023": "Automotive Service Technicians and Mechanics"
+        },
+        "socs": [
+          "11-3071",
+          "43-5061",
+          "13-1081",
+          "49-1011",
+          "43-5011",
+          "49-3023"
+        ],
+        "website": "https://uovo.art/locations/art/california/san-francisco/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "An airline offering international flights with a focus on customer experience.",
+        "lat": 37.6469959,
+        "lng": -122.4056043,
+        "naics4": "4811",
+        "naics_title": "Scheduled Air Transportation",
+        "name": "Virgin Atlantic",
+        "sector": "Transportation",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 5,
+        "soc_titles": {
+          "11-3071": "Transportation, Storage, and Distribution Managers",
+          "13-1081": "Logisticians",
+          "43-5011": "Cargo and Freight Agents",
+          "43-5061": "Production, Planning, and Expediting Clerks",
+          "49-1011": "First-Line Supervisors of Mechanics, Installers, and Repairers"
+        },
+        "socs": [
+          "43-5011",
+          "49-1011",
+          "43-5061",
+          "11-3071",
+          "13-1081"
+        ],
+        "website": "https://www.virginatlantic.com/en-US"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "An environmentally friendly car wash service.",
+        "lat": 37.6938484,
+        "lng": -122.4864797,
+        "naics4": "8111",
+        "naics_title": "Automotive Repair and Maintenance",
+        "name": "Westlake Eco Soft Touch Car Wash",
+        "sector": "Other Services",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 5,
+        "soc_titles": {
+          "11-3071": "Transportation, Storage, and Distribution Managers",
+          "13-1081": "Logisticians",
+          "43-5061": "Production, Planning, and Expediting Clerks",
+          "49-1011": "First-Line Supervisors of Mechanics, Installers, and Repairers",
+          "49-3023": "Automotive Service Technicians and Mechanics"
+        },
+        "socs": [
+          "49-3023",
+          "49-1011",
+          "43-5061",
+          "11-3071",
+          "13-1081"
+        ],
+        "website": "https://www.ecosofttouch.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "A global transportation and logistics company.",
+        "lat": 37.5685576,
+        "lng": -122.3110699,
+        "naics4": "4853",
+        "naics_title": "Taxi and Limousine Service",
+        "name": "ABC Worldwide Transportation",
+        "sector": "Transportation",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 4,
+        "soc_titles": {
+          "11-3071": "Transportation, Storage, and Distribution Managers",
+          "43-5061": "Production, Planning, and Expediting Clerks",
+          "49-1011": "First-Line Supervisors of Mechanics, Installers, and Repairers",
+          "49-3023": "Automotive Service Technicians and Mechanics"
+        },
+        "socs": [
+          "49-3023",
+          "11-3071",
+          "43-5061",
+          "49-1011"
+        ],
+        "website": "https://abctrans.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "A service providing coach transportation, possibly related to airlines.",
+        "lat": 37.599928,
+        "lng": -122.3719583,
+        "naics4": "4859",
+        "naics_title": "Other Transit and Ground Passenger Transportation",
+        "name": "Airline Coach Services",
+        "sector": "Transportation",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 4,
+        "soc_titles": {
+          "11-3071": "Transportation, Storage, and Distribution Managers",
+          "43-5061": "Production, Planning, and Expediting Clerks",
+          "49-1011": "First-Line Supervisors of Mechanics, Installers, and Repairers",
+          "49-3023": "Automotive Service Technicians and Mechanics"
+        },
+        "socs": [
+          "11-3071",
+          "49-3023",
+          "43-5061",
+          "49-1011"
+        ],
+        "website": "https://www.airlinecoach.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "A transportation company offering various transit solutions.",
+        "lat": 37.5883478,
+        "lng": -122.3358474,
+        "naics4": "4859",
+        "naics_title": "Other Transit and Ground Passenger Transportation",
+        "name": "Avalon Transportation",
+        "sector": "Transportation",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 4,
+        "soc_titles": {
+          "11-3071": "Transportation, Storage, and Distribution Managers",
+          "43-5061": "Production, Planning, and Expediting Clerks",
+          "49-1011": "First-Line Supervisors of Mechanics, Installers, and Repairers",
+          "49-3023": "Automotive Service Technicians and Mechanics"
+        },
+        "socs": [
+          "11-3071",
+          "49-3023",
+          "43-5061",
+          "49-1011"
+        ],
+        "website": "https://avalontrans.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "A luxury transportation service offering limousine rentals.",
+        "lat": 37.6474278,
+        "lng": -122.4160641,
+        "naics4": "4853",
+        "naics_title": "Taxi and Limousine Service",
+        "name": "Carey Limousine",
+        "sector": "Transportation",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 4,
+        "soc_titles": {
+          "11-3071": "Transportation, Storage, and Distribution Managers",
+          "43-5061": "Production, Planning, and Expediting Clerks",
+          "49-1011": "First-Line Supervisors of Mechanics, Installers, and Repairers",
+          "49-3023": "Automotive Service Technicians and Mechanics"
+        },
+        "socs": [
+          "49-3023",
+          "11-3071",
+          "43-5061",
+          "49-1011"
+        ],
+        "website": "https://www.carey.com/san-francisco/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "A company involved in international trade and logistics.",
+        "lat": 37.5980629,
+        "lng": -122.3727054,
+        "naics4": "4859",
+        "naics_title": "Other Transit and Ground Passenger Transportation",
+        "name": "Gateway Global",
+        "sector": "Transportation",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 4,
+        "soc_titles": {
+          "11-3071": "Transportation, Storage, and Distribution Managers",
+          "43-5061": "Production, Planning, and Expediting Clerks",
+          "49-1011": "First-Line Supervisors of Mechanics, Installers, and Repairers",
+          "49-3023": "Automotive Service Technicians and Mechanics"
+        },
+        "socs": [
+          "11-3071",
+          "49-3023",
+          "43-5061",
+          "49-1011"
+        ],
+        "website": "https://www.gatewayglobalsf.com/"
+      }
+    ],
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "Advanced Transportation & Logistics",
+    "shed_counties": [
+      "San Mateo"
+    ],
+    "shown": 20,
+    "total": 22
+  },
+  "/programs": {
+    "latest_award_year": "2024-2025",
+    "matrix": {
+      "cells": [
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "050100"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "050100"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "050100"
+        },
+        {
+          "awards": 132,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "050500"
+        },
+        {
+          "awards": 98,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "050500"
+        },
+        {
+          "awards": 51,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "050500"
+        },
+        {
+          "awards": 8,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "050600"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "050600"
+        },
+        {
+          "awards": 12,
+          "college": "Ca\u00f1ada College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "050600"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "050630"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "050630"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "050630"
+        },
+        {
+          "awards": 2,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "050640"
+        },
+        {
+          "awards": 4,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "050640"
+        },
+        {
+          "awards": 3,
+          "college": "Ca\u00f1ada College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "050640"
+        },
+        {
+          "awards": 3,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "050900"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "050900"
+        },
+        {
+          "awards": 9,
+          "college": "Ca\u00f1ada College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "050900"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "051000"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "051000"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "051000"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "051400"
+        },
+        {
+          "awards": 3,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "051400"
+        },
+        {
+          "awards": 8,
+          "college": "Ca\u00f1ada College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "051400"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "051800"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "051800"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "051800"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "093400"
+        },
+        {
+          "awards": 4,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "093400"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093400"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093440"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093440"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093440"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "094800"
+        },
+        {
+          "awards": 119,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "094800"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "094800"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "094840"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "094840"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "094840"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "094850"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "094850"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "094850"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "302000"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "302000"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "302000"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "302010"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "302010"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "302010"
+        }
+      ],
+      "colleges": [
+        "College of San Mateo",
+        "Skyline College",
+        "Ca\u00f1ada College"
+      ]
+    },
+    "n_colleges": 3,
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "Advanced Transportation & Logistics",
+    "tops": [
+      {
+        "awards_total": 281,
+        "enrollment_total": 59,
+        "n_colleges_offering": 1,
+        "name": "Business Administration",
+        "soc_count": 2,
+        "top6": "050500"
+      },
+      {
+        "awards_total": 119,
+        "enrollment_total": 410,
+        "n_colleges_offering": 1,
+        "name": "Automotive Technology",
+        "soc_count": 2,
+        "top6": "094800"
+      },
+      {
+        "awards_total": 20,
+        "enrollment_total": 234,
+        "n_colleges_offering": 3,
+        "name": "Business Management",
+        "soc_count": 2,
+        "top6": "050600"
+      },
+      {
+        "awards_total": 12,
+        "enrollment_total": 273,
+        "n_colleges_offering": 2,
+        "name": "Marketing and Distribution",
+        "soc_count": 2,
+        "top6": "050900"
+      },
+      {
+        "awards_total": 11,
+        "enrollment_total": 579,
+        "n_colleges_offering": 3,
+        "name": "Office Technology/Office Computer Applications",
+        "soc_count": 3,
+        "top6": "051400"
+      },
+      {
+        "awards_total": 9,
+        "enrollment_total": 264,
+        "n_colleges_offering": 3,
+        "name": "Small Business and Entrepreneurship",
+        "soc_count": 2,
+        "top6": "050640"
+      },
+      {
+        "awards_total": 4,
+        "enrollment_total": 130,
+        "n_colleges_offering": 0,
+        "name": "Electronics and Electric Technology",
+        "soc_count": 1,
+        "top6": "093400"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 1537,
+        "n_colleges_offering": 3,
+        "name": "Business and Commerce, General",
+        "soc_count": 2,
+        "top6": "050100"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 73,
+        "n_colleges_offering": 2,
+        "name": "Management Development and Supervision",
+        "soc_count": 3,
+        "top6": "050630"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 27,
+        "n_colleges_offering": 0,
+        "name": "Logistics and Materials Transportation",
+        "soc_count": 3,
+        "top6": "051000"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 15,
+        "n_colleges_offering": 0,
+        "name": "Alternative Fuels and Advanced Transportation Technology",
+        "soc_count": 1,
+        "top6": "094840"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Customer Service",
+        "soc_count": 2,
+        "top6": "051800"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Electrical Systems and Power Transmission",
+        "soc_count": 1,
+        "top6": "093440"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Recreational Vehicle Service",
+        "soc_count": 1,
+        "top6": "094850"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Aviation and Airport Management and Services",
+        "soc_count": 1,
+        "top6": "302000"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Aviation and Airport Management",
+        "soc_count": 1,
+        "top6": "302010"
+      }
+    ]
+  },
+  "landscape": {
+    "aggregate": {
+      "candidate_employers": 807,
+      "combined_awards": 456,
+      "combined_supply_total": 314.5,
+      "gap": 4966,
+      "n_colleges": 3,
+      "n_occupations": 6,
+      "occupations_taught": 5,
+      "regional_demand_total": 5280
+    },
+    "award_years": [
+      "2020-2021",
+      "2021-2022",
+      "2022-2023",
+      "2023-2024",
+      "2024-2025"
+    ],
+    "colleges": [
+      {
+        "cells": [
+          {
+            "annual_openings": 600,
+            "annual_wage": 129980,
+            "awards_recent": 145,
+            "course_count": 38,
+            "enrolled": true,
+            "feeding_awards": 145,
+            "gap": 575,
+            "growth_rate": 0.028608099,
+            "programs": [
+              {
+                "awards": [
+                  11,
+                  6,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  433,
+                  601,
+                  567,
+                  509,
+                  683,
+                  595,
+                  750,
+                  522,
+                  498
+                ],
+                "name": "Business and Commerce, General",
+                "top6": "050100",
+                "wages": []
+              },
+              {
+                "awards": [
+                  126,
+                  122,
+                  114,
+                  141,
+                  132
+                ],
+                "awards_recent": 132,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  30,
+                  null,
+                  29,
+                  null,
+                  33
+                ],
+                "name": "Business Administration",
+                "top6": "050500",
+                "wages": []
+              },
+              {
+                "awards": [
+                  18,
+                  15,
+                  16,
+                  6,
+                  8
+                ],
+                "awards_recent": 8,
+                "enrollment": [
+                  110,
+                  73,
+                  165,
+                  140,
+                  189,
+                  105,
+                  161,
+                  125,
+                  134
+                ],
+                "name": "Business Management",
+                "top6": "050600",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  12,
+                  39,
+                  17,
+                  38,
+                  14,
+                  29,
+                  18
+                ],
+                "name": "Management Development and Supervision",
+                "top6": "050630",
+                "wages": []
+              },
+              {
+                "awards": [
+                  1,
+                  3,
+                  0,
+                  2,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  56,
+                  46,
+                  40,
+                  76,
+                  43,
+                  167,
+                  71,
+                  227,
+                  172
+                ],
+                "name": "Small Business and Entrepreneurship",
+                "top6": "050640",
+                "wages": []
+              },
+              {
+                "awards": [
+                  4,
+                  4,
+                  2,
+                  1,
+                  3
+                ],
+                "awards_recent": 3,
+                "enrollment": [
+                  58,
+                  48,
+                  42,
+                  39,
+                  71,
+                  68,
+                  58,
+                  68,
+                  55
+                ],
+                "name": "Marketing and Distribution",
+                "top6": "050900",
+                "wages": []
+              },
+              {
+                "awards": [
+                  2,
+                  3,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  111,
+                  90,
+                  97,
+                  105,
+                  108,
+                  121,
+                  122,
+                  128,
+                  132
+                ],
+                "name": "Office Technology/Office Computer Applications",
+                "top6": "051400",
+                "wages": []
+              }
+            ],
+            "soc_code": "11-3071",
+            "supply": 25.16,
+            "title": "Transportation, Storage, and Distribution Managers"
+          },
+          {
+            "annual_openings": 910,
+            "annual_wage": 106670,
+            "awards_recent": 145,
+            "course_count": 16,
+            "enrolled": true,
+            "feeding_awards": 145,
+            "gap": 885,
+            "growth_rate": 0.086679165,
+            "programs": [
+              {
+                "awards": [
+                  11,
+                  6,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  433,
+                  601,
+                  567,
+                  509,
+                  683,
+                  595,
+                  750,
+                  522,
+                  498
+                ],
+                "name": "Business and Commerce, General",
+                "top6": "050100",
+                "wages": []
+              },
+              {
+                "awards": [
+                  126,
+                  122,
+                  114,
+                  141,
+                  132
+                ],
+                "awards_recent": 132,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  30,
+                  null,
+                  29,
+                  null,
+                  33
+                ],
+                "name": "Business Administration",
+                "top6": "050500",
+                "wages": []
+              },
+              {
+                "awards": [
+                  18,
+                  15,
+                  16,
+                  6,
+                  8
+                ],
+                "awards_recent": 8,
+                "enrollment": [
+                  110,
+                  73,
+                  165,
+                  140,
+                  189,
+                  105,
+                  161,
+                  125,
+                  134
+                ],
+                "name": "Business Management",
+                "top6": "050600",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  12,
+                  39,
+                  17,
+                  38,
+                  14,
+                  29,
+                  18
+                ],
+                "name": "Management Development and Supervision",
+                "top6": "050630",
+                "wages": []
+              },
+              {
+                "awards": [
+                  1,
+                  3,
+                  0,
+                  2,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  56,
+                  46,
+                  40,
+                  76,
+                  43,
+                  167,
+                  71,
+                  227,
+                  172
+                ],
+                "name": "Small Business and Entrepreneurship",
+                "top6": "050640",
+                "wages": []
+              },
+              {
+                "awards": [
+                  4,
+                  4,
+                  2,
+                  1,
+                  3
+                ],
+                "awards_recent": 3,
+                "enrollment": [
+                  58,
+                  48,
+                  42,
+                  39,
+                  71,
+                  68,
+                  58,
+                  68,
+                  55
+                ],
+                "name": "Marketing and Distribution",
+                "top6": "050900",
+                "wages": []
+              },
+              {
+                "awards": [
+                  2,
+                  3,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  111,
+                  90,
+                  97,
+                  105,
+                  108,
+                  121,
+                  122,
+                  128,
+                  132
+                ],
+                "name": "Office Technology/Office Computer Applications",
+                "top6": "051400",
+                "wages": []
+              }
+            ],
+            "soc_code": "13-1081",
+            "supply": 25.16,
+            "title": "Logisticians"
+          },
+          {
+            "annual_openings": 180,
+            "annual_wage": 59530,
+            "awards_recent": 0,
+            "course_count": 1,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 178,
+            "growth_rate": -0.043744905,
+            "programs": [
+              {
+                "awards": [
+                  2,
+                  3,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  111,
+                  90,
+                  97,
+                  105,
+                  108,
+                  121,
+                  122,
+                  128,
+                  132
+                ],
+                "name": "Office Technology/Office Computer Applications",
+                "top6": "051400",
+                "wages": []
+              }
+            ],
+            "soc_code": "43-5011",
+            "supply": 1.83,
+            "title": "Cargo and Freight Agents"
+          },
+          {
+            "annual_openings": 1180,
+            "annual_wage": 72110,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 1180,
+            "growth_rate": 0.026566101,
+            "programs": [],
+            "soc_code": "43-5061",
+            "supply": 0.0,
+            "title": "Production, Planning, and Expediting Clerks"
+          },
+          {
+            "annual_openings": 1010,
+            "annual_wage": 98350,
+            "awards_recent": 0,
+            "course_count": 3,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 1010,
+            "growth_rate": 0.032229045,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  12,
+                  39,
+                  17,
+                  38,
+                  14,
+                  29,
+                  18
+                ],
+                "name": "Management Development and Supervision",
+                "top6": "050630",
+                "wages": []
+              },
+              {
+                "awards": [
+                  6,
+                  17,
+                  9,
+                  6,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  74,
+                  72,
+                  29,
+                  2,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Electronics and Electric Technology",
+                "top6": "093400",
+                "wages": [
+                  {
+                    "n": 223,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 65274,
+                    "wage_after_5": 80497,
+                    "wage_before": 36812,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 353,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 69631,
+                    "wage_after_5": 84558,
+                    "wage_before": 42485,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 88,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 94249,
+                    "wage_after_5": 94013,
+                    "wage_before": 69348,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "49-1011",
+            "supply": 0.0,
+            "title": "First-Line Supervisors of Mechanics, Installers, and Repairers"
+          },
+          {
+            "annual_openings": 1400,
+            "annual_wage": 70310,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 1400,
+            "growth_rate": 0.013224144,
+            "programs": [],
+            "soc_code": "49-3023",
+            "supply": 0.0,
+            "title": "Automotive Service Technicians and Mechanics"
+          }
+        ],
+        "name": "College of San Mateo"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 600,
+            "annual_wage": 129980,
+            "awards_recent": 105,
+            "course_count": 20,
+            "enrolled": true,
+            "feeding_awards": 105,
+            "gap": 500,
+            "growth_rate": 0.028608099,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  344,
+                  308,
+                  323,
+                  280,
+                  364,
+                  349,
+                  391,
+                  367,
+                  369
+                ],
+                "name": "Business and Commerce, General",
+                "top6": "050100",
+                "wages": []
+              },
+              {
+                "awards": [
+                  110,
+                  102,
+                  88,
+                  122,
+                  98
+                ],
+                "awards_recent": 98,
+                "enrollment": [
+                  null,
+                  59,
+                  15,
+                  46,
+                  null,
+                  47,
+                  null,
+                  47,
+                  null
+                ],
+                "name": "Business Administration",
+                "top6": "050500",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  14,
+                  22,
+                  18,
+                  42,
+                  21,
+                  10,
+                  12,
+                  63,
+                  30
+                ],
+                "name": "Business Management",
+                "top6": "050600",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  9,
+                  null,
+                  22,
+                  34,
+                  24,
+                  30,
+                  28,
+                  19,
+                  20
+                ],
+                "name": "Management Development and Supervision",
+                "top6": "050630",
+                "wages": []
+              },
+              {
+                "awards": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  4
+                ],
+                "awards_recent": 4,
+                "enrollment": [
+                  34,
+                  null,
+                  32,
+                  null,
+                  72,
+                  null,
+                  56,
+                  null,
+                  48
+                ],
+                "name": "Small Business and Entrepreneurship",
+                "top6": "050640",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  41,
+                  39,
+                  51,
+                  74,
+                  67,
+                  57,
+                  67,
+                  66,
+                  45
+                ],
+                "name": "Marketing and Distribution",
+                "top6": "050900",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  11,
+                  15,
+                  8,
+                  27,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Logistics and Materials Transportation",
+                "top6": "051000",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  3
+                ],
+                "awards_recent": 3,
+                "enrollment": [
+                  170,
+                  197,
+                  156,
+                  249,
+                  172,
+                  222,
+                  175,
+                  221,
+                  168
+                ],
+                "name": "Office Technology/Office Computer Applications",
+                "top6": "051400",
+                "wages": []
+              }
+            ],
+            "soc_code": "11-3071",
+            "supply": 100.33,
+            "title": "Transportation, Storage, and Distribution Managers"
+          },
+          {
+            "annual_openings": 910,
+            "annual_wage": 106670,
+            "awards_recent": 105,
+            "course_count": 17,
+            "enrolled": true,
+            "feeding_awards": 105,
+            "gap": 810,
+            "growth_rate": 0.086679165,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  344,
+                  308,
+                  323,
+                  280,
+                  364,
+                  349,
+                  391,
+                  367,
+                  369
+                ],
+                "name": "Business and Commerce, General",
+                "top6": "050100",
+                "wages": []
+              },
+              {
+                "awards": [
+                  110,
+                  102,
+                  88,
+                  122,
+                  98
+                ],
+                "awards_recent": 98,
+                "enrollment": [
+                  null,
+                  59,
+                  15,
+                  46,
+                  null,
+                  47,
+                  null,
+                  47,
+                  null
+                ],
+                "name": "Business Administration",
+                "top6": "050500",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  14,
+                  22,
+                  18,
+                  42,
+                  21,
+                  10,
+                  12,
+                  63,
+                  30
+                ],
+                "name": "Business Management",
+                "top6": "050600",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  9,
+                  null,
+                  22,
+                  34,
+                  24,
+                  30,
+                  28,
+                  19,
+                  20
+                ],
+                "name": "Management Development and Supervision",
+                "top6": "050630",
+                "wages": []
+              },
+              {
+                "awards": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  4
+                ],
+                "awards_recent": 4,
+                "enrollment": [
+                  34,
+                  null,
+                  32,
+                  null,
+                  72,
+                  null,
+                  56,
+                  null,
+                  48
+                ],
+                "name": "Small Business and Entrepreneurship",
+                "top6": "050640",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  41,
+                  39,
+                  51,
+                  74,
+                  67,
+                  57,
+                  67,
+                  66,
+                  45
+                ],
+                "name": "Marketing and Distribution",
+                "top6": "050900",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  11,
+                  15,
+                  8,
+                  27,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Logistics and Materials Transportation",
+                "top6": "051000",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  3
+                ],
+                "awards_recent": 3,
+                "enrollment": [
+                  170,
+                  197,
+                  156,
+                  249,
+                  172,
+                  222,
+                  175,
+                  221,
+                  168
+                ],
+                "name": "Office Technology/Office Computer Applications",
+                "top6": "051400",
+                "wages": []
+              }
+            ],
+            "soc_code": "13-1081",
+            "supply": 100.33,
+            "title": "Logisticians"
+          },
+          {
+            "annual_openings": 180,
+            "annual_wage": 59530,
+            "awards_recent": 3,
+            "course_count": 3,
+            "enrolled": true,
+            "feeding_awards": 3,
+            "gap": 180,
+            "growth_rate": -0.043744905,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  3
+                ],
+                "awards_recent": 3,
+                "enrollment": [
+                  170,
+                  197,
+                  156,
+                  249,
+                  172,
+                  222,
+                  175,
+                  221,
+                  168
+                ],
+                "name": "Office Technology/Office Computer Applications",
+                "top6": "051400",
+                "wages": []
+              }
+            ],
+            "soc_code": "43-5011",
+            "supply": 0.0,
+            "title": "Cargo and Freight Agents"
+          },
+          {
+            "annual_openings": 1180,
+            "annual_wage": 72110,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 1180,
+            "growth_rate": 0.026566101,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  11,
+                  15,
+                  8,
+                  27,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Logistics and Materials Transportation",
+                "top6": "051000",
+                "wages": []
+              }
+            ],
+            "soc_code": "43-5061",
+            "supply": 0.0,
+            "title": "Production, Planning, and Expediting Clerks"
+          },
+          {
+            "annual_openings": 1010,
+            "annual_wage": 98350,
+            "awards_recent": 123,
+            "course_count": 8,
+            "enrolled": true,
+            "feeding_awards": 123,
+            "gap": 999,
+            "growth_rate": 0.032229045,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  9,
+                  null,
+                  22,
+                  34,
+                  24,
+                  30,
+                  28,
+                  19,
+                  20
+                ],
+                "name": "Management Development and Supervision",
+                "top6": "050630",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  2,
+                  8,
+                  4
+                ],
+                "awards_recent": 4,
+                "enrollment": [
+                  56,
+                  5,
+                  78,
+                  46,
+                  39,
+                  96,
+                  34,
+                  84,
+                  87
+                ],
+                "name": "Electronics and Electric Technology",
+                "top6": "093400",
+                "wages": [
+                  {
+                    "n": 223,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 65274,
+                    "wage_after_5": 80497,
+                    "wage_before": 36812,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 353,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 69631,
+                    "wage_after_5": 84558,
+                    "wage_before": 42485,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 88,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 94249,
+                    "wage_after_5": 94013,
+                    "wage_before": 69348,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  8,
+                  9,
+                  13,
+                  27,
+                  119
+                ],
+                "awards_recent": 119,
+                "enrollment": [
+                  250,
+                  350,
+                  379,
+                  334,
+                  367,
+                  399,
+                  332,
+                  410,
+                  383
+                ],
+                "name": "Automotive Technology",
+                "top6": "094800",
+                "wages": [
+                  {
+                    "n": 530,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 50020,
+                    "wage_after_5": 64735,
+                    "wage_before": 23838,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 808,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 45472,
+                    "wage_after_5": 58950,
+                    "wage_before": 21845,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 233,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 42436,
+                    "wage_after_5": 58236,
+                    "wage_before": 22312,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "49-1011",
+            "supply": 10.67,
+            "title": "First-Line Supervisors of Mechanics, Installers, and Repairers"
+          },
+          {
+            "annual_openings": 1400,
+            "annual_wage": 70310,
+            "awards_recent": 119,
+            "course_count": 2,
+            "enrolled": true,
+            "feeding_awards": 119,
+            "gap": 1389,
+            "growth_rate": 0.013224144,
+            "programs": [
+              {
+                "awards": [
+                  8,
+                  9,
+                  13,
+                  27,
+                  119
+                ],
+                "awards_recent": 119,
+                "enrollment": [
+                  250,
+                  350,
+                  379,
+                  334,
+                  367,
+                  399,
+                  332,
+                  410,
+                  383
+                ],
+                "name": "Automotive Technology",
+                "top6": "094800",
+                "wages": [
+                  {
+                    "n": 530,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 50020,
+                    "wage_after_5": 64735,
+                    "wage_before": 23838,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 808,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 45472,
+                    "wage_after_5": 58950,
+                    "wage_before": 21845,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 233,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 42436,
+                    "wage_after_5": 58236,
+                    "wage_before": 22312,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  7,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  15,
+                  null,
+                  null
+                ],
+                "name": "Alternative Fuels and Advanced Transportation Technology",
+                "top6": "094840",
+                "wages": [
+                  {
+                    "n": 29,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 73943,
+                    "wage_after_5": 74451,
+                    "wage_before": 32256,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "49-3023",
+            "supply": 10.67,
+            "title": "Automotive Service Technicians and Mechanics"
+          }
+        ],
+        "name": "Skyline College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 600,
+            "annual_wage": 129980,
+            "awards_recent": 83,
+            "course_count": 22,
+            "enrolled": true,
+            "feeding_awards": 83,
+            "gap": 582,
+            "growth_rate": 0.028608099,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  243,
+                  177,
+                  340,
+                  343,
+                  340,
+                  590,
+                  396,
+                  621,
+                  516
+                ],
+                "name": "Business and Commerce, General",
+                "top6": "050100",
+                "wages": []
+              },
+              {
+                "awards": [
+                  71,
+                  60,
+                  43,
+                  46,
+                  51
+                ],
+                "awards_recent": 51,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Business Administration",
+                "top6": "050500",
+                "wages": []
+              },
+              {
+                "awards": [
+                  3,
+                  11,
+                  5,
+                  7,
+                  12
+                ],
+                "awards_recent": 12,
+                "enrollment": [
+                  26,
+                  32,
+                  40,
+                  13,
+                  24,
+                  31,
+                  41,
+                  39,
+                  24
+                ],
+                "name": "Business Management",
+                "top6": "050600",
+                "wages": []
+              },
+              {
+                "awards": [
+                  4,
+                  2,
+                  4,
+                  5,
+                  3
+                ],
+                "awards_recent": 3,
+                "enrollment": [
+                  11,
+                  40,
+                  15,
+                  28,
+                  17,
+                  38,
+                  21,
+                  37,
+                  26
+                ],
+                "name": "Small Business and Entrepreneurship",
+                "top6": "050640",
+                "wages": []
+              },
+              {
+                "awards": [
+                  3,
+                  4,
+                  5,
+                  4,
+                  9
+                ],
+                "awards_recent": 9,
+                "enrollment": [
+                  33,
+                  62,
+                  75,
+                  20,
+                  100,
+                  29,
+                  148,
+                  20,
+                  84
+                ],
+                "name": "Marketing and Distribution",
+                "top6": "050900",
+                "wages": []
+              },
+              {
+                "awards": [
+                  3,
+                  6,
+                  2,
+                  7,
+                  8
+                ],
+                "awards_recent": 8,
+                "enrollment": [
+                  78,
+                  231,
+                  171,
+                  225,
+                  142,
+                  210,
+                  158,
+                  173,
+                  123
+                ],
+                "name": "Office Technology/Office Computer Applications",
+                "top6": "051400",
+                "wages": []
+              }
+            ],
+            "soc_code": "11-3071",
+            "supply": 18.01,
+            "title": "Transportation, Storage, and Distribution Managers"
+          },
+          {
+            "annual_openings": 910,
+            "annual_wage": 106670,
+            "awards_recent": 83,
+            "course_count": 18,
+            "enrolled": true,
+            "feeding_awards": 83,
+            "gap": 892,
+            "growth_rate": 0.086679165,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  243,
+                  177,
+                  340,
+                  343,
+                  340,
+                  590,
+                  396,
+                  621,
+                  516
+                ],
+                "name": "Business and Commerce, General",
+                "top6": "050100",
+                "wages": []
+              },
+              {
+                "awards": [
+                  71,
+                  60,
+                  43,
+                  46,
+                  51
+                ],
+                "awards_recent": 51,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Business Administration",
+                "top6": "050500",
+                "wages": []
+              },
+              {
+                "awards": [
+                  3,
+                  11,
+                  5,
+                  7,
+                  12
+                ],
+                "awards_recent": 12,
+                "enrollment": [
+                  26,
+                  32,
+                  40,
+                  13,
+                  24,
+                  31,
+                  41,
+                  39,
+                  24
+                ],
+                "name": "Business Management",
+                "top6": "050600",
+                "wages": []
+              },
+              {
+                "awards": [
+                  4,
+                  2,
+                  4,
+                  5,
+                  3
+                ],
+                "awards_recent": 3,
+                "enrollment": [
+                  11,
+                  40,
+                  15,
+                  28,
+                  17,
+                  38,
+                  21,
+                  37,
+                  26
+                ],
+                "name": "Small Business and Entrepreneurship",
+                "top6": "050640",
+                "wages": []
+              },
+              {
+                "awards": [
+                  3,
+                  4,
+                  5,
+                  4,
+                  9
+                ],
+                "awards_recent": 9,
+                "enrollment": [
+                  33,
+                  62,
+                  75,
+                  20,
+                  100,
+                  29,
+                  148,
+                  20,
+                  84
+                ],
+                "name": "Marketing and Distribution",
+                "top6": "050900",
+                "wages": []
+              },
+              {
+                "awards": [
+                  3,
+                  6,
+                  2,
+                  7,
+                  8
+                ],
+                "awards_recent": 8,
+                "enrollment": [
+                  78,
+                  231,
+                  171,
+                  225,
+                  142,
+                  210,
+                  158,
+                  173,
+                  123
+                ],
+                "name": "Office Technology/Office Computer Applications",
+                "top6": "051400",
+                "wages": []
+              }
+            ],
+            "soc_code": "13-1081",
+            "supply": 18.01,
+            "title": "Logisticians"
+          },
+          {
+            "annual_openings": 180,
+            "annual_wage": 59530,
+            "awards_recent": 8,
+            "course_count": 11,
+            "enrolled": true,
+            "feeding_awards": 8,
+            "gap": 176,
+            "growth_rate": -0.043744905,
+            "programs": [
+              {
+                "awards": [
+                  3,
+                  6,
+                  2,
+                  7,
+                  8
+                ],
+                "awards_recent": 8,
+                "enrollment": [
+                  78,
+                  231,
+                  171,
+                  225,
+                  142,
+                  210,
+                  158,
+                  173,
+                  123
+                ],
+                "name": "Office Technology/Office Computer Applications",
+                "top6": "051400",
+                "wages": []
+              }
+            ],
+            "soc_code": "43-5011",
+            "supply": 4.33,
+            "title": "Cargo and Freight Agents"
+          },
+          {
+            "annual_openings": 1180,
+            "annual_wage": 72110,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 1180,
+            "growth_rate": 0.026566101,
+            "programs": [],
+            "soc_code": "43-5061",
+            "supply": 0.0,
+            "title": "Production, Planning, and Expediting Clerks"
+          },
+          {
+            "annual_openings": 1010,
+            "annual_wage": 98350,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 1010,
+            "growth_rate": 0.032229045,
+            "programs": [],
+            "soc_code": "49-1011",
+            "supply": 0.0,
+            "title": "First-Line Supervisors of Mechanics, Installers, and Repairers"
+          },
+          {
+            "annual_openings": 1400,
+            "annual_wage": 70310,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 1400,
+            "growth_rate": 0.013224144,
+            "programs": [],
+            "soc_code": "49-3023",
+            "supply": 0.0,
+            "title": "Automotive Service Technicians and Mechanics"
+          }
+        ],
+        "name": "Ca\u00f1ada College"
+      }
+    ],
+    "enrollment_terms": [
+      "Fall 2021",
+      "Spring 2022",
+      "Fall 2022",
+      "Spring 2023",
+      "Fall 2023",
+      "Spring 2024",
+      "Fall 2024",
+      "Spring 2025",
+      "Fall 2025"
+    ],
+    "executive_summary": "This view examines the regional demand landscape across the 6 advanced transportation & logistics occupations the San Mateo County CCD \u2014 Advanced Transportation & Logistics targets in the Bay Area regional labor market. Regional demand for these occupations totals 5,280 openings per year.",
+    "is_sector_priority": false,
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "Advanced Transportation & Logistics"
+  }
+}

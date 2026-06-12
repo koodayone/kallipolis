@@ -1,0 +1,5053 @@
+{
+  "/employers": {
+    "employers": [
+      {
+        "contact_name": "Aaron Levie",
+        "contact_title": "CEO",
+        "description": "Box is a cloud content management and file sharing service.",
+        "lat": 37.477681,
+        "lng": -122.2363095,
+        "naics4": "5415",
+        "naics_title": "Computer Systems Design and Related Services",
+        "name": "Box",
+        "sector": "Professional Services",
+        "size_class": "500-999 employees",
+        "size_rank": 8,
+        "soc_count": 7,
+        "soc_titles": {
+          "15-1231": "Computer Network Support Specialists",
+          "15-1232": "Computer User Support Specialists",
+          "15-1241": "Computer Network Architects",
+          "15-1244": "Network and Computer Systems Administrators",
+          "15-1254": "Web Developers",
+          "15-1255": "Web and Digital Interface Designers",
+          "27-4011": "Audio and Video Technicians"
+        },
+        "socs": [
+          "15-1232",
+          "15-1244",
+          "15-1241",
+          "15-1231",
+          "15-1254",
+          "15-1255",
+          "27-4011"
+        ],
+        "website": "https://www.box.com/"
+      },
+      {
+        "contact_name": "Michael Hackett",
+        "contact_title": "Vice President",
+        "description": "Logigear provides software testing and quality assurance services.",
+        "lat": 37.5469632,
+        "lng": -122.3120099,
+        "naics4": "5415",
+        "naics_title": "Computer Systems Design and Related Services",
+        "name": "Logigear",
+        "sector": "Professional Services",
+        "size_class": "500-999 employees",
+        "size_rank": 8,
+        "soc_count": 7,
+        "soc_titles": {
+          "15-1231": "Computer Network Support Specialists",
+          "15-1232": "Computer User Support Specialists",
+          "15-1241": "Computer Network Architects",
+          "15-1244": "Network and Computer Systems Administrators",
+          "15-1254": "Web Developers",
+          "15-1255": "Web and Digital Interface Designers",
+          "27-4011": "Audio and Video Technicians"
+        },
+        "socs": [
+          "15-1232",
+          "15-1244",
+          "15-1241",
+          "15-1231",
+          "15-1254",
+          "15-1255",
+          "27-4011"
+        ],
+        "website": "https://www.logigear.com/"
+      },
+      {
+        "contact_name": "Denyce Kehoe",
+        "contact_title": "Vice President",
+        "description": "Simpplr is an AI-powered employee communications platform.",
+        "lat": 37.5193473,
+        "lng": -122.253873,
+        "naics4": "5415",
+        "naics_title": "Computer Systems Design and Related Services",
+        "name": "Simpplr",
+        "sector": "Professional Services",
+        "size_class": "500-999 employees",
+        "size_rank": 8,
+        "soc_count": 7,
+        "soc_titles": {
+          "15-1231": "Computer Network Support Specialists",
+          "15-1232": "Computer User Support Specialists",
+          "15-1241": "Computer Network Architects",
+          "15-1244": "Network and Computer Systems Administrators",
+          "15-1254": "Web Developers",
+          "15-1255": "Web and Digital Interface Designers",
+          "27-4011": "Audio and Video Technicians"
+        },
+        "socs": [
+          "15-1232",
+          "15-1244",
+          "15-1241",
+          "15-1231",
+          "15-1254",
+          "15-1255",
+          "27-4011"
+        ],
+        "website": "https://www.simpplr.com/"
+      },
+      {
+        "contact_name": "Adaire Fox-Martin",
+        "contact_title": "CEO",
+        "description": "Equinix is a global data center and interconnection provider.",
+        "lat": 37.5275451,
+        "lng": -122.2618297,
+        "naics4": "5182",
+        "naics_title": "Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services",
+        "name": "Equinix",
+        "sector": "Information & Media",
+        "size_class": "250-499 employees",
+        "size_rank": 7,
+        "soc_count": 8,
+        "soc_titles": {
+          "15-1231": "Computer Network Support Specialists",
+          "15-1232": "Computer User Support Specialists",
+          "15-1241": "Computer Network Architects",
+          "15-1244": "Network and Computer Systems Administrators",
+          "15-1254": "Web Developers",
+          "15-1255": "Web and Digital Interface Designers",
+          "27-4011": "Audio and Video Technicians",
+          "27-4014": "Sound Engineering Technicians"
+        },
+        "socs": [
+          "15-1232",
+          "15-1244",
+          "15-1241",
+          "15-1231",
+          "15-1255",
+          "15-1254",
+          "27-4011",
+          "27-4014"
+        ],
+        "website": "https://www.equinix.com/"
+      },
+      {
+        "contact_name": "Ian Small",
+        "contact_title": "CEO",
+        "description": "Evernote Corporation develops productivity and note-taking applications.",
+        "lat": 37.4904691,
+        "lng": -122.2241529,
+        "naics4": "5182",
+        "naics_title": "Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services",
+        "name": "Evernote Corporation",
+        "sector": "Information & Media",
+        "size_class": "250-499 employees",
+        "size_rank": 7,
+        "soc_count": 8,
+        "soc_titles": {
+          "15-1231": "Computer Network Support Specialists",
+          "15-1232": "Computer User Support Specialists",
+          "15-1241": "Computer Network Architects",
+          "15-1244": "Network and Computer Systems Administrators",
+          "15-1254": "Web Developers",
+          "15-1255": "Web and Digital Interface Designers",
+          "27-4011": "Audio and Video Technicians",
+          "27-4014": "Sound Engineering Technicians"
+        },
+        "socs": [
+          "15-1232",
+          "15-1244",
+          "15-1241",
+          "15-1231",
+          "15-1255",
+          "15-1254",
+          "27-4011",
+          "27-4014"
+        ],
+        "website": "https://evernote.com/"
+      },
+      {
+        "contact_name": "Aaron Timm",
+        "contact_title": "Vice President",
+        "description": "Clario is a cybersecurity and privacy company.",
+        "lat": 37.565918906106,
+        "lng": -122.284535112677,
+        "naics4": "5415",
+        "naics_title": "Computer Systems Design and Related Services",
+        "name": "Clario",
+        "sector": "Professional Services",
+        "size_class": "250-499 employees",
+        "size_rank": 7,
+        "soc_count": 7,
+        "soc_titles": {
+          "15-1231": "Computer Network Support Specialists",
+          "15-1232": "Computer User Support Specialists",
+          "15-1241": "Computer Network Architects",
+          "15-1244": "Network and Computer Systems Administrators",
+          "15-1254": "Web Developers",
+          "15-1255": "Web and Digital Interface Designers",
+          "27-4011": "Audio and Video Technicians"
+        },
+        "socs": [
+          "15-1232",
+          "15-1244",
+          "15-1241",
+          "15-1231",
+          "15-1254",
+          "15-1255",
+          "27-4011"
+        ],
+        "website": "https://clario.com/"
+      },
+      {
+        "contact_name": "Anant Bhardwaj",
+        "contact_title": "CEO",
+        "description": "Instabase is a platform for building and deploying AI-powered applications.",
+        "lat": 37.4512079,
+        "lng": -122.1869488,
+        "naics4": "5415",
+        "naics_title": "Computer Systems Design and Related Services",
+        "name": "Instabase",
+        "sector": "Professional Services",
+        "size_class": "250-499 employees",
+        "size_rank": 7,
+        "soc_count": 7,
+        "soc_titles": {
+          "15-1231": "Computer Network Support Specialists",
+          "15-1232": "Computer User Support Specialists",
+          "15-1241": "Computer Network Architects",
+          "15-1244": "Network and Computer Systems Administrators",
+          "15-1254": "Web Developers",
+          "15-1255": "Web and Digital Interface Designers",
+          "27-4011": "Audio and Video Technicians"
+        },
+        "socs": [
+          "15-1232",
+          "15-1244",
+          "15-1241",
+          "15-1231",
+          "15-1254",
+          "15-1255",
+          "27-4011"
+        ],
+        "website": "https://www.instabase.com/"
+      },
+      {
+        "contact_name": "David Ward",
+        "contact_title": "General Mgr",
+        "description": "Cinemark Century is a movie theater chain.",
+        "lat": 37.6206209,
+        "lng": -122.4110521,
+        "naics4": "5121",
+        "naics_title": "Motion Picture and Video Industries",
+        "name": "Cinemark Century",
+        "sector": "Information & Media",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 10,
+        "soc_titles": {
+          "15-1231": "Computer Network Support Specialists",
+          "15-1232": "Computer User Support Specialists",
+          "15-1241": "Computer Network Architects",
+          "15-1244": "Network and Computer Systems Administrators",
+          "15-1254": "Web Developers",
+          "15-1255": "Web and Digital Interface Designers",
+          "27-4011": "Audio and Video Technicians",
+          "27-4012": "Broadcast Technicians",
+          "27-4014": "Sound Engineering Technicians",
+          "27-4021": "Photographers"
+        },
+        "socs": [
+          "27-4011",
+          "27-4012",
+          "27-4014",
+          "15-1255",
+          "27-4021",
+          "15-1244",
+          "15-1232",
+          "15-1231",
+          "15-1254",
+          "15-1241"
+        ],
+        "website": "https://www.cinemark.com/theatres/ca-san-bruno/cinemark-century-at-tanforan-and-xd"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "Dark Bears is a technology company.",
+        "lat": 37.5472275,
+        "lng": -122.2790843,
+        "naics4": "5415",
+        "naics_title": "Computer Systems Design and Related Services",
+        "name": "Dark Bears",
+        "sector": "Professional Services",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 7,
+        "soc_titles": {
+          "15-1231": "Computer Network Support Specialists",
+          "15-1232": "Computer User Support Specialists",
+          "15-1241": "Computer Network Architects",
+          "15-1244": "Network and Computer Systems Administrators",
+          "15-1254": "Web Developers",
+          "15-1255": "Web and Digital Interface Designers",
+          "27-4011": "Audio and Video Technicians"
+        },
+        "socs": [
+          "15-1232",
+          "15-1244",
+          "15-1241",
+          "15-1231",
+          "15-1254",
+          "15-1255",
+          "27-4011"
+        ],
+        "website": "https://www.darkbears.com/"
+      },
+      {
+        "contact_name": "Michael Howard",
+        "contact_title": "CEO",
+        "description": "Maria DB Corporation is a database software company.",
+        "lat": 37.496195,
+        "lng": -122.2362998,
+        "naics4": "5415",
+        "naics_title": "Computer Systems Design and Related Services",
+        "name": "Maria DB Corporation",
+        "sector": "Professional Services",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 7,
+        "soc_titles": {
+          "15-1231": "Computer Network Support Specialists",
+          "15-1232": "Computer User Support Specialists",
+          "15-1241": "Computer Network Architects",
+          "15-1244": "Network and Computer Systems Administrators",
+          "15-1254": "Web Developers",
+          "15-1255": "Web and Digital Interface Designers",
+          "27-4011": "Audio and Video Technicians"
+        },
+        "socs": [
+          "15-1232",
+          "15-1244",
+          "15-1241",
+          "15-1231",
+          "15-1254",
+          "15-1255",
+          "27-4011"
+        ],
+        "website": "https://mariadb.com/"
+      },
+      {
+        "contact_name": "James Farrey",
+        "contact_title": "CEO",
+        "description": "Jameco Electronics is a supplier of electronic components.",
+        "lat": 37.5210537,
+        "lng": -122.2637729,
+        "naics4": "3344",
+        "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
+        "name": "Jameco Electronics",
+        "sector": "Manufacturing",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 6,
+        "soc_titles": {
+          "15-1231": "Computer Network Support Specialists",
+          "15-1232": "Computer User Support Specialists",
+          "15-1241": "Computer Network Architects",
+          "15-1244": "Network and Computer Systems Administrators",
+          "15-1254": "Web Developers",
+          "15-1255": "Web and Digital Interface Designers"
+        },
+        "socs": [
+          "15-1244",
+          "15-1232",
+          "15-1241",
+          "15-1255",
+          "15-1231",
+          "15-1254"
+        ],
+        "website": "https://www.jameco.com/"
+      },
+      {
+        "contact_name": "Bing Hong Mah",
+        "contact_title": "President",
+        "description": "Leemah Electronics is a supplier of electronic components.",
+        "lat": 37.6891281,
+        "lng": -122.4172806,
+        "naics4": "3344",
+        "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
+        "name": "Leemah Electronics",
+        "sector": "Manufacturing",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 6,
+        "soc_titles": {
+          "15-1231": "Computer Network Support Specialists",
+          "15-1232": "Computer User Support Specialists",
+          "15-1241": "Computer Network Architects",
+          "15-1244": "Network and Computer Systems Administrators",
+          "15-1254": "Web Developers",
+          "15-1255": "Web and Digital Interface Designers"
+        },
+        "socs": [
+          "15-1244",
+          "15-1232",
+          "15-1241",
+          "15-1255",
+          "15-1231",
+          "15-1254"
+        ],
+        "website": "https://www.leemah.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "Fox Theatre is a historic performing arts venue.",
+        "lat": 37.4868202,
+        "lng": -122.2239498,
+        "naics4": "5121",
+        "naics_title": "Motion Picture and Video Industries",
+        "name": "Fox Theatre",
+        "sector": "Information & Media",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 10,
+        "soc_titles": {
+          "15-1231": "Computer Network Support Specialists",
+          "15-1232": "Computer User Support Specialists",
+          "15-1241": "Computer Network Architects",
+          "15-1244": "Network and Computer Systems Administrators",
+          "15-1254": "Web Developers",
+          "15-1255": "Web and Digital Interface Designers",
+          "27-4011": "Audio and Video Technicians",
+          "27-4012": "Broadcast Technicians",
+          "27-4014": "Sound Engineering Technicians",
+          "27-4021": "Photographers"
+        },
+        "socs": [
+          "27-4011",
+          "27-4012",
+          "27-4014",
+          "15-1255",
+          "27-4021",
+          "15-1244",
+          "15-1232",
+          "15-1231",
+          "15-1254",
+          "15-1241"
+        ],
+        "website": "https://foxrwc.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "Anchorfree is a cybersecurity company.",
+        "lat": 37.5078719,
+        "lng": -122.2087236,
+        "naics4": "5182",
+        "naics_title": "Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services",
+        "name": "Anchorfree",
+        "sector": "Information & Media",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 8,
+        "soc_titles": {
+          "15-1231": "Computer Network Support Specialists",
+          "15-1232": "Computer User Support Specialists",
+          "15-1241": "Computer Network Architects",
+          "15-1244": "Network and Computer Systems Administrators",
+          "15-1254": "Web Developers",
+          "15-1255": "Web and Digital Interface Designers",
+          "27-4011": "Audio and Video Technicians",
+          "27-4014": "Sound Engineering Technicians"
+        },
+        "socs": [
+          "15-1232",
+          "15-1244",
+          "15-1241",
+          "15-1231",
+          "15-1255",
+          "15-1254",
+          "27-4011",
+          "27-4014"
+        ],
+        "website": "https://www.anchorfree.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "Delphix Corporation provides data management solutions.",
+        "lat": 37.480609,
+        "lng": -122.22446,
+        "naics4": "5182",
+        "naics_title": "Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services",
+        "name": "Delphix Corporation",
+        "sector": "Information & Media",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 8,
+        "soc_titles": {
+          "15-1231": "Computer Network Support Specialists",
+          "15-1232": "Computer User Support Specialists",
+          "15-1241": "Computer Network Architects",
+          "15-1244": "Network and Computer Systems Administrators",
+          "15-1254": "Web Developers",
+          "15-1255": "Web and Digital Interface Designers",
+          "27-4011": "Audio and Video Technicians",
+          "27-4014": "Sound Engineering Technicians"
+        },
+        "socs": [
+          "15-1232",
+          "15-1244",
+          "15-1241",
+          "15-1231",
+          "15-1255",
+          "15-1254",
+          "27-4011",
+          "27-4014"
+        ],
+        "website": "https://www.delphix.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "Evmatch is an electric vehicle charging solutions company.",
+        "lat": 37.464221,
+        "lng": -122.2366013,
+        "naics4": "5182",
+        "naics_title": "Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services",
+        "name": "Evmatch",
+        "sector": "Information & Media",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 8,
+        "soc_titles": {
+          "15-1231": "Computer Network Support Specialists",
+          "15-1232": "Computer User Support Specialists",
+          "15-1241": "Computer Network Architects",
+          "15-1244": "Network and Computer Systems Administrators",
+          "15-1254": "Web Developers",
+          "15-1255": "Web and Digital Interface Designers",
+          "27-4011": "Audio and Video Technicians",
+          "27-4014": "Sound Engineering Technicians"
+        },
+        "socs": [
+          "15-1232",
+          "15-1244",
+          "15-1241",
+          "15-1231",
+          "15-1255",
+          "15-1254",
+          "27-4011",
+          "27-4014"
+        ],
+        "website": "https://evmatch.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "Ringcentral is a cloud-based communications and collaboration solutions provider.",
+        "lat": 37.5110254,
+        "lng": -122.3084752,
+        "naics4": "5182",
+        "naics_title": "Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services",
+        "name": "Ringcentral",
+        "sector": "Information & Media",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 8,
+        "soc_titles": {
+          "15-1231": "Computer Network Support Specialists",
+          "15-1232": "Computer User Support Specialists",
+          "15-1241": "Computer Network Architects",
+          "15-1244": "Network and Computer Systems Administrators",
+          "15-1254": "Web Developers",
+          "15-1255": "Web and Digital Interface Designers",
+          "27-4011": "Audio and Video Technicians",
+          "27-4014": "Sound Engineering Technicians"
+        },
+        "socs": [
+          "15-1232",
+          "15-1244",
+          "15-1241",
+          "15-1231",
+          "15-1255",
+          "15-1254",
+          "27-4011",
+          "27-4014"
+        ],
+        "website": "https://www.ringcentral.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "Teradata Aster is a data analytics platform.",
+        "lat": 37.5073876,
+        "lng": -122.248094,
+        "naics4": "5182",
+        "naics_title": "Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services",
+        "name": "Teradata Aster",
+        "sector": "Information & Media",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 8,
+        "soc_titles": {
+          "15-1231": "Computer Network Support Specialists",
+          "15-1232": "Computer User Support Specialists",
+          "15-1241": "Computer Network Architects",
+          "15-1244": "Network and Computer Systems Administrators",
+          "15-1254": "Web Developers",
+          "15-1255": "Web and Digital Interface Designers",
+          "27-4011": "Audio and Video Technicians",
+          "27-4014": "Sound Engineering Technicians"
+        },
+        "socs": [
+          "15-1232",
+          "15-1244",
+          "15-1241",
+          "15-1231",
+          "15-1255",
+          "15-1254",
+          "27-4011",
+          "27-4014"
+        ],
+        "website": "https://www.teradata.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "Actian Corporation provides data management and analytics solutions.",
+        "lat": 37.4899082,
+        "lng": -122.2366189,
+        "naics4": "5415",
+        "naics_title": "Computer Systems Design and Related Services",
+        "name": "Actian Corporation",
+        "sector": "Professional Services",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 7,
+        "soc_titles": {
+          "15-1231": "Computer Network Support Specialists",
+          "15-1232": "Computer User Support Specialists",
+          "15-1241": "Computer Network Architects",
+          "15-1244": "Network and Computer Systems Administrators",
+          "15-1254": "Web Developers",
+          "15-1255": "Web and Digital Interface Designers",
+          "27-4011": "Audio and Video Technicians"
+        },
+        "socs": [
+          "15-1232",
+          "15-1244",
+          "15-1241",
+          "15-1231",
+          "15-1254",
+          "15-1255",
+          "27-4011"
+        ],
+        "website": "https://www.actian.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "Aspen is a technology company.",
+        "lat": 37.5740747,
+        "lng": -122.3346877,
+        "naics4": "5415",
+        "naics_title": "Computer Systems Design and Related Services",
+        "name": "Aspen",
+        "sector": "Professional Services",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 7,
+        "soc_titles": {
+          "15-1231": "Computer Network Support Specialists",
+          "15-1232": "Computer User Support Specialists",
+          "15-1241": "Computer Network Architects",
+          "15-1244": "Network and Computer Systems Administrators",
+          "15-1254": "Web Developers",
+          "15-1255": "Web and Digital Interface Designers",
+          "27-4011": "Audio and Video Technicians"
+        },
+        "socs": [
+          "15-1232",
+          "15-1244",
+          "15-1241",
+          "15-1231",
+          "15-1254",
+          "15-1255",
+          "27-4011"
+        ],
+        "website": "https://www.aspeninc.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "Collaborative Drug Discovery is a software company for pharmaceutical research.",
+        "lat": 37.5927497,
+        "lng": -122.3635651,
+        "naics4": "5415",
+        "naics_title": "Computer Systems Design and Related Services",
+        "name": "Collaborative Drug Discovery",
+        "sector": "Professional Services",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 7,
+        "soc_titles": {
+          "15-1231": "Computer Network Support Specialists",
+          "15-1232": "Computer User Support Specialists",
+          "15-1241": "Computer Network Architects",
+          "15-1244": "Network and Computer Systems Administrators",
+          "15-1254": "Web Developers",
+          "15-1255": "Web and Digital Interface Designers",
+          "27-4011": "Audio and Video Technicians"
+        },
+        "socs": [
+          "15-1232",
+          "15-1244",
+          "15-1241",
+          "15-1231",
+          "15-1254",
+          "15-1255",
+          "27-4011"
+        ],
+        "website": "https://www.collaborativedrug.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "Learneo is an educational technology company.",
+        "lat": 37.5078719,
+        "lng": -122.2087236,
+        "naics4": "5415",
+        "naics_title": "Computer Systems Design and Related Services",
+        "name": "Learneo",
+        "sector": "Professional Services",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 7,
+        "soc_titles": {
+          "15-1231": "Computer Network Support Specialists",
+          "15-1232": "Computer User Support Specialists",
+          "15-1241": "Computer Network Architects",
+          "15-1244": "Network and Computer Systems Administrators",
+          "15-1254": "Web Developers",
+          "15-1255": "Web and Digital Interface Designers",
+          "27-4011": "Audio and Video Technicians"
+        },
+        "socs": [
+          "15-1232",
+          "15-1244",
+          "15-1241",
+          "15-1231",
+          "15-1254",
+          "15-1255",
+          "27-4011"
+        ],
+        "website": "https://www.learneo.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "PIFD Technologies is a technology consulting firm.",
+        "lat": 37.6602989,
+        "lng": -122.4321777,
+        "naics4": "5415",
+        "naics_title": "Computer Systems Design and Related Services",
+        "name": "PIFD Technologies",
+        "sector": "Professional Services",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 7,
+        "soc_titles": {
+          "15-1231": "Computer Network Support Specialists",
+          "15-1232": "Computer User Support Specialists",
+          "15-1241": "Computer Network Architects",
+          "15-1244": "Network and Computer Systems Administrators",
+          "15-1254": "Web Developers",
+          "15-1255": "Web and Digital Interface Designers",
+          "27-4011": "Audio and Video Technicians"
+        },
+        "socs": [
+          "15-1232",
+          "15-1244",
+          "15-1241",
+          "15-1231",
+          "15-1254",
+          "15-1255",
+          "27-4011"
+        ],
+        "website": "https://pifd-tech.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "Secure Data Recovery Services provides data recovery solutions.",
+        "lat": 37.5403434,
+        "lng": -122.3013013,
+        "naics4": "5415",
+        "naics_title": "Computer Systems Design and Related Services",
+        "name": "Secure Data Recovery Services",
+        "sector": "Professional Services",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 7,
+        "soc_titles": {
+          "15-1231": "Computer Network Support Specialists",
+          "15-1232": "Computer User Support Specialists",
+          "15-1241": "Computer Network Architects",
+          "15-1244": "Network and Computer Systems Administrators",
+          "15-1254": "Web Developers",
+          "15-1255": "Web and Digital Interface Designers",
+          "27-4011": "Audio and Video Technicians"
+        },
+        "socs": [
+          "15-1232",
+          "15-1244",
+          "15-1241",
+          "15-1231",
+          "15-1254",
+          "15-1255",
+          "27-4011"
+        ],
+        "website": "https://www.securedatarecovery.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "Storii is a digital storytelling platform.",
+        "lat": 37.5639859,
+        "lng": -122.3220736,
+        "naics4": "5415",
+        "naics_title": "Computer Systems Design and Related Services",
+        "name": "Storii",
+        "sector": "Professional Services",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 7,
+        "soc_titles": {
+          "15-1231": "Computer Network Support Specialists",
+          "15-1232": "Computer User Support Specialists",
+          "15-1241": "Computer Network Architects",
+          "15-1244": "Network and Computer Systems Administrators",
+          "15-1254": "Web Developers",
+          "15-1255": "Web and Digital Interface Designers",
+          "27-4011": "Audio and Video Technicians"
+        },
+        "socs": [
+          "15-1232",
+          "15-1244",
+          "15-1241",
+          "15-1231",
+          "15-1254",
+          "15-1255",
+          "27-4011"
+        ],
+        "website": "https://www.storii.com/"
+      }
+    ],
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "ICT / Digital Media",
+    "shed_counties": [
+      "San Mateo"
+    ],
+    "shown": 25,
+    "total": 32
+  },
+  "/programs": {
+    "latest_award_year": "2024-2025",
+    "matrix": {
+      "cells": [
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "011200"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "011200"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "011200"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "050970"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "050970"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "050970"
+        },
+        {
+          "awards": 34,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "051100"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "051100"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "051100"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "051400"
+        },
+        {
+          "awards": 3,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "051400"
+        },
+        {
+          "awards": 8,
+          "college": "Ca\u00f1ada College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "051400"
+        },
+        {
+          "awards": 2,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "060400"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "060400"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "060400"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "060410"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "060410"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "060410"
+        },
+        {
+          "awards": 19,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "060420"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "060420"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "060420"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "060430"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "060430"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "060430"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "061000"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "061000"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "061000"
+        },
+        {
+          "awards": 32,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "061400"
+        },
+        {
+          "awards": 1,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "061400"
+        },
+        {
+          "awards": 1,
+          "college": "Ca\u00f1ada College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "061400"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "061410"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "061410"
+        },
+        {
+          "awards": 13,
+          "college": "Ca\u00f1ada College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "061410"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "061430"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "061430"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "061430"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "061460"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "061460"
+        },
+        {
+          "awards": 5,
+          "college": "Ca\u00f1ada College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "061460"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "070100"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "070100"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "070100"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "070200"
+        },
+        {
+          "awards": 10,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "070200"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "070200"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": true,
+          "top6": "070210"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "070210"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "070210"
+        },
+        {
+          "awards": 46,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": true,
+          "top6": "070700"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "070700"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "070700"
+        },
+        {
+          "awards": 18,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "070710"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "070710"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "070710"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "070720"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "070720"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "070720"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "070730"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "070730"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": true,
+          "top6": "070730"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "070800"
+        },
+        {
+          "awards": 4,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "070800"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "070800"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "070810"
+        },
+        {
+          "awards": 21,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "070810"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "070810"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "070820"
+        },
+        {
+          "awards": 2,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "070820"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "070820"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "070900"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "070900"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "070900"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "070910"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "070910"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "070910"
+        },
+        {
+          "awards": 2,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "100500"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "100500"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "100500"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "100900"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "100900"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "100900"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "101200"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "101200"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "101200"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "103000"
+        },
+        {
+          "awards": 8,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "103000"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "103000"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "122300"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "122300"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "122300"
+        }
+      ],
+      "colleges": [
+        "College of San Mateo",
+        "Skyline College",
+        "Ca\u00f1ada College"
+      ]
+    },
+    "n_colleges": 3,
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "ICT / Digital Media",
+    "tops": [
+      {
+        "awards_total": 46,
+        "enrollment_total": 0,
+        "n_colleges_offering": 1,
+        "name": "Computer Software Development",
+        "soc_count": 5,
+        "top6": "070700"
+      },
+      {
+        "awards_total": 34,
+        "enrollment_total": 946,
+        "n_colleges_offering": 3,
+        "name": "Digital Media",
+        "soc_count": 3,
+        "top6": "061400"
+      },
+      {
+        "awards_total": 34,
+        "enrollment_total": 232,
+        "n_colleges_offering": 1,
+        "name": "Real Estate",
+        "soc_count": 2,
+        "top6": "051100"
+      },
+      {
+        "awards_total": 21,
+        "enrollment_total": 34,
+        "n_colleges_offering": 1,
+        "name": "Computer Networking",
+        "soc_count": 6,
+        "top6": "070810"
+      },
+      {
+        "awards_total": 19,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Television (including combined TV/Film/Video)",
+        "soc_count": 1,
+        "top6": "060420"
+      },
+      {
+        "awards_total": 18,
+        "enrollment_total": 855,
+        "n_colleges_offering": 3,
+        "name": "Computer Programming",
+        "soc_count": 5,
+        "top6": "070710"
+      },
+      {
+        "awards_total": 13,
+        "enrollment_total": 139,
+        "n_colleges_offering": 1,
+        "name": "Multimedia",
+        "soc_count": 2,
+        "top6": "061410"
+      },
+      {
+        "awards_total": 11,
+        "enrollment_total": 579,
+        "n_colleges_offering": 3,
+        "name": "Office Technology/Office Computer Applications",
+        "soc_count": 2,
+        "top6": "051400"
+      },
+      {
+        "awards_total": 10,
+        "enrollment_total": 38,
+        "n_colleges_offering": 0,
+        "name": "Computer Information Systems",
+        "soc_count": 8,
+        "top6": "070200"
+      },
+      {
+        "awards_total": 8,
+        "enrollment_total": 66,
+        "n_colleges_offering": 1,
+        "name": "Graphic Art and Design",
+        "soc_count": 1,
+        "top6": "103000"
+      },
+      {
+        "awards_total": 5,
+        "enrollment_total": 46,
+        "n_colleges_offering": 1,
+        "name": "Computer Graphics and Digital Imagery",
+        "soc_count": 2,
+        "top6": "061460"
+      },
+      {
+        "awards_total": 4,
+        "enrollment_total": 227,
+        "n_colleges_offering": 1,
+        "name": "Computer Infrastructure and Support",
+        "soc_count": 5,
+        "top6": "070800"
+      },
+      {
+        "awards_total": 2,
+        "enrollment_total": 31,
+        "n_colleges_offering": 1,
+        "name": "Commercial Music",
+        "soc_count": 2,
+        "top6": "100500"
+      },
+      {
+        "awards_total": 2,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Computer Support",
+        "soc_count": 4,
+        "top6": "070820"
+      },
+      {
+        "awards_total": 2,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Radio and Television",
+        "soc_count": 1,
+        "top6": "060400"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 249,
+        "n_colleges_offering": 2,
+        "name": "Applied Photography",
+        "soc_count": 2,
+        "top6": "101200"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 139,
+        "n_colleges_offering": 0,
+        "name": "Information Technology, General",
+        "soc_count": 5,
+        "top6": "070100"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 80,
+        "n_colleges_offering": 2,
+        "name": "Database Design and Administration",
+        "soc_count": 2,
+        "top6": "070720"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 56,
+        "n_colleges_offering": 1,
+        "name": "Website Design and Development",
+        "soc_count": 2,
+        "top6": "061430"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 19,
+        "n_colleges_offering": 1,
+        "name": "Radio",
+        "soc_count": 1,
+        "top6": "060410"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "World Wide Web Administration",
+        "soc_count": 6,
+        "top6": "070900"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 1,
+        "name": "Software Applications",
+        "soc_count": 5,
+        "top6": "070210"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 1,
+        "name": "Computer Systems Analysis",
+        "soc_count": 4,
+        "top6": "070730"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Mass Communications",
+        "soc_count": 2,
+        "top6": "061000"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "E-Commerce (Technology emphasis)",
+        "soc_count": 2,
+        "top6": "070910"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Agriculture Business, Sales and Service",
+        "soc_count": 1,
+        "top6": "011200"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "E-Commerce (Business emphasis)",
+        "soc_count": 1,
+        "top6": "050970"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Broadcast Journalism",
+        "soc_count": 1,
+        "top6": "060430"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Applied Design",
+        "soc_count": 1,
+        "top6": "100900"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Health Information Technology",
+        "soc_count": 1,
+        "top6": "122300"
+      }
+    ]
+  },
+  "landscape": {
+    "aggregate": {
+      "candidate_employers": 808,
+      "combined_awards": 229,
+      "combined_supply_total": 282.33,
+      "gap": 5068,
+      "n_colleges": 3,
+      "n_occupations": 11,
+      "occupations_taught": 11,
+      "regional_demand_total": 5350
+    },
+    "award_years": [
+      "2020-2021",
+      "2021-2022",
+      "2022-2023",
+      "2023-2024",
+      "2024-2025"
+    ],
+    "colleges": [
+      {
+        "cells": [
+          {
+            "annual_openings": 300,
+            "annual_wage": 96480,
+            "awards_recent": 64,
+            "course_count": 16,
+            "enrolled": true,
+            "feeding_awards": 64,
+            "gap": 272,
+            "growth_rate": 0.102735988,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  139,
+                  138,
+                  115,
+                  92,
+                  119,
+                  107,
+                  113,
+                  107,
+                  61
+                ],
+                "name": "Information Technology, General",
+                "top6": "070100",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  38,
+                  33,
+                  33,
+                  30,
+                  30,
+                  31
+                ],
+                "name": "Computer Information Systems",
+                "top6": "070200",
+                "wages": []
+              },
+              {
+                "awards": [
+                  17,
+                  22,
+                  15,
+                  35,
+                  46
+                ],
+                "awards_recent": 46,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Software Development",
+                "top6": "070700",
+                "wages": []
+              },
+              {
+                "awards": [
+                  12,
+                  10,
+                  8,
+                  7,
+                  18
+                ],
+                "awards_recent": 18,
+                "enrollment": [
+                  265,
+                  383,
+                  363,
+                  370,
+                  512,
+                  456,
+                  472,
+                  427,
+                  365
+                ],
+                "name": "Computer Programming",
+                "top6": "070710",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  20,
+                  36,
+                  null,
+                  50,
+                  37,
+                  65,
+                  31,
+                  48,
+                  27
+                ],
+                "name": "Database Design and Administration",
+                "top6": "070720",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  16,
+                  null,
+                  10
+                ],
+                "name": "Computer Infrastructure and Support",
+                "top6": "070800",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  18,
+                  24,
+                  17,
+                  22,
+                  24,
+                  33,
+                  34,
+                  24,
+                  25
+                ],
+                "name": "Computer Networking",
+                "top6": "070810",
+                "wages": []
+              }
+            ],
+            "soc_code": "15-1231",
+            "supply": 28.34,
+            "title": "Computer Network Support Specialists"
+          },
+          {
+            "annual_openings": 1570,
+            "annual_wage": 82240,
+            "awards_recent": 0,
+            "course_count": 1,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 1570,
+            "growth_rate": 0.09335463,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  38,
+                  33,
+                  33,
+                  30,
+                  30,
+                  31
+                ],
+                "name": "Computer Information Systems",
+                "top6": "070200",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  20,
+                  36,
+                  null,
+                  50,
+                  37,
+                  65,
+                  31,
+                  48,
+                  27
+                ],
+                "name": "Database Design and Administration",
+                "top6": "070720",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  16,
+                  null,
+                  10
+                ],
+                "name": "Computer Infrastructure and Support",
+                "top6": "070800",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  18,
+                  24,
+                  17,
+                  22,
+                  24,
+                  33,
+                  34,
+                  24,
+                  25
+                ],
+                "name": "Computer Networking",
+                "top6": "070810",
+                "wages": []
+              }
+            ],
+            "soc_code": "15-1232",
+            "supply": 0.0,
+            "title": "Computer User Support Specialists"
+          },
+          {
+            "annual_openings": 650,
+            "annual_wage": 160890,
+            "awards_recent": 64,
+            "course_count": 17,
+            "enrolled": true,
+            "feeding_awards": 64,
+            "gap": 620,
+            "growth_rate": 0.074959085,
+            "programs": [
+              {
+                "awards": [
+                  2,
+                  3,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  111,
+                  90,
+                  97,
+                  105,
+                  108,
+                  121,
+                  122,
+                  128,
+                  132
+                ],
+                "name": "Office Technology/Office Computer Applications",
+                "top6": "051400",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  139,
+                  138,
+                  115,
+                  92,
+                  119,
+                  107,
+                  113,
+                  107,
+                  61
+                ],
+                "name": "Information Technology, General",
+                "top6": "070100",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  38,
+                  33,
+                  33,
+                  30,
+                  30,
+                  31
+                ],
+                "name": "Computer Information Systems",
+                "top6": "070200",
+                "wages": []
+              },
+              {
+                "awards": [
+                  17,
+                  22,
+                  15,
+                  35,
+                  46
+                ],
+                "awards_recent": 46,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Software Development",
+                "top6": "070700",
+                "wages": []
+              },
+              {
+                "awards": [
+                  12,
+                  10,
+                  8,
+                  7,
+                  18
+                ],
+                "awards_recent": 18,
+                "enrollment": [
+                  265,
+                  383,
+                  363,
+                  370,
+                  512,
+                  456,
+                  472,
+                  427,
+                  365
+                ],
+                "name": "Computer Programming",
+                "top6": "070710",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  16,
+                  null,
+                  10
+                ],
+                "name": "Computer Infrastructure and Support",
+                "top6": "070800",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  18,
+                  24,
+                  17,
+                  22,
+                  24,
+                  33,
+                  34,
+                  24,
+                  25
+                ],
+                "name": "Computer Networking",
+                "top6": "070810",
+                "wages": []
+              }
+            ],
+            "soc_code": "15-1241",
+            "supply": 30.17,
+            "title": "Computer Network Architects"
+          },
+          {
+            "annual_openings": 590,
+            "annual_wage": 124990,
+            "awards_recent": 64,
+            "course_count": 16,
+            "enrolled": true,
+            "feeding_awards": 64,
+            "gap": 562,
+            "growth_rate": 0.034603618,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  139,
+                  138,
+                  115,
+                  92,
+                  119,
+                  107,
+                  113,
+                  107,
+                  61
+                ],
+                "name": "Information Technology, General",
+                "top6": "070100",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  38,
+                  33,
+                  33,
+                  30,
+                  30,
+                  31
+                ],
+                "name": "Computer Information Systems",
+                "top6": "070200",
+                "wages": []
+              },
+              {
+                "awards": [
+                  17,
+                  22,
+                  15,
+                  35,
+                  46
+                ],
+                "awards_recent": 46,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Software Development",
+                "top6": "070700",
+                "wages": []
+              },
+              {
+                "awards": [
+                  12,
+                  10,
+                  8,
+                  7,
+                  18
+                ],
+                "awards_recent": 18,
+                "enrollment": [
+                  265,
+                  383,
+                  363,
+                  370,
+                  512,
+                  456,
+                  472,
+                  427,
+                  365
+                ],
+                "name": "Computer Programming",
+                "top6": "070710",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  16,
+                  null,
+                  10
+                ],
+                "name": "Computer Infrastructure and Support",
+                "top6": "070800",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  18,
+                  24,
+                  17,
+                  22,
+                  24,
+                  33,
+                  34,
+                  24,
+                  25
+                ],
+                "name": "Computer Networking",
+                "top6": "070810",
+                "wages": []
+              }
+            ],
+            "soc_code": "15-1244",
+            "supply": 28.34,
+            "title": "Network and Computer Systems Administrators"
+          },
+          {
+            "annual_openings": 360,
+            "annual_wage": 146640,
+            "awards_recent": 96,
+            "course_count": 35,
+            "enrolled": true,
+            "feeding_awards": 96,
+            "gap": 311,
+            "growth_rate": 0.033846548,
+            "programs": [
+              {
+                "awards": [
+                  27,
+                  19,
+                  15,
+                  20,
+                  32
+                ],
+                "awards_recent": 32,
+                "enrollment": [
+                  374,
+                  434,
+                  383,
+                  406,
+                  472,
+                  568,
+                  555,
+                  524,
+                  580
+                ],
+                "name": "Digital Media",
+                "top6": "061400",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  139,
+                  138,
+                  115,
+                  92,
+                  119,
+                  107,
+                  113,
+                  107,
+                  61
+                ],
+                "name": "Information Technology, General",
+                "top6": "070100",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  38,
+                  33,
+                  33,
+                  30,
+                  30,
+                  31
+                ],
+                "name": "Computer Information Systems",
+                "top6": "070200",
+                "wages": []
+              },
+              {
+                "awards": [
+                  17,
+                  22,
+                  15,
+                  35,
+                  46
+                ],
+                "awards_recent": 46,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Software Development",
+                "top6": "070700",
+                "wages": []
+              },
+              {
+                "awards": [
+                  12,
+                  10,
+                  8,
+                  7,
+                  18
+                ],
+                "awards_recent": 18,
+                "enrollment": [
+                  265,
+                  383,
+                  363,
+                  370,
+                  512,
+                  456,
+                  472,
+                  427,
+                  365
+                ],
+                "name": "Computer Programming",
+                "top6": "070710",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  18,
+                  24,
+                  17,
+                  22,
+                  24,
+                  33,
+                  34,
+                  24,
+                  25
+                ],
+                "name": "Computer Networking",
+                "top6": "070810",
+                "wages": []
+              }
+            ],
+            "soc_code": "15-1254",
+            "supply": 48.67,
+            "title": "Web Developers"
+          },
+          {
+            "annual_openings": 950,
+            "annual_wage": 159900,
+            "awards_recent": 96,
+            "course_count": 35,
+            "enrolled": true,
+            "feeding_awards": 96,
+            "gap": 901,
+            "growth_rate": 0.022862074,
+            "programs": [
+              {
+                "awards": [
+                  27,
+                  19,
+                  15,
+                  20,
+                  32
+                ],
+                "awards_recent": 32,
+                "enrollment": [
+                  374,
+                  434,
+                  383,
+                  406,
+                  472,
+                  568,
+                  555,
+                  524,
+                  580
+                ],
+                "name": "Digital Media",
+                "top6": "061400",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  139,
+                  138,
+                  115,
+                  92,
+                  119,
+                  107,
+                  113,
+                  107,
+                  61
+                ],
+                "name": "Information Technology, General",
+                "top6": "070100",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  38,
+                  33,
+                  33,
+                  30,
+                  30,
+                  31
+                ],
+                "name": "Computer Information Systems",
+                "top6": "070200",
+                "wages": []
+              },
+              {
+                "awards": [
+                  17,
+                  22,
+                  15,
+                  35,
+                  46
+                ],
+                "awards_recent": 46,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Software Development",
+                "top6": "070700",
+                "wages": []
+              },
+              {
+                "awards": [
+                  12,
+                  10,
+                  8,
+                  7,
+                  18
+                ],
+                "awards_recent": 18,
+                "enrollment": [
+                  265,
+                  383,
+                  363,
+                  370,
+                  512,
+                  456,
+                  472,
+                  427,
+                  365
+                ],
+                "name": "Computer Programming",
+                "top6": "070710",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  16,
+                  null,
+                  10
+                ],
+                "name": "Computer Infrastructure and Support",
+                "top6": "070800",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  18,
+                  24,
+                  17,
+                  22,
+                  24,
+                  33,
+                  34,
+                  24,
+                  25
+                ],
+                "name": "Computer Networking",
+                "top6": "070810",
+                "wages": []
+              }
+            ],
+            "soc_code": "15-1255",
+            "supply": 48.67,
+            "title": "Web and Digital Interface Designers"
+          },
+          {
+            "annual_openings": 280,
+            "annual_wage": 70330,
+            "awards_recent": 2,
+            "course_count": 3,
+            "enrolled": true,
+            "feeding_awards": 2,
+            "gap": 280,
+            "growth_rate": 0.03656439,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  null,
+                  null,
+                  13,
+                  null,
+                  7,
+                  null,
+                  15,
+                  2,
+                  22
+                ],
+                "name": "Commercial Music",
+                "top6": "100500",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  16,
+                  28,
+                  23,
+                  29,
+                  34,
+                  46,
+                  40,
+                  34,
+                  14
+                ],
+                "name": "Applied Photography",
+                "top6": "101200",
+                "wages": []
+              }
+            ],
+            "soc_code": "27-4011",
+            "supply": 0.0,
+            "title": "Audio and Video Technicians"
+          },
+          {
+            "annual_openings": 70,
+            "annual_wage": 75960,
+            "awards_recent": 55,
+            "course_count": 5,
+            "enrolled": true,
+            "feeding_awards": 55,
+            "gap": 56,
+            "growth_rate": 0.010897586,
+            "programs": [
+              {
+                "awards": [
+                  21,
+                  10,
+                  11,
+                  28,
+                  34
+                ],
+                "awards_recent": 34,
+                "enrollment": [
+                  83,
+                  89,
+                  97,
+                  144,
+                  99,
+                  121,
+                  99,
+                  97,
+                  92
+                ],
+                "name": "Real Estate",
+                "top6": "051100",
+                "wages": []
+              },
+              {
+                "awards": [
+                  2,
+                  3,
+                  1,
+                  0,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Radio and Television",
+                "top6": "060400",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  8,
+                  null,
+                  11,
+                  13,
+                  19,
+                  19,
+                  13,
+                  18,
+                  15
+                ],
+                "name": "Radio",
+                "top6": "060410",
+                "wages": []
+              },
+              {
+                "awards": [
+                  17,
+                  18,
+                  18,
+                  21,
+                  19
+                ],
+                "awards_recent": 19,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Television (including combined TV/Film/Video)",
+                "top6": "060420",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  38,
+                  33,
+                  33,
+                  30,
+                  30,
+                  31
+                ],
+                "name": "Computer Information Systems",
+                "top6": "070200",
+                "wages": []
+              }
+            ],
+            "soc_code": "27-4012",
+            "supply": 14.0,
+            "title": "Broadcast Technicians"
+          },
+          {
+            "annual_openings": 80,
+            "annual_wage": 87420,
+            "awards_recent": 36,
+            "course_count": 5,
+            "enrolled": true,
+            "feeding_awards": 36,
+            "gap": 66,
+            "growth_rate": 0.070957826,
+            "programs": [
+              {
+                "awards": [
+                  21,
+                  10,
+                  11,
+                  28,
+                  34
+                ],
+                "awards_recent": 34,
+                "enrollment": [
+                  83,
+                  89,
+                  97,
+                  144,
+                  99,
+                  121,
+                  99,
+                  97,
+                  92
+                ],
+                "name": "Real Estate",
+                "top6": "051100",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  38,
+                  33,
+                  33,
+                  30,
+                  30,
+                  31
+                ],
+                "name": "Computer Information Systems",
+                "top6": "070200",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  null,
+                  null,
+                  13,
+                  null,
+                  7,
+                  null,
+                  15,
+                  2,
+                  22
+                ],
+                "name": "Commercial Music",
+                "top6": "100500",
+                "wages": []
+              }
+            ],
+            "soc_code": "27-4014",
+            "supply": 14.0,
+            "title": "Sound Engineering Technicians"
+          },
+          {
+            "annual_openings": 420,
+            "annual_wage": 61230,
+            "awards_recent": 32,
+            "course_count": 20,
+            "enrolled": true,
+            "feeding_awards": 32,
+            "gap": 400,
+            "growth_rate": -0.032097953,
+            "programs": [
+              {
+                "awards": [
+                  27,
+                  19,
+                  15,
+                  20,
+                  32
+                ],
+                "awards_recent": 32,
+                "enrollment": [
+                  374,
+                  434,
+                  383,
+                  406,
+                  472,
+                  568,
+                  555,
+                  524,
+                  580
+                ],
+                "name": "Digital Media",
+                "top6": "061400",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  16,
+                  28,
+                  23,
+                  29,
+                  34,
+                  46,
+                  40,
+                  34,
+                  14
+                ],
+                "name": "Applied Photography",
+                "top6": "101200",
+                "wages": []
+              }
+            ],
+            "soc_code": "27-4021",
+            "supply": 20.33,
+            "title": "Photographers"
+          },
+          {
+            "annual_openings": 80,
+            "annual_wage": 57260,
+            "awards_recent": 0,
+            "course_count": 1,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 78,
+            "growth_rate": -0.15743873,
+            "programs": [
+              {
+                "awards": [
+                  2,
+                  3,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  111,
+                  90,
+                  97,
+                  105,
+                  108,
+                  121,
+                  122,
+                  128,
+                  132
+                ],
+                "name": "Office Technology/Office Computer Applications",
+                "top6": "051400",
+                "wages": []
+              }
+            ],
+            "soc_code": "43-9022",
+            "supply": 1.83,
+            "title": "Word Processors and Typists"
+          }
+        ],
+        "name": "College of San Mateo"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 300,
+            "annual_wage": 96480,
+            "awards_recent": 37,
+            "course_count": 4,
+            "enrolled": true,
+            "feeding_awards": 37,
+            "gap": 300,
+            "growth_rate": 0.102735988,
+            "programs": [
+              {
+                "awards": [
+                  16,
+                  11,
+                  6,
+                  6,
+                  10
+                ],
+                "awards_recent": 10,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Information Systems",
+                "top6": "070200",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  71,
+                  66,
+                  92,
+                  80,
+                  95,
+                  81,
+                  177,
+                  148,
+                  127
+                ],
+                "name": "Computer Programming",
+                "top6": "070710",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  15,
+                  null,
+                  14,
+                  null
+                ],
+                "name": "Database Design and Administration",
+                "top6": "070720",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  4
+                ],
+                "awards_recent": 4,
+                "enrollment": [
+                  182,
+                  126,
+                  122,
+                  160,
+                  136,
+                  203,
+                  211,
+                  211,
+                  195
+                ],
+                "name": "Computer Infrastructure and Support",
+                "top6": "070800",
+                "wages": []
+              },
+              {
+                "awards": [
+                  11,
+                  13,
+                  15,
+                  16,
+                  21
+                ],
+                "awards_recent": 21,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Networking",
+                "top6": "070810",
+                "wages": []
+              },
+              {
+                "awards": [
+                  1,
+                  4,
+                  4,
+                  7,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Support",
+                "top6": "070820",
+                "wages": []
+              }
+            ],
+            "soc_code": "15-1231",
+            "supply": 0.0,
+            "title": "Computer Network Support Specialists"
+          },
+          {
+            "annual_openings": 1570,
+            "annual_wage": 82240,
+            "awards_recent": 37,
+            "course_count": 1,
+            "enrolled": true,
+            "feeding_awards": 37,
+            "gap": 1570,
+            "growth_rate": 0.09335463,
+            "programs": [
+              {
+                "awards": [
+                  16,
+                  11,
+                  6,
+                  6,
+                  10
+                ],
+                "awards_recent": 10,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Information Systems",
+                "top6": "070200",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  15,
+                  null,
+                  14,
+                  null
+                ],
+                "name": "Database Design and Administration",
+                "top6": "070720",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  4
+                ],
+                "awards_recent": 4,
+                "enrollment": [
+                  182,
+                  126,
+                  122,
+                  160,
+                  136,
+                  203,
+                  211,
+                  211,
+                  195
+                ],
+                "name": "Computer Infrastructure and Support",
+                "top6": "070800",
+                "wages": []
+              },
+              {
+                "awards": [
+                  11,
+                  13,
+                  15,
+                  16,
+                  21
+                ],
+                "awards_recent": 21,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Networking",
+                "top6": "070810",
+                "wages": []
+              },
+              {
+                "awards": [
+                  1,
+                  4,
+                  4,
+                  7,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Support",
+                "top6": "070820",
+                "wages": []
+              }
+            ],
+            "soc_code": "15-1232",
+            "supply": 0.0,
+            "title": "Computer User Support Specialists"
+          },
+          {
+            "annual_openings": 650,
+            "annual_wage": 160890,
+            "awards_recent": 40,
+            "course_count": 6,
+            "enrolled": true,
+            "feeding_awards": 40,
+            "gap": 650,
+            "growth_rate": 0.074959085,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  3
+                ],
+                "awards_recent": 3,
+                "enrollment": [
+                  170,
+                  197,
+                  156,
+                  249,
+                  172,
+                  222,
+                  175,
+                  221,
+                  168
+                ],
+                "name": "Office Technology/Office Computer Applications",
+                "top6": "051400",
+                "wages": []
+              },
+              {
+                "awards": [
+                  16,
+                  11,
+                  6,
+                  6,
+                  10
+                ],
+                "awards_recent": 10,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Information Systems",
+                "top6": "070200",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  71,
+                  66,
+                  92,
+                  80,
+                  95,
+                  81,
+                  177,
+                  148,
+                  127
+                ],
+                "name": "Computer Programming",
+                "top6": "070710",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  4
+                ],
+                "awards_recent": 4,
+                "enrollment": [
+                  182,
+                  126,
+                  122,
+                  160,
+                  136,
+                  203,
+                  211,
+                  211,
+                  195
+                ],
+                "name": "Computer Infrastructure and Support",
+                "top6": "070800",
+                "wages": []
+              },
+              {
+                "awards": [
+                  11,
+                  13,
+                  15,
+                  16,
+                  21
+                ],
+                "awards_recent": 21,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Networking",
+                "top6": "070810",
+                "wages": []
+              },
+              {
+                "awards": [
+                  1,
+                  4,
+                  4,
+                  7,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Support",
+                "top6": "070820",
+                "wages": []
+              }
+            ],
+            "soc_code": "15-1241",
+            "supply": 0.0,
+            "title": "Computer Network Architects"
+          },
+          {
+            "annual_openings": 590,
+            "annual_wage": 124990,
+            "awards_recent": 37,
+            "course_count": 3,
+            "enrolled": true,
+            "feeding_awards": 37,
+            "gap": 590,
+            "growth_rate": 0.034603618,
+            "programs": [
+              {
+                "awards": [
+                  16,
+                  11,
+                  6,
+                  6,
+                  10
+                ],
+                "awards_recent": 10,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Information Systems",
+                "top6": "070200",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  71,
+                  66,
+                  92,
+                  80,
+                  95,
+                  81,
+                  177,
+                  148,
+                  127
+                ],
+                "name": "Computer Programming",
+                "top6": "070710",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  4
+                ],
+                "awards_recent": 4,
+                "enrollment": [
+                  182,
+                  126,
+                  122,
+                  160,
+                  136,
+                  203,
+                  211,
+                  211,
+                  195
+                ],
+                "name": "Computer Infrastructure and Support",
+                "top6": "070800",
+                "wages": []
+              },
+              {
+                "awards": [
+                  11,
+                  13,
+                  15,
+                  16,
+                  21
+                ],
+                "awards_recent": 21,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Networking",
+                "top6": "070810",
+                "wages": []
+              },
+              {
+                "awards": [
+                  1,
+                  4,
+                  4,
+                  7,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Support",
+                "top6": "070820",
+                "wages": []
+              }
+            ],
+            "soc_code": "15-1244",
+            "supply": 0.0,
+            "title": "Network and Computer Systems Administrators"
+          },
+          {
+            "annual_openings": 360,
+            "annual_wage": 146640,
+            "awards_recent": 32,
+            "course_count": 5,
+            "enrolled": true,
+            "feeding_awards": 32,
+            "gap": 360,
+            "growth_rate": 0.033846548,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  88,
+                  108,
+                  111,
+                  104,
+                  138,
+                  230,
+                  154,
+                  141,
+                  322
+                ],
+                "name": "Digital Media",
+                "top6": "061400",
+                "wages": []
+              },
+              {
+                "awards": [
+                  16,
+                  11,
+                  6,
+                  6,
+                  10
+                ],
+                "awards_recent": 10,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Information Systems",
+                "top6": "070200",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  71,
+                  66,
+                  92,
+                  80,
+                  95,
+                  81,
+                  177,
+                  148,
+                  127
+                ],
+                "name": "Computer Programming",
+                "top6": "070710",
+                "wages": []
+              },
+              {
+                "awards": [
+                  11,
+                  13,
+                  15,
+                  16,
+                  21
+                ],
+                "awards_recent": 21,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Networking",
+                "top6": "070810",
+                "wages": []
+              }
+            ],
+            "soc_code": "15-1254",
+            "supply": 0.0,
+            "title": "Web Developers"
+          },
+          {
+            "annual_openings": 950,
+            "annual_wage": 159900,
+            "awards_recent": 44,
+            "course_count": 11,
+            "enrolled": true,
+            "feeding_awards": 44,
+            "gap": 950,
+            "growth_rate": 0.022862074,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  88,
+                  108,
+                  111,
+                  104,
+                  138,
+                  230,
+                  154,
+                  141,
+                  322
+                ],
+                "name": "Digital Media",
+                "top6": "061400",
+                "wages": []
+              },
+              {
+                "awards": [
+                  16,
+                  11,
+                  6,
+                  6,
+                  10
+                ],
+                "awards_recent": 10,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Information Systems",
+                "top6": "070200",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  71,
+                  66,
+                  92,
+                  80,
+                  95,
+                  81,
+                  177,
+                  148,
+                  127
+                ],
+                "name": "Computer Programming",
+                "top6": "070710",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  4
+                ],
+                "awards_recent": 4,
+                "enrollment": [
+                  182,
+                  126,
+                  122,
+                  160,
+                  136,
+                  203,
+                  211,
+                  211,
+                  195
+                ],
+                "name": "Computer Infrastructure and Support",
+                "top6": "070800",
+                "wages": []
+              },
+              {
+                "awards": [
+                  11,
+                  13,
+                  15,
+                  16,
+                  21
+                ],
+                "awards_recent": 21,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Networking",
+                "top6": "070810",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  8
+                ],
+                "awards_recent": 8,
+                "enrollment": [
+                  7,
+                  42,
+                  19,
+                  66,
+                  57,
+                  22,
+                  43,
+                  12,
+                  null
+                ],
+                "name": "Graphic Art and Design",
+                "top6": "103000",
+                "wages": []
+              }
+            ],
+            "soc_code": "15-1255",
+            "supply": 0.0,
+            "title": "Web and Digital Interface Designers"
+          },
+          {
+            "annual_openings": 280,
+            "annual_wage": 70330,
+            "awards_recent": 0,
+            "course_count": 3,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 280,
+            "growth_rate": 0.03656439,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  5,
+                  10,
+                  8,
+                  10,
+                  9
+                ],
+                "name": "Commercial Music",
+                "top6": "100500",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  188,
+                  110,
+                  226,
+                  44,
+                  138,
+                  87,
+                  115,
+                  26,
+                  22
+                ],
+                "name": "Applied Photography",
+                "top6": "101200",
+                "wages": []
+              }
+            ],
+            "soc_code": "27-4011",
+            "supply": 0.0,
+            "title": "Audio and Video Technicians"
+          },
+          {
+            "annual_openings": 70,
+            "annual_wage": 75960,
+            "awards_recent": 10,
+            "course_count": 0,
+            "enrolled": true,
+            "feeding_awards": 10,
+            "gap": 70,
+            "growth_rate": 0.010897586,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  97,
+                  43,
+                  114,
+                  88,
+                  88,
+                  49,
+                  110,
+                  71,
+                  97
+                ],
+                "name": "Real Estate",
+                "top6": "051100",
+                "wages": []
+              },
+              {
+                "awards": [
+                  16,
+                  11,
+                  6,
+                  6,
+                  10
+                ],
+                "awards_recent": 10,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Information Systems",
+                "top6": "070200",
+                "wages": []
+              }
+            ],
+            "soc_code": "27-4012",
+            "supply": 0.0,
+            "title": "Broadcast Technicians"
+          },
+          {
+            "annual_openings": 80,
+            "annual_wage": 87420,
+            "awards_recent": 10,
+            "course_count": 0,
+            "enrolled": true,
+            "feeding_awards": 10,
+            "gap": 80,
+            "growth_rate": 0.070957826,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  97,
+                  43,
+                  114,
+                  88,
+                  88,
+                  49,
+                  110,
+                  71,
+                  97
+                ],
+                "name": "Real Estate",
+                "top6": "051100",
+                "wages": []
+              },
+              {
+                "awards": [
+                  16,
+                  11,
+                  6,
+                  6,
+                  10
+                ],
+                "awards_recent": 10,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Information Systems",
+                "top6": "070200",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  5,
+                  10,
+                  8,
+                  10,
+                  9
+                ],
+                "name": "Commercial Music",
+                "top6": "100500",
+                "wages": []
+              }
+            ],
+            "soc_code": "27-4014",
+            "supply": 0.0,
+            "title": "Sound Engineering Technicians"
+          },
+          {
+            "annual_openings": 420,
+            "annual_wage": 61230,
+            "awards_recent": 1,
+            "course_count": 5,
+            "enrolled": true,
+            "feeding_awards": 1,
+            "gap": 420,
+            "growth_rate": -0.032097953,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  88,
+                  108,
+                  111,
+                  104,
+                  138,
+                  230,
+                  154,
+                  141,
+                  322
+                ],
+                "name": "Digital Media",
+                "top6": "061400",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  188,
+                  110,
+                  226,
+                  44,
+                  138,
+                  87,
+                  115,
+                  26,
+                  22
+                ],
+                "name": "Applied Photography",
+                "top6": "101200",
+                "wages": []
+              }
+            ],
+            "soc_code": "27-4021",
+            "supply": 0.0,
+            "title": "Photographers"
+          },
+          {
+            "annual_openings": 80,
+            "annual_wage": 57260,
+            "awards_recent": 3,
+            "course_count": 3,
+            "enrolled": true,
+            "feeding_awards": 3,
+            "gap": 80,
+            "growth_rate": -0.15743873,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  3
+                ],
+                "awards_recent": 3,
+                "enrollment": [
+                  170,
+                  197,
+                  156,
+                  249,
+                  172,
+                  222,
+                  175,
+                  221,
+                  168
+                ],
+                "name": "Office Technology/Office Computer Applications",
+                "top6": "051400",
+                "wages": []
+              }
+            ],
+            "soc_code": "43-9022",
+            "supply": 0.0,
+            "title": "Word Processors and Typists"
+          }
+        ],
+        "name": "Skyline College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 300,
+            "annual_wage": 96480,
+            "awards_recent": 0,
+            "course_count": 13,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 300,
+            "growth_rate": 0.102735988,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  139,
+                  178,
+                  155,
+                  210,
+                  183,
+                  206,
+                  206,
+                  191,
+                  186
+                ],
+                "name": "Computer Programming",
+                "top6": "070710",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  2,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Database Design and Administration",
+                "top6": "070720",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  3,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Infrastructure and Support",
+                "top6": "070800",
+                "wages": []
+              }
+            ],
+            "soc_code": "15-1231",
+            "supply": 0.0,
+            "title": "Computer Network Support Specialists"
+          },
+          {
+            "annual_openings": 1570,
+            "annual_wage": 82240,
+            "awards_recent": 0,
+            "course_count": 3,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 1570,
+            "growth_rate": 0.09335463,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  2,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Database Design and Administration",
+                "top6": "070720",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  3,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Infrastructure and Support",
+                "top6": "070800",
+                "wages": []
+              }
+            ],
+            "soc_code": "15-1232",
+            "supply": 0.0,
+            "title": "Computer User Support Specialists"
+          },
+          {
+            "annual_openings": 650,
+            "annual_wage": 160890,
+            "awards_recent": 8,
+            "course_count": 23,
+            "enrolled": true,
+            "feeding_awards": 8,
+            "gap": 646,
+            "growth_rate": 0.074959085,
+            "programs": [
+              {
+                "awards": [
+                  3,
+                  6,
+                  2,
+                  7,
+                  8
+                ],
+                "awards_recent": 8,
+                "enrollment": [
+                  78,
+                  231,
+                  171,
+                  225,
+                  142,
+                  210,
+                  158,
+                  173,
+                  123
+                ],
+                "name": "Office Technology/Office Computer Applications",
+                "top6": "051400",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  139,
+                  178,
+                  155,
+                  210,
+                  183,
+                  206,
+                  206,
+                  191,
+                  186
+                ],
+                "name": "Computer Programming",
+                "top6": "070710",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  3,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Infrastructure and Support",
+                "top6": "070800",
+                "wages": []
+              }
+            ],
+            "soc_code": "15-1241",
+            "supply": 4.33,
+            "title": "Computer Network Architects"
+          },
+          {
+            "annual_openings": 590,
+            "annual_wage": 124990,
+            "awards_recent": 0,
+            "course_count": 12,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 590,
+            "growth_rate": 0.034603618,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  139,
+                  178,
+                  155,
+                  210,
+                  183,
+                  206,
+                  206,
+                  191,
+                  186
+                ],
+                "name": "Computer Programming",
+                "top6": "070710",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  3,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Infrastructure and Support",
+                "top6": "070800",
+                "wages": []
+              }
+            ],
+            "soc_code": "15-1244",
+            "supply": 0.0,
+            "title": "Network and Computer Systems Administrators"
+          },
+          {
+            "annual_openings": 360,
+            "annual_wage": 146640,
+            "awards_recent": 1,
+            "course_count": 15,
+            "enrolled": true,
+            "feeding_awards": 1,
+            "gap": 358,
+            "growth_rate": 0.033846548,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  2,
+                  3,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  25,
+                  null,
+                  20,
+                  null,
+                  26,
+                  null,
+                  24,
+                  null,
+                  44
+                ],
+                "name": "Digital Media",
+                "top6": "061400",
+                "wages": []
+              },
+              {
+                "awards": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  11,
+                  35,
+                  24,
+                  26,
+                  11,
+                  56,
+                  35,
+                  19,
+                  11
+                ],
+                "name": "Website Design and Development",
+                "top6": "061430",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  139,
+                  178,
+                  155,
+                  210,
+                  183,
+                  206,
+                  206,
+                  191,
+                  186
+                ],
+                "name": "Computer Programming",
+                "top6": "070710",
+                "wages": []
+              }
+            ],
+            "soc_code": "15-1254",
+            "supply": 2.33,
+            "title": "Web Developers"
+          },
+          {
+            "annual_openings": 950,
+            "annual_wage": 159900,
+            "awards_recent": 19,
+            "course_count": 29,
+            "enrolled": true,
+            "feeding_awards": 19,
+            "gap": 931,
+            "growth_rate": 0.022862074,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  2,
+                  3,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  25,
+                  null,
+                  20,
+                  null,
+                  26,
+                  null,
+                  24,
+                  null,
+                  44
+                ],
+                "name": "Digital Media",
+                "top6": "061400",
+                "wages": []
+              },
+              {
+                "awards": [
+                  14,
+                  13,
+                  18,
+                  17,
+                  13
+                ],
+                "awards_recent": 13,
+                "enrollment": [
+                  112,
+                  104,
+                  139,
+                  97,
+                  128,
+                  104,
+                  137,
+                  104,
+                  135
+                ],
+                "name": "Multimedia",
+                "top6": "061410",
+                "wages": []
+              },
+              {
+                "awards": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  11,
+                  35,
+                  24,
+                  26,
+                  11,
+                  56,
+                  35,
+                  19,
+                  11
+                ],
+                "name": "Website Design and Development",
+                "top6": "061430",
+                "wages": []
+              },
+              {
+                "awards": [
+                  2,
+                  2,
+                  0,
+                  7,
+                  5
+                ],
+                "awards_recent": 5,
+                "enrollment": [
+                  30,
+                  46,
+                  44,
+                  36,
+                  29,
+                  30,
+                  33,
+                  20,
+                  25
+                ],
+                "name": "Computer Graphics and Digital Imagery",
+                "top6": "061460",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  139,
+                  178,
+                  155,
+                  210,
+                  183,
+                  206,
+                  206,
+                  191,
+                  186
+                ],
+                "name": "Computer Programming",
+                "top6": "070710",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  3,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Infrastructure and Support",
+                "top6": "070800",
+                "wages": []
+              }
+            ],
+            "soc_code": "15-1255",
+            "supply": 18.66,
+            "title": "Web and Digital Interface Designers"
+          },
+          {
+            "annual_openings": 280,
+            "annual_wage": 70330,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 280,
+            "growth_rate": 0.03656439,
+            "programs": [],
+            "soc_code": "27-4011",
+            "supply": 0.0,
+            "title": "Audio and Video Technicians"
+          },
+          {
+            "annual_openings": 70,
+            "annual_wage": 75960,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 70,
+            "growth_rate": 0.010897586,
+            "programs": [],
+            "soc_code": "27-4012",
+            "supply": 0.0,
+            "title": "Broadcast Technicians"
+          },
+          {
+            "annual_openings": 80,
+            "annual_wage": 87420,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 80,
+            "growth_rate": 0.070957826,
+            "programs": [],
+            "soc_code": "27-4014",
+            "supply": 0.0,
+            "title": "Sound Engineering Technicians"
+          },
+          {
+            "annual_openings": 420,
+            "annual_wage": 61230,
+            "awards_recent": 19,
+            "course_count": 11,
+            "enrolled": true,
+            "feeding_awards": 19,
+            "gap": 402,
+            "growth_rate": -0.032097953,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  2,
+                  3,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  25,
+                  null,
+                  20,
+                  null,
+                  26,
+                  null,
+                  24,
+                  null,
+                  44
+                ],
+                "name": "Digital Media",
+                "top6": "061400",
+                "wages": []
+              },
+              {
+                "awards": [
+                  14,
+                  13,
+                  18,
+                  17,
+                  13
+                ],
+                "awards_recent": 13,
+                "enrollment": [
+                  112,
+                  104,
+                  139,
+                  97,
+                  128,
+                  104,
+                  137,
+                  104,
+                  135
+                ],
+                "name": "Multimedia",
+                "top6": "061410",
+                "wages": []
+              },
+              {
+                "awards": [
+                  2,
+                  2,
+                  0,
+                  7,
+                  5
+                ],
+                "awards_recent": 5,
+                "enrollment": [
+                  30,
+                  46,
+                  44,
+                  36,
+                  29,
+                  30,
+                  33,
+                  20,
+                  25
+                ],
+                "name": "Computer Graphics and Digital Imagery",
+                "top6": "061460",
+                "wages": []
+              }
+            ],
+            "soc_code": "27-4021",
+            "supply": 18.33,
+            "title": "Photographers"
+          },
+          {
+            "annual_openings": 80,
+            "annual_wage": 57260,
+            "awards_recent": 8,
+            "course_count": 11,
+            "enrolled": true,
+            "feeding_awards": 8,
+            "gap": 76,
+            "growth_rate": -0.15743873,
+            "programs": [
+              {
+                "awards": [
+                  3,
+                  6,
+                  2,
+                  7,
+                  8
+                ],
+                "awards_recent": 8,
+                "enrollment": [
+                  78,
+                  231,
+                  171,
+                  225,
+                  142,
+                  210,
+                  158,
+                  173,
+                  123
+                ],
+                "name": "Office Technology/Office Computer Applications",
+                "top6": "051400",
+                "wages": []
+              }
+            ],
+            "soc_code": "43-9022",
+            "supply": 4.33,
+            "title": "Word Processors and Typists"
+          }
+        ],
+        "name": "Ca\u00f1ada College"
+      }
+    ],
+    "enrollment_terms": [
+      "Fall 2021",
+      "Spring 2022",
+      "Fall 2022",
+      "Spring 2023",
+      "Fall 2023",
+      "Spring 2024",
+      "Fall 2024",
+      "Spring 2025",
+      "Fall 2025"
+    ],
+    "executive_summary": "This view examines the regional demand landscape across the 11 ict / digital media occupations the San Mateo County CCD \u2014 ICT / Digital Media targets in the Bay Area regional labor market. Regional demand for these occupations totals 5,350 openings per year.",
+    "is_sector_priority": false,
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "ICT / Digital Media"
+  }
+}

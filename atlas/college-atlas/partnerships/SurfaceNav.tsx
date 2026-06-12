@@ -8,7 +8,7 @@
    through the shared URL params (resolved at click time — render-time
    window.location reads are hydration-unstable under static export). */
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MONO } from "@/college-atlas/partnerships/reportChrome";
 import KallipolisBrand from "@/ui/KallipolisBrand";
 import { useMeasuredWidth } from "@/college-atlas/partnerships/chartKit";
@@ -45,10 +45,20 @@ export default function SurfaceNav({ active, withBrand = false, instance = "svam
   // would lock the compact form in (it never re-measures wider).
   const { ref, width } = useMeasuredWidth(true);
   const iconOnly = width != null && width < 210;
+  // Scheme-agnostic base path. Pinned instances live at /<instance>; generated
+  // ones at /landscape/<member>/<sector>. Derive the base from the current URL
+  // (post-mount — render-time window.location reads are hydration-unstable under
+  // static export) so the toggle works for both. For pinned, this resolves to
+  // /<instance> — identical to the prior behavior.
+  const [base, setBase] = useState<string | null>(null);
+  useEffect(() => {
+    const p = window.location.pathname;
+    setBase(p.endsWith("/report") ? p.slice(0, -"/report".length) : p);
+  }, []);
   return (
     <div ref={ref} style={{ flex: "1 1 auto", minWidth: 0, display: "flex", alignItems: "center", justifyContent: "flex-end", gap: iconOnly ? 18 : 26 }}>
       {SURFACES.map(({ key, label, sub, Icon }) => {
-        const path = `/${instance}${sub}`;
+        const path = `${base ?? `/${instance}`}${sub}`;
         const on = active === key;
         return (
           <a

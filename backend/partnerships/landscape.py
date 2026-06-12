@@ -127,6 +127,22 @@ class LandscapeSpec:
     # which is a curated SOC-breadth set, not a size-ranked one).
     top_n: int | None = None
 
+    # ── Employer-shed expansion (greedy county → region) ──────────────────
+    # When a (member × sector) map has fewer than `employer_threshold` viable
+    # firms in the home county/ies, widen the shed to the NEAREST counties
+    # within the COE region (counties_by_proximity) until the threshold is met —
+    # so a district whose home county lacks an industry still gets a shortlist of
+    # the nearest real partners rather than an empty map. 0 disables expansion
+    # (home shed only — SVAMP, dense in Santa Clara). The reach (the counties the
+    # map actually drew from) is reported in the employer payload as a local-vs-
+    # regional signal. `max_radius` caps how far it may reach (counties in the
+    # widened shed); 0 = within the whole region. Analysis (2026-06-11): T=15,
+    # nearest-first, region-capped fills 92% of (district × sector) cells with
+    # 100+ firms at a median reach of 2 counties — the lever for the small-county
+    # structural gap (the size floor is the separate lever for small-firm sectors).
+    employer_threshold: int = 0
+    max_radius: int = 0
+
     def in_scope(self, top6: str | None) -> bool:
         """Whether a TOP6 is in this instance's scoped program universe.
 
@@ -151,19 +167,31 @@ class LandscapeSpec:
             and (not self.cte_only or is_cte_top4_family(top6))
         )
 
+    def resolve_regions(self) -> tuple[str, ...]:
+        """The COE region(s) the member colleges span, sorted and de-duplicated.
+
+        Single-element for a college or a district member (and for every
+        instance that exists today); multi-element for a region/state member or
+        a cross-region consortium. The aggregation invariant generalizes over
+        this set: demand and employers are read PER REGION across it, supply
+        sums over the member colleges. `resolve_region()` is the |regions| == 1
+        special case the current builders rely on."""
+        regions = {COLLEGE_COE_REGION.get(c, "") for c in self.colleges}
+        regions.discard("")
+        return tuple(sorted(regions))
+
     def resolve_region(self) -> str:
         """The single shared COE region for the member colleges — the
         precondition that makes regional demand one number per SOC. Asserts the
         members collapse to exactly one region (the same guard as
-        svamp._resolve_region)."""
-        regions = {COLLEGE_COE_REGION.get(c, "") for c in self.colleges}
-        regions.discard("")
+        svamp._resolve_region). Multi-region members use resolve_regions()."""
+        regions = self.resolve_regions()
         if len(regions) != 1:
             raise ValueError(
                 f"Landscape '{self.id}' member colleges must share one COE "
                 f"region; got {regions or 'none'}"
             )
-        return next(iter(regions))
+        return regions[0]
 
 
 # ── Member sets (the institutional axis) ──────────────────────────────────
@@ -227,6 +255,7 @@ def landscape_for(
         swp_tag=sector.swp_tag,              # COE employer-vocabulary tag (match key)
         counties=member.counties,            # geographic shed for the employer map
         top_n=25,                            # top-25-by-size shortlist per industry
+        employer_threshold=15,               # widen the shed (nearest county) until 15 viable firms
         name=f"{member.label} — {sector.label}",
         accent=sector.accent,
     )

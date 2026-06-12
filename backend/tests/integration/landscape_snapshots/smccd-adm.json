@@ -1,0 +1,4666 @@
+{
+  "/employers": {
+    "employers": [
+      {
+        "contact_name": "David Parekh",
+        "contact_title": "CEO",
+        "description": "An independent, nonprofit research institute.",
+        "lat": 37.4537253,
+        "lng": -122.1807201,
+        "naics4": "5413",
+        "naics_title": "Architectural, Engineering, and Related Services",
+        "name": "SRI International",
+        "sector": "Professional Services",
+        "size_class": "1,000-4,999 employees",
+        "size_rank": 9,
+        "soc_count": 11,
+        "soc_titles": {
+          "17-3012": "Electrical and Electronics Drafters",
+          "17-3013": "Mechanical Drafters",
+          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+          "17-3026": "Industrial Engineering Technologists and Technicians",
+          "17-3027": "Mechanical Engineering Technologists and Technicians",
+          "17-3029": "Engineering Technologists and Technicians, Except Drafters, All Other",
+          "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+          "49-9041": "Industrial Machinery Mechanics",
+          "49-9043": "Maintenance Workers, Machinery",
+          "49-9044": "Millwrights"
+        },
+        "socs": [
+          "17-3023",
+          "17-3029",
+          "17-3013",
+          "17-3027",
+          "17-3012",
+          "17-3026",
+          "49-9041",
+          "17-3024",
+          "49-2094",
+          "49-9043",
+          "49-9044"
+        ],
+        "website": "https://www.sri.com/"
+      },
+      {
+        "contact_name": "Catherine Ford Corrigan",
+        "contact_title": "CEO",
+        "description": "A scientific and engineering consulting firm.",
+        "lat": 37.4812454,
+        "lng": -122.1755113,
+        "naics4": "5413",
+        "naics_title": "Architectural, Engineering, and Related Services",
+        "name": "Exponent",
+        "sector": "Professional Services",
+        "size_class": "250-499 employees",
+        "size_rank": 7,
+        "soc_count": 11,
+        "soc_titles": {
+          "17-3012": "Electrical and Electronics Drafters",
+          "17-3013": "Mechanical Drafters",
+          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+          "17-3026": "Industrial Engineering Technologists and Technicians",
+          "17-3027": "Mechanical Engineering Technologists and Technicians",
+          "17-3029": "Engineering Technologists and Technicians, Except Drafters, All Other",
+          "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+          "49-9041": "Industrial Machinery Mechanics",
+          "49-9043": "Maintenance Workers, Machinery",
+          "49-9044": "Millwrights"
+        },
+        "socs": [
+          "17-3023",
+          "17-3029",
+          "17-3013",
+          "17-3027",
+          "17-3012",
+          "17-3026",
+          "49-9041",
+          "17-3024",
+          "49-2094",
+          "49-9043",
+          "49-9044"
+        ],
+        "website": "https://www.exponent.com/"
+      },
+      {
+        "contact_name": "John A Orwin",
+        "contact_title": "CEO",
+        "description": "Vifor Pharma is a global pharmaceutical company.",
+        "lat": 37.5025157,
+        "lng": -122.2178278,
+        "naics4": "3254",
+        "naics_title": "Pharmaceutical and Medicine Manufacturing",
+        "name": "Vifor Pharma",
+        "sector": "Manufacturing",
+        "size_class": "250-499 employees",
+        "size_rank": 7,
+        "soc_count": 9,
+        "soc_titles": {
+          "17-3013": "Mechanical Drafters",
+          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+          "17-3026": "Industrial Engineering Technologists and Technicians",
+          "17-3027": "Mechanical Engineering Technologists and Technicians",
+          "17-3029": "Engineering Technologists and Technicians, Except Drafters, All Other",
+          "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+          "49-9041": "Industrial Machinery Mechanics",
+          "49-9043": "Maintenance Workers, Machinery"
+        },
+        "socs": [
+          "49-9041",
+          "17-3026",
+          "49-9043",
+          "17-3023",
+          "17-3029",
+          "49-2094",
+          "17-3027",
+          "17-3013",
+          "17-3024"
+        ],
+        "website": "https://www.cslvifor.us/"
+      },
+      {
+        "contact_name": "Jonathan Waldstreicher",
+        "contact_title": "Board Member",
+        "description": "Galvanize Therapeutics is a biotechnology company.",
+        "lat": 37.5076791,
+        "lng": -122.2519693,
+        "naics4": "3345",
+        "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
+        "name": "Galvanize Therapeutics",
+        "sector": "Manufacturing",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 12,
+        "soc_titles": {
+          "17-3012": "Electrical and Electronics Drafters",
+          "17-3013": "Mechanical Drafters",
+          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+          "17-3026": "Industrial Engineering Technologists and Technicians",
+          "17-3027": "Mechanical Engineering Technologists and Technicians",
+          "17-3029": "Engineering Technologists and Technicians, Except Drafters, All Other",
+          "49-2092": "Electric Motor, Power Tool, and Related Repairers",
+          "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+          "49-9012": "Control and Valve Installers and Repairers, Except Mechanical Door",
+          "49-9041": "Industrial Machinery Mechanics",
+          "49-9043": "Maintenance Workers, Machinery"
+        },
+        "socs": [
+          "17-3023",
+          "17-3026",
+          "17-3029",
+          "49-2094",
+          "49-9041",
+          "17-3027",
+          "17-3024",
+          "17-3012",
+          "17-3013",
+          "49-9012",
+          "49-9043",
+          "49-2092"
+        ],
+        "website": "https://galvanizetx.com/"
+      },
+      {
+        "contact_name": "Stephen D Mincey",
+        "contact_title": "CEO",
+        "description": "An architectural and engineering firm.",
+        "lat": 37.4877764,
+        "lng": -122.2323105,
+        "naics4": "5413",
+        "naics_title": "Architectural, Engineering, and Related Services",
+        "name": "DES Architects & Engineers",
+        "sector": "Professional Services",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 11,
+        "soc_titles": {
+          "17-3012": "Electrical and Electronics Drafters",
+          "17-3013": "Mechanical Drafters",
+          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+          "17-3026": "Industrial Engineering Technologists and Technicians",
+          "17-3027": "Mechanical Engineering Technologists and Technicians",
+          "17-3029": "Engineering Technologists and Technicians, Except Drafters, All Other",
+          "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+          "49-9041": "Industrial Machinery Mechanics",
+          "49-9043": "Maintenance Workers, Machinery",
+          "49-9044": "Millwrights"
+        },
+        "socs": [
+          "17-3023",
+          "17-3029",
+          "17-3013",
+          "17-3027",
+          "17-3012",
+          "17-3026",
+          "49-9041",
+          "17-3024",
+          "49-2094",
+          "49-9043",
+          "49-9044"
+        ],
+        "website": "https://des-ae.com/"
+      },
+      {
+        "contact_name": "Andrew Clare",
+        "contact_title": "CEO",
+        "description": "A company developing aerial logistics and drone technology.",
+        "lat": 37.6521534,
+        "lng": -122.3928729,
+        "naics4": "3364",
+        "naics_title": "Aerospace Product and Parts Manufacturing",
+        "name": "Elroy Air",
+        "sector": "Manufacturing",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 11,
+        "soc_titles": {
+          "17-3012": "Electrical and Electronics Drafters",
+          "17-3013": "Mechanical Drafters",
+          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+          "17-3026": "Industrial Engineering Technologists and Technicians",
+          "17-3027": "Mechanical Engineering Technologists and Technicians",
+          "17-3029": "Engineering Technologists and Technicians, Except Drafters, All Other",
+          "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+          "49-9041": "Industrial Machinery Mechanics",
+          "49-9043": "Maintenance Workers, Machinery",
+          "49-9044": "Millwrights"
+        },
+        "socs": [
+          "49-9041",
+          "17-3026",
+          "17-3029",
+          "17-3023",
+          "17-3013",
+          "17-3027",
+          "49-2094",
+          "49-9043",
+          "17-3024",
+          "49-9044",
+          "17-3012"
+        ],
+        "website": "https://elroyair.com/"
+      },
+      {
+        "contact_name": "Andrew Degraca",
+        "contact_title": "Director",
+        "description": "A government agency responsible for monitoring and regulating water quality.",
+        "lat": 37.5865829,
+        "lng": -122.3384383,
+        "naics4": "5413",
+        "naics_title": "Architectural, Engineering, and Related Services",
+        "name": "Water Quality Bureau",
+        "sector": "Professional Services",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 11,
+        "soc_titles": {
+          "17-3012": "Electrical and Electronics Drafters",
+          "17-3013": "Mechanical Drafters",
+          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+          "17-3026": "Industrial Engineering Technologists and Technicians",
+          "17-3027": "Mechanical Engineering Technologists and Technicians",
+          "17-3029": "Engineering Technologists and Technicians, Except Drafters, All Other",
+          "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+          "49-9041": "Industrial Machinery Mechanics",
+          "49-9043": "Maintenance Workers, Machinery",
+          "49-9044": "Millwrights"
+        },
+        "socs": [
+          "17-3023",
+          "17-3029",
+          "17-3013",
+          "17-3027",
+          "17-3012",
+          "17-3026",
+          "49-9041",
+          "17-3024",
+          "49-2094",
+          "49-9043",
+          "49-9044"
+        ],
+        "website": "SFPUC.ORG"
+      },
+      {
+        "contact_name": "James Farrey",
+        "contact_title": "CEO",
+        "description": "Jameco Electronics is a supplier of electronic components.",
+        "lat": 37.5210537,
+        "lng": -122.2637729,
+        "naics4": "3344",
+        "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
+        "name": "Jameco Electronics",
+        "sector": "Manufacturing",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 10,
+        "soc_titles": {
+          "17-3012": "Electrical and Electronics Drafters",
+          "17-3013": "Mechanical Drafters",
+          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+          "17-3026": "Industrial Engineering Technologists and Technicians",
+          "17-3027": "Mechanical Engineering Technologists and Technicians",
+          "17-3029": "Engineering Technologists and Technicians, Except Drafters, All Other",
+          "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+          "49-9041": "Industrial Machinery Mechanics",
+          "49-9043": "Maintenance Workers, Machinery"
+        },
+        "socs": [
+          "17-3023",
+          "17-3026",
+          "49-9041",
+          "17-3029",
+          "17-3024",
+          "17-3027",
+          "49-9043",
+          "49-2094",
+          "17-3012",
+          "17-3013"
+        ],
+        "website": "https://www.jameco.com/"
+      },
+      {
+        "contact_name": "Bing Hong Mah",
+        "contact_title": "President",
+        "description": "Leemah Electronics is a supplier of electronic components.",
+        "lat": 37.6891281,
+        "lng": -122.4172806,
+        "naics4": "3344",
+        "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
+        "name": "Leemah Electronics",
+        "sector": "Manufacturing",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 10,
+        "soc_titles": {
+          "17-3012": "Electrical and Electronics Drafters",
+          "17-3013": "Mechanical Drafters",
+          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+          "17-3026": "Industrial Engineering Technologists and Technicians",
+          "17-3027": "Mechanical Engineering Technologists and Technicians",
+          "17-3029": "Engineering Technologists and Technicians, Except Drafters, All Other",
+          "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+          "49-9041": "Industrial Machinery Mechanics",
+          "49-9043": "Maintenance Workers, Machinery"
+        },
+        "socs": [
+          "17-3023",
+          "17-3026",
+          "49-9041",
+          "17-3029",
+          "17-3024",
+          "17-3027",
+          "49-9043",
+          "49-2094",
+          "17-3012",
+          "17-3013"
+        ],
+        "website": "https://www.leemah.com/"
+      },
+      {
+        "contact_name": "Fabian Gerlinghaus",
+        "contact_title": "CEO",
+        "description": "Cellares Corporation is a biotechnology company.",
+        "lat": 37.6555002,
+        "lng": -122.389339,
+        "naics4": "3254",
+        "naics_title": "Pharmaceutical and Medicine Manufacturing",
+        "name": "Cellares Corporation",
+        "sector": "Manufacturing",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 9,
+        "soc_titles": {
+          "17-3013": "Mechanical Drafters",
+          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+          "17-3026": "Industrial Engineering Technologists and Technicians",
+          "17-3027": "Mechanical Engineering Technologists and Technicians",
+          "17-3029": "Engineering Technologists and Technicians, Except Drafters, All Other",
+          "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+          "49-9041": "Industrial Machinery Mechanics",
+          "49-9043": "Maintenance Workers, Machinery"
+        },
+        "socs": [
+          "49-9041",
+          "17-3026",
+          "49-9043",
+          "17-3023",
+          "17-3029",
+          "49-2094",
+          "17-3027",
+          "17-3013",
+          "17-3024"
+        ],
+        "website": "https://www.cellares.com/"
+      },
+      {
+        "contact_name": "Taylor C Harris",
+        "contact_title": "CEO",
+        "description": "Cutera is a medical device company specializing in aesthetic and dermatology solutions.",
+        "lat": 37.6732309,
+        "lng": -122.3910941,
+        "naics4": "3391",
+        "naics_title": "Medical Equipment and Supplies Manufacturing",
+        "name": "Cutera",
+        "sector": "Manufacturing",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 9,
+        "soc_titles": {
+          "17-3013": "Mechanical Drafters",
+          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+          "17-3026": "Industrial Engineering Technologists and Technicians",
+          "17-3027": "Mechanical Engineering Technologists and Technicians",
+          "17-3029": "Engineering Technologists and Technicians, Except Drafters, All Other",
+          "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+          "49-9041": "Industrial Machinery Mechanics",
+          "49-9043": "Maintenance Workers, Machinery"
+        },
+        "socs": [
+          "17-3026",
+          "49-9041",
+          "17-3029",
+          "17-3027",
+          "17-3013",
+          "17-3023",
+          "49-9043",
+          "17-3024",
+          "49-2094"
+        ],
+        "website": "https://cutera.com/us-en/"
+      },
+      {
+        "contact_name": "Lynn Seely",
+        "contact_title": "CEO",
+        "description": "Lyell Immunopharma is a biotechnology company developing cell therapies.",
+        "lat": 37.6486582,
+        "lng": -122.3872868,
+        "naics4": "3254",
+        "naics_title": "Pharmaceutical and Medicine Manufacturing",
+        "name": "Lyell Immunopharma",
+        "sector": "Manufacturing",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 9,
+        "soc_titles": {
+          "17-3013": "Mechanical Drafters",
+          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+          "17-3026": "Industrial Engineering Technologists and Technicians",
+          "17-3027": "Mechanical Engineering Technologists and Technicians",
+          "17-3029": "Engineering Technologists and Technicians, Except Drafters, All Other",
+          "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+          "49-9041": "Industrial Machinery Mechanics",
+          "49-9043": "Maintenance Workers, Machinery"
+        },
+        "socs": [
+          "49-9041",
+          "17-3026",
+          "49-9043",
+          "17-3023",
+          "17-3029",
+          "49-2094",
+          "17-3027",
+          "17-3013",
+          "17-3024"
+        ],
+        "website": "https://www.lyell.com/"
+      },
+      {
+        "contact_name": "Christopher Peetz",
+        "contact_title": "CEO",
+        "description": "Mirum Pharmaceuticals is a biopharmaceutical company.",
+        "lat": 37.55234,
+        "lng": -122.2801854,
+        "naics4": "3254",
+        "naics_title": "Pharmaceutical and Medicine Manufacturing",
+        "name": "Mirum Pharmaceuticals",
+        "sector": "Manufacturing",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 9,
+        "soc_titles": {
+          "17-3013": "Mechanical Drafters",
+          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+          "17-3026": "Industrial Engineering Technologists and Technicians",
+          "17-3027": "Mechanical Engineering Technologists and Technicians",
+          "17-3029": "Engineering Technologists and Technicians, Except Drafters, All Other",
+          "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+          "49-9041": "Industrial Machinery Mechanics",
+          "49-9043": "Maintenance Workers, Machinery"
+        },
+        "socs": [
+          "49-9041",
+          "17-3026",
+          "49-9043",
+          "17-3023",
+          "17-3029",
+          "49-2094",
+          "17-3027",
+          "17-3013",
+          "17-3024"
+        ],
+        "website": "https://mirumpharma.com/"
+      },
+      {
+        "contact_name": "Frank D Lee",
+        "contact_title": "Board Member",
+        "description": "Pacira Biosciences is a biopharmaceutical company.",
+        "lat": 37.6897794,
+        "lng": -122.391832,
+        "naics4": "3254",
+        "naics_title": "Pharmaceutical and Medicine Manufacturing",
+        "name": "Pacira Biosciences",
+        "sector": "Manufacturing",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 9,
+        "soc_titles": {
+          "17-3013": "Mechanical Drafters",
+          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+          "17-3026": "Industrial Engineering Technologists and Technicians",
+          "17-3027": "Mechanical Engineering Technologists and Technicians",
+          "17-3029": "Engineering Technologists and Technicians, Except Drafters, All Other",
+          "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+          "49-9041": "Industrial Machinery Mechanics",
+          "49-9043": "Maintenance Workers, Machinery"
+        },
+        "socs": [
+          "49-9041",
+          "17-3026",
+          "49-9043",
+          "17-3023",
+          "17-3029",
+          "49-2094",
+          "17-3027",
+          "17-3013",
+          "17-3024"
+        ],
+        "website": "https://www.pacira.com/"
+      },
+      {
+        "contact_name": "John Reed",
+        "contact_title": "President",
+        "description": "Principia Biopharma is a biopharmaceutical company.",
+        "lat": 37.6545478,
+        "lng": -122.4006126,
+        "naics4": "3254",
+        "naics_title": "Pharmaceutical and Medicine Manufacturing",
+        "name": "Principia Biopharma",
+        "sector": "Manufacturing",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 9,
+        "soc_titles": {
+          "17-3013": "Mechanical Drafters",
+          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+          "17-3026": "Industrial Engineering Technologists and Technicians",
+          "17-3027": "Mechanical Engineering Technologists and Technicians",
+          "17-3029": "Engineering Technologists and Technicians, Except Drafters, All Other",
+          "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+          "49-9041": "Industrial Machinery Mechanics",
+          "49-9043": "Maintenance Workers, Machinery"
+        },
+        "socs": [
+          "49-9041",
+          "17-3026",
+          "49-9043",
+          "17-3023",
+          "17-3029",
+          "49-2094",
+          "17-3027",
+          "17-3013",
+          "17-3024"
+        ],
+        "website": "PRINCIPIABIO.COM"
+      },
+      {
+        "contact_name": "Marshall Fordyce",
+        "contact_title": "CEO",
+        "description": "Vera Therapeutics is a biotechnology company.",
+        "lat": 37.6897794,
+        "lng": -122.391832,
+        "naics4": "3254",
+        "naics_title": "Pharmaceutical and Medicine Manufacturing",
+        "name": "Vera Therapeutics",
+        "sector": "Manufacturing",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 9,
+        "soc_titles": {
+          "17-3013": "Mechanical Drafters",
+          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+          "17-3026": "Industrial Engineering Technologists and Technicians",
+          "17-3027": "Mechanical Engineering Technologists and Technicians",
+          "17-3029": "Engineering Technologists and Technicians, Except Drafters, All Other",
+          "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+          "49-9041": "Industrial Machinery Mechanics",
+          "49-9043": "Maintenance Workers, Machinery"
+        },
+        "socs": [
+          "49-9041",
+          "17-3026",
+          "49-9043",
+          "17-3023",
+          "17-3029",
+          "49-2094",
+          "17-3027",
+          "17-3013",
+          "17-3024"
+        ],
+        "website": "https://veratx.com/"
+      },
+      {
+        "contact_name": "Philip Desimone",
+        "contact_title": "CEO",
+        "description": "A company likely involved in materials, technology, or environmental services.",
+        "lat": 37.4866904,
+        "lng": -122.2087565,
+        "naics4": "3231",
+        "naics_title": "Printing and Related Support Activities",
+        "name": "Carbon",
+        "sector": "Manufacturing",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 6,
+        "soc_titles": {
+          "17-3013": "Mechanical Drafters",
+          "17-3026": "Industrial Engineering Technologists and Technicians",
+          "17-3029": "Engineering Technologists and Technicians, Except Drafters, All Other",
+          "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+          "49-9041": "Industrial Machinery Mechanics",
+          "49-9043": "Maintenance Workers, Machinery"
+        },
+        "socs": [
+          "49-9041",
+          "49-9043",
+          "17-3013",
+          "17-3026",
+          "49-2094",
+          "17-3029"
+        ],
+        "website": "https://www.carbon3d.com/"
+      },
+      {
+        "contact_name": "Natasha Lahlouh",
+        "contact_title": "Partner",
+        "description": "A business name, likely a restaurant or retail establishment.",
+        "lat": 37.5946111,
+        "lng": -122.3690256,
+        "naics4": "3231",
+        "naics_title": "Printing and Related Support Activities",
+        "name": "Lahloua",
+        "sector": "Manufacturing",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 6,
+        "soc_titles": {
+          "17-3013": "Mechanical Drafters",
+          "17-3026": "Industrial Engineering Technologists and Technicians",
+          "17-3029": "Engineering Technologists and Technicians, Except Drafters, All Other",
+          "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+          "49-9041": "Industrial Machinery Mechanics",
+          "49-9043": "Maintenance Workers, Machinery"
+        },
+        "socs": [
+          "49-9041",
+          "49-9043",
+          "17-3013",
+          "17-3026",
+          "49-2094",
+          "17-3029"
+        ],
+        "website": "https://www.lahlouh.com/"
+      },
+      {
+        "contact_name": "Greg Moquin",
+        "contact_title": "Owner",
+        "description": "A printing company.",
+        "lat": 37.5215839,
+        "lng": -122.2666806,
+        "naics4": "3231",
+        "naics_title": "Printing and Related Support Activities",
+        "name": "Moquin Press",
+        "sector": "Manufacturing",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 6,
+        "soc_titles": {
+          "17-3013": "Mechanical Drafters",
+          "17-3026": "Industrial Engineering Technologists and Technicians",
+          "17-3029": "Engineering Technologists and Technicians, Except Drafters, All Other",
+          "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+          "49-9041": "Industrial Machinery Mechanics",
+          "49-9043": "Maintenance Workers, Machinery"
+        },
+        "socs": [
+          "49-9041",
+          "49-9043",
+          "17-3013",
+          "17-3026",
+          "49-2094",
+          "17-3029"
+        ],
+        "website": "https://www.moquinpress.com/"
+      },
+      {
+        "contact_name": "Mel Lew",
+        "contact_title": "Manager",
+        "description": "American Window Film San Francisco provides window film installation services.",
+        "lat": 37.6002938,
+        "lng": -122.3789084,
+        "naics4": "2381",
+        "naics_title": "Foundation, Structure, and Building Exterior Contractors",
+        "name": "American Window Film San Francisco",
+        "sector": "Construction",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 4,
+        "soc_titles": {
+          "17-3013": "Mechanical Drafters",
+          "49-9041": "Industrial Machinery Mechanics",
+          "49-9043": "Maintenance Workers, Machinery",
+          "49-9044": "Millwrights"
+        },
+        "socs": [
+          "49-9044",
+          "17-3013",
+          "49-9041",
+          "49-9043"
+        ],
+        "website": "https://www.americanwindowfilm.com"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "A company involved in manufacturing products.",
+        "lat": 37.4532061,
+        "lng": -122.1823518,
+        "naics4": "3334",
+        "naics_title": "Ventilation, Heating, Air-Conditioning, and Commercial Refrigeration Equipment Manufacturing",
+        "name": "Rheem Manufacturing",
+        "sector": "Manufacturing",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 13,
+        "soc_titles": {
+          "17-3012": "Electrical and Electronics Drafters",
+          "17-3013": "Mechanical Drafters",
+          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+          "17-3026": "Industrial Engineering Technologists and Technicians",
+          "17-3027": "Mechanical Engineering Technologists and Technicians",
+          "17-3029": "Engineering Technologists and Technicians, Except Drafters, All Other",
+          "49-2092": "Electric Motor, Power Tool, and Related Repairers",
+          "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+          "49-9012": "Control and Valve Installers and Repairers, Except Mechanical Door",
+          "49-9041": "Industrial Machinery Mechanics",
+          "49-9043": "Maintenance Workers, Machinery",
+          "49-9044": "Millwrights"
+        },
+        "socs": [
+          "49-9041",
+          "17-3026",
+          "17-3013",
+          "17-3027",
+          "17-3023",
+          "49-9043",
+          "17-3029",
+          "17-3024",
+          "49-2094",
+          "49-9044",
+          "17-3012",
+          "49-2092",
+          "49-9012"
+        ],
+        "website": "https://www.rheem.com"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "Bai is a beverage company.",
+        "lat": 37.6618731,
+        "lng": -122.4029201,
+        "naics4": "3345",
+        "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
+        "name": "Bai",
+        "sector": "Manufacturing",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 12,
+        "soc_titles": {
+          "17-3012": "Electrical and Electronics Drafters",
+          "17-3013": "Mechanical Drafters",
+          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+          "17-3026": "Industrial Engineering Technologists and Technicians",
+          "17-3027": "Mechanical Engineering Technologists and Technicians",
+          "17-3029": "Engineering Technologists and Technicians, Except Drafters, All Other",
+          "49-2092": "Electric Motor, Power Tool, and Related Repairers",
+          "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+          "49-9012": "Control and Valve Installers and Repairers, Except Mechanical Door",
+          "49-9041": "Industrial Machinery Mechanics",
+          "49-9043": "Maintenance Workers, Machinery"
+        },
+        "socs": [
+          "17-3023",
+          "17-3026",
+          "17-3029",
+          "49-2094",
+          "49-9041",
+          "17-3027",
+          "17-3024",
+          "17-3012",
+          "17-3013",
+          "49-9012",
+          "49-9043",
+          "49-2092"
+        ],
+        "website": "https://www.bai-inc.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "Celldom is a biotechnology company.",
+        "lat": 37.5076791,
+        "lng": -122.2519693,
+        "naics4": "3345",
+        "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
+        "name": "Celldom",
+        "sector": "Manufacturing",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 12,
+        "soc_titles": {
+          "17-3012": "Electrical and Electronics Drafters",
+          "17-3013": "Mechanical Drafters",
+          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+          "17-3026": "Industrial Engineering Technologists and Technicians",
+          "17-3027": "Mechanical Engineering Technologists and Technicians",
+          "17-3029": "Engineering Technologists and Technicians, Except Drafters, All Other",
+          "49-2092": "Electric Motor, Power Tool, and Related Repairers",
+          "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+          "49-9012": "Control and Valve Installers and Repairers, Except Mechanical Door",
+          "49-9041": "Industrial Machinery Mechanics",
+          "49-9043": "Maintenance Workers, Machinery"
+        },
+        "socs": [
+          "17-3023",
+          "17-3026",
+          "17-3029",
+          "49-2094",
+          "49-9041",
+          "17-3027",
+          "17-3024",
+          "17-3012",
+          "17-3013",
+          "49-9012",
+          "49-9043",
+          "49-2092"
+        ],
+        "website": "https://www.celldom.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "General Radar Corporation is a technology company.",
+        "lat": 37.5278511,
+        "lng": -122.2813324,
+        "naics4": "3345",
+        "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
+        "name": "General Radar Corporation",
+        "sector": "Manufacturing",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 12,
+        "soc_titles": {
+          "17-3012": "Electrical and Electronics Drafters",
+          "17-3013": "Mechanical Drafters",
+          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+          "17-3026": "Industrial Engineering Technologists and Technicians",
+          "17-3027": "Mechanical Engineering Technologists and Technicians",
+          "17-3029": "Engineering Technologists and Technicians, Except Drafters, All Other",
+          "49-2092": "Electric Motor, Power Tool, and Related Repairers",
+          "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+          "49-9012": "Control and Valve Installers and Repairers, Except Mechanical Door",
+          "49-9041": "Industrial Machinery Mechanics",
+          "49-9043": "Maintenance Workers, Machinery"
+        },
+        "socs": [
+          "17-3023",
+          "17-3026",
+          "17-3029",
+          "49-2094",
+          "49-9041",
+          "17-3027",
+          "17-3024",
+          "17-3012",
+          "17-3013",
+          "49-9012",
+          "49-9043",
+          "49-2092"
+        ],
+        "website": "https://www.genrad.com/"
+      },
+      {
+        "contact_name": null,
+        "contact_title": null,
+        "description": "Northstar Photonics is a technology company.",
+        "lat": 37.4671652,
+        "lng": -122.2102545,
+        "naics4": "3345",
+        "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
+        "name": "Northstar Photonics",
+        "sector": "Manufacturing",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 12,
+        "soc_titles": {
+          "17-3012": "Electrical and Electronics Drafters",
+          "17-3013": "Mechanical Drafters",
+          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+          "17-3026": "Industrial Engineering Technologists and Technicians",
+          "17-3027": "Mechanical Engineering Technologists and Technicians",
+          "17-3029": "Engineering Technologists and Technicians, Except Drafters, All Other",
+          "49-2092": "Electric Motor, Power Tool, and Related Repairers",
+          "49-2094": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+          "49-9012": "Control and Valve Installers and Repairers, Except Mechanical Door",
+          "49-9041": "Industrial Machinery Mechanics",
+          "49-9043": "Maintenance Workers, Machinery"
+        },
+        "socs": [
+          "17-3023",
+          "17-3026",
+          "17-3029",
+          "49-2094",
+          "49-9041",
+          "17-3027",
+          "17-3024",
+          "17-3012",
+          "17-3013",
+          "49-9012",
+          "49-9043",
+          "49-2092"
+        ],
+        "website": "https://www.northstarphotonics.com/"
+      }
+    ],
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "Advanced Manufacturing",
+    "shed_counties": [
+      "San Mateo"
+    ],
+    "shown": 25,
+    "total": 49
+  },
+  "/programs": {
+    "latest_award_year": "2024-2025",
+    "matrix": {
+      "cells": [
+        {
+          "awards": 11,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "043000"
+        },
+        {
+          "awards": 3,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "043000"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "043000"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "070100"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "070100"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "070100"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "070200"
+        },
+        {
+          "awards": 10,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "070200"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "070200"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "092400"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "092400"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "092400"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "093400"
+        },
+        {
+          "awards": 4,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "093400"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093400"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093410"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093410"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093410"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "093420"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093420"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093420"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093430"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093430"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093430"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093440"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093440"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093440"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093460"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093460"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093460"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093470"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093470"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093470"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093480"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093480"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "093480"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093500"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093500"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "093500"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "094300"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "094300"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "094300"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "094500"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "094500"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "094500"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "094600"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "094600"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "094600"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "094610"
+        },
+        {
+          "awards": 1,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "094610"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "094610"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "094700"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "094700"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "094700"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "094720"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "094720"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "094720"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "094800"
+        },
+        {
+          "awards": 119,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "094800"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "094800"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095000"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095000"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095000"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095040"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095040"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095040"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095050"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095050"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095050"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095200"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095200"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095200"
+        },
+        {
+          "awards": 3,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "095300"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095300"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095300"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095330"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095330"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095330"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095340"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095340"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095340"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095420"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095420"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095420"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095600"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095600"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095600"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095630"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095630"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095630"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095650"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095650"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095650"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095670"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095670"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095670"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095690"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095690"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095690"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095900"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095900"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095900"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "099900"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "099900"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "099900"
+        }
+      ],
+      "colleges": [
+        "College of San Mateo",
+        "Skyline College",
+        "Ca\u00f1ada College"
+      ]
+    },
+    "n_colleges": 3,
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "Advanced Manufacturing",
+    "tops": [
+      {
+        "awards_total": 119,
+        "enrollment_total": 410,
+        "n_colleges_offering": 1,
+        "name": "Automotive Technology",
+        "soc_count": 3,
+        "top6": "094800"
+      },
+      {
+        "awards_total": 14,
+        "enrollment_total": 1141,
+        "n_colleges_offering": 1,
+        "name": "Biotechnology and Biomedical Technology",
+        "soc_count": 1,
+        "top6": "043000"
+      },
+      {
+        "awards_total": 10,
+        "enrollment_total": 38,
+        "n_colleges_offering": 0,
+        "name": "Computer Information Systems",
+        "soc_count": 2,
+        "top6": "070200"
+      },
+      {
+        "awards_total": 4,
+        "enrollment_total": 130,
+        "n_colleges_offering": 0,
+        "name": "Electronics and Electric Technology",
+        "soc_count": 5,
+        "top6": "093400"
+      },
+      {
+        "awards_total": 3,
+        "enrollment_total": 64,
+        "n_colleges_offering": 1,
+        "name": "Drafting Technology",
+        "soc_count": 2,
+        "top6": "095300"
+      },
+      {
+        "awards_total": 1,
+        "enrollment_total": 23,
+        "n_colleges_offering": 1,
+        "name": "Energy Systems Technology",
+        "soc_count": 5,
+        "top6": "094610"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 139,
+        "n_colleges_offering": 0,
+        "name": "Information Technology, General",
+        "soc_count": 2,
+        "top6": "070100"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 19,
+        "n_colleges_offering": 0,
+        "name": "Industrial Electronics",
+        "soc_count": 2,
+        "top6": "093420"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 14,
+        "n_colleges_offering": 1,
+        "name": "Laser and Optical Technology",
+        "soc_count": 1,
+        "top6": "093480"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Manufacturing and Industrial Technology",
+        "soc_count": 10,
+        "top6": "095600"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Industrial Systems Technology and Maintenance",
+        "soc_count": 9,
+        "top6": "094500"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Engineering Technology, General (requires Trigonometry)",
+        "soc_count": 7,
+        "top6": "092400"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Electro-Mechanical Technology",
+        "soc_count": 7,
+        "top6": "093500"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Computer Electronics",
+        "soc_count": 5,
+        "top6": "093410"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Other Engineering and Related Industrial Technologies",
+        "soc_count": 3,
+        "top6": "099900"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Telecommunications Technology",
+        "soc_count": 1,
+        "top6": "093430"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Electrical Systems and Power Transmission",
+        "soc_count": 1,
+        "top6": "093440"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Biomedical Instrumentation",
+        "soc_count": 1,
+        "top6": "093460"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Electron Microscopy",
+        "soc_count": 1,
+        "top6": "093470"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Instrumentation Technology",
+        "soc_count": 1,
+        "top6": "094300"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Environmental Control Technology (HVAC)",
+        "soc_count": 1,
+        "top6": "094600"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Diesel Technology",
+        "soc_count": 1,
+        "top6": "094700"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Heavy Equipment Maintenance",
+        "soc_count": 1,
+        "top6": "094720"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Aeronautical and Aviation Technology",
+        "soc_count": 1,
+        "top6": "095000"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Aircraft Electronics (Avionics)",
+        "soc_count": 1,
+        "top6": "095040"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Aircraft Fabrication",
+        "soc_count": 1,
+        "top6": "095050"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Construction Crafts Technology",
+        "soc_count": 1,
+        "top6": "095200"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Electrical, Electronic and Electro-Mechanical Drafting",
+        "soc_count": 1,
+        "top6": "095330"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Mechanical Drafting",
+        "soc_count": 1,
+        "top6": "095340"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Plastics and Composites",
+        "soc_count": 1,
+        "top6": "095420"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Machining and Machine Tools",
+        "soc_count": 1,
+        "top6": "095630"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Welding Technology",
+        "soc_count": 1,
+        "top6": "095650"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Industrial and Occupational Safety and Health",
+        "soc_count": 1,
+        "top6": "095670"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Digital Fabrication Technician",
+        "soc_count": 1,
+        "top6": "095690"
+      },
+      {
+        "awards_total": 0,
+        "enrollment_total": 0,
+        "n_colleges_offering": 0,
+        "name": "Marine Technology",
+        "soc_count": 1,
+        "top6": "095900"
+      }
+    ]
+  },
+  "landscape": {
+    "aggregate": {
+      "candidate_employers": 535,
+      "combined_awards": 151,
+      "combined_supply_total": 191.34,
+      "gap": 1889,
+      "n_colleges": 3,
+      "n_occupations": 13,
+      "occupations_taught": 9,
+      "regional_demand_total": 2080
+    },
+    "award_years": [
+      "2020-2021",
+      "2021-2022",
+      "2022-2023",
+      "2023-2024",
+      "2024-2025"
+    ],
+    "colleges": [
+      {
+        "cells": [
+          {
+            "annual_openings": 80,
+            "annual_wage": 92390,
+            "awards_recent": 3,
+            "course_count": 4,
+            "enrolled": true,
+            "feeding_awards": 3,
+            "gap": 75,
+            "growth_rate": 0.010421486,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  2,
+                  0,
+                  1,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Engineering Technology, General (requires Trigonometry)",
+                "top6": "092400",
+                "wages": [
+                  {
+                    "n": 59,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 64498,
+                    "wage_after_5": 88963,
+                    "wage_before": 25967,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 21,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 61485,
+                    "wage_after_5": 76163,
+                    "wage_before": 36610,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  6,
+                  17,
+                  9,
+                  6,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  74,
+                  72,
+                  29,
+                  2,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Electronics and Electric Technology",
+                "top6": "093400",
+                "wages": [
+                  {
+                    "n": 223,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 65274,
+                    "wage_after_5": 80497,
+                    "wage_before": 36812,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 353,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 69631,
+                    "wage_after_5": 84558,
+                    "wage_before": 42485,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 88,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 94249,
+                    "wage_after_5": 94013,
+                    "wage_before": 69348,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  7,
+                  2,
+                  7,
+                  1,
+                  3
+                ],
+                "awards_recent": 3,
+                "enrollment": [
+                  34,
+                  35,
+                  46,
+                  40,
+                  51,
+                  52,
+                  63,
+                  64,
+                  50
+                ],
+                "name": "Drafting Technology",
+                "top6": "095300",
+                "wages": [
+                  {
+                    "n": 140,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 54059,
+                    "wage_after_5": 61002,
+                    "wage_before": 30589,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 100,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 56691,
+                    "wage_after_5": 60317,
+                    "wage_before": 28476,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 59,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 53333,
+                    "wage_after_5": 71159,
+                    "wage_before": 34919,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "17-3012",
+            "supply": 5.33,
+            "title": "Electrical and Electronics Drafters"
+          },
+          {
+            "annual_openings": 90,
+            "annual_wage": 93900,
+            "awards_recent": 3,
+            "course_count": 4,
+            "enrolled": true,
+            "feeding_awards": 3,
+            "gap": 85,
+            "growth_rate": -0.029752279,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  2,
+                  0,
+                  1,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Engineering Technology, General (requires Trigonometry)",
+                "top6": "092400",
+                "wages": [
+                  {
+                    "n": 59,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 64498,
+                    "wage_after_5": 88963,
+                    "wage_before": 25967,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 21,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 61485,
+                    "wage_after_5": 76163,
+                    "wage_before": 36610,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  7,
+                  2,
+                  7,
+                  1,
+                  3
+                ],
+                "awards_recent": 3,
+                "enrollment": [
+                  34,
+                  35,
+                  46,
+                  40,
+                  51,
+                  52,
+                  63,
+                  64,
+                  50
+                ],
+                "name": "Drafting Technology",
+                "top6": "095300",
+                "wages": [
+                  {
+                    "n": 140,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 54059,
+                    "wage_after_5": 61002,
+                    "wage_before": 30589,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 100,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 56691,
+                    "wage_after_5": 60317,
+                    "wage_before": 28476,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 59,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 53333,
+                    "wage_after_5": 71159,
+                    "wage_before": 34919,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "17-3013",
+            "supply": 5.33,
+            "title": "Mechanical Drafters"
+          },
+          {
+            "annual_openings": 430,
+            "annual_wage": 89280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 430,
+            "growth_rate": -0.006011416,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  139,
+                  138,
+                  115,
+                  92,
+                  119,
+                  107,
+                  113,
+                  107,
+                  61
+                ],
+                "name": "Information Technology, General",
+                "top6": "070100",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  38,
+                  33,
+                  33,
+                  30,
+                  30,
+                  31
+                ],
+                "name": "Computer Information Systems",
+                "top6": "070200",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  2,
+                  0,
+                  1,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Engineering Technology, General (requires Trigonometry)",
+                "top6": "092400",
+                "wages": [
+                  {
+                    "n": 59,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 64498,
+                    "wage_after_5": 88963,
+                    "wage_before": 25967,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 21,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 61485,
+                    "wage_after_5": 76163,
+                    "wage_before": 36610,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  6,
+                  17,
+                  9,
+                  6,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  74,
+                  72,
+                  29,
+                  2,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Electronics and Electric Technology",
+                "top6": "093400",
+                "wages": [
+                  {
+                    "n": 223,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 65274,
+                    "wage_after_5": 80497,
+                    "wage_before": 36812,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 353,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 69631,
+                    "wage_after_5": 84558,
+                    "wage_before": 42485,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 88,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 94249,
+                    "wage_after_5": 94013,
+                    "wage_before": 69348,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "17-3023",
+            "supply": 0.0,
+            "title": "Electrical and Electronic Engineering Technologists and Technicians"
+          },
+          {
+            "annual_openings": 80,
+            "annual_wage": 78280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 80,
+            "growth_rate": -0.013784232,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  2,
+                  0,
+                  1,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Engineering Technology, General (requires Trigonometry)",
+                "top6": "092400",
+                "wages": [
+                  {
+                    "n": 59,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 64498,
+                    "wage_after_5": 88963,
+                    "wage_before": 25967,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 21,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 61485,
+                    "wage_after_5": 76163,
+                    "wage_before": 36610,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  6,
+                  17,
+                  9,
+                  6,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  74,
+                  72,
+                  29,
+                  2,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Electronics and Electric Technology",
+                "top6": "093400",
+                "wages": [
+                  {
+                    "n": 223,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 65274,
+                    "wage_after_5": 80497,
+                    "wage_before": 36812,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 353,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 69631,
+                    "wage_after_5": 84558,
+                    "wage_before": 42485,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 88,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 94249,
+                    "wage_after_5": 94013,
+                    "wage_before": 69348,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "17-3024",
+            "supply": 0.0,
+            "title": "Electro-Mechanical and Mechatronics Technologists and Technicians"
+          },
+          {
+            "annual_openings": 150,
+            "annual_wage": 79950,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 150,
+            "growth_rate": 0.075924651,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  2,
+                  0,
+                  1,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Engineering Technology, General (requires Trigonometry)",
+                "top6": "092400",
+                "wages": [
+                  {
+                    "n": 59,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 64498,
+                    "wage_after_5": 88963,
+                    "wage_before": 25967,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 21,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 61485,
+                    "wage_after_5": 76163,
+                    "wage_before": 36610,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  19,
+                  13,
+                  14,
+                  18,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Industrial Electronics",
+                "top6": "093420",
+                "wages": [
+                  {
+                    "n": 43,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 69457,
+                    "wage_after_5": 77513,
+                    "wage_before": 38656,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 59,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 75405,
+                    "wage_after_5": 81821,
+                    "wage_before": 33379,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 17,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 65578,
+                    "wage_after_5": 72387,
+                    "wage_before": 51547,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "17-3026",
+            "supply": 0.0,
+            "title": "Industrial Engineering Technologists and Technicians"
+          },
+          {
+            "annual_openings": 110,
+            "annual_wage": 95880,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 110,
+            "growth_rate": 0.056307128,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  2,
+                  0,
+                  1,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Engineering Technology, General (requires Trigonometry)",
+                "top6": "092400",
+                "wages": [
+                  {
+                    "n": 59,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 64498,
+                    "wage_after_5": 88963,
+                    "wage_before": 25967,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 21,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 61485,
+                    "wage_after_5": 76163,
+                    "wage_before": 36610,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "17-3027",
+            "supply": 0.0,
+            "title": "Mechanical Engineering Technologists and Technicians"
+          },
+          {
+            "annual_openings": 220,
+            "annual_wage": 89990,
+            "awards_recent": 11,
+            "course_count": 12,
+            "enrolled": true,
+            "feeding_awards": 11,
+            "gap": 220,
+            "growth_rate": 0.043073706,
+            "programs": [
+              {
+                "awards": [
+                  3,
+                  2,
+                  2,
+                  3,
+                  11
+                ],
+                "awards_recent": 11,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  14,
+                  18,
+                  null,
+                  32,
+                  21,
+                  28
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  139,
+                  138,
+                  115,
+                  92,
+                  119,
+                  107,
+                  113,
+                  107,
+                  61
+                ],
+                "name": "Information Technology, General",
+                "top6": "070100",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  38,
+                  33,
+                  33,
+                  30,
+                  30,
+                  31
+                ],
+                "name": "Computer Information Systems",
+                "top6": "070200",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  2,
+                  0,
+                  1,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Engineering Technology, General (requires Trigonometry)",
+                "top6": "092400",
+                "wages": [
+                  {
+                    "n": 59,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 64498,
+                    "wage_after_5": 88963,
+                    "wage_before": 25967,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 21,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 61485,
+                    "wage_after_5": 76163,
+                    "wage_before": 36610,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  6,
+                  17,
+                  9,
+                  6,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  74,
+                  72,
+                  29,
+                  2,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Electronics and Electric Technology",
+                "top6": "093400",
+                "wages": [
+                  {
+                    "n": 223,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 65274,
+                    "wage_after_5": 80497,
+                    "wage_before": 36812,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 353,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 69631,
+                    "wage_after_5": 84558,
+                    "wage_before": 42485,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 88,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 94249,
+                    "wage_after_5": 94013,
+                    "wage_before": 69348,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "17-3029",
+            "supply": 0.0,
+            "title": "Engineering Technologists and Technicians, Except Drafters, All Other"
+          },
+          {
+            "annual_openings": 50,
+            "annual_wage": 75070,
+            "awards_recent": 0,
+            "course_count": 1,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 50,
+            "growth_rate": -0.051247219,
+            "programs": [
+              {
+                "awards": [
+                  6,
+                  17,
+                  9,
+                  6,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  74,
+                  72,
+                  29,
+                  2,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Electronics and Electric Technology",
+                "top6": "093400",
+                "wages": [
+                  {
+                    "n": 223,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 65274,
+                    "wage_after_5": 80497,
+                    "wage_before": 36812,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 353,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 69631,
+                    "wage_after_5": 84558,
+                    "wage_before": 42485,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 88,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 94249,
+                    "wage_after_5": 94013,
+                    "wage_before": 69348,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "49-2092",
+            "supply": 0.0,
+            "title": "Electric Motor, Power Tool, and Related Repairers"
+          },
+          {
+            "annual_openings": 90,
+            "annual_wage": 93390,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 90,
+            "growth_rate": 0.038817423,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  19,
+                  13,
+                  14,
+                  18,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Industrial Electronics",
+                "top6": "093420",
+                "wages": [
+                  {
+                    "n": 43,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 69457,
+                    "wage_after_5": 77513,
+                    "wage_before": 38656,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 59,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 75405,
+                    "wage_after_5": 81821,
+                    "wage_before": 33379,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 17,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 65578,
+                    "wage_after_5": 72387,
+                    "wage_before": 51547,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "49-2094",
+            "supply": 0.0,
+            "title": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
+          },
+          {
+            "annual_openings": 100,
+            "annual_wage": 110120,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 100,
+            "growth_rate": 0.039851188,
+            "programs": [],
+            "soc_code": "49-9012",
+            "supply": 0.0,
+            "title": "Control and Valve Installers and Repairers, Except Mechanical Door"
+          },
+          {
+            "annual_openings": 550,
+            "annual_wage": 80760,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 550,
+            "growth_rate": 0.10237203,
+            "programs": [],
+            "soc_code": "49-9041",
+            "supply": 0.0,
+            "title": "Industrial Machinery Mechanics"
+          },
+          {
+            "annual_openings": 70,
+            "annual_wage": 70750,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 70,
+            "growth_rate": 0.094348312,
+            "programs": [],
+            "soc_code": "49-9043",
+            "supply": 0.0,
+            "title": "Maintenance Workers, Machinery"
+          },
+          {
+            "annual_openings": 60,
+            "annual_wage": 99070,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 60,
+            "growth_rate": 0.0665831,
+            "programs": [],
+            "soc_code": "49-9044",
+            "supply": 0.0,
+            "title": "Millwrights"
+          }
+        ],
+        "name": "College of San Mateo"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 80,
+            "annual_wage": 92390,
+            "awards_recent": 4,
+            "course_count": 0,
+            "enrolled": true,
+            "feeding_awards": 4,
+            "gap": 80,
+            "growth_rate": 0.010421486,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  2,
+                  8,
+                  4
+                ],
+                "awards_recent": 4,
+                "enrollment": [
+                  56,
+                  5,
+                  78,
+                  46,
+                  39,
+                  96,
+                  34,
+                  84,
+                  87
+                ],
+                "name": "Electronics and Electric Technology",
+                "top6": "093400",
+                "wages": [
+                  {
+                    "n": 223,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 65274,
+                    "wage_after_5": 80497,
+                    "wage_before": 36812,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 353,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 69631,
+                    "wage_after_5": 84558,
+                    "wage_before": 42485,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 88,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 94249,
+                    "wage_after_5": 94013,
+                    "wage_before": 69348,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Manufacturing and Industrial Technology",
+                "top6": "095600",
+                "wages": [
+                  {
+                    "n": 54,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 54092,
+                    "wage_after_5": 73636,
+                    "wage_before": 26272,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 85,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60922,
+                    "wage_after_5": 72654,
+                    "wage_before": 36476,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 38,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64897,
+                    "wage_after_5": 75071,
+                    "wage_before": 54280,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "17-3012",
+            "supply": 0.0,
+            "title": "Electrical and Electronics Drafters"
+          },
+          {
+            "annual_openings": 90,
+            "annual_wage": 93900,
+            "awards_recent": 119,
+            "course_count": 2,
+            "enrolled": true,
+            "feeding_awards": 119,
+            "gap": 79,
+            "growth_rate": -0.029752279,
+            "programs": [
+              {
+                "awards": [
+                  8,
+                  9,
+                  13,
+                  27,
+                  119
+                ],
+                "awards_recent": 119,
+                "enrollment": [
+                  250,
+                  350,
+                  379,
+                  334,
+                  367,
+                  399,
+                  332,
+                  410,
+                  383
+                ],
+                "name": "Automotive Technology",
+                "top6": "094800",
+                "wages": [
+                  {
+                    "n": 530,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 50020,
+                    "wage_after_5": 64735,
+                    "wage_before": 23838,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 808,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 45472,
+                    "wage_after_5": 58950,
+                    "wage_before": 21845,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 233,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 42436,
+                    "wage_after_5": 58236,
+                    "wage_before": 22312,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Manufacturing and Industrial Technology",
+                "top6": "095600",
+                "wages": [
+                  {
+                    "n": 54,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 54092,
+                    "wage_after_5": 73636,
+                    "wage_before": 26272,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 85,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60922,
+                    "wage_after_5": 72654,
+                    "wage_before": 36476,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 38,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64897,
+                    "wage_after_5": 75071,
+                    "wage_before": 54280,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "17-3013",
+            "supply": 10.67,
+            "title": "Mechanical Drafters"
+          },
+          {
+            "annual_openings": 430,
+            "annual_wage": 89280,
+            "awards_recent": 14,
+            "course_count": 0,
+            "enrolled": true,
+            "feeding_awards": 14,
+            "gap": 430,
+            "growth_rate": -0.006011416,
+            "programs": [
+              {
+                "awards": [
+                  16,
+                  11,
+                  6,
+                  6,
+                  10
+                ],
+                "awards_recent": 10,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Information Systems",
+                "top6": "070200",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  2,
+                  8,
+                  4
+                ],
+                "awards_recent": 4,
+                "enrollment": [
+                  56,
+                  5,
+                  78,
+                  46,
+                  39,
+                  96,
+                  34,
+                  84,
+                  87
+                ],
+                "name": "Electronics and Electric Technology",
+                "top6": "093400",
+                "wages": [
+                  {
+                    "n": 223,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 65274,
+                    "wage_after_5": 80497,
+                    "wage_before": 36812,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 353,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 69631,
+                    "wage_after_5": 84558,
+                    "wage_before": 42485,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 88,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 94249,
+                    "wage_after_5": 94013,
+                    "wage_before": 69348,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "17-3023",
+            "supply": 0.0,
+            "title": "Electrical and Electronic Engineering Technologists and Technicians"
+          },
+          {
+            "annual_openings": 80,
+            "annual_wage": 78280,
+            "awards_recent": 4,
+            "course_count": 0,
+            "enrolled": true,
+            "feeding_awards": 4,
+            "gap": 80,
+            "growth_rate": -0.013784232,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  2,
+                  8,
+                  4
+                ],
+                "awards_recent": 4,
+                "enrollment": [
+                  56,
+                  5,
+                  78,
+                  46,
+                  39,
+                  96,
+                  34,
+                  84,
+                  87
+                ],
+                "name": "Electronics and Electric Technology",
+                "top6": "093400",
+                "wages": [
+                  {
+                    "n": 223,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 65274,
+                    "wage_after_5": 80497,
+                    "wage_before": 36812,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 353,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 69631,
+                    "wage_after_5": 84558,
+                    "wage_before": 42485,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 88,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 94249,
+                    "wage_after_5": 94013,
+                    "wage_before": 69348,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Manufacturing and Industrial Technology",
+                "top6": "095600",
+                "wages": [
+                  {
+                    "n": 54,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 54092,
+                    "wage_after_5": 73636,
+                    "wage_before": 26272,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 85,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60922,
+                    "wage_after_5": 72654,
+                    "wage_before": 36476,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 38,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64897,
+                    "wage_after_5": 75071,
+                    "wage_before": 54280,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "17-3024",
+            "supply": 0.0,
+            "title": "Electro-Mechanical and Mechatronics Technologists and Technicians"
+          },
+          {
+            "annual_openings": 150,
+            "annual_wage": 79950,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 150,
+            "growth_rate": 0.075924651,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Manufacturing and Industrial Technology",
+                "top6": "095600",
+                "wages": [
+                  {
+                    "n": 54,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 54092,
+                    "wage_after_5": 73636,
+                    "wage_before": 26272,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 85,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60922,
+                    "wage_after_5": 72654,
+                    "wage_before": 36476,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 38,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64897,
+                    "wage_after_5": 75071,
+                    "wage_before": 54280,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "17-3026",
+            "supply": 0.0,
+            "title": "Industrial Engineering Technologists and Technicians"
+          },
+          {
+            "annual_openings": 110,
+            "annual_wage": 95880,
+            "awards_recent": 119,
+            "course_count": 2,
+            "enrolled": true,
+            "feeding_awards": 119,
+            "gap": 99,
+            "growth_rate": 0.056307128,
+            "programs": [
+              {
+                "awards": [
+                  8,
+                  9,
+                  13,
+                  27,
+                  119
+                ],
+                "awards_recent": 119,
+                "enrollment": [
+                  250,
+                  350,
+                  379,
+                  334,
+                  367,
+                  399,
+                  332,
+                  410,
+                  383
+                ],
+                "name": "Automotive Technology",
+                "top6": "094800",
+                "wages": [
+                  {
+                    "n": 530,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 50020,
+                    "wage_after_5": 64735,
+                    "wage_before": 23838,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 808,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 45472,
+                    "wage_after_5": 58950,
+                    "wage_before": 21845,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 233,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 42436,
+                    "wage_after_5": 58236,
+                    "wage_before": 22312,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Manufacturing and Industrial Technology",
+                "top6": "095600",
+                "wages": [
+                  {
+                    "n": 54,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 54092,
+                    "wage_after_5": 73636,
+                    "wage_before": 26272,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 85,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60922,
+                    "wage_after_5": 72654,
+                    "wage_before": 36476,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 38,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64897,
+                    "wage_after_5": 75071,
+                    "wage_before": 54280,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "17-3027",
+            "supply": 10.67,
+            "title": "Mechanical Engineering Technologists and Technicians"
+          },
+          {
+            "annual_openings": 220,
+            "annual_wage": 89990,
+            "awards_recent": 137,
+            "course_count": 14,
+            "enrolled": true,
+            "feeding_awards": 137,
+            "gap": 177,
+            "growth_rate": 0.043073706,
+            "programs": [
+              {
+                "awards": [
+                  3,
+                  5,
+                  2,
+                  4,
+                  3
+                ],
+                "awards_recent": 3,
+                "enrollment": [
+                  98,
+                  1069,
+                  74,
+                  945,
+                  96,
+                  1141,
+                  141,
+                  1106,
+                  117
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              },
+              {
+                "awards": [
+                  16,
+                  11,
+                  6,
+                  6,
+                  10
+                ],
+                "awards_recent": 10,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Computer Information Systems",
+                "top6": "070200",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  2,
+                  8,
+                  4
+                ],
+                "awards_recent": 4,
+                "enrollment": [
+                  56,
+                  5,
+                  78,
+                  46,
+                  39,
+                  96,
+                  34,
+                  84,
+                  87
+                ],
+                "name": "Electronics and Electric Technology",
+                "top6": "093400",
+                "wages": [
+                  {
+                    "n": 223,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 65274,
+                    "wage_after_5": 80497,
+                    "wage_before": 36812,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 353,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 69631,
+                    "wage_after_5": 84558,
+                    "wage_before": 42485,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 88,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 94249,
+                    "wage_after_5": 94013,
+                    "wage_before": 69348,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  26,
+                  32,
+                  0,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  4,
+                  null,
+                  null,
+                  null,
+                  10,
+                  23,
+                  null,
+                  18,
+                  null
+                ],
+                "name": "Energy Systems Technology",
+                "top6": "094610",
+                "wages": [
+                  {
+                    "n": 20,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 57539,
+                    "wage_after_5": 71214,
+                    "wage_before": 40258,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 36,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 54002,
+                    "wage_after_5": 111606,
+                    "wage_before": 17248,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  8,
+                  9,
+                  13,
+                  27,
+                  119
+                ],
+                "awards_recent": 119,
+                "enrollment": [
+                  250,
+                  350,
+                  379,
+                  334,
+                  367,
+                  399,
+                  332,
+                  410,
+                  383
+                ],
+                "name": "Automotive Technology",
+                "top6": "094800",
+                "wages": [
+                  {
+                    "n": 530,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 50020,
+                    "wage_after_5": 64735,
+                    "wage_before": 23838,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 808,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 45472,
+                    "wage_after_5": 58950,
+                    "wage_before": 21845,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 233,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 42436,
+                    "wage_after_5": 58236,
+                    "wage_before": 22312,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Manufacturing and Industrial Technology",
+                "top6": "095600",
+                "wages": [
+                  {
+                    "n": 54,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 54092,
+                    "wage_after_5": 73636,
+                    "wage_before": 26272,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 85,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60922,
+                    "wage_after_5": 72654,
+                    "wage_before": 36476,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 38,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64897,
+                    "wage_after_5": 75071,
+                    "wage_before": 54280,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "17-3029",
+            "supply": 43.34,
+            "title": "Engineering Technologists and Technicians, Except Drafters, All Other"
+          },
+          {
+            "annual_openings": 50,
+            "annual_wage": 75070,
+            "awards_recent": 4,
+            "course_count": 0,
+            "enrolled": true,
+            "feeding_awards": 4,
+            "gap": 50,
+            "growth_rate": -0.051247219,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  2,
+                  8,
+                  4
+                ],
+                "awards_recent": 4,
+                "enrollment": [
+                  56,
+                  5,
+                  78,
+                  46,
+                  39,
+                  96,
+                  34,
+                  84,
+                  87
+                ],
+                "name": "Electronics and Electric Technology",
+                "top6": "093400",
+                "wages": [
+                  {
+                    "n": 223,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 65274,
+                    "wage_after_5": 80497,
+                    "wage_before": 36812,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 353,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 69631,
+                    "wage_after_5": 84558,
+                    "wage_before": 42485,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 88,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 94249,
+                    "wage_after_5": 94013,
+                    "wage_before": 69348,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "49-2092",
+            "supply": 0.0,
+            "title": "Electric Motor, Power Tool, and Related Repairers"
+          },
+          {
+            "annual_openings": 90,
+            "annual_wage": 93390,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 90,
+            "growth_rate": 0.038817423,
+            "programs": [],
+            "soc_code": "49-2094",
+            "supply": 0.0,
+            "title": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
+          },
+          {
+            "annual_openings": 100,
+            "annual_wage": 110120,
+            "awards_recent": 1,
+            "course_count": 4,
+            "enrolled": true,
+            "feeding_awards": 1,
+            "gap": 71,
+            "growth_rate": 0.039851188,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  26,
+                  32,
+                  0,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  4,
+                  null,
+                  null,
+                  null,
+                  10,
+                  23,
+                  null,
+                  18,
+                  null
+                ],
+                "name": "Energy Systems Technology",
+                "top6": "094610",
+                "wages": [
+                  {
+                    "n": 20,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 57539,
+                    "wage_after_5": 71214,
+                    "wage_before": 40258,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 36,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 54002,
+                    "wage_after_5": 111606,
+                    "wage_before": 17248,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Manufacturing and Industrial Technology",
+                "top6": "095600",
+                "wages": [
+                  {
+                    "n": 54,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 54092,
+                    "wage_after_5": 73636,
+                    "wage_before": 26272,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 85,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60922,
+                    "wage_after_5": 72654,
+                    "wage_before": 36476,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 38,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64897,
+                    "wage_after_5": 75071,
+                    "wage_before": 54280,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "49-9012",
+            "supply": 29.0,
+            "title": "Control and Valve Installers and Repairers, Except Mechanical Door"
+          },
+          {
+            "annual_openings": 550,
+            "annual_wage": 80760,
+            "awards_recent": 1,
+            "course_count": 4,
+            "enrolled": true,
+            "feeding_awards": 1,
+            "gap": 521,
+            "growth_rate": 0.10237203,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  26,
+                  32,
+                  0,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  4,
+                  null,
+                  null,
+                  null,
+                  10,
+                  23,
+                  null,
+                  18,
+                  null
+                ],
+                "name": "Energy Systems Technology",
+                "top6": "094610",
+                "wages": [
+                  {
+                    "n": 20,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 57539,
+                    "wage_after_5": 71214,
+                    "wage_before": 40258,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 36,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 54002,
+                    "wage_after_5": 111606,
+                    "wage_before": 17248,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Manufacturing and Industrial Technology",
+                "top6": "095600",
+                "wages": [
+                  {
+                    "n": 54,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 54092,
+                    "wage_after_5": 73636,
+                    "wage_before": 26272,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 85,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60922,
+                    "wage_after_5": 72654,
+                    "wage_before": 36476,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 38,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64897,
+                    "wage_after_5": 75071,
+                    "wage_before": 54280,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "49-9041",
+            "supply": 29.0,
+            "title": "Industrial Machinery Mechanics"
+          },
+          {
+            "annual_openings": 70,
+            "annual_wage": 70750,
+            "awards_recent": 1,
+            "course_count": 4,
+            "enrolled": true,
+            "feeding_awards": 1,
+            "gap": 41,
+            "growth_rate": 0.094348312,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  26,
+                  32,
+                  0,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  4,
+                  null,
+                  null,
+                  null,
+                  10,
+                  23,
+                  null,
+                  18,
+                  null
+                ],
+                "name": "Energy Systems Technology",
+                "top6": "094610",
+                "wages": [
+                  {
+                    "n": 20,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 57539,
+                    "wage_after_5": 71214,
+                    "wage_before": 40258,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 36,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 54002,
+                    "wage_after_5": 111606,
+                    "wage_before": 17248,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Manufacturing and Industrial Technology",
+                "top6": "095600",
+                "wages": [
+                  {
+                    "n": 54,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 54092,
+                    "wage_after_5": 73636,
+                    "wage_before": 26272,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 85,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60922,
+                    "wage_after_5": 72654,
+                    "wage_before": 36476,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 38,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64897,
+                    "wage_after_5": 75071,
+                    "wage_before": 54280,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "49-9043",
+            "supply": 29.0,
+            "title": "Maintenance Workers, Machinery"
+          },
+          {
+            "annual_openings": 60,
+            "annual_wage": 99070,
+            "awards_recent": 1,
+            "course_count": 4,
+            "enrolled": true,
+            "feeding_awards": 1,
+            "gap": 31,
+            "growth_rate": 0.0665831,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  26,
+                  32,
+                  0,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  4,
+                  null,
+                  null,
+                  null,
+                  10,
+                  23,
+                  null,
+                  18,
+                  null
+                ],
+                "name": "Energy Systems Technology",
+                "top6": "094610",
+                "wages": [
+                  {
+                    "n": 20,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 57539,
+                    "wage_after_5": 71214,
+                    "wage_before": 40258,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 36,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 54002,
+                    "wage_after_5": 111606,
+                    "wage_before": 17248,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Manufacturing and Industrial Technology",
+                "top6": "095600",
+                "wages": [
+                  {
+                    "n": 54,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 54092,
+                    "wage_after_5": 73636,
+                    "wage_before": 26272,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 85,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60922,
+                    "wage_after_5": 72654,
+                    "wage_before": 36476,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 38,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64897,
+                    "wage_after_5": 75071,
+                    "wage_before": 54280,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "49-9044",
+            "supply": 29.0,
+            "title": "Millwrights"
+          }
+        ],
+        "name": "Skyline College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 80,
+            "annual_wage": 92390,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 80,
+            "growth_rate": 0.010421486,
+            "programs": [],
+            "soc_code": "17-3012",
+            "supply": 0.0,
+            "title": "Electrical and Electronics Drafters"
+          },
+          {
+            "annual_openings": 90,
+            "annual_wage": 93900,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 90,
+            "growth_rate": -0.029752279,
+            "programs": [],
+            "soc_code": "17-3013",
+            "supply": 0.0,
+            "title": "Mechanical Drafters"
+          },
+          {
+            "annual_openings": 430,
+            "annual_wage": 89280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 430,
+            "growth_rate": -0.006011416,
+            "programs": [],
+            "soc_code": "17-3023",
+            "supply": 0.0,
+            "title": "Electrical and Electronic Engineering Technologists and Technicians"
+          },
+          {
+            "annual_openings": 80,
+            "annual_wage": 78280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 80,
+            "growth_rate": -0.013784232,
+            "programs": [],
+            "soc_code": "17-3024",
+            "supply": 0.0,
+            "title": "Electro-Mechanical and Mechatronics Technologists and Technicians"
+          },
+          {
+            "annual_openings": 150,
+            "annual_wage": 79950,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 150,
+            "growth_rate": 0.075924651,
+            "programs": [],
+            "soc_code": "17-3026",
+            "supply": 0.0,
+            "title": "Industrial Engineering Technologists and Technicians"
+          },
+          {
+            "annual_openings": 110,
+            "annual_wage": 95880,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 110,
+            "growth_rate": 0.056307128,
+            "programs": [],
+            "soc_code": "17-3027",
+            "supply": 0.0,
+            "title": "Mechanical Engineering Technologists and Technicians"
+          },
+          {
+            "annual_openings": 220,
+            "annual_wage": 89990,
+            "awards_recent": 0,
+            "course_count": 10,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 220,
+            "growth_rate": 0.043073706,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  4,
+                  14,
+                  3,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Laser and Optical Technology",
+                "top6": "093480",
+                "wages": [
+                  {
+                    "n": 14,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 90069,
+                    "wage_after_5": 82117,
+                    "wage_before": 63040,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "17-3029",
+            "supply": 0.0,
+            "title": "Engineering Technologists and Technicians, Except Drafters, All Other"
+          },
+          {
+            "annual_openings": 50,
+            "annual_wage": 75070,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 50,
+            "growth_rate": -0.051247219,
+            "programs": [],
+            "soc_code": "49-2092",
+            "supply": 0.0,
+            "title": "Electric Motor, Power Tool, and Related Repairers"
+          },
+          {
+            "annual_openings": 90,
+            "annual_wage": 93390,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 90,
+            "growth_rate": 0.038817423,
+            "programs": [],
+            "soc_code": "49-2094",
+            "supply": 0.0,
+            "title": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
+          },
+          {
+            "annual_openings": 100,
+            "annual_wage": 110120,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 100,
+            "growth_rate": 0.039851188,
+            "programs": [],
+            "soc_code": "49-9012",
+            "supply": 0.0,
+            "title": "Control and Valve Installers and Repairers, Except Mechanical Door"
+          },
+          {
+            "annual_openings": 550,
+            "annual_wage": 80760,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 550,
+            "growth_rate": 0.10237203,
+            "programs": [],
+            "soc_code": "49-9041",
+            "supply": 0.0,
+            "title": "Industrial Machinery Mechanics"
+          },
+          {
+            "annual_openings": 70,
+            "annual_wage": 70750,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 70,
+            "growth_rate": 0.094348312,
+            "programs": [],
+            "soc_code": "49-9043",
+            "supply": 0.0,
+            "title": "Maintenance Workers, Machinery"
+          },
+          {
+            "annual_openings": 60,
+            "annual_wage": 99070,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 60,
+            "growth_rate": 0.0665831,
+            "programs": [],
+            "soc_code": "49-9044",
+            "supply": 0.0,
+            "title": "Millwrights"
+          }
+        ],
+        "name": "Ca\u00f1ada College"
+      }
+    ],
+    "enrollment_terms": [
+      "Fall 2021",
+      "Spring 2022",
+      "Fall 2022",
+      "Spring 2023",
+      "Fall 2023",
+      "Spring 2024",
+      "Fall 2024",
+      "Spring 2025",
+      "Fall 2025"
+    ],
+    "executive_summary": "This view examines the regional demand landscape across the 13 advanced manufacturing occupations the San Mateo County CCD \u2014 Advanced Manufacturing targets in the Bay Area regional labor market. Regional demand for these occupations totals 2,080 openings per year.",
+    "is_sector_priority": true,
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "Advanced Manufacturing"
+  }
+}

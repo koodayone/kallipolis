@@ -50,7 +50,7 @@ import SurfaceNav from "@/college-atlas/partnerships/SurfaceNav";
 import { Dot, useMeasuredWidth } from "@/college-atlas/partnerships/chartKit";
 import { computeBandRows, rowHeight, DEFAULT_PANEL_MIN_WIDTH } from "@/college-atlas/partnerships/dashLayout";
 import { getSvampLandscape, getSvampPrograms } from "@/college-atlas/partnerships/api";
-import { landscapeInstance } from "@/college-atlas/partnerships/landscapeInstances";
+import { landscapeInstance, type LandscapeInstance } from "@/college-atlas/partnerships/landscapeInstances";
 
 // The five member colleges, in display order (mirrors /svamp's ClientPage).
 // College ids now come from the landscape instance registry (keyed by `instance`).
@@ -583,8 +583,10 @@ function useMinViewportWidth(px: number): boolean | null {
 }
 
 /* ── Shell ────────────────────────────────────────────────────────────────── */
-export default function SvampDashboard({ instance = "svamp" }: { instance?: string }) {
-  const inst = landscapeInstance(instance);
+export default function SvampDashboard({ instance = "svamp", identity }: { instance?: string; identity?: LandscapeInstance }) {
+  // Pinned instances resolve identity from the registry; a generated instance
+  // (no registry row) passes it in, built from the backend landscape index.
+  const inst = identity ?? landscapeInstance(instance);
   const [lens, setLens] = useState<DashLens>("programs");
   // Employers side-by-side (map + rail) needs ~760px (350 map + 280 rail +
   // gaps/chrome); below it the lens stacks. The band lenses need no gate of
