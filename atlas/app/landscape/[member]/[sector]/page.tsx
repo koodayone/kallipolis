@@ -1,5 +1,5 @@
 import LandscapeClient from "./LandscapeClient";
-import { fetchLandscapeIndex } from "@/college-atlas/partnerships/landscapeIndex";
+import { landscapeRouteParams } from "@/college-atlas/partnerships/landscapeIndex";
 
 // Generated member×sector landscapes (any college/district the catalog
 // publishes). generateStaticParams enumerates the live instances from the
@@ -9,8 +9,7 @@ import { fetchLandscapeIndex } from "@/college-atlas/partnerships/landscapeIndex
 // the same posture as the curated /[collegeId] routes. Pinned instances
 // (/svamp, /smccd-*) keep their own flat routes; this namespace is additive.
 export async function generateStaticParams() {
-  const index = await fetchLandscapeIndex();
-  return index.map((e) => ({ member: e.member_id, sector: e.sector_id }));
+  return landscapeRouteParams();
 }
 
 export default function LandscapePage() {

@@ -39,6 +39,30 @@ export function fetchLandscapeIndex(): Promise<LandscapeIndexEntry[]> {
   return _cache;
 }
 
+// Build-resilience sentinel: `output: export` ERRORS on a dynamic route whose
+// generateStaticParams returns []. The route params come from a build-time fetch
+// of the backend index, which is empty if the backend isn't deployed yet (or is
+// briefly down). Emitting one real, stable (member, sector) keeps the build from
+// failing in that window — a rebuild once the index is live pre-renders the full
+// set, and even the sentinel page resolves correctly at runtime via the client
+// index fetch. Foothill·AM is a reliably-live comprehensive instance.
+const SENTINEL = { member: "foothill", sector: "adm" };
+
+/** (member, sector) params for the generated dashboard + report routes,
+ *  guaranteed non-empty (see SENTINEL). */
+export async function landscapeRouteParams(): Promise<{ member: string; sector: string }[]> {
+  const idx = await fetchLandscapeIndex();
+  const params = idx.map((e) => ({ member: e.member_id, sector: e.sector_id }));
+  return params.length ? params : [SENTINEL];
+}
+
+/** Distinct-member params for the member-root route, guaranteed non-empty. */
+export async function memberRouteParams(): Promise<{ member: string }[]> {
+  const idx = await fetchLandscapeIndex();
+  const members = [...new Set(idx.map((e) => e.member_id))].map((member) => ({ member }));
+  return members.length ? members : [{ member: SENTINEL.member }];
+}
+
 /** Build a LandscapeInstance for a generated instance from its index entry —
  *  the identity SvampDashboard/SvampView consume (name, accent, collegeIds). */
 export function generatedInstance(entry: LandscapeIndexEntry): LandscapeInstance {
