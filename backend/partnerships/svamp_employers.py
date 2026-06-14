@@ -36,6 +36,7 @@ _BAY_BBOX = (36.8, 38.6, -123.2, -121.0)
 
 class SvampEmployer(BaseModel):
     name: str
+    display_name: str | None = None  # public-facing brand; card falls back to name
     lat: float
     lng: float
     sector: str | None = None       # EDD NAICS-2 broad tag — unreliable (can
@@ -78,7 +79,8 @@ def build_svamp_employers(spec: LandscapeSpec = SVAMP_SPEC) -> SvampEmployersRes
             WHERE o.soc_code IN $socs AND $sector IN e.swp_sectors
               AND e.website IS NOT NULL   // only website-validated firms plot
             WITH e, collect(DISTINCT {code: o.soc_code, title: o.title, pct: h.pct_total}) AS soc_meta
-            RETURN e.name AS name, e.county AS county, e.lat AS lat, e.lng AS lng,
+            RETURN e.name AS name, e.display_name AS display_name,
+                   e.county AS county, e.lat AS lat, e.lng AS lng,
                    e.sector AS sector, e.naics4 AS naics4,
                    e.website AS website, e.description AS description, soc_meta,
                    e.size_class AS size_class, e.size_rank AS size_rank
@@ -106,7 +108,7 @@ def build_svamp_employers(spec: LandscapeSpec = SVAMP_SPEC) -> SvampEmployersRes
         # fall back to code order.
         meta = sorted(r["soc_meta"], key=lambda m: (-(m.get("pct") or 0.0), m["code"]))
         emp = SvampEmployer(
-            name=r["name"], lat=lat, lng=lng,
+            name=r["name"], display_name=r.get("display_name"), lat=lat, lng=lng,
             sector=r["sector"], naics4=r["naics4"],
             naics_title=titles.get(r["naics4"]),
             website=r["website"], description=r["description"],

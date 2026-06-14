@@ -32,6 +32,7 @@ from pathlib import Path
 from typing import Optional
 
 from fastapi import APIRouter, HTTPException, Response
+from pydantic import BaseModel
 
 from partnerships.models import OpportunityReport, SectorIndex
 from partnerships.opportunity import build_opportunity_report, build_sector_index
@@ -39,6 +40,8 @@ from partnerships.svamp import SvampLandscape, build_landscape
 from partnerships.landscape import REGISTRY, LandscapeSpec, routable_specs
 from partnerships.registry import has_supply, live_catalog, spec_for
 from partnerships.resolve import resolve
+from partnerships.clusters import cluster_expanded_spec, consortium_clusters
+from partnerships.sectors import SECTORS
 from partnerships.svamp_employers import SvampEmployersResult, build_svamp_employers
 from partnerships.svamp_programs import (
     ProgramReport,
@@ -419,6 +422,17 @@ def _resolved_dynamic_spec(instance_id: str) -> LandscapeSpec:
         raise HTTPException(
             status_code=404, detail=f"No feeding program for '{instance_id}'"
         )
+    # Single-college lens → expand to the college's cluster consortium: the
+    # co-member schools become the matrix columns and the cluster occupations the
+    # rows, so the school reads itself inside its partnership pool. The dashboard
+    # is unchanged; only the spec's college/SOC scope widens. Multi-college
+    # instances (districts, SVAMP/BACCC/SMCCD) are untouched.
+    if len(spec.colleges) == 1:
+        sector_id = next(
+            (sid for sid in SECTORS if instance_id.endswith(f"-{sid}")), None
+        )
+        if sector_id:
+            spec = cluster_expanded_spec(spec, sector_id)
     return resolve(spec)
 
 
@@ -488,3 +502,190 @@ router.add_api_route(
 router.add_api_route(
     "/{instance_id}/employers", get_dynamic_employers, methods=["GET"],
     response_model=SvampEmployersResult, name="get_dynamic_employers")
+
+
+# ── Occupational clusters — connected-component target clusters ───────────────
+# Two endpoints over partnerships.clusters (connected components on shared awarded
+# feeder TOPs, aggregated across every PCAH sector for a member, e.g. "baccc"):
+#   /{member}/clusters       — the visualization payload (all the numbers)
+#   /{member}/cluster-supply — the school×TOP supply detail, kept SEPARATE so the
+#                              map stays light and the tuple list loads on demand.
+# Two segments with literal tails ("clusters" / "cluster-supply"), so they never
+# collide with the single-segment dynamic /{instance_id} family above.
+class ClusterOccupationModel(BaseModel):
+    soc: str
+    title: str
+    annual_openings: int
+    annual_wage: int
+    growth_rate: float
+    admitted: bool
+
+
+class ClusterFeederModel(BaseModel):
+    top6: str
+    name: str
+    awards: int
+    colleges: int
+
+
+class ClusterModel(BaseModel):
+    id: str
+    label: str
+    sector_id: str
+    sector_label: str
+    accent: str
+    demand: int
+    supply: int
+    gap: int
+    coverage: float
+    n_colleges: int
+    n_programs: int
+    wage_low: int
+    wage_high: int
+    occupations: list[ClusterOccupationModel]
+    feeders: list[ClusterFeederModel]
+
+
+class ClusterMapModel(BaseModel):
+    member: str
+    n_clusters: int
+    n_occupations: int
+    total_demand: int
+    total_supply: int
+    total_gap: int
+    clusters: list[ClusterModel]
+
+
+class ClusterSupplyTupleModel(BaseModel):
+    college: str
+    top6: str
+    program: str
+    awards: int
+
+
+class ClusterSupplyModel(BaseModel):
+    id: str
+    label: str
+    sector_id: str
+    supply: int
+    tuples: list[ClusterSupplyTupleModel]
+
+
+class ClusterSupplyMapModel(BaseModel):
+    member: str
+    clusters: list[ClusterSupplyModel]
+
+
+def _sector_label(sid: str) -> str:
+    s = SECTORS.get(sid)
+    return s.label if s else sid
+
+
+def _sector_accent(sid: str) -> str:
+    s = SECTORS.get(sid)
+    return getattr(s, "accent", None) or "#9aa3b2"
+
+
+def get_consortium_clusters(member_id: str) -> ClusterMapModel:
+    """Whole-consortium occupational-cluster map: every connected-component
+    cluster across the member's PCAH sectors, gap-sorted, with demand / supply /
+    gap / coverage and the member occupations (wage, openings, growth)."""
+    try:
+        clusters = consortium_clusters(member_id)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    if not clusters:
+        raise HTTPException(status_code=404, detail=f"No clusters for '{member_id}'")
+    models = [
+        ClusterModel(
+            id=cl.key, label=cl.label, sector_id=cl.sector_id,
+            sector_label=_sector_label(cl.sector_id), accent=_sector_accent(cl.sector_id),
+            demand=cl.demand, supply=cl.supply, gap=cl.gap, coverage=cl.coverage,
+            n_colleges=cl.n_colleges, n_programs=len(cl.feeders),
+            wage_low=cl.wage_low, wage_high=cl.wage_high,
+            occupations=[ClusterOccupationModel(
+                soc=o.soc, title=o.title, annual_openings=o.annual_openings,
+                annual_wage=o.annual_wage, growth_rate=o.growth_rate, admitted=o.admitted,
+            ) for o in cl.occupations],
+            feeders=[ClusterFeederModel(
+                top6=f.top6, name=f.name, awards=f.awards, colleges=f.colleges,
+            ) for f in cl.feeders],
+        )
+        for cl in clusters
+    ]
+    return ClusterMapModel(
+        member=member_id, n_clusters=len(models),
+        n_occupations=sum(len(m.occupations) for m in models),
+        total_demand=sum(m.demand for m in models),
+        total_supply=sum(m.supply for m in models),
+        total_gap=sum(m.gap for m in models),
+        clusters=models,
+    )
+
+
+def get_consortium_cluster_supply(member_id: str) -> ClusterSupplyMapModel:
+    """The school×TOP supply tuples behind every cluster — (member college,
+    feeder program, latest-year awards). Separate from /clusters so the map
+    payload stays light and this loads on demand."""
+    try:
+        clusters = consortium_clusters(member_id)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    if not clusters:
+        raise HTTPException(status_code=404, detail=f"No clusters for '{member_id}'")
+    models = []
+    for cl in clusters:
+        tuples = [
+            ClusterSupplyTupleModel(
+                college=sp.college, top6=f.top6, program=f.name, awards=sp.awards)
+            for f in cl.feeders for sp in f.by_college
+        ]
+        tuples.sort(key=lambda t: -t.awards)
+        models.append(ClusterSupplyModel(
+            id=cl.key, label=cl.label, sector_id=cl.sector_id, supply=cl.supply,
+            tuples=tuples))
+    return ClusterSupplyMapModel(member=member_id, clusters=models)
+
+
+router.add_api_route(
+    "/{member_id}/clusters", get_consortium_clusters, methods=["GET"],
+    response_model=ClusterMapModel, name="get_consortium_clusters",
+    description="Whole-consortium occupational-cluster map (connected components on "
+                "shared feeder programs) with demand/supply/gap per cluster.")
+router.add_api_route(
+    "/{member_id}/cluster-supply", get_consortium_cluster_supply, methods=["GET"],
+    response_model=ClusterSupplyMapModel, name="get_consortium_cluster_supply",
+    description="School×TOP supply tuples behind each cluster — separate endpoint, "
+                "loaded on demand.")
+
+
+class MemberClusterSectorsModel(BaseModel):
+    member: str
+    sectors: list[str]
+
+
+def get_member_cluster_sectors(member_id: str) -> MemberClusterSectorsModel:
+    """The sectors where this member belongs to a consortium cluster — its real
+    industry targets. A school-lens industry with no cluster membership renders an
+    empty (pool-less) dashboard, so the rail uses this to hide it. A member is in a
+    sector iff one of its colleges feeds a BACCC cluster there."""
+    probe = spec_for(f"{member_id}-adm")  # any sector resolves the member's colleges
+    member_colleges = set(probe.colleges) if probe else set()
+    if not member_colleges:
+        return MemberClusterSectorsModel(member=member_id, sectors=[])
+    try:
+        clusters = consortium_clusters("baccc")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    sectors = sorted({
+        c.sector_id for c in clusters
+        if any(sp.college in member_colleges for f in c.feeders for sp in f.by_college)
+    })
+    return MemberClusterSectorsModel(member=member_id, sectors=sectors)
+
+
+router.add_api_route(
+    "/{member_id}/cluster-sectors", get_member_cluster_sectors, methods=["GET"],
+    response_model=MemberClusterSectorsModel, name="get_member_cluster_sectors",
+    description="Sectors where the member is in a consortium cluster — its industry "
+                "targets, for the school-lens rail (hides industries with no cluster).")

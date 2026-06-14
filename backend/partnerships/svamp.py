@@ -240,6 +240,11 @@ class SvampLandscape(BaseModel):
     enrollment_terms: list[str] = []
     colleges: list[SvampCollege]
     aggregate: SvampAggregate
+    # True for rule-bearing instances (BACCC, sector-derived SMCCD): the coverage
+    # cell is gated on AWARDS — an occupation a college only enrolls toward (no
+    # completer) reads as a gap, not "partial". The curated SVAMP instance
+    # carries no rule and keeps the enrolled-OR-awarded coverage.
+    coverage_awards_only: bool = False
 
 
 def _build_executive_summary(spec: LandscapeSpec, region_display: str, agg: "SvampAggregate") -> str:
@@ -601,4 +606,5 @@ def _assemble_landscape(
         enrollment_terms=enrollment_terms,
         colleges=colleges,
         aggregate=aggregate,
+        coverage_awards_only=(spec.soc_rule is not None and spec.soc_rule.active),
     )

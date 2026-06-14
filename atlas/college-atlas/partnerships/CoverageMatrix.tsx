@@ -74,6 +74,16 @@ export default function CoverageMatrix({
   // unit column self-evidently reads as a row selector.
   const [hoverRow, setHoverRow] = useState<string | null>(null);
 
+  // Many-column (consortium-level) joins flip the headers vertical: 26 college
+  // names sit directly over their cells with no diagonal bleed, so columns pack
+  // tighter and alignment is unambiguous. Few-column instances (SVAMP=5,
+  // SMCCD=3) keep the horizontal headers unchanged — vertical is purely the
+  // consortium accommodation. The threshold (12) is the point past which
+  // horizontal labels stop fitting their cells.
+  const vertical = cols.length > 12;
+  const cellMin = vertical ? 32 : CELL_MIN;   // tighter cells when many columns
+  const VHEAD = 134;                            // vertical-header row height (px)
+
   // flush also makes the matrix HEIGHT-RESPONSIVE: rows flex-grow over their
   // natural sizes (never shrink — in auto bands the matrix still defines its
   // row height), so an expanded panel's surplus distributes into the rows
@@ -82,7 +92,7 @@ export default function CoverageMatrix({
   return (
     <>
     <div style={flush ? { overflowX: "auto", padding: "4px 2px 0", flex: 1, minHeight: 0, display: "flex", flexDirection: "column" } : { marginTop: 20, border: "1px solid rgba(255,255,255,.09)", borderRadius: 12, background: "rgba(0,0,0,.18)", padding: "16px 18px", overflowX: "auto" }}>
-      <div style={{ minWidth: LABEL_W + cols.length * (CELL_MIN + 4), ...(flush ? { flex: 1, minHeight: 0, display: "flex", flexDirection: "column" } : {}) }}>
+      <div style={{ minWidth: LABEL_W + cols.length * (cellMin + 4), ...(flush ? { flex: 1, minHeight: 0, display: "flex", flexDirection: "column" } : {}) }}>
         {/* header row */}
         <div style={{ display: "flex", gap: 4, alignItems: "flex-end", padding: "0 6px" }}>
           <div style={{ flex: `0 0 ${LABEL_W}px`, fontFamily: MONO, fontSize: 9.5, letterSpacing: ".1em", textTransform: "uppercase", color: "#5e6a83", whiteSpace: "nowrap", paddingBottom: 11 }}>
@@ -90,8 +100,17 @@ export default function CoverageMatrix({
           </div>
           {cols.map((col) => {
             const on = col.id === selectedCol;
-            return (
-              <div key={"h-" + col.id} style={{ flex: "1 1 0", minWidth: CELL_MIN, display: "flex", alignItems: "center", justifyContent: "center", gap: 6, fontSize: 11.5, fontWeight: 600, paddingBottom: 11, color: on ? col.brand : "#9aa6bd", boxShadow: on ? `inset 0 -2px 0 ${col.brand}` : "none", transition: "color .15s" }}>
+            return vertical ? (
+              // Vertical header — the name reads bottom-to-top directly over its
+              // column (no diagonal bleed); a 2px brand bar at the base ties the
+              // color to the column in lieu of the inline dot.
+              <div key={"h-" + col.id} style={{ flex: "1 1 0", minWidth: cellMin, position: "relative", height: VHEAD, borderBottom: `2px solid ${on ? col.brand : hexA(col.brand, 0.5)}` }}>
+                <div style={{ position: "absolute", bottom: 9, left: "50%", transform: "translateX(-50%) rotate(180deg)", writingMode: "vertical-rl", whiteSpace: "nowrap", fontSize: 11, fontWeight: 600, color: on ? col.brand : "#9aa6bd", transition: "color .15s" }}>
+                  {col.label}
+                </div>
+              </div>
+            ) : (
+              <div key={"h-" + col.id} style={{ flex: "1 1 0", minWidth: cellMin, display: "flex", alignItems: "center", justifyContent: "center", gap: 6, fontSize: 11.5, fontWeight: 600, paddingBottom: 11, color: on ? col.brand : "#9aa6bd", boxShadow: on ? `inset 0 -2px 0 ${col.brand}` : "none", transition: "color .15s" }}>
                 <span style={{ width: 7, height: 7, borderRadius: "50%", background: col.brand, flex: "none" }} />
                 {col.label}
               </div>
@@ -135,7 +154,7 @@ export default function CoverageMatrix({
                 const isGap = lv === "none";
                 const gapBg = "rgba(255,255,255,.035)";
                 const base: CSSProperties = {
-                  flex: "1 1 0", minWidth: CELL_MIN, borderRadius: 7, cursor: "pointer",
+                  flex: "1 1 0", minWidth: cellMin, borderRadius: 7, cursor: "pointer",
                   ...(flush ? { minHeight: 32 } : { height: 32 }),
                   background: isGap ? gapBg : lv === "strong" ? hexA(brand, 0.9) : hexA(brand, 0.3),
                   boxShadow: isGap ? "none" : `inset 0 0 0 1px ${hexA(brand, 0.5)}`,

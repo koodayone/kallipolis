@@ -106,6 +106,12 @@ class ProgramsLandscape(BaseModel):
     n_colleges: int
     tops: list[TopSummary]
     matrix: ProgramCoverageMatrix | None = None  # per-(college, TOP) coverage grid
+    # True for rule-bearing instances (BACCC, sector-derived SMCCD): the coverage
+    # cell is gated on AWARDS — enrollment without a completer is not realized
+    # supply, so it reads as a gap, not "partial" (a cell with awards but no current
+    # enrollment stays partial — real-but-thinning supply). The curated SVAMP
+    # instance carries no rule and keeps the enrolled-OR-awarded coverage.
+    coverage_awards_only: bool = False
 
 
 class OccupationDemand(BaseModel):
@@ -267,11 +273,44 @@ def relevant_tops(spec: LandscapeSpec = SVAMP_SPEC) -> dict[str, set[str]]:
     domain per the SVAMP director."""
     all_top6 = list(_load_top_to_cip().keys())
     targets = set(spec.socs)
-    return {
+    universe = {
         top6: (socs & targets)
         for top6, socs in top6_to_soc(all_top6).items()
         if (socs & targets) and spec.in_scope(top6)
     }
+    # Rule-bearing instances apply the supply gate at the PROGRAM grain too:
+    # awards are the supply metric, so a program with no awarded completer in any
+    # member college (enrollment-only) is not realized supply and never enters the
+    # matrix/treemap/counts. This matches resolve()'s occupation-grain awards gate
+    # (active_tops), and because every surviving occupation already requires an
+    # awards-bearing feeder, dropping award-less programs cannot orphan a row.
+    # The curated SVAMP spec carries no rule and keeps the full universe.
+    rule = spec.soc_rule
+    if rule is not None and rule.active and universe:
+        awarded = _awarded_tops(spec, universe)
+        universe = {t: s for t, s in universe.items() if t in awarded}
+    return universe
+
+
+def _awarded_tops(spec: LandscapeSpec, tops) -> set[str]:
+    """TOP6s with >=1 awarded completer in the LATEST reported year, in any member
+    college — the supply gate's program grain. Matches resolve()'s active_tops and
+    the coverage-matrix's latest-year cells, so a kept TOP is exactly one with
+    current supply; a program last awarded in an older year is dormant and drops
+    (e.g. 210530 Industrial & Transportation Security, which last awarded a
+    completer in 2023-24)."""
+    with get_driver().session() as session:
+        latest = session.run(
+            "MATCH (ay:AcademicYear) RETURN max(ay.year) AS y"
+        ).single()["y"]
+        rows = session.run(
+            "MATCH (p:Program)-[a:AWARDED]->(ay:AcademicYear) "
+            "WHERE p.college IN $colleges AND p.top6 IN $tops "
+            "AND ay.year = $latest AND coalesce(a.count, 0) > 0 "
+            "RETURN DISTINCT p.top6 AS top6",
+            colleges=list(spec.colleges), tops=list(tops), latest=latest,
+        ).data()
+    return {r["top6"] for r in rows}
 
 
 # ── Builders (I/O) ──────────────────────────────────────────────────────────
@@ -740,6 +779,7 @@ def _assemble_landscape(
         n_colleges=len(colleges),
         tops=tops,
         matrix=matrix,
+        coverage_awards_only=(spec.soc_rule is not None and spec.soc_rule.active),
     )
 
 

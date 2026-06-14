@@ -39,28 +39,38 @@ export function fetchLandscapeIndex(): Promise<LandscapeIndexEntry[]> {
   return _cache;
 }
 
-// Build-resilience sentinel: `output: export` ERRORS on a dynamic route whose
-// generateStaticParams returns []. The route params come from a build-time fetch
-// of the backend index, which is empty if the backend isn't deployed yet (or is
-// briefly down). Emitting one real, stable (member, sector) keeps the build from
-// failing in that window — a rebuild once the index is live pre-renders the full
-// set, and even the sentinel page resolves correctly at runtime via the client
-// index fetch. Foothill·AM is a reliably-live comprehensive instance.
+// Generated landscapes are served by SPA fallback (see public/_redirects), NOT by
+// pre-rendering every instance. Pre-rendering the full catalog emitted ~3,000
+// pages × several files each and blew past Cloudflare Pages' 20,000-file deploy
+// limit — the deploy validation hard-failed even though the build succeeded. So
+// the build pre-renders exactly ONE sentinel shell per route (foothill·AM); the
+// _redirects splat serves that shell for any /landscape/<member>/<sector> miss,
+// and the client renders the real instance from the live URL (parseLandscapePath
+// + the index fetch). The deploy stays O(1) in pages; the catalog stays complete.
+// `output: export` also ERRORS on a dynamic route whose generateStaticParams
+// returns [] — the constant sentinel keeps it non-empty and decouples the build
+// from backend availability entirely (no build-time fetch).
 const SENTINEL = { member: "foothill", sector: "adm" };
 
-/** (member, sector) params for the generated dashboard + report routes,
- *  guaranteed non-empty (see SENTINEL). */
+/** Sentinel-only params for the generated dashboard + report routes. The full
+ *  catalog is reached at runtime via SPA fallback, not pre-rendered. */
 export async function landscapeRouteParams(): Promise<{ member: string; sector: string }[]> {
-  const idx = await fetchLandscapeIndex();
-  const params = idx.map((e) => ({ member: e.member_id, sector: e.sector_id }));
-  return params.length ? params : [SENTINEL];
+  return [SENTINEL];
 }
 
-/** Distinct-member params for the member-root route, guaranteed non-empty. */
+/** Sentinel-only param for the member-root route. */
 export async function memberRouteParams(): Promise<{ member: string }[]> {
-  const idx = await fetchLandscapeIndex();
-  const members = [...new Set(idx.map((e) => e.member_id))].map((member) => ({ member }));
-  return members.length ? members : [{ member: SENTINEL.member }];
+  return [{ member: SENTINEL.member }];
+}
+
+/** (member, sector) parsed from a `/landscape/<member>/<sector>[/report]`
+ *  pathname. Generated routes are SPA-fallback-served — one sentinel shell stands
+ *  in for every instance — so the rendered identity must come from the live URL,
+ *  not the route params baked into the sentinel's static HTML (which would always
+ *  read `foothill/adm`). Trailing/leading slashes tolerated. */
+export function parseLandscapePath(pathname: string): { member: string; sector: string } {
+  const parts = pathname.replace(/^\/+|\/+$/g, "").split("/"); // ["landscape", member, sector, "report"?]
+  return { member: parts[1] ?? "", sector: parts[2] ?? "" };
 }
 
 /** Build a LandscapeInstance for a generated instance from its index entry —

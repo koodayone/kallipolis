@@ -8,13 +8,12 @@
 // pinned reports use.
 
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import SvampView from "@/college-atlas/partnerships/SvampView";
 import { getCollegeAtlasConfig } from "@/config/collegeAtlasConfigs";
 import { SchoolConfig } from "@/config/schoolConfig";
 import { registerGeneratedInstance, type LandscapeInstance } from "@/college-atlas/partnerships/landscapeInstances";
-import { fetchLandscapeIndex, generatedInstance } from "@/college-atlas/partnerships/landscapeIndex";
+import { fetchLandscapeIndex, generatedInstance, parseLandscapePath } from "@/college-atlas/partnerships/landscapeIndex";
 
 const CENTER: React.CSSProperties = {
   position: "fixed", inset: 0, display: "flex", alignItems: "center",
@@ -22,28 +21,29 @@ const CENTER: React.CSSProperties = {
 };
 
 export default function ReportClient() {
-  const params = useParams<{ member: string; sector: string }>();
-  const member = (params?.member as string) ?? "";
-  const sector = (params?.sector as string) ?? "";
-  const id = `${member}-${sector}`;
-  const [ready, setReady] = useState<LandscapeInstance | null | undefined>(undefined);
+  // SPA fallback: identity resolved from the LIVE URL (parseLandscapePath), not
+  // useParams — the served HTML is the foothill·AM sentinel shell. See
+  // LandscapeClient for the full rationale.
+  const [resolved, setResolved] = useState<{ id: string; inst: LandscapeInstance | null } | undefined>(undefined);
 
   useEffect(() => {
     let alive = true;
+    const { member, sector } = parseLandscapePath(window.location.pathname);
+    const id = `${member}-${sector}`;
     fetchLandscapeIndex().then((idx) => {
       if (!alive) return;
       const entry = idx.find((e) => e.member_id === member && e.sector_id === sector);
       const inst = entry ? generatedInstance(entry) : null;
       if (inst) registerGeneratedInstance(inst);
-      setReady(inst);
+      setResolved({ id, inst });
     });
     return () => { alive = false; };
-  }, [member, sector]);
+  }, []);
 
-  if (ready === undefined) return <div style={CENTER}>Loading…</div>;
-  if (ready === null) return <div style={CENTER}>This report isn’t available.</div>;
+  if (resolved === undefined) return <div style={CENTER}>Loading…</div>;
+  if (resolved.inst === null) return <div style={CENTER}>This report isn’t available.</div>;
 
-  const colleges = ready.collegeIds
+  const colleges = resolved.inst.collegeIds
     .map((cid) => ({ id: cid, config: getCollegeAtlasConfig(cid) }))
     .filter((cc): cc is { id: string; config: SchoolConfig } => cc.config !== null);
 
@@ -55,7 +55,7 @@ export default function ReportClient() {
       transition={{ duration: 0.45 }}
       style={{ position: "fixed", inset: 0, zIndex: 10, background: "#060d1f", overflowY: "auto", overscrollBehavior: "none" }}
     >
-      <SvampView colleges={colleges} instance={id} />
+      <SvampView colleges={colleges} instance={resolved.id} />
     </motion.div>
   );
 }

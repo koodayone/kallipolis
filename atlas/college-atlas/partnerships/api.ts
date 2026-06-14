@@ -245,6 +245,10 @@ export type ApiSvampLandscape = {
   enrollment_terms: string[];   // chronologically-sorted term axis for every program's enrollment series
   colleges: ApiSvampCollege[];
   aggregate: ApiSvampAggregate;
+  // Rule-bearing instances (BACCC, sector-derived SMCCD, smccd-adm) gate the
+  // coverage cell on awards: enrollment-only reads as a gap, not "partial". Only
+  // the curated SVAMP instance is false (keeps enrolled-OR-awarded coverage).
+  coverage_awards_only: boolean;
 };
 
 // ── Session cache for the SVAMP getters ─────────────────────────────────────
@@ -265,6 +269,97 @@ function svampCached<T>(key: string, make: () => Promise<T>): Promise<T> {
  *  isolated (a success cached by one test must not satisfy the next). */
 export function _resetSvampCacheForTests(): void {
   _svampCache.clear();
+}
+
+// ── Occupational clusters (connected-component target clusters) ────────────
+// /clusters is the visualization payload (every number); /cluster-supply is the
+// school×TOP detail, a SEPARATE endpoint loaded on demand so the map stays light.
+export interface ApiClusterOccupation {
+  soc: string;
+  title: string;
+  annual_openings: number;
+  annual_wage: number;
+  growth_rate: number;
+  admitted: boolean;
+}
+export interface ApiClusterFeeder {
+  top6: string;
+  name: string;
+  awards: number;
+  colleges: number;
+}
+export interface ApiCluster {
+  id: string;
+  label: string;
+  sector_id: string;
+  sector_label: string;
+  accent: string;
+  demand: number;
+  supply: number;
+  gap: number;
+  coverage: number;
+  n_colleges: number;
+  n_programs: number;
+  wage_low: number;
+  wage_high: number;
+  occupations: ApiClusterOccupation[];
+  feeders: ApiClusterFeeder[];
+}
+export interface ApiClusterMap {
+  member: string;
+  n_clusters: number;
+  n_occupations: number;
+  total_demand: number;
+  total_supply: number;
+  total_gap: number;
+  clusters: ApiCluster[];
+}
+export interface ApiClusterSupplyTuple {
+  college: string;
+  top6: string;
+  program: string;
+  awards: number;
+}
+export interface ApiClusterSupply {
+  id: string;
+  label: string;
+  sector_id: string;
+  supply: number;
+  tuples: ApiClusterSupplyTuple[];
+}
+export interface ApiClusterSupplyMap {
+  member: string;
+  clusters: ApiClusterSupply[];
+}
+
+export async function getConsortiumClusters(member = "baccc"): Promise<ApiClusterMap> {
+  return svampCached(`clusters:${member}`, async () => {
+    const res = await fetch(`${API_BASE}/partnerships/${encodeURIComponent(member)}/clusters`);
+    if (!res.ok) throw new Error("Failed to fetch occupational clusters");
+    return res.json();
+  });
+}
+export async function getConsortiumClusterSupply(member = "baccc"): Promise<ApiClusterSupplyMap> {
+  return svampCached(`cluster-supply:${member}`, async () => {
+    const res = await fetch(`${API_BASE}/partnerships/${encodeURIComponent(member)}/cluster-supply`);
+    if (!res.ok) throw new Error("Failed to fetch cluster supply");
+    return res.json();
+  });
+}
+
+// The sectors where a member is in a consortium cluster — its real industry
+// targets. The school-lens rail hides industries that aren't on this list (they'd
+// render an empty dashboard).
+export interface ApiMemberClusterSectors {
+  member: string;
+  sectors: string[];
+}
+export async function getMemberClusterSectors(member: string): Promise<ApiMemberClusterSectors> {
+  return svampCached(`cluster-sectors:${member}`, async () => {
+    const res = await fetch(`${API_BASE}/partnerships/${encodeURIComponent(member)}/cluster-sectors`);
+    if (!res.ok) throw new Error("Failed to fetch cluster sectors");
+    return res.json();
+  });
 }
 
 export async function getSvampLandscape(instance: string = "svamp"): Promise<ApiSvampLandscape> {
@@ -311,6 +406,8 @@ export type ApiSvampProgramsLandscape = {
   n_colleges: number;
   tops: ApiSvampTopSummary[];
   matrix: ApiProgramCoverageMatrix | null;   // per-(college, TOP) coverage grid
+  // See ApiSvampLandscape.coverage_awards_only — awards-gated coverage cells.
+  coverage_awards_only: boolean;
 };
 
 // A SOC the TOP feeds; openings are the single regional value (never summed).
@@ -466,6 +563,7 @@ export async function getSvampOccupation(soc: string, college?: string, instance
 // hiring for the SVAMP occupations, for the regional employer map.
 export type ApiSvampEmployer = {
   name: string;
+  display_name: string | null;  // public-facing brand; card falls back to name
   lat: number;
   lng: number;
   sector: string | null;

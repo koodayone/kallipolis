@@ -56,6 +56,28 @@ const smccdSectorInstances: Record<string, LandscapeInstance> = Object.fromEntri
   ]),
 );
 
+// BACCC — the Bay Area Community College Consortium: the same 11-sector rail
+// over all 26 Bay colleges (the consortium-level join). Same sector metadata as
+// SMCCD (id/label/accent — the SWP priority sectors are shared); only the member
+// (26 colleges) and identity differ. The coverage matrix flips to vertical
+// headers at this column count (CoverageMatrix), the one rendering change the
+// 26-wide join needs. Mirrors landscape.py's BACCC registry.
+const BACCC_COLLEGE_IDS = ["berkeleycc", "cabrillo", "canada", "chabot", "ccsf", "alameda", "marin", "csm", "contracosta", "deanza", "diablo", "evergreen", "foothill", "gavilan", "laney", "laspositas", "losmedanos", "merritt", "mission", "napavalley", "ohlone", "sanjosecity", "santarosa", "skyline", "solano", "westvalley"];
+const BACCC_SECTORS = SMCCD_SECTORS.map((s) => ({ ...s, short: s.short.replace("SMCCD", "BACCC") }));
+const bacccSectorInstances: Record<string, LandscapeInstance> = Object.fromEntries(
+  BACCC_SECTORS.map((s) => [
+    `baccc-${s.id}`,
+    {
+      id: `baccc-${s.id}`,
+      name: `Bay Area Community College Consortium — ${s.label}`,
+      shortTitle: s.short,
+      accent: s.accent,
+      collegeIds: BACCC_COLLEGE_IDS,
+      published: s.published,
+    },
+  ]),
+);
+
 export const LANDSCAPE_INSTANCES: Record<string, LandscapeInstance> = {
   svamp: {
     id: "svamp",
@@ -67,6 +89,8 @@ export const LANDSCAPE_INSTANCES: Record<string, LandscapeInstance> = {
   },
   // The bare `smccd` id is intentionally absent — /smccd redirects to /smccd-adm.
   ...smccdSectorInstances,
+  // The bare `baccc` id is intentionally absent — /baccc redirects to /baccc-adm.
+  ...bacccSectorInstances,
 };
 
 // Draft (unpublished) instances render only OUTSIDE a production build — local
@@ -113,13 +137,17 @@ export const RAIL_ORDER = ["retail", "edhd", "health", "ecu", "adm", "biotech", 
  *  (priority industries centered) — the data behind the industry switcher.
  *  "smccd-*" → the 11 SMCCD sectors; any other instance → [] (no rail). */
 export function memberSectors(instanceId: string): SectorTab[] {
-  if (!instanceId.startsWith("smccd-")) return [];
-  const byId = new Map(SMCCD_SECTORS.map((s) => [s.id, s]));
+  const member =
+    instanceId.startsWith("smccd-") ? { prefix: "smccd", table: SMCCD_SECTORS } :
+    instanceId.startsWith("baccc-") ? { prefix: "baccc", table: BACCC_SECTORS } :
+    null;
+  if (!member) return [];
+  const byId = new Map(member.table.map((s) => [s.id, s]));
   return RAIL_ORDER
     .map((id) => byId.get(id))
-    .filter((s): s is (typeof SMCCD_SECTORS)[number] => !!s)
+    .filter((s): s is { id: string; label: string; short: string; accent: string; published: boolean } => !!s)
     .map((s) => ({
-      instanceId: `smccd-${s.id}`,
+      instanceId: `${member.prefix}-${s.id}`,
       sectorId: s.id,
       label: s.label,
       accent: s.accent,

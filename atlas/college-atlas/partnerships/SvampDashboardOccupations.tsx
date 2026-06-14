@@ -28,7 +28,7 @@ import DemandTreemap from "@/college-atlas/partnerships/DemandTreemap";
 import CoverageMatrix from "@/college-atlas/partnerships/CoverageMatrix";
 import TrendChart from "@/college-atlas/partnerships/TrendChart";
 import CurriculumPathway from "@/college-atlas/partnerships/CurriculumPathway";
-import { DashPanel, DashBandSet, ScopeBanner, SvampLoading, ScopeAccentContext, type DashBandDef } from "@/college-atlas/partnerships/SvampDashboard";
+import { DashPanel, DashBandSet, ScopeBanner, SvampLoading, ScopeAccentContext, TotalStrip, type DashBandDef } from "@/college-atlas/partnerships/SvampDashboard";
 import { shortName, leadOverlayColors, awardYearLabel } from "@/college-atlas/partnerships/chartKit";
 import { getSvampLandscape, getSvampOccupation } from "@/college-atlas/partnerships/api";
 import type { ApiSvampLandscape, ApiSvampCell, ApiSvampOccupationReport } from "@/college-atlas/partnerships/api";
@@ -40,10 +40,15 @@ const DEMAND_ACCENT = "#c9a84c"; // demand reference gold
 
 type CollegeRef = { id: string; config: SchoolConfig };
 
-// Cell coverage level — activity-keyed, identical to the report's level().
-function level(cell: ApiSvampCell | undefined): "none" | "partial" | "strong" {
+// Cell coverage level — activity-keyed. Rule-bearing instances (awardsOnly)
+// gate coverage on awards: a college that only enrolls toward an occupation (no
+// completer) reads as a gap, not "partial"; awards ⇒ strong if also enrolled,
+// else partial (real-but-thinning supply). Curated instances keep the report's
+// enrolled-OR-awarded coverage.
+function level(cell: ApiSvampCell | undefined, awardsOnly: boolean): "none" | "partial" | "strong" {
   if (!cell) return "none";
   const enrolled = cell.enrolled, awarded = cell.feeding_awards > 0;
+  if (awardsOnly) return awarded ? (enrolled ? "strong" : "partial") : "none";
   if (enrolled && awarded) return "strong";
   return enrolled || awarded ? "partial" : "none";
 }
@@ -102,7 +107,7 @@ function OccupationSummary({ report }: { report: ApiSvampOccupationReport | null
   );
 }
 
-export default function SvampDashboardOccupations({ colleges, instance = "svamp" }: { colleges: CollegeRef[]; instance?: string }) {
+export default function SvampDashboardOccupations({ colleges, instance = "svamp", primaryCollege = null }: { colleges: CollegeRef[]; instance?: string; primaryCollege?: string | null }) {
   const [land, setLand] = useState<ApiSvampLandscape | null>(null);
   const [soc, setSoc] = useState<string | null>(null);
   // null ⇒ consortium scope; a college id ⇒ that college's scope.
@@ -127,9 +132,13 @@ export default function SvampDashboardOccupations({ colleges, instance = "svamp"
         setLand(d);
         const cells = d.colleges[0]?.cells ?? [];
         const u = urlRef.current;
-        const urlSoc = u.soc && cells.some((c) => c.soc_code === u.soc) ? u.soc : null;
+        // Default among the central school's supported occupations (see possessedSocs).
+        const primaryCells = primaryCollege ? (d.colleges.find((c) => c.name === primaryCollege)?.cells ?? []) : null;
+        const poss = primaryCells ? new Set(primaryCells.filter((c) => c.feeding_awards > 0).map((c) => c.soc_code)) : null;
+        const own = poss ? cells.filter((c) => poss.has(c.soc_code)) : cells;
+        const urlSoc = u.soc && own.some((c) => c.soc_code === u.soc) ? u.soc : null;
         // Default: the highest-demand occupation (the report's landing too).
-        const topSoc = [...cells].sort((a, b) => (b.annual_openings ?? 0) - (a.annual_openings ?? 0))[0]?.soc_code ?? null;
+        const topSoc = [...own].sort((a, b) => (b.annual_openings ?? 0) - (a.annual_openings ?? 0))[0]?.soc_code ?? null;
         setSoc((cur) => cur ?? urlSoc ?? topSoc);
         if (u.college && colleges.some((c) => c.id === u.college)) setCollegeId(u.college);
       })
@@ -161,11 +170,31 @@ export default function SvampDashboardOccupations({ colleges, instance = "svamp"
   if (!land) return <SvampLoading />;
 
   const refCells = land.colleges[0]?.cells ?? [];
-  const cols = colleges.map((c) => ({ id: c.id, label: shortName(c.config.name), brand: c.config.brandColorLight }));
+  // Occupations lens shows the CENTRAL school's supported occupations — the ones its
+  // own programs feed. A school actor can't target an occupation it doesn't produce
+  // for, so those rows drop; the cross-school coverage of the ones it DOES produce
+  // for is what stays. Consortium instances (primaryCollege == null) keep every row.
+  const possessedSocs = primaryCollege
+    ? new Set((land.colleges.find((c) => c.name === primaryCollege)?.cells ?? []).filter((c) => c.feeding_awards > 0).map((c) => c.soc_code))
+    : null;
+  const shownDemandCells = possessedSocs ? refCells.filter((c) => possessedSocs.has(c.soc_code)) : refCells;
+  const totalDemand = shownDemandCells.reduce((s, c) => s + (c.annual_openings ?? 0), 0);
+  // Empty-column drop, scoped to the shown occupations: a college supporting none of
+  // them is an all-gap column. Awards-gated views only; curated SVAMP keeps all.
+  const participating = land.coverage_awards_only
+    ? new Set(land.colleges.filter((col) => col.cells.some((c) => c.feeding_awards > 0 && (!possessedSocs || possessedSocs.has(c.soc_code)))).map((col) => col.name))
+    : null;
+  const shownColleges = participating ? colleges.filter((c) => participating.has(c.config.name)) : colleges;
+  const cols = shownColleges.map((c) => ({ id: c.id, label: shortName(c.config.name), brand: c.config.brandColorLight }));
+  // Consortium scale: matrix takes a full-width row, the demand treemap drops
+  // below. Keyed off the full MEMBER count, not the displayed count, so every
+  // BACCC view is full-width; the few-member curated instances (SVAMP/SMCCD)
+  // keep the 2:1. (Header orientation still flips on displayed cols.)
+  const wide = colleges.length >= 12;
   // Row set via the shared adapter (svampLabels.occupationMatrixRows): demand
   // sort + role vocabulary + SOC provenance sublabel, identical to the report
   // by construction.
-  const rows = occupationMatrixRows(refCells);
+  const rows = occupationMatrixRows(refCells).filter((r) => !possessedSocs || possessedSocs.has(r.id));
   const cellOf = (rowId: string, colId: string): ApiSvampCell | undefined => {
     const name = nameById.get(colId);
     return land.colleges.find((c) => c.name === name)?.cells.find((c) => c.soc_code === rowId);
@@ -196,10 +225,11 @@ export default function SvampDashboardOccupations({ colleges, instance = "svamp"
     node: (
       <DashPanel title="Regional Demand" authority="COE" accent={scopeBrand}>
         <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
+          <TotalStrip label="Total regional demand" value={totalDemand} accent={scopeBrand} />
           {/* Ring tracks the entity in BOTH scopes — the SOC's share of
               regional demand is scope-invariant (demand is regional). Scope is
               carried by hue (the ramp wears scopeBrand) and the banner. */}
-          <DemandTreemap cells={refCells} total={land.aggregate.regional_demand_total} selected={soc} onSelect={selectConsortium} accent={scopeBrand} fill />
+          <DemandTreemap cells={shownDemandCells} total={land.aggregate.regional_demand_total} selected={soc} onSelect={selectConsortium} accent={scopeBrand} fill />
         </div>
       </DashPanel>
     ),
@@ -217,12 +247,16 @@ export default function SvampDashboardOccupations({ colleges, instance = "svamp"
             flush
             cols={cols}
             rows={rows}
-            level={(r, c) => level(cellOf(r, c))}
+            level={(r, c) => level(cellOf(r, c), land.coverage_awards_only)}
             selectedRow={soc}
             selectedCol={collegeId}
             cornerLabel={OCC_MATRIX_CORNER}
-            gapCellHint="no enrollment or awards here"
-            legend={[
+            gapCellHint={land.coverage_awards_only ? "no awards here" : "no enrollment or awards here"}
+            legend={land.coverage_awards_only ? [
+              { k: "Covered", sub: "awards + enrollment", bg: "rgba(148,168,201,.92)", ring: true },
+              { k: "Partial", sub: "awards, no enrollment", bg: "rgba(148,168,201,.3)", ring: true },
+              { k: "Gap", sub: "no awards", bg: "rgba(255,255,255,.035)", ring: false },
+            ] : [
               { k: "Covered", sub: "enrollment & awards", bg: "rgba(148,168,201,.92)", ring: true },
               { k: "Partial", sub: "enrollment or awards", bg: "rgba(148,168,201,.3)", ring: true },
               { k: "Gap", sub: "neither", bg: "rgba(255,255,255,.035)", ring: false },
@@ -252,7 +286,9 @@ export default function SvampDashboardOccupations({ colleges, instance = "svamp"
           no demand line — see header). The set is the layout lab's swap
           boundary. */}
       <DashBandSet bands={[
-        { id: "occupations.top", panels: [coveragePanel, demandPanel] },
+        ...(wide
+          ? [{ id: "occupations.coverageRow", panels: [coveragePanel] }, { id: "occupations.demandRow", panels: [demandPanel] }]
+          : [{ id: "occupations.top", panels: [coveragePanel, demandPanel] }]),
         ...buildScopeBands(),
       ]} />
     </div>

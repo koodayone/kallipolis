@@ -24,6 +24,7 @@ import { useRouter } from "next/navigation";
 import { MONO } from "@/college-atlas/partnerships/reportChrome";
 import { memberSectors, isLandscapeViewable, RAIL_ORDER } from "@/college-atlas/partnerships/landscapeInstances";
 import { fetchLandscapeIndex, type LandscapeIndexEntry } from "@/college-atlas/partnerships/landscapeIndex";
+import { getMemberClusterSectors } from "@/college-atlas/partnerships/api";
 import { INDUSTRY_FORMS } from "@/college-atlas/partnerships/industryForms";
 
 type RailItem = { sectorId: string; label: string; href: string; active: boolean };
@@ -36,31 +37,52 @@ function pinnedItems(instance: string): RailItem[] {
 }
 
 // Generated (/landscape/<member>/<sector>): the member's live sectors from the
-// index, curatorial order, /landscape/<member>/<sector> URLs.
-function generatedItems(instance: string, index: LandscapeIndexEntry[]): RailItem[] {
+// index, curatorial order, /landscape/<member>/<sector> URLs. Filtered to the
+// member's CLUSTER TARGETS (targetSectors) — an industry the school isn't in a
+// cluster for renders an empty dashboard, so it's hidden. The current sector is
+// always kept so the active item never vanishes; null targets = no filter (the
+// set hasn't resolved or failed).
+function generatedItems(instance: string, index: LandscapeIndexEntry[], targetSectors: Set<string> | null): RailItem[] {
   const current = index.find((e) => e.id === instance);
   if (!current) return [];
   const bySector = new Map(index.filter((e) => e.member_id === current.member_id).map((e) => [e.sector_id, e]));
-  return RAIL_ORDER.filter((sid) => bySector.has(sid)).map((sid) => {
-    const e = bySector.get(sid)!;
-    return { sectorId: sid, label: e.sector_label, href: `/landscape/${e.member_id}/${sid}`, active: e.id === instance };
-  });
+  return RAIL_ORDER
+    .filter((sid) => bySector.has(sid))
+    .filter((sid) => !targetSectors || targetSectors.has(sid) || sid === current.sector_id)
+    .map((sid) => {
+      const e = bySector.get(sid)!;
+      return { sectorId: sid, label: e.sector_label, href: `/landscape/${e.member_id}/${sid}`, active: e.id === instance };
+    });
 }
 
 export default function IndustryRail({ instance, activeAccent }: { instance: string; activeAccent: string }) {
   const router = useRouter();
-  const isPinned = instance.startsWith("smccd-");
-  // Generated members read their sibling sectors from the index (async, cached).
+  const isPinned = instance.startsWith("smccd-") || instance.startsWith("baccc-");
+  // Generated members read their sibling sectors from the index (async, cached)
+  // and their cluster TARGETS (the sectors worth showing). Both settle before the
+  // rail paints, so it never flashes the unfiltered set.
   const [index, setIndex] = useState<LandscapeIndexEntry[] | null>(isPinned ? [] : null);
+  const [targets, setTargets] = useState<Set<string> | null>(null);
+  const [targetsDone, setTargetsDone] = useState(isPinned);
   useEffect(() => {
     if (isPinned) return;
     let alive = true;
-    fetchLandscapeIndex().then((idx) => { if (alive) setIndex(idx); });
+    fetchLandscapeIndex().then((idx) => {
+      if (!alive) return;
+      setIndex(idx);
+      const current = idx.find((e) => e.id === instance);
+      if (!current) { setTargetsDone(true); return; }
+      getMemberClusterSectors(current.member_id)
+        .then((r) => { if (alive) setTargets(new Set(r.sectors)); })
+        .catch(() => {})
+        .finally(() => { if (alive) setTargetsDone(true); });
+    });
     return () => { alive = false; };
   }, [isPinned, instance]);
 
-  const items = isPinned ? pinnedItems(instance) : index ? generatedItems(instance, index) : [];
-  if (items.length < 2) return null;
+  const ready = isPinned || (index !== null && targetsDone);
+  const items = isPinned ? pinnedItems(instance) : index ? generatedItems(instance, index, targets) : [];
+  if (!ready || items.length < 2) return null;
 
   return (
     <div style={{ display: "flex", gap: 2, overflowX: "auto", paddingBottom: 10, marginBottom: 12, borderBottom: "1px solid rgba(255,255,255,.06)" }}>
@@ -80,7 +102,13 @@ export default function IndustryRail({ instance, activeAccent }: { instance: str
               if (it.active) return;
               // Preserve the current surface (dashboard vs /report) + selection.
               const isReport = window.location.pathname.endsWith("/report");
-              router.push(`${it.href}${isReport ? "/report" : ""}${window.location.search}`);
+              const href = `${it.href}${isReport ? "/report" : ""}${window.location.search}`;
+              // Pinned routes are pre-rendered → fast client nav. Generated
+              // /landscape/* routes are SPA-fallback-served (no per-instance RSC
+              // payload), so router.push would 404 the prefetch and stall;
+              // hard-navigate so the request re-enters through the _redirects shell.
+              if (isPinned) router.push(href);
+              else window.location.href = href;
             }}
             onMouseEnter={(e) => { if (!it.active) (e.currentTarget as HTMLElement).style.color = "#cdd5e4"; }}
             onMouseLeave={(e) => { if (!it.active) (e.currentTarget as HTMLElement).style.color = "#5e6a83"; }}

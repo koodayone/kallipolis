@@ -122,7 +122,7 @@ export default function EmployerMap({
     labelRects.push({ id, x1: cx - w / 2 - PAD_X, x2: cx + w / 2 + PAD_X, y1: baseY - fontSize - PAD_Y, y2: baseY + PAD_Y });
   };
   employers.forEach((e, i) => {
-    if (selected === e.name || hover === e.name) addRect("e:" + e.name, pos[i].x, pos[i].y, e.name, 12.5, -16);
+    if (selected === e.name || hover === e.name) addRect("e:" + e.name, pos[i].x, pos[i].y, e.display_name ?? e.name, 12.5, -16);
   });
   colleges.forEach((c, i) => {
     if (colHover === c.name) addRect("c:" + c.name, cpos[i].x, cpos[i].y, c.name, 12.5, -16);
@@ -201,7 +201,7 @@ export default function EmployerMap({
                   stroke="#ffffff" strokeOpacity={on ? 0.9 : 0.55} strokeWidth={on ? 0.9 : 0.7} />
                 {on && (
                   <text textAnchor="middle" y={-16} style={{ fontFamily: FONT, fontSize: 12.5, fontWeight: 600, fill: "#ffffff", pointerEvents: "none" }}>
-                    {e.name}
+                    {e.display_name ?? e.name}
                   </text>
                 )}
               </g>
