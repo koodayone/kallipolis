@@ -153,7 +153,10 @@ export default function SvampDashboardOccupations({ colleges, instance = "svamp"
   useEffect(() => {
     if (!soc) return;
     let alive = true;
-    getSvampOccupation(soc, collegeName, instance).then((r) => { if (alive) setReport(r); }).catch((e) => setErr(e.message));
+    // includeEmployers=false: this lens renders no Partnership Opportunities
+    // list, so it skips the region-wide employer gather (~94% of the payload
+    // and the report's dominant query cost).
+    getSvampOccupation(soc, collegeName, instance, false).then((r) => { if (alive) setReport(r); }).catch((e) => setErr(e.message));
     return () => { alive = false; };
   }, [soc, collegeName, instance]);
 

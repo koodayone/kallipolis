@@ -20,7 +20,7 @@ import TrendChart from "@/college-atlas/partnerships/TrendChart";
 import WageOutcomes from "@/college-atlas/partnerships/WageOutcomes";
 import OccupationDemandTable from "@/college-atlas/partnerships/OccupationDemandTable";
 import ProgramPathway from "@/college-atlas/partnerships/ProgramPathway";
-import { DashPanel, DashBandSet, ScopeBanner, SvampLoading, ScopeAccentContext, TotalStrip, type DashBandDef } from "@/college-atlas/partnerships/SvampDashboard";
+import { DashPanel, DashBandSet, ScopeBanner, SvampLoading, ScopeAccentContext, TotalStrip, SupplySplit, type DashBandDef } from "@/college-atlas/partnerships/SvampDashboard";
 import {
   shortName, leadOverlayColors, awardYearLabel, shortAwardType, shortCreditType,
 } from "@/college-atlas/partnerships/chartKit";
@@ -124,6 +124,12 @@ export default function SvampDashboardPrograms({ colleges, instance = "svamp", p
   const rows = lensTops
     .filter((t) => t.enrollment_total > 0 || t.awards_total > 0)
     .map((t) => ({ id: t.top6, label: t.name, sublabel: `TOP ${t.top6}`, title: t.name }));
+  // The central school's OWN supply across its programs (its cells' awards) —
+  // shown against the consortium total (totalSupply) so the coordinator sees their
+  // share of the regional supply in their programs.
+  const schoolSupply = primaryCollege
+    ? lensTops.reduce((s, t) => s + (cellByKey.get(primaryCollege + "|" + t.top6)?.awards ?? 0), 0)
+    : 0;
   const level = (rowId: string, colId: string): "none" | "partial" | "strong" => {
     const name = nameById.get(colId);
     const cell = name ? cellByKey.get(name + "|" + rowId) : undefined;
@@ -163,7 +169,9 @@ export default function SvampDashboardPrograms({ colleges, instance = "svamp", p
     node: (
       <DashPanel title="Program Supply" authority="DataMart" accent={scopeBrand}>
         <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
-          <TotalStrip label="Total program supply" value={totalSupply} accent={scopeBrand} />
+          {primaryCollege
+            ? <SupplySplit schoolLabel={shortName(primaryCollege)} school={schoolSupply} consortium={totalSupply} accent={scopeBrand} />
+            : <TotalStrip label="Total program supply" value={totalSupply} accent={scopeBrand} />}
           {/* Ring tracks the entity in BOTH scopes — the selected program's
               place in the supply distribution is scope-invariant. Scope is
               carried by hue (the ramp wears scopeBrand) and the banner, so the

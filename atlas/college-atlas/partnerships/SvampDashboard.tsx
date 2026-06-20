@@ -601,6 +601,36 @@ export function TotalStrip({ label, value, accent }: { label: string; value: num
   );
 }
 
+// Program-supply summary for a school lens: the school's own supply against the
+// consortium's, with a share bar — "how much of the regional supply in my programs
+// is mine." School stat wears the lens accent; consortium is neutral context.
+export function SupplySplit({ schoolLabel, school, consortium, accent }: { schoolLabel: string; school: number; consortium: number; accent: string }) {
+  const pct = consortium > 0 ? Math.round((school / consortium) * 100) : 0;
+  const stat = (label: string, value: number, bar: string) => (
+    <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+      <span style={{ display: "flex", alignItems: "center", gap: 6, fontFamily: MONO, fontSize: 9.5, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)" }}>
+        <span style={{ width: 3, height: 10, borderRadius: 2, background: bar, flex: "none" }} />{label}
+      </span>
+      <span style={{ fontFamily: MONO, fontSize: 19, fontWeight: 600, color: "#fff", lineHeight: 1 }}>
+        {value.toLocaleString("en-US")}<span style={{ fontSize: 10, fontWeight: 500, color: "rgba(255,255,255,0.42)", marginLeft: 3 }}>/yr</span>
+      </span>
+    </div>
+  );
+  return (
+    <div style={{ padding: "8px 11px 9px", marginBottom: 8, borderRadius: 8, background: "rgba(255,255,255,0.055)", border: "1px solid rgba(255,255,255,0.09)", flex: "none" }}>
+      <div style={{ display: "flex", marginBottom: 8 }}>
+        {stat(schoolLabel, school, accent)}
+        <div style={{ width: 1, background: "rgba(255,255,255,0.1)", margin: "0 14px" }} />
+        {stat("Consortium", consortium, "rgba(255,255,255,0.35)")}
+      </div>
+      <div style={{ height: 6, borderRadius: 3, background: "rgba(255,255,255,0.08)", overflow: "hidden", marginBottom: 4 }}>
+        <div style={{ width: `${Math.max(2, pct)}%`, height: "100%", borderRadius: 3, background: accent }} />
+      </div>
+      <div style={{ fontFamily: MONO, fontSize: 10, color: "rgba(255,255,255,0.5)" }}>{schoolLabel} produces {pct}% of consortium supply</div>
+    </div>
+  );
+}
+
 export default function SvampDashboard({ instance = "svamp", identity }: { instance?: string; identity?: LandscapeInstance }) {
   // Pinned instances resolve identity from the registry; a generated instance
   // (no registry row) passes it in, built from the backend landscape index.

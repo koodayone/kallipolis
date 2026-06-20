@@ -52,7 +52,12 @@ export default function SurfaceNav({ active, withBrand = false, instance = "svam
   // /<instance> — identical to the prior behavior.
   const [base, setBase] = useState<string | null>(null);
   useEffect(() => {
-    const p = window.location.pathname;
+    // Tolerate the static-export trailing slash. trailingSlash:true serves the
+    // report at /<instance>/report/, so window.location.pathname carries a
+    // trailing slash; a raw endsWith("/report") check then misses and base keeps
+    // the /report segment — dead-ending the Dashboard toggle back on the report.
+    // Normalize the trailing slash off before stripping the suffix.
+    const p = window.location.pathname.replace(/\/$/, "");
     setBase(p.endsWith("/report") ? p.slice(0, -"/report".length) : p);
   }, []);
   return (

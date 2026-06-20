@@ -101,7 +101,10 @@ export default function IndustryRail({ instance, activeAccent }: { instance: str
               e.preventDefault();
               if (it.active) return;
               // Preserve the current surface (dashboard vs /report) + selection.
-              const isReport = window.location.pathname.endsWith("/report");
+              // Normalize the static-export trailing slash (the report is served
+              // at .../report/, so a raw endsWith would miss and drop the report
+              // surface when switching sectors).
+              const isReport = window.location.pathname.replace(/\/$/, "").endsWith("/report");
               const href = `${it.href}${isReport ? "/report" : ""}${window.location.search}`;
               // Pinned routes are pre-rendered → fast client nav. Generated
               // /landscape/* routes are SPA-fallback-served (no per-instance RSC

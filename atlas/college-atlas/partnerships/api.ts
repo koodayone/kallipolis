@@ -544,15 +544,22 @@ export async function getSvampProgram(top6: string, college?: string, instance: 
   });
 }
 
-export async function getSvampOccupation(soc: string, college?: string, instance: string = "svamp"): Promise<ApiSvampOccupationReport> {
+export async function getSvampOccupation(soc: string, college?: string, instance: string = "svamp", includeEmployers: boolean = true): Promise<ApiSvampOccupationReport> {
   // The aggregated (consortium) view of one occupation — demand, consortium
   // supply + gap, the feeding programs, and per-college series + curriculum.
   // `college` scopes ONLY the SOC-anchored crosswalk's taught/active marking
   // to that one member college (the dashboard's college scope — the pathway
   // lights just that school's feeding TOPs); every other field stays
   // consortium. Omitted ⇒ the consortium-union crosswalk.
-  const qs = college ? `?college=${encodeURIComponent(college)}` : "";
-  return svampCached(`${instance}:occupation:${soc}:${college ?? ""}`, async () => {
+  //
+  // `includeEmployers=false` opts out of the Partnership Opportunities gather —
+  // a region-wide employer list (~94% of the payload) that the dashboard
+  // occupations lens never renders. The report surfaces keep the default.
+  const params = new URLSearchParams();
+  if (college) params.set("college", college);
+  if (!includeEmployers) params.set("employers", "false");
+  const qs = params.toString() ? `?${params.toString()}` : "";
+  return svampCached(`${instance}:occupation:${soc}:${college ?? ""}:${includeEmployers ? "e" : "0"}`, async () => {
     const res = await fetch(`${API_BASE}/partnerships/${instance}/occupation/${encodeURIComponent(soc)}${qs}`);
     if (!res.ok) throw new Error("Failed to fetch occupation report");
     return res.json();
