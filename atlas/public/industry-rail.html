@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kallipolis · industry rail — refined (Option 2)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --bg:#070b13; --nav:#0a0f1b; --line:#1a2333; --line-2:#222d40;
+    --ink:#eef2f9; --dim:#8493ac; --faint:#54627d;
+    --green:#5cb87a; --amber:#caa84a;
+    --accent:var(--green); --active:var(--green); /* --active = rail active color */
+    --sans:"Schibsted Grotesk",sans-serif; --mono:"Spline Sans Mono",monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+  .page{max-width:1280px;margin:0 auto;padding:30px 24px 120px}
+  .lab{font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--dim);font-weight:600;margin:0 4px 14px}
+  .desc{color:var(--dim);font-size:13.5px;line-height:1.55;max-width:80ch;margin:10px 4px 16px}
+  .desc b{color:var(--ink)} .desc em{font-style:normal;color:var(--active)}
+
+  .controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:6px 4px 22px}
+  .seg{display:inline-flex;border:1px solid var(--line-2);border-radius:999px;overflow:hidden;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+  .seg span{padding:7px 14px;cursor:pointer;color:var(--dim)}
+  .seg span.on{background:#121a2b;color:var(--ink)}
+  .ctitle{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-right:2px}
+
+  .nav{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--nav);box-shadow:0 24px 60px -34px #000;transition:background .5s}
+  .row1{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:18px 26px}
+  .logo{display:flex;align-items:center;gap:12px}.logo .mk{width:36px;height:36px}.logo b{font-size:20px;font-weight:700}
+  .ttl{text-align:center}
+  .ttl .t{font-weight:700;font-size:21px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+  .ttl .pm{font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--amber);margin-top:4px}
+  .right{display:flex;align-items:center;gap:18px;justify-content:flex-end}
+  .rbtn{display:flex;align-items:center;gap:8px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);font-weight:600}
+  .rbtn svg{width:16px;height:16px}.rbtn.box{border:1px solid var(--line-2);border-radius:9px;padding:9px 14px;color:var(--ink)}
+
+  /* ── THE RAIL ──────────────────────────────────────────────── */
+  .rail{position:relative;display:flex;gap:2px;padding:8px 18px 0;border-top:1px solid var(--line);background:linear-gradient(180deg,#0b1120,transparent)}
+  .ind{position:relative;flex:1 1 0;min-width:62px;display:flex;flex-direction:column;align-items:center;gap:6px;
+       padding:11px 4px 13px;border-radius:10px 10px 0 0;cursor:pointer;transition:.2s;border:1px solid transparent;border-bottom:0}
+  .ind svg{width:22px;height:22px;color:var(--faint);transition:.2s}
+  .ind .nm{font-size:8.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--faint);white-space:nowrap;transition:.2s}
+  .ind:hover{background:#0f1626}.ind:hover svg,.ind:hover .nm{color:var(--dim)}
+  .ind.on svg{color:var(--ic)}
+  .ind.on .nm{color:var(--ink);font-weight:600}
+  .ind.on{background:linear-gradient(180deg,color-mix(in srgb,var(--ic) 14%, transparent),transparent)}
+  .ind.thin{opacity:.4}.ind.thin:hover{opacity:.7}
+  .ind .dot{position:absolute;top:7px;right:calc(50% - 16px);width:4px;height:4px;border-radius:50%;background:var(--ic);opacity:0;transition:.2s}
+  .ind.on .dot{opacity:0}
+  .nolabel .ind .nm{display:none}
+  .nolabel .ind{padding:13px 4px 15px}
+  /* sliding active underline */
+  .slider{position:absolute;bottom:0;height:2.5px;background:var(--active);border-radius:3px;transition:left .32s cubic-bezier(.34,1.2,.4,1),width .32s cubic-bezier(.34,1.2,.4,1),background .3s;box-shadow:0 0 12px -2px var(--active)}
+
+  .row2{display:flex;align-items:center;justify-content:space-between;padding:0 26px;border-top:1px solid var(--line);height:54px}
+  .tabs{display:flex;gap:30px;height:100%}
+  .tab{display:flex;align-items:center;gap:9px;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);font-weight:600;position:relative;background:none;border:0}
+  .tab svg{width:17px;height:17px}.tab.on{color:var(--ink)}
+  .tab.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--green);border-radius:2px}
+  .chips{display:flex;align-items:center;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+  .chips .c{padding:0 14px;border-right:1px solid var(--line)}.chips .c:last-child{border:0;color:var(--green)}
+  .chips .c b{color:var(--ink);font-weight:600;font-family:var(--mono);transition:color .3s}
+  .chips .c b.flash{color:var(--active)}
+  .crumb{padding:16px 26px 18px;border-top:1px solid var(--line);font-size:14px;color:var(--dim)}
+  .crumb .cz{color:var(--green);font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:13px}
+  .crumb .sep{color:var(--faint);margin:0 10px}.crumb .now{color:var(--ink)}
+  .foot{margin-top:50px;border-top:1px solid var(--line);padding-top:18px;color:var(--faint);font-size:12px;font-family:var(--mono)}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <g id="def-adm"><polygon points="12,4.2 18.8,8.1 18.8,15.9 12,19.8 5.2,15.9 5.2,8.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.7" fill="none" stroke="currentColor" stroke-width="1.5"/></g>
+  <g id="def-biotech"><path d="M9 4.5 Q15.5 8 9 12 Q2.5 16 9 19.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M15 4.5 Q8.5 8 15 12 Q21.5 16 15 19.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="9.6" y1="6.4" x2="14.4" y2="6.4" stroke="currentColor" stroke-width="1.3"/><line x1="8.4" y1="12" x2="15.6" y2="12" stroke="currentColor" stroke-width="1.3"/><line x1="9.6" y1="17.6" x2="14.4" y2="17.6" stroke="currentColor" stroke-width="1.3"/></g>
+  <g id="def-health"><path d="M12 5.5 V18.5 M5.5 12 H18.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></g>
+  <g id="def-ict"><circle cx="12" cy="6.5" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="6" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="18" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 8.4 L6.8 15.2 M12 8.4 L17.2 15.2 M8 17 H16" stroke="currentColor" stroke-width="1.3"/></g>
+  <g id="def-atl"><path d="M5.5 7 L10.5 12 L5.5 17 M12 7 L17 12 L12 17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g id="def-agwet"><path d="M6 18 C6 10.5 11.5 5 18 6 C18.5 13.5 13 19 6 18 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M6.5 17.5 C10 14 14 10 17.5 6.5" fill="none" stroke="currentColor" stroke-width="1.3"/></g>
+  <g id="def-business"><rect x="5.5" y="14" width="3.4" height="4.5" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="10.3" y="10" width="3.4" height="8.5" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="15.1" y="5.8" width="3.4" height="12.7" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/></g>
+  <g id="def-ecu"><path d="M13.4 4 L6.8 13 H11.4 L10.6 20 L17.2 11 H12.6 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></g>
+  <g id="def-edhd"><path d="M12 7.2 C9.2 5.4 5.6 5.4 4 6.2 V17.8 C5.6 17 9.2 17 12 18.8 C14.8 17 18.4 17 20 17.8 V6.2 C18.4 5.4 14.8 5.4 12 7.2 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><line x1="12" y1="7.2" x2="12" y2="18.8" stroke="currentColor" stroke-width="1.3"/></g>
+  <g id="def-public_safety"><path d="M12 3.8 L19 6.8 V11.5 C19 15.8 16 19 12 20.8 C8 19 5 15.8 5 11.5 V6.8 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></g>
+  <g id="def-retail"><path d="M6.5 8.5 H17.5 L18.6 19.2 H5.4 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 8.5 V6.6 A3 3 0 0 1 15 6.6 V8.5" fill="none" stroke="currentColor" stroke-width="1.5"/></g>
+  <g id="def-mark"><circle cx="12" cy="12" r="10.4" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="10" r="3.2" fill="currentColor"/><path d="M3.4 14.5 H20.6 M5.2 18 H18.8" stroke="currentColor" stroke-width="1.2"/><path d="M12 1.8 V5 M5 4.4 L7 6.6 M19 4.4 L17 6.6" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></g>
+  <g id="def-book"><path d="M4 6 C7 4.5 11 4.5 12 6 C13 4.5 17 4.5 20 6 V18 C17 16.5 13 16.5 12 18 C11 16.5 7 16.5 4 18 Z" fill="none" stroke="currentColor" stroke-width="1.6"/></g>
+  <g id="def-hardhat"><path d="M4 17 H20 M5.5 17 V13 A6.5 6.5 0 0 1 18.5 13 V17 M10 7.2 V4.5 H14 V7.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></g>
+  <g id="def-bldg"><rect x="7" y="3.5" width="10" height="17" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 7h1.5M13 7h1.5M10 10h1.5M13 10h1.5M10 13h1.5M13 13h1.5" stroke="currentColor" stroke-width="1.3"/></g>
+  <g id="def-report"><rect x="6" y="3.5" width="12" height="17" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M9 8h6M9 11.5h6M9 15h4" stroke="currentColor" stroke-width="1.3"/></g>
+  <g id="def-dash"><rect x="4" y="4" width="7" height="7" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.6"/></g>
+</defs></svg>
+
+<div class="page">
+  <div class="lab">Option 2 — refined industry rail · in the real nav</div>
+  <p class="desc">All eleven SWP industries, one click apart — the <em>channel selector</em> above the lens tabs. <b>Color is reserved for state</b>: the active industry lights up in the same accent as the active Programs / Occupations / Employers tab. <b>Shape carries identity</b> — each industry is its own platonic form. A sliding indicator tracks the selection; the title, chips, and breadcrumb re-skin together. Thin-for-this-district sectors are dimmed (still clickable).</p>
+
+  <div class="controls">
+    <span class="ctitle">labels</span>
+    <span class="seg" id="segLabel"><span class="on" data-v="show">show</span><span data-v="hide">icons only</span></span>
+  </div>
+
+  <div class="nav" id="nav">
+    <div class="row1">
+      <div class="logo"><svg class="mk" viewBox="0 0 24 24" style="color:var(--accent)"><use href="#def-mark"/></svg><b>Kallipolis</b></div>
+      <div class="ttl"><div class="t">SAN MATEO COUNTY CCD&nbsp;–&nbsp;<span id="ttlSec">ENERGY, CONSTRUCTION &amp; UTILITIES</span></div><div class="pm">Preview Mode</div></div>
+      <div class="right"><span class="rbtn"><svg viewBox="0 0 24 24"><use href="#def-report"/></svg>Report</span><span class="rbtn box"><svg viewBox="0 0 24 24"><use href="#def-dash"/></svg>Dashboard</span></div>
+    </div>
+    <div class="rail" id="rail"><div class="slider" id="slider"></div></div>
+    <div class="row2">
+      <div class="tabs">
+        <button class="tab on"><svg viewBox="0 0 24 24"><use href="#def-book"/></svg>Programs</button>
+        <button class="tab"><svg viewBox="0 0 24 24"><use href="#def-hardhat"/></svg>Occupations</button>
+        <button class="tab"><svg viewBox="0 0 24 24"><use href="#def-bldg"/></svg>Employers</button>
+      </div>
+      <div class="chips"><span class="c"><b>3</b> Member Colleges</span><span class="c"><b id="cProg">5</b> Programs</span><span class="c"><b id="cOcc">14</b> Occupations</span><span class="c">Bay Area</span></div>
+    </div>
+    <div class="crumb"><span class="cz">Consortium</span><span class="sep">·</span><span class="now">Construction Inspection</span><span class="sep">·</span><span class="cz" style="color:var(--accent)">TOP 095720</span></div>
+  </div>
+
+  <div class="foot">/industry-rail.html · concept · sliding indicator + re-skin · counts = BACCC priority-job rule</div>
+</div>
+
+<script>
+  const IND=[
+    {id:"adm",label:"Adv Mfg",full:"ADVANCED MANUFACTURING",accent:"#d9544d",prog:11,occ:13},
+    {id:"biotech",label:"Biotech",full:"LIFE SCIENCES / BIOTECH",accent:"#2bb3a3",prog:2,occ:5},
+    {id:"health",label:"Health",full:"HEALTH",accent:"#3fb27f",prog:17,occ:15},
+    {id:"ict",label:"ICT",full:"ICT / DIGITAL MEDIA",accent:"#5a9bd4",prog:20,occ:11},
+    {id:"atl",label:"Transport",full:"ADVANCED TRANSPORTATION & LOGISTICS",accent:"#c98a3a",prog:11,occ:6},
+    {id:"agwet",label:"Ag/Water",full:"AG, WATER & ENVIRONMENTAL TECH",accent:"#6fae54",prog:1,occ:2,thin:1},
+    {id:"business",label:"Business",full:"BUSINESS & ENTREPRENEURSHIP",accent:"#c9a84c",prog:18,occ:30},
+    {id:"ecu",label:"Energy",full:"ENERGY, CONSTRUCTION & UTILITIES",accent:"#d08a3a",prog:5,occ:14},
+    {id:"edhd",label:"Education",full:"EDUCATION & HUMAN DEVELOPMENT",accent:"#b06fd0",prog:7,occ:3,thin:1},
+    {id:"public_safety",label:"Safety",full:"PUBLIC SAFETY",accent:"#5e6a9d",prog:8,occ:10},
+    {id:"retail",label:"Retail",full:"RETAIL, HOSPITALITY & TOURISM",accent:"#d06a9b",prog:5,occ:6},
+  ];
+  const icn=id=>`<svg viewBox="0 0 24 24"><use href="#def-${id}"/></svg>`;
+  const root=document.documentElement, rail=document.getElementById('rail'), slider=document.getElementById('slider');
+  let cur="ecu";
+
+  IND.forEach(s=>{
+    const e=document.createElement('div');
+    e.className='ind'+(s.thin?' thin':''); e.dataset.id=s.id; e.style.setProperty('--ic','var(--green)');
+    e.innerHTML=`<span class="dot"></span>${icn(s.id)}<span class="nm">${s.label}</span>`;
+    e.onclick=()=>pick(s.id);
+    rail.appendChild(e);
+  });
+
+  function moveSlider(){
+    const el=rail.querySelector(`.ind[data-id="${cur}"]`); if(!el)return;
+    slider.style.left=el.offsetLeft+'px'; slider.style.width=el.offsetWidth+'px';
+  }
+  function pick(id){
+    cur=id; const s=IND.find(x=>x.id===id);
+    rail.querySelectorAll('.ind').forEach(e=>e.classList.toggle('on',e.dataset.id===id));
+    document.getElementById('ttlSec').textContent=s.full;
+    const cp=document.getElementById('cProg'),co=document.getElementById('cOcc');
+    [cp,co].forEach(b=>b.classList.add('flash'));
+    cp.textContent=s.prog; co.textContent=s.occ;
+    setTimeout(()=>[cp,co].forEach(b=>b.classList.remove('flash')),320);
+    moveSlider();
+  }
+  // controls
+  document.getElementById('segLabel').onclick=ev=>{const v=ev.target.dataset.v;if(!v)return;document.getElementById('nav').classList.toggle('nolabel',v==="hide");[...ev.currentTarget.children].forEach(c=>c.classList.toggle('on',c.dataset.v===v));moveSlider();};
+
+  pick("ecu"); window.addEventListener('resize',moveSlider); setTimeout(moveSlider,60);
+</script>
+</body>
+</html>

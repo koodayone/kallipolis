@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kallipolis · industry toggle — in-context options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --bg:#070b13; --nav:#0a0f1b; --line:#1a2333; --line-2:#222d40;
+    --ink:#eef2f9; --dim:#8493ac; --faint:#54627d;
+    --green:#5cb87a;        /* the current single accent */
+    --amber:#caa84a;        /* PREVIEW MODE */
+    --accent:var(--green);  /* swappable: green (current) | per-sector */
+    --sans:"Schibsted Grotesk",sans-serif; --mono:"Spline Sans Mono",monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+  .page{max-width:1280px;margin:0 auto;padding:30px 24px 120px}
+  .seclabel{font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--dim);font-weight:600;margin:42px 4px 4px}
+  .seclabel .pill{display:inline-block;margin-left:8px;border:1px solid var(--line-2);border-radius:999px;padding:2px 10px;font-size:9px;letter-spacing:.14em;color:var(--faint)}
+  .desc{color:var(--dim);font-size:13.5px;line-height:1.55;max-width:78ch;margin:8px 4px 14px}
+  .desc b{color:var(--ink);font-weight:600}
+
+  /* ── faithful nav reproduction ─────────────────────────────── */
+  .nav{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--nav);box-shadow:0 18px 50px -30px #000}
+  .row1{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:18px 26px}
+  .logo{display:flex;align-items:center;gap:12px}
+  .logo .mk{width:36px;height:36px}
+  .logo b{font-size:20px;font-weight:700;letter-spacing:-.01em}
+  .ttl{text-align:center}
+  .ttl .t{font-weight:700;font-size:21px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+  .ttl .pm{font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--amber);margin-top:4px}
+  .right{display:flex;align-items:center;gap:18px;justify-content:flex-end}
+  .rbtn{display:flex;align-items:center;gap:8px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);font-weight:600;cursor:default}
+  .rbtn svg{width:16px;height:16px}
+  .rbtn.box{border:1px solid var(--line-2);border-radius:9px;padding:9px 14px;color:var(--ink)}
+  .row2{display:flex;align-items:center;justify-content:space-between;padding:0 26px;border-top:1px solid var(--line);height:54px}
+  .tabs{display:flex;gap:30px;height:100%}
+  .tab{display:flex;align-items:center;gap:9px;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);font-weight:600;position:relative;background:none;border:0;cursor:default}
+  .tab svg{width:17px;height:17px}
+  .tab.on{color:var(--ink)}
+  .tab.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--green);border-radius:2px}
+  .chips{display:flex;align-items:center;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+  .chips .c{padding:0 14px;border-right:1px solid var(--line)}
+  .chips .c:last-child{border:0;color:var(--green)}
+  .chips .c b{color:var(--ink);font-weight:600;font-family:var(--mono)}
+  .crumb{padding:16px 26px 18px;border-top:1px solid var(--line);font-size:14px;color:var(--dim)}
+  .crumb .cz{color:var(--green);font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:13px}
+  .crumb .sep{color:var(--faint);margin:0 10px}
+  .crumb .now{color:var(--ink)}
+
+  /* ── switcher affordances ──────────────────────────────────── */
+  /* opt1: sector-name-as-button inside the title */
+  .secbtn{display:inline-flex;align-items:center;gap:9px;border:1px solid transparent;border-radius:8px;padding:2px 8px;margin-left:2px;cursor:pointer;transition:.18s}
+  .secbtn:hover{border-color:var(--line-2);background:#0e1422}
+  .secbtn .si{width:18px;height:18px;color:var(--accent)}
+  .secbtn .cv{width:13px;height:13px;color:var(--dim)}
+
+  /* opt2: inline icon rail row */
+  .railrow{display:flex;gap:4px;padding:9px 22px;border-top:1px solid var(--line);overflow-x:auto}
+  .rchip{flex:1 1 0;min-width:64px;display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px 4px 7px;border-radius:9px;cursor:pointer;border:1px solid transparent;transition:.18s}
+  .rchip svg{width:20px;height:20px;color:var(--faint);transition:.18s}
+  .rchip .rl{font-size:8.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
+  .rchip:hover{background:#0e1422}.rchip:hover svg,.rchip:hover .rl{color:var(--dim)}
+  .rchip.on{background:color-mix(in srgb,var(--ic) 13%, #0e1422);border-color:color-mix(in srgb,var(--ic) 45%,transparent)}
+  .rchip.on svg{color:var(--ic)}.rchip.on .rl{color:var(--ink)}
+  .rchip.thin{opacity:.42}
+
+  /* opt3: switcher pill in the chip row */
+  .secpill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-2);border-radius:999px;padding:5px 12px 5px 9px;margin-right:16px;cursor:pointer;transition:.18s;background:#0e1422}
+  .secpill:hover{border-color:var(--accent)}
+  .secpill .si{width:16px;height:16px;color:var(--accent)}
+  .secpill .pl{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);font-weight:600}
+  .secpill .cv{width:12px;height:12px;color:var(--dim)}
+
+  /* shared popover (opt1 + opt3) */
+  .pop{position:fixed;z-index:60;border:1px solid var(--line-2);border-radius:14px;background:#0c1220;box-shadow:0 24px 60px -20px #000;padding:12px;display:none;width:360px}
+  .pop.open{display:block}
+  .popgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+  .pi{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:9px;cursor:pointer;border:1px solid transparent}
+  .pi svg{width:18px;height:18px;color:var(--ic)}
+  .pi .pt{font-size:11px;letter-spacing:.04em;color:var(--dim);line-height:1.15}
+  .pi:hover{background:#121a2b}.pi:hover .pt{color:var(--ink)}
+  .pi.on{background:color-mix(in srgb,var(--ic) 14%, #121a2b)}.pi.on .pt{color:var(--ink)}
+  .pi.thin{opacity:.5}
+
+  .controls{display:flex;align-items:center;gap:14px;margin:6px 4px 0}
+  .toggle{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--dim);cursor:pointer;border:1px solid var(--line-2);border-radius:999px;padding:6px 13px}
+  .toggle.on{color:var(--ink);border-color:var(--accent)}
+  .foot{margin-top:54px;border-top:1px solid var(--line);padding-top:18px;color:var(--faint);font-size:12px;font-family:var(--mono)}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <g id="def-adm"><polygon points="12,4.2 18.8,8.1 18.8,15.9 12,19.8 5.2,15.9 5.2,8.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.7" fill="none" stroke="currentColor" stroke-width="1.5"/></g>
+  <g id="def-biotech"><path d="M9 4.5 Q15.5 8 9 12 Q2.5 16 9 19.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M15 4.5 Q8.5 8 15 12 Q21.5 16 15 19.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="9.6" y1="6.4" x2="14.4" y2="6.4" stroke="currentColor" stroke-width="1.3"/><line x1="8.4" y1="12" x2="15.6" y2="12" stroke="currentColor" stroke-width="1.3"/><line x1="9.6" y1="17.6" x2="14.4" y2="17.6" stroke="currentColor" stroke-width="1.3"/></g>
+  <g id="def-health"><path d="M12 5.5 V18.5 M5.5 12 H18.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></g>
+  <g id="def-ict"><circle cx="12" cy="6.5" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="6" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="18" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 8.4 L6.8 15.2 M12 8.4 L17.2 15.2 M8 17 H16" stroke="currentColor" stroke-width="1.3"/></g>
+  <g id="def-atl"><path d="M5.5 7 L10.5 12 L5.5 17 M12 7 L17 12 L12 17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g id="def-agwet"><path d="M6 18 C6 10.5 11.5 5 18 6 C18.5 13.5 13 19 6 18 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M6.5 17.5 C10 14 14 10 17.5 6.5" fill="none" stroke="currentColor" stroke-width="1.3"/></g>
+  <g id="def-business"><rect x="5.5" y="14" width="3.4" height="4.5" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="10.3" y="10" width="3.4" height="8.5" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="15.1" y="5.8" width="3.4" height="12.7" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/></g>
+  <g id="def-ecu"><path d="M13.4 4 L6.8 13 H11.4 L10.6 20 L17.2 11 H12.6 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></g>
+  <g id="def-edhd"><path d="M12 7.2 C9.2 5.4 5.6 5.4 4 6.2 V17.8 C5.6 17 9.2 17 12 18.8 C14.8 17 18.4 17 20 17.8 V6.2 C18.4 5.4 14.8 5.4 12 7.2 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><line x1="12" y1="7.2" x2="12" y2="18.8" stroke="currentColor" stroke-width="1.3"/></g>
+  <g id="def-public_safety"><path d="M12 3.8 L19 6.8 V11.5 C19 15.8 16 19 12 20.8 C8 19 5 15.8 5 11.5 V6.8 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></g>
+  <g id="def-retail"><path d="M6.5 8.5 H17.5 L18.6 19.2 H5.4 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 8.5 V6.6 A3 3 0 0 1 15 6.6 V8.5" fill="none" stroke="currentColor" stroke-width="1.5"/></g>
+  <g id="def-mark"><circle cx="12" cy="12" r="10.4" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="10" r="3.2" fill="currentColor"/><path d="M3.4 14.5 H20.6 M5.2 18 H18.8" stroke="currentColor" stroke-width="1.2"/><path d="M12 1.8 V5 M5 4.4 L7 6.6 M19 4.4 L17 6.6" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></g>
+  <g id="def-book"><path d="M4 6 C7 4.5 11 4.5 12 6 C13 4.5 17 4.5 20 6 V18 C17 16.5 13 16.5 12 18 C11 16.5 7 16.5 4 18 Z" fill="none" stroke="currentColor" stroke-width="1.6"/></g>
+  <g id="def-bldg"><rect x="7" y="3.5" width="10" height="17" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 7h1.5M13 7h1.5M10 10h1.5M13 10h1.5M10 13h1.5M13 13h1.5" stroke="currentColor" stroke-width="1.3"/></g>
+  <g id="def-report"><rect x="6" y="3.5" width="12" height="17" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M9 8h6M9 11.5h6M9 15h4" stroke="currentColor" stroke-width="1.3"/></g>
+  <g id="def-dash"><rect x="4" y="4" width="7" height="7" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.6"/></g>
+  <g id="def-cv"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+</defs></svg>
+
+<div class="page">
+  <div class="controls">
+    <span class="seclabel" style="margin:0">Industry toggle · in the real nav</span>
+    <span class="toggle on" id="accToggle">accent: <b id="accLabel" style="color:var(--ink)">current green</b></span>
+    <span style="color:var(--faint);font-size:12px">click it to preview per-sector accent →</span>
+  </div>
+
+  <div class="seclabel">Baseline — current nav (no toggle)</div>
+  <div id="navBase"></div>
+
+  <div class="seclabel">Option 1 — sector name becomes the toggle <span class="pill">least disruptive</span></div>
+  <p class="desc">The sector segment of the title gets its <b>platonic icon + a chevron</b> and opens a switcher. Zero new chrome — the thing you already read becomes the thing you click. Title stays centered and authoritative.</p>
+  <div id="navOpt1"></div>
+
+  <div class="seclabel">Option 2 — slim industry rail <span class="pill">all 11 visible</span></div>
+  <p class="desc">A one-line icon rail under the title. Every industry is <b>scannable at once</b>, one click to switch, viability shown (thin sectors dimmed). Costs a row of height; richest for comparison.</p>
+  <div id="navOpt2"></div>
+
+  <div class="seclabel">Option 3 — switcher pill by the metadata <span class="pill">control next to what it changes</span></div>
+  <p class="desc">A compact <b>icon + sector ▾</b> pill leading the chip row — sitting right beside the counts it drives. Title stays clean; the switcher lives with the live readout it controls.</p>
+  <div id="navOpt3"></div>
+
+  <div class="foot">/industry-nav.html · concept · click any switcher · counts = BACCC priority-job rule (member-reachable)</div>
+</div>
+
+<div class="pop" id="pop"><div class="popgrid" id="popgrid"></div></div>
+
+<script>
+  const IND=[
+    {id:"adm",label:"Advanced Mfg",full:"ADVANCED MANUFACTURING",accent:"#d9544d",prog:11,occ:13},
+    {id:"biotech",label:"Biotech",full:"LIFE SCIENCES / BIOTECH",accent:"#2bb3a3",prog:2,occ:5},
+    {id:"health",label:"Health",full:"HEALTH",accent:"#3fb27f",prog:17,occ:15},
+    {id:"ict",label:"ICT / Media",full:"ICT / DIGITAL MEDIA",accent:"#5a9bd4",prog:20,occ:11},
+    {id:"atl",label:"Transport",full:"ADVANCED TRANSPORTATION & LOGISTICS",accent:"#c98a3a",prog:11,occ:6},
+    {id:"agwet",label:"Ag / Water",full:"AG, WATER & ENVIRONMENTAL TECH",accent:"#6fae54",prog:1,occ:2,thin:1},
+    {id:"business",label:"Business",full:"BUSINESS & ENTREPRENEURSHIP",accent:"#c9a84c",prog:18,occ:30},
+    {id:"ecu",label:"Energy / Constr",full:"ENERGY, CONSTRUCTION & UTILITIES",accent:"#d08a3a",prog:5,occ:14},
+    {id:"edhd",label:"Education",full:"EDUCATION & HUMAN DEVELOPMENT",accent:"#b06fd0",prog:7,occ:3,thin:1},
+    {id:"public_safety",label:"Public Safety",full:"PUBLIC SAFETY",accent:"#5e6a9d",prog:8,occ:10},
+    {id:"retail",label:"Retail / Hosp",full:"RETAIL, HOSPITALITY & TOURISM",accent:"#d06a9b",prog:5,occ:6},
+  ];
+  const icn=id=>`<svg viewBox="0 0 24 24"><use href="#def-${id}"/></svg>`;
+  const root=document.documentElement;
+  let cur=IND.find(s=>s.id==="ecu"), perSector=false;
+
+  function navHTML(opt){
+    const secInTitle = opt===1
+      ? `<span class="secbtn" data-pop="1"><svg class="si" viewBox="0 0 24 24"><use href="#def-${cur.id}"/></svg><span class="secname">${cur.full}</span><svg class="cv" viewBox="0 0 24 24"><use href="#def-cv"/></svg></span>`
+      : `<span class="secname">${cur.full}</span>`;
+    const railRow = opt===2 ? `<div class="railrow" id="rail"></div>` : ``;
+    const chipsLead = opt===3
+      ? `<span class="secpill" data-pop="1"><svg class="si" viewBox="0 0 24 24"><use href="#def-${cur.id}"/></svg><span class="pl secname">${cur.full}</span><svg class="cv" viewBox="0 0 24 24"><use href="#def-cv"/></svg></span>`
+      : ``;
+    return `<div class="nav">
+      <div class="row1">
+        <div class="logo"><svg class="mk" viewBox="0 0 24 24" style="color:var(--accent)"><use href="#def-mark"/></svg><b>Kallipolis</b></div>
+        <div class="ttl"><div class="t">SAN MATEO COUNTY CCD&nbsp;–&nbsp;${secInTitle}</div><div class="pm">Preview Mode</div></div>
+        <div class="right"><span class="rbtn"><svg viewBox="0 0 24 24"><use href="#def-report"/></svg>Report</span><span class="rbtn box"><svg viewBox="0 0 24 24"><use href="#def-dash"/></svg>Dashboard</span></div>
+      </div>
+      ${railRow}
+      <div class="row2">
+        <div class="tabs">
+          <button class="tab on"><svg viewBox="0 0 24 24"><use href="#def-book"/></svg>Programs</button>
+          <button class="tab"><svg viewBox="0 0 24 24"><use href="#def-ecu"/></svg>Occupations</button>
+          <button class="tab"><svg viewBox="0 0 24 24"><use href="#def-bldg"/></svg>Employers</button>
+        </div>
+        <div class="chips">${chipsLead}<span class="c"><b>3</b> Member Colleges</span><span class="c"><b class="prog">${cur.prog}</b> Programs</span><span class="c"><b class="occ">${cur.occ}</b> Occupations</span><span class="c">Bay Area</span></div>
+      </div>
+      <div class="crumb"><span class="cz">Consortium</span><span class="sep">·</span><span class="now">Construction Inspection</span><span class="sep">·</span><span class="cz" style="color:var(--accent)">TOP 095720</span></div>
+    </div>`;
+  }
+  function paint(){
+    document.getElementById('navBase').innerHTML=navHTML(0);
+    document.getElementById('navOpt1').innerHTML=navHTML(1);
+    document.getElementById('navOpt2').innerHTML=navHTML(2);
+    document.getElementById('navOpt3').innerHTML=navHTML(3);
+    // rail (opt2)
+    const rail=document.getElementById('rail');
+    IND.forEach(s=>{const e=document.createElement('div');e.className='rchip'+(s.thin?' thin':'')+(s.id===cur.id?' on':'');e.style.setProperty('--ic',s.accent);e.innerHTML=`${icn(s.id)}<div class="rl">${s.label}</div>`;e.onclick=()=>pick(s);rail.appendChild(e);});
+    bindPops();
+  }
+  function bindPops(){document.querySelectorAll('[data-pop]').forEach(el=>el.onclick=ev=>{ev.stopPropagation();openPop(el);});}
+  const pop=document.getElementById('pop'),pg=document.getElementById('popgrid');
+  IND.forEach(s=>{const e=document.createElement('div');e.className='pi'+(s.thin?' thin':'');e.style.setProperty('--ic',s.accent);e.innerHTML=`${icn(s.id)}<span class="pt">${s.label}<br><span style="font-size:9px;color:var(--faint)">${s.occ} occ</span></span>`;e.onclick=()=>{pick(s);pop.classList.remove('open');};pg.appendChild(e);});
+  function openPop(anchor){const r=anchor.getBoundingClientRect();pop.style.left=Math.min(r.left,innerWidth-372)+'px';pop.style.top=(r.bottom+8)+'px';pop.classList.add('open');[...pg.children].forEach((c,i)=>c.classList.toggle('on',IND[i].id===cur.id));}
+  document.addEventListener('click',()=>pop.classList.remove('open'));
+  function pick(s){cur=s;applyAccent();paint();}
+  function applyAccent(){root.style.setProperty('--accent', perSector?cur.accent:'var(--green)');}
+  document.getElementById('accToggle').onclick=()=>{perSector=!perSector;document.getElementById('accToggle').classList.toggle('on',true);document.getElementById('accLabel').textContent=perSector?'per-sector':'current green';applyAccent();paint();};
+  applyAccent();paint();
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+# Cloudflare Pages redirects/rewrites. Files in public/ are copied to out/, and
+# Cloudflare reads out/_redirects. Static assets take precedence over these rules,
+# so the real pre-rendered pages (/, /svamp, /smccd-*, /<college>/*, and the
+# /landscape/foothill/adm sentinels) serve themselves; only un-pre-rendered paths
+# fall through to the rules below.
+#
+# SPA fallback for the generated member×sector landscapes
+# (/landscape/<member>/<sector>): the build pre-renders ONE sentinel shell per
+# route (foothill·AM) instead of every instance, because pre-rendering the full
+# ~3,000-instance catalog emits >20,000 files and exceeds Cloudflare Pages' deploy
+# limit (the first full-catalog deploy hard-failed on exactly this). Each rule
+# rewrites (status 200, URL preserved) an instance path to the sentinel on the
+# SAME route — so the client bundle + the inert "Loading…" shell match, and the
+# client renders the real instance from window.location (parseLandscapePath) + the
+# live index. Most-specific first (first match wins); the report rules must precede
+# the dashboard rules. Both trailing-slash and bare forms are listed so a direct
+# hit resolves regardless of normalization.
+/landscape/:member/:sector/report/  /landscape/foothill/adm/report/  200
+/landscape/:member/:sector/report   /landscape/foothill/adm/report/  200
+/landscape/:member/:sector/         /landscape/foothill/adm/         200
+/landscape/:member/:sector          /landscape/foothill/adm/         200
+/landscape/:member/                 /landscape/foothill/             200
+/landscape/:member                  /landscape/foothill/             200
