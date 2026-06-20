@@ -43,7 +43,7 @@ from __future__ import annotations
 import os
 from dataclasses import dataclass
 
-from ontology.crosswalks import is_cte_top4_family, is_vocational
+from ontology.crosswalks import _load_top_to_cip, is_cte_top4_family, is_vocational
 from ontology.regions import COLLEGE_COE_REGION
 from partnerships.sectors import SECTORS, Sector, SectorRule
 
@@ -174,6 +174,13 @@ class LandscapeSpec:
             and top6 not in self.excluded_tops
             and (not self.cte_only or is_cte_top4_family(top6))
         )
+
+    def in_scope_tops(self) -> list[str]:
+        """Every TOP6 in this instance's scoped program universe — `in_scope`
+        applied across the full TOP catalog, in catalog order. The single source
+        for the in-scope TOP set that resolve, clusters, and svamp each derive
+        (graph-free; the crosswalk load is cached)."""
+        return [t for t in _load_top_to_cip() if self.in_scope(t)]
 
     def resolve_regions(self) -> tuple[str, ...]:
         """The COE region(s) the member colleges span, sorted and de-duplicated.

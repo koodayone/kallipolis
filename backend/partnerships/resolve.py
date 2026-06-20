@@ -27,8 +27,9 @@ from __future__ import annotations
 import dataclasses
 from collections import defaultdict
 
-from ontology.crosswalks import _load_top_to_cip, top6_to_soc
+from ontology.crosswalks import top6_to_soc
 from ontology.schema import get_driver
+from partnerships.graph_reads import latest_academic_year, regional_demand
 from partnerships.landscape import LandscapeSpec
 from partnerships.sectors import (
     ALL_OTHER_SOCS,
@@ -61,19 +62,11 @@ def effective_socs(spec: LandscapeSpec) -> tuple[str, ...]:
 
     region = spec.resolve_region()
     with get_driver().session() as session:
-        demand_rows = session.run(
-            "MATCH (rg:Region {name: $rg})-[d:DEMANDS]->(o:Occupation) "
-            "WHERE o.soc_code IN $socs "
-            "RETURN o.soc_code AS soc, d.annual_openings AS op, d.annual_wage AS w, "
-            "d.growth_rate AS g",
-            rg=region, socs=socs,
-        ).data()
-        openings = {r["soc"]: r["op"] for r in demand_rows}
-        wages = {r["soc"]: r["w"] for r in demand_rows}
-        growth = {r["soc"]: r["g"] for r in demand_rows}
-        latest = session.run(
-            "MATCH (ay:AcademicYear) RETURN max(ay.year) AS y"
-        ).single()["y"]
+        demand = regional_demand(session, region, socs)
+        openings = {s: dr["annual_openings"] for s, dr in demand.items()}
+        wages = {s: dr["annual_wage"] for s, dr in demand.items()}
+        growth = {s: dr["growth_rate"] for s, dr in demand.items()}
+        latest = latest_academic_year(session)
         progs = session.run(
             "MATCH (p:Program) WHERE p.college IN $colleges "
             "RETURN p.college AS college, p.top6 AS top6, "
@@ -99,7 +92,7 @@ def effective_socs(spec: LandscapeSpec) -> tuple[str, ...]:
     # SOC -> reachable / active via the spec's IN-SCOPE TOPs the member offers —
     # in_scope applies is_vocational, excluded_tops AND the home-division gate, so
     # this stays consistent with the displayed feeder universe (relevant_tops).
-    voc = [t for t in _load_top_to_cip() if spec.in_scope(t)]
+    voc = spec.in_scope_tops()
     reachable: set[str] = set()
     active: set[str] = set()
     soc_colleges: dict[str, set[str]] = defaultdict(set)

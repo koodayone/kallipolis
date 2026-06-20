@@ -46,6 +46,7 @@ from ontology.schema import get_driver
 from ontology.programs import get_wage_outcomes
 from ontology.supply import get_coe_supply
 from partnerships.gather import _gather_curriculum_crosswalk
+from partnerships.graph_reads import latest_academic_year, regional_demand
 from partnerships.models import CurriculumCrosswalk, PartnershipOpportunityEmployer
 from partnerships.opportunity import _gather_partnership_opportunities
 from partnerships.opportunity_narrative import build_occupational_demand
@@ -300,9 +301,7 @@ def _awarded_tops(spec: LandscapeSpec, tops) -> set[str]:
     (e.g. 210530 Industrial & Transportation Security, which last awarded a
     completer in 2023-24)."""
     with get_driver().session() as session:
-        latest = session.run(
-            "MATCH (ay:AcademicYear) RETURN max(ay.year) AS y"
-        ).single()["y"]
+        latest = latest_academic_year(session)
         rows = session.run(
             "MATCH (p:Program)-[a:AWARDED]->(ay:AcademicYear) "
             "WHERE p.college IN $colleges AND p.top6 IN $tops "
@@ -384,15 +383,7 @@ def build_program_report(top6: str, college: str | None = None, *, spec: Landsca
     colleges_filter = [college] if college else colleges
 
     with driver.session() as session:
-        demand_rows = session.run(
-            """
-            MATCH (r:Region {name: $region})-[d:DEMANDS]->(occ:Occupation)
-            WHERE occ.soc_code IN $socs
-            RETURN occ.soc_code AS soc_code, occ.title AS title,
-                   d.annual_openings AS annual_openings, d.annual_wage AS annual_wage
-            """,
-            region=region, socs=socs,
-        ).data()
+        demand_rows = list(regional_demand(session, region, socs).values())
         # Grouped by credential type (the AWARDED edge key) — the assembly
         # derives both the flat per-college series (summing types back out)
         # and the per-(college, type) decomposition from these rows.
@@ -483,6 +474,7 @@ def _build_program_crosswalk(
 
 def build_svamp_occupation(
     soc: str, *, spec: LandscapeSpec = SVAMP_SPEC, college: str | None = None,
+    include_employers: bool = True,
 ) -> SvampOccupationReport:
     """Consortium aggregated-occupation report for one SOC — the dual of
     build_program_report. Reuses the program supply machinery (the SOC's 09
@@ -505,16 +497,7 @@ def build_svamp_occupation(
     driver = get_driver()
 
     with driver.session() as session:
-        demand = session.run(
-            """
-            MATCH (r:Region {name: $region})-[d:DEMANDS]->(occ:Occupation {soc_code: $soc})
-            RETURN occ.title AS title, occ.description AS description,
-                   d.annual_openings AS annual_openings,
-                   d.annual_wage AS annual_wage, d.growth_rate AS growth_rate,
-                   d.employment AS employment
-            """,
-            region=region, soc=soc,
-        ).single()
+        demand = regional_demand(session, region, [soc]).get(soc)
         awards_rows = session.run(
             """
             MATCH (pr:Program)-[a:AWARDED]->(ay:AcademicYear)
@@ -588,12 +571,19 @@ def build_svamp_occupation(
     # market), so this is the consortium-grain view of the same candidate set
     # the per-college targeted report surfaces. aligned_course_count (the only
     # college-specific field) is not rendered, so the passed college is moot.
-    report.partnership_opportunities = _gather_partnership_opportunities(colleges[0], soc)
-    report.partnership_opportunities_narrative = (
-        f"Regional employers hiring for {report.title}, ranked by how central the role "
-        f"is to each firm's industry — candidate partners for the consortium's colleges "
-        f"to build or deepen this pathway."
-    )
+    #
+    # Skipped when include_employers is False: the dashboard occupations lens
+    # never renders this list, and the unbounded regional gather (hundreds of
+    # employers, each with description/website) is the dominant cost and ~94% of
+    # the payload weight of this report. Opting out keeps the field at its empty
+    # default for that surface; the report surfaces keep the default (True).
+    if include_employers:
+        report.partnership_opportunities = _gather_partnership_opportunities(colleges[0], soc)
+        report.partnership_opportunities_narrative = (
+            f"Regional employers hiring for {report.title}, ranked by how central the role "
+            f"is to each firm's industry — candidate partners for the consortium's colleges "
+            f"to build or deepen this pathway."
+        )
     return report
 
 

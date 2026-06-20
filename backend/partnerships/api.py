@@ -346,9 +346,10 @@ def _register_landscape_routes(spec: LandscapeSpec) -> None:
         except Exception as e:
             raise HTTPException(status_code=500, detail=str(e))
 
-    def get_occupation(soc: str, college: str | None = None):
+    def get_occupation(soc: str, college: str | None = None, employers: bool = True):
         try:
-            return build_svamp_occupation(soc, spec=resolve(spec), college=college)
+            return build_svamp_occupation(
+                soc, spec=resolve(spec), college=college, include_employers=employers)
         except Exception as e:
             raise HTTPException(status_code=500, detail=str(e))
 
@@ -378,7 +379,9 @@ def _register_landscape_routes(spec: LandscapeSpec) -> None:
         f"/{sid}/occupation/{{soc}}", get_occupation, methods=["GET"],
         response_model=SvampOccupationReport, name=f"get_{sid}_occupation",
         description="Aggregated-occupation report — one SOC read consortium-wide: "
-                    "regional demand, consortium supply and the resulting gap.")
+                    "regional demand, consortium supply and the resulting gap. "
+                    "`employers=false` skips the regional Partnership Opportunities "
+                    "gather (the report's dominant cost) for surfaces that don't render it.")
     router.add_api_route(
         f"/{sid}/employers", get_employers, methods=["GET"],
         response_model=SvampEmployersResult, name=f"get_{sid}_employers",

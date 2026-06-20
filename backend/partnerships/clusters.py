@@ -39,13 +39,12 @@ from __future__ import annotations
 from collections import defaultdict
 from dataclasses import dataclass, field
 
-from ontology.crosswalks import _load_top_to_cip, top6_to_soc
+from ontology.crosswalks import top6_to_soc
 from ontology.schema import get_driver
+from partnerships.graph_reads import latest_academic_year, regional_demand
 from partnerships.landscape import LandscapeSpec
 from partnerships.resolve import resolve
 from partnerships.sectors import INCLUDE_SOCS
-
-_LATEST = "2024-2025"
 
 # Curated cluster merges — human overrides that force occupations into one cluster
 # even when the connected-components rule keeps them apart (they share no feeder
@@ -155,21 +154,16 @@ def cluster_map(spec: LandscapeSpec) -> list[OccupationCluster]:
     if not socs:
         return []
     cols = list(spec.colleges)
-    in_scope = [t for t in _load_top_to_cip() if spec.in_scope(t)]
+    in_scope = spec.in_scope_tops()
     region = spec.resolve_region()
 
     with get_driver().session() as session:
-        demand = {r["c"]: r for r in session.run(
-            "MATCH (rg:Region {name: $rg})-[d:DEMANDS]->(o:Occupation) "
-            "WHERE o.soc_code IN $s "
-            "RETURN o.soc_code AS c, o.title AS t, d.annual_openings AS op, "
-            "d.annual_wage AS w, d.growth_rate AS g",
-            rg=region, s=socs).data()}
+        demand = regional_demand(session, region, socs)
         award_rows = session.run(
             "MATCH (p:Program)-[a:AWARDED]->(ay:AcademicYear {year: $y}) "
             "WHERE p.college IN $c AND p.top6 IN $t AND coalesce(a.count, 0) > 0 "
             "RETURN p.top6 AS top6, p.college AS college, sum(coalesce(a.count, 0)) AS n",
-            y=_LATEST, c=cols, t=in_scope).data()
+            y=latest_academic_year(session), c=cols, t=in_scope).data()
         names = {r["t"]: r["n"] for r in session.run(
             "MATCH (p:Program) WHERE p.top6 IN $t "
             "RETURN DISTINCT p.top6 AS t, p.name AS n", t=in_scope).data()}
@@ -224,10 +218,10 @@ def cluster_map(spec: LandscapeSpec) -> list[OccupationCluster]:
         for soc in members:
             d = demand.get(soc, {})
             occs.append(ClusterOccupation(
-                soc=soc, title=d.get("t", soc),
-                annual_openings=d.get("op") or 0,
-                annual_wage=d.get("w") or 0,
-                growth_rate=d.get("g") or 0.0,
+                soc=soc, title=d.get("title") or soc,
+                annual_openings=d.get("annual_openings") or 0,
+                annual_wage=d.get("annual_wage") or 0,
+                growth_rate=d.get("growth_rate") or 0.0,
                 admitted=soc in INCLUDE_SOCS,
             ))
         tops: set[str] = set()
@@ -236,9 +230,13 @@ def cluster_map(spec: LandscapeSpec) -> list[OccupationCluster]:
         feeders = [FeederProgram(
             top6=t, name=names.get(t, t), awards=top_awards[t],
             colleges=len(top_colleges[t]),
-            by_college=sorted(top_by_college[t], key=lambda sp: -sp.awards),
+            by_college=sorted(top_by_college[t], key=lambda sp: (-sp.awards, sp.college)),
         ) for t in tops]
-        feeders.sort(key=lambda f: -f.awards)
+        # Deterministic tie-break (top6) so the feeder order — and the label
+        # derived from the top-3 feeders — is reproducible regardless of set
+        # iteration order. Without it, equal-award feeders order on `tops` set
+        # iteration, making the cluster label non-deterministic across processes.
+        feeders.sort(key=lambda f: (-f.awards, f.top6))
         n_colleges = len(set().union(*[top_colleges[t] for t in tops])) if tops else 0
         label = " / ".join(f.name for f in feeders[:3])
         member_set = set(members)
@@ -248,11 +246,11 @@ def cluster_map(spec: LandscapeSpec) -> list[OccupationCluster]:
                 break
         clusters.append(OccupationCluster(
             label=label,
-            occupations=sorted(occs, key=lambda o: -o.annual_openings),
+            occupations=sorted(occs, key=lambda o: (-o.annual_openings, o.soc)),
             feeders=feeders,
             n_colleges=n_colleges,
         ))
-    return sorted(clusters, key=lambda c: -c.gap)
+    return sorted(clusters, key=lambda c: (-c.gap, min(o.soc for o in c.occupations)))
 
 
 def cluster_expanded_spec(spec: LandscapeSpec, sector_id: str) -> LandscapeSpec:
@@ -310,4 +308,4 @@ def consortium_clusters(member_id: str) -> list[OccupationCluster]:
         for cl in cluster_map(spec):
             cl.sector_id = sector_id
             out.append(cl)
-    return sorted(out, key=lambda c: -c.gap)
+    return sorted(out, key=lambda c: (-c.gap, c.key))
