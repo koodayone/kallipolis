@@ -72,3 +72,12 @@ backend/logs/
 # are 30 MB JSON dumps of Employer/Occupation/Skill/Region for nuke+
 # restore migrations. Useful locally; not source-of-truth, not for repo.
 .claude/subgraph_snapshot*.json
+
+# Local git worktrees (multi-agent scratch checkouts; can be many GB).
+.claude/worktrees/
+
+# Employer pipeline migration backups + intermediate cache. Same class as the
+# pipeline cache above: useful locally for rollback, not source-of-truth.
+backend/employers/cache/
+backend/employers/employers.pre-*.json
+backend/employers/bay_website_review.json
