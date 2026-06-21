@@ -28,6 +28,7 @@ export type MapEmployer = {
   name: string; lat: number; lng: number;
   socs: string[]; soc_count: number;
   sector?: string | null; website?: string | null; description?: string | null;
+  display_name?: string | null;  // public-facing brand; label falls back to name
 };
 export type MapCollege = { name: string; lat: number; lng: number; brand: string };
 
