@@ -39,7 +39,7 @@ import { LayoutLabContext } from "@/college-atlas/partnerships/LayoutLab";
 import KallipolisBrand from "@/ui/KallipolisBrand";
 import RisingSun from "@/ui/RisingSun";
 import { readSvampParams, writeSvampParams } from "@/college-atlas/partnerships/svampUrl";
-import { getCollegeAtlasConfig } from "@/config/collegeAtlasConfigs";
+import { collegeAtlasIdByName, getCollegeAtlasConfig } from "@/config/collegeAtlasConfigs";
 import AtlasHeader from "@/ui/AtlasHeader";
 import SvampDashboardPrograms, { type CollegeRef } from "@/college-atlas/partnerships/SvampDashboardPrograms";
 import SvampDashboardOccupations from "@/college-atlas/partnerships/SvampDashboardOccupations";
@@ -583,6 +583,54 @@ function useMinViewportWidth(px: number): boolean | null {
 }
 
 /* ── Shell ────────────────────────────────────────────────────────────────── */
+// A headline total above a treemap — the whole that the rects break down (the
+// summed supply / demand of the shown items). A light block with a white number,
+// so the summary reads first and the breakdown second.
+export function TotalStrip({ label, value, accent }: { label: string; value: number; accent: string }) {
+  return (
+    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "7px 11px", marginBottom: 8, borderRadius: 8, background: "rgba(255,255,255,0.055)", border: "1px solid rgba(255,255,255,0.09)", flex: "none" }}>
+      <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
+        <span style={{ width: 3, height: 12, borderRadius: 2, background: accent, flex: "none" }} />
+        <span style={{ fontFamily: MONO, fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}>{label}</span>
+      </span>
+      <span style={{ fontFamily: MONO, fontSize: 21, fontWeight: 600, color: "#fff", lineHeight: 1 }}>
+        {value.toLocaleString("en-US")}
+        <span style={{ fontSize: 11, fontWeight: 500, color: "rgba(255,255,255,0.45)", marginLeft: 3 }}>/yr</span>
+      </span>
+    </div>
+  );
+}
+
+// Program-supply summary for a school lens: the school's own supply against the
+// consortium's, with a share bar — "how much of the regional supply in my programs
+// is mine." School stat wears the lens accent; consortium is neutral context.
+export function SupplySplit({ schoolLabel, school, consortium, accent }: { schoolLabel: string; school: number; consortium: number; accent: string }) {
+  const pct = consortium > 0 ? Math.round((school / consortium) * 100) : 0;
+  const stat = (label: string, value: number, bar: string) => (
+    <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+      <span style={{ display: "flex", alignItems: "center", gap: 6, fontFamily: MONO, fontSize: 9.5, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)" }}>
+        <span style={{ width: 3, height: 10, borderRadius: 2, background: bar, flex: "none" }} />{label}
+      </span>
+      <span style={{ fontFamily: MONO, fontSize: 19, fontWeight: 600, color: "#fff", lineHeight: 1 }}>
+        {value.toLocaleString("en-US")}<span style={{ fontSize: 10, fontWeight: 500, color: "rgba(255,255,255,0.42)", marginLeft: 3 }}>/yr</span>
+      </span>
+    </div>
+  );
+  return (
+    <div style={{ padding: "8px 11px 9px", marginBottom: 8, borderRadius: 8, background: "rgba(255,255,255,0.055)", border: "1px solid rgba(255,255,255,0.09)", flex: "none" }}>
+      <div style={{ display: "flex", marginBottom: 8 }}>
+        {stat(schoolLabel, school, accent)}
+        <div style={{ width: 1, background: "rgba(255,255,255,0.1)", margin: "0 14px" }} />
+        {stat("Consortium", consortium, "rgba(255,255,255,0.35)")}
+      </div>
+      <div style={{ height: 6, borderRadius: 3, background: "rgba(255,255,255,0.08)", overflow: "hidden", marginBottom: 4 }}>
+        <div style={{ width: `${Math.max(2, pct)}%`, height: "100%", borderRadius: 3, background: accent }} />
+      </div>
+      <div style={{ fontFamily: MONO, fontSize: 10, color: "rgba(255,255,255,0.5)" }}>{schoolLabel} produces {pct}% of consortium supply</div>
+    </div>
+  );
+}
+
 export default function SvampDashboard({ instance = "svamp", identity }: { instance?: string; identity?: LandscapeInstance }) {
   // Pinned instances resolve identity from the registry; a generated instance
   // (no registry row) passes it in, built from the backend landscape index.
@@ -612,23 +660,70 @@ export default function SvampDashboard({ instance = "svamp", identity }: { insta
       document.documentElement.style.removeProperty("--dash-rail-bottom");
     };
   }, []);
-  const colleges = useMemo(
-    () => inst.collegeIds
+  // The matrix column set. Normally the static instance colleges; but a
+  // single-college lens is cluster-expanded server-side (the API returns the
+  // co-member colleges), so when the payload carries MORE colleges than the
+  // static config knows, rebuild the set from the API's college names. Pinned
+  // multi-college instances (SVAMP/BACCC/SMCCD) have API == config and keep the
+  // static set byte-for-byte.
+  const [apiCollegeNames, setApiCollegeNames] = useState<string[] | null>(null);
+  const colleges = useMemo(() => {
+    const staticRefs = inst.collegeIds
       .map((id) => ({ id, config: getCollegeAtlasConfig(id) }))
-      .filter((c): c is CollegeRef => c.config !== null),
-    [inst],
-  );
+      .filter((c): c is CollegeRef => c.config !== null);
+    if (apiCollegeNames && apiCollegeNames.length > staticRefs.length) {
+      const refs = apiCollegeNames
+        .map((name) => {
+          const id = collegeAtlasIdByName(name);
+          const config = id ? getCollegeAtlasConfig(id) : null;
+          return id && config ? { id, config } : null;
+        })
+        .filter((c): c is CollegeRef => c !== null);
+      if (refs.length > staticRefs.length) {
+        // Anchor the primary school (whose lens this is) as the left-most column;
+        // the rest of the pool follows. staticRefs[0] is the instance's own college.
+        const primaryId = staticRefs[0]?.id;
+        return primaryId
+          ? [...refs.filter((r) => r.id === primaryId), ...refs.filter((r) => r.id !== primaryId)]
+          : refs;
+      }
+    }
+    return staticRefs;
+  }, [inst, apiCollegeNames]);
+
+  // The school central to a single-college lens — scopes the Programs lens to its
+  // OWN programs (the coordinator's portfolio); the cross-school pool view lives in
+  // the Occupations lens. Null for multi-college consortium instances (show all).
+  const primaryCollege = inst.collegeIds.length === 1
+    ? getCollegeAtlasConfig(inst.collegeIds[0])?.name ?? null
+    : null;
+  // Single-college lenses expand to their cluster pool only once the API resolves
+  // (apiCollegeNames). Hold the lens area until then so it paints once with the
+  // final college set — no flash from the static 1-college fallback. Multi-college
+  // instances are ready immediately (static set is already correct).
+  const collegesReady = inst.collegeIds.length > 1 || apiCollegeNames !== null;
 
   // Masthead stats — the same institutional counts the report's masthead
   // shows, from the same payloads ("—" until they resolve, the report's idiom).
   const [agg, setAgg] = useState<{ colleges: number; occupations: number; region: string } | null>(null);
   const [activePrograms, setActivePrograms] = useState<number | null>(null);
+  // Consortium (awards-gated) views drop colleges with no awarded supply in the
+  // sector; the masthead then reads "N of M" so the consortium total stays
+  // visible (no silent truncation). Curated SVAMP keeps all members.
+  const [participating, setParticipating] = useState<{ n: number; awardsOnly: boolean } | null>(null);
   useEffect(() => {
     getSvampLandscape(instance)
-      .then((x) => setAgg({ colleges: x.aggregate.n_colleges, occupations: x.aggregate.n_occupations, region: x.region_display }))
+      .then((x) => {
+        setAgg({ colleges: x.aggregate.n_colleges, occupations: x.aggregate.n_occupations, region: x.region_display });
+        setApiCollegeNames(x.colleges.map((c) => c.name));
+      })
       .catch(() => {});
     getSvampPrograms(instance)
-      .then((x) => setActivePrograms(x.tops.filter((t) => t.enrollment_total > 0 || t.awards_total > 0).length))
+      .then((x) => {
+        setActivePrograms(x.tops.filter((t) => t.enrollment_total > 0 || t.awards_total > 0).length);
+        const withAwards = new Set((x.matrix?.cells ?? []).filter((c) => c.awards > 0).map((c) => c.college));
+        setParticipating({ n: withAwards.size, awardsOnly: x.coverage_awards_only });
+      })
       .catch(() => {});
   }, [instance]);
 
@@ -704,7 +799,12 @@ export default function SvampDashboard({ instance = "svamp", identity }: { insta
           </div>
           {statsFit !== false && (
           <div style={{ display: "flex", alignItems: "baseline", gap: 8, paddingLeft: 24, paddingBottom: 14, borderBottom: `1px solid rgba(255,255,255,.08)`, marginBottom: 4, fontFamily: FONT, fontSize: 11, fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", whiteSpace: "nowrap" }}>
-            <span style={{ color: lensAccent, opacity: 0.8 }}>{agg ? agg.colleges : "—"} Member Colleges</span>
+            <span style={{ color: lensAccent, opacity: 0.8 }}>{
+              !agg ? "— Member Colleges"
+                : participating?.awardsOnly && participating.n < agg.colleges
+                  ? `${participating.n} of ${agg.colleges} Colleges`
+                  : `${agg.colleges} Member Colleges`
+            }</span>
             <Dot /><span style={{ color: "rgba(255,255,255,0.80)" }}>{activePrograms ?? "—"} Programs</span>
             <Dot /><span style={{ color: "rgba(255,255,255,0.80)" }}>{agg ? agg.occupations : "—"} Occupations</span>
             <Dot /><span style={{ color: lensAccent, opacity: 0.8 }}>{agg ? agg.region : "—"}</span>
@@ -721,8 +821,9 @@ export default function SvampDashboard({ instance = "svamp", identity }: { insta
       <div style={{ display: "flex", flexDirection: "column", ...(employersFull ? { flex: 1, minHeight: 0, overflow: "hidden", padding: "12px 16px 16px" } : { padding: "0 16px 24px" }) }}>
         <ScopeAccentContext.Provider value={scopeAccentCtx}>
         <DashExpandContext.Provider value={expandCtx}>
-          {lens === "programs" ? <SvampDashboardPrograms colleges={colleges} instance={instance} />
-            : lens === "occupations" ? <SvampDashboardOccupations colleges={colleges} instance={instance} />
+          {!collegesReady ? <SvampLoading />
+            : lens === "programs" ? <SvampDashboardPrograms colleges={colleges} instance={instance} primaryCollege={primaryCollege} />
+            : lens === "occupations" ? <SvampDashboardOccupations colleges={colleges} instance={instance} primaryCollege={primaryCollege} />
             : <SvampDashboardEmployers colleges={colleges} stacked={employersSideBySide === false} instance={instance} />}
         </DashExpandContext.Provider>
         </ScopeAccentContext.Provider>

@@ -2,40 +2,143 @@
   "/employers": {
     "employers": [
       {
-        "contact_name": "Robin Lafever",
-        "contact_title": "Other",
-        "description": "SLAC National Accelerator Laboratory is a research institution.",
-        "lat": 37.4287473,
-        "lng": -122.1898306,
-        "naics4": "6117",
-        "naics_title": "Educational Support Services",
-        "name": "SLAC National Accelerator Laboratory",
-        "sector": "Education",
+        "description": "Half Moon Bay Golf Links is a coastal golf resort in Half Moon Bay, CA, operating two 18-hole championship courses \u2014 the Arnold Palmer-designed Old Course and the Arthur Hills-designed Ocean Course \u2014 both ranked among the top public courses in Northern California. The property includes Mullins Steakhouse, a full-service golf shop, and event facilities for corporate retreats, tournaments, and weddings. Operations employ golf course maintenance, hospitality, food and beverage, and events coordination staff across the San Mateo County coast location.",
+        "display_name": null,
+        "lat": 37.4332584,
+        "lng": -122.4396679,
+        "naics4": "7139",
+        "naics_title": "Other Amusement and Recreation Industries",
+        "name": "Half Moon Bay Golf Links",
+        "relevance": 13.79,
+        "sector": "Arts & Entertainment",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://halfmoonbaygolf.com/"
+      },
+      {
+        "description": "Menlo Circus Club is a private social and athletic club.",
+        "display_name": null,
+        "lat": 37.4485477,
+        "lng": -122.1996132,
+        "naics4": "7139",
+        "naics_title": "Other Amusement and Recreation Industries",
+        "name": "Menlo Circus Club",
+        "relevance": 13.79,
+        "sector": "Arts & Entertainment",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://www.menlocircusclub.com/"
+      },
+      {
+        "description": "Menlo Country Club is a private country club offering golf and other amenities.",
+        "display_name": null,
+        "lat": 37.4292088,
+        "lng": -122.2507219,
+        "naics4": "7139",
+        "naics_title": "Other Amusement and Recreation Industries",
+        "name": "Menlo Country Club",
+        "relevance": 13.79,
+        "sector": "Arts & Entertainment",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://www.menlocc.com/"
+      },
+      {
+        "description": "Menlo Park Recreation Center is a public facility offering recreational activities and programs.",
+        "display_name": null,
+        "lat": 37.4535552,
+        "lng": -122.179944,
+        "naics4": "7139",
+        "naics_title": "Other Amusement and Recreation Industries",
+        "name": "Menlo Park Recreation Center",
+        "relevance": 13.79,
+        "sector": "Arts & Entertainment",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://www.menlopark.gov/Government/Departments/Library-and-Community-Services/Recreation-and-sports"
+      },
+      {
+        "description": "The Peninsula Jewish Community Center (PJCC), based in Foster City, CA, operates a full-service fitness, aquatics, and wellness facility alongside preschool, afterschool, and summer camp programs for youth. It also runs adult education, Jewish cultural programming, senior services, and an art gallery, serving families, adults, and seniors across the San Mateo Peninsula. Operational roles include fitness instruction, aquatics, early childhood education, program coordination, and facility management.",
+        "display_name": null,
+        "lat": 37.5696535,
+        "lng": -122.2757343,
+        "naics4": "7139",
+        "naics_title": "Other Amusement and Recreation Industries",
+        "name": "Peninsula Jewish Community Center",
+        "relevance": 13.79,
+        "sector": "Arts & Entertainment",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://pjcc.org/"
+      },
+      {
+        "description": "Prime Time Athletic Club is a full-service, family-oriented athletic facility in Burlingame, CA, operating courts for pickleball, racquetball, handball, tennis, and squash alongside two heated pools, a gymnasium, outdoor basketball, and a full cardio and free-weights floor. The club offers group exercise classes, childcare services, and individual memberships, and has been recognized in Club Industry's Top 100 Clubs. On-site staff roles span fitness instruction, aquatics, court programming, childcare, and member services.",
+        "display_name": null,
+        "lat": 37.5865829,
+        "lng": -122.3384383,
+        "naics4": "7139",
+        "naics_title": "Other Amusement and Recreation Industries",
+        "name": "Prime Time Athletic Club",
+        "relevance": 13.79,
+        "sector": "Arts & Entertainment",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://primetimeathleticclub.com/"
+      },
+      {
+        "description": "Ann's Nails & Spa is a full-service nail salon and day spa in Palm Desert, CA offering manicures, pedicures, nail enhancements, gel applications, waxing, eyelash extensions, and specialty treatments such as collagen hand therapy. The salon operates six days a week, accepts walk-ins and appointments, and employs licensed nail technicians recognized for detailed nail art and spa services.",
+        "display_name": null,
+        "lat": 37.4532061,
+        "lng": -122.1823518,
+        "naics4": "8121",
+        "naics_title": "Personal Care Services",
+        "name": "Ann's Nails Spa",
+        "relevance": 0.23,
+        "sector": "Other Services",
         "size_class": "1,000-4,999 employees",
         "size_rank": 9,
-        "soc_count": 2,
-        "soc_titles": {
-          "25-9044": "Teaching Assistants, Postsecondary",
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "39-9031",
-          "25-9044"
-        ],
-        "website": "https://www6.slac.stanford.edu/"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "Children & Family Services provides support for children and families.",
-        "lat": 37.5215839,
-        "lng": -122.2666806,
-        "naics4": "6241",
-        "naics_title": "Individual and Family Services",
-        "name": "Children & Family Services",
-        "sector": "Healthcare",
-        "size_class": "500-999 employees",
-        "size_rank": 8,
         "soc_count": 1,
         "soc_titles": {
           "39-9031": "Exercise Trainers and Group Fitness Instructors"
@@ -43,20 +146,20 @@
         "socs": [
           "39-9031"
         ],
-        "website": "https://www.smcgov.org/hsa/children-and-family-services"
+        "website": "https://annsnailsandspa.com/"
       },
       {
-        "contact_name": "Veronica Grauke",
-        "contact_title": "Director",
-        "description": "Peninsula Family YMCA is a community organization offering various programs and services.",
-        "lat": 37.5685695,
-        "lng": -122.3168591,
-        "naics4": "6241",
-        "naics_title": "Individual and Family Services",
-        "name": "Peninsula Family YMCA",
-        "sector": "Healthcare",
-        "size_class": "250-499 employees",
-        "size_rank": 7,
+        "description": "Axis Performance Center is a facility focused on physical performance.",
+        "display_name": null,
+        "lat": 37.4533803,
+        "lng": -122.1811254,
+        "naics4": "8121",
+        "naics_title": "Personal Care Services",
+        "name": "Axis Performance Center",
+        "relevance": 0.23,
+        "sector": "Other Services",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
         "soc_count": 1,
         "soc_titles": {
           "39-9031": "Exercise Trainers and Group Fitness Instructors"
@@ -64,181 +167,356 @@
         "socs": [
           "39-9031"
         ],
-        "website": "https://www.ymcasf.org/location/peninsula-family-ymca/"
+        "website": "https://www.axispt.com/"
       },
       {
-        "contact_name": "Patricia Kurtz",
-        "contact_title": "Principal",
-        "description": "Aragon High School is an educational institution for high school students.",
-        "lat": 37.5293696,
-        "lng": -122.306551,
-        "naics4": "6111",
-        "naics_title": "Elementary and Secondary Schools",
-        "name": "Aragon High School",
-        "sector": "Education",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 2,
+        "description": "Jumpstartmd offers services related to health and wellness.",
+        "display_name": null,
+        "lat": 37.4933594,
+        "lng": -122.2307364,
+        "naics4": "8121",
+        "naics_title": "Personal Care Services",
+        "name": "Jumpstartmd",
+        "relevance": 0.23,
+        "sector": "Other Services",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
         "soc_titles": {
-          "25-2012": "Kindergarten Teachers, Except Special Education",
           "39-9031": "Exercise Trainers and Group Fitness Instructors"
         },
         "socs": [
-          "25-2012",
           "39-9031"
         ],
-        "website": "https://ahs.smuhsd.org/"
+        "website": "https://jumpstartmd.com/location/redwood-city/"
       },
       {
-        "contact_name": "John Triska",
-        "contact_title": "Principal",
-        "description": "Brittan Acres School is an educational institution.",
-        "lat": 37.4962749,
-        "lng": -122.2637179,
-        "naics4": "6111",
-        "naics_title": "Elementary and Secondary Schools",
-        "name": "Brittan Acres School",
-        "sector": "Education",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 2,
+        "description": "Menlo Park Barber Shop is a local barber shop.",
+        "display_name": null,
+        "lat": 37.4294388,
+        "lng": -122.2049813,
+        "naics4": "8121",
+        "naics_title": "Personal Care Services",
+        "name": "Menlo Park Barber Shop",
+        "relevance": 0.23,
+        "sector": "Other Services",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
         "soc_titles": {
-          "25-2012": "Kindergarten Teachers, Except Special Education",
           "39-9031": "Exercise Trainers and Group Fitness Instructors"
         },
         "socs": [
-          "25-2012",
           "39-9031"
         ],
-        "website": "https://brittanacres.scsdk8.org/"
+        "website": "http://www.menloparkbarbershop.com/"
       },
       {
-        "contact_name": "Sharon Bleviss",
-        "contact_title": "Manager",
-        "description": "Burlingame High School is an educational institution for high school students.",
-        "lat": 37.5821922,
-        "lng": -122.3473676,
-        "naics4": "6111",
-        "naics_title": "Elementary and Secondary Schools",
-        "name": "Burlingame High School",
-        "sector": "Education",
+        "description": "Stella & Dot is a direct-to-consumer jewelry and accessories brand selling necklaces, bracelets, earrings, rings, and charms through its e-commerce platform and a network of independent brand ambassadors. Founded by Jessica Herrin and headquartered in the United States, the company combines an online retail storefront with a social-selling model that has paid out over $500 million to ambassadors. Product development, digital marketing, e-commerce operations, and ambassador support functions drive the majority of their employment.",
+        "display_name": null,
+        "lat": 37.6760919,
+        "lng": -122.3845587,
+        "naics4": "8121",
+        "naics_title": "Personal Care Services",
+        "name": "Stella & Dot",
+        "relevance": 0.23,
+        "sector": "Other Services",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 2,
+        "soc_count": 1,
         "soc_titles": {
-          "25-2012": "Kindergarten Teachers, Except Special Education",
           "39-9031": "Exercise Trainers and Group Fitness Instructors"
         },
         "socs": [
-          "25-2012",
           "39-9031"
         ],
-        "website": "https://bhs.smuhsd.org/"
+        "website": "https://www.stelladot.com/"
       },
       {
-        "contact_name": "Jose Gomez",
-        "contact_title": "Principal",
-        "description": "Capuchino High School is an educational institution for high school students.",
-        "lat": 37.6258739,
-        "lng": -122.4196884,
-        "naics4": "6111",
-        "naics_title": "Elementary and Secondary Schools",
-        "name": "Capuchino High School",
-        "sector": "Education",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 2,
+        "description": "An unidentified business located in Millbrae.",
+        "display_name": null,
+        "lat": 37.6046616,
+        "lng": -122.3967628,
+        "naics4": "6213",
+        "naics_title": "Offices of Other Health Practitioners",
+        "name": "Candenc Millbrae",
+        "relevance": 0.22,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
         "soc_titles": {
-          "25-2012": "Kindergarten Teachers, Except Special Education",
           "39-9031": "Exercise Trainers and Group Fitness Instructors"
         },
         "socs": [
-          "25-2012",
           "39-9031"
         ],
-        "website": "https://chs.smuhsd.org/"
+        "website": "https://cogirusa.com/communities/cadence-millbrae/"
       },
       {
-        "contact_name": "Michael Holtz",
-        "contact_title": "Principal",
-        "description": "Carlmont High School is an educational institution for high school students.",
+        "description": "Peninsula Regent is a licensed Residential Care Facility for the Elderly (RCFE #410508359) located at 1 Baldwin Avenue in San Mateo, California, offering ownership-based condominium residences for active older adults. The community provides hospitality-style services including chef-prepared dining, fitness and wellness programs, and curated social activities within a Mediterranean-style campus. Operational roles span hospitality, culinary, health and wellness, facilities management, and residential services.",
+        "display_name": null,
+        "lat": 37.5667843,
+        "lng": -122.3259143,
+        "naics4": "6213",
+        "naics_title": "Offices of Other Health Practitioners",
+        "name": "Peninsula Regent",
+        "relevance": 0.22,
+        "sector": "Healthcare",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://www.peninsularegent.org/"
+      },
+      {
+        "description": "A healthcare provider in Atherton.",
+        "display_name": null,
+        "lat": 37.4502138,
+        "lng": -122.1840692,
+        "naics4": "6233",
+        "naics_title": "Continuing Care Retirement Communities and Assisted Living Facilities for the Elderly",
+        "name": "Atherton Health Care",
+        "relevance": 0.12,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://athertonparkpostacute.com/"
+      },
+      {
+        "description": "A senior living community.",
+        "display_name": null,
+        "lat": 37.5590805,
+        "lng": -122.2684188,
+        "naics4": "6233",
+        "naics_title": "Continuing Care Retirement Communities and Assisted Living Facilities for the Elderly",
+        "name": "Atria At Foster Square",
+        "relevance": 0.12,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://www.atriaseniorliving.com/retirement-communities/atria-at-foster-square-foster-city-ca"
+      },
+      {
+        "description": "A provider of senior living services.",
+        "display_name": null,
+        "lat": 37.5590604,
+        "lng": -122.2969242,
+        "naics4": "6233",
+        "naics_title": "Continuing Care Retirement Communities and Assisted Living Facilities for the Elderly",
+        "name": "Atria Senior Living",
+        "relevance": 0.12,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://www.atriaseniorliving.com/retirement-communities/atria-san-mateo-san-mateo-ca/"
+      },
+      {
+        "description": "A healthcare center located in Belmont.",
+        "display_name": null,
+        "lat": 37.5101008,
+        "lng": -122.2981577,
+        "naics4": "6233",
+        "naics_title": "Continuing Care Retirement Communities and Assisted Living Facilities for the Elderly",
+        "name": "Belmont Healthcare Center",
+        "relevance": 0.12,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://belmonthcc.com/"
+      },
+      {
+        "description": "The Belmont Police Department serves the City of Belmont on the San Francisco Peninsula with approximately 50 full-time personnel, including 31 sworn officers organized into Patrol, Traffic, Investigations, K-9, Youth Services, SWAT, and Crisis Negotiation units. The department operates the C.A.R.E. (Crisis Assessment Response and Education) and T.R.A.C. (Tracking and Recovery of Adults and Children) programs, and employs dispatchers, records technicians, code enforcement officers, and community service officers alongside sworn staff.",
+        "display_name": null,
+        "lat": 37.5182829,
+        "lng": -122.2774823,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "Belmont Police",
+        "relevance": 0.12,
+        "sector": "Government",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://www.belmont.gov/departments/police"
+      },
+      {
+        "description": "Brookdale Redwood City is a licensed assisted living and memory care community at 485 Woodside Road serving up to 75 residents in Redwood City. The community provides assisted living, memory care, independent living, respite, and hospice care, with 24-hour nursing staff, medication management, diabetes care, and on-site therapy coordination. Workforce roles include resident care aides, licensed nurses, medication technicians, and activity and dining staff.",
+        "display_name": null,
+        "lat": 37.4903432,
+        "lng": -122.2117774,
+        "naics4": "6233",
+        "naics_title": "Continuing Care Retirement Communities and Assisted Living Facilities for the Elderly",
+        "name": "Brookdale Redwood City",
+        "relevance": 0.12,
+        "sector": "Healthcare",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://www.brookdale.com/en/communities/brookdale-redwood-city.html"
+      },
+      {
+        "description": "The Central County Fire Department provides fire suppression and emergency response services.",
+        "display_name": null,
+        "lat": 37.5865829,
+        "lng": -122.3384383,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "Central County Fire Department",
+        "relevance": 0.12,
+        "sector": "Government",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://www.ccfd.org/"
+      },
+      {
+        "description": "The Daly City Police Department is responsible for public safety and law enforcement in Daly City.",
+        "display_name": null,
+        "lat": 37.6911085,
+        "lng": -122.4739145,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "Daly City Police",
+        "relevance": 0.12,
+        "sector": "Government",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://www.dalycity.org/1231/Police"
+      },
+      {
+        "description": "Daly City's Department of Water and Wastewater Resources operates the wastewater treatment and disposal system for the North San Mateo County Sanitation District, managing collection infrastructure, treatment plant operations, and environmental compliance at its facility on Lake Merced Boulevard. The department also administers drinking water supply services and recycles treatment plant byproducts as part of its environmental stewardship mission. Operations employ water and wastewater treatment plant operators, environmental compliance staff, and utility engineers serving the North San Mateo County service area.",
+        "display_name": null,
+        "lat": 37.7076798,
+        "lng": -122.4858219,
+        "naics4": "9241",
+        "naics_title": "Administration of Environmental Quality Programs",
+        "name": "Daly City Wastewater",
+        "relevance": 0.12,
+        "sector": "Government",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://www.dalycity.org/1036/Wastewater"
+      },
+      {
+        "description": "The East Palo Alto Police Department is dedicated to serving and protecting the community of East Palo Alto.",
+        "display_name": null,
+        "lat": 37.4746236,
+        "lng": -122.1341991,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "East Palo Alto Police",
+        "relevance": 0.12,
+        "sector": "Government",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://www.ci.east-palo-alto.ca.us/police"
+      },
+      {
+        "description": "The Foster City Fire Department provides emergency services and fire prevention to Foster City.",
+        "display_name": null,
+        "lat": 37.5511544,
+        "lng": -122.281399,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "Foster City Fire Department",
+        "relevance": 0.12,
+        "sector": "Government",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://www.fostercity.org/fire"
+      },
+      {
+        "description": "A senior living community.",
+        "display_name": null,
         "lat": 37.5188101,
         "lng": -122.2968721,
-        "naics4": "6111",
-        "naics_title": "Elementary and Secondary Schools",
-        "name": "Carlmont High School",
-        "sector": "Education",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 2,
-        "soc_titles": {
-          "25-2012": "Kindergarten Teachers, Except Special Education",
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "25-2012",
-          "39-9031"
-        ],
-        "website": "https://www.carlmonths.org/"
-      },
-      {
-        "contact_name": "Tim Doyle",
-        "contact_title": "Administrator",
-        "description": "San Mateo Adult School offers educational programs for adults.",
-        "lat": 37.5712817,
-        "lng": -122.333817,
-        "naics4": "6117",
-        "naics_title": "Educational Support Services",
-        "name": "San Mateo Adult School",
-        "sector": "Education",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 2,
-        "soc_titles": {
-          "25-9044": "Teaching Assistants, Postsecondary",
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "39-9031",
-          "25-9044"
-        ],
-        "website": "https://sanmateoadulted.org/"
-      },
-      {
-        "contact_name": "Gerado Torres",
-        "contact_title": "Manager",
-        "description": "Tutor Works provides academic tutoring services.",
-        "lat": 37.5927497,
-        "lng": -122.3635651,
-        "naics4": "6117",
-        "naics_title": "Educational Support Services",
-        "name": "Tutor Works",
-        "sector": "Education",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 2,
-        "soc_titles": {
-          "25-9044": "Teaching Assistants, Postsecondary",
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "39-9031",
-          "25-9044"
-        ],
-        "website": "https://www.tutorworks.org/"
-      },
-      {
-        "contact_name": "Ralph Chavez",
-        "contact_title": "Administrator",
-        "description": "Community Gate Path Adult Care offers adult care services.",
-        "lat": 37.5900575,
-        "lng": -122.3848176,
-        "naics4": "6241",
-        "naics_title": "Individual and Family Services",
-        "name": "Community Gate Path Adult Care",
+        "naics4": "6233",
+        "naics_title": "Continuing Care Retirement Communities and Assisted Living Facilities for the Elderly",
+        "name": "Ivy Park At Belmont",
+        "relevance": 0.12,
         "sector": "Healthcare",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
+        "size_class": "50-99 employees",
+        "size_rank": 5,
         "soc_count": 1,
         "soc_titles": {
           "39-9031": "Exercise Trainers and Group Fitness Instructors"
@@ -246,321 +524,7 @@
         "socs": [
           "39-9031"
         ],
-        "website": "ABILITYPATH.ORG"
-      },
-      {
-        "contact_name": "Amanda Freeman",
-        "contact_title": "Manager",
-        "description": "Crisis Intervention & Suicide Prevention offers support for individuals in crisis.",
-        "lat": 37.4959658,
-        "lng": -122.2517307,
-        "naics4": "6241",
-        "naics_title": "Individual and Family Services",
-        "name": "Crisis Intervention & Suicide Prevention",
-        "sector": "Healthcare",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 1,
-        "soc_titles": {
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "39-9031"
-        ],
-        "website": "STAR-VISTA.ORG"
-      },
-      {
-        "contact_name": "Michael Denatale",
-        "contact_title": "Principal",
-        "description": "Jefferson High School is an educational institution for high school students.",
-        "lat": 37.7078161,
-        "lng": -122.4556858,
-        "naics4": "6241",
-        "naics_title": "Individual and Family Services",
-        "name": "Jefferson High School",
-        "sector": "Healthcare",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 1,
-        "soc_titles": {
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "39-9031"
-        ],
-        "website": "https://jhs.juhsd.net/"
-      },
-      {
-        "contact_name": "Joanne Sanchez",
-        "contact_title": "Manager",
-        "description": "Red Morton Community Center is a local community hub.",
-        "lat": 37.4678719,
-        "lng": -122.2397619,
-        "naics4": "6241",
-        "naics_title": "Individual and Family Services",
-        "name": "Red Morton Community Center",
-        "sector": "Healthcare",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 1,
-        "soc_titles": {
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "39-9031"
-        ],
-        "website": "REDWOODCITY.ORG"
-      },
-      {
-        "contact_name": "Guillermo Acavedo",
-        "contact_title": "Administrator",
-        "description": "Sequoia District Adult School offers educational programs for adults.",
-        "lat": 37.4570961,
-        "lng": -122.1690558,
-        "naics4": "6116",
-        "naics_title": "Other Schools and Instruction",
-        "name": "Sequoia District Adult School",
-        "sector": "Education",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 1,
-        "soc_titles": {
-          "25-9044": "Teaching Assistants, Postsecondary"
-        },
-        "socs": [
-          "25-9044"
-        ],
-        "website": "https://www.seqsas.org/"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "Abbott Middle School is an educational institution for middle school students.",
-        "lat": 37.5296066,
-        "lng": -122.3086591,
-        "naics4": "6111",
-        "naics_title": "Elementary and Secondary Schools",
-        "name": "Abbott Middle School",
-        "sector": "Education",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 2,
-        "soc_titles": {
-          "25-2012": "Kindergarten Teachers, Except Special Education",
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "25-2012",
-          "39-9031"
-        ],
-        "website": "https://abbott.smfcsd.net/"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "Allen Elementary School is an educational institution for elementary students.",
-        "lat": 37.625392,
-        "lng": -122.413994,
-        "naics4": "6111",
-        "naics_title": "Elementary and Secondary Schools",
-        "name": "Allen Elementary School",
-        "sector": "Education",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 2,
-        "soc_titles": {
-          "25-2012": "Kindergarten Teachers, Except Special Education",
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "25-2012",
-          "39-9031"
-        ],
-        "website": "https://www.sbpsd.org/o/aes"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "Alta Loma Middle School is an educational institution for middle school students.",
-        "lat": 37.6594383,
-        "lng": -122.4518117,
-        "naics4": "6111",
-        "naics_title": "Elementary and Secondary Schools",
-        "name": "Alta Loma Middle School",
-        "sector": "Education",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 2,
-        "soc_titles": {
-          "25-2012": "Kindergarten Teachers, Except Special Education",
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "25-2012",
-          "39-9031"
-        ],
-        "website": "https://altaloma.ssfusd.org/"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "Audubon Elementary School is an educational institution for elementary students.",
-        "lat": 37.5664962,
-        "lng": -122.2581318,
-        "naics4": "6111",
-        "naics_title": "Elementary and Secondary Schools",
-        "name": "Audubon Elementary School",
-        "sector": "Education",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 2,
-        "soc_titles": {
-          "25-2012": "Kindergarten Teachers, Except Special Education",
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "25-2012",
-          "39-9031"
-        ],
-        "website": "https://audubon.smfcsd.net/"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "Baden Therapeutic Day School provides therapeutic education.",
-        "lat": 37.652027,
-        "lng": -122.4338059,
-        "naics4": "6111",
-        "naics_title": "Elementary and Secondary Schools",
-        "name": "Baden Therapeutic Day School",
-        "sector": "Education",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 2,
-        "soc_titles": {
-          "25-2012": "Kindergarten Teachers, Except Special Education",
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "25-2012",
-          "39-9031"
-        ],
-        "website": "https://baden.ssfusd.org/"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "Bayside Academy is an educational institution.",
-        "lat": 37.5654204,
-        "lng": -122.3005517,
-        "naics4": "6111",
-        "naics_title": "Elementary and Secondary Schools",
-        "name": "Bayside Academy",
-        "sector": "Education",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 2,
-        "soc_titles": {
-          "25-2012": "Kindergarten Teachers, Except Special Education",
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "25-2012",
-          "39-9031"
-        ],
-        "website": "https://bayside.smfcsd.net/"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "Baywood Elementary School is an educational institution for elementary students.",
-        "lat": 37.5293696,
-        "lng": -122.306551,
-        "naics4": "6111",
-        "naics_title": "Elementary and Secondary Schools",
-        "name": "Baywood Elementary School",
-        "sector": "Education",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 2,
-        "soc_titles": {
-          "25-2012": "Kindergarten Teachers, Except Special Education",
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "25-2012",
-          "39-9031"
-        ],
-        "website": "https://baywood.smfcsd.net/"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "Beach Park Elementary School is an educational institution for elementary students.",
-        "lat": 37.5580025,
-        "lng": -122.2704946,
-        "naics4": "6111",
-        "naics_title": "Elementary and Secondary Schools",
-        "name": "Beach Park Elementary School",
-        "sector": "Education",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 2,
-        "soc_titles": {
-          "25-2012": "Kindergarten Teachers, Except Special Education",
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "25-2012",
-          "39-9031"
-        ],
-        "website": "https://beachpark.smfcsd.net/"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "Borel Middle School is an educational institution for middle school students.",
-        "lat": 37.5525255,
-        "lng": -122.3192481,
-        "naics4": "6111",
-        "naics_title": "Elementary and Secondary Schools",
-        "name": "Borel Middle School",
-        "sector": "Education",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 2,
-        "soc_titles": {
-          "25-2012": "Kindergarten Teachers, Except Special Education",
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "25-2012",
-          "39-9031"
-        ],
-        "website": "https://borel.smfcsd.net/"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "Bowditch Middle School is an educational institution for middle school students.",
-        "lat": 37.5604187,
-        "lng": -122.2506881,
-        "naics4": "6111",
-        "naics_title": "Elementary and Secondary Schools",
-        "name": "Bowditch Middle School",
-        "sector": "Education",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 2,
-        "soc_titles": {
-          "25-2012": "Kindergarten Teachers, Except Special Education",
-          "39-9031": "Exercise Trainers and Group Fitness Instructors"
-        },
-        "socs": [
-          "25-2012",
-          "39-9031"
-        ],
-        "website": "https://bowditch.smfcsd.net/"
+        "website": "https://ivyliving.com/belmont/"
       }
     ],
     "region": "Bay",
@@ -570,54 +534,13 @@
       "San Mateo"
     ],
     "shown": 25,
-    "total": 51
+    "total": 154
   },
   "/programs": {
+    "coverage_awards_only": true,
     "latest_award_year": "2024-2025",
     "matrix": {
       "cells": [
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "080200"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "080200"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "080200"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "080210"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "080210"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "080210"
-        },
         {
           "awards": 23,
           "college": "College of San Mateo",
@@ -659,111 +582,6 @@
           "enrolled": false,
           "teaches": false,
           "top6": "083560"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "130500"
-        },
-        {
-          "awards": 51,
-          "college": "Skyline College",
-          "enrolled": true,
-          "teaches": true,
-          "top6": "130500"
-        },
-        {
-          "awards": 38,
-          "college": "Ca\u00f1ada College",
-          "enrolled": true,
-          "teaches": true,
-          "top6": "130500"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "130540"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "130540"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "130540"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "130550"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "130550"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": true,
-          "top6": "130550"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "130580"
-        },
-        {
-          "awards": 1,
-          "college": "Skyline College",
-          "enrolled": true,
-          "teaches": false,
-          "top6": "130580"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": true,
-          "teaches": false,
-          "top6": "130580"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "130590"
-        },
-        {
-          "awards": 2,
-          "college": "Skyline College",
-          "enrolled": true,
-          "teaches": true,
-          "top6": "130590"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": true,
-          "teaches": false,
-          "top6": "130590"
         }
       ],
       "colleges": [
@@ -778,14 +596,6 @@
     "sector": "Education & Human Development",
     "tops": [
       {
-        "awards_total": 89,
-        "enrollment_total": 868,
-        "n_colleges_offering": 2,
-        "name": "Child Development/Early Care and Education",
-        "soc_count": 1,
-        "top6": "130500"
-      },
-      {
         "awards_total": 23,
         "enrollment_total": 99,
         "n_colleges_offering": 1,
@@ -794,73 +604,25 @@
         "top6": "083520"
       },
       {
-        "awards_total": 2,
-        "enrollment_total": 108,
-        "n_colleges_offering": 1,
-        "name": "Infants and Toddlers",
-        "soc_count": 1,
-        "top6": "130590"
-      },
-      {
-        "awards_total": 1,
-        "enrollment_total": 46,
-        "n_colleges_offering": 0,
-        "name": "Child Development Administration and Management",
-        "soc_count": 1,
-        "top6": "130580"
-      },
-      {
         "awards_total": 1,
         "enrollment_total": 0,
         "n_colleges_offering": 1,
         "name": "Coaching",
         "soc_count": 1,
         "top6": "083560"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Educational Aide (Teacher Assistant)",
-        "soc_count": 2,
-        "top6": "080200"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Educational Aide (Teacher Assistant), Bilingual",
-        "soc_count": 1,
-        "top6": "080210"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Preschool Age Children",
-        "soc_count": 1,
-        "top6": "130540"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 1,
-        "name": "The School Age Child",
-        "soc_count": 1,
-        "top6": "130550"
       }
     ]
   },
   "landscape": {
     "aggregate": {
-      "candidate_employers": 247,
-      "combined_awards": 116,
-      "combined_supply_total": 106.17,
-      "gap": 4034,
+      "candidate_employers": 241,
+      "combined_awards": 24,
+      "combined_supply_total": 6.0,
+      "gap": 2944,
       "n_colleges": 3,
-      "n_occupations": 3,
-      "occupations_taught": 2,
-      "regional_demand_total": 4140
+      "n_occupations": 1,
+      "occupations_taught": 1,
+      "regional_demand_total": 2950
     },
     "award_years": [
       "2020-2021",
@@ -872,34 +634,6 @@
     "colleges": [
       {
         "cells": [
-          {
-            "annual_openings": 210,
-            "annual_wage": 80260,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 210,
-            "growth_rate": 0.037281016,
-            "programs": [],
-            "soc_code": "25-2012",
-            "supply": 0.0,
-            "title": "Kindergarten Teachers, Except Special Education"
-          },
-          {
-            "annual_openings": 980,
-            "annual_wage": 59540,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 980,
-            "growth_rate": 0.009433937,
-            "programs": [],
-            "soc_code": "25-9044",
-            "supply": 0.0,
-            "title": "Teaching Assistants, Postsecondary"
-          },
           {
             "annual_openings": 2950,
             "annual_wage": 58610,
@@ -969,107 +703,6 @@
       {
         "cells": [
           {
-            "annual_openings": 210,
-            "annual_wage": 80260,
-            "awards_recent": 54,
-            "course_count": 12,
-            "enrolled": true,
-            "feeding_awards": 54,
-            "gap": 171,
-            "growth_rate": 0.037281016,
-            "programs": [
-              {
-                "awards": [
-                  42,
-                  36,
-                  29,
-                  26,
-                  51
-                ],
-                "awards_recent": 51,
-                "enrollment": [
-                  319,
-                  264,
-                  191,
-                  306,
-                  321,
-                  307,
-                  320,
-                  362,
-                  279
-                ],
-                "name": "Child Development/Early Care and Education",
-                "top6": "130500",
-                "wages": []
-              },
-              {
-                "awards": [
-                  0,
-                  1,
-                  9,
-                  9,
-                  1
-                ],
-                "awards_recent": 1,
-                "enrollment": [
-                  37,
-                  null,
-                  27,
-                  null,
-                  31,
-                  null,
-                  32,
-                  null,
-                  25
-                ],
-                "name": "Child Development Administration and Management",
-                "top6": "130580",
-                "wages": []
-              },
-              {
-                "awards": [
-                  0,
-                  1,
-                  6,
-                  2,
-                  2
-                ],
-                "awards_recent": 2,
-                "enrollment": [
-                  60,
-                  null,
-                  68,
-                  null,
-                  66,
-                  null,
-                  72,
-                  null,
-                  71
-                ],
-                "name": "Infants and Toddlers",
-                "top6": "130590",
-                "wages": []
-              }
-            ],
-            "soc_code": "25-2012",
-            "supply": 39.17,
-            "title": "Kindergarten Teachers, Except Special Education"
-          },
-          {
-            "annual_openings": 980,
-            "annual_wage": 59540,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 980,
-            "growth_rate": 0.009433937,
-            "programs": [],
-            "soc_code": "25-9044",
-            "supply": 0.0,
-            "title": "Teaching Assistants, Postsecondary"
-          },
-          {
             "annual_openings": 2950,
             "annual_wage": 58610,
             "awards_recent": 0,
@@ -1089,156 +722,6 @@
       {
         "cells": [
           {
-            "annual_openings": 210,
-            "annual_wage": 80260,
-            "awards_recent": 38,
-            "course_count": 14,
-            "enrolled": true,
-            "feeding_awards": 38,
-            "gap": 149,
-            "growth_rate": 0.037281016,
-            "programs": [
-              {
-                "awards": [
-                  0,
-                  0,
-                  1,
-                  0,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null
-                ],
-                "name": "Educational Aide (Teacher Assistant)",
-                "top6": "080200",
-                "wages": []
-              },
-              {
-                "awards": [
-                  75,
-                  64,
-                  44,
-                  30,
-                  38
-                ],
-                "awards_recent": 38,
-                "enrollment": [
-                  395,
-                  490,
-                  494,
-                  429,
-                  504,
-                  384,
-                  548,
-                  449,
-                  565
-                ],
-                "name": "Child Development/Early Care and Education",
-                "top6": "130500",
-                "wages": []
-              },
-              {
-                "awards": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  6,
-                  32,
-                  12,
-                  37,
-                  15,
-                  28,
-                  11,
-                  35,
-                  19
-                ],
-                "name": "Child Development Administration and Management",
-                "top6": "130580",
-                "wages": []
-              },
-              {
-                "awards": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  16,
-                  38,
-                  30,
-                  84,
-                  37,
-                  41,
-                  33,
-                  40,
-                  37
-                ],
-                "name": "Infants and Toddlers",
-                "top6": "130590",
-                "wages": []
-              }
-            ],
-            "soc_code": "25-2012",
-            "supply": 61.0,
-            "title": "Kindergarten Teachers, Except Special Education"
-          },
-          {
-            "annual_openings": 980,
-            "annual_wage": 59540,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 980,
-            "growth_rate": 0.009433937,
-            "programs": [
-              {
-                "awards": [
-                  0,
-                  0,
-                  1,
-                  0,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null
-                ],
-                "name": "Educational Aide (Teacher Assistant)",
-                "top6": "080200",
-                "wages": []
-              }
-            ],
-            "soc_code": "25-9044",
-            "supply": 0.0,
-            "title": "Teaching Assistants, Postsecondary"
-          },
-          {
             "annual_openings": 2950,
             "annual_wage": 58610,
             "awards_recent": 0,
@@ -1256,6 +739,7 @@
         "name": "Ca\u00f1ada College"
       }
     ],
+    "coverage_awards_only": true,
     "enrollment_terms": [
       "Fall 2021",
       "Spring 2022",
@@ -1267,7 +751,7 @@
       "Spring 2025",
       "Fall 2025"
     ],
-    "executive_summary": "This view examines the regional demand landscape across the 3 education & human development occupations the San Mateo County CCD \u2014 Education & Human Development targets in the Bay Area regional labor market. Regional demand for these occupations totals 4,140 openings per year.",
+    "executive_summary": "This view examines the regional demand landscape across the 1 education & human development occupations the San Mateo County CCD \u2014 Education & Human Development targets in the Bay Area regional labor market. Regional demand for these occupations totals 2,950 openings per year.",
     "is_sector_priority": false,
     "region": "Bay",
     "region_display": "Bay Area",

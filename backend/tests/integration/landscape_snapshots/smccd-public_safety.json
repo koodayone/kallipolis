@@ -2,835 +2,647 @@
   "/employers": {
     "employers": [
       {
-        "contact_name": "Robert Barisone",
-        "contact_title": "Manager",
-        "description": "The Central County Fire Department provides fire suppression and emergency response services.",
-        "lat": 37.5865829,
-        "lng": -122.3384383,
-        "naics4": "9221",
-        "naics_title": "Justice, Public Order, and Safety Activities",
-        "name": "Central County Fire Department",
-        "sector": "Government",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 10,
-        "soc_titles": {
-          "19-4092": "Forensic Science Technicians",
-          "29-2042": "Emergency Medical Technicians",
-          "29-2043": "Paramedics",
-          "33-1011": "First-Line Supervisors of Correctional Officers",
-          "33-1012": "First-Line Supervisors of Police and Detectives",
-          "33-1021": "First-Line Supervisors of Firefighting and Prevention Workers",
-          "33-2011": "Firefighters",
-          "33-3012": "Correctional Officers and Jailers",
-          "33-3021": "Detectives and Criminal Investigators",
-          "33-3051": "Police and Sheriff's Patrol Officers"
-        },
-        "socs": [
-          "33-3051",
-          "33-3012",
-          "33-2011",
-          "33-1012",
-          "33-3021",
-          "33-1021",
-          "33-1011",
-          "29-2042",
-          "29-2043",
-          "19-4092"
-        ],
-        "website": "https://www.ccfd.org/"
-      },
-      {
-        "contact_name": "Manuel Martinez",
-        "contact_title": "Manager",
-        "description": "The Daly City Police Department is responsible for public safety and law enforcement in Daly City.",
-        "lat": 37.6911085,
-        "lng": -122.4739145,
-        "naics4": "9221",
-        "naics_title": "Justice, Public Order, and Safety Activities",
-        "name": "Daly City Police",
-        "sector": "Government",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 10,
-        "soc_titles": {
-          "19-4092": "Forensic Science Technicians",
-          "29-2042": "Emergency Medical Technicians",
-          "29-2043": "Paramedics",
-          "33-1011": "First-Line Supervisors of Correctional Officers",
-          "33-1012": "First-Line Supervisors of Police and Detectives",
-          "33-1021": "First-Line Supervisors of Firefighting and Prevention Workers",
-          "33-2011": "Firefighters",
-          "33-3012": "Correctional Officers and Jailers",
-          "33-3021": "Detectives and Criminal Investigators",
-          "33-3051": "Police and Sheriff's Patrol Officers"
-        },
-        "socs": [
-          "33-3051",
-          "33-3012",
-          "33-2011",
-          "33-1012",
-          "33-3021",
-          "33-1021",
-          "33-1011",
-          "29-2042",
-          "29-2043",
-          "19-4092"
-        ],
-        "website": "https://www.dalycity.org/1231/Police"
-      },
-      {
-        "contact_name": "Harold Schapelhouman",
-        "contact_title": "Manager",
-        "description": "The Menlo Park Fire Protection District provides fire and emergency medical services.",
-        "lat": 37.4570961,
-        "lng": -122.1690558,
-        "naics4": "9221",
-        "naics_title": "Justice, Public Order, and Safety Activities",
-        "name": "Menlo Park Fire Protection District",
-        "sector": "Government",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 10,
-        "soc_titles": {
-          "19-4092": "Forensic Science Technicians",
-          "29-2042": "Emergency Medical Technicians",
-          "29-2043": "Paramedics",
-          "33-1011": "First-Line Supervisors of Correctional Officers",
-          "33-1012": "First-Line Supervisors of Police and Detectives",
-          "33-1021": "First-Line Supervisors of Firefighting and Prevention Workers",
-          "33-2011": "Firefighters",
-          "33-3012": "Correctional Officers and Jailers",
-          "33-3021": "Detectives and Criminal Investigators",
-          "33-3051": "Police and Sheriff's Patrol Officers"
-        },
-        "socs": [
-          "33-3051",
-          "33-3012",
-          "33-2011",
-          "33-1012",
-          "33-3021",
-          "33-1021",
-          "33-1011",
-          "29-2042",
-          "29-2043",
-          "19-4092"
-        ],
-        "website": "https://www.menlofire.gov/"
-      },
-      {
-        "contact_name": "Edward Conover",
-        "contact_title": "Director",
-        "description": "The Redwood City Police Department is responsible for law enforcement and public safety.",
-        "lat": 37.495044,
-        "lng": -122.2204934,
-        "naics4": "9221",
-        "naics_title": "Justice, Public Order, and Safety Activities",
-        "name": "Redwood City Police",
-        "sector": "Government",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 10,
-        "soc_titles": {
-          "19-4092": "Forensic Science Technicians",
-          "29-2042": "Emergency Medical Technicians",
-          "29-2043": "Paramedics",
-          "33-1011": "First-Line Supervisors of Correctional Officers",
-          "33-1012": "First-Line Supervisors of Police and Detectives",
-          "33-1021": "First-Line Supervisors of Firefighting and Prevention Workers",
-          "33-2011": "Firefighters",
-          "33-3012": "Correctional Officers and Jailers",
-          "33-3021": "Detectives and Criminal Investigators",
-          "33-3051": "Police and Sheriff's Patrol Officers"
-        },
-        "socs": [
-          "33-3051",
-          "33-3012",
-          "33-2011",
-          "33-1012",
-          "33-3021",
-          "33-1021",
-          "33-1011",
-          "29-2042",
-          "29-2043",
-          "19-4092"
-        ],
-        "website": "https://www.redwoodcity.org/departments/police-department"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "The San Francisco Police Department is responsible for law enforcement and public safety in San Francisco.",
-        "lat": 37.6158361,
-        "lng": -122.395561,
-        "naics4": "9221",
-        "naics_title": "Justice, Public Order, and Safety Activities",
-        "name": "San Francisco Police",
-        "sector": "Government",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 10,
-        "soc_titles": {
-          "19-4092": "Forensic Science Technicians",
-          "29-2042": "Emergency Medical Technicians",
-          "29-2043": "Paramedics",
-          "33-1011": "First-Line Supervisors of Correctional Officers",
-          "33-1012": "First-Line Supervisors of Police and Detectives",
-          "33-1021": "First-Line Supervisors of Firefighting and Prevention Workers",
-          "33-2011": "Firefighters",
-          "33-3012": "Correctional Officers and Jailers",
-          "33-3021": "Detectives and Criminal Investigators",
-          "33-3051": "Police and Sheriff's Patrol Officers"
-        },
-        "socs": [
-          "33-3051",
-          "33-3012",
-          "33-2011",
-          "33-1012",
-          "33-3021",
-          "33-1021",
-          "33-1011",
-          "29-2042",
-          "29-2043",
-          "19-4092"
-        ],
-        "website": "https://www.sanfranciscopolice.org/"
-      },
-      {
-        "contact_name": "Matt Turturici",
-        "contact_title": "Other",
-        "description": "The San Mateo Consolidated Fire Department provides fire and emergency medical services.",
-        "lat": 37.5219843,
-        "lng": -122.2721324,
-        "naics4": "9221",
-        "naics_title": "Justice, Public Order, and Safety Activities",
-        "name": "San Mateo Consolidated Fire Department",
-        "sector": "Government",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 10,
-        "soc_titles": {
-          "19-4092": "Forensic Science Technicians",
-          "29-2042": "Emergency Medical Technicians",
-          "29-2043": "Paramedics",
-          "33-1011": "First-Line Supervisors of Correctional Officers",
-          "33-1012": "First-Line Supervisors of Police and Detectives",
-          "33-1021": "First-Line Supervisors of Firefighting and Prevention Workers",
-          "33-2011": "Firefighters",
-          "33-3012": "Correctional Officers and Jailers",
-          "33-3021": "Detectives and Criminal Investigators",
-          "33-3051": "Police and Sheriff's Patrol Officers"
-        },
-        "socs": [
-          "33-3051",
-          "33-3012",
-          "33-2011",
-          "33-1012",
-          "33-3021",
-          "33-1021",
-          "33-1011",
-          "29-2042",
-          "29-2043",
-          "19-4092"
-        ],
-        "website": "https://www.smcfire.org/"
-      },
-      {
-        "contact_name": "Hugh Njemanze",
-        "contact_title": "CEO",
-        "description": "Anomali is a threat intelligence company.",
-        "lat": 37.4931239,
-        "lng": -122.2357404,
-        "naics4": "5616",
-        "naics_title": "Investigation and Security Services",
-        "name": "Anomali",
-        "sector": "Administrative Services",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 1,
-        "soc_titles": {
-          "29-2042": "Emergency Medical Technicians"
-        },
-        "socs": [
-          "29-2042"
-        ],
-        "website": "https://www.anomali.com/"
-      },
-      {
-        "contact_name": "Gil Shwed",
-        "contact_title": "CEO",
-        "description": "Check Point Software Technologies is a global leader in network cybersecurity solutions.",
-        "lat": 37.5073876,
-        "lng": -122.248094,
-        "naics4": "5616",
-        "naics_title": "Investigation and Security Services",
-        "name": "Check Point Software Technologies",
-        "sector": "Administrative Services",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 1,
-        "soc_titles": {
-          "29-2042": "Emergency Medical Technicians"
-        },
-        "socs": [
-          "29-2042"
-        ],
-        "website": "https://www.checkpoint.com/"
-      },
-      {
-        "contact_name": "Geoff Haydon",
-        "contact_title": "CEO",
-        "description": "Ontinue is a cybersecurity company offering managed security services.",
-        "lat": 37.495044,
-        "lng": -122.2204934,
-        "naics4": "5616",
-        "naics_title": "Investigation and Security Services",
-        "name": "Ontinue",
-        "sector": "Administrative Services",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 1,
-        "soc_titles": {
-          "29-2042": "Emergency Medical Technicians"
-        },
-        "socs": [
-          "29-2042"
-        ],
-        "website": "https://www.ontinue.com/"
-      },
-      {
-        "contact_name": "Stan Teets",
-        "contact_title": "Owner",
-        "description": "Personal Protective Services provides security and protection services.",
-        "lat": 37.5883478,
-        "lng": -122.3358474,
-        "naics4": "5616",
-        "naics_title": "Investigation and Security Services",
-        "name": "Personal Protective Services",
-        "sector": "Administrative Services",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 1,
-        "soc_titles": {
-          "29-2042": "Emergency Medical Technicians"
-        },
-        "socs": [
-          "29-2042"
-        ],
-        "website": "https://personalprotective.com/"
-      },
-      {
-        "contact_name": "Sumedh S Thakar",
-        "contact_title": "CEO",
-        "description": "Qualys is a provider of cloud-based security and compliance solutions.",
-        "lat": 37.5511544,
-        "lng": -122.281399,
-        "naics4": "5616",
-        "naics_title": "Investigation and Security Services",
-        "name": "Qualys",
-        "sector": "Administrative Services",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 1,
-        "soc_titles": {
-          "29-2042": "Emergency Medical Technicians"
-        },
-        "socs": [
-          "29-2042"
-        ],
-        "website": "https://www.qualys.com/"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "The Belmont Police Department is responsible for law enforcement in Belmont.",
+        "description": "The Belmont Police Department serves the City of Belmont on the San Francisco Peninsula with approximately 50 full-time personnel, including 31 sworn officers organized into Patrol, Traffic, Investigations, K-9, Youth Services, SWAT, and Crisis Negotiation units. The department operates the C.A.R.E. (Crisis Assessment Response and Education) and T.R.A.C. (Tracking and Recovery of Adults and Children) programs, and employs dispatchers, records technicians, code enforcement officers, and community service officers alongside sworn staff.",
+        "display_name": null,
         "lat": 37.5182829,
         "lng": -122.2774823,
         "naics4": "9221",
         "naics_title": "Justice, Public Order, and Safety Activities",
         "name": "Belmont Police",
+        "relevance": 12.9,
         "sector": "Government",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 10,
+        "soc_count": 4,
         "soc_titles": {
           "19-4092": "Forensic Science Technicians",
-          "29-2042": "Emergency Medical Technicians",
-          "29-2043": "Paramedics",
-          "33-1011": "First-Line Supervisors of Correctional Officers",
-          "33-1012": "First-Line Supervisors of Police and Detectives",
-          "33-1021": "First-Line Supervisors of Firefighting and Prevention Workers",
           "33-2011": "Firefighters",
           "33-3012": "Correctional Officers and Jailers",
-          "33-3021": "Detectives and Criminal Investigators",
           "33-3051": "Police and Sheriff's Patrol Officers"
         },
         "socs": [
           "33-3051",
           "33-3012",
           "33-2011",
-          "33-1012",
-          "33-3021",
-          "33-1021",
-          "33-1011",
-          "29-2042",
-          "29-2043",
           "19-4092"
         ],
         "website": "https://www.belmont.gov/departments/police"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "description": "The Central County Fire Department provides fire suppression and emergency response services.",
+        "display_name": null,
+        "lat": 37.5865829,
+        "lng": -122.3384383,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "Central County Fire Department",
+        "relevance": 12.9,
+        "sector": "Government",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 4,
+        "soc_titles": {
+          "19-4092": "Forensic Science Technicians",
+          "33-2011": "Firefighters",
+          "33-3012": "Correctional Officers and Jailers",
+          "33-3051": "Police and Sheriff's Patrol Officers"
+        },
+        "socs": [
+          "33-3051",
+          "33-3012",
+          "33-2011",
+          "19-4092"
+        ],
+        "website": "https://www.ccfd.org/"
+      },
+      {
+        "description": "The Daly City Police Department is responsible for public safety and law enforcement in Daly City.",
+        "display_name": null,
+        "lat": 37.6911085,
+        "lng": -122.4739145,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "Daly City Police",
+        "relevance": 12.9,
+        "sector": "Government",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 4,
+        "soc_titles": {
+          "19-4092": "Forensic Science Technicians",
+          "33-2011": "Firefighters",
+          "33-3012": "Correctional Officers and Jailers",
+          "33-3051": "Police and Sheriff's Patrol Officers"
+        },
+        "socs": [
+          "33-3051",
+          "33-3012",
+          "33-2011",
+          "19-4092"
+        ],
+        "website": "https://www.dalycity.org/1231/Police"
+      },
+      {
+        "description": "Daly City's Department of Water and Wastewater Resources operates the wastewater treatment and disposal system for the North San Mateo County Sanitation District, managing collection infrastructure, treatment plant operations, and environmental compliance at its facility on Lake Merced Boulevard. The department also administers drinking water supply services and recycles treatment plant byproducts as part of its environmental stewardship mission. Operations employ water and wastewater treatment plant operators, environmental compliance staff, and utility engineers serving the North San Mateo County service area.",
+        "display_name": null,
+        "lat": 37.7076798,
+        "lng": -122.4858219,
+        "naics4": "9241",
+        "naics_title": "Administration of Environmental Quality Programs",
+        "name": "Daly City Wastewater",
+        "relevance": 12.9,
+        "sector": "Government",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 4,
+        "soc_titles": {
+          "19-4092": "Forensic Science Technicians",
+          "33-2011": "Firefighters",
+          "33-3012": "Correctional Officers and Jailers",
+          "33-3051": "Police and Sheriff's Patrol Officers"
+        },
+        "socs": [
+          "33-3051",
+          "33-3012",
+          "33-2011",
+          "19-4092"
+        ],
+        "website": "https://www.dalycity.org/1036/Wastewater"
+      },
+      {
         "description": "The East Palo Alto Police Department is dedicated to serving and protecting the community of East Palo Alto.",
+        "display_name": null,
         "lat": 37.4746236,
         "lng": -122.1341991,
         "naics4": "9221",
         "naics_title": "Justice, Public Order, and Safety Activities",
         "name": "East Palo Alto Police",
+        "relevance": 12.9,
         "sector": "Government",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 10,
+        "soc_count": 4,
         "soc_titles": {
           "19-4092": "Forensic Science Technicians",
-          "29-2042": "Emergency Medical Technicians",
-          "29-2043": "Paramedics",
-          "33-1011": "First-Line Supervisors of Correctional Officers",
-          "33-1012": "First-Line Supervisors of Police and Detectives",
-          "33-1021": "First-Line Supervisors of Firefighting and Prevention Workers",
           "33-2011": "Firefighters",
           "33-3012": "Correctional Officers and Jailers",
-          "33-3021": "Detectives and Criminal Investigators",
           "33-3051": "Police and Sheriff's Patrol Officers"
         },
         "socs": [
           "33-3051",
           "33-3012",
           "33-2011",
-          "33-1012",
-          "33-3021",
-          "33-1021",
-          "33-1011",
-          "29-2042",
-          "29-2043",
           "19-4092"
         ],
         "website": "https://www.ci.east-palo-alto.ca.us/police"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
         "description": "The Foster City Fire Department provides emergency services and fire prevention to Foster City.",
+        "display_name": null,
         "lat": 37.5511544,
         "lng": -122.281399,
         "naics4": "9221",
         "naics_title": "Justice, Public Order, and Safety Activities",
         "name": "Foster City Fire Department",
+        "relevance": 12.9,
         "sector": "Government",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 10,
+        "soc_count": 4,
         "soc_titles": {
           "19-4092": "Forensic Science Technicians",
-          "29-2042": "Emergency Medical Technicians",
-          "29-2043": "Paramedics",
-          "33-1011": "First-Line Supervisors of Correctional Officers",
-          "33-1012": "First-Line Supervisors of Police and Detectives",
-          "33-1021": "First-Line Supervisors of Firefighting and Prevention Workers",
           "33-2011": "Firefighters",
           "33-3012": "Correctional Officers and Jailers",
-          "33-3021": "Detectives and Criminal Investigators",
           "33-3051": "Police and Sheriff's Patrol Officers"
         },
         "socs": [
           "33-3051",
           "33-3012",
           "33-2011",
-          "33-1012",
-          "33-3021",
-          "33-1021",
-          "33-1011",
-          "29-2042",
-          "29-2043",
           "19-4092"
         ],
         "website": "https://www.fostercity.org/fire"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
         "description": "The Kings Mountain Fire Department serves the Kings Mountain community with fire and emergency services.",
+        "display_name": null,
         "lat": 37.3877721,
         "lng": -122.2663618,
         "naics4": "9221",
         "naics_title": "Justice, Public Order, and Safety Activities",
         "name": "Kings Mountain Fire Department",
+        "relevance": 12.9,
         "sector": "Government",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 10,
+        "soc_count": 4,
         "soc_titles": {
           "19-4092": "Forensic Science Technicians",
-          "29-2042": "Emergency Medical Technicians",
-          "29-2043": "Paramedics",
-          "33-1011": "First-Line Supervisors of Correctional Officers",
-          "33-1012": "First-Line Supervisors of Police and Detectives",
-          "33-1021": "First-Line Supervisors of Firefighting and Prevention Workers",
           "33-2011": "Firefighters",
           "33-3012": "Correctional Officers and Jailers",
-          "33-3021": "Detectives and Criminal Investigators",
           "33-3051": "Police and Sheriff's Patrol Officers"
         },
         "socs": [
           "33-3051",
           "33-3012",
           "33-2011",
-          "33-1012",
-          "33-3021",
-          "33-1021",
-          "33-1011",
-          "29-2042",
-          "29-2043",
           "19-4092"
         ],
         "website": "https://kmfd.org/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
+        "description": "The Menlo Park Fire Protection District is an independent special district headquartered in Menlo Park, CA, providing fire suppression, emergency medical services, and community risk reduction across its jurisdiction. The district operates specialized units including California Task Force Three (CA-TF3) for urban search and rescue, swift-water/flood rescue (CA-SFS&R3), wildland firefighting, and Tactical Emergency Medical Support (TEMS). Operational roles span firefighters, paramedics, heavy rescue technicians, and fire prevention personnel across multiple stations.",
+        "display_name": null,
+        "lat": 37.4570961,
+        "lng": -122.1690558,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "Menlo Park Fire Protection District",
+        "relevance": 12.9,
+        "sector": "Government",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 4,
+        "soc_titles": {
+          "19-4092": "Forensic Science Technicians",
+          "33-2011": "Firefighters",
+          "33-3012": "Correctional Officers and Jailers",
+          "33-3051": "Police and Sheriff's Patrol Officers"
+        },
+        "socs": [
+          "33-3051",
+          "33-3012",
+          "33-2011",
+          "19-4092"
+        ],
+        "website": "https://www.menlofire.gov/"
+      },
+      {
         "description": "The North County Fire Authority provides fire and emergency medical services to its jurisdiction.",
+        "display_name": null,
         "lat": 37.6619548,
         "lng": -122.4723077,
         "naics4": "9221",
         "naics_title": "Justice, Public Order, and Safety Activities",
         "name": "North County Fire Authority",
+        "relevance": 12.9,
         "sector": "Government",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 10,
+        "soc_count": 4,
         "soc_titles": {
           "19-4092": "Forensic Science Technicians",
-          "29-2042": "Emergency Medical Technicians",
-          "29-2043": "Paramedics",
-          "33-1011": "First-Line Supervisors of Correctional Officers",
-          "33-1012": "First-Line Supervisors of Police and Detectives",
-          "33-1021": "First-Line Supervisors of Firefighting and Prevention Workers",
           "33-2011": "Firefighters",
           "33-3012": "Correctional Officers and Jailers",
-          "33-3021": "Detectives and Criminal Investigators",
           "33-3051": "Police and Sheriff's Patrol Officers"
         },
         "socs": [
           "33-3051",
           "33-3012",
           "33-2011",
-          "33-1012",
-          "33-3021",
-          "33-1021",
-          "33-1011",
-          "29-2042",
-          "29-2043",
           "19-4092"
         ],
         "website": "https://northcountyfire.gov/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
         "description": "The Redwood City Fire Department provides fire suppression and emergency medical services.",
+        "display_name": null,
         "lat": 37.4877119,
         "lng": -122.2258939,
         "naics4": "9221",
         "naics_title": "Justice, Public Order, and Safety Activities",
         "name": "Redwood City Fire Department",
+        "relevance": 12.9,
         "sector": "Government",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 10,
+        "soc_count": 4,
         "soc_titles": {
           "19-4092": "Forensic Science Technicians",
-          "29-2042": "Emergency Medical Technicians",
-          "29-2043": "Paramedics",
-          "33-1011": "First-Line Supervisors of Correctional Officers",
-          "33-1012": "First-Line Supervisors of Police and Detectives",
-          "33-1021": "First-Line Supervisors of Firefighting and Prevention Workers",
           "33-2011": "Firefighters",
           "33-3012": "Correctional Officers and Jailers",
-          "33-3021": "Detectives and Criminal Investigators",
           "33-3051": "Police and Sheriff's Patrol Officers"
         },
         "socs": [
           "33-3051",
           "33-3012",
           "33-2011",
-          "33-1012",
-          "33-3021",
-          "33-1021",
-          "33-1011",
-          "29-2042",
-          "29-2043",
           "19-4092"
         ],
         "website": "https://www.redwoodcity.org/departments/fire-department"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "The San Bruno Fire Department provides fire suppression and emergency response services.",
+        "description": "The Redwood City Police Department is a municipal law enforcement agency policing a 19-square-mile urban service area in San Mateo County, staffed by approximately 96 sworn officers and 36 civilian employees organized into Patrol, Investigations, and Administrative Services divisions. Civilian roles include parking enforcement, abandoned vehicle abatement, traffic control, and subpoena service. The department is a partner agency for criminal justice and public safety workforce pipelines at local community colleges.",
+        "display_name": null,
+        "lat": 37.495044,
+        "lng": -122.2204934,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "Redwood City Police",
+        "relevance": 12.9,
+        "sector": "Government",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 4,
+        "soc_titles": {
+          "19-4092": "Forensic Science Technicians",
+          "33-2011": "Firefighters",
+          "33-3012": "Correctional Officers and Jailers",
+          "33-3051": "Police and Sheriff's Patrol Officers"
+        },
+        "socs": [
+          "33-3051",
+          "33-3012",
+          "33-2011",
+          "19-4092"
+        ],
+        "website": "https://www.redwoodcity.org/departments/police-department"
+      },
+      {
+        "description": "The San Bruno Fire Department (SBFD) is a municipal fire agency serving the City of San Bruno, operating two stations (Station 51 at El Camino Real and Station 52 at Earl Avenue) with services spanning fire suppression, advanced life support, and hazardous materials response. Beyond emergency response, the department conducts annual business inspections, public fire prevention education, and community training programs including CPR certification, CERT training, and smoke alarm installation. The department employs firefighters and paramedics trained in emergency medical services, hazmat operations, and fire prevention.",
+        "display_name": null,
         "lat": 37.6206209,
         "lng": -122.4110521,
         "naics4": "9221",
         "naics_title": "Justice, Public Order, and Safety Activities",
         "name": "San Bruno Fire Department",
+        "relevance": 12.9,
         "sector": "Government",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 10,
+        "soc_count": 4,
         "soc_titles": {
           "19-4092": "Forensic Science Technicians",
-          "29-2042": "Emergency Medical Technicians",
-          "29-2043": "Paramedics",
-          "33-1011": "First-Line Supervisors of Correctional Officers",
-          "33-1012": "First-Line Supervisors of Police and Detectives",
-          "33-1021": "First-Line Supervisors of Firefighting and Prevention Workers",
           "33-2011": "Firefighters",
           "33-3012": "Correctional Officers and Jailers",
-          "33-3021": "Detectives and Criminal Investigators",
           "33-3051": "Police and Sheriff's Patrol Officers"
         },
         "socs": [
           "33-3051",
           "33-3012",
           "33-2011",
-          "33-1012",
-          "33-3021",
-          "33-1021",
-          "33-1011",
-          "29-2042",
-          "29-2043",
           "19-4092"
         ],
         "website": "https://www.sanbruno.ca.gov/294/Fire"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
         "description": "The San Bruno Police Department is responsible for maintaining law and order in San Bruno.",
+        "display_name": null,
         "lat": 37.6352557,
         "lng": -122.4146055,
         "naics4": "9221",
         "naics_title": "Justice, Public Order, and Safety Activities",
         "name": "San Bruno Police",
+        "relevance": 12.9,
         "sector": "Government",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 10,
+        "soc_count": 4,
         "soc_titles": {
           "19-4092": "Forensic Science Technicians",
-          "29-2042": "Emergency Medical Technicians",
-          "29-2043": "Paramedics",
-          "33-1011": "First-Line Supervisors of Correctional Officers",
-          "33-1012": "First-Line Supervisors of Police and Detectives",
-          "33-1021": "First-Line Supervisors of Firefighting and Prevention Workers",
           "33-2011": "Firefighters",
           "33-3012": "Correctional Officers and Jailers",
-          "33-3021": "Detectives and Criminal Investigators",
           "33-3051": "Police and Sheriff's Patrol Officers"
         },
         "socs": [
           "33-3051",
           "33-3012",
           "33-2011",
-          "33-1012",
-          "33-3021",
-          "33-1021",
-          "33-1011",
-          "29-2042",
-          "29-2043",
           "19-4092"
         ],
         "website": "https://www.sanbruno.ca.gov/472/Police"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "The San Carlos Fire Department provides fire suppression and emergency medical services.",
+        "description": "The San Carlos Fire Department operates two stations (Station 13 on Laurel Street and Station 16 on Alameda de las Pulgas) under a shared-services partnership with the Redwood City Fire Department, covering fire suppression, emergency medical response, hazardous materials incidents, and disaster mitigation for the City of San Carlos. The department also delivers community fire-safety education, wildfire preparedness outreach, and code enforcement. Operational roles include firefighters, paramedics/EMTs, and hazmat-trained personnel.",
+        "display_name": null,
         "lat": 37.4774799,
         "lng": -122.2199034,
         "naics4": "9221",
         "naics_title": "Justice, Public Order, and Safety Activities",
         "name": "San Carlos Fire Department",
+        "relevance": 12.9,
         "sector": "Government",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 10,
+        "soc_count": 4,
         "soc_titles": {
           "19-4092": "Forensic Science Technicians",
-          "29-2042": "Emergency Medical Technicians",
-          "29-2043": "Paramedics",
-          "33-1011": "First-Line Supervisors of Correctional Officers",
-          "33-1012": "First-Line Supervisors of Police and Detectives",
-          "33-1021": "First-Line Supervisors of Firefighting and Prevention Workers",
           "33-2011": "Firefighters",
           "33-3012": "Correctional Officers and Jailers",
-          "33-3021": "Detectives and Criminal Investigators",
           "33-3051": "Police and Sheriff's Patrol Officers"
         },
         "socs": [
           "33-3051",
           "33-3012",
           "33-2011",
-          "33-1012",
-          "33-3021",
-          "33-1021",
-          "33-1011",
-          "29-2042",
-          "29-2043",
           "19-4092"
         ],
         "website": "https://www.cityofsancarlos.org/city_hall/departments_and_divisions/fire/index.php"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "The San Carlos Police Department is responsible for law enforcement and public safety.",
+        "description": "San Carlos Police Services is a dedicated bureau of the San Mateo County Sheriff's Office that provides full municipal law enforcement for the City of San Carlos under a contract policing arrangement. The bureau handles patrol, violent crime investigation, crime prevention, parking enforcement, and youth engagement programs for a city of approximately 30,000 residents. Operational staff includes sworn sheriff's deputies assigned to San Carlos, supported by county-level administrative and investigative resources.",
+        "display_name": null,
         "lat": 37.4959658,
         "lng": -122.2517307,
         "naics4": "9221",
         "naics_title": "Justice, Public Order, and Safety Activities",
         "name": "San Carlos Police",
+        "relevance": 12.9,
         "sector": "Government",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 10,
+        "soc_count": 4,
         "soc_titles": {
           "19-4092": "Forensic Science Technicians",
-          "29-2042": "Emergency Medical Technicians",
-          "29-2043": "Paramedics",
-          "33-1011": "First-Line Supervisors of Correctional Officers",
-          "33-1012": "First-Line Supervisors of Police and Detectives",
-          "33-1021": "First-Line Supervisors of Firefighting and Prevention Workers",
           "33-2011": "Firefighters",
           "33-3012": "Correctional Officers and Jailers",
-          "33-3021": "Detectives and Criminal Investigators",
           "33-3051": "Police and Sheriff's Patrol Officers"
         },
         "socs": [
           "33-3051",
           "33-3012",
           "33-2011",
-          "33-1012",
-          "33-3021",
-          "33-1021",
-          "33-1011",
-          "29-2042",
-          "29-2043",
           "19-4092"
         ],
         "website": "https://www.cityofsancarlos.org/city_hall/departments_and_divisions/sheriffs_office/index.php"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "The San Mateo County Fire Department provides fire suppression and emergency response.",
-        "lat": 37.512732,
-        "lng": -122.3350045,
+        "description": "The San Francisco Police Department is responsible for law enforcement and public safety in San Francisco.",
+        "display_name": null,
+        "lat": 37.6158361,
+        "lng": -122.395561,
         "naics4": "9221",
         "naics_title": "Justice, Public Order, and Safety Activities",
-        "name": "San Mateo County Fire Department",
+        "name": "San Francisco Police",
+        "relevance": 12.9,
         "sector": "Government",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 10,
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 4,
         "soc_titles": {
           "19-4092": "Forensic Science Technicians",
-          "29-2042": "Emergency Medical Technicians",
-          "29-2043": "Paramedics",
-          "33-1011": "First-Line Supervisors of Correctional Officers",
-          "33-1012": "First-Line Supervisors of Police and Detectives",
-          "33-1021": "First-Line Supervisors of Firefighting and Prevention Workers",
           "33-2011": "Firefighters",
           "33-3012": "Correctional Officers and Jailers",
-          "33-3021": "Detectives and Criminal Investigators",
           "33-3051": "Police and Sheriff's Patrol Officers"
         },
         "socs": [
           "33-3051",
           "33-3012",
           "33-2011",
-          "33-1012",
-          "33-3021",
-          "33-1021",
-          "33-1011",
-          "29-2042",
-          "29-2043",
+          "19-4092"
+        ],
+        "website": "https://www.sanfranciscopolice.org/"
+      },
+      {
+        "description": "San Mateo Consolidated Fire Department is a consolidated municipal fire agency serving Belmont, Foster City, and San Mateo through nine strategically positioned fire stations. All firefighters hold State-certified Firefighter II credentials and EMT certification, with at least one State-licensed paramedic on each Engine Company for advanced life support. Specialized capabilities include hazmat response, water and beach rescue, vehicle extrication, and wildland fire deployment, supported by a Fire Prevention and Life Safety Bureau and an Office of Emergency Services.",
+        "display_name": null,
+        "lat": 37.5219843,
+        "lng": -122.2721324,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "San Mateo Consolidated Fire Department",
+        "relevance": 12.9,
+        "sector": "Government",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 4,
+        "soc_titles": {
+          "19-4092": "Forensic Science Technicians",
+          "33-2011": "Firefighters",
+          "33-3012": "Correctional Officers and Jailers",
+          "33-3051": "Police and Sheriff's Patrol Officers"
+        },
+        "socs": [
+          "33-3051",
+          "33-3012",
+          "33-2011",
+          "19-4092"
+        ],
+        "website": "https://www.smcfire.org/"
+      },
+      {
+        "description": "San Mateo County Fire Department operates under a CAL FIRE partnership, providing fire suppression, emergency medical services, and rescue operations across the unincorporated areas of San Mateo County from five fire stations. The department runs a Fire Marshal office for code enforcement and defensible space inspections, and conducts prescribed burning operations for wildfire fuel reduction. It employs career firefighters, EMTs, fire prevention officers, and support staff, and also maintains a volunteer program.",
+        "display_name": null,
+        "lat": 37.512732,
+        "lng": -122.3350045,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "San Mateo County Fire Department",
+        "relevance": 12.9,
+        "sector": "Government",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 4,
+        "soc_titles": {
+          "19-4092": "Forensic Science Technicians",
+          "33-2011": "Firefighters",
+          "33-3012": "Correctional Officers and Jailers",
+          "33-3051": "Police and Sheriff's Patrol Officers"
+        },
+        "socs": [
+          "33-3051",
+          "33-3012",
+          "33-2011",
           "19-4092"
         ],
         "website": "https://www.smcgov.org/san-mateo-county-fire"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "A-A Lock & Alarm provides security and alarm system services.",
-        "lat": 37.4511812,
-        "lng": -122.1784979,
-        "naics4": "5616",
-        "naics_title": "Investigation and Security Services",
-        "name": "A-A Lock & Alarm",
-        "sector": "Administrative Services",
+        "description": "Consular Corps College is an educational institution.",
+        "display_name": null,
+        "lat": 37.5996993,
+        "lng": -122.3909759,
+        "naics4": "6113",
+        "naics_title": "Colleges, Universities, and Professional Schools",
+        "name": "Consular Corps College",
+        "relevance": 0.5,
+        "sector": "Education",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 1,
+        "soc_count": 3,
         "soc_titles": {
-          "29-2042": "Emergency Medical Technicians"
+          "19-4092": "Forensic Science Technicians",
+          "33-2011": "Firefighters",
+          "33-3051": "Police and Sheriff's Patrol Officers"
         },
         "socs": [
-          "29-2042"
+          "33-3051",
+          "19-4092",
+          "33-2011"
         ],
-        "website": "https://www.aalock.com/"
+        "website": "https://www.consular-corps-college.org/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "ADT is a security company providing home and business security solutions.",
-        "lat": 37.6568277,
-        "lng": -122.4176023,
-        "naics4": "5616",
-        "naics_title": "Investigation and Security Services",
-        "name": "ADT",
-        "sector": "Administrative Services",
+        "description": "A non-profit organization providing support services.",
+        "display_name": null,
+        "lat": 37.5509838,
+        "lng": -122.31691,
+        "naics4": "6222",
+        "naics_title": "Psychiatric and Substance Abuse Hospitals",
+        "name": "Caminar",
+        "relevance": 0.28,
+        "sector": "Healthcare",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 1,
+        "soc_count": 2,
         "soc_titles": {
-          "29-2042": "Emergency Medical Technicians"
+          "33-3012": "Correctional Officers and Jailers",
+          "33-3051": "Police and Sheriff's Patrol Officers"
         },
         "socs": [
-          "29-2042"
+          "33-3012",
+          "33-3051"
         ],
-        "website": "https://www.adt.com/"
+        "website": "https://www.caminar.org/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "Glading & Michel is a professional services firm.",
-        "lat": 37.5978865,
-        "lng": -122.3688784,
-        "naics4": "5616",
-        "naics_title": "Investigation and Security Services",
-        "name": "Glading & Michel",
-        "sector": "Administrative Services",
+        "description": "A provider of mental health services.",
+        "display_name": null,
+        "lat": 37.4903432,
+        "lng": -122.2117774,
+        "naics4": "6222",
+        "naics_title": "Psychiatric and Substance Abuse Hospitals",
+        "name": "Ellie Mental Health",
+        "relevance": 0.28,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "33-3012": "Correctional Officers and Jailers",
+          "33-3051": "Police and Sheriff's Patrol Officers"
+        },
+        "socs": [
+          "33-3012",
+          "33-3051"
+        ],
+        "website": "https://elliementalhealth.com/"
+      },
+      {
+        "description": "A mental health and wellness service provided by Kaiser Permanente.",
+        "display_name": null,
+        "lat": 37.496195,
+        "lng": -122.2362998,
+        "naics4": "6222",
+        "naics_title": "Psychiatric and Substance Abuse Hospitals",
+        "name": "Kaiser Permanente Mental Health",
+        "relevance": 0.28,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "33-3012": "Correctional Officers and Jailers",
+          "33-3051": "Police and Sheriff's Patrol Officers"
+        },
+        "socs": [
+          "33-3012",
+          "33-3051"
+        ],
+        "website": "https://healthy.kaiserpermanente.org/northern-california/facilities/redwood-city-medical-center-100337/departments/behavioral-mental-health-dlp-103698"
+      },
+      {
+        "description": "A provider of therapeutic services delivered at home.",
+        "display_name": null,
+        "lat": 37.4419615,
+        "lng": -122.2666566,
+        "naics4": "6219",
+        "naics_title": "Other Ambulatory Health Care Services",
+        "name": "Active In-Home Therapy",
+        "relevance": 0.16,
+        "sector": "Healthcare",
         "size_class": "50-99 employees",
         "size_rank": 5,
         "soc_count": 1,
         "soc_titles": {
-          "29-2042": "Emergency Medical Technicians"
+          "33-2011": "Firefighters"
         },
         "socs": [
-          "29-2042"
+          "33-2011"
         ],
-        "website": "https://www.gladding-michel.com/"
+        "website": "https://activeinhometherapy.com/"
+      },
+      {
+        "description": "A biotechnology company.",
+        "display_name": null,
+        "lat": 37.5187728,
+        "lng": -122.2515121,
+        "naics4": "6219",
+        "naics_title": "Other Ambulatory Health Care Services",
+        "name": "Antiva Biosciences",
+        "relevance": 0.16,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "33-2011": "Firefighters"
+        },
+        "socs": [
+          "33-2011"
+        ],
+        "website": "https://antivabio.com/"
+      },
+      {
+        "description": "A healthcare navigation and benefits company.",
+        "display_name": null,
+        "lat": 37.570565042291,
+        "lng": -122.284550190196,
+        "naics4": "6219",
+        "naics_title": "Other Ambulatory Health Care Services",
+        "name": "Carrum Health",
+        "relevance": 0.16,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "33-2011": "Firefighters"
+        },
+        "socs": [
+          "33-2011"
+        ],
+        "website": "https://carrumhealth.com/"
       }
     ],
     "region": "Bay",
@@ -840,75 +652,13 @@
       "San Mateo"
     ],
     "shown": 25,
-    "total": 28
+    "total": 128
   },
   "/programs": {
+    "coverage_awards_only": true,
     "latest_award_year": "2024-2025",
     "matrix": {
       "cells": [
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "011520"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "011520"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "011520"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": true,
-          "teaches": true,
-          "top6": "125000"
-        },
-        {
-          "awards": 63,
-          "college": "Skyline College",
-          "enrolled": true,
-          "teaches": false,
-          "top6": "125000"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "125000"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "125100"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "125100"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "125100"
-        },
         {
           "awards": 45,
           "college": "College of San Mateo",
@@ -929,90 +679,6 @@
           "enrolled": false,
           "teaches": false,
           "top6": "210500"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "210510"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "210510"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "210510"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "210520"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "210520"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "210520"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "210530"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "210530"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "210530"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": true,
-          "teaches": true,
-          "top6": "210540"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "210540"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "210540"
         },
         {
           "awards": 5,
@@ -1055,69 +721,6 @@
           "enrolled": false,
           "teaches": false,
           "top6": "213300"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": true,
-          "teaches": true,
-          "top6": "213310"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "213310"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "213310"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": true,
-          "teaches": false,
-          "top6": "213350"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "213350"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "213350"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "220610"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": true,
-          "teaches": true,
-          "top6": "220610"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "220610"
         }
       ],
       "colleges": [
@@ -1132,19 +735,11 @@
     "sector": "Public Safety",
     "tops": [
       {
-        "awards_total": 63,
-        "enrollment_total": 169,
-        "n_colleges_offering": 1,
-        "name": "Emergency Medical Services",
-        "soc_count": 2,
-        "top6": "125000"
-      },
-      {
         "awards_total": 60,
         "enrollment_total": 481,
         "n_colleges_offering": 2,
         "name": "Administration of Justice",
-        "soc_count": 6,
+        "soc_count": 3,
         "top6": "210500"
       },
       {
@@ -1152,7 +747,7 @@
         "enrollment_total": 221,
         "n_colleges_offering": 1,
         "name": "Fire Technology",
-        "soc_count": 2,
+        "soc_count": 1,
         "top6": "213300"
       },
       {
@@ -1160,93 +755,21 @@
         "enrollment_total": 10,
         "n_colleges_offering": 0,
         "name": "Police Academy",
-        "soc_count": 3,
+        "soc_count": 1,
         "top6": "210550"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 59,
-        "n_colleges_offering": 0,
-        "name": "Fire Academy",
-        "soc_count": 2,
-        "top6": "213350"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 34,
-        "n_colleges_offering": 1,
-        "name": "Wildland Fire Technology",
-        "soc_count": 2,
-        "top6": "213310"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 30,
-        "n_colleges_offering": 1,
-        "name": "Forensics, Evidence, and Investigation",
-        "soc_count": 4,
-        "top6": "210540"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 29,
-        "n_colleges_offering": 1,
-        "name": "Geographic Information Systems",
-        "soc_count": 2,
-        "top6": "220610"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Wildlife and Fisheries",
-        "soc_count": 5,
-        "top6": "011520"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Corrections",
-        "soc_count": 4,
-        "top6": "210510"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Paramedic",
-        "soc_count": 2,
-        "top6": "125100"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Probation and Parole",
-        "soc_count": 1,
-        "top6": "210520"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Industrial and Transportation Security",
-        "soc_count": 1,
-        "top6": "210530"
       }
     ]
   },
   "landscape": {
     "aggregate": {
-      "candidate_employers": 331,
-      "combined_awards": 157,
-      "combined_supply_total": 496.7,
-      "gap": 3273,
+      "candidate_employers": 196,
+      "combined_awards": 94,
+      "combined_supply_total": 248.35,
+      "gap": 2302,
       "n_colleges": 3,
-      "n_occupations": 10,
-      "occupations_taught": 10,
-      "regional_demand_total": 3770
+      "n_occupations": 4,
+      "occupations_taught": 4,
+      "regional_demand_total": 2550
     },
     "award_years": [
       "2020-2021",
@@ -1320,297 +843,6 @@
             "soc_code": "19-4092",
             "supply": 51.0,
             "title": "Forensic Science Technicians"
-          },
-          {
-            "annual_openings": 540,
-            "annual_wage": 50270,
-            "awards_recent": 0,
-            "course_count": 1,
-            "enrolled": true,
-            "feeding_awards": 0,
-            "gap": 540,
-            "growth_rate": 0.124448532,
-            "programs": [
-              {
-                "awards": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  21,
-                  33,
-                  52,
-                  70,
-                  72,
-                  93,
-                  98,
-                  101,
-                  69
-                ],
-                "name": "Emergency Medical Services",
-                "top6": "125000",
-                "wages": []
-              }
-            ],
-            "soc_code": "29-2042",
-            "supply": 0.0,
-            "title": "Emergency Medical Technicians"
-          },
-          {
-            "annual_openings": 150,
-            "annual_wage": 78790,
-            "awards_recent": 0,
-            "course_count": 1,
-            "enrolled": true,
-            "feeding_awards": 0,
-            "gap": 150,
-            "growth_rate": 0.154292609,
-            "programs": [
-              {
-                "awards": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  21,
-                  33,
-                  52,
-                  70,
-                  72,
-                  93,
-                  98,
-                  101,
-                  69
-                ],
-                "name": "Emergency Medical Services",
-                "top6": "125000",
-                "wages": []
-              }
-            ],
-            "soc_code": "29-2043",
-            "supply": 0.0,
-            "title": "Paramedics"
-          },
-          {
-            "annual_openings": 80,
-            "annual_wage": 127510,
-            "awards_recent": 45,
-            "course_count": 7,
-            "enrolled": true,
-            "feeding_awards": 45,
-            "gap": 29,
-            "growth_rate": 0.06032331,
-            "programs": [
-              {
-                "awards": [
-                  60,
-                  53,
-                  40,
-                  49,
-                  45
-                ],
-                "awards_recent": 45,
-                "enrollment": [
-                  266,
-                  160,
-                  197,
-                  244,
-                  236,
-                  213,
-                  254,
-                  272,
-                  305
-                ],
-                "name": "Administration of Justice",
-                "top6": "210500",
-                "wages": []
-              }
-            ],
-            "soc_code": "33-1011",
-            "supply": 51.0,
-            "title": "First-Line Supervisors of Correctional Officers"
-          },
-          {
-            "annual_openings": 220,
-            "annual_wage": 171900,
-            "awards_recent": 50,
-            "course_count": 8,
-            "enrolled": true,
-            "feeding_awards": 50,
-            "gap": 169,
-            "growth_rate": 0.057592388,
-            "programs": [
-              {
-                "awards": [
-                  60,
-                  53,
-                  40,
-                  49,
-                  45
-                ],
-                "awards_recent": 45,
-                "enrollment": [
-                  266,
-                  160,
-                  197,
-                  244,
-                  236,
-                  213,
-                  254,
-                  272,
-                  305
-                ],
-                "name": "Administration of Justice",
-                "top6": "210500",
-                "wages": []
-              },
-              {
-                "awards": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  21,
-                  null,
-                  26,
-                  null,
-                  30,
-                  null,
-                  24,
-                  null,
-                  29
-                ],
-                "name": "Forensics, Evidence, and Investigation",
-                "top6": "210540",
-                "wages": []
-              },
-              {
-                "awards": [
-                  0,
-                  0,
-                  9,
-                  6,
-                  5
-                ],
-                "awards_recent": 5,
-                "enrollment": [
-                  7,
-                  5,
-                  10,
-                  null,
-                  null,
-                  null,
-                  null,
-                  3,
-                  null
-                ],
-                "name": "Police Academy",
-                "top6": "210550",
-                "wages": []
-              }
-            ],
-            "soc_code": "33-1012",
-            "supply": 51.0,
-            "title": "First-Line Supervisors of Police and Detectives"
-          },
-          {
-            "annual_openings": 120,
-            "annual_wage": 148090,
-            "awards_recent": 29,
-            "course_count": 6,
-            "enrolled": true,
-            "feeding_awards": 29,
-            "gap": 105,
-            "growth_rate": 0.0641934,
-            "programs": [
-              {
-                "awards": [
-                  19,
-                  16,
-                  11,
-                  20,
-                  29
-                ],
-                "awards_recent": 29,
-                "enrollment": [
-                  193,
-                  125,
-                  203,
-                  165,
-                  180,
-                  151,
-                  209,
-                  195,
-                  221
-                ],
-                "name": "Fire Technology",
-                "top6": "213300",
-                "wages": []
-              },
-              {
-                "awards": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  null,
-                  16,
-                  null,
-                  34,
-                  null,
-                  27,
-                  null,
-                  34,
-                  15
-                ],
-                "name": "Wildland Fire Technology",
-                "top6": "213310",
-                "wages": []
-              },
-              {
-                "awards": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  37,
-                  22,
-                  21,
-                  30,
-                  28,
-                  38,
-                  39,
-                  42,
-                  59
-                ],
-                "name": "Fire Academy",
-                "top6": "213350",
-                "wages": []
-              }
-            ],
-            "soc_code": "33-1021",
-            "supply": 15.34,
-            "title": "First-Line Supervisors of Firefighting and Prevention Workers"
           },
           {
             "annual_openings": 590,
@@ -1737,93 +969,6 @@
             "soc_code": "33-3012",
             "supply": 51.0,
             "title": "Correctional Officers and Jailers"
-          },
-          {
-            "annual_openings": 110,
-            "annual_wage": 129200,
-            "awards_recent": 50,
-            "course_count": 8,
-            "enrolled": true,
-            "feeding_awards": 50,
-            "gap": 59,
-            "growth_rate": 0.057005708,
-            "programs": [
-              {
-                "awards": [
-                  60,
-                  53,
-                  40,
-                  49,
-                  45
-                ],
-                "awards_recent": 45,
-                "enrollment": [
-                  266,
-                  160,
-                  197,
-                  244,
-                  236,
-                  213,
-                  254,
-                  272,
-                  305
-                ],
-                "name": "Administration of Justice",
-                "top6": "210500",
-                "wages": []
-              },
-              {
-                "awards": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  21,
-                  null,
-                  26,
-                  null,
-                  30,
-                  null,
-                  24,
-                  null,
-                  29
-                ],
-                "name": "Forensics, Evidence, and Investigation",
-                "top6": "210540",
-                "wages": []
-              },
-              {
-                "awards": [
-                  0,
-                  0,
-                  9,
-                  6,
-                  5
-                ],
-                "awards_recent": 5,
-                "enrollment": [
-                  7,
-                  5,
-                  10,
-                  null,
-                  null,
-                  null,
-                  null,
-                  3,
-                  null
-                ],
-                "name": "Police Academy",
-                "top6": "210550",
-                "wages": []
-              }
-            ],
-            "soc_code": "33-3021",
-            "supply": 51.0,
-            "title": "Detectives and Criminal Investigators"
           },
           {
             "annual_openings": 1260,
@@ -1957,200 +1102,6 @@
             "title": "Forensic Science Technicians"
           },
           {
-            "annual_openings": 540,
-            "annual_wage": 50270,
-            "awards_recent": 63,
-            "course_count": 0,
-            "enrolled": true,
-            "feeding_awards": 63,
-            "gap": 540,
-            "growth_rate": 0.124448532,
-            "programs": [
-              {
-                "awards": [
-                  34,
-                  40,
-                  39,
-                  53,
-                  63
-                ],
-                "awards_recent": 63,
-                "enrollment": [
-                  43,
-                  39,
-                  57,
-                  57,
-                  84,
-                  73,
-                  70,
-                  68,
-                  40
-                ],
-                "name": "Emergency Medical Services",
-                "top6": "125000",
-                "wages": []
-              }
-            ],
-            "soc_code": "29-2042",
-            "supply": 0.0,
-            "title": "Emergency Medical Technicians"
-          },
-          {
-            "annual_openings": 150,
-            "annual_wage": 78790,
-            "awards_recent": 63,
-            "course_count": 0,
-            "enrolled": true,
-            "feeding_awards": 63,
-            "gap": 150,
-            "growth_rate": 0.154292609,
-            "programs": [
-              {
-                "awards": [
-                  34,
-                  40,
-                  39,
-                  53,
-                  63
-                ],
-                "awards_recent": 63,
-                "enrollment": [
-                  43,
-                  39,
-                  57,
-                  57,
-                  84,
-                  73,
-                  70,
-                  68,
-                  40
-                ],
-                "name": "Emergency Medical Services",
-                "top6": "125000",
-                "wages": []
-              }
-            ],
-            "soc_code": "29-2043",
-            "supply": 0.0,
-            "title": "Paramedics"
-          },
-          {
-            "annual_openings": 80,
-            "annual_wage": 127510,
-            "awards_recent": 15,
-            "course_count": 8,
-            "enrolled": true,
-            "feeding_awards": 15,
-            "gap": 53,
-            "growth_rate": 0.06032331,
-            "programs": [
-              {
-                "awards": [
-                  34,
-                  21,
-                  25,
-                  16,
-                  15
-                ],
-                "awards_recent": 15,
-                "enrollment": [
-                  107,
-                  163,
-                  148,
-                  193,
-                  191,
-                  172,
-                  165,
-                  160,
-                  176
-                ],
-                "name": "Administration of Justice",
-                "top6": "210500",
-                "wages": []
-              }
-            ],
-            "soc_code": "33-1011",
-            "supply": 26.67,
-            "title": "First-Line Supervisors of Correctional Officers"
-          },
-          {
-            "annual_openings": 220,
-            "annual_wage": 171900,
-            "awards_recent": 15,
-            "course_count": 9,
-            "enrolled": true,
-            "feeding_awards": 15,
-            "gap": 193,
-            "growth_rate": 0.057592388,
-            "programs": [
-              {
-                "awards": [
-                  34,
-                  21,
-                  25,
-                  16,
-                  15
-                ],
-                "awards_recent": 15,
-                "enrollment": [
-                  107,
-                  163,
-                  148,
-                  193,
-                  191,
-                  172,
-                  165,
-                  160,
-                  176
-                ],
-                "name": "Administration of Justice",
-                "top6": "210500",
-                "wages": []
-              },
-              {
-                "awards": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  3,
-                  null,
-                  10,
-                  11,
-                  9,
-                  null,
-                  null,
-                  29,
-                  null
-                ],
-                "name": "Geographic Information Systems",
-                "top6": "220610",
-                "wages": []
-              }
-            ],
-            "soc_code": "33-1012",
-            "supply": 26.67,
-            "title": "First-Line Supervisors of Police and Detectives"
-          },
-          {
-            "annual_openings": 120,
-            "annual_wage": 148090,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 120,
-            "growth_rate": 0.0641934,
-            "programs": [],
-            "soc_code": "33-1021",
-            "supply": 0.0,
-            "title": "First-Line Supervisors of Firefighting and Prevention Workers"
-          },
-          {
             "annual_openings": 590,
             "annual_wage": 112800,
             "awards_recent": 0,
@@ -2202,69 +1153,6 @@
             "soc_code": "33-3012",
             "supply": 26.67,
             "title": "Correctional Officers and Jailers"
-          },
-          {
-            "annual_openings": 110,
-            "annual_wage": 129200,
-            "awards_recent": 15,
-            "course_count": 9,
-            "enrolled": true,
-            "feeding_awards": 15,
-            "gap": 83,
-            "growth_rate": 0.057005708,
-            "programs": [
-              {
-                "awards": [
-                  34,
-                  21,
-                  25,
-                  16,
-                  15
-                ],
-                "awards_recent": 15,
-                "enrollment": [
-                  107,
-                  163,
-                  148,
-                  193,
-                  191,
-                  172,
-                  165,
-                  160,
-                  176
-                ],
-                "name": "Administration of Justice",
-                "top6": "210500",
-                "wages": []
-              },
-              {
-                "awards": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  3,
-                  null,
-                  10,
-                  11,
-                  9,
-                  null,
-                  null,
-                  29,
-                  null
-                ],
-                "name": "Geographic Information Systems",
-                "top6": "220610",
-                "wages": []
-              }
-            ],
-            "soc_code": "33-3021",
-            "supply": 26.67,
-            "title": "Detectives and Criminal Investigators"
           },
           {
             "annual_openings": 1260,
@@ -2325,76 +1213,6 @@
             "title": "Forensic Science Technicians"
           },
           {
-            "annual_openings": 540,
-            "annual_wage": 50270,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 540,
-            "growth_rate": 0.124448532,
-            "programs": [],
-            "soc_code": "29-2042",
-            "supply": 0.0,
-            "title": "Emergency Medical Technicians"
-          },
-          {
-            "annual_openings": 150,
-            "annual_wage": 78790,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 150,
-            "growth_rate": 0.154292609,
-            "programs": [],
-            "soc_code": "29-2043",
-            "supply": 0.0,
-            "title": "Paramedics"
-          },
-          {
-            "annual_openings": 80,
-            "annual_wage": 127510,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 80,
-            "growth_rate": 0.06032331,
-            "programs": [],
-            "soc_code": "33-1011",
-            "supply": 0.0,
-            "title": "First-Line Supervisors of Correctional Officers"
-          },
-          {
-            "annual_openings": 220,
-            "annual_wage": 171900,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 220,
-            "growth_rate": 0.057592388,
-            "programs": [],
-            "soc_code": "33-1012",
-            "supply": 0.0,
-            "title": "First-Line Supervisors of Police and Detectives"
-          },
-          {
-            "annual_openings": 120,
-            "annual_wage": 148090,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 120,
-            "growth_rate": 0.0641934,
-            "programs": [],
-            "soc_code": "33-1021",
-            "supply": 0.0,
-            "title": "First-Line Supervisors of Firefighting and Prevention Workers"
-          },
-          {
             "annual_openings": 590,
             "annual_wage": 112800,
             "awards_recent": 0,
@@ -2423,20 +1241,6 @@
             "title": "Correctional Officers and Jailers"
           },
           {
-            "annual_openings": 110,
-            "annual_wage": 129200,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 110,
-            "growth_rate": 0.057005708,
-            "programs": [],
-            "soc_code": "33-3021",
-            "supply": 0.0,
-            "title": "Detectives and Criminal Investigators"
-          },
-          {
             "annual_openings": 1260,
             "annual_wage": 131420,
             "awards_recent": 0,
@@ -2454,6 +1258,7 @@
         "name": "Ca\u00f1ada College"
       }
     ],
+    "coverage_awards_only": true,
     "enrollment_terms": [
       "Fall 2021",
       "Spring 2022",
@@ -2465,7 +1270,7 @@
       "Spring 2025",
       "Fall 2025"
     ],
-    "executive_summary": "This view examines the regional demand landscape across the 10 public safety occupations the San Mateo County CCD \u2014 Public Safety targets in the Bay Area regional labor market. Regional demand for these occupations totals 3,770 openings per year.",
+    "executive_summary": "This view examines the regional demand landscape across the 4 public safety occupations the San Mateo County CCD \u2014 Public Safety targets in the Bay Area regional labor market. Regional demand for these occupations totals 2,550 openings per year.",
     "is_sector_priority": true,
     "region": "Bay",
     "region_display": "Bay Area",

@@ -28,6 +28,7 @@ and the regional HIRES_FOR employer pivot.
 
 from __future__ import annotations
 
+from functools import lru_cache
 from typing import Callable
 
 from pydantic import BaseModel
@@ -36,11 +37,12 @@ from ontology.regions import (
     COE_REGION_DISPLAY,
     COE_REGION_PRIORITY_SECTORS,
 )
-from ontology.crosswalks import top6_to_soc, _load_top_to_cip, _load_vocational_top6
+from ontology.crosswalks import top6_to_soc, _load_vocational_top6
 from ontology.schema import get_driver
 from ontology.supply import get_coe_supply
 from ontology.programs import get_wage_outcomes
 
+from partnerships.graph_reads import regional_demand
 from partnerships.landscape import LandscapeSpec, SVAMP_SPEC
 
 # ── Scope ─────────────────────────────────────────────────────────────────
@@ -240,6 +242,11 @@ class SvampLandscape(BaseModel):
     enrollment_terms: list[str] = []
     colleges: list[SvampCollege]
     aggregate: SvampAggregate
+    # True for rule-bearing instances (BACCC, sector-derived SMCCD): the coverage
+    # cell is gated on AWARDS — an occupation a college only enrolls toward (no
+    # completer) reads as a gap, not "partial". The curated SVAMP instance
+    # carries no rule and keeps the enrolled-OR-awarded coverage.
+    coverage_awards_only: bool = False
 
 
 def _build_executive_summary(spec: LandscapeSpec, region_display: str, agg: "SvampAggregate") -> str:
@@ -277,12 +284,11 @@ def _soc_feeding_tops(spec: LandscapeSpec) -> dict[str, set[str]]:
     to the faithful TOP-CIP-SOC crosswalk, which is never edited). Drives the
     per-cell activity coverage: a SOC is fed by these programs regardless of
     whether any course is tagged to their code (the 095630 parent-code seam)."""
-    all_top6 = list(_load_top_to_cip().keys())
     targets = set(spec.socs)
     feed: dict[str, set[str]] = {soc: set() for soc in spec.socs}
-    for top6, socs in top6_to_soc(all_top6).items():
+    for top6, socs in top6_to_soc(spec.in_scope_tops()).items():
         inter = socs & targets
-        if inter and spec.in_scope(top6):
+        if inter:
             for soc in inter:
                 feed[soc].add(top6)
     return feed
@@ -293,25 +299,17 @@ def build_svamp_landscape() -> SvampLandscape:
     return build_landscape(SVAMP_SPEC)
 
 
+@lru_cache(maxsize=512)
 def build_landscape(spec: LandscapeSpec) -> SvampLandscape:
+    """The aggregated member×sector landscape (the dashboard's core build).
+    Result-memoized — deterministic per resolved spec; refresh on a graph data
+    load via backend restart (same caching philosophy as the precompute layer)."""
     region = spec.resolve_region()
     driver = get_driver()
 
     with driver.session() as session:
         # 1) Regional demand, read ONCE per SOC (shared across all colleges).
-        demand_rows = session.run(
-            """
-            MATCH (r:Region {name: $region})-[d:DEMANDS]->(occ:Occupation)
-            WHERE occ.soc_code IN $socs
-            RETURN occ.soc_code AS soc_code,
-                   occ.title AS title,
-                   d.annual_openings AS annual_openings,
-                   d.annual_wage AS annual_wage,
-                   d.growth_rate AS growth_rate
-            """,
-            region=region, socs=list(spec.socs),
-        ).data()
-        demand_by_soc = {r["soc_code"]: r for r in demand_rows}
+        demand_by_soc = regional_demand(session, region, list(spec.socs))
 
         # 2) Per-college alignment (precomputed OCCUPATION_PIPELINE edge),
         #    joined onto the regional demand so every demanded SOC comes
@@ -601,4 +599,5 @@ def _assemble_landscape(
         enrollment_terms=enrollment_terms,
         colleges=colleges,
         aggregate=aggregate,
+        coverage_awards_only=(spec.soc_rule is not None and spec.soc_rule.active),
     )

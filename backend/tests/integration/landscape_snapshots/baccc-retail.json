@@ -1,0 +1,3844 @@
+{
+  "/employers": {
+    "employers": [
+      {
+        "description": "A pizzeria serving East Coast-style pizza.",
+        "display_name": null,
+        "lat": 37.5652493,
+        "lng": -122.3227798,
+        "naics4": "7223",
+        "naics_title": "Special Food Services",
+        "name": "Amici's East Coast Pizzeria",
+        "relevance": 2.32,
+        "sector": "Hospitality & Food Service",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.amicis.com/san-mateo"
+      },
+      {
+        "description": "A golf course located in Emerald Hills.",
+        "display_name": null,
+        "lat": 37.4550978,
+        "lng": -122.2627005,
+        "naics4": "7223",
+        "naics_title": "Special Food Services",
+        "name": "Emerald Hills Golf Course",
+        "relevance": 2.32,
+        "sector": "Hospitality & Food Service",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.emeraldhillsgolfcourse.com/"
+      },
+      {
+        "description": "Flying Food Group is an airline catering company founded in 1983 that produces inflight meals and retail food products for major airlines and airport retail brands worldwide. Their Burlingame facility at 50 Adrian Ct serves as a Bay Area kitchen near SFO, one of 14 U.S. locations, producing both fresh onboard meals and shelf-stable MAP (modified atmosphere packaging) products. Culinary production, food safety, and logistics roles are central to the local operation.",
+        "display_name": null,
+        "lat": 37.6002938,
+        "lng": -122.3789084,
+        "naics4": "7223",
+        "naics_title": "Special Food Services",
+        "name": "REMOVE",
+        "relevance": 2.32,
+        "sector": "Hospitality & Food Service",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "FLYINGFOOD.COM"
+      },
+      {
+        "description": "37 North Restaurant & Bar is a California-inspired gastropub located in the lobby of the DoubleTree by Hilton San Francisco Airport at 835 Airport Blvd, Burlingame. The menu is built around sustainably sourced, locally and regionally grown ingredients \u2014 seasonal produce from small farms, artisan beers, and hand-crafted cocktails \u2014 served for breakfast and dinner in an indoor/outdoor setting with courtyard fire pits. Front-of-house, kitchen, and bar roles draw from the San Mateo County hospitality workforce near SFO.",
+        "display_name": null,
+        "lat": 37.5893059,
+        "lng": -122.342542,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "37 North",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.hilton.com/en/hotels/sfoaodt-doubletree-san-francisco-airport/dining/"
+      },
+      {
+        "description": "3SIXTY Bar | Bistro | Market is the full-service dining venue at the Hyatt Regency San Francisco Airport in Burlingame, operating as three integrated concepts \u2014 a sit-down bistro, a full bar, and a grab-and-go market \u2014 open daily from 6 a.m. to midnight. The bistro serves breakfast, lunch, and dinner focused on locally sourced Northern California ingredients with rotating seasonal menus and a farm-to-table philosophy. It employs front- and back-of-house hospitality staff serving a primarily airport-adjacent traveler and business clientele.",
+        "display_name": null,
+        "lat": 37.5927497,
+        "lng": -122.3635651,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "3SIXTY Bistro",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": "1,000-4,999 employees",
+        "size_rank": 9,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.hyatt.com/en-US/hotel/california/hyatt-regency-san-francisco-airport/sfobu/dining"
+      },
+      {
+        "description": "Applebee's Neighborhood Grill + Bar operates as a casual dining restaurant chain, serving customers with a variety of appetizers, entrees, and beverages for dine-in, takeout, and delivery. They offer catering services and gift cards, with locations across various neighborhoods.",
+        "display_name": null,
+        "lat": 37.316198621421,
+        "lng": -121.975807369477,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "Applebee's Grill + Bar",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": null,
+        "size_rank": 0,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.applebees.com/"
+      },
+      {
+        "description": "A restaurant located in Woodside.",
+        "display_name": null,
+        "lat": 37.4292088,
+        "lng": -122.2507219,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "Buck's Restaurant",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.buckswoodside.com/"
+      },
+      {
+        "description": "A fast-food chain known for its burgers.",
+        "display_name": null,
+        "lat": 37.5403434,
+        "lng": -122.3013013,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "Burger King",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://locations.bk.com/ca/san-mateo/2817-south-el-camino-real.html"
+      },
+      {
+        "description": "A cafe with a French-inspired name.",
+        "display_name": null,
+        "lat": 37.4511812,
+        "lng": -122.1784979,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "Cafe Boronne",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.cafeborrone.com/"
+      },
+      {
+        "description": "A historic tavern known for its local cuisine.",
+        "display_name": null,
+        "lat": 37.2613088,
+        "lng": -122.3846304,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "Duarte's Tavern",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.duartestavern.com/"
+      },
+      {
+        "description": "Enoteca La Storia is an international wine bar, Italian eatery, and neighborhood bottle shop collective established in 2010, serving the Bay Area. They offer award-winning wine experiences, a global wine club, and authentic Italian cuisine, operating across multiple locations including Ancora Vino shops.",
+        "display_name": null,
+        "lat": 37.335121044499,
+        "lng": -121.898150668157,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "Enoteca La Storia",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": null,
+        "size_rank": 0,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.enotecalastoria.com/"
+      },
+      {
+        "description": "A Filipino bakery and restaurant.",
+        "display_name": null,
+        "lat": 37.650526,
+        "lng": -122.4416458,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "Goldilocks",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.goldilocks-usa.com/"
+      },
+      {
+        "description": "A restaurant with a grand theme.",
+        "display_name": null,
+        "lat": 37.6568277,
+        "lng": -122.4176023,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "Grand Palace Restaurant",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.grandpalaceseafoodrestaurant.com/"
+      },
+      {
+        "description": "A restaurant chain specializing in pancakes and breakfast foods.",
+        "display_name": null,
+        "lat": 37.7067276,
+        "lng": -122.4715285,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "IHOP",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://restaurants.ihop.com/en-us/ca/daly-city/breakfast-2398-junipero-serra-blvd-1709"
+      },
+      {
+        "description": "Il Fornaio operates authentic Italian restaurants across the US, including multiple locations in California's Bay Area. They offer dining, catering for events of any size, private dining experiences, and online ordering, aiming to provide an authentic Italian experience to their guests.",
+        "display_name": null,
+        "lat": 37.33059110233,
+        "lng": -121.88796854977,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "Il Fornaio",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": null,
+        "size_rank": 0,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.ilfornaio.com/"
+      },
+      {
+        "description": "A restaurant and bar offering food and drinks.",
+        "display_name": null,
+        "lat": 37.6341601,
+        "lng": -122.4207989,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "Jack's Restaurant & Bar",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.ilovejacks.com/san-bruno"
+      },
+      {
+        "description": "Jack's Restaurant & Bar is a family-owned American restaurant at 1750 S El Camino Real in San Mateo, open all day for breakfast, lunch, dinner, and a full bar program. The kitchen focuses on scratch-made comfort food with a Greek-American influence \u2014 burgers, hearty breakfasts, and large salads \u2014 drawing on the Marcovici family's heritage and California seasonal ingredients. Front-of-house and kitchen roles span line cooks, servers, and bartenders serving the Peninsula corridor.",
+        "display_name": null,
+        "lat": 37.5403434,
+        "lng": -122.3013013,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "Jack's San Mateo",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.ilovejacks.com/san-mateo"
+      },
+      {
+        "description": "Olive Garden is an Italian restaurant chain offering family-style dining, catering, and to-go services. It serves customers seeking Italian food through dine-in, pickup, and delivery options, with locations across the U.S. Key activities include preparing classic entrees, appetizers, desserts, and beverages.",
+        "display_name": null,
+        "lat": 37.250343764372,
+        "lng": -121.864073541132,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "Olive Garden",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": null,
+        "size_rank": 0,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.olivegarden.com"
+      },
+      {
+        "description": "P.F. Chang's is a restaurant chain offering handcrafted Asian-inspired food for dine-in, to-go, and catering. They serve individual customers with lunch specials, dinner, and beverages, including a limited-time seasonal menu. Key activities include restaurant operations, reservations, and a rewards program.",
+        "display_name": null,
+        "lat": 37.368901648006,
+        "lng": -122.036777512182,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "PF Chang's",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": null,
+        "size_rank": 0,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.pfchangs.com/"
+      },
+      {
+        "description": "Pacific Catch is a California-born seafood restaurant serving fresh, sustainably sourced, and ocean-friendly seafood inspired by the Pacific. It operates across multiple locations in California, offering dine-in, catering, and online ordering, with a focus on a feel-good dining experience.",
+        "display_name": null,
+        "lat": 37.443110385221,
+        "lng": -122.169748498168,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "Pacific Catch",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": null,
+        "size_rank": 0,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.pacificcatch.com/"
+      },
+      {
+        "description": "Steins Beer Garden in Mountain View, CA, offers 31 beers on tap, craft cocktails, and scratch-made New American Cuisine. It serves customers daily for lunch and dinner, providing dine-in, private events, catering, and online ordering for pick-up and delivery services.",
+        "display_name": null,
+        "lat": 37.394149382702,
+        "lng": -122.079973717412,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "Steins Beer Garden",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": null,
+        "size_rank": 0,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://steinsbeergarden.com/"
+      },
+      {
+        "description": "The Fish Market is a California seafood restaurant group founded in 1976, operating two locations in San Diego and Del Mar, with an upscale sister concept (Top of the Market) co-located at the San Diego Harbor Drive site. Each location combines a full-service dining room specializing in fresh-caught and grilled seafood with a retail fish counter staffed by in-house specialists who advise on home preparation. The operation employs front-of-house, back-of-house, and kitchen staff across both sites.",
+        "display_name": null,
+        "lat": 37.5590604,
+        "lng": -122.2969242,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "The Fish Market",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.thefishmarket.com/"
+      },
+      {
+        "description": "The Grill on the Alley is a steak house in San Jose, CA, offering a menu of food and beverages. It serves customers in the Bay Area region through dine-in, takeout, and catering services, including private dining options.",
+        "display_name": null,
+        "lat": 37.332334137524,
+        "lng": -121.889169963416,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "The Grill on the Alley",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": null,
+        "size_rank": 0,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.thegrill.com/"
+      },
+      {
+        "description": "A hotel situated on the coast in Half Moon Bay.",
+        "display_name": null,
+        "lat": 37.4865867,
+        "lng": -122.4485497,
+        "naics4": "7211",
+        "naics_title": "Traveler Accommodation",
+        "name": "Beach House Hotel Half Moon Bay",
+        "relevance": 0.57,
+        "sector": "Hospitality & Food Service",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.beach-house.com/half-moon-bay/"
+      },
+      {
+        "description": "Crowne Plaza Foster City-San Mateo is a 350-room full-service hotel operated under IHG's Crowne Plaza brand, situated on the San Francisco Peninsula between SFO (9 miles) and Silicon Valley, serving business and group travelers. The property offers 24,000 square feet of meeting space across 19 venues, two on-site restaurants (Caf\u00e9 Florian and Clubhouse Bistro), and indoor and outdoor pools. Guest-facing and back-of-house roles span front desk, food and beverage, housekeeping, event services, and facilities maintenance.",
+        "display_name": null,
+        "lat": 37.5622541,
+        "lng": -122.278803,
+        "naics4": "7211",
+        "naics_title": "Traveler Accommodation",
+        "name": "Crowne Plaza Foster City",
+        "relevance": 0.57,
+        "sector": "Hospitality & Food Service",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "IHG.COM"
+      }
+    ],
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "Retail, Hospitality & Tourism",
+    "shed_counties": [
+      "San Mateo",
+      "Santa Clara"
+    ],
+    "shown": 25,
+    "total": 278
+  },
+  "/programs": {
+    "coverage_awards_only": true,
+    "latest_award_year": "2024-2025",
+    "matrix": {
+      "cells": [
+        {
+          "awards": 0,
+          "college": "Berkeley City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130600"
+        },
+        {
+          "awards": 4,
+          "college": "Cabrillo College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130600"
+        },
+        {
+          "awards": 1,
+          "college": "Ca\u00f1ada College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130600"
+        },
+        {
+          "awards": 1,
+          "college": "Chabot College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130600"
+        },
+        {
+          "awards": 2,
+          "college": "City College of San Francisco",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130600"
+        },
+        {
+          "awards": 0,
+          "college": "College of Alameda",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130600"
+        },
+        {
+          "awards": 0,
+          "college": "College of Marin",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130600"
+        },
+        {
+          "awards": 6,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130600"
+        },
+        {
+          "awards": 0,
+          "college": "Contra Costa College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130600"
+        },
+        {
+          "awards": 0,
+          "college": "De Anza College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130600"
+        },
+        {
+          "awards": 7,
+          "college": "Diablo Valley College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130600"
+        },
+        {
+          "awards": 2,
+          "college": "Evergreen Valley College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130600"
+        },
+        {
+          "awards": 2,
+          "college": "Foothill College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130600"
+        },
+        {
+          "awards": 0,
+          "college": "Gavilan College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130600"
+        },
+        {
+          "awards": 0,
+          "college": "Laney College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130600"
+        },
+        {
+          "awards": 4,
+          "college": "Las Positas College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130600"
+        },
+        {
+          "awards": 0,
+          "college": "Los Medanos College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130600"
+        },
+        {
+          "awards": 0,
+          "college": "Merritt College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130600"
+        },
+        {
+          "awards": 9,
+          "college": "Mission College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130600"
+        },
+        {
+          "awards": 0,
+          "college": "Napa Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130600"
+        },
+        {
+          "awards": 0,
+          "college": "Ohlone College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130600"
+        },
+        {
+          "awards": 5,
+          "college": "San Jose City College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130600"
+        },
+        {
+          "awards": 0,
+          "college": "Santa Rosa Junior College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130600"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130600"
+        },
+        {
+          "awards": 3,
+          "college": "Solano Community College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130600"
+        },
+        {
+          "awards": 3,
+          "college": "West Valley College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130600"
+        },
+        {
+          "awards": 0,
+          "college": "Berkeley City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130620"
+        },
+        {
+          "awards": 0,
+          "college": "Cabrillo College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130620"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130620"
+        },
+        {
+          "awards": 0,
+          "college": "Chabot College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130620"
+        },
+        {
+          "awards": 0,
+          "college": "City College of San Francisco",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130620"
+        },
+        {
+          "awards": 0,
+          "college": "College of Alameda",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130620"
+        },
+        {
+          "awards": 0,
+          "college": "College of Marin",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130620"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130620"
+        },
+        {
+          "awards": 0,
+          "college": "Contra Costa College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130620"
+        },
+        {
+          "awards": 0,
+          "college": "De Anza College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130620"
+        },
+        {
+          "awards": 0,
+          "college": "Diablo Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130620"
+        },
+        {
+          "awards": 0,
+          "college": "Evergreen Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130620"
+        },
+        {
+          "awards": 0,
+          "college": "Foothill College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130620"
+        },
+        {
+          "awards": 0,
+          "college": "Gavilan College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130620"
+        },
+        {
+          "awards": 0,
+          "college": "Laney College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130620"
+        },
+        {
+          "awards": 0,
+          "college": "Las Positas College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130620"
+        },
+        {
+          "awards": 0,
+          "college": "Los Medanos College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130620"
+        },
+        {
+          "awards": 4,
+          "college": "Merritt College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130620"
+        },
+        {
+          "awards": 0,
+          "college": "Mission College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130620"
+        },
+        {
+          "awards": 0,
+          "college": "Napa Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130620"
+        },
+        {
+          "awards": 0,
+          "college": "Ohlone College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130620"
+        },
+        {
+          "awards": 0,
+          "college": "San Jose City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130620"
+        },
+        {
+          "awards": 5,
+          "college": "Santa Rosa Junior College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130620"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130620"
+        },
+        {
+          "awards": 0,
+          "college": "Solano Community College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130620"
+        },
+        {
+          "awards": 0,
+          "college": "West Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130620"
+        },
+        {
+          "awards": 0,
+          "college": "Berkeley City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130630"
+        },
+        {
+          "awards": 76,
+          "college": "Cabrillo College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130630"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130630"
+        },
+        {
+          "awards": 0,
+          "college": "Chabot College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130630"
+        },
+        {
+          "awards": 42,
+          "college": "City College of San Francisco",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130630"
+        },
+        {
+          "awards": 0,
+          "college": "College of Alameda",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130630"
+        },
+        {
+          "awards": 0,
+          "college": "College of Marin",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130630"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130630"
+        },
+        {
+          "awards": 16,
+          "college": "Contra Costa College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130630"
+        },
+        {
+          "awards": 0,
+          "college": "De Anza College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130630"
+        },
+        {
+          "awards": 40,
+          "college": "Diablo Valley College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130630"
+        },
+        {
+          "awards": 0,
+          "college": "Evergreen Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130630"
+        },
+        {
+          "awards": 0,
+          "college": "Foothill College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130630"
+        },
+        {
+          "awards": 0,
+          "college": "Gavilan College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130630"
+        },
+        {
+          "awards": 51,
+          "college": "Laney College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130630"
+        },
+        {
+          "awards": 0,
+          "college": "Las Positas College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130630"
+        },
+        {
+          "awards": 0,
+          "college": "Los Medanos College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130630"
+        },
+        {
+          "awards": 0,
+          "college": "Merritt College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130630"
+        },
+        {
+          "awards": 8,
+          "college": "Mission College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130630"
+        },
+        {
+          "awards": 4,
+          "college": "Napa Valley College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130630"
+        },
+        {
+          "awards": 0,
+          "college": "Ohlone College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130630"
+        },
+        {
+          "awards": 0,
+          "college": "San Jose City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130630"
+        },
+        {
+          "awards": 20,
+          "college": "Santa Rosa Junior College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130630"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130630"
+        },
+        {
+          "awards": 0,
+          "college": "Solano Community College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130630"
+        },
+        {
+          "awards": 0,
+          "college": "West Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130630"
+        },
+        {
+          "awards": 0,
+          "college": "Berkeley City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130700"
+        },
+        {
+          "awards": 0,
+          "college": "Cabrillo College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130700"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130700"
+        },
+        {
+          "awards": 0,
+          "college": "Chabot College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130700"
+        },
+        {
+          "awards": 7,
+          "college": "City College of San Francisco",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130700"
+        },
+        {
+          "awards": 0,
+          "college": "College of Alameda",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130700"
+        },
+        {
+          "awards": 0,
+          "college": "College of Marin",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130700"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130700"
+        },
+        {
+          "awards": 0,
+          "college": "Contra Costa College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130700"
+        },
+        {
+          "awards": 0,
+          "college": "De Anza College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130700"
+        },
+        {
+          "awards": 3,
+          "college": "Diablo Valley College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130700"
+        },
+        {
+          "awards": 0,
+          "college": "Evergreen Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130700"
+        },
+        {
+          "awards": 0,
+          "college": "Foothill College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130700"
+        },
+        {
+          "awards": 0,
+          "college": "Gavilan College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130700"
+        },
+        {
+          "awards": 0,
+          "college": "Laney College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130700"
+        },
+        {
+          "awards": 0,
+          "college": "Las Positas College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130700"
+        },
+        {
+          "awards": 0,
+          "college": "Los Medanos College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130700"
+        },
+        {
+          "awards": 0,
+          "college": "Merritt College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130700"
+        },
+        {
+          "awards": 3,
+          "college": "Mission College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130700"
+        },
+        {
+          "awards": 4,
+          "college": "Napa Valley College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130700"
+        },
+        {
+          "awards": 0,
+          "college": "Ohlone College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130700"
+        },
+        {
+          "awards": 0,
+          "college": "San Jose City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130700"
+        },
+        {
+          "awards": 5,
+          "college": "Santa Rosa Junior College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130700"
+        },
+        {
+          "awards": 2,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130700"
+        },
+        {
+          "awards": 0,
+          "college": "Solano Community College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130700"
+        },
+        {
+          "awards": 0,
+          "college": "West Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130700"
+        },
+        {
+          "awards": 0,
+          "college": "Berkeley City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130710"
+        },
+        {
+          "awards": 0,
+          "college": "Cabrillo College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130710"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130710"
+        },
+        {
+          "awards": 0,
+          "college": "Chabot College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130710"
+        },
+        {
+          "awards": 0,
+          "college": "City College of San Francisco",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130710"
+        },
+        {
+          "awards": 0,
+          "college": "College of Alameda",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130710"
+        },
+        {
+          "awards": 0,
+          "college": "College of Marin",
+          "enrolled": false,
+          "teaches": true,
+          "top6": "130710"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130710"
+        },
+        {
+          "awards": 0,
+          "college": "Contra Costa College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130710"
+        },
+        {
+          "awards": 0,
+          "college": "De Anza College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130710"
+        },
+        {
+          "awards": 2,
+          "college": "Diablo Valley College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130710"
+        },
+        {
+          "awards": 0,
+          "college": "Evergreen Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130710"
+        },
+        {
+          "awards": 0,
+          "college": "Foothill College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130710"
+        },
+        {
+          "awards": 0,
+          "college": "Gavilan College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130710"
+        },
+        {
+          "awards": 38,
+          "college": "Laney College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130710"
+        },
+        {
+          "awards": 0,
+          "college": "Las Positas College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130710"
+        },
+        {
+          "awards": 0,
+          "college": "Los Medanos College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130710"
+        },
+        {
+          "awards": 0,
+          "college": "Merritt College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130710"
+        },
+        {
+          "awards": 16,
+          "college": "Mission College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130710"
+        },
+        {
+          "awards": 0,
+          "college": "Napa Valley College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130710"
+        },
+        {
+          "awards": 0,
+          "college": "Ohlone College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130710"
+        },
+        {
+          "awards": 0,
+          "college": "San Jose City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130710"
+        },
+        {
+          "awards": 8,
+          "college": "Santa Rosa Junior College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130710"
+        },
+        {
+          "awards": 27,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130710"
+        },
+        {
+          "awards": 0,
+          "college": "Solano Community College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130710"
+        },
+        {
+          "awards": 0,
+          "college": "West Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130710"
+        },
+        {
+          "awards": 0,
+          "college": "Berkeley City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130720"
+        },
+        {
+          "awards": 0,
+          "college": "Cabrillo College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130720"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130720"
+        },
+        {
+          "awards": 0,
+          "college": "Chabot College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130720"
+        },
+        {
+          "awards": 0,
+          "college": "City College of San Francisco",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130720"
+        },
+        {
+          "awards": 0,
+          "college": "College of Alameda",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130720"
+        },
+        {
+          "awards": 0,
+          "college": "College of Marin",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130720"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130720"
+        },
+        {
+          "awards": 0,
+          "college": "Contra Costa College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130720"
+        },
+        {
+          "awards": 0,
+          "college": "De Anza College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130720"
+        },
+        {
+          "awards": 0,
+          "college": "Diablo Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130720"
+        },
+        {
+          "awards": 0,
+          "college": "Evergreen Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130720"
+        },
+        {
+          "awards": 0,
+          "college": "Foothill College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130720"
+        },
+        {
+          "awards": 0,
+          "college": "Gavilan College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130720"
+        },
+        {
+          "awards": 0,
+          "college": "Laney College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130720"
+        },
+        {
+          "awards": 0,
+          "college": "Las Positas College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130720"
+        },
+        {
+          "awards": 0,
+          "college": "Los Medanos College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130720"
+        },
+        {
+          "awards": 0,
+          "college": "Merritt College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130720"
+        },
+        {
+          "awards": 0,
+          "college": "Mission College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130720"
+        },
+        {
+          "awards": 0,
+          "college": "Napa Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130720"
+        },
+        {
+          "awards": 0,
+          "college": "Ohlone College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130720"
+        },
+        {
+          "awards": 0,
+          "college": "San Jose City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130720"
+        },
+        {
+          "awards": 1,
+          "college": "Santa Rosa Junior College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130720"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "130720"
+        },
+        {
+          "awards": 0,
+          "college": "Solano Community College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130720"
+        },
+        {
+          "awards": 0,
+          "college": "West Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "130720"
+        }
+      ],
+      "colleges": [
+        "Berkeley City College",
+        "Cabrillo College",
+        "Ca\u00f1ada College",
+        "Chabot College",
+        "City College of San Francisco",
+        "College of Alameda",
+        "College of Marin",
+        "College of San Mateo",
+        "Contra Costa College",
+        "De Anza College",
+        "Diablo Valley College",
+        "Evergreen Valley College",
+        "Foothill College",
+        "Gavilan College",
+        "Laney College",
+        "Las Positas College",
+        "Los Medanos College",
+        "Merritt College",
+        "Mission College",
+        "Napa Valley College",
+        "Ohlone College",
+        "San Jose City College",
+        "Santa Rosa Junior College",
+        "Skyline College",
+        "Solano Community College",
+        "West Valley College"
+      ]
+    },
+    "n_colleges": 26,
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "Retail, Hospitality & Tourism",
+    "tops": [
+      {
+        "awards_total": 257,
+        "enrollment_total": 2657,
+        "n_colleges_offering": 9,
+        "name": "Culinary Arts",
+        "soc_count": 1,
+        "top6": "130630"
+      },
+      {
+        "awards_total": 91,
+        "enrollment_total": 700,
+        "n_colleges_offering": 8,
+        "name": "Restaurant and Food Services and Management",
+        "soc_count": 1,
+        "top6": "130710"
+      },
+      {
+        "awards_total": 49,
+        "enrollment_total": 4710,
+        "n_colleges_offering": 21,
+        "name": "Nutrition, Foods, and Culinary Arts",
+        "soc_count": 1,
+        "top6": "130600"
+      },
+      {
+        "awards_total": 24,
+        "enrollment_total": 876,
+        "n_colleges_offering": 8,
+        "name": "Hospitality",
+        "soc_count": 1,
+        "top6": "130700"
+      },
+      {
+        "awards_total": 9,
+        "enrollment_total": 94,
+        "n_colleges_offering": 2,
+        "name": "Dietetic Services and Management",
+        "soc_count": 1,
+        "top6": "130620"
+      },
+      {
+        "awards_total": 1,
+        "enrollment_total": 44,
+        "n_colleges_offering": 4,
+        "name": "Lodging Management",
+        "soc_count": 1,
+        "top6": "130720"
+      }
+    ]
+  },
+  "landscape": {
+    "aggregate": {
+      "candidate_employers": 303,
+      "combined_awards": 431,
+      "combined_supply_total": 356.02,
+      "gap": 1034,
+      "n_colleges": 26,
+      "n_occupations": 1,
+      "occupations_taught": 1,
+      "regional_demand_total": 1390
+    },
+    "award_years": [
+      "2020-2021",
+      "2021-2022",
+      "2022-2023",
+      "2023-2024",
+      "2024-2025"
+    ],
+    "colleges": [
+      {
+        "cells": [
+          {
+            "annual_openings": 1390,
+            "annual_wage": 74760,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 1390,
+            "growth_rate": 0.039079732,
+            "programs": [],
+            "soc_code": "11-9051",
+            "supply": 0.0,
+            "title": "Food Service Managers"
+          }
+        ],
+        "name": "Berkeley City College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 1390,
+            "annual_wage": 74760,
+            "awards_recent": 80,
+            "course_count": 45,
+            "enrolled": true,
+            "feeding_awards": 80,
+            "gap": 1277,
+            "growth_rate": 0.039079732,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  2,
+                  4
+                ],
+                "awards_recent": 4,
+                "enrollment": [
+                  null,
+                  null,
+                  241,
+                  null,
+                  243,
+                  238,
+                  null,
+                  256,
+                  253,
+                  null,
+                  247,
+                  253,
+                  null,
+                  286,
+                  250
+                ],
+                "name": "Nutrition, Foods, and Culinary Arts",
+                "top6": "130600",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  38,
+                  89,
+                  48,
+                  76
+                ],
+                "awards_recent": 76,
+                "enrollment": [
+                  null,
+                  null,
+                  325,
+                  null,
+                  229,
+                  311,
+                  null,
+                  261,
+                  278,
+                  null,
+                  233,
+                  301,
+                  null,
+                  264,
+                  413
+                ],
+                "name": "Culinary Arts",
+                "top6": "130630",
+                "wages": []
+              }
+            ],
+            "soc_code": "11-9051",
+            "supply": 112.99,
+            "title": "Food Service Managers"
+          }
+        ],
+        "name": "Cabrillo College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 1390,
+            "annual_wage": 74760,
+            "awards_recent": 1,
+            "course_count": 1,
+            "enrolled": true,
+            "feeding_awards": 1,
+            "gap": 1389,
+            "growth_rate": 0.039079732,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  1,
+                  1,
+                  2,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  null,
+                  null,
+                  62,
+                  null,
+                  40,
+                  38,
+                  null,
+                  40,
+                  33,
+                  null,
+                  41,
+                  43,
+                  null,
+                  41,
+                  44
+                ],
+                "name": "Nutrition, Foods, and Culinary Arts",
+                "top6": "130600",
+                "wages": []
+              }
+            ],
+            "soc_code": "11-9051",
+            "supply": 1.0,
+            "title": "Food Service Managers"
+          }
+        ],
+        "name": "Ca\u00f1ada College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 1390,
+            "annual_wage": 74760,
+            "awards_recent": 1,
+            "course_count": 3,
+            "enrolled": true,
+            "feeding_awards": 1,
+            "gap": 1390,
+            "growth_rate": 0.039079732,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  1,
+                  0,
+                  2,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  null,
+                  null,
+                  274,
+                  null,
+                  181,
+                  328,
+                  null,
+                  254,
+                  331,
+                  null,
+                  287,
+                  374,
+                  null,
+                  370,
+                  476
+                ],
+                "name": "Nutrition, Foods, and Culinary Arts",
+                "top6": "130600",
+                "wages": []
+              }
+            ],
+            "soc_code": "11-9051",
+            "supply": 0.5,
+            "title": "Food Service Managers"
+          }
+        ],
+        "name": "Chabot College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 1390,
+            "annual_wage": 74760,
+            "awards_recent": 51,
+            "course_count": 39,
+            "enrolled": true,
+            "feeding_awards": 51,
+            "gap": 1336,
+            "growth_rate": 0.039079732,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  4,
+                  2,
+                  1,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  null,
+                  null,
+                  329,
+                  null,
+                  301,
+                  257,
+                  null,
+                  254,
+                  269,
+                  null,
+                  273,
+                  279,
+                  null,
+                  230,
+                  268
+                ],
+                "name": "Nutrition, Foods, and Culinary Arts",
+                "top6": "130600",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  47,
+                  34,
+                  30,
+                  42
+                ],
+                "awards_recent": 42,
+                "enrollment": [
+                  null,
+                  null,
+                  191,
+                  null,
+                  200,
+                  314,
+                  null,
+                  255,
+                  387,
+                  null,
+                  419,
+                  294,
+                  null,
+                  262,
+                  330
+                ],
+                "name": "Culinary Arts",
+                "top6": "130630",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  10,
+                  6,
+                  5,
+                  7
+                ],
+                "awards_recent": 7,
+                "enrollment": [
+                  null,
+                  null,
+                  81,
+                  null,
+                  46,
+                  87,
+                  null,
+                  89,
+                  93,
+                  null,
+                  71,
+                  83,
+                  null,
+                  133,
+                  111
+                ],
+                "name": "Hospitality",
+                "top6": "130700",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  4,
+                  7,
+                  3,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  38,
+                  null,
+                  9,
+                  18,
+                  null,
+                  18,
+                  16,
+                  null,
+                  11,
+                  22
+                ],
+                "name": "Restaurant and Food Services and Management",
+                "top6": "130710",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  18,
+                  null,
+                  null,
+                  17,
+                  null,
+                  null,
+                  12,
+                  null,
+                  null,
+                  17,
+                  null
+                ],
+                "name": "Lodging Management",
+                "top6": "130720",
+                "wages": []
+              }
+            ],
+            "soc_code": "11-9051",
+            "supply": 54.34,
+            "title": "Food Service Managers"
+          }
+        ],
+        "name": "City College of San Francisco"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 1390,
+            "annual_wage": 74760,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 1390,
+            "growth_rate": 0.039079732,
+            "programs": [],
+            "soc_code": "11-9051",
+            "supply": 0.0,
+            "title": "Food Service Managers"
+          }
+        ],
+        "name": "College of Alameda"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 1390,
+            "annual_wage": 74760,
+            "awards_recent": 0,
+            "course_count": 8,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 1390,
+            "growth_rate": 0.039079732,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  55,
+                  null,
+                  44,
+                  23,
+                  null,
+                  20,
+                  27,
+                  null,
+                  23,
+                  77,
+                  null,
+                  21,
+                  41
+                ],
+                "name": "Nutrition, Foods, and Culinary Arts",
+                "top6": "130600",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  15,
+                  null,
+                  15,
+                  10,
+                  null,
+                  12,
+                  15,
+                  null,
+                  13,
+                  17,
+                  null,
+                  16,
+                  31
+                ],
+                "name": "Hospitality",
+                "top6": "130700",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  13,
+                  null,
+                  null,
+                  8,
+                  null,
+                  null,
+                  6,
+                  null,
+                  null,
+                  7,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Lodging Management",
+                "top6": "130720",
+                "wages": []
+              }
+            ],
+            "soc_code": "11-9051",
+            "supply": 0.0,
+            "title": "Food Service Managers"
+          }
+        ],
+        "name": "College of Marin"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 1390,
+            "annual_wage": 74760,
+            "awards_recent": 6,
+            "course_count": 2,
+            "enrolled": true,
+            "feeding_awards": 6,
+            "gap": 1386,
+            "growth_rate": 0.039079732,
+            "programs": [
+              {
+                "awards": [
+                  6,
+                  3,
+                  4,
+                  7,
+                  6
+                ],
+                "awards_recent": 6,
+                "enrollment": [
+                  null,
+                  null,
+                  90,
+                  null,
+                  86,
+                  79,
+                  null,
+                  108,
+                  155,
+                  null,
+                  160,
+                  155,
+                  null,
+                  169,
+                  154
+                ],
+                "name": "Nutrition, Foods, and Culinary Arts",
+                "top6": "130600",
+                "wages": []
+              }
+            ],
+            "soc_code": "11-9051",
+            "supply": 4.33,
+            "title": "Food Service Managers"
+          }
+        ],
+        "name": "College of San Mateo"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 1390,
+            "annual_wage": 74760,
+            "awards_recent": 16,
+            "course_count": 3,
+            "enrolled": true,
+            "feeding_awards": 16,
+            "gap": 1380,
+            "growth_rate": 0.039079732,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  30,
+                  null,
+                  31,
+                  32,
+                  null,
+                  33,
+                  40,
+                  null,
+                  34,
+                  36,
+                  null,
+                  34,
+                  36
+                ],
+                "name": "Nutrition, Foods, and Culinary Arts",
+                "top6": "130600",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  10,
+                  4,
+                  7,
+                  16
+                ],
+                "awards_recent": 16,
+                "enrollment": [
+                  null,
+                  null,
+                  120,
+                  null,
+                  84,
+                  120,
+                  null,
+                  152,
+                  153,
+                  null,
+                  151,
+                  164,
+                  null,
+                  190,
+                  168
+                ],
+                "name": "Culinary Arts",
+                "top6": "130630",
+                "wages": []
+              }
+            ],
+            "soc_code": "11-9051",
+            "supply": 9.67,
+            "title": "Food Service Managers"
+          }
+        ],
+        "name": "Contra Costa College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 1390,
+            "annual_wage": 74760,
+            "awards_recent": 0,
+            "course_count": 2,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 1390,
+            "growth_rate": 0.039079732,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  290,
+                  344,
+                  367,
+                  341,
+                  287,
+                  371,
+                  301,
+                  310,
+                  null,
+                  261,
+                  320,
+                  373,
+                  325,
+                  370,
+                  354
+                ],
+                "name": "Nutrition, Foods, and Culinary Arts",
+                "top6": "130600",
+                "wages": []
+              }
+            ],
+            "soc_code": "11-9051",
+            "supply": 0.0,
+            "title": "Food Service Managers"
+          }
+        ],
+        "name": "De Anza College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 1390,
+            "annual_wage": 74760,
+            "awards_recent": 52,
+            "course_count": 41,
+            "enrolled": true,
+            "feeding_awards": 52,
+            "gap": 1358,
+            "growth_rate": 0.039079732,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  9,
+                  3,
+                  6,
+                  7
+                ],
+                "awards_recent": 7,
+                "enrollment": [
+                  null,
+                  null,
+                  604,
+                  null,
+                  611,
+                  563,
+                  null,
+                  560,
+                  603,
+                  null,
+                  660,
+                  627,
+                  null,
+                  653,
+                  638
+                ],
+                "name": "Nutrition, Foods, and Culinary Arts",
+                "top6": "130600",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  16,
+                  9,
+                  16,
+                  40
+                ],
+                "awards_recent": 40,
+                "enrollment": [
+                  null,
+                  null,
+                  353,
+                  null,
+                  318,
+                  274,
+                  null,
+                  315,
+                  387,
+                  null,
+                  398,
+                  423,
+                  null,
+                  452,
+                  218
+                ],
+                "name": "Culinary Arts",
+                "top6": "130630",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  3,
+                  5,
+                  1,
+                  3
+                ],
+                "awards_recent": 3,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  51
+                ],
+                "name": "Hospitality",
+                "top6": "130700",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  3,
+                  1,
+                  5,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  12,
+                  null,
+                  null,
+                  null,
+                  26,
+                  null,
+                  null,
+                  null,
+                  null,
+                  24,
+                  51
+                ],
+                "name": "Restaurant and Food Services and Management",
+                "top6": "130710",
+                "wages": []
+              }
+            ],
+            "soc_code": "11-9051",
+            "supply": 32.34,
+            "title": "Food Service Managers"
+          }
+        ],
+        "name": "Diablo Valley College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 1390,
+            "annual_wage": 74760,
+            "awards_recent": 2,
+            "course_count": 1,
+            "enrolled": true,
+            "feeding_awards": 2,
+            "gap": 1386,
+            "growth_rate": 0.039079732,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  5,
+                  2,
+                  3,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  null,
+                  131,
+                  169,
+                  null,
+                  184,
+                  166,
+                  null,
+                  181,
+                  178,
+                  null,
+                  136,
+                  134,
+                  null,
+                  135,
+                  137
+                ],
+                "name": "Nutrition, Foods, and Culinary Arts",
+                "top6": "130600",
+                "wages": []
+              }
+            ],
+            "soc_code": "11-9051",
+            "supply": 4.33,
+            "title": "Food Service Managers"
+          }
+        ],
+        "name": "Evergreen Valley College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 1390,
+            "annual_wage": 74760,
+            "awards_recent": 2,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 2,
+            "gap": 1390,
+            "growth_rate": 0.039079732,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  1,
+                  0,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Nutrition, Foods, and Culinary Arts",
+                "top6": "130600",
+                "wages": []
+              }
+            ],
+            "soc_code": "11-9051",
+            "supply": 0.0,
+            "title": "Food Service Managers"
+          }
+        ],
+        "name": "Foothill College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 1390,
+            "annual_wage": 74760,
+            "awards_recent": 0,
+            "course_count": 1,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 1390,
+            "growth_rate": 0.039079732,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  22
+                ],
+                "name": "Culinary Arts",
+                "top6": "130630",
+                "wages": []
+              }
+            ],
+            "soc_code": "11-9051",
+            "supply": 0.0,
+            "title": "Food Service Managers"
+          }
+        ],
+        "name": "Gavilan College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 1390,
+            "annual_wage": 74760,
+            "awards_recent": 89,
+            "course_count": 24,
+            "enrolled": true,
+            "feeding_awards": 89,
+            "gap": 1349,
+            "growth_rate": 0.039079732,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  30,
+                  null,
+                  32,
+                  31,
+                  null,
+                  34,
+                  40,
+                  null,
+                  73,
+                  33,
+                  null,
+                  33,
+                  null
+                ],
+                "name": "Nutrition, Foods, and Culinary Arts",
+                "top6": "130600",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  31,
+                  22,
+                  38,
+                  51
+                ],
+                "awards_recent": 51,
+                "enrollment": [
+                  null,
+                  null,
+                  457,
+                  null,
+                  514,
+                  883,
+                  null,
+                  905,
+                  747,
+                  null,
+                  794,
+                  675,
+                  null,
+                  717,
+                  742
+                ],
+                "name": "Culinary Arts",
+                "top6": "130630",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  47,
+                  null,
+                  32,
+                  43,
+                  null,
+                  50,
+                  24,
+                  null,
+                  70,
+                  33,
+                  null,
+                  91,
+                  43
+                ],
+                "name": "Hospitality",
+                "top6": "130700",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  22,
+                  11,
+                  28,
+                  38
+                ],
+                "awards_recent": 38,
+                "enrollment": [
+                  null,
+                  null,
+                  4,
+                  null,
+                  22,
+                  7,
+                  null,
+                  30,
+                  41,
+                  null,
+                  36,
+                  36,
+                  null,
+                  null,
+                  41
+                ],
+                "name": "Restaurant and Food Services and Management",
+                "top6": "130710",
+                "wages": []
+              }
+            ],
+            "soc_code": "11-9051",
+            "supply": 41.17,
+            "title": "Food Service Managers"
+          }
+        ],
+        "name": "Laney College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 1390,
+            "annual_wage": 74760,
+            "awards_recent": 4,
+            "course_count": 20,
+            "enrolled": true,
+            "feeding_awards": 4,
+            "gap": 1387,
+            "growth_rate": 0.039079732,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  3,
+                  3,
+                  0,
+                  4
+                ],
+                "awards_recent": 4,
+                "enrollment": [
+                  null,
+                  null,
+                  163,
+                  null,
+                  157,
+                  128,
+                  null,
+                  133,
+                  155,
+                  null,
+                  178,
+                  146,
+                  null,
+                  167,
+                  184
+                ],
+                "name": "Nutrition, Foods, and Culinary Arts",
+                "top6": "130600",
+                "wages": []
+              }
+            ],
+            "soc_code": "11-9051",
+            "supply": 3.33,
+            "title": "Food Service Managers"
+          }
+        ],
+        "name": "Las Positas College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 1390,
+            "annual_wage": 74760,
+            "awards_recent": 0,
+            "course_count": 1,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 1390,
+            "growth_rate": 0.039079732,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  237,
+                  null,
+                  177,
+                  215,
+                  null,
+                  168,
+                  229,
+                  null,
+                  203,
+                  245,
+                  null,
+                  191,
+                  239
+                ],
+                "name": "Nutrition, Foods, and Culinary Arts",
+                "top6": "130600",
+                "wages": []
+              }
+            ],
+            "soc_code": "11-9051",
+            "supply": 0.0,
+            "title": "Food Service Managers"
+          }
+        ],
+        "name": "Los Medanos College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 1390,
+            "annual_wage": 74760,
+            "awards_recent": 4,
+            "course_count": 7,
+            "enrolled": true,
+            "feeding_awards": 4,
+            "gap": 1384,
+            "growth_rate": 0.039079732,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  1,
+                  0,
+                  1,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  20,
+                  null,
+                  null,
+                  21,
+                  null,
+                  null,
+                  31,
+                  null,
+                  null,
+                  31,
+                  null,
+                  null,
+                  22
+                ],
+                "name": "Nutrition, Foods, and Culinary Arts",
+                "top6": "130600",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  7,
+                  7,
+                  1,
+                  4
+                ],
+                "awards_recent": 4,
+                "enrollment": [
+                  null,
+                  null,
+                  22,
+                  null,
+                  62,
+                  15,
+                  null,
+                  50,
+                  7,
+                  null,
+                  41,
+                  6,
+                  null,
+                  42,
+                  8
+                ],
+                "name": "Dietetic Services and Management",
+                "top6": "130620",
+                "wages": []
+              }
+            ],
+            "soc_code": "11-9051",
+            "supply": 5.67,
+            "title": "Food Service Managers"
+          }
+        ],
+        "name": "Merritt College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 1390,
+            "annual_wage": 74760,
+            "awards_recent": 36,
+            "course_count": 34,
+            "enrolled": true,
+            "feeding_awards": 36,
+            "gap": 1362,
+            "growth_rate": 0.039079732,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  4,
+                  2,
+                  4,
+                  9
+                ],
+                "awards_recent": 9,
+                "enrollment": [
+                  null,
+                  192,
+                  170,
+                  null,
+                  141,
+                  191,
+                  null,
+                  175,
+                  199,
+                  null,
+                  201,
+                  191,
+                  null,
+                  160,
+                  186
+                ],
+                "name": "Nutrition, Foods, and Culinary Arts",
+                "top6": "130600",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  7,
+                  5,
+                  8
+                ],
+                "awards_recent": 8,
+                "enrollment": [
+                  null,
+                  51,
+                  42,
+                  null,
+                  79,
+                  123,
+                  null,
+                  81,
+                  207,
+                  null,
+                  168,
+                  153,
+                  null,
+                  108,
+                  187
+                ],
+                "name": "Culinary Arts",
+                "top6": "130630",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  11,
+                  8,
+                  7,
+                  3
+                ],
+                "awards_recent": 3,
+                "enrollment": [
+                  null,
+                  32,
+                  52,
+                  null,
+                  null,
+                  null,
+                  null,
+                  23,
+                  22,
+                  null,
+                  19,
+                  44,
+                  null,
+                  8,
+                  41
+                ],
+                "name": "Hospitality",
+                "top6": "130700",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  12,
+                  10,
+                  17,
+                  16
+                ],
+                "awards_recent": 16,
+                "enrollment": [
+                  null,
+                  141,
+                  98,
+                  null,
+                  122,
+                  120,
+                  1,
+                  142,
+                  192,
+                  null,
+                  188,
+                  278,
+                  null,
+                  205,
+                  198
+                ],
+                "name": "Restaurant and Food Services and Management",
+                "top6": "130710",
+                "wages": []
+              }
+            ],
+            "soc_code": "11-9051",
+            "supply": 27.84,
+            "title": "Food Service Managers"
+          }
+        ],
+        "name": "Mission College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 1390,
+            "annual_wage": 74760,
+            "awards_recent": 8,
+            "course_count": 35,
+            "enrolled": true,
+            "feeding_awards": 8,
+            "gap": 1386,
+            "growth_rate": 0.039079732,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  5,
+                  4
+                ],
+                "awards_recent": 4,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  6,
+                  12,
+                  null,
+                  12,
+                  27,
+                  null,
+                  13,
+                  23,
+                  null,
+                  29,
+                  43
+                ],
+                "name": "Culinary Arts",
+                "top6": "130630",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  2,
+                  1,
+                  2,
+                  4
+                ],
+                "awards_recent": 4,
+                "enrollment": [
+                  null,
+                  null,
+                  100,
+                  null,
+                  null,
+                  19,
+                  null,
+                  null,
+                  31,
+                  null,
+                  null,
+                  81,
+                  null,
+                  8,
+                  78
+                ],
+                "name": "Hospitality",
+                "top6": "130700",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  16,
+                  null,
+                  9,
+                  39,
+                  null,
+                  50,
+                  101,
+                  null,
+                  60,
+                  81,
+                  null,
+                  99,
+                  77
+                ],
+                "name": "Restaurant and Food Services and Management",
+                "top6": "130710",
+                "wages": []
+              }
+            ],
+            "soc_code": "11-9051",
+            "supply": 4.5,
+            "title": "Food Service Managers"
+          }
+        ],
+        "name": "Napa Valley College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 1390,
+            "annual_wage": 74760,
+            "awards_recent": 0,
+            "course_count": 1,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 1390,
+            "growth_rate": 0.039079732,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  120,
+                  null,
+                  91,
+                  196,
+                  null,
+                  140,
+                  185,
+                  null,
+                  148,
+                  188
+                ],
+                "name": "Nutrition, Foods, and Culinary Arts",
+                "top6": "130600",
+                "wages": []
+              }
+            ],
+            "soc_code": "11-9051",
+            "supply": 0.0,
+            "title": "Food Service Managers"
+          }
+        ],
+        "name": "Ohlone College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 1390,
+            "annual_wage": 74760,
+            "awards_recent": 5,
+            "course_count": 1,
+            "enrolled": true,
+            "feeding_awards": 5,
+            "gap": 1388,
+            "growth_rate": 0.039079732,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  3,
+                  0,
+                  3,
+                  5
+                ],
+                "awards_recent": 5,
+                "enrollment": [
+                  null,
+                  null,
+                  131,
+                  null,
+                  116,
+                  86,
+                  null,
+                  114,
+                  123,
+                  null,
+                  114,
+                  95,
+                  null,
+                  107,
+                  118
+                ],
+                "name": "Nutrition, Foods, and Culinary Arts",
+                "top6": "130600",
+                "wages": []
+              }
+            ],
+            "soc_code": "11-9051",
+            "supply": 1.67,
+            "title": "Food Service Managers"
+          }
+        ],
+        "name": "San Jose City College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 1390,
+            "annual_wage": 74760,
+            "awards_recent": 39,
+            "course_count": 112,
+            "enrolled": true,
+            "feeding_awards": 39,
+            "gap": 1349,
+            "growth_rate": 0.039079732,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  486,
+                  null,
+                  442,
+                  460,
+                  null,
+                  428,
+                  501,
+                  null,
+                  501,
+                  548,
+                  null,
+                  581,
+                  712
+                ],
+                "name": "Nutrition, Foods, and Culinary Arts",
+                "top6": "130600",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  12,
+                  5,
+                  0,
+                  5
+                ],
+                "awards_recent": 5,
+                "enrollment": [
+                  null,
+                  null,
+                  31,
+                  null,
+                  32,
+                  8,
+                  null,
+                  6,
+                  10,
+                  null,
+                  28,
+                  6,
+                  null,
+                  20,
+                  21
+                ],
+                "name": "Dietetic Services and Management",
+                "top6": "130620",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  15,
+                  12,
+                  26,
+                  20
+                ],
+                "awards_recent": 20,
+                "enrollment": [
+                  null,
+                  null,
+                  266,
+                  null,
+                  266,
+                  392,
+                  null,
+                  416,
+                  471,
+                  null,
+                  408,
+                  476,
+                  null,
+                  419,
+                  507
+                ],
+                "name": "Culinary Arts",
+                "top6": "130630",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  4,
+                  2,
+                  2,
+                  5
+                ],
+                "awards_recent": 5,
+                "enrollment": [
+                  null,
+                  null,
+                  98,
+                  null,
+                  6,
+                  63,
+                  null,
+                  28,
+                  89,
+                  null,
+                  45,
+                  63,
+                  null,
+                  85,
+                  78
+                ],
+                "name": "Hospitality",
+                "top6": "130700",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  5,
+                  3,
+                  11,
+                  8
+                ],
+                "awards_recent": 8,
+                "enrollment": [
+                  null,
+                  null,
+                  43,
+                  null,
+                  46,
+                  31,
+                  null,
+                  30,
+                  32,
+                  null,
+                  52,
+                  24,
+                  null,
+                  46,
+                  54
+                ],
+                "name": "Restaurant and Food Services and Management",
+                "top6": "130710",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  3,
+                  2,
+                  2,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  19,
+                  null,
+                  null,
+                  23,
+                  null,
+                  null,
+                  28,
+                  null,
+                  null,
+                  19,
+                  null
+                ],
+                "name": "Lodging Management",
+                "top6": "130720",
+                "wages": []
+              }
+            ],
+            "soc_code": "11-9051",
+            "supply": 41.01,
+            "title": "Food Service Managers"
+          }
+        ],
+        "name": "Santa Rosa Junior College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 1390,
+            "annual_wage": 74760,
+            "awards_recent": 29,
+            "course_count": 7,
+            "enrolled": true,
+            "feeding_awards": 29,
+            "gap": 1388,
+            "growth_rate": 0.039079732,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  84,
+                  null,
+                  143,
+                  91,
+                  null,
+                  130,
+                  90,
+                  null,
+                  101,
+                  93,
+                  null,
+                  105,
+                  95
+                ],
+                "name": "Nutrition, Foods, and Culinary Arts",
+                "top6": "130600",
+                "wages": []
+              },
+              {
+                "awards": [
+                  3,
+                  0,
+                  0,
+                  1,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  null,
+                  null,
+                  411,
+                  null,
+                  657,
+                  460,
+                  null,
+                  98,
+                  432,
+                  null,
+                  658,
+                  159,
+                  null,
+                  397,
+                  132
+                ],
+                "name": "Hospitality",
+                "top6": "130700",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  3,
+                  0,
+                  62,
+                  27
+                ],
+                "awards_recent": 27,
+                "enrollment": [
+                  null,
+                  null,
+                  190,
+                  null,
+                  55,
+                  262,
+                  null,
+                  28,
+                  290,
+                  null,
+                  9,
+                  127,
+                  null,
+                  59,
+                  118
+                ],
+                "name": "Restaurant and Food Services and Management",
+                "top6": "130710",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  5,
+                  null,
+                  null,
+                  null,
+                  12,
+                  null,
+                  null,
+                  null,
+                  null,
+                  8,
+                  null
+                ],
+                "name": "Lodging Management",
+                "top6": "130720",
+                "wages": []
+              }
+            ],
+            "soc_code": "11-9051",
+            "supply": 2.5,
+            "title": "Food Service Managers"
+          }
+        ],
+        "name": "Skyline College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 1390,
+            "annual_wage": 74760,
+            "awards_recent": 3,
+            "course_count": 2,
+            "enrolled": true,
+            "feeding_awards": 3,
+            "gap": 1383,
+            "growth_rate": 0.039079732,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  8,
+                  4,
+                  6,
+                  3
+                ],
+                "awards_recent": 3,
+                "enrollment": [
+                  null,
+                  null,
+                  507,
+                  null,
+                  425,
+                  547,
+                  null,
+                  485,
+                  636,
+                  null,
+                  547,
+                  574,
+                  null,
+                  425,
+                  431
+                ],
+                "name": "Nutrition, Foods, and Culinary Arts",
+                "top6": "130600",
+                "wages": []
+              }
+            ],
+            "soc_code": "11-9051",
+            "supply": 7.33,
+            "title": "Food Service Managers"
+          }
+        ],
+        "name": "Solano Community College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 1390,
+            "annual_wage": 74760,
+            "awards_recent": 3,
+            "course_count": 3,
+            "enrolled": true,
+            "feeding_awards": 3,
+            "gap": 1388,
+            "growth_rate": 0.039079732,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  2,
+                  1,
+                  2,
+                  3
+                ],
+                "awards_recent": 3,
+                "enrollment": [
+                  null,
+                  null,
+                  109,
+                  30,
+                  120,
+                  100,
+                  26,
+                  73,
+                  160,
+                  35,
+                  155,
+                  144,
+                  55,
+                  141,
+                  137
+                ],
+                "name": "Nutrition, Foods, and Culinary Arts",
+                "top6": "130600",
+                "wages": []
+              }
+            ],
+            "soc_code": "11-9051",
+            "supply": 1.5,
+            "title": "Food Service Managers"
+          }
+        ],
+        "name": "West Valley College"
+      }
+    ],
+    "coverage_awards_only": true,
+    "enrollment_terms": [
+      "Winter 2021",
+      "Spring 2021",
+      "Fall 2021",
+      "Winter 2022",
+      "Spring 2022",
+      "Fall 2022",
+      "Winter 2023",
+      "Spring 2023",
+      "Fall 2023",
+      "Winter 2024",
+      "Spring 2024",
+      "Fall 2024",
+      "Winter 2025",
+      "Spring 2025",
+      "Fall 2025"
+    ],
+    "executive_summary": "This view examines the regional demand landscape across the 1 retail, hospitality & tourism occupations the Bay Area Community College Consortium \u2014 Retail, Hospitality & Tourism targets in the Bay Area regional labor market. Regional demand for these occupations totals 1,390 openings per year.",
+    "is_sector_priority": false,
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "Retail, Hospitality & Tourism"
+  }
+}

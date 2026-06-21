@@ -38,17 +38,19 @@ class TestSectorRegistry:
 
     def test_uniform_priority_job_rule(self):
         # SOC curation is a declarative SectorRule applied UNIFORMLY to every
-        # sector — the BACCC/COE "priority job" definition (>=50 regional annual
-        # openings, reachable from a member program, >=$50k near-living-wage) —
-        # durable across a sector_socs.csv regeneration, not hand-deleted rows.
+        # sector — the BACCC/COE "priority job" definition: > 239 regional annual
+        # openings (i.e. >= 240), >= $54,081 near-living-wage (> $54,080), a
+        # non-empty activity gate (reachable_only is OFF), and >= 2 member colleges
+        # — durable across a sector_socs.csv regeneration, not hand-deleted rows.
         # Replaces the earlier ecu-only rule; now ecu and biotech share it.
         from partnerships.landscape import REGISTRY
         for sid in ("ecu", "biotech", "health", "adm"):
             rule = SECTORS[sid].rule
             assert rule.active
-            assert rule.min_openings == 49        # keep regional openings >= 50
-            assert rule.reachable_only
-            assert rule.min_wage == 50_000        # BACCC near-living-wage floor
+            assert rule.min_openings == 239       # keep regional openings > 239 (>= 240)
+            assert rule.non_empty_only            # the activity gate (reachable_only is OFF)
+            assert rule.min_wage == 54_081        # BACCC near-living-wage floor (> $54,080)
+            assert rule.min_colleges == 2
         # Per-sector excluded_tops drop crosswalk-noise feeders. 070810 Computer
         # Networking (IT/CIS) is a noise feeder for ecu.
         assert "070810" in SECTORS["ecu"].excluded_tops

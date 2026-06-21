@@ -151,6 +151,7 @@ def _rollup_catalog(college_tops: dict, sector_candidates: dict) -> list[dict]:
     return entries
 
 
+@lru_cache(maxsize=1)
 def live_catalog() -> list[dict]:
     """The live member×sector catalog against the current graph: every college
     and district member that runs ≥1 feeding program per sector. One Program scan

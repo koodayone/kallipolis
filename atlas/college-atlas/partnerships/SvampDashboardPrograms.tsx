@@ -20,7 +20,7 @@ import TrendChart from "@/college-atlas/partnerships/TrendChart";
 import WageOutcomes from "@/college-atlas/partnerships/WageOutcomes";
 import OccupationDemandTable from "@/college-atlas/partnerships/OccupationDemandTable";
 import ProgramPathway from "@/college-atlas/partnerships/ProgramPathway";
-import { DashPanel, DashBandSet, ScopeBanner, SvampLoading, ScopeAccentContext, type DashBandDef } from "@/college-atlas/partnerships/SvampDashboard";
+import { DashPanel, DashBandSet, ScopeBanner, SvampLoading, ScopeAccentContext, TotalStrip, SupplySplit, type DashBandDef } from "@/college-atlas/partnerships/SvampDashboard";
 import {
   shortName, leadOverlayColors, awardYearLabel, shortAwardType, shortCreditType,
 } from "@/college-atlas/partnerships/chartKit";
@@ -33,7 +33,7 @@ const DEMAND_ACCENT = "#c9a84c"; // demand reference gold (mirrors the report)
 
 export type CollegeRef = { id: string; config: SchoolConfig };
 
-export default function SvampDashboardPrograms({ colleges, instance = "svamp" }: { colleges: CollegeRef[]; instance?: string }) {
+export default function SvampDashboardPrograms({ colleges, instance = "svamp", primaryCollege = null }: { colleges: CollegeRef[]; instance?: string; primaryCollege?: string | null }) {
   const [land, setLand] = useState<ApiSvampProgramsLandscape | null>(null);
   const [top, setTop] = useState<string | null>(null);
   // null ⇒ consortium scope; a college id ⇒ that college's scope.
@@ -58,8 +58,14 @@ export default function SvampDashboardPrograms({ colleges, instance = "svamp" }:
       .then((d) => {
         setLand(d);
         const u = urlRef.current;
-        const urlTop = u.top && d.tops.some((t) => t.top6 === u.top) ? u.top : null;
-        setTop((cur) => cur ?? urlTop ?? d.tops[0]?.top6 ?? null);
+        // Default to the central school's own first program (Programs lens is
+        // scoped to its programs; see possessedTops below).
+        const poss = primaryCollege
+          ? new Set((d.matrix?.cells ?? []).filter((c) => c.college === primaryCollege && c.awards > 0).map((c) => c.top6))
+          : null;
+        const ownTops = poss ? d.tops.filter((t) => poss.has(t.top6)) : d.tops;
+        const urlTop = u.top && ownTops.some((t) => t.top6 === u.top) ? u.top : null;
+        setTop((cur) => cur ?? urlTop ?? ownTops[0]?.top6 ?? null);
         if (u.college && colleges.some((c) => c.id === u.college)) setCollegeId(u.college);
       })
       .catch((e) => setErr(e.message));
@@ -87,17 +93,53 @@ export default function SvampDashboardPrograms({ colleges, instance = "svamp" }:
   if (err) return <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", color: "#e0654f", fontFamily: MONO, fontSize: 12 }}>Failed to load: {err}</div>;
   if (!land) return <SvampLoading />;
 
-  // Coverage matrix inputs — identical semantics to the report's ProgramsLens.
-  const cols = colleges.map((c) => ({ id: c.id, label: shortName(c.config.name), brand: c.config.brandColorLight }));
+  // Programs lens shows the CENTRAL school's own programs (its supply portfolio).
+  // For a cluster-expanded single-college lens, scope the program universe to the
+  // TOPs the primary college possesses (awards) — the cross-school "who else feeds
+  // this occupation" view is the Occupations lens's job. Consortium instances
+  // (primaryCollege == null) keep every program.
+  const possessedTops = primaryCollege
+    ? new Set((land.matrix?.cells ?? []).filter((c) => c.college === primaryCollege && c.awards > 0).map((c) => c.top6))
+    : null;
+  const lensTops = possessedTops ? land.tops.filter((t) => possessedTops.has(t.top6)) : land.tops;
+  const shownTopIds = new Set(lensTops.map((t) => t.top6));
+  const totalSupply = lensTops.reduce((s, t) => s + (t.awards_total ?? 0), 0);
+  // Coverage matrix inputs. Empty-column drop scoped to the SHOWN program rows: a
+  // college sharing none of the lens's programs is an all-gap column (noise), so
+  // drop it — the column-analog of the all-gap rows already filtered out. Awards-
+  // gated views only; curated SVAMP keeps every member.
+  const participating = land.coverage_awards_only
+    ? new Set((land.matrix?.cells ?? []).filter((c) => c.awards > 0 && shownTopIds.has(c.top6)).map((c) => c.college))
+    : null;
+  const shownColleges = participating ? colleges.filter((c) => participating.has(c.config.name)) : colleges;
+  const cols = shownColleges.map((c) => ({ id: c.id, label: shortName(c.config.name), brand: c.config.brandColorLight }));
+  // Consortium scale: the matrix takes a full-width row and the supply treemap
+  // drops to its own row below — at consortium width the 2:1 top band starves the
+  // matrix. Keyed off the full MEMBER count, not the displayed count, so every
+  // BACCC view is full-width regardless of how many colleges survive the
+  // empty-column drop; the few-member curated instances (SVAMP/SMCCD) keep 2:1.
+  // (Header orientation still flips on displayed cols — see CoverageMatrix.)
+  const wide = colleges.length >= 12;
   const cellByKey = new Map((land.matrix?.cells ?? []).map((c) => [c.college + "|" + c.top6, c]));
-  const rows = land.tops
+  const rows = lensTops
     .filter((t) => t.enrollment_total > 0 || t.awards_total > 0)
     .map((t) => ({ id: t.top6, label: t.name, sublabel: `TOP ${t.top6}`, title: t.name }));
+  // The central school's OWN supply across its programs (its cells' awards) —
+  // shown against the consortium total (totalSupply) so the coordinator sees their
+  // share of the regional supply in their programs.
+  const schoolSupply = primaryCollege
+    ? lensTops.reduce((s, t) => s + (cellByKey.get(primaryCollege + "|" + t.top6)?.awards ?? 0), 0)
+    : 0;
   const level = (rowId: string, colId: string): "none" | "partial" | "strong" => {
     const name = nameById.get(colId);
     const cell = name ? cellByKey.get(name + "|" + rowId) : undefined;
     if (!cell) return "none";
     const enrolled = cell.enrolled, awarded = cell.awards > 0;
+    // Rule-bearing instances (BACCC, sector-derived SMCCD) gate coverage on
+    // awards: no completer ⇒ gap (enrollment alone isn't realized supply);
+    // awards ⇒ strong if currently enrolled, else partial (real-but-thinning
+    // supply). Curated instances keep enrolled-OR-awarded coverage.
+    if (land.coverage_awards_only) return awarded ? (enrolled ? "strong" : "partial") : "none";
     if (enrolled && awarded) return "strong";
     return enrolled || awarded ? "partial" : "none";
   };
@@ -127,11 +169,14 @@ export default function SvampDashboardPrograms({ colleges, instance = "svamp" }:
     node: (
       <DashPanel title="Program Supply" authority="DataMart" accent={scopeBrand}>
         <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
+          {primaryCollege
+            ? <SupplySplit schoolLabel={shortName(primaryCollege)} school={schoolSupply} consortium={totalSupply} accent={scopeBrand} />
+            : <TotalStrip label="Total program supply" value={totalSupply} accent={scopeBrand} />}
           {/* Ring tracks the entity in BOTH scopes — the selected program's
               place in the supply distribution is scope-invariant. Scope is
               carried by hue (the ramp wears scopeBrand) and the banner, so the
               ring is free to answer "where does this TOP sit?" */}
-          <SupplyTreemap tops={land.tops} selectedTop={top} onSelect={selectConsortium} accent={scopeBrand} fill />
+          <SupplyTreemap tops={lensTops} selectedTop={top} onSelect={selectConsortium} accent={scopeBrand} fill />
         </div>
       </DashPanel>
     ),
@@ -153,8 +198,12 @@ export default function SvampDashboardPrograms({ colleges, instance = "svamp" }:
             selectedRow={top}
             selectedCol={collegeId}
             cornerLabel="↓ program · → college"
-            gapCellHint="no enrollment or awards here"
-            legend={[
+            gapCellHint={land.coverage_awards_only ? "no awards here" : "no enrollment or awards here"}
+            legend={land.coverage_awards_only ? [
+              { k: "Covered", sub: "awards + enrollment", bg: "rgba(148,168,201,.92)", ring: true },
+              { k: "Partial", sub: "awards, no enrollment", bg: "rgba(148,168,201,.3)", ring: true },
+              { k: "Gap", sub: "no awards", bg: "rgba(255,255,255,.035)", ring: false },
+            ] : [
               { k: "Covered", sub: "enrollment & awards", bg: "rgba(148,168,201,.92)", ring: true },
               { k: "Partial", sub: "enrollment or awards", bg: "rgba(148,168,201,.3)", ring: true },
               { k: "Gap", sub: "neither", bg: "rgba(255,255,255,.035)", ring: false },
@@ -185,7 +234,9 @@ export default function SvampDashboardPrograms({ colleges, instance = "svamp" }:
           other. Charts are scope-keyed so each scope entry lands on its
           default mode. */}
       <DashBandSet bands={[
-        { id: "programs.top", panels: [coveragePanel, supplyPanel] },
+        ...(wide
+          ? [{ id: "programs.coverageRow", panels: [coveragePanel] }, { id: "programs.supplyRow", panels: [supplyPanel] }]
+          : [{ id: "programs.top", panels: [coveragePanel, supplyPanel] }]),
         ...buildScopeBands(),
       ]} />
     </div>

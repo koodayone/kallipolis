@@ -33,7 +33,6 @@ from ontology.crosswalks import (
     load_top_titles,
     load_naics4_titles,
 )
-from ontology.oes import oes_socs_for_naics4
 from ontology.regions import (
     COE_REGION_DISPLAY,
     COE_REGION_PRIORITY_SECTORS,
@@ -308,35 +307,26 @@ def _gather_partnership_opportunities(
     """
     naics_titles = load_naics4_titles()
 
+    # Industry share is the staffing-pattern weight (BLS OEWS PCT_TOTAL),
+    # read directly off the materialized HIRES_FOR.pct_total edge rather than
+    # re-descending the OEWS CSV at request time — the same value (verified
+    # equal), one source of truth shared with employer_relevance.rank_employers.
     driver = get_driver()
     with driver.session() as session:
         rows = session.run("""
             MATCH (col:College {name: $college})-[:IN_MARKET]->(r:Region)
-                  <-[:IN_MARKET]-(emp:Employer)-[:HIRES_FOR]->(occ:Occupation {soc_code: $soc})
+                  <-[:IN_MARKET]-(emp:Employer)-[h:HIRES_FOR]->(occ:Occupation {soc_code: $soc})
             OPTIONAL MATCH (course:Course {college: $college})-[:PREPARES_FOR]->(occ)
-            WITH emp, count(DISTINCT course) AS aligned_course_count
+            WITH emp, h.pct_total AS industry_share, count(DISTINCT course) AS aligned_course_count
             RETURN emp.name AS name,
                    emp.sector AS sector,
                    COALESCE(emp.swp_sectors, []) AS swp_sectors,
                    emp.description AS description,
                    emp.website AS website,
                    emp.naics4 AS naics4,
+                   industry_share,
                    aligned_course_count
         """, college=college, soc=soc_code).data()
-
-    # Build a per-(naics4, soc) industry share map by descending into
-    # the OEWS rows for each unique NAICS-4 just once.
-    share_cache: dict[str, dict[str, float]] = {}
-
-    def _share(naics4: str | None, soc: str) -> float | None:
-        if not naics4:
-            return None
-        if naics4 not in share_cache:
-            oes_rows = oes_socs_for_naics4(naics4)
-            share_cache[naics4] = {
-                r["soc"]: r["pct_total"] for r in oes_rows if r.get("pct_total")
-            }
-        return share_cache[naics4].get(soc)
 
     employers = [
         PartnershipOpportunityEmployer(
@@ -347,7 +337,7 @@ def _gather_partnership_opportunities(
             website=r.get("website"),
             naics4=r.get("naics4"),
             naics_title=naics_titles.get(r.get("naics4")) if r.get("naics4") else None,
-            industry_share=_share(r.get("naics4"), soc_code),
+            industry_share=r.get("industry_share"),
             aligned_course_count=r.get("aligned_course_count", 0),
         )
         for r in rows

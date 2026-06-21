@@ -53,10 +53,15 @@ class SectorRule:
     reachable_only: bool = False   # keep SOCs a member program reaches via the crosswalk
     non_empty_only: bool = False   # keep SOCs with >=1 member program that has activity
     min_wage: int = 0              # keep SOCs whose regional annual median wage >= this
+    min_colleges: int = 1          # keep SOCs >=N distinct member colleges produce (the
+                                   # consortium floor: a single-college occupation is
+                                   # self-contained — no multi-school partnership to broker,
+                                   # and its program is already justified by demand alone)
 
     @property
     def active(self) -> bool:
-        return self.min_openings > 0 or self.reachable_only or self.non_empty_only or self.min_wage > 0
+        return (self.min_openings > 0 or self.reachable_only or self.non_empty_only
+                or self.min_wage > 0 or self.min_colleges > 1)
 
 
 @dataclass(frozen=True)
@@ -83,6 +88,13 @@ class Sector:
     # Declarative SOC-selection curation (demand floor / reachable / non-empty),
     # applied at build time. Default = no-op (show the full middle-skill set).
     rule: SectorRule = SectorRule()
+    # When set, the feeder universe is additionally gated to these TOP2 "home"
+    # divisions — the Taxonomy of Programs top-level industry categories (e.g.
+    # "12" = Health). A clean, self-consistent rule for sectors that map to one
+    # division; left empty (use excluded_tops curation) for the TOP-09 sectors
+    # (AM/ATL/ECU all share Engineering & Industrial Technologies, separable only
+    # at TOP4) and cross-division sectors (ICT spans Media 06 + IT 07 + Arts 10).
+    home_divisions: tuple[str, ...] = ()
 
     @property
     def socs(self) -> tuple[str, ...]:
@@ -112,28 +124,147 @@ _SECTOR_META: list[tuple[str, str, str]] = [
 # 1-SOC feeders (e.g. Nursing -> Health) are deliberately NOT excluded — they're
 # narrow-but-real programs, not cross-domain artifacts. Derived from the supply-
 # noise audit; applied in LandscapeSpec.in_scope on top of the is_vocational gate.
+# (2026-06-12: extended via a per-industry division-faithfulness audit — programs
+# from a foreign TOP division bleeding into an industry, e.g. IT into Advanced
+# Manufacturing, Vet-Tech/Wine into Health & Business, Construction into Retail.
+# Only confident cross-domain bleed was added; dual-named sectors like ICT/Digital
+# Media and Ag/Water/Environmental keep their legitimately cross-division feeders.)
 _SECTOR_EXCLUDED_TOPS: dict[str, frozenset[str]] = {
-    "adm": frozenset({"020100", "050630", "061400", "061410", "061450", "061460", "070700", "070810", "070820", "095220", "100500"}),
+    "adm": frozenset({"020100", "050630", "051800", "061400", "061410", "061450", "061460", "070100", "070200", "070700", "070810", "070820", "095220", "100500"}),
     "agwet": frozenset({"092400", "094610"}),
     "atl": frozenset({"050200", "050650", "092400", "094610", "095220", "095600", "210200"}),
-    "biotech": frozenset({"126000", "129900", "210500", "210540"}),
-    "business": frozenset({"051420", "120820", "130700", "130720", "210200"}),
+    "biotech": frozenset({"095600", "126000", "129900", "210500", "210540"}),
+    "business": frozenset({"010210", "010400", "011200", "011510", "051420", "083610", "120820", "130700", "130720", "210200", "300500"}),
     "ecu": frozenset({"070810", "095300", "220610"}),
     "edhd": frozenset({"120100"}),
-    "health": frozenset({"050600", "126000", "130600"}),
+    "health": frozenset({"010210", "050600", "126000", "130600"}),
     "ict": frozenset({"050900", "061450"}),
     "public_safety": frozenset({"070100", "126000"}),
-    "retail": frozenset({"050640", "050650", "130320", "300700"}),
+    "retail": frozenset({"050640", "050650", "094500", "095200", "095700", "130320", "300700"}),
 }
 
-# Uniform SOC-selection curation = the BACCC/COE "priority job" definition,
-# applied to every sector (the SECTORS default below): reachable from a member
-# program via the crosswalk, >=50 regional annual openings, and at/above the
-# $50k near-living-wage floor. (BACCC Bay living wage is $25.97/hr ~= $54,018;
-# the $50k floor deliberately keeps borderline-core CTE pathways — CNA $52.8k,
-# EMT $50.3k, welding $51.8k — while cutting the genuinely sub-living-wage.)
-# Per-sector overrides go in _SECTOR_RULES.
-_DEFAULT_RULE = SectorRule(min_openings=49, reachable_only=True, min_wage=50_000)
+# Occupations the BACCC/COE demand data tags as "Work Experience Required:
+# 5 years or more" — promotion destinations a worker reaches AFTER a career, not
+# entry targets a middle-skill program trains someone INTO. Dropped from every
+# landscape's occupation set (resolve.effective_socs) regardless of sector, the
+# same editorial reason the demand floor and reachable gate exist: keep the view
+# to what a college's programs can actually feed. The full COE 5-years-or-more
+# set (28 SOCs across all sectors) is encoded — not just the ones live today —
+# so a future sector SOC-list refresh inherits the exclusion. Source: the
+# "Work Experience Required" column of the per-sector COE demand exports.
+EXPERIENCE_5YR_SOCS: frozenset[str] = frozenset({
+    # Management (11-*) — the bulk of the 5+yr set
+    "11-1011", "11-1021", "11-2021", "11-2032", "11-2033", "11-3021", "11-3031",
+    "11-3051", "11-3061", "11-3071", "11-3111", "11-3121", "11-3131", "11-9013",
+    "11-9032", "11-9041", "11-9121", "11-9161",
+    # Senior individual contributors / supervisory roles tagged 5+yr
+    "15-1241",            # Computer Network Architects
+    "23-1021", "23-1023", # Administrative Law Judges; Judges & Magistrates
+    "25-9031",            # Instructional Coordinators
+    "27-1011", "27-2032", # Art Directors; Choreographers
+    "33-2021",            # Fire Inspectors and Investigators
+    "35-1011",            # Chefs and Head Cooks
+    "47-1011", "47-4011", # First-Line Supervisors of Construction; Building Inspectors
+})
+
+# "All Other" residual/catch-all SOCs in the sector universe — non-specific
+# roll-up codes (e.g. "Engineering Technologists ..., All Other") that attract
+# spurious crosswalk links and aren't a coherent training target. Dropped from
+# every sector-derived landscape (resolve.effective_socs), alongside the 5+yr
+# experience set. Generated from the sector SOC universe by title match.
+ALL_OTHER_SOCS: frozenset[str] = frozenset({
+    "17-3019", "17-3029", "19-4099", "29-2099", "29-9099", "31-9099", "33-1099",
+    "41-9099", "49-9069", "49-9099", "51-4199", "51-7099", "53-4099",
+})
+
+# Occupations kept despite a negative regional growth rate. The strict rule drops
+# declining occupations (building a program for a shrinking field is poor
+# investment), but a few override: a thin/flat decline in a high-wage,
+# hard-to-automate, family-sustaining role that underpins a critical regional
+# industry. Today — Electrical & Electronic Engineering Technologists (17-3023,
+# $43/hr, the Bay's hardware/semiconductor/energy technician spine) and Carpenters
+# (47-2031, $35/hr, 2,500 openings, core building trade) — both flat replacement-
+# churn, not dying. Growth is a flag here, not a guillotine.
+GROWTH_EXEMPT_SOCS: frozenset[str] = frozenset({"17-3023", "47-2031"})
+
+# Promotion / management roles — NOT entry-level, so not a community-college
+# training target. A CC produces the line worker; the employer promotes one of
+# them into the supervisor/manager seat after years on the job. These double-count
+# an entry pipeline at a higher tier (e.g. 49-1011 First-Line Supervisors of
+# Mechanics is just the SOC-49 trades — Auto/Diesel/Industrial/Aircraft mechanics
+# — re-attributed one rung up). The "5+ years experience" cut alone misses them
+# because BLS codes most supervisors as "Less than 5 years"; the clean signal is
+# the ROLE, identified deterministically from the baccc_sectors sheet: a
+# Supervisor/Manager/Detective title (or SOC-11 Management requiring any prior
+# experience), minus a focused-pathway carve-out. A role survives when a DEDICATED
+# CTE program trains directly for it (not generic bleed) AND it isn't merely
+# double-counting an entry role we already keep:
+#   - Construction Managers (11-9021) — construction-management programs.
+#   - Food Service Managers (11-9051) — culinary/hospitality-management programs.
+#   - First-Line Supervisors of Landscaping (37-1012) — fed by Landscape Design /
+#     Horticulture / Nursery programs, and its $22 entry groundskeeper sits BELOW
+#     the wage floor, so the $30 crew-lead/contractor role is the green-industry
+#     pipeline's only family-sustaining outcome, not a duplicate.
+# Administrative Services & Facilities Managers stay cut: identical generic
+# Business-Admin feeders (no focused program). Mechanics/production supervisors
+# stay cut: they double-count entry trades already in the set. Generated from the
+# CSVs' "Work Experience Required" + title; experienced *trades* (Cooks, Crane
+# Operators, repairers) deliberately stay — they're entry, not promotion.
+PROMOTION_SOCS: frozenset[str] = frozenset({
+    "11-1011", "11-1021", "11-1031", "11-2011", "11-2021", "11-2022",
+    "11-2032", "11-2033", "11-3012", "11-3013", "11-3021", "11-3031",
+    "11-3051", "11-3061", "11-3071", "11-3111", "11-3121", "11-3131",
+    "11-9013", "11-9031", "11-9032", "11-9033", "11-9041",
+    "11-9071", "11-9072", "11-9081", "11-9111", "11-9121", "11-9131",
+    "11-9141", "11-9151", "11-9161", "11-9171", "33-1011", "33-1012",
+    "33-1021", "33-1091", "33-3021", "33-9021", "35-1012", "37-1011",
+    "39-1013", "39-1014", "39-1022", "41-1011", "41-1012",
+    "43-1011", "45-1011", "47-1011", "49-1011", "51-1011", "53-1041",
+    "53-1047",
+})
+
+# Curated below-floor admissions (set 2026-06-13 from the BACCC consortium
+# clustering analysis). These occupations clear every gate EXCEPT the 240-openings
+# floor — premium (wage well above floor), growing, multi-college and awards-backed,
+# but thinner in raw annual openings than the floor allows. They earn admission
+# because they cost almost no interpretation bandwidth: five EXTEND a live
+# occupational cluster a member already trains (one more destination on a pipeline
+# already on screen), and one is a single strong standalone. INCLUDE_SOCS exempts
+# ONLY the openings floor (in resolve.effective_socs); every other gate (wage,
+# growth, non_empty/awards, min_colleges) still applies, so a member that loses the
+# supply still drops the row. Cluster-extenders: 29-9021 Health Information
+# Technologists (medical-records), 19-4092 Forensic Science Technicians (criminal-
+# justice), 49-9051 Electrical Power-Line Installers (electrical trades), 47-2071
+# Paving/Surfacing Operators (heavy-equipment), 49-9062 Medical Equipment Repairers
+# (lab sciences). Standalone: 29-1126 Respiratory Therapists (allied health). Held
+# for a later wave / curation pass: the adm engineering-tech block (the shared-
+# feeder clustering over-merges it) and ict Sound Engineering Technicians (its only
+# cluster is crosswalk bleed).
+INCLUDE_SOCS: frozenset[str] = frozenset({
+    "29-9021", "19-4092", "49-9051", "47-2071", "49-9062", "29-1126",
+})
+
+# Uniform SOC-selection curation = the strict BACCC priority-occupation standard
+# (set 2026-06-12): median wage above $26/hr ($54,080/yr), at least 240 regional
+# annual openings (lowered 350 → 240 on 2026-06-12 to admit core occupations the
+# BACCC regional plan prioritizes, e.g. Aircraft Mechanics, which this demand
+# dataset puts at 240 openings; lowering only adds — never removes), under
+# 5 years of prior work experience (EXPERIENCE_5YR_SOCS
+# drop in resolve), no "all other" catch-alls (ALL_OTHER_SOCS), and no DECLINING
+# occupations (negative regional growth rate — building for a shrinking field is
+# poor strategy — except the structurally-important GROWTH_EXEMPT_SOCS). non_empty_only
+# is ON: an occupation is shown only if >=1 member program actually has AWARDS
+# (completers) feeding it — awards are the supply metric, so an occupation with
+# enrollment but no graduates is dropped along with the completely-blank rows (an
+# occupation with zero consortium supply — e.g. Flight Attendants, which has no CC
+# training pathway — is dropped rather than rendered as an all-gap row).
+# reachable_only stays OFF; non_empty_only is the stricter activity gate. Operator note: the rule keeps openings > min_openings and wage
+# >= min_wage, so 239 / 54_081 reproduce "openings >= 240" and "wage > $54,080"
+# ($26/hr) exactly. Per-sector overrides go in _SECTOR_RULES.
+_DEFAULT_RULE = SectorRule(
+    min_openings=239, min_wage=54_081, reachable_only=False, non_empty_only=True,
+    min_colleges=2,
+)
 
 _SECTOR_RULES: dict[str, SectorRule] = {}  # per-sector overrides (none currently)
 
@@ -155,12 +286,36 @@ _SECTOR_SWP_TAG: dict[str, str] = {
     "retail":        "Retail, Hospitality and Tourism",
 }
 
+# Per-sector "home" TOP2 division(s) — the Taxonomy of Programs top-level industry
+# category a sector maps to (Manual, 7th Ed.). When set, the feeder universe is
+# gated to these divisions (in_scope), so the sector only draws programs the
+# manual files under its own industry. Only set where the sector maps cleanly to
+# a division — Health is TOP 12, Retail/Hospitality is TOP 13 (Family & Consumer
+# Sciences), Transport (ATL) is TOP 09 (Engineering & Industrial Technologies),
+# Business is TOP 05 (Business & Management). The TOP2 gate drops out-of-division
+# bleed (e.g. TOP-05 Business programs leaking into Transport, or Construction /
+# Paralegal / Cosmetology leaking into Business) but does NOT separate the three
+# 09-rooted sectors (AM/ATL/ECU) from each other — that still needs TOP4
+# excluded_tops, so the two mechanisms are complementary. Business's 05 gate is
+# clean (every occupation keeps a 05 feeder); ATL's 09 gate intentionally drops
+# Logisticians (13-1081), a regional-plan ATL occupation whose only feeder is
+# Business (no 09 pipeline trains logisticians). AM/ECU keep their out-of-division
+# cleanup in excluded_tops for now; ICT spans divisions (Media 06 + IT 07 + Arts
+# 10) so it has no single home.
+_SECTOR_HOME_DIV: dict[str, tuple[str, ...]] = {
+    "health": ("12",),
+    "retail": ("13",),
+    "business": ("05",),
+    "atl": ("09",),
+}
+
 SECTORS: dict[str, Sector] = {
     sid: Sector(
         id=sid, label=label, accent=accent,
         swp_tag=_SECTOR_SWP_TAG.get(sid, ""),
         excluded_tops=_SECTOR_EXCLUDED_TOPS.get(sid, frozenset()),
         rule=_SECTOR_RULES.get(sid, _DEFAULT_RULE),
+        home_divisions=_SECTOR_HOME_DIV.get(sid, ()),
     )
     for sid, label, accent in _SECTOR_META
 }

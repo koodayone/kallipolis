@@ -195,3 +195,15 @@ export const COLLEGE_ATLAS_CONFIGS: Record<string, SchoolConfig> = {
 export function getCollegeAtlasConfig(collegeId: string): SchoolConfig | null {
   return COLLEGE_ATLAS_CONFIGS[collegeId] ?? null;
 }
+
+const ATLAS_ID_BY_NAME: Record<string, string> = Object.fromEntries(
+  Object.entries(COLLEGE_ATLAS_CONFIGS).map(([id, cfg]) => [cfg.name, id])
+);
+
+/** Resolve a backend college NAME (SchoolConfig.name) to its config id — the
+ *  inverse of the id-keyed registry. Used where a payload carries college names
+ *  the static instance config doesn't enumerate (e.g. a cluster-expanded
+ *  landscape, whose colleges are the consortium co-members). */
+export function collegeAtlasIdByName(name: string): string | null {
+  return ATLAS_ID_BY_NAME[name] ?? null;
+}

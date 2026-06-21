@@ -46,6 +46,7 @@ from ontology.schema import get_driver
 from ontology.programs import get_wage_outcomes
 from ontology.supply import get_coe_supply
 from partnerships.gather import _gather_curriculum_crosswalk
+from partnerships.graph_reads import latest_academic_year, regional_demand
 from partnerships.models import CurriculumCrosswalk, PartnershipOpportunityEmployer
 from partnerships.opportunity import _gather_partnership_opportunities
 from partnerships.opportunity_narrative import build_occupational_demand
@@ -106,6 +107,12 @@ class ProgramsLandscape(BaseModel):
     n_colleges: int
     tops: list[TopSummary]
     matrix: ProgramCoverageMatrix | None = None  # per-(college, TOP) coverage grid
+    # True for rule-bearing instances (BACCC, sector-derived SMCCD): the coverage
+    # cell is gated on AWARDS — enrollment without a completer is not realized
+    # supply, so it reads as a gap, not "partial" (a cell with awards but no current
+    # enrollment stays partial — real-but-thinning supply). The curated SVAMP
+    # instance carries no rule and keeps the enrolled-OR-awarded coverage.
+    coverage_awards_only: bool = False
 
 
 class OccupationDemand(BaseModel):
@@ -267,11 +274,42 @@ def relevant_tops(spec: LandscapeSpec = SVAMP_SPEC) -> dict[str, set[str]]:
     domain per the SVAMP director."""
     all_top6 = list(_load_top_to_cip().keys())
     targets = set(spec.socs)
-    return {
+    universe = {
         top6: (socs & targets)
         for top6, socs in top6_to_soc(all_top6).items()
         if (socs & targets) and spec.in_scope(top6)
     }
+    # Rule-bearing instances apply the supply gate at the PROGRAM grain too:
+    # awards are the supply metric, so a program with no awarded completer in any
+    # member college (enrollment-only) is not realized supply and never enters the
+    # matrix/treemap/counts. This matches resolve()'s occupation-grain awards gate
+    # (active_tops), and because every surviving occupation already requires an
+    # awards-bearing feeder, dropping award-less programs cannot orphan a row.
+    # The curated SVAMP spec carries no rule and keeps the full universe.
+    rule = spec.soc_rule
+    if rule is not None and rule.active and universe:
+        awarded = _awarded_tops(spec, universe)
+        universe = {t: s for t, s in universe.items() if t in awarded}
+    return universe
+
+
+def _awarded_tops(spec: LandscapeSpec, tops) -> set[str]:
+    """TOP6s with >=1 awarded completer in the LATEST reported year, in any member
+    college — the supply gate's program grain. Matches resolve()'s active_tops and
+    the coverage-matrix's latest-year cells, so a kept TOP is exactly one with
+    current supply; a program last awarded in an older year is dormant and drops
+    (e.g. 210530 Industrial & Transportation Security, which last awarded a
+    completer in 2023-24)."""
+    with get_driver().session() as session:
+        latest = latest_academic_year(session)
+        rows = session.run(
+            "MATCH (p:Program)-[a:AWARDED]->(ay:AcademicYear) "
+            "WHERE p.college IN $colleges AND p.top6 IN $tops "
+            "AND ay.year = $latest AND coalesce(a.count, 0) > 0 "
+            "RETURN DISTINCT p.top6 AS top6",
+            colleges=list(spec.colleges), tops=list(tops), latest=latest,
+        ).data()
+    return {r["top6"] for r in rows}
 
 
 # ── Builders (I/O) ──────────────────────────────────────────────────────────
@@ -345,15 +383,7 @@ def build_program_report(top6: str, college: str | None = None, *, spec: Landsca
     colleges_filter = [college] if college else colleges
 
     with driver.session() as session:
-        demand_rows = session.run(
-            """
-            MATCH (r:Region {name: $region})-[d:DEMANDS]->(occ:Occupation)
-            WHERE occ.soc_code IN $socs
-            RETURN occ.soc_code AS soc_code, occ.title AS title,
-                   d.annual_openings AS annual_openings, d.annual_wage AS annual_wage
-            """,
-            region=region, socs=socs,
-        ).data()
+        demand_rows = list(regional_demand(session, region, socs).values())
         # Grouped by credential type (the AWARDED edge key) — the assembly
         # derives both the flat per-college series (summing types back out)
         # and the per-(college, type) decomposition from these rows.
@@ -444,6 +474,7 @@ def _build_program_crosswalk(
 
 def build_svamp_occupation(
     soc: str, *, spec: LandscapeSpec = SVAMP_SPEC, college: str | None = None,
+    include_employers: bool = True,
 ) -> SvampOccupationReport:
     """Consortium aggregated-occupation report for one SOC — the dual of
     build_program_report. Reuses the program supply machinery (the SOC's 09
@@ -466,16 +497,7 @@ def build_svamp_occupation(
     driver = get_driver()
 
     with driver.session() as session:
-        demand = session.run(
-            """
-            MATCH (r:Region {name: $region})-[d:DEMANDS]->(occ:Occupation {soc_code: $soc})
-            RETURN occ.title AS title, occ.description AS description,
-                   d.annual_openings AS annual_openings,
-                   d.annual_wage AS annual_wage, d.growth_rate AS growth_rate,
-                   d.employment AS employment
-            """,
-            region=region, soc=soc,
-        ).single()
+        demand = regional_demand(session, region, [soc]).get(soc)
         awards_rows = session.run(
             """
             MATCH (pr:Program)-[a:AWARDED]->(ay:AcademicYear)
@@ -549,12 +571,19 @@ def build_svamp_occupation(
     # market), so this is the consortium-grain view of the same candidate set
     # the per-college targeted report surfaces. aligned_course_count (the only
     # college-specific field) is not rendered, so the passed college is moot.
-    report.partnership_opportunities = _gather_partnership_opportunities(colleges[0], soc)
-    report.partnership_opportunities_narrative = (
-        f"Regional employers hiring for {report.title}, ranked by how central the role "
-        f"is to each firm's industry — candidate partners for the consortium's colleges "
-        f"to build or deepen this pathway."
-    )
+    #
+    # Skipped when include_employers is False: the dashboard occupations lens
+    # never renders this list, and the unbounded regional gather (hundreds of
+    # employers, each with description/website) is the dominant cost and ~94% of
+    # the payload weight of this report. Opting out keeps the field at its empty
+    # default for that surface; the report surfaces keep the default (True).
+    if include_employers:
+        report.partnership_opportunities = _gather_partnership_opportunities(colleges[0], soc)
+        report.partnership_opportunities_narrative = (
+            f"Regional employers hiring for {report.title}, ranked by how central the role "
+            f"is to each firm's industry — candidate partners for the consortium's colleges "
+            f"to build or deepen this pathway."
+        )
     return report
 
 
@@ -740,6 +769,7 @@ def _assemble_landscape(
         n_colleges=len(colleges),
         tops=tops,
         matrix=matrix,
+        coverage_awards_only=(spec.soc_rule is not None and spec.soc_rule.active),
     )
 
 

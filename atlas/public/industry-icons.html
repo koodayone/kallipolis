@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kallipolis · SWP Industry Forms — concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#080b14; --panel:#0d121e; --panel-2:#111827; --line:#1d2738;
+    --ink:#e8edf6; --ink-dim:#8694ad; --ink-faint:#55647e;
+    --accent:#d08a3a;            /* live: set by toggle */
+    --accent-soft:rgba(208,138,58,.14);
+    --radius:14px;
+    --sans:"Schibsted Grotesk",sans-serif;
+    --mono:"Spline Sans Mono",monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:
+      radial-gradient(1200px 700px at 78% -8%, color-mix(in srgb,var(--accent) 14%, transparent), transparent 60%),
+      radial-gradient(900px 600px at 10% 110%, #0c1326, transparent 55%),
+      var(--bg);
+    color:var(--ink); font-family:var(--sans);
+    -webkit-font-smoothing:antialiased; line-height:1.5;
+    transition:background .6s ease;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px 120px}
+  a{color:inherit}
+
+  /* ── live header (the re-skin target) ───────────────────────── */
+  header.bar{
+    display:flex;align-items:center;gap:20px;
+    padding:20px 28px;border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg, color-mix(in srgb,var(--accent) 7%, var(--panel)), var(--panel));
+    position:sticky;top:0;z-index:20;backdrop-filter:blur(8px);
+    transition:background .5s ease;
+  }
+  .mark{width:34px;height:34px;flex:none}
+  .brand{font-weight:700;letter-spacing:-.01em;font-size:18px}
+  .title{
+    flex:1;text-align:center;font-weight:600;font-size:15px;
+    letter-spacing:.16em;text-transform:uppercase;
+  }
+  .title .sec{color:var(--accent);transition:color .4s ease}
+  .preview{font-size:10px;letter-spacing:.28em;color:var(--ink-faint);text-transform:uppercase;margin-top:3px}
+
+  /* ── the metadata chip, made live ───────────────────────────── */
+  .chip{
+    display:flex;gap:0;align-items:center;justify-content:flex-end;
+    font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim);
+  }
+  .chip b{color:var(--ink);font-weight:600}
+  .chip .seg{padding:0 14px;border-right:1px solid var(--line)}
+  .chip .seg:last-child{border:0;color:var(--accent)}
+  .chip .num{font-family:var(--mono);font-weight:500}
+
+  h1{font-size:13px;letter-spacing:.26em;text-transform:uppercase;color:var(--ink-dim);font-weight:600;margin:54px 0 6px}
+  .lead{font-size:21px;line-height:1.45;max-width:62ch;margin:0 0 8px;color:var(--ink);font-weight:400}
+  .lead em{font-style:normal;color:var(--accent)}
+  .note{color:var(--ink-dim);font-size:14px;max-width:64ch}
+  .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-faint);text-transform:uppercase}
+
+  /* ── LIVE industry rail (primary interaction) ──────────────── */
+  .stage{
+    margin-top:22px;border:1px solid var(--line);border-radius:var(--radius);
+    background:linear-gradient(180deg,var(--panel),#0a0f1a);overflow:hidden;
+  }
+  .stage .demo-head{
+    display:flex;align-items:center;justify-content:space-between;gap:24px;
+    padding:22px 26px;border-bottom:1px solid var(--line);
+    background:color-mix(in srgb,var(--accent) 6%, transparent);transition:background .45s;
+  }
+  .demo-title{font-weight:600;font-size:14px;letter-spacing:.16em;text-transform:uppercase}
+  .demo-title .sec{color:var(--accent)}
+  .rail{
+    display:flex;gap:6px;padding:18px 18px;flex-wrap:wrap;
+    background:repeating-linear-gradient(90deg,transparent,transparent 0);
+  }
+  .ind{
+    flex:1 1 0;min-width:86px;cursor:pointer;border:1px solid transparent;border-radius:12px;
+    padding:14px 8px 11px;display:flex;flex-direction:column;align-items:center;gap:9px;
+    background:transparent;transition:.22s ease;position:relative;
+  }
+  .ind:hover{background:var(--panel-2);border-color:var(--line)}
+  .ind svg{width:30px;height:30px;color:var(--ink-faint);transition:.22s ease}
+  .ind .lab{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);text-align:center;line-height:1.25;transition:.22s}
+  .ind .depth{font-family:var(--mono);font-size:9px;color:var(--ink-faint);opacity:.7}
+  .ind:hover svg,.ind:hover .lab{color:var(--ink-dim)}
+  .ind.on{background:color-mix(in srgb,var(--ic) 12%, var(--panel-2));border-color:color-mix(in srgb,var(--ic) 50%, transparent)}
+  .ind.on svg{color:var(--ic)}
+  .ind.on .lab{color:var(--ink)}
+  .ind.on::after{content:"";position:absolute;left:18%;right:18%;bottom:-1px;height:2px;background:var(--ic);border-radius:2px}
+  .ind.thin{opacity:.5}
+  .ind.thin .depth{color:#9a6b3a}
+
+  /* ── icon option grids ─────────────────────────────────────── */
+  .opts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px}
+  @media(max-width:900px){.opts{grid-template-columns:1fr}}
+  .opt{border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);padding:20px 20px 8px}
+  .opt h3{margin:0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+  .opt p{margin:6px 0 16px;font-size:12.5px;color:var(--ink-dim);line-height:1.5;min-height:54px}
+  .swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:10px 6px}
+  .sw{display:flex;flex-direction:column;align-items:center;gap:7px;padding:8px 2px 12px}
+  .sw .cap{font-size:8.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-faint);text-align:center;line-height:1.2}
+
+  /* treatment A — line glyph in a thin ring (logo-consistent) */
+  .tA{width:46px;height:46px;border-radius:50%;border:1.4px solid color-mix(in srgb,var(--ic) 55%, transparent);
+      display:grid;place-items:center;background:color-mix(in srgb,var(--ic) 7%, transparent)}
+  .tA svg{width:24px;height:24px;color:var(--ic)}
+  /* treatment B — filled disc, knockout glyph (bold) */
+  .tB{width:46px;height:46px;border-radius:13px;background:linear-gradient(160deg,color-mix(in srgb,var(--ic) 92%, #000),color-mix(in srgb,var(--ic) 60%,#000));
+      display:grid;place-items:center;box-shadow:0 6px 18px -8px color-mix(in srgb,var(--ic) 70%, transparent)}
+  .tB svg{width:24px;height:24px;color:#0a0f1a}
+  /* treatment C — bare line glyph, minimal */
+  .tC{width:46px;height:46px;display:grid;place-items:center}
+  .tC svg{width:30px;height:30px;color:var(--ic);opacity:.95}
+
+  /* ── radial / orbit alternate ──────────────────────────────── */
+  .orbit-wrap{margin-top:24px;border:1px solid var(--line);border-radius:var(--radius);background:radial-gradient(circle at 50% 50%,#0c1322,#080b14);padding:30px;display:flex;gap:34px;align-items:center;flex-wrap:wrap}
+  .orbit{position:relative;width:300px;height:300px;flex:none;margin:auto}
+  .orbit .core{position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-50%);width:74px;height:74px;border-radius:50%;
+    display:grid;place-items:center;border:1px solid var(--line);background:radial-gradient(circle at 50% 35%,color-mix(in srgb,var(--accent) 30%,#0d121e),#0a0f1a);transition:.5s}
+  .orbit .core .mark{width:40px;height:40px}
+  .orbit .node{position:absolute;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);background:var(--panel);cursor:pointer;transition:.25s;margin:-21px}
+  .orbit .node svg{width:21px;height:21px;color:var(--ink-faint);transition:.25s}
+  .orbit .node:hover{border-color:color-mix(in srgb,var(--ic) 60%,transparent)}
+  .orbit .node:hover svg{color:var(--ic)}
+  .orbit .node.on{background:color-mix(in srgb,var(--ic) 16%,var(--panel));border-color:var(--ic);box-shadow:0 0 0 4px color-mix(in srgb,var(--ic) 18%,transparent)}
+  .orbit .node.on svg{color:var(--ic)}
+  .orbit .ring{position:absolute;inset:24px;border:1px dashed var(--line);border-radius:50%;opacity:.5}
+
+  .foot{margin-top:60px;border-top:1px solid var(--line);padding-top:20px;color:var(--ink-faint);font-size:12px;font-family:var(--mono);letter-spacing:.04em}
+  .pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:3px 11px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);font-family:var(--sans)}
+</style>
+</head>
+<body>
+
+<!-- shared icon definitions (one platonic form per industry) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="def-adm"><!-- gear / machined nut --><polygon points="12,4.2 18.8,8.1 18.8,15.9 12,19.8 5.2,15.9 5.2,8.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.7" fill="none" stroke="currentColor" stroke-width="1.5"/></g>
+    <g id="def-biotech"><!-- helix --><path d="M9 4.5 Q15.5 8 9 12 Q2.5 16 9 19.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M15 4.5 Q8.5 8 15 12 Q21.5 16 15 19.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="9.6" y1="6.4" x2="14.4" y2="6.4" stroke="currentColor" stroke-width="1.3"/><line x1="8.4" y1="12" x2="15.6" y2="12" stroke="currentColor" stroke-width="1.3"/><line x1="9.6" y1="17.6" x2="14.4" y2="17.6" stroke="currentColor" stroke-width="1.3"/></g>
+    <g id="def-health"><!-- cross / care --><path d="M12 5.5 V18.5 M5.5 12 H18.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></g>
+    <g id="def-ict"><!-- network --><circle cx="12" cy="6.5" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="6" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="18" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 8.4 L6.8 15.2 M12 8.4 L17.2 15.2 M8 17 H16" stroke="currentColor" stroke-width="1.3"/></g>
+    <g id="def-atl"><!-- motion chevrons --><path d="M5.5 7 L10.5 12 L5.5 17 M12 7 L17 12 L12 17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <g id="def-agwet"><!-- leaf + vein --><path d="M6 18 C6 10.5 11.5 5 18 6 C18.5 13.5 13 19 6 18 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M6.5 17.5 C10 14 14 10 17.5 6.5" fill="none" stroke="currentColor" stroke-width="1.3"/></g>
+    <g id="def-business"><!-- ascending bars --><rect x="5.5" y="14" width="3.4" height="4.5" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="10.3" y="10" width="3.4" height="8.5" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="15.1" y="5.8" width="3.4" height="12.7" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/></g>
+    <g id="def-ecu"><!-- bolt --><path d="M13.4 4 L6.8 13 H11.4 L10.6 20 L17.2 11 H12.6 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></g>
+    <g id="def-edhd"><!-- open book --><path d="M12 7.2 C9.2 5.4 5.6 5.4 4 6.2 V17.8 C5.6 17 9.2 17 12 18.8 C14.8 17 18.4 17 20 17.8 V6.2 C18.4 5.4 14.8 5.4 12 7.2 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><line x1="12" y1="7.2" x2="12" y2="18.8" stroke="currentColor" stroke-width="1.3"/></g>
+    <g id="def-public_safety"><!-- shield --><path d="M12 3.8 L19 6.8 V11.5 C19 15.8 16 19 12 20.8 C8 19 5 15.8 5 11.5 V6.8 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></g>
+    <g id="def-retail"><!-- shopping bag --><path d="M6.5 8.5 H17.5 L18.6 19.2 H5.4 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 8.5 V6.6 A3 3 0 0 1 15 6.6 V8.5" fill="none" stroke="currentColor" stroke-width="1.5"/></g>
+    <g id="def-mark"><!-- kallipolis sun/globe mark --><circle cx="12" cy="12" r="10.4" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="10" r="3.2" fill="currentColor"/><path d="M3.4 14.5 H20.6 M5.2 18 H18.8" stroke="currentColor" stroke-width="1.2"/><path d="M12 1.8 V5 M5 4.4 L7 6.6 M19 4.4 L17 6.6" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></g>
+  </defs>
+</svg>
+
+<header class="bar">
+  <svg class="mark" viewBox="0 0 24 24" style="color:var(--accent)"><use href="#def-mark"/></svg>
+  <span class="brand">Kallipolis</span>
+  <div class="title">San Mateo County CCD — <span class="sec" id="hTitle">Energy, Construction &amp; Utilities</span><div class="preview">concept · industry forms</div></div>
+  <div class="chip">
+    <span class="seg"><b>3</b> Member Colleges</span>
+    <span class="seg"><b class="num" id="hProg">7</b> Programs</span>
+    <span class="seg"><b class="num" id="hOcc">14</b> Occupations</span>
+    <span class="seg">Bay Area</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <h1>The thesis</h1>
+  <p class="lead">The SWP industry is the one axis you currently <em>navigate to</em> — eleven separate URLs. Make it the axis you <em>navigate through</em>: hold the district + region constant, and toggle the industry lens. The metadata strip stops being a label and becomes a <em>live readout</em>.</p>
+  <p class="note">Below: the proposed toggle (live — click an industry), three icon treatments to choose from, and a radial alternate that leans into the atlas metaphor.</p>
+
+  <!-- LIVE TOGGLE -->
+  <h1 style="margin-top:46px">A · The industry rail <span class="pill">live — click to toggle</span></h1>
+  <div class="stage">
+    <div class="demo-head" id="demoHead">
+      <div class="demo-title">San Mateo County CCD&nbsp;&nbsp;·&nbsp;&nbsp;<span class="sec" id="dSec">Energy, Construction &amp; Utilities</span></div>
+      <div class="chip" style="justify-content:flex-end">
+        <span class="seg"><b>3</b> colleges</span>
+        <span class="seg"><b class="num" id="dProg">7</b> programs</span>
+        <span class="seg"><b class="num" id="dOcc">14</b> occupations</span>
+      </div>
+    </div>
+    <div class="rail" id="rail"></div>
+  </div>
+  <p class="note" style="margin-top:12px">Dimmed industries (e.g. Ag/Water, Education) are <b style="color:#c08a4a">thin for this district</b> — few member programs clear the BACCC priority bar. The toggle shows viability rather than presenting a 2-occupation sector as equal to a 30.</p>
+
+  <!-- ICON OPTIONS -->
+  <h1 style="margin-top:54px">B · Icon treatments <span class="kicker">pick a direction</span></h1>
+  <div class="opts">
+    <div class="opt"><h3>A · Ringed line</h3><p>Geometric glyph inside a thin ring — echoes the Kallipolis sun/globe mark. Refined, institutional, sits quietly in a toolbar.</p><div class="swatches" id="grA"></div></div>
+    <div class="opt"><h3>B · Solid form</h3><p>Knockout glyph on a filled accent tile. Bold, high-recognition, reads at small sizes — strongest as a selected/active state.</p><div class="swatches" id="grB"></div></div>
+    <div class="opt"><h3>C · Bare glyph</h3><p>The platonic form alone, no frame. Maximal restraint — lets the accent color and silhouette carry the identity.</p><div class="swatches" id="grC"></div></div>
+  </div>
+
+  <!-- RADIAL ALTERNATE -->
+  <h1 style="margin-top:54px">C · Radial alternate <span class="kicker">atlas metaphor</span></h1>
+  <div class="orbit-wrap">
+    <div class="orbit" id="orbit">
+      <div class="ring"></div>
+      <div class="core" id="orbitCore"><svg class="mark" viewBox="0 0 24 24" style="color:var(--accent)"><use href="#def-mark"/></svg></div>
+    </div>
+    <div style="flex:1;min-width:240px">
+      <div class="demo-title" style="font-size:13px">San Mateo CCD&nbsp;·&nbsp;<span class="sec" id="oSec" style="color:var(--accent)">Energy, Construction &amp; Utilities</span></div>
+      <p class="note" style="margin-top:10px">Industries orbit the Kallipolis core — selecting one pulls it to focus. On-brand with the atlas/state-map language, and it makes the eleven feel like a <em>system</em> rather than a list. Costs vertical space; best as an entry/overview, with the linear rail for in-context switching.</p>
+      <p class="kicker" style="margin-top:14px">click a node →</p>
+    </div>
+  </div>
+
+  <div class="foot">
+    /industry-icons.html&nbsp;&nbsp;·&nbsp;&nbsp;concept only — not wired to data&nbsp;&nbsp;·&nbsp;&nbsp;occupation counts reflect the BACCC priority-job rule (member-reachable)
+  </div>
+</div>
+
+<script>
+  // sector identity + live (BACCC-rule) program/occupation counts
+  const IND = [
+    {id:"adm",            label:"Advanced Mfg",      full:"Advanced Manufacturing",                accent:"#d9544d", prog:11, occ:13},
+    {id:"biotech",        label:"Biotech",           full:"Life Sciences / Biotech",               accent:"#2bb3a3", prog:2,  occ:5},
+    {id:"health",         label:"Health",            full:"Health",                                accent:"#3fb27f", prog:17, occ:15},
+    {id:"ict",            label:"ICT / Media",       full:"ICT / Digital Media",                   accent:"#5a9bd4", prog:20, occ:11},
+    {id:"atl",            label:"Transport",         full:"Advanced Transportation & Logistics",   accent:"#c98a3a", prog:11, occ:6},
+    {id:"agwet",          label:"Ag / Water",        full:"Ag, Water & Environmental Tech",        accent:"#6fae54", prog:1,  occ:2,  thin:true},
+    {id:"business",       label:"Business",          full:"Business & Entrepreneurship",           accent:"#c9a84c", prog:18, occ:30},
+    {id:"ecu",            label:"Energy / Constr",   full:"Energy, Construction & Utilities",      accent:"#d08a3a", prog:7,  occ:14},
+    {id:"edhd",           label:"Education",         full:"Education & Human Development",          accent:"#b06fd0", prog:7,  occ:3,  thin:true},
+    {id:"public_safety",  label:"Public Safety",     full:"Public Safety",                         accent:"#5e6a9d", prog:8,  occ:10},
+    {id:"retail",         label:"Retail / Hosp",     full:"Retail, Hospitality & Tourism",         accent:"#d06a9b", prog:5,  occ:6},
+  ];
+  const ic = id => `<svg viewBox="0 0 24 24"><use href="#def-${id}"/></svg>`;
+  const root = document.documentElement;
+
+  function select(s){
+    root.style.setProperty('--accent', s.accent);
+    root.style.setProperty('--accent-soft', s.accent+'24');
+    document.getElementById('hTitle').textContent = s.full;
+    document.getElementById('dSec').textContent = s.full;
+    document.getElementById('oSec').textContent = s.full;
+    document.getElementById('hProg').textContent = s.prog;
+    document.getElementById('hOcc').textContent  = s.occ;
+    document.getElementById('dProg').textContent = s.prog;
+    document.getElementById('dOcc').textContent  = s.occ;
+    document.querySelectorAll('.ind').forEach(e=>e.classList.toggle('on', e.dataset.id===s.id));
+    document.querySelectorAll('.orbit .node').forEach(e=>e.classList.toggle('on', e.dataset.id===s.id));
+    document.getElementById('demoHead').style.background = `color-mix(in srgb, ${s.accent} 9%, transparent)`;
+    document.getElementById('orbitCore').style.borderColor = s.accent;
+  }
+
+  // rail
+  const rail = document.getElementById('rail');
+  IND.forEach(s=>{
+    const el = document.createElement('div');
+    el.className = 'ind'+(s.thin?' thin':''); el.dataset.id = s.id;
+    el.style.setProperty('--ic', s.accent);
+    el.innerHTML = `${ic(s.id)}<div class="lab">${s.label}</div><div class="depth">${s.occ} occ</div>`;
+    el.onclick = ()=>select(s);
+    rail.appendChild(el);
+  });
+
+  // icon option grids (3 treatments × 11)
+  const grids = {A:document.getElementById('grA'),B:document.getElementById('grB'),C:document.getElementById('grC')};
+  IND.forEach(s=>{
+    for(const t of ['A','B','C']){
+      const sw = document.createElement('div'); sw.className='sw'; sw.style.setProperty('--ic', s.accent);
+      sw.innerHTML = `<div class="t${t}">${ic(s.id)}</div><div class="cap">${s.label}</div>`;
+      grids[t].appendChild(sw);
+    }
+  });
+
+  // orbit
+  const orbit = document.getElementById('orbit');
+  const R = 124, cx = 150, cy = 150;
+  IND.forEach((s,i)=>{
+    const a = (-90 + i*(360/IND.length)) * Math.PI/180;
+    const n = document.createElement('div');
+    n.className='node'; n.dataset.id=s.id; n.style.setProperty('--ic', s.accent);
+    n.style.left = (cx + R*Math.cos(a))+'px'; n.style.top = (cy + R*Math.sin(a))+'px';
+    n.innerHTML = ic(s.id); n.onclick=()=>select(s);
+    orbit.appendChild(n);
+  });
+
+  select(IND.find(s=>s.id==="ecu")); // open on ECU (the screenshot's sector)
+</script>
+</body>
+</html>

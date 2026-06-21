@@ -2,229 +2,61 @@
   "/employers": {
     "employers": [
       {
-        "contact_name": "Jorge Rodriguez",
-        "contact_title": "COO",
-        "description": "A healthcare provider and insurer.",
-        "lat": 37.496195,
-        "lng": -122.2362998,
-        "naics4": "6221",
-        "naics_title": "General Medical and Surgical Hospitals",
-        "name": "Kaiser Permanente",
+        "description": "A dental practice run by a Doctor of Dental Surgery.",
+        "display_name": null,
+        "lat": 37.5696535,
+        "lng": -122.2757343,
+        "naics4": "6212",
+        "naics_title": "Offices of Dentists",
+        "name": "Polly Chan DDS",
+        "relevance": 42.98,
         "sector": "Healthcare",
-        "size_class": "1,000-4,999 employees",
-        "size_rank": 9,
-        "soc_count": 15,
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 7,
         "soc_titles": {
-          "21-1093": "Social and Human Service Assistants",
-          "21-1094": "Community Health Workers",
-          "29-1126": "Respiratory Therapists",
           "29-1141": "Registered Nurses",
-          "29-1292": "Dental Hygienists",
           "29-2034": "Radiologic Technologists and Technicians",
-          "29-2055": "Surgical Technologists",
           "29-2072": "Medical Records Specialists",
-          "29-2099": "Health Technologists and Technicians, All Other",
-          "29-9021": "Health Information Technologists and Medical Registrars",
           "31-9091": "Dental Assistants",
           "31-9092": "Medical Assistants",
           "31-9093": "Medical Equipment Preparers",
-          "31-9099": "Healthcare Support Workers, All Other",
           "43-6013": "Medical Secretaries and Administrative Assistants"
         },
         "socs": [
-          "29-1141",
-          "43-6013",
-          "29-2034",
-          "31-9092",
-          "29-1126",
-          "29-2055",
-          "29-2099",
-          "29-2072",
-          "31-9093",
-          "31-9099",
-          "29-9021",
-          "21-1093",
-          "21-1094",
           "31-9091",
-          "29-1292"
+          "43-6013",
+          "31-9093",
+          "31-9092",
+          "29-1141",
+          "29-2072",
+          "29-2034"
         ],
-        "website": "https://healthy.kaiserpermanente.org/northern-california/facilities/redwood-city-medical-center-100337"
+        "website": "https://familydentalfostercity.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "A medical center serving veterans in Menlo Park.",
-        "lat": 37.4521971,
-        "lng": -122.1677899,
-        "naics4": "6221",
-        "naics_title": "General Medical and Surgical Hospitals",
-        "name": "Menlo Park VA Medical Center",
-        "sector": "Healthcare",
-        "size_class": "1,000-4,999 employees",
-        "size_rank": 9,
-        "soc_count": 15,
-        "soc_titles": {
-          "21-1093": "Social and Human Service Assistants",
-          "21-1094": "Community Health Workers",
-          "29-1126": "Respiratory Therapists",
-          "29-1141": "Registered Nurses",
-          "29-1292": "Dental Hygienists",
-          "29-2034": "Radiologic Technologists and Technicians",
-          "29-2055": "Surgical Technologists",
-          "29-2072": "Medical Records Specialists",
-          "29-2099": "Health Technologists and Technicians, All Other",
-          "29-9021": "Health Information Technologists and Medical Registrars",
-          "31-9091": "Dental Assistants",
-          "31-9092": "Medical Assistants",
-          "31-9093": "Medical Equipment Preparers",
-          "31-9099": "Healthcare Support Workers, All Other",
-          "43-6013": "Medical Secretaries and Administrative Assistants"
-        },
-        "socs": [
-          "29-1141",
-          "43-6013",
-          "29-2034",
-          "31-9092",
-          "29-1126",
-          "29-2055",
-          "29-2099",
-          "29-2072",
-          "31-9093",
-          "31-9099",
-          "29-9021",
-          "21-1093",
-          "21-1094",
-          "31-9091",
-          "29-1292"
-        ],
-        "website": "https://www.va.gov/palo-alto-health-care/locations/palo-alto-va-medical-center-menlo-park/"
-      },
-      {
-        "contact_name": "Janet Wagner",
-        "contact_title": "CEO",
-        "description": "A medical center serving the Mills-Peninsula area.",
-        "lat": 37.5912374,
-        "lng": -122.387285,
-        "naics4": "6221",
-        "naics_title": "General Medical and Surgical Hospitals",
-        "name": "Mills-Peninsula Medical Center",
-        "sector": "Healthcare",
-        "size_class": "1,000-4,999 employees",
-        "size_rank": 9,
-        "soc_count": 15,
-        "soc_titles": {
-          "21-1093": "Social and Human Service Assistants",
-          "21-1094": "Community Health Workers",
-          "29-1126": "Respiratory Therapists",
-          "29-1141": "Registered Nurses",
-          "29-1292": "Dental Hygienists",
-          "29-2034": "Radiologic Technologists and Technicians",
-          "29-2055": "Surgical Technologists",
-          "29-2072": "Medical Records Specialists",
-          "29-2099": "Health Technologists and Technicians, All Other",
-          "29-9021": "Health Information Technologists and Medical Registrars",
-          "31-9091": "Dental Assistants",
-          "31-9092": "Medical Assistants",
-          "31-9093": "Medical Equipment Preparers",
-          "31-9099": "Healthcare Support Workers, All Other",
-          "43-6013": "Medical Secretaries and Administrative Assistants"
-        },
-        "socs": [
-          "29-1141",
-          "43-6013",
-          "29-2034",
-          "31-9092",
-          "29-1126",
-          "29-2055",
-          "29-2099",
-          "29-2072",
-          "31-9093",
-          "31-9099",
-          "29-9021",
-          "21-1093",
-          "21-1094",
-          "31-9091",
-          "29-1292"
-        ],
-        "website": "https://www.sutterhealth.org/mills"
-      },
-      {
-        "contact_name": "Anthony Swain",
-        "contact_title": "Manager",
-        "description": "A medical center serving San Mateo County.",
-        "lat": 37.529548,
-        "lng": -122.3007737,
-        "naics4": "6221",
-        "naics_title": "General Medical and Surgical Hospitals",
-        "name": "San Mateo Medical Center",
-        "sector": "Healthcare",
-        "size_class": "1,000-4,999 employees",
-        "size_rank": 9,
-        "soc_count": 15,
-        "soc_titles": {
-          "21-1093": "Social and Human Service Assistants",
-          "21-1094": "Community Health Workers",
-          "29-1126": "Respiratory Therapists",
-          "29-1141": "Registered Nurses",
-          "29-1292": "Dental Hygienists",
-          "29-2034": "Radiologic Technologists and Technicians",
-          "29-2055": "Surgical Technologists",
-          "29-2072": "Medical Records Specialists",
-          "29-2099": "Health Technologists and Technicians, All Other",
-          "29-9021": "Health Information Technologists and Medical Registrars",
-          "31-9091": "Dental Assistants",
-          "31-9092": "Medical Assistants",
-          "31-9093": "Medical Equipment Preparers",
-          "31-9099": "Healthcare Support Workers, All Other",
-          "43-6013": "Medical Secretaries and Administrative Assistants"
-        },
-        "socs": [
-          "29-1141",
-          "43-6013",
-          "29-2034",
-          "31-9092",
-          "29-1126",
-          "29-2055",
-          "29-2099",
-          "29-2072",
-          "31-9093",
-          "31-9099",
-          "29-9021",
-          "21-1093",
-          "21-1094",
-          "31-9091",
-          "29-1292"
-        ],
-        "website": "https://www.smchealth.org/san-mateo-medical-center"
-      },
-      {
-        "contact_name": "Mark S Fratzke",
-        "contact_title": "CEO",
-        "description": "A medical center providing healthcare services.",
+        "description": "AHMC Seton Medical Center is an acute-care hospital in Daly City serving San Francisco and northern San Mateo County, with roots going back to its founding as Mary's Help Hospital in 1893. The facility operates a 24/7 emergency department alongside specialty programs in cancer care, cardiac care (including STEMI response), stroke care, and geriatric behavioral health, plus a skilled nursing facility at its Coastside campus in Moss Beach. It is part of AHMC Healthcare Inc. and employs clinical, diagnostic, and allied health staff across both campuses.",
+        "display_name": null,
         "lat": 37.6872565,
         "lng": -122.4722399,
         "naics4": "6221",
         "naics_title": "General Medical and Surgical Hospitals",
         "name": "AHMC Seton Medical Center",
+        "relevance": 41.74,
         "sector": "Healthcare",
         "size_class": "500-999 employees",
         "size_rank": 8,
-        "soc_count": 15,
+        "soc_count": 10,
         "soc_titles": {
-          "21-1093": "Social and Human Service Assistants",
           "21-1094": "Community Health Workers",
           "29-1126": "Respiratory Therapists",
           "29-1141": "Registered Nurses",
-          "29-1292": "Dental Hygienists",
           "29-2034": "Radiologic Technologists and Technicians",
-          "29-2055": "Surgical Technologists",
           "29-2072": "Medical Records Specialists",
-          "29-2099": "Health Technologists and Technicians, All Other",
           "29-9021": "Health Information Technologists and Medical Registrars",
           "31-9091": "Dental Assistants",
           "31-9092": "Medical Assistants",
           "31-9093": "Medical Equipment Preparers",
-          "31-9099": "Healthcare Support Workers, All Other",
           "43-6013": "Medical Secretaries and Administrative Assistants"
         },
         "socs": [
@@ -233,141 +65,37 @@
           "29-2034",
           "31-9092",
           "29-1126",
-          "29-2055",
-          "29-2099",
           "29-2072",
           "31-9093",
-          "31-9099",
           "29-9021",
-          "21-1093",
           "21-1094",
-          "31-9091",
-          "29-1292"
+          "31-9091"
         ],
         "website": "https://www.ahmchealth.com/smc/"
       },
       {
-        "contact_name": "Dee Bustos",
-        "contact_title": "CEO",
-        "description": "A company providing care services.",
-        "lat": 37.4488307,
-        "lng": -122.1868671,
-        "naics4": "6216",
-        "naics_title": "Home Health Care Services",
-        "name": "Care Indeed",
-        "sector": "Healthcare",
-        "size_class": "500-999 employees",
-        "size_rank": 8,
-        "soc_count": 13,
-        "soc_titles": {
-          "21-1093": "Social and Human Service Assistants",
-          "21-1094": "Community Health Workers",
-          "29-1126": "Respiratory Therapists",
-          "29-1141": "Registered Nurses",
-          "29-2034": "Radiologic Technologists and Technicians",
-          "29-2055": "Surgical Technologists",
-          "29-2072": "Medical Records Specialists",
-          "29-2099": "Health Technologists and Technicians, All Other",
-          "29-9021": "Health Information Technologists and Medical Registrars",
-          "31-9092": "Medical Assistants",
-          "31-9093": "Medical Equipment Preparers",
-          "31-9099": "Healthcare Support Workers, All Other",
-          "43-6013": "Medical Secretaries and Administrative Assistants"
-        },
-        "socs": [
-          "29-1141",
-          "43-6013",
-          "29-2072",
-          "21-1093",
-          "31-9092",
-          "29-2099",
-          "29-1126",
-          "21-1094",
-          "31-9099",
-          "29-9021",
-          "29-2034",
-          "29-2055",
-          "31-9093"
-        ],
-        "website": "https://careindeed.com/menlo-park"
-      },
-      {
-        "contact_name": "Maya Altman",
-        "contact_title": "CEO",
-        "description": "A health insurance provider for San Mateo County.",
-        "lat": 37.6501206,
-        "lng": -122.4049634,
-        "naics4": "6219",
-        "naics_title": "Other Ambulatory Health Care Services",
-        "name": "Health Plan of San Mateo",
-        "sector": "Healthcare",
-        "size_class": "250-499 employees",
-        "size_rank": 7,
-        "soc_count": 15,
-        "soc_titles": {
-          "21-1093": "Social and Human Service Assistants",
-          "21-1094": "Community Health Workers",
-          "29-1126": "Respiratory Therapists",
-          "29-1141": "Registered Nurses",
-          "29-1292": "Dental Hygienists",
-          "29-2034": "Radiologic Technologists and Technicians",
-          "29-2055": "Surgical Technologists",
-          "29-2072": "Medical Records Specialists",
-          "29-2099": "Health Technologists and Technicians, All Other",
-          "29-9021": "Health Information Technologists and Medical Registrars",
-          "31-9091": "Dental Assistants",
-          "31-9092": "Medical Assistants",
-          "31-9093": "Medical Equipment Preparers",
-          "31-9099": "Healthcare Support Workers, All Other",
-          "43-6013": "Medical Secretaries and Administrative Assistants"
-        },
-        "socs": [
-          "29-1141",
-          "31-9092",
-          "31-9099",
-          "43-6013",
-          "29-2099",
-          "29-2072",
-          "21-1093",
-          "21-1094",
-          "31-9093",
-          "29-2034",
-          "29-2055",
-          "29-9021",
-          "31-9091",
-          "29-1126",
-          "29-1292"
-        ],
-        "website": "https://www.hpsm.org/"
-      },
-      {
-        "contact_name": "Lorraine P Auerbach",
-        "contact_title": "CEO",
-        "description": "A medical center serving the coastside region.",
+        "description": "Seton Medical Center Coastside is a community hospital located at 600 Marine Blvd in Moss Beach, CA, operating under AHMC Healthcare. The facility has been closed since at least April 2024; its emergency department closure prompted a lawsuit by the California Attorney General alleging breach of the contractual obligation AHMC accepted when it acquired the hospital in 2020. As of mid-2026 no reopening has been announced and the official site carries a \"temporarily closed\" notice.",
+        "display_name": null,
         "lat": 37.5258812,
         "lng": -122.5081054,
         "naics4": "6221",
         "naics_title": "General Medical and Surgical Hospitals",
         "name": "AHMC Seton Medical Center Coastside",
+        "relevance": 41.74,
         "sector": "Healthcare",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 15,
+        "soc_count": 10,
         "soc_titles": {
-          "21-1093": "Social and Human Service Assistants",
           "21-1094": "Community Health Workers",
           "29-1126": "Respiratory Therapists",
           "29-1141": "Registered Nurses",
-          "29-1292": "Dental Hygienists",
           "29-2034": "Radiologic Technologists and Technicians",
-          "29-2055": "Surgical Technologists",
           "29-2072": "Medical Records Specialists",
-          "29-2099": "Health Technologists and Technicians, All Other",
           "29-9021": "Health Information Technologists and Medical Registrars",
           "31-9091": "Dental Assistants",
           "31-9092": "Medical Assistants",
           "31-9093": "Medical Equipment Preparers",
-          "31-9099": "Healthcare Support Workers, All Other",
           "43-6013": "Medical Secretaries and Administrative Assistants"
         },
         "socs": [
@@ -376,47 +104,271 @@
           "29-2034",
           "31-9092",
           "29-1126",
-          "29-2055",
-          "29-2099",
           "29-2072",
           "31-9093",
-          "31-9099",
           "29-9021",
-          "21-1093",
           "21-1094",
-          "31-9091",
-          "29-1292"
+          "31-9091"
         ],
         "website": "https://www.ahmchealth.com/smcc/"
       },
       {
-        "contact_name": "Jared Edmunds",
-        "contact_title": "Administrator",
-        "description": "A group of physicians specializing in emergency medicine.",
+        "description": "Kaiser Permanente operates the Redwood City Medical Center, a 149-bed acute-care hospital at 1100 Veterans Blvd serving the San Mateo County area, offering inpatient and outpatient care across specialties including emergency medicine, surgery, cardiology, labor and delivery, neuroscience ICU, and interventional radiology. As part of Kaiser Permanente's integrated delivery model, the facility combines hospital care with a health plan and physician group under one system, coordinating primary care, specialty medicine, and pharmacy on a single campus. Clinical, nursing, pharmacy, imaging, and administrative staff roles are all located at this site.",
+        "display_name": null,
+        "lat": 37.496195,
+        "lng": -122.2362998,
+        "naics4": "6221",
+        "naics_title": "General Medical and Surgical Hospitals",
+        "name": "Kaiser Permanente",
+        "relevance": 41.74,
+        "sector": "Healthcare",
+        "size_class": "1,000-4,999 employees",
+        "size_rank": 9,
+        "soc_count": 10,
+        "soc_titles": {
+          "21-1094": "Community Health Workers",
+          "29-1126": "Respiratory Therapists",
+          "29-1141": "Registered Nurses",
+          "29-2034": "Radiologic Technologists and Technicians",
+          "29-2072": "Medical Records Specialists",
+          "29-9021": "Health Information Technologists and Medical Registrars",
+          "31-9091": "Dental Assistants",
+          "31-9092": "Medical Assistants",
+          "31-9093": "Medical Equipment Preparers",
+          "43-6013": "Medical Secretaries and Administrative Assistants"
+        },
+        "socs": [
+          "29-1141",
+          "43-6013",
+          "29-2034",
+          "31-9092",
+          "29-1126",
+          "29-2072",
+          "31-9093",
+          "29-9021",
+          "21-1094",
+          "31-9091"
+        ],
+        "website": "https://healthy.kaiserpermanente.org/northern-california/facilities/redwood-city-medical-center-100337"
+      },
+      {
+        "description": "The Menlo Park campus of the VA Palo Alto Health Care System specializes in behavioral health and residential rehabilitation for veterans, offering PTSD treatment programs, substance use recovery (outpatient and 24-hour residential), mental health crisis services, and physical and occupational therapy. The campus also runs Compensated Work Therapy \u2014 a vocational rehabilitation program \u2014 along with audiology, sleep medicine, dental care, and Whole Health integrative services. Clinical staff include licensed therapists, psychologists, speech-language pathologists, registered dietitians, and social workers serving veterans across the greater Bay Area.",
+        "display_name": null,
+        "lat": 37.4521971,
+        "lng": -122.1677899,
+        "naics4": "6221",
+        "naics_title": "General Medical and Surgical Hospitals",
+        "name": "Menlo Park VA Medical Center",
+        "relevance": 41.74,
+        "sector": "Healthcare",
+        "size_class": "1,000-4,999 employees",
+        "size_rank": 9,
+        "soc_count": 10,
+        "soc_titles": {
+          "21-1094": "Community Health Workers",
+          "29-1126": "Respiratory Therapists",
+          "29-1141": "Registered Nurses",
+          "29-2034": "Radiologic Technologists and Technicians",
+          "29-2072": "Medical Records Specialists",
+          "29-9021": "Health Information Technologists and Medical Registrars",
+          "31-9091": "Dental Assistants",
+          "31-9092": "Medical Assistants",
+          "31-9093": "Medical Equipment Preparers",
+          "43-6013": "Medical Secretaries and Administrative Assistants"
+        },
+        "socs": [
+          "29-1141",
+          "43-6013",
+          "29-2034",
+          "31-9092",
+          "29-1126",
+          "29-2072",
+          "31-9093",
+          "29-9021",
+          "21-1094",
+          "31-9091"
+        ],
+        "website": "https://www.va.gov/palo-alto-health-care/locations/palo-alto-va-medical-center-menlo-park/"
+      },
+      {
+        "description": "Mills-Peninsula Medical Center is a 241-bed, not-for-profit acute-care hospital in Burlingame, CA, operated by Sutter Health. The 450,000-square-foot campus offers 24/7 emergency and ICU services alongside inpatient and outpatient programs in cardiology, neurology, oncology, orthopedics, labor and delivery, surgery, and rehabilitation. It employs clinical staff across nursing, allied health, and medical specialties serving the San Francisco Peninsula.",
+        "display_name": null,
+        "lat": 37.5912374,
+        "lng": -122.387285,
+        "naics4": "6221",
+        "naics_title": "General Medical and Surgical Hospitals",
+        "name": "Mills-Peninsula Medical Center",
+        "relevance": 41.74,
+        "sector": "Healthcare",
+        "size_class": "1,000-4,999 employees",
+        "size_rank": 9,
+        "soc_count": 10,
+        "soc_titles": {
+          "21-1094": "Community Health Workers",
+          "29-1126": "Respiratory Therapists",
+          "29-1141": "Registered Nurses",
+          "29-2034": "Radiologic Technologists and Technicians",
+          "29-2072": "Medical Records Specialists",
+          "29-9021": "Health Information Technologists and Medical Registrars",
+          "31-9091": "Dental Assistants",
+          "31-9092": "Medical Assistants",
+          "31-9093": "Medical Equipment Preparers",
+          "43-6013": "Medical Secretaries and Administrative Assistants"
+        },
+        "socs": [
+          "29-1141",
+          "43-6013",
+          "29-2034",
+          "31-9092",
+          "29-1126",
+          "29-2072",
+          "31-9093",
+          "29-9021",
+          "21-1094",
+          "31-9091"
+        ],
+        "website": "https://www.sutterhealth.org/mills"
+      },
+      {
+        "description": "San Mateo Medical Center is a county-operated acute care and ambulatory health system serving all residents of San Mateo County, including a substantial safety-net population. It provides 24/7 emergency care, primary and specialty care, integrated behavioral health, dental, rehabilitation, and skilled nursing services across five sites in Daly City, Half Moon Bay, Redwood City, San Mateo, and South San Francisco. The system employs physicians, nurses, allied health professionals, and behavioral health staff county-wide, making it one of the largest public healthcare employers on the San Mateo peninsula.",
+        "display_name": null,
+        "lat": 37.529548,
+        "lng": -122.3007737,
+        "naics4": "6221",
+        "naics_title": "General Medical and Surgical Hospitals",
+        "name": "San Mateo Medical Center",
+        "relevance": 41.74,
+        "sector": "Healthcare",
+        "size_class": "1,000-4,999 employees",
+        "size_rank": 9,
+        "soc_count": 10,
+        "soc_titles": {
+          "21-1094": "Community Health Workers",
+          "29-1126": "Respiratory Therapists",
+          "29-1141": "Registered Nurses",
+          "29-2034": "Radiologic Technologists and Technicians",
+          "29-2072": "Medical Records Specialists",
+          "29-9021": "Health Information Technologists and Medical Registrars",
+          "31-9091": "Dental Assistants",
+          "31-9092": "Medical Assistants",
+          "31-9093": "Medical Equipment Preparers",
+          "43-6013": "Medical Secretaries and Administrative Assistants"
+        },
+        "socs": [
+          "29-1141",
+          "43-6013",
+          "29-2034",
+          "31-9092",
+          "29-1126",
+          "29-2072",
+          "31-9093",
+          "29-9021",
+          "21-1094",
+          "31-9091"
+        ],
+        "website": "https://www.smchealth.org/san-mateo-medical-center"
+      },
+      {
+        "description": "A cancer treatment and research center affiliated with UCSF.",
+        "display_name": null,
+        "lat": 37.5224998,
+        "lng": -122.326258,
+        "naics4": "6221",
+        "naics_title": "General Medical and Surgical Hospitals",
+        "name": "UCSF Cancer Center",
+        "relevance": 41.74,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 10,
+        "soc_titles": {
+          "21-1094": "Community Health Workers",
+          "29-1126": "Respiratory Therapists",
+          "29-1141": "Registered Nurses",
+          "29-2034": "Radiologic Technologists and Technicians",
+          "29-2072": "Medical Records Specialists",
+          "29-9021": "Health Information Technologists and Medical Registrars",
+          "31-9091": "Dental Assistants",
+          "31-9092": "Medical Assistants",
+          "31-9093": "Medical Equipment Preparers",
+          "43-6013": "Medical Secretaries and Administrative Assistants"
+        },
+        "socs": [
+          "29-1141",
+          "43-6013",
+          "29-2034",
+          "31-9092",
+          "29-1126",
+          "29-2072",
+          "31-9093",
+          "29-9021",
+          "21-1094",
+          "31-9091"
+        ],
+        "website": "https://www.ucsfhealth.org/locations/cancer-center-san-mateo"
+      },
+      {
+        "description": "An orthopedic medical practice.",
+        "display_name": null,
+        "lat": 37.5743902,
+        "lng": -122.3424573,
+        "naics4": "6211",
+        "naics_title": "Offices of Physicians",
+        "name": "Burlingame Orthopedics",
+        "relevance": 34.85,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 10,
+        "soc_titles": {
+          "21-1094": "Community Health Workers",
+          "29-1126": "Respiratory Therapists",
+          "29-1141": "Registered Nurses",
+          "29-2034": "Radiologic Technologists and Technicians",
+          "29-2072": "Medical Records Specialists",
+          "29-9021": "Health Information Technologists and Medical Registrars",
+          "31-9091": "Dental Assistants",
+          "31-9092": "Medical Assistants",
+          "31-9093": "Medical Equipment Preparers",
+          "43-6013": "Medical Secretaries and Administrative Assistants"
+        },
+        "socs": [
+          "31-9092",
+          "43-6013",
+          "29-1141",
+          "29-2034",
+          "29-2072",
+          "31-9091",
+          "21-1094",
+          "29-9021",
+          "31-9093",
+          "29-1126"
+        ],
+        "website": "https://www.burlingameorthopedics.com/"
+      },
+      {
+        "description": "Vituity (legally CEP America, LLC) is a 100% physician-owned multispecialty partnership founded over fifty years ago in California that now staffs and manages more than 900 practice locations across the U.S., treating roughly 14.5 million patients annually. Core service lines include emergency medicine, hospital medicine, critical care, and telehealth, alongside newer specialties such as psychiatry, radiology, anesthesiology, and neurology. The organization employs over 9,000 clinicians \u2014 physicians, advanced practice providers, and non-clinical operations staff \u2014 making it a significant regional employer of emergency and acute-care talent in California.",
+        "display_name": null,
         "lat": 37.5820802,
         "lng": -122.3965404,
         "naics4": "6211",
         "naics_title": "Offices of Physicians",
         "name": "California Emergency Physicians",
+        "relevance": 34.85,
         "sector": "Healthcare",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 15,
+        "soc_count": 10,
         "soc_titles": {
-          "21-1093": "Social and Human Service Assistants",
           "21-1094": "Community Health Workers",
           "29-1126": "Respiratory Therapists",
           "29-1141": "Registered Nurses",
-          "29-1292": "Dental Hygienists",
           "29-2034": "Radiologic Technologists and Technicians",
-          "29-2055": "Surgical Technologists",
           "29-2072": "Medical Records Specialists",
-          "29-2099": "Health Technologists and Technicians, All Other",
           "29-9021": "Health Information Technologists and Medical Registrars",
           "31-9091": "Dental Assistants",
           "31-9092": "Medical Assistants",
           "31-9093": "Medical Equipment Preparers",
-          "31-9099": "Healthcare Support Workers, All Other",
           "43-6013": "Medical Secretaries and Administrative Assistants"
         },
         "socs": [
@@ -425,194 +377,37 @@
           "29-1141",
           "29-2034",
           "29-2072",
-          "29-2099",
-          "29-2055",
           "31-9091",
-          "31-9099",
           "21-1094",
           "29-9021",
           "31-9093",
-          "21-1093",
-          "29-1126",
-          "29-1292"
+          "29-1126"
         ],
         "website": "https://www.vituity.com/"
       },
       {
-        "contact_name": "Karine Wegrzynowicz",
-        "contact_title": "Director",
-        "description": "A digital health and data analytics company.",
-        "lat": 37.5504156,
-        "lng": -122.3170698,
-        "naics4": "6219",
-        "naics_title": "Other Ambulatory Health Care Services",
-        "name": "Evidation Health",
-        "sector": "Healthcare",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 15,
-        "soc_titles": {
-          "21-1093": "Social and Human Service Assistants",
-          "21-1094": "Community Health Workers",
-          "29-1126": "Respiratory Therapists",
-          "29-1141": "Registered Nurses",
-          "29-1292": "Dental Hygienists",
-          "29-2034": "Radiologic Technologists and Technicians",
-          "29-2055": "Surgical Technologists",
-          "29-2072": "Medical Records Specialists",
-          "29-2099": "Health Technologists and Technicians, All Other",
-          "29-9021": "Health Information Technologists and Medical Registrars",
-          "31-9091": "Dental Assistants",
-          "31-9092": "Medical Assistants",
-          "31-9093": "Medical Equipment Preparers",
-          "31-9099": "Healthcare Support Workers, All Other",
-          "43-6013": "Medical Secretaries and Administrative Assistants"
-        },
-        "socs": [
-          "29-1141",
-          "31-9092",
-          "31-9099",
-          "43-6013",
-          "29-2099",
-          "29-2072",
-          "21-1093",
-          "21-1094",
-          "31-9093",
-          "29-2034",
-          "29-2055",
-          "29-9021",
-          "31-9091",
-          "29-1126",
-          "29-1292"
-        ],
-        "website": "https://evidation.com/"
-      },
-      {
-        "contact_name": "Kevin T Conroy",
-        "contact_title": "President",
-        "description": "A company focused on genomic testing and analysis.",
-        "lat": 37.5003168,
-        "lng": -122.217505,
-        "naics4": "6219",
-        "naics_title": "Other Ambulatory Health Care Services",
-        "name": "Genomic Health",
-        "sector": "Healthcare",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 15,
-        "soc_titles": {
-          "21-1093": "Social and Human Service Assistants",
-          "21-1094": "Community Health Workers",
-          "29-1126": "Respiratory Therapists",
-          "29-1141": "Registered Nurses",
-          "29-1292": "Dental Hygienists",
-          "29-2034": "Radiologic Technologists and Technicians",
-          "29-2055": "Surgical Technologists",
-          "29-2072": "Medical Records Specialists",
-          "29-2099": "Health Technologists and Technicians, All Other",
-          "29-9021": "Health Information Technologists and Medical Registrars",
-          "31-9091": "Dental Assistants",
-          "31-9092": "Medical Assistants",
-          "31-9093": "Medical Equipment Preparers",
-          "31-9099": "Healthcare Support Workers, All Other",
-          "43-6013": "Medical Secretaries and Administrative Assistants"
-        },
-        "socs": [
-          "29-1141",
-          "31-9092",
-          "31-9099",
-          "43-6013",
-          "29-2099",
-          "29-2072",
-          "21-1093",
-          "21-1094",
-          "31-9093",
-          "29-2034",
-          "29-2055",
-          "29-9021",
-          "31-9091",
-          "29-1126",
-          "29-1292"
-        ],
-        "website": "https://precisiononcology.exactsciences.com/"
-      },
-      {
-        "contact_name": "Wouter Meuleman",
-        "contact_title": "Partner",
-        "description": "A venture capital firm focused on life sciences.",
-        "lat": 37.5699031,
-        "lng": -122.2695899,
-        "naics4": "6219",
-        "naics_title": "Other Ambulatory Health Care Services",
-        "name": "Illumina Ventures",
-        "sector": "Healthcare",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 15,
-        "soc_titles": {
-          "21-1093": "Social and Human Service Assistants",
-          "21-1094": "Community Health Workers",
-          "29-1126": "Respiratory Therapists",
-          "29-1141": "Registered Nurses",
-          "29-1292": "Dental Hygienists",
-          "29-2034": "Radiologic Technologists and Technicians",
-          "29-2055": "Surgical Technologists",
-          "29-2072": "Medical Records Specialists",
-          "29-2099": "Health Technologists and Technicians, All Other",
-          "29-9021": "Health Information Technologists and Medical Registrars",
-          "31-9091": "Dental Assistants",
-          "31-9092": "Medical Assistants",
-          "31-9093": "Medical Equipment Preparers",
-          "31-9099": "Healthcare Support Workers, All Other",
-          "43-6013": "Medical Secretaries and Administrative Assistants"
-        },
-        "socs": [
-          "29-1141",
-          "31-9092",
-          "31-9099",
-          "43-6013",
-          "29-2099",
-          "29-2072",
-          "21-1093",
-          "21-1094",
-          "31-9093",
-          "29-2034",
-          "29-2055",
-          "29-9021",
-          "31-9091",
-          "29-1126",
-          "29-1292"
-        ],
-        "website": "https://www.illuminaventures.com/"
-      },
-      {
-        "contact_name": "Martin Bronk",
-        "contact_title": "Manager",
-        "description": "A medical clinic located in Menlo.",
+        "description": "Menlo Medical Clinic is a multi-specialty outpatient clinic operating two locations in Menlo Park, CA, affiliated with Stanford Medicine Partners (an independent nonprofit). It combines primary care \u2014 family medicine, internal medicine, pediatrics, and OB/GYN \u2014 with nearly two dozen medical and surgical specialties including cardiology, orthopedics, and gastroenterology, plus on-site laboratory and imaging services. The clinic employs physicians, nurses, allied health professionals, and administrative staff across both sites.",
+        "display_name": null,
         "lat": 37.4527625,
         "lng": -122.1882093,
         "naics4": "6211",
         "naics_title": "Offices of Physicians",
         "name": "Menlo Medical Clinic",
+        "relevance": 34.85,
         "sector": "Healthcare",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 15,
+        "soc_count": 10,
         "soc_titles": {
-          "21-1093": "Social and Human Service Assistants",
           "21-1094": "Community Health Workers",
           "29-1126": "Respiratory Therapists",
           "29-1141": "Registered Nurses",
-          "29-1292": "Dental Hygienists",
           "29-2034": "Radiologic Technologists and Technicians",
-          "29-2055": "Surgical Technologists",
           "29-2072": "Medical Records Specialists",
-          "29-2099": "Health Technologists and Technicians, All Other",
           "29-9021": "Health Information Technologists and Medical Registrars",
           "31-9091": "Dental Assistants",
           "31-9092": "Medical Assistants",
           "31-9093": "Medical Equipment Preparers",
-          "31-9099": "Healthcare Support Workers, All Other",
           "43-6013": "Medical Secretaries and Administrative Assistants"
         },
         "socs": [
@@ -621,522 +416,549 @@
           "29-1141",
           "29-2034",
           "29-2072",
-          "29-2099",
-          "29-2055",
           "31-9091",
-          "31-9099",
           "21-1094",
           "29-9021",
           "31-9093",
-          "21-1093",
-          "29-1126",
-          "29-1292"
+          "29-1126"
         ],
         "website": "https://stanfordhealthcare.org/medical-clinics/menlo-medical-clinic.html"
       },
       {
-        "contact_name": "Maranne Nannestad",
-        "contact_title": "Executive VP",
-        "description": "A senior living or residential facility.",
-        "lat": 37.5667843,
-        "lng": -122.3259143,
-        "naics4": "6213",
-        "naics_title": "Offices of Other Health Practitioners",
-        "name": "Peninsula Regent",
+        "description": "A medical specialty focusing on bone cancer surgery.",
+        "display_name": null,
+        "lat": 37.4867242,
+        "lng": -122.2127749,
+        "naics4": "6211",
+        "naics_title": "Offices of Physicians",
+        "name": "Orthopaedic Surgical Oncology",
+        "relevance": 34.85,
         "sector": "Healthcare",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 15,
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 10,
         "soc_titles": {
-          "21-1093": "Social and Human Service Assistants",
           "21-1094": "Community Health Workers",
           "29-1126": "Respiratory Therapists",
           "29-1141": "Registered Nurses",
-          "29-1292": "Dental Hygienists",
           "29-2034": "Radiologic Technologists and Technicians",
-          "29-2055": "Surgical Technologists",
           "29-2072": "Medical Records Specialists",
-          "29-2099": "Health Technologists and Technicians, All Other",
           "29-9021": "Health Information Technologists and Medical Registrars",
           "31-9091": "Dental Assistants",
           "31-9092": "Medical Assistants",
           "31-9093": "Medical Equipment Preparers",
-          "31-9099": "Healthcare Support Workers, All Other",
           "43-6013": "Medical Secretaries and Administrative Assistants"
         },
         "socs": [
           "31-9092",
           "43-6013",
           "29-1141",
-          "21-1093",
-          "31-9099",
-          "29-2099",
-          "29-2072",
-          "29-1126",
           "29-2034",
-          "29-2055",
+          "29-2072",
           "31-9091",
           "21-1094",
-          "29-1292",
           "29-9021",
-          "31-9093"
+          "31-9093",
+          "29-1126"
         ],
-        "website": "https://www.peninsularegent.org/"
+        "website": "https://stanfordhealthcare.org/medical-clinics/musculoskeletal-tumors.html"
       },
       {
-        "contact_name": "Joann Kemist",
-        "contact_title": "President",
-        "description": "A hospital providing health and wellness services.",
-        "lat": 37.4873035,
-        "lng": -122.2358874,
-        "naics4": "6219",
-        "naics_title": "Other Ambulatory Health Care Services",
-        "name": "Sequoia Hospital",
+        "description": "An association of orthopedic medical professionals.",
+        "display_name": null,
+        "lat": 37.6844827,
+        "lng": -122.4721946,
+        "naics4": "6211",
+        "naics_title": "Offices of Physicians",
+        "name": "Peninsula Orthopedic Association",
+        "relevance": 34.85,
         "sector": "Healthcare",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 15,
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 10,
         "soc_titles": {
-          "21-1093": "Social and Human Service Assistants",
           "21-1094": "Community Health Workers",
           "29-1126": "Respiratory Therapists",
           "29-1141": "Registered Nurses",
-          "29-1292": "Dental Hygienists",
           "29-2034": "Radiologic Technologists and Technicians",
-          "29-2055": "Surgical Technologists",
           "29-2072": "Medical Records Specialists",
-          "29-2099": "Health Technologists and Technicians, All Other",
           "29-9021": "Health Information Technologists and Medical Registrars",
           "31-9091": "Dental Assistants",
           "31-9092": "Medical Assistants",
           "31-9093": "Medical Equipment Preparers",
-          "31-9099": "Healthcare Support Workers, All Other",
+          "43-6013": "Medical Secretaries and Administrative Assistants"
+        },
+        "socs": [
+          "31-9092",
+          "43-6013",
+          "29-1141",
+          "29-2034",
+          "29-2072",
+          "31-9091",
+          "21-1094",
+          "29-9021",
+          "31-9093",
+          "29-1126"
+        ],
+        "website": "https://www.poadocs.com/"
+      },
+      {
+        "description": "A medical center providing healthcare services.",
+        "display_name": null,
+        "lat": 37.6844827,
+        "lng": -122.4721946,
+        "naics4": "6211",
+        "naics_title": "Offices of Physicians",
+        "name": "Seton Medical Center",
+        "relevance": 34.85,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 10,
+        "soc_titles": {
+          "21-1094": "Community Health Workers",
+          "29-1126": "Respiratory Therapists",
+          "29-1141": "Registered Nurses",
+          "29-2034": "Radiologic Technologists and Technicians",
+          "29-2072": "Medical Records Specialists",
+          "29-9021": "Health Information Technologists and Medical Registrars",
+          "31-9091": "Dental Assistants",
+          "31-9092": "Medical Assistants",
+          "31-9093": "Medical Equipment Preparers",
+          "43-6013": "Medical Secretaries and Administrative Assistants"
+        },
+        "socs": [
+          "31-9092",
+          "43-6013",
+          "29-1141",
+          "29-2034",
+          "29-2072",
+          "31-9091",
+          "21-1094",
+          "29-9021",
+          "31-9093",
+          "29-1126"
+        ],
+        "website": "https://www.ahmchealth.com/smc/"
+      },
+      {
+        "description": "A medical department specializing in physical medicine.",
+        "display_name": null,
+        "lat": 37.4867242,
+        "lng": -122.2127749,
+        "naics4": "6211",
+        "naics_title": "Offices of Physicians",
+        "name": "Stanford Physical Medicine",
+        "relevance": 34.85,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 10,
+        "soc_titles": {
+          "21-1094": "Community Health Workers",
+          "29-1126": "Respiratory Therapists",
+          "29-1141": "Registered Nurses",
+          "29-2034": "Radiologic Technologists and Technicians",
+          "29-2072": "Medical Records Specialists",
+          "29-9021": "Health Information Technologists and Medical Registrars",
+          "31-9091": "Dental Assistants",
+          "31-9092": "Medical Assistants",
+          "31-9093": "Medical Equipment Preparers",
+          "43-6013": "Medical Secretaries and Administrative Assistants"
+        },
+        "socs": [
+          "31-9092",
+          "43-6013",
+          "29-1141",
+          "29-2034",
+          "29-2072",
+          "31-9091",
+          "21-1094",
+          "29-9021",
+          "31-9093",
+          "29-1126"
+        ],
+        "website": "https://stanfordhealthcare.org/medical-clinics/physical-medicine-rehabilitation-redwood-city.html"
+      },
+      {
+        "description": "A healthcare provider specializing in kidney care.",
+        "display_name": null,
+        "lat": 37.6422297,
+        "lng": -122.4258141,
+        "naics4": "6214",
+        "naics_title": "Outpatient Care Centers",
+        "name": "US Renal Care",
+        "relevance": 30.63,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 10,
+        "soc_titles": {
+          "21-1094": "Community Health Workers",
+          "29-1126": "Respiratory Therapists",
+          "29-1141": "Registered Nurses",
+          "29-2034": "Radiologic Technologists and Technicians",
+          "29-2072": "Medical Records Specialists",
+          "29-9021": "Health Information Technologists and Medical Registrars",
+          "31-9091": "Dental Assistants",
+          "31-9092": "Medical Assistants",
+          "31-9093": "Medical Equipment Preparers",
           "43-6013": "Medical Secretaries and Administrative Assistants"
         },
         "socs": [
           "29-1141",
           "31-9092",
-          "31-9099",
           "43-6013",
-          "29-2099",
+          "29-2034",
           "29-2072",
-          "21-1093",
+          "31-9091",
           "21-1094",
           "31-9093",
-          "29-2034",
-          "29-2055",
-          "29-9021",
-          "31-9091",
           "29-1126",
-          "29-1292"
+          "29-9021"
         ],
-        "website": "https://www.dignityhealth.org/bayarea/locations/sequoia"
+        "website": "https://www.usrenalcare.com/location/south-san-francisco/"
       },
       {
-        "contact_name": "Sharon Youngberg",
-        "contact_title": "Administrator",
-        "description": "A professional medical care service provider.",
+        "description": "A non-profit organization providing support services.",
+        "display_name": null,
+        "lat": 37.5509838,
+        "lng": -122.31691,
+        "naics4": "6222",
+        "naics_title": "Psychiatric and Substance Abuse Hospitals",
+        "name": "Caminar",
+        "relevance": 20.73,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 10,
+        "soc_titles": {
+          "21-1094": "Community Health Workers",
+          "29-1126": "Respiratory Therapists",
+          "29-1141": "Registered Nurses",
+          "29-2034": "Radiologic Technologists and Technicians",
+          "29-2072": "Medical Records Specialists",
+          "29-9021": "Health Information Technologists and Medical Registrars",
+          "31-9091": "Dental Assistants",
+          "31-9092": "Medical Assistants",
+          "31-9093": "Medical Equipment Preparers",
+          "43-6013": "Medical Secretaries and Administrative Assistants"
+        },
+        "socs": [
+          "29-1141",
+          "43-6013",
+          "29-2072",
+          "31-9092",
+          "21-1094",
+          "29-9021",
+          "29-2034",
+          "29-1126",
+          "31-9091",
+          "31-9093"
+        ],
+        "website": "https://www.caminar.org/"
+      },
+      {
+        "description": "A provider of mental health services.",
+        "display_name": null,
+        "lat": 37.4903432,
+        "lng": -122.2117774,
+        "naics4": "6222",
+        "naics_title": "Psychiatric and Substance Abuse Hospitals",
+        "name": "Ellie Mental Health",
+        "relevance": 20.73,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 10,
+        "soc_titles": {
+          "21-1094": "Community Health Workers",
+          "29-1126": "Respiratory Therapists",
+          "29-1141": "Registered Nurses",
+          "29-2034": "Radiologic Technologists and Technicians",
+          "29-2072": "Medical Records Specialists",
+          "29-9021": "Health Information Technologists and Medical Registrars",
+          "31-9091": "Dental Assistants",
+          "31-9092": "Medical Assistants",
+          "31-9093": "Medical Equipment Preparers",
+          "43-6013": "Medical Secretaries and Administrative Assistants"
+        },
+        "socs": [
+          "29-1141",
+          "43-6013",
+          "29-2072",
+          "31-9092",
+          "21-1094",
+          "29-9021",
+          "29-2034",
+          "29-1126",
+          "31-9091",
+          "31-9093"
+        ],
+        "website": "https://elliementalhealth.com/"
+      },
+      {
+        "description": "A mental health and wellness service provided by Kaiser Permanente.",
+        "display_name": null,
+        "lat": 37.496195,
+        "lng": -122.2362998,
+        "naics4": "6222",
+        "naics_title": "Psychiatric and Substance Abuse Hospitals",
+        "name": "Kaiser Permanente Mental Health",
+        "relevance": 20.73,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 10,
+        "soc_titles": {
+          "21-1094": "Community Health Workers",
+          "29-1126": "Respiratory Therapists",
+          "29-1141": "Registered Nurses",
+          "29-2034": "Radiologic Technologists and Technicians",
+          "29-2072": "Medical Records Specialists",
+          "29-9021": "Health Information Technologists and Medical Registrars",
+          "31-9091": "Dental Assistants",
+          "31-9092": "Medical Assistants",
+          "31-9093": "Medical Equipment Preparers",
+          "43-6013": "Medical Secretaries and Administrative Assistants"
+        },
+        "socs": [
+          "29-1141",
+          "43-6013",
+          "29-2072",
+          "31-9092",
+          "21-1094",
+          "29-9021",
+          "29-2034",
+          "29-1126",
+          "31-9091",
+          "31-9093"
+        ],
+        "website": "https://healthy.kaiserpermanente.org/northern-california/facilities/redwood-city-medical-center-100337/departments/behavioral-mental-health-dlp-103698"
+      },
+      {
+        "description": "A provider of home healthcare services.",
+        "display_name": null,
+        "lat": 37.5927497,
+        "lng": -122.3635651,
+        "naics4": "6216",
+        "naics_title": "Home Health Care Services",
+        "name": "Amedisys Home Health Care",
+        "relevance": 12.89,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 9,
+        "soc_titles": {
+          "21-1094": "Community Health Workers",
+          "29-1126": "Respiratory Therapists",
+          "29-1141": "Registered Nurses",
+          "29-2034": "Radiologic Technologists and Technicians",
+          "29-2072": "Medical Records Specialists",
+          "29-9021": "Health Information Technologists and Medical Registrars",
+          "31-9092": "Medical Assistants",
+          "31-9093": "Medical Equipment Preparers",
+          "43-6013": "Medical Secretaries and Administrative Assistants"
+        },
+        "socs": [
+          "29-1141",
+          "43-6013",
+          "29-2072",
+          "31-9092",
+          "29-1126",
+          "21-1094",
+          "29-9021",
+          "29-2034",
+          "31-9093"
+        ],
+        "website": "https://locations.amedisys.com/ca/burlingame/home-health-3501/"
+      },
+      {
+        "description": "Care Indeed is an RN-led home care and home health agency headquartered in Campbell, CA, serving seniors and medically complex clients throughout the Bay Area including Menlo Park. Services span hourly and live-in caregiving, memory care, private duty nursing (IV therapy, wound care, tube feeding), and skilled home health including physical and occupational therapy. The agency employs caregivers, home health aides, and registered nurses, and coordinates care with regional health systems such as Stanford Health Care and Kaiser Permanente.",
+        "display_name": null,
+        "lat": 37.4488307,
+        "lng": -122.1868671,
+        "naics4": "6216",
+        "naics_title": "Home Health Care Services",
+        "name": "Care Indeed",
+        "relevance": 12.89,
+        "sector": "Healthcare",
+        "size_class": "500-999 employees",
+        "size_rank": 8,
+        "soc_count": 9,
+        "soc_titles": {
+          "21-1094": "Community Health Workers",
+          "29-1126": "Respiratory Therapists",
+          "29-1141": "Registered Nurses",
+          "29-2034": "Radiologic Technologists and Technicians",
+          "29-2072": "Medical Records Specialists",
+          "29-9021": "Health Information Technologists and Medical Registrars",
+          "31-9092": "Medical Assistants",
+          "31-9093": "Medical Equipment Preparers",
+          "43-6013": "Medical Secretaries and Administrative Assistants"
+        },
+        "socs": [
+          "29-1141",
+          "43-6013",
+          "29-2072",
+          "31-9092",
+          "29-1126",
+          "21-1094",
+          "29-9021",
+          "29-2034",
+          "31-9093"
+        ],
+        "website": "https://careindeed.com/menlo-park"
+      },
+      {
+        "description": "A healthcare service provider focused on compassionate care.",
+        "display_name": null,
+        "lat": 37.5685695,
+        "lng": -122.3168591,
+        "naics4": "6216",
+        "naics_title": "Home Health Care Services",
+        "name": "Heart of Humanity Health Services",
+        "relevance": 12.89,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 9,
+        "soc_titles": {
+          "21-1094": "Community Health Workers",
+          "29-1126": "Respiratory Therapists",
+          "29-1141": "Registered Nurses",
+          "29-2034": "Radiologic Technologists and Technicians",
+          "29-2072": "Medical Records Specialists",
+          "29-9021": "Health Information Technologists and Medical Registrars",
+          "31-9092": "Medical Assistants",
+          "31-9093": "Medical Equipment Preparers",
+          "43-6013": "Medical Secretaries and Administrative Assistants"
+        },
+        "socs": [
+          "29-1141",
+          "43-6013",
+          "29-2072",
+          "31-9092",
+          "29-1126",
+          "21-1094",
+          "29-9021",
+          "29-2034",
+          "31-9093"
+        ],
+        "website": "https://heartofhumanity.com/"
+      },
+      {
+        "description": "Medical Care Professionals is a privately owned, registered-nurse-led home care agency serving seniors and disabled adults in San Mateo and San Francisco counties since 1987. Services span companion care, 24-hour registered nurse oversight, medication management, hospice support, and rehabilitative care, with long-term care insurance accepted. The agency employs registered nurses and professional caregivers and is licensed by the California Department of Health Services.",
+        "display_name": null,
         "lat": 37.6717362,
         "lng": -122.4537758,
         "naics4": "6216",
         "naics_title": "Home Health Care Services",
         "name": "Medical Care Pro",
+        "relevance": 12.89,
         "sector": "Healthcare",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 13,
+        "soc_count": 9,
         "soc_titles": {
-          "21-1093": "Social and Human Service Assistants",
           "21-1094": "Community Health Workers",
           "29-1126": "Respiratory Therapists",
           "29-1141": "Registered Nurses",
           "29-2034": "Radiologic Technologists and Technicians",
-          "29-2055": "Surgical Technologists",
           "29-2072": "Medical Records Specialists",
-          "29-2099": "Health Technologists and Technicians, All Other",
           "29-9021": "Health Information Technologists and Medical Registrars",
           "31-9092": "Medical Assistants",
           "31-9093": "Medical Equipment Preparers",
-          "31-9099": "Healthcare Support Workers, All Other",
           "43-6013": "Medical Secretaries and Administrative Assistants"
         },
         "socs": [
           "29-1141",
           "43-6013",
           "29-2072",
-          "21-1093",
           "31-9092",
-          "29-2099",
           "29-1126",
           "21-1094",
-          "31-9099",
           "29-9021",
           "29-2034",
-          "29-2055",
           "31-9093"
         ],
         "website": "https://www.medicalcareprofessionals.com/"
       },
       {
-        "contact_name": "Dwight Wilson",
-        "contact_title": "CEO",
-        "description": "A provider of hospice and home care services.",
+        "description": "Mission Hospice & Home Care is an independent nonprofit founded in 1979 that provides hospice, palliative, and transitional care to patients across the San Francisco Peninsula and South Bay, accepting patients regardless of ability to pay. Services are delivered by interdisciplinary teams of nurses, physicians, spiritual care providers, and trained volunteers, with 24/7 clinical support and an inpatient facility called Mission House. The organization also runs grief and bereavement programs and community education outreach across its service area.",
+        "display_name": null,
         "lat": 37.5504156,
         "lng": -122.3170698,
         "naics4": "6216",
         "naics_title": "Home Health Care Services",
         "name": "Mission Hospice & Home Care",
+        "relevance": 12.89,
         "sector": "Healthcare",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 13,
+        "soc_count": 9,
         "soc_titles": {
-          "21-1093": "Social and Human Service Assistants",
           "21-1094": "Community Health Workers",
           "29-1126": "Respiratory Therapists",
           "29-1141": "Registered Nurses",
           "29-2034": "Radiologic Technologists and Technicians",
-          "29-2055": "Surgical Technologists",
           "29-2072": "Medical Records Specialists",
-          "29-2099": "Health Technologists and Technicians, All Other",
           "29-9021": "Health Information Technologists and Medical Registrars",
           "31-9092": "Medical Assistants",
           "31-9093": "Medical Equipment Preparers",
-          "31-9099": "Healthcare Support Workers, All Other",
           "43-6013": "Medical Secretaries and Administrative Assistants"
         },
         "socs": [
           "29-1141",
           "43-6013",
           "29-2072",
-          "21-1093",
           "31-9092",
-          "29-2099",
           "29-1126",
           "21-1094",
-          "31-9099",
           "29-9021",
           "29-2034",
-          "29-2055",
           "31-9093"
         ],
         "website": "https://www.missionhospice.org/"
       },
       {
-        "contact_name": "Joe Selsavage",
-        "contact_title": "CEO",
-        "description": "A genetic testing and health company.",
-        "lat": 37.6624937,
-        "lng": -122.3926385,
-        "naics4": "6215",
-        "naics_title": "Medical and Diagnostic Laboratories",
-        "name": "23ANDME",
+        "description": "An unidentified business located in Millbrae.",
+        "display_name": null,
+        "lat": 37.6046616,
+        "lng": -122.3967628,
+        "naics4": "6213",
+        "naics_title": "Offices of Other Health Practitioners",
+        "name": "Candenc Millbrae",
+        "relevance": 12.61,
         "sector": "Healthcare",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 11,
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 10,
         "soc_titles": {
-          "21-1093": "Social and Human Service Assistants",
+          "21-1094": "Community Health Workers",
+          "29-1126": "Respiratory Therapists",
           "29-1141": "Registered Nurses",
           "29-2034": "Radiologic Technologists and Technicians",
-          "29-2055": "Surgical Technologists",
           "29-2072": "Medical Records Specialists",
-          "29-2099": "Health Technologists and Technicians, All Other",
           "29-9021": "Health Information Technologists and Medical Registrars",
+          "31-9091": "Dental Assistants",
           "31-9092": "Medical Assistants",
           "31-9093": "Medical Equipment Preparers",
-          "31-9099": "Healthcare Support Workers, All Other",
           "43-6013": "Medical Secretaries and Administrative Assistants"
         },
         "socs": [
+          "31-9092",
+          "43-6013",
+          "29-1141",
+          "29-2072",
+          "29-1126",
           "29-2034",
-          "43-6013",
-          "31-9092",
-          "29-2099",
-          "31-9099",
-          "29-1141",
-          "29-2072",
-          "31-9093",
-          "29-2055",
-          "29-9021",
-          "21-1093"
-        ],
-        "website": "https://www.23andme.com/"
-      },
-      {
-        "contact_name": "Elaine Zolfarelli",
-        "contact_title": "Administrator",
-        "description": "A facility providing skilled nursing care.",
-        "lat": 37.5417763,
-        "lng": -122.3059758,
-        "naics4": "6231",
-        "naics_title": "Nursing Care Facilities (Skilled Nursing Facilities)",
-        "name": "Brookside Skilled Nursing",
-        "sector": "Healthcare",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 11,
-        "soc_titles": {
-          "21-1093": "Social and Human Service Assistants",
-          "21-1094": "Community Health Workers",
-          "29-1126": "Respiratory Therapists",
-          "29-1141": "Registered Nurses",
-          "29-2072": "Medical Records Specialists",
-          "29-2099": "Health Technologists and Technicians, All Other",
-          "29-9021": "Health Information Technologists and Medical Registrars",
-          "31-9092": "Medical Assistants",
-          "31-9093": "Medical Equipment Preparers",
-          "31-9099": "Healthcare Support Workers, All Other",
-          "43-6013": "Medical Secretaries and Administrative Assistants"
-        },
-        "socs": [
-          "29-1141",
-          "29-2072",
-          "43-6013",
-          "31-9092",
-          "29-1126",
-          "21-1093",
-          "31-9099",
-          "29-9021",
+          "31-9091",
           "21-1094",
-          "29-2099",
+          "29-9021",
           "31-9093"
         ],
-        "website": "https://brooksidenursing.com/"
-      },
-      {
-        "contact_name": "Steve Anderson",
-        "contact_title": "CEO",
-        "description": "A company involved in biological research and development.",
-        "lat": 37.6624937,
-        "lng": -122.3926385,
-        "naics4": "6215",
-        "naics_title": "Medical and Diagnostic Laboratories",
-        "name": "Monogram Biosciences",
-        "sector": "Healthcare",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 11,
-        "soc_titles": {
-          "21-1093": "Social and Human Service Assistants",
-          "29-1141": "Registered Nurses",
-          "29-2034": "Radiologic Technologists and Technicians",
-          "29-2055": "Surgical Technologists",
-          "29-2072": "Medical Records Specialists",
-          "29-2099": "Health Technologists and Technicians, All Other",
-          "29-9021": "Health Information Technologists and Medical Registrars",
-          "31-9092": "Medical Assistants",
-          "31-9093": "Medical Equipment Preparers",
-          "31-9099": "Healthcare Support Workers, All Other",
-          "43-6013": "Medical Secretaries and Administrative Assistants"
-        },
-        "socs": [
-          "29-2034",
-          "43-6013",
-          "31-9092",
-          "29-2099",
-          "31-9099",
-          "29-1141",
-          "29-2072",
-          "31-9093",
-          "29-2055",
-          "29-9021",
-          "21-1093"
-        ],
-        "website": "https://monogrambio.labcorp.com/"
-      },
-      {
-        "contact_name": "Kordell Erickson",
-        "contact_title": "Administrator",
-        "description": "A convalescent care facility.",
-        "lat": 37.6744002,
-        "lng": -122.4772937,
-        "naics4": "6231",
-        "naics_title": "Nursing Care Facilities (Skilled Nursing Facilities)",
-        "name": "St Francis Heights Convalescent",
-        "sector": "Healthcare",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 11,
-        "soc_titles": {
-          "21-1093": "Social and Human Service Assistants",
-          "21-1094": "Community Health Workers",
-          "29-1126": "Respiratory Therapists",
-          "29-1141": "Registered Nurses",
-          "29-2072": "Medical Records Specialists",
-          "29-2099": "Health Technologists and Technicians, All Other",
-          "29-9021": "Health Information Technologists and Medical Registrars",
-          "31-9092": "Medical Assistants",
-          "31-9093": "Medical Equipment Preparers",
-          "31-9099": "Healthcare Support Workers, All Other",
-          "43-6013": "Medical Secretaries and Administrative Assistants"
-        },
-        "socs": [
-          "29-1141",
-          "29-2072",
-          "43-6013",
-          "31-9092",
-          "29-1126",
-          "21-1093",
-          "31-9099",
-          "29-9021",
-          "21-1094",
-          "29-2099",
-          "31-9093"
-        ],
-        "website": "LIFEGEN.NET"
-      },
-      {
-        "contact_name": "Mi N Boyd",
-        "contact_title": "CFO",
-        "description": "A senior living community.",
-        "lat": 37.3764858,
-        "lng": -122.222985,
-        "naics4": "6231",
-        "naics_title": "Nursing Care Facilities (Skilled Nursing Facilities)",
-        "name": "The Sequoias",
-        "sector": "Healthcare",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 11,
-        "soc_titles": {
-          "21-1093": "Social and Human Service Assistants",
-          "21-1094": "Community Health Workers",
-          "29-1126": "Respiratory Therapists",
-          "29-1141": "Registered Nurses",
-          "29-2072": "Medical Records Specialists",
-          "29-2099": "Health Technologists and Technicians, All Other",
-          "29-9021": "Health Information Technologists and Medical Registrars",
-          "31-9092": "Medical Assistants",
-          "31-9093": "Medical Equipment Preparers",
-          "31-9099": "Healthcare Support Workers, All Other",
-          "43-6013": "Medical Secretaries and Administrative Assistants"
-        },
-        "socs": [
-          "29-1141",
-          "29-2072",
-          "43-6013",
-          "31-9092",
-          "29-1126",
-          "21-1093",
-          "31-9099",
-          "29-9021",
-          "21-1094",
-          "29-2099",
-          "31-9093"
-        ],
-        "website": "https://sequoialiving.org/portola-valley/"
-      },
-      {
-        "contact_name": "Katherine Castro Tazawa",
-        "contact_title": "Exec Director",
-        "description": "A senior living community.",
-        "lat": 37.4903432,
-        "lng": -122.2117774,
-        "naics4": "6233",
-        "naics_title": "Continuing Care Retirement Communities and Assisted Living Facilities for the Elderly",
-        "name": "Brookdale Redwood City",
-        "sector": "Healthcare",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 9,
-        "soc_titles": {
-          "21-1093": "Social and Human Service Assistants",
-          "21-1094": "Community Health Workers",
-          "29-1141": "Registered Nurses",
-          "29-2072": "Medical Records Specialists",
-          "29-2099": "Health Technologists and Technicians, All Other",
-          "29-9021": "Health Information Technologists and Medical Registrars",
-          "31-9092": "Medical Assistants",
-          "31-9099": "Healthcare Support Workers, All Other",
-          "43-6013": "Medical Secretaries and Administrative Assistants"
-        },
-        "socs": [
-          "29-1141",
-          "31-9092",
-          "43-6013",
-          "21-1093",
-          "29-2072",
-          "31-9099",
-          "21-1094",
-          "29-2099",
-          "29-9021"
-        ],
-        "website": "https://www.brookdale.com/en/communities/brookdale-redwood-city.html"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "A home care service provider.",
-        "lat": 37.5912374,
-        "lng": -122.387285,
-        "naics4": "6233",
-        "naics_title": "Continuing Care Retirement Communities and Assisted Living Facilities for the Elderly",
-        "name": "Live Well At Home By Eskaton",
-        "sector": "Healthcare",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 9,
-        "soc_titles": {
-          "21-1093": "Social and Human Service Assistants",
-          "21-1094": "Community Health Workers",
-          "29-1141": "Registered Nurses",
-          "29-2072": "Medical Records Specialists",
-          "29-2099": "Health Technologists and Technicians, All Other",
-          "29-9021": "Health Information Technologists and Medical Registrars",
-          "31-9092": "Medical Assistants",
-          "31-9099": "Healthcare Support Workers, All Other",
-          "43-6013": "Medical Secretaries and Administrative Assistants"
-        },
-        "socs": [
-          "29-1141",
-          "31-9092",
-          "43-6013",
-          "21-1093",
-          "29-2072",
-          "31-9099",
-          "21-1094",
-          "29-2099",
-          "29-9021"
-        ],
-        "website": "https://www.eskaton.org/live-well-home"
-      },
-      {
-        "contact_name": "Patricia Sorensen",
-        "contact_title": "Exec Director",
-        "description": "Magnolia is a senior living facility.",
-        "lat": 37.5962532,
-        "lng": -122.393844,
-        "naics4": "6233",
-        "naics_title": "Continuing Care Retirement Communities and Assisted Living Facilities for the Elderly",
-        "name": "Magnolia",
-        "sector": "Healthcare",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 9,
-        "soc_titles": {
-          "21-1093": "Social and Human Service Assistants",
-          "21-1094": "Community Health Workers",
-          "29-1141": "Registered Nurses",
-          "29-2072": "Medical Records Specialists",
-          "29-2099": "Health Technologists and Technicians, All Other",
-          "29-9021": "Health Information Technologists and Medical Registrars",
-          "31-9092": "Medical Assistants",
-          "31-9099": "Healthcare Support Workers, All Other",
-          "43-6013": "Medical Secretaries and Administrative Assistants"
-        },
-        "socs": [
-          "29-1141",
-          "31-9092",
-          "43-6013",
-          "21-1093",
-          "29-2072",
-          "31-9099",
-          "21-1094",
-          "29-2099",
-          "29-9021"
-        ],
-        "website": "https://www.themagnolia.com/"
+        "website": "https://cogirusa.com/communities/cadence-millbrae/"
       }
     ],
     "region": "Bay",
@@ -1146,75 +968,13 @@
       "San Mateo"
     ],
     "shown": 25,
-    "total": 70
+    "total": 281
   },
   "/programs": {
+    "coverage_awards_only": true,
     "latest_award_year": "2024-2025",
     "matrix": {
       "cells": [
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "010210"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "010210"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "010210"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "051420"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": true,
-          "teaches": true,
-          "top6": "051420"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "051420"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "060700"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "060700"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "060700"
-        },
         {
           "awards": 0,
           "college": "College of San Mateo",
@@ -1235,27 +995,6 @@
           "enrolled": false,
           "teaches": false,
           "top6": "120100"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "120200"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "120200"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "120200"
         },
         {
           "awards": 0,
@@ -1283,27 +1022,6 @@
           "college": "College of San Mateo",
           "enrolled": false,
           "teaches": false,
-          "top6": "120810"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "120810"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": true,
-          "teaches": false,
-          "top6": "120810"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
           "top6": "120820"
         },
         {
@@ -1319,27 +1037,6 @@
           "enrolled": true,
           "teaches": false,
           "top6": "120820"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "120830"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "120830"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "120830"
         },
         {
           "awards": 0,
@@ -1388,111 +1085,6 @@
           "college": "College of San Mateo",
           "enrolled": false,
           "teaches": false,
-          "top6": "121100"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "121100"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "121100"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "121200"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "121200"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "121200"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "121700"
-        },
-        {
-          "awards": 6,
-          "college": "Skyline College",
-          "enrolled": true,
-          "teaches": false,
-          "top6": "121700"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "121700"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "121800"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "121800"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "121800"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "122300"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "122300"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "122300"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
           "top6": "122310"
         },
         {
@@ -1531,48 +1123,6 @@
           "top6": "122500"
         },
         {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "122600"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "122600"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "122600"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "123000"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "123000"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "123000"
-        },
-        {
           "awards": 48,
           "college": "College of San Mateo",
           "enrolled": true,
@@ -1594,27 +1144,6 @@
           "top6": "123010"
         },
         {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": true,
-          "teaches": false,
-          "top6": "124000"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "124000"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "124000"
-        },
-        {
           "awards": 27,
           "college": "College of San Mateo",
           "enrolled": true,
@@ -1634,90 +1163,6 @@
           "enrolled": false,
           "teaches": false,
           "top6": "124010"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "124020"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "124020"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "124020"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "126100"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "126100"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "126100"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "129900"
-        },
-        {
-          "awards": 6,
-          "college": "Skyline College",
-          "enrolled": true,
-          "teaches": true,
-          "top6": "129900"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "129900"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "210400"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "210400"
-        },
-        {
-          "awards": 4,
-          "college": "Ca\u00f1ada College",
-          "enrolled": true,
-          "teaches": true,
-          "top6": "210400"
         }
       ],
       "colleges": [
@@ -1744,7 +1189,7 @@
         "enrollment_total": 283,
         "n_colleges_offering": 0,
         "name": "Respiratory Care/Therapy",
-        "soc_count": 2,
+        "soc_count": 1,
         "top6": "121000"
       },
       {
@@ -1752,7 +1197,7 @@
         "enrollment_total": 30,
         "n_colleges_offering": 1,
         "name": "Medical Assisting",
-        "soc_count": 3,
+        "soc_count": 2,
         "top6": "120800"
       },
       {
@@ -1768,7 +1213,7 @@
         "enrollment_total": 0,
         "n_colleges_offering": 0,
         "name": "Health Information Coding",
-        "soc_count": 4,
+        "soc_count": 3,
         "top6": "122310"
       },
       {
@@ -1776,7 +1221,7 @@
         "enrollment_total": 123,
         "n_colleges_offering": 0,
         "name": "Administrative Medical Assisting",
-        "soc_count": 3,
+        "soc_count": 2,
         "top6": "120820"
       },
       {
@@ -1784,181 +1229,37 @@
         "enrollment_total": 132,
         "n_colleges_offering": 0,
         "name": "Radiologic Technology",
-        "soc_count": 2,
-        "top6": "122500"
-      },
-      {
-        "awards_total": 6,
-        "enrollment_total": 63,
-        "n_colleges_offering": 0,
-        "name": "Surgical Technician",
         "soc_count": 1,
-        "top6": "121700"
-      },
-      {
-        "awards_total": 6,
-        "enrollment_total": 35,
-        "n_colleges_offering": 1,
-        "name": "Other Health Occupations",
-        "soc_count": 2,
-        "top6": "129900"
+        "top6": "122500"
       },
       {
         "awards_total": 5,
         "enrollment_total": 0,
         "n_colleges_offering": 0,
         "name": "Health Occupations, General",
-        "soc_count": 2,
-        "top6": "120100"
-      },
-      {
-        "awards_total": 4,
-        "enrollment_total": 29,
-        "n_colleges_offering": 1,
-        "name": "Human Services",
         "soc_count": 1,
-        "top6": "210400"
+        "top6": "120100"
       },
       {
         "awards_total": 3,
         "enrollment_total": 0,
         "n_colleges_offering": 0,
         "name": "Hospital Central Service Technician",
-        "soc_count": 3,
+        "soc_count": 1,
         "top6": "120900"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 188,
-        "n_colleges_offering": 1,
-        "name": "Medical Office Technology",
-        "soc_count": 3,
-        "top6": "051420"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 145,
-        "n_colleges_offering": 0,
-        "name": "Clinical Medical Assisting",
-        "soc_count": 1,
-        "top6": "120810"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 24,
-        "n_colleges_offering": 0,
-        "name": "Dental Occupations",
-        "soc_count": 2,
-        "top6": "124000"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Health Facility Unit Coordinator",
-        "soc_count": 3,
-        "top6": "120830"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Hospital and Health Care Administration",
-        "soc_count": 2,
-        "top6": "120200"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Health Information Technology",
-        "soc_count": 2,
-        "top6": "122300"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Radiation Therapy Technician",
-        "soc_count": 2,
-        "top6": "122600"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Veterinary Technician (Licensed)",
-        "soc_count": 1,
-        "top6": "010210"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Technical Communication",
-        "soc_count": 1,
-        "top6": "060700"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Polysomnography",
-        "soc_count": 1,
-        "top6": "121100"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Electro-Neurodiagnostic Technology",
-        "soc_count": 1,
-        "top6": "121200"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Occupational Therapy Technology",
-        "soc_count": 1,
-        "top6": "121800"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Nursing",
-        "soc_count": 1,
-        "top6": "123000"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Dental Hygienist",
-        "soc_count": 1,
-        "top6": "124020"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Community Health Care Worker",
-        "soc_count": 1,
-        "top6": "126100"
       }
     ]
   },
   "landscape": {
     "aggregate": {
-      "candidate_employers": 500,
-      "combined_awards": 197,
-      "combined_supply_total": 74.17,
-      "gap": 18716,
+      "candidate_employers": 486,
+      "combined_awards": 181,
+      "combined_supply_total": 67.0,
+      "gap": 15413,
       "n_colleges": 3,
-      "n_occupations": 15,
-      "occupations_taught": 9,
-      "regional_demand_total": 18790
+      "n_occupations": 10,
+      "occupations_taught": 6,
+      "regional_demand_total": 15480
     },
     "award_years": [
       "2020-2021",
@@ -1970,20 +1271,6 @@
     "colleges": [
       {
         "cells": [
-          {
-            "annual_openings": 1640,
-            "annual_wage": 56610,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 1640,
-            "growth_rate": 0.111983305,
-            "programs": [],
-            "soc_code": "21-1093",
-            "supply": 0.0,
-            "title": "Social and Human Service Assistants"
-          },
           {
             "annual_openings": 320,
             "annual_wage": 70860,
@@ -2052,45 +1339,6 @@
             "title": "Registered Nurses"
           },
           {
-            "annual_openings": 440,
-            "annual_wage": 140580,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": true,
-            "feeding_awards": 0,
-            "gap": 440,
-            "growth_rate": 0.045288087,
-            "programs": [
-              {
-                "awards": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  18,
-                  null,
-                  24,
-                  null,
-                  16,
-                  null,
-                  23,
-                  null,
-                  24
-                ],
-                "name": "Dental Occupations",
-                "top6": "124000",
-                "wages": []
-              }
-            ],
-            "soc_code": "29-1292",
-            "supply": 0.0,
-            "title": "Dental Hygienists"
-          },
-          {
             "annual_openings": 320,
             "annual_wage": 143870,
             "awards_recent": 0,
@@ -2105,20 +1353,6 @@
             "title": "Radiologic Technologists and Technicians"
           },
           {
-            "annual_openings": 200,
-            "annual_wage": 98090,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 200,
-            "growth_rate": 0.089231987,
-            "programs": [],
-            "soc_code": "29-2055",
-            "supply": 0.0,
-            "title": "Surgical Technologists"
-          },
-          {
             "annual_openings": 360,
             "annual_wage": 72050,
             "awards_recent": 0,
@@ -2131,20 +1365,6 @@
             "soc_code": "29-2072",
             "supply": 0.0,
             "title": "Medical Records Specialists"
-          },
-          {
-            "annual_openings": 530,
-            "annual_wage": 69710,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 530,
-            "growth_rate": 0.120164059,
-            "programs": [],
-            "soc_code": "29-2099",
-            "supply": 0.0,
-            "title": "Health Technologists and Technicians, All Other"
           },
           {
             "annual_openings": 90,
@@ -2252,20 +1472,6 @@
             "title": "Medical Equipment Preparers"
           },
           {
-            "annual_openings": 500,
-            "annual_wage": 61990,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 500,
-            "growth_rate": 0.046481073,
-            "programs": [],
-            "soc_code": "31-9099",
-            "supply": 0.0,
-            "title": "Healthcare Support Workers, All Other"
-          },
-          {
             "annual_openings": 2740,
             "annual_wage": 61630,
             "awards_recent": 0,
@@ -2284,20 +1490,6 @@
       },
       {
         "cells": [
-          {
-            "annual_openings": 1640,
-            "annual_wage": 56610,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 1640,
-            "growth_rate": 0.111983305,
-            "programs": [],
-            "soc_code": "21-1093",
-            "supply": 0.0,
-            "title": "Social and Human Service Assistants"
-          },
           {
             "annual_openings": 320,
             "annual_wage": 70860,
@@ -2391,20 +1583,6 @@
             "title": "Registered Nurses"
           },
           {
-            "annual_openings": 440,
-            "annual_wage": 140580,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 440,
-            "growth_rate": 0.045288087,
-            "programs": [],
-            "soc_code": "29-1292",
-            "supply": 0.0,
-            "title": "Dental Hygienists"
-          },
-          {
             "annual_openings": 320,
             "annual_wage": 143870,
             "awards_recent": 0,
@@ -2419,205 +1597,29 @@
             "title": "Radiologic Technologists and Technicians"
           },
           {
-            "annual_openings": 200,
-            "annual_wage": 98090,
-            "awards_recent": 9,
-            "course_count": 0,
-            "enrolled": true,
-            "feeding_awards": 9,
-            "gap": 200,
-            "growth_rate": 0.089231987,
-            "programs": [
-              {
-                "awards": [
-                  20,
-                  1,
-                  3,
-                  9,
-                  3
-                ],
-                "awards_recent": 3,
-                "enrollment": [
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null
-                ],
-                "name": "Hospital Central Service Technician",
-                "top6": "120900",
-                "wages": []
-              },
-              {
-                "awards": [
-                  7,
-                  16,
-                  7,
-                  13,
-                  6
-                ],
-                "awards_recent": 6,
-                "enrollment": [
-                  44,
-                  55,
-                  9,
-                  11,
-                  59,
-                  63,
-                  42,
-                  53,
-                  56
-                ],
-                "name": "Surgical Technician",
-                "top6": "121700",
-                "wages": []
-              }
-            ],
-            "soc_code": "29-2055",
-            "supply": 0.0,
-            "title": "Surgical Technologists"
-          },
-          {
             "annual_openings": 360,
             "annual_wage": 72050,
             "awards_recent": 0,
             "course_count": 1,
-            "enrolled": true,
+            "enrolled": false,
             "feeding_awards": 0,
             "gap": 360,
             "growth_rate": 0.095217809,
-            "programs": [
-              {
-                "awards": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  98,
-                  146,
-                  92,
-                  126,
-                  119,
-                  132,
-                  157,
-                  188,
-                  152
-                ],
-                "name": "Medical Office Technology",
-                "top6": "051420",
-                "wages": []
-              }
-            ],
+            "programs": [],
             "soc_code": "29-2072",
             "supply": 0.0,
             "title": "Medical Records Specialists"
-          },
-          {
-            "annual_openings": 530,
-            "annual_wage": 69710,
-            "awards_recent": 48,
-            "course_count": 14,
-            "enrolled": true,
-            "feeding_awards": 48,
-            "gap": 530,
-            "growth_rate": 0.120164059,
-            "programs": [
-              {
-                "awards": [
-                  35,
-                  35,
-                  24,
-                  27,
-                  42
-                ],
-                "awards_recent": 42,
-                "enrollment": [
-                  242,
-                  195,
-                  227,
-                  222,
-                  244,
-                  260,
-                  271,
-                  283,
-                  183
-                ],
-                "name": "Respiratory Care/Therapy",
-                "top6": "121000",
-                "wages": []
-              },
-              {
-                "awards": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  6
-                ],
-                "awards_recent": 6,
-                "enrollment": [
-                  null,
-                  null,
-                  13,
-                  29,
-                  19,
-                  18,
-                  24,
-                  31,
-                  35
-                ],
-                "name": "Other Health Occupations",
-                "top6": "129900",
-                "wages": []
-              }
-            ],
-            "soc_code": "29-2099",
-            "supply": 0.0,
-            "title": "Health Technologists and Technicians, All Other"
           },
           {
             "annual_openings": 90,
             "annual_wage": 102120,
             "awards_recent": 0,
             "course_count": 1,
-            "enrolled": true,
+            "enrolled": false,
             "feeding_awards": 0,
             "gap": 90,
             "growth_rate": 0.153354073,
-            "programs": [
-              {
-                "awards": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  98,
-                  146,
-                  92,
-                  126,
-                  119,
-                  132,
-                  157,
-                  188,
-                  152
-                ],
-                "name": "Medical Office Technology",
-                "top6": "051420",
-                "wages": []
-              }
-            ],
+            "programs": [],
             "soc_code": "29-9021",
             "supply": 0.0,
             "title": "Health Information Technologists and Medical Registrars"
@@ -2715,117 +1717,6 @@
             "title": "Medical Equipment Preparers"
           },
           {
-            "annual_openings": 500,
-            "annual_wage": 61990,
-            "awards_recent": 14,
-            "course_count": 16,
-            "enrolled": true,
-            "feeding_awards": 14,
-            "gap": 498,
-            "growth_rate": 0.046481073,
-            "programs": [
-              {
-                "awards": [
-                  4,
-                  13,
-                  3,
-                  4,
-                  5
-                ],
-                "awards_recent": 5,
-                "enrollment": [
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null
-                ],
-                "name": "Health Occupations, General",
-                "top6": "120100",
-                "wages": []
-              },
-              {
-                "awards": [
-                  3,
-                  1,
-                  0,
-                  0,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  13,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  24
-                ],
-                "name": "Medical Assisting",
-                "top6": "120800",
-                "wages": []
-              },
-              {
-                "awards": [
-                  20,
-                  1,
-                  3,
-                  9,
-                  3
-                ],
-                "awards_recent": 3,
-                "enrollment": [
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null
-                ],
-                "name": "Hospital Central Service Technician",
-                "top6": "120900",
-                "wages": []
-              },
-              {
-                "awards": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  6
-                ],
-                "awards_recent": 6,
-                "enrollment": [
-                  null,
-                  null,
-                  13,
-                  29,
-                  19,
-                  18,
-                  24,
-                  31,
-                  35
-                ],
-                "name": "Other Health Occupations",
-                "top6": "129900",
-                "wages": []
-              }
-            ],
-            "soc_code": "31-9099",
-            "supply": 1.5,
-            "title": "Healthcare Support Workers, All Other"
-          },
-          {
             "annual_openings": 2740,
             "annual_wage": 61630,
             "awards_recent": 0,
@@ -2835,30 +1726,6 @@
             "gap": 2738,
             "growth_rate": 0.053677362,
             "programs": [
-              {
-                "awards": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  98,
-                  146,
-                  92,
-                  126,
-                  119,
-                  132,
-                  157,
-                  188,
-                  152
-                ],
-                "name": "Medical Office Technology",
-                "top6": "051420",
-                "wages": []
-              },
               {
                 "awards": [
                   3,
@@ -2893,45 +1760,6 @@
       },
       {
         "cells": [
-          {
-            "annual_openings": 1640,
-            "annual_wage": 56610,
-            "awards_recent": 4,
-            "course_count": 3,
-            "enrolled": true,
-            "feeding_awards": 4,
-            "gap": 1634,
-            "growth_rate": 0.111983305,
-            "programs": [
-              {
-                "awards": [
-                  7,
-                  5,
-                  5,
-                  5,
-                  4
-                ],
-                "awards_recent": 4,
-                "enrollment": [
-                  23,
-                  19,
-                  21,
-                  8,
-                  29,
-                  28,
-                  29,
-                  16,
-                  26
-                ],
-                "name": "Human Services",
-                "top6": "210400",
-                "wages": []
-              }
-            ],
-            "soc_code": "21-1093",
-            "supply": 5.67,
-            "title": "Social and Human Service Assistants"
-          },
           {
             "annual_openings": 320,
             "annual_wage": 70860,
@@ -3000,20 +1828,6 @@
             "title": "Registered Nurses"
           },
           {
-            "annual_openings": 440,
-            "annual_wage": 140580,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 440,
-            "growth_rate": 0.045288087,
-            "programs": [],
-            "soc_code": "29-1292",
-            "supply": 0.0,
-            "title": "Dental Hygienists"
-          },
-          {
             "annual_openings": 320,
             "annual_wage": 143870,
             "awards_recent": 6,
@@ -3053,20 +1867,6 @@
             "title": "Radiologic Technologists and Technicians"
           },
           {
-            "annual_openings": 200,
-            "annual_wage": 98090,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 200,
-            "growth_rate": 0.089231987,
-            "programs": [],
-            "soc_code": "29-2055",
-            "supply": 0.0,
-            "title": "Surgical Technologists"
-          },
-          {
             "annual_openings": 360,
             "annual_wage": 72050,
             "awards_recent": 12,
@@ -3104,45 +1904,6 @@
             "soc_code": "29-2072",
             "supply": 0.0,
             "title": "Medical Records Specialists"
-          },
-          {
-            "annual_openings": 530,
-            "annual_wage": 69710,
-            "awards_recent": 6,
-            "course_count": 0,
-            "enrolled": true,
-            "feeding_awards": 6,
-            "gap": 530,
-            "growth_rate": 0.120164059,
-            "programs": [
-              {
-                "awards": [
-                  17,
-                  15,
-                  13,
-                  14,
-                  6
-                ],
-                "awards_recent": 6,
-                "enrollment": [
-                  114,
-                  132,
-                  104,
-                  104,
-                  93,
-                  103,
-                  92,
-                  119,
-                  102
-                ],
-                "name": "Radiologic Technology",
-                "top6": "122500",
-                "wages": []
-              }
-            ],
-            "soc_code": "29-2099",
-            "supply": 0.0,
-            "title": "Health Technologists and Technicians, All Other"
           },
           {
             "annual_openings": 90,
@@ -3299,93 +2060,6 @@
             "title": "Medical Equipment Preparers"
           },
           {
-            "annual_openings": 500,
-            "annual_wage": 61990,
-            "awards_recent": 50,
-            "course_count": 0,
-            "enrolled": true,
-            "feeding_awards": 50,
-            "gap": 500,
-            "growth_rate": 0.046481073,
-            "programs": [
-              {
-                "awards": [
-                  20,
-                  41,
-                  21,
-                  21,
-                  31
-                ],
-                "awards_recent": 31,
-                "enrollment": [
-                  8,
-                  9,
-                  6,
-                  4,
-                  6,
-                  6,
-                  8,
-                  5,
-                  6
-                ],
-                "name": "Medical Assisting",
-                "top6": "120800",
-                "wages": []
-              },
-              {
-                "awards": [
-                  11,
-                  8,
-                  5,
-                  10,
-                  7
-                ],
-                "awards_recent": 7,
-                "enrollment": [
-                  104,
-                  90,
-                  74,
-                  82,
-                  90,
-                  119,
-                  111,
-                  123,
-                  117
-                ],
-                "name": "Administrative Medical Assisting",
-                "top6": "120820",
-                "wages": []
-              },
-              {
-                "awards": [
-                  3,
-                  10,
-                  5,
-                  5,
-                  12
-                ],
-                "awards_recent": 12,
-                "enrollment": [
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null
-                ],
-                "name": "Health Information Coding",
-                "top6": "122310",
-                "wages": []
-              }
-            ],
-            "soc_code": "31-9099",
-            "supply": 0.0,
-            "title": "Healthcare Support Workers, All Other"
-          },
-          {
             "annual_openings": 2740,
             "annual_wage": 61630,
             "awards_recent": 50,
@@ -3476,6 +2150,7 @@
         "name": "Ca\u00f1ada College"
       }
     ],
+    "coverage_awards_only": true,
     "enrollment_terms": [
       "Fall 2021",
       "Spring 2022",
@@ -3487,7 +2162,7 @@
       "Spring 2025",
       "Fall 2025"
     ],
-    "executive_summary": "This view examines the regional demand landscape across the 15 health occupations the San Mateo County CCD \u2014 Health targets in the Bay Area regional labor market. Regional demand for these occupations totals 18,790 openings per year.",
+    "executive_summary": "This view examines the regional demand landscape across the 10 health occupations the San Mateo County CCD \u2014 Health targets in the Bay Area regional labor market. Regional demand for these occupations totals 15,480 openings per year.",
     "is_sector_priority": true,
     "region": "Bay",
     "region_display": "Bay Area",

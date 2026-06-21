@@ -43,7 +43,7 @@ from __future__ import annotations
 import os
 from dataclasses import dataclass
 
-from ontology.crosswalks import is_cte_top4_family, is_vocational
+from ontology.crosswalks import _load_top_to_cip, is_cte_top4_family, is_vocational
 from ontology.regions import COLLEGE_COE_REGION
 from partnerships.sectors import SECTORS, Sector, SectorRule
 
@@ -117,6 +117,10 @@ class LandscapeSpec:
     # when unset (SVAMP, whose display label already equals the COE tag).
     swp_tag: str | None = None
 
+    # Home TOP2 division(s) gating the feeder universe (Sector.home_divisions) —
+    # empty = no division gate (the default; AM/ATL/ECU/ICT rely on excluded_tops).
+    home_divisions: tuple[str, ...] = ()
+
     # The county/ies of the member colleges — scopes the regional employer map to
     # the district's geographic shed (the COE region is too coarse; see
     # MemberSet.counties). Empty = no county scoping (whole region).
@@ -160,12 +164,23 @@ class LandscapeSpec:
         if not top6:
             return False
         if self.vocational:
-            return is_vocational(top6) and top6 not in self.excluded_tops
+            return (
+                is_vocational(top6)
+                and top6 not in self.excluded_tops
+                and (not self.home_divisions or top6[:2] in self.home_divisions)
+            )
         return (
             any(top6.startswith(d) for d in self.top_divisions)
             and top6 not in self.excluded_tops
             and (not self.cte_only or is_cte_top4_family(top6))
         )
+
+    def in_scope_tops(self) -> list[str]:
+        """Every TOP6 in this instance's scoped program universe — `in_scope`
+        applied across the full TOP catalog, in catalog order. The single source
+        for the in-scope TOP set that resolve, clusters, and svamp each derive
+        (graph-free; the crosswalk load is cached)."""
+        return [t for t in _load_top_to_cip() if self.in_scope(t)]
 
     def resolve_regions(self) -> tuple[str, ...]:
         """The COE region(s) the member colleges span, sorted and de-duplicated.
@@ -226,6 +241,45 @@ MEMBERS: dict[str, MemberSet] = {
         ),
         counties=("San Mateo",),
     ),
+    # BACCC — the Bay Area Community College Consortium: every college the COE
+    # Bay region assigns (all 26 in the catalog). The consortium-level join — the
+    # whole region's supply, summed across 26 members per sector. counties=()
+    # (whole region): the employer map draws the region's geocoded Bay firms
+    # (today San Mateo + Santa Clara), which is honest for a region-wide
+    # consortium even before the other counties are geocoded.
+    "baccc": MemberSet(
+        id="baccc",
+        label="Bay Area Community College Consortium",
+        colleges=(
+            "Berkeley City College",
+            "Cabrillo College",
+            "Cañada College",
+            "Chabot College",
+            "City College of San Francisco",
+            "College of Alameda",
+            "College of Marin",
+            "College of San Mateo",
+            "Contra Costa College",
+            "De Anza College",
+            "Diablo Valley College",
+            "Evergreen Valley College",
+            "Foothill College",
+            "Gavilan College",
+            "Laney College",
+            "Las Positas College",
+            "Los Medanos College",
+            "Merritt College",
+            "Mission College",
+            "Napa Valley College",
+            "Ohlone College",
+            "San Jose City College",
+            "Santa Rosa Junior College",
+            "Skyline College",
+            "Solano Community College",
+            "West Valley College",
+        ),
+        counties=(),
+    ),
 }
 
 
@@ -248,6 +302,7 @@ def landscape_for(
         socs=sector.socs,
         top_divisions=(),  # unused in vocational mode
         excluded_tops=sector.excluded_tops,  # sector-level crosswalk-noise drops
+        home_divisions=sector.home_divisions,  # TOP2 home-division gate (e.g. Health=12)
         soc_rule=sector.rule,                # sector-level SOC curation (resolve())
         vocational=True,
         published=published,
@@ -324,6 +379,20 @@ _SMCCD_SECTOR_SPECS = [SMCCD_ADM_SPEC] + [
     for sid in _SMCCD_SECTOR_IDS
 ]
 
+# Instance set #3: BACCC — the same 11-sector rail over the full Bay consortium
+# (26 colleges). The consortium-level join: 26-member supply per sector, rendered
+# by the same engine. The coverage matrix flips to vertical headers at this
+# column count (front-end), the only rendering accommodation the 26-wide join
+# needs. PUBLISHED — ships in preview alongside SVAMP/SMCCD.
+_BACCC_SECTOR_IDS: tuple[str, ...] = (
+    "adm", "biotech", "health", "business", "atl", "public_safety",
+    "retail", "ict", "agwet", "edhd", "ecu",
+)
+_BACCC_SECTOR_SPECS = [
+    landscape_for(MEMBERS["baccc"], SECTORS[sid], published=True)
+    for sid in _BACCC_SECTOR_IDS
+]
+
 
 # Registry: every defined instance. Adding a landscape = one entry here (plus its
 # frontend route); the engine and components are untouched. The bare `smccd` id
@@ -331,6 +400,7 @@ _SMCCD_SECTOR_SPECS = [SMCCD_ADM_SPEC] + [
 REGISTRY: dict[str, LandscapeSpec] = {
     SVAMP_SPEC.id: SVAMP_SPEC,
     **{s.id: s for s in _SMCCD_SECTOR_SPECS},
+    **{s.id: s for s in _BACCC_SECTOR_SPECS},
 }
 
 

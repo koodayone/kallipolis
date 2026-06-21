@@ -1,0 +1,3888 @@
+{
+  "/employers": {
+    "employers": [
+      {
+        "description": "23andMe offers direct-to-consumer DNA testing kits that deliver ancestry breakdowns across 4,500+ regions, genetic health risk reports (FDA-cleared), and pharmacogenetic insights through its subscription tiers (23andMe+ Premium and Total Health). The company also runs an opt-in genetic research program and provides exome sequencing with telehealth-coordinated clinical review. In July 2025, its assets were acquired out of Chapter 11 bankruptcy by TTAM Research Institute, a nonprofit founded by former CEO Anne Wojcicki; the consumer brand and services continue to operate under that new ownership.",
+        "display_name": null,
+        "lat": 37.6624937,
+        "lng": -122.3926385,
+        "naics4": "6215",
+        "naics_title": "Medical and Diagnostic Laboratories",
+        "name": "23ANDME",
+        "relevance": 14.25,
+        "sector": "Healthcare",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 4,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "31-9097": "Phlebotomists",
+          "49-9062": "Medical Equipment Repairers"
+        },
+        "socs": [
+          "31-9097",
+          "19-4021",
+          "19-4031",
+          "49-9062"
+        ],
+        "website": "https://www.23andme.com/"
+      },
+      {
+        "description": "A company focused on transplant diagnostics.",
+        "display_name": null,
+        "lat": 37.6760919,
+        "lng": -122.3845587,
+        "naics4": "6215",
+        "naics_title": "Medical and Diagnostic Laboratories",
+        "name": "Caredx",
+        "relevance": 14.25,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 4,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "31-9097": "Phlebotomists",
+          "49-9062": "Medical Equipment Repairers"
+        },
+        "socs": [
+          "31-9097",
+          "19-4021",
+          "19-4031",
+          "49-9062"
+        ],
+        "website": "https://www.caredx.com/"
+      },
+      {
+        "description": "Monogram Biosciences operates a CAP/CLIA-accredited clinical reference laboratory in South San Francisco specializing in HIV molecular diagnostics, including its Trofile viral tropism assay (the companion diagnostic for the CCR5-class drug Selzentry) and PhenoSense drug-resistance testing panels. The lab also supports pharmaceutical companies developing antiviral and oncology therapeutics, providing resistance characterization libraries, validated datasets for NDA submissions, and clinical trial design consultation. The facility employs laboratory scientists, clinical virologists, and bioinformatics staff focused on personalized infectious-disease treatment guidance.",
+        "display_name": null,
+        "lat": 37.6624937,
+        "lng": -122.3926385,
+        "naics4": "6215",
+        "naics_title": "Medical and Diagnostic Laboratories",
+        "name": "Monogram Biosciences",
+        "relevance": 14.25,
+        "sector": "Healthcare",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 4,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "31-9097": "Phlebotomists",
+          "49-9062": "Medical Equipment Repairers"
+        },
+        "socs": [
+          "31-9097",
+          "19-4021",
+          "19-4031",
+          "49-9062"
+        ],
+        "website": "https://monogrambio.labcorp.com/"
+      },
+      {
+        "description": "A provider of therapeutic services delivered at home.",
+        "display_name": null,
+        "lat": 37.4419615,
+        "lng": -122.2666566,
+        "naics4": "6219",
+        "naics_title": "Other Ambulatory Health Care Services",
+        "name": "Active In-Home Therapy",
+        "relevance": 7.04,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 3,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "31-9097": "Phlebotomists",
+          "49-9062": "Medical Equipment Repairers"
+        },
+        "socs": [
+          "31-9097",
+          "19-4021",
+          "49-9062"
+        ],
+        "website": "https://activeinhometherapy.com/"
+      },
+      {
+        "description": "A biotechnology company.",
+        "display_name": null,
+        "lat": 37.5187728,
+        "lng": -122.2515121,
+        "naics4": "6219",
+        "naics_title": "Other Ambulatory Health Care Services",
+        "name": "Antiva Biosciences",
+        "relevance": 7.04,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 3,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "31-9097": "Phlebotomists",
+          "49-9062": "Medical Equipment Repairers"
+        },
+        "socs": [
+          "31-9097",
+          "19-4021",
+          "49-9062"
+        ],
+        "website": "https://antivabio.com/"
+      },
+      {
+        "description": "A healthcare navigation and benefits company.",
+        "display_name": null,
+        "lat": 37.570565042291,
+        "lng": -122.284550190196,
+        "naics4": "6219",
+        "naics_title": "Other Ambulatory Health Care Services",
+        "name": "Carrum Health",
+        "relevance": 7.04,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 3,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "31-9097": "Phlebotomists",
+          "49-9062": "Medical Equipment Repairers"
+        },
+        "socs": [
+          "31-9097",
+          "19-4021",
+          "49-9062"
+        ],
+        "website": "https://carrumhealth.com/"
+      },
+      {
+        "description": "A health and wellness company.",
+        "display_name": null,
+        "lat": 37.6012359,
+        "lng": -122.3737265,
+        "naics4": "6219",
+        "naics_title": "Other Ambulatory Health Care Services",
+        "name": "Color Health",
+        "relevance": 7.04,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 3,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "31-9097": "Phlebotomists",
+          "49-9062": "Medical Equipment Repairers"
+        },
+        "socs": [
+          "31-9097",
+          "19-4021",
+          "49-9062"
+        ],
+        "website": "https://www.color.com/"
+      },
+      {
+        "description": "A medical group providing comprehensive health services.",
+        "display_name": null,
+        "lat": 37.5579484,
+        "lng": -122.2790842,
+        "naics4": "6219",
+        "naics_title": "Other Ambulatory Health Care Services",
+        "name": "Crossover Health Medical Group",
+        "relevance": 7.04,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 3,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "31-9097": "Phlebotomists",
+          "49-9062": "Medical Equipment Repairers"
+        },
+        "socs": [
+          "31-9097",
+          "19-4021",
+          "49-9062"
+        ],
+        "website": "https://crossoverhealth.com/"
+      },
+      {
+        "description": "A community service organization.",
+        "display_name": null,
+        "lat": 37.479721,
+        "lng": -122.216232,
+        "naics4": "6219",
+        "naics_title": "Other Ambulatory Health Care Services",
+        "name": "El Concilio",
+        "relevance": 7.04,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 3,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "31-9097": "Phlebotomists",
+          "49-9062": "Medical Equipment Repairers"
+        },
+        "socs": [
+          "31-9097",
+          "19-4021",
+          "49-9062"
+        ],
+        "website": "https://www.el-concilio.org/"
+      },
+      {
+        "description": "Evidation operates a real-world evidence platform that collects continuous, multimodal health data \u2014 including wearables, patient-reported outcomes, EHR, and claims \u2014 from a consented network of five million participants across the U.S. The company runs longitudinal studies across 20+ condition-specific cohorts (cardiometabolic, autoimmune, dermatology) and has partnered with 90% of top biopharma companies to support drug development and outcomes research. Technical roles span data engineering, clinical informatics, and machine learning applied to health signal processing.",
+        "display_name": null,
+        "lat": 37.5504156,
+        "lng": -122.3170698,
+        "naics4": "6219",
+        "naics_title": "Other Ambulatory Health Care Services",
+        "name": "Evidation Health",
+        "relevance": 7.04,
+        "sector": "Healthcare",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 3,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "31-9097": "Phlebotomists",
+          "49-9062": "Medical Equipment Repairers"
+        },
+        "socs": [
+          "31-9097",
+          "19-4021",
+          "49-9062"
+        ],
+        "website": "https://evidation.com/"
+      },
+      {
+        "description": "Genomic Health was a Redwood City, CA-based molecular diagnostics company best known for its Oncotype DX line of genomic tests, which assess the likelihood of cancer recurrence and guide chemotherapy decisions for breast, colon, and prostate cancer patients. The company was acquired by Exact Sciences Corporation in 2019 and absorbed into its Precision Oncology division; its products continue under the Exact Sciences brand but Genomic Health no longer operates as an independent entity.",
+        "display_name": null,
+        "lat": 37.5003168,
+        "lng": -122.217505,
+        "naics4": "6219",
+        "naics_title": "Other Ambulatory Health Care Services",
+        "name": "Genomic Health",
+        "relevance": 7.04,
+        "sector": "Healthcare",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 3,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "31-9097": "Phlebotomists",
+          "49-9062": "Medical Equipment Repairers"
+        },
+        "socs": [
+          "31-9097",
+          "19-4021",
+          "49-9062"
+        ],
+        "website": "https://precisiononcology.exactsciences.com/"
+      },
+      {
+        "description": "Health Plan of San Mateo (HPSM) is a county-organized managed care plan serving more than 120,000 Medi-Cal members and dual-eligible residents in San Mateo County through programs including Medi-Cal, CareAdvantage (for Medicare-Medi-Cal dual-eligible members), and HealthWorx HMO. HPSM administers covered benefits such as dental, prescription drugs, mental health services, and non-emergency medical transportation. The organization employs care coordination, utilization management, and administrative staff locally in San Mateo County.",
+        "display_name": null,
+        "lat": 37.6501206,
+        "lng": -122.4049634,
+        "naics4": "6219",
+        "naics_title": "Other Ambulatory Health Care Services",
+        "name": "Health Plan of San Mateo",
+        "relevance": 7.04,
+        "sector": "Healthcare",
+        "size_class": "250-499 employees",
+        "size_rank": 7,
+        "soc_count": 3,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "31-9097": "Phlebotomists",
+          "49-9062": "Medical Equipment Repairers"
+        },
+        "socs": [
+          "31-9097",
+          "19-4021",
+          "49-9062"
+        ],
+        "website": "https://www.hpsm.org/"
+      },
+      {
+        "description": "A government or non-profit agency providing health services.",
+        "display_name": null,
+        "lat": 37.5443133,
+        "lng": -122.3193137,
+        "naics4": "6219",
+        "naics_title": "Other Ambulatory Health Care Services",
+        "name": "Health Service Agency",
+        "relevance": 7.04,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 3,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "31-9097": "Phlebotomists",
+          "49-9062": "Medical Equipment Repairers"
+        },
+        "socs": [
+          "31-9097",
+          "19-4021",
+          "49-9062"
+        ],
+        "website": "https://www.smchealth.org/"
+      },
+      {
+        "description": "Illumina Ventures is an independently managed venture capital firm specializing in genomics and precision health, with a strategic relationship to Illumina Inc. (NASDAQ: ILMN). The firm invests at the early stage across life sciences tools, diagnostics, therapeutics, digital health, and sustainability, with portfolio companies including RedShiftBio, Fluent Biosciences, Arbor (gene editing), and Iambic (AI-discovered therapeutics). Through its Illumina Ventures Labs program, it provides portfolio startups with capital, sequencing access, mentorship, and genomics lab capabilities.",
+        "display_name": null,
+        "lat": 37.5699031,
+        "lng": -122.2695899,
+        "naics4": "6219",
+        "naics_title": "Other Ambulatory Health Care Services",
+        "name": "Illumina Ventures",
+        "relevance": 7.04,
+        "sector": "Healthcare",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 3,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "31-9097": "Phlebotomists",
+          "49-9062": "Medical Equipment Repairers"
+        },
+        "socs": [
+          "31-9097",
+          "19-4021",
+          "49-9062"
+        ],
+        "website": "https://www.illuminaventures.com/"
+      },
+      {
+        "description": "A medical group associated with Mills-Peninsula.",
+        "display_name": null,
+        "lat": 37.5893059,
+        "lng": -122.342542,
+        "naics4": "6219",
+        "naics_title": "Other Ambulatory Health Care Services",
+        "name": "Mills-Peninsula Medical Group",
+        "relevance": 7.04,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 3,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "31-9097": "Phlebotomists",
+          "49-9062": "Medical Equipment Repairers"
+        },
+        "socs": [
+          "31-9097",
+          "19-4021",
+          "49-9062"
+        ],
+        "website": "https://www.mpmg.com/"
+      },
+      {
+        "description": "A district responsible for healthcare services on the Peninsula.",
+        "display_name": null,
+        "lat": 37.5820802,
+        "lng": -122.3965404,
+        "naics4": "6219",
+        "naics_title": "Other Ambulatory Health Care Services",
+        "name": "Peninsula Health Care District",
+        "relevance": 7.04,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 3,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "31-9097": "Phlebotomists",
+          "49-9062": "Medical Equipment Repairers"
+        },
+        "socs": [
+          "31-9097",
+          "19-4021",
+          "49-9062"
+        ],
+        "website": "https://www.peninsulahealthcaredistrict.org/"
+      },
+      {
+        "description": "A company developing health technology solutions.",
+        "display_name": null,
+        "lat": 37.5047644,
+        "lng": -122.2526363,
+        "naics4": "6219",
+        "naics_title": "Other Ambulatory Health Care Services",
+        "name": "Pivot Health Technologies",
+        "relevance": 7.04,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 3,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "31-9097": "Phlebotomists",
+          "49-9062": "Medical Equipment Repairers"
+        },
+        "socs": [
+          "31-9097",
+          "19-4021",
+          "49-9062"
+        ],
+        "website": "https://pivot.co/"
+      },
+      {
+        "description": "Dignity Health - Sequoia Hospital is a not-for-profit acute-care community hospital in Redwood City, CA, part of the CommonSpirit Health system, serving the greater Bay Area since 1950. The hospital operates over 200 beds and is best known for its Heart and Vascular Institute \u2014 a nationally recognized cardiac program with a clinical partnership with Stanford Health Care \u2014 along with a Family Birth Center (with Lucile Packard NICU support), orthopedic joint replacement, and a 24-hour emergency department. Clinical and allied health roles on-site include nursing, cardiovascular technologists, surgical technicians, radiology techs, and laboratory scientists.",
+        "display_name": null,
+        "lat": 37.4873035,
+        "lng": -122.2358874,
+        "naics4": "6219",
+        "naics_title": "Other Ambulatory Health Care Services",
+        "name": "Sequoia Hospital",
+        "relevance": 7.04,
+        "sector": "Healthcare",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 3,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "31-9097": "Phlebotomists",
+          "49-9062": "Medical Equipment Repairers"
+        },
+        "socs": [
+          "31-9097",
+          "19-4021",
+          "49-9062"
+        ],
+        "website": "https://www.dignityhealth.org/bayarea/locations/sequoia"
+      },
+      {
+        "description": "A company focused on sleep health and solutions.",
+        "display_name": null,
+        "lat": 37.5076791,
+        "lng": -122.2519693,
+        "naics4": "6219",
+        "naics_title": "Other Ambulatory Health Care Services",
+        "name": "Sleepquest",
+        "relevance": 7.04,
+        "sector": "Healthcare",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 3,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "31-9097": "Phlebotomists",
+          "49-9062": "Medical Equipment Repairers"
+        },
+        "socs": [
+          "31-9097",
+          "19-4021",
+          "49-9062"
+        ],
+        "website": "https://www.sleepquest.com/"
+      },
+      {
+        "description": "Stanford Blood Center collects whole blood, platelets, plasma, and SuperRed donations to support patients. Operating multiple donation centers across the Bay Area and hosting mobile drives, they also advance transfusion and transplantation medicine through research and specialized products and services.",
+        "display_name": null,
+        "lat": 37.40382684475,
+        "lng": -122.146011742185,
+        "naics4": "6219",
+        "naics_title": "Other Ambulatory Health Care Services",
+        "name": "Stanford Blood Center",
+        "relevance": 7.04,
+        "sector": "Healthcare",
+        "size_class": null,
+        "size_rank": 0,
+        "soc_count": 3,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "31-9097": "Phlebotomists",
+          "49-9062": "Medical Equipment Repairers"
+        },
+        "socs": [
+          "31-9097",
+          "19-4021",
+          "49-9062"
+        ],
+        "website": "https://stanfordbloodcenter.org/"
+      },
+      {
+        "description": "Adicet Bio is a clinical-stage biotechnology company headquartered in Redwood City, California that develops allogeneic gamma delta CAR T cell therapies for autoimmune diseases and cancer. Its lead program, prulacabtagene leucel (prula-cel), is a Phase 1 off-the-shelf CAR T therapy targeting CD20-expressing B cells across multiple autoimmune conditions including lupus nephritis and systemic sclerosis, with FDA Fast Track Designation for three indications. The company also has an early-stage armored PSMA-targeting program for metastatic prostate cancer, and employs scientists, clinical development staff, and manufacturing operations professionals across its Redwood City headquarters.",
+        "display_name": null,
+        "lat": 37.5381944,
+        "lng": -122.2527094,
+        "naics4": "3254",
+        "naics_title": "Pharmaceutical and Medicine Manufacturing",
+        "name": "Adicet Bio",
+        "relevance": 3.55,
+        "sector": "Manufacturing",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 4,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "31-9097": "Phlebotomists",
+          "49-9062": "Medical Equipment Repairers"
+        },
+        "socs": [
+          "19-4021",
+          "19-4031",
+          "31-9097",
+          "49-9062"
+        ],
+        "website": "https://www.adicetbio.com/"
+      },
+      {
+        "description": "Alpha Teknova manufactures high-quality reagents, including buffers, media, and water, for the life sciences industry. They serve over 3,000 customers in academia, biotechnology, and biopharmaceuticals, offering both off-the-shelf and custom formulations from discovery through commercialization in their 180,000 sq ft ISO 13485 certified facilities.",
+        "display_name": null,
+        "lat": 36.890957072976,
+        "lng": -121.39683625885,
+        "naics4": "3254",
+        "naics_title": "Pharmaceutical and Medicine Manufacturing",
+        "name": "Alpha Teknova",
+        "relevance": 3.55,
+        "sector": "Manufacturing",
+        "size_class": null,
+        "size_rank": 0,
+        "soc_count": 4,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "31-9097": "Phlebotomists",
+          "49-9062": "Medical Equipment Repairers"
+        },
+        "socs": [
+          "19-4021",
+          "19-4031",
+          "31-9097",
+          "49-9062"
+        ],
+        "website": "https://www.teknova.com/"
+      },
+      {
+        "description": "Alumis is a South San Francisco-based biopharmaceutical company advancing targeted small-molecule therapies for immune-mediated diseases, with a pipeline anchored by envudeucitinib, a selective TYK2 inhibitor in Phase 3 trials for plaque psoriasis and systemic lupus erythematosus. Their pipeline also includes lonigutamab, an anti-IGF-1R antibody targeting thyroid eye disease, and an additional preclinical candidate. The company employs drug discovery, clinical development, and technical operations staff at its Bay Area headquarters.",
+        "display_name": null,
+        "lat": 37.6521534,
+        "lng": -122.3928729,
+        "naics4": "3254",
+        "naics_title": "Pharmaceutical and Medicine Manufacturing",
+        "name": "Alumis",
+        "relevance": 3.55,
+        "sector": "Manufacturing",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 4,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "31-9097": "Phlebotomists",
+          "49-9062": "Medical Equipment Repairers"
+        },
+        "socs": [
+          "19-4021",
+          "19-4031",
+          "31-9097",
+          "49-9062"
+        ],
+        "website": "https://www.alumis.com/"
+      },
+      {
+        "description": "Anwita Biosciences is a San Carlos-based biopharmaceutical company developing immunotherapy and oncology treatments, with a pipeline built around targeted cytokine fusion proteins (including lead candidate AWT020), antibody-drug conjugates, and multi-specific T-cell engagers. Their platform combines antibody discovery, cytokine engineering, proprietary toxin-linker chemistry, and AI-assisted protein design to target cancers including non-small cell lung cancer, gastrointestinal cancers, and melanoma. The company employs scientists and engineers in protein engineering, computational biology, and oncology drug development at its headquarters in San Carlos, California.",
+        "display_name": null,
+        "lat": 37.5140218,
+        "lng": -122.2636358,
+        "naics4": "3254",
+        "naics_title": "Pharmaceutical and Medicine Manufacturing",
+        "name": "Anwita Bioscience",
+        "relevance": 3.55,
+        "sector": "Manufacturing",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 4,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "31-9097": "Phlebotomists",
+          "49-9062": "Medical Equipment Repairers"
+        },
+        "socs": [
+          "19-4021",
+          "19-4031",
+          "31-9097",
+          "49-9062"
+        ],
+        "website": "https://www.anwitabio.com/"
+      },
+      {
+        "description": "AstraZeneca is a research-based biopharmaceutical company focused on transforming healthcare through science. They operate across therapy areas including Oncology, BioPharmaceuticals (Cardiovascular, Renal and Metabolism, Respiratory & Immunology), Vaccines & Immune Therapies, and Rare Disease, serving people globally.",
+        "display_name": null,
+        "lat": 37.39007040082,
+        "lng": -122.048408358756,
+        "naics4": "3254",
+        "naics_title": "Pharmaceutical and Medicine Manufacturing",
+        "name": "Astrazeneca",
+        "relevance": 3.55,
+        "sector": "Manufacturing",
+        "size_class": null,
+        "size_rank": 0,
+        "soc_count": 4,
+        "soc_titles": {
+          "19-4021": "Biological Technicians",
+          "19-4031": "Chemical Technicians",
+          "31-9097": "Phlebotomists",
+          "49-9062": "Medical Equipment Repairers"
+        },
+        "socs": [
+          "19-4021",
+          "19-4031",
+          "31-9097",
+          "49-9062"
+        ],
+        "website": "https://www.astrazeneca.com/"
+      }
+    ],
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "Life Sciences / Biotech",
+    "shed_counties": [
+      "San Mateo",
+      "Santa Clara"
+    ],
+    "shown": 25,
+    "total": 332
+  },
+  "/programs": {
+    "coverage_awards_only": true,
+    "latest_award_year": "2024-2025",
+    "matrix": {
+      "cells": [
+        {
+          "awards": 20,
+          "college": "Berkeley City College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "043000"
+        },
+        {
+          "awards": 2,
+          "college": "Cabrillo College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "043000"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "043000"
+        },
+        {
+          "awards": 0,
+          "college": "Chabot College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "043000"
+        },
+        {
+          "awards": 10,
+          "college": "City College of San Francisco",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "043000"
+        },
+        {
+          "awards": 0,
+          "college": "College of Alameda",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "043000"
+        },
+        {
+          "awards": 0,
+          "college": "College of Marin",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "043000"
+        },
+        {
+          "awards": 11,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "043000"
+        },
+        {
+          "awards": 2,
+          "college": "Contra Costa College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "043000"
+        },
+        {
+          "awards": 0,
+          "college": "De Anza College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "043000"
+        },
+        {
+          "awards": 0,
+          "college": "Diablo Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "043000"
+        },
+        {
+          "awards": 0,
+          "college": "Evergreen Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "043000"
+        },
+        {
+          "awards": 0,
+          "college": "Foothill College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "043000"
+        },
+        {
+          "awards": 0,
+          "college": "Gavilan College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "043000"
+        },
+        {
+          "awards": 17,
+          "college": "Laney College",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "043000"
+        },
+        {
+          "awards": 6,
+          "college": "Las Positas College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "043000"
+        },
+        {
+          "awards": 0,
+          "college": "Los Medanos College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "043000"
+        },
+        {
+          "awards": 28,
+          "college": "Merritt College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "043000"
+        },
+        {
+          "awards": 0,
+          "college": "Mission College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "043000"
+        },
+        {
+          "awards": 0,
+          "college": "Napa Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "043000"
+        },
+        {
+          "awards": 6,
+          "college": "Ohlone College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "043000"
+        },
+        {
+          "awards": 0,
+          "college": "San Jose City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "043000"
+        },
+        {
+          "awards": 0,
+          "college": "Santa Rosa Junior College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "043000"
+        },
+        {
+          "awards": 3,
+          "college": "Skyline College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "043000"
+        },
+        {
+          "awards": 106,
+          "college": "Solano Community College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "043000"
+        },
+        {
+          "awards": 0,
+          "college": "West Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "043000"
+        },
+        {
+          "awards": 6,
+          "college": "Berkeley City College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "095500"
+        },
+        {
+          "awards": 5,
+          "college": "Cabrillo College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "095500"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095500"
+        },
+        {
+          "awards": 0,
+          "college": "Chabot College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095500"
+        },
+        {
+          "awards": 0,
+          "college": "City College of San Francisco",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095500"
+        },
+        {
+          "awards": 0,
+          "college": "College of Alameda",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095500"
+        },
+        {
+          "awards": 0,
+          "college": "College of Marin",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095500"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095500"
+        },
+        {
+          "awards": 0,
+          "college": "Contra Costa College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095500"
+        },
+        {
+          "awards": 0,
+          "college": "De Anza College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095500"
+        },
+        {
+          "awards": 0,
+          "college": "Diablo Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095500"
+        },
+        {
+          "awards": 0,
+          "college": "Evergreen Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095500"
+        },
+        {
+          "awards": 0,
+          "college": "Foothill College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095500"
+        },
+        {
+          "awards": 0,
+          "college": "Gavilan College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095500"
+        },
+        {
+          "awards": 0,
+          "college": "Laney College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095500"
+        },
+        {
+          "awards": 0,
+          "college": "Las Positas College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095500"
+        },
+        {
+          "awards": 0,
+          "college": "Los Medanos College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095500"
+        },
+        {
+          "awards": 0,
+          "college": "Merritt College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095500"
+        },
+        {
+          "awards": 0,
+          "college": "Mission College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095500"
+        },
+        {
+          "awards": 0,
+          "college": "Napa Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095500"
+        },
+        {
+          "awards": 0,
+          "college": "Ohlone College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095500"
+        },
+        {
+          "awards": 0,
+          "college": "San Jose City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095500"
+        },
+        {
+          "awards": 0,
+          "college": "Santa Rosa Junior College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095500"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095500"
+        },
+        {
+          "awards": 0,
+          "college": "Solano Community College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095500"
+        },
+        {
+          "awards": 0,
+          "college": "West Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "095500"
+        },
+        {
+          "awards": 0,
+          "college": "Berkeley City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "120510"
+        },
+        {
+          "awards": 14,
+          "college": "Cabrillo College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "120510"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "120510"
+        },
+        {
+          "awards": 0,
+          "college": "Chabot College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "120510"
+        },
+        {
+          "awards": 0,
+          "college": "City College of San Francisco",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "120510"
+        },
+        {
+          "awards": 0,
+          "college": "College of Alameda",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "120510"
+        },
+        {
+          "awards": 0,
+          "college": "College of Marin",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "120510"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "120510"
+        },
+        {
+          "awards": 0,
+          "college": "Contra Costa College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "120510"
+        },
+        {
+          "awards": 26,
+          "college": "De Anza College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "120510"
+        },
+        {
+          "awards": 0,
+          "college": "Diablo Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "120510"
+        },
+        {
+          "awards": 0,
+          "college": "Evergreen Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "120510"
+        },
+        {
+          "awards": 0,
+          "college": "Foothill College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "120510"
+        },
+        {
+          "awards": 0,
+          "college": "Gavilan College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "120510"
+        },
+        {
+          "awards": 0,
+          "college": "Laney College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "120510"
+        },
+        {
+          "awards": 0,
+          "college": "Las Positas College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "120510"
+        },
+        {
+          "awards": 0,
+          "college": "Los Medanos College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "120510"
+        },
+        {
+          "awards": 0,
+          "college": "Merritt College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "120510"
+        },
+        {
+          "awards": 0,
+          "college": "Mission College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "120510"
+        },
+        {
+          "awards": 0,
+          "college": "Napa Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "120510"
+        },
+        {
+          "awards": 0,
+          "college": "Ohlone College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "120510"
+        },
+        {
+          "awards": 0,
+          "college": "San Jose City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "120510"
+        },
+        {
+          "awards": 0,
+          "college": "Santa Rosa Junior College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "120510"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "120510"
+        },
+        {
+          "awards": 0,
+          "college": "Solano Community College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "120510"
+        },
+        {
+          "awards": 0,
+          "college": "West Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "120510"
+        }
+      ],
+      "colleges": [
+        "Berkeley City College",
+        "Cabrillo College",
+        "Ca\u00f1ada College",
+        "Chabot College",
+        "City College of San Francisco",
+        "College of Alameda",
+        "College of Marin",
+        "College of San Mateo",
+        "Contra Costa College",
+        "De Anza College",
+        "Diablo Valley College",
+        "Evergreen Valley College",
+        "Foothill College",
+        "Gavilan College",
+        "Laney College",
+        "Las Positas College",
+        "Los Medanos College",
+        "Merritt College",
+        "Mission College",
+        "Napa Valley College",
+        "Ohlone College",
+        "San Jose City College",
+        "Santa Rosa Junior College",
+        "Skyline College",
+        "Solano Community College",
+        "West Valley College"
+      ]
+    },
+    "n_colleges": 26,
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "Life Sciences / Biotech",
+    "tops": [
+      {
+        "awards_total": 211,
+        "enrollment_total": 2138,
+        "n_colleges_offering": 9,
+        "name": "Biotechnology and Biomedical Technology",
+        "soc_count": 2,
+        "top6": "043000"
+      },
+      {
+        "awards_total": 40,
+        "enrollment_total": 162,
+        "n_colleges_offering": 3,
+        "name": "Phlebotomy",
+        "soc_count": 1,
+        "top6": "120510"
+      },
+      {
+        "awards_total": 11,
+        "enrollment_total": 50,
+        "n_colleges_offering": 2,
+        "name": "Laboratory Science Technology",
+        "soc_count": 2,
+        "top6": "095500"
+      }
+    ]
+  },
+  "landscape": {
+    "aggregate": {
+      "candidate_employers": 368,
+      "combined_awards": 262,
+      "combined_supply_total": 415.36,
+      "gap": 905,
+      "n_colleges": 26,
+      "n_occupations": 4,
+      "occupations_taught": 4,
+      "regional_demand_total": 1320
+    },
+    "award_years": [
+      "2020-2021",
+      "2021-2022",
+      "2022-2023",
+      "2023-2024",
+      "2024-2025"
+    ],
+    "colleges": [
+      {
+        "cells": [
+          {
+            "annual_openings": 610,
+            "annual_wage": 77450,
+            "awards_recent": 26,
+            "course_count": 10,
+            "enrolled": true,
+            "feeding_awards": 26,
+            "gap": 591,
+            "growth_rate": 0.070100071,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  10,
+                  20,
+                  13,
+                  20
+                ],
+                "awards_recent": 20,
+                "enrollment": [
+                  null,
+                  null,
+                  93,
+                  null,
+                  104,
+                  60,
+                  null,
+                  98,
+                  101,
+                  null,
+                  170,
+                  61,
+                  null,
+                  150,
+                  106
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  6,
+                  3,
+                  7,
+                  6
+                ],
+                "awards_recent": 6,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  12,
+                  null,
+                  null,
+                  14,
+                  null,
+                  null,
+                  16,
+                  null,
+                  null,
+                  16,
+                  null
+                ],
+                "name": "Laboratory Science Technology",
+                "top6": "095500",
+                "wages": []
+              }
+            ],
+            "soc_code": "19-4021",
+            "supply": 18.67,
+            "title": "Biological Technicians"
+          },
+          {
+            "annual_openings": 240,
+            "annual_wage": 63690,
+            "awards_recent": 6,
+            "course_count": 1,
+            "enrolled": true,
+            "feeding_awards": 6,
+            "gap": 233,
+            "growth_rate": 0.019812217,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  6,
+                  3,
+                  7,
+                  6
+                ],
+                "awards_recent": 6,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  12,
+                  null,
+                  null,
+                  14,
+                  null,
+                  null,
+                  16,
+                  null,
+                  null,
+                  16,
+                  null
+                ],
+                "name": "Laboratory Science Technology",
+                "top6": "095500",
+                "wages": []
+              }
+            ],
+            "soc_code": "19-4031",
+            "supply": 7.0,
+            "title": "Chemical Technicians"
+          },
+          {
+            "annual_openings": 340,
+            "annual_wage": 59470,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 340,
+            "growth_rate": 0.098649206,
+            "programs": [],
+            "soc_code": "31-9097",
+            "supply": 0.0,
+            "title": "Phlebotomists"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 82260,
+            "awards_recent": 20,
+            "course_count": 9,
+            "enrolled": true,
+            "feeding_awards": 20,
+            "gap": 118,
+            "growth_rate": 0.046982336,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  10,
+                  20,
+                  13,
+                  20
+                ],
+                "awards_recent": 20,
+                "enrollment": [
+                  null,
+                  null,
+                  93,
+                  null,
+                  104,
+                  60,
+                  null,
+                  98,
+                  101,
+                  null,
+                  170,
+                  61,
+                  null,
+                  150,
+                  106
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              }
+            ],
+            "soc_code": "49-9062",
+            "supply": 11.67,
+            "title": "Medical Equipment Repairers"
+          }
+        ],
+        "name": "Berkeley City College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 610,
+            "annual_wage": 77450,
+            "awards_recent": 7,
+            "course_count": 5,
+            "enrolled": true,
+            "feeding_awards": 7,
+            "gap": 592,
+            "growth_rate": 0.070100071,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  1,
+                  2,
+                  1,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  null,
+                  null,
+                  36,
+                  null,
+                  26,
+                  24,
+                  null,
+                  null,
+                  24,
+                  null,
+                  5,
+                  null,
+                  null,
+                  null,
+                  29
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  14,
+                  8,
+                  4,
+                  5
+                ],
+                "awards_recent": 5,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  19,
+                  null,
+                  15,
+                  11,
+                  null,
+                  21,
+                  16,
+                  null,
+                  34,
+                  null
+                ],
+                "name": "Laboratory Science Technology",
+                "top6": "095500",
+                "wages": []
+              }
+            ],
+            "soc_code": "19-4021",
+            "supply": 17.5,
+            "title": "Biological Technicians"
+          },
+          {
+            "annual_openings": 240,
+            "annual_wage": 63690,
+            "awards_recent": 5,
+            "course_count": 2,
+            "enrolled": true,
+            "feeding_awards": 5,
+            "gap": 229,
+            "growth_rate": 0.019812217,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  14,
+                  8,
+                  4,
+                  5
+                ],
+                "awards_recent": 5,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  19,
+                  null,
+                  15,
+                  11,
+                  null,
+                  21,
+                  16,
+                  null,
+                  34,
+                  null
+                ],
+                "name": "Laboratory Science Technology",
+                "top6": "095500",
+                "wages": []
+              }
+            ],
+            "soc_code": "19-4031",
+            "supply": 11.0,
+            "title": "Chemical Technicians"
+          },
+          {
+            "annual_openings": 340,
+            "annual_wage": 59470,
+            "awards_recent": 14,
+            "course_count": 4,
+            "enrolled": true,
+            "feeding_awards": 14,
+            "gap": 331,
+            "growth_rate": 0.098649206,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  42,
+                  14
+                ],
+                "awards_recent": 14,
+                "enrollment": [
+                  null,
+                  null,
+                  67,
+                  null,
+                  54,
+                  60,
+                  null,
+                  72,
+                  108,
+                  null,
+                  131,
+                  109,
+                  null,
+                  48,
+                  null
+                ],
+                "name": "Phlebotomy",
+                "top6": "120510",
+                "wages": []
+              }
+            ],
+            "soc_code": "31-9097",
+            "supply": 9.33,
+            "title": "Phlebotomists"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 82260,
+            "awards_recent": 2,
+            "course_count": 3,
+            "enrolled": true,
+            "feeding_awards": 2,
+            "gap": 124,
+            "growth_rate": 0.046982336,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  1,
+                  2,
+                  1,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  null,
+                  null,
+                  36,
+                  null,
+                  26,
+                  24,
+                  null,
+                  null,
+                  24,
+                  null,
+                  5,
+                  null,
+                  null,
+                  null,
+                  29
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              }
+            ],
+            "soc_code": "49-9062",
+            "supply": 6.5,
+            "title": "Medical Equipment Repairers"
+          }
+        ],
+        "name": "Cabrillo College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 610,
+            "annual_wage": 77450,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 610,
+            "growth_rate": 0.070100071,
+            "programs": [],
+            "soc_code": "19-4021",
+            "supply": 0.0,
+            "title": "Biological Technicians"
+          },
+          {
+            "annual_openings": 240,
+            "annual_wage": 63690,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 240,
+            "growth_rate": 0.019812217,
+            "programs": [],
+            "soc_code": "19-4031",
+            "supply": 0.0,
+            "title": "Chemical Technicians"
+          },
+          {
+            "annual_openings": 340,
+            "annual_wage": 59470,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 340,
+            "growth_rate": 0.098649206,
+            "programs": [],
+            "soc_code": "31-9097",
+            "supply": 0.0,
+            "title": "Phlebotomists"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 82260,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 130,
+            "growth_rate": 0.046982336,
+            "programs": [],
+            "soc_code": "49-9062",
+            "supply": 0.0,
+            "title": "Medical Equipment Repairers"
+          }
+        ],
+        "name": "Ca\u00f1ada College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 610,
+            "annual_wage": 77450,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 610,
+            "growth_rate": 0.070100071,
+            "programs": [],
+            "soc_code": "19-4021",
+            "supply": 0.0,
+            "title": "Biological Technicians"
+          },
+          {
+            "annual_openings": 240,
+            "annual_wage": 63690,
+            "awards_recent": 0,
+            "course_count": 5,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 240,
+            "growth_rate": 0.019812217,
+            "programs": [],
+            "soc_code": "19-4031",
+            "supply": 0.0,
+            "title": "Chemical Technicians"
+          },
+          {
+            "annual_openings": 340,
+            "annual_wage": 59470,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 340,
+            "growth_rate": 0.098649206,
+            "programs": [],
+            "soc_code": "31-9097",
+            "supply": 0.0,
+            "title": "Phlebotomists"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 82260,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 130,
+            "growth_rate": 0.046982336,
+            "programs": [],
+            "soc_code": "49-9062",
+            "supply": 0.0,
+            "title": "Medical Equipment Repairers"
+          }
+        ],
+        "name": "Chabot College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 610,
+            "annual_wage": 77450,
+            "awards_recent": 10,
+            "course_count": 26,
+            "enrolled": true,
+            "feeding_awards": 10,
+            "gap": 573,
+            "growth_rate": 0.070100071,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  23,
+                  32,
+                  26,
+                  10
+                ],
+                "awards_recent": 10,
+                "enrollment": [
+                  null,
+                  null,
+                  278,
+                  null,
+                  242,
+                  152,
+                  null,
+                  118,
+                  91,
+                  null,
+                  89,
+                  107,
+                  null,
+                  130,
+                  155
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              }
+            ],
+            "soc_code": "19-4021",
+            "supply": 37.01,
+            "title": "Biological Technicians"
+          },
+          {
+            "annual_openings": 240,
+            "annual_wage": 63690,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 240,
+            "growth_rate": 0.019812217,
+            "programs": [],
+            "soc_code": "19-4031",
+            "supply": 0.0,
+            "title": "Chemical Technicians"
+          },
+          {
+            "annual_openings": 340,
+            "annual_wage": 59470,
+            "awards_recent": 0,
+            "course_count": 5,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 297,
+            "growth_rate": 0.098649206,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  21,
+                  22,
+                  null,
+                  23,
+                  23,
+                  null,
+                  22,
+                  25,
+                  null,
+                  24,
+                  25
+                ],
+                "name": "Phlebotomy",
+                "top6": "120510",
+                "wages": []
+              }
+            ],
+            "soc_code": "31-9097",
+            "supply": 43.0,
+            "title": "Phlebotomists"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 82260,
+            "awards_recent": 10,
+            "course_count": 20,
+            "enrolled": true,
+            "feeding_awards": 10,
+            "gap": 93,
+            "growth_rate": 0.046982336,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  23,
+                  32,
+                  26,
+                  10
+                ],
+                "awards_recent": 10,
+                "enrollment": [
+                  null,
+                  null,
+                  278,
+                  null,
+                  242,
+                  152,
+                  null,
+                  118,
+                  91,
+                  null,
+                  89,
+                  107,
+                  null,
+                  130,
+                  155
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              }
+            ],
+            "soc_code": "49-9062",
+            "supply": 37.01,
+            "title": "Medical Equipment Repairers"
+          }
+        ],
+        "name": "City College of San Francisco"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 610,
+            "annual_wage": 77450,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 610,
+            "growth_rate": 0.070100071,
+            "programs": [],
+            "soc_code": "19-4021",
+            "supply": 0.0,
+            "title": "Biological Technicians"
+          },
+          {
+            "annual_openings": 240,
+            "annual_wage": 63690,
+            "awards_recent": 0,
+            "course_count": 18,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 240,
+            "growth_rate": 0.019812217,
+            "programs": [],
+            "soc_code": "19-4031",
+            "supply": 0.0,
+            "title": "Chemical Technicians"
+          },
+          {
+            "annual_openings": 340,
+            "annual_wage": 59470,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 340,
+            "growth_rate": 0.098649206,
+            "programs": [],
+            "soc_code": "31-9097",
+            "supply": 0.0,
+            "title": "Phlebotomists"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 82260,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 130,
+            "growth_rate": 0.046982336,
+            "programs": [],
+            "soc_code": "49-9062",
+            "supply": 0.0,
+            "title": "Medical Equipment Repairers"
+          }
+        ],
+        "name": "College of Alameda"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 610,
+            "annual_wage": 77450,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 610,
+            "growth_rate": 0.070100071,
+            "programs": [],
+            "soc_code": "19-4021",
+            "supply": 0.0,
+            "title": "Biological Technicians"
+          },
+          {
+            "annual_openings": 240,
+            "annual_wage": 63690,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 240,
+            "growth_rate": 0.019812217,
+            "programs": [],
+            "soc_code": "19-4031",
+            "supply": 0.0,
+            "title": "Chemical Technicians"
+          },
+          {
+            "annual_openings": 340,
+            "annual_wage": 59470,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 340,
+            "growth_rate": 0.098649206,
+            "programs": [],
+            "soc_code": "31-9097",
+            "supply": 0.0,
+            "title": "Phlebotomists"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 82260,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 130,
+            "growth_rate": 0.046982336,
+            "programs": [],
+            "soc_code": "49-9062",
+            "supply": 0.0,
+            "title": "Medical Equipment Repairers"
+          }
+        ],
+        "name": "College of Marin"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 610,
+            "annual_wage": 77450,
+            "awards_recent": 11,
+            "course_count": 0,
+            "enrolled": true,
+            "feeding_awards": 11,
+            "gap": 610,
+            "growth_rate": 0.070100071,
+            "programs": [
+              {
+                "awards": [
+                  3,
+                  2,
+                  2,
+                  3,
+                  11
+                ],
+                "awards_recent": 11,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  14,
+                  18,
+                  null,
+                  null,
+                  32,
+                  null,
+                  21,
+                  28
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              }
+            ],
+            "soc_code": "19-4021",
+            "supply": 0.0,
+            "title": "Biological Technicians"
+          },
+          {
+            "annual_openings": 240,
+            "annual_wage": 63690,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 240,
+            "growth_rate": 0.019812217,
+            "programs": [],
+            "soc_code": "19-4031",
+            "supply": 0.0,
+            "title": "Chemical Technicians"
+          },
+          {
+            "annual_openings": 340,
+            "annual_wage": 59470,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 340,
+            "growth_rate": 0.098649206,
+            "programs": [],
+            "soc_code": "31-9097",
+            "supply": 0.0,
+            "title": "Phlebotomists"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 82260,
+            "awards_recent": 11,
+            "course_count": 0,
+            "enrolled": true,
+            "feeding_awards": 11,
+            "gap": 130,
+            "growth_rate": 0.046982336,
+            "programs": [
+              {
+                "awards": [
+                  3,
+                  2,
+                  2,
+                  3,
+                  11
+                ],
+                "awards_recent": 11,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  14,
+                  18,
+                  null,
+                  null,
+                  32,
+                  null,
+                  21,
+                  28
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              }
+            ],
+            "soc_code": "49-9062",
+            "supply": 0.0,
+            "title": "Medical Equipment Repairers"
+          }
+        ],
+        "name": "College of San Mateo"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 610,
+            "annual_wage": 77450,
+            "awards_recent": 2,
+            "course_count": 11,
+            "enrolled": true,
+            "feeding_awards": 2,
+            "gap": 607,
+            "growth_rate": 0.070100071,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  5,
+                  1,
+                  5,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  null,
+                  null,
+                  50,
+                  null,
+                  92,
+                  54,
+                  null,
+                  86,
+                  60,
+                  null,
+                  65,
+                  27,
+                  null,
+                  98,
+                  37
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              }
+            ],
+            "soc_code": "19-4021",
+            "supply": 3.0,
+            "title": "Biological Technicians"
+          },
+          {
+            "annual_openings": 240,
+            "annual_wage": 63690,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 240,
+            "growth_rate": 0.019812217,
+            "programs": [],
+            "soc_code": "19-4031",
+            "supply": 0.0,
+            "title": "Chemical Technicians"
+          },
+          {
+            "annual_openings": 340,
+            "annual_wage": 59470,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 340,
+            "growth_rate": 0.098649206,
+            "programs": [],
+            "soc_code": "31-9097",
+            "supply": 0.0,
+            "title": "Phlebotomists"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 82260,
+            "awards_recent": 2,
+            "course_count": 11,
+            "enrolled": true,
+            "feeding_awards": 2,
+            "gap": 127,
+            "growth_rate": 0.046982336,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  5,
+                  1,
+                  5,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  null,
+                  null,
+                  50,
+                  null,
+                  92,
+                  54,
+                  null,
+                  86,
+                  60,
+                  null,
+                  65,
+                  27,
+                  null,
+                  98,
+                  37
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              }
+            ],
+            "soc_code": "49-9062",
+            "supply": 3.0,
+            "title": "Medical Equipment Repairers"
+          }
+        ],
+        "name": "Contra Costa College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 610,
+            "annual_wage": 77450,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 610,
+            "growth_rate": 0.070100071,
+            "programs": [],
+            "soc_code": "19-4021",
+            "supply": 0.0,
+            "title": "Biological Technicians"
+          },
+          {
+            "annual_openings": 240,
+            "annual_wage": 63690,
+            "awards_recent": 0,
+            "course_count": 25,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 240,
+            "growth_rate": 0.019812217,
+            "programs": [],
+            "soc_code": "19-4031",
+            "supply": 0.0,
+            "title": "Chemical Technicians"
+          },
+          {
+            "annual_openings": 340,
+            "annual_wage": 59470,
+            "awards_recent": 26,
+            "course_count": 1,
+            "enrolled": true,
+            "feeding_awards": 26,
+            "gap": 309,
+            "growth_rate": 0.098649206,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  33,
+                  35,
+                  22,
+                  26
+                ],
+                "awards_recent": 26,
+                "enrollment": [
+                  12,
+                  15,
+                  2,
+                  4,
+                  14,
+                  null,
+                  10,
+                  14,
+                  null,
+                  6,
+                  9,
+                  1,
+                  6,
+                  10,
+                  5
+                ],
+                "name": "Phlebotomy",
+                "top6": "120510",
+                "wages": []
+              }
+            ],
+            "soc_code": "31-9097",
+            "supply": 31.33,
+            "title": "Phlebotomists"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 82260,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 130,
+            "growth_rate": 0.046982336,
+            "programs": [],
+            "soc_code": "49-9062",
+            "supply": 0.0,
+            "title": "Medical Equipment Repairers"
+          }
+        ],
+        "name": "De Anza College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 610,
+            "annual_wage": 77450,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 610,
+            "growth_rate": 0.070100071,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              }
+            ],
+            "soc_code": "19-4021",
+            "supply": 0.0,
+            "title": "Biological Technicians"
+          },
+          {
+            "annual_openings": 240,
+            "annual_wage": 63690,
+            "awards_recent": 0,
+            "course_count": 13,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 240,
+            "growth_rate": 0.019812217,
+            "programs": [],
+            "soc_code": "19-4031",
+            "supply": 0.0,
+            "title": "Chemical Technicians"
+          },
+          {
+            "annual_openings": 340,
+            "annual_wage": 59470,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 340,
+            "growth_rate": 0.098649206,
+            "programs": [],
+            "soc_code": "31-9097",
+            "supply": 0.0,
+            "title": "Phlebotomists"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 82260,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 130,
+            "growth_rate": 0.046982336,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              }
+            ],
+            "soc_code": "49-9062",
+            "supply": 0.0,
+            "title": "Medical Equipment Repairers"
+          }
+        ],
+        "name": "Diablo Valley College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 610,
+            "annual_wage": 77450,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 610,
+            "growth_rate": 0.070100071,
+            "programs": [],
+            "soc_code": "19-4021",
+            "supply": 0.0,
+            "title": "Biological Technicians"
+          },
+          {
+            "annual_openings": 240,
+            "annual_wage": 63690,
+            "awards_recent": 0,
+            "course_count": 6,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 240,
+            "growth_rate": 0.019812217,
+            "programs": [],
+            "soc_code": "19-4031",
+            "supply": 0.0,
+            "title": "Chemical Technicians"
+          },
+          {
+            "annual_openings": 340,
+            "annual_wage": 59470,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 340,
+            "growth_rate": 0.098649206,
+            "programs": [],
+            "soc_code": "31-9097",
+            "supply": 0.0,
+            "title": "Phlebotomists"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 82260,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 130,
+            "growth_rate": 0.046982336,
+            "programs": [],
+            "soc_code": "49-9062",
+            "supply": 0.0,
+            "title": "Medical Equipment Repairers"
+          }
+        ],
+        "name": "Evergreen Valley College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 610,
+            "annual_wage": 77450,
+            "awards_recent": 0,
+            "course_count": 4,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 610,
+            "growth_rate": 0.070100071,
+            "programs": [],
+            "soc_code": "19-4021",
+            "supply": 0.0,
+            "title": "Biological Technicians"
+          },
+          {
+            "annual_openings": 240,
+            "annual_wage": 63690,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 240,
+            "growth_rate": 0.019812217,
+            "programs": [],
+            "soc_code": "19-4031",
+            "supply": 0.0,
+            "title": "Chemical Technicians"
+          },
+          {
+            "annual_openings": 340,
+            "annual_wage": 59470,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 340,
+            "growth_rate": 0.098649206,
+            "programs": [],
+            "soc_code": "31-9097",
+            "supply": 0.0,
+            "title": "Phlebotomists"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 82260,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 130,
+            "growth_rate": 0.046982336,
+            "programs": [],
+            "soc_code": "49-9062",
+            "supply": 0.0,
+            "title": "Medical Equipment Repairers"
+          }
+        ],
+        "name": "Foothill College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 610,
+            "annual_wage": 77450,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 610,
+            "growth_rate": 0.070100071,
+            "programs": [],
+            "soc_code": "19-4021",
+            "supply": 0.0,
+            "title": "Biological Technicians"
+          },
+          {
+            "annual_openings": 240,
+            "annual_wage": 63690,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 240,
+            "growth_rate": 0.019812217,
+            "programs": [],
+            "soc_code": "19-4031",
+            "supply": 0.0,
+            "title": "Chemical Technicians"
+          },
+          {
+            "annual_openings": 340,
+            "annual_wage": 59470,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 340,
+            "growth_rate": 0.098649206,
+            "programs": [],
+            "soc_code": "31-9097",
+            "supply": 0.0,
+            "title": "Phlebotomists"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 82260,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 130,
+            "growth_rate": 0.046982336,
+            "programs": [],
+            "soc_code": "49-9062",
+            "supply": 0.0,
+            "title": "Medical Equipment Repairers"
+          }
+        ],
+        "name": "Gavilan College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 610,
+            "annual_wage": 77450,
+            "awards_recent": 17,
+            "course_count": 0,
+            "enrolled": true,
+            "feeding_awards": 17,
+            "gap": 610,
+            "growth_rate": 0.070100071,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  18,
+                  23,
+                  21,
+                  17
+                ],
+                "awards_recent": 17,
+                "enrollment": [
+                  null,
+                  null,
+                  366,
+                  null,
+                  93,
+                  108,
+                  null,
+                  59,
+                  105,
+                  null,
+                  97,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              }
+            ],
+            "soc_code": "19-4021",
+            "supply": 0.0,
+            "title": "Biological Technicians"
+          },
+          {
+            "annual_openings": 240,
+            "annual_wage": 63690,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 240,
+            "growth_rate": 0.019812217,
+            "programs": [],
+            "soc_code": "19-4031",
+            "supply": 0.0,
+            "title": "Chemical Technicians"
+          },
+          {
+            "annual_openings": 340,
+            "annual_wage": 59470,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 340,
+            "growth_rate": 0.098649206,
+            "programs": [],
+            "soc_code": "31-9097",
+            "supply": 0.0,
+            "title": "Phlebotomists"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 82260,
+            "awards_recent": 17,
+            "course_count": 0,
+            "enrolled": true,
+            "feeding_awards": 17,
+            "gap": 130,
+            "growth_rate": 0.046982336,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  18,
+                  23,
+                  21,
+                  17
+                ],
+                "awards_recent": 17,
+                "enrollment": [
+                  null,
+                  null,
+                  366,
+                  null,
+                  93,
+                  108,
+                  null,
+                  59,
+                  105,
+                  null,
+                  97,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              }
+            ],
+            "soc_code": "49-9062",
+            "supply": 0.0,
+            "title": "Medical Equipment Repairers"
+          }
+        ],
+        "name": "Laney College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 610,
+            "annual_wage": 77450,
+            "awards_recent": 6,
+            "course_count": 3,
+            "enrolled": true,
+            "feeding_awards": 6,
+            "gap": 609,
+            "growth_rate": 0.070100071,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  1,
+                  1,
+                  6
+                ],
+                "awards_recent": 6,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  9,
+                  null,
+                  null,
+                  16,
+                  null
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              }
+            ],
+            "soc_code": "19-4021",
+            "supply": 1.0,
+            "title": "Biological Technicians"
+          },
+          {
+            "annual_openings": 240,
+            "annual_wage": 63690,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 240,
+            "growth_rate": 0.019812217,
+            "programs": [],
+            "soc_code": "19-4031",
+            "supply": 0.0,
+            "title": "Chemical Technicians"
+          },
+          {
+            "annual_openings": 340,
+            "annual_wage": 59470,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 340,
+            "growth_rate": 0.098649206,
+            "programs": [],
+            "soc_code": "31-9097",
+            "supply": 0.0,
+            "title": "Phlebotomists"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 82260,
+            "awards_recent": 6,
+            "course_count": 3,
+            "enrolled": true,
+            "feeding_awards": 6,
+            "gap": 129,
+            "growth_rate": 0.046982336,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  1,
+                  1,
+                  6
+                ],
+                "awards_recent": 6,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  9,
+                  null,
+                  null,
+                  16,
+                  null
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              }
+            ],
+            "soc_code": "49-9062",
+            "supply": 1.0,
+            "title": "Medical Equipment Repairers"
+          }
+        ],
+        "name": "Las Positas College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 610,
+            "annual_wage": 77450,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 610,
+            "growth_rate": 0.070100071,
+            "programs": [],
+            "soc_code": "19-4021",
+            "supply": 0.0,
+            "title": "Biological Technicians"
+          },
+          {
+            "annual_openings": 240,
+            "annual_wage": 63690,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 240,
+            "growth_rate": 0.019812217,
+            "programs": [],
+            "soc_code": "19-4031",
+            "supply": 0.0,
+            "title": "Chemical Technicians"
+          },
+          {
+            "annual_openings": 340,
+            "annual_wage": 59470,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 340,
+            "growth_rate": 0.098649206,
+            "programs": [],
+            "soc_code": "31-9097",
+            "supply": 0.0,
+            "title": "Phlebotomists"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 82260,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 130,
+            "growth_rate": 0.046982336,
+            "programs": [],
+            "soc_code": "49-9062",
+            "supply": 0.0,
+            "title": "Medical Equipment Repairers"
+          }
+        ],
+        "name": "Los Medanos College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 610,
+            "annual_wage": 77450,
+            "awards_recent": 28,
+            "course_count": 8,
+            "enrolled": true,
+            "feeding_awards": 28,
+            "gap": 598,
+            "growth_rate": 0.070100071,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  13,
+                  33,
+                  28
+                ],
+                "awards_recent": 28,
+                "enrollment": [
+                  null,
+                  null,
+                  195,
+                  null,
+                  208,
+                  205,
+                  null,
+                  194,
+                  242,
+                  null,
+                  250,
+                  203,
+                  null,
+                  169,
+                  163
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              }
+            ],
+            "soc_code": "19-4021",
+            "supply": 11.67,
+            "title": "Biological Technicians"
+          },
+          {
+            "annual_openings": 240,
+            "annual_wage": 63690,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 240,
+            "growth_rate": 0.019812217,
+            "programs": [],
+            "soc_code": "19-4031",
+            "supply": 0.0,
+            "title": "Chemical Technicians"
+          },
+          {
+            "annual_openings": 340,
+            "annual_wage": 59470,
+            "awards_recent": 0,
+            "course_count": 2,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 340,
+            "growth_rate": 0.098649206,
+            "programs": [],
+            "soc_code": "31-9097",
+            "supply": 0.0,
+            "title": "Phlebotomists"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 82260,
+            "awards_recent": 28,
+            "course_count": 8,
+            "enrolled": true,
+            "feeding_awards": 28,
+            "gap": 118,
+            "growth_rate": 0.046982336,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  13,
+                  33,
+                  28
+                ],
+                "awards_recent": 28,
+                "enrollment": [
+                  null,
+                  null,
+                  195,
+                  null,
+                  208,
+                  205,
+                  null,
+                  194,
+                  242,
+                  null,
+                  250,
+                  203,
+                  null,
+                  169,
+                  163
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              }
+            ],
+            "soc_code": "49-9062",
+            "supply": 11.67,
+            "title": "Medical Equipment Repairers"
+          }
+        ],
+        "name": "Merritt College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 610,
+            "annual_wage": 77450,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 610,
+            "growth_rate": 0.070100071,
+            "programs": [],
+            "soc_code": "19-4021",
+            "supply": 0.0,
+            "title": "Biological Technicians"
+          },
+          {
+            "annual_openings": 240,
+            "annual_wage": 63690,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 240,
+            "growth_rate": 0.019812217,
+            "programs": [],
+            "soc_code": "19-4031",
+            "supply": 0.0,
+            "title": "Chemical Technicians"
+          },
+          {
+            "annual_openings": 340,
+            "annual_wage": 59470,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 340,
+            "growth_rate": 0.098649206,
+            "programs": [],
+            "soc_code": "31-9097",
+            "supply": 0.0,
+            "title": "Phlebotomists"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 82260,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 130,
+            "growth_rate": 0.046982336,
+            "programs": [],
+            "soc_code": "49-9062",
+            "supply": 0.0,
+            "title": "Medical Equipment Repairers"
+          }
+        ],
+        "name": "Mission College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 610,
+            "annual_wage": 77450,
+            "awards_recent": 0,
+            "course_count": 1,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 610,
+            "growth_rate": 0.070100071,
+            "programs": [],
+            "soc_code": "19-4021",
+            "supply": 0.0,
+            "title": "Biological Technicians"
+          },
+          {
+            "annual_openings": 240,
+            "annual_wage": 63690,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 240,
+            "growth_rate": 0.019812217,
+            "programs": [],
+            "soc_code": "19-4031",
+            "supply": 0.0,
+            "title": "Chemical Technicians"
+          },
+          {
+            "annual_openings": 340,
+            "annual_wage": 59470,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 340,
+            "growth_rate": 0.098649206,
+            "programs": [],
+            "soc_code": "31-9097",
+            "supply": 0.0,
+            "title": "Phlebotomists"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 82260,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 130,
+            "growth_rate": 0.046982336,
+            "programs": [],
+            "soc_code": "49-9062",
+            "supply": 0.0,
+            "title": "Medical Equipment Repairers"
+          }
+        ],
+        "name": "Napa Valley College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 610,
+            "annual_wage": 77450,
+            "awards_recent": 6,
+            "course_count": 16,
+            "enrolled": true,
+            "feeding_awards": 6,
+            "gap": 600,
+            "growth_rate": 0.070100071,
+            "programs": [
+              {
+                "awards": [
+                  6,
+                  10,
+                  14,
+                  9,
+                  6
+                ],
+                "awards_recent": 6,
+                "enrollment": [
+                  null,
+                  77,
+                  131,
+                  null,
+                  59,
+                  108,
+                  null,
+                  57,
+                  92,
+                  null,
+                  72,
+                  112,
+                  null,
+                  114,
+                  63
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              }
+            ],
+            "soc_code": "19-4021",
+            "supply": 10.0,
+            "title": "Biological Technicians"
+          },
+          {
+            "annual_openings": 240,
+            "annual_wage": 63690,
+            "awards_recent": 0,
+            "course_count": 9,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 240,
+            "growth_rate": 0.019812217,
+            "programs": [],
+            "soc_code": "19-4031",
+            "supply": 0.0,
+            "title": "Chemical Technicians"
+          },
+          {
+            "annual_openings": 340,
+            "annual_wage": 59470,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 340,
+            "growth_rate": 0.098649206,
+            "programs": [],
+            "soc_code": "31-9097",
+            "supply": 0.0,
+            "title": "Phlebotomists"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 82260,
+            "awards_recent": 6,
+            "course_count": 15,
+            "enrolled": true,
+            "feeding_awards": 6,
+            "gap": 120,
+            "growth_rate": 0.046982336,
+            "programs": [
+              {
+                "awards": [
+                  6,
+                  10,
+                  14,
+                  9,
+                  6
+                ],
+                "awards_recent": 6,
+                "enrollment": [
+                  null,
+                  77,
+                  131,
+                  null,
+                  59,
+                  108,
+                  null,
+                  57,
+                  92,
+                  null,
+                  72,
+                  112,
+                  null,
+                  114,
+                  63
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              }
+            ],
+            "soc_code": "49-9062",
+            "supply": 10.0,
+            "title": "Medical Equipment Repairers"
+          }
+        ],
+        "name": "Ohlone College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 610,
+            "annual_wage": 77450,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 610,
+            "growth_rate": 0.070100071,
+            "programs": [],
+            "soc_code": "19-4021",
+            "supply": 0.0,
+            "title": "Biological Technicians"
+          },
+          {
+            "annual_openings": 240,
+            "annual_wage": 63690,
+            "awards_recent": 0,
+            "course_count": 3,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 240,
+            "growth_rate": 0.019812217,
+            "programs": [],
+            "soc_code": "19-4031",
+            "supply": 0.0,
+            "title": "Chemical Technicians"
+          },
+          {
+            "annual_openings": 340,
+            "annual_wage": 59470,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 340,
+            "growth_rate": 0.098649206,
+            "programs": [],
+            "soc_code": "31-9097",
+            "supply": 0.0,
+            "title": "Phlebotomists"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 82260,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 130,
+            "growth_rate": 0.046982336,
+            "programs": [],
+            "soc_code": "49-9062",
+            "supply": 0.0,
+            "title": "Medical Equipment Repairers"
+          }
+        ],
+        "name": "San Jose City College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 610,
+            "annual_wage": 77450,
+            "awards_recent": 0,
+            "course_count": 1,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 610,
+            "growth_rate": 0.070100071,
+            "programs": [],
+            "soc_code": "19-4021",
+            "supply": 0.0,
+            "title": "Biological Technicians"
+          },
+          {
+            "annual_openings": 240,
+            "annual_wage": 63690,
+            "awards_recent": 0,
+            "course_count": 2,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 240,
+            "growth_rate": 0.019812217,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  32,
+                  null,
+                  28,
+                  29,
+                  null,
+                  25,
+                  24,
+                  null,
+                  29,
+                  24,
+                  null,
+                  27,
+                  22
+                ],
+                "name": "Chemical Technology",
+                "top6": "095400",
+                "wages": []
+              }
+            ],
+            "soc_code": "19-4031",
+            "supply": 0.0,
+            "title": "Chemical Technicians"
+          },
+          {
+            "annual_openings": 340,
+            "annual_wage": 59470,
+            "awards_recent": 0,
+            "course_count": 3,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 340,
+            "growth_rate": 0.098649206,
+            "programs": [],
+            "soc_code": "31-9097",
+            "supply": 0.0,
+            "title": "Phlebotomists"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 82260,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 130,
+            "growth_rate": 0.046982336,
+            "programs": [],
+            "soc_code": "49-9062",
+            "supply": 0.0,
+            "title": "Medical Equipment Repairers"
+          }
+        ],
+        "name": "Santa Rosa Junior College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 610,
+            "annual_wage": 77450,
+            "awards_recent": 3,
+            "course_count": 8,
+            "enrolled": true,
+            "feeding_awards": 3,
+            "gap": 606,
+            "growth_rate": 0.070100071,
+            "programs": [
+              {
+                "awards": [
+                  3,
+                  5,
+                  2,
+                  4,
+                  3
+                ],
+                "awards_recent": 3,
+                "enrollment": [
+                  null,
+                  null,
+                  98,
+                  null,
+                  1069,
+                  74,
+                  null,
+                  945,
+                  96,
+                  null,
+                  1141,
+                  141,
+                  null,
+                  1106,
+                  117
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              }
+            ],
+            "soc_code": "19-4021",
+            "supply": 3.67,
+            "title": "Biological Technicians"
+          },
+          {
+            "annual_openings": 240,
+            "annual_wage": 63690,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 240,
+            "growth_rate": 0.019812217,
+            "programs": [],
+            "soc_code": "19-4031",
+            "supply": 0.0,
+            "title": "Chemical Technicians"
+          },
+          {
+            "annual_openings": 340,
+            "annual_wage": 59470,
+            "awards_recent": 0,
+            "course_count": 14,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 340,
+            "growth_rate": 0.098649206,
+            "programs": [],
+            "soc_code": "31-9097",
+            "supply": 0.0,
+            "title": "Phlebotomists"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 82260,
+            "awards_recent": 3,
+            "course_count": 8,
+            "enrolled": true,
+            "feeding_awards": 3,
+            "gap": 126,
+            "growth_rate": 0.046982336,
+            "programs": [
+              {
+                "awards": [
+                  3,
+                  5,
+                  2,
+                  4,
+                  3
+                ],
+                "awards_recent": 3,
+                "enrollment": [
+                  null,
+                  null,
+                  98,
+                  null,
+                  1069,
+                  74,
+                  null,
+                  945,
+                  96,
+                  null,
+                  1141,
+                  141,
+                  null,
+                  1106,
+                  117
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              }
+            ],
+            "soc_code": "49-9062",
+            "supply": 3.67,
+            "title": "Medical Equipment Repairers"
+          }
+        ],
+        "name": "Skyline College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 610,
+            "annual_wage": 77450,
+            "awards_recent": 106,
+            "course_count": 10,
+            "enrolled": true,
+            "feeding_awards": 106,
+            "gap": 547,
+            "growth_rate": 0.070100071,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  70,
+                  73,
+                  81,
+                  106
+                ],
+                "awards_recent": 106,
+                "enrollment": [
+                  null,
+                  null,
+                  231,
+                  null,
+                  206,
+                  184,
+                  null,
+                  205,
+                  225,
+                  null,
+                  240,
+                  281,
+                  null,
+                  281,
+                  266
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              }
+            ],
+            "soc_code": "19-4021",
+            "supply": 63.33,
+            "title": "Biological Technicians"
+          },
+          {
+            "annual_openings": 240,
+            "annual_wage": 63690,
+            "awards_recent": 0,
+            "course_count": 25,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 240,
+            "growth_rate": 0.019812217,
+            "programs": [],
+            "soc_code": "19-4031",
+            "supply": 0.0,
+            "title": "Chemical Technicians"
+          },
+          {
+            "annual_openings": 340,
+            "annual_wage": 59470,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 340,
+            "growth_rate": 0.098649206,
+            "programs": [],
+            "soc_code": "31-9097",
+            "supply": 0.0,
+            "title": "Phlebotomists"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 82260,
+            "awards_recent": 106,
+            "course_count": 10,
+            "enrolled": true,
+            "feeding_awards": 106,
+            "gap": 67,
+            "growth_rate": 0.046982336,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  70,
+                  73,
+                  81,
+                  106
+                ],
+                "awards_recent": 106,
+                "enrollment": [
+                  null,
+                  null,
+                  231,
+                  null,
+                  206,
+                  184,
+                  null,
+                  205,
+                  225,
+                  null,
+                  240,
+                  281,
+                  null,
+                  281,
+                  266
+                ],
+                "name": "Biotechnology and Biomedical Technology",
+                "top6": "043000",
+                "wages": []
+              }
+            ],
+            "soc_code": "49-9062",
+            "supply": 63.33,
+            "title": "Medical Equipment Repairers"
+          }
+        ],
+        "name": "Solano Community College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 610,
+            "annual_wage": 77450,
+            "awards_recent": 0,
+            "course_count": 3,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 610,
+            "growth_rate": 0.070100071,
+            "programs": [],
+            "soc_code": "19-4021",
+            "supply": 0.0,
+            "title": "Biological Technicians"
+          },
+          {
+            "annual_openings": 240,
+            "annual_wage": 63690,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 240,
+            "growth_rate": 0.019812217,
+            "programs": [],
+            "soc_code": "19-4031",
+            "supply": 0.0,
+            "title": "Chemical Technicians"
+          },
+          {
+            "annual_openings": 340,
+            "annual_wage": 59470,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 340,
+            "growth_rate": 0.098649206,
+            "programs": [],
+            "soc_code": "31-9097",
+            "supply": 0.0,
+            "title": "Phlebotomists"
+          },
+          {
+            "annual_openings": 130,
+            "annual_wage": 82260,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 130,
+            "growth_rate": 0.046982336,
+            "programs": [],
+            "soc_code": "49-9062",
+            "supply": 0.0,
+            "title": "Medical Equipment Repairers"
+          }
+        ],
+        "name": "West Valley College"
+      }
+    ],
+    "coverage_awards_only": true,
+    "enrollment_terms": [
+      "Winter 2021",
+      "Spring 2021",
+      "Fall 2021",
+      "Winter 2022",
+      "Spring 2022",
+      "Fall 2022",
+      "Winter 2023",
+      "Spring 2023",
+      "Fall 2023",
+      "Winter 2024",
+      "Spring 2024",
+      "Fall 2024",
+      "Winter 2025",
+      "Spring 2025",
+      "Fall 2025"
+    ],
+    "executive_summary": "This view examines the regional demand landscape across the 4 life sciences / biotech occupations the Bay Area Community College Consortium \u2014 Life Sciences / Biotech targets in the Bay Area regional labor market. Regional demand for these occupations totals 1,320 openings per year.",
+    "is_sector_priority": false,
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "Life Sciences / Biotech"
+  }
+}

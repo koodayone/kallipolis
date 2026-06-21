@@ -59,6 +59,16 @@ def _load_detail_pages() -> dict:
     return json.loads(path.read_text()) if path.exists() else {}
 
 
+def _load_descriptions() -> dict:
+    """emp_id -> {new, display_name, flag} from the agentic rewrite pass
+    (employers/cache/descriptions.json). The rewritten `new` description replaces
+    the thin enrichment one; `display_name` is the public-facing brand (the raw
+    `name` stays the join key). Joined by emp_id. Absent ⇒ original description,
+    no display_name."""
+    path = Path(__file__).resolve().parent / "cache" / "descriptions.json"
+    return json.loads(path.read_text()) if path.exists() else {}
+
+
 def _sector_tags_for_naics(naics4: str | None) -> list[str]:
     """Deterministic NAICS-4 → SWP sector lookup. Returns [] if NAICS-4
     is missing or not in CTE_NAICS_CODES (employer falls outside the
@@ -165,6 +175,7 @@ def load_employers(driver: Driver, employers: list[dict]) -> dict:
     employers = [e for e in employers if _is_loadable(e)]
     geo_cache = _load_geocode_cache()
     detail_cache = _load_detail_pages()
+    desc_cache = _load_descriptions()
     stats = {
         "employers": 0, "in_market": 0,
         "hires_for": 0, "identity_hires_for": 0,
@@ -183,16 +194,19 @@ def load_employers(driver: Driver, employers: list[dict]) -> dict:
             emp_id = (emp.get("address") or {}).get("emp_id") or ""
             geo = geo_cache.get(emp_id) or {}
             detail = detail_cache.get(emp_id) or {}
+            rewrite = desc_cache.get(emp_id) or {}
             session.run(
                 "MERGE (e:Employer {name: $name}) "
                 "SET e.sector = $sector, e.description = $description, "
+                "    e.display_name = $display_name, "
                 "    e.website = $website, e.swp_sectors = $swp_sectors, "
                 "    e.naics4 = $naics4, e.naics6 = $naics6, "
                 "    e.operations_summary = $operations_summary, "
                 "    e.lat = $lat, e.lng = $lng",
                 name=emp["name"],
                 sector=emp["sector"],
-                description=emp.get("description"),
+                description=rewrite.get("new") or emp.get("description"),  # rewrite wins
+                display_name=rewrite.get("display_name"),
                 website=emp.get("website") or detail.get("website"),  # EDD backfills the gap
                 swp_sectors=sector_tags,
                 naics4=naics4,
