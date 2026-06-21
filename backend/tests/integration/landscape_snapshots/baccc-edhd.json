@@ -1,0 +1,4680 @@
+{
+  "/employers": {
+    "employers": [
+      {
+        "description": "Almaden Valley Athletic Club (AVAC) is a family fitness facility in San Jose, California, offering comprehensive health and wellness programs for all ages. Its five-acre campus features indoor/outdoor fitness, pools, tennis, and a swim school, serving the Bay Area community with classes, training, and childcare.",
+        "display_name": null,
+        "lat": 37.240508994663,
+        "lng": -121.904018183506,
+        "naics4": "7139",
+        "naics_title": "Other Amusement and Recreation Industries",
+        "name": "Almaden Valley Athletic Club",
+        "relevance": 13.79,
+        "sector": "Other Services",
+        "size_class": null,
+        "size_rank": 0,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://avac.us/"
+      },
+      {
+        "description": "Bay Club operates over 25 membership-based sports and active lifestyle clubs across California, Oregon, and Washington, serving over 135,000 individuals and families. It offers diverse amenities including fitness, tennis, golf, pickleball, aquatics, dining, and spa services, fostering community and well-being.",
+        "display_name": null,
+        "lat": 37.255025301652,
+        "lng": -121.966558328791,
+        "naics4": "7139",
+        "naics_title": "Other Amusement and Recreation Industries",
+        "name": "Bay Club",
+        "relevance": 13.79,
+        "sector": "Arts & Entertainment",
+        "size_class": null,
+        "size_rank": 0,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://www.bayclubs.com/"
+      },
+      {
+        "description": "Cinnabar Hills Golf Club is a public golf course in San Jose, California, offering 27 holes designed by John Harbottle III. It provides championship-caliber golf with scenic views, dining at The Grille, and hosts weddings and special events for up to 200 people. The club also features the Lee Brandenburg Historical Golf Museum.",
+        "display_name": null,
+        "lat": 37.183189626115,
+        "lng": -121.762615578253,
+        "naics4": "7139",
+        "naics_title": "Other Amusement and Recreation Industries",
+        "name": "Cinnabar Hills Golf Club",
+        "relevance": 13.79,
+        "sector": "Arts & Entertainment",
+        "size_class": null,
+        "size_rank": 0,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://www.cinnabarhills.com/"
+      },
+      {
+        "description": "Equinox is a luxury fitness club offering unlimited signature classes, personal training, Pilates, and spa services. It provides exclusive amenities and award-winning spaces for high-performance fitness experiences, also extending services through the Equinox+ app for on-demand classes.",
+        "display_name": null,
+        "lat": 37.422358377413,
+        "lng": -122.137467096511,
+        "naics4": "7139",
+        "naics_title": "Other Amusement and Recreation Industries",
+        "name": "Equinox Palo Alto",
+        "relevance": 13.79,
+        "sector": "Arts & Entertainment",
+        "size_class": null,
+        "size_rank": 0,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://www.equinox.com/"
+      },
+      {
+        "description": "Half Moon Bay Golf Links is a coastal golf resort in Half Moon Bay, CA, operating two 18-hole championship courses \u2014 the Arnold Palmer-designed Old Course and the Arthur Hills-designed Ocean Course \u2014 both ranked among the top public courses in Northern California. The property includes Mullins Steakhouse, a full-service golf shop, and event facilities for corporate retreats, tournaments, and weddings. Operations employ golf course maintenance, hospitality, food and beverage, and events coordination staff across the San Mateo County coast location.",
+        "display_name": null,
+        "lat": 37.4332584,
+        "lng": -122.4396679,
+        "naics4": "7139",
+        "naics_title": "Other Amusement and Recreation Industries",
+        "name": "Half Moon Bay Golf Links",
+        "relevance": 13.79,
+        "sector": "Arts & Entertainment",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://halfmoonbaygolf.com/"
+      },
+      {
+        "description": "Menlo Circus Club is a private social and athletic club.",
+        "display_name": null,
+        "lat": 37.4485477,
+        "lng": -122.1996132,
+        "naics4": "7139",
+        "naics_title": "Other Amusement and Recreation Industries",
+        "name": "Menlo Circus Club",
+        "relevance": 13.79,
+        "sector": "Arts & Entertainment",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://www.menlocircusclub.com/"
+      },
+      {
+        "description": "Menlo Country Club is a private country club offering golf and other amenities.",
+        "display_name": null,
+        "lat": 37.4292088,
+        "lng": -122.2507219,
+        "naics4": "7139",
+        "naics_title": "Other Amusement and Recreation Industries",
+        "name": "Menlo Country Club",
+        "relevance": 13.79,
+        "sector": "Arts & Entertainment",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://www.menlocc.com/"
+      },
+      {
+        "description": "Menlo Park Recreation Center is a public facility offering recreational activities and programs.",
+        "display_name": null,
+        "lat": 37.4535552,
+        "lng": -122.179944,
+        "naics4": "7139",
+        "naics_title": "Other Amusement and Recreation Industries",
+        "name": "Menlo Park Recreation Center",
+        "relevance": 13.79,
+        "sector": "Arts & Entertainment",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://www.menlopark.gov/Government/Departments/Library-and-Community-Services/Recreation-and-sports"
+      },
+      {
+        "description": "The Peninsula Jewish Community Center (PJCC), based in Foster City, CA, operates a full-service fitness, aquatics, and wellness facility alongside preschool, afterschool, and summer camp programs for youth. It also runs adult education, Jewish cultural programming, senior services, and an art gallery, serving families, adults, and seniors across the San Mateo Peninsula. Operational roles include fitness instruction, aquatics, early childhood education, program coordination, and facility management.",
+        "display_name": null,
+        "lat": 37.5696535,
+        "lng": -122.2757343,
+        "naics4": "7139",
+        "naics_title": "Other Amusement and Recreation Industries",
+        "name": "Peninsula Jewish Community Center",
+        "relevance": 13.79,
+        "sector": "Arts & Entertainment",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://pjcc.org/"
+      },
+      {
+        "description": "Prime Time Athletic Club is a full-service, family-oriented athletic facility in Burlingame, CA, operating courts for pickleball, racquetball, handball, tennis, and squash alongside two heated pools, a gymnasium, outdoor basketball, and a full cardio and free-weights floor. The club offers group exercise classes, childcare services, and individual memberships, and has been recognized in Club Industry's Top 100 Clubs. On-site staff roles span fitness instruction, aquatics, court programming, childcare, and member services.",
+        "display_name": null,
+        "lat": 37.5865829,
+        "lng": -122.3384383,
+        "naics4": "7139",
+        "naics_title": "Other Amusement and Recreation Industries",
+        "name": "Prime Time Athletic Club",
+        "relevance": 13.79,
+        "sector": "Arts & Entertainment",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://primetimeathleticclub.com/"
+      },
+      {
+        "description": "Watercourse Way Bath House Spa offers private hot tub rooms, various massages including Swedish and deep tissue, and spa treatments like mud wraps and salt glows. They also provide organic facials and waxing services, serving individuals seeking relaxation and therapeutic experiences in Palo Alto, CA.",
+        "display_name": null,
+        "lat": 37.441349493855,
+        "lng": -122.158075565154,
+        "naics4": "7139",
+        "naics_title": "Other Amusement and Recreation Industries",
+        "name": "Watercourse Way Bath House Spa",
+        "relevance": 13.79,
+        "sector": "Other Services",
+        "size_class": null,
+        "size_rank": 0,
+        "soc_count": 1,
+        "soc_titles": {
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "39-9031"
+        ],
+        "website": "https://watercourseway.com/"
+      },
+      {
+        "description": "Consular Corps College is an educational institution.",
+        "display_name": null,
+        "lat": 37.5996993,
+        "lng": -122.3909759,
+        "naics4": "6113",
+        "naics_title": "Colleges, Universities, and Professional Schools",
+        "name": "Consular Corps College",
+        "relevance": 4.53,
+        "sector": "Education",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 4,
+        "soc_titles": {
+          "25-4031": "Library Technicians",
+          "25-9044": "Teaching Assistants, Postsecondary",
+          "27-3091": "Interpreters and Translators",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-9044",
+          "25-4031",
+          "39-9031",
+          "27-3091"
+        ],
+        "website": "https://www.consular-corps-college.org/"
+      },
+      {
+        "description": "Stanford Law School provides rigorous academics and immersive experiences, shaping law and policy through leading-edge research in areas like constitutional law, privacy rights, and AI's impact on law. It serves future and current students through JD, joint, and advanced degree programs, and engages with faculty, alumni, and the broader legal community.",
+        "display_name": null,
+        "lat": 37.422926402573,
+        "lng": -122.168648728327,
+        "naics4": "6113",
+        "naics_title": "Colleges, Universities, and Professional Schools",
+        "name": "Stanford Law School",
+        "relevance": 4.53,
+        "sector": "Education",
+        "size_class": null,
+        "size_rank": 0,
+        "soc_count": 4,
+        "soc_titles": {
+          "25-4031": "Library Technicians",
+          "25-9044": "Teaching Assistants, Postsecondary",
+          "27-3091": "Interpreters and Translators",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-9044",
+          "25-4031",
+          "39-9031",
+          "27-3091"
+        ],
+        "website": "https://law.stanford.edu/"
+      },
+      {
+        "description": "Mission College is Silicon Valley's community college, offering academic programs, transfer assistance, and career guidance. It serves a diverse student body with free tuition for those in its service area, along with support like free childcare, meals, and healthcare. Key activities include providing education in various fields and fostering student success.",
+        "display_name": null,
+        "lat": 37.391221911737,
+        "lng": -121.978482795816,
+        "naics4": "6112",
+        "naics_title": "Junior Colleges",
+        "name": "Mission College",
+        "relevance": 3.12,
+        "sector": "Education",
+        "size_class": null,
+        "size_rank": 0,
+        "soc_count": 4,
+        "soc_titles": {
+          "25-4031": "Library Technicians",
+          "25-9044": "Teaching Assistants, Postsecondary",
+          "27-3091": "Interpreters and Translators",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-9044",
+          "25-4031",
+          "27-3091",
+          "39-9031"
+        ],
+        "website": "https://www.missioncollege.edu/"
+      },
+      {
+        "description": "San Jose City College provides diverse academic programs, degrees, and certificates, preparing students for university transfer or direct workforce entry. Serving the Bay Area, it offers career education, student support, and pathways in fields like STEM, healthcare, and business, fostering student success and community development.",
+        "display_name": null,
+        "lat": 37.316276713825,
+        "lng": -121.928889609322,
+        "naics4": "6112",
+        "naics_title": "Junior Colleges",
+        "name": "San Jose City College",
+        "relevance": 3.12,
+        "sector": "Education",
+        "size_class": null,
+        "size_rank": 0,
+        "soc_count": 4,
+        "soc_titles": {
+          "25-4031": "Library Technicians",
+          "25-9044": "Teaching Assistants, Postsecondary",
+          "27-3091": "Interpreters and Translators",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-9044",
+          "25-4031",
+          "27-3091",
+          "39-9031"
+        ],
+        "website": "https://www.sjcc.edu/"
+      },
+      {
+        "description": "The Belmont Police Department serves the City of Belmont on the San Francisco Peninsula with approximately 50 full-time personnel, including 31 sworn officers organized into Patrol, Traffic, Investigations, K-9, Youth Services, SWAT, and Crisis Negotiation units. The department operates the C.A.R.E. (Crisis Assessment Response and Education) and T.R.A.C. (Tracking and Recovery of Adults and Children) programs, and employs dispatchers, records technicians, code enforcement officers, and community service officers alongside sworn staff.",
+        "display_name": null,
+        "lat": 37.5182829,
+        "lng": -122.2774823,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "Belmont Police",
+        "relevance": 0.63,
+        "sector": "Government",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 3,
+        "soc_titles": {
+          "25-4031": "Library Technicians",
+          "27-3091": "Interpreters and Translators",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-4031",
+          "39-9031",
+          "27-3091"
+        ],
+        "website": "https://www.belmont.gov/departments/police"
+      },
+      {
+        "description": "The Central County Fire Department provides fire suppression and emergency response services.",
+        "display_name": null,
+        "lat": 37.5865829,
+        "lng": -122.3384383,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "Central County Fire Department",
+        "relevance": 0.63,
+        "sector": "Government",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 3,
+        "soc_titles": {
+          "25-4031": "Library Technicians",
+          "27-3091": "Interpreters and Translators",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-4031",
+          "39-9031",
+          "27-3091"
+        ],
+        "website": "https://www.ccfd.org/"
+      },
+      {
+        "description": "The Daly City Police Department is responsible for public safety and law enforcement in Daly City.",
+        "display_name": null,
+        "lat": 37.6911085,
+        "lng": -122.4739145,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "Daly City Police",
+        "relevance": 0.63,
+        "sector": "Government",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 3,
+        "soc_titles": {
+          "25-4031": "Library Technicians",
+          "27-3091": "Interpreters and Translators",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-4031",
+          "39-9031",
+          "27-3091"
+        ],
+        "website": "https://www.dalycity.org/1231/Police"
+      },
+      {
+        "description": "Daly City's Department of Water and Wastewater Resources operates the wastewater treatment and disposal system for the North San Mateo County Sanitation District, managing collection infrastructure, treatment plant operations, and environmental compliance at its facility on Lake Merced Boulevard. The department also administers drinking water supply services and recycles treatment plant byproducts as part of its environmental stewardship mission. Operations employ water and wastewater treatment plant operators, environmental compliance staff, and utility engineers serving the North San Mateo County service area.",
+        "display_name": null,
+        "lat": 37.7076798,
+        "lng": -122.4858219,
+        "naics4": "9241",
+        "naics_title": "Administration of Environmental Quality Programs",
+        "name": "Daly City Wastewater",
+        "relevance": 0.63,
+        "sector": "Government",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 3,
+        "soc_titles": {
+          "25-4031": "Library Technicians",
+          "27-3091": "Interpreters and Translators",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-4031",
+          "39-9031",
+          "27-3091"
+        ],
+        "website": "https://www.dalycity.org/1036/Wastewater"
+      },
+      {
+        "description": "The East Palo Alto Police Department is dedicated to serving and protecting the community of East Palo Alto.",
+        "display_name": null,
+        "lat": 37.4746236,
+        "lng": -122.1341991,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "East Palo Alto Police",
+        "relevance": 0.63,
+        "sector": "Government",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 3,
+        "soc_titles": {
+          "25-4031": "Library Technicians",
+          "27-3091": "Interpreters and Translators",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-4031",
+          "39-9031",
+          "27-3091"
+        ],
+        "website": "https://www.ci.east-palo-alto.ca.us/police"
+      },
+      {
+        "description": "The Foster City Fire Department provides emergency services and fire prevention to Foster City.",
+        "display_name": null,
+        "lat": 37.5511544,
+        "lng": -122.281399,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "Foster City Fire Department",
+        "relevance": 0.63,
+        "sector": "Government",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 3,
+        "soc_titles": {
+          "25-4031": "Library Technicians",
+          "27-3091": "Interpreters and Translators",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-4031",
+          "39-9031",
+          "27-3091"
+        ],
+        "website": "https://www.fostercity.org/fire"
+      },
+      {
+        "description": "The Kings Mountain Fire Department serves the Kings Mountain community with fire and emergency services.",
+        "display_name": null,
+        "lat": 37.3877721,
+        "lng": -122.2663618,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "Kings Mountain Fire Department",
+        "relevance": 0.63,
+        "sector": "Government",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 3,
+        "soc_titles": {
+          "25-4031": "Library Technicians",
+          "27-3091": "Interpreters and Translators",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-4031",
+          "39-9031",
+          "27-3091"
+        ],
+        "website": "https://kmfd.org/"
+      },
+      {
+        "description": "The Menlo Park Fire Protection District is an independent special district headquartered in Menlo Park, CA, providing fire suppression, emergency medical services, and community risk reduction across its jurisdiction. The district operates specialized units including California Task Force Three (CA-TF3) for urban search and rescue, swift-water/flood rescue (CA-SFS&R3), wildland firefighting, and Tactical Emergency Medical Support (TEMS). Operational roles span firefighters, paramedics, heavy rescue technicians, and fire prevention personnel across multiple stations.",
+        "display_name": null,
+        "lat": 37.4570961,
+        "lng": -122.1690558,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "Menlo Park Fire Protection District",
+        "relevance": 0.63,
+        "sector": "Government",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 3,
+        "soc_titles": {
+          "25-4031": "Library Technicians",
+          "27-3091": "Interpreters and Translators",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-4031",
+          "39-9031",
+          "27-3091"
+        ],
+        "website": "https://www.menlofire.gov/"
+      },
+      {
+        "description": "The North County Fire Authority provides fire and emergency medical services to its jurisdiction.",
+        "display_name": null,
+        "lat": 37.6619548,
+        "lng": -122.4723077,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "North County Fire Authority",
+        "relevance": 0.63,
+        "sector": "Government",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 3,
+        "soc_titles": {
+          "25-4031": "Library Technicians",
+          "27-3091": "Interpreters and Translators",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-4031",
+          "39-9031",
+          "27-3091"
+        ],
+        "website": "https://northcountyfire.gov/"
+      },
+      {
+        "description": "The Redwood City Fire Department provides fire suppression and emergency medical services.",
+        "display_name": null,
+        "lat": 37.4877119,
+        "lng": -122.2258939,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "Redwood City Fire Department",
+        "relevance": 0.63,
+        "sector": "Government",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 3,
+        "soc_titles": {
+          "25-4031": "Library Technicians",
+          "27-3091": "Interpreters and Translators",
+          "39-9031": "Exercise Trainers and Group Fitness Instructors"
+        },
+        "socs": [
+          "25-4031",
+          "39-9031",
+          "27-3091"
+        ],
+        "website": "https://www.redwoodcity.org/departments/fire-department"
+      }
+    ],
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "Education & Human Development",
+    "shed_counties": [
+      "San Mateo",
+      "Santa Clara"
+    ],
+    "shown": 25,
+    "total": 326
+  },
+  "/programs": {
+    "coverage_awards_only": true,
+    "latest_award_year": "2024-2025",
+    "matrix": {
+      "cells": [
+        {
+          "awards": 19,
+          "college": "Berkeley City College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "080200"
+        },
+        {
+          "awards": 0,
+          "college": "Cabrillo College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "080200"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "080200"
+        },
+        {
+          "awards": 6,
+          "college": "Chabot College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "080200"
+        },
+        {
+          "awards": 0,
+          "college": "City College of San Francisco",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "080200"
+        },
+        {
+          "awards": 0,
+          "college": "College of Alameda",
+          "enrolled": false,
+          "teaches": true,
+          "top6": "080200"
+        },
+        {
+          "awards": 0,
+          "college": "College of Marin",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "080200"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "080200"
+        },
+        {
+          "awards": 0,
+          "college": "Contra Costa College",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "080200"
+        },
+        {
+          "awards": 0,
+          "college": "De Anza College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "080200"
+        },
+        {
+          "awards": 0,
+          "college": "Diablo Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "080200"
+        },
+        {
+          "awards": 0,
+          "college": "Evergreen Valley College",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "080200"
+        },
+        {
+          "awards": 0,
+          "college": "Foothill College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "080200"
+        },
+        {
+          "awards": 0,
+          "college": "Gavilan College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "080200"
+        },
+        {
+          "awards": 0,
+          "college": "Laney College",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "080200"
+        },
+        {
+          "awards": 0,
+          "college": "Las Positas College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "080200"
+        },
+        {
+          "awards": 0,
+          "college": "Los Medanos College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "080200"
+        },
+        {
+          "awards": 0,
+          "college": "Merritt College",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "080200"
+        },
+        {
+          "awards": 0,
+          "college": "Mission College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "080200"
+        },
+        {
+          "awards": 0,
+          "college": "Napa Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "080200"
+        },
+        {
+          "awards": 0,
+          "college": "Ohlone College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "080200"
+        },
+        {
+          "awards": 0,
+          "college": "San Jose City College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "080200"
+        },
+        {
+          "awards": 0,
+          "college": "Santa Rosa Junior College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "080200"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "080200"
+        },
+        {
+          "awards": 0,
+          "college": "Solano Community College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "080200"
+        },
+        {
+          "awards": 0,
+          "college": "West Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "080200"
+        },
+        {
+          "awards": 0,
+          "college": "Berkeley City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083520"
+        },
+        {
+          "awards": 3,
+          "college": "Cabrillo College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "083520"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083520"
+        },
+        {
+          "awards": 0,
+          "college": "Chabot College",
+          "enrolled": false,
+          "teaches": true,
+          "top6": "083520"
+        },
+        {
+          "awards": 1,
+          "college": "City College of San Francisco",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "083520"
+        },
+        {
+          "awards": 0,
+          "college": "College of Alameda",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083520"
+        },
+        {
+          "awards": 0,
+          "college": "College of Marin",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083520"
+        },
+        {
+          "awards": 23,
+          "college": "College of San Mateo",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "083520"
+        },
+        {
+          "awards": 0,
+          "college": "Contra Costa College",
+          "enrolled": false,
+          "teaches": true,
+          "top6": "083520"
+        },
+        {
+          "awards": 0,
+          "college": "De Anza College",
+          "enrolled": false,
+          "teaches": true,
+          "top6": "083520"
+        },
+        {
+          "awards": 13,
+          "college": "Diablo Valley College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "083520"
+        },
+        {
+          "awards": 0,
+          "college": "Evergreen Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083520"
+        },
+        {
+          "awards": 2,
+          "college": "Foothill College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083520"
+        },
+        {
+          "awards": 6,
+          "college": "Gavilan College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "083520"
+        },
+        {
+          "awards": 0,
+          "college": "Laney College",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "083520"
+        },
+        {
+          "awards": 0,
+          "college": "Las Positas College",
+          "enrolled": false,
+          "teaches": true,
+          "top6": "083520"
+        },
+        {
+          "awards": 0,
+          "college": "Los Medanos College",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "083520"
+        },
+        {
+          "awards": 0,
+          "college": "Merritt College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083520"
+        },
+        {
+          "awards": 0,
+          "college": "Mission College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "083520"
+        },
+        {
+          "awards": 0,
+          "college": "Napa Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083520"
+        },
+        {
+          "awards": 0,
+          "college": "Ohlone College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083520"
+        },
+        {
+          "awards": 0,
+          "college": "San Jose City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083520"
+        },
+        {
+          "awards": 85,
+          "college": "Santa Rosa Junior College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "083520"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083520"
+        },
+        {
+          "awards": 0,
+          "college": "Solano Community College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "083520"
+        },
+        {
+          "awards": 11,
+          "college": "West Valley College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "083520"
+        },
+        {
+          "awards": 0,
+          "college": "Berkeley City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083560"
+        },
+        {
+          "awards": 0,
+          "college": "Cabrillo College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "083560"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083560"
+        },
+        {
+          "awards": 0,
+          "college": "Chabot College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "083560"
+        },
+        {
+          "awards": 1,
+          "college": "City College of San Francisco",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "083560"
+        },
+        {
+          "awards": 0,
+          "college": "College of Alameda",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083560"
+        },
+        {
+          "awards": 0,
+          "college": "College of Marin",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083560"
+        },
+        {
+          "awards": 1,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": true,
+          "top6": "083560"
+        },
+        {
+          "awards": 0,
+          "college": "Contra Costa College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083560"
+        },
+        {
+          "awards": 0,
+          "college": "De Anza College",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "083560"
+        },
+        {
+          "awards": 0,
+          "college": "Diablo Valley College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "083560"
+        },
+        {
+          "awards": 0,
+          "college": "Evergreen Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083560"
+        },
+        {
+          "awards": 0,
+          "college": "Foothill College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083560"
+        },
+        {
+          "awards": 0,
+          "college": "Gavilan College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083560"
+        },
+        {
+          "awards": 0,
+          "college": "Laney College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083560"
+        },
+        {
+          "awards": 0,
+          "college": "Las Positas College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083560"
+        },
+        {
+          "awards": 0,
+          "college": "Los Medanos College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083560"
+        },
+        {
+          "awards": 0,
+          "college": "Merritt College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083560"
+        },
+        {
+          "awards": 0,
+          "college": "Mission College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083560"
+        },
+        {
+          "awards": 0,
+          "college": "Napa Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083560"
+        },
+        {
+          "awards": 0,
+          "college": "Ohlone College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083560"
+        },
+        {
+          "awards": 0,
+          "college": "San Jose City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083560"
+        },
+        {
+          "awards": 0,
+          "college": "Santa Rosa Junior College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "083560"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083560"
+        },
+        {
+          "awards": 0,
+          "college": "Solano Community College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "083560"
+        },
+        {
+          "awards": 0,
+          "college": "West Valley College",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "083560"
+        },
+        {
+          "awards": 0,
+          "college": "Berkeley City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "085010"
+        },
+        {
+          "awards": 0,
+          "college": "Cabrillo College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "085010"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "085010"
+        },
+        {
+          "awards": 0,
+          "college": "Chabot College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "085010"
+        },
+        {
+          "awards": 0,
+          "college": "City College of San Francisco",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "085010"
+        },
+        {
+          "awards": 0,
+          "college": "College of Alameda",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "085010"
+        },
+        {
+          "awards": 0,
+          "college": "College of Marin",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "085010"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "085010"
+        },
+        {
+          "awards": 0,
+          "college": "Contra Costa College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "085010"
+        },
+        {
+          "awards": 0,
+          "college": "De Anza College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "085010"
+        },
+        {
+          "awards": 0,
+          "college": "Diablo Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "085010"
+        },
+        {
+          "awards": 0,
+          "college": "Evergreen Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "085010"
+        },
+        {
+          "awards": 0,
+          "college": "Foothill College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "085010"
+        },
+        {
+          "awards": 0,
+          "college": "Gavilan College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "085010"
+        },
+        {
+          "awards": 0,
+          "college": "Laney College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "085010"
+        },
+        {
+          "awards": 0,
+          "college": "Las Positas College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "085010"
+        },
+        {
+          "awards": 0,
+          "college": "Los Medanos College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "085010"
+        },
+        {
+          "awards": 0,
+          "college": "Merritt College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "085010"
+        },
+        {
+          "awards": 0,
+          "college": "Mission College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "085010"
+        },
+        {
+          "awards": 0,
+          "college": "Napa Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "085010"
+        },
+        {
+          "awards": 8,
+          "college": "Ohlone College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "085010"
+        },
+        {
+          "awards": 0,
+          "college": "San Jose City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "085010"
+        },
+        {
+          "awards": 0,
+          "college": "Santa Rosa Junior College",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "085010"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "085010"
+        },
+        {
+          "awards": 15,
+          "college": "Solano Community College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "085010"
+        },
+        {
+          "awards": 0,
+          "college": "West Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "085010"
+        },
+        {
+          "awards": 0,
+          "college": "Berkeley City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "160200"
+        },
+        {
+          "awards": 0,
+          "college": "Cabrillo College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "160200"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "160200"
+        },
+        {
+          "awards": 0,
+          "college": "Chabot College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "160200"
+        },
+        {
+          "awards": 65,
+          "college": "City College of San Francisco",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "160200"
+        },
+        {
+          "awards": 0,
+          "college": "College of Alameda",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "160200"
+        },
+        {
+          "awards": 0,
+          "college": "College of Marin",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "160200"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "160200"
+        },
+        {
+          "awards": 0,
+          "college": "Contra Costa College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "160200"
+        },
+        {
+          "awards": 0,
+          "college": "De Anza College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "160200"
+        },
+        {
+          "awards": 16,
+          "college": "Diablo Valley College",
+          "enrolled": true,
+          "teaches": false,
+          "top6": "160200"
+        },
+        {
+          "awards": 0,
+          "college": "Evergreen Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "160200"
+        },
+        {
+          "awards": 0,
+          "college": "Foothill College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "160200"
+        },
+        {
+          "awards": 0,
+          "college": "Gavilan College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "160200"
+        },
+        {
+          "awards": 0,
+          "college": "Laney College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "160200"
+        },
+        {
+          "awards": 0,
+          "college": "Las Positas College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "160200"
+        },
+        {
+          "awards": 0,
+          "college": "Los Medanos College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "160200"
+        },
+        {
+          "awards": 0,
+          "college": "Merritt College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "160200"
+        },
+        {
+          "awards": 0,
+          "college": "Mission College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "160200"
+        },
+        {
+          "awards": 0,
+          "college": "Napa Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "160200"
+        },
+        {
+          "awards": 0,
+          "college": "Ohlone College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "160200"
+        },
+        {
+          "awards": 0,
+          "college": "San Jose City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "160200"
+        },
+        {
+          "awards": 0,
+          "college": "Santa Rosa Junior College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "160200"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "160200"
+        },
+        {
+          "awards": 0,
+          "college": "Solano Community College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "160200"
+        },
+        {
+          "awards": 0,
+          "college": "West Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "160200"
+        },
+        {
+          "awards": 0,
+          "college": "Berkeley City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "214000"
+        },
+        {
+          "awards": 0,
+          "college": "Cabrillo College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "214000"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "214000"
+        },
+        {
+          "awards": 0,
+          "college": "Chabot College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "214000"
+        },
+        {
+          "awards": 11,
+          "college": "City College of San Francisco",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "214000"
+        },
+        {
+          "awards": 0,
+          "college": "College of Alameda",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "214000"
+        },
+        {
+          "awards": 0,
+          "college": "College of Marin",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "214000"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "214000"
+        },
+        {
+          "awards": 0,
+          "college": "Contra Costa College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "214000"
+        },
+        {
+          "awards": 6,
+          "college": "De Anza College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "214000"
+        },
+        {
+          "awards": 0,
+          "college": "Diablo Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "214000"
+        },
+        {
+          "awards": 25,
+          "college": "Evergreen Valley College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "214000"
+        },
+        {
+          "awards": 0,
+          "college": "Foothill College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "214000"
+        },
+        {
+          "awards": 0,
+          "college": "Gavilan College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "214000"
+        },
+        {
+          "awards": 16,
+          "college": "Laney College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "214000"
+        },
+        {
+          "awards": 0,
+          "college": "Las Positas College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "214000"
+        },
+        {
+          "awards": 0,
+          "college": "Los Medanos College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "214000"
+        },
+        {
+          "awards": 0,
+          "college": "Merritt College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "214000"
+        },
+        {
+          "awards": 0,
+          "college": "Mission College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "214000"
+        },
+        {
+          "awards": 0,
+          "college": "Napa Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "214000"
+        },
+        {
+          "awards": 0,
+          "college": "Ohlone College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "214000"
+        },
+        {
+          "awards": 0,
+          "college": "San Jose City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "214000"
+        },
+        {
+          "awards": 0,
+          "college": "Santa Rosa Junior College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "214000"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "214000"
+        },
+        {
+          "awards": 0,
+          "college": "Solano Community College",
+          "enrolled": false,
+          "teaches": true,
+          "top6": "214000"
+        },
+        {
+          "awards": 0,
+          "college": "West Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "214000"
+        }
+      ],
+      "colleges": [
+        "Berkeley City College",
+        "Cabrillo College",
+        "Ca\u00f1ada College",
+        "Chabot College",
+        "City College of San Francisco",
+        "College of Alameda",
+        "College of Marin",
+        "College of San Mateo",
+        "Contra Costa College",
+        "De Anza College",
+        "Diablo Valley College",
+        "Evergreen Valley College",
+        "Foothill College",
+        "Gavilan College",
+        "Laney College",
+        "Las Positas College",
+        "Los Medanos College",
+        "Merritt College",
+        "Mission College",
+        "Napa Valley College",
+        "Ohlone College",
+        "San Jose City College",
+        "Santa Rosa Junior College",
+        "Skyline College",
+        "Solano Community College",
+        "West Valley College"
+      ]
+    },
+    "n_colleges": 26,
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "Education & Human Development",
+    "tops": [
+      {
+        "awards_total": 144,
+        "enrollment_total": 903,
+        "n_colleges_offering": 13,
+        "name": "Fitness Trainer",
+        "soc_count": 1,
+        "top6": "083520"
+      },
+      {
+        "awards_total": 81,
+        "enrollment_total": 286,
+        "n_colleges_offering": 1,
+        "name": "Library Technician (Aide)",
+        "soc_count": 1,
+        "top6": "160200"
+      },
+      {
+        "awards_total": 58,
+        "enrollment_total": 318,
+        "n_colleges_offering": 5,
+        "name": "Legal and Community Interpretation",
+        "soc_count": 1,
+        "top6": "214000"
+      },
+      {
+        "awards_total": 25,
+        "enrollment_total": 241,
+        "n_colleges_offering": 5,
+        "name": "Educational Aide (Teacher Assistant)",
+        "soc_count": 1,
+        "top6": "080200"
+      },
+      {
+        "awards_total": 23,
+        "enrollment_total": 661,
+        "n_colleges_offering": 2,
+        "name": "Sign Language Interpreting",
+        "soc_count": 1,
+        "top6": "085010"
+      },
+      {
+        "awards_total": 2,
+        "enrollment_total": 453,
+        "n_colleges_offering": 6,
+        "name": "Coaching",
+        "soc_count": 1,
+        "top6": "083560"
+      }
+    ]
+  },
+  "landscape": {
+    "aggregate": {
+      "candidate_employers": 364,
+      "combined_awards": 333,
+      "combined_supply_total": 176.0,
+      "gap": 4374,
+      "n_colleges": 26,
+      "n_occupations": 4,
+      "occupations_taught": 4,
+      "regional_demand_total": 4550
+    },
+    "award_years": [
+      "2020-2021",
+      "2021-2022",
+      "2022-2023",
+      "2023-2024",
+      "2024-2025"
+    ],
+    "colleges": [
+      {
+        "cells": [
+          {
+            "annual_openings": 330,
+            "annual_wage": 60860,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 330,
+            "growth_rate": 0.036198933,
+            "programs": [],
+            "soc_code": "25-4031",
+            "supply": 0.0,
+            "title": "Library Technicians"
+          },
+          {
+            "annual_openings": 980,
+            "annual_wage": 59540,
+            "awards_recent": 19,
+            "course_count": 5,
+            "enrolled": true,
+            "feeding_awards": 19,
+            "gap": 967,
+            "growth_rate": 0.009433937,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  7,
+                  10,
+                  31,
+                  19
+                ],
+                "awards_recent": 19,
+                "enrollment": [
+                  null,
+                  null,
+                  113,
+                  null,
+                  127,
+                  78,
+                  null,
+                  63,
+                  134,
+                  null,
+                  137,
+                  109,
+                  null,
+                  79,
+                  60
+                ],
+                "name": "Educational Aide (Teacher Assistant)",
+                "top6": "080200",
+                "wages": []
+              }
+            ],
+            "soc_code": "25-9044",
+            "supply": 13.17,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 290,
+            "annual_wage": 80210,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 290,
+            "growth_rate": 0.008167404,
+            "programs": [],
+            "soc_code": "27-3091",
+            "supply": 0.0,
+            "title": "Interpreters and Translators"
+          },
+          {
+            "annual_openings": 2950,
+            "annual_wage": 58610,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 2950,
+            "growth_rate": 0.100811709,
+            "programs": [],
+            "soc_code": "39-9031",
+            "supply": 0.0,
+            "title": "Exercise Trainers and Group Fitness Instructors"
+          }
+        ],
+        "name": "Berkeley City College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 330,
+            "annual_wage": 60860,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 330,
+            "growth_rate": 0.036198933,
+            "programs": [],
+            "soc_code": "25-4031",
+            "supply": 0.0,
+            "title": "Library Technicians"
+          },
+          {
+            "annual_openings": 980,
+            "annual_wage": 59540,
+            "awards_recent": 0,
+            "course_count": 7,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 980,
+            "growth_rate": 0.009433937,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  5,
+                  5,
+                  null,
+                  null,
+                  11
+                ],
+                "name": "Educational Aide (Teacher Assistant)",
+                "top6": "080200",
+                "wages": []
+              }
+            ],
+            "soc_code": "25-9044",
+            "supply": 0.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 290,
+            "annual_wage": 80210,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 290,
+            "growth_rate": 0.008167404,
+            "programs": [],
+            "soc_code": "27-3091",
+            "supply": 0.0,
+            "title": "Interpreters and Translators"
+          },
+          {
+            "annual_openings": 2950,
+            "annual_wage": 58610,
+            "awards_recent": 3,
+            "course_count": 15,
+            "enrolled": true,
+            "feeding_awards": 3,
+            "gap": 2947,
+            "growth_rate": 0.100811709,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  3,
+                  1,
+                  0,
+                  3
+                ],
+                "awards_recent": 3,
+                "enrollment": [
+                  null,
+                  null,
+                  179,
+                  null,
+                  162,
+                  163,
+                  null,
+                  191,
+                  187,
+                  null,
+                  195,
+                  180,
+                  null,
+                  215,
+                  260
+                ],
+                "name": "Fitness Trainer",
+                "top6": "083520",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  27,
+                  null,
+                  6,
+                  50,
+                  null,
+                  13,
+                  60,
+                  null,
+                  null,
+                  22,
+                  null,
+                  25,
+                  27
+                ],
+                "name": "Coaching",
+                "top6": "083560",
+                "wages": []
+              }
+            ],
+            "soc_code": "39-9031",
+            "supply": 3.0,
+            "title": "Exercise Trainers and Group Fitness Instructors"
+          }
+        ],
+        "name": "Cabrillo College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 330,
+            "annual_wage": 60860,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 330,
+            "growth_rate": 0.036198933,
+            "programs": [],
+            "soc_code": "25-4031",
+            "supply": 0.0,
+            "title": "Library Technicians"
+          },
+          {
+            "annual_openings": 980,
+            "annual_wage": 59540,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 980,
+            "growth_rate": 0.009433937,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  1,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Educational Aide (Teacher Assistant)",
+                "top6": "080200",
+                "wages": []
+              }
+            ],
+            "soc_code": "25-9044",
+            "supply": 0.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 290,
+            "annual_wage": 80210,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 290,
+            "growth_rate": 0.008167404,
+            "programs": [],
+            "soc_code": "27-3091",
+            "supply": 0.0,
+            "title": "Interpreters and Translators"
+          },
+          {
+            "annual_openings": 2950,
+            "annual_wage": 58610,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 2950,
+            "growth_rate": 0.100811709,
+            "programs": [],
+            "soc_code": "39-9031",
+            "supply": 0.0,
+            "title": "Exercise Trainers and Group Fitness Instructors"
+          }
+        ],
+        "name": "Ca\u00f1ada College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 330,
+            "annual_wage": 60860,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 330,
+            "growth_rate": 0.036198933,
+            "programs": [],
+            "soc_code": "25-4031",
+            "supply": 0.0,
+            "title": "Library Technicians"
+          },
+          {
+            "annual_openings": 980,
+            "annual_wage": 59540,
+            "awards_recent": 6,
+            "course_count": 2,
+            "enrolled": true,
+            "feeding_awards": 6,
+            "gap": 979,
+            "growth_rate": 0.009433937,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  1,
+                  4,
+                  6
+                ],
+                "awards_recent": 6,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  48,
+                  41,
+                  null,
+                  45,
+                  45,
+                  null,
+                  45,
+                  55,
+                  null,
+                  64,
+                  1
+                ],
+                "name": "Educational Aide (Teacher Assistant)",
+                "top6": "080200",
+                "wages": []
+              }
+            ],
+            "soc_code": "25-9044",
+            "supply": 1.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 290,
+            "annual_wage": 80210,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 290,
+            "growth_rate": 0.008167404,
+            "programs": [],
+            "soc_code": "27-3091",
+            "supply": 0.0,
+            "title": "Interpreters and Translators"
+          },
+          {
+            "annual_openings": 2950,
+            "annual_wage": 58610,
+            "awards_recent": 0,
+            "course_count": 12,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 2950,
+            "growth_rate": 0.100811709,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  1,
+                  0,
+                  1,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Fitness Trainer",
+                "top6": "083520",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  13,
+                  33,
+                  null,
+                  9,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Coaching",
+                "top6": "083560",
+                "wages": []
+              }
+            ],
+            "soc_code": "39-9031",
+            "supply": 0.5,
+            "title": "Exercise Trainers and Group Fitness Instructors"
+          }
+        ],
+        "name": "Chabot College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 330,
+            "annual_wage": 60860,
+            "awards_recent": 65,
+            "course_count": 8,
+            "enrolled": true,
+            "feeding_awards": 65,
+            "gap": 292,
+            "growth_rate": 0.036198933,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  45,
+                  32,
+                  34,
+                  65
+                ],
+                "awards_recent": 65,
+                "enrollment": [
+                  null,
+                  null,
+                  144,
+                  null,
+                  122,
+                  109,
+                  null,
+                  177,
+                  150,
+                  null,
+                  169,
+                  175,
+                  null,
+                  202,
+                  169
+                ],
+                "name": "Library Technician (Aide)",
+                "top6": "160200",
+                "wages": []
+              }
+            ],
+            "soc_code": "25-4031",
+            "supply": 37.67,
+            "title": "Library Technicians"
+          },
+          {
+            "annual_openings": 980,
+            "annual_wage": 59540,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 980,
+            "growth_rate": 0.009433937,
+            "programs": [],
+            "soc_code": "25-9044",
+            "supply": 0.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 290,
+            "annual_wage": 80210,
+            "awards_recent": 11,
+            "course_count": 4,
+            "enrolled": true,
+            "feeding_awards": 11,
+            "gap": 264,
+            "growth_rate": 0.008167404,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  21,
+                  18,
+                  19,
+                  11
+                ],
+                "awards_recent": 11,
+                "enrollment": [
+                  null,
+                  null,
+                  56,
+                  null,
+                  84,
+                  77,
+                  null,
+                  85,
+                  95,
+                  null,
+                  105,
+                  65,
+                  null,
+                  54,
+                  89
+                ],
+                "name": "Legal and Community Interpretation",
+                "top6": "214000",
+                "wages": []
+              }
+            ],
+            "soc_code": "27-3091",
+            "supply": 26.0,
+            "title": "Interpreters and Translators"
+          },
+          {
+            "annual_openings": 2950,
+            "annual_wage": 58610,
+            "awards_recent": 2,
+            "course_count": 6,
+            "enrolled": true,
+            "feeding_awards": 2,
+            "gap": 2950,
+            "growth_rate": 0.100811709,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  null,
+                  null,
+                  47,
+                  null,
+                  22,
+                  35,
+                  null,
+                  27,
+                  44,
+                  null,
+                  24,
+                  37,
+                  null,
+                  25,
+                  28
+                ],
+                "name": "Fitness Trainer",
+                "top6": "083520",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  null,
+                  null,
+                  55,
+                  null,
+                  28,
+                  71,
+                  null,
+                  46,
+                  31,
+                  null,
+                  35,
+                  51,
+                  null,
+                  68,
+                  34
+                ],
+                "name": "Coaching",
+                "top6": "083560",
+                "wages": []
+              }
+            ],
+            "soc_code": "39-9031",
+            "supply": 0.0,
+            "title": "Exercise Trainers and Group Fitness Instructors"
+          }
+        ],
+        "name": "City College of San Francisco"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 330,
+            "annual_wage": 60860,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 330,
+            "growth_rate": 0.036198933,
+            "programs": [],
+            "soc_code": "25-4031",
+            "supply": 0.0,
+            "title": "Library Technicians"
+          },
+          {
+            "annual_openings": 980,
+            "annual_wage": 59540,
+            "awards_recent": 0,
+            "course_count": 3,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 980,
+            "growth_rate": 0.009433937,
+            "programs": [],
+            "soc_code": "25-9044",
+            "supply": 0.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 290,
+            "annual_wage": 80210,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 290,
+            "growth_rate": 0.008167404,
+            "programs": [],
+            "soc_code": "27-3091",
+            "supply": 0.0,
+            "title": "Interpreters and Translators"
+          },
+          {
+            "annual_openings": 2950,
+            "annual_wage": 58610,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 2950,
+            "growth_rate": 0.100811709,
+            "programs": [],
+            "soc_code": "39-9031",
+            "supply": 0.0,
+            "title": "Exercise Trainers and Group Fitness Instructors"
+          }
+        ],
+        "name": "College of Alameda"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 330,
+            "annual_wage": 60860,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 330,
+            "growth_rate": 0.036198933,
+            "programs": [],
+            "soc_code": "25-4031",
+            "supply": 0.0,
+            "title": "Library Technicians"
+          },
+          {
+            "annual_openings": 980,
+            "annual_wage": 59540,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 980,
+            "growth_rate": 0.009433937,
+            "programs": [],
+            "soc_code": "25-9044",
+            "supply": 0.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 290,
+            "annual_wage": 80210,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 290,
+            "growth_rate": 0.008167404,
+            "programs": [],
+            "soc_code": "27-3091",
+            "supply": 0.0,
+            "title": "Interpreters and Translators"
+          },
+          {
+            "annual_openings": 2950,
+            "annual_wage": 58610,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 2950,
+            "growth_rate": 0.100811709,
+            "programs": [],
+            "soc_code": "39-9031",
+            "supply": 0.0,
+            "title": "Exercise Trainers and Group Fitness Instructors"
+          }
+        ],
+        "name": "College of Marin"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 330,
+            "annual_wage": 60860,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 330,
+            "growth_rate": 0.036198933,
+            "programs": [],
+            "soc_code": "25-4031",
+            "supply": 0.0,
+            "title": "Library Technicians"
+          },
+          {
+            "annual_openings": 980,
+            "annual_wage": 59540,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 980,
+            "growth_rate": 0.009433937,
+            "programs": [],
+            "soc_code": "25-9044",
+            "supply": 0.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 290,
+            "annual_wage": 80210,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 290,
+            "growth_rate": 0.008167404,
+            "programs": [],
+            "soc_code": "27-3091",
+            "supply": 0.0,
+            "title": "Interpreters and Translators"
+          },
+          {
+            "annual_openings": 2950,
+            "annual_wage": 58610,
+            "awards_recent": 24,
+            "course_count": 8,
+            "enrolled": true,
+            "feeding_awards": 24,
+            "gap": 2944,
+            "growth_rate": 0.100811709,
+            "programs": [
+              {
+                "awards": [
+                  1,
+                  7,
+                  2,
+                  17,
+                  23
+                ],
+                "awards_recent": 23,
+                "enrollment": [
+                  null,
+                  null,
+                  22,
+                  null,
+                  49,
+                  59,
+                  null,
+                  54,
+                  76,
+                  null,
+                  70,
+                  99,
+                  null,
+                  99,
+                  99
+                ],
+                "name": "Fitness Trainer",
+                "top6": "083520",
+                "wages": []
+              },
+              {
+                "awards": [
+                  1,
+                  2,
+                  1,
+                  1,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Coaching",
+                "top6": "083560",
+                "wages": []
+              }
+            ],
+            "soc_code": "39-9031",
+            "supply": 6.0,
+            "title": "Exercise Trainers and Group Fitness Instructors"
+          }
+        ],
+        "name": "College of San Mateo"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 330,
+            "annual_wage": 60860,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 330,
+            "growth_rate": 0.036198933,
+            "programs": [],
+            "soc_code": "25-4031",
+            "supply": 0.0,
+            "title": "Library Technicians"
+          },
+          {
+            "annual_openings": 980,
+            "annual_wage": 59540,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 980,
+            "growth_rate": 0.009433937,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  25,
+                  null,
+                  7,
+                  4,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Educational Aide (Teacher Assistant)",
+                "top6": "080200",
+                "wages": []
+              }
+            ],
+            "soc_code": "25-9044",
+            "supply": 0.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 290,
+            "annual_wage": 80210,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 290,
+            "growth_rate": 0.008167404,
+            "programs": [],
+            "soc_code": "27-3091",
+            "supply": 0.0,
+            "title": "Interpreters and Translators"
+          },
+          {
+            "annual_openings": 2950,
+            "annual_wage": 58610,
+            "awards_recent": 0,
+            "course_count": 3,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 2949,
+            "growth_rate": 0.100811709,
+            "programs": [],
+            "soc_code": "39-9031",
+            "supply": 1.0,
+            "title": "Exercise Trainers and Group Fitness Instructors"
+          }
+        ],
+        "name": "Contra Costa College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 330,
+            "annual_wage": 60860,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 330,
+            "growth_rate": 0.036198933,
+            "programs": [],
+            "soc_code": "25-4031",
+            "supply": 0.0,
+            "title": "Library Technicians"
+          },
+          {
+            "annual_openings": 980,
+            "annual_wage": 59540,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 980,
+            "growth_rate": 0.009433937,
+            "programs": [],
+            "soc_code": "25-9044",
+            "supply": 0.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 290,
+            "annual_wage": 80210,
+            "awards_recent": 6,
+            "course_count": 1,
+            "enrolled": true,
+            "feeding_awards": 6,
+            "gap": 282,
+            "growth_rate": 0.008167404,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  8,
+                  6,
+                  6
+                ],
+                "awards_recent": 6,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  25
+                ],
+                "name": "Legal and Community Interpretation",
+                "top6": "214000",
+                "wages": []
+              }
+            ],
+            "soc_code": "27-3091",
+            "supply": 8.0,
+            "title": "Interpreters and Translators"
+          },
+          {
+            "annual_openings": 2950,
+            "annual_wage": 58610,
+            "awards_recent": 0,
+            "course_count": 1,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 2950,
+            "growth_rate": 0.100811709,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  32,
+                  40,
+                  38,
+                  43,
+                  null,
+                  59,
+                  45,
+                  65,
+                  null,
+                  53,
+                  70,
+                  71,
+                  36,
+                  52,
+                  66
+                ],
+                "name": "Coaching",
+                "top6": "083560",
+                "wages": []
+              }
+            ],
+            "soc_code": "39-9031",
+            "supply": 0.0,
+            "title": "Exercise Trainers and Group Fitness Instructors"
+          }
+        ],
+        "name": "De Anza College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 330,
+            "annual_wage": 60860,
+            "awards_recent": 16,
+            "course_count": 0,
+            "enrolled": true,
+            "feeding_awards": 16,
+            "gap": 330,
+            "growth_rate": 0.036198933,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  15,
+                  11,
+                  6,
+                  16
+                ],
+                "awards_recent": 16,
+                "enrollment": [
+                  null,
+                  null,
+                  66,
+                  null,
+                  50,
+                  62,
+                  null,
+                  73,
+                  86,
+                  null,
+                  71,
+                  96,
+                  null,
+                  84,
+                  83
+                ],
+                "name": "Library Technician (Aide)",
+                "top6": "160200",
+                "wages": []
+              }
+            ],
+            "soc_code": "25-4031",
+            "supply": 0.0,
+            "title": "Library Technicians"
+          },
+          {
+            "annual_openings": 980,
+            "annual_wage": 59540,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 980,
+            "growth_rate": 0.009433937,
+            "programs": [],
+            "soc_code": "25-9044",
+            "supply": 0.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 290,
+            "annual_wage": 80210,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 290,
+            "growth_rate": 0.008167404,
+            "programs": [],
+            "soc_code": "27-3091",
+            "supply": 0.0,
+            "title": "Interpreters and Translators"
+          },
+          {
+            "annual_openings": 2950,
+            "annual_wage": 58610,
+            "awards_recent": 13,
+            "course_count": 17,
+            "enrolled": true,
+            "feeding_awards": 13,
+            "gap": 2944,
+            "growth_rate": 0.100811709,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  3,
+                  7,
+                  2,
+                  13
+                ],
+                "awards_recent": 13,
+                "enrollment": [
+                  null,
+                  null,
+                  37,
+                  null,
+                  28,
+                  35,
+                  null,
+                  27,
+                  63,
+                  null,
+                  100,
+                  146,
+                  null,
+                  157,
+                  119
+                ],
+                "name": "Fitness Trainer",
+                "top6": "083520",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  1,
+                  1,
+                  1,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  176,
+                  null,
+                  183,
+                  164,
+                  null,
+                  225,
+                  220,
+                  null,
+                  324,
+                  225,
+                  null,
+                  279,
+                  235
+                ],
+                "name": "Coaching",
+                "top6": "083560",
+                "wages": []
+              }
+            ],
+            "soc_code": "39-9031",
+            "supply": 6.5,
+            "title": "Exercise Trainers and Group Fitness Instructors"
+          }
+        ],
+        "name": "Diablo Valley College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 330,
+            "annual_wage": 60860,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 330,
+            "growth_rate": 0.036198933,
+            "programs": [],
+            "soc_code": "25-4031",
+            "supply": 0.0,
+            "title": "Library Technicians"
+          },
+          {
+            "annual_openings": 980,
+            "annual_wage": 59540,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 980,
+            "growth_rate": 0.009433937,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  4,
+                  7,
+                  null,
+                  8,
+                  13,
+                  null,
+                  4,
+                  15,
+                  null,
+                  14,
+                  28,
+                  null,
+                  15,
+                  12
+                ],
+                "name": "Educational Aide (Teacher Assistant)",
+                "top6": "080200",
+                "wages": []
+              }
+            ],
+            "soc_code": "25-9044",
+            "supply": 0.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 290,
+            "annual_wage": 80210,
+            "awards_recent": 25,
+            "course_count": 16,
+            "enrolled": true,
+            "feeding_awards": 25,
+            "gap": 290,
+            "growth_rate": 0.008167404,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  25
+                ],
+                "awards_recent": 25,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  30,
+                  67,
+                  null,
+                  101,
+                  154,
+                  null,
+                  203,
+                  139
+                ],
+                "name": "Legal and Community Interpretation",
+                "top6": "214000",
+                "wages": []
+              }
+            ],
+            "soc_code": "27-3091",
+            "supply": 0.0,
+            "title": "Interpreters and Translators"
+          },
+          {
+            "annual_openings": 2950,
+            "annual_wage": 58610,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 2950,
+            "growth_rate": 0.100811709,
+            "programs": [],
+            "soc_code": "39-9031",
+            "supply": 0.0,
+            "title": "Exercise Trainers and Group Fitness Instructors"
+          }
+        ],
+        "name": "Evergreen Valley College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 330,
+            "annual_wage": 60860,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 330,
+            "growth_rate": 0.036198933,
+            "programs": [],
+            "soc_code": "25-4031",
+            "supply": 0.0,
+            "title": "Library Technicians"
+          },
+          {
+            "annual_openings": 980,
+            "annual_wage": 59540,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 980,
+            "growth_rate": 0.009433937,
+            "programs": [],
+            "soc_code": "25-9044",
+            "supply": 0.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 290,
+            "annual_wage": 80210,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 290,
+            "growth_rate": 0.008167404,
+            "programs": [],
+            "soc_code": "27-3091",
+            "supply": 0.0,
+            "title": "Interpreters and Translators"
+          },
+          {
+            "annual_openings": 2950,
+            "annual_wage": 58610,
+            "awards_recent": 2,
+            "course_count": 5,
+            "enrolled": false,
+            "feeding_awards": 2,
+            "gap": 2950,
+            "growth_rate": 0.100811709,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  3,
+                  1,
+                  1,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Fitness Trainer",
+                "top6": "083520",
+                "wages": []
+              }
+            ],
+            "soc_code": "39-9031",
+            "supply": 0.0,
+            "title": "Exercise Trainers and Group Fitness Instructors"
+          }
+        ],
+        "name": "Foothill College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 330,
+            "annual_wage": 60860,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 330,
+            "growth_rate": 0.036198933,
+            "programs": [],
+            "soc_code": "25-4031",
+            "supply": 0.0,
+            "title": "Library Technicians"
+          },
+          {
+            "annual_openings": 980,
+            "annual_wage": 59540,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 980,
+            "growth_rate": 0.009433937,
+            "programs": [],
+            "soc_code": "25-9044",
+            "supply": 0.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 290,
+            "annual_wage": 80210,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 290,
+            "growth_rate": 0.008167404,
+            "programs": [],
+            "soc_code": "27-3091",
+            "supply": 0.0,
+            "title": "Interpreters and Translators"
+          },
+          {
+            "annual_openings": 2950,
+            "annual_wage": 58610,
+            "awards_recent": 6,
+            "course_count": 2,
+            "enrolled": true,
+            "feeding_awards": 6,
+            "gap": 2948,
+            "growth_rate": 0.100811709,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  2,
+                  1,
+                  6,
+                  6
+                ],
+                "awards_recent": 6,
+                "enrollment": [
+                  null,
+                  null,
+                  6,
+                  null,
+                  6,
+                  19,
+                  null,
+                  12,
+                  22,
+                  null,
+                  10,
+                  21,
+                  null,
+                  12,
+                  23
+                ],
+                "name": "Fitness Trainer",
+                "top6": "083520",
+                "wages": []
+              }
+            ],
+            "soc_code": "39-9031",
+            "supply": 2.33,
+            "title": "Exercise Trainers and Group Fitness Instructors"
+          }
+        ],
+        "name": "Gavilan College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 330,
+            "annual_wage": 60860,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 330,
+            "growth_rate": 0.036198933,
+            "programs": [],
+            "soc_code": "25-4031",
+            "supply": 0.0,
+            "title": "Library Technicians"
+          },
+          {
+            "annual_openings": 980,
+            "annual_wage": 59540,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 980,
+            "growth_rate": 0.009433937,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  22,
+                  null,
+                  9,
+                  28,
+                  null,
+                  13,
+                  19,
+                  null,
+                  11,
+                  12,
+                  null,
+                  null,
+                  31
+                ],
+                "name": "Educational Aide (Teacher Assistant)",
+                "top6": "080200",
+                "wages": []
+              }
+            ],
+            "soc_code": "25-9044",
+            "supply": 0.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 290,
+            "annual_wage": 80210,
+            "awards_recent": 16,
+            "course_count": 9,
+            "enrolled": true,
+            "feeding_awards": 16,
+            "gap": 284,
+            "growth_rate": 0.008167404,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  11,
+                  1,
+                  5,
+                  16
+                ],
+                "awards_recent": 16,
+                "enrollment": [
+                  null,
+                  null,
+                  31,
+                  null,
+                  23,
+                  26,
+                  null,
+                  24,
+                  36,
+                  null,
+                  51,
+                  45,
+                  null,
+                  61,
+                  59
+                ],
+                "name": "Legal and Community Interpretation",
+                "top6": "214000",
+                "wages": []
+              }
+            ],
+            "soc_code": "27-3091",
+            "supply": 6.0,
+            "title": "Interpreters and Translators"
+          },
+          {
+            "annual_openings": 2950,
+            "annual_wage": 58610,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 2950,
+            "growth_rate": 0.100811709,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  12,
+                  null,
+                  17,
+                  22,
+                  null,
+                  null,
+                  null,
+                  null,
+                  31,
+                  null,
+                  null,
+                  36,
+                  null
+                ],
+                "name": "Fitness Trainer",
+                "top6": "083520",
+                "wages": []
+              }
+            ],
+            "soc_code": "39-9031",
+            "supply": 0.0,
+            "title": "Exercise Trainers and Group Fitness Instructors"
+          }
+        ],
+        "name": "Laney College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 330,
+            "annual_wage": 60860,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 330,
+            "growth_rate": 0.036198933,
+            "programs": [],
+            "soc_code": "25-4031",
+            "supply": 0.0,
+            "title": "Library Technicians"
+          },
+          {
+            "annual_openings": 980,
+            "annual_wage": 59540,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 980,
+            "growth_rate": 0.009433937,
+            "programs": [],
+            "soc_code": "25-9044",
+            "supply": 0.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 290,
+            "annual_wage": 80210,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 290,
+            "growth_rate": 0.008167404,
+            "programs": [],
+            "soc_code": "27-3091",
+            "supply": 0.0,
+            "title": "Interpreters and Translators"
+          },
+          {
+            "annual_openings": 2950,
+            "annual_wage": 58610,
+            "awards_recent": 0,
+            "course_count": 1,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 2949,
+            "growth_rate": 0.100811709,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  2,
+                  1,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Fitness Trainer",
+                "top6": "083520",
+                "wages": []
+              }
+            ],
+            "soc_code": "39-9031",
+            "supply": 1.0,
+            "title": "Exercise Trainers and Group Fitness Instructors"
+          }
+        ],
+        "name": "Las Positas College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 330,
+            "annual_wage": 60860,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 330,
+            "growth_rate": 0.036198933,
+            "programs": [],
+            "soc_code": "25-4031",
+            "supply": 0.0,
+            "title": "Library Technicians"
+          },
+          {
+            "annual_openings": 980,
+            "annual_wage": 59540,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 980,
+            "growth_rate": 0.009433937,
+            "programs": [],
+            "soc_code": "25-9044",
+            "supply": 0.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 290,
+            "annual_wage": 80210,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 290,
+            "growth_rate": 0.008167404,
+            "programs": [],
+            "soc_code": "27-3091",
+            "supply": 0.0,
+            "title": "Interpreters and Translators"
+          },
+          {
+            "annual_openings": 2950,
+            "annual_wage": 58610,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 2950,
+            "growth_rate": 0.100811709,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  2,
+                  null,
+                  3,
+                  5,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Fitness Trainer",
+                "top6": "083520",
+                "wages": []
+              }
+            ],
+            "soc_code": "39-9031",
+            "supply": 0.0,
+            "title": "Exercise Trainers and Group Fitness Instructors"
+          }
+        ],
+        "name": "Los Medanos College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 330,
+            "annual_wage": 60860,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 330,
+            "growth_rate": 0.036198933,
+            "programs": [],
+            "soc_code": "25-4031",
+            "supply": 0.0,
+            "title": "Library Technicians"
+          },
+          {
+            "annual_openings": 980,
+            "annual_wage": 59540,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 980,
+            "growth_rate": 0.009433937,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  8,
+                  null,
+                  10,
+                  13,
+                  null,
+                  22,
+                  20,
+                  null,
+                  12,
+                  15,
+                  null,
+                  8,
+                  null
+                ],
+                "name": "Educational Aide (Teacher Assistant)",
+                "top6": "080200",
+                "wages": []
+              }
+            ],
+            "soc_code": "25-9044",
+            "supply": 0.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 290,
+            "annual_wage": 80210,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 290,
+            "growth_rate": 0.008167404,
+            "programs": [],
+            "soc_code": "27-3091",
+            "supply": 0.0,
+            "title": "Interpreters and Translators"
+          },
+          {
+            "annual_openings": 2950,
+            "annual_wage": 58610,
+            "awards_recent": 0,
+            "course_count": 3,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 2950,
+            "growth_rate": 0.100811709,
+            "programs": [],
+            "soc_code": "39-9031",
+            "supply": 0.0,
+            "title": "Exercise Trainers and Group Fitness Instructors"
+          }
+        ],
+        "name": "Merritt College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 330,
+            "annual_wage": 60860,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 330,
+            "growth_rate": 0.036198933,
+            "programs": [],
+            "soc_code": "25-4031",
+            "supply": 0.0,
+            "title": "Library Technicians"
+          },
+          {
+            "annual_openings": 980,
+            "annual_wage": 59540,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 980,
+            "growth_rate": 0.009433937,
+            "programs": [],
+            "soc_code": "25-9044",
+            "supply": 0.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 290,
+            "annual_wage": 80210,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 290,
+            "growth_rate": 0.008167404,
+            "programs": [],
+            "soc_code": "27-3091",
+            "supply": 0.0,
+            "title": "Interpreters and Translators"
+          },
+          {
+            "annual_openings": 2950,
+            "annual_wage": 58610,
+            "awards_recent": 0,
+            "course_count": 5,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 2950,
+            "growth_rate": 0.100811709,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  9,
+                  null,
+                  16,
+                  11
+                ],
+                "name": "Fitness Trainer",
+                "top6": "083520",
+                "wages": []
+              }
+            ],
+            "soc_code": "39-9031",
+            "supply": 0.0,
+            "title": "Exercise Trainers and Group Fitness Instructors"
+          }
+        ],
+        "name": "Mission College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 330,
+            "annual_wage": 60860,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 330,
+            "growth_rate": 0.036198933,
+            "programs": [],
+            "soc_code": "25-4031",
+            "supply": 0.0,
+            "title": "Library Technicians"
+          },
+          {
+            "annual_openings": 980,
+            "annual_wage": 59540,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 980,
+            "growth_rate": 0.009433937,
+            "programs": [],
+            "soc_code": "25-9044",
+            "supply": 0.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 290,
+            "annual_wage": 80210,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 290,
+            "growth_rate": 0.008167404,
+            "programs": [],
+            "soc_code": "27-3091",
+            "supply": 0.0,
+            "title": "Interpreters and Translators"
+          },
+          {
+            "annual_openings": 2950,
+            "annual_wage": 58610,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 2950,
+            "growth_rate": 0.100811709,
+            "programs": [],
+            "soc_code": "39-9031",
+            "supply": 0.0,
+            "title": "Exercise Trainers and Group Fitness Instructors"
+          }
+        ],
+        "name": "Napa Valley College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 330,
+            "annual_wage": 60860,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 330,
+            "growth_rate": 0.036198933,
+            "programs": [],
+            "soc_code": "25-4031",
+            "supply": 0.0,
+            "title": "Library Technicians"
+          },
+          {
+            "annual_openings": 980,
+            "annual_wage": 59540,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 980,
+            "growth_rate": 0.009433937,
+            "programs": [],
+            "soc_code": "25-9044",
+            "supply": 0.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 290,
+            "annual_wage": 80210,
+            "awards_recent": 8,
+            "course_count": 18,
+            "enrolled": true,
+            "feeding_awards": 8,
+            "gap": 277,
+            "growth_rate": 0.008167404,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  13,
+                  9,
+                  7,
+                  8
+                ],
+                "awards_recent": 8,
+                "enrollment": [
+                  null,
+                  111,
+                  121,
+                  null,
+                  78,
+                  84,
+                  null,
+                  73,
+                  100,
+                  null,
+                  60,
+                  115,
+                  null,
+                  95,
+                  75
+                ],
+                "name": "Sign Language Interpreting",
+                "top6": "085010",
+                "wages": []
+              }
+            ],
+            "soc_code": "27-3091",
+            "supply": 13.33,
+            "title": "Interpreters and Translators"
+          },
+          {
+            "annual_openings": 2950,
+            "annual_wage": 58610,
+            "awards_recent": 0,
+            "course_count": 1,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 2950,
+            "growth_rate": 0.100811709,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  1,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Fitness Trainer",
+                "top6": "083520",
+                "wages": []
+              }
+            ],
+            "soc_code": "39-9031",
+            "supply": 0.0,
+            "title": "Exercise Trainers and Group Fitness Instructors"
+          }
+        ],
+        "name": "Ohlone College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 330,
+            "annual_wage": 60860,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 330,
+            "growth_rate": 0.036198933,
+            "programs": [],
+            "soc_code": "25-4031",
+            "supply": 0.0,
+            "title": "Library Technicians"
+          },
+          {
+            "annual_openings": 980,
+            "annual_wage": 59540,
+            "awards_recent": 0,
+            "course_count": 1,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 980,
+            "growth_rate": 0.009433937,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  10,
+                  null,
+                  15,
+                  18,
+                  null,
+                  11,
+                  8,
+                  null,
+                  4,
+                  10,
+                  null,
+                  5,
+                  6
+                ],
+                "name": "Educational Aide (Teacher Assistant)",
+                "top6": "080200",
+                "wages": []
+              }
+            ],
+            "soc_code": "25-9044",
+            "supply": 0.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 290,
+            "annual_wage": 80210,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 290,
+            "growth_rate": 0.008167404,
+            "programs": [],
+            "soc_code": "27-3091",
+            "supply": 0.0,
+            "title": "Interpreters and Translators"
+          },
+          {
+            "annual_openings": 2950,
+            "annual_wage": 58610,
+            "awards_recent": 0,
+            "course_count": 4,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 2950,
+            "growth_rate": 0.100811709,
+            "programs": [],
+            "soc_code": "39-9031",
+            "supply": 0.0,
+            "title": "Exercise Trainers and Group Fitness Instructors"
+          }
+        ],
+        "name": "San Jose City College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 330,
+            "annual_wage": 60860,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 330,
+            "growth_rate": 0.036198933,
+            "programs": [],
+            "soc_code": "25-4031",
+            "supply": 0.0,
+            "title": "Library Technicians"
+          },
+          {
+            "annual_openings": 980,
+            "annual_wage": 59540,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 980,
+            "growth_rate": 0.009433937,
+            "programs": [],
+            "soc_code": "25-9044",
+            "supply": 0.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 290,
+            "annual_wage": 80210,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 290,
+            "growth_rate": 0.008167404,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  8,
+                  null,
+                  4,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  18,
+                  16
+                ],
+                "name": "Sign Language Interpreting",
+                "top6": "085010",
+                "wages": []
+              }
+            ],
+            "soc_code": "27-3091",
+            "supply": 0.0,
+            "title": "Interpreters and Translators"
+          },
+          {
+            "annual_openings": 2950,
+            "annual_wage": 58610,
+            "awards_recent": 85,
+            "course_count": 15,
+            "enrolled": true,
+            "feeding_awards": 85,
+            "gap": 2921,
+            "growth_rate": 0.100811709,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  12,
+                  9,
+                  22,
+                  85
+                ],
+                "awards_recent": 85,
+                "enrollment": [
+                  null,
+                  null,
+                  87,
+                  null,
+                  10,
+                  44,
+                  null,
+                  103,
+                  82,
+                  null,
+                  126,
+                  125,
+                  null,
+                  145,
+                  136
+                ],
+                "name": "Fitness Trainer",
+                "top6": "083520",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  20,
+                  null,
+                  null,
+                  19,
+                  null,
+                  10,
+                  24,
+                  null,
+                  24,
+                  null,
+                  null,
+                  28,
+                  null
+                ],
+                "name": "Coaching",
+                "top6": "083560",
+                "wages": []
+              }
+            ],
+            "soc_code": "39-9031",
+            "supply": 29.33,
+            "title": "Exercise Trainers and Group Fitness Instructors"
+          }
+        ],
+        "name": "Santa Rosa Junior College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 330,
+            "annual_wage": 60860,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 330,
+            "growth_rate": 0.036198933,
+            "programs": [],
+            "soc_code": "25-4031",
+            "supply": 0.0,
+            "title": "Library Technicians"
+          },
+          {
+            "annual_openings": 980,
+            "annual_wage": 59540,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 980,
+            "growth_rate": 0.009433937,
+            "programs": [],
+            "soc_code": "25-9044",
+            "supply": 0.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 290,
+            "annual_wage": 80210,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 290,
+            "growth_rate": 0.008167404,
+            "programs": [],
+            "soc_code": "27-3091",
+            "supply": 0.0,
+            "title": "Interpreters and Translators"
+          },
+          {
+            "annual_openings": 2950,
+            "annual_wage": 58610,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 2950,
+            "growth_rate": 0.100811709,
+            "programs": [],
+            "soc_code": "39-9031",
+            "supply": 0.0,
+            "title": "Exercise Trainers and Group Fitness Instructors"
+          }
+        ],
+        "name": "Skyline College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 330,
+            "annual_wage": 60860,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 330,
+            "growth_rate": 0.036198933,
+            "programs": [],
+            "soc_code": "25-4031",
+            "supply": 0.0,
+            "title": "Library Technicians"
+          },
+          {
+            "annual_openings": 980,
+            "annual_wage": 59540,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 980,
+            "growth_rate": 0.009433937,
+            "programs": [],
+            "soc_code": "25-9044",
+            "supply": 0.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 290,
+            "annual_wage": 80210,
+            "awards_recent": 15,
+            "course_count": 15,
+            "enrolled": true,
+            "feeding_awards": 15,
+            "gap": 281,
+            "growth_rate": 0.008167404,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  11,
+                  6,
+                  8,
+                  15
+                ],
+                "awards_recent": 15,
+                "enrollment": [
+                  null,
+                  null,
+                  372,
+                  null,
+                  367,
+                  443,
+                  null,
+                  454,
+                  520,
+                  null,
+                  463,
+                  472,
+                  null,
+                  548,
+                  566
+                ],
+                "name": "Sign Language Interpreting",
+                "top6": "085010",
+                "wages": []
+              }
+            ],
+            "soc_code": "27-3091",
+            "supply": 9.0,
+            "title": "Interpreters and Translators"
+          },
+          {
+            "annual_openings": 2950,
+            "annual_wage": 58610,
+            "awards_recent": 0,
+            "course_count": 1,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 2949,
+            "growth_rate": 0.100811709,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  172,
+                  null,
+                  148,
+                  133,
+                  null,
+                  159,
+                  176,
+                  null,
+                  183,
+                  205,
+                  null,
+                  166,
+                  146
+                ],
+                "name": "Fitness Trainer",
+                "top6": "083520",
+                "wages": []
+              }
+            ],
+            "soc_code": "39-9031",
+            "supply": 1.0,
+            "title": "Exercise Trainers and Group Fitness Instructors"
+          }
+        ],
+        "name": "Solano Community College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 330,
+            "annual_wage": 60860,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 330,
+            "growth_rate": 0.036198933,
+            "programs": [],
+            "soc_code": "25-4031",
+            "supply": 0.0,
+            "title": "Library Technicians"
+          },
+          {
+            "annual_openings": 980,
+            "annual_wage": 59540,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 980,
+            "growth_rate": 0.009433937,
+            "programs": [],
+            "soc_code": "25-9044",
+            "supply": 0.0,
+            "title": "Teaching Assistants, Postsecondary"
+          },
+          {
+            "annual_openings": 290,
+            "annual_wage": 80210,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 290,
+            "growth_rate": 0.008167404,
+            "programs": [],
+            "soc_code": "27-3091",
+            "supply": 0.0,
+            "title": "Interpreters and Translators"
+          },
+          {
+            "annual_openings": 2950,
+            "annual_wage": 58610,
+            "awards_recent": 11,
+            "course_count": 10,
+            "enrolled": true,
+            "feeding_awards": 11,
+            "gap": 2939,
+            "growth_rate": 0.100811709,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  10,
+                  15,
+                  13,
+                  11
+                ],
+                "awards_recent": 11,
+                "enrollment": [
+                  null,
+                  null,
+                  53,
+                  null,
+                  14,
+                  40,
+                  null,
+                  10,
+                  76,
+                  null,
+                  null,
+                  58,
+                  null,
+                  null,
+                  81
+                ],
+                "name": "Fitness Trainer",
+                "top6": "083520",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  50,
+                  null,
+                  26,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Coaching",
+                "top6": "083560",
+                "wages": []
+              }
+            ],
+            "soc_code": "39-9031",
+            "supply": 11.17,
+            "title": "Exercise Trainers and Group Fitness Instructors"
+          }
+        ],
+        "name": "West Valley College"
+      }
+    ],
+    "coverage_awards_only": true,
+    "enrollment_terms": [
+      "Winter 2021",
+      "Spring 2021",
+      "Fall 2021",
+      "Winter 2022",
+      "Spring 2022",
+      "Fall 2022",
+      "Winter 2023",
+      "Spring 2023",
+      "Fall 2023",
+      "Winter 2024",
+      "Spring 2024",
+      "Fall 2024",
+      "Winter 2025",
+      "Spring 2025",
+      "Fall 2025"
+    ],
+    "executive_summary": "This view examines the regional demand landscape across the 4 education & human development occupations the Bay Area Community College Consortium \u2014 Education & Human Development targets in the Bay Area regional labor market. Regional demand for these occupations totals 4,550 openings per year.",
+    "is_sector_priority": false,
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "Education & Human Development"
+  }
+}

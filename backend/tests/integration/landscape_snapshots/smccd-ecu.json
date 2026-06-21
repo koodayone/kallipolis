@@ -2,786 +2,633 @@
   "/employers": {
     "employers": [
       {
-        "contact_name": "Martin B Sisemore",
-        "contact_title": "CEO",
-        "description": "Rudolph & Sletten is a construction company.",
-        "lat": 37.4823535,
-        "lng": -122.1684638,
-        "naics4": "2362",
-        "naics_title": "Nonresidential Building Construction",
-        "name": "Rudolph & Sletten",
-        "sector": "Construction",
-        "size_class": "500-999 employees",
-        "size_rank": 8,
-        "soc_count": 9,
-        "soc_titles": {
-          "17-3011": "Architectural and Civil Drafters",
-          "17-3022": "Civil Engineering Technologists and Technicians",
-          "47-1011": "First-Line Supervisors of Construction Trades and Extraction Workers",
-          "47-2111": "Electricians",
-          "47-2231": "Solar Photovoltaic Installers",
-          "47-4011": "Construction and Building Inspectors",
-          "49-2098": "Security and Fire Alarm Systems Installers",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9099": "Installation, Maintenance, and Repair Workers, All Other"
-        },
-        "socs": [
-          "47-1011",
-          "47-2111",
-          "17-3011",
-          "47-4011",
-          "49-9021",
-          "49-9099",
-          "17-3022",
-          "47-2231",
-          "49-2098"
-        ],
-        "website": "https://www.rsconstruction.com/"
-      },
-      {
-        "contact_name": "Bayardo Chamorro",
-        "contact_title": "President",
-        "description": "Pribuss Engineering offers engineering services.",
-        "lat": 37.651817,
-        "lng": -122.4218991,
-        "naics4": "2382",
-        "naics_title": "Building Equipment Contractors",
-        "name": "Pribuss Engineering",
-        "sector": "Construction",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 11,
-        "soc_titles": {
-          "17-3011": "Architectural and Civil Drafters",
-          "17-3022": "Civil Engineering Technologists and Technicians",
-          "47-1011": "First-Line Supervisors of Construction Trades and Extraction Workers",
-          "47-2111": "Electricians",
-          "47-2231": "Solar Photovoltaic Installers",
-          "47-4011": "Construction and Building Inspectors",
-          "47-4021": "Elevator and Escalator Installers and Repairers",
-          "49-2098": "Security and Fire Alarm Systems Installers",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9051": "Electrical Power-Line Installers and Repairers",
-          "49-9099": "Installation, Maintenance, and Repair Workers, All Other"
-        },
-        "socs": [
-          "47-2111",
-          "49-9021",
-          "47-1011",
-          "47-4021",
-          "49-2098",
-          "47-2231",
-          "49-9099",
-          "49-9051",
-          "47-4011",
-          "17-3011",
-          "17-3022"
-        ],
-        "website": "https://www.pribuss.com/"
-      },
-      {
-        "contact_name": "Lyndon R Rive",
-        "contact_title": "CEO",
-        "description": "Tesla Energy provides energy solutions and products.",
-        "lat": 37.530364,
-        "lng": -122.3324749,
-        "naics4": "2382",
-        "naics_title": "Building Equipment Contractors",
-        "name": "Tesla Energy",
-        "sector": "Construction",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 11,
-        "soc_titles": {
-          "17-3011": "Architectural and Civil Drafters",
-          "17-3022": "Civil Engineering Technologists and Technicians",
-          "47-1011": "First-Line Supervisors of Construction Trades and Extraction Workers",
-          "47-2111": "Electricians",
-          "47-2231": "Solar Photovoltaic Installers",
-          "47-4011": "Construction and Building Inspectors",
-          "47-4021": "Elevator and Escalator Installers and Repairers",
-          "49-2098": "Security and Fire Alarm Systems Installers",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9051": "Electrical Power-Line Installers and Repairers",
-          "49-9099": "Installation, Maintenance, and Repair Workers, All Other"
-        },
-        "socs": [
-          "47-2111",
-          "49-9021",
-          "47-1011",
-          "47-4021",
-          "49-2098",
-          "47-2231",
-          "49-9099",
-          "49-9051",
-          "47-4011",
-          "17-3011",
-          "17-3022"
-        ],
-        "website": "https://www.tesla.com"
-      },
-      {
-        "contact_name": "Mel Lew",
-        "contact_title": "Manager",
-        "description": "American Window Film San Francisco provides window film installation services.",
-        "lat": 37.6002938,
-        "lng": -122.3789084,
-        "naics4": "2381",
-        "naics_title": "Foundation, Structure, and Building Exterior Contractors",
-        "name": "American Window Film San Francisco",
-        "sector": "Construction",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 8,
-        "soc_titles": {
-          "17-3011": "Architectural and Civil Drafters",
-          "17-3022": "Civil Engineering Technologists and Technicians",
-          "47-1011": "First-Line Supervisors of Construction Trades and Extraction Workers",
-          "47-2111": "Electricians",
-          "47-2231": "Solar Photovoltaic Installers",
-          "47-4011": "Construction and Building Inspectors",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9099": "Installation, Maintenance, and Repair Workers, All Other"
-        },
-        "socs": [
-          "47-1011",
-          "17-3011",
-          "49-9099",
-          "47-2111",
-          "47-4011",
-          "49-9021",
-          "47-2231",
-          "17-3022"
-        ],
-        "website": "https://www.americanwindowfilm.com"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "An unidentified company or organization.",
-        "lat": 37.5909815,
-        "lng": -122.3648729,
-        "naics4": "2383",
-        "naics_title": "Building Finishing Contractors",
-        "name": "JJJ & K",
-        "sector": "Construction",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 7,
-        "soc_titles": {
-          "17-3011": "Architectural and Civil Drafters",
-          "47-1011": "First-Line Supervisors of Construction Trades and Extraction Workers",
-          "47-2111": "Electricians",
-          "47-2231": "Solar Photovoltaic Installers",
-          "47-4011": "Construction and Building Inspectors",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9099": "Installation, Maintenance, and Repair Workers, All Other"
-        },
-        "socs": [
-          "47-1011",
-          "49-9099",
-          "17-3011",
-          "47-2111",
-          "47-4011",
-          "49-9021",
-          "47-2231"
-        ],
-        "website": "ALEXANDERCO.COM"
-      },
-      {
-        "contact_name": "Marge Vizcarra",
-        "contact_title": "Director",
-        "description": "The municipal water provider for the city of San Francisco.",
-        "lat": 37.5975816,
-        "lng": -122.3868334,
-        "naics4": "2213",
-        "naics_title": "Water, Sewage and Other Systems",
-        "name": "San Francisco Water",
-        "sector": "Utilities",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 7,
-        "soc_titles": {
-          "17-3011": "Architectural and Civil Drafters",
-          "19-4042": "Environmental Science and Protection Technicians, Including Health",
-          "47-1011": "First-Line Supervisors of Construction Trades and Extraction Workers",
-          "47-2111": "Electricians",
-          "47-4011": "Construction and Building Inspectors",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9099": "Installation, Maintenance, and Repair Workers, All Other"
-        },
-        "socs": [
-          "47-1011",
-          "49-9099",
-          "47-2111",
-          "49-9021",
-          "19-4042",
-          "47-4011",
-          "17-3011"
-        ],
-        "website": "https://www.sfpuc.org/"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "Atlas/Pellizzari Electric provides electrical contracting services.",
+        "description": "Atlas/Pellizzari Electric is a full-service electrical contractor based in Redwood City serving Northern California and Silicon Valley across biotechnology, healthcare, corporate, industrial, municipal, and educational sectors. The firm handles design-build electrical installation, low-voltage systems, process controls, and renewable energy \u2014 including a 15 MW photovoltaic solar farm for PG&E. Roughly 80% of their work is repeat business, reflecting long-term relationships with school districts, corporations, and general contractors in the region.",
+        "display_name": null,
         "lat": 37.4920007,
         "lng": -122.2366476,
         "naics4": "2382",
         "naics_title": "Building Equipment Contractors",
         "name": "Atlas/Pellizzari Electric",
+        "relevance": 34.37,
         "sector": "Construction",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 11,
+        "soc_count": 4,
         "soc_titles": {
-          "17-3011": "Architectural and Civil Drafters",
-          "17-3022": "Civil Engineering Technologists and Technicians",
-          "47-1011": "First-Line Supervisors of Construction Trades and Extraction Workers",
           "47-2111": "Electricians",
           "47-2231": "Solar Photovoltaic Installers",
-          "47-4011": "Construction and Building Inspectors",
-          "47-4021": "Elevator and Escalator Installers and Repairers",
-          "49-2098": "Security and Fire Alarm Systems Installers",
           "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9051": "Electrical Power-Line Installers and Repairers",
-          "49-9099": "Installation, Maintenance, and Repair Workers, All Other"
+          "49-9051": "Electrical Power-Line Installers and Repairers"
         },
         "socs": [
           "47-2111",
           "49-9021",
-          "47-1011",
-          "47-4021",
-          "49-2098",
           "47-2231",
-          "49-9099",
-          "49-9051",
-          "47-4011",
-          "17-3011",
-          "17-3022"
+          "49-9051"
         ],
         "website": "https://www.atlas-pellizzari.com"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "Bay Area Systems & Solutions offers system and technology solutions.",
+        "description": "BASS Electric (Bay Area Systems & Solutions, Inc.) is a minority- and veteran-owned commercial and industrial electrical contractor founded in South San Francisco in 1996. The firm handles new electrical construction, service and maintenance contracts, EV charging installations, and solar systems for clients ranging from airlines and data centers to government facilities and healthcare campuses. Field crews are IBEW 617 trained and CAL OSHA certified, making them a direct pathway employer for licensed electricians and electrical apprentices.",
+        "display_name": null,
         "lat": 37.650337,
         "lng": -122.3892443,
         "naics4": "2382",
         "naics_title": "Building Equipment Contractors",
         "name": "Bay Area Systems & Solutions",
+        "relevance": 34.37,
         "sector": "Construction",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 11,
+        "soc_count": 4,
         "soc_titles": {
-          "17-3011": "Architectural and Civil Drafters",
-          "17-3022": "Civil Engineering Technologists and Technicians",
-          "47-1011": "First-Line Supervisors of Construction Trades and Extraction Workers",
           "47-2111": "Electricians",
           "47-2231": "Solar Photovoltaic Installers",
-          "47-4011": "Construction and Building Inspectors",
-          "47-4021": "Elevator and Escalator Installers and Repairers",
-          "49-2098": "Security and Fire Alarm Systems Installers",
           "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9051": "Electrical Power-Line Installers and Repairers",
-          "49-9099": "Installation, Maintenance, and Repair Workers, All Other"
+          "49-9051": "Electrical Power-Line Installers and Repairers"
         },
         "socs": [
           "47-2111",
           "49-9021",
-          "47-1011",
-          "47-4021",
-          "49-2098",
           "47-2231",
-          "49-9099",
-          "49-9051",
-          "47-4011",
-          "17-3011",
-          "17-3022"
+          "49-9051"
         ],
         "website": "https://basselectric.com"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "Decker Electric provides electrical services.",
+        "description": "Founded in 1896, Decker Electric is a Bay Area electrical contractor specializing in design/build projects \u2014 which account for roughly 65% of their work \u2014 across commercial offices, biopharmaceutical labs, multi-family residential, and high-rise construction. They handle the full project lifecycle from pre-construction planning and BIM coordination through low-voltage systems (voice, data, security, AV), utility coordination with PG&E, and owner training, with a client roster that includes major tech firms and life-sciences companies such as YouTube, LinkedIn, Dropbox, and AstraZeneca.",
+        "display_name": null,
         "lat": 37.6398546,
         "lng": -122.4038446,
         "naics4": "2382",
         "naics_title": "Building Equipment Contractors",
         "name": "Decker Electric",
+        "relevance": 34.37,
         "sector": "Construction",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 11,
+        "soc_count": 4,
         "soc_titles": {
-          "17-3011": "Architectural and Civil Drafters",
-          "17-3022": "Civil Engineering Technologists and Technicians",
-          "47-1011": "First-Line Supervisors of Construction Trades and Extraction Workers",
           "47-2111": "Electricians",
           "47-2231": "Solar Photovoltaic Installers",
-          "47-4011": "Construction and Building Inspectors",
-          "47-4021": "Elevator and Escalator Installers and Repairers",
-          "49-2098": "Security and Fire Alarm Systems Installers",
           "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9051": "Electrical Power-Line Installers and Repairers",
-          "49-9099": "Installation, Maintenance, and Repair Workers, All Other"
+          "49-9051": "Electrical Power-Line Installers and Repairers"
         },
         "socs": [
           "47-2111",
           "49-9021",
-          "47-1011",
-          "47-4021",
-          "49-2098",
           "47-2231",
-          "49-9099",
-          "49-9051",
-          "47-4011",
-          "17-3011",
-          "17-3022"
+          "49-9051"
         ],
         "website": "https://www.deckerelectric.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "JMB Construction is a construction company.",
+        "description": "Pribuss Engineering Inc. is a Bay Area mechanical contractor headquartered in South San Francisco, serving the region since 1968. The firm designs, builds, and services plumbing, heating, piping, and fire-protection systems across commercial, life-science, and educational projects \u2014 from tenant improvements to ground-up high-rise construction \u2014 and operates an in-house prefabrication facility with BIM coordination. The company employs licensed journeyman plumbers, pipefitters, and fire-protection specialists, and holds MBE and LBE certifications.",
+        "display_name": null,
+        "lat": 37.651817,
+        "lng": -122.4218991,
+        "naics4": "2382",
+        "naics_title": "Building Equipment Contractors",
+        "name": "Pribuss Engineering",
+        "relevance": 34.37,
+        "sector": "Construction",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 4,
+        "soc_titles": {
+          "47-2111": "Electricians",
+          "47-2231": "Solar Photovoltaic Installers",
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "49-9051": "Electrical Power-Line Installers and Repairers"
+        },
+        "socs": [
+          "47-2111",
+          "49-9021",
+          "47-2231",
+          "49-9051"
+        ],
+        "website": "https://www.pribuss.com/"
+      },
+      {
+        "description": "Tesla Energy designs and installs residential, commercial, and utility-scale energy storage and solar systems, including the Powerwall home battery, Megapack grid-storage systems manufactured at the Lathrop, CA Megafactory, and integrated Solar Roof and panel products. It serves homeowners, commercial facilities, and electric utilities, with California installations drawing on licensed electricians, solar photovoltaic installers, and energy systems technicians for deployment and ongoing service.",
+        "display_name": null,
+        "lat": 37.530364,
+        "lng": -122.3324749,
+        "naics4": "2382",
+        "naics_title": "Building Equipment Contractors",
+        "name": "Tesla Energy",
+        "relevance": 34.37,
+        "sector": "Construction",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 4,
+        "soc_titles": {
+          "47-2111": "Electricians",
+          "47-2231": "Solar Photovoltaic Installers",
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "49-9051": "Electrical Power-Line Installers and Repairers"
+        },
+        "socs": [
+          "47-2111",
+          "49-9021",
+          "47-2231",
+          "49-9051"
+        ],
+        "website": "https://www.tesla.com"
+      },
+      {
+        "description": "JMB Construction Inc is a South San Francisco-based civil and utility engineering contractor founded in 1990, specializing in water infrastructure, pump stations, treatment plants, reservoirs, pipelines, and airport civil work, with clients including the San Francisco PUC, Alameda County Water Department, and major general contractors such as Turner Construction and Hensel Phelps. The firm has completed over half a billion dollars in projects ranging from $3M to nearly $9M in value, employing more than 100 workers and maintaining a large equipment fleet. Its workforce draws on civil construction trades including pipefitters, heavy equipment operators, and structural concrete workers.",
+        "display_name": null,
         "lat": 37.6450645,
         "lng": -122.4161295,
         "naics4": "2362",
         "naics_title": "Nonresidential Building Construction",
         "name": "JMB Construction",
+        "relevance": 1.72,
         "sector": "Construction",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 9,
+        "soc_count": 3,
         "soc_titles": {
-          "17-3011": "Architectural and Civil Drafters",
-          "17-3022": "Civil Engineering Technologists and Technicians",
-          "47-1011": "First-Line Supervisors of Construction Trades and Extraction Workers",
           "47-2111": "Electricians",
           "47-2231": "Solar Photovoltaic Installers",
-          "47-4011": "Construction and Building Inspectors",
-          "49-2098": "Security and Fire Alarm Systems Installers",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9099": "Installation, Maintenance, and Repair Workers, All Other"
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
         },
         "socs": [
-          "47-1011",
           "47-2111",
-          "17-3011",
-          "47-4011",
           "49-9021",
-          "49-9099",
-          "17-3022",
-          "47-2231",
-          "49-2098"
+          "47-2231"
         ],
         "website": "https://jmbconstruction.com"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "W L Butler Construction is a construction company.",
+        "description": "Rudolph and Sletten is a California-based general contractor founded in 1960, specializing in technically complex building construction across healthcare, biotech and pharmaceutical, science and technology, education, and civic sectors from five California offices. The firm delivers projects through design-build, integrated project delivery, and self-performance construction, and employs project managers, superintendents, BIM/VDC specialists, and field craft workers across the state. It operates as a subsidiary of Tutor Perini Corporation while maintaining its own brand, offices, and local hiring.",
+        "display_name": null,
+        "lat": 37.4823535,
+        "lng": -122.1684638,
+        "naics4": "2362",
+        "naics_title": "Nonresidential Building Construction",
+        "name": "Rudolph & Sletten",
+        "relevance": 1.72,
+        "sector": "Construction",
+        "size_class": "500-999 employees",
+        "size_rank": 8,
+        "soc_count": 3,
+        "soc_titles": {
+          "47-2111": "Electricians",
+          "47-2231": "Solar Photovoltaic Installers",
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
+        },
+        "socs": [
+          "47-2111",
+          "49-9021",
+          "47-2231"
+        ],
+        "website": "https://www.rsconstruction.com/"
+      },
+      {
+        "description": "W. L. Butler Construction is a California general contractor with 50+ years of history, delivering commercial and institutional construction across sectors including life science and healthcare, automotive, education, grocery and food service, industrial, multi-family residential, and office tenant improvements. The firm operates four California offices \u2014 Redwood City (headquarters), Livermore, Stockton, and Irvine \u2014 and holds licenses in Arizona and Nevada, drawing project management, field supervision, and skilled trades talent from each region.",
+        "display_name": null,
         "lat": 37.480609,
         "lng": -122.22446,
         "naics4": "2362",
         "naics_title": "Nonresidential Building Construction",
         "name": "W L Butler Construction",
+        "relevance": 1.72,
         "sector": "Construction",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 9,
+        "soc_count": 3,
         "soc_titles": {
-          "17-3011": "Architectural and Civil Drafters",
-          "17-3022": "Civil Engineering Technologists and Technicians",
-          "47-1011": "First-Line Supervisors of Construction Trades and Extraction Workers",
           "47-2111": "Electricians",
           "47-2231": "Solar Photovoltaic Installers",
-          "47-4011": "Construction and Building Inspectors",
-          "49-2098": "Security and Fire Alarm Systems Installers",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9099": "Installation, Maintenance, and Repair Workers, All Other"
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
         },
         "socs": [
-          "47-1011",
           "47-2111",
-          "17-3011",
-          "47-4011",
           "49-9021",
-          "49-9099",
-          "17-3022",
-          "47-2231",
-          "49-2098"
+          "47-2231"
         ],
         "website": "https://www.wlbutler.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "Mid Peninsula Roofing provides roofing services.",
-        "lat": 37.5909815,
-        "lng": -122.3648729,
-        "naics4": "2381",
-        "naics_title": "Foundation, Structure, and Building Exterior Contractors",
-        "name": "Mid Peninsula Roofing",
-        "sector": "Construction",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 8,
-        "soc_titles": {
-          "17-3011": "Architectural and Civil Drafters",
-          "17-3022": "Civil Engineering Technologists and Technicians",
-          "47-1011": "First-Line Supervisors of Construction Trades and Extraction Workers",
-          "47-2111": "Electricians",
-          "47-2231": "Solar Photovoltaic Installers",
-          "47-4011": "Construction and Building Inspectors",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9099": "Installation, Maintenance, and Repair Workers, All Other"
-        },
-        "socs": [
-          "47-1011",
-          "17-3011",
-          "49-9099",
-          "47-2111",
-          "47-4011",
-          "49-9021",
-          "47-2231",
-          "17-3022"
-        ],
-        "website": "https://midpeninsularoofingandsolar.com/"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "911 Remediation provides emergency remediation services.",
+        "description": "The website on record (reacticrestoration.com) resolves to Reactic Restoration, an IICRC-certified property restoration contractor operating 24/7 across the San Francisco Bay Area and Sacramento region, specializing in water damage extraction, mold remediation, fire and smoke damage restoration, and sewage cleanup. It holds California contractor license #937118 and serves residential and commercial clients including institutional accounts such as NASA and Stanford. The \"911 Remediation\" registration and the linked website appear to belong to different entities; the NAICS code Residential Building Construction does not match remediation/restoration specialty trade work.",
+        "display_name": null,
         "lat": 37.5147541,
         "lng": -122.2649583,
         "naics4": "2361",
         "naics_title": "Residential Building Construction",
         "name": "911 Remediation",
+        "relevance": 0.77,
         "sector": "Construction",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 7,
+        "soc_count": 3,
         "soc_titles": {
-          "17-3011": "Architectural and Civil Drafters",
-          "47-1011": "First-Line Supervisors of Construction Trades and Extraction Workers",
           "47-2111": "Electricians",
           "47-2231": "Solar Photovoltaic Installers",
-          "47-4011": "Construction and Building Inspectors",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9099": "Installation, Maintenance, and Repair Workers, All Other"
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
         },
         "socs": [
-          "47-1011",
           "47-2111",
-          "17-3011",
-          "49-9099",
           "49-9021",
-          "47-4011",
           "47-2231"
         ],
         "website": "https://reacticrestoration.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "Allen Drywall provides drywall installation and repair services.",
-        "lat": 37.5871474,
-        "lng": -122.336069,
-        "naics4": "2383",
-        "naics_title": "Building Finishing Contractors",
-        "name": "Allen Drywall",
-        "sector": "Construction",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 7,
-        "soc_titles": {
-          "17-3011": "Architectural and Civil Drafters",
-          "47-1011": "First-Line Supervisors of Construction Trades and Extraction Workers",
-          "47-2111": "Electricians",
-          "47-2231": "Solar Photovoltaic Installers",
-          "47-4011": "Construction and Building Inspectors",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9099": "Installation, Maintenance, and Repair Workers, All Other"
-        },
-        "socs": [
-          "47-1011",
-          "49-9099",
-          "17-3011",
-          "47-2111",
-          "47-4011",
-          "49-9021",
-          "47-2231"
-        ],
-        "website": "https://www.allendrywall.com"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "A residential cleaning service provider.",
-        "lat": 37.481527,
-        "lng": -122.1705133,
-        "naics4": "2389",
-        "naics_title": "Other Specialty Trade Contractors",
-        "name": "American House Cleaning",
-        "sector": "Construction",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 7,
-        "soc_titles": {
-          "17-3011": "Architectural and Civil Drafters",
-          "47-1011": "First-Line Supervisors of Construction Trades and Extraction Workers",
-          "47-2111": "Electricians",
-          "47-4011": "Construction and Building Inspectors",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9051": "Electrical Power-Line Installers and Repairers",
-          "49-9099": "Installation, Maintenance, and Repair Workers, All Other"
-        },
-        "socs": [
-          "47-1011",
-          "49-9099",
-          "47-2111",
-          "47-4011",
-          "49-9021",
-          "49-9051",
-          "17-3011"
-        ],
-        "website": "https://americanhousecleaning.com/"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "CertaPro Painters of San Mateo provides professional painting services.",
-        "lat": 37.5569304,
-        "lng": -122.3003286,
-        "naics4": "2383",
-        "naics_title": "Building Finishing Contractors",
-        "name": "CertaPro Painters of San Mateo",
-        "sector": "Construction",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 7,
-        "soc_titles": {
-          "17-3011": "Architectural and Civil Drafters",
-          "47-1011": "First-Line Supervisors of Construction Trades and Extraction Workers",
-          "47-2111": "Electricians",
-          "47-2231": "Solar Photovoltaic Installers",
-          "47-4011": "Construction and Building Inspectors",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9099": "Installation, Maintenance, and Repair Workers, All Other"
-        },
-        "socs": [
-          "47-1011",
-          "49-9099",
-          "17-3011",
-          "47-2111",
-          "47-4011",
-          "49-9021",
-          "47-2231"
-        ],
-        "website": "https://certapro.com/san-mateo-ca"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "An individual professional or sole proprietorship.",
-        "lat": 37.5652493,
-        "lng": -122.3227798,
-        "naics4": "2383",
-        "naics_title": "Building Finishing Contractors",
-        "name": "Kurt Meiswinkel",
-        "sector": "Construction",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 7,
-        "soc_titles": {
-          "17-3011": "Architectural and Civil Drafters",
-          "47-1011": "First-Line Supervisors of Construction Trades and Extraction Workers",
-          "47-2111": "Electricians",
-          "47-2231": "Solar Photovoltaic Installers",
-          "47-4011": "Construction and Building Inspectors",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9099": "Installation, Maintenance, and Repair Workers, All Other"
-        },
-        "socs": [
-          "47-1011",
-          "49-9099",
-          "17-3011",
-          "47-2111",
-          "47-4011",
-          "49-9021",
-          "47-2231"
-        ],
-        "website": "https://kmisf.com"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "Patrick J Ruane is an individual or business providing services.",
+        "description": "Patrick J. Ruane, Inc. is a South San Francisco\u2013based lath, plaster, and drywall contractor serving commercial and historic preservation projects throughout California. The firm specializes in historic restoration \u2014 including landmark work such as the Palace Hotel recognized by the National Trust for Historic Preservation \u2014 alongside contemporary services including structural fireproofing, metal stud framing, and specialty finishes such as Venetian, Japanese, and acoustical plaster systems. In-house casting operations and documentation services support complex restoration scopes.",
+        "display_name": null,
         "lat": 37.6464383,
         "lng": -122.4026932,
         "naics4": "2361",
         "naics_title": "Residential Building Construction",
         "name": "Patrick J Ruane",
+        "relevance": 0.77,
         "sector": "Construction",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 7,
+        "soc_count": 3,
         "soc_titles": {
-          "17-3011": "Architectural and Civil Drafters",
-          "47-1011": "First-Line Supervisors of Construction Trades and Extraction Workers",
           "47-2111": "Electricians",
           "47-2231": "Solar Photovoltaic Installers",
-          "47-4011": "Construction and Building Inspectors",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9099": "Installation, Maintenance, and Repair Workers, All Other"
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
         },
         "socs": [
-          "47-1011",
           "47-2111",
-          "17-3011",
-          "49-9099",
           "49-9021",
-          "47-4011",
           "47-2231"
         ],
         "website": "https://www.pjruane.com/"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "A company involved in manufacturing products.",
-        "lat": 37.4532061,
-        "lng": -122.1823518,
-        "naics4": "3334",
-        "naics_title": "Ventilation, Heating, Air-Conditioning, and Commercial Refrigeration Equipment Manufacturing",
-        "name": "Rheem Manufacturing",
-        "sector": "Manufacturing",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 7,
-        "soc_titles": {
-          "17-3011": "Architectural and Civil Drafters",
-          "19-4043": "Geological Technicians, Except Hydrologic Technicians",
-          "47-1011": "First-Line Supervisors of Construction Trades and Extraction Workers",
-          "47-2111": "Electricians",
-          "47-4021": "Elevator and Escalator Installers and Repairers",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9099": "Installation, Maintenance, and Repair Workers, All Other"
-        },
-        "socs": [
-          "49-9021",
-          "47-2111",
-          "49-9099",
-          "47-1011",
-          "47-4021",
-          "17-3011",
-          "19-4043"
-        ],
-        "website": "https://www.rheem.com"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "Rountree Plumbing & Heating provides plumbing and heating services.",
+        "description": "Rountree Plumbing and Heating is a design-build commercial plumbing and heating contractor serving the greater Bay Area, with over 60 years in operation since 1960. They specialize in ground-up construction, tenant improvements, and core-and-shell work for retail grocery chains (Safeway, Albertsons, Trader Joe's, Andronico's) and institutional clients including Stanford and San Jose State. Field roles include licensed commercial plumbers and pipefitters performing concrete work, trenching, permit management, and 24/7 emergency service.",
+        "display_name": null,
         "lat": 37.5096502,
         "lng": -122.2545126,
         "naics4": "2361",
         "naics_title": "Residential Building Construction",
         "name": "Rountree Plumbing & Heating",
+        "relevance": 0.77,
         "sector": "Construction",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 7,
+        "soc_count": 3,
         "soc_titles": {
-          "17-3011": "Architectural and Civil Drafters",
-          "47-1011": "First-Line Supervisors of Construction Trades and Extraction Workers",
           "47-2111": "Electricians",
           "47-2231": "Solar Photovoltaic Installers",
-          "47-4011": "Construction and Building Inspectors",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9099": "Installation, Maintenance, and Repair Workers, All Other"
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
         },
         "socs": [
-          "47-1011",
           "47-2111",
-          "17-3011",
-          "49-9099",
           "49-9021",
-          "47-4011",
           "47-2231"
         ],
         "website": "https://rountreeinc.com"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "SDI Insulation provides insulation services.",
+        "description": "SDI Insulation is a Bay Area\u2013based insulation and home performance contractor with over 47 years in operation, serving residential and commercial customers across the San Francisco Bay Area and Sacramento region from offices in Burlingame and San Rafael. The firm installs batt, blown-in, and spray foam insulation, performs residential air sealing and duct leakage assessments, and offers high-efficiency fireplace and insert sales and installation. Certified under NAIMA and licensed by the state of California (Lic. #607274), SDI employs insulation technicians and building performance specialists with expertise in energy efficiency upgrades and green construction practices.",
+        "display_name": null,
         "lat": 37.5871474,
         "lng": -122.336069,
         "naics4": "2361",
         "naics_title": "Residential Building Construction",
         "name": "SDI Insulation",
+        "relevance": 0.77,
         "sector": "Construction",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 7,
+        "soc_count": 3,
         "soc_titles": {
-          "17-3011": "Architectural and Civil Drafters",
-          "47-1011": "First-Line Supervisors of Construction Trades and Extraction Workers",
           "47-2111": "Electricians",
           "47-2231": "Solar Photovoltaic Installers",
-          "47-4011": "Construction and Building Inspectors",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9099": "Installation, Maintenance, and Repair Workers, All Other"
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
         },
         "socs": [
-          "47-1011",
           "47-2111",
-          "17-3011",
-          "49-9099",
           "49-9021",
-          "47-4011",
           "47-2231"
         ],
         "website": "https://sdiinsulation.com"
       },
       {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "Truebeck Construction is a construction company.",
+        "description": "Truebeck Construction is a Bay Area-headquartered general contractor founded in 2007, specializing in complex commercial projects including life sciences laboratories, healthcare facilities, technology offices, and corporate campuses across California and the Pacific Northwest. The firm ranks among the top laboratory construction companies nationally and holds multiple LEED Platinum and Net Zero Energy certifications, employing roughly 600 construction professionals across offices in San Mateo, San Francisco, Sacramento, Seattle, and Portland. Project and field management, construction technology, and safety roles are concentrated in its Bay Area offices.",
+        "display_name": null,
         "lat": 37.5362273,
         "lng": -122.3231813,
         "naics4": "2361",
         "naics_title": "Residential Building Construction",
         "name": "Truebeck Construction",
+        "relevance": 0.77,
         "sector": "Construction",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 7,
+        "soc_count": 3,
         "soc_titles": {
-          "17-3011": "Architectural and Civil Drafters",
-          "47-1011": "First-Line Supervisors of Construction Trades and Extraction Workers",
           "47-2111": "Electricians",
           "47-2231": "Solar Photovoltaic Installers",
-          "47-4011": "Construction and Building Inspectors",
-          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
-          "49-9099": "Installation, Maintenance, and Repair Workers, All Other"
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
         },
         "socs": [
-          "47-1011",
           "47-2111",
-          "17-3011",
-          "49-9099",
           "49-9021",
-          "47-4011",
           "47-2231"
         ],
         "website": "https://www.truebeck.com"
+      },
+      {
+        "description": "Rheem Manufacturing produces residential and commercial HVAC systems (air conditioners, furnaces, heat pumps, ductless mini-splits) and water heating equipment (tank, tankless, and heat pump water heaters, boilers, pool heaters) sold under brands including Rheem, Ruud, Richmond, and Eemax. Founded in 1925, the company serves contractors, plumbers, and commercial building operators across North America and globally. Manufacturing and field operations draw on sheet-metal fabrication, refrigeration systems, electromechanical assembly, and certified HVAC/plumbing trades workers.",
+        "display_name": null,
+        "lat": 37.4532061,
+        "lng": -122.1823518,
+        "naics4": "3334",
+        "naics_title": "Ventilation, Heating, Air-Conditioning, and Commercial Refrigeration Equipment Manufacturing",
+        "name": "Rheem Manufacturing",
+        "relevance": 0.76,
+        "sector": "Manufacturing",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "47-2111": "Electricians",
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
+        },
+        "socs": [
+          "49-9021",
+          "47-2111"
+        ],
+        "website": "https://www.rheem.com"
+      },
+      {
+        "description": "American House Cleaning is a locally owned and operated residential cleaning company serving the Bay Area since 1995, with coverage across Menlo Park, Palo Alto, San Mateo, San Francisco, San Jose, and surrounding communities. Services include routine house cleaning, deep cleaning, move-in/move-out cleaning, post-construction cleaning, window washing, carpet cleaning, and upholstery cleaning. The company employs uniformed, background-checked professional cleaners assigned consistently to recurring clients.",
+        "display_name": null,
+        "lat": 37.481527,
+        "lng": -122.1705133,
+        "naics4": "2389",
+        "naics_title": "Other Specialty Trade Contractors",
+        "name": "American House Cleaning",
+        "relevance": 0.61,
+        "sector": "Construction",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 3,
+        "soc_titles": {
+          "47-2111": "Electricians",
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "49-9051": "Electrical Power-Line Installers and Repairers"
+        },
+        "socs": [
+          "47-2111",
+          "49-9021",
+          "49-9051"
+        ],
+        "website": "https://americanhousecleaning.com/"
+      },
+      {
+        "description": "The San Francisco Public Utilities Commission (SFPUC), operating as San Francisco Water Power Sewer, delivers drinking water, hydroelectric power, and wastewater/sewer services to San Francisco residents and businesses, drawing on the Hetch Hetchy regional water system that also serves surrounding Bay Area communities. The agency operates water treatment plants, power generation facilities, and an extensive sewer and stormwater network across the city. Technical and skilled-trades roles include water system engineers, power system operators, wastewater treatment specialists, and field maintenance crews, with active apprenticeship and workforce development programs.",
+        "display_name": null,
+        "lat": 37.5975816,
+        "lng": -122.3868334,
+        "naics4": "2213",
+        "naics_title": "Water, Sewage and Other Systems",
+        "name": "San Francisco Water",
+        "relevance": 0.61,
+        "sector": "Utilities",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 2,
+        "soc_titles": {
+          "47-2111": "Electricians",
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
+        },
+        "socs": [
+          "47-2111",
+          "49-9021"
+        ],
+        "website": "https://www.sfpuc.org/"
+      },
+      {
+        "description": "An architectural firm likely specializing in building design and construction.",
+        "display_name": null,
+        "lat": 37.6924726,
+        "lng": -122.4064261,
+        "naics4": "3219",
+        "naics_title": "Other Wood Product Manufacturing",
+        "name": "Okeeffes Architectural",
+        "relevance": 0.51,
+        "sector": "Manufacturing",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "47-2111": "Electricians",
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
+        },
+        "socs": [
+          "47-2111",
+          "49-9021"
+        ],
+        "website": "https://okeeffes.com/"
+      },
+      {
+        "description": "The Belmont Police Department serves the City of Belmont on the San Francisco Peninsula with approximately 50 full-time personnel, including 31 sworn officers organized into Patrol, Traffic, Investigations, K-9, Youth Services, SWAT, and Crisis Negotiation units. The department operates the C.A.R.E. (Crisis Assessment Response and Education) and T.R.A.C. (Tracking and Recovery of Adults and Children) programs, and employs dispatchers, records technicians, code enforcement officers, and community service officers alongside sworn staff.",
+        "display_name": null,
+        "lat": 37.5182829,
+        "lng": -122.2774823,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "Belmont Police",
+        "relevance": 0.48,
+        "sector": "Government",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 3,
+        "soc_titles": {
+          "47-2111": "Electricians",
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "49-9051": "Electrical Power-Line Installers and Repairers"
+        },
+        "socs": [
+          "47-2111",
+          "49-9051",
+          "49-9021"
+        ],
+        "website": "https://www.belmont.gov/departments/police"
+      },
+      {
+        "description": "The Central County Fire Department provides fire suppression and emergency response services.",
+        "display_name": null,
+        "lat": 37.5865829,
+        "lng": -122.3384383,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "Central County Fire Department",
+        "relevance": 0.48,
+        "sector": "Government",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 3,
+        "soc_titles": {
+          "47-2111": "Electricians",
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "49-9051": "Electrical Power-Line Installers and Repairers"
+        },
+        "socs": [
+          "47-2111",
+          "49-9051",
+          "49-9021"
+        ],
+        "website": "https://www.ccfd.org/"
+      },
+      {
+        "description": "The Daly City Police Department is responsible for public safety and law enforcement in Daly City.",
+        "display_name": null,
+        "lat": 37.6911085,
+        "lng": -122.4739145,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "Daly City Police",
+        "relevance": 0.48,
+        "sector": "Government",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 3,
+        "soc_titles": {
+          "47-2111": "Electricians",
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "49-9051": "Electrical Power-Line Installers and Repairers"
+        },
+        "socs": [
+          "47-2111",
+          "49-9051",
+          "49-9021"
+        ],
+        "website": "https://www.dalycity.org/1231/Police"
+      },
+      {
+        "description": "Daly City's Department of Water and Wastewater Resources operates the wastewater treatment and disposal system for the North San Mateo County Sanitation District, managing collection infrastructure, treatment plant operations, and environmental compliance at its facility on Lake Merced Boulevard. The department also administers drinking water supply services and recycles treatment plant byproducts as part of its environmental stewardship mission. Operations employ water and wastewater treatment plant operators, environmental compliance staff, and utility engineers serving the North San Mateo County service area.",
+        "display_name": null,
+        "lat": 37.7076798,
+        "lng": -122.4858219,
+        "naics4": "9241",
+        "naics_title": "Administration of Environmental Quality Programs",
+        "name": "Daly City Wastewater",
+        "relevance": 0.48,
+        "sector": "Government",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 3,
+        "soc_titles": {
+          "47-2111": "Electricians",
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "49-9051": "Electrical Power-Line Installers and Repairers"
+        },
+        "socs": [
+          "47-2111",
+          "49-9051",
+          "49-9021"
+        ],
+        "website": "https://www.dalycity.org/1036/Wastewater"
+      },
+      {
+        "description": "The East Palo Alto Police Department is dedicated to serving and protecting the community of East Palo Alto.",
+        "display_name": null,
+        "lat": 37.4746236,
+        "lng": -122.1341991,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "East Palo Alto Police",
+        "relevance": 0.48,
+        "sector": "Government",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 3,
+        "soc_titles": {
+          "47-2111": "Electricians",
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "49-9051": "Electrical Power-Line Installers and Repairers"
+        },
+        "socs": [
+          "47-2111",
+          "49-9051",
+          "49-9021"
+        ],
+        "website": "https://www.ci.east-palo-alto.ca.us/police"
+      },
+      {
+        "description": "The Foster City Fire Department provides emergency services and fire prevention to Foster City.",
+        "display_name": null,
+        "lat": 37.5511544,
+        "lng": -122.281399,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "Foster City Fire Department",
+        "relevance": 0.48,
+        "sector": "Government",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 3,
+        "soc_titles": {
+          "47-2111": "Electricians",
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "49-9051": "Electrical Power-Line Installers and Repairers"
+        },
+        "socs": [
+          "47-2111",
+          "49-9051",
+          "49-9021"
+        ],
+        "website": "https://www.fostercity.org/fire"
+      },
+      {
+        "description": "The Kings Mountain Fire Department serves the Kings Mountain community with fire and emergency services.",
+        "display_name": null,
+        "lat": 37.3877721,
+        "lng": -122.2663618,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "Kings Mountain Fire Department",
+        "relevance": 0.48,
+        "sector": "Government",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 3,
+        "soc_titles": {
+          "47-2111": "Electricians",
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "49-9051": "Electrical Power-Line Installers and Repairers"
+        },
+        "socs": [
+          "47-2111",
+          "49-9051",
+          "49-9021"
+        ],
+        "website": "https://kmfd.org/"
+      },
+      {
+        "description": "The Menlo Park Fire Protection District is an independent special district headquartered in Menlo Park, CA, providing fire suppression, emergency medical services, and community risk reduction across its jurisdiction. The district operates specialized units including California Task Force Three (CA-TF3) for urban search and rescue, swift-water/flood rescue (CA-SFS&R3), wildland firefighting, and Tactical Emergency Medical Support (TEMS). Operational roles span firefighters, paramedics, heavy rescue technicians, and fire prevention personnel across multiple stations.",
+        "display_name": null,
+        "lat": 37.4570961,
+        "lng": -122.1690558,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "Menlo Park Fire Protection District",
+        "relevance": 0.48,
+        "sector": "Government",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 3,
+        "soc_titles": {
+          "47-2111": "Electricians",
+          "49-9021": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "49-9051": "Electrical Power-Line Installers and Repairers"
+        },
+        "socs": [
+          "47-2111",
+          "49-9051",
+          "49-9021"
+        ],
+        "website": "https://www.menlofire.gov/"
       }
     ],
     "region": "Bay",
@@ -790,76 +637,14 @@
     "shed_counties": [
       "San Mateo"
     ],
-    "shown": 22,
-    "total": 25
+    "shown": 25,
+    "total": 303
   },
   "/programs": {
+    "coverage_awards_only": true,
     "latest_award_year": "2024-2025",
     "matrix": {
       "cells": [
-        {
-          "awards": 8,
-          "college": "College of San Mateo",
-          "enrolled": true,
-          "teaches": true,
-          "top6": "020100"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "020100"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": true,
-          "teaches": true,
-          "top6": "020100"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "030300"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "030300"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "030300"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "092400"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "092400"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "092400"
-        },
         {
           "awards": 0,
           "college": "College of San Mateo",
@@ -886,90 +671,6 @@
           "college": "College of San Mateo",
           "enrolled": false,
           "teaches": false,
-          "top6": "093440"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "093440"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "093440"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "093500"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "093500"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "093500"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "094500"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "094500"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "094500"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "094600"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "094600"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "094600"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
           "top6": "094610"
         },
         {
@@ -987,48 +688,6 @@
           "top6": "094610"
         },
         {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095200"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095200"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095200"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095210"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095210"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095210"
-        },
-        {
           "awards": 1,
           "college": "College of San Mateo",
           "enrolled": true,
@@ -1048,426 +707,6 @@
           "enrolled": false,
           "teaches": false,
           "top6": "095220"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095230"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095230"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095230"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095240"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095240"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095240"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095260"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095260"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095260"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095270"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095270"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095270"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095280"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095280"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095280"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095290"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095290"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095290"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095310"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095310"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095310"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095320"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095320"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095320"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095400"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095400"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095400"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095430"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095430"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095430"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095500"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095500"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095500"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095600"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095600"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095600"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095700"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095700"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095700"
-        },
-        {
-          "awards": 19,
-          "college": "College of San Mateo",
-          "enrolled": true,
-          "teaches": false,
-          "top6": "095720"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095720"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095720"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095730"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095730"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095730"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095800"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095800"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "095800"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "099900"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "099900"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "099900"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "192000"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "192000"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "192000"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "210210"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "210210"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "210210"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "300500"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "300500"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "300500"
         }
       ],
       "colleges": [
@@ -1482,27 +721,11 @@
     "sector": "Energy, Construction & Utilities",
     "tops": [
       {
-        "awards_total": 19,
-        "enrollment_total": 125,
-        "n_colleges_offering": 0,
-        "name": "Construction Inspection",
-        "soc_count": 3,
-        "top6": "095720"
-      },
-      {
-        "awards_total": 8,
-        "enrollment_total": 248,
-        "n_colleges_offering": 2,
-        "name": "Architecture and Architectural Technology",
-        "soc_count": 2,
-        "top6": "020100"
-      },
-      {
         "awards_total": 4,
         "enrollment_total": 130,
         "n_colleges_offering": 0,
         "name": "Electronics and Electric Technology",
-        "soc_count": 3,
+        "soc_count": 2,
         "top6": "093400"
       },
       {
@@ -1510,7 +733,7 @@
         "enrollment_total": 236,
         "n_colleges_offering": 0,
         "name": "Electrical",
-        "soc_count": 5,
+        "soc_count": 2,
         "top6": "095220"
       },
       {
@@ -1518,237 +741,21 @@
         "enrollment_total": 23,
         "n_colleges_offering": 1,
         "name": "Energy Systems Technology",
-        "soc_count": 7,
+        "soc_count": 3,
         "top6": "094610"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Engineering Technology, General (requires Trigonometry)",
-        "soc_count": 3,
-        "top6": "092400"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Construction Crafts Technology",
-        "soc_count": 3,
-        "top6": "095200"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Manufacturing and Industrial Technology",
-        "soc_count": 3,
-        "top6": "095600"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Public Works",
-        "soc_count": 3,
-        "top6": "210210"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Electrical Systems and Power Transmission",
-        "soc_count": 2,
-        "top6": "093440"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Industrial Systems Technology and Maintenance",
-        "soc_count": 2,
-        "top6": "094500"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Environmental Control Technology (HVAC)",
-        "soc_count": 2,
-        "top6": "094600"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Roofing",
-        "soc_count": 2,
-        "top6": "095290"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Civil and Construction Management Technology",
-        "soc_count": 2,
-        "top6": "095700"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Ocean Technology",
-        "soc_count": 2,
-        "top6": "192000"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Environmental Technology",
-        "soc_count": 1,
-        "top6": "030300"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Electro-Mechanical Technology",
-        "soc_count": 1,
-        "top6": "093500"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Carpentry",
-        "soc_count": 1,
-        "top6": "095210"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Plumbing, Pipefitting and Steamfitting",
-        "soc_count": 1,
-        "top6": "095230"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Glazing",
-        "soc_count": 1,
-        "top6": "095240"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Masonry, Tile, Cement, Lath and Plaster",
-        "soc_count": 1,
-        "top6": "095260"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Painting, Decorating, and Flooring",
-        "soc_count": 1,
-        "top6": "095270"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Drywall and Insulation",
-        "soc_count": 1,
-        "top6": "095280"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Architectural Drafting",
-        "soc_count": 1,
-        "top6": "095310"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Civil Drafting",
-        "soc_count": 1,
-        "top6": "095320"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Chemical Technology",
-        "soc_count": 1,
-        "top6": "095400"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Petroleum Technology",
-        "soc_count": 1,
-        "top6": "095430"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Laboratory Science Technology",
-        "soc_count": 1,
-        "top6": "095500"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Surveying",
-        "soc_count": 1,
-        "top6": "095730"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Water and Wastewater Technology",
-        "soc_count": 1,
-        "top6": "095800"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Other Engineering and Related Industrial Technologies",
-        "soc_count": 1,
-        "top6": "099900"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Custodial Services",
-        "soc_count": 1,
-        "top6": "300500"
       }
     ]
   },
   "landscape": {
     "aggregate": {
-      "candidate_employers": 703,
-      "combined_awards": 33,
-      "combined_supply_total": 213.66,
-      "gap": 7036,
+      "candidate_employers": 603,
+      "combined_awards": 6,
+      "combined_supply_total": 87.0,
+      "gap": 3323,
       "n_colleges": 3,
-      "n_occupations": 14,
-      "occupations_taught": 9,
-      "regional_demand_total": 7250
+      "n_occupations": 4,
+      "occupations_taught": 3,
+      "regional_demand_total": 3410
     },
     "award_years": [
       "2020-2021",
@@ -1760,412 +767,6 @@
     "colleges": [
       {
         "cells": [
-          {
-            "annual_openings": 300,
-            "annual_wage": 76360,
-            "awards_recent": 8,
-            "course_count": 13,
-            "enrolled": true,
-            "feeding_awards": 8,
-            "gap": 295,
-            "growth_rate": -0.013238148,
-            "programs": [
-              {
-                "awards": [
-                  4,
-                  6,
-                  6,
-                  9,
-                  8
-                ],
-                "awards_recent": 8,
-                "enrollment": [
-                  120,
-                  87,
-                  155,
-                  107,
-                  200,
-                  141,
-                  197,
-                  110,
-                  221
-                ],
-                "name": "Architecture and Architectural Technology",
-                "top6": "020100",
-                "wages": []
-              },
-              {
-                "awards": [
-                  0,
-                  2,
-                  0,
-                  1,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null
-                ],
-                "name": "Engineering Technology, General (requires Trigonometry)",
-                "top6": "092400",
-                "wages": [
-                  {
-                    "n": 59,
-                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
-                    "wage_after_2": 64498,
-                    "wage_after_5": 88963,
-                    "wage_before": 25967,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 21,
-                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
-                    "wage_after_2": 61485,
-                    "wage_after_5": 76163,
-                    "wage_before": 36610,
-                    "window": "2015-2016 to 2019-2020"
-                  }
-                ]
-              }
-            ],
-            "soc_code": "17-3011",
-            "supply": 5.33,
-            "title": "Architectural and Civil Drafters"
-          },
-          {
-            "annual_openings": 160,
-            "annual_wage": 91820,
-            "awards_recent": 27,
-            "course_count": 9,
-            "enrolled": true,
-            "feeding_awards": 27,
-            "gap": 155,
-            "growth_rate": 0.01123564,
-            "programs": [
-              {
-                "awards": [
-                  4,
-                  6,
-                  6,
-                  9,
-                  8
-                ],
-                "awards_recent": 8,
-                "enrollment": [
-                  120,
-                  87,
-                  155,
-                  107,
-                  200,
-                  141,
-                  197,
-                  110,
-                  221
-                ],
-                "name": "Architecture and Architectural Technology",
-                "top6": "020100",
-                "wages": []
-              },
-              {
-                "awards": [
-                  0,
-                  2,
-                  0,
-                  1,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null
-                ],
-                "name": "Engineering Technology, General (requires Trigonometry)",
-                "top6": "092400",
-                "wages": [
-                  {
-                    "n": 59,
-                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
-                    "wage_after_2": 64498,
-                    "wage_after_5": 88963,
-                    "wage_before": 25967,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 21,
-                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
-                    "wage_after_2": 61485,
-                    "wage_after_5": 76163,
-                    "wage_before": 36610,
-                    "window": "2015-2016 to 2019-2020"
-                  }
-                ]
-              },
-              {
-                "awards": [
-                  14,
-                  7,
-                  6,
-                  14,
-                  19
-                ],
-                "awards_recent": 19,
-                "enrollment": [
-                  40,
-                  70,
-                  52,
-                  89,
-                  102,
-                  71,
-                  125,
-                  117,
-                  105
-                ],
-                "name": "Construction Inspection",
-                "top6": "095720",
-                "wages": [
-                  {
-                    "n": 49,
-                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
-                    "wage_after_2": 70658,
-                    "wage_after_5": 96289,
-                    "wage_before": 42980,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 83,
-                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
-                    "wage_after_2": 73457,
-                    "wage_after_5": 90114,
-                    "wage_before": 58406,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 42,
-                    "recipient_type": "Locally Approved Certificates Recipient",
-                    "wage_after_2": 66399,
-                    "wage_after_5": 79104,
-                    "wage_before": 37661,
-                    "window": "2015-2016 to 2019-2020"
-                  }
-                ]
-              }
-            ],
-            "soc_code": "17-3022",
-            "supply": 5.33,
-            "title": "Civil Engineering Technologists and Technicians"
-          },
-          {
-            "annual_openings": 210,
-            "annual_wage": 62250,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 210,
-            "growth_rate": 0.012021293,
-            "programs": [
-              {
-                "awards": [
-                  0,
-                  2,
-                  0,
-                  1,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null
-                ],
-                "name": "Engineering Technology, General (requires Trigonometry)",
-                "top6": "092400",
-                "wages": [
-                  {
-                    "n": 59,
-                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
-                    "wage_after_2": 64498,
-                    "wage_after_5": 88963,
-                    "wage_before": 25967,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 21,
-                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
-                    "wage_after_2": 61485,
-                    "wage_after_5": 76163,
-                    "wage_before": 36610,
-                    "window": "2015-2016 to 2019-2020"
-                  }
-                ]
-              }
-            ],
-            "soc_code": "19-4042",
-            "supply": 0.0,
-            "title": "Environmental Science and Protection Technicians, Including Health"
-          },
-          {
-            "annual_openings": 80,
-            "annual_wage": 59570,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 80,
-            "growth_rate": -0.006200193,
-            "programs": [],
-            "soc_code": "19-4043",
-            "supply": 0.0,
-            "title": "Geological Technicians, Except Hydrologic Technicians"
-          },
-          {
-            "annual_openings": 60,
-            "annual_wage": 87390,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 60,
-            "growth_rate": 0.080631998,
-            "programs": [],
-            "soc_code": "19-4051",
-            "supply": 0.0,
-            "title": "Nuclear Technicians"
-          },
-          {
-            "annual_openings": 1680,
-            "annual_wage": 103170,
-            "awards_recent": 20,
-            "course_count": 0,
-            "enrolled": true,
-            "feeding_awards": 20,
-            "gap": 1680,
-            "growth_rate": 0.025585565,
-            "programs": [
-              {
-                "awards": [
-                  0,
-                  1,
-                  0,
-                  0,
-                  1
-                ],
-                "awards_recent": 1,
-                "enrollment": [
-                  null,
-                  236,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null
-                ],
-                "name": "Electrical",
-                "top6": "095220",
-                "wages": [
-                  {
-                    "n": 80,
-                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
-                    "wage_after_2": 69094,
-                    "wage_after_5": 92679,
-                    "wage_before": 44853,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 920,
-                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
-                    "wage_after_2": 121066,
-                    "wage_after_5": 122314,
-                    "wage_before": 71124,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 94,
-                    "recipient_type": "Locally Approved Certificates Recipient",
-                    "wage_after_2": 88638,
-                    "wage_after_5": 102632,
-                    "wage_before": 49221,
-                    "window": "2015-2016 to 2019-2020"
-                  }
-                ]
-              },
-              {
-                "awards": [
-                  14,
-                  7,
-                  6,
-                  14,
-                  19
-                ],
-                "awards_recent": 19,
-                "enrollment": [
-                  40,
-                  70,
-                  52,
-                  89,
-                  102,
-                  71,
-                  125,
-                  117,
-                  105
-                ],
-                "name": "Construction Inspection",
-                "top6": "095720",
-                "wages": [
-                  {
-                    "n": 49,
-                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
-                    "wage_after_2": 70658,
-                    "wage_after_5": 96289,
-                    "wage_before": 42980,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 83,
-                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
-                    "wage_after_2": 73457,
-                    "wage_after_5": 90114,
-                    "wage_before": 58406,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 42,
-                    "recipient_type": "Locally Approved Certificates Recipient",
-                    "wage_after_2": 66399,
-                    "wage_after_5": 79104,
-                    "wage_before": 37661,
-                    "window": "2015-2016 to 2019-2020"
-                  }
-                ]
-              }
-            ],
-            "soc_code": "47-1011",
-            "supply": 0.0,
-            "title": "First-Line Supervisors of Construction Trades and Extraction Workers"
-          },
           {
             "annual_openings": 2150,
             "annual_wage": 87520,
@@ -2295,148 +896,6 @@
             "title": "Solar Photovoltaic Installers"
           },
           {
-            "annual_openings": 490,
-            "annual_wage": 114500,
-            "awards_recent": 19,
-            "course_count": 0,
-            "enrolled": true,
-            "feeding_awards": 19,
-            "gap": 490,
-            "growth_rate": -8.55e-05,
-            "programs": [
-              {
-                "awards": [
-                  14,
-                  7,
-                  6,
-                  14,
-                  19
-                ],
-                "awards_recent": 19,
-                "enrollment": [
-                  40,
-                  70,
-                  52,
-                  89,
-                  102,
-                  71,
-                  125,
-                  117,
-                  105
-                ],
-                "name": "Construction Inspection",
-                "top6": "095720",
-                "wages": [
-                  {
-                    "n": 49,
-                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
-                    "wage_after_2": 70658,
-                    "wage_after_5": 96289,
-                    "wage_before": 42980,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 83,
-                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
-                    "wage_after_2": 73457,
-                    "wage_after_5": 90114,
-                    "wage_before": 58406,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 42,
-                    "recipient_type": "Locally Approved Certificates Recipient",
-                    "wage_after_2": 66399,
-                    "wage_after_5": 79104,
-                    "wage_before": 37661,
-                    "window": "2015-2016 to 2019-2020"
-                  }
-                ]
-              }
-            ],
-            "soc_code": "47-4011",
-            "supply": 0.0,
-            "title": "Construction and Building Inspectors"
-          },
-          {
-            "annual_openings": 50,
-            "annual_wage": 166830,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 50,
-            "growth_rate": 0.021720587,
-            "programs": [],
-            "soc_code": "47-4021",
-            "supply": 0.0,
-            "title": "Elevator and Escalator Installers and Repairers"
-          },
-          {
-            "annual_openings": 190,
-            "annual_wage": 73860,
-            "awards_recent": 1,
-            "course_count": 0,
-            "enrolled": true,
-            "feeding_awards": 1,
-            "gap": 190,
-            "growth_rate": 0.048783929,
-            "programs": [
-              {
-                "awards": [
-                  0,
-                  1,
-                  0,
-                  0,
-                  1
-                ],
-                "awards_recent": 1,
-                "enrollment": [
-                  null,
-                  236,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null
-                ],
-                "name": "Electrical",
-                "top6": "095220",
-                "wages": [
-                  {
-                    "n": 80,
-                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
-                    "wage_after_2": 69094,
-                    "wage_after_5": 92679,
-                    "wage_before": 44853,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 920,
-                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
-                    "wage_after_2": 121066,
-                    "wage_after_5": 122314,
-                    "wage_before": 71124,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 94,
-                    "recipient_type": "Locally Approved Certificates Recipient",
-                    "wage_after_2": 88638,
-                    "wage_after_5": 102632,
-                    "wage_before": 49221,
-                    "window": "2015-2016 to 2019-2020"
-                  }
-                ]
-              }
-            ],
-            "soc_code": "49-2098",
-            "supply": 0.0,
-            "title": "Security and Fire Alarm Systems Installers"
-          },
-          {
             "annual_openings": 780,
             "annual_wage": 73730,
             "awards_recent": 0,
@@ -2562,393 +1021,12 @@
             "soc_code": "49-9051",
             "supply": 0.0,
             "title": "Electrical Power-Line Installers and Repairers"
-          },
-          {
-            "annual_openings": 620,
-            "annual_wage": 54590,
-            "awards_recent": 1,
-            "course_count": 1,
-            "enrolled": true,
-            "feeding_awards": 1,
-            "gap": 620,
-            "growth_rate": -0.005290195,
-            "programs": [
-              {
-                "awards": [
-                  6,
-                  17,
-                  9,
-                  6,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  74,
-                  72,
-                  29,
-                  2,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null
-                ],
-                "name": "Electronics and Electric Technology",
-                "top6": "093400",
-                "wages": [
-                  {
-                    "n": 223,
-                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
-                    "wage_after_2": 65274,
-                    "wage_after_5": 80497,
-                    "wage_before": 36812,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 353,
-                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
-                    "wage_after_2": 69631,
-                    "wage_after_5": 84558,
-                    "wage_before": 42485,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 88,
-                    "recipient_type": "Locally Approved Certificates Recipient",
-                    "wage_after_2": 94249,
-                    "wage_after_5": 94013,
-                    "wage_before": 69348,
-                    "window": "2015-2016 to 2019-2020"
-                  }
-                ]
-              },
-              {
-                "awards": [
-                  0,
-                  1,
-                  0,
-                  0,
-                  1
-                ],
-                "awards_recent": 1,
-                "enrollment": [
-                  null,
-                  236,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null
-                ],
-                "name": "Electrical",
-                "top6": "095220",
-                "wages": [
-                  {
-                    "n": 80,
-                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
-                    "wage_after_2": 69094,
-                    "wage_after_5": 92679,
-                    "wage_before": 44853,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 920,
-                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
-                    "wage_after_2": 121066,
-                    "wage_after_5": 122314,
-                    "wage_before": 71124,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 94,
-                    "recipient_type": "Locally Approved Certificates Recipient",
-                    "wage_after_2": 88638,
-                    "wage_after_5": 102632,
-                    "wage_before": 49221,
-                    "window": "2015-2016 to 2019-2020"
-                  }
-                ]
-              }
-            ],
-            "soc_code": "49-9099",
-            "supply": 0.0,
-            "title": "Installation, Maintenance, and Repair Workers, All Other"
           }
         ],
         "name": "College of San Mateo"
       },
       {
         "cells": [
-          {
-            "annual_openings": 300,
-            "annual_wage": 76360,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 300,
-            "growth_rate": -0.013238148,
-            "programs": [
-              {
-                "awards": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null
-                ],
-                "name": "Manufacturing and Industrial Technology",
-                "top6": "095600",
-                "wages": [
-                  {
-                    "n": 54,
-                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
-                    "wage_after_2": 54092,
-                    "wage_after_5": 73636,
-                    "wage_before": 26272,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 85,
-                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
-                    "wage_after_2": 60922,
-                    "wage_after_5": 72654,
-                    "wage_before": 36476,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 38,
-                    "recipient_type": "Locally Approved Certificates Recipient",
-                    "wage_after_2": 64897,
-                    "wage_after_5": 75071,
-                    "wage_before": 54280,
-                    "window": "2015-2016 to 2019-2020"
-                  }
-                ]
-              }
-            ],
-            "soc_code": "17-3011",
-            "supply": 0.0,
-            "title": "Architectural and Civil Drafters"
-          },
-          {
-            "annual_openings": 160,
-            "annual_wage": 91820,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 160,
-            "growth_rate": 0.01123564,
-            "programs": [],
-            "soc_code": "17-3022",
-            "supply": 0.0,
-            "title": "Civil Engineering Technologists and Technicians"
-          },
-          {
-            "annual_openings": 210,
-            "annual_wage": 62250,
-            "awards_recent": 1,
-            "course_count": 4,
-            "enrolled": true,
-            "feeding_awards": 1,
-            "gap": 181,
-            "growth_rate": 0.012021293,
-            "programs": [
-              {
-                "awards": [
-                  0,
-                  26,
-                  32,
-                  0,
-                  1
-                ],
-                "awards_recent": 1,
-                "enrollment": [
-                  4,
-                  null,
-                  null,
-                  null,
-                  10,
-                  23,
-                  null,
-                  18,
-                  null
-                ],
-                "name": "Energy Systems Technology",
-                "top6": "094610",
-                "wages": [
-                  {
-                    "n": 20,
-                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
-                    "wage_after_2": 57539,
-                    "wage_after_5": 71214,
-                    "wage_before": 40258,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 36,
-                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
-                    "wage_after_2": 54002,
-                    "wage_after_5": 111606,
-                    "wage_before": 17248,
-                    "window": "2015-2016 to 2019-2020"
-                  }
-                ]
-              }
-            ],
-            "soc_code": "19-4042",
-            "supply": 29.0,
-            "title": "Environmental Science and Protection Technicians, Including Health"
-          },
-          {
-            "annual_openings": 80,
-            "annual_wage": 59570,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 80,
-            "growth_rate": -0.006200193,
-            "programs": [
-              {
-                "awards": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null
-                ],
-                "name": "Manufacturing and Industrial Technology",
-                "top6": "095600",
-                "wages": [
-                  {
-                    "n": 54,
-                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
-                    "wage_after_2": 54092,
-                    "wage_after_5": 73636,
-                    "wage_before": 26272,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 85,
-                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
-                    "wage_after_2": 60922,
-                    "wage_after_5": 72654,
-                    "wage_before": 36476,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 38,
-                    "recipient_type": "Locally Approved Certificates Recipient",
-                    "wage_after_2": 64897,
-                    "wage_after_5": 75071,
-                    "wage_before": 54280,
-                    "window": "2015-2016 to 2019-2020"
-                  }
-                ]
-              }
-            ],
-            "soc_code": "19-4043",
-            "supply": 0.0,
-            "title": "Geological Technicians, Except Hydrologic Technicians"
-          },
-          {
-            "annual_openings": 60,
-            "annual_wage": 87390,
-            "awards_recent": 1,
-            "course_count": 4,
-            "enrolled": true,
-            "feeding_awards": 1,
-            "gap": 31,
-            "growth_rate": 0.080631998,
-            "programs": [
-              {
-                "awards": [
-                  0,
-                  26,
-                  32,
-                  0,
-                  1
-                ],
-                "awards_recent": 1,
-                "enrollment": [
-                  4,
-                  null,
-                  null,
-                  null,
-                  10,
-                  23,
-                  null,
-                  18,
-                  null
-                ],
-                "name": "Energy Systems Technology",
-                "top6": "094610",
-                "wages": [
-                  {
-                    "n": 20,
-                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
-                    "wage_after_2": 57539,
-                    "wage_after_5": 71214,
-                    "wage_before": 40258,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 36,
-                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
-                    "wage_after_2": 54002,
-                    "wage_after_5": 111606,
-                    "wage_before": 17248,
-                    "window": "2015-2016 to 2019-2020"
-                  }
-                ]
-              }
-            ],
-            "soc_code": "19-4051",
-            "supply": 29.0,
-            "title": "Nuclear Technicians"
-          },
-          {
-            "annual_openings": 1680,
-            "annual_wage": 103170,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 1680,
-            "growth_rate": 0.025585565,
-            "programs": [],
-            "soc_code": "47-1011",
-            "supply": 0.0,
-            "title": "First-Line Supervisors of Construction Trades and Extraction Workers"
-          },
           {
             "annual_openings": 2150,
             "annual_wage": 87520,
@@ -3067,139 +1145,6 @@
             "soc_code": "47-2231",
             "supply": 29.0,
             "title": "Solar Photovoltaic Installers"
-          },
-          {
-            "annual_openings": 490,
-            "annual_wage": 114500,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 490,
-            "growth_rate": -8.55e-05,
-            "programs": [],
-            "soc_code": "47-4011",
-            "supply": 0.0,
-            "title": "Construction and Building Inspectors"
-          },
-          {
-            "annual_openings": 50,
-            "annual_wage": 166830,
-            "awards_recent": 1,
-            "course_count": 4,
-            "enrolled": true,
-            "feeding_awards": 1,
-            "gap": 21,
-            "growth_rate": 0.021720587,
-            "programs": [
-              {
-                "awards": [
-                  0,
-                  26,
-                  32,
-                  0,
-                  1
-                ],
-                "awards_recent": 1,
-                "enrollment": [
-                  4,
-                  null,
-                  null,
-                  null,
-                  10,
-                  23,
-                  null,
-                  18,
-                  null
-                ],
-                "name": "Energy Systems Technology",
-                "top6": "094610",
-                "wages": [
-                  {
-                    "n": 20,
-                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
-                    "wage_after_2": 57539,
-                    "wage_after_5": 71214,
-                    "wage_before": 40258,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 36,
-                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
-                    "wage_after_2": 54002,
-                    "wage_after_5": 111606,
-                    "wage_before": 17248,
-                    "window": "2015-2016 to 2019-2020"
-                  }
-                ]
-              },
-              {
-                "awards": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null,
-                  null
-                ],
-                "name": "Manufacturing and Industrial Technology",
-                "top6": "095600",
-                "wages": [
-                  {
-                    "n": 54,
-                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
-                    "wage_after_2": 54092,
-                    "wage_after_5": 73636,
-                    "wage_before": 26272,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 85,
-                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
-                    "wage_after_2": 60922,
-                    "wage_after_5": 72654,
-                    "wage_before": 36476,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 38,
-                    "recipient_type": "Locally Approved Certificates Recipient",
-                    "wage_after_2": 64897,
-                    "wage_after_5": 75071,
-                    "wage_before": 54280,
-                    "window": "2015-2016 to 2019-2020"
-                  }
-                ]
-              }
-            ],
-            "soc_code": "47-4021",
-            "supply": 29.0,
-            "title": "Elevator and Escalator Installers and Repairers"
-          },
-          {
-            "annual_openings": 190,
-            "annual_wage": 73860,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 190,
-            "growth_rate": 0.048783929,
-            "programs": [],
-            "soc_code": "49-2098",
-            "supply": 0.0,
-            "title": "Security and Fire Alarm Systems Installers"
           },
           {
             "annual_openings": 780,
@@ -3361,251 +1306,12 @@
             "soc_code": "49-9051",
             "supply": 29.0,
             "title": "Electrical Power-Line Installers and Repairers"
-          },
-          {
-            "annual_openings": 620,
-            "annual_wage": 54590,
-            "awards_recent": 5,
-            "course_count": 4,
-            "enrolled": true,
-            "feeding_awards": 5,
-            "gap": 591,
-            "growth_rate": -0.005290195,
-            "programs": [
-              {
-                "awards": [
-                  0,
-                  0,
-                  2,
-                  8,
-                  4
-                ],
-                "awards_recent": 4,
-                "enrollment": [
-                  56,
-                  5,
-                  78,
-                  46,
-                  39,
-                  96,
-                  34,
-                  84,
-                  87
-                ],
-                "name": "Electronics and Electric Technology",
-                "top6": "093400",
-                "wages": [
-                  {
-                    "n": 223,
-                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
-                    "wage_after_2": 65274,
-                    "wage_after_5": 80497,
-                    "wage_before": 36812,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 353,
-                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
-                    "wage_after_2": 69631,
-                    "wage_after_5": 84558,
-                    "wage_before": 42485,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 88,
-                    "recipient_type": "Locally Approved Certificates Recipient",
-                    "wage_after_2": 94249,
-                    "wage_after_5": 94013,
-                    "wage_before": 69348,
-                    "window": "2015-2016 to 2019-2020"
-                  }
-                ]
-              },
-              {
-                "awards": [
-                  0,
-                  26,
-                  32,
-                  0,
-                  1
-                ],
-                "awards_recent": 1,
-                "enrollment": [
-                  4,
-                  null,
-                  null,
-                  null,
-                  10,
-                  23,
-                  null,
-                  18,
-                  null
-                ],
-                "name": "Energy Systems Technology",
-                "top6": "094610",
-                "wages": [
-                  {
-                    "n": 20,
-                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
-                    "wage_after_2": 57539,
-                    "wage_after_5": 71214,
-                    "wage_before": 40258,
-                    "window": "2015-2016 to 2019-2020"
-                  },
-                  {
-                    "n": 36,
-                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
-                    "wage_after_2": 54002,
-                    "wage_after_5": 111606,
-                    "wage_before": 17248,
-                    "window": "2015-2016 to 2019-2020"
-                  }
-                ]
-              }
-            ],
-            "soc_code": "49-9099",
-            "supply": 29.0,
-            "title": "Installation, Maintenance, and Repair Workers, All Other"
           }
         ],
         "name": "Skyline College"
       },
       {
         "cells": [
-          {
-            "annual_openings": 300,
-            "annual_wage": 76360,
-            "awards_recent": 0,
-            "course_count": 1,
-            "enrolled": true,
-            "feeding_awards": 0,
-            "gap": 300,
-            "growth_rate": -0.013238148,
-            "programs": [
-              {
-                "awards": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  31,
-                  29,
-                  33,
-                  47,
-                  26,
-                  57,
-                  24,
-                  49,
-                  27
-                ],
-                "name": "Architecture and Architectural Technology",
-                "top6": "020100",
-                "wages": []
-              }
-            ],
-            "soc_code": "17-3011",
-            "supply": 0.0,
-            "title": "Architectural and Civil Drafters"
-          },
-          {
-            "annual_openings": 160,
-            "annual_wage": 91820,
-            "awards_recent": 0,
-            "course_count": 1,
-            "enrolled": true,
-            "feeding_awards": 0,
-            "gap": 160,
-            "growth_rate": 0.01123564,
-            "programs": [
-              {
-                "awards": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  31,
-                  29,
-                  33,
-                  47,
-                  26,
-                  57,
-                  24,
-                  49,
-                  27
-                ],
-                "name": "Architecture and Architectural Technology",
-                "top6": "020100",
-                "wages": []
-              }
-            ],
-            "soc_code": "17-3022",
-            "supply": 0.0,
-            "title": "Civil Engineering Technologists and Technicians"
-          },
-          {
-            "annual_openings": 210,
-            "annual_wage": 62250,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 210,
-            "growth_rate": 0.012021293,
-            "programs": [],
-            "soc_code": "19-4042",
-            "supply": 0.0,
-            "title": "Environmental Science and Protection Technicians, Including Health"
-          },
-          {
-            "annual_openings": 80,
-            "annual_wage": 59570,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 80,
-            "growth_rate": -0.006200193,
-            "programs": [],
-            "soc_code": "19-4043",
-            "supply": 0.0,
-            "title": "Geological Technicians, Except Hydrologic Technicians"
-          },
-          {
-            "annual_openings": 60,
-            "annual_wage": 87390,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 60,
-            "growth_rate": 0.080631998,
-            "programs": [],
-            "soc_code": "19-4051",
-            "supply": 0.0,
-            "title": "Nuclear Technicians"
-          },
-          {
-            "annual_openings": 1680,
-            "annual_wage": 103170,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 1680,
-            "growth_rate": 0.025585565,
-            "programs": [],
-            "soc_code": "47-1011",
-            "supply": 0.0,
-            "title": "First-Line Supervisors of Construction Trades and Extraction Workers"
-          },
           {
             "annual_openings": 2150,
             "annual_wage": 87520,
@@ -3635,48 +1341,6 @@
             "title": "Solar Photovoltaic Installers"
           },
           {
-            "annual_openings": 490,
-            "annual_wage": 114500,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 490,
-            "growth_rate": -8.55e-05,
-            "programs": [],
-            "soc_code": "47-4011",
-            "supply": 0.0,
-            "title": "Construction and Building Inspectors"
-          },
-          {
-            "annual_openings": 50,
-            "annual_wage": 166830,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 50,
-            "growth_rate": 0.021720587,
-            "programs": [],
-            "soc_code": "47-4021",
-            "supply": 0.0,
-            "title": "Elevator and Escalator Installers and Repairers"
-          },
-          {
-            "annual_openings": 190,
-            "annual_wage": 73860,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 190,
-            "growth_rate": 0.048783929,
-            "programs": [],
-            "soc_code": "49-2098",
-            "supply": 0.0,
-            "title": "Security and Fire Alarm Systems Installers"
-          },
-          {
             "annual_openings": 780,
             "annual_wage": 73730,
             "awards_recent": 0,
@@ -3703,25 +1367,12 @@
             "soc_code": "49-9051",
             "supply": 0.0,
             "title": "Electrical Power-Line Installers and Repairers"
-          },
-          {
-            "annual_openings": 620,
-            "annual_wage": 54590,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 620,
-            "growth_rate": -0.005290195,
-            "programs": [],
-            "soc_code": "49-9099",
-            "supply": 0.0,
-            "title": "Installation, Maintenance, and Repair Workers, All Other"
           }
         ],
         "name": "Ca\u00f1ada College"
       }
     ],
+    "coverage_awards_only": true,
     "enrollment_terms": [
       "Fall 2021",
       "Spring 2022",
@@ -3733,7 +1384,7 @@
       "Spring 2025",
       "Fall 2025"
     ],
-    "executive_summary": "This view examines the regional demand landscape across the 14 energy, construction & utilities occupations the San Mateo County CCD \u2014 Energy, Construction & Utilities targets in the Bay Area regional labor market. Regional demand for these occupations totals 7,250 openings per year.",
+    "executive_summary": "This view examines the regional demand landscape across the 4 energy, construction & utilities occupations the San Mateo County CCD \u2014 Energy, Construction & Utilities targets in the Bay Area regional labor market. Regional demand for these occupations totals 3,410 openings per year.",
     "is_sector_priority": false,
     "region": "Bay",
     "region_display": "Bay Area",

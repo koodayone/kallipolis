@@ -2,707 +2,529 @@
   "/employers": {
     "employers": [
       {
-        "contact_name": "Greg Farmer",
-        "contact_title": "Director",
-        "description": "A bistro offering a dining experience.",
-        "lat": 37.5927497,
-        "lng": -122.3635651,
-        "naics4": "7225",
-        "naics_title": "Restaurants and Other Eating Places",
-        "name": "3SIXTY Bistro",
+        "description": "A pizzeria serving East Coast-style pizza.",
+        "display_name": null,
+        "lat": 37.5652493,
+        "lng": -122.3227798,
+        "naics4": "7223",
+        "naics_title": "Special Food Services",
+        "name": "Amici's East Coast Pizzeria",
+        "relevance": 2.32,
         "sector": "Hospitality & Food Service",
-        "size_class": "1,000-4,999 employees",
-        "size_rank": 9,
-        "soc_count": 4,
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
         "soc_titles": {
-          "11-9051": "Food Service Managers",
-          "35-1011": "Chefs and Head Cooks",
-          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
-          "41-1011": "First-Line Supervisors of Retail Sales Workers"
+          "11-9051": "Food Service Managers"
         },
         "socs": [
-          "35-1012",
-          "11-9051",
-          "35-1011",
-          "41-1011"
-        ],
-        "website": "https://www.hyatt.com/en-US/hotel/california/hyatt-regency-san-francisco-airport/sfobu/dining"
-      },
-      {
-        "contact_name": "Megann Spohn",
-        "contact_title": "Religious Dir",
-        "description": "A luxury hotel located in Half Moon Bay.",
-        "lat": 37.4332584,
-        "lng": -122.4396679,
-        "naics4": "7211",
-        "naics_title": "Traveler Accommodation",
-        "name": "Ritz-Carlton Half Moon Bay",
-        "sector": "Hospitality & Food Service",
-        "size_class": "500-999 employees",
-        "size_rank": 8,
-        "soc_count": 5,
-        "soc_titles": {
-          "11-9051": "Food Service Managers",
-          "11-9081": "Lodging Managers",
-          "35-1011": "Chefs and Head Cooks",
-          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
-          "41-1011": "First-Line Supervisors of Retail Sales Workers"
-        },
-        "socs": [
-          "11-9081",
-          "35-1012",
-          "35-1011",
-          "11-9051",
-          "41-1011"
-        ],
-        "website": "https://www.ritzcarlton.com/en/hotels/hafrz-the-ritz-carlton-half-moon-bay/overview/"
-      },
-      {
-        "contact_name": "Lauren Cieslewicz",
-        "contact_title": "Director",
-        "description": "A hotel located at the San Francisco Airport.",
-        "lat": 37.5927497,
-        "lng": -122.3635651,
-        "naics4": "7211",
-        "naics_title": "Traveler Accommodation",
-        "name": "San Francisco Airport Marriott",
-        "sector": "Hospitality & Food Service",
-        "size_class": "500-999 employees",
-        "size_rank": 8,
-        "soc_count": 5,
-        "soc_titles": {
-          "11-9051": "Food Service Managers",
-          "11-9081": "Lodging Managers",
-          "35-1011": "Chefs and Head Cooks",
-          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
-          "41-1011": "First-Line Supervisors of Retail Sales Workers"
-        },
-        "socs": [
-          "11-9081",
-          "35-1012",
-          "35-1011",
-          "11-9051",
-          "41-1011"
-        ],
-        "website": "https://www.marriott.com/en-us/hotels/sfobg-san-francisco-airport-marriott-waterfront/overview/"
-      },
-      {
-        "contact_name": "Pat Egan",
-        "contact_title": "CEO",
-        "description": "See's Candy Shops is a manufacturer and retailer of chocolates and candies.",
-        "lat": 37.6717362,
-        "lng": -122.4537758,
-        "naics4": "4452",
-        "naics_title": "Specialty Food Retailers",
-        "name": "See's Candy Shops",
-        "sector": "Retail",
-        "size_class": "500-999 employees",
-        "size_rank": 8,
-        "soc_count": 4,
-        "soc_titles": {
-          "11-9051": "Food Service Managers",
-          "35-1011": "Chefs and Head Cooks",
-          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
-          "41-1011": "First-Line Supervisors of Retail Sales Workers"
-        },
-        "socs": [
-          "41-1011",
-          "35-1012",
-          "35-1011",
           "11-9051"
         ],
-        "website": "https://www.sees.com/"
+        "website": "https://www.amicis.com/san-mateo"
       },
       {
-        "contact_name": "Amelia Marquez",
-        "contact_title": "Director",
-        "description": "A luxury hotel located on Sand Hill Road.",
-        "lat": 37.4287473,
-        "lng": -122.1898306,
-        "naics4": "7211",
-        "naics_title": "Traveler Accommodation",
-        "name": "Rosewood Sand Hill",
+        "description": "A golf course located in Emerald Hills.",
+        "display_name": null,
+        "lat": 37.4550978,
+        "lng": -122.2627005,
+        "naics4": "7223",
+        "naics_title": "Special Food Services",
+        "name": "Emerald Hills Golf Course",
+        "relevance": 2.32,
         "sector": "Hospitality & Food Service",
-        "size_class": "250-499 employees",
-        "size_rank": 7,
-        "soc_count": 5,
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
         "soc_titles": {
-          "11-9051": "Food Service Managers",
-          "11-9081": "Lodging Managers",
-          "35-1011": "Chefs and Head Cooks",
-          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
-          "41-1011": "First-Line Supervisors of Retail Sales Workers"
+          "11-9051": "Food Service Managers"
         },
         "socs": [
-          "11-9081",
-          "35-1012",
-          "35-1011",
-          "11-9051",
-          "41-1011"
-        ],
-        "website": "https://www.rosewoodhotels.com/en/sand-hill-menlo-park"
-      },
-      {
-        "contact_name": "Scott Castel",
-        "contact_title": "General Mgr",
-        "description": "A hotel located in Foster City.",
-        "lat": 37.5622541,
-        "lng": -122.278803,
-        "naics4": "7211",
-        "naics_title": "Traveler Accommodation",
-        "name": "Crowne Plaza Foster City",
-        "sector": "Hospitality & Food Service",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 5,
-        "soc_titles": {
-          "11-9051": "Food Service Managers",
-          "11-9081": "Lodging Managers",
-          "35-1011": "Chefs and Head Cooks",
-          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
-          "41-1011": "First-Line Supervisors of Retail Sales Workers"
-        },
-        "socs": [
-          "11-9081",
-          "35-1012",
-          "35-1011",
-          "11-9051",
-          "41-1011"
-        ],
-        "website": "IHG.COM"
-      },
-      {
-        "contact_name": "Derek Byrd",
-        "contact_title": "Director",
-        "description": "A hotel located in San Francisco.",
-        "lat": 37.5893059,
-        "lng": -122.342542,
-        "naics4": "7211",
-        "naics_title": "Traveler Accommodation",
-        "name": "Crowne Plaza San Francisco",
-        "sector": "Hospitality & Food Service",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 5,
-        "soc_titles": {
-          "11-9051": "Food Service Managers",
-          "11-9081": "Lodging Managers",
-          "35-1011": "Chefs and Head Cooks",
-          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
-          "41-1011": "First-Line Supervisors of Retail Sales Workers"
-        },
-        "socs": [
-          "11-9081",
-          "35-1012",
-          "35-1011",
-          "11-9051",
-          "41-1011"
-        ],
-        "website": "https://sfocp.com/"
-      },
-      {
-        "contact_name": null,
-        "contact_title": null,
-        "description": "A hotel in the Doubletree by Hilton chain located in San Francisco.",
-        "lat": 37.6897794,
-        "lng": -122.391832,
-        "naics4": "7211",
-        "naics_title": "Traveler Accommodation",
-        "name": "Doubletree By Hilton San Francisco",
-        "sector": "Hospitality & Food Service",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 5,
-        "soc_titles": {
-          "11-9051": "Food Service Managers",
-          "11-9081": "Lodging Managers",
-          "35-1011": "Chefs and Head Cooks",
-          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
-          "41-1011": "First-Line Supervisors of Retail Sales Workers"
-        },
-        "socs": [
-          "11-9081",
-          "35-1012",
-          "35-1011",
-          "11-9051",
-          "41-1011"
-        ],
-        "website": "HILTON.COM"
-      },
-      {
-        "contact_name": "Jenny Wong",
-        "contact_title": "Director",
-        "description": "A hotel located near the San Francisco Airport.",
-        "lat": 37.5975816,
-        "lng": -122.3868334,
-        "naics4": "7211",
-        "naics_title": "Traveler Accommodation",
-        "name": "El Rancho Inn",
-        "sector": "Hospitality & Food Service",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 5,
-        "soc_titles": {
-          "11-9051": "Food Service Managers",
-          "11-9081": "Lodging Managers",
-          "35-1011": "Chefs and Head Cooks",
-          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
-          "41-1011": "First-Line Supervisors of Retail Sales Workers"
-        },
-        "socs": [
-          "11-9081",
-          "35-1012",
-          "35-1011",
-          "11-9051",
-          "41-1011"
-        ],
-        "website": "ELRANCHOINN.COM"
-      },
-      {
-        "contact_name": "Settah Aydin",
-        "contact_title": "Manager",
-        "description": "A hotel in the Embassy Suites by Hilton chain located in San Francisco.",
-        "lat": 37.5897358,
-        "lng": -122.3509508,
-        "naics4": "7211",
-        "naics_title": "Traveler Accommodation",
-        "name": "Embassy Suites By Hilton San Francisco",
-        "sector": "Hospitality & Food Service",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 5,
-        "soc_titles": {
-          "11-9051": "Food Service Managers",
-          "11-9081": "Lodging Managers",
-          "35-1011": "Chefs and Head Cooks",
-          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
-          "41-1011": "First-Line Supervisors of Retail Sales Workers"
-        },
-        "socs": [
-          "11-9081",
-          "35-1012",
-          "35-1011",
-          "11-9051",
-          "41-1011"
-        ],
-        "website": "https://www.hilton.com/en/hotels/sfobges-embassy-suites-san-francisco-airport-waterfront/"
-      },
-      {
-        "contact_name": "Adora Manalo",
-        "contact_title": "Manager",
-        "description": "A luxury hotel located in the Silicon Valley area.",
-        "lat": 37.4694542,
-        "lng": -122.1407933,
-        "naics4": "7211",
-        "naics_title": "Traveler Accommodation",
-        "name": "Four Seasons Hotel Silicon Valley",
-        "sector": "Hospitality & Food Service",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 5,
-        "soc_titles": {
-          "11-9051": "Food Service Managers",
-          "11-9081": "Lodging Managers",
-          "35-1011": "Chefs and Head Cooks",
-          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
-          "41-1011": "First-Line Supervisors of Retail Sales Workers"
-        },
-        "socs": [
-          "11-9081",
-          "35-1012",
-          "35-1011",
-          "11-9051",
-          "41-1011"
-        ],
-        "website": "https://www.fourseasons.com/siliconvalley/"
-      },
-      {
-        "contact_name": "Bill Troyanoski",
-        "contact_title": "General Mgr",
-        "description": "Half Moon Bay Golf Links is a golf course and resort.",
-        "lat": 37.4332584,
-        "lng": -122.4396679,
-        "naics4": "7139",
-        "naics_title": "Other Amusement and Recreation Industries",
-        "name": "Half Moon Bay Golf Links",
-        "sector": "Arts & Entertainment",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 5,
-        "soc_titles": {
-          "11-9051": "Food Service Managers",
-          "35-1011": "Chefs and Head Cooks",
-          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
-          "41-1011": "First-Line Supervisors of Retail Sales Workers",
-          "41-3041": "Travel Agents"
-        },
-        "socs": [
-          "35-1012",
-          "35-1011",
-          "41-1011",
-          "11-9051",
-          "41-3041"
-        ],
-        "website": "https://halfmoonbaygolf.com/"
-      },
-      {
-        "contact_name": "Diana Ng",
-        "contact_title": "Director",
-        "description": "A hotel located near the San Francisco Airport.",
-        "lat": 37.5893059,
-        "lng": -122.342542,
-        "naics4": "7211",
-        "naics_title": "Traveler Accommodation",
-        "name": "Hilton San Francisco Airport",
-        "sector": "Hospitality & Food Service",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 5,
-        "soc_titles": {
-          "11-9051": "Food Service Managers",
-          "11-9081": "Lodging Managers",
-          "35-1011": "Chefs and Head Cooks",
-          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
-          "41-1011": "First-Line Supervisors of Retail Sales Workers"
-        },
-        "socs": [
-          "11-9081",
-          "35-1012",
-          "35-1011",
-          "11-9051",
-          "41-1011"
-        ],
-        "website": "https://hiltonsfo.com/"
-      },
-      {
-        "contact_name": "Epensa Polka",
-        "contact_title": "General Mgr",
-        "description": "A hotel in the Holiday Inn Suites chain located in San Mateo.",
-        "lat": 37.5792552,
-        "lng": -122.3226965,
-        "naics4": "7211",
-        "naics_title": "Traveler Accommodation",
-        "name": "Holiday Inn Suites San Mateo",
-        "sector": "Hospitality & Food Service",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 5,
-        "soc_titles": {
-          "11-9051": "Food Service Managers",
-          "11-9081": "Lodging Managers",
-          "35-1011": "Chefs and Head Cooks",
-          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
-          "41-1011": "First-Line Supervisors of Retail Sales Workers"
-        },
-        "socs": [
-          "11-9081",
-          "35-1012",
-          "35-1011",
-          "11-9051",
-          "41-1011"
-        ],
-        "website": "https://www.ihg.com/holidayinn/hotels/us/en/san-mateo/sfosm/hoteldetail"
-      },
-      {
-        "contact_name": "Scott Maltz",
-        "contact_title": "Vice President",
-        "description": "A community center serving the Peninsula area.",
-        "lat": 37.5696535,
-        "lng": -122.2757343,
-        "naics4": "7139",
-        "naics_title": "Other Amusement and Recreation Industries",
-        "name": "Peninsula Jewish Community Center",
-        "sector": "Arts & Entertainment",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 5,
-        "soc_titles": {
-          "11-9051": "Food Service Managers",
-          "35-1011": "Chefs and Head Cooks",
-          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
-          "41-1011": "First-Line Supervisors of Retail Sales Workers",
-          "41-3041": "Travel Agents"
-        },
-        "socs": [
-          "35-1012",
-          "35-1011",
-          "41-1011",
-          "11-9051",
-          "41-3041"
-        ],
-        "website": "https://pjcc.org/"
-      },
-      {
-        "contact_name": "John Micheal",
-        "contact_title": "Owner",
-        "description": "An athletic club offering fitness and recreational activities.",
-        "lat": 37.5865829,
-        "lng": -122.3384383,
-        "naics4": "7139",
-        "naics_title": "Other Amusement and Recreation Industries",
-        "name": "Prime Time Athletic Club",
-        "sector": "Arts & Entertainment",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 5,
-        "soc_titles": {
-          "11-9051": "Food Service Managers",
-          "35-1011": "Chefs and Head Cooks",
-          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
-          "41-1011": "First-Line Supervisors of Retail Sales Workers",
-          "41-3041": "Travel Agents"
-        },
-        "socs": [
-          "35-1012",
-          "35-1011",
-          "41-1011",
-          "11-9051",
-          "41-3041"
-        ],
-        "website": "https://primetimeathleticclub.com/"
-      },
-      {
-        "contact_name": "Mike Mckee",
-        "contact_title": "Manager",
-        "description": "A restaurant or establishment named 37 North.",
-        "lat": 37.5893059,
-        "lng": -122.342542,
-        "naics4": "7225",
-        "naics_title": "Restaurants and Other Eating Places",
-        "name": "37 North",
-        "sector": "Hospitality & Food Service",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 4,
-        "soc_titles": {
-          "11-9051": "Food Service Managers",
-          "35-1011": "Chefs and Head Cooks",
-          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
-          "41-1011": "First-Line Supervisors of Retail Sales Workers"
-        },
-        "socs": [
-          "35-1012",
-          "11-9051",
-          "35-1011",
-          "41-1011"
-        ],
-        "website": "https://www.hilton.com/en/hotels/sfoaodt-doubletree-san-francisco-airport/dining/"
-      },
-      {
-        "contact_name": "Steve Hurwitz",
-        "contact_title": "Owner",
-        "description": "Bay Area Herbs is a supplier of herbs.",
-        "lat": 37.6460964,
-        "lng": -122.4073148,
-        "naics4": "4452",
-        "naics_title": "Specialty Food Retailers",
-        "name": "Bay Area Herbs",
-        "sector": "Retail",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 4,
-        "soc_titles": {
-          "11-9051": "Food Service Managers",
-          "35-1011": "Chefs and Head Cooks",
-          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
-          "41-1011": "First-Line Supervisors of Retail Sales Workers"
-        },
-        "socs": [
-          "41-1011",
-          "35-1012",
-          "35-1011",
           "11-9051"
         ],
-        "website": "BAYAREAHERBS.COM"
+        "website": "https://www.emeraldhillsgolfcourse.com/"
       },
       {
-        "contact_name": "Larry Ferguson",
-        "contact_title": "Director",
-        "description": "Draeger's Market is a gourmet grocery store.",
-        "lat": 37.5649777,
-        "lng": -122.3212271,
-        "naics4": "4451",
-        "naics_title": "Grocery and Convenience Retailers",
-        "name": "Draeger's Market",
-        "sector": "Retail",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 4,
-        "soc_titles": {
-          "11-9051": "Food Service Managers",
-          "35-1011": "Chefs and Head Cooks",
-          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
-          "41-1011": "First-Line Supervisors of Retail Sales Workers"
-        },
-        "socs": [
-          "41-1011",
-          "35-1012",
-          "35-1011",
-          "11-9051"
-        ],
-        "website": "https://www.draegers.com/"
-      },
-      {
-        "contact_name": "Andy Butera",
-        "contact_title": "Vice President",
-        "description": "Draeger's Super Markets is a chain of grocery stores.",
-        "lat": 37.6458035,
-        "lng": -122.4027752,
-        "naics4": "4451",
-        "naics_title": "Grocery and Convenience Retailers",
-        "name": "Draeger's Super Markets",
-        "sector": "Retail",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 4,
-        "soc_titles": {
-          "11-9051": "Food Service Managers",
-          "35-1011": "Chefs and Head Cooks",
-          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
-          "41-1011": "First-Line Supervisors of Retail Sales Workers"
-        },
-        "socs": [
-          "41-1011",
-          "35-1012",
-          "35-1011",
-          "11-9051"
-        ],
-        "website": "https://www.draegers.com/"
-      },
-      {
-        "contact_name": "Frank Balentine",
-        "contact_title": "President",
-        "description": "Greenleaf is a company focused on providing fresh produce.",
-        "lat": 37.6873013,
-        "lng": -122.4025867,
-        "naics4": "4452",
-        "naics_title": "Specialty Food Retailers",
-        "name": "Greenleaf",
-        "sector": "Retail",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 4,
-        "soc_titles": {
-          "11-9051": "Food Service Managers",
-          "35-1011": "Chefs and Head Cooks",
-          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
-          "41-1011": "First-Line Supervisors of Retail Sales Workers"
-        },
-        "socs": [
-          "41-1011",
-          "35-1012",
-          "35-1011",
-          "11-9051"
-        ],
-        "website": "https://greenleafproduce.com/"
-      },
-      {
-        "contact_name": "Rosanne Cefalu",
-        "contact_title": "Director",
-        "description": "A restaurant located in San Mateo.",
-        "lat": 37.5403434,
-        "lng": -122.3013013,
-        "naics4": "7225",
-        "naics_title": "Restaurants and Other Eating Places",
-        "name": "Jack's San Mateo",
-        "sector": "Hospitality & Food Service",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 4,
-        "soc_titles": {
-          "11-9051": "Food Service Managers",
-          "35-1011": "Chefs and Head Cooks",
-          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
-          "41-1011": "First-Line Supervisors of Retail Sales Workers"
-        },
-        "socs": [
-          "35-1012",
-          "11-9051",
-          "35-1011",
-          "41-1011"
-        ],
-        "website": "https://www.ilovejacks.com/san-mateo"
-      },
-      {
-        "contact_name": "Juan Carlos",
-        "contact_title": "General Mgr",
-        "description": "New Leaf Community Markets is a chain of grocery stores focused on natural and organic foods.",
-        "lat": 37.4677762,
-        "lng": -122.4304551,
-        "naics4": "4451",
-        "naics_title": "Grocery and Convenience Retailers",
-        "name": "New Leaf Community Markets",
-        "sector": "Retail",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 4,
-        "soc_titles": {
-          "11-9051": "Food Service Managers",
-          "35-1011": "Chefs and Head Cooks",
-          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
-          "41-1011": "First-Line Supervisors of Retail Sales Workers"
-        },
-        "socs": [
-          "41-1011",
-          "35-1012",
-          "35-1011",
-          "11-9051"
-        ],
-        "website": "https://www.newleaf.com/"
-      },
-      {
-        "contact_name": "Arnel Ortiguerra",
-        "contact_title": "Purchase Exec",
-        "description": "REMOVE, in Burlingame, (San Mateo County). Caterers. 100-249 employees.",
+        "description": "Flying Food Group is an airline catering company founded in 1983 that produces inflight meals and retail food products for major airlines and airport retail brands worldwide. Their Burlingame facility at 50 Adrian Ct serves as a Bay Area kitchen near SFO, one of 14 U.S. locations, producing both fresh onboard meals and shelf-stable MAP (modified atmosphere packaging) products. Culinary production, food safety, and logistics roles are central to the local operation.",
+        "display_name": null,
         "lat": 37.6002938,
         "lng": -122.3789084,
         "naics4": "7223",
         "naics_title": "Special Food Services",
         "name": "REMOVE",
+        "relevance": 2.32,
         "sector": "Hospitality & Food Service",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 4,
+        "soc_count": 1,
         "soc_titles": {
-          "11-9051": "Food Service Managers",
-          "35-1011": "Chefs and Head Cooks",
-          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
-          "41-1011": "First-Line Supervisors of Retail Sales Workers"
+          "11-9051": "Food Service Managers"
         },
         "socs": [
-          "35-1012",
-          "35-1011",
-          "11-9051",
-          "41-1011"
+          "11-9051"
         ],
         "website": "FLYINGFOOD.COM"
       },
       {
-        "contact_name": "Jennifer Ventura",
-        "contact_title": "Site Manager",
-        "description": "A seafood restaurant and market.",
+        "description": "37 North Restaurant & Bar is a California-inspired gastropub located in the lobby of the DoubleTree by Hilton San Francisco Airport at 835 Airport Blvd, Burlingame. The menu is built around sustainably sourced, locally and regionally grown ingredients \u2014 seasonal produce from small farms, artisan beers, and hand-crafted cocktails \u2014 served for breakfast and dinner in an indoor/outdoor setting with courtyard fire pits. Front-of-house, kitchen, and bar roles draw from the San Mateo County hospitality workforce near SFO.",
+        "display_name": null,
+        "lat": 37.5893059,
+        "lng": -122.342542,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "37 North",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.hilton.com/en/hotels/sfoaodt-doubletree-san-francisco-airport/dining/"
+      },
+      {
+        "description": "3SIXTY Bar | Bistro | Market is the full-service dining venue at the Hyatt Regency San Francisco Airport in Burlingame, operating as three integrated concepts \u2014 a sit-down bistro, a full bar, and a grab-and-go market \u2014 open daily from 6 a.m. to midnight. The bistro serves breakfast, lunch, and dinner focused on locally sourced Northern California ingredients with rotating seasonal menus and a farm-to-table philosophy. It employs front- and back-of-house hospitality staff serving a primarily airport-adjacent traveler and business clientele.",
+        "display_name": null,
+        "lat": 37.5927497,
+        "lng": -122.3635651,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "3SIXTY Bistro",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": "1,000-4,999 employees",
+        "size_rank": 9,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.hyatt.com/en-US/hotel/california/hyatt-regency-san-francisco-airport/sfobu/dining"
+      },
+      {
+        "description": "A restaurant located in Woodside.",
+        "display_name": null,
+        "lat": 37.4292088,
+        "lng": -122.2507219,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "Buck's Restaurant",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.buckswoodside.com/"
+      },
+      {
+        "description": "A fast-food chain known for its burgers.",
+        "display_name": null,
+        "lat": 37.5403434,
+        "lng": -122.3013013,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "Burger King",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://locations.bk.com/ca/san-mateo/2817-south-el-camino-real.html"
+      },
+      {
+        "description": "A cafe with a French-inspired name.",
+        "display_name": null,
+        "lat": 37.4511812,
+        "lng": -122.1784979,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "Cafe Boronne",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.cafeborrone.com/"
+      },
+      {
+        "description": "A historic tavern known for its local cuisine.",
+        "display_name": null,
+        "lat": 37.2613088,
+        "lng": -122.3846304,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "Duarte's Tavern",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.duartestavern.com/"
+      },
+      {
+        "description": "A Filipino bakery and restaurant.",
+        "display_name": null,
+        "lat": 37.650526,
+        "lng": -122.4416458,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "Goldilocks",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.goldilocks-usa.com/"
+      },
+      {
+        "description": "A restaurant with a grand theme.",
+        "display_name": null,
+        "lat": 37.6568277,
+        "lng": -122.4176023,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "Grand Palace Restaurant",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.grandpalaceseafoodrestaurant.com/"
+      },
+      {
+        "description": "A restaurant chain specializing in pancakes and breakfast foods.",
+        "display_name": null,
+        "lat": 37.7067276,
+        "lng": -122.4715285,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "IHOP",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://restaurants.ihop.com/en-us/ca/daly-city/breakfast-2398-junipero-serra-blvd-1709"
+      },
+      {
+        "description": "A restaurant and bar offering food and drinks.",
+        "display_name": null,
+        "lat": 37.6341601,
+        "lng": -122.4207989,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "Jack's Restaurant & Bar",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.ilovejacks.com/san-bruno"
+      },
+      {
+        "description": "Jack's Restaurant & Bar is a family-owned American restaurant at 1750 S El Camino Real in San Mateo, open all day for breakfast, lunch, dinner, and a full bar program. The kitchen focuses on scratch-made comfort food with a Greek-American influence \u2014 burgers, hearty breakfasts, and large salads \u2014 drawing on the Marcovici family's heritage and California seasonal ingredients. Front-of-house and kitchen roles span line cooks, servers, and bartenders serving the Peninsula corridor.",
+        "display_name": null,
+        "lat": 37.5403434,
+        "lng": -122.3013013,
+        "naics4": "7225",
+        "naics_title": "Restaurants and Other Eating Places",
+        "name": "Jack's San Mateo",
+        "relevance": 1.67,
+        "sector": "Hospitality & Food Service",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.ilovejacks.com/san-mateo"
+      },
+      {
+        "description": "The Fish Market is a California seafood restaurant group founded in 1976, operating two locations in San Diego and Del Mar, with an upscale sister concept (Top of the Market) co-located at the San Diego Harbor Drive site. Each location combines a full-service dining room specializing in fresh-caught and grilled seafood with a retail fish counter staffed by in-house specialists who advise on home preparation. The operation employs front-of-house, back-of-house, and kitchen staff across both sites.",
+        "display_name": null,
         "lat": 37.5590604,
         "lng": -122.2969242,
         "naics4": "7225",
         "naics_title": "Restaurants and Other Eating Places",
         "name": "The Fish Market",
+        "relevance": 1.67,
         "sector": "Hospitality & Food Service",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 4,
+        "soc_count": 1,
         "soc_titles": {
-          "11-9051": "Food Service Managers",
-          "35-1011": "Chefs and Head Cooks",
-          "35-1012": "First-Line Supervisors of Food Preparation and Serving Workers",
-          "41-1011": "First-Line Supervisors of Retail Sales Workers"
+          "11-9051": "Food Service Managers"
         },
         "socs": [
-          "35-1012",
-          "11-9051",
-          "35-1011",
-          "41-1011"
+          "11-9051"
         ],
         "website": "https://www.thefishmarket.com/"
+      },
+      {
+        "description": "A hotel situated on the coast in Half Moon Bay.",
+        "display_name": null,
+        "lat": 37.4865867,
+        "lng": -122.4485497,
+        "naics4": "7211",
+        "naics_title": "Traveler Accommodation",
+        "name": "Beach House Hotel Half Moon Bay",
+        "relevance": 0.57,
+        "sector": "Hospitality & Food Service",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.beach-house.com/half-moon-bay/"
+      },
+      {
+        "description": "Crowne Plaza Foster City-San Mateo is a 350-room full-service hotel operated under IHG's Crowne Plaza brand, situated on the San Francisco Peninsula between SFO (9 miles) and Silicon Valley, serving business and group travelers. The property offers 24,000 square feet of meeting space across 19 venues, two on-site restaurants (Caf\u00e9 Florian and Clubhouse Bistro), and indoor and outdoor pools. Guest-facing and back-of-house roles span front desk, food and beverage, housekeeping, event services, and facilities maintenance.",
+        "display_name": null,
+        "lat": 37.5622541,
+        "lng": -122.278803,
+        "naics4": "7211",
+        "naics_title": "Traveler Accommodation",
+        "name": "Crowne Plaza Foster City",
+        "relevance": 0.57,
+        "sector": "Hospitality & Food Service",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "IHG.COM"
+      },
+      {
+        "description": "Crowne Plaza San Francisco Airport is a full-service hotel located in Burlingame at 1177 Airport Boulevard, approximately 1.5 miles from SFO. The property offers guest rooms and suites, an indoor pool, fitness center, complimentary airport shuttle, and on-site dining. It operates meeting and event facilities for corporate and social gatherings and employs front-of-house, food and beverage, housekeeping, and event-services staff.",
+        "display_name": null,
+        "lat": 37.5893059,
+        "lng": -122.342542,
+        "naics4": "7211",
+        "naics_title": "Traveler Accommodation",
+        "name": "Crowne Plaza San Francisco",
+        "relevance": 0.57,
+        "sector": "Hospitality & Food Service",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://sfocp.com/"
+      },
+      {
+        "description": "DoubleTree by Hilton Hotel San Francisco Airport is a 395-room full-service hotel in Burlingame, two miles south of SFO, operating under Hilton's DoubleTree brand. The property includes 37 North Restaurant & Bar with California casual dining, over 12,000 square feet of meeting and event space, a bayside fitness trail, and 24-hour complimentary airport shuttle service. Operational roles span front desk, food and beverage, housekeeping, banquet and event services, and facilities management.",
+        "display_name": null,
+        "lat": 37.6897794,
+        "lng": -122.391832,
+        "naics4": "7211",
+        "naics_title": "Traveler Accommodation",
+        "name": "Doubletree By Hilton San Francisco",
+        "relevance": 0.57,
+        "sector": "Hospitality & Food Service",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "HILTON.COM"
+      },
+      {
+        "description": "El Rancho Inn is a 219-room full-service airport hotel in Millbrae, CA, operating under the SureStay Collection by Best Western flag and managed by Springboard Hospitality. The property is three miles from SFO and offers 24-hour airport shuttle service, a complimentary breakfast buffet, outdoor pool, and sleep-and-fly parking packages aimed at business and leisure travelers on the San Francisco Peninsula. Operational roles span front desk, housekeeping, food and beverage, and shuttle operations.",
+        "display_name": null,
+        "lat": 37.5975816,
+        "lng": -122.3868334,
+        "naics4": "7211",
+        "naics_title": "Traveler Accommodation",
+        "name": "El Rancho Inn",
+        "relevance": 0.57,
+        "sector": "Hospitality & Food Service",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "ELRANCHOINN.COM"
+      },
+      {
+        "description": "Embassy Suites San Francisco Airport Waterfront is a 340-room all-suite hotel in Burlingame, CA, situated on the San Francisco Bay about one mile from SFO and operated under Hilton's upscale-select Embassy Suites brand. The property includes the Tap and Tavern restaurant, complimentary cooked-to-order breakfast, an evening reception, and roughly 15,000 sq ft of meeting space across 12 rooms, making it a significant meetings and events venue serving the Bay Area airport corridor. On-property roles span front desk, food and beverage, housekeeping, banquet/event services, and shuttle operations.",
+        "display_name": null,
+        "lat": 37.5897358,
+        "lng": -122.3509508,
+        "naics4": "7211",
+        "naics_title": "Traveler Accommodation",
+        "name": "Embassy Suites By Hilton San Francisco",
+        "relevance": 0.57,
+        "sector": "Hospitality & Food Service",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.hilton.com/en/hotels/sfobges-embassy-suites-san-francisco-airport-waterfront/"
+      },
+      {
+        "description": "Four Seasons Hotel Silicon Valley at East Palo Alto is a 200-room luxury hotel located at 2050 University Ave, East Palo Alto, adjacent to Stanford University, offering bay and mountain views, a rooftop pool deck, and a seven-treatment-room spa. The property operates Quattro, a full-service Californian cuisine restaurant, alongside a bar, caf\u00e9, and 24-hour in-room dining. It employs culinary, front-of-house, spa, concierge, and facilities operations staff serving both leisure and corporate travelers in the greater Silicon Valley market.",
+        "display_name": null,
+        "lat": 37.4694542,
+        "lng": -122.1407933,
+        "naics4": "7211",
+        "naics_title": "Traveler Accommodation",
+        "name": "Four Seasons Hotel Silicon Valley",
+        "relevance": 0.57,
+        "sector": "Hospitality & Food Service",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.fourseasons.com/siliconvalley/"
+      },
+      {
+        "description": "A hotel in the Hilton Garden Inn chain located in San Francisco.",
+        "display_name": null,
+        "lat": 37.6501206,
+        "lng": -122.4049634,
+        "naics4": "7211",
+        "naics_title": "Traveler Accommodation",
+        "name": "Hilton Garden Inn San Francisco",
+        "relevance": 0.57,
+        "sector": "Hospitality & Food Service",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.hilton.com/en/hotels/sfoangi-hilton-garden-inn-san-francisco-airport-north/"
+      },
+      {
+        "description": "Hilton San Francisco Airport Bayfront is a full-service hotel in Burlingame, CA, located on San Francisco Bay approximately four miles from SFO with complimentary airport shuttle service. The property offers over 12,000 square feet of meeting and event space alongside a bayfront restaurant serving locally sourced cuisine, an indoor pool, and fitness facilities. Front-of-house, culinary, banquet services, and facilities operations roles represent the primary local workforce.",
+        "display_name": null,
+        "lat": 37.5893059,
+        "lng": -122.342542,
+        "naics4": "7211",
+        "naics_title": "Traveler Accommodation",
+        "name": "Hilton San Francisco Airport",
+        "relevance": 0.57,
+        "sector": "Hospitality & Food Service",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://hiltonsfo.com/"
+      },
+      {
+        "description": "Holiday Inn & Suites San Mateo-San Francisco SFO is a 172-room full-service hotel at 330 N. Bayshore Boulevard, roughly five minutes from SFO, serving business and leisure travelers on the San Francisco Peninsula. The property includes the on-site Bistro 330 restaurant, a fitness center, sauna, hot tub, and roughly 2,200 sq ft of meeting and event space, and operates under IHG's Holiday Inn brand. Front-desk, housekeeping, food-and-beverage, and facilities roles are filled locally.",
+        "display_name": null,
+        "lat": 37.5792552,
+        "lng": -122.3226965,
+        "naics4": "7211",
+        "naics_title": "Traveler Accommodation",
+        "name": "Holiday Inn Suites San Mateo",
+        "relevance": 0.57,
+        "sector": "Hospitality & Food Service",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "11-9051": "Food Service Managers"
+        },
+        "socs": [
+          "11-9051"
+        ],
+        "website": "https://www.ihg.com/holidayinn/hotels/us/en/san-mateo/sfosm/hoteldetail"
       }
     ],
     "region": "Bay",
@@ -712,138 +534,13 @@
       "San Mateo"
     ],
     "shown": 25,
-    "total": 78
+    "total": 176
   },
   "/programs": {
+    "coverage_awards_only": true,
     "latest_award_year": "2024-2025",
     "matrix": {
       "cells": [
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "010400"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "010400"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "010400"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "010920"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "010920"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "010920"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "050940"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": true,
-          "teaches": false,
-          "top6": "050940"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "050940"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "050960"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "050960"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "050960"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "050970"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "050970"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "050970"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "070910"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "070910"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "070910"
-        },
         {
           "awards": 6,
           "college": "College of San Mateo",
@@ -864,48 +561,6 @@
           "enrolled": true,
           "teaches": true,
           "top6": "130600"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "130620"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "130620"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "130620"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "130630"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "130630"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "130630"
         },
         {
           "awards": 0,
@@ -948,69 +603,6 @@
           "enrolled": false,
           "teaches": false,
           "top6": "130710"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "130720"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": true,
-          "teaches": true,
-          "top6": "130720"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "130720"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "130730"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "130730"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "130730"
-        },
-        {
-          "awards": 0,
-          "college": "College of San Mateo",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "300900"
-        },
-        {
-          "awards": 0,
-          "college": "Skyline College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "300900"
-        },
-        {
-          "awards": 0,
-          "college": "Ca\u00f1ada College",
-          "enrolled": false,
-          "teaches": false,
-          "top6": "300900"
         }
       ],
       "colleges": [
@@ -1029,7 +621,7 @@
         "enrollment_total": 290,
         "n_colleges_offering": 1,
         "name": "Restaurant and Food Services and Management",
-        "soc_count": 4,
+        "soc_count": 1,
         "top6": "130710"
       },
       {
@@ -1037,7 +629,7 @@
         "enrollment_total": 315,
         "n_colleges_offering": 3,
         "name": "Nutrition, Foods, and Culinary Arts",
-        "soc_count": 3,
+        "soc_count": 1,
         "top6": "130600"
       },
       {
@@ -1045,109 +637,21 @@
         "enrollment_total": 658,
         "n_colleges_offering": 1,
         "name": "Hospitality",
-        "soc_count": 5,
+        "soc_count": 1,
         "top6": "130700"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 36,
-        "n_colleges_offering": 0,
-        "name": "Sales and Salesmanship",
-        "soc_count": 2,
-        "top6": "050940"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 12,
-        "n_colleges_offering": 1,
-        "name": "Lodging Management",
-        "soc_count": 2,
-        "top6": "130720"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Culinary Arts",
-        "soc_count": 4,
-        "top6": "130630"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Dietetic Services and Management",
-        "soc_count": 2,
-        "top6": "130620"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Viticulture, Enology, and Wine Business",
-        "soc_count": 1,
-        "top6": "010400"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Floriculture / Floristry",
-        "soc_count": 1,
-        "top6": "010920"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Display",
-        "soc_count": 1,
-        "top6": "050960"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "E-Commerce (Business emphasis)",
-        "soc_count": 1,
-        "top6": "050970"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "E-Commerce (Technology emphasis)",
-        "soc_count": 1,
-        "top6": "070910"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Resort and Club Management",
-        "soc_count": 1,
-        "top6": "130730"
-      },
-      {
-        "awards_total": 0,
-        "enrollment_total": 0,
-        "n_colleges_offering": 0,
-        "name": "Travel Services and Tourism",
-        "soc_count": 1,
-        "top6": "300900"
       }
     ]
   },
   "landscape": {
     "aggregate": {
-      "candidate_employers": 604,
+      "candidate_employers": 303,
       "combined_awards": 36,
-      "combined_supply_total": 26.99,
-      "gap": 9613,
+      "combined_supply_total": 7.83,
+      "gap": 1382,
       "n_colleges": 3,
-      "n_occupations": 6,
-      "occupations_taught": 6,
-      "regional_demand_total": 9640
+      "n_occupations": 1,
+      "occupations_taught": 1,
+      "regional_demand_total": 1390
     },
     "award_years": [
       "2020-2021",
@@ -1197,126 +701,6 @@
             "soc_code": "11-9051",
             "supply": 4.33,
             "title": "Food Service Managers"
-          },
-          {
-            "annual_openings": 170,
-            "annual_wage": 82930,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 170,
-            "growth_rate": 0.060602267,
-            "programs": [],
-            "soc_code": "11-9081",
-            "supply": 0.0,
-            "title": "Lodging Managers"
-          },
-          {
-            "annual_openings": 1080,
-            "annual_wage": 68910,
-            "awards_recent": 6,
-            "course_count": 2,
-            "enrolled": true,
-            "feeding_awards": 6,
-            "gap": 1076,
-            "growth_rate": 0.06240367,
-            "programs": [
-              {
-                "awards": [
-                  6,
-                  3,
-                  4,
-                  7,
-                  6
-                ],
-                "awards_recent": 6,
-                "enrollment": [
-                  90,
-                  86,
-                  79,
-                  108,
-                  155,
-                  160,
-                  155,
-                  169,
-                  154
-                ],
-                "name": "Nutrition, Foods, and Culinary Arts",
-                "top6": "130600",
-                "wages": []
-              }
-            ],
-            "soc_code": "35-1011",
-            "supply": 4.33,
-            "title": "Chefs and Head Cooks"
-          },
-          {
-            "annual_openings": 4120,
-            "annual_wage": 50810,
-            "awards_recent": 6,
-            "course_count": 2,
-            "enrolled": true,
-            "feeding_awards": 6,
-            "gap": 4116,
-            "growth_rate": 0.071903588,
-            "programs": [
-              {
-                "awards": [
-                  6,
-                  3,
-                  4,
-                  7,
-                  6
-                ],
-                "awards_recent": 6,
-                "enrollment": [
-                  90,
-                  86,
-                  79,
-                  108,
-                  155,
-                  160,
-                  155,
-                  169,
-                  154
-                ],
-                "name": "Nutrition, Foods, and Culinary Arts",
-                "top6": "130600",
-                "wages": []
-              }
-            ],
-            "soc_code": "35-1012",
-            "supply": 4.33,
-            "title": "First-Line Supervisors of Food Preparation and Serving Workers"
-          },
-          {
-            "annual_openings": 2590,
-            "annual_wage": 53240,
-            "awards_recent": 0,
-            "course_count": 3,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 2590,
-            "growth_rate": -0.048492521,
-            "programs": [],
-            "soc_code": "41-1011",
-            "supply": 0.0,
-            "title": "First-Line Supervisors of Retail Sales Workers"
-          },
-          {
-            "annual_openings": 290,
-            "annual_wage": 52120,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 290,
-            "growth_rate": 0.132469126,
-            "programs": [],
-            "soc_code": "41-3041",
-            "supply": 0.0,
-            "title": "Travel Agents"
           }
         ],
         "name": "College of San Mateo"
@@ -1433,369 +817,6 @@
             "soc_code": "11-9051",
             "supply": 2.5,
             "title": "Food Service Managers"
-          },
-          {
-            "annual_openings": 170,
-            "annual_wage": 82930,
-            "awards_recent": 29,
-            "course_count": 6,
-            "enrolled": true,
-            "feeding_awards": 29,
-            "gap": 168,
-            "growth_rate": 0.060602267,
-            "programs": [
-              {
-                "awards": [
-                  3,
-                  0,
-                  0,
-                  1,
-                  2
-                ],
-                "awards_recent": 2,
-                "enrollment": [
-                  411,
-                  657,
-                  460,
-                  98,
-                  432,
-                  658,
-                  159,
-                  397,
-                  132
-                ],
-                "name": "Hospitality",
-                "top6": "130700",
-                "wages": []
-              },
-              {
-                "awards": [
-                  0,
-                  3,
-                  0,
-                  62,
-                  27
-                ],
-                "awards_recent": 27,
-                "enrollment": [
-                  190,
-                  55,
-                  262,
-                  28,
-                  290,
-                  9,
-                  127,
-                  59,
-                  118
-                ],
-                "name": "Restaurant and Food Services and Management",
-                "top6": "130710",
-                "wages": []
-              },
-              {
-                "awards": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  null,
-                  5,
-                  null,
-                  null,
-                  12,
-                  null,
-                  null,
-                  8,
-                  null
-                ],
-                "name": "Lodging Management",
-                "top6": "130720",
-                "wages": []
-              }
-            ],
-            "soc_code": "11-9081",
-            "supply": 2.5,
-            "title": "Lodging Managers"
-          },
-          {
-            "annual_openings": 1080,
-            "annual_wage": 68910,
-            "awards_recent": 29,
-            "course_count": 6,
-            "enrolled": true,
-            "feeding_awards": 29,
-            "gap": 1078,
-            "growth_rate": 0.06240367,
-            "programs": [
-              {
-                "awards": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  84,
-                  143,
-                  91,
-                  130,
-                  90,
-                  101,
-                  93,
-                  105,
-                  95
-                ],
-                "name": "Nutrition, Foods, and Culinary Arts",
-                "top6": "130600",
-                "wages": []
-              },
-              {
-                "awards": [
-                  3,
-                  0,
-                  0,
-                  1,
-                  2
-                ],
-                "awards_recent": 2,
-                "enrollment": [
-                  411,
-                  657,
-                  460,
-                  98,
-                  432,
-                  658,
-                  159,
-                  397,
-                  132
-                ],
-                "name": "Hospitality",
-                "top6": "130700",
-                "wages": []
-              },
-              {
-                "awards": [
-                  0,
-                  3,
-                  0,
-                  62,
-                  27
-                ],
-                "awards_recent": 27,
-                "enrollment": [
-                  190,
-                  55,
-                  262,
-                  28,
-                  290,
-                  9,
-                  127,
-                  59,
-                  118
-                ],
-                "name": "Restaurant and Food Services and Management",
-                "top6": "130710",
-                "wages": []
-              }
-            ],
-            "soc_code": "35-1011",
-            "supply": 2.5,
-            "title": "Chefs and Head Cooks"
-          },
-          {
-            "annual_openings": 4120,
-            "annual_wage": 50810,
-            "awards_recent": 29,
-            "course_count": 6,
-            "enrolled": true,
-            "feeding_awards": 29,
-            "gap": 4118,
-            "growth_rate": 0.071903588,
-            "programs": [
-              {
-                "awards": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  84,
-                  143,
-                  91,
-                  130,
-                  90,
-                  101,
-                  93,
-                  105,
-                  95
-                ],
-                "name": "Nutrition, Foods, and Culinary Arts",
-                "top6": "130600",
-                "wages": []
-              },
-              {
-                "awards": [
-                  3,
-                  0,
-                  0,
-                  1,
-                  2
-                ],
-                "awards_recent": 2,
-                "enrollment": [
-                  411,
-                  657,
-                  460,
-                  98,
-                  432,
-                  658,
-                  159,
-                  397,
-                  132
-                ],
-                "name": "Hospitality",
-                "top6": "130700",
-                "wages": []
-              },
-              {
-                "awards": [
-                  0,
-                  3,
-                  0,
-                  62,
-                  27
-                ],
-                "awards_recent": 27,
-                "enrollment": [
-                  190,
-                  55,
-                  262,
-                  28,
-                  290,
-                  9,
-                  127,
-                  59,
-                  118
-                ],
-                "name": "Restaurant and Food Services and Management",
-                "top6": "130710",
-                "wages": []
-              }
-            ],
-            "soc_code": "35-1012",
-            "supply": 2.5,
-            "title": "First-Line Supervisors of Food Preparation and Serving Workers"
-          },
-          {
-            "annual_openings": 2590,
-            "annual_wage": 53240,
-            "awards_recent": 0,
-            "course_count": 2,
-            "enrolled": true,
-            "feeding_awards": 0,
-            "gap": 2590,
-            "growth_rate": -0.048492521,
-            "programs": [
-              {
-                "awards": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  15,
-                  null,
-                  null,
-                  30,
-                  null,
-                  null,
-                  27,
-                  null,
-                  36
-                ],
-                "name": "Sales and Salesmanship",
-                "top6": "050940",
-                "wages": []
-              }
-            ],
-            "soc_code": "41-1011",
-            "supply": 0.0,
-            "title": "First-Line Supervisors of Retail Sales Workers"
-          },
-          {
-            "annual_openings": 290,
-            "annual_wage": 52120,
-            "awards_recent": 2,
-            "course_count": 3,
-            "enrolled": true,
-            "feeding_awards": 2,
-            "gap": 289,
-            "growth_rate": 0.132469126,
-            "programs": [
-              {
-                "awards": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ],
-                "awards_recent": 0,
-                "enrollment": [
-                  15,
-                  null,
-                  null,
-                  30,
-                  null,
-                  null,
-                  27,
-                  null,
-                  36
-                ],
-                "name": "Sales and Salesmanship",
-                "top6": "050940",
-                "wages": []
-              },
-              {
-                "awards": [
-                  3,
-                  0,
-                  0,
-                  1,
-                  2
-                ],
-                "awards_recent": 2,
-                "enrollment": [
-                  411,
-                  657,
-                  460,
-                  98,
-                  432,
-                  658,
-                  159,
-                  397,
-                  132
-                ],
-                "name": "Hospitality",
-                "top6": "130700",
-                "wages": []
-              }
-            ],
-            "soc_code": "41-3041",
-            "supply": 1.0,
-            "title": "Travel Agents"
           }
         ],
         "name": "Skyline College"
@@ -1840,131 +861,12 @@
             "soc_code": "11-9051",
             "supply": 1.0,
             "title": "Food Service Managers"
-          },
-          {
-            "annual_openings": 170,
-            "annual_wage": 82930,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 170,
-            "growth_rate": 0.060602267,
-            "programs": [],
-            "soc_code": "11-9081",
-            "supply": 0.0,
-            "title": "Lodging Managers"
-          },
-          {
-            "annual_openings": 1080,
-            "annual_wage": 68910,
-            "awards_recent": 1,
-            "course_count": 1,
-            "enrolled": true,
-            "feeding_awards": 1,
-            "gap": 1079,
-            "growth_rate": 0.06240367,
-            "programs": [
-              {
-                "awards": [
-                  0,
-                  1,
-                  1,
-                  2,
-                  1
-                ],
-                "awards_recent": 1,
-                "enrollment": [
-                  62,
-                  40,
-                  38,
-                  40,
-                  33,
-                  41,
-                  43,
-                  41,
-                  44
-                ],
-                "name": "Nutrition, Foods, and Culinary Arts",
-                "top6": "130600",
-                "wages": []
-              }
-            ],
-            "soc_code": "35-1011",
-            "supply": 1.0,
-            "title": "Chefs and Head Cooks"
-          },
-          {
-            "annual_openings": 4120,
-            "annual_wage": 50810,
-            "awards_recent": 1,
-            "course_count": 1,
-            "enrolled": true,
-            "feeding_awards": 1,
-            "gap": 4119,
-            "growth_rate": 0.071903588,
-            "programs": [
-              {
-                "awards": [
-                  0,
-                  1,
-                  1,
-                  2,
-                  1
-                ],
-                "awards_recent": 1,
-                "enrollment": [
-                  62,
-                  40,
-                  38,
-                  40,
-                  33,
-                  41,
-                  43,
-                  41,
-                  44
-                ],
-                "name": "Nutrition, Foods, and Culinary Arts",
-                "top6": "130600",
-                "wages": []
-              }
-            ],
-            "soc_code": "35-1012",
-            "supply": 1.0,
-            "title": "First-Line Supervisors of Food Preparation and Serving Workers"
-          },
-          {
-            "annual_openings": 2590,
-            "annual_wage": 53240,
-            "awards_recent": 0,
-            "course_count": 1,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 2590,
-            "growth_rate": -0.048492521,
-            "programs": [],
-            "soc_code": "41-1011",
-            "supply": 0.0,
-            "title": "First-Line Supervisors of Retail Sales Workers"
-          },
-          {
-            "annual_openings": 290,
-            "annual_wage": 52120,
-            "awards_recent": 0,
-            "course_count": 0,
-            "enrolled": false,
-            "feeding_awards": 0,
-            "gap": 290,
-            "growth_rate": 0.132469126,
-            "programs": [],
-            "soc_code": "41-3041",
-            "supply": 0.0,
-            "title": "Travel Agents"
           }
         ],
         "name": "Ca\u00f1ada College"
       }
     ],
+    "coverage_awards_only": true,
     "enrollment_terms": [
       "Fall 2021",
       "Spring 2022",
@@ -1976,7 +878,7 @@
       "Spring 2025",
       "Fall 2025"
     ],
-    "executive_summary": "This view examines the regional demand landscape across the 6 retail, hospitality & tourism occupations the San Mateo County CCD \u2014 Retail, Hospitality & Tourism targets in the Bay Area regional labor market. Regional demand for these occupations totals 9,640 openings per year.",
+    "executive_summary": "This view examines the regional demand landscape across the 1 retail, hospitality & tourism occupations the San Mateo County CCD \u2014 Retail, Hospitality & Tourism targets in the Bay Area regional labor market. Regional demand for these occupations totals 1,390 openings per year.",
     "is_sector_priority": false,
     "region": "Bay",
     "region_display": "Bay Area",

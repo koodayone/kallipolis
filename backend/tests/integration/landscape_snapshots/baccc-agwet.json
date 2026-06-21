@@ -1,0 +1,2936 @@
+{
+  "/employers": {
+    "employers": [
+      {
+        "description": "Loral Landscaping is a family-owned grounds-services company founded in 1976 and based in San Mateo, serving commercial properties, HOAs, business parks, municipal projects, and high-end residential estates across San Mateo County and the broader Bay Area. Core services include landscape maintenance, tree trimming and removal, irrigation system installation and repair, hardscaping, and backflow prevention testing. The company employs field crews with skills in arboriculture, irrigation, and landscape construction.",
+        "display_name": null,
+        "lat": 37.5569304,
+        "lng": -122.3003286,
+        "naics4": "5617",
+        "naics_title": "Services to Buildings and Dwellings",
+        "name": "Loral Landscaping",
+        "relevance": 3.84,
+        "sector": "Administrative Services",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "37-1012": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+        },
+        "socs": [
+          "37-1012"
+        ],
+        "website": "https://lorallandscaping.com/"
+      },
+      {
+        "description": "ServiceMaster Clean is a franchise-based commercial cleaning company with 1,200+ locations nationwide, serving over 75,000 clients across healthcare, office, industrial, education, hospitality, and government facilities. Services include janitorial programs, carpet and hard-surface floor care, disinfection, window cleaning, and air duct cleaning, with customized schedules tailored to each facility. Locally operated franchises staff their teams entirely from the surrounding community, employing cleaning technicians and operations staff in roles that do not require prior credentials.",
+        "display_name": null,
+        "lat": 37.5155188,
+        "lng": -122.2663339,
+        "naics4": "5617",
+        "naics_title": "Services to Buildings and Dwellings",
+        "name": "Servicemaster Clean",
+        "relevance": 3.84,
+        "sector": "Administrative Services",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "37-1012": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+        },
+        "socs": [
+          "37-1012"
+        ],
+        "website": "https://www.servicemasterclean.com/"
+      },
+      {
+        "description": "Trinity Building Services is a family-owned facility services company headquartered in San Carlos, California, operating since 1987 across the San Francisco Bay Area and multiple U.S. states. The company provides janitorial services (daily cleaning, floor and carpet care, restroom supply management) alongside preventative, predictive, and emergency building maintenance for corporate offices, schools, healthcare facilities, government installations, and industrial/warehouse properties. Field and supervisory roles include bilingual cleaning technicians, maintenance technicians handling corrective and facility-upgrade work, and account supervisors managing building portfolios across more than 300 managed sites.",
+        "display_name": null,
+        "lat": 37.6350168,
+        "lng": -122.4253921,
+        "naics4": "5617",
+        "naics_title": "Services to Buildings and Dwellings",
+        "name": "Trinity Building Maintenance",
+        "relevance": 3.84,
+        "sector": "Administrative Services",
+        "size_class": "250-499 employees",
+        "size_rank": 7,
+        "soc_count": 1,
+        "soc_titles": {
+          "37-1012": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+        },
+        "socs": [
+          "37-1012"
+        ],
+        "website": "https://www.trinityservices.com/"
+      },
+      {
+        "description": "Almaden Valley Athletic Club (AVAC) is a family fitness facility in San Jose, California, offering comprehensive health and wellness programs for all ages. Its five-acre campus features indoor/outdoor fitness, pools, tennis, and a swim school, serving the Bay Area community with classes, training, and childcare.",
+        "display_name": null,
+        "lat": 37.240508994663,
+        "lng": -121.904018183506,
+        "naics4": "7139",
+        "naics_title": "Other Amusement and Recreation Industries",
+        "name": "Almaden Valley Athletic Club",
+        "relevance": 0.77,
+        "sector": "Other Services",
+        "size_class": null,
+        "size_rank": 0,
+        "soc_count": 1,
+        "soc_titles": {
+          "37-1012": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+        },
+        "socs": [
+          "37-1012"
+        ],
+        "website": "https://avac.us/"
+      },
+      {
+        "description": "Bay Club operates over 25 membership-based sports and active lifestyle clubs across California, Oregon, and Washington, serving over 135,000 individuals and families. It offers diverse amenities including fitness, tennis, golf, pickleball, aquatics, dining, and spa services, fostering community and well-being.",
+        "display_name": null,
+        "lat": 37.255025301652,
+        "lng": -121.966558328791,
+        "naics4": "7139",
+        "naics_title": "Other Amusement and Recreation Industries",
+        "name": "Bay Club",
+        "relevance": 0.77,
+        "sector": "Arts & Entertainment",
+        "size_class": null,
+        "size_rank": 0,
+        "soc_count": 1,
+        "soc_titles": {
+          "37-1012": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+        },
+        "socs": [
+          "37-1012"
+        ],
+        "website": "https://www.bayclubs.com/"
+      },
+      {
+        "description": "Cinnabar Hills Golf Club is a public golf course in San Jose, California, offering 27 holes designed by John Harbottle III. It provides championship-caliber golf with scenic views, dining at The Grille, and hosts weddings and special events for up to 200 people. The club also features the Lee Brandenburg Historical Golf Museum.",
+        "display_name": null,
+        "lat": 37.183189626115,
+        "lng": -121.762615578253,
+        "naics4": "7139",
+        "naics_title": "Other Amusement and Recreation Industries",
+        "name": "Cinnabar Hills Golf Club",
+        "relevance": 0.77,
+        "sector": "Arts & Entertainment",
+        "size_class": null,
+        "size_rank": 0,
+        "soc_count": 1,
+        "soc_titles": {
+          "37-1012": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+        },
+        "socs": [
+          "37-1012"
+        ],
+        "website": "https://www.cinnabarhills.com/"
+      },
+      {
+        "description": "Equinox is a luxury fitness club offering unlimited signature classes, personal training, Pilates, and spa services. It provides exclusive amenities and award-winning spaces for high-performance fitness experiences, also extending services through the Equinox+ app for on-demand classes.",
+        "display_name": null,
+        "lat": 37.422358377413,
+        "lng": -122.137467096511,
+        "naics4": "7139",
+        "naics_title": "Other Amusement and Recreation Industries",
+        "name": "Equinox Palo Alto",
+        "relevance": 0.77,
+        "sector": "Arts & Entertainment",
+        "size_class": null,
+        "size_rank": 0,
+        "soc_count": 1,
+        "soc_titles": {
+          "37-1012": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+        },
+        "socs": [
+          "37-1012"
+        ],
+        "website": "https://www.equinox.com/"
+      },
+      {
+        "description": "Half Moon Bay Golf Links is a coastal golf resort in Half Moon Bay, CA, operating two 18-hole championship courses \u2014 the Arnold Palmer-designed Old Course and the Arthur Hills-designed Ocean Course \u2014 both ranked among the top public courses in Northern California. The property includes Mullins Steakhouse, a full-service golf shop, and event facilities for corporate retreats, tournaments, and weddings. Operations employ golf course maintenance, hospitality, food and beverage, and events coordination staff across the San Mateo County coast location.",
+        "display_name": null,
+        "lat": 37.4332584,
+        "lng": -122.4396679,
+        "naics4": "7139",
+        "naics_title": "Other Amusement and Recreation Industries",
+        "name": "Half Moon Bay Golf Links",
+        "relevance": 0.77,
+        "sector": "Arts & Entertainment",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "37-1012": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+        },
+        "socs": [
+          "37-1012"
+        ],
+        "website": "https://halfmoonbaygolf.com/"
+      },
+      {
+        "description": "Menlo Circus Club is a private social and athletic club.",
+        "display_name": null,
+        "lat": 37.4485477,
+        "lng": -122.1996132,
+        "naics4": "7139",
+        "naics_title": "Other Amusement and Recreation Industries",
+        "name": "Menlo Circus Club",
+        "relevance": 0.77,
+        "sector": "Arts & Entertainment",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "37-1012": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+        },
+        "socs": [
+          "37-1012"
+        ],
+        "website": "https://www.menlocircusclub.com/"
+      },
+      {
+        "description": "Menlo Country Club is a private country club offering golf and other amenities.",
+        "display_name": null,
+        "lat": 37.4292088,
+        "lng": -122.2507219,
+        "naics4": "7139",
+        "naics_title": "Other Amusement and Recreation Industries",
+        "name": "Menlo Country Club",
+        "relevance": 0.77,
+        "sector": "Arts & Entertainment",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "37-1012": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+        },
+        "socs": [
+          "37-1012"
+        ],
+        "website": "https://www.menlocc.com/"
+      },
+      {
+        "description": "Menlo Park Recreation Center is a public facility offering recreational activities and programs.",
+        "display_name": null,
+        "lat": 37.4535552,
+        "lng": -122.179944,
+        "naics4": "7139",
+        "naics_title": "Other Amusement and Recreation Industries",
+        "name": "Menlo Park Recreation Center",
+        "relevance": 0.77,
+        "sector": "Arts & Entertainment",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "37-1012": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+        },
+        "socs": [
+          "37-1012"
+        ],
+        "website": "https://www.menlopark.gov/Government/Departments/Library-and-Community-Services/Recreation-and-sports"
+      },
+      {
+        "description": "The Peninsula Jewish Community Center (PJCC), based in Foster City, CA, operates a full-service fitness, aquatics, and wellness facility alongside preschool, afterschool, and summer camp programs for youth. It also runs adult education, Jewish cultural programming, senior services, and an art gallery, serving families, adults, and seniors across the San Mateo Peninsula. Operational roles include fitness instruction, aquatics, early childhood education, program coordination, and facility management.",
+        "display_name": null,
+        "lat": 37.5696535,
+        "lng": -122.2757343,
+        "naics4": "7139",
+        "naics_title": "Other Amusement and Recreation Industries",
+        "name": "Peninsula Jewish Community Center",
+        "relevance": 0.77,
+        "sector": "Arts & Entertainment",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "37-1012": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+        },
+        "socs": [
+          "37-1012"
+        ],
+        "website": "https://pjcc.org/"
+      },
+      {
+        "description": "Prime Time Athletic Club is a full-service, family-oriented athletic facility in Burlingame, CA, operating courts for pickleball, racquetball, handball, tennis, and squash alongside two heated pools, a gymnasium, outdoor basketball, and a full cardio and free-weights floor. The club offers group exercise classes, childcare services, and individual memberships, and has been recognized in Club Industry's Top 100 Clubs. On-site staff roles span fitness instruction, aquatics, court programming, childcare, and member services.",
+        "display_name": null,
+        "lat": 37.5865829,
+        "lng": -122.3384383,
+        "naics4": "7139",
+        "naics_title": "Other Amusement and Recreation Industries",
+        "name": "Prime Time Athletic Club",
+        "relevance": 0.77,
+        "sector": "Arts & Entertainment",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 1,
+        "soc_titles": {
+          "37-1012": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+        },
+        "socs": [
+          "37-1012"
+        ],
+        "website": "https://primetimeathleticclub.com/"
+      },
+      {
+        "description": "Watercourse Way Bath House Spa offers private hot tub rooms, various massages including Swedish and deep tissue, and spa treatments like mud wraps and salt glows. They also provide organic facials and waxing services, serving individuals seeking relaxation and therapeutic experiences in Palo Alto, CA.",
+        "display_name": null,
+        "lat": 37.441349493855,
+        "lng": -122.158075565154,
+        "naics4": "7139",
+        "naics_title": "Other Amusement and Recreation Industries",
+        "name": "Watercourse Way Bath House Spa",
+        "relevance": 0.77,
+        "sector": "Other Services",
+        "size_class": null,
+        "size_rank": 0,
+        "soc_count": 1,
+        "soc_titles": {
+          "37-1012": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+        },
+        "socs": [
+          "37-1012"
+        ],
+        "website": "https://watercourseway.com/"
+      },
+      {
+        "description": "A YMCA camp offering outdoor programs.",
+        "display_name": null,
+        "lat": 37.2758758,
+        "lng": -122.2981144,
+        "naics4": "7212",
+        "naics_title": "RV (Recreational Vehicle) Parks and Recreational Camps",
+        "name": "YMCA Camp Loma Mar",
+        "relevance": 0.48,
+        "sector": "Hospitality & Food Service",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 1,
+        "soc_titles": {
+          "37-1012": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+        },
+        "socs": [
+          "37-1012"
+        ],
+        "website": "https://www.ymcaeastbay.org/youth-development/camp-loma-mar"
+      },
+      {
+        "description": "Consular Corps College is an educational institution.",
+        "display_name": null,
+        "lat": 37.5996993,
+        "lng": -122.3909759,
+        "naics4": "6113",
+        "naics_title": "Colleges, Universities, and Professional Schools",
+        "name": "Consular Corps College",
+        "relevance": 0.16,
+        "sector": "Education",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "29-2056": "Veterinary Technologists and Technicians",
+          "37-1012": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+        },
+        "socs": [
+          "29-2056",
+          "37-1012"
+        ],
+        "website": "https://www.consular-corps-college.org/"
+      },
+      {
+        "description": "Stanford Law School provides rigorous academics and immersive experiences, shaping law and policy through leading-edge research in areas like constitutional law, privacy rights, and AI's impact on law. It serves future and current students through JD, joint, and advanced degree programs, and engages with faculty, alumni, and the broader legal community.",
+        "display_name": null,
+        "lat": 37.422926402573,
+        "lng": -122.168648728327,
+        "naics4": "6113",
+        "naics_title": "Colleges, Universities, and Professional Schools",
+        "name": "Stanford Law School",
+        "relevance": 0.16,
+        "sector": "Education",
+        "size_class": null,
+        "size_rank": 0,
+        "soc_count": 2,
+        "soc_titles": {
+          "29-2056": "Veterinary Technologists and Technicians",
+          "37-1012": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+        },
+        "socs": [
+          "29-2056",
+          "37-1012"
+        ],
+        "website": "https://law.stanford.edu/"
+      },
+      {
+        "description": "Dairy Management Inc. (DMI) is the nonprofit organization that administers the U.S. dairy checkoff program, a federally authorized initiative funded by American dairy farmers and importers to build consumer trust and grow sales of dairy products. Operating under the U.S. Dairy umbrella alongside the National Dairy Council and the Innovation Center for U.S. Dairy, DMI funds research, nutrition science, marketing campaigns, and sustainability programs on behalf of the domestic dairy industry. The organization employs professionals in nutrition science, agricultural communications, marketing, and industry innovation rather than in farming or ranching operations.",
+        "display_name": null,
+        "lat": 37.6624937,
+        "lng": -122.3926385,
+        "naics4": "1121",
+        "naics_title": "Cattle Ranching and Farming",
+        "name": "Dairy Management",
+        "relevance": 0.13,
+        "sector": "Agriculture",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 2,
+        "soc_titles": {
+          "29-2056": "Veterinary Technologists and Technicians",
+          "37-1012": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+        },
+        "socs": [
+          "37-1012",
+          "29-2056"
+        ],
+        "website": "USDAIRY.COM"
+      },
+      {
+        "description": "Kawahara Nurseries is a wholesale provider of fresh and healthy plants, including annuals, perennials, succulents, vegetables, and herbs. They serve licensed landscapers, independent garden centers, and retailers throughout California and Northern Nevada, focusing on quality and sustainable growing practices.",
+        "display_name": null,
+        "lat": 37.159528038366,
+        "lng": -121.666839767525,
+        "naics4": "1114",
+        "naics_title": "Greenhouse, Nursery, and Floriculture Production",
+        "name": "Kawahara Nursery",
+        "relevance": 0.13,
+        "sector": "Wholesale",
+        "size_class": null,
+        "size_rank": 0,
+        "soc_count": 2,
+        "soc_titles": {
+          "29-2056": "Veterinary Technologists and Technicians",
+          "37-1012": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+        },
+        "socs": [
+          "37-1012",
+          "29-2056"
+        ],
+        "website": "https://www.kniplants.com/"
+      },
+      {
+        "description": "The Belmont Police Department serves the City of Belmont on the San Francisco Peninsula with approximately 50 full-time personnel, including 31 sworn officers organized into Patrol, Traffic, Investigations, K-9, Youth Services, SWAT, and Crisis Negotiation units. The department operates the C.A.R.E. (Crisis Assessment Response and Education) and T.R.A.C. (Tracking and Recovery of Adults and Children) programs, and employs dispatchers, records technicians, code enforcement officers, and community service officers alongside sworn staff.",
+        "display_name": null,
+        "lat": 37.5182829,
+        "lng": -122.2774823,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "Belmont Police",
+        "relevance": 0.12,
+        "sector": "Government",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "29-2056": "Veterinary Technologists and Technicians",
+          "37-1012": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+        },
+        "socs": [
+          "37-1012",
+          "29-2056"
+        ],
+        "website": "https://www.belmont.gov/departments/police"
+      },
+      {
+        "description": "The Central County Fire Department provides fire suppression and emergency response services.",
+        "display_name": null,
+        "lat": 37.5865829,
+        "lng": -122.3384383,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "Central County Fire Department",
+        "relevance": 0.12,
+        "sector": "Government",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 2,
+        "soc_titles": {
+          "29-2056": "Veterinary Technologists and Technicians",
+          "37-1012": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+        },
+        "socs": [
+          "37-1012",
+          "29-2056"
+        ],
+        "website": "https://www.ccfd.org/"
+      },
+      {
+        "description": "The Daly City Police Department is responsible for public safety and law enforcement in Daly City.",
+        "display_name": null,
+        "lat": 37.6911085,
+        "lng": -122.4739145,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "Daly City Police",
+        "relevance": 0.12,
+        "sector": "Government",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 2,
+        "soc_titles": {
+          "29-2056": "Veterinary Technologists and Technicians",
+          "37-1012": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+        },
+        "socs": [
+          "37-1012",
+          "29-2056"
+        ],
+        "website": "https://www.dalycity.org/1231/Police"
+      },
+      {
+        "description": "Daly City's Department of Water and Wastewater Resources operates the wastewater treatment and disposal system for the North San Mateo County Sanitation District, managing collection infrastructure, treatment plant operations, and environmental compliance at its facility on Lake Merced Boulevard. The department also administers drinking water supply services and recycles treatment plant byproducts as part of its environmental stewardship mission. Operations employ water and wastewater treatment plant operators, environmental compliance staff, and utility engineers serving the North San Mateo County service area.",
+        "display_name": null,
+        "lat": 37.7076798,
+        "lng": -122.4858219,
+        "naics4": "9241",
+        "naics_title": "Administration of Environmental Quality Programs",
+        "name": "Daly City Wastewater",
+        "relevance": 0.12,
+        "sector": "Government",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "29-2056": "Veterinary Technologists and Technicians",
+          "37-1012": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+        },
+        "socs": [
+          "37-1012",
+          "29-2056"
+        ],
+        "website": "https://www.dalycity.org/1036/Wastewater"
+      },
+      {
+        "description": "The East Palo Alto Police Department is dedicated to serving and protecting the community of East Palo Alto.",
+        "display_name": null,
+        "lat": 37.4746236,
+        "lng": -122.1341991,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "East Palo Alto Police",
+        "relevance": 0.12,
+        "sector": "Government",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "29-2056": "Veterinary Technologists and Technicians",
+          "37-1012": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+        },
+        "socs": [
+          "37-1012",
+          "29-2056"
+        ],
+        "website": "https://www.ci.east-palo-alto.ca.us/police"
+      },
+      {
+        "description": "The Foster City Fire Department provides emergency services and fire prevention to Foster City.",
+        "display_name": null,
+        "lat": 37.5511544,
+        "lng": -122.281399,
+        "naics4": "9221",
+        "naics_title": "Justice, Public Order, and Safety Activities",
+        "name": "Foster City Fire Department",
+        "relevance": 0.12,
+        "sector": "Government",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 2,
+        "soc_titles": {
+          "29-2056": "Veterinary Technologists and Technicians",
+          "37-1012": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+        },
+        "socs": [
+          "37-1012",
+          "29-2056"
+        ],
+        "website": "https://www.fostercity.org/fire"
+      }
+    ],
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "Ag, Water & Environmental Technologies",
+    "shed_counties": [
+      "San Mateo",
+      "Santa Clara"
+    ],
+    "shown": 25,
+    "total": 282
+  },
+  "/programs": {
+    "coverage_awards_only": true,
+    "latest_award_year": "2024-2025",
+    "matrix": {
+      "cells": [
+        {
+          "awards": 0,
+          "college": "Berkeley City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010210"
+        },
+        {
+          "awards": 0,
+          "college": "Cabrillo College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010210"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010210"
+        },
+        {
+          "awards": 0,
+          "college": "Chabot College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010210"
+        },
+        {
+          "awards": 0,
+          "college": "City College of San Francisco",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010210"
+        },
+        {
+          "awards": 0,
+          "college": "College of Alameda",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010210"
+        },
+        {
+          "awards": 0,
+          "college": "College of Marin",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010210"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010210"
+        },
+        {
+          "awards": 0,
+          "college": "Contra Costa College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010210"
+        },
+        {
+          "awards": 0,
+          "college": "De Anza College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010210"
+        },
+        {
+          "awards": 0,
+          "college": "Diablo Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010210"
+        },
+        {
+          "awards": 0,
+          "college": "Evergreen Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010210"
+        },
+        {
+          "awards": 30,
+          "college": "Foothill College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "010210"
+        },
+        {
+          "awards": 0,
+          "college": "Gavilan College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010210"
+        },
+        {
+          "awards": 0,
+          "college": "Laney College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010210"
+        },
+        {
+          "awards": 0,
+          "college": "Las Positas College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010210"
+        },
+        {
+          "awards": 0,
+          "college": "Los Medanos College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010210"
+        },
+        {
+          "awards": 0,
+          "college": "Merritt College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010210"
+        },
+        {
+          "awards": 0,
+          "college": "Mission College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010210"
+        },
+        {
+          "awards": 0,
+          "college": "Napa Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010210"
+        },
+        {
+          "awards": 0,
+          "college": "Ohlone College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010210"
+        },
+        {
+          "awards": 0,
+          "college": "San Jose City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010210"
+        },
+        {
+          "awards": 25,
+          "college": "Santa Rosa Junior College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "010210"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010210"
+        },
+        {
+          "awards": 0,
+          "college": "Solano Community College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010210"
+        },
+        {
+          "awards": 0,
+          "college": "West Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010210"
+        },
+        {
+          "awards": 0,
+          "college": "Berkeley City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010900"
+        },
+        {
+          "awards": 11,
+          "college": "Cabrillo College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "010900"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010900"
+        },
+        {
+          "awards": 0,
+          "college": "Chabot College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010900"
+        },
+        {
+          "awards": 4,
+          "college": "City College of San Francisco",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "010900"
+        },
+        {
+          "awards": 0,
+          "college": "College of Alameda",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010900"
+        },
+        {
+          "awards": 0,
+          "college": "College of Marin",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010900"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010900"
+        },
+        {
+          "awards": 0,
+          "college": "Contra Costa College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010900"
+        },
+        {
+          "awards": 0,
+          "college": "De Anza College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010900"
+        },
+        {
+          "awards": 0,
+          "college": "Diablo Valley College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "010900"
+        },
+        {
+          "awards": 0,
+          "college": "Evergreen Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010900"
+        },
+        {
+          "awards": 14,
+          "college": "Foothill College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "010900"
+        },
+        {
+          "awards": 0,
+          "college": "Gavilan College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010900"
+        },
+        {
+          "awards": 0,
+          "college": "Laney College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010900"
+        },
+        {
+          "awards": 11,
+          "college": "Las Positas College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "010900"
+        },
+        {
+          "awards": 0,
+          "college": "Los Medanos College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010900"
+        },
+        {
+          "awards": 16,
+          "college": "Merritt College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "010900"
+        },
+        {
+          "awards": 0,
+          "college": "Mission College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010900"
+        },
+        {
+          "awards": 0,
+          "college": "Napa Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010900"
+        },
+        {
+          "awards": 0,
+          "college": "Ohlone College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010900"
+        },
+        {
+          "awards": 0,
+          "college": "San Jose City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010900"
+        },
+        {
+          "awards": 0,
+          "college": "Santa Rosa Junior College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "010900"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010900"
+        },
+        {
+          "awards": 2,
+          "college": "Solano Community College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "010900"
+        },
+        {
+          "awards": 0,
+          "college": "West Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010900"
+        },
+        {
+          "awards": 0,
+          "college": "Berkeley City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010910"
+        },
+        {
+          "awards": 6,
+          "college": "Cabrillo College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010910"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010910"
+        },
+        {
+          "awards": 0,
+          "college": "Chabot College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010910"
+        },
+        {
+          "awards": 6,
+          "college": "City College of San Francisco",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "010910"
+        },
+        {
+          "awards": 0,
+          "college": "College of Alameda",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010910"
+        },
+        {
+          "awards": 0,
+          "college": "College of Marin",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010910"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010910"
+        },
+        {
+          "awards": 0,
+          "college": "Contra Costa College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010910"
+        },
+        {
+          "awards": 0,
+          "college": "De Anza College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010910"
+        },
+        {
+          "awards": 0,
+          "college": "Diablo Valley College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "010910"
+        },
+        {
+          "awards": 0,
+          "college": "Evergreen Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010910"
+        },
+        {
+          "awards": 0,
+          "college": "Foothill College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010910"
+        },
+        {
+          "awards": 0,
+          "college": "Gavilan College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010910"
+        },
+        {
+          "awards": 0,
+          "college": "Laney College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010910"
+        },
+        {
+          "awards": 4,
+          "college": "Las Positas College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "010910"
+        },
+        {
+          "awards": 0,
+          "college": "Los Medanos College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010910"
+        },
+        {
+          "awards": 48,
+          "college": "Merritt College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "010910"
+        },
+        {
+          "awards": 0,
+          "college": "Mission College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010910"
+        },
+        {
+          "awards": 0,
+          "college": "Napa Valley College",
+          "enrolled": false,
+          "teaches": true,
+          "top6": "010910"
+        },
+        {
+          "awards": 0,
+          "college": "Ohlone College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010910"
+        },
+        {
+          "awards": 0,
+          "college": "San Jose City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010910"
+        },
+        {
+          "awards": 11,
+          "college": "Santa Rosa Junior College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "010910"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010910"
+        },
+        {
+          "awards": 0,
+          "college": "Solano Community College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010910"
+        },
+        {
+          "awards": 0,
+          "college": "West Valley College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "010910"
+        },
+        {
+          "awards": 0,
+          "college": "Berkeley City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010930"
+        },
+        {
+          "awards": 0,
+          "college": "Cabrillo College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010930"
+        },
+        {
+          "awards": 0,
+          "college": "Ca\u00f1ada College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010930"
+        },
+        {
+          "awards": 0,
+          "college": "Chabot College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010930"
+        },
+        {
+          "awards": 0,
+          "college": "City College of San Francisco",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010930"
+        },
+        {
+          "awards": 0,
+          "college": "College of Alameda",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010930"
+        },
+        {
+          "awards": 0,
+          "college": "College of Marin",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010930"
+        },
+        {
+          "awards": 0,
+          "college": "College of San Mateo",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010930"
+        },
+        {
+          "awards": 0,
+          "college": "Contra Costa College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010930"
+        },
+        {
+          "awards": 0,
+          "college": "De Anza College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010930"
+        },
+        {
+          "awards": 2,
+          "college": "Diablo Valley College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "010930"
+        },
+        {
+          "awards": 0,
+          "college": "Evergreen Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010930"
+        },
+        {
+          "awards": 0,
+          "college": "Foothill College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010930"
+        },
+        {
+          "awards": 0,
+          "college": "Gavilan College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010930"
+        },
+        {
+          "awards": 0,
+          "college": "Laney College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010930"
+        },
+        {
+          "awards": 0,
+          "college": "Las Positas College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010930"
+        },
+        {
+          "awards": 0,
+          "college": "Los Medanos College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010930"
+        },
+        {
+          "awards": 2,
+          "college": "Merritt College",
+          "enrolled": true,
+          "teaches": true,
+          "top6": "010930"
+        },
+        {
+          "awards": 0,
+          "college": "Mission College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010930"
+        },
+        {
+          "awards": 0,
+          "college": "Napa Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010930"
+        },
+        {
+          "awards": 0,
+          "college": "Ohlone College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010930"
+        },
+        {
+          "awards": 0,
+          "college": "San Jose City College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010930"
+        },
+        {
+          "awards": 1,
+          "college": "Santa Rosa Junior College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010930"
+        },
+        {
+          "awards": 0,
+          "college": "Skyline College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010930"
+        },
+        {
+          "awards": 0,
+          "college": "Solano Community College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010930"
+        },
+        {
+          "awards": 0,
+          "college": "West Valley College",
+          "enrolled": false,
+          "teaches": false,
+          "top6": "010930"
+        }
+      ],
+      "colleges": [
+        "Berkeley City College",
+        "Cabrillo College",
+        "Ca\u00f1ada College",
+        "Chabot College",
+        "City College of San Francisco",
+        "College of Alameda",
+        "College of Marin",
+        "College of San Mateo",
+        "Contra Costa College",
+        "De Anza College",
+        "Diablo Valley College",
+        "Evergreen Valley College",
+        "Foothill College",
+        "Gavilan College",
+        "Laney College",
+        "Las Positas College",
+        "Los Medanos College",
+        "Merritt College",
+        "Mission College",
+        "Napa Valley College",
+        "Ohlone College",
+        "San Jose City College",
+        "Santa Rosa Junior College",
+        "Skyline College",
+        "Solano Community College",
+        "West Valley College"
+      ]
+    },
+    "n_colleges": 26,
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "Ag, Water & Environmental Technologies",
+    "tops": [
+      {
+        "awards_total": 75,
+        "enrollment_total": 553,
+        "n_colleges_offering": 7,
+        "name": "Landscape Design and Maintenance",
+        "soc_count": 1,
+        "top6": "010910"
+      },
+      {
+        "awards_total": 58,
+        "enrollment_total": 1571,
+        "n_colleges_offering": 8,
+        "name": "Horticulture",
+        "soc_count": 1,
+        "top6": "010900"
+      },
+      {
+        "awards_total": 55,
+        "enrollment_total": 769,
+        "n_colleges_offering": 2,
+        "name": "Veterinary Technician (Licensed)",
+        "soc_count": 1,
+        "top6": "010210"
+      },
+      {
+        "awards_total": 5,
+        "enrollment_total": 60,
+        "n_colleges_offering": 2,
+        "name": "Nursery Technology",
+        "soc_count": 1,
+        "top6": "010930"
+      }
+    ]
+  },
+  "landscape": {
+    "aggregate": {
+      "candidate_employers": 309,
+      "combined_awards": 193,
+      "combined_supply_total": 206.49,
+      "gap": 604,
+      "n_colleges": 26,
+      "n_occupations": 2,
+      "occupations_taught": 2,
+      "regional_demand_total": 810
+    },
+    "award_years": [
+      "2020-2021",
+      "2021-2022",
+      "2022-2023",
+      "2023-2024",
+      "2024-2025"
+    ],
+    "colleges": [
+      {
+        "cells": [
+          {
+            "annual_openings": 310,
+            "annual_wage": 61280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 310,
+            "growth_rate": 0.127177952,
+            "programs": [],
+            "soc_code": "29-2056",
+            "supply": 0.0,
+            "title": "Veterinary Technologists and Technicians"
+          },
+          {
+            "annual_openings": 500,
+            "annual_wage": 63150,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 500,
+            "growth_rate": 0.030870507,
+            "programs": [],
+            "soc_code": "37-1012",
+            "supply": 0.0,
+            "title": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+          }
+        ],
+        "name": "Berkeley City College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 310,
+            "annual_wage": 61280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 310,
+            "growth_rate": 0.127177952,
+            "programs": [],
+            "soc_code": "29-2056",
+            "supply": 0.0,
+            "title": "Veterinary Technologists and Technicians"
+          },
+          {
+            "annual_openings": 500,
+            "annual_wage": 63150,
+            "awards_recent": 17,
+            "course_count": 24,
+            "enrolled": true,
+            "feeding_awards": 17,
+            "gap": 484,
+            "growth_rate": 0.030870507,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  8,
+                  12,
+                  4,
+                  11
+                ],
+                "awards_recent": 11,
+                "enrollment": [
+                  null,
+                  null,
+                  241,
+                  null,
+                  205,
+                  115,
+                  null,
+                  135,
+                  123,
+                  null,
+                  129,
+                  184,
+                  null,
+                  188,
+                  162
+                ],
+                "name": "Horticulture",
+                "top6": "010900",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  1,
+                  3,
+                  5,
+                  6
+                ],
+                "awards_recent": 6,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Landscape Design and Maintenance",
+                "top6": "010910",
+                "wages": []
+              }
+            ],
+            "soc_code": "37-1012",
+            "supply": 16.0,
+            "title": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+          }
+        ],
+        "name": "Cabrillo College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 310,
+            "annual_wage": 61280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 310,
+            "growth_rate": 0.127177952,
+            "programs": [],
+            "soc_code": "29-2056",
+            "supply": 0.0,
+            "title": "Veterinary Technologists and Technicians"
+          },
+          {
+            "annual_openings": 500,
+            "annual_wage": 63150,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 500,
+            "growth_rate": 0.030870507,
+            "programs": [],
+            "soc_code": "37-1012",
+            "supply": 0.0,
+            "title": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+          }
+        ],
+        "name": "Ca\u00f1ada College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 310,
+            "annual_wage": 61280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 310,
+            "growth_rate": 0.127177952,
+            "programs": [],
+            "soc_code": "29-2056",
+            "supply": 0.0,
+            "title": "Veterinary Technologists and Technicians"
+          },
+          {
+            "annual_openings": 500,
+            "annual_wage": 63150,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 500,
+            "growth_rate": 0.030870507,
+            "programs": [],
+            "soc_code": "37-1012",
+            "supply": 0.0,
+            "title": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+          }
+        ],
+        "name": "Chabot College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 310,
+            "annual_wage": 61280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 310,
+            "growth_rate": 0.127177952,
+            "programs": [],
+            "soc_code": "29-2056",
+            "supply": 0.0,
+            "title": "Veterinary Technologists and Technicians"
+          },
+          {
+            "annual_openings": 500,
+            "annual_wage": 63150,
+            "awards_recent": 10,
+            "course_count": 17,
+            "enrolled": true,
+            "feeding_awards": 10,
+            "gap": 489,
+            "growth_rate": 0.030870507,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  4,
+                  1,
+                  1,
+                  4
+                ],
+                "awards_recent": 4,
+                "enrollment": [
+                  null,
+                  null,
+                  147,
+                  null,
+                  128,
+                  144,
+                  null,
+                  145,
+                  150,
+                  null,
+                  177,
+                  183,
+                  null,
+                  117,
+                  173
+                ],
+                "name": "Horticulture",
+                "top6": "010900",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  11,
+                  3,
+                  6,
+                  6
+                ],
+                "awards_recent": 6,
+                "enrollment": [
+                  null,
+                  null,
+                  62,
+                  null,
+                  63,
+                  37,
+                  null,
+                  62,
+                  38,
+                  null,
+                  40,
+                  38,
+                  null,
+                  104,
+                  43
+                ],
+                "name": "Landscape Design and Maintenance",
+                "top6": "010910",
+                "wages": []
+              }
+            ],
+            "soc_code": "37-1012",
+            "supply": 10.83,
+            "title": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+          }
+        ],
+        "name": "City College of San Francisco"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 310,
+            "annual_wage": 61280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 310,
+            "growth_rate": 0.127177952,
+            "programs": [],
+            "soc_code": "29-2056",
+            "supply": 0.0,
+            "title": "Veterinary Technologists and Technicians"
+          },
+          {
+            "annual_openings": 500,
+            "annual_wage": 63150,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 500,
+            "growth_rate": 0.030870507,
+            "programs": [],
+            "soc_code": "37-1012",
+            "supply": 0.0,
+            "title": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+          }
+        ],
+        "name": "College of Alameda"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 310,
+            "annual_wage": 61280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 310,
+            "growth_rate": 0.127177952,
+            "programs": [],
+            "soc_code": "29-2056",
+            "supply": 0.0,
+            "title": "Veterinary Technologists and Technicians"
+          },
+          {
+            "annual_openings": 500,
+            "annual_wage": 63150,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 500,
+            "growth_rate": 0.030870507,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  2,
+                  1,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Landscape Design and Maintenance",
+                "top6": "010910",
+                "wages": []
+              }
+            ],
+            "soc_code": "37-1012",
+            "supply": 0.0,
+            "title": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+          }
+        ],
+        "name": "College of Marin"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 310,
+            "annual_wage": 61280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 310,
+            "growth_rate": 0.127177952,
+            "programs": [],
+            "soc_code": "29-2056",
+            "supply": 0.0,
+            "title": "Veterinary Technologists and Technicians"
+          },
+          {
+            "annual_openings": 500,
+            "annual_wage": 63150,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 500,
+            "growth_rate": 0.030870507,
+            "programs": [],
+            "soc_code": "37-1012",
+            "supply": 0.0,
+            "title": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+          }
+        ],
+        "name": "College of San Mateo"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 310,
+            "annual_wage": 61280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 310,
+            "growth_rate": 0.127177952,
+            "programs": [],
+            "soc_code": "29-2056",
+            "supply": 0.0,
+            "title": "Veterinary Technologists and Technicians"
+          },
+          {
+            "annual_openings": 500,
+            "annual_wage": 63150,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 500,
+            "growth_rate": 0.030870507,
+            "programs": [],
+            "soc_code": "37-1012",
+            "supply": 0.0,
+            "title": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+          }
+        ],
+        "name": "Contra Costa College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 310,
+            "annual_wage": 61280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 310,
+            "growth_rate": 0.127177952,
+            "programs": [],
+            "soc_code": "29-2056",
+            "supply": 0.0,
+            "title": "Veterinary Technologists and Technicians"
+          },
+          {
+            "annual_openings": 500,
+            "annual_wage": 63150,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 500,
+            "growth_rate": 0.030870507,
+            "programs": [],
+            "soc_code": "37-1012",
+            "supply": 0.0,
+            "title": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+          }
+        ],
+        "name": "De Anza College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 310,
+            "annual_wage": 61280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 310,
+            "growth_rate": 0.127177952,
+            "programs": [],
+            "soc_code": "29-2056",
+            "supply": 0.0,
+            "title": "Veterinary Technologists and Technicians"
+          },
+          {
+            "annual_openings": 500,
+            "annual_wage": 63150,
+            "awards_recent": 2,
+            "course_count": 19,
+            "enrolled": true,
+            "feeding_awards": 2,
+            "gap": 490,
+            "growth_rate": 0.030870507,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  1,
+                  7,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  163,
+                  null,
+                  123,
+                  93,
+                  null,
+                  144,
+                  148,
+                  null,
+                  129,
+                  114,
+                  null,
+                  182,
+                  116
+                ],
+                "name": "Horticulture",
+                "top6": "010900",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  19,
+                  null,
+                  null,
+                  null,
+                  14,
+                  null,
+                  null,
+                  34
+                ],
+                "name": "Landscape Design and Maintenance",
+                "top6": "010910",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  1,
+                  2,
+                  2,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  null,
+                  null,
+                  13,
+                  null,
+                  null,
+                  36,
+                  null,
+                  null,
+                  30,
+                  null,
+                  13,
+                  20,
+                  null,
+                  null,
+                  12
+                ],
+                "name": "Nursery Technology",
+                "top6": "010930",
+                "wages": []
+              }
+            ],
+            "soc_code": "37-1012",
+            "supply": 9.5,
+            "title": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+          }
+        ],
+        "name": "Diablo Valley College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 310,
+            "annual_wage": 61280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 310,
+            "growth_rate": 0.127177952,
+            "programs": [],
+            "soc_code": "29-2056",
+            "supply": 0.0,
+            "title": "Veterinary Technologists and Technicians"
+          },
+          {
+            "annual_openings": 500,
+            "annual_wage": 63150,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 500,
+            "growth_rate": 0.030870507,
+            "programs": [],
+            "soc_code": "37-1012",
+            "supply": 0.0,
+            "title": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+          }
+        ],
+        "name": "Evergreen Valley College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 310,
+            "annual_wage": 61280,
+            "awards_recent": 30,
+            "course_count": 5,
+            "enrolled": true,
+            "feeding_awards": 30,
+            "gap": 277,
+            "growth_rate": 0.127177952,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  30,
+                  36,
+                  28,
+                  30
+                ],
+                "awards_recent": 30,
+                "enrollment": [
+                  436,
+                  416,
+                  350,
+                  403,
+                  372,
+                  377,
+                  442,
+                  326,
+                  null,
+                  424,
+                  302,
+                  342,
+                  375,
+                  304,
+                  323
+                ],
+                "name": "Veterinary Technician (Licensed)",
+                "top6": "010210",
+                "wages": []
+              }
+            ],
+            "soc_code": "29-2056",
+            "supply": 32.67,
+            "title": "Veterinary Technologists and Technicians"
+          },
+          {
+            "annual_openings": 500,
+            "annual_wage": 63150,
+            "awards_recent": 14,
+            "course_count": 41,
+            "enrolled": true,
+            "feeding_awards": 14,
+            "gap": 490,
+            "growth_rate": 0.030870507,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  9,
+                  8,
+                  15,
+                  14
+                ],
+                "awards_recent": 14,
+                "enrollment": [
+                  236,
+                  229,
+                  125,
+                  161,
+                  196,
+                  256,
+                  322,
+                  338,
+                  null,
+                  281,
+                  168,
+                  155,
+                  226,
+                  206,
+                  205
+                ],
+                "name": "Horticulture",
+                "top6": "010900",
+                "wages": []
+              }
+            ],
+            "soc_code": "37-1012",
+            "supply": 10.0,
+            "title": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+          }
+        ],
+        "name": "Foothill College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 310,
+            "annual_wage": 61280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 310,
+            "growth_rate": 0.127177952,
+            "programs": [],
+            "soc_code": "29-2056",
+            "supply": 0.0,
+            "title": "Veterinary Technologists and Technicians"
+          },
+          {
+            "annual_openings": 500,
+            "annual_wage": 63150,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 500,
+            "growth_rate": 0.030870507,
+            "programs": [],
+            "soc_code": "37-1012",
+            "supply": 0.0,
+            "title": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+          }
+        ],
+        "name": "Gavilan College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 310,
+            "annual_wage": 61280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 310,
+            "growth_rate": 0.127177952,
+            "programs": [],
+            "soc_code": "29-2056",
+            "supply": 0.0,
+            "title": "Veterinary Technologists and Technicians"
+          },
+          {
+            "annual_openings": 500,
+            "annual_wage": 63150,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 500,
+            "growth_rate": 0.030870507,
+            "programs": [],
+            "soc_code": "37-1012",
+            "supply": 0.0,
+            "title": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+          }
+        ],
+        "name": "Laney College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 310,
+            "annual_wage": 61280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 310,
+            "growth_rate": 0.127177952,
+            "programs": [],
+            "soc_code": "29-2056",
+            "supply": 0.0,
+            "title": "Veterinary Technologists and Technicians"
+          },
+          {
+            "annual_openings": 500,
+            "annual_wage": 63150,
+            "awards_recent": 15,
+            "course_count": 6,
+            "enrolled": true,
+            "feeding_awards": 15,
+            "gap": 497,
+            "growth_rate": 0.030870507,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  2,
+                  1,
+                  0,
+                  11
+                ],
+                "awards_recent": 11,
+                "enrollment": [
+                  null,
+                  null,
+                  33,
+                  null,
+                  26,
+                  35,
+                  null,
+                  50,
+                  58,
+                  null,
+                  77,
+                  19,
+                  null,
+                  55,
+                  32
+                ],
+                "name": "Horticulture",
+                "top6": "010900",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  1,
+                  0,
+                  0,
+                  4
+                ],
+                "awards_recent": 4,
+                "enrollment": [
+                  null,
+                  null,
+                  18,
+                  null,
+                  null,
+                  13,
+                  null,
+                  null,
+                  24,
+                  null,
+                  null,
+                  38,
+                  null,
+                  null,
+                  14
+                ],
+                "name": "Landscape Design and Maintenance",
+                "top6": "010910",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  17,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  13,
+                  null
+                ],
+                "name": "Turfgrass Technology",
+                "top6": "010940",
+                "wages": []
+              }
+            ],
+            "soc_code": "37-1012",
+            "supply": 2.83,
+            "title": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+          }
+        ],
+        "name": "Las Positas College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 310,
+            "annual_wage": 61280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 310,
+            "growth_rate": 0.127177952,
+            "programs": [],
+            "soc_code": "29-2056",
+            "supply": 0.0,
+            "title": "Veterinary Technologists and Technicians"
+          },
+          {
+            "annual_openings": 500,
+            "annual_wage": 63150,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 500,
+            "growth_rate": 0.030870507,
+            "programs": [],
+            "soc_code": "37-1012",
+            "supply": 0.0,
+            "title": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+          }
+        ],
+        "name": "Los Medanos College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 310,
+            "annual_wage": 61280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 310,
+            "growth_rate": 0.127177952,
+            "programs": [],
+            "soc_code": "29-2056",
+            "supply": 0.0,
+            "title": "Veterinary Technologists and Technicians"
+          },
+          {
+            "annual_openings": 500,
+            "annual_wage": 63150,
+            "awards_recent": 66,
+            "course_count": 63,
+            "enrolled": true,
+            "feeding_awards": 66,
+            "gap": 467,
+            "growth_rate": 0.030870507,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  3,
+                  2,
+                  5,
+                  16
+                ],
+                "awards_recent": 16,
+                "enrollment": [
+                  null,
+                  null,
+                  615,
+                  null,
+                  543,
+                  503,
+                  null,
+                  643,
+                  565,
+                  null,
+                  773,
+                  576,
+                  null,
+                  711,
+                  528
+                ],
+                "name": "Horticulture",
+                "top6": "010900",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  24,
+                  32,
+                  33,
+                  48
+                ],
+                "awards_recent": 48,
+                "enrollment": [
+                  null,
+                  null,
+                  324,
+                  null,
+                  340,
+                  360,
+                  null,
+                  323,
+                  327,
+                  null,
+                  327,
+                  362,
+                  null,
+                  270,
+                  330
+                ],
+                "name": "Landscape Design and Maintenance",
+                "top6": "010910",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  1,
+                  2,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  24,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  21,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Nursery Technology",
+                "top6": "010930",
+                "wages": []
+              }
+            ],
+            "soc_code": "37-1012",
+            "supply": 33.33,
+            "title": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+          }
+        ],
+        "name": "Merritt College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 310,
+            "annual_wage": 61280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 310,
+            "growth_rate": 0.127177952,
+            "programs": [],
+            "soc_code": "29-2056",
+            "supply": 0.0,
+            "title": "Veterinary Technologists and Technicians"
+          },
+          {
+            "annual_openings": 500,
+            "annual_wage": 63150,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 500,
+            "growth_rate": 0.030870507,
+            "programs": [],
+            "soc_code": "37-1012",
+            "supply": 0.0,
+            "title": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+          }
+        ],
+        "name": "Mission College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 310,
+            "annual_wage": 61280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 310,
+            "growth_rate": 0.127177952,
+            "programs": [],
+            "soc_code": "29-2056",
+            "supply": 0.0,
+            "title": "Veterinary Technologists and Technicians"
+          },
+          {
+            "annual_openings": 500,
+            "annual_wage": 63150,
+            "awards_recent": 0,
+            "course_count": 1,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 500,
+            "growth_rate": 0.030870507,
+            "programs": [],
+            "soc_code": "37-1012",
+            "supply": 0.0,
+            "title": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+          }
+        ],
+        "name": "Napa Valley College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 310,
+            "annual_wage": 61280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 310,
+            "growth_rate": 0.127177952,
+            "programs": [],
+            "soc_code": "29-2056",
+            "supply": 0.0,
+            "title": "Veterinary Technologists and Technicians"
+          },
+          {
+            "annual_openings": 500,
+            "annual_wage": 63150,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 500,
+            "growth_rate": 0.030870507,
+            "programs": [],
+            "soc_code": "37-1012",
+            "supply": 0.0,
+            "title": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+          }
+        ],
+        "name": "Ohlone College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 310,
+            "annual_wage": 61280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 310,
+            "growth_rate": 0.127177952,
+            "programs": [],
+            "soc_code": "29-2056",
+            "supply": 0.0,
+            "title": "Veterinary Technologists and Technicians"
+          },
+          {
+            "annual_openings": 500,
+            "annual_wage": 63150,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 500,
+            "growth_rate": 0.030870507,
+            "programs": [],
+            "soc_code": "37-1012",
+            "supply": 0.0,
+            "title": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+          }
+        ],
+        "name": "San Jose City College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 310,
+            "annual_wage": 61280,
+            "awards_recent": 25,
+            "course_count": 11,
+            "enrolled": true,
+            "feeding_awards": 25,
+            "gap": 282,
+            "growth_rate": 0.127177952,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  37,
+                  21,
+                  36,
+                  25
+                ],
+                "awards_recent": 25,
+                "enrollment": [
+                  null,
+                  null,
+                  381,
+                  null,
+                  390,
+                  392,
+                  null,
+                  358,
+                  411,
+                  null,
+                  360,
+                  356,
+                  null,
+                  336,
+                  355
+                ],
+                "name": "Veterinary Technician (Licensed)",
+                "top6": "010210",
+                "wages": []
+              }
+            ],
+            "soc_code": "29-2056",
+            "supply": 28.0,
+            "title": "Veterinary Technologists and Technicians"
+          },
+          {
+            "annual_openings": 500,
+            "annual_wage": 63150,
+            "awards_recent": 12,
+            "course_count": 18,
+            "enrolled": true,
+            "feeding_awards": 12,
+            "gap": 441,
+            "growth_rate": 0.030870507,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  49,
+                  null,
+                  38,
+                  39,
+                  null,
+                  14,
+                  44,
+                  null,
+                  18,
+                  45,
+                  null,
+                  42,
+                  47
+                ],
+                "name": "Horticulture",
+                "top6": "010900",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  5,
+                  62,
+                  59,
+                  11
+                ],
+                "awards_recent": 11,
+                "enrollment": [
+                  null,
+                  null,
+                  76,
+                  null,
+                  61,
+                  71,
+                  null,
+                  129,
+                  106,
+                  null,
+                  69,
+                  39,
+                  null,
+                  42,
+                  108
+                ],
+                "name": "Landscape Design and Maintenance",
+                "top6": "010910",
+                "wages": []
+              },
+              {
+                "awards": [
+                  0,
+                  3,
+                  3,
+                  0,
+                  1
+                ],
+                "awards_recent": 1,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Nursery Technology",
+                "top6": "010930",
+                "wages": []
+              }
+            ],
+            "soc_code": "37-1012",
+            "supply": 58.67,
+            "title": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+          }
+        ],
+        "name": "Santa Rosa Junior College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 310,
+            "annual_wage": 61280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 310,
+            "growth_rate": 0.127177952,
+            "programs": [],
+            "soc_code": "29-2056",
+            "supply": 0.0,
+            "title": "Veterinary Technologists and Technicians"
+          },
+          {
+            "annual_openings": 500,
+            "annual_wage": 63150,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 500,
+            "growth_rate": 0.030870507,
+            "programs": [],
+            "soc_code": "37-1012",
+            "supply": 0.0,
+            "title": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+          }
+        ],
+        "name": "Skyline College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 310,
+            "annual_wage": 61280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 310,
+            "growth_rate": 0.127177952,
+            "programs": [],
+            "soc_code": "29-2056",
+            "supply": 0.0,
+            "title": "Veterinary Technologists and Technicians"
+          },
+          {
+            "annual_openings": 500,
+            "annual_wage": 63150,
+            "awards_recent": 2,
+            "course_count": 8,
+            "enrolled": true,
+            "feeding_awards": 2,
+            "gap": 495,
+            "growth_rate": 0.030870507,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  4,
+                  6,
+                  6,
+                  2
+                ],
+                "awards_recent": 2,
+                "enrollment": [
+                  null,
+                  null,
+                  55,
+                  null,
+                  56,
+                  102,
+                  null,
+                  88,
+                  86,
+                  null,
+                  85,
+                  103,
+                  null,
+                  70,
+                  114
+                ],
+                "name": "Horticulture",
+                "top6": "010900",
+                "wages": []
+              }
+            ],
+            "soc_code": "37-1012",
+            "supply": 4.66,
+            "title": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+          }
+        ],
+        "name": "Solano Community College"
+      },
+      {
+        "cells": [
+          {
+            "annual_openings": 310,
+            "annual_wage": 61280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 310,
+            "growth_rate": 0.127177952,
+            "programs": [],
+            "soc_code": "29-2056",
+            "supply": 0.0,
+            "title": "Veterinary Technologists and Technicians"
+          },
+          {
+            "annual_openings": 500,
+            "annual_wage": 63150,
+            "awards_recent": 0,
+            "course_count": 3,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 500,
+            "growth_rate": 0.030870507,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  25,
+                  null,
+                  14,
+                  24,
+                  null,
+                  17,
+                  30,
+                  null,
+                  29,
+                  24
+                ],
+                "name": "Landscape Design and Maintenance",
+                "top6": "010910",
+                "wages": []
+              }
+            ],
+            "soc_code": "37-1012",
+            "supply": 0.0,
+            "title": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers"
+          }
+        ],
+        "name": "West Valley College"
+      }
+    ],
+    "coverage_awards_only": true,
+    "enrollment_terms": [
+      "Winter 2021",
+      "Spring 2021",
+      "Fall 2021",
+      "Winter 2022",
+      "Spring 2022",
+      "Fall 2022",
+      "Winter 2023",
+      "Spring 2023",
+      "Fall 2023",
+      "Winter 2024",
+      "Spring 2024",
+      "Fall 2024",
+      "Winter 2025",
+      "Spring 2025",
+      "Fall 2025"
+    ],
+    "executive_summary": "This view examines the regional demand landscape across the 2 ag, water & environmental technologies occupations the Bay Area Community College Consortium \u2014 Ag, Water & Environmental Technologies targets in the Bay Area regional labor market. Regional demand for these occupations totals 810 openings per year.",
+    "is_sector_priority": false,
+    "region": "Bay",
+    "region_display": "Bay Area",
+    "sector": "Ag, Water & Environmental Technologies"
+  }
+}
