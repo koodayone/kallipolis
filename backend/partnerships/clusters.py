@@ -38,6 +38,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 from dataclasses import dataclass, field
+from functools import lru_cache
 
 from ontology.crosswalks import top6_to_soc
 from ontology.schema import get_driver
@@ -253,6 +254,22 @@ def cluster_map(spec: LandscapeSpec) -> list[OccupationCluster]:
     return sorted(clusters, key=lambda c: (-c.gap, min(o.soc for o in c.occupations)))
 
 
+@lru_cache(maxsize=256)
+def _cached_cluster_map(member_id: str, sector_id: str) -> tuple:
+    """`cluster_map` for a (member, sector), memoized by id. Every single-college
+    lens AND single-college dashboard expands its lone college to the consortium
+    via `cluster_expanded_spec`, which recomputed this whole decomposition per
+    request (~280ms; the dominant cost of those endpoints). It is identical for
+    every college in the sector, so cache it. Process-lifetime — a graph data load
+    should restart the backend (init_schema) to refresh, matching the precompute
+    cache + dossier `@lru_cache` already in this layer. Returns read-only tuples;
+    callers must not mutate the shared OccupationCluster objects."""
+    from partnerships.registry import spec_for
+
+    spec = spec_for(f"{member_id}-{sector_id}")
+    return tuple(cluster_map(spec)) if spec else ()
+
+
 def cluster_expanded_spec(spec: LandscapeSpec, sector_id: str) -> LandscapeSpec:
     """Single-college lens → its cluster consortium.
 
@@ -273,16 +290,11 @@ def cluster_expanded_spec(spec: LandscapeSpec, sector_id: str) -> LandscapeSpec:
     """
     import dataclasses
 
-    from partnerships.registry import spec_for
-
     if len(spec.colleges) != 1:
         return spec
     college = spec.colleges[0]
-    baccc = spec_for(f"baccc-{sector_id}")
-    if baccc is None:
-        return spec
     mine = [
-        c for c in cluster_map(baccc)
+        c for c in _cached_cluster_map("baccc", sector_id)
         if any(sp.college == college for f in c.feeders for sp in f.by_college)
     ]
     if not mine:

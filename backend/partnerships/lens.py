@@ -332,12 +332,19 @@ def _programs(
 
 
 # ── The public entry point ────────────────────────────────────────────────────
+@lru_cache(maxsize=512)
 def build_lens(member_id: str, *, sector: str | None = None, play: Play | None = None) -> LensModel:
     """Project the ontology onto a `(member, slice)` scope → the neutral LensModel.
 
     Exactly one of `sector` (dashboard: the whole field) or `play` (report: a
     curated occupation set + title) must be given. A single-college member is
     expanded to its consortium pool, so the partner graph spans peer schools.
+
+    Result-memoized: the projection is deterministic for a fixed graph, so repeated
+    (member, slice) requests serve the cached LensModel near-instantly. The returned
+    model is shared and read-only — callers must not mutate it. Process-lifetime;
+    a graph data load should restart the backend (init_schema) to refresh, matching
+    the precompute serving cache + cluster_map memoization in this layer.
     """
     if (sector is None) == (play is None):
         raise ValueError("pass exactly one of sector= or play=")
