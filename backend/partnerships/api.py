@@ -792,3 +792,35 @@ router.add_api_route(
     description="L1 lens — the neutral substrate (occupation-grain, openings-ranked, "
                 "partner graph + employers + provenance) that the dashboard and the "
                 "report both render from. Requires a ?sector= query param.")
+
+
+# ── Report HTML — the proposer-filled workforce-pathway report for a role ─────
+def get_report_html(member_id: str, title: str, sector: str, socs: str,
+                    author: str = "Kallipolis", date: str = "") -> Response:
+    """Render a workforce-pathway report to HTML for a (member, role). The role is
+    the play: ``title`` + ``sector`` + comma-separated ``socs``. propose_spec
+    auto-fills the rest from L1; build_report_html renders it. Returns text/html —
+    the report-render harness rasterizes it to .docx/.pdf, or a browser views it."""
+    from partnerships.report import Play, build_report_html, propose_spec
+
+    play = Play(id=title.lower().replace(" ", "-"), title=title, sector=sector,
+                socs=tuple(s.strip() for s in socs.split(",") if s.strip()))
+    try:
+        lens = build_lens(member_id, play=play)
+        spec = propose_spec(member_id, play, lens=lens, author=author, date=date)
+        html = build_report_html(member_id, play, spec, lens=lens)
+    except LookupError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    return Response(content=html, media_type="text/html")
+
+
+router.add_api_route(
+    "/report/{member_id}", get_report_html, methods=["GET"],
+    name="get_report_html",
+    description="Workforce-pathway report HTML for a (member, role). Role = ?title= "
+                "+ ?sector= + ?socs= (comma-separated SOCs). The proposer auto-fills "
+                "the report; the report-render harness turns the HTML into .docx/.pdf.")
