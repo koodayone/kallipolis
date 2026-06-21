@@ -132,7 +132,6 @@ class LensOccupation:
     feeders: list[LensFeeder]     # the partner graph — who feeds this occupation
     member_feeds: bool            # does the scope member feed it?
     employers: list[LensEmployer]
-    competencies: None = None     # O*NET KSA — editorial Spec-side, not in L1
 
 
 @dataclass(frozen=True)
@@ -193,7 +192,6 @@ class LensModel:
                     "member_feeds": o.member_feeds,
                     "feeders": [vars(f) for f in o.feeders],
                     "employers": [vars(e) for e in o.employers],
-                    "competencies": o.competencies,
                 }
                 for o in self.occupations
             ],

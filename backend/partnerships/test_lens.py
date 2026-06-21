@@ -81,8 +81,9 @@ def test_provenance_is_complete_and_resolvable():
     L = build_lens(_MEMBER, sector=_SECTOR)
     assert {s.id for s in L.sources} == set(SOURCES)
     assert all(src in SOURCES for src in FIELD_AUTHORITY.values()), "every field maps to a known authority"
-    # competencies are editorial (O*NET KSA not in the graph) — absent at L1.
-    assert all(o.competencies is None for o in L.occupations)
+    # competencies are a report-layer concern (curated from the O*NET bundle at
+    # report time), deliberately NOT an L1 field.
+    assert not hasattr(L.occupations[0], "competencies")
 
 
 if __name__ == "__main__":

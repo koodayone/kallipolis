@@ -741,7 +741,6 @@ class LensOccupationOut(BaseModel):
     member_feeds: bool
     feeders: list[LensFeederOut]
     employers: list[LensEmployerOut]
-    competencies: dict | None = None
 
 
 class LensProgramOut(BaseModel):

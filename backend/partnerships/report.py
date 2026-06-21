@@ -27,6 +27,7 @@ import html
 import sys
 from dataclasses import dataclass, field
 
+from occupations.competencies import get_competencies
 from partnerships.lens import LensModel, LensOccupation, Play, build_lens
 
 # Per-occupation accent palette (teal / blue / red / purple / amber), cycled.
@@ -307,6 +308,25 @@ tr.tot td{font-weight:700;background:#f3f6fb}
 """
 
 
+def _cols_from_bundle(occs: list[LensOccupation], n: int = 4) -> list[CompetencyColumn]:
+    """The deterministic competency default: the top-N O*NET-pool elements per
+    occupation (from occupations.competencies). The report-time curation skill
+    refines this with role context and writes the result back as spec.competencies."""
+    cols = []
+    for o in occs:
+        pool = get_competencies(o.soc)
+        if not pool:
+            continue
+        desc = (o.description or "").split(". ")[0].strip()
+        if desc and not desc.endswith("."):
+            desc += "."
+        cols.append(CompetencyColumn(
+            soc=o.soc, description=desc,
+            knowledge=pool.get("knowledge", [])[:n], skills=pool.get("skills", [])[:n],
+            abilities=pool.get("abilities", [])[:n], technology=pool.get("technology", [])[:n]))
+    return cols
+
+
 def build_report_html(member_id: str, play: Play, spec: ReportSpec) -> str:
     """Render a workforce-pathway report for `(member_id, play)` to HTML — DATA
     from L1, WORDS from `spec`. Output conforms to the report-render contract."""
@@ -326,10 +346,14 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec) -> str:
         _employer_table(occs, spec.live_postings),
     ]
 
-    # Competency columns are authored by SOC; order them to match the occupation
-    # (demand-table) order so the colors line up with the crosswalk.
-    by_soc = {c.soc: c for c in spec.competencies}
-    cols = [by_soc[o.soc] for o in occs if o.soc in by_soc]
+    # Competencies: the Spec OVERRIDES (the curation skill's cut) if present;
+    # otherwise we propose the deterministic O*NET-pool default from the bundle —
+    # "data proposes, skill/human confirms." Ordered to match the occupation order.
+    if spec.competencies:
+        by_soc = {c.soc: c for c in spec.competencies}
+        cols = [by_soc[o.soc] for o in occs if o.soc in by_soc]
+    else:
+        cols = _cols_from_bundle(occs)
     grid = _competency_grid(cols)
     if grid:
         sections += ['<h1>Occupational Competencies</h1>',
@@ -414,32 +438,9 @@ def _svamp_manufacturing_technician_spec() -> tuple[Play, ReportSpec]:
             "17-3024": LivePosting("Johnson & Johnson", "Manufacturing Tech III — Surgical Robotics",
                                    f"{_CAREERONESTOP}17-3024.00&location=94022&radius=25"),
         },
-        competencies=[
-            CompetencyColumn(
-                soc="51-9141",
-                description="Operates furnaces, crystal-growth chambers, and chemical baths to "
-                            "process semiconductor materials into wafers and circuitry.",
-                knowledge=["Production & Processing", "Computers & Electronics", "Chemistry"],
-                skills=["Quality Control Analysis", "Operations Monitoring"],
-                abilities=["Inductive Reasoning", "Deductive Reasoning", "Information Ordering", "Control Precision"],
-                technology=["Analytical / scientific software", "Industrial control software", "Programming"]),
-            CompetencyColumn(
-                soc="17-3026",
-                description="Applies engineering principles to manufacturing production and "
-                            "industrial layout — improving rates, efficiency, and quality.",
-                knowledge=["Production & Processing", "Computers & Electronics", "Engineering & Technology"],
-                skills=["Quality Control Analysis", "Systems Analysis", "Operations Analysis"],
-                abilities=["Inductive Reasoning", "Deductive Reasoning", "Information Ordering"],
-                technology=["Analytical / scientific software", "Industrial control software", "Programming", "CAD / CAM software"]),
-            CompetencyColumn(
-                soc="17-3024",
-                description="Operates, tests, and maintains automated, servomechanical, and "
-                            "electromechanical equipment, including robotics.",
-                knowledge=["Production & Processing", "Computers & Electronics", "Engineering & Technology"],
-                skills=["Quality Control Analysis", "Operations Monitoring", "Systems Analysis", "Troubleshooting & Repair"],
-                abilities=["Inductive Reasoning", "Deductive Reasoning", "Information Ordering", "Control Precision"],
-                technology=["Analytical / scientific software", "Industrial control software", "Programming", "CAD / CAM software"]),
-        ],
+        # competencies omitted → the report proposes them from the O*NET bundle
+        # (occupations.competencies); the curation skill overrides with the
+        # role-resonant cut and writes them back as spec.competencies.
         # The five representative pathway programs (one per college), curated from
         # the data feeders — the same set drives the crosswalk and both trend tables.
         programs=(
