@@ -32,6 +32,7 @@ from partnerships.lens import LensModel, LensOccupation, Play, build_lens
 
 # Per-occupation accent palette (teal / blue / red / purple / amber), cycled.
 _ACCENTS = ["#2a9d8f", "#2e74b5", "#cc3333", "#6f5499", "#c98a1b"]
+_CAREERONESTOP = "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword="
 
 
 # ── The editorial layer ───────────────────────────────────────────────────────
@@ -327,10 +328,89 @@ def _cols_from_bundle(occs: list[LensOccupation], n: int = 4) -> list[Competency
     return cols
 
 
-def build_report_html(member_id: str, play: Play, spec: ReportSpec) -> str:
+# ── The proposer cascade: role (member + play) → a filled ReportSpec ──────────
+def _org_label(member) -> str:
+    """A masthead-friendly org name from the member identity."""
+    if member.kind == "college":
+        return member.name
+    return member.name.upper() if len(member.name) <= 6 else member.name.title()
+
+
+def _careeronestop_url(soc: str, zip_code: str = "94022") -> str:
+    return f"{_CAREERONESTOP}{soc}.00&location={zip_code}&radius=25"
+
+
+def propose_spec(member_id: str, play: Play, *, lens: LensModel | None = None,
+                 author: str = "Kallipolis", date: str = "") -> ReportSpec:
+    """Auto-fill a ReportSpec from the role (member + play) and L1 data — the
+    proposer cascade. Everything downstream of the role selection is proposed:
+    org/byline, the section prose, live-posting links (employer from L1, URL from
+    the SOC pattern), the program selection (top program per college by supply),
+    and the sources. The human confirms/edits; competencies fall through to the
+    bundle default unless the curate-competencies skill fills spec.competencies."""
+    lens = lens or build_lens(member_id, play=play)
+    org = _org_label(lens.scope.member)
+    title = play.title
+
+    # Live postings: a DISTINCT top employer per occupation (related SOCs share a
+    # staffing pattern, so the raw top is often the same firm 3×) + a CareerOneStop
+    # link. Greedy: each occupation takes its highest-relevance firm not yet used.
+    postings, used = {}, set()
+    for o in lens.occupations:
+        if not o.employers:
+            continue
+        pick = next((e for e in o.employers if e.name not in used), o.employers[0])
+        used.add(pick.name)
+        postings[o.soc] = LivePosting(pick.name, title, _careeronestop_url(o.soc))
+
+    # Program selection: the highest-supply program per college that feeds the play
+    # (one representative per college), ordered by supply.
+    best: dict[str, tuple[int, tuple[str, str]]] = {}
+    for p in lens.programs:
+        supply = sum(p.awards.values()) + sum(p.enrollment.values())
+        if p.college not in best or supply > best[p.college][0]:
+            best[p.college] = (supply, (p.college, p.top6))
+    programs = tuple(key for _, key in sorted(best.values(), key=lambda x: -x[0]))
+
+    socs = [o.soc for o in lens.occupations]
+    sources = [
+        f'O*NET "{title}" occupations match (onetonline.org).',
+        "O*NET summaries: " + ", ".join(socs) + " (onetonline.org).",
+        "CCCCO DataMart: Program Awards, Credit & Non-Credit Course summaries.",
+        "Centers of Excellence: occupational-demand lookup + TOP–CIP–SOC crosswalk.",
+    ]
+
+    byline = f"By {author} · kallipolis.us"
+    if date:
+        byline += f" · {date}"
+    return ReportSpec(
+        org_name=f"{org} Workforce Pathway",
+        org_short=org,
+        byline=byline,
+        lede=f"This report examines how {org} member-college programs support the "
+             f"{title} role and how it relates to meeting regional labor-market demand.",
+        demand_note=f"The U.S. Department of Labor's O*NET system maps the title "
+                    f"{title} to these standard occupational classifications, supported "
+                    f"by member-college programs.",
+        alignment_note="How member-college programs across the consortium feed each "
+                       "occupation, derived from the TOP–CIP–SOC crosswalk published by "
+                       "the Centers of Excellence.",
+        award_note="Award trends for each member-college program TOP code, per CCCCO "
+                   "DataMart. Empty cells indicate no data reported.",
+        enrollment_note="Enrollment trends for each member-college program TOP code, per "
+                        "CCCCO DataMart. Empty cells indicate no data reported.",
+        live_postings=postings,
+        programs=programs,
+        extra_sources=sources,
+    )
+
+
+def build_report_html(member_id: str, play: Play, spec: ReportSpec, *,
+                      lens: LensModel | None = None) -> str:
     """Render a workforce-pathway report for `(member_id, play)` to HTML — DATA
-    from L1, WORDS from `spec`. Output conforms to the report-render contract."""
-    lens = build_lens(member_id, play=play)
+    from L1, WORDS from `spec`. Output conforms to the report-render contract.
+    Pass `lens` to reuse a build shared with `propose_spec`."""
+    lens = lens or build_lens(member_id, play=play)
     occs = lens.occupations
 
     sections = [
@@ -397,74 +477,22 @@ def build_report_html(member_id: str, play: Play, spec: ReportSpec) -> str:
     )
 
 
-# ── Demo: regenerate the SVAMP Manufacturing Technician report from the graph ──
-_CAREERONESTOP = "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword="
-
-
-def _svamp_manufacturing_technician_spec() -> tuple[Play, ReportSpec]:
-    """The editorial Spec for the SVAMP Manufacturing Technician report — the
-    authored half (data comes from L1). KSA is O*NET; postings are CareerOneStop;
-    the 095690 exclude is a curatorial choice (Digital Fabrication is off-pathway)."""
-    play = Play(id="manufacturing-technician", title="Manufacturing Technician",
+# ── Demo: the whole report PROPOSED from just (member, play) ───────────────────
+def _svamp_play() -> Play:
+    """The role selection (step 1's output) for the SVAMP Manufacturing Technician
+    report — O*NET's top-3 SOC matches for the title."""
+    return Play(id="manufacturing-technician", title="Manufacturing Technician",
                 sector="adm", socs=("17-3026", "51-9141", "17-3024"))
-    spec = ReportSpec(
-        org_name="SVAMP Workforce Pathway",
-        org_short="SVAMP",
-        byline="By Dayone Koo · kallipolis.us · June 19, 2026",
-        lede="The Silicon Valley Advanced Manufacturing Partnership is committed to "
-             "training students to fill critical roles in the region's advanced-"
-             "manufacturing sector. This report examines how member colleges support "
-             "the Manufacturing Technician role and how it relates to meeting regional "
-             "labor market demand.",
-        demand_note="The U.S. Department of Labor's O*NET system maps the title "
-                    "Manufacturing Technician to three standard occupational "
-                    "classifications supported by SVAMP college programs.",
-        competency_note="The three occupations share a core set of competencies — "
-                        "knowledge of production processes, proficiency with industrial "
-                        "systems, and the ability to reason through complex technical "
-                        "problems.",
-        alignment_note="The visualization below illustrates how each SVAMP college "
-                       "program supports the Manufacturing Technician role, derived from "
-                       "the TOP–CIP–SOC crosswalk published by the Centers of Excellence.",
-        award_note="Award trends for each SVAMP college program TOP code since 2020-21 "
-                   "according to CCCCO DataMart. Empty cells indicate no data reported.",
-        enrollment_note="Enrollment trends for each SVAMP college program TOP code "
-                        "according to CCCCO DataMart. Empty cells indicate no data reported.",
-        live_postings={
-            "51-9141": LivePosting("Intel", "Mask Manufacturing Technician",
-                                   f"{_CAREERONESTOP}51-9141.00&location=94022&radius=25"),
-            "17-3026": LivePosting("Honeywell Aerospace", "Manufacturing Test Technician Level 1",
-                                   f"{_CAREERONESTOP}17-3026.00&location=94022&radius=25"),
-            "17-3024": LivePosting("Johnson & Johnson", "Manufacturing Tech III — Surgical Robotics",
-                                   f"{_CAREERONESTOP}17-3024.00&location=94022&radius=25"),
-        },
-        # competencies omitted → the report proposes them from the O*NET bundle
-        # (occupations.competencies); the curation skill overrides with the
-        # role-resonant cut and writes them back as spec.competencies.
-        # The five representative pathway programs (one per college), curated from
-        # the data feeders — the same set drives the crosswalk and both trend tables.
-        programs=(
-            ("Foothill College", "094500"),
-            ("Mission College", "093500"),
-            ("Evergreen Valley College", "095600"),
-            ("Ohlone College", "095600"),
-            ("De Anza College", "095630"),
-        ),
-        extra_sources=[
-            "O*NET \"Manufacturing Technician\" occupations match (onetonline.org).",
-            "O*NET summaries: 17-3026, 51-9141, 17-3024 (onetonline.org).",
-            "CCCCO DataMart: Program Awards, Credit & Non-Credit Course summaries.",
-            "Centers of Excellence: occupational-demand lookup + TOP–CIP–SOC crosswalk.",
-        ],
-    )
-    return play, spec
 
 
 if __name__ == "__main__":
     member = sys.argv[1] if len(sys.argv) > 1 else "svamp"
     out = sys.argv[2] if len(sys.argv) > 2 else "/tmp/report.html"
-    play, spec = _svamp_manufacturing_technician_spec()
-    html_doc = build_report_html(member, play, spec)
+    play = _svamp_play()
+    # One lens build, shared by the proposer and the renderer.
+    lens = build_lens(member, play=play)
+    spec = propose_spec(member, play, lens=lens, author="Dayone Koo", date="June 21, 2026")
+    html_doc = build_report_html(member, play, spec, lens=lens)
     with open(out, "w", encoding="utf-8") as f:
         f.write(html_doc)
-    print(f"wrote {out} ({len(html_doc):,} bytes)")
+    print(f"wrote {out} ({len(html_doc):,} bytes) — fully proposed from (member, play)")
