@@ -41,6 +41,7 @@ from partnerships.landscape import REGISTRY, LandscapeSpec, routable_specs
 from partnerships.registry import has_supply, live_catalog, spec_for
 from partnerships.resolve import resolve
 from partnerships.clusters import cluster_expanded_spec, consortium_clusters
+from partnerships.lens import build_lens
 from partnerships.sectors import SECTORS
 from partnerships.svamp_employers import SvampEmployersResult, build_svamp_employers
 from partnerships.svamp_programs import (
@@ -692,3 +693,103 @@ router.add_api_route(
     response_model=MemberClusterSectorsModel, name="get_member_cluster_sectors",
     description="Sectors where the member is in a consortium cluster — its industry "
                 "targets, for the school-lens rail (hides industries with no cluster).")
+
+
+# ── L1 lens — the neutral substrate both artifacts render from ────────────────
+class LensMemberOut(BaseModel):
+    id: str
+    name: str
+    kind: str
+
+
+class LensSliceOut(BaseModel):
+    kind: str
+    id: str
+    label: str
+    title: str | None = None
+
+
+class LensScopeOut(BaseModel):
+    member: LensMemberOut
+    regions: list[str]
+    slice: LensSliceOut
+    partner_universe: list[str]
+
+
+class LensFeederOut(BaseModel):
+    college: str
+    top6: str
+    program: str
+    awards: int
+    is_member: bool
+
+
+class LensEmployerOut(BaseModel):
+    name: str
+    naics4: str | None = None
+    relevance: float
+
+
+class LensOccupationOut(BaseModel):
+    soc: str
+    title: str
+    description: str | None = None
+    region: str
+    annual_openings: int
+    median_wage: int
+    growth_rate: float
+    member_feeds: bool
+    feeders: list[LensFeederOut]
+    employers: list[LensEmployerOut]
+    competencies: dict | None = None
+
+
+class LensProgramOut(BaseModel):
+    college: str
+    top6: str
+    program: str
+    is_member: bool
+    socs: list[str]
+    awards: dict[str, int]
+    enrollment: dict[str, int]
+
+
+class LensSourceOut(BaseModel):
+    id: str
+    authority: str
+    role: str
+
+
+class LensModelOut(BaseModel):
+    scope: LensScopeOut
+    occupations: list[LensOccupationOut]
+    programs: list[LensProgramOut]
+    award_years: list[str]
+    enrollment_terms: list[str]
+    field_authority: dict[str, str]
+    sources: list[LensSourceOut]
+
+
+def get_member_lens(member_id: str, sector: str) -> LensModelOut:
+    """L1 lens — the neutral, provenance-carrying projection of the ontology over a
+    `(member, sector)` scope: occupations ranked by annual openings, each with its
+    regional demand, the partner graph (which consortium schools feed it), and its
+    employers. The dashboard renders from this; the report renders from the same
+    builder. No opinionated score, no cross-occupation supply sum."""
+    try:
+        lens = build_lens(member_id, sector=sector)
+    except LookupError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    return LensModelOut(**lens.to_dict())
+
+
+router.add_api_route(
+    "/{member_id}/lens", get_member_lens, methods=["GET"],
+    response_model=LensModelOut, name="get_member_lens",
+    description="L1 lens — the neutral substrate (occupation-grain, openings-ranked, "
+                "partner graph + employers + provenance) that the dashboard and the "
+                "report both render from. Requires a ?sector= query param.")
