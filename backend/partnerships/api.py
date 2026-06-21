@@ -824,3 +824,54 @@ router.add_api_route(
     description="Workforce-pathway report HTML for a (member, role). Role = ?title= "
                 "+ ?sector= + ?socs= (comma-separated SOCs). The proposer auto-fills "
                 "the report; the report-render harness turns the HTML into .docx/.pdf.")
+
+
+class PostingOverride(BaseModel):
+    employer: str
+    title: str
+    url: str
+
+
+class ReportRequest(BaseModel):
+    title: str
+    sector: str
+    socs: str
+    author: str = "Kallipolis"
+    date: str = ""
+    # Curation overrides from the report-time skills ("data proposes, skill
+    # confirms"). Empty → the proposer's defaults stand. live_postings is the
+    # find-live-postings skill's selected postings, keyed by SOC.
+    live_postings: dict[str, PostingOverride] | None = None
+
+
+def post_report_html(member_id: str, req: ReportRequest) -> Response:
+    """Like the GET, but layers curation OVERRIDES onto the proposed spec — e.g.
+    the find-live-postings skill's selected live postings replacing the proposer's
+    generic default. Empty overrides == the GET behavior."""
+    import dataclasses
+
+    from partnerships.report import LivePosting, Play, build_report_html, propose_spec
+
+    play = Play(id=req.title.lower().replace(" ", "-"), title=req.title, sector=req.sector,
+                socs=tuple(s.strip() for s in req.socs.split(",") if s.strip()))
+    try:
+        lens = build_lens(member_id, play=play)
+        spec = propose_spec(member_id, play, lens=lens, author=req.author, date=req.date)
+        if req.live_postings:
+            lp = {soc: LivePosting(p.employer, p.title, p.url) for soc, p in req.live_postings.items()}
+            spec = dataclasses.replace(spec, live_postings=lp)
+        html = build_report_html(member_id, play, spec, lens=lens)
+    except LookupError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    return Response(content=html, media_type="text/html")
+
+
+router.add_api_route(
+    "/report/{member_id}", post_report_html, methods=["POST"], name="post_report_html",
+    description="Same as GET /report/{member}, but the JSON body may carry curation "
+                "overrides — live_postings (the find-live-postings skill's picks) layered "
+                "onto the proposed spec. Empty overrides behave like the GET.")

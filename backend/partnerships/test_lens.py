@@ -8,6 +8,17 @@ sum. Skipped automatically where Neo4j is unreachable.
 Runnable two ways: `pytest partnerships/test_lens.py`, or `python -m
 partnerships.test_lens` (runs every test_* and reports) — the latter so it can be
 verified inside the backend container, which has the graph but not pytest.
+
+Coverage:
+  - sector lens is occupation-grain and openings-ranked; a college expands to its
+    consortium partner universe
+  - the partner graph (feeders) is present, and `is_member` is a membership FACT,
+    not a role or score
+  - the atom carries NO opinionated score and NO cross-occupation supply sum
+  - employers are per-occupation and relevance-ranked
+  - a play slice resolves to exactly its curated SOC set
+  - provenance is complete and resolvable; competencies are absent from L1 (they
+    are a report-layer concern)
 """
 
 from __future__ import annotations
