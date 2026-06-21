@@ -23,6 +23,8 @@ Coverage:
 
 from __future__ import annotations
 
+import pytest
+
 from partnerships.lens import FIELD_AUTHORITY, SOURCES, LensOccupation, Play, build_lens
 
 # A member×sector known to resolve with supply (Foothill runs an adm program).
@@ -40,6 +42,11 @@ def _graph_ok() -> bool:
         if e.__class__.__name__ in ("ValueError", "LookupError"):
             raise
         return False
+
+
+# Graph-backed integration tests: under pytest with no reachable Neo4j (e.g. CI),
+# skip cleanly rather than erroring on the driver/env lookup (KeyError NEO4J_URI).
+pytestmark = pytest.mark.skipif(not _graph_ok(), reason="Neo4j graph unreachable")
 
 
 def test_sector_lens_is_openings_ranked_occupation_grain():

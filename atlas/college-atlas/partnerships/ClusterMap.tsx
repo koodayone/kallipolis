@@ -69,7 +69,8 @@ export default function ClusterMap() {
     ensureSupply();
     setExpanded((prev) => {
       const next = new Set(prev);
-      next.has(id) ? next.delete(id) : next.add(id);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
       return next;
     });
   }
@@ -91,7 +92,7 @@ export default function ClusterMap() {
 
   const shown = useMemo(() => {
     if (!data) return [];
-    let cs = data.clusters.filter((c) => !sector || c.sector_id === sector);
+    const cs = data.clusters.filter((c) => !sector || c.sector_id === sector);
     const by: Record<SortKey, (c: ApiCluster) => number> = {
       gap: (c) => -c.gap,
       coverage: (c) => c.coverage,
