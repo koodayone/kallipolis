@@ -305,10 +305,15 @@ def cluster_expanded_spec(spec: LandscapeSpec, sector_id: str) -> LandscapeSpec:
     return dataclasses.replace(spec, colleges=colleges, socs=socs, counties=())
 
 
+@lru_cache(maxsize=64)
 def consortium_clusters(member_id: str) -> list[OccupationCluster]:
     """Every cluster across all of a member's sectors, gap-sorted, each tagged
     with its `sector_id`. The whole-consortium connected-components map (e.g.
-    member_id="baccc" → the Bay Area consortium across all PCAH sectors)."""
+    member_id="baccc" → the Bay Area consortium across all PCAH sectors).
+
+    Result-memoized (deterministic per member, fixed graph): drives /clusters,
+    /cluster-supply, /cluster-sectors, all of which recomputed it per request.
+    Read-only consumers; refresh on a graph data load via backend restart."""
     from partnerships.registry import spec_for
     from partnerships.sectors import SECTORS
 

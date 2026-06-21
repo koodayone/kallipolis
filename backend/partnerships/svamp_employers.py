@@ -21,6 +21,8 @@ candidate pool (no silent truncation).
 
 from __future__ import annotations
 
+from functools import lru_cache
+
 from pydantic import BaseModel
 
 from ontology.crosswalks import load_naics4_titles
@@ -72,7 +74,10 @@ class SvampEmployersResult(BaseModel):
     shed_counties: list[str] = [] # counties the map drew from (home first); len>1 ⇒ expanded
 
 
+@lru_cache(maxsize=512)
 def build_svamp_employers(spec: LandscapeSpec = SVAMP_SPEC) -> SvampEmployersResult:
+    """The geocoded regional-employer map for a landscape. Result-memoized —
+    deterministic per resolved spec; refresh on a graph data load via restart."""
     region = spec.resolve_region()
     expand = spec.employer_threshold > 0 and bool(spec.counties)
     titles = load_naics4_titles()

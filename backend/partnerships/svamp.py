@@ -28,6 +28,7 @@ and the regional HIRES_FOR employer pivot.
 
 from __future__ import annotations
 
+from functools import lru_cache
 from typing import Callable
 
 from pydantic import BaseModel
@@ -298,7 +299,11 @@ def build_svamp_landscape() -> SvampLandscape:
     return build_landscape(SVAMP_SPEC)
 
 
+@lru_cache(maxsize=512)
 def build_landscape(spec: LandscapeSpec) -> SvampLandscape:
+    """The aggregated member×sector landscape (the dashboard's core build).
+    Result-memoized — deterministic per resolved spec; refresh on a graph data
+    load via backend restart (same caching philosophy as the precompute layer)."""
     region = spec.resolve_region()
     driver = get_driver()
 
