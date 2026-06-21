@@ -25,7 +25,20 @@ const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 '
   const url = `https://www.careeronestop.org/Toolkit/Jobs/find-jobs.aspx` +
               `?keyword=${keyword}&location=${zip}&radius=${radius}`;
   await page.goto(url, { waitUntil: 'networkidle', timeout: 45000 });
-  await page.waitForTimeout(3500);
+  await page.waitForTimeout(3000);
+
+  // Capture the FULL selection space, not just page 1: the search can return
+  // dozens of results and the strongest candidates (top-brand employers) are
+  // often past page 1, so bump the page-size selector to its max before reading.
+  await page.evaluate(() => {
+    const sel = [...document.querySelectorAll('select')].find((s) =>
+      [...s.options].some((o) => (o.text || '').trim() === '250'));
+    if (sel) {
+      sel.value = [...sel.options].find((o) => (o.text || '').trim() === '250').value;
+      sel.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+  });
+  await page.waitForTimeout(5000); // listings reload at the larger page size
 
   const jobs = await page.evaluate((soc) => {
     const DATE = /\d{2}\/\d{2}\/\d{4}/;
@@ -45,8 +58,9 @@ const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 '
         c !== title && c !== location && c !== date && c !== 'Federal Contractor' && c.length > 1) || '';
       const href = a.getAttribute('href');
       const url = href.startsWith('http') ? href : 'https://www.careeronestop.org' + href;
-      if (seen.has(url)) continue;
-      seen.add(url);
+      const key = employer + '|' + title;  // same job is sometimes listed under multiple jvids
+      if (seen.has(key)) continue;
+      seen.add(key);
       out.push({ soc, title, employer, location, date, url });
     }
     return out;
