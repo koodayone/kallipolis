@@ -4,20 +4,23 @@
 Single source = the rendered report HTML (a `#page` div whose blocks use the
 report's CSS conventions: `.title`, `.subtitle`, `h1`, `p`, `table.dem|live|
 cmpgrid|trend`, `.xwrap`, `.emps`, `.footer`). Every element is mapped to a
-native Word primitive; the only un-nativeable element (the SVG crosswalk) is
-embedded as a high-DPI PNG. Produces an editable, faithful .docx that survives
-the Google-Docs paste cleanly (native tables are the one richly-supported
-primitive).
+native Word primitive — including the crosswalk, which is reconstructed from the
+SVG as a native, fully-clickable table (a converge-to-target box for one SOC, a
+program×SOC matrix for several) rather than rasterized. The high-DPI PNG remains
+only as a fallback when the SVG can't be parsed. Produces an editable, faithful
+.docx that survives the Google-Docs paste cleanly (native tables are the one
+richly-supported primitive).
 
 Usage:
     python3 build_docx.py [SRC.html] [OUT.docx] [CROSSWALK.png]
 
-Defaults reproduce the "Manufacturing Technician" build. SRC must be the HTML
-that shoot_xwalk_png.cjs already rasterized into CROSSWALK (default
-/tmp/crosswalk.png) — run that shooter first.
+Defaults reproduce the "Manufacturing Technician" build. CROSSWALK.png is the
+fallback raster (default /tmp/crosswalk.png) used only if the SVG crosswalk can't
+be parsed into a native table; run shoot_xwalk_png.cjs first to have it on hand.
 
 Deps: python-docx, beautifulsoup4.
 """
+import os
 import sys
 
 import docx
@@ -49,7 +52,9 @@ st.font.name = FONT
 st.font.size = Pt(10)
 st.font.color.rgb = RGBColor.from_string(BODY)
 sec = doc.sections[0]
-sec.page_width, sec.page_height = Inches(8.5), Inches(11)
+sec.page_width = Inches(8.5)
+# DOCX_PAGE_H overrides page height (default US Letter) — set tall for single-image visual QA.
+sec.page_height = Inches(float(os.environ.get('DOCX_PAGE_H', '11')))
 sec.left_margin = sec.right_margin = Inches(0.7)
 sec.top_margin = sec.bottom_margin = Inches(0.55)
 CONTENT_W = 7.1
@@ -67,6 +72,11 @@ def left_accent(cell, hexc, sz=24):
     b = OxmlElement('w:left'); b.set(qn('w:val'), 'single'); b.set(qn('w:sz'), str(sz))
     b.set(qn('w:space'), '0'); b.set(qn('w:color'), hexc)
     borders.append(b); tcPr.append(borders)
+
+
+def vcenter(cell):
+    tcPr = cell._tc.get_or_add_tcPr()
+    va = OxmlElement('w:vAlign'); va.set(qn('w:val'), 'center'); tcPr.append(va)
 
 
 def grid(tbl, hexc='dfe3ea'):
@@ -121,6 +131,8 @@ def runs_from(el, p, size=10, color=BODY):
                 run(p, txt, size=size, color=color)
         elif nm == 'b':
             run(p, node.get_text(' ', strip=True), size=size, bold=True, color=DARK)
+        elif nm == 'i':
+            run(p, node.get_text(' ', strip=True), size=size, italic=True, color=color)
         elif nm == 'a':
             hyperlink(p, node.get('href', ''), node.get_text(' ', strip=True), size=size)
         else:
@@ -133,7 +145,8 @@ def rows_of(table):
         cells = []
         for c in tr.find_all(['th', 'td'], recursive=False):
             cells.append({'text': c.get_text(' ', strip=True).replace('\xa0', ' '), 'th': c.name == 'th',
-                          'colspan': int(c.get('colspan', 1)), 'cls': c.get('class', []), 'el': c})
+                          'colspan': int(c.get('colspan', 1)), 'rowspan': int(c.get('rowspan', 1)),
+                          'cls': c.get('class', []), 'el': c})
         if cells:
             out.append({'cells': cells, 'cls': tr.get('class', [])})
     return out
@@ -212,50 +225,70 @@ def add_trend(table):
 
 
 def add_live(table):
+    # The occupation column rowspans every posting for a SOC (single-SOC reports
+    # group all postings under one occupation cell), so later rows carry only
+    # [employer, title-with-link]. Resolve the grid honoring rowspan and
+    # vertical-merge the occupation cell, else those rows shift left and the
+    # posting links land in a column the walker never reads.
     rows = rows_of(table)
-    tbl = doc.add_table(rows=0, cols=3); tbl.alignment = WD_TABLE_ALIGNMENT.CENTER; grid(tbl)
+    ncol = sum(c['colspan'] for c in rows[0]['cells'])
+    tbl = doc.add_table(rows=len(rows), cols=ncol); tbl.alignment = WD_TABLE_ALIGNMENT.CENTER; grid(tbl)
+    span_left = [0] * ncol  # rows below still covered by a rowspan in this column
     for ri, r in enumerate(rows):
-        cells = tbl.add_row().cells
         ishdr = ri == 0
         accent = next((SOCCOL[c] for c in r['cls'] if c in SOCCOL), None)
-        for ci, c in enumerate(r['cells']):
-            cell = cells[ci]; p = cell.paragraphs[0]
+        ci = 0
+        for c in r['cells']:
+            while ci < ncol and span_left[ci] > 0:  # covered from above → extend the merge
+                tbl.cell(ri - 1, ci).merge(tbl.cell(ri, ci)); span_left[ci] -= 1; ci += 1
+            if ci >= ncol:
+                break
+            cell = tbl.cell(ri, ci); p = cell.paragraphs[0]
             p.paragraph_format.space_before = Pt(1); p.paragraph_format.space_after = Pt(1)
+            cls = c['cls']
             if ishdr:
                 run(p, c['text'], size=8, bold=True, color='5a6577'); shade(cell, HFILL)
-            elif ci == 0:  # occupation + SOC sub
-                b = c['el'].find('span')
+            elif 'lsoc' in cls:  # occupation + SOC sub (rowspans its postings)
                 txt = c['el'].get_text('\n', strip=True).split('\n')
                 run(p, txt[0], size=9, bold=True, color=DARK)
                 if len(txt) > 1:
                     p2 = cell.add_paragraph(); p2.paragraph_format.space_before = Pt(0); p2.paragraph_format.space_after = Pt(0)
                     run(p2, txt[1], size=7.5, color=MUT)
-            elif ci == 1:
+                if accent:
+                    left_accent(cell, accent)
+            elif 'lemp' in cls:  # employer
                 run(p, c['text'], size=9, bold=True, color=DARK)
-            else:
+            else:  # ltit — the linked posting title
                 a = c['el'].find('a')
                 if a:
                     hyperlink(p, a.get('href', ''), a.get_text(' ', strip=True).replace('↗', '').strip() + '  ↗', size=9)
                 else:
                     run(p, c['text'], size=9, color=BODY)
-            if ci == 0 and accent:
-                left_accent(cell, accent)
             cellpad(cell)
+            if c['rowspan'] > 1:
+                span_left[ci] = c['rowspan'] - 1
+            ci += c['colspan']
 
 
 def add_cmpgrid(table):
+    # Two layouts share .cmpgrid: multi-SOC (cols = occupations, sec rows are
+    # full-width KSA dividers) and single-SOC (cols = Knowledge/Skills/Abilities/
+    # Technology, a sec row carries per-column sub-headers). Derive the column
+    # count from the widest row and merge by colspan so both render.
     rows = rows_of(table)
-    tbl = doc.add_table(rows=0, cols=3); tbl.alignment = WD_TABLE_ALIGNMENT.CENTER; grid(tbl)
+    ncol = max(sum(c['colspan'] for c in r['cells']) for r in rows)
+    tbl = doc.add_table(rows=0, cols=ncol); tbl.alignment = WD_TABLE_ALIGNMENT.CENTER; grid(tbl)
     for ri, r in enumerate(rows):
         cells = tbl.add_row().cells
-        issec = 'sec' in r['cls']; isdesc = 'descrow' in r['cls']
-        if issec:  # section divider, colspan 3
-            cell = cells[0]; cell.merge(cells[1]); cell.merge(cells[2])
-            p = cell.paragraphs[0]; run(p, r['cells'][0]['text'].upper(), size=8, bold=True, color=MUT); shade(cell, SECFILL); cellpad(cell); continue
-        for ci, c in enumerate(r['cells']):
-            cell = cells[ci]; p = cell.paragraphs[0]
+        issec = 'sec' in r['cls']; isdesc = 'descrow' in r['cls']; ishdr = ri == 0
+        ci = 0
+        for c in r['cells']:
+            cell = cells[ci]
+            for j in range(1, c['colspan']):
+                cell.merge(cells[ci + j])
+            p = cell.paragraphs[0]
             p.paragraph_format.space_before = Pt(1); p.paragraph_format.space_after = Pt(1)
-            if ri == 0:  # colored occupation headers
+            if ishdr:  # colored occupation header(s) — one per SOC, or one full-width
                 hexc = next((SOCCOL[x] for x in c['cls'] if x in SOCCOL), HFILL)
                 lines = c['el'].get_text('\n', strip=True).split('\n')
                 run(p, lines[0], size=9, bold=True, color='ffffff')
@@ -263,9 +296,22 @@ def add_cmpgrid(table):
                     p2 = cell.add_paragraph(); p2.paragraph_format.space_before = Pt(0); p2.paragraph_format.space_after = Pt(0)
                     run(p2, lines[1], size=7, color='ffffff')
                 shade(cell, hexc)
+            elif issec:  # section band — full-width divider OR per-column K/S/A/T sub-headers
+                run(p, c['text'].upper(), size=8, bold=True, color=MUT); shade(cell, SECFILL)
+            elif isdesc:  # description + its O*NET Occupation Summary link
+                link = c['el'].find('a')
+                desc = c['el'].get_text(' ', strip=True)
+                lt = link.get_text(' ', strip=True) if link else ''
+                if lt and lt in desc:
+                    desc = desc[:desc.rfind(lt)].strip()
+                run(p, desc, size=8.5, color=MUT, italic=True)
+                if link:
+                    p2 = cell.add_paragraph(); p2.paragraph_format.space_before = Pt(5); p2.paragraph_format.space_after = Pt(0)
+                    hyperlink(p2, link.get('href', ''), lt, size=9)
             else:
-                run(p, c['text'], size=8.5, color=(MUT if isdesc else BODY), italic=isdesc)
+                run(p, c['text'], size=8.5, color=BODY)
             cellpad(cell)
+            ci += c['colspan']
 
 
 def add_emps(div):
@@ -300,6 +346,125 @@ def add_image():
     p.add_run().add_picture(XWALK, width=Inches(CONTENT_W))
 
 
+def add_xwalk_legend(div):
+    """Fallback only (used when the crosswalk renders as a rasterized funnel PNG):
+    one quiet centered line of the per-college program links, which are otherwise
+    lost to rasterization. The native crosswalk table carries them inline instead."""
+    links = div.find_all('a')
+    if not links:
+        return
+    p = para(1, 8); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    run(p, 'Program pages:  ', size=8, color=MUT, italic=True)
+    for i, a in enumerate(links):
+        coll = a.find_previous('text')
+        name = coll.get_text(' ', strip=True) if coll else a.get_text(' ', strip=True)
+        if i:
+            run(p, '    ·    ', size=8, color=MUT)
+        hyperlink(p, a.get('href', ''), name, size=8)
+
+
+def _xwalk_data(div):
+    """Recover the crosswalk graph from the rendered SVG: program nodes (left,
+    344-wide rects), SOC occupation nodes (right, 254-wide rects), and the
+    program→SOC edges (matched off each bezier's start/end y)."""
+    import re as _re
+    sv = div.find('svg') or div
+    progy = sorted(float(r.get('y', 0)) for r in sv.find_all('rect') if abs(float(r.get('width', 0)) - 344) < 2)
+    occr = sorted(((float(r.get('y', 0)), float(r.get('height', 0))) for r in sv.find_all('rect')
+                   if abs(float(r.get('width', 0)) - 254) < 2), key=lambda t: t[0])
+    progs = []
+    for i, a in enumerate(sv.find_all('a')):
+        coll = a.find_previous('text'); topn = a.find_next('text')
+        progs.append({'college': coll.get_text(' ', strip=True) if coll else '',
+                      'program': a.get_text(' ', strip=True), 'href': a.get('href', ''),
+                      'top': topn.get_text(' ', strip=True) if topn else '',
+                      'mid': (progy[i] + 30) if i < len(progy) else 0})
+    texts = [t.get_text(' ', strip=True) for t in sv.find_all('text')]
+    tops = [i for i, t in enumerate(texts) if t.startswith('TOP ')]
+    occs, buf = [], []
+    for t in (texts[max(tops) + 1:] if tops else texts):
+        if t.startswith('SOC '):
+            occs.append({'title': ' '.join(buf), 'soc': t}); buf = []
+        else:
+            buf.append(t)
+    for i, o in enumerate(occs):
+        o['mid'] = (occr[i][0] + occr[i][1] / 2) if i < len(occr) else 0
+    near = lambda v, arr: min(range(len(arr)), key=lambda i: abs(arr[i]['mid'] - v)) if arr else -1
+    edges = set()
+    for path in sv.find_all('path'):
+        nums = [float(n) for n in _re.findall(r'-?\d+\.?\d*', path.get('d', ''))]
+        if len(nums) >= 8:
+            edges.add((near(nums[1], progs), near(nums[-1], occs)))
+    return progs, occs, edges
+
+
+def _xwalk_progcell(cell, p, w, pad=44):
+    cell.width = w
+    par = cell.paragraphs[0]; par.paragraph_format.space_before = Pt(2); par.paragraph_format.space_after = Pt(0)
+    run(par, p['college'], size=9, bold=True, color=DARK)
+    p2 = cell.add_paragraph(); p2.paragraph_format.space_before = Pt(0); p2.paragraph_format.space_after = Pt(0)
+    hyperlink(p2, p['href'], p['program'], size=9)
+    if p['top']:
+        p3 = cell.add_paragraph(); p3.paragraph_format.space_before = Pt(0); p3.paragraph_format.space_after = Pt(2)
+        run(p3, p['top'], size=7, color=MUT)
+    cellpad(cell, top=pad, bottom=pad)
+
+
+def add_xwalk_table(div):
+    """Fully-native, fully-clickable crosswalk — no rasterization, so program-name
+    links survive AND the figure survives a Google-Docs paste (a table is the one
+    richly-supported primitive). One SOC → programs converge (arrows) to the target
+    box. Multiple SOCs → a crosswalk matrix: programs × SOC columns, a colored dot
+    at each program→SOC edge."""
+    progs, occs, edges = _xwalk_data(div)
+    if not progs or not occs:
+        return False
+    accents = [TEAL, BLUE, RED]
+    if len(occs) == 1:  # converge-to-one-target
+        n = len(progs)
+        tbl = doc.add_table(rows=n, cols=3); tbl.alignment = WD_TABLE_ALIGNMENT.CENTER; tbl.autofit = False
+        for ri, p in enumerate(progs):
+            _xwalk_progcell(tbl.cell(ri, 0), p, Inches(4.0))
+            left_accent(tbl.cell(ri, 0), accents[ri % len(accents)])
+            c1 = tbl.cell(ri, 1); c1.width = Inches(0.5); vcenter(c1)
+            pa = c1.paragraphs[0]; pa.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            run(pa, '→', size=13, color=MUT)
+        tgt = tbl.cell(0, 2).merge(tbl.cell(n - 1, 2)); tgt.width = Inches(2.6)
+        shade(tgt, TEAL); vcenter(tgt); cellpad(tgt, top=80, bottom=80, left=100, right=100)
+        tp = tgt.paragraphs[0]; tp.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        run(tp, occs[0]['title'], size=11, bold=True, color='ffffff')
+        tp2 = tgt.add_paragraph(); tp2.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        run(tp2, occs[0]['soc'], size=8, color='ffffff')
+        return True
+    # crosswalk matrix: rows = programs, columns = SOCs, dot at each edge
+    ncol = 1 + len(occs)
+    tbl = doc.add_table(rows=1 + len(progs), cols=ncol); tbl.alignment = WD_TABLE_ALIGNMENT.CENTER
+    tbl.autofit = False; grid(tbl)
+    W0 = Inches(3.3); WS = Inches((CONTENT_W - 3.3) / len(occs))
+    # header: blank label cell + colored SOC columns
+    h0 = tbl.cell(0, 0); h0.width = W0; shade(h0, HFILL); cellpad(h0)
+    run(h0.paragraphs[0], 'College program', size=8, bold=True, color='5a6577')
+    for si, o in enumerate(occs):
+        c = tbl.cell(0, si + 1); c.width = WS; shade(c, accents[si % len(accents)]); vcenter(c)
+        cp = c.paragraphs[0]; cp.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        run(cp, o['title'], size=8, bold=True, color='ffffff')
+        cp2 = c.add_paragraph(); cp2.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        run(cp2, o['soc'], size=7, color='ffffff')
+        cellpad(c)
+    # program rows
+    for pi, p in enumerate(progs):
+        _xwalk_progcell(tbl.cell(pi + 1, 0), p, W0, pad=28)
+        for si in range(len(occs)):
+            c = tbl.cell(pi + 1, si + 1); c.width = WS; vcenter(c)
+            cp = c.paragraphs[0]; cp.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            if (pi, si) in edges:
+                run(cp, '●', size=12, color=accents[si % len(accents)])
+            else:
+                run(cp, '·', size=12, color='c8cdd8')
+            cellpad(c)
+    return True
+
+
 # ---------- ordered walk ----------
 def emit(el):
     nm = getattr(el, 'name', None)
@@ -321,7 +486,11 @@ def emit(el):
         if 'tnote' in cls:
             p = para(1, 4); run(p, t, size=8.5, color=MUT, italic=True)
         elif 'tnar' in cls:
-            p = para(6, 2); run(p, t, size=10, color='46536b')
+            p = para(6, 2); runs_from(el, p, size=10, color='46536b')
+        elif 'srcdash' in cls:
+            p = para(2, 4); runs_from(el, p, size=10)
+        elif 'srcsec' in cls:
+            p = para(8, 3); runs_from(el, p, size=10)
         else:
             p = para(2, 5); runs_from(el, p, size=10.5)
     elif nm == 'table':
@@ -334,11 +503,22 @@ def emit(el):
         elif 'trend' in cls:
             add_trend(el)
     elif 'xwrap' in cls:
-        add_image()
+        # Native crosswalk (clickable, paste-safe) by default; fall back to the
+        # rasterized funnel PNG + a link caption if the SVG can't be parsed.
+        if not add_xwalk_table(el):
+            add_image()
+            add_xwalk_legend(el)
     elif 'emps' in cls:
         add_emps(el)
     elif 'footer' in cls:
         add_footer(el)
+    elif 'byline' in cls:
+        p = para(0, 10); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        runs_from(el, p, size=10, color=DARK)
+    elif 'srclist' in cls:
+        for item in el.find_all('div', recursive=False):
+            p = para(0, 1); p.paragraph_format.left_indent = Inches(0.16)
+            runs_from(item, p, size=10)
     elif 'demstat' in cls:
         pass
     else:
