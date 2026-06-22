@@ -37,6 +37,7 @@ from partnerships.sectors import (
     GROWTH_EXEMPT_SOCS,
     INCLUDE_SOCS,
     PROMOTION_SOCS,
+    WAGE_EXEMPT_SOCS,
 )
 
 
@@ -121,7 +122,14 @@ def effective_socs(spec: LandscapeSpec) -> tuple[str, ...]:
             and soc not in INCLUDE_SOCS
         ):
             continue
-        if rule.min_wage and (wages.get(soc) or 0) < rule.min_wage:
+        # WAGE_EXEMPT_SOCS bypass the near-living-wage floor on explicit sector
+        # authority (sectors.WAGE_EXEMPT_SOCS) — its only exception, kept narrow
+        # because the floor is a quality principle, not a size proxy.
+        if (
+            rule.min_wage
+            and (wages.get(soc) or 0) < rule.min_wage
+            and soc not in WAGE_EXEMPT_SOCS
+        ):
             continue
         # Drop declining occupations (negative regional growth) — a shrinking
         # field is poor program-investment strategy — unless structurally

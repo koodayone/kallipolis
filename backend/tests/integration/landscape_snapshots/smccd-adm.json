@@ -9,18 +9,20 @@
         "naics4": "3344",
         "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
         "name": "Jameco Electronics",
-        "relevance": 5.06,
+        "relevance": 5.38,
         "sector": "Manufacturing",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 2,
+        "soc_count": 3,
         "soc_titles": {
           "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
           "49-9041": "Industrial Machinery Mechanics"
         },
         "socs": [
           "17-3023",
-          "49-9041"
+          "49-9041",
+          "17-3024"
         ],
         "website": "https://www.jameco.com/"
       },
@@ -32,18 +34,20 @@
         "naics4": "3344",
         "naics_title": "Semiconductor and Other Electronic Component Manufacturing",
         "name": "Leemah Electronics",
-        "relevance": 5.06,
+        "relevance": 5.38,
         "sector": "Manufacturing",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 2,
+        "soc_count": 3,
         "soc_titles": {
           "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
           "49-9041": "Industrial Machinery Mechanics"
         },
         "socs": [
           "17-3023",
-          "49-9041"
+          "49-9041",
+          "17-3024"
         ],
         "website": "https://www.leemah.com/"
       },
@@ -55,18 +59,20 @@
         "naics4": "3261",
         "naics_title": "Plastics Product Manufacturing",
         "name": "Merrill's Packaging",
-        "relevance": 2.53,
+        "relevance": 2.57,
         "sector": "Manufacturing",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 2,
+        "soc_count": 3,
         "soc_titles": {
           "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
           "49-9041": "Industrial Machinery Mechanics"
         },
         "socs": [
           "49-9041",
-          "17-3023"
+          "17-3023",
+          "17-3024"
         ],
         "website": "https://merrills.com/"
       },
@@ -78,20 +84,172 @@
         "naics4": "3334",
         "naics_title": "Ventilation, Heating, Air-Conditioning, and Commercial Refrigeration Equipment Manufacturing",
         "name": "Rheem Manufacturing",
-        "relevance": 2.42,
+        "relevance": 2.54,
         "sector": "Manufacturing",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 2,
+        "soc_count": 3,
         "soc_titles": {
           "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
           "49-9041": "Industrial Machinery Mechanics"
         },
         "socs": [
           "49-9041",
-          "17-3023"
+          "17-3023",
+          "17-3024"
         ],
         "website": "https://www.rheem.com"
+      },
+      {
+        "description": "BAI, Inc. (Banner Aircraft International) is an aerospace and defense parts distributor supplying certified fasteners, bearings, electrical components, engine parts, and life support systems for military and commercial aircraft platforms including the F-15, F-16, and C-130. The company holds ISO 9001:2015 certification and FAA AC 00-56B compliance, and distributes components from authorized U.S. manufacturers to customers including the Japanese Ministry of Defense. With over 60 years of industry experience, BAI employs staff in logistics, quality assurance, and supply-chain operations supporting aerospace MRO and defense programs.",
+        "display_name": null,
+        "lat": 37.6618731,
+        "lng": -122.4029201,
+        "naics4": "3345",
+        "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
+        "name": "Bai",
+        "relevance": 2.37,
+        "sector": "Manufacturing",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 3,
+        "soc_titles": {
+          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+          "49-9041": "Industrial Machinery Mechanics"
+        },
+        "socs": [
+          "17-3023",
+          "49-9041",
+          "17-3024"
+        ],
+        "website": "https://www.bai-inc.com/"
+      },
+      {
+        "description": "Celldom develops the CloneXplorer Live Single-Cell Biology Platform, a microwell-array instrument that analyzes over 100,000 individual cells per plate in real time \u2014 measuring secreted proteins, morphology, gene expression, and cell-cell interactions simultaneously. The platform serves biopharmaceutical customers in T-cell potency testing, drug screening, and cell manufacturing quality control. Technical roles span biomedical engineering, computational image analysis, and platform software development.",
+        "display_name": null,
+        "lat": 37.5076791,
+        "lng": -122.2519693,
+        "naics4": "3345",
+        "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
+        "name": "Celldom",
+        "relevance": 2.37,
+        "sector": "Manufacturing",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 3,
+        "soc_titles": {
+          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+          "49-9041": "Industrial Machinery Mechanics"
+        },
+        "socs": [
+          "17-3023",
+          "49-9041",
+          "17-3024"
+        ],
+        "website": "https://www.celldom.com/"
+      },
+      {
+        "description": "Galvanize Therapeutics is a Redwood City medical device company that designs and manufactures pulsed electric field (PEF) ablation systems for soft-tissue surgery, with its flagship Aliya PEF Platform and the FDA-cleared Aliya EX Generator targeting lung tumors and COPD. The company also co-developed RheOx, a bronchoscopic PEF technology for interventional pulmonology. Engineering, regulatory affairs, clinical research, and commercial roles are based at its Redwood City headquarters.",
+        "display_name": null,
+        "lat": 37.5076791,
+        "lng": -122.2519693,
+        "naics4": "3345",
+        "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
+        "name": "Galvanize Therapeutics",
+        "relevance": 2.37,
+        "sector": "Manufacturing",
+        "size_class": "100-249 employees",
+        "size_rank": 6,
+        "soc_count": 3,
+        "soc_titles": {
+          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+          "49-9041": "Industrial Machinery Mechanics"
+        },
+        "socs": [
+          "17-3023",
+          "49-9041",
+          "17-3024"
+        ],
+        "website": "https://galvanizetx.com/"
+      },
+      {
+        "description": "GenRad (General Radar Corporation) designs and manufactures advanced phased-array radar systems, including the GFC AESA C-band multi-mission radar with digital beam-forming and a GaN front-end, and the Mark-IV millimeter-wave 3D imaging radar for autonomous vehicles and counter-drone applications. Founded in 2016 and based in Belmont, California, the company serves aerospace, defense, wind energy, and autonomous vehicle markets with a \"Radar-as-a-Service\" model. Development and production work draws on RF/microwave engineers, signal processing specialists, and embedded systems talent.",
+        "display_name": null,
+        "lat": 37.5278511,
+        "lng": -122.2813324,
+        "naics4": "3345",
+        "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
+        "name": "General Radar Corporation",
+        "relevance": 2.37,
+        "sector": "Manufacturing",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 3,
+        "soc_titles": {
+          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+          "49-9041": "Industrial Machinery Mechanics"
+        },
+        "socs": [
+          "17-3023",
+          "49-9041",
+          "17-3024"
+        ],
+        "website": "https://www.genrad.com/"
+      },
+      {
+        "description": "Northstar Photonics designs and manufactures integrated optic components and modules \u2014 including phase modulators, optical switches, and detector modules \u2014 for navigation and sensing applications in aerospace and defense. The company has operated since 2000, holds ISO 9001:2015 certification, and is ITAR registered, serving both domestic and international defense customers. All products are US-designed and manufactured, supporting roles in precision photonics assembly, test, and engineering.",
+        "display_name": null,
+        "lat": 37.4671652,
+        "lng": -122.2102545,
+        "naics4": "3345",
+        "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
+        "name": "Northstar Photonics",
+        "relevance": 2.37,
+        "sector": "Manufacturing",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 3,
+        "soc_titles": {
+          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+          "49-9041": "Industrial Machinery Mechanics"
+        },
+        "socs": [
+          "17-3023",
+          "49-9041",
+          "17-3024"
+        ],
+        "website": "https://www.northstarphotonics.com/"
+      },
+      {
+        "description": "Soleno Therapeutics is a biopharmaceutical company.",
+        "display_name": null,
+        "lat": 37.5355849,
+        "lng": -122.2541914,
+        "naics4": "3345",
+        "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
+        "name": "Soleno Therapeutics",
+        "relevance": 2.37,
+        "sector": "Manufacturing",
+        "size_class": "50-99 employees",
+        "size_rank": 5,
+        "soc_count": 3,
+        "soc_titles": {
+          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+          "49-9041": "Industrial Machinery Mechanics"
+        },
+        "socs": [
+          "17-3023",
+          "49-9041",
+          "17-3024"
+        ],
+        "website": "https://soleno.life/"
       },
       {
         "description": "The San Francisco Public Utilities Commission (SFPUC), operating as San Francisco Water Power Sewer, delivers drinking water, hydroelectric power, and wastewater/sewer services to San Francisco residents and businesses, drawing on the Hetch Hetchy regional water system that also serves surrounding Bay Area communities. The agency operates water treatment plants, power generation facilities, and an extensive sewer and stormwater network across the city. Technical and skilled-trades roles include water system engineers, power system operators, wastewater treatment specialists, and field maintenance crews, with active apprenticeship and workforce development programs.",
@@ -113,144 +271,6 @@
           "49-9041"
         ],
         "website": "https://www.sfpuc.org/"
-      },
-      {
-        "description": "BAI, Inc. (Banner Aircraft International) is an aerospace and defense parts distributor supplying certified fasteners, bearings, electrical components, engine parts, and life support systems for military and commercial aircraft platforms including the F-15, F-16, and C-130. The company holds ISO 9001:2015 certification and FAA AC 00-56B compliance, and distributes components from authorized U.S. manufacturers to customers including the Japanese Ministry of Defense. With over 60 years of industry experience, BAI employs staff in logistics, quality assurance, and supply-chain operations supporting aerospace MRO and defense programs.",
-        "display_name": null,
-        "lat": 37.6618731,
-        "lng": -122.4029201,
-        "naics4": "3345",
-        "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
-        "name": "Bai",
-        "relevance": 2.05,
-        "sector": "Manufacturing",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 2,
-        "soc_titles": {
-          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
-          "49-9041": "Industrial Machinery Mechanics"
-        },
-        "socs": [
-          "17-3023",
-          "49-9041"
-        ],
-        "website": "https://www.bai-inc.com/"
-      },
-      {
-        "description": "Celldom develops the CloneXplorer Live Single-Cell Biology Platform, a microwell-array instrument that analyzes over 100,000 individual cells per plate in real time \u2014 measuring secreted proteins, morphology, gene expression, and cell-cell interactions simultaneously. The platform serves biopharmaceutical customers in T-cell potency testing, drug screening, and cell manufacturing quality control. Technical roles span biomedical engineering, computational image analysis, and platform software development.",
-        "display_name": null,
-        "lat": 37.5076791,
-        "lng": -122.2519693,
-        "naics4": "3345",
-        "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
-        "name": "Celldom",
-        "relevance": 2.05,
-        "sector": "Manufacturing",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 2,
-        "soc_titles": {
-          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
-          "49-9041": "Industrial Machinery Mechanics"
-        },
-        "socs": [
-          "17-3023",
-          "49-9041"
-        ],
-        "website": "https://www.celldom.com/"
-      },
-      {
-        "description": "Galvanize Therapeutics is a Redwood City medical device company that designs and manufactures pulsed electric field (PEF) ablation systems for soft-tissue surgery, with its flagship Aliya PEF Platform and the FDA-cleared Aliya EX Generator targeting lung tumors and COPD. The company also co-developed RheOx, a bronchoscopic PEF technology for interventional pulmonology. Engineering, regulatory affairs, clinical research, and commercial roles are based at its Redwood City headquarters.",
-        "display_name": null,
-        "lat": 37.5076791,
-        "lng": -122.2519693,
-        "naics4": "3345",
-        "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
-        "name": "Galvanize Therapeutics",
-        "relevance": 2.05,
-        "sector": "Manufacturing",
-        "size_class": "100-249 employees",
-        "size_rank": 6,
-        "soc_count": 2,
-        "soc_titles": {
-          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
-          "49-9041": "Industrial Machinery Mechanics"
-        },
-        "socs": [
-          "17-3023",
-          "49-9041"
-        ],
-        "website": "https://galvanizetx.com/"
-      },
-      {
-        "description": "GenRad (General Radar Corporation) designs and manufactures advanced phased-array radar systems, including the GFC AESA C-band multi-mission radar with digital beam-forming and a GaN front-end, and the Mark-IV millimeter-wave 3D imaging radar for autonomous vehicles and counter-drone applications. Founded in 2016 and based in Belmont, California, the company serves aerospace, defense, wind energy, and autonomous vehicle markets with a \"Radar-as-a-Service\" model. Development and production work draws on RF/microwave engineers, signal processing specialists, and embedded systems talent.",
-        "display_name": null,
-        "lat": 37.5278511,
-        "lng": -122.2813324,
-        "naics4": "3345",
-        "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
-        "name": "General Radar Corporation",
-        "relevance": 2.05,
-        "sector": "Manufacturing",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 2,
-        "soc_titles": {
-          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
-          "49-9041": "Industrial Machinery Mechanics"
-        },
-        "socs": [
-          "17-3023",
-          "49-9041"
-        ],
-        "website": "https://www.genrad.com/"
-      },
-      {
-        "description": "Northstar Photonics designs and manufactures integrated optic components and modules \u2014 including phase modulators, optical switches, and detector modules \u2014 for navigation and sensing applications in aerospace and defense. The company has operated since 2000, holds ISO 9001:2015 certification, and is ITAR registered, serving both domestic and international defense customers. All products are US-designed and manufactured, supporting roles in precision photonics assembly, test, and engineering.",
-        "display_name": null,
-        "lat": 37.4671652,
-        "lng": -122.2102545,
-        "naics4": "3345",
-        "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
-        "name": "Northstar Photonics",
-        "relevance": 2.05,
-        "sector": "Manufacturing",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 2,
-        "soc_titles": {
-          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
-          "49-9041": "Industrial Machinery Mechanics"
-        },
-        "socs": [
-          "17-3023",
-          "49-9041"
-        ],
-        "website": "https://www.northstarphotonics.com/"
-      },
-      {
-        "description": "Soleno Therapeutics is a biopharmaceutical company.",
-        "display_name": null,
-        "lat": 37.5355849,
-        "lng": -122.2541914,
-        "naics4": "3345",
-        "naics_title": "Navigational, Measuring, Electromedical, and Control Instruments Manufacturing",
-        "name": "Soleno Therapeutics",
-        "relevance": 2.05,
-        "sector": "Manufacturing",
-        "size_class": "50-99 employees",
-        "size_rank": 5,
-        "soc_count": 2,
-        "soc_titles": {
-          "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
-          "49-9041": "Industrial Machinery Mechanics"
-        },
-        "socs": [
-          "17-3023",
-          "49-9041"
-        ],
-        "website": "https://soleno.life/"
       },
       {
         "description": "Steelhead Brewing Co was a brewpub chain operating brewery-restaurant locations in Burlingame and Irvine, California, as well as Eugene, Oregon, producing house-brewed craft beers including flagship ales, IPAs, stouts, and pilsners served on-site alongside American-style food menus. The California locations \u2014 Burlingame (333 California Dr) and Irvine (4175 Campus Dr) \u2014 are both permanently closed, with the Burlingame space since occupied by a different restaurant. The Oregon flagship location also closed after 32 years of operation; the company's website is no longer reachable.",
@@ -283,18 +303,20 @@
         "naics4": "3254",
         "naics_title": "Pharmaceutical and Medicine Manufacturing",
         "name": "Adicet Bio",
-        "relevance": 1.5,
+        "relevance": 1.52,
         "sector": "Manufacturing",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 2,
+        "soc_count": 3,
         "soc_titles": {
           "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
           "49-9041": "Industrial Machinery Mechanics"
         },
         "socs": [
           "49-9041",
-          "17-3023"
+          "17-3023",
+          "17-3024"
         ],
         "website": "https://www.adicetbio.com/"
       },
@@ -306,18 +328,20 @@
         "naics4": "3254",
         "naics_title": "Pharmaceutical and Medicine Manufacturing",
         "name": "Alumis",
-        "relevance": 1.5,
+        "relevance": 1.52,
         "sector": "Manufacturing",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 2,
+        "soc_count": 3,
         "soc_titles": {
           "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
           "49-9041": "Industrial Machinery Mechanics"
         },
         "socs": [
           "49-9041",
-          "17-3023"
+          "17-3023",
+          "17-3024"
         ],
         "website": "https://www.alumis.com/"
       },
@@ -329,18 +353,20 @@
         "naics4": "3254",
         "naics_title": "Pharmaceutical and Medicine Manufacturing",
         "name": "Anwita Bioscience",
-        "relevance": 1.5,
+        "relevance": 1.52,
         "sector": "Manufacturing",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 2,
+        "soc_count": 3,
         "soc_titles": {
           "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
           "49-9041": "Industrial Machinery Mechanics"
         },
         "socs": [
           "49-9041",
-          "17-3023"
+          "17-3023",
+          "17-3024"
         ],
         "website": "https://www.anwitabio.com/"
       },
@@ -352,18 +378,20 @@
         "naics4": "3254",
         "naics_title": "Pharmaceutical and Medicine Manufacturing",
         "name": "Cellares Corporation",
-        "relevance": 1.5,
+        "relevance": 1.52,
         "sector": "Manufacturing",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 2,
+        "soc_count": 3,
         "soc_titles": {
           "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
           "49-9041": "Industrial Machinery Mechanics"
         },
         "socs": [
           "49-9041",
-          "17-3023"
+          "17-3023",
+          "17-3024"
         ],
         "website": "https://www.cellares.com/"
       },
@@ -375,18 +403,20 @@
         "naics4": "3254",
         "naics_title": "Pharmaceutical and Medicine Manufacturing",
         "name": "Day One Biopharmaceuticals",
-        "relevance": 1.5,
+        "relevance": 1.52,
         "sector": "Manufacturing",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 2,
+        "soc_count": 3,
         "soc_titles": {
           "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
           "49-9041": "Industrial Machinery Mechanics"
         },
         "socs": [
           "49-9041",
-          "17-3023"
+          "17-3023",
+          "17-3024"
         ],
         "website": "https://www.dayonebio.com/"
       },
@@ -398,18 +428,20 @@
         "naics4": "3254",
         "naics_title": "Pharmaceutical and Medicine Manufacturing",
         "name": "Geron Corporation",
-        "relevance": 1.5,
+        "relevance": 1.52,
         "sector": "Manufacturing",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 2,
+        "soc_count": 3,
         "soc_titles": {
           "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
           "49-9041": "Industrial Machinery Mechanics"
         },
         "socs": [
           "49-9041",
-          "17-3023"
+          "17-3023",
+          "17-3024"
         ],
         "website": "https://www.geron.com/"
       },
@@ -421,18 +453,20 @@
         "naics4": "3254",
         "naics_title": "Pharmaceutical and Medicine Manufacturing",
         "name": "Lyell Immunopharma",
-        "relevance": 1.5,
+        "relevance": 1.52,
         "sector": "Manufacturing",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 2,
+        "soc_count": 3,
         "soc_titles": {
           "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
           "49-9041": "Industrial Machinery Mechanics"
         },
         "socs": [
           "49-9041",
-          "17-3023"
+          "17-3023",
+          "17-3024"
         ],
         "website": "https://www.lyell.com/"
       },
@@ -444,18 +478,20 @@
         "naics4": "3254",
         "naics_title": "Pharmaceutical and Medicine Manufacturing",
         "name": "Mirum Pharmaceuticals",
-        "relevance": 1.5,
+        "relevance": 1.52,
         "sector": "Manufacturing",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 2,
+        "soc_count": 3,
         "soc_titles": {
           "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
           "49-9041": "Industrial Machinery Mechanics"
         },
         "socs": [
           "49-9041",
-          "17-3023"
+          "17-3023",
+          "17-3024"
         ],
         "website": "https://mirumpharma.com/"
       },
@@ -467,18 +503,20 @@
         "naics4": "3254",
         "naics_title": "Pharmaceutical and Medicine Manufacturing",
         "name": "Pacira Biosciences",
-        "relevance": 1.5,
+        "relevance": 1.52,
         "sector": "Manufacturing",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 2,
+        "soc_count": 3,
         "soc_titles": {
           "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
           "49-9041": "Industrial Machinery Mechanics"
         },
         "socs": [
           "49-9041",
-          "17-3023"
+          "17-3023",
+          "17-3024"
         ],
         "website": "https://www.pacira.com/"
       },
@@ -490,18 +528,20 @@
         "naics4": "3254",
         "naics_title": "Pharmaceutical and Medicine Manufacturing",
         "name": "Principia Biopharma",
-        "relevance": 1.5,
+        "relevance": 1.52,
         "sector": "Manufacturing",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 2,
+        "soc_count": 3,
         "soc_titles": {
           "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
           "49-9041": "Industrial Machinery Mechanics"
         },
         "socs": [
           "49-9041",
-          "17-3023"
+          "17-3023",
+          "17-3024"
         ],
         "website": "PRINCIPIABIO.COM"
       },
@@ -513,18 +553,20 @@
         "naics4": "3254",
         "naics_title": "Pharmaceutical and Medicine Manufacturing",
         "name": "Revolution Medicines",
-        "relevance": 1.5,
+        "relevance": 1.52,
         "sector": "Manufacturing",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 2,
+        "soc_count": 3,
         "soc_titles": {
           "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
           "49-9041": "Industrial Machinery Mechanics"
         },
         "socs": [
           "49-9041",
-          "17-3023"
+          "17-3023",
+          "17-3024"
         ],
         "website": "https://www.revmed.com/"
       },
@@ -536,18 +578,20 @@
         "naics4": "3254",
         "naics_title": "Pharmaceutical and Medicine Manufacturing",
         "name": "Structure Therapeutics",
-        "relevance": 1.5,
+        "relevance": 1.52,
         "sector": "Manufacturing",
         "size_class": "50-99 employees",
         "size_rank": 5,
-        "soc_count": 2,
+        "soc_count": 3,
         "soc_titles": {
           "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
           "49-9041": "Industrial Machinery Mechanics"
         },
         "socs": [
           "49-9041",
-          "17-3023"
+          "17-3023",
+          "17-3024"
         ],
         "website": "https://www.structuretx.com/"
       },
@@ -559,18 +603,20 @@
         "naics4": "3254",
         "naics_title": "Pharmaceutical and Medicine Manufacturing",
         "name": "Vera Therapeutics",
-        "relevance": 1.5,
+        "relevance": 1.52,
         "sector": "Manufacturing",
         "size_class": "100-249 employees",
         "size_rank": 6,
-        "soc_count": 2,
+        "soc_count": 3,
         "soc_titles": {
           "17-3023": "Electrical and Electronic Engineering Technologists and Technicians",
+          "17-3024": "Electro-Mechanical and Mechatronics Technologists and Technicians",
           "49-9041": "Industrial Machinery Mechanics"
         },
         "socs": [
           "49-9041",
-          "17-3023"
+          "17-3023",
+          "17-3024"
         ],
         "website": "https://veratx.com/"
       }
@@ -648,7 +694,7 @@
         "enrollment_total": 130,
         "n_colleges_offering": 0,
         "name": "Electronics and Electric Technology",
-        "soc_count": 1,
+        "soc_count": 2,
         "top6": "093400"
       },
       {
@@ -666,11 +712,11 @@
       "candidate_employers": 486,
       "combined_awards": 5,
       "combined_supply_total": 29.0,
-      "gap": 951,
+      "gap": 1031,
       "n_colleges": 3,
-      "n_occupations": 2,
+      "n_occupations": 3,
       "occupations_taught": 1,
-      "regional_demand_total": 980
+      "regional_demand_total": 1060
     },
     "award_years": [
       "2020-2021",
@@ -788,6 +834,111 @@
             "title": "Electrical and Electronic Engineering Technologists and Technicians"
           },
           {
+            "annual_openings": 80,
+            "annual_wage": 78280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": true,
+            "feeding_awards": 0,
+            "gap": 80,
+            "growth_rate": -0.013784232,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  2,
+                  0,
+                  1,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Engineering Technology, General (requires Trigonometry)",
+                "top6": "092400",
+                "wages": [
+                  {
+                    "n": 59,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 64498,
+                    "wage_after_5": 88963,
+                    "wage_before": 25967,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 21,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 61485,
+                    "wage_after_5": 76163,
+                    "wage_before": 36610,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  6,
+                  17,
+                  9,
+                  6,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  74,
+                  72,
+                  29,
+                  2,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Electronics and Electric Technology",
+                "top6": "093400",
+                "wages": [
+                  {
+                    "n": 223,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 65274,
+                    "wage_after_5": 80497,
+                    "wage_before": 36812,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 353,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 69631,
+                    "wage_after_5": 84558,
+                    "wage_before": 42485,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 88,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 94249,
+                    "wage_after_5": 94013,
+                    "wage_before": 69348,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "17-3024",
+            "supply": 0.0,
+            "title": "Electro-Mechanical and Mechatronics Technologists and Technicians"
+          },
+          {
             "annual_openings": 550,
             "annual_wage": 80760,
             "awards_recent": 0,
@@ -869,6 +1020,119 @@
             "soc_code": "17-3023",
             "supply": 0.0,
             "title": "Electrical and Electronic Engineering Technologists and Technicians"
+          },
+          {
+            "annual_openings": 80,
+            "annual_wage": 78280,
+            "awards_recent": 4,
+            "course_count": 0,
+            "enrolled": true,
+            "feeding_awards": 4,
+            "gap": 80,
+            "growth_rate": -0.013784232,
+            "programs": [
+              {
+                "awards": [
+                  0,
+                  0,
+                  2,
+                  8,
+                  4
+                ],
+                "awards_recent": 4,
+                "enrollment": [
+                  56,
+                  5,
+                  78,
+                  46,
+                  39,
+                  96,
+                  34,
+                  84,
+                  87
+                ],
+                "name": "Electronics and Electric Technology",
+                "top6": "093400",
+                "wages": [
+                  {
+                    "n": 223,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 65274,
+                    "wage_after_5": 80497,
+                    "wage_before": 36812,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 353,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 69631,
+                    "wage_after_5": 84558,
+                    "wage_before": 42485,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 88,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 94249,
+                    "wage_after_5": 94013,
+                    "wage_before": 69348,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              },
+              {
+                "awards": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "awards_recent": 0,
+                "enrollment": [
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null,
+                  null
+                ],
+                "name": "Manufacturing and Industrial Technology",
+                "top6": "095600",
+                "wages": [
+                  {
+                    "n": 54,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 54092,
+                    "wage_after_5": 73636,
+                    "wage_before": 26272,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 85,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 60922,
+                    "wage_after_5": 72654,
+                    "wage_before": 36476,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 38,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 64897,
+                    "wage_after_5": 75071,
+                    "wage_before": 54280,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
+              }
+            ],
+            "soc_code": "17-3024",
+            "supply": 0.0,
+            "title": "Electro-Mechanical and Mechatronics Technologists and Technicians"
           },
           {
             "annual_openings": 550,
@@ -995,6 +1259,20 @@
             "title": "Electrical and Electronic Engineering Technologists and Technicians"
           },
           {
+            "annual_openings": 80,
+            "annual_wage": 78280,
+            "awards_recent": 0,
+            "course_count": 0,
+            "enrolled": false,
+            "feeding_awards": 0,
+            "gap": 80,
+            "growth_rate": -0.013784232,
+            "programs": [],
+            "soc_code": "17-3024",
+            "supply": 0.0,
+            "title": "Electro-Mechanical and Mechatronics Technologists and Technicians"
+          },
+          {
             "annual_openings": 550,
             "annual_wage": 80760,
             "awards_recent": 0,
@@ -1024,7 +1302,7 @@
       "Spring 2025",
       "Fall 2025"
     ],
-    "executive_summary": "This view examines the regional demand landscape across the 2 advanced manufacturing occupations the San Mateo County CCD \u2014 Advanced Manufacturing targets in the Bay Area regional labor market. Regional demand for these occupations totals 980 openings per year.",
+    "executive_summary": "This view examines the regional demand landscape across the 3 advanced manufacturing occupations the San Mateo County CCD \u2014 Advanced Manufacturing targets in the Bay Area regional labor market. Regional demand for these occupations totals 1,060 openings per year.",
     "is_sector_priority": true,
     "region": "Bay",
     "region_display": "Bay Area",
