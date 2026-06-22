@@ -333,7 +333,8 @@ def _programs(
 
 # ── The public entry point ────────────────────────────────────────────────────
 @lru_cache(maxsize=512)
-def build_lens(member_id: str, *, sector: str | None = None, play: Play | None = None) -> LensModel:
+def build_lens(member_id: str, *, sector: str | None = None, play: Play | None = None,
+               extra_colleges: tuple[str, ...] = ()) -> LensModel:
     """Project the ontology onto a `(member, slice)` scope → the neutral LensModel.
 
     Exactly one of `sector` (dashboard: the whole field) or `play` (report: a
@@ -362,6 +363,13 @@ def build_lens(member_id: str, *, sector: str | None = None, play: Play | None =
     region = pool.resolve_region()
     in_scope = list(pool.in_scope_tops())
     colleges = list(pool.colleges)
+    # Charter partners outside the cluster pool (e.g. a SVAMP member the BACCC
+    # expansion doesn't reach) — added to the supply scope so their programs are
+    # readable even when carried by enrollment rather than awards. is_member stays
+    # False; they are partners, not the scope member.
+    for c in extra_colleges:
+        if c not in colleges:
+            colleges.append(c)
 
     if sector is not None:
         socs = list(resolve(pool).socs)

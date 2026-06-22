@@ -1,0 +1,47 @@
+{
+  "member": "svamp",
+  "title": "Industrial Machinery Mechanic",
+  "sector": "adm",
+  "socs": [
+    "49-9041"
+  ],
+  "author": "Dayone Koo",
+  "date": "June 21, 2026",
+  "partnership": "svamp",
+  "partner_min_awards": 50,
+  "live_postings": {
+    "49-9041": [
+      {
+        "employer": "Applied Materials",
+        "title": "Common Equipment Technician III",
+        "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=49-9041.00&location=95054&radius=50&pagesize=250&curPage=1&fc=1&jvid=514fe2a37b704f62a6b3864983459ebe8003&detailpage=true"
+      },
+      {
+        "employer": "Johnson & Johnson",
+        "title": "Service Repair Technician, Flexible Robotics",
+        "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=49-9041.00&location=95054&radius=50&pagesize=250&curPage=1&fc=1&jvid=33dcabdae5a44df7a5a412162d63c85f8003&detailpage=true"
+      },
+      {
+        "employer": "Western Digital",
+        "title": "Wafer Equipment Maintenance Technician",
+        "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=49-9041.00&location=95054&radius=50&pagesize=250&curPage=1&fc=1&jvid=b3f6d3777bf341c88bd39b9e2af905268003&detailpage=true"
+      },
+      {
+        "employer": "Trane Technologies",
+        "title": "Field Service Technician",
+        "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=49-9041.00&location=95054&radius=50&pagesize=250&curPage=1&fc=1&jvid=4a0a4cc41e7b40c7a7b113e6feca35be8003&detailpage=true"
+      },
+      {
+        "employer": "Lockheed Martin",
+        "title": "Electro Mechanical Technician",
+        "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=49-9041.00&location=95054&radius=50&pagesize=250&curPage=1&fc=1&jvid=7807b2b1904647c495431e182c4825ce8003&detailpage=true"
+      },
+      {
+        "employer": "Kellanova",
+        "title": "Industrial Maintenance Mechanic",
+        "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=49-9041.00&location=95054&radius=50&pagesize=250&curPage=1&fc=1&jvid=e036a78111de474d8855c3eb8ad382ba8003&detailpage=true"
+      }
+    ]
+  },
+  "dashboard_url": "https://preview.kallipolis.us/svamp/"
+}

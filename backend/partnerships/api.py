@@ -31,7 +31,7 @@ import os
 from pathlib import Path
 from typing import Optional
 
-from fastapi import APIRouter, HTTPException, Response
+from fastapi import APIRouter, HTTPException, Request, Response
 from pydantic import BaseModel
 
 from partnerships.models import OpportunityReport, SectorIndex
@@ -858,7 +858,7 @@ def post_report_html(member_id: str, req: ReportRequest) -> Response:
         lens = build_lens(member_id, play=play)
         spec = propose_spec(member_id, play, lens=lens, author=req.author, date=req.date)
         if req.live_postings:
-            lp = {soc: LivePosting(p.employer, p.title, p.url) for soc, p in req.live_postings.items()}
+            lp = {soc: [LivePosting(p.employer, p.title, p.url)] for soc, p in req.live_postings.items()}
             spec = dataclasses.replace(spec, live_postings=lp)
         html = build_report_html(member_id, play, spec, lens=lens)
     except LookupError as e:
@@ -875,3 +875,157 @@ router.add_api_route(
     description="Same as GET /report/{member}, but the JSON body may carry curation "
                 "overrides — live_postings (the find-live-postings skill's picks) layered "
                 "onto the proposed spec. Empty overrides behave like the GET.")
+
+
+# Editorial fields a saved-report definition may override on the proposed spec —
+# the prose/curation the dialectic refines (everything in ReportSpec that is words
+# or selection, never data).
+_SPEC_OVERRIDE_FIELDS = (
+    "org_name", "org_short", "lede", "byline", "demand_note", "alignment_note",
+    "competency_note", "award_note", "enrollment_note", "dashboard_url",
+)
+
+
+def _saved_dir():
+    from pathlib import Path
+    return Path(__file__).resolve().parent / "saved_reports"
+
+
+def _generated_report_html(slug: str) -> str:
+    """Render the CLEAN report HTML from its saved definition (play + editorial/
+    curation overrides), read fresh per call. What the ?raw view and the docx render
+    consume — no edit affordances."""
+    import dataclasses
+    import json
+
+    from partnerships.report import (CompetencyColumn, LivePosting, Play,
+                                      build_report_html, propose_spec)
+
+    path = _saved_dir() / f"{slug}.json"
+    if not path.exists():
+        raise HTTPException(status_code=404, detail=f"no saved report '{slug}'")
+    d = json.loads(path.read_text())
+    play = Play(id=slug, title=d["title"], sector=d["sector"], socs=tuple(d["socs"]))
+    member = d["member"]
+    # Charter partners (the def's partnership) join the supply scope so a member the
+    # cluster pool doesn't reach (e.g. Evergreen Valley) is readable — carried by
+    # enrollment when its award data is missing.
+    charter: tuple[str, ...] = ()
+    if d.get("partnership"):
+        from partnerships.registry import spec_for
+        ps = spec_for(d["partnership"])
+        charter = tuple(ps.colleges) if ps else ()
+    lens = build_lens(member, play=play, extra_colleges=charter)
+    spec = propose_spec(member, play, lens=lens,
+                        author=d.get("author", "Kallipolis"), date=d.get("date", ""))
+    over = {k: d[k] for k in _SPEC_OVERRIDE_FIELDS if d.get(k) is not None}
+    if d.get("live_postings"):
+        # a SOC may carry a single posting (dict) or several (list) — normalize to a list
+        over["live_postings"] = {
+            soc: [LivePosting(p["employer"], p["title"], p["url"])
+                  for p in (plist if isinstance(plist, list) else [plist])]
+            for soc, plist in d["live_postings"].items()}
+    if d.get("competencies"):
+        # the curate-competencies skill's cut (shared core + distinctions), overriding
+        # the deterministic distinctiveness default; the grid aligns these by sharing.
+        over["competencies"] = [
+            CompetencyColumn(soc=soc, description=c.get("description", ""),
+                             knowledge=c.get("knowledge", []), skills=c.get("skills", []),
+                             abilities=c.get("abilities", []), technology=c.get("technology", []))
+            for soc, c in d["competencies"].items()
+        ]
+    # Partner selection: an explicit def.programs override wins (incl. strategic
+    # adds); else the partnership rule (size ∪ charter-strongest) computed live.
+    if d.get("programs"):
+        over["programs"] = [tuple(x) for x in d["programs"]]
+    elif charter:
+        from partnerships.report import select_partner_programs
+        over["programs"] = sorted(select_partner_programs(
+            lens.programs, charter, min_awards=int(d.get("partner_min_awards", 50))))
+        chosen_colleges = {c for c, _ in over["programs"]}
+        over["charter_gaps"] = tuple(c for c in charter if c not in chosen_colleges)
+    if over:
+        spec = dataclasses.replace(spec, **over)
+    return build_report_html(member, play, spec, lens=lens)
+
+
+# Injected ONLY into the editable view (never ?raw or the docx render): makes the
+# prose directly editable in the browser, locks the data tables/figures, and saves
+# the cleaned document back — so language tweaks need no agent round-trip.
+_EDIT_TOOLBAR = """
+<div id="kp-editbar" contenteditable="false" style="position:fixed;top:12px;right:12px;z-index:99999;background:#11131c;color:#cdd5e4;font:13px/1.4 -apple-system,system-ui,sans-serif;padding:9px 12px;border-radius:9px;box-shadow:0 4px 16px rgba(0,0,0,.35);display:flex;gap:10px;align-items:center">
+  <span id="kp-status" style="opacity:.65">edit prose &middot; &#8984;S saves</span>
+  <button onclick="kpSave()" style="background:#3b82f6;color:#fff;border:0;border-radius:6px;padding:5px 13px;font:inherit;cursor:pointer">Save</button>
+  <button onclick="kpRevert()" style="background:transparent;color:#8a94ab;border:1px solid #2a2f3e;border-radius:6px;padding:5px 10px;font:inherit;cursor:pointer">Revert</button>
+</div>
+<script id="kp-editscript">
+(function(){
+  document.body.contentEditable = 'true';
+  document.querySelectorAll('table, svg, img, figure, #kp-editbar').forEach(function(e){ e.contentEditable='false'; });
+  // contenteditable swallows link clicks — restore navigation (open in a new tab)
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest && ev.target.closest('a[href]');
+    if (a && !a.closest('#kp-editbar')) {
+      var href = a.getAttribute('href');
+      if (href && href.charAt(0) !== '#') { ev.preventDefault(); window.open(a.href, '_blank', 'noopener'); }
+    }
+  }, true);
+  function st(t,c){ var s=document.getElementById('kp-status'); s.textContent=t; s.style.color=c||'#cdd5e4'; }
+  document.body.addEventListener('input', function(){ st('unsaved\\u2026','#f59e0b'); });
+  window.kpSave = async function(){
+    var d = document.documentElement.cloneNode(true);
+    ['#kp-editbar','#kp-editscript'].forEach(function(s){ var n=d.querySelector(s); if(n) n.remove(); });
+    d.querySelectorAll('[contenteditable]').forEach(function(e){ e.removeAttribute('contenteditable'); });
+    try { var r = await fetch(location.pathname.replace(/\\/$/,'')+'/save',{method:'POST',headers:{'Content-Type':'text/html'},body:'<!DOCTYPE html>\\n'+d.outerHTML});
+      st(r.ok?'saved \\u2713':'save failed', r.ok?'#22c55e':'#ef4444'); }
+    catch(e){ st('save failed','#ef4444'); }
+  };
+  window.kpRevert = async function(){
+    if(!confirm('Discard your edits and regenerate from the definition + data?')) return;
+    await fetch(location.pathname.replace(/\\/$/,'')+'/revert',{method:'POST'}); location.reload();
+  };
+  window.addEventListener('keydown', function(e){ if((e.metaKey||e.ctrlKey)&&e.key==='s'){ e.preventDefault(); window.kpSave(); }});
+})();
+</script>
+"""
+
+
+def get_saved_report(slug: str, raw: int = 0) -> Response:
+    """The dialectical surface. Serves a saved report's HTML; if a hand-EDITED
+    version exists it serves that, else renders from the def (read fresh, so agentic
+    def edits show on refresh). The default view injects an edit toolbar — click into
+    the prose, type, ⌘S — so language tweaks self-serve; ?raw=1 is the clean
+    artifact for the docx render."""
+    edited = _saved_dir() / f"{slug}.edited.html"
+    clean = edited.read_text(encoding="utf-8") if edited.exists() else _generated_report_html(slug)
+    if raw:
+        return Response(content=clean, media_type="text/html")
+    return Response(content=clean.replace("</body>", _EDIT_TOOLBAR + "</body>", 1),
+                    media_type="text/html")
+
+
+async def save_report(slug: str, request: Request) -> dict:
+    """Persist the hand-edited report HTML the edit view POSTs, so prose edits survive
+    a refresh. Subsequent views serve the edited version until Revert regenerates."""
+    if not (_saved_dir() / f"{slug}.json").exists():
+        raise HTTPException(status_code=404, detail=f"no saved report '{slug}'")
+    body = (await request.body()).decode("utf-8")
+    (_saved_dir() / f"{slug}.edited.html").write_text(body, encoding="utf-8")
+    return {"status": "saved", "bytes": len(body)}
+
+
+def revert_report(slug: str) -> dict:
+    """Discard the hand-edited version — the next view regenerates from def + data."""
+    p = _saved_dir() / f"{slug}.edited.html"
+    if p.exists():
+        p.unlink()
+    return {"status": "reverted"}
+
+
+router.add_api_route("/report/saved/{slug}", get_saved_report, methods=["GET"],
+                     name="get_saved_report",
+                     description="Editable report view (dialectical surface). ?raw=1 = clean artifact.")
+router.add_api_route("/report/saved/{slug}/save", save_report, methods=["POST"],
+                     name="save_report", description="Persist the hand-edited report HTML.")
+router.add_api_route("/report/saved/{slug}/revert", revert_report, methods=["POST"],
+                     name="revert_report", description="Discard edits; regenerate from the def.")

@@ -1,0 +1,111 @@
+{
+  "member": "foothill",
+  "title": "Manufacturing Technician",
+  "sector": "adm",
+  "socs": [
+    "17-3026",
+    "51-9141",
+    "17-3024"
+  ],
+  "author": "Dayone Koo",
+  "date": "June 21, 2026",
+  "_comment": "Dialectical surface for the Foothill MT report. Edit this file; the /report/saved/ endpoint re-renders on refresh. Fields mirror ReportSpec overrides (lede, *_note, live_postings).",
+  "live_postings": {
+    "51-9141": {
+      "employer": "Intel",
+      "title": "Mask Manufacturing Technician",
+      "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=51-9141.00&location=94022&radius=25&pagesize=250&curPage=1&fc=0&jvid=a2293787e0634895a5cedfdfa6bea0488003&detailpage=true"
+    },
+    "17-3026": {
+      "employer": "Honeywell Aerospace",
+      "title": "Manufacturing Test Technician Level 1",
+      "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=17-3026.00&location=94022&radius=25&pagesize=250&curPage=1&fc=1&jvid=292a98f151e447808e5c5ba88327106f8003&detailpage=true"
+    },
+    "17-3024": {
+      "employer": "Johnson & Johnson",
+      "title": "Manufacturing Tech III — Surgical Robotics OTTAVA",
+      "url": "https://www.careeronestop.org/Toolkit/Jobs/find-jobs-details.aspx?keyword=17-3024.00&location=94022&radius=25&pagesize=250&curPage=1&fc=1&jvid=dfd0b0e608344861a2f3a7c7fa2df4de8003&detailpage=true"
+    }
+  },
+  "lede": "Foothill College is committed to training students to fill critical roles in the region's advanced manufacturing sector. This report examines how Foothill College programs support the Manufacturing Technician role and how those programs align with other schools in the BACCC to meet regional labor-market demand.",
+  "demand_note": "The U.S. Department of Labor's O*NET system [maps the title Manufacturing Technician to these standard occupational classifications](https://www.onetonline.org/find/quick?s=Manufacturing+Technician), supported by Foothill College programs. [According to the Centers of Excellence](https://datastudio.google.com/u/0/reporting/5060057c-b9ba-4081-9ed7-83356eaa7061), these occupations roughly represent 410 openings a year in the Bay Area labor market.",
+  "competency_note": "The three occupations share a core set of competencies — knowledge of production processes, proficiency with industrial system operations, and the ability to reason through complex technical problems in the advanced manufacturing space. Workers should be familiar with a modern software stack that supports manufacturing functions including data analytics, control systems, and computer-aided design. Layering artificial intelligence onto these core competencies would be a natural curriculum development opportunity for SVAMP colleges given rapid AI-driven innovation in the identified competency areas.",
+  "competencies": {
+    "51-9141": {
+      "description": "Operates furnaces, crystal-growth chambers, and chemical baths to process semiconductor materials into wafers and circuitry.",
+      "knowledge": [
+        "Production & Processing",
+        "Computers & Electronics",
+        "Chemistry"
+      ],
+      "skills": [
+        "Quality Control Analysis",
+        "Operations Monitoring"
+      ],
+      "abilities": [
+        "Inductive Reasoning",
+        "Deductive Reasoning",
+        "Information Ordering",
+        "Control Precision"
+      ],
+      "technology": [
+        "Analytical / scientific software",
+        "Industrial control software",
+        "Programming"
+      ]
+    },
+    "17-3026": {
+      "description": "Applies engineering principles to manufacturing production and industrial layout — improving rates, efficiency, and quality.",
+      "knowledge": [
+        "Production & Processing",
+        "Computers & Electronics",
+        "Engineering & Technology"
+      ],
+      "skills": [
+        "Quality Control Analysis",
+        "Systems Analysis",
+        "Operations Analysis"
+      ],
+      "abilities": [
+        "Inductive Reasoning",
+        "Deductive Reasoning",
+        "Information Ordering"
+      ],
+      "technology": [
+        "Analytical / scientific software",
+        "Industrial control software",
+        "Programming",
+        "CAD / CAM software"
+      ]
+    },
+    "17-3024": {
+      "description": "Operates, tests, and maintains automated, servomechanical, and electromechanical equipment, including robotics.",
+      "knowledge": [
+        "Production & Processing",
+        "Computers & Electronics",
+        "Engineering & Technology"
+      ],
+      "skills": [
+        "Quality Control Analysis",
+        "Operations Monitoring",
+        "Systems Analysis",
+        "Troubleshooting & Repair"
+      ],
+      "abilities": [
+        "Inductive Reasoning",
+        "Deductive Reasoning",
+        "Information Ordering",
+        "Control Precision"
+      ],
+      "technology": [
+        "Analytical / scientific software",
+        "Industrial control software",
+        "Programming",
+        "CAD / CAM software"
+      ]
+    }
+  },
+  "partnership": "svamp",
+  "partner_min_awards": 50,
+  "alignment_note": "How member-college programs across the consortium supports the Manufacturing Technician role, which spans across the 3 SOCs shown. Mappings are derived from the [TOP–CIP–SOC crosswalk published by the Centers of Excellence](https://datastudio.google.com/u/0/reporting/62925aaa-3c91-48ab-941b-2473c0e17cb7)."
+}

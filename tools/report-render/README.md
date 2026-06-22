@@ -15,9 +15,10 @@ conventions, plus a toolbar/autosave script. Two artifacts derive from it:
 - **`.pdf`** — Chromium print-to-PDF of the `?clean` page. Vector, exact, text
   selectable. The canonical-fidelity reference.
 - **`.docx`** — a *native* python-docx build, element by element (real Word
-  tables/paragraphs/hyperlinks), so it survives the Google-Docs paste. The one
-  un-nativeable element — the SVG crosswalk funnel — is embedded as a high-DPI
-  PNG. Editable, unlike a full-page raster.
+  tables/paragraphs/hyperlinks), so it survives the Google-Docs paste. Even the
+  SVG crosswalk is reconstructed as a native, fully-clickable table — every
+  program-name link stays live — with the high-DPI PNG kept only as a fallback
+  if the SVG can't be parsed. Editable, unlike a full-page raster.
 
 Rationale: Pandoc/htmldocx drop CSS+SVG; LibreOffice `--convert-to` mangles
 flex/SVG and Google Docs reflows it further. A controlled native build keeps the
@@ -36,7 +37,8 @@ docx both faithful **and** editable, with the PDF as the absolute-fidelity net.
 | `table.live` | live-postings table (left SOC-color accent bars `lc1/lc2/lc3`) |
 | `table.cmpgrid` | competency grid (colored `c1h/c2h/c3h` headers, `sec`/`descrow` rows) |
 | `table.trend` | award / enrollment trend tables |
-| `.xwrap` | embeds the crosswalk PNG |
+| `.xwrap` | native crosswalk table — converge-to-target box (1 SOC) or program×SOC matrix (≥2 SOCs); PNG fallback only if the SVG won't parse |
+| `.byline` / `.srcdash` / `.srcsec` / `.srclist` | byline + sourced footer blocks |
 | `.emps` / `.footer` | employer list / sourced footer |
 
 A new title reuses this harness **only if its HTML follows the same contract.**

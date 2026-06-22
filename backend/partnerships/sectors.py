@@ -182,10 +182,12 @@ ALL_OTHER_SOCS: frozenset[str] = frozenset({
 # investment), but a few override: a thin/flat decline in a high-wage,
 # hard-to-automate, family-sustaining role that underpins a critical regional
 # industry. Today — Electrical & Electronic Engineering Technologists (17-3023,
-# $43/hr, the Bay's hardware/semiconductor/energy technician spine) and Carpenters
-# (47-2031, $35/hr, 2,500 openings, core building trade) — both flat replacement-
-# churn, not dying. Growth is a flag here, not a guillotine.
-GROWTH_EXEMPT_SOCS: frozenset[str] = frozenset({"17-3023", "47-2031"})
+# $43/hr, the Bay's hardware/semiconductor/energy technician spine), Carpenters
+# (47-2031, $35/hr, 2,500 openings, core building trade), and Electro-Mechanical &
+# Mechatronics Technologists (17-3024, the 17-3023 sibling in the adm engineering-
+# tech block) — all flat replacement-churn (17-3024 is -1.4%), not dying. Growth
+# is a flag here, not a guillotine.
+GROWTH_EXEMPT_SOCS: frozenset[str] = frozenset({"17-3023", "47-2031", "17-3024"})
 
 # Promotion / management roles — NOT entry-level, so not a community-college
 # training target. A CC produces the line worker; the employer promotes one of
@@ -242,7 +244,23 @@ PROMOTION_SOCS: frozenset[str] = frozenset({
 # cluster is crosswalk bleed).
 INCLUDE_SOCS: frozenset[str] = frozenset({
     "29-9021", "19-4092", "49-9051", "47-2071", "49-9062", "29-1126",
+    # The adm engineering-tech block, admitted 2026-06-21 (the "later wave" above):
+    # SVAMP-prioritized advanced-manufacturing technician occupations — strategically
+    # core to the Bay's semiconductor/mechatronics base, thinner in raw openings than
+    # the floor allows. 17-3026 clears every other gate; 17-3024 also needs
+    # GROWTH_EXEMPT (-1.4%); 51-9141 also needs WAGE_EXEMPT (below).
+    "17-3026", "17-3024", "51-9141",
 })
+
+# Curated wage-floor exception. The wage gate is the ONE demand floor with no
+# general exemption — "near-living-wage" ($54,080/yr, $26/hr) is a quality
+# principle, not a size proxy — so admission here is narrow and only on explicit
+# sector-authority designation. 51-9141 Semiconductor Processing Technicians: the
+# SVAMP director's named target advanced-manufacturing occupation, strategically
+# core to the Bay's semiconductor base; its $49,340 regional median sits below the
+# floor. FLAG: that wage looks low for the San Jose MSA — if it understates the true
+# regional median, 51-9141 qualifies on merit and this exemption becomes redundant.
+WAGE_EXEMPT_SOCS: frozenset[str] = frozenset({"51-9141"})
 
 # Uniform SOC-selection curation = the strict BACCC priority-occupation standard
 # (set 2026-06-12): median wage above $26/hr ($54,080/yr), at least 240 regional
