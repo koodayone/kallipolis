@@ -38,6 +38,7 @@ SRC = sys.argv[1] if len(sys.argv) > 1 else f'{_RESEARCH}/svamp-pathway-49-9041-
 OUT = sys.argv[2] if len(sys.argv) > 2 else f'{_RESEARCH}/svamp-pathway-manufacturing-technician.docx'
 XWALK = sys.argv[3] if len(sys.argv) > 3 else '/tmp/crosswalk.png'
 FONT = 'Arial'
+BYLINE_FONT = 'Days One'  # brand byline face (Google-native; substitutes in Word/Pages without it)
 
 TEAL, BLUE, RED = '2a9d8f', '2e74b5', 'cc3333'
 DARK, BODY, MUT = '2a3450', '33405a', '9099ab'
@@ -88,6 +89,50 @@ def grid(tbl, hexc='dfe3ea'):
     t.tblPr.append(el)
 
 
+def fill_width(tbl):
+    """Pin the table full content width with fixed layout. python-docx leaves
+    tblW=auto (renderers collapse narrow) AND leaves the gridCol widths equal even
+    when cells set their own width via tcW — under fixed layout the gridCol wins, so
+    a table like the crosswalk (4.0/0.5/2.6in cells) would render in equal thirds.
+    Derive the column proportions from the first row's cell widths when present."""
+    grid = tbl._tbl.find(qn('w:tblGrid'))
+    if grid is None:
+        return
+    cols = grid.findall(qn('w:gridCol'))
+    n = len(cols)
+    total = int(round(CONTENT_W * 1440))
+    rows = tbl._tbl.findall(qn('w:tr'))
+    weights = None
+    if rows:
+        ws = []
+        for tc in rows[0].findall(qn('w:tc')):
+            tcPr = tc.find(qn('w:tcPr'))
+            w = tcPr.find(qn('w:tcW')) if tcPr is not None else None
+            span = tcPr.find(qn('w:gridSpan')) if tcPr is not None else None
+            sp = int(span.get(qn('w:val'))) if span is not None else 1
+            raw = w.get(qn('w:w')) if w is not None else None
+            val = int(raw) if (raw and raw.isdigit()) else 0
+            ws += [val / sp] * sp
+        if len(ws) == n and sum(ws) > 0:
+            weights = ws
+    if weights is None:  # no per-cell widths → keep existing grid (already full) or equalize
+        cur = [int(c.get(qn('w:w')) or 0) for c in cols]
+        weights = cur if sum(cur) > 0 else [1] * n
+    sw = sum(weights)
+    widths = [int(total * w / sw) for w in weights]
+    widths[-1] = total - sum(widths[:-1])
+    for c, w in zip(cols, widths):
+        c.set(qn('w:w'), str(w))
+    tblPr = tbl._tbl.tblPr
+    for tag in ('w:tblW', 'w:tblLayout'):
+        e = tblPr.find(qn(tag))
+        if e is not None:
+            tblPr.remove(e)
+    tw = OxmlElement('w:tblW'); tw.set(qn('w:type'), 'dxa'); tw.set(qn('w:w'), str(total))
+    ly = OxmlElement('w:tblLayout'); ly.set(qn('w:type'), 'fixed')
+    tblPr.append(tw); tblPr.append(ly)
+
+
 def cellpad(cell, top=40, bottom=40, left=80, right=80):
     tcPr = cell._tc.get_or_add_tcPr()
     m = OxmlElement('w:tcMar')
@@ -96,13 +141,13 @@ def cellpad(cell, top=40, bottom=40, left=80, right=80):
     tcPr.append(m)
 
 
-def run(p, text, size=10, bold=False, color=BODY, italic=False):
-    r = p.add_run(text); r.font.name = FONT; r.font.size = Pt(size)
+def run(p, text, size=10, bold=False, color=BODY, italic=False, font=FONT):
+    r = p.add_run(text); r.font.name = font; r.font.size = Pt(size)
     r.font.bold = bold; r.font.italic = italic; r.font.color.rgb = RGBColor.from_string(color)
     return r
 
 
-def hyperlink(p, url, text, color=BLUE, size=9):
+def hyperlink(p, url, text, color=BLUE, size=9, font=FONT):
     r_id = p.part.relate_to(url, RT.HYPERLINK, is_external=True)
     link = OxmlElement('w:hyperlink'); link.set(qn('r:id'), r_id)
     rr = OxmlElement('w:r'); rPr = OxmlElement('w:rPr')
@@ -110,7 +155,7 @@ def hyperlink(p, url, text, color=BLUE, size=9):
         e = OxmlElement(tag); e.set(qn('w:val'), val); rPr.append(e)
     u = OxmlElement('w:u'); u.set(qn('w:val'), 'single'); rPr.append(u)
     sz = OxmlElement('w:sz'); sz.set(qn('w:val'), str(int(size * 2))); rPr.append(sz)
-    rf = OxmlElement('w:rFonts'); rf.set(qn('w:ascii'), FONT); rf.set(qn('w:hAnsi'), FONT); rPr.append(rf)
+    rf = OxmlElement('w:rFonts'); rf.set(qn('w:ascii'), font); rf.set(qn('w:hAnsi'), font); rPr.append(rf)
     rr.append(rPr); t = OxmlElement('w:t'); t.set(qn('xml:space'), 'preserve'); t.text = text; rr.append(t)
     link.append(rr); p._p.append(link)
 
@@ -121,22 +166,24 @@ def para(space_before=2, space_after=4):
     return p
 
 
-def runs_from(el, p, size=10, color=BODY):
+def runs_from(el, p, size=10, color=BODY, font=FONT):
     """emit a <p>'s inline content as runs, honoring <b> and <a>."""
     for node in el.children:
         nm = getattr(node, 'name', None)
         if nm is None:
             txt = str(node).replace('\xa0', ' ')
             if txt.strip():
-                run(p, txt, size=size, color=color)
+                run(p, txt, size=size, color=color, font=font)
+            elif txt:  # whitespace-only node between inline elements → keep one space
+                run(p, ' ', size=size, color=color, font=font)
         elif nm == 'b':
-            run(p, node.get_text(' ', strip=True), size=size, bold=True, color=DARK)
+            run(p, node.get_text(' ', strip=True), size=size, bold=True, color=DARK, font=font)
         elif nm == 'i':
-            run(p, node.get_text(' ', strip=True), size=size, italic=True, color=color)
+            run(p, node.get_text(' ', strip=True), size=size, italic=True, color=color, font=font)
         elif nm == 'a':
-            hyperlink(p, node.get('href', ''), node.get_text(' ', strip=True), size=size)
+            hyperlink(p, node.get('href', ''), node.get_text(' ', strip=True), size=size, font=font)
         else:
-            run(p, node.get_text(' ', strip=True), size=size, color=color)
+            run(p, node.get_text(' ', strip=True), size=size, color=color, font=font)
 
 
 def rows_of(table):
@@ -154,10 +201,14 @@ def rows_of(table):
 
 # ---------- block builders ----------
 def add_title(text):
-    p = para(0, 2); p.paragraph_format.space_after = Pt(2)
-    run(p, text.replace('\xa0', '').strip(), size=20, bold=True, color=DARK)
-    # accent rule
-    hr = para(0, 6); pPr = hr._p.get_or_add_pPr(); b = OxmlElement('w:pBdr')
+    text = text.replace('\xa0', '').strip()
+    # keep the title on a single line: shrink to fit the content width (cap 20, floor 13)
+    size = max(13.0, min(20.0, CONTENT_W * 72.0 / (len(text) * 0.58)))
+    p = para(0, 1); p.paragraph_format.space_after = Pt(1)
+    run(p, text, size=size, bold=True, color=DARK)
+    # accent rule — short, tight blank line carrying the bottom border so the title sits close to it
+    hr = para(0, 6); hr.paragraph_format.line_spacing = 1.0
+    pPr = hr._p.get_or_add_pPr(); b = OxmlElement('w:pBdr')
     bot = OxmlElement('w:bottom'); bot.set(qn('w:val'), 'single'); bot.set(qn('w:sz'), '10')
     bot.set(qn('w:space'), '2'); bot.set(qn('w:color'), BLUE); b.append(bot); pPr.append(b)
 
@@ -297,14 +348,14 @@ def add_cmpgrid(table):
                     run(p2, lines[1], size=7, color='ffffff')
                 shade(cell, hexc)
             elif issec:  # section band — full-width divider OR per-column K/S/A/T sub-headers
-                run(p, c['text'].upper(), size=8, bold=True, color=MUT); shade(cell, SECFILL)
+                run(p, c['text'].upper(), size=8, bold=True, color=DARK); shade(cell, SECFILL)
             elif isdesc:  # description + its O*NET Occupation Summary link
                 link = c['el'].find('a')
                 desc = c['el'].get_text(' ', strip=True)
                 lt = link.get_text(' ', strip=True) if link else ''
                 if lt and lt in desc:
                     desc = desc[:desc.rfind(lt)].strip()
-                run(p, desc, size=8.5, color=MUT, italic=True)
+                run(p, desc, size=8.5, color=DARK, italic=True)
                 if link:
                     p2 = cell.add_paragraph(); p2.paragraph_format.space_before = Pt(5); p2.paragraph_format.space_after = Pt(0)
                     hyperlink(p2, link.get('href', ''), lt, size=9)
@@ -374,7 +425,11 @@ def _xwalk_data(div):
                    if abs(float(r.get('width', 0)) - 254) < 2), key=lambda t: t[0])
     progs = []
     for i, a in enumerate(sv.find_all('a')):
-        coll = a.find_previous('text'); topn = a.find_next('text')
+        coll = a.find_previous('text')
+        # the TOP line is the <text> AFTER the program's own <text> — find_next from the
+        # link itself would descend into that inner <text> and return the program name.
+        prog_t = a.find('text')
+        topn = prog_t.find_next('text') if prog_t is not None else a.find_next('text')
         progs.append({'college': coll.get_text(' ', strip=True) if coll else '',
                       'program': a.get_text(' ', strip=True), 'href': a.get('href', ''),
                       'top': topn.get_text(' ', strip=True) if topn else '',
@@ -398,16 +453,16 @@ def _xwalk_data(div):
     return progs, occs, edges
 
 
-def _xwalk_progcell(cell, p, w, pad=44):
+def _xwalk_progcell(cell, p, w, pad=48):
     cell.width = w
-    par = cell.paragraphs[0]; par.paragraph_format.space_before = Pt(2); par.paragraph_format.space_after = Pt(0)
+    par = cell.paragraphs[0]; par.paragraph_format.space_before = Pt(2); par.paragraph_format.space_after = Pt(1)
     run(par, p['college'], size=9, bold=True, color=DARK)
-    p2 = cell.add_paragraph(); p2.paragraph_format.space_before = Pt(0); p2.paragraph_format.space_after = Pt(0)
+    p2 = cell.add_paragraph(); p2.paragraph_format.space_before = Pt(0); p2.paragraph_format.space_after = Pt(1)
     hyperlink(p2, p['href'], p['program'], size=9)
     if p['top']:
         p3 = cell.add_paragraph(); p3.paragraph_format.space_before = Pt(0); p3.paragraph_format.space_after = Pt(2)
-        run(p3, p['top'], size=7, color=MUT)
-    cellpad(cell, top=pad, bottom=pad)
+        run(p3, p['top'], size=7.5, color=MUT)
+    cellpad(cell, top=pad, bottom=pad, left=110, right=110)
 
 
 def add_xwalk_table(div):
@@ -513,8 +568,9 @@ def emit(el):
     elif 'footer' in cls:
         add_footer(el)
     elif 'byline' in cls:
-        p = para(0, 10); p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        runs_from(el, p, size=10, color=DARK)
+        # left-aligned, just under the title rule, in the brand byline face
+        p = para(0, 10)
+        runs_from(el, p, size=10, color=DARK, font=BYLINE_FONT)
     elif 'srclist' in cls:
         for item in el.find_all('div', recursive=False):
             p = para(0, 1); p.paragraph_format.left_indent = Inches(0.16)
@@ -528,6 +584,9 @@ def emit(el):
 
 for child in page.children:
     emit(child)
+
+for _t in doc.tables:  # full-bleed every table
+    fill_width(_t)
 
 doc.save(OUT)
 print('saved', OUT)
