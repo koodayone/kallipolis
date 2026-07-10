@@ -28,16 +28,16 @@
 
 import { trackView } from "@/analytics";
 
-export type SvampParamKey = "lens" | "soc" | "college" | "top" | "emp" | "panel";
-const KEYS: SvampParamKey[] = ["lens", "soc", "college", "top", "emp", "panel"];
+export type LandscapeParamKey = "lens" | "soc" | "college" | "top" | "emp" | "panel";
+const KEYS: LandscapeParamKey[] = ["lens", "soc", "college", "top", "emp", "panel"];
 
-export type SvampParams = Partial<Record<SvampParamKey, string>>;
+export type LandscapeParams = Partial<Record<LandscapeParamKey, string>>;
 
 /** Read the SVAMP view params from the current URL. Client-only ({} on server). */
-export function readSvampParams(): SvampParams {
+export function readLandscapeParams(): LandscapeParams {
   if (typeof window === "undefined") return {};
   const sp = new URLSearchParams(window.location.search);
-  const out: SvampParams = {};
+  const out: LandscapeParams = {};
   for (const k of KEYS) {
     const v = sp.get(k);
     if (v) out[k] = v;
@@ -56,7 +56,7 @@ export function readSvampParams(): SvampParams {
  * Uses history.replaceState (no new history entries — back exits the report),
  * then fires the analytics beacon with the resulting URL.
  */
-export function writeSvampParams(patch: Partial<Record<SvampParamKey, string | null>>): void {
+export function writeLandscapeParams(patch: Partial<Record<LandscapeParamKey, string | null>>): void {
   if (typeof window === "undefined") return;
   const sp = new URLSearchParams(window.location.search);
   for (const k of KEYS) {

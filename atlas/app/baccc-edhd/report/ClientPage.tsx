@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import SvampView from "@/college-atlas/partnerships/SvampView";
+import LandscapeReport from "@/college-atlas/partnerships/LandscapeReport";
 import { getCollegeAtlasConfig } from "@/config/collegeAtlasConfigs";
 import { SchoolConfig } from "@/config/schoolConfig";
 import { landscapeInstance } from "@/college-atlas/partnerships/landscapeInstances";
@@ -16,7 +16,7 @@ export default function BacccEdhdReportRoute() {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.45 }}
       style={{ position: "fixed", inset: 0, zIndex: 10, background: "#060d1f", overflowY: "auto", overscrollBehavior: "none" }}>
-      <SvampView colleges={colleges} instance="baccc-edhd" />
+      <LandscapeReport colleges={colleges} instance="baccc-edhd" />
     </motion.div>
   );
 }

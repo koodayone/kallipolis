@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import SvampView from "@/college-atlas/partnerships/SvampView";
+import LandscapeReport from "@/college-atlas/partnerships/LandscapeReport";
 import { getCollegeAtlasConfig } from "@/config/collegeAtlasConfigs";
 import { SchoolConfig } from "@/config/schoolConfig";
 
@@ -32,7 +32,7 @@ export default function SvampRoute() {
     >
       {/* No onBack — the report's header now carries the dashboard's unified
           nav grammar (brand · title · surface forms), with no atlas chevron. */}
-      <SvampView colleges={colleges} />
+      <LandscapeReport colleges={colleges} />
     </motion.div>
   );
 }

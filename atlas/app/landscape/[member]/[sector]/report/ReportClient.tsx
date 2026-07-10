@@ -3,13 +3,13 @@
 // Report surface for a generated member×sector landscape — the narrative dual of
 // the dashboard, mirroring the pinned reports (e.g. /smccd-adm/report). Reads the
 // route params, resolves the instance identity from the landscape index, registers
-// it (so SvampView's landscapeInstance() call sites resolve instead of falling back
-// to SVAMP), and renders SvampView in the same fixed full-screen scroll wrapper the
+// it (so LandscapeReport's landscapeInstance() call sites resolve instead of falling back
+// to SVAMP), and renders LandscapeReport in the same fixed full-screen scroll wrapper the
 // pinned reports use.
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import SvampView from "@/college-atlas/partnerships/SvampView";
+import LandscapeReport from "@/college-atlas/partnerships/LandscapeReport";
 import { getCollegeAtlasConfig } from "@/config/collegeAtlasConfigs";
 import { SchoolConfig } from "@/config/schoolConfig";
 import { registerGeneratedInstance, type LandscapeInstance } from "@/college-atlas/partnerships/landscapeInstances";
@@ -55,7 +55,7 @@ export default function ReportClient() {
       transition={{ duration: 0.45 }}
       style={{ position: "fixed", inset: 0, zIndex: 10, background: "#060d1f", overflowY: "auto", overscrollBehavior: "none" }}
     >
-      <SvampView colleges={colleges} instance={resolved.id} />
+      <LandscapeReport colleges={colleges} instance={resolved.id} />
     </motion.div>
   );
 }

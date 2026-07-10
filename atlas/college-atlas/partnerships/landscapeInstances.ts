@@ -1,7 +1,7 @@
 // Frontend registry of aggregated-landscape instances — the presentation-side
 // mirror of the backend's partnerships/landscape.py REGISTRY. Each instance is
-// a bespoke surface (SVAMP, SMCCD, …) rendered by the same SvampDashboard /
-// SvampView components, parameterized by `instance`.
+// a bespoke surface (SVAMP, SMCCD, …) rendered by the same LandscapeDashboard /
+// LandscapeReport components, parameterized by `instance`.
 //
 // The backend spec is the canonical source for scope (colleges, SOCs, program
 // division) and identity; this registry holds only what the frontend needs to

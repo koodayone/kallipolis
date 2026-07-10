@@ -1,8 +1,8 @@
 /* ── Chart kit — the SVAMP report's shared chart vocabulary ────────────────
    Color science (brand-distinct overlay palette, lead/overlay assignment),
    plot constants, value chips with collision-aware placement, axis helpers,
-   and the DataMart label formatters. Extracted verbatim from SvampView so the
-   dashboard (and any future surface) composes the same vocabulary; SvampView
+   and the DataMart label formatters. Extracted verbatim from LandscapeReport so the
+   dashboard (and any future surface) composes the same vocabulary; LandscapeReport
    remains the reference composition. */
 
 import { MONO } from "@/college-atlas/partnerships/reportChrome";

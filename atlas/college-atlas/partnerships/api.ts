@@ -258,7 +258,7 @@ export type ApiSvampLandscape = {
 // first visit fetch once and every later transition render instantly; a
 // rejected promise is evicted so errors stay retryable.
 const _svampCache = new Map<string, Promise<unknown>>();
-function svampCached<T>(key: string, make: () => Promise<T>): Promise<T> {
+function landscapeCached<T>(key: string, make: () => Promise<T>): Promise<T> {
   if (!_svampCache.has(key)) {
     _svampCache.set(key, make().catch((e) => { _svampCache.delete(key); throw e; }));
   }
@@ -333,14 +333,14 @@ export interface ApiClusterSupplyMap {
 }
 
 export async function getConsortiumClusters(member = "baccc"): Promise<ApiClusterMap> {
-  return svampCached(`clusters:${member}`, async () => {
+  return landscapeCached(`clusters:${member}`, async () => {
     const res = await fetch(`${API_BASE}/partnerships/${encodeURIComponent(member)}/clusters`);
     if (!res.ok) throw new Error("Failed to fetch occupational clusters");
     return res.json();
   });
 }
 export async function getConsortiumClusterSupply(member = "baccc"): Promise<ApiClusterSupplyMap> {
-  return svampCached(`cluster-supply:${member}`, async () => {
+  return landscapeCached(`cluster-supply:${member}`, async () => {
     const res = await fetch(`${API_BASE}/partnerships/${encodeURIComponent(member)}/cluster-supply`);
     if (!res.ok) throw new Error("Failed to fetch cluster supply");
     return res.json();
@@ -355,15 +355,15 @@ export interface ApiMemberClusterSectors {
   sectors: string[];
 }
 export async function getMemberClusterSectors(member: string): Promise<ApiMemberClusterSectors> {
-  return svampCached(`cluster-sectors:${member}`, async () => {
+  return landscapeCached(`cluster-sectors:${member}`, async () => {
     const res = await fetch(`${API_BASE}/partnerships/${encodeURIComponent(member)}/cluster-sectors`);
     if (!res.ok) throw new Error("Failed to fetch cluster sectors");
     return res.json();
   });
 }
 
-export async function getSvampLandscape(instance: string = "svamp"): Promise<ApiSvampLandscape> {
-  return svampCached(`${instance}:landscape`, async () => {
+export async function getLandscape(instance: string = "svamp"): Promise<ApiSvampLandscape> {
+  return landscapeCached(`${instance}:landscape`, async () => {
     const res = await fetch(`${API_BASE}/partnerships/${instance}`);
     if (!res.ok) throw new Error("Failed to fetch landscape");
     return res.json();
@@ -520,19 +520,19 @@ export type ApiSvampOccupationReport = {
   partnership_opportunities_narrative: string;
 };
 
-export async function getSvampPrograms(instance: string = "svamp"): Promise<ApiSvampProgramsLandscape> {
-  return svampCached(`${instance}:programs`, async () => {
+export async function getLandscapePrograms(instance: string = "svamp"): Promise<ApiSvampProgramsLandscape> {
+  return landscapeCached(`${instance}:programs`, async () => {
     const res = await fetch(`${API_BASE}/partnerships/${instance}/programs`);
     if (!res.ok) throw new Error("Failed to fetch programs landscape");
     return res.json();
   });
 }
 
-export async function getSvampProgram(top6: string, college?: string, instance: string = "svamp"): Promise<ApiSvampProgramReport> {
+export async function getLandscapeProgram(top6: string, college?: string, instance: string = "svamp"): Promise<ApiSvampProgramReport> {
   // `college` omitted ⇒ the consortium-aggregated program report; set ⇒ the
   // targeted (college, TOP) slice (single-college series + that college's
   // curriculum; demand, pathway, wage unchanged).
-  return svampCached(`${instance}:program:${top6}:${college ?? ""}`, async () => {
+  return landscapeCached(`${instance}:program:${top6}:${college ?? ""}`, async () => {
     const params = new URLSearchParams();
     if (college) params.set("college", college);
     const qs = params.toString();
@@ -544,7 +544,7 @@ export async function getSvampProgram(top6: string, college?: string, instance: 
   });
 }
 
-export async function getSvampOccupation(soc: string, college?: string, instance: string = "svamp", includeEmployers: boolean = true): Promise<ApiSvampOccupationReport> {
+export async function getLandscapeOccupation(soc: string, college?: string, instance: string = "svamp", includeEmployers: boolean = true): Promise<ApiSvampOccupationReport> {
   // The aggregated (consortium) view of one occupation — demand, consortium
   // supply + gap, the feeding programs, and per-college series + curriculum.
   // `college` scopes ONLY the SOC-anchored crosswalk's taught/active marking
@@ -559,7 +559,7 @@ export async function getSvampOccupation(soc: string, college?: string, instance
   if (college) params.set("college", college);
   if (!includeEmployers) params.set("employers", "false");
   const qs = params.toString() ? `?${params.toString()}` : "";
-  return svampCached(`${instance}:occupation:${soc}:${college ?? ""}:${includeEmployers ? "e" : "0"}`, async () => {
+  return landscapeCached(`${instance}:occupation:${soc}:${college ?? ""}:${includeEmployers ? "e" : "0"}`, async () => {
     const res = await fetch(`${API_BASE}/partnerships/${instance}/occupation/${encodeURIComponent(soc)}${qs}`);
     if (!res.ok) throw new Error("Failed to fetch occupation report");
     return res.json();
@@ -590,8 +590,8 @@ export type ApiSvampEmployersResult = {
   shown: number;           // plotted (geocoded + in-frame)
   total: number;           // curated candidates (incl. not-yet-geocoded)
 };
-export async function getSvampEmployers(instance: string = "svamp"): Promise<ApiSvampEmployersResult> {
-  return svampCached(`${instance}:employers`, async () => {
+export async function getLandscapeEmployers(instance: string = "svamp"): Promise<ApiSvampEmployersResult> {
+  return landscapeCached(`${instance}:employers`, async () => {
     const res = await fetch(`${API_BASE}/partnerships/${instance}/employers`);
     if (!res.ok) throw new Error("Failed to fetch employers");
     return res.json();
