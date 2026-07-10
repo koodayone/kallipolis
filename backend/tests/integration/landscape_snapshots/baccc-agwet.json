@@ -1465,7 +1465,32 @@
                 ],
                 "name": "Horticulture",
                 "top6": "010900",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 108,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 36081,
+                    "wage_after_5": 48820,
+                    "wage_before": 22571,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 69,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 61317,
+                    "wage_after_5": 69455,
+                    "wage_before": 34676,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 29,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 35452,
+                    "wage_after_5": 41620,
+                    "wage_before": 16951,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1495,7 +1520,32 @@
                 ],
                 "name": "Landscape Design and Maintenance",
                 "top6": "010910",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 80,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 52141,
+                    "wage_after_5": 62719,
+                    "wage_before": 32523,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 60,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 56414,
+                    "wage_after_5": 59418,
+                    "wage_before": 45815,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 24,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 39051,
+                    "wage_after_5": 49072,
+                    "wage_before": 19214,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "37-1012",
@@ -1625,7 +1675,32 @@
                 ],
                 "name": "Horticulture",
                 "top6": "010900",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 108,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 36081,
+                    "wage_after_5": 48820,
+                    "wage_before": 22571,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 69,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 61317,
+                    "wage_after_5": 69455,
+                    "wage_before": 34676,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 29,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 35452,
+                    "wage_after_5": 41620,
+                    "wage_before": 16951,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1655,7 +1730,32 @@
                 ],
                 "name": "Landscape Design and Maintenance",
                 "top6": "010910",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 80,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 52141,
+                    "wage_after_5": 62719,
+                    "wage_before": 32523,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 60,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 56414,
+                    "wage_after_5": 59418,
+                    "wage_before": 45815,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 24,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 39051,
+                    "wage_after_5": 49072,
+                    "wage_before": 19214,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "37-1012",
@@ -1752,7 +1852,32 @@
                 ],
                 "name": "Landscape Design and Maintenance",
                 "top6": "010910",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 80,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 52141,
+                    "wage_after_5": 62719,
+                    "wage_before": 32523,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 60,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 56414,
+                    "wage_after_5": 59418,
+                    "wage_before": 45815,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 24,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 39051,
+                    "wage_after_5": 49072,
+                    "wage_before": 19214,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "37-1012",
@@ -1915,7 +2040,32 @@
                 ],
                 "name": "Horticulture",
                 "top6": "010900",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 108,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 36081,
+                    "wage_after_5": 48820,
+                    "wage_before": 22571,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 69,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 61317,
+                    "wage_after_5": 69455,
+                    "wage_before": 34676,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 29,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 35452,
+                    "wage_after_5": 41620,
+                    "wage_before": 16951,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1945,7 +2095,32 @@
                 ],
                 "name": "Landscape Design and Maintenance",
                 "top6": "010910",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 80,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 52141,
+                    "wage_after_5": 62719,
+                    "wage_before": 32523,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 60,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 56414,
+                    "wage_after_5": 59418,
+                    "wage_before": 45815,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 24,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 39051,
+                    "wage_after_5": 49072,
+                    "wage_before": 19214,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1975,7 +2150,24 @@
                 ],
                 "name": "Nursery Technology",
                 "top6": "010930",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 21,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34187,
+                    "wage_after_5": null,
+                    "wage_before": 16409,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 25,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 33239,
+                    "wage_after_5": 41724,
+                    "wage_before": 20645,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "37-1012",
@@ -2058,7 +2250,24 @@
                 ],
                 "name": "Veterinary Technician (Licensed)",
                 "top6": "010210",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 292,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 45475,
+                    "wage_after_5": 54721,
+                    "wage_before": 21979,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 76,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37001,
+                    "wage_after_5": 40777,
+                    "wage_before": 24293,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-2056",
@@ -2103,7 +2312,32 @@
                 ],
                 "name": "Horticulture",
                 "top6": "010900",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 108,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 36081,
+                    "wage_after_5": 48820,
+                    "wage_before": 22571,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 69,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 61317,
+                    "wage_after_5": 69455,
+                    "wage_before": 34676,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 29,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 35452,
+                    "wage_after_5": 41620,
+                    "wage_before": 16951,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "37-1012",
@@ -2233,7 +2467,32 @@
                 ],
                 "name": "Horticulture",
                 "top6": "010900",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 108,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 36081,
+                    "wage_after_5": 48820,
+                    "wage_before": 22571,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 69,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 61317,
+                    "wage_after_5": 69455,
+                    "wage_before": 34676,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 29,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 35452,
+                    "wage_after_5": 41620,
+                    "wage_before": 16951,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2263,7 +2522,32 @@
                 ],
                 "name": "Landscape Design and Maintenance",
                 "top6": "010910",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 80,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 52141,
+                    "wage_after_5": 62719,
+                    "wage_before": 32523,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 60,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 56414,
+                    "wage_after_5": 59418,
+                    "wage_before": 45815,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 24,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 39051,
+                    "wage_after_5": 49072,
+                    "wage_before": 19214,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2293,7 +2577,24 @@
                 ],
                 "name": "Turfgrass Technology",
                 "top6": "010940",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 13,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 59539,
+                    "wage_after_5": null,
+                    "wage_before": 32288,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 18,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 57619,
+                    "wage_after_5": 53616,
+                    "wage_before": 33685,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "37-1012",
@@ -2390,7 +2691,32 @@
                 ],
                 "name": "Horticulture",
                 "top6": "010900",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 108,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 36081,
+                    "wage_after_5": 48820,
+                    "wage_before": 22571,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 69,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 61317,
+                    "wage_after_5": 69455,
+                    "wage_before": 34676,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 29,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 35452,
+                    "wage_after_5": 41620,
+                    "wage_before": 16951,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2420,7 +2746,32 @@
                 ],
                 "name": "Landscape Design and Maintenance",
                 "top6": "010910",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 80,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 52141,
+                    "wage_after_5": 62719,
+                    "wage_before": 32523,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 60,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 56414,
+                    "wage_after_5": 59418,
+                    "wage_before": 45815,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 24,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 39051,
+                    "wage_after_5": 49072,
+                    "wage_before": 19214,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2450,7 +2801,24 @@
                 ],
                 "name": "Nursery Technology",
                 "top6": "010930",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 21,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34187,
+                    "wage_after_5": null,
+                    "wage_before": 16409,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 25,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 33239,
+                    "wage_after_5": 41724,
+                    "wage_before": 20645,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "37-1012",
@@ -2632,7 +3000,24 @@
                 ],
                 "name": "Veterinary Technician (Licensed)",
                 "top6": "010210",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 292,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 45475,
+                    "wage_after_5": 54721,
+                    "wage_before": 21979,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 76,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 37001,
+                    "wage_after_5": 40777,
+                    "wage_before": 24293,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "29-2056",
@@ -2677,7 +3062,32 @@
                 ],
                 "name": "Horticulture",
                 "top6": "010900",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 108,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 36081,
+                    "wage_after_5": 48820,
+                    "wage_before": 22571,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 69,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 61317,
+                    "wage_after_5": 69455,
+                    "wage_before": 34676,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 29,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 35452,
+                    "wage_after_5": 41620,
+                    "wage_before": 16951,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2707,7 +3117,32 @@
                 ],
                 "name": "Landscape Design and Maintenance",
                 "top6": "010910",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 80,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 52141,
+                    "wage_after_5": 62719,
+                    "wage_before": 32523,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 60,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 56414,
+                    "wage_after_5": 59418,
+                    "wage_before": 45815,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 24,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 39051,
+                    "wage_after_5": 49072,
+                    "wage_before": 19214,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -2737,7 +3172,24 @@
                 ],
                 "name": "Nursery Technology",
                 "top6": "010930",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 21,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 34187,
+                    "wage_after_5": null,
+                    "wage_before": 16409,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 25,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 33239,
+                    "wage_after_5": 41724,
+                    "wage_before": 20645,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "37-1012",
@@ -2834,7 +3286,32 @@
                 ],
                 "name": "Horticulture",
                 "top6": "010900",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 108,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 36081,
+                    "wage_after_5": 48820,
+                    "wage_before": 22571,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 69,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 61317,
+                    "wage_after_5": 69455,
+                    "wage_before": 34676,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 29,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 35452,
+                    "wage_after_5": 41620,
+                    "wage_before": 16951,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "37-1012",
@@ -2898,7 +3375,32 @@
                 ],
                 "name": "Landscape Design and Maintenance",
                 "top6": "010910",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 80,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 52141,
+                    "wage_after_5": 62719,
+                    "wage_before": 32523,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 60,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 56414,
+                    "wage_after_5": 59418,
+                    "wage_before": 45815,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 24,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 39051,
+                    "wage_after_5": 49072,
+                    "wage_before": 19214,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "37-1012",

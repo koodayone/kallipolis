@@ -687,7 +687,32 @@
                 ],
                 "name": "Biotechnology and Biomedical Technology",
                 "top6": "043000",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 81,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 57228,
+                    "wage_after_5": 79399,
+                    "wage_before": 21910,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 75,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 57228,
+                    "wage_after_5": 65885,
+                    "wage_before": 27792,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 41,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 57371,
+                    "wage_after_5": 78521,
+                    "wage_before": 17908,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "19-4021",
@@ -726,7 +751,32 @@
                 ],
                 "name": "Biotechnology and Biomedical Technology",
                 "top6": "043000",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 81,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 57228,
+                    "wage_after_5": 79399,
+                    "wage_before": 21910,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 75,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 57228,
+                    "wage_after_5": 65885,
+                    "wage_before": 27792,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 41,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 57371,
+                    "wage_after_5": 78521,
+                    "wage_before": 17908,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "49-9062",
@@ -770,7 +820,32 @@
                 ],
                 "name": "Biotechnology and Biomedical Technology",
                 "top6": "043000",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 81,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 57228,
+                    "wage_after_5": 79399,
+                    "wage_before": 21910,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 75,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 57228,
+                    "wage_after_5": 65885,
+                    "wage_before": 27792,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 41,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 57371,
+                    "wage_after_5": 78521,
+                    "wage_before": 17908,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "19-4021",
@@ -809,7 +884,32 @@
                 ],
                 "name": "Biotechnology and Biomedical Technology",
                 "top6": "043000",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 81,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 57228,
+                    "wage_after_5": 79399,
+                    "wage_before": 21910,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 75,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 57228,
+                    "wage_after_5": 65885,
+                    "wage_before": 27792,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 41,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 57371,
+                    "wage_after_5": 78521,
+                    "wage_before": 17908,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "49-9062",

@@ -666,7 +666,24 @@
                 ],
                 "name": "Fitness Trainer",
                 "top6": "083520",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 89,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 30476,
+                    "wage_after_5": 37520,
+                    "wage_before": 19460,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 41,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 17309,
+                    "wage_after_5": 27848,
+                    "wage_before": 18267,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [

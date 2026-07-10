@@ -813,7 +813,32 @@
                 ],
                 "name": "Administration of Justice",
                 "top6": "210500",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 1879,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 40524,
+                    "wage_after_5": 55643,
+                    "wage_before": 23631,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 347,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 55311,
+                    "wage_after_5": 70728,
+                    "wage_before": 25831,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 2422,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 115847,
+                    "wage_after_5": 119045,
+                    "wage_before": 105187,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -837,7 +862,24 @@
                 ],
                 "name": "Forensics, Evidence, and Investigation",
                 "top6": "210540",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 52,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 33371,
+                    "wage_after_5": 62105,
+                    "wage_before": 23236,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 70,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34484,
+                    "wage_after_5": 63605,
+                    "wage_before": 26134,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "19-4092",
@@ -876,7 +918,32 @@
                 ],
                 "name": "Fire Technology",
                 "top6": "213300",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 354,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 61486,
+                    "wage_after_5": 87489,
+                    "wage_before": 28246,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 189,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 63960,
+                    "wage_after_5": 96372,
+                    "wage_before": 30804,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 130,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 68532,
+                    "wage_after_5": 96701,
+                    "wage_before": 33692,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -924,7 +991,24 @@
                 ],
                 "name": "Fire Academy",
                 "top6": "213350",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 147,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 59065,
+                    "wage_after_5": 98029,
+                    "wage_before": 26495,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 84,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 56884,
+                    "wage_after_5": 78955,
+                    "wage_before": 27676,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "33-2011",
@@ -963,7 +1047,32 @@
                 ],
                 "name": "Administration of Justice",
                 "top6": "210500",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 1879,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 40524,
+                    "wage_after_5": 55643,
+                    "wage_before": 23631,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 347,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 55311,
+                    "wage_after_5": 70728,
+                    "wage_before": 25831,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 2422,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 115847,
+                    "wage_after_5": 119045,
+                    "wage_before": 105187,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "33-3012",
@@ -1002,7 +1111,32 @@
                 ],
                 "name": "Administration of Justice",
                 "top6": "210500",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 1879,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 40524,
+                    "wage_after_5": 55643,
+                    "wage_before": 23631,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 347,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 55311,
+                    "wage_after_5": 70728,
+                    "wage_before": 25831,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 2422,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 115847,
+                    "wage_after_5": 119045,
+                    "wage_before": 105187,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1026,7 +1160,24 @@
                 ],
                 "name": "Forensics, Evidence, and Investigation",
                 "top6": "210540",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 52,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 33371,
+                    "wage_after_5": 62105,
+                    "wage_before": 23236,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 70,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 34484,
+                    "wage_after_5": 63605,
+                    "wage_before": 26134,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               },
               {
                 "awards": [
@@ -1050,7 +1201,32 @@
                 ],
                 "name": "Police Academy",
                 "top6": "210550",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 45,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 89278,
+                    "wage_after_5": 97887,
+                    "wage_before": 47341,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 1142,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 110161,
+                    "wage_after_5": 129019,
+                    "wage_before": 41654,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 57,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 71280,
+                    "wage_after_5": 81449,
+                    "wage_before": 37523,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "33-3051",
@@ -1094,7 +1270,32 @@
                 ],
                 "name": "Administration of Justice",
                 "top6": "210500",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 1879,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 40524,
+                    "wage_after_5": 55643,
+                    "wage_before": 23631,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 347,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 55311,
+                    "wage_after_5": 70728,
+                    "wage_before": 25831,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 2422,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 115847,
+                    "wage_after_5": 119045,
+                    "wage_before": 105187,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "19-4092",
@@ -1147,7 +1348,32 @@
                 ],
                 "name": "Administration of Justice",
                 "top6": "210500",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 1879,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 40524,
+                    "wage_after_5": 55643,
+                    "wage_before": 23631,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 347,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 55311,
+                    "wage_after_5": 70728,
+                    "wage_before": 25831,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 2422,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 115847,
+                    "wage_after_5": 119045,
+                    "wage_before": 105187,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "33-3012",
@@ -1186,7 +1412,32 @@
                 ],
                 "name": "Administration of Justice",
                 "top6": "210500",
-                "wages": []
+                "wages": [
+                  {
+                    "n": 1879,
+                    "recipient_type": "Associate or Baccalaureate Degree Recipient",
+                    "wage_after_2": 40524,
+                    "wage_after_5": 55643,
+                    "wage_before": 23631,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 347,
+                    "recipient_type": "Chancellor's Office Approved Certificates Recipient",
+                    "wage_after_2": 55311,
+                    "wage_after_5": 70728,
+                    "wage_before": 25831,
+                    "window": "2015-2016 to 2019-2020"
+                  },
+                  {
+                    "n": 2422,
+                    "recipient_type": "Locally Approved Certificates Recipient",
+                    "wage_after_2": 115847,
+                    "wage_after_5": 119045,
+                    "wage_before": 105187,
+                    "window": "2015-2016 to 2019-2020"
+                  }
+                ]
               }
             ],
             "soc_code": "33-3051",
