@@ -17,10 +17,10 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { FONT, MONO } from "@/college-atlas/partnerships/reportChrome";
 import { SchoolConfig } from "@/config/schoolConfig";
 import EmployerMap, { type MapCollege } from "@/college-atlas/partnerships/EmployerMap";
-import { DashPanel, SvampLoading } from "@/college-atlas/partnerships/SvampDashboard";
-import { getSvampEmployers } from "@/college-atlas/partnerships/api";
+import { DashPanel, LandscapeLoading } from "@/college-atlas/partnerships/LandscapeDashboard";
+import { getLandscapeEmployers } from "@/college-atlas/partnerships/api";
 import type { ApiSvampEmployersResult } from "@/college-atlas/partnerships/api";
-import { readSvampParams, writeSvampParams } from "@/college-atlas/partnerships/svampUrl";
+import { readLandscapeParams, writeLandscapeParams } from "@/college-atlas/partnerships/landscapeUrl";
 import EmployerListRow from "@/college-atlas/partnerships/EmployerListRow";
 
 const ACCENT = "#5a9bd4"; // Employers lens blue (mirrors the report)
@@ -28,7 +28,7 @@ const ACCENT = "#5a9bd4"; // Employers lens blue (mirrors the report)
 type CollegeRef = { id: string; config: SchoolConfig };
 
 // Member-college coordinates for the map's context anchors (mirrors the
-// report's SvampView SVAMP_COLLEGE_GEO — keyed by every member set we render).
+// report's LandscapeReport SVAMP_COLLEGE_GEO — keyed by every member set we render).
 const COLLEGE_GEO: Record<string, [number, number]> = {
   // SVAMP — the five Silicon Valley colleges
   "De Anza College": [37.31, -122.04],
@@ -42,7 +42,7 @@ const COLLEGE_GEO: Record<string, [number, number]> = {
   "Cañada College": [37.49, -122.23],
 };
 
-export default function SvampDashboardEmployers({ colleges, stacked = false, instance = "svamp" }: { colleges: CollegeRef[]; stacked?: boolean; instance?: string }) {
+export default function LandscapeDashboardEmployers({ colleges, stacked = false, instance = "svamp" }: { colleges: CollegeRef[]; stacked?: boolean; instance?: string }) {
   const [data, setData] = useState<ApiSvampEmployersResult | null>(null);
   const [err, setErr] = useState<string | null>(null);
   const [selected, setSelected] = useState<string | null>(null);
@@ -53,20 +53,20 @@ export default function SvampDashboardEmployers({ colleges, stacked = false, ins
 
   useEffect(() => {
     let alive = true;
-    getSvampEmployers(instance).then((d) => { if (alive) setData(d); }).catch((e) => setErr(e.message));
+    getLandscapeEmployers(instance).then((d) => { if (alive) setData(d); }).catch((e) => setErr(e.message));
     return () => { alive = false; };
   }, [instance]);
 
   // Restore the emp slice from the URL on mount, then sync emp → URL (the
   // report's pattern; `ready` gates writes until the restore has run).
   useEffect(() => {
-    const p = readSvampParams();
+    const p = readLandscapeParams();
     if (p.emp) setSelected(p.emp);
     setReady(true);
   }, []);
   useEffect(() => {
     if (!ready) return;
-    writeSvampParams({ emp: selected ?? null });
+    writeLandscapeParams({ emp: selected ?? null });
   }, [ready, selected]);
   useEffect(() => {
     if (selected) rowRefs.current.get(selected)?.scrollIntoView({ block: "nearest", behavior: "smooth" });
@@ -81,7 +81,7 @@ export default function SvampDashboardEmployers({ colleges, stacked = false, ins
   );
 
   if (err) return <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", color: "#e0654f", fontFamily: MONO, fontSize: 12 }}>Failed to load employers: {err}</div>;
-  if (!data) return <SvampLoading />;
+  if (!data) return <LandscapeLoading />;
 
   const q = query.trim().toLowerCase();
   const filtered = (q ? data.employers.filter((e) => e.name.toLowerCase().includes(q)) : data.employers)

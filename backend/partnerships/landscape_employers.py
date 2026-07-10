@@ -43,7 +43,7 @@ DEFAULT_EMPLOYER_TOP_N = 25
 _BAY_BBOX = (36.8, 38.6, -123.2, -121.0)
 
 
-class SvampEmployer(BaseModel):
+class LandscapeEmployer(BaseModel):
     name: str
     display_name: str | None = None  # public-facing brand; card falls back to name
     lat: float
@@ -64,18 +64,18 @@ class SvampEmployer(BaseModel):
     size_rank: int = 0             # ordinal of size_class (9=largest); tiebreaker
 
 
-class SvampEmployersResult(BaseModel):
+class LandscapeEmployersResult(BaseModel):
     region: str
     region_display: str
     sector: str
-    employers: list[SvampEmployer]
+    employers: list[LandscapeEmployer]
     shown: int                    # plotted (geocoded + in-frame)
     total: int                    # curated candidates (incl. not-yet-geocoded)
     shed_counties: list[str] = [] # counties the map drew from (home first); len>1 ⇒ expanded
 
 
 @lru_cache(maxsize=512)
-def build_svamp_employers(spec: LandscapeSpec = SVAMP_SPEC) -> SvampEmployersResult:
+def build_landscape_employers(spec: LandscapeSpec = SVAMP_SPEC) -> LandscapeEmployersResult:
     """The geocoded regional-employer map for a landscape. Result-memoized —
     deterministic per resolved spec; refresh on a graph data load via restart."""
     region = spec.resolve_region()
@@ -97,7 +97,7 @@ def build_svamp_employers(spec: LandscapeSpec = SVAMP_SPEC) -> SvampEmployersRes
 
     # Group geocoded-in-frame firms by county (preserving relevance order); tally
     # web-validated candidates per county (geocoded or not) for the shed `total`.
-    by_county: dict[str | None, list[SvampEmployer]] = {}
+    by_county: dict[str | None, list[LandscapeEmployer]] = {}
     web_by_county: dict[str | None, int] = {}
     for e in ranked:
         web_by_county[e.county] = web_by_county.get(e.county, 0) + 1
@@ -108,7 +108,7 @@ def build_svamp_employers(spec: LandscapeSpec = SVAMP_SPEC) -> SvampEmployersRes
         # Order this firm's SOCs by its OES hiring intensity, most representative
         # first, so a "top roles" display shows the occupations central to it.
         socs_ordered = sorted(e.soc_pct, key=lambda s: (-(e.soc_pct[s] or 0.0), s))
-        by_county.setdefault(e.county, []).append(SvampEmployer(
+        by_county.setdefault(e.county, []).append(LandscapeEmployer(
             name=e.name, lat=e.lat, lng=e.lng,
             sector=e.sector, naics4=e.naics4, naics_title=titles.get(e.naics4),
             website=e.website, description=e.description,
@@ -153,7 +153,7 @@ def build_svamp_employers(spec: LandscapeSpec = SVAMP_SPEC) -> SvampEmployersRes
     employers.sort(key=lambda e: (-e.relevance, -e.soc_count, e.name))
     employers = employers[: (spec.top_n or DEFAULT_EMPLOYER_TOP_N)]
 
-    return SvampEmployersResult(
+    return LandscapeEmployersResult(
         region=region,
         region_display=COE_REGION_DISPLAY.get(region, region),
         sector=spec.sector,

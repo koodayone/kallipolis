@@ -79,7 +79,7 @@ def has_supply(spec: LandscapeSpec) -> bool:
     # deferring keeps this module importable under the host's py3.9 so the
     # resolver unit tests (spec_for / _parse) run without a graph.
     from ontology.schema import get_driver
-    from partnerships.svamp_programs import relevant_tops
+    from partnerships.landscape_programs import relevant_tops
 
     tops = list(relevant_tops(spec).keys())
     if not tops:
@@ -159,7 +159,7 @@ def live_catalog() -> list[dict]:
     frontend's landscape index and the generated-route param set. (Region/state
     members are deferred; pinned instances keep their own identity.)"""
     from ontology.schema import get_driver
-    from partnerships.svamp_programs import relevant_tops
+    from partnerships.landscape_programs import relevant_tops
 
     sector_candidates = {
         sid: set(relevant_tops(REGISTRY[f"smccd-{sid}"]).keys())

@@ -8,9 +8,9 @@ import SurfaceNav from "@/college-atlas/partnerships/SurfaceNav";
 import RisingSun from "@/ui/RisingSun";
 import { FONT, MONO, ReportHeader, Section, Prose } from "@/college-atlas/partnerships/reportChrome";
 import { OpportunityReportBody, PartnerEmployerRow } from "@/college-atlas/partnerships/OpportunityReport";
-import { readSvampParams, writeSvampParams } from "@/college-atlas/partnerships/svampUrl";
+import { readLandscapeParams, writeLandscapeParams } from "@/college-atlas/partnerships/landscapeUrl";
 import EmployerListRow from "@/college-atlas/partnerships/EmployerListRow";
-import { OCC_MATRIX_CORNER, occupationMatrixRows } from "@/college-atlas/partnerships/svampLabels";
+import { OCC_MATRIX_CORNER, occupationMatrixRows } from "@/college-atlas/partnerships/landscapeLabels";
 import OccupationDemandTable from "@/college-atlas/partnerships/OccupationDemandTable";
 import SupplyTreemap from "@/college-atlas/partnerships/SupplyTreemap";
 import DepartmentRow from "@/college-atlas/courses/DepartmentRow";
@@ -19,7 +19,7 @@ import CoverageMatrix from "@/college-atlas/partnerships/CoverageMatrix";
 import CurriculumPathway from "@/college-atlas/partnerships/CurriculumPathway";
 import OccupationRow, { type OccupationData, type OccupationDetail } from "@/college-atlas/occupations/OccupationRow";
 import EmployerMap, { type MapCollege } from "@/college-atlas/partnerships/EmployerMap";
-import { getSvampLandscape, getSvampPrograms, getSvampProgram, getSvampOccupation, getSvampEmployers } from "@/college-atlas/partnerships/api";
+import { getLandscape, getLandscapePrograms, getLandscapeProgram, getLandscapeOccupation, getLandscapeEmployers } from "@/college-atlas/partnerships/api";
 import { landscapeInstance } from "@/college-atlas/partnerships/landscapeInstances";
 import IndustryRail from "@/college-atlas/partnerships/IndustryRail";
 import type {
@@ -69,7 +69,7 @@ type Props = {
   instance?: string;
 };
 
-// ROLE_LABEL (the 12 SVAMP SOC → role labels) now lives in ./svampLabels,
+// ROLE_LABEL (the 12 SVAMP SOC → role labels) now lives in ./landscapeLabels,
 // shared with the dashboard and the employer-detail SOC chips.
 
 // Coverage keys on activity over the crosswalking programs — the identical
@@ -118,19 +118,19 @@ function EmployersLens({ colleges, instance = "svamp" }: { colleges: CollegeRef[
 
   useEffect(() => {
     let alive = true;
-    getSvampEmployers(instance).then((d) => { if (alive) setData(d); }).catch((e) => setErr(e.message));
+    getLandscapeEmployers(instance).then((d) => { if (alive) setData(d); }).catch((e) => setErr(e.message));
     return () => { alive = false; };
   }, [instance]);
 
   // Restore the employers slice from the URL on mount, then sync emp → URL.
   useEffect(() => {
-    const p = readSvampParams();
+    const p = readLandscapeParams();
     if (p.emp) setSelected(p.emp);
     setEReady(true);
   }, []);
   useEffect(() => {
     if (!eReady) return;
-    writeSvampParams({ emp: selected ?? null });
+    writeLandscapeParams({ emp: selected ?? null });
   }, [eReady, selected]);
   useEffect(() => {
     const f = () => setNarrow(window.innerWidth < 760);
@@ -240,30 +240,30 @@ function ProgramsLens({ colleges, instance = "svamp" }: { colleges: CollegeRef[]
   const matrixCollegeName = matrixCollegeId ? nameById.get(matrixCollegeId) : undefined;
 
   useEffect(() => {
-    getSvampPrograms(instance)
+    getLandscapePrograms(instance)
       .then((d) => { setLand(d); setTop((cur) => cur ?? d.tops[0]?.top6 ?? null); })
       .catch((e) => setErr(e.message));
   }, [instance]);
   useEffect(() => {
     if (!top) return;
     let alive = true;
-    getSvampProgram(top, matrixCollegeName, instance).then((r) => { if (alive) setReport(r); }).catch((e) => setErr(e.message));
+    getLandscapeProgram(top, matrixCollegeName, instance).then((r) => { if (alive) setReport(r); }).catch((e) => setErr(e.message));
     return () => { alive = false; };
   }, [top, matrixCollegeName, instance]);
 
   // Restore the programs slice from the URL on mount; the data-load default
   // (setTop's `cur ?? …`) defers to a URL-pinned TOP. Then sync top + college →
   // URL. `college` is shared with the occupations lens but only ever written by
-  // the active lens, so there's no cross-lens clobber (see svampUrl.ts).
+  // the active lens, so there's no cross-lens clobber (see landscapeUrl.ts).
   useEffect(() => {
-    const p = readSvampParams();
+    const p = readLandscapeParams();
     if (p.top) setTop(p.top);
     if (p.college) setMatrixCollegeId(p.college);
     setPReady(true);
   }, []);
   useEffect(() => {
     if (!pReady) return;
-    writeSvampParams({ top: top ?? null, college: matrixCollegeId ?? null });
+    writeLandscapeParams({ top: top ?? null, college: matrixCollegeId ?? null });
   }, [pReady, top, matrixCollegeId]);
 
   const brandByName = useMemo(
@@ -525,7 +525,7 @@ function OccupationAggregateReport({ soc, colleges, isSectorPriority, instance =
   useEffect(() => {
     let alive = true;
     setReport(null);
-    getSvampOccupation(soc, undefined, instance).then((r) => { if (alive) setReport(r); }).catch((e) => setErr(e.message));
+    getLandscapeOccupation(soc, undefined, instance).then((r) => { if (alive) setReport(r); }).catch((e) => setErr(e.message));
     return () => { alive = false; };
   }, [soc, instance]);
 
@@ -696,7 +696,7 @@ function OccupationAggregateReport({ soc, colleges, isSectorPriority, instance =
   );
 }
 
-export default function SvampView({ colleges, instance = "svamp" }: Props) {
+export default function LandscapeReport({ colleges, instance = "svamp" }: Props) {
   const inst = landscapeInstance(instance);
   const [data, setData] = useState<ApiSvampLandscape | null>(null);
   // Programs landscape fetched here too, only so the header can show the
@@ -713,7 +713,7 @@ export default function SvampView({ colleges, instance = "svamp" }: Props) {
   // URL anchoring: `ready` gates view→URL writes until the initial restore from
   // the URL has run (so a shared/refreshed link isn't clobbered by default
   // state); `urlHadSoc` suppresses the highest-demand default when the URL
-  // pinned a SOC. Contract in svampUrl.ts.
+  // pinned a SOC. Contract in landscapeUrl.ts.
   const [ready, setReady] = useState(false);
   const urlHadSoc = useRef(false);
   // Sticky context banner: shown once the report header scrolls under the nav.
@@ -721,14 +721,14 @@ export default function SvampView({ colleges, instance = "svamp" }: Props) {
   const ctxSentinel = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    getSvampLandscape(instance).then(setData).catch((e) => setError(e.message));
-    getSvampPrograms(instance).then(setPrograms).catch(() => {});  // header count only — a failure just omits the facet
+    getLandscape(instance).then(setData).catch((e) => setError(e.message));
+    getLandscapePrograms(instance).then(setPrograms).catch(() => {});  // header count only — a failure just omits the facet
   }, [instance]);
 
   // Restore the view from the URL once on mount (client-only). The child lenses
   // (ProgramsLens, EmployersLens) restore their own slice on their own mount.
   useEffect(() => {
-    const p = readSvampParams();
+    const p = readLandscapeParams();
     if (p.lens === "programs" || p.lens === "occupations" || p.lens === "employers") setLens(p.lens);
     if (p.soc) {
       setSelectedSoc(p.soc);
@@ -743,14 +743,14 @@ export default function SvampView({ colleges, instance = "svamp" }: Props) {
   // lens's own sync re-adds what it owns. `lens` omitted for the programs default.
   const switchLens = (l: Lens) => {
     setLens(l);
-    writeSvampParams({ lens: l === "programs" ? null : l, soc: null, college: null, top: null, emp: null });
+    writeLandscapeParams({ lens: l === "programs" ? null : l, soc: null, college: null, top: null, emp: null });
   };
 
   // Sync the occupations selection → URL (parent owns soc + the occupations
   // college). Gated on `ready` and the active lens.
   useEffect(() => {
     if (!ready || lens !== "occupations") return;
-    writeSvampParams({ soc: selectedSoc, college: occView === "targeted" ? selected : null });
+    writeLandscapeParams({ soc: selectedSoc, college: occView === "targeted" ? selected : null });
   }, [ready, lens, selectedSoc, occView, selected]);
 
   // Reveal the context banner when the sentinel (at the report's top) passes
@@ -927,7 +927,7 @@ export default function SvampView({ colleges, instance = "svamp" }: Props) {
   const occCols = columns.map(({ ref }) => ({ id: ref.id, label: shortName(ref.config.name), brand: ref.config.brandColorLight }));
   const occCellByKey = new Map<string, ApiSvampCell | undefined>();
   columns.forEach(({ ref, cellMap }) => socRows.forEach((soc) => occCellByKey.set(ref.id + "|" + soc.soc_code, cellMap.get(soc.soc_code))));
-  // Row set via the shared adapter (svampLabels.occupationMatrixRows) — the
+  // Row set via the shared adapter (landscapeLabels.occupationMatrixRows) — the
   // demand sort + role vocabulary live there, consumed identically by the
   // dashboard so the two surfaces cannot drift.
   const occRows = occupationMatrixRows(socRows);

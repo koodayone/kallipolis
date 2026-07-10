@@ -18,7 +18,7 @@
      asserts an outcome the data cannot support — same curation as the report)
      and NO demand line (one college vs regional demand is partial-vs-whole).
 
-   URL: `soc` / `college` params via svampUrl — shared vocabulary with the
+   URL: `soc` / `college` params via landscapeUrl — shared vocabulary with the
    report, so views hop surfaces with selection intact. */
 
 import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
@@ -28,12 +28,12 @@ import DemandTreemap from "@/college-atlas/partnerships/DemandTreemap";
 import CoverageMatrix from "@/college-atlas/partnerships/CoverageMatrix";
 import TrendChart from "@/college-atlas/partnerships/TrendChart";
 import CurriculumPathway from "@/college-atlas/partnerships/CurriculumPathway";
-import { DashPanel, DashBandSet, ScopeBanner, SvampLoading, ScopeAccentContext, TotalStrip, type DashBandDef } from "@/college-atlas/partnerships/SvampDashboard";
+import { DashPanel, DashBandSet, ScopeBanner, LandscapeLoading, ScopeAccentContext, TotalStrip, type DashBandDef } from "@/college-atlas/partnerships/LandscapeDashboard";
 import { shortName, leadOverlayColors, awardYearLabel } from "@/college-atlas/partnerships/chartKit";
-import { getSvampLandscape, getSvampOccupation } from "@/college-atlas/partnerships/api";
+import { getLandscape, getLandscapeOccupation } from "@/college-atlas/partnerships/api";
 import type { ApiSvampLandscape, ApiSvampCell, ApiSvampOccupationReport } from "@/college-atlas/partnerships/api";
-import { readSvampParams, writeSvampParams } from "@/college-atlas/partnerships/svampUrl";
-import { OCC_MATRIX_CORNER, occupationMatrixRows } from "@/college-atlas/partnerships/svampLabels";
+import { readLandscapeParams, writeLandscapeParams } from "@/college-atlas/partnerships/landscapeUrl";
+import { OCC_MATRIX_CORNER, occupationMatrixRows } from "@/college-atlas/partnerships/landscapeLabels";
 
 const ACCENT = "#ff5a5a";        // Occupations lens red (mirrors the report)
 const DEMAND_ACCENT = "#c9a84c"; // demand reference gold
@@ -107,14 +107,14 @@ function OccupationSummary({ report }: { report: ApiSvampOccupationReport | null
   );
 }
 
-export default function SvampDashboardOccupations({ colleges, instance = "svamp", primaryCollege = null }: { colleges: CollegeRef[]; instance?: string; primaryCollege?: string | null }) {
+export default function LandscapeDashboardOccupations({ colleges, instance = "svamp", primaryCollege = null }: { colleges: CollegeRef[]; instance?: string; primaryCollege?: string | null }) {
   const [land, setLand] = useState<ApiSvampLandscape | null>(null);
   const [soc, setSoc] = useState<string | null>(null);
   // null ⇒ consortium scope; a college id ⇒ that college's scope.
   const [collegeId, setCollegeId] = useState<string | null>(null);
   const [report, setReport] = useState<ApiSvampOccupationReport | null>(null);
   const [err, setErr] = useState<string | null>(null);
-  const urlRef = useRef(readSvampParams());
+  const urlRef = useRef(readLandscapeParams());
 
   const nameById = useMemo(() => new Map(colleges.map((c) => [c.id, c.config.name])), [colleges]);
   const brandByName = useMemo(() => new Map(colleges.map((c) => [c.config.name, c.config.brandColorLight])), [colleges]);
@@ -127,7 +127,7 @@ export default function SvampDashboardOccupations({ colleges, instance = "svamp"
   }, [collegeName, brandByName, scopeAccentCtx]);
 
   useEffect(() => {
-    getSvampLandscape(instance)
+    getLandscape(instance)
       .then((d) => {
         setLand(d);
         const cells = d.colleges[0]?.cells ?? [];
@@ -156,21 +156,21 @@ export default function SvampDashboardOccupations({ colleges, instance = "svamp"
     // includeEmployers=false: this lens renders no Partnership Opportunities
     // list, so it skips the region-wide employer gather (~94% of the payload
     // and the report's dominant query cost).
-    getSvampOccupation(soc, collegeName, instance, false).then((r) => { if (alive) setReport(r); }).catch((e) => setErr(e.message));
+    getLandscapeOccupation(soc, collegeName, instance, false).then((r) => { if (alive) setReport(r); }).catch((e) => setErr(e.message));
     return () => { alive = false; };
   }, [soc, collegeName, instance]);
 
   const selectConsortium = (s: string) => {
     setSoc(s); setCollegeId(null);
-    writeSvampParams({ soc: s, college: null });
+    writeLandscapeParams({ soc: s, college: null });
   };
   const selectCell = (s: string, cid: string) => {
     setSoc(s); setCollegeId(cid);
-    writeSvampParams({ soc: s, college: cid });
+    writeLandscapeParams({ soc: s, college: cid });
   };
 
   if (err) return <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", color: "#e0654f", fontFamily: MONO, fontSize: 12 }}>Failed to load: {err}</div>;
-  if (!land) return <SvampLoading />;
+  if (!land) return <LandscapeLoading />;
 
   const refCells = land.colleges[0]?.cells ?? [];
   // Occupations lens shows the CENTRAL school's supported occupations — the ones its
@@ -194,7 +194,7 @@ export default function SvampDashboardOccupations({ colleges, instance = "svamp"
   // BACCC view is full-width; the few-member curated instances (SVAMP/SMCCD)
   // keep the 2:1. (Header orientation still flips on displayed cols.)
   const wide = colleges.length >= 12;
-  // Row set via the shared adapter (svampLabels.occupationMatrixRows): demand
+  // Row set via the shared adapter (landscapeLabels.occupationMatrixRows): demand
   // sort + role vocabulary + SOC provenance sublabel, identical to the report
   // by construction.
   const rows = occupationMatrixRows(refCells).filter((r) => !possessedSocs || possessedSocs.has(r.id));

@@ -1,20 +1,20 @@
 /**
  * Tests for the partnerships SVAMP program API client — URL construction for
- * getSvampProgram, which gained an optional `college` parameter for the
+ * getLandscapeProgram, which gained an optional `college` parameter for the
  * targeted (college × TOP) view (Phase 1 of the lens-grammar synthesis).
  *
  * Follows the fetch-mocking pattern from college-atlas/occupations/api.test.ts.
  *
  * Coverage:
- *   - getSvampProgram(top6): hits /partnerships/svamp/program/{top6} with no
+ *   - getLandscapeProgram(top6): hits /partnerships/svamp/program/{top6} with no
  *     query string (the consortium-aggregated view)
- *   - getSvampProgram(top6, college): appends ?college=<value> (the targeted
+ *   - getLandscapeProgram(top6, college): appends ?college=<value> (the targeted
  *     slice), with the college name carried into the query
  *   - error branch throws on a non-ok response
  */
 
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
-import { getSvampProgram, getSvampOccupation, _resetSvampCacheForTests } from "./api";
+import { getLandscapeProgram, getLandscapeOccupation, _resetSvampCacheForTests } from "./api";
 
 describe("partnerships svamp program api client", () => {
   beforeEach(() => {
@@ -30,7 +30,7 @@ describe("partnerships svamp program api client", () => {
     const mockFetch = vi.fn().mockResolvedValue({ ok: true, json: async () => ({}) });
     vi.stubGlobal("fetch", mockFetch);
 
-    await getSvampProgram("094800");
+    await getLandscapeProgram("094800");
 
     const url = mockFetch.mock.calls[0][0] as string;
     expect(url).toContain("/partnerships/svamp/program/094800");
@@ -41,7 +41,7 @@ describe("partnerships svamp program api client", () => {
     const mockFetch = vi.fn().mockResolvedValue({ ok: true, json: async () => ({}) });
     vi.stubGlobal("fetch", mockFetch);
 
-    await getSvampProgram("094800", "De Anza College");
+    await getLandscapeProgram("094800", "De Anza College");
 
     const url = mockFetch.mock.calls[0][0] as string;
     expect(url).toContain("/partnerships/svamp/program/094800?");
@@ -51,14 +51,14 @@ describe("partnerships svamp program api client", () => {
 
   it("throws on a non-ok response", async () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: false }));
-    await expect(getSvampProgram("094800")).rejects.toThrow();
+    await expect(getLandscapeProgram("094800")).rejects.toThrow();
   });
 
-  it("getSvampOccupation hits /svamp/occupation/{soc} with the SOC encoded", async () => {
+  it("getLandscapeOccupation hits /svamp/occupation/{soc} with the SOC encoded", async () => {
     const mockFetch = vi.fn().mockResolvedValue({ ok: true, json: async () => ({}) });
     vi.stubGlobal("fetch", mockFetch);
 
-    await getSvampOccupation("17-3027");
+    await getLandscapeOccupation("17-3027");
 
     const url = mockFetch.mock.calls[0][0] as string;
     expect(url).toContain("/partnerships/svamp/occupation/17-3027");

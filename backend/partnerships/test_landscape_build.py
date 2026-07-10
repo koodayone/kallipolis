@@ -22,7 +22,7 @@ Coverage:
     and Industrial Systems (094500, not to be confused with HVAC 094600) stay in
 """
 
-from partnerships.svamp import (
+from partnerships.landscape_build import (
     SVAMP_COLLEGES,
     SVAMP_SOCS,
     SVAMP_MANDATE_EXCLUDED_TOPS,
