@@ -36,8 +36,8 @@ Coverage:
     a multi-SOC feeding TOP counts in full (never split across SOCs)
 """
 
-from partnerships.svamp import SVAMP_COLLEGES
-from partnerships.svamp_programs import (
+from partnerships.landscape_build import SVAMP_COLLEGES
+from partnerships.landscape_programs import (
     _assemble_landscape,
     _assemble_program_report,
     _assemble_occupation,

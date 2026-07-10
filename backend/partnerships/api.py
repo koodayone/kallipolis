@@ -36,21 +36,21 @@ from pydantic import BaseModel
 
 from partnerships.models import OpportunityReport, SectorIndex
 from partnerships.opportunity import build_opportunity_report, build_sector_index
-from partnerships.svamp import SvampLandscape, build_landscape
+from partnerships.landscape_build import Landscape, build_landscape
 from partnerships.landscape import REGISTRY, LandscapeSpec, routable_specs
 from partnerships.registry import has_supply, live_catalog, spec_for
 from partnerships.resolve import resolve
 from partnerships.clusters import cluster_expanded_spec, consortium_clusters
 from partnerships.lens import build_lens
 from partnerships.sectors import SECTORS
-from partnerships.svamp_employers import SvampEmployersResult, build_svamp_employers
-from partnerships.svamp_programs import (
+from partnerships.landscape_employers import LandscapeEmployersResult, build_landscape_employers
+from partnerships.landscape_programs import (
     ProgramReport,
     ProgramsLandscape,
-    SvampOccupationReport,
+    LandscapeOccupationReport,
     build_program_report,
     build_programs_landscape,
-    build_svamp_occupation,
+    build_landscape_occupation,
 )
 from partnerships.precompute import (
     CACHE_SCHEMA_VERSION,
@@ -349,20 +349,20 @@ def _register_landscape_routes(spec: LandscapeSpec) -> None:
 
     def get_occupation(soc: str, college: str | None = None, employers: bool = True):
         try:
-            return build_svamp_occupation(
+            return build_landscape_occupation(
                 soc, spec=resolve(spec), college=college, include_employers=employers)
         except Exception as e:
             raise HTTPException(status_code=500, detail=str(e))
 
     def get_employers():
         try:
-            return build_svamp_employers(resolve(spec))
+            return build_landscape_employers(resolve(spec))
         except Exception as e:
             raise HTTPException(status_code=500, detail=str(e))
 
     router.add_api_route(
         f"/{sid}", get_landscape, methods=["GET"],
-        response_model=SvampLandscape, name=f"get_{sid}_landscape",
+        response_model=Landscape, name=f"get_{sid}_landscape",
         description=f"Aggregated partnership landscape for {spec.name} — member "
                     "colleges × target occupations over one shared COE region. "
                     "Demand and employers regional; supply institutional.")
@@ -378,14 +378,14 @@ def _register_landscape_routes(spec: LandscapeSpec) -> None:
                     "member college; omitted ⇒ the consortium-aggregated view.")
     router.add_api_route(
         f"/{sid}/occupation/{{soc}}", get_occupation, methods=["GET"],
-        response_model=SvampOccupationReport, name=f"get_{sid}_occupation",
+        response_model=LandscapeOccupationReport, name=f"get_{sid}_occupation",
         description="Aggregated-occupation report — one SOC read consortium-wide: "
                     "regional demand, consortium supply and the resulting gap. "
                     "`employers=false` skips the regional Partnership Opportunities "
                     "gather (the report's dominant cost) for surfaces that don't render it.")
     router.add_api_route(
         f"/{sid}/employers", get_employers, methods=["GET"],
-        response_model=SvampEmployersResult, name=f"get_{sid}_employers",
+        response_model=LandscapeEmployersResult, name=f"get_{sid}_employers",
         description="Employers lens — geocoded regional employers hiring for the "
                     "target occupations; reports shown-of-total (no silent truncation).")
 
@@ -471,7 +471,7 @@ def get_dynamic_program(instance_id: str, top6: str, college: str | None = None)
 
 def get_dynamic_occupation(instance_id: str, soc: str, college: str | None = None):
     try:
-        return build_svamp_occupation(
+        return build_landscape_occupation(
             soc, spec=_resolved_dynamic_spec(instance_id), college=college
         )
     except HTTPException:
@@ -482,7 +482,7 @@ def get_dynamic_occupation(instance_id: str, soc: str, college: str | None = Non
 
 def get_dynamic_employers(instance_id: str):
     try:
-        return build_svamp_employers(_resolved_dynamic_spec(instance_id))
+        return build_landscape_employers(_resolved_dynamic_spec(instance_id))
     except HTTPException:
         raise
     except Exception as e:
@@ -491,7 +491,7 @@ def get_dynamic_employers(instance_id: str):
 
 router.add_api_route(
     "/{instance_id}", get_dynamic_landscape, methods=["GET"],
-    response_model=SvampLandscape, name="get_dynamic_landscape",
+    response_model=Landscape, name="get_dynamic_landscape",
     description="Generated member×sector landscape — any college/district/region "
                 "the member catalog resolves, live iff it has a feeding program.")
 router.add_api_route(
@@ -502,10 +502,10 @@ router.add_api_route(
     response_model=ProgramReport, name="get_dynamic_program")
 router.add_api_route(
     "/{instance_id}/occupation/{soc}", get_dynamic_occupation, methods=["GET"],
-    response_model=SvampOccupationReport, name="get_dynamic_occupation")
+    response_model=LandscapeOccupationReport, name="get_dynamic_occupation")
 router.add_api_route(
     "/{instance_id}/employers", get_dynamic_employers, methods=["GET"],
-    response_model=SvampEmployersResult, name="get_dynamic_employers")
+    response_model=LandscapeEmployersResult, name="get_dynamic_employers")
 
 
 # ── Occupational clusters — connected-component target clusters ───────────────

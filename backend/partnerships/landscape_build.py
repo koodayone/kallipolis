@@ -144,7 +144,7 @@ def is_svamp_top(top6: str | None) -> bool:
 # ── Response shapes ───────────────────────────────────────────────────────
 
 
-class SvampWage(BaseModel):
+class LandscapeWage(BaseModel):
     """Pooled statewide award-cohort wage outcome for a TOP6 program, by
     recipient type. Display-only; medians are non-additive — never summed."""
     recipient_type: str
@@ -155,7 +155,7 @@ class SvampWage(BaseModel):
     window: str = ""
 
 
-class SvampProgram(BaseModel):
+class LandscapeProgram(BaseModel):
     """A TOP6 program (DataMart actuals) that prepares for this cell's SOC at
     this college. Awards/enrollment are institutional ground truth; wages are
     pooled statewide at the TOP6 grain."""
@@ -164,10 +164,10 @@ class SvampProgram(BaseModel):
     awards_recent: int = 0                 # actual completions, latest award year
     awards: list[int] = []                 # completions per landscape award_years
     enrollment: list[int | None] = []      # per landscape enrollment_terms
-    wages: list[SvampWage] = []
+    wages: list[LandscapeWage] = []
 
 
-class SvampCell(BaseModel):
+class LandscapeCell(BaseModel):
     """One (college, occupation) cell of the landscape.
 
     `annual_openings` is the REGIONAL demand for the SOC — identical across
@@ -198,15 +198,15 @@ class SvampCell(BaseModel):
     # gap = neither — identical predicate to the Programs lens.
     enrolled: bool = False
     feeding_awards: int = 0
-    programs: list[SvampProgram] = []
+    programs: list[LandscapeProgram] = []
 
 
-class SvampCollege(BaseModel):
+class LandscapeCollege(BaseModel):
     name: str
-    cells: list[SvampCell]  # one per SVAMP_SOCS, in scope order
+    cells: list[LandscapeCell]  # one per SVAMP_SOCS, in scope order
 
 
-class SvampAggregate(BaseModel):
+class LandscapeAggregate(BaseModel):
     """Consortium-level rollup. See the module docstring for the
     regional-vs-institutional rules these fields obey."""
     regional_demand_total: int      # Σ regional openings over the 12 SOCs (once)
@@ -222,7 +222,7 @@ class SvampAggregate(BaseModel):
     n_occupations: int
 
 
-class SvampLandscape(BaseModel):
+class Landscape(BaseModel):
     region: str
     region_display: str
     sector: str
@@ -240,8 +240,8 @@ class SvampLandscape(BaseModel):
     # "Fall 2025"]) shared by every program's `enrollment` series. The union
     # across colleges; a chart for one college trims the terms it never runs.
     enrollment_terms: list[str] = []
-    colleges: list[SvampCollege]
-    aggregate: SvampAggregate
+    colleges: list[LandscapeCollege]
+    aggregate: LandscapeAggregate
     # True for rule-bearing instances (BACCC, sector-derived SMCCD): the coverage
     # cell is gated on AWARDS — an occupation a college only enrolls toward (no
     # completer) reads as a gap, not "partial". The curated SVAMP instance
@@ -249,7 +249,7 @@ class SvampLandscape(BaseModel):
     coverage_awards_only: bool = False
 
 
-def _build_executive_summary(spec: LandscapeSpec, region_display: str, agg: "SvampAggregate") -> str:
+def _build_executive_summary(spec: LandscapeSpec, region_display: str, agg: "LandscapeAggregate") -> str:
     """The occupations (demand) lens thesis: what the report examines and the
     shared regional demand total. Supply framing — the credentials member
     colleges award — belongs on the Programs lens, not here, so the occupations
@@ -294,13 +294,13 @@ def _soc_feeding_tops(spec: LandscapeSpec) -> dict[str, set[str]]:
     return feed
 
 
-def build_svamp_landscape() -> SvampLandscape:
+def build_svamp_landscape() -> Landscape:
     """Back-compat 0-arg entry for the SVAMP instance (api.py imports this)."""
     return build_landscape(SVAMP_SPEC)
 
 
 @lru_cache(maxsize=512)
-def build_landscape(spec: LandscapeSpec) -> SvampLandscape:
+def build_landscape(spec: LandscapeSpec) -> Landscape:
     """The aggregated member×sector landscape (the dashboard's core build).
     Result-memoized — deterministic per resolved spec; refresh on a graph data
     load via backend restart (same caching philosophy as the precompute layer)."""
@@ -421,8 +421,8 @@ def build_landscape(spec: LandscapeSpec) -> SvampLandscape:
 def _build_program(
     college: str, top6: str, entry: dict, award_years: list[str],
     enrollment_terms: list[str], wage_fn,
-) -> SvampProgram:
-    """Compose a SvampProgram from fetched program_data + the (pooled, TOP6-
+) -> LandscapeProgram:
+    """Compose a LandscapeProgram from fetched program_data + the (pooled, TOP6-
     grain) wage lookup. `awards` aligns to the shared `award_years` axis (a year
     with no AWARDED edge ⇒ 0 conferred); `enrollment` aligns to the shared
     `enrollment_terms` axis (a term this program/college never runs ⇒ None, so
@@ -432,13 +432,13 @@ def _build_program(
     by_year = entry.get("awards_by_year", {})
     enroll = entry.get("enroll", {})
     latest = award_years[-1] if award_years else None
-    return SvampProgram(
+    return LandscapeProgram(
         top6=top6,
         name=entry.get("name") or top6,
         awards_recent=int(by_year.get(latest) or 0) if latest else 0,
         awards=[int(by_year.get(y) or 0) for y in award_years],
         enrollment=[enroll.get(term) for term in enrollment_terms],
-        wages=[SvampWage(**w) for w in wage_fn(top6)],
+        wages=[LandscapeWage(**w) for w in wage_fn(top6)],
     )
 
 
@@ -454,7 +454,7 @@ def _assemble_landscape(
     soc_feeding: dict[str, set[str]] | None = None,
     *,
     spec: LandscapeSpec = SVAMP_SPEC,
-) -> SvampLandscape:
+) -> Landscape:
     """Pure assembly of the landscape from already-fetched graph data.
 
     Separated from the I/O so the regional-vs-institutional aggregation
@@ -488,7 +488,7 @@ def _assemble_landscape(
          if not _term_excluded(t)},
         key=_term_sort_key,
     )
-    colleges: list[SvampCollege] = []
+    colleges: list[LandscapeCollege] = []
     combined_supply_total = 0.0
     socs_taught: set[str] = set()
     # DISTINCT (college, top6) programs in scope — combined_awards sums over
@@ -497,7 +497,7 @@ def _assemble_landscape(
 
     for college in spec.colleges:
         align = align_by_college.get(college, {})
-        cells: list[SvampCell] = []
+        cells: list[LandscapeCell] = []
         for soc in spec.socs:
             demand = demand_by_soc.get(soc, {})
             a = align.get(soc, {})
@@ -523,7 +523,7 @@ def _assemble_landscape(
             # in the cell's program detail. Per-cell awards display = sum over
             # these programs; the consortium total dedups across cells via
             # scoped_programs.
-            programs: list[SvampProgram] = []
+            programs: list[LandscapeProgram] = []
             for top6 in sorted(feeding | top_codes):
                 entry = program_data.get((college, top6))
                 if entry is not None:
@@ -548,7 +548,7 @@ def _assemble_landscape(
 
             annual_openings = demand.get("annual_openings")
             gap = int(round((annual_openings or 0) - supply))
-            cells.append(SvampCell(
+            cells.append(LandscapeCell(
                 soc_code=soc,
                 title=demand.get("title") or soc,
                 annual_openings=annual_openings,
@@ -562,7 +562,7 @@ def _assemble_landscape(
                 feeding_awards=feeding_awards,
                 programs=programs,
             ))
-        colleges.append(SvampCollege(name=college, cells=cells))
+        colleges.append(LandscapeCollege(name=college, cells=cells))
 
     # Consortium awards: each scoped program counted once (institutional, but
     # de-duplicated across the SOCs a TOP6 serves), latest reported year only.
@@ -576,7 +576,7 @@ def _assemble_landscape(
         (demand_by_soc.get(soc, {}).get("annual_openings") or 0) for soc in spec.socs
     )))
 
-    aggregate = SvampAggregate(
+    aggregate = LandscapeAggregate(
         regional_demand_total=regional_demand_total,
         combined_supply_total=round(combined_supply_total, 2),
         gap=int(round(regional_demand_total - combined_supply_total)),
@@ -589,7 +589,7 @@ def _assemble_landscape(
 
     is_sector_priority = spec.sector in set(COE_REGION_PRIORITY_SECTORS.get(region, []))
 
-    return SvampLandscape(
+    return Landscape(
         region=region,
         region_display=region_display,
         sector=spec.sector,

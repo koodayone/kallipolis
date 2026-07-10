@@ -1,5 +1,5 @@
 """SVAMP Programs lens — the supply-side, TOP6-centric view of the SVAMP
-partnership landscape (the dual of the occupation-centric svamp.py).
+partnership landscape (the dual of the occupation-centric landscape_build.py).
 
 THE anchoring invariant — supply and demand are owned by different axes:
   - SUPPLY (awards, enrollment) is OWNED BY PROGRAMS (TOP6) and is additive
@@ -21,7 +21,7 @@ division filter applied on top of the faithful crosswalk (the crosswalk itself
 is never edited), so non-engineering feeders it legitimately links (e.g.
 Commercial Music → 17-3029) fall out of scope rather than being hand-curated
 away; the mandate exclusions are the same authority refining its own scope
-where the division proxy over-includes. Reuses svamp.py's
+where the division proxy over-includes. Reuses landscape_build.py's
 scope constants/helpers, the Program (TOP6) AWARDED/ENROLLED graph reads,
 get_wage_outcomes (TOP6-grain statewide), and the TOP-CIP-SOC crosswalk in
 ontology.crosswalks.
@@ -50,11 +50,11 @@ from partnerships.graph_reads import latest_academic_year, regional_demand
 from partnerships.models import CurriculumCrosswalk, PartnershipOpportunityEmployer
 from partnerships.opportunity import _gather_partnership_opportunities
 from partnerships.opportunity_narrative import build_occupational_demand
-from partnerships.svamp import (
+from partnerships.landscape_build import (
     AWARD_YEARS_SHOWN,
     _term_excluded,
     _term_sort_key,
-    SvampWage,
+    LandscapeWage,
 )
 from partnerships.landscape import LandscapeSpec, SVAMP_SPEC
 
@@ -216,13 +216,13 @@ class ProgramReport(BaseModel):
     awards_by_college: list[CollegeSeries] = []       # aligned to award_years
     awards_by_type: list[AwardTypeSeries] = []        # per-(college, credential-type) decomposition
     enrollment_by_credit: list[EnrollmentCreditSeries] = []  # per-(college, credit-family) decomposition
-    wages: list[SvampWage] = []
+    wages: list[LandscapeWage] = []
     curriculum_by_college: list[CollegeCourses] = []
     crosswalk: ProgramCrosswalk | None = None  # TOP-anchored TOP-CIP-SOC pathway
     college: str | None = None  # set ⇒ targeted (college, TOP) slice; None ⇒ consortium
 
 
-class SvampOccupationReport(BaseModel):
+class LandscapeOccupationReport(BaseModel):
     """The SVAMP aggregated-occupation report — the dual of ProgramReport. One
     SOC, read consortium-wide: regional demand (occupation-grain wage),
     consortium supply (Σ COE-projected completions over the colleges for the
@@ -472,10 +472,10 @@ def _build_program_crosswalk(
     )
 
 
-def build_svamp_occupation(
+def build_landscape_occupation(
     soc: str, *, spec: LandscapeSpec = SVAMP_SPEC, college: str | None = None,
     include_employers: bool = True,
-) -> SvampOccupationReport:
+) -> LandscapeOccupationReport:
     """Consortium aggregated-occupation report for one SOC — the dual of
     build_program_report. Reuses the program supply machinery (the SOC's 09
     feeding TOPs, their per-college awards/enrollment/courses), get_coe_supply
@@ -904,7 +904,7 @@ def _assemble_program_report(
         awards_by_college=awards_by_college,
         awards_by_type=awards_by_type,
         enrollment_by_credit=enrollment_by_credit,
-        wages=[SvampWage(**w) for w in wage_fn(top6)],
+        wages=[LandscapeWage(**w) for w in wage_fn(top6)],
         curriculum_by_college=curriculum_by_college,
         crosswalk=crosswalk,
         college=college,
@@ -931,9 +931,9 @@ def _assemble_occupation(
     crosswalk: dict,
     *,
     spec: LandscapeSpec = SVAMP_SPEC,
-) -> SvampOccupationReport:
+) -> LandscapeOccupationReport:
     """Pure assembly of the aggregated-occupation report (no I/O — supply and
-    the crosswalk are computed in build_svamp_occupation and passed in).
+    the crosswalk are computed in build_landscape_occupation and passed in).
 
     - feeding_tops: the SOC's 09 feeding TOPs, each summarized like the supply
       treemap (awards summed across colleges latest year; peak-term enrollment).
@@ -1018,7 +1018,7 @@ def _assemble_occupation(
         coe_region_display=region_display,
     )
 
-    return SvampOccupationReport(
+    return LandscapeOccupationReport(
         soc_code=soc,
         title=title,
         description=description,
