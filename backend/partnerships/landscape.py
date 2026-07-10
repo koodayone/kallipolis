@@ -1,7 +1,7 @@
 """LandscapeSpec — the per-instance parameter set behind an aggregated
 partnership landscape.
 
-SVAMP began as a bespoke one-off (see svamp.py): a fixed set of member
+SVAMP began as a bespoke one-off (see landscape_build.py): a fixed set of member
 colleges and target occupations, hardcoded as module constants, aggregated
 into one regional landscape. Standing up a SECOND such landscape (the San
 Mateo CCD advanced-manufacturing view) revealed that the bespoke part is a
@@ -14,10 +14,10 @@ the same engine renders any instance.
 This is deliberately NOT an ontology unit and NOT a general framework in the
 governed sense — it is a registry of bespoke prototype surfaces nested inside
 the `partnerships` unit (so it stays clear of the vocabulary_alignment /
-backend_layout audits, exactly as svamp.py already does). Each instance is a
+backend_layout audits, exactly as landscape_build.py already does). Each instance is a
 SURFACE, not a graph concept.
 
-The aggregation invariant (unchanged, see svamp.py module docstring) is what
+The aggregation invariant (unchanged, see landscape_build.py module docstring) is what
 constrains the spec: DEMAND and EMPLOYERS are REGIONAL, read once per SOC /
 as a distinct union over the region; SUPPLY is INSTITUTIONAL, summed across
 member colleges. That is why `colleges` is the only school-side
@@ -67,7 +67,7 @@ class LandscapeSpec:
     # Member colleges (institutional axis). Region is DERIVED from these, not
     # specified — they must share one COE region (see resolve_region).
     colleges: tuple[str, ...]
-    # Target occupations (demand axis). One SvampCell per SOC, in this order.
+    # Target occupations (demand axis). One LandscapeCell per SOC, in this order.
     socs: tuple[str, ...]
     # Program/supply scope: TOP divisions + the mandate exclusions, applied on
     # top of the faithful (never-edited) TOP-CIP-SOC crosswalk. See in_scope.
@@ -333,7 +333,7 @@ _AM_EXCLUDED_TOPS = frozenset({
 
 # ── Instances ─────────────────────────────────────────────────────────────
 
-# Instance #1: the original Silicon Valley consortium. Reproduces svamp.py's
+# Instance #1: the original Silicon Valley consortium. Reproduces landscape_build.py's
 # constants verbatim — the golden-snapshot invariant depends on it.
 SVAMP_SPEC = LandscapeSpec(
     id="svamp",
