@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 # One-command workforce-pathway report generation: a role → .html + .docx + .pdf.
 #
+# LEGACY ad-hoc path: renders straight from the query-param proposer endpoint, no
+# saved def. For the def-driven framework flow (a persisted saved_reports/{slug}.json),
+# use `export.sh {slug}` instead — it renders the saved definition and VERIFIES the
+# docx (link-parity gate). This script remains for quick role→report renders.
+#
 # Renders the backend's proposer-filled report (GET /partnerships/report/{member})
 # through this harness. The backend must be running — it owns the graph that L1
 # reads. The role is the "play": a title + sector + the SOCs it maps to.
