@@ -74,7 +74,7 @@ export function parseLandscapePath(pathname: string): { member: string; sector: 
 }
 
 /** Build a LandscapeInstance for a generated instance from its index entry —
- *  the identity SvampDashboard/SvampView consume (name, accent, collegeIds). */
+ *  the identity LandscapeDashboard/LandscapeReport consume (name, accent, collegeIds). */
 export function generatedInstance(entry: LandscapeIndexEntry): LandscapeInstance {
   return {
     id: entry.id,

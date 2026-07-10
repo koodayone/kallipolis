@@ -4,7 +4,7 @@ import React from "react";
 import { MONO } from "@/college-atlas/partnerships/reportChrome";
 import { useMeasuredWidth } from "@/college-atlas/partnerships/chartKit";
 
-// Lens accents (mirror SvampView's module constants — programs green,
+// Lens accents (mirror LandscapeReport's module constants — programs green,
 // occupations red, employers blue).
 const PROGRAM_ACCENT = "#50c878";
 const EMPLOYER_ACCENT = "#5a9bd4";

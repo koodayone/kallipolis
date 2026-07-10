@@ -6,12 +6,12 @@
 // one sentinel shell stands in for every instance, so the identity is resolved
 // from the LIVE URL (parseLandscapePath) — not useParams, which would read the
 // baked sentinel params. Built from the landscape index (generated instances have
-// no landscapeInstances row), and rendered with the same SvampDashboard the pinned
+// no landscapeInstances row), and rendered with the same LandscapeDashboard the pinned
 // instances use. The 12 pinned instances keep their own flat routes untouched.
 
 import { useEffect, useState } from "react";
 
-import SvampDashboard from "@/college-atlas/partnerships/SvampDashboard";
+import LandscapeDashboard from "@/college-atlas/partnerships/LandscapeDashboard";
 import { registerGeneratedInstance, type LandscapeInstance } from "@/college-atlas/partnerships/landscapeInstances";
 import { fetchLandscapeIndex, generatedInstance, parseLandscapePath } from "@/college-atlas/partnerships/landscapeIndex";
 
@@ -53,5 +53,5 @@ export default function LandscapeClient() {
 
   if (state === undefined) return <div style={FULL_CENTER}>Loading…</div>;
   if (state.identity === null) return <div style={FULL_CENTER}>This landscape isn’t available.</div>;
-  return <SvampDashboard instance={state.id} identity={state.identity} />;
+  return <LandscapeDashboard instance={state.id} identity={state.identity} />;
 }

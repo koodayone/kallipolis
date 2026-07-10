@@ -8,7 +8,7 @@
    college's scope, where the decompositions (credential types, credit
    families) live — the same semantics as the report's ProgramsLens, with the
    toggle transposed into the selection itself. URL: `top` / `college` params
-   via svampUrl (shared vocabulary with the report, so views hop surfaces with
+   via landscapeUrl (shared vocabulary with the report, so views hop surfaces with
    selection intact). */
 
 import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
@@ -20,20 +20,20 @@ import TrendChart from "@/college-atlas/partnerships/TrendChart";
 import WageOutcomes from "@/college-atlas/partnerships/WageOutcomes";
 import OccupationDemandTable from "@/college-atlas/partnerships/OccupationDemandTable";
 import ProgramPathway from "@/college-atlas/partnerships/ProgramPathway";
-import { DashPanel, DashBandSet, ScopeBanner, SvampLoading, ScopeAccentContext, TotalStrip, SupplySplit, type DashBandDef } from "@/college-atlas/partnerships/SvampDashboard";
+import { DashPanel, DashBandSet, ScopeBanner, LandscapeLoading, ScopeAccentContext, TotalStrip, SupplySplit, type DashBandDef } from "@/college-atlas/partnerships/LandscapeDashboard";
 import {
   shortName, leadOverlayColors, awardYearLabel, shortAwardType, shortCreditType,
 } from "@/college-atlas/partnerships/chartKit";
-import { getSvampPrograms, getSvampProgram } from "@/college-atlas/partnerships/api";
+import { getLandscapePrograms, getLandscapeProgram } from "@/college-atlas/partnerships/api";
 import type { ApiSvampProgramsLandscape, ApiSvampProgramReport } from "@/college-atlas/partnerships/api";
-import { readSvampParams, writeSvampParams } from "@/college-atlas/partnerships/svampUrl";
+import { readLandscapeParams, writeLandscapeParams } from "@/college-atlas/partnerships/landscapeUrl";
 
 const ACCENT = "#50c878";        // Programs lens green (mirrors the report)
 const DEMAND_ACCENT = "#c9a84c"; // demand reference gold (mirrors the report)
 
 export type CollegeRef = { id: string; config: SchoolConfig };
 
-export default function SvampDashboardPrograms({ colleges, instance = "svamp", primaryCollege = null }: { colleges: CollegeRef[]; instance?: string; primaryCollege?: string | null }) {
+export default function LandscapeDashboardPrograms({ colleges, instance = "svamp", primaryCollege = null }: { colleges: CollegeRef[]; instance?: string; primaryCollege?: string | null }) {
   const [land, setLand] = useState<ApiSvampProgramsLandscape | null>(null);
   const [top, setTop] = useState<string | null>(null);
   // null ⇒ consortium scope; a college id ⇒ that college's scope.
@@ -41,7 +41,7 @@ export default function SvampDashboardPrograms({ colleges, instance = "svamp", p
   const [report, setReport] = useState<ApiSvampProgramReport | null>(null);
   const [err, setErr] = useState<string | null>(null);
   // URL params read once at mount; adopted when the landscape arrives.
-  const urlRef = useRef(readSvampParams());
+  const urlRef = useRef(readLandscapeParams());
 
   const nameById = useMemo(() => new Map(colleges.map((c) => [c.id, c.config.name])), [colleges]);
   const brandByName = useMemo(() => new Map(colleges.map((c) => [c.config.name, c.config.brandColorLight])), [colleges]);
@@ -54,7 +54,7 @@ export default function SvampDashboardPrograms({ colleges, instance = "svamp", p
   }, [collegeName, brandByName, scopeAccentCtx]);
 
   useEffect(() => {
-    getSvampPrograms(instance)
+    getLandscapePrograms(instance)
       .then((d) => {
         setLand(d);
         const u = urlRef.current;
@@ -76,22 +76,22 @@ export default function SvampDashboardPrograms({ colleges, instance = "svamp", p
   useEffect(() => {
     if (!top) return;
     let alive = true;
-    getSvampProgram(top, collegeName, instance).then((r) => { if (alive) setReport(r); }).catch((e) => setErr(e.message));
+    getLandscapeProgram(top, collegeName, instance).then((r) => { if (alive) setReport(r); }).catch((e) => setErr(e.message));
     return () => { alive = false; };
   }, [top, collegeName, instance]);
 
   // User-driven selection → state + URL (shared vocabulary with the report).
   const selectConsortium = (t: string) => {
     setTop(t); setCollegeId(null);
-    writeSvampParams({ top: t, college: null });
+    writeLandscapeParams({ top: t, college: null });
   };
   const selectCell = (t: string, cid: string) => {
     setTop(t); setCollegeId(cid);
-    writeSvampParams({ top: t, college: cid });
+    writeLandscapeParams({ top: t, college: cid });
   };
 
   if (err) return <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", color: "#e0654f", fontFamily: MONO, fontSize: 12 }}>Failed to load: {err}</div>;
-  if (!land) return <SvampLoading />;
+  if (!land) return <LandscapeLoading />;
 
   // Programs lens shows the CENTRAL school's own programs (its supply portfolio).
   // For a cluster-expanded single-college lens, scope the program universe to the

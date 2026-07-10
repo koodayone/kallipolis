@@ -8,7 +8,7 @@
    obligations live in chrome — every DashPanel names its institutional
    authority.
 
-   V1 requirements (decided 2026-06-06; design record at /svamp/concepts):
+   V1 requirements (decided 2026-06-06 in the /svamp/concepts design records, since removed):
    1. One lens at a time via tabs. Programs and Occupations share the
       dashboard grammar (aggregates on top, single-scope band below);
       Employers is its own state — no selection crosses the lens boundary.
@@ -20,14 +20,14 @@
       rail stay pinned. ≥1440px gate routes smaller screens to the report.
    4. Employers = standalone full-bleed map at State-Atlas parity.
 
-   Header (decided at /svamp/concepts/header — H1): the report's AtlasHeader
+   Header (decided in the /svamp/concepts/header design record, since removed — H1): the report's AtlasHeader
    verbatim (cube · centered consortium title + PREVIEW MODE · surface-form
    navigation right), then the report's masthead (eyebrow, title, stats) which
    scrolls away, then the lens rail which pins under the nav — the report's
    sticky-banner behavior, transposed. The landing view is the cover; the
    working view is dense.
 
-   URL anchoring reuses svampUrl verbatim (route-agnostic; same lens/top/
+   URL anchoring reuses landscapeUrl verbatim (route-agnostic; same lens/top/
    soc/college vocabulary as the report), so dashboard views are shareable
    and the analytics record is the URL — and a view can hop between
    /svamp (dashboard, the root) and /svamp/report with its selection intact. */
@@ -35,21 +35,21 @@
 import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { FONT, MONO } from "@/college-atlas/partnerships/reportChrome";
-import { LayoutLabContext } from "@/college-atlas/partnerships/LayoutLab";
+import { LayoutLabContext } from "@/college-atlas/partnerships/layoutLabContext";
 import KallipolisBrand from "@/ui/KallipolisBrand";
 import RisingSun from "@/ui/RisingSun";
-import { readSvampParams, writeSvampParams } from "@/college-atlas/partnerships/svampUrl";
+import { readLandscapeParams, writeLandscapeParams } from "@/college-atlas/partnerships/landscapeUrl";
 import { collegeAtlasIdByName, getCollegeAtlasConfig } from "@/config/collegeAtlasConfigs";
 import AtlasHeader from "@/ui/AtlasHeader";
-import SvampDashboardPrograms, { type CollegeRef } from "@/college-atlas/partnerships/SvampDashboardPrograms";
-import SvampDashboardOccupations from "@/college-atlas/partnerships/SvampDashboardOccupations";
-import SvampDashboardEmployers from "@/college-atlas/partnerships/SvampDashboardEmployers";
+import LandscapeDashboardPrograms, { type CollegeRef } from "@/college-atlas/partnerships/LandscapeDashboardPrograms";
+import LandscapeDashboardOccupations from "@/college-atlas/partnerships/LandscapeDashboardOccupations";
+import LandscapeDashboardEmployers from "@/college-atlas/partnerships/LandscapeDashboardEmployers";
 import LensTabs, { type Lens, LENS_ACCENTS } from "@/college-atlas/partnerships/LensTabs";
 import IndustryRail from "@/college-atlas/partnerships/IndustryRail";
 import SurfaceNav from "@/college-atlas/partnerships/SurfaceNav";
 import { Dot, useMeasuredWidth } from "@/college-atlas/partnerships/chartKit";
 import { computeBandRows, rowHeight, DEFAULT_PANEL_MIN_WIDTH } from "@/college-atlas/partnerships/dashLayout";
-import { getSvampLandscape, getSvampPrograms } from "@/college-atlas/partnerships/api";
+import { getLandscape, getLandscapePrograms } from "@/college-atlas/partnerships/api";
 import { landscapeInstance, type LandscapeInstance } from "@/college-atlas/partnerships/landscapeInstances";
 
 // The five member colleges, in display order (mirrors /svamp's ClientPage).
@@ -64,7 +64,7 @@ type DashLens = Lens;
    Any band panel can expand to fill the viewport under the nav: the same
    panel node handed viewport dimensions (the fill machinery re-lays every
    chart), with the selection model still live behind it. Expanded state is
-   shareable — `panel=<id>` rides the svampUrl vocabulary like every other
+   shareable — `panel=<id>` rides the landscapeUrl vocabulary like every other
    view param. The context is provided by the dashboard shell; the affordance
    lives in DashPanel chrome and is injected per-panel by DashBand, so every
    present and future band panel inherits it. The employers map is exempt by
@@ -220,7 +220,7 @@ export function DashBandSet({ bands }: { bands: DashBandDef[] }) {
   } else if (width != null) {
     // Production branch — rows computed from the measured width. Until the
     // first measurement lands the wrapper renders empty: the lenses gate on
-    // data with SvampLoading, so this is ~one invisible frame, and the
+    // data with LandscapeLoading, so this is ~one invisible frame, and the
     // static export prerenders only the loading state (no hydration skew).
     for (const b of bands) {
       const rows = computeBandRows(b.panels.filter(Boolean) as ConcretePanel[], width, BAND_GAP);
@@ -554,9 +554,9 @@ export function ScopeBanner({ brand, scope, name, code }: {
    experience (the report's idiom, transposed): the sun at low opacity,
    centered in the viewport space below the sticky stack. Lenses show it on
    their first data fetch only — the SVAMP getters are session-cached
-   (api.svampCached), so every later lens switch renders instantly and this
+   (api.landscapeCached), so every later lens switch renders instantly and this
    loader never replays. */
-export function SvampLoading() {
+export function LandscapeLoading() {
   return (
     <div style={{ minHeight: "calc(100vh - 280px)", display: "flex", alignItems: "center", justifyContent: "center" }}>
       <RisingSun style={{ width: 90, height: "auto", opacity: 0.4 }} />
@@ -631,7 +631,7 @@ export function SupplySplit({ schoolLabel, school, consortium, accent }: { schoo
   );
 }
 
-export default function SvampDashboard({ instance = "svamp", identity }: { instance?: string; identity?: LandscapeInstance }) {
+export default function LandscapeDashboard({ instance = "svamp", identity }: { instance?: string; identity?: LandscapeInstance }) {
   // Pinned instances resolve identity from the registry; a generated instance
   // (no registry row) passes it in, built from the backend landscape index.
   const inst = identity ?? landscapeInstance(instance);
@@ -712,13 +712,13 @@ export default function SvampDashboard({ instance = "svamp", identity }: { insta
   // visible (no silent truncation). Curated SVAMP keeps all members.
   const [participating, setParticipating] = useState<{ n: number; awardsOnly: boolean } | null>(null);
   useEffect(() => {
-    getSvampLandscape(instance)
+    getLandscape(instance)
       .then((x) => {
         setAgg({ colleges: x.aggregate.n_colleges, occupations: x.aggregate.n_occupations, region: x.region_display });
         setApiCollegeNames(x.colleges.map((c) => c.name));
       })
       .catch(() => {});
-    getSvampPrograms(instance)
+    getLandscapePrograms(instance)
       .then((x) => {
         setActivePrograms(x.tops.filter((t) => t.enrollment_total > 0 || t.awards_total > 0).length);
         const withAwards = new Set((x.matrix?.cells ?? []).filter((c) => c.awards > 0).map((c) => c.college));
@@ -731,14 +731,14 @@ export default function SvampDashboard({ instance = "svamp", identity }: { insta
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const expandCtx = useMemo(() => ({
     expandedId,
-    setExpanded: (id: string | null) => { setExpandedId(id); writeSvampParams({ panel: id }); },
+    setExpanded: (id: string | null) => { setExpandedId(id); writeLandscapeParams({ panel: id }); },
   }), [expandedId]);
 
   // Adopt the URL's lens + expanded panel after mount (post-hydration,
   // mirroring the report's static-export-safe pattern — no reactive
   // useSearchParams).
   useEffect(() => {
-    const p = readSvampParams();
+    const p = readLandscapeParams();
     if (p.lens === "occupations" || p.lens === "employers") setLens(p.lens);
     if (p.panel) setExpandedId(p.panel);
   }, []);
@@ -750,7 +750,7 @@ export default function SvampDashboard({ instance = "svamp", identity }: { insta
     // lens-qualified, so the expanded panel clears with the rest).
     setExpandedId(null);
     setScopeAccent(null);
-    writeSvampParams({ lens: l === "programs" ? null : l, soc: null, top: null, college: null, emp: null, panel: null });
+    writeLandscapeParams({ lens: l === "programs" ? null : l, soc: null, top: null, college: null, emp: null, panel: null });
   };
 
   // Scope accent reported by the mounted lens (college scope only); the
@@ -821,10 +821,10 @@ export default function SvampDashboard({ instance = "svamp", identity }: { insta
       <div style={{ display: "flex", flexDirection: "column", ...(employersFull ? { flex: 1, minHeight: 0, overflow: "hidden", padding: "12px 16px 16px" } : { padding: "0 16px 24px" }) }}>
         <ScopeAccentContext.Provider value={scopeAccentCtx}>
         <DashExpandContext.Provider value={expandCtx}>
-          {!collegesReady ? <SvampLoading />
-            : lens === "programs" ? <SvampDashboardPrograms colleges={colleges} instance={instance} primaryCollege={primaryCollege} />
-            : lens === "occupations" ? <SvampDashboardOccupations colleges={colleges} instance={instance} primaryCollege={primaryCollege} />
-            : <SvampDashboardEmployers colleges={colleges} stacked={employersSideBySide === false} instance={instance} />}
+          {!collegesReady ? <LandscapeLoading />
+            : lens === "programs" ? <LandscapeDashboardPrograms colleges={colleges} instance={instance} primaryCollege={primaryCollege} />
+            : lens === "occupations" ? <LandscapeDashboardOccupations colleges={colleges} instance={instance} primaryCollege={primaryCollege} />
+            : <LandscapeDashboardEmployers colleges={colleges} stacked={employersSideBySide === false} instance={instance} />}
         </DashExpandContext.Provider>
         </ScopeAccentContext.Provider>
       </div>

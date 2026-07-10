@@ -7,7 +7,7 @@ import { hexA, useMeasuredBox } from "@/college-atlas/partnerships/chartKit";
 import { squarify } from "@/college-atlas/partnerships/treemap";
 import type { ApiSvampCell } from "@/college-atlas/partnerships/api";
 
-// Occupations-lens demand red (SvampView's module ACCENT, mirrored verbatim so
+// Occupations-lens demand red (LandscapeReport's module ACCENT, mirrored verbatim so
 // the extraction is behavior-identical).
 const ACCENT = "#ff5a5a";
 

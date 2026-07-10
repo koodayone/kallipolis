@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import SvampView from "@/college-atlas/partnerships/SvampView";
+import LandscapeReport from "@/college-atlas/partnerships/LandscapeReport";
 import { getCollegeAtlasConfig } from "@/config/collegeAtlasConfigs";
 import { SchoolConfig } from "@/config/schoolConfig";
 import { landscapeInstance } from "@/college-atlas/partnerships/landscapeInstances";
@@ -28,7 +28,7 @@ export default function SmccdEdhdReportRoute() {
         overscrollBehavior: "none",
       }}
     >
-      <SvampView colleges={colleges} instance="smccd-edhd" />
+      <LandscapeReport colleges={colleges} instance="smccd-edhd" />
     </motion.div>
   );
 }
