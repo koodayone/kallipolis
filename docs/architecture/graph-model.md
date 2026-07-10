@@ -100,7 +100,7 @@ Department ──HAS_PROGRAM──▶ Program ──AWARDED──▶ AcademicYea
 
 **Wage outcomes are deliberately not in the graph.** The DataMart wage export has no college dimension and per-college cohorts are small-n suppressed, so wages are modeled at the TOP6 grain as read-time reference data (`get_wage_outcomes` over `wage_outcomes_summary.csv`, mirroring `supply.py` / `get_coe_supply`), displayed per program and never summed (medians are non-additive). Moving wages into the graph is a documented future step (see the `get_wage_outcomes` docstring).
 
-The Program layer is consumed by the `/svamp` aggregated landscape ([`backend/partnerships/svamp.py`](../../backend/partnerships/svamp.py)); the per-(college, occupation) partnership reports do not read it.
+The Program layer is consumed by the `/svamp` aggregated landscape ([`backend/partnerships/landscape_build.py`](../../backend/partnerships/landscape_build.py)); the per-(college, occupation) partnership reports do not read it.
 
 ## The bridge logic
 
