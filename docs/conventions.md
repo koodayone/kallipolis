@@ -159,7 +159,7 @@ If a unit legitimately skips one of the four surface forms — for example, an a
 
 ### Test file location
 
-Unit tests live next to the source files they verify, inside the feature directory. A source file at `backend/partnerships/svamp.py` has its tests at `backend/partnerships/test_svamp.py`. The atlas follows the same rule with colocated `*.test.ts` files under each feature directory in `atlas/college-atlas/`.
+Unit tests live next to the source files they verify, inside the feature directory. A source file at `backend/partnerships/landscape_build.py` has its tests at `backend/partnerships/test_landscape_build.py`. The atlas follows the same rule with colocated `*.test.ts` files under each feature directory in `atlas/college-atlas/`.
 
 Integration tests that span multiple features — typically those that require a live Neo4j instance or external APIs — live at `backend/tests/integration/` because they are *not feature-local by definition*. A test exercising partnerships, occupations, and students simultaneously doesn't belong to any single feature, so it goes in a category directory that names what it is (integration tests) rather than where in the feature tree it "attaches."
 
